@@ -7,6 +7,7 @@ import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 export type ActiveComparisonProfileRecord = Readonly<{
   profile: ComparisonProjectProfile;
   activeQuoteVersionId?: string | undefined;
+  activeQuoteVersionKey?: string | undefined;
 }>;
 
 export type HistoricalCandidateQueryDiagnostics = Readonly<{
