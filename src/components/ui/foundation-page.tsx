@@ -7,12 +7,7 @@ type FoundationPageProps = {
   children?: ReactNode;
 };
 
-export function FoundationPage({
-  eyebrow,
-  title,
-  description,
-  children,
-}: FoundationPageProps) {
+export function FoundationPage({ eyebrow, title, description, children }: FoundationPageProps) {
   return (
     <div className="foundation-page">
       <header className="foundation-page__header">

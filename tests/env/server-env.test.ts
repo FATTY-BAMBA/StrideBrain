@@ -12,15 +12,15 @@ describe("server environment", () => {
   });
 
   it("rejects any real/private data mode in Stage 0", () => {
-    expect(() =>
-      parseServerEnvironment({ STRIDEBRAIN_DATA_MODE: "TENANT_PRIVATE" }),
-    ).toThrow(/DEMO_SYNTHETIC/);
+    expect(() => parseServerEnvironment({ STRIDEBRAIN_DATA_MODE: "TENANT_PRIVATE" })).toThrow(
+      /DEMO_SYNTHETIC/,
+    );
   });
 
   it("rejects invalid deployment labels", () => {
-    expect(() =>
-      parseServerEnvironment({ NEXT_PUBLIC_STRIDEBRAIN_ENV: "customer" }),
-    ).toThrow(/development, preview, or production/);
+    expect(() => parseServerEnvironment({ NEXT_PUBLIC_STRIDEBRAIN_ENV: "customer" })).toThrow(
+      /development, preview, or production/,
+    );
   });
 
   it("rejects non-http origins", () => {

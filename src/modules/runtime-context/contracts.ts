@@ -3,10 +3,7 @@ import type { Locale } from "@/modules/localization/config";
 export type DataMode = "DEMO_SYNTHETIC" | "TENANT_PRIVATE";
 
 export type Role =
-  | "ORGANIZATION_ADMIN"
-  | "PROJECT_MANAGER_ESTIMATOR"
-  | "FINANCIAL_REVIEWER"
-  | "VIEWER";
+  "ORGANIZATION_ADMIN" | "PROJECT_MANAGER_ESTIMATOR" | "FINANCIAL_REVIEWER" | "VIEWER";
 
 export type Capability =
   | "project:read"

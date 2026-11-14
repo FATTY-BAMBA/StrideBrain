@@ -31,11 +31,7 @@ export function ProjectLocalNav({ locale, projectKey, labels }: ProjectLocalNavP
         const isActive = item.segment ? pathname === href : pathname === href;
 
         return (
-          <Link
-            key={item.key}
-            href={href as Route}
-            aria-current={isActive ? "page" : undefined}
-          >
+          <Link key={item.key} href={href as Route} aria-current={isActive ? "page" : undefined}>
             {labels[item.labelKey as keyof typeof labels]}
           </Link>
         );

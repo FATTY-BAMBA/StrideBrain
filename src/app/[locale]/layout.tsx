@@ -5,11 +5,7 @@ import type { ReactNode } from "react";
 import { WorkspaceShell } from "@/components/shell/workspace-shell";
 import { getServerEnvironment } from "@/lib/env/server-env";
 import { getCatalog } from "@/modules/localization/catalog";
-import {
-  htmlLanguage,
-  isSupportedLocale,
-  supportedLocales,
-} from "@/modules/localization/config";
+import { htmlLanguage, isSupportedLocale, supportedLocales } from "@/modules/localization/config";
 
 import "../globals.css";
 

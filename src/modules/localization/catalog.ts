@@ -147,7 +147,8 @@ const en: Catalog = {
   "stridebrain.description":
     "The product will resolve authorized context and evidence before producing structured comparisons, explanations, and controlled actions. Stage 0 does not connect an AI model.",
   "settings.eyebrow": "ORGANIZATION SETTINGS",
-  "settings.title": "Identity, permissions, language, and integrations will be governed server-side.",
+  "settings.title":
+    "Identity, permissions, language, and integrations will be governed server-side.",
   "settings.description":
     "Stage 0 shows the honest product boundary and does not simulate unfinished account, role, or integration administration.",
   "project.eyebrow": "PROJECT WORKSPACE STRUCTURE",

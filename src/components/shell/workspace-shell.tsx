@@ -20,7 +20,10 @@ export function WorkspaceShell({ locale, catalog, children }: WorkspaceShellProp
       </a>
 
       <aside className="workspace-sidebar">
-        <div className="brand-lockup" aria-label={`${catalog["app.name"]} ${catalog["app.byline"]}`}>
+        <div
+          className="brand-lockup"
+          aria-label={`${catalog["app.name"]} ${catalog["app.byline"]}`}
+        >
           <span className="brand-mark" aria-hidden="true">
             <span />
             <span />
