@@ -12,10 +12,10 @@ permissions:
   contents: write
 
 jobs:
-  lockfile:
+  scaffold:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Check out scaffold branch
         uses: actions/checkout@v4
@@ -30,18 +30,37 @@ jobs:
           cache: npm
           cache-dependency-path: package.json
 
-      - name: Generate package lock
-        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+      - name: Install dependencies and generate package lock
+        run: npm install --ignore-scripts --no-audit --no-fund
 
-      - name: Commit generated lockfile
+      - name: Format Stage 0 application files
+        run: >-
+          npx prettier --write
+          package.json
+          tsconfig.json
+          next.config.ts
+          next-env.d.ts
+          eslint.config.mjs
+          prettier.config.mjs
+          vitest.config.ts
+          '.env.example'
+          '.gitignore'
+          '.prettierignore'
+          'src/**/*.{ts,tsx,css}'
+          'tests/**/*.ts'
+
+      - name: Commit reproducible scaffold artifacts
         shell: bash
         run: |
-          if [[ -z "$(git status --porcelain -- package-lock.json)" ]]; then
-            echo "package-lock.json is already current."
+          if [[ -z "$(git status --porcelain)" ]]; then
+            echo "Scaffold artifacts are already current."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package-lock.json
-          git commit -m "build: generate reproducible package lock"
+          git add package-lock.json package.json tsconfig.json next.config.ts next-env.d.ts \
+            eslint.config.mjs prettier.config.mjs vitest.config.ts .env.example .gitignore \
+            .prettierignore src tests
+          git commit -m "build: lock and format Stage 0 scaffold"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"
