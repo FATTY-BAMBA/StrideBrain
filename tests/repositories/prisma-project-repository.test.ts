@@ -45,7 +45,10 @@ describe("PrismaProjectRepository", () => {
     });
     const repository = new PrismaProjectRepository(reader);
 
-    const result = await repository.getAuthorizedByBusinessKey(context(), "PRJ-XINYI-026");
+    const result = await repository.getAuthorizedByBusinessKey(
+      context(),
+      "PRJ-XINYI-026",
+    );
 
     expect(findFirst).toHaveBeenCalledWith({
       where: {
@@ -88,7 +91,10 @@ describe("PrismaProjectRepository", () => {
     });
     const repository = new PrismaProjectRepository(reader);
 
-    const result = await repository.getAuthorizedByBusinessKey(context(), "PRJ-NEIHU-021");
+    const result = await repository.getAuthorizedByBusinessKey(
+      context(),
+      "PRJ-NEIHU-021",
+    );
 
     expect(result).toBeNull();
   });
