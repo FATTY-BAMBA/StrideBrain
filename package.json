@@ -1,0 +1,37 @@
+{
+  "name": "stridebrain",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Customer-facing AI operating intelligence platform for SMEs.",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:localization": "vitest run tests/localization",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "dependencies": {
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.6",
+    "@types/react": "19.3.1",
+    "@types/react-dom": "19.3.1",
+    "eslint": "10.15.0",
+    "eslint-config-next": "16.4.6",
+    "prettier": "3.9.10",
+    "typescript": "7.0.2",
+    "vitest": "4.1.10"
+  }
+}
