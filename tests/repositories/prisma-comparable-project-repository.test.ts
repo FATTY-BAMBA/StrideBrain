@@ -216,7 +216,7 @@ describe("PrismaComparableProjectRepository", () => {
     );
   });
 
-  it("uses the conservative historical classification allowlist for Viewers", async () => {
+  it("combines the approved comparison library with assignment-bound private history for Viewers", async () => {
     const findMany = vi.fn().mockResolvedValue([]);
     const repository = new PrismaComparableProjectRepository(
       database({
@@ -235,9 +235,50 @@ describe("PrismaComparableProjectRepository", () => {
     expect(findMany).toHaveBeenCalledWith(
       expect.objectContaining({
         where: expect.objectContaining({
-          dataClassification: {
-            in: ["DEMO_SYNTHETIC", "PUBLIC_REFERENCE", "TENANT_APPROVED"],
-          },
+          OR: [
+            {
+              dataClassification: {
+                in: ["DEMO_SYNTHETIC", "PUBLIC_REFERENCE", "TENANT_APPROVED"],
+              },
+            },
+            {
+              id: { in: [PROJECT_ID] },
+              dataClassification: "TENANT_PRIVATE",
+            },
+          ],
+        }),
+      }),
+    );
+  });
+
+  it("allows organization-wide tenant-private history only for Admin and Financial Reviewer", async () => {
+    const findMany = vi.fn().mockResolvedValue([]);
+    const repository = new PrismaComparableProjectRepository(
+      database({
+        project: { findFirst: vi.fn().mockResolvedValue(null), findMany },
+      }),
+    );
+
+    await repository.listAuthorizedHistoricalProfiles(
+      context({
+        role: "FINANCIAL_REVIEWER",
+        assignedProjectIds: new Set(),
+        projectAssignments: new Map(),
+      }),
+      PROJECT_ID,
+    );
+
+    expect(findMany).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: expect.objectContaining({
+          OR: [
+            {
+              dataClassification: {
+                in: ["DEMO_SYNTHETIC", "PUBLIC_REFERENCE", "TENANT_APPROVED"],
+              },
+            },
+            { dataClassification: "TENANT_PRIVATE" },
+          ],
         }),
       }),
     );
