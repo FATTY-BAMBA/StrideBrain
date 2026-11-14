@@ -43,11 +43,25 @@ BEGIN
     AND fcv."supersededById" IS NULL
     AND fcv."authorityState" <> 'SUPERSEDED';
 
-  IF forecast_current_count <> 1 OR forecast_current_version <> 3 THEN
+  IF forecast_current_count <> 1 OR forecast_current_version <> 1 THEN
     RAISE EXCEPTION
-      'Stage 3 expected exactly one current Xinyi forecast at version 3; found count %, version %',
+      'Stage 3 expected exactly one current Xinyi forecast at version 1; found count %, version %',
       forecast_current_count,
       forecast_current_version;
+  END IF;
+
+  IF NOT EXISTS (
+    SELECT 1
+    FROM "ForecastCostVersion" fcv
+    WHERE fcv."organizationId" = 'org_horizon'
+      AND fcv."projectId" = 'prj_xinyi_026'
+      AND fcv."versionNumber" = 1
+      AND fcv."authorityState" = 'HUMAN_REVIEWED'
+      AND fcv."observationType" = 'FORECAST_DIRECT_COST'
+      AND fcv."currency" = 'TWD'
+      AND fcv."totalDirectCost" = 12650000.00
+  ) THEN
+    RAISE EXCEPTION 'Stage 3 Xinyi forecast must preserve the canonical human-reviewed TWD 12,650,000 value';
   END IF;
 
   SELECT count(*)
