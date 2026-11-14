@@ -1,0 +1,7 @@
+
+> stridebrain@0.1.0 typecheck
+> tsc --noEmit
+
+tests/comparisons/similarity-policy.test.ts(73,3): error TS2561: Object literal may only specify known properties, but 'activeQuoteVersionId' does not exist in type 'ActiveProjectComparisonContext'. Did you mean to write 'activeQuoteVersionKey'?
+
+EXIT_CODE=2
