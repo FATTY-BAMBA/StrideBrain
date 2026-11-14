@@ -15,6 +15,10 @@ export default async function KnowledgePage({ params }: KnowledgePageProps) {
   }
 
   const catalog = getCatalog(rawLocale);
+  const labels =
+    rawLocale === "zh-TW"
+      ? ["專案", "文件", "報價", "供應商", "資料依據"]
+      : ["Projects", "Documents", "Quotations", "Suppliers", "Evidence"];
 
   return (
     <FoundationPage
@@ -23,11 +27,9 @@ export default async function KnowledgePage({ params }: KnowledgePageProps) {
       description={catalog["knowledge.description"]}
     >
       <div className="boundary-list" aria-label={catalog["knowledge.title"]}>
-        <span>Projects</span>
-        <span>Documents</span>
-        <span>Quotations</span>
-        <span>Suppliers</span>
-        <span>Evidence</span>
+        {labels.map((label) => (
+          <span key={label}>{label}</span>
+        ))}
       </div>
     </FoundationPage>
   );
