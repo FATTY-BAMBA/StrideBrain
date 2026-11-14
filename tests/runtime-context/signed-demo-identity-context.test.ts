@@ -63,6 +63,11 @@ function requestFor(token: string, extraHeaders: Record<string, string> = {}) {
   });
 }
 
+function changeLastCharacter(value: string): string {
+  const last = value.at(-1);
+  return `${value.slice(0, -1)}${last === "A" ? "B" : "A"}`;
+}
+
 describe("SignedDemoIdentityContext", () => {
   it("resolves organization, role, grants, and assignments only from server records", async () => {
     const issued = issueSignedSessionToken(SECRET);
@@ -148,7 +153,7 @@ describe("SignedDemoIdentityContext", () => {
       record(issued.tokenHash, issued.sessionId),
     );
     const resolver = new SignedDemoIdentityContext(repository, SECRET, () => NOW);
-    const tampered = `${issued.token.slice(0, -1)}A`;
+    const tampered = changeLastCharacter(issued.token);
 
     expect(await resolver.resolve(requestFor(tampered))).toBeNull();
     expect(repository.findByTokenHash).not.toHaveBeenCalled();
