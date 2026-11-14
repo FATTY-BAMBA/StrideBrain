@@ -89,10 +89,12 @@ BEGIN
     'DemoSession_tokenHash_check',
     'DemoSession_locale_check',
     'DemoSession_expiry_check',
-    'DemoSession_revocation_check'
+    'DemoSession_revocation_check',
+    'MembershipCapabilityGrant_membership_organization_fkey',
+    'DemoSession_membership_organization_fkey'
   );
-  IF value_count <> 5 THEN
-    RAISE EXCEPTION 'Expected five Stage 2 database constraints, found %', value_count;
+  IF value_count <> 7 THEN
+    RAISE EXCEPTION 'Expected seven Stage 2 database constraints, found %', value_count;
   END IF;
 
   BEGIN
@@ -120,6 +122,31 @@ BEGIN
     WHEN check_violation THEN NULL;
   END;
 
+  BEGIN
+    INSERT INTO "DemoSession" (
+      "id", "organizationId", "membershipId", "tokenHash", "preferredLocale",
+      "issuedAt", "expiresAt"
+    ) VALUES (
+      'verify_cross_org_session', 'org_northern', 'membership_horizon_mei', repeat('c', 64),
+      'zh-TW', NOW(), NOW() + INTERVAL '1 hour'
+    );
+    RAISE EXCEPTION 'Database accepted a cross-organization session-to-membership link';
+  EXCEPTION
+    WHEN foreign_key_violation THEN NULL;
+  END;
+
+  BEGIN
+    INSERT INTO "MembershipCapabilityGrant" (
+      "id", "organizationId", "membershipId", "capability", "effect", "createdAt", "updatedAt"
+    ) VALUES (
+      'verify_cross_org_grant', 'org_northern', 'membership_horizon_mei',
+      'project:read', 'ALLOW', NOW(), NOW()
+    );
+    RAISE EXCEPTION 'Database accepted a cross-organization grant-to-membership link';
+  EXCEPTION
+    WHEN foreign_key_violation THEN NULL;
+  END;
+
   SELECT count(*) INTO relation_mismatches FROM (
     SELECT grant_row."id"
     FROM "MembershipCapabilityGrant" grant_row
@@ -138,5 +165,5 @@ BEGIN
     RAISE EXCEPTION 'Cross-organization Stage 2 authorization relations found: %', relation_mismatches;
   END IF;
 
-  RAISE NOTICE 'Stage 2 authorization fixture verified: explicit grants, bounded assignments, and hash-only invalid sessions are valid.';
+  RAISE NOTICE 'Stage 2 authorization fixture verified: explicit grants, bounded assignments, hash-only invalid sessions, and composite tenant links are valid.';
 END $$;
