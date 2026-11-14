@@ -1,6 +1,8 @@
 BEGIN;
 
-TRUNCATE TABLE "Organization" CASCADE;
+DELETE FROM "Organization"
+WHERE "id" IN ('org_horizon', 'org_northern')
+   OR "businessKey" IN ('HORIZON_ATELIER', 'NORTHERN_STUDIO');
 
 INSERT INTO "Organization" (
   "id", "businessKey", "nameEn", "nameZhTw", "primaryLocale", "timezone",
