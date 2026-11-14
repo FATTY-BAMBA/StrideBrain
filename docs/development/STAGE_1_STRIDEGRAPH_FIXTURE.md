@@ -33,6 +33,26 @@ No service may collapse them into a generic cost field.
 
 The comparison/action tables are persistence seams only. Their Stage 2 and Stage 4 services are not implemented here.
 
+## Database authority invariants
+
+The committed migrations contain explicit PostgreSQL checks in addition to the Prisma object model.
+
+They enforce that:
+
+- `QuoteVersion` can only represent `QUOTED_PRICE`;
+- `SupplierOffer` can only represent `SUPPLIER_OFFER`;
+- `ForecastCostVersion` can only represent `FORECAST_DIRECT_COST`;
+- `ProjectCostVersion` can only represent `RECONCILED_ACTUAL_COST`;
+- quoted, forecast, and supplier-offer records cannot claim `RECONCILED_ACTUAL` authority;
+- reconciled actual versions require a reconciliation date;
+- superseded versions must point to another version and cannot point to themselves;
+- quote totals reconcile as before-tax amount plus tax;
+- quantity × unit rate reconciles to every stored line amount;
+- project area and programme values remain positive;
+- comparison scores, evidence coverage, ranks, weights, and normalized factors remain within defined ranges.
+
+The schema-level separation is therefore enforced by the database, not only by TypeScript naming or UI labels.
+
 ## Exact financial arithmetic
 
 Authoritative application calculations use `src/modules/finance/fixed-decimal.ts`.
@@ -59,7 +79,7 @@ The SQL fixture is:
 prisma/fixtures/horizon-atelier.sql
 ```
 
-It resets and seeds the controlled synthetic database inside a transaction.
+It replaces only the two known synthetic fixture organizations and then seeds the controlled dataset inside one transaction. It does not truncate unrelated organizations.
 
 The fixture contains:
 
@@ -131,10 +151,11 @@ The main CI job starts an isolated PostgreSQL service and runs, in order:
 3. Prisma client generation;
 4. committed migration deployment;
 5. Horizon fixture seed;
-6. SQL invariant verification;
-7. formatting, lint, type checks, unit tests, application build, and dependency audit.
+6. financial/authority invariant verification;
+7. comprehensive organization-relationship and evidence-subject verification;
+8. formatting, lint, type checks, unit tests, application build, and dependency audit.
 
-A fixture or schema change is not accepted when migration, seed, or verification fails.
+A fixture or schema change is not accepted when migration, seed, or either verification step fails.
 
 ## SQL verification contract
 
@@ -147,11 +168,16 @@ A fixture or schema change is not accepted when migration, seed, or verification
 - incorrect Xinyi v3 or forecast totals;
 - more or fewer than two eligible canonical lighting actual observations;
 - missing stale offer, open conflict, or separate-tenant project;
-- cross-organization relationship mismatches;
+- missing Stage 1 database constraints;
+- an attempted financial observation-type relabel;
+- an attempted unreconciled line amount;
 - quotation lines that do not reconcile to their version total;
 - reconciled actual lines that do not reconcile to their cost-version total;
 - eligible actual-cost lines without evidence;
+- quote items without quote evidence;
 - missing Xinyi supersession links.
+
+`prisma/fixtures/verify-relations.sql` checks every seeded repository relationship for organization agreement and verifies that every polymorphic evidence reference points to an existing subject in the same organization.
 
 ## Repository boundary
 
@@ -160,17 +186,23 @@ A fixture or schema change is not accepted when migration, seed, or verification
 ```text
 trusted RuntimeContext
   → organization-scoped database query
-  → assignment/capability check
+  → capability check
+  → explicit project assignment for every non-admin role
   → neutral not-found result for denied or absent records
 ```
 
-A browser, URL, model, or business key cannot choose the authoritative organization.
+A browser, URL, model, or business key cannot choose the authoritative organization. Missing assignment context fails closed.
 
 ## Reseeding and safety
 
-The Stage 1 fixture begins by truncating the organization root with cascading cleanup. It must only run against a dedicated local/CI/demo database.
+The fixture cleanup targets only:
 
-It must never run against a real tenant database.
+- `org_horizon` / `HORIZON_ATELIER`;
+- `org_northern` / `NORTHERN_STUDIO`.
+
+Cascading deletion is limited to records owned by those fixture organizations. Other organizations are left untouched.
+
+The fixture still contains destructive reset behavior for those two identities. It must never be run where either identifier belongs to real customer data.
 
 The controlled demo will receive its own isolated database before deployment work begins.
 
@@ -183,16 +215,16 @@ The controlled demo will receive its own isolated database before deployment wor
 - no comparison scoring service exists;
 - no action transaction exists;
 - no real customer data is allowed;
-- relationship organization consistency is validated by fixture/repository tests and will receive stronger database/application enforcement before L2.
+- cross-organization relationship consistency is exhaustively verified for the fixture and repository adapter, but composite database foreign keys and RLS remain L2 hardening work.
 
 ## Exit criteria
 
 Stage 1 is complete only when:
 
 - Prisma schema validation and client generation pass;
-- the committed migration applies to an empty PostgreSQL database;
-- the Horizon fixture seeds cleanly;
-- SQL verification passes;
+- all committed migrations apply to an empty PostgreSQL database;
+- the Horizon fixture seeds cleanly and safely reseeds;
+- both SQL verification suites pass;
 - exact-decimal tests pass;
 - repository-scope tests pass;
 - the normal application CI remains green;
