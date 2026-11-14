@@ -43,9 +43,6 @@ jobs:
           eslint.config.mjs
           prettier.config.mjs
           vitest.config.ts
-          '.env.example'
-          '.gitignore'
-          '.prettierignore'
           'src/**/*.{ts,tsx,css}'
           'tests/**/*.ts'
 
@@ -59,8 +56,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add package-lock.json package.json tsconfig.json next.config.ts next-env.d.ts \
-            eslint.config.mjs prettier.config.mjs vitest.config.ts .env.example .gitignore \
-            .prettierignore src tests
+            eslint.config.mjs prettier.config.mjs vitest.config.ts src tests
           git commit -m "build: lock and format Stage 0 scaffold"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"
