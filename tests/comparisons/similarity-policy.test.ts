@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import {
-  type ActiveProjectComparisonContext,
-  type ComparisonProjectProfile,
+import type {
+  ActiveProjectComparisonContext,
+  ComparisonProjectProfile,
 } from "@/modules/comparisons/domain/contracts";
 import { evaluateCandidateEligibility } from "@/modules/comparisons/domain/eligibility-policy";
 import {
