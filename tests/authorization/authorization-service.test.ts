@@ -182,7 +182,8 @@ describe("AuthorizationService", () => {
       internalReason: "ACTION_ASSIGNMENT_DENIED",
     });
 
-    const missingAssignmentDetail = context({ projectAssignments: undefined });
+    const missingAssignmentDetail = context();
+    delete missingAssignmentDetail.projectAssignments;
     expect(
       service.canProposeInternalReview(missingAssignmentDetail, "prj_xinyi_026"),
     ).toMatchObject({
