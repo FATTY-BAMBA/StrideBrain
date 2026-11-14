@@ -70,7 +70,7 @@ const active: ActiveProjectComparisonContext = {
   factorEvidence: factorEvidence("XINYI"),
   recordVersion: "2026-11-14T00:00:00.000Z",
   snapshotDate: SNAPSHOT_DATE,
-  activeQuoteVersionId: "qv_xinyi_026_v3",
+  activeQuoteVersionKey: "Q-XINYI-026-v3",
   sourceFingerprint: "source-xinyi",
   permissionFingerprint: "permission-mei",
 };
