@@ -18,4 +18,17 @@ describe("Stage 4 policy versions", () => {
       calculation: "CPI-CALC-1.0",
     });
   });
+
+  it("keeps each policy namespace explicit and distinct", () => {
+    const versions = [
+      ELIGIBILITY_POLICY_VERSION,
+      SIMILARITY_POLICY_VERSION,
+      CALCULATION_VERSION,
+    ];
+
+    expect(new Set(versions).size).toBe(3);
+    expect(versions.every((version) => /^CPI-[A-Z-]+-1\.0$/.test(version))).toBe(
+      true,
+    );
+  });
 });
