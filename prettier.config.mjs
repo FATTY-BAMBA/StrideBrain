@@ -1,4 +1,4 @@
-export default {
+const prettierConfig = {
   arrowParens: "always",
   bracketSameLine: false,
   endOfLine: "lf",
@@ -9,3 +9,5 @@ export default {
   tabWidth: 2,
   trailingComma: "all",
 };
+
+export default prettierConfig;
