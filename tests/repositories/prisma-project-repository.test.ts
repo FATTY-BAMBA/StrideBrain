@@ -21,17 +21,29 @@ function context(overrides: Partial<RuntimeContext> = {}): RuntimeContext {
   };
 }
 
+function readerFor(project: {
+  id: string;
+  businessKey: string;
+  organizationId?: string;
+}): { reader: PrismaProjectReader; findFirst: ReturnType<typeof vi.fn> } {
+  const findFirst = vi.fn().mockResolvedValue({
+    ...project,
+    organizationId: project.organizationId ?? "org_horizon",
+    updatedAt: new Date("2026-11-14T00:00:00Z"),
+  });
+  return {
+    reader: { project: { findFirst } } as PrismaProjectReader,
+    findFirst,
+  };
+}
+
 describe("PrismaProjectRepository", () => {
   it("places the trusted organization boundary in the database query", async () => {
-    const findFirst = vi.fn().mockResolvedValue({
+    const { reader, findFirst } = readerFor({
       id: "prj_xinyi_026",
       businessKey: "PRJ-XINYI-026",
-      organizationId: "org_horizon",
-      updatedAt: new Date("2026-11-14T00:00:00Z"),
     });
-    const repository = new PrismaProjectRepository({
-      project: { findFirst },
-    } as PrismaProjectReader);
+    const repository = new PrismaProjectRepository(reader);
 
     const result = await repository.getAuthorizedByBusinessKey(context(), "PRJ-XINYI-026");
 
@@ -70,31 +82,56 @@ describe("PrismaProjectRepository", () => {
   });
 
   it("denies an unassigned project without leaking a different response shape", async () => {
-    const findFirst = vi.fn().mockResolvedValue({
+    const { reader } = readerFor({
       id: "prj_neihu_021",
       businessKey: "PRJ-NEIHU-021",
-      organizationId: "org_horizon",
-      updatedAt: new Date("2026-11-14T00:00:00Z"),
     });
-    const repository = new PrismaProjectRepository({
-      project: { findFirst },
-    } as PrismaProjectReader);
+    const repository = new PrismaProjectRepository(reader);
 
     const result = await repository.getAuthorizedByBusinessKey(context(), "PRJ-NEIHU-021");
 
     expect(result).toBeNull();
   });
 
-  it("allows organization administrators to read authorized organization projects", async () => {
-    const findFirst = vi.fn().mockResolvedValue({
+  it("fails closed when a non-admin context has no assignment set", async () => {
+    const { reader } = readerFor({
+      id: "prj_xinyi_026",
+      businessKey: "PRJ-XINYI-026",
+    });
+    const repository = new PrismaProjectRepository(reader);
+
+    const result = await repository.getAuthorizedByBusinessKey(
+      context({ assignedProjectIds: undefined }),
+      "PRJ-XINYI-026",
+    );
+
+    expect(result).toBeNull();
+  });
+
+  it("requires an explicit assignment for a financial reviewer", async () => {
+    const { reader } = readerFor({
       id: "prj_neihu_021",
       businessKey: "PRJ-NEIHU-021",
-      organizationId: "org_horizon",
-      updatedAt: new Date("2026-11-14T00:00:00Z"),
     });
-    const repository = new PrismaProjectRepository({
-      project: { findFirst },
-    } as PrismaProjectReader);
+    const repository = new PrismaProjectRepository(reader);
+
+    const result = await repository.getAuthorizedByBusinessKey(
+      context({
+        role: "FINANCIAL_REVIEWER",
+        assignedProjectIds: new Set(["prj_xinyi_026"]),
+      }),
+      "PRJ-NEIHU-021",
+    );
+
+    expect(result).toBeNull();
+  });
+
+  it("allows organization administrators to read authorized organization projects", async () => {
+    const { reader } = readerFor({
+      id: "prj_neihu_021",
+      businessKey: "PRJ-NEIHU-021",
+    });
+    const repository = new PrismaProjectRepository(reader);
 
     const result = await repository.getAuthorizedByBusinessKey(
       context({ role: "ORGANIZATION_ADMIN", assignedProjectIds: new Set() }),
