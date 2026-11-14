@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  type CapabilityGrant,
   resolveCapabilities,
   roleBundle,
   toPresentationCapabilityView,
@@ -30,9 +31,10 @@ describe("capability policy", () => {
 
   it("makes explicit deny win regardless of grant ordering", () => {
     const grants = [
-      { capability: "commercial:actual-read", effect: "ALLOW" as const },
-      { capability: "commercial:actual-read", effect: "DENY" as const },
-    ];
+      { capability: "commercial:actual-read", effect: "ALLOW" },
+      { capability: "commercial:actual-read", effect: "DENY" },
+    ] as const satisfies readonly CapabilityGrant[];
+
     expect(resolveCapabilities("FINANCIAL_REVIEWER", grants).has("commercial:actual-read")).toBe(
       false,
     );
