@@ -1,7 +1,4 @@
-import type {
-  AuthorityState,
-  ObservationType,
-} from "@/modules/projects/domain/project-workspace";
+import type { AuthorityState, ObservationType } from "@/modules/projects/domain/project-workspace";
 
 export type EvidenceAccessLevel = "NON_SENSITIVE" | "AUTHORIZED";
 
@@ -149,20 +146,14 @@ export interface ProjectWorkspaceRepositoryPort {
     projectId: string,
   ): Promise<ProjectWorkspaceBaseRecord | null>;
 
-  getCurrentQuote(
-    organizationId: string,
-    projectId: string,
-  ): Promise<CurrentQuoteRecord | null>;
+  getCurrentQuote(organizationId: string, projectId: string): Promise<CurrentQuoteRecord | null>;
 
   getCurrentForecast(
     organizationId: string,
     projectId: string,
   ): Promise<CurrentForecastRecord | null>;
 
-  getCurrentActual(
-    organizationId: string,
-    projectId: string,
-  ): Promise<CurrentActualRecord | null>;
+  getCurrentActual(organizationId: string, projectId: string): Promise<CurrentActualRecord | null>;
 
   listEvidence(
     organizationId: string,

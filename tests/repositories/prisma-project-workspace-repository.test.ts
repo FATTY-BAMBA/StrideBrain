@@ -67,9 +67,7 @@ describe("PrismaProjectWorkspaceRepository", () => {
       projectSuppliers: [],
       projectMaterials: [],
     });
-    const repository = new PrismaProjectWorkspaceRepository(
-      database({ project: { findFirst } }),
-    );
+    const repository = new PrismaProjectWorkspaceRepository(database({ project: { findFirst } }));
 
     const result = await repository.getProjectContext("org_horizon", "prj_xinyi_026");
 

@@ -1,7 +1,4 @@
-import type {
-  AuthorityState,
-  ObservationType,
-} from "@/modules/projects/domain/project-workspace";
+import type { AuthorityState, ObservationType } from "@/modules/projects/domain/project-workspace";
 import type {
   CurrentActualRecord,
   CurrentForecastRecord,

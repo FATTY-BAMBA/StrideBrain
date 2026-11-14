@@ -70,9 +70,7 @@ const baseProject: ProjectWorkspaceBaseRecord = {
   ],
 };
 
-function context(
-  overrides: Partial<RuntimeContext> = {},
-): RuntimeContext {
+function context(overrides: Partial<RuntimeContext> = {}): RuntimeContext {
   return {
     requestId: "REQ-STAGE3-001",
     userId: "person_horizon_mei",
@@ -168,21 +166,14 @@ function workspacePort(
   };
 }
 
-function availableWorkspace(
-  outcome: Awaited<ReturnType<GetProjectWorkspace["execute"]>>,
-) {
+function availableWorkspace(outcome: Awaited<ReturnType<GetProjectWorkspace["execute"]>>) {
   if (outcome.kind !== "AVAILABLE") throw new Error("Expected an available workspace");
   return outcome.workspace;
 }
 
 describe("GetProjectWorkspace", () => {
   it("returns Mei's complete authorized Xinyi context with exact decimal strings", async () => {
-    const useCase = new GetProjectWorkspace(
-      projectPort(),
-      workspacePort(),
-      undefined,
-      () => NOW,
-    );
+    const useCase = new GetProjectWorkspace(projectPort(), workspacePort(), undefined, () => NOW);
 
     const workspace = availableWorkspace(await useCase.execute(context(), PROJECT_KEY));
 
@@ -230,6 +221,7 @@ describe("GetProjectWorkspace", () => {
     expect(repositories.getCurrentForecast).not.toHaveBeenCalled();
     expect(repositories.getCurrentActual).not.toHaveBeenCalled();
     expect(repositories.listSupplierOffers).not.toHaveBeenCalled();
+    expect(repositories.listOpenActions).not.toHaveBeenCalled();
     expect(repositories.listEvidence).toHaveBeenCalledWith(
       ORGANIZATION_ID,
       PROJECT_ID,

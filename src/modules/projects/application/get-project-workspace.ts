@@ -4,7 +4,6 @@ import {
 } from "@/modules/authorization/authorization-service";
 import {
   determineProjectWorkspaceState,
-  type AuthorityState,
   type CommercialObservationDTO,
   type EvidenceHealthDTO,
   type LocalizedNameDTO,
@@ -34,11 +33,7 @@ function isoDate(value: Date | null | undefined): string | undefined {
   return value?.toISOString().slice(0, 10);
 }
 
-function localized(
-  context: RuntimeContext,
-  en: string,
-  zhTw: string,
-): LocalizedNameDTO {
+function localized(context: RuntimeContext, en: string, zhTw: string): LocalizedNameDTO {
   return Object.freeze({
     en,
     zhTw,
@@ -173,10 +168,7 @@ function conflictEvidenceIds(
   conflicts: readonly ProjectEvidenceConflictRecord[],
 ): ReadonlySet<string> {
   return new Set(
-    conflicts.flatMap((conflict) => [
-      conflict.primaryEvidenceId,
-      conflict.conflictingEvidenceId,
-    ]),
+    conflicts.flatMap((conflict) => [conflict.primaryEvidenceId, conflict.conflictingEvidenceId]),
   );
 }
 
@@ -335,16 +327,15 @@ export class GetProjectWorkspace {
       allowed(forecastDecision)
         ? this.workspace.listSupplierOffers(context.organizationId, base.id)
         : Promise.resolve([]),
-      this.workspace.listOpenActions(context.organizationId, base.id),
+      context.role === "VIEWER"
+        ? Promise.resolve([])
+        : this.workspace.listOpenActions(context.organizationId, base.id),
     ]);
 
     const evidenceIds = evidence.map((item) => item.evidenceReferenceId);
     const conflicts =
       evidenceIds.length > 0
-        ? await this.workspace.listOpenEvidenceConflicts(
-            context.organizationId,
-            evidenceIds,
-          )
+        ? await this.workspace.listOpenEvidenceConflicts(context.organizationId, evidenceIds)
         : [];
     const now = this.clock();
     const conflictIds = conflictEvidenceIds(conflicts);

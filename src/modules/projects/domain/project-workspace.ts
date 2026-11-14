@@ -1,12 +1,7 @@
 import type { DataMode, Role } from "@/modules/runtime-context/contracts";
 
 export type ProjectWorkspaceState =
-  | "READY"
-  | "PARTIAL"
-  | "UNAVAILABLE"
-  | "PERMISSION_RESTRICTED"
-  | "CONFLICTED"
-  | "STALE";
+  "READY" | "PARTIAL" | "UNAVAILABLE" | "PERMISSION_RESTRICTED" | "CONFLICTED" | "STALE";
 
 export type ProjectWorkspaceWarningCode =
   | "PROJECT_CONTEXT_PARTIAL"
@@ -24,10 +19,7 @@ export type ProjectWorkspaceWarningCode =
   | "SUPPLIER_OFFER_STALE";
 
 export type ObservationType =
-  | "QUOTED_PRICE"
-  | "SUPPLIER_OFFER"
-  | "FORECAST_DIRECT_COST"
-  | "RECONCILED_ACTUAL_COST";
+  "QUOTED_PRICE" | "SUPPLIER_OFFER" | "FORECAST_DIRECT_COST" | "RECONCILED_ACTUAL_COST";
 
 export type AuthorityState =
   | "OBSERVED"
