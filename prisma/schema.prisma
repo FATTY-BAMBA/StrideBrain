@@ -1,0 +1,885 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../.generated/prisma"
+  moduleFormat = "esm"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum DataClassification {
+  DEMO_SYNTHETIC
+  PUBLIC_REFERENCE
+  TENANT_PRIVATE
+  TENANT_RESTRICTED
+  TENANT_APPROVED
+}
+
+enum AuthorityState {
+  OBSERVED
+  HUMAN_REVIEWED
+  APPROVED_COMMERCIAL
+  RECONCILED_ACTUAL
+  SUPERSEDED
+  CONFLICTED
+}
+
+enum ObservationType {
+  QUOTED_PRICE
+  SUPPLIER_OFFER
+  FORECAST_DIRECT_COST
+  RECONCILED_ACTUAL_COST
+}
+
+enum MembershipRole {
+  ORGANIZATION_ADMIN
+  PROJECT_MANAGER_ESTIMATOR
+  FINANCIAL_REVIEWER
+  VIEWER
+}
+
+enum ProjectStatus {
+  ACTIVE
+  COMPLETED
+  CLOSED
+  ARCHIVED
+  CANCELLED
+}
+
+enum ProjectStage {
+  DISCOVERY
+  DESIGN
+  QUOTE_REVIEW
+  APPROVED
+  PROCUREMENT
+  CONSTRUCTION
+  HANDOVER
+  COMPLETE
+}
+
+enum RunStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+  STALE
+}
+
+enum ComparisonBand {
+  STRONG
+  RELEVANT
+  PARTIAL
+  BROADER
+}
+
+enum FactorState {
+  KNOWN
+  UNKNOWN
+  NOT_APPLICABLE
+}
+
+enum ConflictStatus {
+  OPEN
+  RESOLVED
+  DISMISSED
+}
+
+enum ProposedActionStatus {
+  PREPARED
+  CONFIRMED
+  EXPIRED
+  REJECTED
+  CANCELLED
+}
+
+enum ActionStatus {
+  OPEN
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum EvidenceSubjectType {
+  PROJECT
+  PROJECT_SCOPE
+  DOCUMENT_VERSION
+  QUOTE_VERSION
+  QUOTE_ITEM
+  FORECAST_COST_VERSION
+  FORECAST_COST_LINE
+  PROJECT_COST_VERSION
+  COST_LINE
+  SUPPLIER_OFFER
+  SUPPLIER_OFFER_ITEM
+  COMPARISON_CLAIM
+  ACTION
+}
+
+model Organization {
+  id                 String             @id
+  businessKey        String             @unique
+  nameEn             String
+  nameZhTw           String
+  primaryLocale      String             @default("zh-TW")
+  timezone           String             @default("Asia/Taipei")
+  dataClassification DataClassification @default(DEMO_SYNTHETIC)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  people               Person[]
+  memberships          Membership[]
+  clients              Client[]
+  projects             Project[]
+  suppliers            Supplier[]
+  materials            Material[]
+  documents            Document[]
+  evidenceReferences   EvidenceReference[]
+  evidenceConflicts    EvidenceConflict[]
+  quotes               Quote[]
+  quoteVersions        QuoteVersion[]
+  quoteItems           QuoteItem[]
+  forecastCostVersions ForecastCostVersion[]
+  forecastCostLines    ForecastCostLine[]
+  projectCostVersions  ProjectCostVersion[]
+  costLines            CostLine[]
+  supplierOffers       SupplierOffer[]
+  supplierOfferItems   SupplierOfferItem[]
+  intelligenceRuns     IntelligenceRun[]
+  comparisonRuns       ComparisonRun[]
+  comparisonCandidates ComparisonCandidate[]
+  comparisonFactors    ComparisonFactor[]
+  comparisonClaims     ComparisonClaim[]
+  proposedActions      ProposedAction[]
+  actions              Action[]
+  auditEvents          AuditEvent[]
+}
+
+model Person {
+  id             String   @id
+  organizationId String
+  businessKey    String
+  nameEn         String
+  nameZhTw       String
+  email          String?
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  memberships  Membership[]
+
+  @@unique([organizationId, businessKey])
+  @@unique([id, organizationId])
+  @@index([organizationId, active])
+}
+
+model Membership {
+  id             String         @id
+  organizationId String
+  personId       String
+  role           MembershipRole
+  capabilities   String[]
+  active         Boolean        @default(true)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  organization Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  person       Person             @relation(fields: [personId], references: [id], onDelete: Cascade)
+  assignments  ProjectAssignment[]
+  auditEvents  AuditEvent[]       @relation("AuditActorMembership")
+
+  @@unique([organizationId, personId])
+  @@unique([id, organizationId])
+  @@index([organizationId, role, active])
+}
+
+model ProjectAssignment {
+  id             String   @id
+  organizationId String
+  projectId      String
+  membershipId   String
+  canReadActuals Boolean  @default(false)
+  canCreateAction Boolean @default(false)
+  createdAt      DateTime @default(now())
+
+  project    Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  membership Membership @relation(fields: [membershipId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, projectId, membershipId])
+  @@index([organizationId, membershipId])
+}
+
+model Client {
+  id             String   @id
+  organizationId String
+  businessKey    String
+  nameEn         String
+  nameZhTw       String
+  clientType     String
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  projects     Project[]
+
+  @@unique([organizationId, businessKey])
+  @@unique([id, organizationId])
+  @@index([organizationId, clientType])
+}
+
+model Project {
+  id                 String             @id
+  organizationId     String
+  businessKey        String
+  clientId           String
+  nameEn             String
+  nameZhTw           String
+  comparisonClass    String
+  subtype            String
+  status             ProjectStatus
+  stage              ProjectStage
+  locationCity       String
+  locationDistrict   String?
+  areaQuantity       Decimal            @db.Decimal(18, 3)
+  areaUnit           String
+  currency           String             @default("TWD")
+  programmeWeeks     Decimal?           @db.Decimal(8, 2)
+  startDate          DateTime?          @db.Date
+  targetCompletionAt DateTime?          @db.Date
+  completedAt        DateTime?          @db.Date
+  metadataAuthority  AuthorityState     @default(HUMAN_REVIEWED)
+  dataClassification DataClassification @default(DEMO_SYNTHETIC)
+  deletedAt          DateTime?
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  organization       Organization          @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  client             Client                @relation(fields: [clientId], references: [id], onDelete: Restrict)
+  assignments        ProjectAssignment[]
+  scopes             ProjectScope[]
+  projectSuppliers   ProjectSupplier[]
+  projectMaterials   ProjectMaterial[]
+  documents          Document[]
+  quotes             Quote[]
+  forecastCosts      ForecastCostVersion[]
+  actualCosts        ProjectCostVersion[]
+  supplierOffers     SupplierOffer[]
+  intelligenceRuns   IntelligenceRun[]
+  comparisonRuns     ComparisonRun[]       @relation("ActiveComparisonProject")
+  comparisonMatches  ComparisonCandidate[] @relation("CandidateProject")
+  proposedActions    ProposedAction[]
+  actions            Action[]
+
+  @@unique([organizationId, businessKey])
+  @@unique([id, organizationId])
+  @@index([organizationId, status, comparisonClass])
+  @@index([organizationId, subtype, completedAt])
+}
+
+model ProjectScope {
+  id             String   @id
+  organizationId String
+  projectId      String
+  categoryId     String
+  labelEn        String
+  labelZhTw      String
+  sourceState    AuthorityState @default(HUMAN_REVIEWED)
+  createdAt      DateTime @default(now())
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, projectId, categoryId])
+  @@index([organizationId, categoryId])
+}
+
+model Supplier {
+  id             String   @id
+  organizationId String
+  businessKey    String
+  nameEn         String
+  nameZhTw       String
+  categoryId     String
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization   Organization        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  projects       ProjectSupplier[]
+  quoteItems     QuoteItem[]
+  forecastLines  ForecastCostLine[]
+  costLines      CostLine[]
+  supplierOffers SupplierOffer[]
+
+  @@unique([organizationId, businessKey])
+  @@unique([id, organizationId])
+  @@index([organizationId, categoryId, active])
+}
+
+model Material {
+  id             String   @id
+  organizationId String
+  businessKey    String
+  categoryId     String
+  nameEn         String
+  nameZhTw       String
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization  Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  projects      ProjectMaterial[]
+  quoteItems    QuoteItem[]
+  forecastLines ForecastCostLine[]
+  costLines     CostLine[]
+  offerItems    SupplierOfferItem[]
+
+  @@unique([organizationId, businessKey])
+  @@unique([id, organizationId])
+  @@index([organizationId, categoryId, active])
+}
+
+model ProjectSupplier {
+  id             String   @id
+  organizationId String
+  projectId      String
+  supplierId     String
+  relationship   String
+  createdAt      DateTime @default(now())
+
+  project  Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Restrict)
+
+  @@unique([organizationId, projectId, supplierId, relationship])
+  @@index([organizationId, supplierId])
+}
+
+model ProjectMaterial {
+  id             String   @id
+  organizationId String
+  projectId      String
+  materialId     String
+  relationship   String
+  createdAt      DateTime @default(now())
+
+  project  Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  material Material @relation(fields: [materialId], references: [id], onDelete: Restrict)
+
+  @@unique([organizationId, projectId, materialId, relationship])
+  @@index([organizationId, materialId])
+}
+
+model Document {
+  id                 String             @id
+  organizationId     String
+  businessKey        String
+  projectId          String?
+  titleEn            String
+  titleZhTw          String
+  documentType       String
+  dataClassification DataClassification @default(DEMO_SYNTHETIC)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  organization Organization      @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  project      Project?          @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  versions     DocumentVersion[]
+
+  @@unique([organizationId, businessKey])
+  @@unique([id, organizationId])
+  @@index([organizationId, projectId, documentType])
+}
+
+model DocumentVersion {
+  id             String             @id
+  organizationId String
+  documentId     String
+  versionLabel   String
+  authorityState AuthorityState
+  effectiveAt    DateTime?          @db.Date
+  supersededById String?
+  storageKey     String?
+  mimeType       String?
+  checksum       String
+  metadata       Json?
+  createdAt      DateTime           @default(now())
+
+  document     Document            @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  supersededBy DocumentVersion?    @relation("DocumentVersionSupersession", fields: [supersededById], references: [id], onDelete: SetNull)
+  supersedes   DocumentVersion[]   @relation("DocumentVersionSupersession")
+  evidence     EvidenceReference[]
+
+  @@unique([organizationId, documentId, versionLabel])
+  @@unique([id, organizationId])
+  @@index([organizationId, authorityState, effectiveAt])
+}
+
+model EvidenceReference {
+  id                 String              @id
+  organizationId     String
+  subjectType        EvidenceSubjectType
+  subjectId          String
+  documentVersionId  String?
+  locator             Json
+  claimKey            String
+  supportedValue      Json?
+  authorityState      AuthorityState
+  observationType     ObservationType?
+  dataClassification  DataClassification @default(DEMO_SYNTHETIC)
+  effectiveAt         DateTime?           @db.Date
+  staleAt             DateTime?           @db.Date
+  createdAt           DateTime            @default(now())
+
+  organization       Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  documentVersion    DocumentVersion?   @relation(fields: [documentVersionId], references: [id], onDelete: SetNull)
+  primaryConflicts   EvidenceConflict[] @relation("PrimaryEvidence")
+  secondaryConflicts EvidenceConflict[] @relation("ConflictingEvidence")
+
+  @@unique([organizationId, subjectType, subjectId, claimKey, documentVersionId])
+  @@unique([id, organizationId])
+  @@index([organizationId, subjectType, subjectId])
+  @@index([organizationId, authorityState, staleAt])
+}
+
+model EvidenceConflict {
+  id                    String         @id
+  organizationId        String
+  conflictKey           String
+  primaryEvidenceId     String
+  conflictingEvidenceId String
+  status                ConflictStatus @default(OPEN)
+  resolutionNote        String?
+  resolvedAt            DateTime?
+  createdAt             DateTime       @default(now())
+  updatedAt             DateTime       @updatedAt
+
+  organization        Organization      @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  primaryEvidence     EvidenceReference @relation("PrimaryEvidence", fields: [primaryEvidenceId], references: [id], onDelete: Cascade)
+  conflictingEvidence EvidenceReference @relation("ConflictingEvidence", fields: [conflictingEvidenceId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, conflictKey, primaryEvidenceId, conflictingEvidenceId])
+  @@index([organizationId, status])
+}
+
+model Quote {
+  id             String   @id
+  organizationId String
+  businessKey    String
+  projectId      String
+  createdAt      DateTime @default(now())
+
+  organization Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  project      Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  versions     QuoteVersion[]
+
+  @@unique([organizationId, businessKey])
+  @@unique([id, organizationId])
+  @@index([organizationId, projectId])
+}
+
+model QuoteVersion {
+  id                String           @id
+  organizationId    String
+  quoteId           String
+  versionNumber     Int
+  status            String
+  observationType   ObservationType  @default(QUOTED_PRICE)
+  authorityState    AuthorityState
+  currency          String           @default("TWD")
+  amountBeforeTax   Decimal          @db.Decimal(20, 2)
+  taxAmount         Decimal          @db.Decimal(20, 2)
+  totalAmount       Decimal          @db.Decimal(20, 2)
+  validUntil        DateTime?        @db.Date
+  supersededById    String?
+  approvedAt        DateTime?
+  createdAt         DateTime         @default(now())
+
+  organization Organization    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  quote        Quote           @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  supersededBy QuoteVersion?   @relation("QuoteVersionSupersession", fields: [supersededById], references: [id], onDelete: SetNull)
+  supersedes   QuoteVersion[]  @relation("QuoteVersionSupersession")
+  items        QuoteItem[]
+  activeInRuns ComparisonRun[] @relation("ActiveQuoteVersion")
+
+  @@unique([organizationId, quoteId, versionNumber])
+  @@unique([id, organizationId])
+  @@index([organizationId, authorityState, approvedAt])
+}
+
+model QuoteItem {
+  id             String           @id
+  organizationId String
+  quoteVersionId String
+  lineNumber     Int
+  categoryId     String
+  descriptionEn  String
+  descriptionZhTw String
+  quantity       Decimal          @db.Decimal(20, 3)
+  unit           String
+  unitPrice      Decimal          @db.Decimal(20, 6)
+  amount         Decimal          @db.Decimal(20, 2)
+  authorityState AuthorityState
+  supplierId     String?
+  materialId     String?
+  createdAt      DateTime         @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  quoteVersion QuoteVersion @relation(fields: [quoteVersionId], references: [id], onDelete: Cascade)
+  supplier     Supplier?    @relation(fields: [supplierId], references: [id], onDelete: SetNull)
+  material     Material?    @relation(fields: [materialId], references: [id], onDelete: SetNull)
+
+  @@unique([organizationId, quoteVersionId, lineNumber])
+  @@unique([id, organizationId])
+  @@index([organizationId, categoryId])
+}
+
+model ForecastCostVersion {
+  id              String           @id
+  organizationId  String
+  projectId       String
+  versionNumber   Int
+  authorityState  AuthorityState
+  observationType ObservationType  @default(FORECAST_DIRECT_COST)
+  currency        String           @default("TWD")
+  totalDirectCost Decimal           @db.Decimal(20, 2)
+  effectiveAt     DateTime          @db.Date
+  supersededById  String?
+  createdAt       DateTime          @default(now())
+
+  organization Organization          @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  project      Project               @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  supersededBy ForecastCostVersion?  @relation("ForecastVersionSupersession", fields: [supersededById], references: [id], onDelete: SetNull)
+  supersedes   ForecastCostVersion[] @relation("ForecastVersionSupersession")
+  lines        ForecastCostLine[]
+
+  @@unique([organizationId, projectId, versionNumber])
+  @@unique([id, organizationId])
+  @@index([organizationId, authorityState, effectiveAt])
+}
+
+model ForecastCostLine {
+  id                    String          @id
+  organizationId        String
+  forecastCostVersionId String
+  lineNumber            Int
+  categoryId            String
+  descriptionEn         String
+  descriptionZhTw       String
+  quantity              Decimal         @db.Decimal(20, 3)
+  unit                  String
+  unitCost              Decimal         @db.Decimal(20, 6)
+  amount                Decimal         @db.Decimal(20, 2)
+  authorityState        AuthorityState
+  supplierId            String?
+  materialId            String?
+  createdAt             DateTime        @default(now())
+
+  organization        Organization        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  forecastCostVersion ForecastCostVersion @relation(fields: [forecastCostVersionId], references: [id], onDelete: Cascade)
+  supplier            Supplier?           @relation(fields: [supplierId], references: [id], onDelete: SetNull)
+  material            Material?           @relation(fields: [materialId], references: [id], onDelete: SetNull)
+
+  @@unique([organizationId, forecastCostVersionId, lineNumber])
+  @@unique([id, organizationId])
+  @@index([organizationId, categoryId])
+}
+
+model ProjectCostVersion {
+  id              String           @id
+  organizationId  String
+  projectId       String
+  versionNumber   Int
+  authorityState  AuthorityState
+  observationType ObservationType  @default(RECONCILED_ACTUAL_COST)
+  currency        String           @default("TWD")
+  totalDirectCost Decimal           @db.Decimal(20, 2)
+  reconciledAt    DateTime?         @db.Date
+  supersededById  String?
+  createdAt       DateTime          @default(now())
+
+  organization Organization          @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  project      Project               @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  supersededBy ProjectCostVersion?   @relation("ProjectCostVersionSupersession", fields: [supersededById], references: [id], onDelete: SetNull)
+  supersedes   ProjectCostVersion[]  @relation("ProjectCostVersionSupersession")
+  lines        CostLine[]
+
+  @@unique([organizationId, projectId, versionNumber])
+  @@unique([id, organizationId])
+  @@index([organizationId, authorityState, reconciledAt])
+}
+
+model CostLine {
+  id                   String             @id
+  organizationId       String
+  projectCostVersionId String
+  lineNumber           Int
+  categoryId           String
+  descriptionEn        String
+  descriptionZhTw      String
+  quantity             Decimal            @db.Decimal(20, 3)
+  unit                 String
+  unitCost             Decimal            @db.Decimal(20, 6)
+  amount               Decimal            @db.Decimal(20, 2)
+  authorityState       AuthorityState
+  supplierId           String?
+  materialId           String?
+  createdAt            DateTime           @default(now())
+
+  organization       Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  projectCostVersion ProjectCostVersion @relation(fields: [projectCostVersionId], references: [id], onDelete: Cascade)
+  supplier           Supplier?          @relation(fields: [supplierId], references: [id], onDelete: SetNull)
+  material           Material?          @relation(fields: [materialId], references: [id], onDelete: SetNull)
+
+  @@unique([organizationId, projectCostVersionId, lineNumber])
+  @@unique([id, organizationId])
+  @@index([organizationId, categoryId, authorityState])
+}
+
+model SupplierOffer {
+  id              String           @id
+  organizationId  String
+  businessKey     String
+  supplierId      String
+  projectId       String?
+  authorityState  AuthorityState
+  observationType ObservationType  @default(SUPPLIER_OFFER)
+  currency        String           @default("TWD")
+  amountBeforeTax Decimal           @db.Decimal(20, 2)
+  offeredAt       DateTime          @db.Date
+  validUntil      DateTime?         @db.Date
+  createdAt       DateTime          @default(now())
+
+  organization Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  supplier     Supplier           @relation(fields: [supplierId], references: [id], onDelete: Restrict)
+  project      Project?           @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  items        SupplierOfferItem[]
+
+  @@unique([organizationId, businessKey])
+  @@unique([id, organizationId])
+  @@index([organizationId, supplierId, validUntil])
+}
+
+model SupplierOfferItem {
+  id              String         @id
+  organizationId  String
+  supplierOfferId String
+  lineNumber      Int
+  categoryId      String
+  descriptionEn   String
+  descriptionZhTw String
+  quantity        Decimal        @db.Decimal(20, 3)
+  unit            String
+  unitPrice       Decimal        @db.Decimal(20, 6)
+  amount          Decimal        @db.Decimal(20, 2)
+  materialId      String?
+  createdAt       DateTime       @default(now())
+
+  organization  Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  supplierOffer SupplierOffer @relation(fields: [supplierOfferId], references: [id], onDelete: Cascade)
+  material      Material?     @relation(fields: [materialId], references: [id], onDelete: SetNull)
+
+  @@unique([organizationId, supplierOfferId, lineNumber])
+  @@unique([id, organizationId])
+  @@index([organizationId, categoryId])
+}
+
+model IntelligenceRun {
+  id                    String    @id
+  organizationId        String
+  projectId             String?
+  requestId             String
+  intent                String
+  status                RunStatus
+  policyVersion         String
+  activeContextSnapshot Json
+  resultSnapshot        Json?
+  errorCode             String?
+  startedAt             DateTime  @default(now())
+  completedAt           DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  project      Project?     @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  comparison   ComparisonRun?
+
+  @@unique([organizationId, requestId])
+  @@unique([id, organizationId])
+  @@index([organizationId, projectId, status])
+}
+
+model ComparisonRun {
+  id                   String    @id
+  organizationId       String
+  intelligenceRunId    String    @unique
+  activeProjectId      String
+  activeQuoteVersionId String?
+  policyVersion        String
+  calculationVersion   String
+  status               RunStatus
+  inputFingerprint     String
+  resultVersion        Int       @default(1)
+  resultSnapshot       Json?
+  staleReason          String?
+  staleAt              DateTime?
+  createdAt            DateTime  @default(now())
+  completedAt          DateTime?
+
+  organization       Organization          @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  intelligenceRun    IntelligenceRun       @relation(fields: [intelligenceRunId], references: [id], onDelete: Cascade)
+  activeProject      Project               @relation("ActiveComparisonProject", fields: [activeProjectId], references: [id], onDelete: Cascade)
+  activeQuoteVersion QuoteVersion?         @relation("ActiveQuoteVersion", fields: [activeQuoteVersionId], references: [id], onDelete: SetNull)
+  candidates         ComparisonCandidate[]
+  claims             ComparisonClaim[]
+  proposedActions    ProposedAction[]
+  actions            Action[]
+  auditEvents        AuditEvent[]
+
+  @@unique([id, organizationId])
+  @@index([organizationId, activeProjectId, status])
+  @@index([organizationId, inputFingerprint])
+}
+
+model ComparisonCandidate {
+  id                String         @id
+  organizationId    String
+  comparisonRunId   String
+  candidateProjectId String
+  rank              Int
+  score             Decimal        @db.Decimal(7, 4)
+  band              ComparisonBand
+  evidenceCoverage  Decimal        @db.Decimal(7, 4)
+  economicsState    String
+  warnings          Json
+  createdAt         DateTime       @default(now())
+
+  organization     Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  comparisonRun    ComparisonRun      @relation(fields: [comparisonRunId], references: [id], onDelete: Cascade)
+  candidateProject Project            @relation("CandidateProject", fields: [candidateProjectId], references: [id], onDelete: Cascade)
+  factors          ComparisonFactor[]
+
+  @@unique([organizationId, comparisonRunId, candidateProjectId])
+  @@unique([id, organizationId])
+  @@index([organizationId, comparisonRunId, rank])
+}
+
+model ComparisonFactor {
+  id                   String      @id
+  organizationId       String
+  comparisonCandidateId String
+  factorKey            String
+  state                FactorState
+  weight               Decimal     @db.Decimal(7, 4)
+  normalizedValue      Decimal?    @db.Decimal(7, 4)
+  contribution         Decimal?    @db.Decimal(7, 4)
+  explanation          Json
+  evidenceReferenceIds String[]
+  createdAt            DateTime    @default(now())
+
+  organization        Organization        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  comparisonCandidate ComparisonCandidate @relation(fields: [comparisonCandidateId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, comparisonCandidateId, factorKey])
+  @@index([organizationId, factorKey, state])
+}
+
+model ComparisonClaim {
+  id                   String           @id
+  organizationId       String
+  comparisonRunId      String
+  claimKey             String
+  claimType            String
+  titleEn              String
+  titleZhTw            String
+  value                 Json
+  observationType      ObservationType?
+  authorityState       AuthorityState?
+  sufficiencyCode      String?
+  evidenceReferenceIds String[]
+  createdAt             DateTime         @default(now())
+
+  organization  Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  comparisonRun ComparisonRun @relation(fields: [comparisonRunId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, comparisonRunId, claimKey])
+  @@unique([id, organizationId])
+  @@index([organizationId, claimType])
+}
+
+model ProposedAction {
+  id                   String               @id
+  organizationId       String
+  projectId            String
+  comparisonRunId      String
+  type                 String               @default("INTERNAL_REVIEW")
+  status               ProposedActionStatus @default(PREPARED)
+  title                String
+  rationale            String
+  suggestedAssigneeId  String?
+  suggestedDueDate     DateTime?            @db.Date
+  evidenceReferenceIds String[]
+  policyVersion        String
+  createdBy            String
+  expiresAt            DateTime?
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime             @updatedAt
+
+  organization Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  project      Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  comparisonRun ComparisonRun @relation(fields: [comparisonRunId], references: [id], onDelete: Cascade)
+  actions      Action[]
+  auditEvents  AuditEvent[]
+
+  @@unique([id, organizationId])
+  @@index([organizationId, projectId, status])
+}
+
+model Action {
+  id                   String       @id
+  organizationId       String
+  projectId            String
+  comparisonRunId      String
+  proposedActionId     String?
+  type                 String       @default("INTERNAL_REVIEW")
+  title                String
+  rationale            String
+  assigneePersonId     String?
+  dueDate              DateTime?    @db.Date
+  status               ActionStatus @default(OPEN)
+  evidenceReferenceIds String[]
+  createdByUserId      String
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+
+  organization   Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  project        Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  comparisonRun  ComparisonRun  @relation(fields: [comparisonRunId], references: [id], onDelete: Restrict)
+  proposedAction ProposedAction? @relation(fields: [proposedActionId], references: [id], onDelete: SetNull)
+  auditEvents    AuditEvent[]
+
+  @@unique([id, organizationId])
+  @@index([organizationId, projectId, status])
+}
+
+model AuditEvent {
+  id                String   @id
+  organizationId    String
+  actorMembershipId String?
+  comparisonRunId   String?
+  proposedActionId  String?
+  actionId          String?
+  eventType         String
+  requestId         String
+  payload           Json
+  result             String
+  createdAt          DateTime @default(now())
+
+  organization    Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  actorMembership Membership?   @relation("AuditActorMembership", fields: [actorMembershipId], references: [id], onDelete: SetNull)
+  comparisonRun   ComparisonRun? @relation(fields: [comparisonRunId], references: [id], onDelete: SetNull)
+  proposedAction  ProposedAction? @relation(fields: [proposedActionId], references: [id], onDelete: SetNull)
+  action          Action?        @relation(fields: [actionId], references: [id], onDelete: SetNull)
+
+  @@unique([organizationId, requestId, eventType])
+  @@index([organizationId, createdAt])
+  @@index([organizationId, actionId])
+}
