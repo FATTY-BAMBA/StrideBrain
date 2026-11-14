@@ -21,11 +21,10 @@ function context(overrides: Partial<RuntimeContext> = {}): RuntimeContext {
   };
 }
 
-function readerFor(project: {
-  id: string;
-  businessKey: string;
-  organizationId?: string;
-}): { reader: PrismaProjectReader; findFirst: ReturnType<typeof vi.fn> } {
+function readerFor(project: { id: string; businessKey: string; organizationId?: string }): {
+  reader: PrismaProjectReader;
+  findFirst: ReturnType<typeof vi.fn>;
+} {
   const findFirst = vi.fn().mockResolvedValue({
     ...project,
     organizationId: project.organizationId ?? "org_horizon",
@@ -45,10 +44,7 @@ describe("PrismaProjectRepository", () => {
     });
     const repository = new PrismaProjectRepository(reader);
 
-    const result = await repository.getAuthorizedByBusinessKey(
-      context(),
-      "PRJ-XINYI-026",
-    );
+    const result = await repository.getAuthorizedByBusinessKey(context(), "PRJ-XINYI-026");
 
     expect(findFirst).toHaveBeenCalledWith({
       where: {
@@ -91,10 +87,7 @@ describe("PrismaProjectRepository", () => {
     });
     const repository = new PrismaProjectRepository(reader);
 
-    const result = await repository.getAuthorizedByBusinessKey(
-      context(),
-      "PRJ-NEIHU-021",
-    );
+    const result = await repository.getAuthorizedByBusinessKey(context(), "PRJ-NEIHU-021");
 
     expect(result).toBeNull();
   });
