@@ -1,15 +1,11 @@
-import {
-  createHash,
-  createHmac,
-  randomBytes,
-  timingSafeEqual,
-} from "node:crypto";
+import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 
 const TOKEN_VERSION = "sb1";
 const MINIMUM_SECRET_BYTES = 32;
 const SESSION_ID_BYTES = 16;
 const NONCE_BYTES = 32;
-const TOKEN_PATTERN = /^sb1\.([A-Za-z0-9_-]{20,24})\.([A-Za-z0-9_-]{40,48})\.([A-Za-z0-9_-]{40,48})$/;
+const TOKEN_PATTERN =
+  /^sb1\.([A-Za-z0-9_-]{20,24})\.([A-Za-z0-9_-]{40,48})\.([A-Za-z0-9_-]{40,48})$/;
 
 export type IssuedSessionToken = Readonly<{
   sessionId: string;
@@ -28,9 +24,7 @@ function base64Url(value: Buffer): string {
 
 function assertSecret(secret: string): void {
   if (Buffer.byteLength(secret, "utf8") < MINIMUM_SECRET_BYTES) {
-    throw new Error(
-      `Session signing secret must be at least ${MINIMUM_SECRET_BYTES} bytes`,
-    );
+    throw new Error(`Session signing secret must be at least ${MINIMUM_SECRET_BYTES} bytes`);
   }
 }
 

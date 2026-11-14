@@ -58,11 +58,7 @@ export class DemoSessionService {
     return Object.freeze({
       sessionId: credential.sessionId,
       expiresAt,
-      setCookie: serializeDemoSessionCookie(
-        credential.token,
-        expiresAt,
-        issuedAt,
-      ),
+      setCookie: serializeDemoSessionCookie(credential.token, expiresAt, issuedAt),
     });
   }
 

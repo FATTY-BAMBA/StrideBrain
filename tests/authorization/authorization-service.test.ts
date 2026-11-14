@@ -51,9 +51,7 @@ describe("AuthorizationService", () => {
       commercialScope: "FULL_ACTUAL",
       evidenceScope: "AUTHORIZED",
     });
-    expect(service.canRunComparison(context(), "prj_xinyi_026").allowed).toBe(
-      true,
-    );
+    expect(service.canRunComparison(context(), "prj_xinyi_026").allowed).toBe(true);
   });
 
   it("fails closed for an unassigned project", () => {
@@ -67,17 +65,12 @@ describe("AuthorizationService", () => {
   });
 
   it("gives unauthorized and nonexistent projects the same public result", () => {
-    const unauthorized = service.canReadProject(
-      context(),
-      "prj_northern_restricted",
-    );
+    const unauthorized = service.canReadProject(context(), "prj_northern_restricted");
     const nonexistent = service.canReadProject(context(), "does_not_exist");
     expect(toPublicAuthorizationResult(unauthorized)).toEqual(
       toPublicAuthorizationResult(nonexistent),
     );
-    expect(toPublicAuthorizationResult(unauthorized)).not.toHaveProperty(
-      "projectId",
-    );
+    expect(toPublicAuthorizationResult(unauthorized)).not.toHaveProperty("projectId");
   });
 
   it("redacts Viewer economics and denies every internal-review write", () => {
@@ -101,20 +94,17 @@ describe("AuthorizationService", () => {
       commercialScope: "NONE",
       evidenceScope: "NON_SENSITIVE",
     });
-    expect(
-      service.canReadCommercial(viewer, "prj_xinyi_026", "ACTUAL"),
-    ).toMatchObject({ allowed: false, internalReason: "ACTUAL_READ_DENIED" });
+    expect(service.canReadCommercial(viewer, "prj_xinyi_026", "ACTUAL")).toMatchObject({
+      allowed: false,
+      internalReason: "ACTUAL_READ_DENIED",
+    });
     expect(service.canProposeInternalReview(viewer, "prj_xinyi_026")).toEqual({
       allowed: false,
       publicError: "ACTION_NOT_AUTHORIZED",
       internalReason: "ACTION_ASSIGNMENT_DENIED",
     });
-    expect(service.canCreateInternalReview(viewer, "prj_xinyi_026").allowed).toBe(
-      false,
-    );
-    expect(service.canAssignInternalReview(viewer, "prj_xinyi_026").allowed).toBe(
-      false,
-    );
+    expect(service.canCreateInternalReview(viewer, "prj_xinyi_026").allowed).toBe(false);
+    expect(service.canAssignInternalReview(viewer, "prj_xinyi_026").allowed).toBe(false);
   });
 
   it("requires the assignment actual flag even when the global capability exists", () => {
@@ -136,9 +126,7 @@ describe("AuthorizationService", () => {
       commercialScope: "QUOTE_AND_FORECAST",
       evidenceScope: "NON_SENSITIVE",
     });
-    expect(
-      service.canReadCommercial(assignmentDenied, "prj_xinyi_026", "ACTUAL"),
-    ).toEqual({
+    expect(service.canReadCommercial(assignmentDenied, "prj_xinyi_026", "ACTUAL")).toEqual({
       allowed: false,
       publicError: "PROJECT_UNAVAILABLE",
       internalReason: "ACTUAL_READ_DENIED",
@@ -147,19 +135,13 @@ describe("AuthorizationService", () => {
 
   it("requires forecast-level access for supplier offers", () => {
     const quoteOnly = context({
-      capabilities: new Set([
-        "project:read",
-        "project:compare",
-        "quote:read",
-        "evidence:read",
-      ]),
+      capabilities: new Set(["project:read", "project:compare", "quote:read", "evidence:read"]),
     });
-    expect(
-      service.canReadCommercial(quoteOnly, "prj_xinyi_026", "QUOTE").allowed,
-    ).toBe(true);
-    expect(
-      service.canReadCommercial(quoteOnly, "prj_xinyi_026", "SUPPLIER_OFFER"),
-    ).toMatchObject({ allowed: false, internalReason: "MISSING_CAPABILITY" });
+    expect(service.canReadCommercial(quoteOnly, "prj_xinyi_026", "QUOTE").allowed).toBe(true);
+    expect(service.canReadCommercial(quoteOnly, "prj_xinyi_026", "SUPPLIER_OFFER")).toMatchObject({
+      allowed: false,
+      internalReason: "MISSING_CAPABILITY",
+    });
   });
 
   it("requires both assignment permission and action capabilities", () => {
@@ -175,9 +157,7 @@ describe("AuthorizationService", () => {
         ],
       ]),
     });
-    expect(
-      service.canProposeInternalReview(assignmentDenied, "prj_xinyi_026"),
-    ).toMatchObject({
+    expect(service.canProposeInternalReview(assignmentDenied, "prj_xinyi_026")).toMatchObject({
       allowed: false,
       internalReason: "ACTION_ASSIGNMENT_DENIED",
     });
@@ -192,15 +172,12 @@ describe("AuthorizationService", () => {
     });
 
     const capabilityDenied = context({
-      capabilities: new Set([
-        "project:read",
-        "project:compare",
-        "evidence:read",
-      ]),
+      capabilities: new Set(["project:read", "project:compare", "evidence:read"]),
     });
-    expect(
-      service.canProposeInternalReview(capabilityDenied, "prj_xinyi_026"),
-    ).toMatchObject({ allowed: false, internalReason: "MISSING_CAPABILITY" });
+    expect(service.canProposeInternalReview(capabilityDenied, "prj_xinyi_026")).toMatchObject({
+      allowed: false,
+      internalReason: "MISSING_CAPABILITY",
+    });
   });
 
   it("allows only organization administrators to bypass explicit assignment", () => {

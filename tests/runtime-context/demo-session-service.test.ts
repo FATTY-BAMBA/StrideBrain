@@ -7,9 +7,7 @@ const SECRET = "stage2-issuer-secret-with-at-least-thirty-two-bytes";
 const NOW = new Date("2026-11-14T18:00:00Z");
 
 function repository(
-  classification:
-    | "DEMO_SYNTHETIC"
-    | "TENANT_PRIVATE" = "DEMO_SYNTHETIC",
+  classification: "DEMO_SYNTHETIC" | "TENANT_PRIVATE" = "DEMO_SYNTHETIC",
 ): DemoSessionRepositoryPort {
   return {
     findByTokenHash: vi.fn(),

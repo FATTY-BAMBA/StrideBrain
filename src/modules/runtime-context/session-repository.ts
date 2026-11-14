@@ -60,9 +60,7 @@ export type CreateDemoSessionRecord = Readonly<{
 
 export interface DemoSessionRepositoryPort {
   findByTokenHash(tokenHash: string): Promise<ResolvedDemoSessionRecord | null>;
-  getIssuableMembership(
-    membershipId: string,
-  ): Promise<IssuableMembershipRecord | null>;
+  getIssuableMembership(membershipId: string): Promise<IssuableMembershipRecord | null>;
   createSession(input: CreateDemoSessionRecord): Promise<void>;
   revokeSession(sessionId: string, revokedAt: Date): Promise<boolean>;
 }

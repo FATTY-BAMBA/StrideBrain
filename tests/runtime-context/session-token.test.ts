@@ -39,12 +39,8 @@ describe("signed opaque demo session token", () => {
     const changedSignature = [...parts];
     changedSignature[3] = changeLastCharacter(changedSignature[3] ?? "");
 
-    expect(
-      verifySignedSessionToken(SECRET, changedNonce.join(".")),
-    ).toBeNull();
-    expect(
-      verifySignedSessionToken(SECRET, changedSignature.join(".")),
-    ).toBeNull();
+    expect(verifySignedSessionToken(SECRET, changedNonce.join("."))).toBeNull();
+    expect(verifySignedSessionToken(SECRET, changedSignature.join("."))).toBeNull();
     expect(verifySignedSessionToken(SECRET, "not-a-session-token")).toBeNull();
     expect(
       verifySignedSessionToken(
@@ -55,11 +51,9 @@ describe("signed opaque demo session token", () => {
   });
 
   it("rejects weak signing secrets", () => {
-    expect(() => issueSignedSessionToken("too-short", FIXED_ENTROPY)).toThrow(
+    expect(() => issueSignedSessionToken("too-short", FIXED_ENTROPY)).toThrow(/at least 32 bytes/);
+    expect(() => verifySignedSessionToken("too-short", "sb1.invalid.invalid.invalid")).toThrow(
       /at least 32 bytes/,
     );
-    expect(() =>
-      verifySignedSessionToken("too-short", "sb1.invalid.invalid.invalid"),
-    ).toThrow(/at least 32 bytes/);
   });
 });

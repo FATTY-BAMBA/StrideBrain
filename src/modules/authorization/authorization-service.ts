@@ -1,24 +1,11 @@
-import type {
-  Capability,
-  RuntimeContext,
-} from "@/modules/runtime-context/contracts";
+import type { Capability, RuntimeContext } from "@/modules/runtime-context/contracts";
 
 export type PublicAuthorizationError =
-  | "PROJECT_UNAVAILABLE"
-  | "EVIDENCE_UNAVAILABLE"
-  | "ACTION_NOT_AUTHORIZED";
+  "PROJECT_UNAVAILABLE" | "EVIDENCE_UNAVAILABLE" | "ACTION_NOT_AUTHORIZED";
 
-export type CommercialKind =
-  | "QUOTE"
-  | "FORECAST"
-  | "ACTUAL"
-  | "SUPPLIER_OFFER";
+export type CommercialKind = "QUOTE" | "FORECAST" | "ACTUAL" | "SUPPLIER_OFFER";
 
-export type CommercialScope =
-  | "NONE"
-  | "QUOTE_ONLY"
-  | "QUOTE_AND_FORECAST"
-  | "FULL_ACTUAL";
+export type CommercialScope = "NONE" | "QUOTE_ONLY" | "QUOTE_AND_FORECAST" | "FULL_ACTUAL";
 
 export type EvidenceAccessScope = "NONE" | "NON_SENSITIVE" | "AUTHORIZED";
 
@@ -54,40 +41,27 @@ function capabilityDecision(
   return Object.freeze({ allowed: true, internalReason: "ALLOWED" });
 }
 
-function hasProjectAssignment(
-  context: RuntimeContext,
-  projectId: string,
-): boolean {
+function hasProjectAssignment(context: RuntimeContext, projectId: string): boolean {
   return (
-    context.role === "ORGANIZATION_ADMIN" ||
-    context.assignedProjectIds?.has(projectId) === true
+    context.role === "ORGANIZATION_ADMIN" || context.assignedProjectIds?.has(projectId) === true
   );
 }
 
-function assignmentAllowsActual(
-  context: RuntimeContext,
-  projectId: string,
-): boolean {
+function assignmentAllowsActual(context: RuntimeContext, projectId: string): boolean {
   return (
     context.role === "ORGANIZATION_ADMIN" ||
     context.projectAssignments?.get(projectId)?.canReadActuals === true
   );
 }
 
-function assignmentAllowsAction(
-  context: RuntimeContext,
-  projectId: string,
-): boolean {
+function assignmentAllowsAction(context: RuntimeContext, projectId: string): boolean {
   return (
     context.role === "ORGANIZATION_ADMIN" ||
     context.projectAssignments?.get(projectId)?.canCreateAction === true
   );
 }
 
-function commercialScope(
-  context: RuntimeContext,
-  projectId: string,
-): CommercialScope {
+function commercialScope(context: RuntimeContext, projectId: string): CommercialScope {
   if (
     context.capabilities.has("commercial:actual-read") &&
     assignmentAllowsActual(context, projectId)
@@ -101,10 +75,7 @@ function commercialScope(
   return "NONE";
 }
 
-function evidenceScope(
-  context: RuntimeContext,
-  projectId: string,
-): EvidenceAccessScope {
+function evidenceScope(context: RuntimeContext, projectId: string): EvidenceAccessScope {
   if (!context.capabilities.has("evidence:read")) return "NONE";
   return context.capabilities.has("commercial:actual-read") &&
     assignmentAllowsActual(context, projectId)
@@ -113,10 +84,7 @@ function evidenceScope(
 }
 
 export class AuthorizationService {
-  canReadProject(
-    context: RuntimeContext,
-    projectId: string,
-  ): ProjectAccessDecision {
+  canReadProject(context: RuntimeContext, projectId: string): ProjectAccessDecision {
     if (!context.capabilities.has("project:read")) {
       return Object.freeze({
         allowed: false,
@@ -144,10 +112,7 @@ export class AuthorizationService {
     });
   }
 
-  canRunComparison(
-    context: RuntimeContext,
-    projectId: string,
-  ): AuthorizationDecision {
+  canRunComparison(context: RuntimeContext, projectId: string): AuthorizationDecision {
     const project = this.canReadProject(context, projectId);
     if (!project.allowed) return project;
     return capabilityDecision(context, "project:compare", "PROJECT_UNAVAILABLE");
@@ -175,11 +140,7 @@ export class AuthorizationService {
         : kind === "FORECAST" || kind === "SUPPLIER_OFFER"
           ? "commercial:forecast-read"
           : "quote:read";
-    const decision = capabilityDecision(
-      context,
-      capability,
-      "PROJECT_UNAVAILABLE",
-    );
+    const decision = capabilityDecision(context, capability, "PROJECT_UNAVAILABLE");
     if (!decision.allowed && kind === "ACTUAL") {
       return Object.freeze({
         ...decision,
@@ -189,10 +150,7 @@ export class AuthorizationService {
     return decision;
   }
 
-  canReadEvidence(
-    context: RuntimeContext,
-    projectId: string,
-  ): AuthorizationDecision {
+  canReadEvidence(context: RuntimeContext, projectId: string): AuthorizationDecision {
     const project = this.canReadProject(context, projectId);
     if (!project.allowed) {
       return Object.freeze({
@@ -204,10 +162,7 @@ export class AuthorizationService {
     return capabilityDecision(context, "evidence:read", "EVIDENCE_UNAVAILABLE");
   }
 
-  canProposeInternalReview(
-    context: RuntimeContext,
-    projectId: string,
-  ): AuthorizationDecision {
+  canProposeInternalReview(context: RuntimeContext, projectId: string): AuthorizationDecision {
     const project = this.canReadProject(context, projectId);
     if (!project.allowed) {
       return Object.freeze({
@@ -223,30 +178,16 @@ export class AuthorizationService {
         internalReason: "ACTION_ASSIGNMENT_DENIED",
       });
     }
-    return capabilityDecision(
-      context,
-      "action:internal-review:propose",
-      "ACTION_NOT_AUTHORIZED",
-    );
+    return capabilityDecision(context, "action:internal-review:propose", "ACTION_NOT_AUTHORIZED");
   }
 
-  canCreateInternalReview(
-    context: RuntimeContext,
-    projectId: string,
-  ): AuthorizationDecision {
+  canCreateInternalReview(context: RuntimeContext, projectId: string): AuthorizationDecision {
     const proposal = this.canProposeInternalReview(context, projectId);
     if (!proposal.allowed) return proposal;
-    return capabilityDecision(
-      context,
-      "action:internal-review:create",
-      "ACTION_NOT_AUTHORIZED",
-    );
+    return capabilityDecision(context, "action:internal-review:create", "ACTION_NOT_AUTHORIZED");
   }
 
-  canAssignInternalReview(
-    context: RuntimeContext,
-    projectId: string,
-  ): AuthorizationDecision {
+  canAssignInternalReview(context: RuntimeContext, projectId: string): AuthorizationDecision {
     const create = this.canCreateInternalReview(context, projectId);
     if (!create.allowed) return create;
     return capabilityDecision(context, "action:assign", "ACTION_NOT_AUTHORIZED");

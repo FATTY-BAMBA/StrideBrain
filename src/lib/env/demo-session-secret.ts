@@ -1,8 +1,6 @@
 const MINIMUM_SECRET_BYTES = 32;
 
-export function parseDemoSessionSecret(
-  input: Record<string, string | undefined>,
-): string {
+export function parseDemoSessionSecret(input: Record<string, string | undefined>): string {
   const secret = input.STRIDEBRAIN_DEMO_SESSION_SECRET;
   if (!secret) {
     throw new Error("STRIDEBRAIN_DEMO_SESSION_SECRET is required for demo sessions.");

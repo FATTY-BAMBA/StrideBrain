@@ -70,9 +70,7 @@ describe("PrismaDemoSessionRepository", () => {
     expect(database.demoSession.findUnique).toHaveBeenCalledWith(
       expect.objectContaining({ where: { tokenHash: "a".repeat(64) } }),
     );
-    expect(result?.grants).toEqual([
-      { capability: "commercial:actual-read", effect: "ALLOW" },
-    ]);
+    expect(result?.grants).toEqual([{ capability: "commercial:actual-read", effect: "ALLOW" }]);
     expect(result?.assignments).toEqual([
       {
         projectId: "prj_xinyi_026",
@@ -186,9 +184,7 @@ describe("PrismaDemoSessionRepository", () => {
     } as unknown as PrismaDemoSessionDatabase;
     const repository = new PrismaDemoSessionRepository(database);
 
-    expect(
-      await repository.getIssuableMembership("membership_horizon_mei"),
-    ).toBeNull();
+    expect(await repository.getIssuableMembership("membership_horizon_mei")).toBeNull();
   });
 
   it("persists a SHA-256 hash and never accepts a raw token field", async () => {

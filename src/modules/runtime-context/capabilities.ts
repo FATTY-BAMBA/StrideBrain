@@ -1,8 +1,4 @@
-import type {
-  Capability,
-  CapabilityGrantEffect,
-  Role,
-} from "@/modules/runtime-context/contracts";
+import type { Capability, CapabilityGrantEffect, Role } from "@/modules/runtime-context/contracts";
 
 export const ALL_CAPABILITIES = Object.freeze([
   "project:read",
@@ -48,11 +44,7 @@ const ROLE_BUNDLES: Readonly<Record<Role, ReadonlySet<Capability>>> = Object.fre
     "action:internal-review:create",
     "action:assign",
   ]),
-  VIEWER: new Set<Capability>([
-    "project:read",
-    "project:compare",
-    "evidence:read",
-  ]),
+  VIEWER: new Set<Capability>(["project:read", "project:compare", "evidence:read"]),
 });
 
 export function isCapability(value: string): value is Capability {
@@ -115,9 +107,7 @@ export function toPresentationCapabilityView(
     canReadForecastCosts: capabilities.has("commercial:forecast-read"),
     canReadActualCosts: capabilities.has("commercial:actual-read"),
     canInspectEvidence: capabilities.has("evidence:read"),
-    canProposeInternalReview: capabilities.has(
-      "action:internal-review:propose",
-    ),
+    canProposeInternalReview: capabilities.has("action:internal-review:propose"),
     canCreateInternalReview: capabilities.has("action:internal-review:create"),
     canAssignInternalReview: capabilities.has("action:assign"),
     canManageSettings: capabilities.has("settings:manage"),

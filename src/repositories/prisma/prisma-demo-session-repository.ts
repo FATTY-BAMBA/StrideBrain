@@ -117,9 +117,7 @@ function validAssignments(
 export class PrismaDemoSessionRepository implements DemoSessionRepositoryPort {
   constructor(private readonly database: PrismaDemoSessionDatabase) {}
 
-  async findByTokenHash(
-    tokenHash: string,
-  ): Promise<ResolvedDemoSessionRecord | null> {
+  async findByTokenHash(tokenHash: string): Promise<ResolvedDemoSessionRecord | null> {
     const row = await this.database.demoSession.findUnique({
       where: { tokenHash },
       select: {
@@ -171,14 +169,8 @@ export class PrismaDemoSessionRepository implements DemoSessionRepositoryPort {
     if (row.organizationId !== row.membership.organizationId) return null;
     if (row.organizationId !== row.membership.person.organizationId) return null;
 
-    const grants = validGrants(
-      row.membership.capabilityGrants,
-      row.organizationId,
-    );
-    const projectAssignments = validAssignments(
-      row.membership.assignments,
-      row.organizationId,
-    );
+    const grants = validGrants(row.membership.capabilityGrants, row.organizationId);
+    const projectAssignments = validAssignments(row.membership.assignments, row.organizationId);
     if (!grants || !projectAssignments) return null;
 
     return {
@@ -201,9 +193,7 @@ export class PrismaDemoSessionRepository implements DemoSessionRepositoryPort {
     };
   }
 
-  async getIssuableMembership(
-    membershipId: string,
-  ): Promise<IssuableMembershipRecord | null> {
+  async getIssuableMembership(membershipId: string): Promise<IssuableMembershipRecord | null> {
     const row = await this.database.membership.findUnique({
       where: { id: membershipId },
       select: {

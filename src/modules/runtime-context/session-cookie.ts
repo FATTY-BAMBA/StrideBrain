@@ -2,10 +2,7 @@ export const DEMO_SESSION_COOKIE_NAME = "__Host-stridebrain_demo_session";
 
 const MAX_COOKIE_TOKEN_LENGTH = 220;
 
-export function readCookieValue(
-  request: Request,
-  name = DEMO_SESSION_COOKIE_NAME,
-): string | null {
+export function readCookieValue(request: Request, name = DEMO_SESSION_COOKIE_NAME): string | null {
   const header = request.headers.get("cookie");
   if (!header) return null;
 

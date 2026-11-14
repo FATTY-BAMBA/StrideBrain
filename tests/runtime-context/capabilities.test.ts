@@ -33,11 +33,9 @@ describe("capability policy", () => {
       { capability: "commercial:actual-read", effect: "ALLOW" as const },
       { capability: "commercial:actual-read", effect: "DENY" as const },
     ];
-    expect(
-      resolveCapabilities("FINANCIAL_REVIEWER", grants).has(
-        "commercial:actual-read",
-      ),
-    ).toBe(false);
+    expect(resolveCapabilities("FINANCIAL_REVIEWER", grants).has("commercial:actual-read")).toBe(
+      false,
+    );
     expect(
       resolveCapabilities("FINANCIAL_REVIEWER", [...grants].reverse()).has(
         "commercial:actual-read",

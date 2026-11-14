@@ -16,12 +16,8 @@ function safeLocale(value: string): Locale {
   return value === "en" ? "en" : "zh-TW";
 }
 
-function dataModeFor(
-  classification: string,
-): DataMode {
-  return classification === "DEMO_SYNTHETIC"
-    ? "DEMO_SYNTHETIC"
-    : "TENANT_PRIVATE";
+function dataModeFor(classification: string): DataMode {
+  return classification === "DEMO_SYNTHETIC" ? "DEMO_SYNTHETIC" : "TENANT_PRIVATE";
 }
 
 function assignmentMap(

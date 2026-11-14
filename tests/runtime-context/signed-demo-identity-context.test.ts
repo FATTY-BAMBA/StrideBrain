@@ -43,9 +43,7 @@ function record(
   };
 }
 
-function repositoryReturning(
-  value: ResolvedDemoSessionRecord | null,
-): DemoSessionRepositoryPort {
+function repositoryReturning(value: ResolvedDemoSessionRecord | null): DemoSessionRepositoryPort {
   return {
     findByTokenHash: vi.fn().mockResolvedValue(value),
     getIssuableMembership: vi.fn(),
@@ -71,9 +69,7 @@ function changeLastCharacter(value: string): string {
 describe("SignedDemoIdentityContext", () => {
   it("resolves organization, role, grants, and assignments only from server records", async () => {
     const issued = issueSignedSessionToken(SECRET);
-    const repository = repositoryReturning(
-      record(issued.tokenHash, issued.sessionId),
-    );
+    const repository = repositoryReturning(record(issued.tokenHash, issued.sessionId));
     const resolver = new SignedDemoIdentityContext(repository, SECRET, () => NOW);
 
     const context = await resolver.resolve(
@@ -108,10 +104,7 @@ describe("SignedDemoIdentityContext", () => {
     ["non-synthetic organization", "classification"],
   ])("fails closed for %s sessions", async (_label, state) => {
     const issued = issueSignedSessionToken(SECRET);
-    let value: ResolvedDemoSessionRecord | null = record(
-      issued.tokenHash,
-      issued.sessionId,
-    );
+    let value: ResolvedDemoSessionRecord | null = record(issued.tokenHash, issued.sessionId);
     if (state === "unknown") value = null;
     if (state === "expired") {
       value = record(issued.tokenHash, issued.sessionId, {
@@ -135,23 +128,15 @@ describe("SignedDemoIdentityContext", () => {
       });
     }
 
-    const resolver = new SignedDemoIdentityContext(
-      repositoryReturning(value),
-      SECRET,
-      () => NOW,
-    );
+    const resolver = new SignedDemoIdentityContext(repositoryReturning(value), SECRET, () => NOW);
     const request =
-      state === null
-        ? new Request("https://demo.primestrideai.com/")
-        : requestFor(issued.token);
+      state === null ? new Request("https://demo.primestrideai.com/") : requestFor(issued.token);
     expect(await resolver.resolve(request)).toBeNull();
   });
 
   it("rejects tampered credentials before repository lookup", async () => {
     const issued = issueSignedSessionToken(SECRET);
-    const repository = repositoryReturning(
-      record(issued.tokenHash, issued.sessionId),
-    );
+    const repository = repositoryReturning(record(issued.tokenHash, issued.sessionId));
     const resolver = new SignedDemoIdentityContext(repository, SECRET, () => NOW);
     const tampered = changeLastCharacter(issued.token);
 
