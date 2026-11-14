@@ -14,5 +14,5 @@ export default defineConfig([
       "@typescript-eslint/no-import-type-side-effects": "error",
     },
   },
-  globalIgnores([".next/**", "coverage/**", "node_modules/**"]),
+  globalIgnores([".generated/**", ".next/**", "coverage/**", "node_modules/**"]),
 ]);

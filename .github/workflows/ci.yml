@@ -20,11 +20,26 @@ env:
   NEXT_PUBLIC_STRIDEBRAIN_ENV: preview
   STRIDEBRAIN_DATA_MODE: DEMO_SYNTHETIC
   STRIDEBRAIN_APP_ORIGIN: http://localhost:3000
+  DATABASE_URL: postgresql://stridebrain:stridebrain@localhost:5432/stridebrain?schema=public
 
 jobs:
   quality:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: stridebrain
+          POSTGRES_PASSWORD: stridebrain
+          POSTGRES_DB: stridebrain
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U stridebrain -d stridebrain"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
@@ -39,6 +54,21 @@ jobs:
 
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund
+
+      - name: Validate Prisma schema
+        run: npm run db:validate
+
+      - name: Generate Prisma client
+        run: npm run db:generate
+
+      - name: Apply committed migrations
+        run: npm run db:migrate
+
+      - name: Seed Horizon Atelier fixture
+        run: npm run db:seed
+
+      - name: Verify tenant, authority, and fixture invariants
+        run: npm run db:verify
 
       - name: Check formatting
         run: npm run format:check
