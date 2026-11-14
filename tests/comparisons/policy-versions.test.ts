@@ -20,15 +20,9 @@ describe("Stage 4 policy versions", () => {
   });
 
   it("keeps each policy namespace explicit and distinct", () => {
-    const versions = [
-      ELIGIBILITY_POLICY_VERSION,
-      SIMILARITY_POLICY_VERSION,
-      CALCULATION_VERSION,
-    ];
+    const versions = [ELIGIBILITY_POLICY_VERSION, SIMILARITY_POLICY_VERSION, CALCULATION_VERSION];
 
     expect(new Set(versions).size).toBe(3);
-    expect(versions.every((version) => /^CPI-[A-Z-]+-1\.0$/.test(version))).toBe(
-      true,
-    );
+    expect(versions.every((version) => /^CPI-[A-Z-]+-1\.0$/.test(version))).toBe(true);
   });
 });
