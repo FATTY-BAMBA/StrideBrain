@@ -1,0 +1,62 @@
+name: Stage 4 type-only import lint fix
+
+on:
+  push:
+    branches:
+      - build/stage-4-comparable-project-core
+
+permissions:
+  contents: write
+
+jobs:
+  lint-fix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: build/stage-4-comparable-project-core
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: Convert the Stage 4 contract import to a top-level type import
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path("tests/comparisons/similarity-policy.test.ts")
+          text = path.read_text()
+          old = '''import {
+            type ActiveProjectComparisonContext,
+            type ComparisonProjectProfile,
+          } from "@/modules/comparisons/domain/contracts";'''
+          new = '''import type {
+            ActiveProjectComparisonContext,
+            ComparisonProjectProfile,
+          } from "@/modules/comparisons/domain/contracts";'''
+          if old not in text:
+              raise SystemExit("Expected inline type import was not found")
+          path.write_text(text.replace(old, new, 1))
+
+      - name: Apply and verify repository formatting
+        run: |
+          npm run format
+          npm run format:check
+          git diff --check
+
+      - name: Remove one-time workflow
+        run: rm .github/workflows/stage4-lint-fix.yml
+
+      - name: Commit lint repair
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "fix(stage4): use top-level type-only test import"
+          git push origin HEAD:build/stage-4-comparable-project-core
