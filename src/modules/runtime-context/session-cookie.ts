@@ -9,20 +9,23 @@ export function readCookieValue(
   const header = request.headers.get("cookie");
   if (!header) return null;
 
+  let found: string | null = null;
   for (const part of header.split(";")) {
     const separator = part.indexOf("=");
     if (separator < 1) continue;
     const key = part.slice(0, separator).trim();
     if (key !== name) continue;
+    if (found !== null) return null;
+
     const raw = part.slice(separator + 1).trim();
     if (!raw || raw.length > MAX_COOKIE_TOKEN_LENGTH) return null;
     try {
-      return decodeURIComponent(raw);
+      found = decodeURIComponent(raw);
     } catch {
       return null;
     }
   }
-  return null;
+  return found;
 }
 
 export function serializeDemoSessionCookie(
