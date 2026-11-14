@@ -74,7 +74,7 @@ function conflictedObservation(
     versionNumber,
     observationType,
     authorityState: "CONFLICTED",
-    warningCodes: Object.freeze(["EVIDENCE_CONFLICT"]),
+    warningCodes: Object.freeze(["EVIDENCE_CONFLICT"] as const),
   });
 }
 
@@ -94,7 +94,7 @@ function quoteObservation(record: CurrentQuoteRecord, now: Date): CommercialObse
     effectiveAt: isoDate(record.approvedAt),
     validUntil: isoDate(record.validUntil),
     freshness: stale ? "STALE" : "CURRENT",
-    warningCodes: Object.freeze(stale ? ["EVIDENCE_STALE"] : []),
+    warningCodes: Object.freeze<ProjectWorkspaceWarningCode[]>(stale ? ["EVIDENCE_STALE"] : []),
   });
 }
 
