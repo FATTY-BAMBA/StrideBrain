@@ -1,10 +1,10 @@
+import { isCapability } from "@/modules/runtime-context/capabilities";
 import type {
   Capability,
   CapabilityGrantEffect,
   ProjectAssignmentGrant,
   Role,
 } from "@/modules/runtime-context/contracts";
-import { isCapability } from "@/modules/runtime-context/capabilities";
 import type {
   CreateDemoSessionRecord,
   DemoSessionRepositoryPort,
@@ -13,11 +13,13 @@ import type {
 } from "@/modules/runtime-context/session-repository";
 
 type PrismaGrantRow = {
+  organizationId: string;
   capability: string;
-  effect: CapabilityGrantEffect;
+  effect: string;
 };
 
 type PrismaAssignmentRow = {
+  organizationId: string;
   projectId: string;
   canReadActuals: boolean;
   canCreateAction: boolean;
@@ -38,10 +40,12 @@ type PrismaResolvedSessionRow = {
   };
   membership: {
     id: string;
+    organizationId: string;
     active: boolean;
     role: Role;
     person: {
       id: string;
+      organizationId: string;
       active: boolean;
     };
     capabilityGrants: PrismaGrantRow[];
@@ -58,6 +62,7 @@ type PrismaIssuableMembershipRow = {
   };
   person: {
     id: string;
+    organizationId: string;
     active: boolean;
   };
 };
@@ -73,15 +78,35 @@ export type PrismaDemoSessionDatabase = {
   };
 };
 
-function validGrants(rows: readonly PrismaGrantRow[]) {
-  return rows.flatMap((row) =>
-    isCapability(row.capability)
-      ? [{ capability: row.capability as Capability, effect: row.effect }]
-      : [],
-  );
+function isGrantEffect(value: string): value is CapabilityGrantEffect {
+  return value === "ALLOW" || value === "DENY";
 }
 
-function assignments(rows: readonly PrismaAssignmentRow[]): ProjectAssignmentGrant[] {
+function validGrants(
+  rows: readonly PrismaGrantRow[],
+  organizationId: string,
+): ReadonlyArray<{
+  capability: Capability;
+  effect: CapabilityGrantEffect;
+}> | null {
+  const result: Array<{
+    capability: Capability;
+    effect: CapabilityGrantEffect;
+  }> = [];
+
+  for (const row of rows) {
+    if (row.organizationId !== organizationId) return null;
+    if (!isCapability(row.capability) || !isGrantEffect(row.effect)) return null;
+    result.push({ capability: row.capability, effect: row.effect });
+  }
+  return result;
+}
+
+function validAssignments(
+  rows: readonly PrismaAssignmentRow[],
+  organizationId: string,
+): ProjectAssignmentGrant[] | null {
+  if (rows.some((row) => row.organizationId !== organizationId)) return null;
   return rows.map((row) => ({
     projectId: row.projectId,
     canReadActuals: row.canReadActuals,
@@ -115,14 +140,22 @@ export class PrismaDemoSessionRepository implements DemoSessionRepositoryPort {
         membership: {
           select: {
             id: true,
+            organizationId: true,
             active: true,
             role: true,
-            person: { select: { id: true, active: true } },
+            person: {
+              select: { id: true, organizationId: true, active: true },
+            },
             capabilityGrants: {
-              select: { capability: true, effect: true },
+              select: {
+                organizationId: true,
+                capability: true,
+                effect: true,
+              },
             },
             assignments: {
               select: {
+                organizationId: true,
                 projectId: true,
                 canReadActuals: true,
                 canCreateAction: true,
@@ -134,6 +167,20 @@ export class PrismaDemoSessionRepository implements DemoSessionRepositoryPort {
     });
 
     if (!row) return null;
+    if (row.membershipId !== row.membership.id) return null;
+    if (row.organizationId !== row.membership.organizationId) return null;
+    if (row.organizationId !== row.membership.person.organizationId) return null;
+
+    const grants = validGrants(
+      row.membership.capabilityGrants,
+      row.organizationId,
+    );
+    const projectAssignments = validAssignments(
+      row.membership.assignments,
+      row.organizationId,
+    );
+    if (!grants || !projectAssignments) return null;
+
     return {
       sessionId: row.id,
       tokenHash: row.tokenHash,
@@ -149,8 +196,8 @@ export class PrismaDemoSessionRepository implements DemoSessionRepositoryPort {
       issuedAt: row.issuedAt,
       expiresAt: row.expiresAt,
       revokedAt: row.revokedAt,
-      grants: validGrants(row.membership.capabilityGrants),
-      assignments: assignments(row.membership.assignments),
+      grants,
+      assignments: projectAssignments,
     };
   }
 
@@ -164,10 +211,14 @@ export class PrismaDemoSessionRepository implements DemoSessionRepositoryPort {
         organizationId: true,
         active: true,
         organization: { select: { dataClassification: true } },
-        person: { select: { id: true, active: true } },
+        person: {
+          select: { id: true, organizationId: true, active: true },
+        },
       },
     });
     if (!row) return null;
+    if (row.organizationId !== row.person.organizationId) return null;
+
     return {
       organizationId: row.organizationId,
       organizationDataClassification: row.organization.dataClassification,
