@@ -28,6 +28,7 @@ export function readCookieValue(
 export function serializeDemoSessionCookie(
   token: string,
   expiresAt: Date,
+  issuedAt: Date = new Date(),
 ): string {
   return [
     `${DEMO_SESSION_COOKIE_NAME}=${encodeURIComponent(token)}`,
@@ -36,7 +37,7 @@ export function serializeDemoSessionCookie(
     "Secure",
     "SameSite=Lax",
     `Expires=${expiresAt.toUTCString()}`,
-    `Max-Age=${Math.max(0, Math.floor((expiresAt.getTime() - Date.now()) / 1000))}`,
+    `Max-Age=${Math.max(0, Math.floor((expiresAt.getTime() - issuedAt.getTime()) / 1000))}`,
   ].join("; ");
 }
 
