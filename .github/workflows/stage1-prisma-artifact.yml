@@ -33,7 +33,7 @@ jobs:
 
       - name: Commit validated migration when changed
         run: |
-          if git diff --quiet -- prisma/migrations/0001_stridegraph_foundation/migration.sql; then
+          if [ -z "$(git status --porcelain -- prisma/migrations/0001_stridegraph_foundation/migration.sql)" ]; then
             echo "Validated migration is already committed."
             exit 0
           fi
