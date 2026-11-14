@@ -2,6 +2,7 @@
   "name": "stridebrain",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "description": "Customer-facing AI operating intelligence platform for SMEs.",
   "engines": {
     "node": "24.x"
