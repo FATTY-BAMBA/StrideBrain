@@ -6,6 +6,7 @@ import {
   SIMILARITY_POLICY_VERSION,
 } from "@/modules/comparisons/domain/contracts";
 
+// Changing any identifier requires an explicit policy and compatibility decision.
 describe("Stage 4 policy versions", () => {
   it("keeps the accepted version identifiers stable", () => {
     expect({
