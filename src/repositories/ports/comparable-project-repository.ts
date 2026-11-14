@@ -42,11 +42,31 @@ export interface ComparableProjectRepositoryPort {
   ): Promise<HistoricalCandidateBatch>;
 }
 
-export function allowedHistoricalClassifications(
-  context: RuntimeContext,
-): readonly DataClassification[] {
-  if (context.role === "VIEWER") {
-    return Object.freeze(["DEMO_SYNTHETIC", "PUBLIC_REFERENCE", "TENANT_APPROVED"]);
-  }
-  return Object.freeze(["DEMO_SYNTHETIC", "PUBLIC_REFERENCE", "TENANT_PRIVATE", "TENANT_APPROVED"]);
+/**
+ * Classifications that may be compared across the organization without a
+ * project assignment. `TENANT_APPROVED` means the organization explicitly
+ * published the record into its comparison library. Demo fixtures use the
+ * same seam without becoming private customer data.
+ */
+export function organizationComparisonLibraryClassifications(): readonly DataClassification[] {
+  return Object.freeze(["DEMO_SYNTHETIC", "PUBLIC_REFERENCE", "TENANT_APPROVED"]);
+}
+
+/** Admin and Financial Reviewer may receive organization-private history by policy. */
+export function hasOrganizationWidePrivateHistory(context: RuntimeContext): boolean {
+  return context.role === "ORGANIZATION_ADMIN" || context.role === "FINANCIAL_REVIEWER";
+}
+
+/**
+ * The active project has already passed `canRunComparison`; its private
+ * metadata may therefore be loaded for the current workspace. Restricted
+ * records remain outside v0.1.
+ */
+export function allowedActiveProjectClassifications(): readonly DataClassification[] {
+  return Object.freeze([
+    "DEMO_SYNTHETIC",
+    "PUBLIC_REFERENCE",
+    "TENANT_PRIVATE",
+    "TENANT_APPROVED",
+  ]);
 }
