@@ -1,0 +1,159 @@
+name: Stage 4 candidate access normalization
+
+on:
+  push:
+    branches:
+      - build/stage-4-comparable-project-core
+
+permissions:
+  contents: write
+
+jobs:
+  normalize-access:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: build/stage-4-comparable-project-core
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: Apply assignment-aware historical access policy
+        shell: python
+        run: |
+          from pathlib import Path
+
+          adapter = Path("src/repositories/prisma/prisma-comparable-project-repository.ts")
+          text = adapter.read_text()
+          old_import = '''import {
+            allowedHistoricalClassifications,
+            type ActiveComparisonProfileRecord,'''
+          new_import = '''import {
+            allowedActiveProjectClassifications,
+            hasOrganizationWidePrivateHistory,
+            organizationComparisonLibraryClassifications,
+            type ActiveComparisonProfileRecord,'''
+          if old_import not in text:
+              raise SystemExit("Comparable repository import block not found")
+          text = text.replace(old_import, new_import, 1)
+
+          marker = "const MAX_HISTORICAL_ROWS = 100;\n"
+          helper = '''const MAX_HISTORICAL_ROWS = 100;
+
+          function historicalAccessPredicates(context: RuntimeContext): readonly unknown[] {
+            const predicates: unknown[] = [
+              {
+                dataClassification: {
+                  in: organizationComparisonLibraryClassifications(),
+                },
+              },
+            ];
+            if (hasOrganizationWidePrivateHistory(context)) {
+              predicates.push({ dataClassification: "TENANT_PRIVATE" });
+            } else {
+              const assigned = [...(context.assignedProjectIds ?? [])].sort();
+              if (assigned.length > 0) {
+                predicates.push({
+                  id: { in: assigned },
+                  dataClassification: "TENANT_PRIVATE",
+                });
+              }
+            }
+            return Object.freeze(predicates);
+          }
+          '''
+          if marker not in text:
+              raise SystemExit("Historical row marker not found")
+          text = text.replace(marker, helper, 1)
+
+          old = "dataClassification: { in: allowedHistoricalClassifications(context) },"
+          active = "dataClassification: { in: allowedActiveProjectClassifications() },"
+          if text.count(old) != 4:
+              raise SystemExit(f"Expected four old classification filters, found {text.count(old)}")
+          text = text.replace(old, active, 2)
+          text = text.replace(old, "OR: historicalAccessPredicates(context),", 1)
+          text = text.replace(old, active, 1)
+          adapter.write_text(text)
+
+          tests = Path("tests/repositories/prisma-comparable-project-repository.test.ts")
+          value = tests.read_text()
+          old_assertion = '''          dataClassification: {
+                    in: ["DEMO_SYNTHETIC", "PUBLIC_REFERENCE", "TENANT_APPROVED"],
+                  },'''
+          new_assertion = '''          OR: [
+                    {
+                      dataClassification: {
+                        in: ["DEMO_SYNTHETIC", "PUBLIC_REFERENCE", "TENANT_APPROVED"],
+                      },
+                    },
+                    {
+                      id: { in: [PROJECT_ID] },
+                      dataClassification: "TENANT_PRIVATE",
+                    },
+                  ],'''
+          if old_assertion not in value:
+              raise SystemExit("Viewer historical access assertion not found")
+          value = value.replace(old_assertion, new_assertion, 1)
+          insertion = r'''
+
+            it("allows organization-wide tenant-private history only for Admin and Financial Reviewer", async () => {
+              const findMany = vi.fn().mockResolvedValue([]);
+              const repository = new PrismaComparableProjectRepository(
+                database({
+                  project: { findFirst: vi.fn().mockResolvedValue(null), findMany },
+                }),
+              );
+
+              await repository.listAuthorizedHistoricalProfiles(
+                context({
+                  role: "FINANCIAL_REVIEWER",
+                  assignedProjectIds: new Set(),
+                  projectAssignments: new Map(),
+                }),
+                PROJECT_ID,
+              );
+
+              expect(findMany).toHaveBeenCalledWith(
+                expect.objectContaining({
+                  where: expect.objectContaining({
+                    OR: [
+                      {
+                        dataClassification: {
+                          in: ["DEMO_SYNTHETIC", "PUBLIC_REFERENCE", "TENANT_APPROVED"],
+                        },
+                      },
+                      { dataClassification: "TENANT_PRIVATE" },
+                    ],
+                  }),
+                }),
+              );
+            });
+          '''
+          ending = "\n});\n"
+          if not value.endswith(ending):
+              raise SystemExit("Unexpected repository test ending")
+          tests.write_text(value[:-len(ending)] + insertion + ending)
+
+      - name: Format and verify
+        run: |
+          npm run format
+          npm run format:check
+          git diff --check
+
+      - name: Remove one-time workflow
+        run: rm .github/workflows/stage4-candidate-access.yml
+
+      - name: Commit candidate access policy
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "fix(stage4): enforce assignment-aware private history access"
+          git push origin HEAD:build/stage-4-comparable-project-core
