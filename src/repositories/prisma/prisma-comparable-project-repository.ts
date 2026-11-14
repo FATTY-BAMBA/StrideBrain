@@ -204,7 +204,7 @@ function mapProfile(
   });
 }
 
-function projectSelect() {
+function projectSelect(organizationId: string) {
   return {
     id: true,
     organizationId: true,
@@ -224,24 +224,29 @@ function projectSelect() {
     dataClassification: true,
     updatedAt: true,
     scopes: {
+      where: { organizationId },
       orderBy: { categoryId: "asc" },
       select: { categoryId: true },
     },
     projectMaterials: {
+      where: { organizationId, material: { organizationId, active: true } },
       orderBy: { material: { businessKey: "asc" } },
       select: { material: { select: { businessKey: true } } },
     },
     projectSuppliers: {
+      where: { organizationId, supplier: { organizationId, active: true } },
       orderBy: { supplier: { businessKey: "asc" } },
       select: { supplier: { select: { businessKey: true } } },
     },
     quotes: {
+      where: { organizationId },
       take: 10,
       orderBy: { createdAt: "desc" },
       select: {
         businessKey: true,
         versions: {
           where: {
+            organizationId,
             supersededById: null,
             authorityState: { not: "SUPERSEDED" },
           },
@@ -252,6 +257,7 @@ function projectSelect() {
             versionNumber: true,
             createdAt: true,
             items: {
+              where: { organizationId },
               orderBy: { lineNumber: "asc" },
               select: { id: true, categoryId: true },
             },
@@ -260,12 +266,12 @@ function projectSelect() {
       },
     },
     documents: {
-      where: { documentType: "PROJECT_SUMMARY" },
+      where: { organizationId, documentType: "PROJECT_SUMMARY" },
       take: 5,
       orderBy: { businessKey: "asc" },
       select: {
         versions: {
-          where: { supersededById: null },
+          where: { organizationId, supersededById: null },
           orderBy: [{ effectiveAt: "desc" }, { createdAt: "desc" }],
           take: 1,
           select: { id: true },
@@ -290,7 +296,7 @@ export class PrismaComparableProjectRepository implements ComparableProjectRepos
         deletedAt: null,
         dataClassification: { in: allowedHistoricalClassifications(context) },
       },
-      select: projectSelect(),
+      select: projectSelect(context.organizationId),
     });
     if (!row || row.organizationId !== context.organizationId) return null;
 
@@ -348,7 +354,7 @@ export class PrismaComparableProjectRepository implements ComparableProjectRepos
       },
       take: MAX_HISTORICAL_ROWS,
       orderBy: { businessKey: "asc" },
-      select: projectSelect(),
+      select: projectSelect(context.organizationId),
     });
 
     const sourceIds = rows.map(profileSourceIds);
@@ -356,27 +362,27 @@ export class PrismaComparableProjectRepository implements ComparableProjectRepos
       sourceIds.flatMap((sources) => sources.documentVersionIds),
     );
     const quoteItemIds = unique(sourceIds.flatMap((sources) => sources.quoteItemIds));
-    const evidenceRows =
-      documentVersionIds.length === 0 && quoteItemIds.length === 0
-        ? []
-        : await this.database.evidenceReference.findMany({
-            where: {
-              organizationId: context.organizationId,
-              dataClassification: { in: allowedHistoricalClassifications(context) },
-              OR: [
-                {
-                  subjectType: "DOCUMENT_VERSION",
-                  subjectId: { in: [...documentVersionIds] },
-                },
-                {
-                  subjectType: "QUOTE_ITEM",
-                  subjectId: { in: [...quoteItemIds] },
-                },
-              ],
-            },
-            orderBy: { id: "asc" },
-            select: { id: true, subjectType: true, subjectId: true },
-          });
+    const evidenceQueryExecuted = documentVersionIds.length > 0 || quoteItemIds.length > 0;
+    const evidenceRows = evidenceQueryExecuted
+      ? await this.database.evidenceReference.findMany({
+          where: {
+            organizationId: context.organizationId,
+            dataClassification: { in: allowedHistoricalClassifications(context) },
+            OR: [
+              {
+                subjectType: "DOCUMENT_VERSION",
+                subjectId: { in: [...documentVersionIds] },
+              },
+              {
+                subjectType: "QUOTE_ITEM",
+                subjectId: { in: [...quoteItemIds] },
+              },
+            ],
+          },
+          orderBy: { id: "asc" },
+          select: { id: true, subjectType: true, subjectId: true },
+        })
+      : [];
     const evidence = mapEvidence(evidenceRows);
     const profiles = rows
       .filter((row) => row.organizationId === context.organizationId)
@@ -385,7 +391,7 @@ export class PrismaComparableProjectRepository implements ComparableProjectRepos
     return Object.freeze({
       profiles: Object.freeze(profiles),
       diagnostics: Object.freeze({
-        databaseQueries: evidenceRows.length > 0 ? 2 : 1,
+        databaseQueries: evidenceQueryExecuted ? 2 : 1,
         authorizedRowsReturned: profiles.length,
         maximumRows: MAX_HISTORICAL_ROWS,
       }),
