@@ -350,4 +350,82 @@ describe("GetProjectWorkspace", () => {
       ]),
     );
   });
+
+  it("allows an Organization Admin to read an organization project without an explicit assignment", async () => {
+    const admin = context({
+      userId: "person_horizon_admin",
+      membershipId: "membership_horizon_admin",
+      role: "ORGANIZATION_ADMIN",
+      assignedProjectIds: new Set(),
+      projectAssignments: new Map(),
+      locale: "en",
+    });
+    const useCase = new GetProjectWorkspace(projectPort(), workspacePort(), undefined, () => NOW);
+
+    const workspace = availableWorkspace(await useCase.execute(admin, PROJECT_KEY));
+
+    expect(workspace.state).toBe("READY");
+    expect(workspace.project.name.display).toBe("Xinyi Flagship Renovation");
+    expect(workspace.project.clientName.display).toBe("Aster Retail Taiwan");
+    expect(workspace.permissions).toMatchObject({
+      role: "ORGANIZATION_ADMIN",
+      canReadQuote: true,
+      canReadForecast: true,
+      canReadActual: true,
+      canCreateInternalReview: true,
+      canAssignInternalReview: true,
+    });
+  });
+
+  it("allows an explicitly assigned Financial Reviewer to receive authorized commercial context", async () => {
+    const reviewer = context({
+      userId: "person_horizon_finance",
+      membershipId: "membership_horizon_finance",
+      role: "FINANCIAL_REVIEWER",
+      assignedProjectIds: new Set([PROJECT_ID]),
+      projectAssignments: new Map([
+        [
+          PROJECT_ID,
+          {
+            projectId: PROJECT_ID,
+            canReadActuals: true,
+            canCreateAction: true,
+          },
+        ],
+      ]),
+      locale: "en",
+    });
+    const useCase = new GetProjectWorkspace(projectPort(), workspacePort(), undefined, () => NOW);
+
+    const workspace = availableWorkspace(await useCase.execute(reviewer, PROJECT_KEY));
+
+    expect(workspace.project.name.display).toBe("Xinyi Flagship Renovation");
+    expect(workspace.permissions).toMatchObject({
+      role: "FINANCIAL_REVIEWER",
+      canRunComparison: true,
+      canReadActual: true,
+      canCreateInternalReview: true,
+    });
+  });
+
+  it("returns the non-disclosing unavailable outcome for an unassigned Financial Reviewer", async () => {
+    const repositories = workspacePort();
+    const reviewer = context({
+      userId: "person_horizon_finance",
+      membershipId: "membership_horizon_finance",
+      role: "FINANCIAL_REVIEWER",
+      assignedProjectIds: new Set(),
+      projectAssignments: new Map(),
+      locale: "en",
+    });
+    const useCase = new GetProjectWorkspace(projectPort(), repositories);
+
+    await expect(useCase.execute(reviewer, PROJECT_KEY)).resolves.toEqual({
+      kind: "UNAVAILABLE",
+      errorCode: "PROJECT_UNAVAILABLE",
+      requestId: "REQ-STAGE3-001",
+    });
+    expect(repositories.getProjectContext).not.toHaveBeenCalled();
+    expect(repositories.getCurrentQuote).not.toHaveBeenCalled();
+  });
 });
