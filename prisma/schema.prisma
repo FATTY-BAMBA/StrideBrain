@@ -39,6 +39,11 @@ enum MembershipRole {
   VIEWER
 }
 
+enum CapabilityEffect {
+  ALLOW
+  DENY
+}
+
 enum ProjectStatus {
   ACTIVE
   COMPLETED
@@ -153,6 +158,8 @@ model Organization {
   proposedActions      ProposedAction[]
   actions              Action[]
   auditEvents          AuditEvent[]
+  capabilityGrants     MembershipCapabilityGrant[]
+  demoSessions         DemoSession[]
 }
 
 model Person {
@@ -179,19 +186,56 @@ model Membership {
   organizationId String
   personId       String
   role           MembershipRole
-  capabilities   String[]
   active         Boolean        @default(true)
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
 
   organization Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   person       Person             @relation(fields: [personId], references: [id], onDelete: Cascade)
-  assignments  ProjectAssignment[]
-  auditEvents  AuditEvent[]       @relation("AuditActorMembership")
+  assignments      ProjectAssignment[]
+  auditEvents      AuditEvent[]                @relation("AuditActorMembership")
+  capabilityGrants MembershipCapabilityGrant[]
+  demoSessions     DemoSession[]
 
   @@unique([organizationId, personId])
   @@unique([id, organizationId])
   @@index([organizationId, role, active])
+}
+
+model MembershipCapabilityGrant {
+  id             String           @id
+  organizationId String
+  membershipId   String
+  capability     String
+  effect         CapabilityEffect
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  membership   Membership   @relation(fields: [membershipId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, membershipId, capability])
+  @@unique([id, organizationId])
+  @@index([organizationId, membershipId, effect])
+}
+
+model DemoSession {
+  id              String    @id
+  organizationId  String
+  membershipId    String
+  tokenHash        String    @unique
+  preferredLocale  String    @default("zh-TW")
+  issuedAt         DateTime  @default(now())
+  expiresAt        DateTime
+  revokedAt        DateTime?
+  lastSeenAt       DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  membership   Membership   @relation(fields: [membershipId], references: [id], onDelete: Cascade)
+
+  @@unique([id, organizationId])
+  @@index([organizationId, membershipId, expiresAt])
+  @@index([expiresAt, revokedAt])
 }
 
 model ProjectAssignment {

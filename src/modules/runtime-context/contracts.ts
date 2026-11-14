@@ -15,7 +15,16 @@ export type Capability =
   | "action:internal-review:propose"
   | "action:internal-review:create"
   | "action:assign"
+  | "authority:financial-conflict:resolve"
   | "settings:manage";
+
+export type CapabilityGrantEffect = "ALLOW" | "DENY";
+
+export type ProjectAssignmentGrant = Readonly<{
+  projectId: string;
+  canReadActuals: boolean;
+  canCreateAction: boolean;
+}>;
 
 export type RuntimeContext = {
   requestId: string;
@@ -25,6 +34,7 @@ export type RuntimeContext = {
   role: Role;
   capabilities: ReadonlySet<Capability>;
   assignedProjectIds?: ReadonlySet<string>;
+  projectAssignments?: ReadonlyMap<string, ProjectAssignmentGrant>;
   locale: Locale;
   dataMode: DataMode;
 };
