@@ -1,0 +1,38 @@
+{
+  "name": "stridebrain",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Customer-facing AI operating intelligence platform for SMEs.",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "format": "prettier --write package.json tsconfig.json next.config.ts next-env.d.ts eslint.config.mjs prettier.config.mjs vitest.config.ts .github/workflows/ci.yml 'src/**/*.{ts,tsx,css}' 'tests/**/*.ts'",
+    "format:check": "prettier --check package.json tsconfig.json next.config.ts next-env.d.ts eslint.config.mjs prettier.config.mjs vitest.config.ts .github/workflows/ci.yml 'src/**/*.{ts,tsx,css}' 'tests/**/*.ts'",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:localization": "vitest run tests/localization",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "dependencies": {
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.4.6",
+    "prettier": "3.9.10",
+    "typescript": "6.0.3",
+    "vitest": "4.1.10"
+  }
+}
