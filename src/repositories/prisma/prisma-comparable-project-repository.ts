@@ -7,7 +7,9 @@ import type {
 } from "@/modules/comparisons/domain/contracts";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import {
-  allowedHistoricalClassifications,
+  allowedActiveProjectClassifications,
+  hasOrganizationWidePrivateHistory,
+  organizationComparisonLibraryClassifications,
   type ActiveComparisonProfileRecord,
   type ComparableProjectRepositoryPort,
   type HistoricalCandidateBatch,
@@ -82,6 +84,28 @@ export type PrismaComparableProjectDatabase = {
 };
 
 const MAX_HISTORICAL_ROWS = 100;
+
+function historicalAccessPredicates(context: RuntimeContext): readonly unknown[] {
+  const predicates: unknown[] = [
+    {
+      dataClassification: {
+        in: organizationComparisonLibraryClassifications(),
+      },
+    },
+  ];
+  if (hasOrganizationWidePrivateHistory(context)) {
+    predicates.push({ dataClassification: "TENANT_PRIVATE" });
+  } else {
+    const assigned = [...(context.assignedProjectIds ?? [])].sort();
+    if (assigned.length > 0) {
+      predicates.push({
+        id: { in: assigned },
+        dataClassification: "TENANT_PRIVATE",
+      });
+    }
+  }
+  return Object.freeze(predicates);
+}
 
 function unique(values: readonly string[]): readonly string[] {
   return Object.freeze([...new Set(values.filter((value) => value.length > 0))].sort());
@@ -284,7 +308,7 @@ export class PrismaComparableProjectRepository implements ComparableProjectRepos
         id: projectId,
         organizationId: context.organizationId,
         deletedAt: null,
-        dataClassification: { in: allowedHistoricalClassifications(context) },
+        dataClassification: { in: allowedActiveProjectClassifications() },
       },
       select: projectSelect(context.organizationId),
     });
@@ -294,7 +318,7 @@ export class PrismaComparableProjectRepository implements ComparableProjectRepos
     const evidenceRows = await this.database.evidenceReference.findMany({
       where: {
         organizationId: context.organizationId,
-        dataClassification: { in: allowedHistoricalClassifications(context) },
+        dataClassification: { in: allowedActiveProjectClassifications() },
         OR: [
           {
             subjectType: "DOCUMENT_VERSION",
@@ -340,7 +364,7 @@ export class PrismaComparableProjectRepository implements ComparableProjectRepos
         id: { not: activeProjectId },
         status: { in: ["COMPLETED", "CLOSED", "ARCHIVED"] },
         deletedAt: null,
-        dataClassification: { in: allowedHistoricalClassifications(context) },
+        OR: historicalAccessPredicates(context),
       },
       take: MAX_HISTORICAL_ROWS,
       orderBy: { businessKey: "asc" },
@@ -355,7 +379,7 @@ export class PrismaComparableProjectRepository implements ComparableProjectRepos
       ? await this.database.evidenceReference.findMany({
           where: {
             organizationId: context.organizationId,
-            dataClassification: { in: allowedHistoricalClassifications(context) },
+            dataClassification: { in: allowedActiveProjectClassifications() },
             OR: [
               {
                 subjectType: "DOCUMENT_VERSION",

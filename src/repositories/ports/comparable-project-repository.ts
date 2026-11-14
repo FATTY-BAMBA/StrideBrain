@@ -63,10 +63,5 @@ export function hasOrganizationWidePrivateHistory(context: RuntimeContext): bool
  * records remain outside v0.1.
  */
 export function allowedActiveProjectClassifications(): readonly DataClassification[] {
-  return Object.freeze([
-    "DEMO_SYNTHETIC",
-    "PUBLIC_REFERENCE",
-    "TENANT_PRIVATE",
-    "TENANT_APPROVED",
-  ]);
+  return Object.freeze(["DEMO_SYNTHETIC", "PUBLIC_REFERENCE", "TENANT_PRIVATE", "TENANT_APPROVED"]);
 }
