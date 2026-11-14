@@ -26,14 +26,10 @@ function assertSameScale(left: FixedDecimal, right: FixedDecimal): void {
   }
 }
 
-function roundDivision(
-  numerator: bigint,
-  denominator: bigint,
-  mode: RoundingMode,
-): bigint {
+function roundDivision(numerator: bigint, denominator: bigint, mode: RoundingMode): bigint {
   if (denominator === 0n) throw new RangeError("Division by zero");
 
-  const negative = (numerator < 0n) !== (denominator < 0n);
+  const negative = numerator < 0n !== denominator < 0n;
   const absoluteNumerator = numerator < 0n ? -numerator : numerator;
   const absoluteDenominator = denominator < 0n ? -denominator : denominator;
   const quotient = absoluteNumerator / absoluteDenominator;
@@ -82,9 +78,7 @@ export function decimalToString(value: FixedDecimal): string {
 
   if (value.scale === 0) return `${negative ? "-" : ""}${integer}`;
 
-  return `${negative ? "-" : ""}${integer}.${fraction
-    .toString()
-    .padStart(value.scale, "0")}`;
+  return `${negative ? "-" : ""}${integer}.${fraction.toString().padStart(value.scale, "0")}`;
 }
 
 export function rescale(
@@ -98,10 +92,7 @@ export function rescale(
     return decimalFromAtoms(value.atoms * powerOfTen(scale - value.scale), scale);
   }
 
-  return decimalFromAtoms(
-    roundDivision(value.atoms, powerOfTen(value.scale - scale), mode),
-    scale,
-  );
+  return decimalFromAtoms(roundDivision(value.atoms, powerOfTen(value.scale - scale), mode), scale);
 }
 
 export function add(left: FixedDecimal, right: FixedDecimal): FixedDecimal {
@@ -132,13 +123,9 @@ export function divide(
 ): FixedDecimal {
   if (denominator.atoms === 0n) throw new RangeError("Division by zero");
 
-  const scaledNumerator =
-    numerator.atoms * powerOfTen(denominator.scale + outputScale);
+  const scaledNumerator = numerator.atoms * powerOfTen(denominator.scale + outputScale);
   const scaledDenominator = denominator.atoms * powerOfTen(numerator.scale);
-  return decimalFromAtoms(
-    roundDivision(scaledNumerator, scaledDenominator, mode),
-    outputScale,
-  );
+  return decimalFromAtoms(roundDivision(scaledNumerator, scaledDenominator, mode), outputScale);
 }
 
 export function compare(left: FixedDecimal, right: FixedDecimal): number {
@@ -159,10 +146,7 @@ export function sum(values: readonly FixedDecimal[], scale: number): FixedDecima
   );
 }
 
-export function median(
-  values: readonly FixedDecimal[],
-  outputScale: number,
-): FixedDecimal | null {
+export function median(values: readonly FixedDecimal[], outputScale: number): FixedDecimal | null {
   if (values.length === 0) return null;
   const ordered = values
     .map((value) => rescale(value, outputScale))
@@ -197,9 +181,7 @@ export function withinTolerance(
   tolerance: FixedDecimal,
 ): boolean {
   const scale = Math.max(left.scale, right.scale, tolerance.scale);
-  const difference = absolute(
-    subtract(rescale(left, scale), rescale(right, scale)),
-  );
+  const difference = absolute(subtract(rescale(left, scale), rescale(right, scale)));
   return compare(difference, rescale(tolerance, scale)) <= 0;
 }
 
@@ -208,14 +190,10 @@ export const QUANTITY_SCALE = 3;
 export const UNIT_RATE_SCALE = 6;
 export const PERCENT_SCALE = 4;
 
-export const money = (value: string): FixedDecimal =>
-  decimalFromString(value, MONEY_SCALE);
-export const quantity = (value: string): FixedDecimal =>
-  decimalFromString(value, QUANTITY_SCALE);
-export const unitRate = (value: string): FixedDecimal =>
-  decimalFromString(value, UNIT_RATE_SCALE);
-export const percent = (value: string): FixedDecimal =>
-  decimalFromString(value, PERCENT_SCALE);
+export const money = (value: string): FixedDecimal => decimalFromString(value, MONEY_SCALE);
+export const quantity = (value: string): FixedDecimal => decimalFromString(value, QUANTITY_SCALE);
+export const unitRate = (value: string): FixedDecimal => decimalFromString(value, UNIT_RATE_SCALE);
+export const percent = (value: string): FixedDecimal => decimalFromString(value, PERCENT_SCALE);
 
 export function calculateLineAmount(
   lineQuantity: FixedDecimal,
@@ -230,9 +208,5 @@ export function lineReconciles(
   statedAmount: FixedDecimal,
   tolerance = money("0.01"),
 ): boolean {
-  return withinTolerance(
-    calculateLineAmount(lineQuantity, lineUnitRate),
-    statedAmount,
-    tolerance,
-  );
+  return withinTolerance(calculateLineAmount(lineQuantity, lineUnitRate), statedAmount, tolerance);
 }

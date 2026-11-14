@@ -86,9 +86,7 @@ describe("Horizon Atelier v0.1 fixture contract", () => {
     expect(lightingQuotedMedian).not.toBeNull();
     expect(variance(currentLighting, lightingQuotedMedian!)).toBeGreaterThanOrEqual(9);
     expect(variance(currentLighting, lightingQuotedMedian!)).toBeLessThan(10);
-    expect(
-      horizonAtelierManifest.heroEconomics.lightingEligibleActualObservationCount,
-    ).toBe(2);
+    expect(horizonAtelierManifest.heroEconomics.lightingEligibleActualObservationCount).toBe(2);
   });
 
   it("keeps the fixture intentionally imperfect", () => {
