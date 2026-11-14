@@ -1,0 +1,42 @@
+name: Stage 1 Prisma Artifact
+
+on:
+  push:
+    branches:
+      - build/stage-1-stridegraph-fixture
+
+permissions:
+  contents: read
+
+jobs:
+  prisma-artifact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Validate Prisma schema
+        run: npx --yes prisma@7.10.1 validate --config prisma.config.ts
+
+      - name: Generate baseline migration
+        run: |
+          mkdir -p artifact
+          npx --yes prisma@7.10.1 migrate diff \
+            --from-empty \
+            --to-schema prisma/schema.prisma \
+            --script \
+            --output artifact/migration.sql
+
+      - name: Upload migration artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage1-prisma-migration
+          path: artifact/migration.sql
+          if-no-files-found: error
+          retention-days: 1
