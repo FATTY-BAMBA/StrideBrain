@@ -61,8 +61,8 @@ export type CommercialObservationDTO =
       observationType: ObservationType;
       authorityState: AuthorityState;
       money: MoneyDTO;
-      effectiveAt?: string;
-      validUntil?: string;
+      effectiveAt?: string | undefined;
+      validUntil?: string | undefined;
       freshness: "CURRENT" | "HISTORICAL" | "STALE";
       warningCodes: readonly ProjectWorkspaceWarningCode[];
     }>
@@ -87,10 +87,10 @@ export type CommercialObservationDTO =
 
 export type EvidenceHealthDTO = Readonly<{
   state: "GOOD" | "PARTIAL" | "INSUFFICIENT" | "CONFLICTED" | "RESTRICTED";
-  accessibleReferenceCount?: number;
-  accessibleDocumentCount?: number;
-  staleCount?: number;
-  openConflictCount?: number;
+  accessibleReferenceCount?: number | undefined;
+  accessibleDocumentCount?: number | undefined;
+  staleCount?: number | undefined;
+  openConflictCount?: number | undefined;
   labelKey: string;
 }>;
 
@@ -98,13 +98,13 @@ export type EvidenceSummaryDTO = Readonly<{
   referenceKey: string;
   claimKey: string;
   sourceType: string;
-  sourceKey?: string;
-  sourceVersion?: string;
-  sourceName?: LocalizedNameDTO;
+  sourceKey?: string | undefined;
+  sourceVersion?: string | undefined;
+  sourceName?: LocalizedNameDTO | undefined;
   authorityState: AuthorityState;
-  observationType?: ObservationType;
-  effectiveAt?: string;
-  staleAt?: string;
+  observationType?: ObservationType | undefined;
+  effectiveAt?: string | undefined;
+  staleAt?: string | undefined;
   condition: "CURRENT" | "STALE" | "CONFLICTED";
 }>;
 
@@ -127,7 +127,7 @@ export type SupplierOfferSummaryDTO = Readonly<{
   supplier: LocalizedNameDTO;
   authorityState: AuthorityState;
   offeredAt: string;
-  validUntil?: string;
+  validUntil?: string | undefined;
   freshness: "CURRENT" | "HISTORICAL" | "STALE";
   money: MoneyDTO;
 }>;
@@ -136,7 +136,7 @@ export type ActionSummaryDTO = Readonly<{
   actionKey: string;
   title: string;
   status: "OPEN" | "IN_PROGRESS" | "COMPLETED" | "CANCELLED";
-  dueDate?: string;
+  dueDate?: string | undefined;
 }>;
 
 export type ProjectWorkspacePermissionDTO = Readonly<{
@@ -175,13 +175,13 @@ export type ProjectWorkspaceDTO = Readonly<{
     location: Readonly<{
       country: "TW";
       city: string;
-      district?: string;
+      district?: string | undefined;
       display: string;
     }>;
     area: QuantityDTO;
-    programmeWeeks?: string;
-    targetHandover?: string;
-    manager?: LocalizedNameDTO;
+    programmeWeeks?: string | undefined;
+    targetHandover?: string | undefined;
+    manager?: LocalizedNameDTO | undefined;
     scopeCategories: ReadonlyArray<
       Readonly<{
         categoryId: string;
