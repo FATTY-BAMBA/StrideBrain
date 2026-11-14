@@ -1,0 +1,61 @@
+name: Stage 2 Remove Legacy Capabilities
+
+on:
+  push:
+    branches:
+      - build/stage-2-runtime-authorization
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stridebrain-stage2-remove-legacy-capabilities-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Remove legacy Membership capabilities from schema and fixture
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          schema = Path('prisma/schema.prisma')
+          schema_text = schema.read_text()
+          old_line = '  capabilities   String[]\n'
+          if old_line not in schema_text:
+              raise SystemExit('Legacy Membership capabilities field not found')
+          schema.write_text(schema_text.replace(old_line, '', 1))
+
+          fixture = Path('prisma/fixtures/horizon-atelier.sql')
+          fixture_text = fixture.read_text()
+          start = fixture_text.index('INSERT INTO "Membership" (')
+          end = fixture_text.index('\n\nINSERT INTO "Client" (', start)
+          replacement = '''INSERT INTO "Membership" (
+            "id", "organizationId", "personId", "role", "active", "createdAt", "updatedAt"
+          ) VALUES
+            ('membership_horizon_admin', 'org_horizon', 'person_horizon_admin', 'ORGANIZATION_ADMIN', true, NOW(), NOW()),
+            ('membership_horizon_mei', 'org_horizon', 'person_horizon_mei', 'PROJECT_MANAGER_ESTIMATOR', true, NOW(), NOW()),
+            ('membership_horizon_finance', 'org_horizon', 'person_horizon_finance', 'FINANCIAL_REVIEWER', true, NOW(), NOW()),
+            ('membership_horizon_viewer', 'org_horizon', 'person_horizon_viewer', 'VIEWER', true, NOW(), NOW()),
+            ('membership_northern_owner', 'org_northern', 'person_northern_owner', 'ORGANIZATION_ADMIN', true, NOW(), NOW());'''
+          fixture.write_text(fixture_text[:start] + replacement + fixture_text[end:])
+          PY
+
+      - name: Commit authority-source cleanup
+        run: |
+          if [ -z "$(git status --porcelain -- prisma/schema.prisma prisma/fixtures/horizon-atelier.sql)" ]; then
+            echo "Legacy capability source is already removed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add prisma/schema.prisma prisma/fixtures/horizon-atelier.sql
+          git commit -m "auth: remove legacy Membership capability source"
+          git push
