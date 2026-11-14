@@ -12,6 +12,11 @@ const FIXED_ENTROPY = {
   nonce: "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
 };
 
+function changeLastCharacter(value: string): string {
+  const last = value.at(-1);
+  return `${value.slice(0, -1)}${last === "A" ? "B" : "A"}`;
+}
+
 describe("signed opaque demo session token", () => {
   it("issues a signed token and stores only a stable SHA-256 hash", () => {
     const issued = issueSignedSessionToken(SECRET, FIXED_ENTROPY);
@@ -30,9 +35,9 @@ describe("signed opaque demo session token", () => {
     const issued = issueSignedSessionToken(SECRET, FIXED_ENTROPY);
     const parts = issued.token.split(".");
     const changedNonce = [...parts];
-    changedNonce[2] = `${changedNonce[2]?.slice(0, -1)}A`;
+    changedNonce[2] = changeLastCharacter(changedNonce[2] ?? "");
     const changedSignature = [...parts];
-    changedSignature[3] = `${changedSignature[3]?.slice(0, -1)}A`;
+    changedSignature[3] = changeLastCharacter(changedSignature[3] ?? "");
 
     expect(
       verifySignedSessionToken(SECRET, changedNonce.join(".")),
