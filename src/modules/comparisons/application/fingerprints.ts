@@ -49,13 +49,13 @@ export function permissionFingerprint(
   context: RuntimeContext,
   activeProjectId: string,
 ): string {
-  const assignment = context.projectAssignments.get(activeProjectId);
+  const assignment = context.projectAssignments?.get(activeProjectId);
   return sha256({
     organizationId: context.organizationId,
     membershipId: context.membershipId,
     role: context.role,
     capabilities: [...context.capabilities].sort(),
-    activeProjectAssigned: context.assignedProjectIds.has(activeProjectId),
+    activeProjectAssigned: context.assignedProjectIds?.has(activeProjectId) === true,
     assignment: assignment
       ? {
           projectId: assignment.projectId,
