@@ -10,15 +10,8 @@ describe("CPI-SIM-1.0 policy invariants", () => {
   it("contains eight unique factors whose weights total exactly 100", () => {
     expect(FACTOR_ORDER).toHaveLength(8);
     expect(new Set(FACTOR_ORDER).size).toBe(8);
-    expect(Object.keys(FACTOR_WEIGHTS).sort()).toEqual(
-      [...FACTOR_ORDER].sort(),
-    );
-    expect(
-      Object.values(FACTOR_WEIGHTS).reduce(
-        (total, weight) => total + weight,
-        0,
-      ),
-    ).toBe(100);
+    expect(Object.keys(FACTOR_WEIGHTS).sort()).toEqual([...FACTOR_ORDER].sort());
+    expect(Object.values(FACTOR_WEIGHTS).reduce((total, weight) => total + weight, 0)).toBe(100);
   });
 
   it("publishes the accepted primary thresholds and result limit", () => {
