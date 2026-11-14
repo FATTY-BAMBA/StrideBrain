@@ -1,0 +1,112 @@
+name: Stage 4 contract and formatting normalization
+
+on:
+  push:
+    branches:
+      - build/stage-4-comparable-project-core
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: build/stage-4-comparable-project-core
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: Normalize Stage 4 public contracts
+        shell: python
+        run: |
+          from pathlib import Path
+
+          contracts = Path("src/modules/comparisons/domain/contracts.ts")
+          text = contracts.read_text()
+          old = '  | "METADATA_AUTHORITY_INSUFFICIENT"\n  | "DUPLICATE_RECORD"'
+          new = '  | "METADATA_AUTHORITY_INSUFFICIENT"\n  | "COMPLETION_DATE_INVALID"\n  | "DUPLICATE_RECORD"'
+          if old not in text:
+              raise SystemExit("Eligibility reason insertion point not found")
+          text = text.replace(old, new, 1)
+
+          old = '''export type ActiveProjectComparisonContext = ComparisonProjectProfile &
+            Readonly<{
+              snapshotDate: string;
+              activeQuoteVersionId?: string | undefined;'''
+          new = '''export type ActiveProjectComparisonContext = ComparisonProjectProfile &
+            Readonly<{
+              snapshotDate: string;
+              activeQuoteVersionKey?: string | undefined;'''
+          if old not in text:
+              raise SystemExit("Active context quote key contract not found")
+          text = text.replace(old, new, 1)
+
+          old = '''    location: ComparisonLocation;
+            activeQuoteVersionId?: string | undefined;
+          }>;'''
+          new = '''    location: ComparisonLocation;
+            activeQuoteVersionKey?: string | undefined;
+          }>;'''
+          if old not in text:
+              raise SystemExit("Result quote key contract not found")
+          text = text.replace(old, new, 1)
+          contracts.write_text(text)
+
+          active_service = Path("src/modules/comparisons/application/active-project-context-service.ts")
+          text = active_service.read_text()
+          old = "      activeQuoteVersionId: record.activeQuoteVersionKey,"
+          new = "      activeQuoteVersionKey: record.activeQuoteVersionKey,"
+          if old not in text:
+              raise SystemExit("Active service quote key mapping not found")
+          active_service.write_text(text.replace(old, new, 1))
+
+          orchestrator = Path("src/modules/comparisons/application/run-comparable-project-analysis.ts")
+          text = orchestrator.read_text()
+          old = "          activeQuoteVersionId: resolved.context.activeQuoteVersionId,"
+          new = "          activeQuoteVersionKey: resolved.context.activeQuoteVersionKey,"
+          if old not in text:
+              raise SystemExit("Orchestrator public quote key mapping not found")
+          orchestrator.write_text(text.replace(old, new, 1))
+
+          run_test = Path("tests/comparisons/run-comparable-project-analysis.test.ts")
+          text = run_test.read_text()
+          text = text.replace(
+              '    expect(outcome.result.activeContext.activeQuoteVersionId).toBe("Q-XINYI-026-v3");',
+              '    expect(outcome.result.activeContext.activeQuoteVersionKey).toBe("Q-XINYI-026-v3");',
+              1,
+          )
+          run_test.write_text(text)
+
+          persistence_test = Path("tests/repositories/prisma-comparison-run-repository.test.ts")
+          text = persistence_test.read_text()
+          old = '    activeQuoteVersionId: "Q-XINYI-026-v3",'
+          new = '    activeQuoteVersionKey: "Q-XINYI-026-v3",'
+          if old not in text:
+              raise SystemExit("Persistence public result quote key not found")
+          persistence_test.write_text(text.replace(old, new, 1))
+
+      - name: Format and verify
+        run: |
+          npm run format
+          npm run format:check
+          git diff --check
+
+      - name: Remove one-time workflow
+        run: rm .github/workflows/stage4-contract-format.yml
+
+      - name: Commit normalized Stage 4 branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "fix(stage4): normalize public quote keys and format core"
+          git push origin HEAD:build/stage-4-comparable-project-core
