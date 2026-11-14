@@ -60,14 +60,10 @@ export class PrismaProjectRepository implements ProjectRepositoryPort {
     });
 
     if (!row) return null;
-    if (
-      context.assignedProjectIds &&
-      !context.assignedProjectIds.has(row.id) &&
-      context.role !== "ORGANIZATION_ADMIN" &&
-      context.role !== "FINANCIAL_REVIEWER"
-    ) {
-      return null;
-    }
+
+    const hasOrganizationWideProjectRead = context.role === "ORGANIZATION_ADMIN";
+    const hasProjectAssignment = context.assignedProjectIds?.has(row.id) === true;
+    if (!hasOrganizationWideProjectRead && !hasProjectAssignment) return null;
 
     return {
       id: row.id,
