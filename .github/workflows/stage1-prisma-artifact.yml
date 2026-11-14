@@ -6,7 +6,7 @@ on:
       - build/stage-1-stridegraph-fixture
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   prisma-artifact:
@@ -14,8 +14,6 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v6
-        with:
-          persist-credentials: false
 
       - uses: actions/setup-node@v7
         with:
@@ -26,17 +24,29 @@ jobs:
 
       - name: Generate baseline migration
         run: |
-          mkdir -p artifact
+          mkdir -p prisma/migrations/0001_stridegraph_foundation
           npx --yes prisma@7.10.1 migrate diff \
             --from-empty \
             --to-schema prisma/schema.prisma \
             --script \
-            --output artifact/migration.sql
+            --output prisma/migrations/0001_stridegraph_foundation/migration.sql
+
+      - name: Commit validated migration when changed
+        run: |
+          if git diff --quiet -- prisma/migrations/0001_stridegraph_foundation/migration.sql; then
+            echo "Validated migration is already committed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add prisma/migrations/0001_stridegraph_foundation/migration.sql
+          git commit -m "db: commit validated Stage 1 migration"
+          git push
 
       - name: Upload migration artifact
         uses: actions/upload-artifact@v4
         with:
           name: stage1-prisma-migration
-          path: artifact/migration.sql
+          path: prisma/migrations/0001_stridegraph_foundation/migration.sql
           if-no-files-found: error
           retention-days: 1
