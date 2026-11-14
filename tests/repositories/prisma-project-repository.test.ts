@@ -99,9 +99,11 @@ describe("PrismaProjectRepository", () => {
       businessKey: "PRJ-XINYI-026",
     });
     const repository = new PrismaProjectRepository(reader);
+    const missingAssignmentContext = context();
+    delete missingAssignmentContext.assignedProjectIds;
 
     const result = await repository.getAuthorizedByBusinessKey(
-      context({ assignedProjectIds: undefined }),
+      missingAssignmentContext,
       "PRJ-XINYI-026",
     );
 
