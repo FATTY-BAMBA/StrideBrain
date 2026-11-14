@@ -21,13 +21,13 @@ INSERT INTO "Person" (
   ('person_northern_owner', 'org_northern', 'PERSON-NORTH-OWNER', 'Northern Owner', '北境負責人', 'owner.northern@example.invalid', true, NOW(), NOW());
 
 INSERT INTO "Membership" (
-  "id", "organizationId", "personId", "role", "capabilities", "active", "createdAt", "updatedAt"
+  "id", "organizationId", "personId", "role", "active", "createdAt", "updatedAt"
 ) VALUES
-  ('membership_horizon_admin', 'org_horizon', 'person_horizon_admin', 'ORGANIZATION_ADMIN', ARRAY['project:read','project:compare','quote:read','commercial:forecast-read','commercial:actual-read','evidence:read','action:internal-review:propose','action:internal-review:create','action:assign','settings:manage'], true, NOW(), NOW()),
-  ('membership_horizon_mei', 'org_horizon', 'person_horizon_mei', 'PROJECT_MANAGER_ESTIMATOR', ARRAY['project:read','project:compare','quote:read','commercial:forecast-read','commercial:actual-read','evidence:read','action:internal-review:propose','action:internal-review:create','action:assign'], true, NOW(), NOW()),
-  ('membership_horizon_finance', 'org_horizon', 'person_horizon_finance', 'FINANCIAL_REVIEWER', ARRAY['project:read','project:compare','quote:read','commercial:forecast-read','commercial:actual-read','evidence:read','action:internal-review:propose','action:internal-review:create','action:assign'], true, NOW(), NOW()),
-  ('membership_horizon_viewer', 'org_horizon', 'person_horizon_viewer', 'VIEWER', ARRAY['project:read','project:compare','evidence:read'], true, NOW(), NOW()),
-  ('membership_northern_owner', 'org_northern', 'person_northern_owner', 'ORGANIZATION_ADMIN', ARRAY['project:read','project:compare','quote:read','commercial:forecast-read','commercial:actual-read','evidence:read','action:internal-review:propose','action:internal-review:create','action:assign','settings:manage'], true, NOW(), NOW());
+  ('membership_horizon_admin', 'org_horizon', 'person_horizon_admin', 'ORGANIZATION_ADMIN', true, NOW(), NOW()),
+  ('membership_horizon_mei', 'org_horizon', 'person_horizon_mei', 'PROJECT_MANAGER_ESTIMATOR', true, NOW(), NOW()),
+  ('membership_horizon_finance', 'org_horizon', 'person_horizon_finance', 'FINANCIAL_REVIEWER', true, NOW(), NOW()),
+  ('membership_horizon_viewer', 'org_horizon', 'person_horizon_viewer', 'VIEWER', true, NOW(), NOW()),
+  ('membership_northern_owner', 'org_northern', 'person_northern_owner', 'ORGANIZATION_ADMIN', true, NOW(), NOW());
 
 INSERT INTO "Client" (
   "id", "organizationId", "businessKey", "nameEn", "nameZhTw", "clientType", "active", "createdAt", "updatedAt"

@@ -186,7 +186,6 @@ model Membership {
   organizationId String
   personId       String
   role           MembershipRole
-  capabilities   String[]
   active         Boolean        @default(true)
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
