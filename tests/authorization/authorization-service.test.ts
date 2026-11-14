@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import { AuthorizationService, toPublicAuthorizationResult } from "@/modules/authorization/authorization-service";
+import {
+  AuthorizationService,
+  toPublicAuthorizationResult,
+} from "@/modules/authorization/authorization-service";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 
 function context(overrides: Partial<RuntimeContext> = {}): RuntimeContext {
@@ -64,7 +67,10 @@ describe("AuthorizationService", () => {
   });
 
   it("gives unauthorized and nonexistent projects the same public result", () => {
-    const unauthorized = service.canReadProject(context(), "prj_northern_restricted");
+    const unauthorized = service.canReadProject(
+      context(),
+      "prj_northern_restricted",
+    );
     const nonexistent = service.canReadProject(context(), "does_not_exist");
     expect(toPublicAuthorizationResult(unauthorized)).toEqual(
       toPublicAuthorizationResult(nonexistent),
@@ -111,6 +117,51 @@ describe("AuthorizationService", () => {
     );
   });
 
+  it("requires the assignment actual flag even when the global capability exists", () => {
+    const assignmentDenied = context({
+      projectAssignments: new Map([
+        [
+          "prj_xinyi_026",
+          {
+            projectId: "prj_xinyi_026",
+            canReadActuals: false,
+            canCreateAction: true,
+          },
+        ],
+      ]),
+    });
+
+    expect(service.canReadProject(assignmentDenied, "prj_xinyi_026")).toMatchObject({
+      allowed: true,
+      commercialScope: "QUOTE_AND_FORECAST",
+      evidenceScope: "NON_SENSITIVE",
+    });
+    expect(
+      service.canReadCommercial(assignmentDenied, "prj_xinyi_026", "ACTUAL"),
+    ).toEqual({
+      allowed: false,
+      publicError: "PROJECT_UNAVAILABLE",
+      internalReason: "ACTUAL_READ_DENIED",
+    });
+  });
+
+  it("requires forecast-level access for supplier offers", () => {
+    const quoteOnly = context({
+      capabilities: new Set([
+        "project:read",
+        "project:compare",
+        "quote:read",
+        "evidence:read",
+      ]),
+    });
+    expect(
+      service.canReadCommercial(quoteOnly, "prj_xinyi_026", "QUOTE").allowed,
+    ).toBe(true);
+    expect(
+      service.canReadCommercial(quoteOnly, "prj_xinyi_026", "SUPPLIER_OFFER"),
+    ).toMatchObject({ allowed: false, internalReason: "MISSING_CAPABILITY" });
+  });
+
   it("requires both assignment permission and action capabilities", () => {
     const assignmentDenied = context({
       projectAssignments: new Map([
@@ -126,6 +177,14 @@ describe("AuthorizationService", () => {
     });
     expect(
       service.canProposeInternalReview(assignmentDenied, "prj_xinyi_026"),
+    ).toMatchObject({
+      allowed: false,
+      internalReason: "ACTION_ASSIGNMENT_DENIED",
+    });
+
+    const missingAssignmentDetail = context({ projectAssignments: undefined });
+    expect(
+      service.canProposeInternalReview(missingAssignmentDetail, "prj_xinyi_026"),
     ).toMatchObject({
       allowed: false,
       internalReason: "ACTION_ASSIGNMENT_DENIED",
