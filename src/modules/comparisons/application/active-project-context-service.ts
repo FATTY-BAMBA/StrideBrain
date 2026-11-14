@@ -31,7 +31,7 @@ export class ActiveProjectContextService {
     const context: ActiveProjectComparisonContext = Object.freeze({
       ...record.profile,
       snapshotDate,
-      activeQuoteVersionId: record.activeQuoteVersionKey,
+      activeQuoteVersionKey: record.activeQuoteVersionKey,
       sourceFingerprint: profileFingerprint(record.profile),
       permissionFingerprint: permissionFingerprint(runtimeContext, activeProjectId),
     });

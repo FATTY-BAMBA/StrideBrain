@@ -53,9 +53,7 @@ function context(overrides: Partial<RuntimeContext> = {}): RuntimeContext {
   };
 }
 
-function profile(
-  overrides: Partial<ComparisonProjectProfile> = {},
-): ComparisonProjectProfile {
+function profile(overrides: Partial<ComparisonProjectProfile> = {}): ComparisonProjectProfile {
   return {
     internalId: "prj_neihu_021",
     organizationId: ORGANIZATION_ID,
@@ -184,7 +182,7 @@ describe("RunComparableProjectAnalysis", () => {
       band: "STRONG",
       tier: "PRIMARY",
     });
-    expect(outcome.result.activeContext.activeQuoteVersionId).toBe("Q-XINYI-026-v3");
+    expect(outcome.result.activeContext.activeQuoteVersionKey).toBe("Q-XINYI-026-v3");
     expect(runs.persistComplete).toHaveBeenCalledTimes(1);
     const persisted = runs.persistComplete.mock.calls[0]?.[0];
     expect(persisted).toMatchObject({
@@ -194,7 +192,9 @@ describe("RunComparableProjectAnalysis", () => {
       activeQuoteVersionId: "qv_xinyi_026_v3",
     });
     expect(persisted.candidates[0].factors).toHaveLength(8);
-    expect(persisted.candidates[0].factors.map((factor: { factorKey: string }) => factor.factorKey)).toEqual([
+    expect(
+      persisted.candidates[0].factors.map((factor: { factorKey: string }) => factor.factorKey),
+    ).toEqual([
       "SUBTYPE",
       "SCOPE_OVERLAP",
       "AREA_SIMILARITY",

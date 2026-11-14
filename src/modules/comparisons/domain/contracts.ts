@@ -22,12 +22,7 @@ export type FactorState = "KNOWN" | "UNKNOWN" | "NOT_APPLICABLE";
 export type MatchBand = "STRONG" | "RELEVANT" | "PARTIAL" | "BROADER";
 export type CandidateTier = "PRIMARY" | "BROADER";
 
-export type ProjectRecordStatus =
-  | "ACTIVE"
-  | "COMPLETED"
-  | "CLOSED"
-  | "ARCHIVED"
-  | "CANCELLED";
+export type ProjectRecordStatus = "ACTIVE" | "COMPLETED" | "CLOSED" | "ARCHIVED" | "CANCELLED";
 
 export type DataClassification =
   | "DEMO_SYNTHETIC"
@@ -75,7 +70,7 @@ export type ComparisonProjectProfile = Readonly<{
 export type ActiveProjectComparisonContext = ComparisonProjectProfile &
   Readonly<{
     snapshotDate: string;
-    activeQuoteVersionId?: string | undefined;
+    activeQuoteVersionKey?: string | undefined;
     sourceFingerprint: string;
     permissionFingerprint: string;
   }>;
@@ -100,6 +95,7 @@ export type EligibilityReasonCode =
   | "AREA_UNIT_MISMATCH"
   | "MANDATORY_CONTEXT_MISSING"
   | "METADATA_AUTHORITY_INSUFFICIENT"
+  | "COMPLETION_DATE_INVALID"
   | "DUPLICATE_RECORD"
   | "TEST_RECORD"
   | "POLICY_EXCLUDED";
@@ -216,7 +212,7 @@ export type Stage4ComparisonResult = Readonly<{
     areaUnit: string;
     currency: string;
     location: ComparisonLocation;
-    activeQuoteVersionId?: string | undefined;
+    activeQuoteVersionKey?: string | undefined;
   }>;
   summary: SafeEligibilitySummary &
     Readonly<{

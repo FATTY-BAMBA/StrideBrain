@@ -53,7 +53,7 @@ const result: Stage4ComparisonResult = {
     areaUnit: "m2",
     currency: "TWD",
     location: { city: "Taipei City", district: "Xinyi District" },
-    activeQuoteVersionId: "Q-XINYI-026-v3",
+    activeQuoteVersionKey: "Q-XINYI-026-v3",
   },
   summary: {
     authorizedCandidatesConsidered: 1,
@@ -249,7 +249,9 @@ describe("PrismaComparisonRunRepository", () => {
     });
     const repository = new PrismaComparisonRunRepository(db.database);
 
-    await expect(repository.getAuthorizedResult(context(), "cmprun_stage4")).resolves.toEqual(result);
+    await expect(repository.getAuthorizedResult(context(), "cmprun_stage4")).resolves.toEqual(
+      result,
+    );
     expect(db.findFirst).toHaveBeenCalledWith(
       expect.objectContaining({
         where: {

@@ -45,10 +45,7 @@ export function profileFingerprint(profile: ComparisonProjectProfile): string {
   });
 }
 
-export function permissionFingerprint(
-  context: RuntimeContext,
-  activeProjectId: string,
-): string {
+export function permissionFingerprint(context: RuntimeContext, activeProjectId: string): string {
   const assignment = context.projectAssignments?.get(activeProjectId);
   return sha256({
     organizationId: context.organizationId,

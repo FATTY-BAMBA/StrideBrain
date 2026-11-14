@@ -169,9 +169,7 @@ const canonicalCandidates = [
     completedAt: "2024-04-20",
     city: "Taipei City",
     district: "Daan District",
-    scopes: ALL_SCOPES.filter(
-      (scope) => scope !== "SELECTIVE_DEMOLITION" && scope !== "SIGNAGE",
-    ),
+    scopes: ALL_SCOPES.filter((scope) => scope !== "SELECTIVE_DEMOLITION" && scope !== "SIGNAGE"),
     materials: ["MAT-CUSTOM-MILLWORK"],
     suppliers: ["SUP-06"],
   }),
@@ -185,9 +183,7 @@ const canonicalCandidates = [
     completedAt: "2025-02-28",
     city: "Taipei City",
     district: "Songshan District",
-    scopes: ALL_SCOPES.filter(
-      (scope) => scope !== "SELECTIVE_DEMOLITION" && scope !== "SIGNAGE",
-    ),
+    scopes: ALL_SCOPES.filter((scope) => scope !== "SELECTIVE_DEMOLITION" && scope !== "SIGNAGE"),
     materials: ["MAT-DOMESTIC-STONE", "MAT-CUSTOM-MILLWORK"],
     suppliers: ["SUP-02"],
   }),
@@ -201,9 +197,7 @@ const canonicalCandidates = [
     completedAt: "2023-09-30",
     city: "New Taipei City",
     district: "Banqiao District",
-    scopes: ALL_SCOPES.filter(
-      (scope) => scope !== "SELECTIVE_DEMOLITION" && scope !== "SIGNAGE",
-    ),
+    scopes: ALL_SCOPES.filter((scope) => scope !== "SELECTIVE_DEMOLITION" && scope !== "SIGNAGE"),
     materials: ["MAT-DOMESTIC-LIGHTING", "MAT-CUSTOM-MILLWORK"],
     suppliers: ["SUP-04"],
   }),
@@ -351,9 +345,15 @@ describe("CPI-SIM-1.0 canonical ranking", () => {
 
   it("records within-two-point equivalence without overriding score-descending order", () => {
     const ranked = rankCandidateCalculations(
-      canonicalCandidates.slice(1, 3).map((project) =>
-        calculateCandidateSimilarity(active, project, evaluateCandidateEligibility(active, project)),
-      ),
+      canonicalCandidates
+        .slice(1, 3)
+        .map((project) =>
+          calculateCandidateSimilarity(
+            active,
+            project,
+            evaluateCandidateEligibility(active, project),
+          ),
+        ),
     );
 
     expect(ranked.map((item) => item.candidate.businessKey)).toEqual([

@@ -230,12 +230,10 @@ export class RunComparableProjectAnalysis {
         policyVersion: SIMILARITY_POLICY_VERSION,
         calculationVersion: CALCULATION_VERSION,
       });
-      const missingOptionalContext = Object.freeze(
-        [
-          ...(resolved.context.materialIds.length === 0 ? ["MATERIAL_OVERLAP"] : []),
-          ...(resolved.context.supplierIds.length === 0 ? ["SUPPLIER_OVERLAP"] : []),
-        ] as SimilarityFactorKey[],
-      );
+      const missingOptionalContext = Object.freeze([
+        ...(resolved.context.materialIds.length === 0 ? ["MATERIAL_OVERLAP"] : []),
+        ...(resolved.context.supplierIds.length === 0 ? ["SUPPLIER_OVERLAP"] : []),
+      ] as SimilarityFactorKey[]);
 
       const result: Stage4ComparisonResult = Object.freeze({
         version: "comparable-project-stage4.v1",
@@ -259,14 +257,16 @@ export class RunComparableProjectAnalysis {
           areaUnit: resolved.context.areaUnit,
           currency: resolved.context.currency,
           location: resolved.context.location,
-          activeQuoteVersionId: resolved.context.activeQuoteVersionId,
+          activeQuoteVersionKey: resolved.context.activeQuoteVersionKey,
         }),
         summary: Object.freeze({
           ...summary,
           factorsUsed: FACTOR_ORDER,
           missingOptionalContext,
         }),
-        matches: Object.freeze(primary.map((calculation, index) => matchDTO(calculation, index + 1))),
+        matches: Object.freeze(
+          primary.map((calculation, index) => matchDTO(calculation, index + 1)),
+        ),
         broaderMatches: Object.freeze(
           broader.map((calculation, index) => matchDTO(calculation, primary.length + index + 1)),
         ),

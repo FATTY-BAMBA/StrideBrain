@@ -198,7 +198,8 @@ export function locationSimilarity(
   const activeDistrict = normalizedLocation(active.district);
   const candidateDistrict = normalizedLocation(candidate.district);
 
-  if (activeCity === candidateCity && activeDistrict && activeDistrict === candidateDistrict) return 1;
+  if (activeCity === candidateCity && activeDistrict && activeDistrict === candidateDistrict)
+    return 1;
   if (activeCity === candidateCity) return 0.6;
   if (ADJACENT_CITIES.has(`${activeCity}|${candidateCity}`)) return 0.3;
   return 0;
@@ -251,20 +252,8 @@ export function calculateFactors(
       active.commercialCategoryIds,
       candidate.commercialCategoryIds,
     ),
-    setFactor(
-      active,
-      candidate,
-      "MATERIAL_OVERLAP",
-      active.materialIds,
-      candidate.materialIds,
-    ),
-    setFactor(
-      active,
-      candidate,
-      "SUPPLIER_OVERLAP",
-      active.supplierIds,
-      candidate.supplierIds,
-    ),
+    setFactor(active, candidate, "MATERIAL_OVERLAP", active.materialIds, candidate.materialIds),
+    setFactor(active, candidate, "SUPPLIER_OVERLAP", active.supplierIds, candidate.supplierIds),
     knownFactor(
       active,
       candidate,

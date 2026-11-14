@@ -48,10 +48,5 @@ export function allowedHistoricalClassifications(
   if (context.role === "VIEWER") {
     return Object.freeze(["DEMO_SYNTHETIC", "PUBLIC_REFERENCE", "TENANT_APPROVED"]);
   }
-  return Object.freeze([
-    "DEMO_SYNTHETIC",
-    "PUBLIC_REFERENCE",
-    "TENANT_PRIVATE",
-    "TENANT_APPROVED",
-  ]);
+  return Object.freeze(["DEMO_SYNTHETIC", "PUBLIC_REFERENCE", "TENANT_PRIVATE", "TENANT_APPROVED"]);
 }

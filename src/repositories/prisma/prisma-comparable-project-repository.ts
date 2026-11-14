@@ -142,9 +142,7 @@ function mapEvidence(
     existing.push(reference.id);
     map.set(key, existing);
   }
-  return new Map(
-    [...map.entries()].map(([key, values]) => [key, unique(values)] as const),
-  );
+  return new Map([...map.entries()].map(([key, values]) => [key, unique(values)] as const));
 }
 
 function evidenceFor(
@@ -152,9 +150,7 @@ function evidenceFor(
   subjectType: "DOCUMENT_VERSION" | "QUOTE_ITEM",
   subjectIds: readonly string[],
 ): readonly string[] {
-  return unique(
-    subjectIds.flatMap((subjectId) => map.get(`${subjectType}:${subjectId}`) ?? []),
-  );
+  return unique(subjectIds.flatMap((subjectId) => map.get(`${subjectType}:${subjectId}`) ?? []));
 }
 
 function mapProfile(
@@ -163,11 +159,7 @@ function mapProfile(
 ): ComparisonProjectProfile {
   const quote = currentQuote(row);
   const sourceIds = profileSourceIds(row);
-  const projectEvidence = evidenceFor(
-    evidence,
-    "DOCUMENT_VERSION",
-    sourceIds.documentVersionIds,
-  );
+  const projectEvidence = evidenceFor(evidence, "DOCUMENT_VERSION", sourceIds.documentVersionIds);
   const commercialEvidence = evidenceFor(evidence, "QUOTE_ITEM", sourceIds.quoteItemIds);
 
   return Object.freeze({
@@ -190,9 +182,7 @@ function mapProfile(
     metadataAuthority: row.metadataAuthority,
     dataClassification: row.dataClassification,
     scopeCategoryIds: unique(row.scopes.map((scope) => scope.categoryId)),
-    commercialCategoryIds: unique(
-      quote?.version.items.map((item) => item.categoryId) ?? [],
-    ),
+    commercialCategoryIds: unique(quote?.version.items.map((item) => item.categoryId) ?? []),
     materialIds: unique(
       row.projectMaterials.map((relationship) => relationship.material.businessKey),
     ),
@@ -358,9 +348,7 @@ export class PrismaComparableProjectRepository implements ComparableProjectRepos
     });
 
     const sourceIds = rows.map(profileSourceIds);
-    const documentVersionIds = unique(
-      sourceIds.flatMap((sources) => sources.documentVersionIds),
-    );
+    const documentVersionIds = unique(sourceIds.flatMap((sources) => sources.documentVersionIds));
     const quoteItemIds = unique(sourceIds.flatMap((sources) => sources.quoteItemIds));
     const evidenceQueryExecuted = documentVersionIds.length > 0 || quoteItemIds.length > 0;
     const evidenceRows = evidenceQueryExecuted
