@@ -58,12 +58,42 @@ function hasProjectAssignment(
   context: RuntimeContext,
   projectId: string,
 ): boolean {
-  return context.role === "ORGANIZATION_ADMIN" ||
-    context.assignedProjectIds?.has(projectId) === true;
+  return (
+    context.role === "ORGANIZATION_ADMIN" ||
+    context.assignedProjectIds?.has(projectId) === true
+  );
 }
 
-function commercialScope(context: RuntimeContext): CommercialScope {
-  if (context.capabilities.has("commercial:actual-read")) return "FULL_ACTUAL";
+function assignmentAllowsActual(
+  context: RuntimeContext,
+  projectId: string,
+): boolean {
+  return (
+    context.role === "ORGANIZATION_ADMIN" ||
+    context.projectAssignments?.get(projectId)?.canReadActuals === true
+  );
+}
+
+function assignmentAllowsAction(
+  context: RuntimeContext,
+  projectId: string,
+): boolean {
+  return (
+    context.role === "ORGANIZATION_ADMIN" ||
+    context.projectAssignments?.get(projectId)?.canCreateAction === true
+  );
+}
+
+function commercialScope(
+  context: RuntimeContext,
+  projectId: string,
+): CommercialScope {
+  if (
+    context.capabilities.has("commercial:actual-read") &&
+    assignmentAllowsActual(context, projectId)
+  ) {
+    return "FULL_ACTUAL";
+  }
   if (context.capabilities.has("commercial:forecast-read")) {
     return "QUOTE_AND_FORECAST";
   }
@@ -71,9 +101,13 @@ function commercialScope(context: RuntimeContext): CommercialScope {
   return "NONE";
 }
 
-function evidenceScope(context: RuntimeContext): EvidenceAccessScope {
+function evidenceScope(
+  context: RuntimeContext,
+  projectId: string,
+): EvidenceAccessScope {
   if (!context.capabilities.has("evidence:read")) return "NONE";
-  return context.capabilities.has("commercial:actual-read")
+  return context.capabilities.has("commercial:actual-read") &&
+    assignmentAllowsActual(context, projectId)
     ? "AUTHORIZED"
     : "NON_SENSITIVE";
 }
@@ -105,8 +139,8 @@ export class AuthorizationService {
     return Object.freeze({
       allowed: true,
       internalReason: "ALLOWED",
-      commercialScope: commercialScope(context),
-      evidenceScope: evidenceScope(context),
+      commercialScope: commercialScope(context, projectId),
+      evidenceScope: evidenceScope(context, projectId),
     });
   }
 
@@ -127,10 +161,18 @@ export class AuthorizationService {
     const project = this.canReadProject(context, projectId);
     if (!project.allowed) return project;
 
+    if (kind === "ACTUAL" && !assignmentAllowsActual(context, projectId)) {
+      return Object.freeze({
+        allowed: false,
+        publicError: "PROJECT_UNAVAILABLE",
+        internalReason: "ACTUAL_READ_DENIED",
+      });
+    }
+
     const capability: Capability =
       kind === "ACTUAL"
         ? "commercial:actual-read"
-        : kind === "FORECAST"
+        : kind === "FORECAST" || kind === "SUPPLIER_OFFER"
           ? "commercial:forecast-read"
           : "quote:read";
     const decision = capabilityDecision(
@@ -174,7 +216,7 @@ export class AuthorizationService {
         internalReason: project.internalReason,
       });
     }
-    if (context.projectAssignments?.get(projectId)?.canCreateAction === false) {
+    if (!assignmentAllowsAction(context, projectId)) {
       return Object.freeze({
         allowed: false,
         publicError: "ACTION_NOT_AUTHORIZED",
