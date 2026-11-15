@@ -13,6 +13,7 @@ import {
 const DATABASE_AVAILABLE = Boolean(process.env.DATABASE_URL);
 const describeDatabase = DATABASE_AVAILABLE ? describe : describe.skip;
 const SIGNING_SECRET = "stage6-integration-session-secret-at-least-32-bytes";
+const HERO_PIPELINE_BUDGET_MS = 5_000;
 
 describeDatabase("Stage 6 PostgreSQL hero flow", () => {
   it("runs the authorized structural and economics pipeline and composes the real UI DTO", async () => {
@@ -35,6 +36,7 @@ describeDatabase("Stage 6 PostgreSQL hero flow", () => {
     );
     expect(context).not.toBeNull();
 
+    const startedAt = performance.now();
     const services = createComparisonServices();
     const structural = await services.runComparison.execute(context!, "PRJ-XINYI-026");
     expect(structural.kind).toBe("COMPLETE");
@@ -64,7 +66,10 @@ describeDatabase("Stage 6 PostgreSQL hero flow", () => {
       economics: economics.result,
       locale: "en",
     });
+    const durationMs = performance.now() - startedAt;
+    console.info(`STAGE6_HERO_PIPELINE_MS=${durationMs.toFixed(2)}`);
 
+    expect(durationMs).toBeLessThan(HERO_PIPELINE_BUDGET_MS);
     expect(view.cards).toHaveLength(6);
     expect(view.initialSelectedProjectKeys).toEqual([
       "PRJ-NEIHU-021",
