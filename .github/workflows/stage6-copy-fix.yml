@@ -32,7 +32,7 @@ jobs:
       - name: Align authority terminology
         shell: bash
         run: |
-          python -c 'from pathlib import Path; p=Path("src/modules/comparison-experience/copy.ts"); s=p.read_text().replace("forecastRate: \"Current forecast · normalized\"", "forecastRate: \"Forecast direct cost · normalized\"").replace("forecastRate: \"目前預估 · 標準化\"", "forecastRate: \"預估直接成本 · 標準化\""); p.write_text(s)'
+          python -c 'from pathlib import Path; p=Path("src/modules/comparison-experience/copy.ts"); s=p.read_text().replace("forecastRate: \"Current forecast · normalized\"", "forecastRate: \"Forecast direct cost · normalized\"").replace("forecastRate: \"目前預估 · 標準化\"", "forecastRate: \"預估直接成本 · 標準化\"").replace("actualRate: \"Reconciled actual · normalized\"", "actualRate: \"Reconciled actual cost · normalized\"").replace("actualRate: \"已核對實際成本 · 標準化\"", "actualRate: \"已核對實際成本 · 標準化\""); p.write_text(s)'
           npx prettier --write src/modules/comparison-experience/copy.ts
           npm run format:check
           npm run test:localization
@@ -45,5 +45,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add src/modules/comparison-experience/copy.ts .github/workflows/stage6-copy-fix.yml
-          git commit -m "content(stage6): use explicit forecast-cost terminology"
+          git commit -m "content(stage6): use explicit financial authority terms"
           git push origin HEAD:build/stage-6-structured-comparison-experience
