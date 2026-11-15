@@ -27,6 +27,8 @@ export type ProjectAssignmentGrant = Readonly<{
 }>;
 
 export type RuntimeContext = {
+  /** Verified server-only session selector; never accepted from a request body. */
+  sessionId?: string | undefined;
   requestId: string;
   userId: string;
   membershipId: string;

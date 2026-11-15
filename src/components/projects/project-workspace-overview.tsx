@@ -8,6 +8,8 @@ import type {
   ProjectWorkspaceDTO,
 } from "@/modules/projects/domain/project-workspace";
 import type { Locale } from "@/modules/localization/config";
+import { getInternalReviewCopy } from "@/modules/internal-review-experience/copy";
+import { projectActionsHref } from "@/modules/internal-review-experience/route-state";
 
 import styles from "./project-workspace-overview.module.css";
 
@@ -114,6 +116,7 @@ function formatObservation(
 export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspaceOverviewProps) {
   const labels = copy[locale];
   const comparison = getComparisonCopy(locale);
+  const actionCopy = getInternalReviewCopy(locale);
   const areaUnit =
     workspace.project.area.unit.toLowerCase() === "m2" ? "m²" : workspace.project.area.unit;
   const comparisonUrl = comparisonHref(locale, workspace.project.businessKey) as Route;
@@ -224,6 +227,38 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
           </ul>
         </article>
       </section>
+
+      {workspace.openActions.length > 0 ? (
+        <section className={styles.panel} aria-labelledby="workspace-actions-title">
+          <div className={styles.panelHeader}>
+            <h2 id="workspace-actions-title">{actionCopy.overviewActions}</h2>
+          </div>
+          <ul className={styles.list}>
+            {workspace.openActions.map((action) => (
+              <li key={action.actionKey}>
+                <Link
+                  href={
+                    projectActionsHref(
+                      locale,
+                      workspace.project.businessKey,
+                      action.actionKey,
+                    ) as Route
+                  }
+                >
+                  {action.title}
+                </Link>
+                <span>{action.dueDate ?? actionCopy.noDueDate}</span>
+              </li>
+            ))}
+          </ul>
+          <Link
+            className={styles.questionLink}
+            href={projectActionsHref(locale, workspace.project.businessKey) as Route}
+          >
+            {actionCopy.openActions}
+          </Link>
+        </section>
+      ) : null}
 
       <section className={styles.panel} aria-labelledby="project-questions-title">
         <div className={styles.panelHeader}>

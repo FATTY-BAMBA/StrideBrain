@@ -160,6 +160,7 @@ model Organization {
   proposedActions               ProposedAction[]
   actions              Action[]
   auditEvents          AuditEvent[]
+  internalReviewReceipts InternalReviewReceipt[]
   capabilityGrants     MembershipCapabilityGrant[]
   demoSessions         DemoSession[]
 }
@@ -198,9 +199,15 @@ model Membership {
   auditEvents      AuditEvent[]                @relation("AuditActorMembership")
   capabilityGrants MembershipCapabilityGrant[]
   demoSessions     DemoSession[]
+  preparedInternalReviews ProposedAction[] @relation("PreparedInternalReview")
+  suggestedInternalReviews ProposedAction[] @relation("SuggestedInternalReviewAssignee")
+  createdInternalReviews Action[] @relation("CreatedInternalReview")
+  assignedInternalReviews Action[] @relation("AssignedInternalReview")
+  internalReviewReceipts InternalReviewReceipt[] @relation("InternalReviewReceiptActor")
 
   @@unique([organizationId, personId])
   @@unique([id, organizationId])
+  @@unique([id, organizationId, personId], map: "Membership_person_scope_key")
   @@index([organizationId, role, active])
 }
 
@@ -784,6 +791,7 @@ model ComparisonRun {
   auditEvents        AuditEvent[]
 
   @@unique([id, organizationId])
+  @@unique([id, organizationId, activeProjectId], map: "ComparisonRun_project_scope_key")
   @@index([organizationId, activeProjectId, status])
   @@index([organizationId, inputFingerprint])
 }
@@ -876,8 +884,11 @@ model EconomicsEnrichmentRun {
   comparisonRun        ComparisonRun                 @relation(fields: [comparisonRunId], references: [id], onDelete: Cascade)
   activeProject        Project                       @relation("ActiveEconomicsProject", fields: [activeProjectId], references: [id], onDelete: Cascade)
   observationDecisions EconomicsObservationDecision[]
+  proposedActions ProposedAction[] @relation("InternalReviewProposalEnrichment")
+  internalReviewActions Action[] @relation("InternalReviewActionEnrichment")
 
   @@unique([id, organizationId])
+  @@unique([id, organizationId, comparisonRunId, activeProjectId], map: "EconomicsEnrichmentRun_scope_key")
   @@index([organizationId, activeProjectId, status])
   @@index([organizationId, inputFingerprint])
 }
@@ -926,14 +937,33 @@ model ProposedAction {
   expiresAt            DateTime?
   createdAt            DateTime             @default(now())
   updatedAt            DateTime             @updatedAt
+  businessKey          String?
+  enrichmentRunId      String?
+  preparedByMembershipId String?
+  suggestedAssigneeMembershipId String?
+  preparationKey       String?
+  confirmationKey      String?
+  snapshotVersion      String?
+  contentSnapshot      Json?
+  consumedAt           DateTime?
 
   organization Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   project      Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
   comparisonRun ComparisonRun @relation(fields: [comparisonRunId], references: [id], onDelete: Cascade)
   actions      Action[]
+  lineageActions Action[] @relation("ActionProposalLineage")
   auditEvents  AuditEvent[]
+  enrichmentRun EconomicsEnrichmentRun? @relation("InternalReviewProposalEnrichment", fields: [enrichmentRunId, organizationId, comparisonRunId, projectId], references: [id, organizationId, comparisonRunId, activeProjectId], onDelete: NoAction, onUpdate: NoAction)
+  preparedBy Membership? @relation("PreparedInternalReview", fields: [preparedByMembershipId, organizationId], references: [id, organizationId], onDelete: NoAction, onUpdate: NoAction)
+  suggestedAssignee Membership? @relation("SuggestedInternalReviewAssignee", fields: [suggestedAssigneeMembershipId, organizationId, suggestedAssigneeId], references: [id, organizationId, personId], onDelete: NoAction, onUpdate: NoAction)
 
   @@unique([id, organizationId])
+  @@unique([organizationId, businessKey], map: "ProposedAction_business_key")
+  @@unique([organizationId, preparationKey], map: "ProposedAction_preparation_key")
+  @@unique([id, organizationId, projectId, comparisonRunId, enrichmentRunId, preparedByMembershipId], map: "ProposedAction_lineage_key")
+  @@index([organizationId, enrichmentRunId], map: "ProposedAction_enrichment_idx")
+  @@index([organizationId, preparedByMembershipId], map: "ProposedAction_preparer_idx")
+  @@index([organizationId, suggestedAssigneeMembershipId], map: "ProposedAction_assignee_idx")
   @@index([organizationId, projectId, status])
 }
 
@@ -953,15 +983,58 @@ model Action {
   createdByUserId      String
   createdAt            DateTime     @default(now())
   updatedAt            DateTime     @updatedAt
+  businessKey          String?
+  enrichmentRunId      String?
+  createdByMembershipId String?
+  assigneeMembershipId String?
+  snapshotVersion      String?
+  contentSnapshot      Json?
+  evidenceSnapshot     Json?
 
   organization   Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   project        Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
   comparisonRun  ComparisonRun  @relation(fields: [comparisonRunId], references: [id], onDelete: Restrict)
   proposedAction ProposedAction? @relation(fields: [proposedActionId], references: [id], onDelete: SetNull)
+  proposalLineage ProposedAction? @relation("ActionProposalLineage", fields: [proposedActionId, organizationId, projectId, comparisonRunId, enrichmentRunId, createdByMembershipId], references: [id, organizationId, projectId, comparisonRunId, enrichmentRunId, preparedByMembershipId], onDelete: NoAction, onUpdate: NoAction, map: "Action_proposal_lineage_fkey")
   auditEvents    AuditEvent[]
+  enrichmentRun EconomicsEnrichmentRun? @relation("InternalReviewActionEnrichment", fields: [enrichmentRunId, organizationId, comparisonRunId, projectId], references: [id, organizationId, comparisonRunId, activeProjectId], onDelete: NoAction, onUpdate: NoAction)
+  createdBy Membership? @relation("CreatedInternalReview", fields: [createdByMembershipId, organizationId, createdByUserId], references: [id, organizationId, personId], onDelete: NoAction, onUpdate: NoAction)
+  assignee Membership? @relation("AssignedInternalReview", fields: [assigneeMembershipId, organizationId, assigneePersonId], references: [id, organizationId, personId], onDelete: NoAction, onUpdate: NoAction)
+  receipt InternalReviewReceipt?
 
   @@unique([id, organizationId])
+  @@unique([organizationId, businessKey], map: "Action_business_key")
+  @@unique([organizationId, proposedActionId], map: "Action_proposal_once_key")
+  @@unique([id, organizationId, projectId, proposedActionId, comparisonRunId, enrichmentRunId, createdByMembershipId], map: "Action_receipt_lineage_key")
+  @@index([organizationId, enrichmentRunId], map: "Action_enrichment_idx")
+  @@index([organizationId, createdByMembershipId], map: "Action_creator_idx")
+  @@index([organizationId, assigneeMembershipId], map: "Action_assignee_idx")
   @@index([organizationId, projectId, status])
+}
+
+model InternalReviewReceipt {
+  id                String @id
+  organizationId    String
+  projectId         String
+  proposedActionId  String
+  actionId          String
+  comparisonRunId   String
+  enrichmentRunId   String
+  actorMembershipId String
+  idempotencyKey    String
+  payloadFingerprint String
+  createdAt         DateTime @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  actor Membership @relation("InternalReviewReceiptActor", fields: [actorMembershipId, organizationId], references: [id, organizationId], onDelete: NoAction, onUpdate: NoAction)
+  action Action @relation(fields: [actionId, organizationId, projectId, proposedActionId, comparisonRunId, enrichmentRunId, actorMembershipId], references: [id, organizationId, projectId, proposedActionId, comparisonRunId, enrichmentRunId, createdByMembershipId], onDelete: NoAction, onUpdate: NoAction, map: "InternalReviewReceipt_action_lineage_fkey")
+
+  @@unique([organizationId, idempotencyKey], map: "InternalReviewReceipt_idempotency_key")
+  @@unique([organizationId, proposedActionId], map: "InternalReviewReceipt_proposal_key")
+  @@unique([organizationId, actionId], map: "InternalReviewReceipt_action_key")
+  @@unique([actionId, organizationId, projectId, proposedActionId, comparisonRunId, enrichmentRunId, actorMembershipId], map: "InternalReviewReceipt_lineage_key")
+  @@index([organizationId, projectId, createdAt], map: "InternalReviewReceipt_project_created_idx")
+  @@index([organizationId, actorMembershipId], map: "InternalReviewReceipt_actor_idx")
 }
 
 model AuditEvent {

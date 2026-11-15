@@ -6,6 +6,10 @@ import { useRouter } from "next/navigation";
 
 import { updateComparisonSelectionAction } from "@/app/[locale]/projects/[projectKey]/compare/actions";
 import { EvidencePanel } from "@/components/evidence/evidence-panel";
+import {
+  InternalReviewController,
+  type InternalReviewExperienceProps,
+} from "@/components/internal-review/internal-review-controller";
 import type {
   ComparableProjectCardView,
   ComparisonExperienceView,
@@ -24,6 +28,7 @@ type ComparisonExperienceClientProps = Readonly<{
   view: ComparisonExperienceView;
   evidencePanel?: EvidencePanelOutcome | undefined;
   evidenceReturnId?: string | undefined;
+  internalReview?: InternalReviewExperienceProps | undefined;
 }>;
 
 function bandClass(band: ComparableProjectCardView["band"]): string {
@@ -211,6 +216,7 @@ export function ComparisonExperienceClient({
   view,
   evidencePanel,
   evidenceReturnId,
+  internalReview,
 }: ComparisonExperienceClientProps) {
   const router = useRouter();
   const copy = getComparisonCopy(view.locale);
@@ -225,7 +231,7 @@ export function ComparisonExperienceClient({
   const dirty = orderedSelected.join(",") !== view.initialSelectedProjectKeys.join(",");
 
   const navigateEvidence = useCallback(
-    (selection: EvidencePanelSelection, triggerId?: string) => {
+    (selection: EvidencePanelSelection, triggerId?: string, fromReview = false) => {
       const url = new URL(window.location.href);
       for (const key of EVIDENCE_QUERY_KEYS) url.searchParams.delete(key);
       for (const [key, value] of Object.entries(evidenceSelectionParams(selection))) {
@@ -233,6 +239,7 @@ export function ComparisonExperienceClient({
       }
       const returnId = triggerId ?? evidenceReturnId;
       if (returnId) url.searchParams.set("evidenceReturn", returnId);
+      if (fromReview) url.searchParams.set("reviewEvidence", "1");
       router.push(`${url.pathname}?${url.searchParams.toString()}` as Route, { scroll: false });
     },
     [evidenceReturnId, router],
@@ -242,12 +249,19 @@ export function ComparisonExperienceClient({
     const url = new URL(window.location.href);
     const returnId = evidenceReturnId;
     for (const key of EVIDENCE_QUERY_KEYS) url.searchParams.delete(key);
+    url.searchParams.delete("reviewEvidence");
     if (returnId) url.searchParams.set("evidenceReturn", returnId);
     router.push(`${url.pathname}?${url.searchParams.toString()}` as Route, { scroll: false });
   }, [evidenceReturnId, router]);
 
   useEffect(() => {
-    if (evidencePanel || !evidenceReturnId) return;
+    if (
+      evidencePanel ||
+      !evidenceReturnId ||
+      internalReview?.route.proposalKey ||
+      internalReview?.route.actionKey
+    )
+      return;
     const target = document.querySelector<HTMLElement>(
       `[data-evidence-trigger-id="${CSS.escape(evidenceReturnId)}"]`,
     );
@@ -255,7 +269,13 @@ export function ComparisonExperienceClient({
     const url = new URL(window.location.href);
     url.searchParams.delete("evidenceReturn");
     router.replace(`${url.pathname}?${url.searchParams.toString()}` as Route, { scroll: false });
-  }, [evidencePanel, evidenceReturnId, router]);
+  }, [
+    evidencePanel,
+    evidenceReturnId,
+    internalReview?.route.proposalKey,
+    internalReview?.route.actionKey,
+    router,
+  ]);
 
   const openClaim = useCallback(
     (claimKey: string, triggerId: string) => {
@@ -290,6 +310,23 @@ export function ComparisonExperienceClient({
       );
     },
     [navigateEvidence, view.route.comparisonRunId],
+  );
+
+  const openReviewEvidence = useCallback(
+    (claimKey: string, triggerId: string) => {
+      if (!view.route.economicsRunId) return;
+      navigateEvidence(
+        {
+          mode: "CLAIM",
+          comparisonRunId: view.route.comparisonRunId,
+          enrichmentRunId: view.route.economicsRunId,
+          claimKey,
+        },
+        triggerId,
+        true,
+      );
+    },
+    [navigateEvidence, view.route.comparisonRunId, view.route.economicsRunId],
   );
 
   function toggleProject(projectKey: string) {
@@ -522,15 +559,15 @@ export function ComparisonExperienceClient({
         ))}
       </aside>
 
-      <section className={styles.futureAction}>
-        <div>
-          <strong>{copy.synthesis.recommendation}</strong>
-          <p>{copy.actionComingLater}</p>
-        </div>
-        <button className={styles.secondaryButton} type="button" disabled>
-          {view.locale === "zh-TW" ? "建立內部審查事項" : "Create internal review action"}
-        </button>
-      </section>
+      {internalReview ? (
+        <InternalReviewController
+          key={`${internalReview.locale}:${internalReview.route.actionKey ?? internalReview.route.proposalKey ?? internalReview.route.errorKind ?? "entry"}`}
+          {...internalReview}
+          evidenceActive={!!evidencePanel}
+          evidenceReturnId={evidenceReturnId}
+          onEvidence={openReviewEvidence}
+        />
+      ) : null}
 
       {evidencePanel ? (
         <EvidencePanel

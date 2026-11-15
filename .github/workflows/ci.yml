@@ -70,6 +70,9 @@ jobs:
       - name: Verify tenant, authority, and fixture invariants
         run: npm run db:verify
 
+      - name: Verify repeatable synthetic fixture reset
+        run: npm run db:seed && npm run db:verify
+
       - name: Check formatting
         run: npm run format:check
 
