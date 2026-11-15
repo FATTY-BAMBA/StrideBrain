@@ -1,0 +1,160 @@
+{
+  "kind": "NON_UI_API_DIAGNOSTIC_AFTER_PREVIEW_ORIGIN_ALIGNMENT",
+  "head": "4c13f726bb75f4a31d263eb6e54622224807d019",
+  "buildId": "3arTh5JwUyUt0e73FJY-z",
+  "persona": "finance",
+  "time": "2026-11-15T22:24:59.182Z",
+  "route": "/api/actions/internal-review/proposals",
+  "serverBindHostname": "localhost",
+  "configuredOrigin": "http://localhost:3000",
+  "status": 200,
+  "cacheControl": "private, no-store",
+  "durationMs": 794.89651,
+  "request": {
+    "projectKey": "PRJ-XINYI-026",
+    "comparisonRunId": "cmprun_e928ff34-9e01-42e6-a5bf-cc7196d0915e",
+    "enrichmentRunId": "econrun_1ac0d77a-9d11-40d9-9a91-6b655fa123a0",
+    "locale": "en",
+    "returnContext": {
+      "selectedProjectKeys": [
+        "PRJ-NEIHU-021",
+        "PRJ-ZHONGSHAN-018",
+        "PRJ-NANJING-023"
+      ]
+    }
+  },
+  "result": {
+    "kind": "PREPARED",
+    "proposal": {
+      "version": "internal-review-proposal.v1",
+      "businessKey": "proposal_4829bc23-b486-4c76-a267-ea9f1e611d78",
+      "project": {
+        "projectKey": "PRJ-XINYI-026",
+        "name": "Xinyi Flagship Renovation"
+      },
+      "comparisonRunId": "cmprun_e928ff34-9e01-42e6-a5bf-cc7196d0915e",
+      "enrichmentRunId": "econrun_1ac0d77a-9d11-40d9-9a91-6b655fa123a0",
+      "locale": "en",
+      "timezone": "Asia/Taipei",
+      "titleOptions": [
+        {
+          "key": "VALIDATE",
+          "text": "Validate imported-stone and lighting assumptions for Xinyi quote v3"
+        },
+        {
+          "key": "REVIEW",
+          "text": "Review imported-stone and lighting assumptions for Xinyi quote v3"
+        },
+        {
+          "key": "CHECK",
+          "text": "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3"
+        }
+      ],
+      "rationaleOptions": [
+        {
+          "key": "REVIEW_NEXT",
+          "text": "Review these assumptions against the linked evidence before the next internal quotation review."
+        },
+        {
+          "key": "RECORD_QUESTIONS",
+          "text": "Check the supporting evidence and record questions for internal review."
+        },
+        {
+          "key": "VALIDATE_HISTORY",
+          "text": "Validate the imported-stone and lighting assumptions using the linked historical evidence."
+        }
+      ],
+      "title": "Validate imported-stone and lighting assumptions for Xinyi quote v3",
+      "rationale": "Review these assumptions against the linked evidence before the next internal quotation review.",
+      "titleKey": "VALIDATE",
+      "rationaleKey": "REVIEW_NEXT",
+      "mandatoryStatements": [
+        {
+          "key": "STONE",
+          "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.",
+          "claimKey": "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE"
+        },
+        {
+          "key": "LIGHTING",
+          "text": "Lighting quoted price differs by +9.4% from eligible quoted-price history.",
+          "claimKey": "XINYI_LIGHTING_ELECTRICAL_QUOTED_VARIANCE"
+        },
+        {
+          "key": "LIGHTING_INSUFFICIENT",
+          "text": "Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.",
+          "claimKey": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT"
+        },
+        {
+          "key": "PROGRAMME",
+          "text": "The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.",
+          "claimKey": "XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED"
+        },
+        {
+          "key": "REFERENCES",
+          "text": "Comparison: cmprun_e928ff34-9e01-42e6-a5bf-cc7196d0915e; economics enrichment: econrun_1ac0d77a-9d11-40d9-9a91-6b655fa123a0."
+        }
+      ],
+      "warnings": [
+        {
+          "key": "REVIEW_ONLY",
+          "text": "This creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally."
+        },
+        {
+          "key": "NO_UNSUPPORTED_CONCLUSION",
+          "text": "Historical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid."
+        }
+      ],
+      "assignees": [
+        {
+          "key": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b",
+          "displayName": "Mei Lin"
+        },
+        {
+          "key": "assignee_b911d550581d518bb8f326c678217ad0",
+          "displayName": "Alex Chen"
+        },
+        {
+          "key": "assignee_e1078151219336a0529d3fa95332a60f",
+          "displayName": "Iris Huang"
+        }
+      ],
+      "suggestedAssigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+      "canAssign": true,
+      "suggestedDueDate": "2026-11-23",
+      "minDueDate": "2026-11-16",
+      "maxDueDate": "2027-11-16",
+      "expiresAt": "2026-11-15T22:54:58.910Z",
+      "idempotencyKey": "[REDACTED_CONFIRMATION_KEY]",
+      "evidenceLinks": [
+        {
+          "claimKey": "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+          "label": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history."
+        },
+        {
+          "claimKey": "XINYI_LIGHTING_ELECTRICAL_QUOTED_VARIANCE",
+          "label": "Lighting quoted price differs by +9.4% from eligible quoted-price history."
+        },
+        {
+          "claimKey": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+          "label": "Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available."
+        },
+        {
+          "claimKey": "XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED",
+          "label": "The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium."
+        }
+      ],
+      "returnContext": {
+        "selectedProjectKeys": [
+          "PRJ-NEIHU-021",
+          "PRJ-ZHONGSHAN-018",
+          "PRJ-NANJING-023"
+        ]
+      }
+    }
+  },
+  "credentialsRecorded": false,
+  "browserEvidence": false,
+  "redactions": [
+    "Server-issued proposal idempotencyKey omitted from committed evidence. Full diagnostic retained only in private temporary operator storage."
+  ]
+}

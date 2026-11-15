@@ -1,20 +1,23 @@
 {
   "version": "sb029-computer-qa-report.v1",
   "task": "SB-029",
-  "status": "NOT_RUN",
-  "reason": "Independent browser QA has not started. The contract is accepted and state is BUILDING. The dedicated preview database now has all eight migrations, reviewed synthetic fixtures, and passing SQL invariants; implementation validation, exact-head production preview, and synthetic session issuance remain required.",
+  "status": "BLOCKED",
+  "reason": "Computer QA is blocked by actual shared-CUA navigation failure and unavailable AT-SPI fallback. No complete Stage 8 browser scenario passed. Isolated production preview remains ready; non-UI HTTP/PostgreSQL smoke passed after correcting only the preview bind hostname.",
   "independent_role": "Computer QA Coordinator",
   "baseline_commit": "0ecd65bdb0ae752f3244960d6848a74a30d5da01",
   "branch": "build/sb-029-governed-internal-review",
-  "tested_head": null,
-  "preview_url": null,
-  "production_build_identity": null,
-  "started_at": null,
+  "tested_head": "4c13f726bb75f4a31d263eb6e54622224807d019",
+  "preview_url": "http://localhost:3000",
+  "production_build_identity": "3arTh5JwUyUt0e73FJY-z",
+  "started_at": "2026-11-15T22:16:04.883769Z",
   "completed_at": null,
-  "browser": null,
-  "tool_available": "mcp__cua_repl cloud browser advertised; not initialized for this task",
-  "plan_status": "PLANNED_BUILDING_AWAITING_PREVIEW",
-  "preview_scaffolding_status": "DATABASE_PREPARED_AWAITING_PRODUCTION_PREVIEW",
+  "browser": {
+    "shared": "Chrome via root CUA; tab stayed about:blank because navigation failed twice",
+    "supplemental": "Headless Chromium exploration stopped; only Finance/en workspace/comparison partial evidence"
+  },
+  "tool_available": "Root CUA callable but navigation unusable; documented Sky fallback input unavailable. Child coordinates report/non-UI evidence. Tool attempts are not successful application browser QA.",
+  "plan_status": "COMPUTER_QA_BLOCKED",
+  "preview_scaffolding_status": "PRODUCTION_PREVIEW_READY",
   "preview_infrastructure_checks": {
     "database": "stridebrain_stage8_preview",
     "container": "stridebrain-sb029-test-eval",
@@ -30,31 +33,348 @@
     "existing_source_imports": "PASS",
     "secret_values_printed_or_committed": false,
     "migrations_or_seed_run": true,
-    "sessions_issued": false,
-    "servers_started": false,
-    "browser_started": false,
-    "qualification": "These are infrastructure checks only and do not count as browser cases or preview readiness."
+    "sessions_issued": true,
+    "servers_started": true,
+    "browser_started": true,
+    "qualification": "These are infrastructure checks only and do not count as browser cases or preview readiness.",
+    "current_non_ui_smoke_counts": {
+      "actions": 1,
+      "consumed": 1,
+      "receipts": 1,
+      "audits": 1
+    },
+    "server_bind_hostname": "localhost"
   },
   "tested_locales": [],
   "tested_viewports": [],
   "tested_personas": [],
   "tested_routes": [],
-  "case_results": [],
-  "screenshots": [],
-  "findings": [],
-  "performance_samples": [],
-  "server_validation_references": [],
-  "repair_retests": [],
+  "case_results": [
+    {
+      "id": "QA-01",
+      "name": "Authorized preparation is preparatory only",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-02",
+      "name": "Bounded edits and mandatory content",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-03",
+      "name": "Explicit confirmation and durable receipt",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-04",
+      "name": "Cancel, Escape, and evidence round trip",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-05",
+      "name": "Locale and route restoration",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-06",
+      "name": "Retry, double submit, and replay",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-07",
+      "name": "Viewer and unauthenticated denial",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-08",
+      "name": "Cross-tenant selectors",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-09",
+      "name": "Assignee authorization",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-10",
+      "name": "Quote, project, and run staleness",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-11",
+      "name": "Evidence authority, access, and availability change",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-12",
+      "name": "Permission downgrade during review",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-13",
+      "name": "Expiry and consumed proposal",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-14",
+      "name": "Safe service failure and transaction rollback",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-15",
+      "name": "Keyboard, focus, semantics, and zoom",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-16",
+      "name": "Mobile and Taiwan Traditional Chinese layout",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-17",
+      "name": "Browser and PostgreSQL performance baseline",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    },
+    {
+      "id": "QA-18",
+      "name": "Stage 0-7 regression smoke and excluded behavior",
+      "status": "BLOCKED",
+      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "foundry/tasks/SB-029/evidence/computer-qa/headless/finance-en-workspace.png",
+      "classification": "SUPPLEMENTAL_HEADLESS_PARTIAL_ONLY",
+      "persona": "finance",
+      "locale": "en",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "full_scenario_pass": false
+    },
+    {
+      "path": "foundry/tasks/SB-029/evidence/computer-qa/headless/finance-en-compare-start.png",
+      "classification": "SUPPLEMENTAL_HEADLESS_PARTIAL_ONLY",
+      "persona": "finance",
+      "locale": "en",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "full_scenario_pass": false
+    },
+    {
+      "path": "foundry/tasks/SB-029/evidence/computer-qa/headless/finance-en-comparison.png",
+      "classification": "SUPPLEMENTAL_HEADLESS_PARTIAL_ONLY",
+      "persona": "finance",
+      "locale": "en",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "full_scenario_pass": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "QA-INFRA-001",
+      "kind": "COMPUTER_CONTROL_BLOCKER",
+      "status": "OPEN",
+      "gate_blocking": true,
+      "product_defect_established": false,
+      "description": "Two CUA navigation attempts returned Browser Use could not read requirements; tab stayed about:blank. Documented Sky fallback failed because the AT-SPI provider was unavailable with zero registry connections.",
+      "evidence": "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json",
+      "next_step": "Resume independent @Computer QA in the same named cloud environment once browser control is available."
+    },
+    {
+      "id": "QA-INFRA-002",
+      "kind": "PREVIEW_ORIGIN_CONFIGURATION",
+      "status": "RESOLVED",
+      "gate_blocking": false,
+      "product_defect_established": false,
+      "description": "Next production server bound to0.0.0.0 reconstructed request origins differing from configuredlocalhost. Strict POST origin guard correctly rejected prepare. Restarting identical build with --hostname localhost made identical authorized Finance preparation return PREPARED. No guard or product code changed.",
+      "evidence": [
+        "foundry/tasks/SB-029/evidence/computer-qa/finance-proposal-api-diagnostic.json",
+        "foundry/tasks/SB-029/evidence/computer-qa/finance-proposal-api-after-origin-alignment.json"
+      ]
+    }
+  ],
+  "performance_samples": [
+    {
+      "classification": "NON_UI_HTTP_END_TO_END_INCLUDING_LOOPBACK_TRANSIT",
+      "operation": "created",
+      "duration_ms": 300.31162300000005,
+      "browser_measurement": false,
+      "server_p95_measurement": false
+    },
+    {
+      "classification": "NON_UI_HTTP_END_TO_END_INCLUDING_LOOPBACK_TRANSIT",
+      "operation": "replay",
+      "duration_ms": 51.05972300000002,
+      "browser_measurement": false,
+      "server_p95_measurement": false
+    },
+    {
+      "classification": "NON_UI_HTTP_END_TO_END_INCLUDING_LOOPBACK_TRANSIT",
+      "operation": "conflict",
+      "duration_ms": 29.024307999999962,
+      "browser_measurement": false,
+      "server_p95_measurement": false
+    }
+  ],
+  "server_validation_references": [
+    "foundry/tasks/SB-029/validation-final.json",
+    "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/43767600389",
+    "foundry/tasks/SB-029/evidence/computer-qa/preview-database-setup.json",
+    "foundry/tasks/SB-029/evidence/computer-qa/finance-http-action-smoke.json"
+  ],
+  "repair_retests": [
+    {
+      "classification": "PREVIEW_INFRASTRUCTURE_ONLY",
+      "change": "Restart unchanged production build with bind hostname localhost matching configured origin.",
+      "result": "Finance prepare PREPARED; canonical confirm CREATED; retry IDEMPOTENT_REPLAY; changed payload IDEMPOTENCY_CONFLICT; zh-TW receipt AVAILABLE.",
+      "product_repair_cycle": false,
+      "browser_retest": false
+    }
+  ],
   "scope_limits": [
-    "No browser interaction, screenshot, accessibility run, or browser performance measurement has occurred.",
-    "Tool availability and a written QA plan are not evidence of preview or merge readiness.",
-    "No Vercel, DNS, live demo-domain, production, or real-data operation is authorized."
+    "Zero of18 full browser scenarios passed; all18 remain blocked at the independent Computer QA gate.",
+    "Partial headless screenshots cover Finance/en workspace/comparison only and are not review, receipt, mobile, keyboard, bilingual, or complete-flow evidence.",
+    "Live HTTP/PostgreSQL smoke proves server wiring and persisted consistency, not browser interaction, focus, layout, locale navigation, or browser p95.",
+    "CUA completion summary was emitted by root: Identified browser control blocker.",
+    "Preview localhost is reachable only inside the existing named cloud environment; a new Computer session must attach to that environment.",
+    "No source code, product policy, Vercel, DNS, live demo-domain, production data, or real customer data changed during QA."
   ],
   "summary": {
     "passed": 0,
     "failed": 0,
-    "blocked": 0,
-    "not_run": 18
+    "blocked": 18,
+    "not_run": 0,
+    "completed_full_browser_scenarios": 0
   },
-  "verdict": null
+  "verdict": "BLOCKED_INFRASTRUCTURE",
+  "supplemental_exploration": {
+    "runner": "Headless Chromium via installed Playwright, stopped before further interaction on root instruction",
+    "persona": "finance",
+    "locale": "en",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "observed": [
+      "Trusted secure-cookie bootstrap redirected to authorized Xinyi workspace.",
+      "Workspace rendered project, quote/forecast, evidence health, and comparison entry.",
+      "Comparison start rendered; submitting it created stored comparison and enrichment route.",
+      "Action entry opened a dialog, but the expected Title field was not observed before timeout. This does not establish a proposal success or a product defect."
+    ],
+    "screenshots": [
+      "foundry/tasks/SB-029/evidence/computer-qa/headless/finance-en-workspace.png",
+      "foundry/tasks/SB-029/evidence/computer-qa/headless/finance-en-compare-start.png",
+      "foundry/tasks/SB-029/evidence/computer-qa/headless/finance-en-comparison.png"
+    ],
+    "database_observation": {
+      "proposals": 0,
+      "actions": 0,
+      "receipts": 0,
+      "audits": 0
+    },
+    "qualification": "Exploratory evidence only; no full QA scenario marked passed. Canonical preparation requires root CUA reproduction.",
+    "stopped_at": "2026-11-15T22:21:32.646617+00:00",
+    "preparation_dialog_diagnosis": "Non-UI follow-up proved preview bind/configured-origin mismatch. Same-build restart corrected it; no browser review pass was produced."
+  },
+  "blocked_at": "2026-11-15T22:25:29.505831Z",
+  "non_ui_http_smoke": {
+    "evidence": "foundry/tasks/SB-029/evidence/computer-qa/finance-http-action-smoke.json",
+    "result": "PASS_NON_UI_ONLY",
+    "action_business_key": "action_54552fb7-7f6d-45ee-aa66-c50290b4a74c",
+    "outcomes": [
+      "CREATED",
+      "IDEMPOTENT_REPLAY",
+      "IDEMPOTENCY_CONFLICT",
+      "AVAILABLE"
+    ],
+    "counts_after": {
+      "actions": 1,
+      "consumed": 1,
+      "receipts": 1,
+      "audits": 1
+    },
+    "evidence_reference_count": 15,
+    "claim_count": 4,
+    "audit_linkage_checks": true,
+    "browser_pass_credit": false
+  }
 }

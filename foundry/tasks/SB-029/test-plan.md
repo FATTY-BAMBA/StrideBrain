@@ -1,6 +1,6 @@
 # SB-029 independent test and evaluation plan
 
-Status: baseline and bounded Stage 8 BUILDING evaluations executed; complete exact-head deterministic gate and browser acceptance remain pending.
+Status: complete independent deterministic Stage 0–8 gate passed at `4c13f726bb75f4a31d263eb6e54622224807d019`; browser acceptance remains separately pending.
 
 Owner: Test and Evaluation Agent, independent of the Builder. Baseline inspected: `0ecd65bdb0ae752f3244960d6848a74a30d5da01` on `main`. All final results must identify the exact tested commit and any working-tree changes; a baseline pass is not Stage 8 evidence.
 
@@ -123,3 +123,12 @@ No Stage 8 test, Stage 8 p95, browser QA, preview readiness, final CI or release
 The independent real PostgreSQL suite is `tests/internal-review/postgres-invariants.test.ts`. It creates its own empty synthetic database, applies all eight migrations and seed/SQL invariants, and drops only the generated prefixed database. Its actual SQL instrumentation proves Viewer/current-capability denials before sensitive reads, document ownership and immutable binding checks, bounded assignee/evidence queries, concurrency, lock ordering, atomic rollback at all six checkpoints, audit reconstruction and protected fixture resets. The complete stable-candidate gate remains pending.
 
 `validation-building.json` and `evidence/build-evaluation/` retain preliminary commands, results, test-harness corrections and measured PostgreSQL performance. A source change or an individual targeted pass is not represented as a complete exact-head pass. Browser QA remains outside these results.
+
+
+### Complete exact-head deterministic validation
+
+All 16 independent commands passed on `4c13f726bb75f4a31d263eb6e54622224807d019` from `2026-11-15T22:09:18Z` through `2026-11-15T22:12:25Z`. The only pre-existing dirty files were the Orchestrator's task-state documents. Full suite: **57 files / 436 tests passed, zero skipped**, including **88 real PostgreSQL adversarial cases** and all **200 Stage 0–7 regression cases**. Localization: **4 files / 11 tests passed**. All eight migrations applied to a new empty PostgreSQL 17.12 database, repeat migration and both seed/invariant cycles passed, production Next.js build passed, and production dependency audit reported zero vulnerabilities.
+
+The production build ID is `3arTh5JwUyUt0e73FJY-z`. Its sole generated tracked-file change was the known `next-env.d.ts` Next type-reference/comment regeneration; the evaluator inspected and restored candidate bytes as authorized. Source/tests/schema/configuration match the candidate. `validation-final.json` contains exact commands, timings, source fingerprint, counts and contract proof, with raw local command logs copied under `evidence/exact-head-4c13f726/`.
+
+Measured PostgreSQL proposal preparation: 30 samples, p50 **74.69 ms**, p95 **92.32 ms**, 110 SQL events. Confirmation: 30 samples, p50 **87.91 ms**, p95 **97.85 ms**, 131 SQL events. Thirty confirmations in ten concurrent batches of three had p95 **254.60 ms**. Evidence references increasing 15→35 kept 21 scope-read SQL events; adding 20 eligible assignees kept proposal preparation at 110 events. Actual `EXPLAIN (ANALYZE, BUFFERS)` evidence is retained. These are controlled local server timings, excluding HTTP transit. Browser QA is not claimed by this gate.

@@ -1,0 +1,17 @@
+                                                       version                                                        
+----------------------------------------------------------------------------------------------------------------------
+ PostgreSQL 17.12 (Debian 17.12-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+(1 row)
+
+               migration_name               | applied | not_rolled_back 
+--------------------------------------------+---------+-----------------
+ 0001_stridegraph_foundation                | t       | t
+ 0002_financial_authority_invariants        | t       | t
+ 0003_runtime_authorization                 | t       | t
+ 0004_authorization_tenant_links            | t       | t
+ 0005_remove_legacy_membership_capabilities | t       | t
+ 0006_stage5_economics_enrichment           | t       | t
+ 0007_stage6_comparison_persistence_scales  | t       | t
+ 0008_stage8_internal_review                | t       | t
+(8 rows)
+

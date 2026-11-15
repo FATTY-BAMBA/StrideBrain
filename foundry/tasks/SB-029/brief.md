@@ -1,6 +1,6 @@
 # SB-029 — Governed internal review action and audit receipt
 
-Status: BUILDING. Research is complete; the architecture/build contract received independent contract verdict PASS and Orchestrator acceptance (exact reviewed hashes in state.json and independent-review.md). This is not implementation or release acceptance.
+Status: BLOCKED at the Computer QA gate, after evidenced PREVIEW_READY. Candidate `4c13f726bb75f4a31d263eb6e54622224807d019` passed all independent deterministic gates and exact-head GitHub CI. The isolated production preview is running. Actual CUA navigation and the documented desktop fallback failed at the tooling layer; no complete browser scenario passed. A separate independent @Computer session must resume QA before final independent review or merge approval. See computer-qa-handoff.md and the recorded tool evidence. No merge or release approval has been granted.
 
 ## Authoritative inputs
 

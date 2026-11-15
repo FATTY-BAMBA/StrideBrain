@@ -9,11 +9,14 @@ Baseline examined: `0ecd65bdb0ae752f3244960d6848a74a30d5da01` on
 
 - Contract review: `PASS` after the bounded technical corrections documented
   below. No product-policy escalation identified.
-- Implementation review: IN_PROGRESS; BUILDING schema and service/UI checkpoints
-  inspected independently. Final review awaits the frozen implementation and CI/browser evidence.
-- Deterministic validation review: IN_PROGRESS; independent schema/reset probes and
-  focused reviewer regressions passed. Complete application/CI evidence remains pending.
-- Computer/browser QA evidence review: NOT_RUN.
+- Implementation review: checkpoints independently inspected on frozen application
+  head `4c13f726bb75f4a31d263eb6e54622224807d019`; final verdict withheld
+  because the required Computer QA gate is blocked.
+- Deterministic validation evidence: REVIEWED; all 16 independent commands, 436
+  tests and successful exact-head GitHub CI corroborated as documented below.
+- Computer/browser QA evidence: BLOCKED_INFRASTRUCTURE; actual control attempts
+  failed, zero complete browser scenarios passed, and all 18 planned cases remain
+  blocked. Partial screenshots/non-UI smoke do not satisfy this gate.
 - Final verdict: not issued. This file is not a merge or release approval.
 
 ## Authoritative inputs examined
@@ -355,3 +358,88 @@ corrections are not represented by that commit alone. Reviewed current hashes:
 No unresolved blocking source finding remains from this checkpoint. Complete
 PostgreSQL regression/performance results, exact-head CI and actual independent
 browser QA still gate the final implementation verdict.
+
+
+## Frozen-head deterministic evidence checkpoint — 2026-11-15T22:29:17Z
+
+Scope: independent evidence verification only. Application commit:
+`4c13f726bb75f4a31d263eb6e54622224807d019` on
+`build/sb-029-governed-internal-review`, draft PR
+<https://github.com/FATTY-BAMBA/StrideBrain/pull/31>. This checkpoint does not issue
+a final implementation verdict, approve merge, or advance the task into
+INDEPENDENT_REVIEW. Current task state is **BLOCKED**, with resume state
+COMPUTER_QA after the recorded PREVIEW_READY transition.
+
+The reviewer read `validation-final.json` and all 16 exact-head command logs in
+`evidence/exact-head-4c13f726/`. Every command exited 0: locked dependency install,
+Prisma validation/generation, clean migration/seed/SQL checks, repeat migration/
+seed/SQL checks, formatting, lint, strict TypeScript, full tests, localization,
+production build and production dependency audit. The logs report **436 passing
+tests in 57 files, zero skips**, including 88 PostgreSQL adversarial cases and
+all 200 Stage 0–7 regression cases. Localization reports 11 tests in four files;
+PostgreSQL 17.12 reports all eight migrations applied; Next.js 16.4.6 built
+successfully; audit found zero vulnerabilities. Lint has zero errors and the
+existing `prisma.config.ts` default-export warning.
+
+This review corroborates the independent Test/Evaluation Agent's full execution;
+it does not falsely claim the reviewer personally reran those 16 commands. The
+reviewer's separate schema/reset and targeted-test executions remain documented
+above. The reviewer independently reconstructed `git ls-tree` for the recorded
+source/test/schema/config paths and matched the retained manifest SHA-256
+`7fe5157f84f9c88023462ec1e958b62a53bcdb5aef30eb0dc4ac95dfdac85920`.
+`git diff --exit-code 4c13f726 --` over those paths returned no changes. Only task
+evidence/documents were changing; the inspected generated `next-env.d.ts`
+restoration leaves application source identical to the validated commit.
+
+The reviewer also independently called GitHub's commit-workflow and workflow-job
+connectors for this exact commit/run. Run
+<https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/43767600389>
+returned completed/success, and every reported quality-job step succeeded,
+including migration, repeat fixture verification, tests, build and audit. This
+corroborates `evidence/ci-4c13f726.json`; it is not evidence about a later head.
+
+The PostgreSQL test source and retained results support the tested authorization,
+neutral cross-tenant denial, Viewer no-read paths, fingerprint/source mutation
+rejection, current assignee checks, immutable evidence binding, one-consumption
+concurrency, six transaction-failure rollback boundaries, audit reconstruction,
+current-authorized replay and workspace non-disclosure contracts. Measured local
+server p95 is 92.32 ms for proposal preparation and 97.85 ms for confirmation;
+30 concurrent samples have p95 254.60 ms. The 30 serial samples used 110 proposal
+and 131 confirmation SQL queries. Adding 20 eligible assignees left preparation
+at 110 queries; expanding required evidence from 15 to 35 left its scoped batch
+at 21 queries. These are bounded controlled-fixture measurements, with an actual
+EXPLAIN plan retained; they are neither browser timing nor a production-scale
+benchmark. Conservative source-table locking remains a documented scaling limit.
+
+### Browser gate and handoff evidence
+
+The actual control record `evidence/computer-qa/cua-infrastructure-blocker.json`
+reports two failed preview navigations (`Browser Use could not read requirements`)
+with the tab remaining `about:blank`; the documented Sky fallback had no available
+AT-SPI input provider. This is a browser-control blocker, not an established
+product defect. The updated QA report is BLOCKED, all 18 full scenarios are
+blocked, and none passed. Three Finance/English headless screenshots are clearly
+labeled partial supplemental exploration only. They do not establish review,
+receipt, mobile, bilingual navigation, keyboard/focus or complete-flow acceptance.
+
+A separate preview-only origin mismatch was corrected by restarting the same
+production build with `--hostname localhost`; no origin guard or product source
+was changed. The retained Finance HTTP diagnostics show PREPARED after that
+alignment. Subsequent `finance-http-action-smoke.json` shows CREATED, same-key
+IDEMPOTENT_REPLAY, changed-payload IDEMPOTENCY_CONFLICT and Chinese receipt AVAILABLE,
+with one Action, one consumed proposal, one receipt and one audit, and linked
+claims/evidence. This supports live server wiring only and earns no browser-pass
+credit. The single HTTP durations are not browser or server p95 samples.
+
+The state transitions preserve the required order through RESEARCHING,
+SPECIFYING, READY_FOR_BUILD, BUILDING, CI_VALIDATION, PREVIEW_READY and COMPUTER_QA,
+then BLOCKED. No completed COMPUTER_QA, INDEPENDENT_REVIEW, READY_FOR_HUMAN, MERGED
+or DONE state is asserted. The handoff correctly requires a separate independent
+@Computer Work session attached to the **same existing cloud environment** for
+`http://localhost:3000`, build `3arTh5JwUyUt0e73FJY-z`; this is not a public
+preview URL. Complete the planned browser scenarios and real browser baselines,
+resolve/retest any findings, then request the final independent implementation
+review. Human merge/release approval remains absent and mandatory.
+
+**Final independent verdict: not issued.** No merge or release readiness is
+claimed by this checkpoint.

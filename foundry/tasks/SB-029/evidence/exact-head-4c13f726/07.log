@@ -1,0 +1,13 @@
+
+> stridebrain@0.1.0 db:migrate
+> npx --yes prisma@7.10.1 migrate deploy --config prisma.config.ts
+
+Loaded Prisma config from prisma.config.ts.
+
+Prisma schema loaded from prisma/schema.prisma.
+Datasource "db": PostgreSQL database "stridebrain_sb029_final_f1f64b3831264ffd81f7d4d9ea357787", schema "public" at "127.0.0.1:54329"
+
+8 migrations found in prisma/migrations
+
+
+No pending migrations to apply.

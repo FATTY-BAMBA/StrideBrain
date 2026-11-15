@@ -1,99 +1,150 @@
 version: sb029-computer-qa-plan.v1
 task: SB-029
 issue: https://github.com/FATTY-BAMBA/StrideBrain/issues/29
-status: PLANNED_BUILDING_AWAITING_PREVIEW
+status: COMPUTER_QA_BLOCKED
 owner: Independent Computer QA Coordinator
 product: StrideBrain
 data_classification: DEMO_SYNTHETIC
 baseline_commit: 0ecd65bdb0ae752f3244960d6848a74a30d5da01
 branch: build/sb-029-governed-internal-review
 sources:
-  - docs/decisions/ADR-004-first-governed-action.md
-  - docs/build/IMPLEMENTATION_SEQUENCE.md
-  - docs/build/V0_1_BUILD_CONTRACT.md
-  - docs/build/SHARED_DTO_AND_STATE_CONTRACT.md
-  - docs/architecture/AUTHORIZATION_MODEL_V0_1.md
-  - docs/architecture/EVIDENCE_AND_AUTHORITY_MODEL.md
-  - docs/design/INTERACTION_AND_STATE_MATRIX.md
-  - docs/design/EVIDENCE_PANEL_SPEC.md
-  - docs/design/LOW_FIDELITY_WIREFRAMES_V0_1.md
-  - docs/development/STAGE_2_RUNTIME_AUTHORIZATION.md
-  - docs/build/STAGE_6_IMPLEMENTATION.md
-  - docs/build/STAGE_7_IMPLEMENTATION.md
-  - src/modules/runtime-context/demo-session-service.ts
-  - src/modules/runtime-context/session-cookie.ts
-  - src/modules/authorization/authorization-service.ts
-  - prisma/fixtures/horizon-atelier.sql
-  - prisma/fixtures/stage2-authorization.sql
-  - foundry/tasks/SB-029/architecture.md
-  - foundry/tasks/SB-029/build-contract.md
+- docs/decisions/ADR-004-first-governed-action.md
+- docs/build/IMPLEMENTATION_SEQUENCE.md
+- docs/build/V0_1_BUILD_CONTRACT.md
+- docs/build/SHARED_DTO_AND_STATE_CONTRACT.md
+- docs/architecture/AUTHORIZATION_MODEL_V0_1.md
+- docs/architecture/EVIDENCE_AND_AUTHORITY_MODEL.md
+- docs/design/INTERACTION_AND_STATE_MATRIX.md
+- docs/design/EVIDENCE_PANEL_SPEC.md
+- docs/design/LOW_FIDELITY_WIREFRAMES_V0_1.md
+- docs/development/STAGE_2_RUNTIME_AUTHORIZATION.md
+- docs/build/STAGE_6_IMPLEMENTATION.md
+- docs/build/STAGE_7_IMPLEMENTATION.md
+- src/modules/runtime-context/demo-session-service.ts
+- src/modules/runtime-context/session-cookie.ts
+- src/modules/authorization/authorization-service.ts
+- prisma/fixtures/horizon-atelier.sql
+- prisma/fixtures/stage2-authorization.sql
+- foundry/tasks/SB-029/architecture.md
+- foundry/tasks/SB-029/build-contract.md
 independence:
   source_changes_allowed: false
   product_policy_changes_allowed: false
   approve_own_fixes_allowed: false
   merge_allowed: false
-  fixture_mutations: Test agent/operator only, on a dedicated disposable synthetic database.
-  finding_workflow: Record evidence; return to Builder; retest affected journeys on the new exact head.
+  fixture_mutations: Test agent/operator only, on a dedicated disposable synthetic
+    database.
+  finding_workflow: Record evidence; return to Builder; retest affected journeys on
+    the new exact head.
 readiness:
-  current: NOT_READY
-  preview_url: null
-  browser_local_url: null
-  exact_head: null
-  production_build_identity: null
-  ci_run_url: null
-  deterministic_gate_report: null
-  session_provisioning_runbook: null
+  current: PREVIEW_READY
+  preview_url: http://localhost:3000
+  browser_local_url: http://localhost:3000
+  exact_head: 4c13f726bb75f4a31d263eb6e54622224807d019
+  production_build_identity: 3arTh5JwUyUt0e73FJY-z
+  ci_run_url: https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/43767600389
+  deterministic_gate_report: foundry/tasks/SB-029/validation-final.json
+  session_provisioning_runbook: /tmp/sb029-preview/README.md
   tested_routes: []
   unmet_requirements:
-    - Contract is accepted by the Orchestrator; implementation and its deterministic gates are not complete.
-    - Exact-head deterministic gates and independent security review are required.
-    - Isolated preview schema/seed/SQL verification and private operator scripts are ready; exact-head production server, sessions, and browser execution have not started.
+  - Working shared Computer/browser navigation and input are required to execute the 18 blocked
+    full browser scenarios; CUA navigation and AT-SPI fallback currently fail.
+  - Independent browser QA, final independent review of browser evidence, and human
+    merge approval remain incomplete; preview HTTP/server readiness alone does not
+    satisfy these gates.
   start_conditions:
-    - Orchestrator records PREVIEW_READY with exact branch/head and evidence.
-    - Production build is from the exact tested head; no hot-reload or unstaged product differences.
-    - Preview uses a separate disposable PostgreSQL database containing only reviewed synthetic fixtures.
-    - Browser can reach the isolated server; no live domain or Vercel project has changed.
-    - Session operator supplies trusted fixture sessions without adding browser-selected role or organization authority.
-    - SQL observer records before/after Action, evidence, AuditEvent, proposal, and receipt state.
-    - Public selectors, bounds, outcomes, and login instructions below are reconciled to the accepted contract.
+  - Orchestrator records PREVIEW_READY with exact branch/head and evidence.
+  - Production build is from the exact tested head; no hot-reload or unstaged product
+    differences.
+  - Preview uses a separate disposable PostgreSQL database containing only reviewed
+    synthetic fixtures.
+  - Browser can reach the isolated server; no live domain or Vercel project has changed.
+  - Session operator supplies trusted fixture sessions without adding browser-selected
+    role or organization authority.
+  - SQL observer records before/after Action, evidence, AuditEvent, proposal, and
+    receipt state.
+  - Public selectors, bounds, outcomes, and login instructions below are reconciled
+    to the accepted contract.
+  http_readiness:
+    checked_at: '2026-11-15T22:15:40.510747Z'
+    en_workspace: 200
+    zh_TW_workspace: 200
+    unauthenticated_receipt: 403
+    private_no_store: true
+  qa_gate_status: BLOCKED_INFRASTRUCTURE
+  browser_blocker_evidence: foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json
 tooling:
-  available: mcp__cua_repl cloud browser and Linux desktop tool advertised in this task.
-  initialized: false
+  available: Root CUA is callable; actual navigation fails with Browser Use could
+    not read requirements. Documented Sky fallback fails with unavailable AT-SPI provider.
+  initialized: true
   executed_browser_checks: false
   intended_browser: Shared Chrome in the task cloud environment.
-  local_strategy: Use the production Next.js server on a free loopback port, normally 3000; never managed browser ports 8000 or 8085.
-  separate_computer_strategy: Supply a verified reachable isolated-preview URL and operator-installed persona session; otherwise report the handoff blocked.
-  limitation: Tool availability is not evidence that a browser journey, viewport, session, or preview works.
+  local_strategy: Use the production Next.js server on a free loopback port, normally
+    3000; never managed browser ports 8000 or 8085.
+  separate_computer_strategy: Supply a verified reachable isolated-preview URL and
+    operator-installed persona session; otherwise report the handoff blocked.
+  limitation: Tool availability is not evidence that a browser journey, viewport,
+    session, or preview works.
+  execution_note: No complete shared-browser scenario ran. Finance/en headless exploration
+    is supplemental partial evidence only. Full18scenario independent QA must resume
+    in the same cloud environment.
+  browser_control_attempted: true
 preview_scaffolding:
-  status: DATABASE_PREPARED_AWAITING_PRODUCTION_PREVIEW
-  environment: Selected connected cloud environment; on-demand remote desktop confirmed available by Orchestrator.
-  database: stridebrain_stage8_preview in stridebrain-sb029-test-eval on localhost port 54329; eight migrations and reviewed synthetic fixtures applied; independent validation database unchanged.
+  status: PRODUCTION_PREVIEW_READY
+  environment: Selected connected cloud environment; on-demand remote desktop confirmed
+    available by Orchestrator.
+  database: stridebrain_stage8_preview in stridebrain-sb029-test-eval on localhost
+    port 54329; eight migrations and reviewed synthetic fixtures applied; independent
+    validation database unchanged.
   operator_directory: /tmp/sb029-preview
-  operator_permissions: Directory 0700; random session secret, runtime environment, source-loader, operator script, and private runbook 0600; launcher 0700.
+  operator_permissions: Directory 0700; random session secret, runtime environment,
+    source-loader, operator script, and private runbook 0600; launcher 0700.
   verified:
-    - npm run db:migrate, db:seed, and db:verify pass against the dedicated preview database.
-    - Exactly eight migrations applied; only HORIZON_ATELIER and NORTHERN_STUDIO organizations exist and both are DEMO_SYNTHETIC.
-    - Action, ProposedAction, InternalReviewReceipt, and AuditEvent counts are zero; all four immutability triggers remain enabled.
-    - node --check passes for source-loader.mjs and operator.mjs.
-    - run-operator.sh preflight confirms the preview database and ready session schema without writing.
-    - run-operator.sh check-imports loads existing DemoSessionService, PrismaDemoSessionRepository, and generated Prisma client without a query or shared output change.
+  - npm run db:migrate, db:seed, and db:verify pass against the dedicated preview
+    database.
+  - Exactly eight migrations applied; only HORIZON_ATELIER and NORTHERN_STUDIO organizations
+    exist and both are DEMO_SYNTHETIC.
+  - At initial database setup, Action, ProposedAction, InternalReviewReceipt, and
+    AuditEvent counts were zero and all four immutability triggers were enabled. The
+    later non-UI smoke created one action/receipt/audit and consumed one proposal;
+    current counts are recorded separately.
+  - node --check passes for source-loader.mjs and operator.mjs.
+  - run-operator.sh preflight confirms the preview database and ready session schema
+    without writing.
+  - run-operator.sh check-imports loads existing DemoSessionService, PrismaDemoSessionRepository,
+    and generated Prisma client without a query or shared output change.
   evidence: foundry/tasks/SB-029/evidence/computer-qa/preview-database-setup.json
-  setup_qualification: Schema/fixture hashes and head during setup are recorded; this is not final exact-head production-build or browser evidence.
-  infrastructure_recovery: Initial npm invocation failed before migration because default cache was unavailable; dedicated /tmp/sb029-preview/npm-cache resolved it without product changes.
-  not_started: [application_server, bootstrap_server, session_issuance, browser]
-  server: Exact-head production Next.js build; bind a free loopback port, normally 3000.
-  production_command: npm run start -- --hostname 127.0.0.1 --port 3000
+  setup_qualification: Schema/fixture hashes and setup head are recorded; exact-head
+    production preview is ready. Computer QA was attempted and is blocked by browser-control
+    infrastructure; no complete browser scenario passed.
+  infrastructure_recovery: Initial npm invocation failed before migration because
+    default cache was unavailable; dedicated /tmp/sb029-preview/npm-cache resolved
+    it without product changes.
+  not_started: []
+  server: Exact-head production Next.js build; bind a free loopback port, normally
+    3000.
+  production_command: node --env-file=/tmp/sb029-preview/preview.env node_modules/next/dist/bin/next
+    start --hostname localhost --port 3000
   prerequisites:
-    - Orchestrator/test operator selects the dedicated database name, applies all migrations, repeats the reviewed seed, and verifies SQL invariants.
-    - Server uses that database and a unique server-only session secret; no credentials enter committed artifacts.
-    - Operator records build hash, exact head, origin, and successful HTTP readiness response before issuing sessions.
-    - An operator-only temporary loopback session adapter lives outside product source and is not deployed.
+  - Orchestrator/test operator selects the dedicated database name, applies all migrations,
+    repeats the reviewed seed, and verifies SQL invariants.
+  - Server uses that database and a unique server-only session secret; no credentials
+    enter committed artifacts.
+  - Operator records build hash, exact head, origin, and successful HTTP readiness
+    response before issuing sessions.
+  - An operator-only temporary loopback session adapter lives outside product source
+    and is not deployed.
   bootstrap:
-    - Fixed synthetic persona mapping is operator-controlled, never a browser organization/role/capability authority.
-    - DemoSessionService creates a persisted bounded-lifetime session and an unchanged secure cookie.
-    - An unguessable single-use local bootstrap URL sets the cookie and redirects to the same hostname's application origin.
-    - Verify Secure-cookie handling in actual Chrome; use local HTTPS or browser-context installation if needed, never relax attributes.
-    - Bootstrap credentials remain in untracked runtime state, are excluded from screenshots/reports, and are revoked after use.
+  - Fixed synthetic persona mapping is operator-controlled, never a browser organization/role/capability
+    authority.
+  - DemoSessionService creates a persisted bounded-lifetime session and an unchanged
+    secure cookie.
+  - An unguessable single-use local bootstrap URL sets the cookie and redirects to
+    the same hostname's application origin.
+  - Verify Secure-cookie handling in actual Chrome; use local HTTPS or browser-context
+    installation if needed, never relax attributes.
+  - Bootstrap credentials remain in untracked runtime state, are excluded from screenshots/reports,
+    and are revoked after use.
   operator_commands:
     preflight: /tmp/sb029-preview/run-operator.sh preflight
     source_import_check: /tmp/sb029-preview/run-operator.sh check-imports
@@ -101,73 +152,109 @@ preview_scaffolding:
     issue_example_after_ready: /tmp/sb029-preview/run-operator.sh issue mei en
     revoke_persona: /tmp/sb029-preview/run-operator.sh revoke mei
     revoke_all: /tmp/sb029-preview/run-operator.sh revoke all
-    note: Issuance prints a private URL-file path, never a credential; one-use bootstrap lasts 5 minutes and persisted synthetic session lasts 1 hour.
+    note: Issuance prints a private URL-file path, never a credential; one-use bootstrap
+      lasts 5 minutes and persisted synthetic session lasts 1 hour.
   browser_sequence:
-    - Wait for Orchestrator PREVIEW_READY and actual verified URL; no browser startup against incomplete implementation.
-    - First cloud browser call opens the verified local URL using cua.createBrowserTab with browser cdp and reads the returned API documentation/state.
-    - Follow only documented browser APIs; complete the operator session handoff, inspect the authorized project, then record actual test evidence.
-    - Run independent browser QA; on completing the computer-use portion emit its observed completion summary, never a speculative pass.
-    - If the remote-desktop/browser path fails, record the exact failure and distinguish any headless checks from an actual Computer run.
+  - Wait for Orchestrator PREVIEW_READY and actual verified URL; no browser startup
+    against incomplete implementation.
+  - First cloud browser call opens the verified local URL using cua.createBrowserTab
+    with browser cdp and reads the returned API documentation/state.
+  - Follow only documented browser APIs; complete the operator session handoff, inspect
+    the authorized project, then record actual test evidence.
+  - Run independent browser QA; on completing the computer-use portion emit its observed
+    completion summary, never a speculative pass.
+  - If the remote-desktop/browser path fails, record the exact failure and distinguish
+    any headless checks from an actual Computer run.
+  bind_origin_requirement: Bind hostname localhost must match configured http://localhost:3000;
+    binding0.0.0.0 or127.0.0.1 changes Next request origin and intentionally fails
+    the strict guard.
+  not_completed:
+  - independent_computer_qa
+  current_non_ui_smoke_counts:
+    actions: 1
+    consumed: 1
+    receipts: 1
+    audits: 1
+  current_action_origin: One synthetic Finance action was explicitly created through
+    production HTTP for non-UI wiring verification; no browser scenario pass is implied.
 scope:
   business_write: Create internal review action / 建立內部審查事項
   prohibited:
-    - Real customer data
-    - Email, LINE, supplier, or customer communications
-    - Quote, contract, change-order, financial, payment, or accounting approval/mutation
-    - Action completion or arbitrary agent execution
-    - Vercel, DNS, production, or demo.primestrideai.com changes
+  - Real customer data
+  - Email, LINE, supplier, or customer communications
+  - Quote, contract, change-order, financial, payment, or accounting approval/mutation
+  - Action completion or arbitrary agent execution
+  - Vercel, DNS, production, or demo.primestrideai.com changes
 personas:
-  - key: mei
-    name_en: Mei Lin
-    name_zh_tw: 林美玲
-    membership_id_operator_only: membership_horizon_mei
-    role: PROJECT_MANAGER_ESTIMATOR
-    expected: Assigned Xinyi project; explicit actual-read grant; may propose, create, and assign after all evidence checks.
-  - key: finance
-    name_en: Iris Huang
-    name_zh_tw: 黃怡君
-    membership_id_operator_only: membership_horizon_finance
-    role: FINANCIAL_REVIEWER
-    expected: Explicit project assignments remain required; seeded Xinyi assignment permits actual read and action creation.
-  - key: admin
-    name_en: Alex Chen
-    name_zh_tw: 陳柏宇
-    membership_id_operator_only: membership_horizon_admin
-    role: ORGANIZATION_ADMIN
-    expected: May act within Horizon under current source and object authorization; no cross-tenant bypass.
-  - key: viewer
-    name_en: Kai Wu
-    name_zh_tw: 吳凱
-    membership_id_operator_only: membership_horizon_viewer
-    role: VIEWER
-    expected: No proposal, assignable-person list, sensitive action data, or create path; direct calls fail before sensitive reads.
-  - key: northern
-    name_en: Northern Owner
-    name_zh_tw: 北境負責人
-    membership_id_operator_only: membership_northern_owner
-    role: ORGANIZATION_ADMIN
-    expected: Cannot access Horizon project, runs, proposal, receipt, assignee, or evidence despite admin role in another tenant.
-  - key: mei_no_assign
-    derived_from: mei
-    provisioning: Test operator adds a temporary explicit action:assign DENY in an isolated scenario database, then restores it.
-    expected: No arbitrary assignee browsing/selection; only accepted service-provided default when explicitly allowed.
+- key: mei
+  name_en: Mei Lin
+  name_zh_tw: 林美玲
+  membership_id_operator_only: membership_horizon_mei
+  role: PROJECT_MANAGER_ESTIMATOR
+  expected: Assigned Xinyi project; explicit actual-read grant; may propose, create,
+    and assign after all evidence checks.
+- key: finance
+  name_en: Iris Huang
+  name_zh_tw: 黃怡君
+  membership_id_operator_only: membership_horizon_finance
+  role: FINANCIAL_REVIEWER
+  expected: Explicit project assignments remain required; seeded Xinyi assignment
+    permits actual read and action creation.
+- key: admin
+  name_en: Alex Chen
+  name_zh_tw: 陳柏宇
+  membership_id_operator_only: membership_horizon_admin
+  role: ORGANIZATION_ADMIN
+  expected: May act within Horizon under current source and object authorization;
+    no cross-tenant bypass.
+- key: viewer
+  name_en: Kai Wu
+  name_zh_tw: 吳凱
+  membership_id_operator_only: membership_horizon_viewer
+  role: VIEWER
+  expected: No proposal, assignable-person list, sensitive action data, or create
+    path; direct calls fail before sensitive reads.
+- key: northern
+  name_en: Northern Owner
+  name_zh_tw: 北境負責人
+  membership_id_operator_only: membership_northern_owner
+  role: ORGANIZATION_ADMIN
+  expected: Cannot access Horizon project, runs, proposal, receipt, assignee, or evidence
+    despite admin role in another tenant.
+- key: mei_no_assign
+  derived_from: mei
+  provisioning: Test operator adds a temporary explicit action:assign DENY in an isolated
+    scenario database, then restores it.
+  expected: No arbitrary assignee browsing/selection; only accepted service-provided
+    default when explicitly allowed.
 login:
-  current_product_behavior: No public sign-in or persona-switch route exists in the merged baseline.
+  current_product_behavior: No public sign-in or persona-switch route exists in the
+    merged baseline.
   issuer: Trusted server-side DemoSessionService.issueForMembership using PrismaDemoSessionRepository.
-  credential_transport: Secure HttpOnly SameSite=Lax __Host-stridebrain_demo_session cookie; Path=/; no Domain.
+  credential_transport: Secure HttpOnly SameSite=Lax __Host-stridebrain_demo_session
+    cookie; Path=/; no Domain.
   procedure:
-    - Operator verifies the preview database and runtime secret belong only to this isolated synthetic preview.
-    - Operator issues a bounded-lifetime persisted session for the named synthetic fixture membership.
-    - Operator installs the cookie through a browser context or private local response adapter; never via a product role/organization selector.
-    - Browser opens the specified locale/project URL and independently verifies persona-specific behavior.
-    - Before switching persona, clear/revoke the previous session and repeat issuance; do not share simultaneous mutation scenarios.
+  - Operator verifies the preview database and runtime secret belong only to this
+    isolated synthetic preview.
+  - Operator issues a bounded-lifetime persisted session for the named synthetic fixture
+    membership.
+  - Operator installs the cookie through a browser context or private local response
+    adapter; never via a product role/organization selector.
+  - Browser opens the specified locale/project URL and independently verifies persona-specific
+    behavior.
+  - Before switching persona, clear/revoke the previous session and repeat issuance;
+    do not share simultaneous mutation scenarios.
   evidence_safety:
-    - Never save tokens, cookies, signing secrets, connection strings, or bootstrap secrets in repository artifacts or screenshots.
-    - Do not weaken Secure, HttpOnly, same-site, or trusted membership lookup to make QA easier.
-    - Document the actual verified provisioning command and access URL before PREVIEW_READY.
+  - Never save tokens, cookies, signing secrets, connection strings, or bootstrap
+    secrets in repository artifacts or screenshots.
+  - Do not weaken Secure, HttpOnly, same-site, or trusted membership lookup to make
+    QA easier.
+  - Document the actual verified provisioning command and access URL before PREVIEW_READY.
 routes:
   project_key: PRJ-XINYI-026
-  locales: [en, zh-TW]
+  locales:
+  - en
+  - zh-TW
   project: /{locale}/projects/PRJ-XINYI-026
   compare_start: /{locale}/projects/PRJ-XINYI-026/compare
   compare_stored: /{locale}/projects/PRJ-XINYI-026/compare?run={comparisonRunId}&economics={enrichmentRunId}&selected={selectedProjectKeys}
@@ -175,381 +262,621 @@ routes:
   proposal_review: /{locale}/projects/PRJ-XINYI-026/compare?run={comparisonRunId}&economics={enrichmentRunId}&selected={selectedProjectKeys}&proposal={proposalKey}
   receipt_compare: /{locale}/projects/PRJ-XINYI-026/compare?run={comparisonRunId}&economics={enrichmentRunId}&selected={selectedProjectKeys}&action={actionKey}
   receipt_actions: /{locale}/projects/PRJ-XINYI-026/actions?action={actionKey}
-  proposal_selector: proposal; opaque organization-scoped business key, current-authorized on every reopen.
+  proposal_selector: proposal; opaque organization-scoped business key, current-authorized
+    on every reopen.
   receipt_selector: action; opaque business key, current-authorized on every reopen.
   api:
-    prepare: {method: POST, path: /api/actions/internal-review/proposals}
-    reopen_proposal: {method: GET, path: '/api/actions/internal-review/proposals/{proposalKey}'}
-    confirm: {method: POST, path: /api/actions/internal-review}
-    reopen_receipt: {method: GET, path: '/api/actions/{actionKey}'}
+    prepare:
+      method: POST
+      path: /api/actions/internal-review/proposals
+    reopen_proposal:
+      method: GET
+      path: /api/actions/internal-review/proposals/{proposalKey}
+    confirm:
+      method: POST
+      path: /api/actions/internal-review
+    reopen_receipt:
+      method: GET
+      path: /api/actions/{actionKey}
   http_checks:
-    - POST requires explicit confirmation where applicable, same-origin Origin validation, bounded body, and fresh signed cookie context.
-    - Private responses use private/no-store caching; credentials never appear in URLs.
-    - All GET routes are free of business writes; arbitrary returnTo URLs are rejected or ignored.
-    - Browser-provided organization, membership, role, capability, authority, or evidence arrays never become trusted input.
+  - POST requires explicit confirmation where applicable, same-origin Origin validation,
+    bounded body, and fresh signed cookie context.
+  - Private responses use private/no-store caching; credentials never appear in URLs.
+  - All GET routes are free of business writes; arbitrary returnTo URLs are rejected
+    or ignored.
+  - Browser-provided organization, membership, role, capability, authority, or evidence
+    arrays never become trusted input.
   preserved_query_keys:
-    - run
-    - economics
-    - selected
-    - evidenceMode
-    - evidenceClaim
-    - evidenceCandidate
-    - evidenceFactor
-    - evidenceSource
-    - evidenceConflict
-    - evidenceReturn
-  canonical_selected: [PRJ-NEIHU-021, PRJ-ZHONGSHAN-018, PRJ-NANJING-023]
+  - run
+  - economics
+  - selected
+  - evidenceMode
+  - evidenceClaim
+  - evidenceCandidate
+  - evidenceFactor
+  - evidenceSource
+  - evidenceConflict
+  - evidenceReturn
+  canonical_selected:
+  - PRJ-NEIHU-021
+  - PRJ-ZHONGSHAN-018
+  - PRJ-NANJING-023
   implemented_draft_selectors:
     source: src/modules/internal-review-experience/route-state.ts
     reviewTitle: Approved option key VALIDATE, REVIEW, or CHECK; no free text authority.
     reviewRationale: Approved intent key REVIEW_NEXT, RECORD_QUESTIONS, or VALIDATE_HISTORY.
     reviewAssignee: Opaque authorized candidate key or none; revalidated by the server.
-    reviewDue: Empty to clear, or syntactically ISO date; semantic organization-local bounds checked by the server.
-    reviewEvidence: Value 1 opens the evidence journey while retaining the proposal/draft; only one active modal.
-    reviewReturn: Bounded focus-return trigger identifier; cancel targets internal-review-entry or safe comparison heading.
-    reviewError: Allowlisted safe access/expiry/evidence outcome; cannot manufacture a successful receipt.
-    reviewReplay: Value 1 selects duplicate/replay wording only after an authorized action receipt is loaded.
-    precedence: An action selector takes precedence over proposal; no GET confirms an action.
-    cleanup: Cancel, expiry/access loss, and successful receipt clear irrelevant draft selectors; success replaces proposal with action.
+    reviewDue: Empty to clear, or syntactically ISO date; semantic organization-local
+      bounds checked by the server.
+    reviewEvidence: Value 1 opens the evidence journey while retaining the proposal/draft;
+      only one active modal.
+    reviewReturn: Bounded focus-return trigger identifier; cancel targets internal-review-entry
+      or safe comparison heading.
+    reviewError: Allowlisted safe access/expiry/evidence outcome; cannot manufacture
+      a successful receipt.
+    reviewReplay: Value 1 selects duplicate/replay wording only after an authorized
+      action receipt is loaded.
+    precedence: An action selector takes precedence over proposal; no GET confirms
+      an action.
+    cleanup: Cancel, expiry/access loss, and successful receipt clear irrelevant draft
+      selectors; success replaces proposal with action.
 reviewable_contract_parameters:
-  acceptance: Orchestrator accepted the architecture/build contract and entered BUILDING; reconcile any later approved refinement before QA execution.
+  acceptance: Orchestrator accepted the architecture/build contract and entered BUILDING;
+    reconcile any later approved refinement before QA execution.
   policy_version: INTERNAL-REVIEW-ACTION-1.0
   proposal_ttl_minutes: 30
   expiry_boundary: expiresAt equal to current server time is expired.
   idempotency:
-    key: Server-issued random UUID stored on the proposal; malformed or replacement client keys rejected.
-    normalized_payload: Proposal, actor, chosen approved title/rationale variants, assignee, due date, and explicit confirmation.
-    excluded_from_payload_identity: Display locale, request/correlation identifiers, and current time.
-    replay: Same key and normalized payload returns the same currently authorized durable receipt, even after proposal expiry/consumption.
-    conflict: Same key with different payload rejects; different keys cannot consume a proposal twice.
+    key: Server-issued random UUID stored on the proposal; malformed or replacement
+      client keys rejected.
+    normalized_payload: Proposal, actor, chosen approved title/rationale variants,
+      assignee, due date, and explicit confirmation.
+    excluded_from_payload_identity: Display locale, request/correlation identifiers,
+      and current time.
+    replay: Same key and normalized payload returns the same currently authorized
+      durable receipt, even after proposal expiry/consumption.
+    conflict: Same key with different payload rejects; different keys cannot consume
+      a proposal twice.
   dates:
-    authority: Organization timezone, Asia/Taipei for Horizon fixture; browser timezone is not authoritative.
+    authority: Organization timezone, Asia/Taipei for Horizon fixture; browser timezone
+      is not authoritative.
     default: Preparation local calendar date plus seven days.
-    allowed: Clear the date or select a real Gregorian date from confirmation-local today through today plus 365 calendar days inclusive.
-    cases: Today, today plus 365, yesterday, today plus 366, invalid Gregorian date, leap day, cleared date, and midnight boundary.
+    allowed: Clear the date or select a real Gregorian date from confirmation-local
+      today through today plus 365 calendar days inclusive.
+    cases: Today, today plus 365, yesterday, today plus 366, invalid Gregorian date,
+      leap day, cleared date, and midnight boundary.
   assignee:
-    default: First eligible Financial Reviewer by stable membership selector, otherwise eligible proposer, otherwise unassigned.
+    default: First eligible Financial Reviewer by stable membership selector, otherwise
+      eligible proposer, otherwise unassigned.
     assign_capability: May select a currently eligible authorized candidate or unassigned.
-    no_assign_capability: Only stored policy-provided default is accepted; no alternate list and no silent reassignment if eligibility changes.
+    no_assign_capability: Only stored policy-provided default is accepted; no alternate
+      list and no silent reassignment if eligibility changes.
   edit_fields:
-    presentation: Labeled finite title and review-intent alternatives, with transparent restriction explanation and separate locked verified facts/warnings; no unrestricted-looking textarea.
+    presentation: Labeled finite title and review-intent alternatives, with transparent
+      restriction explanation and separate locked verified facts/warnings; no unrestricted-looking
+      textarea.
     title_maximum_unicode_code_points: 200
     rationale_intent_maximum_unicode_code_points: 500
     complete_rationale_maximum_unicode_code_points: 8000
-    implemented_title_keys: [VALIDATE, REVIEW, CHECK]
-    implemented_rationale_keys: [REVIEW_NEXT, RECORD_QUESTIONS, VALIDATE_HISTORY]
+    implemented_title_keys:
+    - VALIDATE
+    - REVIEW
+    - CHECK
+    implemented_rationale_keys:
+    - REVIEW_NEXT
+    - RECORD_QUESTIONS
+    - VALIDATE_HISTORY
     title_options_en:
-      - Validate imported-stone and lighting assumptions for {project} quote v{version}
-      - Review imported-stone and lighting assumptions for {project} quote v{version}
-      - Check evidence for imported-stone and lighting assumptions in {project} quote v{version}
+    - Validate imported-stone and lighting assumptions for {project} quote v{version}
+    - Review imported-stone and lighting assumptions for {project} quote v{version}
+    - Check evidence for imported-stone and lighting assumptions in {project} quote
+      v{version}
     title_options_zh_tw:
-      - 檢核{專案}第{版本}版報價的進口石材與照明假設
-      - 審查{專案}第{版本}版報價的進口石材與照明假設
-      - 確認{專案}第{版本}版報價之進口石材與照明假設的佐證資料
+    - 檢核{專案}第{版本}版報價的進口石材與照明假設
+    - 審查{專案}第{版本}版報價的進口石材與照明假設
+    - 確認{專案}第{版本}版報價之進口石材與照明假設的佐證資料
     rationale_intent_options_en:
-      - Review these assumptions against the linked evidence before the next internal quotation review.
-      - Check the supporting evidence and record questions for internal review.
-      - Validate the imported-stone and lighting assumptions using the linked historical evidence.
+    - Review these assumptions against the linked evidence before the next internal
+      quotation review.
+    - Check the supporting evidence and record questions for internal review.
+    - Validate the imported-stone and lighting assumptions using the linked historical
+      evidence.
     rationale_intent_options_zh_tw:
-      - 下次內部報價審查前，依連結的佐證資料檢核這些假設。
-      - 確認佐證資料，並記錄內部審查需要釐清的問題。
-      - 依連結的歷史佐證資料，檢核進口石材與照明假設。
-    rejection: Arbitrary prose, unsupported option values, markup/controls, invented numbers/claims, and client-supplied mandatory fragments reject server-side.
+    - 下次內部報價審查前，依連結的佐證資料檢核這些假設。
+    - 確認佐證資料，並記錄內部審查需要釐清的問題。
+    - 依連結的歷史佐證資料，檢核進口石材與照明假設。
+    rejection: Arbitrary prose, unsupported option values, markup/controls, invented
+      numbers/claims, and client-supplied mandatory fragments reject server-side.
   receipt_reopening:
-    freshness: Later material source changes do not erase the already-created business fact or block an otherwise authorized receipt merely for staleness.
-    authorization: Current project/action and every required evidence source remain authorized before sensitive title, assignee, evidence count, or snapshot is shown.
-    distinction: Newly creating from stale evidence is prohibited; reopening an existing receipt reauthorizes access without requiring sources to be unchanged.
-  proposal_outcomes: [PREPARED, PROPOSAL_UNAVAILABLE, PROPOSAL_EXPIRED, PROPOSAL_STALE, PROPOSAL_NOT_AUTHORIZED, PROPOSAL_FAILED]
-  confirmation_outcomes: [CREATED, IDEMPOTENT_REPLAY, ACTION_NOT_AUTHORIZED, ASSIGNEE_UNAVAILABLE, EVIDENCE_UNAVAILABLE, STALE_COMPARISON, PROPOSAL_EXPIRED, PROPOSAL_ALREADY_CONSUMED, IDEMPOTENCY_CONFLICT, ACTION_CREATE_FAILED]
+    freshness: Later material source changes do not erase the already-created business
+      fact or block an otherwise authorized receipt merely for staleness.
+    authorization: Current project/action and every required evidence source remain
+      authorized before sensitive title, assignee, evidence count, or snapshot is
+      shown.
+    distinction: Newly creating from stale evidence is prohibited; reopening an existing
+      receipt reauthorizes access without requiring sources to be unchanged.
+  proposal_outcomes:
+  - PREPARED
+  - PROPOSAL_UNAVAILABLE
+  - PROPOSAL_EXPIRED
+  - PROPOSAL_STALE
+  - PROPOSAL_NOT_AUTHORIZED
+  - PROPOSAL_FAILED
+  confirmation_outcomes:
+  - CREATED
+  - IDEMPOTENT_REPLAY
+  - ACTION_NOT_AUTHORIZED
+  - ASSIGNEE_UNAVAILABLE
+  - EVIDENCE_UNAVAILABLE
+  - STALE_COMPARISON
+  - PROPOSAL_EXPIRED
+  - PROPOSAL_ALREADY_CONSUMED
+  - IDEMPOTENCY_CONFLICT
+  - ACTION_CREATE_FAILED
 viewports:
-  - {key: desktop, width: 1440, height: 900, scale: 1}
-  - {key: tablet, width: 768, height: 1024, scale: 1}
-  - {key: mobile, width: 390, height: 844, scale: 1}
-  - {key: narrow_mobile, width: 320, height: 740, scale: 1}
-  - {key: desktop_zoom, width: 1280, height: 800, zoom_percent: 200}
+- key: desktop
+  width: 1440
+  height: 900
+  scale: 1
+- key: tablet
+  width: 768
+  height: 1024
+  scale: 1
+- key: mobile
+  width: 390
+  height: 844
+  scale: 1
+- key: narrow_mobile
+  width: 320
+  height: 740
+  scale: 1
+- key: desktop_zoom
+  width: 1280
+  height: 800
+  zoom_percent: 200
 matrix:
   full_journey: Both locales on desktop and mobile for Mei.
-  roles: Both locales on desktop for Finance, Admin, Viewer, Northern, and no-assign variant.
-  layout: Review, errors, evidence, and receipt at tablet/narrow-mobile/200-percent zoom in both locales.
-  accessibility: Keyboard-only desktop; touch/mobile layout; reduced motion; semantic accessibility tree inspection.
-  caveat: Browser emulation does not establish real-device, assistive-technology, or screen-reader certification.
+  roles: Both locales on desktop for Finance, Admin, Viewer, Northern, and no-assign
+    variant.
+  layout: Review, errors, evidence, and receipt at tablet/narrow-mobile/200-percent
+    zoom in both locales.
+  accessibility: Keyboard-only desktop; touch/mobile layout; reduced motion; semantic
+    accessibility tree inspection.
+  caveat: Browser emulation does not establish real-device, assistive-technology,
+    or screen-reader certification.
 canonical_claims:
   title_en: Validate imported-stone and lighting assumptions for Xinyi quote v3
-  source: Immutable authorized Stage 5 claims; expected values independently derived by reviewed fixture/SQL gates.
+  source: Immutable authorized Stage 5 claims; expected values independently derived
+    by reviewed fixture/SQL gates.
   statements:
-    - Imported-stone forecast variance versus eligible reconciled-actual history.
-    - Lighting quoted-price variance; lighting reconciled-actual evidence is insufficient, with two eligible observations and three required where count access is authorized.
-    - Accelerated programme is a known difference with no supported quantified premium.
-    - Exact comparison/enrichment references and mandatory evidence/uncertainty statements.
+  - Imported-stone forecast variance versus eligible reconciled-actual history.
+  - Lighting quoted-price variance; lighting reconciled-actual evidence is insufficient,
+    with two eligible observations and three required where count access is authorized.
+  - Accelerated programme is a known difference with no supported quantified premium.
+  - Exact comparison/enrichment references and mandatory evidence/uncertainty statements.
   forbidden_claims:
-    - The quotation is wrong.
-    - A supplier is overcharging.
-    - The shorter programme caused a quantified premium.
-    - Historical supplier pricing is currently valid without current authoritative evidence.
-    - Creating an internal review action approves or issues a quotation or authorizes commercial activity.
+  - The quotation is wrong.
+  - A supplier is overcharging.
+  - The shorter programme caused a quantified premium.
+  - Historical supplier pricing is currently valid without current authoritative evidence.
+  - Creating an internal review action approves or issues a quotation or authorizes
+    commercial activity.
 scenarios:
-  - id: QA-01
-    name: Authorized preparation is preparatory only
-    personas: [mei, finance, admin]
-    steps:
-      - Open the assigned Xinyi project and run/reopen an authorized immutable comparison and enrichment.
-      - Inspect imported-stone evidence, close the panel, and select the explicit internal-review action entry.
-      - Read title, rationale, required statements, uncertainty, assignee, due date, evidence, and run references.
-    expected:
-      - All text comes from verified structured claims and exact authorized evidence.
-      - No Action, successful business AuditEvent, or success receipt exists before explicit confirmation.
-      - No model/provider service is needed.
-    capture: Review screenshot, accessibility tree, route, redacted request result, SQL before-count attestation.
-  - id: QA-02
-    name: Bounded edits and mandatory content
-    personas: [mei]
-    steps:
-      - Select each of the three approved title and review-intent options in both locales; inspect clear finite-edit wording and locked verified findings.
-      - Through the approved direct-request harness, attempt empty/whitespace values, unlisted alternatives, overlength values, markup/control characters, unsupported commercial assertions, replaced uncertainty, and contradictory wording.
-      - Correct the input and choose an eligible assignee; set, clear, and keyboard-edit the due date at all accepted local-date boundaries.
-    expected:
-      - Exact approved alternatives and content bounds match build-contract.md; invalid edits cannot create an action.
-      - Mandatory verified statements and uncertainty cannot be removed or contradicted.
-      - Errors are localized, associated with fields, and focus reaches the first invalid field or linked summary.
-      - Draft fields survive recoverable validation failures.
-    capture: Each distinct validation state, focused element, labels/error associations, no-write SQL attestation.
-  - id: QA-03
-    name: Explicit confirmation and durable receipt
-    personas: [mei, finance, admin]
-    steps:
-      - Review the consequence explanation; explicitly create once.
-      - Read the durable receipt, follow Project Actions, reopen the receipt, and return to comparison.
-    expected:
-      - Exactly one Action, authorized evidence linkage/snapshot, append-only AuditEvent, consumed proposal, and durable receipt/idempotency state commit together.
-      - Receipt has safe business key, title, project, assignee/unassigned, due date, OPEN status, creator/time, source runs, authorized evidence count, and both return links.
-      - Receipt heading receives focus and is not replaced by a toast-only result.
-      - Project Workspace shows the persisted action.
-      - A later source freshness change does not remove a committed receipt when current source/project authorization still holds; access loss instead returns a neutral denied view.
-    capture: Receipt and Project Actions screenshots, URLs, focus, redacted responses, independent SQL/audit record evidence.
-  - id: QA-04
-    name: Cancel, Escape, and evidence round trip
-    personas: [mei]
-    steps:
-      - Open the review sheet using keyboard; inspect an evidence link and return.
-      - Cancel with the button and repeat using Escape where supported by the accepted sheet behavior.
-    expected:
-      - Evidence opens through the Stage 7 authorized panel with exact claim/source meaning.
-      - Review draft and comparison selection survive evidence navigation where the contract permits.
-      - Exactly one modal focus trap is active; evidence closes back to the selected review field/link and retained draft.
-      - Focus returns to the action trigger on cancel; no Action or successful audit is created.
-    capture: Focus sequence, retained route/draft, screenshot, no-write attestation.
-  - id: QA-05
-    name: Locale and route restoration
-    personas: [mei]
-    steps:
-      - Switch en to zh-TW and back while comparison selection and evidence context are active.
-      - Repeat with a prepared/edited review and a created receipt as allowed by accepted routing.
-      - Refresh, use Back/Forward, open a copied receipt URL, and follow return-to-comparison.
-    expected:
-      - Run, enrichment, validated selected projects, evidence context, locale, and return context survive.
-      - Route/locale changes do not silently recalculate results or execute a write.
-      - Edits are preserved only as bounded draft state and cleared on receipt/cancel/expiry/access loss.
-      - Locale controls are reachable within the review/receipt focus boundary and preserve approved option identity without changing the confirmation payload.
-    capture: Before/after URLs and field state, screenshots in both locales, action-count comparison.
-  - id: QA-06
-    name: Retry, double submit, and replay
-    personas: [mei]
-    steps:
-      - Submit once, rapidly repeat the same confirmation, refresh after success, and repeat the identical request through the approved test harness.
-      - Repeat using the same server-issued UUID with a different approved title option or due date through the test harness.
-      - Retry the original payload after switching locale, after proposal expiry, and after source freshness changes while access remains authorized.
-    expected:
-      - Identical retry shows the same durable receipt with localized duplicate/replay state.
-      - Same key with different payload is rejected; consumed proposal cannot create another action.
-      - A malformed or different client-generated key cannot replace the stored server-issued key; locale alone is not a payload conflict.
-      - Independent database evidence proves one Action and one success AuditEvent.
-    capture: Replay screenshot, action key equality, redacted response codes, SQL uniqueness/count proof.
-  - id: QA-07
-    name: Viewer and unauthenticated denial
-    personas: [viewer]
-    steps:
-      - Open assigned project/comparison; attempt copied proposal, confirmation, receipt, and evidence routes/requests.
-      - Repeat with cleared, expired, and revoked sessions provisioned by the operator.
-    expected:
-      - No sensitive proposal fields, candidate people, action titles/IDs/counts, economics, or source metadata leak.
-      - Direct proposal/create attempts deny before sensitive reads or writes.
-      - Public response does not disclose missing versus inaccessible objects.
-    capture: UI and redacted network/HTML evidence; independent sensitive-read and no-write assertions.
-  - id: QA-08
-    name: Cross-tenant selectors
-    personas: [mei, northern]
-    steps:
-      - Test other-tenant project, comparison, enrichment, proposal, assignee, action, and evidence selectors using operator-provided synthetic references.
-      - Compare public behavior with random nonexistent selectors of the same syntax.
-    expected:
-      - Neutral outcomes contain no hidden names, IDs, values, counts, source titles, or exact exclusion reasons.
-      - No action is created and no organization or role value supplied by the browser becomes authority.
-    capture: Sanitized paired responses and screenshots; exact selectors retained only in synthetic operator evidence.
-  - id: QA-09
-    name: Assignee authorization
-    personas: [mei, mei_no_assign]
-    steps:
-      - Inspect authorized candidate set; attempt a foreign, inactive, unassigned, or evidence-ineligible person through approved negative-test requests.
-      - Open as no-assign variant and try to alter the service-provided default.
-      - Operator invalidates the chosen assignee after preparation; confirm.
-    expected:
-      - No per-person query waterfall; candidates meet same-organization, active, project, assignment, and sensitive-evidence requirements.
-      - No-assign user cannot browse/select arbitrary people.
-      - Assignee-unavailable state is localized, safe, associated with selection, and creates nothing.
-    capture: Candidate UI, localized failure, focused field, redacted result, no-write proof.
-  - id: QA-10
-    name: Quote, project, and run staleness
-    personas: [mei]
-    steps:
-      - In separate resettable cases, prepare then have the operator change current quote, project state, comparison fingerprints/policy, or enrichment fingerprints/result.
-      - Confirm without refreshing; inspect stale response and retained comparison.
-    expected:
-      - STALE_COMPARISON or accepted REFRESH_REQUIRED mapping; no automatic refresh-and-continue.
-      - No Action, partial evidence, successful audit, consumed proposal, or false receipt.
-      - Refresh guidance is clear in both locales.
-    capture: Each mapped stale UI, original route, redacted result, operator mutation/revert attestation.
-  - id: QA-11
-    name: Evidence authority, access, and availability change
-    personas: [mei]
-    steps:
-      - Prepare then independently change required evidence authority, conflict, freshness, supersession, availability, or access in isolated cases.
-      - Confirm and attempt reopening affected evidence.
-    expected:
-      - Safe EVIDENCE_UNAVAILABLE or accepted stale outcome; no business write.
-      - Lost-access source details are removed; stale or unsupported evidence never becomes a supported conclusion.
-    capture: Failure states, cleared sensitive preview, redacted response, no-write proof.
-  - id: QA-12
-    name: Permission downgrade during review
-    personas: [mei]
-    steps:
-      - Prepare, then have operator revoke propose/create capability, project assignment, action flag, or required actual/evidence read in separate cases.
-      - Confirm and attempt receipt/proposal reopening using the old URL/client state.
-    expected:
-      - Fresh trusted RuntimeContext takes effect; localized authorization/access-change state.
-      - Stale client capability hints do not authorize any read/write and sensitive draft data is cleared as required.
-    capture: Before/after UI, redacted outcome, operator proof of current context, no-write proof.
-  - id: QA-13
-    name: Expiry and consumed proposal
-    personas: [mei]
-    steps:
-      - Operator tests an unconsumed proposal before, exactly at, and after its 30-minute expiry; confirm and reopen it.
-      - Create a fresh proposal, consume once, then submit with a new key.
-    expected:
-      - Distinct safe expiry/consumed states and no second action.
-      - Retry with the original key/payload returns the same authorized receipt.
-    capture: Localized outcomes and action-count proof.
-  - id: QA-14
-    name: Safe service failure and transaction rollback
-    personas: [mei]
-    steps:
-      - Use accepted isolated fault-injection harness for each transaction step; no debug mutation endpoint is added to production code.
-      - Attempt confirmation, inspect preserved draft, then retry after the operator removes the fault.
-    expected:
-      - Safe failure with no sensitive internal error or false success.
-      - Independent database test proves no partial Action/evidence/AuditEvent/consumption/receipt at each injected step.
-      - Corrected retry can complete once using accepted idempotency rules.
-    capture: Failure screenshot, safe request ID, independent transaction-test report, final receipt when recovered.
-  - id: QA-15
-    name: Keyboard, focus, semantics, and zoom
-    personas: [mei, viewer]
-    steps:
-      - Complete preparation, edit, evidence inspection, cancellation, validation, creation, and receipt reopening using keyboard only.
-      - Inspect accessible names, labels, described-by error connections, dialog semantics, focus containment, status announcements, and hidden content.
-      - Repeat review/errors/receipt at 200-percent zoom and with reduced-motion preference.
-    expected:
-      - Logical focus order; no keyboard trap; date entry is keyboard usable; receipt heading or first error receives focus.
-      - Warnings include text and icons; focus/contrast remain perceivable; content and controls remain reachable at zoom.
-      - Reduced motion honors preference; automatic updates do not repeatedly steal focus.
-    capture: Keyboard action log, focused-element/AX snapshots, zoom screenshots, motion preference result.
-  - id: QA-16
-    name: Mobile and Taiwan Traditional Chinese layout
-    personas: [mei]
-    steps:
-      - Inspect comparison, review, evidence, validation, pending state, and receipt at each mobile/tablet width in both locales.
-      - Test the longest approved title/review-intent options, keyboard viewport reduction, scrolling, and primary controls.
-    expected:
-      - Review/receipt uses full-height mobile mode with single-column readable content and reachable controls.
-      - No clipped mandatory warnings, overlapping labels, unintended horizontal scroll, or pointer-only date interaction.
-      - Natural Taiwan Traditional Chinese parity; no English developer/provider/policy plumbing in normal Chinese mode.
-      - Report inherited Stage 3/7 localization issues separately; a Stage 8 path still fails if the exposed inherited defect blocks its required evidence/review journey.
-    capture: Full-page and viewport screenshots, overflow inspection, exact visible copy findings.
-  - id: QA-17
-    name: Browser and PostgreSQL performance baseline
-    personas: [mei]
-    steps:
-      - Record warmed proposal open and confirmation browser timings with network transit included, separately from server timings.
-      - Link independent PostgreSQL measurements, sample size, query count, environment, and exact head.
-    expected:
-      - Server p95 proposal target at most 500 ms and confirmation target at most 800 ms excluding network transit.
-      - No model request or per-evidence/per-assignee N+1; query counts remain bounded.
-      - Report observed browser distribution honestly; do not apply server-only targets to network-inclusive measurements.
-    capture: Raw sanitized timing samples, p50/p95, sample size, browser/viewport/environment, linked server report.
-  - id: QA-18
-    name: Stage 0-7 regression smoke and excluded behavior
-    personas: [mei, viewer]
-    steps:
-      - Recheck workspace, canonical ranked matches, distinct economics labels, lighting abstention, programme warning, evidence/factor panels, and locale navigation.
-      - Observe the full action journey with model services disabled and inspect available controls.
-    expected:
-      - Prior deterministic comparison/evidence behavior remains intact and no unsupported approval/send/complete action appears.
-      - No financial mutation, external communication, real data, provider selector, or new top-level surface.
-    capture: Hero-flow screenshots, model-disabled environment attestation, regression report reference.
+- id: QA-01
+  name: Authorized preparation is preparatory only
+  personas:
+  - mei
+  - finance
+  - admin
+  steps:
+  - Open the assigned Xinyi project and run/reopen an authorized immutable comparison
+    and enrichment.
+  - Inspect imported-stone evidence, close the panel, and select the explicit internal-review
+    action entry.
+  - Read title, rationale, required statements, uncertainty, assignee, due date, evidence,
+    and run references.
+  expected:
+  - All text comes from verified structured claims and exact authorized evidence.
+  - No Action, successful business AuditEvent, or success receipt exists before explicit
+    confirmation.
+  - No model/provider service is needed.
+  capture: Review screenshot, accessibility tree, route, redacted request result,
+    SQL before-count attestation.
+- id: QA-02
+  name: Bounded edits and mandatory content
+  personas:
+  - mei
+  steps:
+  - Select each of the three approved title and review-intent options in both locales;
+    inspect clear finite-edit wording and locked verified findings.
+  - Through the approved direct-request harness, attempt empty/whitespace values,
+    unlisted alternatives, overlength values, markup/control characters, unsupported
+    commercial assertions, replaced uncertainty, and contradictory wording.
+  - Correct the input and choose an eligible assignee; set, clear, and keyboard-edit
+    the due date at all accepted local-date boundaries.
+  expected:
+  - Exact approved alternatives and content bounds match build-contract.md; invalid
+    edits cannot create an action.
+  - Mandatory verified statements and uncertainty cannot be removed or contradicted.
+  - Errors are localized, associated with fields, and focus reaches the first invalid
+    field or linked summary.
+  - Draft fields survive recoverable validation failures.
+  capture: Each distinct validation state, focused element, labels/error associations,
+    no-write SQL attestation.
+- id: QA-03
+  name: Explicit confirmation and durable receipt
+  personas:
+  - mei
+  - finance
+  - admin
+  steps:
+  - Review the consequence explanation; explicitly create once.
+  - Read the durable receipt, follow Project Actions, reopen the receipt, and return
+    to comparison.
+  expected:
+  - Exactly one Action, authorized evidence linkage/snapshot, append-only AuditEvent,
+    consumed proposal, and durable receipt/idempotency state commit together.
+  - Receipt has safe business key, title, project, assignee/unassigned, due date,
+    OPEN status, creator/time, source runs, authorized evidence count, and both return
+    links.
+  - Receipt heading receives focus and is not replaced by a toast-only result.
+  - Project Workspace shows the persisted action.
+  - A later source freshness change does not remove a committed receipt when current
+    source/project authorization still holds; access loss instead returns a neutral
+    denied view.
+  capture: Receipt and Project Actions screenshots, URLs, focus, redacted responses,
+    independent SQL/audit record evidence.
+- id: QA-04
+  name: Cancel, Escape, and evidence round trip
+  personas:
+  - mei
+  steps:
+  - Open the review sheet using keyboard; inspect an evidence link and return.
+  - Cancel with the button and repeat using Escape where supported by the accepted
+    sheet behavior.
+  expected:
+  - Evidence opens through the Stage 7 authorized panel with exact claim/source meaning.
+  - Review draft and comparison selection survive evidence navigation where the contract
+    permits.
+  - Exactly one modal focus trap is active; evidence closes back to the selected review
+    field/link and retained draft.
+  - Focus returns to the action trigger on cancel; no Action or successful audit is
+    created.
+  capture: Focus sequence, retained route/draft, screenshot, no-write attestation.
+- id: QA-05
+  name: Locale and route restoration
+  personas:
+  - mei
+  steps:
+  - Switch en to zh-TW and back while comparison selection and evidence context are
+    active.
+  - Repeat with a prepared/edited review and a created receipt as allowed by accepted
+    routing.
+  - Refresh, use Back/Forward, open a copied receipt URL, and follow return-to-comparison.
+  expected:
+  - Run, enrichment, validated selected projects, evidence context, locale, and return
+    context survive.
+  - Route/locale changes do not silently recalculate results or execute a write.
+  - Edits are preserved only as bounded draft state and cleared on receipt/cancel/expiry/access
+    loss.
+  - Locale controls are reachable within the review/receipt focus boundary and preserve
+    approved option identity without changing the confirmation payload.
+  capture: Before/after URLs and field state, screenshots in both locales, action-count
+    comparison.
+- id: QA-06
+  name: Retry, double submit, and replay
+  personas:
+  - mei
+  steps:
+  - Submit once, rapidly repeat the same confirmation, refresh after success, and
+    repeat the identical request through the approved test harness.
+  - Repeat using the same server-issued UUID with a different approved title option
+    or due date through the test harness.
+  - Retry the original payload after switching locale, after proposal expiry, and
+    after source freshness changes while access remains authorized.
+  expected:
+  - Identical retry shows the same durable receipt with localized duplicate/replay
+    state.
+  - Same key with different payload is rejected; consumed proposal cannot create another
+    action.
+  - A malformed or different client-generated key cannot replace the stored server-issued
+    key; locale alone is not a payload conflict.
+  - Independent database evidence proves one Action and one success AuditEvent.
+  capture: Replay screenshot, action key equality, redacted response codes, SQL uniqueness/count
+    proof.
+- id: QA-07
+  name: Viewer and unauthenticated denial
+  personas:
+  - viewer
+  steps:
+  - Open assigned project/comparison; attempt copied proposal, confirmation, receipt,
+    and evidence routes/requests.
+  - Repeat with cleared, expired, and revoked sessions provisioned by the operator.
+  expected:
+  - No sensitive proposal fields, candidate people, action titles/IDs/counts, economics,
+    or source metadata leak.
+  - Direct proposal/create attempts deny before sensitive reads or writes.
+  - Public response does not disclose missing versus inaccessible objects.
+  capture: UI and redacted network/HTML evidence; independent sensitive-read and no-write
+    assertions.
+- id: QA-08
+  name: Cross-tenant selectors
+  personas:
+  - mei
+  - northern
+  steps:
+  - Test other-tenant project, comparison, enrichment, proposal, assignee, action,
+    and evidence selectors using operator-provided synthetic references.
+  - Compare public behavior with random nonexistent selectors of the same syntax.
+  expected:
+  - Neutral outcomes contain no hidden names, IDs, values, counts, source titles,
+    or exact exclusion reasons.
+  - No action is created and no organization or role value supplied by the browser
+    becomes authority.
+  capture: Sanitized paired responses and screenshots; exact selectors retained only
+    in synthetic operator evidence.
+- id: QA-09
+  name: Assignee authorization
+  personas:
+  - mei
+  - mei_no_assign
+  steps:
+  - Inspect authorized candidate set; attempt a foreign, inactive, unassigned, or
+    evidence-ineligible person through approved negative-test requests.
+  - Open as no-assign variant and try to alter the service-provided default.
+  - Operator invalidates the chosen assignee after preparation; confirm.
+  - With no-assign persona and locked policy default, invalidate that default after
+    preparation; confirm without adding a selectable alternate.
+  expected:
+  - No per-person query waterfall; candidates meet same-organization, active, project,
+    assignment, and sensitive-evidence requirements.
+  - No-assign user cannot browse/select arbitrary people.
+  - Assignee-unavailable state is localized, safe, associated with selection, and
+    creates nothing.
+  - Locked/default-only assignee failure has a localized linked error region; focus
+    falls back to that region when no editable assignee input exists.
+  capture: Candidate UI, localized failure, focused field, redacted result, no-write
+    proof.
+- id: QA-10
+  name: Quote, project, and run staleness
+  personas:
+  - mei
+  steps:
+  - In separate resettable cases, prepare then have the operator change current quote,
+    project state, comparison fingerprints/policy, or enrichment fingerprints/result.
+  - Confirm without refreshing; inspect stale response and retained comparison.
+  expected:
+  - STALE_COMPARISON or accepted REFRESH_REQUIRED mapping; no automatic refresh-and-continue.
+  - No Action, partial evidence, successful audit, consumed proposal, or false receipt.
+  - Refresh guidance is clear in both locales.
+  capture: Each mapped stale UI, original route, redacted result, operator mutation/revert
+    attestation.
+- id: QA-11
+  name: Evidence authority, access, and availability change
+  personas:
+  - mei
+  steps:
+  - Prepare then independently change required evidence authority, conflict, freshness,
+    supersession, availability, or access in isolated cases.
+  - Confirm and attempt reopening affected evidence.
+  expected:
+  - Safe EVIDENCE_UNAVAILABLE or accepted stale outcome; no business write.
+  - Lost-access source details are removed; stale or unsupported evidence never becomes
+    a supported conclusion.
+  capture: Failure states, cleared sensitive preview, redacted response, no-write
+    proof.
+- id: QA-12
+  name: Permission downgrade during review
+  personas:
+  - mei
+  steps:
+  - Prepare, then have operator revoke propose/create capability, project assignment,
+    action flag, or required actual/evidence read in separate cases.
+  - Confirm and attempt receipt/proposal reopening using the old URL/client state.
+  expected:
+  - Fresh trusted RuntimeContext takes effect; localized authorization/access-change
+    state.
+  - Stale client capability hints do not authorize any read/write and sensitive draft
+    data is cleared as required.
+  capture: Before/after UI, redacted outcome, operator proof of current context, no-write
+    proof.
+- id: QA-13
+  name: Expiry and consumed proposal
+  personas:
+  - mei
+  steps:
+  - Operator tests an unconsumed proposal before, exactly at, and after its 30-minute
+    expiry; confirm and reopen it.
+  - Create a fresh proposal, consume once, then submit with a new key.
+  expected:
+  - Distinct safe expiry/consumed states and no second action.
+  - Retry with the original key/payload returns the same authorized receipt.
+  capture: Localized outcomes and action-count proof.
+- id: QA-14
+  name: Safe service failure and transaction rollback
+  personas:
+  - mei
+  steps:
+  - Use accepted isolated fault-injection harness for each transaction step; no debug
+    mutation endpoint is added to production code.
+  - Attempt confirmation, inspect preserved draft, then retry after the operator removes
+    the fault.
+  expected:
+  - Safe failure with no sensitive internal error or false success.
+  - Independent database test proves no partial Action/evidence/AuditEvent/consumption/receipt
+    at each injected step.
+  - Corrected retry can complete once using accepted idempotency rules.
+  capture: Failure screenshot, safe request ID, independent transaction-test report,
+    final receipt when recovered.
+- id: QA-15
+  name: Keyboard, focus, semantics, and zoom
+  personas:
+  - mei
+  - viewer
+  steps:
+  - Complete preparation, edit, evidence inspection, cancellation, validation, creation,
+    and receipt reopening using keyboard only.
+  - Inspect accessible names, labels, described-by error connections, dialog semantics,
+    focus containment, status announcements, and hidden content.
+  - Repeat review/errors/receipt at 200-percent zoom and with reduced-motion preference.
+  expected:
+  - Logical focus order; no keyboard trap; date entry is keyboard usable; receipt
+    heading or first error receives focus.
+  - Warnings include text and icons; focus/contrast remain perceivable; content and
+    controls remain reachable at zoom.
+  - Reduced motion honors preference; automatic updates do not repeatedly steal focus.
+  capture: Keyboard action log, focused-element/AX snapshots, zoom screenshots, motion
+    preference result.
+- id: QA-16
+  name: Mobile and Taiwan Traditional Chinese layout
+  personas:
+  - mei
+  steps:
+  - Inspect comparison, review, evidence, validation, pending state, and receipt at
+    each mobile/tablet width in both locales.
+  - Test the longest approved title/review-intent options, keyboard viewport reduction,
+    scrolling, and primary controls.
+  expected:
+  - Review/receipt uses full-height mobile mode with single-column readable content
+    and reachable controls.
+  - No clipped mandatory warnings, overlapping labels, unintended horizontal scroll,
+    or pointer-only date interaction.
+  - Natural Taiwan Traditional Chinese parity; no English developer/provider/policy
+    plumbing in normal Chinese mode.
+  - Report inherited Stage 3/7 localization issues separately; a Stage 8 path still
+    fails if the exposed inherited defect blocks its required evidence/review journey.
+  capture: Full-page and viewport screenshots, overflow inspection, exact visible
+    copy findings.
+- id: QA-17
+  name: Browser and PostgreSQL performance baseline
+  personas:
+  - mei
+  steps:
+  - Record warmed proposal open and confirmation browser timings with network transit
+    included, separately from server timings.
+  - Link independent PostgreSQL measurements, sample size, query count, environment,
+    and exact head.
+  expected:
+  - Server p95 proposal target at most 500 ms and confirmation target at most 800
+    ms excluding network transit.
+  - No model request or per-evidence/per-assignee N+1; query counts remain bounded.
+  - Report observed browser distribution honestly; do not apply server-only targets
+    to network-inclusive measurements.
+  capture: Raw sanitized timing samples, p50/p95, sample size, browser/viewport/environment,
+    linked server report.
+- id: QA-18
+  name: Stage 0-7 regression smoke and excluded behavior
+  personas:
+  - mei
+  - viewer
+  steps:
+  - Recheck workspace, canonical ranked matches, distinct economics labels, lighting
+    abstention, programme warning, evidence/factor panels, and locale navigation.
+  - Observe the full action journey with model services disabled and inspect available
+    controls.
+  expected:
+  - Prior deterministic comparison/evidence behavior remains intact and no unsupported
+    approval/send/complete action appears.
+  - No financial mutation, external communication, real data, provider selector, or
+    new top-level surface.
+  capture: Hero-flow screenshots, model-disabled environment attestation, regression
+    report reference.
 evidence:
   report: foundry/tasks/SB-029/computer-qa-report.json
   artifact_directory: foundry/tasks/SB-029/evidence/computer-qa/
   per_case:
-    - Exact head, build identity, session persona, locale, viewport, timestamp, and URL with secrets removed.
-    - Steps actually executed and observed result; distinguish NOT_RUN, BLOCKED, PASS, and FAIL.
-    - Screenshot path/identifier and accessible focus/label evidence where relevant.
-    - Redacted request/outcome; never record cookie/header credentials.
-    - Linked independent SQL/test evidence for claims invisible to the browser.
+  - Exact head, build identity, session persona, locale, viewport, timestamp, and
+    URL with secrets removed.
+  - Steps actually executed and observed result; distinguish NOT_RUN, BLOCKED, PASS,
+    and FAIL.
+  - Screenshot path/identifier and accessible focus/label evidence where relevant.
+  - Redacted request/outcome; never record cookie/header credentials.
+  - Linked independent SQL/test evidence for claims invisible to the browser.
   minimum_screenshots:
-    - en-desktop-review
-    - zh-TW-desktop-review
-    - en-mobile-review
-    - zh-TW-mobile-review
-    - en-validation-focus
-    - zh-TW-validation-focus
-    - en-desktop-receipt
-    - zh-TW-mobile-receipt
-    - project-actions-reopen
-    - viewer-denied
-    - stale-rejected
-    - evidence-unavailable
-    - assignee-unavailable
-    - idempotent-replay
+  - en-desktop-review
+  - zh-TW-desktop-review
+  - en-mobile-review
+  - zh-TW-mobile-review
+  - en-validation-focus
+  - zh-TW-validation-focus
+  - en-desktop-receipt
+  - zh-TW-mobile-receipt
+  - project-actions-reopen
+  - viewer-denied
+  - stale-rejected
+  - evidence-unavailable
+  - assignee-unavailable
+  - idempotent-replay
   evidence_limits:
-    - Browser screenshots alone do not prove transaction atomicity, absence of sensitive server reads, or database uniqueness.
-    - Static source review or test success is not a browser run.
-    - An unavailable error state or inaccessible test hook is BLOCKED, never assumed PASS.
+  - Browser screenshots alone do not prove transaction atomicity, absence of sensitive
+    server reads, or database uniqueness.
+  - Static source review or test success is not a browser run.
+  - An unavailable error state or inaccessible test hook is BLOCKED, never assumed
+    PASS.
 severity:
-  P0: Cross-tenant/unauthorized disclosure or write, external/financial mutation, real-data use, or secret exposure. Stop all affected activity immediately.
-  P1: Duplicate/partial action, incorrect or unsupported claim, missing mandatory warning, stale accepted write, broken core creation/receipt, severe keyboard/focus block, or critical locale gap. Blocks acceptance.
-  P2: Reproducible bounded UX/a11y/layout/performance defect that does not weaken business/auth/evidence truth. Record and return for repair; reviewer decides blocking status.
-  P3: Cosmetic or wording improvement without semantic/accessibility impact. Non-blocking only with explicit reviewer rationale.
+  P0: Cross-tenant/unauthorized disclosure or write, external/financial mutation,
+    real-data use, or secret exposure. Stop all affected activity immediately.
+  P1: Duplicate/partial action, incorrect or unsupported claim, missing mandatory
+    warning, stale accepted write, broken core creation/receipt, severe keyboard/focus
+    block, or critical locale gap. Blocks acceptance.
+  P2: Reproducible bounded UX/a11y/layout/performance defect that does not weaken
+    business/auth/evidence truth. Record and return for repair; reviewer decides blocking
+    status.
+  P3: Cosmetic or wording improvement without semantic/accessibility impact. Non-blocking
+    only with explicit reviewer rationale.
 stop_conditions:
-  - Preview points to production/live demo or contains real customer data.
-  - Preview build does not match the approved exact head or current deterministic evidence.
-  - Any cross-tenant exposure, unauthorized write, secret exposure, or external effect occurs.
-  - Operator cannot safely reset an isolated mutation scenario.
-  - Source code changes during QA invalidate affected evidence; restart affected checks on the new head.
-  - A policy/contract conflict requires Product Director decision.
-  - More than three unsuccessful authorized repair cycles are reached.
-handoff_prompt_template: |
-  @Computer: Independently QA StrideBrain Stage 8, Issue #29, using this plan.
+- Preview points to production/live demo or contains real customer data.
+- Preview build does not match the approved exact head or current deterministic evidence.
+- Any cross-tenant exposure, unauthorized write, secret exposure, or external effect
+  occurs.
+- Operator cannot safely reset an isolated mutation scenario.
+- Source code changes during QA invalidate affected evidence; restart affected checks
+  on the new head.
+- A policy/contract conflict requires Product Director decision.
+- More than three unsuccessful authorized repair cycles are reached.
+handoff_prompt_template: '@Computer: Independently QA StrideBrain Stage 8, Issue #29,
+  using this plan.
+
   Open the verified isolated preview URL supplied in readiness.preview_url.
+
   Verify branch/head/build identity exactly match readiness before testing.
+
   Use only the operator-provisioned synthetic personas; never select trusted
+
   organization, role, capability, or membership through browser request fields.
+
   Test English and Taiwan Traditional Chinese at the specified desktop/mobile
+
   viewports. Execute QA-01 through QA-18, recording actual outcomes and screenshots.
+
   Only Create internal review action / 建立內部審查事項 is an authorized business write.
+
   Check review edits, mandatory uncertainty, evidence, assignees, due dates,
+
   explicit confirmation, durable receipt, Actions integration, retry, refresh,
+
   Back/Forward, locale/selection/evidence restoration, Viewer and cross-tenant
+
   denial, stale/access-change/failure states, and keyboard/focus/mobile behavior.
+
   Coordinate fixture mutations and SQL observation with the independent test
+
   operator; do not change source code, policy, deployments, domains, or live data.
+
   Stop for P0/P1 safety defects. Record NOT_RUN/BLOCKED honestly. Return the
+
   completed computer-qa-report.json and screenshot paths to the Orchestrator;
+
   do not approve fixes you authored, merge, or claim release readiness.
+
+  '
+resume_conditions:
+- Attach the separate @Computer session to the exact environment ID in computer-qa-handoff.md;
+  its own localhost is not this preview.
+- Recheck branch/source fingerprint/build ID and private production server origin
+  before interaction.
+- Issue a new trusted fixed-persona session; do not reuse expired credentials or the
+  consumed Finance proposal from non-UI smoke.
+- Begin a fresh comparison for each persona/scenario; record observed UI and screenshots
+  for all18blocked cases.
+- Do not publish or change domains to work around local-preview access.

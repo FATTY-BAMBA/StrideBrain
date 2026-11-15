@@ -1,15 +1,15 @@
 {
   "taskId": "SB-029",
   "issueUrl": "https://github.com/FATTY-BAMBA/StrideBrain/issues/29",
-  "state": "BUILDING",
+  "state": "BLOCKED",
   "baseline": "0ecd65bdb0ae752f3244960d6848a74a30d5da01",
   "branch": "build/sb-029-governed-internal-review",
-  "headCommit": "819f5545f0fa05d125835ec8ef417ec2f5f495f8",
+  "headCommit": "4c13f726bb75f4a31d263eb6e54622224807d019",
   "repairCycles": [
     {
       "cycle": 1,
       "phase": "BUILDING",
-      "status": "IN_PROGRESS",
+      "status": "PASSED",
       "startedAt": "2026-11-15T21:44:16.260322Z",
       "reason": "Initial independent implementation validation identified concrete defects before stable candidate acceptance.",
       "rootCauses": [
@@ -31,8 +31,13 @@
         "tests/repositories/prisma-internal-review-repository.test.ts",
         "tests/internal-review/postgres-invariants.test.ts"
       ],
-      "fullRegression": "Pending complete stable-candidate regression and exact-head CI",
-      "browserRetest": "Not applicable yet; Computer QA has not run."
+      "fullRegression": "All 16 independent deterministic commands passed on 4c13f726; 436 tests including 88 PostgreSQL cases; GitHub CI 43767600389 succeeded.",
+      "browserRetest": "Computer QA subsequently attempted; blocked by tool infrastructure before any full scenario completed.",
+      "completedAt": "2026-11-15T22:15:40.510747Z",
+      "evidence": [
+        "validation-final.json",
+        "evidence/ci-4c13f726.json"
+      ]
     }
   ],
   "humanMergeApproval": null,
@@ -99,6 +104,60 @@
         "architecture.md": "6e7737b5cf090fd09311ca899265ce96328c4f34030985c0b4b42a4dd235566a",
         "build-contract.md": "091e6ca83ec2d644d7651f2db958086d938b792de9f40890c1010cf64b6d4845"
       }
+    },
+    {
+      "from": "BUILDING",
+      "to": "CI_VALIDATION",
+      "timestamp": "2026-11-15T22:09:04.630713Z",
+      "reason": "Complete implementation candidate committed/pushed with all stable independent tests and reviewed corrections; exclusive complete validation begins on this exact head.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "4c13f726bb75f4a31d263eb6e54622224807d019",
+      "evidence": [
+        "https://github.com/FATTY-BAMBA/StrideBrain/pull/31",
+        "validation-building.json",
+        "independent-review.md",
+        "test-plan.md"
+      ]
+    },
+    {
+      "from": "CI_VALIDATION",
+      "to": "PREVIEW_READY",
+      "timestamp": "2026-11-15T22:15:40.510747Z",
+      "reason": "All exact-head deterministic gates and GitHub CI passed. Isolated synthetic production preview started and HTTP readiness verified; actual browser QA remains unrun.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "4c13f726bb75f4a31d263eb6e54622224807d019",
+      "evidence": [
+        "validation-final.json",
+        "evidence/ci-4c13f726.json",
+        "computer-qa-plan.yaml",
+        "evidence/computer-qa/preview-database-setup.json"
+      ]
+    },
+    {
+      "from": "PREVIEW_READY",
+      "to": "COMPUTER_QA",
+      "timestamp": "2026-11-15T22:16:04.883769Z",
+      "reason": "Real Cloud browser-computer tool is available; independent Computer QA Coordinator is authorized to execute the exact-head preview handoff. No browser pass asserted.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "4c13f726bb75f4a31d263eb6e54622224807d019",
+      "evidence": [
+        "computer-qa-handoff.md",
+        "computer-qa-plan.yaml",
+        "validation-final.json"
+      ]
+    },
+    {
+      "from": "COMPUTER_QA",
+      "to": "BLOCKED",
+      "timestamp": "2026-11-15T22:25:29.505831Z",
+      "reason": "Actual CUA navigation failed twice before reaching the preview; documented native fallback also has no input provider. No complete browser scenario passed. Preserve isolated PREVIEW_READY build for a separate human-initiated @Computer session; final independent review and merge readiness remain gated.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "4c13f726bb75f4a31d263eb6e54622224807d019",
+      "evidence": [
+        "evidence/computer-qa/cua-infrastructure-blocker.json",
+        "computer-qa-report.json",
+        "computer-qa-handoff.md"
+      ]
     }
   ],
   "events": [
@@ -136,6 +195,18 @@
         "architecture.md": "896ad07a4903d9a347bcc685bfc2688ca85c4effe906df68492079ceadd96976",
         "build-contract.md": "168be4622d7550d30f2a5562da1cc470d1a9d8a3721f6107c30494b2ea26e9d8"
       }
+    },
+    {
+      "timestamp": "2026-11-15T22:28:29.972248Z",
+      "kind": "PREVIEW_OPERATOR_ORIGIN_ALIGNMENT",
+      "reason": "The preview bind hostname was corrected from 0.0.0.0 to localhost to match the configured public origin used by the unchanged strict request-origin guard. The exact same production build now completes live non-UI Finance prepare/create/replay/conflict/Chinese-reopen checks. No product change or repair cycle; no browser pass.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "4c13f726bb75f4a31d263eb6e54622224807d019",
+      "evidence": [
+        "evidence/computer-qa/finance-proposal-api-diagnostic.json",
+        "evidence/computer-qa/finance-proposal-api-after-origin-alignment.json",
+        "evidence/computer-qa/finance-http-action-smoke.json"
+      ]
     }
   ],
   "pullRequest": "https://github.com/FATTY-BAMBA/StrideBrain/pull/31",
@@ -159,5 +230,29 @@
       },
       "retestEvidence": "/tmp/sb029-stage8-validation/canonical-verified-advisory-fix.log"
     }
-  ]
+  ],
+  "validationHead": "4c13f726bb75f4a31d263eb6e54622224807d019",
+  "preview": {
+    "url": "http://localhost:3000",
+    "headCommit": "4c13f726bb75f4a31d263eb6e54622224807d019",
+    "buildId": "3arTh5JwUyUt0e73FJY-z",
+    "database": "stridebrain_stage8_preview",
+    "serverSessionId": 97028,
+    "bindHostname": "localhost",
+    "readiness": "PREVIEW_READY; actual Computer QA blocked by control infrastructure"
+  },
+  "blocker": {
+    "kind": "BROWSER_QA_INFRASTRUCTURE",
+    "resumeState": "COMPUTER_QA",
+    "requires": "Working independent Computer/browser session with access to this isolated preview",
+    "productPolicyDecisionRequired": false
+  },
+  "applicationHead": "4c13f726bb75f4a31d263eb6e54622224807d019",
+  "sourceTreeFingerprintSha256": "7fe5157f84f9c88023462ec1e958b62a53bcdb5aef30eb0dc4ac95dfdac85920",
+  "latestMainVerification": {
+    "timestamp": "2026-11-15T22:28:29.972248Z",
+    "command": "git ls-remote origin refs/heads/main refs/heads/build/sb-029-governed-internal-review",
+    "mainCommit": "0ecd65bdb0ae752f3244960d6848a74a30d5da01",
+    "applicationBranchCommit": "4c13f726bb75f4a31d263eb6e54622224807d019"
+  }
 }

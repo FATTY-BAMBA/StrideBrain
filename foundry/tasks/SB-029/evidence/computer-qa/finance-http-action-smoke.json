@@ -1,0 +1,150 @@
+{
+  "kind": "NON_UI_HTTP_CANONICAL_ACTION_SMOKE",
+  "head": "4c13f726bb75f4a31d263eb6e54622224807d019",
+  "buildId": "3arTh5JwUyUt0e73FJY-z",
+  "time": "2026-11-15T22:27:03.533Z",
+  "persona": "finance",
+  "origin": "http://localhost:3000",
+  "before": {
+    "actions": 0,
+    "consumed": 0,
+    "receipts": 0,
+    "audits": 0
+  },
+  "created": {
+    "status": 200,
+    "durationMs": 300.31162300000005,
+    "result": {
+      "kind": "CREATED",
+      "receipt": {
+        "version": "action-receipt.v1",
+        "timezone": "Asia/Taipei",
+        "businessKey": "action_54552fb7-7f6d-45ee-aa66-c50290b4a74c",
+        "title": "Validate imported-stone and lighting assumptions for Xinyi quote v3",
+        "rationale": "Review these assumptions against the linked evidence before the next internal quotation review.\n\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\n\nLighting quoted price differs by +9.4% from eligible quoted-price history.\n\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\n\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\n\nComparison: cmprun_e928ff34-9e01-42e6-a5bf-cc7196d0915e; economics enrichment: econrun_1ac0d77a-9d11-40d9-9a91-6b655fa123a0.\n\nThis creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally.\n\nHistorical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid.",
+        "project": {
+          "projectKey": "PRJ-XINYI-026",
+          "name": "Xinyi Flagship Renovation"
+        },
+        "assigneeDisplayName": "Iris Huang",
+        "dueDate": "2026-11-23",
+        "status": "OPEN",
+        "createdAt": "2026-11-15T22:27:03.226Z",
+        "createdByDisplay": "Iris Huang",
+        "comparisonRunId": "cmprun_e928ff34-9e01-42e6-a5bf-cc7196d0915e",
+        "enrichmentRunId": "econrun_1ac0d77a-9d11-40d9-9a91-6b655fa123a0",
+        "evidenceCount": 15,
+        "returnContext": {
+          "selectedProjectKeys": [
+            "PRJ-NEIHU-021",
+            "PRJ-ZHONGSHAN-018",
+            "PRJ-NANJING-023"
+          ]
+        }
+      }
+    }
+  },
+  "replay": {
+    "status": 200,
+    "durationMs": 51.05972300000002,
+    "result": {
+      "kind": "IDEMPOTENT_REPLAY",
+      "receipt": {
+        "version": "action-receipt.v1",
+        "timezone": "Asia/Taipei",
+        "businessKey": "action_54552fb7-7f6d-45ee-aa66-c50290b4a74c",
+        "title": "Validate imported-stone and lighting assumptions for Xinyi quote v3",
+        "rationale": "Review these assumptions against the linked evidence before the next internal quotation review.\n\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\n\nLighting quoted price differs by +9.4% from eligible quoted-price history.\n\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\n\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\n\nComparison: cmprun_e928ff34-9e01-42e6-a5bf-cc7196d0915e; economics enrichment: econrun_1ac0d77a-9d11-40d9-9a91-6b655fa123a0.\n\nThis creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally.\n\nHistorical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid.",
+        "project": {
+          "projectKey": "PRJ-XINYI-026",
+          "name": "Xinyi Flagship Renovation"
+        },
+        "assigneeDisplayName": "Iris Huang",
+        "dueDate": "2026-11-23",
+        "status": "OPEN",
+        "createdAt": "2026-11-15T22:27:03.226Z",
+        "createdByDisplay": "Iris Huang",
+        "comparisonRunId": "cmprun_e928ff34-9e01-42e6-a5bf-cc7196d0915e",
+        "enrichmentRunId": "econrun_1ac0d77a-9d11-40d9-9a91-6b655fa123a0",
+        "evidenceCount": 15,
+        "returnContext": {
+          "selectedProjectKeys": [
+            "PRJ-NEIHU-021",
+            "PRJ-ZHONGSHAN-018",
+            "PRJ-NANJING-023"
+          ]
+        }
+      }
+    }
+  },
+  "conflict": {
+    "status": 200,
+    "durationMs": 29.024307999999962,
+    "result": {
+      "kind": "IDEMPOTENCY_CONFLICT",
+      "requestId": "c849faa2-0ba6-4fdf-aa54-bcb86a628a5f"
+    }
+  },
+  "reopened": {
+    "status": 200,
+    "result": {
+      "kind": "AVAILABLE",
+      "receipt": {
+        "version": "action-receipt.v1",
+        "timezone": "Asia/Taipei",
+        "businessKey": "action_54552fb7-7f6d-45ee-aa66-c50290b4a74c",
+        "title": "檢核信義旗艦店裝修第3版報價的進口石材與照明假設",
+        "rationale": "下次內部報價審查前，依連結的佐證資料檢核這些假設。\n\n進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。\n\n照明報價與符合條件的歷史報價比較，差異為 +9.4%。\n\n照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。\n\n目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。\n\n比較紀錄：cmprun_e928ff34-9e01-42e6-a5bf-cc7196d0915e；成本分析紀錄：econrun_1ac0d77a-9d11-40d9-9a91-6b655fa123a0。\n\n此操作只會建立內部審查事項，不會核准或發出報價、授權商業承諾，或對外聯繫。\n\n歷史比較不能證明這份報價有誤、供應商收費過高，或趕工造成特定溢價；供應商價格也未確認目前仍有效。",
+        "project": {
+          "projectKey": "PRJ-XINYI-026",
+          "name": "信義旗艦店裝修"
+        },
+        "assigneeDisplayName": "黃怡君",
+        "dueDate": "2026-11-23",
+        "status": "OPEN",
+        "createdAt": "2026-11-15T22:27:03.226Z",
+        "createdByDisplay": "黃怡君",
+        "comparisonRunId": "cmprun_e928ff34-9e01-42e6-a5bf-cc7196d0915e",
+        "enrichmentRunId": "econrun_1ac0d77a-9d11-40d9-9a91-6b655fa123a0",
+        "evidenceCount": 15,
+        "returnContext": {
+          "selectedProjectKeys": [
+            "PRJ-NEIHU-021",
+            "PRJ-ZHONGSHAN-018",
+            "PRJ-NANJING-023"
+          ]
+        }
+      }
+    }
+  },
+  "after": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1
+  },
+  "auditEvidence": {
+    "businessKey": "action_54552fb7-7f6d-45ee-aa66-c50290b4a74c",
+    "status": "OPEN",
+    "proposal_status": "CONFIRMED",
+    "consumed_timestamp": true,
+    "evidence_count": 15,
+    "claim_count": 4,
+    "exact_snapshot_evidence_ids": true,
+    "eventType": "INTERNAL_REVIEW_CREATED",
+    "result": "SUCCESS",
+    "actor_matches": true,
+    "proposal_matches": true,
+    "action_matches": true,
+    "comparison_matches": true,
+    "enrichment_matches": true,
+    "policy_claim_evidence_recorded": true,
+    "original_final_recorded": true,
+    "idempotency_matches": true,
+    "payload_fingerprint_matches": true,
+    "request_time_recorded": true
+  },
+  "credentialsRecorded": false,
+  "browserEvidence": false,
+  "qualification": "Actual production HTTP and PostgreSQL evidence only. Does not establish browser review, explicit UI confirmation, focus, mobile, route interaction, or full Computer-QA scenario passes."
+}
