@@ -1,0 +1,60 @@
+name: Stage 5 integration assembler
+
+on:
+  push:
+    branches:
+      - build/stage-5-historical-economics
+    paths:
+      - .github/workflows/stage5-assemble.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out Stage 5 branch
+        uses: actions/checkout@v6
+        with:
+          ref: build/stage-5-historical-economics
+          persist-credentials: true
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Assemble verified integration payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .stage5-upload/part-* > /tmp/stage5-integration.b64
+          base64 --decode /tmp/stage5-integration.b64 > /tmp/stage5-integration.tar.gz
+          echo "6d7cff3d629e819aef66162a360c057a6ea0a7a1beb35db1675d46fc9ec31399  /tmp/stage5-integration.tar.gz" | sha256sum --check
+          tar -xzf /tmp/stage5-integration.tar.gz -C .
+          rm -rf .stage5-upload .github/workflows/stage5-assemble.yml
+
+      - name: Validate assembled source
+        run: |
+          npm ci --no-audit --no-fund
+          npm run format:check
+          npm run lint
+          npm run typecheck
+          npm test
+          npm run build
+          git checkout -- next-env.d.ts
+
+      - name: Commit clean Stage 5 integration slice
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "feat(stage5): integrate economics repositories and immutable enrichment"
+          git push origin HEAD:build/stage-5-historical-economics
