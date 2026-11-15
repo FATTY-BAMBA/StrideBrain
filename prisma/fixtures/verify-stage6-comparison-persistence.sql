@@ -37,7 +37,7 @@ BEGIN
   END IF;
 
   IF contribution_definition IS NULL
-     OR position('"weight"' IN contribution_definition) = 0 THEN
+     OR position('weight' IN lower(contribution_definition)) = 0 THEN
     RAISE EXCEPTION 'ComparisonFactor contribution must remain bounded by factor weight: %', contribution_definition;
   END IF;
 END $$;
