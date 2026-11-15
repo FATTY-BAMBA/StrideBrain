@@ -829,3 +829,54 @@
   white-space: nowrap;
   border: 0;
 }
+
+.evidenceTrigger,
+.factorEvidenceTrigger,
+.synthesisEvidenceTrigger {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.evidenceTrigger {
+  display: grid;
+  width: 100%;
+  gap: 0.2rem;
+  padding: 0;
+  text-align: left;
+}
+
+.factorEvidenceTrigger {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.7rem;
+  align-items: baseline;
+  padding: 0.15rem 0;
+  text-align: left;
+}
+
+.synthesisEvidenceTrigger {
+  margin-top: 0.75rem;
+  padding: 0;
+  color: #245dcc;
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.evidenceTrigger:hover .cellPrimary,
+.factorEvidenceTrigger:hover span,
+.synthesisEvidenceTrigger:hover {
+  color: #174aa8;
+}
+
+.evidenceTrigger:focus-visible,
+.factorEvidenceTrigger:focus-visible,
+.synthesisEvidenceTrigger:focus-visible {
+  outline: 3px solid #2f6fed;
+  outline-offset: 3px;
+  border-radius: 0.35rem;
+}

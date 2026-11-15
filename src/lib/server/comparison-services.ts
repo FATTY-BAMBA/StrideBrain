@@ -3,6 +3,7 @@ import { GetComparisonRun } from "@/modules/comparisons/application/get-comparis
 import { RunComparableProjectAnalysis } from "@/modules/comparisons/application/run-comparable-project-analysis";
 import { GetHistoricalEconomicsEnrichment } from "@/modules/economics/application/get-historical-economics-enrichment";
 import { RunHistoricalEconomicsEnrichment } from "@/modules/economics/application/run-historical-economics-enrichment";
+import { GetEvidencePanel } from "@/modules/evidence-panel/application/get-evidence-panel";
 import {
   PrismaComparableProjectRepository,
   type PrismaComparableProjectDatabase,
@@ -20,6 +21,10 @@ import {
   type PrismaEconomicsObservationDatabase,
 } from "@/repositories/prisma/prisma-economics-observation-repository";
 import {
+  PrismaEvidencePanelRepository,
+  type PrismaEvidencePanelDatabase,
+} from "@/repositories/prisma/prisma-evidence-panel-repository";
+import {
   PrismaProjectRepository,
   type PrismaProjectReader,
 } from "@/repositories/prisma/prisma-project-repository";
@@ -28,13 +33,15 @@ type ComparisonDatabase = PrismaProjectReader &
   PrismaComparableProjectDatabase &
   PrismaComparisonRunDatabase &
   PrismaEconomicsObservationDatabase &
-  PrismaEconomicsEnrichmentDatabase;
+  PrismaEconomicsEnrichmentDatabase &
+  PrismaEvidencePanelDatabase;
 
 export type ComparisonServices = Readonly<{
   runComparison: RunComparableProjectAnalysis;
   getComparison: GetComparisonRun;
   runEconomics: RunHistoricalEconomicsEnrichment;
   getEconomics: GetHistoricalEconomicsEnrichment;
+  getEvidencePanel: GetEvidencePanel;
 }>;
 
 /**
@@ -49,11 +56,13 @@ export function createComparisonServices(): ComparisonServices {
   const comparisonRuns = new PrismaComparisonRunRepository(database);
   const observations = new PrismaEconomicsObservationRepository(database);
   const economicsRuns = new PrismaEconomicsEnrichmentRunRepository(database);
+  const evidencePanel = new PrismaEvidencePanelRepository(database);
 
   return Object.freeze({
     runComparison: new RunComparableProjectAnalysis(projects, candidates, comparisonRuns),
     getComparison: new GetComparisonRun(comparisonRuns),
     runEconomics: new RunHistoricalEconomicsEnrichment(comparisonRuns, observations, economicsRuns),
     getEconomics: new GetHistoricalEconomicsEnrichment(economicsRuns),
+    getEvidencePanel: new GetEvidencePanel(comparisonRuns, economicsRuns, evidencePanel),
   });
 }

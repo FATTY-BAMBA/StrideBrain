@@ -10,6 +10,13 @@ export type ComparisonRouteSearch = Readonly<{
   outcome?: string | undefined;
   requestId?: string | undefined;
   missingFields: readonly string[];
+  evidenceMode?: string | undefined;
+  evidenceClaimKey?: string | undefined;
+  evidenceCandidateProjectKey?: string | undefined;
+  evidenceFactorKey?: string | undefined;
+  evidenceSourceKey?: string | undefined;
+  evidenceConflictKey?: string | undefined;
+  evidenceReturnId?: string | undefined;
 }>;
 
 type SearchParams = Readonly<Record<string, string | readonly string[] | undefined>>;
@@ -43,6 +50,13 @@ export function parseComparisonRouteSearch(search: SearchParams): ComparisonRout
     outcome: safeIdentifier(first(search.outcome)),
     requestId: safeIdentifier(first(search.requestId)),
     missingFields: parseList(first(search.missing), 20),
+    evidenceMode: safeIdentifier(first(search.evidenceMode)),
+    evidenceClaimKey: safeIdentifier(first(search.evidenceClaim)),
+    evidenceCandidateProjectKey: safeIdentifier(first(search.evidenceCandidate)),
+    evidenceFactorKey: safeIdentifier(first(search.evidenceFactor)),
+    evidenceSourceKey: safeIdentifier(first(search.evidenceSource)),
+    evidenceConflictKey: safeIdentifier(first(search.evidenceConflict)),
+    evidenceReturnId: safeIdentifier(first(search.evidenceReturn)),
   });
 }
 

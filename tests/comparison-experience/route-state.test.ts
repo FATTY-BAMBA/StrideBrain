@@ -67,4 +67,22 @@ describe("Stage 6 comparison route state", () => {
 
     expect(selectedKeysFromFormData(form)).toEqual(["PRJ-A", "PRJ-B", "PRJ-C"]);
   });
+  it("preserves bounded Stage 7 evidence route state", () => {
+    const state = parseComparisonRouteSearch({
+      run: "cmprun_123",
+      economics: "econrun_456",
+      selected: "PRJ-A,PRJ-B",
+      evidenceMode: "claim",
+      evidenceClaim: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      evidenceSource: "abcdef0123456789abcdef01",
+      evidenceConflict: "conflict_stone_1",
+      evidenceReturn: "evidence-cell-imported-stone",
+    });
+
+    expect(state.evidenceMode).toBe("claim");
+    expect(state.evidenceClaimKey).toBe("XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE");
+    expect(state.evidenceSourceKey).toBe("abcdef0123456789abcdef01");
+    expect(state.evidenceConflictKey).toBe("conflict_stone_1");
+    expect(state.evidenceReturnId).toBe("evidence-cell-imported-stone");
+  });
 });

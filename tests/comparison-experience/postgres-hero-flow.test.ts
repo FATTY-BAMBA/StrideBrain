@@ -14,6 +14,7 @@ const DATABASE_AVAILABLE = Boolean(process.env.DATABASE_URL);
 const describeDatabase = DATABASE_AVAILABLE ? describe : describe.skip;
 const SIGNING_SECRET = "stage6-integration-session-secret-at-least-32-bytes";
 const HERO_PIPELINE_BUDGET_MS = 5_000;
+const EVIDENCE_PANEL_BUDGET_MS = 500;
 
 describeDatabase("Stage 6 PostgreSQL hero flow", () => {
   it("runs the authorized structural and economics pipeline and composes the real UI DTO", async () => {
@@ -83,5 +84,46 @@ describeDatabase("Stage 6 PostgreSQL hero flow", () => {
         .find((row) => row.key === "LIGHTING_ELECTRICAL-ACTUAL")?.cells.__ACTIVE_PROJECT__?.state,
     ).toBe("INSUFFICIENT");
     expect(view.notices.some((notice) => notice.key === "stale")).toBe(true);
+
+    const evidenceStartedAt = performance.now();
+    const evidence = await services.getEvidencePanel.execute(
+      context!,
+      {
+        mode: "CLAIM",
+        comparisonRunId: structural.result.run.id,
+        enrichmentRunId: economics.result.run.id,
+        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      },
+      "en",
+    );
+    const evidenceDurationMs = performance.now() - evidenceStartedAt;
+    console.info(`STAGE7_EVIDENCE_PANEL_MS=${evidenceDurationMs.toFixed(2)}`);
+
+    expect(evidenceDurationMs).toBeLessThan(EVIDENCE_PANEL_BUDGET_MS);
+    expect(evidence.kind).toBe("READY");
+    if (evidence.kind !== "READY") throw new Error("EVIDENCE_PANEL_REQUIRED");
+    expect(evidence.view.mode).toBe("CLAIM");
+    expect(evidence.view.claim?.claimKey).toBe("XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE");
+    expect(evidence.view.trace?.kind).toBe("FINANCIAL");
+    expect(evidence.view.sources.length).toBeGreaterThanOrEqual(4);
+    expect(evidence.view.sources.every((source) => /^[a-f0-9]{24}$/.test(source.sourceKey))).toBe(
+      true,
+    );
+    expect(JSON.stringify(evidence.view)).not.toContain("evidence_");
+
+    const factor = await services.getEvidencePanel.execute(
+      context!,
+      {
+        mode: "FACTOR",
+        comparisonRunId: structural.result.run.id,
+        candidateProjectKey: "PRJ-NEIHU-021",
+        factorKey: "AREA_SIMILARITY",
+      },
+      "zh-TW",
+    );
+    expect(factor.kind).toBe("READY");
+    if (factor.kind !== "READY") throw new Error("FACTOR_PANEL_REQUIRED");
+    expect(factor.view.trace?.kind).toBe("FACTOR");
+    expect(factor.view.heading.title).toContain("面積");
   }, 20_000);
 });
