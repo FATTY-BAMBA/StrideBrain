@@ -1,4 +1,5 @@
 import { getPrismaClient } from "@/lib/server/prisma";
+import { traceInternalReviewAttempt } from "@/lib/server/internal-review-trace";
 import { InternalReviewService } from "@/modules/internal-review/application/internal-review-service";
 import {
   PrismaInternalReviewRepository,
@@ -15,8 +16,6 @@ export function createInternalReviewServices(
   return new InternalReviewService(
     new PrismaInternalReviewRepository(getPrismaClient(), options),
     options.clock,
-    (event) => {
-      console.info(JSON.stringify({ event: "INTERNAL_REVIEW_ATTEMPT", ...event }));
-    },
+    traceInternalReviewAttempt,
   );
 }

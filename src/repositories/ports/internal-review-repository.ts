@@ -80,9 +80,13 @@ export type EvidenceScope = Readonly<{
   inComparison: boolean;
   comparisonRunIds: readonly string[];
   documentChecksum?: string | null | undefined;
+  documentVersionId?: string | null | undefined;
   documentClassification?: string | null | undefined;
   documentAuthority?: string | null | undefined;
   documentSuperseded?: boolean | undefined;
+  documentProjectId?: string | null | undefined;
+  documentProjectClassification?: string | null | undefined;
+  documentProjectDeleted?: boolean | undefined;
 }>;
 export type ProposalMetadata = Readonly<{
   id: string;

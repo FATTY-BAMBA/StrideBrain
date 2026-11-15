@@ -1,0 +1,72 @@
+{
+  "scope": "Independent BUILDING evaluations against uncommitted candidate; not final exact-head validation",
+  "branch": "build/sb-029-governed-internal-review",
+  "headBeforeUncommittedChanges": "819f5545f0fa05d125835ec8ef417ec2f5f495f8",
+  "workingTreeUncommitted": true,
+  "environment": {
+    "postgresql": "17",
+    "node": "24.22.1",
+    "vitest": "4.1.10",
+    "isolation": "Random disposable PostgreSQL database per test suite; clean eight migrations, synthetic seed and SQL checks before cases; guarded DROP after cases"
+  },
+  "rawLogs": "/tmp/sb029-stage8-validation",
+  "attempts": [
+    {
+      "command": "npm run test -- tests/internal-review/postgres-invariants.test.ts --reporter=verbose",
+      "log": "evidence/build-evaluation/adversarial-initial.log",
+      "result": "76 passed; 3 failed of 79",
+      "cause": "Test harness: CLOSED project mutation omitted existing completedAt invariant; two raw pg_trigger queries required tgenabled::text for Prisma decoding. No product policy change."
+    },
+    {
+      "command": "npx vitest run tests/internal-review/postgres-invariants.test.ts --testNamePattern='rejects changed project state|repeatably reseeds|refuses a fixture reset'",
+      "log": "evidence/build-evaluation/adversarial-fixture-fix.log",
+      "result": "3 passed; 76 filtered"
+    },
+    {
+      "command": "npx vitest run tests/internal-review/postgres-invariants.test.ts --testNamePattern='measures uncached|twenty additional'",
+      "log": "evidence/build-evaluation/performance-batching.log",
+      "result": "1 passed; 1 failed; 78 filtered",
+      "cause": "All p95/query-count assertions passed. Test cleanup attempted deleting a membership referenced by an immutable proposal. Cleanup now deactivates synthetic candidates and retains lineage until guarded fixture reset."
+    },
+    {
+      "command": "npx vitest run tests/internal-review/postgres-invariants.test.ts --testNamePattern='required document has|rebound to another|repeated preparation|twenty additional'",
+      "log": "evidence/build-evaluation/final-security-batching.log",
+      "result": "7 passed; 79 filtered"
+    },
+    {
+      "command": "npx vitest run tests/internal-review/postgres-invariants.test.ts --testNamePattern='current run-pair entry'",
+      "log": "evidence/build-evaluation/entry-preflight.log",
+      "result": "1 passed; 86 filtered"
+    },
+    {
+      "command": "npx vitest run tests/internal-review/postgres-invariants.test.ts --testNamePattern='additional evidence references'",
+      "log": "evidence/build-evaluation/evidence-batching.log",
+      "result": "1 passed; 87 filtered"
+    }
+  ],
+  "performance": {
+    "report": "evidence/build-evaluation/performance-query-plan.json",
+    "proposalSamples": 30,
+    "proposalP95Ms": 113.48518999999942,
+    "proposalSqlEvents": 110,
+    "confirmationSamples": 30,
+    "confirmationP95Ms": 127.96408400000291,
+    "confirmationSqlEvents": 131,
+    "assigneeCardinalityIncrease": 20,
+    "assigneeQueriesBeforeAndAfter": [
+      110,
+      110
+    ],
+    "sqlPlan": "EXPLAIN ANALYZE BUFFERS captured for slowest measured read",
+    "evidenceCardinalityIncrease": [
+      15,
+      35
+    ],
+    "evidenceQueriesBeforeAndAfter": [
+      21,
+      21
+    ]
+  },
+  "fullStableCandidateGate": "PENDING",
+  "browserQa": "NOT_CLAIMED"
+}

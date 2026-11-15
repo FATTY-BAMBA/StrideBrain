@@ -71,8 +71,10 @@ function numeric(value: unknown): string {
 }
 function exactIds(left: readonly string[], right: readonly string[]): boolean {
   return (
+    left.length === right.length &&
     sha256([...new Set(left)].sort()) === sha256([...new Set(right)].sort()) &&
-    new Set(left).size === left.length
+    new Set(left).size === left.length &&
+    new Set(right).size === right.length
   );
 }
 

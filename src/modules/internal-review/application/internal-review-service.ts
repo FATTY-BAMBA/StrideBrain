@@ -197,19 +197,41 @@ export class InternalReviewService {
     return actor && preliminaryAccess(actor.context) ? actor : null;
   }
 
-  async canPrepare(seed: RuntimeContext, projectKey: string): Promise<boolean> {
-    if (!SAFE_REVIEW_KEY.test(projectKey) || !preliminaryAccess(seed)) return false;
+  async canPrepare(
+    seed: RuntimeContext,
+    projectKey: string,
+    pair?: Readonly<{ comparisonRunId: string; enrichmentRunId: string }>,
+  ): Promise<boolean> {
+    if (
+      !preliminaryAccess(seed) ||
+      !pair ||
+      ![projectKey, pair.comparisonRunId, pair.enrichmentRunId].every(
+        (key) => typeof key === "string" && SAFE_REVIEW_KEY.test(key),
+      )
+    )
+      return false;
     try {
       return await this.repository.transaction(async (tx) => {
         const actor = await this.actor(tx, seed);
         if (!actor) return false;
         const project = await tx.getProject(actor.context, projectKey);
-        return Boolean(
-          project &&
-          project.status === "ACTIVE" &&
-          !project.deletedAt &&
-          actionAccess(actor.context, project.id),
+        if (
+          !project ||
+          project.status !== "ACTIVE" ||
+          project.deletedAt ||
+          !actionAccess(actor.context, project.id)
+        )
+          return false;
+        const current = await currentMaterial(
+          tx,
+          actor.context,
+          project,
+          pair.comparisonRunId,
+          pair.enrichmentRunId,
+          this.clock(),
+          actor.timezone,
         );
+        return current.kind === "READY";
       });
     } catch {
       return false;
@@ -316,6 +338,13 @@ export class InternalReviewService {
         if (metadata.status !== "PREPARED") return this.failure(seed, "PROPOSAL_UNAVAILABLE");
         if (new Date(metadata.expiresAt).getTime() <= now.getTime())
           return this.failure(seed, "PROPOSAL_EXPIRED");
+        if (
+          metadata.suggestedAssigneeMembershipId &&
+          !members.some(
+            (member) => member.context.membershipId === metadata.suggestedAssigneeMembershipId,
+          )
+        )
+          return this.failure(seed, "PROPOSAL_UNAVAILABLE");
         const record = await tx.getProposal(context, metadata);
         if (!record) return this.failure(seed, "PROPOSAL_UNAVAILABLE");
         return {
@@ -465,8 +494,10 @@ export class InternalReviewService {
         if (project.status !== "ACTIVE" || record.content.policyVersion !== INTERNAL_REVIEW_POLICY)
           return this.failure(seed, "STALE_COMPARISON");
         const errors = validateEdits(record.content, command, now);
-        if (Object.keys(errors).length > 0)
+        if (Object.keys(errors).length > 0) {
+          this.trace({ requestId: seed.requestId, outcome: "VALIDATION_FAILED" });
           return { kind: "VALIDATION_FAILED", requestId: seed.requestId, fieldErrors: errors };
+        }
         const current = await currentMaterial(
           tx,
           context,
@@ -636,7 +667,12 @@ export class InternalReviewService {
     if (!action || action.content.version !== ACTION_SNAPSHOT_VERSION || action.status !== "OPEN")
       return null;
     const snapshot = action.evidenceSnapshot as {
-      sources?: readonly { referenceId: string; subjectId: string; subjectType: string }[];
+      sources?: readonly {
+        referenceId: string;
+        subjectId: string;
+        subjectType: string;
+        documentVersionId?: string | undefined;
+      }[];
     };
     if (
       !snapshot.sources ||
@@ -647,7 +683,8 @@ export class InternalReviewService {
             (source) =>
               source.referenceId === scope.referenceId &&
               source.subjectId === scope.subjectId &&
-              source.subjectType === scope.subjectType,
+              source.subjectType === scope.subjectType &&
+              (source.documentVersionId ?? null) === (scope.documentVersionId ?? null),
           ),
       )
     )

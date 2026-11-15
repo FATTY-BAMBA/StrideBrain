@@ -1,12 +1,13 @@
 # SB-029 — Governed internal review action and audit receipt
 
-Status: SPECIFYING. Research is complete; the architecture/build contract is under development. This is the task brief, not implementation or release acceptance.
+Status: BUILDING. Research is complete; the architecture/build contract received independent contract verdict PASS and Orchestrator acceptance (exact reviewed hashes in state.json and independent-review.md). This is not implementation or release acceptance.
 
 ## Authoritative inputs
 
 - [Issue #29](https://github.com/FATTY-BAMBA/StrideBrain/issues/29), fully retrieved with zero comments; snapshot in `issue-29.json`.
 - `origin/main` fetched and verified at `0ecd65bdb0ae752f3244960d6848a74a30d5da01`; the supplied baseline matches current main. Initial working tree was clean.
 - Default branch confirmed as `main` through GitHub repository metadata.
+- Dedicated branch: `build/sb-029-governed-internal-review`. The initially selected remote branch name already existed with an unrelated source-export workflow; that branch was preserved and a distinct name was used.
 - All six named governing documents in Issue #29 have been read, along with Stage 3–7 implementation records and the Foundry operating/build authorization documents. Specialists inspect accepted ADRs, design, architecture and tests as applicable.
 
 ## Outcome and limits

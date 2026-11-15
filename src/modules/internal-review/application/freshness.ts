@@ -62,6 +62,7 @@ export function evidenceScopesAllowed(
 ): boolean {
   if (
     scopes.length !== new Set(references).size ||
+    new Set(scopes.map((scope) => scope.referenceId)).size !== scopes.length ||
     scopes.some((scope) => !references.includes(scope.referenceId))
   )
     return false;
@@ -85,7 +86,19 @@ export function evidenceScopesAllowed(
     const assigned = context.assignedProjectIds?.has(scope.projectId) === true;
     const privateAccess = assigned || hasOrganizationWidePrivateHistory(context);
     if (scope.classification === "TENANT_PRIVATE" && !privateAccess) return false;
-    if (scope.documentClassification === "TENANT_PRIVATE" && !privateAccess) return false;
+    const documentAssigned = Boolean(
+      scope.documentProjectId && context.assignedProjectIds?.has(scope.documentProjectId),
+    );
+    const privateDocumentAccess = documentAssigned || hasOrganizationWidePrivateHistory(context);
+    if (scope.documentProjectDeleted || scope.documentProjectClassification === "TENANT_RESTRICTED")
+      return false;
+    if (scope.documentClassification === "TENANT_PRIVATE" && !privateDocumentAccess) return false;
+    if (
+      scope.documentProjectId &&
+      !library.has(scope.documentProjectClassification ?? "") &&
+      !(scope.documentProjectClassification === "TENANT_PRIVATE" && privateDocumentAccess)
+    )
+      return false;
     if (
       scope.projectId !== projectId &&
       !library.has(scope.projectClassification) &&

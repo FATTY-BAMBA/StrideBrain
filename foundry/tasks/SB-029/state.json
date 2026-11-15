@@ -1,11 +1,40 @@
 {
   "taskId": "SB-029",
   "issueUrl": "https://github.com/FATTY-BAMBA/StrideBrain/issues/29",
-  "state": "SPECIFYING",
+  "state": "BUILDING",
   "baseline": "0ecd65bdb0ae752f3244960d6848a74a30d5da01",
-  "branch": "build/stage-8-internal-review-action",
-  "headCommit": "0ecd65bdb0ae752f3244960d6848a74a30d5da01",
-  "repairCycles": [],
+  "branch": "build/sb-029-governed-internal-review",
+  "headCommit": "819f5545f0fa05d125835ec8ef417ec2f5f495f8",
+  "repairCycles": [
+    {
+      "cycle": 1,
+      "phase": "BUILDING",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-11-15T21:44:16.260322Z",
+      "reason": "Initial independent implementation validation identified concrete defects before stable candidate acceptance.",
+      "rootCauses": [
+        "Prisma attempted to decode the void advisory-lock result; initial automated text replacement did not match formatted source.",
+        "Exact evidence ID comparison did not reject duplicate IDs on both sides.",
+        "Linked document access used evidence-subject project assignment instead of document-owner project assignment; receipt required immutable document-binding check.",
+        "Repeated preparation could clear an ineligible stored default assignee instead of rejecting it.",
+        "Independent PostgreSQL harness needed a valid completedAt for CLOSED fixture and text cast for PostgreSQL internal-char trigger metadata.",
+        "GetProjectWorkspace optional safe-action reader omission retained legacy sensitive-title fallback; changed to fail closed.",
+        "Adapter-owned early failures lacked safe operator trace and identity-resolution exception coverage; locked-assignee validation needed focus fallback.",
+        "Create-entry hint checked capability/project state without immutable run-pair sufficiency preflight.",
+        "Plain Stage7 code rollback with retained Stage8 records would restore insecure legacy Action-title reads; corrected reviewed rollback contract."
+      ],
+      "fixPolicy": "Smallest contract-preserving corrections; no permission/evidence policy weakening.",
+      "targetedEvidence": [
+        "validation-build-smoke.json",
+        "tests/internal-review/policy-unit.test.ts",
+        "tests/internal-review/service-unit.test.ts",
+        "tests/repositories/prisma-internal-review-repository.test.ts",
+        "tests/internal-review/postgres-invariants.test.ts"
+      ],
+      "fullRegression": "Pending complete stable-candidate regression and exact-head CI",
+      "browserRetest": "Not applicable yet; Computer QA has not run."
+    }
+  ],
   "humanMergeApproval": null,
   "humanReleaseApproval": null,
   "transitions": [
@@ -36,6 +65,99 @@
         "test-plan.md",
         "independent-review.md"
       ]
+    },
+    {
+      "from": "SPECIFYING",
+      "to": "READY_FOR_BUILD",
+      "timestamp": "2026-11-15T21:30:01.020495Z",
+      "reason": "Orchestrator accepts the reviewable architecture and build contract after independent contract verdict PASS; exact reviewed artifact hashes recorded.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "e2b9436c8894c7a3935121a45864462700eade7a",
+      "evidence": [
+        "architecture.md",
+        "build-contract.md",
+        "independent-review.md"
+      ],
+      "contractHashes": {
+        "architecture.md": "6e7737b5cf090fd09311ca899265ce96328c4f34030985c0b4b42a4dd235566a",
+        "build-contract.md": "091e6ca83ec2d644d7651f2db958086d938b792de9f40890c1010cf64b6d4845"
+      }
+    },
+    {
+      "from": "READY_FOR_BUILD",
+      "to": "BUILDING",
+      "timestamp": "2026-11-15T21:30:01.020739Z",
+      "reason": "Authorized Builder and bounded UI/schema Builder specialists to implement only the independently reviewed contract; final review and all Stage8 validation remain pending.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "e2b9436c8894c7a3935121a45864462700eade7a",
+      "evidence": [
+        "architecture.md",
+        "build-contract.md",
+        "independent-review.md"
+      ],
+      "contractHashes": {
+        "architecture.md": "6e7737b5cf090fd09311ca899265ce96328c4f34030985c0b4b42a4dd235566a",
+        "build-contract.md": "091e6ca83ec2d644d7651f2db958086d938b792de9f40890c1010cf64b6d4845"
+      }
+    }
+  ],
+  "events": [
+    {
+      "timestamp": "2026-11-15T21:23:13.381392Z",
+      "kind": "BRANCH_RENAMED",
+      "reason": "Remote original branch already existed with an unrelated source-export workflow; preserved it and pushed a distinct dedicated branch without force.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "e2b9436c8894c7a3935121a45864462700eade7a",
+      "previousBranch": "build/stage-8-internal-review-action",
+      "preservedRemoteHead": "1207a605d32e68ea0d9c9f2de6401a342201b578"
+    },
+    {
+      "timestamp": "2026-11-15T21:51:59.464112Z",
+      "kind": "IMPLEMENTATION_CHECKPOINT_PUSHED",
+      "reason": "Coherent implementation checkpoint pushed to draft PR31; independent full adversarial validation and final test/evidence commit remain pending.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "819f5545f0fa05d125835ec8ef417ec2f5f495f8",
+      "evidence": [
+        "https://github.com/FATTY-BAMBA/StrideBrain/pull/31"
+      ]
+    },
+    {
+      "timestamp": "2026-11-15T22:05:17.252367Z",
+      "kind": "CONTRACT_SAFETY_CLARIFICATION_ACCEPTED",
+      "reason": "Orchestrator accepts independently re-reviewed safe rollback clarification: retain current authorized/fail-closed Action readers while disabling creation; no unmodified Stage7 rollback with retained Stage8 rows. No product-policy weakening or destructive rollback.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "819f5545f0fa05d125835ec8ef417ec2f5f495f8",
+      "evidence": [
+        "architecture.md",
+        "build-contract.md",
+        "independent-review.md"
+      ],
+      "contractHashes": {
+        "architecture.md": "896ad07a4903d9a347bcc685bfc2688ca85c4effe906df68492079ceadd96976",
+        "build-contract.md": "168be4622d7550d30f2a5562da1cc470d1a9d8a3721f6107c30494b2ea26e9d8"
+      }
+    }
+  ],
+  "pullRequest": "https://github.com/FATTY-BAMBA/StrideBrain/pull/31",
+  "developmentChecks": [
+    {
+      "timestamp": "2026-11-15T21:44:16.260322Z",
+      "phase": "BUILDING",
+      "headCommit": "e2b9436c8894c7a3935121a45864462700eade7a",
+      "workingTreeChanges": true,
+      "check": "Independent canonical PostgreSQL smoke",
+      "result": "FAIL",
+      "details": "Mei, Financial Reviewer and Admin Stage4/5 setups passed; Stage8 preparation returned PROPOSAL_FAILED for all three. Root cause investigation required.",
+      "evidence": "/tmp/sb029-stage8-validation/canonical-smoke.log",
+      "rootCause": "Prisma $queryRaw attempted to deserialize PostgreSQL pg_advisory_xact_lock void return value.",
+      "boundedFix": "Use parameterized $executeRaw for the same advisory-lock statement; authorization and locking semantics unchanged.",
+      "retest": "PASS: all three authorized canonical prepare/create cases and atomic record counts; full adversarial suite still pending.",
+      "fixVerification": {
+        "timestamp": "2026-11-15T21:48:47.364881Z",
+        "detail": "Initial string replacement matched nothing after formatting; explicit one-line patch applied and read back as parameterized $executeRaw for advisory lock only. FOR UPDATE query remains $queryRaw.",
+        "retest": "PASS: all three authorized canonical prepare/create cases and atomic record counts; full adversarial suite still pending."
+      },
+      "retestEvidence": "/tmp/sb029-stage8-validation/canonical-verified-advisory-fix.log"
     }
   ]
 }

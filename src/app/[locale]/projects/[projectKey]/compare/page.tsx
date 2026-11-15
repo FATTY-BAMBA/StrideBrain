@@ -143,7 +143,12 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
         }
         const actionServices = createInternalReviewServices();
         const [canPrepare, prepared, receipt] = await Promise.all([
-          economics ? actionServices.canPrepare(context, projectKey) : Promise.resolve(false),
+          economics
+            ? actionServices.canPrepare(context, projectKey, {
+                comparisonRunId: structural.result.run.id,
+                enrichmentRunId: economics.run.id,
+              })
+            : Promise.resolve(false),
           actionRoute.proposalKey
             ? actionServices.reopenProposal(context, actionRoute.proposalKey, rawLocale)
             : Promise.resolve(undefined),

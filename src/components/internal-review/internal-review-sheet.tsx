@@ -20,6 +20,7 @@ import {
 } from "@/modules/internal-review-experience/route-state";
 import { displayReviewTimestamp } from "@/components/internal-review/action-receipt";
 import styles from "./internal-review.module.css";
+import { focusFirstReviewError } from "@/modules/internal-review-experience/focus";
 
 export function InternalReviewSheet({
   proposal,
@@ -64,8 +65,7 @@ export function InternalReviewSheet({
   );
 
   useEffect(() => {
-    const firstError = Object.keys(fieldErrors)[0];
-    if (firstError) form.current?.querySelector<HTMLElement>(`[name="${firstError}"]`)?.focus();
+    focusFirstReviewError(form.current, fieldErrors);
   }, [fieldErrors]);
 
   const selectedTitle =
@@ -92,8 +92,10 @@ export function InternalReviewSheet({
   function error(field: keyof FieldErrors) {
     const code = fieldErrors[field];
     return code ? (
-      <p className={styles.error} id={`review-${field}-error`}>
-        {reviewValidationMessage(copy, code)}
+      <p className={styles.error} id={`review-${field}-error`} tabIndex={-1}>
+        {field === "assigneeKey"
+          ? copy.states.ASSIGNEE_UNAVAILABLE
+          : reviewValidationMessage(copy, code)}
       </p>
     ) : null;
   }
@@ -282,12 +284,22 @@ export function InternalReviewSheet({
           </>
         ) : (
           <>
-            <span className={styles.fieldLabel}>{copy.assignee}</span>
-            <p>
+            <span className={styles.fieldLabel} id="review-assignee-label">
+              {copy.assignee}
+            </span>
+            <p
+              aria-labelledby="review-assignee-label"
+              aria-describedby={
+                fieldErrors.assigneeKey ? "review-assigneeKey-error" : "review-assignee-hint"
+              }
+            >
               {proposal.assignees.find((person) => person.key === proposal.suggestedAssigneeKey)
                 ?.displayName ?? copy.unassigned}
             </p>
-            <p className={styles.hint}>{copy.assigneeLocked}</p>
+            <p className={styles.hint} id="review-assignee-hint">
+              {copy.assigneeLocked}
+            </p>
+            {error("assigneeKey")}
           </>
         )}
       </div>

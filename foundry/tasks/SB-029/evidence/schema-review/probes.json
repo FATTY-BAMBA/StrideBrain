@@ -1,0 +1,131 @@
+{
+  "scope": "Direct schema probes only; not an application action or audit reconstruction proof",
+  "results": [
+    {
+      "name": "missing-proposal-snapshot-rejected",
+      "result": "PASS",
+      "code": "23514",
+      "constraint": "ProposedAction_stage8_complete_check",
+      "message": "new row for relation \"ProposedAction\" violates check constraint \"ProposedAction_stage8_complete_check\""
+    },
+    {
+      "name": "cross-tenant-proposer-rejected",
+      "result": "PASS",
+      "code": "23503",
+      "constraint": "ProposedAction_preparedByMembershipId_organizationId_fkey",
+      "message": "insert or update on table \"ProposedAction\" violates foreign key constraint \"ProposedAction_preparedByMembershipId_organizationId_fkey\""
+    },
+    {
+      "name": "wrong-project-run-proposal-rejected",
+      "result": "PASS",
+      "code": "23503",
+      "constraint": "ProposedAction_enrichmentRunId_organizationId_comparisonRu_fkey",
+      "message": "insert or update on table \"ProposedAction\" violates foreign key constraint \"ProposedAction_enrichmentRunId_organizationId_comparisonRu_fkey\""
+    },
+    {
+      "name": "prepared-proposal-content-update-rejected",
+      "result": "PASS",
+      "code": "23514",
+      "constraint": null,
+      "message": "IMMUTABLE_INTERNAL_REVIEW_PROPOSAL"
+    },
+    {
+      "name": "prepared-proposal-delete-rejected",
+      "result": "PASS",
+      "code": "23514",
+      "constraint": null,
+      "message": "IMMUTABLE_INTERNAL_REVIEW_PROPOSAL"
+    },
+    {
+      "name": "wrong-action-creator-lineage-rejected",
+      "result": "PASS",
+      "code": "23503",
+      "constraint": "Action_proposal_lineage_fkey",
+      "message": "insert or update on table \"Action\" violates foreign key constraint \"Action_proposal_lineage_fkey\""
+    },
+    {
+      "name": "missing-action-evidence-snapshot-rejected",
+      "result": "PASS",
+      "code": "23514",
+      "constraint": "Action_stage8_complete_check",
+      "message": "new row for relation \"Action\" violates check constraint \"Action_stage8_complete_check\""
+    },
+    {
+      "name": "duplicate-proposal-action-rejected",
+      "result": "PASS",
+      "code": "23505",
+      "constraint": "Action_proposal_once_key",
+      "message": "duplicate key value violates unique constraint \"Action_proposal_once_key\""
+    },
+    {
+      "name": "action-snapshot-update-rejected",
+      "result": "PASS",
+      "code": "23514",
+      "constraint": null,
+      "message": "IMMUTABLE_INTERNAL_REVIEW_ACTION"
+    },
+    {
+      "name": "action-delete-rejected",
+      "result": "PASS",
+      "code": "23514",
+      "constraint": null,
+      "message": "IMMUTABLE_INTERNAL_REVIEW_ACTION"
+    },
+    {
+      "name": "cross-tenant-audit-actor-rejected",
+      "result": "PASS",
+      "code": "23503",
+      "constraint": "AuditEvent_actor_tenant_fkey",
+      "message": "insert or update on table \"AuditEvent\" violates foreign key constraint \"AuditEvent_actor_tenant_fkey\""
+    },
+    {
+      "name": "audit-update-rejected",
+      "result": "PASS",
+      "code": "23514",
+      "constraint": null,
+      "message": "IMMUTABLE_RECORD"
+    },
+    {
+      "name": "audit-delete-rejected",
+      "result": "PASS",
+      "code": "23514",
+      "constraint": null,
+      "message": "IMMUTABLE_RECORD"
+    },
+    {
+      "name": "proposal-second-consumption-rejected",
+      "result": "PASS",
+      "code": "23514",
+      "constraint": null,
+      "message": "IMMUTABLE_INTERNAL_REVIEW_PROPOSAL"
+    },
+    {
+      "name": "wrong-receipt-actor-lineage-rejected",
+      "result": "PASS",
+      "code": "23503",
+      "constraint": "InternalReviewReceipt_action_lineage_fkey",
+      "message": "insert or update on table \"InternalReviewReceipt\" violates foreign key constraint \"InternalReviewReceipt_action_lineage_fkey\""
+    },
+    {
+      "name": "duplicate-receipt-rejected",
+      "result": "PASS",
+      "code": "23505",
+      "constraint": "InternalReviewReceipt_idempotency_key",
+      "message": "duplicate key value violates unique constraint \"InternalReviewReceipt_idempotency_key\""
+    },
+    {
+      "name": "receipt-update-rejected",
+      "result": "PASS",
+      "code": "23514",
+      "constraint": null,
+      "message": "IMMUTABLE_RECORD"
+    },
+    {
+      "name": "receipt-delete-rejected",
+      "result": "PASS",
+      "code": "23514",
+      "constraint": null,
+      "message": "IMMUTABLE_RECORD"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "evidenceBatching": {
+    "initialReferences": 15,
+    "addedReferences": 20,
+    "initialQueries": 21,
+    "expandedQueries": 21
+  }
+}

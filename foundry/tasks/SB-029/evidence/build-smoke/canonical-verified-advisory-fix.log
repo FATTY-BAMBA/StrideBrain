@@ -1,0 +1,16 @@
+
+> stridebrain@0.1.0 test
+> vitest run tests/internal-review/postgres-invariants.test.ts --testNamePattern=prepares and creates the verified canonical action --reporter=verbose
+
+
+ RUN  v4.1.10 /workspace/StrideBrain
+
+ ✓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > prepares and creates the verified canonical action as Project Manager/Estimator 684ms
+ ✓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > prepares and creates the verified canonical action as Financial Reviewer 297ms
+ ✓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > prepares and creates the verified canonical action as Organization Admin 277ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed | 75 skipped (78)
+   Start at  05:48:21
+   Duration  25.87s (transform 423ms, setup 0ms, import 598ms, tests 25.13s, environment 0ms)
+

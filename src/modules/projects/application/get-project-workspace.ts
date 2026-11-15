@@ -333,9 +333,7 @@ export class GetProjectWorkspace {
         : Promise.resolve([]),
       this.authorizedActions
         ? this.authorizedActions.list(context, projectKey)
-        : context.role === "VIEWER"
-          ? Promise.resolve([])
-          : this.workspace.listOpenActions(context.organizationId, base.id),
+        : Promise.resolve([]),
     ]);
 
     const evidenceIds = evidence.map((item) => item.evidenceReferenceId);

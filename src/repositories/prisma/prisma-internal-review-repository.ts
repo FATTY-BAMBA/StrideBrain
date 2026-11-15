@@ -410,13 +410,23 @@ class Transaction implements InternalReviewTransaction {
         subjectId: true,
         dataClassification: true,
         observationType: true,
+        documentVersionId: true,
         documentVersion: {
           select: {
             organizationId: true,
             checksum: true,
             authorityState: true,
             supersededById: true,
-            document: { select: { organizationId: true, dataClassification: true } },
+            document: {
+              select: {
+                organizationId: true,
+                projectId: true,
+                dataClassification: true,
+                project: {
+                  select: { organizationId: true, dataClassification: true, deletedAt: true },
+                },
+              },
+            },
           },
         },
       },
@@ -524,14 +534,21 @@ class Transaction implements InternalReviewTransaction {
           inComparison: matchingRuns.length > 0,
           comparisonRunIds: matchingRuns,
           documentChecksum: row.documentVersion?.checksum ?? null,
+          documentVersionId: row.documentVersionId,
           documentClassification:
             row.documentVersion &&
             (row.documentVersion.organizationId !== context.organizationId ||
-              row.documentVersion.document.organizationId !== context.organizationId)
+              row.documentVersion.document.organizationId !== context.organizationId ||
+              (row.documentVersion.document.project &&
+                row.documentVersion.document.project.organizationId !== context.organizationId))
               ? "TENANT_RESTRICTED"
               : (row.documentVersion?.document.dataClassification ?? null),
           documentAuthority: row.documentVersion?.authorityState ?? null,
           documentSuperseded: Boolean(row.documentVersion?.supersededById),
+          documentProjectId: row.documentVersion?.document.projectId ?? null,
+          documentProjectClassification:
+            row.documentVersion?.document.project?.dataClassification ?? null,
+          documentProjectDeleted: Boolean(row.documentVersion?.document.project?.deletedAt),
         },
       ];
     });

@@ -1,0 +1,63 @@
+
+ RUN  v4.1.10 /workspace/StrideBrain
+
+ ✓ ../../tmp/sb029-review/workspace-regressions.test.ts > GetProjectWorkspace > returns Mei's complete authorized Xinyi context with exact decimal strings 8ms
+ ✓ ../../tmp/sb029-review/workspace-regressions.test.ts > GetProjectWorkspace > does not query or disclose commercial values for a Viewer 5ms
+ ✓ ../../tmp/sb029-review/workspace-regressions.test.ts > GetProjectWorkspace > returns the same non-disclosing unavailable result before workspace reads 3ms
+ ✓ ../../tmp/sb029-review/workspace-regressions.test.ts > GetProjectWorkspace > never exposes a conflicted actual amount and promotes the workspace state 1ms
+ ✓ ../../tmp/sb029-review/workspace-regressions.test.ts > GetProjectWorkspace > surfaces stale authorized supplier evidence without presenting it as current 1ms
+ ✓ ../../tmp/sb029-review/workspace-regressions.test.ts > GetProjectWorkspace > uses a deterministic partial state for missing authorized project context 2ms
+ ✓ ../../tmp/sb029-review/workspace-regressions.test.ts > GetProjectWorkspace > allows an Organization Admin to read an organization project without an explicit assignment 1ms
+ ✓ ../../tmp/sb029-review/workspace-regressions.test.ts > GetProjectWorkspace > allows an explicitly assigned Financial Reviewer to receive authorized commercial context 1ms
+ ✓ ../../tmp/sb029-review/workspace-regressions.test.ts > GetProjectWorkspace > returns the non-disclosing unavailable outcome for an unassigned Financial Reviewer 1ms
+ ✓ ../../tmp/sb029-review/workspace-regressions.test.ts > independent reviewer: omitting the authorized action port never reads legacy actions 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 capability gates and safe failures > denies every entry before transaction or sensitive reads for VIEWER 5ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 capability gates and safe failures > denies every entry before transaction or sensitive reads for actual capability denied 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 capability gates and safe failures > denies every entry before transaction or sensitive reads for create capability denied 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 capability gates and safe failures > refreshes signed identity and rejects revoked membership before loading proposal 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 capability gates and safe failures > refreshes signed identity and rejects downgraded membership before loading proposal 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 capability gates and safe failures > returns the same neutral result for missing or foreign proposals without exposing snapshots 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 capability gates and safe failures > never reads proposal details for a user whose active-project assignment was removed 2ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 capability gates and safe failures > keeps unexpected repository errors out of safe responses and operator traces 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > stores bilingual edited fields and all locked warnings only after explicit confirmation 24ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > does not commit when explicit confirmation is false 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > does not commit when explicit confirmation is undefined 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > expires exactly at the 30-minute boundary without resetting the proposal 4ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > revalidates the due date when the organization has crossed midnight since preparation 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects changed project fingerprint 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects changed comparisonSource fingerprint 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects changed comparisonInput fingerprint 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects changed comparisonPermission fingerprint 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects changed comparisonResult fingerprint 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects changed economicsSource fingerprint 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects changed economicsInput fingerprint 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects changed economicsPermission fingerprint 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects changed economicsStructural fingerprint 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects changed economicsResult fingerprint 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects changed permission fingerprint 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects changed evidence fingerprint 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects TENANT_RESTRICTED evidence before reading proposal text 5ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects foreign organization evidence before reading proposal text 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects missing reference evidence before reading proposal text 0ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects outside comparison evidence before reading proposal text 0ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > allows only the policy default without assign capability, rejecting alternate and cleared assignments 3ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > rejects a default assignee who has lost evidence access 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 confirmation boundaries > replays the durable result across locale, request ID, expiry, and later source changes 3ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 current-authorized receipt and workspace reads > shows only the eligible default when the current actor cannot browse assignees 2ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 current-authorized receipt and workspace reads > reopens a bilingual immutable receipt without preparing or creating anything 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 current-authorized receipt and workspace reads > withholds stored titles and counts after source reclassification to TENANT_RESTRICTED 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 current-authorized receipt and workspace reads > withholds stored titles and counts after source reclassification to TENANT_PRIVATE 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 current-authorized receipt and workspace reads > withholds stored titles and counts after source reclassification to UNKNOWN_CLASSIFICATION 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 current-authorized receipt and workspace reads > rejects retargeted evidence even when its new project is readable 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 current-authorized receipt and workspace reads > requires each source to belong to this action's comparison, not merely another listed run 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Stage 8 current-authorized receipt and workspace reads > loads current evidence scope once for a multi-action workspace list 2ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Independent reviewer regression probes > rejects a private document on a separate unassigned project before action snapshot read 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Independent reviewer regression probes > rejects same-tenant readable document rebinding without displaying frozen action content 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Independent reviewer regression probes > rejects deleted, unknown and restricted linked-document projects 1ms
+ ✓ ../../tmp/sb029-review/reviewer-regressions.test.ts > Independent reviewer regression probes > rejects repeated preparation when its stored default has lost eligibility 2ms
+
+ Test Files  2 passed (2)
+      Tests  54 passed (54)
+   Start at  05:58:18
+   Duration  619ms (transform 331ms, setup 0ms, import 484ms, tests 118ms, environment 0ms)
+

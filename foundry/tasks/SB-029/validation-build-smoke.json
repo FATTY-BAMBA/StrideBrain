@@ -1,0 +1,33 @@
+{
+  "scope": "BUILDING targeted canonical PostgreSQL smoke; not final exact-head validation",
+  "productBaseline": "0ecd65bdb0ae752f3244960d6848a74a30d5da01",
+  "branch": "build/sb-029-governed-internal-review",
+  "workingTreeUncommitted": true,
+  "smokeCommand": "npm run test -- tests/internal-review/postgres-invariants.test.ts --testNamePattern='prepares and creates the verified canonical action' --reporter=verbose",
+  "attempts": [
+    {
+      "log": "evidence/build-smoke/canonical-smoke.log",
+      "result": "3 failed, proposal returned PROPOSAL_FAILED"
+    },
+    {
+      "log": "evidence/build-smoke/canonical-smoke-advisory-fix.log",
+      "result": "3 failed; intended edit had not actually changed formatted source"
+    },
+    {
+      "log": "evidence/build-smoke/canonical-diagnostic.log",
+      "result": "1 focused case failed; wrapper captured P2010 void deserialization"
+    },
+    {
+      "log": "evidence/build-smoke/advisory-decoding-reproduction.log",
+      "result": "Direct $queryRaw advisory-lock query reproduces P2010; same $executeRaw query succeeds"
+    },
+    {
+      "log": "evidence/build-smoke/canonical-verified-advisory-fix.log",
+      "result": "3 authorized canonical cases passed; 75 filtered cases skipped"
+    }
+  ],
+  "rootCause": "Prisma $queryRaw attempted to deserialize PostgreSQL pg_advisory_xact_lock void result. Verified parameterized $executeRaw preserves lock and fixes decoding. First text replacement did not match Prettier line wrapping; exact source was verified before successful rerun.",
+  "policyChange": false,
+  "fullStage8Validation": "RUNNING_SEPARATELY",
+  "browserQa": "NOT_CLAIMED"
+}

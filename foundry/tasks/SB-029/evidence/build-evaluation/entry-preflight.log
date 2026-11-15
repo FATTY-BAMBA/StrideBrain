@@ -1,0 +1,9 @@
+
+ RUN  v4.1.10 /workspace/StrideBrain
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed | 86 skipped (87)
+   Start at  06:01:54
+   Duration  24.73s (transform 602ms, setup 0ms, import 804ms, tests 23.74s, environment 0ms)
+
