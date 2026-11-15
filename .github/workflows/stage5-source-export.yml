@@ -14,7 +14,7 @@ permissions:
 jobs:
   export-source:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Check out Stage 5 branch
         uses: actions/checkout@v6
@@ -30,7 +30,10 @@ jobs:
       - name: Install exact dependencies
         run: npm ci --no-audit --no-fund
 
-      - name: Create source and dependency archives
+      - name: Install exact Prisma tools
+        run: npm install --prefix /tmp/stridebrain-prisma-tools --no-save --no-audit --no-fund prisma@7.10.1 @prisma/client@7.10.1
+
+      - name: Create source, dependency, and Prisma archives
         shell: bash
         run: |
           set -euo pipefail
@@ -41,6 +44,7 @@ jobs:
             --exclude=.generated \
             -czf /tmp/stridebrain-stage5-source.tar.gz .
           tar -czf /tmp/stridebrain-stage5-node-modules.tar.gz node_modules
+          tar -C /tmp/stridebrain-prisma-tools -czf /tmp/stridebrain-stage5-prisma-tools.tar.gz .
 
       - name: Upload source archive
         uses: actions/upload-artifact@v4
@@ -55,6 +59,15 @@ jobs:
         with:
           name: stridebrain-stage5-node-modules
           path: /tmp/stridebrain-stage5-node-modules.tar.gz
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+
+      - name: Upload Prisma toolchain
+        uses: actions/upload-artifact@v4
+        with:
+          name: stridebrain-stage5-prisma-tools
+          path: /tmp/stridebrain-stage5-prisma-tools.tar.gz
           if-no-files-found: error
           retention-days: 1
           compression-level: 0
