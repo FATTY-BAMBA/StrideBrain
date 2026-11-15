@@ -1,5 +1,6 @@
 "use server";
 
+import type { Route } from "next";
 import { redirect } from "next/navigation";
 
 import { createComparisonServices } from "@/lib/server/comparison-services";
@@ -22,6 +23,10 @@ function safeKey(value: string | undefined): string | undefined {
   return value && SAFE_KEY.test(value) ? value : undefined;
 }
 
+function asRoute(value: string): Route {
+  return value as Route;
+}
+
 function actionContext(formData: FormData): Readonly<{
   locale: Locale;
   projectKey: string;
@@ -42,11 +47,13 @@ function redirectOutcome(
   missingFields?: readonly string[],
 ): never {
   redirect(
-    comparisonHref(locale, projectKey, {
-      outcome,
-      ...(requestId ? { requestId } : {}),
-      ...(missingFields?.length ? { missingFields } : {}),
-    }),
+    asRoute(
+      comparisonHref(locale, projectKey, {
+        outcome,
+        ...(requestId ? { requestId } : {}),
+        ...(missingFields?.length ? { missingFields } : {}),
+      }),
+    ),
   );
 }
 
@@ -81,21 +88,25 @@ export async function runComparisonAction(formData: FormData): Promise<never> {
   );
   if ("result" in economics) {
     redirect(
-      comparisonHref(locale, projectKey, {
-        comparisonRunId: structural.result.run.id,
-        economicsRunId: economics.result.run.id,
-        selectedProjectKeys: economics.result.selectedProjectKeys,
-      }),
+      asRoute(
+        comparisonHref(locale, projectKey, {
+          comparisonRunId: structural.result.run.id,
+          economicsRunId: economics.result.run.id,
+          selectedProjectKeys: economics.result.selectedProjectKeys,
+        }),
+      ),
     );
   }
 
   redirect(
-    comparisonHref(locale, projectKey, {
-      comparisonRunId: structural.result.run.id,
-      selectedProjectKeys: structural.result.defaultSelectedProjectKeys,
-      outcome: economics.kind,
-      requestId: economics.requestId,
-    }),
+    asRoute(
+      comparisonHref(locale, projectKey, {
+        comparisonRunId: structural.result.run.id,
+        selectedProjectKeys: structural.result.defaultSelectedProjectKeys,
+        outcome: economics.kind,
+        requestId: economics.requestId,
+      }),
+    ),
   );
 }
 
@@ -126,20 +137,24 @@ export async function updateComparisonSelectionAction(formData: FormData): Promi
 
   if ("result" in economics) {
     redirect(
-      comparisonHref(locale, projectKey, {
-        comparisonRunId,
-        economicsRunId: economics.result.run.id,
-        selectedProjectKeys: economics.result.selectedProjectKeys,
-      }),
+      asRoute(
+        comparisonHref(locale, projectKey, {
+          comparisonRunId,
+          economicsRunId: economics.result.run.id,
+          selectedProjectKeys: economics.result.selectedProjectKeys,
+        }),
+      ),
     );
   }
 
   redirect(
-    comparisonHref(locale, projectKey, {
-      comparisonRunId,
-      selectedProjectKeys: selected,
-      outcome: economics.kind,
-      requestId: economics.requestId,
-    }),
+    asRoute(
+      comparisonHref(locale, projectKey, {
+        comparisonRunId,
+        selectedProjectKeys: selected,
+        outcome: economics.kind,
+        requestId: economics.requestId,
+      }),
+    ),
   );
 }
