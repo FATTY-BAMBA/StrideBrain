@@ -2,8 +2,15 @@ import {
   AuthorizationService,
   type CommercialKind,
 } from "@/modules/authorization/authorization-service";
-import type { SimilarityFactorKey } from "@/modules/comparisons/domain/contracts";
+import type {
+  DataClassification,
+  SimilarityFactorKey,
+} from "@/modules/comparisons/domain/contracts";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
+import {
+  hasOrganizationWidePrivateHistory,
+  organizationComparisonLibraryClassifications,
+} from "@/repositories/ports/comparable-project-repository";
 import type {
   AuthorizedEvidenceSourcesResult,
   EvidenceConflictRecord,
@@ -22,6 +29,72 @@ const FACTOR_KEYS = new Set<SimilarityFactorKey>([
   "COMPLETION_RECENCY",
   "LOCATION_PROXIMITY",
 ]);
+const LIBRARY_CLASSIFICATIONS = new Set(organizationComparisonLibraryClassifications());
+
+function historicalProjectAllowed(
+  context: RuntimeContext,
+  projectId: string,
+  classification?: DataClassification,
+): boolean {
+  if (context.assignedProjectIds?.has(projectId) === true) return true;
+  if (classification && LIBRARY_CLASSIFICATIONS.has(classification)) return true;
+  return classification === "TENANT_PRIVATE" && hasOrganizationWidePrivateHistory(context);
+}
+
+function historicalActualAllowed(
+  context: RuntimeContext,
+  projectId: string,
+  classification?: DataClassification,
+): boolean {
+  if (!context.capabilities.has("commercial:actual-read")) return false;
+  if (context.projectAssignments?.get(projectId)?.canReadActuals === true) return true;
+  if (classification && LIBRARY_CLASSIFICATIONS.has(classification)) return true;
+  return classification === "TENANT_PRIVATE" && hasOrganizationWidePrivateHistory(context);
+}
+
+function candidateClassifications(
+  run: ComparisonRunAccessRow,
+): ReadonlyMap<string, DataClassification> {
+  return new Map(
+    (run.candidates ?? []).map(
+      (candidate) =>
+        [candidate.candidateProjectId, candidate.candidateProject.dataClassification] as const,
+    ),
+  );
+}
+
+function canReadRunEvidence(
+  context: RuntimeContext,
+  run: ComparisonRunAccessRow,
+  projectId: string,
+  authorization: AuthorizationService,
+): boolean {
+  if (!context.capabilities.has("evidence:read")) return false;
+  if (projectId === run.activeProjectId) {
+    return authorization.canReadEvidence(context, projectId).allowed;
+  }
+  const classification = candidateClassifications(run).get(projectId);
+  return historicalProjectAllowed(context, projectId, classification);
+}
+
+function canReadRunCommercial(
+  context: RuntimeContext,
+  run: ComparisonRunAccessRow,
+  projectId: string,
+  kind: CommercialKind,
+  authorization: AuthorizationService,
+): boolean {
+  if (projectId === run.activeProjectId) {
+    return authorization.canReadCommercial(context, projectId, kind).allowed;
+  }
+  const classification = candidateClassifications(run).get(projectId);
+  if (!historicalProjectAllowed(context, projectId, classification)) return false;
+  if (kind === "ACTUAL") {
+    return historicalActualAllowed(context, projectId, classification);
+  }
+  if (kind === "QUOTE") return context.capabilities.has("quote:read");
+  return context.capabilities.has("commercial:forecast-read");
+}
 
 type EvidenceReferenceRow = Readonly<{
   id: string;
@@ -47,6 +120,20 @@ type ConflictRow = Readonly<{
   conflictingEvidenceId: string;
 }>;
 
+type ComparisonCandidateAccessRow = Readonly<{
+  candidateProjectId: string;
+  candidateProject: Readonly<{
+    id: string;
+    dataClassification: DataClassification;
+  }>;
+}>;
+
+type ComparisonRunAccessRow = Readonly<{
+  id: string;
+  activeProjectId: string;
+  candidates?: readonly ComparisonCandidateAccessRow[];
+}>;
+
 type FactorRow = Readonly<{
   factorKey: string;
   state: "KNOWN" | "UNKNOWN" | "NOT_APPLICABLE";
@@ -63,6 +150,7 @@ type FactorRow = Readonly<{
       businessKey: string;
       nameEn: string;
       nameZhTw: string;
+      dataClassification?: DataClassification;
     }>;
     comparisonRun: Readonly<{
       id: string;
@@ -86,7 +174,7 @@ export type PrismaEvidencePanelDatabase = Readonly<{
     findFirst(args: unknown): Promise<FactorRow | null>;
   };
   comparisonRun: {
-    findFirst(args: unknown): Promise<Readonly<{ id: string; activeProjectId: string }> | null>;
+    findFirst(args: unknown): Promise<ComparisonRunAccessRow | null>;
   };
   project: ModelReader;
   projectScope: ModelReader;
@@ -521,7 +609,16 @@ export class PrismaEvidencePanelRepository implements EvidencePanelRepositoryPor
 
     const run = await this.database.comparisonRun.findFirst({
       where: { id: comparisonRunId, organizationId: context.organizationId, status: "COMPLETED" },
-      select: { id: true, activeProjectId: true },
+      select: {
+        id: true,
+        activeProjectId: true,
+        candidates: {
+          select: {
+            candidateProjectId: true,
+            candidateProject: { select: { id: true, dataClassification: true } },
+          },
+        },
+      },
     });
     if (!run || !this.authorization.canRunComparison(context, run.activeProjectId).allowed) {
       return Object.freeze({ kind: "UNAVAILABLE" });
@@ -600,13 +697,13 @@ export class PrismaEvidencePanelRepository implements EvidencePanelRepositoryPor
       const ownership = ownershipRows.get(`${reference.subjectType}:${reference.subjectId}`);
       if (!ownership) return Object.freeze({ kind: "ACCESS_CHANGED" });
       const identity = projectIdentity(ownership);
-      if (!identity || !this.authorization.canReadEvidence(context, identity.id).allowed) {
+      if (!identity || !canReadRunEvidence(context, run, identity.id, this.authorization)) {
         return Object.freeze({ kind: "ACCESS_CHANGED" });
       }
       const commercial = commercialKind(reference.subjectType);
       if (
         commercial &&
-        !this.authorization.canReadCommercial(context, identity.id, commercial).allowed
+        !canReadRunCommercial(context, run, identity.id, commercial, this.authorization)
       ) {
         return Object.freeze({ kind: "ACCESS_CHANGED" });
       }
@@ -725,7 +822,13 @@ export class PrismaEvidencePanelRepository implements EvidencePanelRepositoryPor
             score: true,
             evidenceCoverage: true,
             candidateProject: {
-              select: { id: true, businessKey: true, nameEn: true, nameZhTw: true },
+              select: {
+                id: true,
+                businessKey: true,
+                nameEn: true,
+                nameZhTw: true,
+                dataClassification: true,
+              },
             },
             comparisonRun: { select: { id: true, activeProjectId: true } },
           },
@@ -742,8 +845,12 @@ export class PrismaEvidencePanelRepository implements EvidencePanelRepositoryPor
       return null;
     }
     if (
-      !this.authorization.canReadEvidence(context, row.comparisonCandidate.candidateProject.id)
-        .allowed
+      !context.capabilities.has("evidence:read") ||
+      !historicalProjectAllowed(
+        context,
+        row.comparisonCandidate.candidateProject.id,
+        row.comparisonCandidate.candidateProject.dataClassification,
+      )
     ) {
       return null;
     }

@@ -134,7 +134,19 @@ function database() {
     evidenceConflict: { findMany: vi.fn().mockResolvedValue([]) },
     comparisonFactor: { findFirst: factorFindFirst },
     comparisonRun: {
-      findFirst: vi.fn().mockResolvedValue({ id: "cmprun-1", activeProjectId: "prj-xinyi" }),
+      findFirst: vi.fn().mockResolvedValue({
+        id: "cmprun-1",
+        activeProjectId: "prj-xinyi",
+        candidates: [
+          {
+            candidateProjectId: "prj-neihu",
+            candidateProject: {
+              id: "prj-neihu",
+              dataClassification: "DEMO_SYNTHETIC",
+            },
+          },
+        ],
+      }),
     },
     project: emptyModel(),
     projectScope: emptyModel(),
@@ -172,6 +184,25 @@ describe("PrismaEvidencePanelRepository", () => {
     expect(setup.evidenceReference.mock.calls[0]?.[0]).toMatchObject({
       where: { organizationId: "org-horizon" },
     });
+  });
+
+  it("allows an unassigned approved comparison-library project without weakening actual capability", async () => {
+    const setup = database();
+    const repository = new PrismaEvidencePanelRepository(setup.db);
+    const libraryContext: RuntimeContext = {
+      ...FULL_CONTEXT,
+      assignedProjectIds: new Set(["prj-xinyi"]),
+      projectAssignments: new Map([
+        ["prj-xinyi", { projectId: "prj-xinyi", canReadActuals: true, canCreateAction: false }],
+      ]),
+    };
+
+    const result = await repository.getAuthorizedSources(libraryContext, "cmprun-1", [
+      "evid-cost-stone",
+    ]);
+
+    expect(result.kind).toBe("COMPLETE");
+    expect(setup.costLine).toHaveBeenCalledTimes(2);
   });
 
   it("does not load actual-cost values when the current role lacks actual access", async () => {
