@@ -76,7 +76,7 @@ const zhTw: Catalog = {
     "此版本已建立雙語專案工作區、權限治理、可解釋的歷史專案排序，以及報價與實際成本分開的商務比較。所有資料皆為禾序空間設計的虛構示範資料。",
   "home.nextTitle": "目前可展示的核心成果",
   "home.nextDescription":
-    "從信義旗艦店專案提出「我們以前做過類似的案子嗎？」，查看可解釋的歷史專案、商務差異與資料缺口。完整資料依據面板與內部審查事項將依建置順序啟用。",
+    "從信義旗艦店專案提出「我們以前做過類似的案子嗎？」，查看可解釋的歷史專案、商務差異，並開啟精確資料依據與計算過程。內部審查事項將依建置順序啟用。",
   "projects.eyebrow": "專案工作區",
   "projects.title": "專案是 StrideBrain 的營運核心。",
   "projects.description":
@@ -100,7 +100,7 @@ const zhTw: Catalog = {
   "project.requestedKey": "要求的專案識別碼",
   "project.foundationTitle": "已核准的專案區域",
   "project.foundationDescription":
-    "專案總覽與比較已連接正式資料與權限邊界。商務資料、完整資料依據與行動事項會依照已核准的建置順序逐步啟用。",
+    "專案總覽、比較與資料依據已連接正式資料與權限邊界。商務資料專頁與行動事項會依照已核准的建置順序逐步啟用。",
   "state.notConnected": "此區域尚未啟用",
   "state.stageZero": "v0.1 · 受控示範",
   "action.viewArchitecture": "查看建置規格",
@@ -133,7 +133,7 @@ const en: Catalog = {
     "This build includes a bilingual Project Workspace, governed authorization, explainable historical-project ranking, and a commercial comparison that keeps quoted price and actual cost distinct. All records belong to the fictional Horizon Atelier demo organization.",
   "home.nextTitle": "What the controlled demo can show now",
   "home.nextDescription":
-    "Open the Xinyi Flagship project and ask “Have we done something like this before?” to see explainable precedents, commercial differences, and evidence gaps. The full evidence panel and internal review action follow in the accepted build sequence.",
+    "Open the Xinyi Flagship project and ask “Have we done something like this before?” to see explainable precedents, commercial differences, and exact supporting evidence and calculation traces. The governed internal review action follows in the accepted build sequence.",
   "projects.eyebrow": "PROJECT WORKSPACE",
   "projects.title": "Projects are the operating center of StrideBrain.",
   "projects.description":
@@ -158,7 +158,7 @@ const en: Catalog = {
   "project.requestedKey": "Requested project key",
   "project.foundationTitle": "Approved project areas",
   "project.foundationDescription":
-    "Project Overview and Compare use the real data and authorization boundaries. Commercial, full Evidence, and Actions activate through the accepted implementation sequence.",
+    "Project Overview, Compare, and claim-level Evidence use the real data and authorization boundaries. Commercial detail pages and Actions activate through the accepted implementation sequence.",
   "state.notConnected": "This area is not active yet",
   "state.stageZero": "v0.1 · Controlled demo",
   "action.viewArchitecture": "View build specification",

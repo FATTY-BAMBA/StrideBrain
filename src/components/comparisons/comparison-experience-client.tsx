@@ -1,19 +1,29 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import type { Route } from "next";
+import { useRouter } from "next/navigation";
 
 import { updateComparisonSelectionAction } from "@/app/[locale]/projects/[projectKey]/compare/actions";
+import { EvidencePanel } from "@/components/evidence/evidence-panel";
 import type {
   ComparableProjectCardView,
   ComparisonExperienceView,
   ComparisonTableCellView,
 } from "@/modules/comparison-experience/contracts";
 import { getComparisonCopy, type ComparisonCopy } from "@/modules/comparison-experience/copy";
+import type {
+  EvidencePanelOutcome,
+  EvidencePanelSelection,
+} from "@/modules/evidence-panel/contracts";
+import { EVIDENCE_QUERY_KEYS, evidenceSelectionParams } from "@/modules/evidence-panel/route-state";
 
 import styles from "./comparison-experience.module.css";
 
 type ComparisonExperienceClientProps = Readonly<{
   view: ComparisonExperienceView;
+  evidencePanel?: EvidencePanelOutcome | undefined;
+  evidenceReturnId?: string | undefined;
 }>;
 
 function bandClass(band: ComparableProjectCardView["band"]): string {
@@ -36,15 +46,17 @@ function cellStateLabel(cell: ComparisonTableCellView, copy: ComparisonCopy): st
 function ComparisonCell({
   cell,
   copy,
-}: Readonly<{ cell: ComparisonTableCellView | undefined; copy: ComparisonCopy }>) {
+  triggerId,
+  onOpenClaim,
+}: Readonly<{
+  cell: ComparisonTableCellView | undefined;
+  copy: ComparisonCopy;
+  triggerId: string;
+  onOpenClaim: (claimKey: string, triggerId: string) => void;
+}>) {
   if (!cell) return <span aria-hidden="true">—</span>;
-  return (
-    <div
-      className={styles.cell}
-      data-tone={cell.tone}
-      data-claim-key={cell.claimKey}
-      data-state={cell.state}
-    >
+  const content = (
+    <>
       <span className={styles.cellPrimary}>{cell.primary}</span>
       {cell.secondary ? <span className={styles.cellSecondary}>{cell.secondary}</span> : null}
       {cell.state !== "VALUE" ? (
@@ -52,6 +64,28 @@ function ComparisonCell({
           {cellStateLabel(cell, copy)}
         </span>
       ) : null}
+    </>
+  );
+  return (
+    <div
+      className={styles.cell}
+      data-tone={cell.tone}
+      data-claim-key={cell.claimKey}
+      data-state={cell.state}
+    >
+      {cell.claimKey ? (
+        <button
+          className={styles.evidenceTrigger}
+          data-evidence-trigger-id={triggerId}
+          type="button"
+          onClick={() => onOpenClaim(cell.claimKey!, triggerId)}
+          aria-label={`${copy.table.evidenceState}: ${cell.primary}`}
+        >
+          {content}
+        </button>
+      ) : (
+        content
+      )}
     </div>
   );
 }
@@ -61,12 +95,18 @@ function ProjectCard({
   selected,
   disabled,
   onToggle,
+  onOpenFactor,
   copy,
 }: Readonly<{
   card: ComparableProjectCardView;
   selected: boolean;
   disabled: boolean;
   onToggle: (projectKey: string) => void;
+  onOpenFactor: (
+    projectKey: string,
+    factorKey: ComparableProjectCardView["strongestFactors"][number]["factorKey"],
+    triggerId: string,
+  ) => void;
   copy: ComparisonCopy;
 }>) {
   const factorGroups = [
@@ -141,8 +181,21 @@ function ProjectCard({
                     className={`${styles.factorItem} ${factor.state === "UNKNOWN" ? styles.factorItemUnknown : ""}`}
                     key={`${factor.factorKey}-${factor.valueLabel}`}
                   >
-                    <span>{factor.label}</span>
-                    <strong>{factor.valueLabel}</strong>
+                    <button
+                      className={styles.factorEvidenceTrigger}
+                      data-evidence-trigger-id={`evidence-factor-${card.projectKey}-${factor.factorKey}`}
+                      type="button"
+                      onClick={() =>
+                        onOpenFactor(
+                          card.projectKey,
+                          factor.factorKey,
+                          `evidence-factor-${card.projectKey}-${factor.factorKey}`,
+                        )
+                      }
+                    >
+                      <span>{factor.label}</span>
+                      <strong>{factor.valueLabel}</strong>
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -154,7 +207,12 @@ function ProjectCard({
   );
 }
 
-export function ComparisonExperienceClient({ view }: ComparisonExperienceClientProps) {
+export function ComparisonExperienceClient({
+  view,
+  evidencePanel,
+  evidenceReturnId,
+}: ComparisonExperienceClientProps) {
+  const router = useRouter();
   const copy = getComparisonCopy(view.locale);
   const [selected, setSelected] = useState<readonly string[]>(view.initialSelectedProjectKeys);
   const [selectionError, setSelectionError] = useState<string | null>(null);
@@ -165,6 +223,74 @@ export function ComparisonExperienceClient({ view }: ComparisonExperienceClientP
     [selectedSet, view.cards],
   );
   const dirty = orderedSelected.join(",") !== view.initialSelectedProjectKeys.join(",");
+
+  const navigateEvidence = useCallback(
+    (selection: EvidencePanelSelection, triggerId?: string) => {
+      const url = new URL(window.location.href);
+      for (const key of EVIDENCE_QUERY_KEYS) url.searchParams.delete(key);
+      for (const [key, value] of Object.entries(evidenceSelectionParams(selection))) {
+        url.searchParams.set(key, value);
+      }
+      const returnId = triggerId ?? evidenceReturnId;
+      if (returnId) url.searchParams.set("evidenceReturn", returnId);
+      router.push(`${url.pathname}?${url.searchParams.toString()}` as Route, { scroll: false });
+    },
+    [evidenceReturnId, router],
+  );
+
+  const closeEvidence = useCallback(() => {
+    const url = new URL(window.location.href);
+    const returnId = evidenceReturnId;
+    for (const key of EVIDENCE_QUERY_KEYS) url.searchParams.delete(key);
+    if (returnId) url.searchParams.set("evidenceReturn", returnId);
+    router.push(`${url.pathname}?${url.searchParams.toString()}` as Route, { scroll: false });
+  }, [evidenceReturnId, router]);
+
+  useEffect(() => {
+    if (evidencePanel || !evidenceReturnId) return;
+    const target = document.querySelector<HTMLElement>(
+      `[data-evidence-trigger-id="${CSS.escape(evidenceReturnId)}"]`,
+    );
+    target?.focus();
+    const url = new URL(window.location.href);
+    url.searchParams.delete("evidenceReturn");
+    router.replace(`${url.pathname}?${url.searchParams.toString()}` as Route, { scroll: false });
+  }, [evidencePanel, evidenceReturnId, router]);
+
+  const openClaim = useCallback(
+    (claimKey: string, triggerId: string) => {
+      if (!view.route.economicsRunId) return;
+      navigateEvidence(
+        {
+          mode: "CLAIM",
+          comparisonRunId: view.route.comparisonRunId,
+          enrichmentRunId: view.route.economicsRunId,
+          claimKey,
+        },
+        triggerId,
+      );
+    },
+    [navigateEvidence, view.route.comparisonRunId, view.route.economicsRunId],
+  );
+
+  const openFactor = useCallback(
+    (
+      candidateProjectKey: string,
+      factorKey: ComparableProjectCardView["strongestFactors"][number]["factorKey"],
+      triggerId: string,
+    ) => {
+      navigateEvidence(
+        {
+          mode: "FACTOR",
+          comparisonRunId: view.route.comparisonRunId,
+          candidateProjectKey,
+          factorKey,
+        },
+        triggerId,
+      );
+    },
+    [navigateEvidence, view.route.comparisonRunId],
+  );
 
   function toggleProject(projectKey: string) {
     setSelected((current) => {
@@ -243,6 +369,7 @@ export function ComparisonExperienceClient({ view }: ComparisonExperienceClientP
                 !selectedSet.has(card.projectKey) && selected.length >= view.maximumSelectedProjects
               }
               onToggle={toggleProject}
+              onOpenFactor={openFactor}
               copy={copy}
             />
           ))}
@@ -312,7 +439,12 @@ export function ComparisonExperienceClient({ view }: ComparisonExperienceClientP
                         className={column.kind === "ACTIVE" ? styles.activeColumn : undefined}
                         key={column.key}
                       >
-                        <ComparisonCell cell={row.cells[column.key]} copy={copy} />
+                        <ComparisonCell
+                          cell={row.cells[column.key]}
+                          copy={copy}
+                          triggerId={`evidence-cell-${row.key}-${column.key}`}
+                          onOpenClaim={openClaim}
+                        />
                       </td>
                     ))}
                   </tr>
@@ -332,7 +464,12 @@ export function ComparisonExperienceClient({ view }: ComparisonExperienceClientP
                   {section.rows.map((row) => (
                     <div className={styles.mobileRow} key={row.key}>
                       <span>{row.label}</span>
-                      <ComparisonCell cell={row.cells[column.key]} copy={copy} />
+                      <ComparisonCell
+                        cell={row.cells[column.key]}
+                        copy={copy}
+                        triggerId={`evidence-mobile-${row.key}-${column.key}`}
+                        onOpenClaim={openClaim}
+                      />
                     </div>
                   ))}
                 </section>
@@ -362,6 +499,16 @@ export function ComparisonExperienceClient({ view }: ComparisonExperienceClientP
             >
               <h3>{item.title}</h3>
               <p>{item.body}</p>
+              {item.claimKey ? (
+                <button
+                  className={styles.synthesisEvidenceTrigger}
+                  data-evidence-trigger-id={`evidence-synthesis-${item.key}`}
+                  type="button"
+                  onClick={() => openClaim(item.claimKey!, `evidence-synthesis-${item.key}`)}
+                >
+                  {view.locale === "zh-TW" ? "查看資料依據" : "Inspect evidence"}
+                </button>
+              ) : null}
             </article>
           ))}
         </div>
@@ -384,6 +531,15 @@ export function ComparisonExperienceClient({ view }: ComparisonExperienceClientP
           {view.locale === "zh-TW" ? "建立內部審查事項" : "Create internal review action"}
         </button>
       </section>
+
+      {evidencePanel ? (
+        <EvidencePanel
+          outcome={evidencePanel}
+          locale={view.locale}
+          onClose={closeEvidence}
+          onNavigate={navigateEvidence}
+        />
+      ) : null}
     </div>
   );
 }

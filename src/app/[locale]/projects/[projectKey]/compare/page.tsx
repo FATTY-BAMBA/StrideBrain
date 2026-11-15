@@ -8,6 +8,8 @@ import { createComparisonServices } from "@/lib/server/comparison-services";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
 import { buildComparisonExperience } from "@/modules/comparison-experience/build-comparison-experience";
 import { parseComparisonRouteSearch } from "@/modules/comparison-experience/route-state";
+import { parseEvidenceSelection } from "@/modules/evidence-panel/route-state";
+import type { EvidencePanelOutcome } from "@/modules/evidence-panel/contracts";
 import { getCatalog } from "@/modules/localization/catalog";
 import { isSupportedLocale } from "@/modules/localization/config";
 
@@ -112,7 +114,29 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
           locale: rawLocale,
           requestedSelectedProjectKeys: route.selectedProjectKeys,
         });
-        return <ComparisonExperienceClient view={view} />;
+        const evidenceSelection = parseEvidenceSelection({
+          comparisonRunId: route.comparisonRunId,
+          economicsRunId: route.economicsRunId,
+          evidenceMode: route.evidenceMode,
+          evidenceClaimKey: route.evidenceClaimKey,
+          evidenceCandidateProjectKey: route.evidenceCandidateProjectKey,
+          evidenceFactorKey: route.evidenceFactorKey,
+          evidenceSourceKey: route.evidenceSourceKey,
+          evidenceConflictKey: route.evidenceConflictKey,
+        });
+        let evidencePanel: EvidencePanelOutcome | undefined;
+        if (route.evidenceMode) {
+          evidencePanel = evidenceSelection
+            ? await services.getEvidencePanel.execute(context, evidenceSelection, rawLocale)
+            : Object.freeze({ kind: "UNAVAILABLE" as const, requestId: context.requestId });
+        }
+        return (
+          <ComparisonExperienceClient
+            view={view}
+            evidencePanel={evidencePanel}
+            evidenceReturnId={route.evidenceReturnId}
+          />
+        );
       })()}
     </div>
   );
