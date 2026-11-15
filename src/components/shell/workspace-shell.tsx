@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
 
 import type { Catalog } from "@/modules/localization/catalog";
 import type { Locale } from "@/modules/localization/config";
@@ -52,11 +52,19 @@ export function WorkspaceShell({ locale, catalog, children }: WorkspaceShellProp
             <span aria-hidden="true">●</span>
             {catalog["app.demoStatus"]}
           </div>
-          <LanguageSwitcher
-            locale={locale}
-            zhLabel={catalog["language.zhTw"]}
-            enLabel={catalog["language.en"]}
-          />
+          <Suspense
+            fallback={
+              <span className="language-switcher" aria-hidden="true">
+                {catalog["language.zhTw"]} / {catalog["language.en"]}
+              </span>
+            }
+          >
+            <LanguageSwitcher
+              locale={locale}
+              zhLabel={catalog["language.zhTw"]}
+              enLabel={catalog["language.en"]}
+            />
+          </Suspense>
         </header>
 
         <main className="workspace-main" id="main-content" tabIndex={-1}>
