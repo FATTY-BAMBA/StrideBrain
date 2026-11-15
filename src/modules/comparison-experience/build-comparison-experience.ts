@@ -69,7 +69,9 @@ function formatPercent(locale: Locale, value: string | undefined): string {
     signDisplay: "always",
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
-  }).format(parsed).concat("%");
+  })
+    .format(parsed)
+    .concat("%");
 }
 
 function formatRatio(locale: Locale, value: string): string {
@@ -260,7 +262,9 @@ function projectCellMap(
   const cells: Record<string, ComparisonTableCellView> = {
     [ACTIVE_COLUMN_KEY]: activeCell,
   };
-  const matches = new Map(stage4.matches.map((match) => [match.project.projectKey, match] as const));
+  const matches = new Map(
+    stage4.matches.map((match) => [match.project.projectKey, match] as const),
+  );
   for (const key of selectedKeys) {
     const match = matches.get(key);
     if (match) cells[key] = matchCell(match);
@@ -301,11 +305,8 @@ function unavailableEconomicsRow(
   return Object.freeze({
     key,
     label,
-    cells: projectCellMap(
-      stage4,
-      selectedKeys,
+    cells: projectCellMap(stage4, selectedKeys, cell("UNAVAILABLE", copy.states.unavailable), () =>
       cell("UNAVAILABLE", copy.states.unavailable),
-      () => cell("UNAVAILABLE", copy.states.unavailable),
     ),
   });
 }
@@ -341,10 +342,15 @@ function programmeCell(
     return cell("UNAVAILABLE", copy.states.unavailable);
   }
   if (active) {
-    return cell("VALUE", `${formatNumber(locale, programme.activeProgrammeWeeks ?? "", 0)} weeks`, "CAUTION", {
-      secondary: copy.synthesis.programmeDifference,
-      claimKey: "XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED",
-    });
+    return cell(
+      "VALUE",
+      `${formatNumber(locale, programme.activeProgrammeWeeks ?? "", 0)} weeks`,
+      "CAUTION",
+      {
+        secondary: copy.synthesis.programmeDifference,
+        claimKey: "XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED",
+      },
+    );
   }
   return cell(
     "VALUE",
@@ -354,7 +360,10 @@ function programmeCell(
   );
 }
 
-function economicsStateLabel(economics: Stage5EconomicsResult | undefined, copy: ComparisonCopy): string {
+function economicsStateLabel(
+  economics: Stage5EconomicsResult | undefined,
+  copy: ComparisonCopy,
+): string {
   if (!economics) return copy.states.structuralOnly;
   if (economics.accessScope === "STRUCTURAL_ONLY") return copy.states.structuralOnly;
   if (economics.accessScope === "QUOTE_ONLY") return copy.states.quotedOnly;
@@ -400,9 +409,7 @@ function comparableCard(
       economics?.overall.actualHistory,
       match.project.projectKey,
     ),
-    warningLabels: Object.freeze(
-      staleOffers.length > 0 ? [copy.notices.staleSupplier] : [],
-    ),
+    warningLabels: Object.freeze(staleOffers.length > 0 ? [copy.notices.staleSupplier] : []),
   });
 }
 
@@ -524,7 +531,9 @@ function notices(
     synthesisItem("synthetic", copy.summary.demoData, copy.notices.synthetic, "NEUTRAL"),
   ];
   if (!economics || economics.accessScope === "STRUCTURAL_ONLY") {
-    result.push(synthesisItem("restricted", copy.synthesis.gaps, copy.notices.restricted, "NEUTRAL"));
+    result.push(
+      synthesisItem("restricted", copy.synthesis.gaps, copy.notices.restricted, "NEUTRAL"),
+    );
   }
   if (economics?.states.includes("INSUFFICIENT_ACTUAL_EVIDENCE")) {
     result.push(
@@ -540,9 +549,7 @@ function notices(
     result.push(synthesisItem("conflict", copy.synthesis.gaps, copy.notices.conflict, "CRITICAL"));
   }
   if (economics?.states.includes("STALE_SUPPLIER_EVIDENCE")) {
-    result.push(
-      synthesisItem("stale", copy.synthesis.gaps, copy.notices.staleSupplier, "CAUTION"),
-    );
+    result.push(synthesisItem("stale", copy.synthesis.gaps, copy.notices.staleSupplier, "CAUTION"));
   }
   return Object.freeze(result);
 }
@@ -654,9 +661,7 @@ function contextSections(
       ];
 
   const categoryRows: ComparisonTableRowView[] = [];
-  const categoryDefinitions: ReadonlyArray<
-    readonly [string, string, "QUOTE" | "ACTUAL"]
-  > = [
+  const categoryDefinitions: ReadonlyArray<readonly [string, string, "QUOTE" | "ACTUAL"]> = [
     ["IMPORTED_STONE", copy.table.importedStoneQuoted, "QUOTE"],
     ["IMPORTED_STONE", copy.table.importedStoneActual, "ACTUAL"],
     ["LIGHTING_ELECTRICAL", copy.table.lightingQuoted, "QUOTE"],
@@ -680,13 +685,7 @@ function contextSections(
             copy,
             `XINYI_${categoryId}_${suffix}`,
           )
-        : unavailableEconomicsRow(
-            `${categoryId}-${basis}`,
-            label,
-            stage4,
-            selectedKeys,
-            copy,
-          ),
+        : unavailableEconomicsRow(`${categoryId}-${basis}`, label, stage4, selectedKeys, copy),
     );
   }
 
@@ -735,19 +734,37 @@ function contextSections(
   ];
 
   return Object.freeze([
-    Object.freeze({ key: "context", label: copy.table.projectContext, rows: Object.freeze(contextRows) }),
-    Object.freeze({ key: "economics", label: copy.table.economics, rows: Object.freeze(economicsRows) }),
-    Object.freeze({ key: "categories", label: copy.table.categories, rows: Object.freeze(categoryRows) }),
-    Object.freeze({ key: "evidence", label: copy.table.evidenceState, rows: Object.freeze(evidenceRows) }),
+    Object.freeze({
+      key: "context",
+      label: copy.table.projectContext,
+      rows: Object.freeze(contextRows),
+    }),
+    Object.freeze({
+      key: "economics",
+      label: copy.table.economics,
+      rows: Object.freeze(economicsRows),
+    }),
+    Object.freeze({
+      key: "categories",
+      label: copy.table.categories,
+      rows: Object.freeze(categoryRows),
+    }),
+    Object.freeze({
+      key: "evidence",
+      label: copy.table.evidenceState,
+      rows: Object.freeze(evidenceRows),
+    }),
   ]);
 }
 
-export function buildComparisonExperience(input: Readonly<{
-  stage4: Stage4ComparisonResult;
-  economics?: Stage5EconomicsResult | undefined;
-  locale: Locale;
-  requestedSelectedProjectKeys?: readonly string[] | undefined;
-}>): ComparisonExperienceView {
+export function buildComparisonExperience(
+  input: Readonly<{
+    stage4: Stage4ComparisonResult;
+    economics?: Stage5EconomicsResult | undefined;
+    locale: Locale;
+    requestedSelectedProjectKeys?: readonly string[] | undefined;
+  }>,
+): ComparisonExperienceView {
   const { stage4, economics, locale } = input;
   if (economics && economics.run.comparisonRunId !== stage4.run.id) {
     throw new Error("COMPARISON_EXPERIENCE_RUN_MISMATCH");

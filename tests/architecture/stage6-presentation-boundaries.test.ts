@@ -20,7 +20,9 @@ describe("Stage 6 presentation boundaries", () => {
   it("keeps Prisma and repository adapters out of presentation code", () => {
     const forbidden = [/@prisma\//, /repositories\/prisma/, /\.generated\/prisma/];
     const violations = presentationFiles.flatMap((path) =>
-      forbidden.filter((pattern) => pattern.test(contents(path))).map((pattern) => `${path}:${pattern}`),
+      forbidden
+        .filter((pattern) => pattern.test(contents(path)))
+        .map((pattern) => `${path}:${pattern}`),
     );
 
     expect(violations).toEqual([]);
@@ -35,7 +37,9 @@ describe("Stage 6 presentation boundaries", () => {
       /calculateCandidateSimilarity/,
     ];
     const violations = presentationFiles.flatMap((path) =>
-      forbidden.filter((pattern) => pattern.test(contents(path))).map((pattern) => `${path}:${pattern}`),
+      forbidden
+        .filter((pattern) => pattern.test(contents(path)))
+        .map((pattern) => `${path}:${pattern}`),
     );
 
     expect(violations).toEqual([]);

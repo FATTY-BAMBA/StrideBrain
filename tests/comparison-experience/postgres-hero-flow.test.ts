@@ -40,7 +40,9 @@ describeDatabase("Stage 6 PostgreSQL hero flow", () => {
     expect(structural.kind).toBe("COMPLETE");
     if (structural.kind !== "COMPLETE") throw new Error("STRUCTURAL_RESULT_REQUIRED");
 
-    expect(structural.result.matches.map((match) => [match.project.projectKey, match.displayScore])).toEqual([
+    expect(
+      structural.result.matches.map((match) => [match.project.projectKey, match.displayScore]),
+    ).toEqual([
       ["PRJ-NEIHU-021", 88],
       ["PRJ-ZHONGSHAN-018", 81],
       ["PRJ-NANJING-023", 79],
@@ -73,8 +75,7 @@ describeDatabase("Stage 6 PostgreSQL hero flow", () => {
     expect(
       view.table.sections
         .flatMap((section) => section.rows)
-        .find((row) => row.key === "LIGHTING_ELECTRICAL-ACTUAL")
-        ?.cells.__ACTIVE_PROJECT__?.state,
+        .find((row) => row.key === "LIGHTING_ELECTRICAL-ACTUAL")?.cells.__ACTIVE_PROJECT__?.state,
     ).toBe("INSUFFICIENT");
     expect(view.notices.some((notice) => notice.key === "stale")).toBe(true);
   }, 20_000);

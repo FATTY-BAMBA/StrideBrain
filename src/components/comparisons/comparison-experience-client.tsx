@@ -160,7 +160,8 @@ export function ComparisonExperienceClient({ view }: ComparisonExperienceClientP
   const [selectionError, setSelectionError] = useState<string | null>(null);
   const selectedSet = useMemo(() => new Set(selected), [selected]);
   const orderedSelected = useMemo(
-    () => view.cards.filter((card) => selectedSet.has(card.projectKey)).map((card) => card.projectKey),
+    () =>
+      view.cards.filter((card) => selectedSet.has(card.projectKey)).map((card) => card.projectKey),
     [selectedSet, view.cards],
   );
   const dirty = orderedSelected.join(",") !== view.initialSelectedProjectKeys.join(",");
@@ -278,12 +279,7 @@ export function ComparisonExperienceClient({ view }: ComparisonExperienceClientP
           <p>{copy.table.description}</p>
         </div>
 
-        <div
-          className={styles.tableWrap}
-          tabIndex={0}
-          role="region"
-          aria-label={copy.table.title}
-        >
+        <div className={styles.tableWrap} tabIndex={0} role="region" aria-label={copy.table.title}>
           <table className={styles.comparisonTable}>
             <thead>
               <tr>

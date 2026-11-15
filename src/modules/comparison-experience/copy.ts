@@ -265,8 +265,7 @@ const zhTw: ComparisonCopy = {
   description:
     "StrideBrain 以可解釋的固定規則排序已授權的歷史專案，清楚區分商務資料權威性，也會誠實呈現資料不足之處。",
   heroQuestion: "我們以前做過類似的案子嗎？",
-  heroPrompt:
-    "搜尋已授權的歷史專案、說明最接近的原因，並用可信任的歷史依據比較目前報價。",
+  heroPrompt: "搜尋已授權的歷史專案、說明最接近的原因，並用可信任的歷史依據比較目前報價。",
   runComparison: "尋找類似歷史專案",
   rerunComparison: "重新執行比較",
   sessionRequiredTitle: "需要受控的示範工作階段。",

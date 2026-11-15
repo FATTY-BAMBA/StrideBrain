@@ -4,13 +4,7 @@ import type { Stage4ComparisonResult } from "@/modules/comparisons/domain/contra
 import { buildComparisonExperience } from "@/modules/comparison-experience/build-comparison-experience";
 import type { Stage5EconomicsResult } from "@/modules/economics/domain/contracts";
 
-function match(
-  projectKey: string,
-  rank: number,
-  score: number,
-  nameEn: string,
-  nameZhTw: string,
-) {
+function match(projectKey: string, rank: number, score: number, nameEn: string, nameZhTw: string) {
   return Object.freeze({
     project: Object.freeze({
       projectKey,
@@ -258,7 +252,13 @@ function category(
     categoryId,
     quotedHistory,
     actualHistory,
-    quoteVariance: valueFinding("QUOTE", "QUOTED_PRICE", "3000000.00", "4687.500000", quoteVariance),
+    quoteVariance: valueFinding(
+      "QUOTE",
+      "QUOTED_PRICE",
+      "3000000.00",
+      "4687.500000",
+      quoteVariance,
+    ),
     forecastVariance:
       actualState === "SUFFICIENT"
         ? valueFinding(
@@ -301,11 +301,7 @@ function economics(comparisonRunId = "cmprun_stage4"): Stage5EconomicsResult {
     }),
     accessScope: "FULL_ACTUAL",
     structuralResultFingerprint: "stage4-fingerprint",
-    selectedProjectKeys: Object.freeze([
-      "PRJ-NEIHU-021",
-      "PRJ-ZHONGSHAN-018",
-      "PRJ-NANJING-023",
-    ]),
+    selectedProjectKeys: Object.freeze(["PRJ-NEIHU-021", "PRJ-ZHONGSHAN-018", "PRJ-NANJING-023"]),
     states: Object.freeze(["INSUFFICIENT_ACTUAL_EVIDENCE", "STALE_SUPPLIER_EVIDENCE"]),
     summary: Object.freeze({
       quotedHistoryState: "SUFFICIENT",
@@ -325,13 +321,7 @@ function economics(comparisonRunId = "cmprun_stage4"): Stage5EconomicsResult {
         "RECONCILED_ACTUAL_COST",
         actualInputs as typeof quoteInputs,
       ),
-      quoteVariance: valueFinding(
-        "QUOTE",
-        "QUOTED_PRICE",
-        "16480000.00",
-        "25750.000000",
-        "7.1676",
-      ),
+      quoteVariance: valueFinding("QUOTE", "QUOTED_PRICE", "16480000.00", "25750.000000", "7.1676"),
       forecastVariance: valueFinding(
         "FORECAST",
         "RECONCILED_ACTUAL_COST",
@@ -371,7 +361,9 @@ function economics(comparisonRunId = "cmprun_stage4"): Stage5EconomicsResult {
 }
 
 function row(view: ReturnType<typeof buildComparisonExperience>, key: string) {
-  return view.table.sections.flatMap((section) => section.rows).find((candidate) => candidate.key === key);
+  return view.table.sections
+    .flatMap((section) => section.rows)
+    .find((candidate) => candidate.key === key);
 }
 
 describe("Stage 6 comparison experience composer", () => {
@@ -396,12 +388,14 @@ describe("Stage 6 comparison experience composer", () => {
   });
 
   it("renders stored quote, actual, and category findings without recalculation", () => {
-    const view = buildComparisonExperience({ stage4: stage4(), economics: economics(), locale: "en" });
+    const view = buildComparisonExperience({
+      stage4: stage4(),
+      economics: economics(),
+      locale: "en",
+    });
 
     expect(row(view, "overall-quoted")?.cells.__ACTIVE_PROJECT__?.secondary).toContain("+7.2%");
-    expect(row(view, "overall-actual")?.cells["PRJ-NEIHU-021"]?.primary).toContain(
-      "NT$18,984",
-    );
+    expect(row(view, "overall-actual")?.cells["PRJ-NEIHU-021"]?.primary).toContain("NT$18,984");
     expect(row(view, "IMPORTED_STONE-ACTUAL")?.cells.__ACTIVE_PROJECT__?.secondary).toContain(
       "+18.4%",
     );
@@ -412,7 +406,11 @@ describe("Stage 6 comparison experience composer", () => {
   });
 
   it("keeps unknown factors distinct from mismatches", () => {
-    const view = buildComparisonExperience({ stage4: stage4(), economics: economics(), locale: "en" });
+    const view = buildComparisonExperience({
+      stage4: stage4(),
+      economics: economics(),
+      locale: "en",
+    });
     const nanjing = view.cards.find((card) => card.projectKey === "PRJ-NANJING-023");
 
     expect(nanjing?.unknowns).toHaveLength(1);

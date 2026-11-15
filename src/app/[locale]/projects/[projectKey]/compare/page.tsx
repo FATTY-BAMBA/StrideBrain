@@ -49,11 +49,7 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
       {await (async () => {
         if (!context) {
           return (
-            <ComparisonState
-              locale={rawLocale}
-              projectKey={projectKey}
-              kind="SESSION_REQUIRED"
-            />
+            <ComparisonState locale={rawLocale} projectKey={projectKey} kind="SESSION_REQUIRED" />
           );
         }
 

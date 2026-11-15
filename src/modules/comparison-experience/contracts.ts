@@ -1,7 +1,4 @@
-import type {
-  MatchBand,
-  SimilarityFactorKey,
-} from "@/modules/comparisons/domain/contracts";
+import type { MatchBand, SimilarityFactorKey } from "@/modules/comparisons/domain/contracts";
 import type { Locale } from "@/modules/localization/config";
 
 export const COMPARISON_EXPERIENCE_VERSION = "comparison-experience.v1" as const;

@@ -1,7 +1,6 @@
 .shell {
   display: grid;
   gap: 22px;
-  aria-busy: true;
 }
 
 .hero,

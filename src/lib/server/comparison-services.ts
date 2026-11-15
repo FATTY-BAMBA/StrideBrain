@@ -53,11 +53,7 @@ export function createComparisonServices(): ComparisonServices {
   return Object.freeze({
     runComparison: new RunComparableProjectAnalysis(projects, candidates, comparisonRuns),
     getComparison: new GetComparisonRun(comparisonRuns),
-    runEconomics: new RunHistoricalEconomicsEnrichment(
-      comparisonRuns,
-      observations,
-      economicsRuns,
-    ),
+    runEconomics: new RunHistoricalEconomicsEnrichment(comparisonRuns, observations, economicsRuns),
     getEconomics: new GetHistoricalEconomicsEnrichment(economicsRuns),
   });
 }
