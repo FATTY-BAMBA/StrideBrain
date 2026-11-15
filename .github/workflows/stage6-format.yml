@@ -1,0 +1,72 @@
+name: Stage 6 formatter
+
+on:
+  push:
+    branches:
+      - build/stage-6-structured-comparison-experience
+    paths:
+      - .github/workflows/stage6-format.yml
+
+permissions:
+  contents: write
+
+jobs:
+  format-stage6:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out Stage 6 branch
+        uses: actions/checkout@v6
+        with:
+          ref: build/stage-6-structured-comparison-experience
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Apply accessibility and CSS cleanup
+        shell: python
+        run: |
+          from pathlib import Path
+
+          loading = Path("src/components/comparisons/comparison-loading.module.css")
+          loading.write_text(loading.read_text().replace("  aria-busy: true;\n", ""))
+
+          stylesheet = Path("src/components/comparisons/comparison-experience.module.css")
+          text = stylesheet.read_text()
+          marker = ":global(.sr-only)"
+          if marker not in text:
+              text += """
+
+:global(.sr-only) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+"""
+          stylesheet.write_text(text)
+
+      - name: Format repository files
+        run: npm run format
+
+      - name: Remove one-time workflow
+        run: rm .github/workflows/stage6-format.yml
+
+      - name: Commit exact formatter output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src tests .github/workflows/stage6-format.yml
+          git commit -m "style(stage6): format comparison experience"
+          git push origin HEAD:build/stage-6-structured-comparison-experience
