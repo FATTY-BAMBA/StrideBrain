@@ -1,0 +1,42 @@
+name: Stage 7 source export
+
+on:
+  push:
+    branches:
+      - build/stage-7-evidence-panel
+    paths:
+      - .github/workflows/stage7-source-export.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Stage 7 branch
+        uses: actions/checkout@v6
+        with:
+          ref: build/stage-7-evidence-panel
+
+      - name: Create clean source archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar \
+            --exclude=.git \
+            --exclude=node_modules \
+            --exclude=.next \
+            --exclude=.generated \
+            -czf /tmp/stridebrain-stage7-source.tar.gz .
+
+      - name: Upload clean source archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: stridebrain-stage7-source
+          path: /tmp/stridebrain-stage7-source.tar.gz
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
