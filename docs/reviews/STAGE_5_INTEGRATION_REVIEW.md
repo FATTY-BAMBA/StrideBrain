@@ -1,6 +1,6 @@
 # Stage 5 Integration Review
 
-**Review status:** PASS LOCALLY — EXACT-HEAD CI REQUIRED
+**Review status:** PASS LOCALLY — EXACT-HEAD CI TRIGGERED
 **Scope:** repository reads, orchestration, persistence, schema, fixtures, and regression tests
 
 ## Findings resolved before review
@@ -45,6 +45,7 @@
 - Formatting: pass.
 - Lint: pass with the repository's existing non-blocking `prisma.config.ts` warning only.
 - Production Next.js build: pass.
+- Final changed-file review: pass; only the 22 intended Stage 5 product, migration, fixture, documentation, and test files remain.
 
 ## Remaining merge gates
 
@@ -52,4 +53,4 @@
 - all fixture and SQL verification scripts pass in GitHub Actions;
 - generated Prisma client matches the new schema;
 - exact PR head passes the complete CI workflow;
-- final changed-file review confirms no recovery artifacts, unrelated security changes, UI, AI, action, or deployment scope.
+- independent acceptance review records the exact validated head.
