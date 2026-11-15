@@ -58,3 +58,5 @@ jobs:
           git diff --cached --check
           git commit -m "feat(stage5): integrate economics repositories and immutable enrichment"
           git push origin HEAD:build/stage-5-historical-economics
+
+# Retry after verified chunk repair.
