@@ -30,32 +30,12 @@ jobs:
         run: npm ci --no-audit --no-fund
 
       - name: Apply accessibility and CSS cleanup
-        shell: python
+        shell: bash
         run: |
-          from pathlib import Path
-
-          loading = Path("src/components/comparisons/comparison-loading.module.css")
-          loading.write_text(loading.read_text().replace("  aria-busy: true;\n", ""))
-
-          stylesheet = Path("src/components/comparisons/comparison-experience.module.css")
-          text = stylesheet.read_text()
-          marker = ":global(.sr-only)"
-          if marker not in text:
-              text += """
-
-:global(.sr-only) {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-"""
-          stylesheet.write_text(text)
+          python -c 'from pathlib import Path; p=Path("src/components/comparisons/comparison-loading.module.css"); p.write_text(p.read_text().replace("  aria-busy: true;\n", ""))'
+          if ! grep -Fq ':global(.sr-only)' src/components/comparisons/comparison-experience.module.css; then
+            printf '\n\n:global(.sr-only) {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0;\n}\n' >> src/components/comparisons/comparison-experience.module.css
+          fi
 
       - name: Format repository files
         run: npm run format
