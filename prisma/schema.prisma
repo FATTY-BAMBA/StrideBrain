@@ -154,8 +154,10 @@ model Organization {
   comparisonRuns       ComparisonRun[]
   comparisonCandidates ComparisonCandidate[]
   comparisonFactors    ComparisonFactor[]
-  comparisonClaims     ComparisonClaim[]
-  proposedActions      ProposedAction[]
+  comparisonClaims              ComparisonClaim[]
+  economicsEnrichmentRuns       EconomicsEnrichmentRun[]
+  economicsObservationDecisions EconomicsObservationDecision[]
+  proposedActions               ProposedAction[]
   actions              Action[]
   auditEvents          AuditEvent[]
   capabilityGrants     MembershipCapabilityGrant[]
@@ -312,8 +314,10 @@ model Project {
   supplierOffers     SupplierOffer[]
   intelligenceRuns   IntelligenceRun[]
   comparisonRuns     ComparisonRun[]       @relation("ActiveComparisonProject")
-  comparisonMatches  ComparisonCandidate[] @relation("CandidateProject")
-  proposedActions    ProposedAction[]
+  comparisonMatches             ComparisonCandidate[]       @relation("CandidateProject")
+  economicsEnrichmentRuns       EconomicsEnrichmentRun[]     @relation("ActiveEconomicsProject")
+  economicsObservationDecisions EconomicsObservationDecision[]
+  proposedActions               ProposedAction[]
   actions            Action[]
 
   @@unique([organizationId, businessKey])
@@ -773,8 +777,9 @@ model ComparisonRun {
   activeProject      Project               @relation("ActiveComparisonProject", fields: [activeProjectId], references: [id], onDelete: Cascade)
   activeQuoteVersion QuoteVersion?         @relation("ActiveQuoteVersion", fields: [activeQuoteVersionId], references: [id], onDelete: SetNull)
   candidates         ComparisonCandidate[]
-  claims             ComparisonClaim[]
-  proposedActions    ProposedAction[]
+  claims              ComparisonClaim[]
+  economicsEnrichment EconomicsEnrichmentRun?
+  proposedActions     ProposedAction[]
   actions            Action[]
   auditEvents        AuditEvent[]
 
@@ -847,6 +852,61 @@ model ComparisonClaim {
   @@unique([organizationId, comparisonRunId, claimKey])
   @@unique([id, organizationId])
   @@index([organizationId, claimType])
+}
+
+model EconomicsEnrichmentRun {
+  id                          String    @id
+  organizationId              String
+  comparisonRunId             String    @unique
+  activeProjectId             String
+  status                      RunStatus
+  accessScope                 String
+  authorityPolicyVersion      String
+  calculationVersion          String
+  inputFingerprint            String
+  sourceFingerprint           String
+  permissionFingerprint       String
+  structuralResultFingerprint String
+  resultVersion               Int       @default(1)
+  resultSnapshot              Json?
+  createdAt                   DateTime  @default(now())
+  completedAt                 DateTime?
+
+  organization         Organization                  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  comparisonRun        ComparisonRun                 @relation(fields: [comparisonRunId], references: [id], onDelete: Cascade)
+  activeProject        Project                       @relation("ActiveEconomicsProject", fields: [activeProjectId], references: [id], onDelete: Cascade)
+  observationDecisions EconomicsObservationDecision[]
+
+  @@unique([id, organizationId])
+  @@index([organizationId, activeProjectId, status])
+  @@index([organizationId, inputFingerprint])
+}
+
+model EconomicsObservationDecision {
+  id                   String           @id
+  organizationId       String
+  enrichmentRunId      String
+  projectId            String
+  decisionKey          String
+  observationId        String
+  categoryId           String?
+  observationType      ObservationType
+  authorityState       AuthorityState
+  included             Boolean
+  reasonCodes          String[]
+  normalizedAmount     Decimal?         @db.Decimal(20, 6)
+  normalizedUnit       String?
+  evidenceReferenceIds String[]
+  createdAt            DateTime         @default(now())
+
+  organization  Organization          @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  enrichmentRun EconomicsEnrichmentRun @relation(fields: [enrichmentRunId], references: [id], onDelete: Cascade)
+  project       Project               @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, enrichmentRunId, decisionKey])
+  @@unique([id, organizationId])
+  @@index([organizationId, projectId, observationType, included])
+  @@index([organizationId, enrichmentRunId])
 }
 
 model ProposedAction {
