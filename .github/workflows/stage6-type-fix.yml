@@ -29,6 +29,11 @@ jobs:
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund
 
+      - name: Generate Prisma client
+        env:
+          DATABASE_URL: postgresql://stridebrain:stridebrain@localhost:5432/stridebrain?schema=public
+        run: npm run db:generate
+
       - name: Apply exact TypeScript fixes
         shell: bash
         run: |
