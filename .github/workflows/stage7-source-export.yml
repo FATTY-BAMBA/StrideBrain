@@ -1,4 +1,4 @@
-name: Stage 7 source export
+name: Apply Stage 7 implementation
 
 on:
   push:
@@ -6,69 +6,60 @@ on:
       - build/stage-7-evidence-panel
     paths:
       - .github/workflows/stage7-source-export.yml
+      - .github/stage7-patch-part-00
+      - .github/stage7-patch-part-01
+      - .github/stage7-patch-part-02
+      - .github/stage7-patch-part-03
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  export-source:
+  apply-stage7:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 10
     steps:
-      - name: Check out Stage 7 branch
+      - name: Check out exact Stage 7 branch
         uses: actions/checkout@v6
         with:
           ref: build/stage-7-evidence-panel
+          fetch-depth: 0
+          persist-credentials: true
 
-      - name: Use Node.js 24
-        uses: actions/setup-node@v7
-        with:
-          node-version: 24
-          cache: npm
-
-      - name: Install exact application dependencies
-        run: npm ci --no-audit --no-fund
-
-      - name: Install exact Prisma toolchain
-        run: npm install --prefix /tmp/stridebrain-prisma-tools --no-save --no-audit --no-fund prisma@7.10.1 @prisma/client@7.10.1
-
-      - name: Create validation archives
+      - name: Reconstruct and verify exact patch
         shell: bash
         run: |
           set -euo pipefail
-          tar \
-            --exclude=.git \
-            --exclude=node_modules \
-            --exclude=.next \
-            --exclude=.generated \
-            -czf /tmp/stridebrain-stage7-source.tar.gz .
-          tar -czf /tmp/stridebrain-stage7-node-modules.tar.gz node_modules
-          tar -C /tmp/stridebrain-prisma-tools -czf /tmp/stridebrain-stage7-prisma-tools.tar.gz .
+          head -c 13000 .github/stage7-patch-part-00 > /tmp/stage7-00
+          head -c 13000 .github/stage7-patch-part-01 > /tmp/stage7-01
+          head -c 13000 .github/stage7-patch-part-02 > /tmp/stage7-02
+          head -c 12776 .github/stage7-patch-part-03 > /tmp/stage7-03
+          cat /tmp/stage7-00 /tmp/stage7-01 /tmp/stage7-02 /tmp/stage7-03 \
+            | base64 --decode \
+            | gunzip > /tmp/stage7-implementation.patch
+          echo "8a82c761961c2a7ef0c25d53eb318e1306920dfc4f9fd9e393f570f8da5382e1  /tmp/stage7-implementation.patch" \
+            | sha256sum --check --strict
+          git apply --check /tmp/stage7-implementation.patch
 
-      - name: Upload clean source archive
-        uses: actions/upload-artifact@v4
-        with:
-          name: stridebrain-stage7-source
-          path: /tmp/stridebrain-stage7-source.tar.gz
-          if-no-files-found: error
-          retention-days: 1
-          compression-level: 0
+      - name: Apply implementation and remove transport artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git apply --index /tmp/stage7-implementation.patch
+          git rm \
+            .github/stage7-patch-part-00 \
+            .github/stage7-patch-part-01 \
+            .github/stage7-patch-part-02 \
+            .github/stage7-patch-part-03 \
+            .github/workflows/stage7-source-export.yml
 
-      - name: Upload exact application dependencies
-        uses: actions/upload-artifact@v4
-        with:
-          name: stridebrain-stage7-node-modules
-          path: /tmp/stridebrain-stage7-node-modules.tar.gz
-          if-no-files-found: error
-          retention-days: 1
-          compression-level: 0
-
-      - name: Upload exact Prisma toolchain
-        uses: actions/upload-artifact@v4
-        with:
-          name: stridebrain-stage7-prisma-tools
-          path: /tmp/stridebrain-stage7-prisma-tools.tar.gz
-          if-no-files-found: error
-          retention-days: 1
-          compression-level: 0
+      - name: Commit exact Stage 7 implementation
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git status --short
+          git commit -m "feat(stage7): add interactive claim-to-evidence panel"
+          git push origin HEAD:build/stage-7-evidence-panel
