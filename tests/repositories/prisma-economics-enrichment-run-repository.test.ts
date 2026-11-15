@@ -215,6 +215,26 @@ describe("PrismaEconomicsEnrichmentRunRepository", () => {
     });
   });
 
+  it("persists six-decimal values without JavaScript Number coercion", async () => {
+    const db = database();
+    const repository = new PrismaEconomicsEnrichmentRunRepository(db.database);
+    const exact = "12345678901234.123456";
+
+    await repository.persistComplete({
+      ...input,
+      enrichmentRunId: "econrun_exact_decimal",
+      decisions: [
+        {
+          ...input.decisions[0]!,
+          normalizedAmount: exact,
+        },
+      ],
+    });
+
+    const data = db.enrichmentCreate.mock.calls[0]?.[0]?.data;
+    expect(data.observationDecisions.create[0].normalizedAmount).toBe(exact);
+  });
+
   it("reopens the stored result only when current scope is at least as strong", async () => {
     const db = database();
     db.findFirst.mockResolvedValue({
