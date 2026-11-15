@@ -1,4 +1,5 @@
 import { sha256 } from "@/modules/comparisons/application/fingerprints";
+import { decimalFromString, decimalToString } from "@/modules/finance/fixed-decimal";
 import { AuthorizationService } from "@/modules/authorization/authorization-service";
 import {
   ECONOMICS_CALCULATION_VERSION,
@@ -51,9 +52,7 @@ function boundedId(prefix: string, value: unknown): string {
 
 function decimal6(value: string | undefined): string | null {
   if (value === undefined) return null;
-  const number = Number(value);
-  if (!Number.isFinite(number)) throw new Error("INVALID_ECONOMICS_DECIMAL");
-  return number.toFixed(6);
+  return decimalToString(decimalFromString(value, 6));
 }
 
 function storedSnapshot(input: PersistStage5EconomicsInput): StoredEconomicsSnapshot {
