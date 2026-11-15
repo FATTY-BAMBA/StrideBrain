@@ -147,7 +147,8 @@ const en: Catalog = {
   "stridebrain.description":
     "The current build resolves authorized work context first, then produces deterministic project ranking, commercial comparison, and honest insufficiency states. Model-written explanation is not required for the critical workflow.",
   "settings.eyebrow": "ORGANIZATION SETTINGS",
-  "settings.title": "Identity, permissions, language, and data boundaries are governed server-side.",
+  "settings.title":
+    "Identity, permissions, language, and data boundaries are governed server-side.",
   "settings.description":
     "The controlled demo validates roles, project assignments, and redaction. Full account administration, integrations, and real-customer data lifecycle controls are not active yet.",
   "project.eyebrow": "PROJECT WORKSPACE",

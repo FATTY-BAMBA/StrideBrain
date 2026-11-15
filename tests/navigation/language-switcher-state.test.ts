@@ -1,9 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import {
-  localizedHref,
-  pathForLocale,
-} from "@/components/shell/language-switcher";
+import { localizedHref, pathForLocale } from "@/components/shell/language-switcher";
 
 describe("Stage 6 language switcher state", () => {
   it("changes only the locale segment", () => {
@@ -16,9 +13,7 @@ describe("Stage 6 language switcher state", () => {
     const query =
       "run=cmprun_stage4&economics=econrun_stage5&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018";
 
-    expect(
-      localizedHref("/en/projects/PRJ-XINYI-026/compare", query, "zh-TW"),
-    ).toBe(
+    expect(localizedHref("/en/projects/PRJ-XINYI-026/compare", query, "zh-TW")).toBe(
       "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_stage4&economics=econrun_stage5&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018",
     );
   });
