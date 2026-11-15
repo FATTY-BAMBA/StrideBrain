@@ -1,0 +1,41 @@
+name: Stage 5 source snapshot
+
+on:
+  push:
+    branches:
+      - build/stage-5-historical-economics
+    paths:
+      - .github/workflows/stage5-source-export.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Stage 5 branch
+        uses: actions/checkout@v6
+        with:
+          ref: build/stage-5-historical-economics
+
+      - name: Create source archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar \
+            --exclude=.git \
+            --exclude=node_modules \
+            --exclude=.next \
+            --exclude=.generated \
+            -czf /tmp/stridebrain-stage5-source.tar.gz .
+
+      - name: Upload source archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: stridebrain-stage5-source
+          path: /tmp/stridebrain-stage5-source.tar.gz
+          if-no-files-found: error
+          retention-days: 1
