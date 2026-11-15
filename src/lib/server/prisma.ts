@@ -33,6 +33,6 @@ export function getPrismaClient(): PrismaClient {
 
 export async function disconnectPrismaClientForTests(): Promise<void> {
   const client = globalPrisma.__stridebrainPrisma;
-  globalPrisma.__stridebrainPrisma = undefined;
+  delete globalPrisma.__stridebrainPrisma;
   if (client) await client.$disconnect();
 }

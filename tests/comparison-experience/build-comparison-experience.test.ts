@@ -184,7 +184,13 @@ const actualInputs = Object.freeze([
 
 function sufficientAggregate(
   observationType: "QUOTED_PRICE" | "RECONCILED_ACTUAL_COST",
-  inputs: typeof quoteInputs,
+  inputs: readonly Readonly<{
+    observationId: string;
+    projectKey: string;
+    normalizedValue: string;
+    unit: string;
+    evidenceReferenceIds: readonly string[];
+  }>[],
 ) {
   return Object.freeze({
     state: "SUFFICIENT" as const,
@@ -237,7 +243,7 @@ function category(
   const quotedHistory = sufficientAggregate("QUOTED_PRICE", quoteInputs);
   const actualHistory =
     actualState === "SUFFICIENT"
-      ? sufficientAggregate("RECONCILED_ACTUAL_COST", actualInputs as typeof quoteInputs)
+      ? sufficientAggregate("RECONCILED_ACTUAL_COST", actualInputs)
       : Object.freeze({
           state: "INSUFFICIENT" as const,
           observationType: "RECONCILED_ACTUAL_COST" as const,
@@ -317,10 +323,7 @@ function economics(comparisonRunId = "cmprun_stage4"): Stage5EconomicsResult {
     }),
     overall: Object.freeze({
       quotedHistory: sufficientAggregate("QUOTED_PRICE", quoteInputs),
-      actualHistory: sufficientAggregate(
-        "RECONCILED_ACTUAL_COST",
-        actualInputs as typeof quoteInputs,
-      ),
+      actualHistory: sufficientAggregate("RECONCILED_ACTUAL_COST", actualInputs),
       quoteVariance: valueFinding("QUOTE", "QUOTED_PRICE", "16480000.00", "25750.000000", "7.1676"),
       forecastVariance: valueFinding(
         "FORECAST",

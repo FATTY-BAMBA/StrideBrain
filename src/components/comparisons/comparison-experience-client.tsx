@@ -17,10 +17,10 @@ type ComparisonExperienceClientProps = Readonly<{
 }>;
 
 function bandClass(band: ComparableProjectCardView["band"]): string {
-  if (band === "STRONG") return styles.bandStrong;
-  if (band === "RELEVANT") return styles.bandRelevant;
-  if (band === "PARTIAL") return styles.bandPartial;
-  return styles.bandBroader;
+  if (band === "STRONG") return styles.bandStrong ?? "";
+  if (band === "RELEVANT") return styles.bandRelevant ?? "";
+  if (band === "PARTIAL") return styles.bandPartial ?? "";
+  return styles.bandBroader ?? "";
 }
 
 function cellStateLabel(cell: ComparisonTableCellView, copy: ComparisonCopy): string {

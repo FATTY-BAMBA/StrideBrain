@@ -2,7 +2,6 @@ import type {
   ComparableProjectMatchDTO,
   DifferenceDTO,
   FactorSummaryDTO,
-  SimilarityFactorKey,
   Stage4ComparisonResult,
   UnknownFactorDTO,
 } from "@/modules/comparisons/domain/contracts";
