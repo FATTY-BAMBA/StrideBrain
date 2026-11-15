@@ -64,6 +64,19 @@ A Viewer or downgraded user cannot cause restricted actual-cost values to be loa
 
 Conflict mode is bound to an opaque source already present in the selected authorized claim/factor bundle. An arbitrary conflict key cannot be used to enumerate unrelated organization evidence.
 
+### Comparison-library alignment
+
+Historical evidence access follows the same governed policy that authorized the immutable Stage 4 and Stage 5 result:
+
+- the active project continues to require normal project assignment and capabilities;
+- a historical project must already be an authorized candidate in the stored comparison run;
+- assignment-free access is permitted only for approved comparison-library classifications (`DEMO_SYNTHETIC`, `PUBLIC_REFERENCE`, or `TENANT_APPROVED`), or for organization-wide private-history roles;
+- reconciled actual-cost evidence still requires `commercial:actual-read` and the Stage 5 historical-actual policy;
+- quote and supplier/forecast evidence still require their respective capabilities;
+- a Viewer or user without actual-cost capability remains unable to query actual values.
+
+This prevents Stage 7 from incorrectly rejecting evidence that Stage 5 already used lawfully, without weakening tenant, capability, or immutable-run boundaries.
+
 ## 5. Supported evidence subjects
 
 The repository supports:
@@ -159,6 +172,7 @@ Stage 7 adds tests for:
 - conflict enumeration prevention;
 - access-change fail-closed behavior;
 - ownership authorization before sensitive reads;
+- approved comparison-library history without direct assignment;
 - Viewer actual-cost non-query behavior;
 - route parsing and restoration;
 - English/Traditional Chinese parity;
