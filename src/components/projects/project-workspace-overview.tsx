@@ -66,8 +66,7 @@ const copy = {
     stale: "歷史／已過期",
     version: "版本",
     demo: "禾序空間設計虛構示範資料",
-    compareDescription:
-      "尋找最接近的歷史專案、理解相似原因，並用可追溯的歷史依據比較目前報價。",
+    compareDescription: "尋找最接近的歷史專案、理解相似原因，並用可追溯的歷史依據比較目前報價。",
     warnings: "此專案有需要注意的資料狀態。",
   },
 } as const;
@@ -106,9 +105,7 @@ function formatObservation(
         {labels.version} {observation.versionNumber} · {observation.authorityState}
       </span>
       <strong>{formatMoney(locale, observation.money.amount, observation.money.currency)}</strong>
-      {observation.freshness === "STALE" ? (
-        <p className={styles.stale}>{labels.stale}</p>
-      ) : null}
+      {observation.freshness === "STALE" ? <p className={styles.stale}>{labels.stale}</p> : null}
     </div>
   );
 }
@@ -116,7 +113,8 @@ function formatObservation(
 export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspaceOverviewProps) {
   const labels = copy[locale];
   const comparison = getComparisonCopy(locale);
-  const areaUnit = workspace.project.area.unit.toLowerCase() === "m2" ? "m²" : workspace.project.area.unit;
+  const areaUnit =
+    workspace.project.area.unit.toLowerCase() === "m2" ? "m²" : workspace.project.area.unit;
   const comparisonUrl = comparisonHref(locale, workspace.project.businessKey);
 
   return (
@@ -245,7 +243,11 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
             .map((question) => (
               <div className={styles.questionLink} key={question.id}>
                 <strong>{locale === "zh-TW" ? question.promptZhTw : question.promptEn}</strong>
-                <span>{locale === "zh-TW" ? "此能力將於後續切片啟用" : "This capability belongs to a later slice"}</span>
+                <span>
+                  {locale === "zh-TW"
+                    ? "此能力將於後續切片啟用"
+                    : "This capability belongs to a later slice"}
+                </span>
               </div>
             ))}
         </div>
