@@ -22,8 +22,6 @@ describe("Stage 6 Next typed comparison routes", () => {
     const overview = source("src/components/projects/project-workspace-overview.tsx");
 
     expect(overview).toContain('import type { Route } from "next"');
-    expect(overview).toContain(
-      "comparisonHref(locale, workspace.project.businessKey) as Route",
-    );
+    expect(overview).toContain("comparisonHref(locale, workspace.project.businessKey) as Route");
   });
 });
