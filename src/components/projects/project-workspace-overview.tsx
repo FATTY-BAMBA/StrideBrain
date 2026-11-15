@@ -1,3 +1,4 @@
+import type { Route } from "next";
 import Link from "next/link";
 
 import { getComparisonCopy } from "@/modules/comparison-experience/copy";
@@ -115,7 +116,7 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
   const comparison = getComparisonCopy(locale);
   const areaUnit =
     workspace.project.area.unit.toLowerCase() === "m2" ? "m²" : workspace.project.area.unit;
-  const comparisonUrl = comparisonHref(locale, workspace.project.businessKey);
+  const comparisonUrl = comparisonHref(locale, workspace.project.businessKey) as Route;
 
   return (
     <div className={styles.page}>
