@@ -1,0 +1,41 @@
+name: Stage 6 Prisma runtime dependencies
+
+on:
+  push:
+    branches:
+      - build/stage-6-structured-comparison-experience
+    paths:
+      - .github/workflows/stage6-prisma-runtime.yml
+
+permissions:
+  contents: write
+
+jobs:
+  install-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out Stage 6 branch
+        uses: actions/checkout@v6
+        with:
+          ref: build/stage-6-structured-comparison-experience
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install Prisma PostgreSQL runtime
+        run: npm install --save-exact @prisma/client@7.10.1 @prisma/adapter-pg@7.10.1 pg@8.16.3 --no-audit --no-fund
+
+      - name: Remove one-time workflow
+        run: rm .github/workflows/stage6-prisma-runtime.yml
+
+      - name: Commit locked runtime dependencies
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json .github/workflows/stage6-prisma-runtime.yml
+          git commit -m "build(stage6): add locked Prisma PostgreSQL runtime"
+          git push origin HEAD:build/stage-6-structured-comparison-experience
