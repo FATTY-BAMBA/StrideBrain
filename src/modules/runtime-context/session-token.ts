@@ -76,7 +76,6 @@ export function verifySignedSessionToken(
   } catch {
     return null;
   }
-  if (base64Url(supplied) !== suppliedSignature) return null;
   if (supplied.length !== expected.length) return null;
   if (!timingSafeEqual(supplied, expected)) return null;
 
