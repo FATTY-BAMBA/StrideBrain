@@ -36,6 +36,9 @@ jobs:
           base64 --decode /tmp/stage5-integration.b64 > /tmp/stage5-integration.tar.gz
           echo "6d7cff3d629e819aef66162a360c057a6ea0a7a1beb35db1675d46fc9ec31399  /tmp/stage5-integration.tar.gz" | sha256sum --check
           tar -xzf /tmp/stage5-integration.tar.gz -C .
+          sed -i 's/[[:space:]]\+$//' \
+            docs/build/STAGE_5_IMPLEMENTATION.md \
+            docs/reviews/STAGE_5_INTEGRATION_REVIEW.md
           rm -rf .stage5-upload .github/workflows/stage5-assemble.yml
 
       - name: Validate assembled source
@@ -59,4 +62,4 @@ jobs:
           git commit -m "feat(stage5): integrate economics repositories and immutable enrichment"
           git push origin HEAD:build/stage-5-historical-economics
 
-# Retry after verified chunk repair.
+# Retry after documentation whitespace normalization.
