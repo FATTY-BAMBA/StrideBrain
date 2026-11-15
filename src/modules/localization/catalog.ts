@@ -54,7 +54,7 @@ export type Catalog = Record<MessageKey, string>;
 const zhTw: Catalog = {
   "app.name": "StrideBrain",
   "app.byline": "PRIMESTRIDE AI",
-  "app.demoStatus": "產品基礎建置中",
+  "app.demoStatus": "受控虛構資料示範",
   "nav.home": "首頁",
   "nav.projects": "專案",
   "nav.knowledge": "知識",
@@ -71,47 +71,47 @@ const zhTw: Catalog = {
   "home.title": "讓每一個完成的專案，都能幫助下一個專案。",
   "home.description":
     "StrideBrain 將專案、文件、報價、供應商與公司知識連結成可查證、可採取行動的營運智慧。",
-  "home.foundationTitle": "目前階段：產品與品質基礎",
+  "home.foundationTitle": "目前階段：第一個完整智慧工作流程",
   "home.foundationDescription":
-    "此版本建立正式應用程式架構、雙語導覽、權限與資料邊界；尚未載入專案資料，也不會顯示模擬 AI 結論。",
-  "home.nextTitle": "第一個完整成果",
+    "此版本已建立雙語專案工作區、權限治理、可解釋的歷史專案排序，以及報價與實際成本分開的商務比較。所有資料皆為禾序空間設計的虛構示範資料。",
+  "home.nextTitle": "目前可展示的核心成果",
   "home.nextDescription":
-    "接下來將以「我們以前做過類似的案子嗎？」為核心，建立可解釋的歷史專案比較、資料依據與內部審查事項。",
+    "從信義旗艦店專案提出「我們以前做過類似的案子嗎？」，查看可解釋的歷史專案、商務差異與資料缺口。完整資料依據面板與內部審查事項將依建置順序啟用。",
   "projects.eyebrow": "專案工作區",
-  "projects.title": "專案將成為 StrideBrain 的營運核心。",
+  "projects.title": "專案是 StrideBrain 的營運核心。",
   "projects.description":
-    "Stage 0 尚未連接專案資料庫。下一階段會以正式資料模型建立禾序空間設計的示範組織與專案。",
+    "受控示範已連接禾序空間設計的虛構專案資料、報價、預估、已核對實際成本、供應商與資料依據。第一個完整流程從信義旗艦店專案開始。",
   "knowledge.eyebrow": "組織知識",
   "knowledge.title": "連結公司知道的事，而不只是管理檔案。",
   "knowledge.description":
-    "知識功能將連結專案、文件版本、報價、成本、供應商、材料與資料依據；目前尚未啟用資料匯入。",
+    "目前的比較流程已使用專案、報價版本、成本、供應商、材料與資料依據。完整知識探索與任意文件匯入尚未啟用。",
   "stridebrain.eyebrow": "營運智慧介面",
   "stridebrain.title": "StrideBrain 不是另一個一般聊天機器人。",
   "stridebrain.description":
-    "正式版本會先取得已授權的工作脈絡與資料依據，再提供結構化比較、說明與受控行動；Stage 0 不會連接 AI 模型。",
+    "目前版本先取得已授權的工作脈絡，再以固定規則產生專案排序、商務比較與誠實的資料不足狀態。模型說明不是主要流程的必要條件。",
   "settings.eyebrow": "組織設定",
-  "settings.title": "身份、權限、語言與整合將在伺服器端治理。",
+  "settings.title": "身份、權限、語言與資料邊界由伺服器端治理。",
   "settings.description":
-    "Stage 0 僅顯示真實的產品邊界，不模擬尚未完成的帳號、角色或整合管理功能。",
-  "project.eyebrow": "專案工作區結構",
-  "project.unavailableTitle": "此專案目前無法使用。",
+    "受控示範已驗證角色、專案指派與資料遮蔽；完整帳號管理、整合與正式客戶資料生命週期尚未啟用。",
+  "project.eyebrow": "專案工作區",
+  "project.unavailableTitle": "此專案或區域目前無法使用。",
   "project.unavailableDescription":
-    "Stage 0 尚未連接專案儲存庫。這個頁面只驗證正式專案工作區的導覽與失敗狀態，不會建立假的專案資料。",
+    "目前的授權脈絡無法開啟此專案，或此專案區域尚未在第一個完整流程中啟用。系統不會以假資料取代失敗狀態。",
   "project.requestedKey": "要求的專案識別碼",
-  "project.foundationTitle": "已建立的專案區域",
+  "project.foundationTitle": "已核准的專案區域",
   "project.foundationDescription":
-    "總覽、比較、商務資料、資料依據與行動事項已納入資訊架構；功能會依照已核准的建置順序逐步啟用。",
-  "state.notConnected": "資料尚未連接",
-  "state.stageZero": "Stage 0 · 應用程式基礎",
+    "專案總覽與比較已連接正式資料與權限邊界。商務資料、完整資料依據與行動事項會依照已核准的建置順序逐步啟用。",
+  "state.notConnected": "此區域尚未啟用",
+  "state.stageZero": "v0.1 · 受控示範",
   "action.viewArchitecture": "查看建置規格",
-  "footer.dataBoundary": "僅限產品基礎 · 無客戶資料 · 無 AI 模型",
-  "footer.releaseBoundary": "尚未連接正式示範網域",
+  "footer.dataBoundary": "僅使用虛構示範資料 · 無真實客戶資料",
+  "footer.releaseBoundary": "尚未切換正式示範網域",
 };
 
 const en: Catalog = {
   "app.name": "StrideBrain",
   "app.byline": "BY PRIMESTRIDE AI",
-  "app.demoStatus": "Product foundation in progress",
+  "app.demoStatus": "Controlled synthetic demo",
   "nav.home": "Home",
   "nav.projects": "Projects",
   "nav.knowledge": "Knowledge",
@@ -128,42 +128,41 @@ const en: Catalog = {
   "home.title": "Every completed project should make the next project easier.",
   "home.description":
     "StrideBrain connects projects, documents, quotations, suppliers, and company knowledge into evidence-backed operating intelligence and governed action.",
-  "home.foundationTitle": "Current stage: product and quality foundation",
+  "home.foundationTitle": "Current stage: first complete intelligence workflow",
   "home.foundationDescription":
-    "This build establishes the real application architecture, bilingual navigation, and permission/data boundaries. No project data or simulated AI conclusion is shown yet.",
-  "home.nextTitle": "First complete outcome",
+    "This build includes a bilingual Project Workspace, governed authorization, explainable historical-project ranking, and a commercial comparison that keeps quoted price and actual cost distinct. All records belong to the fictional Horizon Atelier demo organization.",
+  "home.nextTitle": "What the controlled demo can show now",
   "home.nextDescription":
-    "The first vertical slice will answer “Have we done something like this before?” with explainable historical comparisons, inspectable evidence, and an internal review action.",
+    "Open the Xinyi Flagship project and ask “Have we done something like this before?” to see explainable precedents, commercial differences, and evidence gaps. The full evidence panel and internal review action follow in the accepted build sequence.",
   "projects.eyebrow": "PROJECT WORKSPACE",
-  "projects.title": "Projects will be the operating center of StrideBrain.",
+  "projects.title": "Projects are the operating center of StrideBrain.",
   "projects.description":
-    "Stage 0 does not connect a project repository. The next stage will seed the Horizon Atelier demonstration organization through the production-shaped data model.",
+    "The controlled demo connects Horizon Atelier's fictional projects, quotes, forecasts, reconciled actual costs, suppliers, and evidence. The first complete workflow begins inside Xinyi Flagship Renovation.",
   "knowledge.eyebrow": "ORGANIZATIONAL KNOWLEDGE",
   "knowledge.title": "Connect what the company knows—not just where files are stored.",
   "knowledge.description":
-    "Knowledge will connect projects, document versions, quotes, costs, suppliers, materials, and evidence. Data ingestion is not active in Stage 0.",
+    "The comparison workflow already uses projects, quote versions, costs, suppliers, materials, and evidence. Full knowledge exploration and arbitrary document ingestion are not active yet.",
   "stridebrain.eyebrow": "OPERATING INTELLIGENCE",
   "stridebrain.title": "StrideBrain is not another generic chatbot.",
   "stridebrain.description":
-    "The product will resolve authorized context and evidence before producing structured comparisons, explanations, and controlled actions. Stage 0 does not connect an AI model.",
+    "The current build resolves authorized work context first, then produces deterministic project ranking, commercial comparison, and honest insufficiency states. Model-written explanation is not required for the critical workflow.",
   "settings.eyebrow": "ORGANIZATION SETTINGS",
-  "settings.title":
-    "Identity, permissions, language, and integrations will be governed server-side.",
+  "settings.title": "Identity, permissions, language, and data boundaries are governed server-side.",
   "settings.description":
-    "Stage 0 shows the honest product boundary and does not simulate unfinished account, role, or integration administration.",
-  "project.eyebrow": "PROJECT WORKSPACE STRUCTURE",
-  "project.unavailableTitle": "This project is currently unavailable.",
+    "The controlled demo validates roles, project assignments, and redaction. Full account administration, integrations, and real-customer data lifecycle controls are not active yet.",
+  "project.eyebrow": "PROJECT WORKSPACE",
+  "project.unavailableTitle": "This project or project area is currently unavailable.",
   "project.unavailableDescription":
-    "Stage 0 does not connect the project repository. This route verifies the approved workspace navigation and failure state without inventing project records.",
+    "The current authorization context cannot open this project, or the requested area is not active in the first complete workflow. The application does not replace unavailable states with invented records.",
   "project.requestedKey": "Requested project key",
   "project.foundationTitle": "Approved project areas",
   "project.foundationDescription":
-    "Overview, Compare, Commercial, Evidence, and Actions are part of the information architecture and will be activated in the accepted implementation sequence.",
-  "state.notConnected": "Data not connected",
-  "state.stageZero": "Stage 0 · Application foundation",
+    "Project Overview and Compare use the real data and authorization boundaries. Commercial, full Evidence, and Actions activate through the accepted implementation sequence.",
+  "state.notConnected": "This area is not active yet",
+  "state.stageZero": "v0.1 · Controlled demo",
   "action.viewArchitecture": "View build specification",
-  "footer.dataBoundary": "Foundation only · No customer data · No AI model",
-  "footer.releaseBoundary": "Not connected to the live demo domain",
+  "footer.dataBoundary": "Synthetic demo data only · No real customer data",
+  "footer.releaseBoundary": "Live demo-domain cutover has not occurred",
 };
 
 export const catalogs: Record<Locale, Catalog> = {
