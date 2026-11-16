@@ -1,0 +1,199 @@
+{
+  "methodology": "30 unique immutable pairs/proposals; one excluded warmup; nearest-rank p95; server duration excluding network; actual Prisma query events",
+  "proposal": {
+    "samples": 30,
+    "p50": 87.01408300000185,
+    "p95": 102.90891700000066,
+    "max": 130.22004200000083
+  },
+  "confirmation": {
+    "samples": 30,
+    "p50": 113.58024999999907,
+    "p95": 156.2072079999998,
+    "max": 161.3772919999974
+  },
+  "proposalQueryCounts": [
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110
+  ],
+  "confirmationQueryCounts": [
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131
+  ],
+  "slowestConfirmationQueries": [
+    {
+      "query": "SELECT \"public\".\"ProposedAction\".\"id\", \"public\".\"ProposedAction\".\"contentSnapshot\" FROM \"public\".\"ProposedAction\" WHERE (\"public\".\"ProposedAction\".\"id\" = $1 AND \"public\".\"ProposedAction\".\"organizationId\" = $2 AND \"public\".\"ProposedAction\".\"preparedByMembershipId\" = $3 AND \"public\".\"ProposedAction\".\"projectId\" = $4 AND \"public\".\"ProposedAction\".\"comparisonRunId\" = $5 AND \"public\".\"ProposedAction\".\"enrichmentRunId\" = $6 AND \"public\".\"ProposedAction\".\"snapshotVersion\" = $7) LIMIT $8 OFFSET $9",
+      "duration": 7.957499999996799
+    },
+    {
+      "query": "SELECT \"public\".\"Document\".\"id\", \"public\".\"Document\".\"projectId\" FROM \"public\".\"Document\" WHERE ((\"public\".\"Document\".\"organizationId\" = $1 AND \"public\".\"Document\".\"documentType\" = $2) AND \"public\".\"Document\".\"projectId\" IN ($3)) ORDER BY \"public\".\"Document\".\"businessKey\" ASC OFFSET $4",
+      "duration": 5.613916999995126
+    },
+    {
+      "query": "SELECT \"public\".\"SupplierOfferItem\".\"id\", \"public\".\"SupplierOfferItem\".\"lineNumber\", \"public\".\"SupplierOfferItem\".\"categoryId\", \"public\".\"SupplierOfferItem\".\"amount\", \"public\".\"SupplierOfferItem\".\"quantity\", \"public\".\"SupplierOfferItem\".\"unitPrice\", \"public\".\"SupplierOfferItem\".\"unit\", \"public\".\"SupplierOfferItem\".\"supplierOfferId\" FROM \"public\".\"SupplierOfferItem\" WHERE (\"public\".\"SupplierOfferItem\".\"organizationId\" = $1 AND \"public\".\"SupplierOfferItem\".\"supplierOfferId\" IN ($2,$3)) ORDER BY \"public\".\"SupplierOfferItem\".\"lineNumber\" ASC OFFSET $4",
+      "duration": 5.5115829999995185
+    },
+    {
+      "query": "SELECT \"public\".\"Quote\".\"id\", \"public\".\"Quote\".\"businessKey\", \"public\".\"Quote\".\"projectId\" FROM \"public\".\"Quote\" WHERE (\"public\".\"Quote\".\"organizationId\" = $1 AND \"public\".\"Quote\".\"projectId\" IN ($2)) ORDER BY \"public\".\"Quote\".\"createdAt\" DESC OFFSET $3",
+      "duration": 5.195082999998704
+    },
+    {
+      "query": "SELECT \"public\".\"Material\".\"id\", \"public\".\"Material\".\"businessKey\" FROM \"public\".\"Material\" WHERE \"public\".\"Material\".\"id\" IN ($1,$2,$3) OFFSET $4",
+      "duration": 5.041292000001704
+    }
+  ],
+  "slowestReadPlan": [
+    {
+      "QUERY PLAN": [
+        {
+          "Plan": {
+            "Node Type": "Limit",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 0.15,
+            "Total Cost": 8.18,
+            "Plan Rows": 1,
+            "Plan Width": 64,
+            "Actual Startup Time": 0.082,
+            "Actual Total Time": 0.082,
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Shared Hit Blocks": 37,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Plans": [
+              {
+                "Node Type": "Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Scan Direction": "Forward",
+                "Index Name": "ProposedAction_preparer_idx",
+                "Relation Name": "ProposedAction",
+                "Alias": "ProposedAction",
+                "Startup Cost": 0.15,
+                "Total Cost": 8.18,
+                "Plan Rows": 1,
+                "Plan Width": 64,
+                "Actual Startup Time": 0.081,
+                "Actual Total Time": 0.081,
+                "Actual Rows": 1,
+                "Actual Loops": 1,
+                "Index Cond": "((\"organizationId\" = 'org_horizon'::text) AND (\"preparedByMembershipId\" = 'membership_horizon_mei'::text))",
+                "Rows Removed by Index Recheck": 0,
+                "Filter": "((id = 'proposal_66b081d3-b22a-4d9a-92bd-180d2b0001b6'::text) AND (\"projectId\" = 'prj_xinyi_026'::text) AND (\"comparisonRunId\" = 'cmprun_bea62940-bafc-4368-8a60-2575fee1003e'::text) AND (\"enrichmentRunId\" = 'econrun_63b3e1fb-0a5d-4b65-ac69-db36b4127c88'::text) AND (\"snapshotVersion\" = 'internal-review-proposal-snapshot.v1'::text))",
+                "Rows Removed by Filter": 111,
+                "Shared Hit Blocks": 37,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+              }
+            ]
+          },
+          "Planning": {
+            "Shared Hit Blocks": 0,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0
+          },
+          "Planning Time": 0.066,
+          "Triggers": [],
+          "Execution Time": 0.093
+        }
+      ]
+    }
+  ],
+  "evidenceBatching": {
+    "initialReferences": 15,
+    "addedReferences": 20,
+    "initialQueries": 21,
+    "expandedQueries": 21
+  },
+  "assigneeBatching": {
+    "addedEligibleAssignees": 20,
+    "initialQueries": 110,
+    "expandedQueries": 110
+  },
+  "concurrentConfirmation": {
+    "samples": 30,
+    "p50": 124.69650000000547,
+    "p95": 129.07354099999793,
+    "max": 130.145583000005
+  },
+  "concurrentProtocol": "10 batches × 3 independent proposals, unique immutable run pair per proposal"
+}

@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-16T06:20:11.029Z",
+  "database": "stridebrain_sb029_revision",
+  "operatorSessionsIssued": 0,
+  "testSessionsRevoked": 2,
+  "activeSessions": 0,
+  "guards": [
+    {
+      "tgname": "Action_stage8_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "AuditEvent_append_only",
+      "enabled": "O"
+    },
+    {
+      "tgname": "InternalReviewReceipt_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "ProposedAction_stage8_immutable",
+      "enabled": "O"
+    }
+  ],
+  "method": "Existing DemoSessionService.revoke; only disposable revision database; no cookie or token read/output."
+}

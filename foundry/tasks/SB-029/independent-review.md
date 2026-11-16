@@ -1,5 +1,9 @@
 # SB-029 independent review
 
+Current status (2026-11-16): **NEEDS_REVISION — code repairs validated; independent browser retest pending**. Original local QA remains **9 PASS, 3 FAIL, 5 PARTIAL, 1 BLOCKED**. Independent repair review and local deterministic gates pass on `df63c90ca994653299082fc5078ad0b5ef595292`; exact publication-head CI must pass before the new handoff begins. PR #31 remains draft; no Stage 8 acceptance or merge approval.
+
+Earlier sections are historical checkpoints; the current local-QA repair review is appended below.
+
 Reviewer: independent reviewer agent, separate from Builder.
 
 Baseline examined: `0ecd65bdb0ae752f3244960d6848a74a30d5da01` on
@@ -172,7 +176,7 @@ modified. Independently executed commands (all final executions exited 0):
 
 ```bash
 export npm_config_cache=/tmp/sb029-review/npm-cache
-export DATABASE_URL=postgresql://stridebrain:stridebrain@127.0.0.1:54329/stridebrain_stage8_review?schema=public
+export DATABASE_URL=<REDACTED_HISTORICAL_LOCAL_DATABASE_URL>
 npm run db:migrate
 npm run db:seed
 npm run db:verify
@@ -519,3 +523,62 @@ Post-push documentation correction: container existence inspection now prints
 only `.Id`; any ownership inspection is restricted to name/task-label fields,
 never full `Env`, avoiding accidental credential disclosure if a container exists.
 The README hash above reflects this reviewed correction; no runtime command was executed.
+
+
+## Local-QA repair review — 2026-11-16
+
+The completed independent local run `20261116T041837Z` established F-01 / QA-18,
+F-02 / QA-05 and F-03 / QA-16 + QA-18. Its sanitized evidence-only commit
+`0c9b4293a9e91aa6121b8571e7f22537b131760d` directly follows tested portability
+head `13e7191f340e998c93b644949602f1c0774fe9ff`. Import review verified all 176
+changed paths are within the approved run subtree and all 175 manifest hashes
+match. The original branch, files and scoped counts (9 PASS, 3 FAIL, 5 PARTIAL,
+1 BLOCKED) remain immutable. Historical infrastructure-only conclusions above
+are superseded for the current task.
+
+Two Builder agents implemented the bounded presentation/navigation fixes. A
+separate Test/Evaluation Agent reviewed their frozen diff and independently
+executed **69 tests in 15 files**, all passing. It also ran strict TypeScript,
+scoped lint and formatting. Sanitized execution log:
+`evidence/revision-20261116/independent-targeted.log`.
+
+- F-01: table cells carry explicit observation types and localized basis labels,
+  including accessible names. Real stored forecast and actual observations map
+  correctly through comparison, evidence, proposal, receipt and workspace. The
+  four accepted financial bases retain their original policy definitions.
+- F-02: verified proposal navigation precedes editable controls. Draft changes
+  and confirmation read the latest canonical route; synchronous guards prevent
+  duplicate requests. Six React DOM regressions exercise delayed navigation,
+  immediate consecutive edits/submission, dialog and shell locale controls,
+  evidence return, refresh and history. Route state remains a bounded request
+  selector; server authorization and validation remain authoritative.
+- F-03: explicit bilingual presentation maps cover source fields, financial
+  authority, operations, units, rounding and factor explanations. The independent
+  PostgreSQL test creates/drops its own database and checks over 100 rendered
+  claim/factor/source panels in both locales. Independent static review identified an overbroad uppercase
+  title replacement; Builder corrected it and added exact business-identifier,
+  LED and HVAC preservation tests. Unknown plumbing is not displayed as ordinary
+  product copy; source titles, version/locator and opaque source links remain.
+
+Independent code-review verdict: **PASS; no unresolved blocking code finding**.
+Financial domain policy, authorization, repositories, schema and migrations are
+unchanged. The final gate subsequently found one formatting-only issue in a new
+mock declaration; it was corrected before the final application candidate
+`df63c90ca994653299082fc5078ad0b5ef595292` was frozen. No behavioral edit followed
+the independent review. The failed formatting log is retained separately.
+
+This is repair-code verification, not final Stage 8 acceptance. Real Next.js
+navigation timing, narrow-screen close-control reachability, keyboard/native date
+interaction, screen-reader announcements, 200% zoom and reduced motion still
+require a new independent local browser run. Unsupported capabilities must stay
+explicitly manual/blocked. The five PARTIAL cases also require completion.
+See `local-qa-retest-handoff.md`; keep PR #31 draft and do not merge.
+
+The final local deterministic gate passed **455 tests / 59 files, zero skips**,
+including 88 PostgreSQL adversarial cases and the independent stored-data suite;
+localization passed 12 tests / 4 files. Clean eight-migration setup and repeated
+seed/SQL checks, formatting, lint, strict types, production build and production
+audit also passed (zero vulnerabilities; one existing Prisma-config lint warning).
+See `validation-revision.json`. The new preview is HTTP-ready with zero proposals, actions, receipts and audits,
+and no active sessions after test-session revocation. Original database counts remain unchanged. Exact
+publication-head CI is verified separately in the final PR description.

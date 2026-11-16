@@ -1,380 +1,1396 @@
 {
-  "version": "sb029-computer-qa-report.v1",
+  "schemaVersion": "sb029-local-computer-qa.v1",
   "task": "SB-029",
-  "status": "BLOCKED",
-  "reason": "Computer QA is blocked by actual shared-CUA navigation failure and unavailable AT-SPI fallback. No complete Stage 8 browser scenario passed. Isolated production preview remains ready; non-UI HTTP/PostgreSQL smoke passed after correcting only the preview bind hostname.",
-  "independent_role": "Computer QA Coordinator",
-  "baseline_commit": "0ecd65bdb0ae752f3244960d6848a74a30d5da01",
-  "branch": "build/sb-029-governed-internal-review",
-  "tested_head": "4c13f726bb75f4a31d263eb6e54622224807d019",
-  "preview_url": "http://localhost:3000",
-  "production_build_identity": "3arTh5JwUyUt0e73FJY-z",
-  "started_at": "2026-11-15T22:16:04.883769Z",
-  "completed_at": null,
-  "browser": {
-    "shared": "Chrome via root CUA; tab stayed about:blank because navigation failed twice",
-    "supplemental": "Headless Chromium exploration stopped; only Finance/en workspace/comparison partial evidence"
+  "repository": "FATTY-BAMBA/StrideBrain",
+  "startedAt": "2026-11-16T04:18:37Z",
+  "completedAt": "2026-11-16T04:57:55.660351+00:00",
+  "overallStatus": "ACCEPTANCE_BLOCKED",
+  "summaryCounts": {
+    "PASS": 9,
+    "FAIL": 3,
+    "PARTIAL": 5,
+    "BLOCKED": 1
   },
-  "tool_available": "Root CUA callable but navigation unusable; documented Sky fallback input unavailable. Child coordinates report/non-UI evidence. Tool attempts are not successful application browser QA.",
-  "plan_status": "COMPUTER_QA_BLOCKED",
-  "preview_scaffolding_status": "PRODUCTION_PREVIEW_READY",
-  "preview_infrastructure_checks": {
-    "database": "stridebrain_stage8_preview",
-    "container": "stridebrain-sb029-test-eval",
-    "postgres_port": 54329,
-    "schema_ready": true,
-    "applied_migrations": 8,
-    "synthetic_only": true,
-    "initial_action_proposal_receipt_audit_counts": 0,
-    "immutability_triggers_enabled": 4,
-    "database_setup_evidence": "foundry/tasks/SB-029/evidence/computer-qa/preview-database-setup.json",
-    "operator_directory": "/tmp/sb029-preview",
-    "script_syntax": "PASS",
-    "existing_source_imports": "PASS",
-    "secret_values_printed_or_committed": false,
-    "migrations_or_seed_run": true,
-    "sessions_issued": true,
-    "servers_started": true,
-    "browser_started": true,
-    "qualification": "These are infrastructure checks only and do not count as browser cases or preview readiness.",
-    "current_non_ui_smoke_counts": {
-      "actions": 1,
-      "consumed": 1,
-      "receipts": 1,
-      "audits": 1
+  "fullMatrixComplete": false,
+  "summary": "QA-01 through QA-18 were exercised or explicitly dispositioned. Nine pass for recorded scope, three fail, five remain partial, and accessibility is blocked. Do not infer all variants passed from deterministic tests.",
+  "environment": {
+    "source": {
+      "head": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "applicationHead": "4c13f726bb75f4a31d263eb6e54622224807d019",
+      "evidenceCheckpoint": "2a23d31f46e0b6c7b465b3774ad765c81a3417eb",
+      "sourceTreeFingerprintSha256": "7fe5157f84f9c88023462ec1e958b62a53bcdb5aef30eb0dc4ac95dfdac85920",
+      "migrations": 8
     },
-    "server_bind_hostname": "localhost"
+    "buildId": "N_TRlxNdHOVp0JPHYRLE4",
+    "browser": "ChatGPT in-app browser on local macOS arm64",
+    "locales": [
+      "en",
+      "zh-TW"
+    ],
+    "defaultViewport": "1440x900",
+    "data": "DEMO_SYNTHETIC",
+    "setup": {
+      "branch": "build/sb-029-governed-internal-review",
+      "node": "24.22.3",
+      "npm": "11.19.1",
+      "nodeArchiveSha256": "ff6e17d4874b76d272212b908cc020d6e815fba5a6c7eaaa06add725840307fd",
+      "postgresImageDigest": "sha256:0d938e975177bef9f1f61f3f9dbcf2e0aa0a139568f66d3415ed8892eb97f6ac",
+      "container": "stridebrain-sb029-cloud-qa",
+      "database": "stridebrain_stage8_preview",
+      "port": 54329,
+      "dependencyInstall": {
+        "command": "npm ci --no-audit --no-fund",
+        "exitCode": 0,
+        "packagesAdded": 405
+      },
+      "startedAt": "20261116T041837Z",
+      "environment": "local macOS arm64"
+    },
+    "branch": "build/sb-029-governed-internal-review",
+    "url": "http://localhost:3000",
+    "production": true,
+    "sourceUnchanged": true,
+    "independence": "No product source/policy fixes; no merge, deployment, external messages or domain changes."
   },
-  "tested_locales": [],
-  "tested_viewports": [],
-  "tested_personas": [],
-  "tested_routes": [],
-  "case_results": [
+  "validation": [
+    {
+      "command": "npm run db:validate",
+      "exitCode": 0,
+      "durationSeconds": 12.51,
+      "log": "01-db-validate.log"
+    },
+    {
+      "command": "npm run db:generate",
+      "exitCode": 0,
+      "durationSeconds": 1.714,
+      "log": "02-db-generate.log"
+    },
+    {
+      "command": "npm run db:migrate",
+      "exitCode": 0,
+      "durationSeconds": 2.079,
+      "log": "03-db-migrate.log"
+    },
+    {
+      "command": "npm run db:seed",
+      "exitCode": 0,
+      "durationSeconds": 4.281,
+      "log": "04-db-seed.log"
+    },
+    {
+      "command": "npm run db:verify",
+      "exitCode": 0,
+      "durationSeconds": 8.684,
+      "log": "05-db-verify.log"
+    },
+    {
+      "command": "npm run db:migrate",
+      "exitCode": 0,
+      "durationSeconds": 1.194,
+      "log": "06-db-migrate.log"
+    },
+    {
+      "command": "npm run db:seed",
+      "exitCode": 0,
+      "durationSeconds": 4.313,
+      "log": "07-db-seed.log"
+    },
+    {
+      "command": "npm run db:verify",
+      "exitCode": 0,
+      "durationSeconds": 8.307,
+      "log": "08-db-verify.log"
+    },
+    {
+      "command": "npm run format:check",
+      "exitCode": 0,
+      "durationSeconds": 1.863,
+      "log": "09-format-check.log"
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "durationSeconds": 4.264,
+      "log": "10-lint.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "durationSeconds": 3.356,
+      "log": "11-typecheck.log"
+    },
+    {
+      "command": "npm run test",
+      "exitCode": 0,
+      "durationSeconds": 83.072,
+      "log": "12-test.log"
+    },
+    {
+      "command": "npm run test:localization",
+      "exitCode": 0,
+      "durationSeconds": 0.543,
+      "log": "13-test-localization.log"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "durationSeconds": 7.743,
+      "log": "14-build.log"
+    }
+  ],
+  "testSummary": {
+    "filesPassed": 57,
+    "testsPassed": 436,
+    "postgresAdversarialTests": 88,
+    "productionDependencyAuditVulnerabilities": 0
+  },
+  "browserReadiness": "Chrome extension navigation timed out; actual interactive QA used local in-app browser with trusted Secure HttpOnly SameSite=Lax host cookie. No browser-state injection or cookie weakening.",
+  "scenarioStatusDefinition": {
+    "PASS": "Recorded browser scope passed; supplemental permutations explicitly separated.",
+    "FAIL": "Observed product defect.",
+    "PARTIAL": "Main browser path executed but specified variants remain unrun; not an acceptance pass.",
+    "BLOCKED": "Required browser capabilities could not be verified."
+  },
+  "scenarios": [
     {
       "id": "QA-01",
       "name": "Authorized preparation is preparatory only",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      "status": "PASS",
+      "personas": [
+        "mei",
+        "finance",
+        "admin"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "Fresh comparisons and proposal sheets opened for Mei, Finance and Admin; localized finite choices and locked warnings were visible.",
+        "Initial preparation changed proposal count only: Action, receipt and audit counts stayed zero."
+      ],
+      "supplementalNonBrowserEvidence": "436-test run includes preparation/reopen persistence and authorization checks.",
+      "remaining": [],
+      "artifacts": [
+        "qa01-before-confirm.json",
+        "en-desktop-review.jpg",
+        "zh-TW-desktop-review.jpg",
+        "finance-en-review.jpg",
+        "admin-en-review.jpg",
+        "admin-zh-TW-review.jpg"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:25:15.579731+00:00",
+        "2026-11-16T04:36:52.316504+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": [
+        {
+          "file": "admin-zh-TW-review.jpg",
+          "notes": [
+            "Loading skeleton only; not proof of the final locale-specific review, rejection or receipt named by the file."
+          ]
+        }
       ]
     },
     {
       "id": "QA-02",
-      "name": "Bounded edits and mandatory content",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
-      ]
+      "name": "Bounded edits, retained facts and date validation",
+      "status": "PASS",
+      "personas": [
+        "mei"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "All three approved title/review-intent alternatives were exercised across the run; required forecast/quote/abstention/programme warnings remained.",
+        "Unchecked confirmation produced a localized linked error. Today and day 365 were accepted; yesterday and day 366 were rejected with focus on review-dueDate and aria-describedby.",
+        "Clearing the due date by keyboard activation persisted a receipt with no due date. Dates for boundary tests were supplied through the documented reviewDue route selector."
+      ],
+      "supplementalNonBrowserEvidence": "HTTP supplement rejected invalid Gregorian date, unlisted/empty/overlength/markup/control title and rationale, and missing confirmation. Leap-day/local-midnight cases are deterministic-test evidence, not physical browser date entry.",
+      "remaining": [
+        "Native date typing/picker behavior remains part of blocked QA-15."
+      ],
+      "artifacts": [
+        "browser-date-bounds.json",
+        "past-date-browser-validation.jpg",
+        "future-date-zh-TW-validation.jpg",
+        "keyboard-cleared-date-receipt.jpg",
+        "en-validation-focus.jpg",
+        "zh-TW-validation-focus.jpg",
+        "http-negative-and-replay.json"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:26:21.799145+00:00",
+        "2026-11-16T04:50:15.615471+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": []
     },
     {
       "id": "QA-03",
-      "name": "Explicit confirmation and durable receipt",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      "name": "Create durable receipt and reopen in project Actions",
+      "status": "PASS",
+      "personas": [
+        "mei",
+        "finance",
+        "admin"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "Explicit browser confirmation produced localized durable receipts for all three authorized actors.",
+        "Receipt refresh, locale switch, navigation history and project Actions reopening retained action identity and evidence references.",
+        "Final database contains 19 actions, 19 receipts, 19 success audits and 19 consumed proposals; all actions OPEN with 15 evidence references."
+      ],
+      "supplementalNonBrowserEvidence": "",
+      "remaining": [],
+      "artifacts": [
+        "qa03-after-confirm.json",
+        "project-actions-reopen.jpg",
+        "en-desktop-receipt.jpg",
+        "zh-TW-mobile-receipt.jpg",
+        "finance-zh-TW-receipt.jpg",
+        "admin-en-receipt.jpg",
+        "admin-zh-TW-receipt.jpg",
+        "final-integrity.json"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:26:50.395312+00:00",
+        "2026-11-16T04:54:16.872139+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": [
+        {
+          "file": "admin-zh-TW-receipt.jpg",
+          "notes": [
+            "Loading skeleton only; not proof of the final locale-specific review, rejection or receipt named by the file."
+          ]
+        }
       ]
     },
     {
       "id": "QA-04",
-      "name": "Cancel, Escape, and evidence round trip",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
-      ]
+      "name": "Cancel, Escape and evidence round trip",
+      "status": "PASS",
+      "personas": [
+        "mei"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "Evidence inspection used one active modal; closing returned edited review choices and evidence-trigger focus.",
+        "Cancel/Escape closed the review and returned focus to the creation entry without an action.",
+        "English and Chinese evidence navigation and keyboard activation were exercised."
+      ],
+      "supplementalNonBrowserEvidence": "",
+      "remaining": [],
+      "artifacts": [
+        "en-evidence-roundtrip.jpg",
+        "mei-en-evidence.txt",
+        "zh-TW-evidence.txt",
+        "browser-observations.json"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:25:39.048857+00:00",
+        "2026-11-16T04:53:17.912328+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": []
     },
     {
       "id": "QA-05",
-      "name": "Locale and route restoration",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
-      ]
+      "name": "Locale, draft routes, refresh and history",
+      "status": "FAIL",
+      "personas": [
+        "mei"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "Stable proposal routes preserved choices across locale and evidence navigation.",
+        "Fast title edit immediately after the sheet appeared rewrote the old comparison URL without proposal. Refresh then lost the review sheet/draft.",
+        "An immediate locale switch was also observed to return to comparison without the proposal sheet."
+      ],
+      "supplementalNonBrowserEvidence": "See finding F-02; source was not changed.",
+      "remaining": [],
+      "artifacts": [
+        "qa05-fast-edit-before-refresh.json",
+        "qa05-fast-edit-after-refresh.jpg",
+        "browser-observations.json"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:31:28.205987+00:00",
+        "2026-11-16T04:53:17.912328+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": []
     },
     {
       "id": "QA-06",
-      "name": "Retry, double submit, and replay",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
-      ]
+      "name": "Retry, replay and idempotency conflict",
+      "status": "PASS",
+      "personas": [
+        "mei"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "Two tabs loaded the same proposal before submission. First confirmation created action_a58c6e51-fcf3-463c-93e3-e186cebffe51; second displayed the same saved action with replay wording.",
+        "Replay wording localized to Chinese; no extra action was created."
+      ],
+      "supplementalNonBrowserEvidence": "Actual HTTP identical and locale-switched retries returned IDEMPOTENT_REPLAY; changed payload returned IDEMPOTENCY_CONFLICT; a new key returned PROPOSAL_ALREADY_CONSUMED. Concurrent/after-expiry/source-change replay additionally passed in PostgreSQL tests.",
+      "remaining": [],
+      "artifacts": [
+        "browser-replay.json",
+        "idempotent-replay-zh-TW.jpg",
+        "idempotent-replay.jpg",
+        "http-negative-and-replay.json",
+        "final-integrity.json"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:34:43.857697+00:00",
+        "2026-11-16T04:54:16.872139+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": []
     },
     {
       "id": "QA-07",
       "name": "Viewer and unauthenticated denial",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
-      ]
+      "status": "PARTIAL",
+      "personas": [
+        "viewer",
+        "mei (revoked)"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "Viewer had no creation control or financial amounts and could not reopen copied proposal/receipt selectors in either locale.",
+        "After final session revocation the browser displayed only the controlled-demo-session-required state."
+      ],
+      "supplementalNonBrowserEvidence": "HTTP unauthenticated and revoked requests denied with private/no-store. Deterministic tests checked denial before sensitive reads.",
+      "remaining": [
+        "Expired-session browser variant was not executed; do not infer it from HTTP or deterministic tests. Remaining variations stopped after F-01."
+      ],
+      "artifacts": [
+        "viewer-comparison.txt",
+        "viewer-denied.jpg",
+        "viewer-workspace.txt",
+        "viewer-zh-TW-denied.jpg",
+        "final-revoked-session.jpg",
+        "final-revoked-session.txt",
+        "http-negative-and-replay.json"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:34:43.857697+00:00",
+        "2026-11-16T04:53:36.802434+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": []
     },
     {
       "id": "QA-08",
       "name": "Cross-tenant selectors",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
-      ]
+      "status": "PARTIAL",
+      "personas": [
+        "northern",
+        "mei"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "Northern admin could not open Horizon project/comparison or copied receipt; both locales showed neutral unavailable states without Horizon details."
+      ],
+      "supplementalNonBrowserEvidence": "HTTP Northern proposal/confirmation/receipt and nonexistent-receipt pairs were neutral; foreign assignee rejected. PostgreSQL suite separately covers project/run/enrichment/proposal/receipt selectors.",
+      "remaining": [
+        "Full paired browser matrix for nonexistent project/run/enrichment/evidence selectors was not executed. Remaining variants stopped after F-01."
+      ],
+      "artifacts": [
+        "northern-en-denied.jpg",
+        "northern-zh-TW-denied.jpg",
+        "northern-zh-TW-denied.txt",
+        "http-negative-and-replay.json"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:34:43.857697+00:00",
+        "2026-11-16T04:38:09.539557+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": []
     },
     {
       "id": "QA-09",
-      "name": "Assignee authorization",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
-      ]
+      "name": "Assignee authorization and locked default",
+      "status": "PARTIAL",
+      "personas": [
+        "mei",
+        "mei_no_assign"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "Authorized candidate list showed Unassigned, Mei, Alex and Iris.",
+        "Invalidating Finance after preparation rejected confirmation without a write and focused review-assignee.",
+        "With temporary action:assign DENY, no alternate-person selector appeared. Invalidating the locked default focused review-assigneeKey-error; both mutations were restored."
+      ],
+      "supplementalNonBrowserEvidence": "Foreign-assignee HTTP rejection and no-assign default-only / candidate scaling tests passed.",
+      "remaining": [
+        "Explicit no-assign alternate-payload and each evidence-ineligible/unassigned-person browser variant were not independently repeated. Remaining variants stopped after F-01."
+      ],
+      "artifacts": [
+        "assignee-unavailable.jpg",
+        "assignee-focus.json",
+        "no-assign-review.txt",
+        "locked-assignee-focus.json",
+        "locked-assignee-unavailable.jpg",
+        "mutation-assignee-1794803457938.json",
+        "mutation-assignee-1794803739765.json",
+        "http-negative-and-replay.json"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:30:51.384061+00:00",
+        "2026-11-16T04:35:39.765499+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": []
     },
     {
       "id": "QA-10",
-      "name": "Quote, project, and run staleness",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      "name": "Quote, project and run staleness",
+      "status": "PASS",
+      "personas": [
+        "mei"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "Prepared reviews were separately challenged with project programme, active quote version, comparison policy and enrichment calculation-version changes.",
+        "Browser showed safe stale guidance; quote/run cases captured both locales. No automatic refresh-and-create occurred. All scoped mutations were restored and business counts were unchanged."
+      ],
+      "supplementalNonBrowserEvidence": "Additional fingerprint/result-snapshot permutations passed in PostgreSQL tests.",
+      "remaining": [],
+      "artifacts": [
+        "stale-rejected.jpg",
+        "quote-stale-en.jpg",
+        "quote-stale-en.txt",
+        "quote-stale-zh-TW.jpg",
+        "comparison-stale-en.jpg",
+        "comparison-stale-en.txt",
+        "comparison-stale-zh-TW.jpg",
+        "enrichment-stale-en.jpg",
+        "enrichment-stale-en.txt",
+        "enrichment-stale-zh-TW.jpg",
+        "mutation-project-1794803345036.json",
+        "mutation-quote-1794804382337.json",
+        "mutation-comparison-1794804407747.json",
+        "mutation-enrichment-1794804438093.json"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:28:58.029556+00:00",
+        "2026-11-16T04:47:18.094137+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": [
+        {
+          "file": "comparison-stale-en.jpg",
+          "notes": [
+            "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+          ]
+        },
+        {
+          "file": "comparison-stale-zh-TW.jpg",
+          "notes": [
+            "Loading skeleton only; not proof of the final locale-specific review, rejection or receipt named by the file."
+          ]
+        },
+        {
+          "file": "enrichment-stale-en.jpg",
+          "notes": [
+            "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+          ]
+        },
+        {
+          "file": "quote-stale-en.jpg",
+          "notes": [
+            "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+          ]
+        },
+        {
+          "file": "stale-rejected.jpg",
+          "notes": [
+            "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+          ]
+        }
       ]
     },
     {
       "id": "QA-11",
-      "name": "Evidence authority, access, and availability change",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      "name": "Evidence authority, access and availability changes",
+      "status": "PARTIAL",
+      "personas": [
+        "mei"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "Required evidence was separately made tenant-restricted, OBSERVED, stale, SUPERSEDED or invalidly located. Confirmation safely rejected each change; source/draft access was removed where required.",
+        "A previously created receipt denied access while required evidence was tenant-restricted. All mutations were restored with no-write proof."
+      ],
+      "supplementalNonBrowserEvidence": "Newly inserted conflicts and time-crossing freshness are covered by the passing PostgreSQL suite.",
+      "remaining": [
+        "New conflict insertion was not exercised in the browser. Remaining variant stopped after F-01."
+      ],
+      "artifacts": [
+        "evidence-unavailable.jpg",
+        "receipt-access-loss.txt",
+        "evidence-authority-en.jpg",
+        "evidence-authority-en.txt",
+        "evidence-authority-zh-TW.jpg",
+        "evidence-freshness-en.jpg",
+        "evidence-freshness-en.txt",
+        "evidence-freshness-zh-TW.jpg",
+        "evidence-superseded-en.jpg",
+        "evidence-superseded-en.txt",
+        "evidence-superseded-zh-TW.jpg",
+        "evidence-availability-en.jpg",
+        "evidence-availability-en.txt",
+        "evidence-availability-zh-TW.jpg",
+        "mutation-evidence-1794803404731.json",
+        "mutation-authority-1794804465418.json",
+        "mutation-freshness-1794804488901.json",
+        "mutation-supersession-1794804528783.json",
+        "mutation-availability-1794804553926.json"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:29:47.692232+00:00",
+        "2026-11-16T04:49:13.926922+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": [
+        {
+          "file": "evidence-authority-en.jpg",
+          "notes": [
+            "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+          ]
+        },
+        {
+          "file": "evidence-authority-zh-TW.jpg",
+          "notes": [
+            "Loading skeleton only; not proof of the final locale-specific review, rejection or receipt named by the file."
+          ]
+        },
+        {
+          "file": "evidence-availability-en.jpg",
+          "notes": [
+            "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+          ]
+        },
+        {
+          "file": "evidence-availability-zh-TW.jpg",
+          "notes": [
+            "Loading skeleton only; not proof of the final locale-specific review, rejection or receipt named by the file."
+          ]
+        },
+        {
+          "file": "evidence-freshness-en.jpg",
+          "notes": [
+            "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+          ]
+        },
+        {
+          "file": "evidence-superseded-en.jpg",
+          "notes": [
+            "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+          ]
+        },
+        {
+          "file": "evidence-superseded-zh-TW.jpg",
+          "notes": [
+            "Loading skeleton only; not proof of the final locale-specific review, rejection or receipt named by the file."
+          ]
+        }
       ]
     },
     {
       "id": "QA-12",
       "name": "Permission downgrade during review",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      "status": "PARTIAL",
+      "personas": [
+        "mei"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "Disabling canCreateAction after preparation rejected confirmation and removed sensitive draft content.",
+        "Downgrading the actor role to Viewer also denied the stale client submission in both locales. Source fixture fields were restored and no action was created."
+      ],
+      "supplementalNonBrowserEvidence": "Separate propose/create/actual-read/evidence-read denials and membership/person/assignment changes passed in deterministic PostgreSQL tests.",
+      "remaining": [
+        "Each capability/feature-flag/project-assignment variant was not separately exercised through the browser. Remaining variants stopped after F-01."
+      ],
+      "artifacts": [
+        "permission-downgrade.jpg",
+        "role-downgrade-en.jpg",
+        "role-downgrade-en.txt",
+        "role-downgrade-zh-TW.jpg",
+        "mutation-permission-1794803518872.json",
+        "mutation-role-1794804581605.json"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:31:51.173474+00:00",
+        "2026-11-16T04:49:41.605637+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": [
+        {
+          "file": "role-downgrade-zh-TW.jpg",
+          "notes": [
+            "Loading skeleton only; not proof of the final locale-specific review, rejection or receipt named by the file."
+          ]
+        }
       ]
     },
     {
       "id": "QA-13",
-      "name": "Expiry and consumed proposal",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      "name": "Expiry and consumed proposals",
+      "status": "PASS",
+      "personas": [
+        "mei"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "Existing service clock injection prepared an immutable proposal 29 minutes in the past without changing production clock or bypassing DB guards. Browser opened it while valid.",
+        "After real expiry, confirmation returned PROPOSAL_EXPIRED and localized safe expiry messages in both locales; action counts remained four.",
+        "An attempted direct expiry edit was rejected by the immutability trigger and left unchanged."
+      ],
+      "supplementalNonBrowserEvidence": "Exact-at-expiry boundary is deterministic service-clock test evidence. Consumed/new-key rejection and identical-key replay were exercised through actual HTTP; millisecond equality is not claimed as a browser timing measurement.",
+      "remaining": [],
+      "artifacts": [
+        "expiry-setup.json",
+        "expiry-before.jpg",
+        "expiry-after-en.jpg",
+        "expiry-after-zh-TW.jpg",
+        "qa13-expired-no-write.json",
+        "http-negative-and-replay.json"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:34:43.857697+00:00",
+        "2026-11-16T04:43:21.733260+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": [
+        {
+          "file": "expiry-after-zh-TW.jpg",
+          "notes": [
+            "Loading skeleton only; not proof of the final locale-specific review, rejection or receipt named by the file."
+          ]
+        }
       ]
     },
     {
       "id": "QA-14",
-      "name": "Safe service failure and transaction rollback",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      "name": "Service failure and transaction rollback",
+      "status": "PASS",
+      "personas": [
+        "mei"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "A temporary local receipt-insert fault produced a safe Chinese failure while preserving the draft.",
+        "Database proved no partial action/receipt/audit/consumption. Removing the fault and retrying created exactly one durable action."
+      ],
+      "supplementalNonBrowserEvidence": "Passing PostgreSQL tests injected failure at every declared transaction checkpoint. Browser fault was at receipt insertion; no debug mutation endpoint or source patch was added.",
+      "remaining": [],
+      "artifacts": [
+        "transaction-failure-zh-TW.jpg",
+        "qa14-rollback.json",
+        "transaction-recovered.jpg",
+        "final-integrity.json"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:33:11.614532+00:00",
+        "2026-11-16T04:54:16.872139+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": [
+        {
+          "file": "transaction-failure-zh-TW.jpg",
+          "notes": [
+            "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+          ]
+        }
       ]
     },
     {
       "id": "QA-15",
-      "name": "Keyboard, focus, semantics, and zoom",
+      "name": "Keyboard, focus, semantics, zoom and motion",
       "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
-      ]
+      "personas": [
+        "mei",
+        "viewer"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "Enter/Space/Escape/Tab/Shift+Tab exercised dialog controls, confirmation, evidence navigation and cancellation.",
+        "Observed focus containment, linked date/confirmation/assignee errors, locked-default error fallback and receipt-heading focus."
+      ],
+      "supplementalNonBrowserEvidence": "These observations do not establish a fully keyboard-only journey or screen-reader certification.",
+      "remaining": [
+        "200% zoom shortcut attempts did not change measured viewport; no verified zoom run.",
+        "Reduced-motion override not exposed by this browser backend.",
+        "Native date fill/keypress did not reliably change React state in this automation backend; no claim that physical keyboard date entry passed.",
+        "Screen-reader announcements and real-device touch/keyboard behavior were not tested."
+      ],
+      "artifacts": [
+        "browser-observations.json",
+        "keyboard-cleared-date-receipt.jpg",
+        "zoom-attempt.jpg",
+        "assignee-focus.json",
+        "locked-assignee-focus.json",
+        "layout-matrix.json"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:30:51.394356+00:00",
+        "2026-11-16T04:53:17.912328+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": []
     },
     {
       "id": "QA-16",
       "name": "Mobile and Taiwan Traditional Chinese layout",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
-      ]
+      "status": "FAIL",
+      "personas": [
+        "mei"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "Review, date validation, evidence and receipt were captured at 768x1024,390x844,320x740 in both locales, with longest approved review wording.",
+        "All recorded document widths matched viewport widths; one active modal and correct error/receipt focus were observed.",
+        "Chinese evidence/factor panels expose internal enums, English labels and policy plumbing; see F-03."
+      ],
+      "supplementalNonBrowserEvidence": "Stage 8 review/receipt copy itself was localized. Inherited Stage 7 evidence content is on the required Stage 8 path.",
+      "remaining": [
+        "Pending-state visual layout and real mobile keyboard occlusion were not reliably captured; physical mobile interaction and 200% zoom remain unverified.",
+        "Visual publication review flags apparent clipping of the evidence close control at 320px. documentWidth alone did not rule out child clipping; retest under this already-failed scenario."
+      ],
+      "artifacts": [
+        "layout-matrix.json",
+        "matrix-en-mobile-error.jpg",
+        "matrix-en-mobile-evidence.jpg",
+        "matrix-en-mobile-receipt.jpg",
+        "matrix-en-mobile-review.jpg",
+        "matrix-en-narrow-error.jpg",
+        "matrix-en-narrow-evidence.jpg",
+        "matrix-en-narrow-receipt.jpg",
+        "matrix-en-narrow-review.jpg",
+        "matrix-en-tablet-error.jpg",
+        "matrix-en-tablet-evidence.jpg",
+        "matrix-en-tablet-receipt.jpg",
+        "matrix-en-tablet-review.jpg",
+        "matrix-zh-TW-mobile-error.jpg",
+        "matrix-zh-TW-mobile-evidence.jpg",
+        "matrix-zh-TW-mobile-receipt.jpg",
+        "matrix-zh-TW-mobile-review.jpg",
+        "matrix-zh-TW-narrow-error.jpg",
+        "matrix-zh-TW-narrow-evidence.jpg",
+        "matrix-zh-TW-narrow-receipt.jpg",
+        "matrix-zh-TW-narrow-review.jpg",
+        "matrix-zh-TW-tablet-error.jpg",
+        "matrix-zh-TW-tablet-evidence.jpg",
+        "matrix-zh-TW-tablet-receipt.jpg",
+        "matrix-zh-TW-tablet-review.jpg",
+        "zh-TW-evidence.txt",
+        "zh-TW-mobile-evidence.jpg",
+        "zh-TW-factor-panel.jpg",
+        "zh-TW-factor-panel.txt"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:45:02.218281+00:00",
+        "2026-11-16T04:52:00.683567+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": []
     },
     {
       "id": "QA-17",
-      "name": "Browser and PostgreSQL performance baseline",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
-      ]
+      "name": "Browser and PostgreSQL performance",
+      "status": "PASS",
+      "personas": [
+        "mei"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "Measured eleven browser journeys, with first warmup excluded; ten recorded preparation/confirmation durations include local network, rendering and CUA overhead.",
+        "Browser nearest-rank p50/p95: proposal 271/284 ms; confirmation 266/287 ms."
+      ],
+      "supplementalNonBrowserEvidence": "30 independent server samples: proposal p95 108.414ms <=500ms; confirmation p95147.822ms <=800ms. Query counts fixed at110/131. Extra-reference/assignee scaling tests passed. Server output retains distributions/query counts and query evidence, not every raw per-sample duration.",
+      "remaining": [],
+      "artifacts": [
+        "browser-performance.json",
+        "server-performance.json",
+        "performance-validation.log"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:39:01.389681+00:00",
+        "2026-11-16T04:57:55.650133+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": []
     },
     {
       "id": "QA-18",
-      "name": "Stage 0-7 regression smoke and excluded behavior",
-      "status": "BLOCKED",
-      "reason": "Full browser scenario unexecuted/incomplete due shared CUA navigation and AT-SPI input infrastructure blocker; no pass inferred from deterministic or non-UI tests.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json"
+      "name": "Stage 0–7 regression and excluded behavior",
+      "status": "FAIL",
+      "personas": [
+        "mei",
+        "viewer"
+      ],
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "observed": [
+        "Canonical six ranks 88,81,79,71,69,63, lighting 2/3 abstention and programme warning were observed. Factor/evidence panels opened. Viewer commercial restrictions held.",
+        "No approve/send/complete controls were observed; provider credential environment checks found none and application dependencies contain no model SDK.",
+        "Active Xinyi forecast costs appear under reconciled-actual/actual-cost table labels. Linked evidence identifies the same NT$2,360,000 imported-stone amount as forecast direct cost. This is F-01, P1."
+      ],
+      "supplementalNonBrowserEvidence": "No financial/commercial records were intentionally changed except temporary restored QA quote fixtures. Provider absence/source review is not a network-capture proof. Further business-write tests stopped upon confirming F-01.",
+      "remaining": [],
+      "artifacts": [
+        "mei-en-comparison.txt",
+        "qa18-active-project-cost-labels.txt",
+        "qa18-comparison-labels.jpg",
+        "zh-TW-evidence.txt",
+        "zh-TW-factor-panel.jpg",
+        "zh-TW-factor-panel.txt",
+        "viewer-comparison.txt",
+        "final-integrity.json",
+        "publication-qa18-cost-labels-en.jpg",
+        "publication-qa18-cost-labels-zh-TW.jpg",
+        "publication-qa18-forecast-source-zh-TW.jpg",
+        "publication-captures.json"
+      ],
+      "artifactCaptureRangeUtc": [
+        "2026-11-16T04:25:07.018539+00:00",
+        "2026-11-16T04:54:16.872139+00:00"
+      ],
+      "environmentRef": "environment",
+      "publicationEvidenceCaveats": [
+        {
+          "file": "qa18-comparison-labels.jpg",
+          "notes": [
+            "Shows ranked candidates, not the disputed cost rows. Replaced as primary F-01 screenshot evidence by timestamped publication addendum captures; retained unchanged."
+          ]
+        }
       ]
-    }
-  ],
-  "screenshots": [
-    {
-      "path": "foundry/tasks/SB-029/evidence/computer-qa/headless/finance-en-workspace.png",
-      "classification": "SUPPLEMENTAL_HEADLESS_PARTIAL_ONLY",
-      "persona": "finance",
-      "locale": "en",
-      "viewport": {
-        "width": 1440,
-        "height": 900
-      },
-      "full_scenario_pass": false
-    },
-    {
-      "path": "foundry/tasks/SB-029/evidence/computer-qa/headless/finance-en-compare-start.png",
-      "classification": "SUPPLEMENTAL_HEADLESS_PARTIAL_ONLY",
-      "persona": "finance",
-      "locale": "en",
-      "viewport": {
-        "width": 1440,
-        "height": 900
-      },
-      "full_scenario_pass": false
-    },
-    {
-      "path": "foundry/tasks/SB-029/evidence/computer-qa/headless/finance-en-comparison.png",
-      "classification": "SUPPLEMENTAL_HEADLESS_PARTIAL_ONLY",
-      "persona": "finance",
-      "locale": "en",
-      "viewport": {
-        "width": 1440,
-        "height": 900
-      },
-      "full_scenario_pass": false
     }
   ],
   "findings": [
     {
-      "id": "QA-INFRA-001",
-      "kind": "COMPUTER_CONTROL_BLOCKER",
-      "status": "OPEN",
-      "gate_blocking": true,
-      "product_defect_established": false,
-      "description": "Two CUA navigation attempts returned Browser Use could not read requirements; tab stayed about:blank. Documented Sky fallback failed because the AT-SPI provider was unavailable with zero registry connections.",
-      "evidence": "foundry/tasks/SB-029/evidence/computer-qa/cua-infrastructure-blocker.json",
-      "next_step": "Resume independent @Computer QA in the same named cloud environment once browser control is available."
+      "id": "F-01",
+      "severity": "P1",
+      "title": "Active forecast costs are labeled as reconciled actual costs",
+      "cases": [
+        "QA-18"
+      ],
+      "inheritedFrom": "Stage 6; last file change 94332bd",
+      "observed": "The Xinyi active-project column places forecast NT$12,650,000 total and NT$2,360,000 imported stone under actual-cost headings; evidence correctly identifies forecast direct cost. This misstates authority at the point of comparison.",
+      "reproduction": [
+        "Issue a trusted synthetic Mei session; open an existing authorized Xinyi comparison with the canonical three selected historical projects. No new proposal/action is needed.",
+        "At 1440x900 in en, scroll to Overall commercial comparison and Category comparison. Inspect the active Xinyi column: forecast NT$12,650,000 appears under Reconciled actual cost · normalized, and forecast NT$2,360,000 under Imported stone · actual.",
+        "Switch to zh-TW and observe the equivalent 已核對實際成本 · 標準化 and 進口石材 · 實際成本 labels.",
+        "Open the Xinyi NT$3,688/m² imported-stone evidence cell, scroll to the Xinyi source card, and observe 預估直接成本 with the same NT$2,360,000 amount."
+      ],
+      "source": [
+        {
+          "file": "src/modules/comparison-experience/build-comparison-experience.ts",
+          "line": 633
+        },
+        {
+          "file": "src/modules/comparison-experience/build-comparison-experience.ts",
+          "line": 681
+        },
+        {
+          "file": "src/modules/comparison-experience/copy.ts",
+          "line": 207
+        }
+      ],
+      "artifacts": [
+        "qa18-active-project-cost-labels.txt",
+        "qa18-comparison-labels.jpg",
+        "zh-TW-evidence.txt",
+        "publication-qa18-cost-labels-en.jpg",
+        "publication-qa18-cost-labels-zh-TW.jpg",
+        "publication-qa18-forecast-source-zh-TW.jpg",
+        "publication-captures.json",
+        "publication-qa18-cost-labels-en.txt"
+      ],
+      "disposition": "Acceptance blocked. Stop further business-write QA; return to Builder. No source fix made.",
+      "persona": {
+        "key": "mei",
+        "displayName": "Mei Lin / 林美玲",
+        "fixture": "Horizon synthetic Project Manager / Estimator"
+      },
+      "dataClassification": "DEMO_SYNTHETIC",
+      "buildId": "N_TRlxNdHOVp0JPHYRLE4",
+      "sourcePortabilityCommit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "primaryScenarioId": "QA-18",
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "viewports": [
+        {
+          "width": 1440,
+          "height": 900
+        }
+      ],
+      "expectedBehavior": "Distinguish the active quotation forecast direct costs from historical reconciled actual costs at the visible table cells and in evidence; do not imply active forecast amounts have actual-cost authority.",
+      "acceptanceCriteria": [
+        {
+          "plan": "foundry/tasks/SB-029/computer-qa-plan.yaml",
+          "scenario": "QA-18",
+          "criterion": "Prior deterministic comparison/evidence behavior remains intact, including distinct economics labels."
+        },
+        {
+          "criterion": "Active Xinyi forecast total and category values are visibly identified as forecasts in English and Taiwan Traditional Chinese; historical actual values retain their actual labels."
+        },
+        {
+          "criterion": "Displayed amounts, normalized values, variances and linked source authority agree. Capture corrected desktop/mobile table and evidence views on the new exact build."
+        }
+      ],
+      "screenshots": [
+        "publication-qa18-cost-labels-en.jpg",
+        "publication-qa18-cost-labels-zh-TW.jpg",
+        "publication-qa18-forecast-source-zh-TW.jpg"
+      ],
+      "captureProvenance": "publication-captures.json; read-only addendum at the same source/build. Original qa18-comparison-labels.jpg did not show disputed rows."
     },
     {
-      "id": "QA-INFRA-002",
-      "kind": "PREVIEW_ORIGIN_CONFIGURATION",
-      "status": "RESOLVED",
-      "gate_blocking": false,
-      "product_defect_established": false,
-      "description": "Next production server bound to0.0.0.0 reconstructed request origins differing from configuredlocalhost. Strict POST origin guard correctly rejected prepare. Restarting identical build with --hostname localhost made identical authorized Finance preparation return PREPARED. No guard or product code changed.",
-      "evidence": [
-        "foundry/tasks/SB-029/evidence/computer-qa/finance-proposal-api-diagnostic.json",
-        "foundry/tasks/SB-029/evidence/computer-qa/finance-proposal-api-after-origin-alignment.json"
-      ]
-    }
-  ],
-  "performance_samples": [
-    {
-      "classification": "NON_UI_HTTP_END_TO_END_INCLUDING_LOOPBACK_TRANSIT",
-      "operation": "created",
-      "duration_ms": 300.31162300000005,
-      "browser_measurement": false,
-      "server_p95_measurement": false
+      "id": "F-02",
+      "severity": "P2",
+      "title": "Immediate draft edit can discard the proposal route",
+      "cases": [
+        "QA-05"
+      ],
+      "observed": "The sheet is interactive before router navigation has settled. updateDraft uses the old window URL, so a fast selection can replace history without proposal; refresh loses the sheet. Immediate locale switch also dropped the sheet.",
+      "reproduction": [
+        "Create a fresh comparison and open review.",
+        "Immediately change title before proposal navigation settles.",
+        "Observe reviewTitle in URL with no proposal selector. Refresh.",
+        "Review sheet disappears."
+      ],
+      "source": [
+        {
+          "file": "src/components/internal-review/internal-review-controller.tsx",
+          "line": 124
+        },
+        {
+          "file": "src/components/internal-review/internal-review-sheet.tsx",
+          "line": 85
+        }
+      ],
+      "artifacts": [
+        "qa05-fast-edit-before-refresh.json",
+        "qa05-fast-edit-after-refresh.jpg"
+      ],
+      "disposition": "Reproducible route/draft UX defect; no write or authorization bypass observed.",
+      "persona": {
+        "key": "mei",
+        "displayName": "Mei Lin / 林美玲",
+        "fixture": "Horizon synthetic Project Manager / Estimator"
+      },
+      "dataClassification": "DEMO_SYNTHETIC",
+      "buildId": "N_TRlxNdHOVp0JPHYRLE4",
+      "sourcePortabilityCommit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "primaryScenarioId": "QA-05",
+      "locales": [
+        "en"
+      ],
+      "additionalObservedLocaleTransition": "en to zh-TW was observed during the original run but has no dedicated before/after screenshot pair.",
+      "viewports": [
+        {
+          "width": 1440,
+          "height": 900
+        }
+      ],
+      "expectedBehavior": "Once the review sheet accepts interaction, its proposal identity and bounded draft choices remain in the route across immediate edits, locale changes, evidence navigation, refresh and history.",
+      "acceptanceCriteria": [
+        {
+          "plan": "foundry/tasks/SB-029/computer-qa-plan.yaml",
+          "scenario": "QA-05",
+          "criterion": "Locale/route/refresh/history preserve proposal identity and allowed draft fields without a write or fabricated receipt."
+        },
+        {
+          "criterion": "Immediately change each supported draft field after the sheet appears, then refresh: proposal remains in URL and correct draft is restored."
+        },
+        {
+          "criterion": "Immediately switch en/zh-TW after preparation or edit: same proposal and allowed draft survive; no duplicate proposal/action is created."
+        }
+      ],
+      "screenshots": [
+        "qa05-fast-edit-after-refresh.jpg"
+      ],
+      "beforeStateArtifact": "qa05-fast-edit-before-refresh.json",
+      "captureLimit": "The before state is a DOM/URL capture, not a screenshot. The after screenshot shows comparison with no review sheet. No rerun or success is invented.",
+      "rootCauseAssessment": "Likely mechanism from source review: setPrepared exposes the sheet before router.push settles, while updateDraft reads window.location and calls replaceState. This mechanism is an inference; the lost-route observation is direct.",
+      "blockingDisposition": "Unresolved failed scenario in the acceptance gate; severity remains P2. F-01 is the P1 stop condition. No Stage 8 acceptance is claimed."
     },
     {
-      "classification": "NON_UI_HTTP_END_TO_END_INCLUDING_LOOPBACK_TRANSIT",
-      "operation": "replay",
-      "duration_ms": 51.05972300000002,
-      "browser_measurement": false,
-      "server_p95_measurement": false
+      "id": "F-03",
+      "severity": "P2",
+      "title": "Chinese evidence journey exposes internal English terms",
+      "cases": [
+        "QA-16",
+        "QA-18"
+      ],
+      "inheritedFrom": "Stage 7; evidence component last changed 2180136",
+      "observed": "Normal Chinese evidence displays IMPORTED_STONE, FORECAST_VERSUS_RECONCILED_ACTUAL_COST_MEDIAN_VARIANCE, HALF_UP, TWD_PER_M2, source(s), Currentnormalizedamount, Descriptionen, Unitprice; factor panel shows Code/State and policy identifiers.",
+      "source": [
+        {
+          "file": "src/components/evidence/evidence-panel.tsx",
+          "line": 286
+        }
+      ],
+      "artifacts": [
+        "zh-TW-evidence.txt",
+        "zh-TW-mobile-evidence.jpg",
+        "zh-TW-factor-panel.txt"
+      ],
+      "disposition": "Fails natural Chinese parity on the required supporting-evidence journey; report as inherited, not hidden by Stage 8 localization success.",
+      "persona": {
+        "key": "mei",
+        "displayName": "Mei Lin / 林美玲",
+        "fixture": "Horizon synthetic Project Manager / Estimator"
+      },
+      "dataClassification": "DEMO_SYNTHETIC",
+      "buildId": "N_TRlxNdHOVp0JPHYRLE4",
+      "sourcePortabilityCommit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "primaryScenarioId": "QA-16",
+      "relatedScenarioIds": [
+        "QA-18"
+      ],
+      "locales": [
+        "zh-TW"
+      ],
+      "viewports": [
+        {
+          "width": 390,
+          "height": 844
+        },
+        {
+          "width": 320,
+          "height": 740
+        },
+        {
+          "width": 768,
+          "height": 1024
+        },
+        {
+          "width": 1440,
+          "height": 900
+        }
+      ],
+      "expectedBehavior": "The required evidence journey uses natural Taiwan Traditional Chinese for ordinary labels and concepts; normal display does not expose English developer/provider/policy plumbing. Exact synthetic IDs/currency codes may remain only where semantically needed.",
+      "reproduction": [
+        "Use trusted synthetic Mei with zh-TW locale and an existing canonical Xinyi comparison.",
+        "Open the Stage 8 review supporting-evidence button for imported-stone forecast variance, or its linked comparison evidence cell.",
+        "At 390x844 inspect the evidence heading and calculation/source preview sections; repeat at 320x740 or desktop.",
+        "Observe internal tokens and English fallback labels including IMPORTED_STONE, FORECAST_VERSUS_RECONCILED_ACTUAL_COST_MEDIAN_VARIANCE, source(s), Currentnormalizedamount, Descriptionen and Unitprice.",
+        "On desktop, open the first candidate factor panel and observe Code/State and raw policy/calculation terms."
+      ],
+      "acceptanceCriteria": [
+        {
+          "plan": "foundry/tasks/SB-029/computer-qa-plan.yaml",
+          "scenario": "QA-16",
+          "criterion": "Natural Taiwan Traditional Chinese parity; no English developer/provider/policy plumbing in normal Chinese mode."
+        },
+        {
+          "plan": "foundry/tasks/SB-029/computer-qa-plan.yaml",
+          "scenario": "QA-18",
+          "criterion": "Evidence/factor panels and locale navigation preserve readable, accurate prior-stage behavior."
+        },
+        {
+          "criterion": "Use reviewed zh-TW labels for normal evidence headings, calculation labels, source-preview keys and factor states; verify amount/authority meaning is unchanged."
+        },
+        {
+          "criterion": "Verify the required evidence round trip at desktop, tablet, mobile and narrow widths, including a fully reachable close control."
+        }
+      ],
+      "screenshots": [
+        "zh-TW-mobile-evidence.jpg",
+        "matrix-zh-TW-narrow-evidence.jpg",
+        "matrix-zh-TW-tablet-evidence.jpg",
+        "zh-TW-factor-panel.jpg",
+        "publication-qa18-forecast-source-zh-TW.jpg"
+      ],
+      "captureLimit": "Inherited Stage 7 defect exposed within the Stage 8 required journey. Full copy text is in zh-TW-evidence.txt and zh-TW-factor-panel.txt; screenshot crops cover their visible portions.",
+      "blockingDisposition": "Unresolved failed scenario in the acceptance gate; severity remains P2. F-01 is the P1 stop condition. No Stage 8 acceptance is claimed."
+    }
+  ],
+  "cleanup": {
+    "at": "2026-11-16T04:54:16.852Z",
+    "counts": {
+      "actions": 19,
+      "proposals": 38,
+      "consumed": 19,
+      "receipts": 19,
+      "audits": 19
     },
-    {
-      "classification": "NON_UI_HTTP_END_TO_END_INCLUDING_LOOPBACK_TRANSIT",
-      "operation": "conflict",
-      "duration_ms": 29.024307999999962,
-      "browser_measurement": false,
-      "server_p95_measurement": false
-    }
-  ],
-  "server_validation_references": [
-    "foundry/tasks/SB-029/validation-final.json",
-    "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/43767600389",
-    "foundry/tasks/SB-029/evidence/computer-qa/preview-database-setup.json",
-    "foundry/tasks/SB-029/evidence/computer-qa/finance-http-action-smoke.json"
-  ],
-  "repair_retests": [
-    {
-      "classification": "PREVIEW_INFRASTRUCTURE_ONLY",
-      "change": "Restart unchanged production build with bind hostname localhost matching configured origin.",
-      "result": "Finance prepare PREPARED; canonical confirm CREATED; retry IDEMPOTENT_REPLAY; changed payload IDEMPOTENCY_CONFLICT; zh-TW receipt AVAILABLE.",
-      "product_repair_cycle": false,
-      "browser_retest": false
-    }
-  ],
-  "scope_limits": [
-    "Zero of18 full browser scenarios passed; all18 remain blocked at the independent Computer QA gate.",
-    "Partial headless screenshots cover Finance/en workspace/comparison only and are not review, receipt, mobile, keyboard, bilingual, or complete-flow evidence.",
-    "Live HTTP/PostgreSQL smoke proves server wiring and persisted consistency, not browser interaction, focus, layout, locale navigation, or browser p95.",
-    "CUA completion summary was emitted by root: Identified browser control blocker.",
-    "Preview localhost is reachable only inside the existing named cloud environment; a new Computer session must attach to that environment.",
-    "No source code, product policy, Vercel, DNS, live demo-domain, production data, or real customer data changed during QA."
-  ],
-  "summary": {
-    "passed": 0,
-    "failed": 0,
-    "blocked": 18,
-    "not_run": 0,
-    "completed_full_browser_scenarios": 0
+    "organizations": [
+      {
+        "businessKey": "HORIZON_ATELIER",
+        "dataClassification": "DEMO_SYNTHETIC"
+      },
+      {
+        "businessKey": "NORTHERN_STUDIO",
+        "dataClassification": "DEMO_SYNTHETIC"
+      }
+    ],
+    "migrations": 8,
+    "triggers": [
+      {
+        "tgname": "Action_stage8_immutable",
+        "tgenabled": "O"
+      },
+      {
+        "tgname": "AuditEvent_append_only",
+        "tgenabled": "O"
+      },
+      {
+        "tgname": "InternalReviewReceipt_immutable",
+        "tgenabled": "O"
+      },
+      {
+        "tgname": "ProposedAction_stage8_immutable",
+        "tgenabled": "O"
+      }
+    ],
+    "activeSessions": 0,
+    "temporaryGrants": 0,
+    "temporaryTriggers": 0,
+    "duplicateActionProposals": [],
+    "actionEvidence": [
+      {
+        "businessKey": "action_12705349-27b0-4571-a93d-d381f8fa982b",
+        "status": "OPEN",
+        "dueDate": "2026-11-22T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_cfc6b884-c82d-4027-8721-49d53b641ac3",
+        "status": "OPEN",
+        "dueDate": "2026-11-22T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_403bdf0b-b9ec-43e2-9706-4c1ce6256d04",
+        "status": "OPEN",
+        "dueDate": "2026-11-22T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_9ec6931c-e080-46e2-9aa9-436b24d7f8b1",
+        "status": "OPEN",
+        "dueDate": "2026-11-22T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_a58c6e51-fcf3-463c-93e3-e186cebffe51",
+        "status": "OPEN",
+        "dueDate": "2026-11-22T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_6dab0163-94d9-4a31-b535-ef2170285a91",
+        "status": "OPEN",
+        "dueDate": "2026-11-22T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_643637ae-d7c4-4a8d-b82f-a46cf0e00fd5",
+        "status": "OPEN",
+        "dueDate": "2026-11-22T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_b5404810-d0a8-47cd-988d-6fc802300285",
+        "status": "OPEN",
+        "dueDate": "2026-11-22T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_ca98757b-a86f-4b2b-b458-ad4afa8eda1e",
+        "status": "OPEN",
+        "dueDate": "2026-11-22T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_bd85da94-1588-4021-b860-257d87ae4d56",
+        "status": "OPEN",
+        "dueDate": "2026-11-22T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_2d06ea10-0552-4d09-81dc-06e8755bf226",
+        "status": "OPEN",
+        "dueDate": "2026-11-22T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_c10cfef0-d827-464e-b62e-baac6168aa7c",
+        "status": "OPEN",
+        "dueDate": "2026-11-22T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_158fe413-d2fd-4ad8-98c4-4960820e0b0e",
+        "status": "OPEN",
+        "dueDate": "2026-11-22T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_5250b3ff-aa3a-4502-a775-db829d5db30d",
+        "status": "OPEN",
+        "dueDate": "2026-11-22T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_2052b869-3af2-42c4-b8e3-e72f84a2fa0e",
+        "status": "OPEN",
+        "dueDate": "2026-11-22T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_a49676d4-3b58-41c2-a73d-ddae3b899513",
+        "status": "OPEN",
+        "dueDate": "2026-11-22T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_a2564c35-62b6-40aa-b1f7-b3a65909b5d4",
+        "status": "OPEN",
+        "dueDate": null,
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_21262836-47e3-4fa5-8916-459d19e597db",
+        "status": "OPEN",
+        "dueDate": "2026-11-15T16:00:00.000Z",
+        "evidence_count": 15
+      },
+      {
+        "businessKey": "action_32f5d91d-5a97-4cfb-8b75-6a828b59a5b0",
+        "status": "OPEN",
+        "dueDate": "2027-11-15T16:00:00.000Z",
+        "evidence_count": 15
+      }
+    ],
+    "sourceModified": false,
+    "providerCredentialVariablesPresent": [],
+    "runtimeDirectoryMode": "700",
+    "environmentFileMode": "600"
   },
-  "verdict": "BLOCKED_INFRASTRUCTURE",
-  "supplemental_exploration": {
-    "runner": "Headless Chromium via installed Playwright, stopped before further interaction on root instruction",
-    "persona": "finance",
-    "locale": "en",
-    "viewport": {
-      "width": 1440,
-      "height": 900
-    },
-    "observed": [
-      "Trusted secure-cookie bootstrap redirected to authorized Xinyi workspace.",
-      "Workspace rendered project, quote/forecast, evidence health, and comparison entry.",
-      "Comparison start rendered; submitting it created stored comparison and enrichment route.",
-      "Action entry opened a dialog, but the expected Title field was not observed before timeout. This does not establish a proposal success or a product defect."
-    ],
-    "screenshots": [
-      "foundry/tasks/SB-029/evidence/computer-qa/headless/finance-en-workspace.png",
-      "foundry/tasks/SB-029/evidence/computer-qa/headless/finance-en-compare-start.png",
-      "foundry/tasks/SB-029/evidence/computer-qa/headless/finance-en-comparison.png"
-    ],
-    "database_observation": {
-      "proposals": 0,
-      "actions": 0,
-      "receipts": 0,
-      "audits": 0
-    },
-    "qualification": "Exploratory evidence only; no full QA scenario marked passed. Canonical preparation requires root CUA reproduction.",
-    "stopped_at": "2026-11-15T22:21:32.646617+00:00",
-    "preparation_dialog_diagnosis": "Non-UI follow-up proved preview bind/configured-origin mismatch. Same-build restart corrected it; no browser review pass was produced."
+  "runtimeLeftRunning": {
+    "app": "http://localhost:3000",
+    "container": "stridebrain-sb029-cloud-qa",
+    "postgresLoopbackPort": 54329,
+    "operatorLoopbackPort": 3001,
+    "sessionsRevoked": true,
+    "browserRetained": true,
+    "finalBrowserState": "Controlled demo session required after revocation."
   },
-  "blocked_at": "2026-11-15T22:25:29.505831Z",
-  "non_ui_http_smoke": {
-    "evidence": "foundry/tasks/SB-029/evidence/computer-qa/finance-http-action-smoke.json",
-    "result": "PASS_NON_UI_ONLY",
-    "action_business_key": "action_54552fb7-7f6d-45ee-aa66-c50290b4a74c",
-    "outcomes": [
-      "CREATED",
-      "IDEMPOTENT_REPLAY",
-      "IDEMPOTENCY_CONFLICT",
-      "AVAILABLE"
-    ],
-    "counts_after": {
-      "actions": 1,
-      "consumed": 1,
-      "receipts": 1,
-      "audits": 1
+  "historicalEvidence": "Original repository blocked reports unchanged. Initial source-verification/readiness browserQa=NOT_RUN describes preflight; this report records the subsequent actual run.",
+  "nextRequired": "Builder repairs findings on a new exact source fingerprint; rerun affected checks and incomplete variants, including a capable zoom/reduced-motion/native-date browser. Independent acceptance review remains required.",
+  "publicationReview": {
+    "reviewedAt": "2026-11-16T05:19:56.474997+00:00",
+    "requestedCountsVerified": {
+      "PASS": 9,
+      "FAIL": 3,
+      "PARTIAL": 5,
+      "BLOCKED": 1
     },
-    "evidence_reference_count": 15,
-    "claim_count": 4,
-    "audit_linkage_checks": true,
-    "browser_pass_credit": false
-  }
+    "scenarioCountsChanged": false,
+    "evidenceOnlyBranch": "qa/sb-029-local-20261116T041837Z",
+    "baseCommit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+    "allOriginalScreenshotsReviewed": true,
+    "screenshotReview": "screenshot-review.json",
+    "findingsExpanded": true,
+    "historicalRunCompletionUnchanged": true,
+    "readOnlyAddendum": "publication-captures.json",
+    "captureBusinessCountsUnchanged": true,
+    "captureSessionRevoked": true,
+    "evidenceCaveats": [
+      "Some original images show loading, submission-before-result, or viewport-transition captures; see screenshot-review.json. Retained bytes are not upgraded into final-state proof.",
+      "Original runtime/process status is a dated observation, not a promise of current availability on another computer.",
+      "Some performance and date-test URL fields were sampled before navigation settled; preserve them as observed URLs, not canonical receipt links.",
+      "No new business-write tests or product changes were made during publication."
+    ],
+    "statusInterpretation": "The requested 9/3/5/1 labels describe the original scoped run, including interactive observations and explicitly separated SQL/HTTP tests. They do not mean every screenshot is final-state proof or every matrix variant passed."
+  },
+  "currentTaskState": "NEEDS_REVISION",
+  "immutableEvidence": {
+    "branch": "qa/sb-029-local-20261116T041837Z",
+    "commit": "0c9b4293a9e91aa6121b8571e7f22537b131760d",
+    "url": "https://github.com/FATTY-BAMBA/StrideBrain/tree/0c9b4293a9e91aa6121b8571e7f22537b131760d/foundry/tasks/SB-029/evidence/local-qa/20261116T041837Z",
+    "directParent": "13e7191f340e998c93b644949602f1c0774fe9ff"
+  },
+  "previousInfrastructureReport": "https://github.com/FATTY-BAMBA/StrideBrain/blob/13e7191f340e998c93b644949602f1c0774fe9ff/foundry/tasks/SB-029/computer-qa-report.json",
+  "repairStatus": {
+    "status": "CODE_REPAIR_VALIDATED_BROWSER_RETEST_PENDING",
+    "applicationHead": "df63c90ca994653299082fc5078ad0b5ef595292",
+    "sourceTreeFingerprintSha256": "82ce9a43b9bf4da5280c09cb839eeb277213acd09b73e46aa0a8f15f2758a460",
+    "findings": {
+      "F-01": "Code reviewed and regression tested; QA-18 browser retest pending.",
+      "F-02": "Code reviewed and regression tested; QA-05 browser retest pending.",
+      "F-03": "Code reviewed and regression tested; QA-16/QA-18 browser retest pending."
+    },
+    "deterministicReport": "validation-revision.json",
+    "independentCodeReview": "PASS: 69 tests / 15 files, no blocking code findings.",
+    "exactHeadCi": "Required on final publication head; see final PR #31 checks and description.",
+    "newBrowserRunExecuted": false,
+    "handoff": "local-qa-retest-handoff.md",
+    "note": "Original outcomes remain 9 PASS / 3 FAIL / 5 PARTIAL / 1 BLOCKED. No deterministic result is counted as browser acceptance."
+  },
+  "artifactBaseUrl": "https://github.com/FATTY-BAMBA/StrideBrain/blob/0c9b4293a9e91aa6121b8571e7f22537b131760d/foundry/tasks/SB-029/evidence/local-qa/20261116T041837Z/",
+  "artifactReferenceNote": "Relative filenames in the imported original run resolve under artifactBaseUrl, not under the repaired build branch."
 }

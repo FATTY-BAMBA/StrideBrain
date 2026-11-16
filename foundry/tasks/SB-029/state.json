@@ -1,10 +1,10 @@
 {
   "taskId": "SB-029",
   "issueUrl": "https://github.com/FATTY-BAMBA/StrideBrain/issues/29",
-  "state": "BLOCKED",
+  "state": "NEEDS_REVISION",
   "baseline": "0ecd65bdb0ae752f3244960d6848a74a30d5da01",
   "branch": "build/sb-029-governed-internal-review",
-  "headCommit": "4c13f726bb75f4a31d263eb6e54622224807d019",
+  "headCommit": "df63c90ca994653299082fc5078ad0b5ef595292",
   "repairCycles": [
     {
       "cycle": 1,
@@ -37,6 +37,29 @@
       "evidence": [
         "validation-final.json",
         "evidence/ci-4c13f726.json"
+      ]
+    },
+    {
+      "cycle": 2,
+      "phase": "NEEDS_REVISION",
+      "status": "CODE_REPAIR_VALIDATED_BROWSER_RETEST_PENDING",
+      "startedAt": "2026-11-16T06:00:52.192989+00:00",
+      "reason": "Independent local browser QA findings F-01, F-02 and F-03.",
+      "fixPolicy": "Smallest contract-compliant fixes; no authority, authorization or evidence-policy weakening.",
+      "browserRetest": "NOT_RUN. Independent new-run QA remains required; exact-head CI is a prerequisite, not browser acceptance.",
+      "validatedAt": "2026-11-16T06:16:58.467100+00:00",
+      "applicationHead": "df63c90ca994653299082fc5078ad0b5ef595292",
+      "independentReview": "PASS: 69 tests / 15 files; no unresolved blocking code findings.",
+      "fullRegression": "PASS: 455 tests / 59 files, 12 localization tests / 4 files, eight clean migrations and repeat seeds/SQL, format/lint/types, production build and audit 0.",
+      "rootCauses": [
+        "Shared actual-cost row headings covered active forecast cells without per-cell basis labels.",
+        "Editable optimistic sheet preceded canonical proposal navigation; draft writes read stale URL and render snapshots.",
+        "Evidence presentation exposed raw enums, field fallbacks and policy identifiers; narrow header did not wrap."
+      ],
+      "evidence": [
+        "validation-revision.json",
+        "evidence/revision-20261116/",
+        "local-qa-retest-handoff.md"
       ]
     }
   ],
@@ -158,6 +181,17 @@
         "computer-qa-report.json",
         "computer-qa-handoff.md"
       ]
+    },
+    {
+      "from": "BLOCKED",
+      "fromVerdict": "BLOCKED_INFRASTRUCTURE",
+      "to": "NEEDS_REVISION",
+      "timestamp": "2026-11-16T06:00:52.192989+00:00",
+      "headCommit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "reason": "Imported completed independent local QA: three implementation defects established; infrastructure-only status superseded. Original evidence remains immutable.",
+      "evidence": [
+        "https://github.com/FATTY-BAMBA/StrideBrain/tree/0c9b4293a9e91aa6121b8571e7f22537b131760d/foundry/tasks/SB-029/evidence/local-qa/20261116T041837Z"
+      ]
     }
   ],
   "events": [
@@ -218,6 +252,17 @@
         "cloud-qa-task.md",
         "computer-qa-handoff.md"
       ]
+    },
+    {
+      "timestamp": "2026-11-16T06:16:58.467100+00:00",
+      "kind": "LOCAL_QA_REPAIRS_VALIDATED",
+      "headCommit": "df63c90ca994653299082fc5078ad0b5ef595292",
+      "reason": "Independent code review and all local deterministic gates passed; separate synthetic production preview ready. Exact publication-head CI and independent browser retest remain distinct requirements.",
+      "evidence": [
+        "validation-revision.json",
+        "evidence/revision-20261116/preview-readiness.json",
+        "local-qa-retest-handoff.md"
+      ]
     }
   ],
   "pullRequest": "https://github.com/FATTY-BAMBA/StrideBrain/pull/31",
@@ -242,24 +287,9 @@
       "retestEvidence": "/tmp/sb029-stage8-validation/canonical-verified-advisory-fix.log"
     }
   ],
-  "validationHead": "4c13f726bb75f4a31d263eb6e54622224807d019",
-  "preview": {
-    "url": "http://localhost:3000",
-    "headCommit": "4c13f726bb75f4a31d263eb6e54622224807d019",
-    "buildId": "3arTh5JwUyUt0e73FJY-z",
-    "database": "stridebrain_stage8_preview",
-    "serverSessionId": 97028,
-    "bindHostname": "localhost",
-    "readiness": "PREVIEW_READY; actual Computer QA blocked by control infrastructure"
-  },
-  "blocker": {
-    "kind": "BROWSER_QA_INFRASTRUCTURE",
-    "resumeState": "COMPUTER_QA",
-    "requires": "Working independent Computer/browser session with access to this isolated preview",
-    "productPolicyDecisionRequired": false
-  },
-  "applicationHead": "4c13f726bb75f4a31d263eb6e54622224807d019",
-  "sourceTreeFingerprintSha256": "7fe5157f84f9c88023462ec1e958b62a53bcdb5aef30eb0dc4ac95dfdac85920",
+  "validationHead": "df63c90ca994653299082fc5078ad0b5ef595292",
+  "applicationHead": "df63c90ca994653299082fc5078ad0b5ef595292",
+  "sourceTreeFingerprintSha256": "82ce9a43b9bf4da5280c09cb839eeb277213acd09b73e46aa0a8f15f2758a460",
   "latestMainVerification": {
     "timestamp": "2026-11-15T22:28:29.972248Z",
     "command": "git ls-remote origin refs/heads/main refs/heads/build/sb-029-governed-internal-review",
@@ -281,6 +311,122 @@
       "runUrl": "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/43769657458",
       "conclusion": "success",
       "evidence": "evidence/ci-2a23d31.json"
-    }
-  }
+    },
+    "supersededBy": "Completed independent local QA run 20261116T041837Z and authorized defect repair."
+  },
+  "historicalInfrastructureBlocker": {
+    "kind": "BROWSER_QA_INFRASTRUCTURE",
+    "resumeState": "COMPUTER_QA",
+    "requires": "Working independent Computer/browser session with access to this isolated preview",
+    "productPolicyDecisionRequired": false
+  },
+  "historicalPreview": {
+    "url": "http://localhost:3000",
+    "headCommit": "4c13f726bb75f4a31d263eb6e54622224807d019",
+    "buildId": "3arTh5JwUyUt0e73FJY-z",
+    "database": "stridebrain_stage8_preview",
+    "serverSessionId": 97028,
+    "bindHostname": "localhost",
+    "readiness": "PREVIEW_READY; actual Computer QA blocked by control infrastructure"
+  },
+  "localQa": {
+    "run": "20261116T041837Z",
+    "evidenceBranch": "qa/sb-029-local-20261116T041837Z",
+    "evidenceCommit": "0c9b4293a9e91aa6121b8571e7f22537b131760d",
+    "testedHead": "13e7191f340e998c93b644949602f1c0774fe9ff",
+    "evidenceUrl": "https://github.com/FATTY-BAMBA/StrideBrain/tree/0c9b4293a9e91aa6121b8571e7f22537b131760d/foundry/tasks/SB-029/evidence/local-qa/20261116T041837Z",
+    "counts": {
+      "PASS": 9,
+      "FAIL": 3,
+      "PARTIAL": 5,
+      "BLOCKED": 1
+    },
+    "immutable": true,
+    "acceptanceGranted": false
+  },
+  "blocker": {
+    "kind": "INDEPENDENT_LOCAL_BROWSER_RETEST_REQUIRED",
+    "resumeState": "COMPUTER_QA",
+    "productPolicyDecisionRequired": false,
+    "requires": "New independent local QA run after final publication-head CI succeeds. Original 9/3/5/1 outcomes remain unchanged until retested.",
+    "scenarioIds": [
+      "QA-05",
+      "QA-16",
+      "QA-18",
+      "QA-07",
+      "QA-08",
+      "QA-09",
+      "QA-11",
+      "QA-12",
+      "QA-15"
+    ],
+    "openCodeReviewFindings": 0
+  },
+  "headCommitScope": "Repaired application candidate; later task-report publication commits preserve this exact source manifest. Final publication head and its exact-head CI are recorded in PR #31.",
+  "preview": {
+    "verifiedAt": "2026-11-16T06:15:07.929979+00:00",
+    "applicationHead": "df63c90ca994653299082fc5078ad0b5ef595292",
+    "sourceTreeFingerprintSha256": "82ce9a43b9bf4da5280c09cb839eeb277213acd09b73e46aa0a8f15f2758a460",
+    "buildId": "4Zn6yTS6DP2jLb0DDZye_",
+    "url": "http://localhost:3000",
+    "bindHostname": "localhost",
+    "production": true,
+    "appSessionId": 2025,
+    "operatorSessionId": 27567,
+    "operatorPort": 3001,
+    "container": "stridebrain-sb029-revision-qa",
+    "database": "stridebrain_sb029_revision",
+    "databasePort": 54330,
+    "data": "DEMO_SYNTHETIC",
+    "node": "v24.22.3",
+    "postgres": "postgres (PostgreSQL) 17.12 (Debian 17.12-1.pgdg13+1)",
+    "postgresImage": "[\"postgres@sha256:0d938e975177bef9f1f61f3f9dbcf2e0aa0a139568f66d3415ed8892eb97f6ac\"]",
+    "httpChecks": [
+      {
+        "path": "/en/projects/PRJ-XINYI-026",
+        "status": 200,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "authenticated": false
+      },
+      {
+        "path": "/zh-TW/projects/PRJ-XINYI-026",
+        "status": 200,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "authenticated": false
+      },
+      {
+        "path": "/api/actions/internal-review/not-a-receipt",
+        "status": 404,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "authenticated": false
+      },
+      {
+        "path": "/api/actions/not-a-receipt",
+        "status": 403,
+        "cacheControl": "private, no-store",
+        "authenticated": false
+      }
+    ],
+    "operatorPreflight": "PASS: expected database and DemoSession schema; source imports pass; no session issued.",
+    "status": "PREVIEW_READY_FOR_INDEPENDENT_RETEST_AFTER_EXACT_HEAD_CI",
+    "browserChecks": "NOT_RUN",
+    "startupWarning": "Next ignored an unrelated parent-directory package-lock outside this Git repository; no source/config change required.",
+    "operatorSessionsIssued": 0,
+    "activeSessionsAfterTestCleanup": 0,
+    "testSessionsRevoked": 2
+  },
+  "deterministicValidation": {
+    "report": "validation-revision.json",
+    "status": "PASS",
+    "tests": 455,
+    "testFiles": 59,
+    "skipped": 0,
+    "productionVulnerabilities": 0
+  },
+  "exactHeadCi": {
+    "required": true,
+    "sourceOfTruth": "PR #31 workflow checks; final PR description records exact publication head and successful run.",
+    "browserAcceptanceCredit": false
+  },
+  "retestHandoff": "local-qa-retest-handoff.md"
 }

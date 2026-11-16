@@ -1,0 +1,7 @@
+
+> stridebrain@0.1.0 format:check
+> prettier --check package.json tsconfig.json next.config.ts next-env.d.ts eslint.config.mjs prettier.config.mjs vitest.config.ts prisma.config.ts .github/workflows/ci.yml 'src/**/*.{ts,tsx,css}' 'tests/**/*.ts'
+
+Checking formatting...
+[warn] tests/evidence-panel/get-evidence-panel.test.ts
+[warn] Code style issues found in the above file. Run Prettier with --write to fix.

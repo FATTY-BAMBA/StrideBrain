@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "sb029-repair-validation.v1",
+  "completedAt": "2026-11-16T06:14:27.493658+00:00",
+  "applicationHead": "df63c90ca994653299082fc5078ad0b5ef595292",
+  "sourceTreeFingerprintSha256": "82ce9a43b9bf4da5280c09cb839eeb277213acd09b73e46aa0a8f15f2758a460",
+  "sourceTreePaths": [
+    "src",
+    "tests",
+    "prisma",
+    "package.json",
+    "package-lock.json",
+    "tsconfig.json",
+    "next.config.ts",
+    "next-env.d.ts",
+    "prisma.config.ts",
+    "vitest.config.ts",
+    "eslint.config.mjs",
+    "prettier.config.mjs",
+    ".github/workflows/ci.yml"
+  ],
+  "migrations": 8,
+  "databasePhaseHead": "13e7191f340e998c93b644949602f1c0774fe9ff",
+  "databasePhaseQualification": "Clean migrations and repeat seed/SQL checks ran before UI fixes were committed; prisma tree is byte-identical between that head and repaired application head.",
+  "databaseGate": [
+    {
+      "command": "npm run db:validate",
+      "exitCode": 0,
+      "durationSeconds": 2.311,
+      "log": "db-01-db-validate.log"
+    },
+    {
+      "command": "npm run db:generate",
+      "exitCode": 0,
+      "durationSeconds": 1.863,
+      "log": "db-02-db-generate.log"
+    },
+    {
+      "command": "npm run db:migrate",
+      "exitCode": 0,
+      "durationSeconds": 1.601,
+      "log": "db-03-db-migrate.log"
+    },
+    {
+      "command": "npm run db:seed",
+      "exitCode": 0,
+      "durationSeconds": 4.249,
+      "log": "db-04-db-seed.log"
+    },
+    {
+      "command": "npm run db:verify",
+      "exitCode": 0,
+      "durationSeconds": 8.585,
+      "log": "db-05-db-verify.log"
+    },
+    {
+      "command": "npm run db:migrate",
+      "exitCode": 0,
+      "durationSeconds": 1.146,
+      "log": "db-06-db-migrate.log"
+    },
+    {
+      "command": "npm run db:seed",
+      "exitCode": 0,
+      "durationSeconds": 4.23,
+      "log": "db-07-db-seed.log"
+    },
+    {
+      "command": "npm run db:verify",
+      "exitCode": 0,
+      "durationSeconds": 8.223,
+      "log": "db-08-db-verify.log"
+    }
+  ],
+  "applicationGate": [
+    {
+      "command": "npm ci --no-audit --no-fund",
+      "exitCode": 0,
+      "durationSeconds": 7.318,
+      "log": "app-01-no-fund.log"
+    },
+    {
+      "command": "npm run format:check",
+      "exitCode": 0,
+      "durationSeconds": 2.061,
+      "log": "app-02-format-check.log"
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "durationSeconds": 3.819,
+      "log": "app-03-lint.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "durationSeconds": 1.722,
+      "log": "app-04-typecheck.log"
+    },
+    {
+      "command": "npm run test",
+      "exitCode": 0,
+      "durationSeconds": 81.148,
+      "log": "app-05-test.log"
+    },
+    {
+      "command": "npm run test:localization",
+      "exitCode": 0,
+      "durationSeconds": 0.536,
+      "log": "app-06-test-localization.log"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "durationSeconds": 6.535,
+      "log": "app-07-build.log"
+    },
+    {
+      "command": "npm audit --omit=dev --audit-level=high",
+      "exitCode": 0,
+      "durationSeconds": 0.556,
+      "log": "app-08-audit-level=high.log"
+    }
+  ],
+  "summary": {
+    "testFiles": 59,
+    "testsPassed": 455,
+    "testsSkipped": 0,
+    "postgresAdversarialTests": 88,
+    "independentStoredDataTests": 3,
+    "localizationFiles": 4,
+    "localizationTests": 12,
+    "productionVulnerabilities": 0,
+    "lintErrors": 0,
+    "lintWarnings": 1
+  },
+  "lintWarning": "Existing prisma.config.ts anonymous default export warning.",
+  "buildId": "4Zn6yTS6DP2jLb0DDZye_",
+  "generatedFiles": "Next-generated-only next-env.d.ts change inspected and restored to exact committed bytes after successful build.",
+  "independentTargeted": {
+    "files": 15,
+    "testsPassed": 69,
+    "verdict": "PASS_CODE_REVIEW_ONLY"
+  },
+  "priorAttempt": "evidence/revision-20261116/attempt-1-validation-application.json retains a formatting-only failure corrected before the final candidate.",
+  "exactHeadCi": "Required on the final publication commit; final PR description links the exact head and run.",
+  "browserRetest": "NOT_RUN; use local-qa-retest-handoff.md.",
+  "acceptanceGranted": false,
+  "logDirectory": "evidence/revision-20261116/"
+}
