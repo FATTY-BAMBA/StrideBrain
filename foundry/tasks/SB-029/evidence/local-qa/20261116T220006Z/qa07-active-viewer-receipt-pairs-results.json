@@ -1,0 +1,66 @@
+[
+  {
+    "actor": "viewer",
+    "locale": "en",
+    "type": "action",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+    "observed": {
+      "dialogs": 1,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nThis action is unavailable with your current access.\n\nInternal review action created\n\nThis receipt records the action saved to the project.\n\nEnglish\n繁體中文\nClose\n\nThis action is unavailable with your current access.",
+    "forbiddenContent": false,
+    "file": "qa07-active-viewer-receipt-pairs-en-action-foreign.jpg"
+  },
+  {
+    "actor": "viewer",
+    "locale": "en",
+    "type": "action",
+    "existence": "missing",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_7c62492c-53bc-4ee6-94a2-913e6e679e22",
+    "observed": {
+      "dialogs": 1,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_7c62492c-53bc-4ee6-94a2-913e6e679e22",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nThis action is unavailable with your current access.\n\nInternal review action created\n\nThis receipt records the action saved to the project.\n\nEnglish\n繁體中文\nClose\n\nThis action is unavailable with your current access.",
+    "forbiddenContent": false,
+    "file": "qa07-active-viewer-receipt-pairs-en-action-missing.jpg"
+  },
+  {
+    "actor": "viewer",
+    "locale": "zh-TW",
+    "type": "action",
+    "existence": "foreign",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+    "observed": {
+      "dialogs": 1,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n內部審查事項\n\n開啟已儲存回執以檢視詳情，或返回來源比較。\n\n依您目前的權限，無法查看或建立此事項。\n\n已建立內部審查事項\n\n此回執記錄已儲存至專案的事項。\n\nEnglish\n繁體中文\n關閉\n\n依您目前的權限，無法查看或建立此事項。",
+    "forbiddenContent": false,
+    "file": "qa07-active-viewer-receipt-pairs-zh-TW-action-foreign.jpg"
+  },
+  {
+    "actor": "viewer",
+    "locale": "zh-TW",
+    "type": "action",
+    "existence": "missing",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_7c62492c-53bc-4ee6-94a2-913e6e679e22",
+    "observed": {
+      "dialogs": 1,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_7c62492c-53bc-4ee6-94a2-913e6e679e22",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n內部審查事項\n\n開啟已儲存回執以檢視詳情，或返回來源比較。\n\n依您目前的權限，無法查看或建立此事項。\n\n已建立內部審查事項\n\n此回執記錄已儲存至專案的事項。\n\nEnglish\n繁體中文\n關閉\n\n依您目前的權限，無法查看或建立此事項。",
+    "forbiddenContent": false,
+    "file": "qa07-active-viewer-receipt-pairs-zh-TW-action-missing.jpg"
+  }
+]

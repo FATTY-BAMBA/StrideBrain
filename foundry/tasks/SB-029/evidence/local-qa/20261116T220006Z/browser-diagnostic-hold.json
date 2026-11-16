@@ -1,0 +1,11 @@
+{
+  "runId": "20261116T220006Z",
+  "at": "2026-11-16T22:46:49.355Z",
+  "browserRequestsHeld": false,
+  "currentPersona": "viewer",
+  "reason": "Operator reported HTTP confirmation created third synthetic action during Finance historical canReadActuals=false negative. Flag restored. Await independent policy/source diagnosis; no browser classification or further business write.",
+  "northernBootstrapConsumed": false,
+  "classification": "INVALID_NEGATIVE_TEST_PREMISE",
+  "resolvedAt": "2026-11-16T22:51:32.635Z",
+  "resolution": "Root and independent reviewer verified policy, all15 source classifications, and Iris active Xinyi authority. Neihu historical canReadActuals=false did not revoke required authority. Third HTTP-created synthetic action is authorized and retained, with no browser credit. Original harness expectation failure remains recorded."
+}

@@ -1,0 +1,116 @@
+{
+  "runId": "20261116T220006Z",
+  "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+  "build": "4Zn6yTS6DP2jLb0DDZye_",
+  "at": "2026-11-16T23:15:20.562Z",
+  "stop": "F-06 P1; no new prepares/confirms/negative POSTs/mutations after stop; only authorized read-only evidence and cleanup",
+  "counts": {
+    "PASS": 3,
+    "FAIL": 4,
+    "PARTIAL": 8,
+    "BLOCKED": 3
+  },
+  "cases": [
+    {
+      "id": "QA-01",
+      "status": "PARTIAL",
+      "coverage": "Two Mei UI creations and explicit review/confirmation observed; required Finance/Admin bilingual creation journeys blocked by P1 stop."
+    },
+    {
+      "id": "QA-02",
+      "status": "PARTIAL",
+      "coverage": "Bounded selections, date edits/clear,32 bilingual HTTP negatives and focused browser yesterday/day366 errors verified; accepted min/max/empty-date confirmations and full native-calendar/device cases incomplete."
+    },
+    {
+      "id": "QA-03",
+      "status": "PARTIAL",
+      "coverage": "Two UI actions have exact atomic SQL/receipt lineage; Actions/workspace/reload/copied-URL reopening observed. Complete required persona matrix absent."
+    },
+    {
+      "id": "QA-04",
+      "status": "PASS",
+      "coverage": "Cancel/Escape create nothing; return focus to entry, keyboard reopening heading, evidence roundtrip and focus containment verified."
+    },
+    {
+      "id": "QA-05",
+      "status": "PARTIAL",
+      "coverage": "Targeted rapid and individual edit/navigation retention passes including nondefault native-key date, locale, history and evidence; nondefault edited payload was intentionally cancelled before QA06, so confirmation-to-receipt equality remains untested."
+    },
+    {
+      "id": "QA-06",
+      "status": "PARTIAL",
+      "coverage": "Two preloaded identical default forms and double-click resolve to same action; SQL uniqueness and8 HTTP replay checks. Remaining cross-locale/expiry browser POST variants not completed."
+    },
+    {
+      "id": "QA-07",
+      "status": "PARTIAL",
+      "coverage": "Viewer and cleared/revoked/naturally expired browser GET matrices complete in both locales; equivalent-context known/missing receipt bodies identical. Fresh expired/revoked/cleared POST variants absent."
+    },
+    {
+      "id": "QA-08",
+      "status": "PASS",
+      "coverage": "28 browser selector routes cover both fixture-supported personas/locales;12 Northern pairs normalize identically; own-project positive control. Approved HTTP assignee/tenant supplements and fixture limits recorded."
+    },
+    {
+      "id": "QA-09",
+      "status": "PASS",
+      "coverage": "Chosen and locked-default assignee invalidations reject in both locales with selector/fallback focus; foreign/inactive/unassigned/evidence-ineligible/actual-access negative supplements restored. Invalid historical-flag premise retained separately, not relabeled pass."
+    },
+    {
+      "id": "QA-10",
+      "status": "BLOCKED",
+      "coverage": "BLOCKED_P1_STOP before fresh project/quote/comparison/enrichment mutation browser matrix."
+    },
+    {
+      "id": "QA-11",
+      "status": "FAIL",
+      "coverage": "F-06 P1: changed-authority source is shown as Observed / 已擷取 while saved claim still asserts authority-eligible support without mandatory stale warning. Both confirmations correctly reject stale; remaining5 evidence mutations BLOCKED_P1_STOP."
+    },
+    {
+      "id": "QA-12",
+      "status": "BLOCKED",
+      "coverage": "BLOCKED_P1_STOP before fresh proposal/create/read-capability/project-assignment/action-flag downgrade browser matrix."
+    },
+    {
+      "id": "QA-13",
+      "status": "PARTIAL",
+      "coverage": "Consumed/default replay subset verified before proposal expiry. No fresh proposal-expiry boundary or expired/revoked POST supplement ran; unconsumed proposal before/exact/after30-minute browser boundary remains incomplete. Session expiry QA07 is not proposal expiry."
+    },
+    {
+      "id": "QA-14",
+      "status": "BLOCKED",
+      "coverage": "BLOCKED_P1_STOP before transaction-fault browser scenarios; deterministic CI/server evidence is not browser execution."
+    },
+    {
+      "id": "QA-15",
+      "status": "FAIL",
+      "coverage": "Generic stale rejection focuses BODY outside dialog while error alert remains above viewport in both locales. Keyboard trap/date/cancel checks and actual200% review/receipt read-only captures complete. Full keyboard creation,200% errors, reduced-motion transition and AT/device checks incomplete."
+    },
+    {
+      "id": "QA-16",
+      "status": "FAIL",
+      "coverage": "Untranslated technical source record types/policy/subtype remain in normal Taiwan Traditional Chinese journey. Extensive four-width review/evidence/error/receipt layouts verified; pending footer/zh variants BLOCKED_P1_STOP; physical keyboard occlusion NOT_VERIFIED_MANUAL_REQUIRED."
+    },
+    {
+      "id": "QA-17",
+      "status": "PARTIAL",
+      "coverage": "Exact-head server-performance reference available; warmed browser timing distribution was not collected before P1 stop. Screenshot timestamps are not credited as latency samples. Artificial20-second pending delay excluded."
+    },
+    {
+      "id": "QA-18",
+      "status": "FAIL",
+      "coverage": "Forecast/actual/quoted/supplier financial distinctions, six ranks, abstention and programme warnings verified; residual Chinese technical copy and F-06 missing stale warning fail required evidence regression. No Stage8 acceptance."
+    }
+  ],
+  "manualRequired": [
+    "Actual screen-reader announcements and interaction",
+    "Physical mobile touch/keyboard/native date picker behavior",
+    "Full reduced-motion behavioral journey; preference capability observed but completed transition not verified"
+  ],
+  "businessUnits": {
+    "browserCreated": 2,
+    "operatorCreatedUnderInvalidNegativePremise": 1,
+    "total": 3
+  },
+  "scopeQualification": "Old run204852 and original041837 evidence are not credited as fresh passes."
+}

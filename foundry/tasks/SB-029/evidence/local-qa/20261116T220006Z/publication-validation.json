@@ -1,0 +1,14 @@
+{
+  "result": "PASS",
+  "files": 625,
+  "images": 240,
+  "counts": {
+    "PARTIAL": 8,
+    "PASS": 3,
+    "BLOCKED": 3,
+    "FAIL": 4
+  },
+  "errors": [],
+  "checkedAt": "2026-11-16T23:20:02.097965+00:00",
+  "scope": "Final scenario/count/reference, image-review/hash, source/build, fixture/session/guard/migration and prior-evidence-preservation checks. File count is this pre-manifest validation snapshot; FILES.txt gives the final publication inventory."
+}

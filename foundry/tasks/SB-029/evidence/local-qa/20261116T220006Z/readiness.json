@@ -1,0 +1,58 @@
+{
+  "runId": "20261116T220006Z",
+  "startedAt": "2026-11-16T22:00:06Z",
+  "verifiedAt": "2026-11-16T22:02:05.158483+00:00",
+  "branch": "build/sb-029-governed-internal-review",
+  "exactHead": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+  "applicationCommit": "df63c90ca994653299082fc5078ad0b5ef595292",
+  "sourceTreeFingerprintSha256": "82ce9a43b9bf4da5280c09cb839eeb277213acd09b73e46aa0a8f15f2758a460",
+  "sourceTreePaths": [
+    "src",
+    "tests",
+    "prisma",
+    "package.json",
+    "package-lock.json",
+    "tsconfig.json",
+    "next.config.ts",
+    "next-env.d.ts",
+    "prisma.config.ts",
+    "vitest.config.ts",
+    "eslint.config.mjs",
+    "prettier.config.mjs",
+    ".github/workflows/ci.yml"
+  ],
+  "productWorktreeClean": true,
+  "stagingInitiallyEmpty": true,
+  "buildId": "4Zn6yTS6DP2jLb0DDZye_",
+  "migrations": 8,
+  "firstRun": {
+    "runId": "20261116T041837Z",
+    "branch": "qa/sb-029-local-20261116T041837Z",
+    "commit": "0c9b4293a9e91aa6121b8571e7f22537b131760d",
+    "directParent": "13e7191f340e998c93b644949602f1c0774fe9ff",
+    "counts": {
+      "PASS": 9,
+      "FAIL": 3,
+      "PARTIAL": 5,
+      "BLOCKED": 1
+    },
+    "preservation": "No changes authorized or made",
+    "reviewed": [
+      "REPORT.txt",
+      "FINDINGS.txt",
+      "screenshot-review.json"
+    ],
+    "screenshotReviewSummary": {
+      "CONTENT_VISIBLE": 72,
+      "LOADING_ONLY": 8,
+      "PRE_RESULT_REVIEW": 9
+    }
+  },
+  "runtimeStatus": "READY",
+  "independence": "Independent browser evaluator and SQL operator did not author product fixes. Source immutable throughout QA.",
+  "acceptanceGranted": false,
+  "databaseSetup": "fresh-database-setup.json",
+  "databaseBaseline": "fresh-initial-integrity.json",
+  "runtimeReadiness": "fresh-runtime-readiness.json",
+  "runtimeReadyAt": "2026-11-16T22:05:39.999826+00:00"
+}

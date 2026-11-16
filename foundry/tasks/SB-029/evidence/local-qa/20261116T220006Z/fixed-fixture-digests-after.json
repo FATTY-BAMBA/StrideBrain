@@ -1,0 +1,87 @@
+{
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "at": "2026-11-16T23:12:32.995Z",
+  "phase": "after",
+  "classification": "READ_ONLY_FIXED_FIXTURE_DIGESTS",
+  "method": "SHA256 over complete PostgreSQL to_jsonb row text ordered lexically, separated by newline, within repeatable-read read-only transaction. Raw rows not retained.",
+  "excluded": "Sessions and intentional comparison/enrichment/proposal/action/receipt/audit history; run-specific mutable comparison/enrichment records retain per-case restoration hashes.",
+  "tables": [
+    {
+      "table": "Project",
+      "rowCount": 30,
+      "sha256": "0cba4c6afa3680902ec355ba645c0d5eaa52c279a78919c1b2f759bd98e76201"
+    },
+    {
+      "table": "Membership",
+      "rowCount": 5,
+      "sha256": "f699f7039038d4f20392ca594613134a7795f4ad0b5093dd74f7b2e62946bd49"
+    },
+    {
+      "table": "Person",
+      "rowCount": 5,
+      "sha256": "fd1bb814f1ec3cfa6fdc7cde99e8edafe54f634ae54f8fa726c85b206ec29f09"
+    },
+    {
+      "table": "ProjectAssignment",
+      "rowCount": 33,
+      "sha256": "8319e3e763ec90d31e148ea97265f4c1ecc5f83318ef4f93209cc655e09325be"
+    },
+    {
+      "table": "MembershipCapabilityGrant",
+      "rowCount": 5,
+      "sha256": "6a2ce89f26d0ae3cfa007292a870504d3a87ab4fd9971eafe7081c13e93d91d5"
+    },
+    {
+      "table": "QuoteVersion",
+      "rowCount": 46,
+      "sha256": "a06dfe27570e3d2289e4f793acf55dcf7ce6a756bbcd25ef0253df788e2665af"
+    },
+    {
+      "table": "EvidenceReference",
+      "rowCount": 571,
+      "sha256": "b3f857ee7f7637964a61d6d114f2024101780ac6cca6bf243535b653975e7e21"
+    },
+    {
+      "table": "EvidenceConflict",
+      "rowCount": 1,
+      "sha256": "3e74c5b199e10a10aeddadb0651a5647a1ce646bdb7ff7573c35ed4d2cea39e4"
+    }
+  ],
+  "combinedSha256": "3cfb17f7ea6cb2e385c31a38e93c315b7c45c4385f1c123d0d113bb2bc499865",
+  "matchesInitialFixtureDigests": true,
+  "perTableEquality": [
+    {
+      "table": "Project",
+      "matches": true
+    },
+    {
+      "table": "Membership",
+      "matches": true
+    },
+    {
+      "table": "Person",
+      "matches": true
+    },
+    {
+      "table": "ProjectAssignment",
+      "matches": true
+    },
+    {
+      "table": "MembershipCapabilityGrant",
+      "matches": true
+    },
+    {
+      "table": "QuoteVersion",
+      "matches": true
+    },
+    {
+      "table": "EvidenceReference",
+      "matches": true
+    },
+    {
+      "table": "EvidenceConflict",
+      "matches": true
+    }
+  ]
+}

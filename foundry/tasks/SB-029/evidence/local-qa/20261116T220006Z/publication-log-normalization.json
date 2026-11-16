@@ -1,0 +1,42 @@
+{
+  "at": "2026-11-16T23:21:13.178325+00:00",
+  "reason": "git diff --cached --check found whitespace-only log artifacts.",
+  "operation": "Trim trailing spaces and surplus blank lines at EOF only; retain all non-whitespace log content. No source, historical evidence or screenshots changed.",
+  "files": [
+    {
+      "file": "operator-http-eligibility-1794869125443.log",
+      "beforeSha256": "fcb5b77ff98333820cb4058e459aaebdbeab274c4685447f769d12f38a99e9a7",
+      "afterSha256": "530dc592de14ef975c4b8968eb23ef3ab68792207ec3b66795f1a134aa02ab91",
+      "beforeBytes": 6478,
+      "afterBytes": 5458
+    },
+    {
+      "file": "setup-02-db-seed.log",
+      "beforeSha256": "21bf0ebd4026dd1e2aa6bc1d95ac82744bd1e14898d7bbb0a281a3c5f0e349df",
+      "afterSha256": "df9786b69906cb6822fc42c7a77e95c8538cf3db5c766bb1326483997aae8070",
+      "beforeBytes": 1633,
+      "afterBytes": 1632
+    },
+    {
+      "file": "setup-03-db-verify.log",
+      "beforeSha256": "66da2f956a9f19b9dcf2f9247a533ff8fe861552d7b83e9fe7f0f1ff53031af0",
+      "afterSha256": "3f78fbf87b57122dbfe4cfa1a9ce5e3302060d28267166a107638ef5224aefeb",
+      "beforeBytes": 1559,
+      "afterBytes": 1558
+    },
+    {
+      "file": "setup-05-db-seed.log",
+      "beforeSha256": "28a66fdcf4f28738da3f343f12fcda1a5ea267065cfa4c5fcda769fa02de8a51",
+      "afterSha256": "d8d0880a5cdd6e57b29dd4340c9084535760835fcb5d6dfa33a19c36d23e66bb",
+      "beforeBytes": 765,
+      "afterBytes": 764
+    },
+    {
+      "file": "setup-06-db-verify.log",
+      "beforeSha256": "66da2f956a9f19b9dcf2f9247a533ff8fe861552d7b83e9fe7f0f1ff53031af0",
+      "afterSha256": "3f78fbf87b57122dbfe4cfa1a9ce5e3302060d28267166a107638ef5224aefeb",
+      "beforeBytes": 1559,
+      "afterBytes": 1558
+    }
+  ]
+}

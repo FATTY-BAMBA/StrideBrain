@@ -1,0 +1,29 @@
+{
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "label": "qa06-confirm-pending",
+  "startedAt": "2026-11-16T22:34:55.965Z",
+  "releasedAt": "2026-11-16T22:35:16.019Z",
+  "durationMs": 20054,
+  "manualRelease": false,
+  "classification": "ARTIFICIAL_AUTHORIZATION_READ_DELAY_FOR_PENDING_LAYOUT_ONLY",
+  "method": "Temporary ACCESS EXCLUSIVE authorization-read lock in a rolled-back transaction; no field or product mutation. Nominal 20-second automatic hold; measured setup/release duration is retained separately. Server statement and idle-in-transaction timeouts are 25 seconds.",
+  "excludeFromPerformance": true,
+  "countsBefore": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "countsAtRelease": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "nominalHoldMilliseconds": 20000,
+  "serverGuardMilliseconds": 25000,
+  "timingQualification": "Measured duration includes setup/release overhead and can exceed the nominal hold. Artificial delay is excluded from performance samples."
+}

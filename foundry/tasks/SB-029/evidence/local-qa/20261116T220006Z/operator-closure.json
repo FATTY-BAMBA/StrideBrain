@@ -1,0 +1,82 @@
+{
+  "runId": "20261116T220006Z",
+  "endedAt": "2026-11-16T23:18:26Z",
+  "classification": "OPERATOR_P1_STOP_CLEANUP_COMPLETE",
+  "stop": {
+    "findingId": "F-06",
+    "scenarioIds": [
+      "QA-11",
+      "QA-18"
+    ],
+    "furtherScenarioWrites": false,
+    "stage8AcceptanceClaim": false
+  },
+  "runtime": {
+    "productionPreview": {
+      "port": 3000,
+      "processId": 22253,
+      "execSession": 22473,
+      "disposition": "LEFT_RUNNING",
+      "listenerVerified": true
+    },
+    "qaSessionIssuer": {
+      "port": 3001,
+      "execSession": 86695,
+      "disposition": "STOPPED_AFTER_BROWSER_FREEZE",
+      "exitCode": 130,
+      "listenerAbsentVerified": true
+    },
+    "databaseContainer": "stridebrain-sb029-retest-20261116t220006z",
+    "database": "stridebrain_sb029_retest_220006",
+    "databasePort": 54332,
+    "databaseDisposition": "RETAINED_FOR_REVIEW"
+  },
+  "browserFreezeAt": "2026-11-16T23:17:37.789Z",
+  "finalCounts": {
+    "actions": 3,
+    "consumedProposals": 3,
+    "receipts": 3,
+    "audits": 3,
+    "actionEvidenceLinks": 45,
+    "proposals": 6,
+    "activeSessions": 0,
+    "temporaryGrants": 0,
+    "temporaryTriggers": 0,
+    "temporaryFunctions": 0,
+    "temporaryConflicts": 0
+  },
+  "actionOrigins": {
+    "browserConfirmed": 2,
+    "authorizedHttpFromInvalidNegativePremise": 1,
+    "diagnosisArtifact": "qa09-historical-flag-expectation-correction.json"
+  },
+  "allRecordedMutationsRestored": true,
+  "fixedFixtureDigestsMatch": true,
+  "seedSessionFixtureDigestMatches": true,
+  "allThreeOlderDatabaseTableDigestsMatch": true,
+  "immutableGuardsVerified": 4,
+  "migrationsVerified": 8,
+  "expiredRevokedHttpPostSupplement": {
+    "executed": false,
+    "reason": "Prepared helper only; the P1 stop occurred before session setup or HTTP execution.",
+    "browserCredit": false
+  },
+  "artifacts": [
+    "final-integrity.json",
+    "final-operator-database-snapshot.json",
+    "restoration-ledger.json",
+    "session-revocation.json",
+    "final-catalog-guard-session-proof.json",
+    "fixed-fixture-digests-after.json",
+    "original-first-run-preservation-after.json",
+    "revision-validation-preservation-after.json",
+    "interrupted-run-204852-preservation-after.json",
+    "F06-claim-source-confirm-provenance.json",
+    "runtime-app-sanitized.log",
+    "runtime-log-capture.json",
+    "runtime-environment-attestation.json"
+  ],
+  "operatorEvidenceFrozen": true,
+  "productSourceChanged": false,
+  "gitActionsPerformed": false
+}

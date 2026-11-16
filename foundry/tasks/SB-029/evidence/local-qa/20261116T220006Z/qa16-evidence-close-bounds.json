@@ -1,0 +1,322 @@
+[
+  {
+    "name": "qa18-en-stone-claim-390",
+    "width": 390,
+    "close": [
+      {
+        "bottom": 279.3125,
+        "height": 44.390625,
+        "left": 16,
+        "right": 157.7109375,
+        "top": 234.921875,
+        "width": 141.7109375,
+        "x": 16,
+        "y": 234.921875
+      }
+    ]
+  },
+  {
+    "name": "qa18-en-stone-claim-1440",
+    "width": 1440,
+    "close": [
+      {
+        "bottom": 84.390625,
+        "height": 44.390625,
+        "left": 1278.2890625,
+        "right": 1420,
+        "top": 40,
+        "width": 141.7109375,
+        "x": 1278.2890625,
+        "y": 40
+      }
+    ]
+  },
+  {
+    "name": "qa18-en-stone-claim-768",
+    "width": 768,
+    "close": [
+      {
+        "bottom": 84.390625,
+        "height": 44.390625,
+        "left": 606.2890625,
+        "right": 748,
+        "top": 40,
+        "width": 141.7109375,
+        "x": 606.2890625,
+        "y": 40
+      }
+    ]
+  },
+  {
+    "name": "qa18-en-stone-claim-320",
+    "width": 320,
+    "close": [
+      {
+        "bottom": 295.9921875,
+        "height": 44.390625,
+        "left": 16,
+        "right": 157.7109375,
+        "top": 251.6015625,
+        "width": 141.7109375,
+        "x": 16,
+        "y": 251.6015625
+      }
+    ]
+  },
+  {
+    "name": "qa18-en-forecast-source-320",
+    "width": 320,
+    "close": [
+      {
+        "bottom": 270.9921875,
+        "height": 44.390625,
+        "left": 16,
+        "right": 157.7109375,
+        "top": 226.6015625,
+        "width": 141.7109375,
+        "x": 16,
+        "y": 226.6015625
+      }
+    ]
+  },
+  {
+    "name": "qa18-en-forecast-source-390",
+    "width": 390,
+    "close": [
+      {
+        "bottom": 254.3125,
+        "height": 44.390625,
+        "left": 16,
+        "right": 157.7109375,
+        "top": 209.921875,
+        "width": 141.7109375,
+        "x": 16,
+        "y": 209.921875
+      }
+    ]
+  },
+  {
+    "name": "qa18-en-forecast-source-768",
+    "width": 768,
+    "close": [
+      {
+        "bottom": 84.390625,
+        "height": 44.390625,
+        "left": 606.2890625,
+        "right": 748,
+        "top": 40,
+        "width": 141.7109375,
+        "x": 606.2890625,
+        "y": 40
+      }
+    ]
+  },
+  {
+    "name": "qa18-en-forecast-source-1440",
+    "width": 1440,
+    "close": [
+      {
+        "bottom": 84.390625,
+        "height": 44.390625,
+        "left": 1278.2890625,
+        "right": 1420,
+        "top": 40,
+        "width": 141.7109375,
+        "x": 1278.2890625,
+        "y": 40
+      }
+    ]
+  },
+  {
+    "name": "qa18-en-forecast-source-authority-1440",
+    "width": 1440,
+    "close": [
+      {
+        "bottom": 84.390625,
+        "height": 44.390625,
+        "left": 1278.2890625,
+        "right": 1420,
+        "top": 40,
+        "width": 141.7109375,
+        "x": 1278.2890625,
+        "y": 40
+      }
+    ]
+  },
+  {
+    "name": "qa18-en-forecast-source-authority-768",
+    "width": 768,
+    "close": [
+      {
+        "bottom": 84.390625,
+        "height": 44.390625,
+        "left": 606.2890625,
+        "right": 748,
+        "top": 40,
+        "width": 141.7109375,
+        "x": 606.2890625,
+        "y": 40
+      }
+    ]
+  },
+  {
+    "name": "qa18-en-forecast-source-authority-390",
+    "width": 390,
+    "close": [
+      {
+        "bottom": 254.3125,
+        "height": 44.390625,
+        "left": 16,
+        "right": 157.7109375,
+        "top": 209.921875,
+        "width": 141.7109375,
+        "x": 16,
+        "y": 209.921875
+      }
+    ]
+  },
+  {
+    "name": "qa18-en-forecast-source-authority-320",
+    "width": 320,
+    "close": [
+      {
+        "bottom": 270.9921875,
+        "height": 44.390625,
+        "left": 16,
+        "right": 157.7109375,
+        "top": 226.6015625,
+        "width": 141.7109375,
+        "x": 16,
+        "y": 226.6015625
+      }
+    ]
+  },
+  {
+    "name": "qa18-zh-stone-claim-390",
+    "width": 390,
+    "close": [
+      {
+        "bottom": 258.4375,
+        "height": 44.390625,
+        "left": 16,
+        "right": 136.390625,
+        "top": 214.046875,
+        "width": 120.390625,
+        "x": 16,
+        "y": 214.046875
+      }
+    ]
+  },
+  {
+    "name": "qa18-zh-stone-claim-1440",
+    "width": 1440,
+    "close": [
+      {
+        "bottom": 84.390625,
+        "height": 44.390625,
+        "left": 1299.609375,
+        "right": 1420,
+        "top": 40,
+        "width": 120.390625,
+        "x": 1299.609375,
+        "y": 40
+      }
+    ]
+  },
+  {
+    "name": "qa18-zh-stone-claim-768",
+    "width": 768,
+    "close": [
+      {
+        "bottom": 84.390625,
+        "height": 44.390625,
+        "left": 627.609375,
+        "right": 748,
+        "top": 40,
+        "width": 120.390625,
+        "x": 627.609375,
+        "y": 40
+      }
+    ]
+  },
+  {
+    "name": "qa18-zh-stone-claim-320",
+    "width": 320,
+    "close": [
+      {
+        "bottom": 270.9921875,
+        "height": 44.390625,
+        "left": 16,
+        "right": 136.390625,
+        "top": 226.6015625,
+        "width": 120.390625,
+        "x": 16,
+        "y": 226.6015625
+      }
+    ]
+  },
+  {
+    "name": "qa18-zh-forecast-source-320",
+    "width": 320,
+    "close": [
+      {
+        "bottom": 245.9921875,
+        "height": 44.390625,
+        "left": 16,
+        "right": 136.390625,
+        "top": 201.6015625,
+        "width": 120.390625,
+        "x": 16,
+        "y": 201.6015625
+      }
+    ]
+  },
+  {
+    "name": "qa18-zh-forecast-source-390",
+    "width": 390,
+    "close": [
+      {
+        "bottom": 233.4375,
+        "height": 44.390625,
+        "left": 16,
+        "right": 136.390625,
+        "top": 189.046875,
+        "width": 120.390625,
+        "x": 16,
+        "y": 189.046875
+      }
+    ]
+  },
+  {
+    "name": "qa18-zh-forecast-source-768",
+    "width": 768,
+    "close": [
+      {
+        "bottom": 84.390625,
+        "height": 44.390625,
+        "left": 627.609375,
+        "right": 748,
+        "top": 40,
+        "width": 120.390625,
+        "x": 627.609375,
+        "y": 40
+      }
+    ]
+  },
+  {
+    "name": "qa18-zh-forecast-source-1440",
+    "width": 1440,
+    "close": [
+      {
+        "bottom": 84.390625,
+        "height": 44.390625,
+        "left": 1299.609375,
+        "right": 1420,
+        "top": 40,
+        "width": 120.390625,
+        "x": 1299.609375,
+        "y": 40
+      }
+    ]
+  }
+]

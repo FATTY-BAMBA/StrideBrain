@@ -1,0 +1,20 @@
+{
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "at": "2026-11-16T22:58:31.780Z",
+  "classification": "READ_ONLY_REAL_SESSION_EXPIRY_CORROBORATION",
+  "persona": "mei",
+  "expiresAt": "2026-11-16T22:57:08.504Z",
+  "storedExpiresAtUtc": "2026-11-16 22:57:08.504",
+  "expired": true,
+  "revoked": false,
+  "counts": {
+    "actions": 3,
+    "consumed": 3,
+    "receipts": 3,
+    "audits": 3,
+    "actionevidencelinks": 45
+  },
+  "productionClockChanged": false,
+  "sessionIdOrCredentialPublished": false
+}

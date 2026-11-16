@@ -1,0 +1,74 @@
+{
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "at": "2026-11-16T22:43:23.958Z",
+  "caseId": "noassign-1794868867169",
+  "kinds": [
+    "noassign",
+    "assignee-inactive"
+  ],
+  "restored": true,
+  "restorationVerification": [
+    {
+      "table": "MembershipCapabilityGrant",
+      "id": "qa_sb029_retest_mei_action_assign",
+      "operation": "INSERT",
+      "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+      "beforeNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "restoredNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "fieldEquality": {
+        "ownedTemporaryRowAbsent": true
+      },
+      "matched": true
+    },
+    {
+      "table": "Membership",
+      "id": "membership_horizon_finance",
+      "operation": "UPDATE",
+      "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+      "beforeNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+      "restoredNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+      "fieldEquality": {
+        "active": true
+      },
+      "matched": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "countsAfter": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "noBusinessWrites": true,
+  "targetDescriptions": [
+    {
+      "table": "MembershipCapabilityGrant",
+      "id": "qa_sb029_retest_mei_action_assign",
+      "fields": [
+        "id",
+        "organizationId",
+        "membershipId",
+        "capability",
+        "effect",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    {
+      "table": "Membership",
+      "id": "membership_horizon_finance",
+      "fields": [
+        "active"
+      ]
+    }
+  ]
+}

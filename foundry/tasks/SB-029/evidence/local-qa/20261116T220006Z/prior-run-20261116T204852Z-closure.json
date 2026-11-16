@@ -1,0 +1,21 @@
+{
+  "at": "2026-11-16T22:01:58.919249+00:00",
+  "classification": "PREVIOUS_RUN_RESTORATION",
+  "sourceRun": "20261116T204852Z",
+  "sourceDatabase": "stridebrain_sb029_retest",
+  "sourcePort": 54331,
+  "newRunScenarioCredit": false,
+  "activeMutation": "project-status-1794864934196",
+  "restored": true,
+  "faultOrDelayActive": false,
+  "ledgerSessionsRevoked": 1,
+  "activeSessionsAfter": 0,
+  "oldEvidenceEdited": false,
+  "intentionalBusinessHistoryRetained": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "evidenceLinks": 30
+  }
+}

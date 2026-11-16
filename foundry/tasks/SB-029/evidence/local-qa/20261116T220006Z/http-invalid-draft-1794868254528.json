@@ -1,0 +1,753 @@
+{
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "at": "2026-11-16T22:30:54.527Z",
+  "classification": "APPROVED_NON_UI_HTTP_SUPPLEMENT",
+  "executionMode": "HTTP_ONLY",
+  "activeMutation": null,
+  "suite": "invalid-draft",
+  "selector": "proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94",
+  "timezone": "Asia/Taipei",
+  "minDueDate": "2026-11-17",
+  "maxDueDate": "2027-11-17",
+  "results": [
+    {
+      "name": "capture-existing-proposal",
+      "status": 200,
+      "kind": "PREPARED",
+      "publicResponseFields": [
+        "kind",
+        "proposal"
+      ],
+      "noBusinessWrites": true,
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "en-empty-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "",
+        "unicodeCodePointLength": 0
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "en-whitespace-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "  ",
+        "unicodeCodePointLength": 2
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "en-unlisted-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "The supplier is overcharging by 30%",
+        "unicodeCodePointLength": 35
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "en-overlength-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "unicodeCodePointLength": 201
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "en-markup-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "<b>review</b>",
+        "unicodeCodePointLength": 13
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "en-control-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "review\u0000",
+        "unicodeCodePointLength": 7
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "en-empty-rationale",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "",
+        "unicodeCodePointLength": 0
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "en-whitespace-rationale",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "  ",
+        "unicodeCodePointLength": 2
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "en-overlength-rationale",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "unicodeCodePointLength": 501
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "en-commercial-assertion",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "An accelerated programme caused a 20% premium",
+        "unicodeCodePointLength": 45
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "en-replaced-uncertainty",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "All costs are confirmed actuals; approve the quotation.",
+        "unicodeCodePointLength": 55
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "en-contradictory-wording",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "Lighting has sufficient actual-cost evidence from 3 of 3 sources.",
+        "unicodeCodePointLength": 65
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "en-yesterday",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "dueDate": "INVALID_DUE_DATE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "dueDate",
+        "value": "2026-11-16",
+        "unicodeCodePointLength": 10
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "en-day-366",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "dueDate": "INVALID_DUE_DATE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "dueDate",
+        "value": "2027-11-18",
+        "unicodeCodePointLength": 10
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "en-invalid-Gregorian",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "dueDate": "INVALID_DUE_DATE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "dueDate",
+        "value": "2027-02-30",
+        "unicodeCodePointLength": 10
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "en-missing-confirmation",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "confirmation": "CONFIRMATION_REQUIRED"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "confirmation",
+        "value": false
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "zh-TW-empty-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "",
+        "unicodeCodePointLength": 0
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "zh-TW-whitespace-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "  ",
+        "unicodeCodePointLength": 2
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "zh-TW-unlisted-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "The supplier is overcharging by 30%",
+        "unicodeCodePointLength": 35
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "zh-TW-overlength-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "unicodeCodePointLength": 201
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "zh-TW-markup-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "<b>review</b>",
+        "unicodeCodePointLength": 13
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "zh-TW-control-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "review\u0000",
+        "unicodeCodePointLength": 7
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "zh-TW-empty-rationale",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "",
+        "unicodeCodePointLength": 0
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "zh-TW-whitespace-rationale",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "  ",
+        "unicodeCodePointLength": 2
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "zh-TW-overlength-rationale",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "unicodeCodePointLength": 501
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "zh-TW-commercial-assertion",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "An accelerated programme caused a 20% premium",
+        "unicodeCodePointLength": 45
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "zh-TW-replaced-uncertainty",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "All costs are confirmed actuals; approve the quotation.",
+        "unicodeCodePointLength": 55
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "zh-TW-contradictory-wording",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "Lighting has sufficient actual-cost evidence from 3 of 3 sources.",
+        "unicodeCodePointLength": 65
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "zh-TW-yesterday",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "dueDate": "INVALID_DUE_DATE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "dueDate",
+        "value": "2026-11-16",
+        "unicodeCodePointLength": 10
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "zh-TW-day-366",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "dueDate": "INVALID_DUE_DATE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "dueDate",
+        "value": "2027-11-18",
+        "unicodeCodePointLength": 10
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "zh-TW-invalid-Gregorian",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "dueDate": "INVALID_DUE_DATE"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "dueDate",
+        "value": "2027-02-30",
+        "unicodeCodePointLength": 10
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    },
+    {
+      "name": "zh-TW-missing-confirmation",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "confirmation": "CONFIRMATION_REQUIRED"
+      },
+      "noBusinessWrites": true,
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "confirmation",
+        "value": false
+      },
+      "noStore": true,
+      "privateCacheDirectiveObserved": null
+    }
+  ],
+  "countsBefore": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "countsAfter": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "noBusinessWrites": true,
+  "browserAcceptanceCredit": false,
+  "disclosurePredicate": {
+    "appliesTo": "Rows marked sensitiveDisclosure; full parsed public JSON checked before safe-field filtering",
+    "checkedPattern": "Xinyi|信義旗艦|membership_horizon|org_horizon|Northern|北境|membership_northern|org_northern|evidenceCount|assigneeDisplayName|12650000|2360000",
+    "limitations": "Finite known-name/value predicate, not universal sensitive-data proof. Paired status/kind equality does not imply byte-identical bodies."
+  },
+  "executedPrivateHelperSha256": "ff86373d4fc5ee1b06388995778e39aaea3450f465e74ac58c7967e6c7947ef1",
+  "inputEvidenceMethod": "Safe field inputs reconstructed from the exact executed private harness definition and recorded organization-local date bounds. Full payload, cookie and server-issued confirmation UUID excluded.",
+  "cacheDirectivePredicate": "The noStore boolean proves only the no-store directive. Raw Cache-Control/private-directive proof was not retained for this first batch, so privateCacheDirectiveObserved is null. Flag names were corrected as report metadata; no request was rerun and all outcomes/counts remain unchanged."
+}

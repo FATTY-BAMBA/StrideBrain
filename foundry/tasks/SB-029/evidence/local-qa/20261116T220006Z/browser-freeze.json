@@ -1,0 +1,18 @@
+{
+  "runId": "20261116T220006Z",
+  "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+  "browserEndAt": "2026-11-16T23:17:37.789Z",
+  "evidenceFrozenAt": "2026-11-16T23:17:37.789Z",
+  "reason": "P1 F-06 stop; authorized read-only wrapup and cleanup complete",
+  "finalSession": "Revoked; normal protected comparison visibly denied after operator zero-active-session attestation",
+  "ownedTabClosed": true,
+  "remainingOwnedTabs": 0,
+  "settings": "Viewport override reset, device toolbar off, DevTools closed, reduced-motion No emulation, native175% inherited baseline, fullscreen exited; restoration record retained",
+  "manualChecks": "NOT_VERIFIED_MANUAL_REQUIRED for actual screen-reader and physical mobile/native-device behavior; reduced-motion completed journey unverified",
+  "counts": {
+    "PASS": 3,
+    "FAIL": 4,
+    "PARTIAL": 8,
+    "BLOCKED": 3
+  }
+}

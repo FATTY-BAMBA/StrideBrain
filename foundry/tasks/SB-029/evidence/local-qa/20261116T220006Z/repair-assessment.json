@@ -1,0 +1,52 @@
+{
+  "runId": "20261116T220006Z",
+  "updatedAt": "2026-11-16T23:11:30.489821+00:00",
+  "classification": "TARGETED_REPAIR_SUBCHECKS_NOT_WHOLE_SCENARIO_ACCEPTANCE",
+  "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+  "buildId": "4Zn6yTS6DP2jLb0DDZye_",
+  "repairs": [
+    {
+      "originalFinding": "F-01",
+      "status": "PASS_TARGETED",
+      "scenarios": [
+        "QA-18"
+      ],
+      "observed": "Active forecast costs and historical actual costs remain distinct through fresh comparison, source evidence, locked rationale, receipt and workspace observations in both locales with desktop/mobile captures; quoted-price and historical supplier-offer distinctions and warnings are preserved.",
+      "artifacts": [
+        "browser-variants.json",
+        "qa18-first-proposal-before-confirm.json",
+        "qa18-first-action-integrity.json",
+        "screenshot-review.json"
+      ],
+      "limit": "Targeted original F-01 labeling checks pass. Whole QA-18 fails due to residual F-03 localization and new F-06 missing stale warning; the complete post-targeted smoke was stopped under the P1 rule."
+    },
+    {
+      "originalFinding": "F-02",
+      "status": "PASS_TARGETED_WITH_SCOPE_NOTE",
+      "scenarios": [
+        "QA-05"
+      ],
+      "observed": "Rapid consecutive edits and individual title/rationale/assignee/native-key date changes retained proposal identity and full draft across immediate dialog locale changes, evidence return, cleared-date refresh and Back/Forward. SQL shows one new prepared proposal and no additional action before confirmation.",
+      "artifacts": [
+        "qa05-rapid-all-fields.json",
+        "qa05-navigation-variants.json",
+        "qa05-draft-before-http-negatives.json"
+      ],
+      "limit": "Background shell is unavailable while a modal is open. Navigation to its observed rendered href is supplemental destination proof, not a control click. Actual shell controls were exercised after closing the modal, preserving comparison selection; cancellation intentionally clears the draft. QA-04 Cancel/Escape discarded edits before QA-06 and the created browser receipts used defaults. The planned edited nondefault confirmation-to-receipt equality check was not executed before P1_STOP; QA-05 remains PARTIAL despite passing targeted draft-retention checks."
+    },
+    {
+      "originalFinding": "F-03",
+      "status": "FAIL_OPEN",
+      "scenarios": [
+        "QA-16",
+        "QA-18"
+      ],
+      "observed": "Normal Chinese source locators still expose cost-line, forecast-cost-line, quote-item and supplier-offer; comparison exposes policy/subtype/unit/location English terms.",
+      "artifacts": [
+        "findings.json",
+        "screenshot-review.json"
+      ]
+    }
+  ],
+  "acceptanceGranted": false
+}

@@ -1,0 +1,68 @@
+{
+  "at": "2026-11-16T23:09:33.400Z",
+  "preference": false,
+  "uiSelection": "prefers-reduced-motion: reduce",
+  "before": {
+    "alerts": [],
+    "bounds": {
+      "bottom": 74.234375,
+      "height": 58.234375,
+      "left": 16,
+      "right": 279.9375,
+      "top": 16,
+      "width": 263.9375,
+      "x": 16,
+      "y": 16
+    },
+    "id": "internal-review-heading",
+    "inDialog": true,
+    "label": null,
+    "role": null,
+    "tag": "H2",
+    "text": "Review internal review action",
+    "trigger": null
+  },
+  "evidenceFocus": {
+    "alerts": [],
+    "bounds": {
+      "bottom": 171.578125,
+      "height": 50,
+      "left": 16,
+      "right": 374,
+      "top": 121.578125,
+      "width": 358,
+      "x": 16,
+      "y": 121.578125
+    },
+    "id": "evidence-panel-title",
+    "inDialog": true,
+    "label": null,
+    "role": null,
+    "tag": "H2",
+    "text": "Imported stone forecast versus reconciled actual history",
+    "trigger": null
+  },
+  "returnFocus": {
+    "alerts": [],
+    "bounds": {
+      "bottom": 465.7734375,
+      "height": 87.96875,
+      "left": 52.1953125,
+      "right": 357,
+      "top": 377.8046875,
+      "width": 304.8046875,
+      "x": 52.1953125,
+      "y": 377.8046875
+    },
+    "id": "",
+    "inDialog": true,
+    "label": null,
+    "role": null,
+    "tag": "BUTTON",
+    "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.",
+    "trigger": "review-evidence-0"
+  },
+  "noSubmit": true,
+  "qualification": "Initial DevTools reduce selection was observed true, but preference was false by the completed navigation chain after DevTools closed. These transitions do NOT prove reduced-motion behavior; retry with DevTools left open.",
+  "status": "ATTEMPT_PREFERENCE_DID_NOT_PERSIST"
+}

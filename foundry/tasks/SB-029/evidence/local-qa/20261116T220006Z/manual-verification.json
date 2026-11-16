@@ -1,0 +1,35 @@
+{
+  "runId": "20261116T220006Z",
+  "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+  "items": [
+    {
+      "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+      "topic": "Real assistive technology",
+      "steps": [
+        "On a repaired approved build, enable a real screen reader (for example VoiceOver or NVDA) and use the provisioned synthetic persona.",
+        "Complete review entry, all bounded edits, evidence open/close, recoverable validation and generic error handling using keyboard only.",
+        "Confirm dialog names, field labels, error descriptions, status announcements, focus containment, receipt heading and return navigation; record actual announced text and focus."
+      ]
+    },
+    {
+      "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+      "topic": "Physical mobile keyboard and native date picker",
+      "steps": [
+        "Use actual mobile hardware at the required narrow widths with the approved local/test environment.",
+        "Open review, focus date and other fields to display the real software keyboard; set, clear and edit the date through the native picker.",
+        "Scroll while the keyboard is visible; verify warnings and primary/cancel/close controls stay reachable without overlap and that date/route state survives navigation."
+      ]
+    },
+    {
+      "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+      "topic": "Reduced motion and exact zoom matrix",
+      "steps": [
+        "On the repaired approved build, set a real reduced-motion preference and confirm the browser reports it; inspect review/evidence/receipt opening and closing.",
+        "Set the required 1280×800 base viewport and actual 200% browser zoom, then inspect review, localized errors and receipt in both locales.",
+        "Record actual native zoom, viewport/DPR, overflow, focused controls and screenshots; restore the prior preference/zoom after testing."
+      ]
+    }
+  ],
+  "condition": "Perform on a repaired approved build with fresh synthetic sessions after F-06 is repaired and the P1 stop is lifted. These are not passes in this run.",
+  "additionalRetest": "All unexecuted browser and operator variants remain listed per scenario; capable-but-stopped cases are BLOCKED_P1_STOP, not mislabeled as unsupported tooling."
+}

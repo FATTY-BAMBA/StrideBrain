@@ -1,0 +1,95 @@
+{
+  "at": "2026-11-16T22:08:29.656Z",
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "classification": "READ_ONLY_STORED_AUTHORITY_CORROBORATION",
+  "forecast": [
+    {
+      "id": "fcv_xinyi_026_v1",
+      "observationType": "FORECAST_DIRECT_COST",
+      "authorityState": "HUMAN_REVIEWED",
+      "totalDirectCost": "12650000.00",
+      "versionNumber": 1
+    }
+  ],
+  "forecastLines": [
+    {
+      "categoryId": "DEMOLITION_CEILING",
+      "amount": "3100000.00",
+      "observationType": "FORECAST_DIRECT_COST",
+      "authorityState": "HUMAN_REVIEWED"
+    },
+    {
+      "categoryId": "CUSTOM_MILLWORK",
+      "amount": "3060000.00",
+      "observationType": "FORECAST_DIRECT_COST",
+      "authorityState": "HUMAN_REVIEWED"
+    },
+    {
+      "categoryId": "LIGHTING_ELECTRICAL",
+      "amount": "2350000.00",
+      "observationType": "FORECAST_DIRECT_COST",
+      "authorityState": "HUMAN_REVIEWED"
+    },
+    {
+      "categoryId": "IMPORTED_STONE",
+      "amount": "2360000.00",
+      "observationType": "FORECAST_DIRECT_COST",
+      "authorityState": "HUMAN_REVIEWED"
+    },
+    {
+      "categoryId": "SIGNAGE",
+      "amount": "650000.00",
+      "observationType": "FORECAST_DIRECT_COST",
+      "authorityState": "HUMAN_REVIEWED"
+    },
+    {
+      "categoryId": "COORDINATION",
+      "amount": "1130000.00",
+      "observationType": "FORECAST_DIRECT_COST",
+      "authorityState": "HUMAN_REVIEWED"
+    }
+  ],
+  "quote": [
+    {
+      "id": "qv_xinyi_026_v3",
+      "observationType": "QUOTED_PRICE",
+      "authorityState": "HUMAN_REVIEWED",
+      "amountBeforeTax": "16480000.00",
+      "versionNumber": 3
+    }
+  ],
+  "historicalActuals": [
+    {
+      "businessKey": "PRJ-NANJING-023",
+      "id": "pcv_nanjing_023_v1",
+      "observationType": "RECONCILED_ACTUAL_COST",
+      "authorityState": "RECONCILED_ACTUAL",
+      "totalDirectCost": "13420000.00"
+    },
+    {
+      "businessKey": "PRJ-NEIHU-021",
+      "id": "pcv_neihu_021_v1",
+      "observationType": "RECONCILED_ACTUAL_COST",
+      "authorityState": "RECONCILED_ACTUAL",
+      "totalDirectCost": "11580000.00"
+    },
+    {
+      "businessKey": "PRJ-ZHONGSHAN-018",
+      "id": "pcv_zhongshan_018_v1",
+      "observationType": "RECONCILED_ACTUAL_COST",
+      "authorityState": "RECONCILED_ACTUAL",
+      "totalDirectCost": "10840000.00"
+    }
+  ],
+  "supplierOffers": [
+    {
+      "businessKey": "SUP-OFFER-STONE-2026-114",
+      "observationType": "SUPPLIER_OFFER",
+      "authorityState": "HUMAN_REVIEWED",
+      "amountBeforeTax": "2420000.00"
+    }
+  ],
+  "productSourceModified": false,
+  "browserAcceptanceCredit": false
+}

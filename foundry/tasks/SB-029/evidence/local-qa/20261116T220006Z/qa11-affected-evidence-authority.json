@@ -1,0 +1,19 @@
+{
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "at": "2026-11-16T23:02:24.615Z",
+  "caseId": "authority-1794870141617",
+  "reference": {
+    "id": "evid_cost_cl_nanjing_023_v1_3",
+    "subjectType": "COST_LINE",
+    "subjectId": "cl_nanjing_023_v1_3",
+    "claimKey": "actual-cost:IMPORTED_STONE",
+    "locator": {
+      "kind": "cost-line",
+      "categoryId": "IMPORTED_STONE",
+      "lineNumber": 3
+    },
+    "authorityState": "OBSERVED",
+    "observationType": "RECONCILED_ACTUAL_COST"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-16T22:52:11.395Z",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_7c62492c-53bc-4ee6-94a2-913e6e679e22",
+  "state": {
+    "dialogs": 0,
+    "fields": {},
+    "focus": {
+      "id": "",
+      "tag": "BODY",
+      "text": "BODY"
+    },
+    "selected": [],
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_7c62492c-53bc-4ee6-94a2-913e6e679e22"
+  },
+  "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nThis action is unavailable with your current access.",
+  "classification": "INVALID_CROSS_SESSION_COMPARISON",
+  "resolution": "Operator confirmed Viewer revoked at22:45 before diagnostic hold; current missing route uses revoked cookie, earlier existing route used active Viewer. No existence finding. Fresh equivalent-context pairs required.",
+  "followup": "Fresh active Viewer existing/missing pairs in both locales have identical visible heading/body; no existence distinction. See qa07-receipt-pair-comparison.json."
+}

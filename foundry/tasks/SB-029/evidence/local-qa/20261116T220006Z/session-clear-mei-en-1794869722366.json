@@ -1,0 +1,10 @@
+{
+  "classification": "OPERATOR_CLEAR_COOKIE_RESPONSE",
+  "persona": "unauthenticated",
+  "locale": "en",
+  "at": "2026-11-16T22:55:22.363Z",
+  "method": "Existing serializeClearedDemoSessionCookie via same loopback response adapter; no browser cookie injection.",
+  "operatorPersonaLabel": "mei",
+  "priorBrowserPersona": "northern (revoked before clear)",
+  "qualification": "The operator label controls redirect/cleanup bookkeeping only; clearing issues no membership credential."
+}

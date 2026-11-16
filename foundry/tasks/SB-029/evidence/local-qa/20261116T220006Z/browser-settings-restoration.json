@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-16T23:13:52.793Z",
+  "viewportOverride": "reset",
+  "deviceToolbar": "Observed enabled after DevTools use; explicitly toggled off, value0, then DevTools closed and viewport.reset called again",
+  "nativeZoom": "175% verified by Chrome AX",
+  "zoomProvenance": "Restored original localhost baseline observed during interrupted204852 run; fresh220006 testing used explicit100% reset then verified200%. Not claiming175% was fresh new-run pretest measurement.",
+  "reducedMotion": "No emulation verified in Rendering; matchMedia reduce false",
+  "devtools": "closed",
+  "fullscreen": "Exited temporary inherited fullscreen; fresh View menu explicitly showed Enter Full Screen, confirming non-fullscreen state.",
+  "nativeMetrics": {
+    "dpr": 3.5,
+    "height": 655,
+    "reducedMotion": false,
+    "width": 587
+  },
+  "noProductMutation": true
+}

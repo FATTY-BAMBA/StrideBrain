@@ -1,0 +1,16 @@
+Start with REPORT.txt for verdict and all18scenario outcomes.
+Verdict: REVISE; 3 PASS / 4 FAIL / 8 PARTIAL / 3 BLOCKED.
+P1 stop: F-06 mandatory stale warning missing (QA-11/QA-18); no further write scenarios.
+
+Read in order:
+1. computer-qa-report.json — machine-readable source/build identity, counts, complete scenario disposition and remaining work.
+2. FINDINGS.txt / findings.json — exact defect reproductions and acceptance criteria.
+3. independent-evidence-review.json — independent assessment and evidence limits.
+4. screenshot-review.json — every image, actual dimensions/hash, visual classification and limitations.
+5. manual-verification.json — NOT_VERIFIED_MANUAL_REQUIRED items and exact steps.
+6. Final cleanup artifacts listed in computer-qa-report.json — restored rows, guard verification, ledger revocation and old database preservation.
+7. publication-sanitization.json, FILES.txt, artifact-sha256.json — scan, exact file list and content hashes.
+
+Raw browser/HTTP/SQL records are retained separately. HTTP results and earlier deterministic benchmarks are not browser passes.
+First run20261116T041837Z and interrupted-run evidence remain unchanged. This is new run20261116T220006Z, based directly on3481dac48ec60e943b5d669f0f7ff0453756ab3d.
+No Stage8 acceptance or merge/release readiness is claimed.

@@ -1,0 +1,920 @@
+[
+  {
+    "at": "2026-11-16T22:15:25.551Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-18",
+    "key": "F01-initial-financial-authority",
+    "status": "PASS",
+    "persona": "mei",
+    "steps": [
+      "Inspect fresh workspace and comparison in en and zh-TW at1440x900 and390x844",
+      "Trace current imported-stone forecast and historical actual source cards",
+      "Inspect accessible amount names and calculation inputs"
+    ],
+    "expected": "Current12,650,000 and2,360,000 are forecast; historical cost remains actual.",
+    "observed": "Fresh visible comparison and source evidence uses distinct forecast direct cost and reconciled actual cost labels. Workspace shows quoted16,480,000 andforecast12,650,000 withactualunavailable. No financial authority defect observed in these paths; rationale/receipt checks remain pending.",
+    "artifacts": [
+      "qa18-en-forecast-2360000-1440-visible.jpg",
+      "qa18-en-mobile-authority-settled.jpg",
+      "qa18-zh-forecast-table-1440-visible.jpg",
+      "qa18-zh-forecast-table-390-visible.jpg",
+      "qa18-en-forecast-source-authority-390.jpg",
+      "qa18-zh-forecast-source-390.jpg",
+      "qa18-en-actual-source-390.jpg",
+      "qa18-zh-actual-source-390.jpg"
+    ],
+    "scope": "Initial financial subcheck only; not overall QA18 acceptance"
+  },
+  {
+    "at": "2026-11-16T22:25:18.310Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-03",
+    "key": "mei-first-durable-receipt",
+    "status": "PASS",
+    "persona": "mei",
+    "steps": [
+      "Explicitly confirm reviewed Chinese form",
+      "Read both locale receipts atdesktop/mobile",
+      "Follow Project Actions, reopen, refresh, and navigatecopiedEnglishreceiptURL"
+    ],
+    "expected": "One persistent action with exact evidence and safe financial meaning; receipt heading receivesfocus.",
+    "observed": "Created action_bf9f36bd-ba91-4095-acc2-9ca1532170f6 once. DefaultIris due2026-11-24;15evidencereferences; automaticfocusH2. Reopenedreceipt identity and source refs retained. Operator verified atomicrecords.",
+    "artifacts": [
+      "qa18-zh-first-receipt-1440.jpg",
+      "qa18-en-first-receipt-390.jpg",
+      "qa03-first-project-actions-zh.jpg",
+      "qa03-first-receipt-reopening.json",
+      "qa18-first-action-integrity.json"
+    ],
+    "scope": "Mei first journey only; Finance/Admin and remaining variants pending"
+  },
+  {
+    "at": "2026-11-16T22:25:35.738Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-16",
+    "key": "F03-untranslated-technical-copy",
+    "status": "FAIL",
+    "persona": "mei",
+    "steps": [
+      "Use fresh Mei session and Chinese comparison",
+      "Open imported-stone forecast/actual claim and exactsourcecards",
+      "Inspectquoteandhistoricalsupplier-offer sources andcomparisonhero/subtype"
+    ],
+    "expected": "Normal Taiwan Traditional Chinese must show natural domain labels without internal record-type or policy enums.",
+    "observed": "Fresh Chinese content exposes cost-line, forecast-cost-line, quote-item and supplier-offer in exact locators. Comparison shows CPI-SIM-1.0 and RETAIL_FLAGSHIP; workspace also retains READY/GOOD status badges. Financial authority itself is correct. Repaired field names, formula, units and rounding are localized, but F03 remains unresolved.",
+    "artifacts": [
+      "qa18-zh-forecast-source-390.jpg",
+      "qa18-zh-actual-source-1440.jpg",
+      "qa18-zh-current-quote-source-1440.jpg",
+      "qa18-zh-supplier-source-1440.jpg",
+      "qa18-zh-policy-copy.jpg",
+      "qa18-zh-subtype-copy.jpg"
+    ],
+    "severity": "P2",
+    "relatedScenarios": [
+      "QA-18"
+    ],
+    "locale": "zh-TW",
+    "viewports": [
+      "1440x900",
+      "768x1024",
+      "390x844",
+      "320x740"
+    ]
+  },
+  {
+    "at": "2026-11-16T22:25:35.739Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-18",
+    "key": "capture-qualification",
+    "status": "SUPPLEMENTAL",
+    "persona": "mei",
+    "steps": [
+      "Audit saved frames against asserted content"
+    ],
+    "expected": "Images only prove content actually visible.",
+    "observed": "Four initial en forecast amount frames show hero/cards and are excluded from cost-row proof; use -visible / mobile-authority-settled replacements. Two initial zh forecast-table frames show historical source panels and count only as source-copy evidence; use -visible replacements. Historical Zhongshan quote-source v2 captures were initially misdescribed ascurrent; correctedmetadata below.",
+    "artifacts": [
+      "qa18-en-forecast-2360000-1440-visible.jpg",
+      "qa18-zh-forecast-table-1440-visible.jpg"
+    ]
+  },
+  {
+    "at": "2026-11-16T22:32:01.798Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-05",
+    "key": "rapid-edit-route-retention",
+    "status": "PASS",
+    "persona": "mei",
+    "steps": [
+      "Rapid consecutive all-field edits immediately followed by locale",
+      "Individual title/rationale/assignee/date changes and immediate locale",
+      "Evidence roundtrip, refresh, Back and Forward",
+      "Rendered shell href destination followed while modal overlay blocked physical shell click"
+    ],
+    "expected": "Draft and proposal identity retained",
+    "observed": [
+      {
+        "variant": "shell-link-click-attempt",
+        "fields": {}
+      },
+      {
+        "variant": "evidence-return-preserves-draft-and-restores-trigger",
+        "fields": {
+          "review-assignee": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b",
+          "review-dueDate": "2026-11-25",
+          "review-rationale": "VALIDATE_HISTORY",
+          "review-title": "REVIEW"
+        }
+      },
+      {
+        "variant": "individual-rationale-immediate-shell-link-destination",
+        "fields": {
+          "review-assignee": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b",
+          "review-dueDate": "2026-11-25",
+          "review-rationale": "RECORD_QUESTIONS",
+          "review-title": "REVIEW"
+        }
+      },
+      {
+        "variant": "individual-assignee-immediate-dialog-locale",
+        "fields": {
+          "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+          "review-dueDate": "2026-11-25",
+          "review-rationale": "RECORD_QUESTIONS",
+          "review-title": "REVIEW"
+        }
+      },
+      {
+        "variant": "clear-date-immediate-dialog-locale",
+        "fields": {
+          "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+          "review-dueDate": "",
+          "review-rationale": "RECORD_QUESTIONS",
+          "review-title": "REVIEW"
+        }
+      },
+      {
+        "variant": "refresh-retains-cleared-date",
+        "fields": {
+          "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+          "review-dueDate": "",
+          "review-rationale": "RECORD_QUESTIONS",
+          "review-title": "REVIEW"
+        }
+      },
+      {
+        "variant": "back",
+        "fields": {
+          "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+          "review-dueDate": "",
+          "review-rationale": "RECORD_QUESTIONS",
+          "review-title": "REVIEW"
+        }
+      },
+      {
+        "variant": "forward",
+        "fields": {
+          "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+          "review-dueDate": "",
+          "review-rationale": "RECORD_QUESTIONS",
+          "review-title": "REVIEW"
+        }
+      },
+      {
+        "variant": "individual-title-immediate-dialog-locale",
+        "fields": {
+          "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+          "review-dueDate": "",
+          "review-rationale": "RECORD_QUESTIONS",
+          "review-title": "CHECK"
+        }
+      },
+      {
+        "variant": "individual-native-key-date-immediate-dialog-locale",
+        "fields": {
+          "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+          "review-dueDate": "2026-11-26",
+          "review-rationale": "RECORD_QUESTIONS",
+          "review-title": "CHECK"
+        }
+      }
+    ],
+    "artifacts": [
+      "qa05-rapid-all-fields.json",
+      "qa05-navigation-variants.json",
+      "qa05-rapid-all-fields-zh-upper.jpg",
+      "qa05-rapid-all-fields-zh-lower.jpg",
+      "qa05-navigation-final-lower.jpg"
+    ],
+    "scope": "Draft retention subcheck; shell destination used by explicit navigation because shell is behind modal."
+  },
+  {
+    "at": "2026-11-16T22:40:35.963Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-09",
+    "key": "qa09-selected-iris",
+    "status": "OBSERVED",
+    "persona": "mei",
+    "steps": [
+      "Both localized forms loaded before isolated mutation",
+      "Confirm old forms; capture automatic focus and retained draft",
+      "Manual alert framing for screenshots"
+    ],
+    "expected": "ASSIGNEE_UNAVAILABLE; localized field error, focused assignee selector, retained draft; no new action",
+    "observed": [
+      {
+        "locale": "zh-TW",
+        "error": "此承辦人目前無法承辦本次審查。請重新開啟審查，確認目前可用的人選。\n\n參考編號: fe3a0f1c-6a28-4830-b29d-9f30dca21e5b",
+        "focus": {
+          "alerts": [
+            {
+              "bounds": {
+                "bottom": -918.4453125,
+                "height": 92.859375,
+                "left": 780,
+                "right": 1420,
+                "top": -1011.3046875,
+                "width": 640,
+                "x": 780,
+                "y": -1011.3046875
+              },
+              "text": "此承辦人目前無法承辦本次審查。請重新開啟審查，確認目前可用的人選。\n\n參考編號: fe3a0f1c-6a28-4830-b29d-9f30dca21e5b"
+            }
+          ],
+          "bounds": {
+            "bottom": 325.234375,
+            "height": 44,
+            "left": 780,
+            "right": 1420,
+            "top": 281.234375,
+            "width": 640,
+            "x": 780,
+            "y": 281.234375
+          },
+          "id": "review-assignee",
+          "inDialog": true,
+          "label": null,
+          "role": null,
+          "tag": "SELECT",
+          "text": "未指派\n林美玲\n陳柏宇\n黃怡君",
+          "trigger": null
+        },
+        "fields": {
+          "review-assignee": "assignee_e1078151219336a0529d3fa95332a60f",
+          "review-dueDate": "2026-11-24",
+          "review-rationale": "VALIDATE_HISTORY",
+          "review-title": "CHECK"
+        }
+      },
+      {
+        "locale": "en",
+        "error": "The assignee is no longer available for this review. Reopen the review to check the current assignment.\n\nReference: 96a81378-fb46-47dd-bec0-4f98022d257a",
+        "focus": {
+          "alerts": [
+            {
+              "bounds": {
+                "bottom": -1033.8515625,
+                "height": 118.453125,
+                "left": 780,
+                "right": 1420,
+                "top": -1152.3046875,
+                "width": 640,
+                "x": 780,
+                "y": -1152.3046875
+              },
+              "text": "The assignee is no longer available for this review. Reopen the review to check the current assignment.\n\nReference: 96a81378-fb46-47dd-bec0-4f98022d257a"
+            }
+          ],
+          "bounds": {
+            "bottom": 300.0234375,
+            "height": 44,
+            "left": 780,
+            "right": 1420,
+            "top": 256.0234375,
+            "width": 640,
+            "x": 780,
+            "y": 256.0234375
+          },
+          "id": "review-assignee",
+          "inDialog": true,
+          "label": null,
+          "role": null,
+          "tag": "SELECT",
+          "text": "Unassigned\nMei Lin\nAlex Chen\nIris Huang",
+          "trigger": null
+        },
+        "fields": {
+          "review-assignee": "assignee_e1078151219336a0529d3fa95332a60f",
+          "review-dueDate": "2026-11-24",
+          "review-rationale": "VALIDATE_HISTORY",
+          "review-title": "CHECK"
+        }
+      }
+    ],
+    "artifacts": [
+      "qa09-selected-iris-before.json",
+      "qa09-selected-iris-result.json",
+      "qa09-selected-iris-en.jpg",
+      "qa09-selected-iris-zh-TW.jpg"
+    ]
+  },
+  {
+    "at": "2026-11-16T22:41:26.100Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-06",
+    "key": "two-tab-replay",
+    "status": "PASS",
+    "persona": "mei",
+    "steps": [
+      "Open same default proposal in two tabs",
+      "Confirm under controlled short artificial delay",
+      "Double-click second preloaded form"
+    ],
+    "expected": "One new action and both tabs same saved receipt",
+    "observed": {
+      "action": "action_5de2b214-0781-4e91-afb7-fd7563a418d6",
+      "sameAction": true,
+      "operator": "exactly second committed unit; 30 total evidence links"
+    },
+    "artifacts": [
+      "qa06-two-tab-result.json",
+      "qa06-first-tab-receipt.jpg",
+      "qa06-replayed-tab-receipt.jpg"
+    ],
+    "scope": "Browser replay plus operator8-case replay supplement; artificial pending delay excluded from performance"
+  },
+  {
+    "at": "2026-11-16T22:41:26.102Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-04",
+    "key": "cancel-escape-focus",
+    "status": "PASS",
+    "persona": "mei",
+    "steps": [
+      "Cancel edited review",
+      "Reopen exact proposal route",
+      "Escape from heading",
+      "Keyboard Enter action entry"
+    ],
+    "expected": "No creation on cancellation, same prepared proposal reused; focus returns to entry and reopening heading",
+    "observed": "See exact recorded focus and route states; action count remained1 until later deliberate QA06 confirmation",
+    "artifacts": [
+      "qa04-cancel-escape.json",
+      "qa15-keyboard-trap-cycle.json"
+    ]
+  },
+  {
+    "at": "2026-11-16T22:42:58.034Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-09",
+    "key": "qa09-locked-default",
+    "status": "OBSERVED",
+    "persona": "mei",
+    "steps": [
+      "Both localized forms loaded before isolated mutation",
+      "Confirm old forms; capture automatic focus and retained draft",
+      "Manual alert framing for screenshots"
+    ],
+    "expected": "ASSIGNEE_UNAVAILABLE; no selector; focus fallback linked assignee error paragraph; preserve fields and no write",
+    "observed": [
+      {
+        "locale": "zh-TW",
+        "error": "此承辦人目前無法承辦本次審查。請重新開啟審查，確認目前可用的人選。\n\n參考編號: 3cfaa95b-07eb-467a-a642-6c3564a59c27",
+        "focus": {
+          "alerts": [
+            {
+              "bounds": {
+                "bottom": -925.9453125,
+                "height": 92.859375,
+                "left": 780,
+                "right": 1420,
+                "top": -1018.8046875,
+                "width": 640,
+                "x": 780,
+                "y": -1018.8046875
+              },
+              "text": "此承辦人目前無法承辦本次審查。請重新開啟審查，確認目前可用的人選。\n\n參考編號: 3cfaa95b-07eb-467a-a642-6c3564a59c27"
+            }
+          ],
+          "bounds": {
+            "bottom": 353.5546875,
+            "height": 21.59375,
+            "left": 780,
+            "right": 1420,
+            "top": 331.9609375,
+            "width": 640,
+            "x": 780,
+            "y": 331.9609375
+          },
+          "id": "review-assigneeKey-error",
+          "inDialog": true,
+          "label": null,
+          "role": null,
+          "tag": "P",
+          "text": "此承辦人目前無法承辦本次審查。請重新開啟審查，確認目前可用的人選。",
+          "trigger": null
+        },
+        "fields": {
+          "review-dueDate": "2026-11-24",
+          "review-rationale": "REVIEW_NEXT",
+          "review-title": "CHECK"
+        }
+      },
+      {
+        "locale": "en",
+        "error": "The assignee is no longer available for this review. Reopen the review to check the current assignment.\n\nReference: ac98e765-764d-4ccf-8ac4-7e64057d5ac9",
+        "focus": {
+          "alerts": [
+            {
+              "bounds": {
+                "bottom": -1041.8515625,
+                "height": 118.453125,
+                "left": 780,
+                "right": 1420,
+                "top": -1160.3046875,
+                "width": 640,
+                "x": 780,
+                "y": -1160.3046875
+              },
+              "text": "The assignee is no longer available for this review. Reopen the review to check the current assignment.\n\nReference: ac98e765-764d-4ccf-8ac4-7e64057d5ac9"
+            }
+          ],
+          "bounds": {
+            "bottom": 349.4375,
+            "height": 43.1875,
+            "left": 780,
+            "right": 1420,
+            "top": 306.25,
+            "width": 640,
+            "x": 780,
+            "y": 306.25
+          },
+          "id": "review-assigneeKey-error",
+          "inDialog": true,
+          "label": null,
+          "role": null,
+          "tag": "P",
+          "text": "The assignee is no longer available for this review. Reopen the review to check the current assignment.",
+          "trigger": null
+        },
+        "fields": {
+          "review-dueDate": "2026-11-24",
+          "review-rationale": "REVIEW_NEXT",
+          "review-title": "CHECK"
+        }
+      }
+    ],
+    "artifacts": [
+      "qa09-locked-default-before.json",
+      "qa09-locked-default-result.json",
+      "qa09-locked-default-en.jpg",
+      "qa09-locked-default-zh-TW.jpg"
+    ]
+  },
+  {
+    "at": "2026-11-16T22:43:27.072Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-09",
+    "key": "assignee-authorization-browser",
+    "status": "PASS",
+    "persona": "mei",
+    "steps": [
+      "Eligible candidate set inspected",
+      "Approved foreign/missing/inactive/unassigned/evidence-ineligible negatives with operator restores",
+      "Chosen Iris invalidated after bilingual forms loaded",
+      "No-assign fresh comparison locks Iris, alternate/null rejected, then fixed default invalidated"
+    ],
+    "expected": "Localized safe denial and no writes; selector focus or linked fallback focus",
+    "observed": {
+      "selected": "SELECT#review-assignee in both locales",
+      "locked": "P#review-assigneeKey-error in both locales",
+      "counts": "2 actions before/after; operator restoration ledger"
+    },
+    "artifacts": [
+      "qa09-selected-iris-result.json",
+      "qa09-locked-default-result.json",
+      "qa09-locked-default-fixed-zh.jpg"
+    ],
+    "scope": "Browser behavior with SQL/HTTP supplements; candidate query-count evidence supplied separately by operator/tests"
+  },
+  {
+    "at": "2026-11-16T22:44:16.725Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-07",
+    "key": "viewer-initial-navigation-frames",
+    "status": "EXCLUDED",
+    "persona": "viewer",
+    "steps": [
+      "Initial capture helper waited only for main element"
+    ],
+    "expected": "Final settled denial required",
+    "observed": "Several initial Viewer route observations had empty main during transition; superseded by qa07-viewer-settled captures, no pass credit",
+    "artifacts": []
+  },
+  {
+    "at": "2026-11-16T22:45:07.192Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-07",
+    "key": "viewer-role-browser",
+    "status": "PASS",
+    "persona": "viewer",
+    "steps": [
+      "Trusted synthetic Viewer session",
+      "Assigned workspace both locales",
+      "Copied comparison/proposal/receipt/evidence routes both locales after settled headings/dialogs"
+    ],
+    "expected": "Financial values, proposal fields/candidates, saved action details and source previews unavailable; no writes",
+    "observed": {
+      "workspace": "Authorized structural metadata shown; financial amounts all restricted; saved action count represented as0 and no saved action list",
+      "comparison": "Structural rankings retained; economics unavailable",
+      "proposal": "Localized unavailable, no editable fields",
+      "receipt": "Localized unavailable, no action identity or payload",
+      "evidence": "Localized unavailable, no source preview"
+    },
+    "artifacts": [
+      "qa07-viewer-workspace-en.jpg",
+      "qa07-viewer-workspace-zh.jpg",
+      "qa07-viewer-settled-results.json"
+    ],
+    "scope": "Viewer variant only; cleared/expired/revoked variants pending. Initial main-only transition frames excluded."
+  },
+  {
+    "at": "2026-11-16T22:53:58.438Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-07",
+    "key": "generic-created-heading-on-denied-receipt",
+    "status": "OBSERVED",
+    "persona": "viewer",
+    "steps": [
+      "Fresh active Viewer",
+      "Open existing and syntactically valid nonexistent action routes in both locales"
+    ],
+    "expected": "Neutral unavailability with no implication of successful creation",
+    "observed": {
+      "enHeading": "Internal review action created",
+      "zhHeading": "已建立內部審查事項",
+      "body": "Localized action unavailable",
+      "pairedVisibleBodiesEqual": true,
+      "secretOrActionPayloadLeak": false
+    },
+    "artifacts": [
+      "qa07-active-viewer-receipt-pairs-results.json",
+      "qa07-receipt-pair-comparison.json"
+    ],
+    "severity": "P2 candidate copy issue, root/reviewer classification pending"
+  },
+  {
+    "at": "2026-11-16T22:55:10.770Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-08",
+    "key": "cross-tenant-browser-pairs",
+    "status": "PASS",
+    "persona": "northern",
+    "steps": [
+      "Mei existingNorthern vs missing project in both locales",
+      "Northern existingHorizon vs missing project/comparison/enrichment/proposal/action/evidence in both locales",
+      "Northern own-project positive control"
+    ],
+    "expected": "Neutral equivalent visible outcomes; no hidden names or financial/source/action details",
+    "observed": {
+      "northernRoutes": 24,
+      "normalizedPairsEqual": 12,
+      "meiRoutes": 4,
+      "normalization": "Only request IDs and user-supplied requested project key replaced",
+      "fixtureBoundary": "Northern has an existing project/person but no eligible active quote and no Stage8 business history. Northern→Horizon covers existing/missing Stage8 objects; Mei→Northern covers existing/missing project and assignee. No reverse business history is manufactured."
+    },
+    "artifacts": [
+      "qa08-mei-results.json",
+      "qa08-northern-results.json",
+      "qa08-browser-pair-comparison.json",
+      "qa08-northern-own-project.jpg",
+      "qa08-operator-selectors.json"
+    ]
+  },
+  {
+    "at": "2026-11-16T22:56:00.066Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-07",
+    "key": "revoked-and-cleared-browser",
+    "status": "PASS",
+    "persona": "cleared-session",
+    "steps": [
+      "Use revoked Viewer cookie without replacement",
+      "Test protected project/comparison/proposal/receipt/evidence both locales",
+      "Trusted adapter clears cookie; repeat same10 routes"
+    ],
+    "expected": "Fresh authorization denies protected paths without payload",
+    "observed": {
+      "revokedRoutes": 10,
+      "clearedRoutes": 10,
+      "financialPayloadFound": false,
+      "proposalFormAbsent": true
+    },
+    "artifacts": [
+      "qa07-revoked-results.json",
+      "qa07-cleared-results.json"
+    ],
+    "scope": "Revoked and cleared session variants; actual expiry next"
+  },
+  {
+    "at": "2026-11-16T22:58:00.927Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-07",
+    "key": "natural-session-expiry-browser",
+    "status": "PASS",
+    "persona": "mei-expired",
+    "steps": [
+      "Trusted60-second Mei session",
+      "Observe authorized workspace and exact saved receipt before expiresAt",
+      "Wait past real session expiry without clock changes",
+      "Reopen protected project/comparison/proposal/receipt/evidence both locales"
+    ],
+    "expected": "All protected paths deny after actual expiry without sensitive payload",
+    "observed": {
+      "expiresAt": "2026-11-16T22:57:08.504Z",
+      "afterAt": "2026-11-16T22:57:24.003Z",
+      "routes": 10,
+      "allFinancialPayloadChecksFalse": true
+    },
+    "artifacts": [
+      "qa07-session-expiry-timeline.json",
+      "qa07-expiry-authorized-before.jpg",
+      "qa07-expiry-receipt-before.jpg",
+      "qa07-expired-results.json"
+    ],
+    "scope": "Actual browser natural expiry; operator expired-not-revoked status corroboration pending"
+  },
+  {
+    "at": "2026-11-16T23:02:16.927Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-09",
+    "key": "corrected-actual-access-operator-supplement",
+    "status": "PASS",
+    "persona": "mei",
+    "steps": [
+      "Operator verifies baseline Iris eligibility and active Xinyi assignment",
+      "Separate actual-read capability DENY",
+      "Separate active-Xinyi canReadActuals=false",
+      "Both locales confirm via approved HTTP, restore each exact row/grant"
+    ],
+    "expected": "ASSIGNEE_UNAVAILABLE and zero writes for genuine loss of required actual authority",
+    "observed": {
+      "bothPairsDenied": true,
+      "counts": "3/3/3/3 with45links unchanged",
+      "restoration": "matching hashes and temporary grant absent",
+      "invalidEarlierCase": "Historical Neihu flag alone was not a revocation of required active Xinyi authority; that authorized third HTTP action is retained without browser credit."
+    },
+    "artifacts": [
+      "browser-diagnostic-hold.json"
+    ],
+    "source": "Operator attestation; HTTP/SQL supplementary coverage, not browser variant"
+  },
+  {
+    "at": "2026-11-16T23:02:46.672Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-11",
+    "key": "qa11-authority",
+    "status": "OBSERVED",
+    "persona": "mei",
+    "steps": [
+      "Both localized forms loaded before isolated mutation",
+      "Confirm old forms; capture automatic focus and retained draft",
+      "Manual alert framing for screenshots"
+    ],
+    "expected": "Evidence authority loss blocks old form with no write; retained draft and localized safe guidance",
+    "observed": [
+      {
+        "locale": "zh-TW",
+        "error": "比較或相關佐證資料已變更，未建立事項。請重新比較並再次檢視。\n\n參考編號: 3fe5cef0-c3ee-4599-a3c2-9c84fa3712a1\n\n重新比較",
+        "focus": {
+          "alerts": [
+            {
+              "bounds": {
+                "bottom": -918.4453125,
+                "height": 136.859375,
+                "left": 780,
+                "right": 1420,
+                "top": -1055.3046875,
+                "width": 640,
+                "x": 780,
+                "y": -1055.3046875
+              },
+              "text": "比較或相關佐證資料已變更，未建立事項。請重新比較並再次檢視。\n\n參考編號: 3fe5cef0-c3ee-4599-a3c2-9c84fa3712a1\n\n重新比較"
+            }
+          ],
+          "bounds": {
+            "bottom": 4312.0390625,
+            "height": 4312.0390625,
+            "left": 0,
+            "right": 1440,
+            "top": 0,
+            "width": 1440,
+            "x": 0,
+            "y": 0
+          },
+          "id": "",
+          "inDialog": false,
+          "label": null,
+          "role": null,
+          "tag": "BODY",
+          "text": "BODY",
+          "trigger": null
+        },
+        "fields": {
+          "review-assignee": "assignee_e1078151219336a0529d3fa95332a60f",
+          "review-dueDate": "2026-11-24",
+          "review-rationale": "VALIDATE_HISTORY",
+          "review-title": "CHECK"
+        }
+      },
+      {
+        "locale": "en",
+        "error": "The comparison or its evidence has changed. Nothing was created. Refresh the comparison and review it again.\n\nReference: 3b22330b-7822-4d55-becc-465ba89859ec\n\nRefresh comparison",
+        "focus": {
+          "alerts": [
+            {
+              "bounds": {
+                "bottom": -1033.8515625,
+                "height": 162.453125,
+                "left": 780,
+                "right": 1420,
+                "top": -1196.3046875,
+                "width": 640,
+                "x": 780,
+                "y": -1196.3046875
+              },
+              "text": "The comparison or its evidence has changed. Nothing was created. Refresh the comparison and review it again.\n\nReference: 3b22330b-7822-4d55-becc-465ba89859ec\n\nRefresh comparison"
+            }
+          ],
+          "bounds": {
+            "bottom": 4311.7109375,
+            "height": 4545.2109375,
+            "left": 0,
+            "right": 1440,
+            "top": -233.5,
+            "width": 1440,
+            "x": 0,
+            "y": -233.5
+          },
+          "id": "",
+          "inDialog": false,
+          "label": null,
+          "role": null,
+          "tag": "BODY",
+          "text": "BODY",
+          "trigger": null
+        },
+        "fields": {
+          "review-assignee": "assignee_e1078151219336a0529d3fa95332a60f",
+          "review-dueDate": "2026-11-24",
+          "review-rationale": "VALIDATE_HISTORY",
+          "review-title": "CHECK"
+        }
+      }
+    ],
+    "artifacts": [
+      "qa11-authority-before.json",
+      "qa11-authority-result.json",
+      "qa11-authority-en.jpg",
+      "qa11-authority-zh-TW.jpg"
+    ]
+  },
+  {
+    "at": "2026-11-16T23:03:51.132Z",
+    "run": "20261116T220006Z",
+    "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+    "scenario": "QA-15",
+    "key": "generic-stale-error-loses-focus",
+    "status": "FAIL",
+    "persona": "mei",
+    "steps": [
+      "Prepare bilingual review with CHECK and VALIDATE_HISTORY",
+      "Operator downgrades required Nanjing source authority",
+      "Confirm using keyboard Enter at bottom of each old form",
+      "Observe automatic focus and alert geometry before manual framing"
+    ],
+    "expected": "First error or error summary receives focus inside dialog",
+    "observed": {
+      "locales": [
+        {
+          "locale": "zh-TW",
+          "focus": {
+            "alerts": [
+              {
+                "bounds": {
+                  "bottom": -918.4453125,
+                  "height": 136.859375,
+                  "left": 780,
+                  "right": 1420,
+                  "top": -1055.3046875,
+                  "width": 640,
+                  "x": 780,
+                  "y": -1055.3046875
+                },
+                "text": "比較或相關佐證資料已變更，未建立事項。請重新比較並再次檢視。\n\n參考編號: 3fe5cef0-c3ee-4599-a3c2-9c84fa3712a1\n\n重新比較"
+              }
+            ],
+            "bounds": {
+              "bottom": 4312.0390625,
+              "height": 4312.0390625,
+              "left": 0,
+              "right": 1440,
+              "top": 0,
+              "width": 1440,
+              "x": 0,
+              "y": 0
+            },
+            "id": "",
+            "inDialog": false,
+            "label": null,
+            "role": null,
+            "tag": "BODY",
+            "text": "BODY",
+            "trigger": null
+          },
+          "retainedFields": {
+            "review-assignee": "assignee_e1078151219336a0529d3fa95332a60f",
+            "review-dueDate": "2026-11-24",
+            "review-rationale": "VALIDATE_HISTORY",
+            "review-title": "CHECK"
+          }
+        },
+        {
+          "locale": "en",
+          "focus": {
+            "alerts": [
+              {
+                "bounds": {
+                  "bottom": -1033.8515625,
+                  "height": 162.453125,
+                  "left": 780,
+                  "right": 1420,
+                  "top": -1196.3046875,
+                  "width": 640,
+                  "x": 780,
+                  "y": -1196.3046875
+                },
+                "text": "The comparison or its evidence has changed. Nothing was created. Refresh the comparison and review it again.\n\nReference: 3b22330b-7822-4d55-becc-465ba89859ec\n\nRefresh comparison"
+              }
+            ],
+            "bounds": {
+              "bottom": 4311.7109375,
+              "height": 4545.2109375,
+              "left": 0,
+              "right": 1440,
+              "top": -233.5,
+              "width": 1440,
+              "x": 0,
+              "y": -233.5
+            },
+            "id": "",
+            "inDialog": false,
+            "label": null,
+            "role": null,
+            "tag": "BODY",
+            "text": "BODY",
+            "trigger": null
+          },
+          "retainedFields": {
+            "review-assignee": "assignee_e1078151219336a0529d3fa95332a60f",
+            "review-dueDate": "2026-11-24",
+            "review-rationale": "VALIDATE_HISTORY",
+            "review-title": "CHECK"
+          }
+        }
+      ],
+      "businessGuard": "Both confirmations reject stale, no false creation"
+    },
+    "artifacts": [
+      "qa11-authority-before.json",
+      "qa11-authority-result.json",
+      "qa11-authority-en.jpg",
+      "qa11-authority-zh-TW.jpg"
+    ],
+    "severity": "P2",
+    "relatedScenarios": [
+      "QA-11"
+    ],
+    "viewport": "1440x900",
+    "qualification": "Screenshots manually framed after automatic focus measurements; automatic bounds in JSON are authoritative for offscreen state."
+  }
+]

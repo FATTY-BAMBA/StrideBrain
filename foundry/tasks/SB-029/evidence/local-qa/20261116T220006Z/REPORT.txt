@@ -1,0 +1,128 @@
+SB-029 INDEPENDENT LOCAL BROWSER RETEST
+Run: 20261116T220006Z
+Started UTC: 2026-11-16T22:00:06Z
+Browser ended UTC: 2026-11-16T23:17:37.789Z
+Run closed UTC: 2026-11-16T23:18:26Z
+Finalized UTC: 2026-11-16T23:19:19.791630+00:00
+Final verdict: REVISE
+Counts: 3 PASS / 4 FAIL / 8 PARTIAL / 3 BLOCKED
+Stage 8 acceptance: NOT GRANTED. Merge/release readiness: NOT CLAIMED.
+
+Tested head / required evidence parent: 3481dac48ec60e943b5d669f0f7ff0453756ab3d
+Validated application commit: df63c90ca994653299082fc5078ad0b5ef595292
+Source manifest SHA256: 82ce9a43b9bf4da5280c09cb839eeb277213acd09b73e46aa0a8f15f2758a460
+Production BUILD_ID: 4Zn6yTS6DP2jLb0DDZye_
+Evidence branch: qa/sb-029-local-20261116T220006Z
+Exact evidence commit is the commit containing this directory; publication returns it separately to avoid self-reference.
+
+F-06 / QA-11 and QA-18: missing mandatory stale warning after a material required-source authority change. No further write scenarios after confirmation of this P1. Read-only closure and cleanup continued.
+The full post-targeted QA-01..QA-18 regression could not complete under the mandatory P1 stop. Stopped variants are explicit below; no pass is inferred.
+
+TARGETED REPAIRS
+F-01 forecast labels: targeted PASS in English and zh-TW across comparison, source, review, receipt and workspace.
+F-02 rapid edit/navigation draft retention: targeted PASS; whole QA-05 PARTIAL because edited nondefault confirmation-to-receipt equality was not executed.
+F-03 Chinese evidence localization: FAIL; residual terms and policy/subtype/unit/location strings remain.
+
+ALL SCENARIOS
+QA-01 PARTIAL
+  Observed: Mei prepares canonical review with verified findings, warnings, assignee/date and exact run references; zero business records before first explicit confirmation.
+  Remaining: Finance and Admin preparation journeys in both locales were not executed before stop.
+  Evidence: qa18-first-proposal-before-confirm.json, qa18-first-action-integrity.json, browser-variants.json
+QA-02 PARTIAL
+  Observed: Bounded title/intent selections, set/clear/native-key date handling, yesterday and plus-366-day localized browser errors with focus, and 32 HTTP invalid-draft denials without writes.
+  Remaining: All approved options were not confirmed through the complete bilingual edit matrix. Accepted today/plus-365/empty-date confirmations, leap/midnight boundaries and native calendar selection were not completed. Direct HTTP invalid input is not browser rendering evidence.
+  Evidence: qa02-browser-date-validation.json, qa05-navigation-variants.json, http-invalid-draft-1794868254528.json
+QA-03 PARTIAL
+  Observed: Mei first confirmation produces one atomic action/receipt/audit/consumption with 15 exact refs; bilingual receipt, workspace/Actions reopen, refresh and copied URL verified.
+  Remaining: Finance/Admin confirmations not run. Committed receipt preservation after later freshness change versus authorized access loss was not fully exercised. No nondefault edited confirmation payload equality before stop.
+  Evidence: qa18-first-action-integrity.json, qa03-first-receipt-reopening.json, qa03-workspace-reopen.json, qa06-second-action-integrity.json
+QA-04 PASS
+  Observed: Evidence round trip retains authorized draft/selection with one modal and restores the opening evidence trigger; Cancel and Escape clear draft, create no action and return focus to actual action entry; Enter reopens heading.
+  Evidence: qa04-cancel-escape.json, qa05-navigation-variants.json, qa05-route-date-before-qa06-confirm.json, qa15-keyboard-trap-cycle.json
+QA-05 PARTIAL
+  Observed: Settled immediate-edit locale retention, evidence return, clear-date refresh/history, native-key date persistence, actual shell control after cancel, receipt locale/refresh/copied URL and return context.
+  Remaining: Successful browser confirmations used defaults after intentional cancellation. Edited nondefault confirmation payload-to-persisted-receipt equality was planned but blocked by P1 stop. Explicit navigation to a rendered shell href is supplemental; background shell behind modal was not successfully clicked.
+  Evidence: qa05-rapid-all-fields.json, qa05-navigation-variants.json, qa03-first-receipt-reopening.json, repair-assessment.json
+QA-06 PARTIAL
+  Observed: Two loaded tabs, repeated confirmation and localized replay return the same second action; SQL proves exactly one new atomic unit. Eight HTTP replay/conflict/consumed/malformed-key cases preserve counts.
+  Remaining: Same-key changed due date and original-payload replay after expiry and source freshness change not freshly executed. Artificial delay supports pending layout only and is excluded from timing.
+  Evidence: qa06-two-tab-result.json, qa06-second-action-integrity.json, artificial-pending-delay-qa06-confirm-pending-1794868495965.json, http-replay-1794868604327.json
+QA-07 PARTIAL
+  Observed: Active Viewer assigned workspace/structural comparison and copied proposal/receipt/evidence routes deny sensitive detail; known/missing receipt pairs equal. Revoked, cleared and natural-expired sessions show safe GET outcomes in both locales, with positive authorized pre-expiry control. Viewer/unauthenticated HTTP prepare/confirm denials are supplementary.
+  Remaining: Fresh direct confirmation POSTs for each expired/revoked/cleared variant were not recorded; deterministic session tests are not fresh browser requests. F-04 contradictory heading remains open despite non-disclosure holding.
+  Evidence: qa07-viewer-settled-results.json, qa07-receipt-pair-comparison.json, qa07-revoked-results.json, qa07-cleared-results.json, qa07-expired-results.json, qa07-real-session-expiry-sql.json, qa07-session-expiry-timeline.json
+QA-08 PASS
+  Observed: Northern own-project positive control plus 24 browser routes/12 normalized foreign-missing pairs across both locales; Mei four reverse project routes; foreign/missing assignee and direct endpoint HTTP supplements deny without writes. No browser role/organization spoof becomes authority.
+  Fixture limits: Northern has an existing project/person but no eligible active quote or Stage 8 history. No reverse Northern business history was manufactured. Evidence browser pairs use claim mode. Normalization removes safe request IDs and echoed user-supplied project selectors; no byte-identical or universal-disclosure claim.
+  Evidence: qa08-northern-own-project.jpg, qa08-northern-results.json, qa08-browser-pair-comparison.json, qa08-mei-results.json, qa08-operator-selectors.json, http-tenant-denials-1794868616452.json
+QA-09 PASS
+  Observed: Foreign/missing, inactive membership/person, unassigned, evidence-denied and corrected actual-capability/active-project negatives deny. Chosen Iris and locked-default invalidation yield localized browser errors with SELECT or linked paragraph focus in both locales. Alternate/null no-assign payloads deny; mutations restore and business counts remain unchanged for valid negatives.
+  Qualification: One invalid historical-assignment negative legitimately created a third HTTP action under approved comparison-library policy; preserved and excluded from negative/browser credit. Candidate query-batching evidence is preexisting server validation, explicitly supplemental.
+  Evidence: qa09-selected-iris-result.json, qa09-locked-default-result.json, http-chosen-assignee-denial-1794870012969.json, http-chosen-assignee-denial-1794870013940.json, mutation-assignee-actual-capability-denied-1794870012225.json, mutation-assignee-actual-ineligible-1794870013188.json, qa09-historical-flag-expectation-correction.json, server-performance-reference.json
+QA-10 BLOCKED
+  Observed: No dedicated quote/project/comparison/enrichment mutation browser case completed.
+  Remaining: All separate quote, project state, comparison fingerprint/policy and enrichment fingerprint/result cases blocked by P1 stop.
+  Evidence: browser-variants.json
+QA-11 FAIL
+  Observed: Authority mutation makes old bilingual forms reject stale with no writes; exact reference restoration hash matches.
+  Remaining: Conflict, freshness, supersession, availability and access mutations/reopen variants not completed after P1 stop.
+  Evidence: qa11-authority-result.json, qa11-authority-display-diagnostic.json, mutation-authority-1794870141617.json
+QA-12 BLOCKED
+  Observed: No dedicated actor permission-downgrade browser cases completed.
+  Remaining: Separate propose/create capability, project assignment, action flag, actual/evidence-read revocation and old URL reopen cases blocked by P1 stop. Assignee invalidation does not substitute for actor downgrade.
+  Evidence: browser-variants.json
+QA-13 PARTIAL
+  Observed: Consumed proposal and original-key replay behavior covered by browser/HTTP replay subset.
+  Remaining: Unconsumed proposal before/exactly-at/after 30-minute boundary and localized reopen not freshly executed. Session expiry is distinct from proposal expiry.
+  Evidence: qa06-two-tab-result.json, qa06-second-action-integrity.json, http-replay-1794868604327.json
+QA-14 BLOCKED
+  Observed: No fresh injected transaction-failure browser case completed.
+  Remaining: Per-transaction-step fault injection, preserved draft, safe failure and recovery confirmation blocked by P1 stop. Prior deterministic rollback tests are supplemental, not this browser run.
+  Evidence: browser-variants.json
+QA-15 FAIL
+  Observed: Native Tab cycle stays in review, Escape/Cancel return focus, evidence focus return, native keyboard date, field error associations, receipt heading, and read-only actual 200% review/receipt subset.
+  Remaining: Full keyboard-only create/reopen journey and nondefault payload equality not completed. Generic stale error loses automatic focus; additional unscrolled screenshot/recovery test not performed after stop. Exact 1280×800 base-viewport zoom error matrix, reduced-motion preference and real screen-reader/physical mobile checks remain unverified. Reduced-motion UI emulation was selected; first attempt did not persist across navigation, second confirmed preference but no transition completed. Neither is a reduced-motion pass.
+  Evidence: qa15-keyboard-trap-cycle.json, qa04-cancel-escape.json, qa02-browser-date-validation.json, qa11-authority-result.json, qa15-en-200-review-header.json, qa15-zh-TW-200-review-footer.json, browser-capability-record.json, qa15-reduced-motion.json, qa15-reduced-motion-open-devtools.json
+QA-16 FAIL
+  Observed: Actual decoded desktop/tablet/390/320 images cover review headers/footers, date errors, claim/source/factor upper panels and receipts in both locales; close controls fit reviewed captures. Read-only supplements close receipt footer controls at 1440/390 in both locales and show narrow 320 px lower claim/source/factor content.
+  Remaining: English pending 1440/320 frames miss primary status/controls; Chinese pending matrix not executed. Physical mobile keyboard occlusion remains manual; emulation is not that test.
+  Evidence: screenshot-review.json, qa16-evidence-close-bounds.json, browser-observations.json
+QA-17 PARTIAL
+  Observed: Prior exact-application-fingerprint server aggregate benchmark is linked with sample size, method, query counts and batching proof.
+  Remaining: No valid fresh warmed browser timing sample distribution retained; no browser p50/p95 claimed. Prior server report lacks raw per-sample durations and uses a different DB/date; artificial pending delay excluded.
+  Evidence: server-performance-reference.json, artificial-pending-delay-qa06-confirm-pending-1794868495965.json
+QA-18 FAIL
+  Observed: Canonical ranking, distinct financial bases, lighting abstention, programme warning, source/factor panels, workspace and internal-only action controls verified; provider credential presence attestation recorded.
+  Remaining: Residual Chinese evidence/comparison localization fails the required journey. Environment variable absence is not a network-traffic proof of no external requests. F-06 is a separate newly found stale-evidence warning blocker.
+  Evidence: qa18-en-canonical-comparison-full.json, financial-authority-database-baseline.json, repair-assessment.json, runtime-environment-attestation.json, screenshot-review.json, F06-claim-source-confirm-provenance.json
+
+OPEN DEFECTS
+F-03 P2 (QA-16, QA-18): Normal Taiwan Traditional Chinese evidence and comparison content still exposes internal English terms
+F-04 P2 (QA-07, QA-08): Denied receipt dialog announces action creation even for a nonexistent action
+F-05 P2 (QA-15, QA-11): Generic stale-confirmation error leaves focus on BODY with the error above the visible viewport
+F-06 P1 (QA-11, QA-18): A stored comparison remains inspectable without the mandatory stale warning after a required source authority change
+Full reproduction steps, persona, locale, viewport, expected/observed behavior, acceptance criteria, exact source refs and screenshot limits: findings.json and FINDINGS.txt.
+Additional P3 static Northern demo-footer wording observation is separately qualified in independent-evidence-review.json.
+
+RESTORATION AND HISTORY
+Two explicit browser-created actions plus one legitimate HTTP action from the invalid historical-assignment negative premise. The third action and original failure remain intact; no deletion or retrospective negative-pass claim.
+Three atomic units are retained: three actions, receipts, successful audits and consumed proposals, with45 exact evidence refs and6 proposals. No committed history is deleted. All24 nonfixture sessions are revoked, including7 ledger-issued browser sessions; zero sessions remain active.
+The invalid historical-assignment negative premise and its legitimate HTTP action are preserved; corrected active-project/capability negatives deny without writes. See diagnostic-disposition.json and qa09-historical-flag-expectation-correction.json.
+All temporary mutations are restored by exact row hashes; final fixture digests match. Final guard/session checks and closure artifacts are listed in computer-qa-report.json.
+Original first-run database and evidence remain unchanged. The interrupted run was safely restored at resume; its305 evidence files remain byte-for-byte unchanged.
+
+MANUAL VERIFICATION
+NOT_VERIFIED_MANUAL_REQUIRED: real screen-reader announcements; physical mobile keyboard/touch/native picker; exact zoom error matrix; complete reduced-motion transitions. Exact steps are in manual-verification.json.
+Full keyboard-only creation and remaining write-dependent variants are stopped by P1; they are not tooling passes.
+
+METHOD AND TIMINGS
+CUA Chrome extension plus native Chrome; read browser-capability-record.json for verified and unsupported capabilities. Browser version was not independently verified.
+Setup commands and durations: fresh-database-setup.json and setup-*.log. Action timings/route states are retained in browser-observations.json and per-case artifacts.
+No fresh warmed browser timing distribution or browser p50/p95 is claimed. Pre-existing exact-fingerprint server measurements are explicitly supplemental in server-performance-reference.json. Artificial20,054ms pending delay is excluded from performance.
+455 deterministic tests/59files,88PostgreSQL adversarial tests,12localization tests and production build/audit were retained from exact-source repair validation, not rerun as browser evidence. Exact-head GitHub CI43816165074 succeeded.
+Screenshots are classified individually; loading, misframed and manually scrolled frames receive only the credit they support.
+
+SANITIZATION AND PUBLICATION
+Sanitization: PASS. Read publication-sanitization.json for the complete final credential/personal-path scan. Independent visual review covers every saved image in screenshot-review.json.
+Only this new evidence subtree is committed. No product/generated/runtime/database/private files or historical evidence changes are authorized. FILES.txt and artifact-sha256.json inventory the publication.
+PR31 remains draft and unmerged. No merge or release action.

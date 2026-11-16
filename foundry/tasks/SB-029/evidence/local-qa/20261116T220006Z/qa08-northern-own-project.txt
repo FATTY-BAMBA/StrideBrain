@@ -1,0 +1,110 @@
+- link "Skip to main content":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain BY PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: BY PRIMESTRIDE AI
+  - navigation "Projects":
+    - link "Home":
+      - /url: /en
+      - generic: "01"
+      - generic: Home
+    - link "Projects":
+      - /url: /en/projects
+      - generic: "02"
+      - generic: Projects
+    - link "Knowledge":
+      - /url: /en/knowledge
+      - generic: "03"
+      - generic: Knowledge
+    - link "StrideBrain":
+      - /url: /en/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "Settings":
+      - /url: /en/settings
+      - generic: "05"
+      - generic: Settings
+  - strong: v0.1 · Controlled demo
+  - generic: This area is not active yet
+- banner:
+  - generic: ●
+  - text: Controlled synthetic demo
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects/PRJ-NORTH-001
+    - generic: /
+    - link "EN":
+      - /url: /en/projects/PRJ-NORTH-001
+- main:
+  - navigation "Project workspace navigation":
+    - link "Overview":
+      - /url: /en/projects/PRJ-NORTH-001
+    - link "Compare":
+      - /url: /en/projects/PRJ-NORTH-001/compare
+    - link "Commercial":
+      - /url: /en/projects/PRJ-NORTH-001/commercial
+    - link "Evidence":
+      - /url: /en/projects/PRJ-NORTH-001/evidence
+    - link "Actions":
+      - /url: /en/projects/PRJ-NORTH-001/actions
+  - paragraph: PROJECT INTELLIGENCE WORKSPACE
+  - generic: PARTIAL
+  - heading "Restricted Flagship" [level=1]
+  - paragraph: Restricted Client
+  - generic: "Location: Taipei City, Xinyi District"
+  - generic: "Area: 630 m²"
+  - generic: "Programme: 17 weeks"
+  - paragraph: This project has data conditions that require attention.
+  - complementary:
+    - paragraph: COMPARABLE PROJECT INTELLIGENCE
+    - strong: Have we done something like this before?
+    - paragraph: Find the strongest historical precedents, understand why they match, and compare the current quotation with evidence-backed history.
+    - link "Find comparable projects":
+      - /url: /en/projects/PRJ-NORTH-001/compare
+    - generic: Synthetic Horizon Atelier demo data
+  - article:
+    - heading "Current commercial position" [level=2]
+    - paragraph: Quotation before tax
+    - paragraph: Unavailable
+    - paragraph: Forecast direct cost
+    - paragraph: Unavailable
+    - paragraph: Reconciled actual cost
+    - paragraph: Unavailable
+  - article:
+    - heading "Evidence health" [level=2]
+    - generic: INSUFFICIENT
+    - list:
+      - generic: Accessible references
+      - strong: "0"
+      - generic: Accessible documents
+      - strong: "0"
+      - generic: Stale records
+      - strong: "0"
+      - generic: Open conflicts
+      - strong: "0"
+  - article:
+    - heading "Project context" [level=2]
+    - list:
+      - generic: Scope categories
+      - strong: "0"
+      - generic: Suppliers
+      - strong: "0"
+      - generic: Materials
+      - strong: "0"
+      - generic: Open actions
+      - strong: "0"
+  - region "Ask StrideBrain in this project":
+    - heading "Ask StrideBrain in this project" [level=2]
+    - link "Have we done something like this before? Search the authorized project history, explain the strongest matches, and compare the current quotation with trustworthy precedents.":
+      - /url: /en/projects/PRJ-NORTH-001/compare
+      - strong: Have we done something like this before?
+      - generic: Search the authorized project history, explain the strongest matches, and compare the current quotation with trustworthy precedents.
+    - strong: Compare the current quote with relevant completed projects.
+    - generic: This capability belongs to a later slice
+    - strong: Where did these numbers come from?
+    - generic: This capability belongs to a later slice
+- contentinfo:
+  - generic: Synthetic demo data only · No real customer data
+  - generic: Live demo-domain cutover has not occurred
+- alert

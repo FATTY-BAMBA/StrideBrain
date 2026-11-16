@@ -1,0 +1,34 @@
+{
+  "reviewedAt": "2026-11-16T22:16:58.272355+00:00",
+  "classification": "READ_ONLY_HARNESS_REVIEW_NOT_SCENARIO_EXECUTION",
+  "scope": "Private isolated test operator helpers; no helper/runtime files are committed.",
+  "guardedDatabase": "stridebrain_sb029_retest_220006",
+  "guardedPort": 54332,
+  "reviewedSafetyProperties": [
+    "Exact loopback database name and port guard plus exactly two reviewed DEMO_SYNTHETIC organizations.",
+    "Mutations limited to allowlisted tables and explicit Horizon rows; affected row counts checked.",
+    "One active mutation/fault/delay case at a time; compound no-assign cases explicitly tracked.",
+    "Restoration compares targeted changed fields or deleted rows with private pre-mutation snapshots; inserted temporary rows must be absent.",
+    "Fault triggers use an owned name and are removed without disabling the four product immutable-history guards.",
+    "Pending layout lock uses a nominal 20-second hold followed by transaction ROLLBACK, with 25-second statement and idle timeouts; measured setup/release duration is retained and excluded from performance."
+  ],
+  "files": [
+    {
+      "name": "common.mjs",
+      "sha256": "cc3e39324e87544e0bae54b84079f9d8437e834ab412cafcc864032ca7cb2fa9"
+    },
+    {
+      "name": "mutate.mjs",
+      "sha256": "da7e7e320834572c225b1585678679b312a9561385e767ac028fff82707e8228"
+    },
+    {
+      "name": "fault.mjs",
+      "sha256": "7058f681dfc496ea5d8116b2fd6934257061bb46a577502409257c9ddc19f0ba"
+    },
+    {
+      "name": "pending-delay.mjs",
+      "sha256": "83b3299aacd8eea54d57f4ec74c347c34fc553b8773aa7d2749aaf3b6128ba9a"
+    }
+  ],
+  "limits": "Execution/restoration proof must come from each case and final integrity artifacts, not this code review."
+}

@@ -1,0 +1,568 @@
+{
+  "runId": "20261116T220006Z",
+  "startedAt": "2026-11-16T22:00:06Z",
+  "reportFinalizedAt": "2026-11-16T23:19:19.791630+00:00",
+  "browserEndedAt": "2026-11-16T23:17:37.789Z",
+  "endedAt": "2026-11-16T23:18:26Z",
+  "executionEndQualification": "Browser end and operator cleanup end are separately observed; reportFinalizedAt records final evidence reconciliation.",
+  "repository": "FATTY-BAMBA/StrideBrain",
+  "testedBranch": "build/sb-029-governed-internal-review",
+  "testedHead": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+  "applicationCommit": "df63c90ca994653299082fc5078ad0b5ef595292",
+  "sourceFingerprintSha256": "82ce9a43b9bf4da5280c09cb839eeb277213acd09b73e46aa0a8f15f2758a460",
+  "buildId": "4Zn6yTS6DP2jLb0DDZye_",
+  "evidenceBranch": "qa/sb-029-local-20261116T220006Z",
+  "requiredDirectParent": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+  "commitScope": "foundry/tasks/SB-029/evidence/local-qa/20261116T220006Z/",
+  "verdict": "REVISE",
+  "acceptanceGranted": false,
+  "mergeOrReleaseReadinessClaimed": false,
+  "p1Stop": true,
+  "stopReason": "F-06 / QA-11 and QA-18: missing mandatory stale warning after a material required-source authority change. No further write scenarios after confirmation of this P1. Read-only closure and cleanup continued.",
+  "counts": {
+    "PARTIAL": 8,
+    "PASS": 3,
+    "BLOCKED": 3,
+    "FAIL": 4
+  },
+  "scenarios": [
+    {
+      "id": "QA-01",
+      "status": "PARTIAL",
+      "passed": "Mei prepares canonical review with verified findings, warnings, assignee/date and exact run references; zero business records before first explicit confirmation.",
+      "remaining": [
+        "Finance and Admin preparation journeys in both locales were not executed before stop."
+      ],
+      "artifacts": [
+        "qa18-first-proposal-before-confirm.json",
+        "qa18-first-action-integrity.json",
+        "browser-variants.json"
+      ]
+    },
+    {
+      "id": "QA-02",
+      "status": "PARTIAL",
+      "passed": "Bounded title/intent selections, set/clear/native-key date handling, yesterday and plus-366-day localized browser errors with focus, and 32 HTTP invalid-draft denials without writes.",
+      "remaining": [
+        "All approved options were not confirmed through the complete bilingual edit matrix.",
+        "Accepted today/plus-365/empty-date confirmations, leap/midnight boundaries and native calendar selection were not completed.",
+        "Direct HTTP invalid input is not browser rendering evidence."
+      ],
+      "artifacts": [
+        "qa02-browser-date-validation.json",
+        "qa05-navigation-variants.json",
+        "http-invalid-draft-1794868254528.json"
+      ]
+    },
+    {
+      "id": "QA-03",
+      "status": "PARTIAL",
+      "passed": "Mei first confirmation produces one atomic action/receipt/audit/consumption with 15 exact refs; bilingual receipt, workspace/Actions reopen, refresh and copied URL verified.",
+      "remaining": [
+        "Finance/Admin confirmations not run.",
+        "Committed receipt preservation after later freshness change versus authorized access loss was not fully exercised.",
+        "No nondefault edited confirmation payload equality before stop."
+      ],
+      "artifacts": [
+        "qa18-first-action-integrity.json",
+        "qa03-first-receipt-reopening.json",
+        "qa03-workspace-reopen.json",
+        "qa06-second-action-integrity.json"
+      ]
+    },
+    {
+      "id": "QA-04",
+      "status": "PASS",
+      "passed": "Evidence round trip retains authorized draft/selection with one modal and restores the opening evidence trigger; Cancel and Escape clear draft, create no action and return focus to actual action entry; Enter reopens heading.",
+      "remaining": [],
+      "artifacts": [
+        "qa04-cancel-escape.json",
+        "qa05-navigation-variants.json",
+        "qa05-route-date-before-qa06-confirm.json",
+        "qa15-keyboard-trap-cycle.json"
+      ]
+    },
+    {
+      "id": "QA-05",
+      "status": "PARTIAL",
+      "passed": "Settled immediate-edit locale retention, evidence return, clear-date refresh/history, native-key date persistence, actual shell control after cancel, receipt locale/refresh/copied URL and return context.",
+      "remaining": [
+        "Successful browser confirmations used defaults after intentional cancellation. Edited nondefault confirmation payload-to-persisted-receipt equality was planned but blocked by P1 stop.",
+        "Explicit navigation to a rendered shell href is supplemental; background shell behind modal was not successfully clicked."
+      ],
+      "artifacts": [
+        "qa05-rapid-all-fields.json",
+        "qa05-navigation-variants.json",
+        "qa03-first-receipt-reopening.json",
+        "repair-assessment.json"
+      ]
+    },
+    {
+      "id": "QA-06",
+      "status": "PARTIAL",
+      "passed": "Two loaded tabs, repeated confirmation and localized replay return the same second action; SQL proves exactly one new atomic unit. Eight HTTP replay/conflict/consumed/malformed-key cases preserve counts.",
+      "remaining": [
+        "Same-key changed due date and original-payload replay after expiry and source freshness change not freshly executed.",
+        "Artificial delay supports pending layout only and is excluded from timing."
+      ],
+      "artifacts": [
+        "qa06-two-tab-result.json",
+        "qa06-second-action-integrity.json",
+        "artificial-pending-delay-qa06-confirm-pending-1794868495965.json",
+        "http-replay-1794868604327.json"
+      ]
+    },
+    {
+      "id": "QA-07",
+      "status": "PARTIAL",
+      "passed": "Active Viewer assigned workspace/structural comparison and copied proposal/receipt/evidence routes deny sensitive detail; known/missing receipt pairs equal. Revoked, cleared and natural-expired sessions show safe GET outcomes in both locales, with positive authorized pre-expiry control. Viewer/unauthenticated HTTP prepare/confirm denials are supplementary.",
+      "remaining": [
+        "Fresh direct confirmation POSTs for each expired/revoked/cleared variant were not recorded; deterministic session tests are not fresh browser requests.",
+        "F-04 contradictory heading remains open despite non-disclosure holding."
+      ],
+      "artifacts": [
+        "qa07-viewer-settled-results.json",
+        "qa07-receipt-pair-comparison.json",
+        "qa07-revoked-results.json",
+        "qa07-cleared-results.json",
+        "qa07-expired-results.json",
+        "qa07-real-session-expiry-sql.json",
+        "qa07-session-expiry-timeline.json"
+      ]
+    },
+    {
+      "id": "QA-08",
+      "status": "PASS",
+      "passed": "Northern own-project positive control plus 24 browser routes/12 normalized foreign-missing pairs across both locales; Mei four reverse project routes; foreign/missing assignee and direct endpoint HTTP supplements deny without writes. No browser role/organization spoof becomes authority.",
+      "remaining": [],
+      "fixtureLimits": "Northern has an existing project/person but no eligible active quote or Stage 8 history. No reverse Northern business history was manufactured. Evidence browser pairs use claim mode. Normalization removes safe request IDs and echoed user-supplied project selectors; no byte-identical or universal-disclosure claim.",
+      "artifacts": [
+        "qa08-northern-own-project.jpg",
+        "qa08-northern-results.json",
+        "qa08-browser-pair-comparison.json",
+        "qa08-mei-results.json",
+        "qa08-operator-selectors.json",
+        "http-tenant-denials-1794868616452.json"
+      ]
+    },
+    {
+      "id": "QA-09",
+      "status": "PASS",
+      "passed": "Foreign/missing, inactive membership/person, unassigned, evidence-denied and corrected actual-capability/active-project negatives deny. Chosen Iris and locked-default invalidation yield localized browser errors with SELECT or linked paragraph focus in both locales. Alternate/null no-assign payloads deny; mutations restore and business counts remain unchanged for valid negatives.",
+      "remaining": [],
+      "qualification": "One invalid historical-assignment negative legitimately created a third HTTP action under approved comparison-library policy; preserved and excluded from negative/browser credit. Candidate query-batching evidence is preexisting server validation, explicitly supplemental.",
+      "artifacts": [
+        "qa09-selected-iris-result.json",
+        "qa09-locked-default-result.json",
+        "http-chosen-assignee-denial-1794870012969.json",
+        "http-chosen-assignee-denial-1794870013940.json",
+        "mutation-assignee-actual-capability-denied-1794870012225.json",
+        "mutation-assignee-actual-ineligible-1794870013188.json",
+        "qa09-historical-flag-expectation-correction.json",
+        "server-performance-reference.json"
+      ]
+    },
+    {
+      "id": "QA-10",
+      "status": "BLOCKED",
+      "passed": "No dedicated quote/project/comparison/enrichment mutation browser case completed.",
+      "remaining": [
+        "All separate quote, project state, comparison fingerprint/policy and enrichment fingerprint/result cases blocked by P1 stop."
+      ],
+      "artifacts": [
+        "browser-variants.json"
+      ]
+    },
+    {
+      "id": "QA-11",
+      "status": "FAIL",
+      "passed": "Authority mutation makes old bilingual forms reject stale with no writes; exact reference restoration hash matches.",
+      "remaining": [
+        "Conflict, freshness, supersession, availability and access mutations/reopen variants not completed after P1 stop."
+      ],
+      "findings": [
+        "F-06"
+      ],
+      "artifacts": [
+        "qa11-authority-result.json",
+        "qa11-authority-display-diagnostic.json",
+        "mutation-authority-1794870141617.json"
+      ]
+    },
+    {
+      "id": "QA-12",
+      "status": "BLOCKED",
+      "passed": "No dedicated actor permission-downgrade browser cases completed.",
+      "remaining": [
+        "Separate propose/create capability, project assignment, action flag, actual/evidence-read revocation and old URL reopen cases blocked by P1 stop. Assignee invalidation does not substitute for actor downgrade."
+      ],
+      "artifacts": [
+        "browser-variants.json"
+      ]
+    },
+    {
+      "id": "QA-13",
+      "status": "PARTIAL",
+      "passed": "Consumed proposal and original-key replay behavior covered by browser/HTTP replay subset.",
+      "remaining": [
+        "Unconsumed proposal before/exactly-at/after 30-minute boundary and localized reopen not freshly executed. Session expiry is distinct from proposal expiry."
+      ],
+      "artifacts": [
+        "qa06-two-tab-result.json",
+        "qa06-second-action-integrity.json",
+        "http-replay-1794868604327.json"
+      ]
+    },
+    {
+      "id": "QA-14",
+      "status": "BLOCKED",
+      "passed": "No fresh injected transaction-failure browser case completed.",
+      "remaining": [
+        "Per-transaction-step fault injection, preserved draft, safe failure and recovery confirmation blocked by P1 stop. Prior deterministic rollback tests are supplemental, not this browser run."
+      ],
+      "artifacts": [
+        "browser-variants.json"
+      ]
+    },
+    {
+      "id": "QA-15",
+      "status": "FAIL",
+      "passed": "Native Tab cycle stays in review, Escape/Cancel return focus, evidence focus return, native keyboard date, field error associations, receipt heading, and read-only actual 200% review/receipt subset.",
+      "remaining": [
+        "Full keyboard-only create/reopen journey and nondefault payload equality not completed.",
+        "Generic stale error loses automatic focus; additional unscrolled screenshot/recovery test not performed after stop.",
+        "Exact 1280×800 base-viewport zoom error matrix, reduced-motion preference and real screen-reader/physical mobile checks remain unverified.",
+        "Reduced-motion UI emulation was selected; first attempt did not persist across navigation, second confirmed preference but no transition completed. Neither is a reduced-motion pass."
+      ],
+      "findings": [
+        "F-05"
+      ],
+      "artifacts": [
+        "qa15-keyboard-trap-cycle.json",
+        "qa04-cancel-escape.json",
+        "qa02-browser-date-validation.json",
+        "qa11-authority-result.json",
+        "qa15-en-200-review-header.json",
+        "qa15-zh-TW-200-review-footer.json",
+        "browser-capability-record.json",
+        "qa15-reduced-motion.json",
+        "qa15-reduced-motion-open-devtools.json"
+      ]
+    },
+    {
+      "id": "QA-16",
+      "status": "FAIL",
+      "passed": "Actual decoded desktop/tablet/390/320 images cover review headers/footers, date errors, claim/source/factor upper panels and receipts in both locales; close controls fit reviewed captures. Read-only supplements close receipt footer controls at 1440/390 in both locales and show narrow 320 px lower claim/source/factor content.",
+      "remaining": [
+        "English pending 1440/320 frames miss primary status/controls; Chinese pending matrix not executed.",
+        "Physical mobile keyboard occlusion remains manual; emulation is not that test."
+      ],
+      "findings": [
+        "F-03"
+      ],
+      "artifacts": [
+        "screenshot-review.json",
+        "qa16-evidence-close-bounds.json",
+        "browser-observations.json"
+      ]
+    },
+    {
+      "id": "QA-17",
+      "status": "PARTIAL",
+      "passed": "Prior exact-application-fingerprint server aggregate benchmark is linked with sample size, method, query counts and batching proof.",
+      "remaining": [
+        "No valid fresh warmed browser timing sample distribution retained; no browser p50/p95 claimed.",
+        "Prior server report lacks raw per-sample durations and uses a different DB/date; artificial pending delay excluded."
+      ],
+      "artifacts": [
+        "server-performance-reference.json",
+        "artificial-pending-delay-qa06-confirm-pending-1794868495965.json"
+      ]
+    },
+    {
+      "id": "QA-18",
+      "status": "FAIL",
+      "passed": "Canonical ranking, distinct financial bases, lighting abstention, programme warning, source/factor panels, workspace and internal-only action controls verified; provider credential presence attestation recorded.",
+      "remaining": [
+        "Residual Chinese evidence/comparison localization fails the required journey.",
+        "Environment variable absence is not a network-traffic proof of no external requests.",
+        "F-06 is a separate newly found stale-evidence warning blocker."
+      ],
+      "findings": [
+        "F-03",
+        "F-06"
+      ],
+      "artifacts": [
+        "qa18-en-canonical-comparison-full.json",
+        "financial-authority-database-baseline.json",
+        "repair-assessment.json",
+        "runtime-environment-attestation.json",
+        "screenshot-review.json",
+        "F06-claim-source-confirm-provenance.json"
+      ]
+    }
+  ],
+  "unresolvedScenarios": [
+    "QA-01",
+    "QA-02",
+    "QA-03",
+    "QA-05",
+    "QA-06",
+    "QA-07",
+    "QA-10",
+    "QA-11",
+    "QA-12",
+    "QA-13",
+    "QA-14",
+    "QA-15",
+    "QA-16",
+    "QA-17",
+    "QA-18"
+  ],
+  "findingSummary": [
+    {
+      "id": "F-03",
+      "severity": "P2",
+      "scenarios": [
+        "QA-16",
+        "QA-18"
+      ],
+      "title": "Normal Taiwan Traditional Chinese evidence and comparison content still exposes internal English terms"
+    },
+    {
+      "id": "F-04",
+      "severity": "P2",
+      "scenarios": [
+        "QA-07",
+        "QA-08"
+      ],
+      "title": "Denied receipt dialog announces action creation even for a nonexistent action"
+    },
+    {
+      "id": "F-05",
+      "severity": "P2",
+      "scenarios": [
+        "QA-15",
+        "QA-11"
+      ],
+      "title": "Generic stale-confirmation error leaves focus on BODY with the error above the visible viewport"
+    },
+    {
+      "id": "F-06",
+      "severity": "P1",
+      "scenarios": [
+        "QA-11",
+        "QA-18"
+      ],
+      "title": "A stored comparison remains inspectable without the mandatory stale warning after a required source authority change"
+    }
+  ],
+  "targetedRepairs": [
+    {
+      "id": "F-01",
+      "assessment": "PASS_TARGETED",
+      "detail": "Fresh active forecast amounts remain distinguished from historical reconciled actual, quoted price and supplier offers through comparison, evidence, review rationale, receipt and workspace in both locales. Exact source observation types and SQL corroborate the labels.",
+      "limit": "This does not close whole QA-18 or the new F-06 stale-warning defect.",
+      "evidence": [
+        "financial-authority-database-baseline.json",
+        "qa18-en-financial-accessible-names.json",
+        "qa18-zh-financial-accessible-names.json",
+        "qa18-first-action-integrity.json",
+        "screenshot-review.json"
+      ]
+    },
+    {
+      "id": "F-02",
+      "assessment": "PASS_TARGETED_ROUTE_RETENTION_WITH_LIMIT",
+      "detail": "Rapid consecutive edits and individual field/native-date changes retain bounded route state across immediate modal locale navigation, evidence return, cleared date, refresh and history. Actual shell controls were used after cancellation; a blocked background-shell click and explicit href navigation are not credited as a successful modal-background click.",
+      "limit": "The edited draft was deliberately cancelled before the successful replay confirmation; no nondefault edited confirmation-to-database payload equality was executed before the stop. Whole QA-05 remains PARTIAL.",
+      "evidence": [
+        "qa05-rapid-all-fields.json",
+        "qa05-navigation-variants.json",
+        "qa04-cancel-escape.json",
+        "qa05-route-date-before-qa06-confirm.json",
+        "repair-assessment.json"
+      ]
+    },
+    {
+      "id": "F-03",
+      "assessment": "FAIL_OPEN",
+      "detail": "Normal Chinese source locators retain cost-line, forecast-cost-line, quote-item and supplier-offer. Comparison retains policy/subtype/unit/location English terms. Required exact provenance identifiers with localized labels are not classified as localization defects.",
+      "evidence": [
+        "findings.json",
+        "screenshot-review.json"
+      ]
+    }
+  ],
+  "browserCapabilities": "browser-capability-record.json",
+  "manualVerification": "manual-verification.json",
+  "runtime": {
+    "origin": "http://localhost:3000",
+    "database": "stridebrain_sb029_retest_220006",
+    "container": "stridebrain-sb029-retest-20261116t220006z",
+    "loopbackPort": 54332,
+    "node": "v24.22.3",
+    "postgres": "17.12",
+    "migrations": 8,
+    "locales": [
+      "en",
+      "zh-TW"
+    ],
+    "viewports": [
+      "1440x900",
+      "768x1024",
+      "390x844",
+      "320x740"
+    ],
+    "zoomQualification": "Actual native200% read-only subset at1028x617/DPR4; exact1280x800 base-viewport error matrix remains manual.",
+    "freshSetup": "fresh-database-setup.json"
+  },
+  "priorValidation": {
+    "classification": "REFERENCE_ONLY_NOT_RERUN_OR_BROWSER_CREDIT",
+    "exactHeadCI": "exact-head-ci.json",
+    "ciRun": 43816165074,
+    "retainedGate": "foundry/tasks/SB-029/validation-revision.json at tested head",
+    "deterministicTests": 455,
+    "testFiles": 59,
+    "skipped": 0,
+    "postgresAdversarialTests": 88,
+    "localizationTests": 12,
+    "localizationTestFiles": 4,
+    "productionDependencyAuditVulnerabilities": 0,
+    "productionBuildReusedUnchanged": true,
+    "existingLintWarning": "One retained Prisma-config default-export warning."
+  },
+  "businessHistory": "Two explicit browser-created actions plus one legitimate HTTP action from the invalid historical-assignment negative premise. The third action and original failure remain intact; no deletion or retrospective negative-pass claim.",
+  "integrityAndLimits": {
+    "freshDatabase": "stridebrain_sb029_retest_220006",
+    "knownBusinessState": {
+      "actions": 3,
+      "consumedProposals": 3,
+      "receipts": 3,
+      "successfulAudits": 3,
+      "evidenceLinks": 45,
+      "preparedAndConsumedProposalsTotal": 6
+    },
+    "businessHistory": "Two explicit browser-created actions plus one legitimate HTTP action from the invalid historical-assignment negative premise. The third action and original failure remain intact; no deletion or retrospective negative-pass claim.",
+    "invalidNegativeEvidence": [
+      "http-chosen-assignee-denial-failure-1794869125303.json",
+      "mutation-assignee-actual-ineligible-1794869124677.json",
+      "qa09-historical-flag-expectation-correction.json",
+      "qa09-unexpected-http-created-integrity.json"
+    ],
+    "httpLimits": "HTTP supplements are not browser passes. Tenant comparisons establish status/kind/public-field/private-no-store equality and a finite known-name/value predicate, not byte-identical bodies or universal absence of disclosures. Initial invalid-draft no-store boolean did not separately retain private; artifact explicitly qualifies this.",
+    "screenshotLimits": "Loading frames, misframed amount captures, initial Viewer frames and cross-session receipt diagnostic are retained but excluded from the assertions they cannot prove. Manual alert framing is separate from automatic focus. See per-image classifications.",
+    "historicalEvidence": "Original run 20261116T041837Z and interrupted 20261116T204852Z remain reference-only; no scenario credit imported. Their preserved counts are not replaced by this run.",
+    "finalClosure": {
+      "status": "REVIEWED_COMPLETE_FOR_OPERATOR_AND_BROWSER_EVIDENCE",
+      "reviewedAt": "2026-11-16T23:18:50.595952+00:00",
+      "restoration": "All 10 recorded mutation cases restored with matching recorded field hashes. Nine valid negative cases had no business writes; the one invalid historical-assignment premise retained its legitimate third HTTP action. No active mutation/fault/delay ledger remains.",
+      "database": "Three atomic action/receipt/successful-audit/consumption units and 45 exact evidence links remain across six proposals. No duplicate actions or temporary grants, triggers, functions or conflicts remain.",
+      "guards": "All four enabled immutable/append-only guards have expected targets/functions and function bodies matching the unchanged migration. All eight database migration checksums match source. No destructive guard test was attempted during cleanup.",
+      "sessions": "All 24 nonfixture sessions are revoked and active sessions are zero. Seven operator-ledger sessions were revoked through the trusted session service; ephemeral HTTP harness sessions were revoked by their own finally handlers. Fixed seed-session digest and revocation pattern are unchanged. No exclusive demo-session lock remains.",
+      "fixtures": "All eight fixed-fixture table digests match the fresh baseline. All 38 public-table digests, business counts and guards for each of the three older databases match their read-only baseline attestations.",
+      "browser": "Viewport override reset, device toolbar and DevTools closed, reduced-motion emulation disabled, inherited native 175% zoom restored and verified. Final revoked-session page denies details. Browser owner reports all owned QA tabs closed and CUA completion emitted.",
+      "limits": "Native 175% provenance comes from the preserved interrupted-run baseline; this is not represented as a fresh pretest measurement. Owned issuer shutdown/final runtime drain and publication/source/evidence-preservation/sanitization checks remain root publication responsibilities, outside this independent browser evidence review.",
+      "evidence": [
+        "restoration-ledger.json",
+        "final-integrity.json",
+        "session-revocation.json",
+        "final-catalog-guard-session-proof.json",
+        "fixed-fixture-digests-after.json",
+        "original-first-run-preservation-after.json",
+        "revision-validation-preservation-after.json",
+        "interrupted-run-204852-preservation-after.json",
+        "browser-settings-restoration.json",
+        "final-revoked-session.json",
+        "final-revoked-session.jpg",
+        "pr-preservation-check.json"
+      ]
+    },
+    "sanitization": "Independent visual inspection observed no credentials or personal paths in reviewed images; this is not a substitute for root text/OCR/metadata/private-value scan.",
+    "screenshotReview": {
+      "reviewedImages": 240,
+      "pendingImages": 0,
+      "changedOrMissingReviewedImages": 0,
+      "classificationCounts": {
+        "CONTENT_VISIBLE": 227,
+        "CONTENT_VISIBLE_PREFERENCE_NOT_PROVEN": 1,
+        "DIAGNOSTIC_NOT_COMPARABLE": 1,
+        "LOADING_NOT_RESULT": 5,
+        "MISSING_ASSERTED_CONTENT": 6
+      },
+      "evidence": [
+        "screenshot-review.json"
+      ]
+    },
+    "scenarioLedgerAgreement": {
+      "matchesAll18Statuses": true,
+      "evidence": [
+        "browser-scenario-outcomes.json"
+      ]
+    }
+  },
+  "closureArtifacts": [
+    "F06-claim-source-confirm-provenance.json",
+    "browser-freeze.json",
+    "browser-settings-restoration.json",
+    "final-catalog-guard-session-proof.json",
+    "final-integrity.json",
+    "final-operator-database-snapshot.json",
+    "fixed-fixture-digests-after.json",
+    "interrupted-run-204852-preservation-after.json",
+    "operator-closure.json",
+    "original-first-run-preservation-after.json",
+    "restoration-ledger.json",
+    "revision-validation-preservation-after.json",
+    "runtime-app-sanitized.log",
+    "runtime-environment-attestation.json",
+    "runtime-log-capture.json",
+    "session-revocation.json"
+  ],
+  "screenshotReview": "screenshot-review.json",
+  "independentReview": "independent-evidence-review.json",
+  "sanitization": {
+    "result": "PASS",
+    "scanIncludes": "Text/JSON/logs, credential patterns, exact private runtime values, image metadata/EXIF, English OCR and independent visual inspection.",
+    "limitation": "Heuristic pattern/OCR coverage is not a universal proof; Chinese images were also visually reviewed.",
+    "publicationGateRequired": true,
+    "report": "publication-sanitization.json"
+  },
+  "preservedFirstRun": {
+    "runId": "20261116T041837Z",
+    "branch": "qa/sb-029-local-20261116T041837Z",
+    "commit": "0c9b4293a9e91aa6121b8571e7f22537b131760d",
+    "directParent": "13e7191f340e998c93b644949602f1c0774fe9ff",
+    "counts": {
+      "PASS": 9,
+      "FAIL": 3,
+      "PARTIAL": 5,
+      "BLOCKED": 1
+    },
+    "preservation": "No changes authorized or made",
+    "reviewed": [
+      "REPORT.txt",
+      "FINDINGS.txt",
+      "screenshot-review.json"
+    ],
+    "screenshotReviewSummary": {
+      "CONTENT_VISIBLE": 72,
+      "LOADING_ONLY": 8,
+      "PRE_RESULT_REVIEW": 9
+    }
+  },
+  "interruptedRunPreservation": "prior-interrupted-run-preservation.json",
+  "sourcePreservation": "final-source-preservation.json",
+  "files": "FILES.txt",
+  "hashes": "artifact-sha256.json",
+  "publicationClosure": {
+    "operatorEvidenceFrozen": true,
+    "browserEvidenceFrozen": true,
+    "independentReviewFrozen": true,
+    "productionPreview": "Left running on localhost:3000 with all QA sessions revoked.",
+    "qaIssuer": "Stopped; port3001 listener absent.",
+    "productChanged": false,
+    "historicalEvidenceChanged": false,
+    "pr31Merged": false
+  }
+}

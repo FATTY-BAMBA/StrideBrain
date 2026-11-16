@@ -1,0 +1,367 @@
+{
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "at": "2026-11-16T22:50:36.697Z",
+  "classification": "READ_ONLY_INVALID_NEGATIVE_PRECONDITION_DIAGNOSIS",
+  "originalFailureArtifact": "http-chosen-assignee-denial-failure-1794869125303.json",
+  "restorationArtifact": "mutation-assignee-actual-ineligible-1794869124677.json",
+  "unexpectedAuthorizedAction": "action_fc9baffb-bcd8-452b-8f0f-7b0b7481d5f2",
+  "proposalKey": "proposal_9d546bf5-df49-44e3-8f1c-07b73b9c1319",
+  "actorAndAssignee": [
+    {
+      "id": "membership_horizon_finance",
+      "role": "FINANCIAL_REVIEWER",
+      "active": true,
+      "personActive": true,
+      "effectiveCapabilities": [
+        "action:assign",
+        "action:internal-review:create",
+        "action:internal-review:propose",
+        "commercial:actual-read",
+        "commercial:forecast-read",
+        "evidence:read",
+        "project:compare",
+        "project:read",
+        "quote:read"
+      ],
+      "actualReadCapability": true,
+      "actualReadDenyPresent": false,
+      "assignments": [
+        {
+          "projectId": "prj_neihu_021",
+          "canReadActuals": true,
+          "canCreateAction": true
+        },
+        {
+          "projectId": "prj_xinyi_026",
+          "canReadActuals": true,
+          "canCreateAction": true
+        }
+      ]
+    },
+    {
+      "id": "membership_horizon_mei",
+      "role": "PROJECT_MANAGER_ESTIMATOR",
+      "active": true,
+      "personActive": true,
+      "effectiveCapabilities": [
+        "action:assign",
+        "action:internal-review:create",
+        "action:internal-review:propose",
+        "commercial:actual-read",
+        "commercial:forecast-read",
+        "evidence:read",
+        "project:compare",
+        "project:read",
+        "quote:read"
+      ],
+      "actualReadCapability": true,
+      "actualReadDenyPresent": false,
+      "assignments": [
+        {
+          "projectId": "prj_xinyi_026",
+          "canReadActuals": true,
+          "canCreateAction": true
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "prj_neihu_021",
+      "businessKey": "PRJ-NEIHU-021",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "status": "COMPLETED"
+    },
+    {
+      "id": "prj_xinyi_026",
+      "businessKey": "PRJ-XINYI-026",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "status": "ACTIVE"
+    }
+  ],
+  "requiredEvidence": [
+    {
+      "id": "evid_cost_cl_nanjing_023_v1_3",
+      "subjectType": "COST_LINE",
+      "subjectId": "cl_nanjing_023_v1_3",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "observationType": "RECONCILED_ACTUAL_COST",
+      "documentVersionId": "dv_prj_nanjing_023_3",
+      "project": {
+        "id": "prj_nanjing_023",
+        "businessKey": "PRJ-NANJING-023",
+        "dataClassification": "DEMO_SYNTHETIC",
+        "status": "COMPLETED",
+        "deletedAt": null
+      },
+      "inStoredComparison": true
+    },
+    {
+      "id": "evid_cost_cl_neihu_021_v1_3",
+      "subjectType": "COST_LINE",
+      "subjectId": "cl_neihu_021_v1_3",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "observationType": "RECONCILED_ACTUAL_COST",
+      "documentVersionId": "dv_prj_neihu_021_3",
+      "project": {
+        "id": "prj_neihu_021",
+        "businessKey": "PRJ-NEIHU-021",
+        "dataClassification": "DEMO_SYNTHETIC",
+        "status": "COMPLETED",
+        "deletedAt": null
+      },
+      "inStoredComparison": true
+    },
+    {
+      "id": "evid_cost_cl_neihu_021_v1_4",
+      "subjectType": "COST_LINE",
+      "subjectId": "cl_neihu_021_v1_4",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "observationType": "RECONCILED_ACTUAL_COST",
+      "documentVersionId": "dv_prj_neihu_021_3",
+      "project": {
+        "id": "prj_neihu_021",
+        "businessKey": "PRJ-NEIHU-021",
+        "dataClassification": "DEMO_SYNTHETIC",
+        "status": "COMPLETED",
+        "deletedAt": null
+      },
+      "inStoredComparison": true
+    },
+    {
+      "id": "evid_cost_cl_zhongshan_018_v1_3",
+      "subjectType": "COST_LINE",
+      "subjectId": "cl_zhongshan_018_v1_3",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "observationType": "RECONCILED_ACTUAL_COST",
+      "documentVersionId": "dv_prj_zhongshan_018_3",
+      "project": {
+        "id": "prj_zhongshan_018",
+        "businessKey": "PRJ-ZHONGSHAN-018",
+        "dataClassification": "DEMO_SYNTHETIC",
+        "status": "COMPLETED",
+        "deletedAt": null
+      },
+      "inStoredComparison": true
+    },
+    {
+      "id": "evid_cost_cl_zhongshan_018_v1_4",
+      "subjectType": "COST_LINE",
+      "subjectId": "cl_zhongshan_018_v1_4",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "observationType": "RECONCILED_ACTUAL_COST",
+      "documentVersionId": "dv_prj_zhongshan_018_3",
+      "project": {
+        "id": "prj_zhongshan_018",
+        "businessKey": "PRJ-ZHONGSHAN-018",
+        "dataClassification": "DEMO_SYNTHETIC",
+        "status": "COMPLETED",
+        "deletedAt": null
+      },
+      "inStoredComparison": true
+    },
+    {
+      "id": "evid_forecast_fcl_xinyi_026_3",
+      "subjectType": "FORECAST_COST_LINE",
+      "subjectId": "fcl_xinyi_026_3",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "observationType": "FORECAST_DIRECT_COST",
+      "documentVersionId": "dv_prj_xinyi_026_3",
+      "project": {
+        "id": "prj_xinyi_026",
+        "businessKey": "PRJ-XINYI-026",
+        "dataClassification": "DEMO_SYNTHETIC",
+        "status": "ACTIVE",
+        "deletedAt": null
+      },
+      "inStoredComparison": true
+    },
+    {
+      "id": "evid_forecast_fcl_xinyi_026_4",
+      "subjectType": "FORECAST_COST_LINE",
+      "subjectId": "fcl_xinyi_026_4",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "observationType": "FORECAST_DIRECT_COST",
+      "documentVersionId": "dv_prj_xinyi_026_3",
+      "project": {
+        "id": "prj_xinyi_026",
+        "businessKey": "PRJ-XINYI-026",
+        "dataClassification": "DEMO_SYNTHETIC",
+        "status": "ACTIVE",
+        "deletedAt": null
+      },
+      "inStoredComparison": true
+    },
+    {
+      "id": "evid_programme_prj_nanjing_023",
+      "subjectType": "PROJECT",
+      "subjectId": "prj_nanjing_023",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "observationType": null,
+      "documentVersionId": "dv_prj_nanjing_023_1",
+      "project": {
+        "id": "prj_nanjing_023",
+        "businessKey": "PRJ-NANJING-023",
+        "dataClassification": "DEMO_SYNTHETIC",
+        "status": "COMPLETED",
+        "deletedAt": null
+      },
+      "inStoredComparison": true
+    },
+    {
+      "id": "evid_programme_prj_neihu_021",
+      "subjectType": "PROJECT",
+      "subjectId": "prj_neihu_021",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "observationType": null,
+      "documentVersionId": "dv_prj_neihu_021_1",
+      "project": {
+        "id": "prj_neihu_021",
+        "businessKey": "PRJ-NEIHU-021",
+        "dataClassification": "DEMO_SYNTHETIC",
+        "status": "COMPLETED",
+        "deletedAt": null
+      },
+      "inStoredComparison": true
+    },
+    {
+      "id": "evid_programme_prj_xinyi_026",
+      "subjectType": "PROJECT",
+      "subjectId": "prj_xinyi_026",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "observationType": null,
+      "documentVersionId": "dv_prj_xinyi_026_1",
+      "project": {
+        "id": "prj_xinyi_026",
+        "businessKey": "PRJ-XINYI-026",
+        "dataClassification": "DEMO_SYNTHETIC",
+        "status": "ACTIVE",
+        "deletedAt": null
+      },
+      "inStoredComparison": true
+    },
+    {
+      "id": "evid_programme_prj_zhongshan_018",
+      "subjectType": "PROJECT",
+      "subjectId": "prj_zhongshan_018",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "observationType": null,
+      "documentVersionId": "dv_prj_zhongshan_018_1",
+      "project": {
+        "id": "prj_zhongshan_018",
+        "businessKey": "PRJ-ZHONGSHAN-018",
+        "dataClassification": "DEMO_SYNTHETIC",
+        "status": "COMPLETED",
+        "deletedAt": null
+      },
+      "inStoredComparison": true
+    },
+    {
+      "id": "evid_quote_qi_nanjing_023_v2_3",
+      "subjectType": "QUOTE_ITEM",
+      "subjectId": "qi_nanjing_023_v2_3",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "observationType": "QUOTED_PRICE",
+      "documentVersionId": "dv_prj_nanjing_023_2",
+      "project": {
+        "id": "prj_nanjing_023",
+        "businessKey": "PRJ-NANJING-023",
+        "dataClassification": "DEMO_SYNTHETIC",
+        "status": "COMPLETED",
+        "deletedAt": null
+      },
+      "inStoredComparison": true
+    },
+    {
+      "id": "evid_quote_qi_neihu_021_v2_3",
+      "subjectType": "QUOTE_ITEM",
+      "subjectId": "qi_neihu_021_v2_3",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "observationType": "QUOTED_PRICE",
+      "documentVersionId": "dv_prj_neihu_021_2",
+      "project": {
+        "id": "prj_neihu_021",
+        "businessKey": "PRJ-NEIHU-021",
+        "dataClassification": "DEMO_SYNTHETIC",
+        "status": "COMPLETED",
+        "deletedAt": null
+      },
+      "inStoredComparison": true
+    },
+    {
+      "id": "evid_quote_qi_xinyi_026_v3_3",
+      "subjectType": "QUOTE_ITEM",
+      "subjectId": "qi_xinyi_026_v3_3",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "observationType": "QUOTED_PRICE",
+      "documentVersionId": "dv_prj_xinyi_026_2",
+      "project": {
+        "id": "prj_xinyi_026",
+        "businessKey": "PRJ-XINYI-026",
+        "dataClassification": "DEMO_SYNTHETIC",
+        "status": "ACTIVE",
+        "deletedAt": null
+      },
+      "inStoredComparison": true
+    },
+    {
+      "id": "evid_quote_qi_zhongshan_018_v2_3",
+      "subjectType": "QUOTE_ITEM",
+      "subjectId": "qi_zhongshan_018_v2_3",
+      "dataClassification": "DEMO_SYNTHETIC",
+      "observationType": "QUOTED_PRICE",
+      "documentVersionId": "dv_prj_zhongshan_018_2",
+      "project": {
+        "id": "prj_zhongshan_018",
+        "businessKey": "PRJ-ZHONGSHAN-018",
+        "dataClassification": "DEMO_SYNTHETIC",
+        "status": "COMPLETED",
+        "deletedAt": null
+      },
+      "inStoredComparison": true
+    }
+  ],
+  "allRequiredReferencesDemoSynthetic": true,
+  "atomicAction": {
+    "actionKey": "action_fc9baffb-bcd8-452b-8f0f-7b0b7481d5f2",
+    "proposalKey": "proposal_9d546bf5-df49-44e3-8f1c-07b73b9c1319",
+    "status": "OPEN",
+    "createdByMembershipId": "membership_horizon_mei",
+    "assigneeMembershipId": "membership_horizon_finance",
+    "creator": {
+      "en": "Mei Lin",
+      "zhTw": "林美玲"
+    },
+    "assignee": {
+      "en": "Iris Huang",
+      "zhTw": "黃怡君"
+    },
+    "titleKey": "VALIDATE",
+    "rationaleKey": "REVIEW_NEXT",
+    "storedDueDate": "2026-11-24",
+    "evidenceCount": 15,
+    "sameExactEvidenceRefs": true,
+    "proposalStatus": "CONFIRMED",
+    "receiptCount": 1,
+    "successfulAuditCount": 1,
+    "receiptLineageMatches": true
+  },
+  "counts": {
+    "actions": 3,
+    "proposals": 4,
+    "consumed": 3,
+    "receipts": 3,
+    "audits": 3,
+    "actionevidencelinks": 45
+  },
+  "policySources": [
+    "foundry/tasks/SB-029/architecture.md:175",
+    "docs/build/STAGE_7_IMPLEMENTATION.md:67",
+    "src/modules/internal-review/application/freshness.ts:125"
+  ],
+  "interpretation": "The negative premise was invalid: disabling Iris Neihu historical canReadActuals does not revoke access to approved DEMO_SYNTHETIC comparison-library evidence while actual-read capability and active Xinyi authorization remain. The first HTTP command therefore committed a legitimate third atomic action. Preserve the action and original harness failure; this is no browser pass and does not establish an unauthorized write. Correct future actual-ineligible tests use explicit commercial:actual-read DENY or the applicable active-Xinyi actual-read assignment flag.",
+  "databaseMutationsPerformedByThisDiagnostic": false,
+  "browserAcceptanceCredit": false,
+  "originalFailureAndBusinessHistoryPreserved": true
+}

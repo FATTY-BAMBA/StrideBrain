@@ -1,0 +1,229 @@
+{
+  "at": "2026-11-16T22:07:18.756289+00:00",
+  "classification": "READ_ONLY_PRESERVED_DATABASE_ATTESTATION",
+  "database": "stridebrain_stage8_preview",
+  "container": "stridebrain-sb029-cloud-qa",
+  "port": 54329,
+  "phase": "before",
+  "readOnly": true,
+  "method": "All public tables read inside read-only transactions. Per-table SHA256 over sorted canonical JSON rows; raw rows remain in private process memory and are not retained. No database mutations.",
+  "counts": {
+    "actions": 19,
+    "proposals": 38,
+    "consumed": 19,
+    "receipts": 19,
+    "audits": 19,
+    "activeSessions": 0
+  },
+  "guards": [
+    {
+      "name": "Action_stage8_immutable",
+      "enabled": "O"
+    },
+    {
+      "name": "AuditEvent_append_only",
+      "enabled": "O"
+    },
+    {
+      "name": "InternalReviewReceipt_immutable",
+      "enabled": "O"
+    },
+    {
+      "name": "ProposedAction_stage8_immutable",
+      "enabled": "O"
+    }
+  ],
+  "tables": [
+    {
+      "table": "Action",
+      "rowCount": 19,
+      "sha256": "cc1101d4a910ceb361d1dd03c0b0fec29503c24b0bb3830f9b8136144ad91a7d"
+    },
+    {
+      "table": "AuditEvent",
+      "rowCount": 19,
+      "sha256": "36ac8ba21e702edcbb12e9ecc1336f74ce2f320338c02215f7f504bf20de255c"
+    },
+    {
+      "table": "Client",
+      "rowCount": 15,
+      "sha256": "57a1115167e19f034d6cf045a5edfb45f75964a78d39abe49889f87175e1eec7"
+    },
+    {
+      "table": "ComparisonCandidate",
+      "rowCount": 240,
+      "sha256": "0e7f4f51799d470815cee7e9f86751db3ddff7ba0f479499d164af2f48ef048e"
+    },
+    {
+      "table": "ComparisonClaim",
+      "rowCount": 625,
+      "sha256": "5011e5f73da13a53cb2c4847be73220a91183a88d3c7c53822aabdd7f44a7b56"
+    },
+    {
+      "table": "ComparisonFactor",
+      "rowCount": 1920,
+      "sha256": "1b5f0e4509eefed9988ab7c9ba697c3c23aeccc914af68d0d3f73cc05c31d47b"
+    },
+    {
+      "table": "ComparisonRun",
+      "rowCount": 40,
+      "sha256": "bad678479535bdbe0d7895ad3e92a264ca65a2fac8bcacba9cee800ccd10d5b8"
+    },
+    {
+      "table": "CostLine",
+      "rowCount": 141,
+      "sha256": "44a62b21d50a2f5ac3d873f94f9e1dacdb5e349b0cd41c794920910a45c4d212"
+    },
+    {
+      "table": "DemoSession",
+      "rowCount": 14,
+      "sha256": "6651818a1d57343ca99cdc65bffb95b6b27b4123cdaf04ba5cbf4b15f76def40"
+    },
+    {
+      "table": "Document",
+      "rowCount": 116,
+      "sha256": "75dd1e03487f35d53fc8cca512a64a6554f89fad3945ebbe043c945da80a505f"
+    },
+    {
+      "table": "DocumentVersion",
+      "rowCount": 116,
+      "sha256": "ea8ea8fb37b950a500690a83dba70ae5d05b3239e6fa4f794a1d16c1b02a6363"
+    },
+    {
+      "table": "EconomicsEnrichmentRun",
+      "rowCount": 40,
+      "sha256": "5f16bbea1ee665c526c7baf95b0d6b171434457a8b0e55b12c7065a80f1f5eee"
+    },
+    {
+      "table": "EconomicsObservationDecision",
+      "rowCount": 3666,
+      "sha256": "47582f982d0e020f7748747602ac5b3b50a6e949961aed5be7c58250372a254e"
+    },
+    {
+      "table": "EvidenceConflict",
+      "rowCount": 1,
+      "sha256": "f8c7e0475248b20d0fda22c0af418698c5d8731fb66e7380d73fb6d0764f64d6"
+    },
+    {
+      "table": "EvidenceReference",
+      "rowCount": 571,
+      "sha256": "23e8150584635679f18009cdf4bf072644564835e58107093f6ad678f1b123be"
+    },
+    {
+      "table": "ForecastCostLine",
+      "rowCount": 6,
+      "sha256": "419abe262845fd4b045244ff27b55a5aa4cc2c4fe29bd7465344d92e06240cdb"
+    },
+    {
+      "table": "ForecastCostVersion",
+      "rowCount": 1,
+      "sha256": "d6acff21ea1eba34933e1dee9d22652a09fbe5980682fad8cd0f698b209537e4"
+    },
+    {
+      "table": "IntelligenceRun",
+      "rowCount": 40,
+      "sha256": "7e2b2d55664dbb31efd5c9c4cb0fe0db5ed0c40128205587d2643f26c8848732"
+    },
+    {
+      "table": "InternalReviewReceipt",
+      "rowCount": 19,
+      "sha256": "e0dfef20d7f0c0e30851c6c69ebb1a8288de303aaf0f7c0761293fa5f8e2e1e1"
+    },
+    {
+      "table": "Material",
+      "rowCount": 8,
+      "sha256": "8202a362619e019b5d5b82002a32fae70662aa1d676771b12efd92ab490decae"
+    },
+    {
+      "table": "Membership",
+      "rowCount": 5,
+      "sha256": "f33c8c5e9c32b2ca521226e4127d8bdd7614418f9c026199d2b70492c1784b2a"
+    },
+    {
+      "table": "MembershipCapabilityGrant",
+      "rowCount": 5,
+      "sha256": "72117059d4affb0037b204dcf011e4793a34df5623f96e0e97d00860fc38e685"
+    },
+    {
+      "table": "Organization",
+      "rowCount": 2,
+      "sha256": "c807146be44bf41b02c10a21e8ac6be9871982895e355ffed9cf959d3a1bef38"
+    },
+    {
+      "table": "Person",
+      "rowCount": 5,
+      "sha256": "67ec1af5d65a716f3cf9ca5fd37df4c6d2fd4755a5c293ab31cde036a402accc"
+    },
+    {
+      "table": "Project",
+      "rowCount": 30,
+      "sha256": "f02b5edbeca2b314702242bacc3707f37c4dfe92859f1df4de981682c984b503"
+    },
+    {
+      "table": "ProjectAssignment",
+      "rowCount": 33,
+      "sha256": "ea1427a984e9fb9d1f043ecdde20beeded950ec66c71b788bcefb59bd0ff2d79"
+    },
+    {
+      "table": "ProjectCostVersion",
+      "rowCount": 25,
+      "sha256": "f5a9adc8598702fdd284a6f08429959596097200f74243c635d009f7d7a3dc56"
+    },
+    {
+      "table": "ProjectMaterial",
+      "rowCount": 16,
+      "sha256": "db5b53c19d779d39572aa62d6c4c50a432031056ba4b27931b3e30f43b5dd543"
+    },
+    {
+      "table": "ProjectScope",
+      "rowCount": 129,
+      "sha256": "0ca67404a4bc27c082f55d7e06091ac2929a40e827b72588629cc9f508483fea"
+    },
+    {
+      "table": "ProjectSupplier",
+      "rowCount": 48,
+      "sha256": "5fb23c76d373b41fab721ce91cfd62ccc91cdec6bcc2d37be905e7c5b5f7bd75"
+    },
+    {
+      "table": "ProposedAction",
+      "rowCount": 38,
+      "sha256": "0d6793693e66d621e2bbc7ffa6d08ea35ce058f4c53615cccd7ec1b7419fe569"
+    },
+    {
+      "table": "Quote",
+      "rowCount": 29,
+      "sha256": "f01cc5dfa5509ddbc22b71f9f4b790acd4875ac651daa2ccad4fc3766cc19ad9"
+    },
+    {
+      "table": "QuoteItem",
+      "rowCount": 276,
+      "sha256": "f7d102fb0f8c4b4527e4fa68039b89cb814a4b43639aa3a7e8d97b4ebf4183ee"
+    },
+    {
+      "table": "QuoteVersion",
+      "rowCount": 46,
+      "sha256": "d4cf119a0ab4c56ba20a23a1ac0027291a3f910dd307a4ca24c334a4b51fbfa6"
+    },
+    {
+      "table": "Supplier",
+      "rowCount": 20,
+      "sha256": "413435ee0c4a3f00a4d1bac44fbfbff9866daa1f5dd19d6b72860ea563897678"
+    },
+    {
+      "table": "SupplierOffer",
+      "rowCount": 2,
+      "sha256": "721c3d3fa6eeecfeb6cbddb88133f15e85e60a1fbcd298b951239142c15e6840"
+    },
+    {
+      "table": "SupplierOfferItem",
+      "rowCount": 2,
+      "sha256": "5316d13f4637d5374d9e1cd5494918f94b46993325e5b4d20c0440e1412e957d"
+    },
+    {
+      "table": "_prisma_migrations",
+      "rowCount": 8,
+      "sha256": "c201140db97b7a39794c069856f3746a4ad68cb4973b9191d4d86f0dede2de83"
+    }
+  ],
+  "combinedSha256": "248775dd6ece23a2441562201e31bfdfa73fff90bf7010cd30352e4223d3839a"
+}

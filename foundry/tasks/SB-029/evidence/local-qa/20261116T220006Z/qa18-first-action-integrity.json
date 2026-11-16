@@ -1,0 +1,81 @@
+{
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "at": "2026-11-16T22:23:42.478Z",
+  "counts": {
+    "actions": 1,
+    "proposals": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "organizations": [
+    {
+      "businessKey": "HORIZON_ATELIER",
+      "dataClassification": "DEMO_SYNTHETIC"
+    },
+    {
+      "businessKey": "NORTHERN_STUDIO",
+      "dataClassification": "DEMO_SYNTHETIC"
+    }
+  ],
+  "migrations": 8,
+  "guards": [
+    {
+      "tgname": "Action_stage8_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "AuditEvent_append_only",
+      "enabled": "O"
+    },
+    {
+      "tgname": "InternalReviewReceipt_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "ProposedAction_stage8_immutable",
+      "enabled": "O"
+    }
+  ],
+  "activeSessions": 1,
+  "temporaryGrants": 0,
+  "temporaryTriggers": 0,
+  "duplicates": [],
+  "actions": [
+    {
+      "actionKey": "action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+      "proposalKey": "proposal_788eae35-8af0-4122-8872-349cc933cab1",
+      "status": "OPEN",
+      "titleKey": "VALIDATE",
+      "rationaleKey": "REVIEW_NEXT",
+      "storedDueDate": "2026-11-24",
+      "evidenceCount": 15,
+      "sameExactEvidenceRefs": true,
+      "proposalStatus": "CONFIRMED",
+      "receiptCount": 1,
+      "successfulAuditCount": 1,
+      "receiptLineageMatches": true
+    }
+  ],
+  "providerCredentialVariablesPresent": [],
+  "runtimeDirectoryMode": "700",
+  "environmentFileMode": "600",
+  "proposals": [
+    {
+      "proposalKey": "proposal_788eae35-8af0-4122-8872-349cc933cab1",
+      "status": "CONFIRMED",
+      "comparisonRunId": "cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25",
+      "enrichmentRunId": "econrun_000eff15-1995-4a07-bed2-37c8f5005627",
+      "preparedByMembershipId": "membership_horizon_mei",
+      "expiresAtStoredTimestamp": "2026-11-16 22:51:18.862",
+      "evidenceCount": 15,
+      "actionCount": 1
+    }
+  ],
+  "temporaryConflicts": 0,
+  "temporaryFunctions": 0,
+  "allActionsAtomic": true,
+  "oneConsumedPerAction": true
+}

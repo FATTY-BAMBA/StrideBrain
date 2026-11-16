@@ -1,0 +1,66 @@
+- link "跳至主要內容":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: PRIMESTRIDE AI
+  - navigation "專案":
+    - link "首頁":
+      - /url: /zh-TW
+      - generic: "01"
+      - generic: 首頁
+    - link "專案":
+      - /url: /zh-TW/projects
+      - generic: "02"
+      - generic: 專案
+    - link "知識":
+      - /url: /zh-TW/knowledge
+      - generic: "03"
+      - generic: 知識
+    - link "StrideBrain":
+      - /url: /zh-TW/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "設定":
+      - /url: /zh-TW/settings
+      - generic: "05"
+      - generic: 設定
+  - strong: v0.1 · 受控示範
+  - generic: 此區域尚未啟用
+- banner:
+  - generic: ●
+  - text: 受控虛構資料示範
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects/PRJ-XINYI-026
+    - generic: /
+    - link "EN":
+      - /url: /en/projects/PRJ-XINYI-026
+- main:
+  - paragraph: 專案工作區
+  - heading "此專案或區域目前無法使用。" [level=1]
+  - paragraph: 目前的授權脈絡無法開啟此專案，或此專案區域尚未在第一個完整流程中啟用。系統不會以假資料取代失敗狀態。
+  - navigation "專案工作區導覽":
+    - link "總覽":
+      - /url: /zh-TW/projects/PRJ-XINYI-026
+    - link "比較":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/compare
+    - link "商務資料":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/commercial
+    - link "資料依據":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/evidence
+    - link "行動事項":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/actions
+  - region "總覽":
+    - generic: 此區域尚未啟用
+    - heading "總覽" [level=2]
+    - paragraph: 專案總覽、比較與資料依據已連接正式資料與權限邊界。商務資料專頁與行動事項會依照已核准的建置順序逐步啟用。
+    - term: 要求的專案識別碼
+    - definition:
+      - code: PRJ-XINYI-026
+    - term: 目前區域
+    - definition: 總覽
+- contentinfo:
+  - generic: 僅使用虛構示範資料 · 無真實客戶資料
+  - generic: 尚未切換正式示範網域
+- alert

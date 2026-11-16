@@ -1,0 +1,134 @@
+{
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "at": "2026-11-16T22:38:20.661Z",
+  "classification": "APPROVED_NON_UI_HTTP_SUPPLEMENT",
+  "executionMode": "HTTP_ONLY",
+  "activeMutation": null,
+  "suite": "assignee",
+  "selector": "proposal_9d546bf5-df49-44e3-8f1c-07b73b9c1319",
+  "timezone": "Asia/Taipei",
+  "minDueDate": "2026-11-17",
+  "maxDueDate": "2027-11-17",
+  "results": [
+    {
+      "name": "capture-existing-proposal",
+      "method": "GET",
+      "path": "/api/actions/internal-review/proposals/proposal_9d546bf5-df49-44e3-8f1c-07b73b9c1319?locale=en",
+      "status": 200,
+      "kind": "PREPARED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "proposal"
+      ],
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-foreign-assignee",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_9d546bf5-df49-44e3-8f1c-07b73b9c1319",
+        "assigneeKey": "assignee_5c224d1aef24ac7bf34f94e09b3c47dc",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "ASSIGNEE_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "en-nonexistent-assignee",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_9d546bf5-df49-44e3-8f1c-07b73b9c1319",
+        "assigneeKey": "assignee_a13e52da2be74ac38f106792309e20cc",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "ASSIGNEE_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "zh-TW-foreign-assignee",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_9d546bf5-df49-44e3-8f1c-07b73b9c1319",
+        "assigneeKey": "assignee_5c224d1aef24ac7bf34f94e09b3c47dc",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "ASSIGNEE_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "zh-TW-nonexistent-assignee",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_9d546bf5-df49-44e3-8f1c-07b73b9c1319",
+        "assigneeKey": "assignee_a5551e68ac064255ad9829b801f6468c",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "ASSIGNEE_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "countsAfter": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "noBusinessWrites": true,
+  "browserAcceptanceCredit": false,
+  "disclosurePredicate": {
+    "appliesTo": "Rows marked sensitiveDisclosure; full parsed public JSON checked before safe-field filtering",
+    "checkedPattern": "Xinyi|信義旗艦|membership_horizon|org_horizon|Northern|北境|membership_northern|org_northern|evidenceCount|assigneeDisplayName|12650000|2360000",
+    "limitations": "Finite known-name/value predicate, not universal sensitive-data proof. Paired status/kind equality does not imply byte-identical bodies."
+  }
+}

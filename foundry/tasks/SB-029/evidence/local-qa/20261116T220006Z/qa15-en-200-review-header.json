@@ -1,0 +1,259 @@
+{
+  "runId": "20261116T220006Z",
+  "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+  "at": "2026-11-16T23:07:22.933Z",
+  "persona": "mei",
+  "step": "Read-only existing prepared review at actual200%",
+  "nativeZoom": "200% verified by Chrome AX",
+  "metrics": {
+    "controls": [
+      {
+        "bounds": {
+          "bottom": 114.19921875,
+          "height": 21.08203125,
+          "left": 368,
+          "right": 413.41015625,
+          "top": 93.1171875,
+          "width": 45.41015625,
+          "x": 368,
+          "y": 93.1171875
+        },
+        "id": "",
+        "tag": "A",
+        "text": "English"
+      },
+      {
+        "bounds": {
+          "bottom": 114.19921875,
+          "height": 21.08203125,
+          "left": 425.41015625,
+          "right": 479.8125,
+          "top": 93.1171875,
+          "width": 54.40234375,
+          "x": 425.41015625,
+          "y": 93.1171875
+        },
+        "id": "",
+        "tag": "A",
+        "text": "繁體中文"
+      },
+      {
+        "bounds": {
+          "bottom": 69.1953125,
+          "height": 49.1953125,
+          "left": 929.9375,
+          "right": 1008,
+          "top": 20,
+          "width": 78.0625,
+          "x": 929.9375,
+          "y": 20
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Close"
+      },
+      {
+        "bounds": {
+          "bottom": 222.39453125,
+          "height": 44,
+          "left": 368,
+          "right": 1008,
+          "top": 178.39453125,
+          "width": 640,
+          "x": 368,
+          "y": 178.39453125
+        },
+        "id": "review-title",
+        "tag": "SELECT",
+        "text": "Validate imported-stone and lighting assumptions for Xinyi quote v3\nReview imported-stone and lighti"
+      },
+      {
+        "bounds": {
+          "bottom": 343.828125,
+          "height": 44,
+          "left": 368,
+          "right": 1008,
+          "top": 299.828125,
+          "width": 640,
+          "x": 368,
+          "y": 299.828125
+        },
+        "id": "review-rationale",
+        "tag": "SELECT",
+        "text": "Review these assumptions against the linked evidence before the next internal quotation review.\nChec"
+      },
+      {
+        "bounds": {
+          "bottom": 1148.2890625,
+          "height": 62.390625,
+          "left": 404.19921875,
+          "right": 991,
+          "top": 1085.8984375,
+          "width": 586.80078125,
+          "x": 404.19921875,
+          "y": 1085.8984375
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history."
+      },
+      {
+        "bounds": {
+          "bottom": 1203.48828125,
+          "height": 44,
+          "left": 404.19921875,
+          "right": 979.07421875,
+          "top": 1159.48828125,
+          "width": 574.875,
+          "x": 404.19921875,
+          "y": 1159.48828125
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Lighting quoted price differs by +9.4% from eligible quoted-price history."
+      },
+      {
+        "bounds": {
+          "bottom": 1277.078125,
+          "height": 62.390625,
+          "left": 404.19921875,
+          "right": 991,
+          "top": 1214.6875,
+          "width": 586.80078125,
+          "x": 404.19921875,
+          "y": 1214.6875
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actu"
+      },
+      {
+        "bounds": {
+          "bottom": 1350.66796875,
+          "height": 62.390625,
+          "left": 404.19921875,
+          "right": 991,
+          "top": 1288.27734375,
+          "width": 586.80078125,
+          "x": 404.19921875,
+          "y": 1288.27734375
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a q"
+      },
+      {
+        "bounds": {
+          "bottom": 1462.0625,
+          "height": 44,
+          "left": 368,
+          "right": 1008,
+          "top": 1418.0625,
+          "width": 640,
+          "x": 368,
+          "y": 1418.0625
+        },
+        "id": "review-assignee",
+        "tag": "SELECT",
+        "text": "Unassigned\nMei Lin\nAlex Chen\nIris Huang"
+      },
+      {
+        "bounds": {
+          "bottom": 1562.05078125,
+          "height": 49.59375,
+          "left": 368,
+          "right": 1008,
+          "top": 1512.45703125,
+          "width": 640,
+          "x": 368,
+          "y": 1512.45703125
+        },
+        "id": "review-dueDate",
+        "tag": "INPUT",
+        "text": ""
+      },
+      {
+        "bounds": {
+          "bottom": 1639.48828125,
+          "height": 44,
+          "left": 368,
+          "right": 1008,
+          "top": 1595.48828125,
+          "width": 640,
+          "x": 368,
+          "y": 1595.48828125
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Clear due date"
+      },
+      {
+        "bounds": {
+          "bottom": 1945.2265625,
+          "height": 20,
+          "left": 372,
+          "right": 392,
+          "top": 1925.2265625,
+          "width": 20,
+          "x": 372,
+          "y": 1925.2265625
+        },
+        "id": "review-confirmation",
+        "tag": "INPUT",
+        "text": ""
+      },
+      {
+        "bounds": {
+          "bottom": 2042.41796875,
+          "height": 49.1953125,
+          "left": 368,
+          "right": 626.8828125,
+          "top": 1993.22265625,
+          "width": 258.8828125,
+          "x": 368,
+          "y": 1993.22265625
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Create internal review action"
+      },
+      {
+        "bounds": {
+          "bottom": 2042.41796875,
+          "height": 49.1953125,
+          "left": 638.8828125,
+          "right": 782.2421875,
+          "top": 1993.22265625,
+          "width": 143.359375,
+          "x": 638.8828125,
+          "y": 1993.22265625
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Cancel review"
+      }
+    ],
+    "dialog": {
+      "bottom": 617,
+      "height": 617,
+      "left": 348,
+      "right": 1028,
+      "top": 0,
+      "width": 680,
+      "x": 348,
+      "y": 0
+    },
+    "documentWidth": 1028,
+    "dpr": 4,
+    "height": 617,
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_ffc61ccf-dc8b-4d7c-bcf8-9920491b0911&economics=econrun_0e5074f7-ec23-4bc2-8e52-7ffb3fc06d16&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_869519ba-4581-4859-801b-18fb21ac2806&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY",
+    "width": 1028
+  },
+  "imageDimensions": {
+    "format": "jpeg",
+    "height": 617,
+    "width": 1028
+  },
+  "image": "qa15-en-200-review-header.jpg",
+  "qualification": "Native200% with viewport override reset; raw pixels are not claimed as CSS viewport dimensions"
+}

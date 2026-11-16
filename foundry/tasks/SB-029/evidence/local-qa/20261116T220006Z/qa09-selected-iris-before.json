@@ -1,0 +1,68 @@
+{
+  "en": {
+    "ack": true,
+    "dialogs": 1,
+    "fields": {
+      "review-assignee": "assignee_e1078151219336a0529d3fa95332a60f",
+      "review-dueDate": "2026-11-24",
+      "review-rationale": "VALIDATE_HISTORY",
+      "review-title": "CHECK"
+    },
+    "focus": {
+      "id": "review-confirmation",
+      "tag": "INPUT",
+      "text": ""
+    },
+    "selected": [
+      {
+        "id": "review-title",
+        "label": "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "label": "Validate the imported-stone and lighting assumptions using the linked historical evidence.",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "label": "Iris Huang",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      }
+    ],
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_ccd6a6e2-ce23-4d4d-867a-3fc5364bb40b&economics=econrun_11d33ba4-dfbc-4865-b96f-87099a2a05e6&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_9d546bf5-df49-44e3-8f1c-07b73b9c1319&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY"
+  },
+  "zh": {
+    "ack": true,
+    "dialogs": 1,
+    "fields": {
+      "review-assignee": "assignee_e1078151219336a0529d3fa95332a60f",
+      "review-dueDate": "2026-11-24",
+      "review-rationale": "VALIDATE_HISTORY",
+      "review-title": "CHECK"
+    },
+    "focus": {
+      "id": "review-confirmation",
+      "tag": "INPUT",
+      "text": ""
+    },
+    "selected": [
+      {
+        "id": "review-title",
+        "label": "確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "label": "依連結的歷史佐證資料，檢核進口石材與照明假設。",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "label": "黃怡君",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      }
+    ],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_ccd6a6e2-ce23-4d4d-867a-3fc5364bb40b&economics=econrun_11d33ba4-dfbc-4865-b96f-87099a2a05e6&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_9d546bf5-df49-44e3-8f1c-07b73b9c1319&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY"
+  }
+}

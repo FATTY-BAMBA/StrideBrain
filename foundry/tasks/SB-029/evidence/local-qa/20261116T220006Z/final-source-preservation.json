@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-11-16T23:19:19.791630+00:00",
+  "testedHead": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+  "buildId": "4Zn6yTS6DP2jLb0DDZye_",
+  "sourceTreePaths": [
+    "src",
+    "tests",
+    "prisma",
+    "package.json",
+    "package-lock.json",
+    "tsconfig.json",
+    "next.config.ts",
+    "next-env.d.ts",
+    "prisma.config.ts",
+    "vitest.config.ts",
+    "eslint.config.mjs",
+    "prettier.config.mjs",
+    ".github/workflows/ci.yml"
+  ],
+  "sourceTreeFingerprintSha256": "82ce9a43b9bf4da5280c09cb839eeb277213acd09b73e46aa0a8f15f2758a460",
+  "productDiffEmpty": true,
+  "historicalEvidenceBranch": "qa/sb-029-local-20261116T041837Z",
+  "historicalEvidenceCommit": "0c9b4293a9e91aa6121b8571e7f22537b131760d",
+  "priorInterruptedEvidenceFilesVerified": 305,
+  "priorInterruptedEvidenceUnchanged": true,
+  "publicationScope": "Only foundry/tasks/SB-029/evidence/local-qa/20261116T220006Z/",
+  "sourceFingerprintCommand": "git ls-tree -r 3481dac48ec60e943b5d669f0f7ff0453756ab3d src tests prisma package.json package-lock.json tsconfig.json next.config.ts next-env.d.ts prisma.config.ts vitest.config.ts eslint.config.mjs prettier.config.mjs .github/workflows/ci.yml | shasum -a 256",
+  "productDiffCommand": "git diff HEAD -- src tests prisma package.json package-lock.json tsconfig.json next.config.ts next-env.d.ts prisma.config.ts vitest.config.ts eslint.config.mjs prettier.config.mjs .github/workflows/ci.yml",
+  "acceptanceGranted": false
+}

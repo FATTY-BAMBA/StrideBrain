@@ -1,0 +1,57 @@
+{
+  "cancelled": {
+    "dialogs": 0,
+    "fields": {},
+    "focus": {
+      "id": "internal-review-entry",
+      "tag": "BUTTON",
+      "text": "建立內部審查事項"
+    },
+    "selected": [],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=review-evidence-0"
+  },
+  "escapeState": {
+    "dialogs": 0,
+    "fields": {},
+    "focus": {
+      "id": "internal-review-entry",
+      "tag": "BUTTON",
+      "text": "Create internal review action"
+    },
+    "selected": [],
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=review-evidence-0"
+  },
+  "reopened": {
+    "ack": false,
+    "dialogs": 1,
+    "fields": {
+      "review-assignee": "assignee_e1078151219336a0529d3fa95332a60f",
+      "review-dueDate": "2026-11-24",
+      "review-rationale": "REVIEW_NEXT",
+      "review-title": "VALIDATE"
+    },
+    "focus": {
+      "id": "internal-review-heading",
+      "tag": "H2",
+      "text": "Review internal review action"
+    },
+    "selected": [
+      {
+        "id": "review-title",
+        "label": "Validate imported-stone and lighting assumptions for Xinyi quote v3",
+        "value": "VALIDATE"
+      },
+      {
+        "id": "review-rationale",
+        "label": "Review these assumptions against the linked evidence before the next internal quotation review.",
+        "value": "REVIEW_NEXT"
+      },
+      {
+        "id": "review-assignee",
+        "label": "Iris Huang",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      }
+    ],
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94"
+  }
+}

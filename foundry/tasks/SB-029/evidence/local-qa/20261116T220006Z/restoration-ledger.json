@@ -1,0 +1,482 @@
+{
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "at": "2026-11-16T23:17:28.956Z",
+  "acceptanceClaim": false,
+  "expiredRevokedHttpPostSupplementRan": false,
+  "p1Stop": {
+    "finding": "F-06",
+    "scenarios": [
+      "QA-11",
+      "QA-18"
+    ]
+  },
+  "classification": "FRESH_RUN_OPERATOR_RESTORATION_LEDGER",
+  "caseCount": 10,
+  "cases": [
+    {
+      "artifact": "mutation-assignee-actual-capability-denied-1794870012225.json",
+      "caseId": "assignee-actual-capability-denied-1794870012225",
+      "validNegativePremise": true,
+      "kinds": [
+        "assignee-actual-capability-denied"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 3,
+        "consumed": 3,
+        "receipts": 3,
+        "audits": 3,
+        "actionevidencelinks": 45
+      },
+      "countsAfter": {
+        "actions": 3,
+        "consumed": 3,
+        "receipts": 3,
+        "audits": 3,
+        "actionevidencelinks": 45
+      },
+      "restorationVerification": [
+        {
+          "table": "MembershipCapabilityGrant",
+          "id": "qa_sb029_retest_finance_commercial_actual_read",
+          "operation": "INSERT",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "restoredNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "fieldEquality": {
+            "ownedTemporaryRowAbsent": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-assignee-actual-ineligible-1794869124677.json",
+      "caseId": "assignee-actual-ineligible-1794869124677",
+      "validNegativePremise": false,
+      "classification": "INVALID_NEGATIVE_PREMISE_AUTHORIZED_HTTP_CREATION",
+      "diagnosisArtifact": "qa09-historical-flag-expectation-correction.json",
+      "kinds": [
+        "assignee-actual-ineligible"
+      ],
+      "restored": true,
+      "noBusinessWrites": false,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 3,
+        "consumed": 3,
+        "receipts": 3,
+        "audits": 3,
+        "actionevidencelinks": 45
+      },
+      "restorationVerification": [
+        {
+          "table": "ProjectAssignment",
+          "id": "assign_finance_prj_neihu_021",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "d8f46e554ba063182a9fd8da175e2076d7390c93fe3eaf2ed4b50514cea7369a",
+          "restoredNormalizedSha256": "d8f46e554ba063182a9fd8da175e2076d7390c93fe3eaf2ed4b50514cea7369a",
+          "fieldEquality": {
+            "canReadActuals": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-assignee-actual-ineligible-1794870013188.json",
+      "caseId": "assignee-actual-ineligible-1794870013188",
+      "validNegativePremise": true,
+      "kinds": [
+        "assignee-actual-ineligible"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 3,
+        "consumed": 3,
+        "receipts": 3,
+        "audits": 3,
+        "actionevidencelinks": 45
+      },
+      "countsAfter": {
+        "actions": 3,
+        "consumed": 3,
+        "receipts": 3,
+        "audits": 3,
+        "actionevidencelinks": 45
+      },
+      "restorationVerification": [
+        {
+          "table": "ProjectAssignment",
+          "id": "assign_finance_xinyi",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "d8f46e554ba063182a9fd8da175e2076d7390c93fe3eaf2ed4b50514cea7369a",
+          "restoredNormalizedSha256": "d8f46e554ba063182a9fd8da175e2076d7390c93fe3eaf2ed4b50514cea7369a",
+          "fieldEquality": {
+            "canReadActuals": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-assignee-evidence-ineligible-1794868734293.json",
+      "caseId": "assignee-evidence-ineligible-1794868734293",
+      "validNegativePremise": true,
+      "kinds": [
+        "assignee-evidence-ineligible"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "MembershipCapabilityGrant",
+          "id": "qa_sb029_retest_finance_evidence_read",
+          "operation": "INSERT",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "restoredNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "fieldEquality": {
+            "ownedTemporaryRowAbsent": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-assignee-inactive-1794868732346.json",
+      "caseId": "assignee-inactive-1794868732346",
+      "validNegativePremise": true,
+      "kinds": [
+        "assignee-inactive"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "Membership",
+          "id": "membership_horizon_finance",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+          "restoredNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+          "fieldEquality": {
+            "active": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-assignee-inactive-1794868817576.json",
+      "caseId": "assignee-inactive-1794868817576",
+      "validNegativePremise": true,
+      "kinds": [
+        "assignee-inactive"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "Membership",
+          "id": "membership_horizon_finance",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+          "restoredNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+          "fieldEquality": {
+            "active": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-assignee-person-inactive-1794869123597.json",
+      "caseId": "assignee-person-inactive-1794869123597",
+      "validNegativePremise": true,
+      "kinds": [
+        "assignee-person-inactive"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "Person",
+          "id": "person_horizon_finance",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+          "restoredNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+          "fieldEquality": {
+            "active": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-assignee-unassigned-1794868733324.json",
+      "caseId": "assignee-unassigned-1794868733324",
+      "validNegativePremise": true,
+      "kinds": [
+        "assignee-unassigned"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "ProjectAssignment",
+          "id": "assign_finance_xinyi",
+          "operation": "DELETE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "472050e41ba399aa24c3e60fda9915c5c0564851ecd0c6bf4e6a7c91ff871448",
+          "restoredNormalizedSha256": "472050e41ba399aa24c3e60fda9915c5c0564851ecd0c6bf4e6a7c91ff871448",
+          "fieldEquality": {
+            "id": true,
+            "createdAt": true,
+            "projectId": true,
+            "membershipId": true,
+            "canReadActuals": true,
+            "organizationId": true,
+            "canCreateAction": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-authority-1794870141617.json",
+      "caseId": "authority-1794870141617",
+      "validNegativePremise": true,
+      "kinds": [
+        "authority"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 3,
+        "consumed": 3,
+        "receipts": 3,
+        "audits": 3,
+        "actionevidencelinks": 45
+      },
+      "countsAfter": {
+        "actions": 3,
+        "consumed": 3,
+        "receipts": 3,
+        "audits": 3,
+        "actionevidencelinks": 45
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceReference",
+          "id": "evid_cost_cl_nanjing_023_v1_3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "restoredNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "fieldEquality": {
+            "authorityState": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-noassign-1794868867169.json",
+      "caseId": "noassign-1794868867169",
+      "validNegativePremise": true,
+      "kinds": [
+        "noassign",
+        "assignee-inactive"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "MembershipCapabilityGrant",
+          "id": "qa_sb029_retest_mei_action_assign",
+          "operation": "INSERT",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "restoredNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "fieldEquality": {
+            "ownedTemporaryRowAbsent": true
+          },
+          "matched": true
+        },
+        {
+          "table": "Membership",
+          "id": "membership_horizon_finance",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+          "restoredNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+          "fieldEquality": {
+            "active": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    }
+  ],
+  "activeLedgers": {
+    "active-mutation.json": false,
+    "active-fault.json": false,
+    "active-delay.json": false
+  },
+  "allCasesRestored": true,
+  "allAttemptedNegativeCasesNoBusinessWrites": false,
+  "allValidNegativeCasesNoBusinessWrites": true,
+  "invalidPremiseCaseCount": 1,
+  "allRecordedFieldHashesMatch": true,
+  "activeSessions": 0,
+  "temporaryGrants": 0,
+  "temporaryTriggers": 0,
+  "temporaryFunctions": 0,
+  "temporaryConflicts": 0,
+  "guards": [
+    {
+      "tgname": "Action_stage8_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "AuditEvent_append_only",
+      "enabled": "O"
+    },
+    {
+      "tgname": "InternalReviewReceipt_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "ProposedAction_stage8_immutable",
+      "enabled": "O"
+    }
+  ],
+  "businessCounts": {
+    "actions": 3,
+    "proposals": 6,
+    "consumed": 3,
+    "receipts": 3,
+    "audits": 3,
+    "actionevidencelinks": 45
+  },
+  "priorRunClosureExcluded": true,
+  "operatorRestorationComplete": true
+}

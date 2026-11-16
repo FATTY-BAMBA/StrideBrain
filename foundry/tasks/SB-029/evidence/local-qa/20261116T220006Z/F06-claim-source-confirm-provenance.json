@@ -1,0 +1,118 @@
+{
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "at": "2026-11-16T23:12:14.600Z",
+  "classification": "READ_ONLY_F06_EXACT_CLAIM_SOURCE_CONFIRM_PROVENANCE",
+  "finding": "F-06",
+  "scenarioIds": [
+    "QA-11",
+    "QA-18"
+  ],
+  "mutatedReference": {
+    "id": "evid_cost_cl_nanjing_023_v1_3",
+    "subjectType": "COST_LINE",
+    "subjectId": "cl_nanjing_023_v1_3",
+    "observationType": "RECONCILED_ACTUAL_COST",
+    "authorityState": "RECONCILED_ACTUAL",
+    "dataClassification": "DEMO_SYNTHETIC"
+  },
+  "authorityObservedDuringMutation": "OBSERVED",
+  "mutationObservationAt": "2026-11-16T23:02:24.615Z",
+  "restoredAt": "2026-11-16T23:04:25.151Z",
+  "restorationVerified": true,
+  "noBusinessWritesDuringMutation": true,
+  "proposedAction": {
+    "businessKey": "proposal_869519ba-4581-4859-801b-18fb21ac2806",
+    "status": "PREPARED",
+    "comparisonRunId": "cmprun_ffc61ccf-dc8b-4d7c-bcf8-9920491b0911",
+    "enrichmentRunId": "econrun_0e5074f7-ec23-4bc2-8e52-7ffb3fc06d16",
+    "dependsOnMutatedReference": true
+  },
+  "pairs": [
+    {
+      "role": "saved-pair-shown-in-qa11-authority-claim-zh",
+      "comparisonRunId": "cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25",
+      "enrichmentRunId": "econrun_000eff15-1995-4a07-bed2-37c8f5005627",
+      "claim": {
+        "claimKey": "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        "kind": "CATEGORY_FORECAST_ACTUAL_VARIANCE",
+        "titleEn": "IMPORTED_STONE forecast versus reconciled actual history",
+        "titleZhTw": "IMPORTED_STONE 預估成本與已核對實際成本比較",
+        "value": {
+          "currency": "TWD",
+          "direction": "ABOVE",
+          "currentAmount": "2360000",
+          "variancePercent": "18.3882",
+          "baselineEquivalentAmount": "1993442.62"
+        },
+        "warningCodes": [],
+        "evidenceReferenceIds": [
+          "evid_forecast_fcl_xinyi_026_4",
+          "evid_cost_cl_nanjing_023_v1_3",
+          "evid_cost_cl_neihu_021_v1_4",
+          "evid_cost_cl_zhongshan_018_v1_4"
+        ],
+        "dependsOnMutatedReference": true
+      },
+      "materializedClaimRows": [
+        {
+          "id": "econclaim_a6e3a928b9003137d1c9738d3afb",
+          "claimKey": "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+          "observationType": null,
+          "authorityState": null,
+          "evidenceReferenceIds": [
+            "evid_forecast_fcl_xinyi_026_4",
+            "evid_cost_cl_nanjing_023_v1_3",
+            "evid_cost_cl_neihu_021_v1_4",
+            "evid_cost_cl_zhongshan_018_v1_4"
+          ],
+          "dependsOnMutatedReference": true
+        }
+      ]
+    },
+    {
+      "role": "newer-proposal-confirmation-pair",
+      "comparisonRunId": "cmprun_ffc61ccf-dc8b-4d7c-bcf8-9920491b0911",
+      "enrichmentRunId": "econrun_0e5074f7-ec23-4bc2-8e52-7ffb3fc06d16",
+      "claim": {
+        "claimKey": "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        "kind": "CATEGORY_FORECAST_ACTUAL_VARIANCE",
+        "titleEn": "IMPORTED_STONE forecast versus reconciled actual history",
+        "titleZhTw": "IMPORTED_STONE 預估成本與已核對實際成本比較",
+        "value": {
+          "currency": "TWD",
+          "direction": "ABOVE",
+          "currentAmount": "2360000",
+          "variancePercent": "18.3882",
+          "baselineEquivalentAmount": "1993442.62"
+        },
+        "warningCodes": [],
+        "evidenceReferenceIds": [
+          "evid_forecast_fcl_xinyi_026_4",
+          "evid_cost_cl_nanjing_023_v1_3",
+          "evid_cost_cl_neihu_021_v1_4",
+          "evid_cost_cl_zhongshan_018_v1_4"
+        ],
+        "dependsOnMutatedReference": true
+      },
+      "materializedClaimRows": [
+        {
+          "id": "econclaim_97f0ff4167cd198e643ec75a6660",
+          "claimKey": "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+          "observationType": null,
+          "authorityState": null,
+          "evidenceReferenceIds": [
+            "evid_forecast_fcl_xinyi_026_4",
+            "evid_cost_cl_nanjing_023_v1_3",
+            "evid_cost_cl_neihu_021_v1_4",
+            "evid_cost_cl_zhongshan_018_v1_4"
+          ],
+          "dependsOnMutatedReference": true
+        }
+      ]
+    }
+  ],
+  "bothExactClaimsDependOnMutatedReference": true,
+  "databaseMutationPerformed": false,
+  "httpRequestsPerformed": false
+}

@@ -1,0 +1,45 @@
+{
+  "at": "2026-11-16T22:04:01.161975+00:00",
+  "database": "stridebrain_sb029_retest_220006",
+  "container": "stridebrain-sb029-retest-20261116t220006z",
+  "port": 54332,
+  "sessionIssuanceBeforeVerification": false,
+  "commands": [
+    {
+      "command": "npm run db:migrate",
+      "exitCode": 0,
+      "durationSeconds": 14.872,
+      "log": "setup-01-db-migrate.log"
+    },
+    {
+      "command": "npm run db:seed",
+      "exitCode": 0,
+      "durationSeconds": 4.717,
+      "log": "setup-02-db-seed.log"
+    },
+    {
+      "command": "npm run db:verify",
+      "exitCode": 0,
+      "durationSeconds": 9.07,
+      "log": "setup-03-db-verify.log"
+    },
+    {
+      "command": "npm run db:migrate",
+      "exitCode": 0,
+      "durationSeconds": 1.249,
+      "log": "setup-04-db-migrate.log"
+    },
+    {
+      "command": "npm run db:seed",
+      "exitCode": 0,
+      "durationSeconds": 4.461,
+      "log": "setup-05-db-seed.log"
+    },
+    {
+      "command": "npm run db:verify",
+      "exitCode": 0,
+      "durationSeconds": 8.617,
+      "log": "setup-06-db-verify.log"
+    }
+  ]
+}

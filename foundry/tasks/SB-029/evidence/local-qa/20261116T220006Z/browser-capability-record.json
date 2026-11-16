@@ -1,0 +1,38 @@
+{
+  "runId": "20261116T220006Z",
+  "backend": "CUA Chrome extension browser1 plus native Chrome app",
+  "browserVersion": "Not verified. Supported evaluator does not expose navigator; no profile/executable paths queried or saved.",
+  "capture": "Raw tab.screenshot bytes; JPEG/PNG signature parsed and actual dimensions recorded. Planned viewport verified by DOM and saved pixels; mismatches and misframed captures excluded individually.",
+  "nativeDate": "Native ArrowUp after targeting year segment changed actual form state and URL; fill alone is not credited.",
+  "keyboard": "Native Tab cycle23 stops remained inside review; Escape/Cancel restore entry, entry Enter restores heading.",
+  "zoom": {
+    "inheritedRestorationTarget": "175%, observed in interrupted204852 run, not newrun baseline",
+    "newRunBefore": "Viewport override reset; native layout2056x1234,dpr2. Native menu did not expose numeric value before explicit reset.",
+    "procedure": "Select owned SB-029 Retest native tab; Cmd+0 then five Cmd+equal increments",
+    "verifiedNativeAX": "Zoom: 200%",
+    "after": {
+      "width": 1028,
+      "height": 617,
+      "dpr": 4,
+      "visualViewport": {
+        "width": 1028,
+        "height": 617,
+        "scale": 1
+      }
+    },
+    "testedSurface": "Existing read-only evidence claim; no new preparation or confirmation",
+    "restoration": "Completed: native175% AX confirmed (inherited204852 original baseline); see browser-settings-restoration.json"
+  },
+  "manualVerification": [
+    "Real screen-reader announcements and interaction",
+    "Physical mobile keyboard/touch behavior and native date picker on actual mobile hardware"
+  ],
+  "status": "COMPLETED_WITH_P1_STOP",
+  "nativeForeground": "Owned QA tab explicitly selected before native settings. No native keys were sent to unrelated user tab.",
+  "reducedMotion": {
+    "status": "PARTIAL_CAPABILITY",
+    "selection": "Rendering dropdown reduce and matchMedia true observed",
+    "limitation": "With DevTools closed preference reset; with DevTools open evidence-key activation failed. No complete reduced-motion transition pass.",
+    "restored": "No emulation selected, matchMediafalse, DevTools closed"
+  }
+}

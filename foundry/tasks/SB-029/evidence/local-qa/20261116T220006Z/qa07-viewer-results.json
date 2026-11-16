@@ -1,0 +1,130 @@
+[
+  {
+    "actor": "viewer",
+    "locale": "en",
+    "type": "comparison",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "width": 1440
+    },
+    "visible": "",
+    "forbiddenContent": false,
+    "file": "qa07-viewer-en-comparison-foreign.jpg"
+  },
+  {
+    "actor": "viewer",
+    "locale": "en",
+    "type": "proposal",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_788eae35-8af0-4122-8872-349cc933cab1",
+    "observed": {
+      "dialogs": 1,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_788eae35-8af0-4122-8872-349cc933cab1",
+      "width": 1440
+    },
+    "visible": "",
+    "forbiddenContent": false,
+    "file": "qa07-viewer-en-proposal-foreign.jpg"
+  },
+  {
+    "actor": "viewer",
+    "locale": "en",
+    "type": "action",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+    "observed": {
+      "dialogs": 1,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nThis action is unavailable with your current access.\n\nInternal review action created\n\nThis receipt records the action saved to the project.\n\nEnglish\n繁體中文\nClose\n\nThis action is unavailable with your current access.",
+    "forbiddenContent": false,
+    "file": "qa07-viewer-en-action-foreign.jpg"
+  },
+  {
+    "actor": "viewer",
+    "locale": "en",
+    "type": "evidenceClaim",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+    "observed": {
+      "dialogs": 1,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      "width": 1440
+    },
+    "visible": "",
+    "forbiddenContent": false,
+    "file": "qa07-viewer-en-evidenceClaim-foreign.jpg"
+  },
+  {
+    "actor": "viewer",
+    "locale": "zh-TW",
+    "type": "comparison",
+    "existence": "foreign",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "width": 1440
+    },
+    "visible": "",
+    "forbiddenContent": false,
+    "file": "qa07-viewer-zh-TW-comparison-foreign.jpg"
+  },
+  {
+    "actor": "viewer",
+    "locale": "zh-TW",
+    "type": "proposal",
+    "existence": "foreign",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_788eae35-8af0-4122-8872-349cc933cab1",
+    "observed": {
+      "dialogs": 1,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_788eae35-8af0-4122-8872-349cc933cab1",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n歷史專案比較： 信義旗艦店裝修\n\nStrideBrain 以可解釋的固定規則排序已授權的歷史專案，清楚區分商務資料權威性，也會誠實呈現資料不足之處。\n\n產生時間\n2026年11月16日\n比較規則\nCPI-SIM-1.0\n已授權相似專案\n6\n已選歷史專案\n3/3\n商務資料狀態\n僅顯示專案結構比較\n資料邊界\n禾序空間設計虛構示範資料，不是市場基準。\n\n我們以前做過類似的案子嗎？\n\n選擇要比較的歷史專案\n\n最多選擇三個專案。更新選擇會建立新的不可變更商務分析，但不會改變原本的相似度排序。\n\n3\n個已選\n·\n最多 3 個\n選擇要比較的歷史專案: 內湖科技旗艦店\n1\n高度相似\n內湖科技旗艦店\nNeihu District, Taipei City\n610 m²\n2025年6月30日\n相似度分數\n88/100\n資料完整度\n100%\n查看比較因素\n選擇要比較的歷史專案: 中山生活概念店\n2\n高度相似\n中山生活概念店\nZhongshan District, Taipei City\n590 m²\n2024年11月15日\n相似度分數\n81/100\n資料完整度\n100%\n查看比較因素\n選擇要比較的歷史專案: 南京品牌體驗中心\n3\n具參考價值\n南京品牌體驗中心\nSongshan District, Taipei City\n720 m²\n2026年2月10日\n相似度分數\n79/100\n資料完整度\n100%\n查看比較因素\n選擇要比較的歷史專案: 大安精品展示中心\n4\n具參考價值\n大安精品展示中心\nDaan District, Taipei City\n520 m²\n2024年4月20日\n相似度分數\n71/100\n資料完整度\n100%\n查看比較因素\n選擇要比較的歷史專案: 松山門市改裝\n5\n具參考價值\n松山門市改裝\nSongshan District, Taipei City\n680 m²\n2025年2月28日\n相似度分數\n69/100\n資料完整度\n100%\n查看比較因素\n選擇要比較的歷史專案: 板橋概念店\n6\n部分相似\n板橋概念店\nBanqiao District, New Taipei City\n760 m²\n2023年9月30日\n相似度分數\n63/100\n資料完整度\n100%\n查看比較因素\n\n已選專案: PRJ-NEIHU-021, PRJ-ZHONGSHAN-018, PRJ-NANJING-023\n\n更新比較\n\n結構化比較\n\n結構化比較\n\n所有數值都來自已儲存的固定規則結果。歷史報價、預估成本、供應商報價與已核對實際成本會保持清楚區分。\n\n結構化比較\t信義旗艦店裝修\t內湖科技旗艦店\t中山生活概念店\t南京品牌體驗中心\n專案脈絡\n專案類型\t\nRETAIL_FLAGSHIP\n\t\nRETAIL_FLAGSHIP\n\t\nRETAIL_FLAGSHIP\n\t\nRETAIL_FLAGSHIP\n\n面積\t\n640 m²\n\t\n610 m²\n\t\n590 m²\n\t\n720 m²\n\n地點\t\nXinyi District, Taipei City\n\t\nNeihu District, Taipei City\n\t\nZhongshan District, Taipei City\n\t\nSongshan District, Taipei City\n\n完工時間\t\n進行中\n不適用\n\t\n2025年6月30日\n\t\n2024年11月15日\n\t\n2026年2月10日\n\n工期\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\n整體商務比較\n報價 · 標準化\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\n預估／已核對實際成本 · 標準化\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\n分類比較\n進口石材 · 報價\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\n進口石材 · 預估／已核對實際成本\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\n燈具／電氣 · 報價\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\n燈具／電氣 · 預估／已核對實際成本\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\n訂製木作 · 報價\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\n訂製木作 · 預估／已核對實際成本\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\n資料依據與完整度\n供應商報價脈絡\t\n供應商報價\n無法使用\n無法使用\n\t\n供應商報價\n無法使用\n無法使用\n\t\n供應商報價\n無法使用\n無法使用\n\t\n供應商報價\n無法使用\n無法使用\n\n資料依據與完整度\t\n僅顯示專案結構比較\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\t\n無法使用\n無法使用\n\n結構化審查\n\n結構化審查\n資料缺口\n\n商務資料受到權限限制或目前無法使用；專案結構比較仍可使用。\n\n建議下一步審查\n\n在內部核准報價前，先確認進口石材額度與燈具假設。\n\n禾序空間設計虛構示範資料，不是市場基準。\n目前角色無權查看商務數值。\n檢視內部審查事項\n\n建立事項前，請先檢視資料依據與不確定性。\n\nEnglish\n繁體中文\n關閉\n依您目前的權限，無法查看此審查。\n\n參考編號: d86601ed-b0a7-459f-9d63-19f0602ccd9d\n\n返回來源比較\n查看專案事項\n關閉",
+    "forbiddenContent": false,
+    "file": "qa07-viewer-zh-TW-proposal-foreign.jpg"
+  },
+  {
+    "actor": "viewer",
+    "locale": "zh-TW",
+    "type": "action",
+    "existence": "foreign",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+    "observed": {
+      "dialogs": 1,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n內部審查事項\n\n開啟已儲存回執以檢視詳情，或返回來源比較。\n\n依您目前的權限，無法查看或建立此事項。\n\n已建立內部審查事項\n\n此回執記錄已儲存至專案的事項。\n\nEnglish\n繁體中文\n關閉\n\n依您目前的權限，無法查看或建立此事項。",
+    "forbiddenContent": false,
+    "file": "qa07-viewer-zh-TW-action-foreign.jpg"
+  },
+  {
+    "actor": "viewer",
+    "locale": "zh-TW",
+    "type": "evidenceClaim",
+    "existence": "foreign",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+    "observed": {
+      "dialogs": 1,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      "width": 1440
+    },
+    "visible": "",
+    "forbiddenContent": false,
+    "file": "qa07-viewer-zh-TW-evidenceClaim-foreign.jpg"
+  }
+]

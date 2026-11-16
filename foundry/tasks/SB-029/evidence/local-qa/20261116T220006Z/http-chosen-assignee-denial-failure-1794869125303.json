@@ -1,0 +1,40 @@
+{
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "at": "2026-11-16T22:45:25.303Z",
+  "classification": "APPROVED_NON_UI_HTTP_SUPPLEMENT_FAILURE",
+  "executionMode": "HTTP_ONLY",
+  "suite": "chosen-assignee-denial",
+  "selector": "proposal_9d546bf5-df49-44e3-8f1c-07b73b9c1319",
+  "failureCode": "UNEXPECTED_BUSINESS_WRITE",
+  "results": [
+    {
+      "name": "en-changed-finance-assignee",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_9d546bf5-df49-44e3-8f1c-07b73b9c1319",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "CREATED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "receipt"
+      ],
+      "actionKey": "action_fc9baffb-bcd8-452b-8f0f-7b0b7481d5f2",
+      "noBusinessWrites": false
+    }
+  ],
+  "countsAfter": {
+    "actions": 3,
+    "consumed": 3,
+    "receipts": 3,
+    "audits": 3,
+    "actionevidencelinks": 45
+  },
+  "browserAcceptanceCredit": false
+}

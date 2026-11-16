@@ -1,0 +1,46 @@
+{
+  "classification": "SUPPLEMENTAL_PREEXISTING_SERVER_MEASUREMENTS",
+  "notNewBrowserMeasurements": true,
+  "sourceCommit": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+  "validatedApplicationCommit": "df63c90ca994653299082fc5078ad0b5ef595292",
+  "sourceFingerprintSha256": "82ce9a43b9bf4da5280c09cb839eeb277213acd09b73e46aa0a8f15f2758a460",
+  "reportPath": "foundry/tasks/SB-029/evidence/revision-20261116/postgres-performance.json",
+  "reportSha256": "72108ee227c2bb0ac94f1fd8aa1b47bba4a624f34f8802ec29ed3d48103278fd",
+  "reportUrl": "https://github.com/FATTY-BAMBA/StrideBrain/blob/3481dac48ec60e943b5d669f0f7ff0453756ab3d/foundry/tasks/SB-029/evidence/revision-20261116/postgres-performance.json",
+  "methodology": "30 unique immutable pairs/proposals; one excluded warmup; nearest-rank p95; server duration excluding network; actual Prisma query events",
+  "proposal": {
+    "samples": 30,
+    "p50": 87.01408300000185,
+    "p95": 102.90891700000066,
+    "max": 130.22004200000083
+  },
+  "confirmation": {
+    "samples": 30,
+    "p50": 113.58024999999907,
+    "p95": 156.2072079999998,
+    "max": 161.3772919999974
+  },
+  "proposalQueryCounts": [
+    110
+  ],
+  "confirmationQueryCounts": [
+    131
+  ],
+  "evidenceBatching": {
+    "initialReferences": 15,
+    "addedReferences": 20,
+    "initialQueries": 21,
+    "expandedQueries": 21
+  },
+  "assigneeBatching": {
+    "addedEligibleAssignees": 20,
+    "initialQueries": 110,
+    "expandedQueries": 110
+  },
+  "limits": [
+    "Retained repair validation server results; no browser scenario is credited from these alone.",
+    "Server durations exclude network transit and browser rendering; do not apply server-only thresholds to current browser timings.",
+    "Raw per-sample durations are not retained in the referenced aggregate report.",
+    "The application source fingerprint is identical; database instance and test date differ from this new run."
+  ]
+}

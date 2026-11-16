@@ -1,0 +1,162 @@
+[
+  {
+    "actor": "expired",
+    "locale": "en",
+    "type": "project",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026",
+      "width": 1440
+    },
+    "visible": "PROJECT WORKSPACE\n\nThis project or project area is currently unavailable.\n\nThe current authorization context cannot open this project, or the requested area is not active in the first complete workflow. The application does not replace unavailable states with invented records.\n\nOverview\nCompare\nCommercial\nEvidence\nActions\nThis area is not active yet\nOverview\n\nProject Overview, Compare, and claim-level Evidence use the real data and authorization boundaries. Commercial detail pages and Actions activate through the accepted implementation sequence.\n\nREQUESTED PROJECT KEY\nPRJ-XINYI-026\nCURRENT AREA\nOverview",
+    "forbiddenContent": false,
+    "file": "qa07-expired-en-project-foreign.jpg"
+  },
+  {
+    "actor": "expired",
+    "locale": "en",
+    "type": "comparison",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nA controlled demo session is required.\n\nThis workspace only opens after the server validates a signed synthetic-demo session. Browser parameters cannot select an organization or role.",
+    "forbiddenContent": false,
+    "file": "qa07-expired-en-comparison-foreign.jpg"
+  },
+  {
+    "actor": "expired",
+    "locale": "en",
+    "type": "proposal",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_788eae35-8af0-4122-8872-349cc933cab1",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_788eae35-8af0-4122-8872-349cc933cab1",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nA controlled demo session is required.\n\nThis workspace only opens after the server validates a signed synthetic-demo session. Browser parameters cannot select an organization or role.",
+    "forbiddenContent": false,
+    "file": "qa07-expired-en-proposal-foreign.jpg"
+  },
+  {
+    "actor": "expired",
+    "locale": "en",
+    "type": "action",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nThis action is unavailable with your current access.",
+    "forbiddenContent": false,
+    "file": "qa07-expired-en-action-foreign.jpg"
+  },
+  {
+    "actor": "expired",
+    "locale": "en",
+    "type": "evidenceClaim",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nA controlled demo session is required.\n\nThis workspace only opens after the server validates a signed synthetic-demo session. Browser parameters cannot select an organization or role.",
+    "forbiddenContent": false,
+    "file": "qa07-expired-en-evidenceClaim-foreign.jpg"
+  },
+  {
+    "actor": "expired",
+    "locale": "zh-TW",
+    "type": "project",
+    "existence": "foreign",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026",
+      "width": 1440
+    },
+    "visible": "專案工作區\n\n此專案或區域目前無法使用。\n\n目前的授權脈絡無法開啟此專案，或此專案區域尚未在第一個完整流程中啟用。系統不會以假資料取代失敗狀態。\n\n總覽\n比較\n商務資料\n資料依據\n行動事項\n此區域尚未啟用\n總覽\n\n專案總覽、比較與資料依據已連接正式資料與權限邊界。商務資料專頁與行動事項會依照已核准的建置順序逐步啟用。\n\n要求的專案識別碼\nPRJ-XINYI-026\n目前區域\n總覽",
+    "forbiddenContent": false,
+    "file": "qa07-expired-zh-TW-project-foreign.jpg"
+  },
+  {
+    "actor": "expired",
+    "locale": "zh-TW",
+    "type": "comparison",
+    "existence": "foreign",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n需要受控的示範工作階段。\n\n伺服器驗證已簽署的虛構示範工作階段後，才會開啟此工作區。網址參數不能選擇組織或角色。",
+    "forbiddenContent": false,
+    "file": "qa07-expired-zh-TW-comparison-foreign.jpg"
+  },
+  {
+    "actor": "expired",
+    "locale": "zh-TW",
+    "type": "proposal",
+    "existence": "foreign",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_788eae35-8af0-4122-8872-349cc933cab1",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_788eae35-8af0-4122-8872-349cc933cab1",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n需要受控的示範工作階段。\n\n伺服器驗證已簽署的虛構示範工作階段後，才會開啟此工作區。網址參數不能選擇組織或角色。",
+    "forbiddenContent": false,
+    "file": "qa07-expired-zh-TW-proposal-foreign.jpg"
+  },
+  {
+    "actor": "expired",
+    "locale": "zh-TW",
+    "type": "action",
+    "existence": "foreign",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n內部審查事項\n\n開啟已儲存回執以檢視詳情，或返回來源比較。\n\n依您目前的權限，無法查看或建立此事項。",
+    "forbiddenContent": false,
+    "file": "qa07-expired-zh-TW-action-foreign.jpg"
+  },
+  {
+    "actor": "expired",
+    "locale": "zh-TW",
+    "type": "evidenceClaim",
+    "existence": "foreign",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n需要受控的示範工作階段。\n\n伺服器驗證已簽署的虛構示範工作階段後，才會開啟此工作區。網址參數不能選擇組織或角色。",
+    "forbiddenContent": false,
+    "file": "qa07-expired-zh-TW-evidenceClaim-foreign.jpg"
+  }
+]

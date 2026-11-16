@@ -1,0 +1,22 @@
+{
+  "at": "2026-11-16T23:17:37.603Z",
+  "runId": "20261116T220006Z",
+  "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+  "persona": "mei-revoked-final",
+  "nativeZoom": "175% restored inherited baseline",
+  "metrics": {
+    "dialogCount": 0,
+    "dpr": 3.5,
+    "height": 655,
+    "reducedMotion": false,
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_ffc61ccf-dc8b-4d7c-bcf8-9920491b0911&economics=econrun_0e5074f7-ec23-4bc2-8e52-7ffb3fc06d16&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_869519ba-4581-4859-801b-18fb21ac2806&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY",
+    "width": 587
+  },
+  "imageDimensions": {
+    "format": "jpeg",
+    "height": 655,
+    "width": 587
+  },
+  "image": "final-revoked-session.jpg",
+  "observed": "Controlled demo session required; no review fields or financial payload"
+}

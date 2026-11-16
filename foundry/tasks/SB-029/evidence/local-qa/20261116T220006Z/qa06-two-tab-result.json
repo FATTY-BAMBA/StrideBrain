@@ -1,0 +1,18 @@
+{
+  "proposal": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94",
+  "peerReceipt": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_5de2b214-0781-4e91-afb7-fd7563a418d6",
+  "secondReceipt": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_5de2b214-0781-4e91-afb7-fd7563a418d6&reviewReplay=1",
+  "sameAction": true,
+  "state": {
+    "dialogs": 1,
+    "fields": {},
+    "focus": {
+      "id": "internal-review-heading",
+      "tag": "H2",
+      "text": "This internal review action was already created"
+    },
+    "selected": [],
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_5de2b214-0781-4e91-afb7-fd7563a418d6&reviewReplay=1"
+  },
+  "draftQualification": "QA04 Cancel and Escape deliberately discarded the edited QA05 draft. The same prepared proposal was reopened without review overrides, yielding VALIDATE/REVIEW_NEXT/Iris/2026-11-24 for identical-payload replay. This is not evidence that edited QA05 fields were committed, and is not a draft-loss defect."
+}

@@ -1,0 +1,403 @@
+[
+  {
+    "variant": "shell-link-click-attempt",
+    "qualification": "Shell link is outside modal; attempted click did not change locale and evidence opened. Do not credit as shell locale navigation.",
+    "state": {
+      "dialogs": 1,
+      "fields": {},
+      "focus": {
+        "id": "evidence-panel-title",
+        "tag": "H2",
+        "text": "進口石材 預估成本與已核對實際成本比較"
+      },
+      "selected": [],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94&reviewTitle=REVIEW&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2026-11-25&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE&evidenceReturn=review-evidence-0&reviewEvidence=1"
+    }
+  },
+  {
+    "variant": "evidence-return-preserves-draft-and-restores-trigger",
+    "state": {
+      "ack": false,
+      "dialogs": 1,
+      "fields": {
+        "review-assignee": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b",
+        "review-dueDate": "2026-11-25",
+        "review-rationale": "VALIDATE_HISTORY",
+        "review-title": "REVIEW"
+      },
+      "focus": {
+        "id": "",
+        "tag": "BUTTON",
+        "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。"
+      },
+      "selected": [
+        {
+          "id": "review-title",
+          "label": "審查信義旗艦店裝修第3版報價的進口石材與照明假設",
+          "value": "REVIEW"
+        },
+        {
+          "id": "review-rationale",
+          "label": "依連結的歷史佐證資料，檢核進口石材與照明假設。",
+          "value": "VALIDATE_HISTORY"
+        },
+        {
+          "id": "review-assignee",
+          "label": "林美玲",
+          "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+        }
+      ],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94&reviewTitle=REVIEW&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2026-11-25&evidenceReturn=review-evidence-0"
+    }
+  },
+  {
+    "variant": "individual-rationale-immediate-shell-link-destination",
+    "method": "Read rendered shell href and navigate because modal overlays shell click target",
+    "state": {
+      "ack": false,
+      "dialogs": 1,
+      "fields": {
+        "review-assignee": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b",
+        "review-dueDate": "2026-11-25",
+        "review-rationale": "RECORD_QUESTIONS",
+        "review-title": "REVIEW"
+      },
+      "focus": {
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history."
+      },
+      "selected": [
+        {
+          "id": "review-title",
+          "label": "Review imported-stone and lighting assumptions for Xinyi quote v3",
+          "value": "REVIEW"
+        },
+        {
+          "id": "review-rationale",
+          "label": "Check the supporting evidence and record questions for internal review.",
+          "value": "RECORD_QUESTIONS"
+        },
+        {
+          "id": "review-assignee",
+          "label": "Mei Lin",
+          "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+        }
+      ],
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94&reviewTitle=REVIEW&reviewRationale=RECORD_QUESTIONS&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2026-11-25&evidenceReturn=review-evidence-0"
+    }
+  },
+  {
+    "variant": "individual-assignee-immediate-dialog-locale",
+    "state": {
+      "ack": false,
+      "dialogs": 1,
+      "fields": {
+        "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+        "review-dueDate": "2026-11-25",
+        "review-rationale": "RECORD_QUESTIONS",
+        "review-title": "REVIEW"
+      },
+      "focus": {
+        "id": "",
+        "tag": "BUTTON",
+        "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。"
+      },
+      "selected": [
+        {
+          "id": "review-title",
+          "label": "審查信義旗艦店裝修第3版報價的進口石材與照明假設",
+          "value": "REVIEW"
+        },
+        {
+          "id": "review-rationale",
+          "label": "確認佐證資料，並記錄內部審查需要釐清的問題。",
+          "value": "RECORD_QUESTIONS"
+        },
+        {
+          "id": "review-assignee",
+          "label": "陳柏宇",
+          "value": "assignee_b911d550581d518bb8f326c678217ad0"
+        }
+      ],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94&reviewTitle=REVIEW&reviewRationale=RECORD_QUESTIONS&reviewAssignee=assignee_b911d550581d518bb8f326c678217ad0&reviewDue=2026-11-25&evidenceReturn=review-evidence-0"
+    }
+  },
+  {
+    "variant": "clear-date-immediate-dialog-locale",
+    "state": {
+      "ack": false,
+      "dialogs": 1,
+      "fields": {
+        "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+        "review-dueDate": "",
+        "review-rationale": "RECORD_QUESTIONS",
+        "review-title": "REVIEW"
+      },
+      "focus": {
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history."
+      },
+      "selected": [
+        {
+          "id": "review-title",
+          "label": "Review imported-stone and lighting assumptions for Xinyi quote v3",
+          "value": "REVIEW"
+        },
+        {
+          "id": "review-rationale",
+          "label": "Check the supporting evidence and record questions for internal review.",
+          "value": "RECORD_QUESTIONS"
+        },
+        {
+          "id": "review-assignee",
+          "label": "Alex Chen",
+          "value": "assignee_b911d550581d518bb8f326c678217ad0"
+        }
+      ],
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94&reviewTitle=REVIEW&reviewRationale=RECORD_QUESTIONS&reviewAssignee=assignee_b911d550581d518bb8f326c678217ad0&reviewDue=&evidenceReturn=review-evidence-0"
+    }
+  },
+  {
+    "variant": "refresh-retains-cleared-date",
+    "state": {
+      "ack": false,
+      "dialogs": 1,
+      "fields": {
+        "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+        "review-dueDate": "",
+        "review-rationale": "RECORD_QUESTIONS",
+        "review-title": "REVIEW"
+      },
+      "focus": {
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history."
+      },
+      "selected": [
+        {
+          "id": "review-title",
+          "label": "Review imported-stone and lighting assumptions for Xinyi quote v3",
+          "value": "REVIEW"
+        },
+        {
+          "id": "review-rationale",
+          "label": "Check the supporting evidence and record questions for internal review.",
+          "value": "RECORD_QUESTIONS"
+        },
+        {
+          "id": "review-assignee",
+          "label": "Alex Chen",
+          "value": "assignee_b911d550581d518bb8f326c678217ad0"
+        }
+      ],
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94&reviewTitle=REVIEW&reviewRationale=RECORD_QUESTIONS&reviewAssignee=assignee_b911d550581d518bb8f326c678217ad0&reviewDue=&evidenceReturn=review-evidence-0"
+    }
+  },
+  {
+    "variant": "back",
+    "state": {
+      "ack": false,
+      "dialogs": 1,
+      "fields": {
+        "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+        "review-dueDate": "",
+        "review-rationale": "RECORD_QUESTIONS",
+        "review-title": "REVIEW"
+      },
+      "focus": {
+        "id": "",
+        "tag": "BUTTON",
+        "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。"
+      },
+      "selected": [
+        {
+          "id": "review-title",
+          "label": "審查信義旗艦店裝修第3版報價的進口石材與照明假設",
+          "value": "REVIEW"
+        },
+        {
+          "id": "review-rationale",
+          "label": "確認佐證資料，並記錄內部審查需要釐清的問題。",
+          "value": "RECORD_QUESTIONS"
+        },
+        {
+          "id": "review-assignee",
+          "label": "陳柏宇",
+          "value": "assignee_b911d550581d518bb8f326c678217ad0"
+        }
+      ],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94&reviewTitle=REVIEW&reviewRationale=RECORD_QUESTIONS&reviewAssignee=assignee_b911d550581d518bb8f326c678217ad0&reviewDue=&evidenceReturn=review-evidence-0"
+    }
+  },
+  {
+    "variant": "forward",
+    "state": {
+      "ack": false,
+      "dialogs": 1,
+      "fields": {
+        "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+        "review-dueDate": "",
+        "review-rationale": "RECORD_QUESTIONS",
+        "review-title": "REVIEW"
+      },
+      "focus": {
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history."
+      },
+      "selected": [
+        {
+          "id": "review-title",
+          "label": "Review imported-stone and lighting assumptions for Xinyi quote v3",
+          "value": "REVIEW"
+        },
+        {
+          "id": "review-rationale",
+          "label": "Check the supporting evidence and record questions for internal review.",
+          "value": "RECORD_QUESTIONS"
+        },
+        {
+          "id": "review-assignee",
+          "label": "Alex Chen",
+          "value": "assignee_b911d550581d518bb8f326c678217ad0"
+        }
+      ],
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94&reviewTitle=REVIEW&reviewRationale=RECORD_QUESTIONS&reviewAssignee=assignee_b911d550581d518bb8f326c678217ad0&reviewDue=&evidenceReturn=review-evidence-0"
+    }
+  },
+  {
+    "variant": "individual-title-immediate-dialog-locale",
+    "state": {
+      "ack": false,
+      "dialogs": 1,
+      "fields": {
+        "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+        "review-dueDate": "",
+        "review-rationale": "RECORD_QUESTIONS",
+        "review-title": "CHECK"
+      },
+      "focus": {
+        "id": "",
+        "tag": "BUTTON",
+        "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。"
+      },
+      "selected": [
+        {
+          "id": "review-title",
+          "label": "確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+          "value": "CHECK"
+        },
+        {
+          "id": "review-rationale",
+          "label": "確認佐證資料，並記錄內部審查需要釐清的問題。",
+          "value": "RECORD_QUESTIONS"
+        },
+        {
+          "id": "review-assignee",
+          "label": "陳柏宇",
+          "value": "assignee_b911d550581d518bb8f326c678217ad0"
+        }
+      ],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94&reviewTitle=CHECK&reviewRationale=RECORD_QUESTIONS&reviewAssignee=assignee_b911d550581d518bb8f326c678217ad0&reviewDue=&evidenceReturn=review-evidence-0"
+    }
+  },
+  {
+    "variant": "individual-native-key-date-immediate-dialog-locale",
+    "before": {
+      "ack": false,
+      "dialogs": 1,
+      "fields": {
+        "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+        "review-dueDate": "2026-11-26",
+        "review-rationale": "RECORD_QUESTIONS",
+        "review-title": "CHECK"
+      },
+      "focus": {
+        "id": "review-dueDate",
+        "tag": "INPUT",
+        "text": ""
+      },
+      "selected": [
+        {
+          "id": "review-title",
+          "label": "確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+          "value": "CHECK"
+        },
+        {
+          "id": "review-rationale",
+          "label": "確認佐證資料，並記錄內部審查需要釐清的問題。",
+          "value": "RECORD_QUESTIONS"
+        },
+        {
+          "id": "review-assignee",
+          "label": "陳柏宇",
+          "value": "assignee_b911d550581d518bb8f326c678217ad0"
+        }
+      ],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94&reviewTitle=CHECK&reviewRationale=RECORD_QUESTIONS&reviewAssignee=assignee_b911d550581d518bb8f326c678217ad0&reviewDue=2026-11-26&evidenceReturn=review-evidence-0"
+    },
+    "state": {
+      "ack": false,
+      "dialogs": 1,
+      "fields": {
+        "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+        "review-dueDate": "2026-11-26",
+        "review-rationale": "RECORD_QUESTIONS",
+        "review-title": "CHECK"
+      },
+      "focus": {
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history."
+      },
+      "selected": [
+        {
+          "id": "review-title",
+          "label": "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3",
+          "value": "CHECK"
+        },
+        {
+          "id": "review-rationale",
+          "label": "Check the supporting evidence and record questions for internal review.",
+          "value": "RECORD_QUESTIONS"
+        },
+        {
+          "id": "review-assignee",
+          "label": "Alex Chen",
+          "value": "assignee_b911d550581d518bb8f326c678217ad0"
+        }
+      ],
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94&reviewTitle=CHECK&reviewRationale=RECORD_QUESTIONS&reviewAssignee=assignee_b911d550581d518bb8f326c678217ad0&reviewDue=2026-11-26&evidenceReturn=review-evidence-0"
+    }
+  },
+  {
+    "variant": "actual-shell-locale-after-cancel",
+    "state": {
+      "dialogs": 0,
+      "fields": {},
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "selected": [],
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    }
+  },
+  {
+    "variant": "actual-shell-locale-return",
+    "state": {
+      "dialogs": 0,
+      "fields": {},
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "selected": [],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    }
+  }
+]

@@ -1,0 +1,157 @@
+[
+  {
+    "index": 9,
+    "artifact": "qa18-en-forecast-card-390-visible",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 10,
+    "artifact": "qa18-en-mobile-authority-settled",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 15,
+    "artifact": "qa18-en-forecast-source-320",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 16,
+    "artifact": "qa18-en-forecast-source-390",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 17,
+    "artifact": "qa18-en-forecast-source-768",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 18,
+    "artifact": "qa18-en-forecast-source-1440",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 19,
+    "artifact": "qa18-en-forecast-source-authority-1440",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 20,
+    "artifact": "qa18-en-forecast-source-authority-768",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 21,
+    "artifact": "qa18-en-forecast-source-authority-390",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 22,
+    "artifact": "qa18-en-forecast-source-authority-320",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 23,
+    "artifact": "qa18-en-actual-source-390",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 24,
+    "artifact": "qa18-en-actual-source-1440",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 29,
+    "artifact": "qa18-zh-forecast-table-1440-visible",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 30,
+    "artifact": "qa18-zh-forecast-table-390-visible",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 35,
+    "artifact": "qa18-zh-forecast-source-320",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 36,
+    "artifact": "qa18-zh-forecast-source-390",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 37,
+    "artifact": "qa18-zh-forecast-source-768",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 38,
+    "artifact": "qa18-zh-forecast-source-1440",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 40,
+    "artifact": "qa18-zh-policy-copy",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 41,
+    "artifact": "qa18-zh-subtype-copy",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 44,
+    "artifact": "qa18-zh-quote-source-390",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 45,
+    "artifact": "qa18-zh-quote-source-1440",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 48,
+    "artifact": "qa18-zh-supplier-source-390",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 49,
+    "artifact": "qa18-zh-supplier-source-1440",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 50,
+    "artifact": "qa18-zh-current-quote-source-1440",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 51,
+    "artifact": "qa18-zh-current-quote-source-390",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 56,
+    "artifact": "qa18-en-supplier-source",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 64,
+    "artifact": "qa03-first-project-actions-zh",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 124,
+    "artifact": "qa03-workspace-action-section-zh",
+    "reason": "BODY textContent included inline runtime script, not rendered UI text; omitted irrelevant capture noise while preserving focus geometry."
+  },
+  {
+    "index": 140,
+    "artifact": "qa07-viewer-zh-TW-comparison-foreign",
+    "reason": "Non-rendered inline script included in BODY textContent; omitted while retaining focus geometry."
+  },
+  {
+    "index": 143,
+    "artifact": "qa07-viewer-zh-TW-evidenceClaim-foreign",
+    "reason": "Non-rendered inline script included in BODY textContent; omitted while retaining focus geometry."
+  }
+]

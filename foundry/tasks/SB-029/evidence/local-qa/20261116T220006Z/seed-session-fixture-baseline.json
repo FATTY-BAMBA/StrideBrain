@@ -1,0 +1,9 @@
+{
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "at": "2026-11-16T22:27:28.466Z",
+  "classification": "READ_ONLY_SEEDED_SESSION_FIXTURE_DIGEST",
+  "fixtureRows": 2,
+  "sha256": "3d8e5079e50a99402f0cf355bf2e2c2658cfe75744a800737f0a8409d8d3dce3",
+  "rawSessionDataRetained": false
+}

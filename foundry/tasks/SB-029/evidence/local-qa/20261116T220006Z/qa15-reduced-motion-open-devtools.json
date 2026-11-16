@@ -1,0 +1,36 @@
+{
+  "at": "2026-11-16T23:11:01.164Z",
+  "phases": [
+    {
+      "step": "review-before",
+      "reduce": true,
+      "focus": {
+        "alerts": [],
+        "bounds": {
+          "bottom": 233.1484375,
+          "height": 62.375,
+          "left": 76.1953125,
+          "right": 663,
+          "top": 170.7734375,
+          "width": 586.8046875,
+          "x": 76.1953125,
+          "y": 170.7734375
+        },
+        "id": "",
+        "inDialog": true,
+        "label": null,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.",
+        "trigger": "review-evidence-0"
+      }
+    }
+  ],
+  "current": {
+    "height": 1147,
+    "reduce": true,
+    "width": 700
+  },
+  "status": "PARTIAL_CAPABILITY",
+  "limitation": "Rendering dropdown exposes reduce and matchMedia can be observed, but keyboard activation of an existing evidence button failed while DevTools remained open. No completed reduced-motion transition or screen-reader pass claimed. Closing DevTools cleared preference in first attempt."
+}

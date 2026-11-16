@@ -1,0 +1,18 @@
+{
+  "at": "2026-11-16T23:04:12.342Z",
+  "scenario": "QA-11",
+  "affected": "Nanjing imported-stone actual CostLine line3",
+  "mutation": "Authority RECONCILED_ACTUAL -> OBSERVED",
+  "writeOutcome": "Both localized old forms reject stale; operator restoration requested",
+  "sourceRead": "Fresh source panel says Observed / 已擷取 and continues to expose authorized source amount NT2100000",
+  "savedClaimRead": "Saved immutable comparison continues to show +18.4 and authority-eligible observations statement with Nanjing actual contribution; no stale banner observed",
+  "classification": "CONFIRMED_P1_F-06_MISSING_MANDATORY_STALE_WARNING",
+  "businessWritesHeld": true,
+  "artifacts": [
+    "qa11-authority-source-en.json",
+    "qa11-authority-source-zh-TW.json",
+    "qa11-authority-claim-zh.txt",
+    "qa11-authority-result.json"
+  ],
+  "resolution": "Root and independent reviewer confirmed saved historical values may remain inspectable, but changed-authority claim requires visible stale warning. Source restored exactly; all new write-dependent scenarios stopped."
+}

@@ -1,0 +1,87 @@
+{
+  "at": "2026-11-16T22:01:24.628Z",
+  "database": "stridebrain_sb029_retest",
+  "counts": {
+    "actions": 2,
+    "proposals": 4,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "organizations": [
+    {
+      "businessKey": "HORIZON_ATELIER",
+      "dataClassification": "DEMO_SYNTHETIC"
+    },
+    {
+      "businessKey": "NORTHERN_STUDIO",
+      "dataClassification": "DEMO_SYNTHETIC"
+    }
+  ],
+  "migrations": 8,
+  "guards": [
+    {
+      "tgname": "Action_stage8_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "AuditEvent_append_only",
+      "enabled": "O"
+    },
+    {
+      "tgname": "InternalReviewReceipt_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "ProposedAction_stage8_immutable",
+      "enabled": "O"
+    }
+  ],
+  "activeSessions": 0,
+  "temporaryGrants": 0,
+  "temporaryTriggers": 0,
+  "duplicates": [],
+  "actions": [
+    {
+      "actionKey": "action_f51b9a62-b9d5-4d29-b123-930eca8b1dbf",
+      "proposalKey": "proposal_4f60a1ef-6ee0-4821-9717-0320ae707b36",
+      "status": "OPEN",
+      "titleKey": "CHECK",
+      "rationaleKey": "VALIDATE_HISTORY",
+      "storedDueDate": "2026-11-25",
+      "evidenceCount": 15,
+      "sameExactEvidenceRefs": true,
+      "proposalStatus": "CONFIRMED",
+      "receiptCount": 1,
+      "successfulAuditCount": 1,
+      "receiptLineageMatches": true
+    },
+    {
+      "actionKey": "action_0d484d3d-8efc-409c-938a-3701d72fef1a",
+      "proposalKey": "proposal_4115d72c-3f95-4ca2-9ceb-8e34ff9f111b",
+      "status": "OPEN",
+      "titleKey": "CHECK",
+      "rationaleKey": "VALIDATE_HISTORY",
+      "storedDueDate": "2026-11-24",
+      "evidenceCount": 15,
+      "sameExactEvidenceRefs": true,
+      "proposalStatus": "CONFIRMED",
+      "receiptCount": 1,
+      "successfulAuditCount": 1,
+      "receiptLineageMatches": true
+    }
+  ],
+  "providerCredentialVariablesPresent": [],
+  "runtimeDirectoryMode": "700",
+  "environmentFileMode": "600",
+  "temporaryConflicts": 0,
+  "temporaryFunctions": 0,
+  "allActionsAtomic": true,
+  "oneConsumedPerAction": true,
+  "classification": "PREVIOUS_RUN_RESTORATION",
+  "sourceRun": "20261116T204852Z",
+  "sourceDatabase": "stridebrain_sb029_retest",
+  "sourcePort": 54331,
+  "newRunScenarioCredit": false
+}

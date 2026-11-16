@@ -1,0 +1,9 @@
+{
+  "run": "20261116T220006Z",
+  "backend": "Chrome extension and documented native Chrome CUA",
+  "state": "Awaiting new isolated runtime; no browser pass claimed",
+  "method": "Raw tab.screenshot fullPage:false; actual JPEG/PNG signature parsed; no viewport mutation inside capture except one explicit recovery on dimension mismatch",
+  "viewportRule": "Set requested viewport with one QA-owned tab; for paired old forms capture newest tab then close it and reapply viewport before primary capture",
+  "focusRule": "Record automatic activeElement and alert rectangle before any manual heading scroll",
+  "priorRun": "204852 observations are historical leads only; no reused passes or copied screenshots"
+}

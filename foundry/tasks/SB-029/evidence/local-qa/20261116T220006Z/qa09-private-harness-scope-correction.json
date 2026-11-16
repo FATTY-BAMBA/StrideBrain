@@ -1,0 +1,15 @@
+{
+  "at": "2026-11-16T22:54:43.906492+00:00",
+  "classification": "PRIVATE_QA_HARNESS_EXPECTATION_CORRECTION",
+  "productSourceModified": false,
+  "oldExecutedHelperSha256": "7fa5b9eb4476ef4c13c787e41c491983162ee11a7d3c47208f1d6060644a94aa",
+  "correctedHelperSha256": "b933e61eced24a49044189fa7eda2627a3e8f5e1ef48bec868b5e654e9846e5c",
+  "historicalCasePreserved": "mutation-assignee-actual-ineligible-1794869124677.json",
+  "originalHistoricalTarget": "prj_neihu_021",
+  "correctedAssigneeAssignmentTarget": "prj_xinyi_026",
+  "correctedActorAssignmentTarget": "prj_xinyi_026",
+  "newExplicitCandidateCapabilityVariant": "assignee-actual-capability-denied -> commercial:actual-read DENY for Iris",
+  "freshUnconsumedProposalRequiredForAssigneeCases": true,
+  "activeAssignmentOriginalTruePreconditionRequired": true,
+  "newDatabaseMutationPerformedByCorrection": false
+}

@@ -1,0 +1,109 @@
+{
+  "runId": "20261116T220006Z",
+  "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+  "at": "2026-11-16T23:07:32.418Z",
+  "persona": "mei",
+  "step": "Existing receipt lower controls at actual200%",
+  "nativeZoom": "200% verified by Chrome AX",
+  "metrics": {
+    "controls": [
+      {
+        "bounds": {
+          "bottom": -404.05078125,
+          "height": 21.08203125,
+          "left": 368,
+          "right": 413.41015625,
+          "top": -425.1328125,
+          "width": 45.41015625,
+          "x": 368,
+          "y": -425.1328125
+        },
+        "id": "",
+        "tag": "A",
+        "text": "English"
+      },
+      {
+        "bounds": {
+          "bottom": -404.05078125,
+          "height": 21.08203125,
+          "left": 425.41015625,
+          "right": 479.8125,
+          "top": -425.1328125,
+          "width": 54.40234375,
+          "x": 425.41015625,
+          "y": -425.1328125
+        },
+        "id": "",
+        "tag": "A",
+        "text": "繁體中文"
+      },
+      {
+        "bounds": {
+          "bottom": -449.0546875,
+          "height": 49.1953125,
+          "left": 942,
+          "right": 1008,
+          "top": -498.25,
+          "width": 66,
+          "x": 942,
+          "y": -498.25
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "關閉"
+      },
+      {
+        "bounds": {
+          "bottom": 597.0859375,
+          "height": 49.1953125,
+          "left": 368,
+          "right": 498,
+          "top": 547.890625,
+          "width": 130,
+          "x": 368,
+          "y": 547.890625
+        },
+        "id": "",
+        "tag": "A",
+        "text": "返回來源比較"
+      },
+      {
+        "bounds": {
+          "bottom": 597.0859375,
+          "height": 49.1953125,
+          "left": 510,
+          "right": 640,
+          "top": 547.890625,
+          "width": 130,
+          "x": 510,
+          "y": 547.890625
+        },
+        "id": "",
+        "tag": "A",
+        "text": "查看專案事項"
+      }
+    ],
+    "dialog": {
+      "bottom": 617,
+      "height": 617,
+      "left": 348,
+      "right": 1028,
+      "top": 0,
+      "width": 680,
+      "x": 348,
+      "y": 0
+    },
+    "documentWidth": 1028,
+    "dpr": 4,
+    "height": 617,
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+    "width": 1028
+  },
+  "imageDimensions": {
+    "format": "jpeg",
+    "height": 617,
+    "width": 1028
+  },
+  "image": "qa15-zh-TW-200-receipt-footer.jpg",
+  "qualification": "Native200% with viewport override reset; raw pixels are not claimed as CSS viewport dimensions"
+}

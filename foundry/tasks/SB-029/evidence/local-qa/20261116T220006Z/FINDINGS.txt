@@ -1,0 +1,80 @@
+SB-029 NEW-RUN OPEN FINDINGS
+Run20261116T220006Z; exact tested head3481dac48ec60e943b5d669f0f7ff0453756ab3d; BUILD_ID4Zn6yTS6DP2jLb0DDZye_
+
+F-03 P2 — Normal Taiwan Traditional Chinese evidence and comparison content still exposes internal English terms
+Scenarios: QA-16, QA-18
+Persona: mei
+Locale(s): zh-TW
+Viewport(s): [{"width": 1440, "height": 900}, {"width": 768, "height": 1024}, {"width": 390, "height": 844}, {"width": 320, "height": 740}]
+Steps:
+1. Use a new trusted synthetic Mei session on the repaired production build.
+2. Open the canonical Xinyi comparison and imported-stone evidence.
+3. Follow an authorized historical actual-cost source and inspect its exact locator in zh-TW.
+4. Follow the current Xinyi forecast source and inspect its exact locator in zh-TW.
+5. Repeat the source panel at desktop, tablet, mobile and narrow widths; internal English record types remain visible.
+6. Close the evidence panel and inspect the normal Chinese comparison summary: the comparison-policy field exposes CPI-SIM-1.0.
+7. Scroll to ordinary comparison rows and inspect subtype, location and programme duration: RETAIL_FLAGSHIP, English district names and weeks remain visible.
+Expected: Ordinary source labels and record types are natural Taiwan Traditional Chinese; internal field/enum/developer vocabulary does not appear in normal mode.
+Observed: Normal Chinese exact locators expose the internal record types cost-line on historical source cards and forecast-cost-line on current forecast source cards. The corresponding financial authority badges and values remain correct.
+Acceptance: QA-16: Natural Taiwan Traditional Chinese parity; no English developer/provider/policy plumbing in normal Chinese mode. QA-18: Preserve accurate evidence and factor-panel behavior across required locales and viewports. Retest every claim, source preview, calculation and factor panel in en and zh-TW at 1440x900, 768x1024, 390x844, 320x740 after repair.
+Screenshots: qa18-zh-actual-source-1440.jpg, qa18-zh-actual-source-390.jpg, qa18-zh-forecast-source-1440.jpg, qa18-zh-forecast-source-768.jpg, qa18-zh-forecast-source-390.jpg, qa18-zh-forecast-source-320.jpg, qa18-zh-policy-copy.jpg, qa18-zh-subtype-copy.jpg, qa18-zh-quote-source-1440.jpg, qa18-zh-quote-source-390.jpg, qa18-zh-supplier-source-1440.jpg, qa18-zh-supplier-source-390.jpg
+Severity: Reproducible bounded localization defect on the required Stage8 evidence path; the financial authority and value remain correct.
+captureQualification: The accurately named actual-source and forecast-source images listed here were visually reviewed. Earlier forecast-table images that actually show source panels are retained but excluded from table proof; corrected table images have -visible suffixes.
+scopeClarification: Required opaque comparison/enrichment identifiers are provenance references explicitly required by QA-01, QA-03 and the canonical claims contract. Their exact bytes alone are not classified as this localization defect. Ordinary source-type labels, category/subtype names, units and policy presentation must still meet the normal-mode language requirement.
+
+F-04 P2 — Denied receipt dialog announces action creation even for a nonexistent action
+Scenarios: QA-07, QA-08
+Persona: viewer
+Locale(s): en, zh-TW
+Viewport(s): {"width": 1440, "height": 900}
+Steps:
+1. Issue a fresh active Viewer session and open the assigned Xinyi Project Actions route.
+2. Open the known synthetic action receipt selector action_bf9f36bd-ba91-4095-acc2-9ca1532170f6.
+3. Under that same active session, replace the selector with the nonexistent synthetic action_7c62492c-53bc-4ee6-94a2-913e6e679e22.
+4. Repeat both URLs in zh-TW. Inspect the focused dialog heading, subtitle and unavailable body.
+Expected: A denied or unavailable receipt should accurately present that state, without an affirmative action-created heading or a subtitle claiming a saved receipt. No sensitive payload or existence distinction is permitted.
+Observed: Both known and nonexistent selectors show the same generic success heading (Internal review action created) and saved-receipt subtitle above an explicit localized unavailable message. Chinese has the equivalent affirmative heading/subtitle. No action-specific receipt payload is exposed, and both paired visible states are identical.
+Acceptance: Retain the passing QA-07 non-disclosure and no-write invariants and indistinguishable missing/inaccessible responses. Use a localized neutral unavailable/denied heading and description for unsuccessful receipt loads; reserve creation-success wording for an authorized successful receipt.
+Screenshots: qa07-active-viewer-receipt-pairs-en-action-foreign.jpg, qa07-active-viewer-receipt-pairs-en-action-missing.jpg, qa07-active-viewer-receipt-pairs-zh-TW-action-foreign.jpg, qa07-active-viewer-receipt-pairs-zh-TW-action-missing.jpg, qa08-northern-en-action-foreign.jpg, qa08-northern-en-action-missing.jpg, qa08-northern-zh-TW-action-foreign.jpg, qa08-northern-zh-TW-action-missing.jpg
+Severity: Bounded contradictory UI wording. Denial body and payload suppression remain correct, same-session pairs show no existence oracle, and this read-only journey creates nothing. No P0/P1 authorization or false durable receipt conclusion is supported.
+criteriaQualification: The second criterion is a presentation correction derived from accurate outcome reporting; it does not imply a failed authorization or existence-hiding predicate. Whole-scenario acceptance impact is assessed separately.
+scenarioAcceptanceImpact: Independent reviewer: this copy defect alone does not falsify QA-07/08 written non-disclosure, denial and missing/inaccessible-equivalence assertions. Track as an open P2 UX finding alongside successful applicable security checks; do not count these scenarios FAIL solely for this copy.
+
+F-05 P2 — Generic stale-confirmation error leaves focus on BODY with the error above the visible viewport
+Scenarios: QA-15, QA-11
+Persona: mei
+Locale(s): en, zh-TW
+Viewport(s): {"width": 1440, "height": 900}
+Steps:
+1. As Mei, prepare a fresh Xinyi review from the canonical comparison; choose CHECK, VALIDATE_HISTORY, Iris Huang, due date2026-11-24 and acknowledge confirmation.
+2. Preload en and zh-TW versions of the same proposal before the isolated authority mutation.
+3. With the operator temporarily changing the required Nanjing imported-stone reference authority to OBSERVED, confirm the old form in each locale.
+4. Before any manual scrolling or focus action, record activeElement, dialog membership and the alert bounding rectangle.
+5. Scroll to the localized error only for the separately qualified screenshot; restore the authority mutation.
+Expected: QA-15 requires the receipt heading or first error to receive focus. The generic stale error and recovery action should be discoverable and reachable within the review focus boundary.
+Observed: Confirmation safely returns STALE_COMPARISON with no business write, but automatic focus is BODY outside the dialog in both locales. The error is above the viewport: zh-TW top=-1055.3046875,bottom=-918.4453125; en top=-1196.3046875,bottom=-1033.8515625. The complete draft remains present.
+Acceptance: QA-15: receipt heading or first error receives focus. After a generic stale/access/server error, place perceivable focus on the error or appropriate recovery heading inside the dialog and make the recovery action reachable.
+Screenshots: qa11-authority-en.jpg, qa11-authority-zh-TW.jpg
+Severity: Bounded reproducible focus defect. No severe keyboard trap or screen-reader announcement failure is inferred. Earlier native Tab containment and field-specific validation focus checks passed.
+captureQualification: The screenshots were manually framed after the automatic-state measurements. They show error wording, not automatic error visibility or focus. The automaticFocus fields in qa11-authority-result.json are the evidence for the failure.
+
+F-06 P1 — A stored comparison remains inspectable without the mandatory stale warning after a required source authority change
+Scenarios: QA-11, QA-18
+Persona: mei
+Locale(s): en, zh-TW
+Viewport(s): {"width": 1440, "height": 900}
+Steps:
+1. As Mei, open the stored canonical Xinyi comparison/enrichment and imported-stone forecast-versus-actual claim.
+2. Prepare a fresh review and preload its English and Chinese forms. In the isolated synthetic database change only EvidenceReference evid_cost_cl_nanjing_023_v1_3 authorityState from RECONCILED_ACTUAL to OBSERVED. Preserve its observationType.
+3. Confirm the previously prepared form in each locale: observe STALE_COMPARISON and no additional action, receipt, audit, consumption or evidence link.
+4. Reopen the authorized Nanjing source in both locales: its current authority is exactly Observed in English and 已擷取 in zh-TW.
+5. Reopen the stored imported-stone claim in zh-TW while the mutation remains active. Inspect the entire captured panel text, warning area and calculation.
+6. Restore the exact pre-mutation source row and verify the normalized row hash and all business counts.
+Expected: The historical comparison may remain inspectable, but must show the run stale status after a material evidence-authority change, while preventing new action creation. Historical values should not be silently presented as currently qualified evidence.
+Observed: The confirmation guard correctly blocks the old form. The source preview shows the changed OBSERVED authority, yet the stored claim retains +18.4%, current forecast NT$2,360,000 and Nanjing historical contribution2,916.67 with eligibility wording and no stale-status qualification. No new computation, stale accepted write or automatic authority promotion was observed.
+Acceptance: docs/design/EVIDENCE_PANEL_SPEC.md section21 Stale comparison: the panel remains inspectable but shows the run stale status and blocks new action creation. docs/architecture/EVIDENCE_AND_AUTHORITY_MODEL.md section9 Comparison run: material source/policy/permission/active quote/forecast changes make the run stale. computer-qa-plan.yaml severity P1 explicitly includes missing mandatory warning. QA-11: stale or unsupported evidence never becomes authoritative; QA-18: prior deterministic evidence behavior remains intact.
+Screenshots: qa11-authority-source-en.jpg, qa11-authority-source-zh-TW.jpg, qa11-authority-claim-zh.jpg, qa11-authority-en.jpg, qa11-authority-zh-TW.jpg
+Severity: A mandatory stale warning is missing after a material required-source change. The explicit QA-plan P1 rule applies even though the confirmation write guard passes.
+captureQualification: The claim screenshot shows the upper claim and Nanjing calculation; the complete paired DOM text supports absence of a stale warning throughout the panel. The stored generation date does not qualify the current stale state.
+localeQualification: Old-form rejection and changed source preview observed in en and zh-TW. The fully reopened stored claim panel proof is zh-TW; no English full-claim or other-viewport reproduction is claimed.
+runDisposition: P1_STOP: no further scenario preparations, confirmations, negative POST requests, business journeys or fixture mutations. Safe read-only closure, revocation and publication continue.

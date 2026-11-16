@@ -1,0 +1,189 @@
+{
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "at": "2026-11-16T23:16:42.828Z",
+  "counts": {
+    "actions": 3,
+    "proposals": 6,
+    "consumed": 3,
+    "receipts": 3,
+    "audits": 3,
+    "actionevidencelinks": 45
+  },
+  "organizations": [
+    {
+      "businessKey": "HORIZON_ATELIER",
+      "dataClassification": "DEMO_SYNTHETIC"
+    },
+    {
+      "businessKey": "NORTHERN_STUDIO",
+      "dataClassification": "DEMO_SYNTHETIC"
+    }
+  ],
+  "migrations": 8,
+  "guards": [
+    {
+      "tgname": "Action_stage8_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "AuditEvent_append_only",
+      "enabled": "O"
+    },
+    {
+      "tgname": "InternalReviewReceipt_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "ProposedAction_stage8_immutable",
+      "enabled": "O"
+    }
+  ],
+  "activeSessions": 0,
+  "temporaryGrants": 0,
+  "temporaryTriggers": 0,
+  "duplicates": [],
+  "actions": [
+    {
+      "actionKey": "action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+      "proposalKey": "proposal_788eae35-8af0-4122-8872-349cc933cab1",
+      "status": "OPEN",
+      "createdByMembershipId": "membership_horizon_mei",
+      "assigneeMembershipId": "membership_horizon_finance",
+      "creator": {
+        "en": "Mei Lin",
+        "zhTw": "林美玲"
+      },
+      "assignee": {
+        "en": "Iris Huang",
+        "zhTw": "黃怡君"
+      },
+      "titleKey": "VALIDATE",
+      "rationaleKey": "REVIEW_NEXT",
+      "storedDueDate": "2026-11-24",
+      "evidenceCount": 15,
+      "sameExactEvidenceRefs": true,
+      "proposalStatus": "CONFIRMED",
+      "receiptCount": 1,
+      "successfulAuditCount": 1,
+      "receiptLineageMatches": true
+    },
+    {
+      "actionKey": "action_5de2b214-0781-4e91-afb7-fd7563a418d6",
+      "proposalKey": "proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94",
+      "status": "OPEN",
+      "createdByMembershipId": "membership_horizon_mei",
+      "assigneeMembershipId": "membership_horizon_finance",
+      "creator": {
+        "en": "Mei Lin",
+        "zhTw": "林美玲"
+      },
+      "assignee": {
+        "en": "Iris Huang",
+        "zhTw": "黃怡君"
+      },
+      "titleKey": "VALIDATE",
+      "rationaleKey": "REVIEW_NEXT",
+      "storedDueDate": "2026-11-24",
+      "evidenceCount": 15,
+      "sameExactEvidenceRefs": true,
+      "proposalStatus": "CONFIRMED",
+      "receiptCount": 1,
+      "successfulAuditCount": 1,
+      "receiptLineageMatches": true
+    },
+    {
+      "actionKey": "action_fc9baffb-bcd8-452b-8f0f-7b0b7481d5f2",
+      "proposalKey": "proposal_9d546bf5-df49-44e3-8f1c-07b73b9c1319",
+      "status": "OPEN",
+      "createdByMembershipId": "membership_horizon_mei",
+      "assigneeMembershipId": "membership_horizon_finance",
+      "creator": {
+        "en": "Mei Lin",
+        "zhTw": "林美玲"
+      },
+      "assignee": {
+        "en": "Iris Huang",
+        "zhTw": "黃怡君"
+      },
+      "titleKey": "VALIDATE",
+      "rationaleKey": "REVIEW_NEXT",
+      "storedDueDate": "2026-11-24",
+      "evidenceCount": 15,
+      "sameExactEvidenceRefs": true,
+      "proposalStatus": "CONFIRMED",
+      "receiptCount": 1,
+      "successfulAuditCount": 1,
+      "receiptLineageMatches": true
+    }
+  ],
+  "providerCredentialVariablesPresent": [],
+  "runtimeDirectoryMode": "700",
+  "environmentFileMode": "600",
+  "proposals": [
+    {
+      "proposalKey": "proposal_788eae35-8af0-4122-8872-349cc933cab1",
+      "status": "CONFIRMED",
+      "comparisonRunId": "cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25",
+      "enrichmentRunId": "econrun_000eff15-1995-4a07-bed2-37c8f5005627",
+      "preparedByMembershipId": "membership_horizon_mei",
+      "expiresAtStoredTimestamp": "2026-11-16 22:51:18.862",
+      "evidenceCount": 15,
+      "actionCount": 1
+    },
+    {
+      "proposalKey": "proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94",
+      "status": "CONFIRMED",
+      "comparisonRunId": "cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd",
+      "enrichmentRunId": "econrun_f11632f3-9957-4268-8095-21969a409bff",
+      "preparedByMembershipId": "membership_horizon_mei",
+      "expiresAtStoredTimestamp": "2026-11-16 22:57:04.417",
+      "evidenceCount": 15,
+      "actionCount": 1
+    },
+    {
+      "proposalKey": "proposal_9d546bf5-df49-44e3-8f1c-07b73b9c1319",
+      "status": "CONFIRMED",
+      "comparisonRunId": "cmprun_ccd6a6e2-ce23-4d4d-867a-3fc5364bb40b",
+      "enrichmentRunId": "econrun_11d33ba4-dfbc-4865-b96f-87099a2a05e6",
+      "preparedByMembershipId": "membership_horizon_mei",
+      "expiresAtStoredTimestamp": "2026-11-16 23:07:47.552",
+      "evidenceCount": 15,
+      "actionCount": 1
+    },
+    {
+      "proposalKey": "proposal_8cbd2579-f8d8-400e-87d2-2b4d2fcec7fa",
+      "status": "PREPARED",
+      "comparisonRunId": "cmprun_117af95d-d95e-40e8-88d6-92a72bbbb66a",
+      "enrichmentRunId": "econrun_e7e8a742-0c1e-48ca-97b5-c1b99ab54326",
+      "preparedByMembershipId": "membership_horizon_mei",
+      "expiresAtStoredTimestamp": "2026-11-16 23:11:41.698",
+      "evidenceCount": 15,
+      "actionCount": 0
+    },
+    {
+      "proposalKey": "proposal_0948c05a-e036-4ca5-924e-bfc6997b3cc6",
+      "status": "PREPARED",
+      "comparisonRunId": "cmprun_b589ede0-a183-4a3b-b46f-7bc12e81cc49",
+      "enrichmentRunId": "econrun_2e78847f-4bb1-4213-9103-ed13f6adf070",
+      "preparedByMembershipId": "membership_horizon_mei",
+      "expiresAtStoredTimestamp": "2026-11-16 23:28:56.969",
+      "evidenceCount": 15,
+      "actionCount": 0
+    },
+    {
+      "proposalKey": "proposal_869519ba-4581-4859-801b-18fb21ac2806",
+      "status": "PREPARED",
+      "comparisonRunId": "cmprun_ffc61ccf-dc8b-4d7c-bcf8-9920491b0911",
+      "enrichmentRunId": "econrun_0e5074f7-ec23-4bc2-8e52-7ffb3fc06d16",
+      "preparedByMembershipId": "membership_horizon_mei",
+      "expiresAtStoredTimestamp": "2026-11-16 23:30:28.803",
+      "evidenceCount": 15,
+      "actionCount": 0
+    }
+  ],
+  "temporaryConflicts": 0,
+  "temporaryFunctions": 0,
+  "allActionsAtomic": true,
+  "oneConsumedPerAction": true
+}

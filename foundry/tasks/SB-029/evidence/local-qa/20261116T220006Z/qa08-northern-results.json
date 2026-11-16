@@ -1,0 +1,386 @@
+[
+  {
+    "actor": "northern",
+    "locale": "en",
+    "type": "project",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026",
+      "width": 1440
+    },
+    "visible": "PROJECT WORKSPACE\n\nThis project or project area is currently unavailable.\n\nThe current authorization context cannot open this project, or the requested area is not active in the first complete workflow. The application does not replace unavailable states with invented records.\n\nOverview\nCompare\nCommercial\nEvidence\nActions\nThis area is not active yet\nOverview\n\nProject Overview, Compare, and claim-level Evidence use the real data and authorization boundaries. Commercial detail pages and Actions activate through the accepted implementation sequence.\n\nREQUESTED PROJECT KEY\nPRJ-XINYI-026\nCURRENT AREA\nOverview",
+    "forbiddenContent": false,
+    "file": "qa08-northern-en-project-foreign.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "en",
+    "type": "project",
+    "existence": "missing",
+    "url": "http://localhost:3000/en/projects/PRJ-QA-MISSING-999",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-QA-MISSING-999",
+      "width": 1440
+    },
+    "visible": "PROJECT WORKSPACE\n\nThis project or project area is currently unavailable.\n\nThe current authorization context cannot open this project, or the requested area is not active in the first complete workflow. The application does not replace unavailable states with invented records.\n\nOverview\nCompare\nCommercial\nEvidence\nActions\nThis area is not active yet\nOverview\n\nProject Overview, Compare, and claim-level Evidence use the real data and authorization boundaries. Commercial detail pages and Actions activate through the accepted implementation sequence.\n\nREQUESTED PROJECT KEY\nPRJ-QA-MISSING-999\nCURRENT AREA\nOverview",
+    "forbiddenContent": false,
+    "file": "qa08-northern-en-project-missing.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "en",
+    "type": "comparison",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: 6710aa5b-07dc-47e7-be2e-cb41ba272ca9\n\nRun a fresh comparison",
+    "forbiddenContent": false,
+    "file": "qa08-northern-en-comparison-foreign.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "en",
+    "type": "comparison",
+    "existence": "missing",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b8036853-121d-470b-b320-19bca53ef2a2&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b8036853-121d-470b-b320-19bca53ef2a2&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: 06613828-35fc-4dbf-b34d-e830aba40f74\n\nRun a fresh comparison",
+    "forbiddenContent": false,
+    "file": "qa08-northern-en-comparison-missing.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "en",
+    "type": "enrichment",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: 20c924c6-dc7f-497e-97a4-b2ddd7d14a94\n\nRun a fresh comparison",
+    "forbiddenContent": false,
+    "file": "qa08-northern-en-enrichment-foreign.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "en",
+    "type": "enrichment",
+    "existence": "missing",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_53eb8841-eeaa-437b-9378-7ff81f46583c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_53eb8841-eeaa-437b-9378-7ff81f46583c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: e55b853a-6335-4e6f-a8a2-8dfe64b0e7ad\n\nRun a fresh comparison",
+    "forbiddenContent": false,
+    "file": "qa08-northern-en-enrichment-missing.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "en",
+    "type": "proposal",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_788eae35-8af0-4122-8872-349cc933cab1",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_788eae35-8af0-4122-8872-349cc933cab1",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: 4d7ef59b-caa6-4477-9711-8014d9dcb108\n\nRun a fresh comparison",
+    "forbiddenContent": false,
+    "file": "qa08-northern-en-proposal-foreign.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "en",
+    "type": "proposal",
+    "existence": "missing",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_f1a7b003-186d-4c37-9d32-7a2c9bd44551",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_f1a7b003-186d-4c37-9d32-7a2c9bd44551",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: 755df176-e191-45c0-a43a-1c52ec4dce6a\n\nRun a fresh comparison",
+    "forbiddenContent": false,
+    "file": "qa08-northern-en-proposal-missing.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "en",
+    "type": "action",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+    "observed": {
+      "dialogs": 1,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nThis action is unavailable with your current access.\n\nInternal review action created\n\nThis receipt records the action saved to the project.\n\nEnglish\n繁體中文\nClose\n\nThis action is unavailable with your current access.",
+    "forbiddenContent": false,
+    "file": "qa08-northern-en-action-foreign.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "en",
+    "type": "action",
+    "existence": "missing",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_7c62492c-53bc-4ee6-94a2-913e6e679e22",
+    "observed": {
+      "dialogs": 1,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_7c62492c-53bc-4ee6-94a2-913e6e679e22",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nThis action is unavailable with your current access.\n\nInternal review action created\n\nThis receipt records the action saved to the project.\n\nEnglish\n繁體中文\nClose\n\nThis action is unavailable with your current access.",
+    "forbiddenContent": false,
+    "file": "qa08-northern-en-action-missing.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "en",
+    "type": "evidenceClaim",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: a57512ce-0cc2-469a-8642-0d4ce2d1140a\n\nRun a fresh comparison",
+    "forbiddenContent": false,
+    "file": "qa08-northern-en-evidenceClaim-foreign.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "en",
+    "type": "evidenceClaim",
+    "existence": "missing",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_MISSING_EVIDENCE_3354D695EE2B",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_MISSING_EVIDENCE_3354D695EE2B",
+      "width": 1440
+    },
+    "visible": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: a80677cd-e229-4d23-a2de-8858e817b747\n\nRun a fresh comparison",
+    "forbiddenContent": false,
+    "file": "qa08-northern-en-evidenceClaim-missing.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "zh-TW",
+    "type": "project",
+    "existence": "foreign",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026",
+      "width": 1440
+    },
+    "visible": "專案工作區\n\n此專案或區域目前無法使用。\n\n目前的授權脈絡無法開啟此專案，或此專案區域尚未在第一個完整流程中啟用。系統不會以假資料取代失敗狀態。\n\n總覽\n比較\n商務資料\n資料依據\n行動事項\n此區域尚未啟用\n總覽\n\n專案總覽、比較與資料依據已連接正式資料與權限邊界。商務資料專頁與行動事項會依照已核准的建置順序逐步啟用。\n\n要求的專案識別碼\nPRJ-XINYI-026\n目前區域\n總覽",
+    "forbiddenContent": false,
+    "file": "qa08-northern-zh-TW-project-foreign.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "zh-TW",
+    "type": "project",
+    "existence": "missing",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-QA-MISSING-999",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-QA-MISSING-999",
+      "width": 1440
+    },
+    "visible": "專案工作區\n\n此專案或區域目前無法使用。\n\n目前的授權脈絡無法開啟此專案，或此專案區域尚未在第一個完整流程中啟用。系統不會以假資料取代失敗狀態。\n\n總覽\n比較\n商務資料\n資料依據\n行動事項\n此區域尚未啟用\n總覽\n\n專案總覽、比較與資料依據已連接正式資料與權限邊界。商務資料專頁與行動事項會依照已核准的建置順序逐步啟用。\n\n要求的專案識別碼\nPRJ-QA-MISSING-999\n目前區域\n總覽",
+    "forbiddenContent": false,
+    "file": "qa08-northern-zh-TW-project-missing.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "zh-TW",
+    "type": "comparison",
+    "existence": "foreign",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: db5d5254-dfbb-449c-b452-16059ef497cb\n\n重新執行比較",
+    "forbiddenContent": false,
+    "file": "qa08-northern-zh-TW-comparison-foreign.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "zh-TW",
+    "type": "comparison",
+    "existence": "missing",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b8036853-121d-470b-b320-19bca53ef2a2&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b8036853-121d-470b-b320-19bca53ef2a2&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: d2de2849-d4b9-4ad2-bfc1-8695a49aa729\n\n重新執行比較",
+    "forbiddenContent": false,
+    "file": "qa08-northern-zh-TW-comparison-missing.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "zh-TW",
+    "type": "enrichment",
+    "existence": "foreign",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: 8480abd3-3906-4896-8a57-0a57b84a5f6c\n\n重新執行比較",
+    "forbiddenContent": false,
+    "file": "qa08-northern-zh-TW-enrichment-foreign.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "zh-TW",
+    "type": "enrichment",
+    "existence": "missing",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_53eb8841-eeaa-437b-9378-7ff81f46583c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_53eb8841-eeaa-437b-9378-7ff81f46583c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: 38dfacb6-c92d-493b-bee4-6fc4515277e4\n\n重新執行比較",
+    "forbiddenContent": false,
+    "file": "qa08-northern-zh-TW-enrichment-missing.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "zh-TW",
+    "type": "proposal",
+    "existence": "foreign",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_788eae35-8af0-4122-8872-349cc933cab1",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_788eae35-8af0-4122-8872-349cc933cab1",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: d2705984-5a94-4f87-b649-43ce27139233\n\n重新執行比較",
+    "forbiddenContent": false,
+    "file": "qa08-northern-zh-TW-proposal-foreign.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "zh-TW",
+    "type": "proposal",
+    "existence": "missing",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_f1a7b003-186d-4c37-9d32-7a2c9bd44551",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_f1a7b003-186d-4c37-9d32-7a2c9bd44551",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: f567afe6-6449-4ca2-8015-8237da0f1c3f\n\n重新執行比較",
+    "forbiddenContent": false,
+    "file": "qa08-northern-zh-TW-proposal-missing.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "zh-TW",
+    "type": "action",
+    "existence": "foreign",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+    "observed": {
+      "dialogs": 1,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_bf9f36bd-ba91-4095-acc2-9ca1532170f6",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n內部審查事項\n\n開啟已儲存回執以檢視詳情，或返回來源比較。\n\n依您目前的權限，無法查看或建立此事項。\n\n已建立內部審查事項\n\n此回執記錄已儲存至專案的事項。\n\nEnglish\n繁體中文\n關閉\n\n依您目前的權限，無法查看或建立此事項。",
+    "forbiddenContent": false,
+    "file": "qa08-northern-zh-TW-action-foreign.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "zh-TW",
+    "type": "action",
+    "existence": "missing",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_7c62492c-53bc-4ee6-94a2-913e6e679e22",
+    "observed": {
+      "dialogs": 1,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_7c62492c-53bc-4ee6-94a2-913e6e679e22",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n內部審查事項\n\n開啟已儲存回執以檢視詳情，或返回來源比較。\n\n依您目前的權限，無法查看或建立此事項。\n\n已建立內部審查事項\n\n此回執記錄已儲存至專案的事項。\n\nEnglish\n繁體中文\n關閉\n\n依您目前的權限，無法查看或建立此事項。",
+    "forbiddenContent": false,
+    "file": "qa08-northern-zh-TW-action-missing.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "zh-TW",
+    "type": "evidenceClaim",
+    "existence": "foreign",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: c8e2b25d-fb65-4134-b0f3-26d1217e199c\n\n重新執行比較",
+    "forbiddenContent": false,
+    "file": "qa08-northern-zh-TW-evidenceClaim-foreign.jpg"
+  },
+  {
+    "actor": "northern",
+    "locale": "zh-TW",
+    "type": "evidenceClaim",
+    "existence": "missing",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_MISSING_EVIDENCE_3354D695EE2B",
+    "observed": {
+      "dialogs": 0,
+      "height": 900,
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_66ed95cf-456a-4863-bb38-2c63ad858d25&economics=econrun_000eff15-1995-4a07-bed2-37c8f5005627&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_MISSING_EVIDENCE_3354D695EE2B",
+      "width": 1440
+    },
+    "visible": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: 49001d04-785f-4dbe-b81c-b2fe960122f2\n\n重新執行比較",
+    "forbiddenContent": false,
+    "file": "qa08-northern-zh-TW-evidenceClaim-missing.jpg"
+  }
+]

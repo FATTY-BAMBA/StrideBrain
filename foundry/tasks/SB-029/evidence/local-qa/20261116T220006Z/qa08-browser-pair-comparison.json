@@ -1,0 +1,62 @@
+[
+  {
+    "locale": "en",
+    "type": "project",
+    "sameNormalizedVisible": true
+  },
+  {
+    "locale": "en",
+    "type": "comparison",
+    "sameNormalizedVisible": true
+  },
+  {
+    "locale": "en",
+    "type": "enrichment",
+    "sameNormalizedVisible": true
+  },
+  {
+    "locale": "en",
+    "type": "proposal",
+    "sameNormalizedVisible": true
+  },
+  {
+    "locale": "en",
+    "type": "action",
+    "sameNormalizedVisible": true
+  },
+  {
+    "locale": "en",
+    "type": "evidenceClaim",
+    "sameNormalizedVisible": true
+  },
+  {
+    "locale": "zh-TW",
+    "type": "project",
+    "sameNormalizedVisible": true
+  },
+  {
+    "locale": "zh-TW",
+    "type": "comparison",
+    "sameNormalizedVisible": true
+  },
+  {
+    "locale": "zh-TW",
+    "type": "enrichment",
+    "sameNormalizedVisible": true
+  },
+  {
+    "locale": "zh-TW",
+    "type": "proposal",
+    "sameNormalizedVisible": true
+  },
+  {
+    "locale": "zh-TW",
+    "type": "action",
+    "sameNormalizedVisible": true
+  },
+  {
+    "locale": "zh-TW",
+    "type": "evidenceClaim",
+    "sameNormalizedVisible": true
+  }
+]

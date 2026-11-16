@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-11-16T23:13:49.345904+00:00",
+  "provider": "GitHub connector get_pr_info",
+  "repository": "FATTY-BAMBA/StrideBrain",
+  "pr": 31,
+  "url": "https://github.com/FATTY-BAMBA/StrideBrain/pull/31",
+  "state": "open",
+  "draft": true,
+  "merged": false,
+  "head": "build/sb-029-governed-internal-review",
+  "headSha": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+  "actionTaken": "Read-only metadata verification; no PR edit, merge or release action."
+}

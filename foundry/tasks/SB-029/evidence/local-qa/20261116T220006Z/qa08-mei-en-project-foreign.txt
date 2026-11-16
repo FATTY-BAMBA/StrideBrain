@@ -1,0 +1,66 @@
+- link "Skip to main content":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain BY PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: BY PRIMESTRIDE AI
+  - navigation "Projects":
+    - link "Home":
+      - /url: /en
+      - generic: "01"
+      - generic: Home
+    - link "Projects":
+      - /url: /en/projects
+      - generic: "02"
+      - generic: Projects
+    - link "Knowledge":
+      - /url: /en/knowledge
+      - generic: "03"
+      - generic: Knowledge
+    - link "StrideBrain":
+      - /url: /en/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "Settings":
+      - /url: /en/settings
+      - generic: "05"
+      - generic: Settings
+  - strong: v0.1 · Controlled demo
+  - generic: This area is not active yet
+- banner:
+  - generic: ●
+  - text: Controlled synthetic demo
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects/PRJ-NORTH-001
+    - generic: /
+    - link "EN":
+      - /url: /en/projects/PRJ-NORTH-001
+- main:
+  - paragraph: PROJECT WORKSPACE
+  - heading "This project or project area is currently unavailable." [level=1]
+  - paragraph: The current authorization context cannot open this project, or the requested area is not active in the first complete workflow. The application does not replace unavailable states with invented records.
+  - navigation "Project workspace navigation":
+    - link "Overview":
+      - /url: /en/projects/PRJ-NORTH-001
+    - link "Compare":
+      - /url: /en/projects/PRJ-NORTH-001/compare
+    - link "Commercial":
+      - /url: /en/projects/PRJ-NORTH-001/commercial
+    - link "Evidence":
+      - /url: /en/projects/PRJ-NORTH-001/evidence
+    - link "Actions":
+      - /url: /en/projects/PRJ-NORTH-001/actions
+  - region "Overview":
+    - generic: This area is not active yet
+    - heading "Overview" [level=2]
+    - paragraph: Project Overview, Compare, and claim-level Evidence use the real data and authorization boundaries. Commercial detail pages and Actions activate through the accepted implementation sequence.
+    - term: Requested project key
+    - definition:
+      - code: PRJ-NORTH-001
+    - term: Current area
+    - definition: Overview
+- contentinfo:
+  - generic: Synthetic demo data only · No real customer data
+  - generic: Live demo-domain cutover has not occurred
+- alert

@@ -1,0 +1,73 @@
+{
+  "at": "2026-11-16T22:27:05.596Z",
+  "steps": [
+    "Immediately selected CHECK, VALIDATE_HISTORY and Mei once controlsacceptedinput",
+    "Seeded date2025-11-25 then used nativeArrowUp to commit2026-11-25",
+    "Immediately activated dialog Traditional Chinese link"
+  ],
+  "rapidBefore": {
+    "confirmation": false,
+    "dialogs": 1,
+    "fields": {
+      "review-assignee": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b",
+      "review-dueDate": "2026-11-25",
+      "review-rationale": "VALIDATE_HISTORY",
+      "review-title": "CHECK"
+    },
+    "focus": {
+      "id": "review-dueDate",
+      "tag": "INPUT",
+      "text": ""
+    },
+    "labels": {
+      "review-assignee": "Mei Lin",
+      "review-rationale": "Validate the imported-stone and lighting assumptions using the linked historical evidence.",
+      "review-title": "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3"
+    },
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2026-11-25"
+  },
+  "rapidAfter": {
+    "dialogs": 0,
+    "fields": {},
+    "focus": {
+      "id": "",
+      "tag": "BODY",
+      "text": "BODY during route loading; no rendered review"
+    },
+    "labels": {},
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2026-11-25"
+  },
+  "rapidAfterSettled": {
+    "ack": false,
+    "dialogs": 1,
+    "fields": {
+      "review-assignee": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b",
+      "review-dueDate": "2026-11-25",
+      "review-rationale": "VALIDATE_HISTORY",
+      "review-title": "CHECK"
+    },
+    "focus": {
+      "id": "internal-review-heading",
+      "tag": "H2",
+      "text": "檢視內部審查事項"
+    },
+    "selected": [
+      {
+        "id": "review-title",
+        "label": "確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "label": "依連結的歷史佐證資料，檢核進口石材與照明假設。",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "label": "林美玲",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      }
+    ],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2026-11-25"
+  }
+}

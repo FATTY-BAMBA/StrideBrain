@@ -1,0 +1,31 @@
+{
+  "classification": "SANITIZED_PRODUCTION_STDOUT_CAPTURE",
+  "method": "One operator consumed app stdout; only structured event, requestId and outcome fields retained. This is application log evidence, not a network capture.",
+  "captures": [
+    {
+      "lines": 173,
+      "structuredLines": 173,
+      "nonStructuredLinesOmitted": 0,
+      "structuredLinesWithOmittedFields": 0,
+      "originalTokenCount": 5202,
+      "truncationReported": false,
+      "captureOrder": 1,
+      "captureWindowContext": "After initial QA11 authority attempts and before authority restoration; exact drain wall-clock timestamp was not retained."
+    },
+    {
+      "captureOrder": 2,
+      "captureStartUTC": "2026-11-16 23:18:21 UTC",
+      "captureEndUTC": "2026-11-16 23:18:26 UTC",
+      "lines": 0,
+      "structuredLines": 0,
+      "nonStructuredLinesOmitted": 0,
+      "structuredLinesWithOmittedFields": 0,
+      "originalTokenCount": 0,
+      "truncationReported": false,
+      "appStillRunning": true
+    }
+  ],
+  "anyCaptureReportedTruncation": false,
+  "nonStructuredLinesOmitted": 0,
+  "metadataRecordedAtUTC": "2026-11-16 23:18:26 UTC"
+}

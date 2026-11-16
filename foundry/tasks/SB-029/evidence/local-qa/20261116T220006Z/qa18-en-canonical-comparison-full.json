@@ -1,0 +1,18 @@
+{
+  "at": "2026-11-16T22:27:03.990Z",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+  "imageDimensions": {
+    "format": "jpeg",
+    "height": 4545,
+    "width": 1440
+  },
+  "kind": "Full-page screenshot; not a viewport-size assertion",
+  "expectedRanks": [
+    88,
+    81,
+    79,
+    71,
+    69,
+    63
+  ]
+}

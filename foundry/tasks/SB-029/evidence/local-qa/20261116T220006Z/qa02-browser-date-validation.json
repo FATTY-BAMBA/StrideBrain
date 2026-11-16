@@ -1,0 +1,84 @@
+[
+  {
+    "locale": "zh-TW",
+    "case": "yesterday",
+    "state": {
+      "ack": true,
+      "dialogs": 1,
+      "fields": {
+        "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+        "review-dueDate": "2026-11-16",
+        "review-rationale": "REVIEW_NEXT",
+        "review-title": "CHECK"
+      },
+      "focus": {
+        "id": "review-dueDate",
+        "tag": "INPUT",
+        "text": ""
+      },
+      "selected": [
+        {
+          "id": "review-title",
+          "label": "確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+          "value": "CHECK"
+        },
+        {
+          "id": "review-rationale",
+          "label": "下次內部報價審查前，依連結的佐證資料檢核這些假設。",
+          "value": "REVIEW_NEXT"
+        },
+        {
+          "id": "review-assignee",
+          "label": "陳柏宇",
+          "value": "assignee_b911d550581d518bb8f326c678217ad0"
+        }
+      ],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94&reviewTitle=CHECK&reviewRationale=REVIEW_NEXT&reviewAssignee=assignee_b911d550581d518bb8f326c678217ad0&reviewDue=2026-11-16&evidenceReturn=review-evidence-0"
+    },
+    "aria": {
+      "describedBy": "review-date-hint review-dueDate-error",
+      "invalid": "true"
+    }
+  },
+  {
+    "locale": "en",
+    "case": "day366",
+    "state": {
+      "ack": true,
+      "dialogs": 1,
+      "fields": {
+        "review-assignee": "assignee_b911d550581d518bb8f326c678217ad0",
+        "review-dueDate": "2027-11-18",
+        "review-rationale": "REVIEW_NEXT",
+        "review-title": "CHECK"
+      },
+      "focus": {
+        "id": "review-dueDate",
+        "tag": "INPUT",
+        "text": ""
+      },
+      "selected": [
+        {
+          "id": "review-title",
+          "label": "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3",
+          "value": "CHECK"
+        },
+        {
+          "id": "review-rationale",
+          "label": "Review these assumptions against the linked evidence before the next internal quotation review.",
+          "value": "REVIEW_NEXT"
+        },
+        {
+          "id": "review-assignee",
+          "label": "Alex Chen",
+          "value": "assignee_b911d550581d518bb8f326c678217ad0"
+        }
+      ],
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b2cf2a81-6a10-473a-9aac-34a3986801dd&economics=econrun_f11632f3-9957-4268-8095-21969a409bff&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_bc54caf9-153a-4eab-8cb3-7813ac3abb94&reviewTitle=CHECK&reviewRationale=REVIEW_NEXT&reviewAssignee=assignee_b911d550581d518bb8f326c678217ad0&reviewDue=2027-11-18&evidenceReturn=review-evidence-0"
+    },
+    "aria": {
+      "describedBy": "review-date-hint review-dueDate-error",
+      "invalid": "true"
+    }
+  }
+]

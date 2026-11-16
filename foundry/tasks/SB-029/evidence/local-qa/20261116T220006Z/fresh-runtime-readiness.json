@@ -1,0 +1,36 @@
+{
+  "at": "2026-11-16T22:05:39.999826+00:00",
+  "classification": "FRESH_RUN_RUNTIME_READINESS",
+  "runId": "20261116T220006Z",
+  "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+  "productionBuildId": "4Zn6yTS6DP2jLb0DDZye_",
+  "database": "stridebrain_sb029_retest_220006",
+  "container": "stridebrain-sb029-retest-20261116t220006z",
+  "loopbackPostgresPort": 54332,
+  "appOrigin": "http://localhost:3000",
+  "operatorHost": "127.0.0.1",
+  "operatorPort": 3001,
+  "freshCredentials": true,
+  "sourceOrBuildModified": false,
+  "allEightMigrations": true,
+  "repeatSeedAndVerifyPassedBeforeSessions": true,
+  "initialBusinessCountsZero": true,
+  "initialActiveSessionsZero": true,
+  "operatorPreflightPassed": true,
+  "operatorSourceImportsPassed": true,
+  "health": [
+    {
+      "surface": "application",
+      "status": 200,
+      "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+      "bytesRead": 20103
+    },
+    {
+      "surface": "operator",
+      "status": 200,
+      "cacheControl": "private, no-store",
+      "bytesRead": 30
+    }
+  ],
+  "priorSessionNamespaceInvalidatedByFreshSigningSecret": true
+}

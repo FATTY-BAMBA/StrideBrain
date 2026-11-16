@@ -1,0 +1,53 @@
+{
+  "at": "2026-11-16T22:04:37.508Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "counts": {
+    "actions": 0,
+    "proposals": 0,
+    "consumed": 0,
+    "receipts": 0,
+    "audits": 0,
+    "actionevidencelinks": 0
+  },
+  "organizations": [
+    {
+      "businessKey": "HORIZON_ATELIER",
+      "dataClassification": "DEMO_SYNTHETIC"
+    },
+    {
+      "businessKey": "NORTHERN_STUDIO",
+      "dataClassification": "DEMO_SYNTHETIC"
+    }
+  ],
+  "migrations": 8,
+  "guards": [
+    {
+      "tgname": "Action_stage8_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "AuditEvent_append_only",
+      "enabled": "O"
+    },
+    {
+      "tgname": "InternalReviewReceipt_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "ProposedAction_stage8_immutable",
+      "enabled": "O"
+    }
+  ],
+  "activeSessions": 0,
+  "temporaryGrants": 0,
+  "temporaryTriggers": 0,
+  "duplicates": [],
+  "actions": [],
+  "providerCredentialVariablesPresent": [],
+  "runtimeDirectoryMode": "700",
+  "environmentFileMode": "600",
+  "temporaryConflicts": 0,
+  "temporaryFunctions": 0,
+  "allActionsAtomic": true,
+  "oneConsumedPerAction": true
+}

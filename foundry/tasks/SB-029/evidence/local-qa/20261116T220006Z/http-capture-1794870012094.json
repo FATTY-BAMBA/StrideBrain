@@ -1,0 +1,55 @@
+{
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "at": "2026-11-16T23:00:12.094Z",
+  "classification": "APPROVED_NON_UI_HTTP_SUPPLEMENT",
+  "executionMode": "HTTP_ONLY",
+  "activeMutation": null,
+  "suite": "capture",
+  "selector": "proposal_0948c05a-e036-4ca5-924e-bfc6997b3cc6",
+  "timezone": "Asia/Taipei",
+  "minDueDate": "2026-11-17",
+  "maxDueDate": "2027-11-17",
+  "proposalViewSummary": {
+    "canAssign": true,
+    "candidateCount": 3,
+    "suggestedAssigneeKey": "assignee_e1078151219336a0529d3fa95332a60f"
+  },
+  "results": [
+    {
+      "name": "capture-existing-proposal",
+      "method": "GET",
+      "path": "/api/actions/internal-review/proposals/proposal_0948c05a-e036-4ca5-924e-bfc6997b3cc6?locale=en",
+      "status": 200,
+      "kind": "PREPARED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "proposal"
+      ],
+      "noBusinessWrites": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 3,
+    "consumed": 3,
+    "receipts": 3,
+    "audits": 3,
+    "actionevidencelinks": 45
+  },
+  "countsAfter": {
+    "actions": 3,
+    "consumed": 3,
+    "receipts": 3,
+    "audits": 3,
+    "actionevidencelinks": 45
+  },
+  "noBusinessWrites": true,
+  "browserAcceptanceCredit": false,
+  "disclosurePredicate": {
+    "appliesTo": "Rows marked sensitiveDisclosure; full parsed public JSON checked before safe-field filtering",
+    "checkedPattern": "Xinyi|信義旗艦|membership_horizon|org_horizon|Northern|北境|membership_northern|org_northern|evidenceCount|assigneeDisplayName|12650000|2360000",
+    "limitations": "Finite known-name/value predicate, not universal sensitive-data proof. Paired status/kind equality does not imply byte-identical bodies."
+  }
+}

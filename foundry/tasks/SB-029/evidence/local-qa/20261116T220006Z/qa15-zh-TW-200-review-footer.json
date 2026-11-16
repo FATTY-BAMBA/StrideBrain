@@ -1,0 +1,259 @@
+{
+  "runId": "20261116T220006Z",
+  "head": "3481dac48ec60e943b5d669f0f7ff0453756ab3d",
+  "at": "2026-11-16T23:07:30.360Z",
+  "persona": "mei",
+  "step": "Warnings and acknowledgment/create/cancel visible; no submit performed",
+  "nativeZoom": "200% verified by Chrome AX",
+  "metrics": {
+    "controls": [
+      {
+        "bounds": {
+          "bottom": -1215.30078125,
+          "height": 21.08203125,
+          "left": 368,
+          "right": 413.41015625,
+          "top": -1236.3828125,
+          "width": 45.41015625,
+          "x": 368,
+          "y": -1236.3828125
+        },
+        "id": "",
+        "tag": "A",
+        "text": "English"
+      },
+      {
+        "bounds": {
+          "bottom": -1215.30078125,
+          "height": 21.08203125,
+          "left": 425.41015625,
+          "right": 479.8125,
+          "top": -1236.3828125,
+          "width": 54.40234375,
+          "x": 425.41015625,
+          "y": -1236.3828125
+        },
+        "id": "",
+        "tag": "A",
+        "text": "繁體中文"
+      },
+      {
+        "bounds": {
+          "bottom": -1260.3046875,
+          "height": 49.1953125,
+          "left": 942,
+          "right": 1008,
+          "top": -1309.5,
+          "width": 66,
+          "x": 942,
+          "y": -1309.5
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "關閉"
+      },
+      {
+        "bounds": {
+          "bottom": -1107.10546875,
+          "height": 44,
+          "left": 368,
+          "right": 1008,
+          "top": -1151.10546875,
+          "width": 640,
+          "x": 368,
+          "y": -1151.10546875
+        },
+        "id": "review-title",
+        "tag": "SELECT",
+        "text": "檢核信義旗艦店裝修第3版報價的進口石材與照明假設\n審查信義旗艦店裝修第3版報價的進口石材與照明假設\n確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料"
+      },
+      {
+        "bounds": {
+          "bottom": -985.671875,
+          "height": 44,
+          "left": 368,
+          "right": 1008,
+          "top": -1029.671875,
+          "width": 640,
+          "x": 368,
+          "y": -1029.671875
+        },
+        "id": "review-rationale",
+        "tag": "SELECT",
+        "text": "下次內部報價審查前，依連結的佐證資料檢核這些假設。\n確認佐證資料，並記錄內部審查需要釐清的問題。\n依連結的歷史佐證資料，檢核進口石材與照明假設。"
+      },
+      {
+        "bounds": {
+          "bottom": -271.4375,
+          "height": 44,
+          "left": 404.19921875,
+          "right": 981.328125,
+          "top": -315.4375,
+          "width": 577.12890625,
+          "x": 404.19921875,
+          "y": -315.4375
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。"
+      },
+      {
+        "bounds": {
+          "bottom": -216.23828125,
+          "height": 44,
+          "left": 404.19921875,
+          "right": 796.92578125,
+          "top": -260.23828125,
+          "width": 392.7265625,
+          "x": 404.19921875,
+          "y": -260.23828125
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "照明報價與符合條件的歷史報價比較，差異為 +9.4%。"
+      },
+      {
+        "bounds": {
+          "bottom": -142.6484375,
+          "height": 62.390625,
+          "left": 404.19921875,
+          "right": 991,
+          "top": -205.0390625,
+          "width": 586.80078125,
+          "x": 404.19921875,
+          "y": -205.0390625
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。"
+      },
+      {
+        "bounds": {
+          "bottom": -69.05859375,
+          "height": 62.390625,
+          "left": 404.19921875,
+          "right": 991,
+          "top": -131.44921875,
+          "width": 586.80078125,
+          "x": 404.19921875,
+          "y": -131.44921875
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。"
+      },
+      {
+        "bounds": {
+          "bottom": 42.3359375,
+          "height": 44,
+          "left": 368,
+          "right": 1008,
+          "top": -1.6640625,
+          "width": 640,
+          "x": 368,
+          "y": -1.6640625
+        },
+        "id": "review-assignee",
+        "tag": "SELECT",
+        "text": "未指派\n林美玲\n陳柏宇\n黃怡君"
+      },
+      {
+        "bounds": {
+          "bottom": 142.32421875,
+          "height": 49.59375,
+          "left": 368,
+          "right": 1008,
+          "top": 92.73046875,
+          "width": 640,
+          "x": 368,
+          "y": 92.73046875
+        },
+        "id": "review-dueDate",
+        "tag": "INPUT",
+        "text": ""
+      },
+      {
+        "bounds": {
+          "bottom": 219.76171875,
+          "height": 44,
+          "left": 368,
+          "right": 1008,
+          "top": 175.76171875,
+          "width": 640,
+          "x": 368,
+          "y": 175.76171875
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "清除到期日"
+      },
+      {
+        "bounds": {
+          "bottom": 525.5,
+          "height": 20,
+          "left": 372,
+          "right": 392,
+          "top": 505.5,
+          "width": 20,
+          "x": 372,
+          "y": 505.5
+        },
+        "id": "review-confirmation",
+        "tag": "INPUT",
+        "text": ""
+      },
+      {
+        "bounds": {
+          "bottom": 597.09375,
+          "height": 49.1953125,
+          "left": 368,
+          "right": 530,
+          "top": 547.8984375,
+          "width": 162,
+          "x": 368,
+          "y": 547.8984375
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "建立內部審查事項"
+      },
+      {
+        "bounds": {
+          "bottom": 597.09375,
+          "height": 49.1953125,
+          "left": 542,
+          "right": 640,
+          "top": 547.8984375,
+          "width": 98,
+          "x": 542,
+          "y": 547.8984375
+        },
+        "id": "",
+        "tag": "BUTTON",
+        "text": "取消審查"
+      }
+    ],
+    "dialog": {
+      "bottom": 617,
+      "height": 617,
+      "left": 348,
+      "right": 1028,
+      "top": 0,
+      "width": 680,
+      "x": 348,
+      "y": 0
+    },
+    "documentWidth": 1028,
+    "dpr": 4,
+    "height": 617,
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_ffc61ccf-dc8b-4d7c-bcf8-9920491b0911&economics=econrun_0e5074f7-ec23-4bc2-8e52-7ffb3fc06d16&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_869519ba-4581-4859-801b-18fb21ac2806&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY",
+    "width": 1028
+  },
+  "imageDimensions": {
+    "format": "jpeg",
+    "height": 617,
+    "width": 1028
+  },
+  "image": "qa15-zh-TW-200-review-footer.jpg",
+  "qualification": "Native200% with viewport override reset; raw pixels are not claimed as CSS viewport dimensions"
+}

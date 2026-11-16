@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-11-16T22:41:43.736Z",
+  "en": {
+    "ack": true,
+    "dialogs": 1,
+    "fields": {
+      "review-dueDate": "2026-11-24",
+      "review-rationale": "REVIEW_NEXT",
+      "review-title": "CHECK"
+    },
+    "focus": {
+      "id": "review-confirmation",
+      "tag": "INPUT",
+      "text": ""
+    },
+    "selected": [
+      {
+        "id": "review-title",
+        "label": "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "label": "Review these assumptions against the linked evidence before the next internal quotation review.",
+        "value": "REVIEW_NEXT"
+      }
+    ],
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_117af95d-d95e-40e8-88d6-92a72bbbb66a&economics=econrun_e7e8a742-0c1e-48ca-97b5-c1b99ab54326&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_8cbd2579-f8d8-400e-87d2-2b4d2fcec7fa&reviewTitle=CHECK"
+  },
+  "zh": {
+    "ack": true,
+    "dialogs": 1,
+    "fields": {
+      "review-dueDate": "2026-11-24",
+      "review-rationale": "REVIEW_NEXT",
+      "review-title": "CHECK"
+    },
+    "focus": {
+      "id": "review-confirmation",
+      "tag": "INPUT",
+      "text": ""
+    },
+    "selected": [
+      {
+        "id": "review-title",
+        "label": "確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "label": "下次內部報價審查前，依連結的佐證資料檢核這些假設。",
+        "value": "REVIEW_NEXT"
+      }
+    ],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_117af95d-d95e-40e8-88d6-92a72bbbb66a&economics=econrun_e7e8a742-0c1e-48ca-97b5-c1b99ab54326&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_8cbd2579-f8d8-400e-87d2-2b4d2fcec7fa&reviewTitle=CHECK"
+  }
+}

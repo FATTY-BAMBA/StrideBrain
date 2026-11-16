@@ -1,0 +1,48 @@
+{
+  "runId": "20261116T220006Z",
+  "database": "stridebrain_sb029_retest_220006",
+  "at": "2026-11-16T23:04:25.151Z",
+  "caseId": "authority-1794870141617",
+  "kinds": [
+    "authority"
+  ],
+  "restored": true,
+  "restorationVerification": [
+    {
+      "table": "EvidenceReference",
+      "id": "evid_cost_cl_nanjing_023_v1_3",
+      "operation": "UPDATE",
+      "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+      "beforeNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+      "restoredNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+      "fieldEquality": {
+        "authorityState": true
+      },
+      "matched": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 3,
+    "consumed": 3,
+    "receipts": 3,
+    "audits": 3,
+    "actionevidencelinks": 45
+  },
+  "countsAfter": {
+    "actions": 3,
+    "consumed": 3,
+    "receipts": 3,
+    "audits": 3,
+    "actionevidencelinks": 45
+  },
+  "noBusinessWrites": true,
+  "targetDescriptions": [
+    {
+      "table": "EvidenceReference",
+      "id": "evid_cost_cl_nanjing_023_v1_3",
+      "fields": [
+        "authorityState"
+      ]
+    }
+  ]
+}

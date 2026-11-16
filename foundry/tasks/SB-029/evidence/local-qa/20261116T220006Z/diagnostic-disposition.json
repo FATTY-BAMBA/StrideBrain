@@ -1,0 +1,35 @@
+{
+  "runId": "20261116T220006Z",
+  "recordedAt": "2026-11-16T22:51:52.074340+00:00",
+  "classification": "TEST_EXPECTATION_CORRECTION_NOT_PRODUCT_AUTHORIZATION_DEFECT",
+  "scenario": "QA-09",
+  "pauseReason": "A proposed negative test changed Iris historical Neihu canReadActuals to false, yet confirmation returned CREATED. All browser and further business writes were held while the fixture flag was restored and the accepted policy was checked.",
+  "diagnosis": "The proposed negative condition did not revoke this assignee authorization. Approved comparison-library historical sources do not require that historical assignment flag, while the actual-read capability and active Xinyi authorization remained valid.",
+  "independentReview": "Root and independent evidence reviewer checked the accepted Stage7/Stage8 policy, current predicates, all15 required source/project classifications, actor/assignee capabilities, active Xinyi flags and third-action atomic lineage. Both agreed the negative expectation was invalid.",
+  "sourceAndPolicy": [
+    "docs/build/STAGE_7_IMPLEMENTATION.md:67",
+    "foundry/tasks/SB-029/architecture.md:175",
+    "src/modules/internal-review/application/freshness.ts:125",
+    "src/modules/internal-review/application/internal-review-service.ts:96",
+    "src/repositories/ports/comparable-project-repository.ts:50"
+  ],
+  "evidence": [
+    "http-chosen-assignee-denial-failure-1794869125303.json",
+    "mutation-assignee-actual-ineligible-1794869124677.json",
+    "qa09-historical-flag-expectation-correction.json",
+    "browser-diagnostic-hold.json"
+  ],
+  "disposition": "Resume authorized QA with corrected explicit actual-read capability or active-project assignment negatives, using fresh unconsumed proposals. Preserve the original failure, diagnosis and legitimate third HTTP action.",
+  "retainedAction": "action_fc9baffb-bcd8-452b-8f0f-7b0b7481d5f2",
+  "businessCountsAtResolution": {
+    "actions": 3,
+    "receipts": 3,
+    "audits": 3,
+    "consumedProposals": 3,
+    "evidenceLinks": 45
+  },
+  "browserAcceptanceCredit": false,
+  "productSourceChanged": false,
+  "productDefectConfirmedByThisCase": false,
+  "historicalEvidenceRewritten": false
+}
