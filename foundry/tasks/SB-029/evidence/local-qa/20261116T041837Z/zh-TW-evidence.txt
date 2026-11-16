@@ -1,0 +1,193 @@
+資料依據
+
+IMPORTED_STONE 預估成本與已核對實際成本比較
+
+顯示支持此結構化結論的精確來源與計算過程。
+
+關閉資料依據
+信義旗艦店裝修
+2026年11月16日
+cmprun_e506b55c-0e92-4a37-9ce0-f947cf8a8260
+
+分類預估與實際成本比較
+
+幣別: TWD · 方向: ABOVE · 目前金額: NT$2,360,000 · 差異百分比: +18.4% · 歷史基準等值: NT$1,993,443
+計算過程
+計算方式
+FORECAST_VERSUS_RECONCILED_ACTUAL_COST_MEDIAN_VARIANCE
+彙總方式
+(CURRENT_NORMALIZED - HISTORICAL_MEDIAN) / HISTORICAL_MEDIAN * 100
+四捨五入
+HALF_UP; percent scale 4
+產生時間
+2026年11月16日
+PRJ-XINYI-026
+3,687.5 TWD_PER_M2
+1 source(s)
+PRJ-NANJING-023
+2,916.67 TWD_PER_M2
+1 source(s)
+PRJ-NEIHU-021
+3,114.75 TWD_PER_M2
+1 source(s)
+PRJ-ZHONGSHAN-018
+3,389.83 TWD_PER_M2
+1 source(s)
+差異百分比
++18.4%
+Currentnormalizedamount
+NT$3,688
+歷史基準等值
+NT$1,993,443
+歷史標準化中位數
+NT$3,115
+CPI-ECON-1.0
+支持資料來源
+
+最終成本項目
+
+進口石材與硬質面材
+已核對實際紀錄
+已核對實際成本
+專案
+南京品牌體驗中心
+版本
+v1
+生效／紀錄日期
+2026年3月10日
+精確位置
+項目編號: 3 · 分類: IMPORTED_STONE
+資料邊界
+虛構示範資料
+支持的數值
+單位: lot · 金額: NT$2,100,000 · 幣別: TWD
+歷史紀錄
+安全來源預覽
+分類
+IMPORTED_STONE
+Line
+3
+Descriptionen
+Imported stone and hard finishes
+Descriptionzhtw
+進口石材與硬質面材
+數量
+1
+單位
+lot
+Unitprice
+2100000
+金額
+2100000
+查看來源
+
+最終成本項目
+
+進口石材與硬質面材
+已核對實際紀錄
+已核對實際成本
+專案
+內湖科技旗艦店
+版本
+v1
+生效／紀錄日期
+2025年7月20日
+精確位置
+項目編號: 4 · 分類: IMPORTED_STONE
+資料邊界
+虛構示範資料
+支持的數值
+單位: lot · 金額: NT$1,900,000 · 幣別: TWD
+歷史紀錄
+安全來源預覽
+分類
+IMPORTED_STONE
+Line
+4
+Descriptionen
+Imported stone and hard finishes
+Descriptionzhtw
+進口石材與硬質面材
+數量
+1
+單位
+lot
+Unitprice
+1900000
+金額
+1900000
+查看來源
+
+最終成本項目
+
+進口石材與硬質面材
+已核對實際紀錄
+已核對實際成本
+專案
+中山生活概念店
+版本
+v1
+生效／紀錄日期
+2024年12月20日
+精確位置
+項目編號: 4 · 分類: IMPORTED_STONE
+資料邊界
+虛構示範資料
+支持的數值
+單位: lot · 金額: NT$2,000,000 · 幣別: TWD
+歷史紀錄
+安全來源預覽
+分類
+IMPORTED_STONE
+Line
+4
+Descriptionen
+Imported stone and hard finishes
+Descriptionzhtw
+進口石材與硬質面材
+數量
+1
+單位
+lot
+Unitprice
+2000000
+金額
+2000000
+查看來源
+
+預估成本項目
+
+進口石材與硬質面材
+已人工檢視
+預估直接成本
+專案
+信義旗艦店裝修
+版本
+v1
+生效／紀錄日期
+2026年11月14日
+精確位置
+項目編號: 4 · 分類: IMPORTED_STONE
+資料邊界
+虛構示範資料
+支持的數值
+單位: lot · 金額: NT$2,360,000 · 幣別: TWD
+目前有效
+安全來源預覽
+分類
+IMPORTED_STONE
+Line
+4
+Descriptionen
+Imported stone and hard finishes
+Descriptionzhtw
+進口石材與硬質面材
+數量
+1
+單位
+lot
+Unitprice
+2360000
+金額
+2360000
+查看來源

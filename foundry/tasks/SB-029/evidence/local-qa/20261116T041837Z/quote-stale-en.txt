@@ -1,0 +1,64 @@
+Review internal review action
+
+Review the evidence and uncertainty before creating this action.
+
+English
+繁體中文
+Close
+The comparison or its evidence has changed. Nothing was created. Refresh the comparison and review it again.
+
+Reference: 46b62e34-0923-42f4-b89d-c3bbb8e4716e
+
+Refresh comparison
+Title
+Validate imported-stone and lighting assumptions for Xinyi quote v3
+Review imported-stone and lighting assumptions for Xinyi quote v3
+Check evidence for imported-stone and lighting assumptions in Xinyi quote v3
+
+Validate imported-stone and lighting assumptions for Xinyi quote v3
+
+Review purpose
+Review these assumptions against the linked evidence before the next internal quotation review.
+Check the supporting evidence and record questions for internal review.
+Validate the imported-stone and lighting assumptions using the linked historical evidence.
+
+Review these assumptions against the linked evidence before the next internal quotation review.
+
+Choose review wording. Verified findings and uncertainty statements remain attached and cannot be changed here.
+
+Verified findings · retained with the action
+Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.
+Lighting quoted price differs by +9.4% from eligible quoted-price history.
+Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.
+The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.
+Comparison: cmprun_80c88aa8-bed9-489e-b901-d6e9cfd8ef5c; economics enrichment: econrun_6dd5621e-3f1f-4621-9f2e-e50903bec051.
+⚠ Uncertainty and limits · retained with the action
+This creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally.
+Historical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid.
+Inspect supporting evidence
+Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.
+Lighting quoted price differs by +9.4% from eligible quoted-price history.
+Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.
+The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.
+Assignee
+Unassigned
+Mei Lin
+Alex Chen
+Iris Huang
+Due date
+
+Optional. Enter a date from 2026-11-16 through 2027-11-16, or leave it blank.
+
+Clear due date
+Source comparison
+cmprun_80c88aa8-bed9-489e-b901-d6e9cfd8ef5c
+Source economics review
+econrun_6dd5621e-3f1f-4621-9f2e-e50903bec051
+Review available until
+16 Nov 2026, 13:15
+
+⚠ Confirmation creates a persistent internal action and an audit record. This screen cannot undo creation. It does not approve a quotation or send a message.
+
+I have reviewed the evidence and limits and want to create this internal review action.
+Create internal review action
+Cancel review

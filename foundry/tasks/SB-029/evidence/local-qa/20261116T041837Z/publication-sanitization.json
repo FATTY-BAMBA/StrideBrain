@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "sb029-publication-sanitization.v1",
+  "reviewedAt": "2026-11-16T05:22:55.648658+00:00",
+  "run": "20261116T041837Z",
+  "baseCommit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+  "evidenceOnlyBranch": "qa/sb-029-local-20261116T041837Z",
+  "result": "PASS",
+  "scenarioCounts": {
+    "PASS": 9,
+    "FAIL": 3,
+    "PARTIAL": 5,
+    "BLOCKED": 1
+  },
+  "blockingFindings": {
+    "QA-18": [
+      "F-01",
+      "F-03"
+    ],
+    "QA-05": [
+      "F-02"
+    ],
+    "QA-16": [
+      "F-03"
+    ]
+  },
+  "blockedCapabilityScenario": "QA-15",
+  "checks": {
+    "allTextFilesReadAndScanned": true,
+    "allJsonParsed": true,
+    "allScenarioAndFindingReferencesExist": true,
+    "allOriginalScreenshotsVisuallyReviewed": 86,
+    "publicationScreenshotsVisuallyReviewed": 3,
+    "allScreenshotsOcrScanned": 89,
+    "ocrEngine": "Tesseract (English trained data); Chinese content also reviewed visually and against DOM text",
+    "imageExifOrPrivateMetadataFound": false,
+    "knownRuntimeAndEnvironmentSecretsMatched": 0,
+    "tokensCookiesBootstrapUrlsSigningSecretsDatabaseUrlsPasswordsMatched": 0,
+    "remainingPersonalPathsOrLocalUsernameMatches": 0,
+    "allFourteenMutationProofsRestoredWithoutBusinessWrites": true,
+    "captureCountsUnchanged": true,
+    "captureSessionRevoked": true
+  },
+  "redactions": [
+    {
+      "file": "10-lint.log",
+      "kind": "local personal path",
+      "replacements": 1,
+      "replacementTokens": [
+        "<WORKSPACE>",
+        "<HOME>"
+      ]
+    },
+    {
+      "file": "12-test.log",
+      "kind": "local personal path",
+      "replacements": 1,
+      "replacementTokens": [
+        "<WORKSPACE>",
+        "<HOME>"
+      ]
+    },
+    {
+      "file": "13-test-localization.log",
+      "kind": "local personal path",
+      "replacements": 1,
+      "replacementTokens": [
+        "<WORKSPACE>",
+        "<HOME>"
+      ]
+    },
+    {
+      "file": "14-build.log",
+      "kind": "local personal path",
+      "replacements": 2,
+      "replacementTokens": [
+        "<WORKSPACE>",
+        "<HOME>"
+      ]
+    },
+    {
+      "file": "performance-validation.log",
+      "kind": "local personal path",
+      "replacements": 1,
+      "replacementTokens": [
+        "<WORKSPACE>",
+        "<HOME>"
+      ]
+    }
+  ],
+  "privateVariableNamesChecked": [
+    "DATABASE_URL",
+    "STRIDEBRAIN_DEMO_SESSION_SECRET",
+    "SB029_PREVIEW_WORKSPACE"
+  ],
+  "retainedNonSecretConfiguration": [
+    "STRIDEBRAIN_APP_ORIGIN",
+    "STRIDEBRAIN_DATA_MODE",
+    "NEXT_PUBLIC_STRIDEBRAIN_ENV",
+    "NEXT_TELEMETRY_DISABLED",
+    "SB029_PREVIEW_OPERATOR_PORT",
+    "npm_config_cache"
+  ],
+  "retainedValuePolicy": "Localhost origins/ports, generic temporary tool paths, synthetic fixture names/business selectors, source/build hashes, correlation IDs and timings are intentional reproducibility evidence. Environment variable names and cookie attribute descriptions are not credentials. No secret values are included.",
+  "screenshotCaveats": "screenshot-review.json labels eight loading-only and nine pre-result original images, viewport-transition images, and the original misframed QA-18 image. No screenshot bytes were edited.",
+  "acceptance": "NOT_GRANTED; requested 9 PASS/3 FAIL/5 PARTIAL/1 BLOCKED preserved for scoped original outcomes.",
+  "scope": "Only this run evidence subtree is eligible for the evidence commit; no product/generated application/runtime/database/historical evidence files.",
+  "rawEvidenceWhitespace": "CLI output and DOM table text retain original trailing spaces, tabs and blank lines. git diff --check reports those evidence-only whitespace conditions; no application source is changed."
+}

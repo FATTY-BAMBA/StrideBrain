@@ -1,0 +1,307 @@
+{
+  "classification": "NON_UI_HTTP_SUPPLEMENTAL",
+  "results": [
+    {
+      "name": "authorized-prepare",
+      "status": 200,
+      "kind": "PREPARED",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "empty-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "privateNoStore": true,
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "whitespace-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "privateNoStore": true,
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "unlisted-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "privateNoStore": true,
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "overlength-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "privateNoStore": true,
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "markup-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "privateNoStore": true,
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "control-title",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "privateNoStore": true,
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "empty-purpose",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "privateNoStore": true,
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "overlength-purpose",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "privateNoStore": true,
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "unsupported-premium",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "privateNoStore": true,
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "yesterday",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "privateNoStore": true,
+      "fieldErrors": {
+        "dueDate": "INVALID_DUE_DATE"
+      },
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "day-366",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "privateNoStore": true,
+      "fieldErrors": {
+        "dueDate": "INVALID_DUE_DATE"
+      },
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "invalid-date",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "privateNoStore": true,
+      "fieldErrors": {
+        "dueDate": "INVALID_DUE_DATE"
+      },
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "missing-confirmation",
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "privateNoStore": true,
+      "fieldErrors": {
+        "confirmation": "CONFIRMATION_REQUIRED"
+      },
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "foreign-assignee",
+      "status": 200,
+      "kind": "ASSIGNEE_UNAVAILABLE",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "viewer-prepare",
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "viewer-confirm",
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "viewer-proposal",
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "viewer-receipt",
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "viewer-missing-receipt",
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "northern-prepare",
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "northern-confirm",
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "northern-proposal",
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "northern-receipt",
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "northern-missing-receipt",
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "unauthenticated-prepare",
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "unauthenticated-confirm",
+      "status": 403,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "unauthenticated-proposal",
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "unauthenticated-receipt",
+      "status": 403,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "unauthenticated-missing-receipt",
+      "status": 403,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "revoked-viewer-confirm",
+      "status": 403,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "browser-action-identical-retry",
+      "status": 200,
+      "kind": "IDEMPOTENT_REPLAY",
+      "privateNoStore": true,
+      "actionKey": "action_12705349-27b0-4571-a93d-d381f8fa982b",
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "browser-action-zh-retry",
+      "status": 200,
+      "kind": "IDEMPOTENT_REPLAY",
+      "privateNoStore": true,
+      "actionKey": "action_12705349-27b0-4571-a93d-d381f8fa982b",
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "browser-action-conflicting-retry",
+      "status": 200,
+      "kind": "IDEMPOTENCY_CONFLICT",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    },
+    {
+      "name": "consumed-proposal-new-key",
+      "status": 200,
+      "kind": "PROPOSAL_ALREADY_CONSUMED",
+      "privateNoStore": true,
+      "unexpectedDisclosure": false
+    }
+  ],
+  "before": {
+    "actions": 2,
+    "audits": 2,
+    "receipts": 2
+  },
+  "after": {
+    "actions": 2,
+    "audits": 2,
+    "receipts": 2
+  },
+  "final": {
+    "actions": 2,
+    "audits": 2,
+    "receipts": 2
+  },
+  "noBusinessWrites": true
+}

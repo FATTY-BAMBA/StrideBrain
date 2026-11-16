@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-11-16T04:58:47.316200+00:00",
+  "scenarioCount": 18,
+  "artifactReferencesValid": true,
+  "credentialValueMatches": 0,
+  "cookieAssignmentMatches": 0,
+  "allMutationProofsRestored": true,
+  "allMutationProofsNoBusinessWrites": true,
+  "pendingMutationFile": false,
+  "appHttpStatus": 200,
+  "databaseContainerRunning": true,
+  "reportCounts": {
+    "PASS": 9,
+    "FAIL": 3,
+    "PARTIAL": 5,
+    "BLOCKED": 1
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "kind": "role",
+  "restored": true,
+  "countsBefore": {
+    "actions": 17,
+    "audits": 17,
+    "receipts": 17,
+    "consumed": 17
+  },
+  "countsAfter": {
+    "actions": 17,
+    "audits": 17,
+    "receipts": 17,
+    "consumed": 17
+  },
+  "noBusinessWrites": true
+}

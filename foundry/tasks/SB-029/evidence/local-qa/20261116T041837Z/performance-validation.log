@@ -1,0 +1,13 @@
+
+> stridebrain@0.1.0 test
+> vitest run tests/internal-review/postgres-invariants.test.ts -t measures uncached proposal and confirmation p95
+
+
+ RUN  v4.1.10 <WORKSPACE>
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed | 87 skipped (88)
+   Start at  12:38:36
+   Duration  25.30s (transform 272ms, setup 0ms, import 379ms, tests 24.82s, environment 0ms)
+

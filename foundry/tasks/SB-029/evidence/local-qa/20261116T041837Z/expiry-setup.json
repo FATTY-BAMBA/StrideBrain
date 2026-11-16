@@ -1,0 +1,7 @@
+{
+  "setup": "Existing service clock injection creates an immutable proposal prepared 29 minutes ago; production app uses unchanged real clock.",
+  "proposalKey": "proposal_a65e3d88-3ccf-4151-b5e3-2b85c1ceb750",
+  "preparedAt": "2026-11-16T04:10:18.835Z",
+  "expiresAt": "2026-11-16T04:40:18.835Z",
+  "createdAt": "2026-11-16T04:39:19.008Z"
+}

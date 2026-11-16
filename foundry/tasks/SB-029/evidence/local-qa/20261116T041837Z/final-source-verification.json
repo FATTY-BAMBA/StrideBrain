@@ -1,0 +1,11 @@
+{
+  "head": "13e7191f340e998c93b644949602f1c0774fe9ff",
+  "applicationHead": "4c13f726bb75f4a31d263eb6e54622224807d019",
+  "evidenceCheckpoint": "2a23d31f46e0b6c7b465b3774ad765c81a3417eb",
+  "sourceTreeFingerprintSha256": "7fe5157f84f9c88023462ec1e958b62a53bcdb5aef30eb0dc4ac95dfdac85920",
+  "migrations": 8,
+  "checkedAt": "2026-11-16T04:58:47.302641+00:00",
+  "browserQa": "EXECUTED_WITH_FINDINGS",
+  "buildId": "N_TRlxNdHOVp0JPHYRLE4",
+  "trackedWorkingTreeChanges": []
+}

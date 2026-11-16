@@ -1,0 +1,30 @@
+Local runtime reference for the original run: http://localhost:3000
+This is not a hosted preview; it refers only to the QA operator computer.
+Runtime availability and /tmp files are ephemeral and may change after the run.
+
+All QA sessions were revoked at completion. To inspect the synthetic app again:
+1. In a terminal, run:
+   export PATH=/tmp/sb029-node24/node-v24.22.3-darwin-arm64/bin:$PATH
+   /tmp/sb029-cloud-qa/run-operator.sh issue mei en
+2. The command prints a PRIVATE URL-file path. Open that file locally and visit its
+   one-use URL in the same browser where you will use localhost:3000. Do not share
+   the URL, cookie or private environment file. The bootstrap expires after five
+   minutes; the fixture session lasts one hour.
+3. Use the project comparison's Find comparable projects button to create a fresh
+   authorized comparison. This QA run found defects; do not treat it as approved.
+4. After inspection:
+   /tmp/sb029-cloud-qa/run-operator.sh revoke all
+
+If processes have stopped (do not start a second instance on occupied ports):
+   docker start stridebrain-sb029-cloud-qa
+   /tmp/sb029-cloud-qa/run.sh node node_modules/next/dist/bin/next start --hostname localhost --port 3000
+   /tmp/sb029-cloud-qa/run-operator.sh serve
+Run app and operator in separate terminals with the Node 24 PATH above.
+Do not re-run prepare-runtime initialization: it generates new private secrets.
+Do not re-seed if you want to preserve the 19 synthetic QA actions and evidence.
+
+Runtime-only files and credentials are in /tmp/sb029-cloud-qa (0700; env0600).
+The Node binary is under /tmp and is not a permanent system installation.
+The operator listens only on loopback3001. No public deployment was created.
+
+This published evidence contains no private runtime files or credentials. Existing repository cloud-qa/README.md documents rebuilding a fresh isolated preview if this local runtime is gone. Never treat the recorded session/process identifiers as credentials or portable access.

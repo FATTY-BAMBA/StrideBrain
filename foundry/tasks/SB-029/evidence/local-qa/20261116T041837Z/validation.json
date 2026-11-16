@@ -1,0 +1,86 @@
+[
+  {
+    "command": "npm run db:validate",
+    "exitCode": 0,
+    "durationSeconds": 12.51,
+    "log": "01-db-validate.log"
+  },
+  {
+    "command": "npm run db:generate",
+    "exitCode": 0,
+    "durationSeconds": 1.714,
+    "log": "02-db-generate.log"
+  },
+  {
+    "command": "npm run db:migrate",
+    "exitCode": 0,
+    "durationSeconds": 2.079,
+    "log": "03-db-migrate.log"
+  },
+  {
+    "command": "npm run db:seed",
+    "exitCode": 0,
+    "durationSeconds": 4.281,
+    "log": "04-db-seed.log"
+  },
+  {
+    "command": "npm run db:verify",
+    "exitCode": 0,
+    "durationSeconds": 8.684,
+    "log": "05-db-verify.log"
+  },
+  {
+    "command": "npm run db:migrate",
+    "exitCode": 0,
+    "durationSeconds": 1.194,
+    "log": "06-db-migrate.log"
+  },
+  {
+    "command": "npm run db:seed",
+    "exitCode": 0,
+    "durationSeconds": 4.313,
+    "log": "07-db-seed.log"
+  },
+  {
+    "command": "npm run db:verify",
+    "exitCode": 0,
+    "durationSeconds": 8.307,
+    "log": "08-db-verify.log"
+  },
+  {
+    "command": "npm run format:check",
+    "exitCode": 0,
+    "durationSeconds": 1.863,
+    "log": "09-format-check.log"
+  },
+  {
+    "command": "npm run lint",
+    "exitCode": 0,
+    "durationSeconds": 4.264,
+    "log": "10-lint.log"
+  },
+  {
+    "command": "npm run typecheck",
+    "exitCode": 0,
+    "durationSeconds": 3.356,
+    "log": "11-typecheck.log"
+  },
+  {
+    "command": "npm run test",
+    "exitCode": 0,
+    "durationSeconds": 83.072,
+    "log": "12-test.log"
+  },
+  {
+    "command": "npm run test:localization",
+    "exitCode": 0,
+    "durationSeconds": 0.543,
+    "log": "13-test-localization.log"
+  },
+  {
+    "command": "npm run build",
+    "exitCode": 0,
+    "durationSeconds": 7.743,
+    "log": "14-build.log"
+  }
+]

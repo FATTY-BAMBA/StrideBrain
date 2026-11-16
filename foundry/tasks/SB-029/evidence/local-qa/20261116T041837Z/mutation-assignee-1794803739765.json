@@ -1,0 +1,17 @@
+{
+  "kind": "assignee",
+  "restored": true,
+  "countsBefore": {
+    "actions": 2,
+    "audits": 2,
+    "receipts": 2,
+    "consumed": 2
+  },
+  "countsAfter": {
+    "actions": 2,
+    "audits": 2,
+    "receipts": 2,
+    "consumed": 2
+  },
+  "noBusinessWrites": true
+}

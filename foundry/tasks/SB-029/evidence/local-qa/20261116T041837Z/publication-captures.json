@@ -1,0 +1,44 @@
+{
+  "captureType": "READ_ONLY_PUBLICATION_ADDENDUM",
+  "sourceHead": "13e7191f340e998c93b644949602f1c0774fe9ff",
+  "buildId": "N_TRlxNdHOVp0JPHYRLE4",
+  "doesNotReplaceOriginalRun": true,
+  "captures": [
+    {
+      "file": "publication-qa18-cost-labels-en.jpg",
+      "at": "2026-11-16T05:16:47.795Z",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b30135d6-d716-41f3-976d-4a339530028e&economics=econrun_84cdb613-c434-4bed-b408-6a2e85cea6fa&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "locale": "en",
+      "persona": "mei",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "purpose": "Read-only publication addendum: actual-cost row labels contain active forecast amounts."
+    },
+    {
+      "file": "publication-qa18-cost-labels-zh-TW.jpg",
+      "at": "2026-11-16T05:16:56.006Z",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b30135d6-d716-41f3-976d-4a339530028e&economics=econrun_84cdb613-c434-4bed-b408-6a2e85cea6fa&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "locale": "zh-TW",
+      "persona": "mei",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "purpose": "Read-only publication addendum: forecast amount labeled actual in Chinese."
+    },
+    {
+      "file": "publication-qa18-forecast-source-zh-TW.jpg",
+      "at": "2026-11-16T05:17:10.604Z",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b30135d6-d716-41f3-976d-4a339530028e&economics=econrun_84cdb613-c434-4bed-b408-6a2e85cea6fa&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE&evidenceReturn=evidence-cell-IMPORTED_STONE-ACTUAL-__ACTIVE_PROJECT__",
+      "locale": "zh-TW",
+      "persona": "mei",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "purpose": "Linked source identifies the disputed NT$2,360,000 as forecast direct cost."
+    }
+  ]
+}

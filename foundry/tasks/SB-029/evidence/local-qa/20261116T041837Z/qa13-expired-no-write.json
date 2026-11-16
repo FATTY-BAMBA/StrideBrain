@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-11-16T04:43:21.732Z",
+  "counts": {
+    "actions": 4,
+    "proposals": 13,
+    "consumed": 4,
+    "receipts": 4,
+    "audits": 4
+  },
+  "actions": [
+    {
+      "businessKey": "action_12705349-27b0-4571-a93d-d381f8fa982b",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_cfc6b884-c82d-4027-8721-49d53b641ac3",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_403bdf0b-b9ec-43e2-9706-4c1ce6256d04",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_9ec6931c-e080-46e2-9aa9-436b24d7f8b1",
+      "status": "OPEN",
+      "evidenceCount": 15
+    }
+  ]
+}

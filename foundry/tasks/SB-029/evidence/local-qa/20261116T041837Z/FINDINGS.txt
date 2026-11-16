@@ -1,0 +1,70 @@
+SB-029 publication findings
+Source portability commit: 13e7191f340e998c93b644949602f1c0774fe9ff
+Build: N_TRlxNdHOVp0JPHYRLE4
+Acceptance remains BLOCKED. No product fixes or acceptance decision are included.
+
+F-01 [P1] Active forecast costs are labeled as reconciled actual costs
+Scenarios: QA-18
+Persona: mei — Mei Lin / 林美玲
+Locales: en, zh-TW
+Viewports: 1440x900
+Expected: Distinguish the active quotation forecast direct costs from historical reconciled actual costs at the visible table cells and in evidence; do not imply active forecast amounts have actual-cost authority.
+Observed: The Xinyi active-project column places forecast NT$12,650,000 total and NT$2,360,000 imported stone under actual-cost headings; evidence correctly identifies forecast direct cost. This misstates authority at the point of comparison.
+Reproduction:
+1. Issue a trusted synthetic Mei session; open an existing authorized Xinyi comparison with the canonical three selected historical projects. No new proposal/action is needed.
+2. At 1440x900 in en, scroll to Overall commercial comparison and Category comparison. Inspect the active Xinyi column: forecast NT$12,650,000 appears under Reconciled actual cost · normalized, and forecast NT$2,360,000 under Imported stone · actual.
+3. Switch to zh-TW and observe the equivalent 已核對實際成本 · 標準化 and 進口石材 · 實際成本 labels.
+4. Open the Xinyi NT$3,688/m² imported-stone evidence cell, scroll to the Xinyi source card, and observe 預估直接成本 with the same NT$2,360,000 amount.
+Acceptance criteria:
+- Prior deterministic comparison/evidence behavior remains intact, including distinct economics labels.
+- Active Xinyi forecast total and category values are visibly identified as forecasts in English and Taiwan Traditional Chinese; historical actual values retain their actual labels.
+- Displayed amounts, normalized values, variances and linked source authority agree. Capture corrected desktop/mobile table and evidence views on the new exact build.
+Screenshots: publication-qa18-cost-labels-en.jpg, publication-qa18-cost-labels-zh-TW.jpg, publication-qa18-forecast-source-zh-TW.jpg
+Supporting artifacts: qa18-active-project-cost-labels.txt, qa18-comparison-labels.jpg, zh-TW-evidence.txt, publication-qa18-cost-labels-en.jpg, publication-qa18-cost-labels-zh-TW.jpg, publication-qa18-forecast-source-zh-TW.jpg, publication-captures.json, publication-qa18-cost-labels-en.txt
+Capture provenance: publication-captures.json; read-only addendum at the same source/build. Original qa18-comparison-labels.jpg did not show disputed rows.
+Disposition: Acceptance blocked. Stop further business-write QA; return to Builder. No source fix made.
+
+F-02 [P2] Immediate draft edit can discard the proposal route
+Scenarios: QA-05
+Persona: mei — Mei Lin / 林美玲
+Locales: en
+Viewports: 1440x900
+Expected: Once the review sheet accepts interaction, its proposal identity and bounded draft choices remain in the route across immediate edits, locale changes, evidence navigation, refresh and history.
+Observed: The sheet is interactive before router navigation has settled. updateDraft uses the old window URL, so a fast selection can replace history without proposal; refresh loses the sheet. Immediate locale switch also dropped the sheet.
+Reproduction:
+1. Create a fresh comparison and open review.
+2. Immediately change title before proposal navigation settles.
+3. Observe reviewTitle in URL with no proposal selector. Refresh.
+4. Review sheet disappears.
+Acceptance criteria:
+- Locale/route/refresh/history preserve proposal identity and allowed draft fields without a write or fabricated receipt.
+- Immediately change each supported draft field after the sheet appears, then refresh: proposal remains in URL and correct draft is restored.
+- Immediately switch en/zh-TW after preparation or edit: same proposal and allowed draft survive; no duplicate proposal/action is created.
+Screenshots: qa05-fast-edit-after-refresh.jpg
+Supporting artifacts: qa05-fast-edit-before-refresh.json, qa05-fast-edit-after-refresh.jpg
+Evidence limit: The before state is a DOM/URL capture, not a screenshot. The after screenshot shows comparison with no review sheet. No rerun or success is invented.
+Disposition: Unresolved failed scenario in the acceptance gate; severity remains P2. F-01 is the P1 stop condition. No Stage 8 acceptance is claimed.
+
+F-03 [P2] Chinese evidence journey exposes internal English terms
+Scenarios: QA-16, QA-18
+Persona: mei — Mei Lin / 林美玲
+Locales: zh-TW
+Viewports: 390x844, 320x740, 768x1024, 1440x900
+Expected: The required evidence journey uses natural Taiwan Traditional Chinese for ordinary labels and concepts; normal display does not expose English developer/provider/policy plumbing. Exact synthetic IDs/currency codes may remain only where semantically needed.
+Observed: Normal Chinese evidence displays IMPORTED_STONE, FORECAST_VERSUS_RECONCILED_ACTUAL_COST_MEDIAN_VARIANCE, HALF_UP, TWD_PER_M2, source(s), Currentnormalizedamount, Descriptionen, Unitprice; factor panel shows Code/State and policy identifiers.
+Reproduction:
+1. Use trusted synthetic Mei with zh-TW locale and an existing canonical Xinyi comparison.
+2. Open the Stage 8 review supporting-evidence button for imported-stone forecast variance, or its linked comparison evidence cell.
+3. At 390x844 inspect the evidence heading and calculation/source preview sections; repeat at 320x740 or desktop.
+4. Observe internal tokens and English fallback labels including IMPORTED_STONE, FORECAST_VERSUS_RECONCILED_ACTUAL_COST_MEDIAN_VARIANCE, source(s), Currentnormalizedamount, Descriptionen and Unitprice.
+5. On desktop, open the first candidate factor panel and observe Code/State and raw policy/calculation terms.
+Acceptance criteria:
+- Natural Taiwan Traditional Chinese parity; no English developer/provider/policy plumbing in normal Chinese mode.
+- Evidence/factor panels and locale navigation preserve readable, accurate prior-stage behavior.
+- Use reviewed zh-TW labels for normal evidence headings, calculation labels, source-preview keys and factor states; verify amount/authority meaning is unchanged.
+- Verify the required evidence round trip at desktop, tablet, mobile and narrow widths, including a fully reachable close control.
+Screenshots: zh-TW-mobile-evidence.jpg, matrix-zh-TW-narrow-evidence.jpg, matrix-zh-TW-tablet-evidence.jpg, zh-TW-factor-panel.jpg, publication-qa18-forecast-source-zh-TW.jpg
+Supporting artifacts: zh-TW-evidence.txt, zh-TW-mobile-evidence.jpg, zh-TW-factor-panel.txt
+Evidence limit: Inherited Stage 7 defect exposed within the Stage 8 required journey. Full copy text is in zh-TW-evidence.txt and zh-TW-factor-panel.txt; screenshot crops cover their visible portions.
+Disposition: Unresolved failed scenario in the acceptance gate; severity remains P2. F-01 is the P1 stop condition. No Stage 8 acceptance is claimed.
+

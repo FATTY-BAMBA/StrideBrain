@@ -1,0 +1,46 @@
+{
+  "completedAt": "2026-11-16T04:53:17.912Z",
+  "browser": "ChatGPT in-app browser",
+  "browserId": "2",
+  "localOrigin": "http://localhost:3000",
+  "locales": [
+    "en",
+    "zh-TW"
+  ],
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 320,
+      "height": 740
+    }
+  ],
+  "dateBoundsMethod": "Documented reviewDue URL selector followed by UI confirmation; native date entry not verified.",
+  "keyboardObserved": [
+    "Enter activates evidence, locale and confirmation controls",
+    "Space toggles confirmation",
+    "Escape cancels review and evidence modal",
+    "Tab and Shift+Tab remain within review",
+    "Validation focus and aria-describedby on date, confirmation and assignee fields",
+    "Receipt focus is internal-review-heading"
+  ],
+  "limitations": [
+    "Native date fill did not reliably update React state in this automation backend. No claim of keyboard date entry pass.",
+    "200-percent zoom shortcuts left DOM viewport unchanged. Zoom behavior unverified.",
+    "Reduced-motion emulation is not exposed by this browser backend.",
+    "Browser timings include CUA tool overhead.",
+    "Chrome extension navigation timed out; actual browser journeys used the in-app browser.",
+    "Real mobile keyboard, physical touch and screen-reader announcements not exercised."
+  ],
+  "stop": "Stopped further business-write tests after confirming P1 inherited forecast/actual mislabeling in QA-18."
+}

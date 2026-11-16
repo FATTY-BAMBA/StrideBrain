@@ -1,0 +1,1787 @@
+{
+  "reviewedAt": "2026-11-16T05:19:56.474997+00:00",
+  "originalScreenshots": 86,
+  "screenshotsReviewed": 89,
+  "screenshots": [
+    {
+      "file": "admin-en-receipt.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "admin-en-review.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "admin-zh-TW-receipt.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "LOADING_ONLY",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Loading skeleton only; not proof of the final locale-specific review, rejection or receipt named by the file."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "admin-zh-TW-review.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "LOADING_ONLY",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Loading skeleton only; not proof of the final locale-specific review, rejection or receipt named by the file."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "assignee-unavailable.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "comparison-stale-en.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "PRE_RESULT_REVIEW",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "comparison-stale-zh-TW.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "LOADING_ONLY",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Loading skeleton only; not proof of the final locale-specific review, rejection or receipt named by the file."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "en-desktop-receipt.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "en-desktop-review.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "en-evidence-roundtrip.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Shows the evidence panel, not restored focus after closing. Focus restoration comes from the original interactive observation, not this still image."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "en-mobile-review.jpg",
+      "pixelDimensions": {
+        "width": 390,
+        "height": 244
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Captured pixel dimensions do not match the intended filename viewport; use the later matrix-* capture for responsive conclusions."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "en-narrow-review.jpg",
+      "pixelDimensions": {
+        "width": 320,
+        "height": 427
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Captured pixel dimensions do not match the intended filename viewport; use the later matrix-* capture for responsive conclusions."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "en-tablet-review.jpg",
+      "pixelDimensions": {
+        "width": 768,
+        "height": 1024
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "en-validation-focus.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "enrichment-stale-en.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "PRE_RESULT_REVIEW",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "enrichment-stale-zh-TW.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "evidence-authority-en.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "PRE_RESULT_REVIEW",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "evidence-authority-zh-TW.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "LOADING_ONLY",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Loading skeleton only; not proof of the final locale-specific review, rejection or receipt named by the file."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "evidence-availability-en.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "PRE_RESULT_REVIEW",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "evidence-availability-zh-TW.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "LOADING_ONLY",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Loading skeleton only; not proof of the final locale-specific review, rejection or receipt named by the file."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "evidence-freshness-en.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "PRE_RESULT_REVIEW",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "evidence-freshness-zh-TW.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "evidence-superseded-en.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "PRE_RESULT_REVIEW",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "evidence-superseded-zh-TW.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "LOADING_ONLY",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Loading skeleton only; not proof of the final locale-specific review, rejection or receipt named by the file."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "evidence-unavailable.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "expiry-after-en.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "expiry-after-zh-TW.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "LOADING_ONLY",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Loading skeleton only; not proof of the final locale-specific review, rejection or receipt named by the file."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "expiry-before.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "final-created-action.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "final-revoked-session.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "finance-en-review.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "finance-zh-TW-receipt.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "future-date-zh-TW-validation.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "idempotent-replay-zh-TW.jpg",
+      "pixelDimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "idempotent-replay.jpg",
+      "pixelDimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "keyboard-cleared-date-receipt.jpg",
+      "pixelDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "locked-assignee-unavailable.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-en-mobile-error.jpg",
+      "pixelDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-en-mobile-evidence.jpg",
+      "pixelDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-en-mobile-receipt.jpg",
+      "pixelDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-en-mobile-review.jpg",
+      "pixelDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-en-narrow-error.jpg",
+      "pixelDimensions": {
+        "width": 320,
+        "height": 740
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-en-narrow-evidence.jpg",
+      "pixelDimensions": {
+        "width": 320,
+        "height": 740
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Evidence close-button edge/text appears clipped at 320px; documentWidth equal to viewport does not establish that every descendant fits. Retest during QA-16 repair; no new passing layout claim."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-en-narrow-receipt.jpg",
+      "pixelDimensions": {
+        "width": 320,
+        "height": 740
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-en-narrow-review.jpg",
+      "pixelDimensions": {
+        "width": 320,
+        "height": 740
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-en-tablet-error.jpg",
+      "pixelDimensions": {
+        "width": 768,
+        "height": 1024
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-en-tablet-evidence.jpg",
+      "pixelDimensions": {
+        "width": 768,
+        "height": 1024
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-en-tablet-receipt.jpg",
+      "pixelDimensions": {
+        "width": 768,
+        "height": 1024
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-en-tablet-review.jpg",
+      "pixelDimensions": {
+        "width": 768,
+        "height": 1024
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-zh-TW-mobile-error.jpg",
+      "pixelDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-zh-TW-mobile-evidence.jpg",
+      "pixelDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-zh-TW-mobile-receipt.jpg",
+      "pixelDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-zh-TW-mobile-review.jpg",
+      "pixelDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-zh-TW-narrow-error.jpg",
+      "pixelDimensions": {
+        "width": 320,
+        "height": 740
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-zh-TW-narrow-evidence.jpg",
+      "pixelDimensions": {
+        "width": 320,
+        "height": 740
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Evidence close-button edge/text appears clipped at 320px; documentWidth equal to viewport does not establish that every descendant fits. Retest during QA-16 repair; no new passing layout claim."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-zh-TW-narrow-receipt.jpg",
+      "pixelDimensions": {
+        "width": 320,
+        "height": 740
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-zh-TW-narrow-review.jpg",
+      "pixelDimensions": {
+        "width": 320,
+        "height": 740
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-zh-TW-tablet-error.jpg",
+      "pixelDimensions": {
+        "width": 768,
+        "height": 1024
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-zh-TW-tablet-evidence.jpg",
+      "pixelDimensions": {
+        "width": 768,
+        "height": 1024
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-zh-TW-tablet-receipt.jpg",
+      "pixelDimensions": {
+        "width": 768,
+        "height": 1024
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "matrix-zh-TW-tablet-review.jpg",
+      "pixelDimensions": {
+        "width": 768,
+        "height": 1024
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "northern-en-denied.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "northern-zh-TW-denied.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "past-date-browser-validation.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "permission-downgrade.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "project-actions-reopen.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "publication-qa18-cost-labels-en.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": true
+    },
+    {
+      "file": "publication-qa18-cost-labels-zh-TW.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": true
+    },
+    {
+      "file": "publication-qa18-forecast-source-zh-TW.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": true
+    },
+    {
+      "file": "qa05-fast-edit-after-refresh.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "qa18-comparison-labels.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Shows ranked candidates, not the disputed cost rows. Replaced as primary F-01 screenshot evidence by timestamped publication addendum captures; retained unchanged."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "quote-stale-en.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "PRE_RESULT_REVIEW",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "quote-stale-zh-TW.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "role-downgrade-en.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "role-downgrade-zh-TW.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "LOADING_ONLY",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Loading skeleton only; not proof of the final locale-specific review, rejection or receipt named by the file."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "stale-rejected.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "PRE_RESULT_REVIEW",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "transaction-failure-zh-TW.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "PRE_RESULT_REVIEW",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Review form/submission state; final error message is not visible in this image. Do not cite it alone as rejection/rollback UI proof."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "transaction-recovered.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "viewer-denied.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "viewer-zh-TW-denied.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "zh-TW-desktop-review.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "zh-TW-factor-panel.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "zh-TW-mobile-evidence.jpg",
+      "pixelDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "zh-TW-mobile-receipt.jpg",
+      "pixelDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "zh-TW-mobile-review.jpg",
+      "pixelDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "zh-TW-narrow-review.jpg",
+      "pixelDimensions": {
+        "width": 320,
+        "height": 693
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Captured pixel dimensions do not match the intended filename viewport; use the later matrix-* capture for responsive conclusions."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "zh-TW-tablet-review.jpg",
+      "pixelDimensions": {
+        "width": 443,
+        "height": 1024
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Captured pixel dimensions do not match the intended filename viewport; use the later matrix-* capture for responsive conclusions."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "zh-TW-validation-focus.jpg",
+      "pixelDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Supports only visible content at this scroll position; not proof of offscreen content, atomicity, requests or access checks."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    },
+    {
+      "file": "zoom-attempt.jpg",
+      "pixelDimensions": {
+        "width": 1280,
+        "height": 800
+      },
+      "reviewState": "CONTENT_VISIBLE",
+      "reviewed": true,
+      "method": "Visual inspection of all originals via contact sheets, full-size key finding images, OCR and metadata scan.",
+      "notes": [
+        "Attempted zoom only; does not establish 200% scaling."
+      ],
+      "metadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "publicationAddendum": false
+    }
+  ]
+}

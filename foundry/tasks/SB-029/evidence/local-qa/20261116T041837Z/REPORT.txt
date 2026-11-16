@@ -1,0 +1,156 @@
+StrideBrain Stage 8 local QA — 2026-11-16
+Acceptance: BLOCKED
+
+Scenario summary: {'PASS': 9, 'FAIL': 3, 'PARTIAL': 5, 'BLOCKED': 1}
+These are scoped results, not a claim that every matrix variant passed.
+
+Branch: build/sb-029-governed-internal-review
+HEAD: 13e7191f340e998c93b644949602f1c0774fe9ff
+Approved application commit: 4c13f726bb75f4a31d263eb6e54622224807d019
+Source manifest SHA-256: 7fe5157f84f9c88023462ec1e958b62a53bcdb5aef30eb0dc4ac95dfdac85920
+Build ID: N_TRlxNdHOVp0JPHYRLE4
+App: http://localhost:3000
+PostgreSQL 17.12: stridebrain-sb029-cloud-qa on 127.0.0.1:54329
+Eight migrations and reviewed synthetic fixtures applied; repeat migration/seed verification passed.
+57 test files / 436 tests passed; format, lint, typecheck, localization and production build passed.
+Only lint warning: anonymous default export in prisma.config.ts. No production dependency audit findings.
+
+Findings:
+F-01 [P1] Active forecast costs are labeled as reconciled actual costs
+  The Xinyi active-project column places forecast NT$12,650,000 total and NT$2,360,000 imported stone under actual-cost headings; evidence correctly identifies forecast direct cost. This misstates authority at the point of comparison.
+  Acceptance blocked. Stop further business-write QA; return to Builder. No source fix made.
+F-02 [P2] Immediate draft edit can discard the proposal route
+  The sheet is interactive before router navigation has settled. updateDraft uses the old window URL, so a fast selection can replace history without proposal; refresh loses the sheet. Immediate locale switch also dropped the sheet.
+  Reproducible route/draft UX defect; no write or authorization bypass observed.
+F-03 [P2] Chinese evidence journey exposes internal English terms
+  Normal Chinese evidence displays IMPORTED_STONE, FORECAST_VERSUS_RECONCILED_ACTUAL_COST_MEDIAN_VARIANCE, HALF_UP, TWD_PER_M2, source(s), Currentnormalizedamount, Descriptionen, Unitprice; factor panel shows Code/State and policy identifiers.
+  Fails natural Chinese parity on the required supporting-evidence journey; report as inherited, not hidden by Stage 8 localization success.
+
+QA matrix:
+QA-01 PASS: Authorized preparation is preparatory only
+  Fresh comparisons and proposal sheets opened for Mei, Finance and Admin; localized finite choices and locked warnings were visible.
+  Initial preparation changed proposal count only: Action, receipt and audit counts stayed zero.
+  Supplemental: 436-test run includes preparation/reopen persistence and authorization checks.
+  Evidence: qa01-before-confirm.json, en-desktop-review.jpg, zh-TW-desktop-review.jpg, finance-en-review.jpg, admin-en-review.jpg, admin-zh-TW-review.jpg
+QA-02 PASS: Bounded edits, retained facts and date validation
+  All three approved title/review-intent alternatives were exercised across the run; required forecast/quote/abstention/programme warnings remained.
+  Unchecked confirmation produced a localized linked error. Today and day 365 were accepted; yesterday and day 366 were rejected with focus on review-dueDate and aria-describedby.
+  Clearing the due date by keyboard activation persisted a receipt with no due date. Dates for boundary tests were supplied through the documented reviewDue route selector.
+  Remaining: Native date typing/picker behavior remains part of blocked QA-15.
+  Supplemental: HTTP supplement rejected invalid Gregorian date, unlisted/empty/overlength/markup/control title and rationale, and missing confirmation. Leap-day/local-midnight cases are deterministic-test evidence, not physical browser date entry.
+  Evidence: browser-date-bounds.json, past-date-browser-validation.jpg, future-date-zh-TW-validation.jpg, keyboard-cleared-date-receipt.jpg, en-validation-focus.jpg, zh-TW-validation-focus.jpg, http-negative-and-replay.json
+QA-03 PASS: Create durable receipt and reopen in project Actions
+  Explicit browser confirmation produced localized durable receipts for all three authorized actors.
+  Receipt refresh, locale switch, navigation history and project Actions reopening retained action identity and evidence references.
+  Final database contains 19 actions, 19 receipts, 19 success audits and 19 consumed proposals; all actions OPEN with 15 evidence references.
+  Evidence: qa03-after-confirm.json, project-actions-reopen.jpg, en-desktop-receipt.jpg, zh-TW-mobile-receipt.jpg, finance-zh-TW-receipt.jpg, admin-en-receipt.jpg, admin-zh-TW-receipt.jpg, final-integrity.json
+QA-04 PASS: Cancel, Escape and evidence round trip
+  Evidence inspection used one active modal; closing returned edited review choices and evidence-trigger focus.
+  Cancel/Escape closed the review and returned focus to the creation entry without an action.
+  English and Chinese evidence navigation and keyboard activation were exercised.
+  Evidence: en-evidence-roundtrip.jpg, mei-en-evidence.txt, zh-TW-evidence.txt, browser-observations.json
+QA-05 FAIL: Locale, draft routes, refresh and history
+  Stable proposal routes preserved choices across locale and evidence navigation.
+  Fast title edit immediately after the sheet appeared rewrote the old comparison URL without proposal. Refresh then lost the review sheet/draft.
+  An immediate locale switch was also observed to return to comparison without the proposal sheet.
+  Supplemental: See finding F-02; source was not changed.
+  Evidence: qa05-fast-edit-before-refresh.json, qa05-fast-edit-after-refresh.jpg, browser-observations.json
+QA-06 PASS: Retry, replay and idempotency conflict
+  Two tabs loaded the same proposal before submission. First confirmation created action_a58c6e51-fcf3-463c-93e3-e186cebffe51; second displayed the same saved action with replay wording.
+  Replay wording localized to Chinese; no extra action was created.
+  Supplemental: Actual HTTP identical and locale-switched retries returned IDEMPOTENT_REPLAY; changed payload returned IDEMPOTENCY_CONFLICT; a new key returned PROPOSAL_ALREADY_CONSUMED. Concurrent/after-expiry/source-change replay additionally passed in PostgreSQL tests.
+  Evidence: browser-replay.json, idempotent-replay-zh-TW.jpg, idempotent-replay.jpg, http-negative-and-replay.json, final-integrity.json
+QA-07 PARTIAL: Viewer and unauthenticated denial
+  Viewer had no creation control or financial amounts and could not reopen copied proposal/receipt selectors in either locale.
+  After final session revocation the browser displayed only the controlled-demo-session-required state.
+  Remaining: Expired-session browser variant was not executed; do not infer it from HTTP or deterministic tests. Remaining variations stopped after F-01.
+  Supplemental: HTTP unauthenticated and revoked requests denied with private/no-store. Deterministic tests checked denial before sensitive reads.
+  Evidence: viewer-comparison.txt, viewer-denied.jpg, viewer-workspace.txt, viewer-zh-TW-denied.jpg, final-revoked-session.jpg, final-revoked-session.txt, http-negative-and-replay.json
+QA-08 PARTIAL: Cross-tenant selectors
+  Northern admin could not open Horizon project/comparison or copied receipt; both locales showed neutral unavailable states without Horizon details.
+  Remaining: Full paired browser matrix for nonexistent project/run/enrichment/evidence selectors was not executed. Remaining variants stopped after F-01.
+  Supplemental: HTTP Northern proposal/confirmation/receipt and nonexistent-receipt pairs were neutral; foreign assignee rejected. PostgreSQL suite separately covers project/run/enrichment/proposal/receipt selectors.
+  Evidence: northern-en-denied.jpg, northern-zh-TW-denied.jpg, northern-zh-TW-denied.txt, http-negative-and-replay.json
+QA-09 PARTIAL: Assignee authorization and locked default
+  Authorized candidate list showed Unassigned, Mei, Alex and Iris.
+  Invalidating Finance after preparation rejected confirmation without a write and focused review-assignee.
+  With temporary action:assign DENY, no alternate-person selector appeared. Invalidating the locked default focused review-assigneeKey-error; both mutations were restored.
+  Remaining: Explicit no-assign alternate-payload and each evidence-ineligible/unassigned-person browser variant were not independently repeated. Remaining variants stopped after F-01.
+  Supplemental: Foreign-assignee HTTP rejection and no-assign default-only / candidate scaling tests passed.
+  Evidence: assignee-unavailable.jpg, assignee-focus.json, no-assign-review.txt, locked-assignee-focus.json, locked-assignee-unavailable.jpg, mutation-assignee-1794803457938.json, mutation-assignee-1794803739765.json, http-negative-and-replay.json
+QA-10 PASS: Quote, project and run staleness
+  Prepared reviews were separately challenged with project programme, active quote version, comparison policy and enrichment calculation-version changes.
+  Browser showed safe stale guidance; quote/run cases captured both locales. No automatic refresh-and-create occurred. All scoped mutations were restored and business counts were unchanged.
+  Supplemental: Additional fingerprint/result-snapshot permutations passed in PostgreSQL tests.
+  Evidence: stale-rejected.jpg, quote-stale-en.jpg, quote-stale-en.txt, quote-stale-zh-TW.jpg, comparison-stale-en.jpg, comparison-stale-en.txt, comparison-stale-zh-TW.jpg, enrichment-stale-en.jpg
+QA-11 PARTIAL: Evidence authority, access and availability changes
+  Required evidence was separately made tenant-restricted, OBSERVED, stale, SUPERSEDED or invalidly located. Confirmation safely rejected each change; source/draft access was removed where required.
+  A previously created receipt denied access while required evidence was tenant-restricted. All mutations were restored with no-write proof.
+  Remaining: New conflict insertion was not exercised in the browser. Remaining variant stopped after F-01.
+  Supplemental: Newly inserted conflicts and time-crossing freshness are covered by the passing PostgreSQL suite.
+  Evidence: evidence-unavailable.jpg, receipt-access-loss.txt, evidence-authority-en.jpg, evidence-authority-en.txt, evidence-authority-zh-TW.jpg, evidence-freshness-en.jpg, evidence-freshness-en.txt, evidence-freshness-zh-TW.jpg
+QA-12 PARTIAL: Permission downgrade during review
+  Disabling canCreateAction after preparation rejected confirmation and removed sensitive draft content.
+  Downgrading the actor role to Viewer also denied the stale client submission in both locales. Source fixture fields were restored and no action was created.
+  Remaining: Each capability/feature-flag/project-assignment variant was not separately exercised through the browser. Remaining variants stopped after F-01.
+  Supplemental: Separate propose/create/actual-read/evidence-read denials and membership/person/assignment changes passed in deterministic PostgreSQL tests.
+  Evidence: permission-downgrade.jpg, role-downgrade-en.jpg, role-downgrade-en.txt, role-downgrade-zh-TW.jpg, mutation-permission-1794803518872.json, mutation-role-1794804581605.json
+QA-13 PASS: Expiry and consumed proposals
+  Existing service clock injection prepared an immutable proposal 29 minutes in the past without changing production clock or bypassing DB guards. Browser opened it while valid.
+  After real expiry, confirmation returned PROPOSAL_EXPIRED and localized safe expiry messages in both locales; action counts remained four.
+  An attempted direct expiry edit was rejected by the immutability trigger and left unchanged.
+  Supplemental: Exact-at-expiry boundary is deterministic service-clock test evidence. Consumed/new-key rejection and identical-key replay were exercised through actual HTTP; millisecond equality is not claimed as a browser timing measurement.
+  Evidence: expiry-setup.json, expiry-before.jpg, expiry-after-en.jpg, expiry-after-zh-TW.jpg, qa13-expired-no-write.json, http-negative-and-replay.json
+QA-14 PASS: Service failure and transaction rollback
+  A temporary local receipt-insert fault produced a safe Chinese failure while preserving the draft.
+  Database proved no partial action/receipt/audit/consumption. Removing the fault and retrying created exactly one durable action.
+  Supplemental: Passing PostgreSQL tests injected failure at every declared transaction checkpoint. Browser fault was at receipt insertion; no debug mutation endpoint or source patch was added.
+  Evidence: transaction-failure-zh-TW.jpg, qa14-rollback.json, transaction-recovered.jpg, final-integrity.json
+QA-15 BLOCKED: Keyboard, focus, semantics, zoom and motion
+  Enter/Space/Escape/Tab/Shift+Tab exercised dialog controls, confirmation, evidence navigation and cancellation.
+  Observed focus containment, linked date/confirmation/assignee errors, locked-default error fallback and receipt-heading focus.
+  Remaining: 200% zoom shortcut attempts did not change measured viewport; no verified zoom run. Reduced-motion override not exposed by this browser backend. Native date fill/keypress did not reliably change React state in this automation backend; no claim that physical keyboard date entry passed. Screen-reader announcements and real-device touch/keyboard behavior were not tested.
+  Supplemental: These observations do not establish a fully keyboard-only journey or screen-reader certification.
+  Evidence: browser-observations.json, keyboard-cleared-date-receipt.jpg, zoom-attempt.jpg, assignee-focus.json, locked-assignee-focus.json, layout-matrix.json
+QA-16 FAIL: Mobile and Taiwan Traditional Chinese layout
+  Review, date validation, evidence and receipt were captured at 768x1024,390x844,320x740 in both locales, with longest approved review wording.
+  All recorded document widths matched viewport widths; one active modal and correct error/receipt focus were observed.
+  Chinese evidence/factor panels expose internal enums, English labels and policy plumbing; see F-03.
+  Remaining: Pending-state visual layout and real mobile keyboard occlusion were not reliably captured; physical mobile interaction and 200% zoom remain unverified.
+  Supplemental: Stage 8 review/receipt copy itself was localized. Inherited Stage 7 evidence content is on the required Stage 8 path.
+  Evidence: layout-matrix.json, matrix-en-mobile-error.jpg, matrix-en-mobile-evidence.jpg, matrix-en-mobile-receipt.jpg, matrix-en-mobile-review.jpg, matrix-en-narrow-error.jpg, matrix-en-narrow-evidence.jpg, matrix-en-narrow-receipt.jpg
+QA-17 PASS: Browser and PostgreSQL performance
+  Measured eleven browser journeys, with first warmup excluded; ten recorded preparation/confirmation durations include local network, rendering and CUA overhead.
+  Browser nearest-rank p50/p95: proposal 271/284 ms; confirmation 266/287 ms.
+  Supplemental: 30 independent server samples: proposal p95 108.414ms <=500ms; confirmation p95147.822ms <=800ms. Query counts fixed at110/131. Extra-reference/assignee scaling tests passed. Server output retains distributions/query counts and query evidence, not every raw per-sample duration.
+  Evidence: browser-performance.json, server-performance.json, performance-validation.log
+QA-18 FAIL: Stage 0–7 regression and excluded behavior
+  Canonical six ranks 88,81,79,71,69,63, lighting 2/3 abstention and programme warning were observed. Factor/evidence panels opened. Viewer commercial restrictions held.
+  No approve/send/complete controls were observed; provider credential environment checks found none and application dependencies contain no model SDK.
+  Active Xinyi forecast costs appear under reconciled-actual/actual-cost table labels. Linked evidence identifies the same NT$2,360,000 imported-stone amount as forecast direct cost. This is F-01, P1.
+  Supplemental: No financial/commercial records were intentionally changed except temporary restored QA quote fixtures. Provider absence/source review is not a network-capture proof. Further business-write tests stopped upon confirming F-01.
+  Evidence: mei-en-comparison.txt, qa18-active-project-cost-labels.txt, qa18-comparison-labels.jpg, zh-TW-evidence.txt, zh-TW-factor-panel.jpg, zh-TW-factor-panel.txt, viewer-comparison.txt, final-integrity.json
+
+Performance:
+Server (30 samples): proposal p95 108.414 ms; confirmation p95 147.822 ms.
+Browser (10 warmed samples): proposal p50/p95 271/284 ms; confirmation p50/p95 266/287 ms.
+Browser times include local HTTP, rendering and tool overhead; server targets are not applied to browser durations.
+
+Final integrity: 19 actions / 19 receipts / 19 audits / 19 consumed proposals; 38 total proposals.
+All 4 immutability triggers enabled; no duplicate proposal actions, active QA sessions, temporary triggers or temporary grants.
+All fixture mutations restored; application source unchanged. This publication contains only this local-run evidence subtree.
+At original run completion, app/operator/database remained running and the browser required a new trusted session. Availability is host-local and time-specific.
+
+Files: computer-qa-report.json (detailed machine-readable report), final-integrity.json, START-HERE.txt, screenshots and logs.
+Historical reports are untouched. No release or merge approval is implied.
+
+Publication review addendum
+Counts independently recounted: 9 PASS, 3 FAIL, 5 PARTIAL, 1 BLOCKED. No labels changed.
+Exact failed/blocking scenario IDs: QA-05 (F-02 draft route race), QA-16 (F-03 zh-TW evidence copy), QA-18 (F-01 P1 forecast/actual labels; also F-03). QA-15 remains BLOCKED for browser capability gaps.
+See FINDINGS.txt and computer-qa-report.json for persona, locale, viewport, expected/observed behavior, exact reproduction steps, screenshots and acceptance criteria.
+All original 86 screenshots were visually reviewed; loading/pre-result frames and mismatched viewport captures are identified in screenshot-review.json. They are not final-state proof. The later matrix-* images are the responsive evidence.
+qa18-comparison-labels.jpg shows ranked candidates, not cost rows. Three timestamped publication-* screenshots add read-only views of the actual disputed rows and source card on the unchanged build. No business counts changed; the temporary capture session was revoked.
+The two 320px evidence screenshots appear to clip the close-control edge. A matching document width is not sufficient to prove every child fits; retest this under failed QA-16.
+Timing/date URL strings are retained as observed and can precede final router replacement; they are not guaranteed receipt URLs.
+Five logs had personal workspace/home paths replaced with <WORKSPACE>/<HOME>. Other retained values are public localhost configuration, synthetic fixture identifiers, build/source hashes or measurements. See publication-sanitization.json for the final scan.
+No product source, generated application output, private runtime, database files, credentials, or historical QA evidence are included. Stage 8 is not accepted.

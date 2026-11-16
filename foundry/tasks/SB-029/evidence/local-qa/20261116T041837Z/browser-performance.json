@@ -1,0 +1,102 @@
+{
+  "measuredAt": "2026-11-16T04:44:18.640Z",
+  "method": "Host wall-clock duration around CUA browser click and visible result wait. Includes local HTTP transit, browser rendering and tool overhead; not ResourceTiming and not server-only.",
+  "browser": "ChatGPT in-app browser",
+  "viewport": "1440x900",
+  "locale": "en",
+  "persona": "mei",
+  "samples": [
+    {
+      "sample": 0,
+      "warmup": true,
+      "proposalMs": 270,
+      "confirmationMs": 280,
+      "receiptUrl": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_ef39085c-bb4e-467d-9b01-da931e041183&economics=econrun_c6d2a297-aede-481f-a7c8-b8164080f068&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_6dab0163-94d9-4a31-b535-ef2170285a91"
+    },
+    {
+      "sample": 1,
+      "warmup": false,
+      "proposalMs": 283,
+      "confirmationMs": 267,
+      "receiptUrl": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_d60adee8-8eab-456e-a478-a5492ae23f59&economics=econrun_68d62516-3a37-46d0-8c6d-db57dbc51d6b&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_ce2debd2-2913-40d6-9ef9-8357b7121a2d"
+    },
+    {
+      "sample": 2,
+      "warmup": false,
+      "proposalMs": 271,
+      "confirmationMs": 262,
+      "receiptUrl": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_30c75e89-69cf-4512-ad2f-fefa730cfb5d&economics=econrun_49c9f445-d9be-4f4d-b6d3-09b320250556&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_b5404810-d0a8-47cd-988d-6fc802300285"
+    },
+    {
+      "sample": 3,
+      "warmup": false,
+      "proposalMs": 257,
+      "confirmationMs": 266,
+      "receiptUrl": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_d819ad04-fc23-4275-adb9-92a64a98e4b5&economics=econrun_35fe27a3-ef03-43fc-a743-4c1c38fbd362&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_ca98757b-a86f-4b2b-b458-ad4afa8eda1e"
+    },
+    {
+      "sample": 4,
+      "warmup": false,
+      "proposalMs": 284,
+      "confirmationMs": 266,
+      "receiptUrl": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_974ccc2d-7543-47c3-a461-dad6ead4a985&economics=econrun_3788c795-ffb5-4963-b0c5-ed5208fc69cb&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_bd85da94-1588-4021-b860-257d87ae4d56"
+    },
+    {
+      "sample": 5,
+      "warmup": false,
+      "proposalMs": 259,
+      "confirmationMs": 273,
+      "receiptUrl": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_5c426152-d250-4e74-a033-84f9f81fe557&economics=econrun_a0153fd8-f902-43d5-ac3b-42885ed3136f&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_2d06ea10-0552-4d09-81dc-06e8755bf226"
+    },
+    {
+      "sample": 6,
+      "warmup": false,
+      "proposalMs": 256,
+      "confirmationMs": 271,
+      "receiptUrl": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_9130a55a-99a0-4239-acee-d9fd59e9185c&economics=econrun_17e97a25-00ca-431a-b593-a6f18e79a38c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_c10cfef0-d827-464e-b62e-baac6168aa7c"
+    },
+    {
+      "sample": 7,
+      "warmup": false,
+      "proposalMs": 273,
+      "confirmationMs": 260,
+      "receiptUrl": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_0cbdbff8-2afc-4668-91a1-eaee92d28d1b&economics=econrun_c303b809-9a61-4b7f-95c1-0793d81643b8&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_158fe413-d2fd-4ad8-98c4-4960820e0b0e"
+    },
+    {
+      "sample": 8,
+      "warmup": false,
+      "proposalMs": 282,
+      "confirmationMs": 269,
+      "receiptUrl": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4ba9ac20-1702-458f-beb2-23e353d5b255&economics=econrun_748d59f8-2e30-435c-9bc9-638b11298542&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_945e3751-2fb1-409f-8636-03836fa7b481"
+    },
+    {
+      "sample": 9,
+      "warmup": false,
+      "proposalMs": 275,
+      "confirmationMs": 263,
+      "receiptUrl": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_b8bb6da4-34ae-4907-a817-6cc3ca03102b&economics=econrun_f1e89014-3153-474d-ad4d-f6acd84d2908&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_2052b869-3af2-42c4-b8e3-e72f84a2fa0e"
+    },
+    {
+      "sample": 10,
+      "warmup": false,
+      "proposalMs": 257,
+      "confirmationMs": 287,
+      "receiptUrl": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_c869c24c-91ec-4a63-a6ca-6141426b2798&economics=econrun_7ce6b49e-6806-4894-ae67-bb4570031896&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_a49676d4-3b58-41c2-a73d-ddae3b899513"
+    }
+  ],
+  "statistics": {
+    "proposalMs": {
+      "samples": 10,
+      "p50": 271,
+      "p95": 284,
+      "max": 284
+    },
+    "confirmationMs": {
+      "samples": 10,
+      "p50": 266,
+      "p95": 287,
+      "max": 287
+    }
+  },
+  "publicationReviewNote": "URL strings were captured immediately after visible UI outcome and may still contain proposal while router replacement is pending. They are observed URLs, not guaranteed canonical receipt links. Timing values and result text are unchanged."
+}

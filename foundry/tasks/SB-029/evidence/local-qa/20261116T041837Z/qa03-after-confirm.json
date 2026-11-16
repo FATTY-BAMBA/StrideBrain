@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-11-16T04:26:58.217Z",
+  "counts": {
+    "actions": 1,
+    "proposals": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1
+  },
+  "actions": [
+    {
+      "businessKey": "action_12705349-27b0-4571-a93d-d381f8fa982b",
+      "status": "OPEN",
+      "evidenceCount": 15
+    }
+  ]
+}

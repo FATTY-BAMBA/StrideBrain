@@ -1,0 +1,38 @@
+{
+  "head": "13e7191f340e998c93b644949602f1c0774fe9ff",
+  "applicationHead": "4c13f726bb75f4a31d263eb6e54622224807d019",
+  "evidenceCheckpoint": "2a23d31f46e0b6c7b465b3774ad765c81a3417eb",
+  "sourceTreeFingerprintSha256": "7fe5157f84f9c88023462ec1e958b62a53bcdb5aef30eb0dc4ac95dfdac85920",
+  "migrations": 8,
+  "browserQa": "NOT_RUN",
+  "checkedAt": "2026-11-16T04:21:49.851001+00:00",
+  "status": "PREVIEW_READY",
+  "buildId": "N_TRlxNdHOVp0JPHYRLE4",
+  "url": "http://localhost:3000",
+  "http": [
+    {
+      "path": "/en/projects/PRJ-XINYI-026",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/projects/PRJ-XINYI-026",
+      "status": 200
+    }
+  ],
+  "syntheticOrganizations": [
+    "HORIZON_ATELIER",
+    "NORTHERN_STUDIO"
+  ],
+  "initialCounts": {
+    "Action": 0,
+    "ProposedAction": 0,
+    "InternalReviewReceipt": 0,
+    "AuditEvent": 0
+  },
+  "immutabilityTriggersEnabled": 4,
+  "testsPassed": 436,
+  "testFilesPassed": 57,
+  "postgresVersion": "17.12",
+  "appSession": 46079,
+  "operatorSession": 88009
+}

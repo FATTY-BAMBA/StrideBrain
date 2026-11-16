@@ -1,0 +1,164 @@
+[
+  {
+    "locale": "en",
+    "size": "tablet",
+    "state": "error",
+    "dialogCount": 1,
+    "dialogHeight": 1024,
+    "documentWidth": 768,
+    "focus": "review-dueDate",
+    "viewport": 768
+  },
+  {
+    "locale": "en",
+    "size": "tablet",
+    "state": "evidence",
+    "dialogCount": 1,
+    "documentWidth": 768,
+    "viewport": 768
+  },
+  {
+    "locale": "en",
+    "size": "tablet",
+    "state": "receipt",
+    "dialogCount": 1,
+    "documentWidth": 768,
+    "focus": "internal-review-heading",
+    "viewport": 768
+  },
+  {
+    "locale": "zh-TW",
+    "size": "tablet",
+    "state": "error",
+    "dialogCount": 1,
+    "dialogHeight": 1024,
+    "documentWidth": 768,
+    "focus": "review-dueDate",
+    "viewport": 768
+  },
+  {
+    "locale": "zh-TW",
+    "size": "tablet",
+    "state": "evidence",
+    "dialogCount": 1,
+    "documentWidth": 768,
+    "viewport": 768
+  },
+  {
+    "locale": "zh-TW",
+    "size": "tablet",
+    "state": "receipt",
+    "dialogCount": 1,
+    "documentWidth": 768,
+    "focus": "internal-review-heading",
+    "viewport": 768
+  },
+  {
+    "locale": "en",
+    "size": "mobile",
+    "state": "error",
+    "dialogCount": 1,
+    "dialogHeight": 844,
+    "documentWidth": 390,
+    "focus": "review-dueDate",
+    "viewport": 390
+  },
+  {
+    "locale": "en",
+    "size": "mobile",
+    "state": "evidence",
+    "dialogCount": 1,
+    "documentWidth": 390,
+    "viewport": 390
+  },
+  {
+    "locale": "en",
+    "size": "mobile",
+    "state": "receipt",
+    "dialogCount": 1,
+    "documentWidth": 390,
+    "focus": "internal-review-heading",
+    "viewport": 390
+  },
+  {
+    "locale": "zh-TW",
+    "size": "mobile",
+    "state": "error",
+    "dialogCount": 1,
+    "dialogHeight": 844,
+    "documentWidth": 390,
+    "focus": "review-dueDate",
+    "viewport": 390
+  },
+  {
+    "locale": "zh-TW",
+    "size": "mobile",
+    "state": "evidence",
+    "dialogCount": 1,
+    "documentWidth": 390,
+    "viewport": 390
+  },
+  {
+    "locale": "zh-TW",
+    "size": "mobile",
+    "state": "receipt",
+    "dialogCount": 1,
+    "documentWidth": 390,
+    "focus": "internal-review-heading",
+    "viewport": 390
+  },
+  {
+    "locale": "en",
+    "size": "narrow",
+    "state": "error",
+    "dialogCount": 1,
+    "dialogHeight": 740,
+    "documentWidth": 320,
+    "focus": "review-dueDate",
+    "viewport": 320
+  },
+  {
+    "locale": "en",
+    "size": "narrow",
+    "state": "evidence",
+    "dialogCount": 1,
+    "documentWidth": 320,
+    "viewport": 320
+  },
+  {
+    "locale": "en",
+    "size": "narrow",
+    "state": "receipt",
+    "dialogCount": 1,
+    "documentWidth": 320,
+    "focus": "internal-review-heading",
+    "viewport": 320
+  },
+  {
+    "locale": "zh-TW",
+    "size": "narrow",
+    "state": "error",
+    "dialogCount": 1,
+    "dialogHeight": 740,
+    "documentWidth": 320,
+    "focus": "review-dueDate",
+    "viewport": 320
+  },
+  {
+    "locale": "zh-TW",
+    "size": "narrow",
+    "state": "evidence",
+    "dialogCount": 1,
+    "documentWidth": 320,
+    "viewport": 320
+  },
+  {
+    "locale": "zh-TW",
+    "size": "narrow",
+    "state": "receipt",
+    "dialogCount": 1,
+    "documentWidth": 320,
+    "focus": "internal-review-heading",
+    "viewport": 320
+  }
+]

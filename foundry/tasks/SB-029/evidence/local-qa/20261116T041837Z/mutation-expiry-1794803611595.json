@@ -1,0 +1,17 @@
+{
+  "kind": "expiry",
+  "restored": true,
+  "countsBefore": {
+    "actions": 1,
+    "audits": 1,
+    "receipts": 1,
+    "consumed": 1
+  },
+  "countsAfter": {
+    "actions": 1,
+    "audits": 1,
+    "receipts": 1,
+    "consumed": 1
+  },
+  "noBusinessWrites": true
+}

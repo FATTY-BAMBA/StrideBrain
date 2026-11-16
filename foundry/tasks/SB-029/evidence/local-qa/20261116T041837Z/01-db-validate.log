@@ -1,0 +1,8 @@
+
+> stridebrain@0.1.0 db:validate
+> npx --yes prisma@7.10.1 validate --config prisma.config.ts
+
+Loaded Prisma config from prisma.config.ts.
+
+Prisma schema loaded from prisma/schema.prisma.
+The schema at prisma/schema.prisma is valid 🚀

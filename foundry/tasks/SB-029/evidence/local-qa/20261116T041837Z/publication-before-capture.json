@@ -1,0 +1,107 @@
+{
+  "timestamp": "2026-11-16T05:15:55.471Z",
+  "counts": {
+    "actions": 19,
+    "proposals": 38,
+    "consumed": 19,
+    "receipts": 19,
+    "audits": 19
+  },
+  "actions": [
+    {
+      "businessKey": "action_12705349-27b0-4571-a93d-d381f8fa982b",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_cfc6b884-c82d-4027-8721-49d53b641ac3",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_403bdf0b-b9ec-43e2-9706-4c1ce6256d04",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_9ec6931c-e080-46e2-9aa9-436b24d7f8b1",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_a58c6e51-fcf3-463c-93e3-e186cebffe51",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_6dab0163-94d9-4a31-b535-ef2170285a91",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_643637ae-d7c4-4a8d-b82f-a46cf0e00fd5",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_b5404810-d0a8-47cd-988d-6fc802300285",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_ca98757b-a86f-4b2b-b458-ad4afa8eda1e",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_bd85da94-1588-4021-b860-257d87ae4d56",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_2d06ea10-0552-4d09-81dc-06e8755bf226",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_c10cfef0-d827-464e-b62e-baac6168aa7c",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_158fe413-d2fd-4ad8-98c4-4960820e0b0e",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_5250b3ff-aa3a-4502-a775-db829d5db30d",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_2052b869-3af2-42c4-b8e3-e72f84a2fa0e",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_a49676d4-3b58-41c2-a73d-ddae3b899513",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_a2564c35-62b6-40aa-b1f7-b3a65909b5d4",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_21262836-47e3-4fa5-8916-459d19e597db",
+      "status": "OPEN",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_32f5d91d-5a97-4cfb-8b75-6a828b59a5b0",
+      "status": "OPEN",
+      "evidenceCount": 15
+    }
+  ]
+}
