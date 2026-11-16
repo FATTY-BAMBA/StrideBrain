@@ -48,7 +48,7 @@ function cellStateLabel(cell: ComparisonTableCellView, copy: ComparisonCopy): st
   return copy.states.sufficient;
 }
 
-function ComparisonCell({
+export function ComparisonCell({
   cell,
   copy,
   triggerId,
@@ -62,6 +62,9 @@ function ComparisonCell({
   if (!cell) return <span aria-hidden="true">—</span>;
   const content = (
     <>
+      {cell.observationLabel ? (
+        <span className={styles.cellSecondary}>{cell.observationLabel}</span>
+      ) : null}
       <span className={styles.cellPrimary}>{cell.primary}</span>
       {cell.secondary ? <span className={styles.cellSecondary}>{cell.secondary}</span> : null}
       {cell.state !== "VALUE" ? (
@@ -74,6 +77,7 @@ function ComparisonCell({
   return (
     <div
       className={styles.cell}
+      data-observation-type={cell.observationType}
       data-tone={cell.tone}
       data-claim-key={cell.claimKey}
       data-state={cell.state}
@@ -84,7 +88,7 @@ function ComparisonCell({
           data-evidence-trigger-id={triggerId}
           type="button"
           onClick={() => onOpenClaim(cell.claimKey!, triggerId)}
-          aria-label={`${copy.table.evidenceState}: ${cell.primary}`}
+          aria-label={`${copy.table.evidenceState}: ${[cell.observationLabel, cell.primary, cell.secondary].filter(Boolean).join(" · ")}`}
         >
           {content}
         </button>

@@ -1,3 +1,4 @@
+import type { ObservationType } from "@/modules/projects/domain/project-workspace";
 import type { MatchBand, SimilarityFactorKey } from "@/modules/comparisons/domain/contracts";
 import type { Locale } from "@/modules/localization/config";
 
@@ -44,6 +45,8 @@ export type ComparableProjectCardView = Readonly<{
 export type ComparisonTableCellView = Readonly<{
   state: ComparisonCellState;
   primary: string;
+  observationType?: ObservationType | undefined;
+  observationLabel?: string | undefined;
   secondary?: string | undefined;
   claimKey?: string | undefined;
   tone: ComparisonNoticeTone;

@@ -1,3 +1,5 @@
+import { getFinancialCopy } from "@/modules/localization/financial-copy";
+import type { ObservationType } from "@/modules/projects/domain/project-workspace";
 import type {
   ComparableProjectMatchDTO,
   DifferenceDTO,
@@ -271,6 +273,20 @@ function projectCellMap(
   return Object.freeze(cells);
 }
 
+function financialCell(
+  value: ComparisonTableCellView,
+  observationType: ObservationType | undefined,
+  locale: Locale,
+): ComparisonTableCellView {
+  return observationType
+    ? Object.freeze({
+        ...value,
+        observationType,
+        observationLabel: getFinancialCopy(locale).observations[observationType],
+      })
+    : value;
+}
+
 function historyRow(
   key: string,
   label: string,
@@ -288,8 +304,21 @@ function historyRow(
     cells: projectCellMap(
       stage4,
       selectedKeys,
-      varianceCell(current, locale, copy, claimKey),
-      (match) => aggregateStateCell(aggregate, match.project.projectKey, locale, copy, claimKey),
+      financialCell(
+        varianceCell(current, locale, copy, claimKey),
+        current
+          ? current.currentBasis === "FORECAST"
+            ? "FORECAST_DIRECT_COST"
+            : "QUOTED_PRICE"
+          : undefined,
+        locale,
+      ),
+      (match) =>
+        financialCell(
+          aggregateStateCell(aggregate, match.project.projectKey, locale, copy, claimKey),
+          aggregate?.observationType,
+          locale,
+        ),
     ),
   });
 }
@@ -326,7 +355,14 @@ function supplierCell(
   }
   if (offer.state === "EXCLUDED") return cell("UNAVAILABLE", copy.states.unavailable);
   return cell("VALUE", formatMoney(locale, offer.amount), "NEUTRAL", {
-    secondary: offer.state === "CURRENT_CONTEXT" ? "Current context" : "Historical context",
+    secondary:
+      offer.state === "CURRENT_CONTEXT"
+        ? locale === "zh-TW"
+          ? "目前資料"
+          : "Current context"
+        : locale === "zh-TW"
+          ? "歷史資料"
+          : "Historical context",
   });
 }
 
@@ -695,8 +731,17 @@ function contextSections(
       cells: projectCellMap(
         stage4,
         selectedKeys,
-        supplierCell(economics, stage4.activeContext.projectKey, locale, copy),
-        (match) => supplierCell(economics, match.project.projectKey, locale, copy),
+        financialCell(
+          supplierCell(economics, stage4.activeContext.projectKey, locale, copy),
+          "SUPPLIER_OFFER",
+          locale,
+        ),
+        (match) =>
+          financialCell(
+            supplierCell(economics, match.project.projectKey, locale, copy),
+            "SUPPLIER_OFFER",
+            locale,
+          ),
       ),
     }),
     Object.freeze({

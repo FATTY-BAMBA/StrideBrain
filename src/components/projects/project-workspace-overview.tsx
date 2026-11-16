@@ -1,3 +1,4 @@
+import { getFinancialCopy } from "@/modules/localization/financial-copy";
 import type { Route } from "next";
 import Link from "next/link";
 
@@ -105,7 +106,9 @@ function formatObservation(
   return (
     <div className={styles.metric}>
       <span>
-        {labels.version} {observation.versionNumber} · {observation.authorityState}
+        {getFinancialCopy(locale).observations[observation.observationType]} · {labels.version}{" "}
+        {observation.versionNumber} ·{" "}
+        {getFinancialCopy(locale).authorities[observation.authorityState]}
       </span>
       <strong>{formatMoney(locale, observation.money.amount, observation.money.currency)}</strong>
       {observation.freshness === "STALE" ? <p className={styles.stale}>{labels.stale}</p> : null}

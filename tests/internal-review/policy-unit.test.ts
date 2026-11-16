@@ -385,3 +385,18 @@ describe("Stage 8 organization-local due dates", () => {
     expect(addCalendarDays("2026-03-08", 7)).toBe("2026-03-15");
   });
 });
+
+it("QA-18 keeps forecast versus reconciled actual and quoted-price findings explicit in every immutable bilingual rationale", () => {
+  const proposal = content();
+  for (const option of proposal.rationaleOptions) {
+    const rationale = fullRationale(proposal, option.text);
+    expect(rationale.en).toContain(
+      "Imported-stone forecast direct cost differs by +17.3% from eligible reconciled-actual history.",
+    );
+    expect(rationale.zhTw).toContain("進口石材預估直接成本");
+    expect(rationale.zhTw).toContain("已核對實際成本");
+    expect(rationale.en).toContain("Lighting quoted price");
+    expect(rationale.en).not.toContain("Imported-stone actual cost differs");
+    expect(rationale.zhTw).not.toContain("進口石材實際成本差異");
+  }
+});

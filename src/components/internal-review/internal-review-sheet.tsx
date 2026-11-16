@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import type { Route } from "next";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 import type {
   ConfirmOutcome,
@@ -15,12 +16,32 @@ import {
   reviewValidationMessage,
 } from "@/modules/internal-review-experience/copy";
 import {
-  setReviewDraft,
+  internalReviewHref,
+  parseInternalReviewRoute,
+  reviewDraftHref,
   type ReviewDraftSelection,
 } from "@/modules/internal-review-experience/route-state";
 import { displayReviewTimestamp } from "@/components/internal-review/action-receipt";
 import styles from "./internal-review.module.css";
 import { focusFirstReviewError } from "@/modules/internal-review-experience/focus";
+
+function selectedReviewDraft(proposal: ProposalDTO, draft: ReviewDraftSelection) {
+  const title = proposal.titleOptions.find((option) => option.key === draft.titleKey);
+  const rationale = proposal.rationaleOptions.find((option) => option.key === draft.rationaleKey);
+  return {
+    titleKey: title?.key ?? proposal.titleKey,
+    rationaleKey: rationale?.key ?? proposal.rationaleKey,
+    title: title?.text ?? proposal.title,
+    rationale: rationale?.text ?? proposal.rationale,
+    assigneeKey:
+      proposal.canAssign &&
+      (draft.assigneeKey === "none" ||
+        proposal.assignees.some((person) => person.key === draft.assigneeKey))
+        ? draft.assigneeKey!
+        : (proposal.suggestedAssigneeKey ?? "none"),
+    dueDate: draft.dueDate ?? proposal.suggestedDueDate ?? "",
+  };
+}
 
 export function InternalReviewSheet({
   proposal,
@@ -29,6 +50,7 @@ export function InternalReviewSheet({
   onEvidence,
   onOutcome,
   onPendingChange,
+  navigationPending = false,
 }: Readonly<{
   proposal: ProposalDTO;
   draft: ReviewDraftSelection;
@@ -36,29 +58,26 @@ export function InternalReviewSheet({
   onEvidence: (claimKey: string, triggerId: string) => void;
   onOutcome: (outcome: ConfirmOutcome) => void;
   onPendingChange: (pending: boolean) => void;
+  navigationPending?: boolean;
 }>) {
   const copy = getInternalReviewCopy(proposal.locale);
   const form = useRef<HTMLFormElement>(null);
-  const [titleKey, setTitleKey] = useState(
-    proposal.titleOptions.some((option) => option.key === draft.titleKey)
-      ? draft.titleKey!
-      : proposal.titleKey,
-  );
-  const [rationaleKey, setRationaleKey] = useState(
-    proposal.rationaleOptions.some((option) => option.key === draft.rationaleKey)
-      ? draft.rationaleKey!
-      : proposal.rationaleKey,
-  );
-  const [assigneeKey, setAssigneeKey] = useState(
-    proposal.canAssign &&
-      (draft.assigneeKey === "none" ||
-        proposal.assignees.some((person) => person.key === draft.assigneeKey))
-      ? draft.assigneeKey!
-      : (proposal.suggestedAssigneeKey ?? "none"),
-  );
-  const [dueDate, setDueDate] = useState(draft.dueDate ?? proposal.suggestedDueDate ?? "");
+  const search = useSearchParams();
+  const liveRoute = parseInternalReviewRoute(Object.fromEntries(search));
+  const selectedDraft = liveRoute.proposalKey === proposal.businessKey ? liveRoute.draft : draft;
+  const {
+    titleKey,
+    rationaleKey,
+    assigneeKey,
+    dueDate,
+    title: selectedTitle,
+    rationale: selectedRationale,
+  } = selectedReviewDraft(proposal, selectedDraft);
   const [confirmation, setConfirmation] = useState(false);
-  const [pending, setPending] = useState(false);
+  const acknowledged = useRef(false);
+  const [confirming, setConfirming] = useState(false);
+  const submission = useRef(false);
+  const pending = confirming || navigationPending;
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [failure, setFailure] = useState<Exclude<ConfirmOutcome, { receipt: unknown }> | null>(
     null,
@@ -68,11 +87,6 @@ export function InternalReviewSheet({
     focusFirstReviewError(form.current, fieldErrors);
   }, [fieldErrors]);
 
-  const selectedTitle =
-    proposal.titleOptions.find((option) => option.key === titleKey)?.text ?? proposal.title;
-  const selectedRationale =
-    proposal.rationaleOptions.find((option) => option.key === rationaleKey)?.text ??
-    proposal.rationale;
   const lockedAfterFailure =
     failure &&
     [
@@ -82,11 +96,19 @@ export function InternalReviewSheet({
       "IDEMPOTENCY_CONFLICT",
     ].includes(failure.kind);
 
+  function currentDraftHref(change: ReviewDraftSelection = {}) {
+    const canonicalHref = internalReviewHref(
+      proposal.locale,
+      proposal.project.projectKey,
+      proposal,
+      { proposalKey: proposal.businessKey, draft: selectedDraft },
+    );
+    return reviewDraftHref(canonicalHref, window.location.href, change);
+  }
+
   function updateDraft(change: ReviewDraftSelection) {
-    const next = { titleKey, rationaleKey, assigneeKey, dueDate, ...change };
-    const url = new URL(window.location.href);
-    setReviewDraft(url.searchParams, next);
-    window.history.replaceState(null, "", `${url.pathname}?${url.searchParams}`);
+    if (pending) return;
+    window.history.replaceState(null, "", currentDraftHref(change));
   }
 
   function error(field: keyof FieldErrors) {
@@ -102,8 +124,15 @@ export function InternalReviewSheet({
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (pending || lockedAfterFailure) return;
-    setPending(true);
+    if (pending || submission.current || lockedAfterFailure) return;
+    const latest = selectedReviewDraft(
+      proposal,
+      parseInternalReviewRoute(
+        Object.fromEntries(new URL(currentDraftHref(), window.location.href).searchParams),
+      ).draft,
+    );
+    submission.current = true;
+    setConfirming(true);
     onPendingChange(true);
     setFieldErrors({});
     setFailure(null);
@@ -117,11 +146,11 @@ export function InternalReviewSheet({
         body: JSON.stringify({
           version: "internal-review-command.v1",
           proposalKey: proposal.businessKey,
-          title: selectedTitle,
-          rationale: selectedRationale,
-          assigneeKey: assigneeKey === "none" ? null : assigneeKey,
-          dueDate: dueDate || null,
-          confirmation,
+          title: latest.title,
+          rationale: latest.rationale,
+          assigneeKey: latest.assigneeKey === "none" ? null : latest.assigneeKey,
+          dueDate: latest.dueDate || null,
+          confirmation: acknowledged.current,
           idempotencyKey: proposal.idempotencyKey,
           locale: proposal.locale,
         }),
@@ -131,7 +160,8 @@ export function InternalReviewSheet({
     } catch {
       outcome = { kind: "ACTION_CREATE_FAILED", requestId: "" };
     }
-    setPending(false);
+    submission.current = false;
+    setConfirming(false);
     onPendingChange(false);
     if (outcome.kind === "VALIDATION_FAILED") {
       setFieldErrors(outcome.fieldErrors);
@@ -181,7 +211,6 @@ export function InternalReviewSheet({
           aria-invalid={!!fieldErrors.title}
           aria-describedby={`review-edit-hint${fieldErrors.title ? " review-title-error" : ""}`}
           onChange={(event) => {
-            setTitleKey(event.target.value);
             updateDraft({ titleKey: event.target.value });
           }}
         >
@@ -204,7 +233,6 @@ export function InternalReviewSheet({
           aria-invalid={!!fieldErrors.rationale}
           aria-describedby={`review-edit-hint${fieldErrors.rationale ? " review-rationale-error" : ""}`}
           onChange={(event) => {
-            setRationaleKey(event.target.value);
             updateDraft({ rationaleKey: event.target.value });
           }}
         >
@@ -269,7 +297,6 @@ export function InternalReviewSheet({
               aria-invalid={!!fieldErrors.assigneeKey}
               aria-describedby={fieldErrors.assigneeKey ? "review-assigneeKey-error" : undefined}
               onChange={(event) => {
-                setAssigneeKey(event.target.value);
                 updateDraft({ assigneeKey: event.target.value });
               }}
             >
@@ -316,7 +343,6 @@ export function InternalReviewSheet({
           aria-invalid={!!fieldErrors.dueDate}
           aria-describedby={`review-date-hint${fieldErrors.dueDate ? " review-dueDate-error" : ""}`}
           onChange={(event) => {
-            setDueDate(event.target.value);
             updateDraft({ dueDate: event.target.value });
           }}
         />
@@ -331,7 +357,6 @@ export function InternalReviewSheet({
           type="button"
           disabled={pending}
           onClick={() => {
-            setDueDate("");
             updateDraft({ dueDate: "" });
           }}
         >
@@ -366,7 +391,10 @@ export function InternalReviewSheet({
             disabled={pending}
             aria-invalid={!!fieldErrors.confirmation}
             aria-describedby={`review-consequence${fieldErrors.confirmation ? " review-confirmation-error" : ""}`}
-            onChange={(event) => setConfirmation(event.target.checked)}
+            onChange={(event) => {
+              acknowledged.current = event.target.checked;
+              setConfirmation(event.target.checked);
+            }}
           />
           <span>{copy.acknowledgement}</span>
         </label>

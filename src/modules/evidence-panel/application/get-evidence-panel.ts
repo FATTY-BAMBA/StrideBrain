@@ -1,3 +1,8 @@
+import {
+  evidenceValueLabel,
+  evidenceTitle,
+  evidencePolicyDescription,
+} from "@/modules/evidence-panel/presentation";
 import { sha256 } from "@/modules/comparisons/application/fingerprints";
 import type { Stage4ComparisonResult } from "@/modules/comparisons/domain/contracts";
 import type {
@@ -51,20 +56,14 @@ function formatNumber(locale: Locale, value: unknown, digits = 2): string {
   }).format(parsed);
 }
 
-function humanKey(value: string): string {
-  return value
-    .toLowerCase()
-    .split("_")
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(" ");
-}
-
 function formatValue(locale: Locale, key: string, value: unknown): string {
   if (value === null || value === undefined) return "—";
+  if (key === "descriptionEn" || key === "descriptionZhTw") return String(value);
   if (typeof value === "boolean")
     return value ? (locale === "zh-TW" ? "是" : "Yes") : locale === "zh-TW" ? "否" : "No";
-  if (Array.isArray(value)) return value.map((entry) => String(entry)).join(", ");
-  if (typeof value === "object") return JSON.stringify(value);
+  if (Array.isArray(value))
+    return value.map((entry) => evidenceValueLabel(locale, String(entry))).join(", ");
+  if (typeof value === "object") return locale === "zh-TW" ? "結構化紀錄" : "Structured record";
   if (key.toLowerCase().includes("percent")) {
     const number = Number(value);
     return Number.isFinite(number)
@@ -76,9 +75,9 @@ function formatValue(locale: Locale, key: string, value: unknown): string {
     key.toLowerCase().includes("cost") ||
     key.toLowerCase().includes("price")
   ) {
-    return `NT$${formatNumber(locale, value, 0)}`;
+    return Number.isFinite(Number(value)) ? `NT$${formatNumber(locale, value, 0)}` : String(value);
   }
-  return String(value);
+  return evidenceValueLabel(locale, String(value));
 }
 
 function fieldsFromObject(
@@ -87,39 +86,26 @@ function fieldsFromObject(
   copy: EvidencePanelCopy,
 ): readonly Readonly<{ label: string; value: string }>[] {
   return Object.freeze(
-    Object.entries(value).map(([key, field]) =>
-      Object.freeze({
-        label: copy.fieldLabels[key] ?? humanKey(key),
-        value: formatValue(locale, key, field),
-      }),
-    ),
+    Object.entries(value)
+      .filter(([key]) => copy.fieldLabels[key] !== undefined)
+      .map(([key, field]) =>
+        Object.freeze({
+          label: copy.fieldLabels[key]!,
+          value: formatValue(locale, key, field),
+        }),
+      ),
   );
 }
 
-function locatorLabel(locator: Readonly<Record<string, unknown>>, copy: EvidencePanelCopy): string {
-  const preferred = [
-    "page",
-    "section",
-    "sheet",
-    "rows",
-    "cells",
-    "lineNumber",
-    "categoryId",
-    "field",
-  ];
-  const parts: string[] = [];
-  for (const key of preferred) {
-    const value = locator[key];
-    if (value !== undefined && value !== null)
-      parts.push(`${copy.fieldLabels[key] ?? humanKey(key)}: ${String(value)}`);
-  }
-  if (parts.length > 0) return parts.join(" · ");
-  const entries = Object.entries(locator).slice(0, 5);
-  return entries.length > 0
-    ? entries
-        .map(([key, value]) => `${copy.fieldLabels[key] ?? humanKey(key)}: ${String(value)}`)
-        .join(" · ")
-    : "Structured record";
+function locatorLabel(
+  locator: Readonly<Record<string, unknown>>,
+  locale: Locale,
+  copy: EvidencePanelCopy,
+): string {
+  const fields = fieldsFromObject(locale, locator, copy);
+  return fields.length
+    ? fields.map((field) => `${field.label}: ${field.value}`).join(" · ")
+    : copy.structuredRecord;
 }
 
 export function evidenceSourceKey(comparisonRunId: string, referenceId: string): string {
@@ -185,12 +171,18 @@ function sourceView(
       ? Object.freeze({
           state: "STRUCTURED" as const,
           fields: Object.freeze(
-            source.previewFields.map((field) =>
-              Object.freeze({
-                label: copy.fieldLabels[field.key] ?? humanKey(field.key),
-                value: field.value,
-              }),
-            ),
+            source.previewFields
+              .filter(
+                (field) =>
+                  copy.fieldLabels[field.key] !== undefined &&
+                  field.key !== (locale === "zh-TW" ? "descriptionEn" : "descriptionZhTw"),
+              )
+              .map((field) =>
+                Object.freeze({
+                  label: copy.fieldLabels[field.key]!,
+                  value: formatValue(locale, field.key, field.value),
+                }),
+              ),
           ),
         })
       : Object.freeze({
@@ -202,12 +194,12 @@ function sourceView(
         });
   return Object.freeze({
     sourceKey,
-    title: locale === "zh-TW" ? source.titleZhTw : source.titleEn,
-    objectTypeLabel: copy.subjectLabels[source.subjectType] ?? humanKey(source.subjectType),
+    title: evidenceTitle(locale, locale === "zh-TW" ? source.titleZhTw : source.titleEn),
+    objectTypeLabel: copy.subjectLabels[source.subjectType] ?? copy.structuredRecord,
     ...(source.versionLabel ? { versionLabel: source.versionLabel } : {}),
     projectLabel: locale === "zh-TW" ? source.projectNameZhTw : source.projectNameEn,
     ...(source.effectiveAt ? { effectiveDateLabel: formatDate(locale, source.effectiveAt) } : {}),
-    locatorLabel: locatorLabel(source.locator, copy),
+    locatorLabel: locatorLabel(source.locator, locale, copy),
     authorityState: source.authorityState,
     authorityLabel: copy.authorityLabels[source.authorityState],
     ...(source.observationType
@@ -234,12 +226,18 @@ function sourceView(
 
 function financialTrace(
   trace: CalculationTraceDTO,
+  stage4: Stage4ComparisonResult,
+  sources: readonly EvidenceSourceRecord[],
   locale: Locale,
   copy: EvidencePanelCopy,
 ): EvidenceFinancialTraceView {
   return Object.freeze({
     kind: "FINANCIAL",
     operation: trace.operation,
+    operationLabel: evidenceValueLabel(locale, trace.operation),
+    aggregationLabel: evidenceValueLabel(locale, trace.aggregation),
+    roundingLabel: evidenceValueLabel(locale, trace.rounding),
+    policyDescription: evidencePolicyDescription(locale, "FINANCIAL"),
     calculationVersion: trace.calculationVersion,
     aggregation: trace.aggregation,
     rounding: trace.rounding,
@@ -248,7 +246,36 @@ function financialTrace(
       trace.inputs.map((input) =>
         Object.freeze({
           projectKey: input.projectKey,
-          normalizedValueLabel: `${formatNumber(locale, input.normalizedValue, 2)} ${input.unit}`,
+          ...(() => {
+            const types = [
+              ...new Set(
+                sources
+                  .filter((source) => input.evidenceReferenceIds.includes(source.referenceId))
+                  .flatMap((source) => (source.observationType ? [source.observationType] : [])),
+              ),
+            ];
+            const observationType = types.length === 1 ? types[0] : undefined;
+            return observationType
+              ? { observationType, observationLabel: copy.observationLabels[observationType] }
+              : {};
+          })(),
+          projectLabel: (() => {
+            const project =
+              input.projectKey === stage4.activeContext.projectKey
+                ? stage4.activeContext
+                : stage4.matches.find((match) => match.project.projectKey === input.projectKey)
+                    ?.project;
+            return project
+              ? locale === "zh-TW"
+                ? project.nameZhTw
+                : project.nameEn
+              : copy.project;
+          })(),
+          sourceCountLabel: copy.sourceCount.replace(
+            "{count}",
+            String(input.evidenceReferenceIds.length),
+          ),
+          normalizedValueLabel: `${formatNumber(locale, input.normalizedValue, 2)} ${evidenceValueLabel(locale, input.unit)}`,
           sourceCount: input.evidenceReferenceIds.length,
         }),
       ),
@@ -265,6 +292,7 @@ function factorTrace(
   return Object.freeze({
     kind: "FACTOR",
     policyVersion: "CPI-SIM-1.0",
+    policyDescription: evidencePolicyDescription(locale, "FACTOR"),
     factorKey: factor.factorKey,
     factorLabel: copy.factorLabels[factor.factorKey],
     state: factor.state,
@@ -423,7 +451,7 @@ export class GetEvidencePanel {
         );
         const warningLabels = Object.freeze(
           found.claim.warningCodes.map(
-            (warning) => copy.warningLabels[warning] ?? humanKey(warning),
+            (warning) => copy.warningLabels[warning] ?? copy.unknownDetail,
           ),
         );
         const view: EvidencePanelView = Object.freeze({
@@ -433,7 +461,7 @@ export class GetEvidencePanel {
           context: context(stage4, stage5, locale),
           heading: headingFor(
             "CLAIM",
-            locale === "zh-TW" ? found.claim.titleZhTw : found.claim.titleEn,
+            evidenceTitle(locale, locale === "zh-TW" ? found.claim.titleZhTw : found.claim.titleEn),
             copy,
           ),
           claim: Object.freeze({
@@ -442,33 +470,47 @@ export class GetEvidencePanel {
             ...(claimValueLabel(found.claim, locale, copy)
               ? { valueLabel: claimValueLabel(found.claim, locale, copy) }
               : {}),
-            ...(found.claim.observationType
-              ? { observationTypeLabel: copy.observationLabels[found.claim.observationType] }
-              : {}),
+            ...(() => {
+              const observationType =
+                found.claim.observationType ??
+                (found.claim.kind.includes("FORECAST_ACTUAL")
+                  ? "FORECAST_DIRECT_COST"
+                  : found.claim.kind.includes("QUOTED")
+                    ? "QUOTED_PRICE"
+                    : undefined);
+              return observationType
+                ? { observationTypeLabel: copy.observationLabels[observationType] }
+                : {};
+            })(),
             ...(found.claim.authorityState
               ? { authorityLabel: copy.authorityLabels[found.claim.authorityState] }
               : {}),
             ...(found.claim.sufficiencyCode
               ? {
                   sufficiencyLabel:
-                    copy.sufficiencyLabels[found.claim.sufficiencyCode] ??
-                    humanKey(found.claim.sufficiencyCode),
+                    copy.sufficiencyLabels[found.claim.sufficiencyCode] ?? copy.unknownDetail,
                 }
               : {}),
             warningLabels,
           }),
           sources,
           ...(found.bundle.calculationTrace
-            ? { trace: financialTrace(found.bundle.calculationTrace, locale, copy) }
+            ? {
+                trace: financialTrace(
+                  found.bundle.calculationTrace,
+                  stage4,
+                  resolved.sources,
+                  locale,
+                  copy,
+                ),
+              }
             : {}),
           notices: Object.freeze(
             found.claim.sufficiencyCode
               ? [
                   Object.freeze({
                     tone: "CAUTION" as const,
-                    text:
-                      copy.sufficiencyLabels[found.claim.sufficiencyCode] ??
-                      humanKey(found.claim.sufficiencyCode),
+                    text: copy.sufficiencyLabels[found.claim.sufficiencyCode] ?? copy.unknownDetail,
                   }),
                 ]
               : [],
@@ -547,7 +589,10 @@ export class GetEvidencePanel {
             found.bundle.sources.map((source) => source.referenceId),
             selection.sourceKey,
           );
-          selectedTitle = locale === "zh-TW" ? found.claim.titleZhTw : found.claim.titleEn;
+          selectedTitle = evidenceTitle(
+            locale,
+            locale === "zh-TW" ? found.claim.titleZhTw : found.claim.titleEn,
+          );
           backSelection = backSelectionForSource(selection);
         } else if (selection.candidateProjectKey && selection.factorKey) {
           const factor = await this.evidence.getAuthorizedFactor(
@@ -594,7 +639,10 @@ export class GetEvidencePanel {
                 .map((claim) =>
                   Object.freeze({
                     claimKey: claim.claimKey,
-                    title: locale === "zh-TW" ? claim.titleZhTw : claim.titleEn,
+                    title: evidenceTitle(
+                      locale,
+                      locale === "zh-TW" ? claim.titleZhTw : claim.titleEn,
+                    ),
                     kindLabel: copy.claimKindLabels[claim.kind],
                   }),
                 ),

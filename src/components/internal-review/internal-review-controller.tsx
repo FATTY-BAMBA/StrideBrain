@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 import type { Route } from "next";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -68,7 +68,10 @@ export function InternalReviewController({
   const [failure, setFailure] = useState<Readonly<{ kind: string; requestId?: string }> | null>(
     null,
   );
-  const [pending, setPending] = useState(false);
+  const [requestPending, setRequestPending] = useState(false);
+  const [navigating, startTransition] = useTransition();
+  const preparing = useRef(false);
+  const pending = requestPending || navigating;
   const proposalResult = prepared ?? proposalOutcome;
   const proposal = proposalResult?.kind === "PREPARED" ? proposalResult.proposal : null;
   const receipt =
@@ -88,7 +91,9 @@ export function InternalReviewController({
     setPrepared(null);
     setCreated(null);
     setFailure(null);
-    router.push(`${url.pathname}?${url.searchParams}` as Route, { scroll: false });
+    startTransition(() => {
+      router.push(`${url.pathname}?${url.searchParams}` as Route, { scroll: false });
+    });
   }, [pending, router]);
 
   useEffect(() => {
@@ -102,9 +107,11 @@ export function InternalReviewController({
   }, [open, route.returnId]);
 
   async function prepare() {
-    if (pending) return;
-    setPending(true);
+    if (pending || preparing.current) return;
+    preparing.current = true;
+    setRequestPending(true);
     setFailure(null);
+    let awaitingProposalRoute = false;
     try {
       const response = await fetch("/api/actions/internal-review/proposals", {
         method: "POST",
@@ -121,18 +128,29 @@ export function InternalReviewController({
       });
       const outcome = (await response.json()) as PrepareOutcome;
       if (!outcome || typeof outcome.kind !== "string") throw new Error("INVALID_RESPONSE");
-      setPrepared(outcome);
-      if (outcome.kind === "PREPARED")
-        router.push(
-          internalReviewHref(locale, projectKey, outcome.proposal, {
-            proposalKey: outcome.proposal.businessKey,
-          }) as Route,
-          { scroll: false },
+      if (outcome.kind === "PREPARED") {
+        awaitingProposalRoute = true;
+        startTransition(() =>
+          router.push(
+            internalReviewHref(locale, projectKey, outcome.proposal, {
+              proposalKey: outcome.proposal.businessKey,
+            }) as Route,
+            { scroll: false },
+          ),
         );
+      } else {
+        setPrepared(outcome);
+      }
     } catch {
+      awaitingProposalRoute = false;
       setFailure({ kind: "PROPOSAL_FAILED" });
     } finally {
-      setPending(false);
+      // The route-keyed controller remounts only after the server has reopened the proposal.
+      // Keep the entry guarded while that navigation is outstanding.
+      if (!awaitingProposalRoute) {
+        preparing.current = false;
+        setRequestPending(false);
+      }
     }
   }
 
@@ -200,6 +218,9 @@ export function InternalReviewController({
           pending={pending}
           focusKey={errorState?.kind ?? receipt?.businessKey ?? proposal?.businessKey ?? "review"}
           returnFocusId={evidenceReturnId}
+          onNavigate={(href) =>
+            startTransition(() => router.push(href as Route, { scroll: false }))
+          }
         >
           {errorState ? (
             <div className={styles.form}>
@@ -236,9 +257,12 @@ export function InternalReviewController({
               proposal={proposal}
               draft={route.draft}
               onCancel={close}
-              onEvidence={onEvidence}
-              onOutcome={confirmed}
-              onPendingChange={setPending}
+              onEvidence={(claimKey, triggerId) =>
+                startTransition(() => onEvidence(claimKey, triggerId))
+              }
+              onOutcome={(outcome) => startTransition(() => confirmed(outcome))}
+              onPendingChange={setRequestPending}
+              navigationPending={pending}
             />
           ) : null}
         </ReviewModal>

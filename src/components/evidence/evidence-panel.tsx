@@ -253,7 +253,7 @@ function Trace({ view }: Readonly<{ view: EvidencePanelView }>) {
           </div>
         </dl>
         <p className={styles.traceExplanation}>{trace.explanationLabel}</p>
-        <small>{trace.policyVersion}</small>
+        <small>{trace.policyDescription}</small>
       </section>
     );
   }
@@ -263,15 +263,15 @@ function Trace({ view }: Readonly<{ view: EvidencePanelView }>) {
       <dl className={styles.traceGrid}>
         <div>
           <dt>{copy.fields.operation}</dt>
-          <dd>{trace.operation}</dd>
+          <dd>{trace.operationLabel}</dd>
         </div>
         <div>
           <dt>{copy.fields.aggregation}</dt>
-          <dd>{trace.aggregation}</dd>
+          <dd>{trace.aggregationLabel}</dd>
         </div>
         <div>
           <dt>{copy.fields.rounding}</dt>
-          <dd>{trace.rounding}</dd>
+          <dd>{trace.roundingLabel}</dd>
         </div>
         <div>
           <dt>{copy.fields.generated}</dt>
@@ -281,9 +281,10 @@ function Trace({ view }: Readonly<{ view: EvidencePanelView }>) {
       <div className={styles.traceInputs}>
         {trace.inputs.map((input) => (
           <div key={`${input.projectKey}-${input.normalizedValueLabel}`}>
-            <strong>{input.projectKey}</strong>
+            <strong>{input.projectLabel}</strong>
+            {input.observationLabel ? <span>{input.observationLabel}</span> : null}
             <span>{input.normalizedValueLabel}</span>
-            <small>{input.sourceCount} source(s)</small>
+            <small>{input.sourceCountLabel}</small>
           </div>
         ))}
       </div>
@@ -295,7 +296,7 @@ function Trace({ view }: Readonly<{ view: EvidencePanelView }>) {
           </div>
         ))}
       </dl>
-      <small>{trace.calculationVersion}</small>
+      <small>{trace.policyDescription}</small>
     </section>
   );
 }
@@ -376,10 +377,9 @@ function ReadyPanel({
           </button>
         </header>
 
-        <div className={styles.contextBar}>
+        <div className={styles.contextBar} data-comparison-run-id={view.context.comparisonRunId}>
           <strong>{view.context.projectName}</strong>
           <span>{view.context.snapshotLabel}</span>
-          <code>{view.context.comparisonRunId}</code>
         </div>
 
         {view.backSelection ? (

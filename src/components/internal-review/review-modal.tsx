@@ -3,9 +3,9 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import type { Route } from "next";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import { localizedHref } from "@/components/shell/language-switcher";
+import { currentLocalizedHref, localizedHref } from "@/components/shell/language-switcher";
 import { getInternalReviewCopy } from "@/modules/internal-review-experience/copy";
 import type { Locale } from "@/modules/localization/config";
 import styles from "./internal-review.module.css";
@@ -19,6 +19,7 @@ export function ReviewModal({
   pending = false,
   focusKey,
   returnFocusId,
+  onNavigate,
 }: Readonly<{
   locale: Locale;
   title: string;
@@ -28,10 +29,12 @@ export function ReviewModal({
   pending?: boolean;
   focusKey: string;
   returnFocusId?: string | undefined;
+  onNavigate?: (href: string) => void;
 }>) {
   const panel = useRef<HTMLElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const copy = getInternalReviewCopy(locale);
+  const router = useRouter();
   const pathname = usePathname();
   const search = useSearchParams().toString();
 
@@ -109,6 +112,14 @@ export function ReviewModal({
             <nav className={styles.locale} aria-label="English / 繁體中文">
               <Link
                 href={localizedHref(pathname, search, "en") as Route}
+                aria-disabled={pending}
+                onNavigate={(event) => {
+                  event.preventDefault();
+                  if (pending) return;
+                  const href = currentLocalizedHref("en");
+                  if (onNavigate) onNavigate(href);
+                  else router.push(href as Route, { scroll: false });
+                }}
                 lang="en"
                 aria-current={locale === "en" ? "page" : undefined}
               >
@@ -116,6 +127,14 @@ export function ReviewModal({
               </Link>
               <Link
                 href={localizedHref(pathname, search, "zh-TW") as Route}
+                aria-disabled={pending}
+                onNavigate={(event) => {
+                  event.preventDefault();
+                  if (pending) return;
+                  const href = currentLocalizedHref("zh-TW");
+                  if (onNavigate) onNavigate(href);
+                  else router.push(href as Route, { scroll: false });
+                }}
                 lang="zh-Hant"
                 aria-current={locale === "zh-TW" ? "page" : undefined}
               >

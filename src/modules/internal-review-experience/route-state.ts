@@ -111,6 +111,23 @@ export function setReviewDraft(params: URLSearchParams, draft: ReviewDraftSelect
   }
 }
 
+/** Merge bounded draft choices into the verified proposal route, never a stale comparison URL. */
+export function reviewDraftHref(
+  canonicalHref: string,
+  currentHref: string,
+  change: ReviewDraftSelection,
+): string {
+  const canonical = new URL(canonicalHref, "http://review.invalid");
+  const current = new URL(currentHref, canonical);
+  const sameProposal = ["proposal", "run", "economics"].every(
+    (key) => canonical.searchParams.get(key) === current.searchParams.get(key),
+  );
+  const url = sameProposal && current.pathname === canonical.pathname ? current : canonical;
+  const latest = parseInternalReviewRoute(Object.fromEntries(url.searchParams)).draft;
+  setReviewDraft(url.searchParams, { ...latest, ...change });
+  return `${url.pathname}?${url.searchParams}`;
+}
+
 function contextParams(
   comparisonRunId: string,
   enrichmentRunId: string,

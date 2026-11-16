@@ -1,3 +1,7 @@
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { ComparisonCell } from "@/components/comparisons/comparison-experience-client";
+import { getComparisonCopy } from "@/modules/comparison-experience/copy";
 import { describe, expect, it } from "vitest";
 
 import type { Stage4ComparisonResult } from "@/modules/comparisons/domain/contracts";
@@ -443,4 +447,63 @@ describe("Stage 6 comparison experience composer", () => {
       }),
     ).toThrow("COMPARISON_EXPERIENCE_RUN_MISMATCH");
   });
+});
+
+describe("QA-18 financial basis at the point of comparison", () => {
+  it.each(["en", "zh-TW"] as const)(
+    "keeps forecast, actual, quote and offer distinct in visible and accessible %s cells",
+    (locale) => {
+      const view = buildComparisonExperience({ stage4: stage4(), economics: economics(), locale });
+      const labels =
+        locale === "en"
+          ? ["Forecast direct cost", "Reconciled actual cost", "Quoted price", "Supplier offer"]
+          : ["預估直接成本", "已核對實際成本", "報價", "供應商報價"];
+      for (const rowKey of [
+        "overall-actual",
+        "IMPORTED_STONE-ACTUAL",
+        "LIGHTING_ELECTRICAL-ACTUAL",
+        "CUSTOM_MILLWORK-ACTUAL",
+      ]) {
+        const cells = row(view, rowKey)!.cells;
+        expect(cells.__ACTIVE_PROJECT__).toMatchObject({
+          observationType: "FORECAST_DIRECT_COST",
+          observationLabel: labels[0],
+        });
+        expect(cells["PRJ-NEIHU-021"]).toMatchObject({
+          observationType: "RECONCILED_ACTUAL_COST",
+          observationLabel: labels[1],
+        });
+        for (const key of ["__ACTIVE_PROJECT__", "PRJ-NEIHU-021"]) {
+          const value = cells[key]!;
+          const html = renderToStaticMarkup(
+            createElement(ComparisonCell, {
+              cell: value,
+              copy: getComparisonCopy(locale),
+              triggerId: "basis-test",
+              onOpenClaim: () => {},
+            }),
+          );
+          expect(html).toContain(value.observationLabel!);
+          expect(html).toContain(
+            `aria-label="${getComparisonCopy(locale).table.evidenceState}: ${value.observationLabel}`,
+          );
+          expect(html).not.toContain(key === "__ACTIVE_PROJECT__" ? labels[1]! : labels[0]!);
+        }
+      }
+      expect(row(view, "overall-actual")?.cells.__ACTIVE_PROJECT__?.secondary).toContain(
+        "NT$12,650,000",
+      );
+      expect(row(view, "IMPORTED_STONE-ACTUAL")?.cells.__ACTIVE_PROJECT__?.secondary).toContain(
+        "NT$2,360,000",
+      );
+      expect(row(view, "overall-quoted")?.cells.__ACTIVE_PROJECT__).toMatchObject({
+        observationType: "QUOTED_PRICE",
+        observationLabel: labels[2],
+      });
+      expect(row(view, "supplier-context")?.cells["PRJ-NEIHU-021"]).toMatchObject({
+        observationType: "SUPPLIER_OFFER",
+        observationLabel: labels[3],
+      });
+    },
+  );
 });

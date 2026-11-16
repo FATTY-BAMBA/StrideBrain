@@ -5,6 +5,7 @@ import {
   parseInternalReviewRoute,
   projectActionsHref,
   reviewReturnContext,
+  reviewDraftHref,
   setReviewDraft,
 } from "@/modules/internal-review-experience/route-state";
 
@@ -106,6 +107,48 @@ describe("Stage 8 review and receipt route restoration", () => {
       dueDate: "",
     });
     expect(params.get("run")).toBe("cmprun_1");
+  });
+
+  it("repairs a stale pre-proposal URL and merges consecutive canonical draft edits", () => {
+    const canonical = internalReviewHref("en", "PRJ-ACTIVE", source, {
+      proposalKey: "proposal_1",
+      draft: { assigneeKey: "none", dueDate: "" },
+    });
+    const stale = internalReviewHref("en", "PRJ-ACTIVE", source);
+    const title = reviewDraftHref(canonical, stale, { titleKey: "REVIEW" });
+    const rationale = reviewDraftHref(canonical, title, { rationaleKey: "CHECK" });
+    const url = new URL(rationale, "http://localhost");
+    expect(parseInternalReviewRoute(Object.fromEntries(url.searchParams))).toMatchObject({
+      proposalKey: "proposal_1",
+      draft: { titleKey: "REVIEW", rationaleKey: "CHECK", assigneeKey: "none", dueDate: "" },
+    });
+    expect(reviewReturnContext(Object.fromEntries(url.searchParams))).toEqual(source.returnContext);
+  });
+
+  it("never adopts another proposal, immutable run pair or pathname for an active draft", () => {
+    const canonical = internalReviewHref("en", "PRJ-ACTIVE", source, { proposalKey: "proposal_1" });
+    for (const [key, value] of [
+      ["proposal", "proposal_2"],
+      ["run", "cmprun_2"],
+      ["economics", "econrun_2"],
+    ]) {
+      const current = new URL(canonical, "http://localhost");
+      current.searchParams.set(key!, value!);
+      current.searchParams.set("reviewRationale", "FOREIGN");
+      const result = new URL(
+        reviewDraftHref(canonical, current.href, { titleKey: "REVIEW" }),
+        current,
+      );
+      expect(result.searchParams.get(key!)).toBe(
+        new URL(canonical, current).searchParams.get(key!),
+      );
+      expect(result.searchParams.has("reviewRationale")).toBe(false);
+    }
+    const foreignPath = new URL(canonical, "http://localhost");
+    foreignPath.pathname = "/en/projects/FOREIGN/compare";
+    expect(reviewDraftHref(canonical, foreignPath.href, { titleKey: "REVIEW" })).toContain(
+      "/en/projects/PRJ-ACTIVE/compare?",
+    );
   });
 
   it("bounds selected projects and retains only parsed evidence selectors", () => {
