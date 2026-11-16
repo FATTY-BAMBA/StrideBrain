@@ -1,0 +1,8 @@
+{
+  "command": "/tmp/sb029-cloud-qa/run-operator.sh preflight",
+  "started_at": "2026-11-16T03:49:14.970529+00:00",
+  "completed_at": "2026-11-16T03:49:15.370026+00:00",
+  "duration_seconds": 0.4,
+  "exit_code": 0,
+  "output": "25-operator-preflight.log"
+}

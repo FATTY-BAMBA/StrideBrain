@@ -1,0 +1,8 @@
+{
+  "command": "python3 foundry/tasks/SB-029/cloud-qa/prepare-runtime.py --check",
+  "started_at": "2026-11-16T03:51:27.224593+00:00",
+  "completed_at": "2026-11-16T03:51:27.305302+00:00",
+  "duration_seconds": 0.081,
+  "exit_code": 1,
+  "output": "27-post-build-source.log"
+}

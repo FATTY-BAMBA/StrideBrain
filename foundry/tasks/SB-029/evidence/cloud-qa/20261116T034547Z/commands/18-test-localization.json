@@ -1,0 +1,8 @@
+{
+  "command": "/tmp/sb029-cloud-qa/run.sh npm run test:localization",
+  "started_at": "2026-11-16T03:50:59.589587+00:00",
+  "completed_at": "2026-11-16T03:51:00.943655+00:00",
+  "duration_seconds": 1.354,
+  "exit_code": 0,
+  "output": "18-test-localization.log"
+}

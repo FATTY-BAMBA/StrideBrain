@@ -1,0 +1,12 @@
+
+> stridebrain@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.10 /workspace/sb029-cloud-qa
+
+
+ Test Files  57 passed (57)
+      Tests  436 passed (436)
+   Start at  11:48:46
+   Duration  133.17s (transform 2.15s, setup 0ms, import 4.23s, tests 134.41s, environment 9ms)

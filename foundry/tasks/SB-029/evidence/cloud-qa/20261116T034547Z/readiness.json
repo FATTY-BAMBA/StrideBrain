@@ -1,0 +1,49 @@
+{
+  "run_id": "20261116T034547Z",
+  "source_branch": "build/sb-029-governed-internal-review",
+  "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+  "application_commit": "4c13f726bb75f4a31d263eb6e54622224807d019",
+  "application_fingerprint_sha256": "7fe5157f84f9c88023462ec1e958b62a53bcdb5aef30eb0dc4ac95dfdac85920",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9jZGJmMWVhOWQ5NDQ4MTkxOTg3ODhmMzFlMzMxMDI0ZA",
+  "production_build_id": "NrPF3g6uij46utRxxoxjJ",
+  "status": "PREVIEW_READY",
+  "recorded_at": "2026-11-16T03:52:00.877170+00:00",
+  "local_preview_url": "http://localhost:3000",
+  "server_command": "/tmp/sb029-cloud-qa/run.sh node node_modules/next/dist/bin/next start --hostname localhost --port 3000",
+  "server_session_id": 8894,
+  "http_readiness": {
+    "en": 200,
+    "zh-TW": 200,
+    "authenticated": false,
+    "browser_pass_credit": false
+  },
+  "deterministic_tests": {
+    "files": 57,
+    "passed": 436,
+    "failed": 0
+  },
+  "localization_tests": {
+    "files": 4,
+    "passed": 11
+  },
+  "production_audit_vulnerabilities": 0,
+  "generated_file_restoration": {
+    "file": "next-env.d.ts",
+    "reason": "Next build regenerated type references/comments only; inspected diff and restored exact source bytes per README.",
+    "verification": "commands/29-source-restored.json"
+  },
+  "synthetic_organizations": [
+    "HORIZON_ATELIER",
+    "NORTHERN_STUDIO"
+  ],
+  "applied_migrations": 8,
+  "initial_business_counts": {
+    "Action": 0,
+    "ProposedAction": 0,
+    "InternalReviewReceipt": 0,
+    "AuditEvent": 0
+  },
+  "active_immutability_triggers": 4,
+  "prior_runtime_reused": false,
+  "prior_browser_state_required": false
+}

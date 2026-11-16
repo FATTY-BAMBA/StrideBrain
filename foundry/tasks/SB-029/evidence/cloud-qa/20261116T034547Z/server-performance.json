@@ -1,0 +1,208 @@
+{
+  "methodology": "30 unique immutable pairs/proposals; one excluded warmup; nearest-rank p95; server duration excluding network; actual Prisma query events",
+  "proposal": {
+    "samples": 30,
+    "p50": 103.60344599999371,
+    "p95": 152.74623600000632,
+    "max": 162.0830449999994
+  },
+  "confirmation": {
+    "samples": 30,
+    "p50": 117.71645500000159,
+    "p95": 145.37778299999627,
+    "max": 171.49062599999888
+  },
+  "proposalQueryCounts": [
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110
+  ],
+  "confirmationQueryCounts": [
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131
+  ],
+  "slowestConfirmationQueries": [
+    {
+      "query": "SELECT \"public\".\"Document\".\"id\", \"public\".\"Document\".\"projectId\" FROM \"public\".\"Document\" WHERE ((\"public\".\"Document\".\"organizationId\" = $1 AND \"public\".\"Document\".\"documentType\" = $2) AND \"public\".\"Document\".\"projectId\" IN ($3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26)) ORDER BY \"public\".\"Document\".\"businessKey\" ASC OFFSET $27",
+      "duration": 3.785707999995793
+    },
+    {
+      "query": "COMMIT",
+      "duration": 2.934864999988349
+    },
+    {
+      "query": "SELECT \"public\".\"Quote\".\"id\", \"public\".\"Quote\".\"businessKey\", \"public\".\"Quote\".\"projectId\" FROM \"public\".\"Quote\" WHERE (\"public\".\"Quote\".\"organizationId\" = $1 AND \"public\".\"Quote\".\"projectId\" IN ($2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25)) ORDER BY \"public\".\"Quote\".\"createdAt\" DESC OFFSET $26",
+      "duration": 2.9301459999987856
+    },
+    {
+      "query": "SELECT \"public\".\"Material\".\"id\", \"public\".\"Material\".\"businessKey\" FROM \"public\".\"Material\" WHERE \"public\".\"Material\".\"id\" IN ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13) OFFSET $14",
+      "duration": 2.827383000010741
+    },
+    {
+      "query": "SELECT \"public\".\"ProjectAssignment\".\"id\", \"public\".\"ProjectAssignment\".\"organizationId\", \"public\".\"ProjectAssignment\".\"projectId\", \"public\".\"ProjectAssignment\".\"canReadActuals\", \"public\".\"ProjectAssignment\".\"canCreateAction\", \"public\".\"ProjectAssignment\".\"membershipId\" FROM \"public\".\"ProjectAssignment\" WHERE \"public\".\"ProjectAssignment\".\"membershipId\" IN ($1,$2,$3) OFFSET $4",
+      "duration": 2.659897000005003
+    }
+  ],
+  "slowestReadPlan": [
+    {
+      "QUERY PLAN": [
+        {
+          "Plan": {
+            "Node Type": "Sort",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 6.93,
+            "Total Cost": 6.99,
+            "Plan Rows": 24,
+            "Plan Width": 51,
+            "Actual Startup Time": 0.038,
+            "Actual Total Time": 0.04,
+            "Actual Rows": 24,
+            "Actual Loops": 1,
+            "Sort Key": [
+              "\"businessKey\""
+            ],
+            "Sort Method": "quicksort",
+            "Sort Space Used": 26,
+            "Sort Space Type": "Memory",
+            "Shared Hit Blocks": 4,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Plans": [
+              {
+                "Node Type": "Seq Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Relation Name": "Document",
+                "Alias": "Document",
+                "Startup Cost": 0.06,
+                "Total Cost": 6.38,
+                "Plan Rows": 24,
+                "Plan Width": 51,
+                "Actual Startup Time": 0.01,
+                "Actual Total Time": 0.025,
+                "Actual Rows": 24,
+                "Actual Loops": 1,
+                "Filter": "((\"organizationId\" = 'org_horizon'::text) AND (\"documentType\" = 'PROJECT_SUMMARY'::text) AND (\"projectId\" = ANY ('{prj_banqiao_015,prj_daan_016,prj_hist_001,prj_hist_002,prj_hist_003,prj_hist_004,prj_hist_005,prj_hist_006,prj_hist_007,prj_hist_008,prj_hist_009,prj_hist_010,prj_hist_011,prj_hist_012,prj_hist_013,prj_hist_014,prj_hist_015,prj_hist_016,prj_hist_017,prj_hist_018,prj_nanjing_023,prj_neihu_021,prj_songshan_020,prj_zhongshan_018}'::text[])))",
+                "Rows Removed by Filter": 92,
+                "Shared Hit Blocks": 4,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+              }
+            ]
+          },
+          "Planning": {
+            "Shared Hit Blocks": 0,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0
+          },
+          "Planning Time": 0.084,
+          "Triggers": [],
+          "Execution Time": 0.05
+        }
+      ]
+    }
+  ],
+  "evidenceBatching": {
+    "initialReferences": 15,
+    "addedReferences": 20,
+    "initialQueries": 21,
+    "expandedQueries": 21
+  },
+  "assigneeBatching": {
+    "addedEligibleAssignees": 20,
+    "initialQueries": 110,
+    "expandedQueries": 110
+  },
+  "concurrentConfirmation": {
+    "samples": 30,
+    "p50": 217.3852629999892,
+    "p95": 248.4790720000019,
+    "max": 256.1053580000007
+  },
+  "concurrentProtocol": "10 batches \u00d7 3 independent proposals, unique immutable run pair per proposal",
+  "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+  "application_fingerprint_sha256": "7fe5157f84f9c88023462ec1e958b62a53bcdb5aef30eb0dc4ac95dfdac85920",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9jZGJmMWVhOWQ5NDQ4MTkxOTg3ODhmMzFlMzMxMDI0ZA",
+  "classification": "SERVER_POSTGRESQL_ONLY_NOT_BROWSER",
+  "raw_duration_samples_available": false,
+  "raw_duration_samples_note": "Committed harness records distributions and query-count samples, not individual duration samples.",
+  "isolated_test_database": true
+}

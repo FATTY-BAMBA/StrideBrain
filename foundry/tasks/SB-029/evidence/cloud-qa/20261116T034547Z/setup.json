@@ -1,0 +1,29 @@
+{
+  "checked_out_in_new_worktree": true,
+  "source_tree_clean_before_setup": true,
+  "managed_cloud_environment_matches": true,
+  "configured_cloud_secrets": [],
+  "node_version": "v24.22.1",
+  "npm_version": "11.9.0",
+  "docker_server_version": "29.9.2",
+  "runtime_initialization": {
+    "command": "python3 foundry/tasks/SB-029/cloud-qa/prepare-runtime.py --initialize",
+    "exit_code": 0,
+    "runtime_directory_permissions": "0700",
+    "credential_file_permissions": "0600",
+    "new_random_credentials": true,
+    "credentials_printed": false
+  },
+  "container_absence_check": {
+    "command": "docker --host=unix:///var/run/docker.sock container inspect --format '{{.Id}}' stridebrain-sb029-cloud-qa",
+    "exit_code": 1,
+    "output": "Error response from daemon: No such container: stridebrain-sb029-cloud-qa"
+  },
+  "container_create": {
+    "command": "docker --host=unix:///var/run/docker.sock run --detach --name stridebrain-sb029-cloud-qa --label stridebrain.task=SB-029 --env-file /tmp/sb029-cloud-qa/postgres.env --publish 127.0.0.1:54329:5432 postgres:17",
+    "exit_code": 0,
+    "container_id": "b55c1b5cee46ffc69ced76487ddb6918535c6a0a923d8645306db2585f5f0739",
+    "new_volume": true,
+    "host_data_mount": false
+  }
+}

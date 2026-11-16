@@ -1,0 +1,16 @@
+BEGIN
+ businessKey | status | evidence_references | has_evidence_snapshot | has_content_snapshot | proposal_status | proposal_consumed | success_audit_count | matching_receipt_count
+-------------+--------+---------------------+-----------------------+----------------------+-----------------+-------------------+---------------------+------------------------
+(0 rows)
+
+ actions_without_receipt
+-------------------------
+                       0
+(1 row)
+
+ receipts_without_action
+-------------------------
+                       0
+(1 row)
+
+COMMIT

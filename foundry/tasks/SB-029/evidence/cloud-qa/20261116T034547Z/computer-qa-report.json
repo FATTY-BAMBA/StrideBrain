@@ -1,0 +1,1417 @@
+{
+  "version": "sb029-cloud-computer-qa-report.v1",
+  "task": "SB-029",
+  "run_id": "20261116T034547Z",
+  "status": "BLOCKED",
+  "source_branch": "build/sb-029-governed-internal-review",
+  "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+  "application_commit": "4c13f726bb75f4a31d263eb6e54622224807d019",
+  "application_fingerprint_sha256": "7fe5157f84f9c88023462ec1e958b62a53bcdb5aef30eb0dc4ac95dfdac85920",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9jZGJmMWVhOWQ5NDQ4MTkxOTg3ODhmMzFlMzMxMDI0ZA",
+  "evidence_branch": "qa/sb-029-cloud-20261116T034547Z",
+  "started_at": "2026-11-16T03:45:47Z",
+  "case_results": [
+    {
+      "id": "QA-01",
+      "name": "Authorized preparation is preparatory only",
+      "status": "BLOCKED",
+      "expected": [
+        "All text comes from verified structured claims and exact authorized evidence.",
+        "No Action, successful business AuditEvent, or success receipt exists before explicit confirmation.",
+        "No model/provider service is needed."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei",
+        "finance",
+        "admin"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-02",
+      "name": "Bounded edits and mandatory content",
+      "status": "BLOCKED",
+      "expected": [
+        "Exact approved alternatives and content bounds match build-contract.md; invalid edits cannot create an action.",
+        "Mandatory verified statements and uncertainty cannot be removed or contradicted.",
+        "Errors are localized, associated with fields, and focus reaches the first invalid field or linked summary.",
+        "Draft fields survive recoverable validation failures."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-03",
+      "name": "Explicit confirmation and durable receipt",
+      "status": "BLOCKED",
+      "expected": [
+        "Exactly one Action, authorized evidence linkage/snapshot, append-only AuditEvent, consumed proposal, and durable receipt/idempotency state commit together.",
+        "Receipt has safe business key, title, project, assignee/unassigned, due date, OPEN status, creator/time, source runs, authorized evidence count, and both return links.",
+        "Receipt heading receives focus and is not replaced by a toast-only result.",
+        "Project Workspace shows the persisted action.",
+        "A later source freshness change does not remove a committed receipt when current source/project authorization still holds; access loss instead returns a neutral denied view."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei",
+        "finance",
+        "admin"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-04",
+      "name": "Cancel, Escape, and evidence round trip",
+      "status": "BLOCKED",
+      "expected": [
+        "Evidence opens through the Stage 7 authorized panel with exact claim/source meaning.",
+        "Review draft and comparison selection survive evidence navigation where the contract permits.",
+        "Exactly one modal focus trap is active; evidence closes back to the selected review field/link and retained draft.",
+        "Focus returns to the action trigger on cancel; no Action or successful audit is created."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-05",
+      "name": "Locale and route restoration",
+      "status": "BLOCKED",
+      "expected": [
+        "Run, enrichment, validated selected projects, evidence context, locale, and return context survive.",
+        "Route/locale changes do not silently recalculate results or execute a write.",
+        "Edits are preserved only as bounded draft state and cleared on receipt/cancel/expiry/access loss.",
+        "Locale controls are reachable within the review/receipt focus boundary and preserve approved option identity without changing the confirmation payload."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-06",
+      "name": "Retry, double submit, and replay",
+      "status": "BLOCKED",
+      "expected": [
+        "Identical retry shows the same durable receipt with localized duplicate/replay state.",
+        "Same key with different payload is rejected; consumed proposal cannot create another action.",
+        "A malformed or different client-generated key cannot replace the stored server-issued key; locale alone is not a payload conflict.",
+        "Independent database evidence proves one Action and one success AuditEvent."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-07",
+      "name": "Viewer and unauthenticated denial",
+      "status": "BLOCKED",
+      "expected": [
+        "No sensitive proposal fields, candidate people, action titles/IDs/counts, economics, or source metadata leak.",
+        "Direct proposal/create attempts deny before sensitive reads or writes.",
+        "Public response does not disclose missing versus inaccessible objects."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "viewer"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-08",
+      "name": "Cross-tenant selectors",
+      "status": "BLOCKED",
+      "expected": [
+        "Neutral outcomes contain no hidden names, IDs, values, counts, source titles, or exact exclusion reasons.",
+        "No action is created and no organization or role value supplied by the browser becomes authority."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei",
+        "northern"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-09",
+      "name": "Assignee authorization",
+      "status": "BLOCKED",
+      "expected": [
+        "No per-person query waterfall; candidates meet same-organization, active, project, assignment, and sensitive-evidence requirements.",
+        "No-assign user cannot browse/select arbitrary people.",
+        "Assignee-unavailable state is localized, safe, associated with selection, and creates nothing.",
+        "Locked/default-only assignee failure has a localized linked error region; focus falls back to that region when no editable assignee input exists."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei",
+        "mei_no_assign"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-10",
+      "name": "Quote, project, and run staleness",
+      "status": "BLOCKED",
+      "expected": [
+        "STALE_COMPARISON or accepted REFRESH_REQUIRED mapping; no automatic refresh-and-continue.",
+        "No Action, partial evidence, successful audit, consumed proposal, or false receipt.",
+        "Refresh guidance is clear in both locales."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-11",
+      "name": "Evidence authority, access, and availability change",
+      "status": "BLOCKED",
+      "expected": [
+        "Safe EVIDENCE_UNAVAILABLE or accepted stale outcome; no business write.",
+        "Lost-access source details are removed; stale or unsupported evidence never becomes a supported conclusion."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-12",
+      "name": "Permission downgrade during review",
+      "status": "BLOCKED",
+      "expected": [
+        "Fresh trusted RuntimeContext takes effect; localized authorization/access-change state.",
+        "Stale client capability hints do not authorize any read/write and sensitive draft data is cleared as required."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-13",
+      "name": "Expiry and consumed proposal",
+      "status": "BLOCKED",
+      "expected": [
+        "Distinct safe expiry/consumed states and no second action.",
+        "Retry with the original key/payload returns the same authorized receipt."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-14",
+      "name": "Safe service failure and transaction rollback",
+      "status": "BLOCKED",
+      "expected": [
+        "Safe failure with no sensitive internal error or false success.",
+        "Independent database test proves no partial Action/evidence/AuditEvent/consumption/receipt at each injected step.",
+        "Corrected retry can complete once using accepted idempotency rules."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-15",
+      "name": "Keyboard, focus, semantics, and zoom",
+      "status": "BLOCKED",
+      "expected": [
+        "Logical focus order; no keyboard trap; date entry is keyboard usable; receipt heading or first error receives focus.",
+        "Warnings include text and icons; focus/contrast remain perceivable; content and controls remain reachable at zoom.",
+        "Reduced motion honors preference; automatic updates do not repeatedly steal focus."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei",
+        "viewer"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-16",
+      "name": "Mobile and Taiwan Traditional Chinese layout",
+      "status": "BLOCKED",
+      "expected": [
+        "Review/receipt uses full-height mobile mode with single-column readable content and reachable controls.",
+        "No clipped mandatory warnings, overlapping labels, unintended horizontal scroll, or pointer-only date interaction.",
+        "Natural Taiwan Traditional Chinese parity; no English developer/provider/policy plumbing in normal Chinese mode.",
+        "Report inherited Stage 3/7 localization issues separately; a Stage 8 path still fails if the exposed inherited defect blocks its required evidence/review journey."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-17",
+      "name": "Browser and PostgreSQL performance baseline",
+      "status": "BLOCKED",
+      "expected": [
+        "Server p95 proposal target at most 500 ms and confirmation target at most 800 ms excluding network transit.",
+        "No model request or per-evidence/per-assignee N+1; query counts remain bounded.",
+        "Report observed browser distribution honestly; do not apply server-only targets to network-inclusive measurements."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    },
+    {
+      "id": "QA-18",
+      "name": "Stage 0-7 regression smoke and excluded behavior",
+      "status": "BLOCKED",
+      "expected": [
+        "Prior deterministic comparison/evidence behavior remains intact and no unsupported approval/send/complete action appears.",
+        "No financial mutation, external communication, real data, provider selector, or new top-level surface."
+      ],
+      "steps_executed": [],
+      "actual": "Not executed: the common Cloud browser navigation prerequisite failed before a product page or persona could be reached.",
+      "persona": null,
+      "locale": null,
+      "viewport": null,
+      "screenshots": [],
+      "timings": [],
+      "severity": null,
+      "blocked_by": "CLOUD-INFRA-001",
+      "planned_personas": [
+        "mei",
+        "viewer"
+      ],
+      "planned_locales": [
+        "en",
+        "zh-TW"
+      ],
+      "planned_viewports": [
+        {
+          "key": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        {
+          "key": "tablet",
+          "width": 768,
+          "height": 1024,
+          "scale": 1
+        },
+        {
+          "key": "mobile",
+          "width": 390,
+          "height": 844,
+          "scale": 1
+        },
+        {
+          "key": "narrow_mobile",
+          "width": 320,
+          "height": 740,
+          "scale": 1
+        },
+        {
+          "key": "desktop_zoom",
+          "width": 1280,
+          "height": 800,
+          "zoom_percent": 200
+        }
+      ],
+      "blocker_evidence": [
+        "browser-blocker.json",
+        "screenshots/cloud-browser-blocked.jpg"
+      ],
+      "product_defect_established": false,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "source_commit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "production_build_id": "NrPF3g6uij46utRxxoxjJ"
+    }
+  ],
+  "historical_evidence_credit": false,
+  "product_changes_allowed": false,
+  "production_build_id": "NrPF3g6uij46utRxxoxjJ",
+  "verdict": "BLOCKED_INFRASTRUCTURE",
+  "completed_at": "2026-11-16T03:57:28.904429+00:00",
+  "preview_url": "http://localhost:3000",
+  "summary": {
+    "passed": 0,
+    "failed": 0,
+    "blocked": 18,
+    "not_run": 0,
+    "complete_browser_scenarios": 0
+  },
+  "findings": [
+    {
+      "id": "CLOUD-INFRA-001",
+      "type": "CLOUD_BROWSER_CONTROL_UNAVAILABLE",
+      "status": "OPEN",
+      "gate_blocking": true,
+      "product_defect_established": false,
+      "product_severity": null,
+      "expected": "The task Cloud browser navigates to the verified localhost production preview through its documented APIs.",
+      "actual": "Both Cloud browser navigation calls returned Browser Use could not read requirements. Documented native input fallback returned an unavailable AT-SPI provider error. The actual Cloud tab remained about:blank.",
+      "observed_url": "about:blank",
+      "observed_at": "2026-11-16T03:54:28.950Z",
+      "environment_id": "ccarenv_b64_Y2NhcmVudl9jZGJmMWVhOWQ5NDQ4MTkxOTg3ODhmMzFlMzMxMDI0ZA",
+      "browser": {
+        "provider": "cdp",
+        "reported_name": "Chrome",
+        "native_window_name": "Chromium",
+        "tab_id": "1",
+        "viewport_screenshot_pixels": {
+          "width": 1212,
+          "height": 799
+        },
+        "requested_scenario_viewports_reached": false
+      },
+      "attempts": [
+        {
+          "order": 1,
+          "tool": "mcp__cua_repl.js",
+          "operation": "cua.createBrowserTab(\"cdp\", \"http://localhost:3000/en/projects/PRJ-XINYI-026\")",
+          "result": "Browser Use could not read requirements.",
+          "tool_wall_seconds": 11.706
+        },
+        {
+          "order": 2,
+          "operation": "cua.getState()",
+          "result": "Cloud tab 1 is about:blank; native Chromium window shows New Tab.",
+          "tool_wall_seconds": 5.9787
+        },
+        {
+          "order": 3,
+          "operation": "Documented Sky list_windows and get_screenshot",
+          "result": "Cloud desktop capture shows New Tab and about:blank; no application page.",
+          "tool_wall_seconds": 7.9518
+        },
+        {
+          "order": 4,
+          "operation": "Documented Sky keyboard/type/navigation batch to localhost",
+          "result": "AT-SPI provider with process ID 5762 is unavailable for X11 window 27262979; registry reported 0 provider connections with process IDs [] (up to 32 shown); 0 disconnected during lookup",
+          "tool_wall_seconds": 5.8739
+        },
+        {
+          "order": 5,
+          "operation": "cua.getBrowser({id:\"cdp\"}); read supported API and browser-troubleshooting; bind existing task-created tab",
+          "result": "Browser API documentation became available. No external browser or standalone CDP was used."
+        },
+        {
+          "order": 6,
+          "operation": "qaTab.goto(\"http://localhost:3000/en/projects/PRJ-XINYI-026\") through documented Cloud browser API",
+          "result": "Browser Use could not read requirements.",
+          "tool_wall_seconds": 6.9072
+        },
+        {
+          "order": 7,
+          "operation": "Documented tabs.list, tab.screenshot, tab.url",
+          "result": "Tab still about:blank. Actual JPEG saved; no credentials or application content present.",
+          "screenshot": "screenshots/cloud-browser-blocked.jpg",
+          "tool_wall_seconds": 5.9054
+        }
+      ],
+      "auth": {
+        "attempted": false,
+        "operator_sessions_issued": 0,
+        "bootstrap_service_started": false,
+        "browser_state_injected": false,
+        "reason": "Navigation prerequisite failed before authentication; stopped rather than issuing or exposing bootstrap credentials."
+      },
+      "completion_summary": "Confirmed Cloud browser navigation blocker",
+      "recovery_required": "Restore documented Cloud browser navigation/input in this environment; then independently resume the entire browser matrix with newly issued fixed-persona sessions. Reverify source/build and current synthetic database first. If using another task, recreate all runtime state afresh."
+    }
+  ],
+  "tested_personas": [],
+  "tested_locales": [],
+  "tested_viewports": [],
+  "tested_routes": [],
+  "screenshots": [
+    {
+      "path": "screenshots/cloud-browser-blocked.jpg",
+      "classification": "ACTUAL_CLOUD_INFRASTRUCTURE_EVIDENCE_ONLY",
+      "url": "about:blank",
+      "persona": null,
+      "locale": null,
+      "width": 1212,
+      "height": 799,
+      "timestamp": "2026-11-16T03:54:28.950Z",
+      "browser_scenario_credit": false
+    }
+  ],
+  "browser_performance": {
+    "status": "BLOCKED",
+    "samples": [],
+    "sample_count": 0,
+    "proposal_p50_ms": null,
+    "proposal_p95_ms": null,
+    "confirmation_p50_ms": null,
+    "confirmation_p95_ms": null,
+    "reason": "No product page could be reached; tool-call duration is not application browser latency."
+  },
+  "server_performance_evidence": "server-performance.json",
+  "deterministic_checks": {
+    "test_files": 57,
+    "tests_passed": 436,
+    "tests_failed": 0,
+    "localization_tests_passed": 11,
+    "production_audit_vulnerabilities": 0,
+    "browser_credit": false,
+    "lint_warnings": [
+      {
+        "path": "prisma.config.ts",
+        "line": 5,
+        "rule": "import/no-anonymous-default-export",
+        "errors": 0
+      }
+    ],
+    "evidence": "commands/"
+  },
+  "authorization_non_disclosure": {
+    "browser_status": "BLOCKED",
+    "browser_personas_authenticated": [],
+    "deterministic_suite": "PASS; includes existing authorization/non-disclosure/PostgreSQL invariants, not a browser authorization result.",
+    "browser_state_injection": false,
+    "cookie_controls_weakened": false,
+    "secrets_exposed": false
+  },
+  "bilingual_findings": {
+    "browser_status": "BLOCKED",
+    "en": "Neither English nor Taiwan Traditional Chinese application behavior was observed. Catalog parity checks passed separately.",
+    "zh-TW": "雲端瀏覽器無法開啟本次預覽，英文及臺灣繁體中文的實際操作、版面與錯誤訊息均未完成驗證。語系測試通過不代表瀏覽器驗收通過。"
+  },
+  "accessibility_findings": {
+    "status": "BLOCKED",
+    "keyboard": "NOT_RUN",
+    "focus": "NOT_RUN",
+    "semantics": "NOT_RUN",
+    "zoom_200_percent": "NOT_RUN",
+    "reduced_motion": "NOT_RUN",
+    "mobile_tablet": "NOT_RUN",
+    "product_defects_established": []
+  },
+  "database_observations": {
+    "read_only": true,
+    "before": "commands/30-pre-browser-database.log",
+    "after": "commands/34-final-database.log",
+    "consistency": "commands/35-action-consistency.log",
+    "before_counts": {
+      "Action": 0,
+      "ProposedAction": 0,
+      "InternalReviewReceipt": 0,
+      "AuditEvent": 0,
+      "ConsumedProposal": 0,
+      "ActionWithEvidenceSnapshot": 0
+    },
+    "after_counts": {
+      "Action": 0,
+      "ProposedAction": 0,
+      "InternalReviewReceipt": 0,
+      "AuditEvent": 0,
+      "ConsumedProposal": 0,
+      "ActionWithEvidenceSnapshot": 0
+    },
+    "actions_without_receipt": 0,
+    "receipts_without_action": 0,
+    "qualification": "Zero rows and zero writes do not prove a browser transaction or a successfully created receipt. The separate invariant suite exercised transaction semantics in its own disposable test database."
+  },
+  "restoration_evidence": "restoration.json",
+  "product_defects": [],
+  "limitations": [
+    "All 18 browser scenarios are incomplete; required review/receipt/error/mobile screenshots do not exist for this run.",
+    "No browser performance samples, persona authorization observations, bilingual UI findings, or accessibility results are available.",
+    "The actual screenshot is only the blocked blank Cloud tab; historical screenshots were not reused.",
+    "Committed test harness records server distributions and query-count samples, not individual raw server duration samples.",
+    "Localhost and runtime state are specific to this Cloud task; do not reuse them from another task.",
+    "Synthetic L1 preview only; source-lock contention and finite wording limits remain as documented in the accepted contract."
+  ],
+  "review_request": {
+    "status": "REQUESTED_IN_EVIDENCE_HANDOFF",
+    "recipient_role": "Orchestrator / independent QA evidence reviewer",
+    "request": "Independently review this evidence-only branch: source/build identity, isolation and sanitized artifacts, fresh deterministic checks, actual browser blocker and all 18 BLOCKED outcomes. Coordinate browser infrastructure recovery and a complete independent browser rerun. This request does not authorize merge or release.",
+    "external_message_sent": false
+  },
+  "merge_or_release_readiness_claimed": false
+}

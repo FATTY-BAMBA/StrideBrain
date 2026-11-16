@@ -1,0 +1,8 @@
+{
+  "command": "curl --silent --show-error --output /tmp/sb029-cloud-qa/readiness-zh.html --write-out '%{http_code}\\n' http://localhost:3000/zh-TW/projects/PRJ-XINYI-026",
+  "started_at": "2026-11-16T03:52:00.791309+00:00",
+  "completed_at": "2026-11-16T03:52:00.818233+00:00",
+  "duration_seconds": 0.027,
+  "exit_code": 0,
+  "output": "32-http-zh.log"
+}

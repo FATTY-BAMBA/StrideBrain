@@ -1,0 +1,13 @@
+foundry/tasks/SB-029/brief.md
+foundry/tasks/SB-029/cloud-qa-task.md
+foundry/tasks/SB-029/cloud-qa/README.md
+foundry/tasks/SB-029/cloud-qa/operator.mjs
+foundry/tasks/SB-029/cloud-qa/prepare-runtime.py
+foundry/tasks/SB-029/cloud-qa/source-loader.mjs
+foundry/tasks/SB-029/cloud-qa/with-preview-env.mjs
+foundry/tasks/SB-029/computer-qa-handoff.md
+foundry/tasks/SB-029/computer-qa-plan.yaml
+foundry/tasks/SB-029/evidence/ci-2a23d31.json
+foundry/tasks/SB-029/independent-review.md
+foundry/tasks/SB-029/release-scorecard.md
+foundry/tasks/SB-029/state.json

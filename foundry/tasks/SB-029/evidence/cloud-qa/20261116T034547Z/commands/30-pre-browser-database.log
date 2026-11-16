@@ -1,0 +1,36 @@
+BEGIN
+          database          |        postgres_version
+----------------------------+---------------------------------
+ stridebrain_stage8_preview | 17.12 (Debian 17.12-1.pgdg13+1)
+(1 row)
+
+   businessKey   | dataClassification
+-----------------+--------------------
+ HORIZON_ATELIER | DEMO_SYNTHETIC
+ NORTHERN_STUDIO | DEMO_SYNTHETIC
+(2 rows)
+
+ applied_migrations
+--------------------
+                  8
+(1 row)
+
+           entity           | count
+----------------------------+-------
+ Action                     |     0
+ ProposedAction             |     0
+ InternalReviewReceipt      |     0
+ AuditEvent                 |     0
+ ConsumedProposal           |     0
+ ActionWithEvidenceSnapshot |     0
+(6 rows)
+
+             tgname              | tgenabled
+---------------------------------+-----------
+ Action_stage8_immutable         | O
+ AuditEvent_append_only          | O
+ InternalReviewReceipt_immutable | O
+ ProposedAction_stage8_immutable | O
+(4 rows)
+
+COMMIT

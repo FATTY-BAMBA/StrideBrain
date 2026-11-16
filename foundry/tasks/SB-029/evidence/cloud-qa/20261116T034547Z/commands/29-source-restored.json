@@ -1,0 +1,8 @@
+{
+  "command": "python3 foundry/tasks/SB-029/cloud-qa/prepare-runtime.py --check",
+  "started_at": "2026-11-16T03:51:36.891287+00:00",
+  "completed_at": "2026-11-16T03:51:36.982972+00:00",
+  "duration_seconds": 0.092,
+  "exit_code": 0,
+  "output": "29-source-restored.log"
+}

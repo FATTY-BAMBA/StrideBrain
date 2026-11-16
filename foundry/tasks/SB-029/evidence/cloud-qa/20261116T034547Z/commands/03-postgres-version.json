@@ -1,0 +1,8 @@
+{
+  "command": "docker --host=unix:///var/run/docker.sock exec stridebrain-sb029-cloud-qa postgres --version",
+  "started_at": "2026-11-16T03:46:36.028352+00:00",
+  "completed_at": "2026-11-16T03:46:36.118100+00:00",
+  "duration_seconds": 0.09,
+  "exit_code": 0,
+  "output": "03-postgres-version.log"
+}

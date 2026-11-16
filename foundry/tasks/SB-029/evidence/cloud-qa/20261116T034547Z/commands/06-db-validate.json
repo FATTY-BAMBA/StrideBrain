@@ -1,0 +1,8 @@
+{
+  "command": "/tmp/sb029-cloud-qa/run.sh npm run db:validate",
+  "started_at": "2026-11-16T03:47:08.687401+00:00",
+  "completed_at": "2026-11-16T03:47:28.756016+00:00",
+  "duration_seconds": 20.069,
+  "exit_code": 0,
+  "output": "06-db-validate.log"
+}

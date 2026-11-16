@@ -1,0 +1,8 @@
+{
+  "command": "docker --host=unix:///var/run/docker.sock exec stridebrain-sb029-cloud-qa pg_isready -U stridebrain -d stridebrain_stage8_preview",
+  "started_at": "2026-11-16T03:46:35.771567+00:00",
+  "completed_at": "2026-11-16T03:46:35.987681+00:00",
+  "duration_seconds": 0.216,
+  "exit_code": 0,
+  "output": "02-db-ready.log"
+}

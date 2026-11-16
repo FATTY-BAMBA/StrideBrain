@@ -1,0 +1,8 @@
+{
+  "command": "/tmp/sb029-cloud-qa/run.sh npm run build",
+  "started_at": "2026-11-16T03:51:00.980635+00:00",
+  "completed_at": "2026-11-16T03:51:16.907646+00:00",
+  "duration_seconds": 15.927,
+  "exit_code": 0,
+  "output": "19-build.log"
+}

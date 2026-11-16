@@ -1,0 +1,8 @@
+{
+  "command": "/tmp/sb029-cloud-qa/run.sh npm run db:migrate",
+  "started_at": "2026-11-16T03:48:00.811028+00:00",
+  "completed_at": "2026-11-16T03:48:03.073620+00:00",
+  "duration_seconds": 2.263,
+  "exit_code": 0,
+  "output": "11-db-migrate.log"
+}

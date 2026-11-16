@@ -1,0 +1,8 @@
+{
+  "command": "docker --host=unix:///var/run/docker.sock inspect --format '{{.State.StartedAt}}' stridebrain-sb029-cloud-qa",
+  "started_at": "2026-11-16T03:48:55.132871+00:00",
+  "completed_at": "2026-11-16T03:48:55.158682+00:00",
+  "duration_seconds": 0.026,
+  "exit_code": 0,
+  "output": "24-container-start.log"
+}

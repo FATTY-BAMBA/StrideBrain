@@ -1,0 +1,8 @@
+{
+  "command": "/tmp/sb029-cloud-qa/run.sh npm run db:seed",
+  "started_at": "2026-11-16T03:47:35.284311+00:00",
+  "completed_at": "2026-11-16T03:47:44.019806+00:00",
+  "duration_seconds": 8.736,
+  "exit_code": 0,
+  "output": "09-db-seed.log"
+}

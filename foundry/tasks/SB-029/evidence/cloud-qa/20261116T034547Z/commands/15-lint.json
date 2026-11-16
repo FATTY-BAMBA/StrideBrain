@@ -1,0 +1,8 @@
+{
+  "command": "/tmp/sb029-cloud-qa/run.sh npm run lint",
+  "started_at": "2026-11-16T03:48:31.730935+00:00",
+  "completed_at": "2026-11-16T03:48:38.947966+00:00",
+  "duration_seconds": 7.217,
+  "exit_code": 0,
+  "output": "15-lint.log"
+}

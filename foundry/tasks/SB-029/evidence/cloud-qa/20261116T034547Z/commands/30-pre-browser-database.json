@@ -1,0 +1,8 @@
+{
+  "command": "docker --host=unix:///var/run/docker.sock exec -i stridebrain-sb029-cloud-qa psql -X -v ON_ERROR_STOP=1 -U stridebrain -d stridebrain_stage8_preview",
+  "started_at": "2026-11-16T03:51:37.021019+00:00",
+  "completed_at": "2026-11-16T03:51:37.319007+00:00",
+  "duration_seconds": 0.298,
+  "exit_code": 0,
+  "output": "30-pre-browser-database.log"
+}

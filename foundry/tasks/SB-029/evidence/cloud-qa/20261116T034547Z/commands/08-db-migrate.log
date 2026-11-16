@@ -1,0 +1,41 @@
+
+> stridebrain@0.1.0 db:migrate
+> npx --yes prisma@7.10.1 migrate deploy --config prisma.config.ts
+
+Loaded Prisma config from prisma.config.ts.
+
+Prisma schema loaded from prisma/schema.prisma.
+Datasource "db": PostgreSQL database "stridebrain_stage8_preview", schema "public" at "localhost:54329"
+
+8 migrations found in prisma/migrations
+
+Applying migration `0001_stridegraph_foundation`
+Applying migration `0002_financial_authority_invariants`
+Applying migration `0003_runtime_authorization`
+Applying migration `0004_authorization_tenant_links`
+Applying migration `0005_remove_legacy_membership_capabilities`
+Applying migration `0006_stage5_economics_enrichment`
+Applying migration `0007_stage6_comparison_persistence_scales`
+Applying migration `0008_stage8_internal_review`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 0001_stridegraph_foundation/
+    └─ migration.sql
+  └─ 0002_financial_authority_invariants/
+    └─ migration.sql
+  └─ 0003_runtime_authorization/
+    └─ migration.sql
+  └─ 0004_authorization_tenant_links/
+    └─ migration.sql
+  └─ 0005_remove_legacy_membership_capabilities/
+    └─ migration.sql
+  └─ 0006_stage5_economics_enrichment/
+    └─ migration.sql
+  └─ 0007_stage6_comparison_persistence_scales/
+    └─ migration.sql
+  └─ 0008_stage8_internal_review/
+    └─ migration.sql
+
+All migrations have been successfully applied.

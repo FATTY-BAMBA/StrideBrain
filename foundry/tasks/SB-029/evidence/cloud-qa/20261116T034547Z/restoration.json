@@ -1,0 +1,26 @@
+{
+  "recorded_at": "2026-11-16T03:57:28.904429+00:00",
+  "browser_scenario_fixture_mutations": [],
+  "restoration_required": false,
+  "reason": "No browser scenario reached execution or fault injection.",
+  "operator_revoke_all": {
+    "exit_code": 0,
+    "revoked": 0,
+    "evidence": "commands/33-revoke-all.log"
+  },
+  "product_source_changes": false,
+  "product_policy_changes": false,
+  "historical_report_changes": false,
+  "next_generated_declaration_restored": true,
+  "preview_preserved": true,
+  "preview_server_session_id": 8894,
+  "container_preserved": "stridebrain-sb029-cloud-qa",
+  "public_deployment": false,
+  "vercel_changes": false,
+  "dns_changes": false,
+  "demo_domain_changes": false,
+  "real_data_used": false,
+  "external_parties_contacted": false,
+  "model_calls": false,
+  "test_database": "Existing invariant harness created and dropped its own disposable evaluation database. Existing Stage 6 test created a synthetic comparison/session in the preview; no browser session or comparison reused that state."
+}

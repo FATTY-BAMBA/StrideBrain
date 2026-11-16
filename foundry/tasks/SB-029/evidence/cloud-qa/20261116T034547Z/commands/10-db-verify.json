@@ -1,0 +1,8 @@
+{
+  "command": "/tmp/sb029-cloud-qa/run.sh npm run db:verify",
+  "started_at": "2026-11-16T03:47:44.071193+00:00",
+  "completed_at": "2026-11-16T03:48:00.760379+00:00",
+  "duration_seconds": 16.689,
+  "exit_code": 0,
+  "output": "10-db-verify.log"
+}
