@@ -506,7 +506,7 @@ Reviewed package SHA-256 values:
 | File | SHA-256 |
 |---|---|
 | `cloud-qa-task.md` | `4bc11d036c1cda9d74adbd8cc85e3f82d3c40e7cdec2ae3f140501c0695718a5` |
-| `cloud-qa/README.md` | `41408a08aa2d846b233850b01cb491a8f5092978323aa5c183363e1e6185ee03` |
+| `cloud-qa/README.md` | `2e6f1387bf6a5fcc65c4190314918ef4dc7f2b5ea72624b74e0c91a2461d0ad1` |
 | `cloud-qa/prepare-runtime.py` | `d1b186fbd3a036e798eda4ae374e9bb1fc87cc6f4ccea87720558d23bf40d321` |
 | `cloud-qa/operator.mjs` | `af1e9835920d4238518f67ee4a5bd5f143ed19d8f5e677810d5541be470b70ae` |
 | `cloud-qa/source-loader.mjs` | `2df76c32cf628cc487c54f498e3c3e240ad5415a3b700727a6b878bd30141d35` |
@@ -514,3 +514,8 @@ Reviewed package SHA-256 values:
 
 No blocking package finding remains. Final Stage 8 verdict, complete Computer QA
 and human merge/release approval remain pending.
+
+Post-push documentation correction: container existence inspection now prints
+only `.Id`; any ownership inspection is restricted to name/task-label fields,
+never full `Env`, avoiding accidental credential disclosure if a container exists.
+The README hash above reflects this reviewed correction; no runtime command was executed.

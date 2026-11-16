@@ -43,10 +43,12 @@ report the failure; do not remove an unrelated container or directory to retry.
 
 ## Create the fresh synthetic database and production build
 
-Before starting, `docker container inspect stridebrain-sb029-cloud-qa` must report
-that this container does not exist. If it exists, stop and inspect ownership
-without deleting/reusing it. Start a **new** PostgreSQL 17 container with no host
-data mount and only a loopback port:
+Before starting, `docker container inspect --format '{{.Id}}' stridebrain-sb029-cloud-qa`
+must report that this container does not exist. If it exists, stop without
+deleting/reusing it. Inspect ownership only through restricted container name
+and task-label fields, never full inspection output or `Env`, which may expose
+credentials. Start a **new** PostgreSQL 17 container with no host data mount and
+only a loopback port:
 
 ```sh
 docker run --detach --name stridebrain-sb029-cloud-qa --label stridebrain.task=SB-029 --env-file /tmp/sb029-cloud-qa/postgres.env --publish 127.0.0.1:54329:5432 postgres:17
