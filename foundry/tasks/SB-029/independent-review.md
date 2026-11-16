@@ -443,3 +443,74 @@ review. Human merge/release approval remains absent and mandatory.
 
 **Final independent verdict: not issued.** No merge or release readiness is
 claimed by this checkpoint.
+
+
+## Dedicated Cloud QA portability package review — PASS (package only)
+
+Reviewed on 2026-11-16T00:17:04Z against checked-out evidence checkpoint
+`2a23d31f46e0b6c7b465b3774ad765c81a3417eb`, before the portability-artifact
+commit. This verdict covers only the manual launch prompt, operator setup
+instructions, sanitized helper templates and corresponding handoff/plan changes.
+It is **not** the final Stage 8 implementation verdict or a browser-QA pass.
+
+The package contains no copied environment, session ledger, cookie, bootstrap
+URL, private signing secret or database password. The reviewer inspected only
+repository package files; no private files from `/tmp/sb029-preview` were read.
+Initialization generates fresh random database/session credentials, writes
+private files with mode 0600 in a mode-0700 directory, refuses existing runtime
+state and occupied ports, and requires executable helpers to match committed
+HEAD. Generated wrappers clear inherited managed environment values before
+loading the private file, preventing an existing host `DATABASE_URL` from
+redirecting migrations or business writes.
+
+The documented database is a newly created PostgreSQL 17 container with a
+loopback-only port and no reused data mount. An existing named container is a
+stop condition; the instructions contain no deletion or reuse of existing
+containers/databases. All eight migrations, repeated synthetic fixture/SQL
+checks, full deterministic commands and production build are required anew.
+The source verifier pins the tested application manifest and requires the prior
+evidence checkpoint as an ancestor, allowing only task-artifact changes after
+it. Actual portability HEAD and the **new** BUILD_ID must be recorded; historical
+source equivalence does not impersonate a new build or browser run.
+
+The operator calls the existing `DemoSessionService` for fixed synthetic
+memberships and sends its unchanged secure cookie through a short-lived,
+single-use loopback HTTP bootstrap. No browser-selected identity, new product
+login surface, cookie injection or weakened permission/origin rule is introduced.
+The prompt permits locators exposed by the documented Cloud browser tool while
+prohibiting standalone CDP/Playwright or browser-state injection as a bypass.
+Unsupported authentication/control returns BLOCKED.
+
+The revised handoff correctly distinguishes the historical environment from the
+newly authorized fresh Cloud task. It states that this package has created no
+task and executed no new browser QA. The historical `computer-qa-report.json`
+is unchanged and remains BLOCKED with zero complete scenario passes. New QA
+results must preserve it and live in a new evidence subtree. A separate
+`qa/sb-029-cloud-<UTC-run-id>` branch may contain only that subtree after path and
+credential review; the exact evidence commit must be returned. A sanitized,
+accessible artifact archive is the fallback. Local paths alone are explicitly
+insufficient across Cloud-task filesystems. No merge or self-approval is allowed.
+
+Independent checks executed successfully: read-only `prepare-runtime.py --check`,
+Python AST parse, `node --check` for all three JavaScript helpers, ESLint for
+those helpers, `git diff --check`, unchanged historical-report diff, and unchanged
+application source/schema/test/config diff against `4c13f726`. The verifier
+returned eight migrations and source manifest
+`7fe5157f84f9c88023462ec1e958b62a53bcdb5aef30eb0dc4ac95dfdac85920`.
+No initializer, container, build, issuer/session operation, browser or new task
+was started as part of this review. The launch instructions still require actual
+new-environment validation; static package review cannot establish runtime success.
+
+Reviewed package SHA-256 values:
+
+| File | SHA-256 |
+|---|---|
+| `cloud-qa-task.md` | `4bc11d036c1cda9d74adbd8cc85e3f82d3c40e7cdec2ae3f140501c0695718a5` |
+| `cloud-qa/README.md` | `41408a08aa2d846b233850b01cb491a8f5092978323aa5c183363e1e6185ee03` |
+| `cloud-qa/prepare-runtime.py` | `d1b186fbd3a036e798eda4ae374e9bb1fc87cc6f4ccea87720558d23bf40d321` |
+| `cloud-qa/operator.mjs` | `af1e9835920d4238518f67ee4a5bd5f143ed19d8f5e677810d5541be470b70ae` |
+| `cloud-qa/source-loader.mjs` | `2df76c32cf628cc487c54f498e3c3e240ad5415a3b700727a6b878bd30141d35` |
+| `cloud-qa/with-preview-env.mjs` | `f1c075da603842880f2d3bffc423b99fd3beea351319789be4a0d953086a7217` |
+
+No blocking package finding remains. Final Stage 8 verdict, complete Computer QA
+and human merge/release approval remain pending.

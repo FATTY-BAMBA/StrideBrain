@@ -13,7 +13,9 @@ Independent deterministic validation: all 16 commands passed, 436 tests includin
 
 The preview reached PREVIEW_READY. Task state is now BLOCKED at the Computer QA gate because direct CUA navigation failed twice with `Browser Use could not read requirements` and the documented desktop fallback reported an unavailable AT-SPI input provider. No complete browser scenario passed; final independent review and merge approval remain pending. This is recorded tool evidence, not an application failure.
 
-The URL is reachable only inside the existing StrideBrain cloud environment. A separate @Computer Work session must attach to that same environment/shared desktop before using localhost. If it cannot access this environment, stop and report the access limitation; do not publish a new deployment, change the demo domain, or interpret your own localhost as this preview.
+The URL above identifies the historical preview inside the existing StrideBrain cloud environment. It does not identify another task's localhost. The Product Director has now authorized a dedicated Cloud QA task to recreate a fresh isolated synthetic preview in its own environment. Use [cloud-qa-task.md](cloud-qa-task.md) as the copy-ready prompt and [cloud-qa/README.md](cloud-qa/README.md) for reproducible setup. Task-creation tooling is unavailable in the originating session, so this package has not created that new task. A human must launch it in Cloud mode. No public deployment or domain change is needed.
+
+The new task must fetch the named branch and record its actual portability HEAD. The prior evidence checkpoint is `2a23d31f46e0b6c7b465b3774ad765c81a3417eb`; application source remains pinned to `4c13f726bb75f4a31d263eb6e54622224807d019`. Only later task-artifact changes are accepted by the supplied verifier. Generate fresh private credentials, database and production build, record the new BUILD_ID, and keep the original blocked report immutable. No prior browser scenario gains pass credit. A same-environment session may still resume the historical preview if it can actually attach to it.
 
 Environment ID: `ccarenv_b64_Y2NhcmVudl9lOGNmYmQyY2I2ZjQ4MTkxYWVjZDY4Nzk0ZWE5NDBiNQ`.
 
@@ -34,7 +36,9 @@ Both HTTP workspace routes responded successfully; browser behavior remains to b
 
 Known limits: finite approved title/rationale wording; 30-minute proposal expiry; source-table locks suitable for the controlled demo; current caller must use a matching run permission fingerprint; baseline permits one economics enrichment per comparison. Historical Stage 3/7 presentation defects should be recorded separately and fixed only when they block the Stage 8 journey. Human Traditional Chinese copy/release approval remains separate from automated QA. No browser pass is claimed by this handoff.
 
-## Exact @Computer prompt
+## Historical same-environment @Computer prompt
+
+For the newly authorized dedicated Cloud task, use `cloud-qa-task.md` instead. The following prompt applies only to an actual attachment to the old environment and retains its historical source/build identity.
 
 The preview now contains one synthetic Finance action created by an explicitly labeled non-UI HTTP smoke check. Prepare, confirmation, identical retry, payload conflict, Chinese receipt reopening, and database/audit consistency passed through HTTP/PostgreSQL; this gives no browser-QA credit. Record the initial action count, issue a fresh persona session, and create a fresh comparison for browser cases rather than reusing that consumed proposal. Evidence: `evidence/computer-qa/finance-http-action-smoke.json`.
 

@@ -11,8 +11,8 @@ Current recommendation: BLOCK — deterministic gates passed and the preview is 
 | Stage 0–7 baseline | Independently passed clean migrations/repeat seed/SQL, 200 tests, formatting/lint/types/build, audit 0 vulnerabilities; validation-baseline.json |
 | Stage 8 schema checkpoint | Independently passed fresh eight migrations, 18 constraint/immutability probes and three reset-safety probes; independent-review.md and evidence/schema-review/ |
 | Stage 8 development smoke | Initial advisory-lock return decoding failure diagnosed and corrected; independent Mei/Financial Reviewer/Admin canonical preparation+creation and atomic counts now pass; complete independent 88-case PostgreSQL suite subsequently passed |
-| Deterministic validation / exact-head CI | All 16 commands passed on 4c13f726; 436 tests including 88 PostgreSQL cases; build passed; audit found 0 vulnerabilities; GitHub run 43767600389 succeeded; validation-final.json |
-| Isolated preview | PREVIEW_READY verified at http://localhost:3000; build 3arTh5JwUyUt0e73FJY-z; separate synthetic database |
+| Deterministic validation / exact-head CI | All 16 commands passed on 4c13f726; 436 tests including 88 PostgreSQL cases; build passed; audit found 0 vulnerabilities; GitHub run 43767600389 succeeded; prior evidence-only head 2a23d31 also passed run 43769657458; validation-final.json and evidence/ci-2a23d31.json |
+| Isolated preview | Original preview reached PREVIEW_READY at http://localhost:3000; build 3arTh5JwUyUt0e73FJY-z. Product Director subsequently requested a fresh preview inside a dedicated Cloud QA task; portable launch package is prepared separately, and no new task or new preview is claimed |
 | Computer QA | Attempted; control infrastructure blocked navigation/input. No complete scenario passed. See computer-qa-report.json and evidence/computer-qa/cua-infrastructure-blocker.json |
 | Independent implementation review | Independent source/schema/targeted-test checkpoints found no remaining blocking source finding; final verdict is pending actual Computer QA |
 | Human merge/release approval | Not requested or granted |

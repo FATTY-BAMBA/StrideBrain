@@ -1,0 +1,160 @@
+{
+  "verifiedCommit": "2a23d31f46e0b6c7b465b3774ad765c81a3417eb",
+  "workflowRun": 43769657458,
+  "runUrl": "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/43769657458",
+  "runs": {
+    "workflow_runs": [
+      {
+        "id": 43769657458,
+        "name": "StrideBrain CI",
+        "status": "completed",
+        "conclusion": "success",
+        "run_number": 163,
+        "jobs_url": "https://api.github.com/repos/FATTY-BAMBA/StrideBrain/actions/runs/43769657458/jobs",
+        "logs_url": "https://api.github.com/repos/FATTY-BAMBA/StrideBrain/actions/runs/43769657458/logs",
+        "workflow_id": 418465630
+      }
+    ]
+  },
+  "jobs": {
+    "jobs": [
+      {
+        "id": 132982504629,
+        "name": "quality",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 43769657458,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Initialize containers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Check out repository",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Use Node.js 24",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Install locked dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Validate Prisma schema",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Generate Prisma client",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Apply committed migrations",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Seed Horizon Atelier fixture",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Verify tenant, authority, and fixture invariants",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Verify repeatable synthetic fixture reset",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Check formatting",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Lint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Type check",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Run unit and architecture tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Build production application",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Audit production dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          },
+          {
+            "name": "Post Use Node.js 24",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 32
+          },
+          {
+            "name": "Post Check out repository",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 33
+          },
+          {
+            "name": "Stop containers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 34
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 35
+          }
+        ]
+      }
+    ]
+  },
+  "qualification": "Exact prior evidence-only head; source unchanged from application candidate 4c13f726. Does not prove browser QA."
+}

@@ -2,6 +2,8 @@
 
 Status: BLOCKED at the Computer QA gate, after evidenced PREVIEW_READY. Candidate `4c13f726bb75f4a31d263eb6e54622224807d019` passed all independent deterministic gates and exact-head GitHub CI. The isolated production preview is running. Actual CUA navigation and the documented desktop fallback failed at the tooling layer; no complete browser scenario passed. A separate independent @Computer session must resume QA before final independent review or merge approval. See computer-qa-handoff.md and the recorded tool evidence. No merge or release approval has been granted.
 
+The Product Director subsequently requested a dedicated Cloud QA task with a fresh isolated preview. The portable launch package is in cloud-qa-task.md. This host has no task-creation or desktop-tab control tool, so creation and tab closure are not claimed; the current QA blocker and incomplete browser gate remain recorded.
+
 ## Authoritative inputs
 
 - [Issue #29](https://github.com/FATTY-BAMBA/StrideBrain/issues/29), fully retrieved with zero comments; snapshot in `issue-29.json`.

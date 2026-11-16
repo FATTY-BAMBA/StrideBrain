@@ -86,8 +86,10 @@ tooling:
   limitation: Tool availability is not evidence that a browser journey, viewport,
     session, or preview works.
   execution_note: No complete shared-browser scenario ran. Finance/en headless exploration
-    is supplemental partial evidence only. Full18scenario independent QA must resume
-    in the same cloud environment.
+    is supplemental partial evidence only. Full18scenario independent QA may resume
+    in the same cloud environment, or in a new dedicated Cloud task with the now-authorized
+    fresh isolated preview described in cloud-qa-task.md. Historical readiness remains
+    specific to the old environment; new readiness and actual build identity are required.
   browser_control_attempted: true
 preview_scaffolding:
   status: PRODUCTION_PREVIEW_READY
@@ -141,8 +143,8 @@ preview_scaffolding:
     secure cookie.
   - An unguessable single-use local bootstrap URL sets the cookie and redirects to
     the same hostname's application origin.
-  - Verify Secure-cookie handling in actual Chrome; use local HTTPS or browser-context
-    installation if needed, never relax attributes.
+  - Verify Secure-cookie handling in actual Chrome using the documented browser authentication
+    flow; if it cannot complete, report BLOCKED. Never inject browser state or relax attributes.
   - Bootstrap credentials remain in untracked runtime state, are excluded from screenshots/reports,
     and are revoked after use.
   operator_commands:
@@ -871,8 +873,15 @@ handoff_prompt_template: '@Computer: Independently QA StrideBrain Stage 8, Issue
 
   '
 resume_conditions:
-- Attach the separate @Computer session to the exact environment ID in computer-qa-handoff.md;
-  its own localhost is not this preview.
+- Either attach the separate @Computer session to the historical environment ID in
+  computer-qa-handoff.md, or launch a new dedicated Cloud QA task using cloud-qa-task.md
+  and recreate its isolated synthetic preview with cloud-qa/README.md. A new task's
+  localhost identifies its own fresh preview only after readiness is independently proved.
+- For the new-task option, verify the current portability HEAD against checkpoint
+  2a23d31f46e0b6c7b465b3774ad765c81a3417eb and application source manifest from
+  4c13f726bb75f4a31d263eb6e54622224807d019; generate fresh secrets and PostgreSQL 17
+  fixtures and record the new production BUILD_ID. Preserve the historical blocked
+  report; put new actual results in evidence/cloud-qa/<UTC-run-id>/.
 - Recheck branch/source fingerprint/build ID and private production server origin
   before interaction.
 - Issue a new trusted fixed-persona session; do not reuse expired credentials or the

@@ -207,6 +207,17 @@
         "evidence/computer-qa/finance-proposal-api-after-origin-alignment.json",
         "evidence/computer-qa/finance-http-action-smoke.json"
       ]
+    },
+    {
+      "timestamp": "2026-11-16T00:10:30.943804Z",
+      "kind": "DEDICATED_CLOUD_QA_REQUESTED",
+      "reason": "Product Director explicitly requests a dedicated Cloud QA task, a newly recreated isolated preview inside it, and actual cloud-browser QA. This supersedes the previous handoff requirement to attach to this same running environment. Task creation/fork/dispatch and desktop in-app tab controls are not exposed by this host; no new task or tab closure is claimed. A portable sanitized launch package is being prepared.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "2a23d31f46e0b6c7b465b3774ad765c81a3417eb",
+      "evidence": [
+        "cloud-qa-task.md",
+        "computer-qa-handoff.md"
+      ]
     }
   ],
   "pullRequest": "https://github.com/FATTY-BAMBA/StrideBrain/pull/31",
@@ -254,5 +265,22 @@
     "command": "git ls-remote origin refs/heads/main refs/heads/build/sb-029-governed-internal-review",
     "mainCommit": "0ecd65bdb0ae752f3244960d6848a74a30d5da01",
     "applicationBranchCommit": "4c13f726bb75f4a31d263eb6e54622224807d019"
+  },
+  "requestedRecovery": {
+    "kind": "DEDICATED_CLOUD_QA_TASK",
+    "newIsolatedPreviewAuthorized": true,
+    "taskCreated": false,
+    "taskCreationToolAvailable": false,
+    "desktopTabsClosed": false,
+    "targetRepository": "FATTY-BAMBA/StrideBrain",
+    "targetBranch": "build/sb-029-governed-internal-review",
+    "sourceCandidate": "4c13f726bb75f4a31d263eb6e54622224807d019",
+    "evidenceCheckpoint": "2a23d31f46e0b6c7b465b3774ad765c81a3417eb",
+    "taskPrompt": "cloud-qa-task.md",
+    "priorEvidenceHeadCi": {
+      "runUrl": "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/43769657458",
+      "conclusion": "success",
+      "evidence": "evidence/ci-2a23d31.json"
+    }
   }
 }
