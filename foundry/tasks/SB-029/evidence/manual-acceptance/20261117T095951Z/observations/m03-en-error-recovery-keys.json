@@ -1,0 +1,134 @@
+{
+  "nativeKeys": true,
+  "trace": [
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:06:57.884Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2278,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44,
+          "width": 157.375,
+          "x": 385,
+          "y": 282.26953125
+        },
+        "role": null,
+        "tag": "A",
+        "text": "Refresh comparison",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:06:59.124Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2278,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "review-title",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44,
+          "width": 640,
+          "x": 368,
+          "y": 393.6640625
+        },
+        "role": null,
+        "tag": "SELECT",
+        "text": "Validate imported-stone and lighting assumptions for Xinyi quote v3Review imported-stone and lighting assumptions for Xinyi quote v3Check evidence for imported-stone and lighting assumptions in Xinyi quote v3",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "shift+Tab",
+      "at": "2026-11-17T10:06:59.849Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2278,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44,
+          "width": 157.375,
+          "x": 385,
+          "y": 282.26953125
+        },
+        "role": null,
+        "tag": "A",
+        "text": "Refresh comparison",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    }
+  ]
+}

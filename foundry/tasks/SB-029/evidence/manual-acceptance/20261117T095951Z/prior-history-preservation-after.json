@@ -1,0 +1,59 @@
+{
+  "runId": "20261117T095951Z",
+  "database": "stridebrain_sb029_targeted_20261117t050611z",
+  "at": "2026-11-17T11:06:07.092Z",
+  "phase": "after",
+  "method": "Read-only complete-row SHA256 comparison of every pre-existing history/session record by original ID; raw rows and session IDs kept out of evidence.",
+  "tables": [
+    {
+      "table": "ComparisonRun",
+      "priorRows": 3,
+      "currentRows": 5,
+      "priorRowSetSha256": "42588729a0611c2acb680c3eb9a6e1f43c0c3381cd362495f9edcb1a5ec11c63",
+      "allPriorRowsUnchanged": true
+    },
+    {
+      "table": "EconomicsEnrichmentRun",
+      "priorRows": 3,
+      "currentRows": 5,
+      "priorRowSetSha256": "3131d91133bd0123ea8bab9c4c8bd0efa72df4dfe0533b119718b08c7c869b60",
+      "allPriorRowsUnchanged": true
+    },
+    {
+      "table": "ProposedAction",
+      "priorRows": 3,
+      "currentRows": 5,
+      "priorRowSetSha256": "a05014ee9b70ad15a398c8bea514e65b61c4eb880d59afd0f605a3cf13187736",
+      "allPriorRowsUnchanged": true
+    },
+    {
+      "table": "Action",
+      "priorRows": 3,
+      "currentRows": 3,
+      "priorRowSetSha256": "e858e003ca29e90eec9a7e8207380ba5a957479a09d65669ae1b65e6deea5748",
+      "allPriorRowsUnchanged": true
+    },
+    {
+      "table": "AuditEvent",
+      "priorRows": 3,
+      "currentRows": 3,
+      "priorRowSetSha256": "ca9820459c190b2dce690d240f3123568d74badec24b6c7f41df992ba48749ba",
+      "allPriorRowsUnchanged": true
+    },
+    {
+      "table": "InternalReviewReceipt",
+      "priorRows": 3,
+      "currentRows": 3,
+      "priorRowSetSha256": "7ca0f90247a3042574fd087735aed0cdc6cbd2e0f1280b5b9d2b541ca1196511",
+      "allPriorRowsUnchanged": true
+    },
+    {
+      "table": "DemoSession",
+      "priorRows": 8,
+      "currentRows": 10,
+      "priorRowSetSha256": "2e8e29ba42b7072b2ac83312f461d424b8a614f6652acf80bf5cd606ac62916b",
+      "allPriorRowsUnchanged": true
+    }
+  ],
+  "allPriorHistoryUnchanged": true
+}

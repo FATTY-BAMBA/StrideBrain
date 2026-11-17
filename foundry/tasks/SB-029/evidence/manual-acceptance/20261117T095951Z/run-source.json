@@ -1,0 +1,17 @@
+{
+  "runId": "20261117T095951Z",
+  "productHead": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+  "branch": "build/sb-029-governed-internal-review",
+  "buildId": "7AxvZ0avDfCi3vJEjHpJH",
+  "ciRun": 44059619525,
+  "ciResult": "PASS",
+  "scope": [
+    "M-03",
+    "M-04"
+  ],
+  "productWorktreeClean": true,
+  "historicalUntrackedCount": 500,
+  "historicalReportsCount": 3,
+  "trackedSourceCount": 471,
+  "noFullMatrix": true
+}

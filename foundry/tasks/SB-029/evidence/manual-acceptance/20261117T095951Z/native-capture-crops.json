@@ -1,0 +1,81 @@
+[
+  {
+    "file": "screenshots/chrome-100-before-menu-crop.png",
+    "nativePixelCrop": [
+      2300,
+      1005,
+      4112,
+      1170
+    ],
+    "purpose": "Actual native Chrome Zoom row; crop excludes unrelated tabs and profile information.",
+    "metadataRemoved": [
+      "icc_profile"
+    ],
+    "retainedPixelsMatchNativeCaptureExactly": true
+  },
+  {
+    "file": "screenshots/chrome-200-menu-crop.png",
+    "nativePixelCrop": [
+      2300,
+      1005,
+      4112,
+      1170
+    ],
+    "purpose": "Actual native Chrome Zoom row; crop excludes unrelated tabs and profile information.",
+    "metadataRemoved": [
+      "icc_profile"
+    ],
+    "retainedPixelsMatchNativeCaptureExactly": true
+  },
+  {
+    "file": "screenshots/motion-off-pane-crop.png",
+    "nativePixelCrop": [
+      460,
+      0,
+      1446,
+      720
+    ],
+    "purpose": "Native Motion pane; crop excludes personal account/sidebar.",
+    "metadataRemoved": [
+      "icc_profile"
+    ],
+    "retainedPixelsMatchNativeCaptureExactly": true
+  },
+  {
+    "file": "screenshots/motion-on-pane-crop.png",
+    "nativePixelCrop": [
+      460,
+      0,
+      1446,
+      720
+    ],
+    "purpose": "Native Motion pane; crop excludes personal account/sidebar.",
+    "metadataRemoved": [
+      "icc_profile"
+    ],
+    "retainedPixelsMatchNativeCaptureExactly": true
+  },
+  {
+    "file": "screenshots/motion-restored-off-pane-crop.png",
+    "nativePixelCrop": [
+      460,
+      0,
+      1446,
+      720
+    ],
+    "purpose": "Native Motion pane; crop excludes personal account/sidebar.",
+    "metadataRemoved": [
+      "icc_profile"
+    ],
+    "retainedPixelsMatchNativeCaptureExactly": true
+  },
+  {
+    "file": "screenshots/chrome-100-restored-native.png",
+    "nativePixelCrop": null,
+    "purpose": "Uncropped restored native page capture; menu is closed. Restoration is established by native zoom decrement actions and measured CSS viewport/DPR, not a visible post-restoration menu label.",
+    "metadataRemoved": [
+      "icc_profile"
+    ],
+    "retainedPixelsMatchNativeCaptureExactly": true
+  }
+]

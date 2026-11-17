@@ -1,0 +1,40 @@
+{
+  "runId": "20261117T095951Z",
+  "productBranch": "build/sb-029-governed-internal-review",
+  "productHead": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+  "buildId": "7AxvZ0avDfCi3vJEjHpJH",
+  "exactHeadCI": {
+    "runId": 44059619525,
+    "result": "PASS"
+  },
+  "executedChecks": [
+    "M-03",
+    "M-04"
+  ],
+  "outcomes": {
+    "M-03": "PASS",
+    "M-04": "PASS",
+    "F-08": "PASS"
+  },
+  "locales": [
+    "en",
+    "zh-TW"
+  ],
+  "newRequiredPathDefects": [],
+  "F08ClosedForTestedScope": true,
+  "verdict": "PASS",
+  "recommendation": "READY_FOR_HUMAN",
+  "taskStateChanged": false,
+  "historicalResultsChanged": false,
+  "evidenceBranch": null,
+  "evidenceCommit": null,
+  "published": false,
+  "noFullQaMatrixRun": true,
+  "noProductSourceChange": true,
+  "noMerge": true,
+  "prReadyTransition": false,
+  "closureErrorClassification": "POST_TEST_AGENT_CLOSURE_INTERRUPTION",
+  "cleanupResult": "PASS",
+  "sanitizationFile": "sanitization.json",
+  "scopeLimitation": "These are the two requested manual acceptance checks on the exact published F-08 repair. No broader matrix or release-readiness claim is made."
+}

@@ -1,0 +1,28 @@
+{
+  "runId": "20261117T095951Z",
+  "at": "2026-11-17T11:20:56.398836+00:00",
+  "result": "PASS",
+  "sessionsIssued": 2,
+  "sessionsRevoked": 2,
+  "activeSessionsAfter": 0,
+  "allOwnedSessionsRevoked": true,
+  "temporaryMutationCases": 2,
+  "fixedFixturesRestored": true,
+  "priorHistoryUnchanged": true,
+  "immutableGuardsMatch": true,
+  "eightMigrationChecksumsMatch": true,
+  "newActions": 0,
+  "newReceipts": 0,
+  "newAudits": 0,
+  "intentionalNewHistory": {
+    "comparisons": 2,
+    "economicsEnrichments": 2,
+    "unconsumedProposals": 2,
+    "revokedSessions": 2
+  },
+  "newHistoryPreserved": true,
+  "bootstrapListenerStopped": true,
+  "settingsRestored": true,
+  "newAuthenticatedBrowserRequestForClosure": false,
+  "guardVerificationMethod": "Read-only catalog/function/migration checksum comparison, not destructive guard tests."
+}

@@ -1,0 +1,521 @@
+{
+  "nativeKeys": true,
+  "trace": [
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:08:41.151Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "進口石材與硬質面材",
+          "label": "evidence-panel-title",
+          "modal": "true",
+          "scrollHeight": 1136,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "evidence-panel-title",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44.390625,
+          "width": 152.3984375,
+          "x": 855.6015625,
+          "y": 40
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "返回資料依據組合",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK&reviewEvidence=1&evidenceMode=source&evidenceSource=d9129b5f2bc6ec32b423c1e1&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE&evidenceReturn=review-evidence-0",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:08:41.676Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "進口石材與硬質面材",
+          "label": "evidence-panel-title",
+          "modal": "true",
+          "scrollHeight": 1136,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "evidence-panel-title",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44.390625,
+          "width": 154,
+          "x": 569,
+          "y": 242.1328125
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "返回資料依據組合",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK&reviewEvidence=1&evidenceMode=source&evidenceSource=d9129b5f2bc6ec32b423c1e1&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE&evidenceReturn=review-evidence-0",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:08:42.478Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "進口石材與硬質面材",
+          "label": "evidence-panel-title",
+          "modal": "true",
+          "scrollHeight": 1136,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "evidence-panel-title",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44.390625,
+          "width": 152.3984375,
+          "x": 855.6015625,
+          "y": 40
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "返回資料依據組合",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK&reviewEvidence=1&evidenceMode=source&evidenceSource=d9129b5f2bc6ec32b423c1e1&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE&evidenceReturn=review-evidence-0",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:08:43.271Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "進口石材與硬質面材",
+          "label": "evidence-panel-title",
+          "modal": "true",
+          "scrollHeight": 1136,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "evidence-panel-title",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44.390625,
+          "width": 154,
+          "x": 569,
+          "y": 242.1328125
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "返回資料依據組合",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK&reviewEvidence=1&evidenceMode=source&evidenceSource=d9129b5f2bc6ec32b423c1e1&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE&evidenceReturn=review-evidence-0",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:08:44.017Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "進口石材與硬質面材",
+          "label": "evidence-panel-title",
+          "modal": "true",
+          "scrollHeight": 1136,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "evidence-panel-title",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44.390625,
+          "width": 152.3984375,
+          "x": 855.6015625,
+          "y": 40
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "返回資料依據組合",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK&reviewEvidence=1&evidenceMode=source&evidenceSource=d9129b5f2bc6ec32b423c1e1&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE&evidenceReturn=review-evidence-0",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:08:44.819Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "進口石材與硬質面材",
+          "label": "evidence-panel-title",
+          "modal": "true",
+          "scrollHeight": 1136,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "evidence-panel-title",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44.390625,
+          "width": 154,
+          "x": 569,
+          "y": 242.1328125
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "返回資料依據組合",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK&reviewEvidence=1&evidenceMode=source&evidenceSource=d9129b5f2bc6ec32b423c1e1&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE&evidenceReturn=review-evidence-0",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "shift+Tab",
+      "at": "2026-11-17T10:08:45.604Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "進口石材與硬質面材",
+          "label": "evidence-panel-title",
+          "modal": "true",
+          "scrollHeight": 1136,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "evidence-panel-title",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44.390625,
+          "width": 152.3984375,
+          "x": 855.6015625,
+          "y": 40
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "返回資料依據組合",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK&reviewEvidence=1&evidenceMode=source&evidenceSource=d9129b5f2bc6ec32b423c1e1&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE&evidenceReturn=review-evidence-0",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "shift+Tab",
+      "at": "2026-11-17T10:08:46.395Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "進口石材與硬質面材",
+          "label": "evidence-panel-title",
+          "modal": "true",
+          "scrollHeight": 1136,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "evidence-panel-title",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44.390625,
+          "width": 154,
+          "x": 569,
+          "y": 242.1328125
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "返回資料依據組合",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK&reviewEvidence=1&evidenceMode=source&evidenceSource=d9129b5f2bc6ec32b423c1e1&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE&evidenceReturn=review-evidence-0",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "shift+Tab",
+      "at": "2026-11-17T10:08:47.183Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "進口石材與硬質面材",
+          "label": "evidence-panel-title",
+          "modal": "true",
+          "scrollHeight": 1136,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "evidence-panel-title",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44.390625,
+          "width": 152.3984375,
+          "x": 855.6015625,
+          "y": 40
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "返回資料依據組合",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK&reviewEvidence=1&evidenceMode=source&evidenceSource=d9129b5f2bc6ec32b423c1e1&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE&evidenceReturn=review-evidence-0",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "shift+Tab",
+      "at": "2026-11-17T10:08:47.951Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "進口石材與硬質面材",
+          "label": "evidence-panel-title",
+          "modal": "true",
+          "scrollHeight": 1136,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "evidence-panel-title",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44.390625,
+          "width": 154,
+          "x": 569,
+          "y": 242.1328125
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "返回資料依據組合",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK&reviewEvidence=1&evidenceMode=source&evidenceSource=d9129b5f2bc6ec32b423c1e1&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE&evidenceReturn=review-evidence-0",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "shift+Tab",
+      "at": "2026-11-17T10:08:48.738Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "進口石材與硬質面材",
+          "label": "evidence-panel-title",
+          "modal": "true",
+          "scrollHeight": 1136,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "evidence-panel-title",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44.390625,
+          "width": 152.3984375,
+          "x": 855.6015625,
+          "y": 40
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "返回資料依據組合",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK&reviewEvidence=1&evidenceMode=source&evidenceSource=d9129b5f2bc6ec32b423c1e1&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE&evidenceReturn=review-evidence-0",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "shift+Tab",
+      "at": "2026-11-17T10:08:49.928Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "進口石材與硬質面材",
+          "label": "evidence-panel-title",
+          "modal": "true",
+          "scrollHeight": 1136,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "evidence-panel-title",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44.390625,
+          "width": 154,
+          "x": 569,
+          "y": 242.1328125
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "返回資料依據組合",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK&reviewEvidence=1&evidenceMode=source&evidenceSource=d9129b5f2bc6ec32b423c1e1&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE&evidenceReturn=review-evidence-0",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    }
+  ]
+}

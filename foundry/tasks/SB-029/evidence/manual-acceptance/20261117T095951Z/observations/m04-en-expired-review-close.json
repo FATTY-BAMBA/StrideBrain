@@ -1,0 +1,38 @@
+{
+  "nativeKeys": true,
+  "trace": [
+    {
+      "key": "Escape",
+      "at": "2026-11-17T10:58:05.003Z",
+      "dialogs": [],
+      "focus": {
+        "id": "internal-review-entry",
+        "insideDialog": false,
+        "label": null,
+        "rect": {
+          "height": 49.1875,
+          "width": 258.8828125,
+          "x": 495,
+          "y": 1027.96875
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Create internal review action",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 2056,
+      "reducedMotion": true,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 2,
+        "height": 1234,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 2056
+      }
+    }
+  ]
+}

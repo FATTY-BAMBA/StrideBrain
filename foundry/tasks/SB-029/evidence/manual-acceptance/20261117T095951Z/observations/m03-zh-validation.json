@@ -1,0 +1,44 @@
+{
+  "at": "2026-11-17T10:08:24.350Z",
+  "name": "m03-zh-validation",
+  "notes": "",
+  "dialogs": [
+    {
+      "clientHeight": 617,
+      "heading": "檢視內部審查事項",
+      "label": "internal-review-heading",
+      "modal": "true",
+      "scrollHeight": 2114,
+      "scrollTop": 1496.75
+    }
+  ],
+  "focus": {
+    "dialogLabel": "internal-review-heading",
+    "id": "review-confirmation",
+    "insideDialog": true,
+    "label": null,
+    "rect": {
+      "height": 20,
+      "width": 20,
+      "x": 372,
+      "y": 483.921875
+    },
+    "role": null,
+    "tag": "INPUT",
+    "text": "",
+    "trigger": null,
+    "visible": true
+  },
+  "locale": "zh-Hant",
+  "pageWidth": 1028,
+  "reducedMotion": false,
+  "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+  "viewport": {
+    "dpr": 4,
+    "height": 617,
+    "outerHeight": 1290,
+    "outerWidth": 2056,
+    "visualScale": 1,
+    "width": 1028
+  }
+}

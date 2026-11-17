@@ -1,0 +1,38 @@
+{
+  "nativeKeys": true,
+  "trace": [
+    {
+      "key": "Escape",
+      "at": "2026-11-17T11:00:44.461Z",
+      "dialogs": [],
+      "focus": {
+        "id": "action-action_60d7f6e3-cc7e-45fe-b474-f067c2edd45c",
+        "insideDialog": false,
+        "label": null,
+        "rect": {
+          "height": 49.1875,
+          "width": 98,
+          "x": 491,
+          "y": 771.5703125
+        },
+        "role": null,
+        "tag": "A",
+        "text": "開啟回執",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 2056,
+      "reducedMotion": true,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_5a82f2fb-2331-46b9-840a-c63245fd52b8&economics=econrun_685893c7-3de9-4867-9f3a-a6f0d0662ee7&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 2,
+        "height": 1234,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 2056
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "at": "2026-11-17T11:00:04.423Z",
+  "name": "m04-en-stale-review",
+  "notes": "",
+  "dialogs": [
+    {
+      "clientHeight": 1234,
+      "heading": "Review internal review action",
+      "label": "internal-review-heading",
+      "modal": "true",
+      "scrollHeight": 1234,
+      "scrollTop": 0
+    }
+  ],
+  "focus": {
+    "dialogLabel": "internal-review-heading",
+    "id": "internal-review-heading",
+    "insideDialog": true,
+    "label": null,
+    "rect": {
+      "height": 29.1171875,
+      "width": 464.4609375,
+      "x": 1396,
+      "y": 20
+    },
+    "role": null,
+    "tag": "H2",
+    "text": "Review internal review action",
+    "trigger": null,
+    "visible": true
+  },
+  "locale": "en",
+  "pageWidth": 2056,
+  "reducedMotion": true,
+  "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_b05ccb99-165e-486c-ad47-3c467e9f6fd9&economics=econrun_64c38c0c-7ded-4851-9f34-c043e5e9ce40&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_ad251e0c-ff5d-46d1-b460-2167485504ce&evidenceReturn=review-evidence-0",
+  "viewport": {
+    "dpr": 2,
+    "height": 1234,
+    "outerHeight": 1290,
+    "outerWidth": 2056,
+    "visualScale": 1,
+    "width": 2056
+  }
+}

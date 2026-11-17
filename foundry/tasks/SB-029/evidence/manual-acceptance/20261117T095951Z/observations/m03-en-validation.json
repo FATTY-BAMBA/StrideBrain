@@ -1,0 +1,43 @@
+{
+  "at": "2026-11-17T10:05:42.739Z",
+  "name": "m03-en-validation",
+  "notes": "",
+  "dialogs": [
+    {
+      "clientHeight": 617,
+      "heading": "Review internal review action",
+      "label": "internal-review-heading",
+      "modal": "true",
+      "scrollHeight": 2062,
+      "scrollTop": 1445.5
+    }
+  ],
+  "focus": {
+    "id": "",
+    "insideDialog": false,
+    "label": null,
+    "rect": {
+      "height": 5267.62890625,
+      "width": 1028,
+      "x": 0,
+      "y": -4650.75
+    },
+    "role": null,
+    "tag": "BODY",
+    "text": "Skip to main contentStrideBrainBY PRIMESTRIDE AI01Home02Projects03Knowledge04StrideBrain05Settingsv0.1 · Controlled demoThis area is not active yet●Controlled synthetic demo繁中/ENOverviewCompareCommercialEvidenceActionsCOMPARABLE PROJECT INT",
+    "trigger": null,
+    "visible": false
+  },
+  "locale": "en",
+  "pageWidth": 1028,
+  "reducedMotion": false,
+  "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+  "viewport": {
+    "dpr": 4,
+    "height": 617,
+    "outerHeight": 1290,
+    "outerWidth": 2056,
+    "visualScale": 1,
+    "width": 1028
+  }
+}

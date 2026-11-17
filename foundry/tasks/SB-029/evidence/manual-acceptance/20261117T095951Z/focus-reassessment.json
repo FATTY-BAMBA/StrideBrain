@@ -1,0 +1,165 @@
+{
+  "runId": "20261117T095951Z",
+  "at": "2026-11-17T11:20:56.398836+00:00",
+  "method": "Review of previously recorded native-keyboard observations; no browser tests repeated after revocation. Source-entry, forward/reverse containment and exact trigger restoration independently checked from saved DOM measurements and selectors.",
+  "cases": [
+    {
+      "check": "M-03",
+      "locale": "en",
+      "result": "PASS",
+      "sourceEntryHeadingFocused": true,
+      "nativeForwardTabCount": 6,
+      "nativeReverseTabCount": 6,
+      "allSourceKeyboardStepsInsideSingleActiveModal": true,
+      "allSourceKeyboardFocusVisible": true,
+      "backgroundNavigationReached": false,
+      "closeRestoresExactTrigger": true,
+      "escapeRestoresExactTrigger": true,
+      "openingObservation": "observations/m03-en-source-open.json",
+      "keyboardTrace": "observations/m03-en-source-keyboard.json",
+      "closeObservation": "observations/m03-en-source-close.json",
+      "escapeTrace": "observations/m03-en-source-escape.json",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      },
+      "reducedMotion": false,
+      "allBeforeRevocation": true
+    },
+    {
+      "check": "M-03",
+      "locale": "zh-TW",
+      "result": "PASS",
+      "sourceEntryHeadingFocused": true,
+      "nativeForwardTabCount": 6,
+      "nativeReverseTabCount": 6,
+      "allSourceKeyboardStepsInsideSingleActiveModal": true,
+      "allSourceKeyboardFocusVisible": true,
+      "backgroundNavigationReached": false,
+      "closeRestoresExactTrigger": true,
+      "escapeRestoresExactTrigger": true,
+      "openingObservation": "observations/m03-zh-source-open-settled.json",
+      "keyboardTrace": "observations/m03-zh-source-keyboard.json",
+      "closeObservation": "observations/m03-zh-source-close.json",
+      "escapeTrace": "observations/m03-zh-source-escape.json",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      },
+      "reducedMotion": false,
+      "allBeforeRevocation": true
+    },
+    {
+      "check": "M-04",
+      "locale": "en",
+      "result": "PASS",
+      "sourceEntryHeadingFocused": true,
+      "nativeForwardTabCount": 6,
+      "nativeReverseTabCount": 6,
+      "allSourceKeyboardStepsInsideSingleActiveModal": true,
+      "allSourceKeyboardFocusVisible": true,
+      "backgroundNavigationReached": false,
+      "closeRestoresExactTrigger": true,
+      "escapeRestoresExactTrigger": true,
+      "openingObservation": "observations/m04-en-source-open.json",
+      "keyboardTrace": "observations/m04-en-source-keyboard.json",
+      "closeObservation": "observations/m04-en-source-close.json",
+      "escapeTrace": "observations/m04-en-source-escape.json",
+      "viewport": {
+        "dpr": 2,
+        "height": 1234,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 2056
+      },
+      "reducedMotion": true,
+      "allBeforeRevocation": true
+    },
+    {
+      "check": "M-04",
+      "locale": "zh-TW",
+      "result": "PASS",
+      "sourceEntryHeadingFocused": true,
+      "nativeForwardTabCount": 6,
+      "nativeReverseTabCount": 6,
+      "allSourceKeyboardStepsInsideSingleActiveModal": true,
+      "allSourceKeyboardFocusVisible": true,
+      "backgroundNavigationReached": false,
+      "closeRestoresExactTrigger": true,
+      "escapeRestoresExactTrigger": true,
+      "openingObservation": "observations/m04-zh-source-open.json",
+      "keyboardTrace": "observations/m04-zh-source-keyboard.json",
+      "closeObservation": "observations/m04-zh-source-close.json",
+      "escapeTrace": "observations/m04-zh-source-escape.json",
+      "viewport": {
+        "dpr": 2,
+        "height": 1234,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 2056
+      },
+      "reducedMotion": true,
+      "allBeforeRevocation": true
+    }
+  ],
+  "sourceKeyboardSteps": 48,
+  "allRecordedNativeKeySteps": 117,
+  "subpixelVisibilityObservations": [
+    {
+      "file": "observations/m04-en-escape-parent.json",
+      "index": 0,
+      "text": "Inspect source",
+      "overflowCssPixels": 0.0703125
+    },
+    {
+      "file": "observations/m04-en-receipt-keyboard.json",
+      "index": 3,
+      "text": "Return to source comparison",
+      "overflowCssPixels": 0.109375
+    },
+    {
+      "file": "observations/m04-en-receipt-keyboard.json",
+      "index": 4,
+      "text": "View project actions",
+      "overflowCssPixels": 0.109375
+    },
+    {
+      "file": "observations/m04-en-receipt-keyboard.json",
+      "index": 5,
+      "text": "Return to source comparison",
+      "overflowCssPixels": 0.109375
+    },
+    {
+      "file": "observations/m04-en-receipt-lower.json",
+      "index": 0,
+      "text": "Return to source comparison",
+      "overflowCssPixels": 0.109375
+    },
+    {
+      "file": "observations/m04-en-source-close.json",
+      "index": 0,
+      "text": "Inspect source",
+      "overflowCssPixels": 0.0703125
+    },
+    {
+      "file": "observations/m04-en-source-escape.json",
+      "index": 0,
+      "text": "Inspect source",
+      "overflowCssPixels": 0.0703125
+    }
+  ],
+  "visibilityInterpretation": "Raw strict visible flags are retained. Some returned controls extend 0.07–0.11 CSS px below the viewport due to fractional geometry; screenshots show their text and usable control area. They are not treated as operability clipping. All 48 source Tab/Shift+Tab observations pass the original strict visibility predicate.",
+  "chronologyNote": "m03-zh-source-open is an asynchronous intermediate claim state. m03-zh-source-open-settled was captured on reopening after the first close, and proves source heading entry before Escape; the first opening keyboard trace separately proves containment. Its capture note is not treated as a timestamp claim about the earlier Tab loop.",
+  "pendingObservation": "m03-en-validation captured the natural pending state while disabled confirmation controls caused activeElement BODY. m03-en-validation-resolved records the completed validation with focus on the visible acknowledgement input. No source-drilldown escape or lasting recovery focus loss was observed. Pending-state keyboard containment was not asserted.",
+  "result": "PASS"
+}

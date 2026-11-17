@@ -1,0 +1,44 @@
+{
+  "at": "2026-11-17T10:08:39.594Z",
+  "name": "m03-zh-source-open",
+  "notes": "Second source from review evidence; trigger [\"cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1\",[[\"evidenceClaim\",\"XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"d9129b5f2bc6ec32b423c1e1\"]]]",
+  "dialogs": [
+    {
+      "clientHeight": 617,
+      "heading": "進口石材 預估成本與已核對實際成本比較",
+      "label": "evidence-panel-title",
+      "modal": "true",
+      "scrollHeight": 3853,
+      "scrollTop": 2253
+    }
+  ],
+  "focus": {
+    "dialogLabel": "evidence-panel-title",
+    "id": "",
+    "insideDialog": true,
+    "label": null,
+    "rect": {
+      "height": 37.34375,
+      "width": 72.71875,
+      "x": 601.3984375,
+      "y": 289.8515625
+    },
+    "role": null,
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1\",[[\"evidenceClaim\",\"XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"d9129b5f2bc6ec32b423c1e1\"]]]",
+    "visible": true
+  },
+  "locale": "zh-Hant",
+  "pageWidth": 1028,
+  "reducedMotion": false,
+  "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE&evidenceReturn=review-evidence-0&reviewEvidence=1",
+  "viewport": {
+    "dpr": 4,
+    "height": 617,
+    "outerHeight": 1290,
+    "outerWidth": 2056,
+    "visualScale": 1,
+    "width": 1028
+  }
+}

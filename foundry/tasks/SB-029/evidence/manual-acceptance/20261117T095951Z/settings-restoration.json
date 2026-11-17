@@ -1,0 +1,38 @@
+{
+  "runId": "20261117T095951Z",
+  "result": "PASS",
+  "chrome": {
+    "originalZoomPercent": 100,
+    "testZoomPercent": 200,
+    "restoredZoomPercent": 100,
+    "method": "Visible native Chrome Zoom control: five increments from 100 to 200; five native Make Text Smaller actions restored 100. Original 100 and test 200 menu captures retained; restoration page and CSS measurements corroborate 100.",
+    "originalMenuScreenshot": "screenshots/chrome-100-before-menu-crop.png",
+    "testMenuScreenshot": "screenshots/chrome-200-menu-crop.png",
+    "restorationScreenshot": "screenshots/chrome-100-restored-native.png",
+    "restorationMeasurement": "observations/m03-zoom-restored-100.json",
+    "at": "2026-11-17T10:26:05.275Z",
+    "restoredViewport": {
+      "dpr": 2,
+      "height": 1234,
+      "outerHeight": 1290,
+      "outerWidth": 2056,
+      "visualScale": 1,
+      "width": 2056
+    },
+    "viewportEmulationUsed": false
+  },
+  "macOS": {
+    "originalReduceMotion": false,
+    "testReduceMotion": true,
+    "restoredReduceMotion": false,
+    "actualSystemSettingUsed": true,
+    "observedSettingsLocation": "System Settings > Accessibility > Motion (this macOS version has a separate Motion pane)",
+    "testScreenshot": "screenshots/motion-on-pane-crop.png",
+    "restoredScreenshot": "screenshots/motion-restored-off-pane-crop.png",
+    "restoredMediaQuery": false,
+    "at": "2026-11-17T11:04:33.573Z",
+    "browserMediaEmulationUsed": false
+  },
+  "qaTabClosed": true,
+  "systemSettingsQuitAttempt": "After restored OFF was verified, optional quit failed because the native binding was no longer active. This did not change the restored preference; System Settings may remain open."
+}

@@ -1,0 +1,33 @@
+{
+  "elements": [
+    {
+      "animation": "1e-05s",
+      "scrollBehavior": "auto",
+      "tag": "ASIDE",
+      "text": "EVIDENCEImported stone and hard finishesOne authorized source and the current result that ",
+      "transition": "1e-05s"
+    },
+    {
+      "animation": "1e-05s",
+      "scrollBehavior": "auto",
+      "tag": "H2",
+      "text": "Imported stone and hard finishes",
+      "transition": "1e-05s"
+    },
+    {
+      "animation": "1e-05s",
+      "scrollBehavior": "auto",
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle",
+      "transition": "1e-05s"
+    },
+    {
+      "animation": "1e-05s",
+      "scrollBehavior": "auto",
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle",
+      "transition": "1e-05s"
+    }
+  ],
+  "reducedMotion": true
+}

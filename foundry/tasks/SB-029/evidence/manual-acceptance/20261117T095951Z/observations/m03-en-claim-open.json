@@ -1,0 +1,44 @@
+{
+  "at": "2026-11-17T10:04:10.422Z",
+  "name": "m03-en-claim-open",
+  "notes": "",
+  "dialogs": [
+    {
+      "clientHeight": 617,
+      "heading": "Imported stone forecast versus reconciled actual history",
+      "label": "evidence-panel-title",
+      "modal": "true",
+      "scrollHeight": 4297,
+      "scrollTop": 0
+    }
+  ],
+  "focus": {
+    "dialogLabel": "evidence-panel-title",
+    "id": "evidence-panel-title",
+    "insideDialog": true,
+    "label": null,
+    "rect": {
+      "height": 75,
+      "width": 281.28125,
+      "x": 569,
+      "y": 61.05078125
+    },
+    "role": null,
+    "tag": "H2",
+    "text": "Imported stone forecast versus reconciled actual history",
+    "trigger": null,
+    "visible": true
+  },
+  "locale": "en",
+  "pageWidth": 1028,
+  "reducedMotion": false,
+  "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE&evidenceReturn=evidence-synthesis-stone",
+  "viewport": {
+    "dpr": 4,
+    "height": 617,
+    "outerHeight": 1290,
+    "outerWidth": 2056,
+    "visualScale": 1,
+    "width": 1028
+  }
+}

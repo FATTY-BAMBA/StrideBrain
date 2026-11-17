@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-17T11:20:56.398836+00:00",
+  "runId": "20261117T095951Z",
+  "productHead": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+  "productTrackedWorktreeClean": true,
+  "originalWorkspaceHeadUnchanged": true,
+  "comparisons": {
+    "untracked": {
+      "count": 500,
+      "allUnchanged": true,
+      "mismatches": []
+    },
+    "reports": {
+      "count": 3,
+      "allUnchanged": true,
+      "mismatches": []
+    },
+    "source": {
+      "count": 471,
+      "allUnchanged": true,
+      "mismatches": []
+    }
+  },
+  "newEvidenceOnly": true,
+  "commitCreated": false,
+  "pushed": false,
+  "prModified": false
+}

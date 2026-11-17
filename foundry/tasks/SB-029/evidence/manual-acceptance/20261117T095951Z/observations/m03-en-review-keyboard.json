@@ -1,0 +1,779 @@
+{
+  "nativeKeys": true,
+  "trace": [
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:44.177Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 1612.75
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 49.1953125,
+          "width": 258.8828125,
+          "x": 368,
+          "y": 547.7421875
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Create internal review action",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:44.720Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 1612.75
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 49.1953125,
+          "width": 143.359375,
+          "x": 638.8828125,
+          "y": 547.7421875
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Cancel review",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:45.494Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 21.08203125,
+          "width": 45.41015625,
+          "x": 368,
+          "y": 93.1171875
+        },
+        "role": null,
+        "tag": "A",
+        "text": "English",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:46.274Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 21.08203125,
+          "width": 54.40234375,
+          "x": 425.41015625,
+          "y": 93.1171875
+        },
+        "role": null,
+        "tag": "A",
+        "text": "繁體中文",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:47.073Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 49.1953125,
+          "width": 78.0625,
+          "x": 929.9375,
+          "y": 20
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Close",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:48.259Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "review-title",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44,
+          "width": 640,
+          "x": 368,
+          "y": 324.06640625
+        },
+        "role": null,
+        "tag": "SELECT",
+        "text": "Validate imported-stone and lighting assumptions for Xinyi quote v3Review imported-stone and lighting assumptions for Xinyi quote v3Check evidence for imported-stone and lighting assumptions in Xinyi quote v3",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:48.807Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "review-rationale",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44,
+          "width": 640,
+          "x": 368,
+          "y": 445.5
+        },
+        "role": null,
+        "tag": "SELECT",
+        "text": "Review these assumptions against the linked evidence before the next internal quotation review.Check the supporting evidence and record questions for internal review.Validate the imported-stone and lighting assumptions using the linked hist",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:49.603Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 954.25
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 62.390625,
+          "width": 586.80078125,
+          "x": 404.19921875,
+          "y": 277.3203125
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:50.793Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 954.25
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44,
+          "width": 574.875,
+          "x": 404.19921875,
+          "y": 350.91015625
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Lighting quoted price differs by +9.4% from eligible quoted-price history.",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:51.334Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 954.25
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 62.390625,
+          "width": 586.80078125,
+          "x": 404.19921875,
+          "y": 406.109375
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:52.132Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 954.25
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 62.390625,
+          "width": 586.80078125,
+          "x": 404.19921875,
+          "y": 479.69921875
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:52.902Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 990.75
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "review-assignee",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44,
+          "width": 640,
+          "x": 368,
+          "y": 572.984375
+        },
+        "role": null,
+        "tag": "SELECT",
+        "text": "UnassignedMei LinAlex ChenIris Huang",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:54.227Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 1374.5
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "review-dueDate",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 49.59375,
+          "width": 640,
+          "x": 368,
+          "y": 283.62890625
+        },
+        "role": null,
+        "tag": "INPUT",
+        "text": "",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:54.780Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 1374.5
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "review-dueDate",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 49.59375,
+          "width": 640,
+          "x": 368,
+          "y": 283.62890625
+        },
+        "role": null,
+        "tag": "INPUT",
+        "text": "",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:55.972Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 1374.5
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "review-dueDate",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 49.59375,
+          "width": 640,
+          "x": 368,
+          "y": 283.62890625
+        },
+        "role": null,
+        "tag": "INPUT",
+        "text": "",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:56.535Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 1374.5
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "review-dueDate",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 49.59375,
+          "width": 640,
+          "x": 368,
+          "y": 283.62890625
+        },
+        "role": null,
+        "tag": "INPUT",
+        "text": "",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:57.712Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 1374.5
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44,
+          "width": 640,
+          "x": 368,
+          "y": 366.66015625
+        },
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Clear due date",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T10:05:58.256Z",
+      "dialogs": [
+        {
+          "clientHeight": 617,
+          "heading": "Review internal review action",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2230,
+          "scrollTop": 1612.75
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "review-confirmation",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 20,
+          "width": 20,
+          "x": 372,
+          "y": 458.1484375
+        },
+        "role": null,
+        "tag": "INPUT",
+        "text": "",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "en",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    }
+  ]
+}

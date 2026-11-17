@@ -1,0 +1,39 @@
+{
+  "runId": "20261117T095951Z",
+  "classification": "POST_TEST_AGENT_CLOSURE_INTERRUPTION",
+  "result": "NOT_A_STRIDEBRAIN_PRODUCT_FAILURE",
+  "requests": [
+    {
+      "at": "2026-11-17T11:09:12+00:00",
+      "method": "POST",
+      "endpoint": "https://chatgpt.com/backend-api/codex/responses",
+      "status": 400,
+      "message": "Bad Request",
+      "diagnosticRecordSha256": "dfaf80859f2771a05d0b67f19b32a57909a7a5e2767a0c6fa58b8b34c32641a3"
+    },
+    {
+      "at": "2026-11-17T11:15:08+00:00",
+      "method": "POST",
+      "endpoint": "https://chatgpt.com/backend-api/codex/responses",
+      "status": 400,
+      "message": "Bad Request",
+      "diagnosticRecordSha256": "c27b612e79cf958f607ad28365c7398c3520239c7912e908ddca22f443b016a6"
+    }
+  ],
+  "diagnosticSource": "Read-only Codex client HTTP log, filtered to this chat and error timestamps; corroborated by failed chat-turn metadata. Raw logs and HTTP headers were not copied into evidence.",
+  "qaSessionRevokedAt": "2026-11-17T11:06:06.796Z",
+  "qaSessionAlreadyRevoked": true,
+  "bootstrapListenerAlreadyStopped": true,
+  "lastBrowserRequest": {
+    "purpose": "Post-test revoked-session closure check",
+    "method": "GET via browser reload",
+    "endpoint": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_5a82f2fb-2331-46b9-840a-c63245fd52b8&economics=econrun_685893c7-3de9-4867-9f3a-a6f0d0662ee7&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "toolStatus": "completed",
+    "visibleResult": "Neutral localized permission-unavailable state; no receipt details",
+    "evidence": "observations/cleanup-revoked-session.json"
+  },
+  "affectsPreRevocationObservations": false,
+  "indicatesProductDefect": false,
+  "sessionCausation": "The failure happened after QA revocation, but the failing endpoint was the Codex response service. No evidence attributes that service error to the local QA cookie or bootstrap expiry.",
+  "rerunRequired": false
+}

@@ -1,0 +1,44 @@
+{
+  "at": "2026-11-17T10:59:25.353Z",
+  "name": "m04-zh-escape-review",
+  "notes": "",
+  "dialogs": [
+    {
+      "clientHeight": 1234,
+      "heading": "檢視內部審查事項",
+      "label": "internal-review-heading",
+      "modal": "true",
+      "scrollHeight": 1946,
+      "scrollTop": 0
+    }
+  ],
+  "focus": {
+    "dialogLabel": "internal-review-heading",
+    "id": "",
+    "insideDialog": true,
+    "label": null,
+    "rect": {
+      "height": 44,
+      "width": 577.1328125,
+      "x": 1432.1953125,
+      "y": 1013.953125
+    },
+    "role": null,
+    "tag": "BUTTON",
+    "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。",
+    "trigger": null,
+    "visible": true
+  },
+  "locale": "zh-Hant",
+  "pageWidth": 2056,
+  "reducedMotion": true,
+  "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b05ccb99-165e-486c-ad47-3c467e9f6fd9&economics=econrun_64c38c0c-7ded-4851-9f34-c043e5e9ce40&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_ad251e0c-ff5d-46d1-b460-2167485504ce&evidenceReturn=review-evidence-0",
+  "viewport": {
+    "dpr": 2,
+    "height": 1234,
+    "outerHeight": 1290,
+    "outerWidth": 2056,
+    "visualScale": 1,
+    "width": 2056
+  }
+}

@@ -1,0 +1,109 @@
+SB-029 scoped manual acceptance evidence
+Run: 20261117T095951Z
+Verdict: PASS
+Recommendation: READY_FOR_HUMAN
+M-03: PASS | M-04: PASS | F-08: PASS / closed for this tested scope
+New required-path product defects: none observed.
+
+This run executed only the requested browser zoom and actual OS reduced-motion checks. It did not repeat QA-01 through QA-18. Historical evidence and task reports were preserved. READY_FOR_HUMAN is a recommendation, not a task-state or PR transition. Evidence is local and unpublished; no evidence branch/commit was created, no PR was marked ready, and no merge occurred.
+
+SOURCE AND ENVIRONMENT
+Canonical branch: build/sb-029-governed-internal-review
+Exact product head: f67edb3188c51704acac4465c0a72fca146c6d3f
+BUILD_ID: 7AxvZ0avDfCi3vJEjHpJH
+Exact-head CI: 44059619525 PASS
+Google Chrome 157.0.8103.79; macOS 26.2; local preview on localhost:3000.
+Synthetic persona: Mei Lin in the synthetic Horizon Atelier demo.
+Two fresh synthetic QA sessions were used. The second session followed a native screen-capture interruption between the two checks. Both were revoked after testing.
+
+Evidence: run-source.json, environment.json, runtime-environment-attestation.json.
+The product ran from the clean worktree containing the exact canonical head. All 471 tracked product files match the pre-run SHA256 baseline. All 500 pre-existing untracked QA artifacts and all three pre-existing dirty task reports also match their original hashes. See source-preservation.json. No product build, full deterministic suite, seed or migration rerun was needed for these manual checks.
+
+M-03 — ACTUAL CHROME 200% ZOOM — PASS
+Native Chrome's visible menu was opened at 100%; five Make Text Larger actions set it to 200%. The native menu capture explicitly shows 200%. This was not viewport emulation or page pinch zoom.
+Window outer dimensions: 2056 x 1290 logical pixels.
+Test CSS viewport: 1028 x 617; devicePixelRatio 4; visualViewport.scale 1.
+At 100% after restoration: CSS viewport 2056 x 1234; devicePixelRatio 2; visualViewport.scale 1. Browser debugging UI accounts for the content-height difference from the initial baseline.
+
+Both English and Taiwan Traditional Chinese:
+- Opened the imported-stone claim and the second supporting source (the Neihu historical source), avoiding a first-source-only return check.
+- Source entry/re-entry focused the source H2 inside the single active aria-modal dialog.
+- Six native Tab presses and six native Shift+Tab presses cycled the two source return controls. All 24 source keyboard observations were inside that active dialog with visible focus. Background/global navigation was never reached.
+- Keyboard activation of Back to evidence bundle / 返回資料依據組合 returned focus to the exact original source trigger, including its comparison, claim and source selectors.
+- Reopened the source and pressed Escape: returned to the exact source trigger in the claim. The next Escape returned to the originating comparison evidence trigger in EN, or to the review's exact claim trigger in zh-TW. The final zh-TW review Escape returned to the comparison's internal-review entry.
+- Review, evidence, receipt and close/recovery controls remained keyboard reachable. Long approved title/rationale choices, missing-acknowledgement validation, generic stale confirmation failure, both localized stale warnings, and an authorized existing receipt were inspected.
+- Warnings and error summaries remained readable; the generic confirmation error focused its recovery summary inside the dialog. No required content was unreachable and no overlap prevented operation.
+
+Key evidence:
+  screenshots/chrome-200-menu-crop.png
+  observations/m03-en-source-open.json
+  observations/m03-zh-source-open-settled.json
+  observations/m03-{en,zh}-source-keyboard.json
+  observations/m03-{en,zh}-source-close.json
+  observations/m03-{en,zh}-source-escape.json
+  observations/m03-{en,zh}-parent-escape.json
+  screenshots/m03-en-stale-error.png
+  screenshots/m03-zh-source-keyboard-end.png
+  observations/m03-en-review-keyboard.json
+  observations/m03-{en,zh}-receipt-keyboard.json
+
+Restoration: five native Make Text Smaller actions restored 100%. The saved restored native screenshot was taken after the menu had closed; it is NOT presented as a visible 100% menu label. The native actions and restored CSS viewport/DPR corroborate the restoration. See settings-restoration.json and observations/m03-zoom-restored-100.json.
+
+M-04 — ACTUAL MACOS REDUCE MOTION — PASS
+Original Reduce motion was OFF. On this macOS version the actual preference is under System Settings > Accessibility > Motion, a separate pane from Display. The native switch was turned ON before reopening the journey. Native before/ON/after screenshots are retained as account-redacted pane crops.
+window.matchMedia('(prefers-reduced-motion: reduce)').matches was true throughout both tested locale source flows. No browser media emulation was used. Chrome remained at 100%, CSS viewport 2056 x 1234, DPR 2.
+
+Both English and Taiwan Traditional Chinese:
+- Source heading focus entered the single active source dialog.
+- Six native Tab and six native Shift+Tab presses remained in the source dialog: all 24 source keyboard observations were contained and visible. Background navigation was never reached.
+- Keyboard close and Escape restored the exact source trigger. The next Escape returned to the comparison evidence trigger in EN, or to the review claim trigger in zh-TW.
+- Review/evidence opening and closing, missing-acknowledgement validation, localized stale/error recovery, and authorized receipt content remained operable.
+- Read-only computed styles recorded animation and transition duration 1e-05s with scrollBehavior auto in both locales. Immediate entry/close and later focus observations remained correct; no source focus loss or repeated stealing due to animation timing was observed.
+- The zh-TW focus-stability capture retained the same selected source-return control after the completed keyboard loop with no intervening user input.
+- An earlier proposal had naturally expired during the native capture interruption. Its unavailable review state was inspected, then a fresh comparison/proposal was prepared through the normal UI to continue this same scoped check. No new action or receipt was created.
+
+Key evidence:
+  screenshots/motion-on-pane-crop.png
+  observations/m04-en-os-motion-on.json
+  observations/m04-{en,zh}-source-open.json
+  observations/m04-{en,zh}-source-keyboard.json
+  observations/m04-{en,zh}-source-close.json
+  observations/m04-{en,zh}-source-escape.json
+  observations/m04-{en,zh}-parent-escape.json
+  observations/m04-{en,zh}-motion-css.json
+  observations/m04-zh-focus-stability.json
+  screenshots/m04-zh-stale-error.png
+  observations/m04-{en,zh}-receipt-keyboard.json
+
+Restoration: original OFF was restored in the native setting, and the page media query was false at 11:04:33 UTC. See screenshots/motion-restored-off-pane-crop.png and observations/m04-motion-restored-off.json.
+
+FOCUS REASSESSMENT AND RECORDING LIMITS
+focus-reassessment.json rechecks all four locale/setting cases from the captured observations. All 48 source keyboard steps passed the original strict focus/visibility measurements before revocation. No new browser journey was required.
+Raw records are retained, including intermediate states:
+- m03-zh-source-open captured a still-loading claim state. The first native keyboard trace then shows the resolved source. The source-open-settled screenshot is the later reopened source, before Escape, and confirms its focused heading. Its note must not be mistaken for a timestamp preceding the earlier Tab loop.
+- m03-en-validation captured natural pending confirmation with disabled controls and activeElement BODY. The completed validation capture records the visible acknowledgement input focused correctly. Pending-state keyboard containment was not asserted. This did not affect the source-drilldown results or leave the completed recovery state unfocused.
+- Some returned controls have a fractional bottom boundary 0.07–0.11 CSS px beyond the viewport. Raw visible=false flags remain in the evidence. Full-resolution screenshots show their usable text/control area and focus ring. This is not operational clipping; all 48 source Tab/Shift+Tab measurements were strictly visible.
+Native capture interruptions were tool/environment observations. A System Settings capture failed while opening the app; recovery used a fresh native app binding. The restoration click also succeeded before a screenshot-window error; reconnecting confirmed OFF and captured final proof. An optional app-quit attempt after final restoration was rejected because its native binding was inactive; the preference remained restored. System Settings may remain open.
+No actual screen-reader, physical-device, exact date-boundary or human-language-review pass is asserted by this run.
+
+BAD REQUEST — SEPARATE CLOSURE OBSERVATION
+Exact failed request: POST https://chatgpt.com/backend-api/codex/responses
+HTTP 400 Bad Request at 2026-11-17T11:09:12Z and again at 11:15:08Z.
+The endpoint/method/status were verified in the local Codex HTTP client diagnostic log for this chat. Chat-turn records corroborate the failed agent continuation; the second failed turn made no tool call. Only sanitized diagnostic fields/hashes are retained in closure-bad-request.json.
+This was NOT an error response from localhost:3000 or the synthetic login operator. The preceding post-test browser reload of the zh-TW actions page is recorded as completed and showed the neutral permission-unavailable state. Both QA sessions had already been revoked at 11:06:06.796Z, and the bootstrap listener had been stopped. All M-03/M-04 observations and setting restoration preceded the error.
+Classification: POST_TEST_AGENT_CLOSURE_INTERRUPTION. No test observation was invalidated and this does not indicate a StrideBrain product defect. There is no evidence that local session expiry caused the remote Codex service error. No authenticated browser request or rerun was needed to complete closure.
+
+CLEANUP AND PRESERVATION — PASS
+- Chrome restored to 100%; actual OS Reduce motion restored to original OFF.
+- Both ledger-owned QA sessions revoked; zero active sessions remained. Existing session fixtures and pre-existing sessions were unchanged.
+- Both temporary project programmeWeeks mutations were exactly restored, with before/after row hashes equal.
+- Eight fixed-fixture table hashes equal their initial hashes.
+- Every pre-existing comparison, enrichment, proposal, action, audit, receipt and session row remained unchanged.
+- Four immutable-history guards remain enabled and match source functions; all eight migration checksums match. This was read-only catalog verification, not a repeat of adversarial tests.
+- No new action, audit or receipt was created. Two comparison/enrichment/proposal sets intentionally produced through the browser remain as synthetic test history; no historical record was deleted.
+- Bootstrap listener stopped; the exact product preview remains on localhost:3000. The owned QA tab was closed.
+See cleanup-summary.json, session-revocation.json, mutation-*.json, fixed-fixture-digests-after.json, prior-history-preservation-after.json and final-catalog-guard-session-proof.json.
+
+SANITIZATION AND INVENTORY
+Sanitization result: PASS. See sanitization.json for the completed whole-subtree literal/pattern/image/OCR scan and screenshot-review.json for visual review. Native captures were cropped only to exclude the account sidebar, unrelated tabs and browser profile; the 200% row and native motion switch remain intact. Nonessential ICC metadata was removed from the six native derivatives; retained RGB pixels were verified identical to their original captures. Raw runtime credentials/bootstrap/session files and account-bearing captures stay outside the evidence directory. No raw request headers were copied. Synthetic business selectors, trace correlation IDs, local synthetic database name and public commit hashes are retained.
+FILES.txt lists the evidence. SHA256SUMS.txt covers every evidence file except itself.

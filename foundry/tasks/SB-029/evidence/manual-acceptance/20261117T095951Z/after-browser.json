@@ -1,0 +1,69 @@
+{
+  "runId": "20261117T095951Z",
+  "database": "stridebrain_sb029_targeted_20261117t050611z",
+  "at": "2026-11-17T11:06:07.288Z",
+  "counts": {
+    "actions": 3,
+    "proposals": 5,
+    "consumed": 3,
+    "receipts": 3,
+    "audits": 3,
+    "actionevidencelinks": 45
+  },
+  "organizations": [
+    {
+      "businessKey": "HORIZON_ATELIER",
+      "dataClassification": "DEMO_SYNTHETIC"
+    },
+    {
+      "businessKey": "NORTHERN_STUDIO",
+      "dataClassification": "DEMO_SYNTHETIC"
+    }
+  ],
+  "migrations": 8,
+  "guards": [
+    {
+      "tgname": "Action_stage8_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "AuditEvent_append_only",
+      "enabled": "O"
+    },
+    {
+      "tgname": "InternalReviewReceipt_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "ProposedAction_stage8_immutable",
+      "enabled": "O"
+    }
+  ],
+  "activeSessions": 0,
+  "temporaryGrants": 0,
+  "temporaryTriggers": 0,
+  "duplicates": [],
+  "actions": [
+    {
+      "businessKey": "action_85e27014-917b-4302-b88c-5a5a6bb06eda",
+      "status": "OPEN",
+      "dueDateStoredTimestamp": null,
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_60d7f6e3-cc7e-45fe-b474-f067c2edd45c",
+      "status": "OPEN",
+      "dueDateStoredTimestamp": "2026-11-24",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_71763854-9ee0-43f5-9350-13267c9079b6",
+      "status": "OPEN",
+      "dueDateStoredTimestamp": "2026-11-24",
+      "evidenceCount": 15
+    }
+  ],
+  "providerCredentialVariablesPresent": [],
+  "runtimeDirectoryMode": "700",
+  "environmentFileMode": "600"
+}

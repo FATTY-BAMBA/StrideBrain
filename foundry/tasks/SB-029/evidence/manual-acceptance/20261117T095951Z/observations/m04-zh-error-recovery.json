@@ -1,0 +1,134 @@
+{
+  "nativeKeys": true,
+  "trace": [
+    {
+      "key": "Tab",
+      "at": "2026-11-17T11:00:01.268Z",
+      "dialogs": [
+        {
+          "clientHeight": 1234,
+          "heading": "檢視內部審查事項",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2136,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44,
+          "width": 64,
+          "x": 1413,
+          "y": 256.6484375
+        },
+        "role": null,
+        "tag": "A",
+        "text": "重新比較",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 2056,
+      "reducedMotion": true,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b05ccb99-165e-486c-ad47-3c467e9f6fd9&economics=econrun_64c38c0c-7ded-4851-9f34-c043e5e9ce40&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_ad251e0c-ff5d-46d1-b460-2167485504ce&evidenceReturn=review-evidence-0",
+      "viewport": {
+        "dpr": 2,
+        "height": 1234,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 2056
+      }
+    },
+    {
+      "key": "Tab",
+      "at": "2026-11-17T11:00:02.608Z",
+      "dialogs": [
+        {
+          "clientHeight": 1234,
+          "heading": "檢視內部審查事項",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2136,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "review-title",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44,
+          "width": 640,
+          "x": 1396,
+          "y": 368.0390625
+        },
+        "role": null,
+        "tag": "SELECT",
+        "text": "檢核信義旗艦店裝修第3版報價的進口石材與照明假設審查信義旗艦店裝修第3版報價的進口石材與照明假設確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 2056,
+      "reducedMotion": true,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b05ccb99-165e-486c-ad47-3c467e9f6fd9&economics=econrun_64c38c0c-7ded-4851-9f34-c043e5e9ce40&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_ad251e0c-ff5d-46d1-b460-2167485504ce&evidenceReturn=review-evidence-0",
+      "viewport": {
+        "dpr": 2,
+        "height": 1234,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 2056
+      }
+    },
+    {
+      "key": "shift+Tab",
+      "at": "2026-11-17T11:00:03.406Z",
+      "dialogs": [
+        {
+          "clientHeight": 1234,
+          "heading": "檢視內部審查事項",
+          "label": "internal-review-heading",
+          "modal": "true",
+          "scrollHeight": 2136,
+          "scrollTop": 0
+        }
+      ],
+      "focus": {
+        "dialogLabel": "internal-review-heading",
+        "id": "",
+        "insideDialog": true,
+        "label": null,
+        "rect": {
+          "height": 44,
+          "width": 64,
+          "x": 1413,
+          "y": 256.6484375
+        },
+        "role": null,
+        "tag": "A",
+        "text": "重新比較",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 2056,
+      "reducedMotion": true,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b05ccb99-165e-486c-ad47-3c467e9f6fd9&economics=econrun_64c38c0c-7ded-4851-9f34-c043e5e9ce40&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_ad251e0c-ff5d-46d1-b460-2167485504ce&evidenceReturn=review-evidence-0",
+      "viewport": {
+        "dpr": 2,
+        "height": 1234,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 2056
+      }
+    }
+  ]
+}

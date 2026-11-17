@@ -1,0 +1,36 @@
+{
+  "runId": "20261117T095951Z",
+  "database": "stridebrain_sb029_targeted_20261117t050611z",
+  "at": "2026-11-17T11:06:06.796Z",
+  "classification": "CURRENT_RUN_LEDGER_ONLY_SESSION_REVOCATION",
+  "ledgerEntryCount": 2,
+  "distinctIssuedSessions": 2,
+  "revokedNow": 2,
+  "allOwnedSessionsRevoked": true,
+  "allActiveSessionsAfter": 0,
+  "onlyLedgerSessionIdsSubmitted": true,
+  "allRowsIssuedAfterRunStart": true,
+  "existingTrustedSessionServiceUsed": true,
+  "fixtureRowsUnchanged": true,
+  "fixtureMatchesStartBaseline": true,
+  "fixtureBeforeSha256": "3d8e5079e50a99402f0cf355bf2e2c2658cfe75744a800737f0a8409d8d3dce3",
+  "fixtureAfterSha256": "3d8e5079e50a99402f0cf355bf2e2c2658cfe75744a800737f0a8409d8d3dce3",
+  "seedFixtureRevocationPatternIntact": true,
+  "bootstrapFilesRemoved": 0,
+  "countsBefore": {
+    "actions": 3,
+    "consumed": 3,
+    "receipts": 3,
+    "audits": 3,
+    "actionevidencelinks": 45
+  },
+  "countsAfter": {
+    "actions": 3,
+    "consumed": 3,
+    "receipts": 3,
+    "audits": 3,
+    "actionevidencelinks": 45
+  },
+  "noBusinessWrites": true,
+  "credentialsOrSessionIdsPublished": false
+}

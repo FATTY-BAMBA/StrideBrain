@@ -1,0 +1,44 @@
+{
+  "at": "2026-11-17T10:06:56.968Z",
+  "name": "m03-en-stale-error",
+  "notes": "",
+  "dialogs": [
+    {
+      "clientHeight": 617,
+      "heading": "Review internal review action",
+      "label": "internal-review-heading",
+      "modal": "true",
+      "scrollHeight": 2278,
+      "scrollTop": 0
+    }
+  ],
+  "focus": {
+    "dialogLabel": "internal-review-heading",
+    "id": "review-error-summary",
+    "insideDialog": true,
+    "label": null,
+    "rect": {
+      "height": 196.0703125,
+      "width": 640,
+      "x": 368,
+      "y": 147.19921875
+    },
+    "role": "alert",
+    "tag": "DIV",
+    "text": "Review could not be confirmedThe comparison or its evidence has changed. Nothing was created. Refresh the comparison and review it again.Reference: 1a98eafc-92a7-4b7f-9291-7d90e86969c7Refresh comparison",
+    "trigger": null,
+    "visible": true
+  },
+  "locale": "en",
+  "pageWidth": 1028,
+  "reducedMotion": false,
+  "url": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_72f4f320-a682-44a6-ad06-d4a3e36157b9&reviewTitle=CHECK",
+  "viewport": {
+    "dpr": 4,
+    "height": 617,
+    "outerHeight": 1290,
+    "outerWidth": 2056,
+    "visualScale": 1,
+    "width": 1028
+  }
+}

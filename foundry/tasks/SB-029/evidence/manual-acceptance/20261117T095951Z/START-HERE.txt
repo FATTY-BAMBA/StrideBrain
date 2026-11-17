@@ -1,0 +1,4 @@
+Read REPORT.txt and RESULTS.json first.
+Only M-03 and M-04 were executed on f67edb3188c51704acac4465c0a72fca146c6d3f. Both PASS; F-08 PASS.
+Review focus-reassessment.json, settings-restoration.json, closure-bad-request.json, cleanup-summary.json, source-preservation.json and sanitization.json.
+Original observations and screenshots remain available. No historical run was rewritten. This evidence is local and unpublished.

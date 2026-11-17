@@ -1,0 +1,38 @@
+{
+  "nativeKeys": true,
+  "trace": [
+    {
+      "key": "Escape",
+      "at": "2026-11-17T10:07:38.366Z",
+      "dialogs": [],
+      "focus": {
+        "id": "",
+        "insideDialog": false,
+        "label": null,
+        "rect": {
+          "height": 92.6796875,
+          "width": 575.203125,
+          "x": 350.3984375,
+          "y": 163.75390625
+        },
+        "role": null,
+        "tag": "H1",
+        "text": "歷史專案比較： 信義旗艦店裝修",
+        "trigger": null,
+        "visible": true
+      },
+      "locale": "zh-Hant",
+      "pageWidth": 1028,
+      "reducedMotion": false,
+      "url": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_6068ffe3-24a4-4445-a3d6-bd8e31a8a0d1&economics=econrun_56fb28e5-ed1c-441b-bc1f-bdf97db4c319&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 4,
+        "height": 617,
+        "outerHeight": 1290,
+        "outerWidth": 2056,
+        "visualScale": 1,
+        "width": 1028
+      }
+    }
+  ]
+}

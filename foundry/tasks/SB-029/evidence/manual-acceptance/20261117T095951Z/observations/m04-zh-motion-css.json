@@ -1,0 +1,33 @@
+{
+  "elements": [
+    {
+      "animation": "1e-05s",
+      "scrollBehavior": "auto",
+      "tag": "ASIDE",
+      "text": "資料依據進口石材與硬質面材顯示一筆已授權來源，以及目前哪些結果使用了它。返回資料依據組合信義旗艦店裝修2026年11月17日返回資料依據組合目前結果中的用途進口石材 預估成本與已核",
+      "transition": "1e-05s"
+    },
+    {
+      "animation": "1e-05s",
+      "scrollBehavior": "auto",
+      "tag": "H2",
+      "text": "進口石材與硬質面材",
+      "transition": "1e-05s"
+    },
+    {
+      "animation": "1e-05s",
+      "scrollBehavior": "auto",
+      "tag": "BUTTON",
+      "text": "返回資料依據組合",
+      "transition": "1e-05s"
+    },
+    {
+      "animation": "1e-05s",
+      "scrollBehavior": "auto",
+      "tag": "BUTTON",
+      "text": "返回資料依據組合",
+      "transition": "1e-05s"
+    }
+  ],
+  "reducedMotion": true
+}
