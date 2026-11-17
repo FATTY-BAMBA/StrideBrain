@@ -1,0 +1,53 @@
+{
+  "at": "2026-11-17T02:58:19.494Z",
+  "persona": "northern",
+  "surface": "compare",
+  "selector": "missing",
+  "dialogs": [],
+  "documentWidth": 1440,
+  "fields": [
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "$ACTION_ID_400a20cdde0db485ff454fa4c68dced110c17c70f7",
+      "type": "hidden",
+      "value": ""
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "locale",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "projectKey",
+      "type": "hidden",
+      "value": "<redacted>"
+    }
+  ],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "Skip to main contentStrideBrainBY PRIMESTRIDE AI01Home02Projects03Knowledge04StrideBrain05Settingsv0.1 · Controlled demoThis area is not active yet●Controlled synthetic demo繁中/ENOverviewCompareCommercialEvidenceActionsCOMPARABLE PROJECT INTELLIGENCET"
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: ce51768a-5ba1-4cb2-a10c-a6574c367fb3\n\nRun a fresh comparison",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_00000000-0000-4000-8000-000000000099",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

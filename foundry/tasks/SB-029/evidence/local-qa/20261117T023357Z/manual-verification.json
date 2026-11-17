@@ -1,0 +1,68 @@
+[
+  {
+    "id": "M-01",
+    "scenarioIds": [
+      "QA-15"
+    ],
+    "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "item": "Actual screen-reader announcements",
+    "steps": "On exact-head preview, use VoiceOver+Chrome and NVDA+Chrome/Firefox with reviewed Mei session. In each locale, open review via keyboard, submit without consent, trigger stale/evidence/access/server error via operator, open/close evidence and create once. Verify dialog name, focused alert/field, linked error, pending state, receipt heading are announced once, with no hidden background disclosure; Escape returns to trigger. DOM role/focus does not establish speech."
+  },
+  {
+    "id": "M-02",
+    "scenarioIds": [
+      "QA-15",
+      "QA-16"
+    ],
+    "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "item": "Physical mobile keyboard, touch and native picker",
+    "steps": "On real iOS Safari and Android Chrome at 390/320 CSS widths, open the longest approved draft in both locales. Tap native date picker, select/clear a valid date, open the soft keyboard and scroll to warnings, consent, create/cancel and evidence close. Verify no occluded/overlapping controls, preserved draft through locale/evidence and comfortable touch targets. Desktop viewport sizing does not simulate native IME or touch."
+  },
+  {
+    "id": "M-03",
+    "scenarioIds": [
+      "QA-15",
+      "QA-16"
+    ],
+    "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "item": "Exact 200 percent zoom",
+    "steps": "Use a desktop browser window calibrated to 1280x800 content at 100%; set browser zoom to 200% through its visible menu, independently record actual CSS viewport and zoom. In both locales test review, validation, stale/server errors, evidence and receipt. Tab through every control, scroll warnings, verify reflow and focus visibility; reset zoom after. Viewport override is not equivalent to 200% browser zoom."
+  },
+  {
+    "id": "M-04",
+    "scenarioIds": [
+      "QA-15"
+    ],
+    "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "item": "Reduced motion",
+    "steps": "Enable OS Reduce Motion before opening the browser; verify prefers-reduced-motion reports reduce. In both locales open/close review/evidence, trigger loading/error and receipt. Observe transitions with and without preference; ensure reduced motion and no repeated focus stealing. Restore original preference."
+  },
+  {
+    "id": "M-05",
+    "scenarioIds": [
+      "QA-02"
+    ],
+    "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "item": "Leap-day and Asia/Taipei midnight date boundaries",
+    "steps": "On a disposable synthetic environment with an approved operator-controlled test clock and unchanged product code, exercise valid leap-day 2028-02-29 while it is within today..today+365, reject 2027-02-29, and prepare just before Asia/Taipei midnight then confirm just after. Verify min/max use confirmation-local today, default remains preparation+7, invalid date focuses localized associated error and creates no action. Repeat native keyboard/picker both locales and compare persisted local date. Do not change the host production clock."
+  },
+  {
+    "id": "M-06",
+    "scenarioIds": [
+      "QA-15"
+    ],
+    "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "item": "Generic form-to-error description association",
+    "steps": "With a fresh authorized draft, trigger each generic error and inspect the actual dialog form element (not a guessed form id). Verify aria-describedby includes review-error-summary and resolves to the visible alert; check screen-reader interaction. This run establishes focused alert/heading and field-specific associations; its generic form-description probe returned null and earns no browser association pass."
+  },
+  {
+    "id": "M-07",
+    "scenarioIds": [
+      "QA-16",
+      "QA-18"
+    ],
+    "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "item": "Independent human Traditional Chinese and repair review",
+    "steps": "Have a reviewer who did not author the repairs read all F-03 evidence, repair programmeWeeks and the lighting table entry on a new exact head, then retest affected panels at all four viewports. This automated run collected observations in the same root thread that previously coordinated repairs; it does not approve its own fixes or substitute for independent human review."
+  }
+]

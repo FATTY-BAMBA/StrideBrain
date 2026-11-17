@@ -1,0 +1,27 @@
+{
+  "at": "2026-11-17T03:43:29.977Z",
+  "persona": "northern",
+  "selectorCase": {
+    "actor": "northern",
+    "locale": "zh-TW",
+    "type": "project",
+    "existence": "missing",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-QA-MISSING-999"
+  },
+  "dialogs": [],
+  "documentWidth": 1440,
+  "fields": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": ""
+  },
+  "locale": "zh-Hant",
+  "text": "專案工作區\n\n此專案或區域目前無法使用。\n\n目前的授權脈絡無法開啟此專案，或此專案區域尚未在第一個完整流程中啟用。系統不會以假資料取代失敗狀態。\n\n總覽\n比較\n商務資料\n資料依據\n行動事項\n此區域尚未啟用\n總覽\n\n專案總覽、比較與資料依據已連接正式資料與權限邊界。商務資料專頁與行動事項會依照已核准的建置順序逐步啟用。\n\n要求的專案識別碼\nPRJ-QA-MISSING-999\n目前區域\n總覽",
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-QA-MISSING-999",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

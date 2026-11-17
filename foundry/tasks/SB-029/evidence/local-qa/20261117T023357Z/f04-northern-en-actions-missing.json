@@ -1,0 +1,38 @@
+{
+  "at": "2026-11-17T02:58:19.931Z",
+  "persona": "northern",
+  "surface": "actions",
+  "selector": "missing",
+  "dialogs": [
+    {
+      "clientHeight": 900,
+      "name": "internal-review-heading",
+      "rect": {
+        "bottom": 900,
+        "height": 900,
+        "left": 760,
+        "right": 1440,
+        "top": 0,
+        "width": 680,
+        "x": 760,
+        "y": 0
+      },
+      "scrollHeight": 900
+    }
+  ],
+  "documentWidth": 1440,
+  "fields": [],
+  "focus": {
+    "id": "internal-review-heading",
+    "tag": "H2",
+    "text": "Receipt unavailable"
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nThis action is unavailable with your current access.\n\nReceipt unavailable\n\nThis receipt cannot be displayed. Return to a project you can access to view available actions.\n\nEnglish\n繁體中文\nClose",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_00000000-0000-4000-8000-000000000099",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

@@ -1,0 +1,16 @@
+SB-029 / 20261117T023357Z / REVISE
+
+Read REPORT.txt, then scenario-results.json, findings.json and manual-verification.json.
+14 PASS / 2 FAIL / 2 PARTIAL / 0 BLOCKED.
+FAIL: QA-16, QA-18 (F-03 residual programmeWeeks; F-07 lighting table evidence entry).
+PARTIAL: QA-02 date boundary matrix; QA-15 assistive/native/zoom/motion and generic form-description proof.
+
+Exact source: 211578dd4b4e12169a182c498254bb571cadad70
+BUILD_ID: arWM81fSt1-zRkeglr43Z
+Only this evidence subtree belongs in the evidence commit, directly parented to exact source.
+No product changes, no PR readiness change, no merge, no release readiness claim.
+
+Use screenshot-review.json to distinguish settled results from loading/calibration/driver diagnostics.
+Use final-database-integrity.json, restoration-ledger.json, final-catalog-guard-session-proof.json, fixed-fixture-digests-after.json and session-revocation.json for closure proof.
+Sanitization: sanitization.json. All artifacts: FILES.txt / SHA256SUMS.txt.
+The commit SHA is reported by Git and the publication response; a commit cannot embed its own SHA.

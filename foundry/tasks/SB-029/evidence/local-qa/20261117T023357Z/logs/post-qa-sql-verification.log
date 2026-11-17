@@ -1,0 +1,12 @@
+{"qaSessions":{"total":42,"unrevoked":0}}
+verify-horizon.sql: PASS
+verify-relations.sql: PASS
+Post-QA adaptation: the exact-two fixture session count is scoped to the two named fixture rows; all extra QA sessions independently required revoked. Source SQL unchanged.
+verify-stage2-authorization.sql: PASS
+verify-stage3-workspace.sql: PASS
+verify-stage4-comparison.sql: PASS
+verify-stage5-economics.sql: PASS
+verify-stage6-comparison-persistence.sql: PASS
+verify-stage8-internal-review.sql: PASS
+{"immutableGuards":["Action_stage8_immutable","AuditEvent_append_only","InternalReviewReceipt_immutable","ProposedAction_stage8_immutable"],"migrations":8}
+All verification probes rolled back; no fixture or history row removed.

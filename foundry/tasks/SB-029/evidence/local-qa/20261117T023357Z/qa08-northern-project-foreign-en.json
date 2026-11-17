@@ -1,0 +1,27 @@
+{
+  "at": "2026-11-17T03:43:26.989Z",
+  "persona": "northern",
+  "selectorCase": {
+    "actor": "northern",
+    "locale": "en",
+    "type": "project",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026"
+  },
+  "dialogs": [],
+  "documentWidth": 1440,
+  "fields": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": ""
+  },
+  "locale": "en",
+  "text": "PROJECT WORKSPACE\n\nThis project or project area is currently unavailable.\n\nThe current authorization context cannot open this project, or the requested area is not active in the first complete workflow. The application does not replace unavailable states with invented records.\n\nOverview\nCompare\nCommercial\nEvidence\nActions\nThis area is not active yet\nOverview\n\nProject Overview, Compare, and claim-level Evidence use the real data and authorization boundaries. Commercial detail pages and Actions activate through the accepted implementation sequence.\n\nREQUESTED PROJECT KEY\nPRJ-XINYI-026\nCURRENT AREA\nOverview",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

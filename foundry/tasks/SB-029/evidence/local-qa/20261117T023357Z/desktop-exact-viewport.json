@@ -1,0 +1,42 @@
+{
+  "at": "2026-11-17T02:37:23.172Z",
+  "persona": "mei",
+  "step": "Reset localhost site zoom through native Chrome Cmd+0; CSS viewport confirmed 1440x900.",
+  "dialogs": [],
+  "documentWidth": 1440,
+  "fields": [
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "locale",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "projectKey",
+      "type": "hidden",
+      "value": "<redacted>"
+    }
+  ],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "Skip to main contentStrideBrainBY PRIMESTRIDE AI01Home02Projects03Knowledge04StrideBrain05Settingsv0.1 · Controlled demoThis area is not active yet●Controlled synthetic demo繁中/ENOverviewCompareCommercialEvidenceActionsCOMPARABLE PROJECT INTELLIGENCEH"
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nHave we done something like this before?\nFind comparable projects\nSearch the authorized project history, explain the strongest matches, and compare the current quotation with trustworthy precedents.\nFind comparable projects",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

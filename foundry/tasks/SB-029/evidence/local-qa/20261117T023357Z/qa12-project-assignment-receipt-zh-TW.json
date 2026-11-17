@@ -1,0 +1,48 @@
+{
+  "at": "2026-11-17T03:27:34.061Z",
+  "persona": "mei",
+  "dialogs": [],
+  "documentWidth": 320,
+  "fields": [
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": ""
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    }
+  ],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": ""
+  },
+  "locale": "zh-Hant",
+  "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: 60df1b38-a8f9-47f6-a236-2a078a9f92d8\n\n重新執行比較",
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_50e716a4-034f-4b4c-bc3a-2fa2ef1e3bdb&economics=econrun_5191e5da-112d-47cb-b40d-8de6cdda4d42&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_d89226cf-77aa-46bb-a113-af8a3f5c4416",
+  "viewport": {
+    "dpr": 1,
+    "height": 740,
+    "width": 320
+  }
+}

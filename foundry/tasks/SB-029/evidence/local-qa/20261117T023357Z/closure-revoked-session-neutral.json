@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-17T04:04:47.198Z",
+  "persona": "mei",
+  "dialogs": [],
+  "documentWidth": 1440,
+  "fields": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": ""
+  },
+  "locale": "zh-Hant",
+  "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n需要受控的示範工作階段。\n\n伺服器驗證已簽署的虛構示範工作階段後，才會開啟此工作區。網址參數不能選擇組織或角色。",
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_3402bed6-25cc-4941-afa7-7a8f53376089&economics=econrun_da840572-fd32-40d2-84ac-51a363cc3244&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

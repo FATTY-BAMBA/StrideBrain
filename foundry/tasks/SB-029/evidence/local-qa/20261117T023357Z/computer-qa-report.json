@@ -1,0 +1,224 @@
+{
+  "runId": "20261117T023357Z",
+  "startedAt": "2026-11-17T02:33:57.304312+00:00",
+  "browserCompletedAt": "2026-11-17T04:04:47.198Z",
+  "evidenceFinalizedAt": "2026-11-17T04:11:51.758159+00:00",
+  "repository": "FATTY-BAMBA/StrideBrain",
+  "canonicalBranch": "build/sb-029-governed-internal-review",
+  "exactHead": "211578dd4b4e12169a182c498254bb571cadad70",
+  "evidenceBranch": "qa/sb-029-local-20261117T023357Z",
+  "directParentRequired": "211578dd4b4e12169a182c498254bb571cadad70",
+  "buildId": "arWM81fSt1-zRkeglr43Z",
+  "sourceManifestSha256": "447229ea5bdd0efdf0f3f7ba6738f11bdf475c8c660c1010d8efb5dc4432b090",
+  "browserBackend": "Local macOS Chrome via documented CUA API; production Next.js on localhost:3000",
+  "viewports": [
+    [
+      1440,
+      900
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      320,
+      740
+    ]
+  ],
+  "locales": [
+    "en",
+    "zh-TW"
+  ],
+  "counts": {
+    "PASS": 14,
+    "PARTIAL": 2,
+    "FAIL": 2,
+    "BLOCKED": 0
+  },
+  "verdict": "REVISE",
+  "unresolvedScenarios": [
+    "QA-02",
+    "QA-15",
+    "QA-16",
+    "QA-18"
+  ],
+  "defects": [
+    {
+      "id": "F-03",
+      "status": "OPEN_RESIDUAL",
+      "severity": "P2",
+      "scenarioIds": [
+        "QA-16",
+        "QA-18"
+      ],
+      "title": "Internal programmeWeeks field name remains in normal zh-TW evidence",
+      "persona": "mei / 林美玲",
+      "locale": "zh-TW",
+      "viewports": [
+        [
+          1440,
+          900
+        ],
+        [
+          768,
+          1024
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          320,
+          740
+        ]
+      ],
+      "steps": [
+        "Open assigned Xinyi comparison with the top three precedents.",
+        "In the structured comparison, open Programme / 工期 16 週 evidence.",
+        "Read Supporting sources / 支持資料來源 → Exact locator / 精確位置."
+      ],
+      "expected": "Natural Taiwan Traditional Chinese locator wording such as 工期（週）; no internal field identifier in normal mode.",
+      "observed": "紀錄類型: 來源紀錄 · 欄位: programmeWeeks appears for the four project sources.",
+      "acceptanceCriteria": [
+        "QA-16 natural zh-TW parity without developer/policy plumbing",
+        "QA-18 evidence/factor regression integrity",
+        "F-03 complete localization requirement"
+      ],
+      "screenshots": [
+        "screenshots/f03-programme-field-leak-visible.jpg",
+        "screenshots/f03-claim-00-1440.jpg",
+        "screenshots/f03-claim-00-768.jpg",
+        "screenshots/f03-claim-00-390.jpg",
+        "screenshots/f03-claim-00-320.jpg"
+      ],
+      "evidence": [
+        "f03-claim-00.json",
+        "f03-panel-audit.json"
+      ],
+      "impact": "Bounded terminology defect; numerical meaning, uncertainty and authorization remain intact. Return for repair; no acceptance granted."
+    },
+    {
+      "id": "F-07",
+      "status": "OPEN",
+      "severity": "P2",
+      "scenarioIds": [
+        "QA-16",
+        "QA-18"
+      ],
+      "title": "Lighting forecast/actual table evidence entry opens unavailable panel",
+      "persona": "mei / 林美玲",
+      "locale": [
+        "en",
+        "zh-TW"
+      ],
+      "viewports": {
+        "en": [
+          [
+            1440,
+            900
+          ]
+        ],
+        "zh-TW": [
+          [
+            1440,
+            900
+          ],
+          [
+            768,
+            1024
+          ],
+          [
+            390,
+            844
+          ],
+          [
+            320,
+            740
+          ]
+        ]
+      },
+      "steps": [
+        "Open current authorized Xinyi comparison with the top three precedents.",
+        "In Lighting/electrical · forecast / reconciled actual row, select active Forecast direct cost NT$3,672/m² · Insufficient evidence.",
+        "Observe the unavailable evidence panel. Close it.",
+        "In Structured review → Evidence gaps, open Inspect evidence; compare the valid Lighting actual-cost insufficiency panel."
+      ],
+      "expected": "The table evidence affordance opens the authorized insufficiency explanation with two eligible observations of three required, without inventing a supported range.",
+      "observed": "Table selects XINYI_LIGHTING_ELECTRICAL_FORECAST_ACTUAL_VARIANCE and displays generic unavailable text. Evidence-gaps entry selects XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT and correctly shows two-of-three plus sources.",
+      "acceptanceCriteria": [
+        "QA-18 prior evidence behavior remains intact",
+        "QA-16 evidence journey and bilingual layout",
+        "Evidence affordance preserves exact claim/source meaning"
+      ],
+      "screenshots": [
+        "screenshots/f07-lighting-table-unavailable-en-settled.jpg",
+        "screenshots/f07-lighting-gap-supported-en.jpg",
+        "screenshots/f03-claim-21-1440.jpg",
+        "screenshots/f03-claim-21-768.jpg",
+        "screenshots/f03-claim-21-390.jpg",
+        "screenshots/f03-claim-21-320.jpg",
+        "screenshots/f03-lighting-insufficiency-card-320.jpg"
+      ],
+      "evidence": [
+        "f07-lighting-table-unavailable-en-settled.json",
+        "f07-lighting-gap-supported-en.json",
+        "f03-claim-21.json"
+      ],
+      "impact": "Evidence navigation defect with a functioning gap-card path. Abstention remains visible and no unsupported actual-cost range/action is created."
+    }
+  ],
+  "scenarioResults": "scenario-results.json",
+  "manualVerification": "manual-verification.json",
+  "beforeCounts": {
+    "actions": 0,
+    "proposals": 0,
+    "consumed": 0,
+    "receipts": 0,
+    "audits": 0,
+    "actionevidencelinks": 0
+  },
+  "afterCounts": {
+    "actions": 9,
+    "proposals": 12,
+    "consumed": 9,
+    "receipts": 9,
+    "audits": 9,
+    "actionevidencelinks": 135
+  },
+  "restoration": {
+    "cases": 45,
+    "allRestored": true,
+    "allNegativeCasesNoBusinessWrites": true,
+    "allFixedFixtureDigestsMatch": true,
+    "all42TemporarySessionsRevoked": true,
+    "activeSessions": 0,
+    "allFourGuardsMatchMigration": true,
+    "allEightMigrationChecksumsMatchSource": true,
+    "oneConsumptionAndAtomicLineage": true
+  },
+  "repairDisposition": {
+    "F-01": "Observed financial-authority paths pass.",
+    "F-02": "Observed rapid edit/restoration paths pass, including final native-keyboard date change. Earlier inconclusive driver attempts retained.",
+    "F-03": "FAIL: programmeWeeks remains; six previously named strings were absent.",
+    "F-04": "Observed authorized-success versus neutral missing/denied receipt behavior passes.",
+    "F-05": "Observed generic-error focus/visibility/draft/recovery behavior passes 32 exact viewport cases. Full QA-15 is partial.",
+    "F-06": "Observed first-priority stale/unverified warnings and blocked new preparation/confirmation pass. No P1 stop triggered."
+  },
+  "smoke": "QA-01 through QA-18 matrix executed after first-priority stale checks, including later complete positive role journeys and final navigation/cancel smoke. F03 remained P2; this is not an all-targeted-pass final gate.",
+  "independence": "New isolated browser execution and separately observed SQL evidence; same root thread previously coordinated repairs. This report is observation, not independent human approval or approval of authored fixes.",
+  "acceptanceClaim": false,
+  "mergeClaim": false,
+  "releaseReadinessClaim": false,
+  "limitations": [
+    "QA02 leap-day/midnight browser boundaries incomplete.",
+    "QA15 manual backend limits and generic form-description probe not credited.",
+    "No packet-level network capture; provider absence is runtime-variable/control inspection only.",
+    "Full English source-panel enumeration was sampled rather than every zh-TW panel equivalent; inherited evidence findings remain open.",
+    "Exact 200% zoom and physical keyboard viewport reduction unverified."
+  ],
+  "logs": "Sanitized production build, post-QA SQL, selected PostgreSQL performance logs, and allowlisted server outcomes only."
+}

@@ -1,0 +1,55 @@
+{
+  "at": "2026-11-17T03:43:28.193Z",
+  "persona": "northern",
+  "selectorCase": {
+    "actor": "northern",
+    "locale": "en",
+    "type": "proposal",
+    "existence": "foreign",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_fe2095ac-701a-4913-821a-693825f6075f"
+  },
+  "dialogs": [],
+  "documentWidth": 1440,
+  "fields": [
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": ""
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    }
+  ],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": ""
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: 1c246466-4c9a-4597-afff-552820ba50ef\n\nRun a fresh comparison",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_fe2095ac-701a-4913-821a-693825f6075f",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

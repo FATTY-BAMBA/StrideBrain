@@ -1,0 +1,25 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:37:17.070Z",
+  "classification": "OWNED_HTTP_SESSION_CLEANUP",
+  "issuedByThisHarness": 2,
+  "revokedNow": 1,
+  "onlyOwnExactIdsSubmitted": true,
+  "allRevoked": true,
+  "states": [
+    {
+      "variant": "expired",
+      "expiresAtStoredUtc": "2026-11-17 03:37:01.558",
+      "expired": true,
+      "revoked": true
+    },
+    {
+      "variant": "revoked",
+      "expiresAtStoredUtc": "2026-11-17 04:36:01.576",
+      "expired": false,
+      "revoked": true
+    }
+  ],
+  "credentialsPublished": false
+}

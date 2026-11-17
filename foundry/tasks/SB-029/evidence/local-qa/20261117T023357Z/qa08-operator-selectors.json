@@ -1,0 +1,226 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:42:40.685Z",
+  "classification": "CONTROLLED_SYNTHETIC_ROUTE_REFERENCES",
+  "real": {
+    "project": "PRJ-XINYI-026",
+    "comparison": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+    "enrichment": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+    "proposal": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+    "action": "action_d27cb3ce-01d4-46cf-809b-e3feece44c19",
+    "evidenceClaim": "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE"
+  },
+  "missing": {
+    "project": "PRJ-QA-MISSING-999",
+    "comparison": "cmprun_e5fac213-7741-4a6b-bdee-0fc5cf1e1043",
+    "enrichment": "econrun_e0a2717b-a1b7-4484-bf5b-7a1b180c1379",
+    "proposal": "proposal_42d5ab77-1dce-411f-84cc-c7d5f38d6677",
+    "action": "action_d4a819ed-3ceb-4cd8-83cb-3c0a92efef32",
+    "evidenceClaim": "XINYI_MISSING_EVIDENCE_9FAFE7515145"
+  },
+  "meiForeignAssignee": "assignee_5c224d1aef24ac7bf34f94e09b3c47dc",
+  "meiMissingAssignee": "assignee_554c450a15a04957995e7d7610845912",
+  "routes": [
+    {
+      "actor": "northern",
+      "locale": "en",
+      "type": "project",
+      "existence": "foreign",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026"
+    },
+    {
+      "actor": "northern",
+      "locale": "en",
+      "type": "project",
+      "existence": "missing",
+      "url": "http://localhost:3000/en/projects/PRJ-QA-MISSING-999"
+    },
+    {
+      "actor": "northern",
+      "locale": "en",
+      "type": "comparison",
+      "existence": "foreign",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    },
+    {
+      "actor": "northern",
+      "locale": "en",
+      "type": "comparison",
+      "existence": "missing",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_e5fac213-7741-4a6b-bdee-0fc5cf1e1043&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    },
+    {
+      "actor": "northern",
+      "locale": "en",
+      "type": "enrichment",
+      "existence": "foreign",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    },
+    {
+      "actor": "northern",
+      "locale": "en",
+      "type": "enrichment",
+      "existence": "missing",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_e0a2717b-a1b7-4484-bf5b-7a1b180c1379&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    },
+    {
+      "actor": "northern",
+      "locale": "en",
+      "type": "proposal",
+      "existence": "foreign",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_fe2095ac-701a-4913-821a-693825f6075f"
+    },
+    {
+      "actor": "northern",
+      "locale": "en",
+      "type": "proposal",
+      "existence": "missing",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_42d5ab77-1dce-411f-84cc-c7d5f38d6677"
+    },
+    {
+      "actor": "northern",
+      "locale": "en",
+      "type": "action",
+      "existence": "foreign",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_d27cb3ce-01d4-46cf-809b-e3feece44c19"
+    },
+    {
+      "actor": "northern",
+      "locale": "en",
+      "type": "action",
+      "existence": "missing",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_d4a819ed-3ceb-4cd8-83cb-3c0a92efef32"
+    },
+    {
+      "actor": "northern",
+      "locale": "en",
+      "type": "evidenceClaim",
+      "existence": "foreign",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE"
+    },
+    {
+      "actor": "northern",
+      "locale": "en",
+      "type": "evidenceClaim",
+      "existence": "missing",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_MISSING_EVIDENCE_9FAFE7515145"
+    },
+    {
+      "actor": "mei",
+      "locale": "en",
+      "type": "project",
+      "existence": "foreign",
+      "url": "http://localhost:3000/en/projects/PRJ-NORTH-001"
+    },
+    {
+      "actor": "mei",
+      "locale": "en",
+      "type": "project",
+      "existence": "missing",
+      "url": "http://localhost:3000/en/projects/PRJ-QA-MISSING-999"
+    },
+    {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "project",
+      "existence": "foreign",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026"
+    },
+    {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "project",
+      "existence": "missing",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-QA-MISSING-999"
+    },
+    {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "comparison",
+      "existence": "foreign",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    },
+    {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "comparison",
+      "existence": "missing",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_e5fac213-7741-4a6b-bdee-0fc5cf1e1043&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    },
+    {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "enrichment",
+      "existence": "foreign",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    },
+    {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "enrichment",
+      "existence": "missing",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_e0a2717b-a1b7-4484-bf5b-7a1b180c1379&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    },
+    {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "proposal",
+      "existence": "foreign",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_fe2095ac-701a-4913-821a-693825f6075f"
+    },
+    {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "proposal",
+      "existence": "missing",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_42d5ab77-1dce-411f-84cc-c7d5f38d6677"
+    },
+    {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "action",
+      "existence": "foreign",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_d27cb3ce-01d4-46cf-809b-e3feece44c19"
+    },
+    {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "action",
+      "existence": "missing",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_d4a819ed-3ceb-4cd8-83cb-3c0a92efef32"
+    },
+    {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "evidenceClaim",
+      "existence": "foreign",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE"
+    },
+    {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "evidenceClaim",
+      "existence": "missing",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_MISSING_EVIDENCE_9FAFE7515145"
+    },
+    {
+      "actor": "mei",
+      "locale": "zh-TW",
+      "type": "project",
+      "existence": "foreign",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-NORTH-001"
+    },
+    {
+      "actor": "mei",
+      "locale": "zh-TW",
+      "type": "project",
+      "existence": "missing",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-QA-MISSING-999"
+    }
+  ],
+  "missingObjectSelectorsVerifiedAbsent": true,
+  "browserAcceptanceCredit": false,
+  "fixtureBounds": "Northern has an existing project/person but no eligible active quote and no Stage8 business history. Northern→Horizon covers existing/missing Stage8 objects; Mei→Northern covers existing/missing project and assignee. No reverse business history is manufactured.",
+  "routeMode": "evidenceMode=claim, as observed in the actual UI and route contract."
+}

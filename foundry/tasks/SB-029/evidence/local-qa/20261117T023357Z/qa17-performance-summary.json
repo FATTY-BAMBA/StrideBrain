@@ -1,0 +1,230 @@
+{
+  "exactHead": "211578dd4b4e12169a182c498254bb571cadad70",
+  "buildId": "arWM81fSt1-zRkeglr43Z",
+  "browser": {
+    "prepareMs": {
+      "n": 6,
+      "p50": 475.5,
+      "p95NearestRank": 588,
+      "min": 388,
+      "max": 588
+    },
+    "confirmMs": {
+      "n": 6,
+      "p50": 612.0,
+      "p95NearestRank": 694,
+      "min": 462,
+      "max": 694
+    },
+    "method": "Wall clock around CUA click through visible prepared fields / success heading; includes browser, HTTP, rendering and automation transport. No artificial pending delay. Different personas reported individually; server thresholds assessed separately.",
+    "limitation": "Six heterogeneous persona/viewport samples; descriptive only. Artificial 20-second lock excluded."
+  },
+  "server": {
+    "methodology": "30 unique immutable pairs/proposals; one excluded warmup; nearest-rank p95; server duration excluding network; actual Prisma query events",
+    "proposal": {
+      "samples": 30,
+      "p50": 94.66204099999959,
+      "p95": 123.7333749999998,
+      "max": 138.4317090000004
+    },
+    "confirmation": {
+      "samples": 30,
+      "p50": 112.45799999999872,
+      "p95": 167.5057080000006,
+      "max": 182.06170799999745
+    },
+    "proposalQueryCounts": [
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119
+    ],
+    "confirmationQueryCounts": [
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140
+    ],
+    "slowestConfirmationQueries": [
+      {
+        "query": "SELECT \"public\".\"Document\".\"id\", \"public\".\"Document\".\"projectId\" FROM \"public\".\"Document\" WHERE ((\"public\".\"Document\".\"organizationId\" = $1 AND \"public\".\"Document\".\"documentType\" = $2) AND \"public\".\"Document\".\"projectId\" IN ($3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26)) ORDER BY \"public\".\"Document\".\"businessKey\" ASC OFFSET $27",
+        "duration": 5.097249999998894
+      },
+      {
+        "query": "SELECT \"public\".\"Quote\".\"id\", \"public\".\"Quote\".\"businessKey\", \"public\".\"Quote\".\"projectId\" FROM \"public\".\"Quote\" WHERE (\"public\".\"Quote\".\"organizationId\" = $1 AND \"public\".\"Quote\".\"projectId\" IN ($2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25)) ORDER BY \"public\".\"Quote\".\"createdAt\" DESC OFFSET $26",
+        "duration": 4.108958000000712
+      },
+      {
+        "query": "SELECT \"public\".\"Material\".\"id\", \"public\".\"Material\".\"businessKey\" FROM \"public\".\"Material\" WHERE \"public\".\"Material\".\"id\" IN ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13) OFFSET $14",
+        "duration": 3.996291999999812
+      },
+      {
+        "query": "SELECT \"public\".\"ComparisonRun\".\"id\", \"public\".\"ComparisonRun\".\"activeProjectId\" FROM \"public\".\"ComparisonRun\" WHERE (\"public\".\"ComparisonRun\".\"organizationId\" = $1 AND \"public\".\"ComparisonRun\".\"id\" IN ($2)) ORDER BY \"public\".\"ComparisonRun\".\"id\" ASC OFFSET $3",
+        "duration": 3.558500000002823
+      },
+      {
+        "query": "SELECT \"public\".\"Supplier\".\"id\", \"public\".\"Supplier\".\"businessKey\" FROM \"public\".\"Supplier\" WHERE \"public\".\"Supplier\".\"id\" IN ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45) OFFSET $46",
+        "duration": 3.128708000000188
+      }
+    ],
+    "slowestReadPlan": [
+      {
+        "QUERY PLAN": [
+          {
+            "Plan": {
+              "Node Type": "Sort",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 6.93,
+              "Total Cost": 6.99,
+              "Plan Rows": 24,
+              "Plan Width": 51,
+              "Actual Startup Time": 0.041,
+              "Actual Total Time": 0.042,
+              "Actual Rows": 24,
+              "Actual Loops": 1,
+              "Sort Key": [
+                "\"businessKey\""
+              ],
+              "Sort Method": "quicksort",
+              "Sort Space Used": 26,
+              "Sort Space Type": "Memory",
+              "Shared Hit Blocks": 4,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Seq Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "Document",
+                  "Alias": "Document",
+                  "Startup Cost": 0.06,
+                  "Total Cost": 6.38,
+                  "Plan Rows": 24,
+                  "Plan Width": 51,
+                  "Actual Startup Time": 0.012,
+                  "Actual Total Time": 0.026,
+                  "Actual Rows": 24,
+                  "Actual Loops": 1,
+                  "Filter": "((\"organizationId\" = 'org_horizon'::text) AND (\"documentType\" = 'PROJECT_SUMMARY'::text) AND (\"projectId\" = ANY ('{prj_banqiao_015,prj_daan_016,prj_hist_001,prj_hist_002,prj_hist_003,prj_hist_004,prj_hist_005,prj_hist_006,prj_hist_007,prj_hist_008,prj_hist_009,prj_hist_010,prj_hist_011,prj_hist_012,prj_hist_013,prj_hist_014,prj_hist_015,prj_hist_016,prj_hist_017,prj_hist_018,prj_nanjing_023,prj_neihu_021,prj_songshan_020,prj_zhongshan_018}'::text[])))",
+                  "Rows Removed by Filter": 92,
+                  "Shared Hit Blocks": 4,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 0,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 0.072,
+            "Triggers": [],
+            "Execution Time": 0.054
+          }
+        ]
+      }
+    ],
+    "evidenceBatching": {
+      "initialReferences": 15,
+      "addedReferences": 20,
+      "initialQueries": 21,
+      "expandedQueries": 21
+    },
+    "assigneeBatching": {
+      "addedEligibleAssignees": 20,
+      "initialQueries": 119,
+      "expandedQueries": 119
+    },
+    "concurrentConfirmation": {
+      "samples": 30,
+      "p50": 135.3473750000012,
+      "p95": 149.62341700000252,
+      "max": 150.20566600000166
+    },
+    "concurrentProtocol": "10 batches × 3 independent proposals, unique immutable run pair per proposal"
+  },
+  "serverTargetsMs": {
+    "proposalP95": 500,
+    "confirmationP95": 800
+  },
+  "serverTargetPass": true,
+  "suite": "5 selected PostgreSQL tests passed; 88 intentionally unselected. This is not a rerun of all 492 deterministic tests.",
+  "environment": "macOS arm64 Node24.22.3, isolated PostgreSQL17.12; independent disposable performance database created/dropped by unchanged test suite."
+}

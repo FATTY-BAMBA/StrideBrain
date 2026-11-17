@@ -1,0 +1,295 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:37:16.985Z",
+  "classification": "APPROVED_INVALID_SESSION_HTTP_POST_SUPPLEMENT",
+  "executionMode": "HTTP_ONLY",
+  "proposalKey": "proposal_1149e1c6-177c-449e-8153-9f84324b8685",
+  "statesBeforeRequests": [
+    {
+      "variant": "expired",
+      "expiresAtStoredUtc": "2026-11-17 03:37:01.558",
+      "expired": true,
+      "revoked": false
+    },
+    {
+      "variant": "revoked",
+      "expiresAtStoredUtc": "2026-11-17 04:36:01.576",
+      "expired": false,
+      "revoked": true
+    }
+  ],
+  "validProposalPrecondition": {
+    "status": "PREPARED",
+    "unexpired": true
+  },
+  "results": [
+    {
+      "variant": "expired",
+      "locale": "en",
+      "method": "POST",
+      "operation": "prepare",
+      "path": "/api/actions/internal-review/proposals",
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "publicFields": [
+        "kind",
+        "requestId"
+      ],
+      "countsBefore": {
+        "actions": 2,
+        "proposals": 4,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "proposals": 4,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "noWrites": true
+    },
+    {
+      "variant": "expired",
+      "locale": "en",
+      "method": "POST",
+      "operation": "confirm",
+      "path": "/api/actions/internal-review",
+      "status": 403,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "publicFields": [
+        "kind",
+        "requestId"
+      ],
+      "countsBefore": {
+        "actions": 2,
+        "proposals": 4,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "proposals": 4,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "noWrites": true
+    },
+    {
+      "variant": "expired",
+      "locale": "zh-TW",
+      "method": "POST",
+      "operation": "prepare",
+      "path": "/api/actions/internal-review/proposals",
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "publicFields": [
+        "kind",
+        "requestId"
+      ],
+      "countsBefore": {
+        "actions": 2,
+        "proposals": 4,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "proposals": 4,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "noWrites": true
+    },
+    {
+      "variant": "expired",
+      "locale": "zh-TW",
+      "method": "POST",
+      "operation": "confirm",
+      "path": "/api/actions/internal-review",
+      "status": 403,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "publicFields": [
+        "kind",
+        "requestId"
+      ],
+      "countsBefore": {
+        "actions": 2,
+        "proposals": 4,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "proposals": 4,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "noWrites": true
+    },
+    {
+      "variant": "revoked",
+      "locale": "en",
+      "method": "POST",
+      "operation": "prepare",
+      "path": "/api/actions/internal-review/proposals",
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "publicFields": [
+        "kind",
+        "requestId"
+      ],
+      "countsBefore": {
+        "actions": 2,
+        "proposals": 4,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "proposals": 4,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "noWrites": true
+    },
+    {
+      "variant": "revoked",
+      "locale": "en",
+      "method": "POST",
+      "operation": "confirm",
+      "path": "/api/actions/internal-review",
+      "status": 403,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "publicFields": [
+        "kind",
+        "requestId"
+      ],
+      "countsBefore": {
+        "actions": 2,
+        "proposals": 4,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "proposals": 4,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "noWrites": true
+    },
+    {
+      "variant": "revoked",
+      "locale": "zh-TW",
+      "method": "POST",
+      "operation": "prepare",
+      "path": "/api/actions/internal-review/proposals",
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "publicFields": [
+        "kind",
+        "requestId"
+      ],
+      "countsBefore": {
+        "actions": 2,
+        "proposals": 4,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "proposals": 4,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "noWrites": true
+    },
+    {
+      "variant": "revoked",
+      "locale": "zh-TW",
+      "method": "POST",
+      "operation": "confirm",
+      "path": "/api/actions/internal-review",
+      "status": 403,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "publicFields": [
+        "kind",
+        "requestId"
+      ],
+      "countsBefore": {
+        "actions": 2,
+        "proposals": 4,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "proposals": 4,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "noWrites": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 2,
+    "proposals": 4,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "countsAfter": {
+    "actions": 2,
+    "proposals": 4,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "noWrites": true,
+  "browserAcceptanceCredit": false,
+  "credentialsPublished": false
+}

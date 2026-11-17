@@ -1,0 +1,1154 @@
+[
+  {
+    "locale": "en",
+    "expected": {
+      "width": 1440,
+      "height": 900
+    },
+    "busy": [
+      {
+        "busy": "true",
+        "role": null
+      },
+      {
+        "busy": "true",
+        "role": "dialog"
+      }
+    ],
+    "dialogCount": 1,
+    "fields": [
+      {
+        "ariaDisabled": "true",
+        "disabled": false,
+        "id": "",
+        "tag": "A",
+        "text": "English",
+        "value": ""
+      },
+      {
+        "ariaDisabled": "true",
+        "disabled": false,
+        "id": "",
+        "tag": "A",
+        "text": "繁體中文",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-title",
+        "tag": "SELECT",
+        "text": "Validate imported-stone and lighting assumptions for Xinyi quote v3\nReview imported-stone and lighting assumptions for Xinyi quote v3\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3",
+        "value": "REVIEW"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-rationale",
+        "tag": "SELECT",
+        "text": "Review these assumptions against the linked evidence before the next internal quotation review.\nCheck the supporting evidence and record questions for internal review.\nValidate the imported-stone and lighting assumptions using the linked historical evidence.",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Lighting quoted price differs by +9.4% from eligible quoted-price history.",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-assignee",
+        "tag": "SELECT",
+        "text": "Unassigned\nMei Lin\nAlex Chen\nIris Huang",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-dueDate",
+        "tag": "INPUT",
+        "text": "",
+        "value": "2026-11-24"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Clear due date",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-confirmation",
+        "tag": "INPUT",
+        "text": "",
+        "value": "on"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Creating internal review action…",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Cancel review",
+        "value": ""
+      }
+    ],
+    "viewport": {
+      "height": 900,
+      "width": 1440
+    }
+  },
+  {
+    "locale": "en",
+    "expected": {
+      "width": 768,
+      "height": 1024
+    },
+    "busy": [
+      {
+        "busy": "true",
+        "role": null
+      },
+      {
+        "busy": "true",
+        "role": "dialog"
+      }
+    ],
+    "dialogCount": 1,
+    "fields": [
+      {
+        "ariaDisabled": "true",
+        "disabled": false,
+        "id": "",
+        "tag": "A",
+        "text": "English",
+        "value": ""
+      },
+      {
+        "ariaDisabled": "true",
+        "disabled": false,
+        "id": "",
+        "tag": "A",
+        "text": "繁體中文",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-title",
+        "tag": "SELECT",
+        "text": "Validate imported-stone and lighting assumptions for Xinyi quote v3\nReview imported-stone and lighting assumptions for Xinyi quote v3\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3",
+        "value": "REVIEW"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-rationale",
+        "tag": "SELECT",
+        "text": "Review these assumptions against the linked evidence before the next internal quotation review.\nCheck the supporting evidence and record questions for internal review.\nValidate the imported-stone and lighting assumptions using the linked historical evidence.",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Lighting quoted price differs by +9.4% from eligible quoted-price history.",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-assignee",
+        "tag": "SELECT",
+        "text": "Unassigned\nMei Lin\nAlex Chen\nIris Huang",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-dueDate",
+        "tag": "INPUT",
+        "text": "",
+        "value": "2026-11-24"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Clear due date",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-confirmation",
+        "tag": "INPUT",
+        "text": "",
+        "value": "on"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Creating internal review action…",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Cancel review",
+        "value": ""
+      }
+    ],
+    "viewport": {
+      "height": 1024,
+      "width": 768
+    }
+  },
+  {
+    "locale": "en",
+    "expected": {
+      "width": 390,
+      "height": 844
+    },
+    "busy": [
+      {
+        "busy": "true",
+        "role": null
+      },
+      {
+        "busy": "true",
+        "role": "dialog"
+      }
+    ],
+    "dialogCount": 1,
+    "fields": [
+      {
+        "ariaDisabled": "true",
+        "disabled": false,
+        "id": "",
+        "tag": "A",
+        "text": "English",
+        "value": ""
+      },
+      {
+        "ariaDisabled": "true",
+        "disabled": false,
+        "id": "",
+        "tag": "A",
+        "text": "繁體中文",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-title",
+        "tag": "SELECT",
+        "text": "Validate imported-stone and lighting assumptions for Xinyi quote v3\nReview imported-stone and lighting assumptions for Xinyi quote v3\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3",
+        "value": "REVIEW"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-rationale",
+        "tag": "SELECT",
+        "text": "Review these assumptions against the linked evidence before the next internal quotation review.\nCheck the supporting evidence and record questions for internal review.\nValidate the imported-stone and lighting assumptions using the linked historical evidence.",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Lighting quoted price differs by +9.4% from eligible quoted-price history.",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-assignee",
+        "tag": "SELECT",
+        "text": "Unassigned\nMei Lin\nAlex Chen\nIris Huang",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-dueDate",
+        "tag": "INPUT",
+        "text": "",
+        "value": "2026-11-24"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Clear due date",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-confirmation",
+        "tag": "INPUT",
+        "text": "",
+        "value": "on"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Creating internal review action…",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Cancel review",
+        "value": ""
+      }
+    ],
+    "viewport": {
+      "height": 844,
+      "width": 390
+    }
+  },
+  {
+    "locale": "en",
+    "expected": {
+      "width": 320,
+      "height": 740
+    },
+    "busy": [
+      {
+        "busy": "true",
+        "role": null
+      },
+      {
+        "busy": "true",
+        "role": "dialog"
+      }
+    ],
+    "dialogCount": 1,
+    "fields": [
+      {
+        "ariaDisabled": "true",
+        "disabled": false,
+        "id": "",
+        "tag": "A",
+        "text": "English",
+        "value": ""
+      },
+      {
+        "ariaDisabled": "true",
+        "disabled": false,
+        "id": "",
+        "tag": "A",
+        "text": "繁體中文",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-title",
+        "tag": "SELECT",
+        "text": "Validate imported-stone and lighting assumptions for Xinyi quote v3\nReview imported-stone and lighting assumptions for Xinyi quote v3\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3",
+        "value": "REVIEW"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-rationale",
+        "tag": "SELECT",
+        "text": "Review these assumptions against the linked evidence before the next internal quotation review.\nCheck the supporting evidence and record questions for internal review.\nValidate the imported-stone and lighting assumptions using the linked historical evidence.",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Lighting quoted price differs by +9.4% from eligible quoted-price history.",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-assignee",
+        "tag": "SELECT",
+        "text": "Unassigned\nMei Lin\nAlex Chen\nIris Huang",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-dueDate",
+        "tag": "INPUT",
+        "text": "",
+        "value": "2026-11-24"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Clear due date",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-confirmation",
+        "tag": "INPUT",
+        "text": "",
+        "value": "on"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Creating internal review action…",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "Cancel review",
+        "value": ""
+      }
+    ],
+    "viewport": {
+      "height": 740,
+      "width": 320
+    }
+  },
+  {
+    "locale": "zh-TW",
+    "expected": {
+      "width": 1440,
+      "height": 900
+    },
+    "busy": [
+      {
+        "busy": "true",
+        "role": null
+      },
+      {
+        "busy": "true",
+        "role": "dialog"
+      }
+    ],
+    "dialogCount": 1,
+    "fields": [
+      {
+        "ariaDisabled": "true",
+        "disabled": false,
+        "id": "",
+        "tag": "A",
+        "text": "English",
+        "value": ""
+      },
+      {
+        "ariaDisabled": "true",
+        "disabled": false,
+        "id": "",
+        "tag": "A",
+        "text": "繁體中文",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "關閉",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-title",
+        "tag": "SELECT",
+        "text": "檢核信義旗艦店裝修第3版報價的進口石材與照明假設\n審查信義旗艦店裝修第3版報價的進口石材與照明假設\n確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+        "value": "REVIEW"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-rationale",
+        "tag": "SELECT",
+        "text": "下次內部報價審查前，依連結的佐證資料檢核這些假設。\n確認佐證資料，並記錄內部審查需要釐清的問題。\n依連結的歷史佐證資料，檢核進口石材與照明假設。",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "照明報價與符合條件的歷史報價比較，差異為 +9.4%。",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-assignee",
+        "tag": "SELECT",
+        "text": "未指派\n林美玲\n陳柏宇\n黃怡君",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-dueDate",
+        "tag": "INPUT",
+        "text": "",
+        "value": "2026-11-24"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "清除到期日",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-confirmation",
+        "tag": "INPUT",
+        "text": "",
+        "value": "on"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "正在建立內部審查事項…",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "取消審查",
+        "value": ""
+      }
+    ],
+    "viewport": {
+      "height": 900,
+      "width": 1440
+    }
+  },
+  {
+    "locale": "zh-TW",
+    "expected": {
+      "width": 768,
+      "height": 1024
+    },
+    "busy": [
+      {
+        "busy": "true",
+        "role": null
+      },
+      {
+        "busy": "true",
+        "role": "dialog"
+      }
+    ],
+    "dialogCount": 1,
+    "fields": [
+      {
+        "ariaDisabled": "true",
+        "disabled": false,
+        "id": "",
+        "tag": "A",
+        "text": "English",
+        "value": ""
+      },
+      {
+        "ariaDisabled": "true",
+        "disabled": false,
+        "id": "",
+        "tag": "A",
+        "text": "繁體中文",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "關閉",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-title",
+        "tag": "SELECT",
+        "text": "檢核信義旗艦店裝修第3版報價的進口石材與照明假設\n審查信義旗艦店裝修第3版報價的進口石材與照明假設\n確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+        "value": "REVIEW"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-rationale",
+        "tag": "SELECT",
+        "text": "下次內部報價審查前，依連結的佐證資料檢核這些假設。\n確認佐證資料，並記錄內部審查需要釐清的問題。\n依連結的歷史佐證資料，檢核進口石材與照明假設。",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "照明報價與符合條件的歷史報價比較，差異為 +9.4%。",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-assignee",
+        "tag": "SELECT",
+        "text": "未指派\n林美玲\n陳柏宇\n黃怡君",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-dueDate",
+        "tag": "INPUT",
+        "text": "",
+        "value": "2026-11-24"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "清除到期日",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-confirmation",
+        "tag": "INPUT",
+        "text": "",
+        "value": "on"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "正在建立內部審查事項…",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "取消審查",
+        "value": ""
+      }
+    ],
+    "viewport": {
+      "height": 1024,
+      "width": 768
+    }
+  },
+  {
+    "locale": "zh-TW",
+    "expected": {
+      "width": 390,
+      "height": 844
+    },
+    "busy": [
+      {
+        "busy": "true",
+        "role": null
+      },
+      {
+        "busy": "true",
+        "role": "dialog"
+      }
+    ],
+    "dialogCount": 1,
+    "fields": [
+      {
+        "ariaDisabled": "true",
+        "disabled": false,
+        "id": "",
+        "tag": "A",
+        "text": "English",
+        "value": ""
+      },
+      {
+        "ariaDisabled": "true",
+        "disabled": false,
+        "id": "",
+        "tag": "A",
+        "text": "繁體中文",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "關閉",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-title",
+        "tag": "SELECT",
+        "text": "檢核信義旗艦店裝修第3版報價的進口石材與照明假設\n審查信義旗艦店裝修第3版報價的進口石材與照明假設\n確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+        "value": "REVIEW"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-rationale",
+        "tag": "SELECT",
+        "text": "下次內部報價審查前，依連結的佐證資料檢核這些假設。\n確認佐證資料，並記錄內部審查需要釐清的問題。\n依連結的歷史佐證資料，檢核進口石材與照明假設。",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "照明報價與符合條件的歷史報價比較，差異為 +9.4%。",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-assignee",
+        "tag": "SELECT",
+        "text": "未指派\n林美玲\n陳柏宇\n黃怡君",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-dueDate",
+        "tag": "INPUT",
+        "text": "",
+        "value": "2026-11-24"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "清除到期日",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-confirmation",
+        "tag": "INPUT",
+        "text": "",
+        "value": "on"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "正在建立內部審查事項…",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "取消審查",
+        "value": ""
+      }
+    ],
+    "viewport": {
+      "height": 844,
+      "width": 390
+    }
+  },
+  {
+    "locale": "zh-TW",
+    "expected": {
+      "width": 320,
+      "height": 740
+    },
+    "busy": [
+      {
+        "busy": "true",
+        "role": null
+      },
+      {
+        "busy": "true",
+        "role": "dialog"
+      }
+    ],
+    "dialogCount": 1,
+    "fields": [
+      {
+        "ariaDisabled": "true",
+        "disabled": false,
+        "id": "",
+        "tag": "A",
+        "text": "English",
+        "value": ""
+      },
+      {
+        "ariaDisabled": "true",
+        "disabled": false,
+        "id": "",
+        "tag": "A",
+        "text": "繁體中文",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "關閉",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-title",
+        "tag": "SELECT",
+        "text": "檢核信義旗艦店裝修第3版報價的進口石材與照明假設\n審查信義旗艦店裝修第3版報價的進口石材與照明假設\n確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+        "value": "REVIEW"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-rationale",
+        "tag": "SELECT",
+        "text": "下次內部報價審查前，依連結的佐證資料檢核這些假設。\n確認佐證資料，並記錄內部審查需要釐清的問題。\n依連結的歷史佐證資料，檢核進口石材與照明假設。",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "照明報價與符合條件的歷史報價比較，差異為 +9.4%。",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-assignee",
+        "tag": "SELECT",
+        "text": "未指派\n林美玲\n陳柏宇\n黃怡君",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-dueDate",
+        "tag": "INPUT",
+        "text": "",
+        "value": "2026-11-24"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "清除到期日",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "review-confirmation",
+        "tag": "INPUT",
+        "text": "",
+        "value": "on"
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "正在建立內部審查事項…",
+        "value": ""
+      },
+      {
+        "ariaDisabled": null,
+        "disabled": true,
+        "id": "",
+        "tag": "BUTTON",
+        "text": "取消審查",
+        "value": ""
+      }
+    ],
+    "viewport": {
+      "height": 740,
+      "width": 320
+    }
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "at": "2026-11-17T03:43:30.396Z",
+  "persona": "northern",
+  "selectorCase": {
+    "actor": "northern",
+    "locale": "zh-TW",
+    "type": "comparison",
+    "existence": "missing",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_e5fac213-7741-4a6b-bdee-0fc5cf1e1043&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+  },
+  "dialogs": [],
+  "documentWidth": 1440,
+  "fields": [
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": ""
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    }
+  ],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": ""
+  },
+  "locale": "zh-Hant",
+  "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: c89dd6ba-4701-4709-a1e3-682050e70313\n\n重新執行比較",
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_e5fac213-7741-4a6b-bdee-0fc5cf1e1043&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

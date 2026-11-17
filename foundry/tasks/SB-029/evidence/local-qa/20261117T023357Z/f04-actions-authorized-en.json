@@ -1,0 +1,36 @@
+{
+  "at": "2026-11-17T02:50:55.761Z",
+  "persona": "mei",
+  "dialogs": [
+    {
+      "clientHeight": 900,
+      "name": "internal-review-heading",
+      "rect": {
+        "bottom": 900,
+        "height": 900,
+        "left": 760,
+        "right": 1440,
+        "top": 0,
+        "width": 680,
+        "x": 760,
+        "y": 0
+      },
+      "scrollHeight": 1267
+    }
+  ],
+  "documentWidth": 1440,
+  "fields": [],
+  "focus": {
+    "id": "internal-review-heading",
+    "tag": "H2",
+    "text": "Internal review action created"
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nXinyi Flagship Renovation\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nOpen\nValidate imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2026-11-24\nOpen receipt\nInternal review action created\n\nThis receipt records the action saved to the project.\n\nEnglish\n繁體中文\nClose\nValidate imported-stone and lighting assumptions for Xinyi quote v3\n\nReview these assumptions against the linked evidence before the next internal quotation review.\n\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\n\nLighting quoted price differs by +9.4% from eligible quoted-price history.\n\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\n\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\n\nComparison: cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08; economics enrichment: econrun_8d29351b-aa3e-4738-928a-413be3397eab.\n\nThis creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally.\n\nHistorical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid.\n\nAction reference\naction_d27cb3ce-01d4-46cf-809b-e3feece44c19\nProject\nXinyi Flagship Renovation\nAssignee\nIris Huang\nDue date\n2026-11-24\nStatus\nOpen\nCreated\n17 Nov 2026, 10:49\nCreated by\nMei Lin\nAuthorized evidence references\n15\nSource comparison\ncmprun_4544a868-f0df-4b91-b722-eb585f6c5f08\nSource economics review\neconrun_8d29351b-aa3e-4738-928a-413be3397eab\nReturn to source comparison\nView project actions",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_d27cb3ce-01d4-46cf-809b-e3feece44c19",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

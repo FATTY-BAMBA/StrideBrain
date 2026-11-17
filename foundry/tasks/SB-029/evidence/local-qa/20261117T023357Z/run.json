@@ -1,0 +1,23 @@
+{
+  "runId": "20261117T023357Z",
+  "startedAt": "2026-11-17T02:33:57.304312+00:00",
+  "exactHead": "211578dd4b4e12169a182c498254bb571cadad70",
+  "sourceTree": "3db7289bf26ee81f0d53b7223e159551bb083c34",
+  "ciRun": 43999948965,
+  "sourceManifestSha256": "447229ea5bdd0efdf0f3f7ba6738f11bdf475c8c660c1010d8efb5dc4432b090",
+  "productWorktreeClean": true,
+  "historicalRunsPreserved": [
+    "20261116T041837Z",
+    "20261116T220006Z"
+  ],
+  "interruptedEvidenceFilesPreserved": 305,
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "container": "stridebrain-sb029-final-20261117t023357z",
+  "port": 54335,
+  "status": "COMPLETED_REVISE",
+  "sourceChangesAllowed": false,
+  "buildId": "arWM81fSt1-zRkeglr43Z",
+  "productionBuild": "PASS",
+  "browserCompletedAt": "2026-11-17T04:04:47.198Z",
+  "evidenceFinalizedAt": "2026-11-17T04:11:51.758159+00:00"
+}

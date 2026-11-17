@@ -1,0 +1,1281 @@
+{
+  "diagnosticPartialLocatorSequence": [
+    {
+      "locale": "en",
+      "step": 0,
+      "boxShadow": "none",
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 880.1796875,
+        "height": 49.1875,
+        "left": 1050.8828125,
+        "right": 1194.2421875,
+        "top": 830.9921875,
+        "width": 143.359375,
+        "x": 1050.8828125,
+        "y": 830.9921875
+      },
+      "tag": "BUTTON",
+      "text": "Cancel review",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 1,
+      "boxShadow": "none",
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 114.1953125,
+        "height": 21.078125,
+        "left": 780,
+        "right": 825.4140625,
+        "top": 93.1171875,
+        "width": 45.4140625,
+        "x": 780,
+        "y": 93.1171875
+      },
+      "tag": "A",
+      "text": "English",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 2,
+      "boxShadow": "none",
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 114.1953125,
+        "height": 21.078125,
+        "left": 837.4140625,
+        "right": 891.8203125,
+        "top": 93.1171875,
+        "width": 54.40625,
+        "x": 837.4140625,
+        "y": 93.1171875
+      },
+      "tag": "A",
+      "text": "繁體中文",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 3,
+      "boxShadow": "none",
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 69.1875,
+        "height": 49.1875,
+        "left": 1341.9375,
+        "right": 1420,
+        "top": 20,
+        "width": 78.0625,
+        "x": 1341.9375,
+        "y": 20
+      },
+      "tag": "BUTTON",
+      "text": "Close",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 4,
+      "boxShadow": "none",
+      "id": "review-title",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 222.390625,
+        "height": 44,
+        "left": 780,
+        "right": 1420,
+        "top": 178.390625,
+        "width": 640,
+        "x": 780,
+        "y": 178.390625
+      },
+      "tag": "SELECT",
+      "text": "Validate imported-stone and lighting assumptions for Xinyi quote v3Review imported-stone and lighting assumptions for Xinyi quote v3Check evidence for",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 5,
+      "boxShadow": "none",
+      "id": "review-rationale",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 343.8125,
+        "height": 44,
+        "left": 780,
+        "right": 1420,
+        "top": 299.8125,
+        "width": 640,
+        "x": 780,
+        "y": 299.8125
+      },
+      "tag": "SELECT",
+      "text": "Review these assumptions against the linked evidence before the next internal quotation review.Check the supporting evidence and record questions for ",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 6,
+      "boxShadow": "none",
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 481.1484375,
+        "height": 62.375,
+        "left": 816.1953125,
+        "right": 1403,
+        "top": 418.7734375,
+        "width": 586.8046875,
+        "x": 816.1953125,
+        "y": 418.7734375
+      },
+      "tag": "BUTTON",
+      "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 7,
+      "boxShadow": "none",
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 536.34375,
+        "height": 44,
+        "left": 816.1953125,
+        "right": 1391.0703125,
+        "top": 492.34375,
+        "width": 574.875,
+        "x": 816.1953125,
+        "y": 492.34375
+      },
+      "tag": "BUTTON",
+      "text": "Lighting quoted price differs by +9.4% from eligible quoted-price history.",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 8,
+      "boxShadow": "none",
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 545.4140625,
+        "height": 62.375,
+        "left": 816.1953125,
+        "right": 1403,
+        "top": 483.0390625,
+        "width": 586.8046875,
+        "x": 816.1953125,
+        "y": 483.0390625
+      },
+      "tag": "BUTTON",
+      "text": "Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 9,
+      "boxShadow": "none",
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 554.984375,
+        "height": 62.375,
+        "left": 816.1953125,
+        "right": 1403,
+        "top": 492.609375,
+        "width": 586.8046875,
+        "x": 816.1953125,
+        "y": 492.609375
+      },
+      "tag": "BUTTON",
+      "text": "The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 10,
+      "boxShadow": "none",
+      "id": "review-assignee",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 592.375,
+        "height": 44,
+        "left": 780,
+        "right": 1420,
+        "top": 548.375,
+        "width": 640,
+        "x": 780,
+        "y": 548.375
+      },
+      "tag": "SELECT",
+      "text": "UnassignedMei LinAlex ChenIris Huang",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 11,
+      "boxShadow": "none",
+      "id": "review-dueDate",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 571.859375,
+        "height": 49.59375,
+        "left": 780,
+        "right": 1420,
+        "top": 522.265625,
+        "width": 640,
+        "x": 780,
+        "y": 522.265625
+      },
+      "tag": "INPUT",
+      "text": "",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 12,
+      "boxShadow": "none",
+      "id": "review-dueDate",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 474.859375,
+        "height": 49.59375,
+        "left": 780,
+        "right": 1420,
+        "top": 425.265625,
+        "width": 640,
+        "x": 780,
+        "y": 425.265625
+      },
+      "tag": "INPUT",
+      "text": "",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 13,
+      "boxShadow": "none",
+      "id": "review-dueDate",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 474.859375,
+        "height": 49.59375,
+        "left": 780,
+        "right": 1420,
+        "top": 425.265625,
+        "width": 640,
+        "x": 780,
+        "y": 425.265625
+      },
+      "tag": "INPUT",
+      "text": "",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 14,
+      "boxShadow": "none",
+      "id": "review-dueDate",
+      "inside": true,
+      "outline": "rgb(23, 37, 58) none 3px",
+      "rect": {
+        "bottom": 474.859375,
+        "height": 49.59375,
+        "left": 780,
+        "right": 1420,
+        "top": 425.265625,
+        "width": 640,
+        "x": 780,
+        "y": 425.265625
+      },
+      "tag": "INPUT",
+      "text": "",
+      "visible": true
+    }
+  ],
+  "nativeTabSequence": [
+    {
+      "locale": "en",
+      "step": 0,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 880.1796875,
+        "height": 49.1875,
+        "left": 1050.8828125,
+        "right": 1194.2421875,
+        "top": 830.9921875,
+        "width": 143.359375,
+        "x": 1050.8828125,
+        "y": 830.9921875
+      },
+      "tag": "BUTTON",
+      "text": "Cancel review",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 1,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 114.1953125,
+        "height": 21.078125,
+        "left": 780,
+        "right": 825.4140625,
+        "top": 93.1171875,
+        "width": 45.4140625,
+        "x": 780,
+        "y": 93.1171875
+      },
+      "tag": "A",
+      "text": "English",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 2,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 114.1953125,
+        "height": 21.078125,
+        "left": 837.4140625,
+        "right": 891.8203125,
+        "top": 93.1171875,
+        "width": 54.40625,
+        "x": 837.4140625,
+        "y": 93.1171875
+      },
+      "tag": "A",
+      "text": "繁體中文",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 3,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 69.1875,
+        "height": 49.1875,
+        "left": 1341.9375,
+        "right": 1420,
+        "top": 20,
+        "width": 78.0625,
+        "x": 1341.9375,
+        "y": 20
+      },
+      "tag": "BUTTON",
+      "text": "Close",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 4,
+      "id": "review-title",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 222.390625,
+        "height": 44,
+        "left": 780,
+        "right": 1420,
+        "top": 178.390625,
+        "width": 640,
+        "x": 780,
+        "y": 178.390625
+      },
+      "tag": "SELECT",
+      "text": "Validate imported-stone and lighting assumptions for Xinyi quote v3Review imported-stone and lighting assumptions for Xinyi quote v3Check evidence for",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 5,
+      "id": "review-rationale",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 343.8125,
+        "height": 44,
+        "left": 780,
+        "right": 1420,
+        "top": 299.8125,
+        "width": 640,
+        "x": 780,
+        "y": 299.8125
+      },
+      "tag": "SELECT",
+      "text": "Review these assumptions against the linked evidence before the next internal quotation review.Check the supporting evidence and record questions for ",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 6,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 481.1484375,
+        "height": 62.375,
+        "left": 816.1953125,
+        "right": 1403,
+        "top": 418.7734375,
+        "width": 586.8046875,
+        "x": 816.1953125,
+        "y": 418.7734375
+      },
+      "tag": "BUTTON",
+      "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 7,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 536.34375,
+        "height": 44,
+        "left": 816.1953125,
+        "right": 1391.0703125,
+        "top": 492.34375,
+        "width": 574.875,
+        "x": 816.1953125,
+        "y": 492.34375
+      },
+      "tag": "BUTTON",
+      "text": "Lighting quoted price differs by +9.4% from eligible quoted-price history.",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 8,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 609.9140625,
+        "height": 62.375,
+        "left": 816.1953125,
+        "right": 1403,
+        "top": 547.5390625,
+        "width": 586.8046875,
+        "x": 816.1953125,
+        "y": 547.5390625
+      },
+      "tag": "BUTTON",
+      "text": "Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 9,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 683.484375,
+        "height": 62.375,
+        "left": 816.1953125,
+        "right": 1403,
+        "top": 621.109375,
+        "width": 586.8046875,
+        "x": 816.1953125,
+        "y": 621.109375
+      },
+      "tag": "BUTTON",
+      "text": "The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 10,
+      "id": "review-assignee",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 794.875,
+        "height": 44,
+        "left": 780,
+        "right": 1420,
+        "top": 750.875,
+        "width": 640,
+        "x": 780,
+        "y": 750.875
+      },
+      "tag": "SELECT",
+      "text": "UnassignedMei LinAlex ChenIris Huang",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 11,
+      "id": "review-dueDate",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 894.859375,
+        "height": 49.59375,
+        "left": 780,
+        "right": 1420,
+        "top": 845.265625,
+        "width": 640,
+        "x": 780,
+        "y": 845.265625
+      },
+      "tag": "INPUT",
+      "text": "",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 12,
+      "id": "review-dueDate",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 894.859375,
+        "height": 49.59375,
+        "left": 780,
+        "right": 1420,
+        "top": 845.265625,
+        "width": 640,
+        "x": 780,
+        "y": 845.265625
+      },
+      "tag": "INPUT",
+      "text": "",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 13,
+      "id": "review-dueDate",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 894.859375,
+        "height": 49.59375,
+        "left": 780,
+        "right": 1420,
+        "top": 845.265625,
+        "width": 640,
+        "x": 780,
+        "y": 845.265625
+      },
+      "tag": "INPUT",
+      "text": "",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 14,
+      "id": "review-dueDate",
+      "inside": true,
+      "outline": "rgb(23, 37, 58) none 3px",
+      "rect": {
+        "bottom": 894.859375,
+        "height": 49.59375,
+        "left": 780,
+        "right": 1420,
+        "top": 845.265625,
+        "width": 640,
+        "x": 780,
+        "y": 845.265625
+      },
+      "tag": "INPUT",
+      "text": "",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 15,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 477.2890625,
+        "height": 44,
+        "left": 780,
+        "right": 1420,
+        "top": 433.2890625,
+        "width": 640,
+        "x": 780,
+        "y": 433.2890625
+      },
+      "tag": "BUTTON",
+      "text": "Clear due date",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 16,
+      "id": "review-confirmation",
+      "inside": true,
+      "outline": "rgb(43, 114, 214) solid 3px",
+      "rect": {
+        "bottom": 783.0078125,
+        "height": 20,
+        "left": 784,
+        "right": 804,
+        "top": 763.0078125,
+        "width": 20,
+        "x": 784,
+        "y": 763.0078125
+      },
+      "tag": "INPUT",
+      "text": "",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 17,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 880.1796875,
+        "height": 49.1875,
+        "left": 780,
+        "right": 1038.8828125,
+        "top": 830.9921875,
+        "width": 258.8828125,
+        "x": 780,
+        "y": 830.9921875
+      },
+      "tag": "BUTTON",
+      "text": "Create internal review action",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 18,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 880.1796875,
+        "height": 49.1875,
+        "left": 1050.8828125,
+        "right": 1194.2421875,
+        "top": 830.9921875,
+        "width": 143.359375,
+        "x": 1050.8828125,
+        "y": 830.9921875
+      },
+      "tag": "BUTTON",
+      "text": "Cancel review",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 19,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 114.1953125,
+        "height": 21.078125,
+        "left": 780,
+        "right": 825.4140625,
+        "top": 93.1171875,
+        "width": 45.4140625,
+        "x": 780,
+        "y": 93.1171875
+      },
+      "tag": "A",
+      "text": "English",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 20,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 114.1953125,
+        "height": 21.078125,
+        "left": 837.4140625,
+        "right": 891.8203125,
+        "top": 93.1171875,
+        "width": 54.40625,
+        "x": 837.4140625,
+        "y": 93.1171875
+      },
+      "tag": "A",
+      "text": "繁體中文",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 21,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 69.1875,
+        "height": 49.1875,
+        "left": 1341.9375,
+        "right": 1420,
+        "top": 20,
+        "width": 78.0625,
+        "x": 1341.9375,
+        "y": 20
+      },
+      "tag": "BUTTON",
+      "text": "Close",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 22,
+      "id": "review-title",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 222.390625,
+        "height": 44,
+        "left": 780,
+        "right": 1420,
+        "top": 178.390625,
+        "width": 640,
+        "x": 780,
+        "y": 178.390625
+      },
+      "tag": "SELECT",
+      "text": "Validate imported-stone and lighting assumptions for Xinyi quote v3Review imported-stone and lighting assumptions for Xinyi quote v3Check evidence for",
+      "visible": true
+    },
+    {
+      "locale": "en",
+      "step": 23,
+      "id": "review-rationale",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 343.8125,
+        "height": 44,
+        "left": 780,
+        "right": 1420,
+        "top": 299.8125,
+        "width": 640,
+        "x": 780,
+        "y": 299.8125
+      },
+      "tag": "SELECT",
+      "text": "Review these assumptions against the linked evidence before the next internal quotation review.Check the supporting evidence and record questions for ",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 0,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 879.890625,
+        "height": 49.1875,
+        "left": 954,
+        "right": 1052,
+        "top": 830.703125,
+        "width": 98,
+        "x": 954,
+        "y": 830.703125
+      },
+      "tag": "BUTTON",
+      "text": "取消審查",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 1,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 114.1953125,
+        "height": 21.078125,
+        "left": 780,
+        "right": 825.4140625,
+        "top": 93.1171875,
+        "width": 45.4140625,
+        "x": 780,
+        "y": 93.1171875
+      },
+      "tag": "A",
+      "text": "English",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 2,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 114.1953125,
+        "height": 21.078125,
+        "left": 837.4140625,
+        "right": 891.8203125,
+        "top": 93.1171875,
+        "width": 54.40625,
+        "x": 837.4140625,
+        "y": 93.1171875
+      },
+      "tag": "A",
+      "text": "繁體中文",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 3,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 69.1875,
+        "height": 49.1875,
+        "left": 1354,
+        "right": 1420,
+        "top": 20,
+        "width": 66,
+        "x": 1354,
+        "y": 20
+      },
+      "tag": "BUTTON",
+      "text": "關閉",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 4,
+      "id": "review-title",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 222.390625,
+        "height": 44,
+        "left": 780,
+        "right": 1420,
+        "top": 178.390625,
+        "width": 640,
+        "x": 780,
+        "y": 178.390625
+      },
+      "tag": "SELECT",
+      "text": "檢核信義旗艦店裝修第3版報價的進口石材與照明假設審查信義旗艦店裝修第3版報價的進口石材與照明假設確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 5,
+      "id": "review-rationale",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 343.8125,
+        "height": 44,
+        "left": 780,
+        "right": 1420,
+        "top": 299.8125,
+        "width": 640,
+        "x": 780,
+        "y": 299.8125
+      },
+      "tag": "SELECT",
+      "text": "下次內部報價審查前，依連結的佐證資料檢核這些假設。確認佐證資料，並記錄內部審查需要釐清的問題。依連結的歷史佐證資料，檢核進口石材與照明假設。",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 6,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 471.953125,
+        "height": 44,
+        "left": 816.1953125,
+        "right": 1393.328125,
+        "top": 427.953125,
+        "width": 577.1328125,
+        "x": 816.1953125,
+        "y": 427.953125
+      },
+      "tag": "BUTTON",
+      "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 7,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 527.1484375,
+        "height": 44,
+        "left": 816.1953125,
+        "right": 1208.921875,
+        "top": 483.1484375,
+        "width": 392.7265625,
+        "x": 816.1953125,
+        "y": 483.1484375
+      },
+      "tag": "BUTTON",
+      "text": "照明報價與符合條件的歷史報價比較，差異為 +9.4%。",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 8,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 600.71875,
+        "height": 62.375,
+        "left": 816.1953125,
+        "right": 1403,
+        "top": 538.34375,
+        "width": 586.8046875,
+        "x": 816.1953125,
+        "y": 538.34375
+      },
+      "tag": "BUTTON",
+      "text": "照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 9,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 674.2890625,
+        "height": 62.375,
+        "left": 816.1953125,
+        "right": 1403,
+        "top": 611.9140625,
+        "width": 586.8046875,
+        "x": 816.1953125,
+        "y": 611.9140625
+      },
+      "tag": "BUTTON",
+      "text": "目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 10,
+      "id": "review-assignee",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 785.6796875,
+        "height": 44,
+        "left": 780,
+        "right": 1420,
+        "top": 741.6796875,
+        "width": 640,
+        "x": 780,
+        "y": 741.6796875
+      },
+      "tag": "SELECT",
+      "text": "未指派林美玲陳柏宇黃怡君",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 11,
+      "id": "review-dueDate",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 885.6640625,
+        "height": 49.59375,
+        "left": 780,
+        "right": 1420,
+        "top": 836.0703125,
+        "width": 640,
+        "x": 780,
+        "y": 836.0703125
+      },
+      "tag": "INPUT",
+      "text": "",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 12,
+      "id": "review-dueDate",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 885.6640625,
+        "height": 49.59375,
+        "left": 780,
+        "right": 1420,
+        "top": 836.0703125,
+        "width": 640,
+        "x": 780,
+        "y": 836.0703125
+      },
+      "tag": "INPUT",
+      "text": "",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 13,
+      "id": "review-dueDate",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 885.6640625,
+        "height": 49.59375,
+        "left": 780,
+        "right": 1420,
+        "top": 836.0703125,
+        "width": 640,
+        "x": 780,
+        "y": 836.0703125
+      },
+      "tag": "INPUT",
+      "text": "",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 14,
+      "id": "review-dueDate",
+      "inside": true,
+      "outline": "rgb(23, 37, 58) none 3px",
+      "rect": {
+        "bottom": 885.6640625,
+        "height": 49.59375,
+        "left": 780,
+        "right": 1420,
+        "top": 836.0703125,
+        "width": 640,
+        "x": 780,
+        "y": 836.0703125
+      },
+      "tag": "INPUT",
+      "text": "",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 15,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 502.59375,
+        "height": 44,
+        "left": 780,
+        "right": 1420,
+        "top": 458.59375,
+        "width": 640,
+        "x": 780,
+        "y": 458.59375
+      },
+      "tag": "BUTTON",
+      "text": "清除到期日",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 16,
+      "id": "review-confirmation",
+      "inside": true,
+      "outline": "rgb(43, 114, 214) solid 3px",
+      "rect": {
+        "bottom": 808.3125,
+        "height": 20,
+        "left": 784,
+        "right": 804,
+        "top": 788.3125,
+        "width": 20,
+        "x": 784,
+        "y": 788.3125
+      },
+      "tag": "INPUT",
+      "text": "",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 17,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 879.890625,
+        "height": 49.1875,
+        "left": 780,
+        "right": 942,
+        "top": 830.703125,
+        "width": 162,
+        "x": 780,
+        "y": 830.703125
+      },
+      "tag": "BUTTON",
+      "text": "建立內部審查事項",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 18,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 879.890625,
+        "height": 49.1875,
+        "left": 954,
+        "right": 1052,
+        "top": 830.703125,
+        "width": 98,
+        "x": 954,
+        "y": 830.703125
+      },
+      "tag": "BUTTON",
+      "text": "取消審查",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 19,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 114.1953125,
+        "height": 21.078125,
+        "left": 780,
+        "right": 825.4140625,
+        "top": 93.1171875,
+        "width": 45.4140625,
+        "x": 780,
+        "y": 93.1171875
+      },
+      "tag": "A",
+      "text": "English",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 20,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 114.1953125,
+        "height": 21.078125,
+        "left": 837.4140625,
+        "right": 891.8203125,
+        "top": 93.1171875,
+        "width": 54.40625,
+        "x": 837.4140625,
+        "y": 93.1171875
+      },
+      "tag": "A",
+      "text": "繁體中文",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 21,
+      "id": "",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 69.1875,
+        "height": 49.1875,
+        "left": 1354,
+        "right": 1420,
+        "top": 20,
+        "width": 66,
+        "x": 1354,
+        "y": 20
+      },
+      "tag": "BUTTON",
+      "text": "關閉",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 22,
+      "id": "review-title",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 222.390625,
+        "height": 44,
+        "left": 780,
+        "right": 1420,
+        "top": 178.390625,
+        "width": 640,
+        "x": 780,
+        "y": 178.390625
+      },
+      "tag": "SELECT",
+      "text": "檢核信義旗艦店裝修第3版報價的進口石材與照明假設審查信義旗艦店裝修第3版報價的進口石材與照明假設確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+      "visible": true
+    },
+    {
+      "locale": "zh-TW",
+      "step": 23,
+      "id": "review-rationale",
+      "inside": true,
+      "outline": "rgb(50, 117, 233) solid 3px",
+      "rect": {
+        "bottom": 343.8125,
+        "height": 44,
+        "left": 780,
+        "right": 1420,
+        "top": 299.8125,
+        "width": 640,
+        "x": 780,
+        "y": 299.8125
+      },
+      "tag": "SELECT",
+      "text": "下次內部報價審查前，依連結的佐證資料檢核這些假設。確認佐證資料，並記錄內部審查需要釐清的問題。依連結的歷史佐證資料，檢核進口石材與照明假設。",
+      "visible": true
+    }
+  ]
+}

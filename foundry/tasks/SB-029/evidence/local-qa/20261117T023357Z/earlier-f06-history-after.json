@@ -1,0 +1,26 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T02:40:22.355Z",
+  "records": {
+    "ComparisonRun": {
+      "id": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+      "sha256": "961cd98cf451195322b34303884b91d2b5863cbe2fac63d060bd41f42524d883",
+      "rows": 2
+    },
+    "EconomicsEnrichmentRun": {
+      "id": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+      "sha256": "82f6516390a6bebf37654886d31fd22fa68a90d822b69ae754b91e6ea6e5d835",
+      "rows": 2
+    }
+  },
+  "counts": {
+    "actions": 0,
+    "proposals": 1,
+    "consumed": 0,
+    "receipts": 0,
+    "audits": 0,
+    "actionevidencelinks": 0
+  },
+  "oldHistoryUnchanged": true
+}

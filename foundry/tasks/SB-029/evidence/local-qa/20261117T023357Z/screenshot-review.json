@@ -1,0 +1,27 @@
+{
+  "at": "2026-11-17T04:11:51.755519+00:00",
+  "imageCount": 612,
+  "visualMethod": "All 612 screenshot thumbnails reviewed in 26 contact sheets; full-size focal finding/error views and DOM/text/geometry evidence used for precise claims. OCR of all screenshots is a separate sanitization step. Contact sheets are diagnostic working files, not original evidence.",
+  "diagnosticFramesNoFinalPassCredit": [
+    "f02-final-native-keyboard-four-edits-zh-TW.jpg",
+    "f02-fresh-immediate-four-edits-320-zh-TW.jpg",
+    "f04-viewer-en-compare-known.jpg",
+    "f04-viewer-en-compare-missing.jpg",
+    "f04-viewer-zh-TW-compare-known.jpg",
+    "f04-viewer-zh-TW-compare-missing.jpg",
+    "f05-stale-full-en-1440.jpg",
+    "f05-stale-full-en-2056.jpg",
+    "f05-stale-full-zh-TW-1017.jpg",
+    "f05-stale-full-zh-TW-2056.jpg",
+    "f05-stale-escape-return-en.jpg"
+  ],
+  "notes": [
+    "Initial viewport calibration included 175% Chrome site zoom; final exact matrix explicitly checked CSS dimensions after 100% reset.",
+    "f02 date fill returned without changing the native DOM value. Early rationale/date transition attempts were inconclusive; final native Arrow-key edit and settled evidence/refresh/history captures verify preservation.",
+    "Some immediate transition screenshots show skeleton loading despite adjacent JSON later containing fields. Use settled follow-up artifacts, not the loading image, to establish restoration.",
+    "F05 -exact cases (32) are the accepted dimensions; earlier -full attempts include binding/size diagnostics.",
+    "Initial Viewer comparison receipt captures were loading; -settled captures establish neutral missing/denied parity.",
+    "F03 initial six-string regex missed programmeWeeks; broad text review supersedes that limited regex.",
+    "No screenshot pixel retouching performed."
+  ]
+}

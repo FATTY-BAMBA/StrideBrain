@@ -1,0 +1,122 @@
+[
+  {
+    "locale": "en",
+    "size": {
+      "width": 1440,
+      "height": 900
+    },
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_13108468-ed64-4296-a0a2-7d9310d4d574&economics=econrun_c40f0c8e-5310-4ec8-a344-b25c79a6bea5&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5&reviewReplay=1",
+    "action": "action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5",
+    "focus": {
+      "id": "internal-review-heading",
+      "tag": "H2",
+      "text": "This internal review action was already created"
+    },
+    "heading": "This internal review action was already created"
+  },
+  {
+    "locale": "en",
+    "size": {
+      "width": 768,
+      "height": 1024
+    },
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_13108468-ed64-4296-a0a2-7d9310d4d574&economics=econrun_c40f0c8e-5310-4ec8-a344-b25c79a6bea5&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5&reviewReplay=1",
+    "action": "action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5",
+    "focus": {
+      "id": "internal-review-heading",
+      "tag": "H2",
+      "text": "This internal review action was already created"
+    },
+    "heading": "This internal review action was already created"
+  },
+  {
+    "locale": "en",
+    "size": {
+      "width": 390,
+      "height": 844
+    },
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_13108468-ed64-4296-a0a2-7d9310d4d574&economics=econrun_c40f0c8e-5310-4ec8-a344-b25c79a6bea5&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5",
+    "action": "action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5",
+    "focus": {
+      "id": "internal-review-heading",
+      "tag": "H2",
+      "text": "Internal review action created"
+    },
+    "heading": "Internal review action created"
+  },
+  {
+    "locale": "en",
+    "size": {
+      "width": 320,
+      "height": 740
+    },
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_13108468-ed64-4296-a0a2-7d9310d4d574&economics=econrun_c40f0c8e-5310-4ec8-a344-b25c79a6bea5&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5&reviewReplay=1",
+    "action": "action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5",
+    "focus": {
+      "id": "internal-review-heading",
+      "tag": "H2",
+      "text": "This internal review action was already created"
+    },
+    "heading": "This internal review action was already created"
+  },
+  {
+    "locale": "zh-TW",
+    "size": {
+      "width": 1440,
+      "height": 900
+    },
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_13108468-ed64-4296-a0a2-7d9310d4d574&economics=econrun_c40f0c8e-5310-4ec8-a344-b25c79a6bea5&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5&reviewReplay=1",
+    "action": "action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5",
+    "focus": {
+      "id": "internal-review-heading",
+      "tag": "H2",
+      "text": "此內部審查事項已建立"
+    },
+    "heading": "此內部審查事項已建立"
+  },
+  {
+    "locale": "zh-TW",
+    "size": {
+      "width": 768,
+      "height": 1024
+    },
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_13108468-ed64-4296-a0a2-7d9310d4d574&economics=econrun_c40f0c8e-5310-4ec8-a344-b25c79a6bea5&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5&reviewReplay=1",
+    "action": "action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5",
+    "focus": {
+      "id": "internal-review-heading",
+      "tag": "H2",
+      "text": "此內部審查事項已建立"
+    },
+    "heading": "此內部審查事項已建立"
+  },
+  {
+    "locale": "zh-TW",
+    "size": {
+      "width": 390,
+      "height": 844
+    },
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_13108468-ed64-4296-a0a2-7d9310d4d574&economics=econrun_c40f0c8e-5310-4ec8-a344-b25c79a6bea5&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5&reviewReplay=1",
+    "action": "action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5",
+    "focus": {
+      "id": "internal-review-heading",
+      "tag": "H2",
+      "text": "此內部審查事項已建立"
+    },
+    "heading": "此內部審查事項已建立"
+  },
+  {
+    "locale": "zh-TW",
+    "size": {
+      "width": 320,
+      "height": 740
+    },
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_13108468-ed64-4296-a0a2-7d9310d4d574&economics=econrun_c40f0c8e-5310-4ec8-a344-b25c79a6bea5&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5&reviewReplay=1",
+    "action": "action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5",
+    "focus": {
+      "id": "internal-review-heading",
+      "tag": "H2",
+      "text": "此內部審查事項已建立"
+    },
+    "heading": "此內部審查事項已建立"
+  }
+]

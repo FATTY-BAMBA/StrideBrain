@@ -1,0 +1,26 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:13:42.033Z",
+  "temporaryTriggerAbsent": true,
+  "temporaryFunctionAbsent": true,
+  "phase": "at-commit",
+  "caseId": "at-commit-1794885202231",
+  "mapping": "Deferred receipt constraint trigger fires at transaction commit; independent deterministic tests separately cover the internal BEFORE_COMMIT callback.",
+  "restored": true,
+  "countsBefore": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "countsAfter": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "noBusinessWrites": true
+}

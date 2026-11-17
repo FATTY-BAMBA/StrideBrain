@@ -1,0 +1,20 @@
+[
+  {
+    "locale": "en",
+    "alerts": [
+      "⚠ This result is staleYou can inspect this saved result, but cannot prepare or confirm a new action from it. Re-run the comparison to review current information.Changed sourcesNanjing Brand Experience Center · Imported stone and hard finishesEvidence authority changed: At calculation — Reconciled actual; Now — SupersededRe-run comparison",
+      ""
+    ],
+    "preparationButtonCount": 0,
+    "tableCount": 1
+  },
+  {
+    "locale": "zh-TW",
+    "alerts": [
+      "⚠ 此比較結果已過時您仍可檢視這份已儲存的結果，但無法據此準備或確認新的審查事項。請重新比較，以檢視最新資料。已變更的資料來源南京品牌體驗中心 · 進口石材與硬質面材佐證資料權威性已變更: 計算時 — 已核對實際紀錄; 目前 — 已由新版取代重新比較",
+      ""
+    ],
+    "preparationButtonCount": 0,
+    "tableCount": 1
+  }
+]

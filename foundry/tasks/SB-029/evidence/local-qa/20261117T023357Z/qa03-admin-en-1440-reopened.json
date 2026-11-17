@@ -1,0 +1,36 @@
+{
+  "at": "2026-11-17T03:52:30.394Z",
+  "persona": "admin",
+  "dialogs": [
+    {
+      "clientHeight": 900,
+      "name": "internal-review-heading",
+      "rect": {
+        "bottom": 900,
+        "height": 900,
+        "left": 760,
+        "right": 1440,
+        "top": 0,
+        "width": 680,
+        "x": 760,
+        "y": 0
+      },
+      "scrollHeight": 1267
+    }
+  ],
+  "documentWidth": 1440,
+  "fields": [],
+  "focus": {
+    "id": "internal-review-heading",
+    "tag": "H2",
+    "text": "Internal review action created"
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nXinyi Flagship Renovation\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nOpen\nReview imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2026-11-24\nOpen receipt\nOpen\nReview imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2026-11-24\nOpen receipt\nOpen\nReview imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2026-11-24\nOpen receipt\nOpen\nReview imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2027-11-17\nOpen receipt\nOpen\nReview imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2026-11-17\nOpen receipt\nOpen\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\nAssignee\nAlex Chen\nDue date\nNo due date\nOpen receipt\nOpen\nValidate imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2026-11-24\nOpen receipt\nInternal review action created\n\nThis receipt records the action saved to the project.\n\nEnglish\n繁體中文\nClose\nReview imported-stone and lighting assumptions for Xinyi quote v3\n\nValidate the imported-stone and lighting assumptions using the linked historical evidence.\n\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\n\nLighting quoted price differs by +9.4% from eligible quoted-price history.\n\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\n\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\n\nComparison: cmprun_fd24eb21-21d1-4bf0-9051-c687c1d54428; economics enrichment: econrun_3bcffd34-ee80-488a-bb7d-695438159e17.\n\nThis creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally.\n\nHistorical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid.\n\nAction reference\naction_5c1ec0fb-c1d6-4f3d-9a63-a514222e3bd3\nProject\nXinyi Flagship Renovation\nAssignee\nIris Huang\nDue date\n2026-11-24\nStatus\nOpen\nCreated\n17 Nov 2026, 11:52\nCreated by\nAlex Chen\nAuthorized evidence references\n15\nSource comparison\ncmprun_fd24eb21-21d1-4bf0-9051-c687c1d54428\nSource economics review\neconrun_3bcffd34-ee80-488a-bb7d-695438159e17\nReturn to source comparison\nView project actions",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?run=cmprun_fd24eb21-21d1-4bf0-9051-c687c1d54428&economics=econrun_3bcffd34-ee80-488a-bb7d-695438159e17&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_5c1ec0fb-c1d6-4f3d-9a63-a514222e3bd3",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

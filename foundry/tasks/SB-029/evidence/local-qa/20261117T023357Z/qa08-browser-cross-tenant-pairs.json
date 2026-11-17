@@ -1,0 +1,714 @@
+[
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "en",
+      "type": "project",
+      "existence": "foreign",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026"
+    },
+    "text": "PROJECT WORKSPACE\n\nThis project or project area is currently unavailable.\n\nThe current authorization context cannot open this project, or the requested area is not active in the first complete workflow. The application does not replace unavailable states with invented records.\n\nOverview\nCompare\nCommercial\nEvidence\nActions\nThis area is not active yet\nOverview\n\nProject Overview, Compare, and claim-level Evidence use the real data and authorization boundaries. Commercial detail pages and Actions activate through the accepted implementation sequence.\n\nREQUESTED PROJECT KEY\nPRJ-XINYI-026\nCURRENT AREA\nOverview",
+    "fields": []
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "en",
+      "type": "project",
+      "existence": "missing",
+      "url": "http://localhost:3000/en/projects/PRJ-QA-MISSING-999"
+    },
+    "text": "PROJECT WORKSPACE\n\nThis project or project area is currently unavailable.\n\nThe current authorization context cannot open this project, or the requested area is not active in the first complete workflow. The application does not replace unavailable states with invented records.\n\nOverview\nCompare\nCommercial\nEvidence\nActions\nThis area is not active yet\nOverview\n\nProject Overview, Compare, and claim-level Evidence use the real data and authorization boundaries. Commercial detail pages and Actions activate through the accepted implementation sequence.\n\nREQUESTED PROJECT KEY\nPRJ-QA-MISSING-999\nCURRENT AREA\nOverview",
+    "fields": []
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "en",
+      "type": "comparison",
+      "existence": "foreign",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    },
+    "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: fbc259c7-3c8a-4f22-b7eb-852152465893\n\nRun a fresh comparison",
+    "fields": [
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      }
+    ]
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "en",
+      "type": "comparison",
+      "existence": "missing",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_e5fac213-7741-4a6b-bdee-0fc5cf1e1043&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    },
+    "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: 79173235-c62a-4eb4-a89d-2ee8a56fe545\n\nRun a fresh comparison",
+    "fields": [
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      }
+    ]
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "en",
+      "type": "enrichment",
+      "existence": "foreign",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    },
+    "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: 1bb8d02b-4eea-4205-ba5c-143065de7228\n\nRun a fresh comparison",
+    "fields": [
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      }
+    ]
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "en",
+      "type": "enrichment",
+      "existence": "missing",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_e0a2717b-a1b7-4484-bf5b-7a1b180c1379&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    },
+    "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: 6e4b98fd-614b-47ce-9b07-d9b1c30c6901\n\nRun a fresh comparison",
+    "fields": [
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      }
+    ]
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "en",
+      "type": "proposal",
+      "existence": "foreign",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_fe2095ac-701a-4913-821a-693825f6075f"
+    },
+    "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: 1c246466-4c9a-4597-afff-552820ba50ef\n\nRun a fresh comparison",
+    "fields": [
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      }
+    ]
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "en",
+      "type": "proposal",
+      "existence": "missing",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_42d5ab77-1dce-411f-84cc-c7d5f38d6677"
+    },
+    "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: 29a97025-ce3a-4995-b248-4522bd614234\n\nRun a fresh comparison",
+    "fields": [
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      }
+    ]
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "en",
+      "type": "action",
+      "existence": "foreign",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_d27cb3ce-01d4-46cf-809b-e3feece44c19"
+    },
+    "text": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nThis action is unavailable with your current access.\n\nReceipt unavailable\n\nThis receipt cannot be displayed. Return to a project you can access to view available actions.\n\nEnglish\n繁體中文\nClose",
+    "fields": []
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "en",
+      "type": "action",
+      "existence": "missing",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_d4a819ed-3ceb-4cd8-83cb-3c0a92efef32"
+    },
+    "text": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nThis action is unavailable with your current access.\n\nReceipt unavailable\n\nThis receipt cannot be displayed. Return to a project you can access to view available actions.\n\nEnglish\n繁體中文\nClose",
+    "fields": []
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "en",
+      "type": "evidenceClaim",
+      "existence": "foreign",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE"
+    },
+    "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: 61f819f9-5dfa-41af-a87a-4f23773ab239\n\nRun a fresh comparison",
+    "fields": [
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      }
+    ]
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "en",
+      "type": "evidenceClaim",
+      "existence": "missing",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_MISSING_EVIDENCE_9FAFE7515145"
+    },
+    "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: 91c4e9bc-b1c5-483b-99be-46c0f56c5c4c\n\nRun a fresh comparison",
+    "fields": [
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      }
+    ]
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "project",
+      "existence": "foreign",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026"
+    },
+    "text": "專案工作區\n\n此專案或區域目前無法使用。\n\n目前的授權脈絡無法開啟此專案，或此專案區域尚未在第一個完整流程中啟用。系統不會以假資料取代失敗狀態。\n\n總覽\n比較\n商務資料\n資料依據\n行動事項\n此區域尚未啟用\n總覽\n\n專案總覽、比較與資料依據已連接正式資料與權限邊界。商務資料專頁與行動事項會依照已核准的建置順序逐步啟用。\n\n要求的專案識別碼\nPRJ-XINYI-026\n目前區域\n總覽",
+    "fields": []
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "project",
+      "existence": "missing",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-QA-MISSING-999"
+    },
+    "text": "專案工作區\n\n此專案或區域目前無法使用。\n\n目前的授權脈絡無法開啟此專案，或此專案區域尚未在第一個完整流程中啟用。系統不會以假資料取代失敗狀態。\n\n總覽\n比較\n商務資料\n資料依據\n行動事項\n此區域尚未啟用\n總覽\n\n專案總覽、比較與資料依據已連接正式資料與權限邊界。商務資料專頁與行動事項會依照已核准的建置順序逐步啟用。\n\n要求的專案識別碼\nPRJ-QA-MISSING-999\n目前區域\n總覽",
+    "fields": []
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "comparison",
+      "existence": "foreign",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    },
+    "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: 29036643-009f-428f-8057-2fba1c1da03c\n\n重新執行比較",
+    "fields": [
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      }
+    ]
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "comparison",
+      "existence": "missing",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_e5fac213-7741-4a6b-bdee-0fc5cf1e1043&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    },
+    "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: c89dd6ba-4701-4709-a1e3-682050e70313\n\n重新執行比較",
+    "fields": [
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      }
+    ]
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "enrichment",
+      "existence": "foreign",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    },
+    "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: 47f77a00-cdee-4c2a-a522-e19bf8175c51\n\n重新執行比較",
+    "fields": [
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      }
+    ]
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "enrichment",
+      "existence": "missing",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_e0a2717b-a1b7-4484-bf5b-7a1b180c1379&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+    },
+    "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: 35187d70-810f-4e71-8337-169f2b94b3bd\n\n重新執行比較",
+    "fields": [
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      }
+    ]
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "proposal",
+      "existence": "foreign",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_fe2095ac-701a-4913-821a-693825f6075f"
+    },
+    "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: 86cd81e8-7963-4e8a-9c1a-a69ea22e09a0\n\n重新執行比較",
+    "fields": [
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      }
+    ]
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "proposal",
+      "existence": "missing",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_42d5ab77-1dce-411f-84cc-c7d5f38d6677"
+    },
+    "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: e7ee4ccc-9a7b-49da-9a54-c00264d026d5\n\n重新執行比較",
+    "fields": [
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      }
+    ]
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "action",
+      "existence": "foreign",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_d27cb3ce-01d4-46cf-809b-e3feece44c19"
+    },
+    "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n內部審查事項\n\n開啟已儲存回執以檢視詳情，或返回來源比較。\n\n依您目前的權限，無法查看或建立此事項。\n\n目前無法查看回執\n\n目前無法顯示這份回執。請返回您有權存取的專案，查看可用的事項。\n\nEnglish\n繁體中文\n關閉",
+    "fields": []
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "action",
+      "existence": "missing",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_d4a819ed-3ceb-4cd8-83cb-3c0a92efef32"
+    },
+    "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n內部審查事項\n\n開啟已儲存回執以檢視詳情，或返回來源比較。\n\n依您目前的權限，無法查看或建立此事項。\n\n目前無法查看回執\n\n目前無法顯示這份回執。請返回您有權存取的專案，查看可用的事項。\n\nEnglish\n繁體中文\n關閉",
+    "fields": []
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "evidenceClaim",
+      "existence": "foreign",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE"
+    },
+    "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: e8481e66-181a-4c63-a63c-4f6349b482a5\n\n重新執行比較",
+    "fields": [
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      }
+    ]
+  },
+  {
+    "route": {
+      "actor": "northern",
+      "locale": "zh-TW",
+      "type": "evidenceClaim",
+      "existence": "missing",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_MISSING_EVIDENCE_9FAFE7515145"
+    },
+    "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: 8ee06c3e-ff46-465b-a284-57faadab8499\n\n重新執行比較",
+    "fields": [
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      },
+      {
+        "aria-invalid": null,
+        "checked": false,
+        "describedBy": null,
+        "disabled": false,
+        "id": "",
+        "type": "hidden",
+        "value": "<redacted>"
+      }
+    ]
+  }
+]

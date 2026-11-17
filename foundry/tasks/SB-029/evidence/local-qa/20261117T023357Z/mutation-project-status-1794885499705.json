@@ -1,0 +1,48 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:18:36.719Z",
+  "caseId": "project-status-1794885499705",
+  "kinds": [
+    "project-status"
+  ],
+  "restored": true,
+  "restorationVerification": [
+    {
+      "table": "Project",
+      "id": "prj_xinyi_026",
+      "operation": "UPDATE",
+      "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+      "beforeNormalizedSha256": "264e28f424ac2f00738ee11c418ac9a1666d7f44940f512ab9a9e105711a2f39",
+      "restoredNormalizedSha256": "264e28f424ac2f00738ee11c418ac9a1666d7f44940f512ab9a9e105711a2f39",
+      "fieldEquality": {
+        "status": true
+      },
+      "matched": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "countsAfter": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "noBusinessWrites": true,
+  "targetDescriptions": [
+    {
+      "table": "Project",
+      "id": "prj_xinyi_026",
+      "fields": [
+        "status"
+      ]
+    }
+  ]
+}

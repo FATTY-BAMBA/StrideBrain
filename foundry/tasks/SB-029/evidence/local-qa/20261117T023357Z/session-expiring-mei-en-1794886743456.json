@@ -1,0 +1,9 @@
+{
+  "classification": "OPERATOR_SETUP_FOR_BROWSER_EXPIRY",
+  "persona": "mei",
+  "locale": "en",
+  "issuedAt": "2026-11-17T03:39:03.455Z",
+  "expiresAt": "2026-11-17T03:40:03.444Z",
+  "ttlSeconds": 60,
+  "service": "Unchanged DemoSessionService minimum permitted TTL; production clock unchanged."
+}

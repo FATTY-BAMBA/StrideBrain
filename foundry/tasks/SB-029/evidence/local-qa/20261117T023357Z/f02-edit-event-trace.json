@@ -1,0 +1,106 @@
+[
+  {
+    "fields": [
+      {
+        "id": "review-title",
+        "value": "REVIEW"
+      },
+      {
+        "id": "review-rationale",
+        "value": "REVIEW_NEXT"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_b911d550581d518bb8f326c678217ad0"
+      },
+      {
+        "id": "review-dueDate",
+        "value": "2026-11-24"
+      },
+      {
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "step": "title",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_50e716a4-034f-4b4c-bc3a-2fa2ef1e3bdb&economics=econrun_5191e5da-112d-47cb-b40d-8de6cdda4d42&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a&reviewTitle=REVIEW&reviewAssignee=assignee_b911d550581d518bb8f326c678217ad0"
+  },
+  {
+    "fields": [
+      {
+        "id": "review-title",
+        "value": "REVIEW"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_b911d550581d518bb8f326c678217ad0"
+      },
+      {
+        "id": "review-dueDate",
+        "value": "2026-11-24"
+      },
+      {
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "step": "rationale",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_50e716a4-034f-4b4c-bc3a-2fa2ef1e3bdb&economics=econrun_5191e5da-112d-47cb-b40d-8de6cdda4d42&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a&reviewTitle=REVIEW&reviewAssignee=assignee_b911d550581d518bb8f326c678217ad0&reviewRationale=VALIDATE_HISTORY"
+  },
+  {
+    "fields": [
+      {
+        "id": "review-title",
+        "value": "REVIEW"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "id": "review-dueDate",
+        "value": "2026-11-24"
+      },
+      {
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "step": "date",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_50e716a4-034f-4b4c-bc3a-2fa2ef1e3bdb&economics=econrun_5191e5da-112d-47cb-b40d-8de6cdda4d42&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a&reviewTitle=REVIEW&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewRationale=VALIDATE_HISTORY"
+  },
+  {
+    "fields": [
+      {
+        "id": "review-title",
+        "value": "REVIEW"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "id": "review-dueDate",
+        "value": "2026-11-24"
+      },
+      {
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "step": "locale",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_50e716a4-034f-4b4c-bc3a-2fa2ef1e3bdb&economics=econrun_5191e5da-112d-47cb-b40d-8de6cdda4d42&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a&reviewTitle=REVIEW&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewRationale=VALIDATE_HISTORY"
+  }
+]

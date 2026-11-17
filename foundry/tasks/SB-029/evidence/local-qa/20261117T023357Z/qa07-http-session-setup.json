@@ -1,0 +1,21 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:36:01.582Z",
+  "classification": "HTTP_ONLY_SESSION_NEGATIVE_SETUP",
+  "executionMode": "HTTP_ONLY",
+  "productionClockChanged": false,
+  "sessions": [
+    {
+      "variant": "expired",
+      "expiresAt": "2026-11-17T03:37:01.558Z",
+      "persona": "mei"
+    },
+    {
+      "variant": "revoked",
+      "expiresAt": "2026-11-17T04:36:01.576Z",
+      "persona": "mei"
+    }
+  ],
+  "credentialsPublished": false
+}

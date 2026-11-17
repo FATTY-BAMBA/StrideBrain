@@ -1,0 +1,967 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:13:46.692Z",
+  "classification": "APPROVED_NON_UI_HTTP_SUPPLEMENT",
+  "executionMode": "HTTP_ONLY",
+  "activeMutation": null,
+  "suite": "invalid-draft",
+  "selector": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+  "timezone": "Asia/Taipei",
+  "minDueDate": "2026-11-17",
+  "maxDueDate": "2027-11-17",
+  "proposalViewSummary": {
+    "canAssign": true,
+    "candidateCount": 3,
+    "suggestedAssigneeKey": "assignee_e1078151219336a0529d3fa95332a60f"
+  },
+  "results": [
+    {
+      "name": "en-empty-title",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "",
+        "unicodeCodePointLength": 0
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-whitespace-title",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "  ",
+        "unicodeCodePointLength": 2
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-unlisted-title",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "The supplier is overcharging by 30%",
+        "unicodeCodePointLength": 35
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-overlength-title",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "unicodeCodePointLength": 201
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-markup-title",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "<b>review</b>",
+        "unicodeCodePointLength": 13
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-control-title",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "review\u0000",
+        "unicodeCodePointLength": 7
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-empty-rationale",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "",
+        "unicodeCodePointLength": 0
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-whitespace-rationale",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "  ",
+        "unicodeCodePointLength": 2
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-overlength-rationale",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "unicodeCodePointLength": 501
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-commercial-assertion",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "An accelerated programme caused a 20% premium",
+        "unicodeCodePointLength": 45
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-replaced-uncertainty",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "All costs are confirmed actuals; approve the quotation.",
+        "unicodeCodePointLength": 55
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-contradictory-wording",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "Lighting has sufficient actual-cost evidence from 3 of 3 sources.",
+        "unicodeCodePointLength": 65
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-yesterday",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "dueDate",
+        "value": "2026-11-16",
+        "unicodeCodePointLength": 10
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "dueDate": "INVALID_DUE_DATE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-day-366",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "dueDate",
+        "value": "2027-11-18",
+        "unicodeCodePointLength": 10
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "dueDate": "INVALID_DUE_DATE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-invalid-Gregorian",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "dueDate",
+        "value": "2027-02-30",
+        "unicodeCodePointLength": 10
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "dueDate": "INVALID_DUE_DATE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-missing-confirmation",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "confirmation",
+        "value": false
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "confirmation": "CONFIRMATION_REQUIRED"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-empty-title",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "",
+        "unicodeCodePointLength": 0
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-whitespace-title",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "  ",
+        "unicodeCodePointLength": 2
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-unlisted-title",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "The supplier is overcharging by 30%",
+        "unicodeCodePointLength": 35
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-overlength-title",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "unicodeCodePointLength": 201
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-markup-title",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "<b>review</b>",
+        "unicodeCodePointLength": 13
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-control-title",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "title",
+        "value": "review\u0000",
+        "unicodeCodePointLength": 7
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "title": "INVALID_TITLE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-empty-rationale",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "",
+        "unicodeCodePointLength": 0
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-whitespace-rationale",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "  ",
+        "unicodeCodePointLength": 2
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-overlength-rationale",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "unicodeCodePointLength": 501
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-commercial-assertion",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "An accelerated programme caused a 20% premium",
+        "unicodeCodePointLength": 45
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-replaced-uncertainty",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "All costs are confirmed actuals; approve the quotation.",
+        "unicodeCodePointLength": 55
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-contradictory-wording",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "rationale",
+        "value": "Lighting has sufficient actual-cost evidence from 3 of 3 sources.",
+        "unicodeCodePointLength": 65
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "rationale": "INVALID_RATIONALE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-yesterday",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "dueDate",
+        "value": "2026-11-16",
+        "unicodeCodePointLength": 10
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "dueDate": "INVALID_DUE_DATE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-day-366",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "dueDate",
+        "value": "2027-11-18",
+        "unicodeCodePointLength": 10
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "dueDate": "INVALID_DUE_DATE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-invalid-Gregorian",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "dueDate",
+        "value": "2027-02-30",
+        "unicodeCodePointLength": 10
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "dueDate": "INVALID_DUE_DATE"
+      },
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-missing-confirmation",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "testedInput": {
+        "classification": "DELIBERATELY_INVALID_TEST_INPUT",
+        "field": "confirmation",
+        "value": false
+      },
+      "status": 200,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "confirmation": "CONFIRMATION_REQUIRED"
+      },
+      "noBusinessWrites": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "countsAfter": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "noBusinessWrites": true,
+  "browserAcceptanceCredit": false,
+  "disclosurePredicate": {
+    "appliesTo": "Rows marked sensitiveDisclosure; full parsed public JSON checked before safe-field filtering",
+    "checkedPattern": "Xinyi|信義旗艦|membership_horizon|org_horizon|Northern|北境|membership_northern|org_northern|evidenceCount|assigneeDisplayName|12650000|2360000",
+    "limitations": "Finite known-name/value predicate, not universal sensitive-data proof. Paired status/kind equality does not imply byte-identical bodies."
+  }
+}

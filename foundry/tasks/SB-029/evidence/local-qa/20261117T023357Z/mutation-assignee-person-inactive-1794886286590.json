@@ -1,0 +1,48 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:31:43.135Z",
+  "caseId": "assignee-person-inactive-1794886286590",
+  "kinds": [
+    "assignee-person-inactive"
+  ],
+  "restored": true,
+  "restorationVerification": [
+    {
+      "table": "Person",
+      "id": "person_horizon_finance",
+      "operation": "UPDATE",
+      "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+      "beforeNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+      "restoredNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+      "fieldEquality": {
+        "active": true
+      },
+      "matched": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "countsAfter": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "noBusinessWrites": true,
+  "targetDescriptions": [
+    {
+      "table": "Person",
+      "id": "person_horizon_finance",
+      "fields": [
+        "active"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "describedBy": "review-assigneeKey-error",
+  "id": "review-assignee",
+  "rect": {
+    "bottom": 391.9453125,
+    "height": 44,
+    "left": 16,
+    "right": 304,
+    "top": 347.9453125,
+    "width": 288,
+    "x": 16,
+    "y": 347.9453125
+  },
+  "text": "未指派\n林美玲\n陳柏宇\n黃怡君"
+}

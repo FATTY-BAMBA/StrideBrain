@@ -1,0 +1,48 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:17:19.662Z",
+  "caseId": "quote-1794885424118",
+  "kinds": [
+    "quote"
+  ],
+  "restored": true,
+  "restorationVerification": [
+    {
+      "table": "QuoteVersion",
+      "id": "qv_xinyi_026_v3",
+      "operation": "UPDATE",
+      "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+      "beforeNormalizedSha256": "6801f822157c059a6bebedc504df70ee4f941e90e5dbcf16f87226f2b776bbb2",
+      "restoredNormalizedSha256": "6801f822157c059a6bebedc504df70ee4f941e90e5dbcf16f87226f2b776bbb2",
+      "fieldEquality": {
+        "versionNumber": true
+      },
+      "matched": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "countsAfter": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "noBusinessWrites": true,
+  "targetDescriptions": [
+    {
+      "table": "QuoteVersion",
+      "id": "qv_xinyi_026_v3",
+      "fields": [
+        "versionNumber"
+      ]
+    }
+  ]
+}

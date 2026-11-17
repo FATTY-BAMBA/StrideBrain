@@ -1,0 +1,20 @@
+[
+  {
+    "locale": "en",
+    "alerts": [
+      "⚠ This result could not be checked against current informationThis saved result remains available for inspection. New action preparation and confirmation are unavailable until current information is verified. Re-run the comparison to try again.Re-run comparison",
+      ""
+    ],
+    "preparationButtonCount": 0,
+    "tableCount": 1
+  },
+  {
+    "locale": "zh-TW",
+    "alerts": [
+      "⚠ 目前無法確認此結果是否仍符合最新資料您仍可檢視這份已儲存的結果。在確認最新資料前，無法準備或確認新的審查事項。請重新比較後再試。重新比較",
+      ""
+    ],
+    "preparationButtonCount": 0,
+    "tableCount": 1
+  }
+]

@@ -1,0 +1,85 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:33:15.163Z",
+  "classification": "APPROVED_NON_UI_HTTP_SUPPLEMENT",
+  "executionMode": "HTTP_ONLY",
+  "activeMutation": {
+    "caseId": "assignee-actual-ineligible-1794886390533",
+    "kinds": [
+      "assignee-actual-ineligible"
+    ],
+    "proposalKey": "proposal_1149e1c6-177c-449e-8153-9f84324b8685"
+  },
+  "suite": "chosen-assignee-denial",
+  "selector": "proposal_1149e1c6-177c-449e-8153-9f84324b8685",
+  "timezone": "Asia/Taipei",
+  "minDueDate": "2026-11-17",
+  "maxDueDate": "2027-11-17",
+  "proposalViewSummary": {
+    "canAssign": true,
+    "candidateCount": 3,
+    "suggestedAssigneeKey": "assignee_e1078151219336a0529d3fa95332a60f"
+  },
+  "results": [
+    {
+      "name": "en-changed-finance-assignee",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_1149e1c6-177c-449e-8153-9f84324b8685",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "ASSIGNEE_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-changed-finance-assignee",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_1149e1c6-177c-449e-8153-9f84324b8685",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "ASSIGNEE_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "countsAfter": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "noBusinessWrites": true,
+  "browserAcceptanceCredit": false,
+  "disclosurePredicate": {
+    "appliesTo": "Rows marked sensitiveDisclosure; full parsed public JSON checked before safe-field filtering",
+    "checkedPattern": "Xinyi|信義旗艦|membership_horizon|org_horizon|Northern|北境|membership_northern|org_northern|evidenceCount|assigneeDisplayName|12650000|2360000",
+    "limitations": "Finite known-name/value predicate, not universal sensitive-data proof. Paired status/kind equality does not imply byte-identical bodies."
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T02:39:22.999Z",
+  "classification": "APPROVED_NON_UI_HTTP_SUPPLEMENT",
+  "executionMode": "HTTP_ONLY",
+  "activeMutation": {
+    "caseId": "authority-1794883086049",
+    "kinds": [
+      "authority"
+    ],
+    "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f"
+  },
+  "suite": "stale-denials",
+  "selector": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+  "timezone": "Asia/Taipei",
+  "minDueDate": "2026-11-17",
+  "maxDueDate": "2027-11-17",
+  "proposalViewSummary": {
+    "canAssign": true,
+    "candidateCount": 3,
+    "suggestedAssigneeKey": "assignee_e1078151219336a0529d3fa95332a60f"
+  },
+  "results": [
+    {
+      "name": "en-stale-direct-confirm",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "STALE_COMPARISON",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-stale-direct-prepare",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_STALE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-stale-direct-confirm",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "STALE_COMPARISON",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-stale-direct-prepare",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_STALE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 0,
+    "consumed": 0,
+    "receipts": 0,
+    "audits": 0,
+    "actionevidencelinks": 0
+  },
+  "countsAfter": {
+    "actions": 0,
+    "consumed": 0,
+    "receipts": 0,
+    "audits": 0,
+    "actionevidencelinks": 0
+  },
+  "noBusinessWrites": true,
+  "browserAcceptanceCredit": false,
+  "disclosurePredicate": {
+    "appliesTo": "Rows marked sensitiveDisclosure; full parsed public JSON checked before safe-field filtering",
+    "checkedPattern": "Xinyi|信義旗艦|membership_horizon|org_horizon|Northern|北境|membership_northern|org_northern|evidenceCount|assigneeDisplayName|12650000|2360000",
+    "limitations": "Finite known-name/value predicate, not universal sensitive-data proof. Paired status/kind equality does not imply byte-identical bodies."
+  }
+}

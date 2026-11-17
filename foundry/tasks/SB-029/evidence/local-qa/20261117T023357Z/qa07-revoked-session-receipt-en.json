@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-17T03:41:35.267Z",
+  "persona": "unauthenticated",
+  "dialogs": [],
+  "documentWidth": 1440,
+  "fields": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": ""
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nA controlled demo session is required.\n\nThis workspace only opens after the server validates a signed synthetic-demo session. Browser parameters cannot select an organization or role.",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_50e716a4-034f-4b4c-bc3a-2fa2ef1e3bdb&economics=econrun_5191e5da-112d-47cb-b40d-8de6cdda4d42&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_d89226cf-77aa-46bb-a113-af8a3f5c4416",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

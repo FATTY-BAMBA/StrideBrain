@@ -1,0 +1,57 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T02:41:08.795Z",
+  "caseId": "conflict-1794883251596",
+  "kinds": [
+    "conflict"
+  ],
+  "restored": true,
+  "restorationVerification": [
+    {
+      "table": "EvidenceConflict",
+      "id": "qa_sb029_retest_conflict_1794883251595",
+      "operation": "INSERT",
+      "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+      "beforeNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "restoredNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "fieldEquality": {
+        "ownedTemporaryRowAbsent": true
+      },
+      "matched": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 0,
+    "consumed": 0,
+    "receipts": 0,
+    "audits": 0,
+    "actionevidencelinks": 0
+  },
+  "countsAfter": {
+    "actions": 0,
+    "consumed": 0,
+    "receipts": 0,
+    "audits": 0,
+    "actionevidencelinks": 0
+  },
+  "noBusinessWrites": true,
+  "targetDescriptions": [
+    {
+      "table": "EvidenceConflict",
+      "id": "qa_sb029_retest_conflict_1794883251595",
+      "fields": [
+        "id",
+        "organizationId",
+        "conflictKey",
+        "primaryEvidenceId",
+        "conflictingEvidenceId",
+        "status",
+        "resolutionNote",
+        "resolvedAt",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  ]
+}

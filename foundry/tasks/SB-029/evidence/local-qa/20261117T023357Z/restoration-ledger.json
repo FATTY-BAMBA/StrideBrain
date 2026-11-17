@@ -1,0 +1,1815 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T04:05:10.856Z",
+  "acceptanceClaim": false,
+  "expiredRevokedHttpPostSupplementRan": true,
+  "p1Stop": null,
+  "classification": "FRESH_RUN_OPERATOR_RESTORATION_LEDGER",
+  "caseCount": 45,
+  "cases": [
+    {
+      "artifact": "fault-after-action-1794884966965.json",
+      "caseId": "after-action-1794884966965",
+      "validNegativePremise": true,
+      "kinds": [
+        "after-action"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "countsAfter": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "restorationVerification": null,
+      "temporaryTriggerAbsent": true,
+      "temporaryFunctionAbsent": true
+    },
+    {
+      "artifact": "fault-after-audit-1794884994569.json",
+      "caseId": "after-audit-1794884994569",
+      "validNegativePremise": true,
+      "kinds": [
+        "after-audit"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "countsAfter": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "restorationVerification": null,
+      "temporaryTriggerAbsent": true,
+      "temporaryFunctionAbsent": true
+    },
+    {
+      "artifact": "fault-after-consumption-1794885050363.json",
+      "caseId": "after-consumption-1794885050363",
+      "validNegativePremise": true,
+      "kinds": [
+        "after-consumption"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "countsAfter": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "restorationVerification": null,
+      "temporaryTriggerAbsent": true,
+      "temporaryFunctionAbsent": true
+    },
+    {
+      "artifact": "fault-after-receipt-1794885177719.json",
+      "caseId": "after-receipt-1794885177719",
+      "validNegativePremise": true,
+      "kinds": [
+        "after-receipt"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "countsAfter": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "restorationVerification": null,
+      "temporaryTriggerAbsent": true,
+      "temporaryFunctionAbsent": true
+    },
+    {
+      "artifact": "fault-at-commit-1794885202231.json",
+      "caseId": "at-commit-1794885202231",
+      "validNegativePremise": true,
+      "kinds": [
+        "at-commit"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "countsAfter": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "restorationVerification": null,
+      "temporaryTriggerAbsent": true,
+      "temporaryFunctionAbsent": true
+    },
+    {
+      "artifact": "mutation-action-flag-1794886072867.json",
+      "caseId": "action-flag-1794886072867",
+      "validNegativePremise": true,
+      "kinds": [
+        "action-flag"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "ProjectAssignment",
+          "id": "assign_mei_xinyi",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "8a4385c5e0b14d9d0981f7869bd0830ae0a09b1afe7465ce324bc296c696af90",
+          "restoredNormalizedSha256": "8a4385c5e0b14d9d0981f7869bd0830ae0a09b1afe7465ce324bc296c696af90",
+          "fieldEquality": {
+            "canCreateAction": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-actual-assignment-1794886146405.json",
+      "caseId": "actual-assignment-1794886146405",
+      "validNegativePremise": true,
+      "kinds": [
+        "actual-assignment"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "ProjectAssignment",
+          "id": "assign_mei_xinyi",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "d8f46e554ba063182a9fd8da175e2076d7390c93fe3eaf2ed4b50514cea7369a",
+          "restoredNormalizedSha256": "d8f46e554ba063182a9fd8da175e2076d7390c93fe3eaf2ed4b50514cea7369a",
+          "fieldEquality": {
+            "canReadActuals": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-assignee-actual-capability-denied-1794886426250.json",
+      "caseId": "assignee-actual-capability-denied-1794886426250",
+      "validNegativePremise": true,
+      "kinds": [
+        "assignee-actual-capability-denied"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "MembershipCapabilityGrant",
+          "id": "qa_sb029_retest_finance_commercial_actual_read",
+          "operation": "INSERT",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "restoredNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "fieldEquality": {
+            "ownedTemporaryRowAbsent": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-assignee-actual-ineligible-1794886390533.json",
+      "caseId": "assignee-actual-ineligible-1794886390533",
+      "validNegativePremise": true,
+      "kinds": [
+        "assignee-actual-ineligible"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "ProjectAssignment",
+          "id": "assign_finance_xinyi",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "d8f46e554ba063182a9fd8da175e2076d7390c93fe3eaf2ed4b50514cea7369a",
+          "restoredNormalizedSha256": "d8f46e554ba063182a9fd8da175e2076d7390c93fe3eaf2ed4b50514cea7369a",
+          "fieldEquality": {
+            "canReadActuals": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-assignee-evidence-ineligible-1794886352936.json",
+      "caseId": "assignee-evidence-ineligible-1794886352936",
+      "validNegativePremise": true,
+      "kinds": [
+        "assignee-evidence-ineligible"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "MembershipCapabilityGrant",
+          "id": "qa_sb029_retest_finance_evidence_read",
+          "operation": "INSERT",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "restoredNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "fieldEquality": {
+            "ownedTemporaryRowAbsent": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-assignee-inactive-1794886249477.json",
+      "caseId": "assignee-inactive-1794886249477",
+      "validNegativePremise": true,
+      "kinds": [
+        "assignee-inactive"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "Membership",
+          "id": "membership_horizon_finance",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+          "restoredNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+          "fieldEquality": {
+            "active": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-assignee-person-inactive-1794886286590.json",
+      "caseId": "assignee-person-inactive-1794886286590",
+      "validNegativePremise": true,
+      "kinds": [
+        "assignee-person-inactive"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "Person",
+          "id": "person_horizon_finance",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+          "restoredNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+          "fieldEquality": {
+            "active": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-assignee-unassigned-1794886317882.json",
+      "caseId": "assignee-unassigned-1794886317882",
+      "validNegativePremise": true,
+      "kinds": [
+        "assignee-unassigned"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "ProjectAssignment",
+          "id": "assign_finance_xinyi",
+          "operation": "DELETE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "99886f0face96b37363c5ba327317a946f7fee1b496b6a2f6203e5321b75d23d",
+          "restoredNormalizedSha256": "99886f0face96b37363c5ba327317a946f7fee1b496b6a2f6203e5321b75d23d",
+          "fieldEquality": {
+            "id": true,
+            "createdAt": true,
+            "projectId": true,
+            "membershipId": true,
+            "canReadActuals": true,
+            "organizationId": true,
+            "canCreateAction": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-assignment-revoked-1794886031112.json",
+      "caseId": "assignment-revoked-1794886031112",
+      "validNegativePremise": true,
+      "kinds": [
+        "assignment-revoked"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "ProjectAssignment",
+          "id": "assign_mei_xinyi",
+          "operation": "DELETE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "2d4289ca234b428dff0e266e00ebf7a0fbe53f44f8dda8d5b358ca02e1678f10",
+          "restoredNormalizedSha256": "2d4289ca234b428dff0e266e00ebf7a0fbe53f44f8dda8d5b358ca02e1678f10",
+          "fieldEquality": {
+            "id": true,
+            "createdAt": true,
+            "projectId": true,
+            "membershipId": true,
+            "canReadActuals": true,
+            "organizationId": true,
+            "canCreateAction": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-authority-1794883086049.json",
+      "caseId": "authority-1794883086049",
+      "validNegativePremise": true,
+      "kinds": [
+        "authority"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 0,
+        "consumed": 0,
+        "receipts": 0,
+        "audits": 0,
+        "actionevidencelinks": 0
+      },
+      "countsAfter": {
+        "actions": 0,
+        "consumed": 0,
+        "receipts": 0,
+        "audits": 0,
+        "actionevidencelinks": 0
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceReference",
+          "id": "evid_cost_cl_nanjing_023_v1_3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "restoredNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "fieldEquality": {
+            "authorityState": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-authority-1794883348333.json",
+      "caseId": "authority-1794883348333",
+      "validNegativePremise": true,
+      "kinds": [
+        "authority"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 0,
+        "consumed": 0,
+        "receipts": 0,
+        "audits": 0,
+        "actionevidencelinks": 0
+      },
+      "countsAfter": {
+        "actions": 0,
+        "consumed": 0,
+        "receipts": 0,
+        "audits": 0,
+        "actionevidencelinks": 0
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceReference",
+          "id": "evid_cost_cl_nanjing_023_v1_3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "restoredNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "fieldEquality": {
+            "authorityState": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-authority-1794884503289.json",
+      "caseId": "authority-1794884503289",
+      "validNegativePremise": true,
+      "kinds": [
+        "authority"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "countsAfter": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceReference",
+          "id": "evid_cost_cl_nanjing_023_v1_3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "restoredNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "fieldEquality": {
+            "authorityState": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-authority-1794884652353.json",
+      "caseId": "authority-1794884652353",
+      "validNegativePremise": true,
+      "kinds": [
+        "authority"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "countsAfter": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceReference",
+          "id": "evid_cost_cl_nanjing_023_v1_3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "restoredNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "fieldEquality": {
+            "authorityState": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-authority-1794884830997.json",
+      "caseId": "authority-1794884830997",
+      "validNegativePremise": true,
+      "kinds": [
+        "authority"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "countsAfter": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceReference",
+          "id": "evid_cost_cl_nanjing_023_v1_3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "restoredNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "fieldEquality": {
+            "authorityState": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-authority-1794885909602.json",
+      "caseId": "authority-1794885909602",
+      "validNegativePremise": true,
+      "kinds": [
+        "authority"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceReference",
+          "id": "evid_cost_cl_nanjing_023_v1_3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "restoredNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "fieldEquality": {
+            "authorityState": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-availability-1794883320448.json",
+      "caseId": "availability-1794883320448",
+      "validNegativePremise": true,
+      "kinds": [
+        "availability"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 0,
+        "consumed": 0,
+        "receipts": 0,
+        "audits": 0,
+        "actionevidencelinks": 0
+      },
+      "countsAfter": {
+        "actions": 0,
+        "consumed": 0,
+        "receipts": 0,
+        "audits": 0,
+        "actionevidencelinks": 0
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceReference",
+          "id": "evid_cost_cl_nanjing_023_v1_3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "71616ba4c53e348ebbf8336a668b9210fb53b76cba495c7b2c195afbac0fcb34",
+          "restoredNormalizedSha256": "71616ba4c53e348ebbf8336a668b9210fb53b76cba495c7b2c195afbac0fcb34",
+          "fieldEquality": {
+            "locator": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-availability-1794885837631.json",
+      "caseId": "availability-1794885837631",
+      "validNegativePremise": true,
+      "kinds": [
+        "availability"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceReference",
+          "id": "evid_cost_cl_nanjing_023_v1_3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "71616ba4c53e348ebbf8336a668b9210fb53b76cba495c7b2c195afbac0fcb34",
+          "restoredNormalizedSha256": "71616ba4c53e348ebbf8336a668b9210fb53b76cba495c7b2c195afbac0fcb34",
+          "fieldEquality": {
+            "locator": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-comparison-1794885531641.json",
+      "caseId": "comparison-1794885531641",
+      "validNegativePremise": true,
+      "kinds": [
+        "comparison"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "ComparisonRun",
+          "id": "cmprun_15cbf3a3-4283-4fbb-ac9e-bcb33f1cda06",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "112f804907522d974efc746613362d2eadf4404a3ced4147e0a46945d894092d",
+          "restoredNormalizedSha256": "112f804907522d974efc746613362d2eadf4404a3ced4147e0a46945d894092d",
+          "fieldEquality": {
+            "policyVersion": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-comparison-fingerprint-1794885562656.json",
+      "caseId": "comparison-fingerprint-1794885562656",
+      "validNegativePremise": true,
+      "kinds": [
+        "comparison-fingerprint"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "ComparisonRun",
+          "id": "cmprun_15cbf3a3-4283-4fbb-ac9e-bcb33f1cda06",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "e445791c19fdd5d41d8ac9ae688be9ed4fec64942d1053024a60d9c1342974e9",
+          "restoredNormalizedSha256": "e445791c19fdd5d41d8ac9ae688be9ed4fec64942d1053024a60d9c1342974e9",
+          "fieldEquality": {
+            "inputFingerprint": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-conflict-1794883251596.json",
+      "caseId": "conflict-1794883251596",
+      "validNegativePremise": true,
+      "kinds": [
+        "conflict"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 0,
+        "consumed": 0,
+        "receipts": 0,
+        "audits": 0,
+        "actionevidencelinks": 0
+      },
+      "countsAfter": {
+        "actions": 0,
+        "consumed": 0,
+        "receipts": 0,
+        "audits": 0,
+        "actionevidencelinks": 0
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceConflict",
+          "id": "qa_sb029_retest_conflict_1794883251595",
+          "operation": "INSERT",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "restoredNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "fieldEquality": {
+            "ownedTemporaryRowAbsent": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-conflict-1794885764997.json",
+      "caseId": "conflict-1794885764997",
+      "validNegativePremise": true,
+      "kinds": [
+        "conflict"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceConflict",
+          "id": "qa_sb029_retest_conflict_1794885764996",
+          "operation": "INSERT",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "restoredNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "fieldEquality": {
+            "ownedTemporaryRowAbsent": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-deny-actual-1794886107886.json",
+      "caseId": "deny-actual-1794886107886",
+      "validNegativePremise": true,
+      "kinds": [
+        "deny-actual"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "MembershipCapabilityGrant",
+          "id": "grant_mei_actual_allow",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "b1d046ac3b32a4aafe5ec291b7384c3c23a90ac229b3b3b1ec4743765e6ce87f",
+          "restoredNormalizedSha256": "b1d046ac3b32a4aafe5ec291b7384c3c23a90ac229b3b3b1ec4743765e6ce87f",
+          "fieldEquality": {
+            "effect": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-deny-create-1794884869460.json",
+      "caseId": "deny-create-1794884869460",
+      "validNegativePremise": true,
+      "kinds": [
+        "deny-create"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "countsAfter": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "restorationVerification": [
+        {
+          "table": "MembershipCapabilityGrant",
+          "id": "qa_sb029_retest_mei_action_internal_review_create",
+          "operation": "INSERT",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "restoredNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "fieldEquality": {
+            "ownedTemporaryRowAbsent": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-deny-create-1794885995061.json",
+      "caseId": "deny-create-1794885995061",
+      "validNegativePremise": true,
+      "kinds": [
+        "deny-create"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "MembershipCapabilityGrant",
+          "id": "qa_sb029_retest_mei_action_internal_review_create",
+          "operation": "INSERT",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "restoredNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "fieldEquality": {
+            "ownedTemporaryRowAbsent": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-deny-evidence-1794886185638.json",
+      "caseId": "deny-evidence-1794886185638",
+      "validNegativePremise": true,
+      "kinds": [
+        "deny-evidence"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "MembershipCapabilityGrant",
+          "id": "qa_sb029_retest_mei_evidence_read",
+          "operation": "INSERT",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "restoredNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "fieldEquality": {
+            "ownedTemporaryRowAbsent": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-deny-propose-1794885960559.json",
+      "caseId": "deny-propose-1794885960559",
+      "validNegativePremise": true,
+      "kinds": [
+        "deny-propose"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "MembershipCapabilityGrant",
+          "id": "qa_sb029_retest_mei_action_internal_review_propose",
+          "operation": "INSERT",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "restoredNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "fieldEquality": {
+            "ownedTemporaryRowAbsent": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-enrichment-1794885597796.json",
+      "caseId": "enrichment-1794885597796",
+      "validNegativePremise": true,
+      "kinds": [
+        "enrichment"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "EconomicsEnrichmentRun",
+          "id": "econrun_12b247d8-0045-4032-bd3b-35bdb04568cd",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "9f9ffde468165ad592d41e73d0b0a4bd006e54786fdba945bee8cb05790f3ac5",
+          "restoredNormalizedSha256": "9f9ffde468165ad592d41e73d0b0a4bd006e54786fdba945bee8cb05790f3ac5",
+          "fieldEquality": {
+            "calculationVersion": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-enrichment-fingerprint-1794885626193.json",
+      "caseId": "enrichment-fingerprint-1794885626193",
+      "validNegativePremise": true,
+      "kinds": [
+        "enrichment-fingerprint"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "EconomicsEnrichmentRun",
+          "id": "econrun_12b247d8-0045-4032-bd3b-35bdb04568cd",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "50e3641fc209e69fbc9ccaf1a712e174d17a394b1b8a19bdd049687f70e0fe25",
+          "restoredNormalizedSha256": "50e3641fc209e69fbc9ccaf1a712e174d17a394b1b8a19bdd049687f70e0fe25",
+          "fieldEquality": {
+            "inputFingerprint": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-enrichment-result-1794885658387.json",
+      "caseId": "enrichment-result-1794885658387",
+      "validNegativePremise": true,
+      "kinds": [
+        "enrichment-result"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "EconomicsEnrichmentRun",
+          "id": "econrun_12b247d8-0045-4032-bd3b-35bdb04568cd",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "c0335ee8d79fa6aa4ba40a4457f6083660a5257856a48d6fc0429f9547eea6be",
+          "restoredNormalizedSha256": "c0335ee8d79fa6aa4ba40a4457f6083660a5257856a48d6fc0429f9547eea6be",
+          "fieldEquality": {
+            "resultSnapshot": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-evidence-access-1794883287233.json",
+      "caseId": "evidence-access-1794883287233",
+      "validNegativePremise": true,
+      "kinds": [
+        "evidence-access"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 0,
+        "consumed": 0,
+        "receipts": 0,
+        "audits": 0,
+        "actionevidencelinks": 0
+      },
+      "countsAfter": {
+        "actions": 0,
+        "consumed": 0,
+        "receipts": 0,
+        "audits": 0,
+        "actionevidencelinks": 0
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceReference",
+          "id": "evid_cost_cl_nanjing_023_v1_3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "1134eb23f76928f272eabfce9dc1931d95e0b75729256b8e9b892735548fe715",
+          "restoredNormalizedSha256": "1134eb23f76928f272eabfce9dc1931d95e0b75729256b8e9b892735548fe715",
+          "fieldEquality": {
+            "dataClassification": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-evidence-access-1794884921115.json",
+      "caseId": "evidence-access-1794884921115",
+      "validNegativePremise": true,
+      "kinds": [
+        "evidence-access"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "countsAfter": {
+        "actions": 1,
+        "consumed": 1,
+        "receipts": 1,
+        "audits": 1,
+        "actionevidencelinks": 15
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceReference",
+          "id": "evid_cost_cl_nanjing_023_v1_3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "1134eb23f76928f272eabfce9dc1931d95e0b75729256b8e9b892735548fe715",
+          "restoredNormalizedSha256": "1134eb23f76928f272eabfce9dc1931d95e0b75729256b8e9b892735548fe715",
+          "fieldEquality": {
+            "dataClassification": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-evidence-access-1794885871252.json",
+      "caseId": "evidence-access-1794885871252",
+      "validNegativePremise": true,
+      "kinds": [
+        "evidence-access"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceReference",
+          "id": "evid_cost_cl_nanjing_023_v1_3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "1134eb23f76928f272eabfce9dc1931d95e0b75729256b8e9b892735548fe715",
+          "restoredNormalizedSha256": "1134eb23f76928f272eabfce9dc1931d95e0b75729256b8e9b892735548fe715",
+          "fieldEquality": {
+            "dataClassification": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-freshness-1794883222571.json",
+      "caseId": "freshness-1794883222571",
+      "validNegativePremise": true,
+      "kinds": [
+        "freshness"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 0,
+        "consumed": 0,
+        "receipts": 0,
+        "audits": 0,
+        "actionevidencelinks": 0
+      },
+      "countsAfter": {
+        "actions": 0,
+        "consumed": 0,
+        "receipts": 0,
+        "audits": 0,
+        "actionevidencelinks": 0
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceReference",
+          "id": "evid_cost_cl_nanjing_023_v1_3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "0d75d45e3c69c892c737db145026f0b97d8a2da1819377ca9931f0e03e5a0779",
+          "restoredNormalizedSha256": "0d75d45e3c69c892c737db145026f0b97d8a2da1819377ca9931f0e03e5a0779",
+          "fieldEquality": {
+            "staleAt": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-freshness-1794885712844.json",
+      "caseId": "freshness-1794885712844",
+      "validNegativePremise": true,
+      "kinds": [
+        "freshness"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceReference",
+          "id": "evid_cost_cl_nanjing_023_v1_3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "0d75d45e3c69c892c737db145026f0b97d8a2da1819377ca9931f0e03e5a0779",
+          "restoredNormalizedSha256": "0d75d45e3c69c892c737db145026f0b97d8a2da1819377ca9931f0e03e5a0779",
+          "fieldEquality": {
+            "staleAt": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-noassign-1794886448055.json",
+      "caseId": "noassign-1794886448055",
+      "validNegativePremise": true,
+      "kinds": [
+        "noassign",
+        "assignee-inactive"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "MembershipCapabilityGrant",
+          "id": "qa_sb029_retest_mei_action_assign",
+          "operation": "INSERT",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "restoredNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "fieldEquality": {
+            "ownedTemporaryRowAbsent": true
+          },
+          "matched": true
+        },
+        {
+          "table": "Membership",
+          "id": "membership_horizon_finance",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+          "restoredNormalizedSha256": "bbd02bf9a14d02d41f6b78dd36c79838d910f5a22937722109bf0035254b62f8",
+          "fieldEquality": {
+            "active": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-project-1794885459250.json",
+      "caseId": "project-1794885459250",
+      "validNegativePremise": true,
+      "kinds": [
+        "project"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "Project",
+          "id": "prj_xinyi_026",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "1465feac44550f5b80d0d9725d7f4adfb59334c1da5aa5a9bbddffb28c911ce9",
+          "restoredNormalizedSha256": "1465feac44550f5b80d0d9725d7f4adfb59334c1da5aa5a9bbddffb28c911ce9",
+          "fieldEquality": {
+            "programmeWeeks": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-project-status-1794885499705.json",
+      "caseId": "project-status-1794885499705",
+      "validNegativePremise": true,
+      "kinds": [
+        "project-status"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "Project",
+          "id": "prj_xinyi_026",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "264e28f424ac2f00738ee11c418ac9a1666d7f44940f512ab9a9e105711a2f39",
+          "restoredNormalizedSha256": "264e28f424ac2f00738ee11c418ac9a1666d7f44940f512ab9a9e105711a2f39",
+          "fieldEquality": {
+            "status": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-quote-1794885424118.json",
+      "caseId": "quote-1794885424118",
+      "validNegativePremise": true,
+      "kinds": [
+        "quote"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "QuoteVersion",
+          "id": "qv_xinyi_026_v3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "6801f822157c059a6bebedc504df70ee4f941e90e5dbcf16f87226f2b776bbb2",
+          "restoredNormalizedSha256": "6801f822157c059a6bebedc504df70ee4f941e90e5dbcf16f87226f2b776bbb2",
+          "fieldEquality": {
+            "versionNumber": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-supersession-1794883268898.json",
+      "caseId": "supersession-1794883268898",
+      "validNegativePremise": true,
+      "kinds": [
+        "supersession"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 0,
+        "consumed": 0,
+        "receipts": 0,
+        "audits": 0,
+        "actionevidencelinks": 0
+      },
+      "countsAfter": {
+        "actions": 0,
+        "consumed": 0,
+        "receipts": 0,
+        "audits": 0,
+        "actionevidencelinks": 0
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceReference",
+          "id": "evid_cost_cl_nanjing_023_v1_3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "restoredNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "fieldEquality": {
+            "authorityState": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    },
+    {
+      "artifact": "mutation-supersession-1794885801857.json",
+      "caseId": "supersession-1794885801857",
+      "validNegativePremise": true,
+      "kinds": [
+        "supersession"
+      ],
+      "restored": true,
+      "noBusinessWrites": true,
+      "countsBefore": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "countsAfter": {
+        "actions": 2,
+        "consumed": 2,
+        "receipts": 2,
+        "audits": 2,
+        "actionevidencelinks": 30
+      },
+      "restorationVerification": [
+        {
+          "table": "EvidenceReference",
+          "id": "evid_cost_cl_nanjing_023_v1_3",
+          "operation": "UPDATE",
+          "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+          "beforeNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "restoredNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+          "fieldEquality": {
+            "authorityState": true
+          },
+          "matched": true
+        }
+      ],
+      "temporaryTriggerAbsent": null,
+      "temporaryFunctionAbsent": null
+    }
+  ],
+  "activeLedgers": {
+    "active-mutation.json": false,
+    "active-fault.json": false,
+    "active-delay.json": false
+  },
+  "allCasesRestored": true,
+  "allAttemptedNegativeCasesNoBusinessWrites": true,
+  "allValidNegativeCasesNoBusinessWrites": true,
+  "invalidPremiseCaseCount": 0,
+  "allRecordedFieldHashesMatch": true,
+  "activeSessions": 0,
+  "temporaryGrants": 0,
+  "temporaryTriggers": 0,
+  "temporaryFunctions": 0,
+  "temporaryConflicts": 0,
+  "guards": [
+    {
+      "tgname": "Action_stage8_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "AuditEvent_append_only",
+      "enabled": "O"
+    },
+    {
+      "tgname": "InternalReviewReceipt_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "ProposedAction_stage8_immutable",
+      "enabled": "O"
+    }
+  ],
+  "businessCounts": {
+    "actions": 9,
+    "proposals": 12,
+    "consumed": 9,
+    "receipts": 9,
+    "audits": 9,
+    "actionevidencelinks": 135
+  },
+  "priorRunClosureExcluded": true,
+  "operatorRestorationComplete": true
+}

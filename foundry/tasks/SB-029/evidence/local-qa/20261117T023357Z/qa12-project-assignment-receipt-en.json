@@ -1,0 +1,48 @@
+{
+  "at": "2026-11-17T03:27:33.813Z",
+  "persona": "mei",
+  "dialogs": [],
+  "documentWidth": 1440,
+  "fields": [
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": ""
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    }
+  ],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": ""
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: ff270ff5-2edc-4905-96d9-2e127523ba5f\n\nRun a fresh comparison",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_50e716a4-034f-4b4c-bc3a-2fa2ef1e3bdb&economics=econrun_5191e5da-112d-47cb-b40d-8de6cdda4d42&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_d89226cf-77aa-46bb-a113-af8a3f5c4416",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-17T03:52:30.209Z",
+  "persona": "admin",
+  "dialogs": [],
+  "documentWidth": 1440,
+  "fields": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": ""
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nXinyi Flagship Renovation\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nOpen\nReview imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2026-11-24\nOpen receipt\nOpen\nReview imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2026-11-24\nOpen receipt\nOpen\nReview imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2026-11-24\nOpen receipt\nOpen\nReview imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2027-11-17\nOpen receipt\nOpen\nReview imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2026-11-17\nOpen receipt\nOpen\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\nAssignee\nAlex Chen\nDue date\nNo due date\nOpen receipt\nOpen\nValidate imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2026-11-24\nOpen receipt",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?run=cmprun_fd24eb21-21d1-4bf0-9051-c687c1d54428&economics=econrun_3bcffd34-ee80-488a-bb7d-695438159e17&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

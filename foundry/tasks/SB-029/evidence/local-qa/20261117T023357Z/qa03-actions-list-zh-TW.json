@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-17T02:50:55.306Z",
+  "persona": "mei",
+  "dialogs": [],
+  "documentWidth": 1440,
+  "fields": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "跳至主要內容StrideBrainPRIMESTRIDE AI01首頁02專案03知識04StrideBrain05設定v0.1 · 受控示範此區域尚未啟用●受控虛構資料示範繁中/EN總覽比較商務資料資料依據行動事項內部審查事項信義旗艦店裝修開啟已儲存回執以檢視詳情，或返回來源比較。待處理檢核信義旗艦店裝修第3版報價的進口石材與照明假設承辦人黃怡君到期日2026-11-24開啟回執僅使用虛構示範資料 · 無真實客戶資料尚未切換正式示範網域requestAnimationFrame(functio"
+  },
+  "locale": "zh-Hant",
+  "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n內部審查事項\n\n信義旗艦店裝修\n\n開啟已儲存回執以檢視詳情，或返回來源比較。\n\n待處理\n檢核信義旗艦店裝修第3版報價的進口石材與照明假設\n承辦人\n黃怡君\n到期日\n2026-11-24\n開啟回執",
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

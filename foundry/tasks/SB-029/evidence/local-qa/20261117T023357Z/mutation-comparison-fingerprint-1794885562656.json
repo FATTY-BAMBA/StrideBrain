@@ -1,0 +1,48 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:19:40.314Z",
+  "caseId": "comparison-fingerprint-1794885562656",
+  "kinds": [
+    "comparison-fingerprint"
+  ],
+  "restored": true,
+  "restorationVerification": [
+    {
+      "table": "ComparisonRun",
+      "id": "cmprun_15cbf3a3-4283-4fbb-ac9e-bcb33f1cda06",
+      "operation": "UPDATE",
+      "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+      "beforeNormalizedSha256": "e445791c19fdd5d41d8ac9ae688be9ed4fec64942d1053024a60d9c1342974e9",
+      "restoredNormalizedSha256": "e445791c19fdd5d41d8ac9ae688be9ed4fec64942d1053024a60d9c1342974e9",
+      "fieldEquality": {
+        "inputFingerprint": true
+      },
+      "matched": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "countsAfter": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "noBusinessWrites": true,
+  "targetDescriptions": [
+    {
+      "table": "ComparisonRun",
+      "id": "cmprun_15cbf3a3-4283-4fbb-ac9e-bcb33f1cda06",
+      "fields": [
+        "inputFingerprint"
+      ]
+    }
+  ]
+}

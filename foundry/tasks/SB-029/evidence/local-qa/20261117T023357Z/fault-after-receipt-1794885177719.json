@@ -1,0 +1,26 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:13:19.590Z",
+  "temporaryTriggerAbsent": true,
+  "temporaryFunctionAbsent": true,
+  "phase": "after-receipt",
+  "caseId": "after-receipt-1794885177719",
+  "mapping": "After receipt insert.",
+  "restored": true,
+  "countsBefore": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "countsAfter": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "noBusinessWrites": true
+}

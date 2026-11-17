@@ -1,0 +1,10 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T04:04:32.439Z",
+  "classification": "PRE_CLOSURE_READ_ONLY_SEEDED_SESSION_FIXTURE_DIGEST",
+  "timing": "Captured immediately before final revocation, not at run start; fixture verifier separately establishes seed semantics.",
+  "fixtureRows": 2,
+  "sha256": "3d8e5079e50a99402f0cf355bf2e2c2658cfe75744a800737f0a8409d8d3dce3",
+  "rawSessionDataRetained": false
+}

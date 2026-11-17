@@ -1,0 +1,1653 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T02:51:25.772Z",
+  "classification": "APPROVED_NON_UI_HTTP_SUPPLEMENT",
+  "executionMode": "HTTP_ONLY",
+  "activeMutation": null,
+  "suite": "tenant-denials",
+  "selector": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+  "untrustedFieldsAttempted": [
+    "organizationId",
+    "membershipId",
+    "role",
+    "capabilities",
+    "authorityState",
+    "evidenceReferenceIds"
+  ],
+  "timezone": "Asia/Taipei",
+  "minDueDate": "2026-11-17",
+  "maxDueDate": "2027-11-17",
+  "proposalViewSummary": {
+    "canAssign": true,
+    "candidateCount": 3,
+    "suggestedAssigneeKey": "assignee_e1078151219336a0529d3fa95332a60f"
+  },
+  "results": [
+    {
+      "name": "viewer-en-project-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-en-project-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-MISSING",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-en-comparison-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-en-comparison-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_bb1c20e0-d114-4262-8a23-7c1173e971a3",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-en-enrichment-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-en-enrichment-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_0d8ed1a0-4885-4df7-8be4-9ce91c78bf00",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-en-confirm",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-en-untrusted-authority-fields",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "intentionallyUntrustedFields": {
+        "organizationId": "org_horizon",
+        "membershipId": "membership_horizon_admin",
+        "role": "ORGANIZATION_ADMIN",
+        "capabilities": [
+          "action:internal-review:propose",
+          "action:internal-review:create",
+          "evidence:read"
+        ],
+        "authorityState": "RECONCILED_ACTUAL",
+        "evidenceReferenceIds": []
+      },
+      "status": 400,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "confirmation": "INVALID_REQUEST"
+      },
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-en-proposal-foreign",
+      "method": "GET",
+      "path": "/api/actions/internal-review/proposals/proposal_fe2095ac-701a-4913-821a-693825f6075f?locale=en",
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-en-proposal-missing",
+      "method": "GET",
+      "path": "/api/actions/internal-review/proposals/proposal_28b06a4c-a052-4f85-8597-3214f4e4c519?locale=en",
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-en-receipt-foreign",
+      "method": "GET",
+      "path": "/api/actions/action_d27cb3ce-01d4-46cf-809b-e3feece44c19?locale=en",
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-en-receipt-missing",
+      "method": "GET",
+      "path": "/api/actions/action_e5341507-386e-49db-a515-649b3690f298?locale=en",
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-zh-TW-project-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-zh-TW-project-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-MISSING",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-zh-TW-comparison-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-zh-TW-comparison-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_954051c7-098f-4448-92dc-4e2138693123",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-zh-TW-enrichment-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-zh-TW-enrichment-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_ddbffdb1-a7e1-45b9-bf30-745d0996d3f8",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-zh-TW-confirm",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-zh-TW-untrusted-authority-fields",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "intentionallyUntrustedFields": {
+        "organizationId": "org_horizon",
+        "membershipId": "membership_horizon_admin",
+        "role": "ORGANIZATION_ADMIN",
+        "capabilities": [
+          "action:internal-review:propose",
+          "action:internal-review:create",
+          "evidence:read"
+        ],
+        "authorityState": "RECONCILED_ACTUAL",
+        "evidenceReferenceIds": []
+      },
+      "status": 400,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "confirmation": "INVALID_REQUEST"
+      },
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-zh-TW-proposal-foreign",
+      "method": "GET",
+      "path": "/api/actions/internal-review/proposals/proposal_fe2095ac-701a-4913-821a-693825f6075f?locale=zh-TW",
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-zh-TW-proposal-missing",
+      "method": "GET",
+      "path": "/api/actions/internal-review/proposals/proposal_e2d6ddae-de89-4320-b353-bcbf9bd56998?locale=zh-TW",
+      "status": 200,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-zh-TW-receipt-foreign",
+      "method": "GET",
+      "path": "/api/actions/action_d27cb3ce-01d4-46cf-809b-e3feece44c19?locale=zh-TW",
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "viewer-zh-TW-receipt-missing",
+      "method": "GET",
+      "path": "/api/actions/action_b34067ec-a1a2-4426-ac95-f41be16d338e?locale=zh-TW",
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-en-project-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-en-project-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-MISSING",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-en-comparison-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-en-comparison-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_2439ac31-2160-4c7e-b2c9-f8271019758a",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-en-enrichment-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-en-enrichment-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_0ccffeda-3a17-4df4-a8c5-c344bca45d45",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-en-confirm",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-en-untrusted-authority-fields",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "intentionallyUntrustedFields": {
+        "organizationId": "org_horizon",
+        "membershipId": "membership_horizon_admin",
+        "role": "ORGANIZATION_ADMIN",
+        "capabilities": [
+          "action:internal-review:propose",
+          "action:internal-review:create",
+          "evidence:read"
+        ],
+        "authorityState": "RECONCILED_ACTUAL",
+        "evidenceReferenceIds": []
+      },
+      "status": 400,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "confirmation": "INVALID_REQUEST"
+      },
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-en-proposal-foreign",
+      "method": "GET",
+      "path": "/api/actions/internal-review/proposals/proposal_fe2095ac-701a-4913-821a-693825f6075f?locale=en",
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-en-proposal-missing",
+      "method": "GET",
+      "path": "/api/actions/internal-review/proposals/proposal_77543c84-689d-4bf3-aa01-66664f1712b5?locale=en",
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-en-receipt-foreign",
+      "method": "GET",
+      "path": "/api/actions/action_d27cb3ce-01d4-46cf-809b-e3feece44c19?locale=en",
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-en-receipt-missing",
+      "method": "GET",
+      "path": "/api/actions/action_f4990245-fae8-4c9a-b75a-364ceadd55fa?locale=en",
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-zh-TW-project-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-zh-TW-project-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-MISSING",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-zh-TW-comparison-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-zh-TW-comparison-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_1865ff70-2cc5-4c16-b643-10dc9d54bbcc",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-zh-TW-enrichment-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-zh-TW-enrichment-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_e40f9fbe-5b4f-4244-bd38-ed7f07b7edf7",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-zh-TW-confirm",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-zh-TW-untrusted-authority-fields",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "intentionallyUntrustedFields": {
+        "organizationId": "org_horizon",
+        "membershipId": "membership_horizon_admin",
+        "role": "ORGANIZATION_ADMIN",
+        "capabilities": [
+          "action:internal-review:propose",
+          "action:internal-review:create",
+          "evidence:read"
+        ],
+        "authorityState": "RECONCILED_ACTUAL",
+        "evidenceReferenceIds": []
+      },
+      "status": 400,
+      "kind": "VALIDATION_FAILED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "fieldErrors",
+        "kind",
+        "requestId"
+      ],
+      "fieldErrors": {
+        "confirmation": "INVALID_REQUEST"
+      },
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-zh-TW-proposal-foreign",
+      "method": "GET",
+      "path": "/api/actions/internal-review/proposals/proposal_fe2095ac-701a-4913-821a-693825f6075f?locale=zh-TW",
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-zh-TW-proposal-missing",
+      "method": "GET",
+      "path": "/api/actions/internal-review/proposals/proposal_513265b2-7e99-4588-a327-3012b5b6a797?locale=zh-TW",
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-zh-TW-receipt-foreign",
+      "method": "GET",
+      "path": "/api/actions/action_d27cb3ce-01d4-46cf-809b-e3feece44c19?locale=zh-TW",
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "northern-zh-TW-receipt-missing",
+      "method": "GET",
+      "path": "/api/actions/action_e8d90de2-a425-49d9-a86a-645bedd8ddda?locale=zh-TW",
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-en-project-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-en-project-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-MISSING",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-en-comparison-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-en-comparison-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_0e16e02e-1789-46ae-91ef-347093326372",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-en-enrichment-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-en-enrichment-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_45d26b82-9a10-4b1a-9ed1-812ff296f3be",
+        "locale": "en"
+      },
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-en-confirm",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "status": 403,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-en-untrusted-authority-fields",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "en"
+      },
+      "intentionallyUntrustedFields": {
+        "organizationId": "org_horizon",
+        "membershipId": "membership_horizon_admin",
+        "role": "ORGANIZATION_ADMIN",
+        "capabilities": [
+          "action:internal-review:propose",
+          "action:internal-review:create",
+          "evidence:read"
+        ],
+        "authorityState": "RECONCILED_ACTUAL",
+        "evidenceReferenceIds": []
+      },
+      "status": 403,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-en-proposal-foreign",
+      "method": "GET",
+      "path": "/api/actions/internal-review/proposals/proposal_fe2095ac-701a-4913-821a-693825f6075f?locale=en",
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-en-proposal-missing",
+      "method": "GET",
+      "path": "/api/actions/internal-review/proposals/proposal_2c2be73d-be50-4d23-92ec-2b8104167f4f?locale=en",
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-en-receipt-foreign",
+      "method": "GET",
+      "path": "/api/actions/action_d27cb3ce-01d4-46cf-809b-e3feece44c19?locale=en",
+      "status": 403,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-en-receipt-missing",
+      "method": "GET",
+      "path": "/api/actions/action_a929a497-72d3-46a0-b3d8-bdfc846bab43?locale=en",
+      "status": 403,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-zh-TW-project-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-zh-TW-project-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-MISSING",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-zh-TW-comparison-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-zh-TW-comparison-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_5fdb7484-6690-4cc6-969f-ba3b2c15f12c",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-zh-TW-enrichment-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-zh-TW-enrichment-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-XINYI-026",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_fe2c26ca-81fc-455b-9050-670949a0546c",
+        "locale": "zh-TW"
+      },
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-zh-TW-confirm",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "status": 403,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-zh-TW-untrusted-authority-fields",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+        "assigneeKey": "assignee_e1078151219336a0529d3fa95332a60f",
+        "locale": "zh-TW"
+      },
+      "intentionallyUntrustedFields": {
+        "organizationId": "org_horizon",
+        "membershipId": "membership_horizon_admin",
+        "role": "ORGANIZATION_ADMIN",
+        "capabilities": [
+          "action:internal-review:propose",
+          "action:internal-review:create",
+          "evidence:read"
+        ],
+        "authorityState": "RECONCILED_ACTUAL",
+        "evidenceReferenceIds": []
+      },
+      "status": 403,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-zh-TW-proposal-foreign",
+      "method": "GET",
+      "path": "/api/actions/internal-review/proposals/proposal_fe2095ac-701a-4913-821a-693825f6075f?locale=zh-TW",
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-zh-TW-proposal-missing",
+      "method": "GET",
+      "path": "/api/actions/internal-review/proposals/proposal_3c15af8b-7c11-4f2a-9e58-32b7d3f4ca4b?locale=zh-TW",
+      "status": 403,
+      "kind": "PROPOSAL_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-zh-TW-receipt-foreign",
+      "method": "GET",
+      "path": "/api/actions/action_d27cb3ce-01d4-46cf-809b-e3feece44c19?locale=zh-TW",
+      "status": 403,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "unauthenticated-zh-TW-receipt-missing",
+      "method": "GET",
+      "path": "/api/actions/action_e5a17dab-9b6f-400e-b546-730296e69d4f?locale=zh-TW",
+      "status": 403,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "mei-en-project-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-NORTH-001",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "mei-en-project-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-MISSING",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "mei-zh-TW-project-foreign",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-NORTH-001",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    },
+    {
+      "name": "mei-zh-TW-project-missing",
+      "method": "POST",
+      "path": "/api/actions/internal-review/proposals",
+      "requestSelectors": {
+        "projectKey": "PRJ-MISSING",
+        "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+        "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_UNAVAILABLE",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true,
+      "sensitiveDisclosure": false,
+      "publicDenialShapeExpected": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "countsAfter": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "noBusinessWrites": true,
+  "browserAcceptanceCredit": false,
+  "disclosurePredicate": {
+    "appliesTo": "Rows marked sensitiveDisclosure; full parsed public JSON checked before safe-field filtering",
+    "checkedPattern": "Xinyi|信義旗艦|membership_horizon|org_horizon|Northern|北境|membership_northern|org_northern|evidenceCount|assigneeDisplayName|12650000|2360000",
+    "limitations": "Finite known-name/value predicate, not universal sensitive-data proof. Paired status/kind equality does not imply byte-identical bodies."
+  }
+}

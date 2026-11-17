@@ -1,0 +1,188 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:14:29.485Z",
+  "classification": "APPROVED_NON_UI_HTTP_SUPPLEMENT",
+  "executionMode": "HTTP_ONLY",
+  "activeMutation": null,
+  "suite": "replay",
+  "selector": "action_d89226cf-77aa-46bb-a113-af8a3f5c4416",
+  "timezone": "Asia/Taipei",
+  "results": [
+    {
+      "name": "en-identical-replay",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_b911d550581d518bb8f326c678217ad0",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "IDEMPOTENT_REPLAY",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "receipt"
+      ],
+      "actionKey": "action_d89226cf-77aa-46bb-a113-af8a3f5c4416",
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-payload-conflict",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_b911d550581d518bb8f326c678217ad0",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "IDEMPOTENCY_CONFLICT",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-new-key-consumed",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_b911d550581d518bb8f326c678217ad0",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_ALREADY_CONSUMED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true
+    },
+    {
+      "name": "en-malformed-key",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_b911d550581d518bb8f326c678217ad0",
+        "locale": "en"
+      },
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-identical-replay",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_b911d550581d518bb8f326c678217ad0",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "IDEMPOTENT_REPLAY",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "receipt"
+      ],
+      "actionKey": "action_d89226cf-77aa-46bb-a113-af8a3f5c4416",
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-payload-conflict",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_b911d550581d518bb8f326c678217ad0",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "IDEMPOTENCY_CONFLICT",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-new-key-consumed",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_b911d550581d518bb8f326c678217ad0",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "PROPOSAL_ALREADY_CONSUMED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true
+    },
+    {
+      "name": "zh-TW-malformed-key",
+      "method": "POST",
+      "path": "/api/actions/internal-review",
+      "requestSelectors": {
+        "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+        "assigneeKey": "assignee_b911d550581d518bb8f326c678217ad0",
+        "locale": "zh-TW"
+      },
+      "status": 200,
+      "kind": "ACTION_NOT_AUTHORIZED",
+      "cacheControl": "private, no-store",
+      "privateNoStore": true,
+      "publicResponseFields": [
+        "kind",
+        "requestId"
+      ],
+      "noBusinessWrites": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "countsAfter": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "noBusinessWrites": true,
+  "browserAcceptanceCredit": false,
+  "disclosurePredicate": {
+    "appliesTo": "Rows marked sensitiveDisclosure; full parsed public JSON checked before safe-field filtering",
+    "checkedPattern": "Xinyi|信義旗艦|membership_horizon|org_horizon|Northern|北境|membership_northern|org_northern|evidenceCount|assigneeDisplayName|12650000|2360000",
+    "limitations": "Finite known-name/value predicate, not universal sensitive-data proof. Paired status/kind equality does not imply byte-identical bodies."
+  }
+}

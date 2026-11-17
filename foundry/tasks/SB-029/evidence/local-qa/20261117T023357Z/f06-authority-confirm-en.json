@@ -1,0 +1,209 @@
+{
+  "at": "2026-11-17T02:38:29.304Z",
+  "persona": "mei",
+  "mutation": "authority",
+  "expected": "stale confirmation denied; draft and dialog preserved",
+  "dialogs": [
+    {
+      "clientHeight": 900,
+      "name": "internal-review-heading",
+      "rect": {
+        "bottom": 900,
+        "height": 900,
+        "left": 760,
+        "right": 1440,
+        "top": 0,
+        "width": 680,
+        "x": 760,
+        "y": 0
+      },
+      "scrollHeight": 2277
+    }
+  ],
+  "documentWidth": 1440,
+  "fields": [
+    {
+      "aria-invalid": null,
+      "checked": true,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": true,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": true,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": true,
+      "id": "",
+      "name": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": true,
+      "id": "",
+      "name": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": true,
+      "id": "",
+      "name": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "locale",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "projectKey",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "comparisonRunId",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "selectedProjectKey",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "selectedProjectKey",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "selectedProjectKey",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": "false",
+      "checked": false,
+      "describedBy": "review-edit-hint",
+      "disabled": false,
+      "id": "review-title",
+      "name": "title",
+      "type": "select-one",
+      "value": "VALIDATE"
+    },
+    {
+      "aria-invalid": "false",
+      "checked": false,
+      "describedBy": "review-edit-hint",
+      "disabled": false,
+      "id": "review-rationale",
+      "name": "rationale",
+      "type": "select-one",
+      "value": "REVIEW_NEXT"
+    },
+    {
+      "aria-invalid": "false",
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "review-assignee",
+      "name": "assigneeKey",
+      "type": "select-one",
+      "value": "assignee_e1078151219336a0529d3fa95332a60f"
+    },
+    {
+      "aria-invalid": "false",
+      "checked": false,
+      "describedBy": "review-date-hint",
+      "disabled": false,
+      "id": "review-dueDate",
+      "name": "dueDate",
+      "type": "date",
+      "value": "2026-11-24"
+    },
+    {
+      "aria-invalid": "false",
+      "checked": true,
+      "describedBy": "review-consequence",
+      "disabled": false,
+      "id": "review-confirmation",
+      "name": "confirmation",
+      "type": "checkbox",
+      "value": "on"
+    }
+  ],
+  "focus": {
+    "id": "review-error-summary",
+    "tag": "DIV",
+    "text": "Review could not be confirmedThe comparison or its evidence has changed. Nothing was created. Refresh the comparison and review it again.Reference: 1686ebf3-69e5-4b3b-a9ec-fabb0060531fRefresh comparison"
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nHistorical precedents for Xinyi Flagship Renovation\n\nStrideBrain ranks authorized historical projects with deterministic factors, keeps commercial authority distinct, and shows where evidence is incomplete.\n\nGENERATED\nNov 17, 2026\nCOMPARISON POLICY\nProject similarity\nAUTHORIZED MATCHES\n6\nSELECTED PRECEDENTS\n3/3\nCOMMERCIAL EVIDENCE\nPartial economics\nDATA BOUNDARY\nSynthetic Horizon Atelier demo data—not a market benchmark.\n\nHAVE WE DONE SOMETHING LIKE THIS BEFORE?\n\nChoose precedents to compare\n\nSelect up to three projects. Updating the set creates a new immutable economics enrichment without changing the structural ranking.\n\n3\nselected\n·\nMaximum 3\nChoose precedents to compare: Neihu Tech Flagship\n1\nStrong match\nNeihu Tech Flagship\nNeihu District, Taipei City\n610 m²\nJun 30, 2025\nMATCH SCORE\n88/100\nEVIDENCE COVERAGE\n100%\nQuoted history\nReconciled actual cost\nSupplier offers are historical and must not be presented as current pricing.\nInspect factors\nChoose precedents to compare: Zhongshan Lifestyle Store\n2\nStrong match\nZhongshan Lifestyle Store\nZhongshan District, Taipei City\n590 m²\nNov 15, 2024\nMATCH SCORE\n81/100\nEVIDENCE COVERAGE\n100%\nQuoted history\nReconciled actual cost\nInspect factors\nChoose precedents to compare: Nanjing Brand Experience Center\n3\nRelevant match\nNanjing Brand Experience Center\nSongshan District, Taipei City\n720 m²\nFeb 10, 2026\nMATCH SCORE\n79/100\nEVIDENCE COVERAGE\n100%\nQuoted history\nReconciled actual cost\nInspect factors\nChoose precedents to compare: Daan Premium Showroom\n4\nRelevant match\nDaan Premium Showroom\nDaan District, Taipei City\n520 m²\nApr 20, 2024\nMATCH SCORE\n71/100\nEVIDENCE COVERAGE\n100%\nInspect factors\nChoose precedents to compare: Songshan Retail Renewal\n5\nRelevant match\nSongshan Retail Renewal\nSongshan District, Taipei City\n680 m²\nFeb 28, 2025\nMATCH SCORE\n69/100\nEVIDENCE COVERAGE\n100%\nInspect factors\nChoose precedents to compare: Banqiao Concept Store\n6\nPartial match\nBanqiao Concept Store\nBanqiao District, New Taipei City\n760 m²\nSep 30, 2023\nMATCH SCORE\n63/100\nEVIDENCE COVERAGE\n100%\nInspect factors\n\nSelected projects: PRJ-NEIHU-021, PRJ-ZHONGSHAN-018, PRJ-NANJING-023\n\nUpdate comparison\n\nSTRUCTURED COMPARISON\n\nStructured comparison\n\nValues come from the stored deterministic run. Quoted price, forecast, supplier offer, and reconciled actual cost remain separate.\n\nStructured comparison\tXinyi Flagship Renovation\tNeihu Tech Flagship\tZhongshan Lifestyle Store\tNanjing Brand Experience Center\nPROJECT CONTEXT\nSubtype\t\nRetail flagship\n\t\nRetail flagship\n\t\nRetail flagship\n\t\nRetail flagship\n\nArea\t\n640 m²\n\t\n610 m²\n\t\n590 m²\n\t\n720 m²\n\nLocation\t\nXinyi District, Taipei City\n\t\nNeihu District, Taipei City\n\t\nZhongshan District, Taipei City\n\t\nSongshan District, Taipei City\n\nCompletion\t\nActive project\nNot applicable\n\t\nJun 30, 2025\n\t\nNov 15, 2024\n\t\nFeb 10, 2026\n\nProgramme\t\n16 weeks\nThe current programme is shorter than the selected history, but no supported percentage premium is available.\n\t\n19–22 weeks\nSelected historical range\n\t\n19–22 weeks\nSelected historical range\n\t\n19–22 weeks\nSelected historical range\n\nOVERALL COMMERCIAL COMPARISON\nQuoted price · normalized\t\nQuoted price\nNT$25,750 · TWD/m²\n+7.2% · NT$16,480,000\n\t\nQuoted price\nNT$24,787 · TWD/m²\nSufficient evidence\n\t\nQuoted price\nNT$23,644 · TWD/m²\nSufficient evidence\n\t\nQuoted price\nNT$24,028 · TWD/m²\nSufficient evidence\n\nForecast / reconciled actual cost · normalized\t\nForecast direct cost\nNT$19,766 · TWD/m²\n+6.0% · NT$12,650,000\n\t\nReconciled actual cost\nNT$18,984 · TWD/m²\nSufficient evidence\n\t\nReconciled actual cost\nNT$18,373 · TWD/m²\nSufficient evidence\n\t\nReconciled actual cost\nNT$18,639 · TWD/m²\nSufficient evidence\n\nCATEGORY COMPARISON\nImported stone · quoted\t\nQuoted price\nNT$4,688 · TWD/m²\n+43.0% · NT$3,000,000\n\t\nQuoted price\nNT$3,279 · TWD/m²\nSufficient evidence\n\t\nQuoted price\nNT$3,220 · TWD/m²\nSufficient evidence\n\t\nQuoted price\nNT$3,333 · TWD/m²\nSufficient evidence\n\nImported stone · forecast / reconciled actual\t\nForecast direct cost\nNT$3,688 · TWD/m²\n+18.4% · NT$2,360,000\n\t\nReconciled actual cost\nNT$3,115 · TWD/m²\nSufficient evidence\n\t\nReconciled actual cost\nNT$3,390 · TWD/m²\nSufficient evidence\n\t\nReconciled actual cost\nNT$2,917 · TWD/m²\nSufficient evidence\n\nLighting/electrical · quoted\t\nQuoted price\nNT$4,844 · TWD/m²\n+9.4% · NT$3,100,000\n\t\nQuoted price\nNT$4,426 · TWD/m²\nSufficient evidence\n\t\nQuoted price\nNT$4,820 · TWD/m²\nSufficient evidence\n\t\nQuoted price\nNT$4,167 · TWD/m²\nSufficient evidence\n\nLighting/electrical · forecast / reconciled actual\t\nForecast direct cost\nNT$3,672 · TWD/m²\nInsufficient evidence\nInsufficient evidence\n\t\nReconciled actual cost\nInsufficient evidence\n2/3\nInsufficient evidence\n\t\nReconciled actual cost\nInsufficient evidence\n2/3\nInsufficient evidence\n\t\nReconciled actual cost\nInsufficient evidence\n2/3\nInsufficient evidence\n\nCustom millwork · quoted\t\nQuoted price\nNT$5,938 · TWD/m²\n+1.8% · NT$3,800,000\n\t\nQuoted price\nNT$5,902 · TWD/m²\nSufficient evidence\n\t\nQuoted price\nNT$5,424 · TWD/m²\nSufficient evidence\n\t\nQuoted price\nNT$5,833 · TWD/m²\nSufficient evidence\n\nCustom millwork · forecast / reconciled actual\t\nForecast direct cost\nNT$4,781 · TWD/m²\n-2.7% · NT$3,060,000\n\t\nReconciled actual cost\nNT$4,918 · TWD/m²\nSufficient evidence\n\t\nReconciled actual cost\nNT$4,915 · TWD/m²\nSufficient evidence\n\t\nReconciled actual cost\nNT$4,444 · TWD/m²\nSufficient evidence\n\nEVIDENCE AND SUFFICIENCY\nSupplier-offer context\t\nSupplier offer\nUnavailable\nUnavailable\n\t\nSupplier offer\nHistorical / stale\nFeb 15, 2025\nHistorical / stale\n\t\nSupplier offer\nUnavailable\nUnavailable\n\t\nSupplier offer\nUnavailable\nUnavailable\n\nEvidence and sufficiency\t\nPartial economics\n\t\nQuote and actual history\n\t\nQuote and actual history\n\t\nQuote and actual history\n\nSTRUCTURED REVIEW\n\nStructured review\nWHAT HISTORY SUGGESTS\n\nThe current quotation is above the selected quoted-price history. +7.2%\n\nInspect evidence\nWHAT HISTORY SUGGESTS\n\nThe current forecast direct cost is above the eligible reconciled-actual history. +6.0%\n\nInspect evidence\nWHAT HISTORY SUGGESTS\n\nImported stone is the strongest evidence-backed variance and deserves focused review. +18.4%\n\nInspect evidence\nIMPORTANT DIFFERENCES\n\nThe current programme is shorter than the selected history, but no supported percentage premium is available.\n\nInspect evidence\nEVIDENCE GAPS\n\nLighting is above quoted history, but actual-cost evidence is below the required threshold. 2/3\n\nInspect evidence\nRECOMMENDED NEXT REVIEW\n\nValidate imported-stone and lighting assumptions internally before quote approval.\n\nSynthetic Horizon Atelier demo data—not a market benchmark.\nSome categories do not have enough reconciled actual-cost evidence.\nSupplier offers are historical and must not be presented as current pricing.\nCreate internal review action\n\nReview the verified findings, choose the wording and assignee, then explicitly create an internal review action.\n\nCreate internal review action\nReview internal review action\n\nReview the evidence and uncertainty before creating this action.\n\nEnglish\n繁體中文\nClose\nReview could not be confirmed\n\nThe comparison or its evidence has changed. Nothing was created. Refresh the comparison and review it again.\n\nReference: 1686ebf3-69e5-4b3b-a9ec-fabb0060531f\n\nRefresh comparison\nTitle\nValidate imported-stone and lighting assumptions for Xinyi quote v3\nReview imported-stone and lighting assumptions for Xinyi quote v3\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\n\nValidate imported-stone and lighting assumptions for Xinyi quote v3\n\nReview purpose\nReview these assumptions against the linked evidence before the next internal quotation review.\nCheck the supporting evidence and record questions for internal review.\nValidate the imported-stone and lighting assumptions using the linked historical evidence.\n\nReview these assumptions against the linked evidence before the next internal quotation review.\n\nChoose review wording. Verified findings and uncertainty statements remain attached and cannot be changed here.\n\nVerified findings · retained with the action\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\nLighting quoted price differs by +9.4% from eligible quoted-price history.\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\nComparison: cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08; economics enrichment: econrun_8d29351b-aa3e-4738-928a-413be3397eab.\n⚠ Uncertainty and limits · retained with the action\nThis creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally.\nHistorical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid.\nInspect supporting evidence\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\nLighting quoted price differs by +9.4% from eligible quoted-price history.\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\nAssignee\nUnassigned\nMei Lin\nAlex Chen\nIris Huang\nDue date\n\nOptional. Enter a date from 2026-11-17 through 2027-11-17, or leave it blank.\n\nClear due date\nSource comparison\ncmprun_4544a868-f0df-4b91-b722-eb585f6c5f08\nSource economics review\neconrun_8d29351b-aa3e-4738-928a-413be3397eab\nReview available until\n17 Nov 2026, 11:07\n\n⚠ Confirmation creates a persistent internal action and an audit record. This screen cannot undo creation. It does not approve a quotation or send a message.\n\nI have reviewed the evidence and limits and want to create this internal review action.\nCreate internal review action\nCancel review",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_fe2095ac-701a-4913-821a-693825f6075f",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

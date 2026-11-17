@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-17T04:11:51.699296+00:00",
+  "testedHead": "211578dd4b4e12169a182c498254bb571cadad70",
+  "sourceTree": "3db7289bf26ee81f0d53b7223e159551bb083c34",
+  "sourceManifestSha256": "447229ea5bdd0efdf0f3f7ba6738f11bdf475c8c660c1010d8efb5dc4432b090",
+  "sourceFilesCompared": 206,
+  "changedSourceFiles": [],
+  "trackedWorktreeCleanBeforeEvidenceCommit": true,
+  "historicalUntrackedFilesCompared": 305,
+  "changedHistoricalFiles": [],
+  "historicalEvidenceRefs": {
+    "qa/sb-029-local-20261116T041837Z": "0c9b4293a9e91aa6121b8571e7f22537b131760d",
+    "qa/sb-029-local-20261116T220006Z": "5d853d55c65115436700c5197d210551959bd6a3"
+  },
+  "buildId": "arWM81fSt1-zRkeglr43Z"
+}

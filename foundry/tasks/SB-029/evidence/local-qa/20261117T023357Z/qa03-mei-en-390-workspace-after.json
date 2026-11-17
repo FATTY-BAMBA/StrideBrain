@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-17T03:49:01.201Z",
+  "persona": "mei",
+  "dialogs": [],
+  "documentWidth": 390,
+  "fields": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": ""
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nPROJECT INTELLIGENCE WORKSPACE\n\nREADY\nXinyi Flagship Renovation\n\nAster Retail Taiwan\n\nLocation: Xinyi District, Taipei City\nArea: 640 m²\nProgramme: 16 weeks\nProject lead: Mei Lin\n\nThis project has data conditions that require attention.\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nHave we done something like this before?\n\nFind the strongest historical precedents, understand why they match, and compare the current quotation with evidence-backed history.\n\nFind comparable projects\nSynthetic Horizon Atelier demo data\nCurrent commercial position\n\nQUOTATION BEFORE TAX\n\nQUOTED PRICE · VERSION 3 · HUMAN REVIEWED\nNT$16,480,000\n\nFORECAST DIRECT COST\n\nFORECAST DIRECT COST · VERSION 1 · HUMAN REVIEWED\nNT$12,650,000\n\nRECONCILED ACTUAL COST\n\nUnavailable\n\nEvidence health\nGOOD\nAccessible references\n31\nAccessible documents\n4\nStale records\n0\nOpen conflicts\n0\nProject context\nScope categories\n7\nSuppliers\n3\nMaterials\n3\nOpen actions\n3\nOpen internal review actions\nReview imported-stone and lighting assumptions for Xinyi quote v3\n2026-11-17\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\nNo due date\nValidate imported-stone and lighting assumptions for Xinyi quote v3\n2026-11-24\nView project actions\nAsk StrideBrain in this project\nHave we done something like this before?\nSearch the authorized project history, explain the strongest matches, and compare the current quotation with trustworthy precedents.\nCompare the current quote with relevant completed projects.\nThis capability belongs to a later slice\nWhere did these numbers come from?\nThis capability belongs to a later slice",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026",
+  "viewport": {
+    "dpr": 1,
+    "height": 844,
+    "width": 390
+  }
+}

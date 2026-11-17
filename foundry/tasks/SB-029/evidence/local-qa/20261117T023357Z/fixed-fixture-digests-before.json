@@ -1,0 +1,52 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T02:35:38.179Z",
+  "phase": "before",
+  "classification": "READ_ONLY_FIXED_FIXTURE_DIGESTS",
+  "method": "SHA256 over complete PostgreSQL to_jsonb row text ordered lexically, separated by newline, within repeatable-read read-only transaction. Raw rows not retained.",
+  "excluded": "Sessions and intentional comparison/enrichment/proposal/action/receipt/audit history; run-specific mutable comparison/enrichment records retain per-case restoration hashes.",
+  "tables": [
+    {
+      "table": "Project",
+      "rowCount": 30,
+      "sha256": "e3d81fec9b74e39045f340655e6d6158f91daf0ad15e414956b409b7721cedac"
+    },
+    {
+      "table": "Membership",
+      "rowCount": 5,
+      "sha256": "96568dd2144fda9552343afef50e47ac7f30cc88f1cb83b2e06c00f51f1a0ca8"
+    },
+    {
+      "table": "Person",
+      "rowCount": 5,
+      "sha256": "7c1c6765ace80cf2d4974874558c3d66e0b38d2e1b2f9d0fec68249b0334b333"
+    },
+    {
+      "table": "ProjectAssignment",
+      "rowCount": 33,
+      "sha256": "30a27d9879caee852029abf7b9de6d30b6d445a298ea483f0163595bc762d16f"
+    },
+    {
+      "table": "MembershipCapabilityGrant",
+      "rowCount": 5,
+      "sha256": "90211d54e59450bfce14914f2ed3662b8d685e96efc604956f3aa47a42f86697"
+    },
+    {
+      "table": "QuoteVersion",
+      "rowCount": 46,
+      "sha256": "8fb80f916df9721c66639424c1cba051b75f65022b1875fac4acdfb1ff6e03fa"
+    },
+    {
+      "table": "EvidenceReference",
+      "rowCount": 571,
+      "sha256": "388617be47d974df538667fb13fbdb4ae37ac43c61e699900753e665c26fb368"
+    },
+    {
+      "table": "EvidenceConflict",
+      "rowCount": 1,
+      "sha256": "786f8d52027d1c4be269d530e06c8c6098828cfd414090a3dbbdbf8fb225c787"
+    }
+  ],
+  "combinedSha256": "9f5f2aacd0cef0d5d5ff9b3b2d489a10bdab17ab392b2610752841e06f4a1e3d"
+}

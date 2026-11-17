@@ -1,0 +1,137 @@
+{
+  "at": "2026-11-17T02:45:34.645Z",
+  "name": "f03-claim-31",
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=STALE_SUPPLIER_OFFER_SUP-OFFER-STONE-2025-041&evidenceReturn=evidence-cell-supplier-context-PRJ-NEIHU-021",
+  "text": "資料依據\n\n供應商報價為已過期的歷史資料\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n已過期的供應商資料\n\n專案識別碼: PRJ-NEIHU-021 · 有效期限: 2025-02-15\n供應商報價\n已核准商務紀錄\n\n尚無補充說明\n\n支持資料來源\n\n供應商報價\n\n內湖科技旗艦店 · SUP-OFFER-STONE-2025-041\n已核准商務紀錄\n供應商報價\n專案\n內湖科技旗艦店\n版本\nSUP-OFFER-STONE-2025-041\n生效／紀錄日期\n2025年1月15日\n精確位置\n紀錄類型: 供應商報價\n資料邊界\n虛構示範資料\n支持的數值\n金額: NT$1,850,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n金額\nNT$1,850,000\n幣別\n新臺幣\n有效期限\n2025-02-15T00:00:00.000Z\n生效日期\n2025-01-15T00:00:00.000Z\n查看來源",
+  "geometry": [
+    {
+      "closeButtons": [
+        {
+          "rect": {
+            "bottom": 84.390625,
+            "height": 44.390625,
+            "left": 1299.609375,
+            "right": 1420,
+            "top": 40,
+            "width": 120.390625,
+            "x": 1299.609375,
+            "y": 40
+          },
+          "text": "關閉資料依據"
+        }
+      ],
+      "horizontalOverflow": [],
+      "rect": {
+        "bottom": 900,
+        "height": 900,
+        "left": 960,
+        "right": 1440,
+        "top": 0,
+        "width": 480,
+        "x": 960,
+        "y": 0
+      },
+      "viewport": {
+        "h": 900,
+        "w": 1440
+      }
+    },
+    {
+      "closeButtons": [
+        {
+          "rect": {
+            "bottom": 84.390625,
+            "height": 44.390625,
+            "left": 627.609375,
+            "right": 748,
+            "top": 40,
+            "width": 120.390625,
+            "x": 627.609375,
+            "y": 40
+          },
+          "text": "關閉資料依據"
+        }
+      ],
+      "horizontalOverflow": [],
+      "rect": {
+        "bottom": 1024,
+        "height": 1024,
+        "left": 288,
+        "right": 768,
+        "top": 0,
+        "width": 480,
+        "x": 288,
+        "y": 0
+      },
+      "viewport": {
+        "h": 1024,
+        "w": 768
+      }
+    },
+    {
+      "closeButtons": [
+        {
+          "rect": {
+            "bottom": 233.4375,
+            "height": 44.390625,
+            "left": 16,
+            "right": 136.390625,
+            "top": 189.046875,
+            "width": 120.390625,
+            "x": 16,
+            "y": 189.046875
+          },
+          "text": "關閉資料依據"
+        }
+      ],
+      "horizontalOverflow": [],
+      "rect": {
+        "bottom": 844,
+        "height": 776.4765625,
+        "left": 0,
+        "right": 390,
+        "top": 67.5234375,
+        "width": 390,
+        "x": 0,
+        "y": 67.5234375
+      },
+      "viewport": {
+        "h": 844,
+        "w": 390
+      }
+    },
+    {
+      "closeButtons": [
+        {
+          "rect": {
+            "bottom": 245.9921875,
+            "height": 44.390625,
+            "left": 16,
+            "right": 136.390625,
+            "top": 201.6015625,
+            "width": 120.390625,
+            "x": 16,
+            "y": 201.6015625
+          },
+          "text": "關閉資料依據"
+        }
+      ],
+      "horizontalOverflow": [],
+      "rect": {
+        "bottom": 740,
+        "height": 680.796875,
+        "left": 0,
+        "right": 320,
+        "top": 59.203125,
+        "width": 320,
+        "x": 0,
+        "y": 59.203125
+      },
+      "viewport": {
+        "h": 740,
+        "w": 320
+      }
+    }
+  ],
+  "knownLeaks": []
+}

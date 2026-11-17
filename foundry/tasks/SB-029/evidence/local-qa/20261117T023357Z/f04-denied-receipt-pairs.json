@@ -1,0 +1,82 @@
+[
+  {
+    "persona": "viewer",
+    "locale": "en",
+    "surface": "compare",
+    "which": "known",
+    "dialogCount": 0,
+    "text": "",
+    "successCopy": false,
+    "sensitiveReceiptCopy": false
+  },
+  {
+    "persona": "viewer",
+    "locale": "en",
+    "surface": "compare",
+    "which": "missing",
+    "dialogCount": 0,
+    "text": "",
+    "successCopy": false,
+    "sensitiveReceiptCopy": false
+  },
+  {
+    "persona": "viewer",
+    "locale": "en",
+    "surface": "actions",
+    "which": "known",
+    "dialogCount": 1,
+    "text": "Receipt unavailable\n\nThis receipt cannot be displayed. Return to a project you can access to view available actions.\n\nEnglish\n繁體中文\nClose",
+    "successCopy": false,
+    "sensitiveReceiptCopy": false
+  },
+  {
+    "persona": "viewer",
+    "locale": "en",
+    "surface": "actions",
+    "which": "missing",
+    "dialogCount": 1,
+    "text": "Receipt unavailable\n\nThis receipt cannot be displayed. Return to a project you can access to view available actions.\n\nEnglish\n繁體中文\nClose",
+    "successCopy": false,
+    "sensitiveReceiptCopy": false
+  },
+  {
+    "persona": "viewer",
+    "locale": "zh-TW",
+    "surface": "compare",
+    "which": "known",
+    "dialogCount": 0,
+    "text": "",
+    "successCopy": false,
+    "sensitiveReceiptCopy": false
+  },
+  {
+    "persona": "viewer",
+    "locale": "zh-TW",
+    "surface": "compare",
+    "which": "missing",
+    "dialogCount": 0,
+    "text": "",
+    "successCopy": false,
+    "sensitiveReceiptCopy": false
+  },
+  {
+    "persona": "viewer",
+    "locale": "zh-TW",
+    "surface": "actions",
+    "which": "known",
+    "dialogCount": 1,
+    "text": "目前無法查看回執\n\n目前無法顯示這份回執。請返回您有權存取的專案，查看可用的事項。\n\nEnglish\n繁體中文\n關閉",
+    "successCopy": false,
+    "sensitiveReceiptCopy": false
+  },
+  {
+    "persona": "viewer",
+    "locale": "zh-TW",
+    "surface": "actions",
+    "which": "missing",
+    "dialogCount": 1,
+    "text": "目前無法查看回執\n\n目前無法顯示這份回執。請返回您有權存取的專案，查看可用的事項。\n\nEnglish\n繁體中文\n關閉",
+    "successCopy": false,
+    "sensitiveReceiptCopy": false
+  }
+]

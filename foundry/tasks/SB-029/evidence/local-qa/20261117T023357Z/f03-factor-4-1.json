@@ -1,0 +1,137 @@
+{
+  "at": "2026-11-17T02:48:28.807Z",
+  "name": "f03-factor-4-1",
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=factor&evidenceCandidate=PRJ-SONGSHAN-020&evidenceFactor=SCOPE_OVERLAP&evidenceReturn=evidence-factor-PRJ-SONGSHAN-020-SCOPE_OVERLAP",
+  "text": "資料依據\n\n工作範圍重疊 · 松山門市改裝\n\n顯示固定規則的相似度因素、分數貢獻與資料依據。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n計算過程\n因素狀態\n已知\n標準化數值\n0.7143\n權重\n25\n分數貢獻\n17.9\n相似度總分\n68.9/100\n資料完整度\n100%\n\n計算說明: 共同工作範圍分類數占全部不重複分類數的比例 · 狀態: 已知\n\n依已核准的相似度規則計算；缺少資料不視為不相符。\n支持資料來源\n\n文件版本\n\n松山門市改裝專案摘要\n已人工檢視\n專案\n松山門市改裝\n版本\nv1\n生效／紀錄日期\n2025年2月28日\n精確位置\n紀錄類型: 文件版本 · 版本: v1\n資料邊界\n虛構示範資料\n歷史紀錄\n安全來源預覽\n\n此來源不支援內嵌預覽，但仍可查看中繼資料、位置與權威性。\n\n查看來源\n\n文件版本\n\n信義旗艦店裝修專案摘要\n已人工檢視\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 文件版本 · 版本: v1\n資料邊界\n虛構示範資料\n目前有效\n安全來源預覽\n\n此來源不支援內嵌預覽，但仍可查看中繼資料、位置與權威性。\n\n查看來源",
+  "geometry": [
+    {
+      "closeButtons": [
+        {
+          "rect": {
+            "bottom": 84.390625,
+            "height": 44.390625,
+            "left": 1299.609375,
+            "right": 1420,
+            "top": 40,
+            "width": 120.390625,
+            "x": 1299.609375,
+            "y": 40
+          },
+          "text": "關閉資料依據"
+        }
+      ],
+      "horizontalOverflow": [],
+      "rect": {
+        "bottom": 900,
+        "height": 900,
+        "left": 960,
+        "right": 1440,
+        "top": 0,
+        "width": 480,
+        "x": 960,
+        "y": 0
+      },
+      "viewport": {
+        "h": 900,
+        "w": 1440
+      }
+    },
+    {
+      "closeButtons": [
+        {
+          "rect": {
+            "bottom": 84.390625,
+            "height": 44.390625,
+            "left": 627.609375,
+            "right": 748,
+            "top": 40,
+            "width": 120.390625,
+            "x": 627.609375,
+            "y": 40
+          },
+          "text": "關閉資料依據"
+        }
+      ],
+      "horizontalOverflow": [],
+      "rect": {
+        "bottom": 1024,
+        "height": 1024,
+        "left": 288,
+        "right": 768,
+        "top": 0,
+        "width": 480,
+        "x": 288,
+        "y": 0
+      },
+      "viewport": {
+        "h": 1024,
+        "w": 768
+      }
+    },
+    {
+      "closeButtons": [
+        {
+          "rect": {
+            "bottom": 233.4375,
+            "height": 44.390625,
+            "left": 16,
+            "right": 136.390625,
+            "top": 189.046875,
+            "width": 120.390625,
+            "x": 16,
+            "y": 189.046875
+          },
+          "text": "關閉資料依據"
+        }
+      ],
+      "horizontalOverflow": [],
+      "rect": {
+        "bottom": 844,
+        "height": 776.4765625,
+        "left": 0,
+        "right": 390,
+        "top": 67.5234375,
+        "width": 390,
+        "x": 0,
+        "y": 67.5234375
+      },
+      "viewport": {
+        "h": 844,
+        "w": 390
+      }
+    },
+    {
+      "closeButtons": [
+        {
+          "rect": {
+            "bottom": 245.9921875,
+            "height": 44.390625,
+            "left": 16,
+            "right": 136.390625,
+            "top": 201.6015625,
+            "width": 120.390625,
+            "x": 16,
+            "y": 201.6015625
+          },
+          "text": "關閉資料依據"
+        }
+      ],
+      "horizontalOverflow": [],
+      "rect": {
+        "bottom": 740,
+        "height": 680.796875,
+        "left": 0,
+        "right": 320,
+        "top": 59.203125,
+        "width": 320,
+        "x": 0,
+        "y": 59.203125
+      },
+      "viewport": {
+        "h": 740,
+        "w": 320
+      }
+    }
+  ],
+  "knownLeaks": []
+}

@@ -1,0 +1,43 @@
+{
+  "at": "2026-11-17T03:43:28.921Z",
+  "persona": "northern",
+  "selectorCase": {
+    "actor": "northern",
+    "locale": "en",
+    "type": "action",
+    "existence": "missing",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_d4a819ed-3ceb-4cd8-83cb-3c0a92efef32"
+  },
+  "dialogs": [
+    {
+      "clientHeight": 900,
+      "name": "internal-review-heading",
+      "rect": {
+        "bottom": 900,
+        "height": 900,
+        "left": 760,
+        "right": 1440,
+        "top": 0,
+        "width": 680,
+        "x": 760,
+        "y": 0
+      },
+      "scrollHeight": 900
+    }
+  ],
+  "documentWidth": 1440,
+  "fields": [],
+  "focus": {
+    "id": "internal-review-heading",
+    "tag": "H2",
+    "text": "Receipt unavailable"
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nThis action is unavailable with your current access.\n\nReceipt unavailable\n\nThis receipt cannot be displayed. Return to a project you can access to view available actions.\n\nEnglish\n繁體中文\nClose",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?action=action_d4a819ed-3ceb-4cd8-83cb-3c0a92efef32",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

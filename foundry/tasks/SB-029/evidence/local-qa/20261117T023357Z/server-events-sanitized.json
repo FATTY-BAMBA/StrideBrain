@@ -1,0 +1,2154 @@
+{
+  "method": "Only existing application INTERNAL_REVIEW_ATTEMPT event, outcome and correlation ID retained; no request headers or raw server log published.",
+  "events": [
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "1686ebf3-69e5-4b3b-a9ec-fabb0060531f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "203ab305-7f33-450a-9c05-5592c99c81d1"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "3e87b9b4-dc64-47ed-baf5-61704452a57d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "d0e04137-d461-4469-af98-3bb21573fe42"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "d59f20a4-e60a-4801-9cef-76f41cf57f19"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "eade2a1a-6a3d-4981-b911-2b78b143455d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "c3e49f87-ac98-43fd-b4be-4fcb60b625f1"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "1e9420c8-2e75-41d9-9f7e-a053579cc6bb"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "3006ea51-a55a-4fe7-8719-dc729eace972"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "c466ad88-83c6-471e-9e20-b87d8dd5948d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "90cb264d-654d-4aa4-9990-047f5fed532a"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "903041cd-e68e-452f-94e8-ce778087bd15"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "f34df179-8e74-4737-bb9c-c626a3410537"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "ba7632fa-406f-4861-9e97-096b373dc036"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "bd97625d-fbf9-484e-958d-a3262ca89a01"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "fd7c548e-47fe-4b46-aba6-5d2c06811304"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "4507b9e8-a1c3-4bd0-83a8-6f82eff59d80"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "EVIDENCE_UNAVAILABLE",
+      "requestId": "5f4339f4-4bec-497d-8ee8-ec84942f82d1"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "4b950b28-cd27-4912-a919-63906285945a"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "EVIDENCE_UNAVAILABLE",
+      "requestId": "a407d399-8ecc-41f0-806f-9ffada570fe8"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "95392e35-4a38-42d5-b530-3f3e3d738da1"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "04a41ab3-ea03-41cb-941e-170560802f49"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "3463a973-2c35-40fb-beea-0e1d9550f7ea"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "b95e547f-98fe-4b12-b01e-3360c9b1bd80"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "f8b70a3a-c14a-4837-b0cc-f25c19698f1d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "74b081ff-46e7-4a7d-98d6-d8ab24241e8e"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "38b2ad75-04fd-4725-80ec-4251d65e26f3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "8b351b7e-9df3-4c48-9053-792717cc5ee5"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "92d694b9-ece5-438f-abea-ed645a5eb48e"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "c6fd36ed-bbae-4795-a649-db7e37be0092"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "7c4fdb2e-6cfc-4a86-8870-c74ea8da2050"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "32d14073-a76d-4f34-ad78-c15f997387b7"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "42ddc292-9c6f-4d94-a26c-fbe3d0427349"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "1045662a-eb53-45c1-a206-d3acfab14675"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "1bd3a87c-8b89-42ef-b700-b75ed2015cca"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "104a0bcb-41f8-49d0-b85d-02e1135e3252"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "80d18910-c8bd-48c9-86ba-4d1c8d08286f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "0f580b0b-ea7a-4d98-b893-f56a78fa8124"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "03d4b420-1107-43b2-9d16-a882bf24d728"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "c5bc5bf4-0aa6-4e54-99b7-c0ba6e658671"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "ee29fe37-1dcc-4db1-b209-1f5acf78c07f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "b8154fd5-7845-4aa7-b177-b7c6eb3ccc78"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "e6cc9884-9e35-4aea-8aa0-d4fd13fad81c"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "1cd68b42-ceab-47a0-9f52-2fa07f386031"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "7c29522b-5e8e-4714-8089-c051e2ae27a4"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "9f2e66f4-f18c-4478-aed0-f70540dbcabd"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "055a1ba2-bf5d-4661-a099-baa1980ffd3c"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "a51508ee-e48f-4c5b-9468-247790e20c03"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "757dfe58-f1bf-4356-af12-d1713aa47278"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "82a2db44-cbd2-4eba-b27e-71445f9bd5bb"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "90e224cf-51b4-4c89-ad1a-384ef400ed8d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "9dc18f28-81ea-4c07-a01a-7ca50408160f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "7fa88e0a-3197-4326-ab3e-1b009fb749ed"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "f92fe304-8e61-4d57-859c-91f8f6aae85d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "6d7297de-1797-48ee-9900-bd2ad1189177"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "adc6c732-d062-4ca4-9ce2-5d8a14613012"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "22138d28-ed83-443d-a835-7d7075f25f18"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "801637be-40c9-4d5c-ad71-18e30acfd65c"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "f025a5f3-7d13-48f3-92ec-e32adf117858"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "8b83fbc0-1098-41c1-9214-c9521d3add34"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "9660ea3a-5ea1-4303-ba1b-4e300b585466"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "9be52312-cf3b-46a5-b68e-d564fc3065f9"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "41fa7444-7fdb-4d1e-b285-67ef709e08e3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "b938f059-7769-4747-9645-e68d580da589"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "4ca68a82-30a1-458a-ab23-f67f1884da4d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "e7cc9eda-e266-48ba-b6fc-32f2ca11b1cc"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "eb9c1eee-edc7-487b-8f02-3123499da05a"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "dcb22372-89dc-405e-a197-ad0e8d4ba009"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "76659aac-0b2a-498a-937c-668d37538f85"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "898c12ea-c9f0-4d2b-b976-44d269e4bdae"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "7090ae54-6b95-4cc3-a880-aa1aa39fcc9b"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "d3c66d2d-31b2-44ad-bbc2-72726c561dd9"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "35e01160-277f-4168-896d-fb9c7af07537"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "6b2f3023-e080-4dd0-a55e-d055f26efd8f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "f92de471-e8fe-4a21-86d4-5f188d945c05"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "1e7890c1-18df-478d-af44-89d76ae0a70e"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "ea208db4-c7e4-4add-ab03-c2946ffa657b"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "3f72e93e-4b05-4e87-817b-3735b3cbd55a"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "d3efe3b8-6e0b-4e6d-8e73-d24aa605ea84"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "30f146b2-c9f7-451e-baf9-b1df52f34331"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "b3f963d9-6dd3-4b99-b173-88afbe1ed804"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "d2776de1-978d-4d1b-9aa7-5d01f8bb835e"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "22746066-3e79-4ee3-b72d-c6143fef9c41"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "a5c67a14-1bc1-4364-85cd-c19ab816ff5f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "1193f6e2-b49e-4460-aca5-336a19164712"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "300937da-52c9-4de3-8959-be32d6829bf1"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "d63ef1f6-e212-4823-bf8d-33b60eb9928e"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "fc85184f-af81-4cfe-b1af-e949261b0d99"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "37fc2e59-13b7-44c0-a07f-1b4a8e9622aa"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "0b725886-3e1d-4065-a84e-c4b4504b899f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "dd854b03-e8c9-4ac7-b630-d821b09b1b14"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "dd977f30-4ef0-4493-b212-389b2799e1df"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "e4c80ce7-615d-48ff-8bcf-768143cea754"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "f51a4d0e-d37e-4e55-9580-1bd9fa6c4134"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "29d7b3b7-b1e7-4b5e-8f3e-528def03c99a"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "ed7e1b96-5c57-4bcf-b699-89f19e7ad129"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "9e1ada88-6fe0-4eb3-b5ab-2106125cad39"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "1e117c42-b7d3-464e-b7ed-376397c75c05"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "f44714e8-4d39-4cf3-9964-a70a30451f1d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "ad088f43-e823-419b-a274-6cbc91527d88"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "b20dfb7f-582b-465d-b2e4-13b59ee793bb"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "ffc12983-cafd-42cd-b0d0-f11feda0b8ce"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "6cee8633-9d80-4a51-ae64-f231be3ab28f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "d48d3972-508b-4ba0-a587-0c440cd9b4a7"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "27f4926e-2387-4a34-bcce-8aee4d9c3652"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "232a94cd-1e10-41df-bd50-b0cd1f219dfa"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "232a94cd-1e10-41df-bd50-b0cd1f219dfa"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "ac45d504-5174-495f-bb49-3b0b7e1e3b53"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "ac45d504-5174-495f-bb49-3b0b7e1e3b53"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "947b7d14-01a6-482f-9012-224c4ea8b6c9"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "9cde9e72-0ba5-49c1-a42e-bf66b182f731"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "0c25242d-31a5-44f2-9168-8942bc35af56"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "0c25242d-31a5-44f2-9168-8942bc35af56"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "d3f6657d-2295-49dc-a850-cc95bb138dfc"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "d3f6657d-2295-49dc-a850-cc95bb138dfc"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "38a17f29-297c-4c35-a68c-aa6dcff091c5"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "7242ba8d-ed9c-42df-aabe-1db341c19062"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "a41b985b-dcf3-45a7-88d8-b262fa8dd255"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "8376377c-e935-4d7b-881d-0b90c7104b1a"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "72b112df-43f3-483f-a813-2e536987cc03"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "d246a0e3-0c24-4335-91ef-fc2ee158e862"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "d246a0e3-0c24-4335-91ef-fc2ee158e862"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "6f14e968-27ba-43cf-92a0-d042c658d3e3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "6f14e968-27ba-43cf-92a0-d042c658d3e3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "bcfb3368-30bb-4a24-bd7b-0172e61b8cf3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "bcfb3368-30bb-4a24-bd7b-0172e61b8cf3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "3cb4ed15-d739-4bf3-a050-7f8bf00e3387"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "3cb4ed15-d739-4bf3-a050-7f8bf00e3387"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "be1eefd7-69d3-4788-8433-d1d872d0cde3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "30234b19-d471-4dec-a779-e2ce3d89dd18"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "fb502d74-9adb-452a-90d3-72dbec16e7a3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "086a0222-f834-4d6d-88be-1e7adb03aa48"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "8280d6c6-80b3-4889-96cb-5fc8c2c5631d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "aae3ddba-864a-4bae-8134-558df91b9084"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "81004d55-0f49-4381-a412-5c15340cd943"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "c904ca34-1aca-4198-ac46-c442bc0c3bf3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "e4b7b9f7-b494-4b12-81fb-7f92ff16f569"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "a025c1b5-02a2-4982-bb96-69cca6158358"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "c0b602c2-056e-4ee6-8300-b4d7162438c7"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "9c681b5d-a674-4148-bf8c-1ceb9a744c87"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "95a7d60e-fb77-4e01-abb8-87afbadad757"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "cfe24f68-8747-4497-96b5-3d168c0815a9"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "0419c6d5-9e29-4f90-981a-d85ec088bd97"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "895decd9-f635-4f3f-bec1-b49f79481206"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "07c56e2e-6784-4e0e-b6c5-5eda8e62801b"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "40cf8169-9f80-4f7c-aa8e-8a00b431556f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "d56d48ac-edfb-418f-b98a-c227d5602ccf"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "c5060ba7-ee87-4270-bc40-52166c42087b"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "32f40d45-aa8a-4e34-92f4-9f474810bcd9"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "e0c43ba0-de58-469a-84c1-48ef931d0e32"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "2cc8e8b2-e882-4b96-8059-969fa0ac6e9e"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "d5ffdfe8-abd6-4577-b9ec-ae75e747dd0e"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "e63d8cc6-06d3-48a7-8b6c-5f4c4ff3e23e"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "8d0d8864-b7c0-4f5a-9711-1177061531e8"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "f84105dd-bbe6-4e46-8565-6a0ce9cf3e69"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "ea17db80-c396-434b-a9ff-a88d09991752"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "3ec3e75c-8f6f-4cff-8b2e-d3574fb4ed67"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "c0b8c632-230c-406c-b689-82ee8c226405"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "EVIDENCE_UNAVAILABLE",
+      "requestId": "adc1a400-b9e8-46f5-9020-dad291365c68"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "EVIDENCE_UNAVAILABLE",
+      "requestId": "81a100c6-8062-43e9-a6a1-9fabd3ebcc6e"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "EVIDENCE_UNAVAILABLE",
+      "requestId": "f2e3a7d7-7d42-4932-b626-4b6d8a3a461f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "EVIDENCE_UNAVAILABLE",
+      "requestId": "866f1897-d318-4add-9843-827fd41e9ca4"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "EVIDENCE_UNAVAILABLE",
+      "requestId": "975390a7-cb79-4140-a34d-5214b32ca2e2"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "EVIDENCE_UNAVAILABLE",
+      "requestId": "1d81d343-0af0-4b93-9719-2532bef656ea"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "EVIDENCE_UNAVAILABLE",
+      "requestId": "51d03acb-1160-493c-a365-d832d18f2628"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "EVIDENCE_UNAVAILABLE",
+      "requestId": "53e2c32d-a0ff-4eb4-9bad-6272c0a962a3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "64be1aaf-40bf-4fe2-b9f5-a5c5176c5d35"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "2afc76b7-7e25-4160-9445-2ebdd97fc81d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "507020dc-7576-49d8-a407-206cd5551804"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "bff4722a-0ba2-4c33-a095-5bd04833ca47"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "f7e2e5dd-c1de-4b36-8f0d-06e8aab2ec02"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "b4618f43-34ed-41f4-abcf-015eb938c0cd"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "a3034d88-3308-4b18-ba6b-6252049e30ce"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "ed303ebd-d948-43e3-840d-64833c1e4ac2"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "69066034-61cc-4a68-9fec-d806cd9f5cb5"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "f778eb48-0177-457e-bc89-1aa28895cded"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "1be453c6-a742-407e-8128-20e626c5d7c2"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "d27ad154-7497-401b-a4a9-6601c41804c0"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "aa9625bb-7a59-4c68-88e6-3f06e94e1192"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "787e0858-f5de-4d24-a748-2e18e26900cf"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "707d5e97-377c-46d5-b552-e77c8ee72019"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "28b07981-c33e-472c-92bc-4e152551c686"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_CREATE_FAILED",
+      "requestId": "874ed9f5-cdb6-458d-a0b6-1138dd823e46"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "e80c0503-8d10-441d-b659-778332f93800"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "8710901f-825d-4847-95ac-576cbb138bf6"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "0f81cce7-dcca-4ad1-a951-6ce7c8c6b002"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "38c68894-fd2b-4b3b-973f-5b54806dfeec"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "1ee4fc25-8ac7-4f9f-baa3-95e35e0966e3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "4f13d56b-19bd-48d8-9b10-29c53c930f44"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "4e24fd54-6050-4668-92d6-d99d456173a4"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "527d8e62-d634-41c1-95d3-e149e7aa6443"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "272c7422-e44b-49bf-b8b5-9f61a0abb8ee"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "2428ddef-6cdd-4bfa-8126-414239f1dbf3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "612210ad-22a4-485e-b7b0-ca6f707cc5a6"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "b1c5b700-3eb0-4929-9a2b-c1a726da5538"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "3bfc6632-b0aa-4f47-ad63-d50ce291f01b"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "8f7a0380-51a9-4deb-b0c1-a3e08fffa4eb"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "b810658a-abef-4220-8e61-4532e1c7f8c0"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "d3e1c985-e790-47ce-bc78-4c610e37177f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "b2792105-3097-4dce-a19f-2921f0644563"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "cdd00e29-d6ad-4c21-af72-f1a6b8c2887e"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "dc648919-076a-4d01-845c-b188c355d81e"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "00b5c1f3-e3de-480d-9a56-5168fc86dcd9"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "41f34db2-7604-4fd6-8dc2-01cb7eaa2d87"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "14622c3d-41d7-42d8-898d-c31e8c03491d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "153a436e-5043-4bc2-9114-731b6caa8705"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "f62dca07-999b-4a21-ae92-9995339ef196"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "5468f904-9893-4ad6-8fbc-ea164d8f8c3a"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "31c8ce14-d3a4-4745-846b-b25fa580cfe4"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "a19f886d-20bb-4af1-9f9d-6b7104e5cb58"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "98399e96-6ca1-4bf9-aa86-2ae4f65e9e1f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "d9ba87af-e6ae-4448-9bb6-c57686dc720a"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "c2f4a49a-fe9d-484a-88f2-022bfa1063c3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "2b3ae732-ec67-49d5-a07f-7c2f88c35834"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "83e56577-66d8-4aa8-8815-8bd27e1ac489"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "IDEMPOTENCY_CONFLICT",
+      "requestId": "69711afa-a29f-4e11-bfda-a163dd324b70"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_ALREADY_CONSUMED",
+      "requestId": "7d5a77ca-4ff2-4967-95a9-4396767c50e1"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "3c804e76-e6dd-4a81-8ad3-cd50f8c2285f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "IDEMPOTENCY_CONFLICT",
+      "requestId": "f53a690d-7ca9-4c72-b84c-2fcfd1a26c94"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_ALREADY_CONSUMED",
+      "requestId": "0cb2eb8a-6e2e-4a11-b7a8-2ca9cc3fdb83"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "2ac53d86-03a4-429c-b666-93924510a474"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "b1d44b36-7337-4da9-a532-2c218b64d91e"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "ce2b620a-c0c3-42f5-9aff-5ceb9750ee9b"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "76da853e-20ea-418f-95d9-2e9f9ca3b3e3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "1f03b442-4bf0-4358-92e1-82a069a935bc"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "fb5a8cd2-9960-41d1-9790-6a29832d4006"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "848d0e89-a9a1-402a-ab06-0e2afad50ef1"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "de9a1772-9565-44bb-8475-d6f91f3c3992"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "d0e436fe-e945-4043-80a8-08eedee8aaff"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "382d6b1e-c4cb-4c10-8aa4-c264454000c8"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "b3376d2f-57fd-4e7a-802c-5fdc949433b9"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "0a11cec7-72c0-48d2-b07b-3157bd597199"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "8829b401-0e8a-423a-a3d0-4c2d0417bf5b"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "a5eb1223-8881-45ec-9781-3b54458ed933"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "2cc8c333-d23d-49c1-ae3e-4df9069de187"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "012ba92f-6979-4591-ba54-59d2fef14880"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "5bf7f36b-92ef-4187-9249-b4d34f0f336b"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "2081439b-3779-4644-b257-336f8beed19e"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "b7306822-db19-4aad-b191-407b1764a925"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "143800ce-eeb1-4a4c-b6b8-cd58d04e1bea"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "c00b7dfc-1b7c-48c6-b726-90352ad815ba"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "081793dc-907d-4321-b5f7-8b3991cbb11f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "10214319-dc62-4b7c-9bb4-206898c7308a"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "4a8cd4a3-0f44-47c5-9f26-e03281532263"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "d5cfffaa-7899-4798-b6e7-a840acbe4a92"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "092469b1-59ec-48f0-b43d-ed8f77db0af3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "c544ba71-76fb-4e1a-9dd8-4cdb74828e09"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "446bd280-ca50-4de3-bcef-e932e44ed3ca"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "78b2d681-fc58-4dba-8c81-f5b7958c1712"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "6a5a718a-48a3-45fd-865c-5e1ddc7ddfa0"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "e270ad65-1abe-4c34-91f7-a6f6b926b1be"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "4c7d9a52-353c-42f2-ba7d-f55eb474c462"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "c9de3cf5-b175-4ca7-8dc6-482b4cb15541"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "31710e58-4ee8-4ab6-a209-69824c5c4729"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "a546e5d9-472b-4c4a-bd74-1686cb5997af"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "dff994d5-445e-45b6-bbd5-cf38e97205ef"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "185c4194-a557-40f1-ac6c-20b819eb88e5"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "6cf0c86c-11cb-480f-a4c4-46f44709e63c"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "3ea18599-e3cc-4cfb-a420-de74c15328ee"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "IDEMPOTENCY_CONFLICT",
+      "requestId": "311f19d0-c6f6-45db-9bf0-848793914a15"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_ALREADY_CONSUMED",
+      "requestId": "c9dee0a6-650c-4920-a501-dee1542e2b43"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "8506213d-4c38-4d17-abc3-5ac84f999883"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "IDEMPOTENCY_CONFLICT",
+      "requestId": "efddfb69-312b-4a48-90e1-6733b69ae064"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_ALREADY_CONSUMED",
+      "requestId": "a5e89b6f-313a-45b3-afe1-52a6c024e291"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "684f2c0e-f349-4623-91bb-ef945381e123"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "beeff82f-3695-4fd2-bdbe-1e56bc0b0708"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "7e962657-5360-4334-af8c-eeb0d8ad250b"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "3d85b11a-7edc-46da-9ae3-3a59d21565ea"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "572883d2-55f9-4fcc-aa6a-927274d4d576"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "edd38fb5-83e0-4d95-80e6-0e2a03c87374"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "73280d8d-7d08-4bd3-b58e-fd705025105e"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "c7728fc4-4334-4c5d-8a4f-e2fe9a4de14f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "2a97949a-d72e-441b-8b1c-411ebf1d318a"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "5f3cbe6f-99f2-437b-94fe-6f2ba14a9361"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "bf4d148e-2d1f-403f-9ca5-4b1f4d39a131"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "916d3a6c-b87e-44d4-9d77-eaf928130ea6"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "0eadf6d5-3355-4f49-9da8-5b2fedf33808"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "1b705dd9-ef4c-4367-87f6-c97ccc9e4744"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "53b70836-2708-4d46-bb7d-dc33762681be"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "ab452f9c-1ce4-465b-8903-3fdb7663692b"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "4c93136e-e7a0-4409-a4c1-0f25a369b64d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "5d594f0b-6d93-4bc6-bc15-badc2205f33c"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "5e16617a-6e6c-4841-82ec-2b8337ad6df0"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "EVIDENCE_UNAVAILABLE",
+      "requestId": "a6e18091-f412-496d-84ee-88e7de1372e3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "08d20f87-1148-4db8-8b75-26a135b20ef3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "EVIDENCE_UNAVAILABLE",
+      "requestId": "489987cb-9e97-49fb-97ef-31c5fbdae2dc"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "2ebae1de-c697-47f9-a850-f9873429646f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "676b9237-3f12-498e-b5cf-f84e4c754f34"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "9024ca99-d8af-41b2-8724-7821f6613f12"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "549f68c9-b8a6-4f56-94e2-3423c2a1d7dc"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "0a9bb62d-4410-4abe-ab7d-2c22ec64c3de"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "198511c5-7238-4b48-8bf4-b77f34cfcfab"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "d3aaa612-b3ba-4149-8fb9-ee34f7b4cbf4"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "61324ba1-2464-432a-8e3f-d26991af33c6"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "485bb2f3-4c76-43e0-9b53-efabe61f7545"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "bda0524f-3404-40f8-8eff-e7c8c3fe7a63"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "bb4ec00a-2963-4360-beed-c110d6bb0933"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "ff03b3cf-f0c4-4c50-849f-959f7d35c047"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "2daa71f2-8327-4304-bfb9-31992967b7c5"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "a63176d2-972d-410b-838b-3719211ec931"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "df44306c-530a-403c-ba14-d55533cd2838"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "c44423b4-85a7-430f-bb83-ca77dd61d261"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "de96af5c-cd5d-41c9-b3fd-fde947e81315"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "08f584f3-b983-42cc-9e9e-ed036c1808da"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "9cca5c8c-a5f1-4182-ae35-48d2f877e72d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "ec005e10-18ad-4269-8703-45b2c90f6557"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "1cc7f520-2d3c-4aeb-9173-60498513a4f7"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "b1bebf5f-66cf-4c2d-82d8-b8f25c8c66ec"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "055cb3d5-be89-451d-9b1c-75dca2691199"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "fea125b3-f51e-4e7e-9f3e-201da1021db1"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "da749f2d-035f-45c3-a33d-38d1701d047f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "8e757bc4-ec42-4cea-b174-9209eab9dca8"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "e2d9e359-c027-4735-8d63-3bafab1a0583"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "fcf76e7d-0762-42d4-9ddd-80e8188eeda2"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "32e2af9d-a876-4c9a-ac6b-94e3a5e96886"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "037d7abe-ef3b-4bbc-847d-1517a27b54f0"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "1efd78d0-3979-4f2d-b121-af9727cfafd5"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "e50e6f6e-8b16-4cf0-82ef-0deb2f4c64ce"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "104ac15c-6fc3-4bef-b298-dd09257ce9b0"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "27bc696c-d9f8-4261-bf37-94c85442ab55"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "7115cdb6-f31c-4218-a207-9d7a4389e81d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "b1dcefba-7bd8-45e1-ba0d-2cccf6b7d470"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "a9e70f14-36d4-4afc-8467-7be3471baa7b"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "57c2b64a-8204-43f6-9f21-452b291ad6a1"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "6101a7aa-c63b-4d13-8c90-34133679904b"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "edfc1e74-eede-4036-82d4-f30f5ed22b10"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "a5344c27-96b1-46a8-8ffe-92a407900a93"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "192f2ceb-a021-4287-825a-4d9f5e061abb"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "727b71cc-a6fc-4833-85b0-9646b7c9a562"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "f66724d3-cab9-4f85-81a0-e2f051d46104"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "86079350-fe43-48d7-aff6-34a1471c4bc1"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "485a335f-1940-49f3-9710-e9b583b7d5c3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "273055e6-ce29-4c38-af43-dc629a1ba139"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "1c865067-205e-4ee0-a546-fb7043a5c198"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "21fde536-69f2-4bd4-843b-f371d3a3cacc"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "b493122d-96a1-4338-ab5c-089370af723d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "b3c9de03-78b4-4f1d-9d59-45f5ca16a4a0"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "a008301c-2702-4a5c-8793-c36be73462b2"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "143b8128-73ba-4a0a-92be-51e8d612f7f2"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "6a82819e-7cb1-48cd-bf50-0e2b19fc1743"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "3a3418ad-7429-40cf-9725-899ca6c054b8"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "d8c77472-aec4-4881-84fc-986ec57290ba"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "9f5aa1e9-33d7-4d0b-81c2-9ec054334886"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "5cedbb78-14c7-4cb4-8677-6a927ba4e925"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "8d77ac24-004f-4492-9009-be5ad586a652"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "ceedf1c0-9e7e-48c1-8287-c285777dfa05"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "7c7171da-fbbc-4b88-875f-ecfd7cb52ce2"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "9ff27212-7f4c-4a6f-98b9-ba8edda12731"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "588a20ab-41d8-49b9-95d0-52688a6c068c"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "b19be2fb-4b3c-4cbc-85c4-9278c5441fa2"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "b81df1b1-56a0-4c8d-ac78-e9fb178ffa6c"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "f7fe9149-6497-4a9a-b8fb-e6008f7e92e2"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "764c7bb8-2840-434b-98bf-90c679e1d3d7"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "a360ba62-e735-42be-bc61-9f11c72e5c53"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "ab2cc2cb-fe59-4e1e-9512-1447be860261"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "219f83bb-7a53-417f-a1f1-036e0f3c8ec4"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "9372076c-623f-47a3-903d-353c01de64f2"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "67a8aaa8-8ded-45ea-a3c7-cb813f530f67"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "1b905883-228c-46a8-a243-82b6fbc8cffa"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "e69601d8-db76-4b29-9d9e-9d1ad08967f8"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "dec03e6b-10f2-40a9-85f1-806391eb8848"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "2b67c5f9-e7be-4f98-80e4-c4103f66a3a9"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "06ce27e7-c2b8-4133-a177-86d4b205be16"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "ca6e0f5e-4991-425d-817a-c8307c684b27"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "9fc7b1a5-f007-4e9f-b0fd-4949212e0ece"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "6f18d130-2c21-4431-97a7-8a50c80145bc"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "ef798ad9-c297-4c6c-8fdd-2791a4fa5846"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "09ba4d25-8a9f-4fda-8dd8-8ee717d4de7b"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "035daee2-cc40-425f-b9ee-d2e63971dc9e"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ASSIGNEE_UNAVAILABLE",
+      "requestId": "74604d1c-cec7-49dc-bc72-74f550199629"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "39be1742-3d5d-4e72-a489-e07cbdcfd8c5"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "55eb159e-3bc5-483b-a6af-e76cc828c8f0"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "903e6dae-85c5-4327-9934-006474b5e119"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "861354d9-d7d3-44a8-ba72-a1b89f36e464"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "23019666-b93c-4719-9015-7efbf9df9d9d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "f1561369-2290-45f1-9fca-afccffe32585"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "23ed636f-08c0-4479-ab66-a0fb62952b75"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "83aff5e2-f701-4166-870a-cb9222f3b8c4"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "IDEMPOTENCY_CONFLICT",
+      "requestId": "9b142c23-ce4b-4b69-af40-6739d07b7a52"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "IDEMPOTENCY_CONFLICT",
+      "requestId": "81c2e286-3de4-4556-8b59-c35ed0d62fed"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_ALREADY_CONSUMED",
+      "requestId": "73e3b8ff-eb59-40a4-b846-96526e5ee8bf"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "4105cd7e-b946-483a-92b2-f9d2325f3917"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "IDEMPOTENCY_CONFLICT",
+      "requestId": "15e0aae1-685a-4005-90b7-8d2b7cea7302"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "IDEMPOTENCY_CONFLICT",
+      "requestId": "50b8e440-3f2c-4075-bfb8-9581bfb8d079"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_ALREADY_CONSUMED",
+      "requestId": "32d6e395-cf5f-46e3-8692-7b62fd71adea"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "8968db1a-4ec1-4c9f-bd4c-df58ef4b5967"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "eaffe06b-967f-44fb-bd0e-00b2d5e1c8d9"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "263a5e70-933b-4c51-b918-574bba61b122"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "4781ed5a-91b8-4ca5-b2c5-48ddd023c555"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "12a9d27b-b874-4ada-9ead-9d4f0736d8c9"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "a578d26f-bdf2-4f2e-9947-ee6d3be3546f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "d7653760-6733-4921-b136-dfe8c134e5a4"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "68504812-2787-470e-8bea-eaa24d9591c0"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "VALIDATION_FAILED",
+      "requestId": "73086d76-e320-4a68-883b-379923bd4caf"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "f11815d9-f54c-4534-8442-45d9a738b633"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "0224ec48-5bac-469a-8bf7-884cb59fd18c"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "7c628eb2-808d-427b-af52-9dfe78c36fd4"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "a3b42521-be58-49c9-bf5b-27ae2c8faad8"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "af692ebb-1587-4e68-8c15-a8fe28cd3253"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "3cb1713e-f3b4-4abd-91a0-c295693973a7"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "319c8f8c-20a7-412b-ab7f-d1669021e05b"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "e0f76f93-868b-400e-a137-f4317d9d975a"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "2770b85f-4ad1-4b76-8173-8c3fca13ee1d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "bf1119b1-d820-4b48-9af0-941c58d43fd1"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "039e60c4-da6c-4905-9f2f-c0a59e92510d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_NOT_AUTHORIZED",
+      "requestId": "233ce71b-aed6-4f54-b9bb-3ad62454e360"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "6dd3f729-ab83-4d8e-9570-49c79fa9f840"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "6dd3f729-ab83-4d8e-9570-49c79fa9f840"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "6954812c-7514-4ee0-bbb3-4677df5d8dd9"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "6954812c-7514-4ee0-bbb3-4677df5d8dd9"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "bb3a36de-2ef8-493c-b819-c8bc7df05145"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "bb3a36de-2ef8-493c-b819-c8bc7df05145"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "da3a7fe5-8e52-474d-8ec2-fdc89eea55b5"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "da3a7fe5-8e52-474d-8ec2-fdc89eea55b5"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_EXPIRED",
+      "requestId": "2c58b7f0-c9b2-4ec1-b48f-9635a0bb12d7"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_EXPIRED",
+      "requestId": "b46c8fac-deb4-41dc-9dba-73ef43b6c421"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_EXPIRED",
+      "requestId": "ccf947b9-09f1-4ed5-bcfd-e789da4fe101"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_EXPIRED",
+      "requestId": "ea482fe3-af72-4521-9501-cb8354a8d374"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "IDEMPOTENCY_CONFLICT",
+      "requestId": "b3fbc053-e0e0-4e16-ba7e-19513f37334c"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "IDEMPOTENCY_CONFLICT",
+      "requestId": "739bc8dc-6515-4ead-bed7-0d5a2f2fdd72"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_ALREADY_CONSUMED",
+      "requestId": "0d540245-a013-4ed9-83a6-04f7689afa03"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "8e62c8ea-b70f-4895-b6f2-b72f4939a05f"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "IDEMPOTENCY_CONFLICT",
+      "requestId": "3783f865-ca6d-4327-8d6e-bc1811e86607"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "IDEMPOTENCY_CONFLICT",
+      "requestId": "6db3c651-b2da-441d-bc61-81d3b7dbc2a3"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_ALREADY_CONSUMED",
+      "requestId": "bb7fff8d-5c57-4461-bdd6-f798ad253a0d"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "642f7ba3-ee42-4e99-b0aa-9c627a116cde"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_UNAVAILABLE",
+      "requestId": "f93dea5d-37a2-47f1-9a95-8a3177cc66f1"
+    }
+  ],
+  "counts": {
+    "STALE_COMPARISON": 55,
+    "PROPOSAL_STALE": 47,
+    "EVIDENCE_UNAVAILABLE": 12,
+    "PROPOSAL_UNAVAILABLE": 32,
+    "PROPOSAL_NOT_AUTHORIZED": 52,
+    "ACTION_NOT_AUTHORIZED": 110,
+    "VALIDATION_FAILED": 44,
+    "ACTION_CREATE_FAILED": 17,
+    "IDEMPOTENCY_CONFLICT": 12,
+    "PROPOSAL_ALREADY_CONSUMED": 8,
+    "ASSIGNEE_UNAVAILABLE": 34,
+    "PROPOSAL_EXPIRED": 4
+  }
+}

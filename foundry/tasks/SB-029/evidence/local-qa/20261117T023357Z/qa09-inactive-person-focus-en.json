@@ -1,0 +1,15 @@
+{
+  "describedBy": "review-assigneeKey-error",
+  "id": "review-assignee",
+  "rect": {
+    "bottom": 472.1171875,
+    "height": 44,
+    "left": 780,
+    "right": 1420,
+    "top": 428.1171875,
+    "width": 640,
+    "x": 780,
+    "y": 428.1171875
+  },
+  "text": "Unassigned\nMei Lin\nAlex Chen\nIris Huang"
+}

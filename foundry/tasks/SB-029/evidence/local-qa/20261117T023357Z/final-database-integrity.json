@@ -1,0 +1,393 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T04:05:30.188Z",
+  "counts": {
+    "actions": 9,
+    "proposals": 12,
+    "consumed": 9,
+    "receipts": 9,
+    "audits": 9,
+    "actionevidencelinks": 135
+  },
+  "organizations": [
+    {
+      "businessKey": "HORIZON_ATELIER",
+      "dataClassification": "DEMO_SYNTHETIC"
+    },
+    {
+      "businessKey": "NORTHERN_STUDIO",
+      "dataClassification": "DEMO_SYNTHETIC"
+    }
+  ],
+  "migrations": 8,
+  "guards": [
+    {
+      "tgname": "Action_stage8_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "AuditEvent_append_only",
+      "enabled": "O"
+    },
+    {
+      "tgname": "InternalReviewReceipt_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "ProposedAction_stage8_immutable",
+      "enabled": "O"
+    }
+  ],
+  "activeSessions": 0,
+  "temporaryGrants": 0,
+  "temporaryTriggers": 0,
+  "duplicates": [],
+  "actions": [
+    {
+      "actionKey": "action_d27cb3ce-01d4-46cf-809b-e3feece44c19",
+      "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+      "status": "OPEN",
+      "createdByMembershipId": "membership_horizon_mei",
+      "assigneeMembershipId": "membership_horizon_finance",
+      "creator": {
+        "en": "Mei Lin",
+        "zhTw": "林美玲"
+      },
+      "assignee": {
+        "en": "Iris Huang",
+        "zhTw": "黃怡君"
+      },
+      "titleKey": "VALIDATE",
+      "rationaleKey": "REVIEW_NEXT",
+      "storedDueDate": "2026-11-24",
+      "evidenceCount": 15,
+      "sameExactEvidenceRefs": true,
+      "proposalStatus": "CONFIRMED",
+      "receiptCount": 1,
+      "successfulAuditCount": 1,
+      "receiptLineageMatches": true
+    },
+    {
+      "actionKey": "action_d89226cf-77aa-46bb-a113-af8a3f5c4416",
+      "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+      "status": "OPEN",
+      "createdByMembershipId": "membership_horizon_mei",
+      "assigneeMembershipId": "membership_horizon_admin",
+      "creator": {
+        "en": "Mei Lin",
+        "zhTw": "林美玲"
+      },
+      "assignee": {
+        "en": "Alex Chen",
+        "zhTw": "陳柏宇"
+      },
+      "titleKey": "CHECK",
+      "rationaleKey": "RECORD_QUESTIONS",
+      "storedDueDate": null,
+      "evidenceCount": 15,
+      "sameExactEvidenceRefs": true,
+      "proposalStatus": "CONFIRMED",
+      "receiptCount": 1,
+      "successfulAuditCount": 1,
+      "receiptLineageMatches": true
+    },
+    {
+      "actionKey": "action_c9f661a2-7b24-4de6-9e66-4989f4ac5836",
+      "proposalKey": "proposal_7a0f00b3-ecf1-4a51-92d5-9d5bb8efce52",
+      "status": "OPEN",
+      "createdByMembershipId": "membership_horizon_mei",
+      "assigneeMembershipId": "membership_horizon_finance",
+      "creator": {
+        "en": "Mei Lin",
+        "zhTw": "林美玲"
+      },
+      "assignee": {
+        "en": "Iris Huang",
+        "zhTw": "黃怡君"
+      },
+      "titleKey": "REVIEW",
+      "rationaleKey": "VALIDATE_HISTORY",
+      "storedDueDate": "2026-11-17",
+      "evidenceCount": 15,
+      "sameExactEvidenceRefs": true,
+      "proposalStatus": "CONFIRMED",
+      "receiptCount": 1,
+      "successfulAuditCount": 1,
+      "receiptLineageMatches": true
+    },
+    {
+      "actionKey": "action_3e500b6d-9b2b-4bca-92ce-e45eb26fc364",
+      "proposalKey": "proposal_04421ecd-82e3-433b-b860-6294eda80eae",
+      "status": "OPEN",
+      "createdByMembershipId": "membership_horizon_mei",
+      "assigneeMembershipId": "membership_horizon_finance",
+      "creator": {
+        "en": "Mei Lin",
+        "zhTw": "林美玲"
+      },
+      "assignee": {
+        "en": "Iris Huang",
+        "zhTw": "黃怡君"
+      },
+      "titleKey": "REVIEW",
+      "rationaleKey": "VALIDATE_HISTORY",
+      "storedDueDate": "2027-11-17",
+      "evidenceCount": 15,
+      "sameExactEvidenceRefs": true,
+      "proposalStatus": "CONFIRMED",
+      "receiptCount": 1,
+      "successfulAuditCount": 1,
+      "receiptLineageMatches": true
+    },
+    {
+      "actionKey": "action_1fca8bf0-7170-4a67-975e-172b7402da8b",
+      "proposalKey": "proposal_d34f75fa-4967-4863-a7ab-4eca12145c91",
+      "status": "OPEN",
+      "createdByMembershipId": "membership_horizon_finance",
+      "assigneeMembershipId": "membership_horizon_finance",
+      "creator": {
+        "en": "Iris Huang",
+        "zhTw": "黃怡君"
+      },
+      "assignee": {
+        "en": "Iris Huang",
+        "zhTw": "黃怡君"
+      },
+      "titleKey": "REVIEW",
+      "rationaleKey": "VALIDATE_HISTORY",
+      "storedDueDate": "2026-11-24",
+      "evidenceCount": 15,
+      "sameExactEvidenceRefs": true,
+      "proposalStatus": "CONFIRMED",
+      "receiptCount": 1,
+      "successfulAuditCount": 1,
+      "receiptLineageMatches": true
+    },
+    {
+      "actionKey": "action_56341f99-4952-434e-ae63-20c4ad70f274",
+      "proposalKey": "proposal_0a128fc2-d36f-4b8d-83ee-e26ba681c72c",
+      "status": "OPEN",
+      "createdByMembershipId": "membership_horizon_finance",
+      "assigneeMembershipId": "membership_horizon_finance",
+      "creator": {
+        "en": "Iris Huang",
+        "zhTw": "黃怡君"
+      },
+      "assignee": {
+        "en": "Iris Huang",
+        "zhTw": "黃怡君"
+      },
+      "titleKey": "REVIEW",
+      "rationaleKey": "VALIDATE_HISTORY",
+      "storedDueDate": "2026-11-24",
+      "evidenceCount": 15,
+      "sameExactEvidenceRefs": true,
+      "proposalStatus": "CONFIRMED",
+      "receiptCount": 1,
+      "successfulAuditCount": 1,
+      "receiptLineageMatches": true
+    },
+    {
+      "actionKey": "action_5c1ec0fb-c1d6-4f3d-9a63-a514222e3bd3",
+      "proposalKey": "proposal_532619ac-43cf-4649-96a1-848375c4cc56",
+      "status": "OPEN",
+      "createdByMembershipId": "membership_horizon_admin",
+      "assigneeMembershipId": "membership_horizon_finance",
+      "creator": {
+        "en": "Alex Chen",
+        "zhTw": "陳柏宇"
+      },
+      "assignee": {
+        "en": "Iris Huang",
+        "zhTw": "黃怡君"
+      },
+      "titleKey": "REVIEW",
+      "rationaleKey": "VALIDATE_HISTORY",
+      "storedDueDate": "2026-11-24",
+      "evidenceCount": 15,
+      "sameExactEvidenceRefs": true,
+      "proposalStatus": "CONFIRMED",
+      "receiptCount": 1,
+      "successfulAuditCount": 1,
+      "receiptLineageMatches": true
+    },
+    {
+      "actionKey": "action_705420da-be16-402c-b569-0c18fde7d9a6",
+      "proposalKey": "proposal_c4d5cfbe-ae40-42e9-b61f-31382a1619ff",
+      "status": "OPEN",
+      "createdByMembershipId": "membership_horizon_admin",
+      "assigneeMembershipId": "membership_horizon_finance",
+      "creator": {
+        "en": "Alex Chen",
+        "zhTw": "陳柏宇"
+      },
+      "assignee": {
+        "en": "Iris Huang",
+        "zhTw": "黃怡君"
+      },
+      "titleKey": "REVIEW",
+      "rationaleKey": "VALIDATE_HISTORY",
+      "storedDueDate": "2026-11-24",
+      "evidenceCount": 15,
+      "sameExactEvidenceRefs": true,
+      "proposalStatus": "CONFIRMED",
+      "receiptCount": 1,
+      "successfulAuditCount": 1,
+      "receiptLineageMatches": true
+    },
+    {
+      "actionKey": "action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5",
+      "proposalKey": "proposal_c91f8ac3-cdec-4b8d-ba16-96c25cdda31f",
+      "status": "OPEN",
+      "createdByMembershipId": "membership_horizon_mei",
+      "assigneeMembershipId": "membership_horizon_finance",
+      "creator": {
+        "en": "Mei Lin",
+        "zhTw": "林美玲"
+      },
+      "assignee": {
+        "en": "Iris Huang",
+        "zhTw": "黃怡君"
+      },
+      "titleKey": "REVIEW",
+      "rationaleKey": "VALIDATE_HISTORY",
+      "storedDueDate": "2026-11-24",
+      "evidenceCount": 15,
+      "sameExactEvidenceRefs": true,
+      "proposalStatus": "CONFIRMED",
+      "receiptCount": 1,
+      "successfulAuditCount": 1,
+      "receiptLineageMatches": true
+    }
+  ],
+  "providerCredentialVariablesPresent": [],
+  "runtimeDirectoryMode": "700",
+  "environmentFileMode": "600",
+  "proposals": [
+    {
+      "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+      "status": "CONFIRMED",
+      "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+      "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+      "preparedByMembershipId": "membership_horizon_mei",
+      "expiresAtStoredTimestamp": "2026-11-17 03:07:36.25",
+      "evidenceCount": 15,
+      "actionCount": 1
+    },
+    {
+      "proposalKey": "proposal_e4ec14cd-f8a2-4145-8c68-7ae24d18ac4a",
+      "status": "CONFIRMED",
+      "comparisonRunId": "cmprun_50e716a4-034f-4b4c-bc3a-2fa2ef1e3bdb",
+      "enrichmentRunId": "econrun_5191e5da-112d-47cb-b40d-8de6cdda4d42",
+      "preparedByMembershipId": "membership_horizon_mei",
+      "expiresAtStoredTimestamp": "2026-11-17 03:29:55.149",
+      "evidenceCount": 15,
+      "actionCount": 1
+    },
+    {
+      "proposalKey": "proposal_1149e1c6-177c-449e-8153-9f84324b8685",
+      "status": "PREPARED",
+      "comparisonRunId": "cmprun_15cbf3a3-4283-4fbb-ac9e-bcb33f1cda06",
+      "enrichmentRunId": "econrun_12b247d8-0045-4032-bd3b-35bdb04568cd",
+      "preparedByMembershipId": "membership_horizon_mei",
+      "expiresAtStoredTimestamp": "2026-11-17 03:45:06.711",
+      "evidenceCount": 15,
+      "actionCount": 0
+    },
+    {
+      "proposalKey": "proposal_a13079aa-53fc-452b-b29c-98f1b2534d17",
+      "status": "PREPARED",
+      "comparisonRunId": "cmprun_e828539a-1a52-4a4d-9199-e0720d616acd",
+      "enrichmentRunId": "econrun_0c62be3f-d058-47b0-b40a-ef4dd3f7e3b8",
+      "preparedByMembershipId": "membership_horizon_mei",
+      "expiresAtStoredTimestamp": "2026-11-17 04:04:46.734",
+      "evidenceCount": 15,
+      "actionCount": 0
+    },
+    {
+      "proposalKey": "proposal_7a0f00b3-ecf1-4a51-92d5-9d5bb8efce52",
+      "status": "CONFIRMED",
+      "comparisonRunId": "cmprun_cccd7540-1086-4695-b5a1-0bb149882e5a",
+      "enrichmentRunId": "econrun_ee7587fa-b081-400c-84d7-d2207fd95522",
+      "preparedByMembershipId": "membership_horizon_mei",
+      "expiresAtStoredTimestamp": "2026-11-17 04:17:42.333",
+      "evidenceCount": 15,
+      "actionCount": 1
+    },
+    {
+      "proposalKey": "proposal_04421ecd-82e3-433b-b860-6294eda80eae",
+      "status": "CONFIRMED",
+      "comparisonRunId": "cmprun_b590fd0d-d5a2-488e-86d1-1668286da600",
+      "enrichmentRunId": "econrun_701125dd-dc06-4efc-bac4-f717224a6c89",
+      "preparedByMembershipId": "membership_horizon_mei",
+      "expiresAtStoredTimestamp": "2026-11-17 04:19:03.316",
+      "evidenceCount": 15,
+      "actionCount": 1
+    },
+    {
+      "proposalKey": "proposal_d34f75fa-4967-4863-a7ab-4eca12145c91",
+      "status": "CONFIRMED",
+      "comparisonRunId": "cmprun_d3b0e536-a8e1-442b-958d-c00a2399e9ce",
+      "enrichmentRunId": "econrun_17d220ed-8c11-428f-bd7d-9ec1c728dd6b",
+      "preparedByMembershipId": "membership_horizon_finance",
+      "expiresAtStoredTimestamp": "2026-11-17 04:20:33.388",
+      "evidenceCount": 15,
+      "actionCount": 1
+    },
+    {
+      "proposalKey": "proposal_0a128fc2-d36f-4b8d-83ee-e26ba681c72c",
+      "status": "CONFIRMED",
+      "comparisonRunId": "cmprun_d1bc5a2e-b231-4d6a-a28b-7663da58e442",
+      "enrichmentRunId": "econrun_794af538-e070-4a2d-8e64-28b2f43938d6",
+      "preparedByMembershipId": "membership_horizon_finance",
+      "expiresAtStoredTimestamp": "2026-11-17 04:21:03.326",
+      "evidenceCount": 15,
+      "actionCount": 1
+    },
+    {
+      "proposalKey": "proposal_532619ac-43cf-4649-96a1-848375c4cc56",
+      "status": "CONFIRMED",
+      "comparisonRunId": "cmprun_fd24eb21-21d1-4bf0-9051-c687c1d54428",
+      "enrichmentRunId": "econrun_3bcffd34-ee80-488a-bb7d-695438159e17",
+      "preparedByMembershipId": "membership_horizon_admin",
+      "expiresAtStoredTimestamp": "2026-11-17 04:22:12.894",
+      "evidenceCount": 15,
+      "actionCount": 1
+    },
+    {
+      "proposalKey": "proposal_c4d5cfbe-ae40-42e9-b61f-31382a1619ff",
+      "status": "CONFIRMED",
+      "comparisonRunId": "cmprun_f4d6f606-b052-437f-8af2-5d3ed83de585",
+      "enrichmentRunId": "econrun_4acbb71a-10e0-4d06-b31b-e1b479d049f9",
+      "preparedByMembershipId": "membership_horizon_admin",
+      "expiresAtStoredTimestamp": "2026-11-17 04:22:33.345",
+      "evidenceCount": 15,
+      "actionCount": 1
+    },
+    {
+      "proposalKey": "proposal_c91f8ac3-cdec-4b8d-ba16-96c25cdda31f",
+      "status": "CONFIRMED",
+      "comparisonRunId": "cmprun_13108468-ed64-4296-a0a2-7d9310d4d574",
+      "enrichmentRunId": "econrun_c40f0c8e-5310-4ec8-a344-b25c79a6bea5",
+      "preparedByMembershipId": "membership_horizon_mei",
+      "expiresAtStoredTimestamp": "2026-11-17 04:24:13.091",
+      "evidenceCount": 15,
+      "actionCount": 1
+    },
+    {
+      "proposalKey": "proposal_448e24db-1f5b-4ce4-9454-9d2900a42d06",
+      "status": "PREPARED",
+      "comparisonRunId": "cmprun_3402bed6-25cc-4941-afa7-7a8f53376089",
+      "enrichmentRunId": "econrun_da840572-fd32-40d2-84ac-51a363cc3244",
+      "preparedByMembershipId": "membership_horizon_mei",
+      "expiresAtStoredTimestamp": "2026-11-17 04:32:02.759",
+      "evidenceCount": 15,
+      "actionCount": 0
+    }
+  ],
+  "temporaryConflicts": 0,
+  "temporaryFunctions": 0,
+  "allActionsAtomic": true,
+  "oneConsumedPerAction": true
+}

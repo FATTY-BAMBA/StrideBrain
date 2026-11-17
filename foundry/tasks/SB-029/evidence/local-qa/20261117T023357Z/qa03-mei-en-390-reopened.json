@@ -1,0 +1,36 @@
+{
+  "at": "2026-11-17T03:48:59.821Z",
+  "persona": "mei",
+  "dialogs": [
+    {
+      "clientHeight": 844,
+      "name": "internal-review-heading",
+      "rect": {
+        "bottom": 844,
+        "height": 844,
+        "left": 0,
+        "right": 390,
+        "top": 0,
+        "width": 390,
+        "x": 0,
+        "y": 0
+      },
+      "scrollHeight": 1998
+    }
+  ],
+  "documentWidth": 390,
+  "fields": [],
+  "focus": {
+    "id": "internal-review-heading",
+    "tag": "H2",
+    "text": "Internal review action created"
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nXinyi Flagship Renovation\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nOpen\nReview imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2026-11-17\nOpen receipt\nOpen\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\nAssignee\nAlex Chen\nDue date\nNo due date\nOpen receipt\nOpen\nValidate imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2026-11-24\nOpen receipt\nInternal review action created\n\nThis receipt records the action saved to the project.\n\nEnglish\n繁體中文\nClose\nReview imported-stone and lighting assumptions for Xinyi quote v3\n\nValidate the imported-stone and lighting assumptions using the linked historical evidence.\n\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\n\nLighting quoted price differs by +9.4% from eligible quoted-price history.\n\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\n\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\n\nComparison: cmprun_cccd7540-1086-4695-b5a1-0bb149882e5a; economics enrichment: econrun_ee7587fa-b081-400c-84d7-d2207fd95522.\n\nThis creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally.\n\nHistorical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid.\n\nAction reference\naction_c9f661a2-7b24-4de6-9e66-4989f4ac5836\nProject\nXinyi Flagship Renovation\nAssignee\nIris Huang\nDue date\n2026-11-17\nStatus\nOpen\nCreated\n17 Nov 2026, 11:48\nCreated by\nMei Lin\nAuthorized evidence references\n15\nSource comparison\ncmprun_cccd7540-1086-4695-b5a1-0bb149882e5a\nSource economics review\neconrun_ee7587fa-b081-400c-84d7-d2207fd95522\nReturn to source comparison\nView project actions",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?run=cmprun_cccd7540-1086-4695-b5a1-0bb149882e5a&economics=econrun_ee7587fa-b081-400c-84d7-d2207fd95522&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_c9f661a2-7b24-4de6-9e66-4989f4ac5836",
+  "viewport": {
+    "dpr": 1,
+    "height": 844,
+    "width": 390
+  }
+}

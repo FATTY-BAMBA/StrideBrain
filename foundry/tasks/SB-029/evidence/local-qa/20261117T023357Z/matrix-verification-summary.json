@@ -1,0 +1,84 @@
+{
+  "f05": {
+    "exactCases": 32,
+    "focusInsideAndVisible": true,
+    "errorRoleAndHeadingAssociation": true,
+    "formDescriptionProbe": "The old helper queried the wrong form selector and returned null. This field earns no browser proof. Source and component tests corroborate form association, not screen-reader announcements.",
+    "permissionCode": "ACTION_NOT_AUTHORIZED; access-changed filenames describe the user-visible condition, not an observed ACCESS_CHANGED service enum."
+  },
+  "pending": {
+    "cases": 8,
+    "allFieldsDisabledOrAriaDisabled": true,
+    "allDialogBusy": true,
+    "viewportMatches": true
+  },
+  "zhPanelSweep": {
+    "uniquePanels": 41,
+    "geometrySamples": 164,
+    "horizontalOverflowEntries": 0,
+    "knownStringRegexIsNotAcceptance": "Original targeted regex missed programmeWeeks; broad text review found F-03. See findings.json."
+  },
+  "crossTenantPairs": [
+    {
+      "locale": "en",
+      "type": "action",
+      "sameAfterPermittedNormalization": true
+    },
+    {
+      "locale": "en",
+      "type": "comparison",
+      "sameAfterPermittedNormalization": true
+    },
+    {
+      "locale": "en",
+      "type": "enrichment",
+      "sameAfterPermittedNormalization": true
+    },
+    {
+      "locale": "en",
+      "type": "evidenceClaim",
+      "sameAfterPermittedNormalization": true
+    },
+    {
+      "locale": "en",
+      "type": "project",
+      "sameAfterPermittedNormalization": true
+    },
+    {
+      "locale": "en",
+      "type": "proposal",
+      "sameAfterPermittedNormalization": true
+    },
+    {
+      "locale": "zh-TW",
+      "type": "action",
+      "sameAfterPermittedNormalization": true
+    },
+    {
+      "locale": "zh-TW",
+      "type": "comparison",
+      "sameAfterPermittedNormalization": true
+    },
+    {
+      "locale": "zh-TW",
+      "type": "enrichment",
+      "sameAfterPermittedNormalization": true
+    },
+    {
+      "locale": "zh-TW",
+      "type": "evidenceClaim",
+      "sameAfterPermittedNormalization": true
+    },
+    {
+      "locale": "zh-TW",
+      "type": "project",
+      "sameAfterPermittedNormalization": true
+    },
+    {
+      "locale": "zh-TW",
+      "type": "proposal",
+      "sameAfterPermittedNormalization": true
+    }
+  ],
+  "normalization": "Only correlation UUIDs and the selector supplied by the request itself were normalized; protected business content was not removed."
+}

@@ -1,0 +1,54 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:08:09.251Z",
+  "caseId": "deny-create-1794884869460",
+  "kinds": [
+    "deny-create"
+  ],
+  "restored": true,
+  "restorationVerification": [
+    {
+      "table": "MembershipCapabilityGrant",
+      "id": "qa_sb029_retest_mei_action_internal_review_create",
+      "operation": "INSERT",
+      "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+      "beforeNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "restoredNormalizedSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "fieldEquality": {
+        "ownedTemporaryRowAbsent": true
+      },
+      "matched": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "countsAfter": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "noBusinessWrites": true,
+  "targetDescriptions": [
+    {
+      "table": "MembershipCapabilityGrant",
+      "id": "qa_sb029_retest_mei_action_internal_review_create",
+      "fields": [
+        "id",
+        "organizationId",
+        "membershipId",
+        "capability",
+        "effect",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  ]
+}

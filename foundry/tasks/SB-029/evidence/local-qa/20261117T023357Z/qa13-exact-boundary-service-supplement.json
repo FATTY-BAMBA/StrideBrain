@@ -1,0 +1,98 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:45:48.953Z",
+  "executionMode": "EXISTING_SERVICE_CLOCK_INJECTION_WITH_REAL_POSTGRES",
+  "productionClockChanged": false,
+  "browserAcceptanceCredit": false,
+  "proposalKey": "proposal_1149e1c6-177c-449e-8153-9f84324b8685",
+  "metadata": {
+    "status": "PREPARED",
+    "createdAt": "2026-11-17 03:15:06.711",
+    "expiresAt": "2026-11-17 03:45:06.711"
+  },
+  "results": [
+    {
+      "name": "before",
+      "locale": "en",
+      "clock": "2026-11-17T03:45:06.710Z",
+      "offsetMilliseconds": -1,
+      "reopen": "PREPARED",
+      "confirmationProvided": false,
+      "confirm": "VALIDATION_FAILED",
+      "expectedOpen": "PREPARED",
+      "expectedConfirm": "VALIDATION_FAILED"
+    },
+    {
+      "name": "before",
+      "locale": "zh-TW",
+      "clock": "2026-11-17T03:45:06.710Z",
+      "offsetMilliseconds": -1,
+      "reopen": "PREPARED",
+      "confirmationProvided": false,
+      "confirm": "VALIDATION_FAILED",
+      "expectedOpen": "PREPARED",
+      "expectedConfirm": "VALIDATION_FAILED"
+    },
+    {
+      "name": "exact",
+      "locale": "en",
+      "clock": "2026-11-17T03:45:06.711Z",
+      "offsetMilliseconds": 0,
+      "reopen": "PROPOSAL_EXPIRED",
+      "confirmationProvided": true,
+      "confirm": "PROPOSAL_EXPIRED",
+      "expectedOpen": "PROPOSAL_EXPIRED",
+      "expectedConfirm": "PROPOSAL_EXPIRED"
+    },
+    {
+      "name": "exact",
+      "locale": "zh-TW",
+      "clock": "2026-11-17T03:45:06.711Z",
+      "offsetMilliseconds": 0,
+      "reopen": "PROPOSAL_EXPIRED",
+      "confirmationProvided": true,
+      "confirm": "PROPOSAL_EXPIRED",
+      "expectedOpen": "PROPOSAL_EXPIRED",
+      "expectedConfirm": "PROPOSAL_EXPIRED"
+    },
+    {
+      "name": "after",
+      "locale": "en",
+      "clock": "2026-11-17T03:45:06.712Z",
+      "offsetMilliseconds": 1,
+      "reopen": "PROPOSAL_EXPIRED",
+      "confirmationProvided": true,
+      "confirm": "PROPOSAL_EXPIRED",
+      "expectedOpen": "PROPOSAL_EXPIRED",
+      "expectedConfirm": "PROPOSAL_EXPIRED"
+    },
+    {
+      "name": "after",
+      "locale": "zh-TW",
+      "clock": "2026-11-17T03:45:06.712Z",
+      "offsetMilliseconds": 1,
+      "reopen": "PROPOSAL_EXPIRED",
+      "confirmationProvided": true,
+      "confirm": "PROPOSAL_EXPIRED",
+      "expectedOpen": "PROPOSAL_EXPIRED",
+      "expectedConfirm": "PROPOSAL_EXPIRED"
+    }
+  ],
+  "countsBefore": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "countsAfter": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "noBusinessWrites": true,
+  "beforeConfirmationNote": "Before-boundary probe deliberately omits explicit confirmation; actual successful creation was separately exercised in the browser. Exact and after probes submit otherwise valid confirmation."
+}

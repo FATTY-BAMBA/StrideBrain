@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-17T03:48:28.794Z",
+  "persona": "mei",
+  "dialogs": [],
+  "documentWidth": 390,
+  "fields": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": ""
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nXinyi Flagship Renovation\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nOpen\nReview imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2026-11-17\nOpen receipt\nOpen\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\nAssignee\nAlex Chen\nDue date\nNo due date\nOpen receipt\nOpen\nValidate imported-stone and lighting assumptions for Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2026-11-24\nOpen receipt",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?run=cmprun_cccd7540-1086-4695-b5a1-0bb149882e5a&economics=econrun_ee7587fa-b081-400c-84d7-d2207fd95522&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+  "viewport": {
+    "dpr": 1,
+    "height": 844,
+    "width": 390
+  }
+}

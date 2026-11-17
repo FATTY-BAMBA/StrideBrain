@@ -1,0 +1,43 @@
+{
+  "at": "2026-11-17T03:43:31.814Z",
+  "persona": "northern",
+  "selectorCase": {
+    "actor": "northern",
+    "locale": "zh-TW",
+    "type": "action",
+    "existence": "missing",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_d4a819ed-3ceb-4cd8-83cb-3c0a92efef32"
+  },
+  "dialogs": [
+    {
+      "clientHeight": 900,
+      "name": "internal-review-heading",
+      "rect": {
+        "bottom": 900,
+        "height": 900,
+        "left": 760,
+        "right": 1440,
+        "top": 0,
+        "width": 680,
+        "x": 760,
+        "y": 0
+      },
+      "scrollHeight": 900
+    }
+  ],
+  "documentWidth": 1440,
+  "fields": [],
+  "focus": {
+    "id": "internal-review-heading",
+    "tag": "H2",
+    "text": "目前無法查看回執"
+  },
+  "locale": "zh-Hant",
+  "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n內部審查事項\n\n開啟已儲存回執以檢視詳情，或返回來源比較。\n\n依您目前的權限，無法查看或建立此事項。\n\n目前無法查看回執\n\n目前無法顯示這份回執。請返回您有權存取的專案，查看可用的事項。\n\nEnglish\n繁體中文\n關閉",
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?action=action_d4a819ed-3ceb-4cd8-83cb-3c0a92efef32",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "method": "Computed DOM text color against nearest opaque flat background; limited to captured review dialog samples, not whole-application certification.",
+  "samples": [
+    {
+      "text": "檢視內部審查事項",
+      "color": "rgb(23, 37, 58)",
+      "background": "rgb(251, 252, 254)",
+      "ratio": 15.018,
+      "atLeast4_5": true
+    },
+    {
+      "text": "建立事項前，請先檢視資料依據與不確定性。",
+      "color": "rgb(82, 97, 120)",
+      "background": "rgb(251, 252, 254)",
+      "ratio": 6.125,
+      "atLeast4_5": true
+    },
+    {
+      "text": "關閉",
+      "color": "rgb(23, 37, 58)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 15.417,
+      "atLeast4_5": true
+    },
+    {
+      "text": "標題",
+      "color": "rgb(23, 37, 58)",
+      "background": "rgb(251, 252, 254)",
+      "ratio": 15.018,
+      "atLeast4_5": true
+    },
+    {
+      "text": "確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+      "color": "rgb(82, 97, 120)",
+      "background": "rgb(251, 252, 254)",
+      "ratio": 6.125,
+      "atLeast4_5": true
+    },
+    {
+      "text": "審查目的",
+      "color": "rgb(23, 37, 58)",
+      "background": "rgb(251, 252, 254)",
+      "ratio": 15.018,
+      "atLeast4_5": true
+    },
+    {
+      "text": "確認佐證資料，並記錄內部審查需要釐清的問題。",
+      "color": "rgb(82, 97, 120)",
+      "background": "rgb(251, 252, 254)",
+      "ratio": 6.125,
+      "atLeast4_5": true
+    },
+    {
+      "text": "可選擇審查用語。已查證的內容與不確定性說明會一併保留，無法在此變更。",
+      "color": "rgb(82, 97, 120)",
+      "background": "rgb(251, 252, 254)",
+      "ratio": 6.125,
+      "atLeast4_5": true
+    },
+    {
+      "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。",
+      "color": "rgb(36, 79, 160)",
+      "background": "rgb(242, 246, 251)",
+      "ratio": 7.164,
+      "atLeast4_5": true
+    },
+    {
+      "text": "照明報價與符合條件的歷史報價比較，差異為 +9.4%。",
+      "color": "rgb(36, 79, 160)",
+      "background": "rgb(242, 246, 251)",
+      "ratio": 7.164,
+      "atLeast4_5": true
+    },
+    {
+      "text": "照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。",
+      "color": "rgb(36, 79, 160)",
+      "background": "rgb(242, 246, 251)",
+      "ratio": 7.164,
+      "atLeast4_5": true
+    },
+    {
+      "text": "目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。",
+      "color": "rgb(36, 79, 160)",
+      "background": "rgb(242, 246, 251)",
+      "ratio": 7.164,
+      "atLeast4_5": true
+    },
+    {
+      "text": "承辦人",
+      "color": "rgb(23, 37, 58)",
+      "background": "rgb(251, 252, 254)",
+      "ratio": 15.018,
+      "atLeast4_5": true
+    },
+    {
+      "text": "到期日",
+      "color": "rgb(23, 37, 58)",
+      "background": "rgb(251, 252, 254)",
+      "ratio": 15.018,
+      "atLeast4_5": true
+    },
+    {
+      "text": "非必填。請輸入 2026-11-17 至 2027-11-17 之間的日期，或保留空白。",
+      "color": "rgb(82, 97, 120)",
+      "background": "rgb(251, 252, 254)",
+      "ratio": 6.125,
+      "atLeast4_5": true
+    },
+    {
+      "text": "清除到期日",
+      "color": "rgb(36, 79, 160)",
+      "background": "rgb(251, 252, 254)",
+      "ratio": 7.574,
+      "atLeast4_5": true
+    },
+    {
+      "text": "⚠ 確認後將建立持續保存的內部事項及稽核紀錄；無法在此畫面撤銷建立。此操作不會核准報價，也不會傳送訊息。",
+      "color": "rgb(101, 71, 0)",
+      "background": "rgb(255, 247, 230)",
+      "ratio": 8.025,
+      "atLeast4_5": true
+    },
+    {
+      "text": "我已檢視資料依據與限制，並確認建立此內部審查事項。",
+      "color": "rgb(23, 37, 58)",
+      "background": "rgb(251, 252, 254)",
+      "ratio": 15.018,
+      "atLeast4_5": true
+    },
+    {
+      "text": "建立內部審查事項",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgb(23, 79, 180)",
+      "ratio": 7.463,
+      "atLeast4_5": true
+    },
+    {
+      "text": "取消審查",
+      "color": "rgb(23, 37, 58)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 15.417,
+      "atLeast4_5": true
+    }
+  ],
+  "minimum": 6.125,
+  "allAtLeast4_5": true
+}

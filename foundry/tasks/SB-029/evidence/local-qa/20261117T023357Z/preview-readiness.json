@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-17T02:36:19.494751+00:00",
+  "checks": [
+    {
+      "route": "/en/projects/PRJ-XINYI-026",
+      "status": 200
+    },
+    {
+      "route": "/zh-TW/projects/PRJ-XINYI-026",
+      "status": 200
+    }
+  ],
+  "head": "211578dd4b4e12169a182c498254bb571cadad70",
+  "buildId": "arWM81fSt1-zRkeglr43Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "data": "DEMO_SYNTHETIC",
+  "initialActiveSessions": 0,
+  "sessionIssuance": "After migrations, repeated seeds, SQL checks, build and initial database baseline; before HTTP route check."
+}

@@ -1,0 +1,26 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:09:51.711Z",
+  "temporaryTriggerAbsent": true,
+  "temporaryFunctionAbsent": true,
+  "phase": "after-action",
+  "caseId": "after-action-1794884966965",
+  "mapping": "After Action insert, which atomically includes evidence snapshot; covers shared physical write underlying AFTER_ACTION/AFTER_EVIDENCE, not two distinct browser injections.",
+  "restored": true,
+  "countsBefore": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "countsAfter": {
+    "actions": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "noBusinessWrites": true
+}

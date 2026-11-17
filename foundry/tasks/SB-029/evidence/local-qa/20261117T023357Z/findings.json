@@ -1,0 +1,125 @@
+[
+  {
+    "id": "F-03",
+    "status": "OPEN_RESIDUAL",
+    "severity": "P2",
+    "scenarioIds": [
+      "QA-16",
+      "QA-18"
+    ],
+    "title": "Internal programmeWeeks field name remains in normal zh-TW evidence",
+    "persona": "mei / 林美玲",
+    "locale": "zh-TW",
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        320,
+        740
+      ]
+    ],
+    "steps": [
+      "Open assigned Xinyi comparison with the top three precedents.",
+      "In the structured comparison, open Programme / 工期 16 週 evidence.",
+      "Read Supporting sources / 支持資料來源 → Exact locator / 精確位置."
+    ],
+    "expected": "Natural Taiwan Traditional Chinese locator wording such as 工期（週）; no internal field identifier in normal mode.",
+    "observed": "紀錄類型: 來源紀錄 · 欄位: programmeWeeks appears for the four project sources.",
+    "acceptanceCriteria": [
+      "QA-16 natural zh-TW parity without developer/policy plumbing",
+      "QA-18 evidence/factor regression integrity",
+      "F-03 complete localization requirement"
+    ],
+    "screenshots": [
+      "screenshots/f03-programme-field-leak-visible.jpg",
+      "screenshots/f03-claim-00-1440.jpg",
+      "screenshots/f03-claim-00-768.jpg",
+      "screenshots/f03-claim-00-390.jpg",
+      "screenshots/f03-claim-00-320.jpg"
+    ],
+    "evidence": [
+      "f03-claim-00.json",
+      "f03-panel-audit.json"
+    ],
+    "impact": "Bounded terminology defect; numerical meaning, uncertainty and authorization remain intact. Return for repair; no acceptance granted."
+  },
+  {
+    "id": "F-07",
+    "status": "OPEN",
+    "severity": "P2",
+    "scenarioIds": [
+      "QA-16",
+      "QA-18"
+    ],
+    "title": "Lighting forecast/actual table evidence entry opens unavailable panel",
+    "persona": "mei / 林美玲",
+    "locale": [
+      "en",
+      "zh-TW"
+    ],
+    "viewports": {
+      "en": [
+        [
+          1440,
+          900
+        ]
+      ],
+      "zh-TW": [
+        [
+          1440,
+          900
+        ],
+        [
+          768,
+          1024
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          320,
+          740
+        ]
+      ]
+    },
+    "steps": [
+      "Open current authorized Xinyi comparison with the top three precedents.",
+      "In Lighting/electrical · forecast / reconciled actual row, select active Forecast direct cost NT$3,672/m² · Insufficient evidence.",
+      "Observe the unavailable evidence panel. Close it.",
+      "In Structured review → Evidence gaps, open Inspect evidence; compare the valid Lighting actual-cost insufficiency panel."
+    ],
+    "expected": "The table evidence affordance opens the authorized insufficiency explanation with two eligible observations of three required, without inventing a supported range.",
+    "observed": "Table selects XINYI_LIGHTING_ELECTRICAL_FORECAST_ACTUAL_VARIANCE and displays generic unavailable text. Evidence-gaps entry selects XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT and correctly shows two-of-three plus sources.",
+    "acceptanceCriteria": [
+      "QA-18 prior evidence behavior remains intact",
+      "QA-16 evidence journey and bilingual layout",
+      "Evidence affordance preserves exact claim/source meaning"
+    ],
+    "screenshots": [
+      "screenshots/f07-lighting-table-unavailable-en-settled.jpg",
+      "screenshots/f07-lighting-gap-supported-en.jpg",
+      "screenshots/f03-claim-21-1440.jpg",
+      "screenshots/f03-claim-21-768.jpg",
+      "screenshots/f03-claim-21-390.jpg",
+      "screenshots/f03-claim-21-320.jpg",
+      "screenshots/f03-lighting-insufficiency-card-320.jpg"
+    ],
+    "evidence": [
+      "f07-lighting-table-unavailable-en-settled.json",
+      "f07-lighting-gap-supported-en.json",
+      "f03-claim-21.json"
+    ],
+    "impact": "Evidence navigation defect with a functioning gap-card path. Abstention remains visible and no unsupported actual-cost range/action is created."
+  }
+]

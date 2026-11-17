@@ -1,0 +1,127 @@
+SB-029 FINAL LOCAL BROWSER RETEST — REVISE
+Run: 20261117T023357Z
+Tested head / required evidence parent: 211578dd4b4e12169a182c498254bb571cadad70
+BUILD_ID: arWM81fSt1-zRkeglr43Z
+Evidence branch: qa/sb-029-local-20261117T023357Z
+Source manifest SHA-256: 447229ea5bdd0efdf0f3f7ba6738f11bdf475c8c660c1010d8efb5dc4432b090
+Counts: 14 PASS / 2 FAIL / 2 PARTIAL / 0 BLOCKED
+
+No Stage 8 acceptance, merge or release-readiness claim. PR #31 remains OPEN, DRAFT, UNMERGED. Product source unchanged.
+This is new automated observation in the same root thread that previously coordinated repairs; independent human review remains required.
+
+SCENARIOS
+
+QA-01 PASS — Authorized preparation is preparatory only
+Mei desktop/mobile and Finance/Admin desktop, English and zh-TW; fresh comparison, supporting evidence, prepared draft and independent before-confirmation counts. No Action/receipt/success audit at preparation.
+
+QA-02 PARTIAL — Bounded edits and mandatory content
+All three approved title/intent options inspected in both locales. 32 invalid HTTP payloads rejected with no writes. Browser validation for missing consent, yesterday, day366 and invalid Gregorian date focused associated fields. Today/+365 saved through documented bounded route and actual confirmation; clear date saved; native Arrow-key date edit verified later. Leap-day and Taipei midnight UI boundary remain manual.
+
+QA-03 PASS — Explicit confirmation and durable receipt
+Nine deliberate synthetic actions; each one atomic action, 15 evidence links, one audit, one consumed proposal and one receipt. Role/locale journeys, Actions reopen, workspace persistence and focused receipt heading observed. Freshness preserves an authorized receipt; required-source access loss denies it neutrally.
+
+QA-04 PASS — Cancel, Escape and evidence round trip
+Keyboard opening, evidence Enter/return, button cancellation and Escape observed in both locales. One modal at a time, draft retained through evidence, focus returns to trigger; stale-state Escape falls back to comparison heading when trigger is removed. No cancellation write.
+
+QA-05 PASS — Locale and route restoration
+Nondefault title/intent/assignee plus cleared date survived rapid mobile locale/evidence/history transitions. Final desktop native Arrow-key date change to 2026-12-24 plus CHECK/RECORD_QUESTIONS/Alex survived immediate locale switch, evidence, refresh, Back/Forward and return to English on the same proposal. Copied receipt/replay remained the same action. Earlier unsupported date-fill attempts are diagnostic, not passes.
+
+QA-06 PASS — Retry, concurrent submit and replay
+Eight actual browser confirmations of one proposal across both locales/four viewports yielded one creation and seven same-action replays. HTTP tests cover changed title/date, malformed/replacement key, locale, natural expiry and later source freshness. No second consumption. Concurrent tabs were used, not a claimed double-click trace.
+
+QA-07 PASS — Viewer and session denial
+Viewer positive workspace with sensitive values unavailable, denied/missing proposal/evidence/receipt pairs. Actual browser confirmation and reopen under cleared, naturally expired and revoked sessions. Expired/revoked direct POST supplement and 76 tenant/unauthenticated requests deny safely.
+
+QA-08 PASS — Cross-tenant selectors
+Northern positive own-project control plus 24 foreign/missing browser routes for project/comparison/enrichment/proposal/action/evidence in both locales; reverse Mei project pairs and assignee HTTP negatives. Normalized pairs equal; no hidden content. Northern has no eligible quote/run/action fixture, so reciprocal nonexistent business histories were not invented.
+
+QA-09 PASS — Assignee authorization
+Six independently restored chosen-assignee invalidations in both locales, including inactive membership/person, removed assignment, evidence denial, actual-read assignment and explicit actual-read denial. Locked default without assign permission tested before/after invalidation; no alternate browsing and safe field/linked fallback focus. Batch query counts remain constant with 20 more candidates.
+
+QA-10 PASS — Quote, project and run staleness
+Eight separately restored cases: quote version, programme input, project status, comparison policy/fingerprint, enrichment calculation/fingerprint/result. Both locales reject confirmation, retain draft, focus visible recovery, and safely reopen stale proposal.
+
+QA-11 PASS — Evidence authority, access and availability
+Six material required-source mutations tested first for F-06, then actual confirmation/reopen/evidence in both locales: authority, freshness, conflict, supersession, access, availability. No write. Authorized stored values remain with warning; lost-access panel removes source preview.
+
+QA-12 PASS — Permission downgrade
+Seven restored conditions: propose/create denies, assignment removal, action flag, actual-read deny/assignment false, evidence-read deny. Both locales old client confirmation, proposal reopen and receipt reopen reauthorize safely. Existing client draft remains during recoverable error; reloaded unauthorized view clears sensitive data.
+
+QA-13 PASS — Expiry and consumed proposal
+Actual browser opened third proposal before natural 30-minute expiry, then confirmed/reopened after expiry in both locales without creation. Exact -1/0/+1ms service-clock probes are explicitly supplemental: before uses no consent, exact/after reject otherwise valid confirmation. Consumed/new-key and original-key authorized replay covered.
+
+QA-14 PASS — Safe failure and rollback
+Actual browser both locales under isolated database faults after action/evidence physical write, audit, consumption, receipt and deferred commit. All roll back with safe error and preserved draft/focus. After removal, keyboard-reachable retry created one durable action. No product debug endpoint or guard disabling.
+
+QA-15 PARTIAL — Keyboard, focus, semantics and zoom
+32 generic-error cases have visible focused alert inside dialog. Native bilingual 48-step Tab cycles stay inside/visible; Arrow-key date edit, cancel/Escape, field labels/associations and receipt focus observed. Sampled contrast passes. Screen-reader announcements, physical device behavior, exact 200% zoom and full reduced motion remain NOT_VERIFIED_MANUAL_REQUIRED; the generic form-description helper returned null and is not credited.
+
+QA-16 FAIL — Responsive Taiwan Traditional Chinese layout
+Four exact CSS viewport sizes exercised for zh-TW 41 unique claim/factor panels, bilingual review/pending/errors/receipt. No panel child overflow in recorded geometry. Residual programmeWeeks developer field leaks in normal Chinese; lighting table entry also unavailable. Physical keyboard occlusion/exact zoom remain manual.
+
+QA-17 PASS — Browser and PostgreSQL performance
+Six warmed browser samples retained separately. Thirty uncached unique server samples: proposal p95 123.733ms, confirmation p95 167.506ms; targets 500/800ms met. Evidence/assignee batching constant and concurrent p95 149.623ms. Provider credentials absent from tested runtime; this is not a packet capture.
+
+QA-18 FAIL — Prior-stage regression and excluded behavior
+Workspace/ranks 88/81/79/71/69/63, forecast vs actual/quote/offer labels, lighting 2/3 abstention and programme uncertainty preserved. No exposed approval/send/complete/provider control; no provider credentials and only internal actions created. Normal evidence journey still has F-03 and F-07. No claim of comprehensive outbound network capture.
+
+OPEN FINDINGS
+
+F-03 P2 — Internal programmeWeeks field name remains in normal zh-TW evidence
+Scenario IDs: QA-16, QA-18
+Persona: mei / 林美玲
+Locale: zh-TW
+Viewports: [[1440, 900], [768, 1024], [390, 844], [320, 740]]
+Acceptance criteria: QA-16 natural zh-TW parity without developer/policy plumbing; QA-18 evidence/factor regression integrity; F-03 complete localization requirement
+Expected: Natural Taiwan Traditional Chinese locator wording such as 工期（週）; no internal field identifier in normal mode.
+Observed: 紀錄類型: 來源紀錄 · 欄位: programmeWeeks appears for the four project sources.
+Reproduce: Open assigned Xinyi comparison with the top three precedents. → In the structured comparison, open Programme / 工期 16 週 evidence. → Read Supporting sources / 支持資料來源 → Exact locator / 精確位置.
+Evidence: screenshots/f03-programme-field-leak-visible.jpg, screenshots/f03-claim-00-1440.jpg, screenshots/f03-claim-00-768.jpg, screenshots/f03-claim-00-390.jpg, screenshots/f03-claim-00-320.jpg
+
+F-07 P2 — Lighting forecast/actual table evidence entry opens unavailable panel
+Scenario IDs: QA-16, QA-18
+Persona: mei / 林美玲
+Locale: ['en', 'zh-TW']
+Viewports: {'en': [[1440, 900]], 'zh-TW': [[1440, 900], [768, 1024], [390, 844], [320, 740]]}
+Acceptance criteria: QA-18 prior evidence behavior remains intact; QA-16 evidence journey and bilingual layout; Evidence affordance preserves exact claim/source meaning
+Expected: The table evidence affordance opens the authorized insufficiency explanation with two eligible observations of three required, without inventing a supported range.
+Observed: Table selects XINYI_LIGHTING_ELECTRICAL_FORECAST_ACTUAL_VARIANCE and displays generic unavailable text. Evidence-gaps entry selects XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT and correctly shows two-of-three plus sources.
+Reproduce: Open current authorized Xinyi comparison with the top three precedents. → In Lighting/electrical · forecast / reconciled actual row, select active Forecast direct cost NT$3,672/m² · Insufficient evidence. → Observe the unavailable evidence panel. Close it. → In Structured review → Evidence gaps, open Inspect evidence; compare the valid Lighting actual-cost insufficiency panel.
+Evidence: screenshots/f07-lighting-table-unavailable-en-settled.jpg, screenshots/f07-lighting-gap-supported-en.jpg, screenshots/f03-claim-21-1440.jpg, screenshots/f03-claim-21-768.jpg, screenshots/f03-claim-21-390.jpg, screenshots/f03-claim-21-320.jpg, screenshots/f03-lighting-insufficiency-card-320.jpg
+
+MANUAL VERIFICATION: NOT_VERIFIED_MANUAL_REQUIRED
+
+M-01 / QA-15 — Actual screen-reader announcements
+On exact-head preview, use VoiceOver+Chrome and NVDA+Chrome/Firefox with reviewed Mei session. In each locale, open review via keyboard, submit without consent, trigger stale/evidence/access/server error via operator, open/close evidence and create once. Verify dialog name, focused alert/field, linked error, pending state, receipt heading are announced once, with no hidden background disclosure; Escape returns to trigger. DOM role/focus does not establish speech.
+
+M-02 / QA-15, QA-16 — Physical mobile keyboard, touch and native picker
+On real iOS Safari and Android Chrome at 390/320 CSS widths, open the longest approved draft in both locales. Tap native date picker, select/clear a valid date, open the soft keyboard and scroll to warnings, consent, create/cancel and evidence close. Verify no occluded/overlapping controls, preserved draft through locale/evidence and comfortable touch targets. Desktop viewport sizing does not simulate native IME or touch.
+
+M-03 / QA-15, QA-16 — Exact 200 percent zoom
+Use a desktop browser window calibrated to 1280x800 content at 100%; set browser zoom to 200% through its visible menu, independently record actual CSS viewport and zoom. In both locales test review, validation, stale/server errors, evidence and receipt. Tab through every control, scroll warnings, verify reflow and focus visibility; reset zoom after. Viewport override is not equivalent to 200% browser zoom.
+
+M-04 / QA-15 — Reduced motion
+Enable OS Reduce Motion before opening the browser; verify prefers-reduced-motion reports reduce. In both locales open/close review/evidence, trigger loading/error and receipt. Observe transitions with and without preference; ensure reduced motion and no repeated focus stealing. Restore original preference.
+
+M-05 / QA-02 — Leap-day and Asia/Taipei midnight date boundaries
+On a disposable synthetic environment with an approved operator-controlled test clock and unchanged product code, exercise valid leap-day 2028-02-29 while it is within today..today+365, reject 2027-02-29, and prepare just before Asia/Taipei midnight then confirm just after. Verify min/max use confirmation-local today, default remains preparation+7, invalid date focuses localized associated error and creates no action. Repeat native keyboard/picker both locales and compare persisted local date. Do not change the host production clock.
+
+M-06 / QA-15 — Generic form-to-error description association
+With a fresh authorized draft, trigger each generic error and inspect the actual dialog form element (not a guessed form id). Verify aria-describedby includes review-error-summary and resolves to the visible alert; check screen-reader interaction. This run establishes focused alert/heading and field-specific associations; its generic form-description probe returned null and earns no browser association pass.
+
+M-07 / QA-16, QA-18 — Independent human Traditional Chinese and repair review
+Have a reviewer who did not author the repairs read all F-03 evidence, repair programmeWeeks and the lighting table entry on a new exact head, then retest affected panels at all four viewports. This automated run collected observations in the same root thread that previously coordinated repairs; it does not approve its own fixes or substitute for independent human review.
+
+RESTORATION AND INTEGRITY
+Before: 0 actions/proposals/consumed/receipts/audits/links. After: 9 actions, 12 proposals, 9 consumed, 9 receipts, 9 audits, 135 links. Three proposals remain unconsumed test history; no history deleted.
+All 45 mutation/fault cases restored; eight complete fixture-table hashes match initial values; zero temporary grants/conflicts/triggers/functions/locks. Four immutable guard definitions and eight migration hashes match unchanged source. SQL verification passes, including rolled-back audit update/delete guard probes.
+All 42 nonfixture sessions revoked; 13 operator-ledger sessions individually verified, helper sessions revoked in finally handlers. Seed-session digest captured immediately before closure, not falsely represented as a start-of-run baseline. Seed semantics independently verified.
+All 206 source fingerprints and 305 historical untracked file hashes unchanged. Both earlier published evidence refs preserved.
+
+PERFORMANCE
+Server n=30 uncached unique pairs, excluded warmup; proposal p95 123.733ms, confirmation p95 167.506ms; no per-evidence/per-assignee query growth. Six warmed browser samples are separate and heterogeneous; proposal p50 475.5ms p95 588ms; confirm p50 612.0ms p95 694ms. Artificial pending lock excluded.
+
+EVIDENCE INTERPRETATION
+612 original screenshots. See screenshot-review.json for loading, calibration and helper-diagnostic exclusions. HTTP/service/operator checks are labeled supplements and do not by themselves earn browser passes. F05 permission case emitted ACTION_NOT_AUTHORIZED; access-changed filename is descriptive. Generic formDescription=null is an instrumentation gap, not proof of association.
+QA-01 through QA-18 work continued after bounded P2 F03; the requested all-targeted-pass smoke precondition was not met. Regression observations are retained, not promoted to acceptance.
+Full reproduction/acceptance criteria and precise manual steps: findings.json and manual-verification.json. Sanitization result: PASS, no matching sensitive content found; see sanitization.json for scope and limitations. Artifact hashes: SHA256SUMS.txt. Files: FILES.txt.

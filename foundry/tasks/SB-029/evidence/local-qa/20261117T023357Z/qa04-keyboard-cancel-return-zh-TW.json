@@ -1,0 +1,138 @@
+{
+  "at": "2026-11-17T03:38:33.200Z",
+  "persona": "mei",
+  "dialogs": [],
+  "documentWidth": 1440,
+  "fields": [
+    {
+      "aria-invalid": null,
+      "checked": true,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": true,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": true,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": true,
+      "id": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": true,
+      "id": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": true,
+      "id": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": ""
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    }
+  ],
+  "focus": {
+    "id": "internal-review-entry",
+    "tag": "BUTTON",
+    "text": "建立內部審查事項"
+  },
+  "locale": "zh-Hant",
+  "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n歷史專案比較： 信義旗艦店裝修\n\nStrideBrain 以可解釋的固定規則排序已授權的歷史專案，清楚區分商務資料權威性，也會誠實呈現資料不足之處。\n\n產生時間\n2026年11月17日\n比較規則\n專案相似度\n已授權相似專案\n6\n已選歷史專案\n3/3\n商務資料狀態\n部分商務資料\n資料邊界\n禾序空間設計虛構示範資料，不是市場基準。\n\n我們以前做過類似的案子嗎？\n\n選擇要比較的歷史專案\n\n最多選擇三個專案。更新選擇會建立新的不可變更商務分析，但不會改變原本的相似度排序。\n\n3\n個已選\n·\n最多 3 個\n選擇要比較的歷史專案: 內湖科技旗艦店\n1\n高度相似\n內湖科技旗艦店\n臺北市內湖區\n610 m²\n2025年6月30日\n相似度分數\n88/100\n資料完整度\n100%\n歷史報價\n已核對實際成本\n供應商報價僅屬歷史資料，不得呈現為目前價格。\n查看比較因素\n選擇要比較的歷史專案: 中山生活概念店\n2\n高度相似\n中山生活概念店\n臺北市中山區\n590 m²\n2024年11月15日\n相似度分數\n81/100\n資料完整度\n100%\n歷史報價\n已核對實際成本\n查看比較因素\n選擇要比較的歷史專案: 南京品牌體驗中心\n3\n具參考價值\n南京品牌體驗中心\n臺北市松山區\n720 m²\n2026年2月10日\n相似度分數\n79/100\n資料完整度\n100%\n歷史報價\n已核對實際成本\n查看比較因素\n選擇要比較的歷史專案: 大安精品展示中心\n4\n具參考價值\n大安精品展示中心\n臺北市大安區\n520 m²\n2024年4月20日\n相似度分數\n71/100\n資料完整度\n100%\n查看比較因素\n選擇要比較的歷史專案: 松山門市改裝\n5\n具參考價值\n松山門市改裝\n臺北市松山區\n680 m²\n2025年2月28日\n相似度分數\n69/100\n資料完整度\n100%\n查看比較因素\n選擇要比較的歷史專案: 板橋概念店\n6\n部分相似\n板橋概念店\n新北市板橋區\n760 m²\n2023年9月30日\n相似度分數\n63/100\n資料完整度\n100%\n查看比較因素\n\n已選專案: PRJ-NEIHU-021, PRJ-ZHONGSHAN-018, PRJ-NANJING-023\n\n更新比較\n\n結構化比較\n\n結構化比較\n\n所有數值都來自已儲存的固定規則結果。歷史報價、預估成本、供應商報價與已核對實際成本會保持清楚區分。\n\n結構化比較\t信義旗艦店裝修\t內湖科技旗艦店\t中山生活概念店\t南京品牌體驗中心\n專案脈絡\n專案類型\t\n零售旗艦店\n\t\n零售旗艦店\n\t\n零售旗艦店\n\t\n零售旗艦店\n\n面積\t\n640 m²\n\t\n610 m²\n\t\n590 m²\n\t\n720 m²\n\n地點\t\n臺北市信義區\n\t\n臺北市內湖區\n\t\n臺北市中山區\n\t\n臺北市松山區\n\n完工時間\t\n進行中\n不適用\n\t\n2025年6月30日\n\t\n2024年11月15日\n\t\n2026年2月10日\n\n工期\t\n16 週\n目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。\n\t\n19–22 週\n已選歷史專案範圍\n\t\n19–22 週\n已選歷史專案範圍\n\t\n19–22 週\n已選歷史專案範圍\n\n整體商務比較\n報價 · 標準化\t\n報價\nNT$25,750 · 新台幣／m²\n+7.2% · NT$16,480,000\n\t\n報價\nNT$24,787 · 新台幣／m²\n資料足夠\n\t\n報價\nNT$23,644 · 新台幣／m²\n資料足夠\n\t\n報價\nNT$24,028 · 新台幣／m²\n資料足夠\n\n預估／已核對實際成本 · 標準化\t\n預估直接成本\nNT$19,766 · 新台幣／m²\n+6.0% · NT$12,650,000\n\t\n已核對實際成本\nNT$18,984 · 新台幣／m²\n資料足夠\n\t\n已核對實際成本\nNT$18,373 · 新台幣／m²\n資料足夠\n\t\n已核對實際成本\nNT$18,639 · 新台幣／m²\n資料足夠\n\n分類比較\n進口石材 · 報價\t\n報價\nNT$4,688 · 新台幣／m²\n+43.0% · NT$3,000,000\n\t\n報價\nNT$3,279 · 新台幣／m²\n資料足夠\n\t\n報價\nNT$3,220 · 新台幣／m²\n資料足夠\n\t\n報價\nNT$3,333 · 新台幣／m²\n資料足夠\n\n進口石材 · 預估／已核對實際成本\t\n預估直接成本\nNT$3,688 · 新台幣／m²\n+18.4% · NT$2,360,000\n\t\n已核對實際成本\nNT$3,115 · 新台幣／m²\n資料足夠\n\t\n已核對實際成本\nNT$3,390 · 新台幣／m²\n資料足夠\n\t\n已核對實際成本\nNT$2,917 · 新台幣／m²\n資料足夠\n\n燈具／電氣 · 報價\t\n報價\nNT$4,844 · 新台幣／m²\n+9.4% · NT$3,100,000\n\t\n報價\nNT$4,426 · 新台幣／m²\n資料足夠\n\t\n報價\nNT$4,820 · 新台幣／m²\n資料足夠\n\t\n報價\nNT$4,167 · 新台幣／m²\n資料足夠\n\n燈具／電氣 · 預估／已核對實際成本\t\n預估直接成本\nNT$3,672 · 新台幣／m²\n資料不足\n資料不足\n\t\n已核對實際成本\n資料不足\n2/3\n資料不足\n\t\n已核對實際成本\n資料不足\n2/3\n資料不足\n\t\n已核對實際成本\n資料不足\n2/3\n資料不足\n\n訂製木作 · 報價\t\n報價\nNT$5,938 · 新台幣／m²\n+1.8% · NT$3,800,000\n\t\n報價\nNT$5,902 · 新台幣／m²\n資料足夠\n\t\n報價\nNT$5,424 · 新台幣／m²\n資料足夠\n\t\n報價\nNT$5,833 · 新台幣／m²\n資料足夠\n\n訂製木作 · 預估／已核對實際成本\t\n預估直接成本\nNT$4,781 · 新台幣／m²\n-2.7% · NT$3,060,000\n\t\n已核對實際成本\nNT$4,918 · 新台幣／m²\n資料足夠\n\t\n已核對實際成本\nNT$4,915 · 新台幣／m²\n資料足夠\n\t\n已核對實際成本\nNT$4,444 · 新台幣／m²\n資料足夠\n\n資料依據與完整度\n供應商報價脈絡\t\n供應商報價\n無法使用\n無法使用\n\t\n供應商報價\n歷史／已過期\n2025年2月15日\n歷史／已過期\n\t\n供應商報價\n無法使用\n無法使用\n\t\n供應商報價\n無法使用\n無法使用\n\n資料依據與完整度\t\n部分商務資料\n\t\n報價與實際成本皆可用\n\t\n報價與實際成本皆可用\n\t\n報價與實際成本皆可用\n\n結構化審查\n\n結構化審查\n歷史資料顯示\n\n目前報價高於已選歷史專案的報價基準。 +7.2%\n\n查看資料依據\n歷史資料顯示\n\n目前預估直接成本高於符合條件的已核對實際成本基準。 +6.0%\n\n查看資料依據\n歷史資料顯示\n\n進口石材是資料支持最完整的主要差異，值得優先審查。 +18.4%\n\n查看資料依據\n重要差異\n\n目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。\n\n查看資料依據\n資料缺口\n\n燈具報價高於歷史報價，但已核對實際成本的資料量不足。 2/3\n\n查看資料依據\n建議下一步審查\n\n在內部核准報價前，先確認進口石材額度與燈具假設。\n\n禾序空間設計虛構示範資料，不是市場基準。\n部分分類沒有足夠的已核對實際成本資料。\n供應商報價僅屬歷史資料，不得呈現為目前價格。\n建立內部審查事項\n\n檢視已查證的內容、選擇用語與承辦人，再明確確認建立內部審查事項。\n\n建立內部審查事項",
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_15cbf3a3-4283-4fbb-ac9e-bcb33f1cda06&economics=econrun_12b247d8-0045-4032-bd3b-35bdb04568cd&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

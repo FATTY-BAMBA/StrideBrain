@@ -1,0 +1,91 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T02:49:42.743Z",
+  "counts": {
+    "actions": 1,
+    "proposals": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "organizations": [
+    {
+      "businessKey": "HORIZON_ATELIER",
+      "dataClassification": "DEMO_SYNTHETIC"
+    },
+    {
+      "businessKey": "NORTHERN_STUDIO",
+      "dataClassification": "DEMO_SYNTHETIC"
+    }
+  ],
+  "migrations": 8,
+  "guards": [
+    {
+      "tgname": "Action_stage8_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "AuditEvent_append_only",
+      "enabled": "O"
+    },
+    {
+      "tgname": "InternalReviewReceipt_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "ProposedAction_stage8_immutable",
+      "enabled": "O"
+    }
+  ],
+  "activeSessions": 1,
+  "temporaryGrants": 0,
+  "temporaryTriggers": 0,
+  "duplicates": [],
+  "actions": [
+    {
+      "actionKey": "action_d27cb3ce-01d4-46cf-809b-e3feece44c19",
+      "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+      "status": "OPEN",
+      "createdByMembershipId": "membership_horizon_mei",
+      "assigneeMembershipId": "membership_horizon_finance",
+      "creator": {
+        "en": "Mei Lin",
+        "zhTw": "林美玲"
+      },
+      "assignee": {
+        "en": "Iris Huang",
+        "zhTw": "黃怡君"
+      },
+      "titleKey": "VALIDATE",
+      "rationaleKey": "REVIEW_NEXT",
+      "storedDueDate": "2026-11-24",
+      "evidenceCount": 15,
+      "sameExactEvidenceRefs": true,
+      "proposalStatus": "CONFIRMED",
+      "receiptCount": 1,
+      "successfulAuditCount": 1,
+      "receiptLineageMatches": true
+    }
+  ],
+  "providerCredentialVariablesPresent": [],
+  "runtimeDirectoryMode": "700",
+  "environmentFileMode": "600",
+  "proposals": [
+    {
+      "proposalKey": "proposal_fe2095ac-701a-4913-821a-693825f6075f",
+      "status": "CONFIRMED",
+      "comparisonRunId": "cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08",
+      "enrichmentRunId": "econrun_8d29351b-aa3e-4738-928a-413be3397eab",
+      "preparedByMembershipId": "membership_horizon_mei",
+      "expiresAtStoredTimestamp": "2026-11-17 03:07:36.25",
+      "evidenceCount": 15,
+      "actionCount": 1
+    }
+  ],
+  "temporaryConflicts": 0,
+  "temporaryFunctions": 0,
+  "allActionsAtomic": true,
+  "oneConsumedPerAction": true
+}

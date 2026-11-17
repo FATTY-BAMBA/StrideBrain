@@ -1,0 +1,137 @@
+{
+  "at": "2026-11-17T02:45:23.585Z",
+  "name": "f03-claim-21",
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceMode=claim&evidenceClaim=XINYI_LIGHTING_ELECTRICAL_FORECAST_ACTUAL_VARIANCE&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__",
+  "text": "資料依據\n\n資料依據與計算過程\n關閉資料依據\n目前授權脈絡無法使用此資料依據選擇。\n目前授權脈絡無法使用此資料依據選擇。\nd08079b0-1147-4137-aff6-cc961dc3b77b",
+  "geometry": [
+    {
+      "closeButtons": [
+        {
+          "rect": {
+            "bottom": 84.390625,
+            "height": 44.390625,
+            "left": 1299.609375,
+            "right": 1420,
+            "top": 40,
+            "width": 120.390625,
+            "x": 1299.609375,
+            "y": 40
+          },
+          "text": "關閉資料依據"
+        }
+      ],
+      "horizontalOverflow": [],
+      "rect": {
+        "bottom": 900,
+        "height": 900,
+        "left": 960,
+        "right": 1440,
+        "top": 0,
+        "width": 480,
+        "x": 960,
+        "y": 0
+      },
+      "viewport": {
+        "h": 900,
+        "w": 1440
+      }
+    },
+    {
+      "closeButtons": [
+        {
+          "rect": {
+            "bottom": 84.390625,
+            "height": 44.390625,
+            "left": 627.609375,
+            "right": 748,
+            "top": 40,
+            "width": 120.390625,
+            "x": 627.609375,
+            "y": 40
+          },
+          "text": "關閉資料依據"
+        }
+      ],
+      "horizontalOverflow": [],
+      "rect": {
+        "bottom": 1024,
+        "height": 1024,
+        "left": 288,
+        "right": 768,
+        "top": 0,
+        "width": 480,
+        "x": 288,
+        "y": 0
+      },
+      "viewport": {
+        "h": 1024,
+        "w": 768
+      }
+    },
+    {
+      "closeButtons": [
+        {
+          "rect": {
+            "bottom": 144.9140625,
+            "height": 44.390625,
+            "left": 253.609375,
+            "right": 374,
+            "top": 100.5234375,
+            "width": 120.390625,
+            "x": 253.609375,
+            "y": 100.5234375
+          },
+          "text": "關閉資料依據"
+        }
+      ],
+      "horizontalOverflow": [],
+      "rect": {
+        "bottom": 844,
+        "height": 776.4765625,
+        "left": 0,
+        "right": 390,
+        "top": 67.5234375,
+        "width": 390,
+        "x": 0,
+        "y": 67.5234375
+      },
+      "viewport": {
+        "h": 844,
+        "w": 390
+      }
+    },
+    {
+      "closeButtons": [
+        {
+          "rect": {
+            "bottom": 204.2421875,
+            "height": 44.390625,
+            "left": 16,
+            "right": 136.390625,
+            "top": 159.8515625,
+            "width": 120.390625,
+            "x": 16,
+            "y": 159.8515625
+          },
+          "text": "關閉資料依據"
+        }
+      ],
+      "horizontalOverflow": [],
+      "rect": {
+        "bottom": 740,
+        "height": 680.796875,
+        "left": 0,
+        "right": 320,
+        "top": 59.203125,
+        "width": 320,
+        "x": 0,
+        "y": 59.203125
+      },
+      "viewport": {
+        "h": 740,
+        "w": 320
+      }
+    }
+  ],
+  "knownLeaks": []
+}

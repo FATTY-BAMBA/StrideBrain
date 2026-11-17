@@ -1,0 +1,26 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "label": "bilingual-layout-concurrency",
+  "startedAt": "2026-11-17T03:54:41.272Z",
+  "releasedAt": "2026-11-17T03:55:01.377Z",
+  "durationMs": 20105,
+  "manualRelease": false,
+  "classification": "ARTIFICIAL_AUTHORIZATION_READ_DELAY_FOR_PENDING_LAYOUT_ONLY",
+  "method": "Temporary ACCESS EXCLUSIVE table lock held in a rolled-back transaction; no field or source mutation; nominal 20-second automatic hold with actual setup/release duration recorded separately; server statement and idle-in-transaction timeouts 25 seconds.",
+  "excludeFromPerformance": true,
+  "countsBefore": {
+    "actions": 8,
+    "consumed": 8,
+    "receipts": 8,
+    "audits": 8,
+    "actionevidencelinks": 120
+  },
+  "countsAtRelease": {
+    "actions": 8,
+    "consumed": 8,
+    "receipts": 8,
+    "audits": 8,
+    "actionevidencelinks": 120
+  }
+}

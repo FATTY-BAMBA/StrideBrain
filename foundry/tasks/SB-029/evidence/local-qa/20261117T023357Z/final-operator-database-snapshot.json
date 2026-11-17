@@ -1,0 +1,105 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T04:05:10.844Z",
+  "counts": {
+    "actions": 9,
+    "proposals": 12,
+    "consumed": 9,
+    "receipts": 9,
+    "audits": 9,
+    "actionevidencelinks": 135
+  },
+  "organizations": [
+    {
+      "businessKey": "HORIZON_ATELIER",
+      "dataClassification": "DEMO_SYNTHETIC"
+    },
+    {
+      "businessKey": "NORTHERN_STUDIO",
+      "dataClassification": "DEMO_SYNTHETIC"
+    }
+  ],
+  "migrations": 8,
+  "guards": [
+    {
+      "tgname": "Action_stage8_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "AuditEvent_append_only",
+      "enabled": "O"
+    },
+    {
+      "tgname": "InternalReviewReceipt_immutable",
+      "enabled": "O"
+    },
+    {
+      "tgname": "ProposedAction_stage8_immutable",
+      "enabled": "O"
+    }
+  ],
+  "activeSessions": 0,
+  "temporaryGrants": 0,
+  "temporaryTriggers": 0,
+  "duplicates": [],
+  "actions": [
+    {
+      "businessKey": "action_d27cb3ce-01d4-46cf-809b-e3feece44c19",
+      "status": "OPEN",
+      "dueDateStoredTimestamp": "2026-11-24",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_d89226cf-77aa-46bb-a113-af8a3f5c4416",
+      "status": "OPEN",
+      "dueDateStoredTimestamp": null,
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_c9f661a2-7b24-4de6-9e66-4989f4ac5836",
+      "status": "OPEN",
+      "dueDateStoredTimestamp": "2026-11-17",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_3e500b6d-9b2b-4bca-92ce-e45eb26fc364",
+      "status": "OPEN",
+      "dueDateStoredTimestamp": "2027-11-17",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_1fca8bf0-7170-4a67-975e-172b7402da8b",
+      "status": "OPEN",
+      "dueDateStoredTimestamp": "2026-11-24",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_56341f99-4952-434e-ae63-20c4ad70f274",
+      "status": "OPEN",
+      "dueDateStoredTimestamp": "2026-11-24",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_5c1ec0fb-c1d6-4f3d-9a63-a514222e3bd3",
+      "status": "OPEN",
+      "dueDateStoredTimestamp": "2026-11-24",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_705420da-be16-402c-b569-0c18fde7d9a6",
+      "status": "OPEN",
+      "dueDateStoredTimestamp": "2026-11-24",
+      "evidenceCount": 15
+    },
+    {
+      "businessKey": "action_7f6830af-e978-4848-b9eb-d1e0f2eed3f5",
+      "status": "OPEN",
+      "dueDateStoredTimestamp": "2026-11-24",
+      "evidenceCount": 15
+    }
+  ],
+  "providerCredentialVariablesPresent": [],
+  "runtimeDirectoryMode": "700",
+  "environmentFileMode": "600"
+}

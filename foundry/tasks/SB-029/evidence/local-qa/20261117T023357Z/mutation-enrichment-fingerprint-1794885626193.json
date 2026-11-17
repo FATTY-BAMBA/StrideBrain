@@ -1,0 +1,48 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:20:44.835Z",
+  "caseId": "enrichment-fingerprint-1794885626193",
+  "kinds": [
+    "enrichment-fingerprint"
+  ],
+  "restored": true,
+  "restorationVerification": [
+    {
+      "table": "EconomicsEnrichmentRun",
+      "id": "econrun_12b247d8-0045-4032-bd3b-35bdb04568cd",
+      "operation": "UPDATE",
+      "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+      "beforeNormalizedSha256": "50e3641fc209e69fbc9ccaf1a712e174d17a394b1b8a19bdd049687f70e0fe25",
+      "restoredNormalizedSha256": "50e3641fc209e69fbc9ccaf1a712e174d17a394b1b8a19bdd049687f70e0fe25",
+      "fieldEquality": {
+        "inputFingerprint": true
+      },
+      "matched": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "countsAfter": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "noBusinessWrites": true,
+  "targetDescriptions": [
+    {
+      "table": "EconomicsEnrichmentRun",
+      "id": "econrun_12b247d8-0045-4032-bd3b-35bdb04568cd",
+      "fields": [
+        "inputFingerprint"
+      ]
+    }
+  ]
+}

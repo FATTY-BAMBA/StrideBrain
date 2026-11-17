@@ -1,0 +1,86 @@
+[
+  {
+    "id": "review-title",
+    "inside": true,
+    "tag": "SELECT",
+    "text": "檢核信義旗艦店裝修第3版報價的進口石材與照明假設\n審查信義旗艦店裝修第3版報價的進口石材與照明假設\n確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料"
+  },
+  {
+    "id": "review-rationale",
+    "inside": true,
+    "tag": "SELECT",
+    "text": "下次內部報價審查前，依連結的佐證資料檢核這些假設。\n確認佐證資料，並記錄內部審查需要釐清的問題。\n依連結的歷史佐證資料，檢核進口石材與照明假設。"
+  },
+  {
+    "id": "",
+    "inside": true,
+    "tag": "BUTTON",
+    "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。"
+  },
+  {
+    "id": "",
+    "inside": true,
+    "tag": "BUTTON",
+    "text": "照明報價與符合條件的歷史報價比較，差異為 +9.4%。"
+  },
+  {
+    "id": "",
+    "inside": true,
+    "tag": "BUTTON",
+    "text": "照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。"
+  },
+  {
+    "id": "",
+    "inside": true,
+    "tag": "BUTTON",
+    "text": "目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。"
+  },
+  {
+    "id": "review-assignee",
+    "inside": true,
+    "tag": "SELECT",
+    "text": "未指派\n林美玲\n陳柏宇\n黃怡君"
+  },
+  {
+    "id": "review-dueDate",
+    "inside": true,
+    "tag": "INPUT",
+    "text": ""
+  },
+  {
+    "id": "review-dueDate",
+    "inside": true,
+    "tag": "INPUT",
+    "text": ""
+  },
+  {
+    "id": "review-dueDate",
+    "inside": true,
+    "tag": "INPUT",
+    "text": ""
+  },
+  {
+    "id": "review-dueDate",
+    "inside": true,
+    "tag": "INPUT",
+    "text": ""
+  },
+  {
+    "id": "",
+    "inside": true,
+    "tag": "BUTTON",
+    "text": "清除到期日"
+  },
+  {
+    "id": "review-confirmation",
+    "inside": true,
+    "tag": "INPUT",
+    "text": ""
+  },
+  {
+    "id": "",
+    "inside": true,
+    "tag": "BUTTON",
+    "text": "重試"
+  }
+]

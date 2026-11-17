@@ -1,0 +1,53 @@
+{
+  "at": "2026-11-17T02:58:20.304Z",
+  "persona": "northern",
+  "surface": "compare",
+  "selector": "missing",
+  "dialogs": [],
+  "documentWidth": 1440,
+  "fields": [
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "$ACTION_ID_400a20cdde0db485ff454fa4c68dced110c17c70f7",
+      "type": "hidden",
+      "value": ""
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "locale",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "name": "projectKey",
+      "type": "hidden",
+      "value": "<redacted>"
+    }
+  ],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "跳至主要內容StrideBrainPRIMESTRIDE AI01首頁02專案03知識04StrideBrain05設定v0.1 · 受控示範此區域尚未啟用●受控虛構資料示範繁中/EN總覽比較商務資料資料依據行動事項類似專案智慧目前無法開啟此比較。目前的授權脈絡無法存取此專案或已儲存的比較結果。參考編號: 2d1a9b97-7c9a-41e5-917d-42ce3aa225cb重新執行比較僅使用虛構示範資料 · 無真實客戶資料尚未切換正式示範網域requestAnimationFrame(fun"
+  },
+  "locale": "zh-Hant",
+  "text": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n類似專案智慧\n\n目前無法開啟此比較。\n\n目前的授權脈絡無法存取此專案或已儲存的比較結果。\n\n參考編號: 2d1a9b97-7c9a-41e5-917d-42ce3aa225cb\n\n重新執行比較",
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_4544a868-f0df-4b91-b722-eb585f6c5f08&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_00000000-0000-4000-8000-000000000099",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

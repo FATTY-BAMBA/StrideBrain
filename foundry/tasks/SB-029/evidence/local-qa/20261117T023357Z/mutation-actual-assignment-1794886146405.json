@@ -1,0 +1,54 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:29:24.441Z",
+  "caseId": "actual-assignment-1794886146405",
+  "kinds": [
+    "actual-assignment"
+  ],
+  "restored": true,
+  "restorationVerification": [
+    {
+      "table": "ProjectAssignment",
+      "id": "assign_mei_xinyi",
+      "operation": "UPDATE",
+      "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+      "beforeNormalizedSha256": "d8f46e554ba063182a9fd8da175e2076d7390c93fe3eaf2ed4b50514cea7369a",
+      "restoredNormalizedSha256": "d8f46e554ba063182a9fd8da175e2076d7390c93fe3eaf2ed4b50514cea7369a",
+      "fieldEquality": {
+        "canReadActuals": true
+      },
+      "matched": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "countsAfter": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "noBusinessWrites": true,
+  "targetDescriptions": [
+    {
+      "table": "ProjectAssignment",
+      "id": "assign_mei_xinyi",
+      "fields": [
+        "canReadActuals"
+      ],
+      "preconditions": {
+        "membershipId": "membership_horizon_mei",
+        "projectId": "prj_xinyi_026",
+        "activeProjectActualRead": true,
+        "originalCanReadActuals": true
+      }
+    }
+  ]
+}

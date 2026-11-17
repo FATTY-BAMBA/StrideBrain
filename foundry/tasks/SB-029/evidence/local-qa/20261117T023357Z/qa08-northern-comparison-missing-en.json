@@ -1,0 +1,55 @@
+{
+  "at": "2026-11-17T03:43:27.598Z",
+  "persona": "northern",
+  "selectorCase": {
+    "actor": "northern",
+    "locale": "en",
+    "type": "comparison",
+    "existence": "missing",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_e5fac213-7741-4a6b-bdee-0fc5cf1e1043&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+  },
+  "dialogs": [],
+  "documentWidth": 1440,
+  "fields": [
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": ""
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    }
+  ],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": ""
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nThis comparison is unavailable.\n\nThe project or stored run is not available under the current authorization context.\n\nReference ID: 79173235-c62a-4eb4-a89d-2ee8a56fe545\n\nRun a fresh comparison",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_e5fac213-7741-4a6b-bdee-0fc5cf1e1043&economics=econrun_8d29351b-aa3e-4738-928a-413be3397eab&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

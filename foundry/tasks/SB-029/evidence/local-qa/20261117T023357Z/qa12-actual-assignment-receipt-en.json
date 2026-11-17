@@ -1,0 +1,181 @@
+{
+  "at": "2026-11-17T03:29:14.138Z",
+  "persona": "mei",
+  "dialogs": [
+    {
+      "clientHeight": 900,
+      "name": "internal-review-heading",
+      "rect": {
+        "bottom": 900,
+        "height": 900,
+        "left": 760,
+        "right": 1440,
+        "top": 0,
+        "width": 680,
+        "x": 760,
+        "y": 0
+      },
+      "scrollHeight": 900
+    }
+  ],
+  "documentWidth": 1440,
+  "fields": [
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": ""
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": true,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": true,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": true,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": true,
+      "id": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": true,
+      "id": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": true,
+      "id": "",
+      "type": "checkbox",
+      "value": "on"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": ""
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    },
+    {
+      "aria-invalid": null,
+      "checked": false,
+      "describedBy": null,
+      "disabled": false,
+      "id": "",
+      "type": "hidden",
+      "value": "<redacted>"
+    }
+  ],
+  "focus": {
+    "id": "internal-review-heading",
+    "tag": "H2",
+    "text": "Receipt unavailable"
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n⚠ This result is stale\n\nYou can inspect this saved result, but cannot prepare or confirm a new action from it. Re-run the comparison to review current information.\n\nThe source information or comparison conditions have changed since this result was saved.\n\nRe-run comparison\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nHistorical precedents for Xinyi Flagship Renovation\n\nStrideBrain ranks authorized historical projects with deterministic factors, keeps commercial authority distinct, and shows where evidence is incomplete.\n\nGENERATED\nNov 17, 2026\nCOMPARISON POLICY\nProject similarity\nAUTHORIZED MATCHES\n6\nSELECTED PRECEDENTS\n3/3\nCOMMERCIAL EVIDENCE\nStructural comparison only\nDATA BOUNDARY\nSynthetic Horizon Atelier demo data—not a market benchmark.\n\nHAVE WE DONE SOMETHING LIKE THIS BEFORE?\n\nChoose precedents to compare\n\nSelect up to three projects. Updating the set creates a new immutable economics enrichment without changing the structural ranking.\n\n3\nselected\n·\nMaximum 3\nChoose precedents to compare: Neihu Tech Flagship\n1\nStrong match\nNeihu Tech Flagship\nNeihu District, Taipei City\n610 m²\nJun 30, 2025\nMATCH SCORE\n88/100\nEVIDENCE COVERAGE\n100%\nInspect factors\nChoose precedents to compare: Zhongshan Lifestyle Store\n2\nStrong match\nZhongshan Lifestyle Store\nZhongshan District, Taipei City\n590 m²\nNov 15, 2024\nMATCH SCORE\n81/100\nEVIDENCE COVERAGE\n100%\nInspect factors\nChoose precedents to compare: Nanjing Brand Experience Center\n3\nRelevant match\nNanjing Brand Experience Center\nSongshan District, Taipei City\n720 m²\nFeb 10, 2026\nMATCH SCORE\n79/100\nEVIDENCE COVERAGE\n100%\nInspect factors\nChoose precedents to compare: Daan Premium Showroom\n4\nRelevant match\nDaan Premium Showroom\nDaan District, Taipei City\n520 m²\nApr 20, 2024\nMATCH SCORE\n71/100\nEVIDENCE COVERAGE\n100%\nInspect factors\nChoose precedents to compare: Songshan Retail Renewal\n5\nRelevant match\nSongshan Retail Renewal\nSongshan District, Taipei City\n680 m²\nFeb 28, 2025\nMATCH SCORE\n69/100\nEVIDENCE COVERAGE\n100%\nInspect factors\nChoose precedents to compare: Banqiao Concept Store\n6\nPartial match\nBanqiao Concept Store\nBanqiao District, New Taipei City\n760 m²\nSep 30, 2023\nMATCH SCORE\n63/100\nEVIDENCE COVERAGE\n100%\nInspect factors\n\nSelected projects: PRJ-NEIHU-021, PRJ-ZHONGSHAN-018, PRJ-NANJING-023\n\nUpdate comparison\n\nSTRUCTURED COMPARISON\n\nStructured comparison\n\nValues come from the stored deterministic run. Quoted price, forecast, supplier offer, and reconciled actual cost remain separate.\n\nStructured comparison\tXinyi Flagship Renovation\tNeihu Tech Flagship\tZhongshan Lifestyle Store\tNanjing Brand Experience Center\nPROJECT CONTEXT\nSubtype\t\nRetail flagship\n\t\nRetail flagship\n\t\nRetail flagship\n\t\nRetail flagship\n\nArea\t\n640 m²\n\t\n610 m²\n\t\n590 m²\n\t\n720 m²\n\nLocation\t\nXinyi District, Taipei City\n\t\nNeihu District, Taipei City\n\t\nZhongshan District, Taipei City\n\t\nSongshan District, Taipei City\n\nCompletion\t\nActive project\nNot applicable\n\t\nJun 30, 2025\n\t\nNov 15, 2024\n\t\nFeb 10, 2026\n\nProgramme\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\nOVERALL COMMERCIAL COMPARISON\nQuoted price · normalized\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\nForecast / reconciled actual cost · normalized\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\nCATEGORY COMPARISON\nImported stone · quoted\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\nImported stone · forecast / reconciled actual\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\nLighting/electrical · quoted\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\nLighting/electrical · forecast / reconciled actual\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\nCustom millwork · quoted\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\nCustom millwork · forecast / reconciled actual\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\nEVIDENCE AND SUFFICIENCY\nSupplier-offer context\t\nSupplier offer\nUnavailable\nUnavailable\n\t\nSupplier offer\nUnavailable\nUnavailable\n\t\nSupplier offer\nUnavailable\nUnavailable\n\t\nSupplier offer\nUnavailable\nUnavailable\n\nEvidence and sufficiency\t\nStructural comparison only\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\t\nUnavailable\nUnavailable\n\nSTRUCTURED REVIEW\n\nStructured review\nEVIDENCE GAPS\n\nCommercial evidence is restricted or unavailable; the structural comparison remains usable.\n\nRECOMMENDED NEXT REVIEW\n\nValidate imported-stone and lighting assumptions internally before quote approval.\n\nSynthetic Horizon Atelier demo data—not a market benchmark.\nCommercial values are restricted under the current role.\nReceipt unavailable\n\nThis receipt cannot be displayed. Return to a project you can access to view available actions.\n\nEnglish\n繁體中文\nClose",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_50e716a4-034f-4b4c-bc3a-2fa2ef1e3bdb&economics=econrun_5191e5da-112d-47cb-b40d-8de6cdda4d42&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_d89226cf-77aa-46bb-a113-af8a3f5c4416",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

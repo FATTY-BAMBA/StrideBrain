@@ -1,0 +1,8 @@
+{
+  "classification": "OPERATOR_CLEAR_COOKIE_RESPONSE",
+  "persona": "unauthenticated",
+  "operatorPersonaLabel": "mei",
+  "locale": "en",
+  "at": "2026-11-17T03:41:49.103Z",
+  "method": "Existing serializeClearedDemoSessionCookie via same loopback response adapter; no browser cookie injection."
+}

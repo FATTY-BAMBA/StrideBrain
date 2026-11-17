@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-17T02:51:43.335Z",
+  "persona": "viewer",
+  "dialogs": [],
+  "documentWidth": 1440,
+  "fields": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "Skip to main contentStrideBrainBY PRIMESTRIDE AI01Home02Projects03Knowledge04StrideBrain05Settingsv0.1 · Controlled demoThis area is not active yet●Controlled synthetic demo繁中/ENOverviewCompareCommercialEvidenceActionsPROJECT INTELLIGENCE WORKSPACEPE"
+  },
+  "locale": "en",
+  "text": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nPROJECT INTELLIGENCE WORKSPACE\n\nPERMISSION_RESTRICTED\nXinyi Flagship Renovation\n\nAster Retail Taiwan\n\nLocation: Xinyi District, Taipei City\nArea: 640 m²\nProgramme: 16 weeks\nProject lead: Mei Lin\n\nThis project has data conditions that require attention.\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nHave we done something like this before?\n\nFind the strongest historical precedents, understand why they match, and compare the current quotation with evidence-backed history.\n\nFind comparable projects\nSynthetic Horizon Atelier demo data\nCurrent commercial position\n\nQUOTATION BEFORE TAX\n\nRestricted for this role\n\nFORECAST DIRECT COST\n\nRestricted for this role\n\nRECONCILED ACTUAL COST\n\nRestricted for this role\n\nEvidence health\nGOOD\nAccessible references\n31\nAccessible documents\n4\nStale records\n0\nOpen conflicts\n0\nProject context\nScope categories\n7\nSuppliers\n3\nMaterials\n3\nOpen actions\n0\nAsk StrideBrain in this project\nHave we done something like this before?\nSearch the authorized project history, explain the strongest matches, and compare the current quotation with trustworthy precedents.\nCompare the current quote with relevant completed projects.\nThis capability belongs to a later slice\nWhere did these numbers come from?\nThis capability belongs to a later slice",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  }
+}

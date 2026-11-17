@@ -1,0 +1,48 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:28:45.825Z",
+  "caseId": "deny-actual-1794886107886",
+  "kinds": [
+    "deny-actual"
+  ],
+  "restored": true,
+  "restorationVerification": [
+    {
+      "table": "MembershipCapabilityGrant",
+      "id": "grant_mei_actual_allow",
+      "operation": "UPDATE",
+      "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+      "beforeNormalizedSha256": "b1d046ac3b32a4aafe5ec291b7384c3c23a90ac229b3b3b1ec4743765e6ce87f",
+      "restoredNormalizedSha256": "b1d046ac3b32a4aafe5ec291b7384c3c23a90ac229b3b3b1ec4743765e6ce87f",
+      "fieldEquality": {
+        "effect": true
+      },
+      "matched": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "countsAfter": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "noBusinessWrites": true,
+  "targetDescriptions": [
+    {
+      "table": "MembershipCapabilityGrant",
+      "id": "grant_mei_actual_allow",
+      "fields": [
+        "effect"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "classification": "BROWSER_END_TO_END_TIMINGS",
+  "method": "Wall clock around CUA click through visible prepared fields / success heading; includes browser, HTTP, rendering and automation transport. No artificial pending delay. Different personas reported individually; server thresholds assessed separately.",
+  "samples": [
+    {
+      "persona": "mei",
+      "locale": "en",
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "prepareMs": 462,
+      "comparison": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_cccd7540-1086-4695-b5a1-0bb149882e5a&economics=econrun_ee7587fa-b081-400c-84d7-d2207fd95522&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "proposal": "proposal_7a0f00b3-ecf1-4a51-92d5-9d5bb8efce52",
+      "dateInputMethod": "Documented bounded reviewDue route selector followed by actual UI confirmation; native date typing not credited",
+      "expectedDue": "2026-11-17",
+      "confirmMs": 574,
+      "receiptUrl": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_cccd7540-1086-4695-b5a1-0bb149882e5a&economics=econrun_ee7587fa-b081-400c-84d7-d2207fd95522&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_c9f661a2-7b24-4de6-9e66-4989f4ac5836",
+      "action": "action_c9f661a2-7b24-4de6-9e66-4989f4ac5836"
+    },
+    {
+      "persona": "mei",
+      "locale": "zh-TW",
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "prepareMs": 588,
+      "comparison": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b590fd0d-d5a2-488e-86d1-1668286da600&economics=econrun_701125dd-dc06-4efc-bac4-f717224a6c89&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "proposal": "proposal_04421ecd-82e3-433b-b860-6294eda80eae",
+      "dateInputMethod": "Documented bounded reviewDue route selector followed by actual UI confirmation; native date typing not credited",
+      "expectedDue": "2027-11-17",
+      "confirmMs": 694,
+      "receiptUrl": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_b590fd0d-d5a2-488e-86d1-1668286da600&economics=econrun_701125dd-dc06-4efc-bac4-f717224a6c89&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_3e500b6d-9b2b-4bca-92ce-e45eb26fc364",
+      "action": "action_3e500b6d-9b2b-4bca-92ce-e45eb26fc364"
+    },
+    {
+      "persona": "finance",
+      "locale": "en",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "prepareMs": 489,
+      "comparison": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_d3b0e536-a8e1-442b-958d-c00a2399e9ce&economics=econrun_17d220ed-8c11-428f-bd7d-9ec1c728dd6b&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "proposal": "proposal_d34f75fa-4967-4863-a7ab-4eca12145c91",
+      "dateInputMethod": "Default date",
+      "confirmMs": 462,
+      "receiptUrl": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_d3b0e536-a8e1-442b-958d-c00a2399e9ce&economics=econrun_17d220ed-8c11-428f-bd7d-9ec1c728dd6b&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_1fca8bf0-7170-4a67-975e-172b7402da8b",
+      "action": "action_1fca8bf0-7170-4a67-975e-172b7402da8b"
+    },
+    {
+      "persona": "finance",
+      "locale": "zh-TW",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "prepareMs": 392,
+      "comparison": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_d1bc5a2e-b231-4d6a-a28b-7663da58e442&economics=econrun_794af538-e070-4a2d-8e64-28b2f43938d6&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "proposal": "proposal_0a128fc2-d36f-4b8d-83ee-e26ba681c72c",
+      "dateInputMethod": "Default date",
+      "confirmMs": 462,
+      "receiptUrl": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_d1bc5a2e-b231-4d6a-a28b-7663da58e442&economics=econrun_794af538-e070-4a2d-8e64-28b2f43938d6&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_56341f99-4952-434e-ae63-20c4ad70f274",
+      "action": "action_56341f99-4952-434e-ae63-20c4ad70f274"
+    },
+    {
+      "persona": "admin",
+      "locale": "en",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "prepareMs": 388,
+      "comparison": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_fd24eb21-21d1-4bf0-9051-c687c1d54428&economics=econrun_3bcffd34-ee80-488a-bb7d-695438159e17&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "proposal": "proposal_532619ac-43cf-4649-96a1-848375c4cc56",
+      "dateInputMethod": "Default date",
+      "confirmMs": 678,
+      "receiptUrl": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_fd24eb21-21d1-4bf0-9051-c687c1d54428&economics=econrun_3bcffd34-ee80-488a-bb7d-695438159e17&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_5c1ec0fb-c1d6-4f3d-9a63-a514222e3bd3",
+      "action": "action_5c1ec0fb-c1d6-4f3d-9a63-a514222e3bd3"
+    },
+    {
+      "persona": "admin",
+      "locale": "zh-TW",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "prepareMs": 516,
+      "comparison": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_f4d6f606-b052-437f-8af2-5d3ed83de585&economics=econrun_4acbb71a-10e0-4d06-b31b-e1b479d049f9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "proposal": "proposal_c4d5cfbe-ae40-42e9-b61f-31382a1619ff",
+      "dateInputMethod": "Default date",
+      "confirmMs": 650,
+      "receiptUrl": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_f4d6f606-b052-437f-8af2-5d3ed83de585&economics=econrun_4acbb71a-10e0-4d06-b31b-e1b479d049f9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_705420da-be16-402c-b569-0c18fde7d9a6",
+      "action": "action_705420da-be16-402c-b569-0c18fde7d9a6"
+    }
+  ]
+}

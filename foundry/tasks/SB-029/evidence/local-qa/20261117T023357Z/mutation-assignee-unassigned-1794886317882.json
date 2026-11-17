@@ -1,0 +1,60 @@
+{
+  "runId": "20261117T023357Z",
+  "database": "stridebrain_sb029_final_20261117t023357z",
+  "at": "2026-11-17T03:32:14.417Z",
+  "caseId": "assignee-unassigned-1794886317882",
+  "kinds": [
+    "assignee-unassigned"
+  ],
+  "restored": true,
+  "restorationVerification": [
+    {
+      "table": "ProjectAssignment",
+      "id": "assign_finance_xinyi",
+      "operation": "DELETE",
+      "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+      "beforeNormalizedSha256": "99886f0face96b37363c5ba327317a946f7fee1b496b6a2f6203e5321b75d23d",
+      "restoredNormalizedSha256": "99886f0face96b37363c5ba327317a946f7fee1b496b6a2f6203e5321b75d23d",
+      "fieldEquality": {
+        "id": true,
+        "createdAt": true,
+        "projectId": true,
+        "membershipId": true,
+        "canReadActuals": true,
+        "organizationId": true,
+        "canCreateAction": true
+      },
+      "matched": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "countsAfter": {
+    "actions": 2,
+    "consumed": 2,
+    "receipts": 2,
+    "audits": 2,
+    "actionevidencelinks": 30
+  },
+  "noBusinessWrites": true,
+  "targetDescriptions": [
+    {
+      "table": "ProjectAssignment",
+      "id": "assign_finance_xinyi",
+      "fields": [
+        "id",
+        "createdAt",
+        "projectId",
+        "membershipId",
+        "canReadActuals",
+        "organizationId",
+        "canCreateAction"
+      ]
+    }
+  ]
+}
