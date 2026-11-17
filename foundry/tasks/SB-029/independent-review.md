@@ -1,8 +1,246 @@
 # SB-029 independent review
 
-Current status (2026-11-16): **NEEDS_REVISION — code repairs validated; independent browser retest pending**. Original local QA remains **9 PASS, 3 FAIL, 5 PARTIAL, 1 BLOCKED**. Independent repair review and local deterministic gates pass on `df63c90ca994653299082fc5078ad0b5ef595292`; exact publication-head CI must pass before the new handoff begins. PR #31 remains draft; no Stage 8 acceptance or merge approval.
+## Current Stage 8 acceptance — 20261117T095951Z
 
-Earlier sections are historical checkpoints; the current local-QA repair review is appended below.
+**Final implementation verdict: PASS_WITH_NON_BLOCKING_PRE_RELEASE_VERIFICATION. Task state: READY_FOR_HUMAN.**
+
+Canonical branch `build/sb-029-governed-internal-review`, exact product head `f67edb3188c51704acac4465c0a72fca146c6d3f`. [Exact-head CI 44059619525](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/44059619525) is completed/success; its quality job and all 21 recorded steps passed. BUILD_ID: `7AxvZ0avDfCi3vJEjHpJH`.
+
+[Published manual acceptance run 20261117T095951Z](https://github.com/FATTY-BAMBA/StrideBrain/tree/029f70e8ddce6061bcb5691f4cdfc6bca5f146e2/foundry/tasks/SB-029/evidence/manual-acceptance/20261117T095951Z) is on `qa/sb-029-manual-20261117T095951Z`, commit `029f70e8ddce6061bcb5691f4cdfc6bca5f146e2`, direct parent `f67edb3188c51704acac4465c0a72fca146c6d3f`. The evidence contains **178 files and 64 screenshots**; all 177 artifact hashes and the exact direct parent were verified. Sanitization and cleanup/restoration pass. The recorded snapshot was published unchanged; its original local/unpublished wording describes the capture checkpoint, while publication is established by this commit.
+
+**M-03 PASS; M-04 PASS; F-08 PASS / closed for the tested scope.** Actual Chrome menu zoom was 200%; actual macOS Reduce motion was ON and the media query reported reduce. Both locales passed source focus entry, six native forward and six reverse Tab steps per configuration, exclusion of background navigation, exact source-trigger return and hierarchical Escape. All 48 source keyboard observations were contained. Review/evidence/receipt and stale/error recovery remained operable. Chrome returned to 100%, Reduce motion to original OFF, both QA sessions were revoked, temporary mutations were restored, and fixture/history guards remain intact. No new required-path defect was observed.
+
+The recorded HTTP 400 was a later POST to the Codex response service after QA session revocation, not a StrideBrain failure; it affected no captured test observation. The evidence report retains the transient pending-state and subpixel-geometry qualifications without inventing additional passes.
+
+**No unresolved observed P0, P1 or required-path P2 remains. No policy/security escalation or technical acceptance blocker remains.** F-01 through F-08 have passing or remediated independent evidence. This is acceptance synthesis, not a new full QA matrix or unconditional demo-release approval.
+
+| Item | Status | Future gate |
+| --- | --- | --- |
+| M-01 — Actual screen-reader announcements | NOT_VERIFIED_MANUAL_REQUIRED | BLOCKING_BEFORE_DEMO_RELEASE |
+| M-02 — Physical mobile keyboard/touch/native picker | NOT_VERIFIED_MANUAL_REQUIRED | BLOCKING_BEFORE_DEMO_RELEASE |
+| M-05 — Leap-day / Asia-Taipei midnight boundaries | NOT_VERIFIED_MANUAL_REQUIRED | STAGE_9_HARDENING |
+| M-06 — Generic form-error description association | NOT_VERIFIED_MANUAL_REQUIRED | BLOCKING_BEFORE_DEMO_RELEASE |
+| M-07 — Independent human Taiwan Traditional Chinese review | NOT_VERIFIED_MANUAL_REQUIRED | BLOCKING_BEFORE_DEMO_RELEASE |
+
+All five future items remain unresolved human-verification requirements; none blocks merge under the accepted classification. Exact human steps remain in `state.json` and the [prior manual-verification record](https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json). No human pass is inferred from DOM or automated browser evidence.
+
+PR #31 is **eligible to be marked Ready for Review**, but remains **OPEN, DRAFT and UNMERGED**. Human merge approval and later release approval are still required; neither is granted by this update. Only the three task records and PR description are updated; canonical product source/head and all historical QA evidence are unchanged.
+
+## Current findings and evidence chain
+
+| Finding | Current disposition | Evidence basis |
+| --- | --- | --- |
+| F-01 — Forecast/actual labels | PASSED_AND_PRESERVED | Broad run and targeted authority smoke; authority rules unchanged |
+| F-02 — Draft preservation | PASSED_AND_PRESERVED | Broad navigation run and targeted smoke; F-08 regressions preserve draft selectors |
+| F-03 — zh-TW terminology | REMEDIATED_BY_LATER_PASS | 20261117T050611Z bilingual locator/evidence retest |
+| F-04 — Denied receipt wording | PASSED_AND_PRESERVED | Broad denial checks and targeted known/missing receipt pairs |
+| F-05 — Error focus/visibility | PASSED_AND_PRESERVED | Broad error matrix, targeted smoke and latest scoped stale/error observations; M-06 remains a release gate |
+| F-06 — Stale-result warning | PASSED_AND_PRESERVED | Broad/source-change checks and latest bilingual stale warnings; action blocking preserved |
+| F-07 — Lighting insufficiency affordance | REMEDIATED_BY_LATER_PASS | 20261117T050611Z authoritative table/evidence-gap equivalence |
+| F-08 — Source-modal focus | REMEDIATED_BY_LATER_PASS / CLOSED | Exact-head 20261117T095951Z native 200% zoom and OS reduced-motion evidence |
+
+Historical outcomes remain unchanged:
+
+- First local run `20261116T041837Z`: **9 PASS / 3 FAIL / 5 PARTIAL / 1 BLOCKED**.
+- [Broad run `20261117T023357Z`](https://github.com/FATTY-BAMBA/StrideBrain/tree/5985b7b5ef6a87d9312c9d989e90a2d5be6ac19a/foundry/tasks/SB-029/evidence/local-qa/20261117T023357Z): **14 PASS / 2 FAIL / 2 PARTIAL / 0 BLOCKED**. QA-16/QA-18 remain historical FAIL; QA-02/QA-15 remain historical PARTIAL.
+- [Targeted run `20261117T050611Z`](https://github.com/FATTY-BAMBA/StrideBrain/tree/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z): **F-03/F-07 PASS; five prior-repair smoke checks PASS; no new product finding**.
+- Earlier manual run `20261117T070845Z`: **M-03 FAIL / M-04 FAIL**, establishing F-08 on `5c3e2763635dab46e8c91255e0394eece008dcb1`. Those failures are superseded for current acceptance by the new passing run; their historical records remain unchanged.
+- Latest manual run `20261117T095951Z`: **M-03 PASS / M-04 PASS / F-08 PASS**. No synthesized new 18-scenario pass count is claimed.
+
+QA-16/QA-18's observed failure causes are remediated through the scoped repair evidence. QA-15's required focus blocker is closed, while M-01/M-02/M-06 remain demo-release gates. QA-16 retains M-02/M-07; QA-18 retains M-07; QA-02 retains M-05. These qualifications remain explicit.
+
+## Deterministic validation and bounded repair
+
+The F-08 delta from `5c3e2763635dab46e8c91255e0394eece008dcb1` to `f67edb3188c51704acac4465c0a72fca146c6d3f` is four product presentation/focus files, one DOM regression file and validation artifacts. The [independent source review](https://github.com/FATTY-BAMBA/StrideBrain/blob/f67edb3188c51704acac4465c0a72fca146c6d3f/foundry/tasks/SB-029/evidence/f08-repair-20261117T085821Z/independent-review.json) passes. It confirms a persistent modal boundary, deterministic focus without timer dependencies, containment, exact-trigger restoration and hierarchical Escape. No authorization, tenant isolation, financial/evidence authority, immutable comparison/action policy, schema/migration, AI, external-communication or unrelated feature change.
+
+[Recorded deterministic validation](https://github.com/FATTY-BAMBA/StrideBrain/blob/f67edb3188c51704acac4465c0a72fca146c6d3f/foundry/tasks/SB-029/evidence/f08-repair-20261117T085821Z/validation.json): **535 tests / 62 files, zero skipped**, including 35 new focus tests; targeted regression 77 tests/7 files, localization 12/4, PostgreSQL adversarial 93 tests. Named subsets are not added to the full total. Format, lint, strict TypeScript, Prisma validation/generation, eight clean migrations, repeated seed/SQL verification, production build and audit pass; **0 production vulnerabilities**, one pre-existing `prisma.config.ts` lint warning. Exact-head CI independently passes. No suite or browser checks were rerun during this metadata reconciliation.
+
+## Historical checkpoints — retained verbatim
+
+The records below describe their dated heads and runs. Their historical verdicts and blocker statements are superseded for current-head acceptance by the section above; their outcomes are not rewritten.
+
+## Manual acceptance reassessment — 20261117T070845Z
+
+**Final independent verdict: REVISE. Task state: NEEDS_REVISION.** Both M-03 and M-04 were actually executed and fail for one new required-path **P2 F-08 / QA-15**. This supersedes the earlier absence-of-manual-evidence blocker; it does not rewrite any historical QA outcome. Product head remains 5c3e2763635dab46e8c91255e0394eece008dcb1, BUILD_ID VSGc_BSVp5nB86Sw8Zypr, prior exact-head CI 44021235139 PASS.
+
+Native Chrome zoom was set through its visible View menu to 200%, with exact toolbar AX confirmation and CSS640×399 / DPR 4 from a 1280×799 / DPR 2 baseline. Actual macOS Reduce Motion was enabled and both locales reported matchMedia=true; computed transitions were reduced. In both locales and both configurations, keyboard activation of a claim's Inspect source control renders a settled source dialog but leaves focus on BODY; subsequent Tab reaches background navigation behind aria-modal=true. Escape recovery is evidenced. This fails focus containment/visible focus requirements and is recoverable P2, not an established P1 or zoom-specific cause. F-01 through F-07 retain their earlier passing evidence. No other new product finding or policy/security escalation was observed.
+
+Review, validation, stale/generic error, evidence, receipt and keyboard controls were checked in both locales; the successful subchecks do not override the focus failure. Actual200% is supported by native menu/AX and geometry; a public numeric zoom-popup image is unavailable. EN pending state was observed in immediate DOM, while screenshots settled too quickly; zh pending was not observed. Continuous animation measurements and the other human-verification items are not claimed.
+
+Both native settings were restored (Chrome 100%, original Reduce Motion OFF; both locales matchMedia=false). The two owned tabs closed; both run-issued sessions revoked, zero active; QA issuer stopped. Both source-authority mutations restored exactly; fixed fixtures, prior history and new immutable comparisons unchanged. Four guards/eight migration checksums match. Two intended new atomic actions remain, with no duplicates. All 205 source files, 901 prior evidence files and 305 pre-existing untracked files are unchanged. No product source was modified or repaired.
+
+The browser reviewer was separate from the product builder. The independent evaluation agent reviewed frozen observations, all 72 screenshots via contact sheets and critical full-size frames, plus restoration/integrity records. See [manual run report](evidence/manual-acceptance/20261117T070845Z/REPORT.txt), [browser results](evidence/manual-acceptance/20261117T070845Z/browser-results.json), [independent reassessment](evidence/manual-acceptance/20261117T070845Z/independent-reassessment.json), and [sanitization](evidence/manual-acceptance/20261117T070845Z/sanitization.json). Evidence and task-record changes are local, not committed/published. No full QA-01–QA-18 rerun.
+
+| Item | Result / remaining status | Classification |
+| --- | --- | --- |
+| M-03 — Exact 200% browser zoom | FAIL: F-08 source-panel focus containment | BLOCKING_BEFORE_MERGE |
+| M-04 — Actual OS reduced motion | FAIL: F-08 source-panel focus destination/containment | BLOCKING_BEFORE_MERGE |
+| M-01 — Screen-reader announcements | NOT_VERIFIED_MANUAL_REQUIRED | BLOCKING_BEFORE_DEMO_RELEASE |
+| M-02 — Physical mobile interaction | NOT_VERIFIED_MANUAL_REQUIRED | BLOCKING_BEFORE_DEMO_RELEASE |
+| M-05 — Leap-day / Taipei midnight | NOT_VERIFIED_MANUAL_REQUIRED | STAGE_9_HARDENING |
+| M-06 — Generic error description association | NOT_VERIFIED_MANUAL_REQUIRED | BLOCKING_BEFORE_DEMO_RELEASE |
+| M-07 — Independent human zh-TW review | NOT_VERIFIED_MANUAL_REQUIRED | BLOCKING_BEFORE_DEMO_RELEASE |
+
+The conditional READY_FOR_HUMAN gate is not met. PR #31 remains OPEN, DRAFT and UNMERGED; no human merge/release approval, Stage 8 completion or release-readiness claim. A scoped F-08 repair and independent retest are required in a separate authorized task.
+
+## Historical evidence synthesis before manual acceptance — 2026-11-17
+
+**Final implementation verdict: REVISE — required manual acceptance evidence is missing.**
+Current task state: `NEEDS_REVISION`; blocker: `MANUAL_ACCEPTANCE_EVIDENCE_REQUIRED`.
+This requests no product repair. The known product defects are remediated, but
+M-03 and M-04 prevent `READY_FOR_HUMAN` under the requested conditional gate.
+PR #31 must remain OPEN, DRAFT and UNMERGED. Human merge/release approval is absent.
+
+Reviewer: existing `independent_evaluation` agent, separate from the product builder;
+read-only final review, no product/file/browser/database/Git changes by that reviewer.
+The orchestrator transcribed its final verdict and checked the referenced evidence.
+Review recorded: 2026-11-17T06:43:42.524086+00:00. This synthesis performs no new browser run or test execution.
+
+### Frozen inputs and integrity
+
+- Canonical branch: `build/sb-029-governed-internal-review`, exact product head `5c3e2763635dab46e8c91255e0394eece008dcb1`.
+- [Broad independent browser run 20261117T023357Z](https://github.com/FATTY-BAMBA/StrideBrain/tree/5985b7b5ef6a87d9312c9d989e90a2d5be6ac19a/foundry/tasks/SB-029/evidence/local-qa/20261117T023357Z): evidence commit `5985b7b5ef6a87d9312c9d989e90a2d5be6ac19a`, direct parent/tested product `211578dd4b4e12169a182c498254bb571cadad70`; historical **14 PASS / 2 FAIL / 2 PARTIAL / 0 BLOCKED**.
+- [Targeted independent repair retest 20261117T050611Z](https://github.com/FATTY-BAMBA/StrideBrain/tree/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z): evidence commit `e043ee551169c1f8586c9d490703be3a4a1ab187`, direct parent/tested product `5c3e2763635dab46e8c91255e0394eece008dcb1`; **2 targeted repair checks PASS, 5 scoped smoke checks PASS, 0 failures/new findings**.
+- Targeted BUILD_ID: `VSGc_BSVp5nB86Sw8Zypr`; source manifest SHA-256 `fce51bf5de6d1751e54d8941f7c9f31104b3e3efffd12e030301cbdbfd462663`.
+- Exact-head [GitHub CI 44021235139](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/44021235139): completed/success, head equals `5c3e2763635dab46e8c91255e0394eece008dcb1`; its `quality` job and all 21 recorded steps succeed.
+- Rechecked both evidence commits directly from Git objects: broad 1,275 scoped files/1,274 artifact hashes; targeted 467 scoped files/466 hashes, all matching. All 205 current source-manifest hashes and 305 pre-existing untracked evidence files match. Historical evidence is unchanged.
+
+### Exact source-delta review
+
+Compared `211578dd4b4e12169a182c498254bb571cadad70` to `5c3e2763635dab46e8c91255e0394eece008dcb1`. The complete delta is
+28 files, 907 additions and 2 deletions: two product presentation files, three
+regression-test files and 23 validation-evidence files.
+
+| Changed code file                                                  | Bounded purpose                                                                                                                                                            |
+| ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/modules/evidence-panel/application/get-evidence-panel.ts`     | Map locator field values through existing bilingual copy, including Programme in weeks / 工期（週）; retain raw domain/provenance data.                                    |
+| `src/modules/comparison-experience/build-comparison-experience.ts` | Select existing ACTUAL_INSUFFICIENT when both history and variance are insufficient, matching the domain claim producer; preserve quote, supported and unavailable states. |
+| `tests/evidence-panel/get-evidence-panel.test.ts`                  | Bilingual claim/source/factor rendering rejects visible programmeWeeks and retains provenance.                                                                             |
+| `tests/comparison-experience/build-comparison-experience.test.ts`  | Canonical and noncanonical insufficiency mapping, supported evidence and unavailable-data controls.                                                                        |
+| `tests/evidence-panel/postgres-localization-review.test.ts`        | Real stored-data table/gap panel equality, 2/3/no fabricated range, supported trace, missing-selector control and localization.                                            |
+
+Product-diff SHA-256: `a03223953f8a0668f3412871f4f24b1c64ce47ac732250629607259205784685`.
+Five-code-file diff SHA-256: `74aab7eb8c10f17adf0178a3017336adfec17a2ebda960c3b2d38bb454c16fcd`.
+Both match the separate repair review. There is no policy, authorization,
+tenant-isolation, financial-authority, evidence-authority, schema/migration,
+new-action-type, AI integration, external-communication or unrelated feature change.
+Similarity/sufficiency rules, immutable history, repositories and deployment remain unchanged.
+
+### Current-head acceptance synthesis
+
+**QA-16 and QA-18's known product failure causes are remediated.** F-03 and F-07
+were the only open product findings in the broad run. Their exact affected paths
+pass the independently observed targeted run at the repaired head; the tightly
+bounded delta, regression tests and exact-head CI support carrying forward the
+unaffected broad evidence. This is an evidence synthesis, not a fabricated full
+18-scenario rerun. QA-16 retains its M-03 pre-merge qualification and M-02/M-07
+human checks; QA-18 retains M-07. Neither historical FAIL is rewritten.
+
+| Finding | Scenarios    | Current disposition      | Evidence synthesis                                                                                                                                                           |
+| ------- | ------------ | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| F-01    | QA-18        | PASSED_AND_PRESERVED     | Broad authority journey passes; current-head smoke preserves forecast/actual/quoted-price/supplier-offer distinctions.                                                       |
+| F-02    | QA-05        | PASSED_AND_PRESERVED     | Broad rapid-edit/history cases pass; current-head nondefault four-field draft survives navigation and persists exactly in one confirmed action.                              |
+| F-03    | QA-16, QA-18 | REMEDIATED_BY_LATER_PASS | Final programme locator residual passes in both locales at four widths, with four source identities and internal provenance preserved.                                       |
+| F-04    | QA-07, QA-08 | PASSED_AND_PRESERVED     | Authorized receipt retains creation wording; four current-head same-Viewer known/missing pairs show identical neutral denial and no action payload.                          |
+| F-05    | QA-11, QA-15 | PASSED_AND_PRESERVED     | Broad generic-error matrix preserves draft and visible focus; current-head stale smoke focuses the visible alert inside the dialog. M-06 remains a manual association check. |
+| F-06    | QA-11, QA-18 | PASSED_AND_PRESERVED     | Broad changed-source variants and current-head authority smoke show stale warnings, retain inspectable immutable history, and reject confirmation.                           |
+| F-07    | QA-16, QA-18 | REMEDIATED_BY_LATER_PASS | All 40 entry combinations select the same authoritative insufficiency claim and ordered sources, preserve 2/3 and invent no actual range or variance.                        |
+
+No unresolved observed P0, P1 or required-path P2 remains in the reviewed scope;
+no new product finding or policy/security escalation emerged. Evidence gaps are
+tracked separately from reproducible product defects. Targeted coverage includes
+8 programme claim variants/32 source drilldowns and 40 lighting entry checks,
+with 24 retained matrix source captures plus 3 exploratory captures, not 120
+independently recorded source drilldowns. All 203 targeted screenshots were
+reviewed by the independent evidence reviewer; diagnostic/summary frames retain
+their explicit limitations and supplements.
+
+| Scenario                                             | Historical result | Current-head synthesis                                                                                                                                          |
+| ---------------------------------------------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| QA-01 — Authorized preparation is preparatory only   | PASS              | PASS_CARRIED_FORWARD_BY_DELTA_REVIEW: Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence. |
+| QA-02 — Bounded edits and mandatory content          | PARTIAL           | PARTIAL_MANUAL_REQUIRED: Observed behavior retained; M-05 remains Stage 9 hardening.                                                                            |
+| QA-03 — Explicit confirmation and durable receipt    | PASS              | PASS_CARRIED_FORWARD_BY_DELTA_REVIEW: Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence. |
+| QA-04 — Cancel, Escape and evidence round trip       | PASS              | PASS_CARRIED_FORWARD_BY_DELTA_REVIEW: Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence. |
+| QA-05 — Locale and route restoration                 | PASS              | PASS_CARRIED_FORWARD_BY_DELTA_REVIEW: Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence. |
+| QA-06 — Retry, concurrent submit and replay          | PASS              | PASS_CARRIED_FORWARD_BY_DELTA_REVIEW: Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence. |
+| QA-07 — Viewer and session denial                    | PASS              | PASS_CARRIED_FORWARD_BY_DELTA_REVIEW: Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence. |
+| QA-08 — Cross-tenant selectors                       | PASS              | PASS_CARRIED_FORWARD_BY_DELTA_REVIEW: Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence. |
+| QA-09 — Assignee authorization                       | PASS              | PASS_CARRIED_FORWARD_BY_DELTA_REVIEW: Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence. |
+| QA-10 — Quote, project and run staleness             | PASS              | PASS_CARRIED_FORWARD_BY_DELTA_REVIEW: Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence. |
+| QA-11 — Evidence authority, access and availability  | PASS              | PASS_CARRIED_FORWARD_BY_DELTA_REVIEW: Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence. |
+| QA-12 — Permission downgrade                         | PASS              | PASS_CARRIED_FORWARD_BY_DELTA_REVIEW: Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence. |
+| QA-13 — Expiry and consumed proposal                 | PASS              | PASS_CARRIED_FORWARD_BY_DELTA_REVIEW: Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence. |
+| QA-14 — Safe failure and rollback                    | PASS              | PASS_CARRIED_FORWARD_BY_DELTA_REVIEW: Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence. |
+| QA-15 — Keyboard, focus, semantics and zoom          | PARTIAL           | PARTIAL_MANUAL_REQUIRED: Keyboard/focus evidence retained; M-03/M-04 block merge; M-01/M-02/M-06 block demo release.                                            |
+| QA-16 — Responsive Taiwan Traditional Chinese layout | FAIL              | KNOWN_PRODUCT_FAILURES_REMEDIATED: F-03/F-07 closed by current-head retest; M-02/M-03/M-07 remain. No unconditional whole-scenario PASS.                        |
+| QA-17 — Browser and PostgreSQL performance           | PASS              | PASS_CARRIED_FORWARD_BY_DELTA_REVIEW: Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence. |
+| QA-18 — Prior-stage regression and excluded behavior | FAIL              | KNOWN_PRODUCT_FAILURES_REMEDIATED: F-03/F-07 closed by current-head retest and bounded delta; M-07 remains. No new full regression run claimed.                 |
+
+The historical broad result stays 14/2/2/0; QA-02 and QA-15 remain PARTIAL in that
+run. No synthesized 16-PASS run count is asserted. Earlier 20261116 evidence and
+its counts also remain historical and untouched.
+
+### Deterministic, integrity and cleanup evidence
+
+[Complete deterministic validation](https://github.com/FATTY-BAMBA/StrideBrain/blob/5c3e2763635dab46e8c91255e0394eece008dcb1/foundry/tasks/SB-029/evidence/p2-repair-20261117T045349Z/validation.json) passes: format, lint (one
+pre-existing default-export warning), strict TypeScript, Prisma validation and
+generation, all eight migrations on clean PostgreSQL, repeated seed and SQL
+verification, **500 tests across 61 files with zero skips**, localization
+12 tests/4 files, PostgreSQL adversarial 93 tests, production build and production
+dependency audit (**0 vulnerabilities**). The named subsets are not additional
+tests to add to the full-suite count. Local validation was performed on the
+frozen code tree; exact-head CI separately verifies the committed head.
+
+Broad run: 45 temporary mutation/fault cases restored, fixture/immutable guards
+verified, all 42 nonfixture sessions revoked. Targeted run: one source-authority
+mutation restored exactly, eight fixed-fixture table hashes and immutable history
+unchanged, four guards/eight migrations verified, all four QA sessions revoked
+and zero active. The intentional single atomic action/receipt/audit/consumption
+with 15 evidence references remains audit history; no duplicate. Both evidence
+subtrees have retained PASS sanitization records including OCR/metadata checks.
+This synthesis does not assert a fresh browser run, packet capture or screenshot
+rescan; it verifies the committed artifacts and their recorded scope.
+
+### Unresolved human-verification requirements
+
+All seven remain `NOT_VERIFIED_MANUAL_REQUIRED`. Classification describes the
+next mandatory gate, never a pass. [Exact manual steps](https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json) remain in
+immutable evidence and are also carried into `state.json`.
+
+| Item                                                | Classification                 | Rationale                                                                                                                                                                                                                                                                                               |
+| --------------------------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| M-01 — Actual screen-reader announcements           | `BLOCKING_BEFORE_DEMO_RELEASE` | Semantic roles, focus and keyboard operation are evidenced, but DOM/AX observations do not establish spoken announcements. Verify VoiceOver/NVDA before invited demo use; no observed critical keyboard blocker is being deferred.                                                                      |
+| M-02 — Physical mobile keyboard/touch/native picker | `BLOCKING_BEFORE_DEMO_RELEASE` | Four desktop-emulated viewport sizes and native desktop keyboard date entry pass. Physical iOS/Android occlusion, touch and picker behavior remain separate device evidence required before demo release.                                                                                               |
+| M-03 — Exact 200% browser zoom                      | `BLOCKING_BEFORE_MERGE`        | The accepted QA-15 steps explicitly require 200% browser zoom, with reachable controls and perceivable focus. Narrow viewport emulation is not that observation; the missing required task evidence prevents completion.                                                                                |
+| M-04 — Reduced-motion behavior                      | `BLOCKING_BEFORE_MERGE`        | The accepted bilingual/accessibility contract and QA-15 explicitly require reduced-motion behavior and actual browser evidence. CSS support alone does not verify the preference or motion/focus behavior.                                                                                              |
+| M-05 — Leap-day / Asia-Taipei midnight boundaries   | `STAGE_9_HARDENING`            | Passing policy tests cover leap-day validity and today..today+365; service tests revalidate the date across Taipei midnight with no write. Existing browser date validation remains valid. End-to-end native-picker/test-clock boundary evidence is still required in Stage 9, before its release gate. |
+| M-06 — Generic form-error description association   | `BLOCKING_BEFORE_DEMO_RELEASE` | The actual form source sets aria-describedby to review-error-summary and deterministic DOM tests assert it; browser generic errors focus a visible alert. The broad browser probe returned null, so live form association and speech remain unverified rather than a proven absent association.         |
+| M-07 — Independent human Traditional Chinese review | `BLOCKING_BEFORE_DEMO_RELEASE` | Independent automated bilingual evidence remediates the observed terminology/navigation defects. Natural Taiwan Chinese and complete language acceptance still require an independent human before demo release.                                                                                        |
+
+M-03 is explicitly required by `computer-qa-plan.yaml` QA-15 (line 723) and the
+viewport matrix. M-04 is explicitly required by that scenario and
+`build-contract.md`'s bilingual/a11y acceptance row (line 92), including actual
+browser evidence. `docs/build/V0_1_BUILD_AUTHORIZATION.md` line 94 requires the
+stage exit gate and applicable acceptance IDs to pass. General Stage 9 hardening
+does not waive these task-specific requirements. Source CSS and emulated widths
+are useful corroboration, not the missing observations. M-06's null browser probe
+is not treated as proof of a missing association: the actual form and DOM tests
+establish the implementation, while live-form/speech verification remains open.
+
+### Decision and next gate
+
+Keep `NEEDS_REVISION`, with M-03/M-04 as pre-merge evidence blockers. Complete the
+documented bilingual 200% zoom and OS reduced-motion checks on the pinned build,
+record actual results and restoration of settings, then obtain independent
+reassessment. Do not modify product source unless a new defect is actually found.
+If both pass and no new blocker appears, reassess `READY_FOR_HUMAN`; the other
+five manual requirements remain at their classified gates, and ordinary human
+merge approval remains mandatory. Do not silently waive, mark ready, merge,
+deploy or claim Stage 8 completion/release approval.
+
+## Historical review checkpoints — retained unchanged
+
+The following records describe their dated heads and are superseded only for current status by the synthesis above.
 
 Reviewer: independent reviewer agent, separate from Builder.
 
@@ -154,12 +392,12 @@ on `build/sb-029-governed-internal-review`. Reviewed migration, Prisma model
 mapping, guarded reset, SQL verifier, package wiring and CI repeat-seed step.
 Reviewed file hashes:
 
-| File | SHA-256 |
-|---|---|
+| File                                                          | SHA-256                                                            |
+| ------------------------------------------------------------- | ------------------------------------------------------------------ |
 | `prisma/migrations/0008_stage8_internal_review/migration.sql` | `bca2e402f42aafc822c921df064d51965a8ea29da80aacabc11ef2c6d16d20d9` |
-| `prisma/schema.prisma` | `6f3e634ec5c4de66626c8e0dcb196d633a371f28cfa9f0513d7760de393f846e` |
-| `prisma/fixtures/horizon-atelier.sql` | `901fed590053152425a85733a97151a1d4f399d198f8f6a449bfe5c72521e1f8` |
-| `prisma/fixtures/verify-stage8-internal-review.sql` | `79febe85bf1911ea452183050fdb71acc017facfe834ca4af99efd2cb09075f0` |
+| `prisma/schema.prisma`                                        | `6f3e634ec5c4de66626c8e0dcb196d633a371f28cfa9f0513d7760de393f846e` |
+| `prisma/fixtures/horizon-atelier.sql`                         | `901fed590053152425a85733a97151a1d4f399d198f8f6a449bfe5c72521e1f8` |
+| `prisma/fixtures/verify-stage8-internal-review.sql`           | `79febe85bf1911ea452183050fdb71acc017facfe834ca4af99efd2cb09075f0` |
 
 No blocking schema finding was established. The migration adds nullable
 versioned fields without deleting data, enforces tenant/run/project/actor
@@ -204,7 +442,6 @@ reviewer's temporary reset probe initially escaped a PL/pgSQL dollar delimiter
 incorrectly; its test harness was corrected and rerun. Neither was a product
 defect or a policy exception. Final application/service correctness, realistic
 concurrency/transaction rollback, exact-head CI and browser QA remain pending.
-
 
 ## BUILDING implementation checkpoint — 2026-11-15T21:58:37Z
 
@@ -268,16 +505,15 @@ The log and exact temporary harness copies are retained in
 
 Reviewed correction hashes at this checkpoint:
 
-| File | SHA-256 |
-|---|---|
-| `src/modules/internal-review/application/freshness.ts` | `2bd73eb6625df72d4155389a3a57821a20e2d5de93a367c7e23357bc384c8c7d` |
+| File                                                                 | SHA-256                                                            |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `src/modules/internal-review/application/freshness.ts`               | `2bd73eb6625df72d4155389a3a57821a20e2d5de93a367c7e23357bc384c8c7d` |
 | `src/modules/internal-review/application/internal-review-service.ts` | `31fe3bd4071f4fb07a99f7db0319d11150a8e46248ea02bde1bf9fb45fdf4809` |
-| `src/repositories/prisma/prisma-internal-review-repository.ts` | `b9b949850085cdfdf81e5488df6ca5f0a2327c3e5e1de33c05b63405bc204180` |
-| `src/modules/projects/application/get-project-workspace.ts` | `baccaf20240746b76c718349bc4d92e606461f24f7a0a6200ba4f729df6377ad` |
+| `src/repositories/prisma/prisma-internal-review-repository.ts`       | `b9b949850085cdfdf81e5488df6ca5f0a2327c3e5e1de33c05b63405bc204180` |
+| `src/modules/projects/application/get-project-workspace.ts`          | `baccaf20240746b76c718349bc4d92e606461f24f7a0a6200ba4f729df6377ad` |
 
 Final implementation verdict remains withheld until all completed evidence is
 independently reviewed. No browser QA, preview, merge, or release pass is asserted.
-
 
 ## Contract rollback clarification — PASS
 
@@ -307,7 +543,6 @@ API safe-failure handling must include runtime-context lookup (which can throw
 before the original handler catch), and a locked/no-assign assignee error needs
 a visible associated error/focus fallback because it has no editable named input.
 Builder and Computer QA Coordinator have received both findings.
-
 
 ## BUILDING correction verification — 2026-11-15T22:07:15Z
 
@@ -351,18 +586,17 @@ browser evidence.
 Worktree parent head remains `819f5545f0fa05d125835ec8ef417ec2f5f495f8`;
 corrections are not represented by that commit alone. Reviewed current hashes:
 
-| File | SHA-256 |
-|---|---|
+| File                                                                 | SHA-256                                                            |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | `src/modules/internal-review/application/internal-review-service.ts` | `ba3f8a815dae3c0a3757e9d8c059befee41cf411c089c1429b081d38c7d46cf6` |
-| `src/app/api/actions/internal-review/route.ts` | `04f7df6ee55a1961eb6328a6a146f93134985bb9cebbd01190388f4a1bc8649c` |
-| `src/lib/server/internal-review-trace.ts` | `170ef38524fb43c13cf0f5b38f057c7cf3cc53890f8a2d1928861c9afa909297` |
-| `src/components/internal-review/internal-review-sheet.tsx` | `b4d153e86794adef10a0a4a859f700cc88205db93dd7442f09d982d006d45665` |
-| `src/app/[locale]/projects/[projectKey]/compare/page.tsx` | `ca980885562356d58f6e67f40fd7965b8f996a62725d889f47a1f4904e2bc42e` |
+| `src/app/api/actions/internal-review/route.ts`                       | `04f7df6ee55a1961eb6328a6a146f93134985bb9cebbd01190388f4a1bc8649c` |
+| `src/lib/server/internal-review-trace.ts`                            | `170ef38524fb43c13cf0f5b38f057c7cf3cc53890f8a2d1928861c9afa909297` |
+| `src/components/internal-review/internal-review-sheet.tsx`           | `b4d153e86794adef10a0a4a859f700cc88205db93dd7442f09d982d006d45665` |
+| `src/app/[locale]/projects/[projectKey]/compare/page.tsx`            | `ca980885562356d58f6e67f40fd7965b8f996a62725d889f47a1f4904e2bc42e` |
 
 No unresolved blocking source finding remains from this checkpoint. Complete
 PostgreSQL regression/performance results, exact-head CI and actual independent
 browser QA still gate the final implementation verdict.
-
 
 ## Frozen-head deterministic evidence checkpoint — 2026-11-15T22:29:17Z
 
@@ -448,7 +682,6 @@ review. Human merge/release approval remains absent and mandatory.
 **Final independent verdict: not issued.** No merge or release readiness is
 claimed by this checkpoint.
 
-
 ## Dedicated Cloud QA portability package review — PASS (package only)
 
 Reviewed on 2026-11-16T00:17:04Z against checked-out evidence checkpoint
@@ -507,13 +740,13 @@ new-environment validation; static package review cannot establish runtime succe
 
 Reviewed package SHA-256 values:
 
-| File | SHA-256 |
-|---|---|
-| `cloud-qa-task.md` | `4bc11d036c1cda9d74adbd8cc85e3f82d3c40e7cdec2ae3f140501c0695718a5` |
-| `cloud-qa/README.md` | `2e6f1387bf6a5fcc65c4190314918ef4dc7f2b5ea72624b74e0c91a2461d0ad1` |
-| `cloud-qa/prepare-runtime.py` | `d1b186fbd3a036e798eda4ae374e9bb1fc87cc6f4ccea87720558d23bf40d321` |
-| `cloud-qa/operator.mjs` | `af1e9835920d4238518f67ee4a5bd5f143ed19d8f5e677810d5541be470b70ae` |
-| `cloud-qa/source-loader.mjs` | `2df76c32cf628cc487c54f498e3c3e240ad5415a3b700727a6b878bd30141d35` |
+| File                            | SHA-256                                                            |
+| ------------------------------- | ------------------------------------------------------------------ |
+| `cloud-qa-task.md`              | `4bc11d036c1cda9d74adbd8cc85e3f82d3c40e7cdec2ae3f140501c0695718a5` |
+| `cloud-qa/README.md`            | `2e6f1387bf6a5fcc65c4190314918ef4dc7f2b5ea72624b74e0c91a2461d0ad1` |
+| `cloud-qa/prepare-runtime.py`   | `d1b186fbd3a036e798eda4ae374e9bb1fc87cc6f4ccea87720558d23bf40d321` |
+| `cloud-qa/operator.mjs`         | `af1e9835920d4238518f67ee4a5bd5f143ed19d8f5e677810d5541be470b70ae` |
+| `cloud-qa/source-loader.mjs`    | `2df76c32cf628cc487c54f498e3c3e240ad5415a3b700727a6b878bd30141d35` |
 | `cloud-qa/with-preview-env.mjs` | `f1c075da603842880f2d3bffc423b99fd3beea351319789be4a0d953086a7217` |
 
 No blocking package finding remains. Final Stage 8 verdict, complete Computer QA
@@ -523,7 +756,6 @@ Post-push documentation correction: container existence inspection now prints
 only `.Id`; any ownership inspection is restricted to name/task-label fields,
 never full `Env`, avoiding accidental credential disclosure if a container exists.
 The README hash above reflects this reviewed correction; no runtime command was executed.
-
 
 ## Local-QA repair review — 2026-11-16
 
