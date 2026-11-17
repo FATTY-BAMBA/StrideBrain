@@ -1,5 +1,10 @@
+import type {
+  ComparisonFreshness,
+  ComparisonFreshnessReader,
+} from "@/modules/comparisons/domain/freshness";
 import {
   evidenceValueLabel,
+  evidenceRecordTypeLabel,
   evidenceTitle,
   evidencePolicyDescription,
 } from "@/modules/evidence-panel/presentation";
@@ -58,6 +63,7 @@ function formatNumber(locale: Locale, value: unknown, digits = 2): string {
 
 function formatValue(locale: Locale, key: string, value: unknown): string {
   if (value === null || value === undefined) return "—";
+  if (key === "kind") return evidenceRecordTypeLabel(locale, String(value));
   if (key === "descriptionEn" || key === "descriptionZhTw") return String(value);
   if (typeof value === "boolean")
     return value ? (locale === "zh-TW" ? "是" : "Yes") : locale === "zh-TW" ? "否" : "No";
@@ -330,6 +336,7 @@ function context(
   stage4: Stage4ComparisonResult,
   economics: Stage5EconomicsResult | null,
   locale: Locale,
+  freshness: ComparisonFreshness,
 ): EvidencePanelView["context"] {
   return Object.freeze({
     projectKey: stage4.activeContext.projectKey,
@@ -337,7 +344,8 @@ function context(
     comparisonRunId: stage4.run.id,
     ...(economics ? { enrichmentRunId: economics.run.id } : {}),
     snapshotLabel: formatDate(locale, economics?.run.generatedAt ?? stage4.run.generatedAt),
-    stale: false,
+    stale: freshness.state === "STALE",
+    freshness,
   });
 }
 
@@ -416,16 +424,28 @@ export class GetEvidencePanel {
     private readonly comparisons: ComparisonRunRepositoryPort,
     private readonly economics: EconomicsEnrichmentRunRepositoryPort,
     private readonly evidence: EvidencePanelRepositoryPort,
+    private readonly freshness: ComparisonFreshnessReader,
   ) {}
 
   async execute(
     runtime: RuntimeContext,
     selection: EvidencePanelSelection,
     locale: Locale,
+    checkedFreshness?: ComparisonFreshness,
   ): Promise<EvidencePanelOutcome> {
     try {
       const stage4 = await this.comparisons.getAuthorizedResult(runtime, selection.comparisonRunId);
       if (!stage4) return Object.freeze({ kind: "UNAVAILABLE", requestId: runtime.requestId });
+      const enrichmentId = "enrichmentRunId" in selection ? selection.enrichmentRunId : undefined;
+      const freshness =
+        checkedFreshness?.comparisonRunId === stage4.run.id &&
+        (!enrichmentId || checkedFreshness.enrichmentRunId === enrichmentId)
+          ? checkedFreshness
+          : await this.freshness.check(
+              runtime,
+              stage4,
+              enrichmentId ? await this.economics.getAuthorizedResult(runtime, enrichmentId) : null,
+            );
       const copy = getEvidencePanelCopy(locale);
 
       if (selection.mode === "CLAIM") {
@@ -458,7 +478,7 @@ export class GetEvidencePanel {
           version: EVIDENCE_PANEL_VERSION,
           locale,
           mode: "CLAIM",
-          context: context(stage4, stage5, locale),
+          context: context(stage4, stage5, locale, freshness),
           heading: headingFor(
             "CLAIM",
             evidenceTitle(locale, locale === "zh-TW" ? found.claim.titleZhTw : found.claim.titleEn),
@@ -551,7 +571,7 @@ export class GetEvidencePanel {
           version: EVIDENCE_PANEL_VERSION,
           locale,
           mode: "FACTOR",
-          context: context(stage4, null, locale),
+          context: context(stage4, null, locale, freshness),
           heading: headingFor(
             "FACTOR",
             `${copy.factorLabels[factor.factorKey]} · ${candidateName}`,
@@ -652,7 +672,7 @@ export class GetEvidencePanel {
           version: EVIDENCE_PANEL_VERSION,
           locale,
           mode: "SOURCE",
-          context: context(stage4, stage5, locale),
+          context: context(stage4, stage5, locale, freshness),
           heading: headingFor("SOURCE", source.title || selectedTitle, copy),
           selectedSourceKey: selection.sourceKey,
           ...(relatedClaims.length > 0 ? { relatedClaims } : {}),
@@ -738,7 +758,7 @@ export class GetEvidencePanel {
         version: EVIDENCE_PANEL_VERSION,
         locale,
         mode: "CONFLICT",
-        context: context(stage4, null, locale),
+        context: context(stage4, null, locale, freshness),
         heading: headingFor("CONFLICT", copy.conflicts, copy),
         sources: sourceViews,
         conflict: Object.freeze({

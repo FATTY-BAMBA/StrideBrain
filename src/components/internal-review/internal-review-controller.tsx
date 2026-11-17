@@ -76,12 +76,13 @@ export function InternalReviewController({
   const proposal = proposalResult?.kind === "PREPARED" ? proposalResult.proposal : null;
   const receipt =
     created?.receipt ?? (receiptOutcome?.kind === "AVAILABLE" ? receiptOutcome.receipt : null);
+  const receiptUnavailable = !receipt && !!(route.actionKey || receiptOutcome);
   const errorState =
     failure ??
     (route.errorKind ? { kind: route.errorKind } : null) ??
     (receiptOutcome?.kind === "ACTION_NOT_AUTHORIZED" ? receiptOutcome : null) ??
     (proposalResult && proposalResult.kind !== "PREPARED" ? proposalResult : null);
-  const open = !!(errorState || receipt || proposal);
+  const open = !!(receiptUnavailable || errorState || receipt || proposal);
 
   const close = useCallback(() => {
     if (pending) return;
@@ -199,30 +200,38 @@ export function InternalReviewController({
         <ReviewModal
           locale={locale}
           title={
-            errorState
-              ? copy.reviewTitle
-              : receipt
-                ? replay
-                  ? copy.replayTitle
-                  : copy.receiptTitle
-                : copy.reviewTitle
+            receiptUnavailable
+              ? copy.receiptUnavailableTitle
+              : errorState
+                ? copy.reviewTitle
+                : receipt
+                  ? replay
+                    ? copy.replayTitle
+                    : copy.receiptTitle
+                  : copy.reviewTitle
           }
           description={
-            receipt && !errorState
-              ? replay
-                ? copy.replayDescription
-                : copy.receiptDescription
-              : copy.reviewDescription
+            receiptUnavailable
+              ? copy.receiptUnavailableDescription
+              : receipt && !errorState
+                ? replay
+                  ? copy.replayDescription
+                  : copy.receiptDescription
+                : copy.reviewDescription
           }
           onClose={close}
           pending={pending}
-          focusKey={errorState?.kind ?? receipt?.businessKey ?? proposal?.businessKey ?? "review"}
+          focusKey={
+            receiptUnavailable
+              ? "receipt-unavailable"
+              : (errorState?.kind ?? receipt?.businessKey ?? proposal?.businessKey ?? "review")
+          }
           returnFocusId={evidenceReturnId}
           onNavigate={(href) =>
             startTransition(() => router.push(href as Route, { scroll: false }))
           }
         >
-          {errorState ? (
+          {receiptUnavailable ? null : errorState ? (
             <div className={styles.form}>
               <div className={styles.notice} role="alert">
                 {reviewStateMessage(copy, errorState.kind)}

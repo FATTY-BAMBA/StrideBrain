@@ -434,6 +434,12 @@ describe("Stage 6 comparison experience composer", () => {
 
     expect(view.heading.title).toContain("信義旗艦店裝修");
     expect(view.cards[0]?.bandLabel).toBe("高度相似");
+    expect(view.cards[0]?.locationLabel).toBe("臺北市內湖區");
+    expect(view.activeProject.subtypeLabel).toBe("零售旗艦店");
+    expect(view.activeProject.locationLabel).toBe("臺北市信義區");
+    expect(view.summary.policyLabel).toBe("專案相似度");
+    expect(row(view, "subtype")?.cells.__ACTIVE_PROJECT__?.primary).toBe("零售旗艦店");
+    expect(row(view, "programme")?.cells.__ACTIVE_PROJECT__?.primary).toBe("16 週");
     expect(view.table.sections.map((section) => section.label)).toContain("分類比較");
     expect(JSON.stringify(view)).not.toMatch(/OpenRouter|Prisma|provider/i);
   });

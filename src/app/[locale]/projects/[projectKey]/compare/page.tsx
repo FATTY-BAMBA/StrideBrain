@@ -115,6 +115,7 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
           );
         }
 
+        const freshness = await services.getFreshness.check(context, structural.result, economics);
         const view = buildComparisonExperience({
           stage4: structural.result,
           ...(economics ? { economics } : {}),
@@ -138,12 +139,17 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
             actionRoute.evidenceActive)
         ) {
           evidencePanel = evidenceSelection
-            ? await services.getEvidencePanel.execute(context, evidenceSelection, rawLocale)
+            ? await services.getEvidencePanel.execute(
+                context,
+                evidenceSelection,
+                rawLocale,
+                freshness,
+              )
             : Object.freeze({ kind: "UNAVAILABLE" as const, requestId: context.requestId });
         }
         const actionServices = createInternalReviewServices();
         const [canPrepare, prepared, receipt] = await Promise.all([
-          economics
+          economics && freshness.state === "CURRENT"
             ? actionServices.canPrepare(context, projectKey, {
                 comparisonRunId: structural.result.run.id,
                 enrichmentRunId: economics.run.id,
@@ -173,6 +179,7 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
         return (
           <ComparisonExperienceClient
             view={view}
+            freshness={freshness}
             evidencePanel={evidencePanel}
             evidenceReturnId={route.evidenceReturnId}
             internalReview={{

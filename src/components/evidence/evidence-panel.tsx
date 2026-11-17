@@ -1,5 +1,6 @@
 "use client";
 
+import { StaleComparisonNotice } from "@/components/comparisons/stale-comparison-notice";
 import { useEffect, useRef } from "react";
 
 import type {
@@ -381,6 +382,12 @@ function ReadyPanel({
           <strong>{view.context.projectName}</strong>
           <span>{view.context.snapshotLabel}</span>
         </div>
+
+        <StaleComparisonNotice
+          freshness={view.context.freshness}
+          locale={view.locale}
+          projectKey={view.context.projectKey}
+        />
 
         {view.backSelection ? (
           <button

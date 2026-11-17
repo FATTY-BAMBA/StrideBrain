@@ -1,3 +1,4 @@
+import type { ComparisonFreshness } from "@/modules/comparisons/domain/freshness";
 import type { SimilarityFactorKey } from "@/modules/comparisons/domain/contracts";
 import type { AuthorityState, ObservationType } from "@/modules/projects/domain/project-workspace";
 import type { Locale } from "@/modules/localization/config";
@@ -132,6 +133,7 @@ export type EvidencePanelView = Readonly<{
     enrichmentRunId?: string | undefined;
     snapshotLabel: string;
     stale: boolean;
+    freshness: ComparisonFreshness;
   }>;
   heading: Readonly<{
     eyebrow: string;

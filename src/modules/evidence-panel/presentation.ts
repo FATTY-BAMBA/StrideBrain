@@ -1,5 +1,6 @@
 import type { Locale } from "@/modules/localization/config";
 import { getFinancialCopy } from "@/modules/localization/financial-copy";
+import { projectSubtypeLabel } from "@/modules/localization/project-context";
 
 // Raw identifiers stay in the immutable source DTO. Only reviewed business copy is
 // selected for normal UI; an unknown field must never become a camel-case label.
@@ -33,11 +34,6 @@ const values: Readonly<Record<string, readonly [string, string]>> = {
   SELECTIVE_DEMOLITION: ["Selective demolition", "局部拆除"],
   SIGNAGE: ["Signage", "招牌標示"],
   COORDINATION: ["Coordination", "工程協調"],
-  RETAIL_FLAGSHIP: ["Retail flagship", "零售旗艦店"],
-  RETAIL_CONCEPT_STORE: ["Retail concept store", "零售概念店"],
-  RETAIL_SHOWROOM: ["Retail showroom", "零售展示店"],
-  CORPORATE_OFFICE: ["Corporate office", "企業辦公室"],
-  BOUTIQUE_HOSPITALITY: ["Boutique hospitality", "精品旅宿"],
   ABOVE: ["Above the historical baseline", "高於歷史基準"],
   BELOW: ["Below the historical baseline", "低於歷史基準"],
   ALIGNED: ["Aligned with the historical baseline", "與歷史基準相當"],
@@ -147,6 +143,8 @@ const values: Readonly<Record<string, readonly [string, string]>> = {
 
 export function evidenceValueLabel(locale: Locale, value: string): string {
   const financial = getFinancialCopy(locale);
+  const subtype = projectSubtypeLabel(locale, value);
+  if (subtype) return subtype;
   const known = values[value];
   if (known) return known[locale === "zh-TW" ? 1 : 0];
   const observation = financial.observations[value as keyof typeof financial.observations];
@@ -160,9 +158,34 @@ export function evidenceValueLabel(locale: Locale, value: string): string {
   return value;
 }
 
+const recordTypes: Readonly<Record<string, readonly [string, string]>> = {
+  project: ["Project record", "專案紀錄"],
+  "project-scope": ["Project scope", "專案範圍"],
+  "document-version": ["Document version", "文件版本"],
+  "quote-version": ["Quote version", "報價版本"],
+  "quote-item": ["Quote line", "報價項目"],
+  "forecast-cost-version": ["Forecast cost version", "預估成本版本"],
+  "forecast-cost-line": ["Forecast cost line", "預估成本項目"],
+  "project-cost-version": ["Reconciled actual cost version", "已核對實際成本版本"],
+  "cost-line": ["Reconciled actual cost line", "已核對實際成本項目"],
+  "supplier-offer": ["Supplier offer", "供應商報價"],
+  "supplier-offer-item": ["Supplier offer line", "供應商報價項目"],
+};
+
+export function evidenceRecordTypeLabel(locale: Locale, kind: string): string {
+  return Object.hasOwn(recordTypes, kind)
+    ? recordTypes[kind]![locale === "zh-TW" ? 1 : 0]
+    : locale === "zh-TW"
+      ? "來源紀錄"
+      : "Source record";
+}
+
 export function evidenceTitle(locale: Locale, title: string): string {
-  return title.replace(/(?<![\w-])[A-Z][A-Z_]+(?![\w-])/g, (value) =>
-    values[value] ? values[value][locale === "zh-TW" ? 1 : 0] : value,
+  return title.replace(
+    /(?<![\w-])[A-Z][A-Z_]+(?![\w-])/g,
+    (value) =>
+      projectSubtypeLabel(locale, value) ??
+      (values[value] ? values[value][locale === "zh-TW" ? 1 : 0] : value),
   );
 }
 

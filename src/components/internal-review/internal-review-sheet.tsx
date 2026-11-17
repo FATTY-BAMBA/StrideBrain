@@ -25,6 +25,12 @@ import { displayReviewTimestamp } from "@/components/internal-review/action-rece
 import styles from "./internal-review.module.css";
 import { focusFirstReviewError } from "@/modules/internal-review-experience/focus";
 
+function isReceiptOutcome(
+  outcome: ConfirmOutcome,
+): outcome is Extract<ConfirmOutcome, { receipt: unknown }> {
+  return outcome.kind === "CREATED" || outcome.kind === "IDEMPOTENT_REPLAY";
+}
+
 function selectedReviewDraft(proposal: ProposalDTO, draft: ReviewDraftSelection) {
   const title = proposal.titleOptions.find((option) => option.key === draft.titleKey);
   const rationale = proposal.rationaleOptions.find((option) => option.key === draft.rationaleKey);
@@ -84,13 +90,18 @@ export function InternalReviewSheet({
   );
 
   useEffect(() => {
+    if (pending || !failure) return;
     focusFirstReviewError(form.current, fieldErrors);
-  }, [fieldErrors]);
+  }, [failure, fieldErrors, pending]);
 
   const lockedAfterFailure =
     failure &&
     [
       "STALE_COMPARISON",
+      "ACCESS_CHANGED",
+      "ACTION_NOT_AUTHORIZED",
+      "EVIDENCE_UNAVAILABLE",
+      "PROPOSAL_EXPIRED",
       "PROPOSAL_ALREADY_CONSUMED",
       "ASSIGNEE_UNAVAILABLE",
       "IDEMPOTENCY_CONFLICT",
@@ -157,6 +168,7 @@ export function InternalReviewSheet({
       });
       outcome = (await response.json()) as ConfirmOutcome;
       if (!outcome || typeof outcome.kind !== "string") throw new Error("INVALID_RESPONSE");
+      if (isReceiptOutcome(outcome) && !outcome.receipt) throw new Error("RECEIPT_UNAVAILABLE");
     } catch {
       outcome = { kind: "ACTION_CREATE_FAILED", requestId: "" };
     }
@@ -169,10 +181,7 @@ export function InternalReviewSheet({
       return;
     }
     if (outcome.kind === "ASSIGNEE_UNAVAILABLE") setFieldErrors({ assigneeKey: "INVALID_REQUEST" });
-    if (
-      "receipt" in outcome ||
-      ["ACTION_NOT_AUTHORIZED", "EVIDENCE_UNAVAILABLE", "PROPOSAL_EXPIRED"].includes(outcome.kind)
-    ) {
+    if (isReceiptOutcome(outcome)) {
       onOutcome(outcome);
       return;
     }
@@ -180,16 +189,34 @@ export function InternalReviewSheet({
   }
 
   return (
-    <form ref={form} className={styles.form} onSubmit={submit} noValidate>
+    <form
+      ref={form}
+      className={styles.form}
+      onSubmit={submit}
+      noValidate
+      aria-label={copy.reviewTitle}
+      aria-describedby={failure ? "review-error-summary" : undefined}
+    >
       {failure ? (
-        <div className={styles.notice} role="alert">
-          <strong>{reviewStateMessage(copy, failure.kind)}</strong>
+        <div
+          className={styles.notice}
+          role="alert"
+          id="review-error-summary"
+          tabIndex={-1}
+          aria-labelledby="review-error-heading"
+        >
+          <h3 id="review-error-heading">
+            {failure.kind === "VALIDATION_FAILED"
+              ? copy.validationTitle
+              : copy.confirmationErrorTitle}
+          </h3>
+          <p>{reviewStateMessage(copy, failure.kind)}</p>
           {"requestId" in failure && failure.requestId ? (
             <p className={styles.reference}>
               {copy.reference}: {failure.requestId}
             </p>
           ) : null}
-          {failure.kind === "STALE_COMPARISON" ? (
+          {lockedAfterFailure ? (
             <Link
               className={styles.textButton}
               href={
@@ -402,7 +429,11 @@ export function InternalReviewSheet({
       </div>
       <div className={styles.actions}>
         <button className={styles.primary} type="submit" disabled={pending || !!lockedAfterFailure}>
-          {pending ? copy.confirming : copy.entry}
+          {pending
+            ? copy.confirming
+            : failure?.kind === "ACTION_CREATE_FAILED"
+              ? copy.retry
+              : copy.entry}
         </button>
         <button className={styles.secondary} type="button" onClick={onCancel} disabled={pending}>
           {copy.cancel}

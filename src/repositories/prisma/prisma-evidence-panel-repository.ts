@@ -643,6 +643,14 @@ export class PrismaEvidencePanelRepository implements EvidencePanelRepositoryPor
       },
     });
     if (references.length !== requested.length) return Object.freeze({ kind: "ACCESS_CHANGED" });
+    if (
+      references.some(
+        (reference) =>
+          reference.dataClassification !== "TENANT_PRIVATE" &&
+          !LIBRARY_CLASSIFICATIONS.has(reference.dataClassification as DataClassification),
+      )
+    )
+      return Object.freeze({ kind: "ACCESS_CHANGED" });
 
     const conflicts = await this.database.evidenceConflict.findMany({
       where: {
@@ -700,6 +708,12 @@ export class PrismaEvidencePanelRepository implements EvidencePanelRepositoryPor
       if (!identity || !canReadRunEvidence(context, run, identity.id, this.authorization)) {
         return Object.freeze({ kind: "ACCESS_CHANGED" });
       }
+      if (
+        reference.dataClassification === "TENANT_PRIVATE" &&
+        !context.assignedProjectIds?.has(identity.id) &&
+        !hasOrganizationWidePrivateHistory(context)
+      )
+        return Object.freeze({ kind: "ACCESS_CHANGED" });
       const commercial = commercialKind(reference.subjectType);
       if (
         commercial &&

@@ -1,5 +1,9 @@
 import { AuthorizationService } from "@/modules/authorization/authorization-service";
 import { permissionFingerprint, sha256 } from "@/modules/comparisons/application/fingerprints";
+import {
+  changedComparisonSources,
+  savedSources,
+} from "@/modules/comparisons/application/comparison-source-changes";
 import { RunComparableProjectAnalysis } from "@/modules/comparisons/application/run-comparable-project-analysis";
 import type { PersistCompleteComparisonInput } from "@/modules/comparisons/domain/contracts";
 import { RunHistoricalEconomicsEnrichment } from "@/modules/economics/application/run-historical-economics-enrichment";
@@ -274,11 +278,20 @@ export async function currentMaterial(
     sha256(current5.result) !== sha256(stage5)
   )
     return { kind: "STALE_COMPARISON" };
-  const resolved = await tx.evidence.getAuthorizedSources(context, comparisonRunId, references);
-  if (resolved.kind !== "COMPLETE" || resolved.sources.length !== references.length)
+  const snapshotReferences = [...savedSources(stage5).keys()];
+  const resolved = await tx.evidence.getAuthorizedSources(
+    context,
+    comparisonRunId,
+    snapshotReferences,
+  );
+  if (resolved.kind !== "COMPLETE" || resolved.sources.length !== snapshotReferences.length)
     return { kind: "EVIDENCE_UNAVAILABLE" };
+  const requiredSources = resolved.sources.filter((source) =>
+    references.includes(source.referenceId),
+  );
+  if (requiredSources.length !== references.length) return { kind: "EVIDENCE_UNAVAILABLE" };
   if (
-    resolved.sources.some(
+    requiredSources.some(
       (source) =>
         source.authorityState === "CONFLICTED" ||
         source.authorityState === "SUPERSEDED" ||
@@ -288,7 +301,11 @@ export async function currentMaterial(
     )
   )
     return { kind: "EVIDENCE_UNAVAILABLE" };
-  const evidence = [...resolved.sources].sort((a, b) => a.referenceId.localeCompare(b.referenceId));
+  if (
+    changedComparisonSources(comparisonRunId, stage5, current5.result, resolved.sources, now).length
+  )
+    return { kind: "STALE_COMPARISON" };
+  const evidence = [...requiredSources].sort((a, b) => a.referenceId.localeCompare(b.referenceId));
   const fingerprints: MaterialFingerprints = {
     project: sha256(project),
     comparisonSource: captured4.input.sourceFingerprint,

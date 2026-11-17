@@ -279,7 +279,14 @@ function service(overrides: Partial<EvidencePanelRepositoryPort> = {}) {
     getAuthorizedConflict: vi.fn().mockResolvedValue(null),
     ...overrides,
   };
-  return new GetEvidencePanel(comparisons, economics, evidence);
+  return new GetEvidencePanel(comparisons, economics, evidence, {
+    check: async () => ({
+      comparisonRunId: stage4.run.id,
+      enrichmentRunId: stage5.run.id,
+      state: "CURRENT",
+      changedSources: [],
+    }),
+  });
 }
 
 describe("GetEvidencePanel", () => {
@@ -489,7 +496,12 @@ describe("QA-16/18 rendered evidence localization and financial authority", () =
   it("selects the Chinese source description, retains exact line/version locator and translates the factor method", async () => {
     const localizedSource = {
       ...source,
-      locator: { lineNumber: 4, categoryId: "IMPORTED_STONE", version: "v3" },
+      locator: {
+        kind: "forecast-cost-line",
+        lineNumber: 4,
+        categoryId: "IMPORTED_STONE",
+        version: "v3",
+      },
       previewFields: [
         { key: "descriptionEn", value: "Imported stone and hard finishes" },
         { key: "descriptionZhTw", value: "進口石材與硬質面材" },
@@ -517,7 +529,9 @@ describe("QA-16/18 rendered evidence localization and financial authority", () =
       "zh-TW",
     );
     if (outcome.kind !== "READY") throw Error("READY_REQUIRED");
-    expect(outcome.view.sources[0]?.locatorLabel).toBe("項目編號: 4 · 分類: 進口石材 · 版本: v3");
+    expect(outcome.view.sources[0]?.locatorLabel).toBe(
+      "紀錄類型: 預估成本項目 · 項目編號: 4 · 分類: 進口石材 · 版本: v3",
+    );
     const text = renderToStaticMarkup(
       createElement(EvidencePanel, {
         outcome,

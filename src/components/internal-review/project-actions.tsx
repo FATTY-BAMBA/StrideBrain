@@ -35,16 +35,16 @@ export function ProjectActions({
 }>) {
   const router = useRouter();
   const copy = getInternalReviewCopy(locale);
+  const receipt = receiptOutcome?.kind === "AVAILABLE" ? receiptOutcome.receipt : null;
   const close = useCallback(() => {
-    const href =
-      receiptOutcome?.kind === "AVAILABLE"
-        ? internalReviewHref(locale, projectKey, receiptOutcome.receipt, {}, "actions")
-        : projectActionsHref(locale, projectKey);
+    const href = receipt
+      ? internalReviewHref(locale, projectKey, receipt, {}, "actions")
+      : projectActionsHref(locale, projectKey);
     router.push(
       `${href}${route.actionKey ? `${href.includes("?") ? "&" : "?"}reviewReturn=${encodeURIComponent(route.actionKey)}` : ""}` as Route,
       { scroll: false },
     );
-  }, [locale, projectKey, receiptOutcome, route.actionKey, router]);
+  }, [locale, projectKey, receipt, route.actionKey, router]);
 
   useEffect(() => {
     if (receiptOutcome || !route.returnId) return;
@@ -113,23 +113,15 @@ export function ProjectActions({
           </article>
         ))
       )}
-      {receiptOutcome ? (
+      {receiptOutcome || route.actionKey ? (
         <ReviewModal
           locale={locale}
-          title={copy.receiptTitle}
-          description={copy.receiptDescription}
+          title={receipt ? copy.receiptTitle : copy.receiptUnavailableTitle}
+          description={receipt ? copy.receiptDescription : copy.receiptUnavailableDescription}
           onClose={close}
-          focusKey={
-            receiptOutcome.kind === "AVAILABLE" ? receiptOutcome.receipt.businessKey : "unavailable"
-          }
+          focusKey={receipt ? receipt.businessKey : "unavailable"}
         >
-          {receiptOutcome.kind === "AVAILABLE" ? (
-            <ActionReceipt receipt={receiptOutcome.receipt} locale={locale} />
-          ) : (
-            <p className={styles.notice} role="alert">
-              {reviewStateMessage(copy, receiptOutcome.kind)}
-            </p>
-          )}
+          {receipt ? <ActionReceipt receipt={receipt} locale={locale} /> : null}
         </ReviewModal>
       ) : null}
     </section>

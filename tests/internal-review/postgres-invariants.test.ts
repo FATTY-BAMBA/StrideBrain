@@ -2,6 +2,10 @@ import { randomUUID } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { EvidencePanel } from "@/components/evidence/evidence-panel";
+import { evidenceSourceKey } from "@/modules/evidence-panel/application/get-evidence-panel";
 
 import { PrismaPg } from "@prisma/adapter-pg";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
@@ -417,6 +421,200 @@ describePostgres("Stage 8 independent PostgreSQL invariants", () => {
     }
     expect(await snapshotCounts()).toEqual(before);
     expect(await counts()).toEqual(businessBefore);
+  }, 30_000);
+
+  it.each([
+    ["en", "authorityState", "OBSERVED"],
+    ["zh-TW", "authorityState", "OBSERVED"],
+    ["en", "supportedValue", { amount: "12345.00" }],
+    ["zh-TW", "supportedValue", { amount: "12345.00" }],
+  ] as const)(
+    "keeps a %s saved claim inspectable with a named %s change and rejects new writes",
+    async (locale, field, value) => {
+      const fixture = await prepared(await actor("membership_horizon_mei", locale));
+      const services = createComparisonServices();
+      const reviews = createInternalReviewServices();
+      const structural = await services.getComparison.execute(
+        fixture.actor.context,
+        fixture.comparisonRunId,
+      );
+      const economics = await services.getEconomics.execute(
+        fixture.actor.context,
+        fixture.enrichmentRunId,
+      );
+      if (structural.kind !== "COMPLETE" || !economics) throw new Error("TEST_SAVED_PAIR_REQUIRED");
+      const snapshot = JSON.stringify({
+        comparison: await row("ComparisonRun", fixture.comparisonRunId),
+        economics: await row("EconomicsEnrichmentRun", fixture.enrichmentRunId),
+      });
+      expect(
+        (await services.getFreshness.check(fixture.actor.context, structural.result, economics))
+          .state,
+      ).toBe("CURRENT");
+      const ref = "evid_cost_cl_nanjing_023_v1_3";
+      const original = await row("EvidenceReference", ref);
+      const restore = await patch("EvidenceReference", ref, { [field]: value });
+      const before = await counts();
+      const proposalCount = await database.proposedAction.count();
+      const runCount = await database.comparisonRun.count();
+      const enrichmentCount = await database.economicsEnrichmentRun.count();
+      try {
+        const freshness = await services.getFreshness.check(
+          fixture.actor.context,
+          structural.result,
+          economics,
+        );
+        expect(freshness.state).toBe("STALE");
+        expect(freshness.changedSources).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              sourceKey: evidenceSourceKey(fixture.comparisonRunId, ref),
+              projectNameZhTw: "南京品牌體驗中心",
+              reasons: expect.arrayContaining([
+                field === "authorityState" ? "AUTHORITY" : "SOURCE_DETAILS",
+              ]),
+            }),
+          ]),
+        );
+        const claim = {
+          mode: "CLAIM" as const,
+          comparisonRunId: fixture.comparisonRunId,
+          enrichmentRunId: fixture.enrichmentRunId,
+          claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        };
+        for (const selection of [
+          claim,
+          {
+            ...claim,
+            mode: "SOURCE" as const,
+            sourceKey: evidenceSourceKey(fixture.comparisonRunId, ref),
+          },
+        ]) {
+          const panel = await services.getEvidencePanel.execute(
+            fixture.actor.context,
+            selection,
+            locale,
+            freshness,
+          );
+          expect(panel.kind).toBe("READY");
+          if (panel.kind !== "READY") throw new Error("TEST_INSPECTABLE_SAVED_PANEL_REQUIRED");
+          expect(panel.view.context.stale).toBe(true);
+          const html = renderToStaticMarkup(
+            createElement(EvidencePanel, {
+              outcome: panel,
+              locale,
+              onClose: () => {},
+              onNavigate: () => {},
+            }),
+          );
+          expect(html).toContain(locale === "en" ? "This result is stale" : "此比較結果已過時");
+          expect(html).toContain(locale === "en" ? "Re-run comparison" : "重新比較");
+          expect(html).toContain(locale === "en" ? "Nanjing Brand Experience" : "南京品牌體驗中心");
+          if (selection.mode === "CLAIM") expect(html).toContain("+18.4%");
+        }
+        expect(await reviews.canPrepare(fixture.actor.context, PROJECT, fixture)).toBe(false);
+        expect(
+          (
+            await reviews.prepare(fixture.actor.context, {
+              projectKey: PROJECT,
+              comparisonRunId: fixture.comparisonRunId,
+              enrichmentRunId: fixture.enrichmentRunId,
+              locale,
+            })
+          ).kind,
+        ).toBe("PROPOSAL_STALE");
+        expect((await reviews.confirm(fixture.actor.context, command(fixture.proposal))).kind).toBe(
+          "STALE_COMPARISON",
+        );
+        expect(await counts()).toEqual(before);
+        expect(await database.proposedAction.count()).toBe(proposalCount);
+        expect(await database.comparisonRun.count()).toBe(runCount);
+        expect(await database.economicsEnrichmentRun.count()).toBe(enrichmentCount);
+        expect(
+          JSON.stringify({
+            comparison: await row("ComparisonRun", fixture.comparisonRunId),
+            economics: await row("EconomicsEnrichmentRun", fixture.enrichmentRunId),
+          }),
+        ).toBe(snapshot);
+        // The existing explicit re-run flow creates a distinct current result and leaves the old one intact.
+        if (field === "authorityState") {
+          const rerun = await pair(fixture.actor);
+          expect(rerun.comparisonRunId).not.toBe(fixture.comparisonRunId);
+          const newComparison = await services.getComparison.execute(
+            fixture.actor.context,
+            rerun.comparisonRunId,
+          );
+          const newEconomics = await services.getEconomics.execute(
+            fixture.actor.context,
+            rerun.enrichmentRunId,
+          );
+          if (newComparison.kind !== "COMPLETE" || !newEconomics)
+            throw new Error("TEST_NEW_PAIR_REQUIRED");
+          expect(
+            (
+              await services.getFreshness.check(
+                fixture.actor.context,
+                newComparison.result,
+                newEconomics,
+              )
+            ).state,
+          ).toBe("CURRENT");
+          expect(
+            (await services.getFreshness.check(fixture.actor.context, structural.result, economics))
+              .state,
+          ).toBe("STALE");
+          expect(await counts()).toEqual(before);
+        }
+      } finally {
+        await restore();
+      }
+      expect(await row("EvidenceReference", ref)).toEqual(original);
+      expect(
+        (await services.getFreshness.check(fixture.actor.context, structural.result, economics))
+          .state,
+      ).toBe("CURRENT");
+    },
+    30_000,
+  );
+
+  it("does not identify a changed source after access to it is withdrawn", async () => {
+    const fixture = await prepared();
+    const services = createComparisonServices();
+    const structural = await services.getComparison.execute(
+      fixture.actor.context,
+      fixture.comparisonRunId,
+    );
+    const economics = await services.getEconomics.execute(
+      fixture.actor.context,
+      fixture.enrichmentRunId,
+    );
+    if (structural.kind !== "COMPLETE" || !economics) throw new Error("TEST_SAVED_PAIR_REQUIRED");
+    const restore = await patch("EvidenceReference", "evid_cost_cl_nanjing_023_v1_3", {
+      dataClassification: "TENANT_RESTRICTED",
+    });
+    try {
+      const freshness = await services.getFreshness.check(
+        fixture.actor.context,
+        structural.result,
+        economics,
+      );
+      expect(freshness.state).toBe("UNVERIFIED");
+      expect(freshness.changedSources).toEqual([]);
+      const panel = await services.getEvidencePanel.execute(
+        fixture.actor.context,
+        {
+          mode: "CLAIM",
+          comparisonRunId: fixture.comparisonRunId,
+          enrichmentRunId: fixture.enrichmentRunId,
+          claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        },
+        "en",
+        freshness,
+      );
+      expect(panel.kind).toBe("ACCESS_CHANGED");
+    } finally {
+      await restore();
+    }
   }, 30_000);
 
   it("reopens one deterministic proposal and localized review without creating an action", async () => {

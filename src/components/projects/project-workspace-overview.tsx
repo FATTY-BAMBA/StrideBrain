@@ -1,4 +1,5 @@
 import { getFinancialCopy } from "@/modules/localization/financial-copy";
+import { projectLocationLabel } from "@/modules/localization/project-context";
 import type { Route } from "next";
 import Link from "next/link";
 
@@ -133,7 +134,7 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
           <h1>{workspace.project.name.display}</h1>
           <p className={styles.client}>{workspace.project.clientName.display}</p>
           <div className={styles.meta}>
-            <span>{`${labels.location}: ${workspace.project.location.display}`}</span>
+            <span>{`${labels.location}: ${projectLocationLabel(locale, workspace.project.location)}`}</span>
             <span>{`${labels.area}: ${workspace.project.area.value} ${areaUnit}`}</span>
             {workspace.project.programmeWeeks ? (
               <span>{`${labels.programme}: ${workspace.project.programmeWeeks} ${locale === "zh-TW" ? "週" : "weeks"}`}</span>

@@ -116,6 +116,8 @@ export type ComparisonCopy = Readonly<{
   }>;
   actionComingLater: string;
   normalizedUnit: string;
+  programmeUnit: string;
+  similarityMethod: string;
   selectedProjects: string;
 }>;
 
@@ -256,6 +258,8 @@ const en: ComparisonCopy = {
   },
   actionComingLater: "Internal review action becomes available in Stage 8.",
   normalizedUnit: "TWD/m²",
+  programmeUnit: "weeks",
+  similarityMethod: "Project similarity",
   selectedProjects: "Selected projects",
 };
 
@@ -387,6 +391,8 @@ const zhTw: ComparisonCopy = {
   },
   actionComingLater: "建立內部審查事項將於 Stage 8 啟用。",
   normalizedUnit: "新台幣／m²",
+  programmeUnit: "週",
+  similarityMethod: "專案相似度",
   selectedProjects: "已選專案",
 };
 

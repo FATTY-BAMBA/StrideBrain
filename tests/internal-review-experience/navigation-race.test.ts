@@ -41,6 +41,7 @@ vi.mock("next/link", () => ({
 
 import { InternalReviewController } from "@/components/internal-review/internal-review-controller";
 import { LanguageSwitcher } from "@/components/shell/language-switcher";
+import { getInternalReviewCopy } from "@/modules/internal-review-experience/copy";
 
 // Next integrates native history writes and popstate with useSearchParams. Model that
 // subscription while deliberately keeping router.push unresolved until server commit.
@@ -96,8 +97,155 @@ const canonical = internalReviewHref("en", proposal.project.projectKey, proposal
 let root: Root;
 let container: HTMLDivElement;
 const evidence = vi.fn();
+const scrollIntoView = vi.fn();
 
-function renderController(prepared: boolean, evidenceActive = false, locale = proposal.locale) {
+describe.each(["en", "zh-TW"] as const)("QA-15 confirmation recovery (%s)", (locale) => {
+  it.each([
+    "STALE_COMPARISON",
+    "ACCESS_CHANGED",
+    "ACTION_NOT_AUTHORIZED",
+    "EVIDENCE_UNAVAILABLE",
+    "ACTION_CREATE_FAILED",
+    "network failure",
+    "invalid response",
+  ])("keeps the edited draft and focuses visible recovery for %s", async (kind) => {
+    const copy = getInternalReviewCopy(locale);
+    await act(async () => renderController(true, false, locale));
+    await act(async () => {
+      choose("review-title", "CHECK");
+      choose("review-rationale", "CHECK");
+      choose("review-assignee", "none");
+      choose("review-dueDate", "2026-12-20");
+      container.querySelector<HTMLInputElement>("#review-confirmation")!.click();
+    });
+    const originalHref = window.location.href;
+    const dialog = container.querySelector<HTMLElement>('[role="dialog"]')!;
+    const form = container.querySelector<HTMLFormElement>("form")!;
+    let finish!: () => void;
+    vi.mocked(fetch).mockImplementation(
+      () =>
+        new Promise((resolve, reject) => {
+          finish = () =>
+            kind === "network failure"
+              ? reject(new Error("private transport detail must not render"))
+              : resolve({
+                  json: async () =>
+                    kind === "invalid response" ? null : { kind, requestId: "qa15-safe-reference" },
+                } as Response);
+        }),
+    );
+    await act(async () =>
+      form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true })),
+    );
+    // Model the lost focus caused by a disabled submit control while awaiting the server.
+    (document.activeElement as HTMLElement).blur();
+    expect(document.activeElement).toBe(document.body);
+    expect(dialog.getAttribute("aria-busy")).toBe("true");
+    await act(async () => finish());
+
+    const summary = container.querySelector<HTMLElement>("#review-error-summary")!;
+    expect(container.querySelector('[role="dialog"]')).toBe(dialog);
+    expect(dialog.contains(summary)).toBe(true);
+    expect(document.activeElement).toBe(summary);
+    expect(summary.tabIndex).toBe(-1);
+    expect(summary.getAttribute("role")).toBe("alert");
+    expect(summary.getAttribute("aria-labelledby")).toBe("review-error-heading");
+    expect(container.querySelector("#review-error-heading")!.textContent).toBe(
+      copy.confirmationErrorTitle,
+    );
+    expect(form.getAttribute("aria-describedby")).toBe(summary.id);
+    const safeKind =
+      kind === "network failure" || kind === "invalid response" ? "ACTION_CREATE_FAILED" : kind;
+    expect(summary.textContent).toContain(copy.states[safeKind as keyof typeof copy.states]);
+    expect(container.textContent).not.toContain("private transport detail");
+    // jsdom has no layout. Assert the explicit immediate visibility request here;
+    // real viewport geometry is checked separately in production browser QA.
+    expect(scrollIntoView).toHaveBeenCalledOnce();
+    expect(scrollIntoView.mock.contexts[0]).toBe(summary);
+    expect(scrollIntoView).toHaveBeenCalledWith({
+      behavior: "instant",
+      block: "center",
+      inline: "nearest",
+    });
+    expect(container.querySelector<HTMLSelectElement>("#review-title")!.value).toBe("CHECK");
+    expect(container.querySelector<HTMLSelectElement>("#review-rationale")!.value).toBe("CHECK");
+    expect(container.querySelector<HTMLSelectElement>("#review-assignee")!.value).toBe("none");
+    expect(container.querySelector<HTMLInputElement>("#review-dueDate")!.value).toBe("2026-12-20");
+    expect(container.querySelector<HTMLInputElement>("#review-confirmation")!.checked).toBe(true);
+    expect(window.location.href).toBe(originalHref);
+    expect(navigation.push).not.toHaveBeenCalled();
+    expect(navigation.replace).not.toHaveBeenCalled();
+    expect(fetch).toHaveBeenCalledOnce();
+    expect(dialog.getAttribute("aria-busy")).toBe("false");
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    if (safeKind === "ACTION_CREATE_FAILED") {
+      expect(submit.disabled).toBe(false);
+      expect(submit.textContent).toBe(copy.retry);
+    } else {
+      expect(submit.disabled).toBe(true);
+      const recovery = summary.querySelector<HTMLAnchorElement>("a[href]")!;
+      expect(recovery.textContent).toBe(copy.refresh);
+      expect(recovery.tabIndex).toBe(0);
+      recovery.focus();
+      expect(document.activeElement).toBe(recovery);
+    }
+    // Escape still closes through canonical navigation and returns to the entry.
+    await act(async () =>
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true })),
+    );
+    const closeHref = navigation.push.mock.calls.at(-1)![0] as string;
+    expect(new URL(closeHref, window.location.href).searchParams.get("reviewReturn")).toBe(
+      "internal-review-entry",
+    );
+    await act(async () => {
+      window.history.replaceState(null, "", closeHref);
+      renderController(false, false, locale, safeKind === "ACTION_CREATE_FAILED");
+    });
+    expect(container.querySelector('[role="dialog"]')).toBeNull();
+    expect(document.activeElement?.id).toBe(
+      safeKind === "ACTION_CREATE_FAILED" ? "internal-review-entry" : "comparison-heading",
+    );
+  });
+
+  it("preserves field error association and cancel focus return", async () => {
+    vi.mocked(fetch).mockResolvedValue({
+      json: async () => ({
+        kind: "VALIDATION_FAILED",
+        requestId: "qa15",
+        fieldErrors: { dueDate: "INVALID_DUE_DATE" },
+      }),
+    } as Response);
+    await act(async () => renderController(true, false, locale));
+    await act(async () =>
+      container
+        .querySelector("form")!
+        .dispatchEvent(new Event("submit", { bubbles: true, cancelable: true })),
+    );
+    const input = container.querySelector<HTMLInputElement>("#review-dueDate")!;
+    expect(document.activeElement).toBe(input);
+    expect(input.getAttribute("aria-invalid")).toBe("true");
+    expect(input.getAttribute("aria-describedby")?.split(" ")).toContain("review-dueDate-error");
+    expect(container.querySelector("#review-dueDate-error")!.textContent).not.toBe("");
+    expect(scrollIntoView.mock.contexts[0]).toBe(input);
+    await act(async () =>
+      [...container.querySelectorAll<HTMLButtonElement>("form button")]
+        .find((button) => button.textContent === getInternalReviewCopy(locale).cancel)!
+        .click(),
+    );
+    await act(async () => {
+      window.history.replaceState(null, "", navigation.push.mock.calls.at(-1)![0] as string);
+      renderController(false, false, locale);
+    });
+    expect(document.activeElement?.id).toBe("internal-review-entry");
+  });
+});
+
+function renderController(
+  prepared: boolean,
+  evidenceActive = false,
+  locale = proposal.locale,
+  canPrepare = true,
+) {
   const route = parseInternalReviewRoute(
     Object.fromEntries(new URL(window.location.href).searchParams),
   );
@@ -105,6 +253,7 @@ function renderController(prepared: boolean, evidenceActive = false, locale = pr
     createElement(
       "div",
       null,
+      createElement("h1", { id: "comparison-heading", tabIndex: -1 }, "Saved comparison"),
       createElement(LanguageSwitcher, { locale, enLabel: "English", zhLabel: "繁體中文" }),
       createElement(InternalReviewController, {
         key: `${locale}:${route.proposalKey ?? "entry"}`,
@@ -113,7 +262,7 @@ function renderController(prepared: boolean, evidenceActive = false, locale = pr
         comparisonRunId: proposal.comparisonRunId,
         enrichmentRunId: proposal.enrichmentRunId,
         returnContext: proposal.returnContext,
-        canPrepare: true,
+        canPrepare,
         route,
         ...(prepared
           ? { proposalOutcome: { kind: "PREPARED" as const, proposal: { ...proposal, locale } } }
@@ -137,6 +286,11 @@ function draft() {
   return parseInternalReviewRoute(Object.fromEntries(new URL(window.location.href).searchParams));
 }
 beforeEach(() => {
+  Object.defineProperty(HTMLElement.prototype, "scrollIntoView", {
+    configurable: true,
+    value: scrollIntoView,
+  });
+  scrollIntoView.mockClear();
   vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
   vi.stubGlobal("CSS", { escape: (value: string) => value });
   vi.stubGlobal("fetch", vi.fn());
@@ -156,6 +310,7 @@ afterEach(async () => {
   await act(async () => root.unmount());
   container.remove();
   vi.unstubAllGlobals();
+  Reflect.deleteProperty(HTMLElement.prototype, "scrollIntoView");
 });
 
 describe("QA-05 component navigation race regressions", () => {

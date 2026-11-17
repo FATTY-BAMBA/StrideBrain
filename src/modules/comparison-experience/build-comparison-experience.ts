@@ -1,4 +1,5 @@
 import { getFinancialCopy } from "@/modules/localization/financial-copy";
+import { projectLocationLabel, projectSubtypeLabel } from "@/modules/localization/project-context";
 import type { ObservationType } from "@/modules/projects/domain/project-workspace";
 import type {
   ComparableProjectMatchDTO,
@@ -91,12 +92,6 @@ function formatPoints(locale: Locale, value: string): string {
 function formatArea(locale: Locale, value: string, unit: string): string {
   const renderedUnit = unit.toLowerCase() === "m2" ? "m²" : unit;
   return `${formatNumber(locale, value, 0)} ${renderedUnit}`;
-}
-
-function formatLocation(
-  location: Readonly<{ city: string; district?: string | undefined }>,
-): string {
-  return [location.district, location.city].filter(Boolean).join(", ");
 }
 
 function formatDate(locale: Locale, value: string): string {
@@ -379,7 +374,7 @@ function programmeCell(
   if (active) {
     return cell(
       "VALUE",
-      `${formatNumber(locale, programme.activeProgrammeWeeks ?? "", 0)} weeks`,
+      `${formatNumber(locale, programme.activeProgrammeWeeks ?? "", 0)} ${copy.programmeUnit}`,
       "CAUTION",
       {
         secondary: copy.synthesis.programmeDifference,
@@ -389,7 +384,7 @@ function programmeCell(
   }
   return cell(
     "VALUE",
-    `${formatNumber(locale, programme.historicalMinimumWeeks ?? "", 0)}–${formatNumber(locale, programme.historicalMaximumWeeks ?? "", 0)} weeks`,
+    `${formatNumber(locale, programme.historicalMinimumWeeks ?? "", 0)}–${formatNumber(locale, programme.historicalMaximumWeeks ?? "", 0)} ${copy.programmeUnit}`,
     "NEUTRAL",
     { secondary: locale === "zh-TW" ? "已選歷史專案範圍" : "Selected historical range" },
   );
@@ -424,7 +419,7 @@ function comparableCard(
     band: match.band,
     bandLabel: copy.bands[match.band],
     evidenceCoverageLabel: `${match.displayEvidenceCoverage}%`,
-    locationLabel: formatLocation(match.project.location),
+    locationLabel: projectLocationLabel(locale, match.project.location),
     areaLabel: formatArea(locale, match.project.areaValue, match.project.areaUnit),
     completionLabel: formatDate(locale, match.project.completedAt),
     strongestFactors: Object.freeze(
@@ -603,8 +598,15 @@ function contextSections(
       cells: projectCellMap(
         stage4,
         selectedKeys,
-        cell("VALUE", stage4.activeContext.subtype),
-        (match) => cell("VALUE", match.project.subtype),
+        cell(
+          "VALUE",
+          projectSubtypeLabel(locale, stage4.activeContext.subtype) ?? copy.states.unavailable,
+        ),
+        (match) =>
+          cell(
+            "VALUE",
+            projectSubtypeLabel(locale, match.project.subtype) ?? copy.states.unavailable,
+          ),
       ),
     }),
     Object.freeze({
@@ -627,8 +629,8 @@ function contextSections(
       cells: projectCellMap(
         stage4,
         selectedKeys,
-        cell("VALUE", formatLocation(stage4.activeContext.location)),
-        (match) => cell("VALUE", formatLocation(match.project.location)),
+        cell("VALUE", projectLocationLabel(locale, stage4.activeContext.location)),
+        (match) => cell("VALUE", projectLocationLabel(locale, match.project.location)),
       ),
     }),
     Object.freeze({
@@ -858,7 +860,7 @@ export function buildComparisonExperience(
     }),
     summary: Object.freeze({
       generatedAtLabel: formatDate(locale, economics?.run.generatedAt ?? stage4.run.generatedAt),
-      policyLabel: stage4.run.policyVersion,
+      policyLabel: copy.similarityMethod,
       authorizedMatchCountLabel: formatNumber(locale, stage4.summary.primaryMatchCount, 0),
       selectedCountLabel: `${selectedProjectKeys.length}/3`,
       economicsStateLabel: economicsStateLabel(economics, copy),
@@ -867,9 +869,10 @@ export function buildComparisonExperience(
     activeProject: Object.freeze({
       projectKey: stage4.activeContext.projectKey,
       name: localizedName(locale, stage4.activeContext),
-      subtypeLabel: stage4.activeContext.subtype,
+      subtypeLabel:
+        projectSubtypeLabel(locale, stage4.activeContext.subtype) ?? copy.states.unavailable,
       areaLabel: formatArea(locale, stage4.activeContext.areaValue, stage4.activeContext.areaUnit),
-      locationLabel: formatLocation(stage4.activeContext.location),
+      locationLabel: projectLocationLabel(locale, stage4.activeContext.location),
       ...(stage4.activeContext.activeQuoteVersionKey
         ? { quoteVersionLabel: stage4.activeContext.activeQuoteVersionKey }
         : {}),

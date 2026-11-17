@@ -50,7 +50,7 @@ function visibleText(markup: string): string {
 
 function assertNoInternalCopy(text: string, contextLabel: string): void {
   expect(text, contextLabel).not.toMatch(
-    /\b[A-Z]+(?:_[A-Z0-9]+)+\b|CPI-(?:SIM|ECON|CALC|ELIGIBILITY)-|EVIDENCE-AUTHORITY-|source\(s\)|Description unavailable|此項說明尚未提供|Currentnormalizedamount|Descriptionen|Descriptionzhtw|Unitprice/,
+    /\b[A-Z]+(?:_[A-Z0-9]+)+\b|CPI-(?:SIM|ECON|CALC|ELIGIBILITY)-|EVIDENCE-AUTHORITY-|\b(?:cost-line|forecast-cost-line|quote-item|forecast-cost-version)\b|source\(s\)|Description unavailable|此項說明尚未提供|Currentnormalizedamount|Descriptionen|Descriptionzhtw|Unitprice/,
   );
 }
 
@@ -114,6 +114,7 @@ describePostgres("Independent SB-029 stored-data presentation review", () => {
   }, 30_000);
 
   it("preserves stored forecast and actual authority at every visible comparison cell", () => {
+    const saved = JSON.stringify({ comparison, economics });
     expect(economics.current.forecastDirectCost).toMatch(/^12650000(?:\.0+)?$/);
     expect(economics.overall.forecastVariance.currentBasis).toBe("FORECAST");
     expect(economics.overall.actualHistory.observationType).toBe("RECONCILED_ACTUAL_COST");
@@ -135,6 +136,27 @@ describePostgres("Independent SB-029 stored-data presentation review", () => {
         }
       }
       const html = renderToStaticMarkup(createElement(ComparisonExperienceClient, { view }));
+      expect(html).toMatch(/<h1 tabindex="-1">/);
+      const text = visibleText(html);
+      assertNoInternalCopy(text, `${locale} comparison`);
+      if (locale === "zh-TW") {
+        expect(text).not.toMatch(/\b(?:District|Taipei|weeks)\b/);
+        for (const label of [
+          "零售旗艦店",
+          "臺北市內湖區",
+          "新北市板橋區",
+          "16 週",
+          "19–22 週",
+          "專案相似度",
+        ]) {
+          expect(text).toContain(label);
+        }
+        expect(html).toMatch(/aria-label="[^"]*16 週/);
+      } else {
+        expect(text).toContain("Retail flagship");
+        expect(text).toContain("Neihu District, Taipei City");
+        expect(text).toContain("16 weeks");
+      }
       expect(html).toContain("NT$12,650,000");
       expect(html).toContain("NT$2,360,000");
       expect(html).toMatch(
@@ -143,6 +165,7 @@ describePostgres("Independent SB-029 stored-data presentation review", () => {
           : /aria-label="[^"]*預估直接成本[^"]*NT\$2,360,000/,
       );
     }
+    expect(JSON.stringify({ comparison, economics })).toBe(saved);
   });
 
   it("renders every real claim, factor and linked source without internal enum or policy copy", async () => {
@@ -183,7 +206,9 @@ describePostgres("Independent SB-029 stored-data presentation review", () => {
         );
         assertNoInternalCopy(text, `${locale} ${JSON.stringify(selection)}`);
         if (locale === "zh-TW") {
-          expect(text).not.toMatch(/\b(?:Code|State|Current context|Historical context)\b/);
+          expect(text).not.toMatch(
+            /\b(?:Code|State|Current context|Historical context|District|Taipei|weeks)\b/,
+          );
         }
         for (const source of outcome.view.sources) {
           if (source.observationType) observationTypes.add(source.observationType);
@@ -269,6 +294,8 @@ describePostgres("Independent SB-029 stored-data presentation review", () => {
       expect(text).toContain(locale === "en" ? "Forecast direct cost" : "預估直接成本");
       expect(text).toContain("12,650,000");
       expect(text).not.toMatch(/FORECAST_DIRECT_COST|HUMAN_REVIEWED|RECONCILED_ACTUAL/);
+      expect(text).toContain(locale === "en" ? "Xinyi District, Taipei City" : "臺北市信義區");
+      if (locale === "zh-TW") expect(text).not.toMatch(/\b(?:District|Taipei|weeks)\b/);
     }
   }, 30_000);
 });

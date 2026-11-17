@@ -5,6 +5,8 @@ import type { Route } from "next";
 import { useRouter } from "next/navigation";
 
 import { updateComparisonSelectionAction } from "@/app/[locale]/projects/[projectKey]/compare/actions";
+import { StaleComparisonNotice } from "./stale-comparison-notice";
+import type { ComparisonFreshness } from "@/modules/comparisons/domain/freshness";
 import { EvidencePanel } from "@/components/evidence/evidence-panel";
 import {
   InternalReviewController,
@@ -26,6 +28,7 @@ import styles from "./comparison-experience.module.css";
 
 type ComparisonExperienceClientProps = Readonly<{
   view: ComparisonExperienceView;
+  freshness?: ComparisonFreshness | undefined;
   evidencePanel?: EvidencePanelOutcome | undefined;
   evidenceReturnId?: string | undefined;
   internalReview?: InternalReviewExperienceProps | undefined;
@@ -218,6 +221,7 @@ function ProjectCard({
 
 export function ComparisonExperienceClient({
   view,
+  freshness,
   evidencePanel,
   evidenceReturnId,
   internalReview,
@@ -350,10 +354,17 @@ export function ComparisonExperienceClient({
 
   return (
     <div className={styles.page}>
+      {freshness ? (
+        <StaleComparisonNotice
+          freshness={freshness}
+          locale={view.locale}
+          projectKey={view.route.projectKey}
+        />
+      ) : null}
       <header className={styles.hero}>
         <div className={styles.heroContent}>
           <p className={styles.eyebrow}>{view.heading.eyebrow}</p>
-          <h1>{view.heading.title}</h1>
+          <h1 tabIndex={-1}>{view.heading.title}</h1>
           <p className={styles.heroDescription}>{view.heading.description}</p>
         </div>
 

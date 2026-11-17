@@ -36,6 +36,10 @@ const en = {
   openActions: "View project actions",
   receiptTitle: "Internal review action created",
   receiptDescription: "This receipt records the action saved to the project.",
+  receiptUnavailableTitle: "Receipt unavailable",
+  receiptUnavailableDescription:
+    "This receipt cannot be displayed. Return to a project you can access to view available actions.",
+  confirmationErrorTitle: "Review could not be confirmed",
   replayTitle: "This internal review action was already created",
   replayDescription: "The same saved receipt is shown. No additional action was created.",
   actionKey: "Action reference",
@@ -65,6 +69,8 @@ const en = {
     PROPOSAL_NOT_AUTHORIZED: "This review is unavailable with your current access.",
     PROPOSAL_FAILED: "The review could not be prepared. Try again from the comparison.",
     ACTION_NOT_AUTHORIZED: "This action is unavailable with your current access.",
+    ACCESS_CHANGED:
+      "Your access has changed. Return to a comparison you can access before continuing.",
     ASSIGNEE_UNAVAILABLE:
       "The assignee is no longer available for this review. Reopen the review to check the current assignment.",
     EVIDENCE_UNAVAILABLE:
@@ -124,6 +130,9 @@ const zhTw: CopyShape<typeof en> = {
   openActions: "查看專案事項",
   receiptTitle: "已建立內部審查事項",
   receiptDescription: "此回執記錄已儲存至專案的事項。",
+  receiptUnavailableTitle: "目前無法查看回執",
+  receiptUnavailableDescription: "目前無法顯示這份回執。請返回您有權存取的專案，查看可用的事項。",
+  confirmationErrorTitle: "未能完成審查確認",
   replayTitle: "此內部審查事項已建立",
   replayDescription: "目前顯示同一份已儲存回執，未重複建立事項。",
   actionKey: "事項編號",
@@ -150,6 +159,7 @@ const zhTw: CopyShape<typeof en> = {
     PROPOSAL_NOT_AUTHORIZED: "依您目前的權限，無法查看此審查。",
     PROPOSAL_FAILED: "未能準備審查內容。請從比較畫面重試。",
     ACTION_NOT_AUTHORIZED: "依您目前的權限，無法查看或建立此事項。",
+    ACCESS_CHANGED: "您的存取權限已變更。請返回您有權存取的比較，再繼續操作。",
     ASSIGNEE_UNAVAILABLE: "此承辦人目前無法承辦本次審查。請重新開啟審查，確認目前可用的人選。",
     EVIDENCE_UNAVAILABLE: "必要佐證資料目前無法存取。請返回比較，確認存取權限與資料來源。",
     STALE_COMPARISON: "比較或相關佐證資料已變更，未建立事項。請重新比較並再次檢視。",
