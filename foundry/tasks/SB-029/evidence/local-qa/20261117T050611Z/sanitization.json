@@ -1,0 +1,41 @@
+{
+  "runId": "20261117T050611Z",
+  "at": "2026-11-17T06:06:55.404654+00:00",
+  "result": "PASS",
+  "scope": "Entire new evidence subtree before inventory and hash-manifest generation; all UTF-8 evidence/logs/JSON, all original screenshot files and corresponding OCR texts.",
+  "artifactFilesScanned": 464,
+  "textFilesScanned": 261,
+  "imageFilesVerified": 203,
+  "ocrFilesCovered": 203,
+  "knownPrivateLiterals": 13,
+  "literalRepresentationsChecked": 31,
+  "knownValueSources": {
+    "private environment": 5,
+    "database password": 1,
+    "bootstrap URL": 2,
+    "bootstrap path token": 2,
+    "private ledger credential/session identifier": 4
+  },
+  "patternCategories": [
+    "personal/private absolute paths",
+    "database credential URL",
+    "bootstrap/session URL",
+    "bearer authorization",
+    "JWT",
+    "private signing key",
+    "provider credential",
+    "assigned credential value",
+    "cookie header/value"
+  ],
+  "hits": [],
+  "allImageExifEmpty": true,
+  "allImageMetadataLimitedToFormatAndDensity": true,
+  "visualReview": "Independent browser reviewer inspected screenshots during capture; publication screenshot review is recorded separately in screenshot-review.json.",
+  "publicationContent": "Synthetic business selectors, local test database name, correlation IDs, public commit SHAs and presence-only environment booleans retained. No private environment values or raw request headers are published.",
+  "sanitizationApplied": [
+    "Production/build/SQL/performance logs retain only sanitized workspace placeholders or approved event fields.",
+    "Session cleanup proof contains aggregate counts and hashes, without raw session IDs or tokens.",
+    "No image pixel editing."
+  ],
+  "limitations": "Pattern/literal checks and OCR are fallible. PASS means no matching publication-sensitive content found in this recorded scan, not a universal guarantee."
+}

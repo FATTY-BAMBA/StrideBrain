@@ -1,0 +1,8 @@
+{
+  "runId": "20261117T050611Z",
+  "database": "stridebrain_sb029_targeted_20261117t050611z",
+  "at": "2026-11-17T05:52:45.956Z",
+  "actionKey": "action_00000000-0000-4000-8000-000000000000",
+  "matchingRows": 0,
+  "method": "Read-only check across this isolated synthetic database; UUID-shaped selector intentionally nonexistent."
+}

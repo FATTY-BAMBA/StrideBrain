@@ -1,0 +1,36 @@
+{
+  "at": "2026-11-17T05:55:51.438836+00:00",
+  "caseCount": 1,
+  "cases": [
+    {
+      "caseId": "authority-1794894319794",
+      "artifact": "mutation-authority-1794894319794.json",
+      "restored": true,
+      "noBusinessWrites": true
+    }
+  ],
+  "allCasesRestored": true,
+  "noActiveMutationFaultDelay": true,
+  "allFixedFixtureDigestsMatch": true,
+  "immutableHistoryUnchanged": true,
+  "zeroTemporaryObjects": true,
+  "sessionsRevoked": 4,
+  "activeSessions": 0,
+  "beforeCounts": {
+    "actions": 0,
+    "proposals": 0,
+    "consumed": 0,
+    "receipts": 0,
+    "audits": 0,
+    "actionevidencelinks": 0
+  },
+  "afterCounts": {
+    "actions": 1,
+    "proposals": 1,
+    "consumed": 1,
+    "receipts": 1,
+    "audits": 1,
+    "actionevidencelinks": 15
+  },
+  "intentionalActionHistoryRetained": true
+}

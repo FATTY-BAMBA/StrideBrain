@@ -1,0 +1,43 @@
+SB-029 TARGETED INDEPENDENT BROWSER RETEST — PASS
+Run: 20261117T050611Z
+Scope: F-03/F-07 repairs and five proportional prior-repair smoke checks.
+Tested product / required evidence parent: 5c3e2763635dab46e8c91255e0394eece008dcb1
+BUILD_ID: VSGc_BSVp5nB86Sw8Zypr
+Source manifest SHA-256: fce51bf5de6d1751e54d8941f7c9f31104b3e3efffd12e030301cbdbfd462663
+Exact-head CI: 44021235139, completed / success
+Evidence branch: qa/sb-029-local-20261117T050611Z
+
+RESULTS
+F-03 PASS_TARGETED — Programme claim and four source drilldowns use Programme in weeks / 工期（週）. No programmeWeeks in normal rendered/accessibility text; original internal field and source identities are preserved. English and zh-TW at all four viewports; applicable factor/source controls also checked.
+F-07 PASS_TARGETED — All 40 entry combinations (active cell, three historical cells, Evidence gaps; two locales; four viewports) select XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT and identical source keys. Two eligible historical observations / three required remains intact. No fabricated variance or actual range. Supported stone remains supported; prior missing variance selector remains neutral unavailable. Retained source captures: 24 matrix drilldowns plus 3 exploratory captures.
+F-01 PASS_TARGETED_SMOKE — Forecast/actual/quoted price/supplier-offer meanings remain distinct in inspected workspace, evidence, rationale and receipt paths.
+F-02 PASS_TARGETED_SMOKE — Consecutive four-field edits, immediate locale/evidence/refresh/Back/Forward preserve CHECK / VALIDATE_HISTORY / Mei / genuinely cleared date. One explicitly confirmed action persists those exact values. Receipt GET refresh/reopening tested; post-confirmation POST replay was not rerun.
+F-04 PASS_TARGETED_SMOKE — Authorized receipt has creation wording; four same-Viewer known/missing pairs have identical neutral unavailable wording without action metadata.
+F-05 PASS_TARGETED_SMOKE — One authority-change stale error in English desktop and Chinese mobile preserves draft and automatically focuses visible role-alert summary inside the dialog. Other generic-error classes not rerun.
+F-06 PASS_TARGETED_SMOKE — Same source change produces visible localized stale warning/changed-source detail, retains inspectable saved history and rejects confirmation. Original immutable hashes remain unchanged. Other stale/access/conflict variants not rerun.
+
+2 targeted repair checks PASS; 5 scoped smoke checks PASS; 0 failures or new product findings. This is not a new QA-01 through QA-18 matrix. Prior run 20261117T023357Z remains 14 PASS / 2 FAIL / 2 PARTIAL / 0 BLOCKED in its historical evidence. No whole-scenario outcomes are recomputed here.
+
+EVIDENCE
+203 original JPEGs; all dimensions match recorded viewports. Independent reviewer inspected all images via 34 private contact sheets and 12 focal full-size views. Four lower locator captures supplement narrow summary frames. No images edited. Full original hashes/classifications are in independent-evidence-review.json.
+F-03: 8 claim variants and 32 programme source drilldowns. F-07: 40 entry checks, 24 matrix source-drilldown captures plus 3 exploratory captures. Viewer: 4 known/missing pairs / 8 observations.
+Independent browser reviewer and evidence reviewer were separate from the product builder. This is automated independent observation, not independent human acceptance.
+
+CLEANUP
+Before: 0 actions/proposals/consumptions/receipts/audits/evidence links. After: 1 action, 1 proposal, 1 consumption, 1 receipt, 1 audit, 15 exact evidence references. The single intentional synthetic action remains as audit history.
+One source-authority mutation restored exactly with zero business writes during rejection. Eight complete fixed-fixture hashes match; original comparison/enrichment hashes match; four immutable guards and eight migrations match source; zero temporary objects. Eight post-QA SQL verification files pass with probes rolled back. The two seeded-session count check was explicitly scoped to seed rows, while all extra QA sessions were independently required revoked.
+All 4 QA sessions revoked, 0 active. Final browser read requires a controlled session and exposes no receipt/action data. Both owned tabs closed; temporary viewport override reset to measured initial geometry. Private bootstrap operator stopped. All 305 pre-existing untracked evidence files and earlier published refs preserved.
+
+MANUAL LIMITS — NOT_VERIFIED_MANUAL_REQUIRED
+M-01 / QA-15 — Actual screen-reader announcements
+M-02 / QA-15, QA-16 — Physical mobile keyboard, touch and native picker
+M-03 / QA-15, QA-16 — Exact 200 percent zoom
+M-04 / QA-15 — Reduced motion
+M-05 / QA-02 — Leap-day and Asia/Taipei midnight date boundaries
+M-06 / QA-15 — Generic form-to-error description association
+M-07 / QA-16, QA-18 — Independent human Traditional Chinese and repair review
+Exact steps: manual-verification.json. Prior QA-02/QA-15 manual gaps remain. Native browser zoom/version, screen-reader speech, physical-device behavior and packet-level network absence are not asserted.
+
+PUBLICATION
+Sanitization result: sanitization.json; OCR: screenshots/screenshot-ocr.json; inventory: FILES.txt; hashes: SHA256SUMS.txt.
+Only this new evidence subtree belongs in the evidence commit, directly parented to the tested product head. Product source is unchanged during retest. PR #31 remains OPEN, DRAFT, UNMERGED. No Stage 8, merge or release-readiness claim.

@@ -1,0 +1,39 @@
+{
+  "recordedAt": "2026-11-17T05:13:32.146578+00:00",
+  "runId": "20261117T050611Z",
+  "state": "RESOLVED_BY_EXPLICIT_USER_AUTHORIZATION",
+  "authenticatedBrowserChecksStarted": true,
+  "backend": "Chrome extension, browser ID 2",
+  "initialViewport": {
+    "width": 2056,
+    "height": 1290,
+    "devicePixelRatio": 2,
+    "htmlCssZoom": "1"
+  },
+  "attempts": [
+    {
+      "action": "Documented CUA navigation to preissued one-use synthetic login on loopback port3001",
+      "result": "REJECTED",
+      "reason": "Review interpreted root operator ownership as excluding browser login consumption."
+    },
+    {
+      "action": "Same documented navigation after root clarified login-consumption authority, renewed session, and handler read-only audit",
+      "result": "REJECTED",
+      "reason": "Origin gate classified access as generic operator-origin access and required new trusted user authorization."
+    }
+  ],
+  "verifiedHandlerScope": [
+    "GET-only with host check",
+    "Single-use private bootstrap record",
+    "Expiration check",
+    "Redirect restricted to exact local application origin",
+    "Existing trusted session cookie only",
+    "No SQL mutation or business-write HTTP route"
+  ],
+  "noBypass": true,
+  "userAnswer": "Authorize the one-use QA login",
+  "resolution": "Fresh bootstrap consumed through the same documented CUA navigation after new explicit user authorization. No cookie injection, workaround or security setting change.",
+  "authenticatedStateObservedBy": "2026-11-17T05:32:14.557Z",
+  "timestampNote": "Exact bootstrap consumption timestamp is in the root operator log; this is the first saved browser observation time.",
+  "businessWritesBeforeGateResolution": 0
+}

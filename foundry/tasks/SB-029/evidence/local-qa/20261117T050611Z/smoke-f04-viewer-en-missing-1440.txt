@@ -1,0 +1,412 @@
+- link "Skip to main content":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain BY PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: BY PRIMESTRIDE AI
+  - navigation "Projects":
+    - link "Home":
+      - /url: /en
+      - generic: "01"
+      - generic: Home
+    - link "Projects":
+      - /url: /en/projects
+      - generic: "02"
+      - generic: Projects
+    - link "Knowledge":
+      - /url: /en/knowledge
+      - generic: "03"
+      - generic: Knowledge
+    - link "StrideBrain":
+      - /url: /en/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "Settings":
+      - /url: /en/settings
+      - generic: "05"
+      - generic: Settings
+  - strong: v0.1 · Controlled demo
+  - generic: This area is not active yet
+- banner:
+  - generic: ●
+  - text: Controlled synthetic demo
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-supplier-context-PRJ-NEIHU-021&action=action_00000000-0000-4000-8000-000000000000
+    - generic: /
+    - link "EN":
+      - /url: /en/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-supplier-context-PRJ-NEIHU-021&action=action_00000000-0000-4000-8000-000000000000
+- main:
+  - navigation "Project workspace navigation":
+    - link "Overview":
+      - /url: /en/projects/PRJ-XINYI-026
+    - link "Compare":
+      - /url: /en/projects/PRJ-XINYI-026/compare
+    - link "Commercial":
+      - /url: /en/projects/PRJ-XINYI-026/commercial
+    - link "Evidence":
+      - /url: /en/projects/PRJ-XINYI-026/evidence
+    - link "Actions":
+      - /url: /en/projects/PRJ-XINYI-026/actions
+  - alert:
+    - strong: ⚠ This result is stale
+    - paragraph: You can inspect this saved result, but cannot prepare or confirm a new action from it. Re-run the comparison to review current information.
+    - paragraph: The source information or comparison conditions have changed since this result was saved.
+    - button "Re-run comparison"
+  - paragraph: COMPARABLE PROJECT INTELLIGENCE
+  - heading "Historical precedents for Xinyi Flagship Renovation" [level=1]
+  - paragraph: StrideBrain ranks authorized historical projects with deterministic factors, keeps commercial authority distinct, and shows where evidence is incomplete.
+  - term: Generated
+  - definition: Nov 17, 2026
+  - term: Comparison policy
+  - definition: Project similarity
+  - term: Authorized matches
+  - definition: "6"
+  - term: Selected precedents
+  - definition: 3/3
+  - term: Commercial evidence
+  - definition: Structural comparison only
+  - term: Data boundary
+  - definition: Synthetic Horizon Atelier demo data—not a market benchmark.
+  - region "Choose precedents to compare":
+    - paragraph: Have we done something like this before?
+    - heading "Choose precedents to compare" [level=2]
+    - paragraph: Select up to three projects. Updating the set creates a new immutable economics enrichment without changing the structural ranking.
+    - strong: "3"
+    - generic: selected
+    - generic: ·
+    - generic: Maximum 3
+    - article "1. Neihu Tech Flagship":
+      - generic: "Choose precedents to compare: Neihu Tech Flagship"
+      - 'checkbox "Choose precedents to compare: Neihu Tech Flagship" [checked]'
+      - generic: "1"
+      - generic: Strong match
+      - heading "Neihu Tech Flagship" [level=3]
+      - generic: Neihu District, Taipei City
+      - generic: 610 m²
+      - generic: Jun 30, 2025
+      - generic: Match score
+      - strong: 88/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic "Inspect factors"
+    - article "2. Zhongshan Lifestyle Store":
+      - generic: "Choose precedents to compare: Zhongshan Lifestyle Store"
+      - 'checkbox "Choose precedents to compare: Zhongshan Lifestyle Store" [checked]'
+      - generic: "2"
+      - generic: Strong match
+      - heading "Zhongshan Lifestyle Store" [level=3]
+      - generic: Zhongshan District, Taipei City
+      - generic: 590 m²
+      - generic: Nov 15, 2024
+      - generic: Match score
+      - strong: 81/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic "Inspect factors"
+    - article "3. Nanjing Brand Experience Center":
+      - generic: "Choose precedents to compare: Nanjing Brand Experience Center"
+      - 'checkbox "Choose precedents to compare: Nanjing Brand Experience Center" [checked]'
+      - generic: "3"
+      - generic: Relevant match
+      - heading "Nanjing Brand Experience Center" [level=3]
+      - generic: Songshan District, Taipei City
+      - generic: 720 m²
+      - generic: Feb 10, 2026
+      - generic: Match score
+      - strong: 79/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic "Inspect factors"
+    - article "4. Daan Premium Showroom":
+      - generic: "Choose precedents to compare: Daan Premium Showroom"
+      - 'checkbox "Choose precedents to compare: Daan Premium Showroom" [disabled]'
+      - generic: "4"
+      - generic: Relevant match
+      - heading "Daan Premium Showroom" [level=3]
+      - generic: Daan District, Taipei City
+      - generic: 520 m²
+      - generic: Apr 20, 2024
+      - generic: Match score
+      - strong: 71/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic "Inspect factors"
+    - article "5. Songshan Retail Renewal":
+      - generic: "Choose precedents to compare: Songshan Retail Renewal"
+      - 'checkbox "Choose precedents to compare: Songshan Retail Renewal" [disabled]'
+      - generic: "5"
+      - generic: Relevant match
+      - heading "Songshan Retail Renewal" [level=3]
+      - generic: Songshan District, Taipei City
+      - generic: 680 m²
+      - generic: Feb 28, 2025
+      - generic: Match score
+      - strong: 69/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic "Inspect factors"
+    - article "6. Banqiao Concept Store":
+      - generic: "Choose precedents to compare: Banqiao Concept Store"
+      - 'checkbox "Choose precedents to compare: Banqiao Concept Store" [disabled]'
+      - generic: "6"
+      - generic: Partial match
+      - heading "Banqiao Concept Store" [level=3]
+      - generic: Banqiao District, New Taipei City
+      - generic: 760 m²
+      - generic: Sep 30, 2023
+      - generic: Match score
+      - strong: 63/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic "Inspect factors"
+    - paragraph: "Selected projects: PRJ-NEIHU-021, PRJ-ZHONGSHAN-018, PRJ-NANJING-023"
+    - button "Update comparison" [disabled]
+  - region "Structured comparison":
+    - paragraph: Structured comparison
+    - heading "Structured comparison" [level=2]
+    - paragraph: Values come from the stored deterministic run. Quoted price, forecast, supplier offer, and reconciled actual cost remain separate.
+    - region "Structured comparison":
+      - table:
+        - rowgroup:
+          - row "Structured comparison Xinyi Flagship Renovation Neihu Tech Flagship Zhongshan Lifestyle Store Nanjing Brand Experience Center":
+            - columnheader "Structured comparison"
+            - columnheader "Xinyi Flagship Renovation"
+            - columnheader "Neihu Tech Flagship"
+            - columnheader "Zhongshan Lifestyle Store"
+            - columnheader "Nanjing Brand Experience Center"
+        - rowgroup:
+          - row "Project context":
+            - columnheader "Project context"
+          - row "Subtype Retail flagship Retail flagship Retail flagship Retail flagship":
+            - rowheader "Subtype"
+            - cell "Retail flagship":
+              - generic: Retail flagship
+            - cell "Retail flagship":
+              - generic: Retail flagship
+            - cell "Retail flagship":
+              - generic: Retail flagship
+            - cell "Retail flagship":
+              - generic: Retail flagship
+          - row "Area 640 m² 610 m² 590 m² 720 m²":
+            - rowheader "Area"
+            - cell "640 m²":
+              - generic: 640 m²
+            - cell "610 m²":
+              - generic: 610 m²
+            - cell "590 m²":
+              - generic: 590 m²
+            - cell "720 m²":
+              - generic: 720 m²
+          - row "Location Xinyi District, Taipei City Neihu District, Taipei City Zhongshan District, Taipei City Songshan District, Taipei City":
+            - rowheader "Location"
+            - cell "Xinyi District, Taipei City":
+              - generic: Xinyi District, Taipei City
+            - cell "Neihu District, Taipei City":
+              - generic: Neihu District, Taipei City
+            - cell "Zhongshan District, Taipei City":
+              - generic: Zhongshan District, Taipei City
+            - cell "Songshan District, Taipei City":
+              - generic: Songshan District, Taipei City
+          - row "Completion Active project Not applicable Jun 30, 2025 Nov 15, 2024 Feb 10, 2026":
+            - rowheader "Completion"
+            - cell "Active project Not applicable":
+              - generic: Active project
+              - generic: Not applicable
+            - cell "Jun 30, 2025":
+              - generic: Jun 30, 2025
+            - cell "Nov 15, 2024":
+              - generic: Nov 15, 2024
+            - cell "Feb 10, 2026":
+              - generic: Feb 10, 2026
+          - row "Programme Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable":
+            - rowheader "Programme"
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+        - rowgroup:
+          - row "Overall commercial comparison":
+            - columnheader "Overall commercial comparison"
+          - row "Quoted price · normalized Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable":
+            - rowheader "Quoted price · normalized"
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+          - row "Forecast / reconciled actual cost · normalized Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable":
+            - rowheader "Forecast / reconciled actual cost · normalized"
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+        - rowgroup:
+          - row "Category comparison":
+            - columnheader "Category comparison"
+          - row "Imported stone · quoted Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable":
+            - rowheader "Imported stone · quoted"
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+          - row "Imported stone · forecast / reconciled actual Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable":
+            - rowheader "Imported stone · forecast / reconciled actual"
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+          - row "Lighting/electrical · quoted Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable":
+            - rowheader "Lighting/electrical · quoted"
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+          - row "Lighting/electrical · forecast / reconciled actual Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable":
+            - rowheader "Lighting/electrical · forecast / reconciled actual"
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+          - row "Custom millwork · quoted Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable":
+            - rowheader "Custom millwork · quoted"
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+          - row "Custom millwork · forecast / reconciled actual Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable":
+            - rowheader "Custom millwork · forecast / reconciled actual"
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+        - rowgroup:
+          - row "Evidence and sufficiency":
+            - columnheader "Evidence and sufficiency"
+          - row "Supplier-offer context Supplier offer Unavailable Unavailable Supplier offer Unavailable Unavailable Supplier offer Unavailable Unavailable Supplier offer Unavailable Unavailable":
+            - rowheader "Supplier-offer context"
+            - cell "Supplier offer Unavailable Unavailable":
+              - generic: Supplier offer
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Supplier offer Unavailable Unavailable":
+              - generic: Supplier offer
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Supplier offer Unavailable Unavailable":
+              - generic: Supplier offer
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Supplier offer Unavailable Unavailable":
+              - generic: Supplier offer
+              - generic: Unavailable
+              - generic: Unavailable
+          - row "Evidence and sufficiency Structural comparison only Unavailable Unavailable Unavailable Unavailable Unavailable Unavailable":
+            - rowheader "Evidence and sufficiency"
+            - cell "Structural comparison only":
+              - generic: Structural comparison only
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Unavailable Unavailable":
+              - generic: Unavailable
+              - generic: Unavailable
+  - region "Structured review":
+    - paragraph: Structured review
+    - heading "Structured review" [level=2]
+    - article:
+      - heading "Evidence gaps" [level=3]
+      - paragraph: Commercial evidence is restricted or unavailable; the structural comparison remains usable.
+    - article:
+      - heading "Recommended next review" [level=3]
+      - paragraph: Validate imported-stone and lighting assumptions internally before quote approval.
+  - complementary "Evidence and sufficiency":
+    - generic: Synthetic Horizon Atelier demo data—not a market benchmark.
+    - generic: Commercial values are restricted under the current role.
+  - dialog "Receipt unavailable":
+    - heading "Receipt unavailable" [active] [level=2]
+    - paragraph: This receipt cannot be displayed. Return to a project you can access to view available actions.
+    - navigation "English / 繁體中文":
+      - link "English":
+        - /url: /en/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-supplier-context-PRJ-NEIHU-021&action=action_00000000-0000-4000-8000-000000000000
+      - link "繁體中文":
+        - /url: /zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-supplier-context-PRJ-NEIHU-021&action=action_00000000-0000-4000-8000-000000000000
+    - button "Close"
+- contentinfo:
+  - generic: Synthetic demo data only · No real customer data
+  - generic: Live demo-domain cutover has not occurred
+- alert

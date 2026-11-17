@@ -1,0 +1,143 @@
+{
+  "runId": "20261117T050611Z",
+  "database": "stridebrain_sb029_targeted_20261117t050611z",
+  "at": "2026-11-17T05:55:51.228Z",
+  "classification": "READ_ONLY_FINAL_CATALOG_AND_SESSION_AGGREGATES",
+  "method": "Read-only repeatable-read pg_catalog inspection; SHA-256 of pg_get_triggerdef/pg_get_functiondef; function bodies compared after trimming outer whitespace to unchanged Stage 8 migration; all eight migration checksums compared to source files. No guard rejection mutation attempted.",
+  "guards": [
+    {
+      "name": "Action_stage8_immutable",
+      "enabled": "O",
+      "target": "Action",
+      "functionName": "stridebrain_guard_internal_review_action",
+      "language": "plpgsql",
+      "beforeUpdateDeleteForEachRow": true,
+      "expectedTargetAndFunction": true,
+      "functionBodyEqualsMigration": true,
+      "triggerDefinition": "CREATE TRIGGER \"Action_stage8_immutable\" BEFORE DELETE OR UPDATE ON public.\"Action\" FOR EACH ROW EXECUTE FUNCTION stridebrain_guard_internal_review_action()",
+      "triggerDefinitionSha256": "e1ae2bba218f35347b26b43a1ef542299852cf1290f3aff71d2e66d246f60173",
+      "functionDefinitionSha256": "510c03156eac17e1536d24f0e6a144208f1a505c0886b177091e00766ccb88aa",
+      "functionBodySha256": "7e9e7457626bb7efa7e3281f241f696919dfce38896f3c281bb01ff8a35f88dc"
+    },
+    {
+      "name": "AuditEvent_append_only",
+      "enabled": "O",
+      "target": "AuditEvent",
+      "functionName": "stridebrain_reject_immutable_change",
+      "language": "plpgsql",
+      "beforeUpdateDeleteForEachRow": true,
+      "expectedTargetAndFunction": true,
+      "functionBodyEqualsMigration": true,
+      "triggerDefinition": "CREATE TRIGGER \"AuditEvent_append_only\" BEFORE DELETE OR UPDATE ON public.\"AuditEvent\" FOR EACH ROW EXECUTE FUNCTION stridebrain_reject_immutable_change()",
+      "triggerDefinitionSha256": "ec0603f4a4eedf1f73e9db6f8bb20510b7fec1acac540a17142533572a82c473",
+      "functionDefinitionSha256": "4a091c6eb57a166247fb8e04cb01547b58fa39700d75e73a61b2adb6485585f6",
+      "functionBodySha256": "1bd1affb2e887341171b3447da87710f1da3d6c1876ad2767c4ba515c70067c2"
+    },
+    {
+      "name": "InternalReviewReceipt_immutable",
+      "enabled": "O",
+      "target": "InternalReviewReceipt",
+      "functionName": "stridebrain_reject_immutable_change",
+      "language": "plpgsql",
+      "beforeUpdateDeleteForEachRow": true,
+      "expectedTargetAndFunction": true,
+      "functionBodyEqualsMigration": true,
+      "triggerDefinition": "CREATE TRIGGER \"InternalReviewReceipt_immutable\" BEFORE DELETE OR UPDATE ON public.\"InternalReviewReceipt\" FOR EACH ROW EXECUTE FUNCTION stridebrain_reject_immutable_change()",
+      "triggerDefinitionSha256": "71d94f68606e515b5ba89de940eb2947244e1eb0f224671fa981f313c70e6e07",
+      "functionDefinitionSha256": "4a091c6eb57a166247fb8e04cb01547b58fa39700d75e73a61b2adb6485585f6",
+      "functionBodySha256": "1bd1affb2e887341171b3447da87710f1da3d6c1876ad2767c4ba515c70067c2"
+    },
+    {
+      "name": "ProposedAction_stage8_immutable",
+      "enabled": "O",
+      "target": "ProposedAction",
+      "functionName": "stridebrain_guard_internal_review_proposal",
+      "language": "plpgsql",
+      "beforeUpdateDeleteForEachRow": true,
+      "expectedTargetAndFunction": true,
+      "functionBodyEqualsMigration": true,
+      "triggerDefinition": "CREATE TRIGGER \"ProposedAction_stage8_immutable\" BEFORE DELETE OR UPDATE ON public.\"ProposedAction\" FOR EACH ROW EXECUTE FUNCTION stridebrain_guard_internal_review_proposal()",
+      "triggerDefinitionSha256": "7bad4c6b5e3bb3c73689056963e9a595c0289c4213220aa218f0b5e8d0a0a2dc",
+      "functionDefinitionSha256": "499d8206ad9e548d1b4a3d1d59c5108d0fb7c0ba8bdb1022a790a5d4b604c487",
+      "functionBodySha256": "5d036d02d3890ad1140c2eb6560c1b3bec00d5253851a7d142f0feea996bbfff"
+    }
+  ],
+  "allFourGuardsMatch": true,
+  "migrations": [
+    {
+      "name": "0001_stridegraph_foundation",
+      "finished": true,
+      "rolledBack": false,
+      "recordedChecksum": "debc38a901ef22ad3a261081b2471f266f152e5f85a215a181652619fd536488",
+      "sourceSha256": "debc38a901ef22ad3a261081b2471f266f152e5f85a215a181652619fd536488",
+      "sourceChecksumMatches": true
+    },
+    {
+      "name": "0002_financial_authority_invariants",
+      "finished": true,
+      "rolledBack": false,
+      "recordedChecksum": "3c11150c7f31cf226ef3df7713e19cf2fc26c275d7f184d8fc6b447d46111cc3",
+      "sourceSha256": "3c11150c7f31cf226ef3df7713e19cf2fc26c275d7f184d8fc6b447d46111cc3",
+      "sourceChecksumMatches": true
+    },
+    {
+      "name": "0003_runtime_authorization",
+      "finished": true,
+      "rolledBack": false,
+      "recordedChecksum": "5e54afbabc6c9d315013f14e57d70d0c5c362f8d1c2f12a4b90d47dc148d9509",
+      "sourceSha256": "5e54afbabc6c9d315013f14e57d70d0c5c362f8d1c2f12a4b90d47dc148d9509",
+      "sourceChecksumMatches": true
+    },
+    {
+      "name": "0004_authorization_tenant_links",
+      "finished": true,
+      "rolledBack": false,
+      "recordedChecksum": "6e79b57839dfa8fb8e62988ee4c14371622387d9d10b7509f1e33b93294d417a",
+      "sourceSha256": "6e79b57839dfa8fb8e62988ee4c14371622387d9d10b7509f1e33b93294d417a",
+      "sourceChecksumMatches": true
+    },
+    {
+      "name": "0005_remove_legacy_membership_capabilities",
+      "finished": true,
+      "rolledBack": false,
+      "recordedChecksum": "dc65374f2d0f39a4fe4d596e25fc29eca1d1c4c103a6f519649d46eb5d6f2fc3",
+      "sourceSha256": "dc65374f2d0f39a4fe4d596e25fc29eca1d1c4c103a6f519649d46eb5d6f2fc3",
+      "sourceChecksumMatches": true
+    },
+    {
+      "name": "0006_stage5_economics_enrichment",
+      "finished": true,
+      "rolledBack": false,
+      "recordedChecksum": "62446ebd7f2bbf217fbe98d1ebdc2c078eb6e9736167ae0fec8743c59ff6dccc",
+      "sourceSha256": "62446ebd7f2bbf217fbe98d1ebdc2c078eb6e9736167ae0fec8743c59ff6dccc",
+      "sourceChecksumMatches": true
+    },
+    {
+      "name": "0007_stage6_comparison_persistence_scales",
+      "finished": true,
+      "rolledBack": false,
+      "recordedChecksum": "20b76d4c2f2051a6bac620a5d0ca859a44b7ac6d5db6fbf05fd3fc53398751a2",
+      "sourceSha256": "20b76d4c2f2051a6bac620a5d0ca859a44b7ac6d5db6fbf05fd3fc53398751a2",
+      "sourceChecksumMatches": true
+    },
+    {
+      "name": "0008_stage8_internal_review",
+      "finished": true,
+      "rolledBack": false,
+      "recordedChecksum": "bca2e402f42aafc822c921df064d51965a8ea29da80aacabc11ef2c6d16d20d9",
+      "sourceSha256": "bca2e402f42aafc822c921df064d51965a8ea29da80aacabc11ef2c6d16d20d9",
+      "sourceChecksumMatches": true
+    }
+  ],
+  "allEightMigrationsMatch": true,
+  "sessionAggregates": {
+    "total_nonfixture": 4,
+    "revoked_nonfixture": 4,
+    "active_nonfixture": 0
+  },
+  "sessionAggregateMethod": "Counts only; operator ledger revocation is separate. HTTP harness sessions were revoked in their own finally handlers.",
+  "locks": {
+    "demo_session_exclusive_lock_count": 0
+  },
+  "destructiveGuardTestRun": false
+}

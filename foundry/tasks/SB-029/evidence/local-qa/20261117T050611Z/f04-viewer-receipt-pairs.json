@@ -1,0 +1,202 @@
+[
+  {
+    "locale": "en",
+    "which": "known",
+    "size": {
+      "width": 1440,
+      "height": 900
+    },
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-supplier-context-PRJ-NEIHU-021&action=action_85e27014-917b-4302-b88c-5a5a6bb06eda",
+    "text": "Receipt unavailable\n\nThis receipt cannot be displayed. Return to a project you can access to view available actions.\n\nEnglish\n繁體中文\nClose",
+    "focus": {
+      "bounds": {
+        "bottom": 49.1171875,
+        "height": 29.1171875,
+        "right": 1325.9375,
+        "width": 545.9375,
+        "x": 780,
+        "y": 20
+      },
+      "id": "internal-review-heading",
+      "name": "Receipt unavailable",
+      "role": null,
+      "tag": "H2"
+    },
+    "image": "screenshots/smoke-f04-viewer-en-known-1440.jpg"
+  },
+  {
+    "locale": "en",
+    "which": "known",
+    "size": {
+      "width": 390,
+      "height": 844
+    },
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-supplier-context-PRJ-NEIHU-021&action=action_85e27014-917b-4302-b88c-5a5a6bb06eda",
+    "text": "Receipt unavailable\n\nThis receipt cannot be displayed. Return to a project you can access to view available actions.\n\nEnglish\n繁體中文\nClose",
+    "focus": {
+      "bounds": {
+        "bottom": 45.1171875,
+        "height": 29.1171875,
+        "right": 279.9375,
+        "width": 263.9375,
+        "x": 16,
+        "y": 16
+      },
+      "id": "internal-review-heading",
+      "name": "Receipt unavailable",
+      "role": null,
+      "tag": "H2"
+    },
+    "image": "screenshots/smoke-f04-viewer-en-known-390.jpg"
+  },
+  {
+    "locale": "en",
+    "which": "missing",
+    "size": {
+      "width": 1440,
+      "height": 900
+    },
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-supplier-context-PRJ-NEIHU-021&action=action_00000000-0000-4000-8000-000000000000",
+    "text": "Receipt unavailable\n\nThis receipt cannot be displayed. Return to a project you can access to view available actions.\n\nEnglish\n繁體中文\nClose",
+    "focus": {
+      "bounds": {
+        "bottom": 49.1171875,
+        "height": 29.1171875,
+        "right": 1325.9375,
+        "width": 545.9375,
+        "x": 780,
+        "y": 20
+      },
+      "id": "internal-review-heading",
+      "name": "Receipt unavailable",
+      "role": null,
+      "tag": "H2"
+    },
+    "image": "screenshots/smoke-f04-viewer-en-missing-1440.jpg"
+  },
+  {
+    "locale": "en",
+    "which": "missing",
+    "size": {
+      "width": 390,
+      "height": 844
+    },
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-supplier-context-PRJ-NEIHU-021&action=action_00000000-0000-4000-8000-000000000000",
+    "text": "Receipt unavailable\n\nThis receipt cannot be displayed. Return to a project you can access to view available actions.\n\nEnglish\n繁體中文\nClose",
+    "focus": {
+      "bounds": {
+        "bottom": 45.1171875,
+        "height": 29.1171875,
+        "right": 279.9375,
+        "width": 263.9375,
+        "x": 16,
+        "y": 16
+      },
+      "id": "internal-review-heading",
+      "name": "Receipt unavailable",
+      "role": null,
+      "tag": "H2"
+    },
+    "image": "screenshots/smoke-f04-viewer-en-missing-390.jpg"
+  },
+  {
+    "locale": "zh-TW",
+    "which": "known",
+    "size": {
+      "width": 1440,
+      "height": 900
+    },
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-supplier-context-PRJ-NEIHU-021&action=action_85e27014-917b-4302-b88c-5a5a6bb06eda",
+    "text": "目前無法查看回執\n\n目前無法顯示這份回執。請返回您有權存取的專案，查看可用的事項。\n\nEnglish\n繁體中文\n關閉",
+    "focus": {
+      "bounds": {
+        "bottom": 49.1171875,
+        "height": 29.1171875,
+        "right": 1276,
+        "width": 496,
+        "x": 780,
+        "y": 20
+      },
+      "id": "internal-review-heading",
+      "name": "目前無法查看回執",
+      "role": null,
+      "tag": "H2"
+    },
+    "image": "screenshots/smoke-f04-viewer-zh-TW-known-1440.jpg"
+  },
+  {
+    "locale": "zh-TW",
+    "which": "known",
+    "size": {
+      "width": 390,
+      "height": 844
+    },
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-supplier-context-PRJ-NEIHU-021&action=action_85e27014-917b-4302-b88c-5a5a6bb06eda",
+    "text": "目前無法查看回執\n\n目前無法顯示這份回執。請返回您有權存取的專案，查看可用的事項。\n\nEnglish\n繁體中文\n關閉",
+    "focus": {
+      "bounds": {
+        "bottom": 45.1171875,
+        "height": 29.1171875,
+        "right": 292,
+        "width": 276,
+        "x": 16,
+        "y": 16
+      },
+      "id": "internal-review-heading",
+      "name": "目前無法查看回執",
+      "role": null,
+      "tag": "H2"
+    },
+    "image": "screenshots/smoke-f04-viewer-zh-TW-known-390.jpg"
+  },
+  {
+    "locale": "zh-TW",
+    "which": "missing",
+    "size": {
+      "width": 1440,
+      "height": 900
+    },
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-supplier-context-PRJ-NEIHU-021&action=action_00000000-0000-4000-8000-000000000000",
+    "text": "目前無法查看回執\n\n目前無法顯示這份回執。請返回您有權存取的專案，查看可用的事項。\n\nEnglish\n繁體中文\n關閉",
+    "focus": {
+      "bounds": {
+        "bottom": 49.1171875,
+        "height": 29.1171875,
+        "right": 1276,
+        "width": 496,
+        "x": 780,
+        "y": 20
+      },
+      "id": "internal-review-heading",
+      "name": "目前無法查看回執",
+      "role": null,
+      "tag": "H2"
+    },
+    "image": "screenshots/smoke-f04-viewer-zh-TW-missing-1440.jpg"
+  },
+  {
+    "locale": "zh-TW",
+    "which": "missing",
+    "size": {
+      "width": 390,
+      "height": 844
+    },
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-supplier-context-PRJ-NEIHU-021&action=action_00000000-0000-4000-8000-000000000000",
+    "text": "目前無法查看回執\n\n目前無法顯示這份回執。請返回您有權存取的專案，查看可用的事項。\n\nEnglish\n繁體中文\n關閉",
+    "focus": {
+      "bounds": {
+        "bottom": 45.1171875,
+        "height": 29.1171875,
+        "right": 292,
+        "width": 276,
+        "x": 16,
+        "y": 16
+      },
+      "id": "internal-review-heading",
+      "name": "目前無法查看回執",
+      "role": null,
+      "tag": "H2"
+    },
+    "image": "screenshots/smoke-f04-viewer-zh-TW-missing-390.jpg"
+  }
+]

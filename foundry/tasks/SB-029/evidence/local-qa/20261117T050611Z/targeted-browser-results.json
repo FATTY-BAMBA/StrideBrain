@@ -1,0 +1,109 @@
+{
+  "runId": "20261117T050611Z",
+  "head": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+  "scope": "TARGETED_F03_F07_AND_PRIOR_REPAIR_SMOKE",
+  "checks": [
+    {
+      "id": "F-03",
+      "status": "PASS_TARGETED",
+      "scope": "Programme claim plus four actual source drilldowns, en/zh-TW at1440x900,768x1024,390x844,320x740; area-factor presentation smoke and two factor source drilldowns at the same matrix.",
+      "observed": "All four programme exact locators say Programme in weeks / 工期（週）; raw programmeWeeks absent from rendered/accessibility text. Same four source selectors retained. Current16, historical19–22, premium unquantified. Child horizontal bounds fit, close/drilldown/return usable.",
+      "evidence": [
+        "f03-locator-matrix.json",
+        "browser-observations.json"
+      ],
+      "note": "Narrow lower claim captures supplement summary frames; physical screen-reader speech is not asserted."
+    },
+    {
+      "id": "F-07",
+      "status": "PASS_TARGETED",
+      "scope": "40 entry checks: active lighting cell, three historical lighting cells, and Evidence gaps, across both locales and four viewports. Retained source evidence covers 24 matrix source drilldowns (three per locale/viewport), plus three exploratory source captures.",
+      "observed": "All select XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT and exactly the same ordered source keys; eligible2/required3, no variance/range. Supported stone+18.4 remains supported. Confirmed absent prior variance selector stays neutral unavailable.",
+      "evidence": [
+        "f07-entry-equivalence.json",
+        "unavailable-control.json",
+        "stored-claim-source-binding.json"
+      ],
+      "coverageNote": "Source screenshots are retained for the active-entry drilldowns in each locale/viewport. All 40 entry records retain the selected claim, source-key equivalence, and return focus. This report does not claim 120 independently captured source drilldowns."
+    },
+    {
+      "id": "F-01",
+      "status": "PASS_TARGETED_SMOKE",
+      "scope": "Financial-basis labels in workspace, quote/supplier claims, supported stone claim/calculation/source, locked rationale and created receipt; en/zh-TW desktop/mobile.",
+      "observed": "Forecast total12,650,000 and stone2,360,000 are forecast; historical stone observations actual; quoted prices and historical stale supplier offer distinct; lighting2/3 and programme unquantified preserved.",
+      "evidence": [
+        "browser-observations.json",
+        "edited-confirmation-and-persistence.json"
+      ],
+      "note": "Proportionate smoke, not entire QA-18 re-execution."
+    },
+    {
+      "id": "F-02",
+      "status": "PASS_TARGETED_SMOKE",
+      "scope": "Consecutive title/rationale/assignee/due-date-clear edits followed immediately by dialog locale; evidence roundtrip; refresh; Back/Forward; both modal locale links; final explicit confirmation and receipt persistence.",
+      "observed": "CHECK / VALIDATE_HISTORY / Mei / genuinely empty due date persisted through all transitions and one exact committed action; original dueDate2026-11-24 was cleared by the visible control. Actual shell locale click tested after modal closed, preserving source selection/return context.",
+      "evidence": [
+        "f02-draft-navigation.json",
+        "edited-confirmation-and-persistence.json",
+        "after-successful-confirmation.json"
+      ],
+      "note": "No no-op native date fill counted; physical native picker, leap-day/midnight boundaries remain manual/unverified. No post-confirmation POST replay tested; receipt GET refresh/direct URL/reopening only."
+    },
+    {
+      "id": "F-04",
+      "status": "PASS_TARGETED_SMOKE",
+      "scope": "Authorized created receipt; samefreshViewer known-inaccessible versus confirmed-missing receipt pair, bothlocales at1440and390.",
+      "observed": "Authorized receipt has created heading. Viewer pairs have identical neutral Receipt unavailable / 目前無法查看回執 body and no action metadata or success claim.",
+      "evidence": [
+        "f04-viewer-receipt-pairs.json",
+        "missing-action-control.json"
+      ]
+    },
+    {
+      "id": "F-05",
+      "status": "PASS_TARGETED_SMOKE",
+      "scope": "One controlled source authority change after bothlocale old forms loaded; zh390/en1440 confirm rejection.",
+      "observed": "Localized stale denial focuses rolealert review-error-summary automatically, withinviewport before manualscroll; all four edited values preserved; zero writes duringmutation.",
+      "evidence": [
+        "stale-rejection-smoke.json",
+        "after-restoration-before-success.json"
+      ],
+      "note": "Other generic error classes were not rerun."
+    },
+    {
+      "id": "F-06",
+      "status": "PASS_TARGETED_SMOKE",
+      "scope": "Sameone-row Nanjing imported-stone source authority RECONCILED_ACTUAL to OBSERVED; old claim/source reopened in bothlocales thenexactrestoration.",
+      "observed": "Visible stale warning identifies exact changedsource and old/currentauthority, blocksnewaction, preserves stored+18.4 and immutablecomparison/source identity; restored hashes verified byoperator.",
+      "evidence": [
+        "browser-observations.json",
+        "immutable-history-after.json",
+        "after-restoration-before-success.json"
+      ],
+      "note": "Other authority/conflict/freshness/access variants were not rerun."
+    }
+  ],
+  "targetedChecksPassed": 7,
+  "targetedChecksFailed": 0,
+  "newProductFindings": [],
+  "scopeLimits": [
+    "Not a full QA-01 through QA-18 rerun; no new whole-scenario counts inferred.",
+    "Baseline QA-02 and QA-15 manual gaps are unchanged: actual screen-reader announcements, physical mobile touch/keyboard/native date picker and occlusion, prescribed native zoom/reduced-motion behavior, leap-day and Taipei-midnight confirmation boundaries.",
+    "Actual viewport override and DOM/accessibility labels were verified; this is not assistive-technology speech proof or physical-device proof.",
+    "Browser version not measured; Chrome extension backend used.",
+    "No independent human Taiwan Traditional Chinese acceptance or Stage8/merge/release approval is claimed."
+  ],
+  "matrixAssertions": {
+    "f03Variants": 8,
+    "f03AllRawAbsent": true,
+    "f07EntryVariants": 40,
+    "f07SameClaim": true,
+    "f07SameSourceKeys": true,
+    "viewerKnownMissingSamePerLocale": true
+  },
+  "screenshotCount": 203,
+  "allScreenshotDimensionsMatch": true,
+  "browserFreeze": "2026-11-17T05:56:59.172Z",
+  "browserClosure": "browser-closure.json",
+  "completionSummaryEmitted": true
+}

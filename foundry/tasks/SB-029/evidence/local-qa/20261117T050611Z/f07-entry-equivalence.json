@@ -1,0 +1,962 @@
+[
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "entry": 0,
+    "triggerName": "資料依據與完整度: 預估直接成本 · NT$3,672 · 新台幣／m² · 資料不足",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-1440-entry-0.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "資料依據與完整度: 預估直接成本 · NT$3,672 · 新台幣／m² · 資料不足",
+      "tag": "BUTTON",
+      "text": "預估直接成本\nNT$3,672 · 新台幣／m²\n資料不足\n資料不足"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "entry": 1,
+    "triggerName": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-PRJ-NEIHU-021",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-1440-entry-1.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+      "tag": "BUTTON",
+      "text": "已核對實際成本\n資料不足\n2/3\n資料不足"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "entry": 2,
+    "triggerName": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-PRJ-ZHONGSHAN-018",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-1440-entry-2.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+      "tag": "BUTTON",
+      "text": "已核對實際成本\n資料不足\n2/3\n資料不足"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "entry": 3,
+    "triggerName": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-PRJ-NANJING-023",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-1440-entry-3.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+      "tag": "BUTTON",
+      "text": "已核對實際成本\n資料不足\n2/3\n資料不足"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "entry": 4,
+    "triggerName": null,
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-synthesis-lighting-gap",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-1440-entry-4.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": null,
+      "tag": "BUTTON",
+      "text": "查看資料依據"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "entry": 0,
+    "triggerName": "資料依據與完整度: 預估直接成本 · NT$3,672 · 新台幣／m² · 資料不足",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-768-entry-0.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "資料依據與完整度: 預估直接成本 · NT$3,672 · 新台幣／m² · 資料不足",
+      "tag": "BUTTON",
+      "text": "預估直接成本\nNT$3,672 · 新台幣／m²\n資料不足\n資料不足"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "entry": 1,
+    "triggerName": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-PRJ-NEIHU-021",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-768-entry-1.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+      "tag": "BUTTON",
+      "text": "已核對實際成本\n資料不足\n2/3\n資料不足"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "entry": 2,
+    "triggerName": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-PRJ-ZHONGSHAN-018",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-768-entry-2.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+      "tag": "BUTTON",
+      "text": "已核對實際成本\n資料不足\n2/3\n資料不足"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "entry": 3,
+    "triggerName": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-PRJ-NANJING-023",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-768-entry-3.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+      "tag": "BUTTON",
+      "text": "已核對實際成本\n資料不足\n2/3\n資料不足"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "entry": 4,
+    "triggerName": null,
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-synthesis-lighting-gap",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-768-entry-4.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": null,
+      "tag": "BUTTON",
+      "text": "查看資料依據"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "entry": 0,
+    "triggerName": "資料依據與完整度: 預估直接成本 · NT$3,672 · 新台幣／m² · 資料不足",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-390-entry-0.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "資料依據與完整度: 預估直接成本 · NT$3,672 · 新台幣／m² · 資料不足",
+      "tag": "BUTTON",
+      "text": "預估直接成本\nNT$3,672 · 新台幣／m²\n資料不足\n資料不足"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "entry": 1,
+    "triggerName": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-PRJ-NEIHU-021",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-390-entry-1.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+      "tag": "BUTTON",
+      "text": "已核對實際成本\n資料不足\n2/3\n資料不足"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "entry": 2,
+    "triggerName": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-PRJ-ZHONGSHAN-018",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-390-entry-2.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+      "tag": "BUTTON",
+      "text": "已核對實際成本\n資料不足\n2/3\n資料不足"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "entry": 3,
+    "triggerName": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-PRJ-NANJING-023",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-390-entry-3.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+      "tag": "BUTTON",
+      "text": "已核對實際成本\n資料不足\n2/3\n資料不足"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "entry": 4,
+    "triggerName": null,
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-synthesis-lighting-gap",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-390-entry-4.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": null,
+      "tag": "BUTTON",
+      "text": "查看資料依據"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "entry": 0,
+    "triggerName": "資料依據與完整度: 預估直接成本 · NT$3,672 · 新台幣／m² · 資料不足",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-320-entry-0.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "資料依據與完整度: 預估直接成本 · NT$3,672 · 新台幣／m² · 資料不足",
+      "tag": "BUTTON",
+      "text": "預估直接成本\nNT$3,672 · 新台幣／m²\n資料不足\n資料不足"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "entry": 1,
+    "triggerName": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-PRJ-NEIHU-021",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-320-entry-1.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+      "tag": "BUTTON",
+      "text": "已核對實際成本\n資料不足\n2/3\n資料不足"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "entry": 2,
+    "triggerName": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-PRJ-ZHONGSHAN-018",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-320-entry-2.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+      "tag": "BUTTON",
+      "text": "已核對實際成本\n資料不足\n2/3\n資料不足"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "entry": 3,
+    "triggerName": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-PRJ-NANJING-023",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-320-entry-3.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3",
+      "tag": "BUTTON",
+      "text": "已核對實際成本\n資料不足\n2/3\n資料不足"
+    }
+  },
+  {
+    "locale": "zh",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "entry": 4,
+    "triggerName": null,
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-synthesis-lighting-gap",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "資料依據\n\n燈具與電氣 實際成本資料不足\n\n顯示支持此結構化結論的精確來源與計算過程。\n\n關閉資料依據\n信義旗艦店裝修\n2026年11月17日\n\n分類實際成本資料不足\n\n可用觀測數: 2 · 最低需求筆數: 3\n已核對實際成本\n實際成本資料不足\n\n實際成本資料低於最低門檻。\n\n實際成本資料不足\n支持資料來源\n\n最終成本項目\n\n國產燈具組\n已核對實際紀錄\n已核對實際成本\n專案\n內湖科技旗艦店\n版本\nv1\n生效／紀錄日期\n2025年7月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,000,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n國產燈具組\n數量\n1\n單位\n式\n單價\nNT$2,000,000\n金額\nNT$2,000,000\n查看來源\n\n最終成本項目\n\n照明與電氣\n已核對實際紀錄\n已核對實際成本\n專案\n中山生活概念店\n版本\nv1\n生效／紀錄日期\n2024年12月20日\n精確位置\n紀錄類型: 已核對實際成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$1,900,000 · 幣別: 新臺幣\n歷史紀錄\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n照明與電氣\n數量\n1\n單位\n式\n單價\nNT$1,900,000\n金額\nNT$1,900,000\n查看來源\n\n預估成本項目\n\n高規格照明與電氣\n已人工檢視\n預估直接成本\n專案\n信義旗艦店裝修\n版本\nv1\n生效／紀錄日期\n2026年11月14日\n精確位置\n紀錄類型: 預估成本項目 · 分類: 燈具與電氣 · 項目編號: 3\n資料邊界\n虛構示範資料\n支持的數值\n單位: 式 · 金額: NT$2,350,000 · 幣別: 新臺幣\n目前有效\n安全來源預覽\n分類\n燈具與電氣\n項目編號\n3\n內容說明\n高規格照明與電氣\n數量\n1\n單位\n式\n單價\nNT$2,350,000\n金額\nNT$2,350,000\n查看來源",
+    "image": "screenshots/f07-zh-320-entry-4.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": null,
+      "tag": "BUTTON",
+      "text": "查看資料依據"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "entry": 0,
+    "triggerName": "Evidence and sufficiency: Forecast direct cost · NT$3,672 · TWD/m² · Insufficient evidence",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-1440-entry-0.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "Evidence and sufficiency: Forecast direct cost · NT$3,672 · TWD/m² · Insufficient evidence",
+      "tag": "BUTTON",
+      "text": "Forecast direct cost\nNT$3,672 · TWD/m²\nInsufficient evidence\nInsufficient evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "entry": 1,
+    "triggerName": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-PRJ-NEIHU-021",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-1440-entry-1.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+      "tag": "BUTTON",
+      "text": "Reconciled actual cost\nInsufficient evidence\n2/3\nInsufficient evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "entry": 2,
+    "triggerName": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-PRJ-ZHONGSHAN-018",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-1440-entry-2.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+      "tag": "BUTTON",
+      "text": "Reconciled actual cost\nInsufficient evidence\n2/3\nInsufficient evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "entry": 3,
+    "triggerName": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-PRJ-NANJING-023",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-1440-entry-3.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+      "tag": "BUTTON",
+      "text": "Reconciled actual cost\nInsufficient evidence\n2/3\nInsufficient evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "entry": 4,
+    "triggerName": null,
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-synthesis-lighting-gap",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-1440-entry-4.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": null,
+      "tag": "BUTTON",
+      "text": "Inspect evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "entry": 0,
+    "triggerName": "Evidence and sufficiency: Forecast direct cost · NT$3,672 · TWD/m² · Insufficient evidence",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-768-entry-0.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "Evidence and sufficiency: Forecast direct cost · NT$3,672 · TWD/m² · Insufficient evidence",
+      "tag": "BUTTON",
+      "text": "Forecast direct cost\nNT$3,672 · TWD/m²\nInsufficient evidence\nInsufficient evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "entry": 1,
+    "triggerName": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-PRJ-NEIHU-021",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-768-entry-1.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+      "tag": "BUTTON",
+      "text": "Reconciled actual cost\nInsufficient evidence\n2/3\nInsufficient evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "entry": 2,
+    "triggerName": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-PRJ-ZHONGSHAN-018",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-768-entry-2.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+      "tag": "BUTTON",
+      "text": "Reconciled actual cost\nInsufficient evidence\n2/3\nInsufficient evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "entry": 3,
+    "triggerName": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-PRJ-NANJING-023",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-768-entry-3.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+      "tag": "BUTTON",
+      "text": "Reconciled actual cost\nInsufficient evidence\n2/3\nInsufficient evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "entry": 4,
+    "triggerName": null,
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-synthesis-lighting-gap",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-768-entry-4.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": null,
+      "tag": "BUTTON",
+      "text": "Inspect evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "entry": 0,
+    "triggerName": "Evidence and sufficiency: Forecast direct cost · NT$3,672 · TWD/m² · Insufficient evidence",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-390-entry-0.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "Evidence and sufficiency: Forecast direct cost · NT$3,672 · TWD/m² · Insufficient evidence",
+      "tag": "BUTTON",
+      "text": "Forecast direct cost\nNT$3,672 · TWD/m²\nInsufficient evidence\nInsufficient evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "entry": 1,
+    "triggerName": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-PRJ-NEIHU-021",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-390-entry-1.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+      "tag": "BUTTON",
+      "text": "Reconciled actual cost\nInsufficient evidence\n2/3\nInsufficient evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "entry": 2,
+    "triggerName": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-PRJ-ZHONGSHAN-018",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-390-entry-2.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+      "tag": "BUTTON",
+      "text": "Reconciled actual cost\nInsufficient evidence\n2/3\nInsufficient evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "entry": 3,
+    "triggerName": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-PRJ-NANJING-023",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-390-entry-3.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+      "tag": "BUTTON",
+      "text": "Reconciled actual cost\nInsufficient evidence\n2/3\nInsufficient evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "entry": 4,
+    "triggerName": null,
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-synthesis-lighting-gap",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-390-entry-4.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": null,
+      "tag": "BUTTON",
+      "text": "Inspect evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "entry": 0,
+    "triggerName": "Evidence and sufficiency: Forecast direct cost · NT$3,672 · TWD/m² · Insufficient evidence",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-320-entry-0.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "Evidence and sufficiency: Forecast direct cost · NT$3,672 · TWD/m² · Insufficient evidence",
+      "tag": "BUTTON",
+      "text": "Forecast direct cost\nNT$3,672 · TWD/m²\nInsufficient evidence\nInsufficient evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "entry": 1,
+    "triggerName": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-PRJ-NEIHU-021",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-320-entry-1.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+      "tag": "BUTTON",
+      "text": "Reconciled actual cost\nInsufficient evidence\n2/3\nInsufficient evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "entry": 2,
+    "triggerName": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-PRJ-ZHONGSHAN-018",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-320-entry-2.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+      "tag": "BUTTON",
+      "text": "Reconciled actual cost\nInsufficient evidence\n2/3\nInsufficient evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "entry": 3,
+    "triggerName": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-PRJ-NANJING-023",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-320-entry-3.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3",
+      "tag": "BUTTON",
+      "text": "Reconciled actual cost\nInsufficient evidence\n2/3\nInsufficient evidence"
+    }
+  },
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "entry": 4,
+    "triggerName": null,
+    "claim": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+    "returnSelector": "evidence-synthesis-lighting-gap",
+    "refs": [
+      "63e0798c85f816c734587ec6",
+      "b3c3a6a8f99258e51d36dae2",
+      "5815a9a172bd2470f40c49f6"
+    ],
+    "dialogText": "EVIDENCE\n\nLighting and electrical actual-cost evidence is insufficient\n\nThe exact sources and calculation supporting this structured claim.\n\nClose evidence\nXinyi Flagship Renovation\nNov 17, 2026\n\nINSUFFICIENT CATEGORY ACTUAL-COST EVIDENCE\n\nEligible observations: 2 · Required observations: 3\nReconciled actual cost\nInsufficient actual-cost evidence\n\nActual-cost evidence is below the required threshold.\n\nInsufficient actual-cost evidence\nSupporting sources\n\nFINAL COST LINE\n\nDomestic lighting package\nReconciled actual\nReconciled actual cost\nProject\nNeihu Tech Flagship\nVersion\nv1\nEffective / recorded date\nJul 20, 2025\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,000,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nDomestic lighting package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,000,000\nAmount\nNT$2,000,000\nInspect source\n\nFINAL COST LINE\n\nLighting and electrical package\nReconciled actual\nReconciled actual cost\nProject\nZhongshan Lifestyle Store\nVersion\nv1\nEffective / recorded date\nDec 20, 2024\nExact locator\nRecord type: Reconciled actual cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$1,900,000 · Currency: TWD\nHistorical\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nLighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$1,900,000\nAmount\nNT$1,900,000\nInspect source\n\nFORECAST COST LINE\n\nPremium lighting and electrical package\nHuman reviewed\nForecast direct cost\nProject\nXinyi Flagship Renovation\nVersion\nv1\nEffective / recorded date\nNov 14, 2026\nExact locator\nRecord type: Forecast cost line · Category: Lighting and electrical · Line number: 3\nData boundary\nSynthetic demo data\nSupported value\nUnit: lot · Amount: NT$2,350,000 · Currency: TWD\nCurrent\nSafe source preview\nCategory\nLighting and electrical\nLine number\n3\nDescription\nPremium lighting and electrical package\nQuantity\n1\nUnit\nlot\nUnit price\nNT$2,350,000\nAmount\nNT$2,350,000\nInspect source",
+    "image": "screenshots/f07-en-320-entry-4.jpg",
+    "returnFocus": {
+      "id": "",
+      "label": null,
+      "tag": "BUTTON",
+      "text": "Inspect evidence"
+    }
+  }
+]

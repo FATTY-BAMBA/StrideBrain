@@ -1,0 +1,26 @@
+{
+  "runId": "20261117T050611Z",
+  "startedAt": "2026-11-17T05:06:11Z",
+  "head": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+  "scope": "TARGETED_F03_F07_AND_PRIOR_REPAIR_SMOKE",
+  "independentBrowserReviewer": "independent_browser_retest",
+  "builder": "root",
+  "status": "COMPLETED_TARGETED_PASS",
+  "previousRunUnchanged": "20261117T023357Z",
+  "noFullMatrixOrManualGapPromotion": true,
+  "unusedQaSessionsRevoked": true,
+  "updatedAt": "2026-11-17T05:32:09.557642+00:00",
+  "bootstrapAuthorization": {
+    "answer": "Authorize the one-use QA login",
+    "scope": "Independent browser reviewer may open the preissued one-use synthetic login on localhost:3001, setting the QA session cookie and redirecting to localhost:3000 without creating actions or changing permissions.",
+    "recordedAt": "2026-11-17T05:29:06.049479+00:00"
+  },
+  "authenticationGateResolved": true,
+  "authenticationGateHistory": "Automatic approval review twice rejected navigation to the localhost:3001 one-use trusted synthetic login; explicit user authorization requested. This is an automation gate, not a product defect.",
+  "targetedChecksExecuted": 7,
+  "fullQaMatrixRerun": false,
+  "browserFrozenAt": "2026-11-17T05:56:59.172Z",
+  "evidenceFinalizedAt": "2026-11-17T05:59:49.394506+00:00",
+  "allFourQaSessionsRevoked": true,
+  "targetedEvidenceBranch": "qa/sb-029-local-20261117T050611Z"
+}

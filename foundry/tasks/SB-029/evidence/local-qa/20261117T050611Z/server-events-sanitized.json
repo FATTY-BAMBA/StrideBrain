@@ -1,0 +1,65 @@
+{
+  "method": "Only application event, outcome and correlation ID retained; no request headers or raw server log.",
+  "events": [
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "ba29f314-0616-4213-9294-223719b8bd71"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "bcf01c89-00cc-44dd-afda-a583547caa71"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "06baaacc-8900-4723-9c8a-d07337de0085"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "STALE_COMPARISON",
+      "requestId": "918f92e3-0142-490a-8e06-9d663dbf30d9"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "e67c55a5-efd5-47ef-a250-2fb03bb9bba2"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "PROPOSAL_STALE",
+      "requestId": "96b9d522-c1b1-420a-bfa6-d620644260bf"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "098f16b8-3da1-458b-97b1-0ce30b553753"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "9d020169-f315-476d-96b0-f3cdaf65454e"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "6a3d2a6c-d9a9-49d9-9e49-204c76752226"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "8b137098-e000-4413-adc4-90532051f515"
+    },
+    {
+      "event": "INTERNAL_REVIEW_ATTEMPT",
+      "outcome": "ACTION_NOT_AUTHORIZED",
+      "requestId": "eebb562c-86f9-4c44-b5f7-172711ae68ed"
+    }
+  ],
+  "outcomeCounts": {
+    "STALE_COMPARISON": 2,
+    "PROPOSAL_STALE": 4,
+    "ACTION_NOT_AUTHORIZED": 5
+  }
+}

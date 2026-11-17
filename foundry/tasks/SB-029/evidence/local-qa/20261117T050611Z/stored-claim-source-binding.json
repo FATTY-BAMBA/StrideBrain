@@ -1,0 +1,216 @@
+{
+  "runId": "20261117T050611Z",
+  "database": "stridebrain_sb029_targeted_20261117t050611z",
+  "at": "2026-11-17T05:36:13.283Z",
+  "method": "Read-only persisted economics snapshot and existing source-key function. Supplements browser observations; does not establish current authorization by itself.",
+  "comparisonRunId": "cmprun_91c334b8-9bc2-467b-a964-756c34e90800",
+  "enrichmentRunId": "econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957",
+  "lighting": {
+    "forecastState": "INSUFFICIENT",
+    "historyState": "INSUFFICIENT",
+    "eligible": 2,
+    "required": 3,
+    "varianceAbsent": true,
+    "actualRangeAbsent": true,
+    "unsupportedVarianceClaimAbsent": true
+  },
+  "claims": [
+    {
+      "claimKey": "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+      "kind": "CATEGORY_ACTUAL_INSUFFICIENT",
+      "value": {
+        "eligibleObservationCount": 2,
+        "requiredObservationCount": 3
+      },
+      "sufficiencyCode": "INSUFFICIENT_ACTUAL_COST_EVIDENCE",
+      "hasCalculationTrace": false,
+      "evidenceReferenceIds": [
+        "evid_forecast_fcl_xinyi_026_3",
+        "evid_cost_cl_neihu_021_v1_3",
+        "evid_cost_cl_zhongshan_018_v1_3"
+      ],
+      "sources": [
+        {
+          "sourceKey": "63e0798c85f816c734587ec6",
+          "referenceId": "evid_cost_cl_neihu_021_v1_3",
+          "subjectType": "COST_LINE",
+          "subjectId": "cl_neihu_021_v1_3",
+          "locator": {
+            "kind": "cost-line",
+            "categoryId": "LIGHTING_ELECTRICAL",
+            "lineNumber": 3
+          },
+          "authorityState": "RECONCILED_ACTUAL",
+          "observationType": "RECONCILED_ACTUAL_COST"
+        },
+        {
+          "sourceKey": "b3c3a6a8f99258e51d36dae2",
+          "referenceId": "evid_cost_cl_zhongshan_018_v1_3",
+          "subjectType": "COST_LINE",
+          "subjectId": "cl_zhongshan_018_v1_3",
+          "locator": {
+            "kind": "cost-line",
+            "categoryId": "LIGHTING_ELECTRICAL",
+            "lineNumber": 3
+          },
+          "authorityState": "RECONCILED_ACTUAL",
+          "observationType": "RECONCILED_ACTUAL_COST"
+        },
+        {
+          "sourceKey": "5815a9a172bd2470f40c49f6",
+          "referenceId": "evid_forecast_fcl_xinyi_026_3",
+          "subjectType": "FORECAST_COST_LINE",
+          "subjectId": "fcl_xinyi_026_3",
+          "locator": {
+            "kind": "forecast-cost-line",
+            "categoryId": "LIGHTING_ELECTRICAL",
+            "lineNumber": 3
+          },
+          "authorityState": "HUMAN_REVIEWED",
+          "observationType": "FORECAST_DIRECT_COST"
+        }
+      ]
+    },
+    {
+      "claimKey": "XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED",
+      "kind": "PROGRAMME_DIFFERENCE_UNQUANTIFIED",
+      "value": {
+        "activeProgrammeWeeks": "16",
+        "historicalMaximumWeeks": "22.00",
+        "historicalMinimumWeeks": "19.00",
+        "quantifiedPremiumState": "UNQUANTIFIED"
+      },
+      "sufficiencyCode": null,
+      "hasCalculationTrace": false,
+      "evidenceReferenceIds": [
+        "evid_programme_prj_xinyi_026",
+        "evid_programme_prj_neihu_021",
+        "evid_programme_prj_zhongshan_018",
+        "evid_programme_prj_nanjing_023"
+      ],
+      "sources": [
+        {
+          "sourceKey": "0ffb3743ea26b5d4942857c8",
+          "referenceId": "evid_programme_prj_nanjing_023",
+          "subjectType": "PROJECT",
+          "subjectId": "prj_nanjing_023",
+          "locator": {
+            "kind": "structured-field",
+            "field": "programmeWeeks"
+          },
+          "authorityState": "HUMAN_REVIEWED",
+          "observationType": null
+        },
+        {
+          "sourceKey": "e4ce9680405d6d21dd32bf39",
+          "referenceId": "evid_programme_prj_neihu_021",
+          "subjectType": "PROJECT",
+          "subjectId": "prj_neihu_021",
+          "locator": {
+            "kind": "structured-field",
+            "field": "programmeWeeks"
+          },
+          "authorityState": "HUMAN_REVIEWED",
+          "observationType": null
+        },
+        {
+          "sourceKey": "b5ab75c58c013789026872b1",
+          "referenceId": "evid_programme_prj_xinyi_026",
+          "subjectType": "PROJECT",
+          "subjectId": "prj_xinyi_026",
+          "locator": {
+            "kind": "structured-field",
+            "field": "programmeWeeks"
+          },
+          "authorityState": "HUMAN_REVIEWED",
+          "observationType": null
+        },
+        {
+          "sourceKey": "336827f06c382e2bf06099b0",
+          "referenceId": "evid_programme_prj_zhongshan_018",
+          "subjectType": "PROJECT",
+          "subjectId": "prj_zhongshan_018",
+          "locator": {
+            "kind": "structured-field",
+            "field": "programmeWeeks"
+          },
+          "authorityState": "HUMAN_REVIEWED",
+          "observationType": null
+        }
+      ]
+    },
+    {
+      "claimKey": "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      "kind": "CATEGORY_FORECAST_ACTUAL_VARIANCE",
+      "value": {
+        "currency": "TWD",
+        "direction": "ABOVE",
+        "currentAmount": "2360000",
+        "variancePercent": "18.3882",
+        "baselineEquivalentAmount": "1993442.62"
+      },
+      "sufficiencyCode": null,
+      "hasCalculationTrace": true,
+      "evidenceReferenceIds": [
+        "evid_forecast_fcl_xinyi_026_4",
+        "evid_cost_cl_nanjing_023_v1_3",
+        "evid_cost_cl_neihu_021_v1_4",
+        "evid_cost_cl_zhongshan_018_v1_4"
+      ],
+      "sources": [
+        {
+          "sourceKey": "29fc3a54a9c1f4ad023a3195",
+          "referenceId": "evid_cost_cl_nanjing_023_v1_3",
+          "subjectType": "COST_LINE",
+          "subjectId": "cl_nanjing_023_v1_3",
+          "locator": {
+            "kind": "cost-line",
+            "categoryId": "IMPORTED_STONE",
+            "lineNumber": 3
+          },
+          "authorityState": "RECONCILED_ACTUAL",
+          "observationType": "RECONCILED_ACTUAL_COST"
+        },
+        {
+          "sourceKey": "4f31f9fb7132e549f07bb18f",
+          "referenceId": "evid_cost_cl_neihu_021_v1_4",
+          "subjectType": "COST_LINE",
+          "subjectId": "cl_neihu_021_v1_4",
+          "locator": {
+            "kind": "cost-line",
+            "categoryId": "IMPORTED_STONE",
+            "lineNumber": 4
+          },
+          "authorityState": "RECONCILED_ACTUAL",
+          "observationType": "RECONCILED_ACTUAL_COST"
+        },
+        {
+          "sourceKey": "8ed3068def96bbe6ac35dd3f",
+          "referenceId": "evid_cost_cl_zhongshan_018_v1_4",
+          "subjectType": "COST_LINE",
+          "subjectId": "cl_zhongshan_018_v1_4",
+          "locator": {
+            "kind": "cost-line",
+            "categoryId": "IMPORTED_STONE",
+            "lineNumber": 4
+          },
+          "authorityState": "RECONCILED_ACTUAL",
+          "observationType": "RECONCILED_ACTUAL_COST"
+        },
+        {
+          "sourceKey": "51ecfb5394168c991811f973",
+          "referenceId": "evid_forecast_fcl_xinyi_026_4",
+          "subjectType": "FORECAST_COST_LINE",
+          "subjectId": "fcl_xinyi_026_4",
+          "locator": {
+            "kind": "forecast-cost-line",
+            "categoryId": "IMPORTED_STONE",
+            "lineNumber": 4
+          },
+          "authorityState": "HUMAN_REVIEWED",
+          "observationType": "FORECAST_DIRECT_COST"
+        }
+      ]
+    }
+  ]
+}

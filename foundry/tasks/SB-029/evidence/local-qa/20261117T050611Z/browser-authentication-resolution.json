@@ -1,0 +1,9 @@
+{
+  "recordedAt": "2026-11-17T05:32:09.557642+00:00",
+  "runId": "20261117T050611Z",
+  "state": "RESOLVED_WITH_EXPLICIT_USER_AUTHORIZATION",
+  "userAnswer": "Authorize the one-use QA login",
+  "reviewerReported": "Trusted login succeeded and fresh English Xinyi workspace visible under Mei.",
+  "mechanism": "Reviewed one-use local bootstrap; no cookie injection, browser-security setting change, or alternate automation surface.",
+  "initialRefusalsPreservedIn": "browser-authentication-gate.json"
+}

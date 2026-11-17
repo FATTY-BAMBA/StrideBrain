@@ -1,0 +1,14 @@
+SB-029 / 20261117T050611Z / TARGETED PASS
+
+Read REPORT.txt, targeted-browser-results.json and independent-evidence-review.json.
+Two repaired P2 findings PASS (F-03/F-07); five proportional prior-repair smokes PASS.
+The previous full QA matrix and seven manual requirements remain unchanged.
+
+Exact product head: 5c3e2763635dab46e8c91255e0394eece008dcb1
+BUILD_ID: VSGc_BSVp5nB86Sw8Zypr
+Exact-head CI: 44021235139 PASS
+
+203 original screenshots. Independent framing review and source identities retained.
+Cleanup: restoration-ledger.json, final-database-integrity.json, session-revocation.json.
+Sanitization: sanitization.json. Inventory/hashes: FILES.txt / SHA256SUMS.txt.
+No Stage 8 acceptance, PR readiness change or merge.

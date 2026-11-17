@@ -1,0 +1,20 @@
+{
+  "images": 203,
+  "independentReview": "independent-evidence-review.json",
+  "contactSheetsReviewed": 34,
+  "fullSizeFocalImages": 12,
+  "pixelDimensionsMatch": true,
+  "hashesUnchanged": true,
+  "classifications": {
+    "SETTLED_CONTENT_VISIBLE": 199,
+    "SUMMARY_FRAME_WITH_LOWER_LOCATOR_SUPPLEMENT": 4
+  },
+  "framingSupplements": [
+    "screenshots/f03-en-programme-locator-320.jpg",
+    "screenshots/f03-en-programme-locator-390.jpg",
+    "screenshots/f03-zh-programme-locator-320.jpg",
+    "screenshots/f03-zh-programme-locator-390.jpg"
+  ],
+  "ocr": "screenshots/screenshot-ocr.json",
+  "noImagePixelEdits": true
+}

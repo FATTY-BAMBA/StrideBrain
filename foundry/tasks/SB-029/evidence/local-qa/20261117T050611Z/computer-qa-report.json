@@ -1,0 +1,144 @@
+{
+  "runId": "20261117T050611Z",
+  "verdict": "PASS",
+  "verdictScope": "TARGETED_F03_F07_AND_PRIOR_REPAIR_SMOKE",
+  "evidenceBranch": "qa/sb-029-local-20261117T050611Z",
+  "requiredDirectParent": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+  "buildId": "VSGc_BSVp5nB86Sw8Zypr",
+  "sourceManifestSha256": "fce51bf5de6d1751e54d8941f7c9f31104b3e3efffd12e030301cbdbfd462663",
+  "exactHeadCi": {
+    "id": 44021235139,
+    "status": "completed",
+    "conclusion": "success",
+    "head": "5c3e2763635dab46e8c91255e0394eece008dcb1"
+  },
+  "browserReviewer": "independent_browser_retest",
+  "evidenceReviewer": "independent_evaluation",
+  "builder": "root",
+  "counts": {
+    "PASS_TARGETED": 2,
+    "PASS_TARGETED_SMOKE": 5,
+    "FAIL": 0,
+    "total": 7
+  },
+  "checks": [
+    {
+      "id": "F-03",
+      "status": "PASS_TARGETED"
+    },
+    {
+      "id": "F-07",
+      "status": "PASS_TARGETED"
+    },
+    {
+      "id": "F-01",
+      "status": "PASS_TARGETED_SMOKE"
+    },
+    {
+      "id": "F-02",
+      "status": "PASS_TARGETED_SMOKE"
+    },
+    {
+      "id": "F-04",
+      "status": "PASS_TARGETED_SMOKE"
+    },
+    {
+      "id": "F-05",
+      "status": "PASS_TARGETED_SMOKE"
+    },
+    {
+      "id": "F-06",
+      "status": "PASS_TARGETED_SMOKE"
+    }
+  ],
+  "coverage": {
+    "locales": [
+      "en",
+      "zh-TW"
+    ],
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        320,
+        740
+      ]
+    ],
+    "f03ClaimVariants": 8,
+    "f03SourceDrilldowns": 32,
+    "f07EntryChecks": 40,
+    "f07MatrixSourceDrilldownCaptures": 24,
+    "f07ExploratorySourceCaptures": 3,
+    "viewerKnownMissingPairs": 4,
+    "screenshots": 203
+  },
+  "newProductFindings": [],
+  "manualItems": 7,
+  "manualStatus": "NOT_VERIFIED_MANUAL_REQUIRED",
+  "manualDetails": "manual-verification.json",
+  "previousFullRun": {
+    "runId": "20261117T023357Z",
+    "commit": "5985b7b5ef6a87d9312c9d989e90a2d5be6ac19a",
+    "countsUnchanged": {
+      "PASS": 14,
+      "FAIL": 2,
+      "PARTIAL": 2,
+      "BLOCKED": 0
+    }
+  },
+  "fullQa01Through18Rerun": false,
+  "restoration": {
+    "at": "2026-11-17T05:55:51.438836+00:00",
+    "caseCount": 1,
+    "cases": [
+      {
+        "caseId": "authority-1794894319794",
+        "artifact": "mutation-authority-1794894319794.json",
+        "restored": true,
+        "noBusinessWrites": true
+      }
+    ],
+    "allCasesRestored": true,
+    "noActiveMutationFaultDelay": true,
+    "allFixedFixtureDigestsMatch": true,
+    "immutableHistoryUnchanged": true,
+    "zeroTemporaryObjects": true,
+    "sessionsRevoked": 4,
+    "activeSessions": 0,
+    "beforeCounts": {
+      "actions": 0,
+      "proposals": 0,
+      "consumed": 0,
+      "receipts": 0,
+      "audits": 0,
+      "actionevidencelinks": 0
+    },
+    "afterCounts": {
+      "actions": 1,
+      "proposals": 1,
+      "consumed": 1,
+      "receipts": 1,
+      "audits": 1,
+      "actionevidencelinks": 15
+    },
+    "intentionalActionHistoryRetained": true
+  },
+  "sanitization": "sanitization.json",
+  "browserFrozenAt": "2026-11-17T05:56:59.172Z",
+  "evidenceFinalizedAt": "2026-11-17T06:05:45.924852+00:00",
+  "independentEvidenceReview": "independent-evidence-review.json",
+  "independentEvidenceReviewSha256": "b8edef6b0e2a8a0a14c7f47724a10bcdd577158be0def182445e07816b2f067e",
+  "stage8Acceptance": false,
+  "mergeOrReleaseReadinessClaim": false,
+  "commitShaLocation": "Reported by Git and publication response; a commit cannot embed its own SHA."
+}

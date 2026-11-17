@@ -1,0 +1,246 @@
+[
+  {
+    "locale": "en",
+    "width": 1440,
+    "claimImage": "screenshots/f03-en-programme-1440.jpg",
+    "sourceImages": [
+      "screenshots/f03-en-source-0-1440.jpg",
+      "screenshots/f03-en-source-1-1440.jpg",
+      "screenshots/f03-en-source-2-1440.jpg",
+      "screenshots/f03-en-source-3-1440.jpg"
+    ],
+    "sourceSelectors": [
+      [
+        "0ffb3743ea26b5d4942857c8"
+      ],
+      [
+        "e4ce9680405d6d21dd32bf39"
+      ],
+      [
+        "b5ab75c58c013789026872b1"
+      ],
+      [
+        "336827f06c382e2bf06099b0"
+      ]
+    ],
+    "localizedClaimCount": 4,
+    "sourceLocatorLocalized": true,
+    "rawFieldAbsent": true,
+    "dimensionMatches": true,
+    "noHorizontalChildExceptions": true
+  },
+  {
+    "locale": "en",
+    "width": 768,
+    "claimImage": "screenshots/f03-en-programme-768.jpg",
+    "sourceImages": [
+      "screenshots/f03-en-source-0-768.jpg",
+      "screenshots/f03-en-source-1-768.jpg",
+      "screenshots/f03-en-source-2-768.jpg",
+      "screenshots/f03-en-source-3-768.jpg"
+    ],
+    "sourceSelectors": [
+      [
+        "0ffb3743ea26b5d4942857c8"
+      ],
+      [
+        "e4ce9680405d6d21dd32bf39"
+      ],
+      [
+        "b5ab75c58c013789026872b1"
+      ],
+      [
+        "336827f06c382e2bf06099b0"
+      ]
+    ],
+    "localizedClaimCount": 4,
+    "sourceLocatorLocalized": true,
+    "rawFieldAbsent": true,
+    "dimensionMatches": true,
+    "noHorizontalChildExceptions": true
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "claimImage": "screenshots/f03-en-programme-390.jpg",
+    "sourceImages": [
+      "screenshots/f03-en-source-0-390.jpg",
+      "screenshots/f03-en-source-1-390.jpg",
+      "screenshots/f03-en-source-2-390.jpg",
+      "screenshots/f03-en-source-3-390.jpg"
+    ],
+    "sourceSelectors": [
+      [
+        "0ffb3743ea26b5d4942857c8"
+      ],
+      [
+        "e4ce9680405d6d21dd32bf39"
+      ],
+      [
+        "b5ab75c58c013789026872b1"
+      ],
+      [
+        "336827f06c382e2bf06099b0"
+      ]
+    ],
+    "localizedClaimCount": 4,
+    "sourceLocatorLocalized": true,
+    "rawFieldAbsent": true,
+    "dimensionMatches": true,
+    "noHorizontalChildExceptions": true,
+    "lowerClaimLocatorImage": "screenshots/f03-en-programme-locator-390.jpg"
+  },
+  {
+    "locale": "en",
+    "width": 320,
+    "claimImage": "screenshots/f03-en-programme-320.jpg",
+    "sourceImages": [
+      "screenshots/f03-en-source-0-320.jpg",
+      "screenshots/f03-en-source-1-320.jpg",
+      "screenshots/f03-en-source-2-320.jpg",
+      "screenshots/f03-en-source-3-320.jpg"
+    ],
+    "sourceSelectors": [
+      [
+        "0ffb3743ea26b5d4942857c8"
+      ],
+      [
+        "e4ce9680405d6d21dd32bf39"
+      ],
+      [
+        "b5ab75c58c013789026872b1"
+      ],
+      [
+        "336827f06c382e2bf06099b0"
+      ]
+    ],
+    "localizedClaimCount": 4,
+    "sourceLocatorLocalized": true,
+    "rawFieldAbsent": true,
+    "dimensionMatches": true,
+    "noHorizontalChildExceptions": true,
+    "lowerClaimLocatorImage": "screenshots/f03-en-programme-locator-320.jpg"
+  },
+  {
+    "locale": "zh",
+    "width": 1440,
+    "claimImage": "screenshots/f03-zh-programme-1440.jpg",
+    "sourceImages": [
+      "screenshots/f03-zh-source-0-1440.jpg",
+      "screenshots/f03-zh-source-1-1440.jpg",
+      "screenshots/f03-zh-source-2-1440.jpg",
+      "screenshots/f03-zh-source-3-1440.jpg"
+    ],
+    "sourceSelectors": [
+      [
+        "0ffb3743ea26b5d4942857c8"
+      ],
+      [
+        "e4ce9680405d6d21dd32bf39"
+      ],
+      [
+        "b5ab75c58c013789026872b1"
+      ],
+      [
+        "336827f06c382e2bf06099b0"
+      ]
+    ],
+    "localizedClaimCount": 4,
+    "sourceLocatorLocalized": true,
+    "rawFieldAbsent": true,
+    "dimensionMatches": true,
+    "noHorizontalChildExceptions": true
+  },
+  {
+    "locale": "zh",
+    "width": 768,
+    "claimImage": "screenshots/f03-zh-programme-768.jpg",
+    "sourceImages": [
+      "screenshots/f03-zh-source-0-768.jpg",
+      "screenshots/f03-zh-source-1-768.jpg",
+      "screenshots/f03-zh-source-2-768.jpg",
+      "screenshots/f03-zh-source-3-768.jpg"
+    ],
+    "sourceSelectors": [
+      [
+        "0ffb3743ea26b5d4942857c8"
+      ],
+      [
+        "e4ce9680405d6d21dd32bf39"
+      ],
+      [
+        "b5ab75c58c013789026872b1"
+      ],
+      [
+        "336827f06c382e2bf06099b0"
+      ]
+    ],
+    "localizedClaimCount": 4,
+    "sourceLocatorLocalized": true,
+    "rawFieldAbsent": true,
+    "dimensionMatches": true,
+    "noHorizontalChildExceptions": true
+  },
+  {
+    "locale": "zh",
+    "width": 390,
+    "claimImage": "screenshots/f03-zh-programme-390.jpg",
+    "sourceImages": [
+      "screenshots/f03-zh-source-0-390.jpg",
+      "screenshots/f03-zh-source-1-390.jpg",
+      "screenshots/f03-zh-source-2-390.jpg",
+      "screenshots/f03-zh-source-3-390.jpg"
+    ],
+    "sourceSelectors": [
+      [
+        "0ffb3743ea26b5d4942857c8"
+      ],
+      [
+        "e4ce9680405d6d21dd32bf39"
+      ],
+      [
+        "b5ab75c58c013789026872b1"
+      ],
+      [
+        "336827f06c382e2bf06099b0"
+      ]
+    ],
+    "localizedClaimCount": 4,
+    "sourceLocatorLocalized": true,
+    "rawFieldAbsent": true,
+    "dimensionMatches": true,
+    "noHorizontalChildExceptions": true,
+    "lowerClaimLocatorImage": "screenshots/f03-zh-programme-locator-390.jpg"
+  },
+  {
+    "locale": "zh",
+    "width": 320,
+    "claimImage": "screenshots/f03-zh-programme-320.jpg",
+    "sourceImages": [
+      "screenshots/f03-zh-source-0-320.jpg",
+      "screenshots/f03-zh-source-1-320.jpg",
+      "screenshots/f03-zh-source-2-320.jpg",
+      "screenshots/f03-zh-source-3-320.jpg"
+    ],
+    "sourceSelectors": [
+      [
+        "0ffb3743ea26b5d4942857c8"
+      ],
+      [
+        "e4ce9680405d6d21dd32bf39"
+      ],
+      [
+        "b5ab75c58c013789026872b1"
+      ],
+      [
+        "336827f06c382e2bf06099b0"
+      ]
+    ],
+    "localizedClaimCount": 4,
+    "sourceLocatorLocalized": true,
+    "rawFieldAbsent": true,
+    "dimensionMatches": true,
+    "noHorizontalChildExceptions": true,
+    "lowerClaimLocatorImage": "screenshots/f03-zh-programme-locator-320.jpg"
+  }
+]

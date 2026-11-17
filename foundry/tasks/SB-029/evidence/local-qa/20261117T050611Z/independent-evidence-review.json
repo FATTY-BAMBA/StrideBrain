@@ -1,0 +1,3872 @@
+{
+  "runId": "20261117T050611Z",
+  "status": "FINAL",
+  "reviewerRole": "Independent evidence and framing reviewer; no browser control, product edits or database operations",
+  "scope": "TARGETED_F03_F07_AND_PRIOR_REPAIR_SMOKE",
+  "verdict": "PASS_TARGETED",
+  "stage8Acceptance": false,
+  "mergeOrReleaseApproval": false,
+  "fullQa01Through18Reexecution": false,
+  "wholeScenarioCountsChanged": false,
+  "source": {
+    "testedCommit": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+    "buildId": "VSGc_BSVp5nB86Sw8Zypr",
+    "sourceManifestSha256": "fce51bf5de6d1751e54d8941f7c9f31104b3e3efffd12e030301cbdbfd462663",
+    "sourceFilesIndependentlyCompared": 205,
+    "sourceHashMismatches": [],
+    "trackedWorktreeClean": true,
+    "ciRun": "44021235139",
+    "evidence": [
+      "readiness.json",
+      "exact-head-ci.json",
+      "source-sha256.json",
+      "final-source-history-proof.json"
+    ]
+  },
+  "methods": [
+    "Read the browser observation records, exact selectors, source bindings, edited form state, closure and restoration evidence; no HTTP/SQL result is credited as browser interaction.",
+    "Visually reviewed all 203 saved screenshots through 34 private contact sheets, then inspected 12 focal original frames at full size. Independently decoded actual image dimensions and hashed every original image.",
+    "Compared all 203 decoded dimensions with recorded viewports, all 40 lighting entry claim/source identities, all eight programme claim/source matrix entries, and four same-Viewer known/missing receipt pairs.",
+    "Re-read prior published manual-verification requirements from commit 5985b7b5ef6a87d9312c9d989e90a2d5be6ac19a; no prior whole-scenario result is promoted by this scoped run."
+  ],
+  "checks": [
+    {
+      "id": "F-03",
+      "status": "PASS_TARGETED",
+      "scope": "Programme exact-locator residual: en and zh-TW at 1440x900, 768x1024, 390x844 and 320x740. Eight claim views, 32 project-source drilldowns; area-factor control and two linked factor sources at each locale/viewport.",
+      "observed": "Each programme claim contains four localized exact field locators: Programme in weeks / 工期（週）. Rendered text contains no raw programmeWeeks. Persisted source bindings retain that original locator field, four source keys and project identities. Current 16 versus historical 19–22 and unquantified premium remain.",
+      "framing": "Four narrow claim summary frames originally ended above the exact locator. Four appended lower claim captures now visibly establish the locator in claim mode; all source-mode captures also expose it.",
+      "evidence": [
+        "f03-locator-matrix.json",
+        "stored-claim-source-binding.json",
+        "browser-observations.json",
+        "screenshots/f03-en-programme-locator-320.jpg",
+        "screenshots/f03-en-programme-locator-390.jpg",
+        "screenshots/f03-zh-programme-locator-320.jpg",
+        "screenshots/f03-zh-programme-locator-390.jpg"
+      ]
+    },
+    {
+      "id": "F-07",
+      "status": "PASS_TARGETED",
+      "scope": "40 entry checks: active cell, three historical cells and Evidence gaps, each in both locales at all four viewports. Three source drilldowns per locale/viewport: 24 matrix source checks, plus three exploratory zh-TW 320 captures. No claim of 120 independently recorded drilldowns.",
+      "observed": "All 40 entries select XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT and the same ordered three source keys. Every entry records the two-of-three insufficiency explanation and return to a button. The persisted claim has no calculation trace or supported actual range; current forecast source remains forecast. Supported imported-stone +18.4% retains its financial trace. The nonexistent prior lighting variance selector returns neutral unavailable in both locales/all widths.",
+      "evidence": [
+        "f07-entry-equivalence.json",
+        "stored-claim-source-binding.json",
+        "unavailable-control.json",
+        "browser-observations.json",
+        "screenshots/f07-en-320-entry-0.jpg",
+        "screenshots/f07-zh-1440-entry-0.jpg",
+        "screenshots/control-en-stone-1440.jpg"
+      ]
+    },
+    {
+      "id": "F-01",
+      "status": "PASS_TARGETED_SMOKE",
+      "observed": "Forecast total 12,650,000 and imported-stone forecast 2,360,000 remain distinct from historical reconciled actual, quoted price and historical stale supplier offer through reviewed workspace/evidence/rationale/receipt frames. Lighting abstention and unquantified programme premium remain.",
+      "limit": "Proportionate smoke only; no complete financial-authority or QA-18 matrix rerun.",
+      "evidence": [
+        "financial-authority-database-baseline.json",
+        "browser-observations.json",
+        "edited-confirmation-and-persistence.json"
+      ]
+    },
+    {
+      "id": "F-02",
+      "status": "PASS_TARGETED_SMOKE",
+      "observed": "Consecutive CHECK / VALIDATE_HISTORY / Mei / cleared-date edits survive immediate locale change, evidence return, refresh and Back/Forward. The final explicitly acknowledged confirmation persists those exact nondefault choices: one OPEN action, null due date, Mei assignee, exact run linkage and 15 references. Receipt refresh/copied URL/Actions and workspace reopening retain it.",
+      "limit": "No post-confirmation POST replay, native picker, leap-day or Taipei-midnight confirmation matrix is credited.",
+      "evidence": [
+        "f02-draft-navigation.json",
+        "edited-confirmation-and-persistence.json",
+        "after-successful-confirmation.json",
+        "final-database-integrity.json"
+      ]
+    },
+    {
+      "id": "F-04",
+      "status": "PASS_TARGETED_SMOKE",
+      "observed": "Authorized receipt uses created wording. Four same-Viewer known/missing pairs (two locales by 1440/390 widths) have identical neutral unavailable dialog text and no action payload; focused receipt heading is visible.",
+      "limit": "This does not replace the full tenant/session denial matrix.",
+      "evidence": [
+        "f04-viewer-receipt-pairs.json",
+        "missing-action-control.json",
+        "browser-observations.json"
+      ]
+    },
+    {
+      "id": "F-05",
+      "status": "PASS_TARGETED_SMOKE",
+      "observed": "For the controlled authority change, English desktop and Chinese 390 stale rejections automatically focus review-error-summary with role alert fully inside the viewport before manual scrolling. Both preserve the edited fields; no action/receipt/audit/consumption is created during the mutation.",
+      "limit": "Other generic error classes, actual screen-reader speech and form-to-error description association are not established.",
+      "evidence": [
+        "stale-rejection-smoke.json",
+        "mutation-authority-1794894319794.json",
+        "after-restoration-before-success.json"
+      ]
+    },
+    {
+      "id": "F-06",
+      "status": "PASS_TARGETED_SMOKE",
+      "observed": "The same source downgrade yields a visible stale warning naming the changed Nanjing source and old/current authority, while preserving inspectable saved +18.4% history and rejecting confirmation. Restoration hashes match and saved comparison/enrichment hashes are unchanged.",
+      "limit": "One authority-change variant in English desktop/Chinese mobile; other freshness/conflict/access variants are not rerun.",
+      "evidence": [
+        "browser-observations.json",
+        "mutation-authority-1794894319794.json",
+        "immutable-history-before.json",
+        "immutable-history-after-restoration.json",
+        "immutable-history-after.json",
+        "screenshots/smoke-f06-zh-stale-claim.jpg"
+      ]
+    }
+  ],
+  "targetedCounts": {
+    "PASS_TARGETED": 2,
+    "PASS_TARGETED_SMOKE": 5,
+    "FAIL": 0,
+    "total": 7
+  },
+  "newProductFindings": [],
+  "screenshotReview": {
+    "imagesReviewed": 203,
+    "contactSheetsReviewed": 34,
+    "fullSizeFocalImages": 12,
+    "allDecodedDimensionsMatchRecordedViewport": true,
+    "allImageHashesUnchangedSinceReviewInventory": true,
+    "noUnreviewedImages": true,
+    "horizontalChildExceptionsRecorded": 0,
+    "framingRecapturesRequested": 4,
+    "framingRecapturesReceived": 4,
+    "visibleCredentialOrPersonalPathObserved": false,
+    "privacyLimit": "Visual review is not a complete OCR, metadata or known-secret scan; root owns final sanitization. Exact synthetic provenance identifiers and safe request references are not credentials.",
+    "entries": [
+      {
+        "index": 0,
+        "file": "screenshots/control-en-stone-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "e371efa8b5d06bf5fdfbab17ed4884a60e22f7be260bf6453f1e55055ee7c6b9",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET_AND_FULL_SIZE"
+      },
+      {
+        "index": 1,
+        "file": "screenshots/control-en-stone-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "70d48ce20912cb04882f1f2c7913e5c3bf34da5d74d39e0b271722ed35c7be9a",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 2,
+        "file": "screenshots/control-en-stone-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "15fc7c5606736aa0e80eaba74a2a4e1d33e68bf16e52edf93fcda7251b9bb310",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 3,
+        "file": "screenshots/control-en-stone-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "54357c5ecad7219650874b917e33ab0f275f774f503effb26033b7628384becf",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 4,
+        "file": "screenshots/control-en-stone-trace-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "c4af6165911d891c3584d7409634d10f2556acd8c7d6805651321eb3567bf107",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 5,
+        "file": "screenshots/control-en-stone-trace-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "7fd81ea1b63463ca6630f47d4100c0b5e8c9b9dc51e6d49993ea637c48ebb782",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 6,
+        "file": "screenshots/control-en-stone-trace-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "b40a2cdd6fce8d4ac713de1a594f4415cb093899d04b92e07ba3facaa2f19c93",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 7,
+        "file": "screenshots/control-en-stone-trace-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "8849d40ea4d52d376bbf82207e80ed99dfd7457461c48471f205aba63f4eed00",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 8,
+        "file": "screenshots/control-en-unavailable-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "f5662d07d65b546dd8399de3982453ad7c2620b9476723e988f67cd63c5f9f05",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 9,
+        "file": "screenshots/control-en-unavailable-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "122b53bf781ccf661c5f88b0a5a5e0ab434ee997444412f5d765a54451ba9efe",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 10,
+        "file": "screenshots/control-en-unavailable-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "8925e08c9347fcd7e7b5f8c691191afd80a7cc812e85a6355f39c3656298b12c",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 11,
+        "file": "screenshots/control-en-unavailable-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "20d06edf75346c20ec70b2278c9a8381636f1a4f9579fec6aff7102a4e74db22",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 12,
+        "file": "screenshots/control-zh-TW-unavailable-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "044751420b6427be7ce2d7cdf7b8de50d29f5fdcb7ffb1126132dfbca519ac77",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 13,
+        "file": "screenshots/control-zh-TW-unavailable-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "f3ef9ce49995cfe1e1c530afe899032da5b57cf4b839de64a97e69f7977c713e",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 14,
+        "file": "screenshots/control-zh-TW-unavailable-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "86335549e966daf7b79b879f32aaa837e2191e28f5508af818a01447808a8f71",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 15,
+        "file": "screenshots/control-zh-TW-unavailable-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "4cec6b50681ce177750186f8d50b2b9163844514bc6c02991b42f62fa93f4b85",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 16,
+        "file": "screenshots/control-zh-stone-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "ccb7b9b1ea324464e0baa925f929f470fb1873a25badf8ff27fb5b0be280dbb9",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 17,
+        "file": "screenshots/control-zh-stone-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "279ea43cb3c75aabc45bdec571b61fdec83e0c0662d86f378601d8dc435cf826",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 18,
+        "file": "screenshots/control-zh-stone-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "f1b8cf948cb4d6b8f376de73873acceeeb23b72f7c956fc9f6b1acd9b49277f9",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 19,
+        "file": "screenshots/control-zh-stone-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "1a1e1555653d5860f288e1265684749218617f67d3d9935d212ae63a853f7f39",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 20,
+        "file": "screenshots/control-zh-stone-trace-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "ccb7b9b1ea324464e0baa925f929f470fb1873a25badf8ff27fb5b0be280dbb9",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 21,
+        "file": "screenshots/control-zh-stone-trace-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "dbfdb58996582dc0719167d97a9154080c21ffed50db781e0ad6ba78d43f4a23",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 22,
+        "file": "screenshots/control-zh-stone-trace-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "8d812c40aeba22cca3c90bf18b7000d4852fe440959d05081c781daa14899689",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 23,
+        "file": "screenshots/control-zh-stone-trace-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "1a1e1555653d5860f288e1265684749218617f67d3d9935d212ae63a853f7f39",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 24,
+        "file": "screenshots/f03-en-factor-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "1f109228c1da566688c5b6d40375d3436e74280b1eba67ade0fae3fb253ace6f",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 25,
+        "file": "screenshots/f03-en-factor-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "72b8f5e1f829178700b2f33599f9a289c7f2ccc220bbe4cf5757077365ae5b6b",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 26,
+        "file": "screenshots/f03-en-factor-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "b5868e1faebde0cf3bd44e7db34d2d62b0fac2c5de55cb50ce89f90aa1aa2176",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 27,
+        "file": "screenshots/f03-en-factor-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "d39d249a5601330de5acf5eb9aca0d8943667f5c56bd2acd33294ed8ed4f57a9",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 28,
+        "file": "screenshots/f03-en-factor-source-0-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "82f611357c129f87d434101b21680b20f8d5b878a9b32fc384904ae32edd1c46",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 29,
+        "file": "screenshots/f03-en-factor-source-0-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "75d9a037953713d12d5d6a5c6e0d972903ce60e941e82472d3b3cd93ae739d5d",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 30,
+        "file": "screenshots/f03-en-factor-source-0-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "400bf130b2221f8a5e824a6c3cf99a51bfc24c7b5488fe8c11d021ab3d32f9e5",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 31,
+        "file": "screenshots/f03-en-factor-source-0-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "1187849a2a39bcfacaaf8ac7d50b73c19771bc46bbaf457603004052fde3acf2",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 32,
+        "file": "screenshots/f03-en-factor-source-1-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "fca833910466ee011fcfbbb36a2502833b1da1a91a11df6026cb4e989acbb436",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 33,
+        "file": "screenshots/f03-en-factor-source-1-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "9b517e696adf6292f722f3e2246322ffec871f5e171091f97d1b43395c99ffc8",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 34,
+        "file": "screenshots/f03-en-factor-source-1-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "421d5246ccada6a259363030c522e8a4b84ebcbf0a3ebd1980a59c714b2d7fb2",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 35,
+        "file": "screenshots/f03-en-factor-source-1-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "8f165ab1abd654bd7377315b4eb553d6f3f67c7021604867810082655c19117a",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 36,
+        "file": "screenshots/f03-en-programme-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "48266c2e6103e540d63cea2e8f314ad8f19dd375ad5df7e8682addc3f5488fd4",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 37,
+        "file": "screenshots/f03-en-programme-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "f9d9aa45968e81509c9aaf251a2a8f6f546ea12ccfceda76f03a2825803894e9",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SUMMARY_FRAME_WITH_LOWER_LOCATOR_SUPPLEMENT",
+        "reviewMethod": "CONTACT_SHEET",
+        "limit": "Summary frame does not display the exact locator; corresponding programme-locator supplement and source drilldowns provide the visible locator proof."
+      },
+      {
+        "index": 38,
+        "file": "screenshots/f03-en-programme-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "19047149af8f62dc0b36c7fa992beb168697e932ed4267e56f7fde00bd1c61bf",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SUMMARY_FRAME_WITH_LOWER_LOCATOR_SUPPLEMENT",
+        "reviewMethod": "CONTACT_SHEET",
+        "limit": "Summary frame does not display the exact locator; corresponding programme-locator supplement and source drilldowns provide the visible locator proof."
+      },
+      {
+        "index": 39,
+        "file": "screenshots/f03-en-programme-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "4c7930abffb2b28c61a059b6feb38287b8d36e3788e6858d6850577e314e76b7",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 40,
+        "file": "screenshots/f03-en-source-0-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "8e863706b06f53d9d08a6b4274e45af6fe86c03022f68fa6bbbdd7c8c01dda7d",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 41,
+        "file": "screenshots/f03-en-source-0-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "6fd714ddeabc1a563d579b097e1982845d1b29cbd080546675fa9663805ac59a",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 42,
+        "file": "screenshots/f03-en-source-0-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "ba57412ac3f87ad043175a6a29171f5a9d5f4c5804a42cff8f0b2b2e4b9784c6",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 43,
+        "file": "screenshots/f03-en-source-0-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "7e8707beb1fb90decb3a8d285c92744fd2a959de9dc3c082d10267a8cfe20ba8",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 44,
+        "file": "screenshots/f03-en-source-1-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "1585de3a7291e626499fccb7ea6a28099a194db03fc09dfdb52b49e9639d4244",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 45,
+        "file": "screenshots/f03-en-source-1-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "78fb568c7325afa577d0db90459f2c51287f4ea552f652615e5b795ff87c75c3",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 46,
+        "file": "screenshots/f03-en-source-1-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "b762ca3a9a4351eec1b48a5b0c484d5a3be8a724a506af4b71a6af36fc8fbc89",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 47,
+        "file": "screenshots/f03-en-source-1-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "47ebb5a38b8cf9cca9bb21adea354552e81befb371beaaaaffe1afb85fb30ef4",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 48,
+        "file": "screenshots/f03-en-source-2-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "32ac559d01e6a4a73fcfffd3dc0f2ba3e8dd5a7bd1b033db5a490fe613954728",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 49,
+        "file": "screenshots/f03-en-source-2-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "e57250d07ae1129f7c56f3a05d61dbe4c59eeb72f80bf7b1df10eacaf6ac37e7",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 50,
+        "file": "screenshots/f03-en-source-2-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "808300a52cf1768aeeefd5e392eaf03f828307dce8f18a2e316df0fda0136293",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 51,
+        "file": "screenshots/f03-en-source-2-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "a5568c1499c2c7dbda13f3409cb7e434a9338fbb1600eb8b3de224811204efcb",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 52,
+        "file": "screenshots/f03-en-source-3-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "8d6a643a4f34f2af44136089db13039edad511b6411975c051fbf6a33f6153e9",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 53,
+        "file": "screenshots/f03-en-source-3-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "11c61c6fcad82474f7eec28b9794c2d571221ca6c291fde37aca50016099790a",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 54,
+        "file": "screenshots/f03-en-source-3-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "cd7fe5761e4519ee3d262783034d23c72b2582680889b98170fbc78c76ce1b84",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 55,
+        "file": "screenshots/f03-en-source-3-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "4ee5d27f9038304a977ef460ac81dfbc33cb5a22fe60746df4838f3d18ae6b9d",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 56,
+        "file": "screenshots/f03-zh-factor-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "92ce42a28d7de303c8a9f7507a6571875d451d506e1882914758f95dfbbebd20",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 57,
+        "file": "screenshots/f03-zh-factor-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "e0ea7d5704160fc05991c306533bcfef89c69f61160f9c3f2b1173128d655473",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 58,
+        "file": "screenshots/f03-zh-factor-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "efdf4e06f55afffb9f29869fcb0af7580346fbfe8d733c6057f07e11877b85b4",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 59,
+        "file": "screenshots/f03-zh-factor-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "3934ce69d090a97c21f3b172dfa38642f7dc08e58af51860b263389cc83355b5",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 60,
+        "file": "screenshots/f03-zh-factor-source-0-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "eb59d27e22ea207b6d70ea1dbf2a38b350cd8463deb256fef290892934e47e01",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 61,
+        "file": "screenshots/f03-zh-factor-source-0-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "06488c1685c9c970aaf32e043a48a3352f69a3998becce0112e942d2cfeeea2c",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 62,
+        "file": "screenshots/f03-zh-factor-source-0-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "72f2888303348eb5d0378385a5de6a3783d82806f0f17b87d845fd2ca5598948",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 63,
+        "file": "screenshots/f03-zh-factor-source-0-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "6f24cad8c6bdc0e332887d133effe8f71ac21b44dba10fa6f3a14e09107900b3",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 64,
+        "file": "screenshots/f03-zh-factor-source-1-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "37410d4459886469aa840081fc6c37e90d195b86869ab8b823fe64af8caa77e8",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 65,
+        "file": "screenshots/f03-zh-factor-source-1-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "20b1e591a0666dc84bf640642dcd79ed71af61967c4da6203ae52e4ab48aba6e",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 66,
+        "file": "screenshots/f03-zh-factor-source-1-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "23f9a41116db73807551b36e91de0d225bb00d564138df3f02d8eee67f997b71",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 67,
+        "file": "screenshots/f03-zh-factor-source-1-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "7525ec9418f28064ccbf77337ce93271ac7f839056bb7476a013aa8c766fdcb6",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 68,
+        "file": "screenshots/f03-zh-programme-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "9b04212a38aa2791aa62297c883639321457842a5ca2491a8d10464a0cbc5714",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 69,
+        "file": "screenshots/f03-zh-programme-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "987b1ebf437dd2a57cab3d41d76925acf7ed5c88cc0aa5021393e3dfc03432e9",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SUMMARY_FRAME_WITH_LOWER_LOCATOR_SUPPLEMENT",
+        "reviewMethod": "CONTACT_SHEET",
+        "limit": "Summary frame does not display the exact locator; corresponding programme-locator supplement and source drilldowns provide the visible locator proof."
+      },
+      {
+        "index": 70,
+        "file": "screenshots/f03-zh-programme-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "9e543986b27a60eddac3e80d6db9594982a0815d199d3d85ff9a7d6c76f022e6",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SUMMARY_FRAME_WITH_LOWER_LOCATOR_SUPPLEMENT",
+        "reviewMethod": "CONTACT_SHEET",
+        "limit": "Summary frame does not display the exact locator; corresponding programme-locator supplement and source drilldowns provide the visible locator proof."
+      },
+      {
+        "index": 71,
+        "file": "screenshots/f03-zh-programme-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "505073d7081b70b84207b83a00a10af4d9db4cba35643b40f727a53a21819938",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 72,
+        "file": "screenshots/f03-zh-source-0-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "7690483d199a049fd3bd5968526d0a30f1dc01909863378f5e1ec97bab38782e",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 73,
+        "file": "screenshots/f03-zh-source-0-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "3b95370f0e77dea577174259b69819ecefcc951b1375d693684d0ed834152b1a",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 74,
+        "file": "screenshots/f03-zh-source-0-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "afc90d660e271737334500455276052347383d996075332018ddabbd50448f20",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 75,
+        "file": "screenshots/f03-zh-source-0-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "73894a6cb11add7ed7149b93f28ffddc4d829ec2f89111c7c07a6d2e96258250",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 76,
+        "file": "screenshots/f03-zh-source-1-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "b6bbb46dc67476f8be16b1b776ec6e3ab7bedf57abab3343e2e41a6fbfb457da",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 77,
+        "file": "screenshots/f03-zh-source-1-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "295596780b983c36b947bbf6a84cd93539bf7897aa310dadad54af66676fc185",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 78,
+        "file": "screenshots/f03-zh-source-1-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "6d5df2b84bcc5269007dadbc32261be596d6cba1fe585edfbbc5e21421284586",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 79,
+        "file": "screenshots/f03-zh-source-1-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "305a5db2a5d28f0d28b37955705642d71fe6813304ea3784590b22a611056cf3",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 80,
+        "file": "screenshots/f03-zh-source-2-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "c44d9ceaef28b2d2737ac20baeb82212003cac9ceaf89457616668150f61e3d6",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 81,
+        "file": "screenshots/f03-zh-source-2-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "61f10dd04a455b7b370fe356de665f94fe9aeee0980e2be3396399955c1b84f7",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 82,
+        "file": "screenshots/f03-zh-source-2-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "571cf851a0456139151966a0e71f030be6c00f87dc8d1b6ebe9f0de2f0c32ab2",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 83,
+        "file": "screenshots/f03-zh-source-2-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "d9506b4b05816c9b1862dbe54b7c4f7c0b44c243a3cd5229ca2afecdee8f8218",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 84,
+        "file": "screenshots/f03-zh-source-3-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "c3ac82504b0ea26b6205cdfcbb85033ac3a9ec539519b90fa44b2aa66817b2fe",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 85,
+        "file": "screenshots/f03-zh-source-3-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "b98b079c7ed40e52288197d141c56a392d1e407d6012fb42a98f68b91005c1a9",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 86,
+        "file": "screenshots/f03-zh-source-3-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "6c98aa3a6abd4013650ff4594113402fa2a93c27fd562c3af89a0a5ab52ee118",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 87,
+        "file": "screenshots/f03-zh-source-3-768.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "b7c2b252d547e7649436a42f3243150cc63b4fc7bd89edaac55bd66086067d02",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 88,
+        "file": "screenshots/f07-en-1440-entry-0.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "e3b5afa8f569de01abde149669dbea3545f21c028c2e2f564e41f41ad0bf7a53",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 89,
+        "file": "screenshots/f07-en-1440-entry-1.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "e3b5afa8f569de01abde149669dbea3545f21c028c2e2f564e41f41ad0bf7a53",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 90,
+        "file": "screenshots/f07-en-1440-entry-2.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "e3b5afa8f569de01abde149669dbea3545f21c028c2e2f564e41f41ad0bf7a53",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 91,
+        "file": "screenshots/f07-en-1440-entry-3.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "e3b5afa8f569de01abde149669dbea3545f21c028c2e2f564e41f41ad0bf7a53",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 92,
+        "file": "screenshots/f07-en-1440-entry-4.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "4a50d9c62cd557deecb964f6c641704ff1fd5967d0b2eef866a565e64b39a1ba",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 93,
+        "file": "screenshots/f07-en-1440-source-0.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "3fd6eec419670968f38f16b1938bdf4f4d9911740b483e0adf954493726cea70",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 94,
+        "file": "screenshots/f07-en-1440-source-1.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "11c2e8cf312db204ab5163801d7f1d25ccf82cc8af9da3886af528d8a5407d12",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 95,
+        "file": "screenshots/f07-en-1440-source-2.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "fe03411edc11dd40fed8adc4b18435ddf07e5bfe65a3995586dabc9ff4d17696",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 96,
+        "file": "screenshots/f07-en-320-entry-0.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "b76dad414369f7249a575b73ce19d64f2d8bab313795b7171ec5e033f77b9011",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET_AND_FULL_SIZE"
+      },
+      {
+        "index": 97,
+        "file": "screenshots/f07-en-320-entry-1.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "f870c3a91c1d24b1c86cc85ba238f5f82618645b283a68bcb46941a5979ef33e",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 98,
+        "file": "screenshots/f07-en-320-entry-2.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "35e1a6f91931c1f14909b762c5c1cb1e8ed55dd7cbb02f110952351fcb85dc70",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 99,
+        "file": "screenshots/f07-en-320-entry-3.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "6a9e8ddd70eed247b8a7a3b3e7d2ca6fc8dd350ae417beed4d78d120d718d9c0",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 100,
+        "file": "screenshots/f07-en-320-entry-4.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "42402321f1fc3c67ba0ee32663b5797cfd723387fb3d2d31daae6f29228a5da7",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 101,
+        "file": "screenshots/f07-en-320-source-0.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "fb709b4ae0be88e0089eb292c1d3d92998f35e491bf42f1d03553ba7d4524bae",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 102,
+        "file": "screenshots/f07-en-320-source-1.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "7c80bd819c2154a020f368ae4722704854f2c3bdc361ecf8689a06a708ac980d",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 103,
+        "file": "screenshots/f07-en-320-source-2.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "b9da79e9b295f3fb6a33bb80b5ed86372fb36a32ac6a7fa78bedbf485cfc8443",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 104,
+        "file": "screenshots/f07-en-390-entry-0.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "eb05a5ffce14cea42166926979496f53773cf7a0ad0dcb2f8585c488288a13e2",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 105,
+        "file": "screenshots/f07-en-390-entry-1.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "6b9d7e680b2b71f4ca0969fe4cc5e9e7a7772b95eb8385da1be3d72fa0c08361",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 106,
+        "file": "screenshots/f07-en-390-entry-2.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "27b6efd8d07e42a3528b1435e2ddce8e4f6b85dfefd8b13de2be14360598795e",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 107,
+        "file": "screenshots/f07-en-390-entry-3.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "3a7c307b36e8f232d8e68d55fa64b2750736f3ddc76530a60b5e68036658de88",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 108,
+        "file": "screenshots/f07-en-390-entry-4.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "6eb7f9918eb1458fc67016c0534473bd22a1416b5fe9da39d7b70f011baab951",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 109,
+        "file": "screenshots/f07-en-390-source-0.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "09baf1d302397c8175d4854513169310b128afc9083f6afc1305a678e5bf2b6e",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 110,
+        "file": "screenshots/f07-en-390-source-1.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "d1c21d73fd5adf0765117d58a8da456c769cfc1fe8d3900c77a566dbd7266faa",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 111,
+        "file": "screenshots/f07-en-390-source-2.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "9e2d2094af09718fbc9c10664a8d6a8d936040ca99bb2543be5dd1dec4fc429a",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 112,
+        "file": "screenshots/f07-en-768-entry-0.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "736b93ab2bb3cab02244739b28cebbd1a0dade8a2340b79e77880a76da0ade29",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 113,
+        "file": "screenshots/f07-en-768-entry-1.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "736b93ab2bb3cab02244739b28cebbd1a0dade8a2340b79e77880a76da0ade29",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 114,
+        "file": "screenshots/f07-en-768-entry-2.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "c24c9849d6ef853a4d88ed4e77558d73db449f38d265c0493c40fb2b8858098a",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 115,
+        "file": "screenshots/f07-en-768-entry-3.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "84f51d193098a5475db639e403238dc316d2833901f4cb85a4a57bf3eb35883d",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 116,
+        "file": "screenshots/f07-en-768-entry-4.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "929f6bfc439e3eba339f7dce633750d238a4587cb93fd762d92fed630449b9f0",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 117,
+        "file": "screenshots/f07-en-768-source-0.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "4cb33f7ffa4e8840e7df829c37d3db7d1eaf7c76c83a4ff065fa77132672b3ac",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 118,
+        "file": "screenshots/f07-en-768-source-1.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "2843f2e69907f9f6c1ee2c35b6666337065bd3e49fff7edb89de830891d18c9b",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 119,
+        "file": "screenshots/f07-en-768-source-2.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "a01cfce4c7b3b8dba999ad1109fed48b6be37543c2159db8b81508a339648263",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET_AND_FULL_SIZE"
+      },
+      {
+        "index": 120,
+        "file": "screenshots/f07-zh-1440-entry-0.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "50933afcf9b66be4b0e26c6f0d935898f356b18461ae205e8d9980b88df7a530",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET_AND_FULL_SIZE"
+      },
+      {
+        "index": 121,
+        "file": "screenshots/f07-zh-1440-entry-1.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "50933afcf9b66be4b0e26c6f0d935898f356b18461ae205e8d9980b88df7a530",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 122,
+        "file": "screenshots/f07-zh-1440-entry-2.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "50933afcf9b66be4b0e26c6f0d935898f356b18461ae205e8d9980b88df7a530",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 123,
+        "file": "screenshots/f07-zh-1440-entry-3.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "50933afcf9b66be4b0e26c6f0d935898f356b18461ae205e8d9980b88df7a530",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 124,
+        "file": "screenshots/f07-zh-1440-entry-4.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "8fcff8bac25f198000f6a85e6bda77d7a75a9d964d837391d8025b35796da06b",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 125,
+        "file": "screenshots/f07-zh-1440-source-0.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "b3b0a983765292a969e860d597fa5ebb885d1179105f0a602b461a2ab1bbafe0",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 126,
+        "file": "screenshots/f07-zh-1440-source-1.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "58271547974fe1eca2adf5830ecc05299f0b492062a6049de28adf7f5dd482e7",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 127,
+        "file": "screenshots/f07-zh-1440-source-2.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "c8c6dc4416b6428e8bc792e1e1cc61699a1f6ca62c3e07244a029b78d9f8dfb5",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 128,
+        "file": "screenshots/f07-zh-320-entry-0.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "32e6e3d94c86f7f296ec63da5f08d3666bc97904121f7008cdc5f33be39ca0b0",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 129,
+        "file": "screenshots/f07-zh-320-entry-1.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "c868cfbd126ea87e6031bdaf0a40fade9121e6aac5f70274c9410410e4462e76",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 130,
+        "file": "screenshots/f07-zh-320-entry-2.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "c868cfbd126ea87e6031bdaf0a40fade9121e6aac5f70274c9410410e4462e76",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 131,
+        "file": "screenshots/f07-zh-320-entry-3.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "c868cfbd126ea87e6031bdaf0a40fade9121e6aac5f70274c9410410e4462e76",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 132,
+        "file": "screenshots/f07-zh-320-entry-4.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "a3f0fe9f1550317f0aad1e7a41a325d9ba32dae38686ab56fb8f4ffec122201c",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 133,
+        "file": "screenshots/f07-zh-320-source-0.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "c9672bca0e232cb3a342e66483cb4250fea75f2f284cc8a61098555365d974bf",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 134,
+        "file": "screenshots/f07-zh-320-source-1.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "24629612562d1b43547d83bafb0fa70912f6a4a65fdef7c4efc8aab6c86e4723",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 135,
+        "file": "screenshots/f07-zh-320-source-2.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "2addbaa1d958eddc7bbbc27a27eea13fd80abe33e7371d6ae1efd8583bbea806",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 136,
+        "file": "screenshots/f07-zh-390-entry-0.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "7e1f97e27d450624d6d9edfb1db32ed741da8282c20529351aede1ce1391cd09",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 137,
+        "file": "screenshots/f07-zh-390-entry-1.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "2981a3497eefcf5ffa2189be8ab8014408c47049b9ca1f13182e738c62211c33",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 138,
+        "file": "screenshots/f07-zh-390-entry-2.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "4315715f6ded345d7e1e4687982c85768a8770b691d388baf38d2f80975dce9e",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 139,
+        "file": "screenshots/f07-zh-390-entry-3.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "f4915ff2c0530517a48d6728066189417f549b406638982a808ac8e533304968",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 140,
+        "file": "screenshots/f07-zh-390-entry-4.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "c2a8ed66b6f0a28a358515bc24ea7d52d2fad315a27747dcb162e4aa336704ae",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 141,
+        "file": "screenshots/f07-zh-390-source-0.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "1f346c15b0c30414ecb0cdf6da48e8a9543549b66b927aa15b18912201625a13",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 142,
+        "file": "screenshots/f07-zh-390-source-1.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "98816c9f3cc9bb43bf6c95957a7e72c42cbab86ed2b44c2a0cbb7b8bfcfe6be6",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 143,
+        "file": "screenshots/f07-zh-390-source-2.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "1c16e3efa719480517d4881316aa5994364429c6593dee519ec8b77c5a324240",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 144,
+        "file": "screenshots/f07-zh-768-entry-0.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "60dc3123c866ae30d12fd61cdb63056addc29e73cd41dcc0bf47173545d3e1ff",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 145,
+        "file": "screenshots/f07-zh-768-entry-1.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "60dc3123c866ae30d12fd61cdb63056addc29e73cd41dcc0bf47173545d3e1ff",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 146,
+        "file": "screenshots/f07-zh-768-entry-2.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "502960d19123cd715cac6cc0e2d28f2e0d0a1114fcd289c6c21eb3d8199b0556",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 147,
+        "file": "screenshots/f07-zh-768-entry-3.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "691925647d8a1008096daccfdb27ee79fb8ef318999ee54a027074ccb90a8db0",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 148,
+        "file": "screenshots/f07-zh-768-entry-4.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "680da3687edf8f256df88abf56af7c48a6b6f76e94fa264ae759e829d3377ebf",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 149,
+        "file": "screenshots/f07-zh-768-source-0.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "80e6b9b1281998beaddb6dfd5d8882665246aa4d0a64b87563cdfd102b42cb66",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 150,
+        "file": "screenshots/f07-zh-768-source-1.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "a24426739eeb5b55e5000ef0eda0616a79d45cff7db0d9a99bf94f64559f073b",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 151,
+        "file": "screenshots/f07-zh-768-source-2.jpg",
+        "format": "JPEG",
+        "width": 768,
+        "height": 1024,
+        "sha256": "bcb6452121b40e1491678b67deb327c6e5247d77085481e4c63b9594064bef43",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 152,
+        "file": "screenshots/f07-zh-source-0-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "239aef2ddf7191905fa91f952814e2e8137d9b7da5991f25949138d7fc8a2c9a",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 153,
+        "file": "screenshots/f07-zh-source-1-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "c99896e67461ddc603189d7a1f01d66f92980abb3d18bb4ffff7e1316b0487a5",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 154,
+        "file": "screenshots/f07-zh-source-2-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "2f1a47787dac2431ca1447352129e62fb85acdb1153dc14845c6b17765c3f530",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 155,
+        "file": "screenshots/smoke-f01-en-quote-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "780a019bd4d1359e1566d6852aca0dd36807f55d1b37010651d533cef0badfb3",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 156,
+        "file": "screenshots/smoke-f01-en-quote-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "38139b9d7020bceeb5927f16f9ea9a4dca9798d95f9fafa9ac48742d029129e6",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 157,
+        "file": "screenshots/smoke-f01-en-supplier-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "8dc9bf3b9bd082c895f5595dde1f9d4eadcd0b509b7106966e64a0518e69a48d",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 158,
+        "file": "screenshots/smoke-f01-en-supplier-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "a88b053ba01ac7340b4cf405742d9c1148249bc0a23f30b92544a1489db2f27f",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 159,
+        "file": "screenshots/smoke-f01-zh-quote-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "62fa5b2080300498bf4a14315244512cf5c88bc2b0fed9f40decb87e6ac9f7c6",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 160,
+        "file": "screenshots/smoke-f01-zh-quote-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "4fd796eaa894eb0421fb86102d43aee1257ae4c1f36fbd9ec5559b8fa6538f1e",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 161,
+        "file": "screenshots/smoke-f01-zh-supplier-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "d38137600044a7e3f5fc052b81672b564f7ab1e7b75f61a1c5b5467c976f1545",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 162,
+        "file": "screenshots/smoke-f01-zh-supplier-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "5f570df7ada38a943545341b84de81dbc981ee2e1f9cbb3ae2b1bccdf317a25a",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 163,
+        "file": "screenshots/smoke-f02-edited-receipt-en.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "55448719e8e871ca36578f10feb5ca22dd3992ed4de40dec651052950274b375",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 164,
+        "file": "screenshots/smoke-f02-en-receipt-fields-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "f5637ccc4a3850072534dfefc713eeebb39495923dd1ccbee60aea2fc6627647",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 165,
+        "file": "screenshots/smoke-f02-en-receipt-fields-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "62fe88303101b9569c8110ffb382a4c15888f153837ed16cd4f5db3c9bfcd2d5",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 166,
+        "file": "screenshots/smoke-f02-evidence-roundtrip.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "ccb7b9b1ea324464e0baa925f929f470fb1873a25badf8ff27fb5b0be280dbb9",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 167,
+        "file": "screenshots/smoke-f02-final-edited-before-confirm.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "3eb81076395ca90c8a972c49006090dd00081a387fb5196297eca748cb810e10",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 168,
+        "file": "screenshots/smoke-f02-rapid-zh-lower.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "73b87b838bca26702594516702d7d7969bb3ba80827e21cb0da4700f39404078",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 169,
+        "file": "screenshots/smoke-f02-rapid-zh-upper.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "4e2b5206c664a194906c0a62427bdd67ecc4f9d0fa08ae202bdbf66426d14a61",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 170,
+        "file": "screenshots/smoke-f02-restored-en.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "ffcbe291e413a967c333aba8ea6d04e5b1844c83be4fa2a6ac38d621ee961993",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 171,
+        "file": "screenshots/smoke-f02-zh-receipt-fields-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "a7abf9e22ee64c628544422bc6f5b01f3427c0b35f1717e39122ce7244366d74",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET_AND_FULL_SIZE"
+      },
+      {
+        "index": 172,
+        "file": "screenshots/smoke-f04-en-receipt-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "65793482689cbb9793b1d6ff0b63f3ec4ca04f7a7a389459aeefd387a06c55d2",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 173,
+        "file": "screenshots/smoke-f04-en-receipt-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "54b0cdac40cf703316e72d5997f2a12ac3ef1049c5075460445d4559dd523072",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 174,
+        "file": "screenshots/smoke-f04-zh-receipt-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "85fb25bdc25c2050111a82c03915304f6f8488df312e6a2b041e3913890c8b95",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 175,
+        "file": "screenshots/smoke-f04-zh-receipt-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "bdca58f884df9c8c1cef9798eb8be2071e72144ab679863965fe4ffe034b5b8b",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 176,
+        "file": "screenshots/smoke-f05-en-before-mutation.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "822a14f0e8db56e7365fd22a425cf570c1f1f1c278a8787be93ddd0c419b1d5f",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 177,
+        "file": "screenshots/smoke-f05-en-stale-focused.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "e24b8a40101d10bfc2d48f0409d125e017a454f3a8dccc997894ace54c8f9c5b",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 178,
+        "file": "screenshots/smoke-f05-zh-before-mutation.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "d1c0c69e04a6f81791ad36efb4c9e4690fc2e3063979ec7c08821af41f8d755f",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 179,
+        "file": "screenshots/smoke-f05-zh-stale-focused.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "798596ae8620df36b82530b0cc6cfa7f81687863f0dcc80476582bdd444e2fa8",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET_AND_FULL_SIZE"
+      },
+      {
+        "index": 180,
+        "file": "screenshots/smoke-f06-en-observed-source.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "d6c8b0e59fd7483318841fb349bd8434ce83b36951583e463d380ee05950158f",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 181,
+        "file": "screenshots/smoke-f06-en-stale-claim.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "e48bc742e5c3b0f4f80f4b4414d7f7f18ae4b94353a5e66e8a6533d5bec74bcb",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 182,
+        "file": "screenshots/smoke-f06-zh-observed-source.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "93a2a873ca640b79ad466633c9e23b7acc74c68a618cb1cd8357e4786a253b4f",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 183,
+        "file": "screenshots/smoke-f06-zh-stale-claim.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "1efac0905c2a27499e2f6fa6f8228e921fbb4cd8b8a4864063a0f1a9972a1370",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET_AND_FULL_SIZE"
+      },
+      {
+        "index": 184,
+        "file": "screenshots/smoke-persistence-actions-zh.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "88fa16acaac4a359a7aa2b0f16f5ecd043693c93734e818fa6d64eb196da1cad",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 185,
+        "file": "screenshots/cleanup-revoked-session.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "100c35f82cf1160e96c174b31859a042fc42214114e81d3ddf93d9ab3261b42e",
+        "locale": "en",
+        "persona": "Revoked Viewer session",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 186,
+        "file": "screenshots/f03-en-programme-locator-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "58d215c7474ceb86d9bebd21e1de18497ec53b2c9333c232a78b4a105f25d4d5",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET_AND_FULL_SIZE"
+      },
+      {
+        "index": 187,
+        "file": "screenshots/f03-en-programme-locator-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "a3a7e49dd0ec1f2e205b49c46af0c569cb0da990f0c06ed245ea85709dbbcf23",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET_AND_FULL_SIZE"
+      },
+      {
+        "index": 188,
+        "file": "screenshots/f03-zh-programme-locator-320.jpg",
+        "format": "JPEG",
+        "width": 320,
+        "height": 740,
+        "sha256": "1e4f80e0b6d5f8de3187ccc547df2bb46bd717fb271b55a50cf8f214346a8aa3",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 740,
+          "width": 320
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET_AND_FULL_SIZE"
+      },
+      {
+        "index": 189,
+        "file": "screenshots/f03-zh-programme-locator-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "199efa20dd9076431b763333830833a3bd8b4fe29ed8055ef439e9f132604124",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET_AND_FULL_SIZE"
+      },
+      {
+        "index": 190,
+        "file": "screenshots/smoke-f01-en-workspace-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "95f61fff5754343afb8125bd7f1a12a42b93ed5279aed179d3ce0b4c2dfad4f6",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 191,
+        "file": "screenshots/smoke-f01-zh-workspace-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "b04afaed494dbb42f6ae8d5c25bf9b4ec6e92307cb5ef36ab6d7548abecb7164",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 192,
+        "file": "screenshots/smoke-f04-copied-receipt-url.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "076e508c15e965505b301903b998ceb63504638291b1e7cf402f8dfb1c7dc6d3",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 193,
+        "file": "screenshots/smoke-f04-viewer-en-known-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "f42cba2ce39fc703fe30d2888e59f817aa05ed504666d514e6aad20d46436938",
+        "locale": "en",
+        "persona": "Viewer",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 194,
+        "file": "screenshots/smoke-f04-viewer-en-known-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "f90566f26724363786536c5ef9318566ba206e3b1798080a28b94e790eec6230",
+        "locale": "en",
+        "persona": "Viewer",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 195,
+        "file": "screenshots/smoke-f04-viewer-en-missing-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "f42cba2ce39fc703fe30d2888e59f817aa05ed504666d514e6aad20d46436938",
+        "locale": "en",
+        "persona": "Viewer",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 196,
+        "file": "screenshots/smoke-f04-viewer-en-missing-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "f90566f26724363786536c5ef9318566ba206e3b1798080a28b94e790eec6230",
+        "locale": "en",
+        "persona": "Viewer",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 197,
+        "file": "screenshots/smoke-f04-viewer-zh-TW-known-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "73d8de86f8760e8c63475e381991b94edaf7882820967bd5e95208ceba39137a",
+        "locale": "zh-Hant",
+        "persona": "Viewer",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 198,
+        "file": "screenshots/smoke-f04-viewer-zh-TW-known-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "4061594c3fec7bb6948b4345b4d5d085b8c99f4e97cb39dff3a51055ac74ec61",
+        "locale": "zh-Hant",
+        "persona": "Viewer",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET_AND_FULL_SIZE"
+      },
+      {
+        "index": 199,
+        "file": "screenshots/smoke-f04-viewer-zh-TW-missing-1440.jpg",
+        "format": "JPEG",
+        "width": 1440,
+        "height": 900,
+        "sha256": "73d8de86f8760e8c63475e381991b94edaf7882820967bd5e95208ceba39137a",
+        "locale": "zh-Hant",
+        "persona": "Viewer",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 900,
+          "width": 1440
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 200,
+        "file": "screenshots/smoke-f04-viewer-zh-TW-missing-390.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "4061594c3fec7bb6948b4345b4d5d085b8c99f4e97cb39dff3a51055ac74ec61",
+        "locale": "zh-Hant",
+        "persona": "Viewer",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 201,
+        "file": "screenshots/smoke-persistence-workspace-en.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "9d98a89467767982c7d418e55d274953dbdf3fdd31a73753ed122cc3f9d16d53",
+        "locale": "en",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      },
+      {
+        "index": 202,
+        "file": "screenshots/smoke-persistence-workspace-zh.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "sha256": "a16d20a2a54a3792928723f7dccf6b6af486396e4a04f40e67e23c1e826aab83",
+        "locale": "zh-Hant",
+        "persona": "Mei",
+        "declaredViewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        },
+        "pixelDimensionsMatchDeclared": true,
+        "classification": "SETTLED_CONTENT_VISIBLE",
+        "reviewMethod": "CONTACT_SHEET"
+      }
+    ]
+  },
+  "closure": {
+    "restoration": "One scoped authority mutation restored with identical normalized row hash and zero business writes during that mutation. Eight fixed-fixture table digests match the baseline; saved comparison/enrichment hashes are unchanged.",
+    "businessHistory": "One intentionally confirmed atomic action/proposal-consumption/receipt/audit unit retained with 15 exact evidence links; no duplicate unit.",
+    "sessions": "All four nonfixture run sessions revoked, none active; seed-session fixture digest unchanged.",
+    "database": "Four enabled guard functions match source and eight migration checksums match; no temporary grants/triggers/functions/conflicts or exclusive demo-session lock remain.",
+    "sqlVerification": "Eight post-QA verification scripts passed using rolled-back probes. The exact-two-session fixture assertion was explicitly scoped to the two named seed rows, and all extra QA sessions independently required revoked; source SQL unchanged.",
+    "browser": "Frozen 2026-11-17T05:56:59.172Z. Both owned tabs closed; viewport reset to initial measured 2056x1290/DPR2. Native zoom was neither measured nor changed; reduced motion/fullscreen were not changed. Final revoked page denies receipt/action data.",
+    "evidence": [
+      "restoration-ledger.json",
+      "mutation-authority-1794894319794.json",
+      "fixed-fixture-digests-after.json",
+      "immutable-history-after.json",
+      "final-database-integrity.json",
+      "session-revocation.json",
+      "final-catalog-guard-session-proof.json",
+      "logs/post-qa-sql-verification.log",
+      "browser-closure.json",
+      "screenshots/cleanup-revoked-session.jpg"
+    ]
+  },
+  "limits": [
+    "No full QA-01 through QA-18 rerun or recomputed whole-scenario counts.",
+    "Seven inherited manual items remain NOT_VERIFIED_MANUAL_REQUIRED: real assistive-technology announcements; physical mobile keyboard/touch/native picker; exact 200% zoom; reduced-motion behavior; leap-day/Taipei-midnight boundaries; generic form-to-error description association; independent human Taiwan Traditional Chinese/repair review.",
+    "Browser version is not verified. No packet-level network capture or fresh performance distribution was collected.",
+    "The F-03 pass is the requested programme-locator residual and applicable presentation controls; it does not assert exhaustive localization of every unrelated product surface.",
+    "Independent agent evidence review does not substitute for the required independent human review or grant Stage 8, merge or release acceptance."
+  ],
+  "manualVerificationEvidence": [
+    "manual-verification.json"
+  ],
+  "protectedEvidence": "Prior published runs remain historical; no edits or outcome reclassification were performed by this reviewer.",
+  "publication": "Root owns final reports, complete sanitization, manifests and evidence-only publication. This reviewer wrote only this independent report in the new evidence subtree.",
+  "reviewedAt": "2026-11-17T06:03:37.793380+00:00",
+  "browserEvidenceFrozenAt": "2026-11-17T05:56:59.172Z",
+  "evidenceClarifications": [
+    {
+      "subject": "F-07 drilldown count",
+      "disposition": "Resolved before final review",
+      "detail": "Browser ledger corrected to 40 entry checks plus 24 matrix source-drilldown captures and three exploratory captures. No claim of 120 independently captured drilldowns. Images and observation records unchanged.",
+      "evidence": [
+        "targeted-browser-results.json",
+        "f07-entry-equivalence.json",
+        "browser-observations.json"
+      ]
+    },
+    {
+      "subject": "F-03 narrow claim framing",
+      "disposition": "Resolved by four appended read-only captures",
+      "detail": "Source-mode screenshots already exposed localized locators. Lower claim-mode screenshots were added for English/Chinese at320/390 so summary-only framing is not the sole visual evidence.",
+      "evidence": [
+        "screenshots/f03-en-programme-locator-320.jpg",
+        "screenshots/f03-en-programme-locator-390.jpg",
+        "screenshots/f03-zh-programme-locator-320.jpg",
+        "screenshots/f03-zh-programme-locator-390.jpg"
+      ]
+    }
+  ],
+  "artifactAudit": {
+    "explicitEvidenceReferences": 55,
+    "uniqueEvidenceReferences": 39,
+    "missingReferences": [],
+    "changedScreenshotHashes": [],
+    "unreviewedScreenshots": [],
+    "classificationCounts": {
+      "SETTLED_CONTENT_VISIBLE": 199,
+      "SUMMARY_FRAME_WITH_LOWER_LOCATOR_SUPPLEMENT": 4
+    }
+  }
+}

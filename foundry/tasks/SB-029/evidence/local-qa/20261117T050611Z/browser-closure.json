@@ -1,0 +1,30 @@
+{
+  "runId": "20261117T050611Z",
+  "frozenAt": "2026-11-17T05:56:59.172Z",
+  "backend": "Local macOS Chrome extension (browser2)",
+  "browserVersion": "NOT_VERIFIED",
+  "captureApi": "raw tab.screenshot({fullPage:false}); actual JPEG SOF dimensions",
+  "screenshots": 203,
+  "allDimensionsMatch": true,
+  "initialMeasuredViewport": {
+    "width": 2056,
+    "height": 1290,
+    "dpr": 2,
+    "htmlCssZoom": "1"
+  },
+  "temporaryViewportOverride": "RESET",
+  "restoredMeasuredViewport": {
+    "dpr": 2,
+    "height": 1290,
+    "htmlCssZoom": "1",
+    "width": 2056
+  },
+  "nativeOriginZoom": "Not measured or changed in this run",
+  "reducedMotion": "No override applied",
+  "fullscreen": "Not changed",
+  "ownedQaTabsRemaining": [],
+  "unrelatedTabs": "Not modified or closed",
+  "sessions": "Root verified all run-owned sessions revoked; final denied read saved",
+  "finalObservedUi": "A controlled demo session is required; no receipt/action data",
+  "manualLimits": "Baseline QA02/QA15 manual gaps remain; not a full QA01–18 rerun"
+}

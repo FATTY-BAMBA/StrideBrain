@@ -1,0 +1,21 @@
+{
+  "at": "2026-11-17T05:07:48.807418+00:00",
+  "head": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+  "buildId": "VSGc_BSVp5nB86Sw8Zypr",
+  "sourceManifestSha256": "fce51bf5de6d1751e54d8941f7c9f31104b3e3efffd12e030301cbdbfd462663",
+  "sourceFiles": 205,
+  "sourceMatchesRepairValidation": true,
+  "trackedWorktreeClean": true,
+  "migrations": 8,
+  "repeatedSeedAndSqlVerification": "PASS",
+  "productionBuild": "PASS",
+  "backend": "Local macOS Chrome CUA; production Next.js",
+  "ports": {
+    "application": 3000,
+    "privateBootstrapOperator": 3001,
+    "postgres": 54337
+  },
+  "node": "v24.22.3",
+  "isolatedSyntheticDatabase": true,
+  "qaSessionsIssued": 0
+}

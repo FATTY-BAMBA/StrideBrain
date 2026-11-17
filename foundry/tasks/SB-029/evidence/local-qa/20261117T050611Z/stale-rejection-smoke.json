@@ -1,0 +1,164 @@
+[
+  {
+    "locale": "zh-TW",
+    "draft": {
+      "step": "after stale rejection, before manual scroll",
+      "at": "2026-11-17T05:46:13.682Z",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_708e5248-cad3-438e-ab53-0439c5ca1fe2&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=&evidenceReturn=review-evidence-0",
+      "fields": [
+        {
+          "id": "review-title",
+          "value": "CHECK"
+        },
+        {
+          "id": "review-rationale",
+          "value": "VALIDATE_HISTORY"
+        },
+        {
+          "id": "review-assignee",
+          "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+        },
+        {
+          "id": "review-dueDate",
+          "value": ""
+        },
+        {
+          "checked": true,
+          "id": "review-confirmation",
+          "value": "on"
+        }
+      ]
+    },
+    "observation": {
+      "name": "smoke-f05-zh-stale-focused",
+      "at": "2026-11-17T05:46:16.703Z",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_708e5248-cad3-438e-ab53-0439c5ca1fe2&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=&evidenceReturn=review-evidence-0",
+      "persona": "Mei",
+      "notes": "Automatic focus on review-error-summary and alert fully visible without manual scrolling; draft retained; no action created.",
+      "dialog": {
+        "bounds": {
+          "bottom": 844,
+          "height": 844,
+          "right": 390,
+          "width": 390,
+          "x": 0,
+          "y": 0
+        },
+        "horizontalExceptions": [],
+        "text": "檢視內部審查事項\n\n建立事項前，請先檢視資料依據與不確定性。\n\nEnglish\n繁體中文\n關閉\n未能完成審查確認\n\n比較或相關佐證資料已變更，未建立事項。請重新比較並再次檢視。\n\n參考編號: ba29f314-0616-4213-9294-223719b8bd71\n\n重新比較\n標題\n檢核信義旗艦店裝修第3版報價的進口石材與照明假設\n審查信義旗艦店裝修第3版報價的進口石材與照明假設\n確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料\n\n確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料\n\n審查目的\n下次內部報價審查前，依連結的佐證資料檢核這些假設。\n確認佐證資料，並記錄內部審查需要釐清的問題。\n依連結的歷史佐證資料，檢核進口石材與照明假設。\n\n依連結的歷史佐證資料，檢核進口石材與照明假設。\n\n可選擇審查用語。已查證的內容與不確定性說明會一併保留，無法在此變更。\n\n已查證內容・隨事項保留\n進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。\n照明報價與符合條件的歷史報價比較，差異為 +9.4%。\n照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。\n目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。\n比較紀錄：cmprun_91c334b8-9bc2-467b-a964-756c34e90800；成本分析紀錄：econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957。\n⚠ 不確定性與限制・隨事項保留\n此操作只會建立內部審查事項，不會核准或發出報價、授權商業承諾，或對外聯繫。\n歷史比較不能證明這份報價有誤、供應商收費過高，或趕工造成特定溢價；供應商價格也未確認目前仍有效。\n檢視支持此內容的資料依據\n進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。\n照明報價與符合條件的歷史報價比較，差異為 +9.4%。\n照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。\n目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。\n承辦人\n未指派\n林美玲\n陳柏宇\n黃怡君\n到期日\n\n非必填。請輸入 2026-11-17 至 2027-11-17 之間的日期，或保留空白。\n\n清除到期日\n來源比較紀錄\ncmprun_91c334b8-9bc2-467b-a964-756c34e90800\n來源商務分析紀錄\neconrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957\n本次審查有效至\n2026年11月17日 下午2:12\n\n⚠ 確認後將建立持續保存的內部事項及稽核紀錄；無法在此畫面撤銷建立。此操作不會核准報價，也不會傳送訊息。\n\n我已檢視資料依據與限制，並確認建立此內部審查事項。\n建立內部審查事項\n取消審查"
+      },
+      "focus": {
+        "bounds": {
+          "bottom": 363.2421875,
+          "height": 196.046875,
+          "right": 374,
+          "width": 358,
+          "x": 16,
+          "y": 167.1953125
+        },
+        "id": "review-error-summary",
+        "name": "未能完成審查確認\n\n比較或相關佐證資料已變更，未建立事項。請重新比較並再次檢視。\n\n參考編號: ba29f314-0616-4213-9294-223719b8bd71\n\n重新比較",
+        "role": "alert",
+        "tag": "DIV"
+      },
+      "locale": "zh-Hant",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "width": 390
+      },
+      "image": {
+        "file": "screenshots/smoke-f05-zh-stale-focused.jpg",
+        "mime": "image/jpeg",
+        "width": 390,
+        "height": 844
+      },
+      "dimensionMatch": true
+    }
+  },
+  {
+    "locale": "en",
+    "draft": {
+      "step": "after stale rejection, before manual scroll",
+      "at": "2026-11-17T05:47:18.457Z",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_708e5248-cad3-438e-ab53-0439c5ca1fe2&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=&evidenceReturn=review-evidence-0",
+      "fields": [
+        {
+          "id": "review-title",
+          "value": "CHECK"
+        },
+        {
+          "id": "review-rationale",
+          "value": "VALIDATE_HISTORY"
+        },
+        {
+          "id": "review-assignee",
+          "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+        },
+        {
+          "id": "review-dueDate",
+          "value": ""
+        },
+        {
+          "checked": true,
+          "id": "review-confirmation",
+          "value": "on"
+        }
+      ]
+    },
+    "observation": {
+      "name": "smoke-f05-en-stale-focused",
+      "at": "2026-11-17T05:47:18.616Z",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_708e5248-cad3-438e-ab53-0439c5ca1fe2&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=&evidenceReturn=review-evidence-0",
+      "persona": "Mei",
+      "notes": "Automatic focus on review-error-summary; localized stale rejection and retained edited draft. No manual error scrolling.",
+      "dialog": {
+        "bounds": {
+          "bottom": 900,
+          "height": 900,
+          "right": 1440,
+          "width": 680,
+          "x": 760,
+          "y": 0
+        },
+        "horizontalExceptions": [],
+        "text": "Review internal review action\n\nReview the evidence and uncertainty before creating this action.\n\nEnglish\n繁體中文\nClose\nReview could not be confirmed\n\nThe comparison or its evidence has changed. Nothing was created. Refresh the comparison and review it again.\n\nReference: 918f92e3-0142-490a-8e06-9d663dbf30d9\n\nRefresh comparison\nTitle\nValidate imported-stone and lighting assumptions for Xinyi quote v3\nReview imported-stone and lighting assumptions for Xinyi quote v3\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\n\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\n\nReview purpose\nReview these assumptions against the linked evidence before the next internal quotation review.\nCheck the supporting evidence and record questions for internal review.\nValidate the imported-stone and lighting assumptions using the linked historical evidence.\n\nValidate the imported-stone and lighting assumptions using the linked historical evidence.\n\nChoose review wording. Verified findings and uncertainty statements remain attached and cannot be changed here.\n\nVerified findings · retained with the action\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\nLighting quoted price differs by +9.4% from eligible quoted-price history.\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\nComparison: cmprun_91c334b8-9bc2-467b-a964-756c34e90800; economics enrichment: econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957.\n⚠ Uncertainty and limits · retained with the action\nThis creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally.\nHistorical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid.\nInspect supporting evidence\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\nLighting quoted price differs by +9.4% from eligible quoted-price history.\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\nAssignee\nUnassigned\nMei Lin\nAlex Chen\nIris Huang\nDue date\n\nOptional. Enter a date from 2026-11-17 through 2027-11-17, or leave it blank.\n\nClear due date\nSource comparison\ncmprun_91c334b8-9bc2-467b-a964-756c34e90800\nSource economics review\neconrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957\nReview available until\n17 Nov 2026, 14:12\n\n⚠ Confirmation creates a persistent internal action and an audit record. This screen cannot undo creation. It does not approve a quotation or send a message.\n\nI have reviewed the evidence and limits and want to create this internal review action.\nCreate internal review action\nCancel review"
+      },
+      "focus": {
+        "bounds": {
+          "bottom": 343.2421875,
+          "height": 196.046875,
+          "right": 1420,
+          "width": 640,
+          "x": 780,
+          "y": 147.1953125
+        },
+        "id": "review-error-summary",
+        "name": "Review could not be confirmed\n\nThe comparison or its evidence has changed. Nothing was created. Refresh the comparison and review it again.\n\nReference: 918f92e3-0142-490a-8e06-9d66",
+        "role": "alert",
+        "tag": "DIV"
+      },
+      "locale": "en",
+      "scroll": {
+        "x": 0,
+        "y": 3388
+      },
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "width": 1440
+      },
+      "image": {
+        "file": "screenshots/smoke-f05-en-stale-focused.jpg",
+        "mime": "image/jpeg",
+        "width": 1440,
+        "height": 900
+      },
+      "dimensionMatch": true
+    }
+  }
+]

@@ -1,0 +1,80 @@
+{
+  "preConfirm": {
+    "step": "restored source; final exact edited payload before explicit confirmation",
+    "at": "2026-11-17T05:49:54.957Z",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_708e5248-cad3-438e-ab53-0439c5ca1fe2&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=&evidenceReturn=review-evidence-0",
+    "fields": [
+      {
+        "id": "review-title",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "id": "review-dueDate",
+        "value": ""
+      },
+      {
+        "checked": false,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ]
+  },
+  "acknowledged": {
+    "step": "final acknowledged exact payload",
+    "at": "2026-11-17T05:49:55.340Z",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_708e5248-cad3-438e-ab53-0439c5ca1fe2&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=&evidenceReturn=review-evidence-0",
+    "fields": [
+      {
+        "id": "review-title",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "id": "review-dueDate",
+        "value": ""
+      },
+      {
+        "checked": true,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ]
+  },
+  "receiptStates": [
+    {
+      "step": "receipt refresh",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-supplier-context-PRJ-NEIHU-021&action=action_85e27014-917b-4302-b88c-5a5a6bb06eda",
+      "text": "Internal review action created\n\nThis receipt records the action saved to the project.\n\nEnglish\n繁體中文\nClose\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\n\nValidate the imported-stone and lighting assumptions using the linked historical evidence.\n\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\n\nLighting quoted price differs by +9.4% from eligible quoted-price history.\n\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\n\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\n\nComparison: cmprun_91c334b8-9bc2-467b-a964-756c34e90800; economics enrichment: econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957.\n\nThis creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally.\n\nHistorical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid.\n\nAction reference\naction_85e27014-917b-4302-b88c-5a5a6bb06eda\nProject\nXinyi Flagship Renovation\nAssignee\nMei Lin\nDue date\nNo due date\nStatus\nOpen\nCreated\n17 Nov 2026, 13:49\nCreated by\nMei Lin\nAuthorized evidence references\n15\nSource comparison\ncmprun_91c334b8-9bc2-467b-a964-756c34e90800\nSource economics review\neconrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957\nReturn to source comparison\nView project actions"
+    },
+    {
+      "step": "Actions reopen",
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-supplier-context-PRJ-NEIHU-021&action=action_85e27014-917b-4302-b88c-5a5a6bb06eda",
+      "text": "已建立內部審查事項\n\n此回執記錄已儲存至專案的事項。\n\nEnglish\n繁體中文\n關閉\n確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料\n\n依連結的歷史佐證資料，檢核進口石材與照明假設。\n\n進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。\n\n照明報價與符合條件的歷史報價比較，差異為 +9.4%。\n\n照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。\n\n目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。\n\n比較紀錄：cmprun_91c334b8-9bc2-467b-a964-756c34e90800；成本分析紀錄：econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957。\n\n此操作只會建立內部審查事項，不會核准或發出報價、授權商業承諾，或對外聯繫。\n\n歷史比較不能證明這份報價有誤、供應商收費過高，或趕工造成特定溢價；供應商價格也未確認目前仍有效。\n\n事項編號\naction_85e27014-917b-4302-b88c-5a5a6bb06eda\n專案\n信義旗艦店裝修\n承辦人\n林美玲\n到期日\n未設定到期日\n狀態\n待處理\n建立時間\n2026年11月17日 下午1:49\n建立人\n林美玲\n可存取的佐證資料筆數\n15\n來源比較紀錄\ncmprun_91c334b8-9bc2-467b-a964-756c34e90800\n來源商務分析紀錄\neconrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957\n返回來源比較\n查看專案事項"
+    },
+    {
+      "step": "Saved copied receipt URL direct navigation from workspace",
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-supplier-context-PRJ-NEIHU-021&action=action_85e27014-917b-4302-b88c-5a5a6bb06eda",
+      "text": "Internal review action created\n\nThis receipt records the action saved to the project.\n\nEnglish\n繁體中文\nClose\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\n\nValidate the imported-stone and lighting assumptions using the linked historical evidence.\n\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\n\nLighting quoted price differs by +9.4% from eligible quoted-price history.\n\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\n\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\n\nComparison: cmprun_91c334b8-9bc2-467b-a964-756c34e90800; economics enrichment: econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957.\n\nThis creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally.\n\nHistorical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid.\n\nAction reference\naction_85e27014-917b-4302-b88c-5a5a6bb06eda\nProject\nXinyi Flagship Renovation\nAssignee\nMei Lin\nDue date\nNo due date\nStatus\nOpen\nCreated\n17 Nov 2026, 13:49\nCreated by\nMei Lin\nAuthorized evidence references\n15\nSource comparison\ncmprun_91c334b8-9bc2-467b-a964-756c34e90800\nSource economics review\neconrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957\nReturn to source comparison\nView project actions"
+    }
+  ],
+  "shellLocale": {
+    "before": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "after": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_91c334b8-9bc2-467b-a964-756c34e90800&economics=econrun_4c4b4e48-aea8-49c6-bc9f-75e19e7cd957&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "scope": "Actual shell click after modal closed; modal locale links tested while draft open."
+  }
+}
