@@ -1,0 +1,25 @@
+{
+  "applicationHead": "df63c90ca994653299082fc5078ad0b5ef595292",
+  "repairBase": "13e7191f340e998c93b644949602f1c0774fe9ff",
+  "immutableOriginalEvidenceCommit": "0c9b4293a9e91aa6121b8571e7f22537b131760d",
+  "sourceTreePaths": [
+    "src",
+    "tests",
+    "prisma",
+    "package.json",
+    "package-lock.json",
+    "tsconfig.json",
+    "next.config.ts",
+    "next-env.d.ts",
+    "prisma.config.ts",
+    "vitest.config.ts",
+    "eslint.config.mjs",
+    "prettier.config.mjs",
+    ".github/workflows/ci.yml"
+  ],
+  "sourceTreeFingerprintSha256": "82ce9a43b9bf4da5280c09cb839eeb277213acd09b73e46aa0a8f15f2758a460",
+  "schemaAndMigrationsUnchanged": true,
+  "migrations": 8,
+  "browserRetest": "NOT_RUN",
+  "verifiedAt": "2026-11-16T06:12:19.990979+00:00"
+}

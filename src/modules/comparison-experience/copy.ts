@@ -116,6 +116,8 @@ export type ComparisonCopy = Readonly<{
   }>;
   actionComingLater: string;
   normalizedUnit: string;
+  programmeUnit: string;
+  similarityMethod: string;
   selectedProjects: string;
 }>;
 
@@ -165,7 +167,7 @@ const en: ComparisonCopy = {
     differences: "Important differences",
     unknowns: "Unknown factors",
     quotedAvailable: "Quoted history",
-    actualAvailable: "Reconciled actual",
+    actualAvailable: "Reconciled actual cost",
     inspectFactors: "Inspect factors",
   },
   bands: {
@@ -204,13 +206,13 @@ const en: ComparisonCopy = {
     completion: "Completion",
     quotedRate: "Quoted price · normalized",
     forecastRate: "Forecast direct cost · normalized",
-    actualRate: "Reconciled actual cost · normalized",
+    actualRate: "Forecast / reconciled actual cost · normalized",
     importedStoneQuoted: "Imported stone · quoted",
-    importedStoneActual: "Imported stone · actual",
+    importedStoneActual: "Imported stone · forecast / reconciled actual",
     lightingQuoted: "Lighting/electrical · quoted",
-    lightingActual: "Lighting/electrical · actual",
+    lightingActual: "Lighting/electrical · forecast / reconciled actual",
     millworkQuoted: "Custom millwork · quoted",
-    millworkActual: "Custom millwork · actual",
+    millworkActual: "Custom millwork · forecast / reconciled actual",
     supplierContext: "Supplier-offer context",
     programme: "Programme",
   },
@@ -256,6 +258,8 @@ const en: ComparisonCopy = {
   },
   actionComingLater: "Internal review action becomes available in Stage 8.",
   normalizedUnit: "TWD/m²",
+  programmeUnit: "weeks",
+  similarityMethod: "Project similarity",
   selectedProjects: "Selected projects",
 };
 
@@ -339,15 +343,15 @@ const zhTw: ComparisonCopy = {
     area: "面積",
     location: "地點",
     completion: "完工時間",
-    quotedRate: "歷史報價 · 標準化",
+    quotedRate: "報價 · 標準化",
     forecastRate: "預估直接成本 · 標準化",
-    actualRate: "已核對實際成本 · 標準化",
+    actualRate: "預估／已核對實際成本 · 標準化",
     importedStoneQuoted: "進口石材 · 報價",
-    importedStoneActual: "進口石材 · 實際成本",
+    importedStoneActual: "進口石材 · 預估／已核對實際成本",
     lightingQuoted: "燈具／電氣 · 報價",
-    lightingActual: "燈具／電氣 · 實際成本",
+    lightingActual: "燈具／電氣 · 預估／已核對實際成本",
     millworkQuoted: "訂製木作 · 報價",
-    millworkActual: "訂製木作 · 實際成本",
+    millworkActual: "訂製木作 · 預估／已核對實際成本",
     supplierContext: "供應商報價脈絡",
     programme: "工期",
   },
@@ -387,6 +391,8 @@ const zhTw: ComparisonCopy = {
   },
   actionComingLater: "建立內部審查事項將於 Stage 8 啟用。",
   normalizedUnit: "新台幣／m²",
+  programmeUnit: "週",
+  similarityMethod: "專案相似度",
   selectedProjects: "已選專案",
 };
 

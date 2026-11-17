@@ -1,0 +1,45 @@
+
+> stridebrain@0.1.0 test
+> vitest run tests/internal-review/postgres-invariants.test.ts --testNamePattern=prepares and creates the verified canonical action as Project Manager --reporter=verbose
+
+
+ RUN  v4.1.10 /workspace/StrideBrain
+
+stderr | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > prepares and creates the verified canonical action as Project Manager/Estimator
+STAGE8_INDEPENDENT_TRANSACTION_ERROR 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `N/A`. Message: `Failed to deserialize column of type 'void'. If you're using $queryRaw and this column is explicitly marked as `Unsupported` in your Prisma schema, try casting this column to any supported Prisma type such as `String`.`
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > prepares and creates the verified canonical action as Project Manager/Estimator
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"d8fc52ef-ac22-4064-8b15-1128e7a63ac2","outcome":"PROPOSAL_FAILED"}
+
+ × tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > prepares and creates the verified canonical action as Project Manager/Estimator 480ms
+   → expected 'PROPOSAL_FAILED' to be 'PREPARED' // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > prepares and creates the verified canonical action as Project Manager/Estimator
+AssertionError: expected 'PROPOSAL_FAILED' to be 'PREPARED' // Object.is equality
+
+Expected: "PREPARED"
+Received: "PROPOSAL_FAILED"
+
+ ❯ prepared tests/internal-review/postgres-invariants.test.ts:136:23
+    134|   const input = await pair(user);
+    135|   const result = await services.prepare(fresh(user.context), input);
+    136|   expect(result.kind).toBe("PREPARED");
+       |                       ^
+    137|   if (result.kind !== "PREPARED") throw new Error(`TEST_PREPARE_${resu…
+    138|   return { actor: user, proposal: result.proposal, ...input };
+ ❯ tests/internal-review/postgres-invariants.test.ts:335:23
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 73 skipped (74)
+   Start at  05:46:59
+   Duration  24.44s (transform 408ms, setup 0ms, import 541ms, tests 23.79s, environment 0ms)
+

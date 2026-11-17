@@ -1,0 +1,125 @@
+
+> stridebrain@0.1.0 test
+> vitest run tests/internal-review/postgres-invariants.test.ts --reporter=verbose
+
+
+ RUN  v4.1.10 /workspace/StrideBrain
+
+ ✓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > prepares and creates the verified canonical action as Project Manager/Estimator 754ms
+[... bounded log excerpt; complete original path documented in validation-building.json ...]
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer evidence:read downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"98de4f02-9cde-4391-8bcd-40322d83faeb","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer evidence:read downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"16190e77-c61b-4625-857b-c295c91b9339","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer evidence:read downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"8c8fe68c-b6a2-4f9d-a260-338e4a8d381d","outcome":"ACTION_NOT_AUTHORIZED"}
+
+ ✓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer evidence:read downgrade 358ms
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer action:internal-review:create downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"dc1edc3b-1e2e-4f60-80c3-90a87477e859","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer action:internal-review:create downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"3a2bdfd4-38fb-4176-abb5-eff0faaeabc8","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer action:internal-review:create downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"105d6150-e38f-4c83-a97f-7d89d7ee1f2d","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer action:internal-review:create downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"e65d9384-d807-4059-9ffa-9cf4990c24f6","outcome":"ACTION_NOT_AUTHORIZED"}
+
+ ✓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer action:internal-review:create downgrade 263ms
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides a committed action when required evidence becomes tenant-restricted
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"0ef4de69-22e2-414b-a229-b0ac32425967","outcome":"ACTION_NOT_AUTHORIZED"}
+
+ ✓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides a committed action when required evidence becomes tenant-restricted 279ms
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > measures uncached proposal and confirmation p95 with SQL query counts
+STAGE8_INDEPENDENT_PERFORMANCE {"methodology":"30 unique immutable pairs/proposals; one excluded warmup; nearest-rank p95; server duration excluding network; actual Prisma query events","proposal":{"samples":30,"p50":80.35999599999923,"p95":114.50754299999971,"max":115.74693499999557},"confirmation":{"samples":30,"p50":90.4814170000027,"p95":127.42069400000037,"max":131.97746699999698},"proposalQueryCounts":[109,109,109,109,109,109,109,109,109,109,109,109,109,109,109,109,109,109,109,109,109,109,109,109,109,109,109,109,109,109],"confirmationQueryCounts":[129,129,129,129,129,129,129,129,129,129,129,129,129,129,129,129,129,129,129,129,129,129,129,129,129,129,129,129,129,129],"slowestConfirmationQueries":[{"query":"SELECT \"public\".\"Document\".\"id\", \"public\".\"Document\".\"projectId\" FROM \"public\".\"Document\" WHERE ((\"public\".\"Document\".\"organizationId\" = $1 AND \"public\".\"Document\".\"documentType\" = $2) AND \"public\".\"Document\".\"projectId\" IN ($3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26)) ORDER BY \"public\".\"Document\".\"businessKey\" ASC OFFSET $27","duration":2.7615399999995134},{"query":"SELECT \"public\".\"Document\".\"id\", \"public\".\"Document\".\"projectId\" FROM \"public\".\"Document\" WHERE ((\"public\".\"Document\".\"organizationId\" = $1 AND \"public\".\"Document\".\"documentType\" = $2) AND \"public\".\"Document\".\"projectId\" IN ($3)) ORDER BY \"public\".\"Document\".\"businessKey\" ASC OFFSET $4","duration":2.3838919999980135},{"query":"SELECT \"public\".\"Quote\".\"id\", \"public\".\"Quote\".\"businessKey\", \"public\".\"Quote\".\"projectId\" FROM \"public\".\"Quote\" WHERE (\"public\".\"Quote\".\"organizationId\" = $1 AND \"public\".\"Quote\".\"projectId\" IN ($2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25)) ORDER BY \"public\".\"Quote\".\"createdAt\" DESC OFFSET $26","duration":2.2852459999994608},{"query":"INSERT INTO \"public\".\"Action\" (\"id\",\"organizationId\",\"projectId\",\"comparisonRunId\",\"proposedActionId\",\"type\",\"title\",\"rationale\",\"assigneePersonId\",\"dueDate\",\"status\",\"evidenceReferenceIds\",\"createdByUserId\",\"createdAt\",\"updatedAt\",\"businessKey\",\"enrichmentRunId\",\"createdByMembershipId\",\"assigneeMembershipId\",\"snapshotVersion\",\"contentSnapshot\",\"evidenceSnapshot\") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,CAST($11::text AS \"public\".\"ActionStatus\"),$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22) RETURNING \"public\".\"Action\".\"id\", \"public\".\"Action\".\"organizationId\", \"public\".\"Action\".\"projectId\", \"public\".\"Action\".\"comparisonRunId\", \"public\".\"Action\".\"proposedActionId\", \"public\".\"Action\".\"type\", \"public\".\"Action\".\"title\", \"public\".\"Action\".\"rationale\", \"public\".\"Action\".\"assigneePersonId\", \"public\".\"Action\".\"dueDate\", \"public\".\"Action\".\"status\"::text, \"public\".\"Action\".\"evidenceReferenceIds\", \"public\".\"Action\".\"createdByUserId\", \"public\".\"Action\".\"createdAt\", \"public\".\"Action\".\"updatedAt\", \"public\".\"Action\".\"businessKey\", \"public\".\"Action\".\"enrichmentRunId\", \"public\".\"Action\".\"createdByMembershipId\", \"public\".\"Action\".\"assigneeMembershipId\", \"public\".\"Action\".\"snapshotVersion\", \"public\".\"Action\".\"contentSnapshot\", \"public\".\"Action\".\"evidenceSnapshot\"","duration":2.2620830000014394},{"query":"SELECT \"public\".\"Material\".\"id\", \"public\".\"Material\".\"businessKey\" FROM \"public\".\"Material\" WHERE \"public\".\"Material\".\"id\" IN ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13) OFFSET $14","duration":2.0430080000005546}]}
+
+ ✓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > measures uncached proposal and confirmation p95 with SQL query counts 7818ms
+ ✓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > records concurrent confirmation latency without duplicating business state 7500ms
+ × tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > repeatably reseeds after real actions and restores all immutability triggers 42944ms
+   → 
+Invalid `prisma.$queryRawUnsafe()` invocation:
+
+
+Raw query failed. Code: `N/A`. Message: `Failed to deserialize column of type 'char'. If you're using $queryRaw and this column is explicitly marked as `Unsupported` in your Prisma schema, try casting this column to any supported Prisma type such as `String`.`
+ × tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > refuses a fixture reset against non-synthetic identities without disabling audit protections 1870ms
+   → 
+Invalid `prisma.$queryRawUnsafe()` invocation:
+
+
+Raw query failed. Code: `N/A`. Message: `Failed to deserialize column of type 'char'. If you're using $queryRaw and this column is explicitly marked as `Unsupported` in your Prisma schema, try casting this column to any supported Prisma type such as `String`.`
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed project state without an action
+PrismaClientKnownRequestError: 
+Invalid `prisma.$executeRawUnsafe()` invocation:
+
+
+Raw query failed. Code: `23514`. Message: `new row for relation "Project" violates check constraint "Project_completedAt_check"`
+ ❯ vn.handleRequestError node_modules/@prisma/client/src/runtime/RequestHandler.ts:238:12
+ ❯ vn.handleAndLogRequestError node_modules/@prisma/client/src/runtime/RequestHandler.ts:184:11
+ ❯ vn.request node_modules/@prisma/client/src/runtime/RequestHandler.ts:153:11
+ ❯ a node_modules/@prisma/client/src/runtime/getPrismaClient.ts:1012:23
+ ❯ patch tests/internal-review/postgres-invariants.test.ts:184:3
+    182|     .join(", ");
+    183|   const sql = `UPDATE "${table}" SET ${assignments} WHERE "id" = $1`;
+    184|   await database.$executeRawUnsafe(sql, id, JSON.stringify(values));
+       |   ^
+    185|   return async () => {
+    186|     await database.$executeRawUnsafe(sql, id, JSON.stringify(original)…
+ ❯ tests/internal-review/postgres-invariants.test.ts:616:23
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'P2010', meta: { driverAdapterError: { stack: 'DriverAdapterError: new row for relation "Project" violates check constraint "Project_completedAt_check"\n    at PrismaPgAdapter.onError (file:///workspace/StrideBrain/node_modules/@prisma/adapter-pg/dist/index.mjs:666:11)\n    at PrismaPgAdapter.performIO (file:///workspace/StrideBrain/node_modules/@prisma/adapter-pg/dist/index.mjs:661:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async PrismaPgAdapter.executeRaw (file:///workspace/StrideBrain/node_modules/@prisma/adapter-pg/dist/index.mjs:634:13)\n    at async Wr.o (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:11:27090)\n    at async /workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:11:70205\n    at async e.run (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:11:69220)\n    at async e.execute (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:57:815)\n    at async yr.request (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:58:2425)\n    at async Object.singleLoader (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:65:6917)', message: 'new row for relation "Project" violates check constraint "Project_completedAt_check"', name: 'DriverAdapterError', cause: { originalCode: '23514', originalMessage: 'new row for relation "Project" violates check constraint "Project_completedAt_check"', kind: 'postgres', code: '23514', severity: 'ERROR', message: 'new row for relation "Project" violates check constraint "Project_completedAt_check"', detail: 'Failing row contains (prj_xinyi_026, org_horizon, PRJ-XINYI-026, client_horizon_01, Xinyi Flagship Renovation, 信義旗艦店裝修, COMMERCIAL_INTERIOR_FIT_OUT, RETAIL_FLAGSHIP, CLOSED, QUOTE_REVIEW, Taipei City, Xinyi District, 640.000, m2, TWD, 16.00, 2026-10-20, 2027-02-20, null, HUMAN_REVIEWED, DEMO_SYNTHETIC, null, 2026-11-15 21:50:06.029, 2026-11-15 21:50:06.029).', column: undefined, hint: undefined }, constructor: 'Function<DriverAdapterError>', toString: 'Function<toString>' } }, clientVersion: '7.10.1', batchRequestIdx: undefined }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > repeatably reseeds after real actions and restores all immutability triggers
+PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRawUnsafe()` invocation:
+
+
+Raw query failed. Code: `N/A`. Message: `Failed to deserialize column of type 'char'. If you're using $queryRaw and this column is explicitly marked as `Unsupported` in your Prisma schema, try casting this column to any supported Prisma type such as `String`.`
+ ❯ vn.handleRequestError node_modules/@prisma/client/src/runtime/RequestHandler.ts:238:12
+ ❯ vn.handleAndLogRequestError node_modules/@prisma/client/src/runtime/RequestHandler.ts:184:11
+ ❯ vn.request node_modules/@prisma/client/src/runtime/RequestHandler.ts:153:11
+ ❯ a node_modules/@prisma/client/src/runtime/getPrismaClient.ts:1012:23
+ ❯ tests/internal-review/postgres-invariants.test.ts:1472:22
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'P2010', meta: { driverAdapterError: { stack: 'DriverAdapterError: UnsupportedNativeDataType\n    at PrismaPgAdapter.queryRaw (file:///workspace/StrideBrain/node_modules/@prisma/adapter-pg/dist/index.mjs:602:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async Wr.o (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:11:27090)\n    at async /workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:11:70479\n    at async e.run (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:11:69220)\n    at async e.execute (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:57:815)\n    at async yr.request (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:58:2425)\n    at async Object.singleLoader (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:65:6917)\n    at async vn.request (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:65:7523)\n    at async a (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:99:6921)', message: 'UnsupportedNativeDataType', name: 'DriverAdapterError', cause: { kind: 'UnsupportedNativeDataType', type: 'char' }, constructor: 'Function<DriverAdapterError>', toString: 'Function<toString>' } }, clientVersion: '7.10.1', batchRequestIdx: undefined }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > refuses a fixture reset against non-synthetic identities without disabling audit protections
+PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRawUnsafe()` invocation:
+
+
+Raw query failed. Code: `N/A`. Message: `Failed to deserialize column of type 'char'. If you're using $queryRaw and this column is explicitly marked as `Unsupported` in your Prisma schema, try casting this column to any supported Prisma type such as `String`.`
+ ❯ vn.handleRequestError node_modules/@prisma/client/src/runtime/RequestHandler.ts:238:12
+ ❯ vn.handleAndLogRequestError node_modules/@prisma/client/src/runtime/RequestHandler.ts:184:11
+ ❯ vn.request node_modules/@prisma/client/src/runtime/RequestHandler.ts:153:11
+ ❯ a node_modules/@prisma/client/src/runtime/getPrismaClient.ts:1012:23
+ ❯ tests/internal-review/postgres-invariants.test.ts:1498:24
+    1497|           timeout: 90_000,
+    1498|         }),
+    1499|       ).toThrow();
+       |            ^
+    1500|       expect((await row("Organization", ORG)).dataClassification).toBe…
+    1501|       const triggers = await database.$queryRawUnsafe<Array<{ enabled:…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'P2010', meta: { driverAdapterError: { stack: 'DriverAdapterError: UnsupportedNativeDataType\n    at PrismaPgAdapter.queryRaw (file:///workspace/StrideBrain/node_modules/@prisma/adapter-pg/dist/index.mjs:602:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async Wr.o (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:11:27090)\n    at async /workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:11:70479\n    at async e.run (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:11:69220)\n    at async e.execute (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:57:815)\n    at async yr.request (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:58:2425)\n    at async Object.singleLoader (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:65:6917)\n    at async vn.request (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:65:7523)\n    at async a (/workspace/StrideBrain/node_modules/@prisma/client/runtime/client.js:99:6921)', message: 'UnsupportedNativeDataType', name: 'DriverAdapterError', cause: { kind: 'UnsupportedNativeDataType', type: 'char' }, constructor: 'Function<DriverAdapterError>', toString: 'Function<toString>' } }, clientVersion: '7.10.1', batchRequestIdx: undefined }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 76 passed (79)
+   Start at  05:50:00
+   Duration  104.04s (transform 341ms, setup 0ms, import 465ms, tests 103.42s, environment 0ms)
+

@@ -1,0 +1,40 @@
+SB-029 F-08 scoped repair validation — 20261117T085821Z
+Result: PASS deterministic gate and independent source review; ready to publish the repair for exact-head CI and targeted native-browser retesting.
+Branch: fix/sb-029-source-modal-focus
+Direct base: 5c3e2763635dab46e8c91255e0394eece008dcb1
+Build ID: 7AxvZ0avDfCi3vJEjHpJH
+No push, merge, PR readiness change or Stage 8 acceptance.
+
+F-08 correction:
+One shared evidence frame owns the modal boundary for claim, factor, source, conflict and safe unavailable states. Selection/state/locale changes place focus in a deterministic React layout effect, with immediate visibility and no timers or animation dependency. Tab and Shift+Tab wrap within visible enabled controls; outside focus is recovered. Source close/Escape returns through the actual parent selector and restores the exact source trigger, with the parent heading as fallback when it is unavailable. A subsequent Escape closes the parent using the existing comparison/review return path. Navigation retains selectors rather than cached source DTOs and continues through existing server authorization. The body lock uses the same passive lifecycle as the existing review modal to restore original scrolling after handoffs.
+
+Changed product/test files:
+- src/components/accessibility/use-modal-focus.ts
+- src/components/evidence/evidence-panel.tsx
+- src/components/comparisons/comparison-experience-client.tsx
+- src/app/[locale]/projects/[projectKey]/compare/page.tsx
+- tests/evidence-panel/modal-focus.test.ts
+
+Permanent regressions: 35 new DOM tests, including both locales, five viewport inputs (desktop/tablet/mobile/narrow/200%-equivalent constrained DOM), both reduced-motion inputs, initial and stable focus, both Tab directions, outside/BODY recovery, source close/exact return, missing-trigger fallback, safe source denial/error states, factor/source/conflict hierarchy, actual review-controller handoff, four real draft fields, original parent trigger and empty/auto body-overflow restoration. No test advances an animation timer for focus. jsdom does not establish real layout, browser zoom or OS-motion acceptance.
+
+Final verification:
+- Full suite: 535 tests / 62 files, zero skips.
+- Targeted related regressions: 77 tests / 7 files.
+- Localization: 12 tests / 4 files.
+- PostgreSQL adversarial: 93 tests / 1 file.
+- Independent source reviewer: 67 tests / 5 files; final five-file hashes match.
+- Format, lint, strict TypeScript, Prisma validation/generation: PASS. One pre-existing Prisma-config lint warning; no new warnings or errors.
+- Eight migrations on empty PostgreSQL database; repeated seed and all SQL verification: PASS.
+- Production build: PASS. Production dependency audit: 0 vulnerabilities.
+- Post-build generated declarations excluded; format/typecheck: PASS.
+Subsets overlap the full suite and must not be added to its count.
+
+The pinned unmodified base fails the final visible-label source-transition tests in both locales with BODY active instead of the heading. See baseline-regression.json. An earlier selector-dependent attempt is retained as diagnostic only and earns no behavioral proof.
+
+Scope: only F-08 reusable focus/navigation handling, regression tests and required validation evidence. No authorization weakening, tenant-isolation, financial/evidence authority, similarity/sufficiency, immutable-history, action policy, schema/migration, AI, external communication, deployment or unrelated feature change. F-01 through F-07 semantics are preserved and the full suite passes. Source-diff SHA256: 5bdced6748fa394c19266a65f72021ceda93d24c30931b20ff6346eaecdbd0d6.
+
+Validation cleanup: the existing hero integration test leaves one five-minute session. The extra post-suite fixture-only verifier initially detected it; only that expired owned session was revoked and removed from this fresh validation database, preserving both seeded sessions and all business-history hashes. The final SQL verification passes. Four guards/eight migration checksums match. The new validation container is stopped with its data retained; all prior QA databases/containers and the original preview are untouched. No new browser journey was performed; the deterministic tests used isolated synthetic data.
+
+All 500 pre-existing untracked QA artifacts and three local task reports in the original worktree remain byte-for-byte unchanged. The historical manual run20261117T070845Z retains M-03 FAIL/M-04 FAIL on base5c. This repair has not received native browser acceptance; exact-head CI and an independent actual Chrome200%/macOS Reduce Motion retest are still required.
+
+See validation.json, independent-review.json, source-freeze.json, preservation.json and sanitization.json. Earlier failed setup/check attempts are retained and distinguished from final passing results. No private runtime, credentials, generated build/dependency files, database files or historical QA edits belong to this commit.

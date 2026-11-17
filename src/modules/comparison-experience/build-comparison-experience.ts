@@ -1,3 +1,6 @@
+import { getFinancialCopy } from "@/modules/localization/financial-copy";
+import { projectLocationLabel, projectSubtypeLabel } from "@/modules/localization/project-context";
+import type { ObservationType } from "@/modules/projects/domain/project-workspace";
 import type {
   ComparableProjectMatchDTO,
   DifferenceDTO,
@@ -89,12 +92,6 @@ function formatPoints(locale: Locale, value: string): string {
 function formatArea(locale: Locale, value: string, unit: string): string {
   const renderedUnit = unit.toLowerCase() === "m2" ? "m²" : unit;
   return `${formatNumber(locale, value, 0)} ${renderedUnit}`;
-}
-
-function formatLocation(
-  location: Readonly<{ city: string; district?: string | undefined }>,
-): string {
-  return [location.district, location.city].filter(Boolean).join(", ");
 }
 
 function formatDate(locale: Locale, value: string): string {
@@ -271,6 +268,20 @@ function projectCellMap(
   return Object.freeze(cells);
 }
 
+function financialCell(
+  value: ComparisonTableCellView,
+  observationType: ObservationType | undefined,
+  locale: Locale,
+): ComparisonTableCellView {
+  return observationType
+    ? Object.freeze({
+        ...value,
+        observationType,
+        observationLabel: getFinancialCopy(locale).observations[observationType],
+      })
+    : value;
+}
+
 function historyRow(
   key: string,
   label: string,
@@ -288,8 +299,21 @@ function historyRow(
     cells: projectCellMap(
       stage4,
       selectedKeys,
-      varianceCell(current, locale, copy, claimKey),
-      (match) => aggregateStateCell(aggregate, match.project.projectKey, locale, copy, claimKey),
+      financialCell(
+        varianceCell(current, locale, copy, claimKey),
+        current
+          ? current.currentBasis === "FORECAST"
+            ? "FORECAST_DIRECT_COST"
+            : "QUOTED_PRICE"
+          : undefined,
+        locale,
+      ),
+      (match) =>
+        financialCell(
+          aggregateStateCell(aggregate, match.project.projectKey, locale, copy, claimKey),
+          aggregate?.observationType,
+          locale,
+        ),
     ),
   });
 }
@@ -326,7 +350,14 @@ function supplierCell(
   }
   if (offer.state === "EXCLUDED") return cell("UNAVAILABLE", copy.states.unavailable);
   return cell("VALUE", formatMoney(locale, offer.amount), "NEUTRAL", {
-    secondary: offer.state === "CURRENT_CONTEXT" ? "Current context" : "Historical context",
+    secondary:
+      offer.state === "CURRENT_CONTEXT"
+        ? locale === "zh-TW"
+          ? "目前資料"
+          : "Current context"
+        : locale === "zh-TW"
+          ? "歷史資料"
+          : "Historical context",
   });
 }
 
@@ -343,7 +374,7 @@ function programmeCell(
   if (active) {
     return cell(
       "VALUE",
-      `${formatNumber(locale, programme.activeProgrammeWeeks ?? "", 0)} weeks`,
+      `${formatNumber(locale, programme.activeProgrammeWeeks ?? "", 0)} ${copy.programmeUnit}`,
       "CAUTION",
       {
         secondary: copy.synthesis.programmeDifference,
@@ -353,7 +384,7 @@ function programmeCell(
   }
   return cell(
     "VALUE",
-    `${formatNumber(locale, programme.historicalMinimumWeeks ?? "", 0)}–${formatNumber(locale, programme.historicalMaximumWeeks ?? "", 0)} weeks`,
+    `${formatNumber(locale, programme.historicalMinimumWeeks ?? "", 0)}–${formatNumber(locale, programme.historicalMaximumWeeks ?? "", 0)} ${copy.programmeUnit}`,
     "NEUTRAL",
     { secondary: locale === "zh-TW" ? "已選歷史專案範圍" : "Selected historical range" },
   );
@@ -388,7 +419,7 @@ function comparableCard(
     band: match.band,
     bandLabel: copy.bands[match.band],
     evidenceCoverageLabel: `${match.displayEvidenceCoverage}%`,
-    locationLabel: formatLocation(match.project.location),
+    locationLabel: projectLocationLabel(locale, match.project.location),
     areaLabel: formatArea(locale, match.project.areaValue, match.project.areaUnit),
     completionLabel: formatDate(locale, match.project.completedAt),
     strongestFactors: Object.freeze(
@@ -567,8 +598,15 @@ function contextSections(
       cells: projectCellMap(
         stage4,
         selectedKeys,
-        cell("VALUE", stage4.activeContext.subtype),
-        (match) => cell("VALUE", match.project.subtype),
+        cell(
+          "VALUE",
+          projectSubtypeLabel(locale, stage4.activeContext.subtype) ?? copy.states.unavailable,
+        ),
+        (match) =>
+          cell(
+            "VALUE",
+            projectSubtypeLabel(locale, match.project.subtype) ?? copy.states.unavailable,
+          ),
       ),
     }),
     Object.freeze({
@@ -591,8 +629,8 @@ function contextSections(
       cells: projectCellMap(
         stage4,
         selectedKeys,
-        cell("VALUE", formatLocation(stage4.activeContext.location)),
-        (match) => cell("VALUE", formatLocation(match.project.location)),
+        cell("VALUE", projectLocationLabel(locale, stage4.activeContext.location)),
+        (match) => cell("VALUE", projectLocationLabel(locale, match.project.location)),
       ),
     }),
     Object.freeze({
@@ -670,7 +708,13 @@ function contextSections(
   ];
   for (const [categoryId, label, basis] of categoryDefinitions) {
     const category = categoryById(economics, categoryId);
-    const suffix = basis === "QUOTE" ? "QUOTED_VARIANCE" : "FORECAST_ACTUAL_VARIANCE";
+    const suffix =
+      basis === "QUOTE"
+        ? "QUOTED_VARIANCE"
+        : category?.forecastVariance.state === "INSUFFICIENT" &&
+            category.actualHistory.state === "INSUFFICIENT"
+          ? "ACTUAL_INSUFFICIENT"
+          : "FORECAST_ACTUAL_VARIANCE";
     categoryRows.push(
       category
         ? historyRow(
@@ -695,8 +739,17 @@ function contextSections(
       cells: projectCellMap(
         stage4,
         selectedKeys,
-        supplierCell(economics, stage4.activeContext.projectKey, locale, copy),
-        (match) => supplierCell(economics, match.project.projectKey, locale, copy),
+        financialCell(
+          supplierCell(economics, stage4.activeContext.projectKey, locale, copy),
+          "SUPPLIER_OFFER",
+          locale,
+        ),
+        (match) =>
+          financialCell(
+            supplierCell(economics, match.project.projectKey, locale, copy),
+            "SUPPLIER_OFFER",
+            locale,
+          ),
       ),
     }),
     Object.freeze({
@@ -813,7 +866,7 @@ export function buildComparisonExperience(
     }),
     summary: Object.freeze({
       generatedAtLabel: formatDate(locale, economics?.run.generatedAt ?? stage4.run.generatedAt),
-      policyLabel: stage4.run.policyVersion,
+      policyLabel: copy.similarityMethod,
       authorizedMatchCountLabel: formatNumber(locale, stage4.summary.primaryMatchCount, 0),
       selectedCountLabel: `${selectedProjectKeys.length}/3`,
       economicsStateLabel: economicsStateLabel(economics, copy),
@@ -822,9 +875,10 @@ export function buildComparisonExperience(
     activeProject: Object.freeze({
       projectKey: stage4.activeContext.projectKey,
       name: localizedName(locale, stage4.activeContext),
-      subtypeLabel: stage4.activeContext.subtype,
+      subtypeLabel:
+        projectSubtypeLabel(locale, stage4.activeContext.subtype) ?? copy.states.unavailable,
       areaLabel: formatArea(locale, stage4.activeContext.areaValue, stage4.activeContext.areaUnit),
-      locationLabel: formatLocation(stage4.activeContext.location),
+      locationLabel: projectLocationLabel(locale, stage4.activeContext.location),
       ...(stage4.activeContext.activeQuoteVersionKey
         ? { quoteVersionLabel: stage4.activeContext.activeQuoteVersionKey }
         : {}),

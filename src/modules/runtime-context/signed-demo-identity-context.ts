@@ -60,6 +60,7 @@ export class SignedDemoIdentityContext implements IdentityContextPort {
     const projects = assignmentMap(record.assignments);
 
     return Object.freeze({
+      sessionId: record.sessionId,
       requestId: randomUUID(),
       userId: record.personId,
       membershipId: record.membershipId,

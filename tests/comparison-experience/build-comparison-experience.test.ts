@@ -1,3 +1,7 @@
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { ComparisonCell } from "@/components/comparisons/comparison-experience-client";
+import { getComparisonCopy } from "@/modules/comparison-experience/copy";
 import { describe, expect, it } from "vitest";
 
 import type { Stage4ComparisonResult } from "@/modules/comparisons/domain/contracts";
@@ -370,6 +374,75 @@ function row(view: ReturnType<typeof buildComparisonExperience>, key: string) {
 }
 
 describe("Stage 6 comparison experience composer", () => {
+  it.each(["en", "zh-TW"] as const)(
+    "F-07 selects insufficiency evidence for every abstained actual category in %s",
+    (locale) => {
+      const stored = economics();
+      const snapshot = JSON.stringify(stored);
+      const view = buildComparisonExperience({ stage4: stage4(), economics: stored, locale });
+      const lighting = row(view, "LIGHTING_ELECTRICAL-ACTUAL")!;
+      const gap = view.synthesis.gaps.find((item) => item.key === "lighting-gap")!;
+      expect(gap.claimKey).toBe("XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT");
+      for (const value of Object.values(lighting.cells)) {
+        expect(value.state).toBe("INSUFFICIENT");
+        expect(value.claimKey).toBe(gap.claimKey);
+      }
+      expect(lighting.cells["PRJ-NEIHU-021"]?.secondary).toBe("2/3");
+      expect(lighting.cells.__ACTIVE_PROJECT__?.secondary).not.toContain("%");
+      expect(row(view, "IMPORTED_STONE-ACTUAL")?.cells.__ACTIVE_PROJECT__).toMatchObject({
+        state: "VALUE",
+        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      });
+      expect(JSON.stringify(stored)).toBe(snapshot);
+
+      const otherCategory = {
+        ...stored,
+        categories: [category("CUSTOM_MILLWORK", "0", "0", "INSUFFICIENT")],
+      };
+      const other = buildComparisonExperience({
+        stage4: stage4(),
+        economics: otherCategory,
+        locale,
+      });
+      expect(row(other, "CUSTOM_MILLWORK-ACTUAL")?.cells.__ACTIVE_PROJECT__).toMatchObject({
+        state: "INSUFFICIENT",
+        claimKey: "XINYI_CUSTOM_MILLWORK_ACTUAL_INSUFFICIENT",
+      });
+    },
+  );
+
+  it.each(["en", "zh-TW"] as const)(
+    "F-07 keeps unavailable actual data unavailable without a supported evidence affordance in %s",
+    (locale) => {
+      const stored = economics();
+      const missing: Stage5EconomicsResult = {
+        ...stored,
+        categories: [
+          {
+            ...category("LIGHTING_ELECTRICAL", "0", "0"),
+            actualHistory: {
+              state: "UNAVAILABLE",
+              observationType: "RECONCILED_ACTUAL_COST",
+              requiredObservationCount: 3,
+            },
+            forecastVariance: {
+              state: "UNAVAILABLE",
+              currentBasis: "FORECAST",
+              historyBasis: "RECONCILED_ACTUAL_COST",
+            },
+          },
+        ],
+      };
+      const view = buildComparisonExperience({ stage4: stage4(), economics: missing, locale });
+      for (const value of Object.values(row(view, "LIGHTING_ELECTRICAL-ACTUAL")!.cells)) {
+        expect(value.state).toBe("UNAVAILABLE");
+        expect(value.claimKey).toBeUndefined();
+        expect(value.primary).not.toMatch(/NT\$|%/);
+      }
+      expect(view.synthesis.gaps.find((item) => item.key === "lighting-gap")).toBeUndefined();
+    },
+  );
+
   it("preserves canonical ranking and the immutable selected precedents", () => {
     const view = buildComparisonExperience({
       stage4: stage4(),
@@ -430,6 +503,12 @@ describe("Stage 6 comparison experience composer", () => {
 
     expect(view.heading.title).toContain("信義旗艦店裝修");
     expect(view.cards[0]?.bandLabel).toBe("高度相似");
+    expect(view.cards[0]?.locationLabel).toBe("臺北市內湖區");
+    expect(view.activeProject.subtypeLabel).toBe("零售旗艦店");
+    expect(view.activeProject.locationLabel).toBe("臺北市信義區");
+    expect(view.summary.policyLabel).toBe("專案相似度");
+    expect(row(view, "subtype")?.cells.__ACTIVE_PROJECT__?.primary).toBe("零售旗艦店");
+    expect(row(view, "programme")?.cells.__ACTIVE_PROJECT__?.primary).toBe("16 週");
     expect(view.table.sections.map((section) => section.label)).toContain("分類比較");
     expect(JSON.stringify(view)).not.toMatch(/OpenRouter|Prisma|provider/i);
   });
@@ -443,4 +522,63 @@ describe("Stage 6 comparison experience composer", () => {
       }),
     ).toThrow("COMPARISON_EXPERIENCE_RUN_MISMATCH");
   });
+});
+
+describe("QA-18 financial basis at the point of comparison", () => {
+  it.each(["en", "zh-TW"] as const)(
+    "keeps forecast, actual, quote and offer distinct in visible and accessible %s cells",
+    (locale) => {
+      const view = buildComparisonExperience({ stage4: stage4(), economics: economics(), locale });
+      const labels =
+        locale === "en"
+          ? ["Forecast direct cost", "Reconciled actual cost", "Quoted price", "Supplier offer"]
+          : ["預估直接成本", "已核對實際成本", "報價", "供應商報價"];
+      for (const rowKey of [
+        "overall-actual",
+        "IMPORTED_STONE-ACTUAL",
+        "LIGHTING_ELECTRICAL-ACTUAL",
+        "CUSTOM_MILLWORK-ACTUAL",
+      ]) {
+        const cells = row(view, rowKey)!.cells;
+        expect(cells.__ACTIVE_PROJECT__).toMatchObject({
+          observationType: "FORECAST_DIRECT_COST",
+          observationLabel: labels[0],
+        });
+        expect(cells["PRJ-NEIHU-021"]).toMatchObject({
+          observationType: "RECONCILED_ACTUAL_COST",
+          observationLabel: labels[1],
+        });
+        for (const key of ["__ACTIVE_PROJECT__", "PRJ-NEIHU-021"]) {
+          const value = cells[key]!;
+          const html = renderToStaticMarkup(
+            createElement(ComparisonCell, {
+              cell: value,
+              copy: getComparisonCopy(locale),
+              triggerId: "basis-test",
+              onOpenClaim: () => {},
+            }),
+          );
+          expect(html).toContain(value.observationLabel!);
+          expect(html).toContain(
+            `aria-label="${getComparisonCopy(locale).table.evidenceState}: ${value.observationLabel}`,
+          );
+          expect(html).not.toContain(key === "__ACTIVE_PROJECT__" ? labels[1]! : labels[0]!);
+        }
+      }
+      expect(row(view, "overall-actual")?.cells.__ACTIVE_PROJECT__?.secondary).toContain(
+        "NT$12,650,000",
+      );
+      expect(row(view, "IMPORTED_STONE-ACTUAL")?.cells.__ACTIVE_PROJECT__?.secondary).toContain(
+        "NT$2,360,000",
+      );
+      expect(row(view, "overall-quoted")?.cells.__ACTIVE_PROJECT__).toMatchObject({
+        observationType: "QUOTED_PRICE",
+        observationLabel: labels[2],
+      });
+      expect(row(view, "supplier-context")?.cells["PRJ-NEIHU-021"]).toMatchObject({
+        observationType: "SUPPLIER_OFFER",
+        observationLabel: labels[3],
+      });
+    },
+  );
 });

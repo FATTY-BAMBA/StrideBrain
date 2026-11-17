@@ -1,0 +1,9 @@
+{
+  "container": "stridebrain-sb029-f08-20261117t085821z",
+  "loopbackPort": 54338,
+  "database": "stridebrain_sb029_f08_final",
+  "freshDatabase": true,
+  "publicTablesBeforeMigrations": 0,
+  "priorQaDatabaseReused": false,
+  "dependencyTree": "Local cloned dependencies; unchanged lockfile/package versions."
+}

@@ -1,0 +1,53 @@
+const { createRequire } = require('node:module');
+const requireApp = createRequire('/workspace/StrideBrain/package.json');
+const { Client } = requireApp('pg');
+const fs = require('node:fs');
+const client = new Client({ connectionString: 'postgresql://stridebrain:stridebrain@127.0.0.1:54329/stridebrain_stage8_review' });
+const results = [];
+async function reject(name, sql, code) {
+  await client.query('SAVEPOINT review_probe');
+  let error;
+  try { await client.query(sql); } catch (caught) { error = caught; }
+  await client.query('ROLLBACK TO SAVEPOINT review_probe');
+  await client.query('RELEASE SAVEPOINT review_probe');
+  if (!error || error.code !== code) throw new Error(`${name}: expected ${code}; got ${error?.code ?? 'SUCCESS'} ${error?.message ?? ''}`);
+  results.push({ name, result: 'PASS', code: error.code, constraint: error.constraint ?? null, message: error.message });
+}
+(async () => {
+  await client.connect();
+  await client.query('BEGIN');
+  await client.query(`INSERT INTO "IntelligenceRun" (id,"organizationId","projectId","requestId",intent,status,"policyVersion","activeContextSnapshot") VALUES ('review_int','org_horizon','prj_xinyi_026','review_request','SCHEMA_PROBE','COMPLETED','CPI-SIM-1.0','{}');
+  INSERT INTO "ComparisonRun" (id,"organizationId","intelligenceRunId","activeProjectId","policyVersion","calculationVersion",status,"inputFingerprint") VALUES ('review_cmp','org_horizon','review_int','prj_xinyi_026','CPI-SIM-1.0','CPI-CALC-1.0','COMPLETED','review');
+  INSERT INTO "EconomicsEnrichmentRun" (id,"organizationId","comparisonRunId","activeProjectId",status,"accessScope","authorityPolicyVersion","calculationVersion","inputFingerprint","sourceFingerprint","permissionFingerprint","structuralResultFingerprint") VALUES ('review_econ','org_horizon','review_cmp','prj_xinyi_026','COMPLETED','FULL_ACTUAL','EVIDENCE-AUTHORITY-1.0','CPI-ECON-1.0','review','review','review','review');`);
+  const proposal = `INSERT INTO "ProposedAction" (id,"organizationId","projectId","comparisonRunId",title,rationale,"evidenceReferenceIds","policyVersion","createdBy","expiresAt","updatedAt","businessKey","enrichmentRunId","preparedByMembershipId","preparationKey","confirmationKey","snapshotVersion","contentSnapshot") SELECT 'review_prop','org_horizon','prj_xinyi_026','review_cmp','Schema probe title','Schema probe rationale',ARRAY[(SELECT id FROM "EvidenceReference" WHERE "organizationId"='org_horizon' ORDER BY id LIMIT 1)],'INTERNAL-REVIEW-ACTION-1.0','SYSTEM',now()+interval '30 minutes',now(),'PROP-review','review_econ','membership_horizon_mei',repeat('a',64),'00000000-0000-4000-8000-000000000001','internal-review-proposal-snapshot.v1','{"version":"internal-review-proposal-snapshot.v1"}'`;
+  await reject('missing-proposal-snapshot-rejected', proposal.replace(`'{"version":"internal-review-proposal-snapshot.v1"}'`, 'NULL'), '23514');
+  await reject('cross-tenant-proposer-rejected', proposal.replace("'membership_horizon_mei'", "'membership_northern_owner'"), '23503');
+  await reject('wrong-project-run-proposal-rejected', proposal.replace("'prj_xinyi_026'", "'prj_neihu_021'"), '23503');
+  await client.query(proposal);
+  await reject('prepared-proposal-content-update-rejected', `UPDATE "ProposedAction" SET title='changed' WHERE id='review_prop'`, '23514');
+  await reject('prepared-proposal-delete-rejected', `DELETE FROM "ProposedAction" WHERE id='review_prop'`, '23514');
+  const action = `INSERT INTO "Action" (id,"organizationId","projectId","comparisonRunId","proposedActionId",title,rationale,"evidenceReferenceIds","createdByUserId","updatedAt","businessKey","enrichmentRunId","createdByMembershipId","snapshotVersion","contentSnapshot","evidenceSnapshot") SELECT 'review_action','org_horizon','prj_xinyi_026','review_cmp','review_prop','Schema probe title','Schema probe rationale',"evidenceReferenceIds",'person_horizon_mei',now(),'ACT-review','review_econ','membership_horizon_mei','internal-review-action-snapshot.v1','{"version":"internal-review-action-snapshot.v1"}','{"version":"internal-review-evidence-snapshot.v1"}' FROM "ProposedAction" WHERE id='review_prop'`;
+  await reject('wrong-action-creator-lineage-rejected', action.replace("'person_horizon_mei'", "'person_horizon_finance'").replace("'membership_horizon_mei'", "'membership_horizon_finance'"), '23503');
+  await reject('missing-action-evidence-snapshot-rejected', action.replace(`'{"version":"internal-review-evidence-snapshot.v1"}'`, 'NULL'), '23514');
+  await client.query(action);
+  await reject('duplicate-proposal-action-rejected', action.replace("'review_action'", "'review_action_2'").replace("'ACT-review'", "'ACT-review-2'"), '23505');
+  await reject('action-snapshot-update-rejected', `UPDATE "Action" SET "evidenceSnapshot"='{}' WHERE id='review_action'`, '23514');
+  await reject('action-delete-rejected', `DELETE FROM "Action" WHERE id='review_action'`, '23514');
+  const audit = `INSERT INTO "AuditEvent" (id,"organizationId","actorMembershipId","comparisonRunId","proposedActionId","actionId","eventType","requestId",payload,result) VALUES ('review_audit','org_horizon','membership_horizon_mei','review_cmp','review_prop','review_action','INTERNAL_REVIEW_CREATED','review_action_request','{"testOnly":true}','SUCCESS')`;
+  await reject('cross-tenant-audit-actor-rejected', audit.replace("'membership_horizon_mei'", "'membership_northern_owner'"), '23503');
+  await client.query(audit);
+  await reject('audit-update-rejected', `UPDATE "AuditEvent" SET result='changed' WHERE id='review_audit'`, '23514');
+  await reject('audit-delete-rejected', `DELETE FROM "AuditEvent" WHERE id='review_audit'`, '23514');
+  await client.query(`UPDATE "ProposedAction" SET status='CONFIRMED',"consumedAt"=now(),"updatedAt"=now() WHERE id='review_prop'`);
+  await reject('proposal-second-consumption-rejected', `UPDATE "ProposedAction" SET status='CONFIRMED',"consumedAt"=now() WHERE id='review_prop'`, '23514');
+  const receipt = `INSERT INTO "InternalReviewReceipt" (id,"organizationId","projectId","proposedActionId","actionId","comparisonRunId","enrichmentRunId","actorMembershipId","idempotencyKey","payloadFingerprint") VALUES ('review_receipt','org_horizon','prj_xinyi_026','review_prop','review_action','review_cmp','review_econ','membership_horizon_mei','00000000-0000-4000-8000-000000000001',repeat('a',64))`;
+  await reject('wrong-receipt-actor-lineage-rejected', receipt.replace("'membership_horizon_mei'", "'membership_horizon_finance'"), '23503');
+  await client.query(receipt);
+  await reject('duplicate-receipt-rejected', receipt.replace("'review_receipt'", "'review_receipt_2'"), '23505');
+  await reject('receipt-update-rejected', `UPDATE "InternalReviewReceipt" SET "payloadFingerprint"=repeat('b',64) WHERE id='review_receipt'`, '23514');
+  await reject('receipt-delete-rejected', `DELETE FROM "InternalReviewReceipt" WHERE id='review_receipt'`, '23514');
+  await client.query(`INSERT INTO "Organization" (id,"businessKey","nameEn","nameZhTw","dataClassification","updatedAt") VALUES ('org_review_unrelated','REVIEW_UNRELATED','Unrelated synthetic tenant','其他合成租戶','DEMO_SYNTHETIC',now()); INSERT INTO "AuditEvent" (id,"organizationId","eventType","requestId",payload,result) VALUES ('review_unrelated_audit','org_review_unrelated','SCHEMA_PROBE','review_unrelated_request','{}','PROBE');`);
+  await client.query('COMMIT');
+  fs.writeFileSync('/tmp/sb029-review/probes.json', JSON.stringify({scope:'Direct schema probes only; not an application action or audit reconstruction proof',results},null,2));
+  console.log(JSON.stringify({passed:results.length,scope:'schema constraint and immutability probes'}));
+})().catch(async error => { await client.query('ROLLBACK').catch(()=>{}); console.error(error); process.exitCode=1; }).finally(()=>client.end());

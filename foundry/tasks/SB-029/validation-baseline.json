@@ -1,0 +1,149 @@
+{
+  "startUtc": "2026-11-15T21:21:37.621281+00:00",
+  "results": [
+    {
+      "command": "npm ci --no-audit --no-fund",
+      "exitCode": 0,
+      "seconds": 10.016,
+      "log": "foundry/tasks/SB-029/evidence/baseline/01.log"
+    },
+    {
+      "command": "npm run db:validate",
+      "exitCode": 0,
+      "seconds": 14.268,
+      "log": "foundry/tasks/SB-029/evidence/baseline/02.log"
+    },
+    {
+      "command": "npm run db:generate",
+      "exitCode": 0,
+      "seconds": 2.492,
+      "log": "foundry/tasks/SB-029/evidence/baseline/03.log"
+    },
+    {
+      "command": "npm run db:migrate",
+      "exitCode": 0,
+      "seconds": 1.864,
+      "log": "foundry/tasks/SB-029/evidence/baseline/04.log"
+    },
+    {
+      "command": "npm run db:seed",
+      "exitCode": 0,
+      "seconds": 6.981,
+      "log": "foundry/tasks/SB-029/evidence/baseline/05.log"
+    },
+    {
+      "command": "npm run db:verify",
+      "exitCode": 0,
+      "seconds": 11.045,
+      "log": "foundry/tasks/SB-029/evidence/baseline/06.log"
+    },
+    {
+      "command": "npm run db:migrate",
+      "exitCode": 0,
+      "seconds": 1.804,
+      "log": "foundry/tasks/SB-029/evidence/baseline/07.log"
+    },
+    {
+      "command": "npm run db:seed",
+      "exitCode": 0,
+      "seconds": 6.399,
+      "log": "foundry/tasks/SB-029/evidence/baseline/08.log"
+    },
+    {
+      "command": "npm run db:verify",
+      "exitCode": 0,
+      "seconds": 11.312,
+      "log": "foundry/tasks/SB-029/evidence/baseline/09.log"
+    },
+    {
+      "command": "npm run format:check",
+      "exitCode": 0,
+      "seconds": 1.918,
+      "log": "foundry/tasks/SB-029/evidence/baseline/10.log"
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "seconds": 4.563,
+      "log": "foundry/tasks/SB-029/evidence/baseline/11.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "seconds": 5.069,
+      "log": "foundry/tasks/SB-029/evidence/baseline/12.log"
+    },
+    {
+      "command": "npm run test",
+      "exitCode": 0,
+      "seconds": 3.462,
+      "log": "foundry/tasks/SB-029/evidence/baseline/13.log"
+    },
+    {
+      "command": "npm run test:localization",
+      "exitCode": 0,
+      "seconds": 0.57,
+      "log": "foundry/tasks/SB-029/evidence/baseline/14.log"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "seconds": 5.94,
+      "log": "foundry/tasks/SB-029/evidence/baseline/15.log"
+    },
+    {
+      "command": "npm audit --omit=dev --audit-level=high",
+      "exitCode": 0,
+      "seconds": 0.454,
+      "log": "foundry/tasks/SB-029/evidence/baseline/16.log"
+    }
+  ],
+  "endUtc": "2026-11-15T21:23:05.784283+00:00",
+  "workingTree": " M next-env.d.ts\n?? foundry/tasks/SB-029/computer-qa-plan.yaml\n?? foundry/tasks/SB-029/computer-qa-report.json\n?? foundry/tasks/SB-029/independent-review.md\n",
+  "scope": "Stage 0–7 baseline only; no Stage 8 implementation validated",
+  "productBaselineCommit": "0ecd65bdb0ae752f3244960d6848a74a30d5da01",
+  "documentationHeadDuringRun": "e2b9436c8894c7a3935121a45864462700eade7a",
+  "documentationCommitChangedFiles": [
+    "foundry/tasks/SB-029/brief.md",
+    "foundry/tasks/SB-029/issue-29.json",
+    "foundry/tasks/SB-029/release-scorecard.md",
+    "foundry/tasks/SB-029/research.md",
+    "foundry/tasks/SB-029/state.json",
+    "foundry/tasks/SB-029/test-plan.md"
+  ],
+  "environment": {
+    "node": "v24.22.1",
+    "npm": "11.9.0",
+    "postgresMajor": 17,
+    "dockerServer": "29.9.2",
+    "database": "isolated synthetic stridebrain_stage8_eval on loopback port 54329",
+    "npmCache": "/tmp/sb029-npm-cache",
+    "toolCache": "/tmp/sb029-tool-cache"
+  },
+  "initialToolingFailure": {
+    "command": "npm ci --no-audit --no-fund",
+    "exitCode": 254,
+    "reason": "Default npm cache /home/agent/.npm/_cacache unavailable in sandbox. Corrected only cache paths; same locked dependencies, registry and TLS.",
+    "rawLog": "/tmp/sb029-stage0-7-baseline/01.log",
+    "boundedEvidence": "foundry/tasks/SB-029/evidence/baseline/initial-install-failure.txt"
+  },
+  "resultsSummary": {
+    "migrationCount": 7,
+    "seedPasses": 2,
+    "sqlVerificationPasses": 2,
+    "testFiles": 43,
+    "testsPassed": 200,
+    "postgresHeroRan": true,
+    "localizationTestFiles": 3,
+    "localizationTestsPassed": 8,
+    "productionDependencyVulnerabilities": 0,
+    "stage8Validated": false,
+    "browserQaRun": false,
+    "performanceP95Measured": false
+  },
+  "limitations": [
+    "Documentation-only HEAD changed during baseline; this is not exact Stage 8 candidate CI evidence.",
+    "Next build regenerated next-env.d.ts; Orchestrator/Builder notified and handled generated diff.",
+    "No Stage 8 implementation, concurrency, rollback, browser or p95 evidence yet."
+  ]
+}

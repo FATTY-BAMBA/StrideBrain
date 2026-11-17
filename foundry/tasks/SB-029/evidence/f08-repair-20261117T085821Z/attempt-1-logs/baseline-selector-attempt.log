@@ -1,0 +1,28 @@
+
+ RUN  v4.1.10 <BASELINE>
+
+ ❯ tests/evidence-panel/modal-focus.test.ts (27 tests | 2 failed | 25 skipped) 56ms
+     × keeps source focus contained in desktop, with and without reduced motion 48ms
+     × keeps source focus contained in desktop, with and without reduced motion 7ms
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 25 skipped (27)
+   Start at  16:59:25
+   Duration  830ms (transform 138ms, setup 0ms, import 211ms, tests 56ms, environment 470ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/evidence-panel/modal-focus.test.ts > F-08 modal hierarchy (en) > keeps source focus contained in desktop, with and without reduced motion
+ FAIL  tests/evidence-panel/modal-focus.test.ts > F-08 modal hierarchy (zh-TW) > keeps source focus contained in desktop, with and without reduced motion
+TypeError: Cannot read properties of undefined (reading 'dataset')
+ ❯ drilldown tests/evidence-panel/modal-focus.test.ts:225:28
+    223| async function drilldown(index = 1) {
+    224|   const trigger = sourceTrigger(index);
+    225|   const identity = trigger.dataset.panelTrigger;
+       |                            ^
+    226|   trigger.focus();
+    227|   await act(async () => trigger.click());
+ ❯ tests/evidence-panel/modal-focus.test.ts:296:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯

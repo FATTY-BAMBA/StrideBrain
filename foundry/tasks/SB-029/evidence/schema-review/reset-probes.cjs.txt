@@ -1,0 +1,35 @@
+const { createRequire } = require('node:module');
+const { Client } = createRequire('/workspace/StrideBrain/package.json')('pg');
+const fs = require('node:fs');
+const client = new Client({ connectionString: 'postgresql://stridebrain:stridebrain@127.0.0.1:54329/stridebrain_stage8_review' });
+const seed = fs.readFileSync('/workspace/StrideBrain/prisma/fixtures/horizon-atelier.sql', 'utf8');
+const results = [];
+async function facts() {
+  const { rows: [row] } = await client.query(`SELECT (SELECT count(*)::int FROM "Organization" WHERE id='org_review_unrelated') AS unrelated_tenant, (SELECT count(*)::int FROM "AuditEvent" WHERE id='review_unrelated_audit') AS unrelated_audit, (SELECT count(*)::int FROM "Project" WHERE "organizationId"='org_horizon') AS horizon_projects, (SELECT count(*)::int FROM pg_trigger WHERE tgname IN ('AuditEvent_append_only','Action_stage8_immutable','ProposedAction_stage8_immutable','InternalReviewReceipt_immutable') AND tgenabled='O' AND NOT tgisinternal) AS enabled_triggers`);
+  return row;
+}
+(async () => {
+  await client.connect();
+  const before = await facts();
+  if (before.unrelated_tenant !== 1 || before.unrelated_audit !== 1 || before.enabled_triggers !== 4) throw new Error('successful reset lost unrelated history or trigger state');
+  results.push({ name:'successful-reset-preserves-unrelated-tenant-audit', result:'PASS', facts:before });
+  await client.query(`UPDATE "Organization" SET "dataClassification"='TENANT_PRIVATE' WHERE id='org_horizon'`);
+  let error;
+  try { await client.query(seed); } catch (caught) { error=caught; }
+  await client.query('ROLLBACK');
+  if (error?.message !== 'SYNTHETIC_FIXTURE_RESET_REFUSED') throw new Error(`expected guarded refusal; got ${error?.message ?? 'SUCCESS'}`);
+  await client.query(`UPDATE "Organization" SET "dataClassification"='DEMO_SYNTHETIC' WHERE id='org_horizon'`);
+  const afterGuard = await facts();
+  if (JSON.stringify(afterGuard) !== JSON.stringify(before)) throw new Error('guard refusal changed fixture or trigger state');
+  results.push({ name:'non-synthetic-classification-refuses-reset', result:'PASS', message:error.message });
+  error=undefined;
+  const failingSeed = seed.replace(/COMMIT;\s*$/, () => `DO $$ BEGIN RAISE EXCEPTION 'SCHEMA_RESET_FAILURE'; END $$; COMMIT;`);
+  try { await client.query(failingSeed); } catch (caught) { error=caught; }
+  await client.query('ROLLBACK');
+  if (error?.message !== 'SCHEMA_RESET_FAILURE') throw new Error(`expected forced seed failure; got ${error?.message ?? 'SUCCESS'}`);
+  const afterFailure = await facts();
+  if (JSON.stringify(afterFailure) !== JSON.stringify(before)) throw new Error('failed reset changed fixture or trigger state');
+  results.push({ name:'failed-reset-restores-fixture-and-all-triggers', result:'PASS', message:error.message, facts:afterFailure });
+  fs.writeFileSync('/tmp/sb029-review/reset-probes.json',JSON.stringify({results},null,2));
+  console.log(JSON.stringify({passed:results.length,scope:'guarded synthetic reset probes'}));
+})().catch(async error=>{await client.query('ROLLBACK').catch(()=>{}); console.error(error);process.exitCode=1;}).finally(()=>client.end());

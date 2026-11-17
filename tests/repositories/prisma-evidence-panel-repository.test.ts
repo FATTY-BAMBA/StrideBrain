@@ -230,6 +230,47 @@ describe("PrismaEvidencePanelRepository", () => {
     expect(setup.costLine).not.toHaveBeenCalled();
   });
 
+  it("redacts a reference reclassified as restricted before loading source details", async () => {
+    const setup = database();
+    const references = await setup.evidenceReference();
+    setup.evidenceReference.mockResolvedValue(
+      references.map((reference: Record<string, unknown>) => ({
+        ...reference,
+        dataClassification: "TENANT_RESTRICTED",
+      })),
+    );
+    await expect(
+      new PrismaEvidencePanelRepository(setup.db).getAuthorizedSources(FULL_CONTEXT, "cmprun-1", [
+        "evid-cost-stone",
+      ]),
+    ).resolves.toEqual({ kind: "ACCESS_CHANGED" });
+    expect(setup.costLine).not.toHaveBeenCalled();
+  });
+
+  it("does not use project-library publication to expose a private unassigned reference", async () => {
+    const setup = database();
+    const references = await setup.evidenceReference();
+    setup.evidenceReference.mockResolvedValue(
+      references.map((reference: Record<string, unknown>) => ({
+        ...reference,
+        dataClassification: "TENANT_PRIVATE",
+      })),
+    );
+    const unassigned = {
+      ...FULL_CONTEXT,
+      assignedProjectIds: new Set(["prj-xinyi"]),
+      projectAssignments: new Map([
+        ["prj-xinyi", { projectId: "prj-xinyi", canReadActuals: true, canCreateAction: false }],
+      ]),
+    };
+    await expect(
+      new PrismaEvidencePanelRepository(setup.db).getAuthorizedSources(unassigned, "cmprun-1", [
+        "evid-cost-stone",
+      ]),
+    ).resolves.toEqual({ kind: "ACCESS_CHANGED" });
+    expect(setup.costLine).toHaveBeenCalledTimes(1);
+  });
+
   it("returns the stored deterministic factor and never recalculates it", async () => {
     const setup = database();
     const repository = new PrismaEvidencePanelRepository(setup.db);

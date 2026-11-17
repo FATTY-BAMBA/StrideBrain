@@ -1,3 +1,4 @@
+import { getFinancialCopy } from "@/modules/localization/financial-copy";
 import type { SimilarityFactorKey } from "@/modules/comparisons/domain/contracts";
 import type { DataClassification, EconomicsClaimKind } from "@/modules/economics/domain/contracts";
 import type { AuthorityState, ObservationType } from "@/modules/projects/domain/project-workspace";
@@ -39,6 +40,9 @@ export type EvidencePanelCopy = Readonly<{
   inspectSource: string;
   inspectConflict: string;
   relatedClaims: string;
+  sourceCount: string;
+  structuredRecord: string;
+  unknownDetail: string;
   fields: Readonly<{
     operation: string;
     aggregation: string;
@@ -151,6 +155,9 @@ const en: EvidencePanelCopy = {
   inspectSource: "Inspect source",
   inspectConflict: "Inspect conflict",
   relatedClaims: "Used by this result",
+  sourceCount: "Supporting sources: {count}",
+  structuredRecord: "Structured record",
+  unknownDetail: "Additional detail unavailable",
   fields: {
     operation: "Operation",
     aggregation: "Aggregation",
@@ -165,20 +172,8 @@ const en: EvidencePanelCopy = {
     normalized: "Normalized value",
     state: "Factor state",
   },
-  authorityLabels: {
-    OBSERVED: "Observed",
-    HUMAN_REVIEWED: "Human reviewed",
-    APPROVED_COMMERCIAL: "Approved commercial",
-    RECONCILED_ACTUAL: "Reconciled actual",
-    SUPERSEDED: "Superseded",
-    CONFLICTED: "Conflicted",
-  },
-  observationLabels: {
-    QUOTED_PRICE: "Quoted price",
-    SUPPLIER_OFFER: "Supplier offer",
-    FORECAST_DIRECT_COST: "Forecast direct cost",
-    RECONCILED_ACTUAL_COST: "Reconciled actual cost",
-  },
+  authorityLabels: getFinancialCopy("en").authorities,
+  observationLabels: getFinancialCopy("en").observations,
   conditionLabels: {
     CURRENT: "Current",
     HISTORICAL: "Historical",
@@ -226,6 +221,32 @@ const en: EvidencePanelCopy = {
     DISMISSED: "Dismissed",
   },
   fieldLabels: {
+    equivalentAmountForActiveProject: "Equivalent amount for current project",
+    quantifiedPremiumState: "Quantified premium",
+    quoteAmountBeforeTax: "Quoted amount before tax",
+    areaValue: "Area",
+    quoteItem: "Quote line",
+    normalizedUnit: "Normalized unit",
+    observationType: "Observation type",
+    authorityState: "Authority",
+    line: "Line number",
+    descriptionEn: "Description",
+    descriptionZhTw: "Description",
+    unitPrice: "Unit price",
+    currentNormalizedAmount: "Current normalized amount",
+    state: "State",
+    code: "Calculation explanation",
+    kind: "Record type",
+    version: "Version",
+    activeArea: "Current project area",
+    candidateArea: "Historical project area",
+    validUntil: "Valid until",
+    effectiveAt: "Effective date",
+    mimeType: "File type",
+    subtype: "Project type",
+    area: "Area",
+    areaUnit: "Area unit",
+    programmeWeeks: "Programme in weeks",
     page: "Page",
     section: "Section",
     sheet: "Sheet",
@@ -306,6 +327,9 @@ const zhTw: EvidencePanelCopy = {
   inspectSource: "查看來源",
   inspectConflict: "查看不一致紀錄",
   relatedClaims: "目前結果中的用途",
+  sourceCount: "{count} 筆資料來源",
+  structuredRecord: "結構化紀錄",
+  unknownDetail: "尚無補充說明",
   fields: {
     operation: "計算方式",
     aggregation: "彙總方式",
@@ -320,20 +344,8 @@ const zhTw: EvidencePanelCopy = {
     normalized: "標準化數值",
     state: "因素狀態",
   },
-  authorityLabels: {
-    OBSERVED: "已擷取",
-    HUMAN_REVIEWED: "已人工檢視",
-    APPROVED_COMMERCIAL: "已核准商務紀錄",
-    RECONCILED_ACTUAL: "已核對實際紀錄",
-    SUPERSEDED: "已由新版取代",
-    CONFLICTED: "資料不一致",
-  },
-  observationLabels: {
-    QUOTED_PRICE: "歷史報價",
-    SUPPLIER_OFFER: "供應商報價",
-    FORECAST_DIRECT_COST: "預估直接成本",
-    RECONCILED_ACTUAL_COST: "已核對實際成本",
-  },
+  authorityLabels: getFinancialCopy("zh-TW").authorities,
+  observationLabels: getFinancialCopy("zh-TW").observations,
   conditionLabels: {
     CURRENT: "目前有效",
     HISTORICAL: "歷史紀錄",
@@ -381,6 +393,32 @@ const zhTw: EvidencePanelCopy = {
     DISMISSED: "已排除影響",
   },
   fieldLabels: {
+    equivalentAmountForActiveProject: "目前專案的歷史基準等值金額",
+    quantifiedPremiumState: "加價量化狀態",
+    quoteAmountBeforeTax: "未稅報價",
+    areaValue: "面積",
+    quoteItem: "報價項目",
+    normalizedUnit: "標準化單位",
+    observationType: "資料類型",
+    authorityState: "資料權威性",
+    line: "項目編號",
+    descriptionEn: "內容說明",
+    descriptionZhTw: "內容說明",
+    unitPrice: "單價",
+    currentNormalizedAmount: "目前標準化金額",
+    state: "狀態",
+    code: "計算說明",
+    kind: "紀錄類型",
+    version: "版本",
+    activeArea: "目前專案面積",
+    candidateArea: "歷史專案面積",
+    validUntil: "有效期限",
+    effectiveAt: "生效日期",
+    mimeType: "檔案類型",
+    subtype: "專案類型",
+    area: "面積",
+    areaUnit: "面積單位",
+    programmeWeeks: "工期（週）",
     page: "頁碼",
     section: "章節",
     sheet: "工作表",

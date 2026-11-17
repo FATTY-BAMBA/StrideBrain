@@ -2,12 +2,15 @@ import { notFound } from "next/navigation";
 
 import { ProjectLocalNav } from "@/components/projects/project-local-nav";
 import { ProjectWorkspaceOverview } from "@/components/projects/project-workspace-overview";
+import { ProjectActions } from "@/components/internal-review/project-actions";
 import { FoundationPage } from "@/components/ui/foundation-page";
 import { createProjectWorkspaceService } from "@/lib/server/project-workspace-services";
+import { createInternalReviewServices } from "@/lib/server/internal-review-services";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
 import { getCatalog } from "@/modules/localization/catalog";
 import { isSupportedLocale } from "@/modules/localization/config";
 import { projectNavigation, type ProjectSurfaceKey } from "@/modules/navigation/project-navigation";
+import { parseInternalReviewRoute } from "@/modules/internal-review-experience/route-state";
 
 type ProjectWorkspacePageProps = {
   params: Promise<{
@@ -15,6 +18,7 @@ type ProjectWorkspacePageProps = {
     projectKey: string;
     surface?: string[];
   }>;
+  searchParams: Promise<Readonly<Record<string, string | readonly string[] | undefined>>>;
 };
 
 function resolveSurface(segments: string[] | undefined): ProjectSurfaceKey | null {
@@ -24,7 +28,10 @@ function resolveSurface(segments: string[] | undefined): ProjectSurfaceKey | nul
   return item?.key ?? null;
 }
 
-export default async function ProjectWorkspacePage({ params }: ProjectWorkspacePageProps) {
+export default async function ProjectWorkspacePage({
+  params,
+  searchParams,
+}: ProjectWorkspacePageProps) {
   const { locale: rawLocale, projectKey, surface: surfaceSegments } = await params;
   if (!isSupportedLocale(rawLocale)) notFound();
 
@@ -34,10 +41,45 @@ export default async function ProjectWorkspacePage({ params }: ProjectWorkspaceP
   const catalog = getCatalog(rawLocale);
   const surfaceLabel = catalog[`nav.${surface}`];
 
+  if (surface === "actions") {
+    const context = await resolveServerRuntimeContext();
+    const route = parseInternalReviewRoute(await searchParams);
+    const services = context ? createInternalReviewServices() : null;
+    const [listOutcome, receiptOutcome] =
+      context && services
+        ? await Promise.all([
+            services.listProjectActions(context, projectKey, rawLocale),
+            route.actionKey
+              ? services.getReceipt(context, route.actionKey, rawLocale)
+              : Promise.resolve(undefined),
+          ])
+        : [{ kind: "ACTION_NOT_AUTHORIZED" as const, requestId: "" }, undefined];
+    const safeReceipt =
+      receiptOutcome?.kind === "AVAILABLE" &&
+      receiptOutcome.receipt.project.projectKey !== projectKey
+        ? { kind: "ACTION_NOT_AUTHORIZED" as const, requestId: context?.requestId ?? "" }
+        : receiptOutcome;
+    return (
+      <div className="foundation-page">
+        <ProjectLocalNav locale={rawLocale} projectKey={projectKey} labels={catalog} />
+        <ProjectActions
+          locale={rawLocale}
+          projectKey={projectKey}
+          listOutcome={listOutcome}
+          receiptOutcome={safeReceipt}
+          route={route}
+        />
+      </div>
+    );
+  }
+
   if (surface === "overview") {
     const context = await resolveServerRuntimeContext();
     if (context) {
-      const outcome = await createProjectWorkspaceService().execute(context, projectKey);
+      const outcome = await createProjectWorkspaceService().execute(
+        { ...context, locale: rawLocale },
+        projectKey,
+      );
       if (outcome.kind === "AVAILABLE") {
         return (
           <div className="foundation-page">

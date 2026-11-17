@@ -1,0 +1,83 @@
+{
+  "migrations": [
+    {
+      "name": "0001_stridegraph_foundation",
+      "checksum": "debc38a901ef22ad3a261081b2471f266f152e5f85a215a181652619fd536488",
+      "finished": true,
+      "rolledBack": false,
+      "sourceChecksumMatches": true
+    },
+    {
+      "name": "0002_financial_authority_invariants",
+      "checksum": "3c11150c7f31cf226ef3df7713e19cf2fc26c275d7f184d8fc6b447d46111cc3",
+      "finished": true,
+      "rolledBack": false,
+      "sourceChecksumMatches": true
+    },
+    {
+      "name": "0003_runtime_authorization",
+      "checksum": "5e54afbabc6c9d315013f14e57d70d0c5c362f8d1c2f12a4b90d47dc148d9509",
+      "finished": true,
+      "rolledBack": false,
+      "sourceChecksumMatches": true
+    },
+    {
+      "name": "0004_authorization_tenant_links",
+      "checksum": "6e79b57839dfa8fb8e62988ee4c14371622387d9d10b7509f1e33b93294d417a",
+      "finished": true,
+      "rolledBack": false,
+      "sourceChecksumMatches": true
+    },
+    {
+      "name": "0005_remove_legacy_membership_capabilities",
+      "checksum": "dc65374f2d0f39a4fe4d596e25fc29eca1d1c4c103a6f519649d46eb5d6f2fc3",
+      "finished": true,
+      "rolledBack": false,
+      "sourceChecksumMatches": true
+    },
+    {
+      "name": "0006_stage5_economics_enrichment",
+      "checksum": "62446ebd7f2bbf217fbe98d1ebdc2c078eb6e9736167ae0fec8743c59ff6dccc",
+      "finished": true,
+      "rolledBack": false,
+      "sourceChecksumMatches": true
+    },
+    {
+      "name": "0007_stage6_comparison_persistence_scales",
+      "checksum": "20b76d4c2f2051a6bac620a5d0ca859a44b7ac6d5db6fbf05fd3fc53398751a2",
+      "finished": true,
+      "rolledBack": false,
+      "sourceChecksumMatches": true
+    },
+    {
+      "name": "0008_stage8_internal_review",
+      "checksum": "bca2e402f42aafc822c921df064d51965a8ea29da80aacabc11ef2c6d16d20d9",
+      "finished": true,
+      "rolledBack": false,
+      "sourceChecksumMatches": true
+    }
+  ],
+  "guards": [
+    {
+      "name": "Action_stage8_immutable",
+      "enabled": "O"
+    },
+    {
+      "name": "AuditEvent_append_only",
+      "enabled": "O"
+    },
+    {
+      "name": "InternalReviewReceipt_immutable",
+      "enabled": "O"
+    },
+    {
+      "name": "ProposedAction_stage8_immutable",
+      "enabled": "O"
+    }
+  ],
+  "activeSessions": 0,
+  "at": "2026-11-17T09:26:36.348546+00:00",
+  "readOnly": true,
+  "allEightMigrationsMatch": true,
+  "allFourGuardsEnabled": true
+}

@@ -1,4 +1,5 @@
 import { getPrismaClient } from "@/lib/server/prisma";
+import { GetComparisonFreshness } from "@/modules/comparisons/application/get-comparison-freshness";
 import { GetComparisonRun } from "@/modules/comparisons/application/get-comparison-run";
 import { RunComparableProjectAnalysis } from "@/modules/comparisons/application/run-comparable-project-analysis";
 import { GetHistoricalEconomicsEnrichment } from "@/modules/economics/application/get-historical-economics-enrichment";
@@ -42,6 +43,7 @@ export type ComparisonServices = Readonly<{
   runEconomics: RunHistoricalEconomicsEnrichment;
   getEconomics: GetHistoricalEconomicsEnrichment;
   getEvidencePanel: GetEvidencePanel;
+  getFreshness: GetComparisonFreshness;
 }>;
 
 /**
@@ -58,11 +60,21 @@ export function createComparisonServices(): ComparisonServices {
   const economicsRuns = new PrismaEconomicsEnrichmentRunRepository(database);
   const evidencePanel = new PrismaEvidencePanelRepository(database);
 
+  const freshness = new GetComparisonFreshness(
+    projects,
+    candidates,
+    comparisonRuns,
+    observations,
+    economicsRuns,
+    evidencePanel,
+  );
+
   return Object.freeze({
     runComparison: new RunComparableProjectAnalysis(projects, candidates, comparisonRuns),
     getComparison: new GetComparisonRun(comparisonRuns),
     runEconomics: new RunHistoricalEconomicsEnrichment(comparisonRuns, observations, economicsRuns),
     getEconomics: new GetHistoricalEconomicsEnrichment(economicsRuns),
-    getEvidencePanel: new GetEvidencePanel(comparisonRuns, economicsRuns, evidencePanel),
+    getFreshness: freshness,
+    getEvidencePanel: new GetEvidencePanel(comparisonRuns, economicsRuns, evidencePanel, freshness),
   });
 }

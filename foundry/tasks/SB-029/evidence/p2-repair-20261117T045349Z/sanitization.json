@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "scope": "All repair evidence text/logs, private literal and credential/private-path patterns",
+  "hits": [],
+  "runtimeFilesExcluded": true,
+  "databaseFilesExcluded": true,
+  "credentialsExcluded": true,
+  "logWhitespaceNormalization": "Trailing spaces and extra terminal blank lines removed; recorded command output otherwise unchanged."
+}

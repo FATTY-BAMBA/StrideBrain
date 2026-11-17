@@ -1,3 +1,4 @@
+import type { ComparisonFreshness } from "@/modules/comparisons/domain/freshness";
 import type { SimilarityFactorKey } from "@/modules/comparisons/domain/contracts";
 import type { AuthorityState, ObservationType } from "@/modules/projects/domain/project-workspace";
 import type { Locale } from "@/modules/localization/config";
@@ -76,12 +77,20 @@ export type EvidencePanelSourceView = Readonly<{
 export type EvidenceFinancialTraceView = Readonly<{
   kind: "FINANCIAL";
   operation: string;
+  operationLabel: string;
+  aggregationLabel: string;
+  roundingLabel: string;
+  policyDescription: string;
   calculationVersion: string;
   aggregation: string;
   rounding: string;
   generatedAtLabel: string;
   inputs: readonly Readonly<{
     projectKey: string;
+    projectLabel: string;
+    sourceCountLabel: string;
+    observationType?: ObservationType | undefined;
+    observationLabel?: string | undefined;
     normalizedValueLabel: string;
     sourceCount: number;
   }>[];
@@ -91,6 +100,7 @@ export type EvidenceFinancialTraceView = Readonly<{
 export type EvidenceFactorTraceView = Readonly<{
   kind: "FACTOR";
   policyVersion: string;
+  policyDescription: string;
   factorKey: SimilarityFactorKey;
   factorLabel: string;
   state: "KNOWN" | "UNKNOWN" | "NOT_APPLICABLE";
@@ -123,6 +133,7 @@ export type EvidencePanelView = Readonly<{
     enrichmentRunId?: string | undefined;
     snapshotLabel: string;
     stale: boolean;
+    freshness: ComparisonFreshness;
   }>;
   heading: Readonly<{
     eyebrow: string;

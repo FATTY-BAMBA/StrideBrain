@@ -1,5 +1,41 @@
 BEGIN;
 
+-- Operator-only reset of the two named fictional tenants. Stop the isolated
+-- preview before reseeding. Organization is locked first, matching Stage 8's
+-- confirmation lock order, so reset never waits on source locks while holding
+-- an Action/AuditEvent lock required by an in-flight confirmation.
+LOCK TABLE "Organization" IN ACCESS EXCLUSIVE MODE;
+LOCK TABLE "ProposedAction", "Action", "AuditEvent", "InternalReviewReceipt"
+  IN ACCESS EXCLUSIVE MODE;
+
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM "Organization"
+    WHERE ("id" IN ('org_horizon', 'org_northern')
+      OR "businessKey" IN ('HORIZON_ATELIER', 'NORTHERN_STUDIO'))
+      AND NOT (
+        "dataClassification" = 'DEMO_SYNTHETIC'
+        AND (("id" = 'org_horizon' AND "businessKey" = 'HORIZON_ATELIER')
+          OR ("id" = 'org_northern' AND "businessKey" = 'NORTHERN_STUDIO'))
+      )
+  ) THEN
+    RAISE EXCEPTION 'SYNTHETIC_FIXTURE_RESET_REFUSED';
+  END IF;
+END $$;
+
+-- Requires database-owner privileges. No application bypass flag or API exists.
+-- All trigger changes and deletes roll back together if any seed statement fails.
+ALTER TABLE "AuditEvent" DISABLE TRIGGER "AuditEvent_append_only";
+ALTER TABLE "Action" DISABLE TRIGGER "Action_stage8_immutable";
+ALTER TABLE "ProposedAction" DISABLE TRIGGER "ProposedAction_stage8_immutable";
+ALTER TABLE "InternalReviewReceipt" DISABLE TRIGGER "InternalReviewReceipt_immutable";
+
+DELETE FROM "InternalReviewReceipt" WHERE "organizationId" IN ('org_horizon', 'org_northern');
+DELETE FROM "AuditEvent" WHERE "organizationId" IN ('org_horizon', 'org_northern');
+DELETE FROM "Action" WHERE "organizationId" IN ('org_horizon', 'org_northern');
+DELETE FROM "ProposedAction" WHERE "organizationId" IN ('org_horizon', 'org_northern');
+
 DELETE FROM "Organization"
 WHERE "id" IN ('org_horizon', 'org_northern')
    OR "businessKey" IN ('HORIZON_ATELIER', 'NORTHERN_STUDIO');
@@ -667,5 +703,20 @@ INSERT INTO "EvidenceConflict" (
   "id", "organizationId", "conflictKey", "primaryEvidenceId", "conflictingEvidenceId", "status", "createdAt", "updatedAt"
 ) VALUES
   ('conflict_hist_018_stone', 'org_horizon', 'final-cost:PRJ-HIST-018:IMPORTED_STONE', 'evid_cost_cl_prj_hist_018_v1_4', 'evid_cost_cl_hist_018_conflict_stone', 'OPEN', NOW(), NOW());
+
+ALTER TABLE "AuditEvent" ENABLE TRIGGER "AuditEvent_append_only";
+ALTER TABLE "Action" ENABLE TRIGGER "Action_stage8_immutable";
+ALTER TABLE "ProposedAction" ENABLE TRIGGER "ProposedAction_stage8_immutable";
+ALTER TABLE "InternalReviewReceipt" ENABLE TRIGGER "InternalReviewReceipt_immutable";
+
+DO $$
+BEGIN
+  IF (SELECT count(*) FROM pg_trigger
+      WHERE tgname IN ('AuditEvent_append_only', 'Action_stage8_immutable',
+        'ProposedAction_stage8_immutable', 'InternalReviewReceipt_immutable')
+        AND NOT tgisinternal AND tgenabled = 'O') <> 4 THEN
+    RAISE EXCEPTION 'SYNTHETIC_FIXTURE_IMMUTABILITY_NOT_RESTORED';
+  END IF;
+END $$;
 
 COMMIT;

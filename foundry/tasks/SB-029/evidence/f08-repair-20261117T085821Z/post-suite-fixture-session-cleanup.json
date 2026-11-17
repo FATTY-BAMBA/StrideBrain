@@ -1,0 +1,77 @@
+{
+  "at": "2026-11-17T09:24:57.594Z",
+  "scope": "Only the fresh F08 validation database; no prior QA database touched.",
+  "reason": "Existing Stage6 hero-flow test issues a five-minute session without removing it; the fixture-only SQL check expects exactly the two seed sessions.",
+  "testSource": "tests/comparison-experience/postgres-hero-flow.test.ts",
+  "sessionIdSha256": "f13d26efb404ed9ffd294c9ec04e026fee65ac80487fbfd66db6d5063164b0b4",
+  "reviewedTestIssuedAfterRunStart": true,
+  "exactMei300SecondExpiredSession": true,
+  "revokedBeforeRemoval": true,
+  "removedEphemeralSessions": 1,
+  "seedAndBusinessHistoryUnchanged": true,
+  "before": {
+    "ComparisonRun": {
+      "count": 1,
+      "sha256": "60c2201ce3251aa32f1ac1afbdb00b923aa9d53e5071def9187efed3912522ae"
+    },
+    "EconomicsEnrichmentRun": {
+      "count": 1,
+      "sha256": "aba88b245d938fcbf8edb6bc3ebcbdc49443b5f867e9246eb9213b689bf082fa"
+    },
+    "ProposedAction": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Action": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "AuditEvent": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "InternalReviewReceipt": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "seedSessions": {
+      "count": 2,
+      "sha256": "3d8e5079e50a99402f0cf355bf2e2c2658cfe75744a800737f0a8409d8d3dce3"
+    }
+  },
+  "after": {
+    "ComparisonRun": {
+      "count": 1,
+      "sha256": "60c2201ce3251aa32f1ac1afbdb00b923aa9d53e5071def9187efed3912522ae"
+    },
+    "EconomicsEnrichmentRun": {
+      "count": 1,
+      "sha256": "aba88b245d938fcbf8edb6bc3ebcbdc49443b5f867e9246eb9213b689bf082fa"
+    },
+    "ProposedAction": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Action": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "AuditEvent": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "InternalReviewReceipt": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "seedSessions": {
+      "count": 2,
+      "sha256": "3d8e5079e50a99402f0cf355bf2e2c2658cfe75744a800737f0a8409d8d3dce3"
+    }
+  },
+  "finalSessionCounts": {
+    "rows": 2,
+    "active": 0
+  },
+  "productOrFixtureScriptChanges": false
+}

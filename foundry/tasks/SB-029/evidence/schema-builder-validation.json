@@ -1,0 +1,63 @@
+{
+  "task": "SB-029",
+  "role": "Schema Builder",
+  "scope": "Targeted schema validation only; not independent acceptance or application/browser QA",
+  "recordedAt": "2026-11-15T21:40:57.981953+00:00",
+  "baseHeadAtValidation": "e2b9436c8894c7a3935121a45864462700eade7a",
+  "workingTreeFiles": {
+    "prisma/schema.prisma": "6f3e634ec5c4de66626c8e0dcb196d633a371f28cfa9f0513d7760de393f846e",
+    "prisma/migrations/0008_stage8_internal_review/migration.sql": "bca2e402f42aafc822c921df064d51965a8ea29da80aacabc11ef2c6d16d20d9",
+    "prisma/fixtures/horizon-atelier.sql": "901fed590053152425a85733a97151a1d4f399d198f8f6a449bfe5c72521e1f8",
+    "prisma/fixtures/verify-stage8-internal-review.sql": "79febe85bf1911ea452183050fdb71acc017facfe834ca4af99efd2cb09075f0",
+    "package.json": "d86916b1af5e075a454c609eb0645c4c7576a7ab3318f766de5df45c531dc9e1",
+    ".github/workflows/ci.yml": "1d6ef4fb7a8f0bb994e5519a2a82c12b6f38c849f3a66315c34c77f82fa5d2a8"
+  },
+  "database": "isolated local PostgreSQL 17 / stridebrain_stage8_schema / 127.0.0.1:54329",
+  "environment": {
+    "npm_config_cache": "/tmp/sb029-npm-cache",
+    "DATABASE_URL": "synthetic local schema database"
+  },
+  "checks": [
+    {
+      "command": "npm run db:validate",
+      "result": "PASS"
+    },
+    {
+      "command": "npm run db:generate",
+      "result": "PASS"
+    },
+    {
+      "command": "npm run db:migrate",
+      "result": "PASS",
+      "detail": "All eight committed migrations applied to empty database"
+    },
+    {
+      "command": "npm run db:seed && npm run db:verify",
+      "result": "PASS",
+      "detail": "First seed, repeated seed, and final restored seed passed all Stage1-8 SQL invariant scripts"
+    },
+    {
+      "command": "npx --no-install prettier --check package.json .github/workflows/ci.yml",
+      "result": "PASS"
+    },
+    {
+      "command": "node --input-type=module (isolated pg reset-guard probe)",
+      "result": "PASS",
+      "detail": "A named tenant reclassified TENANT_PRIVATE caused SYNTHETIC_FIXTURE_RESET_REFUSED with rows and enabled triggers preserved; restoring DEMO_SYNTHETIC allowed targeted audit-probe reset and all four triggers were enabled afterward"
+    }
+  ],
+  "logs": [
+    "/tmp/sb029-schema-validation/repeat-seed.log",
+    "/tmp/sb029-schema-validation/repeat-verify.log",
+    "/tmp/sb029-schema-validation/final-seed.log",
+    "/tmp/sb029-schema-validation/final-verify.log"
+  ],
+  "notClaimed": [
+    "Full Stage8 application test pass",
+    "Independent review verdict",
+    "Concurrent action/atomic rollback proof",
+    "Browser QA",
+    "Preview readiness",
+    "Merge or release readiness"
+  ]
+}

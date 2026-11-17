@@ -5,6 +5,7 @@ import { ComparisonStart } from "@/components/comparisons/comparison-start";
 import { ComparisonState } from "@/components/comparisons/comparison-state";
 import { ProjectLocalNav } from "@/components/projects/project-local-nav";
 import { createComparisonServices } from "@/lib/server/comparison-services";
+import { createInternalReviewServices } from "@/lib/server/internal-review-services";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
 import { buildComparisonExperience } from "@/modules/comparison-experience/build-comparison-experience";
 import { parseComparisonRouteSearch } from "@/modules/comparison-experience/route-state";
@@ -12,6 +13,10 @@ import { parseEvidenceSelection } from "@/modules/evidence-panel/route-state";
 import type { EvidencePanelOutcome } from "@/modules/evidence-panel/contracts";
 import { getCatalog } from "@/modules/localization/catalog";
 import { isSupportedLocale } from "@/modules/localization/config";
+import {
+  parseInternalReviewRoute,
+  reviewReturnContext,
+} from "@/modules/internal-review-experience/route-state";
 
 type ComparisonPageProps = Readonly<{
   params: Promise<{
@@ -42,7 +47,9 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
   if (!isSupportedLocale(rawLocale)) notFound();
 
   const catalog = getCatalog(rawLocale);
-  const route = parseComparisonRouteSearch(await searchParams);
+  const search = await searchParams;
+  const route = parseComparisonRouteSearch(search);
+  const actionRoute = parseInternalReviewRoute(search);
   const context = await resolveServerRuntimeContext();
 
   return (
@@ -108,6 +115,7 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
           );
         }
 
+        const freshness = await services.getFreshness.check(context, structural.result, economics);
         const view = buildComparisonExperience({
           stage4: structural.result,
           ...(economics ? { economics } : {}),
@@ -125,16 +133,67 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
           evidenceConflictKey: route.evidenceConflictKey,
         });
         let evidencePanel: EvidencePanelOutcome | undefined;
-        if (route.evidenceMode) {
+        if (
+          route.evidenceMode &&
+          ((!actionRoute.proposalKey && !actionRoute.actionKey && !actionRoute.errorKind) ||
+            actionRoute.evidenceActive)
+        ) {
           evidencePanel = evidenceSelection
-            ? await services.getEvidencePanel.execute(context, evidenceSelection, rawLocale)
+            ? await services.getEvidencePanel.execute(
+                context,
+                evidenceSelection,
+                rawLocale,
+                freshness,
+              )
             : Object.freeze({ kind: "UNAVAILABLE" as const, requestId: context.requestId });
         }
+        const actionServices = createInternalReviewServices();
+        const [canPrepare, prepared, receipt] = await Promise.all([
+          economics && freshness.state === "CURRENT"
+            ? actionServices.canPrepare(context, projectKey, {
+                comparisonRunId: structural.result.run.id,
+                enrichmentRunId: economics.run.id,
+              })
+            : Promise.resolve(false),
+          actionRoute.proposalKey
+            ? actionServices.reopenProposal(context, actionRoute.proposalKey, rawLocale)
+            : Promise.resolve(undefined),
+          actionRoute.actionKey
+            ? actionServices.getReceipt(context, actionRoute.actionKey, rawLocale)
+            : Promise.resolve(undefined),
+        ]);
+        const safeProposal =
+          prepared?.kind === "PREPARED" &&
+          (prepared.proposal.project.projectKey !== projectKey ||
+            prepared.proposal.comparisonRunId !== route.comparisonRunId ||
+            prepared.proposal.enrichmentRunId !== route.economicsRunId)
+            ? { kind: "PROPOSAL_NOT_AUTHORIZED" as const, requestId: context.requestId }
+            : prepared;
+        const safeReceipt =
+          receipt?.kind === "AVAILABLE" &&
+          (receipt.receipt.project.projectKey !== projectKey ||
+            receipt.receipt.comparisonRunId !== route.comparisonRunId ||
+            receipt.receipt.enrichmentRunId !== route.economicsRunId)
+            ? { kind: "ACTION_NOT_AUTHORIZED" as const, requestId: context.requestId }
+            : receipt;
         return (
           <ComparisonExperienceClient
             view={view}
+            freshness={freshness}
             evidencePanel={evidencePanel}
+            evidenceSelection={evidenceSelection}
             evidenceReturnId={route.evidenceReturnId}
+            internalReview={{
+              locale: rawLocale,
+              projectKey,
+              comparisonRunId: route.comparisonRunId,
+              enrichmentRunId: route.economicsRunId ?? "",
+              canPrepare,
+              returnContext: reviewReturnContext(search),
+              route: actionRoute,
+              proposalOutcome: safeProposal,
+              receiptOutcome: safeReceipt,
+            }}
           />
         );
       })()}

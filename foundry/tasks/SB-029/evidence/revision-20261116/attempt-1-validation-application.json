@@ -1,0 +1,18 @@
+{
+  "startedFromHead": "95ffbef2996fc3e8aaf2bfaaf8927f207f65f930",
+  "completedAt": "2026-11-16T06:11:05.377525+00:00",
+  "commands": [
+    {
+      "command": "npm ci --no-audit --no-fund",
+      "exitCode": 0,
+      "durationSeconds": 7.439,
+      "log": "app-01-no-fund.log"
+    },
+    {
+      "command": "npm run format:check",
+      "exitCode": 1,
+      "durationSeconds": 2.037,
+      "log": "app-02-format-check.log"
+    }
+  ]
+}

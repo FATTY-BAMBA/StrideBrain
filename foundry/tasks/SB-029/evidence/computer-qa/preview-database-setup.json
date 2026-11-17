@@ -1,0 +1,118 @@
+{
+  "version": "sb029-preview-database-setup.v1",
+  "head_during_setup": "819f5545f0fa05d125835ec8ef417ec2f5f495f8",
+  "database": "stridebrain_stage8_preview",
+  "container": "stridebrain-sb029-test-eval",
+  "port": 54329,
+  "migration_count": 8,
+  "migration_sha256": {
+    "prisma/migrations/0001_stridegraph_foundation/migration.sql": "debc38a901ef22ad3a261081b2471f266f152e5f85a215a181652619fd536488",
+    "prisma/migrations/0002_financial_authority_invariants/migration.sql": "3c11150c7f31cf226ef3df7713e19cf2fc26c275d7f184d8fc6b447d46111cc3",
+    "prisma/migrations/0003_runtime_authorization/migration.sql": "5e54afbabc6c9d315013f14e57d70d0c5c362f8d1c2f12a4b90d47dc148d9509",
+    "prisma/migrations/0004_authorization_tenant_links/migration.sql": "6e79b57839dfa8fb8e62988ee4c14371622387d9d10b7509f1e33b93294d417a",
+    "prisma/migrations/0005_remove_legacy_membership_capabilities/migration.sql": "dc65374f2d0f39a4fe4d596e25fc29eca1d1c4c103a6f519649d46eb5d6f2fc3",
+    "prisma/migrations/0006_stage5_economics_enrichment/migration.sql": "62446ebd7f2bbf217fbe98d1ebdc2c078eb6e9736167ae0fec8743c59ff6dccc",
+    "prisma/migrations/0007_stage6_comparison_persistence_scales/migration.sql": "20b76d4c2f2051a6bac620a5d0ca859a44b7ac6d5db6fbf05fd3fc53398751a2",
+    "prisma/migrations/0008_stage8_internal_review/migration.sql": "bca2e402f42aafc822c921df064d51965a8ea29da80aacabc11ef2c6d16d20d9"
+  },
+  "commands": [
+    {
+      "command": "npm run db:migrate",
+      "exit_code": 1,
+      "started_at": "2026-11-15T21:57:51.647175+00:00",
+      "completed_at": "2026-11-15T21:57:52.924381+00:00",
+      "private_log": "/tmp/sb029-preview/db-migrate.log"
+    },
+    {
+      "command": "npm run db:migrate",
+      "environment_override": "npm_config_cache=/tmp/sb029-preview/npm-cache",
+      "exit_code": 0,
+      "started_at": "2026-11-15T21:58:51.205643+00:00",
+      "completed_at": "2026-11-15T21:59:08.191353+00:00",
+      "private_log": "/tmp/sb029-preview/db-migrate-isolated-cache.log"
+    },
+    {
+      "command": "npm run db:seed",
+      "environment_override": "npm_config_cache=/tmp/sb029-preview/npm-cache",
+      "exit_code": 0,
+      "started_at": "2026-11-15T21:59:08.191844+00:00",
+      "completed_at": "2026-11-15T21:59:14.419134+00:00",
+      "private_log": "/tmp/sb029-preview/db-seed-isolated-cache.log"
+    },
+    {
+      "command": "npm run db:verify",
+      "environment_override": "npm_config_cache=/tmp/sb029-preview/npm-cache",
+      "exit_code": 0,
+      "started_at": "2026-11-15T21:59:14.419851+00:00",
+      "completed_at": "2026-11-15T21:59:27.193694+00:00",
+      "private_log": "/tmp/sb029-preview/db-verify-isolated-cache.log"
+    }
+  ],
+  "schema_source": "committed/current working tree; not final exact-head preview evidence",
+  "application_started": false,
+  "browser_started": false,
+  "secrets_recorded": false,
+  "infrastructure_recovery": {
+    "root_cause": "Default npm cache under /home/agent/.npm is not writable/available in this execution sandbox.",
+    "fix": "Use dedicated /tmp/sb029-preview/npm-cache; no product/shared dependency edits."
+  },
+  "verification": {
+    "database": "stridebrain_stage8_preview",
+    "applied_migrations": 8,
+    "organizations": [
+      {
+        "business_key": "HORIZON_ATELIER",
+        "classification": "DEMO_SYNTHETIC"
+      },
+      {
+        "business_key": "NORTHERN_STUDIO",
+        "classification": "DEMO_SYNTHETIC"
+      }
+    ],
+    "non_synthetic_organization_count": 0,
+    "unexpected_organization_count": 0,
+    "action_count": 0,
+    "proposal_count": 0,
+    "receipt_count": 0,
+    "audit_count": 0,
+    "immutability_triggers": [
+      {
+        "table": "AuditEvent",
+        "trigger": "AuditEvent_append_only",
+        "enabled": "O"
+      },
+      {
+        "table": "Action",
+        "trigger": "Action_stage8_immutable",
+        "enabled": "O"
+      },
+      {
+        "table": "ProposedAction",
+        "trigger": "ProposedAction_stage8_immutable",
+        "enabled": "O"
+      },
+      {
+        "table": "InternalReviewReceipt",
+        "trigger": "InternalReviewReceipt_immutable",
+        "enabled": "O"
+      }
+    ]
+  },
+  "verified_at": "2026-11-15T21:59:56.076242+00:00",
+  "result": "DATABASE_PREPARED_NOT_BROWSER_QA",
+  "fixture_sha256": {
+    "prisma/fixtures/horizon-atelier.sql": "901fed590053152425a85733a97151a1d4f399d198f8f6a449bfe5c72521e1f8",
+    "prisma/fixtures/stage2-authorization.sql": "328990bb70c9c6ad820ddecd34a0393142110e26dbd0ada3538ec7e4e94daeb6",
+    "prisma/fixtures/stage4-comparison.sql": "311f0be7f6cc64f65690eac41787496d61b9ffcf1cb66f072d112f2e1ad4d1cf",
+    "prisma/fixtures/stage5-economics.sql": "17bea183444a90b552348ab29347da4dda94f393a921f5f4a4284fdc522c2f1a",
+    "prisma/fixtures/verify-horizon.sql": "ece8f16e388b80177f9086dfe02de76597987c1d40e367e52e788dd6a543ba3b",
+    "prisma/fixtures/verify-relations.sql": "e131955e2c39df05e81827cc173e7a2f54d0f3bb1bcff36a7960efbd6eddd098",
+    "prisma/fixtures/verify-stage2-authorization.sql": "d38be69eee8ad1ffa0111fa4a07c1438bd6c66570f5c683dd969ae1b285ce593",
+    "prisma/fixtures/verify-stage3-workspace.sql": "7278f1d04aad36963bec9992046d77294d283cb59ccf785ad807d33bb8002d01",
+    "prisma/fixtures/verify-stage4-comparison.sql": "b481c96d28f23deeb7a1a0b6ef6217e6ec6a4580e6881cb90bf587084b1cdd2c",
+    "prisma/fixtures/verify-stage5-economics.sql": "a697bc8ca6c32e92d9a3f26c4e76b9903250770de41f44e817ec394b6ac0f597",
+    "prisma/fixtures/verify-stage6-comparison-persistence.sql": "481353ab41d19047a39edf2ec68656861f910c53740a90d09ac68cfbc2eb76cd",
+    "prisma/fixtures/verify-stage8-internal-review.sql": "79febe85bf1911ea452183050fdb71acc017facfe834ca4af99efd2cb09075f0"
+  },
+  "secret_values_recorded": false
+}

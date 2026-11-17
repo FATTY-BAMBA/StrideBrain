@@ -1,0 +1,188 @@
+{
+  "methodology": "30 unique immutable pairs/proposals; one excluded warmup; nearest-rank p95; server duration excluding network; actual Prisma query events",
+  "proposal": {
+    "samples": 30,
+    "p50": 80.36286699999982,
+    "p95": 113.48518999999942,
+    "max": 117.4515250000004
+  },
+  "confirmation": {
+    "samples": 30,
+    "p50": 94.56341700000121,
+    "p95": 127.96408400000291,
+    "max": 130.4278540000014
+  },
+  "proposalQueryCounts": [
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110,
+    110
+  ],
+  "confirmationQueryCounts": [
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131,
+    131
+  ],
+  "slowestConfirmationQueries": [
+    {
+      "query": "SELECT \"public\".\"Document\".\"id\", \"public\".\"Document\".\"projectId\" FROM \"public\".\"Document\" WHERE ((\"public\".\"Document\".\"organizationId\" = $1 AND \"public\".\"Document\".\"documentType\" = $2) AND \"public\".\"Document\".\"projectId\" IN ($3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26)) ORDER BY \"public\".\"Document\".\"businessKey\" ASC OFFSET $27",
+      "duration": 2.4403820000006817
+    },
+    {
+      "query": "SELECT \"public\".\"Quote\".\"id\", \"public\".\"Quote\".\"businessKey\", \"public\".\"Quote\".\"projectId\" FROM \"public\".\"Quote\" WHERE (\"public\".\"Quote\".\"organizationId\" = $1 AND \"public\".\"Quote\".\"projectId\" IN ($2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25)) ORDER BY \"public\".\"Quote\".\"createdAt\" DESC OFFSET $26",
+      "duration": 2.073442000000796
+    },
+    {
+      "query": "INSERT INTO \"public\".\"Action\" (\"id\",\"organizationId\",\"projectId\",\"comparisonRunId\",\"proposedActionId\",\"type\",\"title\",\"rationale\",\"assigneePersonId\",\"dueDate\",\"status\",\"evidenceReferenceIds\",\"createdByUserId\",\"createdAt\",\"updatedAt\",\"businessKey\",\"enrichmentRunId\",\"createdByMembershipId\",\"assigneeMembershipId\",\"snapshotVersion\",\"contentSnapshot\",\"evidenceSnapshot\") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,CAST($11::text AS \"public\".\"ActionStatus\"),$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22) RETURNING \"public\".\"Action\".\"id\", \"public\".\"Action\".\"organizationId\", \"public\".\"Action\".\"projectId\", \"public\".\"Action\".\"comparisonRunId\", \"public\".\"Action\".\"proposedActionId\", \"public\".\"Action\".\"type\", \"public\".\"Action\".\"title\", \"public\".\"Action\".\"rationale\", \"public\".\"Action\".\"assigneePersonId\", \"public\".\"Action\".\"dueDate\", \"public\".\"Action\".\"status\"::text, \"public\".\"Action\".\"evidenceReferenceIds\", \"public\".\"Action\".\"createdByUserId\", \"public\".\"Action\".\"createdAt\", \"public\".\"Action\".\"updatedAt\", \"public\".\"Action\".\"businessKey\", \"public\".\"Action\".\"enrichmentRunId\", \"public\".\"Action\".\"createdByMembershipId\", \"public\".\"Action\".\"assigneeMembershipId\", \"public\".\"Action\".\"snapshotVersion\", \"public\".\"Action\".\"contentSnapshot\", \"public\".\"Action\".\"evidenceSnapshot\"",
+      "duration": 1.8499730000003183
+    },
+    {
+      "query": "SELECT \"public\".\"Document\".\"id\", \"public\".\"Document\".\"projectId\" FROM \"public\".\"Document\" WHERE ((\"public\".\"Document\".\"organizationId\" = $1 AND \"public\".\"Document\".\"documentType\" = $2) AND \"public\".\"Document\".\"projectId\" IN ($3)) ORDER BY \"public\".\"Document\".\"businessKey\" ASC OFFSET $4",
+      "duration": 1.7693249999974796
+    },
+    {
+      "query": "SELECT \"public\".\"ProjectSupplier\".\"id\", \"public\".\"ProjectSupplier\".\"supplierId\", \"public\".\"ProjectSupplier\".\"projectId\" FROM \"public\".\"ProjectSupplier\" LEFT JOIN \"public\".\"Supplier\" AS \"orderby_1\" ON (\"orderby_1\".\"id\") = (\"public\".\"ProjectSupplier\".\"supplierId\") LEFT JOIN \"public\".\"Supplier\" AS \"j1\" ON (\"j1\".\"id\") = (\"public\".\"ProjectSupplier\".\"supplierId\") WHERE ((\"public\".\"ProjectSupplier\".\"organizationId\" = $1 AND (\"j1\".\"organizationId\" = $2 AND \"j1\".\"active\" = $3 AND (\"j1\".\"id\" IS NOT NULL))) AND \"public\".\"ProjectSupplier\".\"projectId\" IN ($4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27)) ORDER BY \"orderby_1\".\"businessKey\" ASC OFFSET $28",
+      "duration": 1.7331210000011197
+    }
+  ],
+  "slowestReadPlan": [
+    {
+      "QUERY PLAN": [
+        {
+          "Plan": {
+            "Node Type": "Sort",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 6.93,
+            "Total Cost": 6.99,
+            "Plan Rows": 24,
+            "Plan Width": 51,
+            "Actual Startup Time": 0.036,
+            "Actual Total Time": 0.037,
+            "Actual Rows": 24,
+            "Actual Loops": 1,
+            "Sort Key": [
+              "\"businessKey\""
+            ],
+            "Sort Method": "quicksort",
+            "Sort Space Used": 26,
+            "Sort Space Type": "Memory",
+            "Shared Hit Blocks": 4,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Plans": [
+              {
+                "Node Type": "Seq Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Relation Name": "Document",
+                "Alias": "Document",
+                "Startup Cost": 0.06,
+                "Total Cost": 6.38,
+                "Plan Rows": 24,
+                "Plan Width": 51,
+                "Actual Startup Time": 0.009,
+                "Actual Total Time": 0.027,
+                "Actual Rows": 24,
+                "Actual Loops": 1,
+                "Filter": "((\"organizationId\" = 'org_horizon'::text) AND (\"documentType\" = 'PROJECT_SUMMARY'::text) AND (\"projectId\" = ANY ('{prj_banqiao_015,prj_daan_016,prj_hist_001,prj_hist_002,prj_hist_003,prj_hist_004,prj_hist_005,prj_hist_006,prj_hist_007,prj_hist_008,prj_hist_009,prj_hist_010,prj_hist_011,prj_hist_012,prj_hist_013,prj_hist_014,prj_hist_015,prj_hist_016,prj_hist_017,prj_hist_018,prj_nanjing_023,prj_neihu_021,prj_songshan_020,prj_zhongshan_018}'::text[])))",
+                "Rows Removed by Filter": 92,
+                "Shared Hit Blocks": 4,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+              }
+            ]
+          },
+          "Planning": {
+            "Shared Hit Blocks": 0,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0
+          },
+          "Planning Time": 0.069,
+          "Triggers": [],
+          "Execution Time": 0.044
+        }
+      ]
+    }
+  ],
+  "assigneeBatching": {
+    "addedEligibleAssignees": 20,
+    "initialQueries": 110,
+    "expandedQueries": 110
+  }
+}

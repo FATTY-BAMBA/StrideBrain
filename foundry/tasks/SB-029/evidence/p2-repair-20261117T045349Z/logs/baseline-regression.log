@@ -1,0 +1,66 @@
+
+ RUN  v4.1.10 <private-work>/baseline-regression
+
+ ❯ tests/evidence-panel/get-evidence-panel.test.ts (13 tests | 2 failed | 11 skipped) 24ms
+     × F-03 localizes programmeWeeks in claim, source and factor rendering in en without changing provenance 22ms
+     × F-03 localizes programmeWeeks in claim, source and factor rendering in zh-TW without changing provenance 2ms
+ ❯ tests/comparison-experience/build-comparison-experience.test.ts (11 tests | 2 failed | 7 skipped) 28ms
+     × F-07 selects insufficiency evidence for every abstained actual category in en 21ms
+     × F-07 selects insufficiency evidence for every abstained actual category in zh-TW 3ms
+
+ Test Files  2 failed (2)
+      Tests  4 failed | 2 passed | 18 skipped (24)
+   Start at  12:58:00
+   Duration  529ms (transform 520ms, setup 0ms, import 757ms, tests 52ms, environment 0ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/comparison-experience/build-comparison-experience.test.ts > Stage 6 comparison experience composer > F-07 selects insufficiency evidence for every abstained actual category in en
+ FAIL  tests/comparison-experience/build-comparison-experience.test.ts > Stage 6 comparison experience composer > F-07 selects insufficiency evidence for every abstained actual category in zh-TW
+AssertionError: expected 'XINYI_LIGHTING_ELECTRICAL_FORECAST_AC…' to be 'XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSU…' // Object.is equality
+
+Expected: "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT"
+Received: "XINYI_LIGHTING_ELECTRICAL_FORECAST_ACTUAL_VARIANCE"
+
+ ❯ tests/comparison-experience/build-comparison-experience.test.ts:388:32
+    386|       for (const value of Object.values(lighting.cells)) {
+    387|         expect(value.state).toBe("INSUFFICIENT");
+    388|         expect(value.claimKey).toBe(gap.claimKey);
+       |                                ^
+    389|       }
+    390|       expect(lighting.cells["PRJ-NEIHU-021"]?.secondary).toBe("2/3");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/evidence-panel/get-evidence-panel.test.ts > QA-16/18 rendered evidence localization and financial authority > F-03 localizes programmeWeeks in claim, source and factor rendering in en without changing provenance
+AssertionError: expected 'Record type: Project record · Field: …' to contain 'Programme in weeks'
+
+Expected: "Programme in weeks"
+Received: "Record type: Project record · Field: programmeWeeks"
+
+ ❯ tests/evidence-panel/get-evidence-panel.test.ts:488:55
+    486|         if (outcome.kind !== "READY") throw Error("READY_REQUIRED");
+    487|         const label = locale === "zh-TW" ? "工期（週）" : "Programme in wee…
+    488|         expect(outcome.view.sources[0]?.locatorLabel).toContain(label);
+       |                                                       ^
+    489|         expect(outcome.view.sources[0]?.preview).toMatchObject({
+    490|           fields: [{ label, value: "19.00" }],
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/evidence-panel/get-evidence-panel.test.ts > QA-16/18 rendered evidence localization and financial authority > F-03 localizes programmeWeeks in claim, source and factor rendering in zh-TW without changing provenance
+AssertionError: expected '紀錄類型: 專案紀錄 · 欄位: programmeWeeks' to contain '工期（週）'
+
+Expected: "工期（週）"
+Received: "紀錄類型: 專案紀錄 · 欄位: programmeWeeks"
+
+ ❯ tests/evidence-panel/get-evidence-panel.test.ts:488:55
+    486|         if (outcome.kind !== "READY") throw Error("READY_REQUIRED");
+    487|         const label = locale === "zh-TW" ? "工期（週）" : "Programme in wee…
+    488|         expect(outcome.view.sources[0]?.locatorLabel).toContain(label);
+       |                                                       ^
+    489|         expect(outcome.view.sources[0]?.preview).toMatchObject({
+    490|           fields: [{ label, value: "19.00" }],
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯

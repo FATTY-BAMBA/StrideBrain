@@ -1,0 +1,28 @@
+{
+  "kind": "NON_UI_API_DIAGNOSTIC",
+  "head": "4c13f726bb75f4a31d263eb6e54622224807d019",
+  "persona": "finance",
+  "time": "2026-11-15T22:22:47.355Z",
+  "route": "/api/actions/internal-review/proposals",
+  "status": 403,
+  "cacheControl": "private, no-store",
+  "durationMs": 69.86968300000001,
+  "request": {
+    "projectKey": "PRJ-XINYI-026",
+    "comparisonRunId": "cmprun_e928ff34-9e01-42e6-a5bf-cc7196d0915e",
+    "enrichmentRunId": "econrun_1ac0d77a-9d11-40d9-9a91-6b655fa123a0",
+    "locale": "en",
+    "returnContext": {
+      "selectedProjectKeys": [
+        "PRJ-NEIHU-021",
+        "PRJ-ZHONGSHAN-018",
+        "PRJ-NANJING-023"
+      ]
+    }
+  },
+  "result": {
+    "kind": "PROPOSAL_NOT_AUTHORIZED",
+    "requestId": "31f5c487-ce73-4943-88c0-8df66d4a6dfe"
+  },
+  "credentialsRecorded": false
+}

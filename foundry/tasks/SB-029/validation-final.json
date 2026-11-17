@@ -1,0 +1,193 @@
+{
+  "headBefore": "4c13f726bb75f4a31d263eb6e54622224807d019",
+  "branch": "build/sb-029-governed-internal-review",
+  "statusBefore": "M foundry/tasks/SB-029/brief.md\n M foundry/tasks/SB-029/release-scorecard.md\n M foundry/tasks/SB-029/state.json",
+  "startedAt": "2026-11-15T22:09:18.413592+00:00",
+  "database": "stridebrain_sb029_final_f1f64b3831264ffd81f7d4d9ea357787",
+  "results": [
+    {
+      "command": "npm ci --no-audit --no-fund",
+      "exitCode": 0,
+      "seconds": 9.66,
+      "log": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/01.log",
+      "rawLog": "/tmp/sb029-stage8-final/4c13f726bb75f4a31d263eb6e54622224807d019/01.log"
+    },
+    {
+      "command": "npm run db:validate",
+      "exitCode": 0,
+      "seconds": 1.772,
+      "log": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/02.log",
+      "rawLog": "/tmp/sb029-stage8-final/4c13f726bb75f4a31d263eb6e54622224807d019/02.log"
+    },
+    {
+      "command": "npm run db:generate",
+      "exitCode": 0,
+      "seconds": 2.566,
+      "log": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/03.log",
+      "rawLog": "/tmp/sb029-stage8-final/4c13f726bb75f4a31d263eb6e54622224807d019/03.log"
+    },
+    {
+      "command": "npm run db:migrate",
+      "exitCode": 0,
+      "seconds": 2.072,
+      "log": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/04.log",
+      "rawLog": "/tmp/sb029-stage8-final/4c13f726bb75f4a31d263eb6e54622224807d019/04.log"
+    },
+    {
+      "command": "npm run db:seed",
+      "exitCode": 0,
+      "seconds": 6.601,
+      "log": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/05.log",
+      "rawLog": "/tmp/sb029-stage8-final/4c13f726bb75f4a31d263eb6e54622224807d019/05.log"
+    },
+    {
+      "command": "npm run db:verify",
+      "exitCode": 0,
+      "seconds": 13.616,
+      "log": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/06.log",
+      "rawLog": "/tmp/sb029-stage8-final/4c13f726bb75f4a31d263eb6e54622224807d019/06.log"
+    },
+    {
+      "command": "npm run db:migrate",
+      "exitCode": 0,
+      "seconds": 2.061,
+      "log": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/07.log",
+      "rawLog": "/tmp/sb029-stage8-final/4c13f726bb75f4a31d263eb6e54622224807d019/07.log"
+    },
+    {
+      "command": "npm run db:seed",
+      "exitCode": 0,
+      "seconds": 7.586,
+      "log": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/08.log",
+      "rawLog": "/tmp/sb029-stage8-final/4c13f726bb75f4a31d263eb6e54622224807d019/08.log"
+    },
+    {
+      "command": "npm run db:verify",
+      "exitCode": 0,
+      "seconds": 14.427,
+      "log": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/09.log",
+      "rawLog": "/tmp/sb029-stage8-final/4c13f726bb75f4a31d263eb6e54622224807d019/09.log"
+    },
+    {
+      "command": "npm run format:check",
+      "exitCode": 0,
+      "seconds": 2.637,
+      "log": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/10.log",
+      "rawLog": "/tmp/sb029-stage8-final/4c13f726bb75f4a31d263eb6e54622224807d019/10.log"
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "seconds": 5.811,
+      "log": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/11.log",
+      "rawLog": "/tmp/sb029-stage8-final/4c13f726bb75f4a31d263eb6e54622224807d019/11.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "seconds": 2.09,
+      "log": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/12.log",
+      "rawLog": "/tmp/sb029-stage8-final/4c13f726bb75f4a31d263eb6e54622224807d019/12.log"
+    },
+    {
+      "command": "npm run test",
+      "exitCode": 0,
+      "seconds": 104.35,
+      "log": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/13.log",
+      "rawLog": "/tmp/sb029-stage8-final/4c13f726bb75f4a31d263eb6e54622224807d019/13.log"
+    },
+    {
+      "command": "npm run test:localization",
+      "exitCode": 0,
+      "seconds": 0.755,
+      "log": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/14.log",
+      "rawLog": "/tmp/sb029-stage8-final/4c13f726bb75f4a31d263eb6e54622224807d019/14.log"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "seconds": 10.013,
+      "log": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/15.log",
+      "rawLog": "/tmp/sb029-stage8-final/4c13f726bb75f4a31d263eb6e54622224807d019/15.log"
+    },
+    {
+      "command": "npm audit --omit=dev --audit-level=high",
+      "exitCode": 0,
+      "seconds": 0.587,
+      "log": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/16.log",
+      "rawLog": "/tmp/sb029-stage8-final/4c13f726bb75f4a31d263eb6e54622224807d019/16.log"
+    }
+  ],
+  "headAfterLatestCommand": "4c13f726bb75f4a31d263eb6e54622224807d019",
+  "headAfter": "4c13f726bb75f4a31d263eb6e54622224807d019",
+  "statusAfter": "M foundry/tasks/SB-029/brief.md\n M foundry/tasks/SB-029/release-scorecard.md\n M foundry/tasks/SB-029/state.json\n M next-env.d.ts",
+  "finishedAt": "2026-11-15T22:12:25.066424+00:00",
+  "passed": true,
+  "scope": "Complete independent deterministic Stage 0\u20138 gate on exact committed candidate; browser QA and merge authorization are separate",
+  "sourceTreeFingerprintSha256": "7fe5157f84f9c88023462ec1e958b62a53bcdb5aef30eb0dc4ac95dfdac85920",
+  "sourceTreeManifest": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/source-tree.txt",
+  "sourceMatchesCandidateAfterGeneratedFileRestore": true,
+  "sourceTreePaths": [
+    "src",
+    "tests",
+    "prisma",
+    "package.json",
+    "package-lock.json",
+    "tsconfig.json",
+    "next.config.ts",
+    "next-env.d.ts",
+    "prisma.config.ts",
+    "vitest.config.ts",
+    "eslint.config.mjs",
+    "prettier.config.mjs",
+    ".github/workflows/ci.yml"
+  ],
+  "build": {
+    "nextVersion": "16.4.6",
+    "buildId": "3arTh5JwUyUt0e73FJY-z",
+    "head": "4c13f726bb75f4a31d263eb6e54622224807d019",
+    "origin": "http://localhost:3000",
+    "dataMode": "DEMO_SYNTHETIC",
+    "nextEnvGeneratedDiff": "Next added .next/types/routes.d.ts and root-params.d.ts imports and regenerated comments. Inspected this sole non-task-document diff, then restored exact candidate next-env.d.ts bytes per Orchestrator instruction; generated .next output retained."
+  },
+  "counts": {
+    "fullSuiteFiles": 57,
+    "fullSuitePassed": 436,
+    "fullSuiteSkipped": 0,
+    "independentPostgresqlCases": 88,
+    "baselineRegressionCases": 200,
+    "newStage8Cases": 236,
+    "localizationFiles": 4,
+    "localizationPassed": 11,
+    "committedMigrationsAppliedClean": 8,
+    "productionDependencyVulnerabilities": 0
+  },
+  "postgresqlMigrationEvidence": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/postgres-migrations.log",
+  "performance": "foundry/tasks/SB-029/evidence/exact-head-4c13f726/performance.json",
+  "environment": {
+    "node": "24.22.1",
+    "npm": "11.9.0",
+    "postgresql": "17.12",
+    "vitest": "4.1.10",
+    "npmCache": "/tmp/sb029-npm-cache",
+    "toolCache": "/tmp/sb029-tool-cache",
+    "isolation": "New empty final-validation DB; adversarial suite creates/migrates/seeds its own separate disposable DB and deletes only validated prefixed DB name. Preview/reviewer/schema DBs untouched."
+  },
+  "contractProof": {
+    "authorization": "Canonical Project Manager/Estimator, Financial Reviewer and Admin prepare/create; Viewer denies before sensitive reads; neutral cross-tenant selectors; current session/membership/capability/assignment/assignee rechecks; no browser authority.",
+    "stalenessAndEvidence": "Independent quote/project/version/fingerprint/authority/conflict/supersession/source-locator/value/classification mutations reject; current-time source validity and quote-date crossing reject; document-owner access and immutable document-version binding fail closed.",
+    "idempotencyAndConcurrency": "Identical key/payload repeats same receipt including after source staleness/expiry when still authorized; different payload rejects; six overlapping identical requests produce one create and five replays; competing payloads consume once; source writer-before-lock rejected and writer-after-lock blocked until atomic commit.",
+    "atomicRollback": "Injected failures AFTER_ACTION, AFTER_EVIDENCE, AFTER_AUDIT, AFTER_CONSUMPTION, AFTER_RECEIPT and BEFORE_COMMIT each leave original Action/Audit/Receipt/consumption counts and unconsumed PREPARED proposal; no success receipt.",
+    "audit": "Real successful audit compared against actor/membership/organization/project, original/final bilingual content, run references, claims/evidence, policies/fingerprints, assignee/date, request/correlation/key/timestamp/result. SQL rejects audit UPDATE/DELETE and immutable Action/Receipt mutation; unique/composite scope constraints reject invalid inserts.",
+    "workspaceAndReopen": "New Action appears via authorized Project Workspace port and can reopen in Chinese; actual/evidence/create downgrade hides receipt/replay/workspace titles before sensitive action snapshot reads. Omitted authorized-actions port fails closed in unit tests.",
+    "syntheticReset": "Repeat seed after real Action restores all four immutable triggers and preserves unrelated synthetic org; non-synthetic named fixture identity rejects reset with guards intact.",
+    "presentation": "API origin/session/body validation, route/locale/selection/evidence restoration, focus helpers, localization parity and architecture boundaries are deterministic tests; visual/mobile/keyboard browser acceptance remains independent."
+  },
+  "remoteCi": "Owned and independently linked by Orchestrator; this manifest records locally executed commands only",
+  "browserQa": "NOT_CLAIMED",
+  "knownLimitations": [
+    "Controlled synthetic local performance is not a production-load benchmark.",
+    "Actual browser/mobile/keyboard/focus evidence is not replaced by these tests.",
+    "Pre-existing one-economics-enrichment-per-comparison limitation remains explicitly documented in accepted Stage 8 scope."
+  ]
+}

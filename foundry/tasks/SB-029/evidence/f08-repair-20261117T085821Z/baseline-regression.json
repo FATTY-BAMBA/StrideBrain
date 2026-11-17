@@ -1,0 +1,14 @@
+{
+  "base": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+  "method": "Pinned Git archive with final test file, opened through visible localized source-button labels; baseline source unchanged.",
+  "finalTestSha256": "0c49cd464b0b49b8e8576dae5d12be0378844041f4b1cfbf41e0e91e752efb85",
+  "executedTests": 2,
+  "failedAsExpected": 2,
+  "locales": [
+    "en",
+    "zh-TW"
+  ],
+  "failure": "After source route commit, activeElement is BODY rather than the source heading.",
+  "result": "EXPECTED_F08_FAILURES_REPRODUCED",
+  "earlierAttempt": "attempt-1-logs/baseline-selector-attempt.log used a new data attribute absent on baseline and gets no behavioral regression credit."
+}

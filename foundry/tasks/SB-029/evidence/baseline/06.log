@@ -1,0 +1,25 @@
+
+> stridebrain@0.1.0 db:verify
+> npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-horizon.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-relations.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage2-authorization.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage3-workspace.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage4-comparison.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage5-economics.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage6-comparison-persistence.sql
+
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.

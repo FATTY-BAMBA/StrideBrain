@@ -2,7 +2,7 @@
 
 import type { Route } from "next";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import type { Locale } from "@/modules/localization/config";
 
@@ -24,7 +24,14 @@ export function localizedHref(pathname: string, query: string, locale: Locale): 
   return query ? `${localizedPath}?${query}` : localizedPath;
 }
 
+/** Read at activation time so a synchronous draft edit cannot leave a stale Link target. */
+export function currentLocalizedHref(locale: Locale): string {
+  const url = new URL(window.location.href);
+  return localizedHref(url.pathname, url.searchParams.toString(), locale);
+}
+
 export function LanguageSwitcher({ locale, zhLabel, enLabel }: LanguageSwitcherProps) {
+  const router = useRouter();
   const pathname = usePathname();
   const query = useSearchParams().toString();
 
@@ -32,6 +39,10 @@ export function LanguageSwitcher({ locale, zhLabel, enLabel }: LanguageSwitcherP
     <div className="language-switcher" aria-label={`${zhLabel} / ${enLabel}`}>
       <Link
         href={localizedHref(pathname, query, "zh-TW") as Route}
+        onNavigate={(event) => {
+          event.preventDefault();
+          router.push(currentLocalizedHref("zh-TW") as Route);
+        }}
         lang="zh-Hant"
         aria-current={locale === "zh-TW" ? "page" : undefined}
       >
@@ -40,6 +51,10 @@ export function LanguageSwitcher({ locale, zhLabel, enLabel }: LanguageSwitcherP
       <span aria-hidden="true">/</span>
       <Link
         href={localizedHref(pathname, query, "en") as Route}
+        onNavigate={(event) => {
+          event.preventDefault();
+          router.push(currentLocalizedHref("en") as Route);
+        }}
         lang="en"
         aria-current={locale === "en" ? "page" : undefined}
       >

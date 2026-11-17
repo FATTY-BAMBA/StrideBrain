@@ -1,3 +1,5 @@
+import { getFinancialCopy } from "@/modules/localization/financial-copy";
+import { projectLocationLabel } from "@/modules/localization/project-context";
 import type { Route } from "next";
 import Link from "next/link";
 
@@ -8,6 +10,8 @@ import type {
   ProjectWorkspaceDTO,
 } from "@/modules/projects/domain/project-workspace";
 import type { Locale } from "@/modules/localization/config";
+import { getInternalReviewCopy } from "@/modules/internal-review-experience/copy";
+import { projectActionsHref } from "@/modules/internal-review-experience/route-state";
 
 import styles from "./project-workspace-overview.module.css";
 
@@ -103,7 +107,9 @@ function formatObservation(
   return (
     <div className={styles.metric}>
       <span>
-        {labels.version} {observation.versionNumber} · {observation.authorityState}
+        {getFinancialCopy(locale).observations[observation.observationType]} · {labels.version}{" "}
+        {observation.versionNumber} ·{" "}
+        {getFinancialCopy(locale).authorities[observation.authorityState]}
       </span>
       <strong>{formatMoney(locale, observation.money.amount, observation.money.currency)}</strong>
       {observation.freshness === "STALE" ? <p className={styles.stale}>{labels.stale}</p> : null}
@@ -114,6 +120,7 @@ function formatObservation(
 export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspaceOverviewProps) {
   const labels = copy[locale];
   const comparison = getComparisonCopy(locale);
+  const actionCopy = getInternalReviewCopy(locale);
   const areaUnit =
     workspace.project.area.unit.toLowerCase() === "m2" ? "m²" : workspace.project.area.unit;
   const comparisonUrl = comparisonHref(locale, workspace.project.businessKey) as Route;
@@ -127,7 +134,7 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
           <h1>{workspace.project.name.display}</h1>
           <p className={styles.client}>{workspace.project.clientName.display}</p>
           <div className={styles.meta}>
-            <span>{`${labels.location}: ${workspace.project.location.display}`}</span>
+            <span>{`${labels.location}: ${projectLocationLabel(locale, workspace.project.location)}`}</span>
             <span>{`${labels.area}: ${workspace.project.area.value} ${areaUnit}`}</span>
             {workspace.project.programmeWeeks ? (
               <span>{`${labels.programme}: ${workspace.project.programmeWeeks} ${locale === "zh-TW" ? "週" : "weeks"}`}</span>
@@ -224,6 +231,38 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
           </ul>
         </article>
       </section>
+
+      {workspace.openActions.length > 0 ? (
+        <section className={styles.panel} aria-labelledby="workspace-actions-title">
+          <div className={styles.panelHeader}>
+            <h2 id="workspace-actions-title">{actionCopy.overviewActions}</h2>
+          </div>
+          <ul className={styles.list}>
+            {workspace.openActions.map((action) => (
+              <li key={action.actionKey}>
+                <Link
+                  href={
+                    projectActionsHref(
+                      locale,
+                      workspace.project.businessKey,
+                      action.actionKey,
+                    ) as Route
+                  }
+                >
+                  {action.title}
+                </Link>
+                <span>{action.dueDate ?? actionCopy.noDueDate}</span>
+              </li>
+            ))}
+          </ul>
+          <Link
+            className={styles.questionLink}
+            href={projectActionsHref(locale, workspace.project.businessKey) as Route}
+          >
+            {actionCopy.openActions}
+          </Link>
+        </section>
+      ) : null}
 
       <section className={styles.panel} aria-labelledby="project-questions-title">
         <div className={styles.panelHeader}>

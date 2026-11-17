@@ -1,0 +1,7 @@
+{
+  "src/components/accessibility/use-modal-focus.ts": "ca31d3c27fd12f9fd6396413aa5941d6ded42c97dec78c8cf8d5ed0b8544c5fb",
+  "src/components/evidence/evidence-panel.tsx": "df45278aa6ce84a5cbe592ca49d39b13d8b4e80c1e91bae6a70f72da6167e5c2",
+  "src/components/comparisons/comparison-experience-client.tsx": "db73fd0adb9f8b1d197467136519e29cd61bfc1f6d40c981e25014a7a7194183",
+  "src/app/[locale]/projects/[projectKey]/compare/page.tsx": "bbbc2ee26655529cc26329ebfd8fd6b8a1f087008a98208db556c1a90f7efa59",
+  "tests/evidence-panel/modal-focus.test.ts": "0c49cd464b0b49b8e8576dae5d12be0378844041f4b1cfbf41e0e91e752efb85"
+}

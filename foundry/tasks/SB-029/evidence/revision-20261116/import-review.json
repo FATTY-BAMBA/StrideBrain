@@ -1,0 +1,42 @@
+{
+  "reviewedAt": "2026-11-16T06:02:10.465205+00:00",
+  "evidenceCommit": "0c9b4293a9e91aa6121b8571e7f22537b131760d",
+  "directParent": "13e7191f340e998c93b644949602f1c0774fe9ff",
+  "changedFiles": 176,
+  "allPathsWithinApprovedRun": true,
+  "artifactHashesVerified": 175,
+  "sourceEvidenceUnchanged": true,
+  "counts": {
+    "PASS": 9,
+    "FAIL": 3,
+    "PARTIAL": 5,
+    "BLOCKED": 1
+  },
+  "findings": {
+    "F-01": [
+      "QA-18"
+    ],
+    "F-02": [
+      "QA-05"
+    ],
+    "F-03": [
+      "QA-16",
+      "QA-18"
+    ]
+  },
+  "reviewed": [
+    "REPORT.txt",
+    "FINDINGS.txt",
+    "computer-qa-report.json",
+    "screenshot-review.json",
+    "final-integrity.json",
+    "publication-sanitization.json",
+    "reproduction URL/DOM captures and relevant screenshots"
+  ],
+  "qualifications": [
+    "Eight loading-only and nine pre-result screenshots do not prove final states.",
+    "QA-15 unsupported capabilities remain blocked; five partial cases need remaining variants.",
+    "Original report, restoration evidence and published sanitization retain their original scope.",
+    "Repair validation does not replace independent browser retesting."
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "results": [
+    {
+      "name": "successful-reset-preserves-unrelated-tenant-audit",
+      "result": "PASS",
+      "facts": {
+        "unrelated_tenant": 1,
+        "unrelated_audit": 1,
+        "horizon_projects": 29,
+        "enabled_triggers": 4
+      }
+    },
+    {
+      "name": "non-synthetic-classification-refuses-reset",
+      "result": "PASS",
+      "message": "SYNTHETIC_FIXTURE_RESET_REFUSED"
+    },
+    {
+      "name": "failed-reset-restores-fixture-and-all-triggers",
+      "result": "PASS",
+      "message": "SCHEMA_RESET_FAILURE",
+      "facts": {
+        "unrelated_tenant": 1,
+        "unrelated_audit": 1,
+        "horizon_projects": 29,
+        "enabled_triggers": 4
+      }
+    }
+  ]
+}

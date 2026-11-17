@@ -1,0 +1,95 @@
+
+> stridebrain@0.1.0 test
+> vitest run tests/internal-review/postgres-invariants.test.ts --testNamePattern=rejects changed project state|repeatably reseeds|refuses a fixture reset --reporter=verbose
+
+
+ RUN  v4.1.10 /workspace/StrideBrain
+
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > prepares and creates the verified canonical action as Project Manager/Estimator
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > prepares and creates the verified canonical action as Financial Reviewer
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > prepares and creates the verified canonical action as Organization Admin
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > reopens one deterministic proposal and localized review without creating an action
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > denies Viewer direct proposal/create/reopen/list before sensitive reads
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects cross-organization project/run/enrichment/proposal/receipt selectors neutrally
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid title without consuming a proposal
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid title without consuming a proposal
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid title without consuming a proposal
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid rationale without consuming a proposal
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid rationale without consuming a proposal
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid rationale without consuming a proposal
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid dueDate without consuming a proposal
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid dueDate without consuming a proposal
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid dueDate without consuming a proposal
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid confirmation without consuming a proposal
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > preserves mandatory statements when bounded title and rationale alternatives are selected
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed comparison input at confirmation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed comparison policy at confirmation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed comparison calculation at confirmation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed economics source at confirmation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed economics input at confirmation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed economics permission at confirmation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed economics structural at confirmation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed economics policy at confirmation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed economics calculation at confirmation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects tampered immutable ComparisonRun result snapshots
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects tampered immutable EconomicsEnrichmentRun result snapshots
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects the comparison source fingerprint changing
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects the comparison permission fingerprint changing
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed project state without an action
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"491036bb-7679-465f-b196-dd01c2b865ae","outcome":"STALE_COMPARISON"}
+
+ ✓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed project state without an action 534ms
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed project record without an action
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed project deletion without an action
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed programme without an action
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects an active quotation version change
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects required evidence locator mutation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects required evidence supportedValue mutation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects required evidence dataClassification mutation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects required evidence organizationId mutation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects required evidence authorityState mutation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects required evidence authorityState mutation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects required evidence staleAt mutation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects required evidence subjectId mutation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects a changed locator that predates proposal preparation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects a newly inserted open conflict on required evidence
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects a required source crossing its stale date without a source edit or proposal expiry
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects quote validity crossing organization-local midnight without changing the quote
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > re-resolves current action:internal-review:create denial from the signed session at confirmation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > re-resolves current action:internal-review:propose denial from the signed session at confirmation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > re-resolves current commercial:actual-read denial from the signed session at confirmation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > re-resolves current evidence:read denial from the signed session at confirmation
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed actor Membership.membership_horizon_mei
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed actor Person.person_horizon_mei
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed actor Membership.membership_horizon_mei
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects session revocation and lost action assignment using the previously resolved context
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects foreign assignees and an assignee whose eligibility changes
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > allows only the stored default without action:assign and exposes no alternate people
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects expiry at the boundary, direct proposal alteration and a non-server-issued key
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > replays the same durable receipt after expiry/source change but rejects payload changes
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > serializes concurrent identical confirmations to one action and durable receipt
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects competing same-key different-payload confirmation without a second action
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rolls back every record after injected AFTER_ACTION failure
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rolls back every record after injected AFTER_EVIDENCE failure
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rolls back every record after injected AFTER_AUDIT failure
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rolls back every record after injected AFTER_CONSUMPTION failure
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rolls back every record after injected AFTER_RECEIPT failure
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rolls back every record after injected BEFORE_COMMIT failure
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > observes a source writer committed before the confirmation lock boundary
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > blocks a source mutation arriving after authoritative locks until the action commits
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > reconstructs the successful audit and protects action, proposal and receipt invariants in SQL
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > shows a durable action in both Actions and Project Workspace and reopens it in Chinese
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer commercial:actual-read downgrade
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer evidence:read downgrade
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer action:internal-review:create downgrade
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides a committed action when required evidence becomes tenant-restricted
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > measures uncached proposal and confirmation p95 with SQL query counts
+ ↓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > records concurrent confirmation latency without duplicating business state
+ ✓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > repeatably reseeds after real actions and restores all immutability triggers 45809ms
+ ✓ tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > refuses a fixture reset against non-synthetic identities without disabling audit protections 1916ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed | 76 skipped (79)
+   Start at  05:53:01
+   Duration  73.69s (transform 530ms, setup 0ms, import 743ms, tests 72.75s, environment 0ms)
+

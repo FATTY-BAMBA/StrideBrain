@@ -1,4 +1,5 @@
 import { getPrismaClient } from "@/lib/server/prisma";
+import { createInternalReviewServices } from "@/lib/server/internal-review-services";
 import { GetProjectWorkspace } from "@/modules/projects/application/get-project-workspace";
 import {
   PrismaProjectRepository,
@@ -17,5 +18,24 @@ export function createProjectWorkspaceService(): GetProjectWorkspace {
   return new GetProjectWorkspace(
     new PrismaProjectRepository(database),
     new PrismaProjectWorkspaceRepository(database),
+    undefined,
+    undefined,
+    {
+      async list(context, projectKey) {
+        const result = await createInternalReviewServices().listProjectActions(
+          context,
+          projectKey,
+          context.locale,
+        );
+        return result.kind === "AVAILABLE"
+          ? result.actions.map((action) => ({
+              id: action.businessKey,
+              title: action.title,
+              status: action.status,
+              dueDate: action.dueDate ? new Date(`${action.dueDate}T00:00:00Z`) : null,
+            }))
+          : [];
+      },
+    },
   );
 }

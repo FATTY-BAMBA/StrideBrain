@@ -1,0 +1,52 @@
+{
+  "verifiedAt": "2026-11-16T06:15:07.929979+00:00",
+  "applicationHead": "df63c90ca994653299082fc5078ad0b5ef595292",
+  "sourceTreeFingerprintSha256": "82ce9a43b9bf4da5280c09cb839eeb277213acd09b73e46aa0a8f15f2758a460",
+  "buildId": "4Zn6yTS6DP2jLb0DDZye_",
+  "url": "http://localhost:3000",
+  "bindHostname": "localhost",
+  "production": true,
+  "appSessionId": 2025,
+  "operatorSessionId": 27567,
+  "operatorPort": 3001,
+  "container": "stridebrain-sb029-revision-qa",
+  "database": "stridebrain_sb029_revision",
+  "databasePort": 54330,
+  "data": "DEMO_SYNTHETIC",
+  "node": "v24.22.3",
+  "postgres": "postgres (PostgreSQL) 17.12 (Debian 17.12-1.pgdg13+1)",
+  "postgresImage": "[\"postgres@sha256:0d938e975177bef9f1f61f3f9dbcf2e0aa0a139568f66d3415ed8892eb97f6ac\"]",
+  "httpChecks": [
+    {
+      "path": "/en/projects/PRJ-XINYI-026",
+      "status": 200,
+      "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+      "authenticated": false
+    },
+    {
+      "path": "/zh-TW/projects/PRJ-XINYI-026",
+      "status": 200,
+      "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+      "authenticated": false
+    },
+    {
+      "path": "/api/actions/internal-review/not-a-receipt",
+      "status": 404,
+      "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+      "authenticated": false
+    },
+    {
+      "path": "/api/actions/not-a-receipt",
+      "status": 403,
+      "cacheControl": "private, no-store",
+      "authenticated": false
+    }
+  ],
+  "operatorPreflight": "PASS: expected database and DemoSession schema; source imports pass; no session issued.",
+  "status": "PREVIEW_READY_FOR_INDEPENDENT_RETEST_AFTER_EXACT_HEAD_CI",
+  "browserChecks": "NOT_RUN",
+  "startupWarning": "Next ignored an unrelated parent-directory package-lock outside this Git repository; no source/config change required.",
+  "operatorSessionsIssued": 0,
+  "activeSessionsAfterTestCleanup": 0,
+  "testSessionsRevoked": 2
+}

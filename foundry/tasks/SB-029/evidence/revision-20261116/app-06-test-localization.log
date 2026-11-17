@@ -1,0 +1,13 @@
+
+> stridebrain@0.1.0 test:localization
+> vitest run tests/localization
+
+
+ RUN  v4.1.10 <WORKSPACE>
+
+
+ Test Files  4 passed (4)
+      Tests  12 passed (12)
+   Start at  14:13:40
+   Duration  143ms (transform 122ms, setup 0ms, import 151ms, tests 19ms, environment 0ms)
+

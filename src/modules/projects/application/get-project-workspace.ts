@@ -21,6 +21,7 @@ import type {
   CurrentForecastRecord,
   CurrentQuoteRecord,
   ProjectEvidenceConflictRecord,
+  ProjectActionRecord,
   ProjectEvidenceRecord,
   ProjectSupplierOfferRecord,
   ProjectWorkspaceRepositoryPort,
@@ -268,6 +269,9 @@ export class GetProjectWorkspace {
     private readonly workspace: ProjectWorkspaceRepositoryPort,
     private readonly authorization = new AuthorizationService(),
     private readonly clock: () => Date = () => new Date(),
+    private readonly authorizedActions?: Readonly<{
+      list(context: RuntimeContext, projectKey: string): Promise<readonly ProjectActionRecord[]>;
+    }>,
   ) {}
 
   async execute(context: RuntimeContext, projectKey: string): Promise<ProjectWorkspaceOutcome> {
@@ -327,9 +331,9 @@ export class GetProjectWorkspace {
       allowed(forecastDecision)
         ? this.workspace.listSupplierOffers(context.organizationId, base.id)
         : Promise.resolve([]),
-      context.role === "VIEWER"
-        ? Promise.resolve([])
-        : this.workspace.listOpenActions(context.organizationId, base.id),
+      this.authorizedActions
+        ? this.authorizedActions.list(context, projectKey)
+        : Promise.resolve([]),
     ]);
 
     const evidenceIds = evidence.map((item) => item.evidenceReferenceId);

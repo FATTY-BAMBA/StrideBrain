@@ -1,6 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { StaleComparisonNotice } from "@/components/comparisons/stale-comparison-notice";
+import { useCallback, useRef, type ReactNode } from "react";
+import { useModalFocus } from "@/components/accessibility/use-modal-focus";
+import { evidenceSelectionParams } from "@/modules/evidence-panel/route-state";
 
 import type {
   EvidencePanelOutcome,
@@ -15,6 +18,7 @@ import styles from "./evidence-panel.module.css";
 
 type EvidencePanelProps = Readonly<{
   outcome: EvidencePanelOutcome;
+  selection?: EvidencePanelSelection | null | undefined;
   locale: Locale;
   onClose: () => void;
   onNavigate: (selection: EvidencePanelSelection) => void;
@@ -27,34 +31,104 @@ function panelStateText(outcome: Exclude<EvidencePanelOutcome, { kind: "READY" }
   return "UNAVAILABLE";
 }
 
-function StatePanel({
-  outcome,
+function selectionKey(selection: EvidencePanelSelection): string {
+  return JSON.stringify([
+    selection.comparisonRunId,
+    Object.entries(evidenceSelectionParams(selection)).sort(([a], [b]) => a.localeCompare(b)),
+  ]);
+}
+
+// Route selectors only: returning to a parent always requests fresh server authorization.
+function parentSelection(selection: EvidencePanelSelection | null | undefined) {
+  if (!selection || (selection.mode !== "SOURCE" && selection.mode !== "CONFLICT")) return null;
+  if (selection.mode === "CONFLICT" && selection.sourceKey) {
+    return {
+      mode: "SOURCE" as const,
+      comparisonRunId: selection.comparisonRunId,
+      sourceKey: selection.sourceKey,
+      enrichmentRunId: selection.enrichmentRunId,
+      claimKey: selection.claimKey,
+      candidateProjectKey: selection.candidateProjectKey,
+      factorKey: selection.factorKey,
+    };
+  }
+  if (selection.claimKey && selection.enrichmentRunId) {
+    return {
+      mode: "CLAIM" as const,
+      comparisonRunId: selection.comparisonRunId,
+      enrichmentRunId: selection.enrichmentRunId,
+      claimKey: selection.claimKey,
+    };
+  }
+  if (selection.candidateProjectKey && selection.factorKey) {
+    return {
+      mode: "FACTOR" as const,
+      comparisonRunId: selection.comparisonRunId,
+      candidateProjectKey: selection.candidateProjectKey,
+      factorKey: selection.factorKey,
+    };
+  }
+  return null;
+}
+
+function PanelFrame({
+  locale,
+  heading,
+  focusKey,
+  state,
   onClose,
+  hasParent,
+  resolveInitialFocus,
+  children,
+}: Readonly<{
+  locale: Locale;
+  heading: EvidencePanelView["heading"];
+  focusKey: string;
+  state?: string | undefined;
+  onClose: () => void;
+  hasParent: boolean;
+  resolveInitialFocus: (panel: HTMLElement) => HTMLElement | null;
+  children: ReactNode;
+}>) {
+  const copy = getEvidencePanelCopy(locale);
+  const { panelRef, headingRef } = useModalFocus({ focusKey, onClose, resolveInitialFocus });
+  return (
+    <div className={styles.overlay} role="presentation" onMouseDown={onClose}>
+      <aside
+        aria-labelledby="evidence-panel-title"
+        aria-modal="true"
+        className={styles.panel}
+        data-state={state}
+        onMouseDown={(event) => event.stopPropagation()}
+        ref={panelRef}
+        role="dialog"
+      >
+        <header className={styles.header}>
+          <div>
+            <p className={styles.eyebrow}>{heading.eyebrow}</p>
+            <h2 id="evidence-panel-title" ref={headingRef} tabIndex={-1}>
+              {heading.title}
+            </h2>
+            {heading.description ? <p>{heading.description}</p> : null}
+          </div>
+          <button className={styles.closeButton} onClick={onClose} type="button">
+            {hasParent ? copy.back : copy.close}
+          </button>
+        </header>
+        {children}
+      </aside>
+    </div>
+  );
+}
+
+function StateContent({
+  outcome,
   locale,
 }: Readonly<{
   outcome: Exclude<EvidencePanelOutcome, { kind: "READY" }>;
-  onClose: () => void;
   locale: Locale;
 }>) {
   const copy = getEvidencePanelCopy(locale);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-
-  useEffect(() => {
-    headingRef.current?.focus();
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key !== "Escape") return;
-      event.preventDefault();
-      onClose();
-    }
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [onClose]);
-
   const message =
     outcome.kind === "ACCESS_CHANGED"
       ? copy.accessChanged
@@ -62,33 +136,11 @@ function StatePanel({
         ? copy.restricted
         : copy.unavailable;
   return (
-    <div className={styles.overlay} role="presentation" onMouseDown={onClose}>
-      <aside
-        aria-label={copy.title}
-        aria-modal="true"
-        className={styles.panel}
-        data-state={panelStateText(outcome)}
-        onMouseDown={(event) => event.stopPropagation()}
-        role="dialog"
-      >
-        <header className={styles.header}>
-          <div>
-            <p className={styles.eyebrow}>{copy.eyebrow}</p>
-            <h2 ref={headingRef} tabIndex={-1}>
-              {copy.title}
-            </h2>
-          </div>
-          <button className={styles.closeButton} onClick={onClose} type="button">
-            {copy.close}
-          </button>
-        </header>
-        <section className={styles.stateMessage} data-tone="CAUTION">
-          <strong>{message}</strong>
-          <span>{copy.unavailable}</span>
-          <small>{outcome.requestId}</small>
-        </section>
-      </aside>
-    </div>
+    <section className={styles.stateMessage} data-tone="CAUTION">
+      <strong>{message}</strong>
+      <span>{copy.unavailable}</span>
+      <small>{outcome.requestId}</small>
+    </section>
   );
 }
 
@@ -179,40 +231,32 @@ function SourceCard({
 
       <footer className={styles.sourceActions}>
         {mode !== "SOURCE" ? (
-          <button type="button" onClick={() => onNavigate(source.sourceSelection)}>
+          <button
+            type="button"
+            data-panel-trigger={selectionKey(source.sourceSelection)}
+            onClick={() => onNavigate(source.sourceSelection)}
+          >
             {copy.inspectSource}
           </button>
         ) : null}
-        {source.conflictKeys.map((conflictKey) => (
-          <button
-            key={conflictKey}
-            type="button"
-            onClick={() =>
-              onNavigate({
-                mode: "CONFLICT",
-                comparisonRunId: source.sourceSelection.comparisonRunId,
-                ...(source.sourceSelection.mode === "SOURCE" &&
-                source.sourceSelection.enrichmentRunId
-                  ? { enrichmentRunId: source.sourceSelection.enrichmentRunId }
-                  : {}),
-                conflictKey,
-                sourceKey: source.sourceKey,
-                ...(source.sourceSelection.mode === "SOURCE" && source.sourceSelection.claimKey
-                  ? { claimKey: source.sourceSelection.claimKey }
-                  : {}),
-                ...(source.sourceSelection.mode === "SOURCE" &&
-                source.sourceSelection.candidateProjectKey
-                  ? { candidateProjectKey: source.sourceSelection.candidateProjectKey }
-                  : {}),
-                ...(source.sourceSelection.mode === "SOURCE" && source.sourceSelection.factorKey
-                  ? { factorKey: source.sourceSelection.factorKey }
-                  : {}),
-              })
-            }
-          >
-            {copy.inspectConflict}
-          </button>
-        ))}
+        {source.conflictKeys.map((conflictKey) => {
+          const selection: EvidencePanelSelection = {
+            ...source.sourceSelection,
+            mode: "CONFLICT",
+            conflictKey,
+            sourceKey: source.sourceKey,
+          };
+          return (
+            <button
+              key={conflictKey}
+              type="button"
+              data-panel-trigger={selectionKey(selection)}
+              onClick={() => onNavigate(selection)}
+            >
+              {copy.inspectConflict}
+            </button>
+          );
+        })}
       </footer>
     </article>
   );
@@ -253,7 +297,7 @@ function Trace({ view }: Readonly<{ view: EvidencePanelView }>) {
           </div>
         </dl>
         <p className={styles.traceExplanation}>{trace.explanationLabel}</p>
-        <small>{trace.policyVersion}</small>
+        <small>{trace.policyDescription}</small>
       </section>
     );
   }
@@ -263,15 +307,15 @@ function Trace({ view }: Readonly<{ view: EvidencePanelView }>) {
       <dl className={styles.traceGrid}>
         <div>
           <dt>{copy.fields.operation}</dt>
-          <dd>{trace.operation}</dd>
+          <dd>{trace.operationLabel}</dd>
         </div>
         <div>
           <dt>{copy.fields.aggregation}</dt>
-          <dd>{trace.aggregation}</dd>
+          <dd>{trace.aggregationLabel}</dd>
         </div>
         <div>
           <dt>{copy.fields.rounding}</dt>
-          <dd>{trace.rounding}</dd>
+          <dd>{trace.roundingLabel}</dd>
         </div>
         <div>
           <dt>{copy.fields.generated}</dt>
@@ -281,9 +325,10 @@ function Trace({ view }: Readonly<{ view: EvidencePanelView }>) {
       <div className={styles.traceInputs}>
         {trace.inputs.map((input) => (
           <div key={`${input.projectKey}-${input.normalizedValueLabel}`}>
-            <strong>{input.projectKey}</strong>
+            <strong>{input.projectLabel}</strong>
+            {input.observationLabel ? <span>{input.observationLabel}</span> : null}
             <span>{input.normalizedValueLabel}</span>
-            <small>{input.sourceCount} source(s)</small>
+            <small>{input.sourceCountLabel}</small>
           </div>
         ))}
       </div>
@@ -295,187 +340,200 @@ function Trace({ view }: Readonly<{ view: EvidencePanelView }>) {
           </div>
         ))}
       </dl>
-      <small>{trace.calculationVersion}</small>
+      <small>{trace.policyDescription}</small>
     </section>
   );
 }
 
-function ReadyPanel({
+function ReadyContent({
   view,
-  onClose,
+  onBack,
   onNavigate,
 }: Readonly<{
   view: EvidencePanelView;
-  onClose: () => void;
+  onBack: () => void;
   onNavigate: (selection: EvidencePanelSelection) => void;
 }>) {
   const copy = getEvidencePanelCopy(view.locale);
-  const panelRef = useRef<HTMLElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-
-  useEffect(() => {
-    headingRef.current?.focus();
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, []);
-
-  useEffect(() => {
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        onClose();
-        return;
-      }
-      if (event.key !== "Tab") return;
-      const panel = panelRef.current;
-      if (!panel) return;
-      const focusable = [
-        ...panel.querySelectorAll<HTMLElement>(
-          'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])',
-        ),
-      ].filter((element) => !element.hasAttribute("hidden"));
-      if (focusable.length === 0) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (!first || !last) return;
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    }
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [onClose]);
-
   return (
-    <div className={styles.overlay} role="presentation" onMouseDown={onClose}>
-      <aside
-        aria-labelledby="evidence-panel-title"
-        aria-modal="true"
-        className={styles.panel}
-        onMouseDown={(event) => event.stopPropagation()}
-        ref={panelRef}
-        role="dialog"
-      >
-        <header className={styles.header}>
-          <div>
-            <p className={styles.eyebrow}>{view.heading.eyebrow}</p>
-            <h2 id="evidence-panel-title" ref={headingRef} tabIndex={-1}>
-              {view.heading.title}
-            </h2>
-            <p>{view.heading.description}</p>
+    <>
+      <div className={styles.contextBar} data-comparison-run-id={view.context.comparisonRunId}>
+        <strong>{view.context.projectName}</strong>
+        <span>{view.context.snapshotLabel}</span>
+      </div>
+
+      <StaleComparisonNotice
+        freshness={view.context.freshness}
+        locale={view.locale}
+        projectKey={view.context.projectKey}
+      />
+
+      {view.backSelection ? (
+        <button className={styles.backButton} type="button" onClick={onBack}>
+          {copy.back}
+        </button>
+      ) : null}
+
+      {view.claim ? (
+        <section className={styles.claimSummary}>
+          <p className={styles.eyebrow}>{view.claim.kindLabel}</p>
+          {view.claim.valueLabel ? <strong>{view.claim.valueLabel}</strong> : null}
+          <div className={styles.conditionRow}>
+            {view.claim.observationTypeLabel ? (
+              <span>{view.claim.observationTypeLabel}</span>
+            ) : null}
+            {view.claim.authorityLabel ? <span>{view.claim.authorityLabel}</span> : null}
+            {view.claim.sufficiencyLabel ? <span>{view.claim.sufficiencyLabel}</span> : null}
           </div>
-          <button className={styles.closeButton} onClick={onClose} type="button">
-            {copy.close}
-          </button>
-        </header>
-
-        <div className={styles.contextBar}>
-          <strong>{view.context.projectName}</strong>
-          <span>{view.context.snapshotLabel}</span>
-          <code>{view.context.comparisonRunId}</code>
-        </div>
-
-        {view.backSelection ? (
-          <button
-            className={styles.backButton}
-            type="button"
-            onClick={() => onNavigate(view.backSelection!)}
-          >
-            {copy.back}
-          </button>
-        ) : null}
-
-        {view.claim ? (
-          <section className={styles.claimSummary}>
-            <p className={styles.eyebrow}>{view.claim.kindLabel}</p>
-            {view.claim.valueLabel ? <strong>{view.claim.valueLabel}</strong> : null}
-            <div className={styles.conditionRow}>
-              {view.claim.observationTypeLabel ? (
-                <span>{view.claim.observationTypeLabel}</span>
-              ) : null}
-              {view.claim.authorityLabel ? <span>{view.claim.authorityLabel}</span> : null}
-              {view.claim.sufficiencyLabel ? <span>{view.claim.sufficiencyLabel}</span> : null}
-            </div>
-            {view.claim.warningLabels.map((warning) => (
-              <p className={styles.warning} key={warning}>
-                {warning}
-              </p>
-            ))}
-          </section>
-        ) : null}
-
-        {view.notices.map((notice) => (
-          <div className={styles.notice} data-tone={notice.tone} key={notice.text} role="status">
-            {notice.text}
-          </div>
-        ))}
-
-        <Trace view={view} />
-
-        {view.relatedClaims?.length ? (
-          <section className={styles.relatedClaims}>
-            <h3>{copy.relatedClaims}</h3>
-            <ul>
-              {view.relatedClaims.map((claim) => (
-                <li key={claim.claimKey}>
-                  <strong>{claim.title}</strong>
-                  <span>{claim.kindLabel}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ) : null}
-
-        {view.conflict ? (
-          <section className={styles.conflictSection}>
-            <h3>{copy.conflicts}</h3>
-            <dl className={styles.traceGrid}>
-              <div>
-                <dt>{copy.conflictStatus}</dt>
-                <dd>{view.conflict.statusLabel}</dd>
-              </div>
-              <div>
-                <dt>{copy.conflictImpact}</dt>
-                <dd>{view.conflict.impactLabel}</dd>
-              </div>
-            </dl>
-          </section>
-        ) : null}
-
-        <section className={styles.sourcesSection} aria-labelledby="evidence-sources-title">
-          <h3 id="evidence-sources-title">{copy.sourceList}</h3>
-          {view.sources.length > 0 ? (
-            <div className={styles.sourceList}>
-              {view.sources.map((source) => (
-                <SourceCard
-                  key={source.sourceKey}
-                  source={source}
-                  mode={view.mode}
-                  copy={copy}
-                  onNavigate={onNavigate}
-                />
-              ))}
-            </div>
-          ) : (
-            <p>{copy.noSources}</p>
-          )}
+          {view.claim.warningLabels.map((warning) => (
+            <p className={styles.warning} key={warning}>
+              {warning}
+            </p>
+          ))}
         </section>
-      </aside>
-    </div>
+      ) : null}
+
+      {view.notices.map((notice) => (
+        <div className={styles.notice} data-tone={notice.tone} key={notice.text} role="status">
+          {notice.text}
+        </div>
+      ))}
+
+      <Trace view={view} />
+
+      {view.relatedClaims?.length ? (
+        <section className={styles.relatedClaims}>
+          <h3>{copy.relatedClaims}</h3>
+          <ul>
+            {view.relatedClaims.map((claim) => (
+              <li key={claim.claimKey}>
+                <strong>{claim.title}</strong>
+                <span>{claim.kindLabel}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {view.conflict ? (
+        <section className={styles.conflictSection}>
+          <h3>{copy.conflicts}</h3>
+          <dl className={styles.traceGrid}>
+            <div>
+              <dt>{copy.conflictStatus}</dt>
+              <dd>{view.conflict.statusLabel}</dd>
+            </div>
+            <div>
+              <dt>{copy.conflictImpact}</dt>
+              <dd>{view.conflict.impactLabel}</dd>
+            </div>
+          </dl>
+        </section>
+      ) : null}
+
+      <section className={styles.sourcesSection} aria-labelledby="evidence-sources-title">
+        <h3 id="evidence-sources-title">{copy.sourceList}</h3>
+        {view.sources.length > 0 ? (
+          <div className={styles.sourceList}>
+            {view.sources.map((source) => (
+              <SourceCard
+                key={source.sourceKey}
+                source={source}
+                mode={view.mode}
+                copy={copy}
+                onNavigate={onNavigate}
+              />
+            ))}
+          </div>
+        ) : (
+          <p>{copy.noSources}</p>
+        )}
+      </section>
+    </>
   );
 }
 
-export function EvidencePanel({ outcome, locale, onClose, onNavigate }: EvidencePanelProps) {
-  return outcome.kind === "READY" ? (
-    <ReadyPanel view={outcome.view} onClose={onClose} onNavigate={onNavigate} />
-  ) : (
-    <StatePanel outcome={outcome} onClose={onClose} locale={locale} />
+export function EvidencePanel({
+  outcome,
+  selection,
+  locale,
+  onClose,
+  onNavigate,
+}: EvidencePanelProps) {
+  const trail = useRef<Array<{ parent: EvidencePanelSelection; childKey: string }>>([]);
+  const returnTo = useRef<{ key: string; trigger: string } | null>(null);
+  const key = selection
+    ? selectionKey(selection)
+    : JSON.stringify(
+        outcome.kind === "READY"
+          ? [outcome.view.mode, outcome.view.selectedSourceKey, outcome.view.claim?.claimKey]
+          : outcome.kind,
+      );
+  const parent =
+    parentSelection(selection) ?? (outcome.kind === "READY" ? outcome.view.backSelection : null);
+
+  const navigate = useCallback(
+    (next: EvidencePanelSelection) => {
+      const nextKey = selectionKey(next);
+      const ancestor = trail.current.findLastIndex((step) => selectionKey(step.parent) === nextKey);
+      if (ancestor >= 0) {
+        returnTo.current = { key: nextKey, trigger: trail.current[ancestor]!.childKey };
+        trail.current = trail.current.slice(0, ancestor);
+      } else {
+        const current = trail.current.findLastIndex((step) => step.childKey === key);
+        trail.current = trail.current.slice(0, current + 1);
+        if (selection) trail.current.push({ parent: selection, childKey: nextKey });
+        returnTo.current = null;
+      }
+      onNavigate(next);
+    },
+    [key, selection, onNavigate],
+  );
+
+  const closeLayer = useCallback(() => {
+    const step = trail.current.findLast((entry) => entry.childKey === key);
+    const destination = step?.parent ?? parent;
+    if (!destination) {
+      onClose();
+      return;
+    }
+    returnTo.current = { key: selectionKey(destination), trigger: key };
+    const index = trail.current.findLastIndex((entry) => entry.childKey === key);
+    if (index >= 0) trail.current = trail.current.slice(0, index);
+    onNavigate(destination);
+  }, [key, parent, onClose, onNavigate]);
+
+  const resolveInitialFocus = useCallback(
+    (panel: HTMLElement) => {
+      if (returnTo.current?.key !== key) return null;
+      return (
+        [...panel.querySelectorAll<HTMLElement>("[data-panel-trigger]")].find(
+          (element) => element.dataset.panelTrigger === returnTo.current?.trigger,
+        ) ?? null
+      );
+    },
+    [key],
+  );
+  const copy = getEvidencePanelCopy(locale);
+  return (
+    <PanelFrame
+      locale={locale}
+      heading={
+        outcome.kind === "READY"
+          ? outcome.view.heading
+          : { eyebrow: copy.eyebrow, title: copy.title, description: "" }
+      }
+      focusKey={`${locale}:${key}:${outcome.kind}`}
+      state={outcome.kind === "READY" ? undefined : panelStateText(outcome)}
+      onClose={closeLayer}
+      hasParent={!!parent}
+      resolveInitialFocus={resolveInitialFocus}
+    >
+      {outcome.kind === "READY" ? (
+        <ReadyContent view={outcome.view} onBack={closeLayer} onNavigate={navigate} />
+      ) : (
+        <StateContent outcome={outcome} locale={locale} />
+      )}
+    </PanelFrame>
   );
 }

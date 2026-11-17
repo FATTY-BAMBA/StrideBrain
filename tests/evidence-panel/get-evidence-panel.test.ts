@@ -1,3 +1,6 @@
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { EvidencePanel } from "@/components/evidence/evidence-panel";
 import { describe, expect, it, vi } from "vitest";
 
 import {
@@ -6,6 +9,7 @@ import {
 } from "@/modules/evidence-panel/application/get-evidence-panel";
 import type { Stage4ComparisonResult } from "@/modules/comparisons/domain/contracts";
 import type { Stage5EconomicsResult } from "@/modules/economics/domain/contracts";
+import type { EvidencePanelSelection } from "@/modules/evidence-panel/contracts";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import type { ComparisonRunRepositoryPort } from "@/repositories/ports/comparison-run-repository";
 import type { EconomicsEnrichmentRunRepositoryPort } from "@/repositories/ports/economics-enrichment-run-repository";
@@ -276,7 +280,14 @@ function service(overrides: Partial<EvidencePanelRepositoryPort> = {}) {
     getAuthorizedConflict: vi.fn().mockResolvedValue(null),
     ...overrides,
   };
-  return new GetEvidencePanel(comparisons, economics, evidence);
+  return new GetEvidencePanel(comparisons, economics, evidence, {
+    check: async () => ({
+      comparisonRunId: stage4.run.id,
+      enrichmentRunId: stage5.run.id,
+      state: "CURRENT",
+      changedSources: [],
+    }),
+  });
 }
 
 describe("GetEvidencePanel", () => {
@@ -434,4 +445,193 @@ describe("GetEvidencePanel", () => {
     expect(outcome).toEqual({ kind: "UNAVAILABLE", requestId: "REQ-EVIDENCE-001" });
     expect(getAuthorizedConflict).not.toHaveBeenCalled();
   });
+});
+
+describe("QA-16/18 rendered evidence localization and financial authority", () => {
+  const selection = {
+    mode: "CLAIM" as const,
+    comparisonRunId: "cmprun-1",
+    enrichmentRunId: "econrun-1",
+    claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+  };
+  it.each(["en", "zh-TW"] as const)(
+    "F-03 localizes programmeWeeks in claim, source and factor rendering in %s without changing provenance",
+    async (locale) => {
+      const original = {
+        ...source,
+        locator: { kind: "project", field: "programmeWeeks" },
+        previewFields: [{ key: "programmeWeeks", value: "19.00" }],
+      };
+      const snapshot = JSON.stringify(original);
+      const selections: EvidencePanelSelection[] = [
+        selection,
+        {
+          ...selection,
+          mode: "SOURCE",
+          sourceKey: evidenceSourceKey("cmprun-1", original.referenceId),
+        },
+        {
+          mode: "FACTOR",
+          comparisonRunId: "cmprun-1",
+          candidateProjectKey: "PRJ-NEIHU-021",
+          factorKey: "AREA_SIMILARITY",
+        },
+      ];
+      for (const selected of selections) {
+        const outcome = await service({
+          getAuthorizedSources: vi
+            .fn()
+            .mockResolvedValue({ kind: "COMPLETE", sources: [original] }),
+        }).execute(context, selected, locale);
+        if (outcome.kind !== "READY") throw Error("READY_REQUIRED");
+        const label = locale === "zh-TW" ? "工期（週）" : "Programme in weeks";
+        expect(outcome.view.sources[0]?.locatorLabel).toContain(label);
+        expect(outcome.view.sources[0]?.preview).toMatchObject({
+          fields: [{ label, value: "19.00" }],
+        });
+        const markup = renderToStaticMarkup(
+          createElement(EvidencePanel, {
+            outcome,
+            locale,
+            onClose: () => {},
+            onNavigate: () => {},
+          }),
+        );
+        // Covers visible source cards/exact locators and all accessible attributes.
+        expect(markup).toContain(label);
+        expect(markup).not.toContain("programmeWeeks");
+        expect(JSON.stringify(original)).toBe(snapshot);
+        expect(original.locator.field).toBe("programmeWeeks");
+      }
+    },
+  );
+  it.each(["en", "zh-TW"] as const)(
+    "renders every source observation type accurately in %s without changing stored authority",
+    async (locale) => {
+      const pairs = [
+        ["QUOTED_PRICE", "APPROVED_COMMERCIAL", "Quoted price", "報價"],
+        ["SUPPLIER_OFFER", "APPROVED_COMMERCIAL", "Supplier offer", "供應商報價"],
+        ["FORECAST_DIRECT_COST", "HUMAN_REVIEWED", "Forecast direct cost", "預估直接成本"],
+        ["RECONCILED_ACTUAL_COST", "RECONCILED_ACTUAL", "Reconciled actual cost", "已核對實際成本"],
+      ] as const;
+      for (const [observationType, authorityState, en, zh] of pairs) {
+        const original = { ...source, observationType, authorityState };
+        const snapshot = JSON.stringify(original);
+        const outcome = await service({
+          getAuthorizedSources: vi
+            .fn()
+            .mockResolvedValue({ kind: "COMPLETE", sources: [original] }),
+        }).execute(context, selection, locale);
+        if (outcome.kind !== "READY") throw Error("READY_REQUIRED");
+        expect(outcome.view.sources[0]).toMatchObject({
+          observationType,
+          authorityState,
+          observationTypeLabel: locale === "en" ? en : zh,
+        });
+        const html = renderToStaticMarkup(
+          createElement(EvidencePanel, {
+            outcome,
+            locale,
+            onClose: () => {},
+            onNavigate: () => {},
+          }),
+        );
+        const text = html.replace(/<[^>]*>/g, " ");
+        expect(text).toContain(locale === "en" ? en : zh);
+        expect(text).not.toMatch(
+          /IMPORTED_STONE|HALF_UP|TWD_PER_M2|source\(s\)|CPI-SIM|CPI-ECON|Currentnormalizedamount|Descriptionen|Unitprice|Code:|State:/,
+        );
+        expect(JSON.stringify(original)).toBe(snapshot);
+      }
+    },
+  );
+  it("selects the Chinese source description, retains exact line/version locator and translates the factor method", async () => {
+    const localizedSource = {
+      ...source,
+      locator: {
+        kind: "forecast-cost-line",
+        lineNumber: 4,
+        categoryId: "IMPORTED_STONE",
+        version: "v3",
+      },
+      previewFields: [
+        { key: "descriptionEn", value: "Imported stone and hard finishes" },
+        { key: "descriptionZhTw", value: "進口石材與硬質面材" },
+        { key: "unitPrice", value: "2360000.00" },
+        { key: "unit", value: "lot" },
+        { key: "status", value: "APPROVED" },
+      ],
+    };
+    const outcome = await service({
+      getAuthorizedSources: vi
+        .fn()
+        .mockResolvedValue({ kind: "COMPLETE", sources: [localizedSource] }),
+      getAuthorizedFactor: vi.fn().mockResolvedValue({
+        ...factor,
+        explanation: { code: "scope_overlap.jaccard", state: "KNOWN" },
+      }),
+    }).execute(
+      context,
+      {
+        mode: "FACTOR",
+        comparisonRunId: "cmprun-1",
+        candidateProjectKey: "PRJ-NEIHU-021",
+        factorKey: "SCOPE_OVERLAP",
+      },
+      "zh-TW",
+    );
+    if (outcome.kind !== "READY") throw Error("READY_REQUIRED");
+    expect(outcome.view.sources[0]?.locatorLabel).toBe(
+      "紀錄類型: 預估成本項目 · 項目編號: 4 · 分類: 進口石材 · 版本: v3",
+    );
+    const text = renderToStaticMarkup(
+      createElement(EvidencePanel, {
+        outcome,
+        locale: "zh-TW",
+        onClose: () => {},
+        onNavigate: () => {},
+      }),
+    ).replace(/<[^>]*>/g, " ");
+    expect(text).toContain("進口石材與硬質面材");
+    expect(text).toContain("NT$2,360,000");
+    expect(text).toContain("共同工作範圍分類數占全部不重複分類數的比例");
+    expect(text).not.toMatch(/Imported stone|scope_overlap|KNOWN|Code|State|CPI-/);
+  });
+});
+
+it("preserves exact source business identifiers and uppercase prose while translating known enum headings", async () => {
+  const preserved = {
+    ...source,
+    titleEn: "Xinyi · Q-XINYI-026-v3 · LED / HVAC",
+    titleZhTw: "信義 · Q-XINYI-026-v3 · LED / HVAC",
+    previewFields: [
+      { key: "descriptionEn", value: "LED" },
+      { key: "descriptionZhTw", value: "HVAC" },
+    ],
+  };
+  for (const locale of ["en", "zh-TW"] as const) {
+    const outcome = await service({
+      getAuthorizedSources: vi.fn().mockResolvedValue({ kind: "COMPLETE", sources: [preserved] }),
+    }).execute(
+      context,
+      {
+        mode: "CLAIM",
+        comparisonRunId: "cmprun-1",
+        enrichmentRunId: "econrun-1",
+        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      },
+      locale,
+    );
+    if (outcome.kind !== "READY") throw Error("READY_REQUIRED");
+    expect(outcome.view.sources[0]?.title).toContain("Q-XINYI-026-v3 · LED / HVAC");
+    expect(outcome.view.sources[0]?.preview).toEqual({
+      state: "STRUCTURED",
+      fields: [
+        {
+          label: locale === "en" ? "Description" : "內容說明",
+          value: locale === "en" ? "LED" : "HVAC",
+        },
+      ],
+    });
+  }
 });

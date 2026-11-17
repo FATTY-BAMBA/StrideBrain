@@ -1,0 +1,54 @@
+{
+  "startedFromHead": "df63c90ca994653299082fc5078ad0b5ef595292",
+  "completedAt": "2026-11-16T06:13:48.152728+00:00",
+  "commands": [
+    {
+      "command": "npm ci --no-audit --no-fund",
+      "exitCode": 0,
+      "durationSeconds": 7.318,
+      "log": "app-01-no-fund.log"
+    },
+    {
+      "command": "npm run format:check",
+      "exitCode": 0,
+      "durationSeconds": 2.061,
+      "log": "app-02-format-check.log"
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "durationSeconds": 3.819,
+      "log": "app-03-lint.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "durationSeconds": 1.722,
+      "log": "app-04-typecheck.log"
+    },
+    {
+      "command": "npm run test",
+      "exitCode": 0,
+      "durationSeconds": 81.148,
+      "log": "app-05-test.log"
+    },
+    {
+      "command": "npm run test:localization",
+      "exitCode": 0,
+      "durationSeconds": 0.536,
+      "log": "app-06-test-localization.log"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "durationSeconds": 6.535,
+      "log": "app-07-build.log"
+    },
+    {
+      "command": "npm audit --omit=dev --audit-level=high",
+      "exitCode": 0,
+      "durationSeconds": 0.556,
+      "log": "app-08-audit-level=high.log"
+    }
+  ]
+}

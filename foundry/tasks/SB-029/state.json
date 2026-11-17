@@ -1,0 +1,1863 @@
+{
+  "taskId": "SB-029",
+  "issueUrl": "https://github.com/FATTY-BAMBA/StrideBrain/issues/29",
+  "state": "READY_FOR_HUMAN",
+  "baseline": "0ecd65bdb0ae752f3244960d6848a74a30d5da01",
+  "branch": "build/sb-029-governed-internal-review",
+  "headCommit": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+  "repairCycles": [
+    {
+      "cycle": 1,
+      "phase": "BUILDING",
+      "status": "PASSED",
+      "startedAt": "2026-11-15T21:44:16.260322Z",
+      "reason": "Initial independent implementation validation identified concrete defects before stable candidate acceptance.",
+      "rootCauses": [
+        "Prisma attempted to decode the void advisory-lock result; initial automated text replacement did not match formatted source.",
+        "Exact evidence ID comparison did not reject duplicate IDs on both sides.",
+        "Linked document access used evidence-subject project assignment instead of document-owner project assignment; receipt required immutable document-binding check.",
+        "Repeated preparation could clear an ineligible stored default assignee instead of rejecting it.",
+        "Independent PostgreSQL harness needed a valid completedAt for CLOSED fixture and text cast for PostgreSQL internal-char trigger metadata.",
+        "GetProjectWorkspace optional safe-action reader omission retained legacy sensitive-title fallback; changed to fail closed.",
+        "Adapter-owned early failures lacked safe operator trace and identity-resolution exception coverage; locked-assignee validation needed focus fallback.",
+        "Create-entry hint checked capability/project state without immutable run-pair sufficiency preflight.",
+        "Plain Stage7 code rollback with retained Stage8 records would restore insecure legacy Action-title reads; corrected reviewed rollback contract."
+      ],
+      "fixPolicy": "Smallest contract-preserving corrections; no permission/evidence policy weakening.",
+      "targetedEvidence": [
+        "validation-build-smoke.json",
+        "tests/internal-review/policy-unit.test.ts",
+        "tests/internal-review/service-unit.test.ts",
+        "tests/repositories/prisma-internal-review-repository.test.ts",
+        "tests/internal-review/postgres-invariants.test.ts"
+      ],
+      "fullRegression": "All 16 independent deterministic commands passed on 4c13f726; 436 tests including 88 PostgreSQL cases; GitHub CI 43767600389 succeeded.",
+      "browserRetest": "Computer QA subsequently attempted; blocked by tool infrastructure before any full scenario completed.",
+      "completedAt": "2026-11-15T22:15:40.510747Z",
+      "evidence": [
+        "validation-final.json",
+        "evidence/ci-4c13f726.json"
+      ]
+    },
+    {
+      "cycle": 2,
+      "phase": "NEEDS_REVISION",
+      "status": "CODE_REPAIR_VALIDATED_BROWSER_RETEST_PENDING",
+      "startedAt": "2026-11-16T06:00:52.192989+00:00",
+      "reason": "Independent local browser QA findings F-01, F-02 and F-03.",
+      "fixPolicy": "Smallest contract-compliant fixes; no authority, authorization or evidence-policy weakening.",
+      "browserRetest": "NOT_RUN. Independent new-run QA remains required; exact-head CI is a prerequisite, not browser acceptance.",
+      "validatedAt": "2026-11-16T06:16:58.467100+00:00",
+      "applicationHead": "df63c90ca994653299082fc5078ad0b5ef595292",
+      "independentReview": "PASS: 69 tests / 15 files; no unresolved blocking code findings.",
+      "fullRegression": "PASS: 455 tests / 59 files, 12 localization tests / 4 files, eight clean migrations and repeat seeds/SQL, format/lint/types, production build and audit 0.",
+      "rootCauses": [
+        "Shared actual-cost row headings covered active forecast cells without per-cell basis labels.",
+        "Editable optimistic sheet preceded canonical proposal navigation; draft writes read stale URL and render snapshots.",
+        "Evidence presentation exposed raw enums, field fallbacks and policy identifiers; narrow header did not wrap."
+      ],
+      "evidence": [
+        "validation-revision.json",
+        "evidence/revision-20261116/",
+        "local-qa-retest-handoff.md"
+      ]
+    }
+  ],
+  "humanMergeApproval": null,
+  "humanReleaseApproval": null,
+  "transitions": [
+    {
+      "from": null,
+      "to": "RESEARCHING",
+      "timestamp": "2026-11-15T21:18:10Z",
+      "reason": "Verified clean repository, current main and supplied merged baseline; fully retrieved Issue #29 and read named governing contracts. Separate specialists assigned before implementation.",
+      "branch": "build/stage-8-internal-review-action",
+      "headCommit": "0ecd65bdb0ae752f3244960d6848a74a30d5da01",
+      "evidence": [
+        "issue-29.json",
+        "brief.md",
+        "git fetch origin main",
+        "git rev-parse HEAD origin/main",
+        "git status --porcelain"
+      ]
+    },
+    {
+      "from": "RESEARCHING",
+      "to": "SPECIFYING",
+      "timestamp": "2026-11-15T21:21:20.608627Z",
+      "reason": "Research completed with source-grounded seam risks and no unresolved authoritative policy conflict; architecture/build contract and independent contract review are in progress.",
+      "branch": "build/stage-8-internal-review-action",
+      "headCommit": "0ecd65bdb0ae752f3244960d6848a74a30d5da01",
+      "evidence": [
+        "research.md",
+        "test-plan.md",
+        "independent-review.md"
+      ]
+    },
+    {
+      "from": "SPECIFYING",
+      "to": "READY_FOR_BUILD",
+      "timestamp": "2026-11-15T21:30:01.020495Z",
+      "reason": "Orchestrator accepts the reviewable architecture and build contract after independent contract verdict PASS; exact reviewed artifact hashes recorded.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "e2b9436c8894c7a3935121a45864462700eade7a",
+      "evidence": [
+        "architecture.md",
+        "build-contract.md",
+        "independent-review.md"
+      ],
+      "contractHashes": {
+        "architecture.md": "6e7737b5cf090fd09311ca899265ce96328c4f34030985c0b4b42a4dd235566a",
+        "build-contract.md": "091e6ca83ec2d644d7651f2db958086d938b792de9f40890c1010cf64b6d4845"
+      }
+    },
+    {
+      "from": "READY_FOR_BUILD",
+      "to": "BUILDING",
+      "timestamp": "2026-11-15T21:30:01.020739Z",
+      "reason": "Authorized Builder and bounded UI/schema Builder specialists to implement only the independently reviewed contract; final review and all Stage8 validation remain pending.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "e2b9436c8894c7a3935121a45864462700eade7a",
+      "evidence": [
+        "architecture.md",
+        "build-contract.md",
+        "independent-review.md"
+      ],
+      "contractHashes": {
+        "architecture.md": "6e7737b5cf090fd09311ca899265ce96328c4f34030985c0b4b42a4dd235566a",
+        "build-contract.md": "091e6ca83ec2d644d7651f2db958086d938b792de9f40890c1010cf64b6d4845"
+      }
+    },
+    {
+      "from": "BUILDING",
+      "to": "CI_VALIDATION",
+      "timestamp": "2026-11-15T22:09:04.630713Z",
+      "reason": "Complete implementation candidate committed/pushed with all stable independent tests and reviewed corrections; exclusive complete validation begins on this exact head.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "4c13f726bb75f4a31d263eb6e54622224807d019",
+      "evidence": [
+        "https://github.com/FATTY-BAMBA/StrideBrain/pull/31",
+        "validation-building.json",
+        "independent-review.md",
+        "test-plan.md"
+      ]
+    },
+    {
+      "from": "CI_VALIDATION",
+      "to": "PREVIEW_READY",
+      "timestamp": "2026-11-15T22:15:40.510747Z",
+      "reason": "All exact-head deterministic gates and GitHub CI passed. Isolated synthetic production preview started and HTTP readiness verified; actual browser QA remains unrun.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "4c13f726bb75f4a31d263eb6e54622224807d019",
+      "evidence": [
+        "validation-final.json",
+        "evidence/ci-4c13f726.json",
+        "computer-qa-plan.yaml",
+        "evidence/computer-qa/preview-database-setup.json"
+      ]
+    },
+    {
+      "from": "PREVIEW_READY",
+      "to": "COMPUTER_QA",
+      "timestamp": "2026-11-15T22:16:04.883769Z",
+      "reason": "Real Cloud browser-computer tool is available; independent Computer QA Coordinator is authorized to execute the exact-head preview handoff. No browser pass asserted.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "4c13f726bb75f4a31d263eb6e54622224807d019",
+      "evidence": [
+        "computer-qa-handoff.md",
+        "computer-qa-plan.yaml",
+        "validation-final.json"
+      ]
+    },
+    {
+      "from": "COMPUTER_QA",
+      "to": "BLOCKED",
+      "timestamp": "2026-11-15T22:25:29.505831Z",
+      "reason": "Actual CUA navigation failed twice before reaching the preview; documented native fallback also has no input provider. No complete browser scenario passed. Preserve isolated PREVIEW_READY build for a separate human-initiated @Computer session; final independent review and merge readiness remain gated.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "4c13f726bb75f4a31d263eb6e54622224807d019",
+      "evidence": [
+        "evidence/computer-qa/cua-infrastructure-blocker.json",
+        "computer-qa-report.json",
+        "computer-qa-handoff.md"
+      ]
+    },
+    {
+      "from": "BLOCKED",
+      "fromVerdict": "BLOCKED_INFRASTRUCTURE",
+      "to": "NEEDS_REVISION",
+      "timestamp": "2026-11-16T06:00:52.192989+00:00",
+      "headCommit": "13e7191f340e998c93b644949602f1c0774fe9ff",
+      "reason": "Imported completed independent local QA: three implementation defects established; infrastructure-only status superseded. Original evidence remains immutable.",
+      "evidence": [
+        "https://github.com/FATTY-BAMBA/StrideBrain/tree/0c9b4293a9e91aa6121b8571e7f22537b131760d/foundry/tasks/SB-029/evidence/local-qa/20261116T041837Z"
+      ]
+    },
+    {
+      "from": "NEEDS_REVISION",
+      "to": "INDEPENDENT_REVIEW",
+      "timestamp": "2026-11-17T06:35:21.040542+00:00",
+      "headCommit": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+      "reason": "User requested final synthesis of completed broad QA, bounded repair delta, independent targeted retest and exact-head CI. Prior task metadata reconciled without rewriting historical runs.",
+      "evidence": [
+        "https://github.com/FATTY-BAMBA/StrideBrain/tree/5985b7b5ef6a87d9312c9d989e90a2d5be6ac19a/foundry/tasks/SB-029/evidence/local-qa/20261117T023357Z",
+        "https://github.com/FATTY-BAMBA/StrideBrain/tree/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z",
+        "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/44021235139"
+      ]
+    },
+    {
+      "from": "INDEPENDENT_REVIEW",
+      "to": "NEEDS_REVISION",
+      "timestamp": "2026-11-17T06:43:42.524086+00:00",
+      "headCommit": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+      "reason": "Independent final verdict REVISE for missing mandated M-03/M-04 browser evidence; no unresolved observed P0/P1/required-path P2 or policy/security escalation. READY_FOR_HUMAN condition is not met.",
+      "evidence": [
+        "independent-review.md",
+        "release-scorecard.md",
+        "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json"
+      ]
+    },
+    {
+      "from": "NEEDS_REVISION",
+      "to": "READY_FOR_HUMAN",
+      "timestamp": "2026-11-17T15:56:27.678890+00:00",
+      "headCommit": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+      "verdict": "PASS_WITH_NON_BLOCKING_PRE_RELEASE_VERIFICATION",
+      "reason": "Published M-03/M-04 PASS closes F-08; exact-head CI, sanitization and cleanup pass. Remaining manual requirements are non-blocking for merge and retained at explicit future gates. Human merge/release approval not granted.",
+      "evidence": [
+        "https://github.com/FATTY-BAMBA/StrideBrain/tree/029f70e8ddce6061bcb5691f4cdfc6bca5f146e2/foundry/tasks/SB-029/evidence/manual-acceptance/20261117T095951Z",
+        "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/44059619525",
+        "independent-review.md",
+        "release-scorecard.md"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "timestamp": "2026-11-15T21:23:13.381392Z",
+      "kind": "BRANCH_RENAMED",
+      "reason": "Remote original branch already existed with an unrelated source-export workflow; preserved it and pushed a distinct dedicated branch without force.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "e2b9436c8894c7a3935121a45864462700eade7a",
+      "previousBranch": "build/stage-8-internal-review-action",
+      "preservedRemoteHead": "1207a605d32e68ea0d9c9f2de6401a342201b578"
+    },
+    {
+      "timestamp": "2026-11-15T21:51:59.464112Z",
+      "kind": "IMPLEMENTATION_CHECKPOINT_PUSHED",
+      "reason": "Coherent implementation checkpoint pushed to draft PR31; independent full adversarial validation and final test/evidence commit remain pending.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "819f5545f0fa05d125835ec8ef417ec2f5f495f8",
+      "evidence": [
+        "https://github.com/FATTY-BAMBA/StrideBrain/pull/31"
+      ]
+    },
+    {
+      "timestamp": "2026-11-15T22:05:17.252367Z",
+      "kind": "CONTRACT_SAFETY_CLARIFICATION_ACCEPTED",
+      "reason": "Orchestrator accepts independently re-reviewed safe rollback clarification: retain current authorized/fail-closed Action readers while disabling creation; no unmodified Stage7 rollback with retained Stage8 rows. No product-policy weakening or destructive rollback.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "819f5545f0fa05d125835ec8ef417ec2f5f495f8",
+      "evidence": [
+        "architecture.md",
+        "build-contract.md",
+        "independent-review.md"
+      ],
+      "contractHashes": {
+        "architecture.md": "896ad07a4903d9a347bcc685bfc2688ca85c4effe906df68492079ceadd96976",
+        "build-contract.md": "168be4622d7550d30f2a5562da1cc470d1a9d8a3721f6107c30494b2ea26e9d8"
+      }
+    },
+    {
+      "timestamp": "2026-11-15T22:28:29.972248Z",
+      "kind": "PREVIEW_OPERATOR_ORIGIN_ALIGNMENT",
+      "reason": "The preview bind hostname was corrected from 0.0.0.0 to localhost to match the configured public origin used by the unchanged strict request-origin guard. The exact same production build now completes live non-UI Finance prepare/create/replay/conflict/Chinese-reopen checks. No product change or repair cycle; no browser pass.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "4c13f726bb75f4a31d263eb6e54622224807d019",
+      "evidence": [
+        "evidence/computer-qa/finance-proposal-api-diagnostic.json",
+        "evidence/computer-qa/finance-proposal-api-after-origin-alignment.json",
+        "evidence/computer-qa/finance-http-action-smoke.json"
+      ]
+    },
+    {
+      "timestamp": "2026-11-16T00:10:30.943804Z",
+      "kind": "DEDICATED_CLOUD_QA_REQUESTED",
+      "reason": "Product Director explicitly requests a dedicated Cloud QA task, a newly recreated isolated preview inside it, and actual cloud-browser QA. This supersedes the previous handoff requirement to attach to this same running environment. Task creation/fork/dispatch and desktop in-app tab controls are not exposed by this host; no new task or tab closure is claimed. A portable sanitized launch package is being prepared.",
+      "branch": "build/sb-029-governed-internal-review",
+      "headCommit": "2a23d31f46e0b6c7b465b3774ad765c81a3417eb",
+      "evidence": [
+        "cloud-qa-task.md",
+        "computer-qa-handoff.md"
+      ]
+    },
+    {
+      "timestamp": "2026-11-16T06:16:58.467100+00:00",
+      "kind": "LOCAL_QA_REPAIRS_VALIDATED",
+      "headCommit": "df63c90ca994653299082fc5078ad0b5ef595292",
+      "reason": "Independent code review and all local deterministic gates passed; separate synthetic production preview ready. Exact publication-head CI and independent browser retest remain distinct requirements.",
+      "evidence": [
+        "validation-revision.json",
+        "evidence/revision-20261116/preview-readiness.json",
+        "local-qa-retest-handoff.md"
+      ]
+    },
+    {
+      "timestamp": "2026-11-17T06:43:42.524086+00:00",
+      "kind": "FINAL_INDEPENDENT_EVIDENCE_SYNTHESIS",
+      "headCommit": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+      "verdict": "REVISE",
+      "reason": "QA-16/QA-18 known product failures remediated; seven manual requirements retained, including two pre-merge evidence blockers. Product source and all historical QA evidence unchanged; PR31 remains open/draft/unmerged.",
+      "evidence": [
+        "independent-review.md",
+        "release-scorecard.md",
+        "https://github.com/FATTY-BAMBA/StrideBrain/tree/5985b7b5ef6a87d9312c9d989e90a2d5be6ac19a/foundry/tasks/SB-029/evidence/local-qa/20261117T023357Z",
+        "https://github.com/FATTY-BAMBA/StrideBrain/tree/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z",
+        "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/44021235139"
+      ]
+    },
+    {
+      "timestamp": "2026-11-17T08:17:30.887559+00:00",
+      "kind": "MANUAL_ACCEPTANCE_INDEPENDENT_REASSESSMENT",
+      "headCommit": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+      "runId": "20261117T070845Z",
+      "verdict": "REVISE",
+      "results": {
+        "M-03": "FAIL",
+        "M-04": "FAIL"
+      },
+      "reason": "New required-path P2 F-08 found under actual native200% and actual OS reduced-motion; restoration and session cleanup verified. Product/historical evidence unchanged. No merge or code/evidence publication.",
+      "evidence": [
+        "evidence/manual-acceptance/20261117T070845Z/REPORT.txt",
+        "evidence/manual-acceptance/20261117T070845Z/independent-reassessment.json"
+      ]
+    },
+    {
+      "timestamp": "2026-11-17T15:56:27.678890+00:00",
+      "kind": "FINAL_STAGE8_ACCEPTANCE_RECONCILED",
+      "headCommit": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+      "evidenceCommit": "029f70e8ddce6061bcb5691f4cdfc6bca5f146e2",
+      "verdict": "PASS_WITH_NON_BLOCKING_PRE_RELEASE_VERIFICATION",
+      "taskState": "READY_FOR_HUMAN",
+      "remainingMergeBlockers": [],
+      "prReadyForReviewEligible": true,
+      "prMarkedReady": false,
+      "mergePerformed": false,
+      "historicalRunsRewritten": false
+    }
+  ],
+  "pullRequest": "https://github.com/FATTY-BAMBA/StrideBrain/pull/31",
+  "developmentChecks": [
+    {
+      "timestamp": "2026-11-15T21:44:16.260322Z",
+      "phase": "BUILDING",
+      "headCommit": "e2b9436c8894c7a3935121a45864462700eade7a",
+      "workingTreeChanges": true,
+      "check": "Independent canonical PostgreSQL smoke",
+      "result": "FAIL",
+      "details": "Mei, Financial Reviewer and Admin Stage4/5 setups passed; Stage8 preparation returned PROPOSAL_FAILED for all three. Root cause investigation required.",
+      "evidence": "/tmp/sb029-stage8-validation/canonical-smoke.log",
+      "rootCause": "Prisma $queryRaw attempted to deserialize PostgreSQL pg_advisory_xact_lock void return value.",
+      "boundedFix": "Use parameterized $executeRaw for the same advisory-lock statement; authorization and locking semantics unchanged.",
+      "retest": "PASS: all three authorized canonical prepare/create cases and atomic record counts; full adversarial suite still pending.",
+      "fixVerification": {
+        "timestamp": "2026-11-15T21:48:47.364881Z",
+        "detail": "Initial string replacement matched nothing after formatting; explicit one-line patch applied and read back as parameterized $executeRaw for advisory lock only. FOR UPDATE query remains $queryRaw.",
+        "retest": "PASS: all three authorized canonical prepare/create cases and atomic record counts; full adversarial suite still pending."
+      },
+      "retestEvidence": "/tmp/sb029-stage8-validation/canonical-verified-advisory-fix.log"
+    }
+  ],
+  "validationHead": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+  "applicationHead": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+  "sourceTreeFingerprintSha256": "b7180d2a46ee4b526709202b2b9761025eddb2031dc656743a3c7a8a96a94e6d",
+  "latestMainVerification": {
+    "timestamp": "2026-11-15T22:28:29.972248Z",
+    "command": "git ls-remote origin refs/heads/main refs/heads/build/sb-029-governed-internal-review",
+    "mainCommit": "0ecd65bdb0ae752f3244960d6848a74a30d5da01",
+    "applicationBranchCommit": "4c13f726bb75f4a31d263eb6e54622224807d019"
+  },
+  "requestedRecovery": {
+    "kind": "DEDICATED_CLOUD_QA_TASK",
+    "newIsolatedPreviewAuthorized": true,
+    "taskCreated": false,
+    "taskCreationToolAvailable": false,
+    "desktopTabsClosed": false,
+    "targetRepository": "FATTY-BAMBA/StrideBrain",
+    "targetBranch": "build/sb-029-governed-internal-review",
+    "sourceCandidate": "4c13f726bb75f4a31d263eb6e54622224807d019",
+    "evidenceCheckpoint": "2a23d31f46e0b6c7b465b3774ad765c81a3417eb",
+    "taskPrompt": "cloud-qa-task.md",
+    "priorEvidenceHeadCi": {
+      "runUrl": "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/43769657458",
+      "conclusion": "success",
+      "evidence": "evidence/ci-2a23d31.json"
+    },
+    "supersededBy": "Completed independent local QA run 20261116T041837Z and authorized defect repair."
+  },
+  "historicalInfrastructureBlocker": {
+    "kind": "BROWSER_QA_INFRASTRUCTURE",
+    "resumeState": "COMPUTER_QA",
+    "requires": "Working independent Computer/browser session with access to this isolated preview",
+    "productPolicyDecisionRequired": false
+  },
+  "historicalPreview": {
+    "url": "http://localhost:3000",
+    "headCommit": "4c13f726bb75f4a31d263eb6e54622224807d019",
+    "buildId": "3arTh5JwUyUt0e73FJY-z",
+    "database": "stridebrain_stage8_preview",
+    "serverSessionId": 97028,
+    "bindHostname": "localhost",
+    "readiness": "PREVIEW_READY; actual Computer QA blocked by control infrastructure"
+  },
+  "localQa": {
+    "run": "20261116T041837Z",
+    "evidenceBranch": "qa/sb-029-local-20261116T041837Z",
+    "evidenceCommit": "0c9b4293a9e91aa6121b8571e7f22537b131760d",
+    "testedHead": "13e7191f340e998c93b644949602f1c0774fe9ff",
+    "evidenceUrl": "https://github.com/FATTY-BAMBA/StrideBrain/tree/0c9b4293a9e91aa6121b8571e7f22537b131760d/foundry/tasks/SB-029/evidence/local-qa/20261116T041837Z",
+    "counts": {
+      "PASS": 9,
+      "FAIL": 3,
+      "PARTIAL": 5,
+      "BLOCKED": 1
+    },
+    "immutable": true,
+    "acceptanceGranted": false
+  },
+  "blocker": null,
+  "headCommitScope": "Pinned canonical product head; final acceptance metadata and PR description only. No product source, historical evidence, canonical branch or PR draft-state change.",
+  "preview": {
+    "runId": "20261117T095951Z",
+    "testedHead": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+    "buildId": "7AxvZ0avDfCi3vJEjHpJH",
+    "evidenceCommit": "029f70e8ddce6061bcb5691f4cdfc6bca5f146e2",
+    "status": "MANUAL_ACCEPTANCE_PASSED_SETTINGS_RESTORED_SESSIONS_REVOKED",
+    "data": "DEMO_SYNTHETIC",
+    "sessionsRevoked": 2,
+    "activeSessionsAtRecordedClosure": 0,
+    "currentProcessAvailabilityRechecked": false,
+    "evidenceUrl": "https://github.com/FATTY-BAMBA/StrideBrain/tree/029f70e8ddce6061bcb5691f4cdfc6bca5f146e2/foundry/tasks/SB-029/evidence/manual-acceptance/20261117T095951Z"
+  },
+  "deterministicValidation": {
+    "report": "https://github.com/FATTY-BAMBA/StrideBrain/blob/f67edb3188c51704acac4465c0a72fca146c6d3f/foundry/tasks/SB-029/evidence/f08-repair-20261117T085821Z/validation.json",
+    "status": "PASS",
+    "headCommit": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+    "tests": 535,
+    "testFiles": 62,
+    "skipped": 0,
+    "newFocusTests": 35,
+    "targetedRegressionTests": 77,
+    "targetedRegressionFiles": 7,
+    "localizationTests": 12,
+    "localizationFiles": 4,
+    "postgresAdversarialTests": 93,
+    "migrations": 8,
+    "cleanMigrationsRepeatedSeedAndSql": "PASS",
+    "productionBuild": "PASS",
+    "buildId": "7AxvZ0avDfCi3vJEjHpJH",
+    "productionVulnerabilities": 0,
+    "lintWarnings": 1,
+    "warningScope": "Pre-existing import/no-anonymous-default-export warning in prisma.config.ts:5",
+    "reviewedAt": "2026-11-17T15:56:27.678890+00:00",
+    "rerunDuringSynthesis": false,
+    "subsetCountsAreNotAddedToTotal": true
+  },
+  "exactHeadCi": {
+    "required": true,
+    "headCommit": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+    "runId": 44059619525,
+    "url": "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/44059619525",
+    "status": "completed",
+    "conclusion": "success",
+    "jobId": 133957782180,
+    "jobName": "quality",
+    "all21RecordedStepsPassed": true,
+    "verifiedAt": "2026-11-17T15:56:27.678890+00:00",
+    "browserAcceptanceCredit": false
+  },
+  "retestHandoff": "local-qa-retest-handoff.md",
+  "resolvedHistoricalBlockers": [
+    {
+      "resolvedAt": "2026-11-17T06:43:42.524086+00:00",
+      "blocker": {
+        "kind": "INDEPENDENT_LOCAL_BROWSER_RETEST_REQUIRED",
+        "resumeState": "COMPUTER_QA",
+        "productPolicyDecisionRequired": false,
+        "requires": "New independent local QA run after final publication-head CI succeeds. Original 9/3/5/1 outcomes remain unchanged until retested.",
+        "scenarioIds": [
+          "QA-05",
+          "QA-16",
+          "QA-18",
+          "QA-07",
+          "QA-08",
+          "QA-09",
+          "QA-11",
+          "QA-12",
+          "QA-15"
+        ],
+        "openCodeReviewFindings": 0
+      },
+      "resolution": "Broad browser run and scoped repaired-head retest completed; superseded by current manual acceptance evidence blocker. Historical run outcomes unchanged."
+    },
+    {
+      "resolvedAt": "2026-11-17T15:56:27.678890+00:00",
+      "blocker": {
+        "kind": "REQUIRED_PATH_PRODUCT_DEFECT",
+        "resumeState": "INDEPENDENT_REVIEW",
+        "manualItemIds": [
+          "M-03",
+          "M-04"
+        ],
+        "scenarioIds": [
+          "QA-15"
+        ],
+        "findingIds": [
+          "F-08"
+        ],
+        "classification": "BLOCKING_BEFORE_MERGE",
+        "productPolicyDecisionRequired": false,
+        "requires": "A separately authorized scoped F-08 focus-containment repair and independent targeted native200%/OS-reduced-motion retest; no product repair was performed in this manual-check run.",
+        "openObservedProductFindings": {
+          "P0": 0,
+          "P1": 0,
+          "requiredPathP2": 1
+        },
+        "evidenceGapOnly": false
+      },
+      "resolution": "F-08 repaired in f67edb3188c51704acac4465c0a72fca146c6d3f; M-03/M-04 and F-08 pass in published evidence 029f70e8ddce6061bcb5691f4cdfc6bca5f146e2. No unresolved required-path P2 remains."
+    }
+  ],
+  "historicalRevisionPreview": {
+    "verifiedAt": "2026-11-16T06:15:07.929979+00:00",
+    "applicationHead": "df63c90ca994653299082fc5078ad0b5ef595292",
+    "sourceTreeFingerprintSha256": "82ce9a43b9bf4da5280c09cb839eeb277213acd09b73e46aa0a8f15f2758a460",
+    "buildId": "4Zn6yTS6DP2jLb0DDZye_",
+    "url": "http://localhost:3000",
+    "bindHostname": "localhost",
+    "production": true,
+    "appSessionId": 2025,
+    "operatorSessionId": 27567,
+    "operatorPort": 3001,
+    "container": "stridebrain-sb029-revision-qa",
+    "database": "stridebrain_sb029_revision",
+    "databasePort": 54330,
+    "data": "DEMO_SYNTHETIC",
+    "node": "v24.22.3",
+    "postgres": "postgres (PostgreSQL) 17.12 (Debian 17.12-1.pgdg13+1)",
+    "postgresImage": "[\"postgres@sha256:0d938e975177bef9f1f61f3f9dbcf2e0aa0a139568f66d3415ed8892eb97f6ac\"]",
+    "httpChecks": [
+      {
+        "path": "/en/projects/PRJ-XINYI-026",
+        "status": 200,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "authenticated": false
+      },
+      {
+        "path": "/zh-TW/projects/PRJ-XINYI-026",
+        "status": 200,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "authenticated": false
+      },
+      {
+        "path": "/api/actions/internal-review/not-a-receipt",
+        "status": 404,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "authenticated": false
+      },
+      {
+        "path": "/api/actions/not-a-receipt",
+        "status": 403,
+        "cacheControl": "private, no-store",
+        "authenticated": false
+      }
+    ],
+    "operatorPreflight": "PASS: expected database and DemoSession schema; source imports pass; no session issued.",
+    "status": "PREVIEW_READY_FOR_INDEPENDENT_RETEST_AFTER_EXACT_HEAD_CI",
+    "browserChecks": "NOT_RUN",
+    "startupWarning": "Next ignored an unrelated parent-directory package-lock outside this Git repository; no source/config change required.",
+    "operatorSessionsIssued": 0,
+    "activeSessionsAfterTestCleanup": 0,
+    "testSessionsRevoked": 2
+  },
+  "finalIndependentReview": {
+    "recordedAt": "2026-11-17T15:56:27.678890+00:00",
+    "reviewer": "Evidence synthesis by orchestrator; prior independent code/browser reviews cited below",
+    "reviewScope": "Reconcile existing independently captured evidence and exact-head CI; no new product tests or browser run.",
+    "verdict": "PASS_WITH_NON_BLOCKING_PRE_RELEASE_VERIFICATION",
+    "reason": "M-03/M-04 and F-08 pass on the published exact head. No unresolved observed P0/P1/required-path P2 or policy/security escalation; remaining manual items do not block merge.",
+    "headCommit": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+    "forbiddenScopeChangesFound": [],
+    "policyOrSecurityEscalation": false,
+    "newProductFindings": [],
+    "unresolvedObservedSeverityCounts": {
+      "P0": 0,
+      "P1": 0,
+      "requiredPathP2": 0
+    },
+    "remainingMergeBlockers": [],
+    "evidenceIntegrity": [
+      {
+        "run": "20261117T023357Z",
+        "commit": "5985b7b5ef6a87d9312c9d989e90a2d5be6ac19a",
+        "parent": "211578dd4b4e12169a182c498254bb571cadad70",
+        "scopedFiles": 1275,
+        "verifiedArtifactHashes": 1274
+      },
+      {
+        "run": "20261117T050611Z",
+        "commit": "e043ee551169c1f8586c9d490703be3a4a1ab187",
+        "parent": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+        "scopedFiles": 467,
+        "verifiedArtifactHashes": 466
+      },
+      {
+        "run": "20261117T095951Z",
+        "commit": "029f70e8ddce6061bcb5691f4cdfc6bca5f146e2",
+        "parent": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+        "scopedFiles": 178,
+        "verifiedArtifactHashes": 177,
+        "screenshots": 64,
+        "sanitization": "PASS",
+        "cleanupRestoration": "PASS"
+      }
+    ],
+    "broadRun": {
+      "runId": "20261117T023357Z",
+      "evidenceCommit": "5985b7b5ef6a87d9312c9d989e90a2d5be6ac19a",
+      "parent": "211578dd4b4e12169a182c498254bb571cadad70",
+      "historicalCounts": {
+        "PASS": 14,
+        "FAIL": 2,
+        "PARTIAL": 2,
+        "BLOCKED": 0
+      },
+      "outcomesUnchanged": true
+    },
+    "targetedRun": {
+      "runId": "20261117T050611Z",
+      "evidenceCommit": "e043ee551169c1f8586c9d490703be3a4a1ab187",
+      "parent": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+      "verdict": "PASS",
+      "counts": {
+        "PASS_TARGETED": 2,
+        "PASS_TARGETED_SMOKE": 5,
+        "FAIL": 0
+      },
+      "screenshots": 203,
+      "fullQaMatrixRerun": false
+    },
+    "findings": [
+      {
+        "id": "F-01",
+        "scenarioIds": [
+          "QA-18"
+        ],
+        "disposition": "PASSED_AND_PRESERVED",
+        "rationale": "Broad authority journey passes; current-head smoke preserves forecast/actual/quoted-price/supplier-offer distinctions.",
+        "evidenceBasis": "Broad run 20261117T023357Z and targeted smoke run 20261117T050611Z, carried forward through the bounded F-08 focus-only delta; no new full-matrix claim."
+      },
+      {
+        "id": "F-02",
+        "scenarioIds": [
+          "QA-05"
+        ],
+        "disposition": "PASSED_AND_PRESERVED",
+        "rationale": "Broad rapid-edit/history cases pass; current-head nondefault four-field draft survives navigation and persists exactly in one confirmed action.",
+        "evidenceBasis": "Broad run 20261117T023357Z and targeted smoke run 20261117T050611Z, carried forward through the bounded F-08 focus-only delta; no new full-matrix claim."
+      },
+      {
+        "id": "F-03",
+        "scenarioIds": [
+          "QA-16",
+          "QA-18"
+        ],
+        "disposition": "REMEDIATED_BY_LATER_PASS",
+        "rationale": "Final programme locator residual passes in both locales at four widths, with four source identities and internal provenance preserved.",
+        "evidenceBasis": "Targeted repair run 20261117T050611Z, carried forward through the bounded F-08 focus-only delta."
+      },
+      {
+        "id": "F-04",
+        "scenarioIds": [
+          "QA-07",
+          "QA-08"
+        ],
+        "disposition": "PASSED_AND_PRESERVED",
+        "rationale": "Authorized receipt retains creation wording; four current-head same-Viewer known/missing pairs show identical neutral denial and no action payload.",
+        "evidenceBasis": "Broad run 20261117T023357Z and targeted smoke run 20261117T050611Z, carried forward through the bounded F-08 focus-only delta; no new full-matrix claim."
+      },
+      {
+        "id": "F-05",
+        "scenarioIds": [
+          "QA-11",
+          "QA-15"
+        ],
+        "disposition": "PASSED_AND_PRESERVED",
+        "rationale": "Broad generic-error matrix preserves draft and visible focus; current-head stale smoke focuses the visible alert inside the dialog. M-06 remains a manual association check.",
+        "evidenceBasis": "Broad run 20261117T023357Z and targeted smoke run 20261117T050611Z, carried forward through the bounded F-08 focus-only delta; no new full-matrix claim."
+      },
+      {
+        "id": "F-06",
+        "scenarioIds": [
+          "QA-11",
+          "QA-18"
+        ],
+        "disposition": "PASSED_AND_PRESERVED",
+        "rationale": "Broad changed-source variants and current-head authority smoke show stale warnings, retain inspectable immutable history, and reject confirmation.",
+        "evidenceBasis": "Broad run 20261117T023357Z and targeted smoke run 20261117T050611Z, carried forward through the bounded F-08 focus-only delta; no new full-matrix claim."
+      },
+      {
+        "id": "F-07",
+        "scenarioIds": [
+          "QA-16",
+          "QA-18"
+        ],
+        "disposition": "REMEDIATED_BY_LATER_PASS",
+        "rationale": "All 40 entry combinations select the same authoritative insufficiency claim and ordered sources, preserve 2/3 and invent no actual range or variance.",
+        "evidenceBasis": "Targeted repair run 20261117T050611Z, carried forward through the bounded F-08 focus-only delta."
+      },
+      {
+        "id": "F-08",
+        "severity": "P2",
+        "scenarioIds": [
+          "QA-15"
+        ],
+        "manualItemIds": [
+          "M-03",
+          "M-04"
+        ],
+        "disposition": "REMEDIATED_BY_LATER_PASS",
+        "rationale": "Both locales pass exact native 200% zoom and actual OS reduced-motion source-modal entry, containment, exact-trigger return and hierarchical Escape on the repaired head.",
+        "evidence": "https://github.com/FATTY-BAMBA/StrideBrain/tree/029f70e8ddce6061bcb5691f4cdfc6bca5f146e2/foundry/tasks/SB-029/evidence/manual-acceptance/20261117T095951Z",
+        "closed": true,
+        "repairCommit": "f67edb3188c51704acac4465c0a72fca146c6d3f"
+      }
+    ],
+    "scenarioSynthesis": [
+      {
+        "id": "QA-01",
+        "historicalStatus": "PASS",
+        "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+        "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+      },
+      {
+        "id": "QA-02",
+        "historicalStatus": "PARTIAL",
+        "currentDisposition": "PARTIAL_MANUAL_REQUIRED",
+        "rationale": "Observed behavior retained; M-05 remains Stage 9 hardening."
+      },
+      {
+        "id": "QA-03",
+        "historicalStatus": "PASS",
+        "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+        "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+      },
+      {
+        "id": "QA-04",
+        "historicalStatus": "PASS",
+        "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+        "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+      },
+      {
+        "id": "QA-05",
+        "historicalStatus": "PASS",
+        "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+        "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+      },
+      {
+        "id": "QA-06",
+        "historicalStatus": "PASS",
+        "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+        "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+      },
+      {
+        "id": "QA-07",
+        "historicalStatus": "PASS",
+        "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+        "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+      },
+      {
+        "id": "QA-08",
+        "historicalStatus": "PASS",
+        "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+        "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+      },
+      {
+        "id": "QA-09",
+        "historicalStatus": "PASS",
+        "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+        "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+      },
+      {
+        "id": "QA-10",
+        "historicalStatus": "PASS",
+        "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+        "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+      },
+      {
+        "id": "QA-11",
+        "historicalStatus": "PASS",
+        "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+        "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+      },
+      {
+        "id": "QA-12",
+        "historicalStatus": "PASS",
+        "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+        "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+      },
+      {
+        "id": "QA-13",
+        "historicalStatus": "PASS",
+        "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+        "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+      },
+      {
+        "id": "QA-14",
+        "historicalStatus": "PASS",
+        "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+        "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+      },
+      {
+        "id": "QA-15",
+        "historicalStatus": "PARTIAL",
+        "currentDisposition": "REQUIRED_PATH_FOCUS_REMEDIATED_MANUAL_RELEASE_GATES_REMAIN",
+        "rationale": "Historical PARTIAL unchanged. M-03/M-04 and F-08 pass on the exact head; M-01/M-02/M-06 still require human verification before demo release. No unconditional whole-scenario PASS is invented."
+      },
+      {
+        "id": "QA-16",
+        "historicalStatus": "FAIL",
+        "currentDisposition": "KNOWN_PRODUCT_FAILURES_REMEDIATED",
+        "rationale": "Historical FAIL unchanged. F-03/F-07 remediated by targeted evidence; M-03 and F-08 now pass. M-02/M-07 remain demo-release gates. No new full-scenario pass count."
+      },
+      {
+        "id": "QA-17",
+        "historicalStatus": "PASS",
+        "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+        "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+      },
+      {
+        "id": "QA-18",
+        "historicalStatus": "FAIL",
+        "currentDisposition": "KNOWN_PRODUCT_FAILURES_REMEDIATED",
+        "rationale": "Historical FAIL unchanged. F-03/F-07 remediated by targeted evidence and bounded delta; M-07 remains a demo-release gate. No new full regression run claimed."
+      }
+    ],
+    "manualVerification": [
+      {
+        "id": "M-01",
+        "item": "Actual screen-reader announcements",
+        "classification": "BLOCKING_BEFORE_DEMO_RELEASE",
+        "rationale": "Actual spoken announcements remain unverified and block demo release. F-08 keyboard-focus containment is independently remediated; DOM focus does not establish screen-reader speech.",
+        "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+        "scenarioIds": [
+          "QA-15"
+        ],
+        "verificationSteps": "On exact-head preview, use VoiceOver+Chrome and NVDA+Chrome/Firefox with reviewed Mei session. In each locale, open review via keyboard, submit without consent, trigger stale/evidence/access/server error via operator, open/close evidence and create once. Verify dialog name, focused alert/field, linked error, pending state, receipt heading are announced once, with no hidden background disclosure; Escape returns to trigger. DOM role/focus does not establish speech.",
+        "ownerRole": "Independent human QA reviewer",
+        "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json",
+        "blocksMerge": false,
+        "gateSatisfied": false
+      },
+      {
+        "id": "M-02",
+        "item": "Physical mobile keyboard/touch/native picker",
+        "classification": "BLOCKING_BEFORE_DEMO_RELEASE",
+        "rationale": "Four desktop-emulated viewport sizes and native desktop keyboard date entry pass. Physical iOS/Android occlusion, touch and picker behavior remain separate device evidence required before demo release.",
+        "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+        "scenarioIds": [
+          "QA-15",
+          "QA-16"
+        ],
+        "verificationSteps": "On real iOS Safari and Android Chrome at 390/320 CSS widths, open the longest approved draft in both locales. Tap native date picker, select/clear a valid date, open the soft keyboard and scroll to warnings, consent, create/cancel and evidence close. Verify no occluded/overlapping controls, preserved draft through locale/evidence and comfortable touch targets. Desktop viewport sizing does not simulate native IME or touch.",
+        "ownerRole": "Independent human QA reviewer",
+        "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json",
+        "blocksMerge": false,
+        "gateSatisfied": false
+      },
+      {
+        "id": "M-03",
+        "item": "Exact 200% browser zoom",
+        "classification": "BLOCKING_BEFORE_MERGE",
+        "rationale": "Published exact-head native manual acceptance passes in both locales, including source entry, Tab/Shift+Tab containment, exact trigger restoration and hierarchical Escape. Historical failed run is retained unchanged.",
+        "status": "PASS",
+        "scenarioIds": [
+          "QA-15",
+          "QA-16"
+        ],
+        "verificationSteps": "Actual Chrome menu 200% at outer 2056x1290 / CSS 1028x617 / DPR4; both locales and source/review/evidence/receipt/error controls; restore 100%.",
+        "ownerRole": "Independent human QA reviewer",
+        "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/029f70e8ddce6061bcb5691f4cdfc6bca5f146e2/foundry/tasks/SB-029/evidence/manual-acceptance/20261117T095951Z/REPORT.txt",
+        "blocksMerge": false,
+        "gateSatisfied": true,
+        "completedRun": "20261117T095951Z",
+        "testedHead": "f67edb3188c51704acac4465c0a72fca146c6d3f"
+      },
+      {
+        "id": "M-04",
+        "item": "Reduced-motion behavior",
+        "classification": "BLOCKING_BEFORE_MERGE",
+        "rationale": "Published exact-head native manual acceptance passes in both locales, including source entry, Tab/Shift+Tab containment, exact trigger restoration and hierarchical Escape. Historical failed run is retained unchanged.",
+        "status": "PASS",
+        "scenarioIds": [
+          "QA-15"
+        ],
+        "verificationSteps": "Actual macOS Reduce motion ON before journey; matchMedia reduce=true; both locales with source/review/evidence/error/receipt focus; restore original OFF.",
+        "ownerRole": "Independent human QA reviewer",
+        "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/029f70e8ddce6061bcb5691f4cdfc6bca5f146e2/foundry/tasks/SB-029/evidence/manual-acceptance/20261117T095951Z/REPORT.txt",
+        "blocksMerge": false,
+        "gateSatisfied": true,
+        "completedRun": "20261117T095951Z",
+        "testedHead": "f67edb3188c51704acac4465c0a72fca146c6d3f"
+      },
+      {
+        "id": "M-05",
+        "item": "Leap-day / Asia-Taipei midnight boundaries",
+        "classification": "STAGE_9_HARDENING",
+        "rationale": "Passing policy tests cover leap-day validity and today..today+365; service tests revalidate the date across Taipei midnight with no write. Existing browser date validation remains valid. End-to-end native-picker/test-clock boundary evidence is still required in Stage 9, before its release gate.",
+        "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+        "scenarioIds": [
+          "QA-02"
+        ],
+        "verificationSteps": "On a disposable synthetic environment with an approved operator-controlled test clock and unchanged product code, exercise valid leap-day 2028-02-29 while it is within today..today+365, reject 2027-02-29, and prepare just before Asia/Taipei midnight then confirm just after. Verify min/max use confirmation-local today, default remains preparation+7, invalid date focuses localized associated error and creates no action. Repeat native keyboard/picker both locales and compare persisted local date. Do not change the host production clock.",
+        "ownerRole": "Independent human QA reviewer",
+        "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json",
+        "blocksMerge": false,
+        "gateSatisfied": false
+      },
+      {
+        "id": "M-06",
+        "item": "Generic form-error description association",
+        "classification": "BLOCKING_BEFORE_DEMO_RELEASE",
+        "rationale": "The actual form source sets aria-describedby to review-error-summary and deterministic DOM tests assert it; browser generic errors focus a visible alert. The broad browser probe returned null, so live form association and speech remain unverified rather than a proven absent association.",
+        "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+        "scenarioIds": [
+          "QA-15"
+        ],
+        "verificationSteps": "With a fresh authorized draft, trigger each generic error and inspect the actual dialog form element (not a guessed form id). Verify aria-describedby includes review-error-summary and resolves to the visible alert; check screen-reader interaction. This run establishes focused alert/heading and field-specific associations; its generic form-description probe returned null and earns no browser association pass.",
+        "ownerRole": "Independent human QA reviewer",
+        "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json",
+        "blocksMerge": false,
+        "gateSatisfied": false
+      },
+      {
+        "id": "M-07",
+        "item": "Independent human Traditional Chinese review",
+        "classification": "BLOCKING_BEFORE_DEMO_RELEASE",
+        "rationale": "Independent automated bilingual evidence remediates the observed terminology/navigation defects. Natural Taiwan Chinese and complete language acceptance still require an independent human before demo release.",
+        "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+        "scenarioIds": [
+          "QA-16",
+          "QA-18"
+        ],
+        "verificationSteps": "Have an independent human reviewer inspect the repaired exact head f67edb3188c51704acac4465c0a72fca146c6d3f in both locales at all four viewports, including programme locator wording, lighting insufficiency/source meaning and the complete prior QA-16/QA-18 scope. The two product defects passed an independent automated targeted retest; human language/acceptance review and a full scenario rerun are not established by this run.",
+        "ownerRole": "Independent human QA reviewer",
+        "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json",
+        "blocksMerge": false,
+        "gateSatisfied": false
+      }
+    ],
+    "readyForHuman": true,
+    "allManualItemsNonBlockingForMerge": true,
+    "readyToMarkPullRequestReadyForReview": true,
+    "mergeApproved": false,
+    "demoReleaseApproved": false,
+    "stage8CompletionGranted": false,
+    "implementationAcceptanceGranted": true,
+    "historicalRunsRewritten": false,
+    "manualAcceptanceRun": "20261117T095951Z",
+    "manualAcceptanceEvidence": "https://github.com/FATTY-BAMBA/StrideBrain/tree/029f70e8ddce6061bcb5691f4cdfc6bca5f146e2/foundry/tasks/SB-029/evidence/manual-acceptance/20261117T095951Z",
+    "exactHeadCi": {
+      "required": true,
+      "headCommit": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+      "runId": 44059619525,
+      "url": "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/44059619525",
+      "status": "completed",
+      "conclusion": "success",
+      "jobId": 133957782180,
+      "jobName": "quality",
+      "all21RecordedStepsPassed": true,
+      "verifiedAt": "2026-11-17T15:56:27.678890+00:00",
+      "browserAcceptanceCredit": false
+    },
+    "boundedF08Delta": {
+      "baseCommit": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+      "repairCommit": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+      "productFiles": 4,
+      "regressionTestFiles": 1,
+      "independentReview": "https://github.com/FATTY-BAMBA/StrideBrain/blob/f67edb3188c51704acac4465c0a72fca146c6d3f/foundry/tasks/SB-029/evidence/f08-repair-20261117T085821Z/independent-review.json",
+      "sourceDiffSha256": "5bdced6748fa394c19266a65f72021ceda93d24c30931b20ff6346eaecdbd0d6",
+      "scope": "Persistent modal focus boundary, deterministic focus entry, containment, exact trigger restoration and hierarchical Escape; no policy, authorization, tenant/evidence/financial authority, immutable semantics, action policy, schema/migration or unrelated feature change."
+    }
+  },
+  "finalIndependentReviewHistory": [
+    {
+      "recordedAt": "2026-11-17T06:43:42.524086+00:00",
+      "reviewer": "independent_evaluation",
+      "reviewerSeparateFromProductBuilder": true,
+      "reviewerReadOnly": true,
+      "verdict": "REVISE",
+      "reason": "Known product failures remediated; M-03 and M-04 required manual browser evidence remains missing.",
+      "headCommit": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+      "baseCommit": "211578dd4b4e12169a182c498254bb571cadad70",
+      "productDiffSha256": "a03223953f8a0668f3412871f4f24b1c64ce47ac732250629607259205784685",
+      "completeFiveFileDiffSha256": "74aab7eb8c10f17adf0178a3017336adfec17a2ebda960c3b2d38bb454c16fcd",
+      "codeFileCount": 5,
+      "validationArtifactFileCount": 23,
+      "forbiddenScopeChangesFound": [],
+      "policyOrSecurityEscalation": false,
+      "newProductFindings": [],
+      "evidenceIntegrity": [
+        {
+          "run": "20261117T023357Z",
+          "commit": "5985b7b5ef6a87d9312c9d989e90a2d5be6ac19a",
+          "parent": "211578dd4b4e12169a182c498254bb571cadad70",
+          "scopedFiles": 1275,
+          "verifiedArtifactHashes": 1274
+        },
+        {
+          "run": "20261117T050611Z",
+          "commit": "e043ee551169c1f8586c9d490703be3a4a1ab187",
+          "parent": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+          "scopedFiles": 467,
+          "verifiedArtifactHashes": 466
+        }
+      ],
+      "broadRun": {
+        "runId": "20261117T023357Z",
+        "evidenceCommit": "5985b7b5ef6a87d9312c9d989e90a2d5be6ac19a",
+        "parent": "211578dd4b4e12169a182c498254bb571cadad70",
+        "historicalCounts": {
+          "PASS": 14,
+          "FAIL": 2,
+          "PARTIAL": 2,
+          "BLOCKED": 0
+        },
+        "outcomesUnchanged": true
+      },
+      "targetedRun": {
+        "runId": "20261117T050611Z",
+        "evidenceCommit": "e043ee551169c1f8586c9d490703be3a4a1ab187",
+        "parent": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+        "verdict": "PASS",
+        "counts": {
+          "PASS_TARGETED": 2,
+          "PASS_TARGETED_SMOKE": 5,
+          "FAIL": 0
+        },
+        "screenshots": 203,
+        "fullQaMatrixRerun": false
+      },
+      "findings": [
+        {
+          "id": "F-01",
+          "scenarioIds": [
+            "QA-18"
+          ],
+          "disposition": "PASSED_AND_PRESERVED",
+          "rationale": "Broad authority journey passes; current-head smoke preserves forecast/actual/quoted-price/supplier-offer distinctions."
+        },
+        {
+          "id": "F-02",
+          "scenarioIds": [
+            "QA-05"
+          ],
+          "disposition": "PASSED_AND_PRESERVED",
+          "rationale": "Broad rapid-edit/history cases pass; current-head nondefault four-field draft survives navigation and persists exactly in one confirmed action."
+        },
+        {
+          "id": "F-03",
+          "scenarioIds": [
+            "QA-16",
+            "QA-18"
+          ],
+          "disposition": "REMEDIATED_BY_LATER_PASS",
+          "rationale": "Final programme locator residual passes in both locales at four widths, with four source identities and internal provenance preserved."
+        },
+        {
+          "id": "F-04",
+          "scenarioIds": [
+            "QA-07",
+            "QA-08"
+          ],
+          "disposition": "PASSED_AND_PRESERVED",
+          "rationale": "Authorized receipt retains creation wording; four current-head same-Viewer known/missing pairs show identical neutral denial and no action payload."
+        },
+        {
+          "id": "F-05",
+          "scenarioIds": [
+            "QA-11",
+            "QA-15"
+          ],
+          "disposition": "PASSED_AND_PRESERVED",
+          "rationale": "Broad generic-error matrix preserves draft and visible focus; current-head stale smoke focuses the visible alert inside the dialog. M-06 remains a manual association check."
+        },
+        {
+          "id": "F-06",
+          "scenarioIds": [
+            "QA-11",
+            "QA-18"
+          ],
+          "disposition": "PASSED_AND_PRESERVED",
+          "rationale": "Broad changed-source variants and current-head authority smoke show stale warnings, retain inspectable immutable history, and reject confirmation."
+        },
+        {
+          "id": "F-07",
+          "scenarioIds": [
+            "QA-16",
+            "QA-18"
+          ],
+          "disposition": "REMEDIATED_BY_LATER_PASS",
+          "rationale": "All 40 entry combinations select the same authoritative insufficiency claim and ordered sources, preserve 2/3 and invent no actual range or variance."
+        }
+      ],
+      "scenarioSynthesis": [
+        {
+          "id": "QA-01",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-02",
+          "historicalStatus": "PARTIAL",
+          "currentDisposition": "PARTIAL_MANUAL_REQUIRED",
+          "rationale": "Observed behavior retained; M-05 remains Stage 9 hardening."
+        },
+        {
+          "id": "QA-03",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-04",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-05",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-06",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-07",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-08",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-09",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-10",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-11",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-12",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-13",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-14",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-15",
+          "historicalStatus": "PARTIAL",
+          "currentDisposition": "PARTIAL_MANUAL_REQUIRED",
+          "rationale": "Keyboard/focus evidence retained; M-03/M-04 block merge; M-01/M-02/M-06 block demo release."
+        },
+        {
+          "id": "QA-16",
+          "historicalStatus": "FAIL",
+          "currentDisposition": "KNOWN_PRODUCT_FAILURES_REMEDIATED",
+          "rationale": "F-03/F-07 closed by current-head retest; M-02/M-03/M-07 remain. No unconditional whole-scenario PASS."
+        },
+        {
+          "id": "QA-17",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-18",
+          "historicalStatus": "FAIL",
+          "currentDisposition": "KNOWN_PRODUCT_FAILURES_REMEDIATED",
+          "rationale": "F-03/F-07 closed by current-head retest and bounded delta; M-07 remains. No new full regression run claimed."
+        }
+      ],
+      "manualVerification": [
+        {
+          "id": "M-01",
+          "item": "Actual screen-reader announcements",
+          "classification": "BLOCKING_BEFORE_DEMO_RELEASE",
+          "rationale": "Semantic roles, focus and keyboard operation are evidenced, but DOM/AX observations do not establish spoken announcements. Verify VoiceOver/NVDA before invited demo use; no observed critical keyboard blocker is being deferred.",
+          "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+          "scenarioIds": [
+            "QA-15"
+          ],
+          "verificationSteps": "On exact-head preview, use VoiceOver+Chrome and NVDA+Chrome/Firefox with reviewed Mei session. In each locale, open review via keyboard, submit without consent, trigger stale/evidence/access/server error via operator, open/close evidence and create once. Verify dialog name, focused alert/field, linked error, pending state, receipt heading are announced once, with no hidden background disclosure; Escape returns to trigger. DOM role/focus does not establish speech.",
+          "ownerRole": "Independent human QA reviewer",
+          "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json"
+        },
+        {
+          "id": "M-02",
+          "item": "Physical mobile keyboard/touch/native picker",
+          "classification": "BLOCKING_BEFORE_DEMO_RELEASE",
+          "rationale": "Four desktop-emulated viewport sizes and native desktop keyboard date entry pass. Physical iOS/Android occlusion, touch and picker behavior remain separate device evidence required before demo release.",
+          "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+          "scenarioIds": [
+            "QA-15",
+            "QA-16"
+          ],
+          "verificationSteps": "On real iOS Safari and Android Chrome at 390/320 CSS widths, open the longest approved draft in both locales. Tap native date picker, select/clear a valid date, open the soft keyboard and scroll to warnings, consent, create/cancel and evidence close. Verify no occluded/overlapping controls, preserved draft through locale/evidence and comfortable touch targets. Desktop viewport sizing does not simulate native IME or touch.",
+          "ownerRole": "Independent human QA reviewer",
+          "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json"
+        },
+        {
+          "id": "M-03",
+          "item": "Exact 200% browser zoom",
+          "classification": "BLOCKING_BEFORE_MERGE",
+          "rationale": "The accepted QA-15 steps explicitly require 200% browser zoom, with reachable controls and perceivable focus. Narrow viewport emulation is not that observation; the missing required task evidence prevents completion.",
+          "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+          "scenarioIds": [
+            "QA-15",
+            "QA-16"
+          ],
+          "verificationSteps": "Use a desktop browser window calibrated to 1280x800 content at 100%; set browser zoom to 200% through its visible menu, independently record actual CSS viewport and zoom. In both locales test review, validation, stale/server errors, evidence and receipt. Tab through every control, scroll warnings, verify reflow and focus visibility; reset zoom after. Viewport override is not equivalent to 200% browser zoom.",
+          "ownerRole": "Independent human QA reviewer",
+          "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json"
+        },
+        {
+          "id": "M-04",
+          "item": "Reduced-motion behavior",
+          "classification": "BLOCKING_BEFORE_MERGE",
+          "rationale": "The accepted bilingual/accessibility contract and QA-15 explicitly require reduced-motion behavior and actual browser evidence. CSS support alone does not verify the preference or motion/focus behavior.",
+          "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+          "scenarioIds": [
+            "QA-15"
+          ],
+          "verificationSteps": "Enable OS Reduce Motion before opening the browser; verify prefers-reduced-motion reports reduce. In both locales open/close review/evidence, trigger loading/error and receipt. Observe transitions with and without preference; ensure reduced motion and no repeated focus stealing. Restore original preference.",
+          "ownerRole": "Independent human QA reviewer",
+          "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json"
+        },
+        {
+          "id": "M-05",
+          "item": "Leap-day / Asia-Taipei midnight boundaries",
+          "classification": "STAGE_9_HARDENING",
+          "rationale": "Passing policy tests cover leap-day validity and today..today+365; service tests revalidate the date across Taipei midnight with no write. Existing browser date validation remains valid. End-to-end native-picker/test-clock boundary evidence is still required in Stage 9, before its release gate.",
+          "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+          "scenarioIds": [
+            "QA-02"
+          ],
+          "verificationSteps": "On a disposable synthetic environment with an approved operator-controlled test clock and unchanged product code, exercise valid leap-day 2028-02-29 while it is within today..today+365, reject 2027-02-29, and prepare just before Asia/Taipei midnight then confirm just after. Verify min/max use confirmation-local today, default remains preparation+7, invalid date focuses localized associated error and creates no action. Repeat native keyboard/picker both locales and compare persisted local date. Do not change the host production clock.",
+          "ownerRole": "Independent human QA reviewer",
+          "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json"
+        },
+        {
+          "id": "M-06",
+          "item": "Generic form-error description association",
+          "classification": "BLOCKING_BEFORE_DEMO_RELEASE",
+          "rationale": "The actual form source sets aria-describedby to review-error-summary and deterministic DOM tests assert it; browser generic errors focus a visible alert. The broad browser probe returned null, so live form association and speech remain unverified rather than a proven absent association.",
+          "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+          "scenarioIds": [
+            "QA-15"
+          ],
+          "verificationSteps": "With a fresh authorized draft, trigger each generic error and inspect the actual dialog form element (not a guessed form id). Verify aria-describedby includes review-error-summary and resolves to the visible alert; check screen-reader interaction. This run establishes focused alert/heading and field-specific associations; its generic form-description probe returned null and earns no browser association pass.",
+          "ownerRole": "Independent human QA reviewer",
+          "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json"
+        },
+        {
+          "id": "M-07",
+          "item": "Independent human Traditional Chinese review",
+          "classification": "BLOCKING_BEFORE_DEMO_RELEASE",
+          "rationale": "Independent automated bilingual evidence remediates the observed terminology/navigation defects. Natural Taiwan Chinese and complete language acceptance still require an independent human before demo release.",
+          "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+          "scenarioIds": [
+            "QA-16",
+            "QA-18"
+          ],
+          "verificationSteps": "Have an independent human reviewer inspect the repaired exact head 5c3e2763635dab46e8c91255e0394eece008dcb1 in both locales at all four viewports, including programme locator wording, lighting insufficiency/source meaning and the complete prior QA-16/QA-18 scope. The two product defects passed an independent automated targeted retest; human language/acceptance review and a full scenario rerun are not established by this run.",
+          "ownerRole": "Independent human QA reviewer",
+          "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json"
+        }
+      ],
+      "readyForHuman": false,
+      "allManualItemsNonBlockingForMerge": false,
+      "mergeApproved": false,
+      "demoReleaseApproved": false,
+      "stage8CompletionGranted": false,
+      "historicalRunsRewritten": false
+    },
+    {
+      "recordedAt": "2026-11-17T08:17:30.887559+00:00",
+      "reviewer": "independent_evaluation",
+      "reviewerSeparateFromProductBuilder": true,
+      "reviewerReadOnly": true,
+      "verdict": "REVISE",
+      "reason": "Actual M-03 and M-04 checks fail required modal focus containment for new P2 F-08; conditional READY_FOR_HUMAN gate is not met.",
+      "headCommit": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+      "baseCommit": "211578dd4b4e12169a182c498254bb571cadad70",
+      "productDiffSha256": "a03223953f8a0668f3412871f4f24b1c64ce47ac732250629607259205784685",
+      "completeFiveFileDiffSha256": "74aab7eb8c10f17adf0178a3017336adfec17a2ebda960c3b2d38bb454c16fcd",
+      "codeFileCount": 5,
+      "validationArtifactFileCount": 23,
+      "forbiddenScopeChangesFound": [],
+      "policyOrSecurityEscalation": false,
+      "newProductFindings": [
+        {
+          "id": "F-08",
+          "severity": "P2",
+          "scenarioIds": [
+            "QA-15"
+          ],
+          "manualItemIds": [
+            "M-03",
+            "M-04"
+          ],
+          "disposition": "OPEN_REQUIRED_PATH_BLOCKER",
+          "rationale": "Settled claim-to-source evidence navigation leaves focus on BODY; the next native Tab reaches background navigation behind an open aria-modal dialog, in both locales at actual200% and at100% with actual OS Reduce Motion ON. Escape recovery is observed.",
+          "evidence": "evidence/manual-acceptance/20261117T070845Z/independent-reassessment.json"
+        }
+      ],
+      "evidenceIntegrity": [
+        {
+          "run": "20261117T023357Z",
+          "commit": "5985b7b5ef6a87d9312c9d989e90a2d5be6ac19a",
+          "parent": "211578dd4b4e12169a182c498254bb571cadad70",
+          "scopedFiles": 1275,
+          "verifiedArtifactHashes": 1274
+        },
+        {
+          "run": "20261117T050611Z",
+          "commit": "e043ee551169c1f8586c9d490703be3a4a1ab187",
+          "parent": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+          "scopedFiles": 467,
+          "verifiedArtifactHashes": 466
+        }
+      ],
+      "broadRun": {
+        "runId": "20261117T023357Z",
+        "evidenceCommit": "5985b7b5ef6a87d9312c9d989e90a2d5be6ac19a",
+        "parent": "211578dd4b4e12169a182c498254bb571cadad70",
+        "historicalCounts": {
+          "PASS": 14,
+          "FAIL": 2,
+          "PARTIAL": 2,
+          "BLOCKED": 0
+        },
+        "outcomesUnchanged": true
+      },
+      "targetedRun": {
+        "runId": "20261117T050611Z",
+        "evidenceCommit": "e043ee551169c1f8586c9d490703be3a4a1ab187",
+        "parent": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+        "verdict": "PASS",
+        "counts": {
+          "PASS_TARGETED": 2,
+          "PASS_TARGETED_SMOKE": 5,
+          "FAIL": 0
+        },
+        "screenshots": 203,
+        "fullQaMatrixRerun": false
+      },
+      "findings": [
+        {
+          "id": "F-01",
+          "scenarioIds": [
+            "QA-18"
+          ],
+          "disposition": "PASSED_AND_PRESERVED",
+          "rationale": "Broad authority journey passes; current-head smoke preserves forecast/actual/quoted-price/supplier-offer distinctions."
+        },
+        {
+          "id": "F-02",
+          "scenarioIds": [
+            "QA-05"
+          ],
+          "disposition": "PASSED_AND_PRESERVED",
+          "rationale": "Broad rapid-edit/history cases pass; current-head nondefault four-field draft survives navigation and persists exactly in one confirmed action."
+        },
+        {
+          "id": "F-03",
+          "scenarioIds": [
+            "QA-16",
+            "QA-18"
+          ],
+          "disposition": "REMEDIATED_BY_LATER_PASS",
+          "rationale": "Final programme locator residual passes in both locales at four widths, with four source identities and internal provenance preserved."
+        },
+        {
+          "id": "F-04",
+          "scenarioIds": [
+            "QA-07",
+            "QA-08"
+          ],
+          "disposition": "PASSED_AND_PRESERVED",
+          "rationale": "Authorized receipt retains creation wording; four current-head same-Viewer known/missing pairs show identical neutral denial and no action payload."
+        },
+        {
+          "id": "F-05",
+          "scenarioIds": [
+            "QA-11",
+            "QA-15"
+          ],
+          "disposition": "PASSED_AND_PRESERVED",
+          "rationale": "Broad generic-error matrix preserves draft and visible focus; current-head stale smoke focuses the visible alert inside the dialog. M-06 remains a manual association check."
+        },
+        {
+          "id": "F-06",
+          "scenarioIds": [
+            "QA-11",
+            "QA-18"
+          ],
+          "disposition": "PASSED_AND_PRESERVED",
+          "rationale": "Broad changed-source variants and current-head authority smoke show stale warnings, retain inspectable immutable history, and reject confirmation."
+        },
+        {
+          "id": "F-07",
+          "scenarioIds": [
+            "QA-16",
+            "QA-18"
+          ],
+          "disposition": "REMEDIATED_BY_LATER_PASS",
+          "rationale": "All 40 entry combinations select the same authoritative insufficiency claim and ordered sources, preserve 2/3 and invent no actual range or variance."
+        },
+        {
+          "id": "F-08",
+          "severity": "P2",
+          "scenarioIds": [
+            "QA-15"
+          ],
+          "manualItemIds": [
+            "M-03",
+            "M-04"
+          ],
+          "disposition": "OPEN_REQUIRED_PATH_BLOCKER",
+          "rationale": "Settled claim-to-source evidence navigation leaves focus on BODY; the next native Tab reaches background navigation behind an open aria-modal dialog, in both locales at actual200% and at100% with actual OS Reduce Motion ON. Escape recovery is observed.",
+          "evidence": "evidence/manual-acceptance/20261117T070845Z/independent-reassessment.json"
+        }
+      ],
+      "scenarioSynthesis": [
+        {
+          "id": "QA-01",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-02",
+          "historicalStatus": "PARTIAL",
+          "currentDisposition": "PARTIAL_MANUAL_REQUIRED",
+          "rationale": "Observed behavior retained; M-05 remains Stage 9 hardening."
+        },
+        {
+          "id": "QA-03",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-04",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-05",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-06",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-07",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-08",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-09",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-10",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-11",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-12",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-13",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-14",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-15",
+          "historicalStatus": "PARTIAL",
+          "currentDisposition": "CURRENT_SCOPED_MANUAL_CHECKS_FAIL",
+          "rationale": "Historical PARTIAL remains unchanged; actual M-03/M-04 at current product head fail for new required-path P2 F-08. No full QA-15 rerun claimed."
+        },
+        {
+          "id": "QA-16",
+          "historicalStatus": "FAIL",
+          "currentDisposition": "KNOWN_PRODUCT_FAILURES_REMEDIATED",
+          "rationale": "F-03/F-07 remain closed by prior current-head repair retest; M-03 now has failing manual evidence for F-08. M-02/M-07 remain human requirements. No whole-scenario PASS."
+        },
+        {
+          "id": "QA-17",
+          "historicalStatus": "PASS",
+          "currentDisposition": "PASS_CARRIED_FORWARD_BY_DELTA_REVIEW",
+          "rationale": "Broad-run PASS remains applicable to unchanged behavior; affected presentation paths have targeted current-head evidence."
+        },
+        {
+          "id": "QA-18",
+          "historicalStatus": "FAIL",
+          "currentDisposition": "KNOWN_PRODUCT_FAILURES_REMEDIATED",
+          "rationale": "F-03/F-07 closed by current-head retest and bounded delta; M-07 remains. No new full regression run claimed."
+        }
+      ],
+      "manualVerification": [
+        {
+          "id": "M-01",
+          "item": "Actual screen-reader announcements",
+          "classification": "BLOCKING_BEFORE_DEMO_RELEASE",
+          "rationale": "Actual spoken announcements remain unverified and block demo release. The separately observed F-08 keyboard-focus defect blocks merge and is not deferred to this item.",
+          "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+          "scenarioIds": [
+            "QA-15"
+          ],
+          "verificationSteps": "On exact-head preview, use VoiceOver+Chrome and NVDA+Chrome/Firefox with reviewed Mei session. In each locale, open review via keyboard, submit without consent, trigger stale/evidence/access/server error via operator, open/close evidence and create once. Verify dialog name, focused alert/field, linked error, pending state, receipt heading are announced once, with no hidden background disclosure; Escape returns to trigger. DOM role/focus does not establish speech.",
+          "ownerRole": "Independent human QA reviewer",
+          "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json"
+        },
+        {
+          "id": "M-02",
+          "item": "Physical mobile keyboard/touch/native picker",
+          "classification": "BLOCKING_BEFORE_DEMO_RELEASE",
+          "rationale": "Four desktop-emulated viewport sizes and native desktop keyboard date entry pass. Physical iOS/Android occlusion, touch and picker behavior remain separate device evidence required before demo release.",
+          "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+          "scenarioIds": [
+            "QA-15",
+            "QA-16"
+          ],
+          "verificationSteps": "On real iOS Safari and Android Chrome at 390/320 CSS widths, open the longest approved draft in both locales. Tap native date picker, select/clear a valid date, open the soft keyboard and scroll to warnings, consent, create/cancel and evidence close. Verify no occluded/overlapping controls, preserved draft through locale/evidence and comfortable touch targets. Desktop viewport sizing does not simulate native IME or touch.",
+          "ownerRole": "Independent human QA reviewer",
+          "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json"
+        },
+        {
+          "id": "M-03",
+          "item": "Exact 200% browser zoom",
+          "classification": "BLOCKING_BEFORE_MERGE",
+          "rationale": "Actually executed in run 20261117T070845Z; new required-path P2 F-08 violates visible modal focus containment. Settings restored. Separate scoped repair/retest required.",
+          "status": "FAIL",
+          "scenarioIds": [
+            "QA-15",
+            "QA-16"
+          ],
+          "verificationSteps": "Use a desktop browser window calibrated to 1280x800 content at 100%; set browser zoom to 200% through its visible menu, independently record actual CSS viewport and zoom. In both locales test review, validation, stale/server errors, evidence and receipt. Tab through every control, scroll warnings, verify reflow and focus visibility; reset zoom after. Viewport override is not equivalent to 200% browser zoom.",
+          "ownerRole": "Independent human QA reviewer",
+          "evidenceSource": "evidence/manual-acceptance/20261117T070845Z/REPORT.txt"
+        },
+        {
+          "id": "M-04",
+          "item": "Reduced-motion behavior",
+          "classification": "BLOCKING_BEFORE_MERGE",
+          "rationale": "Actually executed in run 20261117T070845Z; new required-path P2 F-08 violates visible modal focus containment. Settings restored. Separate scoped repair/retest required.",
+          "status": "FAIL",
+          "scenarioIds": [
+            "QA-15"
+          ],
+          "verificationSteps": "Enable OS Reduce Motion before opening the browser; verify prefers-reduced-motion reports reduce. In both locales open/close review/evidence, trigger loading/error and receipt. Observe transitions with and without preference; ensure reduced motion and no repeated focus stealing. Restore original preference.",
+          "ownerRole": "Independent human QA reviewer",
+          "evidenceSource": "evidence/manual-acceptance/20261117T070845Z/REPORT.txt"
+        },
+        {
+          "id": "M-05",
+          "item": "Leap-day / Asia-Taipei midnight boundaries",
+          "classification": "STAGE_9_HARDENING",
+          "rationale": "Passing policy tests cover leap-day validity and today..today+365; service tests revalidate the date across Taipei midnight with no write. Existing browser date validation remains valid. End-to-end native-picker/test-clock boundary evidence is still required in Stage 9, before its release gate.",
+          "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+          "scenarioIds": [
+            "QA-02"
+          ],
+          "verificationSteps": "On a disposable synthetic environment with an approved operator-controlled test clock and unchanged product code, exercise valid leap-day 2028-02-29 while it is within today..today+365, reject 2027-02-29, and prepare just before Asia/Taipei midnight then confirm just after. Verify min/max use confirmation-local today, default remains preparation+7, invalid date focuses localized associated error and creates no action. Repeat native keyboard/picker both locales and compare persisted local date. Do not change the host production clock.",
+          "ownerRole": "Independent human QA reviewer",
+          "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json"
+        },
+        {
+          "id": "M-06",
+          "item": "Generic form-error description association",
+          "classification": "BLOCKING_BEFORE_DEMO_RELEASE",
+          "rationale": "The actual form source sets aria-describedby to review-error-summary and deterministic DOM tests assert it; browser generic errors focus a visible alert. The broad browser probe returned null, so live form association and speech remain unverified rather than a proven absent association.",
+          "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+          "scenarioIds": [
+            "QA-15"
+          ],
+          "verificationSteps": "With a fresh authorized draft, trigger each generic error and inspect the actual dialog form element (not a guessed form id). Verify aria-describedby includes review-error-summary and resolves to the visible alert; check screen-reader interaction. This run establishes focused alert/heading and field-specific associations; its generic form-description probe returned null and earns no browser association pass.",
+          "ownerRole": "Independent human QA reviewer",
+          "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json"
+        },
+        {
+          "id": "M-07",
+          "item": "Independent human Traditional Chinese review",
+          "classification": "BLOCKING_BEFORE_DEMO_RELEASE",
+          "rationale": "Independent automated bilingual evidence remediates the observed terminology/navigation defects. Natural Taiwan Chinese and complete language acceptance still require an independent human before demo release.",
+          "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+          "scenarioIds": [
+            "QA-16",
+            "QA-18"
+          ],
+          "verificationSteps": "Have an independent human reviewer inspect the repaired exact head 5c3e2763635dab46e8c91255e0394eece008dcb1 in both locales at all four viewports, including programme locator wording, lighting insufficiency/source meaning and the complete prior QA-16/QA-18 scope. The two product defects passed an independent automated targeted retest; human language/acceptance review and a full scenario rerun are not established by this run.",
+          "ownerRole": "Independent human QA reviewer",
+          "evidenceSource": "https://github.com/FATTY-BAMBA/StrideBrain/blob/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z/manual-verification.json"
+        }
+      ],
+      "readyForHuman": false,
+      "allManualItemsNonBlockingForMerge": false,
+      "mergeApproved": false,
+      "demoReleaseApproved": false,
+      "stage8CompletionGranted": false,
+      "historicalRunsRewritten": false,
+      "manualAcceptanceRun": "20261117T070845Z",
+      "manualAcceptanceEvidence": "evidence/manual-acceptance/20261117T070845Z/"
+    }
+  ],
+  "manualAcceptance": {
+    "runId": "20261117T095951Z",
+    "productHead": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+    "buildId": "7AxvZ0avDfCi3vJEjHpJH",
+    "browser": "Google Chrome 157.0.8103.79 on macOS 26.2; actual native menu and OS settings",
+    "scope": [
+      "M-03",
+      "M-04"
+    ],
+    "results": {
+      "M-03": "PASS",
+      "M-04": "PASS",
+      "F-08": "PASS"
+    },
+    "verdict": "PASS",
+    "finalImplementationVerdict": "PASS_WITH_NON_BLOCKING_PRE_RELEASE_VERIFICATION",
+    "taskState": "READY_FOR_HUMAN",
+    "newProductFindings": [],
+    "unresolvedObservedSeverityCounts": {
+      "P0": 0,
+      "P1": 0,
+      "requiredPathP2": 0
+    },
+    "remainingManualItems": {
+      "M-01": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "M-02": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "M-05": "STAGE_9_HARDENING",
+      "M-06": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "M-07": "BLOCKING_BEFORE_DEMO_RELEASE"
+    },
+    "publication": {
+      "status": "PUBLISHED",
+      "branch": "qa/sb-029-manual-20261117T095951Z",
+      "commit": "029f70e8ddce6061bcb5691f4cdfc6bca5f146e2",
+      "directParent": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+      "url": "https://github.com/FATTY-BAMBA/StrideBrain/tree/029f70e8ddce6061bcb5691f4cdfc6bca5f146e2/foundry/tasks/SB-029/evidence/manual-acceptance/20261117T095951Z",
+      "fileCount": 178,
+      "screenshotCount": 64
+    },
+    "fullQaMatrixRerun": false,
+    "productSourceModified": false,
+    "historicalEvidenceModified": false,
+    "mergeOrReleaseApprovalGranted": false,
+    "recordedAt": "2026-11-17T15:56:27.678890+00:00",
+    "evidenceDirectory": "evidence/manual-acceptance/20261117T095951Z/",
+    "independentReassessment": "https://github.com/FATTY-BAMBA/StrideBrain/blob/029f70e8ddce6061bcb5691f4cdfc6bca5f146e2/foundry/tasks/SB-029/evidence/manual-acceptance/20261117T095951Z/focus-reassessment.json",
+    "sanitization": "PASS",
+    "cleanupRestoration": "PASS",
+    "closureObservation": {
+      "classification": "POST_TEST_AGENT_CLOSURE_INTERRUPTION",
+      "endpoint": "https://chatgpt.com/backend-api/codex/responses",
+      "productDefect": false,
+      "affectedTestObservations": false,
+      "evidence": "https://github.com/FATTY-BAMBA/StrideBrain/blob/029f70e8ddce6061bcb5691f4cdfc6bca5f146e2/foundry/tasks/SB-029/evidence/manual-acceptance/20261117T095951Z/closure-bad-request.json"
+    }
+  },
+  "acceptanceCheckpointHistory": [
+    {
+      "archivedAt": "2026-11-17T15:56:27.678890+00:00",
+      "reason": "Superseded by published exact-head M-03/M-04 passing evidence; historical outcomes preserved.",
+      "checkpoint": {
+        "headCommit": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+        "validationHead": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+        "applicationHead": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+        "sourceTreeFingerprintSha256": "fce51bf5de6d1751e54d8941f7c9f31104b3e3efffd12e030301cbdbfd462663",
+        "preview": {
+          "runId": "20261117T050611Z",
+          "testedHead": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+          "buildId": "VSGc_BSVp5nB86Sw8Zypr",
+          "evidenceCommit": "e043ee551169c1f8586c9d490703be3a4a1ab187",
+          "status": "TARGETED_RETEST_COMPLETED_SESSIONS_REVOKED",
+          "data": "DEMO_SYNTHETIC",
+          "sessionsRevoked": 4,
+          "activeSessionsAtRecordedClosure": 0,
+          "currentProcessAvailabilityRechecked": false,
+          "evidenceUrl": "https://github.com/FATTY-BAMBA/StrideBrain/tree/e043ee551169c1f8586c9d490703be3a4a1ab187/foundry/tasks/SB-029/evidence/local-qa/20261117T050611Z"
+        },
+        "deterministicValidation": {
+          "report": "https://github.com/FATTY-BAMBA/StrideBrain/blob/5c3e2763635dab46e8c91255e0394eece008dcb1/foundry/tasks/SB-029/evidence/p2-repair-20261117T045349Z/validation.json",
+          "status": "PASS",
+          "tests": 500,
+          "testFiles": 61,
+          "skipped": 0,
+          "localizationTests": 12,
+          "localizationFiles": 4,
+          "postgresAdversarialTests": 93,
+          "migrations": 8,
+          "cleanMigrationsRepeatedSeedAndSql": "PASS",
+          "productionBuild": "PASS",
+          "productionVulnerabilities": 0,
+          "lintWarnings": 1,
+          "warningScope": "Pre-existing eslint.config.mjs default export warning",
+          "reviewedAt": "2026-11-17T06:43:42.524086+00:00",
+          "rerunDuringSynthesis": false
+        },
+        "exactHeadCi": {
+          "required": true,
+          "headCommit": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+          "runId": 44021235139,
+          "url": "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/44021235139",
+          "status": "completed",
+          "conclusion": "success",
+          "jobId": 133830952569,
+          "jobName": "quality",
+          "all21RecordedStepsPassed": true,
+          "verifiedAt": "2026-11-17T06:43:42.524086+00:00",
+          "browserAcceptanceCredit": false
+        }
+      }
+    }
+  ],
+  "manualAcceptanceHistory": [
+    {
+      "runId": "20261117T070845Z",
+      "productHead": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+      "buildId": "VSGc_BSVp5nB86Sw8Zypr",
+      "browser": "Desktop Google Chrome on macOS; native CUA menu/window/keyboard control",
+      "scope": [
+        "M-03",
+        "M-04"
+      ],
+      "results": {
+        "M-03": "FAIL",
+        "M-04": "FAIL"
+      },
+      "verdict": "REVISE",
+      "taskState": "NEEDS_REVISION",
+      "newProductFindings": [
+        {
+          "id": "F-08",
+          "severity": "P2",
+          "scenarioIds": [
+            "QA-15"
+          ],
+          "manualItemIds": [
+            "M-03",
+            "M-04"
+          ],
+          "disposition": "OPEN_REQUIRED_PATH_BLOCKER",
+          "rationale": "Settled claim-to-source evidence navigation leaves focus on BODY; the next native Tab reaches background navigation behind an open aria-modal dialog, in both locales at actual200% and at100% with actual OS Reduce Motion ON. Escape recovery is observed.",
+          "evidence": "evidence/manual-acceptance/20261117T070845Z/independent-reassessment.json"
+        }
+      ],
+      "unresolvedObservedSeverityCounts": {
+        "P0": 0,
+        "P1": 0,
+        "requiredPathP2": 1
+      },
+      "remainingManualItems": {
+        "M-01": "BLOCKING_BEFORE_DEMO_RELEASE",
+        "M-02": "BLOCKING_BEFORE_DEMO_RELEASE",
+        "M-05": "STAGE_9_HARDENING",
+        "M-06": "BLOCKING_BEFORE_DEMO_RELEASE",
+        "M-07": "BLOCKING_BEFORE_DEMO_RELEASE"
+      },
+      "publication": {
+        "status": "LOCAL_NOT_PUBLISHED",
+        "branch": null,
+        "commit": null
+      },
+      "fullQaMatrixRerun": false,
+      "productSourceModified": false,
+      "historicalEvidenceModified": false,
+      "mergeOrReleaseApprovalGranted": false,
+      "recordedAt": "2026-11-17T08:17:30.887559+00:00",
+      "evidenceDirectory": "evidence/manual-acceptance/20261117T070845Z/",
+      "independentReassessment": "evidence/manual-acceptance/20261117T070845Z/independent-reassessment.json"
+    }
+  ],
+  "sourceTreeFingerprintMethod": "SHA-256 of raw git ls-tree -r -z output for the exact head, including all committed paths; earlier differently scoped fingerprints retained in checkpoint history.",
+  "sourceTreeCommit": "f67edb3188c51704acac4465c0a72fca146c6d3f"
+}

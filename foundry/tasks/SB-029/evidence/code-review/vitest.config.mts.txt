@@ -1,0 +1,1 @@
+export default {root:"/workspace/StrideBrain",resolve:{alias:{"@":"/workspace/StrideBrain/src"}},test:{environment:"node",include:["/tmp/sb029-review/*regressions.test.ts"],restoreMocks:true,clearMocks:true}};

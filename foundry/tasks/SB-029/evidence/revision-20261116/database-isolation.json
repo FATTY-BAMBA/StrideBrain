@@ -1,0 +1,24 @@
+{
+  "originalRunPreserved": true,
+  "freshRevisionReady": true,
+  "databases": [
+    {
+      "database": "stridebrain_stage8_preview",
+      "actions": 19,
+      "proposals": 38,
+      "receipts": 19,
+      "audits": 19,
+      "migrations": 8,
+      "container": "stridebrain-sb029-cloud-qa"
+    },
+    {
+      "database": "stridebrain_sb029_revision",
+      "actions": 0,
+      "proposals": 0,
+      "receipts": 0,
+      "audits": 0,
+      "migrations": 8,
+      "container": "stridebrain-sb029-revision-qa"
+    }
+  ]
+}
