@@ -1,0 +1,273 @@
+{
+  "at": "2026-11-17T09:31:28.790198+00:00",
+  "run": "20261117T085821Z",
+  "branch": "fix/sb-029-source-modal-focus",
+  "base": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+  "changedCodeFiles": [
+    "src/components/accessibility/use-modal-focus.ts",
+    "src/components/evidence/evidence-panel.tsx",
+    "src/components/comparisons/comparison-experience-client.tsx",
+    "src/app/[locale]/projects/[projectKey]/compare/page.tsx",
+    "tests/evidence-panel/modal-focus.test.ts"
+  ],
+  "sourceDiffSha256": "5bdced6748fa394c19266a65f72021ceda93d24c30931b20ff6346eaecdbd0d6",
+  "sourceFreezeSha256": "70584ab59e08ff49d99106c9abd5eaaa1ac7810c711b34f50a018cd285c43585",
+  "gate": [
+    {
+      "stage": "targeted-regression",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/evidence-panel/modal-focus.test.ts",
+        "tests/internal-review-experience/navigation-race.test.ts",
+        "tests/internal-review-experience/receipt-disclosure.test.ts",
+        "tests/localization"
+      ],
+      "exitCode": 0,
+      "seconds": 1.74
+    },
+    {
+      "stage": "format",
+      "command": [
+        "npm",
+        "run",
+        "format:check"
+      ],
+      "exitCode": 0,
+      "seconds": 1.96
+    },
+    {
+      "stage": "lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exitCode": 0,
+      "seconds": 3.84
+    },
+    {
+      "stage": "prisma-validation",
+      "command": [
+        "npm",
+        "run",
+        "db:validate"
+      ],
+      "exitCode": 0,
+      "seconds": 2.86
+    },
+    {
+      "stage": "prisma-generation",
+      "command": [
+        "npm",
+        "run",
+        "db:generate"
+      ],
+      "exitCode": 0,
+      "seconds": 2.14
+    },
+    {
+      "stage": "strict-typescript",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 1.39
+    },
+    {
+      "stage": "eight-clean-migrations",
+      "command": [
+        "npm",
+        "run",
+        "db:migrate"
+      ],
+      "exitCode": 0,
+      "seconds": 2.41
+    },
+    {
+      "stage": "seed-first",
+      "command": [
+        "npm",
+        "run",
+        "db:seed"
+      ],
+      "exitCode": 0,
+      "seconds": 7.53
+    },
+    {
+      "stage": "sql-first",
+      "command": [
+        "npm",
+        "run",
+        "db:verify"
+      ],
+      "exitCode": 0,
+      "seconds": 17.5
+    },
+    {
+      "stage": "seed-repeat",
+      "command": [
+        "npm",
+        "run",
+        "db:seed"
+      ],
+      "exitCode": 0,
+      "seconds": 7.19
+    },
+    {
+      "stage": "sql-repeat",
+      "command": [
+        "npm",
+        "run",
+        "db:verify"
+      ],
+      "exitCode": 0,
+      "seconds": 21.13
+    },
+    {
+      "stage": "full-tests",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 138.5
+    },
+    {
+      "stage": "localization",
+      "command": [
+        "npm",
+        "run",
+        "test:localization"
+      ],
+      "exitCode": 0,
+      "seconds": 0.81
+    },
+    {
+      "stage": "postgres-adversarial",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/internal-review/postgres-invariants.test.ts"
+      ],
+      "exitCode": 0,
+      "seconds": 121.75
+    },
+    {
+      "stage": "production-build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 12.05
+    },
+    {
+      "stage": "production-audit",
+      "command": [
+        "npm",
+        "audit",
+        "--omit=dev",
+        "--audit-level=high"
+      ],
+      "exitCode": 0,
+      "seconds": 1.77
+    },
+    {
+      "stage": "final-sql-verification",
+      "command": [
+        "npm",
+        "run",
+        "db:verify"
+      ],
+      "exitCode": 0,
+      "seconds": 10.87,
+      "earlierAttempt": {
+        "stage": "final-sql-verification",
+        "command": [
+          "npm",
+          "run",
+          "db:verify"
+        ],
+        "exitCode": 1,
+        "seconds": 5.8
+      },
+      "fixtureCleanup": "post-suite-fixture-session-cleanup.json",
+      "reason": "Fixture-only verifier expects exactly seed sessions; restored by removing only the expired five-minute integration-test session in this fresh database, preserving seed and business history hashes."
+    },
+    {
+      "stage": "post-build-format",
+      "command": [
+        "npm",
+        "run",
+        "format:check"
+      ],
+      "exitCode": 0,
+      "seconds": 1.95
+    },
+    {
+      "stage": "post-build-typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 1.51
+    }
+  ],
+  "fullTests": {
+    "tests": 535,
+    "files": 62,
+    "skipped": 0
+  },
+  "newFocusTests": 35,
+  "targetedRegression": {
+    "tests": 77,
+    "files": 7
+  },
+  "localization": {
+    "tests": 12,
+    "files": 4
+  },
+  "postgresAdversarial": {
+    "tests": 93,
+    "files": 1
+  },
+  "productionBuild": "PASS",
+  "buildId": "7AxvZ0avDfCi3vJEjHpJH",
+  "productionAuditVulnerabilities": 0,
+  "migrations": {
+    "count": 8,
+    "databaseInitiallyEmpty": true,
+    "repeatedSeeds": 2,
+    "allSqlVerification": "PASS",
+    "fourImmutableGuardsEnabled": true
+  },
+  "independentSourceReview": "PASS",
+  "independentTests": {
+    "passed": 67,
+    "files": 5
+  },
+  "lintWarnings": [
+    "One pre-existing import/no-anonymous-default-export warning in prisma.config.ts:5. No errors."
+  ],
+  "generatedFilesExcluded": true,
+  "existingQaPreserved": true,
+  "readyToPublishRepair": true,
+  "pushPerformed": false,
+  "mergePerformed": false,
+  "nativeBrowserAcceptance": "PENDING: new exact-head Chrome200% and actual OS Reduce Motion retest required; historical M03/M04 FAIL remains unchanged.",
+  "diagnostics": [
+    "Initial build could not resolve external symlinked dependencies; replaced only worktree dependency symlink with a local clone, without changing package/lock/config.",
+    "Expanded actual-review tests exposed initial scroll-lock lifecycle mismatch; corrected passive lock and proved empty/auto restoration.",
+    "Final new test needed a type-safe selectionMode reader after async route commit; no application behavior change.",
+    "Extra post-suite fixture verifier found the existing hero test session. Only that expired test-owned session was revoked/removed in the fresh validation database; seed and business-history hashes matched before/after. All final SQL scripts then passed.",
+    "Next generated next-env.d.ts changes were restored to base and post-build format/typecheck passed."
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "at": "2026-11-17T09:26:36.587232+00:00",
+  "onlyOwnValidationContainerStopped": true,
+  "containerStatus": "exited",
+  "databasesRetained": true,
+  "priorQaContainersUntouched": true,
+  "previewServerChanged": false,
+  "runtimeOrDatabaseFilesCommitted": false
+}

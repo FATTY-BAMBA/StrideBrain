@@ -181,6 +181,7 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
             view={view}
             freshness={freshness}
             evidencePanel={evidencePanel}
+            evidenceSelection={evidenceSelection}
             evidenceReturnId={route.evidenceReturnId}
             internalReview={{
               locale: rawLocale,

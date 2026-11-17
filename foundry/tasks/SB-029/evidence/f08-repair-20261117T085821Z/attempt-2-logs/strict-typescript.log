@@ -1,0 +1,5 @@
+
+> stridebrain@0.1.0 typecheck
+> tsc --noEmit
+
+tests/evidence-panel/modal-focus.test.ts(536,23): error TS2339: Property 'mode' does not exist on type 'never'.

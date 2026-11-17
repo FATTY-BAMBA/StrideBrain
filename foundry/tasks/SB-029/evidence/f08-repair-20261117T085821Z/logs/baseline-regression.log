@@ -1,0 +1,942 @@
+
+ RUN  v4.1.10 <BASELINE>
+
+ ❯ tests/evidence-panel/modal-focus.test.ts (35 tests | 2 failed | 33 skipped) 84ms
+     × keeps source focus contained in desktop, with and without reduced motion 69ms
+     × keeps source focus contained in desktop, with and without reduced motion 14ms
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 33 skipped (35)
+   Start at  17:15:42
+   Duration  913ms (transform 160ms, setup 0ms, import 235ms, tests 84ms, environment 494ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/evidence-panel/modal-focus.test.ts > F-08 modal hierarchy (en) > keeps source focus contained in desktop, with and without reduced motion
+AssertionError: expected <body style="overflow: hidden;">…(1)</body> to be <h2 id="evidence-panel-title" …(1)></h2> // Object.is equality
+
+- Expected
++ Received
+
++ <body
++   style="overflow: hidden;"
++ >
++   <div>
++     <nav>
++       <a
++         href="/"
++         id="global-nav"
++       >
++         Home
++       </a>
++       <a
++         href="/projects"
++         id="project-nav"
++       >
++         Projects
++       </a>
++     </nav>
++     <div
++       class="_page_6fd285"
++     >
++       <header
++         class="_hero_6fd285"
++       >
++         <div
++           class="_heroContent_6fd285"
++         >
++           <p
++             class="_eyebrow_6fd285"
++           >
++             Comparison
++           </p>
++           <h1
++             tabindex="-1"
++           >
++             Comparison
++           </h1>
++           <p
++             class="_heroDescription_6fd285"
++           >
++             Stored comparison
++           </p>
++         </div>
++         <dl
++           class="_summaryGrid_6fd285"
++         >
++           <div
++             class="_summaryItem_6fd285"
++           >
++             <dt>
++               Generated
++             </dt>
++             <dd>
++               Today
++             </dd>
++           </div>
++           <div
++             class="_summaryItem_6fd285"
++           >
++             <dt>
++               Comparison policy
++             </dt>
++             <dd>
++               Policy
++             </dd>
++           </div>
++           <div
++             class="_summaryItem_6fd285"
++           >
++             <dt>
++               Authorized matches
++             </dt>
++             <dd>
++               0
++             </dd>
++           </div>
++           <div
++             class="_summaryItem_6fd285"
++           >
++             <dt>
++               Selected precedents
++             </dt>
++             <dd>
++               0
++             </dd>
++           </div>
++           <div
++             class="_summaryItem_6fd285"
++           >
++             <dt>
++               Commercial evidence
++             </dt>
++             <dd>
++               Complete
++             </dd>
++           </div>
++           <div
++             class="_summaryItem_6fd285"
++           >
++             <dt>
++               Data boundary
++             </dt>
++             <dd>
++               Synthetic
++             </dd>
++           </div>
++         </dl>
++       </header>
++       <section
++         aria-labelledby="comparable-projects-title"
++         class="_section_6fd285"
++       >
++         <div
++           class="_sectionHeader_6fd285"
++         >
++           <div
++             class="_sectionHeaderText_6fd285"
++           >
++             <p
++               class="_eyebrow_6fd285"
++             >
++               Have we done something like this before?
++             </p>
++             <h2
++               id="comparable-projects-title"
++             >
++               Choose precedents to compare
++             </h2>
++             <p>
++               Select up to three projects. Updating the set creates a new immutable economics enrichment without changing the structural ranking.
++             </p>
++           </div>
++           <div
++             aria-live="polite"
++             class="_selectionStatus_6fd285"
++           >
++             <strong>
++               0
++             </strong>
++             <span>
++               selected
++             </span>
++             <span>
++               ·
++             </span>
++             <span>
++               Maximum 3
++             </span>
++           </div>
++         </div>
++         <div
++           class="_cardGrid_6fd285"
++         />
++         <form
++           action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
++           class="_selectionForm_6fd285"
++         >
++           <input
++             name="locale"
++             type="hidden"
++             value="en"
++           />
++           <input
++             name="projectKey"
++             type="hidden"
++             value="PROJECT"
++           />
++           <input
++             name="comparisonRunId"
++             type="hidden"
++             value="run-focus"
++           />
++           <p
++             aria-live="polite"
++             class="_selectionFormMessage_6fd285 "
++           >
++             Selected projects: —
++           </p>
++           <button
++             class="_primaryButton_6fd285"
++             disabled=""
++             type="submit"
++           >
++             Update comparison
++           </button>
++         </form>
++       </section>
++       <section
++         aria-labelledby="comparison-table-title"
++         class="_tablePanel_6fd285"
++       >
++         <div
++           class="_sectionHeaderText_6fd285"
++         >
++           <p
++             class="_eyebrow_6fd285"
++           >
++             Structured comparison
++           </p>
++           <h2
++             id="comparison-table-title"
++           >
++             Structured comparison
++           </h2>
++           <p>
++             Values come from the stored deterministic run. Quoted price, forecast, supplier offer, and reconciled actual cost remain separate.
++           </p>
++         </div>
++         <div
++           aria-label="Structured comparison"
++           class="_tableWrap_6fd285"
++           role="region"
++           tabindex="0"
++         >
++           <table
++             class="_comparisonTable_6fd285"
++           >
++             <thead>
++               <tr>
++                 <th
++                   class="_rowLabel_6fd285"
++                   scope="col"
++                 >
++                   Structured comparison
++                 </th>
++               </tr>
++             </thead>
++           </table>
++         </div>
++         <div
++           aria-label="Structured comparison"
++           class="_mobileComparison_6fd285"
++         />
++       </section>
++       <section
++         aria-labelledby="structured-review-title"
++         class="_section_6fd285"
++       >
++         <div
++           class="_sectionHeaderText_6fd285"
++         >
++           <p
++             class="_eyebrow_6fd285"
++           >
++             Structured review
++           </p>
+            <h2
++             id="structured-review-title"
++           >
++             Structured review
++           </h2>
++         </div>
++         <div
++           class="_synthesisGrid_6fd285"
++         >
++           <article
++             class="_synthesisCard_6fd285"
++             data-claim-key="STONE_CLAIM"
++             data-tone="NEUTRAL"
++           >
++             <h3>
++               Stone
++             </h3>
++             <p>
++               Supporting evidence
++             </p>
++             <button
++               class="_synthesisEvidenceTrigger_6fd285"
++               data-evidence-trigger-id="evidence-synthesis-stone"
++               type="button"
++             >
++               Inspect evidence
++             </button>
++           </article>
++           <article
++             class="_synthesisCard_6fd285"
++             data-tone="NEUTRAL"
++           >
++             <h3>
++               Review
++             </h3>
++             <p>
++               Review evidence
++             </p>
++           </article>
++         </div>
++       </section>
++       <aside
++         aria-label="Evidence and sufficiency"
++         class="_noticeStack_6fd285"
++       />
++       <div
++         class="_overlay_8010ea"
++         role="presentation"
++       >
++         <aside
++           aria-labelledby="evidence-panel-title"
++           aria-modal="true"
++           class="_panel_8010ea"
++           role="dialog"
++         >
++           <header
++             class="_header_8010ea"
++           >
++             <div>
++               <p
++                 class="_eyebrow_8010ea"
++               >
++                 EVIDENCE
++               </p>
++               <h2
+                  id="evidence-panel-title"
+                  tabindex="-1"
+                >
+                  Source details
+                </h2>
++               <p />
++             </div>
++             <button
++               class="_closeButton_8010ea"
++               type="button"
++             >
++               Close evidence
++             </button>
++           </header>
++           <div
++             class="_contextBar_8010ea"
++             data-comparison-run-id="run-focus"
++           >
++             <strong>
++               Synthetic project
++             </strong>
++             <span>
++               Snapshot
++             </span>
++           </div>
++           <button
++             class="_backButton_8010ea"
++             type="button"
++           >
++             Back to evidence bundle
++           </button>
++           <section
++             aria-labelledby="evidence-sources-title"
++             class="_sourcesSection_8010ea"
++           >
++             <h3
++               id="evidence-sources-title"
++             >
++               Supporting sources
++             </h3>
++             <div
++               class="_sourceList_8010ea"
++             >
++               <article
++                 class="_sourceCard_8010ea"
++                 data-source-key="bbbbbbbbbbbbbbbbbbbbbbbb"
++               >
++                 <header
++                   class="_sourceHeader_8010ea"
++                 >
++                   <div>
++                     <p
++                       class="_sourceType_8010ea"
++                     >
++                       Evidence and calculation trace
++                     </p>
++                     <h4>
++                       Imported stone
++                     </h4>
++                   </div>
++                   <div
++                     class="_badgeStack_8010ea"
++                   >
++                     <span
++                       class="_badge_8010ea"
++                     >
++                       Synthetic
++                     </span>
++                   </div>
++                 </header>
++                 <dl
++                   class="_definitionGrid_8010ea"
++                 >
++                   <div>
++                     <dt>
++                       Exact locator
++                     </dt>
++                     <dd>
++                       1
++                     </dd>
++                   </div>
++                   <div>
++                     <dt>
++                       Data boundary
++                     </dt>
++                     <dd>
++                       Synthetic
++                     </dd>
++                   </div>
++                 </dl>
++                 <div
++                   aria-label="Authority"
++                   class="_conditionRow_8010ea"
++                 />
++                 <section
++                   class="_preview_8010ea"
++                 >
++                   <h5>
++                     Safe source preview
++                   </h5>
++                   <dl
++                     class="_previewGrid_8010ea"
++                   >
++                     <div>
++                       <dt>
++                         Amount
++                       </dt>
++                       <dd>
++                         100
++                       </dd>
++                     </div>
++                   </dl>
++                 </section>
++                 <footer
++                   class="_sourceActions_8010ea"
++                 >
++                   <button
++                     type="button"
++                   >
++                     Inspect conflict
++                   </button>
++                 </footer>
++               </article>
++             </div>
++           </section>
++         </aside>
++       </div>
++     </div>
++     <button
++       id="background-review"
++     >
++       Underlying review control
++     </button>
++   </div>
++ </body>
+
+ ❯ drilldown tests/evidence-panel/modal-focus.test.ts:300:34
+    298|   expect(dialog().contains(document.activeElement)).toBe(true);
+    299|   await commitNavigation();
+    300|   expect(document.activeElement).toBe(heading());
+       |                                  ^
+    301|   expect(document.activeElement).not.toBe(document.body);
+    302|   return identity;
+ ❯ tests/evidence-panel/modal-focus.test.ts:367:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/evidence-panel/modal-focus.test.ts > F-08 modal hierarchy (zh-TW) > keeps source focus contained in desktop, with and without reduced motion
+AssertionError: expected <body style="overflow: hidden;">…(1)</body> to be <h2 id="evidence-panel-title" …(1)></h2> // Object.is equality
+
+- Expected
++ Received
+
++ <body
++   style="overflow: hidden;"
++ >
++   <div>
++     <nav>
++       <a
++         href="/"
++         id="global-nav"
++       >
++         Home
++       </a>
++       <a
++         href="/projects"
++         id="project-nav"
++       >
++         Projects
++       </a>
++     </nav>
++     <div
++       class="_page_6fd285"
++     >
++       <header
++         class="_hero_6fd285"
++       >
++         <div
++           class="_heroContent_6fd285"
++         >
++           <p
++             class="_eyebrow_6fd285"
++           >
++             Comparison
++           </p>
++           <h1
++             tabindex="-1"
++           >
++             Comparison
++           </h1>
++           <p
++             class="_heroDescription_6fd285"
++           >
++             Stored comparison
++           </p>
++         </div>
++         <dl
++           class="_summaryGrid_6fd285"
++         >
++           <div
++             class="_summaryItem_6fd285"
++           >
++             <dt>
++               產生時間
++             </dt>
++             <dd>
++               Today
++             </dd>
++           </div>
++           <div
++             class="_summaryItem_6fd285"
++           >
++             <dt>
++               比較規則
++             </dt>
++             <dd>
++               Policy
++             </dd>
++           </div>
++           <div
++             class="_summaryItem_6fd285"
++           >
++             <dt>
++               已授權相似專案
++             </dt>
++             <dd>
++               0
++             </dd>
++           </div>
++           <div
++             class="_summaryItem_6fd285"
++           >
++             <dt>
++               已選歷史專案
++             </dt>
++             <dd>
++               0
++             </dd>
++           </div>
++           <div
++             class="_summaryItem_6fd285"
++           >
++             <dt>
++               商務資料狀態
++             </dt>
++             <dd>
++               Complete
++             </dd>
++           </div>
++           <div
++             class="_summaryItem_6fd285"
++           >
++             <dt>
++               資料邊界
++             </dt>
++             <dd>
++               Synthetic
++             </dd>
++           </div>
++         </dl>
++       </header>
++       <section
++         aria-labelledby="comparable-projects-title"
++         class="_section_6fd285"
++       >
++         <div
++           class="_sectionHeader_6fd285"
++         >
++           <div
++             class="_sectionHeaderText_6fd285"
++           >
++             <p
++               class="_eyebrow_6fd285"
++             >
++               我們以前做過類似的案子嗎？
++             </p>
++             <h2
++               id="comparable-projects-title"
++             >
++               選擇要比較的歷史專案
++             </h2>
++             <p>
++               最多選擇三個專案。更新選擇會建立新的不可變更商務分析，但不會改變原本的相似度排序。
++             </p>
++           </div>
++           <div
++             aria-live="polite"
++             class="_selectionStatus_6fd285"
++           >
++             <strong>
++               0
++             </strong>
++             <span>
++               個已選
++             </span>
++             <span>
++               ·
++             </span>
++             <span>
++               最多 3 個
++             </span>
++           </div>
++         </div>
++         <div
++           class="_cardGrid_6fd285"
++         />
++         <form
++           action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
++           class="_selectionForm_6fd285"
++         >
++           <input
++             name="locale"
++             type="hidden"
++             value="zh-TW"
++           />
++           <input
++             name="projectKey"
++             type="hidden"
++             value="PROJECT"
++           />
++           <input
++             name="comparisonRunId"
++             type="hidden"
++             value="run-focus"
++           />
++           <p
++             aria-live="polite"
++             class="_selectionFormMessage_6fd285 "
++           >
++             已選專案: —
++           </p>
++           <button
++             class="_primaryButton_6fd285"
++             disabled=""
++             type="submit"
++           >
++             更新比較
++           </button>
++         </form>
++       </section>
++       <section
++         aria-labelledby="comparison-table-title"
++         class="_tablePanel_6fd285"
++       >
++         <div
++           class="_sectionHeaderText_6fd285"
++         >
++           <p
++             class="_eyebrow_6fd285"
++           >
++             結構化比較
++           </p>
++           <h2
++             id="comparison-table-title"
++           >
++             結構化比較
++           </h2>
++           <p>
++             所有數值都來自已儲存的固定規則結果。歷史報價、預估成本、供應商報價與已核對實際成本會保持清楚區分。
++           </p>
++         </div>
++         <div
++           aria-label="結構化比較"
++           class="_tableWrap_6fd285"
++           role="region"
++           tabindex="0"
++         >
++           <table
++             class="_comparisonTable_6fd285"
++           >
++             <thead>
++               <tr>
++                 <th
++                   class="_rowLabel_6fd285"
++                   scope="col"
++                 >
++                   結構化比較
++                 </th>
++               </tr>
++             </thead>
++           </table>
++         </div>
++         <div
++           aria-label="結構化比較"
++           class="_mobileComparison_6fd285"
++         />
++       </section>
++       <section
++         aria-labelledby="structured-review-title"
++         class="_section_6fd285"
++       >
++         <div
++           class="_sectionHeaderText_6fd285"
++         >
++           <p
++             class="_eyebrow_6fd285"
++           >
++             結構化審查
++           </p>
+            <h2
++             id="structured-review-title"
++           >
++             結構化審查
++           </h2>
++         </div>
++         <div
++           class="_synthesisGrid_6fd285"
++         >
++           <article
++             class="_synthesisCard_6fd285"
++             data-claim-key="STONE_CLAIM"
++             data-tone="NEUTRAL"
++           >
++             <h3>
++               Stone
++             </h3>
++             <p>
++               Supporting evidence
++             </p>
++             <button
++               class="_synthesisEvidenceTrigger_6fd285"
++               data-evidence-trigger-id="evidence-synthesis-stone"
++               type="button"
++             >
++               查看資料依據
++             </button>
++           </article>
++           <article
++             class="_synthesisCard_6fd285"
++             data-tone="NEUTRAL"
++           >
++             <h3>
++               Review
++             </h3>
++             <p>
++               Review evidence
++             </p>
++           </article>
++         </div>
++       </section>
++       <aside
++         aria-label="資料依據與完整度"
++         class="_noticeStack_6fd285"
++       />
++       <div
++         class="_overlay_8010ea"
++         role="presentation"
++       >
++         <aside
++           aria-labelledby="evidence-panel-title"
++           aria-modal="true"
++           class="_panel_8010ea"
++           role="dialog"
++         >
++           <header
++             class="_header_8010ea"
++           >
++             <div>
++               <p
++                 class="_eyebrow_8010ea"
++               >
++                 資料依據
++               </p>
++               <h2
+                  id="evidence-panel-title"
+                  tabindex="-1"
+                >
+                  來源明細
+                </h2>
++               <p />
++             </div>
++             <button
++               class="_closeButton_8010ea"
++               type="button"
++             >
++               關閉資料依據
++             </button>
++           </header>
++           <div
++             class="_contextBar_8010ea"
++             data-comparison-run-id="run-focus"
++           >
++             <strong>
++               Synthetic project
++             </strong>
++             <span>
++               Snapshot
++             </span>
++           </div>
++           <button
++             class="_backButton_8010ea"
++             type="button"
++           >
++             返回資料依據組合
++           </button>
++           <section
++             aria-labelledby="evidence-sources-title"
++             class="_sourcesSection_8010ea"
++           >
++             <h3
++               id="evidence-sources-title"
++             >
++               支持資料來源
++             </h3>
++             <div
++               class="_sourceList_8010ea"
++             >
++               <article
++                 class="_sourceCard_8010ea"
++                 data-source-key="bbbbbbbbbbbbbbbbbbbbbbbb"
++               >
++                 <header
++                   class="_sourceHeader_8010ea"
++                 >
++                   <div>
++                     <p
++                       class="_sourceType_8010ea"
++                     >
++                       資料依據與計算過程
++                     </p>
++                     <h4>
++                       進口石材
++                     </h4>
++                   </div>
++                   <div
++                     class="_badgeStack_8010ea"
++                   >
++                     <span
++                       class="_badge_8010ea"
++                     >
++                       Synthetic
++                     </span>
++                   </div>
++                 </header>
++                 <dl
++                   class="_definitionGrid_8010ea"
++                 >
++                   <div>
++                     <dt>
++                       精確位置
++                     </dt>
++                     <dd>
++                       1
++                     </dd>
++                   </div>
++                   <div>
++                     <dt>
++                       資料邊界
++                     </dt>
++                     <dd>
++                       Synthetic
++                     </dd>
++                   </div>
++                 </dl>
++                 <div
++                   aria-label="資料權威性"
++                   class="_conditionRow_8010ea"
++                 />
++                 <section
++                   class="_preview_8010ea"
++                 >
++                   <h5>
++                     安全來源預覽
++                   </h5>
++                   <dl
++                     class="_previewGrid_8010ea"
++                   >
++                     <div>
++                       <dt>
++                         Amount
++                       </dt>
++                       <dd>
++                         100
++                       </dd>
++                     </div>
++                   </dl>
++                 </section>
++                 <footer
++                   class="_sourceActions_8010ea"
++                 >
++                   <button
++                     type="button"
++                   >
++                     查看不一致紀錄
++                   </button>
++                 </footer>
++               </article>
++             </div>
++           </section>
++         </aside>
++       </div>
++     </div>
++     <button
++       id="background-review"
++     >
++       Underlying review control
++     </button>
++   </div>
++ </body>
+
+ ❯ drilldown tests/evidence-panel/modal-focus.test.ts:300:34
+    298|   expect(dialog().contains(document.activeElement)).toBe(true);
+    299|   await commitNavigation();
+    300|   expect(document.activeElement).toBe(heading());
+       |                                  ^
+    301|   expect(document.activeElement).not.toBe(document.body);
+    302|   return identity;
+ ❯ tests/evidence-panel/modal-focus.test.ts:367:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯

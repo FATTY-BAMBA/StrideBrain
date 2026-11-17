@@ -30,6 +30,7 @@ type ComparisonExperienceClientProps = Readonly<{
   view: ComparisonExperienceView;
   freshness?: ComparisonFreshness | undefined;
   evidencePanel?: EvidencePanelOutcome | undefined;
+  evidenceSelection?: EvidencePanelSelection | null | undefined;
   evidenceReturnId?: string | undefined;
   internalReview?: InternalReviewExperienceProps | undefined;
 }>;
@@ -223,6 +224,7 @@ export function ComparisonExperienceClient({
   view,
   freshness,
   evidencePanel,
+  evidenceSelection,
   evidenceReturnId,
   internalReview,
 }: ComparisonExperienceClientProps) {
@@ -587,6 +589,7 @@ export function ComparisonExperienceClient({
       {evidencePanel ? (
         <EvidencePanel
           outcome={evidencePanel}
+          selection={evidenceSelection}
           locale={view.locale}
           onClose={closeEvidence}
           onNavigate={navigateEvidence}

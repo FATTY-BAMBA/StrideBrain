@@ -1,0 +1,47 @@
+{
+  "at": "2026-11-17T09:19:11.604586+00:00",
+  "reviewer": "independent_evaluation",
+  "separateFromProductBuilder": true,
+  "verdict": "PASS",
+  "blockingFindings": [],
+  "base": "5c3e2763635dab46e8c91255e0394eece008dcb1",
+  "sourceFreezeManifest": "source-freeze.json",
+  "sourceFreezeSha256": "70584ab59e08ff49d99106c9abd5eaaa1ac7810c711b34f50a018cd285c43585",
+  "allFiveFileHashesMatchedBeforeAndAfterTesting": true,
+  "independentTests": {
+    "passed": 67,
+    "files": 5,
+    "newModalFocusTests": 35
+  },
+  "scope": "Four product presentation/focus files and one new DOM regression file; required validation evidence only.",
+  "implementation": [
+    "One persistent evidence-modal boundary across claim/source/conflict/safe unavailable states.",
+    "Deterministic layout-effect focus without timer or animation dependencies.",
+    "Tab/Shift+Tab containment and outside-focus recovery.",
+    "Exact source-trigger restoration or safe parent-heading fallback.",
+    "Hierarchical Escape and existing review/comparison return-focus behavior.",
+    "Passive overflow-lock lifecycle aligned with the existing review modal; actual review-controller roundtrip restores original empty/auto overflow."
+  ],
+  "routeAndData": "History retains selectors, not cached evidence DTOs; existing server-backed navigation performs fresh authorization. Actual draft selectors and four fields are tested.",
+  "preserved": [
+    "F-01 through F-07 presentation semantics",
+    "authorization",
+    "tenant isolation",
+    "evidence authority",
+    "financial authority",
+    "immutable comparison semantics",
+    "action policy",
+    "schema and migrations"
+  ],
+  "unrelatedFeaturesFound": false,
+  "productPolicyChangesFound": false,
+  "reviewerEditedFiles": false,
+  "reviewerRanPostgresOrBrowser": false,
+  "intermediateCorrection": "New actual-review handoff tests exposed a body-overflow lifecycle regression in the initial repair. Final passive lock corrects it; final tests verify both empty and auto original overflow. A later test-only selectionMode reader avoids invalid TypeScript narrowing without behavioral change.",
+  "limitations": [
+    "Final full deterministic gate is confirmed separately by the orchestrator.",
+    "jsdom constrains DOM inputs but does not measure real browser reflow/zoom or OS motion.",
+    "New exact-head native Chrome200% and actual macOS Reduce Motion acceptance retesting remains required.",
+    "No merge, publication, Stage8 acceptance or release approval."
+  ]
+}

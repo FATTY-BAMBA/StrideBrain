@@ -1,0 +1,24 @@
+{
+  "at": "2026-11-17T09:34:43.618790+00:00",
+  "result": "PASS",
+  "filesScanned": 39,
+  "scope": "Every new validation artifact and all five changed source/test files; generated dependency/build/runtime/database files excluded.",
+  "knownPrivateLiteralCount": 4,
+  "patternCategories": [
+    "private path",
+    "credential URL",
+    "bootstrap URL",
+    "JWT",
+    "bearer",
+    "private key",
+    "provider token",
+    "cookie"
+  ],
+  "hits": [],
+  "sanitizationApplied": [
+    "Runtime wrapper suppresses credential values and replaces workspace/home paths before writing logs.",
+    "Account/runtime/private session records excluded; cleanup proof contains only aggregate counts and hashes.",
+    "Log trailing whitespace and surplus EOF blank lines normalized; all non-whitespace content retained."
+  ],
+  "limitations": "Pattern/literal scan is not a universal secret detector. No binary screenshots are part of this repair evidence."
+}
