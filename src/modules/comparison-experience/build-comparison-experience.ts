@@ -708,7 +708,13 @@ function contextSections(
   ];
   for (const [categoryId, label, basis] of categoryDefinitions) {
     const category = categoryById(economics, categoryId);
-    const suffix = basis === "QUOTE" ? "QUOTED_VARIANCE" : "FORECAST_ACTUAL_VARIANCE";
+    const suffix =
+      basis === "QUOTE"
+        ? "QUOTED_VARIANCE"
+        : category?.forecastVariance.state === "INSUFFICIENT" &&
+            category.actualHistory.state === "INSUFFICIENT"
+          ? "ACTUAL_INSUFFICIENT"
+          : "FORECAST_ACTUAL_VARIANCE";
     categoryRows.push(
       category
         ? historyRow(

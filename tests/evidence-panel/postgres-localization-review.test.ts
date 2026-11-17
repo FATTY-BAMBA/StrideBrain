@@ -113,6 +113,75 @@ describePostgres("Independent SB-029 stored-data presentation review", () => {
     }
   }, 30_000);
 
+  it.each(locales)(
+    "F-07 opens the authoritative supported or insufficient table claim in %s",
+    async (locale) => {
+      const services = createComparisonServices();
+      const saved = JSON.stringify(economics);
+      const view = buildComparisonExperience({ stage4: comparison, economics, locale });
+      const rows = view.table.sections.flatMap((section) => section.rows);
+      const lighting = rows.find((row) => row.key === "LIGHTING_ELECTRICAL-ACTUAL")!;
+      const gap = view.synthesis.gaps.find((item) => item.key === "lighting-gap")!;
+      const selection = (claimKey: string): EvidencePanelSelection => ({
+        mode: "CLAIM",
+        comparisonRunId: comparison.run.id,
+        enrichmentRunId: economics.run.id,
+        claimKey,
+      });
+      expect(lighting.cells.__ACTIVE_PROJECT__?.claimKey).toBe(gap.claimKey);
+      expect(gap.claimKey).toBe("XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT");
+      const panel = await services.getEvidencePanel.execute(
+        context,
+        selection(lighting.cells.__ACTIVE_PROJECT__!.claimKey!),
+        locale,
+      );
+      const gapPanel = await services.getEvidencePanel.execute(
+        context,
+        selection(gap.claimKey!),
+        locale,
+      );
+      expect(panel).toEqual(gapPanel);
+      if (panel.kind !== "READY") throw Error("INSUFFICIENCY_PANEL_REQUIRED");
+      expect(panel.view.claim?.sufficiencyLabel).toBe(
+        locale === "en" ? "Insufficient actual-cost evidence" : "實際成本資料不足",
+      );
+      expect(panel.view.claim?.valueLabel).toContain("2");
+      expect(panel.view.claim?.valueLabel).toContain("3");
+      expect(panel.view.sources.length).toBeGreaterThan(0);
+      expect(panel.view.trace).toBeUndefined();
+      const stored = economics.categories.find(
+        (category) => category.categoryId === "LIGHTING_ELECTRICAL",
+      )!;
+      expect(stored.actualHistory).toMatchObject({
+        state: "INSUFFICIENT",
+        eligibleObservationCount: 2,
+        requiredObservationCount: 3,
+      });
+      expect(stored.forecastVariance.variancePercent).toBeUndefined();
+      expect(stored.actualHistory.minimumNormalizedAmount).toBeUndefined();
+      expect(stored.actualHistory.maximumNormalizedAmount).toBeUndefined();
+
+      const supportedKey = rows.find((row) => row.key === "IMPORTED_STONE-ACTUAL")!.cells
+        .__ACTIVE_PROJECT__!.claimKey!;
+      const supported = await services.getEvidencePanel.execute(
+        context,
+        selection(supportedKey),
+        locale,
+      );
+      if (supported.kind !== "READY") throw Error("SUPPORTED_PANEL_REQUIRED");
+      expect(supported.view.claim?.claimKey).toBe("XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE");
+      expect(supported.view.trace?.kind).toBe("FINANCIAL");
+      expect(supported.view.claim?.valueLabel).toContain("+18.4%");
+      const unavailable = await services.getEvidencePanel.execute(
+        context,
+        selection("XINYI_LIGHTING_ELECTRICAL_FORECAST_ACTUAL_VARIANCE"),
+        locale,
+      );
+      expect(unavailable.kind).toBe("UNAVAILABLE");
+      expect(JSON.stringify(economics)).toBe(saved);
+    },
+  );
+
   it("preserves stored forecast and actual authority at every visible comparison cell", () => {
     const saved = JSON.stringify({ comparison, economics });
     expect(economics.current.forecastDirectCost).toMatch(/^12650000(?:\.0+)?$/);
@@ -207,7 +276,7 @@ describePostgres("Independent SB-029 stored-data presentation review", () => {
         assertNoInternalCopy(text, `${locale} ${JSON.stringify(selection)}`);
         if (locale === "zh-TW") {
           expect(text).not.toMatch(
-            /\b(?:Code|State|Current context|Historical context|District|Taipei|weeks)\b/,
+            /\b(?:Code|State|Current context|Historical context|District|Taipei|weeks|programmeWeeks)\b/,
           );
         }
         for (const source of outcome.view.sources) {

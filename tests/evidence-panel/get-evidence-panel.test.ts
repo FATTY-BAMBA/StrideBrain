@@ -9,6 +9,7 @@ import {
 } from "@/modules/evidence-panel/application/get-evidence-panel";
 import type { Stage4ComparisonResult } from "@/modules/comparisons/domain/contracts";
 import type { Stage5EconomicsResult } from "@/modules/economics/domain/contracts";
+import type { EvidencePanelSelection } from "@/modules/evidence-panel/contracts";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import type { ComparisonRunRepositoryPort } from "@/repositories/ports/comparison-run-repository";
 import type { EconomicsEnrichmentRunRepositoryPort } from "@/repositories/ports/economics-enrichment-run-repository";
@@ -453,6 +454,57 @@ describe("QA-16/18 rendered evidence localization and financial authority", () =
     enrichmentRunId: "econrun-1",
     claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
   };
+  it.each(["en", "zh-TW"] as const)(
+    "F-03 localizes programmeWeeks in claim, source and factor rendering in %s without changing provenance",
+    async (locale) => {
+      const original = {
+        ...source,
+        locator: { kind: "project", field: "programmeWeeks" },
+        previewFields: [{ key: "programmeWeeks", value: "19.00" }],
+      };
+      const snapshot = JSON.stringify(original);
+      const selections: EvidencePanelSelection[] = [
+        selection,
+        {
+          ...selection,
+          mode: "SOURCE",
+          sourceKey: evidenceSourceKey("cmprun-1", original.referenceId),
+        },
+        {
+          mode: "FACTOR",
+          comparisonRunId: "cmprun-1",
+          candidateProjectKey: "PRJ-NEIHU-021",
+          factorKey: "AREA_SIMILARITY",
+        },
+      ];
+      for (const selected of selections) {
+        const outcome = await service({
+          getAuthorizedSources: vi
+            .fn()
+            .mockResolvedValue({ kind: "COMPLETE", sources: [original] }),
+        }).execute(context, selected, locale);
+        if (outcome.kind !== "READY") throw Error("READY_REQUIRED");
+        const label = locale === "zh-TW" ? "工期（週）" : "Programme in weeks";
+        expect(outcome.view.sources[0]?.locatorLabel).toContain(label);
+        expect(outcome.view.sources[0]?.preview).toMatchObject({
+          fields: [{ label, value: "19.00" }],
+        });
+        const markup = renderToStaticMarkup(
+          createElement(EvidencePanel, {
+            outcome,
+            locale,
+            onClose: () => {},
+            onNavigate: () => {},
+          }),
+        );
+        // Covers visible source cards/exact locators and all accessible attributes.
+        expect(markup).toContain(label);
+        expect(markup).not.toContain("programmeWeeks");
+        expect(JSON.stringify(original)).toBe(snapshot);
+        expect(original.locator.field).toBe("programmeWeeks");
+      }
+    },
+  );
   it.each(["en", "zh-TW"] as const)(
     "renders every source observation type accurately in %s without changing stored authority",
     async (locale) => {

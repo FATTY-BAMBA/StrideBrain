@@ -374,6 +374,75 @@ function row(view: ReturnType<typeof buildComparisonExperience>, key: string) {
 }
 
 describe("Stage 6 comparison experience composer", () => {
+  it.each(["en", "zh-TW"] as const)(
+    "F-07 selects insufficiency evidence for every abstained actual category in %s",
+    (locale) => {
+      const stored = economics();
+      const snapshot = JSON.stringify(stored);
+      const view = buildComparisonExperience({ stage4: stage4(), economics: stored, locale });
+      const lighting = row(view, "LIGHTING_ELECTRICAL-ACTUAL")!;
+      const gap = view.synthesis.gaps.find((item) => item.key === "lighting-gap")!;
+      expect(gap.claimKey).toBe("XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT");
+      for (const value of Object.values(lighting.cells)) {
+        expect(value.state).toBe("INSUFFICIENT");
+        expect(value.claimKey).toBe(gap.claimKey);
+      }
+      expect(lighting.cells["PRJ-NEIHU-021"]?.secondary).toBe("2/3");
+      expect(lighting.cells.__ACTIVE_PROJECT__?.secondary).not.toContain("%");
+      expect(row(view, "IMPORTED_STONE-ACTUAL")?.cells.__ACTIVE_PROJECT__).toMatchObject({
+        state: "VALUE",
+        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      });
+      expect(JSON.stringify(stored)).toBe(snapshot);
+
+      const otherCategory = {
+        ...stored,
+        categories: [category("CUSTOM_MILLWORK", "0", "0", "INSUFFICIENT")],
+      };
+      const other = buildComparisonExperience({
+        stage4: stage4(),
+        economics: otherCategory,
+        locale,
+      });
+      expect(row(other, "CUSTOM_MILLWORK-ACTUAL")?.cells.__ACTIVE_PROJECT__).toMatchObject({
+        state: "INSUFFICIENT",
+        claimKey: "XINYI_CUSTOM_MILLWORK_ACTUAL_INSUFFICIENT",
+      });
+    },
+  );
+
+  it.each(["en", "zh-TW"] as const)(
+    "F-07 keeps unavailable actual data unavailable without a supported evidence affordance in %s",
+    (locale) => {
+      const stored = economics();
+      const missing: Stage5EconomicsResult = {
+        ...stored,
+        categories: [
+          {
+            ...category("LIGHTING_ELECTRICAL", "0", "0"),
+            actualHistory: {
+              state: "UNAVAILABLE",
+              observationType: "RECONCILED_ACTUAL_COST",
+              requiredObservationCount: 3,
+            },
+            forecastVariance: {
+              state: "UNAVAILABLE",
+              currentBasis: "FORECAST",
+              historyBasis: "RECONCILED_ACTUAL_COST",
+            },
+          },
+        ],
+      };
+      const view = buildComparisonExperience({ stage4: stage4(), economics: missing, locale });
+      for (const value of Object.values(row(view, "LIGHTING_ELECTRICAL-ACTUAL")!.cells)) {
+        expect(value.state).toBe("UNAVAILABLE");
+        expect(value.claimKey).toBeUndefined();
+        expect(value.primary).not.toMatch(/NT\$|%/);
+      }
+      expect(view.synthesis.gaps.find((item) => item.key === "lighting-gap")).toBeUndefined();
+    },
+  );
+
   it("preserves canonical ranking and the immutable selected precedents", () => {
     const view = buildComparisonExperience({
       stage4: stage4(),

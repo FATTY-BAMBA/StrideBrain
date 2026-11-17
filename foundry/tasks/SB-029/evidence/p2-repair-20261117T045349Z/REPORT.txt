@@ -1,0 +1,12 @@
+SB-029 scoped P2 repair: F-03 and F-07
+Base: 211578dd4b4e12169a182c498254bb571cadad70
+
+F-03: locator field values consult existing bilingual field-label copy. programmeWeeks remains in domain/provenance; normal rendering uses Programme in weeks / 工期（週）. Shared source-card rendering covers claim, source and factor modes, including accessible markup.
+F-07: category table selects ACTUAL_INSUFFICIENT exactly when forecast and historical actual states are both INSUFFICIENT, matching the existing claim producer for all categories. No fixture-key-only branch; supported and unavailable states remain distinct. Canonical lighting resolves to the same claim/sources as Evidence gaps, with 2 observations / 3 required and no invented variance/range.
+
+VALIDATION
+All 17 gate stages pass. Full suite: 500 tests in 61 files, no skips. Localization: 12 tests in 4 files. Targeted unit/localization: 36 tests in 6 files. PostgreSQL adversarial: 93 tests in 1 file. Eight clean migrations, repeated seed/SQL verification, production build pass; production audit: 0 vulnerabilities. New regression probes fail on the original product code (4 expected failures, 2 existing unavailable-state passes). See validation.json and retained logs.
+
+Independent review found no substantive issue and confirmed only two product files plus three test files. No policy/authorization/tenant/immutable/action/schema/migration or unrelated changes. Prior passing repairs are covered by the unchanged full suite.
+
+One existing lint warning and one environment-only ancestor-lockfile build warning remain. Generated next-env changes were restored; final formatting/type checking pass. Product repair is ready for authorized publication and exact-head CI. Independent targeted browser review still required; no Stage 8 acceptance, merge, or release-readiness claim.

@@ -63,6 +63,10 @@ function formatNumber(locale: Locale, value: unknown, digits = 2): string {
 
 function formatValue(locale: Locale, key: string, value: unknown): string {
   if (value === null || value === undefined) return "—";
+  if (key === "field") {
+    const label = getEvidencePanelCopy(locale).fieldLabels[String(value)];
+    if (label) return label;
+  }
   if (key === "kind") return evidenceRecordTypeLabel(locale, String(value));
   if (key === "descriptionEn" || key === "descriptionZhTw") return String(value);
   if (typeof value === "boolean")

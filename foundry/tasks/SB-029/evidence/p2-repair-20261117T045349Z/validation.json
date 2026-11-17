@@ -1,0 +1,143 @@
+{
+  "at": "2026-11-17T05:00:16.465570+00:00",
+  "base": "211578dd4b4e12169a182c498254bb571cadad70",
+  "branch": "fix/sb-029-evidence-locator-insufficiency",
+  "changedCodeFiles": [
+    "src/modules/comparison-experience/build-comparison-experience.ts",
+    "src/modules/evidence-panel/application/get-evidence-panel.ts",
+    "tests/comparison-experience/build-comparison-experience.test.ts",
+    "tests/evidence-panel/get-evidence-panel.test.ts",
+    "tests/evidence-panel/postgres-localization-review.test.ts"
+  ],
+  "gate": [
+    {
+      "stage": "format",
+      "exitCode": 0,
+      "seconds": 1.94
+    },
+    {
+      "stage": "lint",
+      "exitCode": 0,
+      "seconds": 3.94
+    },
+    {
+      "stage": "prisma-validate",
+      "exitCode": 0,
+      "seconds": 1.95
+    },
+    {
+      "stage": "prisma-generate",
+      "exitCode": 0,
+      "seconds": 1.66
+    },
+    {
+      "stage": "typescript",
+      "exitCode": 0,
+      "seconds": 1.67
+    },
+    {
+      "stage": "migrations-clean",
+      "exitCode": 0,
+      "seconds": 1.47
+    },
+    {
+      "stage": "seed-first",
+      "exitCode": 0,
+      "seconds": 4.27
+    },
+    {
+      "stage": "sql-first",
+      "exitCode": 0,
+      "seconds": 8.6
+    },
+    {
+      "stage": "seed-repeat",
+      "exitCode": 0,
+      "seconds": 4.45
+    },
+    {
+      "stage": "sql-repeat",
+      "exitCode": 0,
+      "seconds": 8.49
+    },
+    {
+      "stage": "full-tests",
+      "exitCode": 0,
+      "seconds": 88.51
+    },
+    {
+      "stage": "localization",
+      "exitCode": 0,
+      "seconds": 0.63
+    },
+    {
+      "stage": "postgres-adversarial",
+      "exitCode": 0,
+      "seconds": 87.07
+    },
+    {
+      "stage": "production-build",
+      "exitCode": 0,
+      "seconds": 3.24
+    },
+    {
+      "stage": "production-audit",
+      "exitCode": 0,
+      "seconds": 0.72
+    },
+    {
+      "stage": "post-build-format-check",
+      "exitCode": 0,
+      "seconds": 2.11
+    },
+    {
+      "stage": "post-build-typecheck",
+      "exitCode": 0,
+      "seconds": 1.78
+    }
+  ],
+  "fullTests": {
+    "tests": 500,
+    "files": 61,
+    "skipped": 0
+  },
+  "localizationSuite": {
+    "tests": 12,
+    "files": 4
+  },
+  "targetedUnitAndLocalization": {
+    "tests": 36,
+    "files": 6,
+    "command": "node node_modules/vitest/vitest.mjs run tests/evidence-panel/get-evidence-panel.test.ts tests/comparison-experience/build-comparison-experience.test.ts tests/localization"
+  },
+  "postgresAdversarial": {
+    "tests": 93,
+    "files": 1,
+    "file": "tests/internal-review/postgres-invariants.test.ts"
+  },
+  "baselineRegression": {
+    "command": "vitest run -t F-03|F-07 in isolated copy using original product code plus new tests",
+    "expectedFailureCount": 4,
+    "existingUnavailablePassCount": 2,
+    "result": "EXPECTED_FAILURES_REPRODUCED",
+    "limitation": "No production source mutation; a first isolated-copy attempt lacked generated Prisma imports and earned no test result. The corrected copy produced the recorded expected failures."
+  },
+  "migrations": {
+    "count": 8,
+    "databaseInitiallyEmpty": true,
+    "freshLoopbackPostgreSQL": true,
+    "repeatSeedAndAllSqlVerification": true
+  },
+  "productionBuild": "PASS",
+  "buildId": "UvuB89UJHKtkf-ynCwDA0",
+  "productionAuditVulnerabilities": 0,
+  "warnings": [
+    "One pre-existing eslint import/no-anonymous-default-export warning in eslint.config.mjs.",
+    "Next.js reports ignoring an unrelated ancestor lockfile outside this Git repository; build passes."
+  ],
+  "generatedFilesExcluded": true,
+  "scopeReview": "independent-review.json",
+  "readyToPublishRepair": true,
+  "independentBrowserRetest": "Pending new committed exact-head CI; previous QA-02/QA-15 manual gaps are not promoted.",
+  "noMergeOrStage8Acceptance": true
+}
