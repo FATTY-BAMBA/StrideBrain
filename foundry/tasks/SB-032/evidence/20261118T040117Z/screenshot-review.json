@@ -1,0 +1,2214 @@
+{
+  "count": 96,
+  "scope": "Visual artifact review and English-character OCR; not human Traditional Chinese or complete visual acceptance.",
+  "screenshots": [
+    {
+      "file": "screenshots/baseline-en-cancel-return.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "1e2d9ef8aeb82462944efda93ba1d5198f52d1979b04b986b33cc9f8a76172cb",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-comparison-1440.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "9adf3c965c0e75d154014145935494357767ee7f95bea49ff5aa527c5bed1e57",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-comparison-320.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "d1519b08ec42f9f8edc599eb77a1af2a6c931e17b66808ccd4b6a8aaa9c73041",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-comparison-390.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "ccf39e3727f7f313462748e27d08db4345f30b3ca941e15fc9b8a8adc196d815",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-comparison-768.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "28a20b3af0bbb4cfccbc8bc02d42b9398f01d917c177ada64048d6a241c92d96",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-consumed-proposal.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "36a102f9f69b67a5a5963dae61676ab9ca73c30710bd5d5ce3536bd08b2ad1b4",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-desktop-comparison-idle.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "62f93b3f6e06a46f448fcd056d8c1fafd0250da37b6e5811be96314e8e916260",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-desktop-comparison-result.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "baab1b5ea0a6e386a3a982bef53dcfea441cb6d77b740c2dce16725bc55b312a",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-desktop-factors.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "2d3a30fadea60abcc279016e2cfb15508bb56bbbdff11445deb841e3e45c5050",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-desktop-forecast-evidence.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "36397023c131f769afbda60b6e71cf493197d0fb8404bef9b2f068e925e684d8",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-desktop-lighting-insufficiency.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "d7378f5c5d285e5bbe8aa0840e40dac7c78c045c71292a991a5ca4bf9d2e8582",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-desktop-ready-to-compare.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "6eb1e341fbb9e389aa4e361297f600109c8a1d1ea6335e4614ee52636b0c513b",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-desktop-receipt.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "afbc69cc09863215973398ef3d4002ebf7fb1c3cd42700149ff2acc061874ab9",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-desktop-review.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "9ac9d0299381c419766dfe781eebd57cccb56dd38afa9bb3eb51bed465c916d1",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-desktop-source-return.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "da3b2eff139b7afb03ad7c5fc24cd775c9b201582ce959fa9fff688beed01696",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-desktop-source.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "69ff25f3fdbe6df92745b6eb092f6d575b35b044eabf0bb307175d1b14260ff2",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-desktop-validation.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "94d437c7de6c4b161e431f3459c7d82392429271a02ff564996d36214264c1f4",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-lighting-1440.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "d7378f5c5d285e5bbe8aa0840e40dac7c78c045c71292a991a5ca4bf9d2e8582",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-lighting-320.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "68486789f0343374686e74ebe416dd59054150bf7227e7a4cbd90c8606a7216a",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-lighting-390.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "f377f68ea101b38443a4364e5b8437a85ea049329694e33425ff4026a2189e39",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-lighting-768.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "8b3888afa97cb333b8d7e2ed865c54d1bfd5f741e74390e5fe143428ad2d859a",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-receipt-320.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "89b2304e6973421ba953e064b6299156bf7083e8beae577c4c81e7158f5fc4e7",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-receipt-390.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "70a2f4128d50b96c28111fe731bf05051a09d6d3ae44025d7526efff86017c2d",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-receipt-768.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "8a1a6e7d97c5b64b14ebf12ee73bfccaf015934b86d5dff902edcb38cddb5c55",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-valid-review-1440.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "2394802b2385330405f51381ecb2a30766b55d7640b3b95b474066fbbc39b0b8",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-valid-review-320.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "ea613867ffd2246d24bdeade2f7c353e8615ff720ef587b070745ec3f7e88c3d",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-en-valid-review-390.jpg",
+      "size": [
+        365,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": false,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "631d45203e363d2b998ba58646d5590f17058bc60aec1c17920aeaf8bd2c8ec5",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": "Pixel/CSS mismatch requires settled capture for visual acceptance."
+    },
+    {
+      "file": "screenshots/baseline-en-valid-review-768.jpg",
+      "size": [
+        443,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": false,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "79f903217fbb46d1713bfa6a95f71db979949877233460d9987bf7fea64bae72",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": "Pixel/CSS mismatch requires settled capture for visual acceptance."
+    },
+    {
+      "file": "screenshots/baseline-zh-actions-two-records.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "be4a89e8a108e3f9a1ce6a2ed16b1228c12e0c7ecdfddd65eae055682ef27f78",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-comparison-1440.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "0dcb6d9645a83da9f53bcff0f8c29ad5e3f9fee9fc471a2bceb2e753f757d429",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-comparison-320.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "8e08c56d041de3ebf0cccdf154674bc7e2d881d4be574688a31b6514bf5ace20",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-comparison-390.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "1f4bc1f73984635a13521935a3723f32c2594e4fa5418fb3573cd5f94659dfef",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-comparison-768.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "4782ce78ef874a4afa2f340c439b71040b82028b7f06d4279007e730bc2310d1",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-confirmed-receipt.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "3a25059ddbbf55ade8cc300b7d8fd5d193b078aef8b3aef274f7f23e5df67abf",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-consumed-preparation.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "c2f5b29ad4b52cc629d4d6486455ece9ccc8923071e44bb1d49782c175a72e54",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-desktop-edited-review.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "190576c53f775dd046b028da42d08e168271a5d4f2075d20d69221d1d151659c",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-fresh-comparison.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "996e6a6c0ad2bdff4718b88c91ebde191335ee8be28cbcec75ace777c623734a",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-lighting-1440.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "154da01930d89dd3816bfac242a5206fe1c0c96499de45bf88b862d575cf738b",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-lighting-320.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "f0ae9a0aa9706615e99cc8448e7fbe6d96a9c98246171ddd70cf8bacafb3aadd",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-lighting-390.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "d7d87fba677902f14236065b8b29bbd37e89814c88af9dc75af75b6a3e43e81e",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-lighting-768.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "616127ebab4aaade6840574dec62d4dfd9c04c3157864eaedf4b2b602bec6bcf",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-narrow-programme-evidence.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "618c5d17e3316ac6af662ec5bef61d638df31faaee30633b449150f0d64a09fd",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-narrow-receipt-keyboard.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "b083698062d8e12b937a51518556093ba429d6de2dfbe62fe343f3b69349c3a2",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-narrow-source.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "c2ad95f3eedf65dccea929b370592cd989bdffbcf7f91ecb543be5c584d23029",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-narrow-validation.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "4581f99c79a4461dd80f90610fe39d7ca8bf911312919b9655c4d64f398fd8ae",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-receipt-1440.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "e11ba01eb37398081041bd6cbd2a3abbda060d8f6023bcb7d4da8b321a0f10ad",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-receipt-320.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "e9c073669faee86574efd74914f2f991212a91786c7f7179cda50799ae0d9c4b",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-receipt-390.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "87ed36e0abf16263a3359f5a536c50208edf1353c634249c99237f57d13623bd",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-receipt-768.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "f2bbbec949cd6599bab6b46912268962f33b16828ada3471c631c94642839eb0",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-reopened-action-receipt.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "d0eca9ff63587264c56ba9a06c56b62a3f2586f7b14a06e5cc8e121714705dab",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-review-1440.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "d204c987e940b7b3e218dd94302252d42dea6cf14869a6a03b297c85e0fd71c7",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-review-320.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "c2f5b29ad4b52cc629d4d6486455ece9ccc8923071e44bb1d49782c175a72e54",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-review-390.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "5811967b0087be265bca6176712cc04b31d9bfc0f098a5ecad3d7d4ab79e2b8c",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-review-768.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "6b7dbcc1cc9d16c525738625c77152ad917651b8a3a6af8fb83875deef18e7b6",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-valid-review-1440.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "b52285fbf32f0d94837ea410e25a98fc858a82bf17b89d3838b12f8bc4e9661c",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-valid-review-320.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "aae2190a981156ca3d85e9d9348fff38d67580b8e01fc22a69b98c5281c36452",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-valid-review-390.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "7928b8b60f7827969bbb6a613a3a9629590f44cf7c3220d7e52bc1c9438d289e",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/baseline-zh-valid-review-768.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "8db7cf79ff8d817a5b0f2abdf0c4f44394bf7957b44ea3ad02e3c2cbab60069d",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-admin-en-projects.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "2f33a974ac2d2f1958a18cd343332ff768d0454f87b98eb71aa9c7b84eeb51ba",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-admin-en-workspace.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "bd0cefc7536c1db3c18c81c6b8fb38b08e990d15f6498965a5bea348ec6db32f",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-admin-zh-TW-projects.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "a0d7721ff76cb9a086845350c54bbf364eb36d605cead944d80e1c62d7bef5f3",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-admin-zh-TW-workspace.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "e4a186a0d0d058a2a80ebb6ab2754be03a8b893fa5161efd1386da5e6561ae02",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-finance-en-projects.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "2f33a974ac2d2f1958a18cd343332ff768d0454f87b98eb71aa9c7b84eeb51ba",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-finance-en-workspace.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "97d4bd879363553db745d5ac3deb7ad21d8ab1cc120cdca73556f373d0addc8f",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-finance-zh-TW-projects.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "a0d7721ff76cb9a086845350c54bbf364eb36d605cead944d80e1c62d7bef5f3",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-finance-zh-TW-workspace.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "27c4b4494ade1e6ac6d7ba5bf55f11e249d80ad668049844cf725281c61e0d09",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-en-desktop-focus.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "948be74dbcf7d66ace27bc9778abe87d46da5493dc01abe79e6b1a807da2500f",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-en-desktop-navigation-pending.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "948be74dbcf7d66ace27bc9778abe87d46da5493dc01abe79e6b1a807da2500f",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-en-desktop-workspace.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "b028dc312a93080996caf553605285f60610b19a8d587eb700840d5140a7d150",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-en-mobile-focus.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "2ffd35627a4079d9acf6831f21b69adf311e7521e119b9e8d820d597c5d67e71",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-en-mobile-workspace.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "43d1d1125ec13353f272eccda2f63f453bd008e15d11f6a407b57c201b4e524e",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-en-narrow-mobile-focus.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "db4b368119542e7b226e5118118e40f9045bcf61e6c2ed1be7776f511ccaf25d",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-en-narrow-mobile-workspace.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "3ee742ffc8963d4eddcca6615cad6aa0b9c9b69087a0cfba465d07cff592fff7",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-en-tablet-focus.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "58774845306231a9b55823bb157a75edaf39575494ea1dc2b612e573da3e11ed",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-en-tablet-workspace.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "7c40719673011573295b769702fc693dcf2a2d6faaef0233ec1b1541048b872f",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-zh-TW-desktop-focus.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "0aaea667bbc1d9011e191b03ff3e5c52b6fb7e4beb61485f9aa8a44e384930d2",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-zh-TW-desktop-workspace.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "558080a72b6e3ac22e103c04db69090316358d43d061b26619901b480be971fa",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-zh-TW-mobile-focus.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "9406b28a4a2569134415fcb6b96af58baab07411c2ac657badf878398535d2be",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-zh-TW-mobile-workspace.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "f6c13a6e1ddd85aa47c78c93613c56f463415c94ec489ba5d0e2143ad936a0e7",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-zh-TW-narrow-mobile-focus.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "48f869af8817e1081d130ffd8502e5ff358a22fe907804c7a57bde6e1591dd07",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-zh-TW-narrow-mobile-workspace.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "975bb0a6411fd4570dcd4624f47e924ab36a3d6a82d5551a33cf44a36aefc0e6",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-zh-TW-tablet-focus.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "4efa3f405df7c86feffe07a22b833689f7b360abc573618ef5a05e4ea8cee5e0",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-mei-zh-TW-tablet-workspace.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "799739539d6bf9095948e020cc38f010c652c77dde307dc0ca3bf6e0f284430b",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-no-valid-session-en-desktop.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "78b4df54310766abefc344d813eba2c1b9ba9855608b8f2b8a37f8275720f413",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-no-valid-session-zh-desktop.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "78a47925d5537a57e6f1f0e2c805e732f0c3697ebc8f29f1bd4914d61ec19c65",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-northern-browser-selectors.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "52ab1794c7778dcc5d3110c3d28ce3111de1b39f4411bd491ad1b4503a7dd7ab",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-northern-en-projects.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "52ab1794c7778dcc5d3110c3d28ce3111de1b39f4411bd491ad1b4503a7dd7ab",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-northern-zh-projects.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "e67072638bdb184f9fed07d35ee2b8df6b531f2dbd1aca996f0f5daa19e6c3e1",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-revoked-session-en.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "78b4df54310766abefc344d813eba2c1b9ba9855608b8f2b8a37f8275720f413",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-revoked-session-zh.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "78a47925d5537a57e6f1f0e2c805e732f0c3697ebc8f29f1bd4914d61ec19c65",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-unauthenticated-en.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "78b4df54310766abefc344d813eba2c1b9ba9855608b8f2b8a37f8275720f413",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-unauthenticated-zh.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "78a47925d5537a57e6f1f0e2c805e732f0c3697ebc8f29f1bd4914d61ec19c65",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-viewer-en-projects.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "a06d632a4297514c122a8b27cd56783e69d48a4c156937c4f779e3174c791e55",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-viewer-en-workspace.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "39548c45474ce1136820d45df2b395e2160bd0c62dd466de7331c4077a69aae8",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-viewer-zh-projects.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "39d8f8b99052d44b1a0ff68433f4a0f3176f22766548b29c78ffc51e5fc4649a",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    },
+    {
+      "file": "screenshots/entry-viewer-zh-workspace.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "4ebe23030513d1879ca04aa3601342f4d1ab6bb40fb5146bcff40b6d6e1aaea0",
+      "visualReview": "Contact sheet inspected; key modal/narrow views also inspected at full resolution.",
+      "qualification": null
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "inside": true,
+    "rect": {
+      "bottom": 134.1953125,
+      "top": 113.1171875
+    },
+    "text": "English",
+    "visible": true
+  },
+  {
+    "inside": true,
+    "rect": {
+      "bottom": 134.1953125,
+      "top": 113.1171875
+    },
+    "text": "繁體中文",
+    "visible": true
+  },
+  {
+    "inside": true,
+    "rect": {
+      "bottom": 65.1875,
+      "top": 16
+    },
+    "text": "關閉",
+    "visible": true
+  },
+  {
+    "inside": true,
+    "rect": {
+      "bottom": 662.65625,
+      "top": 613.46875
+    },
+    "text": "返回來源比較",
+    "visible": true
+  },
+  {
+    "inside": true,
+    "rect": {
+      "bottom": 723.84375,
+      "top": 674.65625
+    },
+    "text": "查看專案事項",
+    "visible": true
+  },
+  {
+    "inside": true,
+    "rect": {
+      "bottom": 134.1953125,
+      "top": 113.1171875
+    },
+    "text": "English",
+    "visible": true
+  },
+  {
+    "inside": true,
+    "rect": {
+      "bottom": 134.1953125,
+      "top": 113.1171875
+    },
+    "text": "繁體中文",
+    "visible": true
+  }
+]

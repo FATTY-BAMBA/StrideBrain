@@ -1,21 +1,30 @@
 # Stage 9 known limitations and unresolved gates
 
-Planning has established no new reproducible product defect and has run no product tests. Stage 8's passing repairs are inherited evidence, not proof that every Stage 9 requirement is complete.
+Historical run `20261118T031855Z` remains FAIL with S9-F01. Repair run `20261118T040117Z` on `e8770a02f39273307334674bce76fc19815b8802` closes S9-F01 for the tested scope after deterministic and independent source review PASS. The core bilingual browser journey resumed; Stage 9 matrix and human/device gates remain incomplete. Stage 8 evidence remains historical.
 
-| Item | Classification | Status / completion evidence |
-| --- | --- | --- |
-| M-01 actual screen-reader announcements | BLOCKING_BEFORE_DEMO_RELEASE | NOT_VERIFIED_MANUAL_REQUIRED; human VoiceOver+Chrome in both locales, NVDA combinations where available |
-| M-02 physical mobile keyboard/touch/native picker | BLOCKING_BEFORE_DEMO_RELEASE | NOT_VERIFIED_MANUAL_REQUIRED; real iOS Safari and Android Chrome, both locales |
-| M-05 leap day / Asia-Taipei midnight | STAGE_9_HARDENING | NOT_VERIFIED_MANUAL_REQUIRED; lower-layer tests exist; exact live browser/server boundary evidence remains required |
-| M-06 generic form-error description association | BLOCKING_BEFORE_DEMO_RELEASE | NOT_VERIFIED_MANUAL_REQUIRED; live form DOM/AX plus actual spoken description |
-| M-07 independent human Taiwan Chinese review | BLOCKING_BEFORE_DEMO_RELEASE | NOT_VERIFIED_MANUAL_REQUIRED; qualified human business-language and four-layout review |
-| M-03 / M-04 / F-08 | HISTORICAL_PASS | Native zoom/motion/source-focus PASS on f67edb3; Stage 9 regression planned, no reopened defect without evidence |
-| Pending disabled-controls focus | UNVERIFIED_OBSERVATION | Historical transient BODY focus; verify pending keyboard/speech during S9-09, distinguish natural pending from completed error |
-| Published manual geometry qualification | HISTORICAL_SCOPE_LIMITATION | Some returned control boundaries differ by 0.07–0.11 CSSpx; no operational clipping observed; retain strict and visual observations separately |
-| Global source locks | L1_KNOWN_LIMITATION | Existing conservative lock contention; measure serial/concurrent performance; no L2 scale claim |
-| Origin defaults to localhost | DEPLOYMENT_PREFLIGHT_REQUIREMENT | Explicit intended HTTPS origin required in future preview; local smoke cannot prove hosted session/origin behavior |
-| Reseed deletes synthetic history | OPERATOR_SAFETY_BOUNDARY | Only new disposable DBs; never cleanup retained browser QA history with seed/reset |
-| Cloud preview identity and smoke | NOT_AUTHORIZED_THIS_PHASE | Contract prepared only; remains release/Stage 9 exit evidence gap, separate deployment approval required |
-| Human release review | PENDING | No L1 release approval, no production/pilot readiness claim |
+| Item                                              | Classification                   | Status / completion evidence                                                                                                                                                   |
+| ------------------------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| S9-F01 Projects → workspace entry                 | REQUIRED_PATH_P2                 | CLOSED_FOR_TESTED_SCOPE; authorized list and bilingual/four-width entry retest PASS; prior FAIL unchanged                                                                      |
+| M-01 actual screen-reader announcements           | BLOCKING_BEFORE_DEMO_RELEASE     | NOT_RUN; user available to listen after baseline repair; actual VoiceOver+Chrome both locales, NVDA/Windows unavailable on current host                                        |
+| M-02 physical mobile keyboard/touch/native picker | BLOCKING_BEFORE_DEMO_RELEASE     | DEVICE_EVIDENCE_REQUIRED; iPhone available but untested; Android availability unconfirmed; exact device protocol prepared                                                      |
+| M-05 leap day / Asia-Taipei midnight              | STAGE_9_HARDENING                | PARTIAL; seven explicit-clock domain cases and exact-head service/PG tests pass; live UI/server boundary remains unverified                                                    |
+| M-06 generic form-error description association   | BLOCKING_BEFORE_DEMO_RELEASE     | UNRESOLVED; field-validation DOM/focus observed, generic failure DOM/AX and actual speech still required                                                                       |
+| M-07 independent human Taiwan Chinese review      | BLOCKING_BEFORE_DEMO_RELEASE     | HUMAN_REVIEW_REQUIRED; inventory/terminology/checklist prepared, bilingual core screenshots prepared; full state grid and qualified human business-language review outstanding |
+| M-03 / M-04 / F-08                                | HISTORICAL_PASS                  | Native zoom/motion/source-focus PASS on f67edb3; Stage 9 regression planned, no reopened defect without evidence                                                               |
+| Pending disabled-controls focus                   | UNVERIFIED_OBSERVATION           | Historical transient BODY focus; verify pending keyboard/speech during S9-09, distinguish natural pending from completed error                                                 |
+| Published manual geometry qualification           | HISTORICAL_SCOPE_LIMITATION      | Some returned control boundaries differ by 0.07–0.11 CSSpx; no operational clipping observed; retain strict and visual observations separately                                 |
+| Global source locks                               | L1_KNOWN_LIMITATION              | Existing conservative lock contention; measure serial/concurrent performance; no L2 scale claim                                                                                |
+| Origin defaults to localhost                      | DEPLOYMENT_PREFLIGHT_REQUIREMENT | Explicit intended HTTPS origin required in future preview; local smoke cannot prove hosted session/origin behavior                                                             |
+| Reseed deletes synthetic history                  | OPERATOR_SAFETY_BOUNDARY         | Only new disposable DBs; never cleanup retained browser QA history with seed/reset                                                                                             |
+| Cloud preview identity and smoke                  | NOT_AUTHORIZED_THIS_PHASE        | Contract prepared only; remains release/Stage 9 exit evidence gap, separate deployment approval required                                                                       |
+| Human release review                              | PENDING                          | No L1 release approval, no production/pilot readiness claim                                                                                                                    |
 
 No limitation waives critical/high security, cross-tenant leakage, unsupported claims, false authority, unauthorized actions, critical bilingual/accessibility defects or required performance budgets. Future QA may identify defects; record severity, repro and a scope-preserving repair decision then. Neither lack of human/device access nor a tooling error is automatically a product failure, but the associated gate stays open.
+
+## Repair-wave evidence qualifications
+
+- EN review captures at CSS 390×844 and 768×1024 have image widths 365 and 443. These are incomplete visual proof, not established product clipping; capture settled views before full visual acceptance.
+- IAB date `fill()` changed the DOM without committing the route. Native keyboard date input preserved all four draft fields through locale/refresh/evidence/history. Physical native-picker acceptance remains open.
+- Pending BODY focus and the transient English loading label on zh-TW are follow-up observations; no actual speech/pending or complete localization acceptance is claimed.
+- Consumed proposal preparation safely returns unavailable by the existing preparation key. A new comparison was used for the separate Chinese confirmation; two actions are intentional, not duplicate replay writes.
+- No new confirmed product defect beyond the repaired S9-F01 currently justifies additional source work. Remaining scenarios may identify defects.

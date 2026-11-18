@@ -1,0 +1,168 @@
+- alert
+- link "跳至主要內容":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: PRIMESTRIDE AI
+  - navigation "專案":
+    - link "首頁":
+      - /url: /zh-TW
+      - generic: "01"
+      - generic: 首頁
+    - link "專案":
+      - /url: /zh-TW/projects
+      - generic: "02"
+      - generic: 專案
+    - link "知識":
+      - /url: /zh-TW/knowledge
+      - generic: "03"
+      - generic: 知識
+    - link "StrideBrain":
+      - /url: /zh-TW/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "設定":
+      - /url: /zh-TW/settings
+      - generic: "05"
+      - generic: 設定
+  - strong: v0.1 · 受控示範
+  - generic: 此區域尚未啟用
+- banner:
+  - generic: ●
+  - text: 受控虛構資料示範
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects
+    - generic: /
+    - link "EN":
+      - /url: /en/projects
+- main:
+  - paragraph: 專案工作區
+  - heading "專案" [level=1]
+  - paragraph: 開啟您有權限查看的專案工作區。
+  - list "專案":
+    - link "進行中設計專案01 進行中 開啟專案":
+      - /url: /zh-TW/projects/PRJ-ACTIVE-001
+      - heading "進行中設計專案01" [level=2]
+      - generic: 進行中
+      - generic: 開啟專案 →
+    - link "進行中設計專案02 進行中 開啟專案":
+      - /url: /zh-TW/projects/PRJ-ACTIVE-002
+      - heading "進行中設計專案02" [level=2]
+      - generic: 進行中
+      - generic: 開啟專案 →
+    - link "進行中設計專案03 進行中 開啟專案":
+      - /url: /zh-TW/projects/PRJ-ACTIVE-003
+      - heading "進行中設計專案03" [level=2]
+      - generic: 進行中
+      - generic: 開啟專案 →
+    - link "進行中設計專案04 進行中 開啟專案":
+      - /url: /zh-TW/projects/PRJ-ACTIVE-004
+      - heading "進行中設計專案04" [level=2]
+      - generic: 進行中
+      - generic: 開啟專案 →
+    - link "信義旗艦店裝修 進行中 開啟專案":
+      - /url: /zh-TW/projects/PRJ-XINYI-026
+      - heading "信義旗艦店裝修" [level=2]
+      - generic: 進行中
+      - generic: 開啟專案 →
+    - link "板橋概念店 開啟專案":
+      - /url: /zh-TW/projects/PRJ-BANQIAO-015
+      - heading "板橋概念店" [level=2]
+      - generic: 開啟專案 →
+    - link "大安精品展示中心 開啟專案":
+      - /url: /zh-TW/projects/PRJ-DAAN-016
+      - heading "大安精品展示中心" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案01 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-001
+      - heading "已完工辦公專案01" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案02 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-002
+      - heading "已完工辦公專案02" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案03 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-003
+      - heading "已完工辦公專案03" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案04 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-004
+      - heading "已完工辦公專案04" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案05 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-005
+      - heading "已完工辦公專案05" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案06 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-006
+      - heading "已完工辦公專案06" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案07 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-007
+      - heading "已完工辦公專案07" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案08 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-008
+      - heading "已完工辦公專案08" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案09 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-009
+      - heading "已完工辦公專案09" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案10 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-010
+      - heading "已完工辦公專案10" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案11 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-011
+      - heading "已完工辦公專案11" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案12 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-012
+      - heading "已完工辦公專案12" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案13 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-013
+      - heading "已完工辦公專案13" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案14 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-014
+      - heading "已完工辦公專案14" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案15 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-015
+      - heading "已完工辦公專案15" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案16 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-016
+      - heading "已完工辦公專案16" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案17 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-017
+      - heading "已完工辦公專案17" [level=2]
+      - generic: 開啟專案 →
+    - link "已完工辦公專案18 開啟專案":
+      - /url: /zh-TW/projects/PRJ-HIST-018
+      - heading "已完工辦公專案18" [level=2]
+      - generic: 開啟專案 →
+    - link "南京品牌體驗中心 開啟專案":
+      - /url: /zh-TW/projects/PRJ-NANJING-023
+      - heading "南京品牌體驗中心" [level=2]
+      - generic: 開啟專案 →
+    - link "內湖科技旗艦店 開啟專案":
+      - /url: /zh-TW/projects/PRJ-NEIHU-021
+      - heading "內湖科技旗艦店" [level=2]
+      - generic: 開啟專案 →
+    - link "松山門市改裝 開啟專案":
+      - /url: /zh-TW/projects/PRJ-SONGSHAN-020
+      - heading "松山門市改裝" [level=2]
+      - generic: 開啟專案 →
+    - link "中山生活概念店 開啟專案":
+      - /url: /zh-TW/projects/PRJ-ZHONGSHAN-018
+      - heading "中山生活概念店" [level=2]
+      - generic: 開啟專案 →
+- contentinfo:
+  - generic: 僅使用虛構示範資料 · 無真實客戶資料
+  - generic: 尚未切換正式示範網域

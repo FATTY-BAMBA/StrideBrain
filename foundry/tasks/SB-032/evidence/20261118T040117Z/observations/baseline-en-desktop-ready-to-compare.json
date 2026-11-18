@@ -1,0 +1,41 @@
+{
+  "dialogs": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "Skip to main contentStrideBrainBY PRIMESTRIDE AI01Home02Projects03Knowledge04StrideBrain05Settingsv0.1 · Controlled demoThis area is not active yet●Controlled synthetic demo繁中/ENOverviewCompareCommerc"
+  },
+  "horizontalOverflow": false,
+  "mainLinks": [
+    {
+      "href": "/en/projects/PRJ-XINYI-026",
+      "text": "Overview"
+    },
+    {
+      "href": "/en/projects/PRJ-XINYI-026/compare",
+      "text": "Compare"
+    },
+    {
+      "href": "/en/projects/PRJ-XINYI-026/commercial",
+      "text": "Commercial"
+    },
+    {
+      "href": "/en/projects/PRJ-XINYI-026/evidence",
+      "text": "Evidence"
+    },
+    {
+      "href": "/en/projects/PRJ-XINYI-026/actions",
+      "text": "Actions"
+    }
+  ],
+  "mainText": "Overview\nCompare\nCommercial\nEvidence\nActions\n\nCOMPARABLE PROJECT INTELLIGENCE\n\nHave we done something like this before?\nFind comparable projects\nSearch the authorized project history, explain the strongest matches, and compare the current quotation with trustworthy precedents.\nFind comparable projects",
+  "title": "StrideBrain",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  },
+  "at": "2026-11-18T04:22:37.421Z",
+  "browser": "Codex in-app browser"
+}

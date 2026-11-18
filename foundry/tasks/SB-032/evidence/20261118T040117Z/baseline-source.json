@@ -1,0 +1,16 @@
+{
+  "runId": "20261118T040117Z",
+  "head": "4df07c23a2896b5c13b96238f078d22941a55222",
+  "branch": "build/sb-032-stage9-quality-hardening",
+  "sourceManifestSha256": "5f06f0a12f5da84ff3ea071ac62b634f6065caa3074bd46c0048ec660217bb44",
+  "manifestFiles": 482,
+  "trackedCleanBeforeRun": false,
+  "trackedChangesBeforeRun": "Only prior QA task records; product source clean",
+  "ci": {
+    "runId": 44224883503,
+    "result": "PASS"
+  },
+  "nodeVersion": "v24.22.3",
+  "reuseOfStage8RuntimeState": false,
+  "toolchainNote": "Existing Node 24 executable reused as toolchain only; new database, credentials, dependency install and build."
+}

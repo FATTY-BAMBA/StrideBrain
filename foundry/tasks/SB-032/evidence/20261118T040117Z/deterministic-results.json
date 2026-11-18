@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "runId": "20261118T040117Z",
+  "head": "e8770a02f39273307334674bce76fc19815b8802",
+  "testResults": [
+    {
+      "label": "targeted-repair-regression",
+      "testsPassed": 56,
+      "filesPassed": 6
+    },
+    {
+      "label": "targeted-shell-disclosure",
+      "testsPassed": 2,
+      "filesPassed": 1
+    },
+    {
+      "label": "verified-full-suite",
+      "testsPassed": 576,
+      "filesPassed": 66
+    },
+    {
+      "label": "14-localization",
+      "testsPassed": 12,
+      "filesPassed": 4
+    },
+    {
+      "label": "15-postgres-adversarial",
+      "testsPassed": 93,
+      "filesPassed": 1
+    }
+  ],
+  "subsetCountsNotAdded": true,
+  "migrations": 8,
+  "repeatSeedSQL": "PASS",
+  "format": "PASS",
+  "lint": "PASS_ONE_PREEXISTING_WARNING",
+  "strictTypes": "PASS",
+  "Prisma": "VALIDATE_GENERATE_PASS",
+  "build": "PASS",
+  "buildId": "-ghwpoAvKBJb3v0oRa-rh",
+  "productionAudit": "PASS_ZERO_VULNERABILITIES",
+  "notes": [
+    "Initial new-test strict typing and later test lint findings corrected; failed preliminary logs retained.",
+    "Reviewed shell disclosure addendum followed by final format/lint/types/full suite; unchanged migration/seed results retained.",
+    "Build/localization/adversarial/audit ran after final product source revision; later edit was test-only lint compliance."
+  ]
+}

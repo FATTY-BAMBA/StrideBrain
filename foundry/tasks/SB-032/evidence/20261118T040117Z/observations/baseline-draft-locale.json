@@ -1,0 +1,45 @@
+{
+  "before": {
+    "fields": [
+      {
+        "id": "review-title",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "id": "review-dueDate",
+        "value": "2026-12-02"
+      }
+    ],
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_cf799d51-811a-48cc-b85d-29b384f7fe35&economics=econrun_9386cbd2-86eb-4b37-adc5-9ff017fbb6b3&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_0ae68137-d144-4935-b74f-b2203d7feb6f&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+  },
+  "after": {
+    "fields": [
+      {
+        "id": "review-title",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "id": "review-dueDate",
+        "value": "2026-11-25"
+      }
+    ],
+    "text": "檢視內部審查事項\n\n建立事項前，請先檢視資料依據與不確定性。\n\nEnglish\n繁體中文\n關閉\n標題\n檢核信義旗艦店裝修第3版報價的進口石材與照明假設\n審查信義旗艦店裝修第3版報價的進口石材與照明假設\n確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料\n\n確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料\n\n審查目的\n下次內部報價審查前，依連結的佐證資料檢核這些假設。\n確認佐證資料，並記錄內部審查需要釐清的問題。\n依連結的歷史佐證資料，檢核進口石材與照明假設。\n\n依連結的歷史佐證資料，檢核進口石材與照明假設。\n\n可選擇審查用語。已查證的內容與不確定性說明會一併保留，無法在此變更。\n\n已查證內容・隨事項保留\n進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。\n照明報價與符合條件的歷史報價比較，差異為 +9.4%。\n照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。\n目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。\n比較紀錄：cmprun_cf799d51-811a-48cc-b85d-29b384f7fe35；成本分析紀錄：econrun_9386cbd2-86eb-4b37-adc5-9ff017fbb6b3。\n⚠ 不確定性與限制・隨事項保留\n此操作只會建立內部審查事項，不會核准或發出報價、授權商業承諾，或對外聯繫。\n歷史比較不能證明這份報價有誤、供應商收費過高，或趕工造成特定溢價；供應商價格也未確認目前仍有效。\n檢視支持此內容的資料依據\n進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。\n照明報價與符合條件的歷史報價比較，差異為 +9.4%。\n照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。\n目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。\n承辦人\n未指派\n林美玲\n陳柏宇\n黃怡君\n到期日\n\n非必填。請輸入 2026-11-18 至 2027-11-18 之間的日期，或保留空白。\n\n清除到期日\n來源比較紀錄\ncmprun_cf799d51-811a-48cc-b85d-29b384f7fe35\n來源商務分析紀錄\neconrun_9386cbd2-86eb-4b37-adc5-9ff017fbb6b3\n本次審查有效至\n2026年11月18日 中午12:54\n\n⚠ 確認後將建立持續保存的內部事項及稽核紀錄；無法在此畫面撤銷建立。此操作不會核准報價，也不會傳送訊息。\n\n我已檢視資料依據與限制，並確認建立此內部審查事項。\n建立內部審查事項\n取消審查",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_cf799d51-811a-48cc-b85d-29b384f7fe35&economics=econrun_9386cbd2-86eb-4b37-adc5-9ff017fbb6b3&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_0ae68137-d144-4935-b74f-b2203d7feb6f&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+  }
+}

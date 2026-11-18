@@ -1,0 +1,25 @@
+{
+  "dialogs": [],
+  "focus": {
+    "id": "",
+    "tag": "A",
+    "text": "Xinyi Flagship RenovationActiveOpen project →"
+  },
+  "horizontalOverflow": false,
+  "mainLinks": [
+    {
+      "href": "/en/projects/PRJ-XINYI-026",
+      "text": "Xinyi Flagship Renovation\nActive\nOpen project →"
+    }
+  ],
+  "mainText": "PROJECT WORKSPACE\n\nProjects\n\nOpen a project workspace available to your account.\n\nXinyi Flagship Renovation\nActive\nOpen project →",
+  "title": "StrideBrain",
+  "url": "http://localhost:3000/en/projects",
+  "viewport": {
+    "dpr": 2,
+    "height": 900,
+    "width": 1440
+  },
+  "at": "2026-11-18T04:17:34.579Z",
+  "browser": "Codex in-app browser"
+}

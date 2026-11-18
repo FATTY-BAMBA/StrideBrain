@@ -1,0 +1,41 @@
+{
+  "finding": "S9-F01",
+  "result": "PASS",
+  "disposition": "CLOSED_FOR_TESTED_SCOPE",
+  "head": "e8770a02f39273307334674bce76fc19815b8802",
+  "buildId": "-ghwpoAvKBJb3v0oRa-rh",
+  "entryCases": 8,
+  "locales": [
+    "en",
+    "zh-TW"
+  ],
+  "viewports": [
+    [
+      1440,
+      900
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      320,
+      740
+    ]
+  ],
+  "keyboardPointer": "PASS",
+  "focusVisibility": "PASS",
+  "workspaceLocalNavigation": "PASS",
+  "viewer": "PASS_EXISTING_ASSIGNED_READ_POLICY",
+  "financeAdmin": "PASS_BOTH_LOCALES",
+  "northern": "PASS_NO_HORIZON_ENTRY_OR_CATALOG_DISCLOSURE",
+  "browserTenantRoleSelectors": "IGNORED",
+  "invalidRevokedSession": "PASS_NEUTRAL_NO_DISCLOSURE",
+  "unauthenticated": "PASS_NEUTRAL_NO_DISCLOSURE",
+  "deniedEmptyUnavailablePresentation": "INDISTINGUISHABLE",
+  "completeStage9Baseline": "RESUMING_NOT_YET_PASSED"
+}

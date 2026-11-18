@@ -1,0 +1,25 @@
+{
+  "dialogs": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "Skip to main contentStrideBrainBY PRIMESTRIDE AI01Home02Projects03Knowledge04StrideBrain05Settingsv0.1 · Controlled demoThis area is not active yet●Controlled synthetic demo繁中/ENPROJECT WORKSPACEProje"
+  },
+  "horizontalOverflow": false,
+  "mainLinks": [
+    {
+      "href": "/en/projects/PRJ-XINYI-026",
+      "text": "Xinyi Flagship Renovation\nActive\nOpen project →"
+    }
+  ],
+  "mainText": "PROJECT WORKSPACE\n\nProjects\n\nOpen a project workspace available to your account.\n\nXinyi Flagship Renovation\nActive\nOpen project →",
+  "title": "StrideBrain",
+  "url": "http://localhost:3000/en/projects",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  },
+  "at": "2026-11-18T04:19:38.473Z",
+  "browser": "Codex in-app browser"
+}

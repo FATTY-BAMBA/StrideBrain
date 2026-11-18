@@ -1,0 +1,442 @@
+{
+  "taskId": "SB-032",
+  "runId": "20261118T040117Z",
+  "testedHead": "e8770a02f39273307334674bce76fc19815b8802",
+  "parent": "4df07c23a2896b5c13b96238f078d22941a55222",
+  "branch": "build/sb-032-stage9-quality-hardening",
+  "buildId": "-ghwpoAvKBJb3v0oRa-rh",
+  "verdict": "PASS_SCOPED_REPAIR",
+  "stage9Verdict": "INCOMPLETE_CONTINUE_QA",
+  "status": "REPAIR_VERIFIED_BASELINE_RESUMED",
+  "browserAcceptance": "S9-F01_PASS_BASELINE_PARTIAL",
+  "browser": "Codex in-app browser; native Chrome/VoiceOver not executed",
+  "evidence": "evidence/20261118T040117Z/",
+  "historicalRuns": [
+    {
+      "runId": "20261118T031855Z",
+      "head": "4df07c23a2896b5c13b96238f078d22941a55222",
+      "verdict": "REVISE",
+      "browser": "FAIL",
+      "scenarioCounts": {
+        "PASS": 1,
+        "FAIL": 1,
+        "BLOCKED": 14,
+        "PARTIAL": 5,
+        "NOT_RUN": 1
+      },
+      "preservedUnchanged": true
+    }
+  ],
+  "deterministic": {
+    "status": "PASS",
+    "runId": "20261118T040117Z",
+    "head": "e8770a02f39273307334674bce76fc19815b8802",
+    "testResults": [
+      {
+        "label": "targeted-repair-regression",
+        "testsPassed": 56,
+        "filesPassed": 6
+      },
+      {
+        "label": "targeted-shell-disclosure",
+        "testsPassed": 2,
+        "filesPassed": 1
+      },
+      {
+        "label": "verified-full-suite",
+        "testsPassed": 576,
+        "filesPassed": 66
+      },
+      {
+        "label": "14-localization",
+        "testsPassed": 12,
+        "filesPassed": 4
+      },
+      {
+        "label": "15-postgres-adversarial",
+        "testsPassed": 93,
+        "filesPassed": 1
+      }
+    ],
+    "subsetCountsNotAdded": true,
+    "migrations": 8,
+    "repeatSeedSQL": "PASS",
+    "format": "PASS",
+    "lint": "PASS_ONE_PREEXISTING_WARNING",
+    "strictTypes": "PASS",
+    "Prisma": "VALIDATE_GENERATE_PASS",
+    "build": "PASS",
+    "buildId": "-ghwpoAvKBJb3v0oRa-rh",
+    "productionAudit": "PASS_ZERO_VULNERABILITIES",
+    "notes": [
+      "Initial new-test strict typing and later test lint findings corrected; failed preliminary logs retained.",
+      "Reviewed shell disclosure addendum followed by final format/lint/types/full suite; unchanged migration/seed results retained.",
+      "Build/localization/adversarial/audit ran after final product source revision; later edit was test-only lint compliance."
+    ]
+  },
+  "repair": {
+    "commit": "e8770a02f39273307334674bce76fc19815b8802",
+    "directParent": "4df07c23a2896b5c13b96238f078d22941a55222",
+    "branch": "build/sb-032-stage9-quality-hardening",
+    "files": [
+      "src/app/[locale]/projects/page.tsx",
+      "src/components/projects/project-list.module.css",
+      "src/components/projects/project-list.tsx",
+      "src/components/shell/workspace-shell.tsx",
+      "src/lib/server/project-workspace-services.ts",
+      "src/modules/localization/catalog.ts",
+      "src/modules/projects/application/list-authorized-projects.ts",
+      "src/repositories/ports/project-list-repository.ts",
+      "src/repositories/prisma/prisma-project-list-repository.ts",
+      "tests/projects/list-authorized-projects.test.ts",
+      "tests/projects/project-list-postgres.test.ts",
+      "tests/projects/projects-page.test.ts",
+      "tests/projects/projects-shell-disclosure.test.ts"
+    ],
+    "publication": "NOT_PUSHED",
+    "scope": "S9-F01 repair and regression tests only"
+  },
+  "independentSourceReview": "PASS",
+  "entryRetest": "PASS",
+  "baselineResumption": {
+    "at": "2026-11-18T04:40:54.403Z",
+    "scope": "Resumed fresh browser baseline after S9-F01 closure; not the full Stage 9 matrix.",
+    "locales": ["en", "zh-TW"],
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "width": 768,
+        "height": 1024
+      },
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 320,
+        "height": 740
+      }
+    ],
+    "entry": "PASS",
+    "comparisonAndLightingResponsive": "PASS",
+    "reviewAndReceiptResponsive": "PARTIAL: receipts and review DOM exercised at four sizes; EN review 390/768 screenshot pixel widths do not match measured CSS viewport and need settled recapture.",
+    "draftLocaleRefreshEvidenceHistory": "PASS with native keyboard date input; IAB date fill alone did not dispatch the application update",
+    "sourceFocus": "PASS EN desktop and zh-TW narrow, Tab/Shift+Tab containment and settled hierarchical Escape/trigger restoration",
+    "validation": "PASS field acknowledgement and date error paths observed; generic server failure not injected",
+    "confirmation": "Two intentionally distinct fresh comparisons produced two actions; consumed proposal/prepare safely unavailable; copied receipt and actions list reopen successful",
+    "createdActions": [
+      "action_ba562411-59e0-40ca-8765-bf00afdc3b84",
+      "action_76bdf770-9d82-4f17-9806-c525ab9754d3"
+    ],
+    "unexecuted": [
+      "full five-second/timed hero acceptance",
+      "selection mutation coverage",
+      "generic failure/stale-source mutation waves",
+      "performance/rollback full rehearsals",
+      "native browser zoom/motion",
+      "VoiceOver speech",
+      "physical devices",
+      "independent human zh-TW review",
+      "settled EN review 390x844 and 768x1024 visual recapture"
+    ],
+    "newConfirmedRequiredPathDefects": 0,
+    "notes": [
+      "Transient pending BODY focus and English loading label in zh-TW remain follow-up observations, not validated manual-gate passes.",
+      "Source-return preliminary trace captured an unsettled transition; settled trace confirms exact source trigger.",
+      "Chinese review prepared again from consumed comparison was safely unavailable by preparation idempotency; valid review grid captured using a fresh comparison."
+    ],
+    "status": "RESUMED_PARTIAL_NOT_FULL_STAGE9_ACCEPTANCE"
+  },
+  "scenarioCounts": {
+    "PARTIAL": 15,
+    "NOT_RUN": 7
+  },
+  "scenarios": [
+    {
+      "id": "S9-01",
+      "title": "Exact-candidate setup and production start",
+      "status": "PARTIAL",
+      "reason": "Local exact repair-head deterministic/build/start gates PASS; GitHub exact repair-head CI not run because commit is local/unpublished.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": ["CI matrix", "REL-008", "REL-009", "REL-010"],
+      "evidence": []
+    },
+    {
+      "id": "S9-02",
+      "title": "Complete bilingual hero and five-second comprehension",
+      "status": "PARTIAL",
+      "reason": "S9-F01 entry PASS in both locales/all four viewports and core bilingual compare/review/receipt journey resumed. Timed hero/five-second human comprehension not completed.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": ["PUX-001..015", "I18N-002", "I18N-005"],
+      "evidence": []
+    },
+    {
+      "id": "S9-03",
+      "title": "Ranking, factors and selection",
+      "status": "PARTIAL",
+      "reason": "Canonical ranking, first factor panel and selected-three result observed. Full selection-change/factor matrix remains.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": ["CPI-001..010", "PUX-006", "PUX-007", "PUX-008"],
+      "evidence": []
+    },
+    {
+      "id": "S9-04",
+      "title": "Economics authority, abstention and evidence meaning",
+      "status": "PARTIAL",
+      "reason": "Forecast/actual authority, lighting 2-of-3 abstention and programme locator/source meaning observed; complete authority/evidence matrix remains.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": ["AUTH-001..012", "EVD-001..012", "PUX-009..012"],
+      "evidence": []
+    },
+    {
+      "id": "S9-05",
+      "title": "Draft and navigation persistence",
+      "status": "PARTIAL",
+      "reason": "All four draft fields survived native keyboard edit, locale, refresh, evidence return and back/forward on one proposal. Full persona/cross-route matrix remains.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": ["ACT-001", "ACT-002", "I18N-006", "I18N-007", "REL-005"],
+      "evidence": []
+    },
+    {
+      "id": "S9-06",
+      "title": "Confirmation, receipt and interrupted retry",
+      "status": "PARTIAL",
+      "reason": "EN and zh-TW confirmations created two intentionally separate actions; receipt refresh/copy/reopen and consumed proposal/prepare unavailable behavior passed. Interrupted network retry not executed.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": ["ACT-003..005", "ACT-011", "ACT-012", "REL-007", "PUX-014"],
+      "evidence": []
+    },
+    {
+      "id": "S9-07",
+      "title": "Keyboard and automated accessibility",
+      "status": "PARTIAL",
+      "reason": "Entry keyboard/focus, modal Tab/Shift+Tab containment, hierarchical Escape, trigger return and field-error associations observed; full accessibility matrix and automated audit remain.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": ["A11Y-001..010"],
+      "evidence": []
+    },
+    {
+      "id": "S9-08",
+      "title": "Actual zoom and actual OS reduced-motion regression",
+      "status": "NOT_RUN",
+      "reason": "No actual Chrome zoom or OS motion changes in this scoped repair wave; historical SB-029 passes remain historical.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": ["A11Y-001", "A11Y-002", "A11Y-006", "A11Y-010"],
+      "evidence": []
+    },
+    {
+      "id": "S9-09",
+      "title": "Actual speech and pending announcements",
+      "status": "NOT_RUN",
+      "reason": "Actual screen-reader speech and pending announcements require native/human execution.",
+      "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "acceptance": ["A11Y-009", "A11Y-007", "ACT-012"],
+      "evidence": []
+    },
+    {
+      "id": "S9-10",
+      "title": "Physical mobile native input",
+      "status": "NOT_RUN",
+      "reason": "Physical-device testing not executed; responsive viewports cannot close this scenario.",
+      "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "acceptance": ["A11Y-001", "A11Y-006", "A11Y-007", "A11Y-010", "I18N-007", "I18N-008"],
+      "evidence": []
+    },
+    {
+      "id": "S9-11",
+      "title": "Live generic error description association",
+      "status": "NOT_RUN",
+      "reason": "Generic confirmation failure not injected; field validation is supporting observation only.",
+      "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "acceptance": ["A11Y-007", "A11Y-009", "ACT-006..009", "ACT-012"],
+      "evidence": []
+    },
+    {
+      "id": "S9-12",
+      "title": "Reviewed visual baseline grid",
+      "status": "PARTIAL",
+      "reason": "96 captures inspected; full baseline state grid incomplete. EN review 390/768 capture pixel dimensions mismatch CSS viewport; settled recapture required, no product clipping inferred.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "PUX-003..014",
+        "I18N-003..005",
+        "I18N-008",
+        "I18N-009",
+        "A11Y-002",
+        "A11Y-008",
+        "A11Y-010"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-13",
+      "title": "Canonical evidence precision and groundedness report",
+      "status": "PARTIAL",
+      "reason": "Canonical lighting/forecast/programme source meaning checked; full quantitative groundedness report remains.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "CPI targets",
+        "AUTH hero tolerances",
+        "EVD targets",
+        "Quality Constitution quantitative gates"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-14",
+      "title": "Authorization and tenant non-disclosure",
+      "status": "PARTIAL",
+      "reason": "Projects entry tested for Mei/Viewer/Finance/Admin/Northern, revoked and unauthenticated states; tenant selectors ignored and no Horizon content in Northern response. Full security matrix remains.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": ["SEC-001..016", "AUTH-011", "EVD-008", "EVD-011", "EVD-012"],
+      "evidence": []
+    },
+    {
+      "id": "S9-15",
+      "title": "Freshness, transactional failures and reliability",
+      "status": "NOT_RUN",
+      "reason": "No source/access/evidence/server fault injection in this scoped repair wave; mutation/reliability scenarios remain.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": ["ACT-004..010", "REL-001..010", "SEC-013", "PUX-013"],
+      "evidence": []
+    },
+    {
+      "id": "S9-16",
+      "title": "Performance and query-plan benchmark",
+      "status": "NOT_RUN",
+      "reason": "Performance and query-plan benchmark not executed; bounded list query independently reviewed/tested.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": ["Performance matrix", "Stage8 stricter server budgets"],
+      "evidence": []
+    },
+    {
+      "id": "S9-17",
+      "title": "Leap day and Taipei midnight",
+      "status": "PARTIAL",
+      "reason": "Prior lower-layer date evidence retained; live browser/server midnight/leap-day boundary unverified.",
+      "gate": "STAGE_9_HARDENING",
+      "acceptance": ["ACT-002", "ACT-006", "ACT-012", "I18N-005"],
+      "evidence": []
+    },
+    {
+      "id": "S9-18",
+      "title": "Independent Taiwan Chinese language review",
+      "status": "PARTIAL",
+      "reason": "Bilingual screenshot/copy evidence prepared; independent human Traditional Chinese review not obtained.",
+      "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "acceptance": ["I18N-001..009", "PUX-001", "AUTH-001..012"],
+      "evidence": []
+    },
+    {
+      "id": "S9-19",
+      "title": "Local production portability and environment preflight",
+      "status": "PARTIAL",
+      "reason": "Fresh isolated production build/start, authorized/denied entry and durable receipt paths observed; restart portability rehearsal remains.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": ["CI matrix", "SEC-015", "SEC-016", "REL-010"],
+      "evidence": []
+    },
+    {
+      "id": "S9-20",
+      "title": "Actual isolated preview smoke — deferred",
+      "status": "NOT_RUN",
+      "reason": "Deployment not authorized; no Vercel/DNS changes.",
+      "gate": "BLOCKING_RELEASE_NOT_AUTHORIZED",
+      "acceptance": ["Deployment/release matrix", "Stage9 exact preview exit"],
+      "evidence": []
+    },
+    {
+      "id": "S9-21",
+      "title": "Rollback, containment, reset and cleanup",
+      "status": "PARTIAL",
+      "reason": "Run-owned cleanup, session revocation, fixture/history guards and preservation PASS; full rollback/restore rehearsal remains.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": ["REL-008", "REL-009", "ACT-004", "ACT-010", "Stage9 recovery"],
+      "evidence": []
+    },
+    {
+      "id": "S9-22",
+      "title": "Independent synthesis and release package",
+      "status": "PARTIAL",
+      "reason": "Independent scoped source review PASS and repair evidence finalized; complete Stage 9 release synthesis remains.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": ["All blocking matrix requirements", "Quality Constitution release evidence"],
+      "evidence": []
+    }
+  ],
+  "manualGates": {
+    "M-01": {
+      "status": "NOT_RUN",
+      "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "reason": "No new native Chrome/VoiceOver speech run or human attestation in this scoped repair wave. User remains available to listen.",
+      "next": "VoiceOver + actual Chrome, both locales, with user listening to dialog/errors/evidence/pending/receipt and hidden-background checks.",
+      "NVDAWindows": "NOT_AVAILABLE_ON_CURRENT_HOST"
+    },
+    "M-02": {
+      "status": "DEVICE_EVIDENCE_REQUIRED",
+      "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "iPhone": "USER_AVAILABLE_NOT_TESTED",
+      "Android": "AVAILABILITY_NOT_CONFIRMED",
+      "reason": "Responsive IAB coverage is not physical-device acceptance; iPhone available but not yet tested.",
+      "protocol": "human-review/M-02-device-protocol.md",
+      "next": "Arrange authorized isolated preview access for physical iPhone, record device/OS/Safari; confirm Android availability separately."
+    },
+    "M-05": {
+      "status": "PARTIAL",
+      "gate": "STAGE_9_HARDENING",
+      "domainCases": "7 PASS plus default +7 cross-year assertion",
+      "existingServiceAndPGTests": "PASS as part of exact-head deterministic suite",
+      "liveBrowserServerBoundary": "NOT_RUN; isolated live clock method not demonstrated",
+      "reason": "Injected explicit Date arguments only; system clock and production guards unchanged. Lower layers do not close UI/server E2E.",
+      "evidence": ["date-policy-observations.json", "date-boundary-results.json"]
+    },
+    "M-06": {
+      "status": "NOT_RUN",
+      "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "reason": "Field-validation aria-describedby and focus observed in both locales; generic confirmation failure DOM/AX/speech paths remain unexecuted.",
+      "next": "Inspect actual dialog form/error-node relationship, focus/visibility and speech after stale/access/evidence/server failure once baseline passes.",
+      "supportingObservation": "Field validation only; does not close generic-error gate."
+    },
+    "M-07": {
+      "status": "HUMAN_REVIEW_REQUIRED",
+      "preparation": "PARTIAL",
+      "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "reason": "Bilingual entry, comparison, evidence, review and receipt captures now available; human reviewer and full state-grid approval still outstanding.",
+      "evidence": ["human-review/copy-inventory.json", "human-review/M-07-review-checklist.md"],
+      "humanReviewer": "NOT_YET_IDENTIFIED"
+    }
+  },
+  "findings": [
+    {
+      "id": "S9-F01",
+      "severity": "P2",
+      "requiredPath": true,
+      "status": "CLOSED_FOR_TESTED_SCOPE",
+      "historicalRun": "20261118T031855Z",
+      "historicalHead": "4df07c23a2896b5c13b96238f078d22941a55222",
+      "repairHead": "e8770a02f39273307334674bce76fc19815b8802",
+      "retestRun": "20261118T040117Z",
+      "rootCause": "Projects still used the FoundationPage unavailable placeholder, with no authorized project-list entry to the existing workspace.",
+      "sourceReview": "PASS",
+      "browserRetest": "PASS",
+      "evidence": "entry-retest-result.json"
+    }
+  ],
+  "openConfirmedFindingCounts": {
+    "P0": 0,
+    "P1": 0,
+    "P2": 0
+  },
+  "findingCountScope": "Executed repair/baseline scope only; untested gates are not passes.",
+  "cleanup": "PASS",
+  "sanitization": "PASS",
+  "sanitizationRecord": "evidence/20261118T040117Z/sanitization.json",
+  "productSourceChanged": true,
+  "productChangeScope": "S9-F01 authorized Projects entry and related regressions only",
+  "publicationPerformed": false,
+  "mergePerformed": false,
+  "deploymentPerformed": false
+}

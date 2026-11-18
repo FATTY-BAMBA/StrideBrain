@@ -1,0 +1,25 @@
+{
+  "dialogs": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "Skip to main contentStrideBrainBY PRIMESTRIDE AI01Home02Projects03Knowledge04StrideBrain05Settingsv0.1 · Controlled demoThis area is not active yet●Controlled synthetic demo繁中/ENPROJECT WORKSPACEProje"
+  },
+  "horizontalOverflow": false,
+  "mainLinks": [
+    {
+      "href": "/en/projects/PRJ-NORTH-001",
+      "text": "Restricted Flagship\nOpen project →"
+    }
+  ],
+  "mainText": "PROJECT WORKSPACE\n\nProjects\n\nOpen a project workspace available to your account.\n\nRestricted Flagship\nOpen project →",
+  "title": "StrideBrain",
+  "url": "http://localhost:3000/en/projects?organizationId=org_horizon&role=ORGANIZATION_ADMIN&projectKey=PRJ-XINYI-026",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  },
+  "at": "2026-11-18T04:20:27.983Z",
+  "browser": "Codex in-app browser"
+}

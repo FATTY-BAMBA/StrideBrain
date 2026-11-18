@@ -1,0 +1,22 @@
+{
+  "commit": "e8770a02f39273307334674bce76fc19815b8802",
+  "directParent": "4df07c23a2896b5c13b96238f078d22941a55222",
+  "branch": "build/sb-032-stage9-quality-hardening",
+  "files": [
+    "src/app/[locale]/projects/page.tsx",
+    "src/components/projects/project-list.module.css",
+    "src/components/projects/project-list.tsx",
+    "src/components/shell/workspace-shell.tsx",
+    "src/lib/server/project-workspace-services.ts",
+    "src/modules/localization/catalog.ts",
+    "src/modules/projects/application/list-authorized-projects.ts",
+    "src/repositories/ports/project-list-repository.ts",
+    "src/repositories/prisma/prisma-project-list-repository.ts",
+    "tests/projects/list-authorized-projects.test.ts",
+    "tests/projects/project-list-postgres.test.ts",
+    "tests/projects/projects-page.test.ts",
+    "tests/projects/projects-shell-disclosure.test.ts"
+  ],
+  "publication": "NOT_PUSHED",
+  "scope": "S9-F01 repair and regression tests only"
+}

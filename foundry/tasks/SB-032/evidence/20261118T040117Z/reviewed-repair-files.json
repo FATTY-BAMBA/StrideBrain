@@ -1,0 +1,22 @@
+{
+  "base": "4df07c23a2896b5c13b96238f078d22941a55222",
+  "sourceReview": "PASS",
+  "files": {
+    "src/app/[locale]/projects/page.tsx": "2b79c7f5d9a9cad07ac1c93c927cc8d4a52d64a94fb33f98373837b4ab69e039",
+    "src/components/projects/project-list.module.css": "078a18bcdefaec2556dfed56536553db49a947f7783029dc776a513cc7deba10",
+    "src/components/projects/project-list.tsx": "abb915c6150343d13c382686523a169153fd7850913a30ddbb2cbeb046ff1817",
+    "src/components/shell/workspace-shell.tsx": "389fdf74f2d5fd6ef5918b50edf1cb932471a2548ea471e0fb0df217b142ee44",
+    "src/lib/server/project-workspace-services.ts": "192c7d5a45261953460126612f3802aa616a88f08dff80251c58f935da149b77",
+    "src/modules/localization/catalog.ts": "3346dd5d557d59100fef31d83da57e62ef15c66c862716894c9784b76d19d08f",
+    "src/modules/projects/application/list-authorized-projects.ts": "00ad379ba9cdd72e9d67cdaad921dd51ccb3c4d606678cc2a4c2dbff85e88ef3",
+    "src/repositories/ports/project-list-repository.ts": "6ebf03d95d730ab422b7b875c1234d822391702b6a47b88df80701e566ec2a19",
+    "src/repositories/prisma/prisma-project-list-repository.ts": "ccf7a8396fbd176ae7ae85a16854e8056a459f8d0ff8c451ae9d887a3ca19b64",
+    "tests/projects/list-authorized-projects.test.ts": "16cd87c07de1a571dbf91d0294934362903bf8dc00e68bf806e16f340b9fe49e",
+    "tests/projects/project-list-postgres.test.ts": "23e280d89fdfc6c91faaeedf432360b635e7ddde0de05db0fa8c527a4a5cac1a",
+    "tests/projects/projects-page.test.ts": "ce445f3ef31c11fea2ae0111157126c78e157ca3e0e6a11709f0ff4e2abb7404",
+    "tests/projects/projects-shell-disclosure.test.ts": "44ec2898c1efafeaa5bb3f1bf471dacde9ebfb2cfc5f9dbe33238cde8f4ee9b3"
+  },
+  "count": 13,
+  "historicalEvidenceChanged": false,
+  "postReviewTestOnlyAdjustment": "Use direct pure server-component invocation in the regression to comply with react/no-children-prop; no product source change."
+}

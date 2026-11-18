@@ -1,0 +1,16 @@
+[
+  {
+    "id": "S9-F01",
+    "severity": "P2",
+    "requiredPath": true,
+    "status": "CLOSED_FOR_TESTED_SCOPE",
+    "historicalRun": "20261118T031855Z",
+    "historicalHead": "4df07c23a2896b5c13b96238f078d22941a55222",
+    "repairHead": "e8770a02f39273307334674bce76fc19815b8802",
+    "retestRun": "20261118T040117Z",
+    "rootCause": "Projects still used the FoundationPage unavailable placeholder, with no authorized project-list entry to the existing workspace.",
+    "sourceReview": "PASS",
+    "browserRetest": "PASS",
+    "evidence": "entry-retest-result.json"
+  }
+]

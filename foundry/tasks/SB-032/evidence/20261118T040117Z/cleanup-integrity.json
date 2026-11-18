@@ -1,0 +1,104 @@
+{
+  "result": "PASS",
+  "at": "2026-11-18T04:42:30.416019+00:00",
+  "initialRowsPreserved": true,
+  "unchangedFixtureTables": [
+    "Client",
+    "CostLine",
+    "Document",
+    "DocumentVersion",
+    "EvidenceConflict",
+    "EvidenceReference",
+    "ForecastCostLine",
+    "ForecastCostVersion",
+    "Material",
+    "Membership",
+    "MembershipCapabilityGrant",
+    "Organization",
+    "Person",
+    "Project",
+    "ProjectAssignment",
+    "ProjectCostVersion",
+    "ProjectMaterial",
+    "ProjectScope",
+    "ProjectSupplier",
+    "Quote",
+    "QuoteItem",
+    "QuoteVersion",
+    "Supplier",
+    "SupplierOffer",
+    "SupplierOfferItem",
+    "_prisma_migrations"
+  ],
+  "changedTables": {
+    "Action": {
+      "before": 0,
+      "after": 2
+    },
+    "AuditEvent": {
+      "before": 0,
+      "after": 2
+    },
+    "ComparisonCandidate": {
+      "before": 0,
+      "after": 12
+    },
+    "ComparisonClaim": {
+      "before": 0,
+      "after": 32
+    },
+    "ComparisonFactor": {
+      "before": 0,
+      "after": 96
+    },
+    "ComparisonRun": {
+      "before": 0,
+      "after": 2
+    },
+    "DemoSession": {
+      "before": 2,
+      "after": 8
+    },
+    "EconomicsEnrichmentRun": {
+      "before": 0,
+      "after": 2
+    },
+    "EconomicsObservationDecision": {
+      "before": 0,
+      "after": 188
+    },
+    "IntelligenceRun": {
+      "before": 0,
+      "after": 2
+    },
+    "InternalReviewReceipt": {
+      "before": 0,
+      "after": 2
+    },
+    "ProposedAction": {
+      "before": 0,
+      "after": 2
+    }
+  },
+  "temporaryFixtureMutations": 0,
+  "temporaryFixtureRestoration": "NOT_NEEDED",
+  "immutableHistoryGuardsUnchanged": 4,
+  "guardDefinitionsAndEnabledStatesMatch": true,
+  "migrationsUnchanged": 8,
+  "ownedSessions": 6,
+  "ownedSessionsRevoked": 6,
+  "oneUseBootstrapRecordsRemaining": 0,
+  "actions": 2,
+  "receipts": 2,
+  "audits": 2,
+  "proposals": 2,
+  "oneReceiptAuditConsumedProposalPerAction": true,
+  "crossOrganizationHistoryLinks": 0,
+  "noReseedOrHistoryDeletion": true,
+  "browserTabClosed": true,
+  "viewportOverrideRestored": true,
+  "osPreferencesChanged": false,
+  "operatorStopped": true,
+  "productionPreviewRetained": true,
+  "sessionVerification": "File/database evidence after revocation; no authenticated cleanup browser request."
+}

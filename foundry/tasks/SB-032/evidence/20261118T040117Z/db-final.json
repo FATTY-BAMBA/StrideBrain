@@ -1,0 +1,235 @@
+{
+  "label": "final",
+  "tables": {
+    "Action": {
+      "count": 2,
+      "sha256": "88d859dfcb132993d852d28f20226a3a292e0afaed87605be96905ee55ea343f"
+    },
+    "AuditEvent": {
+      "count": 2,
+      "sha256": "3e6dd0d62053c39b2b2d79f53a9b0ff7f9656eaad14e55a9fe16d2b69f19adb7"
+    },
+    "Client": {
+      "count": 15,
+      "sha256": "8c3282b214f4d43bdce59b5ad175bf71830aba3d4ffbad8e5495a56d9775b226"
+    },
+    "ComparisonCandidate": {
+      "count": 12,
+      "sha256": "c53132ac596d4746a0ca65d55a69156ae598ed9bc9e53df57e7b4fa1da7f9be5"
+    },
+    "ComparisonClaim": {
+      "count": 32,
+      "sha256": "bf0fcff81c15545bee0f33c31f7b2d326e5bf1e9e231252b967a2f7f7262e9c8"
+    },
+    "ComparisonFactor": {
+      "count": 96,
+      "sha256": "9e3674fea1d89ca2b594108de71d60200a8e20c59137e57807e4a2497d279da5"
+    },
+    "ComparisonRun": {
+      "count": 2,
+      "sha256": "110729e46d4276437fad78880f6dbefecfce1e5094927fe4d74d60fddbb54b96"
+    },
+    "CostLine": {
+      "count": 141,
+      "sha256": "fc0a7debea18c9b209d6475d6746a55a3069c00ccfaabdc95d0b3b0285966961"
+    },
+    "DemoSession": {
+      "count": 8,
+      "sha256": "2b936ce360d372efaab82850e43ea73c1cddef10b8323ab0d590661807584f2b"
+    },
+    "Document": {
+      "count": 116,
+      "sha256": "9ebc120469aca77862a43d5bb8e8874cb5382735fec2c18b82416a8a876444de"
+    },
+    "DocumentVersion": {
+      "count": 116,
+      "sha256": "1b63b650e24fb24e2e4564a41c6686fefd7518a4ad2aebc3d0132c0c1e832bcc"
+    },
+    "EconomicsEnrichmentRun": {
+      "count": 2,
+      "sha256": "2d375634e413a15dcac6d67852386763b477ee74a60ef59485f5c3dd950c1b96"
+    },
+    "EconomicsObservationDecision": {
+      "count": 188,
+      "sha256": "14ddb9480196711f2567f2624c13b9af847eaac9dbf224f87c2f04809d7e5d85"
+    },
+    "EvidenceConflict": {
+      "count": 1,
+      "sha256": "b7ba403896137a13d0ed3c1908b5a2553624073d04f01bec47f4908b14ad73b5"
+    },
+    "EvidenceReference": {
+      "count": 571,
+      "sha256": "c886c10c56e69eed90e266b2461324ff3ba7d1a8e5172df2656021fe6ec665bb"
+    },
+    "ForecastCostLine": {
+      "count": 6,
+      "sha256": "7eb862b74fda0fa0a55940728f5a57e99c63bd11148a27346ecd5ad810e182f9"
+    },
+    "ForecastCostVersion": {
+      "count": 1,
+      "sha256": "b985599d404ca816de885f1a4f82e487b1af55f5910a0c51ac6ada3e6ababee3"
+    },
+    "IntelligenceRun": {
+      "count": 2,
+      "sha256": "9de245d2d2c4cd962fd09e7adfe11dbe280c593b08c25b97766aa261a61e3684"
+    },
+    "InternalReviewReceipt": {
+      "count": 2,
+      "sha256": "51a8489da79de70d43d5777b46b5dd6fb376ee30bd10e5ac47fc4f2bd2b122f5"
+    },
+    "Material": {
+      "count": 8,
+      "sha256": "8f73b668c87f3657e5204a0d65d37555728a9e192c75ce5bb17d00aafb7c7758"
+    },
+    "Membership": {
+      "count": 5,
+      "sha256": "11fd1bc2c7177f4570e263af79332400eb588b7a97eca373b6d983f71b1c0e9e"
+    },
+    "MembershipCapabilityGrant": {
+      "count": 5,
+      "sha256": "a91c96dd643305352a32af43998a62a320f616d41e2b70f139c7c4555ad31589"
+    },
+    "Organization": {
+      "count": 2,
+      "sha256": "5dcdf7d8d24b4f65b77c2a3cf137d1c39e03e86920dfd402f9663bd8f85512da"
+    },
+    "Person": {
+      "count": 5,
+      "sha256": "014877be675e228632ee90b9d655d8226d9748eb2744204b41b4c63d1fc1693f"
+    },
+    "Project": {
+      "count": 30,
+      "sha256": "887be96a8157b014cd6e60cb3ca99f505d8260240a09ce8a29cfff08033e57e7"
+    },
+    "ProjectAssignment": {
+      "count": 33,
+      "sha256": "b97311867206c787eb8f052b865104ee760e0ac918698def6ca416c6267ab5cb"
+    },
+    "ProjectCostVersion": {
+      "count": 25,
+      "sha256": "ee52c589ecdb87915a17602124706725546cb4d5064bb45235a77f9fea2c4fc5"
+    },
+    "ProjectMaterial": {
+      "count": 16,
+      "sha256": "3037f0863c98744d4f38d862ca0a213c131d165021c8ed237329d32151825bb4"
+    },
+    "ProjectScope": {
+      "count": 129,
+      "sha256": "0be6873bfbfcf470c37c6af74d445099a5fc78c2058763593aef572c603b46a9"
+    },
+    "ProjectSupplier": {
+      "count": 48,
+      "sha256": "43efb6441ffa26888a185eafcffb9e054cae2d8a2af55bbc6d59d8fd45131abd"
+    },
+    "ProposedAction": {
+      "count": 2,
+      "sha256": "ccd9e6b14e02528995fdaf4b6fc1dcf5b415baea9e4a6e301524eb6d1fad87e5"
+    },
+    "Quote": {
+      "count": 29,
+      "sha256": "96e80e75b1d17c2016ea8f01b4e2f6e71790469163e5a6f6f99e9a8b6060562d"
+    },
+    "QuoteItem": {
+      "count": 276,
+      "sha256": "39abe18d07658f7a8fa8c8d1f122777a08fbbfc5f684aa840a8072a79a0a6ed2"
+    },
+    "QuoteVersion": {
+      "count": 46,
+      "sha256": "30747b956001e327f0dea6af46f0863a78fc116c004a15efacf3b15ef721bc42"
+    },
+    "Supplier": {
+      "count": 20,
+      "sha256": "67afc297c17433750c6f8d6ce37053fb790628344374aaa2f4e4f050b01d42e7"
+    },
+    "SupplierOffer": {
+      "count": 2,
+      "sha256": "04ce70f04eafa644f14f0c8ac2c55724f0029dded853fee790a0350342c3acea"
+    },
+    "SupplierOfferItem": {
+      "count": 2,
+      "sha256": "f3cb99e3195daa85209fbb0b207c3990e164bd79e9168eab323bf54b938849ce"
+    },
+    "_prisma_migrations": {
+      "count": 8,
+      "sha256": "d5d61a3664f889bea5375ccf454eedf21143b0cb0e0c50eb1bf6a0c1fb5775dd"
+    }
+  },
+  "guards": [
+    {
+      "name": "Action_stage8_immutable",
+      "enabled": "O",
+      "definitionSha256": "cadc4ebb5b356ad63ada7c201a58aef716977b337de047e8d01411411b3e4278"
+    },
+    {
+      "name": "AuditEvent_append_only",
+      "enabled": "O",
+      "definitionSha256": "dcc32208d914ea20f6f54f8d83a3ea0649e04aee48d9d55d3e5946c25ddb62cc"
+    },
+    {
+      "name": "InternalReviewReceipt_immutable",
+      "enabled": "O",
+      "definitionSha256": "dcc32208d914ea20f6f54f8d83a3ea0649e04aee48d9d55d3e5946c25ddb62cc"
+    },
+    {
+      "name": "ProposedAction_stage8_immutable",
+      "enabled": "O",
+      "definitionSha256": "200d1548b2bec5b00907d9b5aacc0cb9ff7716a26068d3a01cafdee55e0ba62e"
+    }
+  ],
+  "migrations": [
+    {
+      "migration_name": "0001_stridegraph_foundation",
+      "checksum": "debc38a901ef22ad3a261081b2471f266f152e5f85a215a181652619fd536488",
+      "applied": true,
+      "rolled_back": false
+    },
+    {
+      "migration_name": "0002_financial_authority_invariants",
+      "checksum": "3c11150c7f31cf226ef3df7713e19cf2fc26c275d7f184d8fc6b447d46111cc3",
+      "applied": true,
+      "rolled_back": false
+    },
+    {
+      "migration_name": "0003_runtime_authorization",
+      "checksum": "5e54afbabc6c9d315013f14e57d70d0c5c362f8d1c2f12a4b90d47dc148d9509",
+      "applied": true,
+      "rolled_back": false
+    },
+    {
+      "migration_name": "0004_authorization_tenant_links",
+      "checksum": "6e79b57839dfa8fb8e62988ee4c14371622387d9d10b7509f1e33b93294d417a",
+      "applied": true,
+      "rolled_back": false
+    },
+    {
+      "migration_name": "0005_remove_legacy_membership_capabilities",
+      "checksum": "dc65374f2d0f39a4fe4d596e25fc29eca1d1c4c103a6f519649d46eb5d6f2fc3",
+      "applied": true,
+      "rolled_back": false
+    },
+    {
+      "migration_name": "0006_stage5_economics_enrichment",
+      "checksum": "62446ebd7f2bbf217fbe98d1ebdc2c078eb6e9736167ae0fec8743c59ff6dccc",
+      "applied": true,
+      "rolled_back": false
+    },
+    {
+      "migration_name": "0007_stage6_comparison_persistence_scales",
+      "checksum": "20b76d4c2f2051a6bac620a5d0ca859a44b7ac6d5db6fbf05fd3fc53398751a2",
+      "applied": true,
+      "rolled_back": false
+    },
+    {
+      "migration_name": "0008_stage8_internal_review",
+      "checksum": "bca2e402f42aafc822c921df064d51965a8ea29da80aacabc11ef2c6d16d20d9",
+      "applied": true,
+      "rolled_back": false
+    }
+  ],
+  "runtimeRole": {
+    "rolname": "sb032_app",
+    "rolsuper": false,
+    "rolcreatedb": false,
+    "rolcreaterole": false
+  }
+}

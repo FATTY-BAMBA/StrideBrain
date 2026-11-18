@@ -1,0 +1,13 @@
+{
+  "runId": "20261118T040117Z",
+  "node": "v24.22.3",
+  "postgres": "17.12",
+  "databaseIsolation": "Fresh PostgreSQL 17 container on loopback; fresh validation database plus separate browser database; no prior runtime state reused.",
+  "freshCredentials": true,
+  "dependencies": "Existing unchanged locked dependency installation reused; required repair regression gate executed.",
+  "prismaToolCache": "Existing CLI package download cache reused; no application state.",
+  "browser": "Codex in-app browser; engine version unavailable",
+  "appOrigin": "http://localhost:3000",
+  "previousRun": "20261118T031855Z preserved unchanged",
+  "nativeZoomMotionSpeech": "Not changed or used in scoped entry retest"
+}

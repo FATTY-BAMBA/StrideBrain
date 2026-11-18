@@ -1,0 +1,133 @@
+{
+  "focusTrail": [
+    {
+      "key": "Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Shift+Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Shift+Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Shift+Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Shift+Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Shift+Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Shift+Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Shift+Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Shift+Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Shift+Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    },
+    {
+      "key": "Shift+Tab",
+      "inside": true,
+      "tag": "BUTTON",
+      "text": "Back to evidence bundle"
+    }
+  ],
+  "restore": {
+    "dialogs": 1,
+    "sourceTriggerIndex": 1,
+    "text": "Inspect source"
+  },
+  "outerReturn": {
+    "dialogs": 0,
+    "focus": "Evidence and sufficiency: Forecast direct cost · NT$19,766 · TWD/m² · +6.0% · NT$12,650,000"
+  }
+}

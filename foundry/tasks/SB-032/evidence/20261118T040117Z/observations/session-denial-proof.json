@@ -1,0 +1,9 @@
+{
+  "revokedSessionSafe": true,
+  "unauthenticatedSafe": true,
+  "indistinguishable": true,
+  "safeResponse": {
+    "mainLinks": 0,
+    "serializedFixtureNames": false
+  }
+}

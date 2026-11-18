@@ -1,0 +1,17 @@
+{
+  "runId": "20261118T040117Z",
+  "head": "e8770a02f39273307334674bce76fc19815b8802",
+  "parent": "4df07c23a2896b5c13b96238f078d22941a55222",
+  "branch": "build/sb-032-stage9-quality-hardening",
+  "manifestFiles": 491,
+  "sourceManifestSha256": "1de79c5d29f4654c495b889a2de3060e3cdf04c8a458eb5604392ec34b082b21",
+  "sourceManifestBasis": "Committed Git tree; local task records remain outside repair commit.",
+  "buildId": "-ghwpoAvKBJb3v0oRa-rh",
+  "buildSourceEqualsRepairCommit": true,
+  "CI": {
+    "repairHead": "NOT_RUN_NOT_PUSHED",
+    "baselineRunId": 44224883503,
+    "baselineResult": "PASS_HISTORICAL_ONLY"
+  },
+  "productWorktreeClean": true
+}

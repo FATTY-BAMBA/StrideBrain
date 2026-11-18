@@ -1,0 +1,137 @@
+{
+  "dialogs": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "Skip to main contentStrideBrainBY PRIMESTRIDE AI01Home02Projects03Knowledge04StrideBrain05Settingsv0.1 · Controlled demoThis area is not active yet●Controlled synthetic demo繁中/ENPROJECT WORKSPACEProje"
+  },
+  "horizontalOverflow": false,
+  "mainLinks": [
+    {
+      "href": "/en/projects/PRJ-ACTIVE-001",
+      "text": "Active Design Project 01\nActive\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-ACTIVE-002",
+      "text": "Active Design Project 02\nActive\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-ACTIVE-003",
+      "text": "Active Design Project 03\nActive\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-ACTIVE-004",
+      "text": "Active Design Project 04\nActive\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-XINYI-026",
+      "text": "Xinyi Flagship Renovation\nActive\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-BANQIAO-015",
+      "text": "Banqiao Concept Store\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-DAAN-016",
+      "text": "Daan Premium Showroom\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-001",
+      "text": "Completed Workplace Project 01\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-002",
+      "text": "Completed Workplace Project 02\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-003",
+      "text": "Completed Workplace Project 03\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-004",
+      "text": "Completed Workplace Project 04\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-005",
+      "text": "Completed Workplace Project 05\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-006",
+      "text": "Completed Workplace Project 06\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-007",
+      "text": "Completed Workplace Project 07\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-008",
+      "text": "Completed Workplace Project 08\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-009",
+      "text": "Completed Workplace Project 09\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-010",
+      "text": "Completed Workplace Project 10\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-011",
+      "text": "Completed Workplace Project 11\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-012",
+      "text": "Completed Workplace Project 12\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-013",
+      "text": "Completed Workplace Project 13\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-014",
+      "text": "Completed Workplace Project 14\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-015",
+      "text": "Completed Workplace Project 15\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-016",
+      "text": "Completed Workplace Project 16\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-017",
+      "text": "Completed Workplace Project 17\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-HIST-018",
+      "text": "Completed Workplace Project 18\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-NANJING-023",
+      "text": "Nanjing Brand Experience Center\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-NEIHU-021",
+      "text": "Neihu Tech Flagship\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-SONGSHAN-020",
+      "text": "Songshan Retail Renewal\nOpen project →"
+    },
+    {
+      "href": "/en/projects/PRJ-ZHONGSHAN-018",
+      "text": "Zhongshan Lifestyle Store\nOpen project →"
+    }
+  ],
+  "mainText": "PROJECT WORKSPACE\n\nProjects\n\nOpen a project workspace available to your account.\n\nActive Design Project 01\nActive\nOpen project →\nActive Design Project 02\nActive\nOpen project →\nActive Design Project 03\nActive\nOpen project →\nActive Design Project 04\nActive\nOpen project →\nXinyi Flagship Renovation\nActive\nOpen project →\nBanqiao Concept Store\nOpen project →\nDaan Premium Showroom\nOpen project →\nCompleted Workplace Project 01\nOpen project →\nCompleted Workplace Project 02\nOpen project →\nCompleted Workplace Project 03\nOpen project →\nCompleted Workplace Project 04\nOpen project →\nCompleted Workplace Project 05\nOpen project →\nCompleted Workplace Project 06\nOpen project →\nCompleted Workplace Project 07\nOpen project →\nCompleted Workplace Project 08\nOpen project →\nCompleted Workplace Project 09\nOpen project →\nCompleted Workplace Project 10\nOpen project →\nCompleted Workplace Project 11\nOpen project →\nCompleted Workplace Project 12\nOpen project →\nCompleted Workplace Project 13\nOpen project →\nCompleted Workplace Project 14\nOpen project →\nCompleted Workplace Project 15\nOpen project →\nCompleted Workplace Project 16\nOpen project →\nCompleted Workplace Project 17\nOpen project →\nCompleted Workplace Project 18\nOpen project →\nNanjing Brand Experience Center\nOpen project →\nNeihu Tech Flagship\nOpen project →\nSongshan Retail Renewal\nOpen project →\nZhongshan Lifestyle Store\nOpen project →",
+  "title": "StrideBrain",
+  "url": "http://localhost:3000/en/projects",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  },
+  "at": "2026-11-18T04:20:47.070Z",
+  "browser": "Codex in-app browser"
+}

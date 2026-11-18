@@ -1,0 +1,9 @@
+{
+  "cancel": {
+    "dialogs": 0,
+    "focus": "Create internal review action",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_20289a2e-32da-4e4f-a9c7-08bbec003f58&economics=econrun_4cfef68b-26ea-4681-a0c0-c67e873356b5&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+  },
+  "reopened": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_20289a2e-32da-4e4f-a9c7-08bbec003f58&economics=econrun_4cfef68b-26ea-4681-a0c0-c67e873356b5&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_f5fdfa3d-e8f8-439e-8aaf-3c3982a8c1f6",
+  "expectedProposal": "proposal_f5fdfa3d-e8f8-439e-8aaf-3c3982a8c1f6"
+}
