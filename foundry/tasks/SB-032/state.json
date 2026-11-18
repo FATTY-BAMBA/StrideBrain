@@ -1,0 +1,187 @@
+{
+  "taskId": "SB-032",
+  "issueUrl": "https://github.com/FATTY-BAMBA/StrideBrain/issues/32",
+  "state": "READY_FOR_QA",
+  "phase": "PLANNING_ONLY",
+  "updatedAt": "2026-11-18T02:29:57.520783Z",
+  "branch": "build/sb-032-stage9-quality-hardening",
+  "baseline": "fec8830398f213e19879eae23e9720ad8563d7b4",
+  "headCommit": "fec8830398f213e19879eae23e9720ad8563d7b4",
+  "baselineVerification": {
+    "remoteHead": "fec8830398f213e19879eae23e9720ad8563d7b4",
+    "localHead": "fec8830398f213e19879eae23e9720ad8563d7b4",
+    "trackedWorktreeCleanBeforePlanning": true,
+    "indexCleanBeforePlanning": true,
+    "directParents": [
+      "0ecd65bdb0ae752f3244960d6848a74a30d5da01",
+      "b2cd9056b9fe41c1d3d99e091d50a3a69fe3738d"
+    ],
+    "treeEqualsFinalStage8DocsHead": true,
+    "separateWorktree": true
+  },
+  "sourcePolicy": {
+    "productSourceChanged": false,
+    "currentlyRequiredProductChanges": false,
+    "reason": "No new reproducible product defect established by gap analysis; unresolved verification gaps are not defects.",
+    "repairPrerequisite": "Reproducible contract violation with exact-head evidence and scoped regression; no policy/security/schema/feature expansion."
+  },
+  "authorization": {
+    "planningAndIndependentContractReview": true,
+    "productFeatureWork": false,
+    "deployment": false,
+    "vercelOrDnsChanges": false,
+    "merge": false,
+    "publicationPerformed": false
+  },
+  "stage8": {
+    "productHead": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+    "implementationVerdict": "PASS_WITH_NON_BLOCKING_PRE_RELEASE_VERIFICATION",
+    "sourceCI": {
+      "runId": 44059619525,
+      "result": "HISTORICAL_PASS",
+      "notCurrentBaselineCI": true
+    },
+    "pr31": {
+      "merged": true,
+      "mergeCommit": "fec8830398f213e19879eae23e9720ad8563d7b4",
+      "mergedAt": "2026-11-17T18:57:44Z"
+    },
+    "findingsF01ThroughF08": "PASSED_OR_REMEDIATED_BY_INDEPENDENT_EVIDENCE",
+    "unresolvedObservedP0": 0,
+    "unresolvedObservedP1": 0,
+    "unresolvedRequiredPathP2": 0,
+    "historicalOutcomesRewritten": false,
+    "manualEvidence": {
+      "runId": "20261117T095951Z",
+      "branch": "qa/sb-029-manual-20261117T095951Z",
+      "commit": "029f70e8ddce6061bcb5691f4cdfc6bca5f146e2",
+      "directParent": "f67edb3188c51704acac4465c0a72fca146c6d3f",
+      "fileCount": 178,
+      "screenshotCount": 64,
+      "manifestEntries": 177,
+      "allHashesMatch": true,
+      "M-03": "HISTORICAL_PASS",
+      "M-04": "HISTORICAL_PASS",
+      "F-08": "HISTORICAL_PASS_CLOSED_FOR_TESTED_SCOPE",
+      "recordedSanitization": "PASS",
+      "recordedCleanup": "PASS",
+      "verificationScope": "Git identity, complete inventory/hash validation and report review; no new image/OCR/browser execution."
+    }
+  },
+  "inheritedGates": {
+    "M-01": {
+      "classification": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+      "requirement": "Actual screen-reader speech; VoiceOver + Chrome; NVDA combinations where available."
+    },
+    "M-02": {
+      "classification": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+      "requirement": "Physical iOS Safari / Android Chrome keyboard, touch, native picker."
+    },
+    "M-05": {
+      "classification": "STAGE_9_HARDENING",
+      "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+      "requirement": "Leap-day and Asia/Taipei midnight UI/server E2E; existing injected clock covers lower layers only."
+    },
+    "M-06": {
+      "classification": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+      "requirement": "Actual form/error-summary DOM/AX association plus spoken description."
+    },
+    "M-07": {
+      "classification": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "status": "NOT_VERIFIED_MANUAL_REQUIRED",
+      "requirement": "Independent human Taiwan Traditional Chinese business-language/layout review."
+    }
+  },
+  "gapAnalysis": {
+    "status": "COMPLETE",
+    "register": "research.md",
+    "gapIds": [
+      "G-01",
+      "G-02",
+      "G-03",
+      "G-04",
+      "G-05",
+      "G-06",
+      "G-07",
+      "G-08",
+      "G-09",
+      "G-10",
+      "G-11",
+      "G-12",
+      "G-13"
+    ],
+    "reproducedNewProductDefects": []
+  },
+  "independentContractReview": {
+    "status": "PASS",
+    "blockingFindings": 0,
+    "reviewer": "independent delegated reviewer sb032_contract_review",
+    "reviewedAt": "2026-11-18T02:29:57.520783Z",
+    "record": "independent-contract-review.md",
+    "scope": "All ten requested planning artifacts, governing contracts, accepted Stage 8 evidence and relevant source seams; no product execution.",
+    "reminders": [
+      "Expand grouped acceptance IDs to per-item execution records",
+      "Record provider-dependent optional AI states as Stage 10 applicability, not passes",
+      "Demonstrate live M-05 clock method before E2E closure"
+    ]
+  },
+  "execution": {
+    "deterministic": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "nativeHuman": "NOT_RUN",
+    "performance": "NOT_RUN",
+    "rollbackReseed": "NOT_RUN",
+    "deployment": "NOT_AUTHORIZED_THIS_PHASE",
+    "buildId": null,
+    "exactHeadCI": null,
+    "stage9ScenarioPassCount": 0
+  },
+  "releaseReadiness": {
+    "acceptedForDemo": false,
+    "stage9Complete": false,
+    "humanReleaseApproval": null,
+    "openRequirements": [
+      "Complete Stage 9 blocking matrix and accepted performance budgets",
+      "Close inherited human/device and date-boundary gates",
+      "Verify rollback/reseed and sanitized evidence package",
+      "Identify and smoke-test exact preview only after separate deployment authorization",
+      "Independent synthesis and human release review"
+    ]
+  },
+  "nextExecutionStep": "After independent contract PASS, begin isolated deterministic preflight and fresh production-browser baseline; arrange real-device, screen-reader and human zh-TW review. No product edits before a reproduced defect.",
+  "transitions": [
+    {
+      "from": null,
+      "to": "SPECIFYING",
+      "timestamp": "2026-11-18T02:27:16.909504Z",
+      "reason": "Exact clean baseline, Issue #32 and accepted Stage 8 evidence verified; gap analysis and contract prepared for independent review."
+    },
+    {
+      "from": "SPECIFYING",
+      "to": "READY_FOR_QA",
+      "timestamp": "2026-11-18T02:29:57.520783Z",
+      "reason": "Independent contract review PASS with zero blocking findings; readiness means QA execution only. All product tests and human/device gates remain unrun/unresolved."
+    }
+  ],
+  "stateMeaning": "Independent contract passed; ready for scoped QA execution only. No product edit, Stage 9 completion, human acceptance, deployment or release approval.",
+  "planningValidation": {
+    "requestedFiles": 10,
+    "independentReviewRecord": 1,
+    "jsonAndYaml": "PASS",
+    "numberedAcceptanceIdsMapped": 106,
+    "unmappedAcceptanceIds": [],
+    "scenarioCount": 22,
+    "allScenarioResults": "NOT_RUN",
+    "relativeLinks": "PASS",
+    "newPlanningTextSensitivePatternScan": "PASS",
+    "baselineTrackedFilesHashUnchanged": 471,
+    "originalWorkspaceRecordedFilesHashUnchanged": 1577,
+    "originalUntrackedQAEvidenceFilesUnchanged": 678,
+    "indexUnchanged": true,
+    "commitCreated": false,
+    "pushPerformed": false
+  }
+}
