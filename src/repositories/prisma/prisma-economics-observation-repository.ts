@@ -494,7 +494,13 @@ function requestedSelection(
   const available = new Set(
     [...stage4.matches, ...stage4.broaderMatches].map((match) => match.project.projectKey),
   );
-  return requested.every((key) => available.has(key)) ? requested : null;
+  if (!requested.every((key) => available.has(key))) return null;
+  const chosen = new Set(requested);
+  return Object.freeze(
+    [...stage4.matches, ...stage4.broaderMatches]
+      .map((match) => match.project.projectKey)
+      .filter((key) => chosen.has(key)),
+  );
 }
 
 function financialSubjectSelectors(

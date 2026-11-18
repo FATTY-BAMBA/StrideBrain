@@ -115,6 +115,17 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
           );
         }
 
+        if (!economics && (route.outcome === "FAILED" || route.outcome === "ECONOMICS_FAILED")) {
+          return (
+            <ComparisonState
+              locale={rawLocale}
+              projectKey={projectKey}
+              kind="ECONOMICS_FAILED"
+              requestId={route.requestId}
+            />
+          );
+        }
+
         const freshness = await services.getFreshness.check(context, structural.result, economics);
         const view = buildComparisonExperience({
           stage4: structural.result,

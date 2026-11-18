@@ -113,3 +113,17 @@ export function selectedKeysFromFormData(formData: FormData): readonly string[] 
     .map((value) => (typeof value === "string" ? value : ""));
   return parseList(values.join(","));
 }
+
+/** Validate a user command before any route-reader truncation or default fallback. */
+export function submittedSelectedProjectKeys(
+  formData: FormData,
+  authorizedProjectKeys: readonly string[],
+): readonly string[] | null {
+  const values = formData.getAll("selectedProjectKey");
+  if (values.length === 0 || values.length > MAX_SELECTED_PROJECTS) return null;
+  if (values.some((key) => typeof key !== "string" || !SAFE_IDENTIFIER.test(key))) return null;
+  const requested = new Set(values as string[]);
+  const selected = authorizedProjectKeys.filter((key) => requested.has(key));
+  if (selected.length !== requested.size || selected.length === 0) return null;
+  return Object.freeze(selected);
+}
