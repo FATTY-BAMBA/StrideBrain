@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-18T09:11:35.972Z",
+  "observation": {
+    "checks": [],
+    "focus": {
+      "id": "",
+      "tag": "BODY",
+      "text": "BODY"
+    },
+    "headings": [],
+    "lang": "en",
+    "statuses": [
+      {
+        "busy": "true",
+        "label": "Loading comparable projects",
+        "role": "status",
+        "text": ""
+      }
+    ],
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare",
+    "viewport": {
+      "dpr": 1,
+      "height": 900,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  },
+  "ax": "status \"Loading comparable projects\"",
+  "source": "actual immediately-after-click DOM snapshot; natural request; no injected delay"
+}

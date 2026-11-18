@@ -1,0 +1,44 @@
+{
+  "describedBy": "review-error-summary",
+  "draft": [
+    {
+      "id": "review-title",
+      "value": "CHECK"
+    },
+    {
+      "id": "review-rationale",
+      "value": "VALIDATE_HISTORY"
+    },
+    {
+      "id": "review-assignee",
+      "value": "assignee_e1078151219336a0529d3fa95332a60f"
+    },
+    {
+      "id": "review-dueDate",
+      "value": "2026-11-25"
+    },
+    {
+      "checked": true,
+      "id": "review-confirmation",
+      "value": "on"
+    }
+  ],
+  "focusId": "review-error-summary",
+  "focusInsideDialog": true,
+  "labelledBy": "review-error-heading",
+  "rect": {
+    "height": 170.453125,
+    "width": 640,
+    "x": 780,
+    "y": 147.1953125
+  },
+  "role": "alert",
+  "summary": "未能完成審查確認依您目前的權限，無法查看或建立此事項。參考編號: e8a82c77-c97d-4b07-9ccd-30093fe59a72重新比較",
+  "summaryExists": true,
+  "summaryInsideSameForm": true,
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb&economics=econrun_40619df6-a98a-4438-b59a-e03965837f7c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_2253c225-1ddd-4547-b3b6-2e1b845f6d6d&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY",
+  "viewport": [
+    1440,
+    900
+  ]
+}

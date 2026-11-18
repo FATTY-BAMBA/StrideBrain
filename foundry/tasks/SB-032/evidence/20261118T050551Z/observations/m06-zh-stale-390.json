@@ -1,0 +1,96 @@
+{
+  "describedBy": "review-error-summary",
+  "draft": [
+    {
+      "id": "review-title",
+      "value": "CHECK"
+    },
+    {
+      "id": "review-rationale",
+      "value": "VALIDATE_HISTORY"
+    },
+    {
+      "id": "review-assignee",
+      "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+    },
+    {
+      "id": "review-dueDate",
+      "value": "2026-11-26"
+    },
+    {
+      "checked": true,
+      "id": "review-confirmation",
+      "value": "on"
+    }
+  ],
+  "focusId": "review-error-summary",
+  "focusInsideDialog": true,
+  "focusRect": {
+    "height": 216.515625,
+    "width": 358,
+    "x": 16,
+    "y": 167.1953125
+  },
+  "labelledBy": "review-error-heading",
+  "recovery": [
+    {
+      "disabled": false,
+      "text": "English"
+    },
+    {
+      "disabled": false,
+      "text": "繁體中文"
+    },
+    {
+      "disabled": false,
+      "text": "關閉"
+    },
+    {
+      "disabled": false,
+      "text": "重新比較"
+    },
+    {
+      "disabled": false,
+      "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。"
+    },
+    {
+      "disabled": false,
+      "text": "照明報價與符合條件的歷史報價比較，差異為 +9.4%。"
+    },
+    {
+      "disabled": false,
+      "text": "照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。"
+    },
+    {
+      "disabled": false,
+      "text": "目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。"
+    },
+    {
+      "disabled": false,
+      "text": "清除到期日"
+    },
+    {
+      "disabled": true,
+      "text": "建立內部審查事項"
+    },
+    {
+      "disabled": false,
+      "text": "取消審查"
+    }
+  ],
+  "rect": {
+    "height": 216.515625,
+    "width": 358,
+    "x": 16,
+    "y": 167.1953125
+  },
+  "role": "alert",
+  "summary": "未能完成審查確認比較或相關佐證資料已變更，未建立事項。請重新比較並再次檢視。參考編號: a0a969b3-e078-468e-ab9c-986c280dace2重新比較",
+  "summaryExists": true,
+  "summaryInsideSameForm": true,
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_f5a9eae3-3472-4fcf-a310-a9abeb6ad0a3&economics=econrun_ddf16e38-6b64-4b8a-9c42-3359b478430c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_15494597-3992-463e-ac4d-82ee6ba4fd29&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2026-11-26",
+  "viewport": [
+    390,
+    844
+  ]
+}

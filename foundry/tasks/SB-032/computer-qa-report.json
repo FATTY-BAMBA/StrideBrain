@@ -1,16 +1,17 @@
 {
   "taskId": "SB-032",
-  "runId": "20261118T040117Z",
-  "testedHead": "e8770a02f39273307334674bce76fc19815b8802",
-  "parent": "4df07c23a2896b5c13b96238f078d22941a55222",
+  "runId": "20261118T084208Z",
+  "testedHead": "4628fb759c8bac23cf92eb15992259fb366a8d65",
+  "parent": "1bde2114d010c694d017ba2b4116ceffab3569e1",
   "branch": "build/sb-032-stage9-quality-hardening",
-  "buildId": "-ghwpoAvKBJb3v0oRa-rh",
+  "buildId": "jZBGrkhs4Ok9XriINHgub",
   "verdict": "PASS_SCOPED_REPAIR",
   "stage9Verdict": "INCOMPLETE_CONTINUE_QA",
-  "status": "REPAIR_VERIFIED_BASELINE_RESUMED",
-  "browserAcceptance": "S9-F01_PASS_BASELINE_PARTIAL",
-  "browser": "Codex in-app browser; native Chrome/VoiceOver not executed",
-  "evidence": "evidence/20261118T040117Z/",
+  "status": "TARGETED_REPAIRS_PASS_BASELINE_RESUMED_MANUAL_GATES_OPEN",
+  "taskState": "IN_QA",
+  "browserAcceptance": "S9-F02_F03_F04_PASS_BASELINE_CONTINUED",
+  "browser": "Google Chrome 157.0.8103.79 on macOS 26.2",
+  "evidence": "evidence/20261118T084208Z/",
   "historicalRuns": [
     {
       "runId": "20261118T031855Z",
@@ -25,240 +26,490 @@
         "NOT_RUN": 1
       },
       "preservedUnchanged": true
+    },
+    {
+      "runId": "20261118T040117Z",
+      "head": "e8770a02f39273307334674bce76fc19815b8802",
+      "verdict": "PASS_SCOPED_REPAIR",
+      "browser": "S9-F01_PASS_BASELINE_PARTIAL",
+      "scenarioCounts": {
+        "PARTIAL": 15,
+        "NOT_RUN": 7
+      },
+      "preservedUnchanged": true
+    },
+    {
+      "runId": "20261118T050551Z",
+      "head": "1bde2114d010c694d017ba2b4116ceffab3569e1",
+      "verdict": "REVISE",
+      "browser": "FAIL",
+      "scenarioCounts": {
+        "PASS": 1,
+        "FAIL": 5,
+        "PARTIAL": 12,
+        "NOT_RUN": 3,
+        "BLOCKED": 1
+      },
+      "preservedUnchanged": true,
+      "evidence": "evidence/20261118T050551Z/"
     }
   ],
   "deterministic": {
-    "status": "PASS",
-    "runId": "20261118T040117Z",
-    "head": "e8770a02f39273307334674bce76fc19815b8802",
-    "testResults": [
+    "runId": "20261118T084208Z",
+    "result": "PASS",
+    "targetedTests": {
+      "passed": 67,
+      "files": 4
+    },
+    "fullSuite": {
+      "passed": 643,
+      "files": 70
+    },
+    "localization": {
+      "passed": 37,
+      "files": 5
+    },
+    "postgresAdversarial": {
+      "passed": 93,
+      "includedInFullSuiteAlso": true
+    },
+    "format": "PASS",
+    "lint": "PASS_ONE_PREEXISTING_PRISMA_CONFIG_WARNING",
+    "strictTypeScript": "PASS",
+    "prismaValidate": "PASS",
+    "prismaGenerate": "PASS",
+    "cleanMigrations": 9,
+    "seedRounds": 2,
+    "sqlVerificationFilesPerRound": 8,
+    "populatedUpgrade": "PASS",
+    "negativeMigrationRollbackCases": 7,
+    "productionBuild": "PASS",
+    "productionAuditVulnerabilities": 0,
+    "failedDevelopmentIterations": "Preserved in command outcomes; superseded log pointers are explicitly null, not presented as passing attempts.",
+    "testCountsAreNotAdditive": "Targeted, localization and adversarial tests are included in 643 unique full-suite tests.",
+    "exactHeadCI": {
+      "result": "NOT_RUN_LOCAL_COMMIT_NOT_PUSHED",
+      "head": "4628fb759c8bac23cf92eb15992259fb366a8d65"
+    },
+    "historicalPublishedCI": {
+      "runId": 44240367670,
+      "result": "PASS",
+      "url": "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/44240367670",
+      "head": "1bde2114d010c694d017ba2b4116ceffab3569e1"
+    }
+  },
+  "baselineResumption": {
+    "run": "20261118T084208Z",
+    "sourceCommit": "4628fb759c8bac23cf92eb15992259fb366a8d65",
+    "buildId": "jZBGrkhs4Ok9XriINHgub",
+    "status": "PASS_SCOPED_BASELINE_CONTINUATION",
+    "completedAt": "2026-11-18T09:23:53.272Z",
+    "scope": {
+      "locales": [
+        "en",
+        "zh-TW"
+      ],
+      "viewports": [
+        {
+          "width": 1440,
+          "height": 900,
+          "purpose": "EN main journey and bilingual draft/first receipt"
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "purpose": "zh-TW main journey and bilingual second receipt"
+        }
+      ],
+      "notFullStage9Acceptance": true
+    },
+    "coverage": [
       {
-        "label": "targeted-repair-regression",
-        "testsPassed": 56,
-        "filesPassed": 6
+        "name": "Factor and source roundtrip",
+        "status": "PASS",
+        "observed": "EN desktop and zh mobile Scope overlap factor shows weight/contribution25 and87.7 total; source drilldown and Escape back retain current economics; source H2 focus remains inside modal.",
+        "artifacts": [
+          "hero-en-factor",
+          "hero-en-factor-source",
+          "hero-en-factor-return",
+          "hero-zh-mobile-factor",
+          "hero-zh-mobile-factor-source",
+          "hero-zh-mobile-factor-return"
+        ]
       },
       {
-        "label": "targeted-shell-disclosure",
-        "testsPassed": 2,
-        "filesPassed": 1
+        "name": "Financial authority and insufficiency",
+        "status": "PASS",
+        "observed": "Active forecast remains distinct from reconciled actual history; imported stone+18.4% supported and lighting2/3 abstains, no fabricated actual-cost range. Current review and receipts retain programme uncertainty.",
+        "artifacts": [
+          "hero-en-lighting-insufficiency",
+          "hero-zh-mobile-lighting-insufficiency",
+          "hero-zh-review-evidence",
+          "hero-zh-source-focus"
+        ]
       },
       {
-        "label": "verified-full-suite",
-        "testsPassed": 576,
-        "filesPassed": 66
+        "name": "Edited draft navigation",
+        "status": "PASS",
+        "observed": "CHECK,VALIDATE_HISTORY,Mei and genuinely cleared due date persisted through EN→zh locale, reload, Back/Forward, evidence/source roundtrip and final English confirmation.",
+        "artifacts": [
+          "hero-draft-navigation.json",
+          "hero-edited-review-evidence-return",
+          "hero-en-before-confirm"
+        ]
       },
       {
-        "label": "14-localization",
-        "testsPassed": 12,
-        "filesPassed": 4
-      },
-      {
-        "label": "15-postgres-adversarial",
-        "testsPassed": 93,
-        "filesPassed": 1
+        "name": "Receipt and project persistence",
+        "status": "PASS",
+        "observed": "Two explicit synthetic confirmations; each receipt shows15 evidence references, intended exact source economics, wording and assignee. Project Actions reopening, bilingual receipt locale navigation, refresh and copied normal receipt routes preserve identity.",
+        "artifacts": [
+          "hero-en-receipt",
+          "hero-en-project-actions-reopened",
+          "hero-en-copied-receipt-route",
+          "hero-zh-mobile-receipt",
+          "hero-zh-mobile-project-actions-reopened",
+          "hero-zh-mobile-copied-receipt",
+          "hero-zh-mobile-receipt-refreshed"
+        ]
       }
     ],
-    "subsetCountsNotAdded": true,
-    "migrations": 8,
-    "repeatSeedSQL": "PASS",
-    "format": "PASS",
-    "lint": "PASS_ONE_PREEXISTING_WARNING",
-    "strictTypes": "PASS",
-    "Prisma": "VALIDATE_GENERATE_PASS",
-    "build": "PASS",
-    "buildId": "-ghwpoAvKBJb3v0oRa-rh",
-    "productionAudit": "PASS_ZERO_VULNERABILITIES",
-    "notes": [
-      "Initial new-test strict typing and later test lint findings corrected; failed preliminary logs retained.",
-      "Reviewed shell disclosure addendum followed by final format/lint/types/full suite; unchanged migration/seed results retained.",
-      "Build/localization/adversarial/audit ran after final product source revision; later edit was test-only lint compliance."
+    "actions": [
+      {
+        "key": "action_bc8bba12-2d8f-4620-97cf-09c29cf7c74f",
+        "proposal": "proposal_546a9a02-e728-4552-8cd5-0fc8fa35ac63",
+        "economics": "econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9",
+        "title": "CHECK",
+        "rationale": "VALIDATE_HISTORY",
+        "assignee": "Mei Lin",
+        "dueDate": null,
+        "evidenceReferences": 15
+      },
+      {
+        "key": "action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "proposal": "proposal_57286e7a-6f19-4cde-84d1-5b7f442dd58a",
+        "economics": "econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024",
+        "title": "REVIEW",
+        "rationale": "RECORD_QUESTIONS",
+        "assignee": "Iris Huang",
+        "dueDate": "2026-11-25",
+        "evidenceReferences": 15
+      }
+    ],
+    "unresolved": [
+      "Not a full QA01–18 or Stage9 acceptance rerun.",
+      "No security/adversarial or performance wave.",
+      "Actual VoiceOver speech, physical device/touch/native keyboard behavior, human bilingual copy, native200%zoom, OS reduced-motion and leap/midnight date gates remain unverified in this run.",
+      "Natural confirmation pending DOM was observed; no complete pending-motion/video measurement is claimed.",
+      "Other enum fixture states are localization-test coverage, not browser observations."
+    ],
+    "diagnostics": [
+      "An exploratory immediate cancel-review→shell-locale sequence initially remained English; repeating the locale click after cancellation settled switched normally. No rapid-cancel navigation acceptance claim is made.",
+      "Early zh bare-compare loading captures settled before most frames; only saved-run pending captures provide the full grid.",
+      "All actual screenshot pixel sizes are separately checked; no screenshot crop/resize/DOM injection was used."
     ]
   },
-  "repair": {
-    "commit": "e8770a02f39273307334674bce76fc19815b8802",
-    "directParent": "4df07c23a2896b5c13b96238f078d22941a55222",
-    "branch": "build/sb-032-stage9-quality-hardening",
-    "files": [
-      "src/app/[locale]/projects/page.tsx",
-      "src/components/projects/project-list.module.css",
-      "src/components/projects/project-list.tsx",
-      "src/components/shell/workspace-shell.tsx",
-      "src/lib/server/project-workspace-services.ts",
-      "src/modules/localization/catalog.ts",
-      "src/modules/projects/application/list-authorized-projects.ts",
-      "src/repositories/ports/project-list-repository.ts",
-      "src/repositories/prisma/prisma-project-list-repository.ts",
-      "tests/projects/list-authorized-projects.test.ts",
-      "tests/projects/project-list-postgres.test.ts",
-      "tests/projects/projects-page.test.ts",
-      "tests/projects/projects-shell-disclosure.test.ts"
-    ],
-    "publication": "NOT_PUSHED",
-    "scope": "S9-F01 repair and regression tests only"
-  },
-  "independentSourceReview": "PASS",
-  "entryRetest": "PASS",
-  "baselineResumption": {
-    "at": "2026-11-18T04:40:54.403Z",
-    "scope": "Resumed fresh browser baseline after S9-F01 closure; not the full Stage 9 matrix.",
-    "locales": ["en", "zh-TW"],
-    "viewports": [
-      {
-        "width": 1440,
-        "height": 900
-      },
-      {
-        "width": 768,
-        "height": 1024
-      },
-      {
-        "width": 390,
-        "height": 844
-      },
-      {
-        "width": 320,
-        "height": 740
-      }
-    ],
-    "entry": "PASS",
-    "comparisonAndLightingResponsive": "PASS",
-    "reviewAndReceiptResponsive": "PARTIAL: receipts and review DOM exercised at four sizes; EN review 390/768 screenshot pixel widths do not match measured CSS viewport and need settled recapture.",
-    "draftLocaleRefreshEvidenceHistory": "PASS with native keyboard date input; IAB date fill alone did not dispatch the application update",
-    "sourceFocus": "PASS EN desktop and zh-TW narrow, Tab/Shift+Tab containment and settled hierarchical Escape/trigger restoration",
-    "validation": "PASS field acknowledgement and date error paths observed; generic server failure not injected",
-    "confirmation": "Two intentionally distinct fresh comparisons produced two actions; consumed proposal/prepare safely unavailable; copied receipt and actions list reopen successful",
-    "createdActions": [
-      "action_ba562411-59e0-40ca-8765-bf00afdc3b84",
-      "action_76bdf770-9d82-4f17-9806-c525ab9754d3"
-    ],
-    "unexecuted": [
-      "full five-second/timed hero acceptance",
-      "selection mutation coverage",
-      "generic failure/stale-source mutation waves",
-      "performance/rollback full rehearsals",
-      "native browser zoom/motion",
-      "VoiceOver speech",
-      "physical devices",
-      "independent human zh-TW review",
-      "settled EN review 390x844 and 768x1024 visual recapture"
-    ],
-    "newConfirmedRequiredPathDefects": 0,
-    "notes": [
-      "Transient pending BODY focus and English loading label in zh-TW remain follow-up observations, not validated manual-gate passes.",
-      "Source-return preliminary trace captured an unsettled transition; settled trace confirms exact source trigger.",
-      "Chinese review prepared again from consumed comparison was safely unavailable by preparation idempotency; valid review grid captured using a fresh comparison."
-    ],
-    "status": "RESUMED_PARTIAL_NOT_FULL_STAGE9_ACCEPTANCE"
-  },
   "scenarioCounts": {
-    "PARTIAL": 15,
-    "NOT_RUN": 7
+    "PARTIAL": 18,
+    "NOT_RUN": 3,
+    "BLOCKED": 1
   },
   "scenarios": [
     {
       "id": "S9-01",
       "title": "Exact-candidate setup and production start",
       "status": "PARTIAL",
-      "reason": "Local exact repair-head deterministic/build/start gates PASS; GitHub exact repair-head CI not run because commit is local/unpublished.",
+      "reason": "Exact local repair source/build and complete deterministic gate PASS with nine clean migrations. Current-head GitHub CI awaits separate publication; prior published-head CI is historical only.",
       "gate": "BLOCKING_STAGE_9",
-      "acceptance": ["CI matrix", "REL-008", "REL-009", "REL-010"],
-      "evidence": []
+      "acceptance": [
+        "CI matrix",
+        "REL-008",
+        "REL-009",
+        "REL-010"
+      ],
+      "evidence": [
+        "browser/targeted-browser-results.json",
+        "gate-summary.json",
+        "lineage-verification-targeted.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "PASS",
+        "reason": "Exact published head and passing exact-head CI recorded; fresh production build/start, eight clean migrations and repeated seed/SQL verified.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "source.json",
+          "BUILD_ID.txt",
+          "commands.jsonl"
+        ]
+      }
     },
     {
       "id": "S9-02",
       "title": "Complete bilingual hero and five-second comprehension",
       "status": "PARTIAL",
-      "reason": "S9-F01 entry PASS in both locales/all four viewports and core bilingual compare/review/receipt journey resumed. Timed hero/five-second human comprehension not completed.",
+      "reason": "S9-F02/F03/F04 targeted eight-cell browser retest PASS; scoped bilingual core continuation resumed. Five-second human comprehension and remaining full-plan paths are not claimed.",
       "gate": "BLOCKING_STAGE_9",
-      "acceptance": ["PUX-001..015", "I18N-002", "I18N-005"],
-      "evidence": []
+      "acceptance": [
+        "PUX-001..015",
+        "I18N-002",
+        "I18N-005"
+      ],
+      "evidence": [
+        "browser/targeted-browser-results.json",
+        "gate-summary.json",
+        "lineage-verification-targeted.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "FAIL",
+        "reason": "Core entry/review/confirmation/receipt journey executed en/zh-TW at four sizes, but S9-F02/F03 localization and S9-F04 selection failure prevent acceptance. Script duration is not five-second human comprehension.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "observations/hero-journeys.json",
+          "findings.json"
+        ]
+      }
     },
     {
       "id": "S9-03",
       "title": "Ranking, factors and selection",
       "status": "PARTIAL",
-      "reason": "Canonical ranking, first factor panel and selected-three result observed. Full selection-change/factor matrix remains.",
+      "reason": "Selection/ranking/immutable evidence lineage repairs PASS with bilingual eight-cell browser round-trips, extra A/AB/AC/ABC/DEF transitions and PostgreSQL proof. Full Viewer/factor/recall/independent top-three denominators remain.",
       "gate": "BLOCKING_STAGE_9",
-      "acceptance": ["CPI-001..010", "PUX-006", "PUX-007", "PUX-008"],
-      "evidence": []
+      "acceptance": [
+        "CPI-001..010",
+        "PUX-006",
+        "PUX-007",
+        "PUX-008"
+      ],
+      "evidence": [
+        "browser/targeted-browser-results.json",
+        "gate-summary.json",
+        "lineage-verification-targeted.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "FAIL",
+        "reason": "Canonical ranking/factor/source observed; real Nanjing→Daan update and restoration both FAILED without new economics (S9-F04).",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "observations/selection-change.json",
+          "final-catalog.json"
+        ]
+      }
     },
     {
       "id": "S9-04",
       "title": "Economics authority, abstention and evidence meaning",
       "status": "PARTIAL",
-      "reason": "Forecast/actual authority, lighting 2-of-3 abstention and programme locator/source meaning observed; complete authority/evidence matrix remains.",
+      "reason": "Current economics/claim/source linkage and insufficient one/two selections PASS without fabricated supported values. Full persona/authority/conflict/restricted matrix remains incomplete.",
       "gate": "BLOCKING_STAGE_9",
-      "acceptance": ["AUTH-001..012", "EVD-001..012", "PUX-009..012"],
-      "evidence": []
+      "acceptance": [
+        "AUTH-001..012",
+        "EVD-001..012",
+        "PUX-009..012"
+      ],
+      "evidence": [
+        "browser/targeted-browser-results.json",
+        "gate-summary.json",
+        "lineage-verification-targeted.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "FAIL",
+        "reason": "Initial forecast/actual authority, lighting 2/3 abstention and programme/source meaning observed; changing selected set loses economics display because persistence fails (S9-F04). Full authority matrix remains.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "observations/read-only-grid.json",
+          "findings.json"
+        ]
+      }
     },
     {
       "id": "S9-05",
       "title": "Draft and navigation persistence",
       "status": "PARTIAL",
-      "reason": "All four draft fields survived native keyboard edit, locale, refresh, evidence return and back/forward on one proposal. Full persona/cross-route matrix remains.",
+      "reason": "Inherited coverage remains incomplete; this scoped repair run does not close the full requirement. See historicalResult and current baseline continuation.",
       "gate": "BLOCKING_STAGE_9",
-      "acceptance": ["ACT-001", "ACT-002", "I18N-006", "I18N-007", "REL-005"],
-      "evidence": []
+      "acceptance": [
+        "ACT-001",
+        "ACT-002",
+        "I18N-006",
+        "I18N-007",
+        "REL-005"
+      ],
+      "evidence": [
+        "browser/baseline-continuation-results.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "PARTIAL",
+        "reason": "Eight edited drafts survived refresh; receipt locale/refresh/back/forward/copied routes passed observed grid. Earlier all-four-field route/evidence persistence observed. Full personas/cross-route coverage remains.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "observations/hero-journeys.json",
+          "observations/receipt-navigation-grid.json"
+        ]
+      }
     },
     {
       "id": "S9-06",
       "title": "Confirmation, receipt and interrupted retry",
       "status": "PARTIAL",
-      "reason": "EN and zh-TW confirmations created two intentionally separate actions; receipt refresh/copy/reopen and consumed proposal/prepare unavailable behavior passed. Interrupted network retry not executed.",
+      "reason": "Inherited coverage remains incomplete; this scoped repair run does not close the full requirement. See historicalResult and current baseline continuation.",
       "gate": "BLOCKING_STAGE_9",
-      "acceptance": ["ACT-003..005", "ACT-011", "ACT-012", "REL-007", "PUX-014"],
-      "evidence": []
+      "acceptance": [
+        "ACT-003..005",
+        "ACT-011",
+        "ACT-012",
+        "REL-007",
+        "PUX-014"
+      ],
+      "evidence": [
+        "browser/baseline-continuation-results.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "PARTIAL",
+        "reason": "Ten intentionally separate actions have matching receipts/audits/confirmed proposals and no duplicate proposal actions. Actions reopen and copied receipts observed; interrupted network retry not run.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "cleanup-integrity.json",
+          "observations/hero-journeys.json"
+        ]
+      }
     },
     {
       "id": "S9-07",
       "title": "Keyboard and automated accessibility",
       "status": "PARTIAL",
-      "reason": "Entry keyboard/focus, modal Tab/Shift+Tab containment, hierarchical Escape, trigger return and field-error associations observed; full accessibility matrix and automated audit remain.",
+      "reason": "Inherited coverage remains incomplete; this scoped repair run does not close the full requirement. See historicalResult and current baseline continuation.",
       "gate": "BLOCKING_STAGE_9",
-      "acceptance": ["A11Y-001..010"],
-      "evidence": []
+      "acceptance": [
+        "A11Y-001..010"
+      ],
+      "evidence": [
+        "browser/baseline-continuation-results.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "PARTIAL",
+        "reason": "Source modal Tab/Shift+Tab containment, exact source-trigger restoration and hierarchical Escape observed; error focus visible. Automated/full keyboard audit incomplete.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "observations/read-only-grid.json",
+          "observations/m06-server-grid-corrected.json"
+        ]
+      }
     },
     {
       "id": "S9-08",
       "title": "Actual zoom and actual OS reduced-motion regression",
       "status": "NOT_RUN",
-      "reason": "No actual Chrome zoom or OS motion changes in this scoped repair wave; historical SB-029 passes remain historical.",
+      "reason": "Inherited coverage remains incomplete; this scoped repair run does not close the full requirement. See historicalResult and current baseline continuation.",
       "gate": "BLOCKING_STAGE_9",
-      "acceptance": ["A11Y-001", "A11Y-002", "A11Y-006", "A11Y-010"],
-      "evidence": []
+      "acceptance": [
+        "A11Y-001",
+        "A11Y-002",
+        "A11Y-006",
+        "A11Y-010"
+      ],
+      "evidence": [
+        "browser/baseline-continuation-results.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "NOT_RUN",
+        "reason": "Chrome zoom and OS reduced motion unchanged this wave; previous Stage 8 results remain historical.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "observations/browser-closure.json"
+        ]
+      }
     },
     {
       "id": "S9-09",
       "title": "Actual speech and pending announcements",
-      "status": "NOT_RUN",
-      "reason": "Actual screen-reader speech and pending announcements require native/human execution.",
+      "status": "PARTIAL",
+      "reason": "Inherited coverage remains incomplete; this scoped repair run does not close the full requirement. See historicalResult and current baseline continuation.",
       "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
-      "acceptance": ["A11Y-009", "A11Y-007", "ACT-012"],
-      "evidence": []
+      "acceptance": [
+        "A11Y-009",
+        "A11Y-007",
+        "ACT-012"
+      ],
+      "evidence": [
+        "browser/baseline-continuation-results.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "PARTIAL",
+        "reason": "Actual macOS VoiceOver with Chrome exercised both locales. User speech attestation pending; no speech PASS inferred. Loading accessible name defect S9-F03 observed, not an asserted speech failure.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "human-review/M-01-M-06-speech-attestation.md"
+        ]
+      }
     },
     {
       "id": "S9-10",
       "title": "Physical mobile native input",
-      "status": "NOT_RUN",
-      "reason": "Physical-device testing not executed; responsive viewports cannot close this scenario.",
+      "status": "BLOCKED",
+      "reason": "Inherited coverage remains incomplete; this scoped repair run does not close the full requirement. See historicalResult and current baseline continuation.",
       "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
-      "acceptance": ["A11Y-001", "A11Y-006", "A11Y-007", "A11Y-010", "I18N-007", "I18N-008"],
-      "evidence": []
+      "acceptance": [
+        "A11Y-001",
+        "A11Y-006",
+        "A11Y-007",
+        "A11Y-010",
+        "I18N-007",
+        "I18N-008"
+      ],
+      "evidence": [
+        "browser/baseline-continuation-results.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "BLOCKED",
+        "reason": "Paired wired iPhone16,1 / iOS 26.5 detected; Safari version not recorded. Plain HTTP LAN incompatible with current Secure host-only/session-origin path; trusted local HTTPS/session access not validated. Android availability unknown.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "human-review/M-02-device-inventory.json",
+          "human-review/M-02-device-protocol.md"
+        ]
+      }
     },
     {
       "id": "S9-11",
       "title": "Live generic error description association",
-      "status": "NOT_RUN",
-      "reason": "Generic confirmation failure not injected; field validation is supporting observation only.",
+      "status": "PARTIAL",
+      "reason": "Inherited coverage remains incomplete; this scoped repair run does not close the full requirement. See historicalResult and current baseline continuation.",
       "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
-      "acceptance": ["A11Y-007", "A11Y-009", "ACT-006..009", "ACT-012"],
-      "evidence": []
+      "acceptance": [
+        "A11Y-007",
+        "A11Y-009",
+        "ACT-006..009",
+        "ACT-012"
+      ],
+      "evidence": [
+        "browser/baseline-continuation-results.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "PARTIAL",
+        "reason": "Live stale/access-denial/server errors preserve form aria-describedby, existing summary, alert label, draft and visible focus. Corrected safe-server grid covers both locales/four sizes. Speech pending; literal EVIDENCE_UNAVAILABLE not reached (authority change returned STALE_COMPARISON).",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "observations/m06-server-grid-corrected.json",
+          "confirmation-outcome-events.json"
+        ]
+      }
     },
     {
       "id": "S9-12",
       "title": "Reviewed visual baseline grid",
       "status": "PARTIAL",
-      "reason": "96 captures inspected; full baseline state grid incomplete. EN review 390/768 capture pixel dimensions mismatch CSS viewport; settled recapture required, no product clipping inferred.",
+      "reason": "Current targeted image dimensions and new localized workspace/loading views verified. Full conditional-state and persona visual grid remains incomplete; historical image qualifications retained.",
       "gate": "BLOCKING_STAGE_9",
       "acceptance": [
         "PUX-003..014",
@@ -269,13 +520,27 @@
         "A11Y-008",
         "A11Y-010"
       ],
-      "evidence": []
+      "evidence": [
+        "browser/targeted-browser-results.json",
+        "gate-summary.json",
+        "lineage-verification-targeted.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "FAIL",
+        "reason": "174 captures reviewed, including requested settled EN review recaptures; core read-only grid has72 captures. S9-F02 normal-mode localization FAIL. 14 pixel/CSS mismatches and preliminary tab-binding captures qualified; conflict/restricted/pending grid incomplete.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "screenshot-review.json",
+          "artifact-qualifications.json"
+        ]
+      }
     },
     {
       "id": "S9-13",
       "title": "Canonical evidence precision and groundedness report",
       "status": "PARTIAL",
-      "reason": "Canonical lighting/forecast/programme source meaning checked; full quantitative groundedness report remains.",
+      "reason": "Inherited coverage remains incomplete; this scoped repair run does not close the full requirement. See historicalResult and current baseline continuation.",
       "gate": "BLOCKING_STAGE_9",
       "acceptance": [
         "CPI targets",
@@ -283,146 +548,349 @@
         "EVD targets",
         "Quality Constitution quantitative gates"
       ],
-      "evidence": []
+      "evidence": [
+        "browser/baseline-continuation-results.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "PARTIAL",
+        "reason": "Canonical forecast/actual, lighting insufficiency and programme source meaning observed. Full independent quantitative groundedness report remains; failed selection cannot be counted as valid economics.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "observations/read-only-grid.json"
+        ]
+      }
     },
     {
       "id": "S9-14",
       "title": "Authorization and tenant non-disclosure",
       "status": "PARTIAL",
-      "reason": "Projects entry tested for Mei/Viewer/Finance/Admin/Northern, revoked and unauthenticated states; tenant selectors ignored and no Horizon content in Northern response. Full security matrix remains.",
+      "reason": "Inherited coverage remains incomplete; this scoped repair run does not close the full requirement. See historicalResult and current baseline continuation.",
       "gate": "BLOCKING_STAGE_9",
-      "acceptance": ["SEC-001..016", "AUTH-011", "EVD-008", "EVD-011", "EVD-012"],
-      "evidence": []
+      "acceptance": [
+        "SEC-001..016",
+        "AUTH-011",
+        "EVD-008",
+        "EVD-011",
+        "EVD-012"
+      ],
+      "evidence": [
+        "browser/baseline-continuation-results.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "PARTIAL",
+        "reason": "Current authorized temporary denial returns ACTION_NOT_AUTHORIZED with no write and exact restoration; inherited scoped five-persona entry evidence retained. Full security/tenant wave not executed; no broad security PASS.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "mutation-action-flag-1794979978060.json",
+          "mutation-action-flag-1794980213152.json"
+        ]
+      }
     },
     {
       "id": "S9-15",
       "title": "Freshness, transactional failures and reliability",
-      "status": "NOT_RUN",
-      "reason": "No source/access/evidence/server fault injection in this scoped repair wave; mutation/reliability scenarios remain.",
+      "status": "PARTIAL",
+      "reason": "Inherited coverage remains incomplete; this scoped repair run does not close the full requirement. See historicalResult and current baseline continuation.",
       "gate": "BLOCKING_STAGE_9",
-      "acceptance": ["ACT-004..010", "REL-001..010", "SEC-013", "PUX-013"],
-      "evidence": []
+      "acceptance": [
+        "ACT-004..010",
+        "REL-001..010",
+        "SEC-013",
+        "PUX-013"
+      ],
+      "evidence": [
+        "browser/baseline-continuation-results.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "PARTIAL",
+        "reason": "Stale project/source and temporary access denial plus safe after-action transaction failure observed/restored without business writes. Full conflict/evidence-unavailable/retry matrix remains.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "cleanup-integrity.json",
+          "confirmation-outcome-events.json"
+        ]
+      }
     },
     {
       "id": "S9-16",
       "title": "Performance and query-plan benchmark",
       "status": "NOT_RUN",
-      "reason": "Performance and query-plan benchmark not executed; bounded list query independently reviewed/tested.",
+      "reason": "Inherited coverage remains incomplete; this scoped repair run does not close the full requirement. See historicalResult and current baseline continuation.",
       "gate": "BLOCKING_STAGE_9",
-      "acceptance": ["Performance matrix", "Stage8 stricter server budgets"],
-      "evidence": []
+      "acceptance": [
+        "Performance matrix",
+        "Stage8 stricter server budgets"
+      ],
+      "evidence": [
+        "browser/baseline-continuation-results.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "NOT_RUN",
+        "reason": "Security/baseline-dependent mutating performance wave on hold for required-path P2 defects. Scripted journey seconds are not performance benchmarks.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": []
+      }
     },
     {
       "id": "S9-17",
       "title": "Leap day and Taipei midnight",
       "status": "PARTIAL",
-      "reason": "Prior lower-layer date evidence retained; live browser/server midnight/leap-day boundary unverified.",
+      "reason": "Inherited coverage remains incomplete; this scoped repair run does not close the full requirement. See historicalResult and current baseline continuation.",
       "gate": "STAGE_9_HARDENING",
-      "acceptance": ["ACT-002", "ACT-006", "ACT-012", "I18N-005"],
-      "evidence": []
+      "acceptance": [
+        "ACT-002",
+        "ACT-006",
+        "ACT-012",
+        "I18N-005"
+      ],
+      "evidence": [
+        "browser/baseline-continuation-results.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "PARTIAL",
+        "reason": "15 selected existing domain/service/PostgreSQL injected-clock tests PASS; leap-day/bounds/Taipei midnight and invalid-write invariants covered below UI. No reviewed live browser/server clock alignment yet.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "M-05-date-evidence.json",
+          "logs/m05-existing-clock-regressions.log"
+        ]
+      }
     },
     {
       "id": "S9-18",
       "title": "Independent Taiwan Chinese language review",
       "status": "PARTIAL",
-      "reason": "Bilingual screenshot/copy evidence prepared; independent human Traditional Chinese review not obtained.",
+      "reason": "Known workspace/loading leaks repaired and independently retested. Exhaustive label parity tests PASS; human Taiwan Traditional Chinese review remains required.",
       "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
-      "acceptance": ["I18N-001..009", "PUX-001", "AUTH-001..012"],
-      "evidence": []
+      "acceptance": [
+        "I18N-001..009",
+        "PUX-001",
+        "AUTH-001..012"
+      ],
+      "evidence": [
+        "browser/targeted-browser-results.json",
+        "gate-summary.json",
+        "lineage-verification-targeted.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "FAIL",
+        "reason": "Known zh-TW enum/loading-label defects S9-F02/F03 remain. Current screenshot/copy/checklist package prepared; independent human Chinese approval not obtained. Conditional state grid incomplete.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "human-review/M-07-human-review.md",
+          "findings.json"
+        ]
+      }
     },
     {
       "id": "S9-19",
       "title": "Local production portability and environment preflight",
       "status": "PARTIAL",
-      "reason": "Fresh isolated production build/start, authorized/denied entry and durable receipt paths observed; restart portability rehearsal remains.",
+      "reason": "Inherited coverage remains incomplete; this scoped repair run does not close the full requirement. See historicalResult and current baseline continuation.",
       "gate": "BLOCKING_STAGE_9",
-      "acceptance": ["CI matrix", "SEC-015", "SEC-016", "REL-010"],
-      "evidence": []
+      "acceptance": [
+        "CI matrix",
+        "SEC-015",
+        "SEC-016",
+        "REL-010"
+      ],
+      "evidence": [
+        "browser/baseline-continuation-results.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "PARTIAL",
+        "reason": "Fresh restricted-role isolated production preview PASS; restart portability rehearsal remains. Physical-device LAN secure access unresolved.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "source.json",
+          "human-review/M-02-device-protocol.md"
+        ]
+      }
     },
     {
       "id": "S9-20",
       "title": "Actual isolated preview smoke — deferred",
       "status": "NOT_RUN",
-      "reason": "Deployment not authorized; no Vercel/DNS changes.",
+      "reason": "Inherited coverage remains incomplete; this scoped repair run does not close the full requirement. See historicalResult and current baseline continuation.",
       "gate": "BLOCKING_RELEASE_NOT_AUTHORIZED",
-      "acceptance": ["Deployment/release matrix", "Stage9 exact preview exit"],
-      "evidence": []
+      "acceptance": [
+        "Deployment/release matrix",
+        "Stage 9 exact preview exit"
+      ],
+      "evidence": [
+        "browser/baseline-continuation-results.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "NOT_RUN",
+        "reason": "No deployment authorized or performed; no Vercel/DNS changes.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": []
+      }
     },
     {
       "id": "S9-21",
       "title": "Rollback, containment, reset and cleanup",
       "status": "PARTIAL",
-      "reason": "Run-owned cleanup, session revocation, fixture/history guards and preservation PASS; full rollback/restore rehearsal remains.",
+      "reason": "Inherited coverage remains incomplete; this scoped repair run does not close the full requirement. See historicalResult and current baseline continuation.",
       "gate": "BLOCKING_STAGE_9",
-      "acceptance": ["REL-008", "REL-009", "ACT-004", "ACT-010", "Stage9 recovery"],
-      "evidence": []
+      "acceptance": [
+        "REL-008",
+        "REL-009",
+        "ACT-004",
+        "ACT-010",
+        "Stage 9 recovery"
+      ],
+      "evidence": [
+        "browser/baseline-continuation-results.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "PARTIAL",
+        "reason": "Owned session revoked, issuer stopped, fixture mutations restored, original rows/guards/migrations unchanged;10 intentional actions retained. Full rollback/reseed rehearsal remains.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "cleanup-integrity.json"
+        ]
+      }
     },
     {
       "id": "S9-22",
       "title": "Independent synthesis and release package",
       "status": "PARTIAL",
-      "reason": "Independent scoped source review PASS and repair evidence finalized; complete Stage 9 release synthesis remains.",
+      "reason": "Inherited coverage remains incomplete; this scoped repair run does not close the full requirement. See historicalResult and current baseline continuation.",
       "gate": "BLOCKING_STAGE_9",
-      "acceptance": ["All blocking matrix requirements", "Quality Constitution release evidence"],
-      "evidence": []
+      "acceptance": [
+        "All blocking matrix requirements",
+        "Quality Constitution release evidence"
+      ],
+      "evidence": [
+        "browser/baseline-continuation-results.json"
+      ],
+      "historicalResult": {
+        "runId": "20261118T050551Z",
+        "status": "PARTIAL",
+        "reason": "Three reproduced required-path P2 findings independently classified; evidence/limitations synthesized. Full Stage 9 release review remains.",
+        "evidenceBase": "evidence/20261118T050551Z/",
+        "evidence": [
+          "independent-classification.md",
+          "REPORT.md"
+        ]
+      }
     }
   ],
   "manualGates": {
     "M-01": {
-      "status": "NOT_RUN",
+      "status": "PARTIAL_NOT_VERIFIED_MANUAL_REQUIRED",
       "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
-      "reason": "No new native Chrome/VoiceOver speech run or human attestation in this scoped repair wave. User remains available to listen.",
-      "next": "VoiceOver + actual Chrome, both locales, with user listening to dialog/errors/evidence/pending/receipt and hidden-background checks.",
-      "NVDAWindows": "NOT_AVAILABLE_ON_CURRENT_HOST"
+      "actualVoiceOverChromeEnabled": true,
+      "bothLocalesExercised": true,
+      "speechAttestation": "PENDING_USER_OBSERVATIONS",
+      "actualSpeechPassClaimed": false,
+      "NVDAWindows": "NOT_AVAILABLE_ON_CURRENT_HOST",
+      "evidence": "human-review/M-01-M-06-speech-attestation.md"
     },
     "M-02": {
-      "status": "DEVICE_EVIDENCE_REQUIRED",
+      "status": "BLOCKED_DEVICE_ACCESS",
       "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
-      "iPhone": "USER_AVAILABLE_NOT_TESTED",
-      "Android": "AVAILABILITY_NOT_CONFIRMED",
-      "reason": "Responsive IAB coverage is not physical-device acceptance; iPhone available but not yet tested.",
-      "protocol": "human-review/M-02-device-protocol.md",
-      "next": "Arrange authorized isolated preview access for physical iPhone, record device/OS/Safari; confirm Android availability separately."
+      "iPhoneModelIdentifier": "iPhone16,1",
+      "iOS": "26.5",
+      "pairedUSB": true,
+      "Safari": "NOT_SEPARATELY_RECORDED",
+      "Android": "DEVICE_EVIDENCE_REQUIRED_ANDROID; AVAILABILITY_UNKNOWN",
+      "physicalTest": "NOT_RUN",
+      "blocker": "Safe local HTTPS and same-origin one-use session access not configured/validated; plain HTTP LAN is not sufficient.",
+      "evidence": "human-review/M-02-device-protocol.md"
     },
     "M-05": {
       "status": "PARTIAL",
       "gate": "STAGE_9_HARDENING",
-      "domainCases": "7 PASS plus default +7 cross-year assertion",
-      "existingServiceAndPGTests": "PASS as part of exact-head deterministic suite",
-      "liveBrowserServerBoundary": "NOT_RUN; isolated live clock method not demonstrated",
-      "reason": "Injected explicit Date arguments only; system clock and production guards unchanged. Lower layers do not close UI/server E2E.",
-      "evidence": ["date-policy-observations.json", "date-boundary-results.json"]
+      "deterministic": "15 selected tests PASS; 165 intentionally filtered out",
+      "liveUIBoundary": "BLOCKED_ISOLATED_CLOCK_METHOD_NOT_ESTABLISHED",
+      "evidence": "M-05-date-evidence.json"
     },
     "M-06": {
-      "status": "NOT_RUN",
+      "status": "PARTIAL",
       "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
-      "reason": "Field-validation aria-describedby and focus observed in both locales; generic confirmation failure DOM/AX/speech paths remain unexecuted.",
-      "next": "Inspect actual dialog form/error-node relationship, focus/visibility and speech after stale/access/evidence/server failure once baseline passes.",
-      "supportingObservation": "Field validation only; does not close generic-error gate."
+      "DOMFocus": "PASS for actual stale, generic access denial and safe server failure in both locales; full server-error four-viewport grid verified",
+      "formDescription": "Existing summary in active form/dialog; aria-describedby and labelled alert verified",
+      "draftPreservation": "PASS observed",
+      "exactEvidenceUnavailable": "NOT_REACHED; authority mutation returned STALE_COMPARISON",
+      "speech": "PENDING_USER_OBSERVATIONS",
+      "evidence": [
+        "observations/m06-server-grid-corrected.json",
+        "observations/m06-en-access-change.json",
+        "observations/m06-zh-access-change.json",
+        "observations/m06-en-stale-768.json",
+        "observations/m06-zh-stale-390.json"
+      ]
     },
     "M-07": {
-      "status": "HUMAN_REVIEW_REQUIRED",
-      "preparation": "PARTIAL",
+      "status": "PACKAGE_PREPARED_HUMAN_REVIEW_REQUIRED",
       "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
-      "reason": "Bilingual entry, comparison, evidence, review and receipt captures now available; human reviewer and full state-grid approval still outstanding.",
-      "evidence": ["human-review/copy-inventory.json", "human-review/M-07-review-checklist.md"],
-      "humanReviewer": "NOT_YET_IDENTIFIED"
+      "sourceCopyEntries": 594,
+      "coreChineseGridScreenshots": 36,
+      "observedAdditionalStates": "review, validation, generic server/stale/access errors, Actions, failed selection",
+      "fullStateGrid": "INCOMPLETE for unexecuted conflict/restricted/pending/exact evidence-unavailable cases",
+      "humanApproval": "NOT_VERIFIED_MANUAL_REQUIRED",
+      "evidence": "human-review/M-07-human-review.md"
     }
   },
   "findings": [
     {
-      "id": "S9-F01",
+      "id": "S9-F02",
       "severity": "P2",
       "requiredPath": true,
       "status": "CLOSED_FOR_TESTED_SCOPE",
-      "historicalRun": "20261118T031855Z",
-      "historicalHead": "4df07c23a2896b5c13b96238f078d22941a55222",
-      "repairHead": "e8770a02f39273307334674bce76fc19815b8802",
-      "retestRun": "20261118T040117Z",
-      "rootCause": "Projects still used the FoundationPage unavailable placeholder, with no authorized project-list entry to the existing workspace.",
-      "sourceReview": "PASS",
-      "browserRetest": "PASS",
-      "evidence": "entry-retest-result.json"
+      "historicalRun": "20261118T050551Z",
+      "historicalOutcome": "FAIL / REVISE unchanged",
+      "repairHead": "4628fb759c8bac23cf92eb15992259fb366a8d65",
+      "retestRun": "20261118T084208Z",
+      "rootCause": "Workspace and evidence-health states were rendered as raw domain enum strings. Exhaustive presentation-only maps now cover six workspace and five evidence-health states in both locales.",
+      "independentPlanReview": "PASS_BEFORE_IMPLEMENTATION",
+      "independentSourceReview": "PASS",
+      "deterministic": "PASS",
+      "browser": "PASS_BOTH_LOCALES_FOUR_VIEWPORTS",
+      "evidence": "browser/targeted-browser-results.json"
+    },
+    {
+      "id": "S9-F03",
+      "severity": "P2",
+      "requiredPath": true,
+      "status": "CLOSED_FOR_TESTED_SCOPE",
+      "historicalRun": "20261118T050551Z",
+      "historicalOutcome": "FAIL / REVISE unchanged",
+      "repairHead": "4628fb759c8bac23cf92eb15992259fb366a8d65",
+      "retestRun": "20261118T084208Z",
+      "rootCause": "The comparison loading shell hard-coded its English accessible label. Route-aware localized status name and busy semantics now replace it, without CSS/motion changes.",
+      "independentPlanReview": "PASS_BEFORE_IMPLEMENTATION",
+      "independentSourceReview": "PASS",
+      "deterministic": "PASS",
+      "browser": "PASS_BOTH_LOCALES_FOUR_VIEWPORTS",
+      "evidence": "browser/targeted-browser-results.json"
+    },
+    {
+      "id": "S9-F04",
+      "severity": "P2",
+      "requiredPath": true,
+      "status": "CLOSED_FOR_TESTED_SCOPE",
+      "historicalRun": "20261118T050551Z",
+      "historicalOutcome": "FAIL / REVISE unchanged",
+      "repairHead": "4628fb759c8bac23cf92eb15992259fb366a8d65",
+      "retestRun": "20261118T084208Z",
+      "rootCause": "EconomicsEnrichmentRun.comparisonRunId uniqueness rejected a second immutable enrichment, and comparison-scoped claim uniqueness collided across enrichments. Client selection state also lacked persisted-result identity reset; route navigation could retain an older economics selector. Forward migration0009 and scoped repository/submission/client changes preserve independent economics/claim ownership and active route identity.",
+      "independentPlanReview": "PASS_BEFORE_IMPLEMENTATION",
+      "independentSourceReview": "PASS",
+      "deterministic": "PASS",
+      "browser": "PASS_BOTH_LOCALES_FOUR_VIEWPORTS",
+      "evidence": "browser/targeted-browser-results.json"
     }
   ],
   "openConfirmedFindingCounts": {
@@ -430,13 +898,149 @@
     "P1": 0,
     "P2": 0
   },
-  "findingCountScope": "Executed repair/baseline scope only; untested gates are not passes.",
+  "findingCountScope": "Observed targeted and scoped continuation only. Untested requirements remain open, never inferred PASS.",
   "cleanup": "PASS",
   "sanitization": "PASS",
-  "sanitizationRecord": "evidence/20261118T040117Z/sanitization.json",
+  "sanitizationRecord": "sanitization.json",
   "productSourceChanged": true,
-  "productChangeScope": "S9-F01 authorized Projects entry and related regressions only",
+  "schemaMigrationChanged": true,
+  "securityPerformanceWaves": "NOT_RUN; targeted repair hold cleared, complete remaining planned baseline/gates before subsequent waves",
   "publicationPerformed": false,
   "mergePerformed": false,
-  "deploymentPerformed": false
+  "deploymentPerformed": false,
+  "schemaJustification": "Independent plan review proved immutable enrichment cardinality/claim ownership requires forward migration0009; historical migrations unchanged.",
+  "targetedRetest": {
+    "run": "20261118T084208Z",
+    "sourceCommit": "4628fb759c8bac23cf92eb15992259fb366a8d65",
+    "buildId": "jZBGrkhs4Ok9XriINHgub",
+    "targetedFrozenAt": "2026-11-18T09:19:17.164Z",
+    "status": "PASS",
+    "scope": "Independent targeted browser retest S9-F02/F03/F04 only; not full Stage9 acceptance",
+    "cells": [
+      {
+        "locale": "en",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "F02": "PASS canonical Ready/Good fixture",
+        "F03": "PASS actual status accessible name and aria-busy=true",
+        "F04": "PASS ABC→AB→ABC with current evidence/proposal lineage"
+      },
+      {
+        "locale": "en",
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "F02": "PASS canonical Ready/Good fixture",
+        "F03": "PASS actual status accessible name and aria-busy=true",
+        "F04": "PASS ABC→AB→ABC with current evidence/proposal lineage"
+      },
+      {
+        "locale": "en",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "F02": "PASS canonical Ready/Good fixture",
+        "F03": "PASS actual status accessible name and aria-busy=true",
+        "F04": "PASS ABC→AB→ABC with current evidence/proposal lineage"
+      },
+      {
+        "locale": "en",
+        "viewport": {
+          "width": 320,
+          "height": 740
+        },
+        "F02": "PASS canonical Ready/Good fixture",
+        "F03": "PASS actual status accessible name and aria-busy=true",
+        "F04": "PASS ABC→AB→ABC with current evidence/proposal lineage"
+      },
+      {
+        "locale": "zh-TW",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "F02": "PASS canonical Ready/Good fixture",
+        "F03": "PASS actual status accessible name and aria-busy=true",
+        "F04": "PASS ABC→AB→ABC with current evidence/proposal lineage"
+      },
+      {
+        "locale": "zh-TW",
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "F02": "PASS canonical Ready/Good fixture",
+        "F03": "PASS actual status accessible name and aria-busy=true",
+        "F04": "PASS ABC→AB→ABC with current evidence/proposal lineage"
+      },
+      {
+        "locale": "zh-TW",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "F02": "PASS canonical Ready/Good fixture",
+        "F03": "PASS actual status accessible name and aria-busy=true",
+        "F04": "PASS ABC→AB→ABC with current evidence/proposal lineage"
+      },
+      {
+        "locale": "zh-TW",
+        "viewport": {
+          "width": 320,
+          "height": 740
+        },
+        "F02": "PASS canonical Ready/Good fixture",
+        "F03": "PASS actual status accessible name and aria-busy=true",
+        "F04": "PASS ABC→AB→ABC with current evidence/proposal lineage"
+      }
+    ],
+    "findings": [
+      {
+        "id": "S9-F02",
+        "status": "PASS",
+        "observed": "Canonical workspace Ready/Good render Ready/Good in English and 可檢視/資料狀態良好 in zh-TW in all8 cells. Remaining enum states are covered by separate localization tests, not claimed as browser fixtures."
+      },
+      {
+        "id": "S9-F03",
+        "status": "PASS",
+        "observed": "Natural desktop loading observed in both locales. Eight saved-run pending states captured with actual status role, localized name and aria-busy=true; bounded operator ComparisonRun read lock only, no DOM injection. Loading resolves to unchanged saved result.",
+        "qualifiedArtifacts": "Initial f03-zh-TW-*-bounded-pending attempts navigated bare compare and settled quickly; excluded from complete pending proof. Valid zh uses saved-run-pending; en uses bounded-pending."
+      },
+      {
+        "id": "S9-F04",
+        "status": "PASS",
+        "observed": "All8 real ABC→AB→ABC updates create distinct economics IDs on same comparison. Route selected set, checkbox state, visible values, current claim and current review proposal agree. AB has insufficiency and no create control. Both locales also A→AB→AC→ABC→DEF→ABC, zero unsent chooser disabled, >3 prevented by disabled unchecked choices at3. Historical ABC and AB evidence reopened after subsequent runs without overwrite."
+      }
+    ],
+    "limits": [
+      "No action confirmed during targeted phase;8 proposals prepared only.",
+      "No screen-reader speech, physical device/touch/keyboard, native zoom, OS motion, human language review or leap/midnight date acceptance claimed.",
+      "No cross-tenant/security/performance wave; operator/database/test evidence is supplemental."
+    ],
+    "artifacts": [
+      "observations.json",
+      "f04-grid.json",
+      "f04-extra-transitions.json",
+      "f03-pending-matrix.json",
+      "image-dimensions.json"
+    ]
+  },
+  "lineageCorroboration": "lineage-verification-targeted.json",
+  "scenarioCountQualification": "Aggregate Stage9 coverage, not a claim that all22 scenarios were rerun. No historical run counts changed.",
+  "unverifiedObservations": [
+    {
+      "classification": "UNVERIFIED_OBSERVATION",
+      "observation": "One immediate cancel-review to shell-locale attempt remained English; a settled click switched correctly.",
+      "independentAssessment": "Evidence does not establish enabled-link activation, interception or route replacement; no new required-path defect established. Navigation race remains possible, not dismissed.",
+      "followUp": "Capture cancel completion, enabled link activation, timing, resulting route/locale and draft identity for immediate and settled clicks in both locales.",
+      "additionalSourceChange": "NOT_JUSTIFIED",
+      "reviewer": "sb032_entry_classification"
+    }
+  ],
+  "cleanupRecord": "cleanup.json",
+  "browserClosure": "browser cleanup records: session revoked, owned tab closed; numeric viewport restoration unverified after blocked post-revocation geometry observation"
 }

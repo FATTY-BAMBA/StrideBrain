@@ -1,0 +1,26 @@
+{
+  "backend": "actual Chrome via CUA extension",
+  "responsiveViewports": "documented viewport override; no physical-device claim",
+  "browserVersion": "not independently verified",
+  "screenshots": "raw JPEG bytes; exact sizes checked with PIL; no crop/resize/DOM injection",
+  "accessibility": "actual DOM/AX role/name/focus only; no VoiceOver speech acceptance",
+  "cleanup": {
+    "at": "2026-11-18T09:25:25.707Z",
+    "status": "CLOSED",
+    "ownedTabId": "1605347227",
+    "ownedTabStillPresent": false,
+    "sessionRevocation": "Root confirmed09:24:28Z;1run-owned session revoked; no post-revocation navigation or authentication request made",
+    "temporaryViewport": "viewport.reset returned before subsequent page observation was rejected",
+    "restoredViewportDimensions": "not remeasured: post-revocation page observation rejected by automatic approval review; no retry",
+    "zoomChanged": false,
+    "osSettingsChanged": false,
+    "unrelatedTabsTouched": false
+  },
+  "manualGatesUnpromoted": [
+    "Not a full QA01–18 or Stage9 acceptance rerun.",
+    "No security/adversarial or performance wave.",
+    "Actual VoiceOver speech, physical device/touch/native keyboard behavior, human bilingual copy, native200%zoom, OS reduced-motion and leap/midnight date gates remain unverified in this run.",
+    "Natural confirmation pending DOM was observed; no complete pending-motion/video measurement is claimed.",
+    "Other enum fixture states are localization-test coverage, not browser observations."
+  ]
+}

@@ -1,0 +1,25 @@
+
+> stridebrain@0.1.0 test
+> vitest run tests/comparison-experience/selection-lineage-postgres.test.ts
+
+
+ RUN  v4.1.10 [REDACTED_PRIVATE_VALUE]
+
+ ❯ tests/comparison-experience/selection-lineage-postgres.test.ts (16 tests | 16 skipped) 415ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/comparison-experience/selection-lineage-postgres.test.ts > Stage9 real PostgreSQL selection lineage and populated upgrade
+Error: QA_SESSION_REQUIRED
+ ❯ actor tests/comparison-experience/selection-lineage-postgres.test.ts:30:263
+
+ ❯ tests/comparison-experience/selection-lineage-postgres.test.ts:53:58
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  16 skipped (16)
+   Start at  16:54:31
+   Duration  811ms (transform 218ms, setup 0ms, import 305ms, tests 415ms, environment 0ms)
+

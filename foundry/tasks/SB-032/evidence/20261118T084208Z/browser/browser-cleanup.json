@@ -1,0 +1,12 @@
+{
+  "at": "2026-11-18T09:25:25.707Z",
+  "status": "CLOSED",
+  "ownedTabId": "1605347227",
+  "ownedTabStillPresent": false,
+  "sessionRevocation": "Root confirmed09:24:28Z;1run-owned session revoked; no post-revocation navigation or authentication request made",
+  "temporaryViewport": "viewport.reset returned before subsequent page observation was rejected",
+  "restoredViewportDimensions": "not remeasured: post-revocation page observation rejected by automatic approval review; no retry",
+  "zoomChanged": false,
+  "osSettingsChanged": false,
+  "unrelatedTabsTouched": false
+}

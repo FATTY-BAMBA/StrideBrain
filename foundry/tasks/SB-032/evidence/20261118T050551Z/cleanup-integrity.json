@@ -1,0 +1,298 @@
+{
+  "result": "PASS",
+  "at": "2026-11-18T05:57:47.090644+00:00",
+  "ownedSessionsIssued": 1,
+  "ownedSessionsRevoked": 1,
+  "activeOwnedSessions": 0,
+  "bootstrapRecordsRemaining": 0,
+  "operatorStopped": true,
+  "previewRetainedLoopbackOnly": true,
+  "fixtureTablesIdentical": [
+    "Client",
+    "CostLine",
+    "Document",
+    "DocumentVersion",
+    "EvidenceConflict",
+    "EvidenceReference",
+    "ForecastCostLine",
+    "ForecastCostVersion",
+    "Material",
+    "Membership",
+    "MembershipCapabilityGrant",
+    "Organization",
+    "Person",
+    "Project",
+    "ProjectAssignment",
+    "ProjectCostVersion",
+    "ProjectMaterial",
+    "ProjectScope",
+    "ProjectSupplier",
+    "Quote",
+    "QuoteItem",
+    "QuoteVersion",
+    "Supplier",
+    "SupplierOffer",
+    "SupplierOfferItem",
+    "_prisma_migrations"
+  ],
+  "initialRowsPreserved": [
+    {
+      "table": "Action",
+      "originalRows": 0,
+      "finalRows": 10,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "AuditEvent",
+      "originalRows": 0,
+      "finalRows": 10,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "Client",
+      "originalRows": 15,
+      "finalRows": 15,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "ComparisonCandidate",
+      "originalRows": 0,
+      "finalRows": 60,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "ComparisonClaim",
+      "originalRows": 0,
+      "finalRows": 160,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "ComparisonFactor",
+      "originalRows": 0,
+      "finalRows": 480,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "ComparisonRun",
+      "originalRows": 0,
+      "finalRows": 10,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "CostLine",
+      "originalRows": 141,
+      "finalRows": 141,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "DemoSession",
+      "originalRows": 2,
+      "finalRows": 3,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "Document",
+      "originalRows": 116,
+      "finalRows": 116,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "DocumentVersion",
+      "originalRows": 116,
+      "finalRows": 116,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "EconomicsEnrichmentRun",
+      "originalRows": 0,
+      "finalRows": 10,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "EconomicsObservationDecision",
+      "originalRows": 0,
+      "finalRows": 940,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "EvidenceConflict",
+      "originalRows": 1,
+      "finalRows": 1,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "EvidenceReference",
+      "originalRows": 571,
+      "finalRows": 571,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "ForecastCostLine",
+      "originalRows": 6,
+      "finalRows": 6,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "ForecastCostVersion",
+      "originalRows": 1,
+      "finalRows": 1,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "IntelligenceRun",
+      "originalRows": 0,
+      "finalRows": 10,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "InternalReviewReceipt",
+      "originalRows": 0,
+      "finalRows": 10,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "Material",
+      "originalRows": 8,
+      "finalRows": 8,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "Membership",
+      "originalRows": 5,
+      "finalRows": 5,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "MembershipCapabilityGrant",
+      "originalRows": 5,
+      "finalRows": 5,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "Organization",
+      "originalRows": 2,
+      "finalRows": 2,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "Person",
+      "originalRows": 5,
+      "finalRows": 5,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "Project",
+      "originalRows": 30,
+      "finalRows": 30,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "ProjectAssignment",
+      "originalRows": 33,
+      "finalRows": 33,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "ProjectCostVersion",
+      "originalRows": 25,
+      "finalRows": 25,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "ProjectMaterial",
+      "originalRows": 16,
+      "finalRows": 16,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "ProjectScope",
+      "originalRows": 129,
+      "finalRows": 129,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "ProjectSupplier",
+      "originalRows": 48,
+      "finalRows": 48,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "ProposedAction",
+      "originalRows": 0,
+      "finalRows": 10,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "Quote",
+      "originalRows": 29,
+      "finalRows": 29,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "QuoteItem",
+      "originalRows": 276,
+      "finalRows": 276,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "QuoteVersion",
+      "originalRows": 46,
+      "finalRows": 46,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "Supplier",
+      "originalRows": 20,
+      "finalRows": 20,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "SupplierOffer",
+      "originalRows": 2,
+      "finalRows": 2,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "SupplierOfferItem",
+      "originalRows": 2,
+      "finalRows": 2,
+      "originalRowsUnchanged": true
+    },
+    {
+      "table": "_prisma_migrations",
+      "originalRows": 8,
+      "finalRows": 8,
+      "originalRowsUnchanged": true
+    }
+  ],
+  "restorationProofs": [
+    "mutation-action-flag-1794979978060.json",
+    "mutation-action-flag-1794980213152.json",
+    "mutation-authority-1794979098668.json",
+    "mutation-project-1794978939011.json",
+    "mutation-project-1794979010090.json",
+    "fault-after-action-1794979159886.json"
+  ],
+  "allMutationsRestored": true,
+  "allFaultChecksNoBusinessWrites": true,
+  "temporaryObjectsAbsent": true,
+  "newActions": 10,
+  "newAudits": 10,
+  "newReceipts": 10,
+  "confirmedProposals": 10,
+  "duplicateActions": 0,
+  "immutableGuards": {
+    "count": 4,
+    "definitionsAndEnabledStatesUnchanged": true
+  },
+  "migrations": {
+    "count": 8,
+    "checksumsUnchanged": true
+  },
+  "VoiceOver": "RESTORED_OFF",
+  "browserViewport": "RESET",
+  "ChromeZoom": "NOT_CHANGED",
+  "ReduceMotion": "NOT_CHANGED",
+  "historyDeletedOrReset": false,
+  "postRevocationAuthenticatedBrowserRequests": false
+}

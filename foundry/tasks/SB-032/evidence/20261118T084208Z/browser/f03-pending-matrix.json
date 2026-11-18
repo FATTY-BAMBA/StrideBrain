@@ -1,0 +1,709 @@
+[
+  {
+    "name": "f03-zh-TW-1440-bounded-pending",
+    "at": "2026-11-18T09:17:10.243Z",
+    "before": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [
+        "我們以前做過類似的案子嗎？"
+      ],
+      "lang": "zh-Hant",
+      "statuses": [],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollWidth": 1440,
+        "width": 1440
+      }
+    },
+    "after": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [
+        "我們以前做過類似的案子嗎？"
+      ],
+      "lang": "zh-Hant",
+      "statuses": [],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollWidth": 1440,
+        "width": 1440
+      }
+    },
+    "actualLoadingBefore": [
+      {
+        "busy": "true",
+        "label": "正在載入歷史專案比較",
+        "role": "status",
+        "text": ""
+      }
+    ],
+    "artificialDatabaseReadDelay": true,
+    "notPerformanceSample": true
+  },
+  {
+    "name": "f03-zh-TW-768-bounded-pending",
+    "at": "2026-11-18T09:17:10.758Z",
+    "before": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [
+        "我們以前做過類似的案子嗎？"
+      ],
+      "lang": "zh-Hant",
+      "statuses": [],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollWidth": 768,
+        "width": 768
+      }
+    },
+    "after": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [
+        "我們以前做過類似的案子嗎？"
+      ],
+      "lang": "zh-Hant",
+      "statuses": [],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollWidth": 768,
+        "width": 768
+      }
+    },
+    "actualLoadingBefore": [],
+    "artificialDatabaseReadDelay": true,
+    "notPerformanceSample": true
+  },
+  {
+    "name": "f03-zh-TW-390-bounded-pending",
+    "at": "2026-11-18T09:17:11.092Z",
+    "before": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [
+        "我們以前做過類似的案子嗎？"
+      ],
+      "lang": "zh-Hant",
+      "statuses": [],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollWidth": 390,
+        "width": 390
+      }
+    },
+    "after": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [
+        "我們以前做過類似的案子嗎？"
+      ],
+      "lang": "zh-Hant",
+      "statuses": [],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollWidth": 390,
+        "width": 390
+      }
+    },
+    "actualLoadingBefore": [],
+    "artificialDatabaseReadDelay": true,
+    "notPerformanceSample": true
+  },
+  {
+    "name": "f03-zh-TW-320-bounded-pending",
+    "at": "2026-11-18T09:17:11.457Z",
+    "before": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [
+        "我們以前做過類似的案子嗎？"
+      ],
+      "lang": "zh-Hant",
+      "statuses": [],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare",
+      "viewport": {
+        "dpr": 1,
+        "height": 740,
+        "scrollWidth": 320,
+        "width": 320
+      }
+    },
+    "after": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [
+        "我們以前做過類似的案子嗎？"
+      ],
+      "lang": "zh-Hant",
+      "statuses": [],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare",
+      "viewport": {
+        "dpr": 1,
+        "height": 740,
+        "scrollWidth": 320,
+        "width": 320
+      }
+    },
+    "actualLoadingBefore": [],
+    "artificialDatabaseReadDelay": true,
+    "notPerformanceSample": true
+  },
+  {
+    "name": "f03-en-1440-bounded-pending",
+    "at": "2026-11-18T09:17:19.790Z",
+    "before": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [],
+      "lang": "en",
+      "statuses": [
+        {
+          "busy": "true",
+          "label": "Loading comparable projects",
+          "role": "status",
+          "text": ""
+        }
+      ],
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_e3eeffb8-e226-490e-b20b-bd98808d5ee4&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollWidth": 1440,
+        "width": 1440
+      }
+    },
+    "after": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [],
+      "lang": "en",
+      "statuses": [
+        {
+          "busy": "true",
+          "label": "Loading comparable projects",
+          "role": "status",
+          "text": ""
+        }
+      ],
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_e3eeffb8-e226-490e-b20b-bd98808d5ee4&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollWidth": 1440,
+        "width": 1440
+      }
+    },
+    "actualLoadingBefore": [
+      {
+        "busy": "true",
+        "label": "Loading comparable projects",
+        "role": "status",
+        "text": ""
+      }
+    ],
+    "artificialDatabaseReadDelay": true,
+    "notPerformanceSample": true
+  },
+  {
+    "name": "f03-en-768-bounded-pending",
+    "at": "2026-11-18T09:17:20.147Z",
+    "before": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [],
+      "lang": "en",
+      "statuses": [
+        {
+          "busy": "true",
+          "label": "Loading comparable projects",
+          "role": "status",
+          "text": ""
+        }
+      ],
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_e3eeffb8-e226-490e-b20b-bd98808d5ee4&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollWidth": 768,
+        "width": 768
+      }
+    },
+    "after": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [],
+      "lang": "en",
+      "statuses": [
+        {
+          "busy": "true",
+          "label": "Loading comparable projects",
+          "role": "status",
+          "text": ""
+        }
+      ],
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_e3eeffb8-e226-490e-b20b-bd98808d5ee4&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollWidth": 768,
+        "width": 768
+      }
+    },
+    "actualLoadingBefore": [
+      {
+        "busy": "true",
+        "label": "Loading comparable projects",
+        "role": "status",
+        "text": ""
+      }
+    ],
+    "artificialDatabaseReadDelay": true,
+    "notPerformanceSample": true
+  },
+  {
+    "name": "f03-en-390-bounded-pending",
+    "at": "2026-11-18T09:17:20.517Z",
+    "before": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [],
+      "lang": "en",
+      "statuses": [
+        {
+          "busy": "true",
+          "label": "Loading comparable projects",
+          "role": "status",
+          "text": ""
+        }
+      ],
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_e3eeffb8-e226-490e-b20b-bd98808d5ee4&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollWidth": 390,
+        "width": 390
+      }
+    },
+    "after": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [],
+      "lang": "en",
+      "statuses": [
+        {
+          "busy": "true",
+          "label": "Loading comparable projects",
+          "role": "status",
+          "text": ""
+        }
+      ],
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_e3eeffb8-e226-490e-b20b-bd98808d5ee4&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollWidth": 390,
+        "width": 390
+      }
+    },
+    "actualLoadingBefore": [
+      {
+        "busy": "true",
+        "label": "Loading comparable projects",
+        "role": "status",
+        "text": ""
+      }
+    ],
+    "artificialDatabaseReadDelay": true,
+    "notPerformanceSample": true
+  },
+  {
+    "name": "f03-en-320-bounded-pending",
+    "at": "2026-11-18T09:17:20.822Z",
+    "before": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [],
+      "lang": "en",
+      "statuses": [
+        {
+          "busy": "true",
+          "label": "Loading comparable projects",
+          "role": "status",
+          "text": ""
+        }
+      ],
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_e3eeffb8-e226-490e-b20b-bd98808d5ee4&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 1,
+        "height": 740,
+        "scrollWidth": 320,
+        "width": 320
+      }
+    },
+    "after": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [],
+      "lang": "en",
+      "statuses": [
+        {
+          "busy": "true",
+          "label": "Loading comparable projects",
+          "role": "status",
+          "text": ""
+        }
+      ],
+      "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_e3eeffb8-e226-490e-b20b-bd98808d5ee4&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 1,
+        "height": 740,
+        "scrollWidth": 320,
+        "width": 320
+      }
+    },
+    "actualLoadingBefore": [
+      {
+        "busy": "true",
+        "label": "Loading comparable projects",
+        "role": "status",
+        "text": ""
+      }
+    ],
+    "artificialDatabaseReadDelay": true,
+    "notPerformanceSample": true
+  },
+  {
+    "name": "f03-zh-TW-1440-saved-run-pending",
+    "at": "2026-11-18T09:17:30.633Z",
+    "before": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [],
+      "lang": "zh-Hant",
+      "statuses": [
+        {
+          "busy": "true",
+          "label": "正在載入歷史專案比較",
+          "role": "status",
+          "text": ""
+        }
+      ],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_2586d94a-2e96-43f5-899c-b74c1da8e43d&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollWidth": 1440,
+        "width": 1440
+      }
+    },
+    "after": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [],
+      "lang": "zh-Hant",
+      "statuses": [
+        {
+          "busy": "true",
+          "label": "正在載入歷史專案比較",
+          "role": "status",
+          "text": ""
+        }
+      ],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_2586d94a-2e96-43f5-899c-b74c1da8e43d&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollWidth": 1440,
+        "width": 1440
+      }
+    },
+    "actualLoadingBefore": [
+      {
+        "busy": "true",
+        "label": "正在載入歷史專案比較",
+        "role": "status",
+        "text": ""
+      }
+    ],
+    "artificialDatabaseReadDelay": true,
+    "notPerformanceSample": true
+  },
+  {
+    "name": "f03-zh-TW-768-saved-run-pending",
+    "at": "2026-11-18T09:17:31.054Z",
+    "before": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [],
+      "lang": "zh-Hant",
+      "statuses": [
+        {
+          "busy": "true",
+          "label": "正在載入歷史專案比較",
+          "role": "status",
+          "text": ""
+        }
+      ],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_2586d94a-2e96-43f5-899c-b74c1da8e43d&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollWidth": 768,
+        "width": 768
+      }
+    },
+    "after": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [],
+      "lang": "zh-Hant",
+      "statuses": [
+        {
+          "busy": "true",
+          "label": "正在載入歷史專案比較",
+          "role": "status",
+          "text": ""
+        }
+      ],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_2586d94a-2e96-43f5-899c-b74c1da8e43d&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollWidth": 768,
+        "width": 768
+      }
+    },
+    "actualLoadingBefore": [
+      {
+        "busy": "true",
+        "label": "正在載入歷史專案比較",
+        "role": "status",
+        "text": ""
+      }
+    ],
+    "artificialDatabaseReadDelay": true,
+    "notPerformanceSample": true
+  },
+  {
+    "name": "f03-zh-TW-390-saved-run-pending",
+    "at": "2026-11-18T09:17:31.554Z",
+    "before": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [],
+      "lang": "zh-Hant",
+      "statuses": [
+        {
+          "busy": "true",
+          "label": "正在載入歷史專案比較",
+          "role": "status",
+          "text": ""
+        }
+      ],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_2586d94a-2e96-43f5-899c-b74c1da8e43d&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollWidth": 390,
+        "width": 390
+      }
+    },
+    "after": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [],
+      "lang": "zh-Hant",
+      "statuses": [
+        {
+          "busy": "true",
+          "label": "正在載入歷史專案比較",
+          "role": "status",
+          "text": ""
+        }
+      ],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_2586d94a-2e96-43f5-899c-b74c1da8e43d&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollWidth": 390,
+        "width": 390
+      }
+    },
+    "actualLoadingBefore": [
+      {
+        "busy": "true",
+        "label": "正在載入歷史專案比較",
+        "role": "status",
+        "text": ""
+      }
+    ],
+    "artificialDatabaseReadDelay": true,
+    "notPerformanceSample": true
+  },
+  {
+    "name": "f03-zh-TW-320-saved-run-pending",
+    "at": "2026-11-18T09:17:31.903Z",
+    "before": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [],
+      "lang": "zh-Hant",
+      "statuses": [
+        {
+          "busy": "true",
+          "label": "正在載入歷史專案比較",
+          "role": "status",
+          "text": ""
+        }
+      ],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_2586d94a-2e96-43f5-899c-b74c1da8e43d&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 1,
+        "height": 740,
+        "scrollWidth": 320,
+        "width": 320
+      }
+    },
+    "after": {
+      "checks": [],
+      "focus": {
+        "id": "",
+        "tag": "BODY",
+        "text": "BODY"
+      },
+      "headings": [],
+      "lang": "zh-Hant",
+      "statuses": [
+        {
+          "busy": "true",
+          "label": "正在載入歷史專案比較",
+          "role": "status",
+          "text": ""
+        }
+      ],
+      "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_2586d94a-2e96-43f5-899c-b74c1da8e43d&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "viewport": {
+        "dpr": 1,
+        "height": 740,
+        "scrollWidth": 320,
+        "width": 320
+      }
+    },
+    "actualLoadingBefore": [
+      {
+        "busy": "true",
+        "label": "正在載入歷史專案比較",
+        "role": "status",
+        "text": ""
+      }
+    ],
+    "artificialDatabaseReadDelay": true,
+    "notPerformanceSample": true
+  }
+]

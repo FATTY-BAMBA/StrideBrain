@@ -1,0 +1,110 @@
+[
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 120.390625,
+      "x": 16,
+      "y": 201.6015625
+    },
+    "tag": "BUTTON",
+    "text": "關閉資料依據",
+    "trigger": null,
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 48.3984375,
+      "y": 278.359375
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceCandidate\",\"PRJ-NEIHU-021\"],[\"evidenceFactor\",\"SCOPE_OVERLAP\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"e557a44e941d0ab0bd2abe03\"]]]",
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 48.3984375,
+      "y": 654.4140625
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceCandidate\",\"PRJ-NEIHU-021\"],[\"evidenceFactor\",\"SCOPE_OVERLAP\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"a6032b0c765ae62ba7846c56\"]]]",
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 48.3984375,
+      "y": 101.859375
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceCandidate\",\"PRJ-NEIHU-021\"],[\"evidenceFactor\",\"SCOPE_OVERLAP\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"e557a44e941d0ab0bd2abe03\"]]]",
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 120.390625,
+      "x": 16,
+      "y": 201.6015625
+    },
+    "tag": "BUTTON",
+    "text": "關閉資料依據",
+    "trigger": null,
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 48.3984375,
+      "y": 654.4140625
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceCandidate\",\"PRJ-NEIHU-021\"],[\"evidenceFactor\",\"SCOPE_OVERLAP\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"a6032b0c765ae62ba7846c56\"]]]",
+    "viewport": [
+      320,
+      740
+    ]
+  }
+]

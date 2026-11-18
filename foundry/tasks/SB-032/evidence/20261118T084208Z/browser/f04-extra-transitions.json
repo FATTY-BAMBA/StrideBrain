@@ -1,0 +1,518 @@
+[
+  {
+    "locale": "en",
+    "set": "a",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_4d62f011-57c9-4112-9dbf-be57b75958a0&selected=PRJ-NEIHU-021",
+    "checks": [
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "set": "ab",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00468dcc-d6c5-4c54-8021-d3faf9eda95a&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018",
+    "checks": [
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "set": "ac",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_55c01085-78dd-4643-a792-87af920605e7&selected=PRJ-NEIHU-021%2CPRJ-NANJING-023",
+    "checks": [
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "set": "abc",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_bf1aa962-10ee-4928-bb3c-e7844d4e6daf&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "checks": [
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "set": "def",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_fe4774d9-82bc-4280-84a9-326939e684ee&selected=PRJ-DAAN-016%2CPRJ-SONGSHAN-020%2CPRJ-BANQIAO-015",
+    "checks": [
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "set": "abc-restored",
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "checks": [
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      }
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "set": "a",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_2d364976-5741-4d66-8e73-756bf7208886&selected=PRJ-NEIHU-021",
+    "checks": [
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      }
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "set": "ab",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_c6f754c8-cee9-4fe4-a793-70c822ed5d41&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018",
+    "checks": [
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      }
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "set": "ac",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_62bcd1b2-c61a-451c-9537-5efcc8b5a033&selected=PRJ-NEIHU-021%2CPRJ-NANJING-023",
+    "checks": [
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      }
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "set": "abc",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_e813faa4-3257-4b51-8267-c3f93364c1bf&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "checks": [
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      }
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "set": "def",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_d525fe72-33ee-4d50-a0f4-764da998bef1&selected=PRJ-DAAN-016%2CPRJ-SONGSHAN-020%2CPRJ-BANQIAO-015",
+    "checks": [
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      }
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "set": "abc-restored",
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "checks": [
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      }
+    ]
+  }
+]

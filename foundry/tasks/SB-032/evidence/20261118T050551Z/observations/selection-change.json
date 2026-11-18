@@ -1,0 +1,13 @@
+{
+  "before": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_879e4d9e-011f-42e2-8e73-7ed5af894e08&economics=econrun_8108b08c-af49-4c1a-a749-82f8497b25fb&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+  "changed": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_879e4d9e-011f-42e2-8e73-7ed5af894e08&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-DAAN-016&outcome=FAILED&requestId=044cf428-9747-47d7-b618-c09162460d31",
+  "restored": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_879e4d9e-011f-42e2-8e73-7ed5af894e08&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&outcome=FAILED&requestId=ae51fb26-3d4c-49b7-90e7-404991257446",
+  "sameRankingRun": true,
+  "localePreservedSelectedSet": true,
+  "result": "FAIL",
+  "changedOutcome": "FAILED",
+  "restoredOutcome": "FAILED",
+  "newSuccessfulEconomicsResults": 0,
+  "priorEconomicsIdRetainedInOriginalRoute": true,
+  "qualification": "Selection controls and column set changed, but both update requests failed; neither saved a new economics result. This is not a successful enrichment or restore. Original URLs retained."
+}

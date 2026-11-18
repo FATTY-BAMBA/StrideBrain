@@ -1,0 +1,41 @@
+{
+  "runId": "20261118T084208Z",
+  "baselineHead": "1bde2114d010c694d017ba2b4116ceffab3569e1",
+  "branch": "build/sb-032-stage9-quality-hardening",
+  "historicalEvidencePreserved": 1150,
+  "preexistingChanges": "Four finalized QA task records only; preserved privately before update",
+  "repairScope": [
+    "S9-F02",
+    "S9-F03",
+    "S9-F04"
+  ],
+  "planReview": "PASS_BEFORE_IMPLEMENTATION",
+  "productEditsStarted": true,
+  "sourceReview": "PASS",
+  "schemaChange": "Necessary independently approved forward migration 0009; historical migrations unchanged",
+  "priorRunOutcome": "20261118T050551Z FAIL/REVISE retained unchanged",
+  "testedHead": "4628fb759c8bac23cf92eb15992259fb366a8d65",
+  "BUILD_ID": "jZBGrkhs4Ok9XriINHgub",
+  "sourceMatchesCommittedRepair": true,
+  "productionBuild": "PASS",
+  "productionAudit": "0 vulnerabilities",
+  "fullTests": {
+    "tests": 643,
+    "files": 70,
+    "result": "PASS"
+  },
+  "targetedTests": {
+    "tests": 67,
+    "files": 4,
+    "result": "PASS"
+  },
+  "postgresAdversarial": {
+    "tests": 93,
+    "result": "PASS"
+  },
+  "localization": {
+    "tests": 37,
+    "files": 5,
+    "result": "PASS"
+  }
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 141.7109375,
+      "x": 606.2890625,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "Close evidence",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 341.3984375,
+      "y": 493.0859375
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"5c2d3a1a3bd29cd3954b2c89\"]]]",
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 341.3984375,
+      "y": 493.234375
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"13f2e9ee34cc733d5eeb99c9\"]]]",
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 341.3984375,
+      "y": 493.0859375
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"5c2d3a1a3bd29cd3954b2c89\"]]]",
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 141.7109375,
+      "x": 606.2890625,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "Close evidence",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 341.3984375,
+      "y": 934.4609375
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"ec492fd91e73dbff2e8d0180\"]]]",
+    "viewport": [
+      768,
+      1024
+    ]
+  }
+]

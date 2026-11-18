@@ -1,0 +1,19 @@
+{
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "BODY"
+  },
+  "mainText": "總覽\n比較\n商務資料\n資料依據\n行動事項\n內部審查事項\n\n信義旗艦店裝修\n\n開啟已儲存回執以檢視詳情，或返回來源比較。\n\n待處理\n確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料\n承辦人\n林美玲\n到期日\n2026-11-26\n開啟回執",
+  "overflow": false,
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_f5a9eae3-3472-4fcf-a310-a9abeb6ad0a3&economics=econrun_ddf16e38-6b64-4b8a-9c42-3359b478430c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  },
+  "at": "2026-11-18T05:35:10.311Z",
+  "browser": "Actual Google Chrome on macOS",
+  "persona": "Synthetic Mei",
+  "screenshot": "screenshots/zh-1440-project-actions.jpg"
+}

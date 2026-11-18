@@ -1,0 +1,48 @@
+
+> stridebrain@0.1.0 test
+> vitest run tests/comparison-experience/selection-lineage-postgres.test.ts
+
+
+ RUN  v4.1.10 [REDACTED_PRIVATE_VALUE]
+
+stdout | tests/comparison-experience/selection-lineage-postgres.test.ts > Stage9 real PostgreSQL selection lineage and populated upgrade > persists and reopens 'ABC→AB' with exact evidence/proposal lineage
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"7d7c9e85-3e1a-405c-90f5-a7176410fdbd","outcome":"PROPOSAL_UNAVAILABLE"}
+
+stdout | tests/comparison-experience/selection-lineage-postgres.test.ts > Stage9 real PostgreSQL selection lineage and populated upgrade > persists and reopens 'AB→AC' with exact evidence/proposal lineage
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"ae903732-a071-4829-8b45-5c5ccd37a42f","outcome":"PROPOSAL_UNAVAILABLE"}
+
+stdout | tests/comparison-experience/selection-lineage-postgres.test.ts > Stage9 real PostgreSQL selection lineage and populated upgrade > persists and reopens 'one' with exact evidence/proposal lineage
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"7d6dd233-2b4c-4f8a-afcf-9302b8d956d9","outcome":"PROPOSAL_UNAVAILABLE"}
+
+stdout | tests/comparison-experience/selection-lineage-postgres.test.ts > Stage9 real PostgreSQL selection lineage and populated upgrade > persists and reopens 'ABC→AB→ABC intermediate' with exact evidence/proposal lineage
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"c9a4c202-4972-488b-8af8-50b678ebea8d","outcome":"PROPOSAL_UNAVAILABLE"}
+
+ ❯ tests/comparison-experience/selection-lineage-postgres.test.ts (16 tests | 4 failed) 7541ms
+     × persists and reopens 'ABC→AB' with exact evidence/proposal lineage 469ms
+     × persists and reopens 'AB→AC' with exact evidence/proposal lineage 432ms
+     × persists and reopens 'one' with exact evidence/proposal lineage 330ms
+     × persists and reopens 'ABC→AB→ABC intermediate' with exact evidence/proposal lineage 322ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/comparison-experience/selection-lineage-postgres.test.ts > Stage9 real PostgreSQL selection lineage and populated upgrade > persists and reopens 'ABC→AB' with exact evidence/proposal lineage
+ FAIL  tests/comparison-experience/selection-lineage-postgres.test.ts > Stage9 real PostgreSQL selection lineage and populated upgrade > persists and reopens 'AB→AC' with exact evidence/proposal lineage
+ FAIL  tests/comparison-experience/selection-lineage-postgres.test.ts > Stage9 real PostgreSQL selection lineage and populated upgrade > persists and reopens 'one' with exact evidence/proposal lineage
+ FAIL  tests/comparison-experience/selection-lineage-postgres.test.ts > Stage9 real PostgreSQL selection lineage and populated upgrade > persists and reopens 'ABC→AB→ABC intermediate' with exact evidence/proposal lineage
+AssertionError: expected 'PROPOSAL_UNAVAILABLE' to be 'PREPARED' // Object.is equality
+
+Expected: "PREPARED"
+Received: "PROPOSAL_UNAVAILABLE"
+
+ ❯ verifyLineage tests/comparison-experience/selection-lineage-postgres.test.ts:45:190
+
+ ❯ tests/comparison-experience/selection-lineage-postgres.test.ts:68:250
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 12 passed (16)
+   Start at  16:54:52
+   Duration  7.93s (transform 217ms, setup 0ms, import 304ms, tests 7.54s, environment 0ms)
+

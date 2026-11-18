@@ -1,0 +1,946 @@
+{
+  "count": 106,
+  "scope": "Scenario mapping with conservative requirement-level status; no PASS from aggregate suite alone.",
+  "items": [
+    {
+      "id": "A11Y-001",
+      "scenarios": [
+        "S9-07",
+        "S9-08",
+        "S9-10"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "A11Y-002",
+      "scenarios": [
+        "S9-07",
+        "S9-08",
+        "S9-12"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "A11Y-003",
+      "scenarios": [
+        "S9-07"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "A11Y-004",
+      "scenarios": [
+        "S9-07"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "A11Y-005",
+      "scenarios": [
+        "S9-07"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "A11Y-006",
+      "scenarios": [
+        "S9-07",
+        "S9-08",
+        "S9-10"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "A11Y-007",
+      "scenarios": [
+        "S9-07",
+        "S9-09",
+        "S9-10",
+        "S9-11"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "A11Y-008",
+      "scenarios": [
+        "S9-07",
+        "S9-12"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "A11Y-009",
+      "scenarios": [
+        "S9-07",
+        "S9-09",
+        "S9-11"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "A11Y-010",
+      "scenarios": [
+        "S9-07",
+        "S9-08",
+        "S9-10",
+        "S9-12"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "ACT-001",
+      "scenarios": [
+        "S9-05"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "ACT-002",
+      "scenarios": [
+        "S9-05",
+        "S9-17"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "ACT-003",
+      "scenarios": [
+        "S9-06"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "ACT-004",
+      "scenarios": [
+        "S9-06",
+        "S9-15",
+        "S9-21"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "ACT-005",
+      "scenarios": [
+        "S9-06",
+        "S9-15"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "ACT-006",
+      "scenarios": [
+        "S9-11",
+        "S9-15",
+        "S9-17"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "ACT-007",
+      "scenarios": [
+        "S9-11",
+        "S9-15"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "ACT-008",
+      "scenarios": [
+        "S9-11",
+        "S9-15"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "ACT-009",
+      "scenarios": [
+        "S9-11",
+        "S9-15"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "ACT-010",
+      "scenarios": [
+        "S9-15",
+        "S9-21"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "ACT-011",
+      "scenarios": [
+        "S9-06"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "ACT-012",
+      "scenarios": [
+        "S9-06",
+        "S9-09",
+        "S9-11",
+        "S9-17"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "AUTH-001",
+      "scenarios": [
+        "S9-04",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "AUTH-002",
+      "scenarios": [
+        "S9-04",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "AUTH-003",
+      "scenarios": [
+        "S9-04",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "AUTH-004",
+      "scenarios": [
+        "S9-04",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "AUTH-005",
+      "scenarios": [
+        "S9-04",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "AUTH-006",
+      "scenarios": [
+        "S9-04",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "AUTH-007",
+      "scenarios": [
+        "S9-04",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "AUTH-008",
+      "scenarios": [
+        "S9-04",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "AUTH-009",
+      "scenarios": [
+        "S9-04",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "AUTH-010",
+      "scenarios": [
+        "S9-04",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "AUTH-011",
+      "scenarios": [
+        "S9-04",
+        "S9-14",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "AUTH-012",
+      "scenarios": [
+        "S9-04",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "CPI-001",
+      "scenarios": [
+        "S9-03"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "CPI-002",
+      "scenarios": [
+        "S9-03"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "CPI-003",
+      "scenarios": [
+        "S9-03"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "CPI-004",
+      "scenarios": [
+        "S9-03"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "CPI-005",
+      "scenarios": [
+        "S9-03"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "CPI-006",
+      "scenarios": [
+        "S9-03"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "CPI-007",
+      "scenarios": [
+        "S9-03"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "CPI-008",
+      "scenarios": [
+        "S9-03"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "CPI-009",
+      "scenarios": [
+        "S9-03"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "CPI-010",
+      "scenarios": [
+        "S9-03"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "EVD-001",
+      "scenarios": [
+        "S9-04"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "EVD-002",
+      "scenarios": [
+        "S9-04"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "EVD-003",
+      "scenarios": [
+        "S9-04"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "EVD-004",
+      "scenarios": [
+        "S9-04"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "EVD-005",
+      "scenarios": [
+        "S9-04"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "EVD-006",
+      "scenarios": [
+        "S9-04"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "EVD-007",
+      "scenarios": [
+        "S9-04"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "EVD-008",
+      "scenarios": [
+        "S9-04",
+        "S9-14"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "EVD-009",
+      "scenarios": [
+        "S9-04"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "EVD-010",
+      "scenarios": [
+        "S9-04"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "EVD-011",
+      "scenarios": [
+        "S9-04",
+        "S9-14"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "EVD-012",
+      "scenarios": [
+        "S9-04",
+        "S9-14"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "I18N-001",
+      "scenarios": [
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "I18N-002",
+      "scenarios": [
+        "S9-02",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "I18N-003",
+      "scenarios": [
+        "S9-12",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "I18N-004",
+      "scenarios": [
+        "S9-12",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "I18N-005",
+      "scenarios": [
+        "S9-02",
+        "S9-12",
+        "S9-17",
+        "S9-18"
+      ],
+      "status": "FAIL",
+      "findings": [
+        "S9-F02",
+        "S9-F03"
+      ]
+    },
+    {
+      "id": "I18N-006",
+      "scenarios": [
+        "S9-05",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "I18N-007",
+      "scenarios": [
+        "S9-05",
+        "S9-10",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "I18N-008",
+      "scenarios": [
+        "S9-10",
+        "S9-12",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "I18N-009",
+      "scenarios": [
+        "S9-12",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "PUX-001",
+      "scenarios": [
+        "S9-02",
+        "S9-18"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "PUX-002",
+      "scenarios": [
+        "S9-02"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "PUX-003",
+      "scenarios": [
+        "S9-02",
+        "S9-12"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "PUX-004",
+      "scenarios": [
+        "S9-02",
+        "S9-12"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "PUX-005",
+      "scenarios": [
+        "S9-02",
+        "S9-12"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "PUX-006",
+      "scenarios": [
+        "S9-02",
+        "S9-03",
+        "S9-12"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "PUX-007",
+      "scenarios": [
+        "S9-02",
+        "S9-03",
+        "S9-12"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "PUX-008",
+      "scenarios": [
+        "S9-02",
+        "S9-03",
+        "S9-12"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "PUX-009",
+      "scenarios": [
+        "S9-02",
+        "S9-04",
+        "S9-12"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "PUX-010",
+      "scenarios": [
+        "S9-02",
+        "S9-04",
+        "S9-12"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "PUX-011",
+      "scenarios": [
+        "S9-02",
+        "S9-04",
+        "S9-12"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "PUX-012",
+      "scenarios": [
+        "S9-02",
+        "S9-04",
+        "S9-12"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "PUX-013",
+      "scenarios": [
+        "S9-02",
+        "S9-12",
+        "S9-15"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "PUX-014",
+      "scenarios": [
+        "S9-02",
+        "S9-06",
+        "S9-12"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "PUX-015",
+      "scenarios": [
+        "S9-02"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "REL-001",
+      "scenarios": [
+        "S9-15"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "REL-002",
+      "scenarios": [
+        "S9-15"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "REL-003",
+      "scenarios": [
+        "S9-15"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "REL-004",
+      "scenarios": [
+        "S9-15"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "REL-005",
+      "scenarios": [
+        "S9-05",
+        "S9-15"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "REL-006",
+      "scenarios": [
+        "S9-15"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "REL-007",
+      "scenarios": [
+        "S9-06",
+        "S9-15"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "REL-008",
+      "scenarios": [
+        "S9-01",
+        "S9-15",
+        "S9-21"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "REL-009",
+      "scenarios": [
+        "S9-01",
+        "S9-15",
+        "S9-21"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "REL-010",
+      "scenarios": [
+        "S9-01",
+        "S9-15",
+        "S9-19"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "SEC-001",
+      "scenarios": [
+        "S9-14"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "SEC-002",
+      "scenarios": [
+        "S9-14"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "SEC-003",
+      "scenarios": [
+        "S9-14"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "SEC-004",
+      "scenarios": [
+        "S9-14"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "SEC-005",
+      "scenarios": [
+        "S9-14"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "SEC-006",
+      "scenarios": [
+        "S9-14"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "SEC-007",
+      "scenarios": [
+        "S9-14"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "SEC-008",
+      "scenarios": [
+        "S9-14"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "SEC-009",
+      "scenarios": [
+        "S9-14"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "SEC-010",
+      "scenarios": [
+        "S9-14"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "SEC-011",
+      "scenarios": [
+        "S9-14"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "SEC-012",
+      "scenarios": [
+        "S9-14"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "SEC-013",
+      "scenarios": [
+        "S9-14",
+        "S9-15"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "SEC-014",
+      "scenarios": [
+        "S9-14"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "SEC-015",
+      "scenarios": [
+        "S9-14",
+        "S9-19"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    },
+    {
+      "id": "SEC-016",
+      "scenarios": [
+        "S9-14",
+        "S9-19"
+      ],
+      "status": "NOT_VERIFIED_COMPLETE_REQUIREMENT",
+      "findings": []
+    }
+  ]
+}

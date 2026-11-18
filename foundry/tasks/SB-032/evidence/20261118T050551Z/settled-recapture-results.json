@@ -1,0 +1,28 @@
+[
+  {
+    "file": "screenshots/recapture-en-review-390.jpg",
+    "requested": [
+      390,
+      844
+    ],
+    "actualPixels": [
+      390,
+      844
+    ],
+    "result": "PASS",
+    "visualReview": "Complete review viewport captured; close/header and bounded edit content visible."
+  },
+  {
+    "file": "screenshots/recapture-en-review-768.jpg",
+    "requested": [
+      768,
+      1024
+    ],
+    "actualPixels": [
+      768,
+      1024
+    ],
+    "result": "PASS",
+    "visualReview": "Complete review viewport captured; close/header and bounded edit content visible."
+  }
+]

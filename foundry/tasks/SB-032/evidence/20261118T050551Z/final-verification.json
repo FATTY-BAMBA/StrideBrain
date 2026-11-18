@@ -1,0 +1,22 @@
+{
+  "at": "2026-11-18T06:07:11.867326+00:00",
+  "result": "PASS",
+  "scope": "Evidence consistency, references, JSON/JSONL, four changed task files, source/history preservation, eight draft/receipt/error cases, image qualifications and recorded cleanup/sanitization. Not a product acceptance PASS.",
+  "currentState": "NEEDS_REVISION",
+  "verdict": "REVISE",
+  "head": "1bde2114d010c694d017ba2b4116ceffab3569e1",
+  "scenarioCounts": {
+    "PASS": 1,
+    "FAIL": 5,
+    "PARTIAL": 12,
+    "NOT_RUN": 3,
+    "BLOCKED": 1
+  },
+  "images": 174,
+  "pixelCSSMismatchesQualified": 14,
+  "recordedManualSpeechPass": false,
+  "commitCreated": false,
+  "pushPerformed": false,
+  "mergePerformed": false,
+  "deploymentPerformed": false
+}

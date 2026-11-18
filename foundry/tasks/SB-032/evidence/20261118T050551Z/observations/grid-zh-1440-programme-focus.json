@@ -1,0 +1,110 @@
+[
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 120.390625,
+      "x": 1299.609375,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "關閉資料依據",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 1013.3984375,
+      "y": 431.2109375
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"5830ae8df7dabbf0c93ec341\"]]]",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 1013.3984375,
+      "y": 431.1796875
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"21ce392a972304da9c1c2ffa\"]]]",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 1013.3984375,
+      "y": 431.2109375
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"5830ae8df7dabbf0c93ec341\"]]]",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 120.390625,
+      "x": 1299.609375,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "關閉資料依據",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 1013.3984375,
+      "y": 810.421875
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"ec0663c6050b4b7ded348de5\"]]]",
+    "viewport": [
+      1440,
+      900
+    ]
+  }
+]

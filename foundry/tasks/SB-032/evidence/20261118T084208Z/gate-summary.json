@@ -1,0 +1,34 @@
+{
+  "runId": "20261118T084208Z",
+  "result": "PASS",
+  "targetedTests": {
+    "passed": 67,
+    "files": 4
+  },
+  "fullSuite": {
+    "passed": 643,
+    "files": 70
+  },
+  "localization": {
+    "passed": 37,
+    "files": 5
+  },
+  "postgresAdversarial": {
+    "passed": 93,
+    "includedInFullSuiteAlso": true
+  },
+  "format": "PASS",
+  "lint": "PASS_ONE_PREEXISTING_PRISMA_CONFIG_WARNING",
+  "strictTypeScript": "PASS",
+  "prismaValidate": "PASS",
+  "prismaGenerate": "PASS",
+  "cleanMigrations": 9,
+  "seedRounds": 2,
+  "sqlVerificationFilesPerRound": 8,
+  "populatedUpgrade": "PASS",
+  "negativeMigrationRollbackCases": 7,
+  "productionBuild": "PASS",
+  "productionAuditVulnerabilities": 0,
+  "failedDevelopmentIterations": "Preserved in command outcomes; superseded log pointers are explicitly null, not presented as passing attempts.",
+  "testCountsAreNotAdditive": "Targeted, localization and adversarial tests are included in 643 unique full-suite tests."
+}

@@ -1,0 +1,122 @@
+- link "跳至主要內容":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: PRIMESTRIDE AI
+  - navigation "專案":
+    - link "首頁":
+      - /url: /zh-TW
+      - generic: "01"
+      - generic: 首頁
+    - link "專案":
+      - /url: /zh-TW/projects
+      - generic: "02"
+      - generic: 專案
+    - link "知識":
+      - /url: /zh-TW/knowledge
+      - generic: "03"
+      - generic: 知識
+    - link "StrideBrain":
+      - /url: /zh-TW/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "設定":
+      - /url: /zh-TW/settings
+      - generic: "05"
+      - generic: 設定
+- banner:
+  - generic: ●
+  - text: 受控虛構資料示範
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects/PRJ-XINYI-026
+    - generic: /
+    - link "EN":
+      - /url: /en/projects/PRJ-XINYI-026
+- main:
+  - navigation "專案工作區導覽":
+    - link "總覽":
+      - /url: /zh-TW/projects/PRJ-XINYI-026
+    - link "比較":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/compare
+    - link "商務資料":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/commercial
+    - link "資料依據":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/evidence
+    - link "行動事項":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/actions
+  - paragraph: 專案智慧工作區
+  - generic: READY
+  - heading "信義旗艦店裝修" [level=1]
+  - paragraph: 星序零售台灣
+  - generic: "地點: 臺北市信義區"
+  - generic: "面積: 640 m²"
+  - generic: "工期: 16 週"
+  - generic: "專案負責人: 林美玲"
+  - paragraph: 此專案有需要注意的資料狀態。
+  - complementary:
+    - paragraph: 類似專案智慧
+    - strong: 我們以前做過類似的案子嗎？
+    - paragraph: 尋找最接近的歷史專案、理解相似原因，並用可追溯的歷史依據比較目前報價。
+    - link "尋找類似歷史專案":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/compare
+    - generic: 禾序空間設計虛構示範資料
+  - article:
+    - heading "目前商務狀況" [level=2]
+    - paragraph: 未稅報價
+    - generic: 報價 · 版本 3 · 已人工檢視
+    - strong: $16,480,000
+    - paragraph: 預估直接成本
+    - generic: 預估直接成本 · 版本 1 · 已人工檢視
+    - strong: $12,650,000
+    - paragraph: 已核對實際成本
+    - paragraph: 目前無法使用
+  - article:
+    - heading "資料依據狀態" [level=2]
+    - generic: GOOD
+    - list:
+      - generic: 可存取資料來源
+      - strong: "31"
+      - generic: 可存取文件
+      - strong: "4"
+      - generic: 過期資料
+      - strong: "0"
+      - generic: 待處理衝突
+      - strong: "0"
+  - article:
+    - heading "專案脈絡" [level=2]
+    - list:
+      - generic: 工作範圍分類
+      - strong: "7"
+      - generic: 供應商
+      - strong: "3"
+      - generic: 材料
+      - strong: "3"
+      - generic: 未完成事項
+      - strong: "2"
+  - region "待處理內部審查事項":
+    - heading "待處理內部審查事項" [level=2]
+    - list:
+      - link "確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料":
+        - /url: /zh-TW/projects/PRJ-XINYI-026/actions?action=action_bba3dadf-f4b1-4b2a-81c3-14e205c6a9ce
+      - generic: 2026-11-25
+      - link "確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料":
+        - /url: /zh-TW/projects/PRJ-XINYI-026/actions?action=action_29b8b0f1-61ab-49e9-8086-7d6e613298ae
+      - generic: 2026-11-26
+    - link "查看專案事項":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/actions
+  - region "在此專案中詢問 StrideBrain":
+    - heading "在此專案中詢問 StrideBrain" [level=2]
+    - link "我們以前做過類似的案子嗎？ 搜尋已授權的歷史專案、說明最接近的原因，並用可信任的歷史依據比較目前報價。":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/compare
+      - strong: 我們以前做過類似的案子嗎？
+      - generic: 搜尋已授權的歷史專案、說明最接近的原因，並用可信任的歷史依據比較目前報價。
+    - strong: 把目前報價和相關已完工專案比較一下。
+    - generic: 此能力將於後續切片啟用
+    - strong: 這些數字是從哪裡來的？
+    - generic: 此能力將於後續切片啟用
+- contentinfo:
+  - generic: 僅使用虛構示範資料 · 無真實客戶資料
+  - generic: 尚未切換正式示範網域
+- alert

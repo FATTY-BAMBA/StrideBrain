@@ -1,0 +1,17 @@
+{
+  "runId": "20261118T050551Z",
+  "head": "1bde2114d010c694d017ba2b4116ceffab3569e1",
+  "branch": "build/sb-032-stage9-quality-hardening",
+  "sourceManifestSha256": "dcbbce782386724b2171b4f1e968d7cc9c1588a6a733aa4e5b242211a951593d",
+  "manifestFiles": 868,
+  "trackedWorktreeCleanBeforeRun": true,
+  "CI": {
+    "runId": 44240367670,
+    "result": "PASS"
+  },
+  "productSourceEqualsValidatedRepair": "e8770a02f39273307334674bce76fc19815b8802",
+  "historicalEvidenceFilesPreserved": 485,
+  "nodeVersion": "v24.22.3",
+  "runtime": "New isolated database and credentials; existing locked dependencies/toolchain reused; fresh production build.",
+  "buildId": "D-m5LLqTQcus07rZUtxWj"
+}

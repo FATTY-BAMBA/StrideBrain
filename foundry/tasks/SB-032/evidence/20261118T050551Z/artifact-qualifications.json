@@ -1,0 +1,200 @@
+{
+  "status": "PRELIMINARY_ARTIFACTS_RETAINED_NOT_ACCEPTANCE",
+  "items": [
+    {
+      "files": [
+        "observations/m06-server-grid.json",
+        "observations/m06-server-grid-settled.json"
+      ],
+      "reason": "Early capture helpers retained their original tab binding; claimed locale/size cannot be inferred from filename. Superseded by m06-server-grid-corrected.json and *-server-error-corrected captures."
+    },
+    {
+      "files": [
+        "observations/m06-en-evidence-unavailable.json",
+        "observations/m06-zh-evidence-unavailable.json",
+        "screenshots/en-desktop-evidence-unavailable.jpg",
+        "screenshots/zh-390-evidence-unavailable.jpg"
+      ],
+      "reason": "Authority change produced STALE_COMPARISON, confirmed by app request log. These do not prove EVIDENCE_UNAVAILABLE. EN capture may refer to original Chinese tab; do not use it for EN locale acceptance."
+    },
+    {
+      "files": [
+        "observations/en-1440-server-error-verified.json",
+        "screenshots/en-1440-server-error-verified.jpg"
+      ],
+      "reason": "Preliminary capture helper observed original tab. Corrected explicit-tab captures supersede it."
+    },
+    {
+      "files": [
+        "observations/zh-1440-programme-locator.json"
+      ],
+      "reason": "Premature transition capture; use zh-1440-programme-locator-settled and grid programme captures."
+    },
+    {
+      "files": [
+        "screenshots/zh-selection-changed-daan.jpg"
+      ],
+      "reason": "Loading transition only; not settled failed selection visual proof. Use EN changed-selection and zh canonical-restoration captures/routes plus final catalog."
+    }
+  ],
+  "dateInput": "Automation fill changed native DOM value without committing React route state; native keyboard year/month/day editing committed 2026-11-26 and survived navigation. Not classified as product failure.",
+  "timing": "Hero elapsed seconds are scripted execution time, not moderated five-second comprehension or browser performance p95.",
+  "longDraftNaming": "Long-draft captures use approved CHECK title and VALIDATE_HISTORY rationale, not a certification that every locale rationale is the longest possible.",
+  "dimensionMismatches": [
+    {
+      "file": "screenshots/grid-en-1440-projects.jpg",
+      "pixels": [
+        389,
+        900
+      ],
+      "CSS": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "screenshots/m01-en-claim-open.jpg",
+      "pixels": [
+        1440,
+        864
+      ],
+      "CSS": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "screenshots/m01-en-dialog.jpg",
+      "pixels": [
+        1440,
+        864
+      ],
+      "CSS": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "screenshots/m01-en-evidence-close.jpg",
+      "pixels": [
+        1440,
+        864
+      ],
+      "CSS": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "screenshots/m01-en-receipt.jpg",
+      "pixels": [
+        1440,
+        864
+      ],
+      "CSS": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "screenshots/m01-en-source-close.jpg",
+      "pixels": [
+        1440,
+        864
+      ],
+      "CSS": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "screenshots/m01-en-source-open.jpg",
+      "pixels": [
+        1440,
+        864
+      ],
+      "CSS": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "screenshots/m01-en-validation.jpg",
+      "pixels": [
+        1440,
+        864
+      ],
+      "CSS": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "screenshots/m01-m06-en-access-change.jpg",
+      "pixels": [
+        1440,
+        864
+      ],
+      "CSS": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "screenshots/m01-zh-receipt.jpg",
+      "pixels": [
+        1440,
+        864
+      ],
+      "CSS": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "screenshots/zh-1440-project-actions.jpg",
+      "pixels": [
+        1440,
+        864
+      ],
+      "CSS": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "screenshots/zh-1440-projects.jpg",
+      "pixels": [
+        1440,
+        864
+      ],
+      "CSS": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "screenshots/zh-1440-receipt-reopened.jpg",
+      "pixels": [
+        1440,
+        864
+      ],
+      "CSS": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "screenshots/zh-1440-workspace.jpg",
+      "pixels": [
+        1440,
+        864
+      ],
+      "CSS": [
+        1440,
+        900
+      ]
+    }
+  ],
+  "dimensionRule": "These 14 captures do not establish exact viewport visual acceptance. DOM/focus observations retain their own scope; no product clipping is inferred. Corrected error grid and requested EN review recaptures have matching pixels/CSS."
+}

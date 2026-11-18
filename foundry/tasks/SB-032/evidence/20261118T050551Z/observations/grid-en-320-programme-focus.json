@@ -1,0 +1,110 @@
+[
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 141.7109375,
+      "x": 16,
+      "y": 226.6015625
+    },
+    "tag": "BUTTON",
+    "text": "Close evidence",
+    "trigger": null,
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 48.3984375,
+      "y": 381.2109375
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"5830ae8df7dabbf0c93ec341\"]]]",
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 48.3984375,
+      "y": 381.3515625
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"21ce392a972304da9c1c2ffa\"]]]",
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 48.3984375,
+      "y": 381.2109375
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"5830ae8df7dabbf0c93ec341\"]]]",
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 141.7109375,
+      "x": 16,
+      "y": 226.6015625
+    },
+    "tag": "BUTTON",
+    "text": "Close evidence",
+    "trigger": null,
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 48.3984375,
+      "y": 654.6328125
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"ec0663c6050b4b7ded348de5\"]]]",
+    "viewport": [
+      320,
+      740
+    ]
+  }
+]

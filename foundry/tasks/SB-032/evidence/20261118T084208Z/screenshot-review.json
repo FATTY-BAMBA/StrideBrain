@@ -1,0 +1,2973 @@
+{
+  "count": 129,
+  "scope": "Image dimensions, metadata and English-character OCR; browser reviewer owns visual acceptance; no human Chinese quality or speech pass inferred.",
+  "screenshots": [
+    {
+      "file": "browser/screenshots/f02-en-1440-health.jpg",
+      "sha256": "36e81c9ad1f0ab739ce9306e4355c044f83b9c272e7622ecd32f6d3dc4eb8a2f",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "7a028a592f93454e58be276d6e97159660ae74f502c4ae736bcc79a7eb247d23"
+    },
+    {
+      "file": "browser/screenshots/f02-en-1440-workspace.jpg",
+      "sha256": "f9934f869cb15e807c4fd1fe896b42e3da25afac502d4e6f9a4bd96fecf4c8ea",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "8f9c657c03b7df6f71d42725ef911f14d18e4187a7dd0cf6b3e6f0a4bd62e128"
+    },
+    {
+      "file": "browser/screenshots/f02-en-320-health.jpg",
+      "sha256": "e68de07a904e9ec9106828bb3090e0494415e25910564aa98f60b3ed8f73df91",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "847b4a51e97270fdfe343d40051db8494f3a96ba6e36507744f723a71ab5f9f7"
+    },
+    {
+      "file": "browser/screenshots/f02-en-320-lower.jpg",
+      "sha256": "87a56b2dc0a81d99105cb10f443977f4bb77e56b60a0e13bc8e54c014c5c9c96",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "6ccb5de362a3f98b3b990dab7f75411d3b23e4ab37ac6840d12914457683a584"
+    },
+    {
+      "file": "browser/screenshots/f02-en-320-workspace.jpg",
+      "sha256": "5497794e3af2c818c2b5607c6c1f13754e86a3ca8ea5d240124e26fa0beafe4b",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "832757d6ae5c2c07a8a0da2ed4fdbb3a11869c02dd85f14169cc4275ff70d88d"
+    },
+    {
+      "file": "browser/screenshots/f02-en-390-health.jpg",
+      "sha256": "dc0b845f80afa089fa3bc202015395c156cd5596b3be3f7933cd94a8447ed07c",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "1797d41813e83d4503dacca46a4e7afb3c7696ab89fe3fae09e23e6cc49c87c1"
+    },
+    {
+      "file": "browser/screenshots/f02-en-390-lower.jpg",
+      "sha256": "4656e6588f65a03693c1eacca420dc788b4a42b30b27b58267dee6f3aed0298f",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "3326d7a8b8590adc61df2939b97079a2aabe5cc40d7d42246b02c97993a467e9"
+    },
+    {
+      "file": "browser/screenshots/f02-en-390-workspace.jpg",
+      "sha256": "882105c38f836af09ec74e45bde8dad318679a409451e826df72dfc4ae992a0a",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "43d1d1125ec13353f272eccda2f63f453bd008e15d11f6a407b57c201b4e524e"
+    },
+    {
+      "file": "browser/screenshots/f02-en-768-health.jpg",
+      "sha256": "bec0ae2da707a683659a467cb0a22c6aa533723f8cc2beffb06d7070c2a397f7",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "1348be407c9acbd0035d338e57cbab55821004a8ca607fa3dfc625e56267b5ea"
+    },
+    {
+      "file": "browser/screenshots/f02-en-768-workspace.jpg",
+      "sha256": "ebe2bb2e5e230b4e0fa48f5b019f2fac68c144e9951986599fdbc9c0a6144862",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "c04998cf4b8b878475d59915cae98ca3ad98444ea00acd44943bab355b50525b"
+    },
+    {
+      "file": "browser/screenshots/f02-zh-TW-1440-health.jpg",
+      "sha256": "e8935ec39af2741697acfe894320ef1398ee28aa6852667f44d15ce987db313f",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "41952224240822198425730bf3cde0e28e1cfb188a018e2c73b3bef261194ed8"
+    },
+    {
+      "file": "browser/screenshots/f02-zh-TW-1440-workspace.jpg",
+      "sha256": "73f075faf140471e3784d6d1bae7cd39513c31ba1de55fd0da8c9b0975793712",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "779ebce544c3d27b47d975561eb476d35e734b0eb410aa73b130488e25834dcc"
+    },
+    {
+      "file": "browser/screenshots/f02-zh-TW-320-health.jpg",
+      "sha256": "ce874165aa48cf4777f170b8431cf3b863a63309c6c8cb61d723fe91804293b3",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "cf4d5331f13f20fbeff7ce0e5154de40586d6292cf31be77cad94a5d0a9962d8"
+    },
+    {
+      "file": "browser/screenshots/f02-zh-TW-320-lower.jpg",
+      "sha256": "abf35a8ffc2a9398dbef408d89c586f29821a53912c38c38160cdd602ff52bb3",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "600eeeaeebba57093f65dc961ce2a3113eb7299f341b860e00fa6f42ab777c16"
+    },
+    {
+      "file": "browser/screenshots/f02-zh-TW-320-workspace.jpg",
+      "sha256": "e262012af16f93143479c12876237ad07053bca58223c50f8e8f9267637d4541",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "073ef2bf3bd235ad6e2fe290dbfeba71a2a7ad6adea0489b176138b17b8a8842"
+    },
+    {
+      "file": "browser/screenshots/f02-zh-TW-390-health.jpg",
+      "sha256": "aaa1c65253b21572606b7933e81aadd003c799de5427b48516f8dfbd17e5c825",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "ce3e21024c9e1f473022ee40eeb7f686ebdf962fde01e97a14ed38a75657efab"
+    },
+    {
+      "file": "browser/screenshots/f02-zh-TW-390-lower.jpg",
+      "sha256": "2ab0c237f4845bffc0114112e2bb174a17c1a5e4e501a51b1671fc79a39b6aa1",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "58000e76842608cb12159aeb9d7f5176dd0ec35dee17ef0aef66c81b915c00e7"
+    },
+    {
+      "file": "browser/screenshots/f02-zh-TW-390-workspace.jpg",
+      "sha256": "fb73acf9e06d547e22161779e593c8b4c9d2d8bff541749ee9f1ea9473bce9b2",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "5cf11c0961465ad6119a72021a5338048657d4e09c69c2793ff8d9cb749d3a86"
+    },
+    {
+      "file": "browser/screenshots/f02-zh-TW-768-health.jpg",
+      "sha256": "bbc885f56d770c7f6867e35e722f153c68461d0ba3a268631122619df46b18aa",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "1606efb45104136ac065d198ce4141da3ac4772865897c56cb65e0b59346f264"
+    },
+    {
+      "file": "browser/screenshots/f02-zh-TW-768-workspace.jpg",
+      "sha256": "fa46be22bb605af196d625abbd381da25d31f60453d9aaa551fb93a61adc13ab",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "9d647d9cb283b9898f59c7df2ee3ca39c1e31611d0d48da1213c96872aaa62e2"
+    },
+    {
+      "file": "browser/screenshots/f03-en-1440-bounded-pending.jpg",
+      "sha256": "918232d7b008b1626338947a624cf369b74a82c48bde785ef2dda10d287190e7",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "43f913b5e1ce4cf9378e196148366cc98b75f02fb8559b6496dd360dce55c48c"
+    },
+    {
+      "file": "browser/screenshots/f03-en-320-bounded-pending.jpg",
+      "sha256": "3914ac0ea684c16ef755df488bb491483be940ca59c27947acef52b3180f05a0",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "e4083280599fd5c699d94a3d9035efc44fb907af5963e4270f6c86c37338e61c"
+    },
+    {
+      "file": "browser/screenshots/f03-en-390-bounded-pending.jpg",
+      "sha256": "31064251803ef70509b5ec8ac9fee687830fbede58086d9a8892779f6840e1cf",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "911bed80d57e3e9dc681f189233454fc0a1fe35d80ea6d141dbee57534a34530"
+    },
+    {
+      "file": "browser/screenshots/f03-en-768-bounded-pending.jpg",
+      "sha256": "e52273bd7c7453143a51f91ebe3d9847781129ffa123a225448ad58b360d6783",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "2361412eeb988993dbd57c9a8fe103b5284581f56c2f3c2fe3cdc2fd80571b66"
+    },
+    {
+      "file": "browser/screenshots/f03-zh-TW-1440-bounded-pending.jpg",
+      "sha256": "cbb44d9c5429bd1f4c5854d582670d2a1dc372e31d32c03da97f7116de0be7ad",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "70aa87313a3a4f2c780dfbea087f6ab6046ce0e4bac6dae8787c2e5f8915c46f"
+    },
+    {
+      "file": "browser/screenshots/f03-zh-TW-1440-saved-run-pending.jpg",
+      "sha256": "38fb0eaf9f94296a9ff6516c83f2d2e2e5ad7716fd787a120384b5179247657c",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "20209652dc8efbdf3037a6324cdec1bb460f883ff22fdce8235e2cab5dd0dbc2"
+    },
+    {
+      "file": "browser/screenshots/f03-zh-TW-320-bounded-pending.jpg",
+      "sha256": "ac370d1f2ce4b9a08f7424f5380015c72040ccf0aa71e190f645052c06de23f3",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "b5daf960377697ae2a260f61c981549e147a0ddeff7fcb80a02ab74739751fb0"
+    },
+    {
+      "file": "browser/screenshots/f03-zh-TW-320-saved-run-pending.jpg",
+      "sha256": "cbf781120ffb748e2c7b43ec4016536ad6e1825448b663c1b11eb66c6a19feac",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "16cf3c3caf0615b86c67a57e32e0a655b13b96425bafb82440a21de162a0a33c"
+    },
+    {
+      "file": "browser/screenshots/f03-zh-TW-390-bounded-pending.jpg",
+      "sha256": "cf0cdbb8028e7846812a0b31024bbebfc2a8f6b315fdbad4c9288b81a640d83b",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "9b625db877b1f0996788d1e1fe4f7f55f5262bf9a88db9163a9e149af78a5240"
+    },
+    {
+      "file": "browser/screenshots/f03-zh-TW-390-saved-run-pending.jpg",
+      "sha256": "953fe528dd26918142fee40d9e4da237e56bc84ca19166ccb2af18e8bdf1a5fd",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "933a933de15325788f0fb0e15e45596986f8d28a06853cd7f6e19b3ae8a6eed6"
+    },
+    {
+      "file": "browser/screenshots/f03-zh-TW-768-bounded-pending.jpg",
+      "sha256": "f4e282c5b1b26839d8cd279cd7a0f1f8bb319507d8bd9e34753e0dff9e79565d",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "8af0f7ac4417c07c5437bbc1eed839cc5c60126f1fec2644aa766274879b1e03"
+    },
+    {
+      "file": "browser/screenshots/f03-zh-TW-768-saved-run-pending.jpg",
+      "sha256": "d0428412ae38e411981576a4a9fd044a6eca9251d0dad884b5fb56b39db6e3c6",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "5b77188389572a2657e870e27105ba8eda34f94192bc036a500217aea9aceccd"
+    },
+    {
+      "file": "browser/screenshots/f03-zh-after-read-lock-settled.jpg",
+      "sha256": "d1d4f5b7ff6eba11c1664ec25f00f7a803538d9ea6e790a2adcbd585d72f662e",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "48a4262f2cb51fb79e6301e72e89fc2646aa2fb574067a2f7986f4d30fea0fc0"
+    },
+    {
+      "file": "browser/screenshots/f04-en-1440-ab.jpg",
+      "sha256": "21af54191e8cebdb313fe8fa3049f7796838307be3960368f4f4ab720c778c70",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "38f6f3e51312aad5011f3208179f85c2c09bd0d3cd071cf3158420e0a62779f7"
+    },
+    {
+      "file": "browser/screenshots/f04-en-1440-abc-current-evidence.jpg",
+      "sha256": "12f60e59f9826002a02210afa03e96e59a27fc7a62c125ff534380115e47f042",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "103ba930a2f358b05123ab61ebae4b3691047dbde208c5f4dcd3db212ffac02d"
+    },
+    {
+      "file": "browser/screenshots/f04-en-1440-abc-initial.jpg",
+      "sha256": "86974858cc3521517c70a52cfe1c8c18249216573580bc78a690708d704beeb0",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "baab1b5ea0a6e386a3a982bef53dcfea441cb6d77b740c2dce16725bc55b312a"
+    },
+    {
+      "file": "browser/screenshots/f04-en-1440-abc-restored.jpg",
+      "sha256": "4b2ee8ee405cd38ce407862673537289c198f5dd3a54b87eaca002f4056b4662",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "f60ef62b5aef1cc2aab9de21e47d8a5b22368f4bf0d08a108f58bad3d8025404"
+    },
+    {
+      "file": "browser/screenshots/f04-en-1440-current-review.jpg",
+      "sha256": "1a82dd43ba566149d0ab664460b14a3d4c3b3dc1c9484300e70290c324c61ec3",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "268a8f98f3803ae447c2205cb02da3584ae1de24d6c14511407a4e718d429f3e"
+    },
+    {
+      "file": "browser/screenshots/f04-en-320-ab-evidence.jpg",
+      "sha256": "3aff309ab43a477778bc5612ee4d5cc27e4f2b361137b9302cb119807d0ae12b",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "5dbdbe8d0a82c22fcd0fdaeef645a77e8353df29b47cb25185609ebdf5ab14db"
+    },
+    {
+      "file": "browser/screenshots/f04-en-320-ab.jpg",
+      "sha256": "ded575fac952f795cd60cb72ee57c71b3fe58c121c63402451942fd815e2dab8",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "27866105357d31f33c1e194f6117b20f8975b14ce7ad710bc468c1f726e255da"
+    },
+    {
+      "file": "browser/screenshots/f04-en-320-abc-current-evidence.jpg",
+      "sha256": "08ebf2730cd4756ee2f2b10275feca3a443092b7589eea17a1e120eaf4932803",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "9dd617489764771928e47603cb57b6f5b0331f813b85d9f9f08f4e1668caabc6"
+    },
+    {
+      "file": "browser/screenshots/f04-en-320-abc-initial.jpg",
+      "sha256": "e296e0f16c242233f0a1b15809cad9f463484a0353bef2524181852b36a12dad",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "2e49d346db9d2cef7d020d0e526e227006be4dd84b56f90c709d8dbd14314352"
+    },
+    {
+      "file": "browser/screenshots/f04-en-320-abc-restored.jpg",
+      "sha256": "b1324f263498085da09d79fd7a063392a85804c01aecf5b9ef780006de4185b3",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "cd259d8c7df7429a9a570746485cd207c39e64f6fbadf3e320b2db540352dd8e"
+    },
+    {
+      "file": "browser/screenshots/f04-en-320-current-review.jpg",
+      "sha256": "39c408c8df0991e2feb188229c75cbafbafb457936ff6f07b3333b7947650f14",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "ea613867ffd2246d24bdeade2f7c353e8615ff720ef587b070745ec3f7e88c3d"
+    },
+    {
+      "file": "browser/screenshots/f04-en-390-ab-evidence.jpg",
+      "sha256": "31a349ef92cb658620fb4ef3ed6386fbf21613055b3a93abeb16b80a575e6063",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "732a844519427267d77d83726762bcaea500d164c9fba713e33cb64ba7089650"
+    },
+    {
+      "file": "browser/screenshots/f04-en-390-ab.jpg",
+      "sha256": "87d0fa1fa4d3c367e26833ac4bae068326d28c905ab9b3ed1528b79a3e132524",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "6a2e2c70eb95624fffff02409b5a7cc5dfc81a7b25ccd987cfd84e3016f18cfb"
+    },
+    {
+      "file": "browser/screenshots/f04-en-390-abc-current-evidence.jpg",
+      "sha256": "f0dcb011ce502ec2fd38e519acdb593cabda7a69502b8bd5cd1109cf92e15ac7",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "37f1edaef7498e4d873e2f54c179cead5f3b3091850e6b9f02f62f545b310d45"
+    },
+    {
+      "file": "browser/screenshots/f04-en-390-abc-initial.jpg",
+      "sha256": "65edb1e0cdbecf686d2e6717434ee7948c1d6ac36c033f015265d99bf19883cc",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "2a48ac3269f57e850e88814ed6006d772773b38514806de44b55e6c0ffa41898"
+    },
+    {
+      "file": "browser/screenshots/f04-en-390-abc-restored.jpg",
+      "sha256": "d91329008af02d1e28022424afec79c88b55c1577340ddfa038890700bc184fe",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "4a54f957523a8dd395045760f566291247726b95bc6ed308aad24aa207e1dcbc"
+    },
+    {
+      "file": "browser/screenshots/f04-en-390-current-review.jpg",
+      "sha256": "8c550544029c7c186bef9903e1f757868e2cdd5de9e3f64519beb176786f028d",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "f303291cd1794f7ef0cc15b913681ea8e52856fa765ec611ec76cac2405d4862"
+    },
+    {
+      "file": "browser/screenshots/f04-en-768-ab-evidence.jpg",
+      "sha256": "eb7858cf98847b807b257895b4b4a78caaaab1a140686e95f21052663ad8f29d",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "9f680528d1ebb0bc09350a5a0ba90d78a343a16a2402166ce8629658c80a0467"
+    },
+    {
+      "file": "browser/screenshots/f04-en-768-ab.jpg",
+      "sha256": "e6727d96d4584eb74cfce684fc6116547a7f9beac9d0d4880a8ced63f17a8966",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "8f82e1fc84d517aface676dea137c6ef8e9a92420fd1197b12791253099ddef1"
+    },
+    {
+      "file": "browser/screenshots/f04-en-768-abc-current-evidence.jpg",
+      "sha256": "711538138f023705cf99bf1b4e9c6e9aa51529934caddc0d0184c5d537d5fa02",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "6a371a4fce6c779f444b04eea350a1b83f4f9b2917051e2b76b4a7d31aafc72f"
+    },
+    {
+      "file": "browser/screenshots/f04-en-768-abc-initial.jpg",
+      "sha256": "d67ff47496e7385d56a5cf1f679b5854c0c5a9c3aaf67a8324d82495ab4a5804",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "e5e73dc4e4897d93d562ea426b21e55c93d5877d30a0b46ec420de9538a1d7ad"
+    },
+    {
+      "file": "browser/screenshots/f04-en-768-abc-restored.jpg",
+      "sha256": "f854ef3fb4d72bf246672a30a48d2188a332a3cf8958d7c40cf92a38e8e07c58",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "941418585b95fe0a0217ff2d2b1cbdd579f4aff075d453b4ef62c2a65d9219bd"
+    },
+    {
+      "file": "browser/screenshots/f04-en-768-current-review.jpg",
+      "sha256": "93633b2607c40939c8ddf03a96e154325144917d15bba0633e3f35ba86d22606",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "ccf5263280c067d7ca799e7690798a31dbb2dda5f2cf1b63c2f3f646e1472288"
+    },
+    {
+      "file": "browser/screenshots/f04-extra-en-a.jpg",
+      "sha256": "8798be59313bc23014cb835b58d5427ef9096e01707f8d0b72de64823ba08b1e",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "40a244431d683b9bad3182609baf89255835cbc9eb856991eb2f4b71a5c0c69e"
+    },
+    {
+      "file": "browser/screenshots/f04-extra-en-ab.jpg",
+      "sha256": "4a4a94bd342fed7eae872f6b5b3b7b2eba1f3205042f979ea78d86b3301d835a",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "b8be5c12967d1945a654c7e08ec29c4a564961ca4157ea8f440e06f94fccefb4"
+    },
+    {
+      "file": "browser/screenshots/f04-extra-en-abc-restored.jpg",
+      "sha256": "fc7fc5e5c7e69e230b6f34636361e3b6705bca802f47f4da8f478d77337a395e",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "649b51c73f6ef2230910e002eacd6738a06421dbff9f8bc94871bec79bceae5c"
+    },
+    {
+      "file": "browser/screenshots/f04-extra-en-abc.jpg",
+      "sha256": "b81e7485adc84bc43d1f238ce0567ab64bad2d6a38741af7ccf3e6637c185f3a",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "257c0b2c72e857317dedb7eb0d22b9da8a222ee497633b094269c16d44ac294b"
+    },
+    {
+      "file": "browser/screenshots/f04-extra-en-ac.jpg",
+      "sha256": "c58d611bcbfbbe661e38dd7d47d20d23876da11b1266d9539c26483eaf31be20",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "671d89b9ded79e56b41addeb66052188c37a79afefca9ef208a8d9f741e253c6"
+    },
+    {
+      "file": "browser/screenshots/f04-extra-en-def.jpg",
+      "sha256": "b0016a10a5075d0b2f6820afda87506723341a83ff06e7d3d1de6340a97539d4",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "270491aec96b681347316415ad84f07c8f94c07d1e14886a0e6aa96ffc19fddd"
+    },
+    {
+      "file": "browser/screenshots/f04-extra-en-zero-not-submitted.jpg",
+      "sha256": "225b5234287b5d347c9ab69208f0bec3630ba77d6b11daf81ac549348b0c3d8f",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "729d8e8ceb5320234142bf3f3cf5c3fdef00608e50006eee617907259e4665d4"
+    },
+    {
+      "file": "browser/screenshots/f04-extra-zh-TW-a.jpg",
+      "sha256": "e6003b6cf5ab6d141d11abae65a7a1d8973c4a09a4bdba5b91b3e77f4d91f9e4",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "c294ac3ce2c3d37101e5576aec04e7be8f34665eaa4513430d3b2108332a58f3"
+    },
+    {
+      "file": "browser/screenshots/f04-extra-zh-TW-ab.jpg",
+      "sha256": "92a2533b0cf9bd7d950a8fd5637c16ad73283bbd44c8a6787f812e630f1b05a7",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "a57c586403939a32e400f6e0649f71df5797aacb089a71a07688d5d626926c28"
+    },
+    {
+      "file": "browser/screenshots/f04-extra-zh-TW-abc-restored.jpg",
+      "sha256": "e05aa6132b119e555bfa6391a00a616c275a8d1ec6b691a2bf3712a739186106",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "459b126024bd535dca4dee706f730107c588d0ec2af561c8128c6734da1c68a3"
+    },
+    {
+      "file": "browser/screenshots/f04-extra-zh-TW-abc.jpg",
+      "sha256": "1c754dd7cf31df7ae70d4af4d023d1a7fd8dd2c0dba2be01a2c0d2cc676fc9ee",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "12ad3c20fbe9365ebf360565cd25625b9f1697e6c9184a4ae898da8632e32351"
+    },
+    {
+      "file": "browser/screenshots/f04-extra-zh-TW-ac.jpg",
+      "sha256": "4fa383d487a6881fdf108df295acbdb97146b0875582c61817bde53db3f96d9b",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "fda458f22df2e2589b14b80a0f203b3213431333978c8d29a82a0ea016b01527"
+    },
+    {
+      "file": "browser/screenshots/f04-extra-zh-TW-def.jpg",
+      "sha256": "394c3f9cb8d82b4c6c7e562d4f39dba5d1d24b23caa7882a2b38bf3d466acb70",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "3e8bdb5782deefbbf90c67b45217b33d606661820a9d977bbf09f9e3a2ca7103"
+    },
+    {
+      "file": "browser/screenshots/f04-extra-zh-TW-zero-not-submitted.jpg",
+      "sha256": "6cfbcac2471b5cadd5cdba3f368162fb7553c7b146a05881955378649d4d5b33",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "4d5bb305cea09387a8584925fcb3a48627f26b966d95119f17fbd26fc33e1e7b"
+    },
+    {
+      "file": "browser/screenshots/f04-history-en-ab-evidence-reopened.jpg",
+      "sha256": "19a0c7dd056db2178a31d30615ae51a58ea9f266969d503244ff8e8de3e5255b",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "c4a6074c1b4e440fa5bd2340434c762694abc23c858d38fb6a539a86f43bc857"
+    },
+    {
+      "file": "browser/screenshots/f04-history-en-abc-reopened.jpg",
+      "sha256": "de8a798dd5b638dbf82d7a7e46b0cd9dc56c3aaabc04954a0b9d20565e01210c",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "c533b193dfb2823ecbac62f054c87981fb0b48a17b3ee987564d0973014102a9"
+    },
+    {
+      "file": "browser/screenshots/f04-history-zh-TW-ab-evidence-reopened.jpg",
+      "sha256": "697c9c5a4b699e7bd3eea50e6ea040ea8f251e8e5a37f3dd3d4c96c427d33aef",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "0aaf8229b38a5d754c32fb5c2198d3c4da55c863588c2db298e0218281edd51c"
+    },
+    {
+      "file": "browser/screenshots/f04-history-zh-TW-abc-reopened.jpg",
+      "sha256": "ebebea04585b388ae37de3b587295d6ed2aefd8d81f42fb7549d447524ddc712",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "30808487ea4f87961c7e44a1ae9a09657fd23d582450185f3194ca3e74c1d711"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-1440-ab-evidence.jpg",
+      "sha256": "697c9c5a4b699e7bd3eea50e6ea040ea8f251e8e5a37f3dd3d4c96c427d33aef",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "0aaf8229b38a5d754c32fb5c2198d3c4da55c863588c2db298e0218281edd51c"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-1440-ab.jpg",
+      "sha256": "1a2bbb9cc131ad47ab82e60284fc806c5f47166ac8d924ede613c87a3c04f93f",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "b2047d96e58c4a386cef657937a2d1145421497ca4f627e4aa1215ec858e7c63"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-1440-abc-current-evidence.jpg",
+      "sha256": "2bf1711521fe43b0e073b57007ca550d6f9760421c87e0553fd2a4fe1ad8e3b6",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "b296d5c548260d33560c8bef9d6fd3d558f3758d413d2fed3656599c77d9baa8"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-1440-abc-initial.jpg",
+      "sha256": "1c2d8f6a5fec1c5a751f5b5b3aeabcf05fdc7eb6b03c60b01fa6339be7f34121",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "8e2ba2b9ecafed58d12d8d4da3514b030426f4f967057ad0bb146d9dbdd32609"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-1440-abc-restored.jpg",
+      "sha256": "dff3a771d7d63b1a9d38436bb9e0b94c5e4ce2e30f0f80a52fe990498df1848e",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "1eff2f1c49459de10483c8a8d51cf84f593dee8553cb8acc2419b13e7cea2b0a"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-1440-current-review.jpg",
+      "sha256": "d4ceb793b9ba654230a6e3b04e015e9f4515066bbd041b1475edf5a559f64eff",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "02ebb0ca0a53834ee4b67a44ae8720cd60424271cbb39ad3060b24b2b2ebe9d7"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-320-ab-evidence.jpg",
+      "sha256": "15013ef7f4daab3520f05d647ddb307bed18e794e8077934a26bb01ecd97bdd1",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "1dffcf51fd5d425a5b1f8a87d22d640a62f3aba6e4e4804aae258635a1066bf1"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-320-ab.jpg",
+      "sha256": "cbff3686d0dc9c3906763375c2d7fb191bbd591c7b0802c9f0ad268d5ca92c26",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "8aeb70fd446e16d9c476dd91b964cc889ccd406d94c150811ae638bf2ffa0731"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-320-abc-current-evidence.jpg",
+      "sha256": "d283d974129e8877db7e6c5df80db82460115c103c5e4b6f1668dc21fac44df9",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "ce513cd5af2d2edcef4d9478d1cf5ff8f8e8922db60bfe9994500856dbb76dcc"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-320-abc-initial.jpg",
+      "sha256": "d1d4f5b7ff6eba11c1664ec25f00f7a803538d9ea6e790a2adcbd585d72f662e",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "48a4262f2cb51fb79e6301e72e89fc2646aa2fb574067a2f7986f4d30fea0fc0"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-320-abc-restored.jpg",
+      "sha256": "d30c3436548b5979dd47f1f3241cab30f7014dfcad5a5e46399b11b2683e01a3",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "13071d893f2d99fb6c7e8152f955b7efdc4e3a197ac80ce8faf69c2094f8dcc5"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-320-current-review.jpg",
+      "sha256": "1bb9b38a550d4125720b46971dc1651b70fb7351fbe859dd2c5a6bc320a7e18b",
+      "pixelSize": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "3738b9d2dee2c3d71863737153960b3ff205357aee039fd71982dd9606ef98cb"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-390-ab-evidence.jpg",
+      "sha256": "585e0e10395756c126cd87668899aa2c68ef881c2db8a41603b57a3c9a244e7d",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "1d77cb8d8b72f582ae7a64a68ed2d6bc20a6179a1154e92cd2ddf1fa90caf7b7"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-390-ab.jpg",
+      "sha256": "bb52f0870f142bdfad55788818a6a6f3e909ad17ab21b342fccd80df21a53d9f",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "38465e571927883678a023b3f35034ff02fe700d967d505ef6253072253c167b"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-390-abc-current-evidence.jpg",
+      "sha256": "a76dbb5da02c63edfba7e6b9268f298a0ee71e449a4ac2635568809abc7ac0b7",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "8d969200497ba199516f861a034035c5375c2d86d98a63f5577fbb096fef27c3"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-390-abc-initial.jpg",
+      "sha256": "e8499a2eee2b5424b449e0267c5b05c7c5825078b0fc81fd9bbd1a98aaf745c3",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "0c6748b98ea536c078a5e1c3fd8ec50823d1025bc38b6309d4e77cbf61012807"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-390-abc-restored.jpg",
+      "sha256": "76b876cbbd21817a556beae0175634beb5c1324c12103bea6a619401e3c75f2a",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "ce6322eb0a094980a437821cd8633fd385bbc9ecf9734da2fc89ad564bd8d649"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-390-current-review.jpg",
+      "sha256": "20ebfb912b1bec3e6b7d18a374e8d5343f5ce993e3967774b991a40faf8d1e3a",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "bb3de825b1055981b9a463a89c83444460a9c906d19c0d6a4c5d770236765062"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-768-ab-evidence.jpg",
+      "sha256": "d70d8fc6af3058f82b295261eae82e13c2c31a1e8d44e96043e81726ba023780",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "75383e0ac012f72295d0aeedeb7928a0ee787ec5fbf20338c34381b1eeccfaa7"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-768-ab.jpg",
+      "sha256": "063b6f28e5c9f38a4b1cd7e447b6ca95fe172752d47c07859ebe785ac4c8131b",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "4ce86ca8fe48e2b06d06cf409d3701f3ed7e7fa43662525c37730deedc2fd9c9"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-768-abc-current-evidence.jpg",
+      "sha256": "b172bd71f7fa2c11e3ed6bc6662d30d6c3015220115b82e38cfca66833413434",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "8e35cfa2945c475a4e07f24b30449ea035889cc1edcb1649cc7216b9b7a36d60"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-768-abc-initial.jpg",
+      "sha256": "da97d664ac5e5e754012c6d7d63041e93c6667cdc834a7002895c9c134f4085a",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "25c1fe2cdc63d294bfada10154c5f138a0f94a3841bcf97bc3610e9c36338c16"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-768-abc-restored.jpg",
+      "sha256": "5993a4f843c0dcd2021d297958382fbd70f721ddec1f717c281edf5df8886079",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "c591d790c7e4aec21b16cbdfa26636afac3afa380821c420a884b92d756a8c5c"
+    },
+    {
+      "file": "browser/screenshots/f04-zh-TW-768-current-review.jpg",
+      "sha256": "2e73dddd7f5db67904e44490e566a4999a205d187902a787bc972992435a78c1",
+      "pixelSize": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "2a39156acd8d3e28dd3e25860dce1fea109562898aa7f438eecc7bad8743495c"
+    },
+    {
+      "file": "browser/screenshots/hero-edited-review-evidence-return.jpg",
+      "sha256": "48fb808aa34409fb051860bd2c1037445cf61f314943360f670bc9b9e4df2098",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "9d4f4a3af1bf7bd7feaaa1c8d195f31e24b4baee0dd9bd14ead456443bb71628"
+    },
+    {
+      "file": "browser/screenshots/hero-edited-review-locale-zh.jpg",
+      "sha256": "5d79725c18370e9631104c0493d2ff3b782d844f73f738de4ae89c46ef139e0f",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "49d6cce72597bdbe8a23311d78fa63ffcf0684ab5c46cc2cc8a889c29df7a0a8"
+    },
+    {
+      "file": "browser/screenshots/hero-en-before-confirm.jpg",
+      "sha256": "c38b3053f2c99e7d7f9dbf7fb9dfb25c4fee166ba5662864cfc56ba42affa73a",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "4a5426e854086bba12d559eddbd7bb3bff6a57c5e2213c1552cfb01bd122752f"
+    },
+    {
+      "file": "browser/screenshots/hero-en-copied-receipt-route.jpg",
+      "sha256": "f4dc094136d6760907074880620a1dfe97b8220bf7d52383d8b683cb63e73ae4",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "035ee123291af95bf44adfc93e81e26e0ea831f1b756c179f89084903ed4fcb1"
+    },
+    {
+      "file": "browser/screenshots/hero-en-edited-review.jpg",
+      "sha256": "88c8ea145e75abd43f5aa6683728a27dbadab5c3ac2dc99d783f511004e474b3",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "04a69b603998c1963fea45912167985c7a66fac86b618fdd423197c93043f143"
+    },
+    {
+      "file": "browser/screenshots/hero-en-factor-return.jpg",
+      "sha256": "7637290f57fc931497d7d7865b90b39d90ab854ca331d48b5a5fa81367790a6a",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "7ece7c75a5b681e18776debed35d2720db3b45549dd950f67376a0582ded759b"
+    },
+    {
+      "file": "browser/screenshots/hero-en-factor-source.jpg",
+      "sha256": "35bad4cb62ee3c2c33e061b7c14979887a4fb8ece4fe564012a4cad7a084fb50",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "10742e12a53342f9a592d23b610684d39279509535b2d0ae6e42de1bb4d9a01a"
+    },
+    {
+      "file": "browser/screenshots/hero-en-factor.jpg",
+      "sha256": "5c77d9a5cd12735924957a547236b98fb6b2c1854880e77f54678151dbb700e4",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "49c8be8598b8dfe6254893b03fafa95b75817f3bcea104f8f6521514ee6f11d0"
+    },
+    {
+      "file": "browser/screenshots/hero-en-lighting-insufficiency.jpg",
+      "sha256": "aebc22142e8ff837c2215f4447cd8738295ec4be71e86f563cdd93cef4e25730",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "d7378f5c5d285e5bbe8aa0840e40dac7c78c045c71292a991a5ca4bf9d2e8582"
+    },
+    {
+      "file": "browser/screenshots/hero-en-mobile-second-receipt.jpg",
+      "sha256": "e19d92243d5b98e35096cd0482680abfe1d752a23eebad0a57d894b24cb3c6d4",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "ecb0bd3ccbb25640efd7b118a978b58a5293f27143af7788d699dbc770016d7e"
+    },
+    {
+      "file": "browser/screenshots/hero-en-project-actions-reopened.jpg",
+      "sha256": "e88581d2d980e0e60b3af945624be2e50ff742463e8e360b1ab7b36e900a8bc8",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "36311d6d2347496d6886e550733a08f1abb695cba718c9554c6bdd6c2899e2a2"
+    },
+    {
+      "file": "browser/screenshots/hero-en-project-actions.jpg",
+      "sha256": "d822cba220621f5f54ef3eb6c2f3d671d40b2496df3bdcea5f27370b212a2922",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "bb56d7956ed6b6b219159bc92167036bab49839fd80b8aa9d911962492c0f712"
+    },
+    {
+      "file": "browser/screenshots/hero-en-receipt-lineage.jpg",
+      "sha256": "c1114f4b5d19f7175c3a74a99b2996c89f2db8d5366d793299036761e1d15d6b",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "f845ff4fe5980be5bb96f56d2cf77e3c7656518137bc9c33e7961a11d10966fb"
+    },
+    {
+      "file": "browser/screenshots/hero-en-receipt.jpg",
+      "sha256": "bd4b29f6f9569f6bb6819506264350a75c53fb050b8a1b5c77410cd61282ff8c",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "53ebb3872c6f19f3719d4edcf3c1a866d18846dac69ebf3058e18fee15ccda92"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-first-receipt-lineage.jpg",
+      "sha256": "1fb12b22afdc0f88aac94a828a7d8b0e9a7fc3d87a0918ec5ef9cb6789375e15",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "0b5d304c75d5588b9b830f78961d895cb7e2ab3ed9a7bc7220e81f7155ab2f47"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-first-receipt-refreshed.jpg",
+      "sha256": "01e468540d9b60f8b437c0a30dc335364727d8dad75f416f995aba8056fe78f3",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "4a52ab469def4154aa3b276c5a51bab2940290239f2e182dd4ce1399af4e197a"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-first-receipt.jpg",
+      "sha256": "5a1532173365249698fc302e159fdadd8c74f75fcf1a8b22c99191179b17c4e2",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "a703d7cffc4e4d04d57be3d47be855663d8438de9c4a5cee88bc9367fb18079e"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-mobile-before-confirm.jpg",
+      "sha256": "c3cefde91da569c9da3f8d0a6a221f51a4fa0d9582749d2536716cb8a1691851",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "0b32bf9e18fa8a2c61397b3a57ea97c67a9dab84910da28622f570aedb7e44c0"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-mobile-copied-receipt.jpg",
+      "sha256": "d791847a9b9e5adee9aa1dd963bbba0f78281b43c9b85be919db9e3b205d343e",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "942a9ef67e892427821d2f29ece45c021450548020e630d82109c6c022f2d179"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-mobile-factor-return.jpg",
+      "sha256": "07e171ea20778faff124278f0ea6c5ea708590634987d45599d9b522bdc155ed",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "823f8e9ed4c1009f11d70a041a68caa30b2a295d4870b7a195b326221587a732"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-mobile-factor-source.jpg",
+      "sha256": "a97d6223ac2cd783a8c1cbb0f979baec7a3cde6ff46bfedc833d8c70ea64ee52",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "a3edb304d37ff42fc0f74cf44d97848b9c36e591197edecd1ed56b6836eccdd9"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-mobile-factor.jpg",
+      "sha256": "326b955f842e517627d2d4334fd3595552d675f66cb9660a42e6f875142fb70c",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "59f0ea54de4193c644115f0465a12829a19e740ea7c5089df94fc4c6ba15ecfd"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-mobile-lighting-insufficiency.jpg",
+      "sha256": "1f0133ea897f8118bc456a554d5cd74e99d12ae5966f1c7390a1fa8598e1d658",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "d7d87fba677902f14236065b8b29bbd37e89814c88af9dc75af75b6a3e43e81e"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-mobile-project-actions-reopened.jpg",
+      "sha256": "da6d09977e30eacc6d90ae21a2490640e76004dd0dbf10854a27a6d983aab1f7",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "a39c4089051208b8b245a7331c0ca86ce02f34f58ec7239790684f90f2a4a54d"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-mobile-project-actions.jpg",
+      "sha256": "c70f08c24d0ef590ef8894597fa1109f020f08be188f0a1597473017e32a40a7",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "7bdd2c7e78ea04c06fa052536d688117455a13bf4ab5977cd29665d41cf3f19e"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-mobile-receipt-lineage.jpg",
+      "sha256": "7300c939e22a9fb88d72a99bcf2f6038522d645e2da4be2493e6c40bb485af91",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "113651941bfad771d9b36360152fb4c6f805e9523e5bc400b462432451cb5bf0"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-mobile-receipt-refreshed.jpg",
+      "sha256": "d791847a9b9e5adee9aa1dd963bbba0f78281b43c9b85be919db9e3b205d343e",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "942a9ef67e892427821d2f29ece45c021450548020e630d82109c6c022f2d179"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-mobile-receipt.jpg",
+      "sha256": "da6d09977e30eacc6d90ae21a2490640e76004dd0dbf10854a27a6d983aab1f7",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "a39c4089051208b8b245a7331c0ca86ce02f34f58ec7239790684f90f2a4a54d"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-mobile-review.jpg",
+      "sha256": "20ebfb912b1bec3e6b7d18a374e8d5343f5ce993e3967774b991a40faf8d1e3a",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "bb3de825b1055981b9a463a89c83444460a9c906d19c0d6a4c5d770236765062"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-review-evidence.jpg",
+      "sha256": "f4babad84f5da47658cd457c0a89a11cf99510f3c44e17aa2f8534c5ee35fd43",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "eefbabeb5a4c0d385fe42015bc5d71c96ed76dd88d79bb7309cae90e34a0bdb4"
+    },
+    {
+      "file": "browser/screenshots/hero-zh-source-focus.jpg",
+      "sha256": "343f1768917d3b971ad5f50342df5bd12234a98bd6ee4ef1d752a7ba27ca9b31",
+      "pixelSize": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelMatchesCSS": true,
+      "imageMetadataKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "exifEntries": 0,
+      "ocrExit": 0,
+      "ocrSha256": "84bdf12af392224508ca17b11a1c7c295effcc823bd78014313984db4a2ba7cd"
+    }
+  ]
+}

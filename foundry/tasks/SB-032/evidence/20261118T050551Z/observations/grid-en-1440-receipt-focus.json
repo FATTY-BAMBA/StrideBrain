@@ -1,0 +1,110 @@
+[
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 21.078125,
+      "width": 45.4140625,
+      "x": 780,
+      "y": 93.1171875
+    },
+    "tag": "A",
+    "text": "English",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 21.078125,
+      "width": 54.40625,
+      "x": 837.4140625,
+      "y": 93.1171875
+    },
+    "tag": "A",
+    "text": "繁體中文",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 49.1875,
+      "width": 78.0625,
+      "x": 1341.9375,
+      "y": 20
+    },
+    "tag": "BUTTON",
+    "text": "Close",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 21.078125,
+      "width": 54.40625,
+      "x": 837.4140625,
+      "y": 93.1171875
+    },
+    "tag": "A",
+    "text": "繁體中文",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 21.078125,
+      "width": 45.4140625,
+      "x": 780,
+      "y": 93.1171875
+    },
+    "tag": "A",
+    "text": "English",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 49.1875,
+      "width": 193.34375,
+      "x": 1052.3046875,
+      "y": 830.921875
+    },
+    "tag": "A",
+    "text": "View project actions",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  }
+]

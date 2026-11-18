@@ -1,0 +1,5 @@
+
+> stridebrain@0.1.0 typecheck
+> tsc --noEmit
+
+tests/comparison-experience/selection-lineage-postgres.test.ts(44,366): error TS2339: Property 'selection' does not exist on type 'Readonly<{ version: "evidence-panel.v1"; locale: "zh-TW" | "en"; mode: EvidencePanelMode; context: Readonly<{ projectKey: string; projectName: string; comparisonRunId: string; enrichmentRunId?: string | undefined; snapshotLabel: string; stale: boolean; freshness: Readonly<...>; }>; ... 9 more ...; backSelection?: Ev...'.

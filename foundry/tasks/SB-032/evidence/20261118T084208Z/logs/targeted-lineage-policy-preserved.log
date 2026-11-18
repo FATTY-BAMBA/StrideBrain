@@ -1,0 +1,9 @@
+
+ RUN  v4.1.10 [REDACTED_PRIVATE_VALUE]
+
+
+ Test Files  1 passed (1)
+      Tests  16 passed (16)
+   Start at  16:58:38
+   Duration  8.25s (transform 218ms, setup 0ms, import 306ms, tests 7.86s, environment 0ms)
+

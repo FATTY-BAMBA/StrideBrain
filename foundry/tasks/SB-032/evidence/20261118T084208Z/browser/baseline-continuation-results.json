@@ -1,0 +1,110 @@
+{
+  "run": "20261118T084208Z",
+  "sourceCommit": "4628fb759c8bac23cf92eb15992259fb366a8d65",
+  "buildId": "jZBGrkhs4Ok9XriINHgub",
+  "status": "PASS_SCOPED_BASELINE_CONTINUATION",
+  "completedAt": "2026-11-18T09:23:53.272Z",
+  "scope": {
+    "locales": [
+      "en",
+      "zh-TW"
+    ],
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 900,
+        "purpose": "EN main journey and bilingual draft/first receipt"
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "purpose": "zh-TW main journey and bilingual second receipt"
+      }
+    ],
+    "notFullStage9Acceptance": true
+  },
+  "coverage": [
+    {
+      "name": "Factor and source roundtrip",
+      "status": "PASS",
+      "observed": "EN desktop and zh mobile Scope overlap factor shows weight/contribution25 and87.7 total; source drilldown and Escape back retain current economics; source H2 focus remains inside modal.",
+      "artifacts": [
+        "hero-en-factor",
+        "hero-en-factor-source",
+        "hero-en-factor-return",
+        "hero-zh-mobile-factor",
+        "hero-zh-mobile-factor-source",
+        "hero-zh-mobile-factor-return"
+      ]
+    },
+    {
+      "name": "Financial authority and insufficiency",
+      "status": "PASS",
+      "observed": "Active forecast remains distinct from reconciled actual history; imported stone+18.4% supported and lighting2/3 abstains, no fabricated actual-cost range. Current review and receipts retain programme uncertainty.",
+      "artifacts": [
+        "hero-en-lighting-insufficiency",
+        "hero-zh-mobile-lighting-insufficiency",
+        "hero-zh-review-evidence",
+        "hero-zh-source-focus"
+      ]
+    },
+    {
+      "name": "Edited draft navigation",
+      "status": "PASS",
+      "observed": "CHECK,VALIDATE_HISTORY,Mei and genuinely cleared due date persisted through EN→zh locale, reload, Back/Forward, evidence/source roundtrip and final English confirmation.",
+      "artifacts": [
+        "hero-draft-navigation.json",
+        "hero-edited-review-evidence-return",
+        "hero-en-before-confirm"
+      ]
+    },
+    {
+      "name": "Receipt and project persistence",
+      "status": "PASS",
+      "observed": "Two explicit synthetic confirmations; each receipt shows15 evidence references, intended exact source economics, wording and assignee. Project Actions reopening, bilingual receipt locale navigation, refresh and copied normal receipt routes preserve identity.",
+      "artifacts": [
+        "hero-en-receipt",
+        "hero-en-project-actions-reopened",
+        "hero-en-copied-receipt-route",
+        "hero-zh-mobile-receipt",
+        "hero-zh-mobile-project-actions-reopened",
+        "hero-zh-mobile-copied-receipt",
+        "hero-zh-mobile-receipt-refreshed"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "key": "action_bc8bba12-2d8f-4620-97cf-09c29cf7c74f",
+      "proposal": "proposal_546a9a02-e728-4552-8cd5-0fc8fa35ac63",
+      "economics": "econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9",
+      "title": "CHECK",
+      "rationale": "VALIDATE_HISTORY",
+      "assignee": "Mei Lin",
+      "dueDate": null,
+      "evidenceReferences": 15
+    },
+    {
+      "key": "action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+      "proposal": "proposal_57286e7a-6f19-4cde-84d1-5b7f442dd58a",
+      "economics": "econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024",
+      "title": "REVIEW",
+      "rationale": "RECORD_QUESTIONS",
+      "assignee": "Iris Huang",
+      "dueDate": "2026-11-25",
+      "evidenceReferences": 15
+    }
+  ],
+  "unresolved": [
+    "Not a full QA01–18 or Stage9 acceptance rerun.",
+    "No security/adversarial or performance wave.",
+    "Actual VoiceOver speech, physical device/touch/native keyboard behavior, human bilingual copy, native200%zoom, OS reduced-motion and leap/midnight date gates remain unverified in this run.",
+    "Natural confirmation pending DOM was observed; no complete pending-motion/video measurement is claimed.",
+    "Other enum fixture states are localization-test coverage, not browser observations."
+  ],
+  "diagnostics": [
+    "An exploratory immediate cancel-review→shell-locale sequence initially remained English; repeating the locale click after cancellation settled switched normally. No rapid-cancel navigation acceptance claim is made.",
+    "Early zh bare-compare loading captures settled before most frames; only saved-run pending captures provide the full grid.",
+    "All actual screenshot pixel sizes are separately checked; no screenshot crop/resize/DOM injection was used."
+  ]
+}

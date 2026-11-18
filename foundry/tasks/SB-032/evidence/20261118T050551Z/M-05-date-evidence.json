@@ -1,0 +1,23 @@
+{
+  "status": "PARTIAL",
+  "selectedTests": 15,
+  "files": 3,
+  "intentionallyFilteredOut": 165,
+  "result": "PASS",
+  "log": "logs/m05-existing-clock-regressions.log",
+  "cases": {
+    "validLeapDay": "2028-02-29 accepted as today+365 from 2027-03-01",
+    "invalidLeapDay": "2027-02-29 rejected",
+    "yesterday": "2027-02-28 rejected at 2027-03-01",
+    "today": "2027-03-01 accepted",
+    "todayPlus365": "2028-02-29 accepted",
+    "todayPlus366": "2028-03-01 rejected",
+    "TaipeiMidnight": "2026-11-15T16:00:00Z is 2026-11-16; previous day rejected, new day accepted; service revalidates at confirmation",
+    "invalidDatabaseWrites": "Selected PostgreSQL invalid dueDate cases assert unchanged counts and PREPARED proposal; no action/receipt/audit/consumption",
+    "sourceDateBoundary": "Required source crossing stale date returns EVIDENCE_UNAVAILABLE; quote crossing organization-local midnight returns STALE_COMPARISON, counts unchanged"
+  },
+  "method": "Existing injected service/domain clocks and separate auto-created test database; no host/browser clock changes.",
+  "liveBrowserBoundary": "BLOCKED_ISOLATED_CLOCK_METHOD_NOT_ESTABLISHED",
+  "sourceChangeMade": false,
+  "next": "Review a non-production isolated full browser/server clock method preserving signed-session time semantics; do not add a public clock backdoor."
+}

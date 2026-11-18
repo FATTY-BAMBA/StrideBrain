@@ -1,0 +1,26 @@
+{
+  "commit": "4628fb759c8bac23cf92eb15992259fb366a8d65",
+  "parent": "1bde2114d010c694d017ba2b4116ceffab3569e1",
+  "branch": "build/sb-032-stage9-quality-hardening",
+  "files": [
+    "prisma/migrations/0009_stage9_economics_selection_lineage/migration.sql",
+    "prisma/schema.prisma",
+    "src/app/[locale]/projects/[projectKey]/compare/actions.ts",
+    "src/app/[locale]/projects/[projectKey]/compare/loading.tsx",
+    "src/app/[locale]/projects/[projectKey]/compare/page.tsx",
+    "src/components/comparisons/comparison-experience-client.tsx",
+    "src/components/projects/project-workspace-overview.tsx",
+    "src/modules/comparison-experience/copy.ts",
+    "src/modules/comparison-experience/route-state.ts",
+    "src/modules/localization/workspace-state-copy.ts",
+    "src/repositories/prisma/prisma-economics-enrichment-run-repository.ts",
+    "src/repositories/prisma/prisma-economics-observation-repository.ts",
+    "tests/comparison-experience/selection-action.test.ts",
+    "tests/comparison-experience/selection-lineage-postgres.test.ts",
+    "tests/comparison-experience/selection-navigation.test.ts",
+    "tests/evidence-panel/modal-focus.test.ts",
+    "tests/localization/stage9-workspace-loading.test.ts"
+  ],
+  "published": false,
+  "scope": "S9-F02/F03/F04 product repairs and regression tests only"
+}

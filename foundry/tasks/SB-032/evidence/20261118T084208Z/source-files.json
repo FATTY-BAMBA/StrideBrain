@@ -1,0 +1,19 @@
+{
+  "prisma/migrations/0009_stage9_economics_selection_lineage/migration.sql": "51a963f3c2a4a6b6beaebc96c7d374905aac40614abc59c5c9cffd1a7f096aee",
+  "prisma/schema.prisma": "289f3e7842e17471781535ac584cf430e52db5e417f3d8f08e29b1b5dcb9cd51",
+  "src/app/[locale]/projects/[projectKey]/compare/actions.ts": "68ae4d1c65409377dcc72d538b00f39cd35d9ecc149864776ce6d18767b9ec2c",
+  "src/app/[locale]/projects/[projectKey]/compare/loading.tsx": "99bce8c9921649f6bf93fd729602826f245e0d6deeb5a979f65a9d43cfc5b47e",
+  "src/app/[locale]/projects/[projectKey]/compare/page.tsx": "d87f40cc4c4a9fec3e6c43967a4ae5a2055f04fd948eb8314e2bb261b2814042",
+  "src/components/comparisons/comparison-experience-client.tsx": "286e7fbe067f085436567d92b78b8b9782221f933f7fd5224ca4f82a80c5d39d",
+  "src/components/projects/project-workspace-overview.tsx": "c251b82b303940ffabda25230269dd307430b7ddd0906b478b689e24ad292426",
+  "src/modules/comparison-experience/copy.ts": "8851a324204e698b529b15f3c3286b0b9e99b54d26a09a3391f9a1a1ef098239",
+  "src/modules/comparison-experience/route-state.ts": "6b38be78809345069e8ef967026def0fea79e19c7f14c03b72592de9276d1921",
+  "src/modules/localization/workspace-state-copy.ts": "be1601cbd61ca75925ee28f9674303c22aa21c5fe6ceaa9722a68144cfa66a1a",
+  "src/repositories/prisma/prisma-economics-enrichment-run-repository.ts": "32a037d3c410ce20687f06262d11d89dd11b46397db28c7666d6102c87324eb6",
+  "src/repositories/prisma/prisma-economics-observation-repository.ts": "d0c195a1347b3404eec4dd59b268c2d7f626f1e3a0d6528b7ab9e448d454acaf",
+  "tests/comparison-experience/selection-action.test.ts": "b08e5b5578994f8f8c858f1220ef18c9396296c86b10defbbcd6d345138adc64",
+  "tests/comparison-experience/selection-lineage-postgres.test.ts": "0c728351752753d875d4c67267f600b3c01d3a93c287e5e77a6f411e13fff704",
+  "tests/comparison-experience/selection-navigation.test.ts": "ce2840731fc8c8c00efc710c72b40c6b44ebaf46f52fa4d883e42073d3677b82",
+  "tests/evidence-panel/modal-focus.test.ts": "b51b75c79b84507737d9c54e5844b140421daa669b0495def4761e095f155244",
+  "tests/localization/stage9-workspace-loading.test.ts": "917c73802207874fc083952359bb938fe98c02e1f7b7dff183cafb2eabf9d1cd"
+}

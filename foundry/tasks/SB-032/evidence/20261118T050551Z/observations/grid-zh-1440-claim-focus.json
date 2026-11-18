@@ -1,0 +1,110 @@
+[
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 120.390625,
+      "x": 1299.609375,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "關閉資料依據",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 1013.3984375,
+      "y": 431.484375
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"5c2d3a1a3bd29cd3954b2c89\"]]]",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 1013.3984375,
+      "y": 431.1171875
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"13f2e9ee34cc733d5eeb99c9\"]]]",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 1013.3984375,
+      "y": 431.484375
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"5c2d3a1a3bd29cd3954b2c89\"]]]",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 120.390625,
+      "x": 1299.609375,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "關閉資料依據",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 1013.3984375,
+      "y": 810.3125
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"ec492fd91e73dbff2e8d0180\"]]]",
+    "viewport": [
+      1440,
+      900
+    ]
+  }
+]

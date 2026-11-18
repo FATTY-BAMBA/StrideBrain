@@ -1,0 +1,175 @@
+{
+  "en": {
+    "checks": [
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      }
+    ],
+    "focus": {
+      "id": "",
+      "tag": "BODY",
+      "text": "BODY"
+    },
+    "headings": [
+      "Historical precedents for Xinyi Flagship Renovation",
+      "Choose precedents to compare",
+      "Structured comparison",
+      "Structured review",
+      "Review internal review action"
+    ],
+    "lang": "en",
+    "statuses": [
+      {
+        "busy": null,
+        "label": "Structured comparison",
+        "role": "region",
+        "text": "Structured comparisonXinyi Flagship RenovationNeihu Tech FlagshipZhongshan Lifestyle StoreNanjing Brand Experience CenterProject contextSubtypeRetail flagshipRetail flagshipRetail flagshipRetail flagshipArea640 m²610 m²590 m²720 m²LocationXinyi District, Taipei CityNeihu District, Taipei CityZhongshan District, Taipei CitySongshan District, Taipei CityCompletionActive projectNot applicableJun 30, "
+      },
+      {
+        "busy": "true",
+        "label": null,
+        "role": null,
+        "text": "Preparing the review…"
+      },
+      {
+        "busy": "true",
+        "label": null,
+        "role": "dialog",
+        "text": "Review internal review actionReview the evidence and uncertainty before creating this action.English繁體中文CloseTitleValidate imported-stone and lighting assumptions for Xinyi quote v3Review imported-stone and lighting assumptions for Xinyi quote v3Check evidence for imported-stone and lighting assumptions in Xinyi quote v3Check evidence for imported-stone and lighting assumptions in Xinyi quote v3Re"
+      }
+    ],
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_546a9a02-e728-4552-8cd5-0fc8fa35ac63&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=&evidenceReturn=review-evidence-0",
+    "viewport": {
+      "dpr": 1,
+      "height": 900,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  },
+  "zh": {
+    "checks": [
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      }
+    ],
+    "focus": {
+      "id": "",
+      "tag": "BODY",
+      "text": "BODY"
+    },
+    "headings": [
+      "歷史專案比較： 信義旗艦店裝修",
+      "選擇要比較的歷史專案",
+      "結構化比較",
+      "結構化審查",
+      "檢視內部審查事項"
+    ],
+    "lang": "zh-Hant",
+    "statuses": [
+      {
+        "busy": null,
+        "label": "結構化比較",
+        "role": "region",
+        "text": "結構化比較信義旗艦店裝修內湖科技旗艦店中山生活概念店南京品牌體驗中心專案脈絡專案類型零售旗艦店零售旗艦店零售旗艦店零售旗艦店面積640 m²610 m²590 m²720 m²地點臺北市信義區臺北市內湖區臺北市中山區臺北市松山區完工時間進行中不適用2025年6月30日2024年11月15日2026年2月10日工期16 週目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。19–22 週已選歷史專案範圍19–22 週已選歷史專案範圍19–22 週已選歷史專案範圍整體商務比較報價 · 標準化報價NT$25,750 · 新台幣／m²+7.2% · NT$16,480,000報價NT$24,787 · 新台幣／m²資料足夠報價NT$23,644 · 新台幣／m²資料足夠報價NT$24,028 · 新台幣／m²資料足夠預估／已核對實際成本 · 標準化預估直接成本NT$19,766 · 新台幣／m²"
+      },
+      {
+        "busy": "true",
+        "label": null,
+        "role": null,
+        "text": "正在準備審查內容…"
+      },
+      {
+        "busy": "true",
+        "label": null,
+        "role": "dialog",
+        "text": "檢視內部審查事項建立事項前，請先檢視資料依據與不確定性。English繁體中文關閉標題檢核信義旗艦店裝修第3版報價的進口石材與照明假設審查信義旗艦店裝修第3版報價的進口石材與照明假設確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料審查信義旗艦店裝修第3版報價的進口石材與照明假設審查目的下次內部報價審查前，依連結的佐證資料檢核這些假設。確認佐證資料，並記錄內部審查需要釐清的問題。依連結的歷史佐證資料，檢核進口石材與照明假設。確認佐證資料，並記錄內部審查需要釐清的問題。可選擇審查用語。已查證的內容與不確定性說明會一併保留，無法在此變更。已查證內容・隨事項保留進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。照明報價與符合條件的歷史報價比較，差異為 +9.4%。照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。目前工期"
+      }
+    ],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&proposal=proposal_57286e7a-6f19-4cde-84d1-5b7f442dd58a&reviewTitle=REVIEW&reviewRationale=RECORD_QUESTIONS",
+    "viewport": {
+      "dpr": 1,
+      "height": 844,
+      "scrollWidth": 390,
+      "width": 390
+    }
+  },
+  "limits": "Transient DOM only, not a complete pending animation or accessibility acceptance test. No artificial confirmation delay."
+}

@@ -1,0 +1,54 @@
+{
+  "runId": "20261118T050551Z",
+  "database": "stage9-owned-synthetic-browser",
+  "at": "2026-11-18T05:18:46.183Z",
+  "caseId": "authority-1794979098668",
+  "kinds": [
+    "authority"
+  ],
+  "restored": true,
+  "restorationVerification": [
+    {
+      "table": "EvidenceReference",
+      "id": "evid_cost_cl_nanjing_023_v1_3",
+      "operation": "UPDATE",
+      "method": "Post-restore SELECT to_jsonb scoped row compared to private pre-mutation snapshot; INSERT reversal requires absent row.",
+      "beforeNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+      "restoredNormalizedSha256": "1f4d96ffaf4c0f37afb3c2b9df928c3fbc76fcc7dce5372af7fe831539d4faab",
+      "fieldEquality": {
+        "authorityState": true
+      },
+      "matched": true
+    }
+  ],
+  "countsBefore": {
+    "actions": 0,
+    "consumed": 0,
+    "receipts": 0,
+    "audits": 0,
+    "actionevidencelinks": 0
+  },
+  "countsAfter": {
+    "actions": 0,
+    "consumed": 0,
+    "receipts": 0,
+    "audits": 0,
+    "actionevidencelinks": 0
+  },
+  "noBusinessWrites": true,
+  "targetDescriptions": [
+    {
+      "table": "EvidenceReference",
+      "id": "evid_cost_cl_nanjing_023_v1_3",
+      "fields": [
+        "authorityState"
+      ],
+      "preconditions": {
+        "projectKey": "PRJ-NANJING-023",
+        "categoryId": "IMPORTED_STONE",
+        "requiredByProposal": true,
+        "originalAuthority": "RECONCILED_ACTUAL"
+      }
+    }
+  ]
+}

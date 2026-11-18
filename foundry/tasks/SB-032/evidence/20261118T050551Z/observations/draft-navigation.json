@@ -1,0 +1,62 @@
+{
+  "before": {
+    "fields": [
+      {
+        "id": "review-title",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "id": "review-dueDate",
+        "value": "2026-11-26"
+      },
+      {
+        "checked": false,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ]
+  },
+  "after": {
+    "fields": [
+      {
+        "id": "review-title",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "id": "review-dueDate",
+        "value": "2026-11-26"
+      },
+      {
+        "checked": false,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ]
+  },
+  "equal": true,
+  "steps": [
+    "locale en→zh-TW",
+    "claim/source/open/close/Escape",
+    "refresh",
+    "back",
+    "forward",
+    "copied proposal route reopened"
+  ],
+  "scope": "Visible review form fields only; unrelated hidden form inputs excluded."
+}

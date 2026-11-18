@@ -1,0 +1,96 @@
+{
+  "describedBy": "review-error-summary",
+  "draft": [
+    {
+      "id": "review-title",
+      "value": "CHECK"
+    },
+    {
+      "id": "review-rationale",
+      "value": "VALIDATE_HISTORY"
+    },
+    {
+      "id": "review-assignee",
+      "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+    },
+    {
+      "id": "review-dueDate",
+      "value": "2026-11-26"
+    },
+    {
+      "checked": true,
+      "id": "review-confirmation",
+      "value": "on"
+    }
+  ],
+  "focusId": "review-error-summary",
+  "focusInsideDialog": true,
+  "focusRect": {
+    "height": 196.046875,
+    "width": 640,
+    "x": 108,
+    "y": 147.1953125
+  },
+  "labelledBy": "review-error-heading",
+  "recovery": [
+    {
+      "disabled": false,
+      "text": "English"
+    },
+    {
+      "disabled": false,
+      "text": "繁體中文"
+    },
+    {
+      "disabled": false,
+      "text": "Close"
+    },
+    {
+      "disabled": false,
+      "text": "Refresh comparison"
+    },
+    {
+      "disabled": false,
+      "text": "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history."
+    },
+    {
+      "disabled": false,
+      "text": "Lighting quoted price differs by +9.4% from eligible quoted-price history."
+    },
+    {
+      "disabled": false,
+      "text": "Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available."
+    },
+    {
+      "disabled": false,
+      "text": "The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium."
+    },
+    {
+      "disabled": false,
+      "text": "Clear due date"
+    },
+    {
+      "disabled": true,
+      "text": "Create internal review action"
+    },
+    {
+      "disabled": false,
+      "text": "Cancel review"
+    }
+  ],
+  "rect": {
+    "height": 196.046875,
+    "width": 640,
+    "x": 108,
+    "y": 147.1953125
+  },
+  "role": "alert",
+  "summary": "Review could not be confirmedThe comparison or its evidence has changed. Nothing was created. Refresh the comparison and review it again.Reference: e98e3d27-44ec-4297-8de3-58d35a3409f0Refresh comparison",
+  "summaryExists": true,
+  "summaryInsideSameForm": true,
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_f5a9eae3-3472-4fcf-a310-a9abeb6ad0a3&economics=econrun_ddf16e38-6b64-4b8a-9c42-3359b478430c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_15494597-3992-463e-ac4d-82ee6ba4fd29&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2026-11-26",
+  "viewport": [
+    768,
+    1024
+  ]
+}

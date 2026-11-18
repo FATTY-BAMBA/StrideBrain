@@ -1,0 +1,406 @@
+- link "Skip to main content":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain BY PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: BY PRIMESTRIDE AI
+  - navigation "Projects":
+    - link "Home":
+      - /url: /en
+      - generic: "01"
+      - generic: Home
+    - link "Projects":
+      - /url: /en/projects
+      - generic: "02"
+      - generic: Projects
+    - link "Knowledge":
+      - /url: /en/knowledge
+      - generic: "03"
+      - generic: Knowledge
+    - link "StrideBrain":
+      - /url: /en/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "Settings":
+      - /url: /en/settings
+      - generic: "05"
+      - generic: Settings
+- banner:
+  - generic: ●
+  - text: Controlled synthetic demo
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_79a2aded-946b-47f1-bbd0-73dcde2bfb0f&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018
+    - generic: /
+    - link "EN":
+      - /url: /en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_79a2aded-946b-47f1-bbd0-73dcde2bfb0f&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018
+- main:
+  - navigation "Project workspace navigation":
+    - link "Overview":
+      - /url: /en/projects/PRJ-XINYI-026
+    - link "Compare":
+      - /url: /en/projects/PRJ-XINYI-026/compare
+    - link "Commercial":
+      - /url: /en/projects/PRJ-XINYI-026/commercial
+    - link "Evidence":
+      - /url: /en/projects/PRJ-XINYI-026/evidence
+    - link "Actions":
+      - /url: /en/projects/PRJ-XINYI-026/actions
+  - paragraph: COMPARABLE PROJECT INTELLIGENCE
+  - heading "Historical precedents for Xinyi Flagship Renovation" [level=1]
+  - paragraph: StrideBrain ranks authorized historical projects with deterministic factors, keeps commercial authority distinct, and shows where evidence is incomplete.
+  - term: Generated
+  - definition: Nov 18, 2026
+  - term: Comparison policy
+  - definition: Project similarity
+  - term: Authorized matches
+  - definition: "6"
+  - term: Selected precedents
+  - definition: 2/3
+  - term: Commercial evidence
+  - definition: Partial economics
+  - term: Data boundary
+  - definition: Synthetic Horizon Atelier demo data—not a market benchmark.
+  - region "Choose precedents to compare":
+    - paragraph: Have we done something like this before?
+    - heading "Choose precedents to compare" [level=2]
+    - paragraph: Select up to three projects. Updating the set creates a new immutable economics enrichment without changing the structural ranking.
+    - strong: "2"
+    - generic: selected
+    - generic: ·
+    - generic: Maximum 3
+    - article "1. Neihu Tech Flagship":
+      - generic: "Choose precedents to compare: Neihu Tech Flagship"
+      - 'checkbox "Choose precedents to compare: Neihu Tech Flagship" [checked]'
+      - generic: "1"
+      - generic: Strong match
+      - heading "Neihu Tech Flagship" [level=3]
+      - generic: Neihu District, Taipei City
+      - generic: 610 m²
+      - generic: Jun 30, 2025
+      - generic: Match score
+      - strong: 88/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic: Quoted history
+      - generic: Reconciled actual cost
+      - generic: Supplier offers are historical and must not be presented as current pricing.
+      - generic "Inspect factors"
+    - article "2. Zhongshan Lifestyle Store":
+      - generic: "Choose precedents to compare: Zhongshan Lifestyle Store"
+      - 'checkbox "Choose precedents to compare: Zhongshan Lifestyle Store" [checked]'
+      - generic: "2"
+      - generic: Strong match
+      - heading "Zhongshan Lifestyle Store" [level=3]
+      - generic: Zhongshan District, Taipei City
+      - generic: 590 m²
+      - generic: Nov 15, 2024
+      - generic: Match score
+      - strong: 81/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic: Quoted history
+      - generic: Reconciled actual cost
+      - generic "Inspect factors"
+    - article "3. Nanjing Brand Experience Center":
+      - generic: "Choose precedents to compare: Nanjing Brand Experience Center"
+      - 'checkbox "Choose precedents to compare: Nanjing Brand Experience Center"'
+      - generic: "3"
+      - generic: Relevant match
+      - heading "Nanjing Brand Experience Center" [level=3]
+      - generic: Songshan District, Taipei City
+      - generic: 720 m²
+      - generic: Feb 10, 2026
+      - generic: Match score
+      - strong: 79/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic "Inspect factors"
+    - article "4. Daan Premium Showroom":
+      - generic: "Choose precedents to compare: Daan Premium Showroom"
+      - 'checkbox "Choose precedents to compare: Daan Premium Showroom"'
+      - generic: "4"
+      - generic: Relevant match
+      - heading "Daan Premium Showroom" [level=3]
+      - generic: Daan District, Taipei City
+      - generic: 520 m²
+      - generic: Apr 20, 2024
+      - generic: Match score
+      - strong: 71/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic "Inspect factors"
+    - article "5. Songshan Retail Renewal":
+      - generic: "Choose precedents to compare: Songshan Retail Renewal"
+      - 'checkbox "Choose precedents to compare: Songshan Retail Renewal"'
+      - generic: "5"
+      - generic: Relevant match
+      - heading "Songshan Retail Renewal" [level=3]
+      - generic: Songshan District, Taipei City
+      - generic: 680 m²
+      - generic: Feb 28, 2025
+      - generic: Match score
+      - strong: 69/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic "Inspect factors"
+    - article "6. Banqiao Concept Store":
+      - generic: "Choose precedents to compare: Banqiao Concept Store"
+      - 'checkbox "Choose precedents to compare: Banqiao Concept Store"'
+      - generic: "6"
+      - generic: Partial match
+      - heading "Banqiao Concept Store" [level=3]
+      - generic: Banqiao District, New Taipei City
+      - generic: 760 m²
+      - generic: Sep 30, 2023
+      - generic: Match score
+      - strong: 63/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic "Inspect factors"
+    - paragraph: "Selected projects: PRJ-NEIHU-021, PRJ-ZHONGSHAN-018"
+    - button "Update comparison" [disabled]
+  - region "Structured comparison":
+    - paragraph: Structured comparison
+    - heading "Structured comparison" [level=2]
+    - paragraph: Values come from the stored deterministic run. Quoted price, forecast, supplier offer, and reconciled actual cost remain separate.
+    - generic "Structured comparison":
+      - article:
+        - heading "Xinyi Flagship Renovation" [level=3]
+        - heading "Project context" [level=4]
+        - generic: Subtype
+        - generic: Retail flagship
+        - generic: Area
+        - generic: 640 m²
+        - generic: Location
+        - generic: Xinyi District, Taipei City
+        - generic: Completion
+        - generic: Active project
+        - generic: Not applicable
+        - generic: Programme
+        - 'button "Evidence and sufficiency: 16 weeks · The current programme is shorter than the selected history, but no supported percentage premium is available."':
+          - generic: 16 weeks
+          - generic: The current programme is shorter than the selected history, but no supported percentage premium is available.
+        - heading "Overall commercial comparison" [level=4]
+        - generic: Quoted price · normalized
+        - 'button "Evidence and sufficiency: Quoted price · NT$25,750 · TWD/m² · Insufficient evidence"':
+          - generic: Quoted price
+          - generic: NT$25,750 · TWD/m²
+          - generic: Insufficient evidence
+          - generic: Insufficient evidence
+        - generic: Forecast / reconciled actual cost · normalized
+        - 'button "Evidence and sufficiency: Forecast direct cost · NT$19,766 · TWD/m² · Insufficient evidence"':
+          - generic: Forecast direct cost
+          - generic: NT$19,766 · TWD/m²
+          - generic: Insufficient evidence
+          - generic: Insufficient evidence
+        - heading "Category comparison" [level=4]
+        - generic: Imported stone · quoted
+        - 'button "Evidence and sufficiency: Quoted price · NT$4,688 · TWD/m² · Insufficient evidence"':
+          - generic: Quoted price
+          - generic: NT$4,688 · TWD/m²
+          - generic: Insufficient evidence
+          - generic: Insufficient evidence
+        - generic: Imported stone · forecast / reconciled actual
+        - 'button "Evidence and sufficiency: Forecast direct cost · NT$3,688 · TWD/m² · Insufficient evidence"':
+          - generic: Forecast direct cost
+          - generic: NT$3,688 · TWD/m²
+          - generic: Insufficient evidence
+          - generic: Insufficient evidence
+        - generic: Lighting/electrical · quoted
+        - 'button "Evidence and sufficiency: Quoted price · NT$4,844 · TWD/m² · Insufficient evidence"':
+          - generic: Quoted price
+          - generic: NT$4,844 · TWD/m²
+          - generic: Insufficient evidence
+          - generic: Insufficient evidence
+        - generic: Lighting/electrical · forecast / reconciled actual
+        - 'button "Evidence and sufficiency: Forecast direct cost · NT$3,672 · TWD/m² · Insufficient evidence"':
+          - generic: Forecast direct cost
+          - generic: NT$3,672 · TWD/m²
+          - generic: Insufficient evidence
+          - generic: Insufficient evidence
+        - generic: Custom millwork · quoted
+        - 'button "Evidence and sufficiency: Quoted price · NT$5,938 · TWD/m² · Insufficient evidence"':
+          - generic: Quoted price
+          - generic: NT$5,938 · TWD/m²
+          - generic: Insufficient evidence
+          - generic: Insufficient evidence
+        - generic: Custom millwork · forecast / reconciled actual
+        - 'button "Evidence and sufficiency: Forecast direct cost · NT$4,781 · TWD/m² · Insufficient evidence"':
+          - generic: Forecast direct cost
+          - generic: NT$4,781 · TWD/m²
+          - generic: Insufficient evidence
+          - generic: Insufficient evidence
+        - heading "Evidence and sufficiency" [level=4]
+        - generic: Supplier-offer context
+        - generic: Supplier offer
+        - generic: Unavailable
+        - generic: Unavailable
+        - generic: Evidence and sufficiency
+        - generic: Partial economics
+      - article:
+        - heading "Neihu Tech Flagship" [level=3]
+        - heading "Project context" [level=4]
+        - generic: Subtype
+        - generic: Retail flagship
+        - generic: Area
+        - generic: 610 m²
+        - generic: Location
+        - generic: Neihu District, Taipei City
+        - generic: Completion
+        - generic: Jun 30, 2025
+        - generic: Programme
+        - generic: 19–20 weeks
+        - generic: Selected historical range
+        - heading "Overall commercial comparison" [level=4]
+        - generic: Quoted price · normalized
+        - 'button "Evidence and sufficiency: Quoted price · Insufficient evidence · 2/3"':
+          - generic: Quoted price
+          - generic: Insufficient evidence
+          - generic: 2/3
+          - generic: Insufficient evidence
+        - generic: Forecast / reconciled actual cost · normalized
+        - 'button "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3"':
+          - generic: Reconciled actual cost
+          - generic: Insufficient evidence
+          - generic: 2/3
+          - generic: Insufficient evidence
+        - heading "Category comparison" [level=4]
+        - generic: Imported stone · quoted
+        - 'button "Evidence and sufficiency: Quoted price · Insufficient evidence · 2/3"':
+          - generic: Quoted price
+          - generic: Insufficient evidence
+          - generic: 2/3
+          - generic: Insufficient evidence
+        - generic: Imported stone · forecast / reconciled actual
+        - 'button "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3"':
+          - generic: Reconciled actual cost
+          - generic: Insufficient evidence
+          - generic: 2/3
+          - generic: Insufficient evidence
+        - generic: Lighting/electrical · quoted
+        - 'button "Evidence and sufficiency: Quoted price · Insufficient evidence · 2/3"':
+          - generic: Quoted price
+          - generic: Insufficient evidence
+          - generic: 2/3
+          - generic: Insufficient evidence
+        - generic: Lighting/electrical · forecast / reconciled actual
+        - 'button "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3"':
+          - generic: Reconciled actual cost
+          - generic: Insufficient evidence
+          - generic: 2/3
+          - generic: Insufficient evidence
+        - generic: Custom millwork · quoted
+        - 'button "Evidence and sufficiency: Quoted price · Insufficient evidence · 2/3"':
+          - generic: Quoted price
+          - generic: Insufficient evidence
+          - generic: 2/3
+          - generic: Insufficient evidence
+        - generic: Custom millwork · forecast / reconciled actual
+        - 'button "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3"':
+          - generic: Reconciled actual cost
+          - generic: Insufficient evidence
+          - generic: 2/3
+          - generic: Insufficient evidence
+        - heading "Evidence and sufficiency" [level=4]
+        - generic: Supplier-offer context
+        - 'button "Evidence and sufficiency: Supplier offer · Historical / stale · Feb 15, 2025"':
+          - generic: Supplier offer
+          - generic: Historical / stale
+          - generic: Feb 15, 2025
+          - generic: Historical / stale
+        - generic: Evidence and sufficiency
+        - generic: Quote and actual history
+      - article:
+        - heading "Zhongshan Lifestyle Store" [level=3]
+        - heading "Project context" [level=4]
+        - generic: Subtype
+        - generic: Retail flagship
+        - generic: Area
+        - generic: 590 m²
+        - generic: Location
+        - generic: Zhongshan District, Taipei City
+        - generic: Completion
+        - generic: Nov 15, 2024
+        - generic: Programme
+        - generic: 19–20 weeks
+        - generic: Selected historical range
+        - heading "Overall commercial comparison" [level=4]
+        - generic: Quoted price · normalized
+        - 'button "Evidence and sufficiency: Quoted price · Insufficient evidence · 2/3"':
+          - generic: Quoted price
+          - generic: Insufficient evidence
+          - generic: 2/3
+          - generic: Insufficient evidence
+        - generic: Forecast / reconciled actual cost · normalized
+        - 'button "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3"':
+          - generic: Reconciled actual cost
+          - generic: Insufficient evidence
+          - generic: 2/3
+          - generic: Insufficient evidence
+        - heading "Category comparison" [level=4]
+        - generic: Imported stone · quoted
+        - 'button "Evidence and sufficiency: Quoted price · Insufficient evidence · 2/3"':
+          - generic: Quoted price
+          - generic: Insufficient evidence
+          - generic: 2/3
+          - generic: Insufficient evidence
+        - generic: Imported stone · forecast / reconciled actual
+        - 'button "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3"':
+          - generic: Reconciled actual cost
+          - generic: Insufficient evidence
+          - generic: 2/3
+          - generic: Insufficient evidence
+        - generic: Lighting/electrical · quoted
+        - 'button "Evidence and sufficiency: Quoted price · Insufficient evidence · 2/3"':
+          - generic: Quoted price
+          - generic: Insufficient evidence
+          - generic: 2/3
+          - generic: Insufficient evidence
+        - generic: Lighting/electrical · forecast / reconciled actual
+        - 'button "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3"':
+          - generic: Reconciled actual cost
+          - generic: Insufficient evidence
+          - generic: 2/3
+          - generic: Insufficient evidence
+        - generic: Custom millwork · quoted
+        - 'button "Evidence and sufficiency: Quoted price · Insufficient evidence · 2/3"':
+          - generic: Quoted price
+          - generic: Insufficient evidence
+          - generic: 2/3
+          - generic: Insufficient evidence
+        - generic: Custom millwork · forecast / reconciled actual
+        - 'button "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3"':
+          - generic: Reconciled actual cost
+          - generic: Insufficient evidence
+          - generic: 2/3
+          - generic: Insufficient evidence
+        - heading "Evidence and sufficiency" [level=4]
+        - generic: Supplier-offer context
+        - generic: Supplier offer
+        - generic: Unavailable
+        - generic: Unavailable
+        - generic: Evidence and sufficiency
+        - generic: Quote and actual history
+  - region "Structured review":
+    - paragraph: Structured review
+    - heading "Structured review" [level=2]
+    - article:
+      - heading "Important differences" [level=3]
+      - paragraph: The current programme is shorter than the selected history, but no supported percentage premium is available.
+      - button "Inspect evidence"
+    - article:
+      - heading "Evidence gaps" [level=3]
+      - paragraph: Lighting is above quoted history, but actual-cost evidence is below the required threshold. 2/3
+      - button "Inspect evidence"
+    - article:
+      - heading "Recommended next review" [level=3]
+      - paragraph: Validate imported-stone and lighting assumptions internally before quote approval.
+  - complementary "Evidence and sufficiency":
+    - generic: Synthetic Horizon Atelier demo data—not a market benchmark.
+    - generic: Some categories do not have enough reconciled actual-cost evidence.
+    - generic: Supplier offers are historical and must not be presented as current pricing.
+- contentinfo:
+  - generic: Synthetic demo data only · No real customer data
+  - generic: Live demo-domain cutover has not occurred
+- alert: Historical precedents for Xinyi Flagship Renovation

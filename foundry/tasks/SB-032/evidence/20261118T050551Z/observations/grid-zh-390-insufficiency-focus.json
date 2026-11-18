@@ -1,0 +1,110 @@
+[
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 120.390625,
+      "x": 16,
+      "y": 189.046875
+    },
+    "tag": "BUTTON",
+    "text": "關閉資料依據",
+    "trigger": null,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 48.3984375,
+      "y": 437.4765625
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"bae1806f07ce700f23b70bfe\"]]]",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 48.3984375,
+      "y": 437.359375
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"3a8e6a0b703092d2d7f985d5\"]]]",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 48.3984375,
+      "y": 437.4765625
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"bae1806f07ce700f23b70bfe\"]]]",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 120.390625,
+      "x": 16,
+      "y": 189.046875
+    },
+    "tag": "BUTTON",
+    "text": "關閉資料依據",
+    "trigger": null,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 48.3984375,
+      "y": 758.2421875
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"8f971933b0c25107bec08737\"]]]",
+    "viewport": [
+      390,
+      844
+    ]
+  }
+]

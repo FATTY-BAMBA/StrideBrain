@@ -1,0 +1,12 @@
+{
+  "at": "2026-11-18T05:49:01.639Z",
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_879e4d9e-011f-42e2-8e73-7ed5af894e08&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&outcome=FAILED&requestId=ae51fb26-3d4c-49b7-90e7-404991257446",
+  "busy": [
+    {
+      "label": "Loading comparable projects",
+      "text": ""
+    }
+  ],
+  "containsEnglishLoading": true,
+  "speechNotInferred": true
+}

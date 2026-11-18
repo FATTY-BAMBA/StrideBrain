@@ -1,0 +1,110 @@
+[
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 152.390625,
+      "x": 16,
+      "y": 189.046875
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 154,
+      "x": 16,
+      "y": 342.15625
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 152.390625,
+      "x": 16,
+      "y": 189.046875
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 154,
+      "x": 16,
+      "y": 342.15625
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 152.390625,
+      "x": 16,
+      "y": 189.046875
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 154,
+      "x": 16,
+      "y": 342.15625
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      390,
+      844
+    ]
+  }
+]

@@ -1,0 +1,1 @@
+{"label":"bilingual-grid","method":"Bounded operator-held table read delay to observe real loading UI/AX; no row writes or product changes","table":"ComparisonRun","durationSeconds":45,"startedAt":"2026-11-18T09:16:49.403Z","heldAt":"2026-11-18T09:16:49.433Z","restoredAt":"2026-11-18T09:17:34.466Z","restored":true}

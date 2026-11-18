@@ -1,0 +1,21 @@
+{
+  "at": "2026-11-18T05:57:47.090644+00:00",
+  "inventoryMethod": "macOS CoreDevice read-only inventory after user connected/unlocked USB iPhone",
+  "iPhone": {
+    "modelIdentifier": "iPhone16,1",
+    "marketingModel": "NOT_INDEPENDENTLY_VERIFIED",
+    "iOSVersion": "26.5",
+    "SafariVersion": "NOT_SEPARATELY_RECORDED",
+    "pairingState": "paired",
+    "transport": "wired",
+    "physicalBrowserTest": "NOT_RUN"
+  },
+  "Android": {
+    "availability": "UNCONFIRMED",
+    "status": "DEVICE_EVIDENCE_REQUIRED_ANDROID"
+  },
+  "serialUDIDIMEIPhoneNumberRetained": false,
+  "USBSystemProfiler": "No phone candidate returned; CoreDevice subsequently detected paired wired device.",
+  "safeAccess": "BLOCKED_PENDING_VALIDATED_LOCAL_HTTPS",
+  "productSourceChanged": false
+}

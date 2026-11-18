@@ -1,0 +1,37 @@
+Browser tab: 1605347227, Title: "StrideBrain", URL: "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare".
+1 AXWebArea StrideBrain, URL: localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare
+	2 link Description: 跳至主要內容, Value: localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare#main-content
+	3 container
+		4 container StrideBrain PRIMESTRIDE AI
+			5 text StrideBrain
+			6 text PRIMESTRIDE AI
+		7 container 專案
+			8 link Description: 首頁, Value: localhost:3000/zh-TW
+			9 link Description: 專案, Value: localhost:3000/zh-TW/projects
+			10 link Description: 知識, Value: localhost:3000/zh-TW/knowledge
+			11 link Description: StrideBrain, Value: localhost:3000/zh-TW/stridebrain
+			12 link Description: 設定, Value: localhost:3000/zh-TW/settings
+	14 container
+		15 text 受控虛構資料示範
+		16 container 繁中 / EN
+			17 link Description: 繁中, Value: localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare
+			18 link Description: EN, Value: localhost:3000/en/projects/PRJ-XINYI-026/compare
+	23 container main-content
+		24 container 專案工作區導覽
+			25 link Description: 總覽, Value: localhost:3000/zh-TW/projects/PRJ-XINYI-026
+			26 link Description: 比較, Value: localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare
+			27 link Description: 商務資料, Value: localhost:3000/zh-TW/projects/PRJ-XINYI-026/commercial
+			28 link Description: 資料依據, Value: localhost:3000/zh-TW/projects/PRJ-XINYI-026/evidence
+			29 link Description: 行動事項, Value: localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions
+		30 container 我們以前做過類似的案子嗎？
+			31 container
+				32 text 類似專案智慧
+				33 heading 我們以前做過類似的案子嗎？, Value: 1, ID: comparison-start-title
+					34 text 我們以前做過類似的案子嗎？
+				35 text 尋找類似歷史專案 搜尋已授權的歷史專案、說明最接近的原因，並用可信任的歷史依據比較目前報價。
+				36 button 尋找類似歷史專案
+	20 container
+		21 text 僅使用虛構示範資料 · 無真實客戶資料 尚未切換正式示範網域
+	22 text StrideBrain
+
+The focused UI element is 1 AXWebArea StrideBrain, URL: localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare

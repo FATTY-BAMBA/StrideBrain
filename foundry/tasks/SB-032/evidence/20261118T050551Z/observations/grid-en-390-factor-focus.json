@@ -1,0 +1,110 @@
+[
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 141.7109375,
+      "x": 16,
+      "y": 209.921875
+    },
+    "tag": "BUTTON",
+    "text": "Close evidence",
+    "trigger": null,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 48.3984375,
+      "y": 386.6953125
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceCandidate\",\"PRJ-NEIHU-021\"],[\"evidenceFactor\",\"SCOPE_OVERLAP\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"e557a44e941d0ab0bd2abe03\"]]]",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 48.3984375,
+      "y": 758.0703125
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceCandidate\",\"PRJ-NEIHU-021\"],[\"evidenceFactor\",\"SCOPE_OVERLAP\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"a6032b0c765ae62ba7846c56\"]]]",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 48.3984375,
+      "y": 162.6953125
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceCandidate\",\"PRJ-NEIHU-021\"],[\"evidenceFactor\",\"SCOPE_OVERLAP\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"e557a44e941d0ab0bd2abe03\"]]]",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 141.7109375,
+      "x": 16,
+      "y": 209.921875
+    },
+    "tag": "BUTTON",
+    "text": "Close evidence",
+    "trigger": null,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 48.3984375,
+      "y": 758.0703125
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceCandidate\",\"PRJ-NEIHU-021\"],[\"evidenceFactor\",\"SCOPE_OVERLAP\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"a6032b0c765ae62ba7846c56\"]]]",
+    "viewport": [
+      390,
+      844
+    ]
+  }
+]

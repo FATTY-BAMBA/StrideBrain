@@ -1,0 +1,14 @@
+
+[REDACTED_PRIVATE_VALUE]/prisma.config.ts
+  5:1  warning  Assign object to a variable before exporting as module default  import/no-anonymous-default-export
+
+[REDACTED_PRIVATE_VALUE]/tests/comparison-experience/selection-lineage-postgres.test.ts
+   52:5   error    'originalRows' is never reassigned. Use 'const' instead  prefer-const
+  245:39  warning  '_owner' is defined but never used                       @typescript-eslint/no-unused-vars
+
+[REDACTED_PRIVATE_VALUE]/tests/comparison-experience/selection-navigation.test.ts
+  13:35  error  `import()` type annotations are forbidden  @typescript-eslint/consistent-type-imports
+
+✖ 4 problems (2 errors, 2 warnings)
+  1 error and 0 warnings potentially fixable with the `--fix` option.
+

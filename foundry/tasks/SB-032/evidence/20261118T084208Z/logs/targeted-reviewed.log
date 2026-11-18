@@ -1,0 +1,35 @@
+
+ RUN  v4.1.10 [REDACTED_PRIVATE_VALUE]
+
+ ❯ tests/comparison-experience/selection-navigation.test.ts (8 tests | 2 failed) 144ms
+     × keeps current economics when opening a structural factor from a stale browser URL 9ms
+     × keeps current economics when opening a structural factor from a stale browser URL 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/comparison-experience/selection-navigation.test.ts > Persisted selection navigation en > keeps current economics when opening a structural factor from a stale browser URL
+ FAIL  tests/comparison-experience/selection-navigation.test.ts > Persisted selection navigation zh-TW > keeps current economics when opening a structural factor from a stale browser URL
+AssertionError: expected null to be 'factor' // Object.is equality
+
+- Expected:
+"factor"
+
++ Received:
+null
+
+ ❯ tests/comparison-experience/selection-navigation.test.ts:166:46
+    164|     const url = new URL(mocks.push.mock.calls.at(-1)![0], "http://loca…
+    165|     expect(url.searchParams.get("economics")).toBe("B");
+    166|     expect(url.searchParams.get("evidence")).toBe("factor");
+       |                                              ^
+    167|     expect(url.searchParams.get("selected")).toBe("A,B");
+    168|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  2 failed | 65 passed (67)
+   Start at  17:00:08
+   Duration  8.07s (transform 485ms, setup 0ms, import 762ms, tests 7.86s, environment 1.07s)
+

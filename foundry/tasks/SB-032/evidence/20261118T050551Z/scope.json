@@ -1,0 +1,21 @@
+{
+  "runId": "20261118T050551Z",
+  "head": "1bde2114d010c694d017ba2b4116ceffab3569e1",
+  "requested": [
+    "Bilingual four-viewport baseline",
+    "M-01 actual VoiceOver",
+    "M-06 live error association",
+    "M-05 isolated clock advancement",
+    "M-02 device package",
+    "M-07 human language package"
+  ],
+  "productEdits": "ONLY_AFTER_NEW_REPRODUCIBLE_DEFECT",
+  "deployment": false,
+  "merge": false,
+  "stopRules": {
+    "P0": "STOP_IMMEDIATELY",
+    "P1": "STOP_AFFECTED_WRITE_PATH",
+    "requiredPathP2": "RECORD_AND_INDEPENDENT_CLASSIFICATION_BEFORE_REPAIR"
+  },
+  "priorSyntheticActionAuthorization": "User expressly authorized synthetic local QA action/audit creation; persists within isolated QA scope."
+}

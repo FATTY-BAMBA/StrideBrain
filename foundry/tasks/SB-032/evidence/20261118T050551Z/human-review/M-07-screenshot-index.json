@@ -1,0 +1,595 @@
+{
+  "head": "1bde2114d010c694d017ba2b4116ceffab3569e1",
+  "buildId": "D-m5LLqTQcus07rZUtxWj",
+  "humanApproval": "NOT_VERIFIED_MANUAL_REQUIRED",
+  "coreGrid": [
+    {
+      "state": "projects",
+      "locale": "zh-TW",
+      "requested": [
+        1440,
+        900
+      ],
+      "actual": [
+        1440,
+        900
+      ],
+      "screenshot": "screenshots/grid-zh-1440-projects.jpg",
+      "overflow": false
+    },
+    {
+      "state": "projects",
+      "locale": "zh-TW",
+      "requested": [
+        768,
+        1024
+      ],
+      "actual": [
+        768,
+        1024
+      ],
+      "screenshot": "screenshots/grid-zh-768-projects.jpg",
+      "overflow": false
+    },
+    {
+      "state": "projects",
+      "locale": "zh-TW",
+      "requested": [
+        390,
+        844
+      ],
+      "actual": [
+        390,
+        844
+      ],
+      "screenshot": "screenshots/grid-zh-390-projects.jpg",
+      "overflow": false
+    },
+    {
+      "state": "projects",
+      "locale": "zh-TW",
+      "requested": [
+        320,
+        740
+      ],
+      "actual": [
+        320,
+        740
+      ],
+      "screenshot": "screenshots/grid-zh-320-projects.jpg",
+      "overflow": false
+    },
+    {
+      "state": "workspace",
+      "locale": "zh-TW",
+      "requested": [
+        1440,
+        900
+      ],
+      "actual": [
+        1440,
+        900
+      ],
+      "screenshot": "screenshots/grid-zh-1440-workspace.jpg",
+      "overflow": false
+    },
+    {
+      "state": "workspace",
+      "locale": "zh-TW",
+      "requested": [
+        768,
+        1024
+      ],
+      "actual": [
+        768,
+        1024
+      ],
+      "screenshot": "screenshots/grid-zh-768-workspace.jpg",
+      "overflow": false
+    },
+    {
+      "state": "workspace",
+      "locale": "zh-TW",
+      "requested": [
+        390,
+        844
+      ],
+      "actual": [
+        390,
+        844
+      ],
+      "screenshot": "screenshots/grid-zh-390-workspace.jpg",
+      "overflow": false
+    },
+    {
+      "state": "workspace",
+      "locale": "zh-TW",
+      "requested": [
+        320,
+        740
+      ],
+      "actual": [
+        320,
+        740
+      ],
+      "screenshot": "screenshots/grid-zh-320-workspace.jpg",
+      "overflow": false
+    },
+    {
+      "state": "comparison",
+      "locale": "zh-TW",
+      "requested": [
+        1440,
+        900
+      ],
+      "actual": [
+        1440,
+        900
+      ],
+      "screenshot": "screenshots/grid-zh-1440-comparison.jpg",
+      "overflow": false
+    },
+    {
+      "state": "comparison",
+      "locale": "zh-TW",
+      "requested": [
+        768,
+        1024
+      ],
+      "actual": [
+        768,
+        1024
+      ],
+      "screenshot": "screenshots/grid-zh-768-comparison.jpg",
+      "overflow": false
+    },
+    {
+      "state": "comparison",
+      "locale": "zh-TW",
+      "requested": [
+        390,
+        844
+      ],
+      "actual": [
+        390,
+        844
+      ],
+      "screenshot": "screenshots/grid-zh-390-comparison.jpg",
+      "overflow": false
+    },
+    {
+      "state": "comparison",
+      "locale": "zh-TW",
+      "requested": [
+        320,
+        740
+      ],
+      "actual": [
+        320,
+        740
+      ],
+      "screenshot": "screenshots/grid-zh-320-comparison.jpg",
+      "overflow": false
+    },
+    {
+      "state": "factor",
+      "locale": "zh-TW",
+      "requested": [
+        1440,
+        900
+      ],
+      "actual": [
+        1440,
+        900
+      ],
+      "screenshot": "screenshots/grid-zh-1440-factor.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "factor",
+      "locale": "zh-TW",
+      "requested": [
+        768,
+        1024
+      ],
+      "actual": [
+        768,
+        1024
+      ],
+      "screenshot": "screenshots/grid-zh-768-factor.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "factor",
+      "locale": "zh-TW",
+      "requested": [
+        390,
+        844
+      ],
+      "actual": [
+        390,
+        844
+      ],
+      "screenshot": "screenshots/grid-zh-390-factor.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "factor",
+      "locale": "zh-TW",
+      "requested": [
+        320,
+        740
+      ],
+      "actual": [
+        320,
+        740
+      ],
+      "screenshot": "screenshots/grid-zh-320-factor.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "insufficiency",
+      "locale": "zh-TW",
+      "requested": [
+        1440,
+        900
+      ],
+      "actual": [
+        1440,
+        900
+      ],
+      "screenshot": "screenshots/grid-zh-1440-insufficiency.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "insufficiency",
+      "locale": "zh-TW",
+      "requested": [
+        768,
+        1024
+      ],
+      "actual": [
+        768,
+        1024
+      ],
+      "screenshot": "screenshots/grid-zh-768-insufficiency.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "insufficiency",
+      "locale": "zh-TW",
+      "requested": [
+        390,
+        844
+      ],
+      "actual": [
+        390,
+        844
+      ],
+      "screenshot": "screenshots/grid-zh-390-insufficiency.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "insufficiency",
+      "locale": "zh-TW",
+      "requested": [
+        320,
+        740
+      ],
+      "actual": [
+        320,
+        740
+      ],
+      "screenshot": "screenshots/grid-zh-320-insufficiency.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "programme",
+      "locale": "zh-TW",
+      "requested": [
+        1440,
+        900
+      ],
+      "actual": [
+        1440,
+        900
+      ],
+      "screenshot": "screenshots/grid-zh-1440-programme.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "programme",
+      "locale": "zh-TW",
+      "requested": [
+        768,
+        1024
+      ],
+      "actual": [
+        768,
+        1024
+      ],
+      "screenshot": "screenshots/grid-zh-768-programme.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "programme",
+      "locale": "zh-TW",
+      "requested": [
+        390,
+        844
+      ],
+      "actual": [
+        390,
+        844
+      ],
+      "screenshot": "screenshots/grid-zh-390-programme.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "programme",
+      "locale": "zh-TW",
+      "requested": [
+        320,
+        740
+      ],
+      "actual": [
+        320,
+        740
+      ],
+      "screenshot": "screenshots/grid-zh-320-programme.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "claim",
+      "locale": "zh-TW",
+      "requested": [
+        1440,
+        900
+      ],
+      "actual": [
+        1440,
+        900
+      ],
+      "screenshot": "screenshots/grid-zh-1440-claim.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "claim",
+      "locale": "zh-TW",
+      "requested": [
+        768,
+        1024
+      ],
+      "actual": [
+        768,
+        1024
+      ],
+      "screenshot": "screenshots/grid-zh-768-claim.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "claim",
+      "locale": "zh-TW",
+      "requested": [
+        390,
+        844
+      ],
+      "actual": [
+        390,
+        844
+      ],
+      "screenshot": "screenshots/grid-zh-390-claim.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "claim",
+      "locale": "zh-TW",
+      "requested": [
+        320,
+        740
+      ],
+      "actual": [
+        320,
+        740
+      ],
+      "screenshot": "screenshots/grid-zh-320-claim.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "source",
+      "locale": "zh-TW",
+      "requested": [
+        1440,
+        900
+      ],
+      "actual": [
+        1440,
+        900
+      ],
+      "screenshot": "screenshots/grid-zh-1440-source.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "source",
+      "locale": "zh-TW",
+      "requested": [
+        768,
+        1024
+      ],
+      "actual": [
+        768,
+        1024
+      ],
+      "screenshot": "screenshots/grid-zh-768-source.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "source",
+      "locale": "zh-TW",
+      "requested": [
+        390,
+        844
+      ],
+      "actual": [
+        390,
+        844
+      ],
+      "screenshot": "screenshots/grid-zh-390-source.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "source",
+      "locale": "zh-TW",
+      "requested": [
+        320,
+        740
+      ],
+      "actual": [
+        320,
+        740
+      ],
+      "screenshot": "screenshots/grid-zh-320-source.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "receipt",
+      "locale": "zh-TW",
+      "requested": [
+        1440,
+        900
+      ],
+      "actual": [
+        1440,
+        900
+      ],
+      "screenshot": "screenshots/grid-zh-1440-receipt.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "receipt",
+      "locale": "zh-TW",
+      "requested": [
+        768,
+        1024
+      ],
+      "actual": [
+        768,
+        1024
+      ],
+      "screenshot": "screenshots/grid-zh-768-receipt.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "receipt",
+      "locale": "zh-TW",
+      "requested": [
+        390,
+        844
+      ],
+      "actual": [
+        390,
+        844
+      ],
+      "screenshot": "screenshots/grid-zh-390-receipt.jpg",
+      "overflow": false,
+      "focusContained": true
+    },
+    {
+      "state": "receipt",
+      "locale": "zh-TW",
+      "requested": [
+        320,
+        740
+      ],
+      "actual": [
+        320,
+        740
+      ],
+      "screenshot": "screenshots/grid-zh-320-receipt.jpg",
+      "overflow": false,
+      "focusContained": true
+    }
+  ],
+  "additionalScreenshots": [
+    "screenshots/hero-zh-1440-comparison-selection.jpg",
+    "screenshots/hero-zh-1440-receipt-reopened.jpg",
+    "screenshots/hero-zh-1440-receipt.jpg",
+    "screenshots/hero-zh-1440-review-long-draft.jpg",
+    "screenshots/hero-zh-1440-validation.jpg",
+    "screenshots/hero-zh-320-comparison-selection.jpg",
+    "screenshots/hero-zh-320-receipt-reopened.jpg",
+    "screenshots/hero-zh-320-receipt.jpg",
+    "screenshots/hero-zh-320-review-long-draft.jpg",
+    "screenshots/hero-zh-320-validation.jpg",
+    "screenshots/hero-zh-390-comparison-selection.jpg",
+    "screenshots/hero-zh-390-receipt-reopened.jpg",
+    "screenshots/hero-zh-390-receipt.jpg",
+    "screenshots/hero-zh-390-review-long-draft.jpg",
+    "screenshots/hero-zh-390-validation.jpg",
+    "screenshots/hero-zh-768-comparison-selection.jpg",
+    "screenshots/hero-zh-768-receipt-reopened.jpg",
+    "screenshots/hero-zh-768-receipt.jpg",
+    "screenshots/hero-zh-768-review-long-draft.jpg",
+    "screenshots/hero-zh-768-validation.jpg",
+    "screenshots/m01-m06-zh-access-change.jpg",
+    "screenshots/m01-zh-claim-open.jpg",
+    "screenshots/m01-zh-dialog.jpg",
+    "screenshots/m01-zh-evidence-close.jpg",
+    "screenshots/m01-zh-receipt.jpg",
+    "screenshots/m01-zh-source-close.jpg",
+    "screenshots/m01-zh-source-open.jpg",
+    "screenshots/m01-zh-validation.jpg",
+    "screenshots/zh-1440-comparison.jpg",
+    "screenshots/zh-1440-confirmed-receipt.jpg",
+    "screenshots/zh-1440-factor-panel.jpg",
+    "screenshots/zh-1440-factor-summary.jpg",
+    "screenshots/zh-1440-insufficiency.jpg",
+    "screenshots/zh-1440-programme-locator-settled.jpg",
+    "screenshots/zh-1440-programme-locator.jpg",
+    "screenshots/zh-1440-project-actions.jpg",
+    "screenshots/zh-1440-projects.jpg",
+    "screenshots/zh-1440-receipt-reopened.jpg",
+    "screenshots/zh-1440-server-error-corrected.jpg",
+    "screenshots/zh-1440-server-error.jpg",
+    "screenshots/zh-1440-workspace.jpg",
+    "screenshots/zh-320-server-error-corrected.jpg",
+    "screenshots/zh-320-server-error.jpg",
+    "screenshots/zh-390-evidence-unavailable.jpg",
+    "screenshots/zh-390-server-error-corrected.jpg",
+    "screenshots/zh-390-server-error.jpg",
+    "screenshots/zh-390-stale-comparison.jpg",
+    "screenshots/zh-390-stale-error.jpg",
+    "screenshots/zh-390-stale-proposal-unavailable.jpg",
+    "screenshots/zh-768-claim.jpg",
+    "screenshots/zh-768-review-long-draft.jpg",
+    "screenshots/zh-768-server-error-corrected.jpg",
+    "screenshots/zh-768-server-error.jpg",
+    "screenshots/zh-768-source-focus.jpg",
+    "screenshots/zh-selection-changed-daan.jpg",
+    "screenshots/zh-selection-restored-canonical.jpg",
+    "screenshots/zh-server-error.jpg"
+  ],
+  "unobserved": "Full conflict/superseded/restricted/pending and exact EVIDENCE_UNAVAILABLE matrix not completed; not a complete Stage 9 visual acceptance."
+}

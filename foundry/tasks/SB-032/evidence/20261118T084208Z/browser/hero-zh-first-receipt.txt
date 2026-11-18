@@ -1,0 +1,101 @@
+- alert: StrideBrain
+- link "跳至主要內容":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: PRIMESTRIDE AI
+  - navigation "專案":
+    - link "首頁":
+      - /url: /zh-TW
+      - generic: "01"
+      - generic: 首頁
+    - link "專案":
+      - /url: /zh-TW/projects
+      - generic: "02"
+      - generic: 專案
+    - link "知識":
+      - /url: /zh-TW/knowledge
+      - generic: "03"
+      - generic: 知識
+    - link "StrideBrain":
+      - /url: /zh-TW/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "設定":
+      - /url: /zh-TW/settings
+      - generic: "05"
+      - generic: 設定
+  - strong: v0.1 · 受控示範
+  - generic: 此區域尚未啟用
+- banner:
+  - generic: ●
+  - text: 受控虛構資料示範
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_bc8bba12-2d8f-4620-97cf-09c29cf7c74f
+    - generic: /
+    - link "EN":
+      - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_bc8bba12-2d8f-4620-97cf-09c29cf7c74f
+- main:
+  - navigation "專案工作區導覽":
+    - link "總覽":
+      - /url: /zh-TW/projects/PRJ-XINYI-026
+    - link "比較":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/compare
+    - link "商務資料":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/commercial
+    - link "資料依據":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/evidence
+    - link "行動事項":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/actions
+  - heading "內部審查事項" [level=1]
+  - paragraph: 信義旗艦店裝修
+  - paragraph: 開啟已儲存回執以檢視詳情，或返回來源比較。
+  - article:
+    - generic: 待處理
+    - heading "確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料" [level=2]
+    - term: 承辦人
+    - definition: 林美玲
+    - term: 到期日
+    - definition: 未設定到期日
+    - link "開啟回執":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_bc8bba12-2d8f-4620-97cf-09c29cf7c74f
+  - dialog "已建立內部審查事項":
+    - heading "已建立內部審查事項" [active] [level=2]
+    - paragraph: 此回執記錄已儲存至專案的事項。
+    - navigation "English / 繁體中文":
+      - link "English":
+        - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_bc8bba12-2d8f-4620-97cf-09c29cf7c74f
+      - link "繁體中文":
+        - /url: /zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_bc8bba12-2d8f-4620-97cf-09c29cf7c74f
+    - button "關閉"
+    - heading "確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料" [level=3]
+    - paragraph: 依連結的歷史佐證資料，檢核進口石材與照明假設。 進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。 照明報價與符合條件的歷史報價比較，差異為 +9.4%。 照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。 目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。 比較紀錄：cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4；成本分析紀錄：econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9。 此操作只會建立內部審查事項，不會核准或發出報價、授權商業承諾，或對外聯繫。 歷史比較不能證明這份報價有誤、供應商收費過高，或趕工造成特定溢價；供應商價格也未確認目前仍有效。
+    - term: 事項編號
+    - definition: action_bc8bba12-2d8f-4620-97cf-09c29cf7c74f
+    - term: 專案
+    - definition: 信義旗艦店裝修
+    - term: 承辦人
+    - definition: 林美玲
+    - term: 到期日
+    - definition: 未設定到期日
+    - term: 狀態
+    - definition: 待處理
+    - term: 建立時間
+    - definition: 2026年11月18日 下午5:21
+    - term: 建立人
+    - definition: 林美玲
+    - term: 可存取的佐證資料筆數
+    - definition: "15"
+    - term: 來源比較紀錄
+    - definition: cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4
+    - term: 來源商務分析紀錄
+    - definition: econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9
+    - link "返回來源比較":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__
+    - link "查看專案事項":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__
+- contentinfo:
+  - generic: 僅使用虛構示範資料 · 無真實客戶資料
+  - generic: 尚未切換正式示範網域
