@@ -1,6 +1,11 @@
 import { getPrismaClient } from "@/lib/server/prisma";
 import { createInternalReviewServices } from "@/lib/server/internal-review-services";
 import { GetProjectWorkspace } from "@/modules/projects/application/get-project-workspace";
+import { ListAuthorizedProjects } from "@/modules/projects/application/list-authorized-projects";
+import {
+  PrismaProjectListRepository,
+  type PrismaProjectListReader,
+} from "@/repositories/prisma/prisma-project-list-repository";
 import {
   PrismaProjectRepository,
   type PrismaProjectReader,
@@ -11,6 +16,12 @@ import {
 } from "@/repositories/prisma/prisma-project-workspace-repository";
 
 type ProjectWorkspaceDatabase = PrismaProjectReader & PrismaProjectWorkspaceDatabase;
+
+export function createProjectListService(): ListAuthorizedProjects {
+  return new ListAuthorizedProjects(
+    new PrismaProjectListRepository(getPrismaClient() as unknown as PrismaProjectListReader),
+  );
+}
 
 /** Creates the Stage 3 project workspace use case from server-only adapters. */
 export function createProjectWorkspaceService(): GetProjectWorkspace {

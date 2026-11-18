@@ -35,7 +35,16 @@ export function WorkspaceShell({ locale, catalog, children }: WorkspaceShellProp
           </span>
         </div>
 
-        <GlobalNav locale={locale} labels={catalog} />
+        <GlobalNav
+          locale={locale}
+          labels={{
+            "nav.home": catalog["nav.home"],
+            "nav.projects": catalog["nav.projects"],
+            "nav.knowledge": catalog["nav.knowledge"],
+            "nav.stridebrain": catalog["nav.stridebrain"],
+            "nav.settings": catalog["nav.settings"],
+          }}
+        />
 
         <div className="workspace-sidebar__status">
           <span className="status-dot" aria-hidden="true" />
