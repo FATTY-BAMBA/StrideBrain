@@ -24,6 +24,7 @@ import {
 import { displayReviewTimestamp } from "@/components/internal-review/action-receipt";
 import styles from "./internal-review.module.css";
 import { focusFirstReviewError } from "@/modules/internal-review-experience/focus";
+import { useReviewDatePolicy } from "./use-review-date-policy";
 
 function isReceiptOutcome(
   outcome: ConfirmOutcome,
@@ -83,16 +84,37 @@ export function InternalReviewSheet({
   const acknowledged = useRef(false);
   const [confirming, setConfirming] = useState(false);
   const submission = useRef(false);
+  const errorFocusPending = useRef(false);
+  const dateRecoveryFocusPending = useRef(false);
   const pending = confirming || navigationPending;
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [failure, setFailure] = useState<Exclude<ConfirmOutcome, { receipt: unknown }> | null>(
     null,
   );
+  const dates = useReviewDatePolicy(proposal);
+  const dueDateError =
+    fieldErrors.dueDate ??
+    (dates.status === "ready" &&
+    dueDate &&
+    (dueDate < dates.policy.minDueDate || dueDate > dates.policy.maxDueDate)
+      ? "INVALID_DUE_DATE"
+      : undefined);
 
   useEffect(() => {
-    if (pending || !failure) return;
+    if (pending || !failure || !errorFocusPending.current) return;
+    errorFocusPending.current = false;
     focusFirstReviewError(form.current, fieldErrors);
   }, [failure, fieldErrors, pending]);
+
+  useEffect(() => {
+    if (pending || dates.status === "refreshing" || !dateRecoveryFocusPending.current) return;
+    dateRecoveryFocusPending.current = false;
+    const recovery = form.current?.querySelector<HTMLElement>(
+      dates.status === "ready" ? "#review-dueDate" : "#review-date-policy",
+    );
+    recovery?.focus({ preventScroll: true });
+    recovery?.scrollIntoView({ behavior: "instant", block: "center" });
+  }, [dates.status, pending]);
 
   const lockedAfterFailure =
     failure &&
@@ -119,11 +141,18 @@ export function InternalReviewSheet({
 
   function updateDraft(change: ReviewDraftSelection) {
     if (pending) return;
+    if (change.dueDate !== undefined) {
+      setFieldErrors((previous) => {
+        const remaining = { ...previous };
+        delete remaining.dueDate;
+        return remaining;
+      });
+    }
     window.history.replaceState(null, "", currentDraftHref(change));
   }
 
   function error(field: keyof FieldErrors) {
-    const code = fieldErrors[field];
+    const code = field === "dueDate" ? dueDateError : fieldErrors[field];
     return code ? (
       <p className={styles.error} id={`review-${field}-error`} tabIndex={-1}>
         {field === "assigneeKey"
@@ -148,34 +177,56 @@ export function InternalReviewSheet({
     setFieldErrors({});
     setFailure(null);
     let outcome: ConfirmOutcome;
+    const startedAt = performance.now();
     try {
-      const response = await fetch("/api/actions/internal-review", {
-        method: "POST",
-        credentials: "same-origin",
-        cache: "no-store",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          version: "internal-review-command.v1",
-          proposalKey: proposal.businessKey,
-          title: latest.title,
-          rationale: latest.rationale,
-          assigneeKey: latest.assigneeKey === "none" ? null : latest.assigneeKey,
-          dueDate: latest.dueDate || null,
-          confirmation: acknowledged.current,
-          idempotencyKey: proposal.idempotencyKey,
-          locale: proposal.locale,
-        }),
-      });
-      outcome = (await response.json()) as ConfirmOutcome;
-      if (!outcome || typeof outcome.kind !== "string") throw new Error("INVALID_RESPONSE");
-      if (isReceiptOutcome(outcome) && !outcome.receipt) throw new Error("RECEIPT_UNAVAILABLE");
+      const currentDates = await dates.ensureCurrent();
+      if (!currentDates) {
+        dateRecoveryFocusPending.current = true;
+        submission.current = false;
+        setConfirming(false);
+        onPendingChange(false);
+        return;
+      }
+      if (
+        latest.dueDate &&
+        (latest.dueDate < currentDates.minDueDate || latest.dueDate > currentDates.maxDueDate)
+      ) {
+        outcome = {
+          kind: "VALIDATION_FAILED",
+          requestId: "",
+          fieldErrors: { dueDate: "INVALID_DUE_DATE" },
+        };
+      } else {
+        const response = await fetch("/api/actions/internal-review", {
+          method: "POST",
+          credentials: "same-origin",
+          cache: "no-store",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            version: "internal-review-command.v1",
+            proposalKey: proposal.businessKey,
+            title: latest.title,
+            rationale: latest.rationale,
+            assigneeKey: latest.assigneeKey === "none" ? null : latest.assigneeKey,
+            dueDate: latest.dueDate || null,
+            confirmation: acknowledged.current,
+            idempotencyKey: proposal.idempotencyKey,
+            locale: proposal.locale,
+          }),
+        });
+        outcome = (await response.json()) as ConfirmOutcome;
+        if (!outcome || typeof outcome.kind !== "string") throw new Error("INVALID_RESPONSE");
+        if (isReceiptOutcome(outcome) && !outcome.receipt) throw new Error("RECEIPT_UNAVAILABLE");
+      }
     } catch {
       outcome = { kind: "ACTION_CREATE_FAILED", requestId: "" };
     }
     submission.current = false;
     setConfirming(false);
     onPendingChange(false);
+    errorFocusPending.current = true;
     if (outcome.kind === "VALIDATION_FAILED") {
+      if (outcome.datePolicy) dates.accept(outcome.datePolicy, startedAt);
       setFieldErrors(outcome.fieldErrors);
       setFailure(outcome);
       return;
@@ -195,7 +246,13 @@ export function InternalReviewSheet({
       onSubmit={submit}
       noValidate
       aria-label={copy.reviewTitle}
-      aria-describedby={failure ? "review-error-summary" : undefined}
+      aria-describedby={
+        dates.status === "unavailable"
+          ? "review-date-policy"
+          : failure
+            ? "review-error-summary"
+            : undefined
+      }
     >
       {failure ? (
         <div
@@ -363,21 +420,40 @@ export function InternalReviewSheet({
           id="review-dueDate"
           name="dueDate"
           type="date"
-          min={proposal.minDueDate}
-          max={proposal.maxDueDate}
+          min={dates.status === "ready" ? dates.policy.minDueDate : undefined}
+          max={dates.status === "ready" ? dates.policy.maxDueDate : undefined}
           disabled={pending}
           value={dueDate}
-          aria-invalid={!!fieldErrors.dueDate}
-          aria-describedby={`review-date-hint${fieldErrors.dueDate ? " review-dueDate-error" : ""}`}
+          aria-invalid={!!dueDateError}
+          aria-describedby={`review-date-hint${dueDateError ? " review-dueDate-error" : ""}`}
           onChange={(event) => {
             updateDraft({ dueDate: event.target.value });
           }}
         />
         <p id="review-date-hint" className={styles.hint}>
-          {copy.dateHint
-            .replace("{min}", proposal.minDueDate)
-            .replace("{max}", proposal.maxDueDate)}
+          {dates.status === "ready"
+            ? copy.dateHint
+                .replace("{min}", dates.policy.minDueDate)
+                .replace("{max}", dates.policy.maxDueDate)
+            : dates.status === "refreshing"
+              ? copy.datePolicyRefreshing
+              : copy.datePolicyUnavailable}
         </p>
+        {dates.status === "unavailable" ? (
+          <div id="review-date-policy" tabIndex={-1} role="alert" className={styles.notice}>
+            <p>{copy.datePolicyUnavailable}</p>
+            <button
+              type="button"
+              className={styles.textButton}
+              onClick={() => {
+                dateRecoveryFocusPending.current = true;
+                void dates.refresh();
+              }}
+            >
+              {copy.datePolicyRetry}
+            </button>
+          </div>
+        ) : null}
         {error("dueDate")}
         <button
           className={styles.textButton}
@@ -428,7 +504,11 @@ export function InternalReviewSheet({
         {error("confirmation")}
       </div>
       <div className={styles.actions}>
-        <button className={styles.primary} type="submit" disabled={pending || !!lockedAfterFailure}>
+        <button
+          className={styles.primary}
+          type="submit"
+          disabled={pending || !!lockedAfterFailure || dates.status !== "ready"}
+        >
           {pending
             ? copy.confirming
             : failure?.kind === "ACTION_CREATE_FAILED"

@@ -8,6 +8,7 @@ import type { Locale } from "@/modules/localization/config";
 import type {
   ConfirmInternalReviewInput,
   FieldErrors,
+  DueDatePolicyDTO,
   LocalizedText,
   LocalizedWordingOption,
   ProposalContent,
@@ -40,6 +41,26 @@ export function dateBounds(now: Date, timezone: string): Readonly<{ min: string;
   const min = calendarDate(now, timezone);
   return { min, max: addCalendarDays(min, 365) };
 }
+/** Server-only calendar boundary calculation; never derives policy from a browser clock. */
+export function dueDatePolicy(now: Date, timezone: string): DueDatePolicyDTO {
+  const bounds = dateBounds(now, timezone);
+  // Find the first instant outside this organization-local calendar day. The search
+  // also handles IANA zones with DST; the UI schedules this instant, not a 24h delay.
+  let before = now.getTime();
+  let after = before + 36 * 60 * 60 * 1000;
+  while (after - before > 1) {
+    const middle = Math.floor((before + after) / 2);
+    if (calendarDate(new Date(middle), timezone) === bounds.min) before = middle;
+    else after = middle;
+  }
+  return {
+    minDueDate: bounds.min,
+    maxDueDate: bounds.max,
+    datePolicyEvaluatedAt: now.toISOString(),
+    nextDatePolicyBoundaryAt: new Date(after).toISOString(),
+  };
+}
+
 export function validDueDate(
   value: string | null | undefined,
   now: Date,

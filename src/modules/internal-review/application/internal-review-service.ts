@@ -27,7 +27,7 @@ import {
   addCalendarDays,
   calendarDate,
   CONFIRMATION_KEY,
-  dateBounds,
+  dueDatePolicy,
   findWording,
   fullRationale,
   localize,
@@ -120,7 +120,7 @@ function proposalView(
     (member) => member.context.membershipId === record.suggestedAssigneeMembershipId,
   );
   const exposed = canAssign ? members : defaultMember ? [defaultMember] : [];
-  const bounds = dateBounds(now, content.timezone);
+  const datePolicy = dueDatePolicy(now, content.timezone);
   return {
     version: "internal-review-proposal.v1",
     businessKey: record.businessKey,
@@ -160,8 +160,7 @@ function proposalView(
     suggestedAssigneeKey: defaultMember?.key ?? null,
     canAssign,
     suggestedDueDate: record.suggestedDueDate,
-    minDueDate: bounds.min,
-    maxDueDate: bounds.max,
+    ...datePolicy,
     expiresAt: record.expiresAt,
     idempotencyKey: record.confirmationKey,
     evidenceLinks: content.mandatoryStatements
@@ -496,7 +495,12 @@ export class InternalReviewService {
         const errors = validateEdits(record.content, command, now);
         if (Object.keys(errors).length > 0) {
           this.trace({ requestId: seed.requestId, outcome: "VALIDATION_FAILED" });
-          return { kind: "VALIDATION_FAILED", requestId: seed.requestId, fieldErrors: errors };
+          return {
+            kind: "VALIDATION_FAILED",
+            requestId: seed.requestId,
+            fieldErrors: errors,
+            datePolicy: dueDatePolicy(now, record.content.timezone),
+          };
         }
         const current = await currentMaterial(
           tx,

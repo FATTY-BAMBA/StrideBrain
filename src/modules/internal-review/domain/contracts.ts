@@ -23,37 +23,43 @@ export type ReviewStatement = Readonly<{
 export type AssigneeDTO = Readonly<{ key: string; displayName: string }>;
 export type ReviewProjectDTO = Readonly<{ projectKey: string; name: string }>;
 
-export type ProposedActionDTO = Readonly<{
-  version: "internal-review-proposal.v1";
-  businessKey: string;
-  project: ReviewProjectDTO;
-  comparisonRunId: string;
-  enrichmentRunId: string;
-  locale: Locale;
-  timezone: string;
-  titleOptions: readonly WordingOption[];
-  rationaleOptions: readonly WordingOption[];
-  title: string;
-  rationale: string;
-  titleKey: string;
-  rationaleKey: string;
-  mandatoryStatements: readonly Readonly<{
-    key: string;
-    text: string;
-    claimKey?: string | undefined;
-  }>[];
-  warnings: readonly Readonly<{ key: string; text: string }>[];
-  assignees: readonly AssigneeDTO[];
-  suggestedAssigneeKey: string | null;
-  canAssign: boolean;
-  suggestedDueDate: string | null;
+export type DueDatePolicyDTO = Readonly<{
   minDueDate: string;
   maxDueDate: string;
-  expiresAt: string;
-  idempotencyKey: string;
-  evidenceLinks: readonly Readonly<{ claimKey: string; label: string }>[];
-  returnContext: ReturnContext;
+  datePolicyEvaluatedAt: string;
+  nextDatePolicyBoundaryAt: string;
 }>;
+
+export type ProposedActionDTO = DueDatePolicyDTO &
+  Readonly<{
+    version: "internal-review-proposal.v1";
+    businessKey: string;
+    project: ReviewProjectDTO;
+    comparisonRunId: string;
+    enrichmentRunId: string;
+    locale: Locale;
+    timezone: string;
+    titleOptions: readonly WordingOption[];
+    rationaleOptions: readonly WordingOption[];
+    title: string;
+    rationale: string;
+    titleKey: string;
+    rationaleKey: string;
+    mandatoryStatements: readonly Readonly<{
+      key: string;
+      text: string;
+      claimKey?: string | undefined;
+    }>[];
+    warnings: readonly Readonly<{ key: string; text: string }>[];
+    assignees: readonly AssigneeDTO[];
+    suggestedAssigneeKey: string | null;
+    canAssign: boolean;
+    suggestedDueDate: string | null;
+    expiresAt: string;
+    idempotencyKey: string;
+    evidenceLinks: readonly Readonly<{ claimKey: string; label: string }>[];
+    returnContext: ReturnContext;
+  }>;
 
 export type ActionReceiptDTO = Readonly<{
   version: "action-receipt.v1";
@@ -121,7 +127,12 @@ export type ProposalOutcome =
 export type ConfirmationOutcome =
   | Readonly<{ kind: "CREATED" | "IDEMPOTENT_REPLAY"; receipt: ActionReceiptDTO }>
   | Readonly<{ kind: ConfirmationFailure; requestId: string }>
-  | Readonly<{ kind: "VALIDATION_FAILED"; requestId: string; fieldErrors: FieldErrors }>;
+  | Readonly<{
+      kind: "VALIDATION_FAILED";
+      requestId: string;
+      fieldErrors: FieldErrors;
+      datePolicy?: DueDatePolicyDTO;
+    }>;
 export type ReceiptOutcome =
   | Readonly<{ kind: "AVAILABLE"; receipt: ActionReceiptDTO }>
   | Readonly<{ kind: "ACTION_NOT_AUTHORIZED"; requestId: string }>;

@@ -23,6 +23,7 @@ import type {
 import type { Locale } from "@/modules/localization/config";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import { DemoSessionService } from "@/modules/runtime-context/demo-session-service";
+import { addCalendarDays, calendarDate } from "@/modules/internal-review/domain/proposal-policy";
 import { SignedDemoIdentityContext } from "@/modules/runtime-context/signed-demo-identity-context";
 import {
   PrismaDemoSessionRepository,
@@ -715,6 +716,95 @@ describePostgres("Stage 8 independent PostgreSQL invariants", () => {
     );
     expect(await counts()).toEqual(before);
   }, 30_000);
+
+  it.each(["en", "zh-TW"] as const)(
+    "refreshes %s midnight guidance without writes and retains authoritative confirmation",
+    async (locale) => {
+      const today = calendarDate(new Date(), "Asia/Taipei");
+      const midnight = new Date(`${addCalendarDays(today, 1)}T00:00:00+08:00`);
+      const beforeClock = () => new Date(midnight.getTime() - 2000);
+      const afterClock = () => midnight;
+      const user = await actor("membership_horizon_mei", locale);
+      for (const validDue of [addCalendarDays(today, 1), addCalendarDays(today, 366)]) {
+        const input = { ...(await pair(user)), locale };
+        const initial = await createInternalReviewServices({ clock: beforeClock }).prepare(
+          fresh(user.context),
+          input,
+        );
+        expect(initial.kind).toBe("PREPARED");
+        if (initial.kind !== "PREPARED") throw new Error("DATE_PREPARE_FAILED");
+        const proposal = initial.proposal;
+        expect(proposal.minDueDate).toBe(today);
+        expect(proposal.maxDueDate).toBe(addCalendarDays(today, 365));
+        expect(proposal.nextDatePolicyBoundaryAt).toBe(midnight.toISOString());
+        const service = createInternalReviewServices({ clock: afterClock });
+        const before = await counts();
+        const originalProposal = await proposalRow(proposal.businessKey);
+        const originalActions = await database.$queryRawUnsafe(
+          'SELECT to_jsonb(a) AS record FROM "Action" a ORDER BY id',
+        );
+        const reopened = await service.reopenProposal(
+          fresh(user.context),
+          proposal.businessKey,
+          locale,
+        );
+        expect(reopened).toMatchObject({
+          kind: "PREPARED",
+          proposal: {
+            businessKey: proposal.businessKey,
+            idempotencyKey: proposal.idempotencyKey,
+            minDueDate: addCalendarDays(today, 1),
+            maxDueDate: addCalendarDays(today, 366),
+          },
+        });
+        expect(await counts()).toEqual(before);
+        for (const invalidDue of [today, addCalendarDays(today, 367), "2027-02-29"]) {
+          // Altering a client's apparent bounds cannot alter confirmation-time authority.
+          const tampered = { ...proposal, minDueDate: "1900-01-01", maxDueDate: "9999-12-31" };
+          const rejected = await service.confirm(fresh(user.context), {
+            ...command(tampered),
+            dueDate: invalidDue,
+          });
+          expect(rejected).toMatchObject({
+            kind: "VALIDATION_FAILED",
+            fieldErrors: { dueDate: "INVALID_DUE_DATE" },
+            datePolicy: {
+              minDueDate: addCalendarDays(today, 1),
+              maxDueDate: addCalendarDays(today, 366),
+            },
+          });
+          expect(await counts()).toEqual(before);
+          expect(await proposalRow(proposal.businessKey)).toEqual(originalProposal);
+          // ActionEvidence is embedded in Action; the full rows, including evidence snapshots, are unchanged.
+          expect(
+            await database.$queryRawUnsafe(
+              'SELECT to_jsonb(a) AS record FROM "Action" a ORDER BY id',
+            ),
+          ).toEqual(originalActions);
+        }
+        const acceptedCommand = { ...command(proposal), dueDate: validDue };
+        const accepted = await service.confirm(fresh(user.context), acceptedCommand);
+        expect(accepted).toMatchObject({ kind: "CREATED", receipt: { dueDate: validDue } });
+        expect(await counts()).toEqual({
+          actions: before.actions + 1,
+          audits: before.audits + 1,
+          receipts: before.receipts + 1,
+          consumed: before.consumed + 1,
+        });
+        expect(await service.confirm(fresh(user.context), acceptedCommand)).toMatchObject({
+          kind: "IDEMPOTENT_REPLAY",
+          receipt: { dueDate: validDue },
+        });
+        expect(await counts()).toEqual({
+          actions: before.actions + 1,
+          audits: before.audits + 1,
+          receipts: before.receipts + 1,
+          consumed: before.consumed + 1,
+        });
+      }
+    },
+    30_000,
+  );
 
   it.each([
     ["title", "The supplier is overcharging by 30%"],

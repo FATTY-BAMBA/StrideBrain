@@ -13,6 +13,7 @@ import {
   addCalendarDays,
   calendarDate,
   dateBounds,
+  dueDatePolicy,
   fullRationale,
   mandatoryClaims,
   proposalWording,
@@ -351,6 +352,55 @@ describe("Stage 8 finite bilingual wording and immutable warnings", () => {
 });
 
 describe("Stage 8 organization-local due dates", () => {
+  it.each([
+    [
+      "2028-02-28T15:59:59.000Z",
+      "Asia/Taipei",
+      "2028-02-28",
+      "2029-02-27",
+      "2028-02-28T16:00:00.000Z",
+    ],
+    [
+      "2028-02-28T16:00:00.000Z",
+      "Asia/Taipei",
+      "2028-02-29",
+      "2029-02-28",
+      "2028-02-29T16:00:00.000Z",
+    ],
+    [
+      "2028-02-29T16:00:00.000Z",
+      "Asia/Taipei",
+      "2028-03-01",
+      "2029-03-01",
+      "2028-03-01T16:00:00.000Z",
+    ],
+    [
+      "2026-03-08T07:30:00.000Z",
+      "America/New_York",
+      "2026-03-08",
+      "2027-03-08",
+      "2026-03-09T04:00:00.000Z",
+    ],
+    [
+      "2026-11-01T05:30:00.000Z",
+      "America/New_York",
+      "2026-11-01",
+      "2027-11-01",
+      "2026-11-02T05:00:00.000Z",
+    ],
+  ])(
+    "provides authoritative bounds and exact next calendar boundary for %s in %s",
+    (instant, timezone, min, max, next) => {
+      expect(dueDatePolicy(new Date(instant), timezone)).toEqual({
+        minDueDate: min,
+        maxDueDate: max,
+        datePolicyEvaluatedAt: instant,
+        nextDatePolicyBoundaryAt: next,
+      });
+      expect(calendarDate(new Date(Date.parse(next) - 1), timezone)).toBe(min);
+      expect(calendarDate(new Date(next), timezone)).not.toBe(min);
+    },
+  );
   it("uses organization midnight, not UTC or the browser offset", () => {
     const instant = new Date("2026-11-15T16:00:00Z");
     expect(calendarDate(instant, "Asia/Taipei")).toBe("2026-11-16");
