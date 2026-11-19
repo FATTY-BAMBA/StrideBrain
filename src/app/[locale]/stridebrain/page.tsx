@@ -1,31 +1,21 @@
 import { notFound } from "next/navigation";
-
-import { FoundationPage } from "@/components/ui/foundation-page";
-import { getCatalog } from "@/modules/localization/catalog";
+import { ValueLaunchpad } from "@/components/demo-value/value-launchpad";
+import { loadDemoValueContext } from "@/lib/server/demo-value-context";
 import { isSupportedLocale } from "@/modules/localization/config";
 
-type StrideBrainPageProps = {
+export default async function Page({
+  params,
+  searchParams,
+}: {
   params: Promise<{ locale: string }>;
-};
-
-export default async function StrideBrainPage({ params }: StrideBrainPageProps) {
-  const { locale: rawLocale } = await params;
-  if (!isSupportedLocale(rawLocale)) {
-    notFound();
-  }
-
-  const catalog = getCatalog(rawLocale);
-
-  return (
-    <FoundationPage
-      eyebrow={catalog["stridebrain.eyebrow"]}
-      title={catalog["stridebrain.title"]}
-      description={catalog["stridebrain.description"]}
-    >
-      <div className="composer-placeholder" aria-disabled="true">
-        <span aria-hidden="true">✦</span>
-        <p>{catalog["state.notConnected"]}</p>
-      </div>
-    </FoundationPage>
+  searchParams: Promise<{ project?: string | string[] }>;
+}) {
+  const { locale } = await params;
+  if (!isSupportedLocale(locale)) notFound();
+  const search = await searchParams;
+  const context = await loadDemoValueContext(
+    locale,
+    typeof search.project === "string" ? search.project : undefined,
   );
+  return <ValueLaunchpad locale={locale} surface="stridebrain" context={context} />;
 }

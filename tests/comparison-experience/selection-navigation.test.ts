@@ -5,6 +5,7 @@ import { createRoot, type Root } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { ComparisonExperienceView } from "@/modules/comparison-experience/contracts";
 import type { Locale } from "@/modules/localization/config";
+import { getValueCopy } from "@/modules/demo-value/copy";
 const mocks = vi.hoisted(() => ({ push: vi.fn(), replace: vi.fn(), pending: false }));
 vi.mock("next/navigation", () => ({ useRouter: () => mocks }));
 vi.mock("@/app/[locale]/projects/[projectKey]/compare/actions", () => ({
@@ -125,6 +126,37 @@ async function toggle(index: number) {
   );
 }
 describe.each(["en", "zh-TW"] as const)("Persisted selection navigation %s", (locale) => {
+  it("names the saved financial baseline separately from top matches and pending edits", async () => {
+    await render("BCD", ["B", "C", "D"], locale);
+    const baseline = () =>
+      [...host.querySelectorAll("ul")].find(
+        (list) => list.getAttribute("aria-label") === getValueCopy(locale).selectedHistory,
+      )!;
+    expect([...baseline().querySelectorAll("li")].map((item) => item.textContent)).toEqual([
+      "B",
+      "C",
+      "D",
+    ]);
+    await toggle(3);
+    await toggle(0);
+    expect(selected()).toEqual(["A", "B", "C"]);
+    expect([...baseline().querySelectorAll("li")].map((item) => item.textContent)).toEqual([
+      "B",
+      "C",
+      "D",
+    ]);
+    await render("ABC", ["A", "B", "C"], locale);
+    expect([...baseline().querySelectorAll("li")].map((item) => item.textContent)).toEqual([
+      "A",
+      "B",
+      "C",
+    ]);
+    const findings = host.querySelector("#review-findings")!;
+    const choices = host.querySelector("#comparable-projects-title")!;
+    expect(
+      findings.compareDocumentPosition(choices) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
   it("supports ABC→AB→ABC and resets on historical reopen, without stale editor baseline", async () => {
     await render("A1", keys.slice(0, 3), locale);
     expect(submit().disabled).toBe(true);

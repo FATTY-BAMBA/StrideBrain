@@ -1,3 +1,4 @@
+import { getValueCopy, stageLabel, warningLabel } from "@/modules/demo-value/copy";
 import { workspaceStateCopies } from "@/modules/localization/workspace-state-copy";
 import { getFinancialCopy } from "@/modules/localization/financial-copy";
 import { projectLocationLabel } from "@/modules/localization/project-context";
@@ -120,6 +121,7 @@ function formatObservation(
 
 export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspaceOverviewProps) {
   const labels = copy[locale];
+  const valueCopy = getValueCopy(locale);
   const comparison = getComparisonCopy(locale);
   const actionCopy = getInternalReviewCopy(locale);
   const areaUnit =
@@ -130,47 +132,37 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
     <div className={styles.page}>
       <header className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>{labels.eyebrow}</p>
-          <span className={styles.status}>
-            {workspaceStateCopies[locale].workspace[workspace.state]}
-          </span>
+          <div className={styles.meta}>
+            <p className={styles.eyebrow}>{stageLabel(locale, workspace.project.stage)}</p>
+            <span className={styles.status}>
+              {workspaceStateCopies[locale].workspace[workspace.state]}
+            </span>
+          </div>
           <h1>{workspace.project.name.display}</h1>
           <p className={styles.client}>{workspace.project.clientName.display}</p>
           <div className={styles.meta}>
-            <span>{`${labels.location}: ${projectLocationLabel(locale, workspace.project.location)}`}</span>
-            <span>{`${labels.area}: ${workspace.project.area.value} ${areaUnit}`}</span>
+            <span>{projectLocationLabel(locale, workspace.project.location)}</span>
+            <span>
+              {workspace.project.area.value} {areaUnit}
+            </span>
             {workspace.project.programmeWeeks ? (
-              <span>{`${labels.programme}: ${workspace.project.programmeWeeks} ${locale === "zh-TW" ? "週" : "weeks"}`}</span>
-            ) : null}
-            {workspace.project.manager ? (
-              <span>{`${labels.manager}: ${workspace.project.manager.display}`}</span>
+              <span>
+                {workspace.project.programmeWeeks} {locale === "en" ? "weeks" : "週"}
+              </span>
             ) : null}
           </div>
-          {workspace.warnings.length > 0 ? (
-            <p className={styles.notice}>{labels.warnings}</p>
-          ) : null}
         </div>
-
-        <aside className={styles.intelligenceCard}>
-          <p className={styles.eyebrow}>{comparison.eyebrow}</p>
-          <strong>{comparison.heroQuestion}</strong>
-          <p>{labels.compareDescription}</p>
-          {workspace.permissions.canRunComparison ? (
-            <Link className={styles.primaryLink} href={comparisonUrl}>
-              {comparison.runComparison}
-            </Link>
-          ) : (
-            <p className={styles.restricted}>{labels.restricted}</p>
-          )}
-          <small>{labels.demo}</small>
-        </aside>
+        {workspace.permissions.canRunComparison ? (
+          <Link className={styles.primaryLink} href={comparisonUrl}>
+            {valueCopy.compare} →
+          </Link>
+        ) : (
+          <p className={styles.restricted}>{labels.restricted}</p>
+        )}
       </header>
-
-      <section className={styles.grid}>
-        <article className={styles.panel}>
-          <div className={styles.panelHeader}>
-            <h2>{labels.currentCommercial}</h2>
-          </div>
+      <section className={styles.panel} id="commercial-position" aria-labelledby="commercial-title">
+        <h2 id="commercial-title">{labels.currentCommercial}</h2>
+        <div className={styles.commercialSummary}>
           <div>
             <p className={styles.eyebrow}>{labels.quote}</p>
             {formatObservation(locale, workspace.commercial.activeQuote, labels)}
@@ -179,12 +171,29 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
             <p className={styles.eyebrow}>{labels.forecast}</p>
             {formatObservation(locale, workspace.commercial.activeForecast, labels)}
           </div>
-          <div>
-            <p className={styles.eyebrow}>{labels.actual}</p>
-            {formatObservation(locale, workspace.commercial.reconciledActual, labels)}
-          </div>
-        </article>
-
+        </div>
+        <details>
+          <summary>{labels.actual}</summary>
+          {formatObservation(locale, workspace.commercial.reconciledActual, labels)}
+        </details>
+      </section>
+      <section
+        className={styles.attention}
+        id="project-attention"
+        aria-labelledby="project-attention-title"
+      >
+        <h2 id="project-attention-title">{valueCopy.attention}</h2>
+        {workspace.warnings.length ? (
+          <ul>
+            {workspace.warnings.map((warning) => (
+              <li key={warning}>{warningLabel(locale, warning)}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>{valueCopy.attentionEmpty}</p>
+        )}
+      </section>
+      <section className={styles.grid}>
         <article className={styles.panel}>
           <div className={styles.panelHeader}>
             <h2>{labels.evidence}</h2>
@@ -278,23 +287,15 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
             <strong>{comparison.heroQuestion}</strong>
             <span>{comparison.heroPrompt}</span>
           </Link>
-          {workspace.suggestedQuestions
-            .filter((question) =>
-              locale === "zh-TW"
-                ? question.promptZhTw !== comparison.heroQuestion
-                : question.promptEn !== comparison.heroQuestion,
-            )
-            .slice(0, 3)
-            .map((question) => (
-              <div className={styles.questionLink} key={question.id}>
-                <strong>{locale === "zh-TW" ? question.promptZhTw : question.promptEn}</strong>
-                <span>
-                  {locale === "zh-TW"
-                    ? "此能力將於後續切片啟用"
-                    : "This capability belongs to a later slice"}
-                </span>
-              </div>
-            ))}
+          <Link
+            className={styles.questionLink}
+            href={
+              `/${locale}/stridebrain?project=${encodeURIComponent(workspace.project.businessKey)}` as Route
+            }
+          >
+            <strong>{valueCopy.brainTitle}</strong>
+            <span>{valueCopy.brainDescription}</span>
+          </Link>
         </div>
       </section>
     </div>

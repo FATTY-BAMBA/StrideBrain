@@ -58,7 +58,7 @@ export type Catalog = Record<MessageKey, string>;
 const zhTw: Catalog = {
   "app.name": "StrideBrain",
   "app.byline": "PRIMESTRIDE AI",
-  "app.demoStatus": "受控虛構資料示範",
+  "app.demoStatus": "虛構示範資料 — 無真實客戶資料",
   "nav.home": "首頁",
   "nav.projects": "專案",
   "nav.knowledge": "知識",
@@ -72,9 +72,8 @@ const zhTw: Catalog = {
   "language.zhTw": "繁中",
   "language.en": "EN",
   "home.eyebrow": "STRIDEBRAIN v0.1",
-  "home.title": "讓每一個完成的專案，都能幫助下一個專案。",
-  "home.description":
-    "StrideBrain 將專案、文件、報價、供應商與公司知識連結成可查證、可採取行動的營運智慧。",
+  "home.title": "今天想先完成什麼？",
+  "home.description": "以公司的知識與過往經驗為依據，掌握專案、檢視報價並採取行動。",
   "home.foundationTitle": "目前階段：第一個完整智慧工作流程",
   "home.foundationDescription":
     "此版本已建立雙語專案工作區、權限治理、可解釋的歷史專案排序，以及報價與實際成本分開的商務比較。所有資料皆為禾序空間設計的虛構示範資料。",
@@ -89,21 +88,17 @@ const zhTw: Catalog = {
   "projects.unavailableTitle": "目前沒有可開啟的專案",
   "projects.unavailableDescription": "請確認您的登入狀態與專案存取權限，或稍後再試。",
   "knowledge.eyebrow": "組織知識",
-  "knowledge.title": "連結公司知道的事，而不只是管理檔案。",
-  "knowledge.description":
-    "目前的比較流程已使用專案、報價版本、成本、供應商、材料與資料依據。完整知識探索與任意文件匯入尚未啟用。",
+  "knowledge.title": "向公司知識提問",
+  "knowledge.description": "從問題出發，查找過往專案、報價與相關佐證。",
   "stridebrain.eyebrow": "營運智慧介面",
-  "stridebrain.title": "StrideBrain 不是另一個一般聊天機器人。",
-  "stridebrain.description":
-    "目前版本先取得已授權的工作脈絡，再以固定規則產生專案排序、商務比較與誠實的資料不足狀態。模型說明不是主要流程的必要條件。",
+  "stridebrain.title": "詢問 StrideBrain",
+  "stridebrain.description": "想了解什麼，或完成什麼？",
   "settings.eyebrow": "組織設定",
-  "settings.title": "身份、權限、語言與資料邊界由伺服器端治理。",
-  "settings.description":
-    "受控示範已驗證角色、專案指派與資料遮蔽；完整帳號管理、整合與正式客戶資料生命週期尚未啟用。",
+  "settings.title": "工作區設定",
+  "settings.description": "選擇語言，查看工作區的可用設定。",
   "project.eyebrow": "專案工作區",
   "project.unavailableTitle": "此專案或區域目前無法使用。",
-  "project.unavailableDescription":
-    "目前的授權脈絡無法開啟此專案，或此專案區域尚未在第一個完整流程中啟用。系統不會以假資料取代失敗狀態。",
+  "project.unavailableDescription": "請確認您的登入狀態與專案存取權限，或返回專案列表。",
   "project.requestedKey": "要求的專案識別碼",
   "project.foundationTitle": "已核准的專案區域",
   "project.foundationDescription":
@@ -118,7 +113,7 @@ const zhTw: Catalog = {
 const en: Catalog = {
   "app.name": "StrideBrain",
   "app.byline": "BY PRIMESTRIDE AI",
-  "app.demoStatus": "Controlled synthetic demo",
+  "app.demoStatus": "Synthetic demo data — no real customer data.",
   "nav.home": "Home",
   "nav.projects": "Projects",
   "nav.knowledge": "Knowledge",
@@ -132,9 +127,9 @@ const en: Catalog = {
   "language.zhTw": "繁中",
   "language.en": "EN",
   "home.eyebrow": "STRIDEBRAIN v0.1",
-  "home.title": "Every completed project should make the next project easier.",
+  "home.title": "What would you like to get done?",
   "home.description":
-    "StrideBrain connects projects, documents, quotations, suppliers, and company knowledge into evidence-backed operating intelligence and governed action.",
+    "Use your company’s knowledge and experience to understand projects, review quotations and act.",
   "home.foundationTitle": "Current stage: first complete intelligence workflow",
   "home.foundationDescription":
     "This build includes a bilingual Project Workspace, governed authorization, explainable historical-project ranking, and a commercial comparison that keeps quoted price and actual cost distinct. All records belong to the fictional Horizon Atelier demo organization.",
@@ -149,22 +144,18 @@ const en: Catalog = {
   "projects.unavailableTitle": "No projects available to open",
   "projects.unavailableDescription": "Check your sign-in and project access, or try again later.",
   "knowledge.eyebrow": "ORGANIZATIONAL KNOWLEDGE",
-  "knowledge.title": "Connect what the company knows—not just where files are stored.",
+  "knowledge.title": "Ask your company knowledge",
   "knowledge.description":
-    "The comparison workflow already uses projects, quote versions, costs, suppliers, materials, and evidence. Full knowledge exploration and arbitrary document ingestion are not active yet.",
+    "Start with a question. Explore past work, quotations and supporting records.",
   "stridebrain.eyebrow": "OPERATING INTELLIGENCE",
-  "stridebrain.title": "StrideBrain is not another generic chatbot.",
-  "stridebrain.description":
-    "The current build resolves authorized work context first, then produces deterministic project ranking, commercial comparison, and honest insufficiency states. Model-written explanation is not required for the critical workflow.",
+  "stridebrain.title": "Ask StrideBrain",
+  "stridebrain.description": "What do you want to know or get done?",
   "settings.eyebrow": "ORGANIZATION SETTINGS",
-  "settings.title":
-    "Identity, permissions, language, and data boundaries are governed server-side.",
-  "settings.description":
-    "The controlled demo validates roles, project assignments, and redaction. Full account administration, integrations, and real-customer data lifecycle controls are not active yet.",
+  "settings.title": "Workspace settings",
+  "settings.description": "Choose your language and see available workspace preferences.",
   "project.eyebrow": "PROJECT WORKSPACE",
   "project.unavailableTitle": "This project or project area is currently unavailable.",
-  "project.unavailableDescription":
-    "The current authorization context cannot open this project, or the requested area is not active in the first complete workflow. The application does not replace unavailable states with invented records.",
+  "project.unavailableDescription": "Check your session and project access, or return to Projects.",
   "project.requestedKey": "Requested project key",
   "project.foundationTitle": "Approved project areas",
   "project.foundationDescription":

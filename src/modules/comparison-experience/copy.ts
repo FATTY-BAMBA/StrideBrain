@@ -123,10 +123,9 @@ export type ComparisonCopy = Readonly<{
 }>;
 
 const en: ComparisonCopy = {
-  eyebrow: "COMPARABLE PROJECT INTELLIGENCE",
+  eyebrow: "COMPARE WITH PAST WORK",
   titlePrefix: "Historical precedents for",
-  description:
-    "StrideBrain ranks authorized historical projects with deterministic factors, keeps commercial authority distinct, and shows where evidence is incomplete.",
+  description: "Find relevant past projects, see what needs review, and check the evidence.",
   heroQuestion: "Have we done something like this before?",
   heroPrompt:
     "Search the authorized project history, explain the strongest matches, and compare the current quotation with trustworthy precedents.",
@@ -134,7 +133,7 @@ const en: ComparisonCopy = {
   rerunComparison: "Run a fresh comparison",
   sessionRequiredTitle: "A controlled demo session is required.",
   sessionRequiredDescription:
-    "This workspace only opens after the server validates a signed synthetic-demo session. Browser parameters cannot select an organization or role.",
+    "Sign in to your demo session to compare the projects you can access.",
   unavailableTitle: "This comparison is unavailable.",
   unavailableDescription:
     "The project or stored run is not available under the current authorization context.",
@@ -156,7 +155,7 @@ const en: ComparisonCopy = {
   selection: {
     title: "Choose precedents to compare",
     description:
-      "Select up to three projects. Updating the set creates a new immutable economics enrichment without changing the structural ranking.",
+      "Select up to three projects, then update the comparison. The similarity ranking stays the same.",
     apply: "Update comparison",
     selectedCount: "selected",
     maximum: "Maximum 3",
@@ -196,7 +195,7 @@ const en: ComparisonCopy = {
   table: {
     title: "Structured comparison",
     description:
-      "Values come from the stored deterministic run. Quoted price, forecast, supplier offer, and reconciled actual cost remain separate.",
+      "Compare the details. Quoted price, forecast, supplier offer, and reconciled actual cost remain separate.",
     activeProject: "Current project",
     projectContext: "Project context",
     economics: "Overall commercial comparison",
@@ -232,7 +231,7 @@ const en: ComparisonCopy = {
     structuralOnly: "Structural comparison only",
   },
   synthesis: {
-    title: "Structured review",
+    title: "What needs review",
     history: "What history suggests",
     differences: "Important differences",
     gaps: "Evidence gaps",
@@ -266,17 +265,15 @@ const en: ComparisonCopy = {
 };
 
 const zhTw: ComparisonCopy = {
-  eyebrow: "類似專案智慧",
+  eyebrow: "與過往專案比較",
   titlePrefix: "歷史專案比較：",
-  description:
-    "StrideBrain 以可解釋的固定規則排序已授權的歷史專案，清楚區分商務資料權威性，也會誠實呈現資料不足之處。",
+  description: "找到相關的過往專案，掌握需要檢視的事項，並查閱佐證資料。",
   heroQuestion: "我們以前做過類似的案子嗎？",
   heroPrompt: "搜尋已授權的歷史專案、說明最接近的原因，並用可信任的歷史依據比較目前報價。",
   runComparison: "尋找類似歷史專案",
   rerunComparison: "重新執行比較",
   sessionRequiredTitle: "需要受控的示範工作階段。",
-  sessionRequiredDescription:
-    "伺服器驗證已簽署的虛構示範工作階段後，才會開啟此工作區。網址參數不能選擇組織或角色。",
+  sessionRequiredDescription: "請登入示範工作階段，比較您有權查看的專案。",
   unavailableTitle: "目前無法開啟此比較。",
   unavailableDescription: "目前的授權脈絡無法存取此專案或已儲存的比較結果。",
   loadingLabel: "正在載入歷史專案比較",
@@ -295,8 +292,7 @@ const zhTw: ComparisonCopy = {
   },
   selection: {
     title: "選擇要比較的歷史專案",
-    description:
-      "最多選擇三個專案。更新選擇會建立新的不可變更商務分析，但不會改變原本的相似度排序。",
+    description: "最多選擇三個專案，再更新比較。專案相似度排序維持不變。",
     apply: "更新比較",
     selectedCount: "個已選",
     maximum: "最多 3 個",
@@ -335,8 +331,7 @@ const zhTw: ComparisonCopy = {
   },
   table: {
     title: "結構化比較",
-    description:
-      "所有數值都來自已儲存的固定規則結果。歷史報價、預估成本、供應商報價與已核對實際成本會保持清楚區分。",
+    description: "查看各項比較資料。歷史報價、預估成本、供應商報價與已核對實際成本會保持清楚區分。",
     activeProject: "目前專案",
     projectContext: "專案脈絡",
     economics: "整體商務比較",
@@ -372,7 +367,7 @@ const zhTw: ComparisonCopy = {
     structuralOnly: "僅顯示專案結構比較",
   },
   synthesis: {
-    title: "結構化審查",
+    title: "需要檢視的事項",
     history: "歷史資料顯示",
     differences: "重要差異",
     gaps: "資料缺口",

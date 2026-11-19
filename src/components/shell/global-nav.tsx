@@ -32,7 +32,7 @@ export function GlobalNav({ locale, labels }: GlobalNavProps) {
           <Link
             key={item.key}
             href={href as Route}
-            className="global-nav__item"
+            className={`global-nav__item ${item.key === "settings" ? "global-nav__item--utility" : ""}`}
             aria-current={isActive ? "page" : undefined}
           >
             <span className="global-nav__marker" aria-hidden="true">

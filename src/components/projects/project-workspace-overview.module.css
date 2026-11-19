@@ -266,3 +266,96 @@
     transform: none;
   }
 }
+
+.hero {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  padding: 22px;
+  gap: 18px;
+}
+.hero h1 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+.heroCopy {
+  gap: 6px;
+}
+.client {
+  font-size: 0.9rem;
+}
+.meta {
+  gap: 4px 12px;
+}
+.meta span {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.commercialSummary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.metric span {
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.attention {
+  border-left: 3px solid var(--warning);
+  padding: 2px 16px;
+}
+.attention h2 {
+  font-size: 1rem;
+}
+.attention ul {
+  padding-left: 18px;
+  margin: 6px 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.panel details summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 6px 0;
+}
+@media (max-width: 700px) {
+  .page {
+    gap: 16px;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 12px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .commercialSummary {
+    gap: 8px;
+  }
+  .metric {
+    padding: 10px;
+  }
+  .metric strong {
+    font-size: 1.08rem;
+  }
+  .metric span {
+    font-size: 0.64rem;
+  }
+  .panel {
+    padding: 14px;
+    gap: 10px;
+  }
+  .commercialSummary .eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.03em;
+  }
+}

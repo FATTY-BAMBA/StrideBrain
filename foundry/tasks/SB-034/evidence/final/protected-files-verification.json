@@ -1,0 +1,8 @@
+{
+  "checkedFiles": 2138,
+  "changedFiles": 0,
+  "stage9EvidenceAndSB029FixturesUnchanged": true,
+  "sb034MigrationsFixturesUnchanged": true,
+  "comparison": "against pre-authenticated-review SHA-256 baseline",
+  "excluded": "SB034 product source, explicitly authorized to change in final refinement"
+}

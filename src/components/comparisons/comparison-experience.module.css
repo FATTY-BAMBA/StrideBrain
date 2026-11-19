@@ -880,3 +880,151 @@
   outline-offset: 3px;
   border-radius: 0.35rem;
 }
+
+.hero {
+  padding: 22px;
+  gap: 12px;
+}
+.hero::after {
+  display: none;
+}
+.hero h1 {
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+.heroDescription {
+  font-size: 0.95rem;
+}
+.projectName {
+  font-weight: 650;
+  font-size: 1.1rem;
+}
+.compactHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+.compactHeading h2,
+.sectionHeaderText h2 {
+  font-size: 1.25rem;
+}
+.compactHeading a {
+  color: var(--accent-strong);
+  font-size: 0.85rem;
+  padding: 10px 0;
+}
+.closestProjects {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.closestProjects li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+}
+.closestProjects .rank {
+  flex-shrink: 0;
+}
+.closestProjects li > div {
+  display: grid;
+  gap: 5px;
+}
+.closestProjects strong {
+  font-size: 0.92rem;
+}
+.closestProjects li > div > span {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.runDetails {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+}
+.runDetails summary {
+  cursor: pointer;
+  color: var(--accent-strong);
+  font-weight: 650;
+}
+.runDetails .summaryGrid {
+  margin-top: 16px;
+}
+.synthesisCard {
+  padding: 18px;
+}
+.synthesisCard h3 {
+  margin-top: 0;
+  font-size: 0.95rem;
+}
+.synthesisCard p {
+  font-size: 0.9rem;
+}
+.cardIdentity {
+  gap: 8px;
+}
+.projectCard {
+  gap: 14px;
+  padding: 18px;
+}
+.cardIdentity h3 {
+  margin: 8px 0;
+}
+.factorDetails {
+  margin-top: 0;
+}
+@media (max-width: 700px) {
+  .hero {
+    padding: 16px;
+  }
+  .page {
+    gap: 22px;
+  }
+  .closestProjects {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .closestProjects li {
+    padding: 12px;
+  }
+  .compactHeading {
+    display: block;
+  }
+  .compactHeading a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+  }
+  .synthesisGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .sectionHeader {
+    align-items: start;
+  }
+  .hero h1 {
+    font-size: 1.65rem;
+  }
+}
+.findingProjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: 8px 0;
+  padding-left: 18px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.selectionHelp {
+  font-size: 0.8rem;
+  color: var(--muted);
+}

@@ -25,6 +25,7 @@ const en = {
   datePolicyRetry: "Check allowed dates again",
   clearDate: "Clear due date",
   expires: "Review available until",
+  auditDetails: "Audit details",
   comparison: "Source comparison",
   economics: "Source economics review",
   consequence:
@@ -123,6 +124,7 @@ const zhTw: CopyShape<typeof en> = {
   datePolicyRetry: "重新確認日期範圍",
   clearDate: "清除到期日",
   expires: "本次審查有效至",
+  auditDetails: "稽核詳細資料",
   comparison: "來源比較紀錄",
   economics: "來源商務分析紀錄",
   consequence:

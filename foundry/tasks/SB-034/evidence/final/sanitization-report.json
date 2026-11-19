@@ -1,0 +1,488 @@
+{
+  "environment": "SB034-FINAL-20261119",
+  "status": "PASS",
+  "screenshots": 47,
+  "method": [
+    "English OCR over every screenshot for credential/private-path detection",
+    "Exact private credential and temporary session identifier scan; values never included in report",
+    "Binary and image metadata scan; EXIF checked",
+    "Visual inspection of synthetic en and zh-TW content during capture"
+  ],
+  "limitations": [
+    "OCR is not a substitute for visual inspection; zh-TW text reviewed visually",
+    "Only viewport images are published; no browser chrome, cookies, bootstrap URL, or raw runtime logs"
+  ],
+  "imagesModified": false,
+  "items": [
+    {
+      "file": "en-desktop-audit-closed.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "bedd2df45872e2c06c79f4f167401c786bf44ebbc5e6c229719f365e22c05ebe",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-desktop-audit-open.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "579d14e8ab51238510ce372b19661d9604192d10f1b4e0be623c95d9bce8e394",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-desktop-comparison.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "c87c88df5299409dea2f544c1bf7f965f5ef7ce650b006713d227ba7a32c9aad",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-desktop-evidence.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "5531173731f128e016897b236cbac916d5bc05dc32316e5ec7948cf7e29e340c",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-desktop-findings.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "09004b0a290686f577bf84ff02f9e5d2a4d8f864afc5a1ec171ffc9eddfc1d14",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-desktop-home.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "68272cd1066a12c4f47721d91553a54155fbe63800081e632784ad036583c0ea",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-desktop-knowledge.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "9057c7deca6b31d026fdf165b90c3e5cb5acdf55f719759c105ae3263bf7fa3f",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-desktop-projects.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "a8772c6cc2d130043b71b7e6f4f20709bf2155cf6e4ed4454841d47ac0cd0cca",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-desktop-review.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "bfcdb89138508692206cd270e74bb7da184cbc4b05854a68fb655788649d13c2",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-desktop-stridebrain.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "eb64d014ed9d13b999f03e0979d253030685c5a56a5be2437ea91e9251149284",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-desktop-workspace.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "0f45b870e7379de04da404fa437419d8a1d46759d616619a26da0357cef48079",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-mobile-audit-closed.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "f14b697bd38a49ebe9f26a02f1fb52d4e3cd94307727fc8b4c93f6f28b7bc4b9",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-mobile-audit-open.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "f24f21f9a107c9d48436333de93f95dee26949c321ee148830bffd39be89d015",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-mobile-comparison.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "57e153a898f3d46c353e71d775c3d81c784e4d0dffc7f3f53b3aa3b0048cc48e",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-mobile-evidence.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "b89112bfeb1c278dd0c4b167803a0098f4288da8069429ce33581c58ec9a5860",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-mobile-findings.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "429d93f7ef444b441f3a45cd5015912b57ba0af50b9565d0fc7f79e393b5412a",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-mobile-home.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "e6cb641e7a058248a1cb3369a2dd7ac6de85f79a9eba8bb42e67f54c629a6e54",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-mobile-knowledge.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "f30b0bbc47c6433dba77ad812ea9217eec12d1e3730c768b16e6f9e2b626ac6a",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-mobile-priority.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "6e90d0c3047653bba8906911a8dfcb882bc5256ce5475c1d81e9e30e22f47d3c",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-mobile-projects.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "4623d9c9642c4b7bca774870b9709e09298d68f4e221e815c9fabc9c39640836",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-mobile-review.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "8c550544029c7c186bef9903e1f757868e2cdd5de9e3f64519beb176786f028d",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-mobile-session-revoked.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "3c6ee29f9905aa1de6f38a9afcc4c83410ff97184adac0fa6bda76ad0e0f51cb",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-mobile-stridebrain.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "ae3c9b4d85f9407ee721c8e64769833fcf2e45811c8859d109f789bb346675ef",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "en-mobile-workspace.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "e34872e7988667d81277fc1892b5205676f1ddfe28a2ca72b698280937fb0b5c",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-desktop-audit-closed.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "d5edea748f4d5023ee25eb39af9d29051418115ba3287f7f20ece0b9c529f04b",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-desktop-audit-open.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "67629553f068c03543ab9e6c1eaa7a664398785ea86e5e540e5087e5f788cd0a",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-desktop-comparison.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "58a0f8537071c10c19b3e1a0f3c24ad01722d3576224d0c23f53989b1b770007",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-desktop-evidence.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "6e846e7dd4e77d8c8992b70438a82891631276f82f80c29b9acf19a409f0a45e",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-desktop-findings.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "2ae0766a8cb8f6048d9da6e639bf25dd90686d3ba48608e21ce28feebdb18269",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-desktop-home.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "193852341070552d77635ef8e68532f9746618b0a142de3ae7567b83f08e2d9a",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-desktop-knowledge.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "5f1357c11a344185112684678d10e40dbc107be36f0f900fc91b6fa269589499",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-desktop-projects.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "45247036163d4127d39dad8e05e74b872a9320bd296f604c9f5e1e0045f7b234",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-desktop-review.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "ee34f717a7f5dc435a99c2979705fb6b70d0c18a1a318bdbb138098431421da8",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-desktop-stridebrain.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "05a06fb487e3cd64aea17628ad58c606d4b666bcd4a3e44e6f7b104e0d988de1",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-desktop-workspace.jpg",
+      "width": 1440,
+      "height": 900,
+      "sha256": "f6d10403983f48efbb5dd01b724ab6e33f5b363fd30b89fb853055e30ebdd6c7",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-mobile-audit-closed.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "08cd36463f88d03ff864e708c9192d3631f71483de390e1d93fb34be36239ece",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-mobile-audit-open.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "97f6efbff924c38b8a4cdbd03bc9cf63e111c007e3200c3af78125eddba2c88e",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-mobile-comparison.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "c2a8487a67c8e1b2abf7b60bba46aaee0ad40fb63f9c16e5f6bd85cd96ba0ea8",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-mobile-evidence.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "7dc39c4ded64b2a5172ba2a8cb88a7e7f1256679d271b58c3c88240191952188",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-mobile-findings.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "f1f6ce06add7c85079520d8c8bf4376867c6fd9f27caddd6fc5dec424b160ad1",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-mobile-home.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "1496944395db3b3b7c94b4b0da5795efffdc0990f1af2344db7a5e9dafb9cc62",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-mobile-knowledge.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "ad1d0783b2611a15304e460ac963460b7c545f9e4f757e89ef6d9e6fe69b150a",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-mobile-priority.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "fc32c3a9027e71544496c10b8e75be0f730519aec69907b45f343a4ccb62c46e",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-mobile-projects.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "8bae8507c084a7f7606cf8a5959844450ddf8f0a22e45f56abfbfed3506b17d0",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-mobile-review.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "566162ee7d41c4f3c7d94fe781be6d5f5957458080c7734dca6066dbe45dbef3",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-mobile-stridebrain.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "83b8df33ad38f1652618055f7e2d478bee5a182d2bb6c8c679903dc86b95ca1e",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    },
+    {
+      "file": "zh-TW-mobile-workspace.jpg",
+      "width": 390,
+      "height": 844,
+      "sha256": "f78600bb061617c25815f1cffcc74a4a215ca9df0f5cefdb6ae04a79528696b3",
+      "knownSecretMatched": false,
+      "sensitivePatternMatches": [],
+      "exifEntries": 0,
+      "passed": true
+    }
+  ]
+}

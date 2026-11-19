@@ -12,8 +12,6 @@ type ProjectNavigationItem = {
 export const projectNavigation: readonly ProjectNavigationItem[] = [
   { key: "overview", segment: "", labelKey: "nav.overview" },
   { key: "compare", segment: "compare", labelKey: "nav.compare" },
-  { key: "commercial", segment: "commercial", labelKey: "nav.commercial" },
-  { key: "evidence", segment: "evidence", labelKey: "nav.evidence" },
   { key: "actions", segment: "actions", labelKey: "nav.actions" },
 ] as const;
 

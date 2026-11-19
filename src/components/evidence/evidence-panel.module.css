@@ -37,17 +37,21 @@
   backdrop-filter: blur(10px);
 }
 
-.header > div {
+.header > p {
   min-width: 0;
+  align-self: center;
 }
 
-.header h2 {
+.heading {
+  padding-top: 16px;
+}
+.heading h2 {
   margin: 0.2rem 0 0.35rem;
   font-size: 1.25rem;
   line-height: 1.25;
 }
 
-.header p:last-child {
+.heading > p {
   margin: 0;
   color: #53647a;
   font-size: 0.9rem;
@@ -368,4 +372,34 @@
 .relatedClaims span {
   color: var(--text-muted, #667085);
   font-size: 0.78rem;
+}
+
+.calculationDetails {
+  margin-top: 18px;
+}
+.calculationDetails summary {
+  cursor: pointer;
+  padding: 12px;
+  color: #244d40;
+  font-weight: 700;
+}
+@media (max-width: 700px) {
+  .header {
+    padding: 10px 16px;
+    gap: 8px;
+  }
+  .header > p {
+    flex: 1;
+  }
+  .closeButton {
+    max-width: 60%;
+    min-height: 44px;
+    font-size: 0.85rem;
+  }
+  .heading h2 {
+    font-size: 1.1rem;
+  }
+  .heading > p {
+    font-size: 0.82rem;
+  }
 }

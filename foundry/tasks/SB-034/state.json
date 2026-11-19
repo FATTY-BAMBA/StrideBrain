@@ -1,0 +1,147 @@
+{
+  "taskId": "SB-034",
+  "issueUrl": "https://github.com/FATTY-BAMBA/StrideBrain/issues/34",
+  "issueTitle": "Demo Value UX Pass: make StrideBrain instantly understandable and desirable",
+  "branch": "build/sb-034-demo-value-ux",
+  "baseline": "19c98f799de43876e6eea83fd9d336518476fe0a",
+  "updatedAt": "2026-11-19T10:04:03.985396+00:00",
+  "state": "FINAL_BOUNDED_REFINEMENT_COMPLETE",
+  "phase": "LOCAL_CANDIDATE_READY_FOR_HOSTED_PREVIEW_PREPARATION",
+  "mission": "First-time interior designer or company owner understands useful supported outcomes within 30–60 seconds.",
+  "primarySuccessCriterion": {
+    "timeSeconds": 60,
+    "fiveComprehensionQuestions": "brief.md",
+    "status": "NOT_MEASURED",
+    "architectureExplanationAllowed": false
+  },
+  "framing": ["Find", "Understand", "Decide", "Act"],
+  "documents": [
+    "brief.md",
+    "ux-audit.md",
+    "information-architecture.md",
+    "copy-strategy.md",
+    "demo-storyboard.md",
+    "build-contract.md",
+    "test-plan.md",
+    "independent-ux-review.md",
+    "state.json",
+    "implementation-review.md",
+    "authenticated-ux-review.md",
+    "final-refinement-review.md",
+    "final-independent-review.md",
+    "pilot-usability-plan.md",
+    "pilot-observer-sheet.md"
+  ],
+  "phase1": {
+    "audit": "USER_APPROVED",
+    "storyboard": "USER_APPROVED_NOT_TIMED",
+    "independentReview": "PASS_SCOPED_SOURCE_AND_PUBLIC_VISUAL_REVIEW",
+    "newCopyHumanReview": "PENDING",
+    "productSourceChangesAllowedBeforeAuditStoryboardReview": false
+  },
+  "evidence": {
+    "userSuppliedScreenshots": 11,
+    "originalImagesModified": false,
+    "imagesCommitted": false,
+    "privateWalkthrough": "Kept outside repository; provided to user separately",
+    "freshAuthenticatedBrowserAudit": true,
+    "databaseOrSessionWrites": {
+      "isolatedSB034Only": true,
+      "Stage9": false,
+      "comparisons": 1,
+      "economicsEnrichments": 1,
+      "preparedProposals": 1,
+      "actions": 0,
+      "receipts": 0
+    },
+    "newQaRun": true,
+    "deterministicTests": {
+      "passed": 584,
+      "skipped": 130,
+      "total": 714
+    },
+    "productionBuild": "PASS",
+    "publicScreenshots": {
+      "count": 16,
+      "locales": ["en", "zh-TW"],
+      "viewports": [
+        [1440, 900],
+        [390, 844]
+      ],
+      "authenticated": false,
+      "directory": "evidence/screenshots"
+    },
+    "finalCssBuild": "PASS",
+    "authenticatedScreenshots": {
+      "authenticated": 54,
+      "postRevocation": 1,
+      "locales": ["en", "zh-TW"],
+      "viewports": [
+        [1440, 900],
+        [390, 844]
+      ],
+      "directory": "evidence/authenticated/screenshots",
+      "sanitization": "PASS",
+      "zhTwDesktopWorkspaceInitialFold": "NOT_CAPTURED_SCROLLED_WORKSPACE_CAPTURE_AVAILABLE"
+    },
+    "protectedFiles": {
+      "checked": 2268,
+      "changed": 0
+    },
+    "authenticatedIndependentReview": "PASS_SCOPED_AUTHENTICATED_VISUAL_REVIEW_WITH_P3_FOLLOW_UP",
+    "finalAuthenticatedReview": {
+      "environment": "SB034-FINAL-20261119",
+      "directory": "evidence/final",
+      "authenticatedScreenshots": 46,
+      "postRevocationScreenshots": 1,
+      "sanitization": "PASS",
+      "independentReview": "PASS_SCOPED_FINAL_UX_VALUE_REVIEW",
+      "zhTwDesktopWorkspaceInitialFold": "CAPTURED",
+      "protectedHistoricalFilesChecked": 2138,
+      "protectedHistoricalFilesChanged": 0
+    }
+  },
+  "scope": {
+    "implementationStarted": true,
+    "recommended": "Existing-workflow outcome launchpad, bounded prompts, clearer project/result hierarchy, bilingual copy and small Planned assistance section",
+    "agentsNavigation": "NOT_ADDED_PLANNED_ASSISTANCE_ONLY",
+    "schemaChanges": false,
+    "authorizationPolicyChanges": false,
+    "newRagChatOrAutonomy": false,
+    "deploymentAllowed": false,
+    "vercelDnsChangesAllowed": false,
+    "mergeAllowed": false,
+    "firstSliceImplemented": true,
+    "productSourceChangedDuringAuthenticatedReview": false,
+    "finalRefinements": [
+      "Mobile Projects/task spacing",
+      "Knowledge vs StrideBrain copy distinction",
+      "Internal-review audit identifiers demoted"
+    ],
+    "finalRefinementSourceChanged": true
+  },
+  "pilotScope": {
+    "participants": "3–5",
+    "data": "DEMO_SYNTHETIC",
+    "fullStage9CertificationRequiredBeforeUxPass": false,
+    "essentialGate": "brief.md",
+    "deferredWork": "test-plan.md",
+    "releaseOrPilotPassClaimed": false
+  },
+  "currentLocalVisualPreview": {
+    "status": "STOPPED",
+    "buildId": "t2Tn5VtBS42DDhymHqhH8",
+    "environment": "SB034-FINAL-20261119",
+    "database": "stridebrain_sb034_ux_20261119",
+    "temporarySession": "REVOKED",
+    "validActiveSessions": 0,
+    "isolatedDatabase": "PRESERVED_STOPPED_PENDING_FINAL_REVIEW_ACCEPTANCE"
+  },
+  "publication": "LOCAL_CANDIDATE_NOT_PUSHED",
+  "nextStep": "Separately authorized isolated hosted preview and rehearsal, then 3–5 first-time participants using pilot-usability-plan.md. Do not deploy or merge in this task.",
+  "blocker": {
+    "status": "RESOLVED_BY_EXPLICIT_USER_APPROVAL",
+    "sourceStage9RecordsUnchanged": true
+  },
+  "candidateCommit": "Commit containing this state; exact SHA returned with git rev-parse HEAD"
+}

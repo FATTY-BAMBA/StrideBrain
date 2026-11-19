@@ -1,0 +1,42 @@
+{
+  "environment": "SB034-FINAL-20261119",
+  "capturedAt": "2026-11-19T09:58:51.882Z",
+  "counts": {
+    "Project": 30,
+    "DemoSession": 4,
+    "ComparisonRun": 2,
+    "EconomicsEnrichmentRun": 2,
+    "Action": 0,
+    "InternalReviewReceipt": 0,
+    "ProposedAction": 2
+  },
+  "temporarySession": {
+    "revoked": true,
+    "expired": false
+  },
+  "unexpiredUnrevokedSessions": 0,
+  "proposal": [
+    {
+      "status": "PREPARED",
+      "consumed": false,
+      "count": 2
+    }
+  ],
+  "appRole": {
+    "rolsuper": false,
+    "rolcreatedb": false,
+    "rolcreaterole": false,
+    "rolbypassrls": false
+  },
+  "baseline": {
+    "Project": 30,
+    "DemoSession": 2,
+    "ComparisonRun": 0,
+    "EconomicsEnrichmentRun": 0,
+    "Action": 0,
+    "InternalReviewReceipt": 0,
+    "ProposedAction": 0
+  },
+  "browserRevokedSessionDeniedProjectAccess": true,
+  "browserCookieCleared": true
+}

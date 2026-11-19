@@ -1,5 +1,6 @@
 "use client";
 
+import { getValueCopy } from "@/modules/demo-value/copy";
 import { StaleComparisonNotice } from "@/components/comparisons/stale-comparison-notice";
 import { useCallback, useRef, type ReactNode } from "react";
 import { useModalFocus } from "@/components/accessibility/use-modal-focus";
@@ -104,17 +105,17 @@ function PanelFrame({
         role="dialog"
       >
         <header className={styles.header}>
-          <div>
-            <p className={styles.eyebrow}>{heading.eyebrow}</p>
-            <h2 id="evidence-panel-title" ref={headingRef} tabIndex={-1}>
-              {heading.title}
-            </h2>
-            {heading.description ? <p>{heading.description}</p> : null}
-          </div>
+          <p className={styles.eyebrow}>{getValueCopy(locale).support}</p>
           <button className={styles.closeButton} onClick={onClose} type="button">
             {hasParent ? copy.back : copy.close}
           </button>
         </header>
+        <div className={styles.heading}>
+          <h2 id="evidence-panel-title" ref={headingRef} tabIndex={-1}>
+            {heading.title}
+          </h2>
+          {heading.description ? <p>{heading.description}</p> : null}
+        </div>
         {children}
       </aside>
     </div>
@@ -347,11 +348,9 @@ function Trace({ view }: Readonly<{ view: EvidencePanelView }>) {
 
 function ReadyContent({
   view,
-  onBack,
   onNavigate,
 }: Readonly<{
   view: EvidencePanelView;
-  onBack: () => void;
   onNavigate: (selection: EvidencePanelSelection) => void;
 }>) {
   const copy = getEvidencePanelCopy(view.locale);
@@ -367,12 +366,6 @@ function ReadyContent({
         locale={view.locale}
         projectKey={view.context.projectKey}
       />
-
-      {view.backSelection ? (
-        <button className={styles.backButton} type="button" onClick={onBack}>
-          {copy.back}
-        </button>
-      ) : null}
 
       {view.claim ? (
         <section className={styles.claimSummary}>
@@ -393,13 +386,28 @@ function ReadyContent({
         </section>
       ) : null}
 
+      {view.trace?.kind === "FACTOR" ? (
+        <section className={styles.claimSummary} aria-label={view.trace.factorLabel}>
+          <strong>{view.trace.factorLabel}</strong>
+          <p>{view.trace.explanationLabel}</p>
+          <dl className={styles.traceGrid}>
+            <div>
+              <dt>{copy.fields.state}</dt>
+              <dd>{view.trace.stateLabel}</dd>
+            </div>
+            <div>
+              <dt>{copy.fields.normalized}</dt>
+              <dd>{view.trace.normalizedValueLabel ?? "—"}</dd>
+            </div>
+          </dl>
+        </section>
+      ) : null}
+
       {view.notices.map((notice) => (
         <div className={styles.notice} data-tone={notice.tone} key={notice.text} role="status">
           {notice.text}
         </div>
       ))}
-
-      <Trace view={view} />
 
       {view.relatedClaims?.length ? (
         <section className={styles.relatedClaims}>
@@ -449,6 +457,12 @@ function ReadyContent({
           <p>{copy.noSources}</p>
         )}
       </section>
+      {view.trace ? (
+        <details className={styles.calculationDetails}>
+          <summary>{getValueCopy(view.locale).calculation}</summary>
+          <Trace view={view} />
+        </details>
+      ) : null}
     </>
   );
 }
@@ -530,7 +544,7 @@ export function EvidencePanel({
       resolveInitialFocus={resolveInitialFocus}
     >
       {outcome.kind === "READY" ? (
-        <ReadyContent view={outcome.view} onBack={closeLayer} onNavigate={navigate} />
+        <ReadyContent view={outcome.view} onNavigate={navigate} />
       ) : (
         <StateContent outcome={outcome} locale={locale} />
       )}

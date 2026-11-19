@@ -1,0 +1,74 @@
+{
+  "identifier": "SB034-AUTH-20261119",
+  "database": "stridebrain_sb034_ux_20261119",
+  "port": 54354,
+  "host": "127.0.0.1",
+  "separatePostgresCluster": true,
+  "newPrivateCredentials": true,
+  "syntheticOnly": true,
+  "source": "unchanged repository migrations and synthetic fixtures",
+  "stage9DatabaseConnections": 0,
+  "files": [
+    {
+      "file": "prisma/migrations/0001_stridegraph_foundation/migration.sql",
+      "sha256": "debc38a901ef22ad3a261081b2471f266f152e5f85a215a181652619fd536488"
+    },
+    {
+      "file": "prisma/migrations/0002_financial_authority_invariants/migration.sql",
+      "sha256": "3c11150c7f31cf226ef3df7713e19cf2fc26c275d7f184d8fc6b447d46111cc3"
+    },
+    {
+      "file": "prisma/migrations/0003_runtime_authorization/migration.sql",
+      "sha256": "5e54afbabc6c9d315013f14e57d70d0c5c362f8d1c2f12a4b90d47dc148d9509"
+    },
+    {
+      "file": "prisma/migrations/0004_authorization_tenant_links/migration.sql",
+      "sha256": "6e79b57839dfa8fb8e62988ee4c14371622387d9d10b7509f1e33b93294d417a"
+    },
+    {
+      "file": "prisma/migrations/0005_remove_legacy_membership_capabilities/migration.sql",
+      "sha256": "dc65374f2d0f39a4fe4d596e25fc29eca1d1c4c103a6f519649d46eb5d6f2fc3"
+    },
+    {
+      "file": "prisma/migrations/0006_stage5_economics_enrichment/migration.sql",
+      "sha256": "62446ebd7f2bbf217fbe98d1ebdc2c078eb6e9736167ae0fec8743c59ff6dccc"
+    },
+    {
+      "file": "prisma/migrations/0007_stage6_comparison_persistence_scales/migration.sql",
+      "sha256": "20b76d4c2f2051a6bac620a5d0ca859a44b7ac6d5db6fbf05fd3fc53398751a2"
+    },
+    {
+      "file": "prisma/migrations/0008_stage8_internal_review/migration.sql",
+      "sha256": "bca2e402f42aafc822c921df064d51965a8ea29da80aacabc11ef2c6d16d20d9"
+    },
+    {
+      "file": "prisma/migrations/0009_stage9_economics_selection_lineage/migration.sql",
+      "sha256": "51a963f3c2a4a6b6beaebc96c7d374905aac40614abc59c5c9cffd1a7f096aee"
+    },
+    {
+      "file": "prisma/fixtures/horizon-atelier.sql",
+      "sha256": "901fed590053152425a85733a97151a1d4f399d198f8f6a449bfe5c72521e1f8"
+    },
+    {
+      "file": "prisma/fixtures/stage2-authorization.sql",
+      "sha256": "328990bb70c9c6ad820ddecd34a0393142110e26dbd0ada3538ec7e4e94daeb6"
+    },
+    {
+      "file": "prisma/fixtures/stage4-comparison.sql",
+      "sha256": "311f0be7f6cc64f65690eac41787496d61b9ffcf1cb66f072d112f2e1ad4d1cf"
+    },
+    {
+      "file": "prisma/fixtures/stage5-economics.sql",
+      "sha256": "17bea183444a90b552348ab29347da4dda94f393a921f5f4a4284fdc522c2f1a"
+    }
+  ],
+  "counts": {
+    "Project": 30,
+    "DemoSession": 2,
+    "ComparisonRun": 0,
+    "EconomicsEnrichmentRun": 0,
+    "Action": 0,
+    "InternalReviewReceipt": 0,
+    "ProposedAction": 0
+  }
+}

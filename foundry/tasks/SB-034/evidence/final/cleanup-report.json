@@ -1,0 +1,27 @@
+{
+  "environment": "SB034-FINAL-20261119",
+  "temporarySessionRevoked": true,
+  "unexpiredUnrevokedSessions": 0,
+  "browserCookieCleared": true,
+  "browserRevokedSessionDeniedProjectAccess": true,
+  "temporaryBrowserTabClosed": true,
+  "viewportReset": true,
+  "appStopped": true,
+  "databaseContainerStatus": "exited",
+  "loopbackPortsClosed": {
+    "3004": true,
+    "54354": true
+  },
+  "sessionSigningSecretRemoved": true,
+  "bootstrapFilesAbsent": true,
+  "isolatedDatabaseRetained": "stopped; reproducibility until final review acceptance",
+  "stage9DatabaseUsed": false,
+  "newBusinessActions": 0,
+  "newReceipts": 0,
+  "createdDuringFinalCapture": {
+    "DemoSession": 1,
+    "ComparisonRun": 1,
+    "EconomicsEnrichmentRun": 1,
+    "ProposedAction": 1
+  }
+}
