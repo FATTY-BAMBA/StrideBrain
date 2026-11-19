@@ -1,0 +1,39 @@
+{
+  "capturedAt": "2026-11-18T09:24:03.103Z",
+  "method": "READ_ONLY_DATABASE_CORROBORATION",
+  "result": "PASS",
+  "actions": [
+    {
+      "businessKey": "action_bc8bba12-2d8f-4620-97cf-09c29cf7c74f",
+      "comparisonRunId": "cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4",
+      "enrichmentRunId": "econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9",
+      "title": "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3",
+      "rationale": "Validate the imported-stone and lighting assumptions using the linked historical evidence.\n\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\n\nLighting quoted price differs by +9.4% from eligible quoted-price history.\n\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\n\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\n\nComparison: cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4; economics enrichment: econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9.\n\nThis creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally.\n\nHistorical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid.",
+      "dueDate": null,
+      "assigneeMembershipId": "membership_horizon_mei",
+      "evidenceReferenceCount": 15,
+      "proposalKey": "proposal_546a9a02-e728-4552-8cd5-0fc8fa35ac63",
+      "proposalStatus": "CONFIRMED",
+      "consumed": true,
+      "proposalLineageMatches": true,
+      "matchingReceipts": 1,
+      "matchingAudits": 1
+    },
+    {
+      "businessKey": "action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+      "comparisonRunId": "cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4",
+      "enrichmentRunId": "econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024",
+      "title": "Review imported-stone and lighting assumptions for Xinyi quote v3",
+      "rationale": "Check the supporting evidence and record questions for internal review.\n\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\n\nLighting quoted price differs by +9.4% from eligible quoted-price history.\n\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\n\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\n\nComparison: cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4; economics enrichment: econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024.\n\nThis creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally.\n\nHistorical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid.",
+      "dueDate": "2026-11-24T16:00:00.000Z",
+      "assigneeMembershipId": "membership_horizon_finance",
+      "evidenceReferenceCount": 15,
+      "proposalKey": "proposal_57286e7a-6f19-4cde-84d1-5b7f442dd58a",
+      "proposalStatus": "CONFIRMED",
+      "consumed": true,
+      "proposalLineageMatches": true,
+      "matchingReceipts": 1,
+      "matchingAudits": 1
+    }
+  ]
+}

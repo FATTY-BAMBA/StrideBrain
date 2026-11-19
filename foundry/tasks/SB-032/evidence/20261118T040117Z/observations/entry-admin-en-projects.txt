@@ -1,0 +1,168 @@
+- link "Skip to main content":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain BY PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: BY PRIMESTRIDE AI
+  - navigation "Projects":
+    - link "Home":
+      - /url: /en
+      - generic: "01"
+      - generic: Home
+    - link "Projects":
+      - /url: /en/projects
+      - generic: "02"
+      - generic: Projects
+    - link "Knowledge":
+      - /url: /en/knowledge
+      - generic: "03"
+      - generic: Knowledge
+    - link "StrideBrain":
+      - /url: /en/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "Settings":
+      - /url: /en/settings
+      - generic: "05"
+      - generic: Settings
+  - strong: v0.1 · Controlled demo
+  - generic: This area is not active yet
+- banner:
+  - generic: ●
+  - text: Controlled synthetic demo
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects
+    - generic: /
+    - link "EN":
+      - /url: /en/projects
+- main:
+  - paragraph: PROJECT WORKSPACE
+  - heading "Projects" [level=1]
+  - paragraph: Open a project workspace available to your account.
+  - list "Projects":
+    - link "Active Design Project 01 Active Open project":
+      - /url: /en/projects/PRJ-ACTIVE-001
+      - heading "Active Design Project 01" [level=2]
+      - generic: Active
+      - generic: Open project →
+    - link "Active Design Project 02 Active Open project":
+      - /url: /en/projects/PRJ-ACTIVE-002
+      - heading "Active Design Project 02" [level=2]
+      - generic: Active
+      - generic: Open project →
+    - link "Active Design Project 03 Active Open project":
+      - /url: /en/projects/PRJ-ACTIVE-003
+      - heading "Active Design Project 03" [level=2]
+      - generic: Active
+      - generic: Open project →
+    - link "Active Design Project 04 Active Open project":
+      - /url: /en/projects/PRJ-ACTIVE-004
+      - heading "Active Design Project 04" [level=2]
+      - generic: Active
+      - generic: Open project →
+    - link "Xinyi Flagship Renovation Active Open project":
+      - /url: /en/projects/PRJ-XINYI-026
+      - heading "Xinyi Flagship Renovation" [level=2]
+      - generic: Active
+      - generic: Open project →
+    - link "Banqiao Concept Store Open project":
+      - /url: /en/projects/PRJ-BANQIAO-015
+      - heading "Banqiao Concept Store" [level=2]
+      - generic: Open project →
+    - link "Daan Premium Showroom Open project":
+      - /url: /en/projects/PRJ-DAAN-016
+      - heading "Daan Premium Showroom" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 01 Open project":
+      - /url: /en/projects/PRJ-HIST-001
+      - heading "Completed Workplace Project 01" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 02 Open project":
+      - /url: /en/projects/PRJ-HIST-002
+      - heading "Completed Workplace Project 02" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 03 Open project":
+      - /url: /en/projects/PRJ-HIST-003
+      - heading "Completed Workplace Project 03" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 04 Open project":
+      - /url: /en/projects/PRJ-HIST-004
+      - heading "Completed Workplace Project 04" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 05 Open project":
+      - /url: /en/projects/PRJ-HIST-005
+      - heading "Completed Workplace Project 05" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 06 Open project":
+      - /url: /en/projects/PRJ-HIST-006
+      - heading "Completed Workplace Project 06" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 07 Open project":
+      - /url: /en/projects/PRJ-HIST-007
+      - heading "Completed Workplace Project 07" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 08 Open project":
+      - /url: /en/projects/PRJ-HIST-008
+      - heading "Completed Workplace Project 08" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 09 Open project":
+      - /url: /en/projects/PRJ-HIST-009
+      - heading "Completed Workplace Project 09" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 10 Open project":
+      - /url: /en/projects/PRJ-HIST-010
+      - heading "Completed Workplace Project 10" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 11 Open project":
+      - /url: /en/projects/PRJ-HIST-011
+      - heading "Completed Workplace Project 11" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 12 Open project":
+      - /url: /en/projects/PRJ-HIST-012
+      - heading "Completed Workplace Project 12" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 13 Open project":
+      - /url: /en/projects/PRJ-HIST-013
+      - heading "Completed Workplace Project 13" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 14 Open project":
+      - /url: /en/projects/PRJ-HIST-014
+      - heading "Completed Workplace Project 14" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 15 Open project":
+      - /url: /en/projects/PRJ-HIST-015
+      - heading "Completed Workplace Project 15" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 16 Open project":
+      - /url: /en/projects/PRJ-HIST-016
+      - heading "Completed Workplace Project 16" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 17 Open project":
+      - /url: /en/projects/PRJ-HIST-017
+      - heading "Completed Workplace Project 17" [level=2]
+      - generic: Open project →
+    - link "Completed Workplace Project 18 Open project":
+      - /url: /en/projects/PRJ-HIST-018
+      - heading "Completed Workplace Project 18" [level=2]
+      - generic: Open project →
+    - link "Nanjing Brand Experience Center Open project":
+      - /url: /en/projects/PRJ-NANJING-023
+      - heading "Nanjing Brand Experience Center" [level=2]
+      - generic: Open project →
+    - link "Neihu Tech Flagship Open project":
+      - /url: /en/projects/PRJ-NEIHU-021
+      - heading "Neihu Tech Flagship" [level=2]
+      - generic: Open project →
+    - link "Songshan Retail Renewal Open project":
+      - /url: /en/projects/PRJ-SONGSHAN-020
+      - heading "Songshan Retail Renewal" [level=2]
+      - generic: Open project →
+    - link "Zhongshan Lifestyle Store Open project":
+      - /url: /en/projects/PRJ-ZHONGSHAN-018
+      - heading "Zhongshan Lifestyle Store" [level=2]
+      - generic: Open project →
+- contentinfo:
+  - generic: Synthetic demo data only · No real customer data
+  - generic: Live demo-domain cutover has not occurred
+- alert

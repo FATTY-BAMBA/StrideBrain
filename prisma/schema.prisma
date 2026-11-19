@@ -785,7 +785,7 @@ model ComparisonRun {
   activeQuoteVersion QuoteVersion?         @relation("ActiveQuoteVersion", fields: [activeQuoteVersionId], references: [id], onDelete: SetNull)
   candidates         ComparisonCandidate[]
   claims              ComparisonClaim[]
-  economicsEnrichment EconomicsEnrichmentRun?
+  economicsEnrichment EconomicsEnrichmentRun[]
   proposedActions     ProposedAction[]
   actions            Action[]
   auditEvents        AuditEvent[]
@@ -844,6 +844,7 @@ model ComparisonClaim {
   organizationId       String
   comparisonRunId      String
   claimKey             String
+  enrichmentRunId      String?
   claimType            String
   titleEn              String
   titleZhTw            String
@@ -857,7 +858,10 @@ model ComparisonClaim {
   organization  Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   comparisonRun ComparisonRun @relation(fields: [comparisonRunId], references: [id], onDelete: Cascade)
 
-  @@unique([organizationId, comparisonRunId, claimKey])
+  enrichmentRun EconomicsEnrichmentRun? @relation(fields: [enrichmentRunId, organizationId, comparisonRunId], references: [id, organizationId, comparisonRunId], onDelete: NoAction, onUpdate: NoAction, map: "ComparisonClaim_enrichment_lineage_fkey")
+
+  // Null-enrichment structural claims retain a partial unique index in migration 0009.
+  @@unique([organizationId, enrichmentRunId, claimKey], map: "ComparisonClaim_enrichment_claim_key")
   @@unique([id, organizationId])
   @@index([organizationId, claimType])
 }
@@ -865,7 +869,7 @@ model ComparisonClaim {
 model EconomicsEnrichmentRun {
   id                          String    @id
   organizationId              String
-  comparisonRunId             String    @unique
+  comparisonRunId             String
   activeProjectId             String
   status                      RunStatus
   accessScope                 String
@@ -884,11 +888,14 @@ model EconomicsEnrichmentRun {
   comparisonRun        ComparisonRun                 @relation(fields: [comparisonRunId], references: [id], onDelete: Cascade)
   activeProject        Project                       @relation("ActiveEconomicsProject", fields: [activeProjectId], references: [id], onDelete: Cascade)
   observationDecisions EconomicsObservationDecision[]
+  claims ComparisonClaim[]
   proposedActions ProposedAction[] @relation("InternalReviewProposalEnrichment")
   internalReviewActions Action[] @relation("InternalReviewActionEnrichment")
 
   @@unique([id, organizationId])
   @@unique([id, organizationId, comparisonRunId, activeProjectId], map: "EconomicsEnrichmentRun_scope_key")
+  @@unique([id, organizationId, comparisonRunId], map: "EconomicsEnrichmentRun_claim_scope_key")
+  @@index([comparisonRunId], map: "EconomicsEnrichmentRun_comparison_idx")
   @@index([organizationId, activeProjectId, status])
   @@index([organizationId, inputFingerprint])
 }

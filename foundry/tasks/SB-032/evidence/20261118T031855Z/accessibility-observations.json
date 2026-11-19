@@ -1,0 +1,36 @@
+{
+  "runId": "20261118T031855Z",
+  "scope": "Entry navigation only; no accessibility acceptance for downstream modal flow",
+  "M-01": {
+    "status": "NOT_RUN",
+    "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+    "reason": "Affected browser baseline paused at S9-F01 before VoiceOver journey. User confirmed available to listen; no speech observation or attestation taken.",
+    "next": "VoiceOver + actual Chrome, both locales, with user listening to dialog/errors/evidence/pending/receipt and hidden-background checks.",
+    "NVDAWindows": "NOT_AVAILABLE_ON_CURRENT_HOST"
+  },
+  "M-02": {
+    "status": "DEVICE_EVIDENCE_REQUIRED",
+    "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+    "iPhone": "USER_AVAILABLE_NOT_TESTED",
+    "Android": "AVAILABILITY_NOT_CONFIRMED",
+    "reason": "Physical-device journey not started. Emulated viewport screenshots are not device evidence.",
+    "protocol": "human-review/M-02-device-protocol.md",
+    "next": "After baseline repair, arrange safe device access to isolated preview, record iPhone model/OS/Safari and physical keyboard/touch/native-picker evidence; confirm Android availability separately."
+  },
+  "M-06": {
+    "status": "NOT_RUN",
+    "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+    "reason": "Review dialog and generic failure not reached. No live aria-describedby or spoken-description acceptance inferred from deterministic tests.",
+    "next": "Inspect actual dialog form/error-node relationship, focus/visibility and speech after stale/access/evidence/server failure once baseline passes."
+  },
+  "M-03_M-04_F-08": "Historical Stage 8 outcomes retained; no new zoom/motion/source-modal acceptance executed in this run.",
+  "nativeSettings": "No changes to zoom, Reduce Motion or VoiceOver. Temporary responsive viewport override reset.",
+  "rawFocusCaution": "Some metadata BODY.textContent contains non-visible Next runtime script; it is not a visible-copy leak or proof of focus failure. Intermediate locale snapshot retained; settled capture is authoritative.",
+  "personaCoverage": {
+    "mei": "authenticated entry observed",
+    "finance": "NOT_RUN",
+    "admin": "NOT_RUN",
+    "viewer": "NOT_RUN",
+    "northern": "NOT_RUN"
+  }
+}

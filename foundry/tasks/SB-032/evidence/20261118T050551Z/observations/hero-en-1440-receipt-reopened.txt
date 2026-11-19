@@ -1,0 +1,146 @@
+- link "Skip to main content":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain BY PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: BY PRIMESTRIDE AI
+  - navigation "Projects":
+    - link "Home":
+      - /url: /en
+      - generic: "01"
+      - generic: Home
+    - link "Projects":
+      - /url: /en/projects
+      - generic: "02"
+      - generic: Projects
+    - link "Knowledge":
+      - /url: /en/knowledge
+      - generic: "03"
+      - generic: Knowledge
+    - link "StrideBrain":
+      - /url: /en/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "Settings":
+      - /url: /en/settings
+      - generic: "05"
+      - generic: Settings
+  - strong: v0.1 · Controlled demo
+  - generic: This area is not active yet
+- banner:
+  - generic: ●
+  - text: Controlled synthetic demo
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_ea38cf86-e601-4885-97cb-784373dd8762&economics=econrun_38c286f1-213c-4ac5-b365-5e38e5619a9b&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_3acf70c7-dd40-4e92-ace1-22689b0d5145
+    - generic: /
+    - link "EN":
+      - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_ea38cf86-e601-4885-97cb-784373dd8762&economics=econrun_38c286f1-213c-4ac5-b365-5e38e5619a9b&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_3acf70c7-dd40-4e92-ace1-22689b0d5145
+- main:
+  - navigation "Project workspace navigation":
+    - link "Overview":
+      - /url: /en/projects/PRJ-XINYI-026
+    - link "Compare":
+      - /url: /en/projects/PRJ-XINYI-026/compare
+    - link "Commercial":
+      - /url: /en/projects/PRJ-XINYI-026/commercial
+    - link "Evidence":
+      - /url: /en/projects/PRJ-XINYI-026/evidence
+    - link "Actions":
+      - /url: /en/projects/PRJ-XINYI-026/actions
+  - heading "Internal review actions" [level=1]
+  - paragraph: Xinyi Flagship Renovation
+  - paragraph: Open a saved receipt to inspect its details and return to the source comparison.
+  - article:
+    - generic: Open
+    - heading "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3" [level=2]
+    - term: Assignee
+    - definition: Mei Lin
+    - term: Due date
+    - definition: No due date
+    - link "Open receipt":
+      - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_ea38cf86-e601-4885-97cb-784373dd8762&economics=econrun_38c286f1-213c-4ac5-b365-5e38e5619a9b&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_3acf70c7-dd40-4e92-ace1-22689b0d5145
+  - article:
+    - generic: Open
+    - heading "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3" [level=2]
+    - term: Assignee
+    - definition: Mei Lin
+    - term: Due date
+    - definition: No due date
+    - link "Open receipt":
+      - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_805935c0-899a-441c-b5b7-32afb07663a0&economics=econrun_6dfa499b-c93a-40f8-be11-227de5a62d91&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_3f24f22d-b957-44e4-a5f6-a0766b7c1257
+  - article:
+    - generic: Open
+    - heading "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3" [level=2]
+    - term: Assignee
+    - definition: Mei Lin
+    - term: Due date
+    - definition: No due date
+    - link "Open receipt":
+      - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_17707324-161e-4750-801b-8dc7e56087e5&economics=econrun_838837fa-f726-4342-a69d-2b103b84fb93&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_95856ac2-d181-4465-9662-1d3dd89889c3
+  - article:
+    - generic: Open
+    - heading "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3" [level=2]
+    - term: Assignee
+    - definition: Mei Lin
+    - term: Due date
+    - definition: No due date
+    - link "Open receipt":
+      - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_ef342df1-9d31-4410-8203-fa0615dd1c30&economics=econrun_c9293f57-2c2a-4f0a-87ca-d38b1aa3b847&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_e9473f57-2043-48c9-b8b9-3b6a8cc8457b
+  - article:
+    - generic: Open
+    - heading "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3" [level=2]
+    - term: Assignee
+    - definition: Iris Huang
+    - term: Due date
+    - definition: 2026-11-25
+    - link "Open receipt":
+      - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb&economics=econrun_40619df6-a98a-4438-b59a-e03965837f7c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_bba3dadf-f4b1-4b2a-81c3-14e205c6a9ce
+  - article:
+    - generic: Open
+    - heading "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3" [level=2]
+    - term: Assignee
+    - definition: Mei Lin
+    - term: Due date
+    - definition: 2026-11-26
+    - link "Open receipt":
+      - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_f5a9eae3-3472-4fcf-a310-a9abeb6ad0a3&economics=econrun_ddf16e38-6b64-4b8a-9c42-3359b478430c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_29b8b0f1-61ab-49e9-8086-7d6e613298ae
+  - dialog "Internal review action created":
+    - heading "Internal review action created" [active] [level=2]
+    - paragraph: This receipt records the action saved to the project.
+    - navigation "English / 繁體中文":
+      - link "English":
+        - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_ea38cf86-e601-4885-97cb-784373dd8762&economics=econrun_38c286f1-213c-4ac5-b365-5e38e5619a9b&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_3acf70c7-dd40-4e92-ace1-22689b0d5145
+      - link "繁體中文":
+        - /url: /zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_ea38cf86-e601-4885-97cb-784373dd8762&economics=econrun_38c286f1-213c-4ac5-b365-5e38e5619a9b&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_3acf70c7-dd40-4e92-ace1-22689b0d5145
+    - button "Close"
+    - heading "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3" [level=3]
+    - paragraph: "Validate the imported-stone and lighting assumptions using the linked historical evidence. Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history. Lighting quoted price differs by +9.4% from eligible quoted-price history. Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available. The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium. Comparison: cmprun_ea38cf86-e601-4885-97cb-784373dd8762; economics enrichment: econrun_38c286f1-213c-4ac5-b365-5e38e5619a9b. This creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally. Historical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid."
+    - term: Action reference
+    - definition: action_3acf70c7-dd40-4e92-ace1-22689b0d5145
+    - term: Project
+    - definition: Xinyi Flagship Renovation
+    - term: Assignee
+    - definition: Mei Lin
+    - term: Due date
+    - definition: No due date
+    - term: Status
+    - definition: Open
+    - term: Created
+    - definition: 18 Nov 2026, 13:47
+    - term: Created by
+    - definition: Mei Lin
+    - term: Authorized evidence references
+    - definition: "15"
+    - term: Source comparison
+    - definition: cmprun_ea38cf86-e601-4885-97cb-784373dd8762
+    - term: Source economics review
+    - definition: econrun_38c286f1-213c-4ac5-b365-5e38e5619a9b
+    - link "Return to source comparison":
+      - /url: /en/projects/PRJ-XINYI-026/compare?run=cmprun_ea38cf86-e601-4885-97cb-784373dd8762&economics=econrun_38c286f1-213c-4ac5-b365-5e38e5619a9b&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023
+    - link "View project actions":
+      - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_ea38cf86-e601-4885-97cb-784373dd8762&economics=econrun_38c286f1-213c-4ac5-b365-5e38e5619a9b&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023
+- contentinfo:
+  - generic: Synthetic demo data only · No real customer data
+  - generic: Live demo-domain cutover has not occurred
+- alert

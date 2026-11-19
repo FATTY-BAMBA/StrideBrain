@@ -1,0 +1,43 @@
+{
+  "runId": "20261118T050551Z",
+  "at": "2026-11-18T06:07:36.489222+00:00",
+  "result": "PASS",
+  "scope": "Entire new evidence subtree, four updated task records,174private OCR outputs, JPEG metadata and known-private-value public static bundle search. Historical evidence not rewritten.",
+  "evidenceFilesScannedBeforeManifest": 662,
+  "taskRecordsScanned": 4,
+  "knownValueEncodings": [
+    "raw",
+    "URL-encoded",
+    "base64",
+    "base64url"
+  ],
+  "sensitivePatterns": [
+    "personal_or_private_path",
+    "personal_account_name",
+    "private_LAN_address",
+    "database_url",
+    "bootstrap_url",
+    "live_cookie_or_auth_header",
+    "private_key",
+    "github_token",
+    "jwt",
+    "credential_assignment",
+    "device_identifier_value"
+  ],
+  "findings": [],
+  "screenshots": {
+    "count": 174,
+    "OCRFiles": 174,
+    "allContactSheetsReviewed": true,
+    "EXIFEntries": 0,
+    "metadata": "Ordinary JFIF only",
+    "scope": "Privacy/artifact review, not human language certification"
+  },
+  "publicStaticBundle": {
+    "filesScanned": 20,
+    "knownPrivateLiteralFindings": [],
+    "notFullSecurityAudit": true
+  },
+  "disallowedArtifacts": [],
+  "publicationPerformed": false
+}

@@ -1,0 +1,14 @@
+{
+  "at": "2026-11-19T03:17:47.132278+00:00",
+  "decision": "DEFERRED_BY_USER",
+  "scope": [
+    "M-01 actual VoiceOver speech",
+    "M-06 remaining speech association"
+  ],
+  "reason": "User requested: for now we can skip this and focus on more pressing things to get our demo ready",
+  "actualSpeechPassClaimed": false,
+  "releaseGateWaiver": false,
+  "nextFocus": "Local demo operational readiness and concise core-journey rehearsal",
+  "productChangesAuthorizedByThisDecision": false,
+  "deploymentOrMergeAuthorizedByThisDecision": false
+}

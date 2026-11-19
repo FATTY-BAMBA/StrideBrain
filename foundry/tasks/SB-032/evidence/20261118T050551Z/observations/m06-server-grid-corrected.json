@@ -1,0 +1,394 @@
+[
+  {
+    "locale": "en",
+    "requested": [
+      1440,
+      900
+    ],
+    "describedBy": "review-error-summary",
+    "draft": [
+      {
+        "id": "review-title",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "id": "review-dueDate",
+        "value": "2026-11-26"
+      },
+      {
+        "checked": true,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "focusId": "review-error-summary",
+    "focusInsideDialog": true,
+    "labelledBy": "review-error-heading",
+    "rect": {
+      "height": 152.046875,
+      "width": 640,
+      "x": 780,
+      "y": 147.1953125
+    },
+    "role": "alert",
+    "summary": "Review could not be confirmedThe action could not be confirmed. Retry the same confirmation to safely recover its saved receipt if it was created.Reference: 205d49eb-efa3-4619-975c-74189b1d1a03",
+    "summaryExists": true,
+    "summaryInsideSameForm": true,
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_f5a9eae3-3472-4fcf-a310-a9abeb6ad0a3&economics=econrun_ddf16e38-6b64-4b8a-9c42-3359b478430c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_15494597-3992-463e-ac4d-82ee6ba4fd29&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2026-11-26",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "locale": "en",
+    "requested": [
+      768,
+      1024
+    ],
+    "describedBy": "review-error-summary",
+    "draft": [
+      {
+        "id": "review-title",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "id": "review-dueDate",
+        "value": "2026-11-26"
+      },
+      {
+        "checked": true,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "focusId": "review-error-summary",
+    "focusInsideDialog": true,
+    "labelledBy": "review-error-heading",
+    "rect": {
+      "height": 152.046875,
+      "width": 640,
+      "x": 108,
+      "y": 147.1953125
+    },
+    "role": "alert",
+    "summary": "Review could not be confirmedThe action could not be confirmed. Retry the same confirmation to safely recover its saved receipt if it was created.Reference: f81088c8-9dba-4405-8bb3-7cae103cdeae",
+    "summaryExists": true,
+    "summaryInsideSameForm": true,
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_f5a9eae3-3472-4fcf-a310-a9abeb6ad0a3&economics=econrun_ddf16e38-6b64-4b8a-9c42-3359b478430c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_15494597-3992-463e-ac4d-82ee6ba4fd29&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2026-11-26",
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "locale": "en",
+    "requested": [
+      390,
+      844
+    ],
+    "describedBy": "review-error-summary",
+    "draft": [
+      {
+        "id": "review-title",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "id": "review-dueDate",
+        "value": "2026-11-26"
+      },
+      {
+        "checked": true,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "focusId": "review-error-summary",
+    "focusInsideDialog": true,
+    "labelledBy": "review-error-heading",
+    "rect": {
+      "height": 198.109375,
+      "width": 358,
+      "x": 16,
+      "y": 220.3125
+    },
+    "role": "alert",
+    "summary": "Review could not be confirmedThe action could not be confirmed. Retry the same confirmation to safely recover its saved receipt if it was created.Reference: d96c555b-32c3-467f-b7d9-f1dfdba44056",
+    "summaryExists": true,
+    "summaryInsideSameForm": true,
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_f5a9eae3-3472-4fcf-a310-a9abeb6ad0a3&economics=econrun_ddf16e38-6b64-4b8a-9c42-3359b478430c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_15494597-3992-463e-ac4d-82ee6ba4fd29&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2026-11-26",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "locale": "en",
+    "requested": [
+      320,
+      740
+    ],
+    "describedBy": "review-error-summary",
+    "draft": [
+      {
+        "id": "review-title",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "id": "review-dueDate",
+        "value": "2026-11-26"
+      },
+      {
+        "checked": true,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "focusId": "review-error-summary",
+    "focusInsideDialog": true,
+    "labelledBy": "review-error-heading",
+    "rect": {
+      "height": 223.703125,
+      "width": 288,
+      "x": 16,
+      "y": 220.3125
+    },
+    "role": "alert",
+    "summary": "Review could not be confirmedThe action could not be confirmed. Retry the same confirmation to safely recover its saved receipt if it was created.Reference: c3109a57-ab55-452e-8b0a-64585b752aab",
+    "summaryExists": true,
+    "summaryInsideSameForm": true,
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_f5a9eae3-3472-4fcf-a310-a9abeb6ad0a3&economics=econrun_ddf16e38-6b64-4b8a-9c42-3359b478430c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_15494597-3992-463e-ac4d-82ee6ba4fd29&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2026-11-26",
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "requested": [
+      320,
+      740
+    ],
+    "describedBy": "review-error-summary",
+    "draft": [
+      {
+        "id": "review-title",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "id": "review-dueDate",
+        "value": "2026-11-26"
+      },
+      {
+        "checked": true,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "focusId": "review-error-summary",
+    "focusInsideDialog": true,
+    "labelledBy": "review-error-heading",
+    "rect": {
+      "height": 198.109375,
+      "width": 288,
+      "x": 16,
+      "y": 167.1953125
+    },
+    "role": "alert",
+    "summary": "未能完成審查確認未能確認事項的建立結果。可重試相同的確認內容；若事項已建立，將安全地取回同一份回執。參考編號: 5ef1bbc7-5e3b-4cd7-901c-60bd7a9826c5",
+    "summaryExists": true,
+    "summaryInsideSameForm": true,
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_f5a9eae3-3472-4fcf-a310-a9abeb6ad0a3&economics=econrun_ddf16e38-6b64-4b8a-9c42-3359b478430c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_15494597-3992-463e-ac4d-82ee6ba4fd29&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2026-11-26",
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "requested": [
+      390,
+      844
+    ],
+    "describedBy": "review-error-summary",
+    "draft": [
+      {
+        "id": "review-title",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "id": "review-dueDate",
+        "value": "2026-11-26"
+      },
+      {
+        "checked": true,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "focusId": "review-error-summary",
+    "focusInsideDialog": true,
+    "labelledBy": "review-error-heading",
+    "rect": {
+      "height": 177.640625,
+      "width": 358,
+      "x": 16,
+      "y": 167.1953125
+    },
+    "role": "alert",
+    "summary": "未能完成審查確認未能確認事項的建立結果。可重試相同的確認內容；若事項已建立，將安全地取回同一份回執。參考編號: f66bfb84-1fe0-41f9-8970-656ca0930b79",
+    "summaryExists": true,
+    "summaryInsideSameForm": true,
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_f5a9eae3-3472-4fcf-a310-a9abeb6ad0a3&economics=econrun_ddf16e38-6b64-4b8a-9c42-3359b478430c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_15494597-3992-463e-ac4d-82ee6ba4fd29&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2026-11-26",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "requested": [
+      768,
+      1024
+    ],
+    "describedBy": "review-error-summary",
+    "draft": [
+      {
+        "id": "review-title",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "id": "review-dueDate",
+        "value": "2026-11-26"
+      },
+      {
+        "checked": true,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "focusId": "review-error-summary",
+    "focusInsideDialog": true,
+    "labelledBy": "review-error-heading",
+    "rect": {
+      "height": 152.046875,
+      "width": 640,
+      "x": 108,
+      "y": 147.1953125
+    },
+    "role": "alert",
+    "summary": "未能完成審查確認未能確認事項的建立結果。可重試相同的確認內容；若事項已建立，將安全地取回同一份回執。參考編號: 38cd70dc-9f68-4ba6-b048-62eebcf35ec6",
+    "summaryExists": true,
+    "summaryInsideSameForm": true,
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_f5a9eae3-3472-4fcf-a310-a9abeb6ad0a3&economics=econrun_ddf16e38-6b64-4b8a-9c42-3359b478430c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_15494597-3992-463e-ac4d-82ee6ba4fd29&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2026-11-26",
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "requested": [
+      1440,
+      900
+    ],
+    "describedBy": "review-error-summary",
+    "draft": [
+      {
+        "id": "review-title",
+        "value": "CHECK"
+      },
+      {
+        "id": "review-rationale",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "id": "review-assignee",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "id": "review-dueDate",
+        "value": "2026-11-26"
+      },
+      {
+        "checked": true,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "focusId": "review-error-summary",
+    "focusInsideDialog": true,
+    "labelledBy": "review-error-heading",
+    "rect": {
+      "height": 152.046875,
+      "width": 640,
+      "x": 780,
+      "y": 147.1953125
+    },
+    "role": "alert",
+    "summary": "未能完成審查確認未能確認事項的建立結果。可重試相同的確認內容；若事項已建立，將安全地取回同一份回執。參考編號: 2ccff0c1-82dd-4663-ad50-f8daf5fa0050",
+    "summaryExists": true,
+    "summaryInsideSameForm": true,
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_f5a9eae3-3472-4fcf-a310-a9abeb6ad0a3&economics=econrun_ddf16e38-6b64-4b8a-9c42-3359b478430c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_15494597-3992-463e-ac4d-82ee6ba4fd29&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2026-11-26",
+    "viewport": [
+      1440,
+      900
+    ]
+  }
+]

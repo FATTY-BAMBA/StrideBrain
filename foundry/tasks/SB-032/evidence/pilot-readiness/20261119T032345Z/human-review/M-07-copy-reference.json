@@ -1,0 +1,7 @@
+{
+  "sourceHead": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+  "reference": "../../../20261118T094310Z/human-review/source-zh-copy-inventory.json",
+  "sha256": "812d1ae2007c9a3ede95b748f29d956b53797f826b42ddb24572b080d5e79eac",
+  "scope": "CJK-bearing source lines, not assembled UI strings or human approval",
+  "productSourceUnchanged": true
+}

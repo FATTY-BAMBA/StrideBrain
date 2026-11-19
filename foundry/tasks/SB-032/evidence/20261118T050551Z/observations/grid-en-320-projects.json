@@ -1,0 +1,19 @@
+{
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "BODY"
+  },
+  "mainText": "PROJECT WORKSPACE\n\nProjects\n\nOpen a project workspace available to your account.\n\nXinyi Flagship Renovation\nActive\nOpen project →",
+  "overflow": false,
+  "url": "http://localhost:3000/en/projects",
+  "viewport": {
+    "dpr": 1,
+    "height": 740,
+    "width": 320
+  },
+  "at": "2026-11-18T05:43:57.032Z",
+  "browser": "Actual Google Chrome on macOS",
+  "persona": "Synthetic Mei",
+  "screenshot": "screenshots/grid-en-320-projects.jpg"
+}

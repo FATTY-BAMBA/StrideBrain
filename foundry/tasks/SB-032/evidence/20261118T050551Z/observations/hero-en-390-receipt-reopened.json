@@ -1,0 +1,19 @@
+{
+  "focus": {
+    "id": "internal-review-heading",
+    "tag": "H2",
+    "text": "Internal review action created"
+  },
+  "mainText": "Overview\nCompare\nCommercial\nEvidence\nActions\nInternal review actions\n\nXinyi Flagship Renovation\n\nOpen a saved receipt to inspect its details and return to the source comparison.\n\nOpen\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\nAssignee\nMei Lin\nDue date\nNo due date\nOpen receipt\nOpen\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\nAssignee\nMei Lin\nDue date\nNo due date\nOpen receipt\nOpen\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\nAssignee\nIris Huang\nDue date\n2026-11-25\nOpen receipt\nOpen\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\nAssignee\nMei Lin\nDue date\n2026-11-26\nOpen receipt\nInternal review action created\n\nThis receipt records the action saved to the project.\n\nEnglish\n繁體中文\nClose\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\n\nValidate the imported-stone and lighting assumptions using the linked historical evidence.\n\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\n\nLighting quoted price differs by +9.4% from eligible quoted-price history.\n\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\n\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\n\nComparison: cmprun_17707324-161e-4750-801b-8dc7e56087e5; economics enrichment: econrun_838837fa-f726-4342-a69d-2b103b84fb93.\n\nThis creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally.\n\nHistorical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid.\n\nAction reference\naction_95856ac2-d181-4465-9662-1d3dd89889c3\nProject\nXinyi Flagship Renovation\nAssignee\nMei Lin\nDue date\nNo due date\nStatus\nOpen\nCreated\n18 Nov 2026, 13:46\nCreated by\nMei Lin\nAuthorized evidence references\n15\nSource comparison\ncmprun_17707324-161e-4750-801b-8dc7e56087e5\nSource economics review\neconrun_838837fa-f726-4342-a69d-2b103b84fb93\nReturn to source comparison\nView project actions",
+  "overflow": false,
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?run=cmprun_17707324-161e-4750-801b-8dc7e56087e5&economics=econrun_838837fa-f726-4342-a69d-2b103b84fb93&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_95856ac2-d181-4465-9662-1d3dd89889c3",
+  "viewport": {
+    "dpr": 1,
+    "height": 844,
+    "width": 390
+  },
+  "at": "2026-11-18T05:46:48.766Z",
+  "browser": "Actual Google Chrome on macOS",
+  "persona": "Synthetic Mei",
+  "screenshot": "screenshots/hero-en-390-receipt-reopened.jpg"
+}

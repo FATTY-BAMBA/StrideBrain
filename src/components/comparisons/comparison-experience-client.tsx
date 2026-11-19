@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Route } from "next";
 import { useRouter } from "next/navigation";
+import { useFormStatus } from "react-dom";
 
 import { updateComparisonSelectionAction } from "@/app/[locale]/projects/[projectKey]/compare/actions";
 import { StaleComparisonNotice } from "./stale-comparison-notice";
@@ -34,6 +35,20 @@ type ComparisonExperienceClientProps = Readonly<{
   evidenceReturnId?: string | undefined;
   internalReview?: InternalReviewExperienceProps | undefined;
 }>;
+
+function SelectionSubmit({ disabled, label }: Readonly<{ disabled: boolean; label: string }>) {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      className={styles.primaryButton}
+      type="submit"
+      disabled={disabled || pending}
+      aria-busy={pending}
+    >
+      {label}
+    </button>
+  );
+}
 
 function bandClass(band: ComparableProjectCardView["band"]): string {
   if (band === "STRONG") return styles.bandStrong ?? "";
@@ -220,7 +235,7 @@ function ProjectCard({
   );
 }
 
-export function ComparisonExperienceClient({
+function ComparisonResultExperience({
   view,
   freshness,
   evidencePanel,
@@ -243,6 +258,12 @@ export function ComparisonExperienceClient({
   const navigateEvidence = useCallback(
     (selection: EvidencePanelSelection, triggerId?: string, fromReview = false) => {
       const url = new URL(window.location.href);
+      url.searchParams.set("run", selection.comparisonRunId);
+      const enrichmentRunId =
+        "enrichmentRunId" in selection ? selection.enrichmentRunId : view.route.economicsRunId;
+      if (enrichmentRunId) url.searchParams.set("economics", enrichmentRunId);
+      else url.searchParams.delete("economics");
+      url.searchParams.set("selected", view.route.selectedProjectKeys.join(","));
       for (const key of EVIDENCE_QUERY_KEYS) url.searchParams.delete(key);
       for (const [key, value] of Object.entries(evidenceSelectionParams(selection))) {
         url.searchParams.set(key, value);
@@ -252,7 +273,7 @@ export function ComparisonExperienceClient({
       if (fromReview) url.searchParams.set("reviewEvidence", "1");
       router.push(`${url.pathname}?${url.searchParams.toString()}` as Route, { scroll: false });
     },
-    [evidenceReturnId, router],
+    [evidenceReturnId, router, view.route.selectedProjectKeys, view.route.economicsRunId],
   );
 
   const closeEvidence = useCallback(() => {
@@ -443,13 +464,10 @@ export function ComparisonExperienceClient({
             {selectionError ??
               `${copy.selectedProjects}: ${orderedSelected.length > 0 ? orderedSelected.join(", ") : "—"}`}
           </p>
-          <button
-            className={styles.primaryButton}
-            type="submit"
+          <SelectionSubmit
             disabled={!dirty || orderedSelected.length === 0 || selectionError !== null}
-          >
-            {copy.selection.apply}
-          </button>
+            label={copy.selection.apply}
+          />
         </form>
       </section>
 
@@ -596,5 +614,16 @@ export function ComparisonExperienceClient({
         />
       ) : null}
     </div>
+  );
+}
+
+/** A persisted result change resets its editor; same-result navigation retains it. */
+export function ComparisonExperienceClient(props: ComparisonExperienceClientProps) {
+  const { comparisonRunId, economicsRunId } = props.view.route;
+  return (
+    <ComparisonResultExperience
+      key={`${comparisonRunId}:${economicsRunId ?? "structural"}`}
+      {...props}
+    />
   );
 }

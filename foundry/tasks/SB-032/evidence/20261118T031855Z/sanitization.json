@@ -1,0 +1,52 @@
+{
+  "runId": "20261118T031855Z",
+  "at": "2026-11-18T03:49:56.784569+00:00",
+  "result": "PASS",
+  "scope": "Entire new execution evidence subtree, four task records and known-secret search of generated public static bundle; no historical evidence rewrite.",
+  "textAndBinaryFilesScannedBeforeManifest": 107,
+  "taskRecordsScanned": 4,
+  "knownPrivateValueTypes": [
+    "fresh database credentials/URLs",
+    "session signing secret",
+    "issued QA session identifier",
+    "one-use bootstrap URL/token"
+  ],
+  "literalEncodings": [
+    "raw",
+    "URL encoded",
+    "base64",
+    "base64url"
+  ],
+  "sensitivePatternsChecked": [
+    "personal_or_private_path",
+    "database_url",
+    "bootstrap_url",
+    "live_cookie_or_auth_header",
+    "private_key",
+    "github_token",
+    "jwt",
+    "credential_assignment"
+  ],
+  "findings": [],
+  "screenshots": {
+    "count": 12,
+    "allVisuallyReviewed": true,
+    "result": "PASS",
+    "OCR": "English-character Tesseract OCR on all 12 plus bilingual visual review; not automated Chinese linguistic approval.",
+    "metadata": "All 12 JPEGs contain only ordinary JFIF APP0; no EXIF/XMP/comment metadata."
+  },
+  "publicStaticBundle": {
+    "filesScanned": 19,
+    "knownPrivateLiteralFindings": [],
+    "scope": "Known runtime values only; not a complete security audit"
+  },
+  "disallowedArtifactTypes": [],
+  "rawRuntimeLogsAndCredentials": "Kept outside evidence subtree; sanitized log copies only.",
+  "sourceLogRedactions": [
+    "private environment values",
+    "local filesystem/runtime paths",
+    "database URLs"
+  ],
+  "publicationPerformed": false,
+  "finalTaskRecordsAndAddendaRescanned": true
+}

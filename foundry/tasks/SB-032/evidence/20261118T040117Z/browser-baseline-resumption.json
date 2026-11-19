@@ -1,0 +1,55 @@
+{
+  "at": "2026-11-18T04:40:54.403Z",
+  "scope": "Resumed fresh browser baseline after S9-F01 closure; not the full Stage 9 matrix.",
+  "locales": [
+    "en",
+    "zh-TW"
+  ],
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 320,
+      "height": 740
+    }
+  ],
+  "entry": "PASS",
+  "comparisonAndLightingResponsive": "PASS",
+  "reviewAndReceiptResponsive": "PARTIAL: receipts and review DOM exercised at four sizes; EN review 390/768 screenshot pixel widths do not match measured CSS viewport and need settled recapture.",
+  "draftLocaleRefreshEvidenceHistory": "PASS with native keyboard date input; IAB date fill alone did not dispatch the application update",
+  "sourceFocus": "PASS EN desktop and zh-TW narrow, Tab/Shift+Tab containment and settled hierarchical Escape/trigger restoration",
+  "validation": "PASS field acknowledgement and date error paths observed; generic server failure not injected",
+  "confirmation": "Two intentionally distinct fresh comparisons produced two actions; consumed proposal/prepare safely unavailable; copied receipt and actions list reopen successful",
+  "createdActions": [
+    "action_ba562411-59e0-40ca-8765-bf00afdc3b84",
+    "action_76bdf770-9d82-4f17-9806-c525ab9754d3"
+  ],
+  "unexecuted": [
+    "full five-second/timed hero acceptance",
+    "selection mutation coverage",
+    "generic failure/stale-source mutation waves",
+    "performance/rollback full rehearsals",
+    "native browser zoom/motion",
+    "VoiceOver speech",
+    "physical devices",
+    "independent human zh-TW review",
+    "settled EN review 390x844 and 768x1024 visual recapture"
+  ],
+  "newConfirmedRequiredPathDefects": 0,
+  "notes": [
+    "Transient pending BODY focus and English loading label in zh-TW remain follow-up observations, not validated manual-gate passes.",
+    "Source-return preliminary trace captured an unsettled transition; settled trace confirms exact source trigger.",
+    "Chinese review prepared again from consumed comparison was safely unavailable by preparation idempotency; valid review grid captured using a fresh comparison."
+  ],
+  "status": "RESUMED_PARTIAL_NOT_FULL_STAGE9_ACCEPTANCE"
+}

@@ -1,0 +1,15 @@
+# M-05 process-clock method review
+
+Prior records contained a proposed, unimplemented method; no existing independent approval is asserted. This run establishes the process-only method through source inspection, isolation assertions, runtime probes and real-browser/server/database evidence. Independent final review remains required.
+
+The unchanged production output is copied to a private test directory. A Node preload substitutes only zero-argument Date construction, Date() and Date.now with an explicit operator-controlled instant. Date parsing/UTC/explicit construction and monotonic timers remain native. The Mac clock, browser clock and database system clock are not changed. No route responses, session verifier or due-date validator are mocked. No product clock hook or source edit is added.
+
+The page uses proposal.minDueDate/maxDueDate supplied by the server; the form submits to the actual confirmation API with noValidate, and the server validates against calendarDate(now, actor.timezone). The policy timezone is Asia/Taipei and independent of locale. Browser clock emulation is unnecessary for this code path. Capture actual rendered bounds and localized hints alongside server outcomes.
+
+Session issuance/resolution, proposal creation/expiry, action/audit/receipt timestamps and proposal consumption all use application Date or an explicit application timestamp. Both operator and production process load the same clock file. PostgreSQL NOW remains real: incidental fixture/default timestamps are recorded as such and are not misrepresented as frozen; inspect stored policy timestamps and expiry relationships before claiming coherence. Cookie Max-Age remains one real hour; native browser acceptance must be demonstrated. Advance the operator clock only between completed requests; session/proposal must be unexpired through a tested midnight transition. Never reset or rewrite prior immutable records.
+
+Use one new disposable synthetic database. Preflight found active Xinyi quote validUntil is null, so no expiry extension is needed. A temporary extension considered during setup was restored to null before any comparison/proposal/browser test; record that restoration. Do not mutate canonical source fixtures or prior QA databases. No threshold, authority, role or capability policy changes.
+
+Required gates before browser verdict: process clock probe PASS; nine migrations and repeated seed/SQL PASS; fresh session accepted in browser; actual server-delivered bounds equal the expected Taipei calendar date; policy timestamps and expiry coherent; invalid cases show zero business-write/consumption deltas; valid cases have exact persisted dueDate and durable receipt. Otherwise mark method or case PARTIAL/BLOCKED.
+
+Planned instants: 2027-03-01T04:00:00.000Z (2027-03-01 12:00:00 +08:00) for today/yesterday/+365/+366 and 2028-02-29 valid; 2028-02-28T15:59:59.000Z to 2028-02-28T16:00:00.000Z for Taipei leap-day midnight. Malformed 2027-02-29 requires an actual server-command negative if native input refuses the impossible date; distinguish it from browser-selectable-date evidence.

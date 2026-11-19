@@ -1,0 +1,344 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-28T15:59:58.000Z",
+    "startedMonotonic": "5927475550873666",
+    "status": 200,
+    "finishedAt": "2028-02-28T15:59:58.000Z",
+    "finishedMonotonic": "5927476087674291"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-28T15:59:58.000Z",
+    "startedMonotonic": "5927477536022291",
+    "status": 200,
+    "finishedAt": "2028-02-28T15:59:58.000Z",
+    "finishedMonotonic": "5927477729731875"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-28T15:59:58.000Z",
+    "startedMonotonic": "5927479535022375",
+    "status": 200,
+    "finishedAt": "2028-02-28T15:59:58.000Z",
+    "finishedMonotonic": "5927479715449375"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-28T15:59:58.000Z",
+    "startedMonotonic": "5927481536473000",
+    "status": 200,
+    "finishedAt": "2028-02-28T15:59:58.000Z",
+    "finishedMonotonic": "5927481674918333"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-28T15:59:58.000Z",
+    "startedMonotonic": "5927483541252250",
+    "status": 200,
+    "finishedAt": "2028-02-28T15:59:58.000Z",
+    "finishedMonotonic": "5927483750174583"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-28T15:59:58.000Z",
+    "startedMonotonic": "5927485536954166",
+    "status": 200,
+    "finishedAt": "2028-02-28T15:59:58.000Z",
+    "finishedMonotonic": "5927485714210041"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-28T15:59:58.000Z",
+    "startedMonotonic": "5927487544719916",
+    "status": 200,
+    "finishedAt": "2028-02-28T15:59:58.000Z",
+    "finishedMonotonic": "5927487768741250"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-28T15:59:58.000Z",
+    "startedMonotonic": "5927489547353750",
+    "status": 200,
+    "finishedAt": "2028-02-28T15:59:58.000Z",
+    "finishedMonotonic": "5927489693857541"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-28T15:59:58.000Z",
+    "startedMonotonic": "5927491542088458",
+    "status": 200,
+    "finishedAt": "2028-02-28T15:59:58.000Z",
+    "finishedMonotonic": "5927491773046500"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-28T15:59:59.342Z",
+    "startedMonotonic": "5927493541760333",
+    "status": 200,
+    "finishedAt": "2028-02-28T15:59:59.464Z",
+    "finishedMonotonic": "5927493663677625"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-28T15:59:59.980Z",
+    "startedMonotonic": "5927494180222250",
+    "status": 200,
+    "finishedAt": "2028-02-28T16:00:00.217Z",
+    "finishedMonotonic": "5927494416929291"
+  },
+  {
+    "method": "POST",
+    "path": "/api/actions/internal-review",
+    "startedAt": "2028-02-28T16:00:55.423Z",
+    "startedMonotonic": "5927549622980583",
+    "status": 200,
+    "finishedAt": "2028-02-28T16:00:55.552Z",
+    "finishedMonotonic": "5927549751938083"
+  },
+  {
+    "method": "POST",
+    "path": "/api/actions/internal-review",
+    "startedAt": "2028-02-28T16:00:55.568Z",
+    "startedMonotonic": "5927549767957875",
+    "status": 200,
+    "finishedAt": "2028-02-28T16:00:55.618Z",
+    "finishedMonotonic": "5927549817776583"
+  },
+  {
+    "method": "POST",
+    "path": "/api/actions/internal-review",
+    "startedAt": "2028-02-28T16:00:55.626Z",
+    "startedMonotonic": "5927549826497875",
+    "status": 200,
+    "finishedAt": "2028-02-28T16:00:55.669Z",
+    "finishedMonotonic": "5927549869315958"
+  },
+  {
+    "method": "POST",
+    "path": "/api/actions/internal-review",
+    "startedAt": "2028-02-28T16:02:33.796Z",
+    "startedMonotonic": "5927647996033708",
+    "status": 200,
+    "finishedAt": "2028-02-28T16:02:34.027Z",
+    "finishedMonotonic": "5927648226879666"
+  },
+  {
+    "method": "POST",
+    "path": "/api/actions/internal-review/proposals",
+    "startedAt": "2028-02-28T16:02:57.020Z",
+    "startedMonotonic": "5927671219735958",
+    "status": 200,
+    "finishedAt": "2028-02-28T16:02:57.207Z",
+    "finishedMonotonic": "5927671407057916"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-28T16:03:22.019Z",
+    "startedMonotonic": "5927696218750083",
+    "status": 200,
+    "finishedAt": "2028-02-28T16:03:22.364Z",
+    "finishedMonotonic": "5927696563754708"
+  },
+  {
+    "method": "POST",
+    "path": "/api/actions/internal-review",
+    "startedAt": "2028-02-28T16:03:50.694Z",
+    "startedMonotonic": "5927724893922833",
+    "status": 200,
+    "finishedAt": "2028-02-28T16:03:51.015Z",
+    "finishedMonotonic": "5927725215517583"
+  },
+  {
+    "method": "POST",
+    "path": "/api/actions/internal-review/proposals",
+    "startedAt": "2028-02-29T15:59:58.000Z",
+    "startedMonotonic": "5927746754261208",
+    "status": 200,
+    "finishedAt": "2028-02-29T15:59:58.000Z",
+    "finishedMonotonic": "5927746907922291"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-29T15:59:58.000Z",
+    "startedMonotonic": "5927765566064875",
+    "status": 200,
+    "finishedAt": "2028-02-29T15:59:58.000Z",
+    "finishedMonotonic": "5927765785386750"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-29T15:59:58.000Z",
+    "startedMonotonic": "5927767563954041",
+    "status": 200,
+    "finishedAt": "2028-02-29T15:59:58.000Z",
+    "finishedMonotonic": "5927767793772375"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-29T15:59:58.000Z",
+    "startedMonotonic": "5927769561705166",
+    "status": 200,
+    "finishedAt": "2028-02-29T15:59:58.000Z",
+    "finishedMonotonic": "5927769697280458"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-29T15:59:58.000Z",
+    "startedMonotonic": "5927771563672000",
+    "status": 200,
+    "finishedAt": "2028-02-29T15:59:58.000Z",
+    "finishedMonotonic": "5927771708757000"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-29T15:59:58.000Z",
+    "startedMonotonic": "5927773566813708",
+    "status": 200,
+    "finishedAt": "2028-02-29T15:59:58.000Z",
+    "finishedMonotonic": "5927773760072291"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-29T15:59:58.000Z",
+    "startedMonotonic": "5927775562865375",
+    "status": 200,
+    "finishedAt": "2028-02-29T15:59:58.000Z",
+    "finishedMonotonic": "5927775681802000"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-29T15:59:58.000Z",
+    "startedMonotonic": "5927777566547166",
+    "status": 200,
+    "finishedAt": "2028-02-29T15:59:58.000Z",
+    "finishedMonotonic": "5927777764687416"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-29T15:59:58.000Z",
+    "startedMonotonic": "5927779567359375",
+    "status": 200,
+    "finishedAt": "2028-02-29T15:59:58.000Z",
+    "finishedMonotonic": "5927779760582916"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-29T15:59:58.000Z",
+    "startedMonotonic": "5927781575875791",
+    "status": 200,
+    "finishedAt": "2028-02-29T15:59:58.000Z",
+    "finishedMonotonic": "5927781737642916"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-29T15:59:58.000Z",
+    "startedMonotonic": "5927783574539666",
+    "status": 200,
+    "finishedAt": "2028-02-29T15:59:58.000Z",
+    "finishedMonotonic": "5927783756655291"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-29T15:59:58.888Z",
+    "startedMonotonic": "5927785576603125",
+    "status": 200,
+    "finishedAt": "2028-02-29T15:59:59.056Z",
+    "finishedMonotonic": "5927785744755833"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-29T15:59:59.946Z",
+    "startedMonotonic": "5927786635109291",
+    "status": 200,
+    "finishedAt": "2028-02-29T16:00:00.134Z",
+    "finishedMonotonic": "5927786822711500"
+  },
+  {
+    "method": "POST",
+    "path": "/api/actions/internal-review",
+    "startedAt": "2028-02-29T16:00:20.533Z",
+    "startedMonotonic": "5927807221584333",
+    "status": 200,
+    "finishedAt": "2028-02-29T16:00:20.591Z",
+    "finishedMonotonic": "5927807279624541"
+  },
+  {
+    "method": "POST",
+    "path": "/api/actions/internal-review",
+    "startedAt": "2028-02-29T16:00:20.617Z",
+    "startedMonotonic": "5927807305449916",
+    "status": 200,
+    "finishedAt": "2028-02-29T16:00:20.650Z",
+    "finishedMonotonic": "5927807339162250"
+  },
+  {
+    "method": "POST",
+    "path": "/api/actions/internal-review",
+    "startedAt": "2028-02-29T16:00:20.662Z",
+    "startedMonotonic": "5927807350792875",
+    "status": 200,
+    "finishedAt": "2028-02-29T16:00:20.697Z",
+    "finishedMonotonic": "5927807386176375"
+  },
+  {
+    "method": "POST",
+    "path": "/api/actions/internal-review",
+    "startedAt": "2028-02-29T16:00:34.358Z",
+    "startedMonotonic": "5927821047308875",
+    "status": 200,
+    "finishedAt": "2028-02-29T16:00:34.518Z",
+    "finishedMonotonic": "5927821206848250"
+  },
+  {
+    "method": "POST",
+    "path": "/api/actions/internal-review/proposals",
+    "startedAt": "2028-02-29T16:00:45.802Z",
+    "startedMonotonic": "5927832490447791",
+    "status": 200,
+    "finishedAt": "2028-02-29T16:00:45.934Z",
+    "finishedMonotonic": "5927832623249291"
+  },
+  {
+    "method": "GET",
+    "path": "/api/actions/internal-review/proposals/:proposalKey",
+    "startedAt": "2028-02-29T16:01:13.360Z",
+    "startedMonotonic": "5927860049244666",
+    "status": 200,
+    "finishedAt": "2028-02-29T16:01:13.541Z",
+    "finishedMonotonic": "5927860229439791"
+  },
+  {
+    "method": "POST",
+    "path": "/api/actions/internal-review",
+    "startedAt": "2028-02-29T16:01:43.943Z",
+    "startedMonotonic": "5927890631888041",
+    "status": 200,
+    "finishedAt": "2028-02-29T16:01:44.164Z",
+    "finishedMonotonic": "5927890852529291"
+  }
+]

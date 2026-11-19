@@ -1,0 +1,35 @@
+{
+  "runId": "20261118T084208Z",
+  "at": "2026-11-18T09:28:28.908644+00:00",
+  "result": "PASS",
+  "scope": "Entire new repair/retest evidence subtree, four local task records, screenshot English-character OCR/metadata and known runtime-secret search of production public assets. Historical evidence not changed.",
+  "filesScannedBeforeManifests": 416,
+  "taskRecords": 4,
+  "screenshotCount": 129,
+  "knownValueEncodings": [
+    "raw",
+    "URL",
+    "base64",
+    "base64url"
+  ],
+  "sensitivePatternsChecked": [
+    "personal_or_private_path",
+    "database_url",
+    "bootstrap_url",
+    "live_cookie_or_auth_header",
+    "private_key",
+    "github_token",
+    "jwt",
+    "credential_assignment"
+  ],
+  "textBinaryFindings": [],
+  "ocrFindings": [],
+  "ocrFailures": [],
+  "metadataFindings": [],
+  "publicAssetFiles": 21,
+  "knownPrivatePublicAssetFindings": [],
+  "disallowedArtifactTypes": [],
+  "credentialMaterial": "Kept only in private operator runtime, outside evidence and Git.",
+  "qualification": "OCR is an additional secret-pattern check, not human Chinese linguistic or screen-reader acceptance; this is not the Stage9 security wave.",
+  "publicationPerformed": false
+}

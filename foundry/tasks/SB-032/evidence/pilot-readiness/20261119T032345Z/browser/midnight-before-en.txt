@@ -1,0 +1,560 @@
+- link "Skip to main content":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain BY PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: BY PRIMESTRIDE AI
+  - navigation "Projects":
+    - link "Home":
+      - /url: /en
+      - generic: "01"
+      - generic: Home
+    - link "Projects":
+      - /url: /en/projects
+      - generic: "02"
+      - generic: Projects
+    - link "Knowledge":
+      - /url: /en/knowledge
+      - generic: "03"
+      - generic: Knowledge
+    - link "StrideBrain":
+      - /url: /en/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "Settings":
+      - /url: /en/settings
+      - generic: "05"
+      - generic: Settings
+  - strong: v0.1 · Controlled demo
+  - generic: This area is not active yet
+- banner:
+  - generic: ●
+  - text: Controlled synthetic demo
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_085031c7-8a43-4095-978f-a0efab1ff01b&economics=econrun_27c7ef30-a728-45cc-a96e-f755fb7bb19c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_8a7d5fd6-fa12-44aa-ae47-14458e32defd&reviewDue=2028-02-28
+    - generic: /
+    - link "EN":
+      - /url: /en/projects/PRJ-XINYI-026/compare?run=cmprun_085031c7-8a43-4095-978f-a0efab1ff01b&economics=econrun_27c7ef30-a728-45cc-a96e-f755fb7bb19c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_8a7d5fd6-fa12-44aa-ae47-14458e32defd&reviewDue=2028-02-28
+- main:
+  - navigation "Project workspace navigation":
+    - link "Overview":
+      - /url: /en/projects/PRJ-XINYI-026
+    - link "Compare":
+      - /url: /en/projects/PRJ-XINYI-026/compare
+    - link "Commercial":
+      - /url: /en/projects/PRJ-XINYI-026/commercial
+    - link "Evidence":
+      - /url: /en/projects/PRJ-XINYI-026/evidence
+    - link "Actions":
+      - /url: /en/projects/PRJ-XINYI-026/actions
+  - paragraph: COMPARABLE PROJECT INTELLIGENCE
+  - heading "Historical precedents for Xinyi Flagship Renovation" [level=1]
+  - paragraph: StrideBrain ranks authorized historical projects with deterministic factors, keeps commercial authority distinct, and shows where evidence is incomplete.
+  - term: Generated
+  - definition: Feb 28, 2028
+  - term: Comparison policy
+  - definition: Project similarity
+  - term: Authorized matches
+  - definition: "6"
+  - term: Selected precedents
+  - definition: 3/3
+  - term: Commercial evidence
+  - definition: Partial economics
+  - term: Data boundary
+  - definition: Synthetic Horizon Atelier demo data—not a market benchmark.
+  - region "Choose precedents to compare":
+    - paragraph: Have we done something like this before?
+    - heading "Choose precedents to compare" [level=2]
+    - paragraph: Select up to three projects. Updating the set creates a new immutable economics enrichment without changing the structural ranking.
+    - strong: "3"
+    - generic: selected
+    - generic: ·
+    - generic: Maximum 3
+    - article "1. Neihu Tech Flagship":
+      - generic: "Choose precedents to compare: Neihu Tech Flagship"
+      - 'checkbox "Choose precedents to compare: Neihu Tech Flagship" [checked]'
+      - generic: "1"
+      - generic: Strong match
+      - heading "Neihu Tech Flagship" [level=3]
+      - generic: Neihu District, Taipei City
+      - generic: 610 m²
+      - generic: Jun 30, 2025
+      - generic: Match score
+      - strong: 86/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic: Quoted history
+      - generic: Reconciled actual cost
+      - generic: Supplier offers are historical and must not be presented as current pricing.
+      - generic "Inspect factors"
+    - article "2. Zhongshan Lifestyle Store":
+      - generic: "Choose precedents to compare: Zhongshan Lifestyle Store"
+      - 'checkbox "Choose precedents to compare: Zhongshan Lifestyle Store" [checked]'
+      - generic: "2"
+      - generic: Strong match
+      - heading "Zhongshan Lifestyle Store" [level=3]
+      - generic: Zhongshan District, Taipei City
+      - generic: 590 m²
+      - generic: Nov 15, 2024
+      - generic: Match score
+      - strong: 80/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic: Quoted history
+      - generic: Reconciled actual cost
+      - generic "Inspect factors"
+    - article "3. Nanjing Brand Experience Center":
+      - generic: "Choose precedents to compare: Nanjing Brand Experience Center"
+      - 'checkbox "Choose precedents to compare: Nanjing Brand Experience Center" [checked]'
+      - generic: "3"
+      - generic: Relevant match
+      - heading "Nanjing Brand Experience Center" [level=3]
+      - generic: Songshan District, Taipei City
+      - generic: 720 m²
+      - generic: Feb 10, 2026
+      - generic: Match score
+      - strong: 78/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic: Quoted history
+      - generic: Reconciled actual cost
+      - generic "Inspect factors"
+    - article "4. Daan Premium Showroom":
+      - generic: "Choose precedents to compare: Daan Premium Showroom"
+      - 'checkbox "Choose precedents to compare: Daan Premium Showroom" [disabled]'
+      - generic: "4"
+      - generic: Relevant match
+      - heading "Daan Premium Showroom" [level=3]
+      - generic: Daan District, Taipei City
+      - generic: 520 m²
+      - generic: Apr 20, 2024
+      - generic: Match score
+      - strong: 69/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic "Inspect factors"
+    - article "5. Songshan Retail Renewal":
+      - generic: "Choose precedents to compare: Songshan Retail Renewal"
+      - 'checkbox "Choose precedents to compare: Songshan Retail Renewal" [disabled]'
+      - generic: "5"
+      - generic: Relevant match
+      - heading "Songshan Retail Renewal" [level=3]
+      - generic: Songshan District, Taipei City
+      - generic: 680 m²
+      - generic: Feb 28, 2025
+      - generic: Match score
+      - strong: 68/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic "Inspect factors"
+    - article "6. Banqiao Concept Store":
+      - generic: "Choose precedents to compare: Banqiao Concept Store"
+      - 'checkbox "Choose precedents to compare: Banqiao Concept Store" [disabled]'
+      - generic: "6"
+      - generic: Partial match
+      - heading "Banqiao Concept Store" [level=3]
+      - generic: Banqiao District, New Taipei City
+      - generic: 760 m²
+      - generic: Sep 30, 2023
+      - generic: Match score
+      - strong: 61/100
+      - generic: Evidence coverage
+      - strong: 100%
+      - generic "Inspect factors"
+    - paragraph: "Selected projects: PRJ-NEIHU-021, PRJ-ZHONGSHAN-018, PRJ-NANJING-023"
+    - button "Update comparison" [disabled]
+  - region "Structured comparison":
+    - paragraph: Structured comparison
+    - heading "Structured comparison" [level=2]
+    - paragraph: Values come from the stored deterministic run. Quoted price, forecast, supplier offer, and reconciled actual cost remain separate.
+    - region "Structured comparison":
+      - table:
+        - rowgroup:
+          - row "Structured comparison Xinyi Flagship Renovation Neihu Tech Flagship Zhongshan Lifestyle Store Nanjing Brand Experience Center":
+            - columnheader "Structured comparison"
+            - columnheader "Xinyi Flagship Renovation"
+            - columnheader "Neihu Tech Flagship"
+            - columnheader "Zhongshan Lifestyle Store"
+            - columnheader "Nanjing Brand Experience Center"
+        - rowgroup:
+          - row "Project context":
+            - columnheader "Project context"
+          - row "Subtype Retail flagship Retail flagship Retail flagship Retail flagship":
+            - rowheader "Subtype"
+            - cell "Retail flagship":
+              - generic: Retail flagship
+            - cell "Retail flagship":
+              - generic: Retail flagship
+            - cell "Retail flagship":
+              - generic: Retail flagship
+            - cell "Retail flagship":
+              - generic: Retail flagship
+          - row "Area 640 m² 610 m² 590 m² 720 m²":
+            - rowheader "Area"
+            - cell "640 m²":
+              - generic: 640 m²
+            - cell "610 m²":
+              - generic: 610 m²
+            - cell "590 m²":
+              - generic: 590 m²
+            - cell "720 m²":
+              - generic: 720 m²
+          - row "Location Xinyi District, Taipei City Neihu District, Taipei City Zhongshan District, Taipei City Songshan District, Taipei City":
+            - rowheader "Location"
+            - cell "Xinyi District, Taipei City":
+              - generic: Xinyi District, Taipei City
+            - cell "Neihu District, Taipei City":
+              - generic: Neihu District, Taipei City
+            - cell "Zhongshan District, Taipei City":
+              - generic: Zhongshan District, Taipei City
+            - cell "Songshan District, Taipei City":
+              - generic: Songshan District, Taipei City
+          - row "Completion Active project Not applicable Jun 30, 2025 Nov 15, 2024 Feb 10, 2026":
+            - rowheader "Completion"
+            - cell "Active project Not applicable":
+              - generic: Active project
+              - generic: Not applicable
+            - cell "Jun 30, 2025":
+              - generic: Jun 30, 2025
+            - cell "Nov 15, 2024":
+              - generic: Nov 15, 2024
+            - cell "Feb 10, 2026":
+              - generic: Feb 10, 2026
+          - 'row "Programme Evidence and sufficiency: 16 weeks · The current programme is shorter than the selected history, but no supported percentage premium is available. 19–22 weeks Selected historical range 19–22 weeks Selected historical range 19–22 weeks Selected historical range"':
+            - rowheader "Programme"
+            - 'cell "Evidence and sufficiency: 16 weeks · The current programme is shorter than the selected history, but no supported percentage premium is available."':
+              - 'button "Evidence and sufficiency: 16 weeks · The current programme is shorter than the selected history, but no supported percentage premium is available."':
+                - generic: 16 weeks
+                - generic: The current programme is shorter than the selected history, but no supported percentage premium is available.
+            - cell "19–22 weeks Selected historical range":
+              - generic: 19–22 weeks
+              - generic: Selected historical range
+            - cell "19–22 weeks Selected historical range":
+              - generic: 19–22 weeks
+              - generic: Selected historical range
+            - cell "19–22 weeks Selected historical range":
+              - generic: 19–22 weeks
+              - generic: Selected historical range
+        - rowgroup:
+          - row "Overall commercial comparison":
+            - columnheader "Overall commercial comparison"
+          - 'row "Quoted price · normalized Evidence and sufficiency: Quoted price · NT$25,750 · TWD/m² · +7.2% · NT$16,480,000 Evidence and sufficiency: Quoted price · NT$24,787 · TWD/m² · Sufficient evidence Evidence and sufficiency: Quoted price · NT$23,644 · TWD/m² · Sufficient evidence Evidence and sufficiency: Quoted price · NT$24,028 · TWD/m² · Sufficient evidence"':
+            - rowheader "Quoted price · normalized"
+            - 'cell "Evidence and sufficiency: Quoted price · NT$25,750 · TWD/m² · +7.2% · NT$16,480,000"':
+              - 'button "Evidence and sufficiency: Quoted price · NT$25,750 · TWD/m² · +7.2% · NT$16,480,000"':
+                - generic: Quoted price
+                - generic: NT$25,750 · TWD/m²
+                - generic: +7.2% · NT$16,480,000
+            - 'cell "Evidence and sufficiency: Quoted price · NT$24,787 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Quoted price · NT$24,787 · TWD/m² · Sufficient evidence"':
+                - generic: Quoted price
+                - generic: NT$24,787 · TWD/m²
+                - generic: Sufficient evidence
+            - 'cell "Evidence and sufficiency: Quoted price · NT$23,644 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Quoted price · NT$23,644 · TWD/m² · Sufficient evidence"':
+                - generic: Quoted price
+                - generic: NT$23,644 · TWD/m²
+                - generic: Sufficient evidence
+            - 'cell "Evidence and sufficiency: Quoted price · NT$24,028 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Quoted price · NT$24,028 · TWD/m² · Sufficient evidence"':
+                - generic: Quoted price
+                - generic: NT$24,028 · TWD/m²
+                - generic: Sufficient evidence
+          - 'row "Forecast / reconciled actual cost · normalized Evidence and sufficiency: Forecast direct cost · NT$19,766 · TWD/m² · +6.0% · NT$12,650,000 Evidence and sufficiency: Reconciled actual cost · NT$18,984 · TWD/m² · Sufficient evidence Evidence and sufficiency: Reconciled actual cost · NT$18,373 · TWD/m² · Sufficient evidence Evidence and sufficiency: Reconciled actual cost · NT$18,639 · TWD/m² · Sufficient evidence"':
+            - rowheader "Forecast / reconciled actual cost · normalized"
+            - 'cell "Evidence and sufficiency: Forecast direct cost · NT$19,766 · TWD/m² · +6.0% · NT$12,650,000"':
+              - 'button "Evidence and sufficiency: Forecast direct cost · NT$19,766 · TWD/m² · +6.0% · NT$12,650,000"':
+                - generic: Forecast direct cost
+                - generic: NT$19,766 · TWD/m²
+                - generic: +6.0% · NT$12,650,000
+            - 'cell "Evidence and sufficiency: Reconciled actual cost · NT$18,984 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Reconciled actual cost · NT$18,984 · TWD/m² · Sufficient evidence"':
+                - generic: Reconciled actual cost
+                - generic: NT$18,984 · TWD/m²
+                - generic: Sufficient evidence
+            - 'cell "Evidence and sufficiency: Reconciled actual cost · NT$18,373 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Reconciled actual cost · NT$18,373 · TWD/m² · Sufficient evidence"':
+                - generic: Reconciled actual cost
+                - generic: NT$18,373 · TWD/m²
+                - generic: Sufficient evidence
+            - 'cell "Evidence and sufficiency: Reconciled actual cost · NT$18,639 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Reconciled actual cost · NT$18,639 · TWD/m² · Sufficient evidence"':
+                - generic: Reconciled actual cost
+                - generic: NT$18,639 · TWD/m²
+                - generic: Sufficient evidence
+        - rowgroup:
+          - row "Category comparison":
+            - columnheader "Category comparison"
+          - 'row "Imported stone · quoted Evidence and sufficiency: Quoted price · NT$4,688 · TWD/m² · +43.0% · NT$3,000,000 Evidence and sufficiency: Quoted price · NT$3,279 · TWD/m² · Sufficient evidence Evidence and sufficiency: Quoted price · NT$3,220 · TWD/m² · Sufficient evidence Evidence and sufficiency: Quoted price · NT$3,333 · TWD/m² · Sufficient evidence"':
+            - rowheader "Imported stone · quoted"
+            - 'cell "Evidence and sufficiency: Quoted price · NT$4,688 · TWD/m² · +43.0% · NT$3,000,000"':
+              - 'button "Evidence and sufficiency: Quoted price · NT$4,688 · TWD/m² · +43.0% · NT$3,000,000"':
+                - generic: Quoted price
+                - generic: NT$4,688 · TWD/m²
+                - generic: +43.0% · NT$3,000,000
+            - 'cell "Evidence and sufficiency: Quoted price · NT$3,279 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Quoted price · NT$3,279 · TWD/m² · Sufficient evidence"':
+                - generic: Quoted price
+                - generic: NT$3,279 · TWD/m²
+                - generic: Sufficient evidence
+            - 'cell "Evidence and sufficiency: Quoted price · NT$3,220 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Quoted price · NT$3,220 · TWD/m² · Sufficient evidence"':
+                - generic: Quoted price
+                - generic: NT$3,220 · TWD/m²
+                - generic: Sufficient evidence
+            - 'cell "Evidence and sufficiency: Quoted price · NT$3,333 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Quoted price · NT$3,333 · TWD/m² · Sufficient evidence"':
+                - generic: Quoted price
+                - generic: NT$3,333 · TWD/m²
+                - generic: Sufficient evidence
+          - 'row "Imported stone · forecast / reconciled actual Evidence and sufficiency: Forecast direct cost · NT$3,688 · TWD/m² · +18.4% · NT$2,360,000 Evidence and sufficiency: Reconciled actual cost · NT$3,115 · TWD/m² · Sufficient evidence Evidence and sufficiency: Reconciled actual cost · NT$3,390 · TWD/m² · Sufficient evidence Evidence and sufficiency: Reconciled actual cost · NT$2,917 · TWD/m² · Sufficient evidence"':
+            - rowheader "Imported stone · forecast / reconciled actual"
+            - 'cell "Evidence and sufficiency: Forecast direct cost · NT$3,688 · TWD/m² · +18.4% · NT$2,360,000"':
+              - 'button "Evidence and sufficiency: Forecast direct cost · NT$3,688 · TWD/m² · +18.4% · NT$2,360,000"':
+                - generic: Forecast direct cost
+                - generic: NT$3,688 · TWD/m²
+                - generic: +18.4% · NT$2,360,000
+            - 'cell "Evidence and sufficiency: Reconciled actual cost · NT$3,115 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Reconciled actual cost · NT$3,115 · TWD/m² · Sufficient evidence"':
+                - generic: Reconciled actual cost
+                - generic: NT$3,115 · TWD/m²
+                - generic: Sufficient evidence
+            - 'cell "Evidence and sufficiency: Reconciled actual cost · NT$3,390 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Reconciled actual cost · NT$3,390 · TWD/m² · Sufficient evidence"':
+                - generic: Reconciled actual cost
+                - generic: NT$3,390 · TWD/m²
+                - generic: Sufficient evidence
+            - 'cell "Evidence and sufficiency: Reconciled actual cost · NT$2,917 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Reconciled actual cost · NT$2,917 · TWD/m² · Sufficient evidence"':
+                - generic: Reconciled actual cost
+                - generic: NT$2,917 · TWD/m²
+                - generic: Sufficient evidence
+          - 'row "Lighting/electrical · quoted Evidence and sufficiency: Quoted price · NT$4,844 · TWD/m² · +9.4% · NT$3,100,000 Evidence and sufficiency: Quoted price · NT$4,426 · TWD/m² · Sufficient evidence Evidence and sufficiency: Quoted price · NT$4,820 · TWD/m² · Sufficient evidence Evidence and sufficiency: Quoted price · NT$4,167 · TWD/m² · Sufficient evidence"':
+            - rowheader "Lighting/electrical · quoted"
+            - 'cell "Evidence and sufficiency: Quoted price · NT$4,844 · TWD/m² · +9.4% · NT$3,100,000"':
+              - 'button "Evidence and sufficiency: Quoted price · NT$4,844 · TWD/m² · +9.4% · NT$3,100,000"':
+                - generic: Quoted price
+                - generic: NT$4,844 · TWD/m²
+                - generic: +9.4% · NT$3,100,000
+            - 'cell "Evidence and sufficiency: Quoted price · NT$4,426 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Quoted price · NT$4,426 · TWD/m² · Sufficient evidence"':
+                - generic: Quoted price
+                - generic: NT$4,426 · TWD/m²
+                - generic: Sufficient evidence
+            - 'cell "Evidence and sufficiency: Quoted price · NT$4,820 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Quoted price · NT$4,820 · TWD/m² · Sufficient evidence"':
+                - generic: Quoted price
+                - generic: NT$4,820 · TWD/m²
+                - generic: Sufficient evidence
+            - 'cell "Evidence and sufficiency: Quoted price · NT$4,167 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Quoted price · NT$4,167 · TWD/m² · Sufficient evidence"':
+                - generic: Quoted price
+                - generic: NT$4,167 · TWD/m²
+                - generic: Sufficient evidence
+          - 'row "Lighting/electrical · forecast / reconciled actual Evidence and sufficiency: Forecast direct cost · NT$3,672 · TWD/m² · Insufficient evidence Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3 Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3 Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3"':
+            - rowheader "Lighting/electrical · forecast / reconciled actual"
+            - 'cell "Evidence and sufficiency: Forecast direct cost · NT$3,672 · TWD/m² · Insufficient evidence"':
+              - 'button "Evidence and sufficiency: Forecast direct cost · NT$3,672 · TWD/m² · Insufficient evidence"':
+                - generic: Forecast direct cost
+                - generic: NT$3,672 · TWD/m²
+                - generic: Insufficient evidence
+                - generic: Insufficient evidence
+            - 'cell "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3"':
+              - 'button "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3"':
+                - generic: Reconciled actual cost
+                - generic: Insufficient evidence
+                - generic: 2/3
+                - generic: Insufficient evidence
+            - 'cell "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3"':
+              - 'button "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3"':
+                - generic: Reconciled actual cost
+                - generic: Insufficient evidence
+                - generic: 2/3
+                - generic: Insufficient evidence
+            - 'cell "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3"':
+              - 'button "Evidence and sufficiency: Reconciled actual cost · Insufficient evidence · 2/3"':
+                - generic: Reconciled actual cost
+                - generic: Insufficient evidence
+                - generic: 2/3
+                - generic: Insufficient evidence
+          - 'row "Custom millwork · quoted Evidence and sufficiency: Quoted price · NT$5,938 · TWD/m² · +1.8% · NT$3,800,000 Evidence and sufficiency: Quoted price · NT$5,902 · TWD/m² · Sufficient evidence Evidence and sufficiency: Quoted price · NT$5,424 · TWD/m² · Sufficient evidence Evidence and sufficiency: Quoted price · NT$5,833 · TWD/m² · Sufficient evidence"':
+            - rowheader "Custom millwork · quoted"
+            - 'cell "Evidence and sufficiency: Quoted price · NT$5,938 · TWD/m² · +1.8% · NT$3,800,000"':
+              - 'button "Evidence and sufficiency: Quoted price · NT$5,938 · TWD/m² · +1.8% · NT$3,800,000"':
+                - generic: Quoted price
+                - generic: NT$5,938 · TWD/m²
+                - generic: +1.8% · NT$3,800,000
+            - 'cell "Evidence and sufficiency: Quoted price · NT$5,902 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Quoted price · NT$5,902 · TWD/m² · Sufficient evidence"':
+                - generic: Quoted price
+                - generic: NT$5,902 · TWD/m²
+                - generic: Sufficient evidence
+            - 'cell "Evidence and sufficiency: Quoted price · NT$5,424 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Quoted price · NT$5,424 · TWD/m² · Sufficient evidence"':
+                - generic: Quoted price
+                - generic: NT$5,424 · TWD/m²
+                - generic: Sufficient evidence
+            - 'cell "Evidence and sufficiency: Quoted price · NT$5,833 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Quoted price · NT$5,833 · TWD/m² · Sufficient evidence"':
+                - generic: Quoted price
+                - generic: NT$5,833 · TWD/m²
+                - generic: Sufficient evidence
+          - 'row "Custom millwork · forecast / reconciled actual Evidence and sufficiency: Forecast direct cost · NT$4,781 · TWD/m² · -2.7% · NT$3,060,000 Evidence and sufficiency: Reconciled actual cost · NT$4,918 · TWD/m² · Sufficient evidence Evidence and sufficiency: Reconciled actual cost · NT$4,915 · TWD/m² · Sufficient evidence Evidence and sufficiency: Reconciled actual cost · NT$4,444 · TWD/m² · Sufficient evidence"':
+            - rowheader "Custom millwork · forecast / reconciled actual"
+            - 'cell "Evidence and sufficiency: Forecast direct cost · NT$4,781 · TWD/m² · -2.7% · NT$3,060,000"':
+              - 'button "Evidence and sufficiency: Forecast direct cost · NT$4,781 · TWD/m² · -2.7% · NT$3,060,000"':
+                - generic: Forecast direct cost
+                - generic: NT$4,781 · TWD/m²
+                - generic: "-2.7% · NT$3,060,000"
+            - 'cell "Evidence and sufficiency: Reconciled actual cost · NT$4,918 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Reconciled actual cost · NT$4,918 · TWD/m² · Sufficient evidence"':
+                - generic: Reconciled actual cost
+                - generic: NT$4,918 · TWD/m²
+                - generic: Sufficient evidence
+            - 'cell "Evidence and sufficiency: Reconciled actual cost · NT$4,915 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Reconciled actual cost · NT$4,915 · TWD/m² · Sufficient evidence"':
+                - generic: Reconciled actual cost
+                - generic: NT$4,915 · TWD/m²
+                - generic: Sufficient evidence
+            - 'cell "Evidence and sufficiency: Reconciled actual cost · NT$4,444 · TWD/m² · Sufficient evidence"':
+              - 'button "Evidence and sufficiency: Reconciled actual cost · NT$4,444 · TWD/m² · Sufficient evidence"':
+                - generic: Reconciled actual cost
+                - generic: NT$4,444 · TWD/m²
+                - generic: Sufficient evidence
+        - rowgroup:
+          - row "Evidence and sufficiency":
+            - columnheader "Evidence and sufficiency"
+          - 'row "Supplier-offer context Evidence and sufficiency: Supplier offer · Historical / stale · Dec 10, 2026 Evidence and sufficiency: Supplier offer · Historical / stale · Feb 15, 2025 Supplier offer Unavailable Unavailable Supplier offer Unavailable Unavailable"':
+            - rowheader "Supplier-offer context"
+            - 'cell "Evidence and sufficiency: Supplier offer · Historical / stale · Dec 10, 2026"':
+              - 'button "Evidence and sufficiency: Supplier offer · Historical / stale · Dec 10, 2026"':
+                - generic: Supplier offer
+                - generic: Historical / stale
+                - generic: Dec 10, 2026
+                - generic: Historical / stale
+            - 'cell "Evidence and sufficiency: Supplier offer · Historical / stale · Feb 15, 2025"':
+              - 'button "Evidence and sufficiency: Supplier offer · Historical / stale · Feb 15, 2025"':
+                - generic: Supplier offer
+                - generic: Historical / stale
+                - generic: Feb 15, 2025
+                - generic: Historical / stale
+            - cell "Supplier offer Unavailable Unavailable":
+              - generic: Supplier offer
+              - generic: Unavailable
+              - generic: Unavailable
+            - cell "Supplier offer Unavailable Unavailable":
+              - generic: Supplier offer
+              - generic: Unavailable
+              - generic: Unavailable
+          - row "Evidence and sufficiency Partial economics Quote and actual history Quote and actual history Quote and actual history":
+            - rowheader "Evidence and sufficiency"
+            - cell "Partial economics":
+              - generic: Partial economics
+            - cell "Quote and actual history":
+              - generic: Quote and actual history
+            - cell "Quote and actual history":
+              - generic: Quote and actual history
+            - cell "Quote and actual history":
+              - generic: Quote and actual history
+  - region "Structured review":
+    - paragraph: Structured review
+    - heading "Structured review" [level=2]
+    - article:
+      - heading "What history suggests" [level=3]
+      - paragraph: The current quotation is above the selected quoted-price history. +7.2%
+      - button "Inspect evidence"
+    - article:
+      - heading "What history suggests" [level=3]
+      - paragraph: The current forecast direct cost is above the eligible reconciled-actual history. +6.0%
+      - button "Inspect evidence"
+    - article:
+      - heading "What history suggests" [level=3]
+      - paragraph: Imported stone is the strongest evidence-backed variance and deserves focused review. +18.4%
+      - button "Inspect evidence"
+    - article:
+      - heading "Important differences" [level=3]
+      - paragraph: The current programme is shorter than the selected history, but no supported percentage premium is available.
+      - button "Inspect evidence"
+    - article:
+      - heading "Evidence gaps" [level=3]
+      - paragraph: Lighting is above quoted history, but actual-cost evidence is below the required threshold. 2/3
+      - button "Inspect evidence"
+    - article:
+      - heading "Recommended next review" [level=3]
+      - paragraph: Validate imported-stone and lighting assumptions internally before quote approval.
+  - complementary "Evidence and sufficiency":
+    - generic: Synthetic Horizon Atelier demo data—not a market benchmark.
+    - generic: Some categories do not have enough reconciled actual-cost evidence.
+    - generic: Supplier offers are historical and must not be presented as current pricing.
+  - strong: Create internal review action
+  - paragraph: Review the verified findings, choose the wording and assignee, then explicitly create an internal review action.
+  - button "Create internal review action"
+  - dialog "Review internal review action":
+    - heading "Review internal review action" [level=2]
+    - paragraph: Review the evidence and uncertainty before creating this action.
+    - navigation "English / 繁體中文":
+      - link "English":
+        - /url: /en/projects/PRJ-XINYI-026/compare?run=cmprun_085031c7-8a43-4095-978f-a0efab1ff01b&economics=econrun_27c7ef30-a728-45cc-a96e-f755fb7bb19c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_8a7d5fd6-fa12-44aa-ae47-14458e32defd&reviewDue=2028-02-28
+      - link "繁體中文":
+        - /url: /zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_085031c7-8a43-4095-978f-a0efab1ff01b&economics=econrun_27c7ef30-a728-45cc-a96e-f755fb7bb19c&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_8a7d5fd6-fa12-44aa-ae47-14458e32defd&reviewDue=2028-02-28
+    - button "Close"
+    - form "Review internal review action":
+      - generic: Title
+      - combobox "Title":
+        - option "Validate imported-stone and lighting assumptions for Xinyi quote v3" [selected]
+        - option "Review imported-stone and lighting assumptions for Xinyi quote v3"
+        - option "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3"
+      - paragraph: Validate imported-stone and lighting assumptions for Xinyi quote v3
+      - generic: Review purpose
+      - combobox "Review purpose":
+        - option "Review these assumptions against the linked evidence before the next internal quotation review." [selected]
+        - option "Check the supporting evidence and record questions for internal review."
+        - option "Validate the imported-stone and lighting assumptions using the linked historical evidence."
+      - paragraph: Review these assumptions against the linked evidence before the next internal quotation review.
+      - paragraph: Choose review wording. Verified findings and uncertainty statements remain attached and cannot be changed here.
+      - region "Verified findings · retained with the action":
+        - heading "Verified findings · retained with the action" [level=3]
+        - list:
+          - listitem: Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.
+          - listitem: Lighting quoted price differs by +9.4% from eligible quoted-price history.
+          - listitem: "Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available."
+          - listitem: The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.
+          - listitem: "Comparison: cmprun_085031c7-8a43-4095-978f-a0efab1ff01b; economics enrichment: econrun_27c7ef30-a728-45cc-a96e-f755fb7bb19c."
+      - region "Uncertainty and limits · retained with the action":
+        - heading "Uncertainty and limits · retained with the action" [level=3]: ⚠ Uncertainty and limits · retained with the action
+        - list:
+          - listitem: This creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally.
+          - listitem: Historical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid.
+      - region "Inspect supporting evidence":
+        - heading "Inspect supporting evidence" [level=3]
+        - list:
+          - button "Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history."
+          - button "Lighting quoted price differs by +9.4% from eligible quoted-price history."
+          - 'button "Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available."'
+          - button "The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium."
+      - generic: Assignee
+      - combobox "Assignee":
+        - option "Unassigned"
+        - option "Mei Lin"
+        - option "Alex Chen"
+        - option "Iris Huang" [selected]
+      - generic: Due date
+      - textbox "Due date": 2028-02-28
+      - paragraph: Optional. Enter a date from 2028-02-28 through 2029-02-27, or leave it blank.
+      - button "Clear due date"
+      - term: Source comparison
+      - definition: cmprun_085031c7-8a43-4095-978f-a0efab1ff01b
+      - term: Source economics review
+      - definition: econrun_27c7ef30-a728-45cc-a96e-f755fb7bb19c
+      - term: Review available until
+      - definition: 29 Feb 2028, 00:29
+      - paragraph: ⚠ Confirmation creates a persistent internal action and an audit record. This screen cannot undo creation. It does not approve a quotation or send a message.
+      - checkbox "I have reviewed the evidence and limits and want to create this internal review action." [checked] [active]
+      - generic: I have reviewed the evidence and limits and want to create this internal review action.
+      - button "Create internal review action"
+      - button "Cancel review"
+- contentinfo:
+  - generic: Synthetic demo data only · No real customer data
+  - generic: Live demo-domain cutover has not occurred
+- alert

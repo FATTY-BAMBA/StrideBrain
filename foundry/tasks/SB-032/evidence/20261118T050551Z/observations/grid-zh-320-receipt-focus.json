@@ -1,0 +1,110 @@
+[
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 21.078125,
+      "width": 45.4140625,
+      "x": 16,
+      "y": 113.1171875
+    },
+    "tag": "A",
+    "text": "English",
+    "trigger": null,
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 21.078125,
+      "width": 54.40625,
+      "x": 73.4140625,
+      "y": 113.1171875
+    },
+    "tag": "A",
+    "text": "繁體中文",
+    "trigger": null,
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 49.1875,
+      "width": 66,
+      "x": 238,
+      "y": 16
+    },
+    "tag": "BUTTON",
+    "text": "關閉",
+    "trigger": null,
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 21.078125,
+      "width": 54.40625,
+      "x": 73.4140625,
+      "y": 113.1171875
+    },
+    "tag": "A",
+    "text": "繁體中文",
+    "trigger": null,
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 21.078125,
+      "width": 45.4140625,
+      "x": 16,
+      "y": 113.1171875
+    },
+    "tag": "A",
+    "text": "English",
+    "trigger": null,
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 49.1875,
+      "width": 288,
+      "x": 16,
+      "y": 674.65625
+    },
+    "tag": "A",
+    "text": "查看專案事項",
+    "trigger": null,
+    "viewport": [
+      320,
+      740
+    ]
+  }
+]

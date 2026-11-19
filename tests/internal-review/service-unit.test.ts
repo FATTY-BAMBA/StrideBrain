@@ -577,7 +577,16 @@ describe("Stage 8 confirmation boundaries", () => {
     state.clock.mockReturnValue(new Date("2026-11-15T16:00:00Z"));
     expect(
       await state.service.confirm(state.actor, command({ dueDate: "2026-11-15" })),
-    ).toMatchObject({ kind: "VALIDATION_FAILED", fieldErrors: { dueDate: "INVALID_DUE_DATE" } });
+    ).toMatchObject({
+      kind: "VALIDATION_FAILED",
+      fieldErrors: { dueDate: "INVALID_DUE_DATE" },
+      datePolicy: {
+        minDueDate: "2026-11-16",
+        maxDueDate: "2027-11-16",
+        datePolicyEvaluatedAt: "2026-11-15T16:00:00.000Z",
+        nextDatePolicyBoundaryAt: "2026-11-16T16:00:00.000Z",
+      },
+    });
     expect(state.tx.commitAction).not.toHaveBeenCalled();
   });
 

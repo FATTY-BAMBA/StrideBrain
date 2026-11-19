@@ -1,0 +1,13 @@
+{
+  "observedAt": "2026-11-19T04:34:46.246136+00:00",
+  "identifiersRecorded": false,
+  "physicalIOSDevices": [
+    {
+      "model": "iPhone16,1",
+      "osVersion": "26.5 (23F77)",
+      "available": true,
+      "interface": "usb"
+    }
+  ],
+  "result": "DEVICE_METADATA_AVAILABLE"
+}

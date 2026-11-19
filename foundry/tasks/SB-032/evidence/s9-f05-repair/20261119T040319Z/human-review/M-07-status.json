@@ -1,0 +1,12 @@
+{
+  "status": "PACKAGE_PREPARED_PARTIAL_COVERAGE_HUMAN_REVIEW_PENDING",
+  "userDecision": "Keep human review pending",
+  "humanApproval": null,
+  "historicalScreenshotReferences": 89,
+  "newChineseScreenshots": 9,
+  "totalScreenshotReferences": 98,
+  "newCopyStrings": 3,
+  "missingStateCoverage": "Historical conflicted/restricted and unexecuted conditional states remain NOT_REVIEWED. No complete-journey human signoff.",
+  "S9F05": "CLOSED_FOR_TESTED_SCOPE",
+  "voiceOverRequired": false
+}

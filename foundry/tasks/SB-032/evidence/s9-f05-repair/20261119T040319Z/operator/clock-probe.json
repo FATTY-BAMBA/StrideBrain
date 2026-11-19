@@ -1,0 +1,14 @@
+{
+  "fixed": "2028-02-28T15:59:58.000Z",
+  "explicit": "2028-02-29T00:00:00.000Z",
+  "utc": "2028-02-29T00:00:00.000Z",
+  "dateInstanceof": true,
+  "dateFunction": true,
+  "elapsedMilliseconds": 122,
+  "monotonicMilliseconds": 121.577791,
+  "crossProcessWithinParentEnvelope": true,
+  "atomicSetter": true,
+  "systemClockChanged": false,
+  "browserClockChanged": false,
+  "result": "PASS"
+}

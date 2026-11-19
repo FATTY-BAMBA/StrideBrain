@@ -1,0 +1,7 @@
+[
+  {
+    "step": "targeted-project-entry logging",
+    "observation": "Tests completed 50/50 in five files; post-command sanitizer lacked the not-yet-created browser-owner env file. Private raw output retained, then sanitized after runtime preparation. No product failure.",
+    "recoveredLog": "logs/targeted-project-entry.log"
+  }
+]

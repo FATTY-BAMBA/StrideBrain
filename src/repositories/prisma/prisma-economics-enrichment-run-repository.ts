@@ -179,6 +179,7 @@ export class PrismaEconomicsEnrichmentRunRepository implements EconomicsEnrichme
             organizationId: input.organizationId,
             comparisonRunId: input.comparisonRunId,
             claimKey: claim.claimKey,
+            enrichmentRunId: input.enrichmentRunId,
             claimType: claim.kind,
             titleEn: claim.titleEn,
             titleZhTw: claim.titleZhTw,

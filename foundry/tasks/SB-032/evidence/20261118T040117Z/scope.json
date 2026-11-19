@@ -1,0 +1,19 @@
+{
+  "runId": "20261118T040117Z",
+  "base": "4df07c23a2896b5c13b96238f078d22941a55222",
+  "repair": "S9-F01_ONLY",
+  "priorRun": "20261118T031855Z",
+  "priorResultPreserved": "FAIL",
+  "phases": [
+    "scoped repair",
+    "required deterministic regression gate",
+    "independent source review",
+    "exact-source entry browser retest",
+    "resume baseline if entry passes"
+  ],
+  "sourceChanges": "AUTHORIZED_S9_F01_ONLY",
+  "publish": "NOT_REQUESTED",
+  "merge": false,
+  "deployment": false,
+  "vercelOrDNS": false
+}

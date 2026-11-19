@@ -1,0 +1,18 @@
+{
+  "dialogs": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "(globalThis[\"TURBOPACK\"] || (globalThis[\"TURBOPACK\"] = [])).push({\"otherChunks\":[\"static/chunks/310vm2bl3xxpt.js\",\"static/chunks/1d-3ziz_810o8.js\",\"static/chunks/39_j1bdzreq0m.js\",\"static/chunks/0gy1dczh8t-w0.js\"],\"runti"
+  },
+  "horizontalOverflow": false,
+  "title": "StrideBrain",
+  "url": "http://localhost:3000/zh-TW/projects",
+  "viewport": {
+    "dpr": 1,
+    "height": 844,
+    "width": 390
+  },
+  "browser": "Codex in-app browser",
+  "at": "2026-11-18T03:39:05.368Z"
+}

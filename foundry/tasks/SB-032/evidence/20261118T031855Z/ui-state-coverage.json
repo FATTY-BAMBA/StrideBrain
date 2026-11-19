@@ -1,0 +1,198 @@
+{
+  "states": [
+    {
+      "state": "PROJECT_LOADING",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "PROJECT_READY",
+      "result": "PARTIAL_OBSERVED",
+      "evidence": [
+        "screenshots/baseline-en-workspace-before-writes.jpg",
+        "observations/baseline-en-workspace-before-writes.txt"
+      ],
+      "scope": "Authorized Mei EN desktop workspace after session landing only; not complete two-locale/four-viewport acceptance."
+    },
+    {
+      "state": "PROJECT_UNAVAILABLE",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "PROJECT_CONTEXT_INCOMPLETE",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "PROJECT_PERMISSION_REDACTED",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "COMPARISON_IDLE",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "COMPARISON_RUNNING",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "COMPARISON_SUCCESS",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "COMPARISON_NO_ELIGIBLE_HISTORY",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "COMPARISON_PARTIAL_CONTEXT",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "COMPARISON_FAILED",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "COMPARISON_STALE",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "OPTIONAL_EXPLANATION_PENDING",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "OPTIONAL_EXPLANATION_UNAVAILABLE",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "INSUFFICIENT_ACTUAL_COST_EVIDENCE",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "SUPPLIER_OFFER_STALE",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "AUTHORITY_CONFLICTED",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "SOURCE_SUPERSEDED",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "EVIDENCE_RESTRICTED",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "EVIDENCE_PANEL_LOADING",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "EVIDENCE_PANEL_READY",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "EVIDENCE_PANEL_FAILED",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "ACTION_NOT_ALLOWED",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "PROPOSED_ACTION_READY",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "ACTION_CONFIRMING",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "ACTION_CREATED",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "ACTION_STALE_REJECTED",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "ACTION_PERMISSION_REJECTED",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "ACTION_ASSIGNEE_REJECTED",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "ACTION_SERVICE_FAILED",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    },
+    {
+      "state": "ACTION_DUPLICATE",
+      "result": "NOT_RUN",
+      "evidence": [],
+      "scope": "Not reached after S9-F01 entry boundary; no implied pass."
+    }
+  ],
+  "optionalAIApplicability": {
+    "existingDisabledUnavailableBehavior": "REQUIRED_STAGE_9",
+    "unimplementedProviderDependentPending": "DEFERRED_STAGE_10_NOT_A_STAGE9_PASS",
+    "rule": "Record applicability and exact coverage; never enable AI or invent passes to satisfy the current plan."
+  }
+}

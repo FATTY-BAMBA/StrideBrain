@@ -1,0 +1,325 @@
+[
+  {
+    "step": "entered",
+    "id": "evidence-panel-title",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 25,
+      "width": 270.609375,
+      "x": 309,
+      "y": 61.0546875
+    },
+    "tag": "H2",
+    "text": "進口石材與硬質面材",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "step": "Tab 1",
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 44.390625,
+      "width": 152.390625,
+      "x": 595.609375,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "step": "Tab 2",
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 44.390625,
+      "width": 154,
+      "x": 309,
+      "y": 242.1171875
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "step": "Tab 3",
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 44.390625,
+      "width": 152.390625,
+      "x": 595.609375,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "step": "Tab 4",
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 44.390625,
+      "width": 154,
+      "x": 309,
+      "y": 242.1171875
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "step": "Tab 5",
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 44.390625,
+      "width": 152.390625,
+      "x": 595.609375,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "step": "Tab 6",
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 44.390625,
+      "width": 154,
+      "x": 309,
+      "y": 242.1171875
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "step": "Tab 7",
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 44.390625,
+      "width": 152.390625,
+      "x": 595.609375,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "step": "Tab 8",
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 44.390625,
+      "width": 154,
+      "x": 309,
+      "y": 242.1171875
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "step": "Shift+Tab 1",
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 44.390625,
+      "width": 152.390625,
+      "x": 595.609375,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "step": "Shift+Tab 2",
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 44.390625,
+      "width": 154,
+      "x": 309,
+      "y": 242.1171875
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "step": "Shift+Tab 3",
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 44.390625,
+      "width": 152.390625,
+      "x": 595.609375,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "step": "Shift+Tab 4",
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 44.390625,
+      "width": 154,
+      "x": 309,
+      "y": 242.1171875
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "step": "Shift+Tab 5",
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 44.390625,
+      "width": 152.390625,
+      "x": 595.609375,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "step": "Shift+Tab 6",
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 44.390625,
+      "width": 154,
+      "x": 309,
+      "y": 242.1171875
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "step": "Shift+Tab 7",
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 44.390625,
+      "width": 152.390625,
+      "x": 595.609375,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "step": "Shift+Tab 8",
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 44.390625,
+      "width": 154,
+      "x": 309,
+      "y": 242.1171875
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      768,
+      1024
+    ]
+  }
+]

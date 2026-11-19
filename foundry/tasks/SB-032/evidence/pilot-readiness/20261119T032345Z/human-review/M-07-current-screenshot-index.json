@@ -1,0 +1,803 @@
+[
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f02-zh-TW-1440-health.jpg",
+    "sha256": "e8935ec39af2741697acfe894320ef1398ee28aa6852667f44d15ce987db313f",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f02-zh-TW-1440-health.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f02-zh-TW-1440-workspace.jpg",
+    "sha256": "73f075faf140471e3784d6d1bae7cd39513c31ba1de55fd0da8c9b0975793712",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f02-zh-TW-1440-workspace.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f02-zh-TW-320-health.jpg",
+    "sha256": "ce874165aa48cf4777f170b8431cf3b863a63309c6c8cb61d723fe91804293b3",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f02-zh-TW-320-health.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f02-zh-TW-320-lower.jpg",
+    "sha256": "abf35a8ffc2a9398dbef408d89c586f29821a53912c38c38160cdd602ff52bb3",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f02-zh-TW-320-lower.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f02-zh-TW-320-workspace.jpg",
+    "sha256": "e262012af16f93143479c12876237ad07053bca58223c50f8e8f9267637d4541",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f02-zh-TW-320-workspace.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f02-zh-TW-390-health.jpg",
+    "sha256": "aaa1c65253b21572606b7933e81aadd003c799de5427b48516f8dfbd17e5c825",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f02-zh-TW-390-health.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f02-zh-TW-390-lower.jpg",
+    "sha256": "2ab0c237f4845bffc0114112e2bb174a17c1a5e4e501a51b1671fc79a39b6aa1",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f02-zh-TW-390-lower.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f02-zh-TW-390-workspace.jpg",
+    "sha256": "fb73acf9e06d547e22161779e593c8b4c9d2d8bff541749ee9f1ea9473bce9b2",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f02-zh-TW-390-workspace.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f02-zh-TW-768-health.jpg",
+    "sha256": "bbc885f56d770c7f6867e35e722f153c68461d0ba3a268631122619df46b18aa",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f02-zh-TW-768-health.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f02-zh-TW-768-workspace.jpg",
+    "sha256": "fa46be22bb605af196d625abbd381da25d31f60453d9aaa551fb93a61adc13ab",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f02-zh-TW-768-workspace.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f03-zh-TW-1440-bounded-pending.jpg",
+    "sha256": "cbb44d9c5429bd1f4c5854d582670d2a1dc372e31d32c03da97f7116de0be7ad",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f03-zh-TW-1440-bounded-pending.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f03-zh-TW-1440-saved-run-pending.jpg",
+    "sha256": "38fb0eaf9f94296a9ff6516c83f2d2e2e5ad7716fd787a120384b5179247657c",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f03-zh-TW-1440-saved-run-pending.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f03-zh-TW-320-bounded-pending.jpg",
+    "sha256": "ac370d1f2ce4b9a08f7424f5380015c72040ccf0aa71e190f645052c06de23f3",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f03-zh-TW-320-bounded-pending.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f03-zh-TW-320-saved-run-pending.jpg",
+    "sha256": "cbf781120ffb748e2c7b43ec4016536ad6e1825448b663c1b11eb66c6a19feac",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f03-zh-TW-320-saved-run-pending.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f03-zh-TW-390-bounded-pending.jpg",
+    "sha256": "cf0cdbb8028e7846812a0b31024bbebfc2a8f6b315fdbad4c9288b81a640d83b",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f03-zh-TW-390-bounded-pending.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f03-zh-TW-390-saved-run-pending.jpg",
+    "sha256": "953fe528dd26918142fee40d9e4da237e56bc84ca19166ccb2af18e8bdf1a5fd",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f03-zh-TW-390-saved-run-pending.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f03-zh-TW-768-bounded-pending.jpg",
+    "sha256": "f4e282c5b1b26839d8cd279cd7a0f1f8bb319507d8bd9e34753e0dff9e79565d",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f03-zh-TW-768-bounded-pending.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f03-zh-TW-768-saved-run-pending.jpg",
+    "sha256": "d0428412ae38e411981576a4a9fd044a6eca9251d0dad884b5fb56b39db6e3c6",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f03-zh-TW-768-saved-run-pending.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f03-zh-after-read-lock-settled.jpg",
+    "sha256": "d1d4f5b7ff6eba11c1664ec25f00f7a803538d9ea6e790a2adcbd585d72f662e",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f03-zh-after-read-lock-settled.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-extra-zh-TW-a.jpg",
+    "sha256": "e6003b6cf5ab6d141d11abae65a7a1d8973c4a09a4bdba5b91b3e77f4d91f9e4",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-extra-zh-TW-a.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-extra-zh-TW-ab.jpg",
+    "sha256": "92a2533b0cf9bd7d950a8fd5637c16ad73283bbd44c8a6787f812e630f1b05a7",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-extra-zh-TW-ab.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-extra-zh-TW-abc-restored.jpg",
+    "sha256": "e05aa6132b119e555bfa6391a00a616c275a8d1ec6b691a2bf3712a739186106",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-extra-zh-TW-abc-restored.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-extra-zh-TW-abc.jpg",
+    "sha256": "1c754dd7cf31df7ae70d4af4d023d1a7fd8dd2c0dba2be01a2c0d2cc676fc9ee",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-extra-zh-TW-abc.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-extra-zh-TW-ac.jpg",
+    "sha256": "4fa383d487a6881fdf108df295acbdb97146b0875582c61817bde53db3f96d9b",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-extra-zh-TW-ac.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-extra-zh-TW-def.jpg",
+    "sha256": "394c3f9cb8d82b4c6c7e562d4f39dba5d1d24b23caa7882a2b38bf3d466acb70",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-extra-zh-TW-def.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-extra-zh-TW-zero-not-submitted.jpg",
+    "sha256": "6cfbcac2471b5cadd5cdba3f368162fb7553c7b146a05881955378649d4d5b33",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-extra-zh-TW-zero-not-submitted.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-history-zh-TW-ab-evidence-reopened.jpg",
+    "sha256": "697c9c5a4b699e7bd3eea50e6ea040ea8f251e8e5a37f3dd3d4c96c427d33aef",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-history-zh-TW-ab-evidence-reopened.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-history-zh-TW-abc-reopened.jpg",
+    "sha256": "ebebea04585b388ae37de3b587295d6ed2aefd8d81f42fb7549d447524ddc712",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-history-zh-TW-abc-reopened.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-1440-ab-evidence.jpg",
+    "sha256": "697c9c5a4b699e7bd3eea50e6ea040ea8f251e8e5a37f3dd3d4c96c427d33aef",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-1440-ab-evidence.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-1440-ab.jpg",
+    "sha256": "1a2bbb9cc131ad47ab82e60284fc806c5f47166ac8d924ede613c87a3c04f93f",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-1440-ab.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-1440-abc-current-evidence.jpg",
+    "sha256": "2bf1711521fe43b0e073b57007ca550d6f9760421c87e0553fd2a4fe1ad8e3b6",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-1440-abc-current-evidence.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-1440-abc-initial.jpg",
+    "sha256": "1c2d8f6a5fec1c5a751f5b5b3aeabcf05fdc7eb6b03c60b01fa6339be7f34121",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-1440-abc-initial.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-1440-abc-restored.jpg",
+    "sha256": "dff3a771d7d63b1a9d38436bb9e0b94c5e4ce2e30f0f80a52fe990498df1848e",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-1440-abc-restored.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-1440-current-review.jpg",
+    "sha256": "d4ceb793b9ba654230a6e3b04e015e9f4515066bbd041b1475edf5a559f64eff",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-1440-current-review.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-320-ab-evidence.jpg",
+    "sha256": "15013ef7f4daab3520f05d647ddb307bed18e794e8077934a26bb01ecd97bdd1",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-320-ab-evidence.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-320-ab.jpg",
+    "sha256": "cbff3686d0dc9c3906763375c2d7fb191bbd591c7b0802c9f0ad268d5ca92c26",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-320-ab.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-320-abc-current-evidence.jpg",
+    "sha256": "d283d974129e8877db7e6c5df80db82460115c103c5e4b6f1668dc21fac44df9",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-320-abc-current-evidence.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-320-abc-initial.jpg",
+    "sha256": "d1d4f5b7ff6eba11c1664ec25f00f7a803538d9ea6e790a2adcbd585d72f662e",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-320-abc-initial.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-320-abc-restored.jpg",
+    "sha256": "d30c3436548b5979dd47f1f3241cab30f7014dfcad5a5e46399b11b2683e01a3",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-320-abc-restored.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-320-current-review.jpg",
+    "sha256": "1bb9b38a550d4125720b46971dc1651b70fb7351fbe859dd2c5a6bc320a7e18b",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-320-current-review.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-390-ab-evidence.jpg",
+    "sha256": "585e0e10395756c126cd87668899aa2c68ef881c2db8a41603b57a3c9a244e7d",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-390-ab-evidence.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-390-ab.jpg",
+    "sha256": "bb52f0870f142bdfad55788818a6a6f3e909ad17ab21b342fccd80df21a53d9f",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-390-ab.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-390-abc-current-evidence.jpg",
+    "sha256": "a76dbb5da02c63edfba7e6b9268f298a0ee71e449a4ac2635568809abc7ac0b7",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-390-abc-current-evidence.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-390-abc-initial.jpg",
+    "sha256": "e8499a2eee2b5424b449e0267c5b05c7c5825078b0fc81fd9bbd1a98aaf745c3",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-390-abc-initial.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-390-abc-restored.jpg",
+    "sha256": "76b876cbbd21817a556beae0175634beb5c1324c12103bea6a619401e3c75f2a",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-390-abc-restored.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-390-current-review.jpg",
+    "sha256": "20ebfb912b1bec3e6b7d18a374e8d5343f5ce993e3967774b991a40faf8d1e3a",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-390-current-review.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-768-ab-evidence.jpg",
+    "sha256": "d70d8fc6af3058f82b295261eae82e13c2c31a1e8d44e96043e81726ba023780",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-768-ab-evidence.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-768-ab.jpg",
+    "sha256": "063b6f28e5c9f38a4b1cd7e447b6ca95fe172752d47c07859ebe785ac4c8131b",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-768-ab.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-768-abc-current-evidence.jpg",
+    "sha256": "b172bd71f7fa2c11e3ed6bc6662d30d6c3015220115b82e38cfca66833413434",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-768-abc-current-evidence.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-768-abc-initial.jpg",
+    "sha256": "da97d664ac5e5e754012c6d7d63041e93c6667cdc834a7002895c9c134f4085a",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-768-abc-initial.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-768-abc-restored.jpg",
+    "sha256": "5993a4f843c0dcd2021d297958382fbd70f721ddec1f717c281edf5df8886079",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-768-abc-restored.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/f04-zh-TW-768-current-review.jpg",
+    "sha256": "2e73dddd7f5db67904e44490e566a4999a205d187902a787bc972992435a78c1",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/f04-zh-TW-768-current-review.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-edited-review-locale-zh.jpg",
+    "sha256": "5d79725c18370e9631104c0493d2ff3b782d844f73f738de4ae89c46ef139e0f",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-edited-review-locale-zh.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-first-receipt-lineage.jpg",
+    "sha256": "1fb12b22afdc0f88aac94a828a7d8b0e9a7fc3d87a0918ec5ef9cb6789375e15",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-first-receipt-lineage.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-first-receipt-refreshed.jpg",
+    "sha256": "01e468540d9b60f8b437c0a30dc335364727d8dad75f416f995aba8056fe78f3",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-first-receipt-refreshed.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-first-receipt.jpg",
+    "sha256": "5a1532173365249698fc302e159fdadd8c74f75fcf1a8b22c99191179b17c4e2",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-first-receipt.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-mobile-before-confirm.jpg",
+    "sha256": "c3cefde91da569c9da3f8d0a6a221f51a4fa0d9582749d2536716cb8a1691851",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-mobile-before-confirm.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-mobile-copied-receipt.jpg",
+    "sha256": "d791847a9b9e5adee9aa1dd963bbba0f78281b43c9b85be919db9e3b205d343e",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-mobile-copied-receipt.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-mobile-factor-return.jpg",
+    "sha256": "07e171ea20778faff124278f0ea6c5ea708590634987d45599d9b522bdc155ed",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-mobile-factor-return.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-mobile-factor-source.jpg",
+    "sha256": "a97d6223ac2cd783a8c1cbb0f979baec7a3cde6ff46bfedc833d8c70ea64ee52",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-mobile-factor-source.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-mobile-factor.jpg",
+    "sha256": "326b955f842e517627d2d4334fd3595552d675f66cb9660a42e6f875142fb70c",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-mobile-factor.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-mobile-lighting-insufficiency.jpg",
+    "sha256": "1f0133ea897f8118bc456a554d5cd74e99d12ae5966f1c7390a1fa8598e1d658",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-mobile-lighting-insufficiency.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-mobile-project-actions-reopened.jpg",
+    "sha256": "da6d09977e30eacc6d90ae21a2490640e76004dd0dbf10854a27a6d983aab1f7",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-mobile-project-actions-reopened.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-mobile-project-actions.jpg",
+    "sha256": "c70f08c24d0ef590ef8894597fa1109f020f08be188f0a1597473017e32a40a7",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-mobile-project-actions.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-mobile-receipt-lineage.jpg",
+    "sha256": "7300c939e22a9fb88d72a99bcf2f6038522d645e2da4be2493e6c40bb485af91",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-mobile-receipt-lineage.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-mobile-receipt-refreshed.jpg",
+    "sha256": "d791847a9b9e5adee9aa1dd963bbba0f78281b43c9b85be919db9e3b205d343e",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-mobile-receipt-refreshed.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-mobile-receipt.jpg",
+    "sha256": "da6d09977e30eacc6d90ae21a2490640e76004dd0dbf10854a27a6d983aab1f7",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-mobile-receipt.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-mobile-review.jpg",
+    "sha256": "20ebfb912b1bec3e6b7d18a374e8d5343f5ce993e3967774b991a40faf8d1e3a",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-mobile-review.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-review-evidence.jpg",
+    "sha256": "f4babad84f5da47658cd457c0a89a11cf99510f3c44e17aa2f8534c5ee35fd43",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-review-evidence.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T084208Z",
+    "file": "evidence/20261118T084208Z/browser/screenshots/hero-zh-source-focus.jpg",
+    "sha256": "343f1768917d3b971ad5f50342df5bd12234a98bd6ee4ef1d752a7ba27ca9b31",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T084208Z/browser/screenshots/hero-zh-source-focus.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T094310Z",
+    "file": "evidence/20261118T094310Z/screenshots/cancel-zh-after-settled.jpg",
+    "sha256": "62c95895fb923f10e7cc6de6e12be24830c241637afc5f75df7e1f7c18f61f21",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T094310Z/screenshots/cancel-zh-after-settled.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T094310Z",
+    "file": "evidence/20261118T094310Z/screenshots/cancel-zh-before.jpg",
+    "sha256": "97b6bb8a374773af3033b841a358e82e6e8f1b6bfc51aedd535eec72e4863c1a",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T094310Z/screenshots/cancel-zh-before.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T094310Z",
+    "file": "evidence/20261118T094310Z/screenshots/m01-zh-dialog.jpg",
+    "sha256": "92f64184d7b32ed455eecf765b69614aef0025f7d2f18f63d1ab8729ab7da5db",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T094310Z/screenshots/m01-zh-dialog.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T094310Z",
+    "file": "evidence/20261118T094310Z/screenshots/m01-zh-evidence-return.jpg",
+    "sha256": "fa856b4a70eb68c69e8d61fa2b688523697d355fa24199ad08bb1dc1f16d04a0",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T094310Z/screenshots/m01-zh-evidence-return.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T094310Z",
+    "file": "evidence/20261118T094310Z/screenshots/m01-zh-evidence.jpg",
+    "sha256": "b5972c23569fdd3ad1f9a56cd2b1a20c06137e583d6e3a110e2069a2bfbb2137",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T094310Z/screenshots/m01-zh-evidence.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T094310Z",
+    "file": "evidence/20261118T094310Z/screenshots/m01-zh-fresh-dialog.jpg",
+    "sha256": "f3738295c84b921c6eab1b7e15aa1f8db8ca4d85937753336b2e124ec45306d2",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T094310Z/screenshots/m01-zh-fresh-dialog.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T094310Z",
+    "file": "evidence/20261118T094310Z/screenshots/m01-zh-receipt.jpg",
+    "sha256": "ed65bb5f168d012e37cae4ef2395bff188f2868fab71adf48ccaae2a9f8c777e",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T094310Z/screenshots/m01-zh-receipt.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T094310Z",
+    "file": "evidence/20261118T094310Z/screenshots/m01-zh-validation.jpg",
+    "sha256": "df4b1ec32694835f7a35f6f734e91c050a66430896997f5aee3d06b6d78909e9",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T094310Z/screenshots/m01-zh-validation.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261118T094310Z",
+    "file": "evidence/20261118T094310Z/screenshots/m06-zh-generic-denial.jpg",
+    "sha256": "1b9b7b97b035a1549e328c19de2e83c5323d1030eedc52db9ca5d0510b9b6c20",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "See screenshot-review/geometry-assessment for this run; speech-state captures do not replace exact viewport grid.",
+    "reviewLink": "../../../20261118T094310Z/screenshots/m06-zh-generic-denial.jpg",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261119T032345Z",
+    "file": "evidence/pilot-readiness/20261119T032345Z/screenshots/zh-initial-bounds.jpg",
+    "sha256": "410b45d5fcb0f897e709a04595ff2941e41e65857c874399f9960b134db6461b",
+    "reviewLink": "../screenshots/zh-initial-bounds.jpg",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "Desktop date-boundary test at process-only simulated instants; not a phone or new four-viewport baseline",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261119T032345Z",
+    "file": "evidence/pilot-readiness/20261119T032345Z/screenshots/zh-native-leap-valid-before-key.jpg",
+    "sha256": "6a27ab4f094474fbdbcb37751a508e791026e8d9bee18ec7e795fc40cf586b62",
+    "reviewLink": "../screenshots/zh-native-leap-valid-before-key.jpg",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "Desktop date-boundary test at process-only simulated instants; not a phone or new four-viewport baseline",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261119T032345Z",
+    "file": "evidence/pilot-readiness/20261119T032345Z/screenshots/zh-plus366-ready.jpg",
+    "sha256": "8ac1ef50575365acdce4305655c3a354e7e7d2757ecbbabc9ad0ac8f6fb1d79b",
+    "reviewLink": "../screenshots/zh-plus366-ready.jpg",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "Desktop date-boundary test at process-only simulated instants; not a phone or new four-viewport baseline",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261119T032345Z",
+    "file": "evidence/pilot-readiness/20261119T032345Z/screenshots/zh-plus366-rejected.jpg",
+    "sha256": "095cd7b4c7e8ac5724a817297cf576922f05524878faa1cf0e24ef1768b23409",
+    "reviewLink": "../screenshots/zh-plus366-rejected.jpg",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "Desktop date-boundary test at process-only simulated instants; not a phone or new four-viewport baseline",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261119T032345Z",
+    "file": "evidence/pilot-readiness/20261119T032345Z/screenshots/zh-leap-native-committed.jpg",
+    "sha256": "eabb1c05874ffbe61fff733ec5b2cb48b5a889c5c818a07246db69a5e8596602",
+    "reviewLink": "../screenshots/zh-leap-native-committed.jpg",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "Desktop date-boundary test at process-only simulated instants; not a phone or new four-viewport baseline",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261119T032345Z",
+    "file": "evidence/pilot-readiness/20261119T032345Z/screenshots/zh-yesterday-ready.jpg",
+    "sha256": "5a916830af611ec320504c93d325cd5f7b4c4cd7f5177eacd5ac1d8df6f33926",
+    "reviewLink": "../screenshots/zh-yesterday-ready.jpg",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "Desktop date-boundary test at process-only simulated instants; not a phone or new four-viewport baseline",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261119T032345Z",
+    "file": "evidence/pilot-readiness/20261119T032345Z/screenshots/zh-leap-plus365-receipt.jpg",
+    "sha256": "f3d7f7c569e515753e3d274b8946cf791aa0232edae8f6f840702e354051c7eb",
+    "reviewLink": "../screenshots/zh-leap-plus365-receipt.jpg",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "Desktop date-boundary test at process-only simulated instants; not a phone or new four-viewport baseline",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261119T032345Z",
+    "file": "evidence/pilot-readiness/20261119T032345Z/screenshots/zh-native-impossible-date-ready.jpg",
+    "sha256": "55e93ba8e6aa82a23b54e39282c2e2ca0dde34a973790a80aa79b9271eee3244",
+    "reviewLink": "../screenshots/zh-native-impossible-date-ready.jpg",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "Desktop date-boundary test at process-only simulated instants; not a phone or new four-viewport baseline",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261119T032345Z",
+    "file": "evidence/pilot-readiness/20261119T032345Z/screenshots/zh-leap-plus365-ready.jpg",
+    "sha256": "47c7ffe11869b15b2f16320e4b421d5f59ef61a030095aaa7e18d0a39873fc09",
+    "reviewLink": "../screenshots/zh-leap-plus365-ready.jpg",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "Desktop date-boundary test at process-only simulated instants; not a phone or new four-viewport baseline",
+    "humanVerdict": "NOT_REVIEWED"
+  },
+  {
+    "run": "20261119T032345Z",
+    "file": "evidence/pilot-readiness/20261119T032345Z/screenshots/zh-yesterday-rejected.jpg",
+    "sha256": "5df647f58425699a7d01218f97607318f5cd0b555352004efc9da3c5282f1038",
+    "reviewLink": "../screenshots/zh-yesterday-rejected.jpg",
+    "currentProductSourceEquivalent": true,
+    "geometryQualification": "Desktop date-boundary test at process-only simulated instants; not a phone or new four-viewport baseline",
+    "humanVerdict": "NOT_REVIEWED"
+  }
+]

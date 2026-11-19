@@ -1,0 +1,31 @@
+{
+  "at": "2026-11-19T03:16:14.988059+00:00",
+  "priorNonSessionRowsPreserved": true,
+  "priorRowChanges": [],
+  "intentionalHistoryAdditions": {
+    "ComparisonCandidate": 6,
+    "ComparisonClaim": 16,
+    "ComparisonFactor": 48,
+    "ComparisonRun": 1,
+    "EconomicsEnrichmentRun": 1,
+    "EconomicsObservationDecision": 94,
+    "IntelligenceRun": 1,
+    "ProposedAction": 1
+  },
+  "noNewActionReceiptAudit": true,
+  "temporaryFixtureMutationsApplied": false,
+  "guardDefinitionsUnchanged": true,
+  "allFourGuardsEnabled": true,
+  "nineMigrationsUnchanged": true,
+  "ownedSessions": 1,
+  "ownedSessionsRevoked": true,
+  "settings": {
+    "originalVoiceOver": "OFF",
+    "observedAtClosure": "OFF",
+    "evidence": "Native System Settings accessibility switch AX_VOICEOVER_ENABLED Value: off; no setting change needed",
+    "zoomAndMotion": "NOT_CHANGED_BY_THIS_RUN"
+  },
+  "postRevocationBrowserRequest": false,
+  "scope": "Closure of deferred speech wave only; no new product acceptance claim",
+  "result": "PASS"
+}

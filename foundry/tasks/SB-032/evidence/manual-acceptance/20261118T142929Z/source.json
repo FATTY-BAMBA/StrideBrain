@@ -1,0 +1,17 @@
+{
+  "runId": "20261118T142929Z",
+  "scope": "MANUAL_ACCEPTANCE_ONE_HUMAN_OBSERVATION_AT_A_TIME",
+  "head": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+  "branch": "build/sb-032-stage9-quality-hardening",
+  "buildId": "jZBGrkhs4Ok9XriINHgub",
+  "productSourceIdenticalToRepair": true,
+  "CI": {
+    "runId": 44278010987,
+    "result": "PASS",
+    "head": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4"
+  },
+  "priorRunPreserved": "20261118T094310Z",
+  "cancelLocaleAndGeometry": "CLOSED_NOT_RETESTED",
+  "noProductSourceChanges": true,
+  "database": "Existing isolated synthetic Stage9 browser database; historical rows retained; fresh run-owned sessions only."
+}

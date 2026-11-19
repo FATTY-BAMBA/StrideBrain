@@ -1,0 +1,84 @@
+[
+  {
+    "id": "S9-F05",
+    "severity": "P2",
+    "requiredPath": true,
+    "status": "OPEN_REPRODUCED_BOTH_LOCALES",
+    "title": "Due-date range remains stale after organization-local midnight rejection",
+    "head": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+    "buildId": "jZBGrkhs4Ok9XriINHgub",
+    "scenario": "M-05 browser/server policy-date parity at Asia/Taipei midnight",
+    "personas": [
+      "Mei / Project Manager, synthetic Horizon tenant"
+    ],
+    "locales": [
+      "en",
+      "zh-TW"
+    ],
+    "browser": "Desktop Chrome on macOS",
+    "cssViewport": {
+      "height": 1290,
+      "width": 2056
+    },
+    "devicePixelRatio": 2,
+    "reproduction": [
+      "Open an unexpired review proposal at organization time 23:59:59 with due date set to that day's valid minimum.",
+      "Keep the review open; advance only the isolated application clock one second to Asia/Taipei 00:00:00.",
+      "Explicitly confirm. The server rejects the now-yesterday due date with INVALID_DUE_DATE.",
+      "Observe that input min/max and the displayed date hint remain yesterday's range; error instructs a date within that same stale displayed range.",
+      "GET the same proposal through the actual API: it returns today's current bounds while the open form still shows the old bounds."
+    ],
+    "expected": "The error/recovery view communicates the current authoritative date range and preserves the complete draft; displayed bounds agree with the server at retry. Invalid confirmation creates no business record.",
+    "observed": {
+      "en": {
+        "before": "2028-02-28T15:59:59.000Z",
+        "after": "2028-02-28T16:00:00.000Z",
+        "shown": [
+          "2028-02-28",
+          "2029-02-27"
+        ],
+        "server": [
+          "2028-02-29",
+          "2029-02-28"
+        ],
+        "dueDate": "2028-02-28"
+      },
+      "zh-TW": {
+        "before": "2028-02-29T15:59:59.000Z",
+        "after": "2028-02-29T16:00:00.000Z",
+        "shown": [
+          "2028-02-29",
+          "2029-02-28"
+        ],
+        "server": [
+          "2028-03-01",
+          "2029-03-01"
+        ],
+        "dueDate": "2028-02-29"
+      }
+    },
+    "screenshots": [
+      "screenshots/midnight-after-en-rejection.jpg",
+      "screenshots/midnight-after-zh-rejection.jpg"
+    ],
+    "evidence": [
+      "operator/midnight-current-server-bounds.json",
+      "operator/zh-midnight-current-server-bounds.json",
+      "operator/invalid-date-write-invariants.json"
+    ],
+    "acceptanceCriteria": [
+      "Browser/server derive the same effective Asia/Taipei policy date after crossing midnight",
+      "Error hint and min/max refresh from server authority without losing draft",
+      "Invalid dates never create action/evidence/audit/consumption/receipt",
+      "Both locales remain semantically equivalent"
+    ],
+    "classification": "Required-path P2 presentation/recovery defect; server enforcement and write containment remain correct. No observed P0/P1.",
+    "sourceCause": {
+      "server": "internal-review-service.ts calculates current bounds on proposal reads and validates against current clock on confirm; VALIDATION_FAILED returns fieldErrors only.",
+      "client": "internal-review-sheet.tsx retains original proposal.minDueDate/maxDueDate after VALIDATION_FAILED; only failure and fieldErrors change."
+    },
+    "classificationReview": "Primary evaluator classification backed by bilingual browser/HTTP/database evidence; independent repair/contract review not yet performed.",
+    "repairScopeCandidate": "Refresh authoritative bounds after due-date validation failure, retaining the complete draft, error association and focus. Add server/component midnight regression coverage. No policy threshold/auth/tenant/schema change justified.",
+    "productSourceModified": false
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "runId": "20261118T031855Z",
+  "head": "4df07c23a2896b5c13b96238f078d22941a55222",
+  "status": "PASS",
+  "localProductionStartSmoke": "PASS",
+  "commandLog": "commands.jsonl",
+  "testResults": [
+    {
+      "label": "13-full-test-suite",
+      "passed": 535,
+      "total": 535,
+      "files": 62,
+      "result": "PASS"
+    },
+    {
+      "label": "14-localization",
+      "passed": 12,
+      "total": 12,
+      "files": 4,
+      "result": "PASS"
+    },
+    {
+      "label": "15-postgres-adversarial",
+      "passed": 93,
+      "total": 93,
+      "files": 1,
+      "result": "PASS"
+    }
+  ],
+  "subsetCountsNotAddedToFullTotal": true,
+  "migrationCount": 8,
+  "repeatSeedAndSQL": "PASS",
+  "productionBuild": "PASS",
+  "buildId": "2qJuXmIaTnV_wQ5diyp-K",
+  "productionAudit": {
+    "result": "PASS",
+    "zeroVulnerabilities": true
+  },
+  "lintWarnings": 1,
+  "lintWarning": "Pre-existing prisma.config.ts default-export warning",
+  "productSourceHashUnchanged": true,
+  "generatedNextEnvRestored": true,
+  "node": "v24.22.3",
+  "postgres": "17.12",
+  "smokeScope": "Production Home and authenticated Xinyi workspace loaded on localhost:3000. Projects rendered in both locales/all four viewports; its missing navigation is S9-F01, not a successful hero journey.",
+  "fullSuiteSkipped": 0
+}

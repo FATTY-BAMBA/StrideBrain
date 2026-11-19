@@ -1,0 +1,72 @@
+{
+  "at": "2026-11-18T09:13:30.099Z",
+  "observedAx": "status \"正在載入歷史專案比較\"",
+  "source": "actual immediate post-locale-link DOM snapshot; natural request; no artificial delay",
+  "subsequentMeasure": {
+    "checks": [
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": true,
+        "disabled": false,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      },
+      {
+        "checked": false,
+        "disabled": true,
+        "name": null,
+        "value": "on"
+      }
+    ],
+    "focus": {
+      "id": "",
+      "tag": "BODY",
+      "text": "BODY"
+    },
+    "headings": [
+      "歷史專案比較： 信義旗艦店裝修",
+      "選擇要比較的歷史專案",
+      "結構化比較",
+      "結構化審查"
+    ],
+    "lang": "zh-Hant",
+    "statuses": [
+      {
+        "busy": null,
+        "label": "結構化比較",
+        "role": "region",
+        "text": "結構化比較信義旗艦店裝修內湖科技旗艦店中山生活概念店南京品牌體驗中心專案脈絡專案類型零售旗艦店零售旗艦店零售旗艦店零售旗艦店面積640 m²610 m²590 m²720 m²地點臺北市信義區臺北市內湖區臺北市中山區臺北市松山區完工時間進行中不適用2025年6月30日2024年11月15日2026年2月10日工期16 週目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。19–22 週已選歷史專案範圍19–22 週已選歷史專案範圍19–22 週已選歷史專案範圍整體商務比較報價 · 標準化報價NT$25,750 · 新台幣／m²+7.2% · NT$16,480,000報價NT$24,787 · 新台幣／m²資料足夠報價NT$23,644 · 新台幣／m²資料足夠報價NT$24,028 · 新台幣／m²資料足夠預估／已核對實際成本 · 標準化預估直接成本NT$19,766 · 新台幣／m²"
+      }
+    ],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_2586d94a-2e96-43f5-899c-b74c1da8e43d&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "viewport": {
+      "dpr": 1,
+      "height": 900,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  }
+}

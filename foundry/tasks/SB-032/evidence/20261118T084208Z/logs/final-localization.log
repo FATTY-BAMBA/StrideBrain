@@ -1,0 +1,13 @@
+
+> stridebrain@0.1.0 test:localization
+> vitest run tests/localization
+
+
+ RUN  v4.1.10 [REDACTED_PRIVATE_VALUE]
+
+
+ Test Files  5 passed (5)
+      Tests  37 passed (37)
+   Start at  17:05:49
+   Duration  700ms (transform 185ms, setup 0ms, import 255ms, tests 73ms, environment 450ms)
+

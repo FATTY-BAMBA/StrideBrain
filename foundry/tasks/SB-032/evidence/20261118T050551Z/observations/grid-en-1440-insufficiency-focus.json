@@ -1,0 +1,110 @@
+[
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 141.7109375,
+      "x": 1278.2890625,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "Close evidence",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 1013.3984375,
+      "y": 431.53125
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"bae1806f07ce700f23b70bfe\"]]]",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 1013.3984375,
+      "y": 431.1796875
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"3a8e6a0b703092d2d7f985d5\"]]]",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 1013.3984375,
+      "y": 431.53125
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"bae1806f07ce700f23b70bfe\"]]]",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 141.7109375,
+      "x": 1278.2890625,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "Close evidence",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "key": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 1013.3984375,
+      "y": 810.2578125
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_35f8d10e-9288-4dce-a196-c14de945e0bb\",[[\"evidenceClaim\",\"XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"8f971933b0c25107bec08737\"]]]",
+    "viewport": [
+      1440,
+      900
+    ]
+  }
+]

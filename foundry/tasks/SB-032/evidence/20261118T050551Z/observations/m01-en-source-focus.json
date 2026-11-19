@@ -1,0 +1,128 @@
+[
+  {
+    "step": "entered",
+    "id": "evidence-panel-title",
+    "inside": true,
+    "rect": {
+      "height": 50,
+      "width": 209.75,
+      "x": 981,
+      "y": 61.0546875
+    },
+    "tag": "H2",
+    "text": "Imported stone and hard finishes",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "step": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 213.25,
+      "x": 1206.75,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "Back to evidence bundle",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "step": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 214.859375,
+      "x": 981,
+      "y": 267.1171875
+    },
+    "tag": "BUTTON",
+    "text": "Back to evidence bundle",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "step": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 213.25,
+      "x": 1206.75,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "Back to evidence bundle",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "step": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 214.859375,
+      "x": 981,
+      "y": 267.1171875
+    },
+    "tag": "BUTTON",
+    "text": "Back to evidence bundle",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "step": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 213.25,
+      "x": 1206.75,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "Back to evidence bundle",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "step": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 214.859375,
+      "x": 981,
+      "y": 267.1171875
+    },
+    "tag": "BUTTON",
+    "text": "Back to evidence bundle",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "at": "2026-11-18T14:39:55.639326+00:00",
+    "userMessage": "turn it on",
+    "interpretation": "Request to enable VoiceOver; not a speech observation or acceptance result",
+    "observedBefore": "OFF",
+    "action": "Enabled through actual System Settings VoiceOver switch",
+    "observedAfter": "ON",
+    "currentCase": "M-01-EN-A",
+    "speechResult": "PENDING_HUMAN_OBSERVATION"
+  }
+]

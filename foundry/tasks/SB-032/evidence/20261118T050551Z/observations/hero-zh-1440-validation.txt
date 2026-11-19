@@ -1,0 +1,563 @@
+- link "跳至主要內容":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: PRIMESTRIDE AI
+  - navigation "專案":
+    - link "首頁":
+      - /url: /zh-TW
+      - generic: "01"
+      - generic: 首頁
+    - link "專案":
+      - /url: /zh-TW/projects
+      - generic: "02"
+      - generic: 專案
+    - link "知識":
+      - /url: /zh-TW/knowledge
+      - generic: "03"
+      - generic: 知識
+    - link "StrideBrain":
+      - /url: /zh-TW/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "設定":
+      - /url: /zh-TW/settings
+      - generic: "05"
+      - generic: 設定
+  - strong: v0.1 · 受控示範
+  - generic: 此區域尚未啟用
+- banner:
+  - generic: ●
+  - text: 受控虛構資料示範
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_a29981e4-0c02-408b-88ee-4af6e94af595&economics=econrun_08469198-1271-4cfa-b609-00ba1b839fdc&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_d9a1b402-190a-431a-8fbe-4125080415be&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=
+    - generic: /
+    - link "EN":
+      - /url: /en/projects/PRJ-XINYI-026/compare?run=cmprun_a29981e4-0c02-408b-88ee-4af6e94af595&economics=econrun_08469198-1271-4cfa-b609-00ba1b839fdc&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_d9a1b402-190a-431a-8fbe-4125080415be&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=
+- main:
+  - navigation "專案工作區導覽":
+    - link "總覽":
+      - /url: /zh-TW/projects/PRJ-XINYI-026
+    - link "比較":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/compare
+    - link "商務資料":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/commercial
+    - link "資料依據":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/evidence
+    - link "行動事項":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/actions
+  - paragraph: 類似專案智慧
+  - heading "歷史專案比較： 信義旗艦店裝修" [level=1]
+  - paragraph: StrideBrain 以可解釋的固定規則排序已授權的歷史專案，清楚區分商務資料權威性，也會誠實呈現資料不足之處。
+  - term: 產生時間
+  - definition: 2026年11月18日
+  - term: 比較規則
+  - definition: 專案相似度
+  - term: 已授權相似專案
+  - definition: "6"
+  - term: 已選歷史專案
+  - definition: 3/3
+  - term: 商務資料狀態
+  - definition: 部分商務資料
+  - term: 資料邊界
+  - definition: 禾序空間設計虛構示範資料，不是市場基準。
+  - region "選擇要比較的歷史專案":
+    - paragraph: 我們以前做過類似的案子嗎？
+    - heading "選擇要比較的歷史專案" [level=2]
+    - paragraph: 最多選擇三個專案。更新選擇會建立新的不可變更商務分析，但不會改變原本的相似度排序。
+    - strong: "3"
+    - generic: 個已選
+    - generic: ·
+    - generic: 最多 3 個
+    - article "1. 內湖科技旗艦店":
+      - generic: "選擇要比較的歷史專案: 內湖科技旗艦店"
+      - 'checkbox "選擇要比較的歷史專案: 內湖科技旗艦店" [checked]'
+      - generic: "1"
+      - generic: 高度相似
+      - heading "內湖科技旗艦店" [level=3]
+      - generic: 臺北市內湖區
+      - generic: 610 m²
+      - generic: 2025年6月30日
+      - generic: 相似度分數
+      - strong: 88/100
+      - generic: 資料完整度
+      - strong: 100%
+      - generic: 歷史報價
+      - generic: 已核對實際成本
+      - generic: 供應商報價僅屬歷史資料，不得呈現為目前價格。
+      - generic "查看比較因素"
+    - article "2. 中山生活概念店":
+      - generic: "選擇要比較的歷史專案: 中山生活概念店"
+      - 'checkbox "選擇要比較的歷史專案: 中山生活概念店" [checked]'
+      - generic: "2"
+      - generic: 高度相似
+      - heading "中山生活概念店" [level=3]
+      - generic: 臺北市中山區
+      - generic: 590 m²
+      - generic: 2024年11月15日
+      - generic: 相似度分數
+      - strong: 81/100
+      - generic: 資料完整度
+      - strong: 100%
+      - generic: 歷史報價
+      - generic: 已核對實際成本
+      - generic "查看比較因素"
+    - article "3. 南京品牌體驗中心":
+      - generic: "選擇要比較的歷史專案: 南京品牌體驗中心"
+      - 'checkbox "選擇要比較的歷史專案: 南京品牌體驗中心" [checked]'
+      - generic: "3"
+      - generic: 具參考價值
+      - heading "南京品牌體驗中心" [level=3]
+      - generic: 臺北市松山區
+      - generic: 720 m²
+      - generic: 2026年2月10日
+      - generic: 相似度分數
+      - strong: 79/100
+      - generic: 資料完整度
+      - strong: 100%
+      - generic: 歷史報價
+      - generic: 已核對實際成本
+      - generic "查看比較因素"
+    - article "4. 大安精品展示中心":
+      - generic: "選擇要比較的歷史專案: 大安精品展示中心"
+      - 'checkbox "選擇要比較的歷史專案: 大安精品展示中心" [disabled]'
+      - generic: "4"
+      - generic: 具參考價值
+      - heading "大安精品展示中心" [level=3]
+      - generic: 臺北市大安區
+      - generic: 520 m²
+      - generic: 2024年4月20日
+      - generic: 相似度分數
+      - strong: 71/100
+      - generic: 資料完整度
+      - strong: 100%
+      - generic "查看比較因素"
+    - article "5. 松山門市改裝":
+      - generic: "選擇要比較的歷史專案: 松山門市改裝"
+      - 'checkbox "選擇要比較的歷史專案: 松山門市改裝" [disabled]'
+      - generic: "5"
+      - generic: 具參考價值
+      - heading "松山門市改裝" [level=3]
+      - generic: 臺北市松山區
+      - generic: 680 m²
+      - generic: 2025年2月28日
+      - generic: 相似度分數
+      - strong: 69/100
+      - generic: 資料完整度
+      - strong: 100%
+      - generic "查看比較因素"
+    - article "6. 板橋概念店":
+      - generic: "選擇要比較的歷史專案: 板橋概念店"
+      - 'checkbox "選擇要比較的歷史專案: 板橋概念店" [disabled]'
+      - generic: "6"
+      - generic: 部分相似
+      - heading "板橋概念店" [level=3]
+      - generic: 新北市板橋區
+      - generic: 760 m²
+      - generic: 2023年9月30日
+      - generic: 相似度分數
+      - strong: 63/100
+      - generic: 資料完整度
+      - strong: 100%
+      - generic "查看比較因素"
+    - paragraph: "已選專案: PRJ-NEIHU-021, PRJ-ZHONGSHAN-018, PRJ-NANJING-023"
+    - button "更新比較" [disabled]
+  - region "結構化比較":
+    - paragraph: 結構化比較
+    - heading "結構化比較" [level=2]
+    - paragraph: 所有數值都來自已儲存的固定規則結果。歷史報價、預估成本、供應商報價與已核對實際成本會保持清楚區分。
+    - region "結構化比較":
+      - table:
+        - rowgroup:
+          - row "結構化比較 信義旗艦店裝修 內湖科技旗艦店 中山生活概念店 南京品牌體驗中心":
+            - columnheader "結構化比較"
+            - columnheader "信義旗艦店裝修"
+            - columnheader "內湖科技旗艦店"
+            - columnheader "中山生活概念店"
+            - columnheader "南京品牌體驗中心"
+        - rowgroup:
+          - row "專案脈絡":
+            - columnheader "專案脈絡"
+          - row "專案類型 零售旗艦店 零售旗艦店 零售旗艦店 零售旗艦店":
+            - rowheader "專案類型"
+            - cell "零售旗艦店":
+              - generic: 零售旗艦店
+            - cell "零售旗艦店":
+              - generic: 零售旗艦店
+            - cell "零售旗艦店":
+              - generic: 零售旗艦店
+            - cell "零售旗艦店":
+              - generic: 零售旗艦店
+          - row "面積 640 m² 610 m² 590 m² 720 m²":
+            - rowheader "面積"
+            - cell "640 m²":
+              - generic: 640 m²
+            - cell "610 m²":
+              - generic: 610 m²
+            - cell "590 m²":
+              - generic: 590 m²
+            - cell "720 m²":
+              - generic: 720 m²
+          - row "地點 臺北市信義區 臺北市內湖區 臺北市中山區 臺北市松山區":
+            - rowheader "地點"
+            - cell "臺北市信義區":
+              - generic: 臺北市信義區
+            - cell "臺北市內湖區":
+              - generic: 臺北市內湖區
+            - cell "臺北市中山區":
+              - generic: 臺北市中山區
+            - cell "臺北市松山區":
+              - generic: 臺北市松山區
+          - row "完工時間 進行中 不適用 2025年6月30日 2024年11月15日 2026年2月10日":
+            - rowheader "完工時間"
+            - cell "進行中 不適用":
+              - generic: 進行中
+              - generic: 不適用
+            - cell "2025年6月30日":
+              - generic: 2025年6月30日
+            - cell "2024年11月15日":
+              - generic: 2024年11月15日
+            - cell "2026年2月10日":
+              - generic: 2026年2月10日
+          - 'row "工期 資料依據與完整度: 16 週 · 目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。 19–22 週 已選歷史專案範圍 19–22 週 已選歷史專案範圍 19–22 週 已選歷史專案範圍"':
+            - rowheader "工期"
+            - 'cell "資料依據與完整度: 16 週 · 目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。"':
+              - 'button "資料依據與完整度: 16 週 · 目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。"':
+                - generic: 16 週
+                - generic: 目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。
+            - cell "19–22 週 已選歷史專案範圍":
+              - generic: 19–22 週
+              - generic: 已選歷史專案範圍
+            - cell "19–22 週 已選歷史專案範圍":
+              - generic: 19–22 週
+              - generic: 已選歷史專案範圍
+            - cell "19–22 週 已選歷史專案範圍":
+              - generic: 19–22 週
+              - generic: 已選歷史專案範圍
+        - rowgroup:
+          - row "整體商務比較":
+            - columnheader "整體商務比較"
+          - 'row "報價 · 標準化 資料依據與完整度: 報價 · NT$25,750 · 新台幣／m² · +7.2% · NT$16,480,000 資料依據與完整度: 報價 · NT$24,787 · 新台幣／m² · 資料足夠 資料依據與完整度: 報價 · NT$23,644 · 新台幣／m² · 資料足夠 資料依據與完整度: 報價 · NT$24,028 · 新台幣／m² · 資料足夠"':
+            - rowheader "報價 · 標準化"
+            - 'cell "資料依據與完整度: 報價 · NT$25,750 · 新台幣／m² · +7.2% · NT$16,480,000"':
+              - 'button "資料依據與完整度: 報價 · NT$25,750 · 新台幣／m² · +7.2% · NT$16,480,000"':
+                - generic: 報價
+                - generic: NT$25,750 · 新台幣／m²
+                - generic: +7.2% · NT$16,480,000
+            - 'cell "資料依據與完整度: 報價 · NT$24,787 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 報價 · NT$24,787 · 新台幣／m² · 資料足夠"':
+                - generic: 報價
+                - generic: NT$24,787 · 新台幣／m²
+                - generic: 資料足夠
+            - 'cell "資料依據與完整度: 報價 · NT$23,644 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 報價 · NT$23,644 · 新台幣／m² · 資料足夠"':
+                - generic: 報價
+                - generic: NT$23,644 · 新台幣／m²
+                - generic: 資料足夠
+            - 'cell "資料依據與完整度: 報價 · NT$24,028 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 報價 · NT$24,028 · 新台幣／m² · 資料足夠"':
+                - generic: 報價
+                - generic: NT$24,028 · 新台幣／m²
+                - generic: 資料足夠
+          - 'row "預估／已核對實際成本 · 標準化 資料依據與完整度: 預估直接成本 · NT$19,766 · 新台幣／m² · +6.0% · NT$12,650,000 資料依據與完整度: 已核對實際成本 · NT$18,984 · 新台幣／m² · 資料足夠 資料依據與完整度: 已核對實際成本 · NT$18,373 · 新台幣／m² · 資料足夠 資料依據與完整度: 已核對實際成本 · NT$18,639 · 新台幣／m² · 資料足夠"':
+            - rowheader "預估／已核對實際成本 · 標準化"
+            - 'cell "資料依據與完整度: 預估直接成本 · NT$19,766 · 新台幣／m² · +6.0% · NT$12,650,000"':
+              - 'button "資料依據與完整度: 預估直接成本 · NT$19,766 · 新台幣／m² · +6.0% · NT$12,650,000"':
+                - generic: 預估直接成本
+                - generic: NT$19,766 · 新台幣／m²
+                - generic: +6.0% · NT$12,650,000
+            - 'cell "資料依據與完整度: 已核對實際成本 · NT$18,984 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 已核對實際成本 · NT$18,984 · 新台幣／m² · 資料足夠"':
+                - generic: 已核對實際成本
+                - generic: NT$18,984 · 新台幣／m²
+                - generic: 資料足夠
+            - 'cell "資料依據與完整度: 已核對實際成本 · NT$18,373 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 已核對實際成本 · NT$18,373 · 新台幣／m² · 資料足夠"':
+                - generic: 已核對實際成本
+                - generic: NT$18,373 · 新台幣／m²
+                - generic: 資料足夠
+            - 'cell "資料依據與完整度: 已核對實際成本 · NT$18,639 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 已核對實際成本 · NT$18,639 · 新台幣／m² · 資料足夠"':
+                - generic: 已核對實際成本
+                - generic: NT$18,639 · 新台幣／m²
+                - generic: 資料足夠
+        - rowgroup:
+          - row "分類比較":
+            - columnheader "分類比較"
+          - 'row "進口石材 · 報價 資料依據與完整度: 報價 · NT$4,688 · 新台幣／m² · +43.0% · NT$3,000,000 資料依據與完整度: 報價 · NT$3,279 · 新台幣／m² · 資料足夠 資料依據與完整度: 報價 · NT$3,220 · 新台幣／m² · 資料足夠 資料依據與完整度: 報價 · NT$3,333 · 新台幣／m² · 資料足夠"':
+            - rowheader "進口石材 · 報價"
+            - 'cell "資料依據與完整度: 報價 · NT$4,688 · 新台幣／m² · +43.0% · NT$3,000,000"':
+              - 'button "資料依據與完整度: 報價 · NT$4,688 · 新台幣／m² · +43.0% · NT$3,000,000"':
+                - generic: 報價
+                - generic: NT$4,688 · 新台幣／m²
+                - generic: +43.0% · NT$3,000,000
+            - 'cell "資料依據與完整度: 報價 · NT$3,279 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 報價 · NT$3,279 · 新台幣／m² · 資料足夠"':
+                - generic: 報價
+                - generic: NT$3,279 · 新台幣／m²
+                - generic: 資料足夠
+            - 'cell "資料依據與完整度: 報價 · NT$3,220 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 報價 · NT$3,220 · 新台幣／m² · 資料足夠"':
+                - generic: 報價
+                - generic: NT$3,220 · 新台幣／m²
+                - generic: 資料足夠
+            - 'cell "資料依據與完整度: 報價 · NT$3,333 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 報價 · NT$3,333 · 新台幣／m² · 資料足夠"':
+                - generic: 報價
+                - generic: NT$3,333 · 新台幣／m²
+                - generic: 資料足夠
+          - 'row "進口石材 · 預估／已核對實際成本 資料依據與完整度: 預估直接成本 · NT$3,688 · 新台幣／m² · +18.4% · NT$2,360,000 資料依據與完整度: 已核對實際成本 · NT$3,115 · 新台幣／m² · 資料足夠 資料依據與完整度: 已核對實際成本 · NT$3,390 · 新台幣／m² · 資料足夠 資料依據與完整度: 已核對實際成本 · NT$2,917 · 新台幣／m² · 資料足夠"':
+            - rowheader "進口石材 · 預估／已核對實際成本"
+            - 'cell "資料依據與完整度: 預估直接成本 · NT$3,688 · 新台幣／m² · +18.4% · NT$2,360,000"':
+              - 'button "資料依據與完整度: 預估直接成本 · NT$3,688 · 新台幣／m² · +18.4% · NT$2,360,000"':
+                - generic: 預估直接成本
+                - generic: NT$3,688 · 新台幣／m²
+                - generic: +18.4% · NT$2,360,000
+            - 'cell "資料依據與完整度: 已核對實際成本 · NT$3,115 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 已核對實際成本 · NT$3,115 · 新台幣／m² · 資料足夠"':
+                - generic: 已核對實際成本
+                - generic: NT$3,115 · 新台幣／m²
+                - generic: 資料足夠
+            - 'cell "資料依據與完整度: 已核對實際成本 · NT$3,390 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 已核對實際成本 · NT$3,390 · 新台幣／m² · 資料足夠"':
+                - generic: 已核對實際成本
+                - generic: NT$3,390 · 新台幣／m²
+                - generic: 資料足夠
+            - 'cell "資料依據與完整度: 已核對實際成本 · NT$2,917 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 已核對實際成本 · NT$2,917 · 新台幣／m² · 資料足夠"':
+                - generic: 已核對實際成本
+                - generic: NT$2,917 · 新台幣／m²
+                - generic: 資料足夠
+          - 'row "燈具／電氣 · 報價 資料依據與完整度: 報價 · NT$4,844 · 新台幣／m² · +9.4% · NT$3,100,000 資料依據與完整度: 報價 · NT$4,426 · 新台幣／m² · 資料足夠 資料依據與完整度: 報價 · NT$4,820 · 新台幣／m² · 資料足夠 資料依據與完整度: 報價 · NT$4,167 · 新台幣／m² · 資料足夠"':
+            - rowheader "燈具／電氣 · 報價"
+            - 'cell "資料依據與完整度: 報價 · NT$4,844 · 新台幣／m² · +9.4% · NT$3,100,000"':
+              - 'button "資料依據與完整度: 報價 · NT$4,844 · 新台幣／m² · +9.4% · NT$3,100,000"':
+                - generic: 報價
+                - generic: NT$4,844 · 新台幣／m²
+                - generic: +9.4% · NT$3,100,000
+            - 'cell "資料依據與完整度: 報價 · NT$4,426 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 報價 · NT$4,426 · 新台幣／m² · 資料足夠"':
+                - generic: 報價
+                - generic: NT$4,426 · 新台幣／m²
+                - generic: 資料足夠
+            - 'cell "資料依據與完整度: 報價 · NT$4,820 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 報價 · NT$4,820 · 新台幣／m² · 資料足夠"':
+                - generic: 報價
+                - generic: NT$4,820 · 新台幣／m²
+                - generic: 資料足夠
+            - 'cell "資料依據與完整度: 報價 · NT$4,167 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 報價 · NT$4,167 · 新台幣／m² · 資料足夠"':
+                - generic: 報價
+                - generic: NT$4,167 · 新台幣／m²
+                - generic: 資料足夠
+          - 'row "燈具／電氣 · 預估／已核對實際成本 資料依據與完整度: 預估直接成本 · NT$3,672 · 新台幣／m² · 資料不足 資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3 資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3 資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+            - rowheader "燈具／電氣 · 預估／已核對實際成本"
+            - 'cell "資料依據與完整度: 預估直接成本 · NT$3,672 · 新台幣／m² · 資料不足"':
+              - 'button "資料依據與完整度: 預估直接成本 · NT$3,672 · 新台幣／m² · 資料不足"':
+                - generic: 預估直接成本
+                - generic: NT$3,672 · 新台幣／m²
+                - generic: 資料不足
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+                - generic: 已核對實際成本
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+                - generic: 已核對實際成本
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+                - generic: 已核對實際成本
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+          - 'row "訂製木作 · 報價 資料依據與完整度: 報價 · NT$5,938 · 新台幣／m² · +1.8% · NT$3,800,000 資料依據與完整度: 報價 · NT$5,902 · 新台幣／m² · 資料足夠 資料依據與完整度: 報價 · NT$5,424 · 新台幣／m² · 資料足夠 資料依據與完整度: 報價 · NT$5,833 · 新台幣／m² · 資料足夠"':
+            - rowheader "訂製木作 · 報價"
+            - 'cell "資料依據與完整度: 報價 · NT$5,938 · 新台幣／m² · +1.8% · NT$3,800,000"':
+              - 'button "資料依據與完整度: 報價 · NT$5,938 · 新台幣／m² · +1.8% · NT$3,800,000"':
+                - generic: 報價
+                - generic: NT$5,938 · 新台幣／m²
+                - generic: +1.8% · NT$3,800,000
+            - 'cell "資料依據與完整度: 報價 · NT$5,902 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 報價 · NT$5,902 · 新台幣／m² · 資料足夠"':
+                - generic: 報價
+                - generic: NT$5,902 · 新台幣／m²
+                - generic: 資料足夠
+            - 'cell "資料依據與完整度: 報價 · NT$5,424 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 報價 · NT$5,424 · 新台幣／m² · 資料足夠"':
+                - generic: 報價
+                - generic: NT$5,424 · 新台幣／m²
+                - generic: 資料足夠
+            - 'cell "資料依據與完整度: 報價 · NT$5,833 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 報價 · NT$5,833 · 新台幣／m² · 資料足夠"':
+                - generic: 報價
+                - generic: NT$5,833 · 新台幣／m²
+                - generic: 資料足夠
+          - 'row "訂製木作 · 預估／已核對實際成本 資料依據與完整度: 預估直接成本 · NT$4,781 · 新台幣／m² · -2.7% · NT$3,060,000 資料依據與完整度: 已核對實際成本 · NT$4,918 · 新台幣／m² · 資料足夠 資料依據與完整度: 已核對實際成本 · NT$4,915 · 新台幣／m² · 資料足夠 資料依據與完整度: 已核對實際成本 · NT$4,444 · 新台幣／m² · 資料足夠"':
+            - rowheader "訂製木作 · 預估／已核對實際成本"
+            - 'cell "資料依據與完整度: 預估直接成本 · NT$4,781 · 新台幣／m² · -2.7% · NT$3,060,000"':
+              - 'button "資料依據與完整度: 預估直接成本 · NT$4,781 · 新台幣／m² · -2.7% · NT$3,060,000"':
+                - generic: 預估直接成本
+                - generic: NT$4,781 · 新台幣／m²
+                - generic: "-2.7% · NT$3,060,000"
+            - 'cell "資料依據與完整度: 已核對實際成本 · NT$4,918 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 已核對實際成本 · NT$4,918 · 新台幣／m² · 資料足夠"':
+                - generic: 已核對實際成本
+                - generic: NT$4,918 · 新台幣／m²
+                - generic: 資料足夠
+            - 'cell "資料依據與完整度: 已核對實際成本 · NT$4,915 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 已核對實際成本 · NT$4,915 · 新台幣／m² · 資料足夠"':
+                - generic: 已核對實際成本
+                - generic: NT$4,915 · 新台幣／m²
+                - generic: 資料足夠
+            - 'cell "資料依據與完整度: 已核對實際成本 · NT$4,444 · 新台幣／m² · 資料足夠"':
+              - 'button "資料依據與完整度: 已核對實際成本 · NT$4,444 · 新台幣／m² · 資料足夠"':
+                - generic: 已核對實際成本
+                - generic: NT$4,444 · 新台幣／m²
+                - generic: 資料足夠
+        - rowgroup:
+          - row "資料依據與完整度":
+            - columnheader "資料依據與完整度"
+          - 'row "供應商報價脈絡 供應商報價 無法使用 無法使用 資料依據與完整度: 供應商報價 · 歷史／已過期 · 2025年2月15日 供應商報價 無法使用 無法使用 供應商報價 無法使用 無法使用"':
+            - rowheader "供應商報價脈絡"
+            - cell "供應商報價 無法使用 無法使用":
+              - generic: 供應商報價
+              - generic: 無法使用
+              - generic: 無法使用
+            - 'cell "資料依據與完整度: 供應商報價 · 歷史／已過期 · 2025年2月15日"':
+              - 'button "資料依據與完整度: 供應商報價 · 歷史／已過期 · 2025年2月15日"':
+                - generic: 供應商報價
+                - generic: 歷史／已過期
+                - generic: 2025年2月15日
+                - generic: 歷史／已過期
+            - cell "供應商報價 無法使用 無法使用":
+              - generic: 供應商報價
+              - generic: 無法使用
+              - generic: 無法使用
+            - cell "供應商報價 無法使用 無法使用":
+              - generic: 供應商報價
+              - generic: 無法使用
+              - generic: 無法使用
+          - row "資料依據與完整度 部分商務資料 報價與實際成本皆可用 報價與實際成本皆可用 報價與實際成本皆可用":
+            - rowheader "資料依據與完整度"
+            - cell "部分商務資料":
+              - generic: 部分商務資料
+            - cell "報價與實際成本皆可用":
+              - generic: 報價與實際成本皆可用
+            - cell "報價與實際成本皆可用":
+              - generic: 報價與實際成本皆可用
+            - cell "報價與實際成本皆可用":
+              - generic: 報價與實際成本皆可用
+  - region "結構化審查":
+    - paragraph: 結構化審查
+    - heading "結構化審查" [level=2]
+    - article:
+      - heading "歷史資料顯示" [level=3]
+      - paragraph: 目前報價高於已選歷史專案的報價基準。 +7.2%
+      - button "查看資料依據"
+    - article:
+      - heading "歷史資料顯示" [level=3]
+      - paragraph: 目前預估直接成本高於符合條件的已核對實際成本基準。 +6.0%
+      - button "查看資料依據"
+    - article:
+      - heading "歷史資料顯示" [level=3]
+      - paragraph: 進口石材是資料支持最完整的主要差異，值得優先審查。 +18.4%
+      - button "查看資料依據"
+    - article:
+      - heading "重要差異" [level=3]
+      - paragraph: 目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。
+      - button "查看資料依據"
+    - article:
+      - heading "資料缺口" [level=3]
+      - paragraph: 燈具報價高於歷史報價，但已核對實際成本的資料量不足。 2/3
+      - button "查看資料依據"
+    - article:
+      - heading "建議下一步審查" [level=3]
+      - paragraph: 在內部核准報價前，先確認進口石材額度與燈具假設。
+  - complementary "資料依據與完整度":
+    - generic: 禾序空間設計虛構示範資料，不是市場基準。
+    - generic: 部分分類沒有足夠的已核對實際成本資料。
+    - generic: 供應商報價僅屬歷史資料，不得呈現為目前價格。
+  - strong: 建立內部審查事項
+  - paragraph: 檢視已查證的內容、選擇用語與承辦人，再明確確認建立內部審查事項。
+  - button "建立內部審查事項"
+  - dialog "檢視內部審查事項":
+    - heading "檢視內部審查事項" [level=2]
+    - paragraph: 建立事項前，請先檢視資料依據與不確定性。
+    - navigation "English / 繁體中文":
+      - link "English":
+        - /url: /en/projects/PRJ-XINYI-026/compare?run=cmprun_a29981e4-0c02-408b-88ee-4af6e94af595&economics=econrun_08469198-1271-4cfa-b609-00ba1b839fdc&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_d9a1b402-190a-431a-8fbe-4125080415be&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=
+      - link "繁體中文":
+        - /url: /zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_a29981e4-0c02-408b-88ee-4af6e94af595&economics=econrun_08469198-1271-4cfa-b609-00ba1b839fdc&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_d9a1b402-190a-431a-8fbe-4125080415be&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=
+    - button "關閉"
+    - form "檢視內部審查事項":
+      - alert "請檢查標示的欄位":
+        - heading "請檢查標示的欄位" [level=3]
+        - paragraph: 請先檢查標示的欄位，再確認建立。
+        - paragraph: "參考編號: 893d88f0-a4a0-4d57-a25c-ed7bdfd1ad81"
+      - generic: 標題
+      - combobox "標題":
+        - option "檢核信義旗艦店裝修第3版報價的進口石材與照明假設"
+        - option "審查信義旗艦店裝修第3版報價的進口石材與照明假設"
+        - option "確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料" [selected]
+      - paragraph: 確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料
+      - generic: 審查目的
+      - combobox "審查目的":
+        - option "下次內部報價審查前，依連結的佐證資料檢核這些假設。"
+        - option "確認佐證資料，並記錄內部審查需要釐清的問題。"
+        - option "依連結的歷史佐證資料，檢核進口石材與照明假設。" [selected]
+      - paragraph: 依連結的歷史佐證資料，檢核進口石材與照明假設。
+      - paragraph: 可選擇審查用語。已查證的內容與不確定性說明會一併保留，無法在此變更。
+      - region "已查證內容・隨事項保留":
+        - heading "已查證內容・隨事項保留" [level=3]
+        - list:
+          - listitem: 進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。
+          - listitem: 照明報價與符合條件的歷史報價比較，差異為 +9.4%。
+          - listitem: 照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。
+          - listitem: 目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。
+          - listitem: 比較紀錄：cmprun_a29981e4-0c02-408b-88ee-4af6e94af595；成本分析紀錄：econrun_08469198-1271-4cfa-b609-00ba1b839fdc。
+      - region "不確定性與限制・隨事項保留":
+        - heading "不確定性與限制・隨事項保留" [level=3]: ⚠ 不確定性與限制・隨事項保留
+        - list:
+          - listitem: 此操作只會建立內部審查事項，不會核准或發出報價、授權商業承諾，或對外聯繫。
+          - listitem: 歷史比較不能證明這份報價有誤、供應商收費過高，或趕工造成特定溢價；供應商價格也未確認目前仍有效。
+      - region "檢視支持此內容的資料依據":
+        - heading "檢視支持此內容的資料依據" [level=3]
+        - list:
+          - button "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。"
+          - button "照明報價與符合條件的歷史報價比較，差異為 +9.4%。"
+          - button "照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。"
+          - button "目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。"
+      - generic: 承辦人
+      - combobox "承辦人":
+        - option "未指派"
+        - option "林美玲" [selected]
+        - option "陳柏宇"
+        - option "黃怡君"
+      - generic: 到期日
+      - textbox "到期日"
+      - paragraph: 非必填。請輸入 2026-11-18 至 2027-11-18 之間的日期，或保留空白。
+      - button "清除到期日"
+      - term: 來源比較紀錄
+      - definition: cmprun_a29981e4-0c02-408b-88ee-4af6e94af595
+      - term: 來源商務分析紀錄
+      - definition: econrun_08469198-1271-4cfa-b609-00ba1b839fdc
+      - term: 本次審查有效至
+      - definition: 2026年11月18日 下午2:17
+      - paragraph: ⚠ 確認後將建立持續保存的內部事項及稽核紀錄；無法在此畫面撤銷建立。此操作不會核准報價，也不會傳送訊息。
+      - checkbox "我已檢視資料依據與限制，並確認建立此內部審查事項。" [active]
+      - generic: 我已檢視資料依據與限制，並確認建立此內部審查事項。
+      - paragraph: 請確認您已檢視資料依據，並要建立此事項。
+      - button "建立內部審查事項"
+      - button "取消審查"
+- contentinfo:
+  - generic: 僅使用虛構示範資料 · 無真實客戶資料
+  - generic: 尚未切換正式示範網域
+- alert: StrideBrain

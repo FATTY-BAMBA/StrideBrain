@@ -1,0 +1,3571 @@
+{
+  "head": "1bde2114d010c694d017ba2b4116ceffab3569e1",
+  "method": "Static TypeScript AST: all CJK-containing string/template fragments and JSX text in current src. Includes non-hero and conditional copy; rendered inventory provides dynamic context. Not human approval.",
+  "count": 594,
+  "items": [
+    {
+      "file": "src/app/[locale]/knowledge/page.tsx",
+      "line": 20,
+      "text": "專案",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/app/[locale]/knowledge/page.tsx",
+      "line": 20,
+      "text": "文件",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/app/[locale]/knowledge/page.tsx",
+      "line": 20,
+      "text": "報價",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/app/[locale]/knowledge/page.tsx",
+      "line": 20,
+      "text": "供應商",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/app/[locale]/knowledge/page.tsx",
+      "line": 20,
+      "text": "資料依據",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/app/[locale]/projects/[projectKey]/[[...surface]]/page.tsx",
+      "line": 115,
+      "text": "目前區域",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/comparisons/comparison-experience-client.tsx",
+      "line": 563,
+      "text": "查看資料依據",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/internal-review/review-modal.tsx",
+      "line": 112,
+      "text": "English / 繁體中文",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-local-nav.tsx",
+      "line": 27,
+      "text": "專案工作區導覽",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 52,
+      "text": "專案智慧工作區",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 53,
+      "text": "專案脈絡",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 54,
+      "text": "目前商務狀況",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 55,
+      "text": "未稅報價",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 56,
+      "text": "預估直接成本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 57,
+      "text": "已核對實際成本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 58,
+      "text": "資料依據狀態",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 59,
+      "text": "相關公司知識",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 60,
+      "text": "供應商",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 61,
+      "text": "材料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 62,
+      "text": "工作範圍分類",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 63,
+      "text": "在此專案中詢問 StrideBrain",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 64,
+      "text": "工期",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 65,
+      "text": "面積",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 66,
+      "text": "地點",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 67,
+      "text": "專案負責人",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 68,
+      "text": "目前無法使用",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 69,
+      "text": "目前角色無權查看",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 70,
+      "text": "資料紀錄不一致",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 71,
+      "text": "歷史／已過期",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 72,
+      "text": "版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 73,
+      "text": "禾序空間設計虛構示範資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 74,
+      "text": "尋找最接近的歷史專案、理解相似原因，並用可追溯的歷史依據比較目前報價。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 75,
+      "text": "此專案有需要注意的資料狀態。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 140,
+      "text": "週",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 192,
+      "text": "可存取資料來源",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 196,
+      "text": "可存取文件",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 200,
+      "text": "過期資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 204,
+      "text": "待處理衝突",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 228,
+      "text": "未完成事項",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 288,
+      "text": "此能力將於後續切片啟用",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/components/shell/workspace-shell.tsx",
+      "line": 19,
+      "text": "跳至主要內容",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/build-comparison-experience.ts",
+      "line": 356,
+      "text": "目前資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/build-comparison-experience.ts",
+      "line": 359,
+      "text": "歷史資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/build-comparison-experience.ts",
+      "line": 389,
+      "text": "已選歷史專案範圍",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/build-comparison-experience.ts",
+      "line": 642,
+      "text": "進行中",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 267,
+      "text": "類似專案智慧",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 268,
+      "text": "歷史專案比較：",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 270,
+      "text": "StrideBrain 以可解釋的固定規則排序已授權的歷史專案，清楚區分商務資料權威性，也會誠實呈現資料不足之處。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 271,
+      "text": "我們以前做過類似的案子嗎？",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 272,
+      "text": "搜尋已授權的歷史專案、說明最接近的原因，並用可信任的歷史依據比較目前報價。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 273,
+      "text": "尋找類似歷史專案",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 274,
+      "text": "重新執行比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 275,
+      "text": "需要受控的示範工作階段。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 277,
+      "text": "伺服器驗證已簽署的虛構示範工作階段後，才會開啟此工作區。網址參數不能選擇組織或角色。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 278,
+      "text": "目前無法開啟此比較。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 279,
+      "text": "目前的授權脈絡無法存取此專案或已儲存的比較結果。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 280,
+      "text": "StrideBrain 無法完成此次比較。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 281,
+      "text": "系統沒有顯示未經支持的結論。檢查問題時請使用參考編號。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 282,
+      "text": "目前專案需要更多結構化資料才能進行比較。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 283,
+      "text": "沒有已授權的歷史專案符合比較規則。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 284,
+      "text": "參考編號",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 286,
+      "text": "產生時間",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 287,
+      "text": "比較規則",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 288,
+      "text": "已授權相似專案",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 289,
+      "text": "已選歷史專案",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 290,
+      "text": "商務資料狀態",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 291,
+      "text": "資料邊界",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 294,
+      "text": "選擇要比較的歷史專案",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 296,
+      "text": "最多選擇三個專案。更新選擇會建立新的不可變更商務分析，但不會改變原本的相似度排序。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 297,
+      "text": "更新比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 298,
+      "text": "個已選",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 299,
+      "text": "最多 3 個",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 300,
+      "text": "最多只能選擇三個專案。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 303,
+      "text": "相似度分數",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 304,
+      "text": "資料完整度",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 305,
+      "text": "主要相似原因",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 306,
+      "text": "重要差異",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 307,
+      "text": "未知因素",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 308,
+      "text": "歷史報價",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 309,
+      "text": "已核對實際成本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 310,
+      "text": "查看比較因素",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 313,
+      "text": "高度相似",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 314,
+      "text": "具參考價值",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 315,
+      "text": "部分相似",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 316,
+      "text": "延伸參考",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 319,
+      "text": "專案類型",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 320,
+      "text": "工作範圍重疊",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 321,
+      "text": "面積相似度",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 322,
+      "text": "報價分類重疊",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 323,
+      "text": "材料重疊",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 324,
+      "text": "供應商重疊",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 325,
+      "text": "完工時間接近度",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 326,
+      "text": "地點接近度",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 329,
+      "text": "資料未知，不視為不相符",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 330,
+      "text": "分數貢獻",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 331,
+      "text": "未取得分數",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 334,
+      "text": "結構化比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 336,
+      "text": "所有數值都來自已儲存的固定規則結果。歷史報價、預估成本、供應商報價與已核對實際成本會保持清楚區分。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 337,
+      "text": "目前專案",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 338,
+      "text": "專案脈絡",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 339,
+      "text": "整體商務比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 340,
+      "text": "分類比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 341,
+      "text": "資料依據與完整度",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 342,
+      "text": "專案類型",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 343,
+      "text": "面積",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 344,
+      "text": "地點",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 345,
+      "text": "完工時間",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 346,
+      "text": "報價 · 標準化",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 347,
+      "text": "預估直接成本 · 標準化",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 348,
+      "text": "預估／已核對實際成本 · 標準化",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 349,
+      "text": "進口石材 · 報價",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 350,
+      "text": "進口石材 · 預估／已核對實際成本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 351,
+      "text": "燈具／電氣 · 報價",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 352,
+      "text": "燈具／電氣 · 預估／已核對實際成本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 353,
+      "text": "訂製木作 · 報價",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 354,
+      "text": "訂製木作 · 預估／已核對實際成本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 355,
+      "text": "供應商報價脈絡",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 356,
+      "text": "工期",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 359,
+      "text": "資料足夠",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 360,
+      "text": "資料不足",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 361,
+      "text": "目前角色無權查看",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 362,
+      "text": "無法使用",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 363,
+      "text": "歷史／已過期",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 364,
+      "text": "資料紀錄不一致",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 365,
+      "text": "不適用",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 366,
+      "text": "僅有歷史報價",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 367,
+      "text": "部分商務資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 368,
+      "text": "報價與實際成本皆可用",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 369,
+      "text": "僅顯示專案結構比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 372,
+      "text": "結構化審查",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 373,
+      "text": "歷史資料顯示",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 374,
+      "text": "重要差異",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 375,
+      "text": "資料缺口",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 376,
+      "text": "建議下一步審查",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 377,
+      "text": "目前報價高於已選歷史專案的報價基準。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 378,
+      "text": "目前預估直接成本高於符合條件的已核對實際成本基準。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 379,
+      "text": "進口石材是資料支持最完整的主要差異，值得優先審查。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 380,
+      "text": "燈具報價高於歷史報價，但已核對實際成本的資料量不足。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 381,
+      "text": "目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 382,
+      "text": "在內部核准報價前，先確認進口石材額度與燈具假設。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 383,
+      "text": "商務資料受到權限限制或目前無法使用；專案結構比較仍可使用。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 386,
+      "text": "供應商報價僅屬歷史資料，不得呈現為目前價格。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 387,
+      "text": "不一致的資料會明確顯示，並排除在權威彙總之外。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 388,
+      "text": "部分分類沒有足夠的已核對實際成本資料。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 389,
+      "text": "目前角色無權查看商務數值。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 390,
+      "text": "禾序空間設計虛構示範資料，不是市場基準。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 392,
+      "text": "建立內部審查事項將於 Stage 8 啟用。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 393,
+      "text": "新台幣／m²",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 394,
+      "text": "週",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 395,
+      "text": "專案相似度",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 396,
+      "text": "已選專案",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 45,
+      "text": "此比較結果已過時",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 46,
+      "text": "目前無法確認此結果是否仍符合最新資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 48,
+      "text": "您仍可檢視這份已儲存的結果，但無法據此準備或確認新的審查事項。請重新比較，以檢視最新資料。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 50,
+      "text": "您仍可檢視這份已儲存的結果。在確認最新資料前，無法準備或確認新的審查事項。請重新比較後再試。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 51,
+      "text": "已變更的資料來源",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 52,
+      "text": "這份結果儲存後，資料來源或比較條件已變更。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 53,
+      "text": "佐證資料權威性已變更",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 54,
+      "text": "計算時",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 55,
+      "text": "目前",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 56,
+      "text": "重新比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 57,
+      "text": "正在重新比較…",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 59,
+      "text": "佐證資料權威性已變更。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 60,
+      "text": "資料來源內容已變更。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 61,
+      "text": "此來源對已儲存計算結果的佐證情況已變更。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 62,
+      "text": "這份結果儲存後，此資料來源已過時。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 63,
+      "text": "此資料來源已由較新版本取代。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 64,
+      "text": "此資料來源目前無法使用。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/economics/domain/historical-economics-service.ts",
+      "line": 699,
+      "text": "目前報價與類似專案歷史報價比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/economics/domain/historical-economics-service.ts",
+      "line": 708,
+      "text": "目前預估成本與已核對實際成本比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/economics/domain/historical-economics-service.ts",
+      "line": 718,
+      "text": "報價與歷史報價比較",
+      "kind": "LastTemplateToken"
+    },
+    {
+      "file": "src/modules/economics/domain/historical-economics-service.ts",
+      "line": 727,
+      "text": "預估成本與已核對實際成本比較",
+      "kind": "LastTemplateToken"
+    },
+    {
+      "file": "src/modules/economics/domain/historical-economics-service.ts",
+      "line": 741,
+      "text": "實際成本資料不足",
+      "kind": "LastTemplateToken"
+    },
+    {
+      "file": "src/modules/economics/domain/historical-economics-service.ts",
+      "line": 763,
+      "text": "工期與所選歷史專案存在差異",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/economics/domain/historical-economics-service.ts",
+      "line": 782,
+      "text": "供應商報價為已過期的歷史資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/application/get-evidence-panel.ts",
+      "line": 73,
+      "text": "是",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/application/get-evidence-panel.ts",
+      "line": 73,
+      "text": "否",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/application/get-evidence-panel.ts",
+      "line": 76,
+      "text": "結構化紀錄",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/application/get-evidence-panel.ts",
+      "line": 413,
+      "text": "此不一致已解決，保留供稽核。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/application/get-evidence-panel.ts",
+      "line": 418,
+      "text": "此不一致已標記為不影響計算。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/application/get-evidence-panel.ts",
+      "line": 422,
+      "text": "系統未自行選擇任何一筆；受影響資料不會進入權威計算。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 102,
+      "text": "專案紀錄",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 103,
+      "text": "專案範圍",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 104,
+      "text": "文件版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 105,
+      "text": "報價版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 106,
+      "text": "報價項目",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 107,
+      "text": "預估成本版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 108,
+      "text": "預估成本項目",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 109,
+      "text": "最終成本版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 110,
+      "text": "最終成本項目",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 111,
+      "text": "供應商報價",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 112,
+      "text": "供應商報價項目",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 113,
+      "text": "比較結論",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 114,
+      "text": "行動事項",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 295,
+      "text": "資料依據",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 296,
+      "text": "資料依據與計算過程",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 297,
+      "text": "關閉資料依據",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 298,
+      "text": "返回資料依據組合",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 299,
+      "text": "這個結果從哪裡來？",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 300,
+      "text": "資料權威性",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 301,
+      "text": "資料類型",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 302,
+      "text": "支持資料來源",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 303,
+      "text": "計算過程",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 304,
+      "text": "支持的數值",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 305,
+      "text": "精確位置",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 306,
+      "text": "專案",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 307,
+      "text": "版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 308,
+      "text": "生效／紀錄日期",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 309,
+      "text": "資料邊界",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 310,
+      "text": "安全來源預覽",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 311,
+      "text": "此來源不支援內嵌預覽，但仍可查看中繼資料、位置與權威性。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 312,
+      "text": "目前無法開啟來源；已儲存且經驗證的結論仍會保留。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 313,
+      "text": "目前角色無權查看預覽內容。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 314,
+      "text": "此選擇沒有可顯示的已授權來源。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 315,
+      "text": "目前授權脈絡無法使用此資料依據選擇。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 316,
+      "text": "比較建立後存取權限已變更；系統未保留敏感預覽內容。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 317,
+      "text": "目前角色無權查看此資料依據。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 318,
+      "text": "此比較結果已過期，但仍可檢視；不得用於建立新的行動事項。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 319,
+      "text": "不一致的紀錄",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 320,
+      "text": "對計算的影響",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 321,
+      "text": "不一致狀態",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 322,
+      "text": "顯示一筆已授權來源，以及目前哪些結果使用了它。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 323,
+      "text": "顯示支持此結構化結論的精確來源與計算過程。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 324,
+      "text": "顯示固定規則的相似度因素、分數貢獻與資料依據。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 325,
+      "text": "顯示可存取的不一致紀錄，以及系統為何沒有自行選擇其中一筆。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 326,
+      "text": "開啟來源物件",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 327,
+      "text": "查看來源",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 328,
+      "text": "查看不一致紀錄",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 329,
+      "text": "目前結果中的用途",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 330,
+      "text": "{count} 筆資料來源",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 331,
+      "text": "結構化紀錄",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 332,
+      "text": "尚無補充說明",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 334,
+      "text": "計算方式",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 335,
+      "text": "彙總方式",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 336,
+      "text": "四捨五入",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 337,
+      "text": "產生時間",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 338,
+      "text": "計算結果",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 339,
+      "text": "輸入資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 340,
+      "text": "相似度總分",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 341,
+      "text": "資料完整度",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 342,
+      "text": "權重",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 343,
+      "text": "分數貢獻",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 344,
+      "text": "標準化數值",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 345,
+      "text": "因素狀態",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 350,
+      "text": "目前有效",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 351,
+      "text": "歷史紀錄",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 352,
+      "text": "已過期／僅供歷史參考",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 353,
+      "text": "已由新版取代",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 354,
+      "text": "資料不一致",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 355,
+      "text": "資料不足",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 356,
+      "text": "無權查看",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 359,
+      "text": "專案類型",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 360,
+      "text": "工作範圍重疊",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 361,
+      "text": "面積相似度",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 362,
+      "text": "報價分類重疊",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 363,
+      "text": "材料重疊",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 364,
+      "text": "供應商重疊",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 365,
+      "text": "完工時間接近度",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 366,
+      "text": "地點接近度",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 369,
+      "text": "已知",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 370,
+      "text": "資料未知，不視為不相符",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 371,
+      "text": "不適用",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 375,
+      "text": "整體歷史報價比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 376,
+      "text": "預估成本與已核對實際成本比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 377,
+      "text": "分類歷史報價比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 378,
+      "text": "分類預估與實際成本比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 379,
+      "text": "分類實際成本資料不足",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 380,
+      "text": "工期差異（未量化）",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 381,
+      "text": "已過期的供應商資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 384,
+      "text": "虛構示範資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 385,
+      "text": "公開參考資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 386,
+      "text": "公司內部資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 387,
+      "text": "公司限制資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 388,
+      "text": "公司已核准資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 391,
+      "text": "尚未解決",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 392,
+      "text": "已解決",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 393,
+      "text": "已排除影響",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 396,
+      "text": "目前專案的歷史基準等值金額",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 397,
+      "text": "加價量化狀態",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 398,
+      "text": "未稅報價",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 399,
+      "text": "面積",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 400,
+      "text": "報價項目",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 401,
+      "text": "標準化單位",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 402,
+      "text": "資料類型",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 403,
+      "text": "資料權威性",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 404,
+      "text": "項目編號",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 405,
+      "text": "內容說明",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 406,
+      "text": "內容說明",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 407,
+      "text": "單價",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 408,
+      "text": "目前標準化金額",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 409,
+      "text": "狀態",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 410,
+      "text": "計算說明",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 411,
+      "text": "紀錄類型",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 412,
+      "text": "版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 413,
+      "text": "目前專案面積",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 414,
+      "text": "歷史專案面積",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 415,
+      "text": "有效期限",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 416,
+      "text": "生效日期",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 417,
+      "text": "檔案類型",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 418,
+      "text": "專案類型",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 419,
+      "text": "面積",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 420,
+      "text": "面積單位",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 421,
+      "text": "工期（週）",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 422,
+      "text": "頁碼",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 423,
+      "text": "章節",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 424,
+      "text": "工作表",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 425,
+      "text": "列",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 426,
+      "text": "儲存格",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 427,
+      "text": "項目編號",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 428,
+      "text": "分類",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 429,
+      "text": "欄位",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 430,
+      "text": "金額",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 431,
+      "text": "總金額",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 432,
+      "text": "數量",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 433,
+      "text": "單位",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 434,
+      "text": "單價",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 435,
+      "text": "幣別",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 436,
+      "text": "狀態",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 437,
+      "text": "分類",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 438,
+      "text": "業務識別碼",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 439,
+      "text": "專案識別碼",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 440,
+      "text": "版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 441,
+      "text": "差異百分比",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 442,
+      "text": "目前金額",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 443,
+      "text": "歷史基準等值",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 444,
+      "text": "歷史標準化中位數",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 445,
+      "text": "標準化數值",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 446,
+      "text": "標準化中位數",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 447,
+      "text": "標準化最低值",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 448,
+      "text": "標準化最高值",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 449,
+      "text": "可用觀測數",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 450,
+      "text": "最低需求筆數",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 451,
+      "text": "方向",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 452,
+      "text": "目前工期",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 453,
+      "text": "歷史最短工期",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 454,
+      "text": "歷史最長工期",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 457,
+      "text": "歷史供應商報價，非目前有效價格。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 458,
+      "text": "實際成本資料低於最低門檻。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 459,
+      "text": "不一致的資料已排除，不會進入權威計算。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 462,
+      "text": "實際成本資料不足",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 10,
+      "text": "歷史標準化報價中位數",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 14,
+      "text": "歷史標準化已核對實際成本中位數",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 16,
+      "text": "專案紀錄",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 17,
+      "text": "專案範圍",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 18,
+      "text": "文件版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 19,
+      "text": "報價版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 20,
+      "text": "報價項目",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 21,
+      "text": "預估成本版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 22,
+      "text": "預估成本項目",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 23,
+      "text": "已核對實際成本版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 24,
+      "text": "已核對實際成本項目",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 25,
+      "text": "尚未量化",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 26,
+      "text": "目前資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 27,
+      "text": "歷史資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 28,
+      "text": "進口石材",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 29,
+      "text": "燈具與電氣",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 30,
+      "text": "訂製木作",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 31,
+      "text": "一般工程",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 32,
+      "text": "隔間與天花板",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 33,
+      "text": "拆除與天花板",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 34,
+      "text": "局部拆除",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 35,
+      "text": "招牌標示",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 36,
+      "text": "工程協調",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 37,
+      "text": "高於歷史基準",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 38,
+      "text": "低於歷史基準",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 39,
+      "text": "與歷史基準相當",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 40,
+      "text": "新臺幣",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 41,
+      "text": "新臺幣／平方公尺",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 42,
+      "text": "平方公尺",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 43,
+      "text": "式",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 44,
+      "text": "週",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 45,
+      "text": "已知",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 46,
+      "text": "資料未知，不視為不相符",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 47,
+      "text": "不適用",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 48,
+      "text": "進行中",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 49,
+      "text": "已完成",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 50,
+      "text": "定稿",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 51,
+      "text": "草稿",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 52,
+      "text": "已核准",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 53,
+      "text": "已由新版取代",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 54,
+      "text": "已核對",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 55,
+      "text": "文件版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 56,
+      "text": "歷史報價中位數",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 59,
+      "text": "歷史已核對實際成本中位數",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 61,
+      "text": "整體歷史報價中位數",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 64,
+      "text": "整體歷史已核對實際成本中位數",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 66,
+      "text": "分類歷史報價中位數",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 69,
+      "text": "分類歷史已核對實際成本中位數",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 73,
+      "text": "目前報價與歷史報價中位數的差異",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 77,
+      "text": "目前預估直接成本與歷史已核對實際成本中位數的差異",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 79,
+      "text": "分類差異",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 80,
+      "text": "中位數、最低值與最高值",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 83,
+      "text": "（目前標準化數值－歷史中位數）÷ 歷史中位數 × 100",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 85,
+      "text": "四捨五入",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 88,
+      "text": "百分比四捨五入至小數點後 4 位",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 92,
+      "text": "四捨五入：標準化單價保留小數點後 6 位；等值金額保留 2 位",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 96,
+      "text": "依專案類型相同或設定的相近類型比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 100,
+      "text": "依面積比值的對數計算相似度",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 104,
+      "text": "共同工作範圍分類數占全部不重複分類數的比例",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 108,
+      "text": "共同報價分類數占全部不重複分類數的比例",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 112,
+      "text": "共同材料數占全部不重複材料數的比例",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 116,
+      "text": "共同供應商數占全部不重複供應商數的比例",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 120,
+      "text": "工作範圍資料不足，不視為不相符",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 124,
+      "text": "報價分類資料不足，不視為不相符",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 128,
+      "text": "材料資料不足，不視為不相符",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 132,
+      "text": "供應商資料不足，不視為不相符",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 136,
+      "text": "依最近 60 個月內的完工時間計算接近度",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 140,
+      "text": "依行政區、城市與鄰近城市的設定比較地點接近度",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 156,
+      "text": "此項說明尚未提供",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 162,
+      "text": "專案紀錄",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 163,
+      "text": "專案範圍",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 164,
+      "text": "文件版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 165,
+      "text": "報價版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 166,
+      "text": "報價項目",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 167,
+      "text": "預估成本版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 168,
+      "text": "預估成本項目",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 169,
+      "text": "已核對實際成本版本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 170,
+      "text": "已核對實際成本項目",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 171,
+      "text": "供應商報價",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 172,
+      "text": "供應商報價項目",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 179,
+      "text": "來源紀錄",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 195,
+      "text": "依已核准的相似度規則計算；缺少資料不視為不相符。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 198,
+      "text": "僅使用符合資料權威性規則的觀測值；不同成本與報價類型分開比較。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 154,
+      "text": "檢核",
+      "kind": "TemplateHead"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 154,
+      "text": "第",
+      "kind": "TemplateMiddle"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 154,
+      "text": "版報價的進口石材與照明假設",
+      "kind": "LastTemplateToken"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 161,
+      "text": "審查",
+      "kind": "TemplateHead"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 161,
+      "text": "第",
+      "kind": "TemplateMiddle"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 161,
+      "text": "版報價的進口石材與照明假設",
+      "kind": "LastTemplateToken"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 168,
+      "text": "確認",
+      "kind": "TemplateHead"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 168,
+      "text": "第",
+      "kind": "TemplateMiddle"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 168,
+      "text": "版報價之進口石材與照明假設的佐證資料",
+      "kind": "LastTemplateToken"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 183,
+      "text": "下次內部報價審查前，依連結的佐證資料檢核這些假設。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 190,
+      "text": "確認佐證資料，並記錄內部審查需要釐清的問題。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 197,
+      "text": "依連結的歷史佐證資料，檢核進口石材與照明假設。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 221,
+      "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為",
+      "kind": "TemplateHead"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 229,
+      "text": "照明報價與符合條件的歷史報價比較，差異為",
+      "kind": "TemplateHead"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 237,
+      "text": "照明已核對實際成本佐證資料不足：目前",
+      "kind": "TemplateHead"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 237,
+      "text": "筆，需要",
+      "kind": "TemplateMiddle"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 237,
+      "text": "筆；無法提供有佐證的實際成本區間。",
+      "kind": "LastTemplateToken"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 245,
+      "text": "目前工期為",
+      "kind": "TemplateHead"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 245,
+      "text": "週，所選歷史專案為",
+      "kind": "TemplateMiddle"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 245,
+      "text": "週；目前沒有佐證支持量化工期溢價。",
+      "kind": "LastTemplateToken"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 252,
+      "text": "比較紀錄：",
+      "kind": "TemplateHead"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 252,
+      "text": "；成本分析紀錄：",
+      "kind": "TemplateMiddle"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 261,
+      "text": "此操作只會建立內部審查事項，不會核准或發出報價、授權商業承諾，或對外聯繫。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 268,
+      "text": "歷史比較不能證明這份報價有誤、供應商收費過高，或趕工造成特定溢價；供應商價格也未確認目前仍有效。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 61,
+      "text": "繁體中文",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 101,
+      "text": "建立內部審查事項",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 102,
+      "text": "檢視已查證的內容、選擇用語與承辦人，再明確確認建立內部審查事項。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 103,
+      "text": "正在準備審查內容…",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 104,
+      "text": "檢視內部審查事項",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 105,
+      "text": "建立事項前，請先檢視資料依據與不確定性。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 106,
+      "text": "標題",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 107,
+      "text": "審查目的",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 108,
+      "text": "可選擇審查用語。已查證的內容與不確定性說明會一併保留，無法在此變更。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 109,
+      "text": "已查證內容・隨事項保留",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 110,
+      "text": "不確定性與限制・隨事項保留",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 111,
+      "text": "檢視支持此內容的資料依據",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 112,
+      "text": "承辦人",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 113,
+      "text": "依您目前的權限，承辦人固定為建議人選。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 114,
+      "text": "未指派",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 115,
+      "text": "到期日",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 116,
+      "text": "非必填。請輸入 {min} 至 {max} 之間的日期，或保留空白。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 117,
+      "text": "清除到期日",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 118,
+      "text": "本次審查有效至",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 119,
+      "text": "來源比較紀錄",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 120,
+      "text": "來源商務分析紀錄",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 122,
+      "text": "確認後將建立持續保存的內部事項及稽核紀錄；無法在此畫面撤銷建立。此操作不會核准報價，也不會傳送訊息。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 123,
+      "text": "我已檢視資料依據與限制，並確認建立此內部審查事項。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 124,
+      "text": "正在建立內部審查事項…",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 125,
+      "text": "取消審查",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 126,
+      "text": "關閉",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 127,
+      "text": "重試",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 128,
+      "text": "重新比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 129,
+      "text": "返回來源比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 130,
+      "text": "查看專案事項",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 131,
+      "text": "已建立內部審查事項",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 132,
+      "text": "此回執記錄已儲存至專案的事項。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 133,
+      "text": "目前無法查看回執",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 134,
+      "text": "目前無法顯示這份回執。請返回您有權存取的專案，查看可用的事項。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 135,
+      "text": "未能完成審查確認",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 136,
+      "text": "此內部審查事項已建立",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 137,
+      "text": "目前顯示同一份已儲存回執，未重複建立事項。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 138,
+      "text": "事項編號",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 139,
+      "text": "專案",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 140,
+      "text": "狀態",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 141,
+      "text": "待處理",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 142,
+      "text": "建立時間",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 143,
+      "text": "建立人",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 144,
+      "text": "可存取的佐證資料筆數",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 145,
+      "text": "未設定到期日",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 146,
+      "text": "內部審查事項",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 147,
+      "text": "開啟已儲存回執以檢視詳情，或返回來源比較。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 148,
+      "text": "目前沒有可查看的內部審查事項。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 149,
+      "text": "開啟回執",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 150,
+      "text": "待處理內部審查事項",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 151,
+      "text": "參考編號",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 153,
+      "text": "繁體中文",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 154,
+      "text": "請檢查標示的欄位",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 156,
+      "text": "目前無法提供此審查。請開啟您有權存取且具備必要佐證資料的比較後重試。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 157,
+      "text": "本次審查已逾期。請返回比較並重新準備審查內容。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 158,
+      "text": "比較或相關佐證資料已變更。請重新比較，再準備新的審查。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 159,
+      "text": "依您目前的權限，無法查看此審查。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 160,
+      "text": "未能準備審查內容。請從比較畫面重試。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 161,
+      "text": "依您目前的權限，無法查看或建立此事項。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 162,
+      "text": "您的存取權限已變更。請返回您有權存取的比較，再繼續操作。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 163,
+      "text": "此承辦人目前無法承辦本次審查。請重新開啟審查，確認目前可用的人選。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 164,
+      "text": "必要佐證資料目前無法存取。請返回比較，確認存取權限與資料來源。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 165,
+      "text": "比較或相關佐證資料已變更，未建立事項。請重新比較並再次檢視。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 166,
+      "text": "此審查已用於建立事項。請從專案事項清單開啟已儲存的回執。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 167,
+      "text": "本次確認內容與已儲存的請求不符。請重新開啟審查或其回執後再繼續。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 169,
+      "text": "未能確認事項的建立結果。可重試相同的確認內容；若事項已建立，將安全地取回同一份回執。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 170,
+      "text": "請先檢查標示的欄位，再確認建立。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 173,
+      "text": "請選擇其中一個可用的審查標題。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 174,
+      "text": "請選擇其中一個可用的審查目的。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 175,
+      "text": "請輸入顯示範圍內的有效日期，或保留空白。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 176,
+      "text": "請確認您已檢視資料依據，並要建立此事項。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 177,
+      "text": "請重新開啟審查並檢查輸入內容。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 61,
+      "text": "受控虛構資料示範",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 62,
+      "text": "首頁",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 63,
+      "text": "專案",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 64,
+      "text": "知識",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 66,
+      "text": "設定",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 67,
+      "text": "總覽",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 68,
+      "text": "比較",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 69,
+      "text": "商務資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 70,
+      "text": "資料依據",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 71,
+      "text": "行動事項",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 72,
+      "text": "繁中",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 75,
+      "text": "讓每一個完成的專案，都能幫助下一個專案。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 77,
+      "text": "StrideBrain 將專案、文件、報價、供應商與公司知識連結成可查證、可採取行動的營運智慧。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 78,
+      "text": "目前階段：第一個完整智慧工作流程",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 80,
+      "text": "此版本已建立雙語專案工作區、權限治理、可解釋的歷史專案排序，以及報價與實際成本分開的商務比較。所有資料皆為禾序空間設計的虛構示範資料。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 81,
+      "text": "目前可展示的核心成果",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 83,
+      "text": "從信義旗艦店專案提出「我們以前做過類似的案子嗎？」，查看可解釋的歷史專案、商務差異，並開啟精確資料依據與計算過程。內部審查事項將依建置順序啟用。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 84,
+      "text": "專案工作區",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 85,
+      "text": "專案",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 86,
+      "text": "開啟您有權限查看的專案工作區。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 87,
+      "text": "開啟專案",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 88,
+      "text": "進行中",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 89,
+      "text": "目前沒有可開啟的專案",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 90,
+      "text": "請確認您的登入狀態與專案存取權限，或稍後再試。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 91,
+      "text": "組織知識",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 92,
+      "text": "連結公司知道的事，而不只是管理檔案。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 94,
+      "text": "目前的比較流程已使用專案、報價版本、成本、供應商、材料與資料依據。完整知識探索與任意文件匯入尚未啟用。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 95,
+      "text": "營運智慧介面",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 96,
+      "text": "StrideBrain 不是另一個一般聊天機器人。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 98,
+      "text": "目前版本先取得已授權的工作脈絡，再以固定規則產生專案排序、商務比較與誠實的資料不足狀態。模型說明不是主要流程的必要條件。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 99,
+      "text": "組織設定",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 100,
+      "text": "身份、權限、語言與資料邊界由伺服器端治理。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 102,
+      "text": "受控示範已驗證角色、專案指派與資料遮蔽；完整帳號管理、整合與正式客戶資料生命週期尚未啟用。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 103,
+      "text": "專案工作區",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 104,
+      "text": "此專案或區域目前無法使用。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 106,
+      "text": "目前的授權脈絡無法開啟此專案，或此專案區域尚未在第一個完整流程中啟用。系統不會以假資料取代失敗狀態。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 107,
+      "text": "要求的專案識別碼",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 108,
+      "text": "已核准的專案區域",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 110,
+      "text": "專案總覽、比較與資料依據已連接正式資料與權限邊界。商務資料專頁與行動事項會依照已核准的建置順序逐步啟用。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 111,
+      "text": "此區域尚未啟用",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 112,
+      "text": "v0.1 · 受控示範",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 113,
+      "text": "查看建置規格",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 114,
+      "text": "僅使用虛構示範資料 · 無真實客戶資料",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 115,
+      "text": "尚未切換正式示範網域",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 132,
+      "text": "繁中",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 22,
+      "text": "報價",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 23,
+      "text": "供應商報價",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 24,
+      "text": "預估直接成本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 25,
+      "text": "已核對實際成本",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 28,
+      "text": "已擷取",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 29,
+      "text": "已人工檢視",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 30,
+      "text": "已核准商務紀錄",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 31,
+      "text": "已核對實際紀錄",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 32,
+      "text": "已由新版取代",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 33,
+      "text": "資料不一致",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 4,
+      "text": "零售旗艦店",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 5,
+      "text": "零售門市改裝",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 6,
+      "text": "零售概念店",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 7,
+      "text": "零售展示店",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 8,
+      "text": "企業辦公室",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 9,
+      "text": "辦公空間改裝",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 10,
+      "text": "精品旅宿",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 25,
+      "text": "臺北市",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 27,
+      "text": "信義區",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 28,
+      "text": "內湖區",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 29,
+      "text": "中山區",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 30,
+      "text": "松山區",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 31,
+      "text": "大安區",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 32,
+      "text": "南港區",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 35,
+      "text": "新北市",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 35,
+      "text": "板橋區",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/projects/application/get-project-workspace.ts",
+      "line": 508,
+      "text": "我們以前做過類似的案子嗎？",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/projects/application/get-project-workspace.ts",
+      "line": 514,
+      "text": "把目前報價和相關已完工專案比較一下。",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/modules/projects/application/get-project-workspace.ts",
+      "line": 520,
+      "text": "這些數字是從哪裡來的？",
+      "kind": "StringLiteral"
+    },
+    {
+      "file": "src/repositories/prisma/prisma-evidence-panel-repository.ts",
+      "line": 294,
+      "text": "已授權資料來源",
+      "kind": "StringLiteral"
+    }
+  ]
+}

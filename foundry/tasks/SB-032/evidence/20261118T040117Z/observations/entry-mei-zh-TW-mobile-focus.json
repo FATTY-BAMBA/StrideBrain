@@ -1,0 +1,25 @@
+{
+  "dialogs": [],
+  "focus": {
+    "id": "",
+    "tag": "A",
+    "text": "信義旗艦店裝修進行中開啟專案 →"
+  },
+  "horizontalOverflow": false,
+  "mainLinks": [
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026",
+      "text": "信義旗艦店裝修\n進行中\n開啟專案 →"
+    }
+  ],
+  "mainText": "專案工作區\n\n專案\n\n開啟您有權限查看的專案工作區。\n\n信義旗艦店裝修\n進行中\n開啟專案 →",
+  "title": "StrideBrain",
+  "url": "http://localhost:3000/zh-TW/projects",
+  "viewport": {
+    "dpr": 1,
+    "height": 844,
+    "width": 390
+  },
+  "at": "2026-11-18T04:18:36.962Z",
+  "browser": "Codex in-app browser"
+}

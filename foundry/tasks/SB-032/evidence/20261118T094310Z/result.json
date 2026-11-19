@@ -1,0 +1,46 @@
+{
+  "runId": "20261118T094310Z",
+  "head": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+  "parent": "4628fb759c8bac23cf92eb15992259fb366a8d65",
+  "evidence": "evidence/20261118T094310Z/",
+  "buildId": "jZBGrkhs4Ok9XriINHgub",
+  "completedAt": "2026-11-18T10:01:31.874561+00:00",
+  "verdict": "PARTIAL_MANUAL_VERIFICATION_PENDING",
+  "stage9Verdict": "INCOMPLETE_CONTINUE_QA",
+  "sourceCI": {
+    "runId": 44278010987,
+    "result": "PASS",
+    "head": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+    "url": "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/44278010987"
+  },
+  "browser": "NARROW_CANCEL_LOCALE_AND_SPEECH_CUES_ONLY",
+  "manual": "SPEECH_ATTESTATION_DEVICE_LANGUAGE_CLOCK_REQUIREMENTS_OPEN",
+  "openConfirmedFindingCounts": {
+    "P0": 0,
+    "P1": 0,
+    "P2": 0
+  },
+  "cleanup": "PASS",
+  "sanitization": "PASS",
+  "publication": "NEW_FOLLOWUP_EVIDENCE_LOCAL_ONLY; PRIOR_REPAIR_AND_BOTH_RUNS_PUBLISHED",
+  "productSourceChanged": false,
+  "schemaMigrationChanged": false,
+  "historicalEvidencePreserved": true,
+  "unverifiedObservations": [
+    {
+      "status": "UNCONFIRMED_NAVIGATION_RACE_NO_NEW_DEFECT",
+      "attempts": "One focused bilingual attempt: immediate cancel→shell locale once per direction, followed by one settled control per direction.",
+      "observed": "Immediate shell clicks left the current locale unchanged while the modal was still busy. In zh-TW the actual pointer hit a modal list item, not the shell link. After closing, each settled locale click succeeded.",
+      "qualification": "The same visible diagnostic was observed, but actual enabled-link activation followed by lost navigation was not established. Do not invent a defect or claim exhaustive race resilience.",
+      "cancelFocusReturn": "internal-review-entry in both directions",
+      "draftIdentity": "The same proposal reopened after cancellation and locale changes; no duplicate proposal/action created by those controls.",
+      "proposal": "proposal_20204eee-d05f-4513-8740-c38059f5df49",
+      "sourceChangeJustified": false,
+      "evidence": [
+        "browser/rapid-cancel-en-to-zh.json",
+        "browser/rapid-cancel-zh-to-en.json",
+        "browser/settled-locale-controls.json"
+      ]
+    }
+  ]
+}

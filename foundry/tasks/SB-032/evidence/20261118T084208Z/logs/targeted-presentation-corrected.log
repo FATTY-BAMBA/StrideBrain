@@ -1,0 +1,13 @@
+
+> stridebrain@0.1.0 test
+> vitest run tests/localization/stage9-workspace-loading.test.ts tests/comparison-experience/selection-action.test.ts tests/comparison-experience/selection-navigation.test.ts
+
+
+ RUN  v4.1.10 [REDACTED_PRIVATE_VALUE]
+
+
+ Test Files  3 passed (3)
+      Tests  42 passed (42)
+   Start at  16:51:42
+   Duration  859ms (transform 211ms, setup 0ms, import 357ms, tests 170ms, environment 983ms)
+

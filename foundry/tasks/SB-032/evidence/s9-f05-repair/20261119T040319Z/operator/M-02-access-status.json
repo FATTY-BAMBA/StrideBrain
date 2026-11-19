@@ -1,0 +1,28 @@
+{
+  "currentDeviceInventory": "xcdevice filtered physical-device inventory returned model, OS, available=true and USB interface",
+  "inventoryExitCode": 0,
+  "historicalModelFamily": "iPhone16,1",
+  "historicalIOS": "26.5",
+  "currentTrust": "XCODE_AVAILABLE_USB; Safari access not yet validated",
+  "privateLANInterfaceCandidates": 1,
+  "physicalSafari": "NOT_RUN",
+  "safeHTTPSAccess": "NOT_CONFIGURED_NOT_VALIDATED",
+  "publicExposure": false,
+  "productChangesForAccess": false,
+  "Android": "DEVICE_EVIDENCE_REQUIRED_ANDROID; availability unknown; non-blocking by absence alone for this pilot",
+  "requirements": [
+    "phone and Mac on same trusted private LAN",
+    "phone-trusted HTTPS certificate matching private host/IP",
+    "Secure __Host- HttpOnly Path=/ SameSite=Lax cookie unchanged",
+    "exact same-origin configured app Origin + Request URL + Origin header",
+    "no public tunnel/router forwarding/DNS/Vercel",
+    "loopback-only operator must not be exposed as localhost authorization shortcut"
+  ],
+  "currentModelFamily": "iPhone16,1",
+  "currentIOS": "26.5 (23F77)",
+  "currentInventoryEvidence": "M-02-retry-inventory.json",
+  "devicectlQualification": "Sandboxed retry timed out initializing CoreDevice; outside-sandbox identifier-suppressing retry exited 0 with no rows. xcdevice fallback returned permitted metadata.",
+  "currentBlocker": "Phone-trusted TLS and same-origin one-use session path not configured or validated",
+  "proposedURL": "https://<verified-private-LAN-address>:8443",
+  "listenerOpened": false
+}

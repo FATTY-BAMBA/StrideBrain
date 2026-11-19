@@ -1,0 +1,13 @@
+{
+  "label": "zh-native-invalid",
+  "locale": "zh-TW",
+  "instant": "2027-03-01T04:00:00.000Z",
+  "timezone": "Asia/Taipei",
+  "min": "2027-03-01",
+  "max": "2028-02-29",
+  "suggested": "2027-03-08",
+  "expiresAt": "2027-03-01T04:30:00.000Z",
+  "proposalKey": "proposal_60e4f05d-e612-4192-adfb-d44c9ff8ed17",
+  "preparation": "real HTTP proposal endpoint; fresh comparison/economics through unchanged production services",
+  "url": "http://localhost:3002/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_30290e10-7772-46f3-9150-c27ffe388deb&economics=econrun_467c7385-a311-409f-943d-41f715109d30&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_60e4f05d-e612-4192-adfb-d44c9ff8ed17"
+}

@@ -1,0 +1,1 @@
+{"caseId":"action-flag-1794980213152","kind":"action-flag","applied":true,"scope":"newrun synthetic database only","target":{"table":"ProjectAssignment","id":"assign_mei_xinyi"},"countsBefore":{"actions":1,"consumed":1,"receipts":1,"audits":1,"actionevidencelinks":15},"proposalStatus":"PREPARED","proposalSecondsRemaining":1754}

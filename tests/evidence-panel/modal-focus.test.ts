@@ -71,6 +71,8 @@ function proposal(): ProposalDTO {
     suggestedAssigneeKey: "mei",
     canAssign: true,
     suggestedDueDate: "2026-11-24",
+    datePolicyEvaluatedAt: "2026-11-17T04:00:00Z",
+    nextDatePolicyBoundaryAt: "2026-11-17T16:00:00Z",
     minDueDate: "2026-11-17",
     maxDueDate: "2027-11-17",
     expiresAt: "2026-11-18T12:00:00Z",
@@ -88,14 +90,14 @@ function view(): ComparisonExperienceView {
       projectKey: "PROJECT",
       comparisonRunId: claim.comparisonRunId,
       economicsRunId: "economics-focus",
-      selectedProjectKeys: [],
+      selectedProjectKeys: ["A", "B"],
     },
     heading: { eyebrow: "Comparison", title: "Comparison", description: "Stored comparison" },
     summary: {
       generatedAtLabel: "Today",
       policyLabel: "Policy",
       authorizedMatchCountLabel: "0",
-      selectedCountLabel: "0",
+      selectedCountLabel: "2",
       economicsStateLabel: "Complete",
       syntheticDataLabel: "Synthetic",
     },
@@ -107,7 +109,7 @@ function view(): ComparisonExperienceView {
       locationLabel: "Taipei",
     },
     cards: [],
-    initialSelectedProjectKeys: [],
+    initialSelectedProjectKeys: ["A", "B"],
     maximumSelectedProjects: 3,
     table: { columns: [], sections: [] },
     synthesis: {
@@ -308,6 +310,14 @@ beforeEach(() => {
   removeSource = false;
   reviewFlow = false;
   vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(
+      async () =>
+        ({ ok: true, json: async () => ({ kind: "PREPARED", proposal: proposal() }) }) as Response,
+    ),
+  );
+
   vi.stubGlobal("CSS", { escape: (value: string) => value });
   Object.defineProperty(HTMLElement.prototype, "scrollIntoView", {
     configurable: true,

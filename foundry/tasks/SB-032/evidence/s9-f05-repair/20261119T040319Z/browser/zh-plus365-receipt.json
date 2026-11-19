@@ -1,0 +1,22 @@
+{
+  "dialogText": "已建立內部審查事項\n\n此回執記錄已儲存至專案的事項。\n\nEnglish\n繁體中文\n關閉\n檢核信義旗艦店裝修第3版報價的進口石材與照明假設\n\n下次內部報價審查前，依連結的佐證資料檢核這些假設。\n\n進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。\n\n照明報價與符合條件的歷史報價比較，差異為 +9.4%。\n\n照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。\n\n目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。\n\n比較紀錄：cmprun_d4b6eece-c7c2-472c-acbe-3f94a967eff5；成本分析紀錄：econrun_5130f842-ec52-4e48-9087-dc7ad5f5bc41。\n\n此操作只會建立內部審查事項，不會核准或發出報價、授權商業承諾，或對外聯繫。\n\n歷史比較不能證明這份報價有誤、供應商收費過高，或趕工造成特定溢價；供應商價格也未確認目前仍有效。\n\n事項編號\naction_4994fdac-e497-4e54-bfe3-677f7cad4714\n專案\n信義旗艦店裝修\n承辦人\n黃怡君\n到期日\n2029-03-01\n狀態\n待處理\n建立時間\n2028年3月1日 凌晨12:01\n建立人\n林美玲\n可存取的佐證資料筆數\n15\n來源比較紀錄\ncmprun_d4b6eece-c7c2-472c-acbe-3f94a967eff5\n來源商務分析紀錄\neconrun_5130f842-ec52-4e48-9087-dc7ad5f5bc41\n返回來源比較\n查看專案事項",
+  "due": null,
+  "focus": {
+    "id": "internal-review-heading",
+    "rect": {
+      "height": 29.1171875,
+      "width": 240,
+      "x": 1396,
+      "y": 20
+    },
+    "tag": "H2"
+  },
+  "url": "http://localhost:3002/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_d4b6eece-c7c2-472c-acbe-3f94a967eff5&economics=econrun_5130f842-ec52-4e48-9087-dc7ad5f5bc41&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_4994fdac-e497-4e54-bfe3-677f7cad4714",
+  "viewport": {
+    "dpr": 2,
+    "height": 1234,
+    "width": 2056
+  },
+  "visibility": "visible",
+  "observedAtUtc": "2026-11-19T04:27:06.208Z"
+}

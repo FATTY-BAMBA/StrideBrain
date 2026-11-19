@@ -1,0 +1,35 @@
+{
+  "assignee": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b",
+  "confirmation": true,
+  "dialogText": "Review internal review action\n\nReview the evidence and uncertainty before creating this action.\n\nEnglish\n繁體中文\nClose\nCheck the highlighted fields\n\nCheck the highlighted fields before confirming.\n\nTitle\nValidate imported-stone and lighting assumptions for Xinyi quote v3\nReview imported-stone and lighting assumptions for Xinyi quote v3\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\n\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\n\nReview purpose\nReview these assumptions against the linked evidence before the next internal quotation review.\nCheck the supporting evidence and record questions for internal review.\nValidate the imported-stone and lighting assumptions using the linked historical evidence.\n\nValidate the imported-stone and lighting assumptions using the linked historical evidence.\n\nChoose review wording. Verified findings and uncertainty statements remain attached and cannot be changed here.\n\nVerified findings · retained with the action\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\nLighting quoted price differs by +9.4% from eligible quoted-price history.\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\nComparison: cmprun_dc6ce3fc-57ff-45a9-b2ef-9e7a5e568ad6; economics enrichment: econrun_e7673010-e7b0-4815-8af7-337e236ba8ba.\n⚠ Uncertainty and limits · retained with the action\nThis creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally.\nHistorical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid.\nInspect supporting evidence\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\nLighting quoted price differs by +9.4% from eligible quoted-price history.\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\nAssignee\nUnassigned\nMei Lin\nAlex Chen\nIris Huang\nDue date\n\nOptional. Enter a date from 2028-02-29 through 2029-02-28, or leave it blank.\n\nEnter a valid date within the displayed range, or leave it blank.\n\nClear due date\nSource comparison\ncmprun_dc6ce3fc-57ff-45a9-b2ef-9e7a5e568ad6\nSource economics review\neconrun_e7673010-e7b0-4815-8af7-337e236ba8ba\nReview available until\n29 Feb 2028, 00:29\n\n⚠ Confirmation creates a persistent internal action and an audit record. This screen cannot undo creation. It does not approve a quotation or send a message.\n\nI have reviewed the evidence and limits and want to create this internal review action.\nCreate internal review action\nCancel review",
+  "due": {
+    "describedBy": "review-date-hint review-dueDate-error",
+    "invalid": "true",
+    "max": "2029-02-28",
+    "min": "2028-02-29",
+    "value": "2028-02-28"
+  },
+  "error": "Enter a valid date within the displayed range, or leave it blank.",
+  "focus": {
+    "id": "review-dueDate",
+    "rect": {
+      "height": 49.59375,
+      "width": 640,
+      "x": 1396,
+      "y": 656.046875
+    },
+    "tag": "INPUT"
+  },
+  "hint": "Optional. Enter a date from 2028-02-29 through 2029-02-28, or leave it blank.",
+  "rationale": "VALIDATE_HISTORY",
+  "summary": "Check the highlighted fieldsCheck the highlighted fields before confirming.",
+  "title": "CHECK",
+  "url": "http://localhost:3002/en/projects/PRJ-XINYI-026/compare?run=cmprun_dc6ce3fc-57ff-45a9-b2ef-9e7a5e568ad6&economics=econrun_e7673010-e7b0-4815-8af7-337e236ba8ba&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_ead4770c-7e50-4b8d-95d4-98aaa64ab080&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue=2028-02-28",
+  "viewport": {
+    "dpr": 2,
+    "height": 1234,
+    "width": 2056
+  },
+  "visibility": "visible",
+  "observedAtUtc": "2026-11-19T04:20:55.765Z"
+}

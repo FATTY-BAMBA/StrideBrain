@@ -1,0 +1,439 @@
+- link "跳至主要內容":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: PRIMESTRIDE AI
+  - navigation "專案":
+    - link "首頁":
+      - /url: /zh-TW
+      - generic: "01"
+      - generic: 首頁
+    - link "專案":
+      - /url: /zh-TW/projects
+      - generic: "02"
+      - generic: 專案
+    - link "知識":
+      - /url: /zh-TW/knowledge
+      - generic: "03"
+      - generic: 知識
+    - link "StrideBrain":
+      - /url: /zh-TW/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "設定":
+      - /url: /zh-TW/settings
+      - generic: "05"
+      - generic: 設定
+  - strong: v0.1 · 受控示範
+  - generic: 此區域尚未啟用
+- banner:
+  - generic: ●
+  - text: 受控虛構資料示範
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_c6f754c8-cee9-4fe4-a793-70c822ed5d41&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018
+    - generic: /
+    - link "EN":
+      - /url: /en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_c6f754c8-cee9-4fe4-a793-70c822ed5d41&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018
+- main:
+  - navigation "專案工作區導覽":
+    - link "總覽":
+      - /url: /zh-TW/projects/PRJ-XINYI-026
+    - link "比較":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/compare
+    - link "商務資料":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/commercial
+    - link "資料依據":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/evidence
+    - link "行動事項":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/actions
+  - paragraph: 類似專案智慧
+  - heading "歷史專案比較： 信義旗艦店裝修" [level=1]
+  - paragraph: StrideBrain 以可解釋的固定規則排序已授權的歷史專案，清楚區分商務資料權威性，也會誠實呈現資料不足之處。
+  - term: 產生時間
+  - definition: 2026年11月18日
+  - term: 比較規則
+  - definition: 專案相似度
+  - term: 已授權相似專案
+  - definition: "6"
+  - term: 已選歷史專案
+  - definition: 2/3
+  - term: 商務資料狀態
+  - definition: 部分商務資料
+  - term: 資料邊界
+  - definition: 禾序空間設計虛構示範資料，不是市場基準。
+  - region "選擇要比較的歷史專案":
+    - paragraph: 我們以前做過類似的案子嗎？
+    - heading "選擇要比較的歷史專案" [level=2]
+    - paragraph: 最多選擇三個專案。更新選擇會建立新的不可變更商務分析，但不會改變原本的相似度排序。
+    - strong: "2"
+    - generic: 個已選
+    - generic: ·
+    - generic: 最多 3 個
+    - article "1. 內湖科技旗艦店":
+      - generic: "選擇要比較的歷史專案: 內湖科技旗艦店"
+      - 'checkbox "選擇要比較的歷史專案: 內湖科技旗艦店" [checked]'
+      - generic: "1"
+      - generic: 高度相似
+      - heading "內湖科技旗艦店" [level=3]
+      - generic: 臺北市內湖區
+      - generic: 610 m²
+      - generic: 2025年6月30日
+      - generic: 相似度分數
+      - strong: 88/100
+      - generic: 資料完整度
+      - strong: 100%
+      - generic: 歷史報價
+      - generic: 已核對實際成本
+      - generic: 供應商報價僅屬歷史資料，不得呈現為目前價格。
+      - generic "查看比較因素"
+    - article "2. 中山生活概念店":
+      - generic: "選擇要比較的歷史專案: 中山生活概念店"
+      - 'checkbox "選擇要比較的歷史專案: 中山生活概念店" [checked]'
+      - generic: "2"
+      - generic: 高度相似
+      - heading "中山生活概念店" [level=3]
+      - generic: 臺北市中山區
+      - generic: 590 m²
+      - generic: 2024年11月15日
+      - generic: 相似度分數
+      - strong: 81/100
+      - generic: 資料完整度
+      - strong: 100%
+      - generic: 歷史報價
+      - generic: 已核對實際成本
+      - generic "查看比較因素"
+    - article "3. 南京品牌體驗中心":
+      - generic: "選擇要比較的歷史專案: 南京品牌體驗中心"
+      - 'checkbox "選擇要比較的歷史專案: 南京品牌體驗中心"'
+      - generic: "3"
+      - generic: 具參考價值
+      - heading "南京品牌體驗中心" [level=3]
+      - generic: 臺北市松山區
+      - generic: 720 m²
+      - generic: 2026年2月10日
+      - generic: 相似度分數
+      - strong: 79/100
+      - generic: 資料完整度
+      - strong: 100%
+      - generic "查看比較因素"
+    - article "4. 大安精品展示中心":
+      - generic: "選擇要比較的歷史專案: 大安精品展示中心"
+      - 'checkbox "選擇要比較的歷史專案: 大安精品展示中心"'
+      - generic: "4"
+      - generic: 具參考價值
+      - heading "大安精品展示中心" [level=3]
+      - generic: 臺北市大安區
+      - generic: 520 m²
+      - generic: 2024年4月20日
+      - generic: 相似度分數
+      - strong: 71/100
+      - generic: 資料完整度
+      - strong: 100%
+      - generic "查看比較因素"
+    - article "5. 松山門市改裝":
+      - generic: "選擇要比較的歷史專案: 松山門市改裝"
+      - 'checkbox "選擇要比較的歷史專案: 松山門市改裝"'
+      - generic: "5"
+      - generic: 具參考價值
+      - heading "松山門市改裝" [level=3]
+      - generic: 臺北市松山區
+      - generic: 680 m²
+      - generic: 2025年2月28日
+      - generic: 相似度分數
+      - strong: 69/100
+      - generic: 資料完整度
+      - strong: 100%
+      - generic "查看比較因素"
+    - article "6. 板橋概念店":
+      - generic: "選擇要比較的歷史專案: 板橋概念店"
+      - 'checkbox "選擇要比較的歷史專案: 板橋概念店"'
+      - generic: "6"
+      - generic: 部分相似
+      - heading "板橋概念店" [level=3]
+      - generic: 新北市板橋區
+      - generic: 760 m²
+      - generic: 2023年9月30日
+      - generic: 相似度分數
+      - strong: 63/100
+      - generic: 資料完整度
+      - strong: 100%
+      - generic "查看比較因素"
+    - paragraph: "已選專案: PRJ-NEIHU-021, PRJ-ZHONGSHAN-018"
+    - button "更新比較" [disabled]
+  - region "結構化比較":
+    - paragraph: 結構化比較
+    - heading "結構化比較" [level=2]
+    - paragraph: 所有數值都來自已儲存的固定規則結果。歷史報價、預估成本、供應商報價與已核對實際成本會保持清楚區分。
+    - region "結構化比較":
+      - table:
+        - rowgroup:
+          - row "結構化比較 信義旗艦店裝修 內湖科技旗艦店 中山生活概念店":
+            - columnheader "結構化比較"
+            - columnheader "信義旗艦店裝修"
+            - columnheader "內湖科技旗艦店"
+            - columnheader "中山生活概念店"
+        - rowgroup:
+          - row "專案脈絡":
+            - columnheader "專案脈絡"
+          - row "專案類型 零售旗艦店 零售旗艦店 零售旗艦店":
+            - rowheader "專案類型"
+            - cell "零售旗艦店":
+              - generic: 零售旗艦店
+            - cell "零售旗艦店":
+              - generic: 零售旗艦店
+            - cell "零售旗艦店":
+              - generic: 零售旗艦店
+          - row "面積 640 m² 610 m² 590 m²":
+            - rowheader "面積"
+            - cell "640 m²":
+              - generic: 640 m²
+            - cell "610 m²":
+              - generic: 610 m²
+            - cell "590 m²":
+              - generic: 590 m²
+          - row "地點 臺北市信義區 臺北市內湖區 臺北市中山區":
+            - rowheader "地點"
+            - cell "臺北市信義區":
+              - generic: 臺北市信義區
+            - cell "臺北市內湖區":
+              - generic: 臺北市內湖區
+            - cell "臺北市中山區":
+              - generic: 臺北市中山區
+          - row "完工時間 進行中 不適用 2025年6月30日 2024年11月15日":
+            - rowheader "完工時間"
+            - cell "進行中 不適用":
+              - generic: 進行中
+              - generic: 不適用
+            - cell "2025年6月30日":
+              - generic: 2025年6月30日
+            - cell "2024年11月15日":
+              - generic: 2024年11月15日
+          - 'row "工期 資料依據與完整度: 16 週 · 目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。 19–20 週 已選歷史專案範圍 19–20 週 已選歷史專案範圍"':
+            - rowheader "工期"
+            - 'cell "資料依據與完整度: 16 週 · 目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。"':
+              - 'button "資料依據與完整度: 16 週 · 目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。"':
+                - generic: 16 週
+                - generic: 目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。
+            - cell "19–20 週 已選歷史專案範圍":
+              - generic: 19–20 週
+              - generic: 已選歷史專案範圍
+            - cell "19–20 週 已選歷史專案範圍":
+              - generic: 19–20 週
+              - generic: 已選歷史專案範圍
+        - rowgroup:
+          - row "整體商務比較":
+            - columnheader "整體商務比較"
+          - 'row "報價 · 標準化 資料依據與完整度: 報價 · NT$25,750 · 新台幣／m² · 資料不足 資料依據與完整度: 報價 · 資料不足 · 2/3 資料依據與完整度: 報價 · 資料不足 · 2/3"':
+            - rowheader "報價 · 標準化"
+            - 'cell "資料依據與完整度: 報價 · NT$25,750 · 新台幣／m² · 資料不足"':
+              - 'button "資料依據與完整度: 報價 · NT$25,750 · 新台幣／m² · 資料不足"':
+                - generic: 報價
+                - generic: NT$25,750 · 新台幣／m²
+                - generic: 資料不足
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 報價 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 報價 · 資料不足 · 2/3"':
+                - generic: 報價
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 報價 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 報價 · 資料不足 · 2/3"':
+                - generic: 報價
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+          - 'row "預估／已核對實際成本 · 標準化 資料依據與完整度: 預估直接成本 · NT$19,766 · 新台幣／m² · 資料不足 資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3 資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+            - rowheader "預估／已核對實際成本 · 標準化"
+            - 'cell "資料依據與完整度: 預估直接成本 · NT$19,766 · 新台幣／m² · 資料不足"':
+              - 'button "資料依據與完整度: 預估直接成本 · NT$19,766 · 新台幣／m² · 資料不足"':
+                - generic: 預估直接成本
+                - generic: NT$19,766 · 新台幣／m²
+                - generic: 資料不足
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+                - generic: 已核對實際成本
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+                - generic: 已核對實際成本
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+        - rowgroup:
+          - row "分類比較":
+            - columnheader "分類比較"
+          - 'row "進口石材 · 報價 資料依據與完整度: 報價 · NT$4,688 · 新台幣／m² · 資料不足 資料依據與完整度: 報價 · 資料不足 · 2/3 資料依據與完整度: 報價 · 資料不足 · 2/3"':
+            - rowheader "進口石材 · 報價"
+            - 'cell "資料依據與完整度: 報價 · NT$4,688 · 新台幣／m² · 資料不足"':
+              - 'button "資料依據與完整度: 報價 · NT$4,688 · 新台幣／m² · 資料不足"':
+                - generic: 報價
+                - generic: NT$4,688 · 新台幣／m²
+                - generic: 資料不足
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 報價 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 報價 · 資料不足 · 2/3"':
+                - generic: 報價
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 報價 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 報價 · 資料不足 · 2/3"':
+                - generic: 報價
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+          - 'row "進口石材 · 預估／已核對實際成本 資料依據與完整度: 預估直接成本 · NT$3,688 · 新台幣／m² · 資料不足 資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3 資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+            - rowheader "進口石材 · 預估／已核對實際成本"
+            - 'cell "資料依據與完整度: 預估直接成本 · NT$3,688 · 新台幣／m² · 資料不足"':
+              - 'button "資料依據與完整度: 預估直接成本 · NT$3,688 · 新台幣／m² · 資料不足"':
+                - generic: 預估直接成本
+                - generic: NT$3,688 · 新台幣／m²
+                - generic: 資料不足
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+                - generic: 已核對實際成本
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+                - generic: 已核對實際成本
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+          - 'row "燈具／電氣 · 報價 資料依據與完整度: 報價 · NT$4,844 · 新台幣／m² · 資料不足 資料依據與完整度: 報價 · 資料不足 · 2/3 資料依據與完整度: 報價 · 資料不足 · 2/3"':
+            - rowheader "燈具／電氣 · 報價"
+            - 'cell "資料依據與完整度: 報價 · NT$4,844 · 新台幣／m² · 資料不足"':
+              - 'button "資料依據與完整度: 報價 · NT$4,844 · 新台幣／m² · 資料不足"':
+                - generic: 報價
+                - generic: NT$4,844 · 新台幣／m²
+                - generic: 資料不足
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 報價 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 報價 · 資料不足 · 2/3"':
+                - generic: 報價
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 報價 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 報價 · 資料不足 · 2/3"':
+                - generic: 報價
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+          - 'row "燈具／電氣 · 預估／已核對實際成本 資料依據與完整度: 預估直接成本 · NT$3,672 · 新台幣／m² · 資料不足 資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3 資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+            - rowheader "燈具／電氣 · 預估／已核對實際成本"
+            - 'cell "資料依據與完整度: 預估直接成本 · NT$3,672 · 新台幣／m² · 資料不足"':
+              - 'button "資料依據與完整度: 預估直接成本 · NT$3,672 · 新台幣／m² · 資料不足"':
+                - generic: 預估直接成本
+                - generic: NT$3,672 · 新台幣／m²
+                - generic: 資料不足
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+                - generic: 已核對實際成本
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+                - generic: 已核對實際成本
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+          - 'row "訂製木作 · 報價 資料依據與完整度: 報價 · NT$5,938 · 新台幣／m² · 資料不足 資料依據與完整度: 報價 · 資料不足 · 2/3 資料依據與完整度: 報價 · 資料不足 · 2/3"':
+            - rowheader "訂製木作 · 報價"
+            - 'cell "資料依據與完整度: 報價 · NT$5,938 · 新台幣／m² · 資料不足"':
+              - 'button "資料依據與完整度: 報價 · NT$5,938 · 新台幣／m² · 資料不足"':
+                - generic: 報價
+                - generic: NT$5,938 · 新台幣／m²
+                - generic: 資料不足
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 報價 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 報價 · 資料不足 · 2/3"':
+                - generic: 報價
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 報價 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 報價 · 資料不足 · 2/3"':
+                - generic: 報價
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+          - 'row "訂製木作 · 預估／已核對實際成本 資料依據與完整度: 預估直接成本 · NT$4,781 · 新台幣／m² · 資料不足 資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3 資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+            - rowheader "訂製木作 · 預估／已核對實際成本"
+            - 'cell "資料依據與完整度: 預估直接成本 · NT$4,781 · 新台幣／m² · 資料不足"':
+              - 'button "資料依據與完整度: 預估直接成本 · NT$4,781 · 新台幣／m² · 資料不足"':
+                - generic: 預估直接成本
+                - generic: NT$4,781 · 新台幣／m²
+                - generic: 資料不足
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+                - generic: 已核對實際成本
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+            - 'cell "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+              - 'button "資料依據與完整度: 已核對實際成本 · 資料不足 · 2/3"':
+                - generic: 已核對實際成本
+                - generic: 資料不足
+                - generic: 2/3
+                - generic: 資料不足
+        - rowgroup:
+          - row "資料依據與完整度":
+            - columnheader "資料依據與完整度"
+          - 'row "供應商報價脈絡 供應商報價 無法使用 無法使用 資料依據與完整度: 供應商報價 · 歷史／已過期 · 2025年2月15日 供應商報價 無法使用 無法使用"':
+            - rowheader "供應商報價脈絡"
+            - cell "供應商報價 無法使用 無法使用":
+              - generic: 供應商報價
+              - generic: 無法使用
+              - generic: 無法使用
+            - 'cell "資料依據與完整度: 供應商報價 · 歷史／已過期 · 2025年2月15日"':
+              - 'button "資料依據與完整度: 供應商報價 · 歷史／已過期 · 2025年2月15日"':
+                - generic: 供應商報價
+                - generic: 歷史／已過期
+                - generic: 2025年2月15日
+                - generic: 歷史／已過期
+            - cell "供應商報價 無法使用 無法使用":
+              - generic: 供應商報價
+              - generic: 無法使用
+              - generic: 無法使用
+          - row "資料依據與完整度 部分商務資料 報價與實際成本皆可用 報價與實際成本皆可用":
+            - rowheader "資料依據與完整度"
+            - cell "部分商務資料":
+              - generic: 部分商務資料
+            - cell "報價與實際成本皆可用":
+              - generic: 報價與實際成本皆可用
+            - cell "報價與實際成本皆可用":
+              - generic: 報價與實際成本皆可用
+  - region "結構化審查":
+    - paragraph: 結構化審查
+    - heading "結構化審查" [level=2]
+    - article:
+      - heading "重要差異" [level=3]
+      - paragraph: 目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。
+      - button "查看資料依據"
+    - article:
+      - heading "資料缺口" [level=3]
+      - paragraph: 燈具報價高於歷史報價，但已核對實際成本的資料量不足。 2/3
+      - button "查看資料依據"
+    - article:
+      - heading "建議下一步審查" [level=3]
+      - paragraph: 在內部核准報價前，先確認進口石材額度與燈具假設。
+  - complementary "資料依據與完整度":
+    - generic: 禾序空間設計虛構示範資料，不是市場基準。
+    - generic: 部分分類沒有足夠的已核對實際成本資料。
+    - generic: 供應商報價僅屬歷史資料，不得呈現為目前價格。
+- contentinfo:
+  - generic: 僅使用虛構示範資料 · 無真實客戶資料
+  - generic: 尚未切換正式示範網域
+- alert: 歷史專案比較： 信義旗艦店裝修

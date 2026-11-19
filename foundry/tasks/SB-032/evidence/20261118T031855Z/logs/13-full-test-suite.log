@@ -1,0 +1,13 @@
+
+> stridebrain@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.10 [REDACTED_PRIVATE_VALUE]
+
+
+ Test Files  62 passed (62)
+      Tests  535 passed (535)
+   Start at  11:29:58
+   Duration  93.77s (transform 3.38s, setup 0ms, import 5.82s, tests 115.38s, environment 1.46s)
+

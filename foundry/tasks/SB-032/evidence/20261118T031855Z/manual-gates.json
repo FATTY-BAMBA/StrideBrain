@@ -1,0 +1,47 @@
+{
+  "M-01": {
+    "status": "NOT_RUN",
+    "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+    "reason": "Affected browser baseline paused at S9-F01 before VoiceOver journey. User confirmed available to listen; no speech observation or attestation taken.",
+    "next": "VoiceOver + actual Chrome, both locales, with user listening to dialog/errors/evidence/pending/receipt and hidden-background checks.",
+    "NVDAWindows": "NOT_AVAILABLE_ON_CURRENT_HOST"
+  },
+  "M-02": {
+    "status": "DEVICE_EVIDENCE_REQUIRED",
+    "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+    "iPhone": "USER_AVAILABLE_NOT_TESTED",
+    "Android": "AVAILABILITY_NOT_CONFIRMED",
+    "reason": "Physical-device journey not started. Emulated viewport screenshots are not device evidence.",
+    "protocol": "human-review/M-02-device-protocol.md",
+    "next": "After baseline repair, arrange safe device access to isolated preview, record iPhone model/OS/Safari and physical keyboard/touch/native-picker evidence; confirm Android availability separately."
+  },
+  "M-05": {
+    "status": "PARTIAL",
+    "gate": "STAGE_9_HARDENING",
+    "domainCases": "7 PASS plus default +7 cross-year assertion",
+    "existingServiceAndPGTests": "PASS as part of exact-head deterministic suite",
+    "liveBrowserServerBoundary": "NOT_RUN; isolated live clock method not demonstrated",
+    "reason": "Injected explicit Date arguments only; system clock and production guards unchanged. Lower layers do not close UI/server E2E.",
+    "evidence": [
+      "date-policy-observations.json",
+      "date-boundary-results.json"
+    ]
+  },
+  "M-06": {
+    "status": "NOT_RUN",
+    "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+    "reason": "Review dialog and generic failure not reached. No live aria-describedby or spoken-description acceptance inferred from deterministic tests.",
+    "next": "Inspect actual dialog form/error-node relationship, focus/visibility and speech after stale/access/evidence/server failure once baseline passes."
+  },
+  "M-07": {
+    "status": "HUMAN_REVIEW_REQUIRED",
+    "preparation": "PARTIAL",
+    "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+    "reason": "Static bilingual copy inventory, financial/evidence terms, awkward-copy candidates and exact checklist prepared; only entry screenshots captured. Complete hero/state screenshot set and independent human review remain outstanding.",
+    "evidence": [
+      "human-review/copy-inventory.json",
+      "human-review/M-07-review-checklist.md"
+    ],
+    "humanReviewer": "NOT_YET_IDENTIFIED"
+  }
+}

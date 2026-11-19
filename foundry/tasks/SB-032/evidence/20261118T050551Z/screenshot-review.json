@@ -1,0 +1,3672 @@
+{
+  "count": 174,
+  "scope": "Image validity, dimensions, metadata and English-character OCR; visual contact-sheet review separately recorded. Not human Chinese approval.",
+  "screenshots": [
+    {
+      "file": "screenshots/en-1440-server-error-corrected.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "354273c632ff78c695eee6cd8550f07474e94f42af31034f6add8769c4b76279"
+    },
+    {
+      "file": "screenshots/en-1440-server-error-verified.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "d954207a46ea08e90fe743898213d7de8403ece9275aadaee6815d7ab9ba8f3c"
+    },
+    {
+      "file": "screenshots/en-1440-server-error.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "19081a5ffc01bdeb72f982ff681eac0b79047eb614992c2677f8c536f542fd72"
+    },
+    {
+      "file": "screenshots/en-320-server-error-corrected.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "c4ec7acc34b2d2749b4d598f7be8ec57ba447c79a8cb45505680622e81a8580f"
+    },
+    {
+      "file": "screenshots/en-320-server-error.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "19081a5ffc01bdeb72f982ff681eac0b79047eb614992c2677f8c536f542fd72"
+    },
+    {
+      "file": "screenshots/en-390-server-error-corrected.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "f7887f7074485d7ae534615d06dc89d2c24360f2cae772c9a401239db494cac9"
+    },
+    {
+      "file": "screenshots/en-390-server-error.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "19081a5ffc01bdeb72f982ff681eac0b79047eb614992c2677f8c536f542fd72"
+    },
+    {
+      "file": "screenshots/en-390-stale-error.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "8aea49150ea4c5fa9baf56c19cb8275a31ccf2f34b9b311116aac610c61b87a4"
+    },
+    {
+      "file": "screenshots/en-768-server-error-corrected.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "2847922c0f983ec2d9b2d98071f5b8047b762a89e44dc6d073668133838ae0f8"
+    },
+    {
+      "file": "screenshots/en-768-server-error.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "19081a5ffc01bdeb72f982ff681eac0b79047eb614992c2677f8c536f542fd72"
+    },
+    {
+      "file": "screenshots/en-768-stale-error.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "c5472b7a735dae1471d0bdd01801325cd61f1db3deafded0b567eaa8725eb965"
+    },
+    {
+      "file": "screenshots/en-768-validation.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "f177ecc03a32392914a775a191699c1f5e05167a566e273586b0185eccaed86c"
+    },
+    {
+      "file": "screenshots/en-desktop-evidence-unavailable.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "f2eb369fdc5b02090f89a394f490e3b6bc128192b436302b19c51b6e9925a871"
+    },
+    {
+      "file": "screenshots/en-selection-changed-daan.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "2dc583d40d77161c0422ca757526b83a7588d7905f6eba95bdd28cc8d24df7eb"
+    },
+    {
+      "file": "screenshots/en-server-error.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "e2795578566d689feb8e9c0b0379d0292f439e93e7479e808bfaf5b56f70b3f7"
+    },
+    {
+      "file": "screenshots/grid-en-1440-claim.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "861d3f300df1d78dea25097639190992934e12ed174e65f701596e3d1394b71b"
+    },
+    {
+      "file": "screenshots/grid-en-1440-comparison.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "244ba8513801de10fdeb8216e21b9c92879315586c3b7ea19baefec04c5334f4"
+    },
+    {
+      "file": "screenshots/grid-en-1440-factor.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "bd8e6f02ce4597771df8242fc23e09615a93a201a31bd556b33b0d782f189e66"
+    },
+    {
+      "file": "screenshots/grid-en-1440-insufficiency.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "a1bfc03f401162923a2260d69e156555507c815efdb1f491bf9fbadee2245cf1"
+    },
+    {
+      "file": "screenshots/grid-en-1440-programme.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "a6fd4c9fd41e086a4de8ecfe11368ddfbcef78d931200ed594ddaaf87f38e5d5"
+    },
+    {
+      "file": "screenshots/grid-en-1440-projects.jpg",
+      "size": [
+        389,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": false,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "401153a6474aa6843cb5dc2d6eb72d2eaccf9083eab0f59e2a5c91f95f496c7d"
+    },
+    {
+      "file": "screenshots/grid-en-1440-receipt.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "039164e175d6686ae200be42dff55c1acad18f66537b14ab2407ad582b04d00b"
+    },
+    {
+      "file": "screenshots/grid-en-1440-source.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "d6f90983a8e727e5e3c3192891d1ae0f17e6c0f542008976b40e20c31ea309b3"
+    },
+    {
+      "file": "screenshots/grid-en-1440-workspace.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "46c30477f8253b16d7941aea089ce6d16c98e361f43fe4c36f6d2818e223896a"
+    },
+    {
+      "file": "screenshots/grid-en-320-claim.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "aabd3d390f5e39fdf0cfe06d9549dbbc636899680dd6fb328e128b82f80733cd"
+    },
+    {
+      "file": "screenshots/grid-en-320-comparison.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "2e49d346db9d2cef7d020d0e526e227006be4dd84b56f90c709d8dbd14314352"
+    },
+    {
+      "file": "screenshots/grid-en-320-factor.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "7a584f4cfbfc294d3174f12d70e51e0842e2539ebb84aa76f967cf44db451ee5"
+    },
+    {
+      "file": "screenshots/grid-en-320-insufficiency.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "23e0adf3d339a719acea71ac16a695b5e69081b71f25897e4dcfc692fc38e2ad"
+    },
+    {
+      "file": "screenshots/grid-en-320-programme.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "f2211122a77712a092628c5a8d5541ab63ae3c7d5998cb0281099a22ca81408b"
+    },
+    {
+      "file": "screenshots/grid-en-320-projects.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "70b48054fca148af35ea80c9cebc78ba15eba16dca5f58e5e28ac66ed715120b"
+    },
+    {
+      "file": "screenshots/grid-en-320-receipt.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "ca49b377f49e37add661ff04af138e61059a6b5787386d85a3c5481944de5302"
+    },
+    {
+      "file": "screenshots/grid-en-320-source.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "8e61af56b96ab892ccf6181fcce00081c28bfc761c23af3e0ea56bedd68a4588"
+    },
+    {
+      "file": "screenshots/grid-en-320-workspace.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "832757d6ae5c2c07a8a0da2ed4fdbb3a11869c02dd85f14169cc4275ff70d88d"
+    },
+    {
+      "file": "screenshots/grid-en-390-claim.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "c8909186566d873f4f86f52c6538e7f1b1e5aa466af27c861cb2c71f648026ec"
+    },
+    {
+      "file": "screenshots/grid-en-390-comparison.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "2a48ac3269f57e850e88814ed6006d772773b38514806de44b55e6c0ffa41898"
+    },
+    {
+      "file": "screenshots/grid-en-390-factor.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "205ce96325bb9ab4ed7c4942d9b7db1ca92a9f47430c79c1104f46a2b9034100"
+    },
+    {
+      "file": "screenshots/grid-en-390-insufficiency.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "b56fb2867a685531520ab50547cd1c30521e2b961939dfae825b44d8bbba7b0d"
+    },
+    {
+      "file": "screenshots/grid-en-390-programme.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "8fe8f4f52edfd953fb0eda63117e0d08f71a0df8a7de91cb1ea3267c05f1cec6"
+    },
+    {
+      "file": "screenshots/grid-en-390-projects.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "04d7bbe0a89ff9ff1ab5760bec0bebd3143bf5894d7f53befee67b226059841e"
+    },
+    {
+      "file": "screenshots/grid-en-390-receipt.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "7fab56cf7ec05aafa44ec574fdc89ae3600426b85cdec0da0cac74730b492f1f"
+    },
+    {
+      "file": "screenshots/grid-en-390-source.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "9f3183625715aa724a899e43076a936565e58f1a4d32c7cd98fab5ce7b260e7f"
+    },
+    {
+      "file": "screenshots/grid-en-390-workspace.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "43d1d1125ec13353f272eccda2f63f453bd008e15d11f6a407b57c201b4e524e"
+    },
+    {
+      "file": "screenshots/grid-en-768-claim.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "72e4442517a3ed175147d6a9e91fd52a645c92e0f6a402ae8869119d9d8926ec"
+    },
+    {
+      "file": "screenshots/grid-en-768-comparison.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "e5e73dc4e4897d93d562ea426b21e55c93d5877d30a0b46ec420de9538a1d7ad"
+    },
+    {
+      "file": "screenshots/grid-en-768-factor.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "5d91b6b8f57e87639552f0d2de9cd5b69a56e22b235e81d72aad56431ecb6ef5"
+    },
+    {
+      "file": "screenshots/grid-en-768-insufficiency.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "9819426d2d00e08c8b15a04ce3760dc5024bc431a5a2dde7923b11a9df4d4a5d"
+    },
+    {
+      "file": "screenshots/grid-en-768-programme.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "dec4d025abe5961fe605ea323a339b5db34569fe99017323f2bf64386298b47c"
+    },
+    {
+      "file": "screenshots/grid-en-768-projects.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "974cbe129c83912d8ea72a8a75b611a20ce28558876894fda5c84cc92ce4e833"
+    },
+    {
+      "file": "screenshots/grid-en-768-receipt.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "685bce7e8b8b5247f34778f6c3acade0de1df4a01e8df0cf5ac6e4efc242d9b8"
+    },
+    {
+      "file": "screenshots/grid-en-768-source.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "578bba3f4a471198bb80c61c6929f9807610dd4bb7114b420cc8fa924218b741"
+    },
+    {
+      "file": "screenshots/grid-en-768-workspace.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "4f3a0c649825375b724de1ebd8c72c922d75a58d981e604f511734ac3b08aa1d"
+    },
+    {
+      "file": "screenshots/grid-zh-1440-claim.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "67d518b8d6646f0652c54bd517594ef889d24700fb8a5d6023d3f67f75057574"
+    },
+    {
+      "file": "screenshots/grid-zh-1440-comparison.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "999d1dbf08cedd1af71f657bba157bc665537a966f91712e1eb4517ef49b0e05"
+    },
+    {
+      "file": "screenshots/grid-zh-1440-factor.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "a8a3af62af98283653461420ac40416d7410eb4e938a25f990e11d6906918574"
+    },
+    {
+      "file": "screenshots/grid-zh-1440-insufficiency.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "4341354a0404085642a7c490d789e4af227194607f3252746457e008eeaef703"
+    },
+    {
+      "file": "screenshots/grid-zh-1440-programme.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "e2b26c79687063ecdebe925959ba0fd339f6533681b42727da4475e763179525"
+    },
+    {
+      "file": "screenshots/grid-zh-1440-projects.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "43c210e086a2da384862bce179ee63922b919a6afcbb4fceb13ced246ae63f28"
+    },
+    {
+      "file": "screenshots/grid-zh-1440-receipt.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "de19359c94b4bb7a43565721f722913b259dc065f86b65fc6de1e3ba48240cfc"
+    },
+    {
+      "file": "screenshots/grid-zh-1440-source.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "ac06f1d3ea0ebc98b2e358ce92c10be69ebffcbd64886c0693decf3a54d8bde7"
+    },
+    {
+      "file": "screenshots/grid-zh-1440-workspace.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "e2bb0832085ccbfbcb7ecbc237bc9c9eec1077dde3a84f514abbf28c4c1b8df0"
+    },
+    {
+      "file": "screenshots/grid-zh-320-claim.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "c7bae051924c30f6797ebb10218c0d789b819e0dfc36fdaa9ae477e7fa7c6a8a"
+    },
+    {
+      "file": "screenshots/grid-zh-320-comparison.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "d9744f45d95aa9c78923ca1b45f28d855c8c6413ae5ba8032358a83266cb6cfb"
+    },
+    {
+      "file": "screenshots/grid-zh-320-factor.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "f68fb0b976fcd9d9614838dcbaef9a10f6fa23e6b5d469db9fee7615e2722fdf"
+    },
+    {
+      "file": "screenshots/grid-zh-320-insufficiency.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "b34581173478001dd0895041419d406703c4a86c75bdcd8b9d28442ba85adb5f"
+    },
+    {
+      "file": "screenshots/grid-zh-320-programme.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "f77c636ac6fcfb0579fdaea27483b2db13e0a2e967666bc8405e7b1786f64bc2"
+    },
+    {
+      "file": "screenshots/grid-zh-320-projects.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "edaca876dafe859e9590eeca2a4d0e43dc0c2a86dfd4381dec35447c5809b44f"
+    },
+    {
+      "file": "screenshots/grid-zh-320-receipt.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "edf7abf4d2002e603a035717d31a6b052ed39dfcab55ead517348e796a30cc92"
+    },
+    {
+      "file": "screenshots/grid-zh-320-source.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "84d5009915b5ac0b0c8eb87d5ff60d4771f7d2f054dcc699c3b70277b5b85ebd"
+    },
+    {
+      "file": "screenshots/grid-zh-320-workspace.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "975bb0a6411fd4570dcd4624f47e924ab36a3d6a82d5551a33cf44a36aefc0e6"
+    },
+    {
+      "file": "screenshots/grid-zh-390-claim.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "823e48493a996558753554cdff1fd88e95b4caaad7af7ec3b2a1eb41f9f9d548"
+    },
+    {
+      "file": "screenshots/grid-zh-390-comparison.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "c75d75a89cac5f97ee9c5ec39634951a552272f395cdc84f9589a9d657ec385a"
+    },
+    {
+      "file": "screenshots/grid-zh-390-factor.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "420697664fef525803104e1c09e2425e902e6bf67edf7d4e80872e035d8a5b25"
+    },
+    {
+      "file": "screenshots/grid-zh-390-insufficiency.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "4a6d8cfcb02114d9a22bcb1cfe137535d11e0653f1dd1d856c3af683f2154333"
+    },
+    {
+      "file": "screenshots/grid-zh-390-programme.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "1b344e65a8a0b2616c0e03bf711496fdd336d523c5fab5ebe8f0d193404e8116"
+    },
+    {
+      "file": "screenshots/grid-zh-390-projects.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "4cca6e9e98ca3fdcea7b6c3ac9d7b270517da994f6c87db4286ce09ce358a722"
+    },
+    {
+      "file": "screenshots/grid-zh-390-receipt.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "6b77319287f1120a3eb6192229f04a29f43259738b61d7c340408741cd45add6"
+    },
+    {
+      "file": "screenshots/grid-zh-390-source.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "7ec6a5302f8173cd49dd944ce63bb8ef9612b56e28f19468d2cb4f6586d6cc67"
+    },
+    {
+      "file": "screenshots/grid-zh-390-workspace.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "f6c13a6e1ddd85aa47c78c93613c56f463415c94ec489ba5d0e2143ad936a0e7"
+    },
+    {
+      "file": "screenshots/grid-zh-768-claim.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "b02f9764433f14e8674da25e86e4e8464338ea4cf9c698c16d0a1cdf8d8483d5"
+    },
+    {
+      "file": "screenshots/grid-zh-768-comparison.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "04fde40bb2a6a0d60ecfcce612695f11553e02d5e20ef1cb42423c109c5e4f8d"
+    },
+    {
+      "file": "screenshots/grid-zh-768-factor.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "17bd483be267aa6e85d912afe055e525a1d3a32bb685fd75e331dbb36c1f75ba"
+    },
+    {
+      "file": "screenshots/grid-zh-768-insufficiency.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "67c620bdf2b94ec22d80bb455bd4a73b7aa7fd52e3dcc61702a4894f772b858a"
+    },
+    {
+      "file": "screenshots/grid-zh-768-programme.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "49b6d9c7cf06caebd6899ab0a443d4d55c1bcc00b10e144baa185db9ab757a45"
+    },
+    {
+      "file": "screenshots/grid-zh-768-projects.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "b2292629db97f071c24fd5a4363ea6beb1dcff63f4cc306c43e4275b0ab16239"
+    },
+    {
+      "file": "screenshots/grid-zh-768-receipt.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "9e786915efb1eb7f48158353bc587b5acec0534e00f99607f1c9200e05641574"
+    },
+    {
+      "file": "screenshots/grid-zh-768-source.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "9588310387ad3a122fa861529b657fde162fed0c66e3157a97b8cb690f0a1924"
+    },
+    {
+      "file": "screenshots/grid-zh-768-workspace.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "f8f686a2de7289f5a7d8005852087109d9b66951d63e33f7bcd327dc1f670e4d"
+    },
+    {
+      "file": "screenshots/hero-en-1440-comparison-selection.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "4e32ac95eea33a7b2d989d69b673be0c660da5dd3985683d24e05259fb6a7902"
+    },
+    {
+      "file": "screenshots/hero-en-1440-receipt-reopened.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "d4bcc3c23ec59ebc8dcbe772765a2e489b3dcbad69fc14aa8fcac2365ce3964e"
+    },
+    {
+      "file": "screenshots/hero-en-1440-receipt.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "d4bcc3c23ec59ebc8dcbe772765a2e489b3dcbad69fc14aa8fcac2365ce3964e"
+    },
+    {
+      "file": "screenshots/hero-en-1440-review-long-draft.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "9b594ff1990947977c3de1684ea64c0a67ba29a4ae1e72975c3ef997aef6bb19"
+    },
+    {
+      "file": "screenshots/hero-en-1440-validation.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "398a00da964711973e3baf5df88285a410da8f72ce5c710e410c1d6ba08cf7f2"
+    },
+    {
+      "file": "screenshots/hero-en-320-comparison-selection.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "98f64054465b480642cf593263b92fbb40a130a091a571f966e8d0ea7219aeb1"
+    },
+    {
+      "file": "screenshots/hero-en-320-receipt-reopened.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "be8c621a71479ff5306ed5dfae53e52911aca00ba25390b8e785ed71936d8274"
+    },
+    {
+      "file": "screenshots/hero-en-320-receipt.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "93020936378214bd62a7bd9cb1472d7f24ddb6b6099faa16bf094e370205f0cf"
+    },
+    {
+      "file": "screenshots/hero-en-320-review-long-draft.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "738ff3d6d8e15694e6981b2bc0365070417add23cc92a07ed8f4b32dc34d2545"
+    },
+    {
+      "file": "screenshots/hero-en-320-validation.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "de2609f3774fb04d4b4c6208416a13f87a129f7e89b7f8e76510b4861c2377ca"
+    },
+    {
+      "file": "screenshots/hero-en-390-comparison-selection.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "0a368d74d1ce017a2ce4d1e20ccd3e4cc538456ee47c8dacd51e82ddbf92e34c"
+    },
+    {
+      "file": "screenshots/hero-en-390-receipt-reopened.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "61bec0a30859e709850c3502d2321c9ab9f84f971a530130e97ce863095f7652"
+    },
+    {
+      "file": "screenshots/hero-en-390-receipt.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "d6d8b027ff7978950df3a19b598b6b79f88719eab542760a4eda1b53732e7e74"
+    },
+    {
+      "file": "screenshots/hero-en-390-review-long-draft.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "a54094071de1333090f92bb92a48b7ccc0aee96c912cc8f55efa731f67889bd4"
+    },
+    {
+      "file": "screenshots/hero-en-390-validation.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "e112fc9d2e8b968f1c84c81be2974ee9d15d21c5fe5423e71a3584dc8ebc61e6"
+    },
+    {
+      "file": "screenshots/hero-en-768-comparison-selection.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "5d051deb68c5736d510c80be155f1adefda164552fa97803d305017aee9919d9"
+    },
+    {
+      "file": "screenshots/hero-en-768-receipt-reopened.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "2bfac4a191bb49642d269b3b291da3923c13fb29f32b85a7bc50cf3ecfc427a7"
+    },
+    {
+      "file": "screenshots/hero-en-768-receipt.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "0017c5ce547e029541fe87b59b5563e94741b01068bec1818728a9f99d57cf77"
+    },
+    {
+      "file": "screenshots/hero-en-768-review-long-draft.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "9839b1d80b440a2c4c11aaea367898201937262ffc912c54e70d833bdb1ab179"
+    },
+    {
+      "file": "screenshots/hero-en-768-validation.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "8a3a56930b7ba4519bb309f620552edb605c524f426eeadfd21ec09f2ba1d5d2"
+    },
+    {
+      "file": "screenshots/hero-zh-1440-comparison-selection.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "aef18f65068af58576d40319402a9619649971bdd7938f457fe75dc8be9a0247"
+    },
+    {
+      "file": "screenshots/hero-zh-1440-receipt-reopened.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "b08ef075888ee4d649a32dddb95810bb7ea535c026d6e80b2b8026a6c6a942e4"
+    },
+    {
+      "file": "screenshots/hero-zh-1440-receipt.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "9a21f7e659749a63fbd078bba1cd33ed722f7769e9993f5871379bdd47d38b85"
+    },
+    {
+      "file": "screenshots/hero-zh-1440-review-long-draft.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "91136f59615ed182fa264dfe9f3bf62d32d6264a1c3b5c1f1e870f655e4d4495"
+    },
+    {
+      "file": "screenshots/hero-zh-1440-validation.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "06ccba877a93904bff82e7c21fb94f1c9f691eb4d5596448d059d42ad31ecdf9"
+    },
+    {
+      "file": "screenshots/hero-zh-320-comparison-selection.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "33e71bccd070eef64b28f06566313ec0399b73a661a86e8648fe234d7ebf0001"
+    },
+    {
+      "file": "screenshots/hero-zh-320-receipt-reopened.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "378146f11c89fad87ebdeb099ef78f744a8cd6bd7ac1410d8a404afde4c0c71a"
+    },
+    {
+      "file": "screenshots/hero-zh-320-receipt.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "5616d09016f856b088f3c1091246381a6103e324d876a830f892f3bc4864ce95"
+    },
+    {
+      "file": "screenshots/hero-zh-320-review-long-draft.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "168e57e492fec2fc4bd228333efbed64f90ee4980fed69898d87ab786eeae12a"
+    },
+    {
+      "file": "screenshots/hero-zh-320-validation.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "34dc52bdcc2bc2b10a180dbc5256182b20c161649c897a5351645e817a1db3ef"
+    },
+    {
+      "file": "screenshots/hero-zh-390-comparison-selection.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "437d2594f466152c8386b1a7af45742730e556140f9d9e2f20532d268cbd4daf"
+    },
+    {
+      "file": "screenshots/hero-zh-390-receipt-reopened.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "e24fd3fe635a31d2268c5a4ad358b86533c23be8b136f64316b6fe6e10e47587"
+    },
+    {
+      "file": "screenshots/hero-zh-390-receipt.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "e586a87d7269f3a76bed59fda4c28be2c0e561044506ffe117ce12fa108d1c8d"
+    },
+    {
+      "file": "screenshots/hero-zh-390-review-long-draft.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "dc78a5b3b543517509b4b12dfc635ac83cca49c8f471542e959d78eb83a73724"
+    },
+    {
+      "file": "screenshots/hero-zh-390-validation.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "640459806cb764084e6d57d31bfbb221c4567822fb72fe758284a14f1c4dd84f"
+    },
+    {
+      "file": "screenshots/hero-zh-768-comparison-selection.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "19f1bd266b300acd12a3673b4a295bfbe132d61306b0fd8d4448c4a0ebb56feb"
+    },
+    {
+      "file": "screenshots/hero-zh-768-receipt-reopened.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "9640c3eb0a847cdd42657874f6f3d047c78022206a01c7d2d5be1494d95f1d07"
+    },
+    {
+      "file": "screenshots/hero-zh-768-receipt.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "70194aeac7aa1af63a3c0f14d857373debb90743063247c77ce32ca0d4b03697"
+    },
+    {
+      "file": "screenshots/hero-zh-768-review-long-draft.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "df4186340000fb64370aa2a2c6f2bb87c6c73e084ac01aa662861951a1a21a41"
+    },
+    {
+      "file": "screenshots/hero-zh-768-validation.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "9b0b08627de3e15fda5dfd41302d1a810c32e96599622e71b76254a8d4cf8863"
+    },
+    {
+      "file": "screenshots/m01-en-claim-open.jpg",
+      "size": [
+        1440,
+        864
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": false,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "18cb4eb9948ff320454838e0444d3b81c2dd99875f1e89a3b88f9fd2ed970cd6"
+    },
+    {
+      "file": "screenshots/m01-en-dialog.jpg",
+      "size": [
+        1440,
+        864
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": false,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "ed6c95d6d47526a6c57cfc54b1fd40006e805a199bb3e6bd40b43b64e80615b6"
+    },
+    {
+      "file": "screenshots/m01-en-evidence-close.jpg",
+      "size": [
+        1440,
+        864
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": false,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "fb3b57cc465405aac8cc3a9d1ae2bd3f07b262923c5f3b204682a6bb1b06b271"
+    },
+    {
+      "file": "screenshots/m01-en-receipt.jpg",
+      "size": [
+        1440,
+        864
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": false,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "66f88e38306cdb790f6af95b78ab8bd8333641cd3b3f58163f76891a307e94a0"
+    },
+    {
+      "file": "screenshots/m01-en-source-close.jpg",
+      "size": [
+        1440,
+        864
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": false,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "f638ba2124914350836ccb156bbee33d2b8f1ad9951e873664fdd98c2a0f2fce"
+    },
+    {
+      "file": "screenshots/m01-en-source-open.jpg",
+      "size": [
+        1440,
+        864
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": false,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "d65a02c6aabe35cfc8d270e8a4cfd14d8067c1cb2e257a7d06a1234cb903e3ac"
+    },
+    {
+      "file": "screenshots/m01-en-validation.jpg",
+      "size": [
+        1440,
+        864
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": false,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "40aba21b841fad8dd52d3ce770f92eb1e16eafb8eeb064783f023dad4094e2f8"
+    },
+    {
+      "file": "screenshots/m01-m06-en-access-change.jpg",
+      "size": [
+        1440,
+        864
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": false,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "7f3254b9dba26d6ec2edf3a15beb594711ff4f706de52bf1e854a22370b877dd"
+    },
+    {
+      "file": "screenshots/m01-m06-zh-access-change.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "479442aba102d08ec99b15d0929d9243e1f1f164e83aa1d5fba43b350b1fc6b0"
+    },
+    {
+      "file": "screenshots/m01-zh-claim-open.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "b8c2f7608a5dbb967e2f301e24499924696b3de60b2970d0aca6845b9abb0b41"
+    },
+    {
+      "file": "screenshots/m01-zh-dialog.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "6e529199d5b76ce173330fb1438c228564e0a9dec485b179115d173ed8dfae97"
+    },
+    {
+      "file": "screenshots/m01-zh-evidence-close.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "aa30d3759e48bc0be427e05e44be7992e78de8d60f261880f8a44606c8d49d5e"
+    },
+    {
+      "file": "screenshots/m01-zh-receipt.jpg",
+      "size": [
+        1440,
+        864
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": false,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "67ab5b05bc7ef77d2af825cbe1a5403b643eb571c394ac5c41d9d728d7abc30b"
+    },
+    {
+      "file": "screenshots/m01-zh-source-close.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "8aa9105d4d67ce52057b783682a6ac83fd017640cb9018f352948a510463eca3"
+    },
+    {
+      "file": "screenshots/m01-zh-source-open.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "40b4ffbb63da2c65f2dfaa6e6214c635173ec4eedce4ebf1de840e24279a6649"
+    },
+    {
+      "file": "screenshots/m01-zh-validation.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "4b3224244c41323ecc307baeab4f1a37ee29bb03517c92ab65c2bfde19e68f3c"
+    },
+    {
+      "file": "screenshots/recapture-en-review-390.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "beee83f372b61c676e96c27a3c750ac1dd9aeab93bb9b4fa2e3108c2fc869130"
+    },
+    {
+      "file": "screenshots/recapture-en-review-768.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "8bea046101cc009328cfe157775b7dfd61b0da79b42fd9f22a9d193941fbaa42"
+    },
+    {
+      "file": "screenshots/zh-1440-comparison.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "bd51e7cf6c7801b4018f9d74b884273d607ad1ac947f02d7415d7e6198134682"
+    },
+    {
+      "file": "screenshots/zh-1440-confirmed-receipt.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "832f863d8e075146e27bdc40413c8df24e2433c980e8fb780f1b5ff1afb7df4b"
+    },
+    {
+      "file": "screenshots/zh-1440-factor-panel.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "b57fc1d1908156204d7c970b681d7ba58f83735295842478c561b96409c9fbc9"
+    },
+    {
+      "file": "screenshots/zh-1440-factor-summary.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "23fb9a6a47c4e82fb426ecdc54f897b2ce70af3b8415d9f0a3634dfe27fa2966"
+    },
+    {
+      "file": "screenshots/zh-1440-insufficiency.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "e7d0844ac343e3fd33e35f7e165d5d1df9ed0f7efb0d45d76f0c706bd3d0be88"
+    },
+    {
+      "file": "screenshots/zh-1440-programme-locator-settled.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "b20e2df6c85ca13b8e8d2469beaedf5d326638a3c6b8f813419ad61761afd1a3"
+    },
+    {
+      "file": "screenshots/zh-1440-programme-locator.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "9c157ba124264eaf13224998dcd27811015c7dc36b2f50711cfd743ca33b18a3"
+    },
+    {
+      "file": "screenshots/zh-1440-project-actions.jpg",
+      "size": [
+        1440,
+        864
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": false,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "1ffd6fc458bdbf369a0d22d5bf61c340cc8f4247c9912920b81299cb4c9ecd55"
+    },
+    {
+      "file": "screenshots/zh-1440-projects.jpg",
+      "size": [
+        1440,
+        864
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": false,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "a8e4f1fa194457532d46e23e005cf532706c39a3e28fe3d8525ed41e87ecc8e3"
+    },
+    {
+      "file": "screenshots/zh-1440-receipt-reopened.jpg",
+      "size": [
+        1440,
+        864
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": false,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "02e04389ef03a230c8c940e8fd5d51b70d6fc92067040b81438893626bc5dae7"
+    },
+    {
+      "file": "screenshots/zh-1440-server-error-corrected.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "9d04944e00e9d38953fb64e6f4076116f8c5e87ba631377a7d5457563b14578d"
+    },
+    {
+      "file": "screenshots/zh-1440-server-error.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "57a9b5db20dc3993dea93e27e57e7e69f74ed687605906f7522144eb94bc4c63"
+    },
+    {
+      "file": "screenshots/zh-1440-workspace.jpg",
+      "size": [
+        1440,
+        864
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": false,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "021bff900e33dfc714b212ada764693ba850f8c278fb538d8e068b5adb2e8f6c"
+    },
+    {
+      "file": "screenshots/zh-320-server-error-corrected.jpg",
+      "size": [
+        320,
+        740
+      ],
+      "measuredCSSViewport": [
+        320,
+        740
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "fbd004fc5b937485d0fc79399ebe80e2b666d0cfad9d12615beb788da9b12876"
+    },
+    {
+      "file": "screenshots/zh-320-server-error.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "d954207a46ea08e90fe743898213d7de8403ece9275aadaee6815d7ab9ba8f3c"
+    },
+    {
+      "file": "screenshots/zh-390-evidence-unavailable.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "9c71d6d406ea3a2d0d9ccce9c981d4152aa3cc7b619679f8ae2eedcb5662037b"
+    },
+    {
+      "file": "screenshots/zh-390-server-error-corrected.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "312f0324e9c179e6e341984e1cc3fc05d1e3a2dce207ec96a75ace482a80d7b1"
+    },
+    {
+      "file": "screenshots/zh-390-server-error.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "d7bff6f4b3d1642a0e11923736fe10ff812a2f71902ff69f4aab06d538ad2beb"
+    },
+    {
+      "file": "screenshots/zh-390-stale-comparison.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "ccbde0d0bc46471539350334a8e1eb1db8e30db4fcf1d259b3efd26fd69f034d"
+    },
+    {
+      "file": "screenshots/zh-390-stale-error.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "504885fc334695cdf4174c8d13180a8566188f3cf9d4b5f6db8fd072dd3b1458"
+    },
+    {
+      "file": "screenshots/zh-390-stale-proposal-unavailable.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "365e110d53a1a579a4e053bb9b1720f2f36f1b1631af323573171c756e8ef8ca"
+    },
+    {
+      "file": "screenshots/zh-768-claim.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "00fbf27aba379f427d92395fd0370095e74f4e244a0e41c7de8d7bdc9f63ca86"
+    },
+    {
+      "file": "screenshots/zh-768-review-long-draft.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "482fc621313e9e10ce4a0675f17169dc0b668151d5279609961083b8f19b700a"
+    },
+    {
+      "file": "screenshots/zh-768-server-error-corrected.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "5612a6ad774c100a1e4be966f02f35595db84ba036050a55304fe95341ecc102"
+    },
+    {
+      "file": "screenshots/zh-768-server-error.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "40c732556643d8d882371ec35dc8aa8b9f939d004dafb77d8182f946333185f0"
+    },
+    {
+      "file": "screenshots/zh-768-source-focus.jpg",
+      "size": [
+        768,
+        1024
+      ],
+      "measuredCSSViewport": [
+        768,
+        1024
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "8a87c7e14509a2cbb8e96a5a6ef4c951f663950ab1182a7cba5c4cd85e7f7ad8"
+    },
+    {
+      "file": "screenshots/zh-selection-changed-daan.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "ffdce62c1d22468709e793c9c3eb7475f4176ba2ee946090f8ad13cbefb0c4a3"
+    },
+    {
+      "file": "screenshots/zh-selection-restored-canonical.jpg",
+      "size": [
+        1440,
+        900
+      ],
+      "measuredCSSViewport": [
+        1440,
+        900
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "6368cfc842e3495a9643397ca5ce8cfafb1889bb0114cd21fb4f1e33f8a85025"
+    },
+    {
+      "file": "screenshots/zh-server-error.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "measuredCSSViewport": [
+        390,
+        844
+      ],
+      "pixelMatchesCSS": true,
+      "imageInfoKeys": [
+        "jfif",
+        "jfif_density",
+        "jfif_unit",
+        "jfif_version"
+      ],
+      "EXIFEntries": 0,
+      "OCRExit": 0,
+      "OCRSha256": "19081a5ffc01bdeb72f982ff681eac0b79047eb614992c2677f8c536f542fd72"
+    }
+  ],
+  "visualReview": {
+    "status": "COMPLETE_ARTIFACT_REVIEW",
+    "contactSheets": 10,
+    "all174Inspected": true,
+    "fullResolutionSpotChecks": [
+      "screenshots/en-320-server-error-corrected.jpg",
+      "screenshots/grid-zh-320-source.jpg",
+      "screenshots/grid-zh-1440-workspace.jpg"
+    ],
+    "scope": "Privacy/artifact/content review, not complete accessibility or human Chinese acceptance. 14 pixel/CSS mismatches excluded from exact-dimension visual acceptance; filename locale errors documented separately.",
+    "newFindings": "S9-F02 READY/GOOD visible; other findings established by live DOM/routes/catalog. No additional defect inferred from screenshot capture mismatches."
+  }
+}

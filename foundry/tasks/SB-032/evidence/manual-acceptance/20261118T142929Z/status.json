@@ -1,0 +1,32 @@
+{
+  "runId": "20261118T142929Z",
+  "state": "CLOSED_INCOMPLETE_DEFERRED_BY_USER",
+  "currentCase": null,
+  "awaiting": null,
+  "M-01": "DEFERRED_BY_USER_NOT_VERIFIED",
+  "M-06": "SPEECH_DEFERRED_BY_USER; DOM_PASS_RETAINED",
+  "M-05": "NOT_STARTED; reviewed live-clock method not found in current records",
+  "M-02": "NOT_STARTED; safe LAN method must be validated before physical testing",
+  "M-07": "NOT_STARTED; HUMAN_REVIEW_REQUIRED",
+  "securityPerformance": "NOT_STARTED; prior explicit hold retained; local demo preparation can proceed",
+  "newConfirmedP0P1P2": 0,
+  "productSourceChanged": false,
+  "publication": "NOT_PERFORMED",
+  "cleanup": "PASS",
+  "lastCase": "M-01-EN-A",
+  "nextFocus": "LOCAL_DEMO_READINESS",
+  "deferral": {
+    "at": "2026-11-19T03:17:47.132278+00:00",
+    "decision": "DEFERRED_BY_USER",
+    "scope": [
+      "M-01 actual VoiceOver speech",
+      "M-06 remaining speech association"
+    ],
+    "reason": "User requested: for now we can skip this and focus on more pressing things to get our demo ready",
+    "actualSpeechPassClaimed": false,
+    "releaseGateWaiver": false,
+    "nextFocus": "Local demo operational readiness and concise core-journey rehearsal",
+    "productChangesAuthorizedByThisDecision": false,
+    "deploymentOrMergeAuthorizedByThisDecision": false
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "before": {
+    "fields": [
+      {
+        "checked": false,
+        "id": "review-title",
+        "selected": "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3",
+        "tag": "SELECT",
+        "type": "select-one",
+        "value": "CHECK"
+      },
+      {
+        "checked": false,
+        "id": "review-rationale",
+        "selected": "Validate the imported-stone and lighting assumptions using the linked historical evidence.",
+        "tag": "SELECT",
+        "type": "select-one",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "checked": false,
+        "id": "review-assignee",
+        "selected": "Mei Lin",
+        "tag": "SELECT",
+        "type": "select-one",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "checked": false,
+        "id": "review-dueDate",
+        "selected": null,
+        "tag": "INPUT",
+        "type": "date",
+        "value": ""
+      },
+      {
+        "checked": false,
+        "id": "review-confirmation",
+        "selected": null,
+        "tag": "INPUT",
+        "type": "checkbox",
+        "value": "on"
+      }
+    ],
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&proposal=proposal_546a9a02-e728-4552-8cd5-0fc8fa35ac63&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue="
+  },
+  "locale": {
+    "fields": [
+      {
+        "checked": false,
+        "id": "review-title",
+        "selected": "確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+        "tag": "SELECT",
+        "type": "select-one",
+        "value": "CHECK"
+      },
+      {
+        "checked": false,
+        "id": "review-rationale",
+        "selected": "依連結的歷史佐證資料，檢核進口石材與照明假設。",
+        "tag": "SELECT",
+        "type": "select-one",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "checked": false,
+        "id": "review-assignee",
+        "selected": "林美玲",
+        "tag": "SELECT",
+        "type": "select-one",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "checked": false,
+        "id": "review-dueDate",
+        "selected": null,
+        "tag": "INPUT",
+        "type": "date",
+        "value": ""
+      },
+      {
+        "checked": false,
+        "id": "review-confirmation",
+        "selected": null,
+        "tag": "INPUT",
+        "type": "checkbox",
+        "value": "on"
+      }
+    ],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&proposal=proposal_546a9a02-e728-4552-8cd5-0fc8fa35ac63&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue="
+  },
+  "refresh": {
+    "fields": [
+      {
+        "checked": false,
+        "id": "review-title",
+        "selected": "確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+        "tag": "SELECT",
+        "type": "select-one",
+        "value": "CHECK"
+      },
+      {
+        "checked": false,
+        "id": "review-rationale",
+        "selected": "依連結的歷史佐證資料，檢核進口石材與照明假設。",
+        "tag": "SELECT",
+        "type": "select-one",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "checked": false,
+        "id": "review-assignee",
+        "selected": "林美玲",
+        "tag": "SELECT",
+        "type": "select-one",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "checked": false,
+        "id": "review-dueDate",
+        "selected": null,
+        "tag": "INPUT",
+        "type": "date",
+        "value": ""
+      },
+      {
+        "checked": false,
+        "id": "review-confirmation",
+        "selected": null,
+        "tag": "INPUT",
+        "type": "checkbox",
+        "value": "on"
+      }
+    ],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&proposal=proposal_546a9a02-e728-4552-8cd5-0fc8fa35ac63&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue="
+  },
+  "back": {
+    "fields": [
+      {
+        "checked": false,
+        "id": "review-title",
+        "selected": "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3",
+        "tag": "SELECT",
+        "type": "select-one",
+        "value": "CHECK"
+      },
+      {
+        "checked": false,
+        "id": "review-rationale",
+        "selected": "Validate the imported-stone and lighting assumptions using the linked historical evidence.",
+        "tag": "SELECT",
+        "type": "select-one",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "checked": false,
+        "id": "review-assignee",
+        "selected": "Mei Lin",
+        "tag": "SELECT",
+        "type": "select-one",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "checked": false,
+        "id": "review-dueDate",
+        "selected": null,
+        "tag": "INPUT",
+        "type": "date",
+        "value": ""
+      },
+      {
+        "checked": false,
+        "id": "review-confirmation",
+        "selected": null,
+        "tag": "INPUT",
+        "type": "checkbox",
+        "value": "on"
+      }
+    ],
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&proposal=proposal_546a9a02-e728-4552-8cd5-0fc8fa35ac63&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue="
+  },
+  "forward": {
+    "fields": [
+      {
+        "checked": false,
+        "id": "review-title",
+        "selected": "確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料",
+        "tag": "SELECT",
+        "type": "select-one",
+        "value": "CHECK"
+      },
+      {
+        "checked": false,
+        "id": "review-rationale",
+        "selected": "依連結的歷史佐證資料，檢核進口石材與照明假設。",
+        "tag": "SELECT",
+        "type": "select-one",
+        "value": "VALIDATE_HISTORY"
+      },
+      {
+        "checked": false,
+        "id": "review-assignee",
+        "selected": "林美玲",
+        "tag": "SELECT",
+        "type": "select-one",
+        "value": "assignee_a4bbeecb530946d524aa25d1ca4fdb6b"
+      },
+      {
+        "checked": false,
+        "id": "review-dueDate",
+        "selected": null,
+        "tag": "INPUT",
+        "type": "date",
+        "value": ""
+      },
+      {
+        "checked": false,
+        "id": "review-confirmation",
+        "selected": null,
+        "tag": "INPUT",
+        "type": "checkbox",
+        "value": "on"
+      }
+    ],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&proposal=proposal_546a9a02-e728-4552-8cd5-0fc8fa35ac63&reviewTitle=CHECK&reviewRationale=VALIDATE_HISTORY&reviewAssignee=assignee_a4bbeecb530946d524aa25d1ca4fdb6b&reviewDue="
+  }
+}

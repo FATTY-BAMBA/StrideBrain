@@ -81,6 +81,8 @@ const proposal: ProposalDTO = {
   suggestedAssigneeKey: "mei",
   canAssign: true,
   suggestedDueDate: "2026-11-20",
+  datePolicyEvaluatedAt: "2026-11-16T04:00:00Z",
+  nextDatePolicyBoundaryAt: "2026-11-16T16:00:00Z",
   minDueDate: "2026-11-16",
   maxDueDate: "2027-11-16",
   expiresAt: "2026-11-16T12:00:00Z",
@@ -97,6 +99,7 @@ const canonical = internalReviewHref("en", proposal.project.projectKey, proposal
 let root: Root;
 let container: HTMLDivElement;
 const evidence = vi.fn();
+let postFetch = vi.fn();
 const scrollIntoView = vi.fn();
 
 describe.each(["en", "zh-TW"] as const)("QA-15 confirmation recovery (%s)", (locale) => {
@@ -122,7 +125,7 @@ describe.each(["en", "zh-TW"] as const)("QA-15 confirmation recovery (%s)", (loc
     const dialog = container.querySelector<HTMLElement>('[role="dialog"]')!;
     const form = container.querySelector<HTMLFormElement>("form")!;
     let finish!: () => void;
-    vi.mocked(fetch).mockImplementation(
+    postFetch.mockImplementation(
       () =>
         new Promise((resolve, reject) => {
           finish = () =>
@@ -175,7 +178,7 @@ describe.each(["en", "zh-TW"] as const)("QA-15 confirmation recovery (%s)", (loc
     expect(window.location.href).toBe(originalHref);
     expect(navigation.push).not.toHaveBeenCalled();
     expect(navigation.replace).not.toHaveBeenCalled();
-    expect(fetch).toHaveBeenCalledOnce();
+    expect(postFetch).toHaveBeenCalledOnce();
     expect(dialog.getAttribute("aria-busy")).toBe("false");
     const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
     if (safeKind === "ACTION_CREATE_FAILED") {
@@ -208,7 +211,7 @@ describe.each(["en", "zh-TW"] as const)("QA-15 confirmation recovery (%s)", (loc
   });
 
   it("preserves field error association and cancel focus return", async () => {
-    vi.mocked(fetch).mockResolvedValue({
+    postFetch.mockResolvedValue({
       json: async () => ({
         kind: "VALIDATION_FAILED",
         requestId: "qa15",
@@ -293,7 +296,21 @@ beforeEach(() => {
   scrollIntoView.mockClear();
   vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
   vi.stubGlobal("CSS", { escape: (value: string) => value });
-  vi.stubGlobal("fetch", vi.fn());
+  // Keep these submission/navigation assertions scoped to POSTs; date guidance reads
+  // use the real hook and are exercised separately by the date-policy regressions.
+  postFetch = vi.fn();
+  vi.stubGlobal(
+    "fetch",
+    vi.fn((url: string, options?: RequestInit) =>
+      options?.method === "POST"
+        ? postFetch(url, options)
+        : Promise.resolve({
+            ok: true,
+            json: async () => ({ kind: "PREPARED", proposal }),
+          } as Response),
+    ),
+  );
+
   navigation.push.mockReset();
   evidence.mockReset();
   const replaceState = window.history.replaceState.bind(window.history);
@@ -321,7 +338,7 @@ describe("QA-05 component navigation race regressions", () => {
       internalReviewHref("en", proposal.project.projectKey, proposal),
     );
     let resolve!: (value: Response) => void;
-    vi.mocked(fetch).mockReturnValue(
+    postFetch.mockReturnValue(
       new Promise((done) => {
         resolve = done;
       }) as Promise<Response>,
@@ -332,7 +349,7 @@ describe("QA-05 component navigation race regressions", () => {
       button.click();
       button.click();
     });
-    expect(fetch).toHaveBeenCalledOnce();
+    expect(postFetch).toHaveBeenCalledOnce();
     await act(async () =>
       resolve({ json: async () => ({ kind: "PREPARED", proposal }) } as Response),
     );
@@ -344,7 +361,7 @@ describe("QA-05 component navigation race regressions", () => {
     await act(async () =>
       container.querySelector<HTMLButtonElement>("#internal-review-entry")!.click(),
     );
-    expect(fetch).toHaveBeenCalledOnce();
+    expect(postFetch).toHaveBeenCalledOnce();
     await act(async () => {
       window.history.replaceState(null, "", canonical);
       renderController(true);
@@ -363,7 +380,7 @@ describe("QA-05 component navigation race regressions", () => {
       "",
       internalReviewHref("en", proposal.project.projectKey, proposal),
     );
-    vi.mocked(fetch).mockResolvedValue({
+    postFetch.mockResolvedValue({
       json: async () => ({ kind: "PROPOSAL_FAILED", requestId: "qa05" }),
     } as Response);
     await act(async () => renderController(false));
@@ -377,11 +394,11 @@ describe("QA-05 component navigation race regressions", () => {
     await act(async () =>
       container.querySelector<HTMLButtonElement>("#internal-review-entry")!.click(),
     );
-    expect(fetch).toHaveBeenCalledTimes(2);
+    expect(postFetch).toHaveBeenCalledTimes(2);
   });
 
   it("submits the latest canonical choices after immediate edits and guards duplicate confirmation", async () => {
-    vi.mocked(fetch).mockResolvedValue({
+    postFetch.mockResolvedValue({
       json: async () => ({
         kind: "VALIDATION_FAILED",
         requestId: "qa05",
@@ -399,8 +416,8 @@ describe("QA-05 component navigation race regressions", () => {
       form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
       form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
     });
-    expect(fetch).toHaveBeenCalledOnce();
-    const command = JSON.parse(vi.mocked(fetch).mock.calls[0]![1]!.body as string);
+    expect(postFetch).toHaveBeenCalledOnce();
+    const command = JSON.parse(postFetch.mock.calls[0]![1]!.body as string);
     expect(command).toMatchObject({
       proposalKey: proposal.businessKey,
       title: "Check forecast costs",
@@ -441,7 +458,7 @@ describe("QA-05 component navigation race regressions", () => {
     });
     expect(container.querySelector<HTMLSelectElement>("#review-title")!.value).toBe("CHECK");
     expect(container.querySelector<HTMLInputElement>("#review-dueDate")!.value).toBe("2026-12-20");
-    expect(fetch).not.toHaveBeenCalled();
+    expect(postFetch).not.toHaveBeenCalled();
   });
 
   it("preserves an immediate edit through the shell language link before its href rerenders", async () => {
@@ -515,6 +532,6 @@ describe("QA-05 component navigation race regressions", () => {
       await popped;
     });
     expect(container.querySelector<HTMLSelectElement>("#review-title")!.value).toBe("REVIEW");
-    expect(fetch).not.toHaveBeenCalled();
+    expect(postFetch).not.toHaveBeenCalled();
   });
 });

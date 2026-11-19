@@ -1,0 +1,23 @@
+Browser tab: 1605347227, Title: "StrideBrain", URL: "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_e3eeffb8-e226-490e-b20b-bd98808d5ee4&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023".
+1 AXWebArea StrideBrain, URL: localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_e3eeffb8-e226-490e-b20b-bd98808d5ee4&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023
+	2 link Description: Skip to main content, Value: localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_e3eeffb8-e226-490e-b20b-bd98808d5ee4&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023#main-content
+	3 container
+		4 container StrideBrain BY PRIMESTRIDE AI
+			5 text StrideBrain
+			6 text BY PRIMESTRIDE AI
+		7 container Projects
+			8 link Description: Home, Value: localhost:3000/en
+			9 link Description: Projects, Value: localhost:3000/en/projects
+			10 link Description: Knowledge, Value: localhost:3000/en/knowledge
+			11 link Description: StrideBrain, Value: localhost:3000/en/stridebrain
+			12 link Description: Settings, Value: localhost:3000/en/settings
+	14 container
+		15 text Controlled synthetic demo
+		16 container 繁中 / EN
+			17 link Description: 繁中, Value: localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_e3eeffb8-e226-490e-b20b-bd98808d5ee4&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023
+			18 link Description: EN, Value: localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_e3eeffb8-e226-490e-b20b-bd98808d5ee4&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023
+	19 container Loading comparable projects
+	20 container
+		21 text Synthetic demo data only · No real customer data Live demo-domain cutover has not occurred
+
+The focused UI element is 1 AXWebArea StrideBrain, URL: localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_e3eeffb8-e226-490e-b20b-bd98808d5ee4&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023

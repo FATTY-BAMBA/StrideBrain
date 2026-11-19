@@ -1,0 +1,17 @@
+{
+  "activeId": "review-confirmation",
+  "describedBy": "review-consequence review-confirmation-error",
+  "invalid": "true",
+  "nodes": [
+    {
+      "exists": true,
+      "id": "review-consequence",
+      "text": "⚠ 確認後將建立持續保存的內部事項及稽核紀錄；無法在此畫面撤銷建立。此操作不會核准報價，也不會傳送訊息。"
+    },
+    {
+      "exists": true,
+      "id": "review-confirmation-error",
+      "text": "請確認您已檢視資料依據，並要建立此事項。"
+    }
+  ]
+}

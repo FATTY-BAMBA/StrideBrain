@@ -1,6 +1,10 @@
 import { notFound } from "next/navigation";
 
 import { FoundationPage } from "@/components/ui/foundation-page";
+import { ProjectList } from "@/components/projects/project-list";
+import { createProjectListService } from "@/lib/server/project-workspace-services";
+import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
+import type { ProjectListOutcome } from "@/modules/projects/application/list-authorized-projects";
 import { getCatalog } from "@/modules/localization/catalog";
 import { isSupportedLocale } from "@/modules/localization/config";
 
@@ -15,6 +19,15 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
   }
 
   const catalog = getCatalog(rawLocale);
+  let outcome: ProjectListOutcome = { kind: "UNAVAILABLE" };
+  try {
+    const context = await resolveServerRuntimeContext();
+    if (context) {
+      outcome = await createProjectListService().execute({ ...context, locale: rawLocale });
+    }
+  } catch {
+    // Session/storage failure uses the same non-disclosing unavailable surface.
+  }
 
   return (
     <FoundationPage
@@ -22,15 +35,7 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
       title={catalog["projects.title"]}
       description={catalog["projects.description"]}
     >
-      <div className="empty-state" role="status">
-        <span className="empty-state__symbol" aria-hidden="true">
-          P
-        </span>
-        <div>
-          <strong>{catalog["state.notConnected"]}</strong>
-          <p>{catalog["home.foundationDescription"]}</p>
-        </div>
-      </div>
+      <ProjectList locale={rawLocale} outcome={outcome} />
     </FoundationPage>
   );
 }

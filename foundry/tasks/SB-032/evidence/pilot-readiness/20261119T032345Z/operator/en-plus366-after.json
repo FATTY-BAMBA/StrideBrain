@@ -1,0 +1,49 @@
+{
+  "label": "en-plus366-after",
+  "clock": {
+    "instant": "2027-03-01T04:00:00.000Z",
+    "timezone": "Asia/Taipei",
+    "case": "leap-window"
+  },
+  "tables": {
+    "Action": {
+      "count": 1,
+      "sha256": "b0a6b7959e0b7b5c5bde30b901c528b99d787805dedb6d76d142225e313a4e88"
+    },
+    "AuditEvent": {
+      "count": 1,
+      "sha256": "ba3e60326eb0d0099a29581167eadd325309125dd73618060bed09bcd13c3e96"
+    },
+    "InternalReviewReceipt": {
+      "count": 1,
+      "sha256": "966af565514bf783154dd4697175ac72f8453802d4d93d5580bf35f51ec9087c"
+    },
+    "ProposedAction": {
+      "count": 2,
+      "sha256": "045d5a7d1b0b4efb36d5685dc4feb4287798e0706cf6f1eb749c613d38229d81"
+    }
+  },
+  "actionEvidenceReferences": 15,
+  "proposal": {
+    "businessKey": "proposal_f32f4aec-683a-4d01-a42d-bcea78902e70",
+    "status": "PREPARED",
+    "createdAt": "2027-02-28T20:00:00.000Z",
+    "expiresAt": "2027-02-28T20:30:00.000Z",
+    "consumedAt": null
+  },
+  "receipts": [
+    {
+      "actionId": "action_eda28875-dcb5-4950-b8a0-a15587498290",
+      "createdAt": "2027-02-28T20:00:00.000Z",
+      "dueDate": "2027-03-07T16:00:00.000Z"
+    }
+  ],
+  "actions": [
+    {
+      "businessKey": "action_1f84f357-3bbb-4e41-9c52-5d5500112e31",
+      "dueDate": "2027-03-07T16:00:00.000Z",
+      "createdAt": "2027-02-28T20:00:00.000Z",
+      "updatedAt": "2027-02-28T20:00:00.000Z"
+    }
+  ]
+}

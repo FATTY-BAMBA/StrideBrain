@@ -1,0 +1,57 @@
+{
+  "M-01": {
+    "status": "PARTIAL_NOT_VERIFIED_MANUAL_REQUIRED",
+    "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+    "actualVoiceOverChromeEnabled": true,
+    "bothLocalesExercised": true,
+    "speechAttestation": "PENDING_USER_OBSERVATIONS",
+    "actualSpeechPassClaimed": false,
+    "NVDAWindows": "NOT_AVAILABLE_ON_CURRENT_HOST",
+    "evidence": "human-review/M-01-M-06-speech-attestation.md"
+  },
+  "M-02": {
+    "status": "BLOCKED_DEVICE_ACCESS",
+    "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+    "iPhoneModelIdentifier": "iPhone16,1",
+    "iOS": "26.5",
+    "pairedUSB": true,
+    "Safari": "NOT_SEPARATELY_RECORDED",
+    "Android": "DEVICE_EVIDENCE_REQUIRED_ANDROID; AVAILABILITY_UNKNOWN",
+    "physicalTest": "NOT_RUN",
+    "blocker": "Safe local HTTPS and same-origin one-use session access not configured/validated; plain HTTP LAN is not sufficient.",
+    "evidence": "human-review/M-02-device-protocol.md"
+  },
+  "M-05": {
+    "status": "PARTIAL",
+    "gate": "STAGE_9_HARDENING",
+    "deterministic": "15 selected tests PASS; 165 intentionally filtered out",
+    "liveUIBoundary": "BLOCKED_ISOLATED_CLOCK_METHOD_NOT_ESTABLISHED",
+    "evidence": "M-05-date-evidence.json"
+  },
+  "M-06": {
+    "status": "PARTIAL",
+    "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+    "DOMFocus": "PASS for actual stale, generic access denial and safe server failure in both locales; full server-error four-viewport grid verified",
+    "formDescription": "Existing summary in active form/dialog; aria-describedby and labelled alert verified",
+    "draftPreservation": "PASS observed",
+    "exactEvidenceUnavailable": "NOT_REACHED; authority mutation returned STALE_COMPARISON",
+    "speech": "PENDING_USER_OBSERVATIONS",
+    "evidence": [
+      "observations/m06-server-grid-corrected.json",
+      "observations/m06-en-access-change.json",
+      "observations/m06-zh-access-change.json",
+      "observations/m06-en-stale-768.json",
+      "observations/m06-zh-stale-390.json"
+    ]
+  },
+  "M-07": {
+    "status": "PACKAGE_PREPARED_HUMAN_REVIEW_REQUIRED",
+    "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+    "sourceCopyEntries": 594,
+    "coreChineseGridScreenshots": 36,
+    "observedAdditionalStates": "review, validation, generic server/stale/access errors, Actions, failed selection",
+    "fullStateGrid": "INCOMPLETE for unexecuted conflict/restricted/pending/exact evidence-unavailable cases",
+    "humanApproval": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "evidence": "human-review/M-07-human-review.md"
+  }
+}

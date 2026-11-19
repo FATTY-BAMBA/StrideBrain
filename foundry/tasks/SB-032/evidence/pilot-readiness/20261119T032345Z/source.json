@@ -1,0 +1,10 @@
+{
+  "runId": "20261119T032345Z",
+  "head": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+  "branch": "build/sb-032-stage9-quality-hardening",
+  "buildId": "jZBGrkhs4Ok9XriINHgub",
+  "priorEvidenceFiles": 1686,
+  "scope": "Ordered pilot-readiness gates M-05, M-02, M-07, conditional security, conditional performance, deployment-smoke readiness; no deployment/merge",
+  "M-01": "DEFERRED_BEFORE_BROADER_RELEASE",
+  "M-06": "Existing DOM/focus/error association retained; speech-dependent portion deferred with M-01"
+}

@@ -1,0 +1,1 @@
+{"phase":"after-action","enabled":true,"caseId":"after-action-1794979159886","mapping":"After Action insert, which atomically includes evidence snapshot; covers shared physical write underlying AFTER_ACTION/AFTER_EVIDENCE, not two distinct browser injections.","countsBefore":{"actions":0,"consumed":0,"receipts":0,"audits":0,"actionevidencelinks":0}}

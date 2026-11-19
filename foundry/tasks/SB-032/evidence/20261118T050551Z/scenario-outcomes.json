@@ -1,0 +1,373 @@
+{
+  "scope": "Cumulative Stage9 plan coverage at this run, not 22 complete executions or Stage8 QA counts. Historical outcomes preserved.",
+  "counts": {
+    "PASS": 1,
+    "FAIL": 5,
+    "PARTIAL": 12,
+    "NOT_RUN": 3,
+    "BLOCKED": 1
+  },
+  "scenarios": [
+    {
+      "id": "S9-01",
+      "title": "Exact-candidate setup and production start",
+      "status": "PASS",
+      "reason": "Exact published head and passing exact-head CI recorded; fresh production build/start, eight clean migrations and repeated seed/SQL verified.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "CI matrix",
+        "REL-008",
+        "REL-009",
+        "REL-010"
+      ],
+      "evidence": [
+        "source.json",
+        "BUILD_ID.txt",
+        "commands.jsonl"
+      ]
+    },
+    {
+      "id": "S9-02",
+      "title": "Complete bilingual hero and five-second comprehension",
+      "status": "FAIL",
+      "reason": "Core entry/review/confirmation/receipt journey executed en/zh-TW at four sizes, but S9-F02/F03 localization and S9-F04 selection failure prevent acceptance. Script duration is not five-second human comprehension.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "PUX-001..015",
+        "I18N-002",
+        "I18N-005"
+      ],
+      "evidence": [
+        "observations/hero-journeys.json",
+        "findings.json"
+      ]
+    },
+    {
+      "id": "S9-03",
+      "title": "Ranking, factors and selection",
+      "status": "FAIL",
+      "reason": "Canonical ranking/factor/source observed; real Nanjing→Daan update and restoration both FAILED without new economics (S9-F04).",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "CPI-001..010",
+        "PUX-006",
+        "PUX-007",
+        "PUX-008"
+      ],
+      "evidence": [
+        "observations/selection-change.json",
+        "final-catalog.json"
+      ]
+    },
+    {
+      "id": "S9-04",
+      "title": "Economics authority, abstention and evidence meaning",
+      "status": "FAIL",
+      "reason": "Initial forecast/actual authority, lighting 2/3 abstention and programme/source meaning observed; changing selected set loses economics display because persistence fails (S9-F04). Full authority matrix remains.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "AUTH-001..012",
+        "EVD-001..012",
+        "PUX-009..012"
+      ],
+      "evidence": [
+        "observations/read-only-grid.json",
+        "findings.json"
+      ]
+    },
+    {
+      "id": "S9-05",
+      "title": "Draft and navigation persistence",
+      "status": "PARTIAL",
+      "reason": "Eight edited drafts survived refresh; receipt locale/refresh/back/forward/copied routes passed observed grid. Earlier all-four-field route/evidence persistence observed. Full personas/cross-route coverage remains.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "ACT-001",
+        "ACT-002",
+        "I18N-006",
+        "I18N-007",
+        "REL-005"
+      ],
+      "evidence": [
+        "observations/hero-journeys.json",
+        "observations/receipt-navigation-grid.json"
+      ]
+    },
+    {
+      "id": "S9-06",
+      "title": "Confirmation, receipt and interrupted retry",
+      "status": "PARTIAL",
+      "reason": "Ten intentionally separate actions have matching receipts/audits/confirmed proposals and no duplicate proposal actions. Actions reopen and copied receipts observed; interrupted network retry not run.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "ACT-003..005",
+        "ACT-011",
+        "ACT-012",
+        "REL-007",
+        "PUX-014"
+      ],
+      "evidence": [
+        "cleanup-integrity.json",
+        "observations/hero-journeys.json"
+      ]
+    },
+    {
+      "id": "S9-07",
+      "title": "Keyboard and automated accessibility",
+      "status": "PARTIAL",
+      "reason": "Source modal Tab/Shift+Tab containment, exact source-trigger restoration and hierarchical Escape observed; error focus visible. Automated/full keyboard audit incomplete.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "A11Y-001..010"
+      ],
+      "evidence": [
+        "observations/read-only-grid.json",
+        "observations/m06-server-grid-corrected.json"
+      ]
+    },
+    {
+      "id": "S9-08",
+      "title": "Actual zoom and actual OS reduced-motion regression",
+      "status": "NOT_RUN",
+      "reason": "Chrome zoom and OS reduced motion unchanged this wave; previous Stage 8 results remain historical.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "A11Y-001",
+        "A11Y-002",
+        "A11Y-006",
+        "A11Y-010"
+      ],
+      "evidence": [
+        "observations/browser-closure.json"
+      ]
+    },
+    {
+      "id": "S9-09",
+      "title": "Actual speech and pending announcements",
+      "status": "PARTIAL",
+      "reason": "Actual macOS VoiceOver with Chrome exercised both locales. User speech attestation pending; no speech PASS inferred. Loading accessible name defect S9-F03 observed, not an asserted speech failure.",
+      "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "acceptance": [
+        "A11Y-009",
+        "A11Y-007",
+        "ACT-012"
+      ],
+      "evidence": [
+        "human-review/M-01-M-06-speech-attestation.md"
+      ]
+    },
+    {
+      "id": "S9-10",
+      "title": "Physical mobile native input",
+      "status": "BLOCKED",
+      "reason": "Paired wired iPhone16,1 / iOS26.5 detected; Safari version not recorded. Plain HTTP LAN incompatible with current Secure host-only/session-origin path; trusted local HTTPS/session access not validated. Android availability unknown.",
+      "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "acceptance": [
+        "A11Y-001",
+        "A11Y-006",
+        "A11Y-007",
+        "A11Y-010",
+        "I18N-007",
+        "I18N-008"
+      ],
+      "evidence": [
+        "human-review/M-02-device-inventory.json",
+        "human-review/M-02-device-protocol.md"
+      ]
+    },
+    {
+      "id": "S9-11",
+      "title": "Live generic error description association",
+      "status": "PARTIAL",
+      "reason": "Live stale/access-denial/server errors preserve form aria-describedby, existing summary, alert label, draft and visible focus. Corrected safe-server grid covers both locales/four sizes. Speech pending; literal EVIDENCE_UNAVAILABLE not reached (authority change returned STALE_COMPARISON).",
+      "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "acceptance": [
+        "A11Y-007",
+        "A11Y-009",
+        "ACT-006..009",
+        "ACT-012"
+      ],
+      "evidence": [
+        "observations/m06-server-grid-corrected.json",
+        "confirmation-outcome-events.json"
+      ]
+    },
+    {
+      "id": "S9-12",
+      "title": "Reviewed visual baseline grid",
+      "status": "FAIL",
+      "reason": "174 captures reviewed, including requested settled EN review recaptures; core read-only grid has72captures. S9-F02 normal-mode localization FAIL. 14 pixel/CSS mismatches and preliminary tab-binding captures qualified; conflict/restricted/pending grid incomplete.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "PUX-003..014",
+        "I18N-003..005",
+        "I18N-008",
+        "I18N-009",
+        "A11Y-002",
+        "A11Y-008",
+        "A11Y-010"
+      ],
+      "evidence": [
+        "screenshot-review.json",
+        "artifact-qualifications.json"
+      ]
+    },
+    {
+      "id": "S9-13",
+      "title": "Canonical evidence precision and groundedness report",
+      "status": "PARTIAL",
+      "reason": "Canonical forecast/actual, lighting insufficiency and programme source meaning observed. Full independent quantitative groundedness report remains; failed selection cannot be counted as valid economics.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "CPI targets",
+        "AUTH hero tolerances",
+        "EVD targets",
+        "Quality Constitution quantitative gates"
+      ],
+      "evidence": [
+        "observations/read-only-grid.json"
+      ]
+    },
+    {
+      "id": "S9-14",
+      "title": "Authorization and tenant non-disclosure",
+      "status": "PARTIAL",
+      "reason": "Current authorized temporary denial returns ACTION_NOT_AUTHORIZED with no write and exact restoration; inherited scoped five-persona entry evidence retained. Full security/tenant wave not executed; no broad security PASS.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "SEC-001..016",
+        "AUTH-011",
+        "EVD-008",
+        "EVD-011",
+        "EVD-012"
+      ],
+      "evidence": [
+        "mutation-action-flag-1794979978060.json",
+        "mutation-action-flag-1794980213152.json"
+      ]
+    },
+    {
+      "id": "S9-15",
+      "title": "Freshness, transactional failures and reliability",
+      "status": "PARTIAL",
+      "reason": "Stale project/source and temporary access denial plus safe after-action transaction failure observed/restored without business writes. Full conflict/evidence-unavailable/retry matrix remains.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "ACT-004..010",
+        "REL-001..010",
+        "SEC-013",
+        "PUX-013"
+      ],
+      "evidence": [
+        "cleanup-integrity.json",
+        "confirmation-outcome-events.json"
+      ]
+    },
+    {
+      "id": "S9-16",
+      "title": "Performance and query-plan benchmark",
+      "status": "NOT_RUN",
+      "reason": "Security/baseline-dependent mutating performance wave on hold for required-path P2 defects. Scripted journey seconds are not performance benchmarks.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "Performance matrix",
+        "Stage8 stricter server budgets"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-17",
+      "title": "Leap day and Taipei midnight",
+      "status": "PARTIAL",
+      "reason": "15 selected existing domain/service/PostgreSQL injected-clock tests PASS; leap-day/bounds/Taipei midnight and invalid-write invariants covered below UI. No reviewed live browser/server clock alignment yet.",
+      "gate": "STAGE_9_HARDENING",
+      "acceptance": [
+        "ACT-002",
+        "ACT-006",
+        "ACT-012",
+        "I18N-005"
+      ],
+      "evidence": [
+        "M-05-date-evidence.json",
+        "logs/m05-existing-clock-regressions.log"
+      ]
+    },
+    {
+      "id": "S9-18",
+      "title": "Independent Taiwan Chinese language review",
+      "status": "FAIL",
+      "reason": "Known zh-TW enum/loading-label defects S9-F02/F03 remain. Current screenshot/copy/checklist package prepared; independent human Chinese approval not obtained. Conditional state grid incomplete.",
+      "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "acceptance": [
+        "I18N-001..009",
+        "PUX-001",
+        "AUTH-001..012"
+      ],
+      "evidence": [
+        "human-review/M-07-human-review.md",
+        "findings.json"
+      ]
+    },
+    {
+      "id": "S9-19",
+      "title": "Local production portability and environment preflight",
+      "status": "PARTIAL",
+      "reason": "Fresh restricted-role isolated production preview PASS; restart portability rehearsal remains. Physical-device LAN secure access unresolved.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "CI matrix",
+        "SEC-015",
+        "SEC-016",
+        "REL-010"
+      ],
+      "evidence": [
+        "source.json",
+        "human-review/M-02-device-protocol.md"
+      ]
+    },
+    {
+      "id": "S9-20",
+      "title": "Actual isolated preview smoke — deferred",
+      "status": "NOT_RUN",
+      "reason": "No deployment authorized or performed; no Vercel/DNS changes.",
+      "gate": "BLOCKING_RELEASE_NOT_AUTHORIZED",
+      "acceptance": [
+        "Deployment/release matrix",
+        "Stage9 exact preview exit"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-21",
+      "title": "Rollback, containment, reset and cleanup",
+      "status": "PARTIAL",
+      "reason": "Owned session revoked, issuer stopped, fixture mutations restored, original rows/guards/migrations unchanged;10intentional actions retained. Full rollback/reseed rehearsal remains.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "REL-008",
+        "REL-009",
+        "ACT-004",
+        "ACT-010",
+        "Stage9 recovery"
+      ],
+      "evidence": [
+        "cleanup-integrity.json"
+      ]
+    },
+    {
+      "id": "S9-22",
+      "title": "Independent synthesis and release package",
+      "status": "PARTIAL",
+      "reason": "Three reproduced required-path P2 findings independently classified; evidence/limitations synthesized. Full Stage9 release review remains.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "All blocking matrix requirements",
+        "Quality Constitution release evidence"
+      ],
+      "evidence": [
+        "independent-classification.md",
+        "REPORT.md"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "kind": "app",
+    "ownershipVerified": true,
+    "signal": "SIGTERM",
+    "listenerStopped": true
+  },
+  {
+    "kind": "operator",
+    "ownershipVerified": true,
+    "signal": "SIGTERM",
+    "listenerStopped": true
+  }
+]

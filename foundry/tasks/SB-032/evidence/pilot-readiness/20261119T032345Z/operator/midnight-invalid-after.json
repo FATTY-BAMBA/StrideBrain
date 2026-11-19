@@ -1,0 +1,71 @@
+{
+  "label": "midnight-invalid-after",
+  "clock": {
+    "instant": "2028-02-28T16:00:00.000Z",
+    "timezone": "Asia/Taipei",
+    "case": "midnight-leap-day"
+  },
+  "tables": {
+    "Action": {
+      "count": 3,
+      "sha256": "99e57f75089a49f4914683814c9edb0b24da980396b34f4982d6e7d39d6b3bb8"
+    },
+    "AuditEvent": {
+      "count": 3,
+      "sha256": "780cb1a51801b43d8f0c4ba5de27fe0b636f3a1559d60b64ceea25f399baed46"
+    },
+    "InternalReviewReceipt": {
+      "count": 3,
+      "sha256": "22cfb20924bfa72577641d67f6a9e86b92dacb3a85ef0ae899516f98dd7bd7b9"
+    },
+    "ProposedAction": {
+      "count": 5,
+      "sha256": "86928b5f8c8456015240bb35263ea30113f6df8d383a3b94f2c80d0866f68bfb"
+    }
+  },
+  "actionEvidenceReferences": 45,
+  "proposal": {
+    "businessKey": "proposal_8a7d5fd6-fa12-44aa-ae47-14458e32defd",
+    "status": "PREPARED",
+    "createdAt": "2028-02-28T07:59:59.000Z",
+    "expiresAt": "2028-02-28T08:29:59.000Z",
+    "consumedAt": null
+  },
+  "receipts": [
+    {
+      "actionId": "action_eda28875-dcb5-4950-b8a0-a15587498290",
+      "createdAt": "2027-02-28T20:00:00.000Z",
+      "dueDate": "2027-03-07T16:00:00.000Z"
+    },
+    {
+      "actionId": "action_c7777b64-1716-4c96-8477-5d1ed323c86f",
+      "createdAt": "2027-02-28T20:00:00.000Z",
+      "dueDate": "2027-02-28T16:00:00.000Z"
+    },
+    {
+      "actionId": "action_f6285c17-8fc9-4e60-bea2-190f75fe3809",
+      "createdAt": "2027-02-28T20:00:00.000Z",
+      "dueDate": "2028-02-28T16:00:00.000Z"
+    }
+  ],
+  "actions": [
+    {
+      "businessKey": "action_1f84f357-3bbb-4e41-9c52-5d5500112e31",
+      "dueDate": "2027-03-07T16:00:00.000Z",
+      "createdAt": "2027-02-28T20:00:00.000Z",
+      "updatedAt": "2027-02-28T20:00:00.000Z"
+    },
+    {
+      "businessKey": "action_859e914d-38f0-489b-b8a5-068ead804dc5",
+      "dueDate": "2027-02-28T16:00:00.000Z",
+      "createdAt": "2027-02-28T20:00:00.000Z",
+      "updatedAt": "2027-02-28T20:00:00.000Z"
+    },
+    {
+      "businessKey": "action_82a3c279-f296-4dde-82ae-410c1dae1070",
+      "dueDate": "2028-02-28T16:00:00.000Z",
+      "createdAt": "2027-02-28T20:00:00.000Z",
+      "updatedAt": "2027-02-28T20:00:00.000Z"
+    }
+  ]
+}

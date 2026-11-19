@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-18T10:01:31.874561+00:00",
+  "currentInventory": "CoreDevice restricted attempt unavailable; elevated safe-column inventory completed with no device rows returned. No current physical availability inferred.",
+  "lastVerifiedHistoricalDevice": {
+    "run": "20261118T050551Z",
+    "modelIdentifier": "iPhone16,1",
+    "iOS": "26.5",
+    "pairedUSB": true
+  },
+  "currentModelAndOS": "NOT_RECONFIRMED",
+  "Safari": "NOT_SEPARATELY_RECORDED",
+  "Android": "AVAILABILITY_UNKNOWN; DEVICE_EVIDENCE_REQUIRED_ANDROID",
+  "rawSerialUDIDIMEIPhoneNumberRetained": false,
+  "physicalDeviceTest": "NOT_RUN",
+  "access": "BLOCKED_PENDING_VALIDATED_LOCAL_HTTPS; no listener/certificate/security changes made."
+}

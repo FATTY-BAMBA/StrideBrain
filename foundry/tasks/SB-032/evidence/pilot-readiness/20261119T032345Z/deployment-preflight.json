@@ -1,0 +1,33 @@
+{
+  "head": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+  "cleanBuildId": "VWVPZBkA5qyo-jz64t2C1",
+  "browserTestedBuildId": "jZBGrkhs4Ok9XriINHgub",
+  "cleanInstall": "PASS",
+  "prismaGeneration": "PASS",
+  "productionBuild": "PASS",
+  "productionStart": "PASS",
+  "http": [
+    {
+      "locale": "en",
+      "status": 200,
+      "html": true,
+      "authenticated": false
+    },
+    {
+      "locale": "zh-TW",
+      "status": 200,
+      "html": true,
+      "authenticated": false
+    }
+  ],
+  "port": 3004,
+  "bind": "127.0.0.1",
+  "freshBuildNotFullBrowserRetested": true,
+  "clockPreloadUsed": false,
+  "ownedProcessStopped": true,
+  "productFilesCopied": 228,
+  "productCopyMismatch": [],
+  "nextEnvGeneratedOnlyInPrivateCopy": true,
+  "hostedDeployment": "NOT_PERFORMED",
+  "authenticatedHostedSmoke": "NOT_RUN"
+}

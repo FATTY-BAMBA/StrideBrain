@@ -26,6 +26,10 @@ export const messageKeys = [
   "projects.eyebrow",
   "projects.title",
   "projects.description",
+  "projects.open",
+  "projects.active",
+  "projects.unavailableTitle",
+  "projects.unavailableDescription",
   "knowledge.eyebrow",
   "knowledge.title",
   "knowledge.description",
@@ -78,9 +82,12 @@ const zhTw: Catalog = {
   "home.nextDescription":
     "從信義旗艦店專案提出「我們以前做過類似的案子嗎？」，查看可解釋的歷史專案、商務差異，並開啟精確資料依據與計算過程。內部審查事項將依建置順序啟用。",
   "projects.eyebrow": "專案工作區",
-  "projects.title": "專案是 StrideBrain 的營運核心。",
-  "projects.description":
-    "受控示範已連接禾序空間設計的虛構專案資料、報價、預估、已核對實際成本、供應商與資料依據。第一個完整流程從信義旗艦店專案開始。",
+  "projects.title": "專案",
+  "projects.description": "開啟您有權限查看的專案工作區。",
+  "projects.open": "開啟專案",
+  "projects.active": "進行中",
+  "projects.unavailableTitle": "目前沒有可開啟的專案",
+  "projects.unavailableDescription": "請確認您的登入狀態與專案存取權限，或稍後再試。",
   "knowledge.eyebrow": "組織知識",
   "knowledge.title": "連結公司知道的事，而不只是管理檔案。",
   "knowledge.description":
@@ -135,9 +142,12 @@ const en: Catalog = {
   "home.nextDescription":
     "Open the Xinyi Flagship project and ask “Have we done something like this before?” to see explainable precedents, commercial differences, and exact supporting evidence and calculation traces. The governed internal review action follows in the accepted build sequence.",
   "projects.eyebrow": "PROJECT WORKSPACE",
-  "projects.title": "Projects are the operating center of StrideBrain.",
-  "projects.description":
-    "The controlled demo connects Horizon Atelier's fictional projects, quotes, forecasts, reconciled actual costs, suppliers, and evidence. The first complete workflow begins inside Xinyi Flagship Renovation.",
+  "projects.title": "Projects",
+  "projects.description": "Open a project workspace available to your account.",
+  "projects.open": "Open project",
+  "projects.active": "Active",
+  "projects.unavailableTitle": "No projects available to open",
+  "projects.unavailableDescription": "Check your sign-in and project access, or try again later.",
   "knowledge.eyebrow": "ORGANIZATIONAL KNOWLEDGE",
   "knowledge.title": "Connect what the company knows—not just where files are stored.",
   "knowledge.description":

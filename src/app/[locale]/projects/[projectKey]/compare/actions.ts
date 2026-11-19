@@ -7,8 +7,7 @@ import { createComparisonServices } from "@/lib/server/comparison-services";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
 import {
   comparisonHref,
-  sanitizeSelectedProjectKeys,
-  selectedKeysFromFormData,
+  submittedSelectedProjectKeys,
 } from "@/modules/comparison-experience/route-state";
 import { isSupportedLocale, type Locale } from "@/modules/localization/config";
 
@@ -128,11 +127,8 @@ export async function updateComparisonSelectionAction(formData: FormData): Promi
   }
 
   const authorizedKeys = structural.result.matches.map((match) => match.project.projectKey);
-  const selected = sanitizeSelectedProjectKeys(
-    selectedKeysFromFormData(formData),
-    authorizedKeys,
-    structural.result.defaultSelectedProjectKeys,
-  );
+  const selected = submittedSelectedProjectKeys(formData, authorizedKeys);
+  if (!selected) redirectOutcome(locale, projectKey, "UNAVAILABLE", context.requestId);
   const economics = await services.runEconomics.execute(context, comparisonRunId, selected);
 
   if ("result" in economics) {

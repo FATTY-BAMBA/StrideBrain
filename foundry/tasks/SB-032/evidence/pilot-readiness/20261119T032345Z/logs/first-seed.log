@@ -1,0 +1,26 @@
+
+> stridebrain@0.1.0 db:seed
+> npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/horizon-atelier.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/stage2-authorization.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/stage4-comparison.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/stage5-economics.sql
+
+Script executed successfully.
+Script executed successfully.
+Script executed successfully.
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+┌─────────────────────────────────────────────────────────┐
+│  Update available 7.10.1 -> 8.0.0-rc.34                 │
+│                                                         │
+│  This is a major update - please follow the guide at    │
+│  https://pris.ly/d/major-version-upgrade                │
+│                                                         │
+│  Run the following to update                            │
+│    npm i --save-dev prisma@latest                       │
+│    npm i @prisma/client@latest                          │
+└─────────────────────────────────────────────────────────┘
+Loaded Prisma config from prisma.config.ts.
+
+Loaded Prisma config from prisma.config.ts.
+
+Loaded Prisma config from prisma.config.ts.
+

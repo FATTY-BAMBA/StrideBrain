@@ -1,0 +1,30 @@
+{
+  "runId": "20261118T050551Z",
+  "phoneInventory": {
+    "usbPhoneCandidates": 0,
+    "coreDevice": "UNAVAILABLE_SERVICE_INITIALIZATION_TIMEOUT",
+    "iPhoneModel": "NOT_RECORDED",
+    "iOS": "NOT_RECORDED",
+    "Safari": "NOT_RECORDED",
+    "Android": "PHYSICAL_AVAILABILITY_UNCONFIRMED"
+  },
+  "LAN": {
+    "addressRecordedPrivately": true,
+    "plainHTTP": "NOT_SUPPORTED_FOR_AUTHENTICATED_DEVICE_TEST",
+    "reasons": [
+      "__Host session cookie is Secure, HttpOnly, Path=/ and SameSite=Lax; retain all attributes",
+      "Review POST requires request Origin AND request URL origin to match configured app origin",
+      "Current operator strictly enforces localhost origin/Host and loopback listener"
+    ],
+    "candidateMethod": "Trusted local HTTPS endpoint on the Mac private LAN IP with a matching configured app origin and same-host one-use synthetic login. Not configured or validated; no TLS identity currently established.",
+    "notPerformed": [
+      "LAN binding",
+      "public exposure",
+      "router/DNS changes",
+      "deployment",
+      "product changes",
+      "device test"
+    ],
+    "sourceChangeRequired": "Not established. Prefer operator/runtime TLS configuration; do not weaken current guards."
+  }
+}

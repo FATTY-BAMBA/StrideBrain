@@ -1,0 +1,281 @@
+[
+  {
+    "locale": "en",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "keyboard": "PASS",
+    "pointer": "PASS",
+    "focusVisible": true,
+    "localNavigation": "PASS",
+    "screenshot": "screenshots/entry-mei-en-desktop-focus.jpg",
+    "workspace": "screenshots/entry-mei-en-desktop-workspace.jpg"
+  },
+  {
+    "locale": "zh-TW",
+    "id": "desktop",
+    "width": 1440,
+    "height": 900,
+    "keyboard": "PASS",
+    "pointer": "PASS",
+    "focus": {
+      "href": "/zh-TW/projects/PRJ-XINYI-026",
+      "outline": "solid",
+      "tag": "A",
+      "visible": true
+    },
+    "localNavigation": [
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026",
+        "text": "總覽"
+      },
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare",
+        "text": "比較"
+      },
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026/commercial",
+        "text": "商務資料"
+      },
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026/evidence",
+        "text": "資料依據"
+      },
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026/actions",
+        "text": "行動事項"
+      }
+    ],
+    "screenshot": "screenshots/entry-mei-zh-TW-desktop-focus.jpg",
+    "workspace": "screenshots/entry-mei-zh-TW-desktop-workspace.jpg"
+  },
+  {
+    "locale": "en",
+    "id": "tablet",
+    "width": 768,
+    "height": 1024,
+    "keyboard": "PASS",
+    "pointer": "PASS",
+    "focus": {
+      "href": "/en/projects/PRJ-XINYI-026",
+      "outline": "solid",
+      "tag": "A",
+      "visible": true
+    },
+    "localNavigation": [
+      {
+        "href": "/en/projects/PRJ-XINYI-026",
+        "text": "Overview"
+      },
+      {
+        "href": "/en/projects/PRJ-XINYI-026/compare",
+        "text": "Compare"
+      },
+      {
+        "href": "/en/projects/PRJ-XINYI-026/commercial",
+        "text": "Commercial"
+      },
+      {
+        "href": "/en/projects/PRJ-XINYI-026/evidence",
+        "text": "Evidence"
+      },
+      {
+        "href": "/en/projects/PRJ-XINYI-026/actions",
+        "text": "Actions"
+      }
+    ],
+    "screenshot": "screenshots/entry-mei-en-tablet-focus.jpg",
+    "workspace": "screenshots/entry-mei-en-tablet-workspace.jpg"
+  },
+  {
+    "locale": "zh-TW",
+    "id": "tablet",
+    "width": 768,
+    "height": 1024,
+    "keyboard": "PASS",
+    "pointer": "PASS",
+    "focus": {
+      "href": "/zh-TW/projects/PRJ-XINYI-026",
+      "outline": "solid",
+      "tag": "A",
+      "visible": true
+    },
+    "localNavigation": [
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026",
+        "text": "總覽"
+      },
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare",
+        "text": "比較"
+      },
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026/commercial",
+        "text": "商務資料"
+      },
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026/evidence",
+        "text": "資料依據"
+      },
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026/actions",
+        "text": "行動事項"
+      }
+    ],
+    "screenshot": "screenshots/entry-mei-zh-TW-tablet-focus.jpg",
+    "workspace": "screenshots/entry-mei-zh-TW-tablet-workspace.jpg"
+  },
+  {
+    "locale": "en",
+    "id": "mobile",
+    "width": 390,
+    "height": 844,
+    "keyboard": "PASS",
+    "pointer": "PASS",
+    "focus": {
+      "href": "/en/projects/PRJ-XINYI-026",
+      "outline": "solid",
+      "tag": "A",
+      "visible": true
+    },
+    "localNavigation": [
+      {
+        "href": "/en/projects/PRJ-XINYI-026",
+        "text": "Overview"
+      },
+      {
+        "href": "/en/projects/PRJ-XINYI-026/compare",
+        "text": "Compare"
+      },
+      {
+        "href": "/en/projects/PRJ-XINYI-026/commercial",
+        "text": "Commercial"
+      },
+      {
+        "href": "/en/projects/PRJ-XINYI-026/evidence",
+        "text": "Evidence"
+      },
+      {
+        "href": "/en/projects/PRJ-XINYI-026/actions",
+        "text": "Actions"
+      }
+    ],
+    "screenshot": "screenshots/entry-mei-en-mobile-focus.jpg",
+    "workspace": "screenshots/entry-mei-en-mobile-workspace.jpg"
+  },
+  {
+    "locale": "zh-TW",
+    "id": "mobile",
+    "width": 390,
+    "height": 844,
+    "keyboard": "PASS",
+    "pointer": "PASS",
+    "focus": {
+      "href": "/zh-TW/projects/PRJ-XINYI-026",
+      "outline": "solid",
+      "tag": "A",
+      "visible": true
+    },
+    "localNavigation": [
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026",
+        "text": "總覽"
+      },
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare",
+        "text": "比較"
+      },
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026/commercial",
+        "text": "商務資料"
+      },
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026/evidence",
+        "text": "資料依據"
+      },
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026/actions",
+        "text": "行動事項"
+      }
+    ],
+    "screenshot": "screenshots/entry-mei-zh-TW-mobile-focus.jpg",
+    "workspace": "screenshots/entry-mei-zh-TW-mobile-workspace.jpg"
+  },
+  {
+    "locale": "en",
+    "id": "narrow-mobile",
+    "width": 320,
+    "height": 740,
+    "keyboard": "PASS",
+    "pointer": "PASS",
+    "focus": {
+      "href": "/en/projects/PRJ-XINYI-026",
+      "outline": "solid",
+      "tag": "A",
+      "visible": true
+    },
+    "localNavigation": [
+      {
+        "href": "/en/projects/PRJ-XINYI-026",
+        "text": "Overview"
+      },
+      {
+        "href": "/en/projects/PRJ-XINYI-026/compare",
+        "text": "Compare"
+      },
+      {
+        "href": "/en/projects/PRJ-XINYI-026/commercial",
+        "text": "Commercial"
+      },
+      {
+        "href": "/en/projects/PRJ-XINYI-026/evidence",
+        "text": "Evidence"
+      },
+      {
+        "href": "/en/projects/PRJ-XINYI-026/actions",
+        "text": "Actions"
+      }
+    ],
+    "screenshot": "screenshots/entry-mei-en-narrow-mobile-focus.jpg",
+    "workspace": "screenshots/entry-mei-en-narrow-mobile-workspace.jpg"
+  },
+  {
+    "locale": "zh-TW",
+    "id": "narrow-mobile",
+    "width": 320,
+    "height": 740,
+    "keyboard": "PASS",
+    "pointer": "PASS",
+    "focus": {
+      "href": "/zh-TW/projects/PRJ-XINYI-026",
+      "outline": "solid",
+      "tag": "A",
+      "visible": true
+    },
+    "localNavigation": [
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026",
+        "text": "總覽"
+      },
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare",
+        "text": "比較"
+      },
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026/commercial",
+        "text": "商務資料"
+      },
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026/evidence",
+        "text": "資料依據"
+      },
+      {
+        "href": "/zh-TW/projects/PRJ-XINYI-026/actions",
+        "text": "行動事項"
+      }
+    ],
+    "screenshot": "screenshots/entry-mei-zh-TW-narrow-mobile-focus.jpg",
+    "workspace": "screenshots/entry-mei-zh-TW-narrow-mobile-workspace.jpg"
+  }
+]

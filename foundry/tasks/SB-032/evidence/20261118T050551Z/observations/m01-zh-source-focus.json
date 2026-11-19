@@ -1,0 +1,128 @@
+[
+  {
+    "step": "entered",
+    "id": "evidence-panel-title",
+    "inside": true,
+    "rect": {
+      "height": 25,
+      "width": 270.609375,
+      "x": 981,
+      "y": 61.0546875
+    },
+    "tag": "H2",
+    "text": "進口石材與硬質面材",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "step": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 152.390625,
+      "x": 1267.609375,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "step": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 154,
+      "x": 981,
+      "y": 242.1171875
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "step": "Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 152.390625,
+      "x": 1267.609375,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "step": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 154,
+      "x": 981,
+      "y": 242.1171875
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "step": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 152.390625,
+      "x": 1267.609375,
+      "y": 40
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "step": "Shift+Tab",
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 44.390625,
+      "width": 154,
+      "x": 981,
+      "y": 242.1171875
+    },
+    "tag": "BUTTON",
+    "text": "返回資料依據組合",
+    "trigger": null,
+    "viewport": [
+      1440,
+      900
+    ]
+  }
+]

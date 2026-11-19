@@ -1,0 +1,28 @@
+{
+  "historicalInventoryReference": "../../../20261118T094310Z/human-review/source-zh-copy-inventory.json",
+  "historicalInventoryEntries": 589,
+  "newDatePolicyStrings": [
+    {
+      "key": "datePolicyRefreshing",
+      "text": "正在確認目前可選的日期範圍…",
+      "source": "src/modules/internal-review-experience/copy.ts",
+      "line": 121,
+      "humanVerdict": "NOT_REVIEWED"
+    },
+    {
+      "key": "datePolicyUnavailable",
+      "text": "目前無法確認可選的日期範圍。草稿已保留，請重試後再確認建立。",
+      "source": "src/modules/internal-review-experience/copy.ts",
+      "line": 122,
+      "humanVerdict": "NOT_REVIEWED"
+    },
+    {
+      "key": "datePolicyRetry",
+      "text": "重新確認日期範圍",
+      "source": "src/modules/internal-review-experience/copy.ts",
+      "line": 123,
+      "humanVerdict": "NOT_REVIEWED"
+    }
+  ],
+  "notAnAssembledCompleteRenderedInventory": true
+}

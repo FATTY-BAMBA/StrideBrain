@@ -1,0 +1,50 @@
+{
+  "result": "PASS",
+  "originalFixtureRowsChanged": [],
+  "invalidBrowserSubmissions": {
+    "en-before-boundary -> en-after-client-rejection": {
+      "Action": true,
+      "AuditEvent": true,
+      "InternalReviewReceipt": true,
+      "ProposedAction": true
+    },
+    "en-upper-before -> en-upper-rejected": {
+      "Action": true,
+      "AuditEvent": true,
+      "InternalReviewReceipt": true,
+      "ProposedAction": true
+    },
+    "zh-before-boundary -> zh-after-client-rejection": {
+      "Action": true,
+      "AuditEvent": true,
+      "InternalReviewReceipt": true,
+      "ProposedAction": true
+    },
+    "zh-upper-before -> zh-upper-rejected": {
+      "Action": true,
+      "AuditEvent": true,
+      "InternalReviewReceipt": true,
+      "ProposedAction": true
+    }
+  },
+  "embeddedActionEvidence": "Full Action row hashes include evidenceReferenceIds and evidenceSnapshot",
+  "persistedDueDates": [
+    "2028-02-29",
+    "2029-02-28",
+    "2029-03-01",
+    "2028-03-01"
+  ],
+  "actionCount": 4,
+  "auditCount": 4,
+  "receiptCount": 4,
+  "proposalCount": 4,
+  "confirmedProposals": 4,
+  "guardsUnchanged": true,
+  "migrationsUnchanged": true,
+  "sessionClosure": {
+    "deterministicSuiteSessionsRevoked": 2,
+    "allRunOwnedSessions": 4,
+    "allRevoked": true,
+    "fixtureSessionsUnchanged": true
+  }
+}

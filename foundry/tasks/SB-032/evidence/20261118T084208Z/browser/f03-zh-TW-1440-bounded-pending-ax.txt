@@ -1,0 +1,25 @@
+Browser tab: 1605347227, Title: "StrideBrain", URL: "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare".
+1 AXWebArea StrideBrain, URL: localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare
+	2 link Description: 跳至主要內容, Value: localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare#main-content
+	3 container
+		4 container StrideBrain PRIMESTRIDE AI
+			5 text StrideBrain
+			6 text PRIMESTRIDE AI
+		7 container 專案
+			8 link Description: 首頁, Value: localhost:3000/zh-TW
+			9 link Description: 專案, Value: localhost:3000/zh-TW/projects
+			10 link Description: 知識, Value: localhost:3000/zh-TW/knowledge
+			11 link Description: StrideBrain, Value: localhost:3000/zh-TW/stridebrain
+			12 link Description: 設定, Value: localhost:3000/zh-TW/settings
+		13 text v0.1 · 受控示範 此區域尚未啟用
+	14 container
+		15 text 受控虛構資料示範
+		16 container 繁中 / EN
+			17 link Description: 繁中, Value: localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare
+			18 link Description: EN, Value: localhost:3000/en/projects/PRJ-XINYI-026/compare
+	19 container 正在載入歷史專案比較
+	20 container
+		21 text 僅使用虛構示範資料 · 無真實客戶資料 尚未切換正式示範網域
+	22 text StrideBrain
+
+The focused UI element is 1 AXWebArea StrideBrain, URL: localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare

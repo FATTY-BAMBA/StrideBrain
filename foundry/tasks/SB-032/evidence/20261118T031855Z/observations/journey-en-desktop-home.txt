@@ -1,0 +1,58 @@
+- link "Skip to main content":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain BY PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: BY PRIMESTRIDE AI
+  - navigation "Projects":
+    - link "Home" [active]:
+      - /url: /en
+      - generic: "01"
+      - generic: Home
+    - link "Projects":
+      - /url: /en/projects
+      - generic: "02"
+      - generic: Projects
+    - link "Knowledge":
+      - /url: /en/knowledge
+      - generic: "03"
+      - generic: Knowledge
+    - link "StrideBrain":
+      - /url: /en/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "Settings":
+      - /url: /en/settings
+      - generic: "05"
+      - generic: Settings
+  - strong: v0.1 · Controlled demo
+  - generic: This area is not active yet
+- banner:
+  - generic: ●
+  - text: Controlled synthetic demo
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW
+    - generic: /
+    - link "EN":
+      - /url: /en
+- main:
+  - paragraph: STRIDEBRAIN v0.1
+  - heading "Every completed project should make the next project easier." [level=1]
+  - paragraph: StrideBrain connects projects, documents, quotations, suppliers, and company knowledge into evidence-backed operating intelligence and governed action.
+  - article:
+    - generic: "01"
+    - 'heading "Current stage: first complete intelligence workflow" [level=2]'
+    - paragraph: This build includes a bilingual Project Workspace, governed authorization, explainable historical-project ranking, and a commercial comparison that keeps quoted price and actual cost distinct. All records belong to the fictional Horizon Atelier demo organization.
+  - article:
+    - generic: "02"
+    - heading "What the controlled demo can show now" [level=2]
+    - paragraph: Open the Xinyi Flagship project and ask “Have we done something like this before?” to see explainable precedents, commercial differences, and exact supporting evidence and calculation traces. The governed internal review action follows in the accepted build sequence.
+  - link "View build specification":
+    - /url: https://github.com/FATTY-BAMBA/StrideBrain/blob/main/docs/build/V0_1_BUILD_CONTRACT.md
+    - text: View build specification
+    - generic: ↗
+- contentinfo:
+  - generic: Synthetic demo data only · No real customer data
+  - generic: Live demo-domain cutover has not occurred
+- alert

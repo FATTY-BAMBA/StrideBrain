@@ -1,0 +1,768 @@
+task: SB-032
+version: 1
+phase: PLANNING_ONLY
+baseline: fec8830398f213e19879eae23e9720ad8563d7b4
+branch: build/sb-032-stage9-quality-hardening
+executionStatus: NOT_RUN
+resultVocabulary:
+- NOT_RUN
+- PASS
+- FAIL
+- PARTIAL
+- BLOCKED
+- NOT_VERIFIED_MANUAL_REQUIRED
+globalPreconditions:
+- Exact candidate and production BUILD_ID recorded before browser claims.
+- New isolated synthetic runtime and fresh operator-issued sessions; no historical database reuse/reset.
+- No product changes until a reproducible contract defect; no deployment/Vercel/DNS/AI/external communication.
+- Each scenario executes EN and zh-TW where applicable; service/operator cases record locale independence
+  explicitly.
+viewportMatrix:
+- id: desktop
+  width: 1440
+  height: 900
+- id: tablet
+  width: 768
+  height: 1024
+- id: mobile
+  width: 390
+  height: 844
+- id: narrow-mobile
+  width: 320
+  height: 740
+scenarioDefaults:
+  viewports: all means every viewportMatrix entry
+  personas: fresh server-issued synthetic identity; capability matrix verified before use
+  failures: controlled mutable fixture or isolated infrastructure with before/after restoration ledger
+acceptedUIStates:
+- PROJECT_LOADING
+- PROJECT_READY
+- PROJECT_UNAVAILABLE
+- PROJECT_CONTEXT_INCOMPLETE
+- PROJECT_PERMISSION_REDACTED
+- COMPARISON_IDLE
+- COMPARISON_RUNNING
+- COMPARISON_SUCCESS
+- COMPARISON_NO_ELIGIBLE_HISTORY
+- COMPARISON_PARTIAL_CONTEXT
+- COMPARISON_FAILED
+- COMPARISON_STALE
+- OPTIONAL_EXPLANATION_PENDING
+- OPTIONAL_EXPLANATION_UNAVAILABLE
+- INSUFFICIENT_ACTUAL_COST_EVIDENCE
+- SUPPLIER_OFFER_STALE
+- AUTHORITY_CONFLICTED
+- SOURCE_SUPERSEDED
+- EVIDENCE_RESTRICTED
+- EVIDENCE_PANEL_LOADING
+- EVIDENCE_PANEL_READY
+- EVIDENCE_PANEL_FAILED
+- ACTION_NOT_ALLOWED
+- PROPOSED_ACTION_READY
+- ACTION_CONFIRMING
+- ACTION_CREATED
+- ACTION_STALE_REJECTED
+- ACTION_PERMISSION_REJECTED
+- ACTION_ASSIGNEE_REJECTED
+- ACTION_SERVICE_FAILED
+- ACTION_DUPLICATE
+uiStateCoverageRule: Map each state to a scenario and artifact during execution. Native, controlled failure
+  or component coverage must be identified; unreachable states remain explicit unsupported/blocked. Optional
+  explanation is disabled/unavailable only, never enable AI.
+evidencePerCase:
+- scenario/acceptance IDs
+- UTC
+- SHA and BUILD_ID
+- persona/capability profile
+- locale/browser/OS/device
+- window/CSS viewport/actual zoom/motion
+- preconditions and reproduction
+- expected and observed
+- screenshot/focus/AX/timing references
+- PASS/FAIL or exact unsupported reason
+- defect severity if reproduced
+- restoration and session revocation references
+stopConditions:
+- Unexpected source/ref divergence
+- Any real data or wrong database
+- Credential/personal information exposure
+- Uncontrolled fixture mutation or failed restoration
+- 'Critical/high security or tenant leak: contain and record, do not waive'
+- 'Scope-changing repair proposal: stop for explicit decision'
+scenarios:
+- id: S9-01
+  title: Exact-candidate setup and production start
+  status: NOT_RUN
+  acceptance:
+  - CI matrix
+  - REL-008
+  - REL-009
+  - REL-010
+  layer: operator/deterministic
+  personas:
+  - operator
+  locales:
+  - en
+  - zh-TW
+  viewports: desktop
+  gate: BLOCKING_STAGE_9
+  steps:
+  - Record exact SHA, tracked diff, runtime, database identity and migration hashes.
+  - Execute test-plan deterministic sequence on a new disposable DB; account for every skip.
+  - Build and start production application with explicit origin and fresh synthetic sessions; capture
+    BUILD_ID.
+  expected:
+  - Eight clean migrations; repeated seeds and every SQL invariant pass; locked install/build/audit recorded.
+  - No credential/client-bundle leakage or reused historical BUILD_ID.
+  evidence:
+  - source.json
+  - validation.json
+  - sanitized logs
+  - build.json
+- id: S9-02
+  title: Complete bilingual hero and five-second comprehension
+  status: NOT_RUN
+  acceptance:
+  - PUX-001..015
+  - I18N-002
+  - I18N-005
+  layer: browser + independent reviewer
+  personas:
+  - Mei assigned PM
+  locales:
+  - en
+  - zh-TW
+  viewports: all
+  gate: BLOCKING_STAGE_9
+  steps:
+  - Home → Projects → Xinyi Workspace → comparable intelligence.
+  - Inspect six matches, choose top three, compare economics, inspect claim/factor/source, prepare and
+    explicitly confirm one internal review.
+  - Read durable receipt; reopen through Actions and workspace; time full flow.
+  expected:
+  - Identify project/stage/quote within five seconds in moderated observation; complete hero within ten
+    minutes.
+  - Correct nav/surface boundaries and honest labels; explicit consent; exactly one atomic action/audit/receipt.
+  evidence:
+  - journey screenshots
+  - timings
+  - safe action/history count delta
+- id: S9-03
+  title: Ranking, factors and selection
+  status: NOT_RUN
+  acceptance:
+  - CPI-001..010
+  - PUX-006
+  - PUX-007
+  - PUX-008
+  layer: eval + browser
+  personas:
+  - Mei assigned PM
+  - Viewer
+  locales:
+  - en
+  - zh-TW
+  viewports: all
+  gate: BLOCKING_STAGE_9
+  steps:
+  - Verify canonical order and 88/81/79/71/69/63 scores.
+  - Inspect every factor; reconcile weights, unknowns, coverage, exclusions and stable ties.
+  - Change selected set and reopen exact stored run.
+  expected:
+  - Exact accepted ranking; no hidden candidates/count leakage; no mutation of immutable ranking.
+  - Independent top-three judgement and recall/factor correctness denominators recorded.
+  evidence:
+  - eval per-case results
+  - factor screenshots
+  - ranking trace
+- id: S9-04
+  title: Economics authority, abstention and evidence meaning
+  status: NOT_RUN
+  acceptance:
+  - AUTH-001..012
+  - EVD-001..012
+  - PUX-009..012
+  layer: eval + browser
+  personas:
+  - Mei assigned PM
+  - Viewer
+  locales:
+  - en
+  - zh-TW
+  viewports: all
+  gate: BLOCKING_STAGE_9
+  steps:
+  - Inspect each material amount/claim and active quote, forecast, reconciled actual, historical offer.
+  - Check stone and lighting; open table lighting affordance and Evidence gaps entry.
+  - Traverse claim, factor, source card and exact locators, superseded/conflict/restricted states.
+  expected:
+  - Lighting remains 2 eligible / 3 required and opens authoritative insufficiency, never fabricated actual
+    variance.
+  - Evidence supports exact field/version; no raw storage links, secret or hidden observation; current
+    forecast never labeled actual.
+  - Chinese visible locators have natural labels including 工期（週）, preserving internal provenance.
+  evidence:
+  - authority/citation audit numerator-denominator
+  - both lighting target selectors
+  - source screenshots
+- id: S9-05
+  title: Draft and navigation persistence
+  status: NOT_RUN
+  acceptance:
+  - ACT-001
+  - ACT-002
+  - I18N-006
+  - I18N-007
+  - REL-005
+  layer: browser
+  personas:
+  - Mei assigned PM
+  locales:
+  - en
+  - zh-TW
+  viewports: all
+  gate: BLOCKING_STAGE_9
+  steps:
+  - Immediately edit longest allowed title/rationale, assignee and due date.
+  - Rapidly switch locale, open/close evidence/source, refresh, back/forward, and reopen copied safe proposal/run
+    routes.
+  expected:
+  - Full draft, selected run and proposal identity survive; no duplicate proposal or action.
+  - Recoverable invalid values stay visible and localized; no lost edits from race.
+  evidence:
+  - before-after draft fields
+  - safe route/focus trace
+  - proposal/action counts
+- id: S9-06
+  title: Confirmation, receipt and interrupted retry
+  status: NOT_RUN
+  acceptance:
+  - ACT-003..005
+  - ACT-011
+  - ACT-012
+  - REL-007
+  - PUX-014
+  layer: browser + PostgreSQL
+  personas:
+  - Mei assigned PM
+  - Viewer
+  - Northern tenant
+  locales:
+  - en
+  - zh-TW
+  viewports: all
+  gate: BLOCKING_STAGE_9
+  steps:
+  - Submit without acknowledgement, then valid confirmation.
+  - Interrupt response after commit in isolated test; retry same idempotency key and concurrently confirm.
+  - Open authorized receipt then missing, denied and cross-tenant selectors.
+  expected:
+  - No write without consent; one transaction/receipt despite retry.
+  - Denied/missing UI and semantics indistinguishable; no success copy/title/assignee/count/project/existence
+    leak.
+  evidence:
+  - receipt screenshots
+  - transaction/count evidence
+  - paired unavailable DTO/DOM evidence
+- id: S9-07
+  title: Keyboard and automated accessibility
+  status: NOT_RUN
+  acceptance:
+  - A11Y-001..010
+  layer: browser + DOM/AX automation
+  personas:
+  - Mei assigned PM
+  - Viewer
+  locales:
+  - en
+  - zh-TW
+  viewports: all
+  gate: BLOCKING_STAGE_9
+  steps:
+  - Keyboard entire hero; inspect landmarks, names, table associations, contrast and target sizes.
+  - Claim → second supporting source; Tab/Shift+Tab enough to wrap forward/back; close and hierarchical
+    Escape.
+  expected:
+  - Single active modal contains focus; background unreachable; exact trigger restored.
+  - Visible focus and accessible controls at all layouts; no color-only state; automated findings triaged
+    individually.
+  evidence:
+  - focus traces
+  - accessibility report
+  - screenshots
+- id: S9-08
+  title: Actual zoom and actual OS reduced-motion regression
+  status: NOT_RUN
+  acceptance:
+  - A11Y-001
+  - A11Y-002
+  - A11Y-006
+  - A11Y-010
+  layer: native OS/browser
+  personas:
+  - Mei assigned PM
+  locales:
+  - en
+  - zh-TW
+  viewports: actual desktop window plus measured zoom CSS viewport
+  gate: BLOCKING_STAGE_9
+  steps:
+  - Record original Chrome zoom and OS preference. At desktop content approximately 1280×800/100%, use
+    visible Chrome menu to set exactly 200%.
+  - Exercise comparison/review/evidence/source/stale/error/receipt with Tab and Shift+Tab; measure CSS
+    viewport/window/zoom.
+  - Restore 100%; enable actual macOS Reduce motion, verify matchMedia reduce true and reopen both-locale
+    source journeys.
+  - Observe immediate/settled focus, close/return/Escape and usable content; restore original preference
+    and zoom.
+  expected:
+  - No operational clipping, overlap or unreachable controls; F-08 containment/restoration intact.
+  - No focus timing dependency, repeated stealing or suppressed-content disappearance; actual native setting
+    proven, not emulation.
+  evidence:
+  - native setting screenshots
+  - media query and dimensions
+  - focus trace
+  - restoration
+  inheritedItems:
+  - M-03
+  - M-04
+- id: S9-09
+  title: Actual speech and pending announcements
+  status: NOT_RUN
+  acceptance:
+  - A11Y-009
+  - A11Y-007
+  - ACT-012
+  layer: human screen reader
+  personas:
+  - Mei assigned PM
+  locales:
+  - en
+  - zh-TW
+  viewports: all
+  gate: BLOCKING_BEFORE_DEMO_RELEASE
+  steps:
+  - Human operates VoiceOver+Chrome, both locales; NVDA+Chrome/Firefox where available.
+  - Listen to dialog names, validation, stale/evidence/access/server errors, naturally pending confirmation,
+    source open/close and receipt heading.
+  - Inspect pending keyboard focus while controls disabled, then completed recovery; preserve raw observations.
+  expected:
+  - Correct non-duplicated speech, no background/hidden content, no repeated focus stealing; recovery
+    and receipt announced.
+  - If speech/device unavailable, NOT_VERIFIED_MANUAL_REQUIRED; transient BODY observation investigated
+    without automatic pass or defect.
+  evidence:
+  - human attestation
+  - speech observations/transcript where consented
+  - focus/AX trace
+  inheritedItems:
+  - M-01
+- id: S9-10
+  title: Physical mobile native input
+  status: NOT_RUN
+  acceptance:
+  - A11Y-001
+  - A11Y-006
+  - A11Y-007
+  - A11Y-010
+  - I18N-007
+  - I18N-008
+  layer: human physical device
+  personas:
+  - Mei assigned PM
+  locales:
+  - en
+  - zh-TW
+  viewports: real devices; record achieved widths and unsupported variants
+  gate: BLOCKING_BEFORE_DEMO_RELEASE
+  steps:
+  - Use actual iOS Safari and Android Chrome; record model/OS/browser and real CSS viewport.
+  - At approximately 390 and narrow 320 widths where hardware permits, edit longest draft with soft keyboard
+    and native datepicker set/clear.
+  - Touch consent/create/cancel/recovery/evidence close; switch locale, reopen review/evidence/receipt.
+  expected:
+  - No keyboard-obscured unreachable required controls; correct date/draft/locale state, touch targets
+    and receipt usability.
+  - Emulated widths do not close physical-device requirement; unavailable exact physical width documented.
+  evidence:
+  - device inventory
+  - human observations
+  - screenshots
+  inheritedItems:
+  - M-02
+- id: S9-11
+  title: Live generic error description association
+  status: NOT_RUN
+  acceptance:
+  - A11Y-007
+  - A11Y-009
+  - ACT-006..009
+  - ACT-012
+  layer: browser + human speech
+  personas:
+  - Mei assigned PM
+  locales:
+  - en
+  - zh-TW
+  viewports: all
+  gate: BLOCKING_BEFORE_DEMO_RELEASE
+  steps:
+  - Induce STALE_COMPARISON, ACCESS_CHANGED, EVIDENCE_UNAVAILABLE and safe server failure via controlled
+    isolated setup.
+  - Inspect actual active-dialog form and aria-describedby pointing to existing review-error-summary;
+    check alert/name/text and focused summary.
+  - Verify scroll visibility, all draft fields, recovery via keyboard and Escape focus return; human verifies
+    spoken description.
+  expected:
+  - Summary belongs to same active dialog and is actually described; error focus visible, complete draft
+    retained, no false success.
+  - DOM/AX pass recorded separately from actual speech; M-06 stays open until both evidenced.
+  evidence:
+  - live form/summary DOM and AX excerpt
+  - focus/bounds
+  - human speech attestation
+  - mutation restoration
+  inheritedItems:
+  - M-06
+- id: S9-12
+  title: Reviewed visual baseline grid
+  status: NOT_RUN
+  acceptance:
+  - PUX-003..014
+  - I18N-003..005
+  - I18N-008
+  - I18N-009
+  - A11Y-002
+  - A11Y-008
+  - A11Y-010
+  layer: browser + independent visual review
+  personas:
+  - Mei assigned PM
+  - Viewer
+  locales:
+  - en
+  - zh-TW
+  viewports: all
+  gate: BLOCKING_STAGE_9
+  steps:
+  - Capture comparison, review longest draft, claim, factor, source, stale warning, validation/generic
+    error, natural pending, receipt and restricted states in each locale/viewport.
+  - Review against accepted hierarchy, authority wording, responsive tables, wrapping, focus and non-overlap.
+  expected:
+  - Every state × locale × viewport has capture/reviewer/outcome; no blind screenshot auto-approval.
+  - Transient state not captured stays unverified with reason.
+  evidence:
+  - visual manifest
+  - screenshots
+  - reviewed baseline decisions
+- id: S9-13
+  title: Canonical evidence precision and groundedness report
+  status: NOT_RUN
+  acceptance:
+  - CPI targets
+  - AUTH hero tolerances
+  - EVD targets
+  - Quality Constitution quantitative gates
+  layer: independent eval
+  personas:
+  - authorized evaluator
+  locales:
+  - en
+  - zh-TW
+  viewports: not applicable to calculation; browser cases in S9-03/04
+  gate: BLOCKING_STAGE_9
+  steps:
+  - Enumerate full critical canonical claim/factor/economics set and exact allowed source support.
+  - Calculate precision, grounding, abstention, recall and factor correctness with declared denominators;
+    independently judge top-three utility.
+  expected:
+  - Accepted thresholds in build-contract met; exact canonical expectations and zero material unsupported
+    claims/leakage required regardless of percentage.
+  evidence:
+  - case-level eval manifest
+  - source reconstruction audit
+  - reviewer judgements
+- id: S9-14
+  title: Authorization and tenant non-disclosure
+  status: NOT_RUN
+  acceptance:
+  - SEC-001..016
+  - AUTH-011
+  - EVD-008
+  - EVD-011
+  - EVD-012
+  layer: PostgreSQL/API + browser
+  personas:
+  - Mei assigned PM
+  - Viewer
+  - unassigned PM
+  - Northern tenant
+  locales:
+  - en
+  - zh-TW
+  viewports: all
+  gate: BLOCKING_STAGE_9
+  steps:
+  - Use server-issued sessions; try cross-tenant project/run/evidence/proposal/action/receipt and assignee
+    selectors.
+  - Revoke capabilities/assignment/change evidence classification; reopen existing run, source and receipt.
+  - Probe origin/CSRF/session forgery/expiry; source prompt-injection strings remain inert.
+  expected:
+  - Server-derived organization and DENY precedence; redaction before DTO; denied/missing non-disclosure.
+  - No high/critical security findings, unauthorized write, client secret or verified tenant leak.
+  evidence:
+  - persona/capability matrix
+  - sanitized paired responses
+  - browser unavailable states
+  - security report
+- id: S9-15
+  title: Freshness, transactional failures and reliability
+  status: NOT_RUN
+  acceptance:
+  - ACT-004..010
+  - REL-001..010
+  - SEC-013
+  - PUX-013
+  layer: PostgreSQL + browser
+  personas:
+  - Mei assigned PM
+  locales:
+  - en
+  - zh-TW
+  viewports: all
+  gate: BLOCKING_STAGE_9
+  steps:
+  - Change accepted source/version/validity/conflict/evidence/assignee in isolated fixture ledger; retain
+    immutable original result.
+  - Verify changed source identification, stale warning, inspectable stored result, blocked new prepare/confirm
+    and refresh/re-run.
+  - Induce DB/project/comparison/evidence failures, timeout and transaction failure; retry/reopen receipt.
+  expected:
+  - Safe localized error, no fake success or partial action/audit; safe draft preserved, retry possible
+    where authorized.
+  - No optional provider dependency; immutable history remains intact after restoration.
+  evidence:
+  - stale/error screenshots
+  - transaction rollback invariants
+  - fixture/history hashes
+- id: S9-16
+  title: Performance and query-plan benchmark
+  status: NOT_RUN
+  acceptance:
+  - Performance matrix
+  - Stage8 stricter server budgets
+  layer: operator + real browser
+  personas:
+  - Mei assigned PM
+  locales:
+  - en
+  - zh-TW
+  viewports: desktop baseline; mobile usability timing recorded separately
+  gate: BLOCKING_STAGE_9
+  steps:
+  - Verify target fixture volume; collect >=30 browser and service samples per series with protocol in
+    test-plan.
+  - Record warm/cold distributions, payload/query counts, representative read query plans and concurrent
+    confirmation.
+  - Increase evidence/eligible-assignee cardinality without changing canonical business meaning.
+  expected:
+  - All accepted latency budgets met; no per-evidence/per-assignee N+1; raw failed/slow samples retained.
+  - SQL timings never relabeled browser timing; no fake cold p95 from one sample.
+  evidence:
+  - raw timings
+  - p50-p95-max
+  - query counts/plans
+  - fixture-volume proof
+- id: S9-17
+  title: Leap day and Taipei midnight
+  status: NOT_RUN
+  acceptance:
+  - ACT-002
+  - ACT-006
+  - ACT-012
+  - I18N-005
+  layer: injected-clock deterministic + exact UI/server E2E
+  personas:
+  - Mei assigned PM
+  locales:
+  - en
+  - zh-TW
+  viewports: all
+  gate: STAGE_9_HARDENING
+  steps:
+  - Run existing clock-policy/service/PostgreSQL cases. Prove separate browser test-clock approach without
+    product edits or host clock changes.
+  - Test 2028-02-29 in range, invalid 2027-02-29, inclusive today/+365, outside bounds, default +7.
+  - Prepare before Taipei midnight and confirm just after with valid session/proposal; record no writes
+    on invalid date.
+  expected:
+  - Confirmation uses current organization-local date and localized visible errors; no partial or duplicate
+    action.
+  - If isolated live clock cannot be demonstrated, lower layers may pass but browser item BLOCKED; M-05
+    not closed.
+  evidence:
+  - clock protocol
+  - UI date bounds
+  - server timestamp/outcome
+  - before-after action/audit/receipt counts
+  inheritedItems:
+  - M-05
+- id: S9-18
+  title: Independent Taiwan Chinese language review
+  status: NOT_RUN
+  acceptance:
+  - I18N-001..009
+  - PUX-001
+  - AUTH-001..012
+  layer: human language reviewer
+  personas:
+  - independent Taiwan Traditional Chinese reviewer
+  locales:
+  - en
+  - zh-TW
+  viewports: all
+  gate: BLOCKING_BEFORE_DEMO_RELEASE
+  steps:
+  - Human reviews complete hero flow and required states across four layouts, comparing English source
+    meaning.
+  - Inspect financial/evidence authority, programme/lighting explanations, field/locator labels, district
+    names/units, errors and receipts.
+  expected:
+  - Natural Taiwan usage, no normal-mode enums/policy IDs/developer vocabulary/English leaks; no misleading
+    authority/sufficiency meaning or unreadable wrapping.
+  - Automated translation/parity is supporting evidence only.
+  evidence:
+  - reviewer role/attestation
+  - case-level terminology decisions
+  - annotated safe screenshots
+  inheritedItems:
+  - M-07
+- id: S9-19
+  title: Local production portability and environment preflight
+  status: NOT_RUN
+  acceptance:
+  - CI matrix
+  - SEC-015
+  - SEC-016
+  - REL-010
+  layer: operator + local production browser
+  personas:
+  - operator
+  - Mei assigned PM
+  locales:
+  - en
+  - zh-TW
+  viewports: desktop plus existing responsive matrix
+  gate: BLOCKING_STAGE_9
+  steps:
+  - Validate explicit environment/origin/secret presence without publishing values; inspect production
+    bundle/routes.
+  - Run local production start, deep links/restart/receipt and unauthorized states; review non-localhost
+    configuration requirements.
+  expected:
+  - No deployment assumption proved solely from localhost; exact SHA/BUILD_ID and clean source recorded.
+  - No secret/browser bootstrap publication; AI disabled hero remains complete.
+  evidence:
+  - presence-only environment checklist
+  - build/start logs
+  - smoke screenshots
+- id: S9-20
+  title: Actual isolated preview smoke — deferred
+  status: NOT_RUN
+  acceptance:
+  - Deployment/release matrix
+  - Stage9 exact preview exit
+  layer: authorized cloud operator
+  personas:
+  - release operator
+  locales:
+  - en
+  - zh-TW
+  viewports: all after authorization
+  gate: BLOCKING_RELEASE_NOT_AUTHORIZED
+  steps:
+  - Do not execute now. Obtain separate deployment authorization.
+  - Then implement reviewed isolated-preview contract, freeze exact SHA/BUILD_ID/deployment URL and run
+    bilingual/security/recovery smoke.
+  expected:
+  - No cloud/DNS/Vercel changes during current task.
+  - No Stage9 exit/demo release until actual preview identity, smoke, rollback and human review exist.
+  evidence:
+  - future deployment identity
+  - future exact-head CI
+  - future smoke/rollback
+- id: S9-21
+  title: Rollback, containment, reset and cleanup
+  status: NOT_RUN
+  acceptance:
+  - REL-008
+  - REL-009
+  - ACT-004
+  - ACT-010
+  - Stage9 recovery
+  layer: isolated operator + PostgreSQL
+  personas:
+  - operator
+  - authorized and denied readers
+  locales:
+  - en
+  - zh-TW
+  viewports: not applicable except read verification
+  gate: BLOCKING_STAGE_9
+  steps:
+  - Follow rollback-reseed-runbook on fresh disposable DB and a separate retained-history clone.
+  - Test reset failure/refusal/repeat, backup restore, existing capability write-deny and compatible read
+    behavior.
+  - Restore grants/fixtures/settings; revoke sessions; compare immutable history/guards/checksums.
+  expected:
+  - No historical QA database reset; no Stage7 reader rollback; no history deletion in retained path.
+  - Four guards/eight migrations intact; write containment proven or preview stopped with limitation recorded.
+  evidence:
+  - rehearsal report
+  - restoration hashes
+  - session revocation
+  - backup-restore proof
+- id: S9-22
+  title: Independent synthesis and release package
+  status: NOT_RUN
+  acceptance:
+  - All blocking matrix requirements
+  - Quality Constitution release evidence
+  layer: independent review
+  personas:
+  - independent QA/security/eval reviewers
+  - human release authority
+  locales:
+  - en
+  - zh-TW
+  viewports: not applicable
+  gate: BLOCKING_STAGE_9
+  steps:
+  - Reconcile each acceptance ID to exact-candidate evidence and unresolved items; preserve historical
+    outcomes.
+  - Scan new text/JSON/logs/images/OCR/metadata for secrets, private paths and personal content; inventory/hash
+    subtree.
+  - Review deployment/rollback identity and human gates without performing unauthorized deployment or
+    release.
+  expected:
+  - No invented pass; full denominators and severity list; remaining gaps explicit.
+  - Planning/QA completion does not mark PR ready, merge or release.
+  evidence:
+  - scorecard
+  - independent review
+  - known limitations
+  - sanitization
+  - manifest
+closure:
+- Restore mutable fixtures exactly; preserve immutable history.
+- Restore original browser zoom and OS motion.
+- Revoke ledger-owned sessions and stop bootstrap listener; use operator evidence after revocation.
+- Verify fixture/history hashes, four guards and eight migration checksums.
+- Sanitize new evidence, record limitations, create inventory and SHA256 manifest.
+- No publication/merge/deployment performed by this planning task.
+optionalAIApplicability:
+  existingDisabledUnavailableBehavior: REQUIRED_STAGE_9
+  unimplementedProviderDependentPending: DEFERRED_STAGE_10_NOT_A_STAGE9_PASS
+  rule: Record applicability and exact coverage; never enable AI or invent passes to satisfy the current
+    plan.

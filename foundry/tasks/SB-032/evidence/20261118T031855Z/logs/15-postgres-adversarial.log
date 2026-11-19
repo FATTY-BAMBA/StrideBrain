@@ -1,0 +1,13 @@
+
+> stridebrain@0.1.0 test
+> vitest run tests/internal-review/postgres-invariants.test.ts
+
+
+ RUN  v4.1.10 [REDACTED_PRIVATE_VALUE]
+
+
+ Test Files  1 passed (1)
+      Tests  93 passed (93)
+   Start at  11:31:32
+   Duration  84.72s (transform 281ms, setup 0ms, import 409ms, tests 84.23s, environment 0ms)
+

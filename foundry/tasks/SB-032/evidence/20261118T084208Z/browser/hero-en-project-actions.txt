@@ -1,0 +1,66 @@
+- alert: StrideBrain
+- link "Skip to main content":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain BY PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: BY PRIMESTRIDE AI
+  - navigation "Projects":
+    - link "Home":
+      - /url: /en
+      - generic: "01"
+      - generic: Home
+    - link "Projects":
+      - /url: /en/projects
+      - generic: "02"
+      - generic: Projects
+    - link "Knowledge":
+      - /url: /en/knowledge
+      - generic: "03"
+      - generic: Knowledge
+    - link "StrideBrain":
+      - /url: /en/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "Settings":
+      - /url: /en/settings
+      - generic: "05"
+      - generic: Settings
+  - strong: v0.1 · Controlled demo
+  - generic: This area is not active yet
+- banner:
+  - generic: ●
+  - text: Controlled synthetic demo
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__
+    - generic: /
+    - link "EN":
+      - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__
+- main:
+  - navigation "Project workspace navigation":
+    - link "Overview":
+      - /url: /en/projects/PRJ-XINYI-026
+    - link "Compare":
+      - /url: /en/projects/PRJ-XINYI-026/compare
+    - link "Commercial":
+      - /url: /en/projects/PRJ-XINYI-026/commercial
+    - link "Evidence":
+      - /url: /en/projects/PRJ-XINYI-026/evidence
+    - link "Actions":
+      - /url: /en/projects/PRJ-XINYI-026/actions
+  - heading "Internal review actions" [level=1]
+  - paragraph: Xinyi Flagship Renovation
+  - paragraph: Open a saved receipt to inspect its details and return to the source comparison.
+  - article:
+    - generic: Open
+    - heading "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3" [level=2]
+    - term: Assignee
+    - definition: Mei Lin
+    - term: Due date
+    - definition: No due date
+    - link "Open receipt":
+      - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_bc8bba12-2d8f-4620-97cf-09c29cf7c74f
+- contentinfo:
+  - generic: Synthetic demo data only · No real customer data
+  - generic: Live demo-domain cutover has not occurred

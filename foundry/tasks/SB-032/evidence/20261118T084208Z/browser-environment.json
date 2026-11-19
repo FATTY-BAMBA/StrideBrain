@@ -1,0 +1,11 @@
+{
+  "browser": "Google Chrome",
+  "version": "157.0.8103.79",
+  "os": "macOS",
+  "osVersion": "26.2",
+  "testedOrigin": "http://localhost:3000",
+  "browserInteraction": "Actual Chrome through documented CUA controls",
+  "screenReaderSpeechClaimed": false,
+  "physicalDeviceClaimed": false,
+  "zoomOrReducedMotionAcceptanceThisRun": false
+}

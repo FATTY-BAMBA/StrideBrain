@@ -1,0 +1,73 @@
+{
+  "gate": "M-05",
+  "result": "FAIL",
+  "finding": "S9-F05",
+  "timezone": "Asia/Taipei",
+  "methodReview": "operator/clock-method-review.md; process-only probe PASS; no existing independent method approval claimed",
+  "cases": [
+    {
+      "id": "M05-01",
+      "case": "Valid leap day 2028-02-29",
+      "result": "PASS",
+      "scope": "zh-TW actual browser receipt and persisted dueDate; also exactly +365 at tested instant"
+    },
+    {
+      "id": "M05-02",
+      "case": "Yesterday rejected",
+      "result": "PASS",
+      "scope": "en and zh-TW actual browser; zero business writes"
+    },
+    {
+      "id": "M05-03",
+      "case": "Today accepted",
+      "result": "PASS",
+      "scope": "en actual browser receipt and persisted dueDate"
+    },
+    {
+      "id": "M05-04",
+      "case": "Today +365 accepted",
+      "result": "PASS",
+      "scope": "zh-TW actual browser receipt and persisted dueDate"
+    },
+    {
+      "id": "M05-05",
+      "case": "Today +366 rejected",
+      "result": "PASS",
+      "scope": "both locales actual browser; zero business writes"
+    },
+    {
+      "id": "M05-06",
+      "case": "Impossible 2027-02-29",
+      "result": "PASS_SERVER_NEGATIVE",
+      "scope": "Real confirmation endpoint rejects in both locales; native control cannot retain impossible date as a valid value. Native-invalid-to-empty observation is not counted as a server rejection."
+    },
+    {
+      "id": "M05-07",
+      "case": "Midnight server enforcement",
+      "result": "PASS",
+      "scope": "Both locales reject yesterday while proposal/session remain unexpired; no business writes"
+    },
+    {
+      "id": "M05-08",
+      "case": "Browser/server displayed-boundary parity after midnight",
+      "result": "FAIL",
+      "scope": "Both locales; S9-F05"
+    },
+    {
+      "id": "M05-09",
+      "case": "Locale-independent effective business date",
+      "result": "PASS_SCOPED",
+      "scope": "At 2027-03-01T04:00:00Z en and zh-TW server/rendered bounds both 2027-03-01 through 2028-02-29; no full locale/navigation regression claimed"
+    },
+    {
+      "id": "M05-10",
+      "case": "Invalid-date write/consumption invariants",
+      "result": "PASS",
+      "scope": "Eight before/after pairs; Action, embedded evidence associations, AuditEvent, ProposedAction and receipt unchanged"
+    }
+  ],
+  "unexecuted": "Further post-midnight recovery/valid commit deferred after P2 classification; scoped repair/retest required.",
+  "setupObservation": "Automation fill alone did not update React route draft; native key editing did. One initial default-date action retained/excluded from boundary pass.",
+  "noHostClockChange": true,
+  "productSourceChanges": false
+}

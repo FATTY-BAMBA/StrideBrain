@@ -1,0 +1,14 @@
+{
+  "at": "2026-11-18T09:55:18.719Z",
+  "ownedTabClosed": true,
+  "viewportResetBeforeRevocation": true,
+  "restoredGeometry": {
+    "dpr": 2,
+    "height": 1234,
+    "scrollWidth": 2056,
+    "width": 2056
+  },
+  "unrelatedTabsTouched": false,
+  "speechAttestation": "PENDING_USER_OBSERVATIONS",
+  "postRevocationBrowserRequests": 0
+}

@@ -1,0 +1,49 @@
+{
+  "dialogs": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "(globalThis[\"TURBOPACK\"] || (globalThis[\"TURBOPACK\"] = [])).push({\"otherChunks\":[\"static/chunks/310vm2bl3xxpt.js\",\"static/chunks/1d-3ziz_810o8.js\",\"static/chunks/39_j1bdzreq0m.js\",\"static/chunks/0gy1d"
+  },
+  "horizontalOverflow": false,
+  "mainLinks": [
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026",
+      "text": "總覽"
+    },
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026/compare",
+      "text": "比較"
+    },
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026/commercial",
+      "text": "商務資料"
+    },
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026/evidence",
+      "text": "資料依據"
+    },
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026/actions",
+      "text": "行動事項"
+    },
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026/compare",
+      "text": "尋找類似歷史專案"
+    },
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026/compare",
+      "text": "我們以前做過類似的案子嗎？\n搜尋已授權的歷史專案、說明最接近的原因，並用可信任的歷史依據比較目前報價。"
+    }
+  ],
+  "mainText": "總覽\n比較\n商務資料\n資料依據\n行動事項\n\n專案智慧工作區\n\nPERMISSION_RESTRICTED\n信義旗艦店裝修\n\n星序零售台灣\n\n地點: 臺北市信義區\n面積: 640 m²\n工期: 16 週\n專案負責人: 林美玲\n\n此專案有需要注意的資料狀態。\n\n類似專案智慧\n\n我們以前做過類似的案子嗎？\n\n尋找最接近的歷史專案、理解相似原因，並用可追溯的歷史依據比較目前報價。\n\n尋找類似歷史專案\n禾序空間設計虛構示範資料\n目前商務狀況\n\n未稅報價\n\n目前角色無權查看\n\n預估直接成本\n\n目前角色無權查看\n\n已核對實際成本\n\n目前角色無權查看\n\n資料依據狀態\nGOOD\n可存取資料來源\n31\n可存取文件\n4\n過期資料\n0\n待處理衝突\n0\n專案脈絡\n工作範圍分類\n7\n供應商\n3\n材料\n3\n未完成事項\n0\n在此專案中詢問 StrideBrain\n我們以前做過類似的案子嗎？\n搜尋已授權的歷史專案、說明最接近的原因，並用可信任的歷史依據比較目前報價。\n把目前報價和相關已完工專案比較一下。\n此能力將於後續切片啟用\n這些數字是從哪裡來的？\n此能力將於後續切片啟用",
+  "title": "StrideBrain",
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  },
+  "at": "2026-11-18T04:20:07.601Z",
+  "browser": "Codex in-app browser"
+}

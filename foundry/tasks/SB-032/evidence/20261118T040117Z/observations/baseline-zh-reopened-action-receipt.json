@@ -1,0 +1,70 @@
+{
+  "dialogs": [
+    {
+      "modal": "true",
+      "text": "已建立內部審查事項此回執記錄已儲存至專案的事項。English繁體中文關閉確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料依連結的歷史佐證資料，檢核進口石材與照明假設。\n\n進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。\n\n照明報價與符合條件的歷史報價比較，差異為 +9.4%。\n\n照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。\n\n目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量"
+    }
+  ],
+  "focus": {
+    "id": "internal-review-heading",
+    "tag": "H2",
+    "text": "已建立內部審查事項"
+  },
+  "horizontalOverflow": false,
+  "mainLinks": [
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026",
+      "text": "總覽"
+    },
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026/compare",
+      "text": "比較"
+    },
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026/commercial",
+      "text": "商務資料"
+    },
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026/evidence",
+      "text": "資料依據"
+    },
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026/actions",
+      "text": "行動事項"
+    },
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_20289a2e-32da-4e4f-a9c7-08bbec003f58&economics=econrun_4cfef68b-26ea-4681-a0c0-c67e873356b5&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_76bdf770-9d82-4f17-9806-c525ab9754d3",
+      "text": "開啟回執"
+    },
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_cf799d51-811a-48cc-b85d-29b384f7fe35&economics=econrun_9386cbd2-86eb-4b37-adc5-9ff017fbb6b3&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_ba562411-59e0-40ca-8765-bf00afdc3b84",
+      "text": "開啟回執"
+    },
+    {
+      "href": "/en/projects/PRJ-XINYI-026/actions?run=cmprun_cf799d51-811a-48cc-b85d-29b384f7fe35&economics=econrun_9386cbd2-86eb-4b37-adc5-9ff017fbb6b3&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_ba562411-59e0-40ca-8765-bf00afdc3b84",
+      "text": "English"
+    },
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_cf799d51-811a-48cc-b85d-29b384f7fe35&economics=econrun_9386cbd2-86eb-4b37-adc5-9ff017fbb6b3&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_ba562411-59e0-40ca-8765-bf00afdc3b84",
+      "text": "繁體中文"
+    },
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_cf799d51-811a-48cc-b85d-29b384f7fe35&economics=econrun_9386cbd2-86eb-4b37-adc5-9ff017fbb6b3&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "text": "返回來源比較"
+    },
+    {
+      "href": "/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_cf799d51-811a-48cc-b85d-29b384f7fe35&economics=econrun_9386cbd2-86eb-4b37-adc5-9ff017fbb6b3&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+      "text": "查看專案事項"
+    }
+  ],
+  "mainText": "總覽\n比較\n商務資料\n資料依據\n行動事項\n內部審查事項\n\n信義旗艦店裝修\n\n開啟已儲存回執以檢視詳情，或返回來源比較。\n\n待處理\n檢核信義旗艦店裝修第3版報價的進口石材與照明假設\n承辦人\n黃怡君\n到期日\n2026-11-25\n開啟回執\n待處理\n確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料\n承辦人\n林美玲\n到期日\n2026-12-02\n開啟回執\n已建立內部審查事項\n\n此回執記錄已儲存至專案的事項。\n\nEnglish\n繁體中文\n關閉\n確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料\n\n依連結的歷史佐證資料，檢核進口石材與照明假設。\n\n進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。\n\n照明報價與符合條件的歷史報價比較，差異為 +9.4%。\n\n照明已核對實際成本佐證資料不足：目前 2 筆，需要 3 筆；無法提供有佐證的實際成本區間。\n\n目前工期為 16 週，所選歷史專案為 19.00–22.00 週；目前沒有佐證支持量化工期溢價。\n\n比較紀錄：cmprun_cf799d51-811a-48cc-b85d-29b384f7fe35；成本分析紀錄：econrun_9386cbd2-86eb-4b37-adc5-9ff017fbb6b3。\n\n此操作只會建立內部審查事項，不會核准或發出報價、授權商業承諾，或對外聯繫。\n\n歷史比較不能證明這份報價有誤、供應商收費過高，或趕工造成特定溢價；供應商價格也未確認目前仍有效。\n\n事項編號\naction_ba562411-59e0-40ca-8765-bf00afdc3b84\n專案\n信義旗艦店裝修\n承辦人\n林美玲\n到期日\n2026-12-02\n狀態\n待處理\n建立時間\n2026年11月18日 中午12:31\n建立人\n林美玲\n可存取的佐證資料筆數\n15\n來源比較紀錄\ncmprun_cf799d51-811a-48cc-b85d-29b384f7fe35\n來源商務分析紀錄\neconrun_9386cbd2-86eb-4b37-adc5-9ff017fbb6b3\n返回來源比較\n查看專案事項",
+  "title": "StrideBrain",
+  "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_cf799d51-811a-48cc-b85d-29b384f7fe35&economics=econrun_9386cbd2-86eb-4b37-adc5-9ff017fbb6b3&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_ba562411-59e0-40ca-8765-bf00afdc3b84",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  },
+  "at": "2026-11-18T04:35:55.969Z",
+  "browser": "Codex in-app browser"
+}

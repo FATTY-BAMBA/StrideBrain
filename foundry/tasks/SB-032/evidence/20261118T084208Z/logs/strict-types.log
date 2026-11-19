@@ -1,0 +1,2 @@
+tests/comparison-experience/selection-lineage-postgres.test.ts(160,46): error TS2339: Property 'enrichmentRunId' does not exist on type 'EvidencePanelSelection'.
+  Property 'enrichmentRunId' does not exist on type 'Readonly<{ mode: "FACTOR"; comparisonRunId: string; candidateProjectKey: string; factorKey: SimilarityFactorKey; }>'.

@@ -1,0 +1,905 @@
+[
+  {
+    "file": "screenshots/f02-en-1440-health.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-en-1440-workspace.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-en-320-health.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-en-320-lower.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-en-320-workspace.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-en-390-health.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-en-390-lower.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-en-390-workspace.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-en-768-health.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-en-768-workspace.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-zh-TW-1440-health.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-zh-TW-1440-workspace.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-zh-TW-320-health.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-zh-TW-320-lower.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-zh-TW-320-workspace.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-zh-TW-390-health.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-zh-TW-390-lower.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-zh-TW-390-workspace.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-zh-TW-768-health.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f02-zh-TW-768-workspace.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f03-en-1440-bounded-pending.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f03-en-320-bounded-pending.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f03-en-390-bounded-pending.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f03-en-768-bounded-pending.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f03-zh-TW-1440-bounded-pending.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f03-zh-TW-1440-saved-run-pending.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f03-zh-TW-320-bounded-pending.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f03-zh-TW-320-saved-run-pending.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f03-zh-TW-390-bounded-pending.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f03-zh-TW-390-saved-run-pending.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f03-zh-TW-768-bounded-pending.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f03-zh-TW-768-saved-run-pending.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f03-zh-after-read-lock-settled.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-1440-ab.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-1440-abc-current-evidence.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-1440-abc-initial.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-1440-abc-restored.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-1440-current-review.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-320-ab-evidence.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-320-ab.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-320-abc-current-evidence.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-320-abc-initial.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-320-abc-restored.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-320-current-review.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-390-ab-evidence.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-390-ab.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-390-abc-current-evidence.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-390-abc-initial.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-390-abc-restored.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-390-current-review.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-768-ab-evidence.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-768-ab.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-768-abc-current-evidence.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-768-abc-initial.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-768-abc-restored.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-en-768-current-review.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-extra-en-a.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-extra-en-ab.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-extra-en-abc-restored.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-extra-en-abc.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-extra-en-ac.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-extra-en-def.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-extra-en-zero-not-submitted.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-extra-zh-TW-a.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-extra-zh-TW-ab.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-extra-zh-TW-abc-restored.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-extra-zh-TW-abc.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-extra-zh-TW-ac.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-extra-zh-TW-def.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-extra-zh-TW-zero-not-submitted.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-history-en-ab-evidence-reopened.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-history-en-abc-reopened.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-history-zh-TW-ab-evidence-reopened.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-history-zh-TW-abc-reopened.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-1440-ab-evidence.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-1440-ab.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-1440-abc-current-evidence.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-1440-abc-initial.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-1440-abc-restored.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-1440-current-review.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-320-ab-evidence.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-320-ab.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-320-abc-current-evidence.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-320-abc-initial.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-320-abc-restored.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-320-current-review.jpg",
+    "format": "JPEG",
+    "width": 320,
+    "height": 740,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-390-ab-evidence.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-390-ab.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-390-abc-current-evidence.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-390-abc-initial.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-390-abc-restored.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-390-current-review.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-768-ab-evidence.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-768-ab.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-768-abc-current-evidence.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-768-abc-initial.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-768-abc-restored.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/f04-zh-TW-768-current-review.jpg",
+    "format": "JPEG",
+    "width": 768,
+    "height": 1024,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-edited-review-evidence-return.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-edited-review-locale-zh.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-en-before-confirm.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-en-copied-receipt-route.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-en-edited-review.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-en-factor-return.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-en-factor-source.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-en-factor.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-en-lighting-insufficiency.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-en-mobile-second-receipt.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-en-project-actions-reopened.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-en-project-actions.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-en-receipt-lineage.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-en-receipt.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-first-receipt-lineage.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-first-receipt-refreshed.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-first-receipt.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-mobile-before-confirm.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-mobile-copied-receipt.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-mobile-factor-return.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-mobile-factor-source.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-mobile-factor.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-mobile-lighting-insufficiency.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-mobile-project-actions-reopened.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-mobile-project-actions.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-mobile-receipt-lineage.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-mobile-receipt-refreshed.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-mobile-receipt.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-mobile-review.jpg",
+    "format": "JPEG",
+    "width": 390,
+    "height": 844,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-review-evidence.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  },
+  {
+    "file": "screenshots/hero-zh-source-focus.jpg",
+    "format": "JPEG",
+    "width": 1440,
+    "height": 900,
+    "exifEntries": 0
+  }
+]

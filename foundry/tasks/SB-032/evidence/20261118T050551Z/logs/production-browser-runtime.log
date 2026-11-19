@@ -1,0 +1,47 @@
+▲ Next.js 16.4.6
+- Local:         http://localhost:3000
+- Network:       http://localhost:3000
+✓ Ready in 180ms
+✓ Running next.config.ts took 97ms
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"848889ad-f311-4e23-9ba4-ded9efb4ba7d","outcome":"VALIDATION_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"e98e3d27-44ec-4297-8de3-58d35a3409f0","outcome":"STALE_COMPARISON"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"3101f79f-5f29-4296-8d46-36b1ddd5eaba","outcome":"PROPOSAL_STALE"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"a0a969b3-e078-468e-ab9c-986c280dace2","outcome":"STALE_COMPARISON"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"ccaa228f-a734-4a33-8eb6-175fb4875677","outcome":"STALE_COMPARISON"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"cfa68b1f-66a5-4978-9cff-c1c0f9d8fa8d","outcome":"STALE_COMPARISON"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"046c1a25-c4a6-461e-81b4-d29c06cfd8c5","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"32afb822-acd7-4a3f-933e-f5bebcd23a31","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"42971ba5-bd20-4ef0-9173-2d2489f6bbc0","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"72944a28-d788-4175-8def-b10cbc20c314","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"e741416d-c209-4ecb-9aee-9023ebe76b49","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"759bcc92-c44d-45c4-8967-e7a724448d32","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"7448837e-de8a-4297-8c79-093c5e56c18a","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"51ea498e-c3cc-4aca-bcc6-a3f12ef61b8d","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"66cd342f-6af7-4149-9c91-73fc6bc5ff8a","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"4e36145a-749d-45de-b869-d3f5a7f6aeae","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"bc3dc942-f0c6-48e4-b4e4-4dfbae19ebbd","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"c9e5d946-1d5c-4273-a2cb-c92796737406","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"c388be9d-bc78-4932-8ed2-57660271d72c","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"ad3d7da2-d521-4de4-bce7-40f79c03b5ce","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"e46e8d48-8715-456d-9214-690e6c89f1ca","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"205d49eb-efa3-4619-975c-74189b1d1a03","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"f81088c8-9dba-4405-8bb3-7cae103cdeae","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"d96c555b-32c3-467f-b7d9-f1dfdba44056","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"c3109a57-ab55-452e-8b0a-64585b752aab","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"70197adc-a6a5-4279-969a-a38e60080b9a","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"5ef1bbc7-5e3b-4cd7-901c-60bd7a9826c5","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"f66bfb84-1fe0-41f9-8970-656ca0930b79","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"38cd70dc-9f68-4ba6-b048-62eebcf35ec6","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"2ccff0c1-82dd-4663-ad50-f8daf5fa0050","outcome":"ACTION_CREATE_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"b2f3078f-ff0c-4b15-9f38-f32ab82afdd2","outcome":"VALIDATION_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"a6d16633-fc15-44ce-8ba9-6ab5e157495a","outcome":"ACTION_NOT_AUTHORIZED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"4a496b44-8574-49e9-bcf5-d0f647d59e38","outcome":"VALIDATION_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"e8a82c77-c97d-4b07-9ccd-30093fe59a72","outcome":"ACTION_NOT_AUTHORIZED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"1f5ebc64-0876-4c2b-b7ff-fa2b79fefee8","outcome":"VALIDATION_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"da21c184-e0fe-4901-ab6b-33198031efaf","outcome":"VALIDATION_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"9dcf3133-268e-4053-9876-914cea45d589","outcome":"VALIDATION_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"c5b406a4-198d-4683-9cf9-42ae5dffe00d","outcome":"VALIDATION_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"893d88f0-a4a0-4d57-a25c-ed7bdfd1ad81","outcome":"VALIDATION_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"0b31c293-238d-493c-856a-59d96338af39","outcome":"VALIDATION_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"f15d8870-dfa4-43b6-b991-d7f97dc902b4","outcome":"VALIDATION_FAILED"}
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"24e40374-65f4-406a-9e0e-7ba2c17aed02","outcome":"VALIDATION_FAILED"}

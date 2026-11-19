@@ -1,0 +1,13 @@
+{
+  "alerts": [],
+  "browserRealInstant": "2026-11-19T03:29:37.870Z",
+  "date": [],
+  "dialog": "internal-review-heading",
+  "focus": {
+    "id": "internal-review-heading",
+    "tag": "H2",
+    "text": "Internal review action created"
+  },
+  "locale": "en",
+  "url": "http://localhost:3002/en/projects/PRJ-XINYI-026/compare?run=cmprun_e5aad33c-1939-4bf8-bc69-1cbc3f7ff0f0&economics=econrun_a37afc6b-bf58-4772-acf5-231c1851572d&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_1f84f357-3bbb-4e41-9c52-5d5500112e31"
+}

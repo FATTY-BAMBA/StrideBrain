@@ -1,0 +1,74 @@
+[
+  {
+    "viewport": {
+      "id": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "locale": "zh-TW",
+    "mainButtons": [],
+    "mainLinks": [],
+    "text": "專案工作區\n\n專案是 StrideBrain 的營運核心。\n\n受控示範已連接禾序空間設計的虛構專案資料、報價、預估、已核對實際成本、供應商與資料依據。第一個完整流程從信義旗艦店專案開始。\n\nP\n此區域尚未啟用\n\n此版本已建立雙語專案工作區、權限治理、可解釋的歷史專案排序，以及報價與實際成本分開的商務比較。所有資料皆為禾序空間設計的虛構示範資料。",
+    "url": "http://localhost:3000/zh-TW/projects"
+  },
+  {
+    "viewport": {
+      "id": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "locale": "en",
+    "mainButtons": [],
+    "mainLinks": [],
+    "text": "PROJECT WORKSPACE\n\nProjects are the operating center of StrideBrain.\n\nThe controlled demo connects Horizon Atelier's fictional projects, quotes, forecasts, reconciled actual costs, suppliers, and evidence. The first complete workflow begins inside Xinyi Flagship Renovation.\n\nP\nThis area is not active yet\n\nThis build includes a bilingual Project Workspace, governed authorization, explainable historical-project ranking, and a commercial comparison that keeps quoted price and actual cost distinct. All records belong to the fictional Horizon Atelier demo organization.",
+    "url": "http://localhost:3000/en/projects"
+  },
+  {
+    "viewport": {
+      "id": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    "locale": "zh-TW",
+    "mainButtons": [],
+    "mainLinks": [],
+    "text": "專案工作區\n\n專案是 StrideBrain 的營運核心。\n\n受控示範已連接禾序空間設計的虛構專案資料、報價、預估、已核對實際成本、供應商與資料依據。第一個完整流程從信義旗艦店專案開始。\n\nP\n此區域尚未啟用\n\n此版本已建立雙語專案工作區、權限治理、可解釋的歷史專案排序，以及報價與實際成本分開的商務比較。所有資料皆為禾序空間設計的虛構示範資料。",
+    "url": "http://localhost:3000/zh-TW/projects"
+  },
+  {
+    "viewport": {
+      "id": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    "locale": "en",
+    "mainButtons": [],
+    "mainLinks": [],
+    "text": "PROJECT WORKSPACE\n\nProjects are the operating center of StrideBrain.\n\nThe controlled demo connects Horizon Atelier's fictional projects, quotes, forecasts, reconciled actual costs, suppliers, and evidence. The first complete workflow begins inside Xinyi Flagship Renovation.\n\nP\nThis area is not active yet\n\nThis build includes a bilingual Project Workspace, governed authorization, explainable historical-project ranking, and a commercial comparison that keeps quoted price and actual cost distinct. All records belong to the fictional Horizon Atelier demo organization.",
+    "url": "http://localhost:3000/en/projects"
+  },
+  {
+    "viewport": {
+      "id": "narrow-mobile",
+      "width": 320,
+      "height": 740
+    },
+    "locale": "zh-TW",
+    "mainButtons": [],
+    "mainLinks": [],
+    "text": "專案工作區\n\n專案是 StrideBrain 的營運核心。\n\n受控示範已連接禾序空間設計的虛構專案資料、報價、預估、已核對實際成本、供應商與資料依據。第一個完整流程從信義旗艦店專案開始。\n\nP\n此區域尚未啟用\n\n此版本已建立雙語專案工作區、權限治理、可解釋的歷史專案排序，以及報價與實際成本分開的商務比較。所有資料皆為禾序空間設計的虛構示範資料。",
+    "url": "http://localhost:3000/zh-TW/projects"
+  },
+  {
+    "viewport": {
+      "id": "narrow-mobile",
+      "width": 320,
+      "height": 740
+    },
+    "locale": "en",
+    "mainButtons": [],
+    "mainLinks": [],
+    "text": "PROJECT WORKSPACE\n\nProjects are the operating center of StrideBrain.\n\nThe controlled demo connects Horizon Atelier's fictional projects, quotes, forecasts, reconciled actual costs, suppliers, and evidence. The first complete workflow begins inside Xinyi Flagship Renovation.\n\nP\nThis area is not active yet\n\nThis build includes a bilingual Project Workspace, governed authorization, explainable historical-project ranking, and a commercial comparison that keeps quoted price and actual cost distinct. All records belong to the fictional Horizon Atelier demo organization.",
+    "url": "http://localhost:3000/en/projects"
+  }
+]

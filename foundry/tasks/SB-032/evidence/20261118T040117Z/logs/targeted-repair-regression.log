@@ -1,0 +1,13 @@
+
+> stridebrain@0.1.0 test
+> vitest run tests/projects/list-authorized-projects.test.ts tests/projects/projects-page.test.ts tests/projects/project-list-postgres.test.ts tests/projects/project-workspace-entry.test.ts tests/repositories/prisma-project-repository.test.ts tests/authorization/authorization-service.test.ts
+
+
+ RUN  v4.1.10 [REDACTED_PRIVATE_VALUE]
+
+
+ Test Files  6 passed (6)
+      Tests  56 passed (56)
+   Start at  12:06:36
+   Duration  7.21s (transform 247ms, setup 0ms, import 366ms, tests 7.02s, environment 503ms)
+

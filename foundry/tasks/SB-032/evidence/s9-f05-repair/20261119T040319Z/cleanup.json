@@ -1,0 +1,30 @@
+{
+  "result": "PASS",
+  "ownedSessionCount": 4,
+  "allOwnedSessionsRevoked": true,
+  "pendingBootstrapFiles": 0,
+  "temporaryFixtureMutations": "NONE",
+  "ownedAppAndOperatorStopped": true,
+  "ports": [
+    3002,
+    3003
+  ],
+  "mainPreview3000Untouched": true,
+  "browserTabClosedBeforeRevocation": true,
+  "postRevocationAuthenticatedBrowserRequests": 0,
+  "systemClockChanged": false,
+  "browserSettingsChanged": false,
+  "originalFixtureRowsUnchanged": true,
+  "nineMigrationsUnchanged": true,
+  "fourHistoryGuardsEnabledUnchanged": true,
+  "retainedImmutableRecords": {
+    "comparisons": 4,
+    "economics": 4,
+    "proposals": 4,
+    "actions": 4,
+    "audits": 4,
+    "receipts": 4
+  },
+  "databaseProof": "operator/database-verification.json",
+  "closureSQLQualification": "operator/closure-sql-qualification.md"
+}

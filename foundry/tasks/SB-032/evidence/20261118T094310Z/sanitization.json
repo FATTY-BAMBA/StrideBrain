@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "scope": "All new evidence text/binary files, screenshot English-character OCR/metadata and four current task records. Known runtime literals in raw/URL/base64/base64url forms checked. No human speech/language acceptance inferred.",
+  "filesScannedBeforeManifest": 90,
+  "screenshots": 19,
+  "findings": [],
+  "ocrFindings": [],
+  "imageMetadata": "JPEG/JFIF only; no EXIF entries",
+  "privateRuntimeNotIncluded": true
+}

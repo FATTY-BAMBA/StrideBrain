@@ -1,3 +1,4 @@
+import { workspaceStateCopies } from "@/modules/localization/workspace-state-copy";
 import { getFinancialCopy } from "@/modules/localization/financial-copy";
 import { projectLocationLabel } from "@/modules/localization/project-context";
 import type { Route } from "next";
@@ -130,7 +131,9 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
       <header className={styles.hero}>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>{labels.eyebrow}</p>
-          <span className={styles.status}>{workspace.state}</span>
+          <span className={styles.status}>
+            {workspaceStateCopies[locale].workspace[workspace.state]}
+          </span>
           <h1>{workspace.project.name.display}</h1>
           <p className={styles.client}>{workspace.project.clientName.display}</p>
           <div className={styles.meta}>
@@ -185,7 +188,9 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
         <article className={styles.panel}>
           <div className={styles.panelHeader}>
             <h2>{labels.evidence}</h2>
-            <span className={styles.status}>{workspace.evidenceHealth.state}</span>
+            <span className={styles.status}>
+              {workspaceStateCopies[locale].evidence[workspace.evidenceHealth.state]}
+            </span>
           </div>
           <ul className={styles.list}>
             <li>

@@ -1,0 +1,22 @@
+{
+  "result": "PASS_TEXT_AND_VISUAL",
+  "observedAt": "2026-11-19T04:40:08.920800+00:00",
+  "scope": "Entire new S9-F05 evidence subtree and five updated task records; historical evidence is hash-verified, not rewritten",
+  "textFilesScannedBeforeClosureManifests": 131,
+  "knownPrivateRuntimeValuesCompared": 4,
+  "patternHits": 0,
+  "categories": [
+    "session credentials and JWTs",
+    "cookie and authorization headers",
+    "token-bearing bootstrap URLs",
+    "signing secrets and private keys",
+    "database URLs/passwords",
+    "private runtime and personal paths"
+  ],
+  "screenshots": 19,
+  "visualReview": "All 19 screenshots independently inspected; see independent-screenshot-review.json",
+  "runtimeExcluded": true,
+  "productCommitScope": "Only 12 reviewed source/test files; no runtime or evidence files staged",
+  "historicalEvidence": "2033 files unchanged; see historical-evidence-preservation.json",
+  "manualAndHumanPassesInferred": false
+}

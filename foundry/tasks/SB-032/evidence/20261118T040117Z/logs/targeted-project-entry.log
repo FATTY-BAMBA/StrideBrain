@@ -1,0 +1,13 @@
+
+> stridebrain@0.1.0 test
+> vitest run tests/projects/list-authorized-projects.test.ts tests/projects/projects-page.test.ts tests/projects/project-workspace-entry.test.ts tests/repositories/prisma-project-repository.test.ts tests/authorization/authorization-service.test.ts
+
+
+ RUN  v4.1.10 [WORKTREE]
+
+
+ Test Files  5 passed (5)
+      Tests  50 passed (50)
+   Start at  12:04:11
+   Duration  742ms (transform 189ms, setup 0ms, import 252ms, tests 59ms, environment 486ms)
+

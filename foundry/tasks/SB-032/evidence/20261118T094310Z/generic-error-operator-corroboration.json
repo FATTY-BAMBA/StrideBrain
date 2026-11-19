@@ -1,0 +1,12 @@
+[
+  {
+    "event": "INTERNAL_REVIEW_ATTEMPT",
+    "requestId": "769e94c1-b5bb-43e9-bf2b-d0a82daf2672",
+    "outcome": "ACTION_NOT_AUTHORIZED"
+  },
+  {
+    "event": "INTERNAL_REVIEW_ATTEMPT",
+    "requestId": "77f92102-b3c8-44f4-92ac-601c123e3695",
+    "outcome": "ACTION_NOT_AUTHORIZED"
+  }
+]

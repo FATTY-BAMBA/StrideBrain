@@ -1,0 +1,48 @@
+- alert
+- link "Skip to main content":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain BY PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: BY PRIMESTRIDE AI
+  - navigation "Projects":
+    - link "Home":
+      - /url: /en
+      - generic: "01"
+      - generic: Home
+    - link "Projects":
+      - /url: /en/projects
+      - generic: "02"
+      - generic: Projects
+    - link "Knowledge":
+      - /url: /en/knowledge
+      - generic: "03"
+      - generic: Knowledge
+    - link "StrideBrain":
+      - /url: /en/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "Settings":
+      - /url: /en/settings
+      - generic: "05"
+      - generic: Settings
+- banner:
+  - generic: ●
+  - text: Controlled synthetic demo
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects
+    - generic: /
+    - link "EN":
+      - /url: /en/projects
+- main:
+  - paragraph: PROJECT WORKSPACE
+  - heading "Projects are the operating center of StrideBrain." [level=1]
+  - paragraph: The controlled demo connects Horizon Atelier's fictional projects, quotes, forecasts, reconciled actual costs, suppliers, and evidence. The first complete workflow begins inside Xinyi Flagship Renovation.
+  - status:
+    - generic: P
+    - strong: This area is not active yet
+    - paragraph: This build includes a bilingual Project Workspace, governed authorization, explainable historical-project ranking, and a commercial comparison that keeps quoted price and actual cost distinct. All records belong to the fictional Horizon Atelier demo organization.
+- contentinfo:
+  - generic: Synthetic demo data only · No real customer data
+  - generic: Live demo-domain cutover has not occurred

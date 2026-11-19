@@ -1,0 +1,110 @@
+- alert: StrideBrain
+- link "Skip to main content":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain BY PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: BY PRIMESTRIDE AI
+  - navigation "Projects":
+    - link "Home":
+      - /url: /en
+      - generic: "01"
+      - generic: Home
+    - link "Projects":
+      - /url: /en/projects
+      - generic: "02"
+      - generic: Projects
+    - link "Knowledge":
+      - /url: /en/knowledge
+      - generic: "03"
+      - generic: Knowledge
+    - link "StrideBrain":
+      - /url: /en/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "Settings":
+      - /url: /en/settings
+      - generic: "05"
+      - generic: Settings
+  - strong: v0.1 · Controlled demo
+  - generic: This area is not active yet
+- banner:
+  - generic: ●
+  - text: Controlled synthetic demo
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb
+    - generic: /
+    - link "EN":
+      - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb
+- main:
+  - navigation "Project workspace navigation":
+    - link "Overview":
+      - /url: /en/projects/PRJ-XINYI-026
+    - link "Compare":
+      - /url: /en/projects/PRJ-XINYI-026/compare
+    - link "Commercial":
+      - /url: /en/projects/PRJ-XINYI-026/commercial
+    - link "Evidence":
+      - /url: /en/projects/PRJ-XINYI-026/evidence
+    - link "Actions":
+      - /url: /en/projects/PRJ-XINYI-026/actions
+  - heading "Internal review actions" [level=1]
+  - paragraph: Xinyi Flagship Renovation
+  - paragraph: Open a saved receipt to inspect its details and return to the source comparison.
+  - article:
+    - generic: Open
+    - heading "Review imported-stone and lighting assumptions for Xinyi quote v3" [level=2]
+    - term: Assignee
+    - definition: Iris Huang
+    - term: Due date
+    - definition: 2026-11-25
+    - link "Open receipt":
+      - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb
+  - article:
+    - generic: Open
+    - heading "Check evidence for imported-stone and lighting assumptions in Xinyi quote v3" [level=2]
+    - term: Assignee
+    - definition: Mei Lin
+    - term: Due date
+    - definition: No due date
+    - link "Open receipt":
+      - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_00433940-3f6c-4247-b1f5-5b8acdd1fcb9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-cell-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_bc8bba12-2d8f-4620-97cf-09c29cf7c74f
+  - dialog "Internal review action created":
+    - heading "Internal review action created" [active] [level=2]
+    - paragraph: This receipt records the action saved to the project.
+    - navigation "English / 繁體中文":
+      - link "English":
+        - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb
+      - link "繁體中文":
+        - /url: /zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb
+    - button "Close"
+    - heading "Review imported-stone and lighting assumptions for Xinyi quote v3" [level=3]
+    - paragraph: "Check the supporting evidence and record questions for internal review. Imported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history. Lighting quoted price differs by +9.4% from eligible quoted-price history. Lighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available. The programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium. Comparison: cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4; economics enrichment: econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024. This creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally. Historical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid."
+    - term: Action reference
+    - definition: action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb
+    - term: Project
+    - definition: Xinyi Flagship Renovation
+    - term: Assignee
+    - definition: Iris Huang
+    - term: Due date
+    - definition: 2026-11-25
+    - term: Status
+    - definition: Open
+    - term: Created
+    - definition: 18 Nov 2026, 17:22
+    - term: Created by
+    - definition: Mei Lin
+    - term: Authorized evidence references
+    - definition: "15"
+    - term: Source comparison
+    - definition: cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4
+    - term: Source economics review
+    - definition: econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024
+    - link "Return to source comparison":
+      - /url: /en/projects/PRJ-XINYI-026/compare?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__
+    - link "View project actions":
+      - /url: /en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__
+- contentinfo:
+  - generic: Synthetic demo data only · No real customer data
+  - generic: Live demo-domain cutover has not occurred

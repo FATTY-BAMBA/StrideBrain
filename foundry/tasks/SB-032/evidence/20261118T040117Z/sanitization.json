@@ -1,0 +1,40 @@
+{
+  "runId": "20261118T040117Z",
+  "at": "2026-11-18T04:45:56.229202+00:00",
+  "result": "PASS",
+  "scope": "New repair evidence subtree and four current task records; historical evidence unchanged.",
+  "filesScannedBeforeManifests": 371,
+  "taskRecordsScanned": 4,
+  "knownPrivateValueEncodings": [
+    "raw",
+    "URL encoded",
+    "base64",
+    "base64url"
+  ],
+  "sensitivePatternsChecked": [
+    "personal_or_private_path",
+    "database_url",
+    "bootstrap_url",
+    "live_cookie_or_auth_header",
+    "private_key",
+    "github_token",
+    "jwt",
+    "credential_assignment"
+  ],
+  "findings": [],
+  "screenshots": {
+    "count": 96,
+    "visualArtifactReview": "PASS_NO_SENSITIVE_CONTENT_OBSERVED",
+    "OCR": "English-character OCR on all screenshots; not Chinese linguistic approval.",
+    "metadata": "Ordinary JFIF only; no EXIF/XMP/comment fields.",
+    "visualAcceptance": "Two EN review size-mismatched captures remain incomplete visual proof; separate from sanitization."
+  },
+  "publicStaticBundle": {
+    "filesScanned": 20,
+    "knownPrivateLiteralFindings": [],
+    "scope": "Known runtime values only; not full security audit"
+  },
+  "rawLogsAndPrivateRuntime": "Outside evidence; sanitized log copies only.",
+  "disallowedTypes": [],
+  "publicationPerformed": false
+}

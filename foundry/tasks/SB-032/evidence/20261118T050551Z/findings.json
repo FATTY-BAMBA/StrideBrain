@@ -1,0 +1,129 @@
+[
+  {
+    "id": "S9-F02",
+    "severity": "P2",
+    "requiredPath": true,
+    "status": "OPEN_INDEPENDENTLY_CONFIRMED",
+    "title": "Normal zh-TW workspace exposes READY and GOOD enums",
+    "scenarios": [
+      "S9-02",
+      "S9-18"
+    ],
+    "acceptance": [
+      "I18N-005",
+      "S9-18 no normal-mode enums/English leaks"
+    ],
+    "persona": "Synthetic Mei assigned PM",
+    "locale": "zh-TW",
+    "viewports": [
+      1440,
+      768,
+      390,
+      320
+    ],
+    "steps": [
+      "Projects → 信義旗艦店裝修",
+      "Inspect project state and evidence-health badges"
+    ],
+    "expected": "Locale-specific presentation labels, internal enums preserved only in domain/provenance",
+    "observed": "READY and GOOD visibly rendered",
+    "evidence": [
+      "screenshots/grid-zh-1440-workspace.jpg",
+      "observations/grid-zh-1440-workspace.json",
+      "screenshots/grid-zh-320-workspace.jpg"
+    ],
+    "source": [
+      "src/components/projects/project-workspace-overview.tsx:133",
+      "src/components/projects/project-workspace-overview.tsx:188"
+    ],
+    "repairBoundary": "Finite locale-specific label mapping only; no state-selection/domain/policy change."
+  },
+  {
+    "id": "S9-F03",
+    "severity": "P2",
+    "requiredPath": true,
+    "status": "OPEN_INDEPENDENTLY_RUNTIME_CONFIRMED",
+    "title": "zh-TW comparison loading accessible name remains English",
+    "scenarios": [
+      "S9-02",
+      "S9-09",
+      "S9-18"
+    ],
+    "acceptance": [
+      "I18N-005",
+      "critical loading-state locale parity"
+    ],
+    "persona": "Synthetic Mei assigned PM",
+    "locale": "zh-TW",
+    "viewports": [
+      1440
+    ],
+    "steps": [
+      "Open stored comparison in EN",
+      "Switch to 繁中",
+      "Inspect active aria-busy loading boundary before settled comparison"
+    ],
+    "expected": "Localized loading accessible name with busy semantics preserved",
+    "observed": "aria-label=Loading comparable projects on zh-TW route; visual text empty",
+    "evidence": [
+      "observations/zh-loading-transition.json",
+      "observations/zh-loading-transition.txt"
+    ],
+    "source": [
+      "src/app/[locale]/projects/[projectKey]/compare/loading.tsx:5"
+    ],
+    "speechFailureClaimed": false,
+    "repairBoundary": "Localize existing loading name; preserve appearance and busy behavior."
+  },
+  {
+    "id": "S9-F04",
+    "severity": "P2",
+    "requiredPath": true,
+    "status": "OPEN_INDEPENDENTLY_CONFIRMED",
+    "title": "Updating comparable selection cannot persist a second economics enrichment",
+    "scenarios": [
+      "S9-03",
+      "S9-04",
+      "S9-02"
+    ],
+    "acceptance": [
+      "S9-03 change selected set and reopen exact stored run",
+      "UI promise: new immutable economics with unchanged ranking"
+    ],
+    "persona": "Synthetic Mei assigned PM",
+    "locales": [
+      "en",
+      "zh-TW"
+    ],
+    "viewport": [
+      1440,
+      900
+    ],
+    "steps": [
+      "Open valid stored canonical comparison/economics",
+      "Uncheck Nanjing; check Daan; Update comparison",
+      "Observe FAILED with missing economics selector",
+      "Switch zh-TW; restore Nanjing; 更新比較",
+      "Observe FAILED again"
+    ],
+    "expected": "New immutable economics snapshot for changed selection; original ranking/history remain; exact old/new results reopen",
+    "observed": "Both requests FAILED; no new enrichment; structural comparison remains while commercial values disappear; associated role-restriction wording misdescribes persistence failure",
+    "evidence": [
+      "observations/selection-change.json",
+      "observations/en-selection-changed-daan.txt",
+      "screenshots/en-selection-changed-daan.jpg",
+      "observations/zh-selection-restored-canonical.txt",
+      "screenshots/zh-selection-restored-canonical.jpg",
+      "final-catalog.json"
+    ],
+    "requestIds": [
+      "044cf428-9747-47d7-b618-c09162460d31",
+      "ae51fb26-3d4c-49b7-90e7-404991257446"
+    ],
+    "beforeSessionRevocation": true,
+    "temporaryFaultAlreadyRemoved": true,
+    "rootCauseConfidence": "HIGH_SOURCE_AND_ACTUAL_CATALOG; exact request-correlated PostgreSQL exception not captured",
+    "rootCause": "Unconditional new enrichment conflicts with unique comparisonRunId; recurring ComparisonClaim keys also unique by organization/comparison/claimKey.",
+    "repairBoundary": "Explicit reviewed schema/cardinality and enrichment-specific claim-lineage decision required. Do not edit historical migrations, overwrite/upsert snapshots, remove integrity constraints without replacements, or silently rerank."
+  }
+]

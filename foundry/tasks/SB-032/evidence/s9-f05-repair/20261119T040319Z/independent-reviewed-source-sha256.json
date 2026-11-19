@@ -1,0 +1,18 @@
+{
+  "base": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+  "review": "PASS",
+  "files": {
+    "src/components/internal-review/internal-review-sheet.tsx": "d4c7ce6c8a8abe837902fd16f68bb87da7cbe74467bc69de5d59abbcf7667dd3",
+    "src/components/internal-review/use-review-date-policy.ts": "d99d5bf4d1bfa67c5084e2d2e56ade37b2dce471ae4985b3769a2a5445e6a60b",
+    "src/modules/internal-review-experience/copy.ts": "531b99cefd0047fb10eb1f2fc55910a6eaf7d2bf1784023966736306f3e07f8a",
+    "src/modules/internal-review/application/internal-review-service.ts": "a7c8ae3cd64efa68ad739210c570f7e4c6b5d8c8c545748524b2cd5a35661a9b",
+    "src/modules/internal-review/domain/contracts.ts": "81f9ba5c6a43d181f5cf6947472d08ed42b2f339ce19936249aa55c0e7235277",
+    "src/modules/internal-review/domain/proposal-policy.ts": "e5b3eb655e5fad56193399d90eb69a31d6f93c507c386f6d4ca18bdd5a627daf",
+    "tests/evidence-panel/modal-focus.test.ts": "599152501daa87cf8db684e5a0bb1a4b44db184314a50ea022c8010e929c79f5",
+    "tests/internal-review-experience/date-policy.test.ts": "ccaa698e96992ea1dd17f6b1e3b45e064017184a0c0f204f62e13b9abb79262d",
+    "tests/internal-review-experience/navigation-race.test.ts": "2834bf03f4061cc52423ed7736cfbed2d5d414ae9c36c10206ad5f3f2cc78578",
+    "tests/internal-review/policy-unit.test.ts": "69504ac748e1f0a878360e41fd9fe5f0d9bbb8d2904db06e655ca7dbef761798",
+    "tests/internal-review/postgres-invariants.test.ts": "36335b0400dd9e40c8e138c2bc3bacf7e03030b4c541b74aacd9fd91bb2272bc",
+    "tests/internal-review/service-unit.test.ts": "a4ee9bc7ffd0440a14ffc14121e9d655a280f43039231d56428d0c226c82fd02"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "BODY"
+  },
+  "mainText": "專案工作區\n\n專案\n\n開啟您有權限查看的專案工作區。\n\n信義旗艦店裝修\n進行中\n開啟專案 →",
+  "overflow": false,
+  "url": "http://localhost:3000/zh-TW/projects",
+  "viewport": {
+    "dpr": 1,
+    "height": 844,
+    "width": 390
+  },
+  "at": "2026-11-18T05:43:18.590Z",
+  "browser": "Actual Google Chrome on macOS",
+  "persona": "Synthetic Mei",
+  "screenshot": "screenshots/grid-zh-390-projects.jpg"
+}

@@ -1,0 +1,7 @@
+# Migration 0009 scope and operator boundary
+
+The independently approved repair changes only economics-run cardinality and claim ownership. All eight historical migration files remain byte-identical. Nine clean migrations and two seed/verification rounds passed in a fresh disposable PostgreSQL database. A populated eight-migration database with stored comparison, enrichment, claims, proposal, action, receipt and audit history upgraded without rewriting those payloads or IDs. Seven malformed-history variants failed closed and rolled back.
+
+No migration was applied to a historical QA database or deployed environment. Prior browser histories are retained unchanged. A later deployment requires its own backup, preflight and release authorization. Do not reverse the uniqueness change against a database with multiple enrichments, delete lineage/history to make a downgrade fit, or run fixture reseeds as retained-history cleanup. Any future rollback must follow a reviewed compatible restore/forward-fix plan. Disposable QA databases alone may be recreated.
+
+Selection accepts one to three authorized keys; the independent review confirms the existing three-observation review-action sufficiency rule remains unchanged. No new global economics idempotency or latest-wins policy is introduced. Distinct explicit accepted transitions produce distinct immutable enrichments. Action confirmation idempotency and immutable history guards remain unchanged.

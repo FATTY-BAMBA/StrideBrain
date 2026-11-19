@@ -1,0 +1,22 @@
+{
+  "expectedTrigger": "[\"cmprun_f5a9eae3-3472-4fcf-a310-a9abeb6ad0a3\",[[\"evidenceClaim\",\"XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"1a6a2d376fb72426f5544430\"]]]",
+  "observed": {
+    "id": "",
+    "insideDialog": true,
+    "modalTitle": "evidence-panel-title",
+    "rect": {
+      "height": 37.3359375,
+      "width": 72.71875,
+      "x": 341.3984375,
+      "y": 986.6171875
+    },
+    "tag": "BUTTON",
+    "text": "查看來源",
+    "trigger": "[\"cmprun_f5a9eae3-3472-4fcf-a310-a9abeb6ad0a3\",[[\"evidenceClaim\",\"XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"1a6a2d376fb72426f5544430\"]]]",
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  "exactMatch": true
+}

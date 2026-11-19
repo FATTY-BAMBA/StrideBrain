@@ -1,0 +1,21 @@
+{
+  "runId": "20261119T032345Z",
+  "state": "NEEDS_REVISION",
+  "verdict": "REVISE",
+  "M-01": "DEFERRED_BEFORE_BROADER_RELEASE",
+  "M-06": "DOM_FOCUS_EVIDENCE_RETAINED_SPEECH_DEFERRED_BEFORE_BROADER_RELEASE",
+  "M-05": "FAIL_S9_F05",
+  "M-02": "BLOCKED_DEVICE_AVAILABILITY_AND_SAFE_ACCESS",
+  "Android": "DEVICE_EVIDENCE_REQUIRED_ANDROID; availability unknown; absence alone non-blocking for controlled pilot",
+  "M-07": "PACKAGE_PREPARED_PARTIAL_COVERAGE_HUMAN_REVIEW_REQUIRED",
+  "security": "NOT_RUN_BLOCKED_BY_REQUIRED_PATH_P2",
+  "performance": "NOT_RUN_SECURITY_NOT_PASSED",
+  "deploymentSmokeReadiness": "BLOCKED; local clean install/migrations/seed/SQL/build/start/audit PASS; no hosted smoke",
+  "findings": {
+    "P0": 0,
+    "P1": 0,
+    "P2": 1
+  },
+  "cleanup": "PASS",
+  "publication": "NOT_PERFORMED"
+}

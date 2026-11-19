@@ -1,0 +1,26 @@
+{
+  "runId": "20261118T050551Z",
+  "database": "stage9-owned-synthetic-browser",
+  "at": "2026-11-18T05:23:24.049Z",
+  "temporaryTriggerAbsent": true,
+  "temporaryFunctionAbsent": true,
+  "phase": "after-action",
+  "caseId": "after-action-1794979159886",
+  "mapping": "After Action insert, which atomically includes evidence snapshot; covers shared physical write underlying AFTER_ACTION/AFTER_EVIDENCE, not two distinct browser injections.",
+  "restored": true,
+  "countsBefore": {
+    "actions": 0,
+    "consumed": 0,
+    "receipts": 0,
+    "audits": 0,
+    "actionevidencelinks": 0
+  },
+  "countsAfter": {
+    "actions": 0,
+    "consumed": 0,
+    "receipts": 0,
+    "audits": 0,
+    "actionevidencelinks": 0
+  },
+  "noBusinessWrites": true
+}

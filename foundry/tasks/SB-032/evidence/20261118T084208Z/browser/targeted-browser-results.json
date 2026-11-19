@@ -1,0 +1,120 @@
+{
+  "run": "20261118T084208Z",
+  "sourceCommit": "4628fb759c8bac23cf92eb15992259fb366a8d65",
+  "buildId": "jZBGrkhs4Ok9XriINHgub",
+  "targetedFrozenAt": "2026-11-18T09:19:17.164Z",
+  "status": "PASS",
+  "scope": "Independent targeted browser retest S9-F02/F03/F04 only; not full Stage9 acceptance",
+  "cells": [
+    {
+      "locale": "en",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "F02": "PASS canonical Ready/Good fixture",
+      "F03": "PASS actual status accessible name and aria-busy=true",
+      "F04": "PASS ABC→AB→ABC with current evidence/proposal lineage"
+    },
+    {
+      "locale": "en",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "F02": "PASS canonical Ready/Good fixture",
+      "F03": "PASS actual status accessible name and aria-busy=true",
+      "F04": "PASS ABC→AB→ABC with current evidence/proposal lineage"
+    },
+    {
+      "locale": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "F02": "PASS canonical Ready/Good fixture",
+      "F03": "PASS actual status accessible name and aria-busy=true",
+      "F04": "PASS ABC→AB→ABC with current evidence/proposal lineage"
+    },
+    {
+      "locale": "en",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "F02": "PASS canonical Ready/Good fixture",
+      "F03": "PASS actual status accessible name and aria-busy=true",
+      "F04": "PASS ABC→AB→ABC with current evidence/proposal lineage"
+    },
+    {
+      "locale": "zh-TW",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "F02": "PASS canonical Ready/Good fixture",
+      "F03": "PASS actual status accessible name and aria-busy=true",
+      "F04": "PASS ABC→AB→ABC with current evidence/proposal lineage"
+    },
+    {
+      "locale": "zh-TW",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "F02": "PASS canonical Ready/Good fixture",
+      "F03": "PASS actual status accessible name and aria-busy=true",
+      "F04": "PASS ABC→AB→ABC with current evidence/proposal lineage"
+    },
+    {
+      "locale": "zh-TW",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "F02": "PASS canonical Ready/Good fixture",
+      "F03": "PASS actual status accessible name and aria-busy=true",
+      "F04": "PASS ABC→AB→ABC with current evidence/proposal lineage"
+    },
+    {
+      "locale": "zh-TW",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "F02": "PASS canonical Ready/Good fixture",
+      "F03": "PASS actual status accessible name and aria-busy=true",
+      "F04": "PASS ABC→AB→ABC with current evidence/proposal lineage"
+    }
+  ],
+  "findings": [
+    {
+      "id": "S9-F02",
+      "status": "PASS",
+      "observed": "Canonical workspace Ready/Good render Ready/Good in English and 可檢視/資料狀態良好 in zh-TW in all8 cells. Remaining enum states are covered by separate localization tests, not claimed as browser fixtures."
+    },
+    {
+      "id": "S9-F03",
+      "status": "PASS",
+      "observed": "Natural desktop loading observed in both locales. Eight saved-run pending states captured with actual status role, localized name and aria-busy=true; bounded operator ComparisonRun read lock only, no DOM injection. Loading resolves to unchanged saved result.",
+      "qualifiedArtifacts": "Initial f03-zh-TW-*-bounded-pending attempts navigated bare compare and settled quickly; excluded from complete pending proof. Valid zh uses saved-run-pending; en uses bounded-pending."
+    },
+    {
+      "id": "S9-F04",
+      "status": "PASS",
+      "observed": "All8 real ABC→AB→ABC updates create distinct economics IDs on same comparison. Route selected set, checkbox state, visible values, current claim and current review proposal agree. AB has insufficiency and no create control. Both locales also A→AB→AC→ABC→DEF→ABC, zero unsent chooser disabled, >3 prevented by disabled unchecked choices at3. Historical ABC and AB evidence reopened after subsequent runs without overwrite."
+    }
+  ],
+  "limits": [
+    "No action confirmed during targeted phase;8 proposals prepared only.",
+    "No screen-reader speech, physical device/touch/keyboard, native zoom, OS motion, human language review or leap/midnight date acceptance claimed.",
+    "No cross-tenant/security/performance wave; operator/database/test evidence is supplemental."
+  ],
+  "artifacts": [
+    "observations.json",
+    "f04-grid.json",
+    "f04-extra-transitions.json",
+    "f03-pending-matrix.json",
+    "image-dimensions.json"
+  ]
+}

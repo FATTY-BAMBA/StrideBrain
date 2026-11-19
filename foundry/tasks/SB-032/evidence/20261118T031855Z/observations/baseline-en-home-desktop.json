@@ -1,0 +1,18 @@
+{
+  "dialogs": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "Skip to main contentStrideBrainBY PRIMESTRIDE AI01Home02Projects03Knowledge04StrideBrain05Settingsv0.1 · Controlled demoThis area is not active yet●Controlled synthetic demo繁中/ENSTRIDEBRAIN v0.1Every completed project sh"
+  },
+  "horizontalOverflow": false,
+  "title": "StrideBrain",
+  "url": "http://localhost:3000/en",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  },
+  "browser": "Codex in-app browser",
+  "at": "2026-11-18T03:36:39.780Z"
+}

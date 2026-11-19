@@ -1,0 +1,164 @@
+[
+  {
+    "id": "M-01-EN-A",
+    "locale": "EN",
+    "case": "Internal-review dialog opening",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "PARTIAL",
+    "priorStatus": "WAITING_HUMAN_ACTIVATION_AND_SPEECH"
+  },
+  {
+    "id": "M-01-EN-B",
+    "locale": "EN",
+    "case": "Validation error",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  },
+  {
+    "id": "M-01-EN-C",
+    "locale": "EN",
+    "case": "Generic/server error",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  },
+  {
+    "id": "M-01-EN-D",
+    "locale": "EN",
+    "case": "Stale comparison warning",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  },
+  {
+    "id": "M-01-EN-E",
+    "locale": "EN",
+    "case": "Evidence panel opening",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  },
+  {
+    "id": "M-01-EN-F",
+    "locale": "EN",
+    "case": "Evidence closing/focus return",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  },
+  {
+    "id": "M-01-EN-G",
+    "locale": "EN",
+    "case": "Pending/submitting when safely observable",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  },
+  {
+    "id": "M-01-EN-H",
+    "locale": "EN",
+    "case": "Durable receipt heading",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  },
+  {
+    "id": "M-01-EN-I",
+    "locale": "EN",
+    "case": "No hidden-background speech while modal active",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  },
+  {
+    "id": "M-01-ZH-TW-A",
+    "locale": "ZH-TW",
+    "case": "Internal-review dialog opening",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  },
+  {
+    "id": "M-01-ZH-TW-B",
+    "locale": "ZH-TW",
+    "case": "Validation error",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  },
+  {
+    "id": "M-01-ZH-TW-C",
+    "locale": "ZH-TW",
+    "case": "Generic/server error",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  },
+  {
+    "id": "M-01-ZH-TW-D",
+    "locale": "ZH-TW",
+    "case": "Stale comparison warning",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  },
+  {
+    "id": "M-01-ZH-TW-E",
+    "locale": "ZH-TW",
+    "case": "Evidence panel opening",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  },
+  {
+    "id": "M-01-ZH-TW-F",
+    "locale": "ZH-TW",
+    "case": "Evidence closing/focus return",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  },
+  {
+    "id": "M-01-ZH-TW-G",
+    "locale": "ZH-TW",
+    "case": "Pending/submitting when safely observable",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  },
+  {
+    "id": "M-01-ZH-TW-H",
+    "locale": "ZH-TW",
+    "case": "Durable receipt heading",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  },
+  {
+    "id": "M-01-ZH-TW-I",
+    "locale": "ZH-TW",
+    "case": "No hidden-background speech while modal active",
+    "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+    "actualHumanObservation": null,
+    "result": "NOT_VERIFIED_MANUAL_REQUIRED",
+    "priorStatus": "NOT_STARTED"
+  }
+]

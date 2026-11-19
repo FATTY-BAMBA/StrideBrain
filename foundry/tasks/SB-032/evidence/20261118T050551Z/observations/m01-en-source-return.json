@@ -1,0 +1,21 @@
+{
+  "expected": "[\"cmprun_f5a9eae3-3472-4fcf-a310-a9abeb6ad0a3\",[[\"evidenceClaim\",\"XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"1a6a2d376fb72426f5544430\"]]]",
+  "observed": {
+    "id": "",
+    "inside": true,
+    "rect": {
+      "height": 37.3359375,
+      "width": 115.2578125,
+      "x": 1013.3984375,
+      "y": 862.734375
+    },
+    "tag": "BUTTON",
+    "text": "Inspect source",
+    "trigger": "[\"cmprun_f5a9eae3-3472-4fcf-a310-a9abeb6ad0a3\",[[\"evidenceClaim\",\"XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE\"],[\"evidenceMode\",\"source\"],[\"evidenceSource\",\"1a6a2d376fb72426f5544430\"]]]",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  "exact": true
+}

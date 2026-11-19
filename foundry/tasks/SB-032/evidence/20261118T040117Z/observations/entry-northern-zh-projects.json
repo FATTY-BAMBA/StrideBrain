@@ -1,0 +1,25 @@
+{
+  "dialogs": [],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "(globalThis[\"TURBOPACK\"] || (globalThis[\"TURBOPACK\"] = [])).push({\"otherChunks\":[\"static/chunks/310vm2bl3xxpt.js\",\"static/chunks/1d-3ziz_810o8.js\",\"static/chunks/39_j1bdzreq0m.js\",\"static/chunks/0gy1d"
+  },
+  "horizontalOverflow": false,
+  "mainLinks": [
+    {
+      "href": "/zh-TW/projects/PRJ-NORTH-001",
+      "text": "受限旗艦店\n開啟專案 →"
+    }
+  ],
+  "mainText": "專案工作區\n\n專案\n\n開啟您有權限查看的專案工作區。\n\n受限旗艦店\n開啟專案 →",
+  "title": "StrideBrain",
+  "url": "http://localhost:3000/zh-TW/projects",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1440
+  },
+  "at": "2026-11-18T04:20:27.757Z",
+  "browser": "Codex in-app browser"
+}

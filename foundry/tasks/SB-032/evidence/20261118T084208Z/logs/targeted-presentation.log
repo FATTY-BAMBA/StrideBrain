@@ -1,0 +1,41 @@
+
+> stridebrain@0.1.0 test
+> vitest run tests/localization/stage9-workspace-loading.test.ts tests/comparison-experience/selection-action.test.ts tests/comparison-experience/selection-navigation.test.ts
+
+
+ RUN  v4.1.10 [REDACTED_PRIVATE_VALUE]
+
+ ❯ tests/comparison-experience/selection-action.test.ts (11 tests | 1 failed) 23ms
+     × rejects invalid or unauthorized submission undefined without fallback/writes 2ms
+ ❯ tests/comparison-experience/selection-navigation.test.ts (6 tests | 2 failed) 115ms
+     × opens evidence using the current persisted enrichment after a transition 9ms
+     × opens evidence using the current persisted enrichment after a transition 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/comparison-experience/selection-action.test.ts > Strict selection command boundary > rejects invalid or unauthorized submission undefined without fallback/writes
+TypeError: selected is not iterable
+ ❯ form tests/comparison-experience/selection-action.test.ts:9:190
+
+ ❯ tests/comparison-experience/selection-action.test.ts:16:41
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/comparison-experience/selection-navigation.test.ts > Persisted selection navigation en > opens evidence using the current persisted enrichment after a transition
+ FAIL  tests/comparison-experience/selection-navigation.test.ts > Persisted selection navigation zh-TW > opens evidence using the current persisted enrichment after a transition
+AssertionError: expected 'A1' to be 'B' // Object.is equality
+
+Expected: "B"
+Received: "A1"
+
+ ❯ tests/comparison-experience/selection-navigation.test.ts:33:275
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+
+ Test Files  2 failed | 1 passed (3)
+      Tests  3 failed | 39 passed (42)
+   Start at  16:50:32
+   Duration  938ms (transform 249ms, setup 0ms, import 401ms, tests 197ms, environment 1.07s)
+

@@ -1,0 +1,25 @@
+{
+  "currentSource": {
+    "files": 864,
+    "mismatches": []
+  },
+  "priorStage9Evidence": {
+    "files": 485,
+    "mismatches": []
+  },
+  "SB029Workspace": {
+    "files": 1577,
+    "mismatches": []
+  },
+  "originalStatusUnchanged": true,
+  "originalUntrackedUnchanged": true,
+  "allowedChangedTaskRecords": [
+    "foundry/tasks/SB-032/computer-qa-report.json",
+    "foundry/tasks/SB-032/known-limitations.md",
+    "foundry/tasks/SB-032/release-scorecard.md",
+    "foundry/tasks/SB-032/state.json"
+  ],
+  "head": "1bde2114d010c694d017ba2b4116ceffab3569e1",
+  "noProductChange": true,
+  "noHistoricalChange": true
+}
