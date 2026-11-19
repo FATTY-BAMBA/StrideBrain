@@ -11,7 +11,7 @@ import type {
 const NOW = new Date("2026-11-19T10:00:00Z");
 const ORIGIN = "https://sb034-preview.example.test";
 // Deliberately public test-only values; never deployed credentials.
-const CODE = "s".repeat(43);
+const CODE = "STRIDEBRAIN2026-01-K7M4";
 const SECRET = "sb034-public-test-only-signing-secret-32-bytes";
 const ENV = {
   VERCEL_ENV: "preview",
@@ -145,6 +145,8 @@ describe("controlled Preview session handoff", () => {
     ["open redirect", `locale=en&invitation=${CODE}&returnTo=https://attacker.test`],
     ["duplicate locale", `locale=en&locale=zh-TW&invitation=${CODE}`],
     ["unsafe locale", `locale=//attacker.test&invitation=${CODE}`],
+    ["invalid human-readable format", "locale=en&invitation=STRIDEBRAIN2026-1-K7M4"],
+    ["lowercase pilot code", "locale=en&invitation=stridebrain2026-01-k7m4"],
     ["oversized body", `locale=en&invitation=${"x".repeat(2048)}`],
   ])("denies %s without issuing a session", async (_, body) => {
     const f = fixture();
