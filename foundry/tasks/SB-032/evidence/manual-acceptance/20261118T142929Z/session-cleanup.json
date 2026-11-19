@@ -1,0 +1,12 @@
+{
+  "at": "2026-11-19T03:15:09.495394+00:00",
+  "revocation": {
+    "kind": "PREVIEW_SESSION_REVOKED",
+    "persona": "all",
+    "count": 1,
+    "credentialPrinted": false
+  },
+  "operator": "SIGTERM_SENT_TO_OWNED_OPERATOR",
+  "browserRequestAfterRevocation": false,
+  "bootstrapPendingFiles": 0
+}

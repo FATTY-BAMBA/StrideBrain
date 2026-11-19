@@ -1,0 +1,61 @@
+{
+  "at": "2026-11-18T10:01:31.874561+00:00",
+  "result": "PASS",
+  "runOwnedSessionsRevoked": 1,
+  "issuerStopped": true,
+  "temporaryAssignmentExactRestoration": true,
+  "allHistoricalRowsUnchanged": [
+    "ComparisonRun",
+    "ComparisonCandidate",
+    "ComparisonFactor",
+    "EconomicsEnrichmentRun",
+    "EconomicsObservationDecision",
+    "IntelligenceRun",
+    "ComparisonClaim",
+    "ProposedAction",
+    "Action",
+    "InternalReviewReceipt",
+    "AuditEvent"
+  ],
+  "guardsUnchanged": 4,
+  "appliedMigrationsUnchanged": 9,
+  "changedTables": [
+    "ComparisonCandidate",
+    "ComparisonClaim",
+    "ComparisonFactor",
+    "ComparisonRun",
+    "DemoSession",
+    "EconomicsEnrichmentRun",
+    "EconomicsObservationDecision",
+    "IntelligenceRun",
+    "ProposedAction"
+  ],
+  "tableDeltas": {
+    "ComparisonCandidate": 6,
+    "ComparisonClaim": 16,
+    "ComparisonFactor": 48,
+    "ComparisonRun": 1,
+    "DemoSession": 1,
+    "EconomicsEnrichmentRun": 1,
+    "EconomicsObservationDecision": 94,
+    "IntelligenceRun": 1,
+    "ProposedAction": 1
+  },
+  "actionsBeforeAfter": [
+    2,
+    2
+  ],
+  "receiptsBeforeAfter": [
+    2,
+    2
+  ],
+  "auditsBeforeAfter": [
+    2,
+    2
+  ],
+  "temporaryFixtureMutationsRestored": true,
+  "historyRetainedNoReseed": true,
+  "browser": "Owned tab closed; viewport reset and measured before revocation; VoiceOver restored OFF; zoom/motion unchanged.",
+  "postRevocationBrowserRequests": 0,
+  "existingProductionPreview": "Retained unchanged for later QA; no public listener added."
+}

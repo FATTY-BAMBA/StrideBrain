@@ -1,0 +1,22 @@
+{
+  "alerts": [],
+  "browserRealInstant": "2026-11-19T03:34:05.942Z",
+  "date": [
+    {
+      "describedBy": "review-date-hint",
+      "id": "review-dueDate",
+      "invalid": "false",
+      "max": "2028-02-29",
+      "min": "2027-03-01",
+      "value": "2027-02-28"
+    }
+  ],
+  "dialog": "internal-review-heading",
+  "focus": {
+    "id": "review-confirmation",
+    "tag": "INPUT",
+    "text": ""
+  },
+  "locale": "zh-Hant",
+  "url": "http://localhost:3002/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_e1a7a55c-8beb-4c9e-9c73-159a2dbd3946&economics=econrun_39cc4dc8-fa15-4e37-a38f-b94dd7345bd7&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_295a2a80-46c5-4c55-bf45-53d654701648&reviewDue=2027-02-28"
+}

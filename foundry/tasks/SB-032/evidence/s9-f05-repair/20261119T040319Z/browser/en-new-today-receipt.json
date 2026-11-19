@@ -1,0 +1,22 @@
+{
+  "dialogText": "Internal review action created\n\nThis receipt records the action saved to the project.\n\nEnglish\n繁體中文\nClose\nCheck evidence for imported-stone and lighting assumptions in Xinyi quote v3\n\nValidate the imported-stone and lighting assumptions using the linked historical evidence.\n\nImported-stone forecast direct cost differs by +18.4% from eligible reconciled-actual history.\n\nLighting quoted price differs by +9.4% from eligible quoted-price history.\n\nLighting reconciled-actual evidence is insufficient: 2 of 3 required observations. No supported actual-cost range is available.\n\nThe programme is 16 weeks versus 19.00–22.00 weeks in the selected history. No evidence supports a quantified programme premium.\n\nComparison: cmprun_dc6ce3fc-57ff-45a9-b2ef-9e7a5e568ad6; economics enrichment: econrun_e7673010-e7b0-4815-8af7-337e236ba8ba.\n\nThis creates an internal review item. It does not approve or issue the quotation, authorize commercial commitments, or contact anyone externally.\n\nHistorical comparisons do not establish that this quotation is wrong, a supplier is overcharging, or an accelerated programme caused a specific premium. Supplier prices are not confirmed as currently valid.\n\nAction reference\naction_06c7a0e9-5922-4aa2-a2f3-c01c74674406\nProject\nXinyi Flagship Renovation\nAssignee\nMei Lin\nDue date\n2028-02-29\nStatus\nOpen\nCreated\n29 Feb 2028, 00:02\nCreated by\nMei Lin\nAuthorized evidence references\n15\nSource comparison\ncmprun_dc6ce3fc-57ff-45a9-b2ef-9e7a5e568ad6\nSource economics review\neconrun_e7673010-e7b0-4815-8af7-337e236ba8ba\nReturn to source comparison\nView project actions",
+  "due": null,
+  "focus": {
+    "id": "internal-review-heading",
+    "rect": {
+      "height": 29.1171875,
+      "width": 373.84375,
+      "x": 1396,
+      "y": 20
+    },
+    "tag": "H2"
+  },
+  "url": "http://localhost:3002/en/projects/PRJ-XINYI-026/compare?run=cmprun_dc6ce3fc-57ff-45a9-b2ef-9e7a5e568ad6&economics=econrun_e7673010-e7b0-4815-8af7-337e236ba8ba&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&action=action_06c7a0e9-5922-4aa2-a2f3-c01c74674406",
+  "viewport": {
+    "dpr": 2,
+    "height": 1234,
+    "width": 2056
+  },
+  "visibility": "visible",
+  "observedAtUtc": "2026-11-19T04:23:03.630Z"
+}

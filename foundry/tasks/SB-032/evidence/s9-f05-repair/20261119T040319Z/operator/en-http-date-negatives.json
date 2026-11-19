@@ -1,0 +1,170 @@
+[
+  {
+    "locale": "en",
+    "instant": "2028-02-28T16:00:55.410Z",
+    "timezone": "Asia/Taipei",
+    "dueDate": "2028-02-28",
+    "httpStatus": 200,
+    "outcome": "VALIDATION_FAILED",
+    "fieldErrors": {
+      "dueDate": "INVALID_DUE_DATE"
+    },
+    "datePolicy": {
+      "minDueDate": "2028-02-29",
+      "maxDueDate": "2029-02-28",
+      "datePolicyEvaluatedAt": "2028-02-28T16:00:55.537Z",
+      "nextDatePolicyBoundaryAt": "2028-02-29T16:00:00.000Z"
+    },
+    "before": {
+      "Action": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "AuditEvent": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "InternalReviewReceipt": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "ProposedAction": {
+        "count": 1,
+        "sha256": "40438bc9008172205a4f8d4b3886f184ae3a792b8fe3a73ef8391266148e2134"
+      }
+    },
+    "after": {
+      "Action": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "AuditEvent": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "InternalReviewReceipt": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "ProposedAction": {
+        "count": 1,
+        "sha256": "40438bc9008172205a4f8d4b3886f184ae3a792b8fe3a73ef8391266148e2134"
+      }
+    },
+    "noBusinessWrites": true,
+    "actionEvidence": "Embedded Action evidenceReferenceIds/evidenceSnapshot covered by full-row hash",
+    "transport": "actual production HTTP; stale/invalid client command, bypassing presentation guidance only"
+  },
+  {
+    "locale": "en",
+    "instant": "2028-02-28T16:00:55.567Z",
+    "timezone": "Asia/Taipei",
+    "dueDate": "2029-03-01",
+    "httpStatus": 200,
+    "outcome": "VALIDATION_FAILED",
+    "fieldErrors": {
+      "dueDate": "INVALID_DUE_DATE"
+    },
+    "datePolicy": {
+      "minDueDate": "2028-02-29",
+      "maxDueDate": "2029-02-28",
+      "datePolicyEvaluatedAt": "2028-02-28T16:00:55.614Z",
+      "nextDatePolicyBoundaryAt": "2028-02-29T16:00:00.000Z"
+    },
+    "before": {
+      "Action": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "AuditEvent": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "InternalReviewReceipt": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "ProposedAction": {
+        "count": 1,
+        "sha256": "40438bc9008172205a4f8d4b3886f184ae3a792b8fe3a73ef8391266148e2134"
+      }
+    },
+    "after": {
+      "Action": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "AuditEvent": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "InternalReviewReceipt": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "ProposedAction": {
+        "count": 1,
+        "sha256": "40438bc9008172205a4f8d4b3886f184ae3a792b8fe3a73ef8391266148e2134"
+      }
+    },
+    "noBusinessWrites": true,
+    "actionEvidence": "Embedded Action evidenceReferenceIds/evidenceSnapshot covered by full-row hash",
+    "transport": "actual production HTTP; stale/invalid client command, bypassing presentation guidance only"
+  },
+  {
+    "locale": "en",
+    "instant": "2028-02-28T16:00:55.626Z",
+    "timezone": "Asia/Taipei",
+    "dueDate": "2027-02-29",
+    "httpStatus": 200,
+    "outcome": "VALIDATION_FAILED",
+    "fieldErrors": {
+      "dueDate": "INVALID_DUE_DATE"
+    },
+    "datePolicy": {
+      "minDueDate": "2028-02-29",
+      "maxDueDate": "2029-02-28",
+      "datePolicyEvaluatedAt": "2028-02-28T16:00:55.666Z",
+      "nextDatePolicyBoundaryAt": "2028-02-29T16:00:00.000Z"
+    },
+    "before": {
+      "Action": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "AuditEvent": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "InternalReviewReceipt": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "ProposedAction": {
+        "count": 1,
+        "sha256": "40438bc9008172205a4f8d4b3886f184ae3a792b8fe3a73ef8391266148e2134"
+      }
+    },
+    "after": {
+      "Action": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "AuditEvent": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "InternalReviewReceipt": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "ProposedAction": {
+        "count": 1,
+        "sha256": "40438bc9008172205a4f8d4b3886f184ae3a792b8fe3a73ef8391266148e2134"
+      }
+    },
+    "noBusinessWrites": true,
+    "actionEvidence": "Embedded Action evidenceReferenceIds/evidenceSnapshot covered by full-row hash",
+    "transport": "actual production HTTP; stale/invalid client command, bypassing presentation guidance only"
+  }
+]

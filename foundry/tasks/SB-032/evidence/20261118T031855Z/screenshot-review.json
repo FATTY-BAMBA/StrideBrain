@@ -1,0 +1,158 @@
+[
+  {
+    "file": "screenshots/baseline-en-home-desktop.jpg",
+    "jpegMetadata": [
+      {
+        "marker": "0xe0",
+        "bytes": 14,
+        "jfifOnly": true
+      }
+    ],
+    "visualReview": "PASS_SYNTHETIC_UI_ONLY",
+    "ocr": "English-character OCR plus bilingual visual review; no automated Chinese linguistic judgement",
+    "sensitiveContentObserved": false
+  },
+  {
+    "file": "screenshots/baseline-en-workspace-before-writes.jpg",
+    "jpegMetadata": [
+      {
+        "marker": "0xe0",
+        "bytes": 14,
+        "jfifOnly": true
+      }
+    ],
+    "visualReview": "PASS_SYNTHETIC_UI_ONLY",
+    "ocr": "English-character OCR plus bilingual visual review; no automated Chinese linguistic judgement",
+    "sensitiveContentObserved": false
+  },
+  {
+    "file": "screenshots/finding-projects-entry-en-mobile.jpg",
+    "jpegMetadata": [
+      {
+        "marker": "0xe0",
+        "bytes": 14,
+        "jfifOnly": true
+      }
+    ],
+    "visualReview": "PASS_SYNTHETIC_UI_ONLY",
+    "ocr": "English-character OCR plus bilingual visual review; no automated Chinese linguistic judgement",
+    "sensitiveContentObserved": false
+  },
+  {
+    "file": "screenshots/finding-projects-entry-en-narrow-mobile.jpg",
+    "jpegMetadata": [
+      {
+        "marker": "0xe0",
+        "bytes": 14,
+        "jfifOnly": true
+      }
+    ],
+    "visualReview": "PASS_SYNTHETIC_UI_ONLY",
+    "ocr": "English-character OCR plus bilingual visual review; no automated Chinese linguistic judgement",
+    "sensitiveContentObserved": false
+  },
+  {
+    "file": "screenshots/finding-projects-entry-en-tablet.jpg",
+    "jpegMetadata": [
+      {
+        "marker": "0xe0",
+        "bytes": 14,
+        "jfifOnly": true
+      }
+    ],
+    "visualReview": "PASS_SYNTHETIC_UI_ONLY",
+    "ocr": "English-character OCR plus bilingual visual review; no automated Chinese linguistic judgement",
+    "sensitiveContentObserved": false
+  },
+  {
+    "file": "screenshots/finding-projects-entry-zh-TW-mobile.jpg",
+    "jpegMetadata": [
+      {
+        "marker": "0xe0",
+        "bytes": 14,
+        "jfifOnly": true
+      }
+    ],
+    "visualReview": "PASS_SYNTHETIC_UI_ONLY",
+    "ocr": "English-character OCR plus bilingual visual review; no automated Chinese linguistic judgement",
+    "sensitiveContentObserved": false
+  },
+  {
+    "file": "screenshots/finding-projects-entry-zh-TW-narrow-mobile.jpg",
+    "jpegMetadata": [
+      {
+        "marker": "0xe0",
+        "bytes": 14,
+        "jfifOnly": true
+      }
+    ],
+    "visualReview": "PASS_SYNTHETIC_UI_ONLY",
+    "ocr": "English-character OCR plus bilingual visual review; no automated Chinese linguistic judgement",
+    "sensitiveContentObserved": false
+  },
+  {
+    "file": "screenshots/finding-projects-entry-zh-TW-tablet.jpg",
+    "jpegMetadata": [
+      {
+        "marker": "0xe0",
+        "bytes": 14,
+        "jfifOnly": true
+      }
+    ],
+    "visualReview": "PASS_SYNTHETIC_UI_ONLY",
+    "ocr": "English-character OCR plus bilingual visual review; no automated Chinese linguistic judgement",
+    "sensitiveContentObserved": false
+  },
+  {
+    "file": "screenshots/finding-projects-no-workspace-entry-en-desktop.jpg",
+    "jpegMetadata": [
+      {
+        "marker": "0xe0",
+        "bytes": 14,
+        "jfifOnly": true
+      }
+    ],
+    "visualReview": "PASS_SYNTHETIC_UI_ONLY",
+    "ocr": "English-character OCR plus bilingual visual review; no automated Chinese linguistic judgement",
+    "sensitiveContentObserved": false
+  },
+  {
+    "file": "screenshots/finding-projects-no-workspace-entry-zh-desktop-settled.jpg",
+    "jpegMetadata": [
+      {
+        "marker": "0xe0",
+        "bytes": 14,
+        "jfifOnly": true
+      }
+    ],
+    "visualReview": "PASS_SYNTHETIC_UI_ONLY",
+    "ocr": "English-character OCR plus bilingual visual review; no automated Chinese linguistic judgement",
+    "sensitiveContentObserved": false
+  },
+  {
+    "file": "screenshots/finding-projects-no-workspace-entry-zh-desktop.jpg",
+    "jpegMetadata": [
+      {
+        "marker": "0xe0",
+        "bytes": 14,
+        "jfifOnly": true
+      }
+    ],
+    "visualReview": "PASS_SYNTHETIC_UI_ONLY",
+    "ocr": "English-character OCR plus bilingual visual review; no automated Chinese linguistic judgement",
+    "sensitiveContentObserved": false
+  },
+  {
+    "file": "screenshots/journey-en-desktop-home.jpg",
+    "jpegMetadata": [
+      {
+        "marker": "0xe0",
+        "bytes": 14,
+        "jfifOnly": true
+      }
+    ],
+    "visualReview": "PASS_SYNTHETIC_UI_ONLY",
+    "ocr": "English-character OCR plus bilingual visual review; no automated Chinese linguistic judgement",
+    "sensitiveContentObserved": false
+  }
+]

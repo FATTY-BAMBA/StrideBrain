@@ -1,0 +1,2951 @@
+{
+  "head": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+  "method": "All CJK-bearing source lines; includes templates and nonvisible/provenance content. This is an inventory, not linguistic approval.",
+  "entries": [
+    {
+      "file": "src/app/[locale]/knowledge/page.tsx",
+      "line": 20,
+      "source": "? [\"專案\", \"文件\", \"報價\", \"供應商\", \"資料依據\"]"
+    },
+    {
+      "file": "src/app/[locale]/projects/[projectKey]/[[...surface]]/page.tsx",
+      "line": 115,
+      "source": "<dt>{rawLocale === \"zh-TW\" ? \"目前區域\" : \"Current area\"}</dt>"
+    },
+    {
+      "file": "src/components/comparisons/comparison-experience-client.tsx",
+      "line": 581,
+      "source": "{view.locale === \"zh-TW\" ? \"查看資料依據\" : \"Inspect evidence\"}"
+    },
+    {
+      "file": "src/components/internal-review/review-modal.tsx",
+      "line": 112,
+      "source": "<nav className={styles.locale} aria-label=\"English / 繁體中文\">"
+    },
+    {
+      "file": "src/components/projects/project-local-nav.tsx",
+      "line": 27,
+      "source": "aria-label={locale === \"zh-TW\" ? \"專案工作區導覽\" : \"Project workspace navigation\"}"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 53,
+      "source": "eyebrow: \"專案智慧工作區\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 54,
+      "source": "projectContext: \"專案脈絡\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 55,
+      "source": "currentCommercial: \"目前商務狀況\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 56,
+      "source": "quote: \"未稅報價\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 57,
+      "source": "forecast: \"預估直接成本\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 58,
+      "source": "actual: \"已核對實際成本\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 59,
+      "source": "evidence: \"資料依據狀態\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 60,
+      "source": "relatedKnowledge: \"相關公司知識\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 61,
+      "source": "suppliers: \"供應商\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 62,
+      "source": "materials: \"材料\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 63,
+      "source": "scope: \"工作範圍分類\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 64,
+      "source": "questions: \"在此專案中詢問 StrideBrain\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 65,
+      "source": "programme: \"工期\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 66,
+      "source": "area: \"面積\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 67,
+      "source": "location: \"地點\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 68,
+      "source": "manager: \"專案負責人\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 69,
+      "source": "unavailable: \"目前無法使用\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 70,
+      "source": "restricted: \"目前角色無權查看\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 71,
+      "source": "conflicted: \"資料紀錄不一致\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 72,
+      "source": "stale: \"歷史／已過期\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 73,
+      "source": "version: \"版本\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 74,
+      "source": "demo: \"禾序空間設計虛構示範資料\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 75,
+      "source": "compareDescription: \"尋找最接近的歷史專案、理解相似原因，並用可追溯的歷史依據比較目前報價。\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 76,
+      "source": "warnings: \"此專案有需要注意的資料狀態。\","
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 143,
+      "source": "<span>{`${labels.programme}: ${workspace.project.programmeWeeks} ${locale === \"zh-TW\" ? \"週\" : \"weeks\"}`}</span>"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 197,
+      "source": "<span>{locale === \"zh-TW\" ? \"可存取資料來源\" : \"Accessible references\"}</span>"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 201,
+      "source": "<span>{locale === \"zh-TW\" ? \"可存取文件\" : \"Accessible documents\"}</span>"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 205,
+      "source": "<span>{locale === \"zh-TW\" ? \"過期資料\" : \"Stale records\"}</span>"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 209,
+      "source": "<span>{locale === \"zh-TW\" ? \"待處理衝突\" : \"Open conflicts\"}</span>"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 233,
+      "source": "<span>{locale === \"zh-TW\" ? \"未完成事項\" : \"Open actions\"}</span>"
+    },
+    {
+      "file": "src/components/projects/project-workspace-overview.tsx",
+      "line": 293,
+      "source": "? \"此能力將於後續切片啟用\""
+    },
+    {
+      "file": "src/components/shell/workspace-shell.tsx",
+      "line": 19,
+      "source": "{locale === \"zh-TW\" ? \"跳至主要內容\" : \"Skip to main content\"}"
+    },
+    {
+      "file": "src/modules/comparison-experience/build-comparison-experience.ts",
+      "line": 356,
+      "source": "? \"目前資料\""
+    },
+    {
+      "file": "src/modules/comparison-experience/build-comparison-experience.ts",
+      "line": 359,
+      "source": "? \"歷史資料\""
+    },
+    {
+      "file": "src/modules/comparison-experience/build-comparison-experience.ts",
+      "line": 389,
+      "source": "{ secondary: locale === \"zh-TW\" ? \"已選歷史專案範圍\" : \"Selected historical range\" },"
+    },
+    {
+      "file": "src/modules/comparison-experience/build-comparison-experience.ts",
+      "line": 642,
+      "source": "cell(\"NOT_APPLICABLE\", locale === \"zh-TW\" ? \"進行中\" : \"Active project\"),"
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 269,
+      "source": "eyebrow: \"類似專案智慧\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 270,
+      "source": "titlePrefix: \"歷史專案比較：\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 272,
+      "source": "\"StrideBrain 以可解釋的固定規則排序已授權的歷史專案，清楚區分商務資料權威性，也會誠實呈現資料不足之處。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 273,
+      "source": "heroQuestion: \"我們以前做過類似的案子嗎？\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 274,
+      "source": "heroPrompt: \"搜尋已授權的歷史專案、說明最接近的原因，並用可信任的歷史依據比較目前報價。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 275,
+      "source": "runComparison: \"尋找類似歷史專案\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 276,
+      "source": "rerunComparison: \"重新執行比較\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 277,
+      "source": "sessionRequiredTitle: \"需要受控的示範工作階段。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 279,
+      "source": "\"伺服器驗證已簽署的虛構示範工作階段後，才會開啟此工作區。網址參數不能選擇組織或角色。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 280,
+      "source": "unavailableTitle: \"目前無法開啟此比較。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 281,
+      "source": "unavailableDescription: \"目前的授權脈絡無法存取此專案或已儲存的比較結果。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 282,
+      "source": "loadingLabel: \"正在載入歷史專案比較\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 283,
+      "source": "failedTitle: \"StrideBrain 無法完成此次比較。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 284,
+      "source": "failedDescription: \"系統沒有顯示未經支持的結論。檢查問題時請使用參考編號。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 285,
+      "source": "contextIncompleteTitle: \"目前專案需要更多結構化資料才能進行比較。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 286,
+      "source": "noHistoryTitle: \"沒有已授權的歷史專案符合比較規則。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 287,
+      "source": "referenceId: \"參考編號\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 289,
+      "source": "generated: \"產生時間\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 290,
+      "source": "policy: \"比較規則\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 291,
+      "source": "matches: \"已授權相似專案\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 292,
+      "source": "selected: \"已選歷史專案\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 293,
+      "source": "economics: \"商務資料狀態\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 294,
+      "source": "demoData: \"資料邊界\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 297,
+      "source": "title: \"選擇要比較的歷史專案\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 299,
+      "source": "\"最多選擇三個專案。更新選擇會建立新的不可變更商務分析，但不會改變原本的相似度排序。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 300,
+      "source": "apply: \"更新比較\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 301,
+      "source": "selectedCount: \"個已選\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 302,
+      "source": "maximum: \"最多 3 個\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 303,
+      "source": "errorMaximum: \"最多只能選擇三個專案。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 306,
+      "source": "score: \"相似度分數\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 307,
+      "source": "coverage: \"資料完整度\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 308,
+      "source": "strongest: \"主要相似原因\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 309,
+      "source": "differences: \"重要差異\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 310,
+      "source": "unknowns: \"未知因素\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 311,
+      "source": "quotedAvailable: \"歷史報價\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 312,
+      "source": "actualAvailable: \"已核對實際成本\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 313,
+      "source": "inspectFactors: \"查看比較因素\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 316,
+      "source": "STRONG: \"高度相似\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 317,
+      "source": "RELEVANT: \"具參考價值\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 318,
+      "source": "PARTIAL: \"部分相似\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 319,
+      "source": "BROADER: \"延伸參考\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 322,
+      "source": "SUBTYPE: \"專案類型\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 323,
+      "source": "SCOPE_OVERLAP: \"工作範圍重疊\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 324,
+      "source": "AREA_SIMILARITY: \"面積相似度\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 325,
+      "source": "COMMERCIAL_CATEGORY_OVERLAP: \"報價分類重疊\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 326,
+      "source": "MATERIAL_OVERLAP: \"材料重疊\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 327,
+      "source": "SUPPLIER_OVERLAP: \"供應商重疊\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 328,
+      "source": "COMPLETION_RECENCY: \"完工時間接近度\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 329,
+      "source": "LOCATION_PROXIMITY: \"地點接近度\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 332,
+      "source": "unknown: \"資料未知，不視為不相符\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 333,
+      "source": "contribution: \"分數貢獻\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 334,
+      "source": "lostContribution: \"未取得分數\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 337,
+      "source": "title: \"結構化比較\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 339,
+      "source": "\"所有數值都來自已儲存的固定規則結果。歷史報價、預估成本、供應商報價與已核對實際成本會保持清楚區分。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 340,
+      "source": "activeProject: \"目前專案\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 341,
+      "source": "projectContext: \"專案脈絡\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 342,
+      "source": "economics: \"整體商務比較\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 343,
+      "source": "categories: \"分類比較\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 344,
+      "source": "evidenceState: \"資料依據與完整度\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 345,
+      "source": "subtype: \"專案類型\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 346,
+      "source": "area: \"面積\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 347,
+      "source": "location: \"地點\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 348,
+      "source": "completion: \"完工時間\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 349,
+      "source": "quotedRate: \"報價 · 標準化\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 350,
+      "source": "forecastRate: \"預估直接成本 · 標準化\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 351,
+      "source": "actualRate: \"預估／已核對實際成本 · 標準化\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 352,
+      "source": "importedStoneQuoted: \"進口石材 · 報價\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 353,
+      "source": "importedStoneActual: \"進口石材 · 預估／已核對實際成本\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 354,
+      "source": "lightingQuoted: \"燈具／電氣 · 報價\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 355,
+      "source": "lightingActual: \"燈具／電氣 · 預估／已核對實際成本\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 356,
+      "source": "millworkQuoted: \"訂製木作 · 報價\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 357,
+      "source": "millworkActual: \"訂製木作 · 預估／已核對實際成本\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 358,
+      "source": "supplierContext: \"供應商報價脈絡\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 359,
+      "source": "programme: \"工期\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 362,
+      "source": "sufficient: \"資料足夠\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 363,
+      "source": "insufficient: \"資料不足\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 364,
+      "source": "restricted: \"目前角色無權查看\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 365,
+      "source": "unavailable: \"無法使用\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 366,
+      "source": "stale: \"歷史／已過期\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 367,
+      "source": "conflicted: \"資料紀錄不一致\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 368,
+      "source": "notApplicable: \"不適用\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 369,
+      "source": "quotedOnly: \"僅有歷史報價\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 370,
+      "source": "partial: \"部分商務資料\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 371,
+      "source": "complete: \"報價與實際成本皆可用\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 372,
+      "source": "structuralOnly: \"僅顯示專案結構比較\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 375,
+      "source": "title: \"結構化審查\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 376,
+      "source": "history: \"歷史資料顯示\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 377,
+      "source": "differences: \"重要差異\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 378,
+      "source": "gaps: \"資料缺口\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 379,
+      "source": "recommendation: \"建議下一步審查\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 380,
+      "source": "quoteAbove: \"目前報價高於已選歷史專案的報價基準。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 381,
+      "source": "actualAbove: \"目前預估直接成本高於符合條件的已核對實際成本基準。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 382,
+      "source": "stoneReview: \"進口石材是資料支持最完整的主要差異，值得優先審查。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 383,
+      "source": "lightingGap: \"燈具報價高於歷史報價，但已核對實際成本的資料量不足。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 384,
+      "source": "programmeDifference: \"目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 385,
+      "source": "nextReview: \"在內部核准報價前，先確認進口石材額度與燈具假設。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 386,
+      "source": "noEconomics: \"商務資料受到權限限制或目前無法使用；專案結構比較仍可使用。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 389,
+      "source": "staleSupplier: \"供應商報價僅屬歷史資料，不得呈現為目前價格。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 390,
+      "source": "conflict: \"不一致的資料會明確顯示，並排除在權威彙總之外。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 391,
+      "source": "insufficientActual: \"部分分類沒有足夠的已核對實際成本資料。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 392,
+      "source": "restricted: \"目前角色無權查看商務數值。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 393,
+      "source": "synthetic: \"禾序空間設計虛構示範資料，不是市場基準。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 395,
+      "source": "actionComingLater: \"建立內部審查事項將於 Stage 8 啟用。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 396,
+      "source": "normalizedUnit: \"新台幣／m²\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 397,
+      "source": "programmeUnit: \"週\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 398,
+      "source": "similarityMethod: \"專案相似度\","
+    },
+    {
+      "file": "src/modules/comparison-experience/copy.ts",
+      "line": 399,
+      "source": "selectedProjects: \"已選專案\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 45,
+      "source": "stale: \"此比較結果已過時\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 46,
+      "source": "unverified: \"目前無法確認此結果是否仍符合最新資料\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 48,
+      "source": "\"您仍可檢視這份已儲存的結果，但無法據此準備或確認新的審查事項。請重新比較，以檢視最新資料。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 50,
+      "source": "\"您仍可檢視這份已儲存的結果。在確認最新資料前，無法準備或確認新的審查事項。請重新比較後再試。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 51,
+      "source": "changedSources: \"已變更的資料來源\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 52,
+      "source": "otherChanges: \"這份結果儲存後，資料來源或比較條件已變更。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 53,
+      "source": "authority: \"佐證資料權威性已變更\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 54,
+      "source": "previous: \"計算時\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 55,
+      "source": "current: \"目前\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 56,
+      "source": "rerun: \"重新比較\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 57,
+      "source": "pending: \"正在重新比較…\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 59,
+      "source": "AUTHORITY: \"佐證資料權威性已變更。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 60,
+      "source": "SOURCE_DETAILS: \"資料來源內容已變更。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 61,
+      "source": "SUPPORT: \"此來源對已儲存計算結果的佐證情況已變更。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 62,
+      "source": "FRESHNESS: \"這份結果儲存後，此資料來源已過時。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 63,
+      "source": "SUPERSEDED: \"此資料來源已由較新版本取代。\","
+    },
+    {
+      "file": "src/modules/comparison-experience/freshness-copy.ts",
+      "line": 64,
+      "source": "UNAVAILABLE: \"此資料來源目前無法使用。\","
+    },
+    {
+      "file": "src/modules/economics/domain/historical-economics-service.ts",
+      "line": 699,
+      "source": "\"目前報價與類似專案歷史報價比較\","
+    },
+    {
+      "file": "src/modules/economics/domain/historical-economics-service.ts",
+      "line": 708,
+      "source": "\"目前預估成本與已核對實際成本比較\","
+    },
+    {
+      "file": "src/modules/economics/domain/historical-economics-service.ts",
+      "line": 718,
+      "source": "`${category.categoryId} 報價與歷史報價比較`,"
+    },
+    {
+      "file": "src/modules/economics/domain/historical-economics-service.ts",
+      "line": 727,
+      "source": "`${category.categoryId} 預估成本與已核對實際成本比較`,"
+    },
+    {
+      "file": "src/modules/economics/domain/historical-economics-service.ts",
+      "line": 741,
+      "source": "titleZhTw: `${category.categoryId} 實際成本資料不足`,"
+    },
+    {
+      "file": "src/modules/economics/domain/historical-economics-service.ts",
+      "line": 763,
+      "source": "titleZhTw: \"工期與所選歷史專案存在差異\","
+    },
+    {
+      "file": "src/modules/economics/domain/historical-economics-service.ts",
+      "line": 782,
+      "source": "titleZhTw: \"供應商報價為已過期的歷史資料\","
+    },
+    {
+      "file": "src/modules/evidence-panel/application/get-evidence-panel.ts",
+      "line": 73,
+      "source": "return value ? (locale === \"zh-TW\" ? \"是\" : \"Yes\") : locale === \"zh-TW\" ? \"否\" : \"No\";"
+    },
+    {
+      "file": "src/modules/evidence-panel/application/get-evidence-panel.ts",
+      "line": 76,
+      "source": "if (typeof value === \"object\") return locale === \"zh-TW\" ? \"結構化紀錄\" : \"Structured record\";"
+    },
+    {
+      "file": "src/modules/evidence-panel/application/get-evidence-panel.ts",
+      "line": 413,
+      "source": "? \"此不一致已解決，保留供稽核。\""
+    },
+    {
+      "file": "src/modules/evidence-panel/application/get-evidence-panel.ts",
+      "line": 418,
+      "source": "? \"此不一致已標記為不影響計算。\""
+    },
+    {
+      "file": "src/modules/evidence-panel/application/get-evidence-panel.ts",
+      "line": 422,
+      "source": "? \"系統未自行選擇任何一筆；受影響資料不會進入權威計算。\""
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 102,
+      "source": "PROJECT: \"專案紀錄\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 103,
+      "source": "PROJECT_SCOPE: \"專案範圍\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 104,
+      "source": "DOCUMENT_VERSION: \"文件版本\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 105,
+      "source": "QUOTE_VERSION: \"報價版本\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 106,
+      "source": "QUOTE_ITEM: \"報價項目\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 107,
+      "source": "FORECAST_COST_VERSION: \"預估成本版本\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 108,
+      "source": "FORECAST_COST_LINE: \"預估成本項目\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 109,
+      "source": "PROJECT_COST_VERSION: \"最終成本版本\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 110,
+      "source": "COST_LINE: \"最終成本項目\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 111,
+      "source": "SUPPLIER_OFFER: \"供應商報價\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 112,
+      "source": "SUPPLIER_OFFER_ITEM: \"供應商報價項目\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 113,
+      "source": "COMPARISON_CLAIM: \"比較結論\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 114,
+      "source": "ACTION: \"行動事項\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 295,
+      "source": "eyebrow: \"資料依據\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 296,
+      "source": "title: \"資料依據與計算過程\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 297,
+      "source": "close: \"關閉資料依據\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 298,
+      "source": "back: \"返回資料依據組合\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 299,
+      "source": "whereFrom: \"這個結果從哪裡來？\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 300,
+      "source": "authority: \"資料權威性\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 301,
+      "source": "observation: \"資料類型\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 302,
+      "source": "sourceList: \"支持資料來源\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 303,
+      "source": "calculation: \"計算過程\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 304,
+      "source": "supportedValue: \"支持的數值\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 305,
+      "source": "locator: \"精確位置\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 306,
+      "source": "project: \"專案\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 307,
+      "source": "version: \"版本\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 308,
+      "source": "effectiveDate: \"生效／紀錄日期\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 309,
+      "source": "classification: \"資料邊界\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 310,
+      "source": "preview: \"安全來源預覽\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 311,
+      "source": "previewUnsupported: \"此來源不支援內嵌預覽，但仍可查看中繼資料、位置與權威性。\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 312,
+      "source": "previewUnavailable: \"目前無法開啟來源；已儲存且經驗證的結論仍會保留。\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 313,
+      "source": "previewRestricted: \"目前角色無權查看預覽內容。\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 314,
+      "source": "noSources: \"此選擇沒有可顯示的已授權來源。\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 315,
+      "source": "unavailable: \"目前授權脈絡無法使用此資料依據選擇。\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 316,
+      "source": "accessChanged: \"比較建立後存取權限已變更；系統未保留敏感預覽內容。\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 317,
+      "source": "restricted: \"目前角色無權查看此資料依據。\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 318,
+      "source": "staleRun: \"此比較結果已過期，但仍可檢視；不得用於建立新的行動事項。\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 319,
+      "source": "conflicts: \"不一致的紀錄\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 320,
+      "source": "conflictImpact: \"對計算的影響\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 321,
+      "source": "conflictStatus: \"不一致狀態\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 322,
+      "source": "sourceModeDescription: \"顯示一筆已授權來源，以及目前哪些結果使用了它。\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 323,
+      "source": "claimModeDescription: \"顯示支持此結構化結論的精確來源與計算過程。\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 324,
+      "source": "factorModeDescription: \"顯示固定規則的相似度因素、分數貢獻與資料依據。\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 325,
+      "source": "conflictModeDescription: \"顯示可存取的不一致紀錄，以及系統為何沒有自行選擇其中一筆。\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 326,
+      "source": "openSource: \"開啟來源物件\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 327,
+      "source": "inspectSource: \"查看來源\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 328,
+      "source": "inspectConflict: \"查看不一致紀錄\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 329,
+      "source": "relatedClaims: \"目前結果中的用途\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 330,
+      "source": "sourceCount: \"{count} 筆資料來源\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 331,
+      "source": "structuredRecord: \"結構化紀錄\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 332,
+      "source": "unknownDetail: \"尚無補充說明\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 334,
+      "source": "operation: \"計算方式\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 335,
+      "source": "aggregation: \"彙總方式\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 336,
+      "source": "rounding: \"四捨五入\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 337,
+      "source": "generated: \"產生時間\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 338,
+      "source": "result: \"計算結果\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 339,
+      "source": "input: \"輸入資料\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 340,
+      "source": "score: \"相似度總分\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 341,
+      "source": "coverage: \"資料完整度\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 342,
+      "source": "weight: \"權重\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 343,
+      "source": "contribution: \"分數貢獻\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 344,
+      "source": "normalized: \"標準化數值\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 345,
+      "source": "state: \"因素狀態\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 350,
+      "source": "CURRENT: \"目前有效\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 351,
+      "source": "HISTORICAL: \"歷史紀錄\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 352,
+      "source": "STALE: \"已過期／僅供歷史參考\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 353,
+      "source": "SUPERSEDED: \"已由新版取代\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 354,
+      "source": "CONFLICTED: \"資料不一致\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 355,
+      "source": "INSUFFICIENT: \"資料不足\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 356,
+      "source": "RESTRICTED: \"無權查看\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 359,
+      "source": "SUBTYPE: \"專案類型\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 360,
+      "source": "SCOPE_OVERLAP: \"工作範圍重疊\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 361,
+      "source": "AREA_SIMILARITY: \"面積相似度\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 362,
+      "source": "COMMERCIAL_CATEGORY_OVERLAP: \"報價分類重疊\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 363,
+      "source": "MATERIAL_OVERLAP: \"材料重疊\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 364,
+      "source": "SUPPLIER_OVERLAP: \"供應商重疊\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 365,
+      "source": "COMPLETION_RECENCY: \"完工時間接近度\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 366,
+      "source": "LOCATION_PROXIMITY: \"地點接近度\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 369,
+      "source": "KNOWN: \"已知\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 370,
+      "source": "UNKNOWN: \"資料未知，不視為不相符\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 371,
+      "source": "NOT_APPLICABLE: \"不適用\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 375,
+      "source": "OVERALL_QUOTED_VARIANCE: \"整體歷史報價比較\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 376,
+      "source": "OVERALL_FORECAST_ACTUAL_VARIANCE: \"預估成本與已核對實際成本比較\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 377,
+      "source": "CATEGORY_QUOTED_VARIANCE: \"分類歷史報價比較\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 378,
+      "source": "CATEGORY_FORECAST_ACTUAL_VARIANCE: \"分類預估與實際成本比較\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 379,
+      "source": "CATEGORY_ACTUAL_INSUFFICIENT: \"分類實際成本資料不足\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 380,
+      "source": "PROGRAMME_DIFFERENCE_UNQUANTIFIED: \"工期差異（未量化）\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 381,
+      "source": "STALE_SUPPLIER_EVIDENCE: \"已過期的供應商資料\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 384,
+      "source": "DEMO_SYNTHETIC: \"虛構示範資料\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 385,
+      "source": "PUBLIC_REFERENCE: \"公開參考資料\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 386,
+      "source": "TENANT_PRIVATE: \"公司內部資料\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 387,
+      "source": "TENANT_RESTRICTED: \"公司限制資料\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 388,
+      "source": "TENANT_APPROVED: \"公司已核准資料\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 391,
+      "source": "OPEN: \"尚未解決\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 392,
+      "source": "RESOLVED: \"已解決\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 393,
+      "source": "DISMISSED: \"已排除影響\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 396,
+      "source": "equivalentAmountForActiveProject: \"目前專案的歷史基準等值金額\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 397,
+      "source": "quantifiedPremiumState: \"加價量化狀態\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 398,
+      "source": "quoteAmountBeforeTax: \"未稅報價\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 399,
+      "source": "areaValue: \"面積\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 400,
+      "source": "quoteItem: \"報價項目\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 401,
+      "source": "normalizedUnit: \"標準化單位\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 402,
+      "source": "observationType: \"資料類型\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 403,
+      "source": "authorityState: \"資料權威性\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 404,
+      "source": "line: \"項目編號\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 405,
+      "source": "descriptionEn: \"內容說明\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 406,
+      "source": "descriptionZhTw: \"內容說明\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 407,
+      "source": "unitPrice: \"單價\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 408,
+      "source": "currentNormalizedAmount: \"目前標準化金額\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 409,
+      "source": "state: \"狀態\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 410,
+      "source": "code: \"計算說明\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 411,
+      "source": "kind: \"紀錄類型\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 412,
+      "source": "version: \"版本\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 413,
+      "source": "activeArea: \"目前專案面積\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 414,
+      "source": "candidateArea: \"歷史專案面積\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 415,
+      "source": "validUntil: \"有效期限\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 416,
+      "source": "effectiveAt: \"生效日期\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 417,
+      "source": "mimeType: \"檔案類型\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 418,
+      "source": "subtype: \"專案類型\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 419,
+      "source": "area: \"面積\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 420,
+      "source": "areaUnit: \"面積單位\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 421,
+      "source": "programmeWeeks: \"工期（週）\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 422,
+      "source": "page: \"頁碼\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 423,
+      "source": "section: \"章節\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 424,
+      "source": "sheet: \"工作表\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 425,
+      "source": "rows: \"列\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 426,
+      "source": "cells: \"儲存格\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 427,
+      "source": "lineNumber: \"項目編號\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 428,
+      "source": "categoryId: \"分類\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 429,
+      "source": "field: \"欄位\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 430,
+      "source": "amount: \"金額\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 431,
+      "source": "totalAmount: \"總金額\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 432,
+      "source": "quantity: \"數量\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 433,
+      "source": "unit: \"單位\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 434,
+      "source": "unitRate: \"單價\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 435,
+      "source": "currency: \"幣別\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 436,
+      "source": "status: \"狀態\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 437,
+      "source": "category: \"分類\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 438,
+      "source": "businessKey: \"業務識別碼\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 439,
+      "source": "projectKey: \"專案識別碼\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 440,
+      "source": "versionNumber: \"版本\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 441,
+      "source": "variancePercent: \"差異百分比\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 442,
+      "source": "currentAmount: \"目前金額\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 443,
+      "source": "baselineEquivalentAmount: \"歷史基準等值\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 444,
+      "source": "baselineMedianNormalizedAmount: \"歷史標準化中位數\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 445,
+      "source": "normalizedValue: \"標準化數值\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 446,
+      "source": "medianNormalizedAmount: \"標準化中位數\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 447,
+      "source": "minimumNormalizedAmount: \"標準化最低值\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 448,
+      "source": "maximumNormalizedAmount: \"標準化最高值\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 449,
+      "source": "eligibleObservationCount: \"可用觀測數\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 450,
+      "source": "requiredObservationCount: \"最低需求筆數\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 451,
+      "source": "direction: \"方向\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 452,
+      "source": "activeProgrammeWeeks: \"目前工期\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 453,
+      "source": "historicalMinimumWeeks: \"歷史最短工期\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 454,
+      "source": "historicalMaximumWeeks: \"歷史最長工期\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 457,
+      "source": "STALE_SUPPLIER_EVIDENCE: \"歷史供應商報價，非目前有效價格。\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 458,
+      "source": "INSUFFICIENT_ACTUAL_COST_EVIDENCE: \"實際成本資料低於最低門檻。\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 459,
+      "source": "CONFLICTED_EVIDENCE: \"不一致的資料已排除，不會進入權威計算。\","
+    },
+    {
+      "file": "src/modules/evidence-panel/copy.ts",
+      "line": 462,
+      "source": "INSUFFICIENT_ACTUAL_COST_EVIDENCE: \"實際成本資料不足\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 10,
+      "source": "\"歷史標準化報價中位數\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 14,
+      "source": "\"歷史標準化已核對實際成本中位數\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 16,
+      "source": "PROJECT: [\"Project record\", \"專案紀錄\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 17,
+      "source": "PROJECT_SCOPE: [\"Project scope\", \"專案範圍\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 18,
+      "source": "DOCUMENT_VERSION: [\"Document version\", \"文件版本\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 19,
+      "source": "QUOTE_VERSION: [\"Quote version\", \"報價版本\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 20,
+      "source": "QUOTE_ITEM: [\"Quote line\", \"報價項目\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 21,
+      "source": "FORECAST_COST_VERSION: [\"Forecast cost version\", \"預估成本版本\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 22,
+      "source": "FORECAST_COST_LINE: [\"Forecast cost line\", \"預估成本項目\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 23,
+      "source": "PROJECT_COST_VERSION: [\"Reconciled actual cost version\", \"已核對實際成本版本\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 24,
+      "source": "COST_LINE: [\"Reconciled actual cost line\", \"已核對實際成本項目\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 25,
+      "source": "UNQUANTIFIED: [\"Not quantified\", \"尚未量化\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 26,
+      "source": "CURRENT_CONTEXT: [\"Current context\", \"目前資料\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 27,
+      "source": "HISTORICAL_CONTEXT: [\"Historical context\", \"歷史資料\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 28,
+      "source": "IMPORTED_STONE: [\"Imported stone\", \"進口石材\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 29,
+      "source": "LIGHTING_ELECTRICAL: [\"Lighting and electrical\", \"燈具與電氣\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 30,
+      "source": "CUSTOM_MILLWORK: [\"Custom millwork\", \"訂製木作\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 31,
+      "source": "GENERAL_TRADES: [\"General trades\", \"一般工程\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 32,
+      "source": "PARTITIONS_CEILINGS: [\"Partitions and ceilings\", \"隔間與天花板\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 33,
+      "source": "DEMOLITION_CEILING: [\"Demolition and ceilings\", \"拆除與天花板\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 34,
+      "source": "SELECTIVE_DEMOLITION: [\"Selective demolition\", \"局部拆除\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 35,
+      "source": "SIGNAGE: [\"Signage\", \"招牌標示\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 36,
+      "source": "COORDINATION: [\"Coordination\", \"工程協調\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 37,
+      "source": "ABOVE: [\"Above the historical baseline\", \"高於歷史基準\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 38,
+      "source": "BELOW: [\"Below the historical baseline\", \"低於歷史基準\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 39,
+      "source": "ALIGNED: [\"Aligned with the historical baseline\", \"與歷史基準相當\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 40,
+      "source": "TWD: [\"TWD\", \"新臺幣\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 41,
+      "source": "TWD_PER_M2: [\"TWD/m²\", \"新臺幣／平方公尺\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 42,
+      "source": "m2: [\"m²\", \"平方公尺\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 43,
+      "source": "lot: [\"lot\", \"式\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 44,
+      "source": "weeks: [\"weeks\", \"週\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 45,
+      "source": "KNOWN: [\"Known\", \"已知\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 46,
+      "source": "UNKNOWN: [\"Unknown—not a mismatch\", \"資料未知，不視為不相符\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 47,
+      "source": "NOT_APPLICABLE: [\"Not applicable\", \"不適用\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 48,
+      "source": "ACTIVE: [\"Active\", \"進行中\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 49,
+      "source": "COMPLETED: [\"Completed\", \"已完成\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 50,
+      "source": "FINAL: [\"Final\", \"定稿\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 51,
+      "source": "DRAFT: [\"Draft\", \"草稿\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 52,
+      "source": "APPROVED: [\"Approved\", \"已核准\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 53,
+      "source": "SUPERSEDED: [\"Superseded\", \"已由新版取代\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 54,
+      "source": "RECONCILED: [\"Reconciled\", \"已核對\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 55,
+      "source": "\"document-version\": [\"Document version\", \"文件版本\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 56,
+      "source": "QUOTED_PRICE_MEDIAN: [\"Quoted-price historical median\", \"歷史報價中位數\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 59,
+      "source": "\"歷史已核對實際成本中位數\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 61,
+      "source": "QUOTED_PRICE_OVERALL_MEDIAN: [\"Overall quoted-price historical median\", \"整體歷史報價中位數\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 64,
+      "source": "\"整體歷史已核對實際成本中位數\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 66,
+      "source": "QUOTED_PRICE_CATEGORY_MEDIAN: [\"Category quoted-price historical median\", \"分類歷史報價中位數\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 69,
+      "source": "\"分類歷史已核對實際成本中位數\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 73,
+      "source": "\"目前報價與歷史報價中位數的差異\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 77,
+      "source": "\"目前預估直接成本與歷史已核對實際成本中位數的差異\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 79,
+      "source": "CATEGORY_VARIANCE: [\"Category variance\", \"分類差異\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 80,
+      "source": "MEDIAN_MIN_MAX: [\"Median, minimum and maximum\", \"中位數、最低值與最高值\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 83,
+      "source": "\"（目前標準化數值－歷史中位數）÷ 歷史中位數 × 100\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 85,
+      "source": "HALF_UP: [\"Round half up\", \"四捨五入\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 88,
+      "source": "\"百分比四捨五入至小數點後 4 位\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 92,
+      "source": "\"四捨五入：標準化單價保留小數點後 6 位；等值金額保留 2 位\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 96,
+      "source": "\"依專案類型相同或設定的相近類型比較\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 100,
+      "source": "\"依面積比值的對數計算相似度\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 104,
+      "source": "\"共同工作範圍分類數占全部不重複分類數的比例\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 108,
+      "source": "\"共同報價分類數占全部不重複分類數的比例\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 112,
+      "source": "\"共同材料數占全部不重複材料數的比例\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 116,
+      "source": "\"共同供應商數占全部不重複供應商數的比例\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 120,
+      "source": "\"工作範圍資料不足，不視為不相符\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 124,
+      "source": "\"報價分類資料不足，不視為不相符\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 128,
+      "source": "\"材料資料不足，不視為不相符\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 132,
+      "source": "\"供應商資料不足，不視為不相符\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 136,
+      "source": "\"依最近 60 個月內的完工時間計算接近度\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 140,
+      "source": "\"依行政區、城市與鄰近城市的設定比較地點接近度\","
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 156,
+      "source": "return locale === \"zh-TW\" ? \"此項說明尚未提供\" : \"Description unavailable\";"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 162,
+      "source": "project: [\"Project record\", \"專案紀錄\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 163,
+      "source": "\"project-scope\": [\"Project scope\", \"專案範圍\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 164,
+      "source": "\"document-version\": [\"Document version\", \"文件版本\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 165,
+      "source": "\"quote-version\": [\"Quote version\", \"報價版本\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 166,
+      "source": "\"quote-item\": [\"Quote line\", \"報價項目\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 167,
+      "source": "\"forecast-cost-version\": [\"Forecast cost version\", \"預估成本版本\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 168,
+      "source": "\"forecast-cost-line\": [\"Forecast cost line\", \"預估成本項目\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 169,
+      "source": "\"project-cost-version\": [\"Reconciled actual cost version\", \"已核對實際成本版本\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 170,
+      "source": "\"cost-line\": [\"Reconciled actual cost line\", \"已核對實際成本項目\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 171,
+      "source": "\"supplier-offer\": [\"Supplier offer\", \"供應商報價\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 172,
+      "source": "\"supplier-offer-item\": [\"Supplier offer line\", \"供應商報價項目\"],"
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 179,
+      "source": "? \"來源紀錄\""
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 195,
+      "source": "? \"依已核准的相似度規則計算；缺少資料不視為不相符。\""
+    },
+    {
+      "file": "src/modules/evidence-panel/presentation.ts",
+      "line": 198,
+      "source": "? \"僅使用符合資料權威性規則的觀測值；不同成本與報價類型分開比較。\""
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 154,
+      "source": "zhTw: `檢核${zhProject}第${quoteVersion}版報價的進口石材與照明假設`,"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 161,
+      "source": "zhTw: `審查${zhProject}第${quoteVersion}版報價的進口石材與照明假設`,"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 168,
+      "source": "zhTw: `確認${zhProject}第${quoteVersion}版報價之進口石材與照明假設的佐證資料`,"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 183,
+      "source": "zhTw: \"下次內部報價審查前，依連結的佐證資料檢核這些假設。\","
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 190,
+      "source": "zhTw: \"確認佐證資料，並記錄內部審查需要釐清的問題。\","
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 197,
+      "source": "zhTw: \"依連結的歷史佐證資料，檢核進口石材與照明假設。\","
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 221,
+      "source": "zhTw: `進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 ${stonePercent}%。`,"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 229,
+      "source": "zhTw: `照明報價與符合條件的歷史報價比較，差異為 ${lightingPercent}%。`,"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 237,
+      "source": "zhTw: `照明已核對實際成本佐證資料不足：目前 ${eligible} 筆，需要 ${required} 筆；無法提供有佐證的實際成本區間。`,"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 245,
+      "source": "zhTw: `目前工期為 ${activeWeeks} 週，所選歷史專案為 ${minWeeks}–${maxWeeks} 週；目前沒有佐證支持量化工期溢價。`,"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 252,
+      "source": "zhTw: `比較紀錄：${stage4.run.id}；成本分析紀錄：${stage5.run.id}。`,"
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 261,
+      "source": "zhTw: \"此操作只會建立內部審查事項，不會核准或發出報價、授權商業承諾，或對外聯繫。\","
+    },
+    {
+      "file": "src/modules/internal-review/domain/proposal-policy.ts",
+      "line": 268,
+      "source": "zhTw: \"歷史比較不能證明這份報價有誤、供應商收費過高，或趕工造成特定溢價；供應商價格也未確認目前仍有效。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 61,
+      "source": "chinese: \"繁體中文\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 101,
+      "source": "entry: \"建立內部審查事項\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 102,
+      "source": "entryDescription: \"檢視已查證的內容、選擇用語與承辦人，再明確確認建立內部審查事項。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 103,
+      "source": "preparing: \"正在準備審查內容…\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 104,
+      "source": "reviewTitle: \"檢視內部審查事項\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 105,
+      "source": "reviewDescription: \"建立事項前，請先檢視資料依據與不確定性。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 106,
+      "source": "title: \"標題\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 107,
+      "source": "rationale: \"審查目的\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 108,
+      "source": "boundedEditHint: \"可選擇審查用語。已查證的內容與不確定性說明會一併保留，無法在此變更。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 109,
+      "source": "findings: \"已查證內容・隨事項保留\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 110,
+      "source": "uncertainty: \"不確定性與限制・隨事項保留\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 111,
+      "source": "evidence: \"檢視支持此內容的資料依據\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 112,
+      "source": "assignee: \"承辦人\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 113,
+      "source": "assigneeLocked: \"依您目前的權限，承辦人固定為建議人選。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 114,
+      "source": "unassigned: \"未指派\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 115,
+      "source": "dueDate: \"到期日\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 116,
+      "source": "dateHint: \"非必填。請輸入 {min} 至 {max} 之間的日期，或保留空白。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 117,
+      "source": "clearDate: \"清除到期日\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 118,
+      "source": "expires: \"本次審查有效至\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 119,
+      "source": "comparison: \"來源比較紀錄\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 120,
+      "source": "economics: \"來源商務分析紀錄\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 122,
+      "source": "\"確認後將建立持續保存的內部事項及稽核紀錄；無法在此畫面撤銷建立。此操作不會核准報價，也不會傳送訊息。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 123,
+      "source": "acknowledgement: \"我已檢視資料依據與限制，並確認建立此內部審查事項。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 124,
+      "source": "confirming: \"正在建立內部審查事項…\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 125,
+      "source": "cancel: \"取消審查\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 126,
+      "source": "close: \"關閉\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 127,
+      "source": "retry: \"重試\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 128,
+      "source": "refresh: \"重新比較\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 129,
+      "source": "returnToComparison: \"返回來源比較\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 130,
+      "source": "openActions: \"查看專案事項\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 131,
+      "source": "receiptTitle: \"已建立內部審查事項\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 132,
+      "source": "receiptDescription: \"此回執記錄已儲存至專案的事項。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 133,
+      "source": "receiptUnavailableTitle: \"目前無法查看回執\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 134,
+      "source": "receiptUnavailableDescription: \"目前無法顯示這份回執。請返回您有權存取的專案，查看可用的事項。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 135,
+      "source": "confirmationErrorTitle: \"未能完成審查確認\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 136,
+      "source": "replayTitle: \"此內部審查事項已建立\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 137,
+      "source": "replayDescription: \"目前顯示同一份已儲存回執，未重複建立事項。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 138,
+      "source": "actionKey: \"事項編號\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 139,
+      "source": "project: \"專案\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 140,
+      "source": "status: \"狀態\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 141,
+      "source": "open: \"待處理\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 142,
+      "source": "createdAt: \"建立時間\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 143,
+      "source": "createdBy: \"建立人\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 144,
+      "source": "evidenceCount: \"可存取的佐證資料筆數\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 145,
+      "source": "noDueDate: \"未設定到期日\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 146,
+      "source": "actionsTitle: \"內部審查事項\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 147,
+      "source": "actionsDescription: \"開啟已儲存回執以檢視詳情，或返回來源比較。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 148,
+      "source": "actionsEmpty: \"目前沒有可查看的內部審查事項。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 149,
+      "source": "openReceipt: \"開啟回執\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 150,
+      "source": "overviewActions: \"待處理內部審查事項\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 151,
+      "source": "reference: \"參考編號\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 153,
+      "source": "chinese: \"繁體中文\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 154,
+      "source": "validationTitle: \"請檢查標示的欄位\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 156,
+      "source": "PROPOSAL_UNAVAILABLE: \"目前無法提供此審查。請開啟您有權存取且具備必要佐證資料的比較後重試。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 157,
+      "source": "PROPOSAL_EXPIRED: \"本次審查已逾期。請返回比較並重新準備審查內容。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 158,
+      "source": "PROPOSAL_STALE: \"比較或相關佐證資料已變更。請重新比較，再準備新的審查。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 159,
+      "source": "PROPOSAL_NOT_AUTHORIZED: \"依您目前的權限，無法查看此審查。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 160,
+      "source": "PROPOSAL_FAILED: \"未能準備審查內容。請從比較畫面重試。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 161,
+      "source": "ACTION_NOT_AUTHORIZED: \"依您目前的權限，無法查看或建立此事項。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 162,
+      "source": "ACCESS_CHANGED: \"您的存取權限已變更。請返回您有權存取的比較，再繼續操作。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 163,
+      "source": "ASSIGNEE_UNAVAILABLE: \"此承辦人目前無法承辦本次審查。請重新開啟審查，確認目前可用的人選。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 164,
+      "source": "EVIDENCE_UNAVAILABLE: \"必要佐證資料目前無法存取。請返回比較，確認存取權限與資料來源。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 165,
+      "source": "STALE_COMPARISON: \"比較或相關佐證資料已變更，未建立事項。請重新比較並再次檢視。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 166,
+      "source": "PROPOSAL_ALREADY_CONSUMED: \"此審查已用於建立事項。請從專案事項清單開啟已儲存的回執。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 167,
+      "source": "IDEMPOTENCY_CONFLICT: \"本次確認內容與已儲存的請求不符。請重新開啟審查或其回執後再繼續。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 169,
+      "source": "\"未能確認事項的建立結果。可重試相同的確認內容；若事項已建立，將安全地取回同一份回執。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 170,
+      "source": "VALIDATION_FAILED: \"請先檢查標示的欄位，再確認建立。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 173,
+      "source": "INVALID_TITLE: \"請選擇其中一個可用的審查標題。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 174,
+      "source": "INVALID_RATIONALE: \"請選擇其中一個可用的審查目的。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 175,
+      "source": "INVALID_DUE_DATE: \"請輸入顯示範圍內的有效日期，或保留空白。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 176,
+      "source": "CONFIRMATION_REQUIRED: \"請確認您已檢視資料依據，並要建立此事項。\","
+    },
+    {
+      "file": "src/modules/internal-review-experience/copy.ts",
+      "line": 177,
+      "source": "INVALID_REQUEST: \"請重新開啟審查並檢查輸入內容。\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 61,
+      "source": "\"app.demoStatus\": \"受控虛構資料示範\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 62,
+      "source": "\"nav.home\": \"首頁\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 63,
+      "source": "\"nav.projects\": \"專案\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 64,
+      "source": "\"nav.knowledge\": \"知識\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 66,
+      "source": "\"nav.settings\": \"設定\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 67,
+      "source": "\"nav.overview\": \"總覽\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 68,
+      "source": "\"nav.compare\": \"比較\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 69,
+      "source": "\"nav.commercial\": \"商務資料\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 70,
+      "source": "\"nav.evidence\": \"資料依據\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 71,
+      "source": "\"nav.actions\": \"行動事項\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 72,
+      "source": "\"language.zhTw\": \"繁中\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 75,
+      "source": "\"home.title\": \"讓每一個完成的專案，都能幫助下一個專案。\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 77,
+      "source": "\"StrideBrain 將專案、文件、報價、供應商與公司知識連結成可查證、可採取行動的營運智慧。\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 78,
+      "source": "\"home.foundationTitle\": \"目前階段：第一個完整智慧工作流程\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 80,
+      "source": "\"此版本已建立雙語專案工作區、權限治理、可解釋的歷史專案排序，以及報價與實際成本分開的商務比較。所有資料皆為禾序空間設計的虛構示範資料。\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 81,
+      "source": "\"home.nextTitle\": \"目前可展示的核心成果\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 83,
+      "source": "\"從信義旗艦店專案提出「我們以前做過類似的案子嗎？」，查看可解釋的歷史專案、商務差異，並開啟精確資料依據與計算過程。內部審查事項將依建置順序啟用。\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 84,
+      "source": "\"projects.eyebrow\": \"專案工作區\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 85,
+      "source": "\"projects.title\": \"專案\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 86,
+      "source": "\"projects.description\": \"開啟您有權限查看的專案工作區。\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 87,
+      "source": "\"projects.open\": \"開啟專案\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 88,
+      "source": "\"projects.active\": \"進行中\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 89,
+      "source": "\"projects.unavailableTitle\": \"目前沒有可開啟的專案\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 90,
+      "source": "\"projects.unavailableDescription\": \"請確認您的登入狀態與專案存取權限，或稍後再試。\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 91,
+      "source": "\"knowledge.eyebrow\": \"組織知識\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 92,
+      "source": "\"knowledge.title\": \"連結公司知道的事，而不只是管理檔案。\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 94,
+      "source": "\"目前的比較流程已使用專案、報價版本、成本、供應商、材料與資料依據。完整知識探索與任意文件匯入尚未啟用。\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 95,
+      "source": "\"stridebrain.eyebrow\": \"營運智慧介面\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 96,
+      "source": "\"stridebrain.title\": \"StrideBrain 不是另一個一般聊天機器人。\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 98,
+      "source": "\"目前版本先取得已授權的工作脈絡，再以固定規則產生專案排序、商務比較與誠實的資料不足狀態。模型說明不是主要流程的必要條件。\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 99,
+      "source": "\"settings.eyebrow\": \"組織設定\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 100,
+      "source": "\"settings.title\": \"身份、權限、語言與資料邊界由伺服器端治理。\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 102,
+      "source": "\"受控示範已驗證角色、專案指派與資料遮蔽；完整帳號管理、整合與正式客戶資料生命週期尚未啟用。\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 103,
+      "source": "\"project.eyebrow\": \"專案工作區\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 104,
+      "source": "\"project.unavailableTitle\": \"此專案或區域目前無法使用。\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 106,
+      "source": "\"目前的授權脈絡無法開啟此專案，或此專案區域尚未在第一個完整流程中啟用。系統不會以假資料取代失敗狀態。\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 107,
+      "source": "\"project.requestedKey\": \"要求的專案識別碼\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 108,
+      "source": "\"project.foundationTitle\": \"已核准的專案區域\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 110,
+      "source": "\"專案總覽、比較與資料依據已連接正式資料與權限邊界。商務資料專頁與行動事項會依照已核准的建置順序逐步啟用。\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 111,
+      "source": "\"state.notConnected\": \"此區域尚未啟用\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 112,
+      "source": "\"state.stageZero\": \"v0.1 · 受控示範\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 113,
+      "source": "\"action.viewArchitecture\": \"查看建置規格\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 114,
+      "source": "\"footer.dataBoundary\": \"僅使用虛構示範資料 · 無真實客戶資料\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 115,
+      "source": "\"footer.releaseBoundary\": \"尚未切換正式示範網域\","
+    },
+    {
+      "file": "src/modules/localization/catalog.ts",
+      "line": 132,
+      "source": "\"language.zhTw\": \"繁中\","
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 22,
+      "source": "QUOTED_PRICE: \"報價\","
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 23,
+      "source": "SUPPLIER_OFFER: \"供應商報價\","
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 24,
+      "source": "FORECAST_DIRECT_COST: \"預估直接成本\","
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 25,
+      "source": "RECONCILED_ACTUAL_COST: \"已核對實際成本\","
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 28,
+      "source": "OBSERVED: \"已擷取\","
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 29,
+      "source": "HUMAN_REVIEWED: \"已人工檢視\","
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 30,
+      "source": "APPROVED_COMMERCIAL: \"已核准商務紀錄\","
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 31,
+      "source": "RECONCILED_ACTUAL: \"已核對實際紀錄\","
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 32,
+      "source": "SUPERSEDED: \"已由新版取代\","
+    },
+    {
+      "file": "src/modules/localization/financial-copy.ts",
+      "line": 33,
+      "source": "CONFLICTED: \"資料不一致\","
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 4,
+      "source": "RETAIL_FLAGSHIP: [\"Retail flagship\", \"零售旗艦店\"],"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 5,
+      "source": "RETAIL_RENOVATION: [\"Retail renovation\", \"零售門市改裝\"],"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 6,
+      "source": "RETAIL_CONCEPT_STORE: [\"Retail concept store\", \"零售概念店\"],"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 7,
+      "source": "RETAIL_SHOWROOM: [\"Retail showroom\", \"零售展示店\"],"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 8,
+      "source": "CORPORATE_OFFICE: [\"Corporate office\", \"企業辦公室\"],"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 9,
+      "source": "WORKPLACE_RENOVATION: [\"Workplace renovation\", \"辦公空間改裝\"],"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 10,
+      "source": "BOUTIQUE_HOSPITALITY: [\"Boutique hospitality\", \"精品旅宿\"],"
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 25,
+      "source": "city: \"臺北市\","
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 27,
+      "source": "\"Xinyi District\": \"信義區\","
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 28,
+      "source": "\"Neihu District\": \"內湖區\","
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 29,
+      "source": "\"Zhongshan District\": \"中山區\","
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 30,
+      "source": "\"Songshan District\": \"松山區\","
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 31,
+      "source": "\"Daan District\": \"大安區\","
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 32,
+      "source": "\"Nangang District\": \"南港區\","
+    },
+    {
+      "file": "src/modules/localization/project-context.ts",
+      "line": 35,
+      "source": "\"New Taipei City\": { city: \"新北市\", districts: { \"Banqiao District\": \"板橋區\" } },"
+    },
+    {
+      "file": "src/modules/localization/workspace-state-copy.ts",
+      "line": 32,
+      "source": "READY: \"可檢視\","
+    },
+    {
+      "file": "src/modules/localization/workspace-state-copy.ts",
+      "line": 33,
+      "source": "PARTIAL: \"部分資料尚未齊備\","
+    },
+    {
+      "file": "src/modules/localization/workspace-state-copy.ts",
+      "line": 34,
+      "source": "UNAVAILABLE: \"目前無法使用\","
+    },
+    {
+      "file": "src/modules/localization/workspace-state-copy.ts",
+      "line": 35,
+      "source": "PERMISSION_RESTRICTED: \"目前角色無權查看\","
+    },
+    {
+      "file": "src/modules/localization/workspace-state-copy.ts",
+      "line": 36,
+      "source": "CONFLICTED: \"資料紀錄不一致\","
+    },
+    {
+      "file": "src/modules/localization/workspace-state-copy.ts",
+      "line": 37,
+      "source": "STALE: \"資料已過期\","
+    },
+    {
+      "file": "src/modules/localization/workspace-state-copy.ts",
+      "line": 40,
+      "source": "GOOD: \"資料狀態良好\","
+    },
+    {
+      "file": "src/modules/localization/workspace-state-copy.ts",
+      "line": 41,
+      "source": "PARTIAL: \"部分資料尚未齊備\","
+    },
+    {
+      "file": "src/modules/localization/workspace-state-copy.ts",
+      "line": 42,
+      "source": "INSUFFICIENT: \"資料依據不足\","
+    },
+    {
+      "file": "src/modules/localization/workspace-state-copy.ts",
+      "line": 43,
+      "source": "CONFLICTED: \"資料依據不一致\","
+    },
+    {
+      "file": "src/modules/localization/workspace-state-copy.ts",
+      "line": 44,
+      "source": "RESTRICTED: \"目前角色無權查看\","
+    },
+    {
+      "file": "src/modules/projects/application/get-project-workspace.ts",
+      "line": 508,
+      "source": "promptZhTw: \"我們以前做過類似的案子嗎？\","
+    },
+    {
+      "file": "src/modules/projects/application/get-project-workspace.ts",
+      "line": 514,
+      "source": "promptZhTw: \"把目前報價和相關已完工專案比較一下。\","
+    },
+    {
+      "file": "src/modules/projects/application/get-project-workspace.ts",
+      "line": 520,
+      "source": "promptZhTw: \"這些數字是從哪裡來的？\","
+    },
+    {
+      "file": "src/repositories/prisma/prisma-evidence-panel-repository.ts",
+      "line": 294,
+      "source": "const baseZh = project?.nameZhTw ?? \"已授權資料來源\";"
+    }
+  ]
+}

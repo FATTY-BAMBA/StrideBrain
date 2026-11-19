@@ -1,0 +1,15 @@
+{
+  "status": "UNCONFIRMED_NAVIGATION_RACE_NO_NEW_DEFECT",
+  "attempts": "One focused bilingual attempt: immediate cancel→shell locale once per direction, followed by one settled control per direction.",
+  "observed": "Immediate shell clicks left the current locale unchanged while the modal was still busy. In zh-TW the actual pointer hit a modal list item, not the shell link. After closing, each settled locale click succeeded.",
+  "qualification": "The same visible diagnostic was observed, but actual enabled-link activation followed by lost navigation was not established. Do not invent a defect or claim exhaustive race resilience.",
+  "cancelFocusReturn": "internal-review-entry in both directions",
+  "draftIdentity": "The same proposal reopened after cancellation and locale changes; no duplicate proposal/action created by those controls.",
+  "proposal": "proposal_20204eee-d05f-4513-8740-c38059f5df49",
+  "sourceChangeJustified": false,
+  "evidence": [
+    "browser/rapid-cancel-en-to-zh.json",
+    "browser/rapid-cancel-zh-to-en.json",
+    "browser/settled-locale-controls.json"
+  ]
+}

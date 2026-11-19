@@ -1,0 +1,1 @@
+{"result":"PASS","processInstant":"2027-03-01T04:00:00.000Z","organizationDate":"2027-03-01","timer":"Real monotonic timer continues while application Date is fixed","explicitDateConstruction":"preserved","DateParseAndUTC":"preserved","browserAndMacClock":"unchanged"}

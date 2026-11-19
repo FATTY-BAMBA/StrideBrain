@@ -1,0 +1,41 @@
+{
+  "result": "PASS",
+  "priorFixtureAndHistoryRowsPreserved": true,
+  "priorRowChanges": [],
+  "priorEvidenceFilesUnchanged": 1686,
+  "allNineMigrationsUnchanged": true,
+  "fourImmutableGuardsUnchanged": true,
+  "allGuardsEnabled": true,
+  "sessionsIssued": 3,
+  "allOwnedSessionsRevoked": true,
+  "pendingBootstrapFiles": 0,
+  "processes": [
+    {
+      "kind": "app",
+      "ownershipVerified": true,
+      "signal": "SIGTERM",
+      "listenerStopped": true
+    },
+    {
+      "kind": "operator",
+      "ownershipVerified": true,
+      "signal": "SIGTERM",
+      "listenerStopped": true
+    }
+  ],
+  "hostClockChanged": false,
+  "browserClockChanged": false,
+  "OSSettingsChanged": false,
+  "browserTabClosed": true,
+  "postRevocationAuthenticatedBrowserRequest": false,
+  "retainedHistory": {
+    "comparisons": 6,
+    "economics": 6,
+    "proposals": 6,
+    "actions": 3,
+    "audits": 3,
+    "receipts": 3
+  },
+  "actionAccounting": "One setup confirmation used unchanged suggested date due to automation input event limitation; two valid boundary confirmations saved today and leap-day +365. All three retained; setup excluded from boundary PASS evidence.",
+  "temporaryQuoteValidity": "Original null restored before any browser/confirmation case; no source fixture changed."
+}

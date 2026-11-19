@@ -1,0 +1,12 @@
+[
+  {
+    "caseId": "M-01-EN-A",
+    "humanText": "Historical precedents for Xinyi flagship rennovation",
+    "context": "User subsequently asked whether the shown review panel was the correct location. No clarification established whether the phrase was spoken output or page identification.",
+    "visualObservation": "Review dialog visibly open; supplied screenshot caption says You are currently on a heading level 2.",
+    "status": "UNCONFIRMED_CONTEXT_DEFERRED_BY_USER",
+    "actualSpeechVerified": false,
+    "passFail": null,
+    "note": "Neither UI labels nor a partial caption establish the initial dialog speech announcement."
+  }
+]

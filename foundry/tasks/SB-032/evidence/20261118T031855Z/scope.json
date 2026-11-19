@@ -1,0 +1,17 @@
+{
+  "runId": "20261118T031855Z",
+  "waves": [
+    "WAVE_1_ISOLATED_DETERMINISTIC",
+    "WAVE_2_BILINGUAL_BROWSER_ALL_FOUR_VIEWPORTS",
+    "WAVE_3_LOCAL_MANUAL_AND_HUMAN_PACKAGES"
+  ],
+  "sourceChanges": "NONE",
+  "deployment": "NOT_AUTHORIZED",
+  "baselineBeforeMutations": true,
+  "stopRules": {
+    "P0": "STOP_AND_ESCALATE",
+    "P1": "STOP_AFFECTED_BUSINESS_WRITES",
+    "requiredPathP2": "RECORD_NO_BROAD_REPAIR_BEFORE_INDEPENDENT_CLASSIFICATION"
+  },
+  "browserAcceptance": "NOT_RUN"
+}

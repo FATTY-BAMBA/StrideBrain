@@ -1,0 +1,66 @@
+{
+  "before": {
+    "at": "2026-11-18T09:46:36.273Z",
+    "dialogs": [],
+    "fields": [],
+    "focus": {
+      "id": "internal-review-entry",
+      "tag": "BUTTON",
+      "text": "建立內部審查事項"
+    },
+    "lang": "zh-Hant",
+    "shellLinks": [
+      {
+        "disabled": null,
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+        "inert": false,
+        "text": "繁中"
+      },
+      {
+        "disabled": null,
+        "href": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+        "inert": false,
+        "text": "EN"
+      }
+    ],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "viewport": {
+      "dpr": 1,
+      "height": 900,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  },
+  "after": {
+    "at": "2026-11-18T09:46:36.602Z",
+    "dialogs": [],
+    "fields": [],
+    "focus": {
+      "id": "internal-review-entry",
+      "tag": "BUTTON",
+      "text": "建立內部審查事項"
+    },
+    "lang": "zh-Hant",
+    "shellLinks": [
+      {
+        "disabled": null,
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+        "inert": false,
+        "text": "繁中"
+      },
+      {
+        "disabled": null,
+        "href": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+        "inert": false,
+        "text": "EN"
+      }
+    ],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "viewport": {
+      "dpr": 1,
+      "height": 900,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  }
+}

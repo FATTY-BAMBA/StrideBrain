@@ -1,0 +1,154 @@
+[
+  {
+    "file": "en-automatic-after-midnight.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "en-before-midnight.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1290,
+      "width": 2056
+    }
+  },
+  {
+    "file": "en-calibrated-before-midnight.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "en-new-today-ready.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "en-new-today-receipt.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "en-plus365-ready.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "en-plus365-receipt.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "en-plus366-client-rejected.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "en-previous-day-client-rejected.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "en-refresh-unavailable.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "zh-automatic-after-midnight.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "zh-before-midnight.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "zh-new-today-ready.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "zh-new-today-receipt.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "zh-plus365-ready.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "zh-plus365-receipt.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "zh-plus366-client-rejected.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "zh-plus366-ready.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  },
+  {
+    "file": "zh-previous-day-client-rejected.json",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "width": 2056
+    }
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "runId": "20261118T031855Z",
+  "node": "v24.22.3",
+  "postgres": "17.12",
+  "postgresImageDigest": "sha256:0d938e975177bef9f1f61f3f9dbcf2e0aa0a139568f66d3415ed8892eb97f6ac",
+  "container": "stridebrain-sb032-20261118t031855z",
+  "database": "fresh Stage 9 synthetic-only database",
+  "initialPublicTableCount": 0,
+  "freshPrivateCredentials": true,
+  "appOrigin": "http://localhost:3000",
+  "previousPreview": "Completed Stage 8 preview process replaced only after fresh Stage 9 production build; Stage 8 files, databases and history retained unchanged.",
+  "browserControl": {
+    "inAppBrowser": "available",
+    "ChromeDOMConnector": "unavailable",
+    "nativeChrome": "available for later actual VoiceOver checks"
+  },
+  "noStage8RuntimeStateReused": true,
+  "browserUsed": {
+    "name": "Codex in-app browser",
+    "engineVersion": "NOT_EXPOSED_BY_AVAILABLE_INTERFACE",
+    "nativeChromeVoiceOver": "NOT_RUN"
+  },
+  "separateBrowserDatabase": "New browser-only database migrated and seeded after deterministic testing; no deterministic test history reused."
+}

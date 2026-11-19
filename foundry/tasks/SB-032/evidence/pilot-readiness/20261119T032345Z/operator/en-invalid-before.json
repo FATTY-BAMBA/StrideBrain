@@ -1,0 +1,36 @@
+{
+  "label": "en-invalid-before",
+  "clock": {
+    "instant": "2027-03-01T04:00:00.000Z",
+    "timezone": "Asia/Taipei",
+    "case": "leap-window"
+  },
+  "tables": {
+    "Action": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "AuditEvent": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "InternalReviewReceipt": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "ProposedAction": {
+      "count": 1,
+      "sha256": "c42013ae1fc1899213361aa77023a2b3809d28df067b8b876f939525aeb76180"
+    }
+  },
+  "actionEvidenceReferences": 0,
+  "proposal": {
+    "businessKey": "proposal_937e5693-bb42-41fe-8cb7-96e08ce5471d",
+    "status": "PREPARED",
+    "createdAt": "2027-02-28T20:00:00.000Z",
+    "expiresAt": "2027-02-28T20:30:00.000Z",
+    "consumedAt": null
+  },
+  "receipts": [],
+  "actions": []
+}

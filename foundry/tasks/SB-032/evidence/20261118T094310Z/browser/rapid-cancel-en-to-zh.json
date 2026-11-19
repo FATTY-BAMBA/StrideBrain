@@ -1,0 +1,188 @@
+{
+  "before": {
+    "at": "2026-11-18T09:45:39.685Z",
+    "dialogs": [
+      {
+        "name": "internal-review-heading",
+        "text": "Review internal review actionReview the evidence and uncertainty before creating this action.English繁體中文CloseTitleValidate imported-stone and lighting"
+      }
+    ],
+    "fields": [
+      {
+        "checked": false,
+        "id": "review-title",
+        "value": "VALIDATE"
+      },
+      {
+        "checked": false,
+        "id": "review-rationale",
+        "value": "REVIEW_NEXT"
+      },
+      {
+        "checked": false,
+        "id": "review-assignee",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      },
+      {
+        "checked": false,
+        "id": "review-dueDate",
+        "value": "2026-11-25"
+      },
+      {
+        "checked": false,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "focus": {
+      "id": "internal-review-heading",
+      "tag": "H2",
+      "text": "Review internal review action"
+    },
+    "lang": "en",
+    "shellLinks": [
+      {
+        "disabled": null,
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49",
+        "inert": false,
+        "text": "繁中"
+      },
+      {
+        "disabled": null,
+        "href": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49",
+        "inert": false,
+        "text": "EN"
+      },
+      {
+        "disabled": "false",
+        "href": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49",
+        "inert": false,
+        "text": "English"
+      },
+      {
+        "disabled": "false",
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49",
+        "inert": false,
+        "text": "繁體中文"
+      }
+    ],
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49",
+    "viewport": {
+      "dpr": 1,
+      "height": 900,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  },
+  "cancelStart": 1794995139689,
+  "cancelReturned": 1794995139951,
+  "afterCancel": {
+    "at": "2026-11-18T09:45:39.969Z",
+    "dialogs": [
+      {
+        "name": "internal-review-heading",
+        "text": "Review internal review actionReview the evidence and uncertainty before creating this action.English繁體中文CloseTitleValidate imported-stone and lighting"
+      }
+    ],
+    "fields": [
+      {
+        "checked": false,
+        "id": "review-title",
+        "value": "VALIDATE"
+      },
+      {
+        "checked": false,
+        "id": "review-rationale",
+        "value": "REVIEW_NEXT"
+      },
+      {
+        "checked": false,
+        "id": "review-assignee",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      },
+      {
+        "checked": false,
+        "id": "review-dueDate",
+        "value": "2026-11-25"
+      },
+      {
+        "checked": false,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "focus": {
+      "id": "",
+      "tag": "BODY",
+      "text": "Skip to main contentStrideBrainBY PRIMESTRIDE AI01Home02Projects03Knowledge04StrideBrain05Settingsv0.1 · Controlled demo"
+    },
+    "lang": "en",
+    "shellLinks": [
+      {
+        "disabled": null,
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49",
+        "inert": false,
+        "text": "繁中"
+      },
+      {
+        "disabled": null,
+        "href": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49",
+        "inert": false,
+        "text": "EN"
+      },
+      {
+        "disabled": "true",
+        "href": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49",
+        "inert": false,
+        "text": "English"
+      },
+      {
+        "disabled": "true",
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49",
+        "inert": false,
+        "text": "繁體中文"
+      }
+    ],
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49",
+    "viewport": {
+      "dpr": 1,
+      "height": 900,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  },
+  "localeClickStart": 1794995139971,
+  "localeClickReturned": 1794995140046,
+  "afterClick": {
+    "at": "2026-11-18T09:45:40.070Z",
+    "dialogs": [],
+    "fields": [],
+    "focus": {
+      "id": "internal-review-entry",
+      "tag": "BUTTON",
+      "text": "Create internal review action"
+    },
+    "lang": "en",
+    "shellLinks": [
+      {
+        "disabled": null,
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+        "inert": false,
+        "text": "繁中"
+      },
+      {
+        "disabled": null,
+        "href": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+        "inert": false,
+        "text": "EN"
+      }
+    ],
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+    "viewport": {
+      "dpr": 1,
+      "height": 900,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  }
+}

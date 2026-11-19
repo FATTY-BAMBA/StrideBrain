@@ -1,0 +1,12 @@
+{
+  "productionAudit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "scope": "Clean locked dependency install; production packages only",
+  "securityWave": "NOT_RUN; dependency audit is not tenant-isolation acceptance"
+}

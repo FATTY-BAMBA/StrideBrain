@@ -1,0 +1,14 @@
+{
+  "layer": "Real production HTTP command; native date input cannot represent impossible calendar date",
+  "date": "2027-02-29",
+  "instant": "2027-03-01T04:00:00.000Z",
+  "locale": "en",
+  "status": 200,
+  "outcome": {
+    "kind": "VALIDATION_FAILED",
+    "requestId": "5c7b4149-0621-41c8-a39b-3f4c2ada9838",
+    "fieldErrors": {
+      "dueDate": "INVALID_DUE_DATE"
+    }
+  }
+}

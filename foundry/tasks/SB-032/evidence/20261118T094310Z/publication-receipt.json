@@ -1,0 +1,27 @@
+{
+  "branch": "build/sb-032-stage9-quality-hardening",
+  "remoteHead": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+  "PR": 33,
+  "prHead": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+  "prState": "OPEN_DRAFT_UNMERGED",
+  "repairCommit": "4628fb759c8bac23cf92eb15992259fb366a8d65",
+  "repairParent": "1bde2114d010c694d017ba2b4116ceffab3569e1",
+  "evidenceCommit": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+  "evidenceCommitParent": "4628fb759c8bac23cf92eb15992259fb366a8d65",
+  "changedFilesFromPreviousPublishedHead": 1105,
+  "evidenceFiles": 1084,
+  "screenshots": 303,
+  "CI": {
+    "id": 44278010987,
+    "result": "PASS",
+    "url": "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/44278010987"
+  },
+  "migrationAdded": "0009_stage9_economics_selection_lineage",
+  "historicalMigrationsUnchanged": true,
+  "historicalSB029Unchanged": true,
+  "failedAndPassingEvidenceUnchanged": true,
+  "sanitization": "PASS",
+  "forcePush": false,
+  "merge": false,
+  "deployment": false
+}

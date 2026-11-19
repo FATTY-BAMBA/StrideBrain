@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-18T14:32:17.802Z",
+  "caseId": "M-01-EN-A",
+  "status": "DEFERRED_BY_USER_NOT_VERIFIED",
+  "control": "Create internal review action",
+  "expected": "Review internal review action dialog; Review the evidence and uncertainty before creating this action.",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_ac41e9da-cd83-41bc-a66c-7961021d4660&economics=econrun_af09a09a-f4d5-4438-ae67-867fdce04bb4&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023",
+  "voiceOverSetting": "ON",
+  "nativeWindowInterruption": "Chrome returned to another tab during setup; no speech test triggered by agent.",
+  "observation": null,
+  "closure": {
+    "at": "2026-11-19T03:17:47.132278+00:00",
+    "decision": "DEFERRED_BY_USER",
+    "scope": [
+      "M-01 actual VoiceOver speech",
+      "M-06 remaining speech association"
+    ],
+    "reason": "User requested: for now we can skip this and focus on more pressing things to get our demo ready",
+    "actualSpeechPassClaimed": false,
+    "releaseGateWaiver": false,
+    "nextFocus": "Local demo operational readiness and concise core-journey rehearsal",
+    "productChangesAuthorizedByThisDecision": false,
+    "deploymentOrMergeAuthorizedByThisDecision": false
+  },
+  "unconfirmedHumanText": "Historical precedents for Xinyi flagship rennovation"
+}

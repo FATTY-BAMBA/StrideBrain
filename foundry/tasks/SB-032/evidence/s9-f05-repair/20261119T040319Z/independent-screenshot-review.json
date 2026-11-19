@@ -1,0 +1,103 @@
+{
+  "review": "PASS_NO_VISIBLE_SENSITIVE_CONTENT_OBSERVED",
+  "reviewer": "Independent S9-F05 reviewer",
+  "visuallyInspectedCount": 19,
+  "scope": "Every screenshot visually inspected; separate operator text/metadata scan still applies",
+  "screenshots": [
+    {
+      "path": "screenshots/en-automatic-after-midnight.jpg",
+      "sha256": "6dc11c7884e412868cdf25a606bfc5f329c1279544363aa3a4dcc48302b72f55",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/en-before-midnight.jpg",
+      "sha256": "c49c68e95929b0afe9bef409100ad5ab64db2864b1a2973581b41a14485cfe63",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/en-calibrated-before-midnight.jpg",
+      "sha256": "11dd63fa0b41d2f83a4fc25cee2b20e24dee1573e67b651da992cd7deda088ac",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/en-new-today-ready.jpg",
+      "sha256": "a2b14102c1e97f6d84ee00361d06c293004a447fef14b24eb660d9c782575948",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/en-new-today-receipt.jpg",
+      "sha256": "b680986579ec1896b586cd7145872508f1daac80e5474a960a969afd1b6e6b55",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/en-plus365-ready.jpg",
+      "sha256": "93f225c9b6f73c1ed80c497799a37c0443a6a0f50418eff24a0f334d7631d67e",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/en-plus365-receipt.jpg",
+      "sha256": "d72611088a0b82323d7335f3a5b47404e9208b05296eb6932caa7689256fb3e4",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/en-plus366-client-rejected.jpg",
+      "sha256": "40accd65c494e09156751cf834267a7627eea118901834787633589ff40ca872",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/en-previous-day-client-rejected.jpg",
+      "sha256": "bcc96214c8d7528619df4117e6ceb3324fd95a7b7b2502754c24b28dc343dc97",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/en-refresh-unavailable.jpg",
+      "sha256": "dfe6db03148481489363cc9ed63a3bba52d00b43ae73f4c5804dd3ee7d4eaf8f",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/zh-automatic-after-midnight.jpg",
+      "sha256": "c40fb0be2ef43b2979e7e863c1c0bc28d337d3dbd8cc5fdc8814b40c04c58367",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/zh-before-midnight.jpg",
+      "sha256": "45248a52692f833a92a4bfb979d9bd717674d74c88f29cdfd15d2416217b6eb5",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/zh-new-today-ready.jpg",
+      "sha256": "509b73c9a43471d850cb82234c68121fbdc90228cdaa5adc1f5211af7c9323dd",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/zh-new-today-receipt.jpg",
+      "sha256": "a378007d3bc1fc0e0ef3f0684b36202cf2dc02088adf44e707ce030c701c829d",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/zh-plus365-ready.jpg",
+      "sha256": "c14bc64242b421cd680ad6dd6b0aa8dcc3e1a5b10abd83cfef4b2d3768f0217c",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/zh-plus365-receipt.jpg",
+      "sha256": "9283cc804911e1f54966e8f6b79100ee951923604915c63e548ad7f4c5bd4649",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/zh-plus366-client-rejected.jpg",
+      "sha256": "680d5e84f23cd755cd8a4c721a4a62caf489cafee216f68d3cec161f20c0fa04",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/zh-plus366-ready.jpg",
+      "sha256": "7c9d574af2bab548e8553cab66f43ed0e013f18e697eed6fe18824c661523eb8",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    },
+    {
+      "path": "screenshots/zh-previous-day-client-rejected.jpg",
+      "sha256": "d175243673f28af9d173aaf323600e5a9eb3df4fad0b59923a09a2a1da7fe097",
+      "visualReview": "No visible credentials, cookies, bootstrap URLs, database credentials, private/personal paths; consistent synthetic QA UI"
+    }
+  ]
+}

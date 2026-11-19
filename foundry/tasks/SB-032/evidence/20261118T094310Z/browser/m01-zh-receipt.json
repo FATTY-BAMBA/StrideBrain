@@ -1,0 +1,100 @@
+{
+  "before": {
+    "at": "2026-11-18T09:53:20.996Z",
+    "dialogs": [
+      {
+        "name": "internal-review-heading",
+        "text": "已建立內部審查事項此回執記錄已儲存至專案的事項。English繁體中文關閉審查信義旗艦店裝修第3版報價的進口石材與照明假設確認佐證資料，並記錄內部審查需要釐清的問題。\n\n進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。\n\n照明報價與符合條件的歷史報價比較，差異為 +9."
+      }
+    ],
+    "fields": [],
+    "focus": {
+      "id": "internal-review-heading",
+      "tag": "H2",
+      "text": "已建立內部審查事項"
+    },
+    "lang": "zh-Hant",
+    "shellLinks": [
+      {
+        "disabled": null,
+        "href": "/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "inert": false,
+        "text": "繁中"
+      },
+      {
+        "disabled": null,
+        "href": "/en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "inert": false,
+        "text": "EN"
+      },
+      {
+        "disabled": "false",
+        "href": "/en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "inert": false,
+        "text": "English"
+      },
+      {
+        "disabled": "false",
+        "href": "/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "inert": false,
+        "text": "繁體中文"
+      }
+    ],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+    "viewport": {
+      "dpr": 1,
+      "height": 900,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  },
+  "after": {
+    "at": "2026-11-18T09:53:21.220Z",
+    "dialogs": [
+      {
+        "name": "internal-review-heading",
+        "text": "已建立內部審查事項此回執記錄已儲存至專案的事項。English繁體中文關閉審查信義旗艦店裝修第3版報價的進口石材與照明假設確認佐證資料，並記錄內部審查需要釐清的問題。\n\n進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。\n\n照明報價與符合條件的歷史報價比較，差異為 +9."
+      }
+    ],
+    "fields": [],
+    "focus": {
+      "id": "internal-review-heading",
+      "tag": "H2",
+      "text": "已建立內部審查事項"
+    },
+    "lang": "zh-Hant",
+    "shellLinks": [
+      {
+        "disabled": null,
+        "href": "/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "inert": false,
+        "text": "繁中"
+      },
+      {
+        "disabled": null,
+        "href": "/en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "inert": false,
+        "text": "EN"
+      },
+      {
+        "disabled": "false",
+        "href": "/en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "inert": false,
+        "text": "English"
+      },
+      {
+        "disabled": "false",
+        "href": "/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "inert": false,
+        "text": "繁體中文"
+      }
+    ],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+    "viewport": {
+      "dpr": 1,
+      "height": 900,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  }
+}

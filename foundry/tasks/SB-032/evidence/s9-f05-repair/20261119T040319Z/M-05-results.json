@@ -1,0 +1,106 @@
+{
+  "runId": "20261119T040319Z",
+  "result": "PASS",
+  "finding": "S9-F05",
+  "disposition": "CLOSED_FOR_TESTED_SCOPE",
+  "BUILD_ID": "tJ3t0INa7eLqU4wZug1oZ",
+  "baseline": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+  "sourceFingerprint": "source-fingerprint.json",
+  "locales": [
+    {
+      "locale": "en",
+      "result": "PASS",
+      "timezone": "Asia/Taipei",
+      "beforeOperatorInstant": "2028-02-28T15:59:58.000Z",
+      "boundaryInstant": "2028-02-28T16:00:00.000Z",
+      "before": {
+        "describedBy": "review-date-hint",
+        "invalid": "false",
+        "max": "2029-02-27",
+        "min": "2028-02-28",
+        "value": "2028-02-28"
+      },
+      "after": {
+        "describedBy": "review-date-hint review-dueDate-error",
+        "invalid": "true",
+        "max": "2029-02-28",
+        "min": "2028-02-29",
+        "value": "2028-02-28"
+      },
+      "beforeHint": "Optional. Enter a date from 2028-02-28 through 2029-02-27, or leave it blank.",
+      "afterHint": "Optional. Enter a date from 2028-02-29 through 2029-02-28, or leave it blank.",
+      "selectedDateRetained": true,
+      "sameProposalAndRoute": true,
+      "titleRationaleAssigneePreserved": true,
+      "focusPreserved": true,
+      "automaticGETsAtBoundary": [
+        {
+          "method": "GET",
+          "path": "/api/actions/internal-review/proposals/:proposalKey",
+          "startedAt": "2028-02-28T15:59:59.980Z",
+          "startedMonotonic": "5927494180222250",
+          "status": 200,
+          "finishedAt": "2028-02-28T16:00:00.217Z",
+          "finishedMonotonic": "5927494416929291"
+        }
+      ],
+      "noBrowserActionBetweenCaptures": "Only operator starts approved ticking application clock; next browser operation is read-only DOM observation. No reload, navigation, focus command or manual GET. Screenshot follows DOM observation.",
+      "clientRejectionScreenshot": "screenshots/en-previous-day-client-rejected.jpg",
+      "upperLimitRejectionScreenshot": "screenshots/en-plus366-client-rejected.jpg",
+      "validTodayReceipt": "browser/en-new-today-receipt.json",
+      "validPlus365Receipt": "browser/en-plus365-receipt.json",
+      "serverNegativeProof": "operator/en-http-date-negatives.json",
+      "afterServerResponseInstant": "2028-02-28T16:00:00.217Z"
+    },
+    {
+      "locale": "zh-TW",
+      "result": "PASS",
+      "timezone": "Asia/Taipei",
+      "beforeOperatorInstant": "2028-02-29T15:59:58.000Z",
+      "boundaryInstant": "2028-02-29T16:00:00.000Z",
+      "before": {
+        "describedBy": "review-date-hint",
+        "invalid": "false",
+        "max": "2029-02-28",
+        "min": "2028-02-29",
+        "value": "2028-02-29"
+      },
+      "after": {
+        "describedBy": "review-date-hint review-dueDate-error",
+        "invalid": "true",
+        "max": "2029-03-01",
+        "min": "2028-03-01",
+        "value": "2028-02-29"
+      },
+      "beforeHint": "非必填。請輸入 2028-02-29 至 2029-02-28 之間的日期，或保留空白。",
+      "afterHint": "非必填。請輸入 2028-03-01 至 2029-03-01 之間的日期，或保留空白。",
+      "selectedDateRetained": true,
+      "sameProposalAndRoute": true,
+      "titleRationaleAssigneePreserved": true,
+      "focusPreserved": true,
+      "automaticGETsAtBoundary": [
+        {
+          "method": "GET",
+          "path": "/api/actions/internal-review/proposals/:proposalKey",
+          "startedAt": "2028-02-29T15:59:59.946Z",
+          "startedMonotonic": "5927786635109291",
+          "status": 200,
+          "finishedAt": "2028-02-29T16:00:00.134Z",
+          "finishedMonotonic": "5927786822711500"
+        }
+      ],
+      "noBrowserActionBetweenCaptures": "Only operator starts approved ticking application clock; next browser operation is read-only DOM observation. No reload, navigation, focus command or manual GET. Screenshot follows DOM observation.",
+      "clientRejectionScreenshot": "screenshots/zh-previous-day-client-rejected.jpg",
+      "upperLimitRejectionScreenshot": "screenshots/zh-plus366-client-rejected.jpg",
+      "validTodayReceipt": "browser/zh-new-today-receipt.json",
+      "validPlus365Receipt": "browser/zh-plus365-receipt.json",
+      "serverNegativeProof": "operator/zh-TW-http-date-negatives.json",
+      "afterServerResponseInstant": "2028-02-29T16:00:00.134Z"
+    }
+  ],
+  "invalidDateNoWrites": "operator/database-verification.json",
+  "browserTimezoneQualification": "Native Chrome wall clock and timezone unchanged; CUA readonly scope does not expose Intl/performance. Independent component tests executed with actual default TZ America/Los_Angeles and asserted it; distinct server/browser calendar demonstrated with isolated2028 server and unchanged2026 host. No claim of native Chrome timezone emulation.",
+  "setupQualification": "Native date input displayed YYYY/MM/DD. Intermediate uncommitted/blank keyboard entries were not submitted and are not treated as product failures. Before each valid submission, native value and route draft were verified. English preview restart safely exposed refresh unavailable; retry preserved draft and restored visible due-date focus.",
+  "newProductFindings": [],
+  "repairCommit": "0b442bf23433fb7c288c66cb3b36329e1cb8df3d"
+}

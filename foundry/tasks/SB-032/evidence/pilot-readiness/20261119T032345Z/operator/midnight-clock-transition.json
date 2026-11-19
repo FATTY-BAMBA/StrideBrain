@@ -1,0 +1,17 @@
+{
+  "before": {
+    "instant": "2028-02-28T15:59:59.000Z",
+    "timezone": "Asia/Taipei",
+    "case": "pre-midnight-leap-day"
+  },
+  "after": {
+    "instant": "2028-02-28T16:00:00.000Z",
+    "timezone": "Asia/Taipei",
+    "case": "midnight-leap-day"
+  },
+  "realUtc": "2026-11-19T03:38:06.290605+00:00",
+  "hostClockChanged": false,
+  "browserClockChanged": false,
+  "databaseClockChanged": false,
+  "inFlightRequestDuringChange": false
+}

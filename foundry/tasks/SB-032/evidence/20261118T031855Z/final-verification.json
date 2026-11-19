@@ -1,0 +1,33 @@
+{
+  "runId": "20261118T031855Z",
+  "verifiedAt": "2026-11-18T03:49:56.747314+00:00",
+  "result": "PASS",
+  "productFilesCompared": 471,
+  "productFilesChanged": 0,
+  "changedTrackedPaths": [
+    "foundry/tasks/SB-032/known-limitations.md",
+    "foundry/tasks/SB-032/state.json"
+  ],
+  "newTaskRecords": [
+    "foundry/tasks/SB-032/computer-qa-report.json",
+    "foundry/tasks/SB-032/release-scorecard.md"
+  ],
+  "allChangesConfinedToSB032": true,
+  "indexClean": true,
+  "headUnchanged": "4df07c23a2896b5c13b96238f078d22941a55222",
+  "buildIdUnchanged": "2qJuXmIaTnV_wQ5diyp-K",
+  "originalSB029RecordedFilesUnchanged": 1577,
+  "originalSB029UntrackedFilesUnchanged": 678,
+  "scenarioCount": 22,
+  "acceptanceIdCount": 106,
+  "screenshots": 12,
+  "allFindingArtifactsExist": true,
+  "JSONParsing": "PASS",
+  "bootstrapProcessAbsent": true,
+  "operatorPort3001NoListener": true,
+  "previewProcessRetained": true,
+  "publicationPerformed": false,
+  "commitPerformed": false,
+  "mergePerformed": false,
+  "deploymentPerformed": false
+}

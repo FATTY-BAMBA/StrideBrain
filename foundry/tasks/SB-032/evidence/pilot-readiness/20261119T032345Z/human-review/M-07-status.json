@@ -1,0 +1,8 @@
+{
+  "status": "PACKAGE_PREPARED_PARTIAL_COVERAGE_HUMAN_REVIEW_REQUIRED",
+  "screenshotReferences": 89,
+  "humanApproval": null,
+  "missingStateCoverage": "Current conflict/restricted and unexecuted conditional states remain NOT_REVIEWED; final complete-journey signoff not available",
+  "knownProductDefect": "S9-F05",
+  "voiceOverRequiredForThisReview": false
+}

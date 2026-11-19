@@ -1,0 +1,152 @@
+{
+  "before": {
+    "at": "2026-11-18T09:53:07.516Z",
+    "dialogs": [
+      {
+        "name": "internal-review-heading",
+        "text": "檢視內部審查事項建立事項前，請先檢視資料依據與不確定性。English繁體中文關閉標題檢核信義旗艦店裝修第3版報價的進口石材與照明假設審查信義旗艦店裝修第3版報價的進口石材與照明假設確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料檢核信義旗艦店裝修第3版報價的進口石材與照明假設審查目的下次"
+      }
+    ],
+    "fields": [
+      {
+        "checked": false,
+        "id": "review-title",
+        "value": "VALIDATE"
+      },
+      {
+        "checked": false,
+        "id": "review-rationale",
+        "value": "REVIEW_NEXT"
+      },
+      {
+        "checked": false,
+        "id": "review-assignee",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      },
+      {
+        "checked": false,
+        "id": "review-dueDate",
+        "value": "2026-11-25"
+      },
+      {
+        "checked": false,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "focus": {
+      "id": "",
+      "tag": "BUTTON",
+      "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。"
+    },
+    "lang": "zh-Hant",
+    "shellLinks": [
+      {
+        "disabled": null,
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49&evidenceReturn=review-evidence-0",
+        "inert": false,
+        "text": "繁中"
+      },
+      {
+        "disabled": null,
+        "href": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49&evidenceReturn=review-evidence-0",
+        "inert": false,
+        "text": "EN"
+      },
+      {
+        "disabled": "false",
+        "href": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49&evidenceReturn=review-evidence-0",
+        "inert": false,
+        "text": "English"
+      },
+      {
+        "disabled": "false",
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49&evidenceReturn=review-evidence-0",
+        "inert": false,
+        "text": "繁體中文"
+      }
+    ],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49&evidenceReturn=review-evidence-0",
+    "viewport": {
+      "dpr": 1,
+      "height": 900,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  },
+  "after": {
+    "at": "2026-11-18T09:53:07.814Z",
+    "dialogs": [
+      {
+        "name": "internal-review-heading",
+        "text": "檢視內部審查事項建立事項前，請先檢視資料依據與不確定性。English繁體中文關閉標題檢核信義旗艦店裝修第3版報價的進口石材與照明假設審查信義旗艦店裝修第3版報價的進口石材與照明假設確認信義旗艦店裝修第3版報價之進口石材與照明假設的佐證資料檢核信義旗艦店裝修第3版報價的進口石材與照明假設審查目的下次"
+      }
+    ],
+    "fields": [
+      {
+        "checked": false,
+        "id": "review-title",
+        "value": "VALIDATE"
+      },
+      {
+        "checked": false,
+        "id": "review-rationale",
+        "value": "REVIEW_NEXT"
+      },
+      {
+        "checked": false,
+        "id": "review-assignee",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      },
+      {
+        "checked": false,
+        "id": "review-dueDate",
+        "value": "2026-11-25"
+      },
+      {
+        "checked": false,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "focus": {
+      "id": "",
+      "tag": "BUTTON",
+      "text": "進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 +18.4%。"
+    },
+    "lang": "zh-Hant",
+    "shellLinks": [
+      {
+        "disabled": null,
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49&evidenceReturn=review-evidence-0",
+        "inert": false,
+        "text": "繁中"
+      },
+      {
+        "disabled": null,
+        "href": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49&evidenceReturn=review-evidence-0",
+        "inert": false,
+        "text": "EN"
+      },
+      {
+        "disabled": "false",
+        "href": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49&evidenceReturn=review-evidence-0",
+        "inert": false,
+        "text": "English"
+      },
+      {
+        "disabled": "false",
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49&evidenceReturn=review-evidence-0",
+        "inert": false,
+        "text": "繁體中文"
+      }
+    ],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49&evidenceReturn=review-evidence-0",
+    "viewport": {
+      "dpr": 1,
+      "height": 900,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  }
+}

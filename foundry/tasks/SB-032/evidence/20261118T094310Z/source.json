@@ -1,0 +1,30 @@
+{
+  "runId": "20261118T094310Z",
+  "head": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+  "repairHead": "4628fb759c8bac23cf92eb15992259fb366a8d65",
+  "buildId": "jZBGrkhs4Ok9XriINHgub",
+  "productSourceIdenticalToRepair": true,
+  "CI": {
+    "id": 44278010987,
+    "result": "PASS",
+    "head": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+    "url": "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/44278010987"
+  },
+  "database": "Existing isolated synthetic browser QA database; immutable historical rows retained. Fresh run-owned session only.",
+  "scope": [
+    "one focused cancel-locale reproduction",
+    "affected geometry only",
+    "M-01",
+    "M-06",
+    "M-05",
+    "M-02",
+    "M-07"
+  ],
+  "securityPerformance": "NOT_STARTED_PENDING_ORDERED_GATES",
+  "historicalEvidence": "PRESERVE_BYTE_IDENTICAL",
+  "browser": {
+    "name": "Google Chrome",
+    "version": "157.0.8103.79",
+    "os": "26.2"
+  }
+}

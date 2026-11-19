@@ -1,0 +1,95 @@
+{
+  "item": "M-05",
+  "layer": "PURE_DOMAIN_POLICY_WITH_INJECTED_TIME",
+  "result": "PASS",
+  "scope": "Exact product functions with explicit Date arguments; no global/system clock mutation, browser or DB write assertion",
+  "cases": [
+    {
+      "id": "today",
+      "due": "2027-03-01",
+      "clock": "2027-03-01T00:00:00.000Z",
+      "localDay": "2027-03-01",
+      "bounds": {
+        "min": "2027-03-01",
+        "max": "2028-02-29"
+      },
+      "expected": true,
+      "observed": true
+    },
+    {
+      "id": "leap-day-and-plus365",
+      "due": "2028-02-29",
+      "clock": "2027-03-01T00:00:00.000Z",
+      "localDay": "2027-03-01",
+      "bounds": {
+        "min": "2027-03-01",
+        "max": "2028-02-29"
+      },
+      "expected": true,
+      "observed": true
+    },
+    {
+      "id": "yesterday",
+      "due": "2027-02-28",
+      "clock": "2027-03-01T00:00:00.000Z",
+      "localDay": "2027-03-01",
+      "bounds": {
+        "min": "2027-03-01",
+        "max": "2028-02-29"
+      },
+      "expected": false,
+      "observed": false
+    },
+    {
+      "id": "plus366",
+      "due": "2028-03-01",
+      "clock": "2027-03-01T00:00:00.000Z",
+      "localDay": "2027-03-01",
+      "bounds": {
+        "min": "2027-03-01",
+        "max": "2028-02-29"
+      },
+      "expected": false,
+      "observed": false
+    },
+    {
+      "id": "invalid-leap-day",
+      "due": "2027-02-29",
+      "clock": "2027-03-01T00:00:00.000Z",
+      "localDay": "2027-03-01",
+      "bounds": {
+        "min": "2027-03-01",
+        "max": "2028-02-29"
+      },
+      "expected": false,
+      "observed": false
+    },
+    {
+      "id": "before-Taipei-midnight",
+      "due": "2026-11-18",
+      "clock": "2026-11-18T15:59:59.999Z",
+      "localDay": "2026-11-18",
+      "bounds": {
+        "min": "2026-11-18",
+        "max": "2027-11-18"
+      },
+      "expected": true,
+      "observed": true
+    },
+    {
+      "id": "after-Taipei-midnight",
+      "due": "2026-11-18",
+      "clock": "2026-11-18T16:00:00.000Z",
+      "localDay": "2026-11-19",
+      "bounds": {
+        "min": "2026-11-19",
+        "max": "2027-11-19"
+      },
+      "expected": false,
+      "observed": false
+    }
+  ],
+  "defaultPlus7AcrossYear": "2028-01-05",
+  "databaseNoWriteProof": "REQUIRED_SEPARATELY",
+  "browserEndToEnd": "NOT_RUN"
+}

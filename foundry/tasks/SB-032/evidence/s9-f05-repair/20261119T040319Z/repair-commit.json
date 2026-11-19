@@ -1,0 +1,24 @@
+{
+  "commit": "0b442bf23433fb7c288c66cb3b36329e1cb8df3d",
+  "parent": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+  "branch": "build/sb-032-stage9-quality-hardening",
+  "files": [
+    "src/components/internal-review/internal-review-sheet.tsx",
+    "src/components/internal-review/use-review-date-policy.ts",
+    "src/modules/internal-review-experience/copy.ts",
+    "src/modules/internal-review/application/internal-review-service.ts",
+    "src/modules/internal-review/domain/contracts.ts",
+    "src/modules/internal-review/domain/proposal-policy.ts",
+    "tests/evidence-panel/modal-focus.test.ts",
+    "tests/internal-review-experience/date-policy.test.ts",
+    "tests/internal-review-experience/navigation-race.test.ts",
+    "tests/internal-review/policy-unit.test.ts",
+    "tests/internal-review/postgres-invariants.test.ts",
+    "tests/internal-review/service-unit.test.ts"
+  ],
+  "sourceAndTestsOnly": true,
+  "taskRecordsAndEvidence": "LOCAL_UNCOMMITTED",
+  "pushed": false,
+  "merged": false,
+  "deployed": false
+}

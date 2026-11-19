@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-19T03:16:37.850972+00:00",
+  "scope": "Read-only local-demo operational preflight; no authenticated hero journey or security/performance wave",
+  "head": "5af47b7c9b02af34506b89ea7b29bb84b1a2b1c4",
+  "buildId": "jZBGrkhs4Ok9XriINHgub",
+  "sessionCreation": false,
+  "hostClockChanged": false,
+  "http": {
+    "route": "/en/projects",
+    "authenticated": false,
+    "status": 200,
+    "bytes": 12579,
+    "html": true
+  },
+  "listener": "127.0.0.1:3000",
+  "qaOperatorStopped": true
+}

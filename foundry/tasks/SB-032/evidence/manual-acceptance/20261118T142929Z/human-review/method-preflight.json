@@ -1,0 +1,17 @@
+{
+  "M-05": {
+    "status": "REVIEW_GAP_IDENTIFIED",
+    "evidence": "Prior follow-up M-05-clock-method-review.md explicitly marks the process-clock candidate unapproved/unimplemented; independent-contract-review.md requires establishing live method before E2E closure.",
+    "next": "Establish and review a coherent isolated browser/server clock method before the date wave. No host clock changes or production bypass."
+  },
+  "M-06": {
+    "exactUnavailable": "Source confirms evidence-scope denial is checked before freshness. A temporary restriction of one synthetic evidence reference may provide the literal state; no mutation applied. Review bounded restoration before use.",
+    "existingDOMChecks": "Retained; do not unnecessarily repeat full matrix."
+  },
+  "M-02": {
+    "status": "NOT_TESTED",
+    "knownHistoricalModel": "iPhone16,1",
+    "knownHistoricalIOS": "26.5",
+    "safeAccess": "Needs phone-trusted local HTTPS, exact configured origin and Secure host-only cookie; no listener/trust/product changes made."
+  }
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "before": "en-yesterday-before",
+    "after": "en-yesterday-after",
+    "result": "PASS_ZERO_BUSINESS_WRITES",
+    "proposalNotConsumed": true,
+    "actionEvidenceStorage": "Action.evidenceReferenceIds/evidenceSnapshot; no separate ActionEvidence table exists in this schema"
+  },
+  {
+    "before": "en-yesterday-after",
+    "after": "en-plus366-after",
+    "result": "PASS_ZERO_BUSINESS_WRITES",
+    "proposalNotConsumed": true,
+    "actionEvidenceStorage": "Action.evidenceReferenceIds/evidenceSnapshot; no separate ActionEvidence table exists in this schema"
+  },
+  {
+    "before": "en-plus366-after",
+    "after": "en-malformed-after",
+    "result": "PASS_ZERO_BUSINESS_WRITES",
+    "proposalNotConsumed": true,
+    "actionEvidenceStorage": "Action.evidenceReferenceIds/evidenceSnapshot; no separate ActionEvidence table exists in this schema"
+  },
+  {
+    "before": "zh-invalid-before",
+    "after": "zh-yesterday-after",
+    "result": "PASS_ZERO_BUSINESS_WRITES",
+    "proposalNotConsumed": true,
+    "actionEvidenceStorage": "Action.evidenceReferenceIds/evidenceSnapshot; no separate ActionEvidence table exists in this schema"
+  },
+  {
+    "before": "zh-yesterday-after",
+    "after": "zh-plus366-after",
+    "result": "PASS_ZERO_BUSINESS_WRITES",
+    "proposalNotConsumed": true,
+    "actionEvidenceStorage": "Action.evidenceReferenceIds/evidenceSnapshot; no separate ActionEvidence table exists in this schema"
+  },
+  {
+    "before": "zh-plus366-after",
+    "after": "zh-malformed-after",
+    "result": "PASS_ZERO_BUSINESS_WRITES",
+    "proposalNotConsumed": true,
+    "actionEvidenceStorage": "Action.evidenceReferenceIds/evidenceSnapshot; no separate ActionEvidence table exists in this schema"
+  },
+  {
+    "before": "midnight-before",
+    "after": "midnight-invalid-after",
+    "result": "PASS_ZERO_BUSINESS_WRITES",
+    "proposalNotConsumed": true,
+    "actionEvidenceStorage": "Action.evidenceReferenceIds/evidenceSnapshot; no separate ActionEvidence table exists in this schema"
+  },
+  {
+    "before": "zh-midnight-before",
+    "after": "zh-midnight-invalid-after",
+    "result": "PASS_ZERO_BUSINESS_WRITES",
+    "proposalNotConsumed": true,
+    "actionEvidenceStorage": "Action.evidenceReferenceIds/evidenceSnapshot; no separate ActionEvidence table exists in this schema"
+  }
+]

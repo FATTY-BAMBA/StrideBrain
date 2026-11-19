@@ -1,0 +1,8 @@
+{
+  "iPhone": "USER_AVAILABLE",
+  "Android": "NOT_CONFIRMED_AVAILABLE",
+  "VoiceOverListening": "USER_AVAILABLE_WHEN_PROMPTED",
+  "humanTaiwanChineseReviewer": "NOT_YET_IDENTIFIED",
+  "physicalDeviceResult": "NOT_RUN",
+  "screenReaderResult": "NOT_RUN"
+}

@@ -1,0 +1,136 @@
+{
+  "before": {
+    "at": "2026-11-18T09:51:06.223Z",
+    "dialogs": [
+      {
+        "name": "internal-review-heading",
+        "text": "檢視內部審查事項建立事項前，請先檢視資料依據與不確定性。English繁體中文關閉請檢查標示的欄位請先檢查標示的欄位，再確認建立。參考編號: 8c47144b-87a7-4bb5-a1ef-01b474ba98a3標題檢核信義旗艦店裝修第3版報價的進口石材與照明假設審查信義旗艦店裝修第3版報價的進口"
+      }
+    ],
+    "fields": [
+      {
+        "checked": false,
+        "id": "review-title",
+        "value": "VALIDATE"
+      },
+      {
+        "checked": false,
+        "id": "review-rationale",
+        "value": "REVIEW_NEXT"
+      },
+      {
+        "checked": false,
+        "id": "review-assignee",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      },
+      {
+        "checked": false,
+        "id": "review-dueDate",
+        "value": "2026-11-25"
+      },
+      {
+        "checked": true,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "focus": {
+      "id": "review-confirmation",
+      "tag": "INPUT",
+      "text": ""
+    },
+    "lang": "zh-Hant",
+    "shellLinks": [
+      {
+        "disabled": null,
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49",
+        "inert": false,
+        "text": "繁中"
+      },
+      {
+        "disabled": null,
+        "href": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49",
+        "inert": false,
+        "text": "EN"
+      },
+      {
+        "disabled": "false",
+        "href": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49",
+        "inert": false,
+        "text": "English"
+      },
+      {
+        "disabled": "false",
+        "href": "/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49",
+        "inert": false,
+        "text": "繁體中文"
+      }
+    ],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49",
+    "viewport": {
+      "dpr": 1,
+      "height": 900,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  },
+  "after": {
+    "alerts": [
+      {
+        "id": "review-error-summary",
+        "text": "未能完成審查確認依您目前的權限，無法查看或建立此事項。參考編號: 769e94c1-b5bb-43e9-bf2b-d0a82daf2672重新比較"
+      }
+    ],
+    "fields": [
+      {
+        "checked": false,
+        "id": "review-title",
+        "value": "VALIDATE"
+      },
+      {
+        "checked": false,
+        "id": "review-rationale",
+        "value": "REVIEW_NEXT"
+      },
+      {
+        "checked": false,
+        "id": "review-assignee",
+        "value": "assignee_e1078151219336a0529d3fa95332a60f"
+      },
+      {
+        "checked": false,
+        "id": "review-dueDate",
+        "value": "2026-11-25"
+      },
+      {
+        "checked": true,
+        "id": "review-confirmation",
+        "value": "on"
+      }
+    ],
+    "focus": {
+      "id": "review-error-summary",
+      "insideDialog": true,
+      "rect": {
+        "height": 170.453125,
+        "width": 640,
+        "x": 780,
+        "y": 147.1953125
+      },
+      "tag": "DIV",
+      "text": "未能完成審查確認依您目前的權限，無法查看或建立此事項。參考編號: 769e94c1-b5bb-43e9-bf2b-d0a82daf2672重新比較",
+      "visible": true
+    },
+    "formDescription": "review-error-summary",
+    "lang": "zh-Hant",
+    "nodes": [
+      {
+        "exists": true,
+        "id": "review-error-summary",
+        "role": "alert",
+        "text": "未能完成審查確認依您目前的權限，無法查看或建立此事項。參考編號: 769e94c1-b5bb-43e9-bf2b-d0a82daf2672重新比較"
+      }
+    ],
+    "url": "http://localhost:3000/zh-TW/projects/PRJ-XINYI-026/compare?run=cmprun_2a334a3a-2cbf-4da7-bae3-e0507b815d5a&economics=econrun_956ab954-0ab4-4db8-afd4-fb49e2124ec9&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_20204eee-d05f-4513-8740-c38059f5df49"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "browser": "Google Chrome",
+  "version": "157.0.8103.79",
+  "host": "macOS",
+  "cssViewport": {
+    "width": 2056,
+    "height": 1234
+  },
+  "devicePixelRatio": 2,
+  "browserClockChanged": false,
+  "systemClockChanged": false,
+  "zoomOrMotionChanged": false,
+  "tabClosedBeforeRevocation": true,
+  "geometryQualification": "Actual calibrated before/after boundary traces and screenshots are 2056x1234 CSS px at DPR2. Initial English setup capture was 2056x1290; it is not the measured midnight-test viewport. See viewport-observations.json."
+}

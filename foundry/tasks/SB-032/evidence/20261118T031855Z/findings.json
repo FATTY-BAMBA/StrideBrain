@@ -1,0 +1,139 @@
+[
+  {
+    "id": "S9-F01",
+    "severity": "P2",
+    "requiredPath": true,
+    "status": "OPEN",
+    "scenario": "S9-02",
+    "acceptanceCriteria": [
+      "S9-02 Home → Projects → Xinyi Workspace → comparable intelligence",
+      "PUX-015 complete hero within ten minutes",
+      "I18N-002 critical hero flow passes in both locales"
+    ],
+    "title": "Projects provides no entry to an authorized workspace",
+    "head": "4df07c23a2896b5c13b96238f078d22941a55222",
+    "buildId": "2qJuXmIaTnV_wQ5diyp-K",
+    "persona": "Fresh server-issued synthetic Mei assigned PM",
+    "browser": "Codex in-app browser",
+    "locales": [
+      "en",
+      "zh-TW"
+    ],
+    "reproduction": [
+      "Start the exact fresh production build and issue an authorized synthetic Mei session.",
+      "The trusted session landing opens the existing Xinyi workspace successfully; do not count this direct landing as the hero entry path.",
+      "Use Home navigation, then Projects.",
+      "Observe the settled Projects page; inspect the main content and attempt to continue to Xinyi using UI controls.",
+      "Repeat the Projects observation in both locales at all four required viewports."
+    ],
+    "expected": "A localized, keyboard-operable way to enter an already-authorized workspace from Projects, preserving tenant/capability/assignment checks. A full project directory is not required.",
+    "observed": "Projects displays This area is not active yet / 此區域尚未啟用 and has no main-content link or button to a workspace. Home → Projects → Xinyi cannot continue through the UI.",
+    "evidence": [
+      {
+        "locale": "en",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "screenshot": "screenshots/finding-projects-no-workspace-entry-en-desktop.jpg",
+        "DOM": "observations/finding-projects-no-workspace-entry-en-desktop.txt",
+        "metadata": "observations/finding-projects-no-workspace-entry-en-desktop.json",
+        "observed": "Projects placeholder; no workspace navigation in main content",
+        "outcome": "FAIL_ENTRY_BOUNDARY"
+      },
+      {
+        "locale": "en",
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "screenshot": "screenshots/finding-projects-entry-en-tablet.jpg",
+        "DOM": "observations/finding-projects-entry-en-tablet.txt",
+        "metadata": "observations/finding-projects-entry-en-tablet.json",
+        "observed": "Projects placeholder; no workspace navigation in main content",
+        "outcome": "FAIL_ENTRY_BOUNDARY"
+      },
+      {
+        "locale": "en",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "screenshot": "screenshots/finding-projects-entry-en-mobile.jpg",
+        "DOM": "observations/finding-projects-entry-en-mobile.txt",
+        "metadata": "observations/finding-projects-entry-en-mobile.json",
+        "observed": "Projects placeholder; no workspace navigation in main content",
+        "outcome": "FAIL_ENTRY_BOUNDARY"
+      },
+      {
+        "locale": "en",
+        "viewport": {
+          "width": 320,
+          "height": 740
+        },
+        "screenshot": "screenshots/finding-projects-entry-en-narrow-mobile.jpg",
+        "DOM": "observations/finding-projects-entry-en-narrow-mobile.txt",
+        "metadata": "observations/finding-projects-entry-en-narrow-mobile.json",
+        "observed": "Projects placeholder; no workspace navigation in main content",
+        "outcome": "FAIL_ENTRY_BOUNDARY"
+      },
+      {
+        "locale": "zh-TW",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "screenshot": "screenshots/finding-projects-no-workspace-entry-zh-desktop-settled.jpg",
+        "DOM": "observations/finding-projects-no-workspace-entry-zh-desktop-settled.txt",
+        "metadata": "observations/finding-projects-no-workspace-entry-zh-desktop-settled.json",
+        "observed": "Projects placeholder; no workspace navigation in main content",
+        "outcome": "FAIL_ENTRY_BOUNDARY"
+      },
+      {
+        "locale": "zh-TW",
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "screenshot": "screenshots/finding-projects-entry-zh-TW-tablet.jpg",
+        "DOM": "observations/finding-projects-entry-zh-TW-tablet.txt",
+        "metadata": "observations/finding-projects-entry-zh-TW-tablet.json",
+        "observed": "Projects placeholder; no workspace navigation in main content",
+        "outcome": "FAIL_ENTRY_BOUNDARY"
+      },
+      {
+        "locale": "zh-TW",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "screenshot": "screenshots/finding-projects-entry-zh-TW-mobile.jpg",
+        "DOM": "observations/finding-projects-entry-zh-TW-mobile.txt",
+        "metadata": "observations/finding-projects-entry-zh-TW-mobile.json",
+        "observed": "Projects placeholder; no workspace navigation in main content",
+        "outcome": "FAIL_ENTRY_BOUNDARY"
+      },
+      {
+        "locale": "zh-TW",
+        "viewport": {
+          "width": 320,
+          "height": 740
+        },
+        "screenshot": "screenshots/finding-projects-entry-zh-TW-narrow-mobile.jpg",
+        "DOM": "observations/finding-projects-entry-zh-TW-narrow-mobile.txt",
+        "metadata": "observations/finding-projects-entry-zh-TW-narrow-mobile.json",
+        "observed": "Projects placeholder; no workspace navigation in main content",
+        "outcome": "FAIL_ENTRY_BOUNDARY"
+      }
+    ],
+    "sourceCorroboration": [
+      "src/app/[locale]/projects/page.tsx: static FoundationPage and unavailable placeholder",
+      "tests/projects/project-workspace-entry.test.ts: direct workspace route and contextual comparison link only; global Projects entry not covered"
+    ],
+    "classification": "Independent reviewer confirmed required-path P2; newly observed pre-existing omission, not an F-08 regression. General limited-shell allowance does not waive the specific accepted hero entry requirement.",
+    "independentReview": "independent-finding-classification.md",
+    "impact": "Affected hero and subsequent browser mutation/security waves paused. No direct-route bypass counted as acceptance.",
+    "repairBoundary": "Review safe candidate selection first; then a minimal localized authorized workspace entry and regression coverage. Existing repository port exposes authorized lookup by business key, not an authorized project-list operation. No unconditional fixture-only link, broad directory/CRUD/search, permission expansion, schema or policy change.",
+    "productRepairPerformed": false
+  }
+]

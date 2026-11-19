@@ -1,0 +1,18 @@
+{
+  "at": "2026-11-18T14:44:25.019Z",
+  "dialog": [
+    {
+      "describedBy": "internal-review-description",
+      "description": "Review the evidence and uncertainty before creating this action.",
+      "label": "Review internal review action",
+      "labelledBy": "internal-review-heading"
+    }
+  ],
+  "focus": {
+    "id": "main-content",
+    "tag": "MAIN",
+    "text": "OverviewCompareCommercialEvidenceActionsCOMPARABLE PROJECT INTELLIGENCEHistorical precedents for Xinyi Flagship RenovationStrideBrain ranks authorized historical projects with deterministic factors, k"
+  },
+  "lang": "en",
+  "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/compare?run=cmprun_ac41e9da-cd83-41bc-a66c-7961021d4660&economics=econrun_af09a09a-f4d5-4438-ae67-867fdce04bb4&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&proposal=proposal_e5c81c1f-9b9c-4fa5-b19b-084148c3369f"
+}

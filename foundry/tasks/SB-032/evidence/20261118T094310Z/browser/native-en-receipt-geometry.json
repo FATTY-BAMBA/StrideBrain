@@ -1,0 +1,100 @@
+{
+  "before": {
+    "at": "2026-11-18T09:54:26.594Z",
+    "dialogs": [
+      {
+        "name": "internal-review-heading",
+        "text": "Internal review action createdThis receipt records the action saved to the project.English繁體中文CloseReview imported-stone and lighting assumptions for "
+      }
+    ],
+    "fields": [],
+    "focus": {
+      "id": "internal-review-heading",
+      "tag": "H2",
+      "text": "Internal review action created"
+    },
+    "lang": "en",
+    "shellLinks": [
+      {
+        "disabled": null,
+        "href": "/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "inert": false,
+        "text": "繁中"
+      },
+      {
+        "disabled": null,
+        "href": "/en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "inert": false,
+        "text": "EN"
+      },
+      {
+        "disabled": "false",
+        "href": "/en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "inert": false,
+        "text": "English"
+      },
+      {
+        "disabled": "false",
+        "href": "/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "inert": false,
+        "text": "繁體中文"
+      }
+    ],
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "scrollWidth": 2056,
+      "width": 2056
+    }
+  },
+  "after": {
+    "at": "2026-11-18T09:54:26.866Z",
+    "dialogs": [
+      {
+        "name": "internal-review-heading",
+        "text": "Internal review action createdThis receipt records the action saved to the project.English繁體中文CloseReview imported-stone and lighting assumptions for "
+      }
+    ],
+    "fields": [],
+    "focus": {
+      "id": "internal-review-heading",
+      "tag": "H2",
+      "text": "Internal review action created"
+    },
+    "lang": "en",
+    "shellLinks": [
+      {
+        "disabled": null,
+        "href": "/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "inert": false,
+        "text": "繁中"
+      },
+      {
+        "disabled": null,
+        "href": "/en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "inert": false,
+        "text": "EN"
+      },
+      {
+        "disabled": "false",
+        "href": "/en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "inert": false,
+        "text": "English"
+      },
+      {
+        "disabled": "false",
+        "href": "/zh-TW/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+        "inert": false,
+        "text": "繁體中文"
+      }
+    ],
+    "url": "http://localhost:3000/en/projects/PRJ-XINYI-026/actions?run=cmprun_758f9cdf-a26f-4c19-a95f-44cca63632e4&economics=econrun_1b3b79be-ae62-4149-aad6-18a3ab4e4024&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023&evidenceReturn=evidence-mobile-LIGHTING_ELECTRICAL-ACTUAL-__ACTIVE_PROJECT__&action=action_2f06fd5f-8e28-4b66-ad83-050eb4c38feb",
+    "viewport": {
+      "dpr": 2,
+      "height": 1234,
+      "scrollWidth": 2056,
+      "width": 2056
+    }
+  }
+}

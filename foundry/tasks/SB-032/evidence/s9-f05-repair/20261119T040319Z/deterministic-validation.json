@@ -1,0 +1,79 @@
+{
+  "result": "PASS",
+  "fullSuite": {
+    "tests": 686,
+    "files": 71,
+    "command": {
+      "label": "full-suite-final",
+      "exitCode": 0,
+      "durationSeconds": 93.31
+    }
+  },
+  "independentReviewSuite": {
+    "tests": 185,
+    "files": 5,
+    "defaultTimezone": "America/Los_Angeles",
+    "result": "PASS"
+  },
+  "localization": {
+    "tests": 37,
+    "files": 5,
+    "command": {
+      "label": "final-localization",
+      "exitCode": 0,
+      "durationSeconds": 1.125
+    }
+  },
+  "postgresAdversarial": "Included and PASS in full PostgreSQL-enabled suite; two new bilingual midnight transactional regressions",
+  "format": {
+    "label": "final-formatting",
+    "exitCode": 0,
+    "durationSeconds": 2.728
+  },
+  "lint": {
+    "label": "final-lint",
+    "exitCode": 0,
+    "durationSeconds": 4.011
+  },
+  "lintWarning": "One pre-existing Prisma config default-export warning, zero new warnings/errors",
+  "typeScript": {
+    "label": "final-typecheck",
+    "exitCode": 0,
+    "durationSeconds": 2.272
+  },
+  "prismaValidate": {
+    "label": "prisma-validate",
+    "exitCode": 0,
+    "durationSeconds": 1.952
+  },
+  "prismaGenerate": {
+    "label": "prisma-generate",
+    "exitCode": 0,
+    "durationSeconds": 2.275
+  },
+  "migrations": 9,
+  "cleanMigrations": {
+    "label": "nine-clean-migrations",
+    "exitCode": 0,
+    "durationSeconds": 2.298
+  },
+  "repeatedSeedAndSQL": "Two complete PASS rounds on clean new database before QA; see commands.jsonl",
+  "build": {
+    "label": "production-build",
+    "exitCode": 0,
+    "durationSeconds": 4.517
+  },
+  "BUILD_ID": "tJ3t0INa7eLqU4wZug1oZ",
+  "productionAudit": {
+    "vulnerabilities": 0,
+    "command": {
+      "label": "production-audit",
+      "exitCode": 0,
+      "durationSeconds": 0.607
+    }
+  },
+  "exactHeadGitHubCI": "NOT_RUN_LOCAL_ONLY",
+  "postQAAdditionalSQL": "Retained supplemental failure of clean-fixture exact-session-count assertion; qualified separately in operator/closure-sql-qualification.md, not a deterministic clean-gate failure.",
+  "testedHead": "0b442bf23433fb7c288c66cb3b36329e1cb8df3d",
+  "runId": "20261119T040319Z"
+}

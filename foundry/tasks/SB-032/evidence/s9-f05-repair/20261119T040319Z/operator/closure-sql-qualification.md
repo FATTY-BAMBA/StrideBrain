@@ -1,0 +1,5 @@
+# Closure SQL scope qualification
+
+The complete clean-fixture SQL verification passed twice before QA. A supplemental post-QA invocation reached verify-stage2-authorization.sql and failed its exact total-session assertion: expected 2 fixture sessions, observed 6 rows (2 original fixtures, 2 deterministic-suite sessions, 2 browser sessions). This verifier describes a pristine fixture, not a database retaining QA history. The failed command remains recorded; it is not labeled PASS. No rows were deleted to satisfy it.
+
+All four run-owned nonfixture sessions were revoked. Original fixture rows, nine migration checksums and four immutable-history guards were independently compared with the pre-browser snapshot and preserved. Invalid browser/API requests leave all business-row hashes unchanged; four valid synthetic actions/audits/receipts are intentionally retained. See database-verification.json and session-revocation.json. No product or policy change was made for this operator-only scope mismatch.

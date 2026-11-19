@@ -1,0 +1,9 @@
+
+ RUN  v4.1.10 [LOCAL_PATH]
+
+
+ Test Files  2 passed (2)
+      Tests  77 passed (77)
+   Start at  20:13:00
+   Duration  1.05s (transform 111ms, setup 0ms, import 166ms, tests 359ms, environment 497ms)
+

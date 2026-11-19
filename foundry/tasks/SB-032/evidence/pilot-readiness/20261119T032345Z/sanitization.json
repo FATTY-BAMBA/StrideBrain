@@ -1,0 +1,188 @@
+{
+  "result": "PASS_AUTOMATED_SANITIZATION",
+  "scope": "All current-run text and six current task records; known runtime values; screenshot metadata and available English OCR; clean-build public static bundle known-secret scan",
+  "textFilesScanned": 160,
+  "screenshots": 25,
+  "imageChecks": [
+    {
+      "file": "screenshots/zh-initial-bounds.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/en-first-submit-settled.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/en-plus366-ready.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/zh-native-leap-valid-before-key.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/en-initial-bounds.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/zh-plus366-ready.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/midnight-after-en-rejection.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/zh-plus366-rejected.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/en-yesterday-rejected.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/en-today-receipt.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/midnight-after-zh-rejection.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/zh-leap-native-committed.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/en-yesterday-after-blur.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/zh-yesterday-ready.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/en-date-native-key-change.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/en-today-ready.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/midnight-before-en.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/en-plus366-rejected.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/en-yesterday-after-fill.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/zh-leap-plus365-receipt.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/midnight-before-zh.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/zh-native-impossible-date-ready.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/zh-leap-plus365-ready.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/zh-yesterday-rejected.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    },
+    {
+      "file": "screenshots/en-yesterday-native-committed.jpg",
+      "extendedMetadataAbsent": true,
+      "ocrExit": 0,
+      "sensitivePatternsFound": [],
+      "knownSecretFound": false
+    }
+  ],
+  "findings": [],
+  "publicClientKnownSecretFindings": [],
+  "fullIndependentVisualReview": "NOT_COMPLETED; key date/rejection screens inspected; no full screenshot acceptance or publication claimed",
+  "credentialValuesPrinted": false,
+  "publication": "NOT_PERFORMED"
+}

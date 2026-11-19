@@ -1,0 +1,48 @@
+- alert
+- link "跳至主要內容":
+  - /url: "#main-content"
+- complementary:
+  - generic "StrideBrain PRIMESTRIDE AI":
+    - strong: StrideBrain
+    - generic: PRIMESTRIDE AI
+  - navigation "專案":
+    - link "首頁":
+      - /url: /zh-TW
+      - generic: "01"
+      - generic: 首頁
+    - link "專案":
+      - /url: /zh-TW/projects
+      - generic: "02"
+      - generic: 專案
+    - link "知識":
+      - /url: /zh-TW/knowledge
+      - generic: "03"
+      - generic: 知識
+    - link "StrideBrain":
+      - /url: /zh-TW/stridebrain
+      - generic: "04"
+      - generic: StrideBrain
+    - link "設定":
+      - /url: /zh-TW/settings
+      - generic: "05"
+      - generic: 設定
+- banner:
+  - generic: ●
+  - text: 受控虛構資料示範
+  - generic "繁中 / EN":
+    - link "繁中":
+      - /url: /zh-TW/projects
+    - generic: /
+    - link "EN":
+      - /url: /en/projects
+- main:
+  - paragraph: 專案工作區
+  - heading "專案是 StrideBrain 的營運核心。" [level=1]
+  - paragraph: 受控示範已連接禾序空間設計的虛構專案資料、報價、預估、已核對實際成本、供應商與資料依據。第一個完整流程從信義旗艦店專案開始。
+  - status:
+    - generic: P
+    - strong: 此區域尚未啟用
+    - paragraph: 此版本已建立雙語專案工作區、權限治理、可解釋的歷史專案排序，以及報價與實際成本分開的商務比較。所有資料皆為禾序空間設計的虛構示範資料。
+- contentinfo:
+  - generic: 僅使用虛構示範資料 · 無真實客戶資料
+  - generic: 尚未切換正式示範網域

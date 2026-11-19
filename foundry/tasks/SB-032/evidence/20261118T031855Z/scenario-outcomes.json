@@ -1,0 +1,329 @@
+{
+  "scope": "Full 22-item plan disposition; only authorized execution wave attempted. Blocked items are not failures or passes.",
+  "counts": {
+    "PASS": 1,
+    "FAIL": 1,
+    "BLOCKED": 14,
+    "PARTIAL": 5,
+    "NOT_RUN": 1
+  },
+  "scenarios": [
+    {
+      "id": "S9-01",
+      "title": "Exact-candidate setup and production start",
+      "status": "PASS",
+      "reason": "Fresh isolated runtime; complete deterministic sequence and production start smoke pass.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "CI matrix",
+        "REL-008",
+        "REL-009",
+        "REL-010"
+      ],
+      "evidence": [
+        "deterministic-results.json",
+        "commands.jsonl",
+        "BUILD_ID.txt"
+      ]
+    },
+    {
+      "id": "S9-02",
+      "title": "Complete bilingual hero and five-second comprehension",
+      "status": "FAIL",
+      "reason": "Required Home → Projects → Xinyi journey has no Projects workspace entry. See S9-F01.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "PUX-001..015",
+        "I18N-002",
+        "I18N-005"
+      ],
+      "evidence": [
+        "findings.json",
+        "independent-finding-classification.md"
+      ]
+    },
+    {
+      "id": "S9-03",
+      "title": "Ranking, factors and selection",
+      "status": "BLOCKED",
+      "reason": "Not executed after required hero-entry failure S9-F01; deterministic coverage is not substituted for scenario/browser acceptance.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "CPI-001..010",
+        "PUX-006",
+        "PUX-007",
+        "PUX-008"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-04",
+      "title": "Economics authority, abstention and evidence meaning",
+      "status": "BLOCKED",
+      "reason": "Not executed after required hero-entry failure S9-F01; deterministic coverage is not substituted for scenario/browser acceptance.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "AUTH-001..012",
+        "EVD-001..012",
+        "PUX-009..012"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-05",
+      "title": "Draft and navigation persistence",
+      "status": "BLOCKED",
+      "reason": "Not executed after required hero-entry failure S9-F01; deterministic coverage is not substituted for scenario/browser acceptance.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "ACT-001",
+        "ACT-002",
+        "I18N-006",
+        "I18N-007",
+        "REL-005"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-06",
+      "title": "Confirmation, receipt and interrupted retry",
+      "status": "BLOCKED",
+      "reason": "Not executed after required hero-entry failure S9-F01; deterministic coverage is not substituted for scenario/browser acceptance.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "ACT-003..005",
+        "ACT-011",
+        "ACT-012",
+        "REL-007",
+        "PUX-014"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-07",
+      "title": "Keyboard and automated accessibility",
+      "status": "BLOCKED",
+      "reason": "Not executed after required hero-entry failure S9-F01; deterministic coverage is not substituted for scenario/browser acceptance.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "A11Y-001..010"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-08",
+      "title": "Actual zoom and actual OS reduced-motion regression",
+      "status": "BLOCKED",
+      "reason": "Not executed after required hero-entry failure S9-F01; deterministic coverage is not substituted for scenario/browser acceptance.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "A11Y-001",
+        "A11Y-002",
+        "A11Y-006",
+        "A11Y-010"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-09",
+      "title": "Actual speech and pending announcements",
+      "status": "BLOCKED",
+      "reason": "Not executed after required hero-entry failure S9-F01; deterministic coverage is not substituted for scenario/browser acceptance.",
+      "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "acceptance": [
+        "A11Y-009",
+        "A11Y-007",
+        "ACT-012"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-10",
+      "title": "Physical mobile native input",
+      "status": "BLOCKED",
+      "reason": "Not executed after required hero-entry failure S9-F01; deterministic coverage is not substituted for scenario/browser acceptance.",
+      "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "acceptance": [
+        "A11Y-001",
+        "A11Y-006",
+        "A11Y-007",
+        "A11Y-010",
+        "I18N-007",
+        "I18N-008"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-11",
+      "title": "Live generic error description association",
+      "status": "BLOCKED",
+      "reason": "Not executed after required hero-entry failure S9-F01; deterministic coverage is not substituted for scenario/browser acceptance.",
+      "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "acceptance": [
+        "A11Y-007",
+        "A11Y-009",
+        "ACT-006..009",
+        "ACT-012"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-12",
+      "title": "Reviewed visual baseline grid",
+      "status": "BLOCKED",
+      "reason": "Not executed after required hero-entry failure S9-F01; deterministic coverage is not substituted for scenario/browser acceptance.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "PUX-003..014",
+        "I18N-003..005",
+        "I18N-008",
+        "I18N-009",
+        "A11Y-002",
+        "A11Y-008",
+        "A11Y-010"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-13",
+      "title": "Canonical evidence precision and groundedness report",
+      "status": "BLOCKED",
+      "reason": "Not executed after required hero-entry failure S9-F01; deterministic coverage is not substituted for scenario/browser acceptance.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "CPI targets",
+        "AUTH hero tolerances",
+        "EVD targets",
+        "Quality Constitution quantitative gates"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-14",
+      "title": "Authorization and tenant non-disclosure",
+      "status": "BLOCKED",
+      "reason": "Not executed after required hero-entry failure S9-F01; deterministic coverage is not substituted for scenario/browser acceptance.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "SEC-001..016",
+        "AUTH-011",
+        "EVD-008",
+        "EVD-011",
+        "EVD-012"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-15",
+      "title": "Freshness, transactional failures and reliability",
+      "status": "BLOCKED",
+      "reason": "Not executed after required hero-entry failure S9-F01; deterministic coverage is not substituted for scenario/browser acceptance.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "ACT-004..010",
+        "REL-001..010",
+        "SEC-013",
+        "PUX-013"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-16",
+      "title": "Performance and query-plan benchmark",
+      "status": "BLOCKED",
+      "reason": "Not executed after required hero-entry failure S9-F01; deterministic coverage is not substituted for scenario/browser acceptance.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "Performance matrix",
+        "Stage8 stricter server budgets"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-17",
+      "title": "Leap day and Taipei midnight",
+      "status": "PARTIAL",
+      "reason": "Domain/date lower layers pass; live UI/server clock boundary remains unverified.",
+      "gate": "STAGE_9_HARDENING",
+      "acceptance": [
+        "ACT-002",
+        "ACT-006",
+        "ACT-012",
+        "I18N-005"
+      ],
+      "evidence": [
+        "date-boundary-results.json"
+      ]
+    },
+    {
+      "id": "S9-18",
+      "title": "Independent Taiwan Chinese language review",
+      "status": "PARTIAL",
+      "reason": "Static human-language review package prepared; complete hero screenshots and human attestation missing.",
+      "gate": "BLOCKING_BEFORE_DEMO_RELEASE",
+      "acceptance": [
+        "I18N-001..009",
+        "PUX-001",
+        "AUTH-001..012"
+      ],
+      "evidence": [
+        "manual-gates.json"
+      ]
+    },
+    {
+      "id": "S9-19",
+      "title": "Local production portability and environment preflight",
+      "status": "PARTIAL",
+      "reason": "Local build/start/environment identity verified; restart/receipt/unauthorized-state portability smoke not completed.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "CI matrix",
+        "SEC-015",
+        "SEC-016",
+        "REL-010"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-20",
+      "title": "Actual isolated preview smoke — deferred",
+      "status": "NOT_RUN",
+      "reason": "Deployment not authorized; no Vercel/DNS changes.",
+      "gate": "BLOCKING_RELEASE_NOT_AUTHORIZED",
+      "acceptance": [
+        "Deployment/release matrix",
+        "Stage9 exact preview exit"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S9-21",
+      "title": "Rollback, containment, reset and cleanup",
+      "status": "PARTIAL",
+      "reason": "This run cleanup and fixture/history integrity pass; rollback/restore/containment rehearsal not executed.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "REL-008",
+        "REL-009",
+        "ACT-004",
+        "ACT-010",
+        "Stage9 recovery"
+      ],
+      "evidence": [
+        "cleanup-integrity.json"
+      ]
+    },
+    {
+      "id": "S9-22",
+      "title": "Independent synthesis and release package",
+      "status": "PARTIAL",
+      "reason": "Wave evidence, independent defect classification and sanitization completed; full independent release synthesis remains outstanding.",
+      "gate": "BLOCKING_STAGE_9",
+      "acceptance": [
+        "All blocking matrix requirements",
+        "Quality Constitution release evidence"
+      ],
+      "evidence": []
+    }
+  ]
+}

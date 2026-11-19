@@ -1,0 +1,8 @@
+{
+  "verdict": "PASS",
+  "scope": "Private isolated M-05 clock and passive request observer; no product outcome claimed",
+  "files": {
+    "clock.mjs": "f10de9bd414ab02b40230a6c59b13929e322c3278083aca22756d254d89a0e28",
+    "set-clock.mjs": "0653fb173f16d0b8d7cfa0fbeb07c948fd33a9b4834bde54300fe84c20628ec6"
+  }
+}

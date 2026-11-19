@@ -1,0 +1,23 @@
+{
+  "currentPrivateIPv4": null,
+  "interface": "NOT_CONFIRMED",
+  "proposedURL": "https://<verified-private-LAN-address>:8443",
+  "listenerOpened": false,
+  "liveAccessValidated": false,
+  "exposureScope": "Proposed single private interface only; no 0.0.0.0 binding, router change, public tunnel, DNS or deployment",
+  "securityRequirements": [
+    "Phone-trusted TLS certificate matching exact IP/hostname",
+    "Secure HttpOnly host-only Path=/ SameSite=Lax cookie retained",
+    "Exact STRIDEBRAIN_APP_ORIGIN equals browser Origin and server Request URL",
+    "Same-origin one-use login; no CORS relaxation",
+    "Database/operator management stays loopback-only",
+    "Verify trusted shared LAN and paired phone before opening listener"
+  ],
+  "currentBlockers": [
+    "No iPhone detected by current permitted device inventory",
+    "Phone-trusted TLS/session route not configured or exercised",
+    "S9-F05 required-path P2 blocks later acceptance waves"
+  ],
+  "productSourceChangeCurrentlyJustifiedForLAN": false,
+  "plainHttpPrivateIPAccepted": false
+}
