@@ -1,0 +1,16 @@
+{
+  "identifier": "SB034-FINAL-20261119",
+  "database": "stridebrain_sb034_ux_20261119",
+  "parentEnvironment": "SB034-AUTH-20261119",
+  "container": "stridebrain-sb034-ux-20261119",
+  "host": "127.0.0.1",
+  "databasePort": 54354,
+  "appPort": 3004,
+  "syntheticOnly": true,
+  "reusedStage9Credentials": false,
+  "reusedStage9Database": false,
+  "stage9DatabaseConnections": 0,
+  "productionBuildId": "t2Tn5VtBS42DDhymHqhH8",
+  "newTemporarySession": true,
+  "authPolicyChanges": false
+}

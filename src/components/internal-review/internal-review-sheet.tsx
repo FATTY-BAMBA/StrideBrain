@@ -335,9 +335,11 @@ export function InternalReviewSheet({
       <section className={styles.locked} aria-labelledby="review-findings-title">
         <h3 id="review-findings-title">{copy.findings}</h3>
         <ul>
-          {proposal.mandatoryStatements.map((statement) => (
-            <li key={statement.key}>{statement.text}</li>
-          ))}
+          {proposal.mandatoryStatements
+            .filter((statement) => statement.key !== "REFERENCES")
+            .map((statement) => (
+              <li key={statement.key}>{statement.text}</li>
+            ))}
         </ul>
       </section>
       <section className={styles.warning} aria-labelledby="review-warnings-title">
@@ -468,18 +470,28 @@ export function InternalReviewSheet({
       </div>
       <dl className={styles.referenceGrid}>
         <div>
-          <dt>{copy.comparison}</dt>
-          <dd>{proposal.comparisonRunId}</dd>
-        </div>
-        <div>
-          <dt>{copy.economics}</dt>
-          <dd>{proposal.enrichmentRunId}</dd>
-        </div>
-        <div>
           <dt>{copy.expires}</dt>
           <dd>{displayReviewTimestamp(proposal.expiresAt, proposal.locale, proposal.timezone)}</dd>
         </div>
       </dl>
+      <details className={styles.auditDetails}>
+        <summary>{copy.auditDetails}</summary>
+        <dl className={styles.referenceGrid}>
+          <div>
+            <dt>{copy.comparison}</dt>
+            <dd>{proposal.comparisonRunId}</dd>
+          </div>
+          <div>
+            <dt>{copy.economics}</dt>
+            <dd>{proposal.enrichmentRunId}</dd>
+          </div>
+        </dl>
+        {proposal.mandatoryStatements
+          .filter((statement) => statement.key === "REFERENCES")
+          .map((statement) => (
+            <p key={statement.key}>{statement.text}</p>
+          ))}
+      </details>
       <p className={styles.warning} id="review-consequence">
         <span aria-hidden="true">⚠ </span>
         {copy.consequence}

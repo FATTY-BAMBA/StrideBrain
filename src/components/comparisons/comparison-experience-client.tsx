@@ -1,5 +1,6 @@
 "use client";
 
+import { getValueCopy } from "@/modules/demo-value/copy";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Route } from "next";
 import { useRouter } from "next/navigation";
@@ -245,6 +246,7 @@ function ComparisonResultExperience({
 }: ComparisonExperienceClientProps) {
   const router = useRouter();
   const copy = getComparisonCopy(view.locale);
+  const valueCopy = getValueCopy(view.locale);
   const [selected, setSelected] = useState<readonly string[]>(view.initialSelectedProjectKeys);
   const [selectionError, setSelectionError] = useState<string | null>(null);
   const selectedSet = useMemo(() => new Set(selected), [selected]);
@@ -387,10 +389,102 @@ function ComparisonResultExperience({
       <header className={styles.hero}>
         <div className={styles.heroContent}>
           <p className={styles.eyebrow}>{view.heading.eyebrow}</p>
-          <h1 tabIndex={-1}>{view.heading.title}</h1>
+          <h1 tabIndex={-1}>{valueCopy.compare}</h1>
+          <p className={styles.projectName}>{view.activeProject.name}</p>
           <p className={styles.heroDescription}>{view.heading.description}</p>
         </div>
+      </header>
 
+      <section className={styles.section} aria-labelledby="closest-projects-title">
+        <div className={styles.compactHeading}>
+          <h2 id="closest-projects-title">{valueCopy.strongest}</h2>
+          <a href="#comparable-projects-title">{valueCopy.changeSelection} ↓</a>
+        </div>
+        <ol className={styles.closestProjects}>
+          {view.cards.slice(0, 3).map((card) => (
+            <li key={card.projectKey}>
+              <span className={styles.rank}>{card.rank}</span>
+              <div>
+                <strong>{card.name}</strong>
+                <span>
+                  {card.bandLabel} · {valueCopy.match} {card.scoreLabel}
+                </span>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+      <section
+        className={styles.section}
+        id="review-findings"
+        aria-labelledby="structured-review-title"
+      >
+        <div className={styles.sectionHeaderText}>
+          <h2 id="structured-review-title">{copy.synthesis.title}</h2>
+          <p>{valueCopy.selectedHistory}</p>
+          <ul className={styles.findingProjects} aria-label={valueCopy.selectedHistory}>
+            {view.cards
+              .filter((card) => view.route.selectedProjectKeys.includes(card.projectKey))
+              .map((card) => (
+                <li key={card.projectKey}>{card.name}</li>
+              ))}
+          </ul>
+          <p className={styles.selectionHelp}>{valueCopy.selectedHistoryHelp}</p>
+        </div>
+        <div className={styles.synthesisGrid}>
+          {[
+            ...view.synthesis.history,
+            ...view.synthesis.differences,
+            ...view.synthesis.gaps,
+            view.synthesis.recommendation,
+          ].map((item) => (
+            <article
+              className={styles.synthesisCard}
+              data-tone={item.tone}
+              data-claim-key={item.claimKey}
+              key={item.key}
+            >
+              <h3>
+                {item.key === "stone"
+                  ? copy.table.importedStoneActual
+                  : item.key === "overall-quoted"
+                    ? copy.table.quotedRate
+                    : item.key === "overall-actual"
+                      ? copy.table.actualRate
+                      : item.key === "programme"
+                        ? copy.table.programme
+                        : item.key === "lighting-gap"
+                          ? copy.table.lightingActual
+                          : item.title}
+              </h3>
+              <p>{item.body}</p>
+              {item.claimKey ? (
+                <button
+                  className={styles.synthesisEvidenceTrigger}
+                  data-evidence-trigger-id={`evidence-synthesis-${item.key}`}
+                  type="button"
+                  onClick={() => openClaim(item.claimKey!, `evidence-synthesis-${item.key}`)}
+                >
+                  {valueCopy.seeEvidence}
+                </button>
+              ) : null}
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {internalReview ? (
+        <InternalReviewController
+          key={`${internalReview.locale}:${internalReview.route.actionKey ?? internalReview.route.proposalKey ?? internalReview.route.errorKind ?? "entry"}`}
+          {...internalReview}
+          evidenceActive={!!evidencePanel}
+          evidenceReturnId={evidenceReturnId}
+          onEvidence={openReviewEvidence}
+        />
+      ) : null}
+
+      <details className={styles.runDetails}>
+        <summary>{valueCopy.details}</summary>
         <dl className={styles.summaryGrid}>
           <div className={styles.summaryItem}>
             <dt>{copy.summary.generated}</dt>
@@ -417,8 +511,7 @@ function ComparisonResultExperience({
             <dd>{view.summary.syntheticDataLabel}</dd>
           </div>
         </dl>
-      </header>
-
+      </details>
       <section className={styles.section} aria-labelledby="comparable-projects-title">
         <div className={styles.sectionHeader}>
           <div className={styles.sectionHeaderText}>
@@ -462,7 +555,14 @@ function ComparisonResultExperience({
             aria-live="polite"
           >
             {selectionError ??
-              `${copy.selectedProjects}: ${orderedSelected.length > 0 ? orderedSelected.join(", ") : "—"}`}
+              `${copy.selectedProjects}: ${
+                orderedSelected.length > 0
+                  ? view.cards
+                      .filter((card) => selectedSet.has(card.projectKey))
+                      .map((card) => card.name)
+                      .join(", ")
+                  : "—"
+              }`}
           </p>
           <SelectionSubmit
             disabled={!dirty || orderedSelected.length === 0 || selectionError !== null}
@@ -551,41 +651,6 @@ function ComparisonResultExperience({
         </div>
       </section>
 
-      <section className={styles.section} aria-labelledby="structured-review-title">
-        <div className={styles.sectionHeaderText}>
-          <p className={styles.eyebrow}>{copy.synthesis.title}</p>
-          <h2 id="structured-review-title">{copy.synthesis.title}</h2>
-        </div>
-        <div className={styles.synthesisGrid}>
-          {[
-            ...view.synthesis.history,
-            ...view.synthesis.differences,
-            ...view.synthesis.gaps,
-            view.synthesis.recommendation,
-          ].map((item) => (
-            <article
-              className={styles.synthesisCard}
-              data-tone={item.tone}
-              data-claim-key={item.claimKey}
-              key={item.key}
-            >
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
-              {item.claimKey ? (
-                <button
-                  className={styles.synthesisEvidenceTrigger}
-                  data-evidence-trigger-id={`evidence-synthesis-${item.key}`}
-                  type="button"
-                  onClick={() => openClaim(item.claimKey!, `evidence-synthesis-${item.key}`)}
-                >
-                  {view.locale === "zh-TW" ? "查看資料依據" : "Inspect evidence"}
-                </button>
-              ) : null}
-            </article>
-          ))}
-        </div>
-      </section>
-
       <aside className={styles.noticeStack} aria-label={copy.table.evidenceState}>
         {view.notices.map((notice) => (
           <div className={styles.notice} data-tone={notice.tone} key={notice.key}>
@@ -593,16 +658,6 @@ function ComparisonResultExperience({
           </div>
         ))}
       </aside>
-
-      {internalReview ? (
-        <InternalReviewController
-          key={`${internalReview.locale}:${internalReview.route.actionKey ?? internalReview.route.proposalKey ?? internalReview.route.errorKind ?? "entry"}`}
-          {...internalReview}
-          evidenceActive={!!evidencePanel}
-          evidenceReturnId={evidenceReturnId}
-          onEvidence={openReviewEvidence}
-        />
-      ) : null}
 
       {evidencePanel ? (
         <EvidencePanel

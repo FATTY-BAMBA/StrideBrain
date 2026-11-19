@@ -88,8 +88,7 @@ function choose(id: string, value: string) {
   control.dispatchEvent(new Event("change", { bubbles: true }));
   control.dispatchEvent(new Event("input", { bubbles: true }));
 }
-async function mount() {
-  const value = proposal(locale);
+async function mount(value = proposal(locale)) {
   window.history.replaceState(
     null,
     "",
@@ -163,6 +162,36 @@ afterEach(async () => {
 describe.each(["en", "zh-TW"] as const)("live authoritative date guidance (%s)", (language) => {
   beforeEach(() => {
     locale = language;
+  });
+  it("keeps technical lineage in closed audit details without hiding findings or changing the proposal", async () => {
+    const value: ProposalDTO = {
+      ...proposal(locale),
+      mandatoryStatements: [
+        { key: "STONE", text: "Forecast differs from historical actual cost." },
+        { key: "REFERENCES", text: "Comparison: comparison-date; economics: economics-date." },
+        { key: "PROGRAMME", text: "No supported programme premium." },
+      ],
+    };
+    const original = JSON.stringify(value);
+    await mount(value);
+    const audit = host.querySelector("details")!;
+    expect(audit.open).toBe(false);
+    expect(audit.querySelector("summary")?.textContent).toBe(
+      getInternalReviewCopy(locale).auditDetails,
+    );
+    expect(audit.textContent).toContain(value.comparisonRunId);
+    expect(audit.textContent).toContain(value.enrichmentRunId);
+    expect(audit.textContent).toContain(value.mandatoryStatements[1]!.text);
+    const normal = host.cloneNode(true) as HTMLElement;
+    normal.querySelector("details")!.remove();
+    expect(normal.textContent).not.toContain(value.comparisonRunId);
+    expect(normal.textContent).not.toContain(value.enrichmentRunId);
+    expect(normal.textContent).toContain(value.mandatoryStatements[0]!.text);
+    expect(normal.textContent).toContain(value.mandatoryStatements[2]!.text);
+    expect(normal.textContent).toContain(getInternalReviewCopy(locale).expires);
+    expect(normal.textContent).toContain(getInternalReviewCopy(locale).consequence);
+    expect(JSON.stringify(value)).toBe(original);
+    expect(post).not.toHaveBeenCalled();
   });
   it("refreshes across Taipei leap-day midnight without reopening or losing the draft/focus", async () => {
     if (process.env.TZ === "America/Los_Angeles") {

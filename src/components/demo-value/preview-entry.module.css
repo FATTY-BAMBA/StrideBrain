@@ -1,0 +1,50 @@
+.entry {
+  width: 100%;
+  max-width: 36rem;
+  margin: 1rem auto;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  background: white;
+  border: 1px solid #d8dfdc;
+  border-radius: 1.25rem;
+  color: #17231e;
+}
+
+.entry h1 {
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  line-height: 1.15;
+}
+.entry p {
+  line-height: 1.6;
+}
+.entry form {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.entry label {
+  font-weight: 650;
+}
+.entry input:not([type="hidden"]) {
+  width: 100%;
+  min-width: 0;
+  padding: 0.8rem;
+  font: inherit;
+  font-size: 1rem;
+  border: 1px solid #61716a;
+  border-radius: 0.5rem;
+}
+.entry button {
+  min-height: 2.75rem;
+  padding: 0.8rem 1rem;
+  background: #285b49;
+  color: white;
+  border: 0;
+  border-radius: 0.5rem;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+.entry :is(input, button):focus-visible {
+  outline: 3px solid #285b49;
+  outline-offset: 3px;
+}

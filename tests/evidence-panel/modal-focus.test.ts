@@ -359,6 +359,44 @@ const layouts = [
 ] as const;
 
 describe.each(["en", "zh-TW"] as const)("F-08 modal hierarchy (%s)", (language) => {
+  it("keeps factor meaning visible before sources while calculation mechanics stay collapsed", async () => {
+    locale = language;
+    current = {
+      mode: "FACTOR",
+      comparisonRunId: claim.comparisonRunId,
+      candidateProjectKey: "candidate-focus",
+      factorKey: "AREA_SIMILARITY",
+    };
+    const outcome = panel(current);
+    if (outcome.kind !== "READY") throw new Error("Expected ready fixture");
+    const factor = {
+      kind: "FACTOR" as const,
+      policyVersion: "v1",
+      policyDescription: "Policy details",
+      factorKey: "AREA_SIMILARITY" as const,
+      factorLabel: "Area",
+      state: "KNOWN" as const,
+      stateLabel: "Known",
+      normalizedValueLabel: "0.88",
+      weightLabel: "20",
+      contributionLabel: "17.7",
+      totalScoreLabel: "81.3/100",
+      evidenceCoverageLabel: "100%",
+      explanationLabel: "The floor areas are similar.",
+    };
+    await act(async () => render({ ...outcome, view: { ...outcome.view, trace: factor } }));
+    const summary = dialog().querySelector('section[aria-label="Area"]')!;
+    expect(summary.closest("details")).toBeNull();
+    expect(summary.textContent).toContain(factor.explanationLabel);
+    expect(summary.textContent).toContain(factor.stateLabel);
+    const sources = dialog().querySelector("#evidence-sources-title")!;
+    expect(
+      summary.compareDocumentPosition(sources) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    expect(dialog().querySelector("details")?.open).toBe(false);
+    expect(dialog().querySelector("header button")).not.toBeNull();
+    expect(heading().closest("header")).toBeNull();
+  });
   it.each(layouts)(
     "keeps source focus contained in %s, with and without reduced motion",
     async (_name, width, height) => {

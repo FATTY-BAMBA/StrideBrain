@@ -45,14 +45,6 @@ export function WorkspaceShell({ locale, catalog, children }: WorkspaceShellProp
             "nav.settings": catalog["nav.settings"],
           }}
         />
-
-        <div className="workspace-sidebar__status">
-          <span className="status-dot" aria-hidden="true" />
-          <div>
-            <strong>{catalog["state.stageZero"]}</strong>
-            <span>{catalog["state.notConnected"]}</span>
-          </div>
-        </div>
       </aside>
 
       <div className="workspace-column">
@@ -79,11 +71,6 @@ export function WorkspaceShell({ locale, catalog, children }: WorkspaceShellProp
         <main className="workspace-main" id="main-content" tabIndex={-1}>
           {children}
         </main>
-
-        <footer className="workspace-footer">
-          <span>{catalog["footer.dataBoundary"]}</span>
-          <span>{catalog["footer.releaseBoundary"]}</span>
-        </footer>
       </div>
     </div>
   );

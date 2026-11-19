@@ -1,0 +1,8 @@
+
+ RUN  v4.1.10 <SB034_WORKTREE>
+
+
+ Test Files  15 passed (15)
+      Tests  211 passed (211)
+   Start at  17:51:20
+   Duration  1.56s (transform 1.08s, setup 0ms, import 1.74s, tests 1.82s, environment 3.82s)

@@ -1,0 +1,19 @@
+{
+  "environment": "SB034-AUTH-20261119",
+  "temporarySessionRevoked": true,
+  "unexpiredUnrevokedSessions": 0,
+  "cookieCleared": true,
+  "browserTabClosed": true,
+  "viewportOverrideReset": true,
+  "oneUseBootstrapRemoved": true,
+  "sessionSigningSecretRemoved": true,
+  "productionServerStopped": true,
+  "postgresContainerState": "exited",
+  "listeners3004and54354": false,
+  "databaseRetention": "Stopped isolated database preserved pending first-slice review acceptance and reproducibility of mobile Projects finding",
+  "privateCredentialDirectoryPermissions": "0o700",
+  "businessActionsCreated": 0,
+  "receiptsCreated": 0,
+  "sourceCodeChangedThisReview": false,
+  "deployed": false
+}

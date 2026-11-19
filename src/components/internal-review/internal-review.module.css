@@ -311,3 +311,20 @@
     animation: none;
   }
 }
+
+.auditDetails {
+  border-top: 1px solid var(--line, #d8dee8);
+  color: var(--muted, #596579);
+  overflow-wrap: anywhere;
+}
+.auditDetails summary {
+  display: list-item;
+  cursor: pointer;
+  min-height: 44px;
+  padding: 12px 0;
+  font-weight: 700;
+}
+.auditDetails summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}

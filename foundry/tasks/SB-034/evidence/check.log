@@ -1,0 +1,77 @@
+
+> stridebrain@0.1.0 check
+> npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build
+
+
+> stridebrain@0.1.0 format:check
+> prettier --check package.json tsconfig.json next.config.ts next-env.d.ts eslint.config.mjs prettier.config.mjs vitest.config.ts prisma.config.ts .github/workflows/ci.yml 'src/**/*.{ts,tsx,css}' 'tests/**/*.ts'
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> stridebrain@0.1.0 lint
+> eslint .
+
+
+/private/tmp/sb034-demo-value-ux/prisma.config.ts
+  5:1  warning  Assign object to a variable before exporting as module default  import/no-anonymous-default-export
+
+✖ 1 problem (0 errors, 1 warning)
+
+
+> stridebrain@0.1.0 typecheck
+> tsc --noEmit
+
+
+> stridebrain@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.10 /private/tmp/sb034-demo-value-ux
+
+
+ Test Files  67 passed | 5 skipped (72)
+      Tests  580 passed | 130 skipped (710)
+   Start at  16:37:24
+   Duration  2.39s (transform 3.05s, setup 0ms, import 5.51s, tests 3.46s, environment 4.71s)
+
+
+> stridebrain@0.1.0 build
+> next build
+
+▲ Next.js 16.4.6 (Turbopack)
+✓ Running next.config.ts took 17ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 750ms
+  Running TypeScript ...
+  Finished TypeScript in 2.5s ...
+  Collecting page data using 9 workers ...
+  Generating static pages using 9 workers (0/13) ...
+  Generating static pages using 9 workers (3/13)
+  Generating static pages using 9 workers (6/13)
+  Generating static pages using 9 workers (9/13)
+✓ Generating static pages using 9 workers (13/13) in 177ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /[locale]
+├ ƒ /[locale]/knowledge
+├ ƒ /[locale]/projects
+├ ƒ /[locale]/projects/[projectKey]/[[...surface]]
+├ ƒ /[locale]/projects/[projectKey]/compare
+├   /[locale]/settings
+│ ├ ● /zh-TW/settings
+│ └ ● /en/settings
+├ ƒ /[locale]/stridebrain
+├ ƒ /api/actions/[actionKey]
+├ ƒ /api/actions/internal-review
+├ ƒ /api/actions/internal-review/proposals
+└ ƒ /api/actions/internal-review/proposals/[proposalKey]
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand

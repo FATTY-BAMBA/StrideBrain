@@ -14,14 +14,8 @@ describe("navigation contracts", () => {
     ]);
   });
 
-  it("exposes only the five approved project workspace surfaces", () => {
-    expect(projectNavigation.map((item) => item.key)).toEqual([
-      "overview",
-      "compare",
-      "commercial",
-      "evidence",
-      "actions",
-    ]);
+  it("exposes only the three working project workspace surfaces", () => {
+    expect(projectNavigation.map((item) => item.key)).toEqual(["overview", "compare", "actions"]);
   });
 
   it("builds locale-scoped routes without adding organization authority", () => {
