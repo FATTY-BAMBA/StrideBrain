@@ -1,0 +1,61 @@
+
+> stridebrain@0.1.0 db:reset-fixture
+> npm run db:migrate && npm run db:seed && npm run db:verify
+
+
+> stridebrain@0.1.0 db:migrate
+> npx --yes prisma@7.10.1 migrate deploy --config prisma.config.ts
+
+Loaded Prisma config from prisma.config.ts.
+
+Prisma schema loaded from prisma/schema.prisma.
+Datasource "db": PostgreSQL database "stridebrain_sb034_handoff_20261119", schema "public" at "127.0.0.1:54355"
+
+9 migrations found in prisma/migrations
+
+
+No pending migrations to apply.
+
+> stridebrain@0.1.0 db:seed
+> npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/horizon-atelier.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/stage2-authorization.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/stage4-comparison.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/stage5-economics.sql
+
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+
+> stridebrain@0.1.0 db:verify
+> npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-horizon.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-relations.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage2-authorization.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage3-workspace.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage4-comparison.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage5-economics.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage6-comparison-persistence.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage8-internal-review.sql
+
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.
+Loaded Prisma config from prisma.config.ts.
+
+Script executed successfully.

@@ -4,6 +4,8 @@ import { FoundationPage } from "@/components/ui/foundation-page";
 import { getCatalog } from "@/modules/localization/catalog";
 import { isSupportedLocale } from "@/modules/localization/config";
 import { getValueCopy } from "@/modules/demo-value/copy";
+import { LeavePreview } from "@/components/demo-value/preview-entry";
+import { previewSessionOrigin } from "@/modules/preview-session/config";
 
 export default async function SettingsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -19,6 +21,7 @@ export default async function SettingsPage({ params }: { params: Promise<{ local
       title={catalog["settings.title"]}
       description={catalog["settings.description"]}
     >
+      {previewSessionOrigin(process.env) && <LeavePreview locale={locale} />}
       <section className="settings-language">
         <h2>{locale === "en" ? "Language" : "語言"}</h2>
         <nav aria-label={locale === "en" ? "Language" : "語言"}>

@@ -1,0 +1,111 @@
+{
+  "audit": {
+    "counts": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "packages": {}
+  },
+  "audit-all": {
+    "counts": {
+      "info": 0,
+      "low": 0,
+      "moderate": 9,
+      "high": 0,
+      "critical": 0,
+      "total": 9
+    },
+    "packages": {
+      "@typescript-eslint/eslint-plugin": {
+        "severity": "moderate",
+        "direct": false,
+        "via": [
+          "@typescript-eslint/type-utils",
+          "@typescript-eslint/utils"
+        ]
+      },
+      "@typescript-eslint/parser": {
+        "severity": "moderate",
+        "direct": false,
+        "via": [
+          "@typescript-eslint/typescript-estree"
+        ]
+      },
+      "@typescript-eslint/type-utils": {
+        "severity": "moderate",
+        "direct": false,
+        "via": [
+          "@typescript-eslint/typescript-estree",
+          "@typescript-eslint/utils"
+        ]
+      },
+      "@typescript-eslint/typescript-estree": {
+        "severity": "moderate",
+        "direct": false,
+        "via": [
+          "minimatch"
+        ]
+      },
+      "@typescript-eslint/utils": {
+        "severity": "moderate",
+        "direct": false,
+        "via": [
+          "@typescript-eslint/typescript-estree"
+        ]
+      },
+      "@vitest/mocker": {
+        "severity": "moderate",
+        "direct": false,
+        "via": [
+          {
+            "name": "@vitest/mocker",
+            "title": "Vitest: Path Traversal / Arbitrary File Read via @vitest/mocker Redirect Mock",
+            "url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9"
+          },
+          {
+            "name": "@vitest/mocker",
+            "title": "Vitest: Code injection via unauthenticated manual mock registration",
+            "url": "https://github.com/advisories/GHSA-qxg6-89mg-rqv8"
+          }
+        ]
+      },
+      "minimatch": {
+        "severity": "moderate",
+        "direct": false,
+        "via": [
+          {
+            "name": "minimatch",
+            "title": "minimatch has potential denial of service via globparts amplification",
+            "url": "https://github.com/advisories/GHSA-g3hv-75wg-m249"
+          }
+        ]
+      },
+      "typescript-eslint": {
+        "severity": "moderate",
+        "direct": false,
+        "via": [
+          "@typescript-eslint/eslint-plugin",
+          "@typescript-eslint/parser",
+          "@typescript-eslint/typescript-estree",
+          "@typescript-eslint/utils"
+        ]
+      },
+      "vitest": {
+        "severity": "moderate",
+        "direct": true,
+        "via": [
+          "@vitest/mocker",
+          {
+            "name": "vitest",
+            "title": "Vitest: Path Traversal / Arbitrary File Read via @vitest/mocker Redirect Mock",
+            "url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9"
+          }
+        ]
+      }
+    }
+  }
+}
