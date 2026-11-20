@@ -7,7 +7,7 @@ export type HomeFinding = Readonly<{
   title: string;
   detail: string;
   check: string;
-  href: string;
+  claimKey: string;
 }>;
 
 export type HomeMemoryProject = Readonly<{
@@ -46,21 +46,21 @@ export function buildHomeIntelligence(
             title: "進口石材比過往實際花費高 18%",
             detail: "這是目前最明顯的成本差異。",
             check: "先確認規格、數量與供應商條件是否真的不同。",
-            href: compare,
+            claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
           },
           {
             id: "lighting",
             title: "燈具報價比過往報價高 9%",
             detail: "目前缺少足夠的歷史實際成本，不能把它當成超支結論。",
             check: "先比較規格與報價範圍，再決定是否需要追問。",
-            href: compare,
+            claimKey: "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
           },
           {
             id: "quotation",
             title: "目前報價比選取的過往報價高 7%",
             detail: "差異值得檢視，但不代表報價錯誤。",
             check: "確認範圍、材料與工期差異後再判斷。",
-            href: compare,
+            claimKey: "XINYI_OVERALL_QUOTED_VARIANCE",
           },
         ]
       : [
@@ -69,21 +69,21 @@ export function buildHomeIntelligence(
             title: "Imported stone is 18% higher than past actual spend",
             detail: "This is the clearest current cost difference.",
             check: "Check whether specification, quantity or supplier terms explain it.",
-            href: compare,
+            claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
           },
           {
             id: "lighting",
             title: "Lighting is 9% above past quoted prices",
             detail: "There is not enough historical actual-cost evidence to call this an overrun.",
             check: "Compare specification and quote scope before escalating.",
-            href: compare,
+            claimKey: "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
           },
           {
             id: "quotation",
             title: "The current quote is 7% above selected past quoted prices",
             detail: "It is worth reviewing, but it does not mean the quote is wrong.",
             check: "Check scope, materials and programme differences first.",
-            href: compare,
+            claimKey: "XINYI_OVERALL_QUOTED_VARIANCE",
           },
         ]
     : [];
