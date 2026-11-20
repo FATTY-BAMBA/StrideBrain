@@ -176,7 +176,7 @@ export function NewJobForm({ locale, idempotencyKey }: { locale: Locale; idempot
         </div>
         <p className={styles.hint}>{copy.clientKeyHelp}</p>
         <div className={styles.actions}>
-          <button className="button button-primary" type="submit">
+          <button className={styles.primary} type="submit">
             {pending ? copy.pending : copy.submit}
           </button>
           <Link href={`/${locale}/projects`}>{copy.cancel}</Link>

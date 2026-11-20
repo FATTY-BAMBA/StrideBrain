@@ -2,21 +2,28 @@
   "taskId": "SB-041",
   "issueUrl": "https://github.com/FATTY-BAMBA/StrideBrain/issues/41",
   "branch": "build/sb-041-jobs",
-  "state": "IN_PROGRESS",
+  "state": "LOCAL_VERIFICATION_PASSED",
   "deliverySequence": {
     "A": "VERIFIED_LOCALLY",
     "B": "VERIFIED_LOCALLY",
-    "C": "IMPLEMENTED_TESTING"
+    "C": "VERIFIED_LOCALLY"
   },
   "verified": [
-    "49 focused unit/repository tests",
-    "9 PostgreSQL transaction/security/comparison tests",
-    "TypeScript",
-    "Bilingual creation screen and direct server-action tests",
-    "Stage screen/action and existing project/home regressions"
+    "Node 24 npm run check: 82 test files, 868 tests passed, 0 skipped; production build passed",
+    "Prisma validation, synthetic fixture reset and SQL invariants",
+    "Populated additive migration preserves existing project rows",
+    "PostgreSQL creation, pre-quote comparison, audit rollback, duplicate keys, concurrent stage writes and idempotency",
+    "English desktop and Traditional Chinese mobile browser creation, validation, grouping and stage update",
+    "Browser comparison: six ranked candidates for a job created through the screen",
+    "Viewer and foreign-organization screen/direct-request denials; denied/replayed requests write no extra rows"
   ],
   "notVerified": [
-    "Preview acceptance"
+    "Hosted preview acceptance on the final PR commit",
+    "Cross-browser and assistive-technology acceptance",
+    "Production operation and real customer data (out of scope)"
   ],
-  "dataMode": "DEMO_SYNTHETIC"
+  "dataMode": "DEMO_SYNTHETIC",
+  "baseline": "0266174",
+  "verificationReport": "verification.md",
+  "publication": "PENDING_ONE_PULL_REQUEST"
 }

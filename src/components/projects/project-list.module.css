@@ -18,10 +18,6 @@
   overflow-wrap: anywhere;
 }
 
-.entry h2 {
-  font-size: clamp(1.2rem, 2.5vw, 1.7rem);
-}
-
 .entry:hover {
   border-color: var(--accent);
 }
@@ -86,4 +82,23 @@
 }
 .stageForm p {
   flex-basis: 100%;
+}
+.stageButton {
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--accent-strong);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.stageButton:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.stageButton:focus-visible,
+.stageForm select:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
 }

@@ -1,0 +1,13 @@
+
+> stridebrain@0.1.0 test
+> vitest run tests/comparison-experience/selection-lineage-postgres.test.ts
+
+
+ RUN  v4.1.10 /private/tmp/stridebrain-sb041
+
+
+ Test Files  1 passed (1)
+      Tests  23 passed (23)
+   Start at  06:13:22
+   Duration  7.99s (transform 207ms, setup 0ms, import 284ms, tests 7.63s, environment 0ms)
+

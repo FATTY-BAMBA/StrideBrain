@@ -83,3 +83,31 @@
     grid-template-columns: 1fr;
   }
 }
+.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 11px 18px;
+  border: 1px solid var(--accent-strong);
+  border-radius: var(--radius-sm);
+  background: var(--accent-strong);
+  color: white;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+.primary:hover {
+  filter: brightness(1.1);
+}
+.primary:focus-visible,
+.field input:focus-visible,
+.field select:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+.body:disabled .primary {
+  opacity: 0.6;
+  cursor: wait;
+}

@@ -1,0 +1,29 @@
+{
+  "screens": [
+    "en-validation.png",
+    "en-created-group.png",
+    "zh-TW-validation.png",
+    "zh-TW-created-group.png",
+    "en-new-job-comparison.png"
+  ],
+  "checks": [
+    "en: required field errors, retained input, creation via screen, database persistence, Quote review grouping",
+    "zh-TW: required field errors, retained input, creation via screen, database persistence, Quote review grouping",
+    "Browser comparison persisted 6 ranked candidates for the new job without a quote",
+    "Stage change through screen moves the job to Design",
+    "viewer: screen visibility and direct server-action denial",
+    "foreign: screen visibility and direct server-action denial",
+    "Duplicate creation, stage replay, and denied direct requests add no project or audit rows"
+  ],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "pageErrors": [],
+  "httpErrors": [],
+  "status": "PASS",
+  "consoleDiagnostic": {
+    "resource": "/favicon.ico",
+    "status": 404,
+    "flowImpact": "none observed"
+  }
+}

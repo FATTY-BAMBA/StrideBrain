@@ -1,4 +1,5 @@
 import type { Route } from "next";
+import styles from "@/components/projects/job-form.module.css";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FoundationPage } from "@/components/ui/foundation-page";
@@ -38,7 +39,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
     >
       {canCreate ? (
         <p style={{ marginBottom: 24 }}>
-          <Link className="button button-primary" href={`/${locale}/projects/new` as Route}>
+          <Link className={styles.primary} href={`/${locale}/projects/new` as Route}>
             {copy.newJob}
           </Link>
         </p>

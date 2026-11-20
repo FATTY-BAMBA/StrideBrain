@@ -43,11 +43,7 @@ export function ProjectStageForm({
           </option>
         ))}
       </select>
-      <button
-        type="submit"
-        className="button button-secondary"
-        disabled={pending || selected === stage}
-      >
+      <button type="submit" className={styles.stageButton} disabled={pending || selected === stage}>
         {pending ? copy.pending : copy.updateStage}
       </button>
       {state.message ? (
