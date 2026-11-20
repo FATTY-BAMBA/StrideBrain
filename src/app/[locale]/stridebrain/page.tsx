@@ -1,6 +1,4 @@
-import { notFound } from "next/navigation";
-import { ValueLaunchpad } from "@/components/demo-value/value-launchpad";
-import { loadDemoValueContext } from "@/lib/server/demo-value-context";
+import { notFound, redirect } from "next/navigation";
 import { isSupportedLocale } from "@/modules/localization/config";
 
 export default async function Page({
@@ -13,9 +11,6 @@ export default async function Page({
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const search = await searchParams;
-  const context = await loadDemoValueContext(
-    locale,
-    typeof search.project === "string" ? search.project : undefined,
-  );
-  return <ValueLaunchpad locale={locale} surface="stridebrain" context={context} />;
+  const project = typeof search.project === "string" ? search.project : undefined;
+  redirect(`/${locale}${project ? `?project=${encodeURIComponent(project)}` : ""}`);
 }
