@@ -76,8 +76,11 @@ Build in this order. Each stage is one issue and one pull request. Draft issue t
 | 3 Intake | Issue #37, then draft `ISSUE_DRAFT_3_FILE_READING.md` | Bring in old quotes and confirm what was read |
 | 4 Work items and closing | Draft: `ISSUE_DRAFT_4_WORK_ITEMS_AND_CLOSE.md` | A task list after acceptance, and closing a job |
 | 5 Digest and wording | Draft: `ISSUE_DRAFT_5_DAILY_DIGEST.md` | A morning message; quote lines in the firm's own words |
+| P Production foundation | Draft: `ISSUE_DRAFT_P_PRODUCTION_FOUNDATION.md` | Real sign-in and a separate production environment |
 
 The quote draft comes before intake because it gives a convincing demo on the seed data. Intake then feeds the same screen with the firm's own records.
+
+Stage P runs alongside the others and must pass before any real customer data enters the product. Stages 1 to 5 are built and tested on synthetic data, in the same code that production will run.
 
 ## 6. System design additions
 
@@ -116,6 +119,10 @@ States:
 ## 7. Rules
 
 The standing rules are in `AGENTS.md` at the repository root. The ones that matter most here: a model never writes records, every financial claim is traceable to evidence, every person-made state change is audited in the same transaction, and the flow works with the model switched off.
+
+Everything in this slice is built for the production application, not as a demo patch. `AGENTS.md` holds the production standard: one code path for demo and real tenants, no hard-coded ids, no stubs behind production routes, forward-only migrations, and limits, timeouts and visible failure states on every input and outside call.
+
+Two things make the product production-ready, and they are separate. The first is that each feature is built properly once; the production standard covers that. The second is that the platform is safe for real customers: real sign-in, a second barrier for tenant isolation, a separate production environment, backups and a security review. None of that exists yet, and Stage P builds it.
 
 ## 8. Tools proposed
 

@@ -44,9 +44,25 @@ StrideBrain is a Next.js App Router application in strict TypeScript on PostgreS
 - A model never writes records, calculates authoritative financial values, changes ranking or authority, resolves conflicts, or issues anything. Its output is validated against a schema and stored as review-only staging or as wording. The flow must still work with the model switched off.
 - Quoted price, supplier offer, forecast cost and reconciled actual cost are different things. Never relabel one as another.
 
+## Production standard
+
+Everything built here is meant to run in the production application. Nothing is a patch or a throwaway.
+
+- One code path serves the demo and real tenants. The only differences are configuration and data. No demo-only branches and no code specific to Horizon Atelier or the Xinyi job.
+- No hard-coded organization, project, user or record ids outside fixtures and tests.
+- No mock, stub or placeholder behind a production route. If something is not built, the route does not exist or says it is unavailable.
+- Schema changes are forward-only Prisma migrations that run safely on a database that already holds data. Seed files are for synthetic data only.
+- Every input has a bounded schema, size limits and an error state the user can see.
+- Every outside call (model, file store, email) has a timeout, a visible failure state and no partial writes.
+- New configuration is an environment variable documented in `.env.example`, never a literal in code.
+- Unfinished work stays behind a server-side flag that defaults to off.
+- Do not weaken a test, a type or a lint rule to make a change pass.
+- Logs carry request ids, not document bodies or financial values.
+- Done means the acceptance list passes on the preview deployment, not only locally.
+
 ## Data and secrets
 
-- The application runs only with `STRIDEBRAIN_DATA_MODE=DEMO_SYNTHETIC`. Do not remove that gate inside a feature task.
+- The application runs only with `STRIDEBRAIN_DATA_MODE=DEMO_SYNTHETIC`. Do not remove that gate inside a feature task. It changes only in the Production Foundation issue.
 - This repository is public. Never commit real customer files, customer data, provider keys or tokens. Synthetic fixtures only.
 
 ## Say what is true
