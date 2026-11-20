@@ -270,9 +270,9 @@ export async function askHomeAction(
             : quotePct
               ? `The current quote is about ${quotePct}% above the selected historical quoted-price baseline. Treat that as a review signal, not a conclusion that the quote is wrong.`
               : "There isn’t enough evidence to state a reliable overall quote variance.",
-        bullets:
-          lightingPct
-            ? [
+        ...(lightingPct
+          ? {
+              bullets: [
                 locale === "zh-TW"
                   ? `燈具報價約高 ${lightingPct}%`
                   : `Lighting quoted prices are about ${lightingPct}% higher`,
@@ -282,8 +282,9 @@ export async function askHomeAction(
                 locale === "zh-TW"
                   ? "先確認範圍、材料與工期差異"
                   : "Check scope, materials and programme differences first",
-              ]
-            : undefined,
+              ],
+            }
+          : {}),
         action: {
           label: locale === "zh-TW" ? "查看報價佐證" : "Open quote evidence",
           href: href as Route,
