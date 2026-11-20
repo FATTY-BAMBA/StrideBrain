@@ -4,14 +4,8 @@ import { globalNavigation, globalSurfaceHref } from "@/modules/navigation/global
 import { projectNavigation, projectSurfaceHref } from "@/modules/navigation/project-navigation";
 
 describe("navigation contracts", () => {
-  it("exposes only the five approved global product surfaces", () => {
-    expect(globalNavigation.map((item) => item.key)).toEqual([
-      "home",
-      "projects",
-      "knowledge",
-      "stridebrain",
-      "settings",
-    ]);
+  it("keeps primary navigation focused on Home and Projects", () => {
+    expect(globalNavigation.map((item) => item.key)).toEqual(["home", "projects"]);
   });
 
   it("exposes only the three working project workspace surfaces", () => {
