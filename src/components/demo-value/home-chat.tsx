@@ -35,7 +35,8 @@ export function HomeChat({ locale }: { locale: Locale }) {
         }
       : {
           label: "Ask StrideBrain",
-          placeholder: "Ask about projects, quotes, materials, suppliers, documents or open actions…",
+          placeholder:
+            "Ask about projects, quotes, materials, suppliers, documents or open actions…",
           send: "Send",
           thinking: "Checking company records…",
           suggested: "Try asking",
@@ -69,7 +70,12 @@ export function HomeChat({ locale }: { locale: Locale }) {
               </ul>
             ) : null}
             {turn.citations?.length ? (
-              <section className={styles.chatSources} aria-label={locale === "zh-TW" ? "此回答使用的來源" : "Sources used for this answer"}>
+              <section
+                className={styles.chatSources}
+                aria-label={
+                  locale === "zh-TW" ? "此回答使用的來源" : "Sources used for this answer"
+                }
+              >
                 <span className={styles.chatSourcesLabel}>
                   {locale === "zh-TW" ? "此回答使用的來源" : "Sources"}
                 </span>
@@ -109,7 +115,8 @@ export function HomeChat({ locale }: { locale: Locale }) {
                           </div>
                         ) : null}
                         <Link className={styles.chatAction} href={citation.fullHref}>
-                          {locale === "zh-TW" ? "開啟完整佐證" : "Open full evidence"} <span aria-hidden="true">→</span>
+                          {locale === "zh-TW" ? "開啟完整佐證" : "Open full evidence"}{" "}
+                          <span aria-hidden="true">→</span>
                         </Link>
                       </div>
                     </details>

@@ -89,7 +89,12 @@ describe("authorized read-only Home composition", () => {
         await Home({ params: Promise.resolve({ locale }), searchParams: Promise.resolve({}) }),
       );
       expect(host.querySelectorAll('textarea[name="message"]')).toHaveLength(1);
-      expect(host.querySelectorAll('button[type="submit"]')).toHaveLength(1);
+      expect(
+        host
+          .querySelector('textarea[name="message"]')
+          ?.closest("form")
+          ?.querySelectorAll('button[type="submit"]'),
+      ).toHaveLength(1);
       expect(host.textContent).toContain("Allowed project");
       expect(host.querySelector('a[href*="/knowledge"]')).toBeNull();
       expect(host.querySelector('a[href*="/stridebrain"]')).toBeNull();

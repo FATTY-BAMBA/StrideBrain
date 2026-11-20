@@ -8,13 +8,7 @@ import { buildHomeIntelligence } from "@/modules/home-intelligence/home-intellig
 import { stageLabel } from "@/modules/demo-value/copy";
 import styles from "./value-launchpad.module.css";
 
-export function ValueLaunchpad({
-  locale,
-  context
-}: {
-  locale: Locale;
-  context: DemoValueContext;
-}) {
+export function ValueLaunchpad({ locale, context }: { locale: Locale; context: DemoValueContext }) {
   const workspace = context.workspace;
   const intelligence = buildHomeIntelligence(locale, context);
   const base = workspace
@@ -39,7 +33,8 @@ export function ValueLaunchpad({
       : {
           eyebrow: "Find. Understand. Decide. Act.",
           title: "What do you want to know or get done?",
-          placeholder: "Search projects, materials, suppliers or documents, or ask a supported question…",
+          placeholder:
+            "Search projects, materials, suppliers or documents, or ask a supported question…",
           submit: "Find",
           supported: "Try asking",
           noMatch: "I can’t answer that directly yet. Start with the closest supported question:",

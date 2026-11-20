@@ -8,10 +8,7 @@ const workspace = {
     businessKey: "PRJ-XINYI-026",
     name: { display: "Xinyi Flagship Renovation" },
   },
-  materials: [
-    { name: { display: "Imported stone" } },
-    { name: { display: "Oak veneer" } },
-  ],
+  materials: [{ name: { display: "Imported stone" } }, { name: { display: "Oak veneer" } }],
   suppliers: [{ name: { display: "Formosa Stone Co." } }],
   evidence: [
     { sourceName: { display: "Xinyi Quote v3" } },

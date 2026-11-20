@@ -30,10 +30,7 @@ const demoMemory: readonly HomeMemoryProject[] = [
   { name: "Banqiao Concept Store", score: 63 },
 ];
 
-export function buildHomeIntelligence(
-  locale: Locale,
-  context: DemoValueContext,
-): HomeIntelligence {
+export function buildHomeIntelligence(locale: Locale, context: DemoValueContext): HomeIntelligence {
   const workspace = context.workspace;
   if (!workspace) return { findings: [], memory: [], openActionCount: 0 };
 
@@ -95,8 +92,7 @@ export function buildHomeIntelligence(
 }
 
 export type HomeIntentResult =
-  | Readonly<{ kind: "MATCH"; href: string }>
-  | Readonly<{ kind: "NO_MATCH" }>;
+  Readonly<{ kind: "MATCH"; href: string }> | Readonly<{ kind: "NO_MATCH" }>;
 
 export function resolveHomeIntent(
   locale: Locale,

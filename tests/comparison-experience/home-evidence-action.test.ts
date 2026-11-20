@@ -59,15 +59,12 @@ describe("Home finding evidence deep link", () => {
       "/en/projects/PRJ-XINYI-026/compare?run=comparison-home&economics=economics-home&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-014&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
     );
 
-    expect(mocks.runComparison).toHaveBeenCalledWith(
-      { requestId: "request-1" },
-      "PRJ-XINYI-026",
-    );
-    expect(mocks.runEconomics).toHaveBeenCalledWith(
-      { requestId: "request-1" },
-      "comparison-home",
-      ["PRJ-NEIHU-021", "PRJ-ZHONGSHAN-018", "PRJ-NANJING-014"],
-    );
+    expect(mocks.runComparison).toHaveBeenCalledWith({ requestId: "request-1" }, "PRJ-XINYI-026");
+    expect(mocks.runEconomics).toHaveBeenCalledWith({ requestId: "request-1" }, "comparison-home", [
+      "PRJ-NEIHU-021",
+      "PRJ-ZHONGSHAN-018",
+      "PRJ-NANJING-014",
+    ]);
   });
 
   it("drops an unsafe claim selector rather than reflecting it into the route", async () => {

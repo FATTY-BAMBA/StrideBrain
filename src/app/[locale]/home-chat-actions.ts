@@ -8,9 +8,17 @@ import { comparisonHref } from "@/modules/comparison-experience/route-state";
 import { getComparisonCopy } from "@/modules/comparison-experience/copy";
 import type { Stage4ComparisonResult } from "@/modules/comparisons/domain/contracts";
 import type { Stage5EconomicsResult } from "@/modules/economics/domain/contracts";
-import type { EvidencePanelOutcome, EvidencePanelSelection } from "@/modules/evidence-panel/contracts";
+import type {
+  EvidencePanelOutcome,
+  EvidencePanelSelection,
+} from "@/modules/evidence-panel/contracts";
 import { isSupportedLocale, type Locale } from "@/modules/localization/config";
-import type { HomeChatCitation, HomeChatContext, HomeChatState, HomeChatTurn } from "@/modules/home-intelligence/chat-contracts";
+import type {
+  HomeChatCitation,
+  HomeChatContext,
+  HomeChatState,
+  HomeChatTurn,
+} from "@/modules/home-intelligence/chat-contracts";
 
 function append(
   state: HomeChatState,
@@ -122,10 +130,7 @@ async function claimCitations(
         authority: source.authorityLabel,
         ...(source.supportedValueLabel ? { supportedValue: source.supportedValueLabel } : {}),
         conditions: source.conditionLabels,
-        preview:
-          source.preview.state === "STRUCTURED"
-            ? source.preview.fields
-            : Object.freeze([]),
+        preview: source.preview.state === "STRUCTURED" ? source.preview.fields : Object.freeze([]),
         fullHref,
       }),
     ),
@@ -145,10 +150,7 @@ async function comparisonBundle(
 ): Promise<ComparisonBundle | null> {
   if (remembered.comparisonRunId) {
     const existing = await services.getComparison.execute(runtime, remembered.comparisonRunId);
-    if (
-      existing.kind === "COMPLETE" &&
-      existing.result.activeContext.projectKey === projectKey
-    ) {
+    if (existing.kind === "COMPLETE" && existing.result.activeContext.projectKey === projectKey) {
       const economics = remembered.economicsRunId
         ? await services.getEconomics.execute(runtime, remembered.economicsRunId)
         : null;
@@ -185,14 +187,11 @@ function nextContext(
   });
 }
 
-function projectMentioned(
-  normalized: string,
-  name: string,
-  locale: Locale,
-): boolean {
+function projectMentioned(normalized: string, name: string, locale: Locale): boolean {
   const localized = name.toLocaleLowerCase(locale);
   if (normalized.includes(localized)) return true;
-  if (locale === "zh-TW") return localized.length >= 2 && normalized.includes(localized.slice(0, 2));
+  if (locale === "zh-TW")
+    return localized.length >= 2 && normalized.includes(localized.slice(0, 2));
   const first = localized.split(/\s+/)[0] ?? "";
   return first.length >= 4 && normalized.includes(first);
 }
@@ -206,9 +205,7 @@ function comparableReply(
   const strongest = match.strongestFactors
     .slice(0, 3)
     .map((factor) => copy.factors[factor.factorKey]);
-  const differences = match.differences
-    .slice(0, 2)
-    .map((factor) => copy.factors[factor.factorKey]);
+  const differences = match.differences.slice(0, 2).map((factor) => copy.factors[factor.factorKey]);
   return Object.freeze({
     text:
       locale === "zh-TW"
@@ -521,8 +518,7 @@ export async function askHomeAction(
     stone?.forecastVariance.state === "VALUE"
       ? percent(stone.forecastVariance.variancePercent)
       : null;
-  const quotePct =
-    quoteVariance?.state === "VALUE" ? percent(quoteVariance.variancePercent) : null;
+  const quotePct = quoteVariance?.state === "VALUE" ? percent(quoteVariance.variancePercent) : null;
 
   if (stoneIntent || followupStone) {
     const claimKey = "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE";
@@ -677,20 +673,20 @@ export async function askHomeAction(
           ? `Lighting is about ${lightingPct}% above the eligible historical quoted-price baseline. But the historical actual-cost sample is insufficient, so I can’t call it an actual overrun. ${citationMarkers(lightingIndexed)}`
           : "There isn’t enough evidence to state a reliable lighting quote variance."
       : followupQuote
-      ? locale === "zh-TW"
-        ? quotePct
-          ? `因為目前報價是和選取相似專案的歷史報價基準比較；換算後約高 ${quotePct}%。這是檢視訊號，不是報價錯誤的結論。${citationMarkers(overallIndexed)}`
-          : "目前沒有足夠資料可以可靠說明整體報價差異。"
-        : quotePct
-          ? `Because the current quote is being compared with the selected comparable projects’ historical quoted-price baseline; after normalization it is about ${quotePct}% higher. That is a review signal, not proof the quote is wrong. ${citationMarkers(overallIndexed)}`
-          : "There isn’t enough evidence to explain a reliable overall quote variance."
-      : locale === "zh-TW"
-        ? quotePct
-          ? `目前報價比選取的歷史報價基準高約 ${quotePct}%。先把它當成需要檢視的訊號，而不是錯誤結論。${citationMarkers(overallIndexed)}`
-          : "目前沒有足夠資料可以可靠計算整體報價差異。"
-        : quotePct
-          ? `The current quote is about ${quotePct}% above the selected historical quoted-price baseline. Treat that as a review signal, not a conclusion that the quote is wrong. ${citationMarkers(overallIndexed)}`
-          : "There isn’t enough evidence to state a reliable overall quote variance.";
+        ? locale === "zh-TW"
+          ? quotePct
+            ? `因為目前報價是和選取相似專案的歷史報價基準比較；換算後約高 ${quotePct}%。這是檢視訊號，不是報價錯誤的結論。${citationMarkers(overallIndexed)}`
+            : "目前沒有足夠資料可以可靠說明整體報價差異。"
+          : quotePct
+            ? `Because the current quote is being compared with the selected comparable projects’ historical quoted-price baseline; after normalization it is about ${quotePct}% higher. That is a review signal, not proof the quote is wrong. ${citationMarkers(overallIndexed)}`
+            : "There isn’t enough evidence to explain a reliable overall quote variance."
+        : locale === "zh-TW"
+          ? quotePct
+            ? `目前報價比選取的歷史報價基準高約 ${quotePct}%。先把它當成需要檢視的訊號，而不是錯誤結論。${citationMarkers(overallIndexed)}`
+            : "目前沒有足夠資料可以可靠計算整體報價差異。"
+          : quotePct
+            ? `The current quote is about ${quotePct}% above the selected historical quoted-price baseline. Treat that as a review signal, not a conclusion that the quote is wrong. ${citationMarkers(overallIndexed)}`
+            : "There isn’t enough evidence to state a reliable overall quote variance.";
 
     const bullets: string[] = [];
     if (lightingPct) {

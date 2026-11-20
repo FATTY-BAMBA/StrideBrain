@@ -15,8 +15,12 @@ describe("Home chat server/client state boundary", () => {
   it("does not import client state from a use-server module", () => {
     const chat = source("src/components/demo-value/home-chat.tsx");
     const actions = source("src/app/[locale]/home-chat-actions.ts");
-    expect(chat).toContain('import { initialHomeChatState } from "@/modules/home-intelligence/chat-contracts"');
-    expect(chat).not.toMatch(/import\s*\{[^}]*initialHomeChatState[^}]*\}\s*from\s*["']@\/app\/\[locale\]\/home-chat-actions["']/);
+    expect(chat).toContain(
+      'import { initialHomeChatState } from "@/modules/home-intelligence/chat-contracts"',
+    );
+    expect(chat).not.toMatch(
+      /import\s*\{[^}]*initialHomeChatState[^}]*\}\s*from\s*["']@\/app\/\[locale\]\/home-chat-actions["']/,
+    );
     expect(actions).toMatch(/^"use server";/);
     expect(actions).not.toContain("export const initialHomeChatState");
   });

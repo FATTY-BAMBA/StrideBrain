@@ -120,7 +120,7 @@
   border: 1px solid rgba(30, 92, 65, 0.16);
   border-radius: var(--radius-sm);
   padding: 15px;
-  background: rgba(255,255,255,0.72);
+  background: rgba(255, 255, 255, 0.72);
 }
 .finding strong {
   font-size: 0.95rem;

@@ -1,7 +1,12 @@
 import { notFound } from "next/navigation";
 import { FoundationPage } from "@/components/ui/foundation-page";
 import { ProjectList } from "@/components/projects/project-list";
-import { loadDemoValueContext } from "@/lib/server/demo-value-context";
+import {
+  createProjectListService,
+  createProjectWorkspaceService,
+} from "@/lib/server/project-workspace-services";
+import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
+import type { ProjectListOutcome } from "@/modules/projects/application/list-authorized-projects";
 import { buildHomeIntelligence } from "@/modules/home-intelligence/home-intelligence";
 import { getCatalog } from "@/modules/localization/catalog";
 import { isSupportedLocale } from "@/modules/localization/config";
@@ -15,12 +20,36 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
   if (!isSupportedLocale(rawLocale)) notFound();
 
   const catalog = getCatalog(rawLocale);
-  const context = await loadDemoValueContext(rawLocale);
-  const intelligence = buildHomeIntelligence(rawLocale, context);
-  const outcome =
-    context.projects.length > 0
-      ? ({ kind: "AVAILABLE" as const, projects: context.projects })
-      : ({ kind: "UNAVAILABLE" as const });
+  let outcome: ProjectListOutcome = { kind: "UNAVAILABLE" };
+  let memory: ReturnType<typeof buildHomeIntelligence>["memory"] = [];
+  try {
+    const identity = await resolveServerRuntimeContext();
+    if (identity) {
+      const runtime = { ...identity, locale: rawLocale };
+      outcome = await createProjectListService().execute(runtime);
+      if (outcome.kind === "AVAILABLE" && identity.dataMode === "DEMO_SYNTHETIC") {
+        const active = outcome.projects.find((project) => project.active);
+        if (active) {
+          try {
+            const result = await createProjectWorkspaceService().execute(
+              runtime,
+              active.businessKey,
+            );
+            if (result.kind === "AVAILABLE") {
+              memory = buildHomeIntelligence(rawLocale, {
+                projects: outcome.projects,
+                workspace: result.workspace,
+              }).memory;
+            }
+          } catch {
+            // Optional memory enrichment never hides an authorized project list.
+          }
+        }
+      }
+    }
+  } catch {
+    // Failed identity/list reads are non-disclosing.
+  }
 
   return (
     <FoundationPage
@@ -33,7 +62,7 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
       }
     >
       <ProjectList locale={rawLocale} outcome={outcome} />
-      {intelligence.memory.length ? (
+      {memory.length ? (
         <section aria-labelledby="project-memory-title" style={{ marginTop: 32 }}>
           <h2 id="project-memory-title" style={{ fontSize: "1.1rem", marginBottom: 8 }}>
             {rawLocale === "zh-TW" ? "已完成專案" : "Completed project memory"}
@@ -53,7 +82,7 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
               gap: 10,
             }}
           >
-            {intelligence.memory.map((project) => (
+            {memory.map((project) => (
               <li
                 key={project.name}
                 style={{
