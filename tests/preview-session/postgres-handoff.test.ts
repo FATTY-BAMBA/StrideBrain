@@ -19,7 +19,7 @@ describeDatabase("Preview handoff with existing PostgreSQL session and authoriza
       const repository = new PrismaDemoSessionRepository(
         database as unknown as PrismaDemoSessionDatabase,
       );
-      const code = randomBytes(32).toString("base64url");
+      const code = `STRIDEBRAIN2026-01-${randomBytes(2).toString("hex").toUpperCase()}`;
       const secret = randomBytes(32).toString("base64url");
       const origin = "https://sb034-preview.example.test";
       const dependencies = {
