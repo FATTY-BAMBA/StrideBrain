@@ -88,7 +88,7 @@ describe("authorized read-only Home composition", () => {
       const host = render(
         await Home({ params: Promise.resolve({ locale }), searchParams: Promise.resolve({}) }),
       );
-      expect(host.querySelectorAll('input[name="q"]')).toHaveLength(1);
+      expect(host.querySelectorAll('textarea[name="message"]')).toHaveLength(1);
       expect(host.querySelectorAll('button[type="submit"]')).toHaveLength(1);
       expect(host.textContent).toContain("Allowed project");
       expect(host.querySelector('a[href*="/knowledge"]')).toBeNull();
@@ -98,16 +98,16 @@ describe("authorized read-only Home composition", () => {
     },
   );
 
-  it("shows a safe fallback when the composer cannot match a query", () => {
+  it("renders a conversational StrideBrain surface instead of redirecting search controls", () => {
     const host = render(
       createElement(ValueLaunchpad, {
         locale: "en",
         context: { projects, workspace },
-        unmatchedQuery: "write my payroll tax return",
       }),
     );
-    expect(host.textContent).toContain("I can’t answer that directly yet");
-    expect(host.querySelectorAll('a[href*="?q="]').length).toBeGreaterThanOrEqual(5);
+    expect(host.textContent).toContain("Ask StrideBrain");
+    expect(host.querySelector('textarea[name="message"]')).not.toBeNull();
+    expect(host.querySelector('input[name="q"]')).toBeNull();
   });
 
   it("does not disclose fixture identity when no project is authorized", () => {
