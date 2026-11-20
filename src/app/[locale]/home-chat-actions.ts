@@ -78,10 +78,9 @@ async function claimCitations(
 ): Promise<readonly HomeChatCitation[]> {
   const structural = await services.getComparison.execute(runtime, comparisonRunId);
   const economics = await services.getEconomics.execute(runtime, economicsRunId);
-  if (structural.kind !== "COMPLETE" || !economics || !("run" in economics)) return [];
-  const economicsResult = "result" in economics ? economics.result : economics.run ? economics : null;
-  if (!economicsResult || economicsResult.run.comparisonRunId !== structural.result.run.id) return [];
-  const freshness = await services.getFreshness.check(runtime, structural.result, economicsResult);
+  if (structural.kind !== "COMPLETE" || !economics) return [];
+  if (economics.run.comparisonRunId !== structural.result.run.id) return [];
+  const freshness = await services.getFreshness.check(runtime, structural.result, economics);
   const selection: EvidencePanelSelection = {
     mode: "CLAIM",
     comparisonRunId,
