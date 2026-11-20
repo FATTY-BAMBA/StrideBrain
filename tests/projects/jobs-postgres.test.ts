@@ -26,6 +26,11 @@ import {
   type PrismaDemoSessionDatabase,
 } from "@/repositories/prisma/prisma-demo-session-repository";
 import { jobContext, jobInput } from "./job-fixture";
+import { ListAuthorizedProjects } from "@/modules/projects/application/list-authorized-projects";
+import {
+  PrismaProjectListRepository,
+  type PrismaProjectListReader,
+} from "@/repositories/prisma/prisma-project-list-repository";
 
 const originalURL = process.env.DATABASE_URL;
 const databaseName = `stridebrain_sb041_${randomUUID().replaceAll("-", "")}`;
@@ -112,6 +117,19 @@ postgres("SB-041 real PostgreSQL transactions and tenant boundaries", () => {
     expect(await database.quote.count({ where: { projectId: stored.id } })).toBe(0);
     const context = await actor();
     expect(context.assignedProjectIds?.has(stored.id)).toBe(true);
+    const list = new ListAuthorizedProjects(
+      new PrismaProjectListRepository(database as unknown as PrismaProjectListReader),
+    );
+    const own = await list.execute(context);
+    expect(own.kind === "AVAILABLE" && own.projects).toContainEqual({
+      businessKey: input.businessKey,
+      name: input.name,
+      active: true,
+      stage: "QUOTE_REVIEW",
+    });
+    expect(
+      JSON.stringify(await list.execute(await actor("membership_northern_owner"))),
+    ).not.toContain(input.businessKey);
     const comparison = new RunComparableProjectAnalysis(
       new PrismaProjectRepository(database as unknown as PrismaProjectReader),
       new PrismaComparableProjectRepository(database as unknown as PrismaComparableProjectDatabase),

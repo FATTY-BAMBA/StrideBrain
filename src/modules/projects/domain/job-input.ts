@@ -141,6 +141,8 @@ export function validateCreateProject(
   };
   for (const key of ["businessKey", "clientBusinessKey"] as const)
     if (input[key] && !BUSINESS_KEY.test(input[key])) errors[key] = "invalid";
+  // The static creation route owns this path segment.
+  if (input.businessKey === "new") errors.businessKey = "invalid";
   if (
     input.areaQuantity &&
     (!/^\d{1,15}(\.\d{1,3})?$/.test(input.areaQuantity) || !/[1-9]/.test(input.areaQuantity))

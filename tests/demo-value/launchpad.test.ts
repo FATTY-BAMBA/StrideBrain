@@ -44,7 +44,14 @@ const workspace = {
   evidence: [],
   openActions: [],
 } as unknown as ProjectWorkspaceDTO;
-const projects = [{ businessKey: "PROJECT/allowed", name: "Allowed project", active: true }];
+const projects = [
+  {
+    businessKey: "PROJECT/allowed",
+    name: "Allowed project",
+    active: true,
+    stage: "QUOTE_REVIEW" as const,
+  },
+];
 
 function render(node: ReactNode) {
   const host = document.createElement("main");

@@ -52,7 +52,9 @@ describe("Projects entry server page and semantic navigation", () => {
       const name = locale === "en" ? "Xinyi Flagship Renovation" : "信義旗艦店裝修";
       boundary.execute.mockResolvedValue({
         kind: "AVAILABLE",
-        projects: [{ businessKey: "PRJ-XINYI-026", name, active: true }],
+        projects: [
+          { businessKey: "PRJ-XINYI-026", name, active: true, stage: "QUOTE_REVIEW" as const },
+        ],
       });
       const host = render(await ProjectsPage({ params: Promise.resolve({ locale }) }));
       expect(boundary.execute).toHaveBeenCalledExactlyOnceWith({ ...trusted, locale });
@@ -63,17 +65,17 @@ describe("Projects entry server page and semantic navigation", () => {
       expect(link.tabIndex).toBe(0);
       link.focus();
       expect(document.activeElement).toBe(link);
-      expect(link.querySelector("h2")?.textContent).toBe(name);
+      expect(link.querySelector("h3")?.textContent).toBe(name);
       expect(link.querySelector("button,input,a")).toBeNull();
       expect(link.hasAttribute("onclick")).toBe(false);
-      expect(host.querySelector("ul[aria-label]")).not.toBeNull();
+      expect(host.querySelector("ul[aria-labelledby]")).not.toBeNull();
       expect(host.textContent).not.toMatch(
         /ACTIVE|QUOTE_REVIEW|programmeWeeks|Horizon Atelier|禾序空間/,
       );
     },
   );
   it.each(["en", "zh-TW"] as const)(
-    "uses identical neutral empty and unavailable presentation in %s",
+    "shows empty stages only for an available authorized list in %s",
     (locale) => {
       const a = renderToStaticMarkup(
         createElement(ProjectList, { locale, outcome: { kind: "AVAILABLE", projects: [] } }),
@@ -81,8 +83,9 @@ describe("Projects entry server page and semantic navigation", () => {
       const b = renderToStaticMarkup(
         createElement(ProjectList, { locale, outcome: { kind: "UNAVAILABLE" } }),
       );
-      expect(a).toBe(b);
-      expect(a).not.toMatch(/Xinyi|信義|PRJ-|count|href=/);
+      expect(a).toContain(locale === "en" ? "No jobs in this stage." : "此階段尚無專案。");
+      expect(b).not.toContain("stage-QUOTE_REVIEW");
+      expect(a).not.toMatch(/Xinyi|信義|PRJ-|href=/);
     },
   );
   it.each([null, undefined])(
@@ -127,13 +130,64 @@ describe("Projects entry server page and semantic navigation", () => {
         outcome: {
           kind: "AVAILABLE",
           projects: [
-            { businessKey: "PROJECT/one?role=admin", name: "Allowed project", active: false },
+            {
+              businessKey: "PROJECT/one?role=admin",
+              name: "Allowed project",
+              active: false,
+              stage: "COMPLETE" as const,
+            },
           ],
         },
       }),
     );
     expect(host.querySelector("a")?.getAttribute("href")).toBe(
       "/zh-TW/projects/PROJECT%2Fone%3Frole%3Dadmin",
+    );
+  });
+});
+
+describe("Stage groups and write controls", () => {
+  it.each(["en", "zh-TW"] as const)("groups each authorized entry once in %s", async (locale) => {
+    boundary.execute.mockResolvedValue({
+      kind: "AVAILABLE",
+      projects: [
+        { businessKey: "JOB-NEW", name: "New synthetic job", active: true, stage: "QUOTE_REVIEW" },
+        {
+          businessKey: "JOB-OLD",
+          name: "Completed synthetic job",
+          active: false,
+          stage: "COMPLETE",
+        },
+      ],
+    });
+    const host = render(await ProjectsPage({ params: Promise.resolve({ locale }) }));
+    expect(host.querySelector('[aria-labelledby="stage-QUOTE_REVIEW"] a')?.textContent).toContain(
+      "New synthetic job",
+    );
+    expect(host.querySelector('[aria-labelledby="stage-COMPLETE"] a')?.textContent).toContain(
+      "Completed synthetic job",
+    );
+    expect(host.querySelectorAll("a")).toHaveLength(2);
+    expect(host.querySelectorAll("section[aria-labelledby]")).toHaveLength(8);
+    expect(host.querySelector("form")).toBeNull();
+    expect(host.querySelector('a[href$="/new"]')).toBeNull();
+  });
+  it("offers creation and stage controls only with trusted write capabilities", async () => {
+    boundary.resolve.mockResolvedValue({
+      ...trusted,
+      capabilities: new Set(["project:read", "project:create", "project:update"]),
+    });
+    boundary.execute.mockResolvedValue({
+      kind: "AVAILABLE",
+      projects: [
+        { businessKey: "JOB", name: "Synthetic job", active: true, stage: "QUOTE_REVIEW" },
+      ],
+    });
+    const host = render(await ProjectsPage({ params: Promise.resolve({ locale: "en" }) }));
+    expect(host.querySelector('a[href="/en/projects/new"]')).not.toBeNull();
+    expect(host.querySelector('select[name="stage"]')).not.toBeNull();
+    expect(host.querySelector('input[name="expectedStage"]')?.getAttribute("value")).toBe(
+      "QUOTE_REVIEW",
     );
   });
 });

@@ -56,6 +56,7 @@ describe("Job creation validation and application boundary", () => {
     { name: "x".repeat(201) },
     { locationCity: "x".repeat(121) },
     { businessKey: "../unsafe" },
+    { businessKey: "new" },
     { idempotencyKey: "unsafe" },
   ])("rejects unsupported or unbounded values: %j", (values) => {
     expect(validateCreateProject({ ...jobInput(), ...values }).kind).toBe("INVALID");

@@ -12,6 +12,7 @@ const xinyi: ProjectListRecord = {
   nameEn: "Xinyi Flagship Renovation",
   nameZhTw: "信義旗艦店裝修",
   status: "ACTIVE",
+  stage: "QUOTE_REVIEW",
 };
 function context(overrides: Partial<RuntimeContext> = {}): RuntimeContext {
   return {
@@ -44,6 +45,7 @@ describe("ListAuthorizedProjects authorization before presentation", () => {
             businessKey: xinyi.businessKey,
             name: locale === "en" ? xinyi.nameEn : xinyi.nameZhTw,
             active: true,
+            stage: "QUOTE_REVIEW" as const,
           },
         ],
       });
@@ -101,7 +103,14 @@ describe("ListAuthorizedProjects authorization before presentation", () => {
       });
     expect(await service([hidden, xinyi]).useCase.execute(context())).toEqual({
       kind: "AVAILABLE",
-      projects: [{ businessKey: xinyi.businessKey, name: xinyi.nameEn, active: true }],
+      projects: [
+        {
+          businessKey: xinyi.businessKey,
+          name: xinyi.nameEn,
+          active: true,
+          stage: "QUOTE_REVIEW" as const,
+        },
+      ],
     });
   });
   it("never forwards financial/evidence data, internal IDs, or hidden counts", async () => {
@@ -115,7 +124,14 @@ describe("ListAuthorizedProjects authorization before presentation", () => {
     const result = await service([row]).useCase.execute(context());
     expect(result).toEqual({
       kind: "AVAILABLE",
-      projects: [{ businessKey: xinyi.businessKey, name: xinyi.nameEn, active: true }],
+      projects: [
+        {
+          businessKey: xinyi.businessKey,
+          name: xinyi.nameEn,
+          active: true,
+          stage: "QUOTE_REVIEW" as const,
+        },
+      ],
     });
   });
   it("returns a safe empty outcome without inventing fixture entries", async () => {
@@ -150,6 +166,7 @@ describe("Prisma project navigation query", () => {
         nameEn: true,
         nameZhTw: true,
         status: true,
+        stage: true,
       },
     });
   });

@@ -20,6 +20,7 @@ export type PrismaProjectListReader = {
         nameEn: true;
         nameZhTw: true;
         status: true;
+        stage: true;
       };
     }): Promise<ProjectListRecord[]>;
   };
@@ -50,6 +51,7 @@ export class PrismaProjectListRepository implements ProjectListRepositoryPort {
         nameEn: true,
         nameZhTw: true,
         status: true,
+        stage: true,
       },
     });
   }

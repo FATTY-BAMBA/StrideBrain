@@ -19,8 +19,18 @@ const workspace = {
 
 const context: DemoValueContext = {
   projects: [
-    { businessKey: "PRJ-XINYI-026", name: "Xinyi Flagship Renovation", active: true },
-    { businessKey: "PRJ-NEIHU-021", name: "Neihu Tech Flagship", active: false },
+    {
+      businessKey: "PRJ-XINYI-026",
+      name: "Xinyi Flagship Renovation",
+      active: true,
+      stage: "QUOTE_REVIEW" as const,
+    },
+    {
+      businessKey: "PRJ-NEIHU-021",
+      name: "Neihu Tech Flagship",
+      active: false,
+      stage: "COMPLETE" as const,
+    },
   ],
   workspace,
 };

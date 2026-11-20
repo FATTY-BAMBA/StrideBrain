@@ -1,11 +1,13 @@
 import { AuthorizationService } from "@/modules/authorization/authorization-service";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import type { ProjectListRepositoryPort } from "@/repositories/ports/project-list-repository";
+import type { ProjectStage } from "@/modules/projects/domain/job-input";
 
 export type ProjectEntryDTO = Readonly<{
   businessKey: string;
   name: string;
   active: boolean;
+  stage: ProjectStage;
 }>;
 
 export type ProjectListOutcome =
@@ -34,6 +36,7 @@ export class ListAuthorizedProjects {
             businessKey: row.businessKey,
             name: context.locale === "zh-TW" ? row.nameZhTw : row.nameEn,
             active: row.status === "ACTIVE",
+            stage: row.stage,
           }),
         );
       return Object.freeze({ kind: "AVAILABLE", projects: Object.freeze(projects) });

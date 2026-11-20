@@ -6,13 +6,14 @@
   "deliverySequence": {
     "A": "VERIFIED_LOCALLY",
     "B": "VERIFIED_LOCALLY",
-    "C": "IN_PROGRESS"
+    "C": "IMPLEMENTED_TESTING"
   },
   "verified": [
     "49 focused unit/repository tests",
     "9 PostgreSQL transaction/security/comparison tests",
     "TypeScript",
-    "Bilingual creation screen and direct server-action tests"
+    "Bilingual creation screen and direct server-action tests",
+    "Stage screen/action and existing project/home regressions"
   ],
   "notVerified": [
     "Preview acceptance"

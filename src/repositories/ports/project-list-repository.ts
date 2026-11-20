@@ -1,4 +1,5 @@
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
+import type { ProjectStage } from "@/modules/projects/domain/job-input";
 
 export type ProjectListRecord = Readonly<{
   id: string;
@@ -7,6 +8,7 @@ export type ProjectListRecord = Readonly<{
   nameEn: string;
   nameZhTw: string;
   status: string;
+  stage: ProjectStage;
 }>;
 
 /** Minimal navigation read; never loads commercial or evidence relations. */
