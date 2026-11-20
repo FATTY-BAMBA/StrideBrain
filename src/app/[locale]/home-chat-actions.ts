@@ -718,8 +718,6 @@ export async function askHomeAction(
         ? percent(lighting.quoteVariance.variancePercent)
         : null;
 
-    const lightingActualInsufficient = lighting?.actualHistory.state === "INSUFFICIENT";
-
     const text = lightingIntent
       ? locale === "zh-TW"
         ? lightingPct
