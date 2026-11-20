@@ -2,212 +2,172 @@ import Link from "next/link";
 import type { Route } from "next";
 import type { DemoValueContext } from "@/lib/server/demo-value-context";
 import type { Locale } from "@/modules/localization/config";
-import { getValueCopy, stageLabel, warningLabel } from "@/modules/demo-value/copy";
-import { comparisonHref } from "@/modules/comparison-experience/route-state";
+import { buildHomeIntelligence } from "@/modules/home-intelligence/home-intelligence";
+import { stageLabel } from "@/modules/demo-value/copy";
 import styles from "./value-launchpad.module.css";
 
-export function PlannedAssistance({ locale }: { locale: Locale }) {
-  const copy = getValueCopy(locale);
-  return (
-    <section className={styles.planned} aria-labelledby="planned-title">
-      <div>
-        <h2 id="planned-title">{copy.plannedTitle}</h2>
-        <p>{copy.plannedDescription}</p>
-      </div>
-      <ul>
-        {copy.plannedItems.map((item) => (
-          <li key={item}>
-            <span>{item}</span>
-            <small>{copy.planned}</small>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-}
+const questions = {
+  en: [
+    "Have we done something similar before?",
+    "Which past projects used imported stone?",
+    "What looks unusual in this quotation?",
+    "What supports the imported-stone difference?",
+    "What should I review next?",
+    "What actions are still open?",
+  ],
+  "zh-TW": [
+    "我們以前做過類似的專案嗎？",
+    "哪些過往專案使用過進口石材？",
+    "這份報價有哪些需要留意的地方？",
+    "進口石材的差異有哪些佐證？",
+    "接下來應該先檢視什麼？",
+    "還有哪些未完成事項？",
+  ],
+} as const;
 
 export function ValueLaunchpad({
   locale,
-  surface,
   context,
+  unmatchedQuery,
 }: {
   locale: Locale;
-  surface: "home" | "knowledge" | "stridebrain";
   context: DemoValueContext;
+  unmatchedQuery?: string;
 }) {
-  const copy = getValueCopy(locale);
   const workspace = context.workspace;
+  const intelligence = buildHomeIntelligence(locale, context);
   const base = workspace
     ? `/${locale}/projects/${encodeURIComponent(workspace.project.businessKey)}`
     : null;
-  const compare = workspace?.permissions.canRunComparison
-    ? comparisonHref(locale, workspace.project.businessKey)
-    : null;
-  const tasks =
-    surface === "home"
-      ? [
-          {
-            title: copy.compare,
-            description: copy.compareDescription,
-            href: compare,
-            action: copy.compareFirst,
-          },
-          {
-            title: copy.quote,
-            description: copy.quoteDescription,
-            href: base ? `${base}#commercial-position` : null,
-            action: copy.quoteContext,
-          },
-          {
-            title: copy.evidence,
-            description: copy.evidenceDescription,
-            href: compare,
-            action: copy.compareFirst,
-          },
-          {
-            title: copy.knowledge,
-            description: copy.knowledgeTaskDescription,
-            href: `/${locale}/knowledge${workspace ? `?project=${encodeURIComponent(workspace.project.businessKey)}` : ""}`,
-            action: copy.knowledge,
-          },
-        ]
-      : [
-          {
-            title: surface === "knowledge" ? copy.similar : copy.compare,
-            description: copy.compareDescription,
-            href: compare,
-            action: copy.compareFirst,
-          },
-          {
-            title: surface === "knowledge" ? copy.current : copy.quote,
-            description: copy.quoteDescription,
-            href: base ? `${base}#commercial-position` : null,
-            action: copy.quoteContext,
-          },
-          {
-            title: surface === "knowledge" ? copy.records : copy.next,
-            description: copy.recordsDescription,
-            href: base ? `${base}#project-attention` : null,
-            action: copy.attention,
-          },
-          ...(surface === "stridebrain"
-            ? [
-                {
-                  title: copy.actions,
-                  description: copy.actionsDescription,
-                  href: base ? `${base}/actions` : null,
-                  action: copy.openActions,
-                },
-              ]
-            : []),
-        ];
+  const copy =
+    locale === "zh-TW"
+      ? {
+          eyebrow: "找到資料。掌握狀況。做出判斷。採取行動。",
+          title: "今天想知道什麼，或先完成什麼？",
+          placeholder: "搜尋專案、材料、供應商、文件，或問一個支援的問題…",
+          submit: "查找",
+          supported: "你可以試著問",
+          noMatch: "目前還不能直接回答這個問題。可以先從最接近的支援問題開始：",
+          current: "目前專案",
+          open: "開啟專案",
+          actions: "未完成事項",
+          memory: "公司過往經驗",
+          memoryHelp: "StrideBrain 會用這些已完成專案來比較目前工作。",
+          match: "相似度",
+        }
+      : {
+          eyebrow: "Find. Understand. Decide. Act.",
+          title: "What do you want to know or get done?",
+          placeholder: "Search projects, materials, suppliers or documents, or ask a supported question…",
+          submit: "Find",
+          supported: "Try asking",
+          noMatch: "I can’t answer that directly yet. Start with the closest supported question:",
+          current: "Current project",
+          open: "Open project",
+          actions: "open action",
+          memory: "Company memory",
+          memoryHelp: "StrideBrain uses these completed projects to compare current work.",
+          match: "match",
+        };
+
   return (
-    <div className={styles.page} data-surface={surface}>
+    <div className={styles.page}>
       <header className={styles.heading}>
-        {surface === "home" ? <p className="eyebrow">{copy.framing}</p> : null}
-        <h1>
-          {surface === "home"
-            ? copy.homeTitle
-            : surface === "knowledge"
-              ? copy.knowledgeTitle
-              : copy.brainTitle}
-        </h1>
-        <p>
-          {surface === "home"
-            ? copy.homeDescription
-            : surface === "knowledge"
-              ? copy.knowledgeDescription
-              : copy.brainDescription}
-        </p>
+        <p className="eyebrow">{copy.eyebrow}</p>
+        <h1>{copy.title}</h1>
       </header>
-      {workspace && base ? (
-        <section className={styles.current} aria-labelledby="current-project-title">
-          <div>
-            <p className="eyebrow">{surface === "home" ? copy.continue : copy.context}</p>
-            <h2 id="current-project-title">{workspace.project.name.display}</h2>
-            <p>
-              {stageLabel(locale, workspace.project.stage)}
-              {workspace.project.programmeWeeks
-                ? ` · ${workspace.project.programmeWeeks} ${locale === "en" ? "weeks" : "週"}`
-                : ""}
-            </p>
+
+      <section className={styles.composer} aria-label={copy.title}>
+        <form method="get">
+          <label className={styles.srOnly} htmlFor="home-query">
+            {copy.title}
+          </label>
+          <div className={styles.composerRow}>
+            <input
+              id="home-query"
+              name="q"
+              type="search"
+              placeholder={copy.placeholder}
+              defaultValue={unmatchedQuery}
+              autoComplete="off"
+            />
+            <button type="submit">{copy.submit}</button>
           </div>
-          <Link className={styles.primary} href={base as Route}>
-            {copy.openProject} <span aria-hidden="true">→</span>
-          </Link>
-        </section>
-      ) : (
-        <section className={styles.empty}>
-          <h2>{copy.noProject}</h2>
-          <p>{copy.noAccess}</p>
-          <Link href={`/${locale}/projects`}>{copy.chooseProject} →</Link>
-        </section>
-      )}
-      {context.projects.length > 1 ? (
-        <nav className={styles.projectChoices} aria-label={copy.chooseProject}>
-          {context.projects.map((project) => (
-            <Link
-              key={project.businessKey}
-              aria-current={
-                project.businessKey === workspace?.project.businessKey ? "page" : undefined
-              }
-              href={
-                `/${locale}${surface === "home" ? "" : `/${surface}`}?project=${encodeURIComponent(project.businessKey)}` as Route
-              }
-            >
-              {project.name}
+        </form>
+        {unmatchedQuery ? <p className={styles.fallback}>{copy.noMatch}</p> : null}
+        <div className={styles.questionList} aria-label={copy.supported}>
+          <span>{copy.supported}</span>
+          {questions[locale].map((question) => (
+            <Link key={question} href={`/${locale}?q=${encodeURIComponent(question)}` as Route}>
+              {question}
             </Link>
           ))}
-        </nav>
-      ) : null}
-      <section aria-labelledby="tasks-title">
-        <div className={styles.sectionHeading}>
-          <h2 id="tasks-title">{surface === "knowledge" ? copy.knowledgeTasks : copy.tasks}</h2>
-          {surface !== "home" ? <p>{copy.bounded}</p> : null}
-        </div>
-        <div className={styles.taskGrid}>
-          {tasks.map((task, index) => {
-            const content = (
-              <>
-                <span className={styles.taskIndex} aria-hidden="true">
-                  0{index + 1}
-                </span>
-                <h3>{task.title}</h3>
-                <p>{task.description}</p>
-                <span className={styles.taskAction}>
-                  {task.href ? task.action : workspace ? copy.restricted : copy.chooseProject}
-                  {task.href ? " →" : ""}
-                </span>
-              </>
-            );
-            return task.href ? (
-              <Link className={styles.task} key={task.title} href={task.href as Route}>
-                {content}
-              </Link>
-            ) : (
-              <article className={styles.task} key={task.title} data-unavailable>
-                {content}
-              </article>
-            );
-          })}
         </div>
       </section>
-      {surface === "home" && workspace ? (
-        <section className={styles.attention} aria-labelledby="attention-title">
-          <h2 id="attention-title">{copy.attention}</h2>
-          {workspace.warnings.length ? (
-            <ul>
-              {workspace.warnings.map((warning) => (
-                <li key={warning}>{warningLabel(locale, warning)}</li>
+
+      {workspace && base ? (
+        <section className={styles.projectCard} aria-labelledby="current-project-title">
+          <div className={styles.projectHeader}>
+            <div>
+              <p className="eyebrow">{copy.current}</p>
+              <h2 id="current-project-title">{workspace.project.name.display}</h2>
+              <p className={styles.projectMeta}>
+                {stageLabel(locale, workspace.project.stage)}
+                {workspace.project.programmeWeeks
+                  ? ` · ${workspace.project.programmeWeeks} ${locale === "en" ? "weeks" : "週"}`
+                  : ""}
+              </p>
+            </div>
+            <Link className={styles.primary} href={base as Route}>
+              {copy.open} <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+
+          {intelligence.findings.length ? (
+            <div className={styles.findings}>
+              {intelligence.findings.map((finding) => (
+                <Link className={styles.finding} href={finding.href as Route} key={finding.id}>
+                  <strong>{finding.title}</strong>
+                  <span>{finding.detail}</span>
+                  <small>{finding.check}</small>
+                </Link>
               ))}
-            </ul>
-          ) : (
-            <p>{copy.attentionEmpty}</p>
-          )}
-          <Link href={`${base}#project-attention` as Route}>{copy.openProject} →</Link>
+            </div>
+          ) : null}
+
+          {intelligence.openActionCount > 0 ? (
+            <Link className={styles.actionLink} href={`${base}/actions` as Route}>
+              {intelligence.openActionCount} {copy.actions} <span aria-hidden="true">→</span>
+            </Link>
+          ) : null}
         </section>
       ) : null}
-      {surface !== "knowledge" ? <PlannedAssistance locale={locale} /> : null}
+
+      {intelligence.memory.length ? (
+        <section className={styles.memory} aria-labelledby="company-memory-title">
+          <div className={styles.memoryHeader}>
+            <div>
+              <h2 id="company-memory-title">{copy.memory}</h2>
+              <p>{copy.memoryHelp}</p>
+            </div>
+            <Link href={`/${locale}/projects` as Route}>
+              {locale === "zh-TW" ? "查看全部專案" : "View all projects"} →
+            </Link>
+          </div>
+          <ul>
+            {intelligence.memory.map((project) => (
+              <li key={project.name}>
+                <span>{project.name}</span>
+                {project.score ? (
+                  <small>
+                    {project.score}% {copy.match}
+                  </small>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
     </div>
   );
 }
