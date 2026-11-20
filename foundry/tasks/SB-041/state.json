@@ -5,13 +5,14 @@
   "state": "IN_PROGRESS",
   "deliverySequence": {
     "A": "VERIFIED_LOCALLY",
-    "B": "IN_PROGRESS",
-    "C": "PENDING"
+    "B": "VERIFIED_LOCALLY",
+    "C": "IN_PROGRESS"
   },
   "verified": [
     "49 focused unit/repository tests",
     "9 PostgreSQL transaction/security/comparison tests",
-    "TypeScript"
+    "TypeScript",
+    "Bilingual creation screen and direct server-action tests"
   ],
   "notVerified": [
     "Preview acceptance"
