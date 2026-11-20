@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { runComparisonAction } from "@/app/[locale]/projects/[projectKey]/compare/actions";
+import { HomeChat } from "./home-chat";
 import type { Route } from "next";
 import type { DemoValueContext } from "@/lib/server/demo-value-context";
 import type { Locale } from "@/modules/localization/config";
@@ -7,33 +8,12 @@ import { buildHomeIntelligence } from "@/modules/home-intelligence/home-intellig
 import { stageLabel } from "@/modules/demo-value/copy";
 import styles from "./value-launchpad.module.css";
 
-const questions = {
-  en: [
-    "Have we done something similar before?",
-    "Which past projects used imported stone?",
-    "What looks unusual in this quotation?",
-    "What supports the imported-stone difference?",
-    "What should I review next?",
-    "What actions are still open?",
-  ],
-  "zh-TW": [
-    "我們以前做過類似的專案嗎？",
-    "哪些過往專案使用過進口石材？",
-    "這份報價有哪些需要留意的地方？",
-    "進口石材的差異有哪些佐證？",
-    "接下來應該先檢視什麼？",
-    "還有哪些未完成事項？",
-  ],
-} as const;
-
 export function ValueLaunchpad({
   locale,
-  context,
-  unmatchedQuery,
+  context
 }: {
   locale: Locale;
   context: DemoValueContext;
-  unmatchedQuery?: string;
 }) {
   const workspace = context.workspace;
   const intelligence = buildHomeIntelligence(locale, context);
@@ -78,33 +58,7 @@ export function ValueLaunchpad({
         <h1>{copy.title}</h1>
       </header>
 
-      <section className={styles.composer} aria-label={copy.title}>
-        <form method="get">
-          <label className={styles.srOnly} htmlFor="home-query">
-            {copy.title}
-          </label>
-          <div className={styles.composerRow}>
-            <input
-              id="home-query"
-              name="q"
-              type="search"
-              placeholder={copy.placeholder}
-              defaultValue={unmatchedQuery}
-              autoComplete="off"
-            />
-            <button type="submit">{copy.submit}</button>
-          </div>
-        </form>
-        {unmatchedQuery ? <p className={styles.fallback}>{copy.noMatch}</p> : null}
-        <div className={styles.questionList} aria-label={copy.supported}>
-          <span>{copy.supported}</span>
-          {questions[locale].map((question) => (
-            <Link key={question} href={`/${locale}?q=${encodeURIComponent(question)}` as Route}>
-              {question}
-            </Link>
-          ))}
-        </div>
-      </section>
+      <HomeChat locale={locale} />
 
       {workspace && base ? (
         <section className={styles.projectCard} aria-labelledby="current-project-title">
