@@ -34,3 +34,12 @@ Apply `20261121060000_project_jobs` before serving this revision; the new Prisma
 Stages track progress only: selecting Complete does not mark a project historically completed, set a completion date, reconcile costs, issue quotes or create work items. Entered job/client names are retained as entered in both display fields, with no invented translation. Current supported intake is commercial retail, m² and TWD.
 
 No new baseline fixture jobs were needed: the service and browser tests create jobs through the same application path. Existing synthetic clients and historical projects are reused for comparison checks.
+
+
+## Hosted status at publication
+
+One draft pull request: [#43](https://github.com/FATTY-BAMBA/StrideBrain/pull/43), targeting `main`. Implementation commit: `96924ae1be03be5d3e23c029063cebd309fc60df`.
+
+The linked `stridebrain-sb034-preview` project attempted a Git deployment of this commit, then canceled it. Its existing Ignored Build Step permits only preview commit `50cebbf93ce56d11bb823a8d97a8a1ce91ffda39` and returns exit code 0 for this branch. [Deployment and build logs](https://vercel.com/prime-stride-ai/stridebrain-sb034-preview/YESKeYrdbAsYXYa6HtsXypvbCM5M). The GitHub Vercel status says success for that cancellation; it is **not** proof of a working SB-041 preview.
+
+No Vercel configuration, hosted database, migration or session was changed. Hosted acceptance requires a preview configuration that permits the SB-041 commit and the Jobs migration on its intended synthetic database. The PR remains draft pending that gate. GitHub CI was running when this publication record was written; its current result is on the PR.

@@ -2,7 +2,7 @@
   "taskId": "SB-041",
   "issueUrl": "https://github.com/FATTY-BAMBA/StrideBrain/issues/41",
   "branch": "build/sb-041-jobs",
-  "state": "LOCAL_VERIFICATION_PASSED",
+  "state": "DRAFT_PR_OPEN_PENDING_HOSTED_ACCEPTANCE",
   "deliverySequence": {
     "A": "VERIFIED_LOCALLY",
     "B": "VERIFIED_LOCALLY",
@@ -25,5 +25,14 @@
   "dataMode": "DEMO_SYNTHETIC",
   "baseline": "0266174",
   "verificationReport": "verification.md",
-  "publication": "PENDING_ONE_PULL_REQUEST"
+  "publication": "ONE_DRAFT_PULL_REQUEST_OPEN",
+  "pullRequest": "https://github.com/FATTY-BAMBA/StrideBrain/pull/43",
+  "implementationCommit": "96924ae1be03be5d3e23c029063cebd309fc60df",
+  "githubCi": "PENDING_AT_PUBLICATION",
+  "hostedPreview": {
+    "status": "CANCELED_BY_EXISTING_IGNORED_BUILD_STEP",
+    "deployment": "https://vercel.com/prime-stride-ai/stridebrain-sb034-preview/YESKeYrdbAsYXYa6HtsXypvbCM5M",
+    "reason": "Existing project builds only preview commit 50cebbf93ce56d11bb823a8d97a8a1ce91ffda39; SB-041 is not permitted by that pin.",
+    "configurationChanged": false
+  }
 }
