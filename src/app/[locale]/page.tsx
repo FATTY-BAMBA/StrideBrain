@@ -4,13 +4,14 @@ import { loadDemoValueContext } from "@/lib/server/demo-value-context";
 import { isSupportedLocale } from "@/modules/localization/config";
 import { previewSessionOrigin } from "@/modules/preview-session/config";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
+import { resolveHomeIntent } from "@/modules/home-intelligence/home-intelligence";
 
 export default async function Page({
   params,
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ project?: string | string[] }>;
+  searchParams: Promise<{ project?: string | string[]; q?: string | string[] }>;
 }) {
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
@@ -25,5 +26,10 @@ export default async function Page({
     locale,
     typeof search.project === "string" ? search.project : undefined,
   );
-  return <ValueLaunchpad locale={locale} surface="home" context={context} />;
+  const query = typeof search.q === "string" ? search.q : "";
+  if (query) {
+    const intent = resolveHomeIntent(locale, query, context);
+    if (intent.kind === "MATCH") redirect(intent.href);
+  }
+  return <ValueLaunchpad locale={locale} context={context} unmatchedQuery={query || undefined} />;
 }
