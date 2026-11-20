@@ -92,6 +92,7 @@ export function comparisonHref(
     outcome?: string | undefined;
     requestId?: string | undefined;
     missingFields?: readonly string[] | undefined;
+    evidenceClaimKey?: string | undefined;
   }> = {},
 ): string {
   const params = new URLSearchParams();
@@ -103,6 +104,10 @@ export function comparisonHref(
   if (state.outcome) params.set("outcome", state.outcome);
   if (state.requestId) params.set("requestId", state.requestId);
   if (state.missingFields?.length) params.set("missing", state.missingFields.join(","));
+  if (state.evidenceClaimKey && SAFE_IDENTIFIER.test(state.evidenceClaimKey)) {
+    params.set("evidenceMode", "claim");
+    params.set("evidenceClaim", state.evidenceClaimKey);
+  }
   const query = params.toString();
   return `/${locale}/projects/${encodeURIComponent(projectKey)}/compare${query ? `?${query}` : ""}`;
 }

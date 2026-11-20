@@ -25,5 +25,5 @@ export default async function Page({
     locale,
     typeof search.project === "string" ? search.project : undefined,
   );
-  return <ValueLaunchpad locale={locale} surface="home" context={context} />;
+  return <ValueLaunchpad locale={locale} context={context} />;
 }

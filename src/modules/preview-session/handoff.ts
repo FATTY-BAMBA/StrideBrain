@@ -6,6 +6,8 @@ import type { DemoSessionRepositoryPort } from "@/modules/runtime-context/sessio
 import { SignedDemoIdentityContext } from "@/modules/runtime-context/signed-demo-identity-context";
 import { previewInvitation, previewSessionOrigin } from "./config";
 
+const PILOT_INVITATION_CODE = /^STRIDEBRAIN2026-\d{2}-[A-Z0-9]{4}$/;
+
 /** Constant-space, per-instance backstop. Hosted edge limiting is also required. */
 export function createAttemptBudget(limit = 20, windowMs = 60_000) {
   let started = 0;
@@ -128,7 +130,7 @@ export async function handlePreviewSession(
     const digest = createHash("sha256").update(supplied).digest();
     if (
       !timingSafeEqual(digest, Buffer.from(invitation.digest, "hex")) ||
-      !/^[A-Za-z0-9_-]{43}$/.test(supplied)
+      !PILOT_INVITATION_CODE.test(supplied)
     )
       return response(locale, "failure");
     const repository = dependencies.repository();
