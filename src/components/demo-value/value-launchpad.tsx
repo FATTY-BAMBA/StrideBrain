@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { runComparisonAction } from "@/app/[locale]/projects/[projectKey]/compare/actions";
 import type { Route } from "next";
 import type { DemoValueContext } from "@/lib/server/demo-value-context";
 import type { Locale } from "@/modules/localization/config";
@@ -126,11 +127,16 @@ export function ValueLaunchpad({
           {intelligence.findings.length ? (
             <div className={styles.findings}>
               {intelligence.findings.map((finding) => (
-                <Link className={styles.finding} href={finding.href as Route} key={finding.id}>
-                  <strong>{finding.title}</strong>
-                  <span>{finding.detail}</span>
-                  <small>{finding.check}</small>
-                </Link>
+                <form action={runComparisonAction} key={finding.id}>
+                  <input type="hidden" name="locale" value={locale} />
+                  <input type="hidden" name="projectKey" value={workspace.project.businessKey} />
+                  <input type="hidden" name="evidenceClaim" value={finding.claimKey} />
+                  <button className={styles.finding} type="submit">
+                    <strong>{finding.title}</strong>
+                    <span>{finding.detail}</span>
+                    <small>{finding.check}</small>
+                  </button>
+                </form>
               ))}
             </div>
           ) : null}
