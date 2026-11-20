@@ -58,6 +58,7 @@ function redirectOutcome(
 
 export async function runComparisonAction(formData: FormData): Promise<never> {
   const { locale, projectKey } = actionContext(formData);
+  const evidenceClaimKey = safeKey(field(formData, "evidenceClaim"));
   const context = await resolveServerRuntimeContext();
   if (!context) redirectOutcome(locale, projectKey, "SESSION_REQUIRED");
 
@@ -92,6 +93,7 @@ export async function runComparisonAction(formData: FormData): Promise<never> {
           comparisonRunId: structural.result.run.id,
           economicsRunId: economics.result.run.id,
           selectedProjectKeys: economics.result.selectedProjectKeys,
+          ...(evidenceClaimKey ? { evidenceClaimKey } : {}),
         }),
       ),
     );
