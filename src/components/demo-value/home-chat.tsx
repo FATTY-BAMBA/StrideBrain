@@ -2,10 +2,8 @@
 
 import Link from "next/link";
 import { useActionState } from "react";
-import {
-  askHomeAction,
-  initialHomeChatState,
-} from "@/app/[locale]/home-chat-actions";
+import { askHomeAction } from "@/app/[locale]/home-chat-actions";
+import { initialHomeChatState } from "@/modules/home-intelligence/chat-contracts";
 import type { Locale } from "@/modules/localization/config";
 import styles from "./value-launchpad.module.css";
 
