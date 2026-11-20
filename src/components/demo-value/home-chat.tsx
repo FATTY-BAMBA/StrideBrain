@@ -70,6 +70,55 @@ export function HomeChat({ locale }: { locale: Locale }) {
                 ))}
               </ul>
             ) : null}
+            {turn.citations?.length ? (
+              <section className={styles.chatSources} aria-label={locale === "zh-TW" ? "此回答使用的來源" : "Sources used for this answer"}>
+                <span className={styles.chatSourcesLabel}>
+                  {locale === "zh-TW" ? "此回答使用的來源" : "Sources"}
+                </span>
+                <div className={styles.citationList}>
+                  {turn.citations.map((citation) => (
+                    <details className={styles.citation} key={citation.sourceKey}>
+                      <summary>
+                        <span className={styles.citationIndex}>[{citation.index}]</span>
+                        <span>{citation.title}</span>
+                      </summary>
+                      <div className={styles.citationPreview}>
+                        <div className={styles.citationMeta}>
+                          <span>{citation.sourceType}</span>
+                          {citation.project ? <span>{citation.project}</span> : null}
+                          <span>{citation.authority}</span>
+                        </div>
+                        {citation.supportedValue ? (
+                          <p className={styles.citationValue}>{citation.supportedValue}</p>
+                        ) : null}
+                        <dl className={styles.citationFields}>
+                          {citation.preview.map((field) => (
+                            <div key={`${field.label}-${field.value}`}>
+                              <dt>{field.label}</dt>
+                              <dd>{field.value}</dd>
+                            </div>
+                          ))}
+                          <div>
+                            <dt>{locale === "zh-TW" ? "來源位置" : "Location"}</dt>
+                            <dd>{citation.locator}</dd>
+                          </div>
+                        </dl>
+                        {citation.conditions.length ? (
+                          <div className={styles.citationConditions}>
+                            {citation.conditions.map((condition) => (
+                              <span key={condition}>{condition}</span>
+                            ))}
+                          </div>
+                        ) : null}
+                        <Link className={styles.chatAction} href={citation.fullHref}>
+                          {locale === "zh-TW" ? "開啟完整佐證" : "Open full evidence"} <span aria-hidden="true">→</span>
+                        </Link>
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              </section>
+            ) : null}
             {turn.action ? (
               <Link className={styles.chatAction} href={turn.action.href}>
                 {turn.action.label} <span aria-hidden="true">→</span>
