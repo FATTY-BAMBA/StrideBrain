@@ -37,7 +37,6 @@ export function buildHomeIntelligence(
   const workspace = context.workspace;
   if (!workspace) return { findings: [], memory: [], openActionCount: 0 };
 
-  const compare = comparisonHref(locale, workspace.project.businessKey);
   const findings: readonly HomeFinding[] = workspace.project.demoData
     ? locale === "zh-TW"
       ? [
