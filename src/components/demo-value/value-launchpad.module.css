@@ -200,8 +200,14 @@
   .composer {
     padding: 14px;
   }
-  .composerRow {
+  .composerRow,
+  .chatComposer {
     grid-template-columns: 1fr;
+  }
+  .assistantMessage,
+  .userMessage,
+  .chatWelcome {
+    max-width: 100%;
   }
   .projectCard {
     padding: 18px;
@@ -214,4 +220,121 @@
     width: 100%;
     justify-content: space-between;
   }
+}
+
+.chat {
+  display: grid;
+  gap: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: 18px;
+}
+.chatThread {
+  display: grid;
+  gap: 12px;
+  min-height: 110px;
+}
+.chatWelcome,
+.assistantMessage,
+.userMessage {
+  display: grid;
+  gap: 8px;
+  max-width: 82%;
+  border-radius: 16px;
+  padding: 13px 15px;
+}
+.chatWelcome,
+.assistantMessage {
+  justify-self: start;
+  background: var(--surface-subtle);
+  border: 1px solid var(--line);
+}
+.chatWelcome span,
+.assistantMessage p,
+.assistantMessage li {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+.userMessage {
+  justify-self: end;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+.userMessage p {
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.assistantMessage ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.chatAction {
+  width: fit-content;
+  color: var(--accent-strong);
+  font-weight: 750;
+  font-size: 0.85rem;
+}
+.chatComposer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: end;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+.chatComposer textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 56px;
+  max-height: 160px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font: inherit;
+  background: var(--surface-subtle);
+}
+.chatComposer button {
+  min-height: 48px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  padding: 0 18px;
+  background: var(--accent-strong);
+  color: white;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+.chatComposer button:disabled,
+.chatSuggestions button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+.chatSuggestions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.chatSuggestions > span {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-right: 4px;
+}
+.chatSuggestions form {
+  display: inline-flex;
+}
+.chatSuggestions button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: var(--surface-subtle);
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.thinking {
+  color: var(--muted);
+  font-size: 0.82rem;
 }
