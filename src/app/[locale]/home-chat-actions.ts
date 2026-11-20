@@ -6,12 +6,28 @@ import { loadDemoValueContext } from "@/lib/server/demo-value-context";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
 import { comparisonHref } from "@/modules/comparison-experience/route-state";
 import { isSupportedLocale, type Locale } from "@/modules/localization/config";
+import type { EvidencePanelOutcome, EvidencePanelSelection } from "@/modules/evidence-panel/contracts";
+
+export type HomeChatCitation = Readonly<{
+  index: number;
+  sourceKey: string;
+  title: string;
+  sourceType: string;
+  project?: string;
+  locator: string;
+  authority: string;
+  supportedValue?: string;
+  conditions: readonly string[];
+  preview: readonly Readonly<{ label: string; value: string }>[];
+  fullHref: Route;
+}>;
 
 export type HomeChatTurn = Readonly<{
   id: string;
   role: "user" | "assistant";
   text: string;
   bullets?: readonly string[];
+  citations?: readonly HomeChatCitation[];
   action?: Readonly<{ label: string; href: Route }>;
 }>;
 
@@ -32,6 +48,81 @@ function localizedName(locale: Locale, value: { nameEn: string; nameZhTw: string
 function percent(value?: string): string | null {
   if (!value || !Number.isFinite(Number(value))) return null;
   return Math.abs(Number(value)).toFixed(0);
+}
+
+function evidenceHref(
+  locale: Locale,
+  projectKey: string,
+  comparisonRunId: string,
+  economicsRunId: string,
+  selectedProjectKeys: readonly string[],
+  claimKey: string,
+): Route {
+  return comparisonHref(locale, projectKey, {
+    comparisonRunId,
+    economicsRunId,
+    selectedProjectKeys,
+    evidenceClaimKey: claimKey,
+  }) as Route;
+}
+
+async function claimCitations(
+  services: ReturnType<typeof createComparisonServices>,
+  runtime: NonNullable<Awaited<ReturnType<typeof resolveServerRuntimeContext>>>,
+  locale: Locale,
+  projectKey: string,
+  comparisonRunId: string,
+  economicsRunId: string,
+  selectedProjectKeys: readonly string[],
+  claimKey: string,
+): Promise<readonly HomeChatCitation[]> {
+  const structural = await services.getComparison.execute(runtime, comparisonRunId);
+  const economics = await services.getEconomics.execute(runtime, economicsRunId);
+  if (structural.kind !== "COMPLETE" || !economics || !("run" in economics)) return [];
+  const economicsResult = "result" in economics ? economics.result : economics.run ? economics : null;
+  if (!economicsResult || economicsResult.run.comparisonRunId !== structural.result.run.id) return [];
+  const freshness = await services.getFreshness.check(runtime, structural.result, economicsResult);
+  const selection: EvidencePanelSelection = {
+    mode: "CLAIM",
+    comparisonRunId,
+    enrichmentRunId: economicsRunId,
+    claimKey,
+  };
+  const outcome: EvidencePanelOutcome = await services.getEvidencePanel.execute(
+    runtime,
+    selection,
+    locale,
+    freshness,
+  );
+  if (outcome.kind !== "READY") return [];
+  const fullHref = evidenceHref(
+    locale,
+    projectKey,
+    comparisonRunId,
+    economicsRunId,
+    selectedProjectKeys,
+    claimKey,
+  );
+  return Object.freeze(
+    outcome.view.sources.slice(0, 4).map((source, index) =>
+      Object.freeze({
+        index: index + 1,
+        sourceKey: source.sourceKey,
+        title: source.title,
+        sourceType: source.objectTypeLabel,
+        ...(source.projectLabel ? { project: source.projectLabel } : {}),
+        locator: source.locatorLabel,
+        authority: source.authorityLabel,
+        ...(source.supportedValueLabel ? { supportedValue: source.supportedValueLabel } : {}),
+        conditions: source.conditionLabels,
+        preview:
+          source.preview.state === "STRUCTURED"
+            ? source.preview.fields
+            : Object.freeze([]),
+        fullHref,
+      }),
+    ),
+  );
 }
 
 export async function askHomeAction(
@@ -217,6 +308,18 @@ export async function askHomeAction(
           evidenceClaimKey: claimKey,
         })
       : compareHref;
+    const citations = economics
+      ? await claimCitations(
+          services,
+          runtime,
+          locale,
+          workspace.project.businessKey,
+          comparison.run.id,
+          economics.run.id,
+          economics.selectedProjectKeys,
+          claimKey,
+        )
+      : [];
     return append(previous, [
       userTurn,
       {
@@ -234,6 +337,7 @@ export async function askHomeAction(
           locale === "zh-TW"
             ? ["先確認規格是否不同", "再確認數量與供應商條件", "最後查看歷史來源"]
             : ["Check specification differences", "Check quantity and supplier terms", "Then inspect the historical sources"],
+        ...(citations.length ? { citations } : {}),
         action: {
           label: locale === "zh-TW" ? "開啟確切佐證" : "Open exact evidence",
           href: href as Route,
@@ -257,6 +361,18 @@ export async function askHomeAction(
       lighting?.quoteVariance.state === "VALUE"
         ? percent(lighting.quoteVariance.variancePercent)
         : null;
+    const citations = economics
+      ? await claimCitations(
+          services,
+          runtime,
+          locale,
+          workspace.project.businessKey,
+          comparison.run.id,
+          economics.run.id,
+          economics.selectedProjectKeys,
+          claimKey,
+        )
+      : [];
     return append(previous, [
       userTurn,
       {
@@ -285,8 +401,9 @@ export async function askHomeAction(
               ],
             }
           : {}),
+        ...(citations.length ? { citations } : {}),
         action: {
-          label: locale === "zh-TW" ? "查看報價佐證" : "Open quote evidence",
+          label: locale === "zh-TW" ? "查看完整佐證" : "Open full evidence",
           href: href as Route,
         },
       },
