@@ -86,20 +86,6 @@ function citationMarkers(citations: readonly HomeChatCitation[]): string {
   return citations.map((citation) => `[${citation.index}]`).join("");
 }
 
-function reindexCitations(
-  citations: readonly HomeChatCitation[],
-  offset: number,
-): readonly HomeChatCitation[] {
-  return Object.freeze(
-    citations.map((citation, index) =>
-      Object.freeze({
-        ...citation,
-        index: offset + index + 1,
-      }),
-    ),
-  );
-}
-
 function uniqueCitations(
   groups: readonly (readonly HomeChatCitation[])[],
 ): readonly HomeChatCitation[] {
@@ -343,6 +329,7 @@ export async function askHomeAction(
     );
   if (
     evidenceFollowup &&
+    !/(stone|石材|lighting|燈具|quote|quotation|報價)/i.test(normalized) &&
     previous.context.activeClaimKey &&
     previous.context.comparisonRunId &&
     previous.context.economicsRunId &&
@@ -436,8 +423,10 @@ export async function askHomeAction(
     normalized,
   );
   const stoneIntent = /(stone|石材|material|材料)/i.test(normalized);
+  const lightingIntent = /(lighting|light fixture|燈具|照明)/i.test(normalized);
   const quoteIntent =
-    /(quote|quotation|報價|unusual|attention|review next|留意|下一步|異常)/i.test(normalized);
+    /(quote|quotation|報價|unusual|attention|review next|留意|下一步|異常)/i.test(normalized) ||
+    lightingIntent;
 
   const followupComparable =
     rememberedComparable ??
@@ -709,6 +698,7 @@ export async function askHomeAction(
       stoneSources.some((source) => source.sourceKey === citation.sourceKey),
     );
 
+    const primaryClaim = lightingIntent ? lightingClaim : overallClaim;
     const href = economics
       ? evidenceHref(
           locale,
@@ -716,7 +706,7 @@ export async function askHomeAction(
           comparison.run.id,
           economics.run.id,
           economics.selectedProjectKeys,
-          overallClaim,
+          primaryClaim,
         )
       : (compareHref as Route);
 
@@ -728,7 +718,17 @@ export async function askHomeAction(
         ? percent(lighting.quoteVariance.variancePercent)
         : null;
 
-    const text = followupQuote
+    const lightingActualInsufficient = lighting?.actualHistory.state === "INSUFFICIENT";
+
+    const text = lightingIntent
+      ? locale === "zh-TW"
+        ? lightingPct
+          ? `燈具目前報價比可用的歷史報價基準高約 ${lightingPct}%。但歷史實際成本只有不足的可用樣本，所以不能把它說成實際超支。${citationMarkers(lightingIndexed)}`
+          : "目前沒有足夠資料可以可靠計算燈具報價差異。"
+        : lightingPct
+          ? `Lighting is about ${lightingPct}% above the eligible historical quoted-price baseline. But the historical actual-cost sample is insufficient, so I can’t call it an actual overrun. ${citationMarkers(lightingIndexed)}`
+          : "There isn’t enough evidence to state a reliable lighting quote variance."
+      : followupQuote
       ? locale === "zh-TW"
         ? quotePct
           ? `因為目前報價是和選取相似專案的歷史報價基準比較；換算後約高 ${quotePct}%。這是檢視訊號，不是報價錯誤的結論。${citationMarkers(overallIndexed)}`
@@ -783,7 +783,7 @@ export async function askHomeAction(
       ],
       nextContext(previous.context, bundle, {
         lastIntent: "QUOTE",
-        activeClaimKey: overallClaim,
+        activeClaimKey: primaryClaim,
       }),
     );
   }
