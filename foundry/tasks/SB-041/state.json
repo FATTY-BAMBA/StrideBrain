@@ -1,0 +1,20 @@
+{
+  "taskId": "SB-041",
+  "issueUrl": "https://github.com/FATTY-BAMBA/StrideBrain/issues/41",
+  "branch": "build/sb-041-jobs",
+  "state": "IN_PROGRESS",
+  "deliverySequence": {
+    "A": "VERIFIED_LOCALLY",
+    "B": "IN_PROGRESS",
+    "C": "PENDING"
+  },
+  "verified": [
+    "49 focused unit/repository tests",
+    "9 PostgreSQL transaction/security/comparison tests",
+    "TypeScript"
+  ],
+  "notVerified": [
+    "Preview acceptance"
+  ],
+  "dataMode": "DEMO_SYNTHETIC"
+}

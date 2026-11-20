@@ -52,6 +52,7 @@ type ProfileProjectRow = Readonly<{
   areaQuantity: DecimalLike;
   areaUnit: string;
   currency: string;
+  commercialCategoryIds: readonly string[];
   completedAt: Date | null;
   metadataAuthority: AuthorityState;
   dataClassification: DataClassification;
@@ -206,7 +207,9 @@ function mapProfile(
     metadataAuthority: row.metadataAuthority,
     dataClassification: row.dataClassification,
     scopeCategoryIds: unique(row.scopes.map((scope) => scope.categoryId)),
-    commercialCategoryIds: unique(quote?.version.items.map((item) => item.categoryId) ?? []),
+    commercialCategoryIds: unique(
+      quote ? quote.version.items.map((item) => item.categoryId) : row.commercialCategoryIds,
+    ),
     materialIds: unique(
       row.projectMaterials.map((relationship) => relationship.material.businessKey),
     ),
@@ -233,6 +236,7 @@ function projectSelect(organizationId: string) {
     areaQuantity: true,
     areaUnit: true,
     currency: true,
+    commercialCategoryIds: true,
     completedAt: true,
     metadataAuthority: true,
     dataClassification: true,
