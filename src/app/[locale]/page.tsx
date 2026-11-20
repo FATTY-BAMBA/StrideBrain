@@ -1,3 +1,4 @@
+import type { Route } from "next";
 import { notFound, redirect } from "next/navigation";
 import { ValueLaunchpad } from "@/components/demo-value/value-launchpad";
 import { loadDemoValueContext } from "@/lib/server/demo-value-context";
@@ -29,7 +30,7 @@ export default async function Page({
   const query = typeof search.q === "string" ? search.q : "";
   if (query) {
     const intent = resolveHomeIntent(locale, query, context);
-    if (intent.kind === "MATCH") redirect(intent.href);
+    if (intent.kind === "MATCH") redirect(intent.href as Route);
   }
-  return <ValueLaunchpad locale={locale} context={context} unmatchedQuery={query || undefined} />;
+  return <ValueLaunchpad locale={locale} context={context} {...(query ? { unmatchedQuery: query } : {})} />;
 }
