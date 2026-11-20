@@ -23,8 +23,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
     const identity = await resolveServerRuntimeContext();
     if (identity) {
       outcome = await createProjectListService().execute({ ...identity, locale });
-      const readable =
-        identity.dataMode === "DEMO_SYNTHETIC" && identity.capabilities.has("project:read");
+      const readable = identity.capabilities.has("project:read");
       canCreate = readable && identity.capabilities.has("project:create");
       canUpdate = readable && identity.capabilities.has("project:update");
     }

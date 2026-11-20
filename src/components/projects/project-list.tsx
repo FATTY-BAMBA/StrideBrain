@@ -64,7 +64,7 @@ export function ProjectList({
                         {copy["projects.open"]} <span aria-hidden="true">→</span>
                       </span>
                     </Link>
-                    {canUpdate ? (
+                    {canUpdate && stage !== "COMPLETE" ? (
                       <ProjectStageForm
                         key={`${project.businessKey}:${stage}`}
                         locale={locale}

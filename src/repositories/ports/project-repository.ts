@@ -3,8 +3,18 @@ import type { CreateProjectInput, UpdateStageInput } from "@/modules/projects/do
 
 export type CreateProjectResult =
   | { kind: "CREATED"; businessKey: string }
-  | { kind: "DUPLICATE" | "CLIENT_DUPLICATE" | "CLIENT_UNAVAILABLE" | "UNAVAILABLE" };
-export type UpdateProjectStageResult = { kind: "UPDATED" } | { kind: "UNAVAILABLE" | "CONFLICT" };
+  | { kind: "DUPLICATE" | "CLIENT_DUPLICATE" | "CLIENT_UNAVAILABLE" | "UNAVAILABLE" | "CONFLICT" };
+export type UpdateProjectStageResult =
+  { kind: "UPDATED" } | { kind: "UNAVAILABLE" | "CONFLICT" | "INVALID" };
+
+export type ProjectClientRecord = Readonly<{
+  businessKey: string;
+  nameEn: string;
+  nameZhTw: string;
+}>;
+export interface ProjectClientRepositoryPort {
+  listActiveClients(context: RuntimeContext): Promise<readonly ProjectClientRecord[]>;
+}
 
 /** Writes include their audit event in the same transaction. Read-only consumers
  * retain the smaller ProjectRepositoryPort below. */

@@ -9,30 +9,31 @@
     "C": "VERIFIED_LOCALLY"
   },
   "verified": [
-    "Node 24 npm run check: 82 test files, 868 tests passed, 0 skipped; production build passed",
-    "Prisma validation, synthetic fixture reset and SQL invariants",
-    "Populated additive migration preserves existing project rows",
-    "PostgreSQL creation, pre-quote comparison, audit rollback, duplicate keys, concurrent stage writes and idempotency",
-    "English desktop and Traditional Chinese mobile browser creation, validation, grouping and stage update",
-    "Browser comparison: six ranked candidates for a job created through the screen",
-    "Viewer and foreign-organization screen/direct-request denials; denied/replayed requests write no extra rows"
+    "Node 24 npm run check: 83 test files, 887 tests passed, 0 skipped; production build passed",
+    "Isolated PostgreSQL migrations, synthetic fixture SQL invariants and populated-migration preservation",
+    "Feature data-mode gates removed; capability checks and context classification preserved; central environment gate unchanged",
+    "COMPLETE rejected in domain, direct action and adapter; no dropdown option or completed-job stage controls",
+    "Sequential/concurrent matching create retries return original success; changed input conflicts; no duplicate rows",
+    "Fixed hidden values, editable generated reference, tenant client selector and server-derived commercial categories",
+    "English desktop and Traditional Chinese mobile Chrome creation, validation, comparison, stage changes and actual request retries/denials",
+    "Client listing and writes enforce Viewer and organization boundaries; temporary browser sessions revoked"
   ],
   "notVerified": [
-    "Hosted preview acceptance on the final PR commit",
-    "Cross-browser and assistive-technology acceptance",
-    "Production operation and real customer data (out of scope)"
+    "Hosted preview acceptance on this revision",
+    "Safari/Firefox, assistive-technology acceptance and performance/accessibility audit",
+    "Production identity, real customer data and close-job flow (outside scope)"
   ],
   "dataMode": "DEMO_SYNTHETIC",
   "baseline": "0266174",
   "verificationReport": "verification.md",
   "publication": "ONE_DRAFT_PULL_REQUEST_OPEN",
   "pullRequest": "https://github.com/FATTY-BAMBA/StrideBrain/pull/43",
-  "implementationCommit": "96924ae1be03be5d3e23c029063cebd309fc60df",
-  "githubCi": "PENDING_AT_PUBLICATION",
+  "githubCi": "FINAL_COMMIT_RESULT_RECORDED_IN_PULL_REQUEST",
   "hostedPreview": {
     "status": "CANCELED_BY_EXISTING_IGNORED_BUILD_STEP",
     "deployment": "https://vercel.com/prime-stride-ai/stridebrain-sb034-preview/YESKeYrdbAsYXYa6HtsXypvbCM5M",
     "reason": "Existing project builds only preview commit 50cebbf93ce56d11bb823a8d97a8a1ce91ffda39; SB-041 is not permitted by that pin.",
     "configurationChanged": false
-  }
+  },
+  "revisionEvidence": "evidence/revision/"
 }

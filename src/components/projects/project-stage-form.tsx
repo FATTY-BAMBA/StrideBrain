@@ -4,7 +4,10 @@ import { useActionState, useId, useState } from "react";
 import { updateProjectStageAction } from "@/app/[locale]/projects/actions";
 import type { Locale } from "@/modules/localization/config";
 import { jobsCopy, projectStageLabel } from "@/modules/localization/jobs";
-import { PROJECT_STAGES, type ProjectStage } from "@/modules/projects/domain/job-input";
+import {
+  EDITABLE_PROJECT_STAGES,
+  type EditableProjectStage,
+} from "@/modules/projects/domain/job-input";
 import type { JobActionState } from "@/modules/projects/application/job-action-state";
 import styles from "./project-list.module.css";
 
@@ -16,7 +19,7 @@ export function ProjectStageForm({
 }: {
   locale: Locale;
   businessKey: string;
-  stage: ProjectStage;
+  stage: EditableProjectStage;
   idempotencyKey: string;
 }) {
   const copy = jobsCopy(locale);
@@ -34,10 +37,10 @@ export function ProjectStageForm({
         id={id}
         name="stage"
         value={selected}
-        onChange={(event) => setSelected(event.target.value as ProjectStage)}
+        onChange={(event) => setSelected(event.target.value as EditableProjectStage)}
         disabled={pending}
       >
-        {PROJECT_STAGES.map((value) => (
+        {EDITABLE_PROJECT_STAGES.map((value) => (
           <option key={value} value={value}>
             {projectStageLabel(locale, value)}
           </option>

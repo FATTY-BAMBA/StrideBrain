@@ -36,7 +36,7 @@ const en = {
   name: "Job name",
   comparisonClass: "Job class",
   subtype: "Job type",
-  areaQuantity: "Area",
+  areaQuantity: "Area (m²)",
   areaUnit: "Area unit",
   currency: "Currency",
   locationCity: "City",
@@ -47,7 +47,9 @@ const en = {
   clientBusinessKey: "Client reference",
   clientName: "New client name",
   clientType: "Client type",
-  existing: "Use an existing client reference",
+  existing: "Choose an existing client",
+  existingClient: "Existing client",
+  clientsUnavailable: "Client choices could not be loaded. Refresh the page to try again.",
   new: "Create a new client",
   RETAIL: "Retail",
   CORPORATE: "Corporate",
@@ -75,12 +77,11 @@ const en = {
     "This job changed or the request was already used. Refresh the page before trying again.",
   emptyStage: "No jobs in this stage.",
   groupDescription: "Your authorized jobs, grouped by their current stage.",
-  stageHelp:
-    "Changing the stage tracks progress. Closing the job and reconciling costs are separate steps.",
+  stageHelp: "Changing the stage tracks progress. Complete the job through the close-job flow.",
   nameHelp: "Names are saved as entered and shown in both languages.",
-  keyHelp: "Use letters, numbers, hyphens or underscores, starting with a letter or number.",
-  clientKeyHelp:
-    "Use the existing client’s reference, or enter a unique reference for a new client.",
+  keyHelp:
+    "The job reference is generated for you and can be edited. Use letters, numbers, hyphens or underscores.",
+  clientKeyHelp: "Enter a unique reference for the new client.",
 } as const;
 const zh: Record<keyof typeof en, string> = {
   newJob: "建立專案",
@@ -89,7 +90,7 @@ const zh: Record<keyof typeof en, string> = {
   name: "專案名稱",
   comparisonClass: "專案類別",
   subtype: "專案類型",
-  areaQuantity: "面積",
+  areaQuantity: "面積（m²）",
   areaUnit: "面積單位",
   currency: "幣別",
   locationCity: "城市",
@@ -100,7 +101,9 @@ const zh: Record<keyof typeof en, string> = {
   clientBusinessKey: "客戶編號",
   clientName: "新客戶名稱",
   clientType: "客戶類型",
-  existing: "使用既有客戶編號",
+  existing: "選擇既有客戶",
+  existingClient: "既有客戶",
+  clientsUnavailable: "無法載入客戶清單，請重新整理後再試。",
   new: "建立新客戶",
   RETAIL: "零售",
   CORPORATE: "企業",
@@ -127,10 +130,10 @@ const zh: Record<keyof typeof en, string> = {
   conflict: "此專案已變更或請求已使用，請重新整理後再試。",
   emptyStage: "此階段尚無專案。",
   groupDescription: "依目前階段瀏覽您有權限查看的專案。",
-  stageHelp: "變更階段用於追蹤進度；結案與成本核對為另外的步驟。",
+  stageHelp: "變更階段用於追蹤進度。請透過結案流程完成專案。",
   nameHelp: "名稱依輸入內容儲存，兩種語言皆顯示相同名稱。",
-  keyHelp: "請使用英文字母、數字、連字號或底線，並以字母或數字開頭。",
-  clientKeyHelp: "輸入既有客戶編號，或為新客戶指定未使用的編號。",
+  keyHelp: "已自動產生專案編號，可自行編輯。請使用英文字母、數字、連字號或底線。",
+  clientKeyHelp: "請為新客戶指定未使用的編號。",
 };
 export function jobsCopy(locale: Locale): Record<keyof typeof en, string> {
   return locale === "zh-TW" ? zh : en;

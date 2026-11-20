@@ -176,16 +176,20 @@ describe("Stage groups and write controls", () => {
     boundary.resolve.mockResolvedValue({
       ...trusted,
       capabilities: new Set(["project:read", "project:create", "project:update"]),
+      dataMode: "TENANT_PRIVATE",
     });
     boundary.execute.mockResolvedValue({
       kind: "AVAILABLE",
       projects: [
         { businessKey: "JOB", name: "Synthetic job", active: true, stage: "QUOTE_REVIEW" },
+        { businessKey: "CLOSED", name: "Completed job", active: false, stage: "COMPLETE" },
       ],
     });
     const host = render(await ProjectsPage({ params: Promise.resolve({ locale: "en" }) }));
     expect(host.querySelector('a[href="/en/projects/new"]')).not.toBeNull();
-    expect(host.querySelector('select[name="stage"]')).not.toBeNull();
+    expect(host.querySelectorAll('select[name="stage"]')).toHaveLength(1);
+    expect(host.querySelector('option[value="COMPLETE"]')).toBeNull();
+    expect(host.querySelector('[aria-labelledby="stage-COMPLETE"] form')).toBeNull();
     expect(host.querySelector('input[name="expectedStage"]')?.getAttribute("value")).toBe(
       "QUOTE_REVIEW",
     );

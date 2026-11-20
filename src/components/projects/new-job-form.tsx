@@ -8,26 +8,34 @@ import { projectSubtypeLabel } from "@/modules/localization/project-context";
 import type { Locale } from "@/modules/localization/config";
 import {
   CLIENT_TYPES,
-  COMMERCIAL_CATEGORIES,
+  JOB_FIXED_VALUES,
   JOB_SUBTYPES,
   SCOPE_CATEGORIES,
   type JobField,
 } from "@/modules/projects/domain/job-input";
 import type { JobActionState } from "@/modules/projects/application/job-action-state";
+import type { ProjectClientOption } from "@/modules/projects/application/list-project-clients";
 import styles from "./job-form.module.css";
 
-export function NewJobForm({ locale, idempotencyKey }: { locale: Locale; idempotencyKey: string }) {
+export function NewJobForm({
+  locale,
+  idempotencyKey,
+  businessKey,
+  clients,
+}: {
+  locale: Locale;
+  idempotencyKey: string;
+  businessKey: string;
+  clients: readonly ProjectClientOption[];
+}) {
   const copy = jobsCopy(locale);
   const [state, action, pending] = useActionState(createProjectAction, {} as JobActionState);
   const [values, setValues] = useState<Record<string, string>>({
-    comparisonClass: "COMMERCIAL_INTERIOR_FIT_OUT",
-    areaUnit: "m2",
-    currency: "TWD",
-    clientMode: "new",
+    businessKey,
+    clientMode: clients.length ? "existing" : "new",
   });
-  const [categories, setCategories] = useState<
-    Record<"scopeCategoryIds" | "commercialCategoryIds", string[]>
-  >({ scopeCategoryIds: [], commercialCategoryIds: [] });
+  const [existingClient, setExistingClient] = useState("");
+  const [categories, setCategories] = useState<string[]>([]);
   function change(key: JobField, value: string) {
     setValues((current) => ({ ...current, [key]: value }));
   }
@@ -40,7 +48,7 @@ export function NewJobForm({ locale, idempotencyKey }: { locale: Locale; idempot
     ) : null;
   }
   function field(
-    key: Exclude<JobField, "scopeCategoryIds" | "commercialCategoryIds" | "idempotencyKey">,
+    key: Exclude<JobField, "scopeCategoryIds" | "idempotencyKey">,
     maxLength: number,
     optional = false,
   ) {
@@ -63,7 +71,7 @@ export function NewJobForm({ locale, idempotencyKey }: { locale: Locale; idempot
     );
   }
   function select(
-    key: "comparisonClass" | "subtype" | "areaUnit" | "currency" | "clientMode" | "clientType",
+    key: "subtype" | "clientMode" | "clientType",
     options: readonly (readonly [string, string])[],
   ) {
     return (
@@ -89,10 +97,7 @@ export function NewJobForm({ locale, idempotencyKey }: { locale: Locale; idempot
       </div>
     );
   }
-  function categoryFields(
-    key: "scopeCategoryIds" | "commercialCategoryIds",
-    options: readonly string[],
-  ) {
+  function categoryFields(key: "scopeCategoryIds", options: readonly string[]) {
     return (
       <fieldset
         className={styles.categories}
@@ -106,15 +111,12 @@ export function NewJobForm({ locale, idempotencyKey }: { locale: Locale; idempot
               type="checkbox"
               name={key}
               value={value}
-              checked={categories[key].includes(value)}
+              checked={categories.includes(value)}
               onChange={(event) => {
                 const checked = event.target.checked;
-                setCategories((current) => ({
-                  ...current,
-                  [key]: checked
-                    ? [...current[key], value]
-                    : current[key].filter((item) => item !== value),
-                }));
+                setCategories((current) =>
+                  checked ? [...current, value] : current.filter((item) => item !== value),
+                );
               }}
             />
             {categoryLabel(locale, value)}
@@ -128,10 +130,16 @@ export function NewJobForm({ locale, idempotencyKey }: { locale: Locale; idempot
     <form action={action} noValidate className={styles.form} aria-busy={pending}>
       <input type="hidden" name="locale" value={locale} />
       <input type="hidden" name="idempotencyKey" value={idempotencyKey} />
+      {Object.entries(JOB_FIXED_VALUES).map(([name, value]) => (
+        <input key={name} type="hidden" name={name} value={value} />
+      ))}
       {state.message ? (
         <div role="alert" className={styles.error}>
           {copy[state.message]}
           {error("idempotencyKey")}
+          {error("comparisonClass")}
+          {error("areaUnit")}
+          {error("currency")}
         </div>
       ) : null}
       <fieldset disabled={pending} className={styles.body}>
@@ -143,27 +151,49 @@ export function NewJobForm({ locale, idempotencyKey }: { locale: Locale; idempot
           {copy.keyHelp} {copy.nameHelp}
         </p>
         <div className={styles.grid}>
-          {select("comparisonClass", [["COMMERCIAL_INTERIOR_FIT_OUT", copy.commercialClass]])}
           {select(
             "subtype",
             JOB_SUBTYPES.map((value) => [value, projectSubtypeLabel(locale, value)!] as const),
           )}
           {field("areaQuantity", 19)}
-          {select("areaUnit", [["m2", copy.squareMetres]])}
-          {select("currency", [["TWD", copy.taiwanDollar]])}
           {field("locationCity", 120)}
           {field("locationDistrict", 120, true)}
         </div>
-        <div className={styles.grid}>
-          {categoryFields("scopeCategoryIds", SCOPE_CATEGORIES)}
-          {categoryFields("commercialCategoryIds", COMMERCIAL_CATEGORIES)}
-        </div>
+        <p className={styles.hint}>
+          {copy.commercialClass} · {copy.taiwanDollar}
+        </p>
+        {categoryFields("scopeCategoryIds", SCOPE_CATEGORIES)}
         <div className={styles.grid}>
           {select("clientMode", [
             ["new", copy.new],
             ["existing", copy.existing],
           ])}
-          {field("clientBusinessKey", 128)}
+          {values.clientMode === "existing" ? (
+            <div className={styles.field}>
+              <label htmlFor="clientBusinessKey">{copy.existingClient}</label>
+              <select
+                id="clientBusinessKey"
+                name="clientBusinessKey"
+                value={existingClient}
+                onChange={(event) => setExistingClient(event.target.value)}
+                required
+                aria-invalid={!!state.errors?.clientBusinessKey}
+                aria-describedby={
+                  state.errors?.clientBusinessKey ? "clientBusinessKey-error" : undefined
+                }
+              >
+                <option value="">{copy.select}</option>
+                {clients.map((client) => (
+                  <option key={client.businessKey} value={client.businessKey}>
+                    {client.name} ({client.businessKey})
+                  </option>
+                ))}
+              </select>
+              {error("clientBusinessKey")}
+            </div>
+          ) : (
+            field("clientBusinessKey", 128)
+          )}
           {values.clientMode === "new" ? (
             <>
               {field("clientName", 200)}
@@ -174,7 +204,7 @@ export function NewJobForm({ locale, idempotencyKey }: { locale: Locale; idempot
             </>
           ) : null}
         </div>
-        <p className={styles.hint}>{copy.clientKeyHelp}</p>
+        {values.clientMode === "new" ? <p className={styles.hint}>{copy.clientKeyHelp}</p> : null}
         <div className={styles.actions}>
           <button className={styles.primary} type="submit">
             {pending ? copy.pending : copy.submit}

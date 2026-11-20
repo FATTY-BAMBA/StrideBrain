@@ -9,6 +9,14 @@ export const PROJECT_STAGES = [
   "COMPLETE",
 ] as const;
 export type ProjectStage = (typeof PROJECT_STAGES)[number];
+export const EDITABLE_PROJECT_STAGES = PROJECT_STAGES.filter((stage) => stage !== "COMPLETE");
+export type EditableProjectStage = (typeof EDITABLE_PROJECT_STAGES)[number];
+
+export const JOB_FIXED_VALUES = Object.freeze({
+  comparisonClass: "COMMERCIAL_INTERIOR_FIT_OUT",
+  areaUnit: "m2",
+  currency: "TWD",
+});
 
 // Canonical IDs already used by the comparison policy and reviewed taxonomy.
 export const JOB_SUBTYPES = [
@@ -34,6 +42,25 @@ export const COMMERCIAL_CATEGORIES = [
   "SIGNAGE",
   "COORDINATION",
 ] as const;
+type ScopeCategory = (typeof SCOPE_CATEGORIES)[number];
+type CommercialCategory = (typeof COMMERCIAL_CATEGORIES)[number];
+const SCOPE_TO_COMMERCIAL: Readonly<Record<ScopeCategory, CommercialCategory>> = Object.freeze({
+  SELECTIVE_DEMOLITION: "DEMOLITION_CEILING",
+  PARTITIONS_CEILINGS: "DEMOLITION_CEILING",
+  CUSTOM_MILLWORK: "CUSTOM_MILLWORK",
+  LIGHTING_ELECTRICAL: "LIGHTING_ELECTRICAL",
+  IMPORTED_STONE: "IMPORTED_STONE",
+  SIGNAGE: "SIGNAGE",
+  COORDINATION: "COORDINATION",
+});
+
+/** Called only after validating the canonical scope choices. No browser-supplied
+ * commercial list can override this mapping. */
+export function commercialCategoriesForScope(
+  scopes: readonly ScopeCategory[],
+): readonly CommercialCategory[] {
+  return [...new Set(scopes.map((scope) => SCOPE_TO_COMMERCIAL[scope]))].sort();
+}
 export const CLIENT_TYPES = ["RETAIL", "CORPORATE", "HOSPITALITY"] as const;
 export const JOB_FIELDS = [
   "businessKey",
@@ -46,7 +73,6 @@ export const JOB_FIELDS = [
   "locationCity",
   "locationDistrict",
   "scopeCategoryIds",
-  "commercialCategoryIds",
   "clientMode",
   "clientBusinessKey",
   "clientName",
@@ -101,10 +127,7 @@ export function validateCreateProject(
     if (value && !allowed.includes(value)) errors[key] = "invalid";
     return value;
   }
-  function categories(
-    key: "scopeCategoryIds" | "commercialCategoryIds",
-    allowed: readonly string[],
-  ): readonly string[] {
+  function categories(key: "scopeCategoryIds", allowed: readonly string[]): readonly string[] {
     const value = values[key];
     if (!Array.isArray(value) || !value.length) {
       errors[key] = "required";
@@ -121,18 +144,22 @@ export function validateCreateProject(
     return [...value].sort();
   }
   const clientMode = choice("clientMode", ["existing", "new"]) as "existing" | "new";
+  const scopeCategoryIds = categories(
+    "scopeCategoryIds",
+    SCOPE_CATEGORIES,
+  ) as readonly ScopeCategory[];
   const input: CreateProjectInput = {
     businessKey: text("businessKey", 128),
     name: text("name", 200),
-    comparisonClass: choice("comparisonClass", ["COMMERCIAL_INTERIOR_FIT_OUT"]),
+    comparisonClass: choice("comparisonClass", [JOB_FIXED_VALUES.comparisonClass]),
     subtype: choice("subtype", JOB_SUBTYPES),
     areaQuantity: text("areaQuantity", 19),
-    areaUnit: choice("areaUnit", ["m2"]),
-    currency: choice("currency", ["TWD"]),
+    areaUnit: choice("areaUnit", [JOB_FIXED_VALUES.areaUnit]),
+    currency: choice("currency", [JOB_FIXED_VALUES.currency]),
     locationCity: text("locationCity", 120),
     locationDistrict: text("locationDistrict", 120, false),
-    scopeCategoryIds: categories("scopeCategoryIds", SCOPE_CATEGORIES),
-    commercialCategoryIds: categories("commercialCategoryIds", COMMERCIAL_CATEGORIES),
+    scopeCategoryIds,
+    commercialCategoryIds: commercialCategoriesForScope(scopeCategoryIds),
     clientMode,
     clientBusinessKey: text("clientBusinessKey", 128),
     clientName: text("clientName", 200, clientMode === "new"),
@@ -155,7 +182,7 @@ export function validateCreateProject(
 
 export type UpdateStageInput = Readonly<{
   businessKey: string;
-  stage: ProjectStage;
+  stage: EditableProjectStage;
   expectedStage: ProjectStage;
   idempotencyKey: string;
 }>;
@@ -167,13 +194,13 @@ export function validateStageUpdate(value: unknown): UpdateStageInput | null {
     !BUSINESS_KEY.test(input.businessKey) ||
     typeof input.idempotencyKey !== "string" ||
     !IDEMPOTENCY_KEY.test(input.idempotencyKey) ||
-    !PROJECT_STAGES.includes(input.stage as ProjectStage) ||
-    !PROJECT_STAGES.includes(input.expectedStage as ProjectStage)
+    !EDITABLE_PROJECT_STAGES.includes(input.stage as EditableProjectStage) ||
+    !EDITABLE_PROJECT_STAGES.includes(input.expectedStage as EditableProjectStage)
   )
     return null;
   return {
     businessKey: input.businessKey,
-    stage: input.stage as ProjectStage,
+    stage: input.stage as EditableProjectStage,
     expectedStage: input.expectedStage as ProjectStage,
     idempotencyKey: input.idempotencyKey,
   };

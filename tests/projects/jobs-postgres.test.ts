@@ -3,6 +3,8 @@ import { randomUUID } from "node:crypto";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "../../.generated/prisma/client";
+import { ListProjectClients } from "@/modules/projects/application/list-project-clients";
+import type { UpdateStageInput } from "@/modules/projects/domain/job-input";
 import { CreateProject } from "@/modules/projects/application/create-project";
 import { UpdateProjectStage } from "@/modules/projects/application/update-project-stage";
 import { PrismaProjectWriteRepository } from "@/repositories/prisma/prisma-project-write-repository";
@@ -188,6 +190,102 @@ postgres("SB-041 real PostgreSQL transactions and tenant boundaries", () => {
       }),
     ).toBe(1);
   });
+  it("returns the original success for sequential and concurrent matching create retries", async () => {
+    const input = jobInput();
+    const context = await actor();
+    const expected = { kind: "CREATED", businessKey: input.businessKey };
+    expect(
+      await Promise.all([
+        services().create.execute(context, input),
+        services().create.execute({ ...context, requestId: randomUUID() }, input),
+      ]),
+    ).toEqual([expected, expected]);
+    expect(
+      await services().create.execute(await actor(), {
+        ...input,
+        scopeCategoryIds: [...input.scopeCategoryIds].reverse(),
+      }),
+    ).toEqual(expected);
+    const row = await project(input.businessKey);
+    expect(row.scopes).toHaveLength(input.scopeCategoryIds.length);
+    expect(row.assignments).toHaveLength(1);
+    expect(await database.project.count({ where: { businessKey: input.businessKey } })).toBe(1);
+    expect(await database.client.count({ where: { businessKey: input.clientBusinessKey } })).toBe(
+      1,
+    );
+    expect(
+      await database.auditEvent.count({
+        where: { organizationId: context.organizationId, idempotencyKey: input.idempotencyKey },
+      }),
+    ).toBe(1);
+    expect(await services().create.execute(context, { ...input, name: "Changed input" })).toEqual({
+      kind: "CONFLICT",
+    });
+    expect(await services().create.execute(await actor("membership_horizon_admin"), input)).toEqual(
+      { kind: "CONFLICT" },
+    );
+    expect(
+      await services().create.execute(await actor("membership_horizon_viewer"), input),
+    ).toEqual({ kind: "UNAVAILABLE" });
+    await database.projectAssignment.deleteMany({ where: { projectId: row.id } });
+    expect(await services().create.execute(await actor(), input)).toEqual({ kind: "UNAVAILABLE" });
+  });
+  it("preserves context classification through the same adapter path", async () => {
+    const input = jobInput();
+    const context = { ...(await actor()), dataMode: "TENANT_PRIVATE" as const };
+    expect((await services().create.execute(context, input)).kind).toBe("CREATED");
+    expect((await project(input.businessKey)).dataClassification).toBe("TENANT_PRIVATE");
+    expect(
+      await services().update.execute(context, {
+        ...input,
+        stage: "DESIGN",
+        expectedStage: "QUOTE_REVIEW",
+        idempotencyKey: randomUUID(),
+      }),
+    ).toEqual({ kind: "UPDATED" });
+  });
+  it("lists only active clients from the trusted organization and denies a Viewer", async () => {
+    const input = await create();
+    await database.client.update({
+      where: {
+        organizationId_businessKey: {
+          organizationId: "org_horizon",
+          businessKey: input.clientBusinessKey,
+        },
+      },
+      data: { active: false },
+    });
+    const list = new ListProjectClients(services().repo);
+    const own = await list.execute(await actor());
+    expect(own.kind).toBe("AVAILABLE");
+    expect(JSON.stringify(own)).toContain("CLIENT-01");
+    expect(JSON.stringify(own)).not.toContain("CLIENT-NORTH-01");
+    expect(JSON.stringify(own)).not.toContain(input.clientBusinessKey);
+    const foreign = await list.execute(await actor("membership_northern_owner"));
+    expect(JSON.stringify(foreign)).toContain("CLIENT-NORTH-01");
+    expect(JSON.stringify(foreign)).not.toContain('"CLIENT-01"');
+    const viewer = await actor("membership_horizon_viewer");
+    expect(await list.execute(viewer)).toEqual({ kind: "UNAVAILABLE" });
+    expect(await services().repo.listActiveClients(viewer)).toEqual([]);
+  });
+  it("rejects COMPLETE through both application and adapter without changing a row or audit", async () => {
+    const input = await create();
+    const context = await actor();
+    const command = {
+      ...input,
+      stage: "COMPLETE",
+      expectedStage: "QUOTE_REVIEW",
+      idempotencyKey: randomUUID(),
+    };
+    expect(await services().update.execute(context, command)).toEqual({ kind: "INVALID" });
+    expect(
+      await services().repo.updateStageWithAudit(context, command as unknown as UpdateStageInput),
+    ).toEqual({ kind: "INVALID" });
+    expect((await project(input.businessKey)).stage).toBe("QUOTE_REVIEW");
+    expect(
+      await database.auditEvent.count({ where: { idempotencyKey: command.idempotencyKey } }),
+    ).toBe(0);
+  });
   it("rejects Viewer writes by both application and adapter", async () => {
     const viewer = await actor("membership_horizon_viewer");
     const input = jobInput();
@@ -242,7 +340,7 @@ postgres("SB-041 real PostgreSQL transactions and tenant boundaries", () => {
     const input = await create();
     const command = {
       businessKey: input.businessKey,
-      stage: "COMPLETE",
+      stage: "HANDOVER",
       expectedStage: "QUOTE_REVIEW",
       idempotencyKey: randomUUID(),
     };
@@ -258,7 +356,7 @@ postgres("SB-041 real PostgreSQL transactions and tenant boundaries", () => {
       await database.auditEvent.count({ where: { idempotencyKey: command.idempotencyKey } }),
     ).toBe(1);
     expect(await project(input.businessKey)).toMatchObject({
-      stage: "COMPLETE",
+      stage: "HANDOVER",
       status: "ACTIVE",
       completedAt: null,
     });

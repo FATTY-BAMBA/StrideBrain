@@ -12,12 +12,16 @@ import { jobContext, jobInput } from "./job-fixture";
 const mocks = vi.hoisted(() => ({
   context: vi.fn(),
   create: vi.fn(),
+  listClients: vi.fn(),
   revalidate: vi.fn(),
   redirect: vi.fn(),
 }));
 vi.mock("@/lib/server/runtime-context", () => ({ resolveServerRuntimeContext: mocks.context }));
 vi.mock("@/lib/server/project-write-services", () => ({
-  createProjectWriteServices: () => ({ create: { execute: mocks.create } }),
+  createProjectWriteServices: () => ({
+    create: { execute: mocks.create },
+    listClients: { execute: mocks.listClients },
+  }),
 }));
 vi.mock("next/cache", () => ({ revalidatePath: mocks.revalidate }));
 vi.mock("next/navigation", () => ({
@@ -38,6 +42,10 @@ function form(locale = "en", values: Record<string, unknown> = jobInput()) {
 }
 beforeEach(() => {
   mocks.context.mockResolvedValue(jobContext());
+  mocks.listClients.mockResolvedValue({
+    kind: "AVAILABLE",
+    clients: [{ businessKey: "CLIENT-01", name: "Aster Retail Taiwan" }],
+  });
   mocks.create.mockResolvedValue({ kind: "CREATED", businessKey: "JOB" });
   mocks.redirect.mockImplementation(() => {
     throw new Error("REDIRECT");
@@ -54,7 +62,14 @@ describe("Create job screen and direct server action", () => {
       expect(html).toContain(copy.newJob);
       expect(html).toContain('name="scopeCategoryIds"');
       expect(html).toContain('type="checkbox"');
-      expect(html).toContain('name="commercialCategoryIds"');
+      expect(html).not.toContain('name="commercialCategoryIds"');
+      for (const key of ["comparisonClass", "areaUnit", "currency"]) {
+        expect(html).toContain(`type="hidden" name="${key}"`);
+        expect(html).not.toContain(`<select id="${key}"`);
+      }
+      expect(html).toContain('value="PRJ-');
+      expect(html).toContain('<select id="clientBusinessKey"');
+      expect(html).toContain("Aster Retail Taiwan (CLIENT-01)");
       expect(html).toContain('for="businessKey"');
       expect(html).not.toContain('name="organizationId"');
       expect(html).not.toContain("RESIDENTIAL");
@@ -79,7 +94,6 @@ describe("Create job screen and direct server action", () => {
           areaQuantity: "required",
           locationCity: "required",
           scopeCategoryIds: "required",
-          commercialCategoryIds: "required",
         },
       });
       expect(jobsCopy(locale)[state.errors!.name!]).toBe(
@@ -105,6 +119,7 @@ describe("Create job screen and direct server action", () => {
       ),
     ).toEqual({ message: "unavailable" });
     expect(mocks.create).not.toHaveBeenCalled();
+    expect(mocks.listClients).not.toHaveBeenCalled();
   });
   it("uses only the trusted organization and membership on a direct request", async () => {
     const trusted = jobContext({
@@ -142,6 +157,28 @@ describe("Create job screen and direct server action", () => {
       errors: { [field!]: code },
     });
     expect(mocks.redirect).not.toHaveBeenCalled();
+  });
+  it("surfaces changed-input retries as a conflict", async () => {
+    mocks.create.mockResolvedValue({ kind: "CONFLICT" });
+    expect(await createProjectAction({}, form())).toEqual({ message: "conflict" });
+    expect(mocks.redirect).not.toHaveBeenCalled();
+  });
+  it("loads client choices using the trusted tenant and locale without a feature data-mode gate", async () => {
+    const trusted = jobContext({ organizationId: "org_northern", dataMode: "TENANT_PRIVATE" });
+    mocks.context.mockResolvedValue(trusted);
+    const html = renderToStaticMarkup(
+      await NewProjectPage({ params: Promise.resolve({ locale: "zh-TW" }) }),
+    );
+    expect(html).toContain("<form");
+    expect(mocks.listClients).toHaveBeenCalledWith({ ...trusted, locale: "zh-TW" });
+  });
+  it("shows a visible client-list failure without a misleading empty form", async () => {
+    mocks.listClients.mockResolvedValue({ kind: "UNAVAILABLE" });
+    const html = renderToStaticMarkup(
+      await NewProjectPage({ params: Promise.resolve({ locale: "en" }) }),
+    );
+    expect(html).toContain(jobsCopy("en").clientsUnavailable);
+    expect(html).not.toContain("<form");
   });
   it("contains identity/storage failures and unauthenticated requests", async () => {
     mocks.context.mockResolvedValue(null);

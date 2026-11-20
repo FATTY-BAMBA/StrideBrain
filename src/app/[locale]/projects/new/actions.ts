@@ -18,12 +18,7 @@ export async function createProjectAction(
     const context = await resolveServerRuntimeContext();
     if (!context || !context.capabilities.has("project:create")) return { message: "unavailable" };
     const input = Object.fromEntries(
-      JOB_FIELDS.map((key) => [
-        key,
-        key === "scopeCategoryIds" || key === "commercialCategoryIds"
-          ? form.getAll(key)
-          : form.get(key),
-      ]),
+      JOB_FIELDS.map((key) => [key, key === "scopeCategoryIds" ? form.getAll(key) : form.get(key)]),
     );
     const result = await createProjectWriteServices().create.execute({ ...context, locale }, input);
     if (result.kind === "INVALID") return { message: "validation", errors: result.errors };
@@ -34,6 +29,7 @@ export async function createProjectAction(
     if (result.kind === "CLIENT_UNAVAILABLE")
       return { message: "validation", errors: { clientBusinessKey: "clientUnavailable" } };
     if (result.kind === "UNAVAILABLE") return { message: "unavailable" };
+    if (result.kind === "CONFLICT") return { message: "conflict" };
     if (result.kind === "FAILED") return { message: "failed" };
   } catch {
     return { message: "failed" };

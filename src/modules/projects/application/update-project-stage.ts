@@ -11,11 +11,7 @@ export class UpdateProjectStage {
     context: RuntimeContext,
     raw: unknown,
   ): Promise<UpdateProjectStageResult | { kind: "INVALID" | "FAILED" }> {
-    if (
-      !context.capabilities.has("project:update") ||
-      !context.capabilities.has("project:read") ||
-      context.dataMode !== "DEMO_SYNTHETIC"
-    )
+    if (!context.capabilities.has("project:update") || !context.capabilities.has("project:read"))
       return { kind: "UNAVAILABLE" };
     const input = validateStageUpdate(raw);
     if (!input) return { kind: "INVALID" };

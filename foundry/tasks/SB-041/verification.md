@@ -1,45 +1,36 @@
 # SB-041 verification
 
-Implementation delivered as A (`1849b46`), B (`3519e72`), then C (`cb64094`). Subsequent refinements preserve that sequence. Base: `0266174` on `main`. Runtime: Node 24.22.3, PostgreSQL 17, synthetic data only.
+One draft pull request: [#43](https://github.com/FATTY-BAMBA/StrideBrain/pull/43), branch `build/sb-041-jobs`, base `0266174` on `main`. Initial delivery followed A (`1849b46`), B (`3519e72`), C (`cb64094`); this revision applies the requested corrections in the same PR. Runtime: Node 24.22.3, PostgreSQL 17, synthetic data only.
 
-## Verified locally
+## Verified for the PR #43 revision
 
-- `npm run db:validate`: valid schema.
-- `npm run db:reset-fixture`: migrations, fixture seeds, tenant/authority invariants and `verify-jobs.sql` passed on an isolated SB-041 database.
-- `npm run check`: **82 files, 868 tests passed, zero skipped**, then production build passed. One pre-existing lint warning remains in `prisma.config.ts`; no lint errors.
-- The populated-migration regression checks that the additive Jobs migration preserves all pre-existing Project fields and initializes the new category array to empty. All 23 Stage-9 lineage/upgrade assertions pass.
-- PostgreSQL tests prove new/existing client handling, reviewed Project/ProjectScope creation, creator assignment, pre-quote comparison, same-transaction audit, creation/stage rollback on forced audit failure, duplicate/concurrent business keys, stage concurrency, idempotency, explicit capability denial, Viewer denial, and foreign/unassigned/deleted/missing job denial.
-- Tests exercise the server pages and direct server actions, including forged browser organization/membership/role fields, safe failures, fixed taxonomies, bounded input, field errors and localization parity.
-- Chrome against the production build: English desktop (1440×1000) and Traditional Chinese mobile (390×844) forms show field errors and preserve entered values/selections after an invalid submission. Creating through each screen persists the job and shows it under Quote review / 報價審查.
-- A screen-created job produces **six ranked candidates** through the comparison screen before any quote exists. Missing quote/financial values remain unavailable; no quote or financial record is invented.
-- The stage control moves the job from Quote review to Design. Viewer screens hide write controls; direct replay of the actual creation request is denied to a Viewer. Viewer and foreign-organization replay of the actual stage request is denied. Foreign lists do not expose the new job. Duplicate creation and stage retry produce no extra Project or AuditEvent rows.
-- `src/lib/env/server-env.ts` is unchanged. No model call, quote issuing, status completion, financial reconciliation or residential type was added.
+- `npm run check`: **83 test files, 887 tests passed, zero skipped**, followed by a successful production build. Formatting, lint and TypeScript checks passed. One existing `prisma.config.ts` lint warning remains; no lint errors.
+- PostgreSQL suites migrate and seed isolated databases and run fixture SQL invariants. The populated-migration regression preserves existing Project rows; all 23 Stage-9 lineage/upgrade assertions passed. No additional schema migration was needed for this revision.
+- All five requested feature data-mode gates were removed. Capability checks remain; creation still writes `dataClassification: context.dataMode`. Unit/page/adapter tests use both context classifications. The TENANT_PRIVATE adapter test uses synthetic data in an isolated test database, not real tenant data. `src/lib/env/server-env.ts` is unchanged from main and its rejecting environment-gate tests pass. AGENTS.md contains the requested rule.
+- Stage validation rejects COMPLETE before storage, including direct server-action and adapter calls. The dropdown excludes COMPLETE, and completed jobs have no stage controls. PostgreSQL asserts a rejected COMPLETE request changes neither project nor audit.
+- Sequential and concurrent same-key/same-input create requests return the original CREATED result and business key. Exactly one project, client, scope set, assignment and audit exist. Reordered scope input normalizes to the same request. Changed input or actor conflicts; capability/membership/project access is checked again on replay. Separate-key duplicate references still fail safely.
+- The form submits class, unit and currency as validated fixed hidden values, generates an editable job reference, and offers active clients from the trusted organization. New-client entry still works. Switching client mode preserves each choice separately. One scope list derives the commercial categories on the server: demolition and partitions/ceilings map to DEMOLITION_CEILING; the other five map directly, with deduplication. Forged commercial input cannot override the mapping.
+- Client-list use-case/adapter tests cover localization, capability denial before storage, current-organization filtering, inactive-client omission and contained database failures. Writes recheck selected clients; foreign and missing references return the same safe error.
+- Existing PostgreSQL coverage still passes for comparison before any quote, creation/stage audit rollback, concurrent business keys/stage changes, and Viewer/foreign/unassigned/deleted/missing-job denial.
 
-## Browser evidence
+## Browser verification
 
-`evidence/browser/results.json` contains the checks and screenshots. Screenshots contain synthetic data only. Temporary signed credentials and the test signing secret were kept outside the repository. All three browser sessions were revoked, credential material removed, and the local server/container stopped after verification; the isolated synthetic database is preserved.
+Chrome against the local production build: English desktop (1440×1000) and Traditional Chinese mobile (390×844). Both forms passed required-field feedback, retained input, editable reference, hidden fixed fields, one scope list, client choices, creation and Quote review grouping. English used an existing client; Traditional Chinese created a new one. Database checks confirmed fixed values and derived commercial categories.
 
-The browser emitted one 404 console message; the new pages and actions had no page exceptions or failed flow requests. A focused network diagnostic identified the missing resource as the existing `/favicon.ico` route. This is not claimed as a clean console run.
+A screen-created job returned **six ranked candidates** through comparison before a quote existed. A stage change moved it to Design. Actual server-action requests verified matching-create retry success, changed-input conflict, COMPLETE rejection and stage retry. Viewer creation and Viewer/foreign stage requests were denied. Foreign client lists contained only their own clients, and replaying the existing-client creation request in that organization failed safely. These retries and denials added no project or audit rows.
+
+`evidence/revision/` contains the current full-check log, browser results, screenshots and cleanup evidence. The two `*-simplified-form.png` files show clean initial forms; other screenshots capture the exercised flow. Earlier `evidence/browser/` and other root evidence files record the initial implementation and are superseded for changed behavior.
+
+No page exceptions or failed flow requests occurred. The browser emitted one console 404, confirmed as the existing `/favicon.ico` resource by `console-diagnostic.json`; this is not claimed as a clean console run. All three temporary browser sessions were revoked, the local credential file removed, and the local server/container stopped. The isolated synthetic database is preserved.
 
 ## Not verified
 
-- Hosted preview acceptance on the final PR commit. A successful local build is not a hosted release pass.
-- Safari/Firefox, assistive-technology testing, and a measured performance/accessibility audit.
-- Real customer data or production identity/operation, which remain out of scope and gated.
+- Hosted preview acceptance for this revision. The linked `stridebrain-sb034-preview` project previously canceled SB-041 deployments because its Ignored Build Step allows only commit `50cebbf93ce56d11bb823a8d97a8a1ce91ffda39`. [Prior deployment logs](https://vercel.com/prime-stride-ai/stridebrain-sb034-preview/YESKeYrdbAsYXYa6HtsXypvbCM5M). A GitHub Vercel status indicating success for a canceled deployment does not prove preview acceptance. No hosted configuration, migration, database or session was changed. The PR remains draft pending hosted acceptance.
+- Safari/Firefox, assistive-technology acceptance, or measured performance/accessibility auditing.
+- Production identity/operation, real customer data, or the close-job flow (outside this issue).
 
-## Review and rollout notes
+The final commit's GitHub CI result is recorded in the PR description after push; the local counts above do not imply a hosted pass.
 
-Apply `20261121060000_project_jobs` before serving this revision; the new Prisma selections require the additive columns. Keep hosted acceptance pending until the intended preview database has this migration. Existing quotes remain the source for commercial categories once present; the new field supports jobs before their first quote.
+## Rollout notes
 
-Stages track progress only: selecting Complete does not mark a project historically completed, set a completion date, reconcile costs, issue quotes or create work items. Entered job/client names are retained as entered in both display fields, with no invented translation. Current supported intake is commercial retail, m² and TWD.
-
-No new baseline fixture jobs were needed: the service and browser tests create jobs through the same application path. Existing synthetic clients and historical projects are reused for comparison checks.
-
-
-## Hosted status at publication
-
-One draft pull request: [#43](https://github.com/FATTY-BAMBA/StrideBrain/pull/43), targeting `main`. Implementation commit: `96924ae1be03be5d3e23c029063cebd309fc60df`.
-
-The linked `stridebrain-sb034-preview` project attempted a Git deployment of this commit, then canceled it. Its existing Ignored Build Step permits only preview commit `50cebbf93ce56d11bb823a8d97a8a1ce91ffda39` and returns exit code 0 for this branch. [Deployment and build logs](https://vercel.com/prime-stride-ai/stridebrain-sb034-preview/YESKeYrdbAsYXYa6HtsXypvbCM5M). The GitHub Vercel status says success for that cancellation; it is **not** proof of a working SB-041 preview.
-
-No Vercel configuration, hosted database, migration or session was changed. Hosted acceptance requires a preview configuration that permits the SB-041 commit and the Jobs migration on its intended synthetic database. The PR remains draft pending that gate. GitHub CI was running when this publication record was written; its current result is on the PR.
+Apply `20261121060000_project_jobs` before serving this PR. Existing quotes remain authoritative for commercial categories once present; the new Project field supports jobs before a first quote. Matching create retries are identified by a canonical validated-input fingerprint stored with the transactional audit event. Stage updates never complete, reopen or reconcile jobs. Entered job/client names are retained in both display fields without invented translations. Supported intake remains commercial retail, m² and TWD.

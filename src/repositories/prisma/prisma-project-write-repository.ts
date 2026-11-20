@@ -1,10 +1,12 @@
-import { randomUUID } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import type { PrismaClient, Prisma } from "../../../.generated/prisma/client";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import type { CreateProjectInput, UpdateStageInput } from "@/modules/projects/domain/job-input";
+import { JOB_FIELDS, validateStageUpdate } from "@/modules/projects/domain/job-input";
 import { categoryLabel } from "@/modules/localization/jobs";
 import type {
   CreateProjectResult,
+  ProjectClientRepositoryPort,
   ProjectWriteRepositoryPort,
   UpdateProjectStageResult,
 } from "@/repositories/ports/project-repository";
@@ -13,10 +15,25 @@ function errorCode(error: unknown): string | undefined {
   return error && typeof error === "object" && "code" in error ? String(error.code) : undefined;
 }
 
-export class PrismaProjectWriteRepository implements ProjectWriteRepositoryPort {
+export class PrismaProjectWriteRepository
+  implements ProjectWriteRepositoryPort, ProjectClientRepositoryPort
+{
   constructor(private readonly database: PrismaClient) {}
 
-  private async transaction<T>(work: (tx: Prisma.TransactionClient) => Promise<T>): Promise<T> {
+  async listActiveClients(context: RuntimeContext) {
+    if (!context.capabilities.has("project:create") || !context.capabilities.has("project:read"))
+      return [];
+    return this.database.client.findMany({
+      where: { organizationId: context.organizationId, active: true },
+      orderBy: { businessKey: "asc" },
+      select: { businessKey: true, nameEn: true, nameZhTw: true },
+    });
+  }
+
+  private async transaction<T>(
+    work: (tx: Prisma.TransactionClient) => Promise<T>,
+    retryUnique = false,
+  ): Promise<T> {
     // Serializable retries handle concurrent client/key or stage changes without
     // leaving a client, assignment, project, or audit outside the transaction.
     for (let attempt = 0; ; attempt++) {
@@ -26,7 +43,11 @@ export class PrismaProjectWriteRepository implements ProjectWriteRepositoryPort 
           timeout: 10_000,
         });
       } catch (error) {
-        if (errorCode(error) !== "P2034" || attempt >= 2) throw error;
+        if (
+          attempt >= 2 ||
+          (errorCode(error) !== "P2034" && !(retryUnique && errorCode(error) === "P2002"))
+        )
+          throw error;
       }
     }
   }
@@ -35,13 +56,16 @@ export class PrismaProjectWriteRepository implements ProjectWriteRepositoryPort 
     context: RuntimeContext,
     input: CreateProjectInput,
   ): Promise<CreateProjectResult> {
-    if (
-      !context.capabilities.has("project:create") ||
-      !context.capabilities.has("project:read") ||
-      context.dataMode !== "DEMO_SYNTHETIC"
-    )
+    if (!context.capabilities.has("project:create") || !context.capabilities.has("project:read"))
       return { kind: "UNAVAILABLE" };
     const organizationId = context.organizationId;
+    const fingerprint = createHash("sha256")
+      .update(
+        JSON.stringify(
+          [...JOB_FIELDS, "commercialCategoryIds" as const].map((key) => [key, input[key]]),
+        ),
+      )
+      .digest("hex");
     try {
       return await this.transaction(async (tx): Promise<CreateProjectResult> => {
         const member = await tx.membership.findFirst({
@@ -49,17 +73,42 @@ export class PrismaProjectWriteRepository implements ProjectWriteRepositoryPort 
           select: { id: true },
         });
         if (!member) return { kind: "UNAVAILABLE" };
-        const duplicate = await tx.project.findUnique({
-          where: { organizationId_businessKey: { organizationId, businessKey: input.businessKey } },
-          select: { id: true },
-        });
         const replay = await tx.auditEvent.findUnique({
           where: {
             organizationId_idempotencyKey: { organizationId, idempotencyKey: input.idempotencyKey },
           },
+        });
+        if (replay) {
+          const payload = replay.payload as Record<string, unknown>;
+          if (
+            replay.actorMembershipId !== context.membershipId ||
+            replay.eventType !== "PROJECT_CREATED" ||
+            replay.result !== "CREATED" ||
+            payload.inputFingerprint !== fingerprint
+          )
+            return { kind: "CONFLICT" };
+          const original = await tx.project.findFirst({
+            where: {
+              organizationId,
+              businessKey: input.businessKey,
+              deletedAt: null,
+              ...(context.role === "ORGANIZATION_ADMIN"
+                ? {}
+                : {
+                    assignments: { some: { organizationId, membershipId: context.membershipId } },
+                  }),
+            },
+            select: { id: true, businessKey: true },
+          });
+          return original && original.id === payload.projectId
+            ? { kind: "CREATED", businessKey: original.businessKey }
+            : { kind: "UNAVAILABLE" };
+        }
+        const duplicate = await tx.project.findUnique({
+          where: { organizationId_businessKey: { organizationId, businessKey: input.businessKey } },
           select: { id: true },
         });
-        if (duplicate || replay) return { kind: "DUPLICATE" };
+        if (duplicate) return { kind: "DUPLICATE" };
         let client = await tx.client.findUnique({
           where: {
             organizationId_businessKey: { organizationId, businessKey: input.clientBusinessKey },
@@ -139,12 +188,13 @@ export class PrismaProjectWriteRepository implements ProjectWriteRepositoryPort 
               clientId: client.id,
               stage: "QUOTE_REVIEW",
               metadataAuthority: "HUMAN_REVIEWED",
+              inputFingerprint: fingerprint,
             },
             result: "CREATED",
           },
         });
         return { kind: "CREATED", businessKey: input.businessKey };
-      });
+      }, true);
     } catch (error) {
       // Unique constraints are the final concurrent-creation guard. No raw SQL
       // diagnostics or other tenant's key ownership crosses this boundary.
@@ -157,12 +207,9 @@ export class PrismaProjectWriteRepository implements ProjectWriteRepositoryPort 
     context: RuntimeContext,
     input: UpdateStageInput,
   ): Promise<UpdateProjectStageResult> {
-    if (
-      !context.capabilities.has("project:update") ||
-      !context.capabilities.has("project:read") ||
-      context.dataMode !== "DEMO_SYNTHETIC"
-    )
+    if (!context.capabilities.has("project:update") || !context.capabilities.has("project:read"))
       return { kind: "UNAVAILABLE" };
+    if (!validateStageUpdate(input)) return { kind: "INVALID" };
     const organizationId = context.organizationId;
     try {
       return await this.transaction(async (tx): Promise<UpdateProjectStageResult> => {

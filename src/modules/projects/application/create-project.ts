@@ -10,11 +10,7 @@ export type CreateProjectOutcome =
 export class CreateProject {
   constructor(private readonly projects: ProjectWriteRepositoryPort) {}
   async execute(context: RuntimeContext, raw: unknown): Promise<CreateProjectOutcome> {
-    if (
-      !context.capabilities.has("project:create") ||
-      !context.capabilities.has("project:read") ||
-      context.dataMode !== "DEMO_SYNTHETIC"
-    )
+    if (!context.capabilities.has("project:create") || !context.capabilities.has("project:read"))
       return { kind: "UNAVAILABLE" };
     const validation = validateCreateProject(raw);
     if (validation.kind === "INVALID") return validation;

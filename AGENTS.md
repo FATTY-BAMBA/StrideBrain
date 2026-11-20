@@ -62,6 +62,7 @@ Everything built here is meant to run in the production application. Nothing is 
 
 ## Data and secrets
 
+- Feature code must not branch on data mode. The gate lives only in src/lib/env/server-env.ts.
 - The application runs only with `STRIDEBRAIN_DATA_MODE=DEMO_SYNTHETIC`. Do not remove that gate inside a feature task. It changes only in the Production Foundation issue.
 - This repository is public. Never commit real customer files, customer data, provider keys or tokens. Synthetic fixtures only.
 

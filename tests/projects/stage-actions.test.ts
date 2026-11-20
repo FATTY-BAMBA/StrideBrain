@@ -50,7 +50,7 @@ describe("Direct stage server-action boundary", () => {
     expect(mocks.update.mock.calls[0]![1]).not.toHaveProperty("membershipId");
     expect(mocks.revalidate).not.toHaveBeenCalled();
   });
-  it("rejects malformed stage input before storage", async () => {
+  it.each(["FREE_TEXT", "COMPLETE"])("rejects stage %s before storage", async (stage) => {
     const updateStageWithAudit = vi.fn();
     mocks.update.mockImplementation((context, input) =>
       new UpdateProjectStage({ createWithAudit: vi.fn(), updateStageWithAudit }).execute(
@@ -59,7 +59,7 @@ describe("Direct stage server-action boundary", () => {
       ),
     );
     const data = form();
-    data.set("stage", "FREE_TEXT");
+    data.set("stage", stage);
     expect(await updateProjectStageAction({}, data)).toEqual({ message: "validation" });
     expect(updateStageWithAudit).not.toHaveBeenCalled();
   });
