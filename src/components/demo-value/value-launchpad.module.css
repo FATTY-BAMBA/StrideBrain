@@ -112,6 +112,10 @@
 }
 .finding {
   display: grid;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
   gap: 6px;
   border: 1px solid rgba(30, 92, 65, 0.16);
   border-radius: var(--radius-sm);
