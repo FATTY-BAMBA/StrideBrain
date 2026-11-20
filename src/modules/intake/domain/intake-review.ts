@@ -106,7 +106,9 @@ function scaledAmount(value: string, places: number): bigint | null {
   if (!/^(0|[1-9]\d{0,12})(?:\.\d+)?$/.test(value)) return null;
   const [whole, fractional = ""] = value.split(".");
   if (fractional.length > places) return null;
-  return BigInt(whole!) * 10n ** BigInt(places) + BigInt((fractional || "").padEnd(places, "0") || "0");
+  return (
+    BigInt(whole!) * 10n ** BigInt(places) + BigInt((fractional || "").padEnd(places, "0") || "0")
+  );
 }
 
 function realDate(date: string | undefined): boolean {
@@ -135,7 +137,8 @@ export function reviewIntakeDraft(
     !["CSV", "XLSX"].includes(draft.source.kind) ||
     !Number.isSafeInteger(draft.source.byteLength) ||
     draft.source.byteLength <= 0
-  ) issue("INVALID_SOURCE", "source");
+  )
+    issue("INVALID_SOURCE", "source");
   if (draft.source.byteLength > INTAKE_MAX_SOURCE_BYTES) issue("SOURCE_TOO_LARGE", "source");
 
   const project = draft.project;
@@ -148,7 +151,8 @@ export function reviewIntakeDraft(
     project.currency !== "TWD" ||
     project.areaUnit !== "m2" ||
     (project.status === "COMPLETED" && !realDate(project.completedAt))
-  ) issue("INVALID_PROJECT", "project");
+  )
+    issue("INVALID_PROJECT", "project");
   const area = scaledAmount(project.areaQuantity, 3);
   if (area === null || area <= 0n) issue("INVALID_AREA", "project.areaQuantity");
 
@@ -164,10 +168,15 @@ export function reviewIntakeDraft(
     if (
       record.observationType === "RECONCILED_ACTUAL_COST" &&
       (project.status !== "COMPLETED" || !realDate(record.reconciledAt))
-    ) issue("INVALID_RECONCILED_ACTUAL", location);
+    )
+      issue("INVALID_RECONCILED_ACTUAL", location);
 
     const versionKey = `${record.observationType}:${record.versionNumber}`;
-    if (!Number.isSafeInteger(record.versionNumber) || record.versionNumber < 1 || versions.has(versionKey)) {
+    if (
+      !Number.isSafeInteger(record.versionNumber) ||
+      record.versionNumber < 1 ||
+      versions.has(versionKey)
+    ) {
       issue("INVALID_VERSION", location);
     }
     versions.add(versionKey);

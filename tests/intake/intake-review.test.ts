@@ -58,80 +58,145 @@ describe("review-only real project intake", () => {
   });
 
   it("supports a completed job's actual-cost record only when reconciliation date is explicit", () => {
-    const record = { ...valid.financialRecords[0]!, observationType: "RECONCILED_ACTUAL_COST" as const, reconciledAt: "2025-09-16" };
+    const record = {
+      ...valid.financialRecords[0]!,
+      observationType: "RECONCILED_ACTUAL_COST" as const,
+      reconciledAt: "2025-09-16",
+    };
     expect(codes({ ...valid, financialRecords: [record] })).toEqual([]);
-    expect(codes({ ...valid, project: { ...valid.project, status: "ACTIVE" }, financialRecords: [record] })).toContain("INVALID_RECONCILED_ACTUAL");
-    expect(codes({ ...valid, financialRecords: [{ ...record, reconciledAt: undefined }] })).toContain("INVALID_RECONCILED_ACTUAL");
+    expect(
+      codes({
+        ...valid,
+        project: { ...valid.project, status: "ACTIVE" },
+        financialRecords: [record],
+      }),
+    ).toContain("INVALID_RECONCILED_ACTUAL");
+    expect(
+      codes({
+        ...valid,
+        financialRecords: [
+          { ...valid.financialRecords[0]!, observationType: "RECONCILED_ACTUAL_COST" },
+        ],
+      }),
+    ).toContain("INVALID_RECONCILED_ACTUAL");
   });
 
   it("requires an explicit financial observation type; never silently promotes cost to actual", () => {
-    expect(codes({
-      ...valid,
-      financialRecords: [{ ...valid.financialRecords[0]!, observationType: "UNCLASSIFIED" }],
-    })).toContain("UNCLASSIFIED_OBSERVATION");
+    expect(
+      codes({
+        ...valid,
+        financialRecords: [{ ...valid.financialRecords[0]!, observationType: "UNCLASSIFIED" }],
+      }),
+    ).toContain("UNCLASSIFIED_OBSERVATION");
   });
 
   it("rejects missing or impossible source fingerprints, sizes and unsupported files", () => {
-    expect(codes({ ...valid, source: { ...valid.source, sha256: "bad" } })).toContain("INVALID_SOURCE");
-    expect(codes({ ...valid, source: { ...valid.source, byteLength: INTAKE_MAX_SOURCE_BYTES + 1 } })).toContain("SOURCE_TOO_LARGE");
-    expect(codes({ ...valid, source: { ...valid.source, byteLength: 0 } })).toContain("INVALID_SOURCE");
+    expect(codes({ ...valid, source: { ...valid.source, sha256: "bad" } })).toContain(
+      "INVALID_SOURCE",
+    );
+    expect(
+      codes({ ...valid, source: { ...valid.source, byteLength: INTAKE_MAX_SOURCE_BYTES + 1 } }),
+    ).toContain("SOURCE_TOO_LARGE");
+    expect(codes({ ...valid, source: { ...valid.source, byteLength: 0 } })).toContain(
+      "INVALID_SOURCE",
+    );
   });
 
   it("checks project identifiers, positive area and real completion dates", () => {
-    expect(codes({ ...valid, project: { ...valid.project, businessKey: "../other" } })).toContain("INVALID_PROJECT");
-    expect(codes({ ...valid, project: { ...valid.project, areaQuantity: "0.000" } })).toContain("INVALID_AREA");
-    expect(codes({ ...valid, project: { ...valid.project, completedAt: "2025-02-30" } })).toContain("INVALID_PROJECT");
+    expect(codes({ ...valid, project: { ...valid.project, businessKey: "../other" } })).toContain(
+      "INVALID_PROJECT",
+    );
+    expect(codes({ ...valid, project: { ...valid.project, areaQuantity: "0.000" } })).toContain(
+      "INVALID_AREA",
+    );
+    expect(codes({ ...valid, project: { ...valid.project, completedAt: "2025-02-30" } })).toContain(
+      "INVALID_PROJECT",
+    );
   });
 
   it("checks tenant-provided taxonomy and flags spreadsheet formula-like descriptions", () => {
     const row = valid.financialRecords[0]!.rows[0]!;
     const draft = {
       ...valid,
-      financialRecords: [{
-        ...valid.financialRecords[0]!,
-        rows: [{ ...row, description: "=CMD()", categoryId: "UNREVIEWED_CATEGORY" }],
-      }],
+      financialRecords: [
+        {
+          ...valid.financialRecords[0]!,
+          rows: [{ ...row, description: "=CMD()", categoryId: "UNREVIEWED_CATEGORY" }],
+        },
+      ],
     };
-    expect(codes(draft)).toEqual(expect.arrayContaining(["UNKNOWN_CATEGORY", "FORMULA_LIKE_DESCRIPTION"]));
+    expect(codes(draft)).toEqual(
+      expect.arrayContaining(["UNKNOWN_CATEGORY", "FORMULA_LIKE_DESCRIPTION"]),
+    );
   });
 
   it("does not use floating point maths for cents and rejects a false line total", () => {
     const row = valid.financialRecords[0]!.rows[0]!;
     const correct = {
       ...valid,
-      financialRecords: [{
-        ...valid.financialRecords[0]!,
-        amountBeforeTax: "0.30",
-        rows: [{ ...row, quantity: "3", unitPrice: "0.100000", amount: "0.30" }],
-      }],
+      financialRecords: [
+        {
+          ...valid.financialRecords[0]!,
+          amountBeforeTax: "0.30",
+          rows: [{ ...row, quantity: "3", unitPrice: "0.100000", amount: "0.30" }],
+        },
+      ],
     };
     expect(codes(correct)).toEqual([]);
-    expect(codes({
-      ...correct,
-      financialRecords: [{ ...correct.financialRecords[0]!, rows: [{ ...correct.financialRecords[0]!.rows[0]!, amount: "0.31" }] }],
-    })).toEqual(expect.arrayContaining(["LINE_AMOUNT_MISMATCH", "TOTAL_MISMATCH"]));
+    expect(
+      codes({
+        ...correct,
+        financialRecords: [
+          {
+            ...correct.financialRecords[0]!,
+            rows: [{ ...correct.financialRecords[0]!.rows[0]!, amount: "0.31" }],
+          },
+        ],
+      }),
+    ).toEqual(expect.arrayContaining(["LINE_AMOUNT_MISMATCH", "TOTAL_MISMATCH"]));
   });
 
   it("rejects scientific notation, negatives, invalid precision and empty quantities", () => {
     const row = valid.financialRecords[0]!.rows[0]!;
     for (const quantity of ["1e4", "-1", "0", "1.1234"]) {
-      expect(codes({ ...valid, financialRecords: [{ ...valid.financialRecords[0]!, rows: [{ ...row, quantity }] }] })).toContain("INVALID_QUANTITY");
+      expect(
+        codes({
+          ...valid,
+          financialRecords: [{ ...valid.financialRecords[0]!, rows: [{ ...row, quantity }] }],
+        }),
+      ).toContain("INVALID_QUANTITY");
     }
-    expect(codes({ ...valid, financialRecords: [{ ...valid.financialRecords[0]!, rows: [{ ...row, unitPrice: "2.1234567" }] }] })).toContain("INVALID_UNIT_PRICE");
+    expect(
+      codes({
+        ...valid,
+        financialRecords: [
+          { ...valid.financialRecords[0]!, rows: [{ ...row, unitPrice: "2.1234567" }] },
+        ],
+      }),
+    ).toContain("INVALID_UNIT_PRICE");
   });
 
   it("rejects reusing source rows or observation versions within one import", () => {
     const first = valid.financialRecords[0]!;
-    expect(codes({ ...valid, financialRecords: [first, { ...first }] })).toEqual(expect.arrayContaining(["DUPLICATE_SOURCE_ROW", "INVALID_VERSION"]));
+    expect(codes({ ...valid, financialRecords: [first, { ...first }] })).toEqual(
+      expect.arrayContaining(["DUPLICATE_SOURCE_ROW", "INVALID_VERSION"]),
+    );
   });
 
   it("requires a consistent declared record total", () => {
-    expect(codes({ ...valid, financialRecords: [{ ...valid.financialRecords[0]!, amountBeforeTax: "199.99" }] })).toContain("TOTAL_MISMATCH");
+    expect(
+      codes({
+        ...valid,
+        financialRecords: [{ ...valid.financialRecords[0]!, amountBeforeTax: "199.99" }],
+      }),
+    ).toContain("TOTAL_MISMATCH");
   });
 
   it("limits the number of rows before any persistence", () => {
     const row = valid.financialRecords[0]!.rows[0]!;
     const rows = Array.from({ length: 2001 }, (_, index) => ({ ...row, sourceRow: index + 1 }));
-    expect(codes({ ...valid, financialRecords: [{ ...valid.financialRecords[0]!, rows }] })).toContain("TOO_MANY_ROWS");
+    expect(
+      codes({ ...valid, financialRecords: [{ ...valid.financialRecords[0]!, rows }] }),
+    ).toContain("TOO_MANY_ROWS");
   });
 });
