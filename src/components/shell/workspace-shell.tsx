@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Suspense, type ReactNode } from "react";
 
 import type { Catalog } from "@/modules/localization/catalog";
@@ -40,9 +41,6 @@ export function WorkspaceShell({ locale, catalog, children }: WorkspaceShellProp
           labels={{
             "nav.home": catalog["nav.home"],
             "nav.projects": catalog["nav.projects"],
-            "nav.knowledge": catalog["nav.knowledge"],
-            "nav.stridebrain": catalog["nav.stridebrain"],
-            "nav.settings": catalog["nav.settings"],
           }}
         />
       </aside>
@@ -53,19 +51,22 @@ export function WorkspaceShell({ locale, catalog, children }: WorkspaceShellProp
             <span aria-hidden="true">●</span>
             {catalog["app.demoStatus"]}
           </div>
-          <Suspense
-            fallback={
-              <span className="language-switcher" aria-hidden="true">
-                {catalog["language.zhTw"]} / {catalog["language.en"]}
-              </span>
-            }
-          >
-            <LanguageSwitcher
-              locale={locale}
-              zhLabel={catalog["language.zhTw"]}
-              enLabel={catalog["language.en"]}
-            />
-          </Suspense>
+          <div className="workspace-topbar__actions">
+            <Link href={`/${locale}/settings`}>{catalog["nav.settings"]}</Link>
+            <Suspense
+              fallback={
+                <span className="language-switcher" aria-hidden="true">
+                  {catalog["language.zhTw"]} / {catalog["language.en"]}
+                </span>
+              }
+            >
+              <LanguageSwitcher
+                locale={locale}
+                zhLabel={catalog["language.zhTw"]}
+                enLabel={catalog["language.en"]}
+              />
+            </Suspense>
+          </div>
         </header>
 
         <main className="workspace-main" id="main-content" tabIndex={-1}>
