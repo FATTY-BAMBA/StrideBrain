@@ -10,57 +10,7 @@ import type { Stage4ComparisonResult } from "@/modules/comparisons/domain/contra
 import type { Stage5EconomicsResult } from "@/modules/economics/domain/contracts";
 import type { EvidencePanelOutcome, EvidencePanelSelection } from "@/modules/evidence-panel/contracts";
 import { isSupportedLocale, type Locale } from "@/modules/localization/config";
-
-export type HomeChatCitation = Readonly<{
-  index: number;
-  sourceKey: string;
-  title: string;
-  sourceType: string;
-  project?: string;
-  locator: string;
-  authority: string;
-  supportedValue?: string;
-  conditions: readonly string[];
-  preview: readonly Readonly<{ label: string; value: string }>[];
-  fullHref: Route;
-}>;
-
-type HomeChatIntent = "SIMILAR" | "STONE" | "QUOTE" | "ACTIONS" | "PROJECT";
-
-type ComparableReference = Readonly<{
-  projectKey: string;
-  name: string;
-}>;
-
-export type HomeChatContext = Readonly<{
-  lastIntent?: HomeChatIntent;
-  comparisonRunId?: string;
-  economicsRunId?: string;
-  selectedProjectKeys?: readonly string[];
-  activeClaimKey?: string;
-  activeComparableProjectKey?: string;
-  activeComparableProjectName?: string;
-  comparableProjects?: readonly ComparableReference[];
-}>;
-
-export type HomeChatTurn = Readonly<{
-  id: string;
-  role: "user" | "assistant";
-  text: string;
-  bullets?: readonly string[];
-  citations?: readonly HomeChatCitation[];
-  action?: Readonly<{ label: string; href: Route }>;
-}>;
-
-export type HomeChatState = Readonly<{
-  turns: readonly HomeChatTurn[];
-  context: HomeChatContext;
-}>;
-
-export const initialHomeChatState: HomeChatState = Object.freeze({
-  turns: Object.freeze([]),
-  context: Object.freeze({}),
-});
+import type { HomeChatCitation, HomeChatContext, HomeChatState, HomeChatTurn } from "@/modules/home-intelligence/chat-contracts";
 
 function append(
   state: HomeChatState,
