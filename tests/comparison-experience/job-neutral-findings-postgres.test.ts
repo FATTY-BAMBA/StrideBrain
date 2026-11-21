@@ -12,7 +12,8 @@ import {
   type PrismaDemoSessionDatabase,
 } from "@/repositories/prisma/prisma-demo-session-repository";
 import { buildComparisonExperience } from "@/modules/comparison-experience/build-comparison-experience";
-import { buildHomeIntelligence } from "@/modules/home-intelligence/home-intelligence";
+import { createHomeDeskService } from "@/lib/server/home-desk-services";
+import { decisionPresentation } from "@/modules/home-desk/presentation";
 const suite = process.env.DATABASE_URL ? describe : describe.skip;
 const baseUrl = process.env.DATABASE_URL;
 let admin: Client;
@@ -140,40 +141,47 @@ suite("job-specific findings from PostgreSQL", () => {
         "J-2611-R7K3",
       );
       if (loaded.kind !== "AVAILABLE") throw new Error(loaded.kind);
-      const home = buildHomeIntelligence(locale, {
-        projects: [],
-        workspace: loaded.workspace,
-        intelligence: source,
-      });
+      const home = await createHomeDeskService().execute({ ...context, locale });
+      if (home.kind !== "AVAILABLE") throw new Error("HOME_REQUIRED");
+      const decision = home.decisions.find(
+        (item) => item.project.businessKey === "J-2611-R7K3" && item.kind === "REVIEW_QUOTE",
+      );
+      if (!decision) throw new Error("DECISION_REQUIRED");
       const view = buildComparisonExperience({
         locale,
         stage4: comparison.result,
         economics: economics.result,
       });
-      expect(home.findings.map((f) => f.title)).toEqual(
-        [...view.synthesis.history, ...view.synthesis.differences, ...view.synthesis.gaps]
-          .filter((f) => f.claimKey)
-          .map((f) => f.body),
-      );
-      expect(home.memory.map((m) => m.score)).toEqual(
-        comparison.result.matches.map((m) => m.displayScore),
-      );
-      expect(JSON.stringify(home.findings)).not.toMatch(/stone|lighting|石材|照明/i);
+      const sentences = [
+        ...view.synthesis.history,
+        ...view.synthesis.differences,
+        ...view.synthesis.gaps,
+      ]
+        .filter((finding) => finding.claimKey)
+        .map((finding) => finding.body);
+      expect(sentences).toContain(decisionPresentation(decision, locale).sentence);
+      expect(JSON.stringify(decision.claim)).not.toMatch(/stone|lighting|石材|照明/i);
       expect(
         view.table.sections
           .flatMap((s) => s.rows)
           .filter((r) => r.key.endsWith("-QUOTE"))
           .map((r) => r.key),
       ).toEqual(["CUSTOM_MILLWORK-QUOTE", "SIGNAGE-QUOTE"]);
-      for (const finding of home.findings) {
-        expect(finding.href).toContain(`economics=${economics.result.run.id}`);
+      for (const finding of [
+        ...view.synthesis.history,
+        ...view.synthesis.differences,
+        ...view.synthesis.gaps,
+      ].filter((item) => item.claimKey)) {
+        expect(decisionPresentation(decision, locale).href).toContain(
+          `economics=${economics.result.run.id}`,
+        );
         const panel = await services.getEvidencePanel.execute(
           context,
           {
             mode: "CLAIM",
             comparisonRunId: comparison.result.run.id,
             enrichmentRunId: economics.result.run.id,
-            claimKey: finding.claimKey,
+            claimKey: finding.claimKey!,
           },
           locale,
         );

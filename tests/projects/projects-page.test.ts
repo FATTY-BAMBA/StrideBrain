@@ -58,7 +58,9 @@ describe("Projects entry server page and semantic navigation", () => {
       });
       const host = render(await ProjectsPage({ params: Promise.resolve({ locale }) }));
       expect(boundary.execute).toHaveBeenCalledExactlyOnceWith({ ...trusted, locale });
-      const link = host.querySelector("a")!;
+      const link = host.querySelector<HTMLAnchorElement>(
+        `a[href="/${locale}/projects/PRJ-XINYI-026"]`,
+      )!;
       expect(link.getAttribute("href")).toBe(`/${locale}/projects/PRJ-XINYI-026`);
       expect(link.textContent).toContain(name);
       expect(link.textContent).toContain(locale === "en" ? "Open project" : "開啟專案");
@@ -167,7 +169,7 @@ describe("Stage groups and write controls", () => {
     expect(host.querySelector('[aria-labelledby="stage-COMPLETE"] a')?.textContent).toContain(
       "Completed synthetic job",
     );
-    expect(host.querySelectorAll("a")).toHaveLength(2);
+    expect(host.querySelectorAll("ul[aria-labelledby] a")).toHaveLength(2);
     expect(host.querySelectorAll("section[aria-labelledby]")).toHaveLength(8);
     expect(host.querySelector("form")).toBeNull();
     expect(host.querySelector('a[href$="/new"]')).toBeNull();

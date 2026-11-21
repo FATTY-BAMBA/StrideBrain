@@ -61,6 +61,8 @@ export function recommendationText(
   ];
   const copy = findingsCopy(locale);
   return categories.length
-    ? `${copy.review}: ${categories.join(locale === "zh-TW" ? "、" : ", ")}.`
+    ? locale === "zh-TW"
+      ? `${copy.review}：${categories.join("、")}。`
+      : `${copy.review}: ${categories.join(", ")}.`
     : copy.nothing;
 }

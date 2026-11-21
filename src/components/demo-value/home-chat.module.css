@@ -1,0 +1,189 @@
+.chat {
+  display: grid;
+  gap: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: 18px;
+}
+.chatThread {
+  display: grid;
+  gap: 12px;
+}
+.assistantMessage,
+.userMessage {
+  display: grid;
+  gap: 8px;
+  max-width: 82%;
+  border-radius: 16px;
+  padding: 13px 15px;
+}
+.assistantMessage {
+  justify-self: start;
+  background: var(--surface-subtle);
+  border: 1px solid var(--line);
+}
+.assistantMessage p,
+.assistantMessage li {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+.userMessage {
+  justify-self: end;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+.userMessage p {
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.assistantMessage ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.chatAction {
+  width: fit-content;
+  color: var(--accent-strong);
+  font-weight: 750;
+  font-size: 0.85rem;
+}
+.chatComposer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: end;
+}
+.chatComposer textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 48px;
+  max-height: 160px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font: inherit;
+  background: var(--surface-subtle);
+}
+.chatComposer button {
+  min-height: 48px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  padding: 0 18px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+.chatComposer button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+.thinking {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.chatSources {
+  display: grid;
+  gap: 8px;
+  margin-top: 2px;
+}
+.chatSourcesLabel {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.citationList {
+  display: grid;
+  gap: 7px;
+}
+.citation {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+.citation summary {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  cursor: pointer;
+  list-style: none;
+  padding: 9px 11px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.citation summary::-webkit-details-marker {
+  display: none;
+}
+.citationIndex {
+  color: var(--accent-strong);
+  flex-shrink: 0;
+}
+.citationPreview {
+  display: grid;
+  gap: 9px;
+  border-top: 1px solid var(--line);
+  padding: 11px;
+}
+.citationMeta,
+.citationConditions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.citationMeta span,
+.citationConditions span {
+  border-radius: 999px;
+  background: var(--surface-subtle);
+  padding: 4px 7px;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+.citationValue {
+  color: var(--accent-strong) !important;
+  font-weight: 700;
+  font-size: 0.84rem !important;
+}
+.citationFields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 14px;
+  margin: 0;
+}
+.citationFields div {
+  min-width: 0;
+}
+.citationFields dt {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.citationFields dd {
+  margin: 2px 0 0;
+  overflow-wrap: anywhere;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+@media (max-width: 700px) {
+  .citationFields {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chatThread:empty {
+  display: none;
+}
+.chatLabel {
+  font-weight: 650;
+}
+@media (max-width: 600px) {
+  .chatComposer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .assistantMessage,
+  .userMessage {
+    max-width: 100%;
+  }
+}

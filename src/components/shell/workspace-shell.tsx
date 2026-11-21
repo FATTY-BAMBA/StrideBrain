@@ -6,14 +6,18 @@ import type { Locale } from "@/modules/localization/config";
 
 import { GlobalNav } from "./global-nav";
 import { LanguageSwitcher } from "./language-switcher";
+import type { WorkspaceAccount } from "@/modules/runtime-context/get-workspace-account";
+import { homeDeskCopy } from "@/modules/localization/home-desk";
 
 type WorkspaceShellProps = {
   locale: Locale;
   catalog: Catalog;
   children: ReactNode;
+  account?: WorkspaceAccount | null | undefined;
 };
 
-export function WorkspaceShell({ locale, catalog, children }: WorkspaceShellProps) {
+export function WorkspaceShell({ locale, catalog, children, account }: WorkspaceShellProps) {
+  const copy = homeDeskCopy(locale);
   return (
     <div className="workspace-shell">
       <a className="skip-link" href="#main-content">
@@ -43,6 +47,26 @@ export function WorkspaceShell({ locale, catalog, children }: WorkspaceShellProp
             "nav.projects": catalog["nav.projects"],
           }}
         />
+        <section className="workspace-account" aria-label={copy.account}>
+          {account ? (
+            <div className="workspace-account__identity">
+              <strong>{account.person}</strong>
+              <span>{account.organization}</span>
+            </div>
+          ) : null}
+          <Suspense fallback={<span className="language-switcher">繁中 / EN</span>}>
+            <LanguageSwitcher locale={locale} zhLabel="繁中" enLabel="EN" />
+          </Suspense>
+          {account ? (
+            <div className="workspace-account__actions">
+              <Link href={`/${locale}/settings`}>{catalog["nav.settings"]}</Link>
+              <form action="/api/preview-session/logout" method="post">
+                <input type="hidden" name="locale" value={locale} />
+                <button type="submit">{copy.signOut}</button>
+              </form>
+            </div>
+          ) : null}
+        </section>
       </aside>
 
       <div className="workspace-column">
@@ -50,22 +74,6 @@ export function WorkspaceShell({ locale, catalog, children }: WorkspaceShellProp
           <div className="workspace-topbar__status">
             <span aria-hidden="true">●</span>
             {catalog["app.demoStatus"]}
-          </div>
-          <div className="workspace-topbar__actions">
-            <Link href={`/${locale}/settings`}>{catalog["nav.settings"]}</Link>
-            <Suspense
-              fallback={
-                <span className="language-switcher" aria-hidden="true">
-                  {catalog["language.zhTw"]} / {catalog["language.en"]}
-                </span>
-              }
-            >
-              <LanguageSwitcher
-                locale={locale}
-                zhLabel={catalog["language.zhTw"]}
-                enLabel={catalog["language.en"]}
-              />
-            </Suspense>
           </div>
         </header>
 

@@ -1,6 +1,6 @@
 import { notFound, redirect } from "next/navigation";
-import { ValueLaunchpad } from "@/components/demo-value/value-launchpad";
-import { loadDemoValueContext } from "@/lib/server/demo-value-context";
+import { HomeDeskScreen } from "@/components/home-desk/home-desk";
+import { createHomeDeskService } from "@/lib/server/home-desk-services";
 import { isSupportedLocale } from "@/modules/localization/config";
 import { previewSessionOrigin } from "@/modules/preview-session/config";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
@@ -10,7 +10,7 @@ export default async function Page({
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ project?: string | string[] }>;
+  searchParams?: Promise<{ project?: string | string[] }>;
 }) {
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
@@ -20,10 +20,16 @@ export default async function Page({
   ) {
     redirect(`/${locale}/preview`);
   }
-  const search = await searchParams;
-  const context = await loadDemoValueContext(
-    locale,
-    typeof search.project === "string" ? search.project : undefined,
+  const identity = await resolveServerRuntimeContext().catch(() => null);
+  const outcome = identity
+    ? await createHomeDeskService().execute({ ...identity, locale })
+    : { kind: "UNAVAILABLE" as const };
+  const requested = (await searchParams)?.project;
+  return (
+    <HomeDeskScreen
+      locale={locale}
+      outcome={outcome}
+      requestedProject={typeof requested === "string" ? requested : undefined}
+    />
   );
-  return <ValueLaunchpad locale={locale} context={context} />;
 }

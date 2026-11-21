@@ -1,7 +1,11 @@
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
+import {
+  LOCALE_PREFERENCE_COOKIE,
+  preferredLocale,
+} from "@/modules/localization/locale-preference";
 
-import { defaultLocale } from "@/modules/localization/config";
-
-export default function RootPage() {
-  redirect(`/${defaultLocale}`);
+export default async function RootPage() {
+  const preference = (await cookies()).get(LOCALE_PREFERENCE_COOKIE)?.value;
+  redirect(`/${preferredLocale(preference)}`);
 }

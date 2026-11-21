@@ -3,8 +3,10 @@
 import type { Route } from "next";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 import type { Locale } from "@/modules/localization/config";
+import { localePreferenceCookie } from "@/modules/localization/locale-preference";
 
 type LanguageSwitcherProps = {
   locale: Locale;
@@ -34,6 +36,10 @@ export function LanguageSwitcher({ locale, zhLabel, enLabel }: LanguageSwitcherP
   const router = useRouter();
   const pathname = usePathname();
   const query = useSearchParams().toString();
+  // Also remember locale changes made by existing Settings/review language links.
+  useEffect(() => {
+    document.cookie = localePreferenceCookie(locale, window.location.protocol === "https:");
+  }, [locale]);
 
   return (
     <div className="language-switcher" aria-label={`${zhLabel} / ${enLabel}`}>
@@ -41,6 +47,7 @@ export function LanguageSwitcher({ locale, zhLabel, enLabel }: LanguageSwitcherP
         href={localizedHref(pathname, query, "zh-TW") as Route}
         onNavigate={(event) => {
           event.preventDefault();
+          document.cookie = localePreferenceCookie("zh-TW", window.location.protocol === "https:");
           router.push(currentLocalizedHref("zh-TW") as Route);
         }}
         lang="zh-Hant"
@@ -53,6 +60,7 @@ export function LanguageSwitcher({ locale, zhLabel, enLabel }: LanguageSwitcherP
         href={localizedHref(pathname, query, "en") as Route}
         onNavigate={(event) => {
           event.preventDefault();
+          document.cookie = localePreferenceCookie("en", window.location.protocol === "https:");
           router.push(currentLocalizedHref("en") as Route);
         }}
         lang="en"

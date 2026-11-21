@@ -5,22 +5,7 @@ import { useActionState } from "react";
 import { askHomeAction } from "@/app/[locale]/home-chat-actions";
 import { initialHomeChatState } from "@/modules/home-intelligence/chat-contracts";
 import type { Locale } from "@/modules/localization/config";
-import styles from "./value-launchpad.module.css";
-
-const suggestions = {
-  en: [
-    "Have we done something similar before?",
-    "What looks unusual in this quotation?",
-    "What supports these findings?",
-    "What should I review next?",
-  ],
-  "zh-TW": [
-    "我們以前做過類似的專案嗎？",
-    "這份報價有哪些需要留意的地方？",
-    "這些發現有哪些佐證？",
-    "接下來應該先檢視什麼？",
-  ],
-} as const;
+import styles from "./home-chat.module.css";
 
 export function HomeChat({
   locale,
@@ -34,34 +19,23 @@ export function HomeChat({
     locale === "zh-TW"
       ? {
           label: "詢問 StrideBrain",
-          placeholder: "詢問專案、報價、材料、供應商、文件或未完成事項…",
-          send: "送出",
+          placeholder: "我們以前做過旗艦店整修嗎？",
+          send: "提問",
           thinking: "正在查找公司紀錄…",
-          suggested: "你可以試著問",
         }
       : {
           label: "Ask StrideBrain",
-          placeholder:
-            "Ask about projects, quotes, materials, suppliers, documents or open actions…",
-          send: "Send",
+          placeholder: "Have we renovated a flagship store before?",
+          send: "Ask",
           thinking: "Checking company records…",
-          suggested: "Try asking",
         };
 
   return (
     <section className={styles.chat} aria-label={copy.label}>
+      <label className={styles.chatLabel} htmlFor="chat-message">
+        {copy.label}
+      </label>
       <div className={styles.chatThread} aria-live="polite">
-        {state.turns.length === 0 ? (
-          <div className={styles.chatWelcome}>
-            <strong>{copy.label}</strong>
-            <span>
-              {locale === "zh-TW"
-                ? "用自然語言提問。StrideBrain 只會用目前可支援的公司資料回答。"
-                : "Ask naturally. StrideBrain will answer only from the company data this demo can support."}
-            </span>
-          </div>
-        ) : null}
-
         {state.turns.map((turn) => (
           <article
             className={turn.role === "user" ? styles.userMessage : styles.assistantMessage}
@@ -144,14 +118,11 @@ export function HomeChat({
       <form action={action} className={styles.chatComposer}>
         <input type="hidden" name="locale" value={locale} />
         {projectKey ? <input type="hidden" name="projectKey" value={projectKey} /> : null}
-        <label className={styles.srOnly} htmlFor="chat-message">
-          {copy.label}
-        </label>
         <textarea
           id="chat-message"
           name="message"
           placeholder={copy.placeholder}
-          rows={2}
+          rows={1}
           maxLength={280}
           disabled={pending}
           required
@@ -160,20 +131,6 @@ export function HomeChat({
           {copy.send}
         </button>
       </form>
-
-      <div className={styles.chatSuggestions} aria-label={copy.suggested}>
-        <span>{copy.suggested}</span>
-        {suggestions[locale].map((question) => (
-          <form action={action} key={question}>
-            <input type="hidden" name="locale" value={locale} />
-            {projectKey ? <input type="hidden" name="projectKey" value={projectKey} /> : null}
-            <input type="hidden" name="message" value={question} />
-            <button type="submit" disabled={pending}>
-              {question}
-            </button>
-          </form>
-        ))}
-      </div>
     </section>
   );
 }
