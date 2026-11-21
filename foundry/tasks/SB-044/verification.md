@@ -43,8 +43,8 @@ A real receipt was prepared and confirmed with the merged PR #43 source before a
 
 ## Not verified
 
-- Hosted preview acceptance on this revision. The existing Vercel project previously canceled builds outside its pinned earlier commit. No hosted setting, database, migration or session has been changed for SB-044. Publication and deployment results will be recorded in this task and PR.
-- GitHub CI on the published PR head, pending PR creation.
+- Hosted preview acceptance. Both automatic deployments of `8edbbf5` were canceled: [SB-034 preview](https://vercel.com/prime-stride-ai/stridebrain-sb034-preview/6R8n62Rwt9fpMKuJgggyZRn9hHFF) permits only its older pinned commit, and [stridebrain-test](https://vercel.com/prime-stride-ai/stridebrain-test/5HDDFEwzqkUnDUMQw23UhhMFgiKM) permits only `test-site`. Green Vercel GitHub statuses reflect canceled builds, not acceptance. No hosted configuration or database was changed. The concrete [one-off preview plan](preview-plan.md) needs approval because it updates the database shared with the separately pinned test deployment.
+- The final GitHub CI result is tracked in [PR #48](https://github.com/FATTY-BAMBA/StrideBrain/pull/48); it was running when this evidence commit was written.
 - Safari/Firefox, assistive technology, performance/load testing, production identity and real customer data.
 
 Under AGENTS.md, local acceptance alone is not sufficient to call the issue done. Keep the PR draft until hosted acceptance is resolved. Do not begin #46 before this PR is merged.

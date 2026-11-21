@@ -2,7 +2,7 @@
   "taskId": "SB-044",
   "issueUrl": "https://github.com/FATTY-BAMBA/StrideBrain/issues/44",
   "branch": "build/sb-044-job-neutral-findings",
-  "state": "LOCALLY_VERIFIED_PENDING_PULL_REQUEST_AND_HOSTED_ACCEPTANCE",
+  "state": "DRAFT_PR_OPEN_PENDING_HOSTED_ACCEPTANCE",
   "deliverySequence": {
     "A": "VERIFIED_LOCALLY",
     "B": "VERIFIED_LOCALLY",
@@ -26,12 +26,23 @@
     "Clean database migrate/seed/verify and repeat seed/verify pass; disposable database removed"
   ],
   "notVerified": [
-    "Hosted preview acceptance on this revision: existing project previously pins builds to an earlier commit; current PR deployment pending",
-    "GitHub CI on the published PR head (pending publication)",
+    "Hosted preview acceptance: both configured Vercel projects cancel this branch via explicit Ignored Build Step restrictions",
     "Safari/Firefox, assistive technology and performance/load testing",
     "Production identity and real customer data (outside scope)"
   ],
   "verificationReport": "verification.md",
   "baseline": "3a67f2c32c19ea77dc229b482eb64bcb65f4fa1c",
-  "dataMode": "DEMO_SYNTHETIC"
+  "dataMode": "DEMO_SYNTHETIC",
+  "pullRequest": "https://github.com/FATTY-BAMBA/StrideBrain/pull/48",
+  "publication": "ONE_DRAFT_PULL_REQUEST_OPEN",
+  "githubCi": "FINAL_COMMIT_RESULT_RECORDED_IN_PULL_REQUEST",
+  "hostedPreview": {
+    "status": "CANCELED_BY_EXISTING_IGNORED_BUILD_STEP",
+    "codeCommit": "8edbbf50e51634782fe1b4eb3480442dfac31547",
+    "deployment": "https://vercel.com/prime-stride-ai/stridebrain-sb034-preview/6R8n62Rwt9fpMKuJgggyZRn9hHFF",
+    "testDeployment": "https://vercel.com/prime-stride-ai/stridebrain-test/5HDDFEwzqkUnDUMQw23UhhMFgiKM",
+    "configurationChanged": false,
+    "databaseChanged": false,
+    "approvalPlan": "preview-plan.md"
+  }
 }
