@@ -6,9 +6,7 @@ import type {
 } from "@/repositories/ports/latest-project-comparison-repository";
 export type PrismaLatestProjectComparisonDatabase = {
   comparisonRun: {
-    findFirst(
-      args: unknown,
-    ): Promise<{
+    findFirst(args: unknown): Promise<{
       id: string;
       organizationId: string;
       activeProjectId: string;

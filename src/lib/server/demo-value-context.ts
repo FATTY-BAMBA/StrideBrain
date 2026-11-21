@@ -38,7 +38,7 @@ export async function loadDemoValueContext(
         result.kind === "AVAILABLE"
           ? await createComparisonServices().getHomeComparison.execute(
               context,
-              result.workspace.project.id,
+              result.workspace.project.businessKey,
             )
           : null,
     };

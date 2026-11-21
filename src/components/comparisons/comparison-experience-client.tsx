@@ -444,19 +444,7 @@ function ComparisonResultExperience({
               data-claim-key={item.claimKey}
               key={item.key}
             >
-              <h3>
-                {item.key === "stone"
-                  ? copy.table.importedStoneActual
-                  : item.key === "overall-quoted"
-                    ? copy.table.quotedRate
-                    : item.key === "overall-actual"
-                      ? copy.table.actualRate
-                      : item.key === "programme"
-                        ? copy.table.programme
-                        : item.key === "lighting-gap"
-                          ? copy.table.lightingActual
-                          : item.title}
-              </h3>
+              <h3>{item.title}</h3>
               <p>{item.body}</p>
               {item.claimKey ? (
                 <button

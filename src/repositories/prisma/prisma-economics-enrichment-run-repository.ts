@@ -218,7 +218,6 @@ export class PrismaEconomicsEnrichmentRunRepository implements EconomicsEnrichme
         status: true,
         accessScope: true,
         resultSnapshot: true,
-        claims: { select: { claimKey: true, originalClaimKey: true, categoryId: true } },
       },
     });
     if (!row || row.organizationId !== context.organizationId || !isAccessScope(row.accessScope)) {
@@ -232,13 +231,35 @@ export class PrismaEconomicsEnrichmentRunRepository implements EconomicsEnrichme
     if (!result) return null;
     if (result.evidenceBundles.length > 0 && !context.capabilities.has("evidence:read"))
       return null;
+    const needsIdentity = result.claims.some(
+      (claim) =>
+        (claim.kind === "CATEGORY_QUOTED_VARIANCE" ||
+          claim.kind === "CATEGORY_FORECAST_ACTUAL_VARIANCE" ||
+          claim.kind === "CATEGORY_ACTUAL_INSUFFICIENT") &&
+        !claim.categoryId,
+    );
+    const identityRow = needsIdentity
+      ? await this.database.economicsEnrichmentRun.findFirst({
+          where: {
+            id: enrichmentRunId,
+            organizationId: context.organizationId,
+            activeProjectId: row.activeProjectId,
+            status: "COMPLETED",
+          },
+          select: {
+            organizationId: true,
+            claims: { select: { claimKey: true, originalClaimKey: true, categoryId: true } },
+          },
+        })
+      : null;
+    if (needsIdentity && identityRow?.organizationId !== context.organizationId) return null;
     // Historical snapshots keep their original keys so receipts retain their
     // link targets. Attach category metadata without decoding a key or rewriting history.
     return {
       ...result,
       claims: result.claims.map((claim) => {
         if (claim.categoryId) return claim;
-        const identity = row.claims?.find(
+        const identity = identityRow?.claims?.find(
           (stored) =>
             stored.claimKey === claim.claimKey || stored.originalClaimKey === claim.claimKey,
         );

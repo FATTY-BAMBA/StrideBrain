@@ -159,13 +159,17 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
             : Object.freeze({ kind: "UNAVAILABLE" as const, requestId: context.requestId });
         }
         const actionServices = createInternalReviewServices();
-        const [canPrepare, prepared, receipt] = await Promise.all([
+        const [availability, prepared, receipt] = await Promise.all([
           economics && freshness.state === "CURRENT"
-            ? actionServices.canPrepare(context, projectKey, {
+            ? actionServices.availability(context, projectKey, {
                 comparisonRunId: structural.result.run.id,
                 enrichmentRunId: economics.run.id,
               })
-            : Promise.resolve(false),
+            : Promise.resolve(
+                !structural.result.activeContext.activeQuoteVersionKey
+                  ? ("NO_QUOTE_VERSION" as const)
+                  : ("UNAVAILABLE" as const),
+              ),
           actionRoute.proposalKey
             ? actionServices.reopenProposal(context, actionRoute.proposalKey, rawLocale)
             : Promise.resolve(undefined),
@@ -199,7 +203,11 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
               projectKey,
               comparisonRunId: route.comparisonRunId,
               enrichmentRunId: route.economicsRunId ?? "",
-              canPrepare,
+              canPrepare: availability === "READY",
+              unavailableReason:
+                availability === "NO_QUOTE_VERSION" || availability === "NOTHING_TO_REVIEW"
+                  ? availability
+                  : undefined,
               returnContext: reviewReturnContext(search),
               route: actionRoute,
               proposalOutcome: safeProposal,

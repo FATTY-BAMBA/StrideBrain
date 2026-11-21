@@ -521,11 +521,17 @@ function synthesis(
 }
 
 function notices(
+  job: string,
   economics: Stage5EconomicsResult | undefined,
   copy: ComparisonCopy,
 ): readonly ComparisonSynthesisItemView[] {
   const result: ComparisonSynthesisItemView[] = [
-    synthesisItem("synthetic", copy.summary.demoData, copy.notices.synthetic, "NEUTRAL"),
+    synthesisItem(
+      "synthetic",
+      copy.summary.demoData,
+      copy.notices.synthetic.replace("{job}", job),
+      "NEUTRAL",
+    ),
   ];
   if (!economics || economics.accessScope === "STRUCTURAL_ONLY") {
     result.push(
@@ -826,7 +832,10 @@ export function buildComparisonExperience(
       authorizedMatchCountLabel: formatNumber(locale, stage4.summary.primaryMatchCount, 0),
       selectedCountLabel: `${selectedProjectKeys.length}/3`,
       economicsStateLabel: economicsStateLabel(economics, copy),
-      syntheticDataLabel: copy.notices.synthetic,
+      syntheticDataLabel: copy.notices.synthetic.replace(
+        "{job}",
+        localizedName(locale, stage4.activeContext),
+      ),
     }),
     activeProject: Object.freeze({
       projectKey: stage4.activeContext.projectKey,
@@ -870,6 +879,6 @@ export function buildComparisonExperience(
             synthesisItem("no-quote", copy.synthesis.gaps, findingsCopy(locale).noQuote, "NEUTRAL"),
           ],
         },
-    notices: notices(economics, copy),
+    notices: notices(localizedName(locale, stage4.activeContext), economics, copy),
   });
 }

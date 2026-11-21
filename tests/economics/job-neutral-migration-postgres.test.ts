@@ -85,10 +85,11 @@ suite("job-neutral populated PostgreSQL migration", () => {
     ).rows[0];
     const legacy = row.resultSnapshot;
     legacy.result.claims = legacy.result.claims.map(
-      ({ categoryId: _category, ...claim }: { categoryId?: string; claimKey: string }) => ({
-        ...claim,
-        claimKey: `XINYI_${claim.claimKey}`,
-      }),
+      (original: { categoryId?: string; claimKey: string }) => {
+        const claim = { ...original, claimKey: `XINYI_${original.claimKey}` };
+        delete claim.categoryId;
+        return claim;
+      },
     );
     legacy.result.evidenceBundles = legacy.result.evidenceBundles.map(
       (bundle: { claimKey: string }) => ({ ...bundle, claimKey: `XINYI_${bundle.claimKey}` }),

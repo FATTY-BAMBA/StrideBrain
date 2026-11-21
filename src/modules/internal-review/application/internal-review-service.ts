@@ -196,11 +196,11 @@ export class InternalReviewService {
     return actor && preliminaryAccess(actor.context) ? actor : null;
   }
 
-  async canPrepare(
+  async availability(
     seed: RuntimeContext,
     projectKey: string,
     pair?: Readonly<{ comparisonRunId: string; enrichmentRunId: string }>,
-  ): Promise<boolean> {
+  ): Promise<"READY" | "NO_QUOTE_VERSION" | "NOTHING_TO_REVIEW" | "UNAVAILABLE"> {
     if (
       !preliminaryAccess(seed) ||
       !pair ||
@@ -208,11 +208,11 @@ export class InternalReviewService {
         (key) => typeof key === "string" && SAFE_REVIEW_KEY.test(key),
       )
     )
-      return false;
+      return "UNAVAILABLE";
     try {
       return await this.repository.transaction(async (tx) => {
         const actor = await this.actor(tx, seed);
-        if (!actor) return false;
+        if (!actor) return "UNAVAILABLE";
         const project = await tx.getProject(actor.context, projectKey);
         if (
           !project ||
@@ -220,7 +220,7 @@ export class InternalReviewService {
           project.deletedAt ||
           !actionAccess(actor.context, project.id)
         )
-          return false;
+          return "UNAVAILABLE";
         const current = await currentMaterial(
           tx,
           actor.context,
@@ -230,11 +230,23 @@ export class InternalReviewService {
           this.clock(),
           actor.timezone,
         );
-        return current.kind === "READY";
+        return current.kind === "READY" ||
+          current.kind === "NO_QUOTE_VERSION" ||
+          current.kind === "NOTHING_TO_REVIEW"
+          ? current.kind
+          : "UNAVAILABLE";
       });
     } catch {
-      return false;
+      return "UNAVAILABLE";
     }
+  }
+
+  async canPrepare(
+    seed: RuntimeContext,
+    projectKey: string,
+    pair?: Readonly<{ comparisonRunId: string; enrichmentRunId: string }>,
+  ): Promise<boolean> {
+    return (await this.availability(seed, projectKey, pair)) === "READY";
   }
 
   async prepare(seed: RuntimeContext, input: PrepareInternalReviewInput): Promise<ProposalOutcome> {
@@ -268,7 +280,11 @@ export class InternalReviewService {
         if (current.kind !== "READY")
           return this.failure(
             seed,
-            current.kind === "STALE_COMPARISON" ? "PROPOSAL_STALE" : "PROPOSAL_UNAVAILABLE",
+            current.kind === "STALE_COMPARISON"
+              ? "PROPOSAL_STALE"
+              : current.kind === "NO_QUOTE_VERSION" || current.kind === "NOTHING_TO_REVIEW"
+                ? current.kind
+                : "PROPOSAL_UNAVAILABLE",
           );
         const material = current.material;
         const members = eligibleMembers(
@@ -511,7 +527,13 @@ export class InternalReviewService {
           now,
           actor.timezone,
         );
-        if (current.kind !== "READY") return this.failure(seed, current.kind);
+        if (current.kind !== "READY")
+          return this.failure(
+            seed,
+            current.kind === "NO_QUOTE_VERSION" || current.kind === "NOTHING_TO_REVIEW"
+              ? "STALE_COMPARISON"
+              : current.kind,
+          );
         if (sha256(current.material.fingerprints) !== sha256(record.content.fingerprints))
           return this.failure(seed, "STALE_COMPARISON");
         const members = eligibleMembers(

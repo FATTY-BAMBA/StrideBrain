@@ -1,3 +1,5 @@
+import { isReviewClaim } from "@/modules/economics/domain/claim-selection";
+import { categoryLabel } from "@/modules/localization/jobs";
 import { sha256 } from "@/modules/comparisons/application/fingerprints";
 import type { Stage4ComparisonResult } from "@/modules/comparisons/domain/contracts";
 import type {
@@ -103,19 +105,43 @@ function exactIds(left: readonly string[], right: readonly string[]): boolean {
 export function mandatoryClaims(
   result: Stage5EconomicsResult,
 ): readonly StructuredEconomicsClaimDTO[] | null {
-  const specifications = [
-    ["CATEGORY_FORECAST_ACTUAL_VARIANCE", "IMPORTED_STONE"],
-    ["CATEGORY_QUOTED_VARIANCE", "LIGHTING_ELECTRICAL"],
-    ["CATEGORY_ACTUAL_INSUFFICIENT", "LIGHTING_ELECTRICAL"],
-    ["PROGRAMME_DIFFERENCE_UNQUANTIFIED", ""],
-  ] as const;
-  const claims: StructuredEconomicsClaimDTO[] = [];
-  for (const [kind, category] of specifications) {
-    const matches = result.claims.filter(
-      (claim) => claim.kind === kind && (!category || claim.categoryId === category),
-    );
-    if (matches.length !== 1) return null;
-    const claim = matches[0]!;
+  if (
+    result.claims.some(
+      (claim) =>
+        (claim.kind === "CATEGORY_QUOTED_VARIANCE" ||
+          claim.kind === "CATEGORY_FORECAST_ACTUAL_VARIANCE" ||
+          claim.kind === "CATEGORY_ACTUAL_INSUFFICIENT") &&
+        !claim.categoryId,
+    )
+  )
+    return null;
+  const claims = result.claims.filter(isReviewClaim);
+  const identities = claims.map((claim) => `${claim.kind}:${claim.categoryId ?? ""}`);
+  if (
+    new Set(identities).size !== identities.length ||
+    new Set(claims.map((claim) => claim.claimKey)).size !== claims.length
+  )
+    return null;
+  for (const claim of claims) {
+    if (
+      claim.categoryId &&
+      !result.categories.some((category) => category.categoryId === claim.categoryId)
+    )
+      return null;
+    const category = result.categories.find((category) => category.categoryId === claim.categoryId);
+    if (
+      claim.kind === "CATEGORY_FORECAST_ACTUAL_VARIANCE" &&
+      (category?.forecastVariance.state !== "VALUE" ||
+        category.actualHistory.state !== "SUFFICIENT")
+    )
+      return null;
+    if (claim.kind === "CATEGORY_QUOTED_VARIANCE" && category?.quoteVariance.state !== "VALUE")
+      return null;
+    if (
+      claim.kind === "CATEGORY_ACTUAL_INSUFFICIENT" &&
+      category?.actualHistory.state !== "INSUFFICIENT"
+    )
+      return null;
     const bundles = result.evidenceBundles.filter((bundle) => bundle.claimKey === claim.claimKey);
     if (
       bundles.length !== 1 ||
@@ -135,19 +161,7 @@ export function mandatoryClaims(
       )
     )
       return null;
-    claims.push(claim);
   }
-  const stone = result.categories.find((category) => category.categoryId === "IMPORTED_STONE");
-  const lighting = result.categories.find(
-    (category) => category.categoryId === "LIGHTING_ELECTRICAL",
-  );
-  if (
-    stone?.actualHistory.state !== "SUFFICIENT" ||
-    stone.forecastVariance.state !== "VALUE" ||
-    lighting?.quoteVariance.state !== "VALUE" ||
-    lighting.actualHistory.state !== "INSUFFICIENT"
-  )
-    return null;
   return claims;
 }
 
@@ -161,119 +175,106 @@ export function proposalWording(
   mandatoryStatements: readonly ReviewStatement[];
   warnings: readonly ReviewStatement[];
 }> {
-  const district = stage4.activeContext.location.district?.replace(/\s+District$/i, "");
-  const project = district || stage4.activeContext.nameEn;
-  const quoteVersion =
-    stage4.activeContext.activeQuoteVersionKey?.match(/(?:[:_-]|\b)v(\d+)$/i)?.[1];
-  if (!quoteVersion) throw new Error("QUOTE_VERSION_REQUIRED");
-  const zhProject = stage4.activeContext.nameZhTw;
+  const compact = (text: string, limit: number) =>
+    [...text].length <= limit ? text : [...text].slice(0, limit - 1).join("") + "…";
+  const categoryIds = [
+    ...new Set(claims.flatMap((claim) => (claim.categoryId ? [claim.categoryId] : []))),
+  ];
+  const categories = {
+    en: compact(
+      categoryIds.map((id) => categoryLabel("en", id)).join(", ") || "programme evidence",
+      90,
+    ),
+    zhTw: compact(categoryIds.map((id) => categoryLabel("zh-TW", id)).join("、") || "工期佐證", 90),
+  };
+  const project = {
+    en: compact(stage4.activeContext.nameEn, 80),
+    zhTw: compact(stage4.activeContext.nameZhTw, 80),
+  };
   const titleOptions = [
     {
       key: "VALIDATE",
       text: {
-        en: `Validate imported-stone and lighting assumptions for ${project} quote v${quoteVersion}`,
-        zhTw: `檢核${zhProject}第${quoteVersion}版報價的進口石材與照明假設`,
+        en: `Validate ${categories.en} · ${project.en}`,
+        zhTw: `檢核${categories.zhTw} · ${project.zhTw}`,
       },
     },
     {
       key: "REVIEW",
       text: {
-        en: `Review imported-stone and lighting assumptions for ${project} quote v${quoteVersion}`,
-        zhTw: `審查${zhProject}第${quoteVersion}版報價的進口石材與照明假設`,
+        en: `Review ${categories.en} · ${project.en}`,
+        zhTw: `審查${categories.zhTw} · ${project.zhTw}`,
       },
     },
     {
       key: "CHECK",
       text: {
-        en: `Check evidence for imported-stone and lighting assumptions in ${project} quote v${quoteVersion}`,
-        zhTw: `確認${zhProject}第${quoteVersion}版報價之進口石材與照明假設的佐證資料`,
+        en: `Check ${categories.en} · ${project.en}`,
+        zhTw: `確認${categories.zhTw} · ${project.zhTw}`,
       },
     },
   ];
-  if (
-    titleOptions.some((option) =>
-      Object.values(option.text).some((value) => [...value].length > 200),
-    )
-  )
-    throw new Error("TITLE_BOUND");
   const rationaleOptions = [
     {
       key: "REVIEW_NEXT",
       text: {
-        en: "Review these assumptions against the linked evidence before the next internal quotation review.",
-        zhTw: "下次內部報價審查前，依連結的佐證資料檢核這些假設。",
+        en: `Review ${categories.en} against the linked evidence before the next internal quotation review.`,
+        zhTw: `下次內部報價審查前，依連結的佐證資料檢核${categories.zhTw}。`,
       },
     },
     {
       key: "RECORD_QUESTIONS",
       text: {
-        en: "Check the supporting evidence and record questions for internal review.",
-        zhTw: "確認佐證資料，並記錄內部審查需要釐清的問題。",
+        en: `Check the evidence for ${categories.en} and record questions for internal review.`,
+        zhTw: `確認${categories.zhTw}的佐證資料，並記錄內部審查需要釐清的問題。`,
       },
     },
     {
       key: "VALIDATE_HISTORY",
       text: {
-        en: "Validate the imported-stone and lighting assumptions using the linked historical evidence.",
-        zhTw: "依連結的歷史佐證資料，檢核進口石材與照明假設。",
+        en: `Validate ${categories.en} using the linked historical evidence.`,
+        zhTw: `依連結的歷史佐證資料，檢核${categories.zhTw}。`,
       },
     },
   ];
-  const [stone, lighting, insufficient, programme] = claims;
-  if (!stone || !lighting || !insufficient || !programme) throw new Error("CLAIMS_REQUIRED");
-  const stonePercent = percent(stone.value.variancePercent);
-  const lightingPercent = percent(lighting.value.variancePercent);
-  const eligible = numeric(insufficient.value.eligibleObservationCount);
-  const required = numeric(insufficient.value.requiredObservationCount);
-  const activeWeeks = numeric(programme.value.activeProgrammeWeeks);
-  const minWeeks = numeric(programme.value.historicalMinimumWeeks);
-  const maxWeeks = numeric(programme.value.historicalMaximumWeeks);
-  if (
-    programme.value.quantifiedPremiumState !== "UNQUANTIFIED" ||
-    Number(eligible) >= Number(required)
-  )
-    throw new Error("CLAIM_INVALID");
-  const mandatoryStatements: ReviewStatement[] = [
-    {
-      key: "STONE",
-      claimKey: stone.claimKey,
-      text: {
-        en: `Imported-stone forecast direct cost differs by ${stonePercent}% from eligible reconciled-actual history.`,
-        zhTw: `進口石材預估直接成本與符合條件的已核對實際成本歷史比較，差異為 ${stonePercent}%。`,
-      },
+  const mandatoryStatements: ReviewStatement[] = claims.map((claim) => {
+    const en = claim.categoryId ? categoryLabel("en", claim.categoryId) : "";
+    const zh = claim.categoryId ? categoryLabel("zh-TW", claim.categoryId) : "";
+    let text: LocalizedText;
+    if (claim.kind === "CATEGORY_ACTUAL_INSUFFICIENT") {
+      const eligible = numeric(claim.value.eligibleObservationCount);
+      const required = numeric(claim.value.requiredObservationCount);
+      if (Number(eligible) >= Number(required)) throw new Error("CLAIM_INVALID");
+      text = {
+        en: `${en} reconciled-actual evidence is insufficient: ${eligible} of ${required} required observations. No supported actual-cost range is available.`,
+        zhTw: `${zh}已核對實際成本佐證資料不足：目前 ${eligible} 筆，需要 ${required} 筆；無法提供有佐證的實際成本區間。`,
+      };
+    } else if (claim.kind === "PROGRAMME_DIFFERENCE_UNQUANTIFIED") {
+      if (claim.value.quantifiedPremiumState !== "UNQUANTIFIED") throw new Error("CLAIM_INVALID");
+      const active = numeric(claim.value.activeProgrammeWeeks);
+      const min = numeric(claim.value.historicalMinimumWeeks);
+      const max = numeric(claim.value.historicalMaximumWeeks);
+      text = {
+        en: `The programme is ${active} weeks versus ${min}–${max} weeks in the selected history. No evidence supports a quantified programme premium.`,
+        zhTw: `目前工期為 ${active} 週，所選歷史專案為 ${min}–${max} 週；目前沒有佐證支持量化工期溢價。`,
+      };
+    } else {
+      const delta = percent(claim.value.variancePercent);
+      const quoted = claim.kind === "CATEGORY_QUOTED_VARIANCE";
+      text = {
+        en: `${en} ${quoted ? "quoted price" : "forecast direct cost"} differs by ${delta}% from eligible ${quoted ? "quoted-price" : "reconciled-actual"} history.`,
+        zhTw: `${zh}${quoted ? "報價與符合條件的歷史報價" : "預估直接成本與符合條件的已核對實際成本歷史"}比較，差異為 ${delta}%。`,
+      };
+    }
+    return { key: claim.claimKey, claimKey: claim.claimKey, text };
+  });
+  mandatoryStatements.push({
+    key: "REFERENCES",
+    text: {
+      en: `Comparison: ${stage4.run.id}; economics enrichment: ${stage5.run.id}.`,
+      zhTw: `比較紀錄：${stage4.run.id}；成本分析紀錄：${stage5.run.id}。`,
     },
-    {
-      key: "LIGHTING",
-      claimKey: lighting.claimKey,
-      text: {
-        en: `Lighting quoted price differs by ${lightingPercent}% from eligible quoted-price history.`,
-        zhTw: `照明報價與符合條件的歷史報價比較，差異為 ${lightingPercent}%。`,
-      },
-    },
-    {
-      key: "LIGHTING_INSUFFICIENT",
-      claimKey: insufficient.claimKey,
-      text: {
-        en: `Lighting reconciled-actual evidence is insufficient: ${eligible} of ${required} required observations. No supported actual-cost range is available.`,
-        zhTw: `照明已核對實際成本佐證資料不足：目前 ${eligible} 筆，需要 ${required} 筆；無法提供有佐證的實際成本區間。`,
-      },
-    },
-    {
-      key: "PROGRAMME",
-      claimKey: programme.claimKey,
-      text: {
-        en: `The programme is ${activeWeeks} weeks versus ${minWeeks}–${maxWeeks} weeks in the selected history. No evidence supports a quantified programme premium.`,
-        zhTw: `目前工期為 ${activeWeeks} 週，所選歷史專案為 ${minWeeks}–${maxWeeks} 週；目前沒有佐證支持量化工期溢價。`,
-      },
-    },
-    {
-      key: "REFERENCES",
-      text: {
-        en: `Comparison: ${stage4.run.id}; economics enrichment: ${stage5.run.id}.`,
-        zhTw: `比較紀錄：${stage4.run.id}；成本分析紀錄：${stage5.run.id}。`,
-      },
-    },
-  ];
+  });
   const warnings: ReviewStatement[] = [
     {
       key: "REVIEW_ONLY",

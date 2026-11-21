@@ -76,10 +76,10 @@ const zhTw: Catalog = {
   "home.description": "以公司的知識與過往經驗為依據，掌握專案、檢視報價並採取行動。",
   "home.foundationTitle": "目前階段：第一個完整智慧工作流程",
   "home.foundationDescription":
-    "此版本已建立雙語專案工作區、權限治理、可解釋的歷史專案排序，以及報價與實際成本分開的商務比較。所有資料皆為禾序空間設計的虛構示範資料。",
+    "此版本已建立雙語專案工作區、權限治理、可解釋的歷史專案排序，以及報價與實際成本分開的商務比較。資料範圍依目前組織與專案的存取權限決定。",
   "home.nextTitle": "目前可展示的核心成果",
   "home.nextDescription":
-    "從信義旗艦店專案提出「我們以前做過類似的案子嗎？」，查看可解釋的歷史專案、商務差異，並開啟精確資料依據與計算過程。內部審查事項將依建置順序啟用。",
+    "從目前專案提出「我們以前做過類似的案子嗎？」，查看可解釋的歷史專案、商務差異，並開啟精確資料依據與計算過程。具備所需佐證資料時，可建立內部審查事項。",
   "projects.eyebrow": "專案工作區",
   "projects.title": "專案",
   "projects.description": "開啟您有權限查看的專案工作區。",
@@ -132,10 +132,10 @@ const en: Catalog = {
     "Use your company’s knowledge and experience to understand projects, review quotations and act.",
   "home.foundationTitle": "Current stage: first complete intelligence workflow",
   "home.foundationDescription":
-    "This build includes a bilingual Project Workspace, governed authorization, explainable historical-project ranking, and a commercial comparison that keeps quoted price and actual cost distinct. All records belong to the fictional Horizon Atelier demo organization.",
+    "This build includes a bilingual Project Workspace, governed authorization, explainable historical-project ranking, and a commercial comparison that keeps quoted price and actual cost distinct. Available records are scoped to your current organization and job access.",
   "home.nextTitle": "What the controlled demo can show now",
   "home.nextDescription":
-    "Open the Xinyi Flagship project and ask “Have we done something like this before?” to see explainable precedents, commercial differences, and exact supporting evidence and calculation traces. The governed internal review action follows in the accepted build sequence.",
+    "Open your current job and ask “Have we done something like this before?” to see explainable precedents, commercial differences, and exact supporting evidence and calculation traces. Create an internal review when the required evidence is available.",
   "projects.eyebrow": "PROJECT WORKSPACE",
   "projects.title": "Projects",
   "projects.description": "Open a project workspace available to your account.",

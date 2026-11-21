@@ -3,7 +3,7 @@ const mocks = vi.hoisted(() => ({
   resolve: vi.fn(),
   comparison: vi.fn(),
   economics: vi.fn(),
-  canPrepare: vi.fn(),
+  availability: vi.fn(),
   freshness: vi.fn(),
 }));
 vi.mock("@/lib/server/runtime-context", () => ({ resolveServerRuntimeContext: mocks.resolve }));
@@ -15,7 +15,7 @@ vi.mock("@/lib/server/comparison-services", () => ({
   }),
 }));
 vi.mock("@/lib/server/internal-review-services", () => ({
-  createInternalReviewServices: () => ({ canPrepare: mocks.canPrepare }),
+  createInternalReviewServices: () => ({ availability: mocks.availability }),
 }));
 vi.mock("@/modules/comparison-experience/build-comparison-experience", () => ({
   buildComparisonExperience: () => ({ version: "test-view" }),
@@ -32,7 +32,7 @@ describe("Stage 8 comparison entry eligibility", () => {
       result: { run: { id: "cmprun_1" }, activeContext: { projectKey: "PRJ-A" } },
     });
     mocks.economics.mockResolvedValue({ run: { id: "econrun_1", comparisonRunId: "cmprun_1" } });
-    mocks.canPrepare.mockResolvedValue(true);
+    mocks.availability.mockResolvedValue("READY");
     mocks.freshness.mockResolvedValue({
       comparisonRunId: "cmprun_1",
       enrichmentRunId: "econrun_1",
@@ -45,7 +45,7 @@ describe("Stage 8 comparison entry eligibility", () => {
       params: Promise.resolve({ locale: "en", projectKey: "PRJ-A" }),
       searchParams: Promise.resolve({ run: "cmprun_1", economics: "econrun_1" }),
     });
-    expect(mocks.canPrepare).toHaveBeenCalledWith(context, "PRJ-A", {
+    expect(mocks.availability).toHaveBeenCalledWith(context, "PRJ-A", {
       comparisonRunId: "cmprun_1",
       enrichmentRunId: "econrun_1",
     });
@@ -56,7 +56,7 @@ describe("Stage 8 comparison entry eligibility", () => {
       params: Promise.resolve({ locale: "en", projectKey: "PRJ-A" }),
       searchParams: Promise.resolve({ run: "cmprun_1", economics: "econrun_foreign" }),
     });
-    expect(mocks.canPrepare).not.toHaveBeenCalled();
+    expect(mocks.availability).not.toHaveBeenCalled();
   });
   it.each(["STALE", "UNVERIFIED"])("does not offer preparation from a %s result", async (state) => {
     mocks.freshness.mockResolvedValue({
@@ -69,6 +69,6 @@ describe("Stage 8 comparison entry eligibility", () => {
       params: Promise.resolve({ locale: "zh-TW", projectKey: "PRJ-A" }),
       searchParams: Promise.resolve({ run: "cmprun_1", economics: "econrun_1" }),
     });
-    expect(mocks.canPrepare).not.toHaveBeenCalled();
+    expect(mocks.availability).not.toHaveBeenCalled();
   });
 });

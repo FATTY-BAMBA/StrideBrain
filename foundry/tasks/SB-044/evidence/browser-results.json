@@ -1,0 +1,151 @@
+{
+  "checks": [
+    "en: own categories above/below, exact Home/comparison equality and run links, review preparation/confirmation, absent-category chat",
+    "zh-TW: own categories above/below, exact Home/comparison equality and run links, review preparation/confirmation, absent-category chat"
+  ],
+  "screens": [
+    "en-riverside-comparison.png",
+    "en-riverside-review.png",
+    "en-riverside-receipt.png",
+    "en-riverside-home.png",
+    "en-riverside-chat.png",
+    "zh-TW-riverside-comparison.png",
+    "zh-TW-riverside-review.png",
+    "zh-TW-riverside-receipt.png",
+    "zh-TW-riverside-home.png",
+    "zh-TW-riverside-chat.png",
+    "en-create-unquoted-job.png",
+    "en-unquoted-comparison.png",
+    "en-unquoted-home.png",
+    "zh-TW-unquoted-comparison.png",
+    "zh-TW-unquoted-home.png",
+    "en-original-job-derived-findings.png",
+    "en-viewer-no-financial-disclosure.png"
+  ],
+  "jobs": [
+    {
+      "locale": "en",
+      "project": "J-2611-R7K3",
+      "comparisonRunId": "cmprun_d6beefc1-3361-4191-89c7-ce0367447fb4",
+      "economicsRunId": "econrun_5c6e767c-fa1f-483a-b019-90d93b04764d",
+      "receiptUrl": "http://localhost:3041/en/projects/J-2611-R7K3/compare?run=cmprun_d6beefc1-3361-4191-89c7-ce0367447fb4&economics=econrun_5c6e767c-fa1f-483a-b019-90d93b04764d&selected=PRJ-NEIHU-021%2CPRJ-NANJING-023%2CPRJ-ZHONGSHAN-018&action=action_bff2cecd-f092-4fd8-92f6-fb2952ef23f7",
+      "findings": [
+        {
+          "key": "CUSTOM_MILLWORK_FORECAST_ACTUAL_VARIANCE",
+          "text": "Custom millwork · forecast cost versus reconciled actual history: above +52.6%"
+        },
+        {
+          "key": "CUSTOM_MILLWORK_QUOTED_VARIANCE",
+          "text": "Custom millwork · quoted price versus quoted history: above +60.7%"
+        },
+        {
+          "key": "OVERALL_FORECAST_ACTUAL_VARIANCE",
+          "text": "Overall · forecast cost versus reconciled actual history: below -57.2%"
+        },
+        {
+          "key": "OVERALL_QUOTED_VARIANCE",
+          "text": "Overall · quoted price versus quoted history: below -58.4%"
+        },
+        {
+          "key": "SIGNAGE_FORECAST_ACTUAL_VARIANCE",
+          "text": "Signage and display installation · forecast cost versus reconciled actual history: below -59.2%"
+        },
+        {
+          "key": "SIGNAGE_QUOTED_VARIANCE",
+          "text": "Signage and display installation · quoted price versus quoted history: below -66.8%"
+        },
+        {
+          "key": "PROGRAMME_DIFFERENCE_UNQUANTIFIED",
+          "text": "The programme differs from selected history; its cost effect is unquantified."
+        }
+      ]
+    },
+    {
+      "locale": "zh-TW",
+      "project": "J-2611-R7K3",
+      "comparisonRunId": "cmprun_8ffab518-c8f4-4b87-840a-c4911af67673",
+      "economicsRunId": "econrun_014740af-5854-4710-921c-fd244bd9e26a",
+      "receiptUrl": "http://localhost:3041/zh-TW/projects/J-2611-R7K3/compare?run=cmprun_8ffab518-c8f4-4b87-840a-c4911af67673&economics=econrun_014740af-5854-4710-921c-fd244bd9e26a&selected=PRJ-NEIHU-021%2CPRJ-NANJING-023%2CPRJ-ZHONGSHAN-018&action=action_170898de-24d3-491e-a310-2f3c576617e6",
+      "findings": [
+        {
+          "key": "CUSTOM_MILLWORK_FORECAST_ACTUAL_VARIANCE",
+          "text": "客製木作 · 預估成本與已核對實際成本比較: 高於 +52.6%"
+        },
+        {
+          "key": "CUSTOM_MILLWORK_QUOTED_VARIANCE",
+          "text": "客製木作 · 報價與歷史報價比較: 高於 +60.7%"
+        },
+        {
+          "key": "OVERALL_FORECAST_ACTUAL_VARIANCE",
+          "text": "整體 · 預估成本與已核對實際成本比較: 低於 -57.2%"
+        },
+        {
+          "key": "OVERALL_QUOTED_VARIANCE",
+          "text": "整體 · 報價與歷史報價比較: 低於 -58.4%"
+        },
+        {
+          "key": "SIGNAGE_FORECAST_ACTUAL_VARIANCE",
+          "text": "標示與展示安裝 · 預估成本與已核對實際成本比較: 低於 -59.2%"
+        },
+        {
+          "key": "SIGNAGE_QUOTED_VARIANCE",
+          "text": "標示與展示安裝 · 報價與歷史報價比較: 低於 -66.8%"
+        },
+        {
+          "key": "PROGRAMME_DIFFERENCE_UNQUANTIFIED",
+          "text": "工期與選取的歷史專案不同；其成本影響尚未量化。"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "project": "J-2611-9WQU",
+      "unquoted": true,
+      "comparisonRunId": "cmprun_c0ca6a16-c0ca-4b73-804a-6385ecc36d15",
+      "economicsRunId": "econrun_7d8e9a95-4e9d-482d-8bbe-3a1c1b47afe4"
+    },
+    {
+      "locale": "zh-TW",
+      "project": "J-2611-9WQU",
+      "unquoted": true,
+      "comparisonRunId": "cmprun_91d1be9b-e522-4a25-b3eb-8e2f81908df9",
+      "economicsRunId": "econrun_d68ce75d-0566-49c0-9ae4-a48d9764792b"
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [
+    {
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://localhost:3041/favicon.ico"
+    }
+  ],
+  "originalJob": {
+    "previousFixedPercentages": [
+      18,
+      9,
+      7
+    ],
+    "currentDisplayedPercentages": [
+      "+18.4%",
+      "+9.4%",
+      "+7.2%"
+    ],
+    "economicsRunId": "econrun_462af225-772b-46ec-9bee-c2acafc18e95",
+    "findings": [
+      "Site coordination and handover · forecast cost versus reconciled actual history: below -15.9%",
+      "Site coordination and handover · quoted price versus quoted history: below -28.0%",
+      "Demolition, partitions and ceilings · forecast cost versus reconciled actual history: above +9.4%",
+      "Demolition, partitions and ceilings · quoted price versus quoted history: above +7.1%",
+      "Imported stone and hard finishes · forecast cost versus reconciled actual history: above +18.4%",
+      "Imported stone and hard finishes · quoted price versus quoted history: above +43.0%",
+      "Lighting and electrical · quoted price versus quoted history: above +9.4%",
+      "Overall · forecast cost versus reconciled actual history: above +6.0%",
+      "Overall · quoted price versus quoted history: above +7.2%",
+      "Signage and display installation · forecast cost versus reconciled actual history: below -11.5%",
+      "Signage and display installation · quoted price versus quoted history: below -5.5%",
+      "The programme differs from selected history; its cost effect is unquantified.",
+      "Lighting and electrical: actual-cost evidence is insufficient (2/3)"
+    ]
+  },
+  "status": "PASS"
+}

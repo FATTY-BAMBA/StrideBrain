@@ -66,6 +66,9 @@ const en = {
   chinese: "繁體中文",
   validationTitle: "Check the highlighted fields",
   states: {
+    NO_QUOTE_VERSION: "A quote version is needed before creating a review for this job.",
+    NOTHING_TO_REVIEW:
+      "There are no out-of-range category findings, actual-cost evidence gaps or programme differences to review.",
     PROPOSAL_UNAVAILABLE:
       "This review is unavailable. Open an authorized comparison with the required evidence and try again.",
     PROPOSAL_EXPIRED: "This review has expired. Return to the comparison and prepare a new review.",
@@ -162,6 +165,8 @@ const zhTw: CopyShape<typeof en> = {
   chinese: "繁體中文",
   validationTitle: "請檢查標示的欄位",
   states: {
+    NO_QUOTE_VERSION: "此專案需要報價版本才能建立審查。",
+    NOTHING_TO_REVIEW: "目前沒有超出範圍的類別、實際成本資料缺口或工期差異需要審查。",
     PROPOSAL_UNAVAILABLE: "目前無法提供此審查。請開啟您有權存取且具備必要佐證資料的比較後重試。",
     PROPOSAL_EXPIRED: "本次審查已逾期。請返回比較並重新準備審查內容。",
     PROPOSAL_STALE: "比較或相關佐證資料已變更。請重新比較，再準備新的審查。",

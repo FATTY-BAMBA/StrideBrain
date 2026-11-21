@@ -2,11 +2,11 @@
   "taskId": "SB-044",
   "issueUrl": "https://github.com/FATTY-BAMBA/StrideBrain/issues/44",
   "branch": "build/sb-044-job-neutral-findings",
-  "state": "IMPLEMENTING_C",
+  "state": "LOCALLY_VERIFIED_PENDING_PULL_REQUEST_AND_HOSTED_ACCEPTANCE",
   "deliverySequence": {
-    "A": "COMPLETE",
-    "B": "COMPLETE",
-    "C": "IN_PROGRESS"
+    "A": "VERIFIED_LOCALLY",
+    "B": "VERIFIED_LOCALLY",
+    "C": "VERIFIED_LOCALLY"
   },
   "nextIssue": {
     "number": 46,
@@ -14,12 +14,24 @@
     "gate": "SB-044 pull request merged"
   },
   "verified": [
-    "A: 19 economics/adapter tests and TypeScript pass",
-    "A: isolated populated PostgreSQL migration preserves snapshots/evidence IDs; historical claim evidence opens",
-    "B: second synthetic job SQL seeded and verified without changing existing fixtures",
-    "B: 29 economics/comparison/PostgreSQL tests pass, including bilingual Home agreement, above/below categories, old evidence and authorization"
+    "Node 24 npm run check: 89 files, 921 tests, zero skipped; formatting, lint, TypeScript and production build pass",
+    "Forward-only populated PostgreSQL claim migration preserves snapshot bytes and evidence identities; old evidence panels reopen",
+    "Pre-SB-044 receipt created using merged PR #43 services reopens in en and zh-TW; 30 historical claim panels open; immutable rows unchanged",
+    "Second quoted fixture has only custom millwork/signage; bilingual prepare and confirm succeed with review policy 2.0",
+    "Chrome production-build acceptance: English desktop and Traditional Chinese mobile; same saved Home/comparison findings and links, absent-category chat",
+    "Screen-created unquoted job: real ranked history, no financial findings, plain needs-quote/review-unavailable states in both languages",
+    "Viewer, nonfinancial and foreign-organization restrictions; exact evidence IDs and conflict/supersession guards remain covered",
+    "Job-neutral src guard passes; original fixture numbers unchanged; old versus computed Home values documented",
+    "Temporary browser sessions revoked; zero active temporary sessions remain",
+    "Clean database migrate/seed/verify and repeat seed/verify pass; disposable database removed"
   ],
   "notVerified": [
-    "C review/chat/guard, complete test suite, browser, legacy receipt reopen and hosted acceptance pending"
-  ]
+    "Hosted preview acceptance on this revision: existing project previously pins builds to an earlier commit; current PR deployment pending",
+    "GitHub CI on the published PR head (pending publication)",
+    "Safari/Firefox, assistive technology and performance/load testing",
+    "Production identity and real customer data (outside scope)"
+  ],
+  "verificationReport": "verification.md",
+  "baseline": "3a67f2c32c19ea77dc229b482eb64bcb65f4fa1c",
+  "dataMode": "DEMO_SYNTHETIC"
 }

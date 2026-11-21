@@ -121,7 +121,9 @@ describePostgres("Independent SB-029 stored-data presentation review", () => {
       const view = buildComparisonExperience({ stage4: comparison, economics, locale });
       const rows = view.table.sections.flatMap((section) => section.rows);
       const lighting = rows.find((row) => row.key === "LIGHTING_ELECTRICAL-ACTUAL")!;
-      const gap = view.synthesis.gaps.find((item) => item.key === "lighting-gap")!;
+      const gap = view.synthesis.gaps.find(
+        (item) => item.claimKey === "LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+      )!;
       const selection = (claimKey: string): EvidencePanelSelection => ({
         mode: "CLAIM",
         comparisonRunId: comparison.run.id,
@@ -306,7 +308,9 @@ describePostgres("Independent SB-029 stored-data presentation review", () => {
     expect(prepared.kind).toBe("PREPARED");
     if (prepared.kind !== "PREPARED") throw new Error("PROPOSAL_REQUIRED");
     expect(
-      prepared.proposal.mandatoryStatements.find((statement) => statement.key === "STONE")?.text,
+      prepared.proposal.mandatoryStatements.find(
+        (statement) => statement.claimKey === "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      )?.text,
     ).toContain("forecast direct cost differs by +18.4% from eligible reconciled-actual history");
     const created = await services.confirm(context, {
       version: "internal-review-command.v1",

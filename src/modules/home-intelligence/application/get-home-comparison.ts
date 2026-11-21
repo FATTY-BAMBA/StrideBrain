@@ -1,3 +1,4 @@
+import type { ProjectRepositoryPort } from "@/repositories/ports/project-repository";
 import { AuthorizationService } from "@/modules/authorization/authorization-service";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import type { Stage4ComparisonResult } from "@/modules/comparisons/domain/contracts";
@@ -12,12 +13,21 @@ export type HomeComparison = Readonly<{
 /** Reopen the same stored results as comparison; never run ranking/calculations for a Home read. */
 export class GetHomeComparison {
   constructor(
+    private readonly projects: ProjectRepositoryPort,
     private readonly latest: LatestProjectComparisonRepositoryPort,
     private readonly comparisons: ComparisonRunRepositoryPort,
     private readonly economics: EconomicsEnrichmentRunRepositoryPort,
   ) {}
-  async execute(context: RuntimeContext, projectId: string): Promise<HomeComparison | null> {
-    if (!new AuthorizationService().canRunComparison(context, projectId).allowed) return null;
+  async execute(context: RuntimeContext, projectKey: string): Promise<HomeComparison | null> {
+    if (!context.capabilities.has("project:compare")) return null;
+    const project = await this.projects.getAuthorizedByBusinessKey(context, projectKey);
+    if (
+      !project ||
+      project.organizationId !== context.organizationId ||
+      !new AuthorizationService().canRunComparison(context, project.id).allowed
+    )
+      return null;
+    const projectId = project.id;
     const ids = await this.latest.findLatest(context, projectId);
     if (!ids) return null;
     const comparison = await this.comparisons.getAuthorizedResult(context, ids.comparisonRunId);

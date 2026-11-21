@@ -52,7 +52,11 @@ export function ValueLaunchpad({ locale, context }: { locale: Locale; context: D
         <h1>{copy.title}</h1>
       </header>
 
-      <HomeChat locale={locale} />
+      <HomeChat
+        key={workspace?.project.businessKey}
+        locale={locale}
+        projectKey={workspace?.project.businessKey}
+      />
 
       {workspace && base ? (
         <section className={styles.projectCard} aria-labelledby="current-project-title">

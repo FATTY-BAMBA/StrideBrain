@@ -138,3 +138,16 @@ const zh: Record<keyof typeof en, string> = {
 export function jobsCopy(locale: Locale): Record<keyof typeof en, string> {
   return locale === "zh-TW" ? zh : en;
 }
+
+/** Category recognition only narrows an already-supported chat intent. */
+export function mentionedCategory(query: string): string | undefined {
+  const aliases: Readonly<Record<string, RegExp>> = {
+    IMPORTED_STONE: /stone|石材/i,
+    LIGHTING_ELECTRICAL: /lighting|light fixture|燈具|照明/i,
+  };
+  return Object.entries(categories).find(
+    ([id, labels]) =>
+      aliases[id]?.test(query) ||
+      labels.some((label) => query.toLocaleLowerCase().includes(label.toLocaleLowerCase())),
+  )?.[0];
+}

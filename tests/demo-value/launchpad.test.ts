@@ -4,14 +4,19 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { ProjectWorkspaceDTO } from "@/modules/projects/domain/project-workspace";
 
-const boundary = vi.hoisted(() => ({ resolve: vi.fn(), list: vi.fn(), workspace: vi.fn() }));
+const boundary = vi.hoisted(() => ({
+  resolve: vi.fn(),
+  list: vi.fn(),
+  workspace: vi.fn(),
+  intelligence: vi.fn(),
+}));
 vi.mock("@/lib/server/runtime-context", () => ({ resolveServerRuntimeContext: boundary.resolve }));
 vi.mock("@/lib/server/project-workspace-services", () => ({
   createProjectListService: () => ({ execute: boundary.list }),
   createProjectWorkspaceService: () => ({ execute: boundary.workspace }),
 }));
 vi.mock("@/lib/server/comparison-services", () => ({
-  createComparisonServices: () => ({ getHomeComparison: { execute: async () => null } }),
+  createComparisonServices: () => ({ getHomeComparison: { execute: boundary.intelligence } }),
 }));
 vi.mock("next/navigation", () => ({
   notFound: () => {
@@ -63,6 +68,7 @@ function render(node: ReactNode) {
 }
 
 beforeEach(() => {
+  boundary.intelligence.mockReset().mockResolvedValue(null);
   boundary.resolve.mockReset().mockResolvedValue(trusted);
   boundary.list.mockReset().mockResolvedValue({ kind: "AVAILABLE", projects });
   boundary.workspace.mockReset().mockResolvedValue({ kind: "AVAILABLE", workspace });
@@ -72,6 +78,10 @@ describe("authorized read-only Home composition", () => {
   it("reads one workspace selected only from the authorized list and preserves locale", async () => {
     const result = await loadDemoValueContext("zh-TW");
     expect(result.workspace).toBe(workspace);
+    expect(boundary.intelligence).toHaveBeenCalledExactlyOnceWith(
+      { ...trusted, locale: "zh-TW" },
+      workspace.project.businessKey,
+    );
     expect(boundary.list).toHaveBeenCalledExactlyOnceWith({ ...trusted, locale: "zh-TW" });
     expect(boundary.workspace).toHaveBeenCalledExactlyOnceWith(
       { ...trusted, locale: "zh-TW" },

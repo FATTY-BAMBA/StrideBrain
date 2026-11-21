@@ -3,7 +3,7 @@ import type { Locale } from "@/modules/localization/config";
 import type { StructuredEconomicsClaimDTO } from "@/modules/economics/domain/contracts";
 import type { EvidenceSourceRecord } from "@/repositories/ports/evidence-panel-repository";
 
-export const INTERNAL_REVIEW_POLICY = "INTERNAL-REVIEW-ACTION-1.0" as const;
+export const INTERNAL_REVIEW_POLICY = "INTERNAL-REVIEW-ACTION-2.0" as const;
 export const PROPOSAL_SNAPSHOT_VERSION = "internal-review-proposal-snapshot.v1" as const;
 export const ACTION_SNAPSHOT_VERSION = "internal-review-action-snapshot.v1" as const;
 
@@ -98,6 +98,8 @@ export type ConfirmInternalReviewInput = Readonly<{
   locale: Locale;
 }>;
 export type ProposalFailure =
+  | "NO_QUOTE_VERSION"
+  | "NOTHING_TO_REVIEW"
   | "PROPOSAL_UNAVAILABLE"
   | "PROPOSAL_EXPIRED"
   | "PROPOSAL_STALE"

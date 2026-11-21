@@ -11,18 +11,24 @@ const suggestions = {
   en: [
     "Have we done something similar before?",
     "What looks unusual in this quotation?",
-    "What supports the imported-stone difference?",
+    "What supports these findings?",
     "What should I review next?",
   ],
   "zh-TW": [
     "我們以前做過類似的專案嗎？",
     "這份報價有哪些需要留意的地方？",
-    "進口石材的差異有哪些佐證？",
+    "這些發現有哪些佐證？",
     "接下來應該先檢視什麼？",
   ],
 } as const;
 
-export function HomeChat({ locale }: { locale: Locale }) {
+export function HomeChat({
+  locale,
+  projectKey,
+}: {
+  locale: Locale;
+  projectKey?: string | undefined;
+}) {
   const [state, action, pending] = useActionState(askHomeAction, initialHomeChatState);
   const copy =
     locale === "zh-TW"
@@ -137,6 +143,7 @@ export function HomeChat({ locale }: { locale: Locale }) {
 
       <form action={action} className={styles.chatComposer}>
         <input type="hidden" name="locale" value={locale} />
+        {projectKey ? <input type="hidden" name="projectKey" value={projectKey} /> : null}
         <label className={styles.srOnly} htmlFor="chat-message">
           {copy.label}
         </label>
@@ -159,6 +166,7 @@ export function HomeChat({ locale }: { locale: Locale }) {
         {suggestions[locale].map((question) => (
           <form action={action} key={question}>
             <input type="hidden" name="locale" value={locale} />
+            {projectKey ? <input type="hidden" name="projectKey" value={projectKey} /> : null}
             <input type="hidden" name="message" value={question} />
             <button type="submit" disabled={pending}>
               {question}

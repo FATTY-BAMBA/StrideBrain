@@ -920,3 +920,19 @@ describe("Stage 8 current-authorized receipt and workspace reads", () => {
     expect(state.tx.commitAction).not.toHaveBeenCalled();
   });
 });
+
+it.each(["NO_QUOTE_VERSION", "NOTHING_TO_REVIEW"] as const)(
+  "returns typed %s without preparing or writing an action",
+  async (kind) => {
+    const state = setup();
+    vi.mocked(currentMaterial).mockResolvedValue({ kind });
+    const pair = { comparisonRunId: "comparison-one", enrichmentRunId: "economics-one" };
+    expect(await state.service.availability(state.actor, "PRJ-ONE", pair)).toBe(kind);
+    expect(await state.service.canPrepare(state.actor, "PRJ-ONE", pair)).toBe(false);
+    expect(
+      await state.service.prepare(state.actor, { projectKey: "PRJ-ONE", ...pair, locale: "en" }),
+    ).toEqual({ kind, requestId: state.actor.requestId });
+    expect(state.tx.persistProposal).not.toHaveBeenCalled();
+    expect(state.tx.commitAction).not.toHaveBeenCalled();
+  },
+);

@@ -77,6 +77,7 @@ export function createComparisonServices(): ComparisonServices {
 
   return Object.freeze({
     getHomeComparison: new GetHomeComparison(
+      projects,
       new PrismaLatestProjectComparisonRepository(
         database as unknown as PrismaLatestProjectComparisonDatabase,
       ),
