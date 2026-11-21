@@ -203,6 +203,10 @@ export type Stage4ComparisonResult = Readonly<{
     inputFingerprint: string;
   }>;
   activeContext: Readonly<{
+    // Legacy snapshots lack this metadata and cannot be reused as current Home findings.
+    sourceFingerprint?: string;
+    permissionFingerprint?: string;
+    dataClassification?: DataClassification;
     projectKey: string;
     nameEn: string;
     nameZhTw: string;

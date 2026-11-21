@@ -521,18 +521,22 @@ function synthesis(
 }
 
 function notices(
-  job: string,
+  stage4: Stage4ComparisonResult,
+  locale: Locale,
   economics: Stage5EconomicsResult | undefined,
   copy: ComparisonCopy,
 ): readonly ComparisonSynthesisItemView[] {
-  const result: ComparisonSynthesisItemView[] = [
-    synthesisItem(
-      "synthetic",
-      copy.summary.demoData,
-      copy.notices.synthetic.replace("{job}", job),
-      "NEUTRAL",
-    ),
-  ];
+  const result: ComparisonSynthesisItemView[] = [];
+  if (stage4.activeContext.dataClassification === "DEMO_SYNTHETIC") {
+    result.push(
+      synthesisItem(
+        "synthetic",
+        copy.summary.demoData,
+        copy.notices.synthetic.replace("{job}", localizedName(locale, stage4.activeContext)),
+        "NEUTRAL",
+      ),
+    );
+  }
   if (!economics || economics.accessScope === "STRUCTURAL_ONLY") {
     result.push(
       synthesisItem("restricted", copy.synthesis.gaps, copy.notices.restricted, "NEUTRAL"),
@@ -832,10 +836,14 @@ export function buildComparisonExperience(
       authorizedMatchCountLabel: formatNumber(locale, stage4.summary.primaryMatchCount, 0),
       selectedCountLabel: `${selectedProjectKeys.length}/3`,
       economicsStateLabel: economicsStateLabel(economics, copy),
-      syntheticDataLabel: copy.notices.synthetic.replace(
-        "{job}",
-        localizedName(locale, stage4.activeContext),
-      ),
+      ...(stage4.activeContext.dataClassification === "DEMO_SYNTHETIC"
+        ? {
+            syntheticDataLabel: copy.notices.synthetic.replace(
+              "{job}",
+              localizedName(locale, stage4.activeContext),
+            ),
+          }
+        : {}),
     }),
     activeProject: Object.freeze({
       projectKey: stage4.activeContext.projectKey,
@@ -879,6 +887,6 @@ export function buildComparisonExperience(
             synthesisItem("no-quote", copy.synthesis.gaps, findingsCopy(locale).noQuote, "NEUTRAL"),
           ],
         },
-    notices: notices(localizedName(locale, stage4.activeContext), economics, copy),
+    notices: notices(stage4, locale, economics, copy),
   });
 }

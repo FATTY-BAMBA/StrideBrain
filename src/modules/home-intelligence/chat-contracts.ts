@@ -14,7 +14,7 @@ export type HomeChatCitation = Readonly<{
   fullHref: Route;
 }>;
 
-export type HomeChatIntent = "SIMILAR" | "STONE" | "QUOTE" | "ACTIONS" | "PROJECT";
+export type HomeChatIntent = "SIMILAR" | "CATEGORY" | "QUOTE" | "ACTIONS" | "PROJECT";
 
 export type ComparableReference = Readonly<{
   projectKey: string;

@@ -73,6 +73,7 @@ function stage4(): Stage4ComparisonResult {
       inputFingerprint: "stage4-input",
     }),
     activeContext: Object.freeze({
+      dataClassification: "DEMO_SYNTHETIC",
       projectKey: "PRJ-XINYI-026",
       nameEn: "Xinyi Flagship Renovation",
       nameZhTw: "信義旗艦店裝修",
@@ -537,7 +538,7 @@ describe("Stage 6 comparison experience composer", () => {
     expect(row(view, "LIGHTING_ELECTRICAL-ACTUAL")?.cells.__ACTIVE_PROJECT__?.state).toBe(
       "INSUFFICIENT",
     );
-    expect(view.synthesis.history.some((item) => item.body.includes("+18.4%"))).toBe(true);
+    expect(view.synthesis.history.some((item) => item.body.includes("18.4% above"))).toBe(true);
   });
 
   it("keeps unknown factors distinct from mismatches", () => {
@@ -644,6 +645,27 @@ describe("QA-18 financial basis at the point of comparison", () => {
 
 describe("job-neutral claim presentation", () => {
   it.each(["en", "zh-TW"] as const)(
+    "shows synthetic notices only for synthetic records in %s",
+    (locale) => {
+      const original = stage4();
+      const synthetic = buildComparisonExperience({ stage4: original, locale });
+      expect(synthetic.notices.some((notice) => notice.key === "synthetic")).toBe(true);
+      expect(synthetic.summary.syntheticDataLabel).toBeTruthy();
+      const privateJob = buildComparisonExperience({
+        stage4: {
+          ...original,
+          activeContext: { ...original.activeContext, dataClassification: "TENANT_PRIVATE" },
+        },
+        locale,
+      });
+      expect(privateJob.notices.some((notice) => notice.key === "synthetic")).toBe(false);
+      expect(privateJob.summary.syntheticDataLabel).toBeUndefined();
+      expect(JSON.stringify([privateJob.notices, privateJob.summary])).not.toMatch(
+        /Synthetic|示範|虛構/i,
+      );
+    },
+  );
+  it.each(["en", "zh-TW"] as const)(
     "omits aligned findings and labels below-range findings in %s",
     (locale) => {
       const original = economics();
@@ -663,7 +685,7 @@ describe("job-neutral claim presentation", () => {
       };
       const view = buildComparisonExperience({ stage4: stage4(), economics: result, locale });
       expect(view.synthesis.history).toHaveLength(1);
-      expect(view.synthesis.history[0]!.body).toContain(locale === "en" ? "below" : "低於");
+      expect(view.synthesis.history[0]!.body).toContain(locale === "en" ? "below" : "低 ");
       expect(view.synthesis.recommendation?.body).not.toMatch(/stone|lighting|石材|照明/i);
       expect(
         buildComparisonExperience({ stage4: stage4(), locale }).synthesis.recommendation,

@@ -20,6 +20,7 @@ vi.mock("@/lib/server/comparison-services", () => ({
 }));
 import { askHomeAction } from "@/app/[locale]/home-chat-actions";
 import { initialHomeChatState } from "@/modules/home-intelligence/chat-contracts";
+import { claimFindingText } from "@/modules/economics/presentation/claim-findings";
 const comparison = {
   run: { id: "comparison-own" },
   activeContext: { projectKey: "J-OWN", activeQuoteVersionKey: "quote-own" },
@@ -34,13 +35,21 @@ const economics = {
   claims: [
     {
       claimKey: "opaque-above",
-      kind: "CATEGORY_QUOTED_VARIANCE",
+      kind: "CATEGORY_QUOTED_VARIANCE" as const,
+      titleEn: "Stored claim",
+      titleZhTw: "已儲存項目",
+      evidenceReferenceIds: [],
+      warningCodes: [],
       categoryId: "CUSTOM_MILLWORK",
       value: { direction: "ABOVE", variancePercent: "12.34" },
     },
     {
       claimKey: "opaque-below",
-      kind: "CATEGORY_FORECAST_ACTUAL_VARIANCE",
+      kind: "CATEGORY_FORECAST_ACTUAL_VARIANCE" as const,
+      titleEn: "Stored claim",
+      titleZhTw: "已儲存項目",
+      evidenceReferenceIds: [],
+      warningCodes: [],
       categoryId: "SIGNAGE",
       value: { direction: "BELOW", variancePercent: "-8.26" },
     },
@@ -55,7 +64,7 @@ const context = {
     },
     openActions: [],
   },
-  intelligence: { comparison, economics },
+  intelligence: { kind: "AVAILABLE", comparison, economics },
 };
 beforeEach(() => {
   vi.clearAllMocks();
@@ -79,9 +88,12 @@ describe("Home chat job-specific findings within existing intents", () => {
       locale,
     );
     const reply = result.turns.at(-1)!;
-    expect(reply.bullets?.join(" ")).toContain("+12.3%");
-    expect(reply.bullets?.join(" ")).toContain("-8.3%");
-    expect(reply.bullets?.join(" ")).toContain(locale === "en" ? "below" : "低於");
+    expect(reply.bullets?.join(" ")).toContain("12.3%");
+    expect(reply.bullets?.join(" ")).toContain("8.3%");
+    expect(reply.bullets?.join(" ")).toContain(locale === "en" ? "below" : "低 ");
+    expect(reply.bullets).toEqual(
+      economics.claims.map((claim) => claimFindingText(claim, locale === "en" ? "en" : "zh-TW")),
+    );
     expect(JSON.stringify(reply)).not.toMatch(/stone|lighting|石材|照明/i);
     expect(mocks.context).toHaveBeenCalledWith(locale, "J-OWN");
     expect(mocks.run).not.toHaveBeenCalled();
@@ -99,7 +111,11 @@ describe("Home chat job-specific findings within existing intents", () => {
   it("does not expose financial text from structural-only or unquoted results", async () => {
     mocks.context.mockResolvedValue({
       ...context,
-      intelligence: { comparison, economics: { ...economics, accessScope: "STRUCTURAL_ONLY" } },
+      intelligence: {
+        kind: "AVAILABLE",
+        comparison,
+        economics: { ...economics, accessScope: "STRUCTURAL_ONLY" },
+      },
     });
     expect(
       JSON.stringify((await ask("What looks unusual in the quote?")).turns.at(-1)),
@@ -107,6 +123,7 @@ describe("Home chat job-specific findings within existing intents", () => {
     mocks.context.mockResolvedValue({
       ...context,
       intelligence: {
+        kind: "AVAILABLE",
         comparison: {
           ...comparison,
           activeContext: { ...comparison.activeContext, activeQuoteVersionKey: undefined },
@@ -124,11 +141,68 @@ describe("Home chat job-specific findings within existing intents", () => {
     expect(mocks.run).not.toHaveBeenCalled();
   });
   it.each(["en", "zh-TW"])(
+    "rejects out-of-date saved and remembered findings in %s",
+    async (locale) => {
+      const previous = await ask("What looks unusual in the quote?");
+      mocks.context.mockResolvedValue({ ...context, intelligence: { kind: "OUT_OF_DATE" } });
+      vi.clearAllMocks();
+      const data = new FormData();
+      data.set("locale", locale);
+      data.set("projectKey", "J-OWN");
+      for (const query of ["What looks unusual in the quote?", "Show those sources", "Why?"]) {
+        data.set("message", query);
+        const result = await askHomeAction(previous, data);
+        expect(result.turns.at(-1)?.text).toBe(
+          locale === "en"
+            ? "The saved comparison is out of date. Open the comparison to run it again."
+            : "已儲存的比較已過期，請開啟比較後重新執行。",
+        );
+        expect(result.turns.at(-1)?.action?.href).toBe(`/${locale}/projects/J-OWN/compare`);
+        expect(result.turns.at(-1)?.bullets).toBeUndefined();
+        expect(result.turns.at(-1)?.citations).toBeUndefined();
+        expect(result.context).toEqual({});
+      }
+      expect(mocks.comparison).not.toHaveBeenCalled();
+      expect(mocks.economics).not.toHaveBeenCalled();
+      expect(mocks.panel).not.toHaveBeenCalled();
+      expect(mocks.run).not.toHaveBeenCalled();
+    },
+  );
+  it("does not reuse remembered findings when the saved-findings read is unavailable", async () => {
+    mocks.context.mockResolvedValue({ ...context, intelligence: { kind: "UNAVAILABLE" } });
+    expect((await ask("What looks unusual in the quote?")).turns.at(-1)?.text).toContain(
+      "Saved findings are unavailable.",
+    );
+    expect(mocks.run).not.toHaveBeenCalled();
+    expect(mocks.panel).not.toHaveBeenCalled();
+  });
+  it.each(["millwork", "signage"])(
+    "narrows an existing quote intent to the %s alias",
+    async (alias) => {
+      const reply = (await ask(`What looks unusual in the ${alias} quote?`)).turns.at(-1)!;
+      expect(reply.bullets).toHaveLength(1);
+      expect(reply.bullets![0]).toContain(
+        alias === "millwork" ? "Custom millwork:" : "Signage and display installation:",
+      );
+    },
+  );
+  it("narrows an existing evidence intent to an absent category", async () => {
+    const reply = (await ask("What evidence supports the handover difference?")).turns.at(-1)!;
+    expect(reply.text).toBe("There is no record for that category in this job.");
+    expect(mocks.panel).not.toHaveBeenCalled();
+  });
+  it("does not interpret milestone as stone", async () => {
+    const reply = (await ask("What looks unusual in the milestone quote?")).turns.at(-1)!;
+    expect(reply.bullets).toHaveLength(2);
+    expect(reply.text).not.toContain("no record");
+  });
+  it.each(["en", "zh-TW"])(
     "shows saved match scores without cost percentages for an unquoted job in %s",
     async (locale) => {
       mocks.context.mockResolvedValue({
         ...context,
         intelligence: {
+          kind: "AVAILABLE",
           comparison: {
             ...comparison,
             activeContext: { ...comparison.activeContext, activeQuoteVersionKey: undefined },

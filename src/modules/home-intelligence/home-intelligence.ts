@@ -22,7 +22,8 @@ export type HomeIntelligence = Readonly<{
 export function buildHomeIntelligence(locale: Locale, context: DemoValueContext): HomeIntelligence {
   const workspace = context.workspace;
   if (!workspace) return { findings: [], memory: [], openActionCount: 0 };
-  const source = context.intelligence;
+  const outcome = context.intelligence;
+  const source = outcome?.kind === "AVAILABLE" ? outcome : null;
   const copy = findingsCopy(locale);
   const view = source
     ? buildComparisonExperience({ stage4: source.comparison, economics: source.economics, locale })
@@ -60,11 +61,16 @@ export function buildHomeIntelligence(locale: Locale, context: DemoValueContext)
     ...(findings.length
       ? {}
       : {
-          emptyMessage: !source
-            ? copy.noComparison
-            : !source.comparison.activeContext.activeQuoteVersionKey
-              ? copy.noQuote
-              : (view?.synthesis.recommendation?.body ?? copy.noEconomics),
+          emptyMessage:
+            outcome?.kind === "OUT_OF_DATE"
+              ? copy.outOfDate
+              : outcome?.kind === "UNAVAILABLE"
+                ? copy.unavailable
+                : !source
+                  ? copy.noComparison
+                  : !source.comparison.activeContext.activeQuoteVersionKey
+                    ? copy.noQuote
+                    : (view?.synthesis.recommendation?.body ?? copy.noEconomics),
         }),
   };
 }

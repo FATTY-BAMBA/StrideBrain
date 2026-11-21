@@ -19,7 +19,10 @@ export function claimFindingText(
   const category = claim.categoryId ? categoryLabel(locale, claim.categoryId) : copy.overall;
   if (claim.kind === "PROGRAMME_DIFFERENCE_UNQUANTIFIED") return copy.programme;
   if (claim.kind === "CATEGORY_ACTUAL_INSUFFICIENT" && claim.categoryId) {
-    return `${category}: ${copy.insufficient} (${claim.value.eligibleObservationCount}/${claim.value.requiredObservationCount})`;
+    return copy.insufficient
+      .replace("{category}", category)
+      .replace("{eligible}", String(claim.value.eligibleObservationCount))
+      .replace("{required}", String(claim.value.requiredObservationCount));
   }
   const quoted =
     claim.kind === "CATEGORY_QUOTED_VARIANCE" || claim.kind === "OVERALL_QUOTED_VARIANCE";
@@ -35,11 +38,14 @@ export function claimFindingText(
     return null;
   // Formatting only: value, direction and alignment come from the domain claim.
   const percent = new Intl.NumberFormat(locale, {
-    signDisplay: "always",
+    signDisplay: "never",
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
   }).format(Number(claim.value.variancePercent));
-  return `${category} · ${quoted ? copy.quote : copy.forecast}: ${copy[claim.value.direction as "ABOVE" | "BELOW"]} ${percent}%`;
+  return (quoted ? copy.quote : copy.forecast)
+    .replace("{category}", category)
+    .replace("{percent}", percent)
+    .replace("{direction}", copy[claim.value.direction as "ABOVE" | "BELOW"]);
 }
 export function recommendationText(
   result: Stage5EconomicsResult | undefined,

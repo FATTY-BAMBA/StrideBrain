@@ -1,15 +1,47 @@
 import type { Locale } from "./config";
 import type { ProjectStage } from "@/modules/projects/domain/job-input";
 
-const categories: Record<string, readonly [string, string]> = {
-  SELECTIVE_DEMOLITION: ["Selective demolition", "選擇性拆除"],
-  PARTITIONS_CEILINGS: ["Partitions and ceilings", "隔間與天花"],
-  DEMOLITION_CEILING: ["Demolition, partitions and ceilings", "拆除、隔間與天花"],
-  CUSTOM_MILLWORK: ["Custom millwork", "客製木作"],
-  LIGHTING_ELECTRICAL: ["Lighting and electrical", "照明與電氣"],
-  IMPORTED_STONE: ["Imported stone and hard finishes", "進口石材與硬質面材"],
-  SIGNAGE: ["Signage and display installation", "標示與展示安裝"],
-  COORDINATION: ["Site coordination and handover", "現場協調與交付"],
+const categories: Readonly<
+  Record<
+    string,
+    Readonly<{
+      labels: readonly [string, string];
+      aliases: readonly string[];
+    }>
+  >
+> = {
+  SELECTIVE_DEMOLITION: {
+    labels: ["Selective demolition", "選擇性拆除"],
+    aliases: ["selective demolition", "選擇性拆除"],
+  },
+  PARTITIONS_CEILINGS: {
+    labels: ["Partitions and ceilings", "隔間與天花"],
+    aliases: ["partitions", "partition", "ceilings", "ceiling", "隔間", "天花"],
+  },
+  DEMOLITION_CEILING: {
+    labels: ["Demolition, partitions and ceilings", "拆除、隔間與天花"],
+    aliases: ["demolition", "拆除"],
+  },
+  CUSTOM_MILLWORK: {
+    labels: ["Custom millwork", "客製木作"],
+    aliases: ["millwork", "joinery", "cabinetry", "木作", "木工"],
+  },
+  LIGHTING_ELECTRICAL: {
+    labels: ["Lighting and electrical", "照明與電氣"],
+    aliases: ["lighting", "light fixture", "light fixtures", "electrical", "燈具", "照明", "電氣"],
+  },
+  IMPORTED_STONE: {
+    labels: ["Imported stone and hard finishes", "進口石材與硬質面材"],
+    aliases: ["stone", "hard finishes", "石材", "硬質面材"],
+  },
+  SIGNAGE: {
+    labels: ["Signage and display installation", "標示與展示安裝"],
+    aliases: ["signage", "display installation", "標示", "招牌", "展示安裝"],
+  },
+  COORDINATION: {
+    labels: ["Site coordination and handover", "現場協調與交付"],
+    aliases: ["coordination", "handover", "協調", "交付", "交接"],
+  },
 };
 const stages: Record<ProjectStage, readonly [string, string]> = {
   DISCOVERY: ["Discovery", "需求探索"],
@@ -22,7 +54,7 @@ const stages: Record<ProjectStage, readonly [string, string]> = {
   COMPLETE: ["Complete", "完成"],
 };
 export function categoryLabel(locale: Locale, key: string): string {
-  return categories[key]?.[locale === "zh-TW" ? 1 : 0] ?? key;
+  return categories[key]?.labels[locale === "zh-TW" ? 1 : 0] ?? key;
 }
 export function projectStageLabel(locale: Locale, stage: ProjectStage): string {
   return stages[stage][locale === "zh-TW" ? 1 : 0];
@@ -141,13 +173,17 @@ export function jobsCopy(locale: Locale): Record<keyof typeof en, string> {
 
 /** Category recognition only narrows an already-supported chat intent. */
 export function mentionedCategory(query: string): string | undefined {
-  const aliases: Readonly<Record<string, RegExp>> = {
-    IMPORTED_STONE: /stone|石材/i,
-    LIGHTING_ELECTRICAL: /lighting|light fixture|燈具|照明/i,
-  };
-  return Object.entries(categories).find(
-    ([id, labels]) =>
-      aliases[id]?.test(query) ||
-      labels.some((label) => query.toLocaleLowerCase().includes(label.toLocaleLowerCase())),
-  )?.[0];
+  const normalized = query.toLocaleLowerCase();
+  const matches = Object.entries(categories).flatMap(([id, category]) =>
+    [...category.labels, ...category.aliases].flatMap((alias) => {
+      const text = alias.toLocaleLowerCase();
+      const escaped = text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const matched = /[a-z]/i.test(text)
+        ? new RegExp(`\\b${escaped}\\b`, "i").test(normalized)
+        : normalized.includes(text);
+      return matched ? [{ id, length: text.length }] : [];
+    }),
+  );
+  // Prefer a full category name over a shorter overlapping alias.
+  return matches.sort((left, right) => right.length - left.length)[0]?.id;
 }

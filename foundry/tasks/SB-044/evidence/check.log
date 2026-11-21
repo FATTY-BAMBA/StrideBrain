@@ -30,10 +30,10 @@ All matched files use Prettier code style!
  RUN  v4.1.10 /private/tmp/stridebrain-sb041
 
 
- Test Files  89 passed (89)
-      Tests  921 passed (921)
-   Start at  23:30:41
-   Duration  108.47s (transform 5.98s, setup 0ms, import 11.75s, tests 244.35s, environment 4.22s)
+ Test Files  92 passed (92)
+      Tests  959 passed (959)
+   Start at  23:59:56
+   Duration  98.92s (transform 4.89s, setup 0ms, import 9.07s, tests 195.01s, environment 3.03s)
 
 
 > stridebrain@0.1.0 build
@@ -43,15 +43,15 @@ All matched files use Prettier code style!
 ✓ Running next.config.ts took 66ms
 
   Creating an optimized production build ...
-✓ Compiled successfully in 330ms
+✓ Compiled successfully in 601ms
   Running TypeScript ...
-  Finished TypeScript in 1536ms ...
+  Finished TypeScript in 3.4s ...
   Collecting page data using 9 workers ...
   Generating static pages using 9 workers (0/19) ...
   Generating static pages using 9 workers (4/19) 
   Generating static pages using 9 workers (9/19) 
   Generating static pages using 9 workers (14/19) 
-✓ Generating static pages using 9 workers (19/19) in 199ms
+✓ Generating static pages using 9 workers (19/19) in 160ms
   Finalizing page optimization ...
 
 Route (app)

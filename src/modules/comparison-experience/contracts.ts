@@ -98,7 +98,7 @@ export type ComparisonExperienceView = Readonly<{
     authorizedMatchCountLabel: string;
     selectedCountLabel: string;
     economicsStateLabel: string;
-    syntheticDataLabel: string;
+    syntheticDataLabel?: string | undefined;
   }>;
   activeProject: Readonly<{
     projectKey: string;

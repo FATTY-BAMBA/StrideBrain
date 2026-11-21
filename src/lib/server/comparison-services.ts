@@ -1,4 +1,5 @@
 import { GetHomeComparison } from "@/modules/home-intelligence/application/get-home-comparison";
+import { ActiveProjectContextService } from "@/modules/comparisons/application/active-project-context-service";
 import {
   PrismaLatestProjectComparisonRepository,
   type PrismaLatestProjectComparisonDatabase,
@@ -83,6 +84,7 @@ export function createComparisonServices(): ComparisonServices {
       ),
       comparisonRuns,
       economicsRuns,
+      new ActiveProjectContextService(candidates),
     ),
     runComparison: new RunComparableProjectAnalysis(projects, candidates, comparisonRuns),
     getComparison: new GetComparisonRun(comparisonRuns),

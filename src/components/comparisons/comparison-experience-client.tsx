@@ -494,10 +494,12 @@ function ComparisonResultExperience({
             <dt>{copy.summary.economics}</dt>
             <dd>{view.summary.economicsStateLabel}</dd>
           </div>
-          <div className={styles.summaryItem}>
-            <dt>{copy.summary.demoData}</dt>
-            <dd>{view.summary.syntheticDataLabel}</dd>
-          </div>
+          {view.summary.syntheticDataLabel ? (
+            <div className={styles.summaryItem}>
+              <dt>{copy.summary.demoData}</dt>
+              <dd>{view.summary.syntheticDataLabel}</dd>
+            </div>
+          ) : null}
         </dl>
       </details>
       <section className={styles.section} aria-labelledby="comparable-projects-title">

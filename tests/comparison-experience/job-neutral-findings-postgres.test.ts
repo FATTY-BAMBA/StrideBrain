@@ -72,6 +72,39 @@ async function actor(membership: string) {
   return context;
 }
 suite("job-specific findings from PostgreSQL", () => {
+  it("requires the saving member and the current quote version for Home", async () => {
+    const context = await actor("membership_horizon_mei");
+    const services = createComparisonServices();
+    const comparison = await services.runComparison.execute(context, "J-2611-R7K3");
+    if (comparison.kind !== "COMPLETE") throw new Error(comparison.kind);
+    expect((await services.getHomeComparison.execute(context, "J-2611-R7K3"))?.kind).toBe(
+      "AVAILABLE",
+    );
+    const anotherMember = await actor("membership_horizon_admin");
+    expect(await services.getHomeComparison.execute(anotherMember, "J-2611-R7K3")).toEqual({
+      kind: "OUT_OF_DATE",
+    });
+    const versionId = `quote-review-${randomUUID()}`;
+    try {
+      await sql.query(
+        `INSERT INTO "QuoteVersion" SELECT (jsonb_populate_record(NULL::"QuoteVersion", to_jsonb(v) || jsonb_build_object('id', $1::text, 'versionNumber', v."versionNumber"+1))).* FROM "QuoteVersion" v WHERE id='qv_riverside_044_v1'`,
+        [versionId],
+      );
+      await sql.query(
+        `INSERT INTO "QuoteItem" SELECT (jsonb_populate_record(NULL::"QuoteItem", to_jsonb(i) || jsonb_build_object('id', $1::text || i.id, 'quoteVersionId', $1::text))).* FROM "QuoteItem" i WHERE "quoteVersionId"='qv_riverside_044_v1'`,
+        [versionId],
+      );
+      expect(await services.getHomeComparison.execute(context, "J-2611-R7K3")).toEqual({
+        kind: "OUT_OF_DATE",
+      });
+    } finally {
+      await sql.query('DELETE FROM "QuoteItem" WHERE "quoteVersionId"=$1', [versionId]);
+      await sql.query('DELETE FROM "QuoteVersion" WHERE id=$1', [versionId]);
+    }
+    expect((await services.getHomeComparison.execute(context, "J-2611-R7K3"))?.kind).toBe(
+      "AVAILABLE",
+    );
+  });
   it("uses the second job's categories and the same stored findings/scores on Home and comparison in both languages", async () => {
     const context = await actor("membership_horizon_mei");
     const services = createComparisonServices();
@@ -98,7 +131,9 @@ suite("job-specific findings from PostgreSQL", () => {
       ),
     ).toBe(true);
     const source = await services.getHomeComparison.execute(context, "J-2611-R7K3");
-    expect(source?.economics?.run.id).toBe(economics.result.run.id);
+    expect(source?.kind).toBe("AVAILABLE");
+    if (source?.kind !== "AVAILABLE") throw new Error("HOME_RESULT_NOT_CURRENT");
+    expect(source.economics?.run.id).toBe(economics.result.run.id);
     for (const locale of ["en", "zh-TW"] as const) {
       const loaded = await createProjectWorkspaceService().execute(
         { ...context, locale },
@@ -149,7 +184,7 @@ suite("job-specific findings from PostgreSQL", () => {
     expect(await services.getHomeComparison.execute(outsider, "J-2611-R7K3")).toBeNull();
     const viewer = await actor("membership_horizon_viewer");
     const limited = await services.getHomeComparison.execute(viewer, "J-2611-R7K3");
-    expect(limited?.economics).toBeUndefined();
+    expect(limited?.kind === "AVAILABLE" ? limited.economics : undefined).toBeUndefined();
     expect(
       await services.getHomeComparison.execute(
         { ...context, capabilities: new Set() },

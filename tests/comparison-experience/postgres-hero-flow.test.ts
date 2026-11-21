@@ -77,7 +77,7 @@ describeDatabase("Stage 6 PostgreSQL hero flow", () => {
       "PRJ-ZHONGSHAN-018",
       "PRJ-NANJING-023",
     ]);
-    expect(view.synthesis.history.some((item) => item.body.includes("+18.4%"))).toBe(true);
+    expect(view.synthesis.history.some((item) => item.body.includes("18.4% above"))).toBe(true);
     expect(
       view.table.sections
         .flatMap((section) => section.rows)

@@ -27,7 +27,6 @@ export function ValueLaunchpad({ locale, context }: { locale: Locale; context: D
           actions: "未完成事項",
           memory: "公司過往經驗",
           memoryHelp: "StrideBrain 會用這些已完成專案來比較目前工作。",
-          match: "相似度",
         }
       : {
           eyebrow: "Find. Understand. Decide. Act.",
@@ -42,7 +41,6 @@ export function ValueLaunchpad({ locale, context }: { locale: Locale; context: D
           actions: "open action",
           memory: "Company memory",
           memoryHelp: "StrideBrain uses these completed projects to compare current work.",
-          match: "match",
         };
 
   return (
@@ -122,11 +120,7 @@ export function ValueLaunchpad({ locale, context }: { locale: Locale; context: D
             {intelligence.memory.map((project) => (
               <li key={project.name}>
                 <span>{project.name}</span>
-                {project.score ? (
-                  <small>
-                    {project.score} {copy.match}
-                  </small>
-                ) : null}
+                <small>{project.score}/100</small>
               </li>
             ))}
           </ul>

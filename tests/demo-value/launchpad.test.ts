@@ -95,6 +95,38 @@ describe("authorized read-only Home composition", () => {
     expect(boundary.workspace).not.toHaveBeenCalled();
   });
 
+  it.each(["en", "zh-TW"] as const)(
+    "keeps the job when saved findings fail in %s",
+    async (locale) => {
+      boundary.intelligence.mockRejectedValue(new Error("FINDINGS_READ_FAILED"));
+      const context = await loadDemoValueContext(locale);
+      expect(context.projects).toEqual(projects);
+      expect(context.workspace).toBe(workspace);
+      expect(context.intelligence).toEqual({ kind: "UNAVAILABLE" });
+      const host = render(createElement(ValueLaunchpad, { locale, context }));
+      expect(host.textContent).toContain("Allowed project");
+      expect(host.textContent).toContain(
+        locale === "en" ? "Saved findings are unavailable." : "目前無法讀取已儲存的比較結果",
+      );
+      expect(host.querySelector('a[href$="/compare"]')).not.toBeNull();
+    },
+  );
+
+  it.each(["en", "zh-TW"] as const)("shows one linked out-of-date line in %s", async (locale) => {
+    boundary.intelligence.mockResolvedValue({ kind: "OUT_OF_DATE" });
+    const host = render(
+      createElement(ValueLaunchpad, { locale, context: await loadDemoValueContext(locale) }),
+    );
+    const line =
+      locale === "en"
+        ? "The saved comparison is out of date. Open the comparison to run it again."
+        : "已儲存的比較已過期，請開啟比較後重新執行。";
+    expect(host.querySelector('a[href$="/compare"]')?.textContent).toBe(line);
+    expect(host.textContent?.split(line)).toHaveLength(2);
+    expect(host.querySelector('[class*="findings"]')).toBeNull();
+    expect(host.querySelector('[class*="memory"]')).toBeNull();
+  });
+
   it("does not query project data without a session", async () => {
     boundary.resolve.mockResolvedValue(null);
     expect(await loadDemoValueContext("en")).toEqual({ projects: [], workspace: null });

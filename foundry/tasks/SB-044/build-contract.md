@@ -23,4 +23,12 @@
 
 ## Verification
 
-Run npm run check with isolated PostgreSQL, migration/fixture checks, both languages, both synthetic quoted jobs and one screen-created unquoted job. Verify denied Viewer/financial access, Home/comparison agreement, source evidence and receipt compatibility. Record old 18%/9%/7% Home values versus computed values without fixture adjustment. Hosted acceptance is separate from local verification.
+Run npm run check with isolated PostgreSQL, migration/fixture checks, both languages, both synthetic quoted jobs and one screen-created unquoted job. Verify denied Viewer/financial access, Home/comparison agreement, source evidence and receipt compatibility. Record old 18%/9%/7% Home values versus computed values without fixture adjustment. Hosted acceptance waits for the Product Director using `docs/development/TEST_SITE.md`. Agents never deploy, migrate, seed or change settings on hosted resources. Keep the PR draft.
+
+## PR #48 review revision
+
+- Home validates saved active-context permission and source fingerprints against the current authorized member and active job. `ActiveProjectContextService` reads current metadata without ranking/economics replay. Legacy snapshots missing metadata are out of date; no immutable snapshot is rewritten.
+- Chat uses the currently validated saved result, including evidence follow-ups. A stale or failed read shows the linked typed state instead of reusing remembered run IDs.
+- Shared finding templates supply the exact bilingual sentences; Home scores use `/100`. Category aliases live beside labels and Latin aliases have word boundaries, within the existing intent set.
+- The comparison synthetic notice depends on the active record’s classification. A failed findings read does not erase the job/list.
+- The accepted claim identity, both migrations, internal review policy and authorization rules remain unchanged.

@@ -6,7 +6,7 @@ import {
 } from "@/modules/economics/presentation/claim-findings";
 import { findingsCopy } from "@/modules/localization/economics-findings";
 import { mentionedCategory } from "@/modules/localization/jobs";
-import type { HomeComparison } from "@/modules/home-intelligence/application/get-home-comparison";
+import type { HomeComparisonOutcome } from "@/modules/home-intelligence/application/get-home-comparison";
 import type { Route } from "next";
 import { createComparisonServices } from "@/lib/server/comparison-services";
 import { loadDemoValueContext } from "@/lib/server/demo-value-context";
@@ -148,23 +148,11 @@ async function comparisonBundle(
   services: ReturnType<typeof createComparisonServices>,
   runtime: NonNullable<Awaited<ReturnType<typeof resolveServerRuntimeContext>>>,
   projectKey: string,
-  remembered: HomeChatContext,
-  saved?: HomeComparison | null,
+  saved?: HomeComparisonOutcome | null,
 ): Promise<ComparisonBundle | null> {
-  if (remembered.comparisonRunId) {
-    const existing = await services.getComparison.execute(runtime, remembered.comparisonRunId);
-    if (existing.kind === "COMPLETE" && existing.result.activeContext.projectKey === projectKey) {
-      const economics = remembered.economicsRunId
-        ? await services.getEconomics.execute(runtime, remembered.economicsRunId)
-        : null;
-      if (!economics || economics.run.comparisonRunId === existing.result.run.id) {
-        return Object.freeze({ comparison: existing.result, economics });
-      }
-    }
-  }
-
-  if (saved?.comparison.activeContext.projectKey === projectKey)
+  if (saved?.kind === "AVAILABLE" && saved.comparison.activeContext.projectKey === projectKey)
     return { comparison: saved.comparison, economics: saved.economics ?? null };
+  if (saved) return null;
   const structural = await services.runComparison.execute(runtime, projectKey);
   if (structural.kind !== "COMPLETE") return null;
 
@@ -286,38 +274,6 @@ export async function askHomeAction(
     /(that|those|the).*(source|evidence)|show.*(source|evidence)|open.*(source|evidence)|剛才.*(佐證|來源)|顯示.*(佐證|來源)|查看.*(佐證|來源)/i.test(
       normalized,
     );
-  if (
-    evidenceFollowup &&
-    !/(stone|石材|lighting|燈具|quote|quotation|報價)/i.test(normalized) &&
-    previous.context.activeClaimKey &&
-    previous.context.comparisonRunId &&
-    previous.context.economicsRunId &&
-    previous.context.selectedProjectKeys
-  ) {
-    const citations = await claimCitations(
-      services,
-      runtime,
-      locale,
-      workspace.project.businessKey,
-      previous.context.comparisonRunId,
-      previous.context.economicsRunId,
-      previous.context.selectedProjectKeys,
-      previous.context.activeClaimKey,
-    );
-    return append(previous, [
-      userTurn,
-      {
-        id: `assistant-${now}`,
-        role: "assistant",
-        text:
-          locale === "zh-TW"
-            ? `這些是剛才那項發現所依據的來源。${citationMarkers(citations)}`
-            : `These are the sources behind that finding. ${citationMarkers(citations)}`,
-        ...(citations.length ? { citations } : {}),
-      },
-    ]);
-  }
-
   const rememberedComparable = previous.context.comparableProjects?.find((project) =>
     projectMentioned(normalized, project.name, locale),
   );
@@ -381,8 +337,8 @@ export async function askHomeAction(
   const explicitSimilar = /(similar|past project|done before|類似|以前做過|過往專案)/i.test(
     normalized,
   );
-  const stoneIntent = /(stone|石材|material|材料)/i.test(normalized);
-  const lightingIntent = /(lighting|light fixture|燈具|照明)/i.test(normalized);
+  const categoryIntent = /(\bstone\b|石材|\bmaterials?\b|材料)/i.test(normalized);
+  const lightingIntent = /(\blighting\b|\blight fixtures?\b|燈具|照明)/i.test(normalized);
   const quoteIntent =
     /(quote|quotation|報價|unusual|attention|review next|留意|下一步|異常)/i.test(normalized) ||
     lightingIntent;
@@ -395,15 +351,15 @@ export async function askHomeAction(
         )
       : undefined);
 
-  const followupStone = whyFollowup && previous.context.lastIntent === "STONE";
+  const followupCategory = whyFollowup && previous.context.lastIntent === "CATEGORY";
   const followupQuote = whyFollowup && previous.context.lastIntent === "QUOTE";
 
   const needsComparison =
     explicitSimilar ||
-    stoneIntent ||
+    categoryIntent ||
     quoteIntent ||
     !!followupComparable ||
-    followupStone ||
+    followupCategory ||
     followupQuote ||
     /(evidence|source|support|佐證|來源)/i.test(normalized);
 
@@ -421,11 +377,33 @@ export async function askHomeAction(
     ]);
   }
 
+  if (
+    context.intelligence?.kind === "OUT_OF_DATE" ||
+    context.intelligence?.kind === "UNAVAILABLE"
+  ) {
+    const copy = findingsCopy(locale);
+    return append(
+      previous,
+      [
+        userTurn,
+        {
+          id: `assistant-${now}`,
+          role: "assistant",
+          text: context.intelligence.kind === "OUT_OF_DATE" ? copy.outOfDate : copy.unavailable,
+          action: {
+            label: locale === "zh-TW" ? "開啟比較" : "Open comparison",
+            href: comparisonHref(locale, workspace.project.businessKey) as Route,
+          },
+        },
+      ],
+      {},
+    );
+  }
+
   const bundle = await comparisonBundle(
     services,
     runtime,
     workspace.project.businessKey,
-    previous.context,
     context.intelligence,
   );
   if (!bundle) {
@@ -451,6 +429,43 @@ export async function askHomeAction(
     ...(economics ? { economicsRunId: economics.run.id } : {}),
     selectedProjectKeys,
   });
+
+  // Follow-ups use only the currently validated saved result, never browser-supplied run IDs.
+  if (
+    evidenceFollowup &&
+    !mentionedCategory(query) &&
+    !/(\bquote\b|\bquotation\b|報價)/i.test(normalized) &&
+    previous.context.activeClaimKey &&
+    economics &&
+    economics.claims.some((claim) => claim.claimKey === previous.context.activeClaimKey)
+  ) {
+    const citations = await claimCitations(
+      services,
+      runtime,
+      locale,
+      workspace.project.businessKey,
+      comparison.run.id,
+      economics.run.id,
+      selectedProjectKeys,
+      previous.context.activeClaimKey,
+    );
+    return append(
+      previous,
+      [
+        userTurn,
+        {
+          id: `assistant-${now}`,
+          role: "assistant",
+          text:
+            locale === "zh-TW"
+              ? `這些是剛才那項發現所依據的來源。${citationMarkers(citations)}`
+              : `These are the sources behind that finding. ${citationMarkers(citations)}`,
+          ...(citations.length ? { citations } : {}),
+        },
+      ],
+      nextContext(previous.context, bundle, {}),
+    );
+  }
 
   if (followupComparable) {
     const match = comparison.matches.find(
@@ -525,10 +540,16 @@ export async function askHomeAction(
     );
   }
 
-  if (stoneIntent || followupStone || quoteIntent || followupQuote) {
+  if (
+    categoryIntent ||
+    followupCategory ||
+    quoteIntent ||
+    followupQuote ||
+    mentionedCategory(query)
+  ) {
     const explicitCategory = mentionedCategory(query);
     const rememberedClaim =
-      followupStone || followupQuote
+      followupCategory || followupQuote
         ? economics?.claims.find((claim) => claim.claimKey === previous.context.activeClaimKey)
         : undefined;
     const categoryId = explicitCategory ?? rememberedClaim?.categoryId;
@@ -543,7 +564,7 @@ export async function askHomeAction(
         : (economics?.claims ?? []).filter((claim) =>
             categoryId
               ? claim.categoryId === categoryId
-              : stoneIntent
+              : categoryIntent
                 ? Boolean(claim.categoryId)
                 : true,
           );
@@ -623,7 +644,7 @@ export async function askHomeAction(
         bundle,
         firstClaim
           ? {
-              lastIntent: stoneIntent || followupStone ? "STONE" : "QUOTE",
+              lastIntent: categoryIntent || followupCategory ? "CATEGORY" : "QUOTE",
               activeClaimKey: firstClaim.claimKey,
             }
           : {},
