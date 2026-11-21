@@ -10,6 +10,9 @@ vi.mock("@/lib/server/project-workspace-services", () => ({
   createProjectListService: () => ({ execute: boundary.list }),
   createProjectWorkspaceService: () => ({ execute: boundary.workspace }),
 }));
+vi.mock("@/lib/server/comparison-services", () => ({
+  createComparisonServices: () => ({ getHomeComparison: { execute: async () => null } }),
+}));
 vi.mock("next/navigation", () => ({
   notFound: () => {
     throw new Error("NOT_FOUND");

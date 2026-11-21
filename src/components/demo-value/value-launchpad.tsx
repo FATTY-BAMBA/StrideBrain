@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { runComparisonAction } from "@/app/[locale]/projects/[projectKey]/compare/actions";
 import { HomeChat } from "./home-chat";
 import type { Route } from "next";
 import type { DemoValueContext } from "@/lib/server/demo-value-context";
@@ -76,18 +75,24 @@ export function ValueLaunchpad({ locale, context }: { locale: Locale; context: D
           {intelligence.findings.length ? (
             <div className={styles.findings}>
               {intelligence.findings.map((finding) => (
-                <form action={runComparisonAction} key={finding.id}>
-                  <input type="hidden" name="locale" value={locale} />
-                  <input type="hidden" name="projectKey" value={workspace.project.businessKey} />
-                  <input type="hidden" name="evidenceClaim" value={finding.claimKey} />
-                  <button className={styles.finding} type="submit">
-                    <strong>{finding.title}</strong>
-                    <span>{finding.detail}</span>
-                    <small>{finding.check}</small>
-                  </button>
-                </form>
+                <Link className={styles.finding} href={finding.href as Route} key={finding.id}>
+                  <strong>{finding.title}</strong>
+                  <span>{finding.detail}</span>
+                  <small>{finding.check}</small>
+                </Link>
               ))}
             </div>
+          ) : (
+            <p>
+              <Link href={intelligence.comparisonHref as Route}>{intelligence.emptyMessage}</Link>
+            </p>
+          )}
+          {workspace.project.demoData ? (
+            <small>
+              {locale === "zh-TW"
+                ? "此專案使用虛構示範資料。"
+                : "This job uses synthetic demo data."}
+            </small>
           ) : null}
 
           {intelligence.openActionCount > 0 ? (
@@ -115,7 +120,7 @@ export function ValueLaunchpad({ locale, context }: { locale: Locale; context: D
                 <span>{project.name}</span>
                 {project.score ? (
                   <small>
-                    {project.score}% {copy.match}
+                    {project.score} {copy.match}
                   </small>
                 ) : null}
               </li>

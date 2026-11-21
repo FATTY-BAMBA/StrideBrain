@@ -2,11 +2,11 @@
   "taskId": "SB-044",
   "issueUrl": "https://github.com/FATTY-BAMBA/StrideBrain/issues/44",
   "branch": "build/sb-044-job-neutral-findings",
-  "state": "IMPLEMENTING_B",
+  "state": "IMPLEMENTING_C",
   "deliverySequence": {
     "A": "COMPLETE",
-    "B": "IN_PROGRESS",
-    "C": "NOT_STARTED"
+    "B": "COMPLETE",
+    "C": "IN_PROGRESS"
   },
   "nextIssue": {
     "number": 46,
@@ -15,9 +15,11 @@
   },
   "verified": [
     "A: 19 economics/adapter tests and TypeScript pass",
-    "A: isolated populated PostgreSQL migration preserves snapshots/evidence IDs; historical claim evidence opens"
+    "A: isolated populated PostgreSQL migration preserves snapshots/evidence IDs; historical claim evidence opens",
+    "B: second synthetic job SQL seeded and verified without changing existing fixtures",
+    "B: 29 economics/comparison/PostgreSQL tests pass, including bilingual Home agreement, above/below categories, old evidence and authorization"
   ],
   "notVerified": [
-    "Historical receipt integration, B/C, full checks, browser and hosted acceptance pending"
+    "C review/chat/guard, complete test suite, browser, legacy receipt reopen and hosted acceptance pending"
   ]
 }

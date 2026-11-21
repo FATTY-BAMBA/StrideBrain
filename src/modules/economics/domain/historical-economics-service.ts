@@ -478,13 +478,11 @@ function currentLineObservation(current: CurrentLine | null): NormalizedObservat
 function categoryIds(
   currentQuote: EvaluatedRecord | null,
   currentForecast: EvaluatedRecord | null,
-  quotedHistory: readonly EvaluatedRecord[],
-  actualHistory: readonly EvaluatedRecord[],
 ): readonly string[] {
   return Object.freeze(
     [
       ...new Set(
-        [currentQuote, currentForecast, ...quotedHistory, ...actualHistory]
+        [currentQuote, currentForecast]
           .filter((entry): entry is EvaluatedRecord => entry !== null)
           .flatMap((entry) => entry.record.lines.map((line) => line.categoryId)),
       ),
@@ -974,7 +972,7 @@ export class HistoricalEconomicsService {
       : restrictedVariance("FORECAST", "RECONCILED_ACTUAL_COST");
 
     const categories = Object.freeze(
-      categoryIds(currentQuote, currentForecast, quotedHistory, actualHistory).map((categoryId) =>
+      categoryIds(currentQuote, currentForecast).map((categoryId) =>
         buildCategory(
           categoryId,
           input,

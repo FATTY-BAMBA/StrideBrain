@@ -1,3 +1,5 @@
+import { createComparisonServices } from "./comparison-services";
+import type { HomeComparison } from "@/modules/home-intelligence/application/get-home-comparison";
 import type { Locale } from "@/modules/localization/config";
 import type { ProjectEntryDTO } from "@/modules/projects/application/list-authorized-projects";
 import type { ProjectWorkspaceDTO } from "@/modules/projects/domain/project-workspace";
@@ -10,6 +12,7 @@ import {
 export type DemoValueContext = Readonly<{
   projects: readonly ProjectEntryDTO[];
   workspace: ProjectWorkspaceDTO | null;
+  intelligence?: HomeComparison | null | undefined;
 }>;
 
 /** Read-only presentation composition. A URL can select only an already-authorized project. */
@@ -31,6 +34,13 @@ export async function loadDemoValueContext(
     return {
       projects: list.projects,
       workspace: result.kind === "AVAILABLE" ? result.workspace : null,
+      intelligence:
+        result.kind === "AVAILABLE"
+          ? await createComparisonServices().getHomeComparison.execute(
+              context,
+              result.workspace.project.id,
+            )
+          : null,
     };
   } catch {
     return { projects: [], workspace: null };

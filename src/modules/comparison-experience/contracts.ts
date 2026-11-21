@@ -119,7 +119,7 @@ export type ComparisonExperienceView = Readonly<{
     history: readonly ComparisonSynthesisItemView[];
     differences: readonly ComparisonSynthesisItemView[];
     gaps: readonly ComparisonSynthesisItemView[];
-    recommendation: ComparisonSynthesisItemView;
+    recommendation?: ComparisonSynthesisItemView | undefined;
   }>;
   notices: readonly ComparisonSynthesisItemView[];
 }>;

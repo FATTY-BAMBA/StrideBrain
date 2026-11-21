@@ -14,7 +14,8 @@ BEGIN
 
   SELECT count(*) INTO value_count
   FROM "Project"
-  WHERE "organizationId" = 'org_horizon' AND "status" = 'ACTIVE';
+  WHERE "organizationId" = 'org_horizon' AND "status" = 'ACTIVE'
+    AND id <> 'prj_riverside_044'; -- SB-044 is verified separately.
   IF value_count <> 5 THEN
     RAISE EXCEPTION 'Expected 5 active Horizon projects, found %', value_count;
   END IF;

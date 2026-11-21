@@ -436,7 +436,7 @@ function ComparisonResultExperience({
             ...view.synthesis.history,
             ...view.synthesis.differences,
             ...view.synthesis.gaps,
-            view.synthesis.recommendation,
+            ...(view.synthesis.recommendation ? [view.synthesis.recommendation] : []),
           ].map((item) => (
             <article
               className={styles.synthesisCard}
