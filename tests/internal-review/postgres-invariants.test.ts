@@ -125,7 +125,7 @@ async function pair(currentActor: Actor) {
         mode: "CLAIM" as const,
         comparisonRunId: comparison.result.run.id,
         enrichmentRunId: economics.result.run.id,
-        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       },
       evidenceReturnId: "internal-review-trigger",
     },
@@ -481,7 +481,7 @@ describePostgres("Stage 8 independent PostgreSQL invariants", () => {
           mode: "CLAIM" as const,
           comparisonRunId: fixture.comparisonRunId,
           enrichmentRunId: fixture.enrichmentRunId,
-          claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+          claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
         };
         for (const selection of [
           claim,
@@ -607,7 +607,7 @@ describePostgres("Stage 8 independent PostgreSQL invariants", () => {
           mode: "CLAIM",
           comparisonRunId: fixture.comparisonRunId,
           enrichmentRunId: fixture.enrichmentRunId,
-          claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+          claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
         },
         "en",
         freshness,

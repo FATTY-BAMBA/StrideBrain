@@ -382,7 +382,7 @@ describe("Stage 6 comparison experience composer", () => {
       const view = buildComparisonExperience({ stage4: stage4(), economics: stored, locale });
       const lighting = row(view, "LIGHTING_ELECTRICAL-ACTUAL")!;
       const gap = view.synthesis.gaps.find((item) => item.key === "lighting-gap")!;
-      expect(gap.claimKey).toBe("XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT");
+      expect(gap.claimKey).toBe("LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT");
       for (const value of Object.values(lighting.cells)) {
         expect(value.state).toBe("INSUFFICIENT");
         expect(value.claimKey).toBe(gap.claimKey);
@@ -391,7 +391,7 @@ describe("Stage 6 comparison experience composer", () => {
       expect(lighting.cells.__ACTIVE_PROJECT__?.secondary).not.toContain("%");
       expect(row(view, "IMPORTED_STONE-ACTUAL")?.cells.__ACTIVE_PROJECT__).toMatchObject({
         state: "VALUE",
-        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       });
       expect(JSON.stringify(stored)).toBe(snapshot);
 
@@ -406,7 +406,7 @@ describe("Stage 6 comparison experience composer", () => {
       });
       expect(row(other, "CUSTOM_MILLWORK-ACTUAL")?.cells.__ACTIVE_PROJECT__).toMatchObject({
         state: "INSUFFICIENT",
-        claimKey: "XINYI_CUSTOM_MILLWORK_ACTUAL_INSUFFICIENT",
+        claimKey: "CUSTOM_MILLWORK_ACTUAL_INSUFFICIENT",
       });
     },
   );

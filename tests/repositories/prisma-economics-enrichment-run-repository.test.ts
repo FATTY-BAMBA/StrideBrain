@@ -260,6 +260,40 @@ describe("PrismaEconomicsEnrichmentRunRepository", () => {
     );
   });
 
+  it("attaches migrated category identity while preserving historical snapshot keys and evidence links", async () => {
+    const db = database();
+    const oldKey = "XINYI_CUSTOM_MILLWORK_QUOTED_VARIANCE";
+    const legacy = {
+      ...result,
+      claims: [
+        { ...result.claims[0]!, claimKey: oldKey, kind: "CATEGORY_QUOTED_VARIANCE" as const },
+      ],
+      evidenceBundles: [{ ...result.evidenceBundles[0]!, claimKey: oldKey }],
+    };
+    const snapshot = { schemaVersion: "economics-enrichment-snapshot.v1", result: legacy };
+    const before = JSON.stringify(snapshot);
+    db.findFirst.mockResolvedValue({
+      id: result.run.id,
+      organizationId: ORGANIZATION_ID,
+      activeProjectId: PROJECT_ID,
+      status: "COMPLETED",
+      accessScope: "FULL_ACTUAL",
+      resultSnapshot: snapshot,
+      claims: [
+        {
+          claimKey: "CUSTOM_MILLWORK_QUOTED_VARIANCE",
+          originalClaimKey: oldKey,
+          categoryId: "CUSTOM_MILLWORK",
+        },
+      ],
+    });
+    const reopened = await new PrismaEconomicsEnrichmentRunRepository(
+      db.database,
+    ).getAuthorizedResult(context(), result.run.id);
+    expect(reopened?.claims[0]).toMatchObject({ claimKey: oldKey, categoryId: "CUSTOM_MILLWORK" });
+    expect(reopened?.evidenceBundles[0]?.claimKey).toBe(oldKey);
+    expect(JSON.stringify(snapshot)).toBe(before);
+  });
   it("does not disclose a stored FULL_ACTUAL result to a Viewer", async () => {
     const db = database();
     db.findFirst.mockResolvedValue({

@@ -73,14 +73,14 @@ describe("Stage 6 comparison route state", () => {
       economics: "econrun_456",
       selected: "PRJ-A,PRJ-B",
       evidenceMode: "claim",
-      evidenceClaim: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      evidenceClaim: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       evidenceSource: "abcdef0123456789abcdef01",
       evidenceConflict: "conflict_stone_1",
       evidenceReturn: "evidence-cell-imported-stone",
     });
 
     expect(state.evidenceMode).toBe("claim");
-    expect(state.evidenceClaimKey).toBe("XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE");
+    expect(state.evidenceClaimKey).toBe("IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE");
     expect(state.evidenceSourceKey).toBe("abcdef0123456789abcdef01");
     expect(state.evidenceConflictKey).toBe("conflict_stone_1");
     expect(state.evidenceReturnId).toBe("evidence-cell-imported-stone");

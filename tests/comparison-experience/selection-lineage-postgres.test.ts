@@ -231,6 +231,10 @@ pgDescribe("Stage9 real PostgreSQL selection lineage and populated upgrade", () 
     await sql.query(
       readFileSync("prisma/migrations/20261121060000_project_jobs/migration.sql", "utf8"),
     );
+    // Independent claim metadata columns are needed by the current adapter.
+    await sql.query(
+      'ALTER TABLE "ComparisonClaim" ADD COLUMN "categoryId" TEXT, ADD COLUMN "originalClaimKey" TEXT',
+    );
     const afterJobs = await snapshot("Project");
     expect(
       afterJobs.map(({ commercialCategoryIds, ...row }) => {

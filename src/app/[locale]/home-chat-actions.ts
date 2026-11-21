@@ -521,7 +521,7 @@ export async function askHomeAction(
   const quotePct = quoteVariance?.state === "VALUE" ? percent(quoteVariance.variancePercent) : null;
 
   if (stoneIntent || followupStone) {
-    const claimKey = "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE";
+    const claimKey = "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE";
     const citations = economics
       ? await claimCitations(
           services,
@@ -592,9 +592,9 @@ export async function askHomeAction(
   }
 
   if (quoteIntent || followupQuote) {
-    const overallClaim = "XINYI_OVERALL_QUOTED_VARIANCE";
-    const lightingClaim = "XINYI_LIGHTING_ELECTRICAL_QUOTED_VARIANCE";
-    const stoneClaim = "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE";
+    const overallClaim = "OVERALL_QUOTED_VARIANCE";
+    const lightingClaim = "LIGHTING_ELECTRICAL_QUOTED_VARIANCE";
+    const stoneClaim = "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE";
 
     const overallSources = economics
       ? await claimCitations(

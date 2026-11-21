@@ -92,7 +92,7 @@ describeDatabase("Stage 6 PostgreSQL hero flow", () => {
         mode: "CLAIM",
         comparisonRunId: structural.result.run.id,
         enrichmentRunId: economics.result.run.id,
-        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       },
       "en",
     );
@@ -103,7 +103,7 @@ describeDatabase("Stage 6 PostgreSQL hero flow", () => {
     expect(evidence.kind).toBe("READY");
     if (evidence.kind !== "READY") throw new Error("EVIDENCE_PANEL_REQUIRED");
     expect(evidence.view.mode).toBe("CLAIM");
-    expect(evidence.view.claim?.claimKey).toBe("XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE");
+    expect(evidence.view.claim?.claimKey).toBe("IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE");
     expect(evidence.view.trace?.kind).toBe("FINANCIAL");
     expect(evidence.view.sources.length).toBeGreaterThanOrEqual(4);
     expect(evidence.view.sources.every((source) => /^[a-f0-9]{24}$/.test(source.sourceKey))).toBe(

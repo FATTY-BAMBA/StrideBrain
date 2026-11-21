@@ -54,9 +54,9 @@ function form(claim: string) {
 describe("Home finding evidence deep link", () => {
   it("creates the governed comparison/economics runs and opens the requested claim panel", async () => {
     await expect(
-      runComparisonAction(form("XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE")),
+      runComparisonAction(form("IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE")),
     ).rejects.toThrow(
-      "/en/projects/PRJ-XINYI-026/compare?run=comparison-home&economics=economics-home&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-014&evidenceMode=claim&evidenceClaim=XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      "/en/projects/PRJ-XINYI-026/compare?run=comparison-home&economics=economics-home&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-014&evidenceMode=claim&evidenceClaim=IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
     );
 
     expect(mocks.runComparison).toHaveBeenCalledWith({ requestId: "request-1" }, "PRJ-XINYI-026");

@@ -112,7 +112,7 @@ export function mandatoryClaims(
   const claims: StructuredEconomicsClaimDTO[] = [];
   for (const [kind, category] of specifications) {
     const matches = result.claims.filter(
-      (claim) => claim.kind === kind && (!category || claim.claimKey.includes(`_${category}_`)),
+      (claim) => claim.kind === kind && (!category || claim.categoryId === category),
     );
     if (matches.length !== 1) return null;
     const claim = matches[0]!;

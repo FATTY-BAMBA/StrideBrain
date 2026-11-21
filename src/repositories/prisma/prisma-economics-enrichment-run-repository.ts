@@ -18,6 +18,11 @@ type EnrichmentReadRow = Readonly<{
   status: "COMPLETED" | "PENDING" | "RUNNING" | "FAILED" | "STALE";
   accessScope: string;
   resultSnapshot: unknown;
+  claims?: readonly Readonly<{
+    claimKey: string;
+    originalClaimKey: string | null;
+    categoryId: string | null;
+  }>[];
 }>;
 
 type PrismaEconomicsTransaction = {
@@ -181,6 +186,7 @@ export class PrismaEconomicsEnrichmentRunRepository implements EconomicsEnrichme
             claimKey: claim.claimKey,
             enrichmentRunId: input.enrichmentRunId,
             claimType: claim.kind,
+            categoryId: claim.categoryId ?? null,
             titleEn: claim.titleEn,
             titleZhTw: claim.titleZhTw,
             value: claim.value,
@@ -212,6 +218,7 @@ export class PrismaEconomicsEnrichmentRunRepository implements EconomicsEnrichme
         status: true,
         accessScope: true,
         resultSnapshot: true,
+        claims: { select: { claimKey: true, originalClaimKey: true, categoryId: true } },
       },
     });
     if (!row || row.organizationId !== context.organizationId || !isAccessScope(row.accessScope)) {
@@ -225,6 +232,18 @@ export class PrismaEconomicsEnrichmentRunRepository implements EconomicsEnrichme
     if (!result) return null;
     if (result.evidenceBundles.length > 0 && !context.capabilities.has("evidence:read"))
       return null;
-    return result;
+    // Historical snapshots keep their original keys so receipts retain their
+    // link targets. Attach category metadata without decoding a key or rewriting history.
+    return {
+      ...result,
+      claims: result.claims.map((claim) => {
+        if (claim.categoryId) return claim;
+        const identity = row.claims?.find(
+          (stored) =>
+            stored.claimKey === claim.claimKey || stored.originalClaimKey === claim.claimKey,
+        );
+        return identity?.categoryId ? { ...claim, categoryId: identity.categoryId } : claim;
+      }),
+    };
   }
 }

@@ -378,7 +378,7 @@ function programmeCell(
       "CAUTION",
       {
         secondary: copy.synthesis.programmeDifference,
-        claimKey: "XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED",
+        claimKey: "PROGRAMME_DIFFERENCE_UNQUANTIFIED",
       },
     );
   }
@@ -475,7 +475,7 @@ function synthesis(
         copy.synthesis.history,
         `${copy.synthesis.quoteAbove} ${formatPercent(locale, economics.overall.quoteVariance.variancePercent)}`,
         "CAUTION",
-        "XINYI_OVERALL_QUOTED_VARIANCE",
+        "OVERALL_QUOTED_VARIANCE",
       ),
     );
   }
@@ -486,7 +486,7 @@ function synthesis(
         copy.synthesis.history,
         `${copy.synthesis.actualAbove} ${formatPercent(locale, economics.overall.forecastVariance.variancePercent)}`,
         "CAUTION",
-        "XINYI_OVERALL_FORECAST_ACTUAL_VARIANCE",
+        "OVERALL_FORECAST_ACTUAL_VARIANCE",
       ),
     );
   }
@@ -499,7 +499,7 @@ function synthesis(
         copy.synthesis.history,
         `${copy.synthesis.stoneReview} ${formatPercent(locale, stone.forecastVariance.variancePercent)}`,
         "CAUTION",
-        "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       ),
     );
   }
@@ -511,7 +511,7 @@ function synthesis(
         copy.synthesis.differences,
         copy.synthesis.programmeDifference,
         "CAUTION",
-        "XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED",
+        "PROGRAMME_DIFFERENCE_UNQUANTIFIED",
       ),
     );
   }
@@ -524,7 +524,7 @@ function synthesis(
         copy.synthesis.gaps,
         `${copy.synthesis.lightingGap} ${lighting.actualHistory.eligibleObservationCount ?? 0}/${lighting.actualHistory.requiredObservationCount}`,
         "CAUTION",
-        "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+        "LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
       ),
     );
   }
@@ -666,7 +666,7 @@ function contextSections(
           economics.overall.quotedHistory,
           locale,
           copy,
-          "XINYI_OVERALL_QUOTED_VARIANCE",
+          "OVERALL_QUOTED_VARIANCE",
         ),
         historyRow(
           "overall-actual",
@@ -677,7 +677,7 @@ function contextSections(
           economics.overall.actualHistory,
           locale,
           copy,
-          "XINYI_OVERALL_FORECAST_ACTUAL_VARIANCE",
+          "OVERALL_FORECAST_ACTUAL_VARIANCE",
         ),
       ]
     : [
@@ -726,7 +726,7 @@ function contextSections(
             basis === "QUOTE" ? category.quotedHistory : category.actualHistory,
             locale,
             copy,
-            `XINYI_${categoryId}_${suffix}`,
+            `${categoryId}_${suffix}`,
           )
         : unavailableEconomicsRow(`${categoryId}-${basis}`, label, stage4, selectedKeys, copy),
     );
