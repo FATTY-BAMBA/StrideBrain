@@ -224,6 +224,20 @@ pgDescribe("Stage9 real PostgreSQL selection lineage and populated upgrade", () 
       "stage5-economics",
     ])
       await sql.query(readFileSync(`prisma/fixtures/${name}.sql`, "utf8"));
+    // This test deliberately withholds 0009 to exercise its populated upgrade.
+    // Install the independent Jobs columns required by the current application,
+    // and prove their additive migration preserves already-seeded projects.
+    const beforeJobs = await snapshot("Project");
+    await sql.query(
+      readFileSync("prisma/migrations/20261121060000_project_jobs/migration.sql", "utf8"),
+    );
+    const afterJobs = await snapshot("Project");
+    expect(
+      afterJobs.map(({ commercialCategoryIds, ...row }) => {
+        expect(commercialCategoryIds).toEqual([]);
+        return row;
+      }),
+    ).toEqual(beforeJobs);
     context = await actor("membership_horizon_mei");
     outsider = await actor("membership_northern_owner");
     const comparison = await createComparisonServices().runComparison.execute(fresh(), PROJECT);

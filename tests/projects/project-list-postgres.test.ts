@@ -91,9 +91,10 @@ postgres("Projects entry with real PostgreSQL and signed fixture identities", ()
         businessKey: "PRJ-XINYI-026",
         name: "Xinyi Flagship Renovation",
         active: true,
+        stage: "QUOTE_REVIEW" as const,
       });
       for (const row of result.projects)
-        expect(Object.keys(row).sort()).toEqual(["active", "businessKey", "name"]);
+        expect(Object.keys(row).sort()).toEqual(["active", "businessKey", "name", "stage"]);
       expect(projectQueryCount).toBe(1);
       expect(JSON.stringify(result)).not.toMatch(
         /PRJ-NORTH|Northern|amount|actualCost|evidenceCount/,
@@ -106,6 +107,7 @@ postgres("Projects entry with real PostgreSQL and signed fixture identities", ()
       businessKey: "PRJ-XINYI-026",
       name: "信義旗艦店裝修",
       active: true,
+      stage: "QUOTE_REVIEW" as const,
     });
   });
   it("never exposes Horizon records to Northern despite browser tenant/role selectors", async () => {

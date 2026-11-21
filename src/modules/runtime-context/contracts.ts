@@ -7,6 +7,8 @@ export type Role =
 
 export type Capability =
   | "project:read"
+  | "project:create"
+  | "project:update"
   | "project:compare"
   | "quote:read"
   | "commercial:forecast-read"

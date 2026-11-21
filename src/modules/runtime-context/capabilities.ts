@@ -2,6 +2,8 @@ import type { Capability, CapabilityGrantEffect, Role } from "@/modules/runtime-
 
 export const ALL_CAPABILITIES = Object.freeze([
   "project:read",
+  "project:create",
+  "project:update",
   "project:compare",
   "quote:read",
   "commercial:forecast-read",
@@ -25,6 +27,8 @@ const ROLE_BUNDLES: Readonly<Record<Role, ReadonlySet<Capability>>> = Object.fre
   ORGANIZATION_ADMIN: new Set(ALL_CAPABILITIES),
   PROJECT_MANAGER_ESTIMATOR: new Set<Capability>([
     "project:read",
+    "project:create",
+    "project:update",
     "project:compare",
     "quote:read",
     "commercial:forecast-read",

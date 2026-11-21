@@ -1,0 +1,27 @@
+{
+  "screens": [
+    "en-validation.png",
+    "en-simplified-form.png",
+    "en-created-group.png",
+    "zh-TW-validation.png",
+    "zh-TW-simplified-form.png",
+    "zh-TW-created-group.png",
+    "en-new-job-comparison.png"
+  ],
+  "checks": [
+    "en: generated editable reference, hidden fixed fields, one scope list, tenant client selector, retained input, existing client creation, derived commercial categories persisted, Quote review grouping; no COMPLETE option or completed-job stage controls",
+    "zh-TW: generated editable reference, hidden fixed fields, one scope list, tenant client selector, retained input, new client creation, derived commercial categories persisted, Quote review grouping; no COMPLETE option or completed-job stage controls",
+    "Browser comparison persisted 6 ranked candidates for the new job without a quote",
+    "Stage change through screen moves the job to Design",
+    "Matching create retry redirects to original success; changed-input retry conflicts; direct COMPLETE request is rejected without a stage change",
+    "viewer: screen visibility and direct server-action denial",
+    "foreign: screen visibility and direct server-action denial",
+    "Successful create replay, conflicting create retry, forbidden COMPLETE, stage replay, and denied direct requests add no project or audit rows"
+  ],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "pageErrors": [],
+  "httpErrors": [],
+  "status": "PASS"
+}

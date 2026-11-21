@@ -298,6 +298,7 @@ model Project {
   areaQuantity       Decimal            @db.Decimal(18, 3)
   areaUnit           String
   currency           String             @default("TWD")
+  commercialCategoryIds String[]        @default([])
   programmeWeeks     Decimal?           @db.Decimal(8, 2)
   startDate          DateTime?          @db.Date
   targetCompletionAt DateTime?          @db.Date
@@ -1053,6 +1054,7 @@ model AuditEvent {
   actionId          String?
   eventType         String
   requestId         String
+  idempotencyKey    String?
   payload           Json
   result             String
   createdAt          DateTime @default(now())
@@ -1064,6 +1066,7 @@ model AuditEvent {
   action          Action?        @relation(fields: [actionId], references: [id], onDelete: SetNull)
 
   @@unique([organizationId, requestId, eventType])
+  @@unique([organizationId, idempotencyKey])
   @@index([organizationId, createdAt])
   @@index([organizationId, actionId])
 }

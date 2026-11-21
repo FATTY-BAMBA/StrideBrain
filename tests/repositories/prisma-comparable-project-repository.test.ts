@@ -42,6 +42,7 @@ function projectRow(overrides: Record<string, unknown> = {}) {
     areaQuantity: { toString: () => "610.000" },
     areaUnit: "m2",
     currency: "TWD",
+    commercialCategoryIds: [],
     completedAt: new Date("2025-06-30T00:00:00.000Z"),
     metadataAuthority: "HUMAN_REVIEWED",
     dataClassification: "DEMO_SYNTHETIC",
