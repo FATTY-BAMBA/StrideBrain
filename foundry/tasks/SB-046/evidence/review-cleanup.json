@@ -1,0 +1,8 @@
+{
+  "sessionsIncludingSeed": 8,
+  "newlyRevoked": 2,
+  "remainingActiveSessions": 0,
+  "disposableLocalBrowserDatabasesDropped": 1,
+  "privateInvitationSessionSecretAndCertificateDeleted": true,
+  "hostedResourcesChanged": false
+}

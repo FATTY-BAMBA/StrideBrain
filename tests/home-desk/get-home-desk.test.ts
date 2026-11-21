@@ -78,6 +78,7 @@ describe("authorized Home desk", () => {
       "REVIEW_QUOTE",
       "COMPARE",
     ]);
+    expect(result.decisions[1]?.additionalFindingCount).toBe(0);
     expect(result.decisions[1]?.claim?.evidenceReferenceIds).toEqual(["evidence"]);
     expect(result.stageCounts.map((item) => item.count)).toEqual([1, 1, 0, 0, 0]);
     expect(result.canCreate).toBe(true);
@@ -182,4 +183,40 @@ it("marks a saved comparison with missing economics unavailable rather than all 
   expect(
     result.kind === "AVAILABLE" && result.decisions.some((item) => item.kind === "REVIEW_QUOTE"),
   ).toBe(false);
+});
+
+it("selects the largest saved variance with a count and preserves its evidence destination", async () => {
+  const f = setup();
+  const saved = await f.comparisons.execute();
+  if (saved?.kind !== "AVAILABLE" || !saved.economics) throw new Error("required");
+  const base = saved.economics.claims[0]!;
+  f.comparisons.execute.mockResolvedValue({
+    ...saved,
+    economics: {
+      ...saved.economics,
+      claims: [
+        {
+          ...base,
+          categoryId: "COORDINATION",
+          value: { direction: "BELOW", variancePercent: "-15.9000" },
+        },
+        {
+          ...base,
+          categoryId: "IMPORTED_STONE",
+          claimKey: "stone",
+          evidenceReferenceIds: ["stone-source"],
+          value: { direction: "ABOVE", variancePercent: "43.0000" },
+        },
+      ],
+    },
+  });
+  const result = await f.service.execute(context);
+  expect(
+    result.kind === "AVAILABLE" && result.decisions.find((item) => item.kind === "REVIEW_QUOTE"),
+  ).toMatchObject({
+    claim: { claimKey: "stone", evidenceReferenceIds: ["stone-source"] },
+    additionalFindingCount: 1,
+    comparisonRunId: "run",
+    enrichmentRunId: "economics",
+  });
 });

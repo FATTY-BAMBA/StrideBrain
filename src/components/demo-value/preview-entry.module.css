@@ -24,7 +24,8 @@
 .entry label {
   font-weight: 650;
 }
-.entry input:not([type="hidden"]) {
+.entry input:not([type="hidden"]),
+.entry select {
   width: 100%;
   min-width: 0;
   padding: 0.8rem;
@@ -44,7 +45,7 @@
   font-weight: 650;
   cursor: pointer;
 }
-.entry :is(input, button):focus-visible {
+.entry :is(input, select, button):focus-visible {
   outline: 3px solid #285b49;
   outline-offset: 3px;
 }

@@ -3,7 +3,7 @@ import {
   ClosedJobEconomicsService,
   type ClosedJobLesson,
 } from "@/modules/economics/domain/closed-job-economics-service";
-import { isReviewClaim } from "@/modules/economics/domain/claim-selection";
+import { quoteReviewFinding } from "../domain/quote-review-finding";
 import type { StructuredEconomicsClaimDTO } from "@/modules/economics/domain/contracts";
 import type { GetHomeComparison } from "@/modules/home-intelligence/application/get-home-comparison";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
@@ -20,6 +20,7 @@ export type HomeDecision = Readonly<{
   kind: "CONFIRM_REVIEW" | "REVIEW_QUOTE" | "COMPARE";
   project: ProjectEntryDTO;
   claim?: StructuredEconomicsClaimDTO | undefined;
+  additionalFindingCount?: number | undefined;
   comparisonRunId?: string | undefined;
   enrichmentRunId?: string | undefined;
   proposalKey?: string | undefined;
@@ -137,29 +138,13 @@ export class GetHomeDesk {
               findingsNotices.push({ project, kind: "UNAVAILABLE" });
               continue;
             }
-            const claim = saved.economics?.claims
-              .filter(
-                (claim) =>
-                  !!claim.categoryId &&
-                  [
-                    "CATEGORY_QUOTED_VARIANCE",
-                    "CATEGORY_FORECAST_ACTUAL_VARIANCE",
-                    "CATEGORY_ACTUAL_INSUFFICIENT",
-                  ].includes(claim.kind) &&
-                  isReviewClaim(claim),
-              )
-              .sort(
-                (a, b) =>
-                  (a.categoryId ?? "").localeCompare(b.categoryId ?? "") ||
-                  a.kind.localeCompare(b.kind) ||
-                  a.claimKey.localeCompare(b.claimKey),
-              )[0];
-            if (claim)
+            const finding = quoteReviewFinding(saved.economics.claims);
+            if (finding)
               decisions.push({
                 key: `review:${job.businessKey}`,
                 kind: "REVIEW_QUOTE",
                 project,
-                claim,
+                ...finding,
                 comparisonRunId: saved.comparison.run.id,
                 enrichmentRunId: saved.economics?.run.id,
                 selectedProjectKeys: saved.economics?.selectedProjectKeys,

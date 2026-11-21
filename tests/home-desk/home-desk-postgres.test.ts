@@ -146,6 +146,13 @@ suite("Home desk through the real scoped Prisma adapter", () => {
       );
       expect(decision?.claim?.categoryId).toBeDefined();
       expect(claimFindingText(decision!.claim!, "zh-TW")).not.toContain(": ");
+      if (key === "PRJ-XINYI-026") {
+        expect(decision!.claim!.categoryId).toBe("IMPORTED_STONE");
+        expect(claimFindingText(decision!.claim!, "en")).toBe(
+          "Imported stone and hard finishes: quoted price is 43.0% above past quoted prices.",
+        );
+        expect(decision!.additionalFindingCount).toBeGreaterThan(0);
+      }
       if (key === "J-2611-R7K3")
         expect(decision!.claim!.categoryId).toMatch(/CUSTOM_MILLWORK|SIGNAGE/);
     }

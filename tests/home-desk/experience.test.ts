@@ -258,3 +258,43 @@ it("remembers locale changes from existing Settings or review links as well as t
     vi.unstubAllGlobals();
   }
 });
+
+it.each(["en", "zh-TW"] as const)(
+  "adds the remaining finding count without changing the shared sentence in %s",
+  async (locale) => {
+    const { claimFindingText } = await import("@/modules/economics/presentation/claim-findings");
+    const desk = fixture(1);
+    const claim = {
+      claimKey: "stone",
+      kind: "CATEGORY_QUOTED_VARIANCE" as const,
+      categoryId: "IMPORTED_STONE",
+      titleEn: "",
+      titleZhTw: "",
+      warningCodes: [],
+      evidenceReferenceIds: ["stone-source"],
+      value: { direction: "ABOVE", variancePercent: "43.0000" },
+    };
+    for (const count of [0, 1, 5]) {
+      const item = {
+        ...desk.decisions[0]!,
+        kind: "REVIEW_QUOTE" as const,
+        claim,
+        additionalFindingCount: count,
+      };
+      const host = render(
+        createElement(HomeDeskScreen, { locale, outcome: { ...desk, decisions: [item] } }),
+      );
+      expect(host.querySelector("li p")?.textContent).toBe(claimFindingText(claim, locale));
+      expect(host.querySelectorAll("li p")).toHaveLength(count ? 2 : 1);
+      if (count)
+        expect(host.querySelectorAll("li p")[1]?.textContent).toBe(
+          locale === "zh-TW"
+            ? `另有 ${count} 項`
+            : count === 1
+              ? "1 more finding"
+              : `${count} more findings`,
+        );
+      expect(host.querySelector("li a")?.getAttribute("href")).toContain("stone");
+    }
+  },
+);

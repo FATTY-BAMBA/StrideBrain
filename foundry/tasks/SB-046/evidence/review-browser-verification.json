@@ -1,0 +1,70 @@
+{
+  "checks": [
+    "Static bilingual form defaults to owner and submits only locale/invitation/person; missing, repeated and unknown person fields produce the same real-route refusal without a session.",
+    "Owner sees every fixture job and three closed lessons. Xinyi leads with the 43.0% quoted-price variance; more-findings count agrees with saved review claims. Home/comparison/chat sentences match in both languages; zh-TW recommendation punctuation remains correct.",
+    "All four people signed in through the actual form, matched their stored membership role and signed out. Viewer has no create action or financial figures; project manager sees two assigned jobs.",
+    "Refreshed overflow/full list, chat, owner closed lessons and 390px screenshots; unchanged Nanjing figures and failed-economics fallback pass.",
+    "Inspected 390px viewport captures of findings and closed lessons; no horizontal overflow. Replaced a Chrome full-page mobile capture that repeated tiles with direct viewport captures."
+  ],
+  "screens": [
+    "en-sign-in-language.png",
+    "zh-TW-sign-in-language.png",
+    "zh-TW-recommendation.png",
+    "en-home-decisions.png",
+    "en-home-chat.png",
+    "zh-TW-home-chat.png",
+    "en-home-overflow.png",
+    "en-all-decisions.png",
+    "en-home-closed-lessons.png",
+    "zh-TW-home-closed-lessons.png",
+    "zh-TW-home-mobile.png",
+    "en-missing-economics.png",
+    "en-sample-owner-home.png",
+    "en-sample-project-manager-home.png",
+    "en-sample-finance-home.png",
+    "en-sample-viewer-home.png",
+    "zh-TW-home-mobile-lessons.png"
+  ],
+  "roles": [
+    {
+      "person": "owner",
+      "role": "ORGANIZATION_ADMIN",
+      "trustedPerson": "Alex Chen"
+    },
+    {
+      "person": "owner",
+      "role": "ORGANIZATION_ADMIN",
+      "trustedPerson": "Alex Chen"
+    },
+    {
+      "person": "project-manager",
+      "role": "PROJECT_MANAGER_ESTIMATOR",
+      "trustedPerson": "Mei Lin"
+    },
+    {
+      "person": "finance",
+      "role": "FINANCIAL_REVIEWER",
+      "trustedPerson": "Iris Huang"
+    },
+    {
+      "person": "viewer",
+      "role": "VIEWER",
+      "trustedPerson": "Kai Wu"
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "createdJobs": [
+    "J-2611-GMCW",
+    "J-2611-ZXBW",
+    "J-2611-TX3J",
+    "J-2611-QGU9",
+    "J-2611-8A84",
+    "J-2611-B7JJ"
+  ],
+  "xinyi": {
+    "sentence": "Imported stone and hard finishes: quoted price is 43.0% above past quoted prices.",
+    "moreFindings": 10
+  },
+  "status": "PASS"
+}

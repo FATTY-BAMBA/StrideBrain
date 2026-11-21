@@ -39,6 +39,7 @@ export function DecisionList({
               <div>
                 <strong>{item.project.name}</strong>
                 <p>{view.sentence}</p>
+                {view.moreFindings ? <p className={styles.muted}>{view.moreFindings}</p> : null}
               </div>
               <Link className={styles.secondary} href={view.href as Route}>
                 {view.label}

@@ -16,6 +16,12 @@ export function decisionPresentation(item: HomeDecision, locale: Locale) {
         : item.kind === "CONFIRM_REVIEW"
           ? copy.confirm
           : copy.compare,
+    moreFindings:
+      item.kind === "REVIEW_QUOTE" && item.additionalFindingCount && item.additionalFindingCount > 0
+        ? item.additionalFindingCount === 1
+          ? copy.oneMoreFinding
+          : copy.moreFindings.replace("{count}", String(item.additionalFindingCount))
+        : null,
     label: copy[item.kind],
     href:
       item.kind === "CONFIRM_REVIEW" && item.comparisonRunId && item.enrichmentRunId
