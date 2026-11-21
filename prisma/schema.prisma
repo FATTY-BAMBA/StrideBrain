@@ -841,6 +841,8 @@ model ComparisonFactor {
 }
 
 model ComparisonClaim {
+  categoryId           String?
+  originalClaimKey     String?
   id                   String           @id
   organizationId       String
   comparisonRunId      String

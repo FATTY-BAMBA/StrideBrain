@@ -1,5 +1,12 @@
 "use server";
 
+import {
+  claimFindingText,
+  recommendationText,
+} from "@/modules/economics/presentation/claim-findings";
+import { findingsCopy } from "@/modules/localization/economics-findings";
+import { mentionedCategory } from "@/modules/localization/jobs";
+import type { HomeComparisonOutcome } from "@/modules/home-intelligence/application/get-home-comparison";
 import type { Route } from "next";
 import { createComparisonServices } from "@/lib/server/comparison-services";
 import { loadDemoValueContext } from "@/lib/server/demo-value-context";
@@ -33,11 +40,6 @@ function append(
 
 function localizedName(locale: Locale, value: { nameEn: string; nameZhTw: string }): string {
   return locale === "zh-TW" ? value.nameZhTw : value.nameEn;
-}
-
-function percent(value?: string): string | null {
-  if (!value || !Number.isFinite(Number(value))) return null;
-  return Math.abs(Number(value)).toFixed(0);
 }
 
 function citationMarkers(citations: readonly HomeChatCitation[]): string {
@@ -146,20 +148,11 @@ async function comparisonBundle(
   services: ReturnType<typeof createComparisonServices>,
   runtime: NonNullable<Awaited<ReturnType<typeof resolveServerRuntimeContext>>>,
   projectKey: string,
-  remembered: HomeChatContext,
+  saved?: HomeComparisonOutcome | null,
 ): Promise<ComparisonBundle | null> {
-  if (remembered.comparisonRunId) {
-    const existing = await services.getComparison.execute(runtime, remembered.comparisonRunId);
-    if (existing.kind === "COMPLETE" && existing.result.activeContext.projectKey === projectKey) {
-      const economics = remembered.economicsRunId
-        ? await services.getEconomics.execute(runtime, remembered.economicsRunId)
-        : null;
-      if (!economics || economics.run.comparisonRunId === existing.result.run.id) {
-        return Object.freeze({ comparison: existing.result, economics });
-      }
-    }
-  }
-
+  if (saved?.kind === "AVAILABLE" && saved.comparison.activeContext.projectKey === projectKey)
+    return { comparison: saved.comparison, economics: saved.economics ?? null };
+  if (saved) return null;
   const structural = await services.runComparison.execute(runtime, projectKey);
   if (structural.kind !== "COMPLETE") return null;
 
@@ -248,7 +241,14 @@ export async function askHomeAction(
     text: query,
   };
 
-  const context = await loadDemoValueContext(locale);
+  const requestedProject = formData.get("projectKey");
+  if (
+    requestedProject !== null &&
+    (typeof requestedProject !== "string" ||
+      !/^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$/.test(requestedProject))
+  )
+    return previous;
+  const context = await loadDemoValueContext(locale, requestedProject ?? undefined);
   const workspace = context.workspace;
   if (!workspace) {
     return append(previous, [
@@ -274,38 +274,6 @@ export async function askHomeAction(
     /(that|those|the).*(source|evidence)|show.*(source|evidence)|open.*(source|evidence)|剛才.*(佐證|來源)|顯示.*(佐證|來源)|查看.*(佐證|來源)/i.test(
       normalized,
     );
-  if (
-    evidenceFollowup &&
-    !/(stone|石材|lighting|燈具|quote|quotation|報價)/i.test(normalized) &&
-    previous.context.activeClaimKey &&
-    previous.context.comparisonRunId &&
-    previous.context.economicsRunId &&
-    previous.context.selectedProjectKeys
-  ) {
-    const citations = await claimCitations(
-      services,
-      runtime,
-      locale,
-      workspace.project.businessKey,
-      previous.context.comparisonRunId,
-      previous.context.economicsRunId,
-      previous.context.selectedProjectKeys,
-      previous.context.activeClaimKey,
-    );
-    return append(previous, [
-      userTurn,
-      {
-        id: `assistant-${now}`,
-        role: "assistant",
-        text:
-          locale === "zh-TW"
-            ? `這些是剛才那項發現所依據的來源。${citationMarkers(citations)}`
-            : `These are the sources behind that finding. ${citationMarkers(citations)}`,
-        ...(citations.length ? { citations } : {}),
-      },
-    ]);
-  }
-
   const rememberedComparable = previous.context.comparableProjects?.find((project) =>
     projectMentioned(normalized, project.name, locale),
   );
@@ -369,8 +337,8 @@ export async function askHomeAction(
   const explicitSimilar = /(similar|past project|done before|類似|以前做過|過往專案)/i.test(
     normalized,
   );
-  const stoneIntent = /(stone|石材|material|材料)/i.test(normalized);
-  const lightingIntent = /(lighting|light fixture|燈具|照明)/i.test(normalized);
+  const categoryIntent = /(\bstone\b|石材|\bmaterials?\b|材料)/i.test(normalized);
+  const lightingIntent = /(\blighting\b|\blight fixtures?\b|燈具|照明)/i.test(normalized);
   const quoteIntent =
     /(quote|quotation|報價|unusual|attention|review next|留意|下一步|異常)/i.test(normalized) ||
     lightingIntent;
@@ -383,15 +351,15 @@ export async function askHomeAction(
         )
       : undefined);
 
-  const followupStone = whyFollowup && previous.context.lastIntent === "STONE";
+  const followupCategory = whyFollowup && previous.context.lastIntent === "CATEGORY";
   const followupQuote = whyFollowup && previous.context.lastIntent === "QUOTE";
 
   const needsComparison =
     explicitSimilar ||
-    stoneIntent ||
+    categoryIntent ||
     quoteIntent ||
     !!followupComparable ||
-    followupStone ||
+    followupCategory ||
     followupQuote ||
     /(evidence|source|support|佐證|來源)/i.test(normalized);
 
@@ -403,17 +371,40 @@ export async function askHomeAction(
         role: "assistant",
         text:
           locale === "zh-TW"
-            ? "這個版本目前還不能可靠回答這個問題。你可以問：做過哪些類似專案、報價哪裡值得留意、進口石材差異、佐證來源，或未完成事項。"
-            : "I can’t answer that reliably yet. Try asking about similar past projects, what looks unusual in the quote, the imported-stone difference, supporting evidence, or open actions.",
+            ? "這個版本目前還不能可靠回答這個問題。你可以問：做過哪些類似專案、報價哪裡值得留意、材料差異、佐證來源，或未完成事項。"
+            : "I can’t answer that reliably yet. Try asking about similar past projects, what looks unusual in the quote, material differences, supporting evidence, or open actions.",
       },
     ]);
+  }
+
+  if (
+    context.intelligence?.kind === "OUT_OF_DATE" ||
+    context.intelligence?.kind === "UNAVAILABLE"
+  ) {
+    const copy = findingsCopy(locale);
+    return append(
+      previous,
+      [
+        userTurn,
+        {
+          id: `assistant-${now}`,
+          role: "assistant",
+          text: context.intelligence.kind === "OUT_OF_DATE" ? copy.outOfDate : copy.unavailable,
+          action: {
+            label: locale === "zh-TW" ? "開啟比較" : "Open comparison",
+            href: comparisonHref(locale, workspace.project.businessKey) as Route,
+          },
+        },
+      ],
+      {},
+    );
   }
 
   const bundle = await comparisonBundle(
     services,
     runtime,
     workspace.project.businessKey,
-    previous.context,
+    context.intelligence,
   );
   if (!bundle) {
     return append(previous, [
@@ -438,6 +429,43 @@ export async function askHomeAction(
     ...(economics ? { economicsRunId: economics.run.id } : {}),
     selectedProjectKeys,
   });
+
+  // Follow-ups use only the currently validated saved result, never browser-supplied run IDs.
+  if (
+    evidenceFollowup &&
+    !mentionedCategory(query) &&
+    !/(\bquote\b|\bquotation\b|報價)/i.test(normalized) &&
+    previous.context.activeClaimKey &&
+    economics &&
+    economics.claims.some((claim) => claim.claimKey === previous.context.activeClaimKey)
+  ) {
+    const citations = await claimCitations(
+      services,
+      runtime,
+      locale,
+      workspace.project.businessKey,
+      comparison.run.id,
+      economics.run.id,
+      selectedProjectKeys,
+      previous.context.activeClaimKey,
+    );
+    return append(
+      previous,
+      [
+        userTurn,
+        {
+          id: `assistant-${now}`,
+          role: "assistant",
+          text:
+            locale === "zh-TW"
+              ? `這些是剛才那項發現所依據的來源。${citationMarkers(citations)}`
+              : `These are the sources behind that finding. ${citationMarkers(citations)}`,
+          ...(citations.length ? { citations } : {}),
+        },
+      ],
+      nextContext(previous.context, bundle, {}),
+    );
+  }
 
   if (followupComparable) {
     const match = comparison.matches.find(
@@ -491,7 +519,7 @@ export async function askHomeAction(
               ? `我找到 ${comparison.matches.length} 個可比較的已完成專案。最接近的是：`
               : `I found ${comparison.matches.length} comparable completed projects. The closest are:`,
           bullets: top.map(
-            (match) => `${localizedName(locale, match.project)} · ${match.displayScore}%`,
+            (match) => `${localizedName(locale, match.project)} · ${match.displayScore}/100`,
           ),
           action: {
             label: locale === "zh-TW" ? "查看比較" : "View comparison",
@@ -512,55 +540,79 @@ export async function askHomeAction(
     );
   }
 
-  const stone = economics?.categories.find((item) => item.categoryId === "IMPORTED_STONE");
-  const quoteVariance = economics?.overall.quoteVariance;
-  const stonePct =
-    stone?.forecastVariance.state === "VALUE"
-      ? percent(stone.forecastVariance.variancePercent)
-      : null;
-  const quotePct = quoteVariance?.state === "VALUE" ? percent(quoteVariance.variancePercent) : null;
-
-  if (stoneIntent || followupStone) {
-    const claimKey = "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE";
-    const citations = economics
-      ? await claimCitations(
-          services,
-          runtime,
-          locale,
-          workspace.project.businessKey,
-          comparison.run.id,
-          economics.run.id,
-          economics.selectedProjectKeys,
-          claimKey,
+  if (
+    categoryIntent ||
+    followupCategory ||
+    quoteIntent ||
+    followupQuote ||
+    mentionedCategory(query)
+  ) {
+    const explicitCategory = mentionedCategory(query);
+    const rememberedClaim =
+      followupCategory || followupQuote
+        ? economics?.claims.find((claim) => claim.claimKey === previous.context.activeClaimKey)
+        : undefined;
+    const categoryId = explicitCategory ?? rememberedClaim?.categoryId;
+    const noRecord =
+      categoryId &&
+      !workspace.project.scopeCategories.some((category) => category.categoryId === categoryId) &&
+      !economics?.categories.some((category) => category.categoryId === categoryId);
+    const copy = findingsCopy(locale);
+    const claims =
+      economics?.accessScope === "STRUCTURAL_ONLY"
+        ? []
+        : (economics?.claims ?? []).filter((claim) =>
+            categoryId
+              ? claim.categoryId === categoryId
+              : categoryIntent
+                ? Boolean(claim.categoryId)
+                : true,
+          );
+    const findings =
+      comparison.activeContext.activeQuoteVersionKey && !noRecord
+        ? claims.flatMap((claim) => {
+            const text = claimFindingText(claim, locale);
+            return text ? [{ claim, text }] : [];
+          })
+        : [];
+    const groups = economics
+      ? await Promise.all(
+          findings.map(({ claim }) =>
+            claimCitations(
+              services,
+              runtime,
+              locale,
+              workspace.project.businessKey,
+              comparison.run.id,
+              economics.run.id,
+              selectedProjectKeys,
+              claim.claimKey,
+            ),
+          ),
         )
       : [];
-    const href = economics
-      ? evidenceHref(
-          locale,
-          workspace.project.businessKey,
-          comparison.run.id,
-          economics.run.id,
-          economics.selectedProjectKeys,
-          claimKey,
-        )
-      : (compareHref as Route);
-
-    const text = followupStone
+    const citations = uniqueCitations(groups);
+    const bullets = findings.map(({ text }, index) => {
+      const indexed = citations.filter((citation) =>
+        groups[index]?.some((source) => source.sourceKey === citation.sourceKey),
+      );
+      return `${text} ${citationMarkers(indexed)}`.trim();
+    });
+    const firstClaim = findings[0]?.claim;
+    const remembered = { ...previous.context };
+    delete remembered.activeClaimKey;
+    delete remembered.lastIntent;
+    const text = noRecord
       ? locale === "zh-TW"
-        ? stonePct
-          ? `因為目前進口石材的預估成本，是拿來和已選相似專案中符合資格、已核對的實際成本基準比較；換算後目前約高 ${stonePct}%。${citationMarkers(citations)}`
-          : "因為目前沒有足夠的已核對實際成本，所以不能可靠說明百分比差異。"
-        : stonePct
-          ? `Because the current imported-stone forecast is being compared with eligible reconciled actual-cost history from the selected comparable projects; after normalization it is about ${stonePct}% higher. ${citationMarkers(citations)}`
-          : "Because there is not enough reconciled actual-cost history to support a reliable percentage."
-      : locale === "zh-TW"
-        ? stonePct
-          ? `目前進口石材的預估成本比可用的歷史實際成本基準高約 ${stonePct}%。這值得檢視，但不代表報價或供應商一定有問題。${citationMarkers(citations)}`
-          : "目前進口石材的實際成本佐證不足，我不會補出不存在的百分比。"
-        : stonePct
-          ? `Imported stone is currently about ${stonePct}% above the eligible historical actual-cost baseline. That deserves review, but it does not mean the quote or supplier is wrong. ${citationMarkers(citations)}`
-          : "There isn’t enough actual-cost evidence for imported stone to state a reliable percentage, so I won’t invent one.";
-
+        ? "此專案沒有該類別的紀錄。"
+        : "There is no record for that category in this job."
+      : !comparison.activeContext.activeQuoteVersionKey
+        ? copy.noQuote
+        : !economics || economics.accessScope === "STRUCTURAL_ONLY"
+          ? copy.noEconomics
+          : findings.length
+            ? copy.detail
+            : (recommendationText(economics, locale) ?? copy.noEconomics);
     return append(
       previous,
       [
@@ -569,166 +621,34 @@ export async function askHomeAction(
           id: `assistant-${now}`,
           role: "assistant",
           text,
-          bullets:
-            locale === "zh-TW"
-              ? ["先確認規格是否不同", "再確認數量與供應商條件", "最後查看歷史來源"]
-              : [
-                  "Check specification differences",
-                  "Check quantity and supplier terms",
-                  "Then inspect the historical sources",
-                ],
+          ...(bullets.length ? { bullets: Object.freeze(bullets) } : {}),
           ...(citations.length ? { citations } : {}),
           action: {
-            label: locale === "zh-TW" ? "開啟完整佐證" : "Open full evidence",
-            href,
+            label: locale === "zh-TW" ? "查看比較與佐證" : "Open comparison and evidence",
+            href:
+              firstClaim && economics
+                ? evidenceHref(
+                    locale,
+                    workspace.project.businessKey,
+                    comparison.run.id,
+                    economics.run.id,
+                    selectedProjectKeys,
+                    firstClaim.claimKey,
+                  )
+                : (compareHref as Route),
           },
         },
       ],
-      nextContext(previous.context, bundle, {
-        lastIntent: "STONE",
-        activeClaimKey: claimKey,
-      }),
-    );
-  }
-
-  if (quoteIntent || followupQuote) {
-    const overallClaim = "XINYI_OVERALL_QUOTED_VARIANCE";
-    const lightingClaim = "XINYI_LIGHTING_ELECTRICAL_QUOTED_VARIANCE";
-    const stoneClaim = "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE";
-
-    const overallSources = economics
-      ? await claimCitations(
-          services,
-          runtime,
-          locale,
-          workspace.project.businessKey,
-          comparison.run.id,
-          economics.run.id,
-          economics.selectedProjectKeys,
-          overallClaim,
-        )
-      : [];
-    const lightingSources = economics
-      ? await claimCitations(
-          services,
-          runtime,
-          locale,
-          workspace.project.businessKey,
-          comparison.run.id,
-          economics.run.id,
-          economics.selectedProjectKeys,
-          lightingClaim,
-        )
-      : [];
-    const stoneSources = economics
-      ? await claimCitations(
-          services,
-          runtime,
-          locale,
-          workspace.project.businessKey,
-          comparison.run.id,
-          economics.run.id,
-          economics.selectedProjectKeys,
-          stoneClaim,
-        )
-      : [];
-
-    const citations = uniqueCitations([overallSources, lightingSources, stoneSources]);
-    const overallIndexed = citations.filter((citation) =>
-      overallSources.some((source) => source.sourceKey === citation.sourceKey),
-    );
-    const lightingIndexed = citations.filter((citation) =>
-      lightingSources.some((source) => source.sourceKey === citation.sourceKey),
-    );
-    const stoneIndexed = citations.filter((citation) =>
-      stoneSources.some((source) => source.sourceKey === citation.sourceKey),
-    );
-
-    const primaryClaim = lightingIntent ? lightingClaim : overallClaim;
-    const href = economics
-      ? evidenceHref(
-          locale,
-          workspace.project.businessKey,
-          comparison.run.id,
-          economics.run.id,
-          economics.selectedProjectKeys,
-          primaryClaim,
-        )
-      : (compareHref as Route);
-
-    const lighting = economics?.categories.find(
-      (item) => item.categoryId === "LIGHTING_ELECTRICAL",
-    );
-    const lightingPct =
-      lighting?.quoteVariance.state === "VALUE"
-        ? percent(lighting.quoteVariance.variancePercent)
-        : null;
-
-    const text = lightingIntent
-      ? locale === "zh-TW"
-        ? lightingPct
-          ? `燈具目前報價比可用的歷史報價基準高約 ${lightingPct}%。但歷史實際成本只有不足的可用樣本，所以不能把它說成實際超支。${citationMarkers(lightingIndexed)}`
-          : "目前沒有足夠資料可以可靠計算燈具報價差異。"
-        : lightingPct
-          ? `Lighting is about ${lightingPct}% above the eligible historical quoted-price baseline. But the historical actual-cost sample is insufficient, so I can’t call it an actual overrun. ${citationMarkers(lightingIndexed)}`
-          : "There isn’t enough evidence to state a reliable lighting quote variance."
-      : followupQuote
-        ? locale === "zh-TW"
-          ? quotePct
-            ? `因為目前報價是和選取相似專案的歷史報價基準比較；換算後約高 ${quotePct}%。這是檢視訊號，不是報價錯誤的結論。${citationMarkers(overallIndexed)}`
-            : "目前沒有足夠資料可以可靠說明整體報價差異。"
-          : quotePct
-            ? `Because the current quote is being compared with the selected comparable projects’ historical quoted-price baseline; after normalization it is about ${quotePct}% higher. That is a review signal, not proof the quote is wrong. ${citationMarkers(overallIndexed)}`
-            : "There isn’t enough evidence to explain a reliable overall quote variance."
-        : locale === "zh-TW"
-          ? quotePct
-            ? `目前報價比選取的歷史報價基準高約 ${quotePct}%。先把它當成需要檢視的訊號，而不是錯誤結論。${citationMarkers(overallIndexed)}`
-            : "目前沒有足夠資料可以可靠計算整體報價差異。"
-          : quotePct
-            ? `The current quote is about ${quotePct}% above the selected historical quoted-price baseline. Treat that as a review signal, not a conclusion that the quote is wrong. ${citationMarkers(overallIndexed)}`
-            : "There isn’t enough evidence to state a reliable overall quote variance.";
-
-    const bullets: string[] = [];
-    if (lightingPct) {
-      bullets.push(
-        locale === "zh-TW"
-          ? `燈具報價約高 ${lightingPct}% ${citationMarkers(lightingIndexed)}`
-          : `Lighting quoted prices are about ${lightingPct}% higher ${citationMarkers(lightingIndexed)}`,
-      );
-    }
-    if (stonePct) {
-      bullets.push(
-        locale === "zh-TW"
-          ? `進口石材是目前最明顯的成本差異 ${citationMarkers(stoneIndexed)}`
-          : `Imported stone is the clearest current cost difference ${citationMarkers(stoneIndexed)}`,
-      );
-    }
-    bullets.push(
-      locale === "zh-TW"
-        ? "先確認範圍、材料與工期差異"
-        : "Check scope, materials and programme differences first",
-    );
-
-    return append(
-      previous,
-      [
-        userTurn,
-        {
-          id: `assistant-${now}`,
-          role: "assistant",
-          text,
-          bullets: Object.freeze(bullets),
-          ...(citations.length ? { citations } : {}),
-          action: {
-            label: locale === "zh-TW" ? "開啟完整佐證" : "Open full evidence",
-            href,
-          },
-        },
-      ],
-      nextContext(previous.context, bundle, {
-        lastIntent: "QUOTE",
-        activeClaimKey: primaryClaim,
-      }),
+      nextContext(
+        remembered,
+        bundle,
+        firstClaim
+          ? {
+              lastIntent: categoryIntent || followupCategory ? "CATEGORY" : "QUOTE",
+              activeClaimKey: firstClaim.claimKey,
+            }
+          : {},
+      ),
     );
   }
 

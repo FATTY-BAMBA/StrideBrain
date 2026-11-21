@@ -18,6 +18,11 @@ type EnrichmentReadRow = Readonly<{
   status: "COMPLETED" | "PENDING" | "RUNNING" | "FAILED" | "STALE";
   accessScope: string;
   resultSnapshot: unknown;
+  claims?: readonly Readonly<{
+    claimKey: string;
+    originalClaimKey: string | null;
+    categoryId: string | null;
+  }>[];
 }>;
 
 type PrismaEconomicsTransaction = {
@@ -181,6 +186,7 @@ export class PrismaEconomicsEnrichmentRunRepository implements EconomicsEnrichme
             claimKey: claim.claimKey,
             enrichmentRunId: input.enrichmentRunId,
             claimType: claim.kind,
+            categoryId: claim.categoryId ?? null,
             titleEn: claim.titleEn,
             titleZhTw: claim.titleZhTw,
             value: claim.value,
@@ -225,6 +231,40 @@ export class PrismaEconomicsEnrichmentRunRepository implements EconomicsEnrichme
     if (!result) return null;
     if (result.evidenceBundles.length > 0 && !context.capabilities.has("evidence:read"))
       return null;
-    return result;
+    const needsIdentity = result.claims.some(
+      (claim) =>
+        (claim.kind === "CATEGORY_QUOTED_VARIANCE" ||
+          claim.kind === "CATEGORY_FORECAST_ACTUAL_VARIANCE" ||
+          claim.kind === "CATEGORY_ACTUAL_INSUFFICIENT") &&
+        !claim.categoryId,
+    );
+    const identityRow = needsIdentity
+      ? await this.database.economicsEnrichmentRun.findFirst({
+          where: {
+            id: enrichmentRunId,
+            organizationId: context.organizationId,
+            activeProjectId: row.activeProjectId,
+            status: "COMPLETED",
+          },
+          select: {
+            organizationId: true,
+            claims: { select: { claimKey: true, originalClaimKey: true, categoryId: true } },
+          },
+        })
+      : null;
+    if (needsIdentity && identityRow?.organizationId !== context.organizationId) return null;
+    // Historical snapshots keep their original keys so receipts retain their
+    // link targets. Attach category metadata without decoding a key or rewriting history.
+    return {
+      ...result,
+      claims: result.claims.map((claim) => {
+        if (claim.categoryId) return claim;
+        const identity = identityRow?.claims?.find(
+          (stored) =>
+            stored.claimKey === claim.claimKey || stored.originalClaimKey === claim.claimKey,
+        );
+        return identity?.categoryId ? { ...claim, categoryId: identity.categoryId } : claim;
+      }),
+    };
   }
 }

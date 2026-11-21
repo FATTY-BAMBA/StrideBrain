@@ -1,6 +1,8 @@
 import type { Locale } from "@/modules/localization/config";
 import type { DemoValueContext } from "@/lib/server/demo-value-context";
 import { comparisonHref } from "@/modules/comparison-experience/route-state";
+import { buildComparisonExperience } from "@/modules/comparison-experience/build-comparison-experience";
+import { findingsCopy } from "@/modules/localization/economics-findings";
 
 export type HomeFinding = Readonly<{
   id: string;
@@ -8,86 +10,68 @@ export type HomeFinding = Readonly<{
   detail: string;
   check: string;
   claimKey: string;
+  href: string;
 }>;
-
-export type HomeMemoryProject = Readonly<{
-  name: string;
-  score?: number;
-}>;
-
 export type HomeIntelligence = Readonly<{
   findings: readonly HomeFinding[];
-  memory: readonly HomeMemoryProject[];
+  memory: readonly Readonly<{ name: string; score: number }>[];
   openActionCount: number;
+  emptyMessage?: string | undefined;
+  comparisonHref?: string | undefined;
 }>;
-
-const demoMemory: readonly HomeMemoryProject[] = [
-  { name: "Neihu Tech Flagship", score: 88 },
-  { name: "Zhongshan Lifestyle Store", score: 81 },
-  { name: "Nanjing Brand Experience Center", score: 79 },
-  { name: "Daan Premium Showroom", score: 71 },
-  { name: "Songshan Retail Renewal", score: 69 },
-  { name: "Banqiao Concept Store", score: 63 },
-];
-
 export function buildHomeIntelligence(locale: Locale, context: DemoValueContext): HomeIntelligence {
   const workspace = context.workspace;
   if (!workspace) return { findings: [], memory: [], openActionCount: 0 };
-
-  const findings: readonly HomeFinding[] = workspace.project.demoData
-    ? locale === "zh-TW"
-      ? [
-          {
-            id: "imported-stone",
-            title: "進口石材比過往實際花費高 18%",
-            detail: "這是目前最明顯的成本差異。",
-            check: "先確認規格、數量與供應商條件是否真的不同。",
-            claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
-          },
-          {
-            id: "lighting",
-            title: "燈具報價比過往報價高 9%",
-            detail: "目前缺少足夠的歷史實際成本，不能把它當成超支結論。",
-            check: "先比較規格與報價範圍，再決定是否需要追問。",
-            claimKey: "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
-          },
-          {
-            id: "quotation",
-            title: "目前報價比選取的過往報價高 7%",
-            detail: "差異值得檢視，但不代表報價錯誤。",
-            check: "確認範圍、材料與工期差異後再判斷。",
-            claimKey: "XINYI_OVERALL_QUOTED_VARIANCE",
-          },
-        ]
-      : [
-          {
-            id: "imported-stone",
-            title: "Imported stone is 18% higher than past actual spend",
-            detail: "This is the clearest current cost difference.",
-            check: "Check whether specification, quantity or supplier terms explain it.",
-            claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
-          },
-          {
-            id: "lighting",
-            title: "Lighting is 9% above past quoted prices",
-            detail: "There is not enough historical actual-cost evidence to call this an overrun.",
-            check: "Compare specification and quote scope before escalating.",
-            claimKey: "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
-          },
-          {
-            id: "quotation",
-            title: "The current quote is 7% above selected past quoted prices",
-            detail: "It is worth reviewing, but it does not mean the quote is wrong.",
-            check: "Check scope, materials and programme differences first.",
-            claimKey: "XINYI_OVERALL_QUOTED_VARIANCE",
-          },
-        ]
+  const outcome = context.intelligence;
+  const source = outcome?.kind === "AVAILABLE" ? outcome : null;
+  const copy = findingsCopy(locale);
+  const view = source
+    ? buildComparisonExperience({ stage4: source.comparison, economics: source.economics, locale })
+    : null;
+  const href = comparisonHref(locale, workspace.project.businessKey, view?.route);
+  const findings = view
+    ? [...view.synthesis.history, ...view.synthesis.differences, ...view.synthesis.gaps].flatMap(
+        (item) =>
+          item.claimKey
+            ? [
+                {
+                  id: item.key,
+                  title: item.body,
+                  detail: copy.detail,
+                  check: copy.check,
+                  claimKey: item.claimKey,
+                  href: comparisonHref(locale, workspace.project.businessKey, {
+                    ...view.route,
+                    evidenceClaimKey: item.claimKey,
+                  }),
+                },
+              ]
+            : [],
+      )
     : [];
-
   return {
     findings,
-    memory: workspace.project.demoData ? demoMemory : [],
+    memory:
+      source?.comparison.matches.map((match) => ({
+        name: locale === "zh-TW" ? match.project.nameZhTw : match.project.nameEn,
+        score: match.displayScore,
+      })) ?? [],
     openActionCount: workspace.openActions.length,
+    comparisonHref: href,
+    ...(findings.length
+      ? {}
+      : {
+          emptyMessage:
+            outcome?.kind === "OUT_OF_DATE"
+              ? copy.outOfDate
+              : outcome?.kind === "UNAVAILABLE"
+                ? copy.unavailable
+                : !source
+                  ? copy.noComparison
+                  : !source.comparison.activeContext.activeQuoteVersionKey
+                    ? copy.noQuote
+                    : (view?.synthesis.recommendation?.body ?? copy.noEconomics),
+        }),
   };
 }
 

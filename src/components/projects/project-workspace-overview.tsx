@@ -45,7 +45,7 @@ const copy = {
     conflicted: "Conflicting records",
     stale: "Historical / stale",
     version: "Version",
-    demo: "Synthetic Horizon Atelier demo data",
+    demo: "Synthetic demo data for {job}",
     compareDescription:
       "Find the strongest historical precedents, understand why they match, and compare the current quotation with evidence-backed history.",
     warnings: "This project has data conditions that require attention.",
@@ -72,7 +72,7 @@ const copy = {
     conflicted: "資料紀錄不一致",
     stale: "歷史／已過期",
     version: "版本",
-    demo: "禾序空間設計虛構示範資料",
+    demo: "{job}的虛構示範資料",
     compareDescription: "尋找最接近的歷史專案、理解相似原因，並用可追溯的歷史依據比較目前報價。",
     warnings: "此專案有需要注意的資料狀態。",
   },
@@ -160,6 +160,9 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
           <p className={styles.restricted}>{labels.restricted}</p>
         )}
       </header>
+      {workspace.project.demoData ? (
+        <p>{labels.demo.replace("{job}", workspace.project.name.display)}</p>
+      ) : null}
       <section className={styles.panel} id="commercial-position" aria-labelledby="commercial-title">
         <h2 id="commercial-title">{labels.currentCommercial}</h2>
         <div className={styles.commercialSummary}>

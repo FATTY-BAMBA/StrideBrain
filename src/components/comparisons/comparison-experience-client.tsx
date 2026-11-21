@@ -436,7 +436,7 @@ function ComparisonResultExperience({
             ...view.synthesis.history,
             ...view.synthesis.differences,
             ...view.synthesis.gaps,
-            view.synthesis.recommendation,
+            ...(view.synthesis.recommendation ? [view.synthesis.recommendation] : []),
           ].map((item) => (
             <article
               className={styles.synthesisCard}
@@ -444,19 +444,7 @@ function ComparisonResultExperience({
               data-claim-key={item.claimKey}
               key={item.key}
             >
-              <h3>
-                {item.key === "stone"
-                  ? copy.table.importedStoneActual
-                  : item.key === "overall-quoted"
-                    ? copy.table.quotedRate
-                    : item.key === "overall-actual"
-                      ? copy.table.actualRate
-                      : item.key === "programme"
-                        ? copy.table.programme
-                        : item.key === "lighting-gap"
-                          ? copy.table.lightingActual
-                          : item.title}
-              </h3>
+              <h3>{item.title}</h3>
               <p>{item.body}</p>
               {item.claimKey ? (
                 <button
@@ -506,10 +494,12 @@ function ComparisonResultExperience({
             <dt>{copy.summary.economics}</dt>
             <dd>{view.summary.economicsStateLabel}</dd>
           </div>
-          <div className={styles.summaryItem}>
-            <dt>{copy.summary.demoData}</dt>
-            <dd>{view.summary.syntheticDataLabel}</dd>
-          </div>
+          {view.summary.syntheticDataLabel ? (
+            <div className={styles.summaryItem}>
+              <dt>{copy.summary.demoData}</dt>
+              <dd>{view.summary.syntheticDataLabel}</dd>
+            </div>
+          ) : null}
         </dl>
       </details>
       <section className={styles.section} aria-labelledby="comparable-projects-title">

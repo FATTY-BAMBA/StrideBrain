@@ -72,12 +72,6 @@ export type ComparisonCopy = Readonly<{
     quotedRate: string;
     forecastRate: string;
     actualRate: string;
-    importedStoneQuoted: string;
-    importedStoneActual: string;
-    lightingQuoted: string;
-    lightingActual: string;
-    millworkQuoted: string;
-    millworkActual: string;
     supplierContext: string;
     programme: string;
   }>;
@@ -100,12 +94,7 @@ export type ComparisonCopy = Readonly<{
     differences: string;
     gaps: string;
     recommendation: string;
-    quoteAbove: string;
-    actualAbove: string;
-    stoneReview: string;
-    lightingGap: string;
     programmeDifference: string;
-    nextReview: string;
     noEconomics: string;
   }>;
   notices: Readonly<{
@@ -208,12 +197,6 @@ const en: ComparisonCopy = {
     quotedRate: "Quoted price · normalized",
     forecastRate: "Forecast direct cost · normalized",
     actualRate: "Forecast / reconciled actual cost · normalized",
-    importedStoneQuoted: "Imported stone · quoted",
-    importedStoneActual: "Imported stone · forecast / reconciled actual",
-    lightingQuoted: "Lighting/electrical · quoted",
-    lightingActual: "Lighting/electrical · forecast / reconciled actual",
-    millworkQuoted: "Custom millwork · quoted",
-    millworkActual: "Custom millwork · forecast / reconciled actual",
     supplierContext: "Supplier-offer context",
     programme: "Programme",
   },
@@ -236,17 +219,8 @@ const en: ComparisonCopy = {
     differences: "Important differences",
     gaps: "Evidence gaps",
     recommendation: "Recommended next review",
-    quoteAbove: "The current quotation is above the selected quoted-price history.",
-    actualAbove:
-      "The current forecast direct cost is above the eligible reconciled-actual history.",
-    stoneReview:
-      "Imported stone is the strongest evidence-backed variance and deserves focused review.",
-    lightingGap:
-      "Lighting is above quoted history, but actual-cost evidence is below the required threshold.",
     programmeDifference:
-      "The current programme is shorter than the selected history, but no supported percentage premium is available.",
-    nextReview:
-      "Validate imported-stone and lighting assumptions internally before quote approval.",
+      "The current programme differs from the selected history; its cost effect is unquantified.",
     noEconomics:
       "Commercial evidence is restricted or unavailable; the structural comparison remains usable.",
   },
@@ -255,7 +229,7 @@ const en: ComparisonCopy = {
     conflict: "Conflicting evidence is visible and excluded from authoritative aggregates.",
     insufficientActual: "Some categories do not have enough reconciled actual-cost evidence.",
     restricted: "Commercial values are restricted under the current role.",
-    synthetic: "Synthetic Horizon Atelier demo data—not a market benchmark.",
+    synthetic: "Synthetic demo data for {job}; not a market benchmark.",
   },
   actionComingLater: "Internal review action becomes available in Stage 8.",
   normalizedUnit: "TWD/m²",
@@ -344,12 +318,6 @@ const zhTw: ComparisonCopy = {
     quotedRate: "報價 · 標準化",
     forecastRate: "預估直接成本 · 標準化",
     actualRate: "預估／已核對實際成本 · 標準化",
-    importedStoneQuoted: "進口石材 · 報價",
-    importedStoneActual: "進口石材 · 預估／已核對實際成本",
-    lightingQuoted: "燈具／電氣 · 報價",
-    lightingActual: "燈具／電氣 · 預估／已核對實際成本",
-    millworkQuoted: "訂製木作 · 報價",
-    millworkActual: "訂製木作 · 預估／已核對實際成本",
     supplierContext: "供應商報價脈絡",
     programme: "工期",
   },
@@ -372,12 +340,7 @@ const zhTw: ComparisonCopy = {
     differences: "重要差異",
     gaps: "資料缺口",
     recommendation: "建議下一步審查",
-    quoteAbove: "目前報價高於已選歷史專案的報價基準。",
-    actualAbove: "目前預估直接成本高於符合條件的已核對實際成本基準。",
-    stoneReview: "進口石材是資料支持最完整的主要差異，值得優先審查。",
-    lightingGap: "燈具報價高於歷史報價，但已核對實際成本的資料量不足。",
-    programmeDifference: "目前工期比已選歷史專案短，但沒有足夠資料量化成本溢價。",
-    nextReview: "在內部核准報價前，先確認進口石材額度與燈具假設。",
+    programmeDifference: "目前工期與已選歷史專案不同，其成本影響尚未量化。",
     noEconomics: "商務資料受到權限限制或目前無法使用；專案結構比較仍可使用。",
   },
   notices: {
@@ -385,7 +348,7 @@ const zhTw: ComparisonCopy = {
     conflict: "不一致的資料會明確顯示，並排除在權威彙總之外。",
     insufficientActual: "部分分類沒有足夠的已核對實際成本資料。",
     restricted: "目前角色無權查看商務數值。",
-    synthetic: "禾序空間設計虛構示範資料，不是市場基準。",
+    synthetic: "{job}的虛構示範資料，不是市場基準。",
   },
   actionComingLater: "建立內部審查事項將於 Stage 8 啟用。",
   normalizedUnit: "新台幣／m²",

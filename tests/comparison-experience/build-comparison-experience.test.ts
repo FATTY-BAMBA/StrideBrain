@@ -73,6 +73,7 @@ function stage4(): Stage4ComparisonResult {
       inputFingerprint: "stage4-input",
     }),
     activeContext: Object.freeze({
+      dataClassification: "DEMO_SYNTHETIC",
       projectKey: "PRJ-XINYI-026",
       nameEn: "Xinyi Flagship Renovation",
       nameZhTw: "信義旗艦店裝修",
@@ -362,7 +363,52 @@ function economics(comparisonRunId = "cmprun_stage4"): Stage5EconomicsResult {
         evidenceReferenceIds: Object.freeze(["e-offer"]),
       }),
     ]),
-    claims: Object.freeze([]),
+    claims: Object.freeze([
+      {
+        claimKey: "OVERALL_QUOTED_VARIANCE",
+        kind: "OVERALL_QUOTED_VARIANCE",
+        titleEn: "",
+        titleZhTw: "",
+        value: { direction: "ABOVE", variancePercent: "7.1676" },
+        evidenceReferenceIds: ["e-quote"],
+        warningCodes: [],
+      },
+      {
+        claimKey: "OVERALL_FORECAST_ACTUAL_VARIANCE",
+        kind: "OVERALL_FORECAST_ACTUAL_VARIANCE",
+        titleEn: "",
+        titleZhTw: "",
+        value: { direction: "ABOVE", variancePercent: "6.0451" },
+        evidenceReferenceIds: ["e-actual"],
+        warningCodes: [],
+      },
+      ...[
+        ["IMPORTED_STONE", "QUOTED_VARIANCE", "42.9687"],
+        ["IMPORTED_STONE", "FORECAST_ACTUAL_VARIANCE", "18.3882"],
+        ["LIGHTING_ELECTRICAL", "QUOTED_VARIANCE", "9.4329"],
+        ["CUSTOM_MILLWORK", "QUOTED_VARIANCE", "1.7857"],
+        ["CUSTOM_MILLWORK", "FORECAST_ACTUAL_VARIANCE", "-2.7263"],
+      ].map(([categoryId, suffix, value]) => ({
+        claimKey: `${categoryId}_${suffix}`,
+        kind: `CATEGORY_${suffix}`,
+        categoryId,
+        titleEn: "",
+        titleZhTw: "",
+        value: { direction: value!.startsWith("-") ? "BELOW" : "ABOVE", variancePercent: value },
+        evidenceReferenceIds: ["e-category"],
+        warningCodes: [],
+      })),
+      {
+        claimKey: "LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+        kind: "CATEGORY_ACTUAL_INSUFFICIENT",
+        categoryId: "LIGHTING_ELECTRICAL",
+        titleEn: "",
+        titleZhTw: "",
+        value: { eligibleObservationCount: 2, requiredObservationCount: 3 },
+        evidenceReferenceIds: ["e-gap"],
+        warningCodes: [],
+      },
+    ]),
     evidenceBundles: Object.freeze([]),
   }) as Stage5EconomicsResult;
 }
@@ -381,8 +427,10 @@ describe("Stage 6 comparison experience composer", () => {
       const snapshot = JSON.stringify(stored);
       const view = buildComparisonExperience({ stage4: stage4(), economics: stored, locale });
       const lighting = row(view, "LIGHTING_ELECTRICAL-ACTUAL")!;
-      const gap = view.synthesis.gaps.find((item) => item.key === "lighting-gap")!;
-      expect(gap.claimKey).toBe("XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT");
+      const gap = view.synthesis.gaps.find(
+        (item) => item.claimKey === "LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+      )!;
+      expect(gap.claimKey).toBe("LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT");
       for (const value of Object.values(lighting.cells)) {
         expect(value.state).toBe("INSUFFICIENT");
         expect(value.claimKey).toBe(gap.claimKey);
@@ -391,13 +439,20 @@ describe("Stage 6 comparison experience composer", () => {
       expect(lighting.cells.__ACTIVE_PROJECT__?.secondary).not.toContain("%");
       expect(row(view, "IMPORTED_STONE-ACTUAL")?.cells.__ACTIVE_PROJECT__).toMatchObject({
         state: "VALUE",
-        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       });
       expect(JSON.stringify(stored)).toBe(snapshot);
 
       const otherCategory = {
         ...stored,
         categories: [category("CUSTOM_MILLWORK", "0", "0", "INSUFFICIENT")],
+        claims: [
+          {
+            ...stored.claims.find((claim) => claim.kind === "CATEGORY_ACTUAL_INSUFFICIENT")!,
+            categoryId: "CUSTOM_MILLWORK",
+            claimKey: "CUSTOM_MILLWORK_ACTUAL_INSUFFICIENT",
+          },
+        ],
       };
       const other = buildComparisonExperience({
         stage4: stage4(),
@@ -406,7 +461,7 @@ describe("Stage 6 comparison experience composer", () => {
       });
       expect(row(other, "CUSTOM_MILLWORK-ACTUAL")?.cells.__ACTIVE_PROJECT__).toMatchObject({
         state: "INSUFFICIENT",
-        claimKey: "XINYI_CUSTOM_MILLWORK_ACTUAL_INSUFFICIENT",
+        claimKey: "CUSTOM_MILLWORK_ACTUAL_INSUFFICIENT",
       });
     },
   );
@@ -417,6 +472,7 @@ describe("Stage 6 comparison experience composer", () => {
       const stored = economics();
       const missing: Stage5EconomicsResult = {
         ...stored,
+        claims: [],
         categories: [
           {
             ...category("LIGHTING_ELECTRICAL", "0", "0"),
@@ -439,7 +495,11 @@ describe("Stage 6 comparison experience composer", () => {
         expect(value.claimKey).toBeUndefined();
         expect(value.primary).not.toMatch(/NT\$|%/);
       }
-      expect(view.synthesis.gaps.find((item) => item.key === "lighting-gap")).toBeUndefined();
+      expect(
+        view.synthesis.gaps.find(
+          (item) => item.claimKey === "LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+        ),
+      ).toBeUndefined();
     },
   );
 
@@ -478,7 +538,7 @@ describe("Stage 6 comparison experience composer", () => {
     expect(row(view, "LIGHTING_ELECTRICAL-ACTUAL")?.cells.__ACTIVE_PROJECT__?.state).toBe(
       "INSUFFICIENT",
     );
-    expect(view.synthesis.history.some((item) => item.body.includes("+18.4%"))).toBe(true);
+    expect(view.synthesis.history.some((item) => item.body.includes("18.4% above"))).toBe(true);
   });
 
   it("keeps unknown factors distinct from mismatches", () => {
@@ -581,4 +641,77 @@ describe("QA-18 financial basis at the point of comparison", () => {
       });
     },
   );
+});
+
+describe("job-neutral claim presentation", () => {
+  it.each(["en", "zh-TW"] as const)(
+    "shows synthetic notices only for synthetic records in %s",
+    (locale) => {
+      const original = stage4();
+      const synthetic = buildComparisonExperience({ stage4: original, locale });
+      expect(synthetic.notices.some((notice) => notice.key === "synthetic")).toBe(true);
+      expect(synthetic.summary.syntheticDataLabel).toBeTruthy();
+      const privateJob = buildComparisonExperience({
+        stage4: {
+          ...original,
+          activeContext: { ...original.activeContext, dataClassification: "TENANT_PRIVATE" },
+        },
+        locale,
+      });
+      expect(privateJob.notices.some((notice) => notice.key === "synthetic")).toBe(false);
+      expect(privateJob.summary.syntheticDataLabel).toBeUndefined();
+      expect(JSON.stringify([privateJob.notices, privateJob.summary])).not.toMatch(
+        /Synthetic|示範|虛構/i,
+      );
+    },
+  );
+  it.each(["en", "zh-TW"] as const)(
+    "omits aligned findings and labels below-range findings in %s",
+    (locale) => {
+      const original = economics();
+      const claims = original.claims
+        .filter((c) => c.categoryId === "CUSTOM_MILLWORK")
+        .map((c) => ({
+          ...c,
+          value: {
+            ...c.value,
+            direction: c.kind === "CATEGORY_QUOTED_VARIANCE" ? "ALIGNED" : "BELOW",
+          },
+        }));
+      const result = {
+        ...original,
+        categories: original.categories.filter((c) => c.categoryId === "CUSTOM_MILLWORK"),
+        claims,
+      };
+      const view = buildComparisonExperience({ stage4: stage4(), economics: result, locale });
+      expect(view.synthesis.history).toHaveLength(1);
+      expect(view.synthesis.history[0]!.body).toContain(locale === "en" ? "below" : "低 ");
+      expect(view.synthesis.recommendation?.body).not.toMatch(/stone|lighting|石材|照明/i);
+      expect(
+        buildComparisonExperience({ stage4: stage4(), locale }).synthesis.recommendation,
+      ).toBeUndefined();
+      expect(
+        buildComparisonExperience({
+          stage4: stage4(),
+          economics: { ...result, claims: [] },
+          locale,
+        }).synthesis.recommendation?.body,
+      ).toContain(locale === "en" ? "Nothing" : "沒有");
+    },
+  );
+  it("shows a plain no-quote state even if old economics were supplied", () => {
+    const structural = stage4();
+    const view = buildComparisonExperience({
+      stage4: {
+        ...structural,
+        activeContext: { ...structural.activeContext, activeQuoteVersionKey: undefined },
+      },
+      economics: economics(),
+      locale: "en",
+    });
+    expect(view.synthesis.recommendation).toBeUndefined();
+    expect(view.synthesis.gaps[0]?.body).toContain("need a quote");
+    expect(JSON.stringify(view.table)).not.toContain("NT$");
+    expect(view.cards.map((card) => card.scoreLabel)).toEqual(["88/100", "81/100", "79/100"]);
+  });
 });

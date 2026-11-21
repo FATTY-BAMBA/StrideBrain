@@ -428,6 +428,23 @@ function input(batch: AuthorizedEconomicsBatch = fullBatch()): HistoricalEconomi
 }
 
 describe("HistoricalEconomicsService", () => {
+  it("uses job-neutral keys and explicit category identity for every category claim", () => {
+    const { result } = new HistoricalEconomicsService().assemble(input());
+    for (const claim of result.claims) {
+      expect(claim.claimKey).not.toContain("XINYI_");
+      if (
+        [
+          "CATEGORY_QUOTED_VARIANCE",
+          "CATEGORY_FORECAST_ACTUAL_VARIANCE",
+          "CATEGORY_ACTUAL_INSUFFICIENT",
+        ].includes(claim.kind)
+      ) {
+        expect(result.categories.map((category) => category.categoryId)).toContain(
+          claim.categoryId,
+        );
+      } else expect(claim.categoryId).toBeUndefined();
+    }
+  });
   const service = new HistoricalEconomicsService();
 
   it("derives the canonical normalized Horizon findings without changing Stage 4", () => {

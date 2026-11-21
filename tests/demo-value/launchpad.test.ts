@@ -4,11 +4,19 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { ProjectWorkspaceDTO } from "@/modules/projects/domain/project-workspace";
 
-const boundary = vi.hoisted(() => ({ resolve: vi.fn(), list: vi.fn(), workspace: vi.fn() }));
+const boundary = vi.hoisted(() => ({
+  resolve: vi.fn(),
+  list: vi.fn(),
+  workspace: vi.fn(),
+  intelligence: vi.fn(),
+}));
 vi.mock("@/lib/server/runtime-context", () => ({ resolveServerRuntimeContext: boundary.resolve }));
 vi.mock("@/lib/server/project-workspace-services", () => ({
   createProjectListService: () => ({ execute: boundary.list }),
   createProjectWorkspaceService: () => ({ execute: boundary.workspace }),
+}));
+vi.mock("@/lib/server/comparison-services", () => ({
+  createComparisonServices: () => ({ getHomeComparison: { execute: boundary.intelligence } }),
 }));
 vi.mock("next/navigation", () => ({
   notFound: () => {
@@ -60,6 +68,7 @@ function render(node: ReactNode) {
 }
 
 beforeEach(() => {
+  boundary.intelligence.mockReset().mockResolvedValue(null);
   boundary.resolve.mockReset().mockResolvedValue(trusted);
   boundary.list.mockReset().mockResolvedValue({ kind: "AVAILABLE", projects });
   boundary.workspace.mockReset().mockResolvedValue({ kind: "AVAILABLE", workspace });
@@ -69,6 +78,10 @@ describe("authorized read-only Home composition", () => {
   it("reads one workspace selected only from the authorized list and preserves locale", async () => {
     const result = await loadDemoValueContext("zh-TW");
     expect(result.workspace).toBe(workspace);
+    expect(boundary.intelligence).toHaveBeenCalledExactlyOnceWith(
+      { ...trusted, locale: "zh-TW" },
+      workspace.project.businessKey,
+    );
     expect(boundary.list).toHaveBeenCalledExactlyOnceWith({ ...trusted, locale: "zh-TW" });
     expect(boundary.workspace).toHaveBeenCalledExactlyOnceWith(
       { ...trusted, locale: "zh-TW" },
@@ -80,6 +93,38 @@ describe("authorized read-only Home composition", () => {
     const result = await loadDemoValueContext("en", "PROJECT-OTHER-TENANT");
     expect(result.workspace).toBeNull();
     expect(boundary.workspace).not.toHaveBeenCalled();
+  });
+
+  it.each(["en", "zh-TW"] as const)(
+    "keeps the job when saved findings fail in %s",
+    async (locale) => {
+      boundary.intelligence.mockRejectedValue(new Error("FINDINGS_READ_FAILED"));
+      const context = await loadDemoValueContext(locale);
+      expect(context.projects).toEqual(projects);
+      expect(context.workspace).toBe(workspace);
+      expect(context.intelligence).toEqual({ kind: "UNAVAILABLE" });
+      const host = render(createElement(ValueLaunchpad, { locale, context }));
+      expect(host.textContent).toContain("Allowed project");
+      expect(host.textContent).toContain(
+        locale === "en" ? "Saved findings are unavailable." : "目前無法讀取已儲存的比較結果",
+      );
+      expect(host.querySelector('a[href$="/compare"]')).not.toBeNull();
+    },
+  );
+
+  it.each(["en", "zh-TW"] as const)("shows one linked out-of-date line in %s", async (locale) => {
+    boundary.intelligence.mockResolvedValue({ kind: "OUT_OF_DATE" });
+    const host = render(
+      createElement(ValueLaunchpad, { locale, context: await loadDemoValueContext(locale) }),
+    );
+    const line =
+      locale === "en"
+        ? "The saved comparison is out of date. Open the comparison to run it again."
+        : "已儲存的比較已過期，請開啟比較後重新執行。";
+    expect(host.querySelector('a[href$="/compare"]')?.textContent).toBe(line);
+    expect(host.textContent?.split(line)).toHaveLength(2);
+    expect(host.querySelector('[class*="findings"]')).toBeNull();
+    expect(host.querySelector('[class*="memory"]')).toBeNull();
   });
 
   it("does not query project data without a session", async () => {

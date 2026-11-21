@@ -1,0 +1,155 @@
+{
+  "checks": [
+    "en: own categories above/below, exact Home/comparison equality and run links, review preparation/confirmation, absent-category chat",
+    "zh-TW: own categories above/below, exact Home/comparison equality and run links, review preparation/confirmation, absent-category chat",
+    "Saved results: another member and changed quote version show the linked out-of-date state; chat refuses stale findings; restored unchanged records remain current. Temporary quote version removed."
+  ],
+  "screens": [
+    "en-riverside-comparison.png",
+    "en-riverside-review.png",
+    "en-riverside-receipt.png",
+    "en-riverside-home.png",
+    "en-riverside-chat.png",
+    "zh-TW-riverside-comparison.png",
+    "zh-TW-riverside-review.png",
+    "zh-TW-riverside-receipt.png",
+    "zh-TW-riverside-home.png",
+    "zh-TW-riverside-chat.png",
+    "en-create-unquoted-job.png",
+    "en-unquoted-comparison.png",
+    "en-unquoted-home.png",
+    "zh-TW-unquoted-comparison.png",
+    "zh-TW-unquoted-home.png",
+    "en-another-member-out-of-date.png",
+    "en-changed-quote-out-of-date.png",
+    "zh-TW-changed-quote-out-of-date.png",
+    "en-original-job-derived-findings.png",
+    "en-viewer-no-financial-disclosure.png"
+  ],
+  "jobs": [
+    {
+      "locale": "en",
+      "project": "J-2611-R7K3",
+      "comparisonRunId": "cmprun_18de40cd-a596-4766-97a0-2f662e2f8d75",
+      "economicsRunId": "econrun_e2c4dcc9-c7a0-4550-952b-366ef49ba6e4",
+      "receiptUrl": "http://localhost:3041/en/projects/J-2611-R7K3/compare?run=cmprun_18de40cd-a596-4766-97a0-2f662e2f8d75&economics=econrun_e2c4dcc9-c7a0-4550-952b-366ef49ba6e4&selected=PRJ-NEIHU-021%2CPRJ-NANJING-023%2CPRJ-ZHONGSHAN-018&action=action_a11e6ee1-b4fa-4734-bcba-8f6355e6334c",
+      "findings": [
+        {
+          "key": "CUSTOM_MILLWORK_FORECAST_ACTUAL_VARIANCE",
+          "text": "Custom millwork: forecast cost is 52.6% above past reconciled actual costs."
+        },
+        {
+          "key": "CUSTOM_MILLWORK_QUOTED_VARIANCE",
+          "text": "Custom millwork: quoted price is 60.7% above past quoted prices."
+        },
+        {
+          "key": "OVERALL_FORECAST_ACTUAL_VARIANCE",
+          "text": "Overall: forecast cost is 57.2% below past reconciled actual costs."
+        },
+        {
+          "key": "OVERALL_QUOTED_VARIANCE",
+          "text": "Overall: quoted price is 58.4% below past quoted prices."
+        },
+        {
+          "key": "SIGNAGE_FORECAST_ACTUAL_VARIANCE",
+          "text": "Signage and display installation: forecast cost is 59.2% below past reconciled actual costs."
+        },
+        {
+          "key": "SIGNAGE_QUOTED_VARIANCE",
+          "text": "Signage and display installation: quoted price is 66.8% below past quoted prices."
+        },
+        {
+          "key": "PROGRAMME_DIFFERENCE_UNQUANTIFIED",
+          "text": "The programme differs from the selected past jobs; the cost effect is not quantified."
+        }
+      ]
+    },
+    {
+      "locale": "zh-TW",
+      "project": "J-2611-R7K3",
+      "comparisonRunId": "cmprun_90d3b173-9da4-4fb5-8a8d-137d3daabc13",
+      "economicsRunId": "econrun_809b36cb-d98b-4b3c-94e0-d003f82ad205",
+      "receiptUrl": "http://localhost:3041/zh-TW/projects/J-2611-R7K3/compare?run=cmprun_90d3b173-9da4-4fb5-8a8d-137d3daabc13&economics=econrun_809b36cb-d98b-4b3c-94e0-d003f82ad205&selected=PRJ-NEIHU-021%2CPRJ-NANJING-023%2CPRJ-ZHONGSHAN-018&action=action_5ce7e05b-d83a-4763-b362-d17e6fce2a97",
+      "findings": [
+        {
+          "key": "CUSTOM_MILLWORK_FORECAST_ACTUAL_VARIANCE",
+          "text": "客製木作：預估成本比過往已核對實際成本高 52.6%"
+        },
+        {
+          "key": "CUSTOM_MILLWORK_QUOTED_VARIANCE",
+          "text": "客製木作：報價比過往報價高 60.7%"
+        },
+        {
+          "key": "OVERALL_FORECAST_ACTUAL_VARIANCE",
+          "text": "整體：預估成本比過往已核對實際成本低 57.2%"
+        },
+        {
+          "key": "OVERALL_QUOTED_VARIANCE",
+          "text": "整體：報價比過往報價低 58.4%"
+        },
+        {
+          "key": "SIGNAGE_FORECAST_ACTUAL_VARIANCE",
+          "text": "標示與展示安裝：預估成本比過往已核對實際成本低 59.2%"
+        },
+        {
+          "key": "SIGNAGE_QUOTED_VARIANCE",
+          "text": "標示與展示安裝：報價比過往報價低 66.8%"
+        },
+        {
+          "key": "PROGRAMME_DIFFERENCE_UNQUANTIFIED",
+          "text": "工期與所選過往專案不同，對成本的影響尚未量化。"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "project": "J-2611-M48F",
+      "unquoted": true,
+      "comparisonRunId": "cmprun_1c39085a-a4ec-41a3-8bb3-ea12a403fd53",
+      "economicsRunId": "econrun_f82f973b-cc10-4bd8-9670-ecc3d4a0e5c0"
+    },
+    {
+      "locale": "zh-TW",
+      "project": "J-2611-M48F",
+      "unquoted": true,
+      "comparisonRunId": "cmprun_d0f30098-855f-4020-b420-167accb00b74",
+      "economicsRunId": "econrun_487f0d69-d90e-4be9-80ca-8c319b58e8e5"
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [
+    {
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://localhost:3041/favicon.ico"
+    }
+  ],
+  "originalJob": {
+    "previousFixedPercentages": [
+      18,
+      9,
+      7
+    ],
+    "currentDisplayedPercentages": [
+      "18.4% above",
+      "9.4% above",
+      "7.2% above"
+    ],
+    "economicsRunId": "econrun_0424d2eb-37bf-415e-8f1f-e5e7568d188b",
+    "findings": [
+      "Site coordination and handover: forecast cost is 15.9% below past reconciled actual costs.",
+      "Site coordination and handover: quoted price is 28.0% below past quoted prices.",
+      "Demolition, partitions and ceilings: forecast cost is 9.4% above past reconciled actual costs.",
+      "Demolition, partitions and ceilings: quoted price is 7.1% above past quoted prices.",
+      "Imported stone and hard finishes: forecast cost is 18.4% above past reconciled actual costs.",
+      "Imported stone and hard finishes: quoted price is 43.0% above past quoted prices.",
+      "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+      "Overall: forecast cost is 6.0% above past reconciled actual costs.",
+      "Overall: quoted price is 7.2% above past quoted prices.",
+      "Signage and display installation: forecast cost is 11.5% below past reconciled actual costs.",
+      "Signage and display installation: quoted price is 5.5% below past quoted prices.",
+      "The programme differs from the selected past jobs; the cost effect is not quantified.",
+      "Lighting and electrical: too few past reconciled actual costs to compare (2 of 3 needed)."
+    ]
+  },
+  "status": "PASS"
+}

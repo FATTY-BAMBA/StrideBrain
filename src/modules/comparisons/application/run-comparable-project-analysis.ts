@@ -248,6 +248,9 @@ export class RunComparableProjectAnalysis {
           inputFingerprint,
         }),
         activeContext: Object.freeze({
+          sourceFingerprint: resolved.context.sourceFingerprint,
+          permissionFingerprint: resolved.context.permissionFingerprint,
+          dataClassification: resolved.context.dataClassification,
           projectKey: resolved.context.businessKey,
           nameEn: resolved.context.nameEn,
           nameZhTw: resolved.context.nameZhTw,

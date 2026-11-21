@@ -58,7 +58,7 @@ Everything built here is meant to run in the production application. Nothing is 
 - Unfinished work stays behind a server-side flag that defaults to off.
 - Do not weaken a test, a type or a lint rule to make a change pass.
 - Logs carry request ids, not document bodies or financial values.
-- Done means the acceptance list passes on the preview deployment, not only locally.
+- Done means the acceptance list passes on the test site, not only locally. The Product Director puts the pull request on the test site with the Test site workflow (docs/development/TEST_SITE.md) and clicks through it. Agents never deploy, migrate, seed or change settings on a hosted project or database. Report hosted acceptance as waiting for the Product Director and keep the pull request in draft.
 
 ## Data and secrets
 

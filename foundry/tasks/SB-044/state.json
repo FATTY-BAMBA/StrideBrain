@@ -1,0 +1,47 @@
+{
+  "taskId": "SB-044",
+  "issueUrl": "https://github.com/FATTY-BAMBA/StrideBrain/issues/44",
+  "branch": "build/sb-044-job-neutral-findings",
+  "state": "DRAFT_PR_WAITING_FOR_PRODUCT_DIRECTOR_TEST_SITE",
+  "deliverySequence": {
+    "A": "VERIFIED_LOCALLY",
+    "B": "VERIFIED_LOCALLY",
+    "C": "VERIFIED_LOCALLY"
+  },
+  "nextIssue": {
+    "number": 46,
+    "state": "NOT_STARTED",
+    "gate": "SB-044 pull request merged"
+  },
+  "verified": [
+    "Node 24 npm run check: 92 files, 959 tests, zero skipped; formatting, lint, TypeScript and production build pass",
+    "Saved findings require the current membership permission and active-job source fingerprints; date change alone leaves them current; no ranking/economics replay on Home",
+    "Another member, a changed quote version, and legacy missing fingerprint metadata return typed OUT_OF_DATE; chat never reuses unvalidated remembered runs",
+    "Failed findings reads retain the authorized job list/workspace with an unavailable state (bilingual unit/component tests)",
+    "Exact bilingual sentences, unsigned one-decimal finding values, all-category boundary-aware aliases and neutral CATEGORY intent",
+    "Synthetic comparison notices absent for another classification (bilingual tests)",
+    "Chrome production build: 20 refreshed screenshots; identical Home/comparison/chat sentences, /100 Home scores, stale run/quote states, unquoted job, review prepare/confirm and Viewer restrictions",
+    "Existing migration, evidence, review-policy, authorization and source-guard regressions pass unchanged",
+    "Three temporary local browser sessions revoked, credentials deleted, temporary quote version/items removed"
+  ],
+  "notVerified": [
+    "Hosted acceptance: waiting for the Product Director to run Test site workflow and click through PR #48",
+    "Safari/Firefox, assistive technology and performance/load testing",
+    "Production identity and real customer data (outside scope)",
+    "Manual pre-change receipt and standalone fresh/repeat-fixture evidence retained from the prior revision; not separately repeated"
+  ],
+  "verificationReport": "verification.md",
+  "baseline": "3a67f2c32c19ea77dc229b482eb64bcb65f4fa1c",
+  "dataMode": "DEMO_SYNTHETIC",
+  "pullRequest": "https://github.com/FATTY-BAMBA/StrideBrain/pull/48",
+  "publication": "ONE_DRAFT_PULL_REQUEST_OPEN",
+  "githubCi": "FINAL_COMMIT_RESULT_RECORDED_IN_PULL_REQUEST",
+  "hostedAcceptance": {
+    "status": "WAITING_FOR_PRODUCT_DIRECTOR",
+    "workflowDocumentation": "docs/development/TEST_SITE.md",
+    "agentHostedActions": "PROHIBITED",
+    "configurationChanged": false,
+    "databaseChanged": false
+  },
+  "reviewRevisionDate": "2026-11-22"
+}

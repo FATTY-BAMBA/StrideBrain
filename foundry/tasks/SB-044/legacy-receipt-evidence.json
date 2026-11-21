@@ -1,0 +1,17 @@
+{
+  "baselineCommit": "3a67f2c32c19ea77dc229b482eb64bcb65f4fa1c",
+  "receiptKey": "action_4c51e3cc-fd2d-4b8c-96cb-3194ebad6905",
+  "unchangedRows": {
+    "EconomicsEnrichmentRun": 9,
+    "ProposedAction": 1,
+    "Action": 1,
+    "AuditEvent": 14,
+    "InternalReviewReceipt": 1
+  },
+  "receiptLocales": [
+    "en",
+    "zh-TW"
+  ],
+  "historicalClaimPanelsOpened": 30,
+  "immutableTriggersDisabled": false
+}

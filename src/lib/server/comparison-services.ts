@@ -1,3 +1,9 @@
+import { GetHomeComparison } from "@/modules/home-intelligence/application/get-home-comparison";
+import { ActiveProjectContextService } from "@/modules/comparisons/application/active-project-context-service";
+import {
+  PrismaLatestProjectComparisonRepository,
+  type PrismaLatestProjectComparisonDatabase,
+} from "@/repositories/prisma/prisma-latest-project-comparison-repository";
 import { getPrismaClient } from "@/lib/server/prisma";
 import { GetComparisonFreshness } from "@/modules/comparisons/application/get-comparison-freshness";
 import { GetComparisonRun } from "@/modules/comparisons/application/get-comparison-run";
@@ -38,6 +44,7 @@ type ComparisonDatabase = PrismaProjectReader &
   PrismaEvidencePanelDatabase;
 
 export type ComparisonServices = Readonly<{
+  getHomeComparison: GetHomeComparison;
   runComparison: RunComparableProjectAnalysis;
   getComparison: GetComparisonRun;
   runEconomics: RunHistoricalEconomicsEnrichment;
@@ -70,6 +77,15 @@ export function createComparisonServices(): ComparisonServices {
   );
 
   return Object.freeze({
+    getHomeComparison: new GetHomeComparison(
+      projects,
+      new PrismaLatestProjectComparisonRepository(
+        database as unknown as PrismaLatestProjectComparisonDatabase,
+      ),
+      comparisonRuns,
+      economicsRuns,
+      new ActiveProjectContextService(candidates),
+    ),
     runComparison: new RunComparableProjectAnalysis(projects, candidates, comparisonRuns),
     getComparison: new GetComparisonRun(comparisonRuns),
     runEconomics: new RunHistoricalEconomicsEnrichment(comparisonRuns, observations, economicsRuns),

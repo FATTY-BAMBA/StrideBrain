@@ -260,6 +260,7 @@ export type EconomicsClaimKind =
 export type StructuredEconomicsClaimDTO = Readonly<{
   claimKey: string;
   kind: EconomicsClaimKind;
+  categoryId?: string | undefined;
   titleEn: string;
   titleZhTw: string;
   value: Readonly<Record<string, unknown>>;

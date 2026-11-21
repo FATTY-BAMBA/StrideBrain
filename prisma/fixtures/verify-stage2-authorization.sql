@@ -36,7 +36,8 @@ BEGIN
   SELECT count(*) INTO value_count
   FROM "ProjectAssignment"
   WHERE "membershipId" = 'membership_horizon_finance'
-    AND "organizationId" = 'org_horizon';
+    AND "organizationId" = 'org_horizon'
+    AND "projectId" <> 'prj_riverside_044'; -- Preserve the original fixture invariant.
   IF value_count <> 29 THEN
     RAISE EXCEPTION 'Financial Reviewer must be assigned to all 29 Horizon projects, found %', value_count;
   END IF;

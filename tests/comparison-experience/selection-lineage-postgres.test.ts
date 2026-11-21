@@ -164,37 +164,17 @@ async function verifyLineage(result: Stage5EconomicsResult, selected: readonly s
       ).toBe(true);
     }
   }
-  const database = getPrismaClient();
-  const beforeReview = await Promise.all([
-    database.proposedAction.count(),
-    database.action.count(),
-    database.internalReviewReceipt.count(),
-  ]);
   const proposal = await createInternalReviewServices().prepare(fresh(), {
     projectKey: PROJECT,
     comparisonRunId: structural.run.id,
     enrichmentRunId: result.run.id,
     locale: "en",
   });
-  // Selection accepts 1–3; the unchanged review policy requires sufficient imported-stone history (3).
-  if (selected.length < 3) {
-    expect(
-      result.categories.find((x) => x.categoryId === "IMPORTED_STONE")?.actualHistory.state,
-    ).toBe("INSUFFICIENT");
-    expect(proposal.kind).toBe("PROPOSAL_UNAVAILABLE");
-    expect(
-      await Promise.all([
-        database.proposedAction.count(),
-        database.action.count(),
-        database.internalReviewReceipt.count(),
-      ]),
-    ).toEqual(beforeReview);
-  } else {
-    expect(proposal.kind).toBe("PREPARED");
-    if (proposal.kind === "PREPARED") {
-      expect(proposal.proposal.enrichmentRunId).toBe(result.run.id);
-      expect(proposal.proposal.returnContext.selectedProjectKeys).toEqual(selected);
-    }
+  // A smaller selection yields actual-history gaps, which are now themselves reviewable.
+  expect(proposal.kind).toBe("PREPARED");
+  if (proposal.kind === "PREPARED") {
+    expect(proposal.proposal.enrichmentRunId).toBe(result.run.id);
+    expect(proposal.proposal.returnContext.selectedProjectKeys).toEqual(selected);
   }
   await verifyOriginal();
   const rank = await services.getComparison.execute(fresh(), structural.run.id);
@@ -230,6 +210,16 @@ pgDescribe("Stage9 real PostgreSQL selection lineage and populated upgrade", () 
     const beforeJobs = await snapshot("Project");
     await sql.query(
       readFileSync("prisma/migrations/20261121060000_project_jobs/migration.sql", "utf8"),
+    );
+    await sql.query(
+      readFileSync(
+        "prisma/migrations/20261121170000_internal_review_policy_2/migration.sql",
+        "utf8",
+      ),
+    );
+    // Independent claim metadata columns are needed by the current adapter.
+    await sql.query(
+      'ALTER TABLE "ComparisonClaim" ADD COLUMN "categoryId" TEXT, ADD COLUMN "originalClaimKey" TEXT',
     );
     const afterJobs = await snapshot("Project");
     expect(

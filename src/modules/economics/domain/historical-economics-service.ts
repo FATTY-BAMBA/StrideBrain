@@ -478,13 +478,11 @@ function currentLineObservation(current: CurrentLine | null): NormalizedObservat
 function categoryIds(
   currentQuote: EvaluatedRecord | null,
   currentForecast: EvaluatedRecord | null,
-  quotedHistory: readonly EvaluatedRecord[],
-  actualHistory: readonly EvaluatedRecord[],
 ): readonly string[] {
   return Object.freeze(
     [
       ...new Set(
-        [currentQuote, currentForecast, ...quotedHistory, ...actualHistory]
+        [currentQuote, currentForecast]
           .filter((entry): entry is EvaluatedRecord => entry !== null)
           .flatMap((entry) => entry.record.lines.map((line) => line.categoryId)),
       ),
@@ -663,11 +661,13 @@ function valueClaim(
   titleEn: string,
   titleZhTw: string,
   finding: VarianceFindingDTO,
+  categoryId?: string,
 ): StructuredEconomicsClaimDTO | null {
   if (finding.state !== "VALUE" || !finding.calculationTrace) return null;
   return Object.freeze({
     claimKey,
     kind,
+    ...(categoryId ? { categoryId } : {}),
     titleEn,
     titleZhTw,
     value: Object.freeze({
@@ -693,7 +693,7 @@ function claimsFor(
   const claims: StructuredEconomicsClaimDTO[] = [];
 
   const quoteClaim = valueClaim(
-    "XINYI_OVERALL_QUOTED_VARIANCE",
+    "OVERALL_QUOTED_VARIANCE",
     "OVERALL_QUOTED_VARIANCE",
     "Current quote versus comparable quoted history",
     "目前報價與類似專案歷史報價比較",
@@ -702,7 +702,7 @@ function claimsFor(
   if (quoteClaim) claims.push(quoteClaim);
 
   const forecastClaim = valueClaim(
-    "XINYI_OVERALL_FORECAST_ACTUAL_VARIANCE",
+    "OVERALL_FORECAST_ACTUAL_VARIANCE",
     "OVERALL_FORECAST_ACTUAL_VARIANCE",
     "Current forecast versus reconciled actual history",
     "目前預估成本與已核對實際成本比較",
@@ -712,20 +712,22 @@ function claimsFor(
 
   for (const category of categories) {
     const quoted = valueClaim(
-      `XINYI_${category.categoryId}_QUOTED_VARIANCE`,
+      `${category.categoryId}_QUOTED_VARIANCE`,
       "CATEGORY_QUOTED_VARIANCE",
       `${category.categoryId} quote versus quoted history`,
       `${category.categoryId} 報價與歷史報價比較`,
       category.quoteVariance,
+      category.categoryId,
     );
     if (quoted) claims.push(quoted);
 
     const actual = valueClaim(
-      `XINYI_${category.categoryId}_FORECAST_ACTUAL_VARIANCE`,
+      `${category.categoryId}_FORECAST_ACTUAL_VARIANCE`,
       "CATEGORY_FORECAST_ACTUAL_VARIANCE",
       `${category.categoryId} forecast versus reconciled actual history`,
       `${category.categoryId} 預估成本與已核對實際成本比較`,
       category.forecastVariance,
+      category.categoryId,
     );
     if (actual) claims.push(actual);
 
@@ -735,8 +737,9 @@ function claimsFor(
     ) {
       claims.push(
         Object.freeze({
-          claimKey: `XINYI_${category.categoryId}_ACTUAL_INSUFFICIENT`,
+          claimKey: `${category.categoryId}_ACTUAL_INSUFFICIENT`,
           kind: "CATEGORY_ACTUAL_INSUFFICIENT",
+          categoryId: category.categoryId,
           titleEn: `${category.categoryId} actual-cost evidence is insufficient`,
           titleZhTw: `${category.categoryId} 實際成本資料不足`,
           value: Object.freeze({
@@ -757,7 +760,7 @@ function claimsFor(
   if (programme.state === "KNOWN_DIFFERENCE") {
     claims.push(
       Object.freeze({
-        claimKey: "XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED",
+        claimKey: "PROGRAMME_DIFFERENCE_UNQUANTIFIED",
         kind: "PROGRAMME_DIFFERENCE_UNQUANTIFIED",
         titleEn: "Programme duration differs from the selected precedents",
         titleZhTw: "工期與所選歷史專案存在差異",
@@ -969,7 +972,7 @@ export class HistoricalEconomicsService {
       : restrictedVariance("FORECAST", "RECONCILED_ACTUAL_COST");
 
     const categories = Object.freeze(
-      categoryIds(currentQuote, currentForecast, quotedHistory, actualHistory).map((categoryId) =>
+      categoryIds(currentQuote, currentForecast).map((categoryId) =>
         buildCategory(
           categoryId,
           input,

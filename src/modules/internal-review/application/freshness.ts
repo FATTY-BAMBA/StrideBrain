@@ -151,7 +151,9 @@ export type CurrentMaterial = Readonly<{
 }>;
 export type MaterialOutcome =
   | Readonly<{ kind: "READY"; material: CurrentMaterial }>
-  | Readonly<{ kind: "STALE_COMPARISON" | "EVIDENCE_UNAVAILABLE" }>;
+  | Readonly<{
+      kind: "STALE_COMPARISON" | "EVIDENCE_UNAVAILABLE" | "NO_QUOTE_VERSION" | "NOTHING_TO_REVIEW";
+    }>;
 
 export async function currentMaterial(
   tx: InternalReviewTransaction,
@@ -208,6 +210,7 @@ export async function currentMaterial(
     sha256(stage4) !== stage5.structuralResultFingerprint
   )
     return { kind: "STALE_COMPARISON" };
+  if (!stage4.activeContext.activeQuoteVersionKey) return { kind: "NO_QUOTE_VERSION" };
   const claims = mandatoryClaims(stage5);
   if (!claims) return { kind: "EVIDENCE_UNAVAILABLE" };
   const references = [...new Set(claims.flatMap((claim) => claim.evidenceReferenceIds))].sort();
@@ -305,6 +308,7 @@ export async function currentMaterial(
     changedComparisonSources(comparisonRunId, stage5, current5.result, resolved.sources, now).length
   )
     return { kind: "STALE_COMPARISON" };
+  if (claims.length === 0) return { kind: "NOTHING_TO_REVIEW" };
   const evidence = [...requiredSources].sort((a, b) => a.referenceId.localeCompare(b.referenceId));
   const fingerprints: MaterialFingerprints = {
     project: sha256(project),

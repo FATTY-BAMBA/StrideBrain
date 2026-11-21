@@ -34,6 +34,7 @@ export type InternalReviewExperienceProps = Readonly<{
   comparisonRunId: string;
   enrichmentRunId: string;
   canPrepare: boolean;
+  unavailableReason?: "NO_QUOTE_VERSION" | "NOTHING_TO_REVIEW" | undefined;
   returnContext: ReturnContext;
   route: InternalReviewRouteState;
   proposalOutcome?: PrepareOutcome | undefined;
@@ -46,6 +47,7 @@ export function InternalReviewController({
   comparisonRunId,
   enrichmentRunId,
   canPrepare,
+  unavailableReason,
   returnContext,
   route,
   proposalOutcome,
@@ -196,6 +198,7 @@ export function InternalReviewController({
           </button>
         </section>
       ) : null}
+      {unavailableReason ? <p role="status">{copy.states[unavailableReason]}</p> : null}
       {open && !evidenceActive ? (
         <ReviewModal
           locale={locale}

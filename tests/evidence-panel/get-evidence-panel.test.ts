@@ -186,7 +186,7 @@ const stage5 = {
   supplierOffers: [],
   claims: [
     {
-      claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       kind: "CATEGORY_FORECAST_ACTUAL_VARIANCE",
       titleEn: "Imported stone forecast versus actual history",
       titleZhTw: "進口石材預估與實際成本比較",
@@ -202,7 +202,7 @@ const stage5 = {
   ],
   evidenceBundles: [
     {
-      claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       sources: [
         {
           referenceId: "evid-stone-neihu",
@@ -298,7 +298,7 @@ describe("GetEvidencePanel", () => {
         mode: "CLAIM",
         comparisonRunId: "cmprun-1",
         enrichmentRunId: "econrun-1",
-        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       },
       "en",
     );
@@ -346,7 +346,7 @@ describe("GetEvidencePanel", () => {
         mode: "CLAIM",
         comparisonRunId: "cmprun-1",
         enrichmentRunId: "econrun-1",
-        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       },
       "en",
     );
@@ -363,7 +363,7 @@ describe("GetEvidencePanel", () => {
         comparisonRunId: "cmprun-1",
         enrichmentRunId: "econrun-1",
         sourceKey,
-        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       },
       "en",
     );
@@ -373,7 +373,7 @@ describe("GetEvidencePanel", () => {
     expect(outcome.view.sources).toHaveLength(1);
     expect(outcome.view.relatedClaims).toEqual([
       {
-        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
         title: "Imported stone forecast versus actual history",
         kindLabel: "Category forecast versus actual history",
       },
@@ -389,7 +389,7 @@ describe("GetEvidencePanel", () => {
         comparisonRunId: "cmprun-1",
         enrichmentRunId: "econrun-1",
         sourceKey: "aaaaaaaaaaaaaaaaaaaaaaaa",
-        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       },
       "en",
     );
@@ -416,7 +416,7 @@ describe("GetEvidencePanel", () => {
         enrichmentRunId: "econrun-1",
         conflictKey: "CONFLICT-STONE-1",
         sourceKey: evidenceSourceKey("cmprun-1", "evid-stone-neihu"),
-        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       },
       "en",
     );
@@ -437,7 +437,7 @@ describe("GetEvidencePanel", () => {
         enrichmentRunId: "econrun-1",
         conflictKey: "UNRELATED-CONFLICT",
         sourceKey: evidenceSourceKey("cmprun-1", "evid-stone-neihu"),
-        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       },
       "en",
     );
@@ -452,7 +452,7 @@ describe("QA-16/18 rendered evidence localization and financial authority", () =
     mode: "CLAIM" as const,
     comparisonRunId: "cmprun-1",
     enrichmentRunId: "econrun-1",
-    claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+    claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
   };
   it.each(["en", "zh-TW"] as const)(
     "F-03 localizes programmeWeeks in claim, source and factor rendering in %s without changing provenance",
@@ -618,7 +618,7 @@ it("preserves exact source business identifiers and uppercase prose while transl
         mode: "CLAIM",
         comparisonRunId: "cmprun-1",
         enrichmentRunId: "econrun-1",
-        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       },
       locale,
     );

@@ -27,9 +27,13 @@ function claims(): StructuredEconomicsClaimDTO[] {
     [
       "CATEGORY_FORECAST_ACTUAL_VARIANCE",
       "ALT_IMPORTED_STONE_VARIANCE",
-      { variancePercent: "17.34" },
+      { variancePercent: "17.34", direction: "ABOVE" },
     ],
-    ["CATEGORY_QUOTED_VARIANCE", "ALT_LIGHTING_ELECTRICAL_QUOTE", { variancePercent: "-4.26" }],
+    [
+      "CATEGORY_QUOTED_VARIANCE",
+      "ALT_LIGHTING_ELECTRICAL_QUOTE",
+      { variancePercent: "-4.26", direction: "BELOW" },
+    ],
     [
       "CATEGORY_ACTUAL_INSUFFICIENT",
       "ALT_LIGHTING_ELECTRICAL_ACTUAL",
@@ -48,6 +52,11 @@ function claims(): StructuredEconomicsClaimDTO[] {
   ] as const;
   return values.map(([kind, claimKey, value], index) => ({
     kind,
+    ...(index === 0
+      ? { categoryId: "IMPORTED_STONE" }
+      : index < 3
+        ? { categoryId: "LIGHTING_ELECTRICAL" }
+        : {}),
     claimKey,
     value,
     titleEn: "Verified finding",
@@ -128,12 +137,13 @@ describe("Stage 8 verified claim selection", () => {
     const result = stage5();
     const selected = mandatoryClaims({ ...result, claims: [...result.claims].reverse() });
     expect(selected?.map((claim) => claim.claimKey)).toEqual(
-      claims().map((claim) => claim.claimKey),
+      claims()
+        .reverse()
+        .map((claim) => claim.claimKey),
     );
   });
 
   it.each([
-    "missing claim",
     "ambiguous claim",
     "missing bundle",
     "extra source",
@@ -145,7 +155,6 @@ describe("Stage 8 verified claim selection", () => {
     const bundle = result.evidenceBundles[0]!;
     const broken = {
       ...result,
-      ...(defect === "missing claim" ? { claims: result.claims.slice(1) } : {}),
       ...(defect === "ambiguous claim"
         ? { claims: [...result.claims, { ...first, claimKey: "SECOND_IMPORTED_STONE_VARIANCE" }] }
         : {}),
@@ -257,9 +266,9 @@ describe("Stage 8 finite bilingual wording and immutable warnings", () => {
   it("derives the canonical title and displayed facts from stored values", () => {
     const result = wording();
     expect(result.titleOptions[0]!.text.en).toBe(
-      "Validate imported-stone and lighting assumptions for Xinyi quote v3",
+      "Validate Imported stone and hard finishes, Lighting and electrical · Harbour Renovation",
     );
-    expect(result.titleOptions[0]!.text.zhTw).toBe("檢核港灣裝修第3版報價的進口石材與照明假設");
+    expect(result.titleOptions[0]!.text.zhTw).toBe("檢核進口石材與硬質面材、照明與電氣 · 港灣裝修");
     const facts = result.mandatoryStatements.map((statement) => statement.text.en).join("\n");
     expect(facts).toContain("+17.3%");
     expect(facts).toContain("-4.3%");
@@ -269,9 +278,9 @@ describe("Stage 8 finite bilingual wording and immutable warnings", () => {
     expect(facts).toContain("economics-independent");
     expect(
       proposalWording(stage4("Banqiao District"), stage5(), claims()).titleOptions[0]!.text.en,
-    ).toContain("Banqiao quote v3");
+    ).toContain("Harbour Renovation");
     expect(proposalWording(stage4(null), stage5(), claims()).titleOptions[0]!.text.en).toContain(
-      "Harbour Renovation quote v3",
+      "Harbour Renovation",
     );
   });
 
@@ -345,9 +354,25 @@ describe("Stage 8 finite bilingual wording and immutable warnings", () => {
         proposal.rationaleOptions[0]!.text,
       ),
     ).toThrow("RATIONALE_BOUND");
-    expect(() => proposalWording(stage4("𠮷".repeat(201)), stage5(), claims())).toThrow(
-      "TITLE_BOUND",
+    const original = stage4();
+    const bounded = proposalWording(
+      {
+        ...original,
+        activeContext: {
+          ...original.activeContext,
+          nameEn: "𠮷".repeat(201),
+          nameZhTw: "𠮷".repeat(201),
+        },
+      },
+      stage5(),
+      claims(),
     );
+    for (const option of bounded.titleOptions) {
+      expect([...option.text.en].length).toBeLessThanOrEqual(200);
+      expect([...option.text.zhTw].length).toBeLessThanOrEqual(200);
+      expect(option.text.en).toContain("…");
+      expect(option.text.en).not.toContain("�");
+    }
   });
 });
 
@@ -441,12 +466,48 @@ it("QA-18 keeps forecast versus reconciled actual and quoted-price findings expl
   for (const option of proposal.rationaleOptions) {
     const rationale = fullRationale(proposal, option.text);
     expect(rationale.en).toContain(
-      "Imported-stone forecast direct cost differs by +17.3% from eligible reconciled-actual history.",
+      "Imported stone and hard finishes forecast direct cost differs by +17.3% from eligible reconciled-actual history.",
     );
-    expect(rationale.zhTw).toContain("進口石材預估直接成本");
+    expect(rationale.zhTw).toContain("進口石材與硬質面材預估直接成本");
     expect(rationale.zhTw).toContain("已核對實際成本");
-    expect(rationale.en).toContain("Lighting quoted price");
+    expect(rationale.en).toContain("Lighting and electrical quoted price");
     expect(rationale.en).not.toContain("Imported-stone actual cost differs");
     expect(rationale.zhTw).not.toContain("進口石材實際成本差異");
   }
+});
+
+it("selects variable categories by explicit identity and returns an empty review set for aligned claims", () => {
+  const original = stage5();
+  const remap = (categoryId: string | undefined) =>
+    categoryId === "IMPORTED_STONE"
+      ? "CUSTOM_MILLWORK"
+      : categoryId === "LIGHTING_ELECTRICAL"
+        ? "SIGNAGE"
+        : undefined;
+  const result = {
+    ...original,
+    categories: original.categories.map((c) => ({ ...c, categoryId: remap(c.categoryId)! })),
+    claims: original.claims.map((c, i) => ({
+      ...c,
+      claimKey: `opaque-${i}`,
+      categoryId: remap(c.categoryId),
+    })),
+    evidenceBundles: original.evidenceBundles.map((b, i) => ({ ...b, claimKey: `opaque-${i}` })),
+  };
+  expect(mandatoryClaims(result)).toEqual(result.claims);
+  const text = proposalWording(stage4(), result, mandatoryClaims(result)!)
+    .mandatoryStatements.map((s) => s.text.en)
+    .join(" ");
+  expect(text).toContain("Custom millwork");
+  expect(text).toContain("Signage");
+  expect(text).not.toMatch(/stone|lighting/i);
+  expect(
+    mandatoryClaims({
+      ...result,
+      claims: result.claims
+        .filter((c) => c.kind === "CATEGORY_QUOTED_VARIANCE")
+        .map((c) => ({ ...c, value: { ...c.value, direction: "ALIGNED" } })),
+    }),
+  ).toEqual([]);
+  expect(mandatoryClaims({ ...result, claims: [] })).toEqual([]);
 });

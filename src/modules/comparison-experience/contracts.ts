@@ -98,7 +98,7 @@ export type ComparisonExperienceView = Readonly<{
     authorizedMatchCountLabel: string;
     selectedCountLabel: string;
     economicsStateLabel: string;
-    syntheticDataLabel: string;
+    syntheticDataLabel?: string | undefined;
   }>;
   activeProject: Readonly<{
     projectKey: string;
@@ -119,7 +119,7 @@ export type ComparisonExperienceView = Readonly<{
     history: readonly ComparisonSynthesisItemView[];
     differences: readonly ComparisonSynthesisItemView[];
     gaps: readonly ComparisonSynthesisItemView[];
-    recommendation: ComparisonSynthesisItemView;
+    recommendation?: ComparisonSynthesisItemView | undefined;
   }>;
   notices: readonly ComparisonSynthesisItemView[];
 }>;

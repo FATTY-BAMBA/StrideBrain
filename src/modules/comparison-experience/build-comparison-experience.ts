@@ -1,3 +1,10 @@
+import {
+  claimFindingText,
+  findClaim,
+  recommendationText,
+} from "@/modules/economics/presentation/claim-findings";
+import { findingsCopy } from "@/modules/localization/economics-findings";
+import { categoryLabel } from "@/modules/localization/jobs";
 import { getFinancialCopy } from "@/modules/localization/financial-copy";
 import { projectLocationLabel, projectSubtypeLabel } from "@/modules/localization/project-context";
 import type { ObservationType } from "@/modules/projects/domain/project-workspace";
@@ -9,7 +16,6 @@ import type {
   UnknownFactorDTO,
 } from "@/modules/comparisons/domain/contracts";
 import type {
-  CategoryEconomicsDTO,
   HistoricalAggregateDTO,
   Stage5EconomicsResult,
   VarianceFindingDTO,
@@ -242,13 +248,6 @@ function varianceCell(
   });
 }
 
-function categoryById(
-  economics: Stage5EconomicsResult | undefined,
-  categoryId: string,
-): CategoryEconomicsDTO | undefined {
-  return economics?.categories.find((category) => category.categoryId === categoryId);
-}
-
 function projectCellMap(
   stage4: Stage4ComparisonResult,
   selectedKeys: readonly string[],
@@ -378,7 +377,7 @@ function programmeCell(
       "CAUTION",
       {
         secondary: copy.synthesis.programmeDifference,
-        claimKey: "XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED",
+        claimKey: findClaim(economics, "PROGRAMME_DIFFERENCE_UNQUANTIFIED")?.claimKey,
       },
     );
   }
@@ -468,67 +467,31 @@ function synthesis(
   const differences: ComparisonSynthesisItemView[] = [];
   const gaps: ComparisonSynthesisItemView[] = [];
 
-  if (economics?.overall.quoteVariance.state === "VALUE") {
-    history.push(
+  for (const claim of economics?.accessScope === "STRUCTURAL_ONLY"
+    ? []
+    : (economics?.claims ?? [])) {
+    const text = claimFindingText(claim, locale);
+    if (!text) continue;
+    const destination =
+      claim.kind === "CATEGORY_ACTUAL_INSUFFICIENT"
+        ? gaps
+        : claim.kind === "PROGRAMME_DIFFERENCE_UNQUANTIFIED"
+          ? differences
+          : history;
+    destination.push(
       synthesisItem(
-        "overall-quoted",
-        copy.synthesis.history,
-        `${copy.synthesis.quoteAbove} ${formatPercent(locale, economics.overall.quoteVariance.variancePercent)}`,
+        claim.claimKey,
+        destination === gaps
+          ? copy.synthesis.gaps
+          : destination === differences
+            ? copy.synthesis.differences
+            : copy.synthesis.history,
+        text,
         "CAUTION",
-        "XINYI_OVERALL_QUOTED_VARIANCE",
+        claim.claimKey,
       ),
     );
   }
-  if (economics?.overall.forecastVariance.state === "VALUE") {
-    history.push(
-      synthesisItem(
-        "overall-actual",
-        copy.synthesis.history,
-        `${copy.synthesis.actualAbove} ${formatPercent(locale, economics.overall.forecastVariance.variancePercent)}`,
-        "CAUTION",
-        "XINYI_OVERALL_FORECAST_ACTUAL_VARIANCE",
-      ),
-    );
-  }
-
-  const stone = categoryById(economics, "IMPORTED_STONE");
-  if (stone?.forecastVariance.state === "VALUE") {
-    history.push(
-      synthesisItem(
-        "stone",
-        copy.synthesis.history,
-        `${copy.synthesis.stoneReview} ${formatPercent(locale, stone.forecastVariance.variancePercent)}`,
-        "CAUTION",
-        "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
-      ),
-    );
-  }
-
-  if (economics?.programmeDifference.state === "KNOWN_DIFFERENCE") {
-    differences.push(
-      synthesisItem(
-        "programme",
-        copy.synthesis.differences,
-        copy.synthesis.programmeDifference,
-        "CAUTION",
-        "XINYI_PROGRAMME_DIFFERENCE_UNQUANTIFIED",
-      ),
-    );
-  }
-
-  const lighting = categoryById(economics, "LIGHTING_ELECTRICAL");
-  if (lighting?.actualHistory.state === "INSUFFICIENT") {
-    gaps.push(
-      synthesisItem(
-        "lighting-gap",
-        copy.synthesis.gaps,
-        `${copy.synthesis.lightingGap} ${lighting.actualHistory.eligibleObservationCount ?? 0}/${lighting.actualHistory.requiredObservationCount}`,
-        "CAUTION",
-        "XINYI_LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
-      ),
-    );
-  }
-
   if (!economics || economics.accessScope === "STRUCTURAL_ONLY") {
     gaps.push(
       synthesisItem(
@@ -539,27 +502,41 @@ function synthesis(
       ),
     );
   }
-
+  const recommendation = recommendationText(economics, locale);
   return Object.freeze({
     history: Object.freeze(history),
     differences: Object.freeze(differences),
     gaps: Object.freeze(gaps),
-    recommendation: synthesisItem(
-      "recommendation",
-      copy.synthesis.recommendation,
-      copy.synthesis.nextReview,
-      "POSITIVE",
-    ),
+    ...(recommendation
+      ? {
+          recommendation: synthesisItem(
+            "recommendation",
+            copy.synthesis.recommendation,
+            recommendation,
+            "POSITIVE",
+          ),
+        }
+      : {}),
   });
 }
 
 function notices(
+  stage4: Stage4ComparisonResult,
+  locale: Locale,
   economics: Stage5EconomicsResult | undefined,
   copy: ComparisonCopy,
 ): readonly ComparisonSynthesisItemView[] {
-  const result: ComparisonSynthesisItemView[] = [
-    synthesisItem("synthetic", copy.summary.demoData, copy.notices.synthetic, "NEUTRAL"),
-  ];
+  const result: ComparisonSynthesisItemView[] = [];
+  if (stage4.activeContext.dataClassification === "DEMO_SYNTHETIC") {
+    result.push(
+      synthesisItem(
+        "synthetic",
+        copy.summary.demoData,
+        copy.notices.synthetic.replace("{job}", localizedName(locale, stage4.activeContext)),
+        "NEUTRAL",
+      ),
+    );
+  }
   if (!economics || economics.accessScope === "STRUCTURAL_ONLY") {
     result.push(
       synthesisItem("restricted", copy.synthesis.gaps, copy.notices.restricted, "NEUTRAL"),
@@ -666,7 +643,7 @@ function contextSections(
           economics.overall.quotedHistory,
           locale,
           copy,
-          "XINYI_OVERALL_QUOTED_VARIANCE",
+          findClaim(economics, "OVERALL_QUOTED_VARIANCE")?.claimKey,
         ),
         historyRow(
           "overall-actual",
@@ -677,7 +654,7 @@ function contextSections(
           economics.overall.actualHistory,
           locale,
           copy,
-          "XINYI_OVERALL_FORECAST_ACTUAL_VARIANCE",
+          findClaim(economics, "OVERALL_FORECAST_ACTUAL_VARIANCE")?.claimKey,
         ),
       ]
     : [
@@ -698,38 +675,27 @@ function contextSections(
       ];
 
   const categoryRows: ComparisonTableRowView[] = [];
-  const categoryDefinitions: ReadonlyArray<readonly [string, string, "QUOTE" | "ACTUAL"]> = [
-    ["IMPORTED_STONE", copy.table.importedStoneQuoted, "QUOTE"],
-    ["IMPORTED_STONE", copy.table.importedStoneActual, "ACTUAL"],
-    ["LIGHTING_ELECTRICAL", copy.table.lightingQuoted, "QUOTE"],
-    ["LIGHTING_ELECTRICAL", copy.table.lightingActual, "ACTUAL"],
-    ["CUSTOM_MILLWORK", copy.table.millworkQuoted, "QUOTE"],
-    ["CUSTOM_MILLWORK", copy.table.millworkActual, "ACTUAL"],
-  ];
-  for (const [categoryId, label, basis] of categoryDefinitions) {
-    const category = categoryById(economics, categoryId);
-    const suffix =
-      basis === "QUOTE"
-        ? "QUOTED_VARIANCE"
-        : category?.forecastVariance.state === "INSUFFICIENT" &&
-            category.actualHistory.state === "INSUFFICIENT"
-          ? "ACTUAL_INSUFFICIENT"
-          : "FORECAST_ACTUAL_VARIANCE";
-    categoryRows.push(
-      category
-        ? historyRow(
-            `${categoryId}-${basis}`,
-            label,
-            stage4,
-            selectedKeys,
-            basis === "QUOTE" ? category.quoteVariance : category.forecastVariance,
-            basis === "QUOTE" ? category.quotedHistory : category.actualHistory,
-            locale,
-            copy,
-            `XINYI_${categoryId}_${suffix}`,
-          )
-        : unavailableEconomicsRow(`${categoryId}-${basis}`, label, stage4, selectedKeys, copy),
-    );
+  for (const category of economics?.categories ?? []) {
+    for (const basis of ["QUOTE", "ACTUAL"] as const) {
+      const claim =
+        basis === "QUOTE"
+          ? findClaim(economics, "CATEGORY_QUOTED_VARIANCE", category.categoryId)
+          : (findClaim(economics, "CATEGORY_ACTUAL_INSUFFICIENT", category.categoryId) ??
+            findClaim(economics, "CATEGORY_FORECAST_ACTUAL_VARIANCE", category.categoryId));
+      categoryRows.push(
+        historyRow(
+          `${category.categoryId}-${basis}`,
+          `${categoryLabel(locale, category.categoryId)} · ${basis === "QUOTE" ? findingsCopy(locale).quotedRow : findingsCopy(locale).actualRow}`,
+          stage4,
+          selectedKeys,
+          basis === "QUOTE" ? category.quoteVariance : category.forecastVariance,
+          basis === "QUOTE" ? category.quotedHistory : category.actualHistory,
+          locale,
+          copy,
+          claim?.claimKey,
+        ),
+      );
+    }
   }
 
   const evidenceRows: ComparisonTableRowView[] = [
@@ -870,7 +836,14 @@ export function buildComparisonExperience(
       authorizedMatchCountLabel: formatNumber(locale, stage4.summary.primaryMatchCount, 0),
       selectedCountLabel: `${selectedProjectKeys.length}/3`,
       economicsStateLabel: economicsStateLabel(economics, copy),
-      syntheticDataLabel: copy.notices.synthetic,
+      ...(stage4.activeContext.dataClassification === "DEMO_SYNTHETIC"
+        ? {
+            syntheticDataLabel: copy.notices.synthetic.replace(
+              "{job}",
+              localizedName(locale, stage4.activeContext),
+            ),
+          }
+        : {}),
     }),
     activeProject: Object.freeze({
       projectKey: stage4.activeContext.projectKey,
@@ -884,15 +857,36 @@ export function buildComparisonExperience(
         : {}),
     }),
     cards: Object.freeze(
-      stage4.matches.map((match) => comparableCard(match, economics, locale, copy)),
+      stage4.matches.map((match) =>
+        comparableCard(
+          match,
+          stage4.activeContext.activeQuoteVersionKey ? economics : undefined,
+          locale,
+          copy,
+        ),
+      ),
     ),
     initialSelectedProjectKeys: selectedProjectKeys,
     maximumSelectedProjects: 3,
     table: Object.freeze({
       columns: Object.freeze(columns),
-      sections: contextSections(stage4, economics, selectedProjectKeys, locale, copy),
+      sections: contextSections(
+        stage4,
+        stage4.activeContext.activeQuoteVersionKey ? economics : undefined,
+        selectedProjectKeys,
+        locale,
+        copy,
+      ),
     }),
-    synthesis: synthesis(economics, locale, copy),
-    notices: notices(economics, copy),
+    synthesis: stage4.activeContext.activeQuoteVersionKey
+      ? synthesis(economics, locale, copy)
+      : {
+          history: [],
+          differences: [],
+          gaps: [
+            synthesisItem("no-quote", copy.synthesis.gaps, findingsCopy(locale).noQuote, "NEUTRAL"),
+          ],
+        },
+    notices: notices(stage4, locale, economics, copy),
   });
 }

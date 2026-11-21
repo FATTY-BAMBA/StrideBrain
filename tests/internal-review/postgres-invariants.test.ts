@@ -125,7 +125,7 @@ async function pair(currentActor: Actor) {
         mode: "CLAIM" as const,
         comparisonRunId: comparison.result.run.id,
         enrichmentRunId: economics.result.run.id,
-        claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       },
       evidenceReturnId: "internal-review-trigger",
     },
@@ -353,9 +353,9 @@ describePostgres("Stage 8 independent PostgreSQL invariants", () => {
     "prepares and creates the verified canonical action as %s",
     async (_role, membership) => {
       const fixture = await prepared(await actor(membership));
-      expect(fixture.proposal.title).toBe(
-        "Validate imported-stone and lighting assumptions for Xinyi quote v3",
-      );
+      expect(fixture.proposal.title).toContain("Validate ");
+      expect(fixture.proposal.title).toContain("Xinyi Flagship Renovation");
+      expect([...fixture.proposal.title].length).toBeLessThanOrEqual(200);
       const statements = fixture.proposal.mandatoryStatements.map((item) => item.text).join(" ");
       expect(statements).toMatch(/18\.4/);
       expect(statements).toMatch(/9\.4/);
@@ -481,7 +481,7 @@ describePostgres("Stage 8 independent PostgreSQL invariants", () => {
           mode: "CLAIM" as const,
           comparisonRunId: fixture.comparisonRunId,
           enrichmentRunId: fixture.enrichmentRunId,
-          claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+          claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
         };
         for (const selection of [
           claim,
@@ -607,7 +607,7 @@ describePostgres("Stage 8 independent PostgreSQL invariants", () => {
           mode: "CLAIM",
           comparisonRunId: fixture.comparisonRunId,
           enrichmentRunId: fixture.enrichmentRunId,
-          claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+          claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
         },
         "en",
         freshness,
@@ -1561,7 +1561,7 @@ describePostgres("Stage 8 independent PostgreSQL invariants", () => {
       dueDate: input.dueDate,
       assigneeMembershipId: "membership_horizon_finance",
     });
-    expect(payload.policyVersions).toMatchObject({ action: "INTERNAL-REVIEW-ACTION-1.0" });
+    expect(payload.policyVersions).toMatchObject({ action: "INTERNAL-REVIEW-ACTION-2.0" });
     expect(payload.evidenceReferenceIds).toEqual(actionRow.evidenceReferenceIds);
     const proposal = await proposalRow(fixture.proposal.businessKey);
     const content = proposal.contentSnapshot as ProposalContent;

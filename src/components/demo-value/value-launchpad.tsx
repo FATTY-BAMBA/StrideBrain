@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { runComparisonAction } from "@/app/[locale]/projects/[projectKey]/compare/actions";
 import { HomeChat } from "./home-chat";
 import type { Route } from "next";
 import type { DemoValueContext } from "@/lib/server/demo-value-context";
@@ -28,7 +27,6 @@ export function ValueLaunchpad({ locale, context }: { locale: Locale; context: D
           actions: "未完成事項",
           memory: "公司過往經驗",
           memoryHelp: "StrideBrain 會用這些已完成專案來比較目前工作。",
-          match: "相似度",
         }
       : {
           eyebrow: "Find. Understand. Decide. Act.",
@@ -43,7 +41,6 @@ export function ValueLaunchpad({ locale, context }: { locale: Locale; context: D
           actions: "open action",
           memory: "Company memory",
           memoryHelp: "StrideBrain uses these completed projects to compare current work.",
-          match: "match",
         };
 
   return (
@@ -53,7 +50,11 @@ export function ValueLaunchpad({ locale, context }: { locale: Locale; context: D
         <h1>{copy.title}</h1>
       </header>
 
-      <HomeChat locale={locale} />
+      <HomeChat
+        key={workspace?.project.businessKey}
+        locale={locale}
+        projectKey={workspace?.project.businessKey}
+      />
 
       {workspace && base ? (
         <section className={styles.projectCard} aria-labelledby="current-project-title">
@@ -76,18 +77,24 @@ export function ValueLaunchpad({ locale, context }: { locale: Locale; context: D
           {intelligence.findings.length ? (
             <div className={styles.findings}>
               {intelligence.findings.map((finding) => (
-                <form action={runComparisonAction} key={finding.id}>
-                  <input type="hidden" name="locale" value={locale} />
-                  <input type="hidden" name="projectKey" value={workspace.project.businessKey} />
-                  <input type="hidden" name="evidenceClaim" value={finding.claimKey} />
-                  <button className={styles.finding} type="submit">
-                    <strong>{finding.title}</strong>
-                    <span>{finding.detail}</span>
-                    <small>{finding.check}</small>
-                  </button>
-                </form>
+                <Link className={styles.finding} href={finding.href as Route} key={finding.id}>
+                  <strong>{finding.title}</strong>
+                  <span>{finding.detail}</span>
+                  <small>{finding.check}</small>
+                </Link>
               ))}
             </div>
+          ) : (
+            <p>
+              <Link href={intelligence.comparisonHref as Route}>{intelligence.emptyMessage}</Link>
+            </p>
+          )}
+          {workspace.project.demoData ? (
+            <small>
+              {locale === "zh-TW"
+                ? "此專案使用虛構示範資料。"
+                : "This job uses synthetic demo data."}
+            </small>
           ) : null}
 
           {intelligence.openActionCount > 0 ? (
@@ -113,11 +120,7 @@ export function ValueLaunchpad({ locale, context }: { locale: Locale; context: D
             {intelligence.memory.map((project) => (
               <li key={project.name}>
                 <span>{project.name}</span>
-                {project.score ? (
-                  <small>
-                    {project.score}% {copy.match}
-                  </small>
-                ) : null}
+                <small>{project.score}/100</small>
               </li>
             ))}
           </ul>

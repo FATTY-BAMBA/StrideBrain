@@ -12,13 +12,13 @@ describe("Stage 7 evidence route state", () => {
         comparisonRunId: "cmprun-1",
         economicsRunId: "econrun-1",
         evidenceMode: "claim",
-        evidenceClaimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        evidenceClaimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       }),
     ).toEqual({
       mode: "CLAIM",
       comparisonRunId: "cmprun-1",
       enrichmentRunId: "econrun-1",
-      claimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      claimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
     });
   });
 
@@ -49,7 +49,7 @@ describe("Stage 7 evidence route state", () => {
         economicsRunId: "econrun-1",
         evidenceMode: "SOURCE",
         evidenceSourceKey: "0123456789abcdef01234567",
-        evidenceClaimKey: "XINYI_OVERALL_QUOTED_VARIANCE",
+        evidenceClaimKey: "OVERALL_QUOTED_VARIANCE",
       }),
     ).toMatchObject({ mode: "SOURCE", sourceKey: "0123456789abcdef01234567" });
 
@@ -58,7 +58,7 @@ describe("Stage 7 evidence route state", () => {
         comparisonRunId: "cmprun-1",
         evidenceMode: "SOURCE",
         evidenceSourceKey: "evid_cost_internal_id",
-        evidenceClaimKey: "XINYI_OVERALL_QUOTED_VARIANCE",
+        evidenceClaimKey: "OVERALL_QUOTED_VARIANCE",
       }),
     ).toBeNull();
   });
@@ -85,7 +85,7 @@ describe("Stage 7 evidence route state", () => {
         evidenceMode: "CONFLICT",
         evidenceConflictKey: "CONFLICT-STONE-1",
         evidenceSourceKey: "0123456789abcdef01234567",
-        evidenceClaimKey: "XINYI_IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+        evidenceClaimKey: "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
       }),
     ).toMatchObject({
       mode: "CONFLICT",
