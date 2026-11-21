@@ -1,0 +1,46 @@
+{
+  "checks": [
+    "Prepared review Home link reopened the same proposal; confirmation produced a receipt and removed the item.",
+    "Both languages: Home, comparison and chat show the same stored category sentence; zh-TW recommendation uses ： and 。.",
+    "Seven jobs created through the form: Home capped at five and View all 8 opened all eight decisions; a further matching-scope job increased the total to nine, then its successful comparison removed that item. A job with no eligible history retains Compare.",
+    "All five stage links show the exact count; group totals equal unfiltered Projects; only the selected Projects tile is highlighted.",
+    "Admin: latest three lessons; Nanjing first, quote NT$17,300,000 before tax, actual NT$13,420,000, coordination NT$1,720,000 over quote; bilingual and 390px layout.",
+    "Language choice persists on root entry and after sign-out; actual logout clears the secure session and sign-in retains the language switch.",
+    "Viewer: no create or financial amounts/percentages, closed-job name retained; other tenant isolated; empty firm shows sentence plus New job.",
+    "Final production build after missing-economics fix: bilingual Home, neutral stages, exact closed-job figures, 390px layout and explicit linked unavailable state for a comparison whose economics is missing; local mutation restored.",
+    "Final language build: choosing zh-TW through the existing Settings language links persists on root entry; sidebar EN persists and survives actual sign-out."
+  ],
+  "screens": [
+    "zh-TW-recommendation.png",
+    "en-home-decisions.png",
+    "en-home-chat.png",
+    "zh-TW-home-chat.png",
+    "en-home-overflow.png",
+    "en-all-decisions.png",
+    "en-projects-quote-filter.png",
+    "en-home-closed-lessons.png",
+    "zh-TW-home-closed-lessons.png",
+    "zh-TW-home-mobile.png",
+    "en-settings-account.png",
+    "en-sign-in-language.png",
+    "en-viewer-structural.png",
+    "en-other-organization.png",
+    "en-empty-firm.png",
+    "en-missing-economics.png"
+  ],
+  "createdJobs": [
+    "J-2611-JHFD",
+    "J-2611-KF5T",
+    "J-2611-FS3A",
+    "J-2611-GB8R",
+    "J-2611-QRDV",
+    "J-2611-5VVP",
+    "J-2611-52MD"
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "status": "PASS",
+  "environment": "Local production Next.js build; direct HTTPS on loopback with a disposable synthetic PostgreSQL database.",
+  "finalBuildSmoke": "PASS",
+  "finalLanguageBuild": "PASS"
+}

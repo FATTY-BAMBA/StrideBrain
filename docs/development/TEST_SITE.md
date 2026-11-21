@@ -21,6 +21,23 @@ The workflow is `.github/workflows/test-site.yml`. It does three things, in orde
 
 Only a person with write access to the repository can start it. Pull requests from forks are refused.
 
+## Choose a sample person
+
+Enter the invitation code and choose **Person / 體驗人員** before signing in:
+
+| Choice | English label | 繁體中文 | Use it to check |
+| --- | --- | --- | --- |
+| `owner` (default) | Alex Chen — Owner | 陳柏宇 — 組織管理員 | Every job and the three closed-job lessons |
+| `project-manager` | Mei Lin — Project manager | 林美玲 — 專案經理 | Assigned project work |
+| `finance` | Iris Huang — Finance | 黃怡君 — 財務 | The finance person's authorized view |
+| `viewer` | Kai Wu — Viewer | 吳凱 — 檢視者 | Assigned lists without New job or financial figures |
+
+Sign out in the sidebar to choose another person. The invitation is still required for every sign-in. Sessions last at most one hour and never beyond invitation expiry; attempts share the existing limit across all four choices. The options are static copy; the server accepts only the four sample identities after validating the code.
+
+Saved comparisons belong to the member who ran them. After changing person, open the comparison and run it again before checking that person's saved findings on Home.
+
+This is **test-site sign-in only**, not production identity or a role-switching feature. Production Foundation [#42](https://github.com/FATTY-BAMBA/StrideBrain/issues/42) replaces it. The frozen pilot deployment is unchanged.
+
 ## Rules
 
 - Synthetic data only. No customer files and no customer data, ever.
@@ -83,5 +100,5 @@ These are accepted for a synthetic test site and must not carry over to a real t
 
 - The application connects as the database owner. The pilot uses a restricted login, and production must too.
 - Database connections are encrypted, but the server certificate is not verified against the Supabase certificate authority.
-- Sign-in is the pilot's shared invitation for one synthetic persona. Viewer and other-organization behavior cannot be clicked through here; the automated tests cover them.
+- Sign-in uses a shared invitation and four allowlisted synthetic sample people. It is test-site sign-in only and is replaced by #42. Other-organization and empty-firm behavior remain covered by automated tests and local browser evidence.
 - The invitation window is longer than the pilot's because the site sits behind Vercel sign-in.

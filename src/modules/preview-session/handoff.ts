@@ -6,6 +6,23 @@ import type { DemoSessionRepositoryPort } from "@/modules/runtime-context/sessio
 import { SignedDemoIdentityContext } from "@/modules/runtime-context/signed-demo-identity-context";
 import { previewInvitation, previewSessionOrigin } from "./config";
 
+// Test-site identities only; Production Foundation (#42) replaces this handoff.
+// Kept here on the server. The entry form contains role keys and static labels only.
+const SAMPLE_PEOPLE = [
+  { key: "owner", membershipId: "membership_horizon_admin", personId: "person_horizon_admin" },
+  {
+    key: "project-manager",
+    membershipId: "membership_horizon_mei",
+    personId: "person_horizon_mei",
+  },
+  {
+    key: "finance",
+    membershipId: "membership_horizon_finance",
+    personId: "person_horizon_finance",
+  },
+  { key: "viewer", membershipId: "membership_horizon_viewer", personId: "person_horizon_viewer" },
+] as const;
+
 const PILOT_INVITATION_CODE = /^STRIDEBRAIN2026-\d{2}-[A-Z0-9]{4}$/;
 
 /** Constant-space, per-instance backstop. Hosted edge limiting is also required. */
@@ -72,7 +89,7 @@ function response(locale: Locale, destination: "home" | "entry" | "failure", coo
   return new Response(null, { status: 303, headers });
 }
 
-/** Browser data never selects membership, tenant, role, TTL, or a return destination. */
+/** A bounded sample-person key resolves on the server; authority comes from the trusted session. */
 export async function handlePreviewSession(
   request: Request,
   operation: "enter" | "leave",
@@ -102,7 +119,7 @@ export async function handlePreviewSession(
     // Logout is not blocked by an exhausted login budget or an expired/disabled invitation.
     if (operation === "enter" && !dependencies.allowAttempt(now.getTime()))
       return response(locale, "failure");
-    const keys = operation === "enter" ? ["locale", "invitation"] : ["locale"];
+    const keys = operation === "enter" ? ["locale", "invitation", "person"] : ["locale"];
     if (
       [...form.keys()].some((key) => !keys.includes(key)) ||
       keys.some((key) => form.getAll(key).length !== 1)
@@ -133,6 +150,8 @@ export async function handlePreviewSession(
       !PILOT_INVITATION_CODE.test(supplied)
     )
       return response(locale, "failure");
+    const person = SAMPLE_PEOPLE.find((item) => item.key === form.get("person"));
+    if (!person) return response(locale, "failure");
     const repository = dependencies.repository();
     // Validate the exact synthetic persona at the issuer's own membership lookup.
     const allowlisted: DemoSessionRepositoryPort = {
@@ -141,9 +160,9 @@ export async function handlePreviewSession(
       revokeSession: (id, at) => repository.revokeSession(id, at),
       async getIssuableMembership(id) {
         const membership = await repository.getIssuableMembership(id);
-        return membership?.membershipId === "membership_horizon_mei" &&
+        return membership?.membershipId === person.membershipId &&
           membership.organizationId === "org_horizon" &&
-          membership.personId === "person_horizon_mei"
+          membership.personId === person.personId
           ? membership
           : null;
       },
@@ -153,7 +172,7 @@ export async function handlePreviewSession(
       allowlisted,
       dependencies.signingSecret(),
       () => now,
-    ).issueForMembership("membership_horizon_mei", { locale, ttlSeconds: invitation.ttlSeconds });
+    ).issueForMembership(person.membershipId, { locale, ttlSeconds: invitation.ttlSeconds });
     return issued ? response(locale, "home", issued.setCookie) : response(locale, "failure");
   } catch {
     // Never log a credential, request body, database error, or identity detail.

@@ -12,9 +12,20 @@ import {
 const describeDatabase = process.env.DATABASE_URL ? describe : describe.skip;
 
 describeDatabase("Preview handoff with existing PostgreSQL session and authorization", () => {
-  it.each(["en", "zh-TW"] as const)(
-    "enters, resolves Xinyi, denies cross-tenant access, and revokes in %s",
-    async (locale) => {
+  it.each(
+    (
+      [
+        ["owner", "admin", "ORGANIZATION_ADMIN"],
+        ["project-manager", "mei", "PROJECT_MANAGER_ESTIMATOR"],
+        ["finance", "finance", "FINANCIAL_REVIEWER"],
+        ["viewer", "viewer", "VIEWER"],
+      ] as const
+    ).flatMap(([person, suffix, role]) =>
+      (["en", "zh-TW"] as const).map((locale) => ({ person, suffix, role, locale })),
+    ),
+  )(
+    "$person enters, resolves Xinyi, denies cross-tenant access, and revokes in $locale",
+    async ({ person, suffix, role, locale }) => {
       const database = getPrismaClient();
       const repository = new PrismaDemoSessionRepository(
         database as unknown as PrismaDemoSessionDatabase,
@@ -40,7 +51,7 @@ describeDatabase("Preview handoff with existing PostgreSQL session and authoriza
         new Request(`${origin}/api/preview-session`, {
           method: "POST",
           headers: { origin, "content-type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams({ locale, invitation: code }),
+          body: new URLSearchParams({ locale, invitation: code, person }),
         }),
         "enter",
         dependencies,
@@ -53,7 +64,9 @@ describeDatabase("Preview handoff with existing PostgreSQL session and authoriza
       });
       const context = await identity.resolve(protectedRequest);
       expect(context?.organizationId).toBe("org_horizon");
-      expect(context?.role).toBe("PROJECT_MANAGER_ESTIMATOR");
+      expect(context?.role).toBe(role);
+      expect(context?.membershipId).toBe(`membership_horizon_${suffix}`);
+      expect(context?.userId).toBe(`person_horizon_${suffix}`);
       expect(context?.locale).toBe(locale);
       const sessionId = context!.sessionId;
       if (!sessionId) throw new Error("TRUSTED_SESSION_REQUIRED");

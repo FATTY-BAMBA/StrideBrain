@@ -1,0 +1,8 @@
+{
+  "temporarySessions": 6,
+  "newlyRevoked": 4,
+  "remainingActiveTemporarySessions": 0,
+  "disposableLocalBrowserDatabasesDropped": 2,
+  "privateCredentialsAndCertificateDeleted": true,
+  "hostedResourcesChanged": false
+}

@@ -9,6 +9,7 @@ const boundary = vi.hoisted(() => ({
   list: vi.fn(),
   workspace: vi.fn(),
   intelligence: vi.fn(),
+  desk: vi.fn(),
 }));
 vi.mock("@/lib/server/runtime-context", () => ({ resolveServerRuntimeContext: boundary.resolve }));
 vi.mock("@/lib/server/project-workspace-services", () => ({
@@ -17,6 +18,9 @@ vi.mock("@/lib/server/project-workspace-services", () => ({
 }));
 vi.mock("@/lib/server/comparison-services", () => ({
   createComparisonServices: () => ({ getHomeComparison: { execute: boundary.intelligence } }),
+}));
+vi.mock("@/lib/server/home-desk-services", () => ({
+  createHomeDeskService: () => ({ execute: boundary.desk }),
 }));
 vi.mock("next/navigation", () => ({
   notFound: () => {
@@ -31,7 +35,8 @@ vi.mock("next/link", () => ({
 }));
 
 import { loadDemoValueContext } from "@/lib/server/demo-value-context";
-import { ValueLaunchpad } from "@/components/demo-value/value-launchpad";
+import { HomeDeskScreen } from "@/components/home-desk/home-desk";
+import type { HomeDesk } from "@/modules/home-desk/application/get-home-desk";
 import Home from "@/app/[locale]/page";
 import Knowledge from "@/app/[locale]/knowledge/page";
 import Brain from "@/app/[locale]/stridebrain/page";
@@ -61,6 +66,18 @@ const projects = [
   },
 ];
 
+const desk: HomeDesk = {
+  kind: "AVAILABLE",
+  projects,
+  canCreate: false,
+  stageCounts: [],
+  decisions: [],
+  findingsNotices: [],
+  decisionsUnavailable: false,
+  closedJobsUnavailable: false,
+  closedJobs: [],
+};
+
 function render(node: ReactNode) {
   const host = document.createElement("main");
   host.innerHTML = renderToStaticMarkup(node);
@@ -68,6 +85,7 @@ function render(node: ReactNode) {
 }
 
 beforeEach(() => {
+  boundary.desk.mockReset().mockResolvedValue(desk);
   boundary.intelligence.mockReset().mockResolvedValue(null);
   boundary.resolve.mockReset().mockResolvedValue(trusted);
   boundary.list.mockReset().mockResolvedValue({ kind: "AVAILABLE", projects });
@@ -103,7 +121,12 @@ describe("authorized read-only Home composition", () => {
       expect(context.projects).toEqual(projects);
       expect(context.workspace).toBe(workspace);
       expect(context.intelligence).toEqual({ kind: "UNAVAILABLE" });
-      const host = render(createElement(ValueLaunchpad, { locale, context }));
+      const host = render(
+        createElement(HomeDeskScreen, {
+          locale,
+          outcome: { ...desk, findingsNotices: [{ project: projects[0]!, kind: "UNAVAILABLE" }] },
+        }),
+      );
       expect(host.textContent).toContain("Allowed project");
       expect(host.textContent).toContain(
         locale === "en" ? "Saved findings are unavailable." : "目前無法讀取已儲存的比較結果",
@@ -115,7 +138,10 @@ describe("authorized read-only Home composition", () => {
   it.each(["en", "zh-TW"] as const)("shows one linked out-of-date line in %s", async (locale) => {
     boundary.intelligence.mockResolvedValue({ kind: "OUT_OF_DATE" });
     const host = render(
-      createElement(ValueLaunchpad, { locale, context: await loadDemoValueContext(locale) }),
+      createElement(HomeDeskScreen, {
+        locale,
+        outcome: { ...desk, findingsNotices: [{ project: projects[0]!, kind: "OUT_OF_DATE" }] },
+      }),
     );
     const line =
       locale === "en"
@@ -123,8 +149,7 @@ describe("authorized read-only Home composition", () => {
         : "已儲存的比較已過期，請開啟比較後重新執行。";
     expect(host.querySelector('a[href$="/compare"]')?.textContent).toBe(line);
     expect(host.textContent?.split(line)).toHaveLength(2);
-    expect(host.querySelector('[class*="findings"]')).toBeNull();
-    expect(host.querySelector('[class*="memory"]')).toBeNull();
+    expect(host.querySelector('[class*="projectCard"]')).toBeNull();
   });
 
   it("does not query project data without a session", async () => {
@@ -135,7 +160,7 @@ describe("authorized read-only Home composition", () => {
   });
 
   it.each(["en", "zh-TW"] as const)(
-    "renders one bounded composer and the current project in %s",
+    "renders one bounded composer and stage groups in %s",
     async (locale) => {
       const host = render(
         await Home({ params: Promise.resolve({ locale }), searchParams: Promise.resolve({}) }),
@@ -147,7 +172,7 @@ describe("authorized read-only Home composition", () => {
           ?.closest("form")
           ?.querySelectorAll('button[type="submit"]'),
       ).toHaveLength(1);
-      expect(host.textContent).toContain("Allowed project");
+      expect(host.textContent).toMatch(/Jobs by stage|各階段專案/);
       expect(host.querySelector('a[href*="/knowledge"]')).toBeNull();
       expect(host.querySelector('a[href*="/stridebrain"]')).toBeNull();
       expect(host.textContent).not.toMatch(/Planned assistance|規劃中的工作協助/);
@@ -156,12 +181,7 @@ describe("authorized read-only Home composition", () => {
   );
 
   it("renders a conversational StrideBrain surface instead of redirecting search controls", () => {
-    const host = render(
-      createElement(ValueLaunchpad, {
-        locale: "en",
-        context: { projects, workspace },
-      }),
-    );
+    const host = render(createElement(HomeDeskScreen, { locale: "en", outcome: desk }));
     expect(host.textContent).toContain("Ask StrideBrain");
     expect(host.querySelector('textarea[name="message"]')).not.toBeNull();
     expect(host.querySelector('input[name="q"]')).toBeNull();
@@ -169,10 +189,7 @@ describe("authorized read-only Home composition", () => {
 
   it("does not disclose fixture identity when no project is authorized", () => {
     const host = render(
-      createElement(ValueLaunchpad, {
-        locale: "en",
-        context: { projects: [], workspace: null },
-      }),
+      createElement(HomeDeskScreen, { locale: "en", outcome: { ...desk, projects: [] } }),
     );
     expect(host.textContent).not.toMatch(/Xinyi|Horizon|Mei|信義|禾序|Allowed/);
     expect(host.querySelector('a[href*="/projects/"]')).toBeNull();

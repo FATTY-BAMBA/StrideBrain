@@ -24,22 +24,31 @@ const ENV = {
 };
 function fixture(env: Record<string, string | undefined> = {}) {
   const records: ResolvedDemoSessionRecord[] = [];
-  const membership = {
+  const people = [
+    { key: "owner", suffix: "admin", role: "ORGANIZATION_ADMIN" },
+    { key: "project-manager", suffix: "mei", role: "PROJECT_MANAGER_ESTIMATOR" },
+    { key: "finance", suffix: "finance", role: "FINANCIAL_REVIEWER" },
+    { key: "viewer", suffix: "viewer", role: "VIEWER" },
+  ] as const;
+  const memberships = people.map((person) => ({
     organizationId: "org_horizon",
     organizationDataClassification: "DEMO_SYNTHETIC" as const,
-    membershipId: "membership_horizon_mei",
+    membershipId: `membership_horizon_${person.suffix}`,
     membershipActive: true,
-    personId: "person_horizon_mei",
+    personId: `person_horizon_${person.suffix}`,
     personActive: true,
-  };
+    role: person.role,
+  }));
+  const membership = memberships[1]!;
   const repository: DemoSessionRepositoryPort = {
-    getIssuableMembership: vi.fn().mockResolvedValue(membership),
+    getIssuableMembership: vi.fn(
+      async (id) => memberships.find((item) => item.membershipId === id) ?? null,
+    ),
     createSession: vi.fn(async (record) => {
       records.push({
         ...record,
-        ...membership,
+        ...memberships.find((item) => item.membershipId === record.membershipId)!,
         organizationPrimaryLocale: "zh-TW",
-        role: "PROJECT_MANAGER_ESTIMATOR",
         revokedAt: null,
         grants: [],
         assignments: [],
@@ -59,7 +68,7 @@ function fixture(env: Record<string, string | undefined> = {}) {
     membership,
     dependencies: {
       env: { ...ENV, ...env },
-      repository: () => repository,
+      repository: vi.fn(() => repository),
       signingSecret: () => SECRET,
       now: () => NOW,
       allowAttempt: createAttemptBudget(),
@@ -67,7 +76,7 @@ function fixture(env: Record<string, string | undefined> = {}) {
   };
 }
 function request(
-  body = `locale=en&invitation=${CODE}`,
+  body = `locale=en&person=project-manager&invitation=${CODE}`,
   options: { headers?: Record<string, string>; url?: string; method?: string } = {},
 ) {
   return new Request(options.url ?? `${ORIGIN}/api/preview-session`, {
@@ -93,12 +102,39 @@ async function denied(response: Response, locale = "en") {
 }
 
 describe("controlled Preview session handoff", () => {
+  it.each([
+    ["owner", "admin", "ORGANIZATION_ADMIN"],
+    ["project-manager", "mei", "PROJECT_MANAGER_ESTIMATOR"],
+    ["finance", "finance", "FINANCIAL_REVIEWER"],
+    ["viewer", "viewer", "VIEWER"],
+  ])("signs in %s with the exact server pair and current role", async (person, suffix, role) => {
+    const f = fixture();
+    const result = await handlePreviewSession(
+      request(`locale=en&person=${person}&invitation=${CODE}`),
+      "enter",
+      f.dependencies,
+    );
+    expect(result.headers.get("location")).toBe("/en");
+    expect(f.repository.getIssuableMembership).toHaveBeenCalledExactlyOnceWith(
+      `membership_horizon_${suffix}`,
+    );
+    const context = await new SignedDemoIdentityContext(f.repository, SECRET, () => NOW).resolve(
+      new Request(ORIGIN, { headers: { cookie: cookie(result) } }),
+    );
+    expect(context).toMatchObject({
+      organizationId: "org_horizon",
+      membershipId: `membership_horizon_${suffix}`,
+      userId: `person_horizon_${suffix}`,
+      role,
+    });
+  });
+
   it.each(["en", "zh-TW"])(
     "issues an existing trusted session and returns only to %s Home",
     async (locale) => {
       const f = fixture();
       const result = await handlePreviewSession(
-        request(`locale=${locale}&invitation=${CODE}`, {
+        request(`locale=${locale}&person=project-manager&invitation=${CODE}`, {
           headers: { "x-role": "ORGANIZATION_ADMIN", "x-organization-id": "org_northern" },
         }),
         "enter",
@@ -136,22 +172,48 @@ describe("controlled Preview session handoff", () => {
   );
 
   it.each([
-    ["invalid invitation", "locale=en&invitation=wrong"],
-    ["missing invitation", "locale=en"],
-    ["duplicate invitation", `locale=en&invitation=${CODE}&invitation=${CODE}`],
-    ["role selector", `locale=en&invitation=${CODE}&role=ORGANIZATION_ADMIN`],
-    ["organization selector", `locale=en&invitation=${CODE}&organizationId=org_northern`],
-    ["membership selector", `locale=en&invitation=${CODE}&membershipId=membership_horizon_admin`],
-    ["open redirect", `locale=en&invitation=${CODE}&returnTo=https://attacker.test`],
-    ["duplicate locale", `locale=en&locale=zh-TW&invitation=${CODE}`],
-    ["unsafe locale", `locale=//attacker.test&invitation=${CODE}`],
-    ["invalid human-readable format", "locale=en&invitation=STRIDEBRAIN2026-1-K7M4"],
-    ["lowercase pilot code", "locale=en&invitation=stridebrain2026-01-k7m4"],
-    ["oversized body", `locale=en&invitation=${"x".repeat(2048)}`],
+    ["unknown person", `locale=en&person=unknown&invitation=${CODE}`],
+    ["prototype name", `locale=en&person=constructor&invitation=${CODE}`],
+    ["raw membership", `locale=en&person=membership_horizon_admin&invitation=${CODE}`],
+    ["missing person", `locale=en&invitation=${CODE}`],
+    ["empty person", `locale=en&person=&invitation=${CODE}`],
+    ["repeated person", `locale=en&person=owner&person=owner&invitation=${CODE}`],
+    ["two people", `locale=en&person=owner&person=viewer&invitation=${CODE}`],
+    ["invalid invitation", "locale=en&person=project-manager&invitation=wrong"],
+    ["missing invitation", "locale=en&person=project-manager"],
+    [
+      "duplicate invitation",
+      `locale=en&person=project-manager&invitation=${CODE}&invitation=${CODE}`,
+    ],
+    [
+      "role selector",
+      `locale=en&person=project-manager&invitation=${CODE}&role=ORGANIZATION_ADMIN`,
+    ],
+    [
+      "organization selector",
+      `locale=en&person=project-manager&invitation=${CODE}&organizationId=org_northern`,
+    ],
+    [
+      "membership selector",
+      `locale=en&person=project-manager&invitation=${CODE}&membershipId=membership_horizon_admin`,
+    ],
+    [
+      "open redirect",
+      `locale=en&person=project-manager&invitation=${CODE}&returnTo=https://attacker.test`,
+    ],
+    ["duplicate locale", `locale=en&locale=zh-TW&person=project-manager&invitation=${CODE}`],
+    ["unsafe locale", `locale=//attacker.test&person=project-manager&invitation=${CODE}`],
+    [
+      "invalid human-readable format",
+      "locale=en&person=project-manager&invitation=STRIDEBRAIN2026-1-K7M4",
+    ],
+    ["lowercase pilot code", "locale=en&person=project-manager&invitation=stridebrain2026-01-k7m4"],
+    ["oversized body", `locale=en&person=project-manager&invitation=${"x".repeat(2048)}`],
   ])("denies %s without issuing a session", async (_, body) => {
     const f = fixture();
     await denied(await handlePreviewSession(request(body), "enter", f.dependencies));
     expect(f.repository.createSession).not.toHaveBeenCalled();
+    expect(f.dependencies.repository).not.toHaveBeenCalled();
   });
 
   it.each([
@@ -316,12 +378,20 @@ describe("controlled Preview session handoff", () => {
   it("bounds attempts in constant space and resets after a minute", async () => {
     const f = fixture();
     f.dependencies.allowAttempt = createAttemptBudget(2);
-    await handlePreviewSession(request("locale=en&invitation=bad"), "enter", f.dependencies);
-    await handlePreviewSession(request("locale=en&invitation=bad"), "enter", f.dependencies);
+    await handlePreviewSession(
+      request("locale=en&person=project-manager&invitation=bad"),
+      "enter",
+      f.dependencies,
+    );
+    await handlePreviewSession(
+      request("locale=en&person=project-manager&invitation=bad"),
+      "enter",
+      f.dependencies,
+    );
     await denied(await handlePreviewSession(request(), "enter", f.dependencies));
     await denied(
       await handlePreviewSession(
-        request(`locale=zh-TW&invitation=${CODE}`),
+        request(`locale=zh-TW&person=project-manager&invitation=${CODE}`),
         "enter",
         f.dependencies,
       ),
@@ -333,15 +403,45 @@ describe("controlled Preview session handoff", () => {
     ).toBe("/en");
   });
 
+  it("counts invalid person attempts and shares the budget across all four people", async () => {
+    const f = fixture();
+    f.dependencies.allowAttempt = createAttemptBudget(3);
+    for (const field of ["", "&person=unknown", "&person=owner&person=owner"]) {
+      await denied(
+        await handlePreviewSession(
+          request(`locale=en&invitation=${CODE}${field}`),
+          "enter",
+          f.dependencies,
+        ),
+      );
+    }
+    for (const person of ["owner", "project-manager", "finance", "viewer"]) {
+      await denied(
+        await handlePreviewSession(
+          request(`locale=en&person=${person}&invitation=${CODE}`),
+          "enter",
+          f.dependencies,
+        ),
+      );
+    }
+    expect(f.dependencies.repository).not.toHaveBeenCalled();
+  });
+
   it("does not reflect or log credentials or errors", async () => {
     const spies = [vi.spyOn(console, "log"), vi.spyOn(console, "error"), vi.spyOn(console, "warn")];
     const f = fixture();
     vi.mocked(f.repository.createSession).mockRejectedValue(
-      new Error(`${CODE} ${SECRET} database details`),
+      new Error(`${CODE} ${SECRET} project-manager database details`),
     );
     const result = await handlePreviewSession(request(), "enter", f.dependencies);
     const content = JSON.stringify([...result.headers]) + (await result.text());
-    for (const secret of [CODE, SECRET, ENV.STRIDEBRAIN_PREVIEW_INVITE_SHA256, "database details"])
+    for (const secret of [
+      CODE,
+      SECRET,
+      ENV.STRIDEBRAIN_PREVIEW_INVITE_SHA256,
+      "project-manager",
+      "database details",
+    ])
       expect(content).not.toContain(secret);
     spies.forEach((spy) => expect(spy).not.toHaveBeenCalled());
   });
@@ -367,7 +467,7 @@ describe("controlled Preview session handoff", () => {
     } as RequestInit);
     const pending = handlePreviewSession(input, "enter", f.dependencies);
     current = new Date(NOW.getTime() + 2_000);
-    enqueue!(new TextEncoder().encode(`locale=zh-TW&invitation=${CODE}`));
+    enqueue!(new TextEncoder().encode(`locale=zh-TW&person=project-manager&invitation=${CODE}`));
     await denied(await pending, "zh-TW");
     expect(f.repository.createSession).not.toHaveBeenCalled();
   });

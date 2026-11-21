@@ -31,6 +31,13 @@ export function PreviewEntry({
             autoCapitalize="none"
             spellCheck={false}
           />
+          <label htmlFor="person">{copy.person}</label>
+          <select id="person" name="person" required defaultValue="owner">
+            <option value="owner">{copy.owner}</option>
+            <option value="project-manager">{copy.projectManager}</option>
+            <option value="finance">{copy.finance}</option>
+            <option value="viewer">{copy.viewer}</option>
+          </select>
           <button type="submit">{copy.enter}</button>
         </form>
       ) : (

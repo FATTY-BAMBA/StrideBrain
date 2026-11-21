@@ -1,0 +1,27 @@
+{
+  "taskId": "SB-046",
+  "issueUrl": "https://github.com/FATTY-BAMBA/StrideBrain/issues/46",
+  "branch": "build/sb-046-home-desk",
+  "baseline": "adca968612ee22e5d91f9fba460912b463cf2ef2",
+  "state": "DRAFT_PR_WAITING_FOR_PRODUCT_DIRECTOR_TEST_SITE",
+  "deliverySequence": {
+    "A": "VERIFIED_LOCALLY",
+    "B": "VERIFIED_LOCALLY",
+    "C": "VERIFIED_LOCALLY_HOSTED_WAITING"
+  },
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "agentHostedActions": "PROHIBITED",
+  "verificationReport": "verification.md",
+  "verified": [
+    "Node 24 npm run check: 98 files / 1024 tests / zero skipped; build passes",
+    "Local PostgreSQL authorization, source freshness, fixed-decimal economics and evidence lineage",
+    "Local production Chrome: decisions, overflow, filters, bilingual findings and punctuation, account, language, sign-out, restricted/empty states, 390px layout",
+    "Review additions: exact largest-variance selection, remaining finding counts, four sample-person sign-ins and rejection/attempt-limit tests; 17 refreshed local Chrome screenshots"
+  ],
+  "notVerified": [
+    "Hosted acceptance: waiting for Product Director Test site workflow and clickthrough",
+    "Safari/Firefox, screen readers, cross-device preference, large-portfolio load testing",
+    "Production identity, real customer data and unbuilt workflows"
+  ],
+  "githubCi": "FINAL_RESULT_RECORDED_IN_PULL_REQUEST"
+}

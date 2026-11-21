@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { WorkspaceShell } from "@/components/shell/workspace-shell";
+import { loadWorkspaceAccount } from "@/lib/server/workspace-account";
 import { getServerEnvironment } from "@/lib/env/server-env";
 import { getCatalog } from "@/modules/localization/catalog";
 import { htmlLanguage, isSupportedLocale, supportedLocales } from "@/modules/localization/config";
@@ -55,11 +56,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   const locale = rawLocale;
   const catalog = getCatalog(locale);
+  const account = await loadWorkspaceAccount(locale);
 
   return (
     <html lang={htmlLanguage(locale)}>
       <body>
-        <WorkspaceShell locale={locale} catalog={catalog}>
+        <WorkspaceShell locale={locale} catalog={catalog} account={account}>
           {children}
         </WorkspaceShell>
       </body>
