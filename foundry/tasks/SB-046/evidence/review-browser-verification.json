@@ -66,5 +66,6 @@
     "sentence": "Imported stone and hard finishes: quoted price is 43.0% above past quoted prices.",
     "moreFindings": 10
   },
-  "status": "PASS"
+  "status": "PASS",
+  "localServerWarning": "Next.js internal redirect prefetch could not resolve sb046.test (ENOTFOUND); Chrome had the loopback hostname mapping and followed fallback redirects. All browser action assertions passed. Normal-DNS hosted acceptance is waiting for the Product Director."
 }
