@@ -1,0 +1,177 @@
+name: Test site
+
+# Puts one open pull request on the shared test site.
+#
+# 1. Applies the pull request's migrations to the synthetic test database.
+# 2. Loads the synthetic seed data when the database is empty or a reload is asked for.
+# 3. Moves the `test-site` branch to the pull request's commit. Vercel builds
+#    that branch at one fixed address.
+#
+# Only a person with write access can start it. Pull requests from forks are
+# refused. See docs/development/TEST_SITE.md.
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: Pull request number to put on the test site
+        required: true
+        type: number
+      data:
+        description: Test data
+        required: true
+        type: choice
+        default: keep
+        options:
+          - keep
+          - reload-seed
+
+permissions:
+  contents: read
+
+concurrency:
+  group: test-site
+  cancel-in-progress: false
+
+env:
+  NEXT_TELEMETRY_DISABLED: "1"
+
+jobs:
+  stage:
+    name: Put pull request on the test site
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - name: Resolve the pull request
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ inputs.pr }}
+        run: |
+          set -euo pipefail
+          json=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR}")
+          state=$(jq -r '.state' <<<"$json")
+          head_repo=$(jq -r '.head.repo.full_name' <<<"$json")
+          sha=$(jq -r '.head.sha' <<<"$json")
+          if [ "$state" != "open" ]; then
+            echo "Pull request #${PR} is not open."
+            exit 1
+          fi
+          if [ "$head_repo" != "$GITHUB_REPOSITORY" ]; then
+            echo "Pull requests from forks cannot use the test site."
+            exit 1
+          fi
+          echo "sha=${sha}" >> "$GITHUB_OUTPUT"
+
+      - name: Check out the pull request commit
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ steps.pr.outputs.sha }}
+          persist-credentials: false
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      # The seed deletes and reloads organization data. Refuse to run against
+      # anything except the one database named in TEST_SITE_SUPABASE_REF.
+      - name: Confirm the database is the test-site database
+        env:
+          TEST_SITE_DATABASE_URL: ${{ secrets.TEST_SITE_DATABASE_URL }}
+          EXPECTED_REF: ${{ vars.TEST_SITE_SUPABASE_REF }}
+        run: |
+          node --input-type=module -e '
+          const refuse = (why) => {
+            console.error(`${why} Nothing was changed.`);
+            process.exit(1);
+          };
+          const raw = process.env.TEST_SITE_DATABASE_URL ?? "";
+          const expected = process.env.EXPECTED_REF ?? "";
+          if (!raw) refuse("The TEST_SITE_DATABASE_URL secret is not set.");
+          if (!/^[a-z0-9]{20}$/.test(expected)) refuse("The TEST_SITE_SUPABASE_REF variable is not set.");
+          if (raw.includes("?")) refuse("TEST_SITE_DATABASE_URL must not contain query parameters.");
+          let url;
+          try {
+            url = new URL(raw);
+          } catch {
+            refuse("TEST_SITE_DATABASE_URL is not a valid connection string.");
+          }
+          const user = decodeURIComponent(url.username);
+          if (
+            !["postgres:", "postgresql:"].includes(url.protocol) ||
+            user !== `postgres.${expected}` ||
+            !url.hostname.endsWith(".pooler.supabase.com") ||
+            url.port !== "5432"
+          )
+            refuse("TEST_SITE_DATABASE_URL is not the session pooler string of the test-site database.");
+          '
+
+      - name: Apply migrations
+        env:
+          TEST_SITE_DATABASE_URL: ${{ secrets.TEST_SITE_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          export DATABASE_URL="${TEST_SITE_DATABASE_URL}?sslmode=require&sslaccept=accept_invalid_certs"
+          npm run db:migrate
+
+      - name: Check whether seed data is present
+        id: seed
+        env:
+          TEST_SITE_DATABASE_URL: ${{ secrets.TEST_SITE_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          export DATABASE_URL="${TEST_SITE_DATABASE_URL}?sslmode=require&uselibpqcompat=true"
+          node --input-type=module -e '
+          import { appendFileSync } from "node:fs";
+          import pg from "pg";
+          const client = new pg.Client({ connectionString: process.env.DATABASE_URL });
+          try {
+            await client.connect();
+            const result = await client.query(`select count(*)::int as n from "Organization"`);
+            appendFileSync(process.env.GITHUB_OUTPUT, `present=${result.rows[0].n > 0}\n`);
+          } catch {
+            console.error("Could not read the test-site database.");
+            process.exitCode = 1;
+          } finally {
+            await client.end().catch(() => {});
+          }
+          '
+
+      - name: Load synthetic seed data
+        if: inputs.data == 'reload-seed' || steps.seed.outputs.present == 'false'
+        env:
+          TEST_SITE_DATABASE_URL: ${{ secrets.TEST_SITE_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          export DATABASE_URL="${TEST_SITE_DATABASE_URL}?sslmode=require&sslaccept=accept_invalid_certs"
+          npm run db:seed
+          npm run db:verify
+
+      - name: Move the test-site branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHA: ${{ steps.pr.outputs.sha }}
+          PR: ${{ inputs.pr }}
+          SITE: ${{ vars.TEST_SITE_URL }}
+        run: |
+          set -euo pipefail
+          if gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/test-site" >/dev/null 2>&1; then
+            gh api --method PATCH "repos/${GITHUB_REPOSITORY}/git/refs/heads/test-site" \
+              -f sha="${SHA}" -F force=true >/dev/null
+          else
+            gh api --method POST "repos/${GITHUB_REPOSITORY}/git/refs" \
+              -f ref="refs/heads/test-site" -f sha="${SHA}" >/dev/null
+          fi
+          {
+            echo "Pull request #${PR} (\`${SHA}\`) is on the test site."
+            echo
+            echo "Vercel is building it now. Allow about three minutes, then open ${SITE:-the test site}."
+          } >> "$GITHUB_STEP_SUMMARY"
