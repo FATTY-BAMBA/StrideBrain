@@ -14,9 +14,9 @@ on:
   workflow_dispatch:
     inputs:
       pr:
-        description: Pull request number to put on the test site
-        required: true
-        type: number
+        description: Pull request number. Leave empty for the open pull request with the newest commit.
+        required: false
+        type: string
       data:
         description: Test data
         required: true
@@ -52,10 +52,32 @@ jobs:
           PR: ${{ inputs.pr }}
         run: |
           set -euo pipefail
+          if [ -z "${PR}" ]; then
+            # No number given: take the open pull request whose head commit is newest.
+            newest=""
+            newest_date=""
+            while read -r number sha; do
+              date=$(gh api "repos/${GITHUB_REPOSITORY}/commits/${sha}" --jq '.commit.committer.date')
+              if [[ "${date}" > "${newest_date}" ]]; then
+                newest_date="${date}"
+                newest="${number}"
+              fi
+            done < <(gh api "repos/${GITHUB_REPOSITORY}/pulls?state=open&per_page=50" \
+              --jq ".[] | select(.head.repo.full_name == \"${GITHUB_REPOSITORY}\") | \"\(.number) \(.head.sha)\"")
+            if [ -z "${newest}" ]; then
+              echo "There is no open pull request to put on the test site."
+              exit 1
+            fi
+            PR="${newest}"
+          elif ! [[ "${PR}" =~ ^[0-9]+$ ]]; then
+            echo "The pull request number must be digits only, for example 43."
+            exit 1
+          fi
           json=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR}")
           state=$(jq -r '.state' <<<"$json")
           head_repo=$(jq -r '.head.repo.full_name' <<<"$json")
           sha=$(jq -r '.head.sha' <<<"$json")
+          title=$(jq -r '.title' <<<"$json")
           if [ "$state" != "open" ]; then
             echo "Pull request #${PR} is not open."
             exit 1
@@ -64,7 +86,11 @@ jobs:
             echo "Pull requests from forks cannot use the test site."
             exit 1
           fi
-          echo "sha=${sha}" >> "$GITHUB_OUTPUT"
+          echo "Putting pull request #${PR} on the test site: ${title}"
+          {
+            echo "sha=${sha}"
+            echo "number=${PR}"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Check out the pull request commit
         uses: actions/checkout@v6
@@ -159,7 +185,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           SHA: ${{ steps.pr.outputs.sha }}
-          PR: ${{ inputs.pr }}
+          PR: ${{ steps.pr.outputs.number }}
           SITE: ${{ vars.TEST_SITE_URL }}
         run: |
           set -euo pipefail

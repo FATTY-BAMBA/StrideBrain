@@ -7,11 +7,11 @@ It is separate from the pilot preview (`stridebrain-sb034-preview`). That previe
 ## Put a pull request on the test site
 
 1. GitHub, **Actions**, **Test site**, **Run workflow**.
-2. Enter the pull request number.
+2. Enter the pull request number, or leave it empty to take the open pull request with the newest commit.
 3. Choose the data option:
    - `keep` leaves the test data as it is.
    - `reload-seed` deletes the test data and loads the synthetic seed again.
-4. When the run is green, wait about three minutes for Vercel to build, then open the test-site address and enter the invitation code.
+4. When the run is green, Vercel builds by itself. Wait about three minutes, then open the test-site address and enter the invitation code. The run's summary names the pull request it used.
 
 The workflow is `.github/workflows/test-site.yml`. It does three things, in order:
 
@@ -26,6 +26,7 @@ Only a person with write access to the repository can start it. Pull requests fr
 - Synthetic data only. No customer files and no customer data, ever.
 - One pull request at a time. The database is shared by whatever is on the test site.
 - Never point `TEST_SITE_DATABASE_URL` at another database. The seed deletes organization data. The workflow refuses to run unless the connection string belongs to the project named in `TEST_SITE_SUPABASE_REF`.
+- If the `test-site` branch is ever deleted, the first run recreates it and Vercel does not build. Run the workflow a second time.
 - Migrations are not undone. If a pull request with a migration is abandoned after it was put on the test site, reset the `public` schema of the test database by hand before testing the next one.
 
 ## One-time setup
