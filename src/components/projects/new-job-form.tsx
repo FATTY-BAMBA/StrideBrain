@@ -127,7 +127,13 @@ export function NewJobForm({
     );
   }
   return (
-    <form action={action} noValidate className={styles.form} aria-busy={pending}>
+    <form
+      action={action}
+      noValidate
+      className={styles.form}
+      aria-busy={pending}
+      onReset={(event) => event.preventDefault()}
+    >
       <input type="hidden" name="locale" value={locale} />
       <input type="hidden" name="idempotencyKey" value={idempotencyKey} />
       {Object.entries(JOB_FIXED_VALUES).map(([name, value]) => (

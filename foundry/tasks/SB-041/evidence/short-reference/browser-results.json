@@ -1,0 +1,30 @@
+{
+  "checks": [
+    "en: short reference present in server HTML, correct current UTC month and allowed suffix, editable; submitted reference persists unchanged and appears in Quote review",
+    "Edited reference collision retains the reference, subtype, all seven scope selections and existing client; shows the unchanged translated duplicate error; no duplicate project inserted; correcting the reference then creates successfully",
+    "zh-TW: short reference present in server HTML, correct current UTC month and allowed suffix, editable; submitted reference persists unchanged and appears in Quote review"
+  ],
+  "references": [
+    {
+      "locale": "en",
+      "serverRenderedReference": "J-2611-SN7Q"
+    },
+    {
+      "locale": "zh-TW",
+      "serverRenderedReference": "J-2611-MAWW"
+    }
+  ],
+  "screens": [
+    "en-default-reference.png",
+    "zh-TW-default-reference.png",
+    "zh-TW-duplicate-reference.png"
+  ],
+  "pageErrors": [],
+  "consoleErrors": [
+    {
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://localhost:3041/favicon.ico"
+    }
+  ],
+  "status": "PASS"
+}

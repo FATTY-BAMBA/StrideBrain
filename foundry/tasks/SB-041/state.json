@@ -9,14 +9,15 @@
     "C": "VERIFIED_LOCALLY"
   },
   "verified": [
-    "Node 24 npm run check: 83 test files, 887 tests passed, 0 skipped; production build passed",
+    "Node 24 npm run check: 84 test files, 897 tests passed, 0 skipped; production build passed",
     "Isolated PostgreSQL migrations, synthetic fixture SQL invariants and populated-migration preservation",
     "Feature data-mode gates removed; capability checks and context classification preserved; central environment gate unchanged",
     "COMPLETE rejected in domain, direct action and adapter; no dropdown option or completed-job stage controls",
     "Sequential/concurrent matching create retries return original success; changed input conflicts; no duplicate rows",
     "Fixed hidden values, editable generated reference, tenant client selector and server-derived commercial categories",
-    "English desktop and Traditional Chinese mobile Chrome creation, validation, comparison, stage changes and actual request retries/denials",
-    "Client listing and writes enforce Viewer and organization boundaries; temporary browser sessions revoked"
+    "Prior revision 7661541: English desktop and Traditional Chinese mobile Chrome creation, validation, comparison, stage changes and actual request retries/denials",
+    "Client listing and writes enforce Viewer and organization boundaries; temporary browser sessions revoked",
+    "Short-reference follow-up: server UTC YYMM, all allowed suffix characters, rollover tests, editable defaults, Chrome creation/collision/correction, retained selections and cleanup"
   ],
   "notVerified": [
     "Hosted preview acceptance on this revision",
@@ -35,5 +36,6 @@
     "reason": "Existing project builds only preview commit 50cebbf93ce56d11bb823a8d97a8a1ce91ffda39; SB-041 is not permitted by that pin.",
     "configurationChanged": false
   },
-  "revisionEvidence": "evidence/revision/"
+  "revisionEvidence": "evidence/short-reference/",
+  "priorRevisionEvidence": "evidence/revision/"
 }

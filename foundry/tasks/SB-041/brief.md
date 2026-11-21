@@ -10,3 +10,5 @@ Create a reviewed commercial retail job in QUOTE_REVIEW with complete comparison
 Out of scope: residential types, model calls, job deletion, field editing, quotes, financial reconciliation, real tenant data and deployment cutover.
 
 PR #43 revision: remove feature data-mode gates, make matching create retries return original success, and simplify intake to fixed hidden class/unit/currency, generated editable reference, existing-client selection and one scope list with derived commercial categories.
+
+Reference refinement: server-generated defaults use `J-<YYMM>-<4 characters>` (UTC month) with no 0/O/1/I/L in the random suffix. Editing and duplicate handling remain unchanged.

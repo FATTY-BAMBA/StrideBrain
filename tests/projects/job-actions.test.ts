@@ -67,7 +67,9 @@ describe("Create job screen and direct server action", () => {
         expect(html).toContain(`type="hidden" name="${key}"`);
         expect(html).not.toContain(`<select id="${key}"`);
       }
-      expect(html).toContain('value="PRJ-');
+      const referenceInput = html.match(/<input[^>]*name="businessKey"[^>]*>/)?.[0];
+      expect(referenceInput).toMatch(/value="J-\d{4}-[23456789ABCDEFGHJKMNPQRSTUVWXYZ]{4}"/);
+      expect(referenceInput).not.toMatch(/readOnly|disabled/i);
       expect(html).toContain('<select id="clientBusinessKey"');
       expect(html).toContain("Aster Retail Taiwan (CLIENT-01)");
       expect(html).toContain('for="businessKey"');
@@ -156,6 +158,19 @@ describe("Create job screen and direct server action", () => {
       message: "validation",
       errors: { [field!]: code },
     });
+    expect(mocks.redirect).not.toHaveBeenCalled();
+  });
+  it("preserves an edited short reference and the existing collision error", async () => {
+    const createWithAudit = vi.fn().mockResolvedValue({ kind: "DUPLICATE" });
+    mocks.create.mockImplementation((context, input) =>
+      new CreateProject({ createWithAudit, updateStageWithAudit: vi.fn() }).execute(context, input),
+    );
+    const input = { ...jobInput(), businessKey: "J-2611-A7K3" };
+    expect(await createProjectAction({}, form("en", input))).toEqual({
+      message: "validation",
+      errors: { businessKey: "duplicate" },
+    });
+    expect(createWithAudit.mock.calls[0]![1].businessKey).toBe("J-2611-A7K3");
     expect(mocks.redirect).not.toHaveBeenCalled();
   });
   it("surfaces changed-input retries as a conflict", async () => {

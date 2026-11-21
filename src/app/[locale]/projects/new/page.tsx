@@ -4,6 +4,7 @@ import { FoundationPage } from "@/components/ui/foundation-page";
 import { NewJobForm } from "@/components/projects/new-job-form";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
 import { createProjectWriteServices } from "@/lib/server/project-write-services";
+import { generateJobReference } from "@/lib/server/job-reference";
 import { isSupportedLocale } from "@/modules/localization/config";
 import { jobsCopy } from "@/modules/localization/jobs";
 
@@ -29,7 +30,7 @@ export default async function NewProjectPage({ params }: { params: Promise<{ loc
         <NewJobForm
           locale={locale}
           idempotencyKey={randomUUID()}
-          businessKey={`PRJ-${randomUUID()}`}
+          businessKey={generateJobReference()}
           clients={clients.clients}
         />
       ) : (

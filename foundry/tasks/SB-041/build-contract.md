@@ -18,7 +18,7 @@
 ## B — Creation experience
 
 - Server page and server action both enforce authorization from the signed runtime context.
-- Generate an editable job reference. Submit job class, area unit and currency as fixed hidden values; show area units and currency as context. Use one scope checkbox list and an existing-client dropdown, with separate new-client inputs.
+- Generate an editable job reference on the server as J-<YYMM>-<4 characters>, using the UTC year/month and Node crypto randomInt with alphabet 23456789ABCDEFGHJKMNPQRSTUVWXYZ (no 0, O, 1, I or L). It is a suggestion; retain the existing tenant-scoped duplicate-reference error and user correction flow. Submit job class, area unit and currency as fixed hidden values; show area units and currency as context. Use one scope checkbox list and an existing-client dropdown, with separate new-client inputs.
 - Accessible labeled controls, bilingual field errors, visible failure, pending state and preserved input on validation failure.
 - Framework server-action origin protection; no browser-supplied organization, actor, role or grants.
 

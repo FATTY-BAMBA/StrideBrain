@@ -1,0 +1,29 @@
+{
+  "checks": [
+    "en: short reference present in server HTML, correct current UTC month and allowed suffix, editable; submitted reference persists unchanged and appears in Quote review"
+  ],
+  "references": [
+    {
+      "locale": "en",
+      "serverRenderedReference": "J-2611-67UY"
+    },
+    {
+      "locale": "zh-TW",
+      "serverRenderedReference": "J-2611-ATVD"
+    }
+  ],
+  "screens": [
+    "en-default-reference.png",
+    "zh-TW-default-reference.png",
+    "failure.png"
+  ],
+  "pageErrors": [],
+  "consoleErrors": [
+    {
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://localhost:3041/favicon.ico"
+    }
+  ],
+  "status": "FAIL",
+  "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ ''\n- 'RETAIL_FLAGSHIP'\n"
+}
