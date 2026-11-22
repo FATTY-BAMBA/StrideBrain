@@ -40,8 +40,8 @@ describe("assistant grounding", () => {
       "NT$3,733,001",
       "-43%",
       "2026-11-23",
-      "five findings",
-      "五項紀錄",
+      "six findings",
+      "六項紀錄",
       "twenty findings",
       "−43%",
     ])
@@ -61,8 +61,8 @@ describe("assistant grounding", () => {
     ).toBeNull();
   });
   it("bounds English and Chinese words, follow-ups and generated links", () => {
-    expect(verifyAnswer(answer("word ".repeat(121)), [source], "en")).toBeNull();
-    expect(verifyAnswer(answer("價格 ".repeat(121)), [source], "zh-TW")).toBeNull();
+    expect(verifyAnswer(answer("word ".repeat(241)), [source], "en")).toBeNull();
+    expect(verifyAnswer(answer("價格 ".repeat(241)), [source], "zh-TW")).toBeNull();
     expect(
       verifyAnswer(answer("5 findings", ["s"], ["A?", "B?", "C?", "D?"]), [source], "en"),
     ).toBeNull();

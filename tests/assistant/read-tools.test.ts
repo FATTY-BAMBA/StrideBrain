@@ -4,6 +4,7 @@ import {
   type AssistantReadServices,
 } from "@/modules/assistant/application/read-tools";
 import { jobContext } from "../projects/job-fixture";
+import { checkAnswer } from "@/modules/assistant/domain/grounding";
 import { roleBundle } from "@/modules/runtime-context/capabilities";
 const project = {
   businessKey: "J",
@@ -37,6 +38,35 @@ describe("assistant read tools", () => {
       expect((await f.tools.execute(c, { name: "list_jobs", arguments: args })).status).toBe(
         "UNAVAILABLE",
       );
+  });
+  it("links row citations to their own list result's count, including overlapping results", async () => {
+    const f = setup();
+    f.services.projects.execute.mockResolvedValue({
+      kind: "AVAILABLE",
+      projects: [project, { ...project, businessKey: "K", name: "Another job" }],
+    });
+    const all = await f.tools.execute(jobContext(), { name: "list_jobs", arguments: {} });
+    const filtered = await f.tools.execute(jobContext(), {
+      name: "list_jobs",
+      arguments: { query: "Synthetic" },
+    });
+    const row = filtered.sources[0]!;
+    const count = filtered.sources.find((s) => s.sourceId === row.countSourceId)!;
+    expect(count.facts.count).toBe(1);
+    expect(row.sourceId).not.toBe(all.sources[0]!.sourceId);
+    const ledger = [...all.sources, ...filtered.sources];
+    const raw = (text: string) => ({ text, sourceIds: [row.sourceId], followUps: [] });
+    expect(checkAnswer(raw("1 job"), ledger, "en")).toMatchObject({
+      kind: "ACCEPTED",
+      answer: { sourceIds: [row.sourceId, count.sourceId] },
+    });
+    expect(checkAnswer(raw("one job"), ledger, "en").kind).toBe("ACCEPTED");
+    expect(checkAnswer(raw("一個專案"), ledger, "zh-TW").kind).toBe("ACCEPTED");
+    for (const text of ["2 jobs", "two jobs", "兩個專案"])
+      expect(checkAnswer(raw(text), ledger, "en")).toEqual({
+        kind: "REJECTED",
+        reason: "UNSUPPORTED_NUMBER",
+      });
   });
   it("resolves a Chinese job name in an English question without widening access", async () => {
     const f = setup();

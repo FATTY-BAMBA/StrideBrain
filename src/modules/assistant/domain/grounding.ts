@@ -67,9 +67,90 @@ export function normalizeDates(text: string): string {
         ),
     );
 }
+const simpleEnglishNumbers = [
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+  "ten",
+  "eleven",
+  "twelve",
+];
+const simpleChineseNumbers: Record<string, string> = {
+  一: "1",
+  二: "2",
+  兩: "2",
+  三: "3",
+  四: "4",
+  五: "5",
+  六: "6",
+  七: "7",
+  八: "8",
+  九: "9",
+  十: "10",
+};
+function normalizeSimpleNumberWords(text: string): string {
+  return text
+    .replace(/\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\b/gi, (word) =>
+      String(simpleEnglishNumbers.indexOf(word.toLowerCase()) + 1),
+    )
+    .replace(
+      /[零〇一二兩三四五六七八九十百千萬億]+(?=\s*(?:個|項|筆|元|天|日|年|月|%|％|件|家|份|位|座|專案|工作))/g,
+      (word) => simpleChineseNumbers[word] ?? word,
+    )
+    .replace(
+      /(?<![\p{L}\p{N}])[一二兩三四五六七八九十](?![\p{L}\p{N}])/gu,
+      (word) => simpleChineseNumbers[word]!,
+    );
+}
+/** References are exact authorized identities, not quantities or arbitrary numeric substrings. */
+export function sourceReferences(
+  sources: readonly AssistantSource[],
+  authorized: readonly string[] = [],
+): string[] {
+  const values = [...authorized, ...sources.flatMap((s) => s.projectKeys)];
+  const walk = (value: unknown, paths: readonly string[], path = ""): void => {
+    if (
+      typeof value === "string" &&
+      paths.includes(path) &&
+      /(?:^|\.)(?:reference|documentNumber)$/.test(path)
+    )
+      values.push(value);
+    else if (Array.isArray(value)) value.forEach((v) => walk(v, paths, `${path}.*`));
+    else if (value && typeof value === "object")
+      Object.entries(value).forEach(([k, v]) => walk(v, paths, path ? `${path}.${k}` : k));
+  };
+  sources.forEach((s) => walk(s.facts, s.typedFactPaths ?? []));
+  return [...new Set(values.filter(Boolean))];
+}
+function withoutReferences(text: string, references: readonly string[]): string {
+  if (!references.length) return text;
+  const escaped = [...references]
+    .sort((a, b) => b.length - a.length)
+    .map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  return text.replace(
+    new RegExp(`(?<![A-Za-z0-9_/-])(?:${escaped.join("|")})(?![A-Za-z0-9_/-])`, "g"),
+    " ",
+  );
+}
+/** A row's count dependency is supplied by the server, never inferred from model text. */
+export function citedSources(
+  sources: readonly AssistantSource[],
+  sourceIds: readonly string[],
+): AssistantSource[] {
+  const ids = new Set(sourceIds);
+  for (const source of sources)
+    if (ids.has(source.sourceId) && source.countSourceId) ids.add(source.countSourceId);
+  return sources.filter((s) => ids.has(s.sourceId));
+}
 export function numericTokens(text: string): readonly string[] {
   return (
-    normalizeDates(text)
+    normalizeSimpleNumberWords(normalizeDates(text))
       .replaceAll("−", "-")
       .match(/(?:INVALID_DATE_)?\d{4}-\d{2}-\d{2}|[+-]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?%?/g) ??
     []
@@ -112,7 +193,7 @@ export function parseAnswer(raw: unknown, locale: Locale): StructuredAnswer | nu
     (s) => s.isWordLike,
   ).length;
   if (
-    words > 120 ||
+    words > 240 ||
     sourceIds.some((id) => typeof id !== "string" || id.length > 80) ||
     followUps.some((f) => typeof f !== "string" || f.length > 160 || !f.trim())
   )
@@ -138,18 +219,35 @@ export function answerSchemaReason(raw: unknown, locale: Locale): AnswerRejectio
   return typeof text === "string" &&
     [...new Intl.Segmenter(locale, { granularity: "word" }).segment(text)].filter(
       (s) => s.isWordLike,
-    ).length > 120
+    ).length > 240
     ? "WORD_LIMIT"
     : "ANSWER_SCHEMA";
 }
-export function hasUnsupportedNumbers(text: string, sources: readonly AssistantSource[]): boolean {
-  const ledger = new Set(numericTokens(sources.map((s) => factText(s.facts)).join(" ")));
-  return numericTokens(text).some((n) => !ledger.has(n));
+export function unsupportedNumericTokens(
+  text: string,
+  sources: readonly AssistantSource[],
+  authorizedReferences: readonly string[] = [],
+): string[] {
+  const references = sourceReferences(sources, authorizedReferences);
+  const ledger = new Set(
+    numericTokens(withoutReferences(sources.map((s) => factText(s.facts)).join(" "), references)),
+  );
+  return [
+    ...new Set(numericTokens(withoutReferences(text, references)).filter((n) => !ledger.has(n))),
+  ];
+}
+export function hasUnsupportedNumbers(
+  text: string,
+  sources: readonly AssistantSource[],
+  authorizedReferences: readonly string[] = [],
+): boolean {
+  return unsupportedNumericTokens(text, sources, authorizedReferences).length > 0;
 }
 export function checkAnswer(
   raw: unknown,
   sources: readonly AssistantSource[],
   locale: Locale,
+  authorizedReferences: readonly string[] = [],
 ): AnswerCheck {
   const parsed = parseAnswer(raw, locale);
   if (!parsed) return { kind: "REJECTED", reason: answerSchemaReason(raw, locale) };
@@ -157,25 +255,22 @@ export function checkAnswer(
   if (sourceIds.some((id) => !sources.some((s) => s.sourceId === id)))
     return { kind: "REJECTED", reason: "UNKNOWN_SOURCE" };
   if (!sourceIds.length) return { kind: "REJECTED", reason: "NO_SOURCES" };
-  // Require digits for quantities: prose number words cannot bypass the numeric ledger.
   const output = [text, ...followUps].join(" ");
+  const references = sourceReferences(sources, authorizedReferences);
+  const quantities = normalizeSimpleNumberWords(withoutReferences(output, references));
+  // Simple words use the same numeric ledger; unsupported compound/large words still fail.
   if (
-    /\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|billion|trillion|dozen|half|quarter|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\b/i.test(
-      output,
+    /\b(?:zero|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|billion|trillion|dozen|half|quarter|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\b/i.test(
+      quantities,
     ) ||
     /[零〇一二兩三四五六七八九十百千萬億壹貳參肆伍陸柒捌玖拾佰仟]+(?:個|項|筆|元|天|日|年|月|%|％)|百分之[零〇一二三四五六七八九十百千萬億]/.test(
-      output,
+      quantities,
     )
   )
     return { kind: "REJECTED", reason: "NUMBER_WORD" };
-  if (
-    hasUnsupportedNumbers(
-      output,
-      sources.filter((s) => sourceIds.includes(s.sourceId)),
-    )
-  )
+  const cited = citedSources(sources, sourceIds);
+  if (hasUnsupportedNumbers(output, cited, references))
     return { kind: "REJECTED", reason: "UNSUPPORTED_NUMBER" };
-  const cited = sources.filter((s) => sourceIds.includes(s.sourceId));
   // Percent findings retain the shared Home/comparison/chat sentence verbatim.
   const findings = cited
     .flatMap((s) => (Array.isArray(s.facts.findings) ? s.facts.findings : []))
@@ -218,7 +313,7 @@ export function checkAnswer(
     kind: "ACCEPTED",
     answer: {
       text: text.trim(),
-      sourceIds: [...new Set(sourceIds as string[])],
+      sourceIds: cited.map((s) => s.sourceId),
       followUps: followUps as string[],
     },
   };

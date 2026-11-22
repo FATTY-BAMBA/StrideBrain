@@ -86,7 +86,11 @@ describe("review regressions", () => {
         raw,
         [source],
       ),
-    ).toEqual({ verdict: "grounded and correct", wrongNumber: false });
+    ).toMatchObject({
+      verdict: "grounded and correct",
+      wrongNumber: false,
+      draftWrongNumber: false,
+    });
   });
   it.each(["2026 年 12 月 23 日", "2026/12/23", "December 23, 2026", "2026-02-30"])(
     "rejects different or invalid date %s",
@@ -101,16 +105,16 @@ describe("review regressions", () => {
       } as unknown as EvaluationQuestion;
       expect(
         evaluateAnswer(q, { kind: "FALLBACK", reason: "UNGROUNDED" }, [], raw, [source])
-          .wrongNumber,
+          .draftWrongNumber,
       ).toBe(true);
     },
   );
   it("names the rule for schema, citation, number-word, number and markup rejections", () => {
     for (const [raw, reason] of [
       [{}, "ANSWER_SCHEMA"],
-      [answer("word ".repeat(121)), "WORD_LIMIT"],
+      [answer("word ".repeat(241)), "WORD_LIMIT"],
       [{ ...answer("x"), sourceIds: ["foreign"] }, "UNKNOWN_SOURCE"],
-      [answer("five findings"), "NUMBER_WORD"],
+      [answer("twenty findings"), "NUMBER_WORD"],
       [answer("99"), "UNSUPPORTED_NUMBER"],
       [answer("<b>hello</b>"), "GENERATED_LINK_OR_HTML"],
     ] as const) {

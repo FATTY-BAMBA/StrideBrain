@@ -25,6 +25,8 @@ export type AssistantSource = Readonly<{
   projectKeys: readonly string[];
   /** Server-produced paths exempt from free-text redaction; never sent to the model. */
   typedFactPaths?: readonly string[];
+  /** Server-only citation dependency for a row of one specific list result. */
+  countSourceId?: string;
 }>;
 export type ToolResult = Readonly<{
   status: "OK" | "NO_RECORDS" | "UNAVAILABLE" | "EXCLUDED" | "OUT_OF_DATE";

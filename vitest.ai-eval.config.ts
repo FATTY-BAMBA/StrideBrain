@@ -1,8 +1,11 @@
-import { defineConfig, mergeConfig } from "vitest/config";
+import { defineConfig } from "vitest/config";
 import base from "./vitest.config";
-export default mergeConfig(
-  base,
-  defineConfig({
-    test: { include: ["tests/assistant/provider-evaluation.runner.ts"], fileParallelism: false },
-  }),
-);
+// mergeConfig concatenates include arrays, which would also run the ordinary suite.
+export default defineConfig({
+  ...base,
+  test: {
+    ...base.test,
+    include: ["tests/assistant/provider-evaluation.runner.ts"],
+    fileParallelism: false,
+  },
+});

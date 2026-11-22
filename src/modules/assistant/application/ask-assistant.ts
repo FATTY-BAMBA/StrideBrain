@@ -205,7 +205,7 @@ export class AskAssistant {
                   : "NO_RECORDS";
             return await refusal(state);
           }
-          const checked = checkAnswer(raw, sources, locale);
+          const checked = checkAnswer(raw, sources, locale, references);
           if (checked.kind === "REJECTED") return await fallback("UNGROUNDED", checked.reason);
           const answer = checked.answer;
           const preserved = [

@@ -15,11 +15,17 @@ describe("evaluation contract", () => {
       questions.every((q) => q.expected.kind === "DECLINE" || q.expected.facts.length > 0),
     ).toBe(true);
   });
-  it("fails a wrong number even when the application fell back", () => {
+  it("reports a discarded wrong number separately from displayed output", () => {
     const q = questions[0] as EvaluationQuestion;
     expect(
       evaluateAnswer(q, { kind: "FALLBACK", reason: "UNGROUNDED" }, [], { text: "$999" }, []),
-    ).toEqual({ verdict: "wrong", wrongNumber: true });
+    ).toMatchObject({
+      verdict: "wrong",
+      wrongNumber: false,
+      draftWrongNumber: true,
+      draftUnsupportedTokens: ["999"],
+      rawAnswerText: "$999",
+    });
   });
 });
 (process.env.DATABASE_URL ? it : it.skip)(

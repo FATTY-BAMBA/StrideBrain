@@ -142,6 +142,16 @@ export class AssistantReadTools {
     });
     const finish = (sources: AssistantSource[]): ToolResult =>
       sources.length ? { status: "OK", sources } : empty("NO_RECORDS");
+    const finishList = (rows: AssistantSource[], count: AssistantSource): ToolResult =>
+      finish([
+        ...rows.map((row) => ({
+          ...row,
+          // The same job in two different list results has a different count dependency.
+          sourceId: `src_${createHash("sha256").update(`${row.sourceId}:${count.sourceId}`).digest("hex").slice(0, 24)}`,
+          countSourceId: count.sourceId,
+        })),
+        count,
+      ]);
     const list = async () => {
       const result = await this.services.projects.execute(c);
       return result.kind === "AVAILABLE" ? result.projects : null;
@@ -195,9 +205,10 @@ export class AssistantReadTools {
         ),
       );
       if (sources.length)
-        sources.push(
+        return finishList(
+          sources,
           source(
-            "page",
+            `page:${sources.map((s) => s.sourceId).join(":")}`,
             c.locale === "zh-TW" ? "專案" : "Jobs",
             `/${c.locale}/projects`,
             {
@@ -329,9 +340,10 @@ export class AssistantReadTools {
         }
       }
       if (sources.length)
-        sources.push(
+        return finishList(
+          sources,
           source(
-            "count",
+            `count:${sources.map((s) => s.sourceId).join(":")}`,
             c.locale === "zh-TW" ? "紀錄" : "Records",
             `/${c.locale}`,
             { count: sources.length },

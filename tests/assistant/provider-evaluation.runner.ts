@@ -6,7 +6,7 @@ import questions from "./questions.json";
 import { assistantDatabase } from "./database-fixture";
 import { prepareEvaluation } from "./evaluation-fixture";
 import { runEvaluationQuestion } from "./run-evaluation";
-import type { EvaluationQuestion } from "./evaluation";
+import { evaluationLogRow, type EvaluationQuestion } from "./evaluation";
 import { assistantConfig } from "@/modules/assistant/infrastructure/config";
 import { GeminiAssistantModel } from "@/modules/assistant/infrastructure/gemini-model";
 it("evaluates the explicitly configured paid provider on disposable seed data", async () => {
@@ -25,7 +25,7 @@ it("evaluates the explicitly configured paid provider on disposable seed data", 
     for (const question of questions as EvaluationQuestion[]) {
       const row = await runEvaluationQuestion(db, question, config, model);
       rows.push(row);
-      console.log(JSON.stringify(row)); // Synthetic case id and metadata only; no prompts/answers.
+      console.log(JSON.stringify(evaluationLogRow(row))); // Synthetic case id and metadata only; no prompts/answers.
     }
   } finally {
     await db.close();

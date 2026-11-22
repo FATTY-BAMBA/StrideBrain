@@ -65,6 +65,27 @@ describe("bounded read-only assistant", () => {
     });
     expect(JSON.stringify(f.repo.reserveCall.mock.calls)).not.toContain("How many");
   });
+  it("expands list citations at the application boundary and keeps the model's 120-word instruction", async () => {
+    const f = setup([call, answer("one job")]);
+    f.tools.execute.mockResolvedValue({
+      status: "OK",
+      sources: [
+        { ...source, facts: { name: "Job" }, countSourceId: "count" },
+        { ...source, sourceId: "count", facts: { count: 1 } },
+      ],
+    });
+    const out = await f.service.execute(jobContext(), { question: "How many jobs?" });
+    expect(out).toMatchObject({ kind: "ANSWER", answer: { sourceIds: ["s", "count"] } });
+    expect(f.model.requests[0]?.instructions).toContain("At most 120 words.");
+    expect(f.model.requests[1]?.messages[1]?.text).not.toContain("countSourceId");
+  });
+  it("passes authorized question-only references to grounding without treating them as amounts", async () => {
+    const f = setup([call, answer("QUESTION-009: 5 jobs")]);
+    f.repo.readableReferences.mockResolvedValue(["QUESTION-009"]);
+    expect(
+      await f.service.execute(jobContext(), { question: "What is linked to QUESTION-009?" }),
+    ).toMatchObject({ kind: "ANSWER" });
+  });
   it("uses no model and no usage row when disabled or no key", async () => {
     for (const [enabled, model] of [
       [false, new FakeAssistantModel([])],

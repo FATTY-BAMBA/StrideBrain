@@ -1,3 +1,4 @@
+import { referenceCandidates } from "@/modules/assistant/domain/redaction";
 import { randomUUID } from "node:crypto";
 import { AskAssistant } from "@/modules/assistant/application/ask-assistant";
 import type {
@@ -74,8 +75,12 @@ export async function runEvaluationQuestion(
       services.repository,
       tools,
     ).execute(c, { question: question.question });
-  const latencyMs = Math.round(performance.now() - started),
-    judgement = evaluateAnswer(question, outcome, facts, rawAnswer, ledger);
+  const latencyMs = Math.round(performance.now() - started);
+  const references = await services.repository.readableReferences(
+    c,
+    referenceCandidates([question.question]),
+  );
+  const judgement = evaluateAnswer(question, outcome, facts, rawAnswer, ledger, references);
   const usage = await getPrismaClient().assistantUsage.aggregate({
     where: { organizationId: c.organizationId, requestId: c.requestId },
     _sum: { inputTokens: true, outputTokens: true, estimatedUsd: true },
