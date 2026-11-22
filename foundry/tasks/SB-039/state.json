@@ -4,47 +4,47 @@
   "status": "LOCAL_VERIFIED",
   "delivery": "C",
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
-  "providerEvaluation": "HOSTED_REVIEW_IDENTITY_CORRECTION_RERUN_PENDING",
+  "providerEvaluation": "HOSTED_REVIEW_SENT_CONTEXT_EVALUATOR_RERUN_PENDING",
   "model": "gemini-3.5-flash-lite",
   "pullRequest": 56,
   "pullRequestState": "DRAFT",
   "workflowPullRequest": 57,
   "review": "HOSTED_REVIEW_FIXES_LOCAL_VERIFIED",
-  "providerEvaluationRun": 45067451203,
+  "providerEvaluationRun": 45068714766,
   "workflowPullRequestState": "MERGED",
   "localTests": {
-    "passed": 1304,
+    "passed": 1305,
     "files": 125
   },
   "findingExpansion": "CASE_INSENSITIVE_CITED_CATEGORY_AND_TYPED_KIND_THEN_UNIQUE_PERCENTAGE",
   "providerEvaluationRounds": [
     {
-      "en": 19,
+      "en": 20,
       "zh-TW": 18
     },
     {
-      "en": 19,
-      "zh-TW": 18
+      "en": 20,
+      "zh-TW": 19
     },
     {
-      "en": 19,
-      "zh-TW": 17
+      "en": 20,
+      "zh-TW": 18
     }
   ],
-  "providerEvaluationCommit": "ffdc783725965d5f44dfc4422d667b9535c881f3",
-  "displayedWrongNumbers": 0,
-  "questionsPassingAllRounds": 42,
+  "providerEvaluationCommit": "acc108dd16921ae32061f0d7e68f93cd991c17b2",
+  "displayedWrongNumbers": 1,
+  "questionsPassingAllRounds": 45,
   "providerEvaluationHostedRegressions": [
     {
-      "passed": 6,
+      "passed": 8,
       "total": 8
     },
     {
-      "passed": 6,
+      "passed": 8,
       "total": 8
     },
     {
-      "passed": 6,
+      "passed": 7,
       "total": 8
     }
   ]

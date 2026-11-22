@@ -31,27 +31,27 @@ All matched files use Prettier code style!
 
 
  Test Files  125 passed (125)
-      Tests  1304 passed (1304)
-   Start at  04:48:04
-   Duration  110.65s (transform 1.97s, setup 0ms, import 5.99s, tests 201.07s, environment 4.29s)
+      Tests  1305 passed (1305)
+   Start at  04:57:11
+   Duration  111.18s (transform 1.97s, setup 0ms, import 5.94s, tests 202.49s, environment 4.28s)
 
 
 > stridebrain@0.1.0 build
 > next build
 
 ▲ Next.js 16.4.6 (Turbopack)
-✓ Running next.config.ts took 64ms
+✓ Running next.config.ts took 62ms
 
   Creating an optimized production build ...
-✓ Compiled successfully in 455ms
+✓ Compiled successfully in 399ms
   Running TypeScript ...
-  Finished TypeScript in 2.5s ...
+  Finished TypeScript in 1736ms ...
   Collecting page data using 9 workers ...
   Generating static pages using 9 workers (0/25) ...
   Generating static pages using 9 workers (6/25)
   Generating static pages using 9 workers (12/25)
   Generating static pages using 9 workers (18/25)
-✓ Generating static pages using 9 workers (25/25) in 189ms
+✓ Generating static pages using 9 workers (25/25) in 170ms
   Finalizing page optimization ...
 
 Route (app)

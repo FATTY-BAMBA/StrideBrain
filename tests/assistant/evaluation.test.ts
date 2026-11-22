@@ -3,6 +3,7 @@ import { writeFileSync } from "node:fs";
 import { describe, it, expect, vi } from "vitest";
 vi.mock("server-only", () => ({}));
 import questions from "./questions.json";
+import { FakeAssistantModel } from "./fake-model";
 import { assistantDatabase } from "./database-fixture";
 import { prepareEvaluation } from "./evaluation-fixture";
 import { runEvaluationQuestion } from "./run-evaluation";
@@ -64,4 +65,55 @@ describe("evaluation contract", () => {
     expect(report.perQuestion.every((q) => q.passes === 3)).toBe(true);
   },
   120000,
+);
+
+(process.env.DATABASE_URL ? it : it.skip)(
+  "scores the paid empty-list answer with its authorized page-reference follow-up",
+  async () => {
+    const db = await assistantDatabase();
+    try {
+      const question = questions.find(
+        (q) => q.id === "en-home-empty-awaiting",
+      ) as EvaluationQuestion;
+      const model = new FakeAssistantModel([
+        {
+          usage: { inputTokens: 0, outputTokens: 0 },
+          result: { kind: "TOOLS", calls: [{ name: "list_awaiting_client", arguments: {} }] },
+        },
+        (request) => {
+          const data = JSON.parse(request.messages.at(-1)!.text);
+          expect(JSON.parse(request.messages[0]!.text).selectedProjectReference).toBe(
+            "J-2611-R7K3",
+          );
+          expect(data.sources).toHaveLength(1);
+          expect(data.sources[0].facts.count).toBe(0);
+          return {
+            usage: { inputTokens: 0, outputTokens: 0 },
+            result: {
+              kind: "ANSWER",
+              answer: {
+                text: "There are currently 0 quotes waiting for the client.",
+                sourceIds: [data.sources[0].sourceId],
+                followUps: [
+                  "What is the status of quotes for project J-2611-R7K3?",
+                  "Are there any quotes in the inquiry stage?",
+                  "Can you list the closed jobs?",
+                ],
+              },
+            },
+          };
+        },
+      ]);
+      const row = await runEvaluationQuestion(db, question, assistantConfig({}), model);
+      expect(row).toMatchObject({
+        verdict: "grounded and correct",
+        wrongNumber: false,
+        draftWrongNumber: false,
+      });
+      expect(row.followUps).toContain("What is the status of quotes for project J-2611-R7K3?");
+    } finally {
+      await db.close();
+    }
+  },
+  30000,
 );

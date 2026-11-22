@@ -72,13 +72,19 @@ async function evaluateQuestion(
   ]);
   let rawAnswer: unknown;
   let sentSubjectNames: string[] = [];
+  let sentReferenceTexts: string[] = [];
   const ledger: AssistantSource[] = [];
   const model: AssistantModelPort = {
     async generate(input) {
       const sent = JSON.parse(input.messages[0]!.text) as {
-        subjectProjects?: { names: string[] }[];
+        subjectProjects?: { reference: string; names: string[] }[];
+        selectedProjectReference?: string;
       };
       sentSubjectNames = sent.subjectProjects?.flatMap((p) => p.names) ?? [];
+      sentReferenceTexts = [
+        ...(sent.subjectProjects?.map((p) => p.reference) ?? []),
+        ...(sent.selectedProjectReference ? [sent.selectedProjectReference] : []),
+      ];
       const reply = await (provider ?? fake).generate(input);
       if (reply.result.kind === "ANSWER") rawAnswer = reply.result.answer;
       return reply;
@@ -106,7 +112,7 @@ async function evaluateQuestion(
   const latencyMs = Math.round(performance.now() - started);
   const references = await services.repository.readableReferences(
     c,
-    referenceCandidates([question.question]),
+    referenceCandidates([question.question, ...sentReferenceTexts]),
   );
   const judgement = evaluateAnswer(
     question,
