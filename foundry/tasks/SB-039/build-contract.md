@@ -45,3 +45,5 @@
 - Answer language follows the question; all server-built links retain the page locale. Source-free refusals use the plain AI label. Write-oriented/offer follow-ups are filtered independently.
 - Reject cut-off known references before identity exemptions and finding expansion. Exact category spelling now ignores letter case; typed-kind and unique-percentage checks remain.
 - Add regression evaluation questions with a different Home-style default job. PostgreSQL/server-action and browser checks assert no ComparisonRun or EconomicsEnrichmentRun writes after answers/refusals.
+
+Paid-run identity checks include the redacted subject names and authorized page/subject references actually sent to the model. The evaluator uses the same repository authorization for these identities; it never exempts an unsent name or treats identity digits as numeric facts. The final 48-case three-round paid report and both unmodified failed precursor reports are linked from verification.md.

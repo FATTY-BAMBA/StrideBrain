@@ -29,7 +29,7 @@ Configured standard text rates: **US$0.30 input / US$2.50 output per million tok
 
 ## Hosted review fixes after 70ae4a0
 
-- Server-resolved authorized job names (both languages) and references override any explicit page selection. Home no longer automatically selects a project. Tool targets and cited subject jobs are checked separately from historical dependencies.
+- Server-resolved authorized job names (both languages) and references override any explicit page selection. Home no longer automatically selects a project. Tool targets and cited subject jobs are checked separately from historical dependencies. Grounding and evaluation exempt only redacted subject names and authorized references actually sent; their digits cannot ground amounts.
 - Quote status reads the same current saved version as the Quote tab in every status. Riverside’s internal-review quote supplies **NT$6,400,000** before tax, **NT$320,000** tax and **NT$6,720,000** total. Revision drafts use current totals. Viewer and foreign-organization denials remain covered.
 - Authorized empty lists return OK with a count-zero source. Identical tool arguments execute only once, even if keys are reordered. AI answers/refusals never invoke the keyword path. Missing/stale comparisons return the server-owned Open comparison link for the named job without creating a run.
 - Follow-up instructions now state the requested read-question product rule; write offers/advice are also filtered independently. Source URLs retain the page’s locale even when answer language changes. Source-free refusals have a plain AI label.
@@ -50,7 +50,56 @@ Verification: **1,305 tests / 125 files**, no skips; full format, lint, typechec
 
 No browser page errors. Representative screenshots were visually inspected. The [local server, database and temporary sign-in/TLS files were removed](evidence/hosted-review-local-cleanup.log). These screenshots test the production application flow using a transport fake, not Gemini’s answer quality.
 
-[Boundary evidence](evidence/hosted-review-boundaries.json): the instruction changed only for the requested follow-up rule; quote-tool description now describes current-version amounts. The original 40 questions, provider adapter, workflow YAML and all migrations are unchanged. **The new paid three-round run is pending.** Hosted acceptance remains with the Director; no hosted deployment, migration, seed, settings or secret change was made.
+[Boundary evidence](evidence/hosted-review-boundaries.json): the instruction changed only for the requested follow-up rule; quote-tool description now describes current-version amounts. The original 40 questions, provider adapter, workflow YAML and all migrations are unchanged. **The final paid three-round run passes; scores and remaining misses follow.** Hosted acceptance remains with the Director; no hosted deployment, migration, seed, settings or secret change was made.
+
+## Final hosted-review paid evaluation (53bdc58)
+
+[Run 45069524181](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45069524181) evaluated **`53bdc583e5f3bd600c260390e36041998a9cc3d8`**, using **gemini-3.5-flash-lite** through the unchanged workflow on main. **PASS** in all three rounds:
+
+| Round | English core | zh-TW core | Required hosted regressions | Displayed wrong numbers |
+| --- | --- | --- | --- | --- |
+| 1 | 20/20 | 18/20 | 8/8 | 0 |
+| 2 | 19/20 | 19/20 | 8/8 | 0 |
+| 3 | 20/20 | 19/20 | 8/8 | 0 |
+
+[Full original report](evidence/provider-45069524181.json), artifact **14772489233**, records all 144 cases and every non-pass's raw answer, follow-ups and rejection diagnostics. All eight new hosted-regression questions pass **3/3**. **45 of 48 questions** pass all three rounds. [CI on the evaluated commit](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45069509153) is green. Production code is identical to `acc108d`; `53bdc58` corrects the evaluator's sent-reference lookup and adds its regression. The instruction, questions, thresholds and workflow were not changed for either paid-run correction.
+
+Remaining core misses, preserved without rescoring:
+
+- `zh-TW-stone-range`, all rounds: the model declined the requested history; the server displayed its fixed refusal.
+- `zh-TW-finding`, round 1: `FINDING_SENTENCE` discarded a multi-category percentage paraphrase. No model financial sentence was displayed.
+- `en-other-org`, round 2: the model echoed an unauthorized reference while citing a list result. `UNSUPPORTED_NUMBER` discarded it; the case required a source-free refusal, so it remains a miss.
+
+The run used **346 model calls**, estimated at **US$0.194477000**. This is not a provider billing reconciliation. No hosted project/database was changed. Hosted acceptance remains waiting for the Director.
+
+Per-question pass rates (paired `en-` / `zh-TW-` case IDs):
+
+| Question pair | English | zh-TW |
+| --- | --- | --- |
+| awaiting | 3/3 (100.0%) | 3/3 (100.0%) |
+| status | 3/3 (100.0%) | 3/3 (100.0%) |
+| validity | 3/3 (100.0%) | 3/3 (100.0%) |
+| accepted | 3/3 (100.0%) | 3/3 (100.0%) |
+| work | 3/3 (100.0%) | 3/3 (100.0%) |
+| area | 3/3 (100.0%) | 3/3 (100.0%) |
+| stone-median | 3/3 (100.0%) | 3/3 (100.0%) |
+| stone-range | 3/3 (100.0%) | 0/3 (0.0%) |
+| millwork | 3/3 (100.0%) | 3/3 (100.0%) |
+| finding | 3/3 (100.0%) | 2/3 (66.7%) |
+| closed | 3/3 (100.0%) | 3/3 (100.0%) |
+| owner-total | 3/3 (100.0%) | 3/3 (100.0%) |
+| viewer-amount | 3/3 (100.0%) | 3/3 (100.0%) |
+| viewer-overview | 3/3 (100.0%) | 3/3 (100.0%) |
+| excluded | 3/3 (100.0%) | 3/3 (100.0%) |
+| unknown | 3/3 (100.0%) | 3/3 (100.0%) |
+| other-org | 2/3 (66.7%) | 3/3 (100.0%) |
+| injection | 3/3 (100.0%) | 3/3 (100.0%) |
+| weather | 3/3 (100.0%) | 3/3 (100.0%) |
+| manager-scope | 3/3 (100.0%) | 3/3 (100.0%) |
+| home-named-status | 3/3 (100.0%) | 3/3 (100.0%) |
+| home-reference-total | 3/3 (100.0%) | 3/3 (100.0%) |
+| home-review-quote | 3/3 (100.0%) | 3/3 (100.0%) |
+| home-empty-awaiting | 3/3 (100.0%) | 3/3 (100.0%) |
 
 ## First hosted-review paid run and identity correction
 
@@ -58,13 +107,13 @@ No browser page errors. Representative screenshots were visually inspected. The 
 
 The two named-status regressions and the original status pair failed because numeric grounding did not include names sent in the new server-resolved subject payload. The model answered about the right job, but `01` in its name was rejected. Grounding and evaluation now exempt only those redacted names actually sent, alongside source identities. Four recorded answers are regression fixtures; altered amounts, name digits reused as amounts, unsent names and sensitive unredacted names still fail. The PostgreSQL Home-action regression now includes the job name in the answer and checks that no comparison/economics run is created.
 
-Other misses are retained: zh-TW stone-range declined in all three rounds, and zh-TW unknown in round 3 cited a list result while stating that the requested job was not found. The evaluator still requires a source-free refusal for that case. No prompt, question or scoring change was made to correct these misses. The paid rerun on the identity correction is pending.
+Other misses are retained: zh-TW stone-range declined in all three rounds, and zh-TW unknown in round 3 cited a list result while stating that the requested job was not found. The evaluator still requires a source-free refusal for that case. No prompt, question or scoring change was made to correct these misses. The following run evaluated that correction; its original result is recorded below.
 
 ## Second hosted-review paid run and evaluator correction
 
 [Run 45068714766](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45068714766) evaluated `acc108dd16921ae32061f0d7e68f93cd991c17b2`. **FAIL as originally reported:** core en/zh-TW **20/18, 20/19, 20/18**; new regressions **8/8, 8/8, 7/8**. [Original artifact](evidence/provider-45068714766.json) remains unchanged. All named-job and current-quote regressions passed all three rounds.
 
-The third-round empty-list answer correctly said there were 0 quotes. One retained follow-up contained the complete authorized page reference `J-2611-R7K3`. The application allowed this reference, but the evaluator omitted the selected-page reference from its authorized lookup and reported its digits as a displayed wrong number. The evaluator now uses subject/page references from the actual sent context and independently checks them with the repository, matching the application. A database regression replays that answer and follow-up against the count-zero source. No production code, prompt, questions, thresholds or workflow changed for this harness correction. The fresh paid rerun is pending.
+The third-round empty-list answer correctly said there were 0 quotes. One retained follow-up contained the complete authorized page reference `J-2611-R7K3`. The application allowed this reference, but the evaluator omitted the selected-page reference from its authorized lookup and reported its digits as a displayed wrong number. The evaluator now uses subject/page references from the actual sent context and independently checks them with the repository, matching the application. A database regression replays that answer and follow-up against the count-zero source. No production code, prompt, questions, thresholds or workflow changed for this harness correction. The final run above passes with this correction.
 
 The other non-passes remain recorded: zh-TW stone-range refused in all three rounds; zh-TW unknown cited an empty-list source in rounds 1 and 3 instead of a source-free refusal.
 
@@ -168,7 +217,7 @@ The local server, disposable database, sessions, invitation and TLS private file
 ## Not verified
 
 - Hosted test-site acceptance, hosted migration/fixture application and hosted controls: waiting for the Product Director; pull request stays draft.
-- The new paid evaluation on the hosted-review corrections is pending. Earlier paid reports apply only to their recorded commits. Provider billed cost was not independently reconciled.
+- Hosted Gemini behavior on the corrected branch has not been retested by the agent. The paid evaluation uses synthetic disposable CI databases; its remaining core misses are listed above. Earlier paid reports apply only to their recorded commits. Provider billed cost was not independently reconciled.
 - Independent paid-account/billing verification and legal/terms wording approval.
 - Real tenant data (still gated by #42), physical phones and browsers other than local Chrome. Mobile screenshots use a simulated 390px viewport.
 
