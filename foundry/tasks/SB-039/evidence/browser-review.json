@@ -1,0 +1,18 @@
+{
+  "mode": "Local production build with test-only Google HTTP transport, not live Gemini",
+  "checks": [
+    "Authorized numeric job reference preserved in question and answer",
+    "Owner sees before-tax, tax and total with currency in both languages",
+    "Source links point to Quote tab",
+    "Model facts contain no internal Id/Ids keys",
+    "NO_RECORDS answer uses matched open-actions keyword reply",
+    "AI data page discloses processing outside Taiwan in both languages"
+  ],
+  "usage": [
+    {
+      "outcome": "ANSWERED",
+      "count": 5
+    }
+  ],
+  "errors": []
+}

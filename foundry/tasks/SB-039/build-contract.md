@@ -9,3 +9,11 @@
 - Redact identifiers, account/card numbers and password values before sending. Time, input/output and six-tool-call limits fail to the keyword path; no provider errors or credentials reach clients/logs.
 - CI runs the fake without model network access. The manual evaluation workflow uses only a disposable seeded database and an explicitly configured paid provider. Report unrun evaluation separately from passing unit tests.
 - Keep PR draft; hosted acceptance WAITING_FOR_PRODUCT_DIRECTOR. Terms wording review remains a Product Director task.
+
+## Review contract
+
+- Preserve authorized references and server-produced typed values; redact free text and password fields. Reference exemptions require trusted membership/tenant/project access, with quote access for document numbers. Internal Id/Ids fields remain server-side.
+- Ground usual en/zh-TW date formats by calendar identity; evaluation uses that same rule. Discarded answers report only a named rejection code.
+- Quote tools read latest-issued snapshot totals before any revision draft totals; otherwise read the current draft. Format currency on the server; deny Viewer amounts.
+- NO_RECORDS and OUT_OF_DATE may use a matched existing keyword intent. Unmatched questions keep the AI refusal; exclusion never falls through. No model write/run tool is added.
+- The user explicitly requested a second PR containing only the evaluation workflow. #56 stays draft; #57 can be merged separately to register manual evaluation. Its selected-ref checkout allows testing #56 before merging it, with the key only on the evaluation step. No migration changes or hosted operations.

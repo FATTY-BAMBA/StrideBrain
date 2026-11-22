@@ -4,7 +4,10 @@
   "status": "LOCAL_VERIFIED",
   "delivery": "C",
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
-  "providerEvaluation": "NOT_RUN_PAID_KEY_NOT_CONFIGURED",
+  "providerEvaluation": "WAITING_FOR_PRODUCT_DIRECTOR",
   "model": "gemini-3.5-flash-lite",
-  "pullRequest": "DRAFT"
+  "pullRequest": 56,
+  "pullRequestState": "DRAFT",
+  "workflowPullRequest": 57,
+  "review": "SIX_REPAIRS_LOCAL_VERIFIED"
 }
