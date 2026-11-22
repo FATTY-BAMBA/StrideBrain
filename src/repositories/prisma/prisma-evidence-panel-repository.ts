@@ -1,3 +1,4 @@
+import { publicEvidenceValue } from "@/modules/evidence/domain/public-evidence-value";
 import {
   AuthorizationService,
   type CommercialKind,
@@ -759,7 +760,7 @@ export class PrismaEvidencePanelRepository implements EvidencePanelRepositoryPor
           claimKey: reference.claimKey,
           locator: jsonObject(reference.locator),
           ...(reference.supportedValue
-            ? { supportedValue: jsonObject(reference.supportedValue) }
+            ? { supportedValue: publicEvidenceValue(reference.supportedValue) }
             : {}),
           authorityState: reference.authorityState as EvidenceSourceRecord["authorityState"],
           ...(reference.observationType

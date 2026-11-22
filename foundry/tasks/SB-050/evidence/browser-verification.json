@@ -1,0 +1,49 @@
+{
+  "checks": [
+    "Stored combined median remains exactly 5833.333333 and area 640.000; displayed rate is NT$5,833; 641 and 641.5 area displays verified.",
+    "Conflict and insufficient-history flags refreshed in both languages. Local HTTPS server logs are clean after trusting the disposable certificate.",
+    "Combined scopes map to one commercial line; rounded rate and formatted amount shown; saved line produces historical-price findings.",
+    "Partial combined coverage shows reference rate, exact computed scope sentence and no suggestion in both languages; typed amount persists after coverage changes.",
+    "Default descriptions stored in both languages; zh-TW rename preserves English and English rename preserves zh-TW.",
+    "Versions 1–3 reuse exact provenance; area stale/refresh preserves amount; source panel; roles and 390px viewport.",
+    "An out-of-date partial basis does not describe its old scope coverage as the current job; amount and recorded rate remain visible."
+  ],
+  "screens": [
+    "en-home-draft-quote.png",
+    "en-draft-suggestions.png",
+    "en-quote-sources.png",
+    "en-saved-version-1.png",
+    "en-discovery-after-save.png",
+    "en-home-out-of-date.png",
+    "en-stale-basis-keeps-amount.png",
+    "en-refreshed-suggestion-keeps-amount.png",
+    "en-quote-saved.png",
+    "zh-TW-quote-saved.png",
+    "zh-TW-renamed-description.png",
+    "zh-TW-quote-mobile.png",
+    "zh-TW-quote-mobile-basis.png",
+    "en-combined-pricing-category.png",
+    "zh-TW-combined-pricing-category.png",
+    "en-combined-price-findings.png",
+    "en-partial-coverage.png",
+    "zh-TW-partial-coverage.png",
+    "en-coverage-change-keeps-amount.png",
+    "en-quote-finance.png",
+    "en-quote-viewer.png",
+    "en-quote-project-manager.png",
+    "en-existing-quote-read-only.png",
+    "en-source-conflict.png",
+    "zh-TW-source-conflict.png",
+    "en-fractional-area.png"
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "createdJobs": [
+    "J-2611-VQV8",
+    "J-2611-DAM3",
+    "J-2611-ZNM6",
+    "J-2611-JHSN"
+  ],
+  "status": "PASS",
+  "review": "PR #51 pricing categories, number readability and bilingual descriptions"
+}

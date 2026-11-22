@@ -43,7 +43,7 @@ import {
   type AuthorityEvaluationContext,
 } from "@/modules/economics/domain/observation-authority";
 
-const REQUIRED_HISTORY_COUNT = 3;
+export const REQUIRED_HISTORY_COUNT = 3;
 const RATE_SCALE = 6;
 const ALIGNMENT_THRESHOLD = decimalFromString("3.0000", PERCENT_SCALE);
 
@@ -53,6 +53,16 @@ const ACCESS_RANK = Object.freeze({
   QUOTE_AND_FORECAST: 2,
   FULL_ACTUAL: 3,
 } as const);
+
+export type QuotedHistoryInput = Pick<
+  HistoricalEconomicsAssemblyInput,
+  "stage4" | "batch" | "snapshotDate" | "generatedAt"
+>;
+export type CategoryQuotedHistory = Readonly<{
+  categoryId: string;
+  history: HistoricalAggregateDTO;
+  conflictEvidenceIds: readonly string[];
+}>;
 
 type EvaluatedRecord = Readonly<{
   project: EconomicsProjectSnapshot;
@@ -368,7 +378,7 @@ function varianceFinding(
 
 function evaluationContext(
   purpose: ObservationPurpose,
-  input: HistoricalEconomicsAssemblyInput,
+  input: QuotedHistoryInput,
 ): AuthorityEvaluationContext {
   return Object.freeze({
     purpose,
@@ -399,7 +409,7 @@ function recordPurpose(
 }
 
 function evaluateRecords(
-  input: HistoricalEconomicsAssemblyInput,
+  input: QuotedHistoryInput,
   authority: ObservationAuthorityService,
 ): readonly EvaluatedRecord[] {
   const projects = projectMap(input.batch);
@@ -504,6 +514,30 @@ function conflictPresentFor(
   );
 }
 
+function quotedCategoryAggregate(
+  categoryId: string,
+  input: QuotedHistoryInput,
+  evaluated: readonly EvaluatedRecord[],
+  quotedHistory: readonly EvaluatedRecord[],
+  activeProject: EconomicsProjectSnapshot,
+): HistoricalAggregateDTO {
+  return accessAtLeast(input.batch, "QUOTE_ONLY")
+    ? aggregate(
+        "QUOTED_PRICE",
+        quotedHistory.flatMap((entry) =>
+          entry.record.lines
+            .filter((line) => line.categoryId === categoryId)
+            .map((line) => lineObservation(entry, line)),
+        ),
+        input.stage4.activeContext.areaValue,
+        input.generatedAt,
+        conflictPresentFor(evaluated, "QUOTED_HISTORY", categoryId),
+        input.stage4.activeContext.currency,
+        normalizedUnit(activeProject),
+      )
+    : restrictedAggregate("QUOTED_PRICE");
+}
+
 function buildCategory(
   categoryId: string,
   input: HistoricalEconomicsAssemblyInput,
@@ -520,21 +554,13 @@ function buildCategory(
   );
   if (!activeProject) throw new Error("ACTIVE_PROJECT_ECONOMICS_MISSING");
 
-  const quotedAggregate = accessAtLeast(input.batch, "QUOTE_ONLY")
-    ? aggregate(
-        "QUOTED_PRICE",
-        quotedHistory.flatMap((entry) =>
-          entry.record.lines
-            .filter((line) => line.categoryId === categoryId)
-            .map((line) => lineObservation(entry, line)),
-        ),
-        input.stage4.activeContext.areaValue,
-        input.generatedAt,
-        conflictPresentFor(evaluated, "QUOTED_HISTORY", categoryId),
-        input.stage4.activeContext.currency,
-        normalizedUnit(activeProject),
-      )
-    : restrictedAggregate("QUOTED_PRICE");
+  const quotedAggregate = quotedCategoryAggregate(
+    categoryId,
+    input,
+    evaluated,
+    quotedHistory,
+    activeProject,
+  );
 
   const actualAggregate = accessAtLeast(input.batch, "FULL_ACTUAL")
     ? aggregate(
@@ -900,6 +926,51 @@ export class HistoricalEconomicsService {
     private readonly authority = new ObservationAuthorityService(),
     private readonly evidenceBundles = new ComparisonEvidenceBundleService(),
   ) {}
+
+  /** Same quoted-history calculation for pricing categories, even before a current quote exists. */
+  quotedHistoryBaselines(
+    input: QuotedHistoryInput,
+    categoryIds: readonly string[],
+  ): readonly CategoryQuotedHistory[] {
+    if (input.batch.structuralResult.run.id !== input.stage4.run.id)
+      throw new Error("STRUCTURAL_RUN_MISMATCH");
+    const active = input.batch.projects.find(
+      (project) => project.internalId === input.batch.activeProjectId,
+    );
+    if (!active) throw new Error("ACTIVE_PROJECT_ECONOMICS_MISSING");
+    const evaluated = evaluateRecords(input, this.authority);
+    const history = accessAtLeast(input.batch, "QUOTE_ONLY")
+      ? historyByPurpose(evaluated, "QUOTED_HISTORY")
+      : [];
+    return [...new Set(categoryIds)].sort().map((categoryId) => {
+      const subjects = new Set(
+        evaluated
+          .filter(
+            (entry) =>
+              entry.purpose === "QUOTED_HISTORY" &&
+              entry.record.lines.some((line) => line.categoryId === categoryId),
+          )
+          .flatMap((entry) => [
+            entry.record.id,
+            ...entry.record.lines
+              .filter((line) => line.categoryId === categoryId)
+              .map((line) => line.id),
+          ]),
+      );
+      return {
+        categoryId,
+        history: quotedCategoryAggregate(categoryId, input, evaluated, history, active),
+        conflictEvidenceIds: accessAtLeast(input.batch, "QUOTE_ONLY")
+          ? input.batch.evidence
+              .filter(
+                (reference) =>
+                  subjects.has(reference.subjectId) && reference.conflictIds.length > 0,
+              )
+              .map((reference) => reference.id)
+          : [],
+      };
+    });
+  }
 
   assemble(input: HistoricalEconomicsAssemblyInput): HistoricalEconomicsAssembly {
     if (input.batch.structuralResult.run.id !== input.stage4.run.id) {

@@ -220,3 +220,35 @@ it("selects the largest saved variance with a count and preserves its evidence d
     enrichmentRunId: "economics",
   });
 });
+it("orders Draft quote after review and before compare, and hides it without drafting permission", async () => {
+  const f = setup([job("A"), job("B", "DESIGN"), job("C", "DISCOVERY")]);
+  f.repository.listComparedProjectIds.mockResolvedValue(["A", "B"]);
+  f.repository.listDecisionSources.mockResolvedValue([
+    { kind: "DRAFT_QUOTE", organizationId: context.organizationId, projectId: "B", key: "draft:B" },
+  ]);
+  const result = await f.service.execute(context);
+  expect(result.kind === "AVAILABLE" && result.decisions.map((decision) => decision.kind)).toEqual([
+    "REVIEW_QUOTE",
+    "DRAFT_QUOTE",
+    "COMPARE",
+  ]);
+  const finance = await f.service.execute({
+    ...context,
+    capabilities: roleBundle("FINANCIAL_REVIEWER"),
+  });
+  expect(
+    finance.kind === "AVAILABLE" &&
+      finance.decisions.some((decision) => decision.kind === "DRAFT_QUOTE"),
+  ).toBe(false);
+});
+it("shows an out-of-date saved comparison after a draft save even before moving Discovery to Quote review", async () => {
+  const f = setup([job("A", "DISCOVERY")]);
+  f.comparisons.execute.mockResolvedValue({ kind: "OUT_OF_DATE" });
+  const result = await f.service.execute(context);
+  expect(result.kind === "AVAILABLE" && result.findingsNotices).toEqual([
+    {
+      project: { businessKey: "A", name: "A", stage: "DISCOVERY", active: true },
+      kind: "OUT_OF_DATE",
+    },
+  ]);
+});

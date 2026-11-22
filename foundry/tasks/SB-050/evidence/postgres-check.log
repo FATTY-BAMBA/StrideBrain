@@ -1,0 +1,53 @@
+
+> stridebrain@0.1.0 check
+> npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build
+
+
+> stridebrain@0.1.0 format:check
+> prettier --check package.json tsconfig.json next.config.ts next-env.d.ts eslint.config.mjs prettier.config.mjs vitest.config.ts prisma.config.ts .github/workflows/ci.yml 'src/**/*.{ts,tsx,css}' 'tests/**/*.ts'
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> stridebrain@0.1.0 lint
+> eslint .
+
+
+/private/tmp/stridebrain-sb041/prisma.config.ts
+  5:1  warning  Assign object to a variable before exporting as module default  import/no-anonymous-default-export
+
+✖ 1 problem (0 errors, 1 warning)
+
+
+> stridebrain@0.1.0 typecheck
+> tsc --noEmit
+
+
+> stridebrain@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.10 /private/tmp/stridebrain-sb041
+
+ ❯ tests/internal-review/postgres-invariants.test.ts (95 tests | 1 failed) 1053420ms
+     × repeatably reseeds after real actions and restores all immutability triggers 984285ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > repeatably reseeds after real actions and restores all immutability triggers
+Error: spawnSync npm ETIMEDOUT
+ ❯ tests/internal-review/postgres-invariants.test.ts:2050:9
+    2048|     for (let iteration = 0; iteration < 2; iteration += 1) {
+    2049|       for (const script of ["db:seed", "db:verify"]) {
+    2050|         execFileSync("npm", ["run", script], {
+       |         ^
+    2051|           env: environment,
+    2052|           cwd: process.cwd(),
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 101 passed (102)
+      Tests  1 failed | 1048 passed (1049)
+   Start at  07:55:46
+   Duration  1054.03s (transform 4.91s, setup 0ms, import 9.49s, tests 1159.27s, environment 3.02s)

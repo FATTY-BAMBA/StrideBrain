@@ -1,3 +1,4 @@
+import { formatMoney } from "@/modules/finance/format-money";
 import { comparisonHref } from "@/modules/comparison-experience/route-state";
 import { internalReviewHref } from "@/modules/internal-review-experience/route-state";
 import type { HomeDecision } from "./application/get-home-desk";
@@ -15,7 +16,9 @@ export function decisionPresentation(item: HomeDecision, locale: Locale) {
         ? claimFindingText(item.claim, locale)
         : item.kind === "CONFIRM_REVIEW"
           ? copy.confirm
-          : copy.compare,
+          : item.kind === "DRAFT_QUOTE"
+            ? copy.draft
+            : copy.compare,
     moreFindings:
       item.kind === "REVIEW_QUOTE" && item.additionalFindingCount && item.additionalFindingCount > 0
         ? item.additionalFindingCount === 1
@@ -24,30 +27,26 @@ export function decisionPresentation(item: HomeDecision, locale: Locale) {
         : null,
     label: copy[item.kind],
     href:
-      item.kind === "CONFIRM_REVIEW" && item.comparisonRunId && item.enrichmentRunId
-        ? internalReviewHref(
-            locale,
-            item.project.businessKey,
-            {
+      item.kind === "DRAFT_QUOTE"
+        ? `/${locale}/projects/${encodeURIComponent(item.project.businessKey)}/quote`
+        : item.kind === "CONFIRM_REVIEW" && item.comparisonRunId && item.enrichmentRunId
+          ? internalReviewHref(
+              locale,
+              item.project.businessKey,
+              {
+                comparisonRunId: item.comparisonRunId,
+                enrichmentRunId: item.enrichmentRunId,
+                returnContext: { selectedProjectKeys: [] },
+              },
+              { proposalKey: item.proposalKey },
+            )
+          : comparisonHref(locale, item.project.businessKey, {
               comparisonRunId: item.comparisonRunId,
-              enrichmentRunId: item.enrichmentRunId,
-              returnContext: { selectedProjectKeys: [] },
-            },
-            { proposalKey: item.proposalKey },
-          )
-        : comparisonHref(locale, item.project.businessKey, {
-            comparisonRunId: item.comparisonRunId,
-            economicsRunId: item.enrichmentRunId,
-            selectedProjectKeys: item.selectedProjectKeys,
-            evidenceClaimKey: item.claim?.claimKey,
-          }),
+              economicsRunId: item.enrichmentRunId,
+              selectedProjectKeys: item.selectedProjectKeys,
+              evidenceClaimKey: item.claim?.claimKey,
+            }),
   };
-}
-/** Formats exact decimal text without converting monetary values to binary floats. */
-export function homeMoney(amount: string, currency: string): string {
-  const [whole = "0", fraction = "00"] = amount.split(".");
-  const grouped = whole.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  return `${currency === "TWD" ? "NT$" : `${currency} `}${grouped}${fraction === "00" ? "" : `.${fraction}`}`;
 }
 export function closedLessonText(lesson: ClosedJobLesson, locale: Locale) {
   return homeDeskCopy(locale)
@@ -55,5 +54,5 @@ export function closedLessonText(lesson: ClosedJobLesson, locale: Locale) {
       "{category}",
       categoryLabel(locale, lesson.categoryId),
     )
-    .replace("{amount}", homeMoney(lesson.difference, lesson.currency));
+    .replace("{amount}", formatMoney(lesson.difference, lesson.currency));
 }

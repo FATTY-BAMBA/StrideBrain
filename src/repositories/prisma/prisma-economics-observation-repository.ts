@@ -1,3 +1,4 @@
+import { publicEvidenceValue } from "@/modules/evidence/domain/public-evidence-value";
 import { AuthorizationService } from "@/modules/authorization/authorization-service";
 import type { Stage4ComparisonResult } from "@/modules/comparisons/domain/contracts";
 import type {
@@ -69,6 +70,7 @@ type OfferLineRow = Readonly<{
 }>;
 
 type QuoteVersionRow = Readonly<{
+  status: string;
   id: string;
   organizationId: string;
   versionNumber: number;
@@ -345,6 +347,7 @@ function mapQuote(
     projectId: project.internalId,
     projectKey: project.businessKey,
     recordKey: `${row.quote.businessKey}-v${row.versionNumber}`,
+    quoteStatus: row.status,
     versionNumber: row.versionNumber,
     subjectType: "QUOTE_VERSION",
     observationType: row.observationType,
@@ -470,8 +473,8 @@ function mapEvidenceRows(
           ...(row.documentVersionId ? { documentVersionId: row.documentVersionId } : {}),
           locator: objectValue(row.locator) ?? Object.freeze({}),
           claimKey: row.claimKey,
-          ...(objectValue(row.supportedValue)
-            ? { supportedValue: objectValue(row.supportedValue) }
+          ...(publicEvidenceValue(row.supportedValue)
+            ? { supportedValue: publicEvidenceValue(row.supportedValue) }
             : {}),
           authorityState: row.authorityState,
           ...(row.observationType ? { observationType: row.observationType } : {}),
@@ -651,6 +654,7 @@ export class PrismaEconomicsObservationRepository implements EconomicsObservatio
               id: true,
               organizationId: true,
               versionNumber: true,
+              status: true,
               observationType: true,
               authorityState: true,
               currency: true,

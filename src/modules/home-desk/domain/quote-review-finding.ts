@@ -1,4 +1,4 @@
-import { isReviewClaim } from "@/modules/economics/domain/claim-selection";
+import { isReviewClaim, isVisibleFinding } from "@/modules/economics/domain/claim-selection";
 import type { StructuredEconomicsClaimDTO } from "@/modules/economics/domain/contracts";
 import { absolute, compare, percent } from "@/modules/finance/fixed-decimal";
 
@@ -36,5 +36,7 @@ export function quoteReviewFinding(claims: readonly StructuredEconomicsClaimDTO[
       );
     });
   const claim = candidates[0]?.claim;
-  return claim ? { claim, additionalFindingCount: findings.length - 1 } : null;
+  return claim
+    ? { claim, additionalFindingCount: claims.filter(isVisibleFinding).length - 1 }
+    : null;
 }

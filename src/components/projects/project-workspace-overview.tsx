@@ -1,3 +1,4 @@
+import { formatMoney } from "@/modules/finance/format-money";
 import { getValueCopy, stageLabel, warningLabel } from "@/modules/demo-value/copy";
 import { workspaceStateCopies } from "@/modules/localization/workspace-state-copy";
 import { getFinancialCopy } from "@/modules/localization/financial-copy";
@@ -78,20 +79,6 @@ const copy = {
   },
 } as const;
 
-function localeCode(locale: Locale): string {
-  return locale === "zh-TW" ? "zh-TW" : "en-US";
-}
-
-function formatMoney(locale: Locale, amount: string, currency: string): string {
-  const parsed = Number(amount);
-  if (!Number.isFinite(parsed)) return `${currency} ${amount}`;
-  return new Intl.NumberFormat(localeCode(locale), {
-    style: "currency",
-    currency,
-    maximumFractionDigits: 0,
-  }).format(parsed);
-}
-
 function formatObservation(
   locale: Locale,
   observation: CommercialObservationDTO,
@@ -113,7 +100,7 @@ function formatObservation(
         {observation.versionNumber} ·{" "}
         {getFinancialCopy(locale).authorities[observation.authorityState]}
       </span>
-      <strong>{formatMoney(locale, observation.money.amount, observation.money.currency)}</strong>
+      <strong>{formatMoney(observation.money.amount, observation.money.currency)}</strong>
       {observation.freshness === "STALE" ? <p className={styles.stale}>{labels.stale}</p> : null}
     </div>
   );

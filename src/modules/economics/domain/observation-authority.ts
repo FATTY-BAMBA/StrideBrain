@@ -125,9 +125,10 @@ function hasEvidence(record: FinancialObservationRecord): boolean {
   );
 }
 
-function validPositiveMoney(value: string): boolean {
+function validMoney(value: string, allowZero: boolean): boolean {
   try {
-    return compare(money(value), decimalFromAtoms(0n, 2)) > 0;
+    const comparison = compare(money(value), decimalFromAtoms(0n, 2));
+    return allowZero ? comparison >= 0 : comparison > 0;
   } catch {
     return false;
   }
@@ -206,7 +207,10 @@ export class ObservationAuthorityService {
     if (record.currency !== context.activeCurrency) reasons.push("INCOMPATIBLE_CURRENCY");
     if (project.areaUnit !== context.activeAreaUnit) reasons.push("INCOMPATIBLE_UNIT");
     if (!validPositiveArea(project)) reasons.push("MISSING_AREA");
-    if (!validPositiveMoney(record.totalAmount)) reasons.push("AMOUNT_INVALID");
+    if (!validMoney(record.totalAmount, context.purpose === "CURRENT_QUOTE"))
+      reasons.push("AMOUNT_INVALID");
+    if (context.purpose === "QUOTED_HISTORY" && record.quoteStatus === "DRAFT")
+      reasons.push("POLICY_EXCLUDED");
     if (record.policyExcluded) reasons.push("POLICY_EXCLUDED");
 
     const requiresStructuredLines =
