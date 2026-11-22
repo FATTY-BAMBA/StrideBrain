@@ -63,12 +63,13 @@ export function evaluateAnswer(
   rawAnswer: unknown,
   ledger: readonly AssistantSource[],
   authorizedReferences: readonly string[] = [],
+  sentSubjectNames: readonly string[] = [],
 ) {
   const raw = record(rawAnswer),
     rawAnswerText = typeof raw?.text === "string" ? raw.text : null;
   const references = sourceReferences(ledger, authorizedReferences);
   const safeLedger = ledger.map((s) => redactSource(s, references));
-  const identities = sourceIdentities(safeLedger, references);
+  const identities = sourceIdentities(safeLedger, [...references, ...sentSubjectNames]);
   const draftCited = citedSources(
     safeLedger,
     Array.isArray(raw?.sourceIds)

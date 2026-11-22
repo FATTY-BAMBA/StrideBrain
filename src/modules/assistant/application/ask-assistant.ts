@@ -160,6 +160,11 @@ export class AskAssistant {
           ]),
         ),
       );
+      const subjectProjects = resolved.named.map((p) => ({
+        reference: p.projectKey,
+        names: p.names.map((name) => redactText(name, references)),
+      }));
+      const sentSubjectNames = subjectProjects.flatMap((p) => p.names);
       messages.push({
         role: "user",
         text: JSON.stringify(
@@ -169,10 +174,7 @@ export class AskAssistant {
               currentQuestion: input.question,
               ...(subjects.length
                 ? {
-                    subjectProjects: resolved.named.map((p) => ({
-                      reference: p.projectKey,
-                      names: p.names,
-                    })),
+                    subjectProjects,
                   }
                 : selectedProject
                   ? { selectedProjectReference: selectedProject }
@@ -245,7 +247,7 @@ export class AskAssistant {
                   : "NO_RECORDS";
             return await refusal(state);
           }
-          const checked = checkAnswer(raw, sources, locale, references);
+          const checked = checkAnswer(raw, sources, locale, references, sentSubjectNames);
           if (checked.kind === "REJECTED") return await fallback("UNGROUNDED", checked.reason);
           let answer = checked.answer;
           if (!matchesSubject(answer, sources, subjects, knownProjects))

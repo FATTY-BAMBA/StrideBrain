@@ -1,3 +1,5 @@
+import paidAnswers from "./hosted-paid-answers.json";
+import type { Locale } from "@/modules/localization/config";
 import { evaluateAnswer, type EvaluationQuestion } from "./evaluation";
 import { describe, expect, it } from "vitest";
 import { checkAnswer, isReadFollowUp } from "@/modules/assistant/domain/grounding";
@@ -63,6 +65,64 @@ describe("hosted identity regressions", () => {
       "ACCEPTED",
     );
   });
+  it.each(paidAnswers)(
+    "grounds sent subject names in $id without treating their digits as money",
+    (fixture) => {
+      const locale = fixture.locale as Locale;
+      const quote = {
+        ...source,
+        projectKeys: ["PRJ-ACTIVE-001"],
+        facts: {
+          reference: "PRJ-ACTIVE-001",
+          documentNumber: "PRJ-ACTIVE-001-Q1",
+          validUntil: "2027-12-31",
+          amounts: { beforeTax: "NT$11,110,000", tax: "NT$555,500", total: "NT$11,665,500" },
+        },
+        typedFactPaths: ["reference", "documentNumber", "validUntil", "amounts"],
+      };
+      const names = projects[0]!.names;
+      const answer = raw(fixture.rawAnswerText);
+      expect(checkAnswer(answer, [quote], locale).kind).toBe("REJECTED");
+      const checked = checkAnswer(answer, [quote], locale, [], names);
+      expect(checked.kind).toBe("ACCEPTED");
+      if (checked.kind !== "ACCEPTED") throw Error("EXPECTED_ACCEPTED");
+      const question: EvaluationQuestion = {
+        id: fixture.id,
+        locale,
+        person: "owner",
+        question: "Status?",
+        oracleTools: [],
+        expected: { kind: "FACTS", facts: [], forbidden: [] },
+      };
+      expect(
+        evaluateAnswer(
+          question,
+          {
+            kind: "ANSWER",
+            locale,
+            answer: checked.answer,
+            sources: [quote],
+          },
+          [],
+          answer,
+          [quote],
+          [],
+          names,
+        ),
+      ).toMatchObject({
+        verdict: "grounded and correct",
+        wrongNumber: false,
+        draftWrongNumber: false,
+      });
+      expect(
+        checkAnswer(raw(`${fixture.rawAnswerText} NT$99`), [quote], locale, [], names),
+      ).toEqual({ kind: "REJECTED", reason: "UNSUPPORTED_NUMBER" });
+      expect(checkAnswer(raw(`${names[0]}: NT$01`), [quote], locale, [], names)).toEqual({
+        kind: "REJECTED",
+        reason: "UNSUPPORTED_NUMBER",
+      });
+    },
+  );
   it("checks subjects separately from cited historical dependencies", () => {
     const s = {
       ...source,

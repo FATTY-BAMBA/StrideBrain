@@ -20,7 +20,7 @@ Configured standard text rates: **US$0.30 input / US$2.50 output per million tok
 
 ## Automated verification
 
-- **`npm run check`: PASS — 1,299 tests across 125 files**, with no skipped tests, on Node 24.22.3 and isolated loopback PostgreSQL. Formatting, lint, type checking and production build pass. [Current check log](evidence/check-hosted-review.log). The existing `prisma.config.ts` anonymous-default-export lint warning remains.
+- **`npm run check`: PASS — 1,304 tests across 125 files**, with no skipped tests, on Node 24.22.3 and isolated loopback PostgreSQL. Formatting, lint, type checking and production build pass. [Current check log](evidence/check-hosted-review.log). The existing `prisma.config.ts` anonymous-default-export lint warning remains.
 - `db:validate`, normal Prisma migration deploy, complete fixture verification and a repeated seed/verify pass succeed on a fresh disposable local database. [Schema/fixture log](evidence/schema-fixture.log). [Client bundle inspection](evidence/client-boundary.json) finds no provider key variable, request header, endpoint implementation or synthetic transport key in browser assets.
 - PostgreSQL tests cover default-off organizations, sample opt-in, assigned manager/finance access, Viewer amount denial, other-organization denial, idempotent audited controls, job and historical-source exclusions, concurrent daily-cap reservations and exact cost aggregation.
 - Freshness and parity tests cover another member's saved comparison, changed active records, and count/median/range equality with `PrepareQuoteDraft`. Existing Home quote-version freshness tests also pass. No ranking or economics replay was added to Home.
@@ -35,7 +35,7 @@ Configured standard text rates: **US$0.30 input / US$2.50 output per million tok
 - Follow-up instructions now state the requested read-question product rule; write offers/advice are also filtered independently. Source URLs retain the page’s locale even when answer language changes. Source-free refusals have a plain AI label.
 - Cut-off known references are rejected before exemptions/expansion. Category labels ignore letter case while retaining exact spelling, typed kind and uniqueness checks.
 
-Verification: **1,299 tests / 125 files**, no skips; full format, lint, typecheck and build pass. [Check log](evidence/check-hosted-review.log). The existing anonymous-default-export lint warning remains. The deterministic evaluation executes **48 cases × 3 rounds**, preserving the original 40 questions and adding eight required hosted-regression cases with an unrelated Home-style default project. Core thresholds stay at 16/20 per language; all eight new cases must pass in each round. [Fake report](evidence/fake-evaluation-hosted-review.json) passes every case in every round. It verifies the harness, not model quality.
+Verification: **1,304 tests / 125 files**, no skips; full format, lint, typecheck and build pass. [Check log](evidence/check-hosted-review.log). The existing anonymous-default-export lint warning remains. The deterministic evaluation executes **48 cases × 3 rounds**, preserving the original 40 questions and adding eight required hosted-regression cases with an unrelated Home-style default project. Core thresholds stay at 16/20 per language; all eight new cases must pass in each round. [Fake report](evidence/fake-evaluation-hosted-review.json) passes every case in every round. It verifies the harness, not model quality.
 
 [Local production Chrome report](evidence/browser-hosted-review.json), using a test-only Gemini HTTP transport fake:
 
@@ -48,9 +48,17 @@ Verification: **1,299 tests / 125 files**, no skips; full format, lint, typechec
 | Missing comparison → refusal/link | PASS | Named-job comparison link and plain AI label in [en](evidence/hosted-review-comparison-link-en.png) and [zh-TW](evidence/hosted-review-comparison-link-zh-TW.png) |
 | Chat → database writes | PASS | ComparisonRun and EconomicsEnrichmentRun counts unchanged across every browser question; PostgreSQL Home-action regressions also assert this |
 
-No browser page errors. Screenshots were visually inspected. The [local server, database and temporary sign-in/TLS files were removed](evidence/hosted-review-local-cleanup.log). These screenshots test the production application flow using a transport fake, not Gemini’s answer quality.
+No browser page errors. Representative screenshots were visually inspected. The [local server, database and temporary sign-in/TLS files were removed](evidence/hosted-review-local-cleanup.log). These screenshots test the production application flow using a transport fake, not Gemini’s answer quality.
 
 [Boundary evidence](evidence/hosted-review-boundaries.json): the instruction changed only for the requested follow-up rule; quote-tool description now describes current-version amounts. The original 40 questions, provider adapter, workflow YAML and all migrations are unchanged. **The new paid three-round run is pending.** Hosted acceptance remains with the Director; no hosted deployment, migration, seed, settings or secret change was made.
+
+## First hosted-review paid run and identity correction
+
+[Run 45067451203](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45067451203) evaluated `ffdc783725965d5f44dfc4422d667b9535c881f3`. **FAIL:** core en/zh-TW scores were **19/18, 19/18, 19/17**, with zero displayed wrong numbers, but only **6/8 new required cases passed in each round**. [Original report](evidence/provider-45067451203.json) is preserved without rescoring. Every internal-review quote, reference-total and empty-awaiting regression passed.
+
+The two named-status regressions and the original status pair failed because numeric grounding did not include names sent in the new server-resolved subject payload. The model answered about the right job, but `01` in its name was rejected. Grounding and evaluation now exempt only those redacted names actually sent, alongside source identities. Four recorded answers are regression fixtures; altered amounts, name digits reused as amounts, unsent names and sensitive unredacted names still fail. The PostgreSQL Home-action regression now includes the job name in the answer and checks that no comparison/economics run is created.
+
+Other misses are retained: zh-TW stone-range declined in all three rounds, and zh-TW unknown in round 3 cited a list result while stating that the requested job was not found. The evaluator still requires a source-free refusal for that case. No prompt, question or scoring change was made to correct these misses. The paid rerun on the identity correction is pending.
 
 ## Stability review on c569394
 

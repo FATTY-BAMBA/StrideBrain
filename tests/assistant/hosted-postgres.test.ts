@@ -104,7 +104,8 @@ suite("hosted regressions through authorized records and the Home server action"
     const { turn, fake } = await ask(
       question,
       { name: "get_quote_status", arguments: { projectKey: "PRJ-ACTIVE-001" } },
-      (facts) => `${facts.reference}: ${facts.status}`,
+      (facts) =>
+        `${question.includes("Active Design") ? "Active Design Project 01" : "進行中設計專案01"} (${facts.reference}): ${facts.status}`,
     );
     expect(turn.ai).toBe(true);
     expect(turn.text).toContain("PRJ-ACTIVE-001");

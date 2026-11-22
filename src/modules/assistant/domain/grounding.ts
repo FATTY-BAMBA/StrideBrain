@@ -288,6 +288,7 @@ function checkSingleAnswer(
   sources: readonly AssistantSource[],
   locale: Locale,
   authorizedReferences: readonly string[] = [],
+  sentSubjectNames: readonly string[] = [],
 ): AnswerCheck {
   const parsed = parseAnswer(raw, locale);
   if (!parsed) return { kind: "REJECTED", reason: answerSchemaReason(raw, locale) };
@@ -298,7 +299,7 @@ function checkSingleAnswer(
   const output = text;
   if (hasTruncatedReference(text, sourceReferences(sources, authorizedReferences)))
     return { kind: "REJECTED", reason: "TRUNCATED_REFERENCE" };
-  const references = sourceIdentities(sources, authorizedReferences);
+  const references = sourceIdentities(sources, [...authorizedReferences, ...sentSubjectNames]);
   const quantities = normalizeSimpleNumberWords(withoutReferences(output, references));
   // Simple words use the same numeric ledger; unsupported compound/large words still fail.
   if (
@@ -369,6 +370,7 @@ export function checkAnswer(
   sources: readonly AssistantSource[],
   locale: Locale,
   authorizedReferences: readonly string[] = [],
+  sentSubjectNames: readonly string[] = [],
 ): AnswerCheck {
   const parsed = parseAnswer(raw, locale);
   if (!parsed) return { kind: "REJECTED", reason: answerSchemaReason(raw, locale) };
@@ -377,7 +379,7 @@ export function checkAnswer(
     return { kind: "REJECTED", reason: "UNKNOWN_SOURCE" };
   if (hasTruncatedReference(parsed.text, sourceReferences(sources, authorizedReferences)))
     return { kind: "REJECTED", reason: "TRUNCATED_REFERENCE" };
-  const identities = sourceIdentities(sources, authorizedReferences);
+  const identities = sourceIdentities(sources, [...authorizedReferences, ...sentSubjectNames]);
   const expand = (text: string) =>
     expandFindingSentences(text, citedSources(sources, parsed.sourceIds), (value) =>
       numericTokens(withoutReferences(value, identities)).filter((n) => n.endsWith("%")),
@@ -389,6 +391,7 @@ export function checkAnswer(
     sources,
     locale,
     authorizedReferences,
+    sentSubjectNames,
   );
   if (checked.kind === "REJECTED") return checked;
   return {
@@ -406,6 +409,7 @@ export function checkAnswer(
             sources,
             locale,
             authorizedReferences,
+            sentSubjectNames,
           ).kind === "ACCEPTED"
         );
       }),

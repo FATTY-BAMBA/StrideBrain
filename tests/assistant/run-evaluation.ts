@@ -71,9 +71,14 @@ async function evaluateQuestion(
     },
   ]);
   let rawAnswer: unknown;
+  let sentSubjectNames: string[] = [];
   const ledger: AssistantSource[] = [];
   const model: AssistantModelPort = {
     async generate(input) {
+      const sent = JSON.parse(input.messages[0]!.text) as {
+        subjectProjects?: { names: string[] }[];
+      };
+      sentSubjectNames = sent.subjectProjects?.flatMap((p) => p.names) ?? [];
       const reply = await (provider ?? fake).generate(input);
       if (reply.result.kind === "ANSWER") rawAnswer = reply.result.answer;
       return reply;
@@ -103,7 +108,15 @@ async function evaluateQuestion(
     c,
     referenceCandidates([question.question]),
   );
-  const judgement = evaluateAnswer(question, outcome, facts, rawAnswer, ledger, references);
+  const judgement = evaluateAnswer(
+    question,
+    outcome,
+    facts,
+    rawAnswer,
+    ledger,
+    references,
+    sentSubjectNames,
+  );
   const usage = await getPrismaClient().assistantUsage.aggregate({
     where: { organizationId: c.organizationId, requestId: c.requestId },
     _sum: { inputTokens: true, outputTokens: true, estimatedUsd: true },

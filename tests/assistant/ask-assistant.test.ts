@@ -299,6 +299,34 @@ describe("bounded read-only assistant", () => {
       "Follow-ups must be questions the person can ask and these read tools can answer",
     );
   });
+  it("uses only redacted sent subject names for grounding, never unsent authorized names", async () => {
+    const named = {
+      projectKey: "J",
+      names: ["Active Design Project 01", "進行中設計專案01", "Client A123456789 12345678901234"],
+    };
+    for (const [text, kind] of [
+      ["Active Design Project 01: 5 jobs", "ANSWER"],
+      ["進行中設計專案01: 5 jobs", "ANSWER"],
+      ["Client [removed] [removed]: 5 jobs", "ANSWER"],
+      ["Client A123456789 12345678901234: 5 jobs", "FALLBACK"],
+      ["Unsent job 99: 5 jobs", "FALLBACK"],
+      ["Active Design Project 01: 01 jobs", "FALLBACK"],
+    ]) {
+      const f = setup([call, answer(text)]);
+      f.tools.resolveSubjects.mockResolvedValue({
+        kind: "AVAILABLE",
+        named: [named],
+        projects: [named, { projectKey: "OTHER", names: ["Unsent job 99"] }],
+      });
+      expect(
+        await f.service.execute(jobContext(), { question: "Active Design Project 01 status?" }),
+      ).toMatchObject({ kind });
+      const sent = f.model.requests[0]!.messages[0]!.text;
+      expect(sent).not.toContain("A123456789");
+      expect(sent).not.toContain("12345678901234");
+      expect(sent).not.toContain("Unsent job 99");
+    }
+  });
   it("sends the selected page only when no job is named; Home without selection has none", async () => {
     for (const projectKey of [undefined, "J"]) {
       const f = setup();
