@@ -1,0 +1,49 @@
+{
+  "checks": [
+    "Bilingual Settings saved through UI; issued snapshot remains unchanged after editing address.",
+    "New-job red errors clear per edited field; client hint lists letters/digits/hyphens/underscores.",
+    "Saved draft appears as Issue quote; zero and incomplete settings block confirmation.",
+    "Draft preview downloaded; Traditional Chinese issued PDF served privately from snapshot.",
+    "Open source conflict shows both readings, blocks issue, resolves with required note, and clears live flag.",
+    "Owner issues Q1; issued fields are disabled; Revise preserves Q1 until Q2 supersedes it.",
+    "Home Awaiting client shows number/validity; project manager records acceptance and job becomes APPROVED.",
+    "Viewer sees no amounts, no lifecycle panel and receives PDF 404; PM has no issue button.",
+    "English/Traditional Chinese screens and 390px mobile viewport checked.",
+    "One/two selected past jobs show reference rates/ranges with no suggested amount.",
+    "Fresh findings and count retained on Home Issue quote and the same sentence shown on Quote in English and Traditional Chinese.",
+    "English document language, editable attention and validity, and server document-number preview filename verified.",
+    "Downloaded superseded Q1 again after Settings edit for PDF text comparison."
+  ],
+  "screens": [
+    "en-settings.png",
+    "zh-TW-settings.png",
+    "en-new-job-errors.png",
+    "en-reference-2-prices.png",
+    "en-reference-1-prices.png",
+    "en-home-issue.png",
+    "en-prepare-issue.png",
+    "en-zero-blocker.png",
+    "en-firm-blocker.png",
+    "en-conflict-evidence.png",
+    "en-conflict-blocker.png",
+    "zh-TW-prepare-issue.png",
+    "zh-TW-prepare-mobile.png",
+    "zh-TW-issued-q1.png",
+    "en-home-awaiting.png",
+    "en-issued-q2.png",
+    "en-viewer.png",
+    "en-accepted-pm.png",
+    "en-home-accepted.png",
+    "en-home-issue-findings.png",
+    "en-issue-findings-and-language.png",
+    "zh-TW-home-issue-findings.png"
+  ],
+  "pageErrors": [],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "projectKey": "J-2611-8PDH",
+  "status": "PASS",
+  "versionId": "85ad29a4-9504-4346-ba5f-ce6f0de1c76b",
+  "finalDraftProject": "J-2611-T69N"
+}

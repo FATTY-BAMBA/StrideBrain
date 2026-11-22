@@ -41,6 +41,11 @@ suite("job-neutral populated PostgreSQL migration", () => {
       if (name === "migration_lock.toml") continue;
       await sql.query(readFileSync(`prisma/migrations/${name}/migration.sql`, "utf8"));
     }
+    // Independent document columns/triggers are required by today's seed and Prisma client.
+    // The migration under test remains withheld until its populated-upgrade assertions.
+    await sql.query(
+      readFileSync("prisma/migrations/20261122090000_quote_issue/migration.sql", "utf8"),
+    );
     for (const name of [
       "horizon-atelier",
       "stage2-authorization",

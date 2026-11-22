@@ -10,7 +10,7 @@ It is separate from the pilot preview (`stridebrain-sb034-preview`). That previe
 2. Enter the pull request number, or leave it empty to take the open pull request with the newest commit.
 3. Choose the data option:
    - `keep` leaves the test data as it is.
-   - `reload-seed` deletes the test data and loads the synthetic seed again.
+   - `reload-seed` deletes the test data and loads the synthetic seed again. Do not sign in while this workflow is running: its final check counts sign-in sessions, so a sign-in during the run makes that check fail. Wait until the workflow finishes.
 4. When the run is green, Vercel builds by itself. Wait about three minutes, then open the test-site address and enter the invitation code. The run's summary names the pull request it used.
 
 The workflow is `.github/workflows/test-site.yml`. It does three things, in order:

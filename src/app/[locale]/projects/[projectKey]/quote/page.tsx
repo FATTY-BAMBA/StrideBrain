@@ -1,6 +1,7 @@
+import { QuoteWorkspace } from "@/components/quote-issue/quote-workspace";
+import { createQuoteIssueServices } from "@/lib/server/quote-issue-services";
 import { notFound } from "next/navigation";
 import { ProjectLocalNav } from "@/components/projects/project-local-nav";
-import { QuoteDraftWorkspace } from "@/components/quote-draft/quote-draft-workspace";
 import { getCatalog } from "@/modules/localization/catalog";
 import { isSupportedLocale } from "@/modules/localization/config";
 import { quoteDraftCopy } from "@/modules/localization/quote-draft";
@@ -14,19 +15,26 @@ export default async function QuotePage({
   const { locale, projectKey } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const context = await resolveServerRuntimeContext();
-  let view;
-  try {
-    view = context
-      ? await createQuoteDraftServices().read.execute({ ...context, locale }, projectKey)
-      : null;
-  } catch {
-    view = null;
-  }
+  const [view, issue] = context
+    ? await Promise.all([
+        Promise.resolve()
+          .then(() => createQuoteDraftServices().read.execute({ ...context, locale }, projectKey))
+          .catch(() => null),
+        Promise.resolve()
+          .then(() => createQuoteIssueServices().read.execute({ ...context, locale }, projectKey))
+          .catch(() => null),
+      ])
+    : [null, null];
   return (
     <div className="foundation-page">
       <ProjectLocalNav locale={locale} projectKey={projectKey} labels={getCatalog(locale)} />
       {view?.kind === "AVAILABLE" ? (
-        <QuoteDraftWorkspace key={`${locale}:${projectKey}`} locale={locale} initial={view} />
+        <QuoteWorkspace
+          key={`${locale}:${projectKey}`}
+          view={view}
+          issue={issue?.kind === "AVAILABLE" ? issue : null}
+          locale={locale}
+        />
       ) : (
         <p role="status">{quoteDraftCopy(locale).UNAVAILABLE}</p>
       )}

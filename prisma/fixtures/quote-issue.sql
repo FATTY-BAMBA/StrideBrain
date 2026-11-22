@@ -1,0 +1,4 @@
+-- Explicitly synthetic document details. example.invalid is not a deliverable address.
+INSERT INTO "QuoteDocumentDetails" (id,"organizationId","legalNameEn","legalNameZhTw","taxId","addressEn","addressZhTw",phone,email,"defaultValidityDays","termsEn","termsZhTw","updatedAt")
+VALUES ('quote_details_horizon','org_horizon','Horizon Atelier — Synthetic Studio','禾序空間設計（合成示範公司）','00000000','100 Sample Road, Taipei City (synthetic address)','臺北市示範路100號（合成地址）','02-0000-0000','quotes@example.invalid',30,'Synthetic demonstration quote. Scope changes require a revised quote.','本報價僅供合成資料示範。工作範圍變更須另行修改報價。',NOW())
+ON CONFLICT ("organizationId") DO UPDATE SET "legalNameEn"=EXCLUDED."legalNameEn","legalNameZhTw"=EXCLUDED."legalNameZhTw","taxId"=EXCLUDED."taxId","addressEn"=EXCLUDED."addressEn","addressZhTw"=EXCLUDED."addressZhTw",phone=EXCLUDED.phone,email=EXCLUDED.email,"defaultValidityDays"=30,"termsEn"=EXCLUDED."termsEn","termsZhTw"=EXCLUDED."termsZhTw","updatedAt"=NOW();

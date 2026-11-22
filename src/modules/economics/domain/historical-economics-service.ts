@@ -235,7 +235,10 @@ function aggregate(
     }
   }
   const included = [...uniqueProjectObservations.values()];
-  if (included.length < REQUIRED_HISTORY_COUNT) {
+  if (
+    included.length < REQUIRED_HISTORY_COUNT &&
+    (included.length === 0 || observationType !== "QUOTED_PRICE")
+  ) {
     return Object.freeze({
       state: conflictPresent ? "CONFLICTED" : "INSUFFICIENT",
       observationType,
@@ -262,11 +265,18 @@ function aggregate(
     medianNormalizedAmount: decimalToString(center),
     minimumNormalizedAmount: decimalToString(bounds.minimum),
     maximumNormalizedAmount: decimalToString(bounds.maximum),
-    equivalentAmountForActiveProject: decimalToString(equivalent),
+    ...(included.length >= REQUIRED_HISTORY_COUNT
+      ? { equivalentAmountForActiveProject: decimalToString(equivalent) }
+      : {}),
   });
 
   return Object.freeze({
-    state: "SUFFICIENT",
+    state:
+      included.length >= REQUIRED_HISTORY_COUNT
+        ? "SUFFICIENT"
+        : conflictPresent
+          ? "CONFLICTED"
+          : "INSUFFICIENT",
     observationType,
     requiredObservationCount: REQUIRED_HISTORY_COUNT,
     eligibleObservationCount: included.length,

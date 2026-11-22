@@ -142,6 +142,7 @@ model Organization {
   evidenceReferences   EvidenceReference[]
   evidenceConflicts    EvidenceConflict[]
   quotes               Quote[]
+  quoteDocumentDetails QuoteDocumentDetails?
   quoteVersions        QuoteVersion[]
   quoteItems           QuoteItem[]
   forecastCostVersions ForecastCostVersion[]
@@ -204,6 +205,9 @@ model Membership {
   createdInternalReviews Action[] @relation("CreatedInternalReview")
   assignedInternalReviews Action[] @relation("AssignedInternalReview")
   internalReviewReceipts InternalReviewReceipt[] @relation("InternalReviewReceiptActor")
+
+  issuedQuoteVersions QuoteVersion[] @relation("QuoteIssuer")
+  acceptedQuoteVersions QuoteVersion[] @relation("QuoteAcceptor")
 
   @@unique([organizationId, personId])
   @@unique([id, organizationId])
@@ -518,6 +522,24 @@ model EvidenceConflict {
   @@index([organizationId, status])
 }
 
+model QuoteDocumentDetails {
+  id String @id
+  organizationId String @unique
+  legalNameEn String
+  legalNameZhTw String
+  taxId String
+  addressEn String
+  addressZhTw String
+  phone String
+  email String
+  defaultValidityDays Int @default(30)
+  termsEn String
+  termsZhTw String
+  updatedAt DateTime @updatedAt
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  @@unique([id, organizationId])
+}
+
 model Quote {
   id             String   @id
   organizationId String
@@ -549,8 +571,17 @@ model QuoteVersion {
   validUntil        DateTime?        @db.Date
   supersededById    String?
   approvedAt        DateTime?
+  issuedAt          DateTime?
+  issuedByMembershipId String?
+  documentNumber    String?
+  documentSnapshot Json?
+  acceptedOn        DateTime? @db.Date
+  acceptedByMembershipId String?
+  acceptanceNote    String?
   createdAt         DateTime         @default(now())
 
+  issuer Membership? @relation("QuoteIssuer", fields: [issuedByMembershipId, organizationId], references: [id, organizationId], onDelete: Restrict)
+  acceptor Membership? @relation("QuoteAcceptor", fields: [acceptedByMembershipId, organizationId], references: [id, organizationId], onDelete: Restrict)
   organization Organization    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   quote        Quote           @relation(fields: [quoteId], references: [id], onDelete: Cascade)
   supersededBy QuoteVersion?   @relation("QuoteVersionSupersession", fields: [supersededById], references: [id], onDelete: SetNull)
@@ -560,6 +591,7 @@ model QuoteVersion {
 
   @@unique([organizationId, quoteId, versionNumber])
   @@unique([id, organizationId])
+  @@unique([organizationId, documentNumber])
   @@index([organizationId, authorityState, approvedAt])
 }
 

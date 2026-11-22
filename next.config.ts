@@ -4,6 +4,8 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   typedRoutes: true,
+  serverExternalPackages: ["pdfkit"],
+  outputFileTracingIncludes: { "/api/quotes/*/pdf": ["./assets/fonts/**"] },
   async headers() {
     return [
       {

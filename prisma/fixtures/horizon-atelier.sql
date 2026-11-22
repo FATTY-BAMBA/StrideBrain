@@ -30,11 +30,15 @@ ALTER TABLE "AuditEvent" DISABLE TRIGGER "AuditEvent_append_only";
 ALTER TABLE "Action" DISABLE TRIGGER "Action_stage8_immutable";
 ALTER TABLE "ProposedAction" DISABLE TRIGGER "ProposedAction_stage8_immutable";
 ALTER TABLE "InternalReviewReceipt" DISABLE TRIGGER "InternalReviewReceipt_immutable";
+ALTER TABLE "QuoteVersion" DISABLE TRIGGER "QuoteVersion_issued_immutable";
+ALTER TABLE "QuoteItem" DISABLE TRIGGER "QuoteItem_issued_immutable";
 
 DELETE FROM "InternalReviewReceipt" WHERE "organizationId" IN ('org_horizon', 'org_northern');
 DELETE FROM "AuditEvent" WHERE "organizationId" IN ('org_horizon', 'org_northern');
 DELETE FROM "Action" WHERE "organizationId" IN ('org_horizon', 'org_northern');
 DELETE FROM "ProposedAction" WHERE "organizationId" IN ('org_horizon', 'org_northern');
+
+DELETE FROM "QuoteVersion" WHERE "organizationId" IN ('org_horizon', 'org_northern');
 
 DELETE FROM "Organization"
 WHERE "id" IN ('org_horizon', 'org_northern')
@@ -708,13 +712,16 @@ ALTER TABLE "AuditEvent" ENABLE TRIGGER "AuditEvent_append_only";
 ALTER TABLE "Action" ENABLE TRIGGER "Action_stage8_immutable";
 ALTER TABLE "ProposedAction" ENABLE TRIGGER "ProposedAction_stage8_immutable";
 ALTER TABLE "InternalReviewReceipt" ENABLE TRIGGER "InternalReviewReceipt_immutable";
+ALTER TABLE "QuoteVersion" ENABLE TRIGGER "QuoteVersion_issued_immutable";
+ALTER TABLE "QuoteItem" ENABLE TRIGGER "QuoteItem_issued_immutable";
 
 DO $$
 BEGIN
   IF (SELECT count(*) FROM pg_trigger
       WHERE tgname IN ('AuditEvent_append_only', 'Action_stage8_immutable',
-        'ProposedAction_stage8_immutable', 'InternalReviewReceipt_immutable')
-        AND NOT tgisinternal AND tgenabled = 'O') <> 4 THEN
+        'ProposedAction_stage8_immutable', 'InternalReviewReceipt_immutable',
+        'QuoteVersion_issued_immutable', 'QuoteItem_issued_immutable')
+        AND NOT tgisinternal AND tgenabled = 'O') <> 6 THEN
     RAISE EXCEPTION 'SYNTHETIC_FIXTURE_IMMUTABILITY_NOT_RESTORED';
   END IF;
 END $$;

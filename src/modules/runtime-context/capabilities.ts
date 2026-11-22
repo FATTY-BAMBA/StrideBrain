@@ -7,6 +7,7 @@ export const ALL_CAPABILITIES = Object.freeze([
   "project:compare",
   "quote:read",
   "quote:draft",
+  "quote:issue",
   "commercial:forecast-read",
   "commercial:actual-read",
   "evidence:read",

@@ -113,7 +113,7 @@ const en = {
   nameHelp: "Names are saved as entered and shown in both languages.",
   keyHelp:
     "The job reference is generated for you and can be edited. Use letters, numbers, hyphens or underscores.",
-  clientKeyHelp: "Enter a unique reference for the new client.",
+  clientKeyHelp: "Enter a unique client code using letters, digits, hyphens and underscores.",
 } as const;
 const zh: Record<keyof typeof en, string> = {
   newJob: "建立專案",
@@ -165,7 +165,7 @@ const zh: Record<keyof typeof en, string> = {
   stageHelp: "變更階段用於追蹤進度。請透過結案流程完成專案。",
   nameHelp: "名稱依輸入內容儲存，兩種語言皆顯示相同名稱。",
   keyHelp: "已自動產生專案編號，可自行編輯。請使用英文字母、數字、連字號或底線。",
-  clientKeyHelp: "請為新客戶指定未使用的編號。",
+  clientKeyHelp: "請為新客戶指定未使用的編號，可使用英文字母、數字、連字號及底線。",
 };
 export function jobsCopy(locale: Locale): Record<keyof typeof en, string> {
   return locale === "zh-TW" ? zh : en;
