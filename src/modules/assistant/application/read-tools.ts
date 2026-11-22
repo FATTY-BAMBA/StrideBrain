@@ -51,7 +51,7 @@ export const assistantTools: readonly ToolDefinition[] = [
   {
     name: "get_quote_status",
     description:
-      "Read current quote status, latest issued document number, validity and acceptance. Restricted without quote access.",
+      "Read current quote status, latest issued document number, validity, acceptance and server-formatted quote amounts (latest issued, otherwise current draft). Restricted without quote access.",
     parameters: jobParameters,
   },
   {
@@ -128,6 +128,7 @@ export class AssistantReadTools {
       link: string,
       facts: Record<string, unknown>,
       projectKeys: readonly string[],
+      typedFactPaths: readonly string[] = [],
     ): AssistantSource => ({
       sourceId: `src_${createHash("sha256")
         .update(`${call.name}:${identity}:${JSON.stringify(facts)}`)
@@ -137,6 +138,7 @@ export class AssistantReadTools {
       href: link,
       facts,
       projectKeys,
+      typedFactPaths,
     });
     const finish = (sources: AssistantSource[]): ToolResult =>
       sources.length ? { status: "OK", sources } : empty("NO_RECORDS");
@@ -189,6 +191,7 @@ export class AssistantReadTools {
           href(j.businessKey),
           { reference: j.businessKey, name: j.name, stage: projectStageLabel(c.locale, j.stage) },
           [j.businessKey],
+          ["reference", "stage"],
         ),
       );
       if (sources.length)
@@ -203,6 +206,7 @@ export class AssistantReadTools {
               ...(allowed.length > offset + 20 ? { nextOffset: offset + 20 } : {}),
             },
             page.map((j) => j.businessKey),
+            ["count", "nextOffset"],
           ),
         );
       return finish(sources);
@@ -226,6 +230,7 @@ export class AssistantReadTools {
             scopeCategories: j.scopeCategories.map((s) => s.name.display),
           },
           [projectKey],
+          ["reference", "stage", "area"],
         ),
       ]);
     }
@@ -233,6 +238,7 @@ export class AssistantReadTools {
       if (!c.capabilities.has("quote:read")) return empty("UNAVAILABLE");
       const q = await this.services.quote.execute(c, projectKey);
       if (q.kind !== "AVAILABLE") return empty("UNAVAILABLE");
+      const issued = q.latestIssued ?? q.issued;
       return finish([
         source(
           projectKey,
@@ -241,16 +247,25 @@ export class AssistantReadTools {
           {
             reference: projectKey,
             status: q.status,
-            issued: q.issued
+            amounts: q.amounts
               ? {
-                  status: q.issued.status,
-                  documentNumber: q.issued.documentNumber,
-                  validUntil: q.issued.validUntil,
-                  acceptedOn: q.issued.acceptedOn,
+                  ...q.amounts,
+                  amountBeforeTax: formatMoney(q.amounts.amountBeforeTax, q.amounts.currency),
+                  taxAmount: formatMoney(q.amounts.taxAmount, q.amounts.currency),
+                  totalAmount: formatMoney(q.amounts.totalAmount, q.amounts.currency),
+                }
+              : null,
+            issued: issued
+              ? {
+                  status: issued.status,
+                  documentNumber: issued.documentNumber,
+                  validUntil: issued.validUntil,
+                  acceptedOn: issued.acceptedOn,
                 }
               : null,
           },
           [projectKey],
+          ["reference", "status", "issued", "amounts"],
         ),
       ]);
     }
@@ -278,6 +293,7 @@ export class AssistantReadTools {
                 acceptedOn: null,
               },
               [row.project.businessKey],
+              ["reference", "documentNumber", "validUntil", "status", "acceptedOn"],
             ),
           );
         }
@@ -299,6 +315,15 @@ export class AssistantReadTools {
                 reconciledActualCost: formatMoney(row.lesson.actualCost, row.lesson.currency),
               },
               [row.project.businessKey],
+              [
+                "category",
+                "quoteBeforeTax",
+                "actualCost",
+                "difference",
+                "currency",
+                "quotedPrice",
+                "reconciledActualCost",
+              ],
             ),
           );
         }
@@ -311,6 +336,7 @@ export class AssistantReadTools {
             `/${c.locale}`,
             { count: sources.length },
             sources.flatMap((s) => s.projectKeys),
+            ["count"],
           ),
         );
       return finish(sources);
@@ -349,6 +375,7 @@ export class AssistantReadTools {
             findings,
           },
           keys,
+          ["pastJobs.*.score", "findings.*.text"],
         ),
       ];
       if (!(await this.canSend(c, sources))) return empty("UNAVAILABLE");
@@ -398,6 +425,18 @@ export class AssistantReadTools {
                 : {}),
             },
             keys,
+            [
+              "category",
+              "observationType",
+              "count",
+              "median",
+              "low",
+              "high",
+              "unit",
+              "displayMedian",
+              "displayLow",
+              "displayHigh",
+            ],
           ),
         );
       if (!(await this.canSend(c, sources))) return empty("UNAVAILABLE");

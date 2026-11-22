@@ -35,6 +35,7 @@ const answer = (text = "5 jobs."): ModelReply => ({
 function setup(script: ConstructorParameters<typeof FakeAssistantModel>[0] = [call, answer()]) {
   const model = new FakeAssistantModel(script);
   const repo = {
+    readableReferences: vi.fn().mockResolvedValue([]),
     enabled: vi.fn().mockResolvedValue(true),
     jobPolicy: vi.fn().mockResolvedValue({ id: "J", excluded: false }),
     settings: vi.fn(),
@@ -154,4 +155,68 @@ describe("bounded read-only assistant", () => {
     expect(out.kind === "ANSWER" && out.answer.text).toBe("此專案已設定為不提供給 AI。");
     expect(f.model.requests[0]?.messages[0]?.text).not.toContain("A123456789");
   });
+  it.each(["20261103-01", "2026-0012", "113-0825-01", "J-2611-2345"])(
+    "keeps the authorized question, result and answer reference %s",
+    async (reference) => {
+      const text = `${reference}: 12500000.00`;
+      const f = setup([call, answer(text)]);
+      f.repo.readableReferences.mockResolvedValue([reference]);
+      f.tools.execute.mockResolvedValue({
+        status: "OK",
+        sources: [
+          {
+            ...source,
+            projectKeys: [reference],
+            facts: {
+              reference,
+              observationType: "QUOTED_PRICE",
+              amount: "12500000.00",
+              name: "A123456789 12345678901234",
+              evidenceReferenceIds: ["private_evidence"],
+            },
+            typedFactPaths: ["reference", "amount", "observationType"],
+          },
+        ],
+      });
+      const out = await f.service.execute(jobContext(), {
+        question: `What is the price for ${reference}?`,
+      });
+      expect(out.kind).toBe("ANSWER");
+      expect(f.model.requests[0]?.messages[0]?.text).toContain(reference);
+      const sent = f.model.requests[1]?.messages[1]?.text ?? "";
+      expect(sent).toContain("12500000.00");
+      expect(sent).toContain(reference);
+      expect(sent).not.toMatch(/A123456789|12345678901234|evidenceReferenceIds|private_evidence/);
+      expect(f.repo.readableReferences).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.arrayContaining([reference]),
+      );
+    },
+  );
+  it("returns a code identifying a discarded answer without logging its text", async () => {
+    const f = setup([call, answer("6 jobs.")]);
+    expect(await f.service.execute(jobContext(), { question: "Jobs?" })).toEqual({
+      kind: "FALLBACK",
+      reason: "UNGROUNDED",
+      discardReason: "UNSUPPORTED_NUMBER",
+    });
+    expect(JSON.stringify(f.repo.finishTurn.mock.calls)).not.toContain("6 jobs");
+  });
+  it.each(["NO_RECORDS", "OUT_OF_DATE", "EXCLUDED", "UNAVAILABLE"] as const)(
+    "preserves refusal cause %s for the experience fallback decision",
+    async (status) => {
+      const f = setup([
+        call,
+        {
+          usage,
+          result: { kind: "ANSWER", answer: { text: "No records", sourceIds: [], followUps: [] } },
+        },
+      ]);
+      f.tools.execute.mockResolvedValue({ status, sources: [] });
+      expect(await f.service.execute(jobContext(), { question: "Jobs?" })).toMatchObject({
+        kind: "ANSWER",
+        refusal: status,
+      });
+    },
+  );
 });

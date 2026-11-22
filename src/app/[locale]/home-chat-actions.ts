@@ -221,6 +221,7 @@ function comparableReply(
 async function askKeywordAction(
   previous: HomeChatState,
   formData: FormData,
+  onlyMatched = false,
 ): Promise<HomeChatState> {
   const rawLocale = formData.get("locale");
   const rawMessage = formData.get("message");
@@ -252,6 +253,7 @@ async function askKeywordAction(
   const context = await loadDemoValueContext(locale, requestedProject ?? undefined);
   const workspace = context.workspace;
   if (!workspace) {
+    if (onlyMatched) return previous;
     return append(previous, [
       userTurn,
       {
@@ -365,6 +367,7 @@ async function askKeywordAction(
     /(evidence|source|support|佐證|來源)/i.test(normalized);
 
   if (!needsComparison) {
+    if (onlyMatched) return previous;
     return append(previous, [
       userTurn,
       {
@@ -711,6 +714,13 @@ export async function askHomeAction(
           },
         );
         if (result.kind === "ANSWER") {
+          if (result.refusal === "NO_RECORDS" || result.refusal === "OUT_OF_DATE") {
+            const keywordForm = new FormData();
+            for (const [key, value] of formData) keywordForm.append(key, value);
+            keywordForm.set("locale", result.locale);
+            const keyword = await askKeywordAction(previous, keywordForm, true);
+            if (keyword !== previous) return keyword;
+          }
           const now = Date.now();
           return append(previous, [
             { id: `user-${now}`, role: "user", text: rawMessage.trim() },

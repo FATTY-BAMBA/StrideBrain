@@ -85,6 +85,7 @@ export async function runEvaluationQuestion(
     id: question.id,
     locale: question.locale,
     ...judgement,
+    discardReason: outcome.kind === "FALLBACK" ? (outcome.discardReason ?? outcome.reason) : null,
     latencyMs,
     calls: usage._count,
     inputTokens: usage._sum.inputTokens ?? 0,

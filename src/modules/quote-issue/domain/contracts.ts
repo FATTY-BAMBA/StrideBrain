@@ -106,6 +106,7 @@ export type IssueState = Readonly<{
     acceptedOn: string | null;
     snapshot: QuoteDocumentSnapshot;
   }> | null;
+  latestIssued?: IssueState["issued"];
   sourceAccess: boolean;
   conflicts: readonly LineConflict[];
   basisOutOfDate: boolean;

@@ -4,7 +4,8 @@ import type {
   ToolCall,
 } from "@/modules/assistant/domain/contracts";
 import type { Locale } from "@/modules/localization/config";
-import { numericTokens, record } from "@/modules/assistant/domain/grounding";
+import { redactSource } from "@/modules/assistant/domain/redaction";
+import { hasUnsupportedNumbers, numericTokens, record } from "@/modules/assistant/domain/grounding";
 export type EvaluationQuestion = {
   id: string;
   locale: Locale;
@@ -42,8 +43,18 @@ export function evaluateAnswer(
 ) {
   const raw = record(rawAnswer),
     text = typeof raw?.text === "string" ? raw.text : "";
-  const supplied = new Set(numericTokens(JSON.stringify(ledger.map((s) => s.facts))));
-  const wrongNumber = numericTokens(text).some((n) => !supplied.has(n));
+  const cited = Array.isArray(raw?.sourceIds)
+    ? ledger
+        .filter((s) => (raw.sourceIds as unknown[]).includes(s.sourceId))
+        .map((s) => redactSource(s, s.projectKeys))
+    : [];
+  const output = [
+    text,
+    ...(Array.isArray(raw?.followUps)
+      ? raw.followUps.filter((f): f is string => typeof f === "string")
+      : []),
+  ].join(" ");
+  const wrongNumber = hasUnsupportedNumbers(output, cited);
   if (outcome.kind !== "ANSWER" || wrongNumber) return { verdict: "wrong" as const, wrongNumber };
   if (
     question.expected.forbidden.some(

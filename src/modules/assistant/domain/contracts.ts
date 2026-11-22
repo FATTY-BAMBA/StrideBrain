@@ -23,6 +23,8 @@ export type AssistantSource = Readonly<{
   facts: Readonly<Record<string, unknown>>;
   /** Server-only access dependencies; never model-controlled. */
   projectKeys: readonly string[];
+  /** Server-produced paths exempt from free-text redaction; never sent to the model. */
+  typedFactPaths?: readonly string[];
 }>;
 export type ToolResult = Readonly<{
   status: "OK" | "NO_RECORDS" | "UNAVAILABLE" | "EXCLUDED" | "OUT_OF_DATE";
@@ -64,12 +66,13 @@ export type FallbackReason =
   | "UNGROUNDED"
   | "ACCESS_CHANGED";
 export type AssistantOutcome =
-  | Readonly<{ kind: "FALLBACK"; reason: FallbackReason }>
+  | Readonly<{ kind: "FALLBACK"; reason: FallbackReason; discardReason?: string }>
   | Readonly<{
       kind: "ANSWER";
       answer: StructuredAnswer;
       sources: readonly AssistantSource[];
       locale: Locale;
+      refusal?: "NO_RECORDS" | "OUT_OF_DATE" | "EXCLUDED" | "UNAVAILABLE";
     }>;
 export type AssistantConfig = Readonly<{
   enabled: boolean;

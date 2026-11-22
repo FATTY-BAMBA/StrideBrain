@@ -35,6 +35,42 @@ async function job(tx: Prisma.TransactionClient, c: RuntimeContext, key: string)
 }
 export class PrismaAssistantRepository implements AssistantRepositoryPort {
   constructor(private readonly db: PrismaClient) {}
+  async readableReferences(c: RuntimeContext, candidates: readonly string[]) {
+    if (!c.capabilities.has("project:read") || !(await member(this.db, c)) || !candidates.length)
+      return [];
+    const predicate: Prisma.ProjectWhereInput = {
+      organizationId: c.organizationId,
+      deletedAt: null,
+      ...(c.role === "ORGANIZATION_ADMIN"
+        ? {}
+        : {
+            assignments: {
+              some: { organizationId: c.organizationId, membershipId: c.membershipId },
+            },
+          }),
+    };
+    const projects = await this.db.project.findMany({
+      where: { ...predicate, businessKey: { in: [...candidates] } },
+      select: { id: true, businessKey: true },
+    });
+    const quotes = c.capabilities.has("quote:read")
+      ? await this.db.quoteVersion.findMany({
+          where: {
+            organizationId: c.organizationId,
+            documentNumber: { in: [...candidates] },
+            quote: { organizationId: c.organizationId, project: predicate },
+          },
+          select: { documentNumber: true, quote: { select: { projectId: true } } },
+        })
+      : [];
+    const auth = new AuthorizationService();
+    return [
+      ...projects.filter((p) => auth.canReadProject(c, p.id).allowed).map((p) => p.businessKey),
+      ...quotes
+        .filter((q) => q.documentNumber && auth.canReadProject(c, q.quote.projectId).allowed)
+        .map((q) => q.documentNumber!),
+    ];
+  }
   async enabled(c: RuntimeContext) {
     if (!c.capabilities.has("project:read") || !(await member(this.db, c))) return false;
     return (

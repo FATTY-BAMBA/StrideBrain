@@ -34,7 +34,7 @@ const en = {
   dataNever:
     "Excluded jobs, inaccessible records, passwords and credentials are never included in record results. Taiwan ID numbers, bank account and card numbers, and password fields are removed before sending. Conversations are not stored by StrideBrain; usage logs contain metadata, not questions or answers.",
   dataTraining:
-    "Under Google's paid API terms, prompts and responses are not used to train or improve its models. Google may retain limited data for abuse monitoring under those terms.",
+    "Under Google's paid API terms, prompts and responses are not used to train or improve its models. Google may retain limited data for abuse monitoring under those terms. Google may process this content outside Taiwan.",
   dataOff:
     "An owner can switch AI off in Settings. People who can update a job can exclude it on its overview. With AI off or unavailable, record search continues to work.",
   terms: "Google Gemini API terms",
@@ -71,7 +71,7 @@ const zh: typeof en = {
   dataNever:
     "紀錄結果不會包含已排除的專案、無權查看的紀錄、密碼或憑證。傳送前會移除臺灣身分證字號、銀行帳號、卡號及密碼欄位。StrideBrain 不儲存對話；用量紀錄僅含中繼資料，不含問題或回答。",
   dataTraining:
-    "依 Google 付費 API 條款，問題與回答不會用於訓練或改善其模型。Google 可能依條款保留有限資料以監控濫用。",
+    "依 Google 付費 API 條款，問題與回答不會用於訓練或改善其模型。Google 可能依條款保留有限資料以監控濫用。Google 可能在臺灣以外地區處理這些內容。",
   dataOff:
     "擁有者可在設定中關閉 AI。有權更新專案的人可在專案總覽排除該專案。AI 關閉或無法使用時，仍可搜尋紀錄。",
   terms: "Google Gemini API 條款",

@@ -1,3 +1,7 @@
+import { prepareEvaluation } from "./evaluation-fixture";
+import { ReviseIssuedQuote } from "@/modules/quote-issue/application/issue-services";
+import { PrismaQuoteIssueRepository } from "@/repositories/prisma/prisma-quote-issue-repository";
+import { formatMoney } from "@/modules/finance/format-money";
 import { beforeAll, afterAll, describe, it, expect, vi } from "vitest";
 vi.mock("server-only", () => ({}));
 import { randomUUID } from "node:crypto";
@@ -260,5 +264,106 @@ suite("assistant PostgreSQL access, controls and metadata", () => {
     expect(rows[0]).not.toHaveProperty("answer");
     const viewer = { ...c, role: "VIEWER" as const, capabilities: roleBundle("VIEWER") };
     expect(await service.repository.settings(viewer, new Date("2026-01-01"))).toBeNull();
+  });
+  it("only exempts references and document numbers readable by the asking member", async () => {
+    const owner = await db.actor(),
+      service = createAssistantServices();
+    const project = await getPrismaClient().project.findFirstOrThrow({
+      where: { organizationId: owner.organizationId, businessKey: "PRJ-ACTIVE-001" },
+    });
+    for (const key of ["20261103-01", "2026-0012", "113-0825-01", "J-2611-2345"]) {
+      await getPrismaClient().project.update({
+        where: { id: project.id },
+        data: { businessKey: key },
+      });
+      expect(await service.repository.readableReferences(owner, [key, "12345678901234"])).toEqual([
+        key,
+      ]);
+      expect(
+        await service.repository.readableReferences(await db.actor("membership_northern_owner"), [
+          key,
+        ]),
+      ).toEqual([]);
+      expect(
+        await service.repository.readableReferences(await db.actor("membership_horizon_mei"), [
+          key,
+        ]),
+      ).toEqual([]);
+    }
+    await getPrismaClient().project.update({
+      where: { id: project.id },
+      data: { businessKey: project.businessKey },
+    });
+  });
+  it("returns current draft or latest issued amounts to the owner, never to Viewer, including during a revision", async () => {
+    const owner = await db.actor(),
+      service = createAssistantServices(),
+      prisma = getPrismaClient();
+    const read = () =>
+      service.tools.execute(owner, {
+        name: "get_quote_status",
+        arguments: { projectKey: "PRJ-ACTIVE-001" },
+      });
+    const draft = await prisma.quoteVersion.findFirstOrThrow({
+      where: {
+        organizationId: owner.organizationId,
+        quote: { project: { businessKey: "PRJ-ACTIVE-001" } },
+        supersededById: null,
+      },
+    });
+    expect((await read()).sources[0]?.facts.amounts).toEqual({
+      basis: "DRAFT",
+      currency: draft.currency,
+      amountBeforeTax: formatMoney(draft.amountBeforeTax.toFixed(2), draft.currency),
+      taxAmount: formatMoney(draft.taxAmount.toFixed(2), draft.currency),
+      totalAmount: formatMoney(draft.totalAmount.toFixed(2), draft.currency),
+    });
+    await prepareEvaluation(db);
+    const issued = await prisma.quoteVersion.findUniqueOrThrow({ where: { id: draft.id } });
+    expect((await read()).sources[0]?.facts.amounts).toMatchObject({
+      basis: "ISSUED",
+      totalAmount: formatMoney(issued.totalAmount.toFixed(2), issued.currency),
+    });
+    expect(await service.repository.readableReferences(owner, [issued.documentNumber!])).toEqual([
+      issued.documentNumber,
+    ]);
+    const viewer = await db.actor("membership_horizon_viewer");
+    await prisma.projectAssignment.create({
+      data: {
+        id: randomUUID(),
+        organizationId: owner.organizationId,
+        projectId: (await prisma.quote.findUniqueOrThrow({ where: { id: issued.quoteId } }))
+          .projectId,
+        membershipId: viewer.membershipId,
+      },
+    });
+    const assignedViewer = await db.actor("membership_horizon_viewer");
+    expect(
+      await service.repository.readableReferences(assignedViewer, [issued.documentNumber!]),
+    ).toEqual([]);
+    expect(
+      (
+        await service.tools.execute(assignedViewer, {
+          name: "get_quote_status",
+          arguments: { projectKey: "PRJ-ACTIVE-001" },
+        })
+      ).sources,
+    ).toEqual([]);
+    const revised = await new ReviseIssuedQuote(new PrismaQuoteIssueRepository(prisma)).execute(
+      { ...owner, requestId: randomUUID() },
+      { projectKey: "PRJ-ACTIVE-001", versionId: issued.id, idempotencyKey: randomUUID() },
+    );
+    expect(revised.kind).toBe("REVISED");
+    const current = await prisma.quoteVersion.findFirstOrThrow({
+      where: { quoteId: draft.quoteId, supersededById: null, status: "DRAFT" },
+    });
+    await prisma.quoteVersion.update({
+      where: { id: current.id },
+      data: { amountBeforeTax: "100", taxAmount: "5", totalAmount: "105" },
+    });
+    expect((await read()).sources[0]?.facts.amounts).toMatchObject({
+      basis: "ISSUED",
+      totalAmount: formatMoney(issued.totalAmount.toFixed(2), issued.currency),
+    });
   });
 });

@@ -11,9 +11,16 @@ import type {
   ToolName,
   ToolResult,
 } from "../domain/contracts";
-import { parseAnswer, questionLocale, verifyAnswer } from "../domain/grounding";
+import { answerSchemaReason, checkAnswer, parseAnswer, questionLocale } from "../domain/grounding";
 import { estimatedCost } from "../domain/usage-cost";
-import { redact, redactText } from "../domain/redaction";
+import {
+  redact,
+  redactText,
+  redactSource,
+  modelFacts,
+  typedAnswerValues,
+  referenceCandidates,
+} from "../domain/redaction";
 import { assistantTools, type AssistantReadTools } from "./read-tools";
 
 const instructions = `You answer only from this turn's authorized tool results. You have no other knowledge of this firm's records.
@@ -56,10 +63,43 @@ export class AskAssistant {
     const controller = new AbortController(),
       timer = setTimeout(() => controller.abort(), this.config.timeoutMs);
     let started = false;
+    let sawAnswer = false;
+    let references: readonly string[] = [];
     let currentCallId: string | undefined;
-    const fallback = async (reason: FallbackReason): Promise<AssistantOutcome> => {
+    const fallback = async (
+      reason: FallbackReason,
+      discardReason?: string,
+    ): Promise<AssistantOutcome> => {
       if (started) await this.repository.finishTurn(c, `FALLBACK_${reason}`).catch(() => undefined);
-      return { kind: "FALLBACK", reason };
+      return {
+        kind: "FALLBACK",
+        reason,
+        ...(sawAnswer ? { discardReason: discardReason ?? reason } : {}),
+      };
+    };
+    const refusal = async (
+      state: "EXCLUDED" | "OUT_OF_DATE" | "NO_RECORDS" | "UNAVAILABLE",
+    ): Promise<AssistantOutcome> => {
+      const text =
+        state === "EXCLUDED"
+          ? locale === "zh-TW"
+            ? "此專案已設定為不提供給 AI。"
+            : "This job is excluded from AI."
+          : state === "OUT_OF_DATE"
+            ? locale === "zh-TW"
+              ? "已儲存的比較已過期，請開啟比較後重新執行。"
+              : "The saved comparison is out of date. Open the comparison to run it again."
+            : locale === "zh-TW"
+              ? "我只能根據您可查看的公司紀錄回答；目前的紀錄沒有顯示這項資訊。"
+              : "I can only answer from company records you may read. The records do not show this information.";
+      await this.repository.finishTurn(c, "ANSWERED");
+      return {
+        kind: "ANSWER",
+        locale,
+        refusal: state,
+        answer: { text, sourceIds: [], followUps: [] },
+        sources: [],
+      };
     };
     const bounded = <T>(work: Promise<T>): Promise<T> => {
       if (controller.signal.aborted) return Promise.reject(new Error("TIMEOUT"));
@@ -74,22 +114,35 @@ export class AskAssistant {
     const sources: AssistantSource[] = [],
       results: ToolResult[] = [],
       names: ToolName[] = [];
-    const messages: ModelMessage[] = [
-      {
-        role: "user",
-        text: JSON.stringify(
-          redact({
-            previousQuestions: input.previousQuestions ?? [],
-            currentQuestion: input.question,
-            ...(input.projectKey ? { selectedProjectReference: input.projectKey } : {}),
-          }),
-        ),
-      },
-    ];
+    const messages: ModelMessage[] = [];
     let calls = 0;
     try {
       if (!(await bounded(this.repository.enabled(c))))
         return { kind: "FALLBACK", reason: "DISABLED" };
+      references = await bounded(
+        this.repository.readableReferences(
+          c,
+          referenceCandidates([
+            input.question,
+            ...(input.previousQuestions ?? []),
+            input.projectKey ?? "",
+          ]),
+        ),
+      );
+      messages.push({
+        role: "user",
+        text: JSON.stringify(
+          redact(
+            {
+              previousQuestions: input.previousQuestions ?? [],
+              currentQuestion: input.question,
+              ...(input.projectKey ? { selectedProjectReference: input.projectKey } : {}),
+            },
+            "",
+            references,
+          ),
+        ),
+      });
       for (;;) {
         if (!(await bounded(this.repository.enabled(c)))) return await fallback("DISABLED");
         if (!(await bounded(this.tools.canSend(c, sources))))
@@ -112,6 +165,7 @@ export class AskAssistant {
             signal: controller.signal,
           }),
         );
+        sawAnswer = reply.result.kind === "ANSWER";
         if (
           ![reply.usage.inputTokens, reply.usage.outputTokens].every(
             (n) => Number.isSafeInteger(n) && n >= 0 && n <= 10000000,
@@ -134,38 +188,34 @@ export class AskAssistant {
           )
             return await fallback("ACCESS_CHANGED");
           const raw = parseAnswer(reply.result.answer, locale);
-          if (!raw) return await fallback("INVALID_OUTPUT");
-          const emptyAnswer = raw.sourceIds.length === 0;
+          if (!raw)
+            return await fallback(
+              "INVALID_OUTPUT",
+              answerSchemaReason(reply.result.answer, locale),
+            );
+          const emptyAnswer =
+            raw.sourceIds.length === 0 || results.some((r) => r.status === "EXCLUDED");
           if (emptyAnswer) {
             const state = results.some((r) => r.status === "EXCLUDED")
               ? "EXCLUDED"
               : results.some((r) => r.status === "OUT_OF_DATE")
                 ? "OUT_OF_DATE"
-                : "NO_RECORDS";
-            const text =
-              state === "EXCLUDED"
-                ? locale === "zh-TW"
-                  ? "此專案已設定為不提供給 AI。"
-                  : "This job is excluded from AI."
-                : state === "OUT_OF_DATE"
-                  ? locale === "zh-TW"
-                    ? "已儲存的比較已過期，請開啟比較後重新執行。"
-                    : "The saved comparison is out of date. Open the comparison to run it again."
-                  : locale === "zh-TW"
-                    ? "我只能根據您可查看的公司紀錄回答；目前的紀錄沒有顯示這項資訊。"
-                    : "I can only answer from company records you may read. The records do not show this information.";
-            await this.repository.finishTurn(c, "ANSWERED");
-            return {
-              kind: "ANSWER",
-              locale,
-              answer: { text, sourceIds: [], followUps: [] },
-              sources: [],
-            };
+                : results.some((r) => r.status === "UNAVAILABLE")
+                  ? "UNAVAILABLE"
+                  : "NO_RECORDS";
+            return await refusal(state);
           }
-          const answer = verifyAnswer(raw, sources, locale);
-          if (!answer) return await fallback("UNGROUNDED");
-          if ([answer.text, ...answer.followUps].some((text) => redactText(text) !== text))
-            return await fallback("UNGROUNDED");
+          const checked = checkAnswer(raw, sources, locale);
+          if (checked.kind === "REJECTED") return await fallback("UNGROUNDED", checked.reason);
+          const answer = checked.answer;
+          const preserved = [
+            ...references,
+            ...typedAnswerValues(sources.filter((s) => answer.sourceIds.includes(s.sourceId))),
+          ];
+          if (
+            [answer.text, ...answer.followUps].some((text) => redactText(text, preserved) !== text)
+          )
+            return await fallback("UNGROUNDED", "REDACTION");
           await this.repository.finishTurn(c, "ANSWERED");
           return {
             kind: "ANSWER",
@@ -183,18 +233,21 @@ export class AskAssistant {
             return await fallback("INVALID_OUTPUT");
           const result = await bounded(this.tools.execute(c, call));
           results.push(result);
+          if (result.status === "EXCLUDED") return await refusal("EXCLUDED");
           names.push(call.name);
-          const safeSources = result.sources.map((s) => ({
-            ...s,
-            label: redactText(s.label),
-            facts: redact(s.facts) as AssistantSource["facts"],
-          }));
+          const safeSources = result.sources.map((s) =>
+            redactSource(s, [...references, ...s.projectKeys]),
+          );
           for (const s of safeSources)
             if (!sources.some((old) => old.sourceId === s.sourceId)) sources.push(s);
           const data = JSON.stringify({
             tool: call.name,
             status: result.status,
-            sources: safeSources.map(({ sourceId, label, facts }) => ({ sourceId, label, facts })),
+            sources: safeSources.map(({ sourceId, label, facts }) => ({
+              sourceId,
+              label,
+              facts: modelFacts(facts),
+            })),
           });
           if (
             data.length > 40000 ||

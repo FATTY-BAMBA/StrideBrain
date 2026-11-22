@@ -22,6 +22,10 @@ export type AssistantControlOutcome = Readonly<{
   kind: "SAVED" | "UNAVAILABLE" | "INVALID" | "CONFLICT";
 }>;
 export interface AssistantRepositoryPort {
+  readableReferences(
+    context: RuntimeContext,
+    candidates: readonly string[],
+  ): Promise<readonly string[]>;
   enabled(context: RuntimeContext): Promise<boolean>;
   jobPolicy(context: RuntimeContext, key: string): Promise<AssistantJobPolicy | null>;
   settings(context: RuntimeContext, monthStart: Date): Promise<AssistantSettings | null>;

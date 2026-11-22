@@ -87,7 +87,7 @@ describe("redaction and exact cost", () => {
       }),
     ).toEqual({
       password: "[removed]",
-      nested: { bankAccount: "[removed]", text: "[removed] [removed]密碼：[removed]" },
+      nested: { bankAccount: "[removed]", text: "[removed] [removed] 密碼：[removed]" },
     });
     expect(redactText("amount 3,733,000 and date 2026-11-22")).toBe(
       "amount 3,733,000 and date 2026-11-22",

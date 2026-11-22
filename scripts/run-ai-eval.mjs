@@ -12,6 +12,7 @@ if (
     id: q.id,
     locale: q.locale,
     verdict: "not run",
+    discardReason: null,
     reason: "Paid provider key/confirmation not configured",
     latencyMs: null,
     inputTokens: null,

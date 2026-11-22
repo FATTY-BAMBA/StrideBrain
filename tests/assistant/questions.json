@@ -208,21 +208,21 @@
     }
   },
   {
-    "id": "en-finance",
+    "id": "en-owner-total",
     "locale": "en",
-    "person": "finance",
-    "question": "What is the quote status for PRJ-XINYI-026?",
+    "person": "owner",
+    "question": "What is the total of the latest issued quote for PRJ-ACTIVE-001?",
     "oracleTools": [
       {
         "name": "get_quote_status",
         "arguments": {
-          "projectKey": "PRJ-XINYI-026"
+          "projectKey": "PRJ-ACTIVE-001"
         }
       }
     ],
     "expected": {
       "kind": "FACTS",
-      "facts": ["PRJ-XINYI-026"],
+      "facts": ["@amounts.totalAmount"],
       "forbidden": []
     }
   },
@@ -578,21 +578,21 @@
     }
   },
   {
-    "id": "zh-TW-finance",
+    "id": "zh-TW-owner-total",
     "locale": "zh-TW",
-    "person": "finance",
-    "question": "PRJ-XINYI-026的報價狀態如何？",
+    "person": "owner",
+    "question": "PRJ-ACTIVE-001最新核發報價的總金額是多少？",
     "oracleTools": [
       {
         "name": "get_quote_status",
         "arguments": {
-          "projectKey": "PRJ-XINYI-026"
+          "projectKey": "PRJ-ACTIVE-001"
         }
       }
     ],
     "expected": {
       "kind": "FACTS",
-      "facts": ["PRJ-XINYI-026"],
+      "facts": ["@amounts.totalAmount"],
       "forbidden": []
     }
   },

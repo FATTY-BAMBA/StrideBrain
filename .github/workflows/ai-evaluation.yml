@@ -1,6 +1,12 @@
 name: AI evaluation
 on:
   workflow_dispatch:
+    inputs:
+      ref:
+        description: Branch or commit containing the evaluation runner
+        required: true
+        default: build/sb-039-records-assistant
+        type: string
 permissions:
   contents: read
 jobs:
@@ -27,11 +33,11 @@ jobs:
       STRIDEBRAIN_AI_ENABLED: "true"
       # Director sets the repository variable only after confirming PAID billing/terms.
       STRIDEBRAIN_AI_PAID_TIER_CONFIRMED: ${{ vars.STRIDEBRAIN_AI_PAID_TIER_CONFIRMED }}
-      STRIDEBRAIN_GEMINI_API_KEY: ${{ secrets.STRIDEBRAIN_GEMINI_API_KEY }}
       STRIDEBRAIN_AI_EVAL_REPORT: artifacts/ai-evaluation.json
     steps:
       - uses: actions/checkout@v6
         with:
+          ref: ${{ inputs.ref }}
           persist-credentials: false
       - uses: actions/setup-node@v7
         with:
@@ -40,6 +46,8 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npm run db:generate
       - name: Run paid model evaluation on a disposable local database
+        env:
+          STRIDEBRAIN_GEMINI_API_KEY: ${{ secrets.STRIDEBRAIN_GEMINI_API_KEY }}
         run: npm run ai:eval
       - uses: actions/upload-artifact@v5
         if: always()
