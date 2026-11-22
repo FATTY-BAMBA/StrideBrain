@@ -1,3 +1,4 @@
+import { orderQuoteLines } from "@/modules/quote-draft/domain/quote-line-order";
 import { IDEMPOTENCY_KEY, COMMERCIAL_CATEGORIES } from "@/modules/projects/domain/job-input";
 import { decimalToString, money } from "@/modules/finance/fixed-decimal";
 export type DraftLineInput = Readonly<{ categoryId: string; description: string; amount: string }>;
@@ -64,7 +65,7 @@ export function validateSaveDraft(value: unknown): SaveDraftInput | null {
     idempotencyKey: input.idempotencyKey,
     baseVersionId: input.baseVersionId,
     preparationToken: input.preparationToken,
-    lines: lines.sort((a, b) => a.categoryId.localeCompare(b.categoryId)),
+    lines: orderQuoteLines(lines),
   };
 }
 

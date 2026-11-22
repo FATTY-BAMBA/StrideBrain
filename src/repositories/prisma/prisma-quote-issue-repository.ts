@@ -1,3 +1,4 @@
+import { orderQuoteLines } from "@/modules/quote-draft/domain/quote-line-order";
 import { randomUUID } from "node:crypto";
 import type { Prisma, PrismaClient } from "../../../.generated/prisma/client";
 import { AuthorizationService } from "@/modules/authorization/authorization-service";
@@ -328,13 +329,14 @@ export class PrismaQuoteIssueSession
         totalAmount: original.totalAmount,
       },
     });
-    for (const item of original.items) {
+    for (const [index, item] of orderQuoteLines(original.items).entries()) {
       const lineId = randomUUID();
       await this.tx.quoteItem.create({
         data: {
           ...item,
           id: lineId,
           quoteVersionId: id,
+          lineNumber: index + 1,
           authorityState: "HUMAN_REVIEWED",
           createdAt: new Date(),
         },
@@ -354,7 +356,11 @@ export class PrismaQuoteIssueSession
             id: randomUUID(),
             subjectId: lineId,
             authorityState: "HUMAN_REVIEWED",
-            locator: json(ref.locator),
+            locator: json(
+              object(ref.locator).kind === "structured-line"
+                ? { ...object(ref.locator), lineNumber: index + 1 }
+                : ref.locator,
+            ),
             supportedValue: json(ref.supportedValue),
             createdAt: new Date(),
             dataClassification: context.dataMode,

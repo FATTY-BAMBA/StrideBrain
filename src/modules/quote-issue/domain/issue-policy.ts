@@ -1,3 +1,4 @@
+import { orderQuoteLines } from "@/modules/quote-draft/domain/quote-line-order";
 import type {
   FirmDetails,
   RequiredFirmField,
@@ -94,7 +95,7 @@ export function prepareIssuePolicy(
     issueDate: today,
     validUntil: options.validUntil ?? addDays(today, firm.defaultValidityDays),
     currency: state.job.currency,
-    lines: (state.current?.lines ?? []).map((line) => {
+    lines: orderQuoteLines(state.current?.lines ?? []).map((line) => {
       const labels = state.descriptions.find((entry) => entry.id === line.id);
       return {
         categoryId: line.categoryId,

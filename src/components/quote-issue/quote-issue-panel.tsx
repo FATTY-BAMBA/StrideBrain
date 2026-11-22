@@ -127,6 +127,7 @@ export function QuoteIssuePanel({
     });
   }
   const snapshot = prepared?.preparation.snapshot;
+  const showRevise = view.canRevise && view.status === "ISSUED" && view.issued?.status === "ISSUED";
   return (
     <section className={styles.section} aria-busy={pending} id="quote-issue">
       <h2>{copy.title}</h2>
@@ -175,7 +176,7 @@ export function QuoteIssuePanel({
             >
               {copy.pdf}
             </a>
-            {view.canRevise && view.status === "ISSUED" && (
+            {showRevise && (
               <button
                 className={styles.button}
                 disabled={pending}
@@ -185,7 +186,13 @@ export function QuoteIssuePanel({
               </button>
             )}
           </div>
-          <p>{copy.end}</p>
+          <p>
+            {view.issued.status === "ACCEPTED"
+              ? copy.acceptedDocument.replace("{date}", view.issued.acceptedOn ?? "")
+              : showRevise
+                ? copy.end
+                : copy.fixedDocument}
+          </p>
           {view.issued.status === "ISSUED" && view.canAccept && (
             <form
               id="accept-quote"

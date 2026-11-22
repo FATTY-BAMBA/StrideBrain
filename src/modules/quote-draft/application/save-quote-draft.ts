@@ -31,7 +31,15 @@ export class SaveQuoteDraft {
       return { kind: "UNAVAILABLE" };
     const input = validateSaveDraft(raw);
     if (!input) return { kind: "INVALID" };
-    const fingerprint = createHash("sha256").update(JSON.stringify(input)).digest("hex");
+    // Receipt fingerprints keep the pre-work-order canonical form for existing retries.
+    const fingerprint = createHash("sha256")
+      .update(
+        JSON.stringify({
+          ...input,
+          lines: [...input.lines].sort((a, b) => a.categoryId.localeCompare(b.categoryId)),
+        }),
+      )
+      .digest("hex");
     return this.repository.transaction(async (tx): Promise<SaveDraftOutcome> => {
       const job = await tx.getJob(context, input.projectKey);
       if (
@@ -61,7 +69,7 @@ export class SaveQuoteDraft {
       ].sort();
       if (
         JSON.stringify(requiredCategories) !==
-        JSON.stringify(input.lines.map((line) => line.categoryId))
+        JSON.stringify(input.lines.map((line) => line.categoryId).sort())
       )
         return { kind: "INVALID" };
       const preparation = input.preparationToken ? this.codec.open(input.preparationToken) : null;

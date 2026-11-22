@@ -69,6 +69,8 @@ const en = {
   readonly: "You can read these details. An owner can edit them.",
   acceptedOn: "Accepted on",
   end: "The issued document is fixed. Use Revise to start a new draft.",
+  fixedDocument: "The issued document is fixed.",
+  acceptedDocument: "The client accepted this quote on {date}. The document is fixed.",
 };
 const zh: typeof en = {
   title: "核發報價",
@@ -139,6 +141,8 @@ const zh: typeof en = {
   readonly: "您可以閱讀這些資料，由擁有者進行修改。",
   acceptedOn: "接受日期",
   end: "已核發文件內容已固定，請選擇「修改報價」建立新草稿。",
+  fixedDocument: "已核發文件內容已固定。",
+  acceptedDocument: "客戶已於 {date} 接受此報價，文件內容已固定。",
 };
 export const quoteIssueCopy = (locale: Locale) => (locale === "zh-TW" ? zh : en);
 

@@ -169,7 +169,8 @@ export class GetHomeDesk {
         for (const job of active) {
           const project = entry(job);
           if (!compared.has(job.id)) {
-            decisions.push({ key: `compare:${job.businessKey}`, kind: "COMPARE", project });
+            if (["DISCOVERY", "DESIGN", "QUOTE_REVIEW"].includes(job.stage))
+              decisions.push({ key: `compare:${job.businessKey}`, kind: "COMPARE", project });
             continue;
           }
           if (

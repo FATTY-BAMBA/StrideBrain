@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "QUOTE-DOCUMENT-1.0",
+  "language": "zh-TW",
+  "firm": {
+    "legalName": "禾序空間設計（合成示範公司）",
+    "taxId": "00000000",
+    "address": "臺北市示範路100號（合成地址）",
+    "phone": "02-0000-0000",
+    "email": "quotes@example.invalid"
+  },
+  "clientName": "合成客戶股份有限公司",
+  "attention": "王小姐",
+  "projectName": "信義合成門市裝修",
+  "projectKey": "J-2611-A7K3",
+  "documentNumber": "J-2611-A7K3-Q1",
+  "issueDate": "2026-11-22",
+  "validUntil": "2026-12-22",
+  "currency": "TWD",
+  "lines": [
+    {
+      "categoryId": "COORDINATION",
+      "description": "現場協調與交付",
+      "amount": "1000.00"
+    },
+    {
+      "categoryId": "CUSTOM_MILLWORK",
+      "description": "客製木作",
+      "amount": "1000.00"
+    },
+    {
+      "categoryId": "DEMOLITION_CEILING",
+      "description": "拆除、隔間與天花",
+      "amount": "1000.00"
+    },
+    {
+      "categoryId": "IMPORTED_STONE",
+      "description": "進口石材與硬質面材",
+      "amount": "1000.00"
+    },
+    {
+      "categoryId": "LIGHTING_ELECTRICAL",
+      "description": "照明與電氣",
+      "amount": "1000.00"
+    },
+    {
+      "categoryId": "SIGNAGE",
+      "description": "標示與展示安裝",
+      "amount": "1000.00"
+    }
+  ],
+  "totals": {
+    "amountBeforeTax": "6000.00",
+    "taxAmount": "300.00",
+    "totalAmount": "6300.00"
+  },
+  "terms": "本報價僅供合成資料示範。工作範圍變更須另行修改報價。"
+}

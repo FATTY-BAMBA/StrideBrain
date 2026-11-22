@@ -316,3 +316,23 @@ it("merges fresh findings into Issue quote, deduplicates jobs and gates both new
   expect(stale.kind === "AVAILABLE" && stale.decisions[0]?.kind).toBe("ISSUE_QUOTE");
   expect(stale.kind === "AVAILABLE" && stale.decisions[0]?.claim).toBeUndefined();
 });
+
+it.each([
+  "DISCOVERY",
+  "DESIGN",
+  "QUOTE_REVIEW",
+  "APPROVED",
+  "PROCUREMENT",
+  "CONSTRUCTION",
+  "HANDOVER",
+  "COMPLETE",
+] as const)("limits never-compared Home suggestions at %s to the quote stages", async (stage) => {
+  const f = setup([job("never-compared", stage)]);
+  f.repository.listComparedProjectIds.mockResolvedValue([]);
+  const result = await f.service.execute(context);
+  if (result.kind !== "AVAILABLE") throw Error("AVAILABLE_REQUIRED");
+  expect(result.decisions.map((row) => row.kind)).toEqual(
+    ["DISCOVERY", "DESIGN", "QUOTE_REVIEW"].includes(stage) ? ["COMPARE"] : [],
+  );
+  expect(f.comparisons.execute).not.toHaveBeenCalled();
+});

@@ -3,7 +3,7 @@ import { GetQuoteDraftEvidence } from "@/modules/quote-draft/application/get-quo
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { Client } from "pg";
 import { readFileSync, readdirSync } from "node:fs";
-import { randomUUID } from "node:crypto";
+import { randomUUID, createHash } from "node:crypto";
 import { createComparisonServices } from "@/lib/server/comparison-services";
 import { getPrismaClient, disconnectPrismaClientForTests } from "@/lib/server/prisma";
 import { DemoSessionService } from "@/modules/runtime-context/demo-session-service";
@@ -195,6 +195,73 @@ async function issueDraft(key: string, versionId: string) {
     result = await lifecycle().issue.execute(await actor("membership_horizon_admin"), input);
   expect(result.kind).toBe("ISSUED");
   return { prepared, input, result };
+}
+import { COMMERCIAL_CATEGORIES, SCOPE_CATEGORIES } from "@/modules/projects/domain/job-input";
+import { validateSaveDraft } from "@/modules/quote-draft/domain/save-input";
+import { renderQuotePdf } from "@/modules/quote-issue/infrastructure/render-quote-pdf";
+import type { QuoteDocumentSnapshot } from "@/modules/quote-issue/domain/contracts";
+// Pre-SB-054 fixture: alphabetical persisted lines, with no comparison run.
+async function legacyQuote(status: "DRAFT" | "ISSUED") {
+  const key = await newJob([...SCOPE_CATEGORIES]),
+    owner = await actor("membership_horizon_admin"),
+    db = getPrismaClient();
+  const job = await db.project.findFirstOrThrow({ where: { businessKey: key } });
+  const snapshot = {
+    ...JSON.parse(readFileSync("tests/quote-issue/fixtures/before-sb054.json", "utf8")),
+    projectKey: key,
+    documentNumber: `${key}-Q1`,
+  } as QuoteDocumentSnapshot;
+  const quoteId = randomUUID(),
+    versionId = randomUUID();
+  await db.quote.create({
+    data: {
+      id: quoteId,
+      organizationId: owner.organizationId,
+      projectId: job.id,
+      businessKey: `quote-${quoteId}`,
+    },
+  });
+  await db.quoteVersion.create({
+    data: {
+      id: versionId,
+      organizationId: owner.organizationId,
+      quoteId,
+      versionNumber: 1,
+      status: "DRAFT",
+      authorityState: status === "ISSUED" ? "APPROVED_COMMERCIAL" : "HUMAN_REVIEWED",
+      currency: "TWD",
+      ...snapshot.totals,
+      items: {
+        create: snapshot.lines.map((line, index) => ({
+          id: randomUUID(),
+          organizationId: owner.organizationId,
+          lineNumber: index + 1,
+          categoryId: line.categoryId,
+          descriptionEn: categoryLabel("en", line.categoryId),
+          descriptionZhTw: line.description,
+          quantity: "1",
+          unit: "lot",
+          unitPrice: line.amount,
+          amount: line.amount,
+          authorityState: status === "ISSUED" ? "APPROVED_COMMERCIAL" : "HUMAN_REVIEWED",
+        })),
+      },
+    },
+  });
+  if (status === "ISSUED")
+    await db.quoteVersion.update({
+      where: { id: versionId },
+      data: {
+        status,
+        approvedAt: new Date("2026-11-22T00:00:00Z"),
+        issuedAt: new Date("2026-11-22T00:00:00Z"),
+        issuedByMembershipId: owner.membershipId,
+        documentNumber: snapshot.documentNumber,
+        documentSnapshot: JSON.parse(JSON.stringify(snapshot)),
+        validUntil: new Date(`${snapshot.validUntil}T00:00:00Z`),
+      },
+    });
+  return { key, job, versionId, snapshot, owner };
 }
 suite.sequential("SB-052 issuance on real PostgreSQL", () => {
   it("prepares without writes, issues exactly once concurrently, and freezes bilingual snapshot independently of Settings", async () => {
@@ -724,6 +791,141 @@ suite.sequential("SB-052 issuance on real PostgreSQL", () => {
         idempotencyKey: randomUUID(),
       });
     }
+  });
+  it("opens a pre-change draft in work order, persists that order on save and preserves canonical retry receipts", async () => {
+    const { key, versionId, owner, snapshot } = await legacyQuote("DRAFT"),
+      db = getPrismaClient();
+    const read = await services().read.execute(owner, key);
+    if (read.kind !== "AVAILABLE" || !read.saved) throw Error("DRAFT_REQUIRED");
+    expect(read.saved.lines.map((line) => line.categoryId)).toEqual(COMMERCIAL_CATEGORIES);
+    const original = await db.quoteItem.findMany({
+      where: { quoteVersionId: versionId },
+      orderBy: { lineNumber: "asc" },
+    });
+    expect(original.map((line) => line.categoryId)).toEqual(
+      snapshot.lines.map((line) => line.categoryId),
+    );
+    const input = {
+      projectKey: key,
+      idempotencyKey: randomUUID(),
+      baseVersionId: versionId,
+      preparationToken: null,
+      lines: [...read.saved.lines]
+        .reverse()
+        .map(({ categoryId, description, amount }) => ({ categoryId, description, amount })),
+    };
+    const saved = await services().save.execute(owner, input);
+    if (saved.kind !== "SAVED") throw Error(saved.kind);
+    const persisted = await db.quoteItem.findMany({
+      where: { quoteVersionId: saved.versionId },
+      orderBy: { lineNumber: "asc" },
+    });
+    expect(persisted.map((line) => line.categoryId)).toEqual(COMMERCIAL_CATEGORIES);
+    expect(persisted.map((line) => line.lineNumber)).toEqual([1, 2, 3, 4, 5, 6]);
+    expect(saved.totals).toEqual(snapshot.totals);
+    const normalized = validateSaveDraft(input)!;
+    const priorFingerprint = createHash("sha256")
+      .update(
+        JSON.stringify({
+          ...normalized,
+          lines: [...normalized.lines].sort((a, b) => a.categoryId.localeCompare(b.categoryId)),
+        }),
+      )
+      .digest("hex");
+    expect(
+      await db.auditEvent.findFirstOrThrow({ where: { idempotencyKey: input.idempotencyKey } }),
+    ).toMatchObject({ payload: { fingerprint: priorFingerprint } });
+    expect(
+      await services().save.execute(owner, { ...input, lines: [...input.lines].reverse() }),
+    ).toEqual(saved);
+    const prepared = await issuePreparation(key, saved.versionId);
+    expect(prepared.preparation.snapshot.lines.map((line) => line.categoryId)).toEqual(
+      COMMERCIAL_CATEGORIES,
+    );
+    const preview = await lifecycle().document.execute(owner, saved.versionId, options);
+    expect(preview).toMatchObject({
+      kind: "DOCUMENT",
+      draft: true,
+      snapshot: { lines: prepared.preparation.snapshot.lines },
+    });
+    await issueDraft(key, saved.versionId);
+    expect(await lifecycle().document.execute(owner, saved.versionId)).toMatchObject({
+      kind: "DOCUMENT",
+      draft: false,
+      snapshot: { lines: prepared.preparation.snapshot.lines },
+    });
+  });
+  it("issues a revision without another save in work order while preserving the original issued snapshot and PDF bytes", async () => {
+    const { key, versionId, owner, snapshot } = await legacyQuote("ISSUED");
+    const original = await lifecycle().document.execute(owner, versionId);
+    if (original.kind !== "DOCUMENT") throw Error(original.kind);
+    expect(original.snapshot).toEqual(snapshot);
+    const before = await renderQuotePdf(original.snapshot);
+    const revision = await lifecycle().revise.execute(owner, {
+      projectKey: key,
+      versionId,
+      idempotencyKey: randomUUID(),
+    });
+    if (revision.kind !== "REVISED" || !revision.versionId) throw Error(revision.kind);
+    const revised = await services().read.execute(owner, key);
+    expect(
+      revised.kind === "AVAILABLE" && revised.saved?.lines.map((line) => line.categoryId),
+    ).toEqual(COMMERCIAL_CATEGORIES);
+    const persisted = await getPrismaClient().quoteItem.findMany({
+      where: { quoteVersionId: revision.versionId },
+      orderBy: { lineNumber: "asc" },
+    });
+    expect(persisted.map((line) => line.categoryId)).toEqual(COMMERCIAL_CATEGORIES);
+    expect(persisted.map((line) => line.lineNumber)).toEqual([1, 2, 3, 4, 5, 6]);
+    const next = await issueDraft(key, revision.versionId);
+    expect(next.prepared.preparation.snapshot.lines.map((line) => line.categoryId)).toEqual(
+      COMMERCIAL_CATEGORIES,
+    );
+    const issuedView = await services().read.execute(owner, key);
+    expect(
+      issuedView.kind === "AVAILABLE" && issuedView.saved?.lines.map((line) => line.categoryId),
+    ).toEqual(COMMERCIAL_CATEGORIES);
+    const after = await lifecycle().document.execute(owner, versionId);
+    if (after.kind !== "DOCUMENT") throw Error(after.kind);
+    expect(after.snapshot).toEqual(snapshot);
+    expect((await renderQuotePdf(after.snapshot)).equals(before)).toBe(true);
+    expect(
+      await getPrismaClient().auditEvent.count({
+        where: {
+          eventType: "QUOTE_DRAFT_SAVED",
+          payload: {
+            path: ["projectId"],
+            equals: revised.kind === "AVAILABLE" ? revised.job.id : "missing",
+          },
+        },
+      }),
+    ).toBe(0);
+  });
+  it("does not return an accepted never-compared job to the Home compare suggestion", async () => {
+    const { key, versionId, job, owner } = await legacyQuote("ISSUED"),
+      db = getPrismaClient();
+    await db.project.update({ where: { id: job.id }, data: { stage: "QUOTE_REVIEW" } });
+    expect(await db.comparisonRun.count({ where: { activeProjectId: job.id } })).toBe(0);
+    const { createHomeDeskService } = await import("@/lib/server/home-desk-services");
+    const rows = async () => {
+      const result = await createHomeDeskService().execute(owner);
+      if (result.kind !== "AVAILABLE") throw Error(result.kind);
+      return result.decisions.filter((row) => row.project.businessKey === key);
+    };
+    expect(await rows()).toMatchObject([{ kind: "AWAITING_CLIENT" }]);
+    expect(
+      (
+        await lifecycle().accept.execute(owner, {
+          projectKey: key,
+          versionId,
+          date: "2026-11-22",
+          note: "",
+          idempotencyKey: randomUUID(),
+        })
+      ).kind,
+    ).toBe("ACCEPTED");
+    expect((await db.project.findUniqueOrThrow({ where: { id: job.id } })).stage).toBe("APPROVED");
+    expect(await rows()).toEqual([]);
   });
   it("keeps the synthetic reset usable after issue and acceptance while restoring all immutable triggers", async () => {
     for (const fixture of [
