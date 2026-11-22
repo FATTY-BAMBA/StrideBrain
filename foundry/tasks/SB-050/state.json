@@ -15,6 +15,7 @@
     "npmCheck": "PASS",
     "postgresTests": "1048 passed; one fixture-reseed subprocess timed out and passed on focused retry",
     "browser": "PASS: 23 local synthetic screenshots, no console/page errors",
-    "ci": "PENDING_PULL_REQUEST"
-  }
+    "ci": "SEE_PULL_REQUEST_CHECKS"
+  },
+  "pullRequestUrl": "https://github.com/FATTY-BAMBA/StrideBrain/pull/51"
 }

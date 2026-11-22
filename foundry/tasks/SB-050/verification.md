@@ -1,5 +1,7 @@
 # SB-050 verification
 
+Pull request: [#51 — SB-050](https://github.com/FATTY-BAMBA/StrideBrain/pull/51).
+
 Hosted acceptance: **WAITING FOR THE PRODUCT DIRECTOR**. Keep the single pull request in draft. No agent deployment, hosted migration, seed, settings change or hosted browser session was performed.
 
 ## Implemented in A → B → C order
@@ -18,6 +20,7 @@ C adds the bilingual Quote tab, editable amount/description, server totals, expl
 - After saving, Home returns out of date; rerunning comparison reads the new quote amounts. Home Draft quote disappears after save. Xinyi's Home count is 12 other visible claim cards.
 - Local production HTTPS browser: owner creates a two-scope job, prepares, opens source records, edits an amount, saves versions 1–3 without rerunning comparison, explicitly moves to Quote review, changes area, observes stale suggestions and preserved amounts, refreshes after comparison, explicitly adopts a suggestion and saves version 4. A second job exercises missing exact-category history and manual entry. English and zh-TW, finance read-only, Viewer without amounts, project-manager editing, Home counts and overview money were checked. Browser console/page errors: none.
 - Existing commercial/detailed quote lines remain read-only and are not collapsed into the category editor. The new editor is for one canonical scope line per category.
+- Disposable local browser sessions were revoked, the browser database was dropped, and its invitation/signing/TLS private files were removed.
 - `git diff --check` passes. All financial calculations stay in domain/finance code. No model call or feature-level data-mode gate was added.
 
 ## Schema and fixture evidence
@@ -46,4 +49,4 @@ The exact scope matcher deliberately does not split the historical combined demo
 
 ## Evidence
 
-See [browser verification](evidence/browser-verification.json) and [screen index](evidence/README.md). All screenshots use disposable local synthetic data. Final outputs: [npm run check](evidence/check.log), [PostgreSQL run](evidence/postgres-check.log), and [successful fixture-reseed retry](evidence/reseed-retry.log). CI will be recorded on the draft PR.
+See [browser verification](evidence/browser-verification.json) and [screen index](evidence/README.md). All screenshots use disposable local synthetic data. Final outputs: [npm run check](evidence/check.log), [PostgreSQL run](evidence/postgres-check.log), and [successful fixture-reseed retry](evidence/reseed-retry.log). Current GitHub CI status is attached to [draft PR #51](https://github.com/FATTY-BAMBA/StrideBrain/pull/51/checks).
