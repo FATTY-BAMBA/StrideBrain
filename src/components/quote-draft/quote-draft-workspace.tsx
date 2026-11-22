@@ -1,4 +1,5 @@
 "use client";
+import { orderQuoteLines } from "@/modules/quote-draft/domain/quote-line-order";
 import { useEffect, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -52,8 +53,8 @@ function savedRows(view: Available, locale: Locale): Row[] {
       ...view.job.commercialCategoryIds,
       ...view.saved.lines.map((line) => line.categoryId),
     ]),
-  ].sort();
-  return ids.map((categoryId) => {
+  ];
+  return orderQuoteLines(ids.map((categoryId) => ({ categoryId }))).map(({ categoryId }) => {
     const line = view.saved!.lines.find((entry) => entry.categoryId === categoryId);
     return {
       categoryId,
@@ -141,8 +142,8 @@ export function QuoteDraftWorkspace({
             ...current.map((row) => row.categoryId),
             ...result.preparation.suggestions.map((line) => line.categoryId),
           ]),
-        ].sort();
-        return ids.map((categoryId) => {
+        ];
+        return orderQuoteLines(ids.map((categoryId) => ({ categoryId }))).map(({ categoryId }) => {
           const old = current.find((row) => row.categoryId === categoryId),
             fresh = result.preparation.suggestions.find((line) => line.categoryId === categoryId);
           return {

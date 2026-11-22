@@ -1,3 +1,4 @@
+import { orderQuoteLines } from "@/modules/quote-draft/domain/quote-line-order";
 import { categoryLabel } from "@/modules/localization/jobs";
 import { randomUUID } from "node:crypto";
 import type { Prisma, PrismaClient } from "../../../.generated/prisma/client";
@@ -255,7 +256,7 @@ export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
       },
     });
     const changedLineIds: string[] = [];
-    for (const [index, line] of data.lines.entries()) {
+    for (const [index, line] of orderQuoteLines(data.lines).entries()) {
       const lineId = randomUUID();
       const old = data.previous?.lines.find((entry) => entry.categoryId === line.categoryId);
       const oldItem = old

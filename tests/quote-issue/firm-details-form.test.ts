@@ -1,3 +1,4 @@
+import { quoteIssueCopy } from "@/modules/localization/quote-issue";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { expect, it, vi } from "vitest";
@@ -28,5 +29,27 @@ it.each([
     for (const label of labels) expect(html).toContain(label);
     expect(html).not.toMatch(/required[ =]/);
     expect(html).not.toContain("disabled");
+  },
+);
+
+it.each(["en", "zh-TW"] as const)(
+  "puts the four Chinese-quote requirements first in Settings (%s)",
+  (locale) => {
+    const html = renderToStaticMarkup(
+      createElement(FirmDetailsForm, { locale, details: emptyFirmDetails, canManage: true }),
+    );
+    const copy = quoteIssueCopy(locale);
+    expect([...html.matchAll(/<label>([^<]+)/g)].map((match) => match[1])).toEqual([
+      copy.legalNameZhTw,
+      copy.taxId,
+      copy.addressZhTw,
+      copy.phone,
+      copy.email,
+      copy.defaultValidityDays,
+      copy.termsZhTw,
+      copy.legalNameEn,
+      copy.addressEn,
+      copy.termsEn,
+    ]);
   },
 );

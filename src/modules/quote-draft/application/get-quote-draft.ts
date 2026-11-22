@@ -1,3 +1,4 @@
+import { orderQuoteLines } from "@/modules/quote-draft/domain/quote-line-order";
 import { isCategoryDraft } from "@/modules/quote-draft/domain/save-input";
 import { AuthorizationService } from "@/modules/authorization/authorization-service";
 import { basisOutOfDate, basisSourceIds } from "@/modules/quote-draft/domain/draft-policy";
@@ -68,7 +69,9 @@ export class GetQuoteDraft {
           canReadAmounts &&
           context.capabilities.has("quote:draft") &&
           (!saved || isCategoryDraft(saved.lines)),
-        saved: saved ? { ...saved, lines } : null,
+        saved: saved
+          ? { ...saved, lines: saved.status === "DRAFT" ? orderQuoteLines(lines) : lines }
+          : null,
       };
     });
   }

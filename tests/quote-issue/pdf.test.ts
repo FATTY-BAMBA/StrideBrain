@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { expect, it } from "vitest";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 import { renderQuotePdf } from "@/modules/quote-issue/infrastructure/render-quote-pdf";
@@ -136,3 +137,14 @@ it.each(["en", "zh-TW"] as const)(
     }
   },
 );
+
+it("keeps an existing issued PDF byte-identical to the pre-SB-054 renderer, including its old line order", async () => {
+  const snapshot = JSON.parse(
+    readFileSync("tests/quote-issue/fixtures/before-sb054.json", "utf8"),
+  ) as QuoteDocumentSnapshot;
+  const before = readFileSync("tests/quote-issue/fixtures/before-sb054.pdf");
+  const after = await renderQuotePdf(snapshot);
+  expect(after.equals(before)).toBe(true);
+  const content = await text(after);
+  expect(content.indexOf("現場協調與交付")).toBeLessThan(content.indexOf("拆除、隔間與天花"));
+});

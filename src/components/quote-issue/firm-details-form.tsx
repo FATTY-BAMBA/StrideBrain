@@ -6,16 +6,16 @@ import type { Locale } from "@/modules/localization/config";
 import { quoteIssueCopy } from "@/modules/localization/quote-issue";
 import styles from "./quote-issue.module.css";
 const fields = [
-  "legalNameEn",
   "legalNameZhTw",
   "taxId",
-  "addressEn",
   "addressZhTw",
   "phone",
   "email",
   "defaultValidityDays",
-  "termsEn",
   "termsZhTw",
+  "legalNameEn",
+  "addressEn",
+  "termsEn",
 ] as const;
 export function FirmDetailsForm({
   locale,

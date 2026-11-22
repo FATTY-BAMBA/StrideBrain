@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "checks": [
+    "Settings fields follow the requested order in both languages; every single-line control has equal height; Settings save works.",
+    "Pre-change saved draft displays in work order in both locales; next save persists 1–6; issue review, draft and issued PDFs use that order.",
+    "A never-compared inquiry shows Compare; after quote acceptance its Home decision disappears, and accepted notes have the date and no Revise in both locales.",
+    "An old issued quote revises and issues Q2 without saving; its new snapshot is in work order while the original PDF remains byte-identical.",
+    "Finance sees only the fixed-document note with no Revise button in both locales."
+  ],
+  "screens": [
+    "en-settings.png",
+    "zh-TW-settings.png",
+    "zh-TW-settings-mobile.png",
+    "en-legacy-draft.png",
+    "zh-TW-legacy-draft.png",
+    "en-issue-review.png",
+    "en-issued.png",
+    "en-accepted.png",
+    "zh-TW-accepted.png",
+    "en-home-after-acceptance.png",
+    "en-revision-issued.png",
+    "en-finance-issued.png",
+    "zh-TW-finance-issued.png"
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "enInputHeights": [
+    46.703125,
+    46.703125,
+    46.703125,
+    46.703125,
+    46.703125,
+    46.703125
+  ],
+  "zh-TWInputHeights": [
+    46.703125,
+    46.703125,
+    46.703125,
+    46.703125,
+    46.703125,
+    46.703125
+  ],
+  "projectKey": "J-2611-7SAB",
+  "versionId": "5668ef24-a5f7-4bd6-a05d-7c8932168bdc",
+  "legacyIssuedKey": "J-2611-MVA3",
+  "legacyPdfSha256": "8cc23c0d7dcd59ca33de8160b4ef5be4bd7c40f6403ac1fc35be0e55b1ad519c"
+}

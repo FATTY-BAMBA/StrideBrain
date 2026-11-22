@@ -1,3 +1,4 @@
+import { orderQuoteLines } from "@/modules/quote-draft/domain/quote-line-order";
 import {
   decimalToString,
   divide,
@@ -53,7 +54,9 @@ export function prepareDraftPolicy(
     calculatedAt: string;
   }>,
 ): readonly DraftSuggestion[] {
-  return [...new Set(input.job.commercialCategoryIds)].sort().map((categoryId) => {
+  return orderQuoteLines(
+    [...new Set(input.job.commercialCategoryIds)].map((categoryId) => ({ categoryId })),
+  ).map(({ categoryId }) => {
     const coverage = draftCoverage(categoryId, input.job.scopeCategoryIds);
     const baseline = input.baselines.find((entry) => entry.categoryId === categoryId);
     const history = baseline?.history;

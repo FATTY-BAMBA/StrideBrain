@@ -1,0 +1,9 @@
+# Build contract
+
+- The single work-order function follows COMMERCIAL_CATEGORIES. It orders prepared suggestions, draft reads/UI, validated save lines and persisted line numbers, and newly prepared document snapshots. Amounts, descriptions, categories and bases stay attached to their lines.
+- Drafts written before this change reorder on read and persist the new line numbers on their next save. New revisions copy lines and their structured-line locators in work order; a revision issued without a save receives the same order in its snapshot and read-only rows. The PDF renderer uses snapshot order verbatim, so it shares the new order for new documents while preserving old issued documents. A pre-change PDF is a byte-equality regression baseline.
+- Save idempotency fingerprints retain the prior canonical category ordering independently of presentation, preserving existing receipts. No existing snapshot or audit record is rewritten.
+- Home offers Compare only to never-compared active jobs in DISCOVERY, DESIGN or QUOTE_REVIEW. Other decision priorities, permissions and saved-finding checks remain unchanged.
+- Accepted quotes show their accepted date and fixed-document note. Issued quotes mention Revise only when its button is available; other readers see the fixed-document note only. Both locales are tested.
+- Settings field order is zh-TW legal name, tax ID, zh-TW address, phone, email, validity, zh-TW terms, English legal name, English address, English terms. Labels align to the start of grid rows so single-line controls keep normal height.
+- No migration. Run npm run check, verify local synthetic browser flows and PDFs, record limits. Agents perform no hosted deployments, migrations, seed or settings changes. The single PR stays draft awaiting Product Director test-site acceptance.
