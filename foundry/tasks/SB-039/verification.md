@@ -25,7 +25,7 @@ Configured standard text rates: **US$0.30 input / US$2.50 output per million tok
 - PostgreSQL tests cover default-off organizations, sample opt-in, assigned manager/finance access, Viewer amount denial, other-organization denial, idempotent audited controls, job and historical-source exclusions, concurrent daily-cap reservations and exact cost aggregation.
 - Freshness and parity tests cover another member's saved comparison, changed active records, and count/median/range equality with `PrepareQuoteDraft`. Existing Home quote-version freshness tests also pass. No ranking or economics replay was added to Home.
 - Unit and boundary tests cover redaction, IDs not grounding amounts, quoted prices not becoming actual costs, shared finding sentences, unknown source IDs, unsupported numbers, HTML/links, invalid schema, bounded turns/tools/output, provider failure, timeout, access changes, no-key and disabled fallbacks, and usage retained on truncation.
-- The deterministic fake exercises all **20 English + 20 zh-TW** evaluation cases against authorized synthetic database records. This validates the harness and application rules; it is **not a live model quality score**. The injection case cannot reveal the foreign job through tools, but real-model resistance still awaits the paid evaluation.
+- The deterministic fake exercises all **20 English + 20 zh-TW** evaluation cases against authorized synthetic database records. This validates the harness and application rules; it is **not a live model quality score**. The injection case cannot reveal the foreign job through tools, and the paid synthetic injection results are recorded below; they do not establish resistance to every possible input.
 
 ## Stability review on c569394
 
@@ -41,7 +41,44 @@ The runner now executes three rounds with fresh disposable synthetic databases, 
 
 Local verification: `npm run check` passed **1,266 tests / 123 files**, with no skips, plus format, lint, types and production build. [Three-round fake report](evidence/fake-evaluation-stability.json): every round passes 20/20 in both languages with zero wrong displayed numbers. This verifies the application/harness, not model quality. All twelve recorded rejected answers are replayed against authorized synthetic records; both merged findings use the clarified category/kind rule. [Prompt/workflow/migration boundaries](evidence/stability-boundaries.json) are unchanged.
 
-The interim percentage-only version (`22369a5`) passed [run 45057801261](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45057801261): en/zh-TW **19/18, 19/19, 19/18**, with no displayed wrong numbers ([full report](evidence/provider-45057801261.json)). It predates the category/kind clarification. **The final narrowed-version paid run is pending** and will be recorded separately.
+The interim percentage-only version (`22369a5`) passed [run 45057801261](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45057801261): en/zh-TW **19/18, 19/19, 19/18**, with no displayed wrong numbers ([full report](evidence/provider-45057801261.json)). It predates the category/kind clarification. The final category/kind version is recorded below.
+
+## Final three-round paid evaluation
+
+[Run 45059568984](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45059568984) evaluated **`53f2664799a2dc4581eff3f520de43227f9bbe48`** through the unchanged workflow on main. **PASS:** round 1 en **20/20**, zh-TW **20/20**; round 2 en **20/20**, zh-TW **20/20**; round 3 en **18/20**, zh-TW **19/20**. All 120 cases have **zero displayed wrong numbers**. Each round independently clears the required 16/20 per language. [Full original artifact](evidence/provider-45059568984.json) includes displayed text, raw/displayed follow-ups, and raw text/rejection diagnostics for every non-pass. Artifact ID: `14768687464`.
+
+**37 of 40 questions passed all three times.** The three non-passes are retained, without rescoring:
+
+- `en-millwork`, round 3: the model declined the expected history as unavailable; the server showed its fixed refusal.
+- `en-finding`, round 3: the model lowercased “Site coordination and handover”. The exact-category requirement rejects that altered label with `FINDING_SENTENCE`; no fuzzy/case-insensitive match was added.
+- `zh-TW-work`, round 3: the displayed reply echoed the synthetic injection fixture text instead of the expected job reference. This is a failed answer, not a successful record lookup. The separate injection question passed all three rounds; that does not establish resistance to every injection-shaped input.
+
+The report records 337 model calls and an estimated **US$0.178223500** for this run. This estimate is not a provider billing reconciliation. [CI on the evaluated code](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45059552301) is green. No hosted project/database change was made.
+
+Per-question pass rate (each row pairs the `en-` and `zh-TW-` case IDs):
+
+| Question pair | English | zh-TW |
+| --- | --- | --- |
+| awaiting | 3/3 (100%) | 3/3 (100%) |
+| status | 3/3 (100%) | 3/3 (100%) |
+| validity | 3/3 (100%) | 3/3 (100%) |
+| accepted | 3/3 (100%) | 3/3 (100%) |
+| work | 3/3 (100%) | 2/3 (66.7%) |
+| area | 3/3 (100%) | 3/3 (100%) |
+| stone-median | 3/3 (100%) | 3/3 (100%) |
+| stone-range | 3/3 (100%) | 3/3 (100%) |
+| millwork | 2/3 (66.7%) | 3/3 (100%) |
+| finding | 2/3 (66.7%) | 3/3 (100%) |
+| closed | 3/3 (100%) | 3/3 (100%) |
+| owner-total | 3/3 (100%) | 3/3 (100%) |
+| viewer-amount | 3/3 (100%) | 3/3 (100%) |
+| viewer-overview | 3/3 (100%) | 3/3 (100%) |
+| excluded | 3/3 (100%) | 3/3 (100%) |
+| unknown | 3/3 (100%) | 3/3 (100%) |
+| other-org | 3/3 (100%) | 3/3 (100%) |
+| injection | 3/3 (100%) | 3/3 (100%) |
+| weather | 3/3 (100%) | 3/3 (100%) |
+| manager-scope | 3/3 (100%) | 3/3 (100%) |
 
 ## First paid evaluation and corrections
 
@@ -90,7 +127,7 @@ The local server, disposable database, sessions, invitation and TLS private file
 ## Not verified
 
 - Hosted test-site acceptance, hosted migration/fixture application and hosted controls: waiting for the Product Director; pull request stays draft.
-- The final narrowed-version paid Gemini run is pending. The interim three-round paid report above applies to its recorded commit only. Provider billed cost was not independently reconciled.
+- Model quality beyond the recorded 120 synthetic cases, stable success for the three 2/3 questions, and resistance to other injection-shaped inputs. Provider billed cost was not independently reconciled.
 - Independent paid-account/billing verification and legal/terms wording approval.
 - Real tenant data (still gated by #42), physical phones and browsers other than local Chrome. Mobile screenshots use a simulated 390px viewport.
 
