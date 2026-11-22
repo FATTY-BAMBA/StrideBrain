@@ -1,3 +1,4 @@
+import { assistantFactCopy, assistantQuoteStatus } from "@/modules/localization/assistant";
 import { createHash } from "node:crypto";
 import type { ListAuthorizedProjects } from "@/modules/projects/application/list-authorized-projects";
 import type { GetProjectWorkspace } from "@/modules/projects/application/get-project-workspace";
@@ -104,6 +105,7 @@ export class AssistantReadTools {
   }
   async execute(c: RuntimeContext, call: ToolCall): Promise<ToolResult> {
     if (!c.capabilities.has("project:read")) return empty("UNAVAILABLE");
+    const copy = assistantFactCopy(c.locale);
     const definition = assistantTools.find((t) => t.name === call.name),
       args = record(call.arguments);
     if (!definition || !args) return empty("UNAVAILABLE");
@@ -214,10 +216,11 @@ export class AssistantReadTools {
             {
               count: page.length,
               truncated: allowed.length > offset + 20,
+              coverage: allowed.length > offset + 20 ? copy.moreRecords : copy.allRecords,
               ...(allowed.length > offset + 20 ? { nextOffset: offset + 20 } : {}),
             },
             page.map((j) => j.businessKey),
-            ["count", "nextOffset"],
+            ["count", "nextOffset", "coverage"],
           ),
         );
       return finish(sources);
@@ -257,23 +260,24 @@ export class AssistantReadTools {
           href(projectKey, "/quote"),
           {
             reference: projectKey,
-            status: q.status,
+            status: assistantQuoteStatus(c.locale, q.status),
             amounts: q.amounts
               ? {
                   ...q.amounts,
+                  priceBasis: q.amounts.basis === "ISSUED" ? copy.latestIssued : copy.currentDraft,
                   amountBeforeTax: formatMoney(q.amounts.amountBeforeTax, q.amounts.currency),
                   taxAmount: formatMoney(q.amounts.taxAmount, q.amounts.currency),
                   totalAmount: formatMoney(q.amounts.totalAmount, q.amounts.currency),
                 }
-              : null,
+              : copy.noAmounts,
             issued: issued
               ? {
-                  status: issued.status,
+                  status: assistantQuoteStatus(c.locale, issued.status),
                   documentNumber: issued.documentNumber,
                   validUntil: issued.validUntil,
-                  acceptedOn: issued.acceptedOn,
+                  acceptedOn: issued.acceptedOn ?? copy.notAccepted,
                 }
-              : null,
+              : copy.noIssued,
           },
           [projectKey],
           ["reference", "status", "issued", "amounts"],
@@ -300,8 +304,8 @@ export class AssistantReadTools {
                 reference: row.project.businessKey,
                 documentNumber: row.documentNumber,
                 validUntil: row.validUntil,
-                status: "ISSUED",
-                acceptedOn: null,
+                status: copy.issued,
+                acceptedOn: copy.notAccepted,
               },
               [row.project.businessKey],
               ["reference", "documentNumber", "validUntil", "status", "acceptedOn"],
@@ -322,6 +326,7 @@ export class AssistantReadTools {
                 name: row.project.name,
                 category: categoryLabel(c.locale, row.lesson.categoryId),
                 ...row.lesson,
+                costComparison: row.lesson.exceeded ? copy.actualExceeded : copy.actualNotExceeded,
                 quotedPrice: formatMoney(row.lesson.quoteBeforeTax, row.lesson.currency),
                 reconciledActualCost: formatMoney(row.lesson.actualCost, row.lesson.currency),
               },
@@ -334,6 +339,7 @@ export class AssistantReadTools {
                 "currency",
                 "quotedPrice",
                 "reconciledActualCost",
+                "costComparison",
               ],
             ),
           );
@@ -413,6 +419,8 @@ export class AssistantReadTools {
               categoryId: b.categoryId,
               category: categoryLabel(c.locale, b.categoryId),
               observationType: "QUOTED_PRICE",
+              priceType: copy.quotedPrices,
+              history: b.history.eligibleObservationCount ? copy.quotedPrices : copy.noHistory,
               count: b.history.eligibleObservationCount,
               median: b.history.medianNormalizedAmount,
               low: b.history.minimumNormalizedAmount,
@@ -440,6 +448,8 @@ export class AssistantReadTools {
             [
               "category",
               "observationType",
+              "priceType",
+              "history",
               "count",
               "median",
               "low",

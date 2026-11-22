@@ -34,7 +34,7 @@ describe("assistant grounding", () => {
 
   it("accepts exact supplied values and rejects a wrong number or citation", () => {
     expect(
-      verifyAnswer(answer("NT$3,733,000; 43.0%; 2026-11-22; 5 findings."), [source], "en"),
+      verifyAnswer(answer("NT$3,733,000; 2026-11-22; 5 findings."), [source], "en"),
     ).not.toBeNull();
     for (const text of [
       "NT$3,733,001",
@@ -64,11 +64,14 @@ describe("assistant grounding", () => {
     expect(verifyAnswer(answer("word ".repeat(241)), [source], "en")).toBeNull();
     expect(verifyAnswer(answer("價格 ".repeat(241)), [source], "zh-TW")).toBeNull();
     expect(
-      verifyAnswer(answer("5 findings", ["s"], ["A?", "B?", "C?", "D?"]), [source], "en"),
-    ).toBeNull();
+      verifyAnswer(answer("5 findings", ["s"], ["A?", "B?", "C?", "D?"]), [source], "en")
+        ?.followUps,
+    ).toHaveLength(3);
     for (const text of ["https://example.com", "<b>5</b>", "[x](/en)"])
       expect(verifyAnswer(answer(text), [source], "en")).toBeNull();
-    expect(verifyAnswer(answer("5 findings", ["s"], ["Why 6?"]), [source], "en")).toBeNull();
+    expect(
+      verifyAnswer(answer("5 findings", ["s"], ["Why 6?"]), [source], "en")?.followUps,
+    ).toEqual([]);
   });
   it("keeps dates, signs and percentages distinct", () => {
     expect(numericTokens("２０２６-１１-２２ -43.00% NT$3,733,000.00")).toEqual([

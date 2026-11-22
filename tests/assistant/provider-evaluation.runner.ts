@@ -1,3 +1,4 @@
+import { runEvaluationRounds } from "./evaluation-stability";
 import { it, vi } from "vitest";
 vi.mock("server-only", () => ({}));
 import { mkdirSync, writeFileSync } from "node:fs";
@@ -17,27 +18,23 @@ it("evaluates the explicitly configured paid provider on disposable seed data", 
   )
     throw new Error("PAID_EVALUATION_CONFIGURATION_REQUIRED");
   const config = assistantConfig(process.env),
-    model = new GeminiAssistantModel(process.env.STRIDEBRAIN_GEMINI_API_KEY, config.model),
-    db = await assistantDatabase();
-  const rows: Awaited<ReturnType<typeof runEvaluationQuestion>>[] = [];
-  try {
-    await prepareEvaluation(db);
-    for (const question of questions as EvaluationQuestion[]) {
-      const row = await runEvaluationQuestion(db, question, config, model);
-      rows.push(row);
-      console.log(JSON.stringify(evaluationLogRow(row))); // Synthetic case id and metadata only; no prompts/answers.
+    model = new GeminiAssistantModel(process.env.STRIDEBRAIN_GEMINI_API_KEY, config.model);
+  const stability = await runEvaluationRounds(async (round) => {
+    const db = await assistantDatabase();
+    const rows: Awaited<ReturnType<typeof runEvaluationQuestion>>[] = [];
+    try {
+      await prepareEvaluation(db);
+      for (const question of questions as EvaluationQuestion[]) {
+        const row = await runEvaluationQuestion(db, question, config, model);
+        rows.push(row);
+        console.log(JSON.stringify({ round, ...evaluationLogRow(row) }));
+      }
+      return rows;
+    } finally {
+      await db.close();
     }
-  } finally {
-    await db.close();
-  }
-  const scores = Object.fromEntries(
-    ["en", "zh-TW"].map((locale) => [
-      locale,
-      rows.filter((r) => r.locale === locale && r.verdict !== "wrong").length,
-    ]),
-  );
-  const passed =
-    Object.values(scores).every((score) => score >= 16) && rows.every((r) => !r.wrongNumber);
+  });
+  const { passed } = stability;
   const report = {
     mode: "PAID_PROVIDER",
     provider: config.provider,
@@ -45,12 +42,10 @@ it("evaluates the explicitly configured paid provider on disposable seed data", 
     inputUsdPerMillion: config.inputUsdPerMillion,
     outputUsdPerMillion: config.outputUsdPerMillion,
     generatedAt: new Date().toISOString(),
-    scores,
-    passed,
+    ...stability,
     recommendation: passed
       ? null
       : "Below the issue's pass mark; evaluate the next model tier. Do not tune prompts to these questions.",
-    questions: rows,
   };
   const file =
     process.env.STRIDEBRAIN_AI_EVAL_REPORT ??

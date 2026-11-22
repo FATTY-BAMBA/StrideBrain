@@ -74,11 +74,18 @@ export function redactSource(
   };
 }
 export function modelFacts(value: unknown): unknown {
-  if (Array.isArray(value)) return value.map(modelFacts);
+  if (Array.isArray(value))
+    return value.filter((v) => v !== null && v !== undefined).map(modelFacts);
   if (value !== null && typeof value === "object")
     return Object.fromEntries(
       Object.entries(value)
-        .filter(([key]) => !/(?:Id|Ids)$/.test(key))
+        .filter(
+          ([key, v]) =>
+            v !== null &&
+            v !== undefined &&
+            !/(?:Id|Ids)$/.test(key) &&
+            !["observationType", "authorityState", "basis", "exceeded", "truncated"].includes(key),
+        )
         .map(([key, v]) => [key, modelFacts(v)]),
     );
   return value;

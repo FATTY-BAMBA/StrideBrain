@@ -25,3 +25,14 @@
 - Exact authorized references (all turn source project keys, typed reference/document-number fields, and authorized question references) are identities, not numeric claims. Remove them before numeric extraction on both sides of the ledger; unrelated references and wrong amounts still fail.
 - Each list row carries a server-only dependency on its specific result's count source. Citing a row expands the cited set to that count, without borrowing from another list result. Simple English one–twelve and Chinese 一–十/兩 are checked as numbers in the same ledger; other number-word restrictions remain.
 - No prompt, workflow, migration or hosted changes in this correction. Preserve the first paid report (13/20 en, 12/20 zh-TW); the corrected implementation needs another Director-run paid evaluation before making a quality claim.
+
+
+## Stability review
+
+- Ignore ordered-list markers at the start of lines/items, including full-width forms; quantities in the sentence still require support.
+- Exempt only the exact names/labels sent after redaction, plus authorized references, across all turn sources. Other amounts, dates and counts remain limited to cited sources.
+- Validate the answer independently. Drop invalid, ungrounded or sensitive follow-ups without discarding the answer. Reports retain displayed and raw follow-ups and the displayed text in the synthetic artifact; console and usage logs stay metadata-only.
+- Supply localized status/absence/acceptance labels. Hide server-check markers and nulls from the model DTO while retaining them for server checks.
+- The finding evaluation accepts any exact saved finding sentence. Expansion replaces whole sentences/items with complete saved sentences; the server never edits a finding or takes direction from model wording. Unmatched or ambiguous percentages reject. Percentage-only uniqueness is the explicit rule: the two merged zh-TW fixtures remain rejected because demolition forecast cost and lighting quoted price both have 9.4%; category/kind narrowing is not authorized.
+- Every evaluation executes three isolated rounds of the same 40 questions. Each round must score at least 16/20 in each language with no displayed wrong numbers. Report per-question passes over three rounds; a failed round cannot be averaged away.
+- Prompts and migrations stay unchanged. No hosted project/database changes. PR #56 remains draft.

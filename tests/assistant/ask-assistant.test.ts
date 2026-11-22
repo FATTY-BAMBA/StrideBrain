@@ -86,6 +86,40 @@ describe("bounded read-only assistant", () => {
       await f.service.execute(jobContext(), { question: "What is linked to QUESTION-009?" }),
     ).toMatchObject({ kind: "ANSWER" });
   });
+  it("drops sensitive follow-ups without discarding an otherwise grounded answer", async () => {
+    const f = setup([
+      call,
+      {
+        usage,
+        result: {
+          kind: "ANSWER",
+          answer: {
+            text: "5 jobs.",
+            sourceIds: ["s"],
+            followUps: ["password=secret", "Why 99?", "Which job?"],
+          },
+        },
+      },
+    ]);
+    expect(await f.service.execute(jobContext(), { question: "Jobs?" })).toMatchObject({
+      kind: "ANSWER",
+      answer: { text: "5 jobs.", followUps: ["Which job?"] },
+    });
+  });
+  it("shows the saved finding sentence after expansion, never the model's direction", async () => {
+    const f = setup([call, answer("1. The quoted price is 43% below past quoted prices.")]);
+    const saved = "Overall: quoted price is 43.0% above past quoted prices.";
+    f.tools.execute.mockResolvedValue({
+      status: "OK",
+      sources: [
+        { ...source, facts: { findings: [{ text: saved }] }, typedFactPaths: ["findings.*.text"] },
+      ],
+    });
+    expect(await f.service.execute(jobContext(), { question: "Price findings?" })).toMatchObject({
+      kind: "ANSWER",
+      answer: { text: saved },
+    });
+  });
   it("uses no model and no usage row when disabled or no key", async () => {
     for (const [enabled, model] of [
       [false, new FakeAssistantModel([])],

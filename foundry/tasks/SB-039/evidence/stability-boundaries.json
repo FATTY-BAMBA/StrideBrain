@@ -1,0 +1,11 @@
+{
+  "promptUnchanged": true,
+  "toolDefinitionsUnchanged": true,
+  "providerAdapterUnchanged": true,
+  "evaluationQuestionTextUnchanged": true,
+  "workflowUnchanged": true,
+  "migrationsUnchanged": true,
+  "promptSha256": "17926078283832d96f4798ada93ca32ed9ade8f61326a01d1323286e32e67ee6",
+  "baseline": "c5693941a4c5c339f0a235c0ea6aad2d236ee16d",
+  "percentageMatching": "Exact normalized percentage; exactly one cited saved finding; category/kind not used"
+}

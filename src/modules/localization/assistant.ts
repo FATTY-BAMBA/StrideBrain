@@ -78,3 +78,80 @@ const zh: typeof en = {
   sources: "來源",
 };
 export const assistantCopy = (locale: Locale) => (locale === "zh-TW" ? zh : en);
+
+export function assistantFactCopy(locale: Locale) {
+  return locale === "zh-TW"
+    ? {
+        noQuote: "尚無報價",
+        draft: "草稿",
+        issued: "已核發",
+        accepted: "已接受",
+        superseded: "已取代",
+        notAccepted: "尚未接受",
+        noIssued: "尚未核發報價",
+        noAmounts: "目前沒有報價金額",
+        quotedPrices: "過往報價",
+        noHistory: "沒有可比較的過往報價",
+        latestIssued: "最新核發報價",
+        currentDraft: "目前草稿",
+        moreRecords: "仍有其他紀錄",
+        allRecords: "已列出全部紀錄",
+        actualExceeded: "實際成本高於報價",
+        actualNotExceeded: "實際成本未高於報價",
+        unavailable: "目前無法取得",
+        excluded: "此專案已設定為不提供給 AI",
+        outOfDate: "已儲存的比較已過期",
+        noRecords: "沒有可用紀錄",
+        available: "可用",
+      }
+    : {
+        noQuote: "No quote yet",
+        draft: "Draft",
+        issued: "Issued",
+        accepted: "Accepted",
+        superseded: "Superseded",
+        notAccepted: "Not accepted yet",
+        noIssued: "No issued quote yet",
+        noAmounts: "No quote amounts available",
+        quotedPrices: "Past quoted prices",
+        noHistory: "No comparable past quoted prices",
+        latestIssued: "Latest issued quote",
+        currentDraft: "Current draft",
+        moreRecords: "More records available",
+        allRecords: "All records shown",
+        actualExceeded: "Actual cost exceeds quoted price",
+        actualNotExceeded: "Actual cost does not exceed quoted price",
+        unavailable: "Unavailable",
+        excluded: "This job is excluded from AI",
+        outOfDate: "The saved comparison is out of date",
+        noRecords: "No available records",
+        available: "Available",
+      };
+}
+export function assistantQuoteStatus(locale: Locale, status: string | null): string {
+  const c = assistantFactCopy(locale);
+  return (
+    (
+      {
+        DRAFT: c.draft,
+        ISSUED: c.issued,
+        ACCEPTED: c.accepted,
+        SUPERSEDED: c.superseded,
+      } as Record<string, string>
+    )[status ?? ""] ?? c.noQuote
+  );
+}
+export function assistantToolStatus(locale: Locale, status: string): string {
+  const c = assistantFactCopy(locale);
+  return (
+    (
+      {
+        OK: c.available,
+        NO_RECORDS: c.noRecords,
+        UNAVAILABLE: c.unavailable,
+        EXCLUDED: c.excluded,
+        OUT_OF_DATE: c.outOfDate,
+      } as Record<string, string>
+    )[status] ?? c.unavailable
+  );
+}

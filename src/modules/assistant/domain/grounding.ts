@@ -1,3 +1,4 @@
+import { expandFindingSentences } from "./finding-expansion";
 import type { AssistantSource, StructuredAnswer } from "./contracts";
 import type { Locale } from "@/modules/localization/config";
 
@@ -117,7 +118,7 @@ export function sourceReferences(
   const walk = (value: unknown, paths: readonly string[], path = ""): void => {
     if (
       typeof value === "string" &&
-      paths.includes(path) &&
+      paths.some((p) => path === p || path.startsWith(`${p}.`)) &&
       /(?:^|\.)(?:reference|documentNumber)$/.test(path)
     )
       values.push(value);
@@ -127,6 +128,30 @@ export function sourceReferences(
   };
   sources.forEach((s) => walk(s.facts, s.typedFactPaths ?? []));
   return [...new Set(values.filter(Boolean))];
+}
+/** Identity text must be the redacted labels/names actually sent in this turn. */
+export function sourceIdentities(
+  sources: readonly AssistantSource[],
+  authorized: readonly string[] = [],
+): string[] {
+  const values = sourceReferences(sources, authorized);
+  const walk = (value: unknown, key = ""): void => {
+    if (typeof value === "string" && /^(?:name|label)$/.test(key)) values.push(value);
+    else if (Array.isArray(value)) value.forEach((v) => walk(v));
+    else if (value && typeof value === "object")
+      Object.entries(value).forEach(([k, v]) => walk(v, k));
+  };
+  for (const source of sources) {
+    values.push(source.label);
+    walk(source.facts);
+  }
+  return [...new Set(values.filter(Boolean))];
+}
+/** Markdown/plain list markers are structure, not statements about record quantities. */
+export function withoutEnumerators(text: string): string {
+  return text
+    .normalize("NFKC")
+    .replace(/^(\s*(?:>[ \t]*)?(?:[-*+][ \t]+)?)\d+[.)、](?!\d)[ \t]*/gm, "$1");
 }
 function withoutReferences(text: string, references: readonly string[]): string {
   if (!references.length) return text;
@@ -150,7 +175,7 @@ export function citedSources(
 }
 export function numericTokens(text: string): readonly string[] {
   return (
-    normalizeSimpleNumberWords(normalizeDates(text))
+    normalizeSimpleNumberWords(normalizeDates(withoutEnumerators(text)))
       .replaceAll("−", "-")
       .match(/(?:INVALID_DATE_)?\d{4}-\d{2}-\d{2}|[+-]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?%?/g) ??
     []
@@ -184,21 +209,20 @@ export function parseAnswer(raw: unknown, locale: Locale): StructuredAnswer | nu
     !text.trim() ||
     text.length > 1400 ||
     !Array.isArray(sourceIds) ||
-    sourceIds.length > 30 ||
-    !Array.isArray(followUps) ||
-    followUps.length > 3
+    sourceIds.length > 30
   )
     return null;
   const words = [...new Intl.Segmenter(locale, { granularity: "word" }).segment(text)].filter(
     (s) => s.isWordLike,
   ).length;
-  if (
-    words > 240 ||
-    sourceIds.some((id) => typeof id !== "string" || id.length > 80) ||
-    followUps.some((f) => typeof f !== "string" || f.length > 160 || !f.trim())
-  )
-    return null;
-  return { text: text.trim(), sourceIds: sourceIds as string[], followUps: followUps as string[] };
+  if (words > 240 || sourceIds.some((id) => typeof id !== "string" || id.length > 80)) return null;
+  return {
+    text: text.trim(),
+    sourceIds: sourceIds as string[],
+    followUps: (Array.isArray(followUps) ? followUps : [])
+      .filter((f): f is string => typeof f === "string" && !!f.trim() && f.length <= 160)
+      .slice(0, 3),
+  };
 }
 export type AnswerRejection =
   | "ANSWER_SCHEMA"
@@ -228,7 +252,7 @@ export function unsupportedNumericTokens(
   sources: readonly AssistantSource[],
   authorizedReferences: readonly string[] = [],
 ): string[] {
-  const references = sourceReferences(sources, authorizedReferences);
+  const references = sourceIdentities(sources, authorizedReferences);
   const ledger = new Set(
     numericTokens(withoutReferences(sources.map((s) => factText(s.facts)).join(" "), references)),
   );
@@ -243,7 +267,7 @@ export function hasUnsupportedNumbers(
 ): boolean {
   return unsupportedNumericTokens(text, sources, authorizedReferences).length > 0;
 }
-export function checkAnswer(
+function checkSingleAnswer(
   raw: unknown,
   sources: readonly AssistantSource[],
   locale: Locale,
@@ -251,12 +275,12 @@ export function checkAnswer(
 ): AnswerCheck {
   const parsed = parseAnswer(raw, locale);
   if (!parsed) return { kind: "REJECTED", reason: answerSchemaReason(raw, locale) };
-  const { text, sourceIds, followUps } = parsed;
+  const { text, sourceIds } = parsed;
   if (sourceIds.some((id) => !sources.some((s) => s.sourceId === id)))
     return { kind: "REJECTED", reason: "UNKNOWN_SOURCE" };
   if (!sourceIds.length) return { kind: "REJECTED", reason: "NO_SOURCES" };
-  const output = [text, ...followUps].join(" ");
-  const references = sourceReferences(sources, authorizedReferences);
+  const output = text;
+  const references = sourceIdentities(sources, authorizedReferences);
   const quantities = normalizeSimpleNumberWords(withoutReferences(output, references));
   // Simple words use the same numeric ledger; unsupported compound/large words still fail.
   if (
@@ -284,7 +308,7 @@ export function checkAnswer(
     ) || findings.length > 0;
   if (
     /NT\$|TWD|USD|\b(?:amount|cost|price|rate)\b|金額|成本|單價/i.test(output) &&
-    numericTokens(output).length &&
+    numericTokens(withoutReferences(output, references)).length &&
     !financial
   )
     return { kind: "REJECTED", reason: "FINANCIAL_AUTHORITY" };
@@ -300,12 +324,6 @@ export function checkAnswer(
     )
   )
     return { kind: "REJECTED", reason: "ACTION_CLAIM" };
-  for (const finding of findings)
-    if (
-      numericTokens(finding).some((n) => n.endsWith("%") && numericTokens(output).includes(n)) &&
-      !text.includes(finding)
-    )
-      return { kind: "REJECTED", reason: "FINDING_SENTENCE" };
   // Links are rendered from the server's source list, never generated text.
   if (/https?:\/\/|www\.|<\/?[a-z]|\]\(/i.test(output))
     return { kind: "REJECTED", reason: "GENERATED_LINK_OR_HTML" };
@@ -314,7 +332,52 @@ export function checkAnswer(
     answer: {
       text: text.trim(),
       sourceIds: cited.map((s) => s.sourceId),
-      followUps: followUps as string[],
+      followUps: [],
+    },
+  };
+}
+export function checkAnswer(
+  raw: unknown,
+  sources: readonly AssistantSource[],
+  locale: Locale,
+  authorizedReferences: readonly string[] = [],
+): AnswerCheck {
+  const parsed = parseAnswer(raw, locale);
+  if (!parsed) return { kind: "REJECTED", reason: answerSchemaReason(raw, locale) };
+  // Validate citation identity before using any of its saved wording.
+  if (parsed.sourceIds.some((id) => !sources.some((s) => s.sourceId === id)))
+    return { kind: "REJECTED", reason: "UNKNOWN_SOURCE" };
+  const identities = sourceIdentities(sources, authorizedReferences);
+  const expand = (text: string) =>
+    expandFindingSentences(text, citedSources(sources, parsed.sourceIds), (value) =>
+      numericTokens(withoutReferences(value, identities)).filter((n) => n.endsWith("%")),
+    );
+  const expanded = expand(parsed.text);
+  if (expanded.kind === "REJECTED") return expanded;
+  const checked = checkSingleAnswer(
+    { ...parsed, text: expanded.text, followUps: [] },
+    sources,
+    locale,
+    authorizedReferences,
+  );
+  if (checked.kind === "REJECTED") return checked;
+  return {
+    kind: "ACCEPTED",
+    answer: {
+      ...checked.answer,
+      followUps: parsed.followUps.filter((text) => {
+        const expandedFollowUp = expand(text);
+        return (
+          expandedFollowUp.kind === "EXPANDED" &&
+          expandedFollowUp.text === text.trim() &&
+          checkSingleAnswer(
+            { text, sourceIds: checked.answer.sourceIds, followUps: [] },
+            sources,
+            locale,
+            authorizedReferences,
+          ).kind === "ACCEPTED"
+        );
+      }),
     },
   };
 }

@@ -313,6 +313,7 @@ suite("assistant PostgreSQL access, controls and metadata", () => {
     });
     expect((await read()).sources[0]?.facts.amounts).toEqual({
       basis: "DRAFT",
+      priceBasis: "Current draft",
       currency: draft.currency,
       amountBeforeTax: formatMoney(draft.amountBeforeTax.toFixed(2), draft.currency),
       taxAmount: formatMoney(draft.taxAmount.toFixed(2), draft.currency),

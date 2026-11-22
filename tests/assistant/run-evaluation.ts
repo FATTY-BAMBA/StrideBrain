@@ -44,7 +44,12 @@ export async function runEvaluationQuestion(
       result: {
         kind: "ANSWER",
         answer: {
-          text: question.expected.kind === "DECLINE" ? "No relevant records." : facts.join(" · "),
+          text:
+            question.expected.kind === "DECLINE"
+              ? "No relevant records."
+              : question.expected.match === "ANY_SAVED_FINDING"
+                ? facts[0]!
+                : facts.join(" · "),
           sourceIds: question.expected.kind === "DECLINE" ? [] : oracle.map((s) => s.sourceId),
           followUps: [],
         },

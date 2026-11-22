@@ -1,3 +1,4 @@
+import { assistantToolStatus } from "@/modules/localization/assistant";
 import { AssistantModelError } from "../domain/model-error";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import type { AssistantRepositoryPort } from "@/repositories/ports/assistant-repository";
@@ -207,15 +208,17 @@ export class AskAssistant {
           }
           const checked = checkAnswer(raw, sources, locale, references);
           if (checked.kind === "REJECTED") return await fallback("UNGROUNDED", checked.reason);
-          const answer = checked.answer;
+          let answer = checked.answer;
           const preserved = [
             ...references,
             ...typedAnswerValues(sources.filter((s) => answer.sourceIds.includes(s.sourceId))),
           ];
-          if (
-            [answer.text, ...answer.followUps].some((text) => redactText(text, preserved) !== text)
-          )
+          if (redactText(answer.text, preserved) !== answer.text)
             return await fallback("UNGROUNDED", "REDACTION");
+          answer = {
+            ...answer,
+            followUps: answer.followUps.filter((text) => redactText(text, preserved) === text),
+          };
           await this.repository.finishTurn(c, "ANSWERED");
           return {
             kind: "ANSWER",
@@ -242,7 +245,7 @@ export class AskAssistant {
             if (!sources.some((old) => old.sourceId === s.sourceId)) sources.push(s);
           const data = JSON.stringify({
             tool: call.name,
-            status: result.status,
+            status: assistantToolStatus(locale, result.status),
             sources: safeSources.map(({ sourceId, label, facts }) => ({
               sourceId,
               label,

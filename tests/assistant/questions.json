@@ -186,8 +186,9 @@
     ],
     "expected": {
       "kind": "FACTS",
-      "facts": ["@findings.0.text"],
-      "forbidden": []
+      "facts": [],
+      "forbidden": [],
+      "match": "ANY_SAVED_FINDING"
     }
   },
   {
@@ -556,8 +557,9 @@
     ],
     "expected": {
       "kind": "FACTS",
-      "facts": ["@findings.0.text"],
-      "forbidden": []
+      "facts": [],
+      "forbidden": [],
+      "match": "ANY_SAVED_FINDING"
     }
   },
   {

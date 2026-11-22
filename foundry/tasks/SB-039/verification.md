@@ -20,12 +20,26 @@ Configured standard text rates: **US$0.30 input / US$2.50 output per million tok
 
 ## Automated verification
 
-- **`npm run check`: PASS — 1,241 tests across 121 files**, with no skipped tests, on Node 24.22.3 and isolated loopback PostgreSQL. Formatting, lint, type checking and production build pass. [Final check log](evidence/check-paid-review.log). The existing `prisma.config.ts` anonymous-default-export lint warning remains.
+- **`npm run check`: PASS — 1,262 tests across 123 files**, with no skipped tests, on Node 24.22.3 and isolated loopback PostgreSQL. Formatting, lint, type checking and production build pass. [Final check log](evidence/check-stability.log). The existing `prisma.config.ts` anonymous-default-export lint warning remains.
 - `db:validate`, normal Prisma migration deploy, complete fixture verification and a repeated seed/verify pass succeed on a fresh disposable local database. [Schema/fixture log](evidence/schema-fixture.log). [Client bundle inspection](evidence/client-boundary.json) finds no provider key variable, request header, endpoint implementation or synthetic transport key in browser assets.
 - PostgreSQL tests cover default-off organizations, sample opt-in, assigned manager/finance access, Viewer amount denial, other-organization denial, idempotent audited controls, job and historical-source exclusions, concurrent daily-cap reservations and exact cost aggregation.
 - Freshness and parity tests cover another member's saved comparison, changed active records, and count/median/range equality with `PrepareQuoteDraft`. Existing Home quote-version freshness tests also pass. No ranking or economics replay was added to Home.
 - Unit and boundary tests cover redaction, IDs not grounding amounts, quoted prices not becoming actual costs, shared finding sentences, unknown source IDs, unsupported numbers, HTML/links, invalid schema, bounded turns/tools/output, provider failure, timeout, access changes, no-key and disabled fallbacks, and usage retained on truncation.
 - The deterministic fake exercises all **20 English + 20 zh-TW** evaluation cases against authorized synthetic database records. This validates the harness and application rules; it is **not a live model quality score**. The injection case cannot reveal the foreign job through tools, but real-model resistance still awaits the paid evaluation.
+
+## Stability review on c569394
+
+Two Director-run reports are preserved: [45053575595](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45053575595) scored **19/20 English, 16/20 zh-TW, pass** ([artifact](evidence/provider-45053575595.json)); [45053587841](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45053587841) scored **18/20 English, 15/20 zh-TW, fail** ([artifact](evidence/provider-45053587841.json)). These are the original results, not retroactively rescored.
+
+The rejected raw answers are now regression fixtures. They establish that list markers and the `01` in authorized job names caused false numeric rejections. The reports did not retain follow-ups, so the exact suggestion responsible for the awaiting-quote rejection cannot be reconstructed; the exact answer text is paired with explicit test suggestions to exercise independent validation. The `en-finding` answer used a different valid saved sentence than index zero.
+
+The Director requires each percentage to match exactly one cited saved finding. The two merged zh-TW fixtures contain 9.4%, which exists in both the demolition forecast-cost and lighting quoted-price findings, so they remain rejected as ambiguous (`FINDING_SENTENCE`) under that explicit condition. Other percentages expand only to whole saved sentences, including when the model gives the wrong direction. Category/kind disambiguation has not been applied.
+
+The runner now executes three rounds with fresh disposable synthetic databases, requires each round to meet both language thresholds and have no wrong displayed number, and reports per-question pass rates. Raw/displayed follow-ups and displayed answer text belong to the artifact only. Hosted acceptance still waits for the Product Director.
+
+Local verification: `npm run check` passed **1,262 tests / 123 files**, with no skips, plus format, lint, types and production build. [Three-round fake report](evidence/fake-evaluation-stability.json): every round passes 20/20 in both languages with zero wrong displayed numbers. This verifies the application/harness, not model quality. All twelve recorded rejected answers are replayed: ten pass the corrected checks, and the two merged findings are rejected for the duplicate 9.4% under the required uniqueness rule. [Prompt/workflow/migration boundaries](evidence/stability-boundaries.json) are unchanged.
+
+Paid stability workflow: **PENDING on this correction**; the run and full report will be recorded after it completes.
 
 ## First paid evaluation and corrections
 
@@ -44,7 +58,7 @@ Corrections, with regressions:
 - Every non-pass report contains `rawAnswerText` and displayed `unsupportedTokens`, alongside separate draft tokens. The synthetic artifact contains these diagnostics; the evaluation console uses a metadata allowlist, and production usage logging is unchanged.
 - Prompt, evaluation questions, workflow and migrations are unchanged. [Boundary/discovery evidence](evidence/paid-review-boundaries.json). No hosted changes or paid calls were made by the agent.
 
-**Corrected paid evaluation: WAITING FOR THE PRODUCT DIRECTOR.** The existing workflow on main needs no change. Run **AI evaluation** with `build/sb-039-records-assistant` (or this correction's final commit) in the **ref** field, then retain the uploaded artifact here. The required **16/20 per language and no wrong displayed number** threshold has not yet been demonstrated. The deterministic fake checks application/evaluation mechanics only. The [corrected fake report](evidence/fake-evaluation-paid-review.json) passes all 20 English + 20 zh-TW cases, with zero wrong displayed numbers. All 40 new regression cases pass in the full check; the focused five-file run passes 90 tests. The disposable loopback database was removed after verification.
+**Historical correction:** the two c569394 paid runs recorded above supersede this earlier pending status. One passed and one failed, motivating the three-round stability gate. The existing workflow on main needs no change. The deterministic fake checks application/evaluation mechanics only. The [corrected fake report](evidence/fake-evaluation-paid-review.json) passes all 20 English + 20 zh-TW cases, with zero wrong displayed numbers. All 40 new regression cases pass in the full check; the focused five-file run passes 90 tests. The disposable loopback database was removed after verification.
 
 ## PR #56 review repairs
 

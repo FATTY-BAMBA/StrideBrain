@@ -1,3 +1,4 @@
+import { modelFacts } from "@/modules/assistant/domain/redaction";
 import { describe, it, expect, vi } from "vitest";
 import {
   AssistantReadTools,
@@ -68,6 +69,78 @@ describe("assistant read tools", () => {
         reason: "UNSUPPORTED_NUMBER",
       });
   });
+  it.each(["en", "zh-TW"] as const)(
+    "returns display-ready quote and history facts in %s",
+    async (locale) => {
+      const f = setup();
+      f.services.quote.execute.mockResolvedValue({
+        kind: "AVAILABLE",
+        status: "ISSUED",
+        amounts: {
+          basis: "ISSUED",
+          currency: "TWD",
+          amountBeforeTax: "100",
+          taxAmount: "5",
+          totalAmount: "105",
+        },
+        issued: {
+          status: "ISSUED",
+          documentNumber: "Q-001",
+          validUntil: "2027-12-31",
+          acceptedOn: null,
+        },
+      });
+      const result = await f.tools.execute(jobContext({ locale }), {
+        name: "get_quote_status",
+        arguments: { projectKey: "J" },
+      });
+      expect(result.sources[0]!.facts.status).toBe(locale === "en" ? "Issued" : "已核發");
+      const visible = modelFacts(result.sources[0]!.facts);
+      expect(visible).toMatchObject({
+        issued: { acceptedOn: locale === "en" ? "Not accepted yet" : "尚未接受" },
+      });
+      expect(JSON.stringify(visible)).not.toMatch(/"ISSUED"|null|"basis"/);
+      f.services.quote.execute.mockResolvedValue({
+        kind: "AVAILABLE",
+        status: null,
+        issued: null,
+        amounts: null,
+      });
+      const empty = await f.tools.execute(jobContext({ locale }), {
+        name: "get_quote_status",
+        arguments: { projectKey: "J" },
+      });
+      expect(JSON.stringify(modelFacts(empty.sources[0]!.facts))).not.toContain("null");
+      f.services.history.execute.mockResolvedValue({
+        kind: "AVAILABLE",
+        comparisonRunId: "run",
+        projectKeys: [],
+        job: { currency: "TWD", areaUnit: "SQM" },
+        baselines: [
+          {
+            categoryId: "IMPORTED_STONE",
+            history: {
+              eligibleObservationCount: 0,
+              medianNormalizedAmount: null,
+              minimumNormalizedAmount: null,
+              maximumNormalizedAmount: null,
+              evidenceReferenceIds: [],
+            },
+          },
+        ],
+      });
+      const history = await f.tools.execute(jobContext({ locale }), {
+        name: "get_past_prices",
+        arguments: { projectKey: "J" },
+      });
+      expect(history.sources[0]!.facts.observationType).toBe("QUOTED_PRICE");
+      const data = JSON.stringify(modelFacts(history.sources[0]!.facts));
+      expect(data).not.toMatch(/QUOTED_PRICE|observationType|categoryId|null/);
+      expect(data).toContain(
+        locale === "en" ? "No comparable past quoted prices" : "沒有可比較的過往報價",
+      );
+    },
+  );
   it("resolves a Chinese job name in an English question without widening access", async () => {
     const f = setup();
     f.services.projects.execute

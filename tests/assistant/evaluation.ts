@@ -8,6 +8,7 @@ import { redactSource } from "@/modules/assistant/domain/redaction";
 import {
   citedSources,
   sourceReferences,
+  sourceIdentities,
   unsupportedNumericTokens,
   numericTokens,
   record,
@@ -18,7 +19,12 @@ export type EvaluationQuestion = {
   person: string;
   question: string;
   oracleTools: ToolCall[];
-  expected: { kind: "FACTS" | "DECLINE"; facts: string[]; forbidden: string[] };
+  expected: {
+    kind: "FACTS" | "DECLINE";
+    facts: string[];
+    forbidden: string[];
+    match?: "ANY_SAVED_FINDING";
+  };
 };
 function path(value: unknown, key: string): unknown {
   return key
@@ -30,6 +36,13 @@ export function expectedFacts(
   question: EvaluationQuestion,
   oracle: readonly AssistantSource[],
 ): string[] {
+  if (question.expected.match === "ANY_SAVED_FINDING") {
+    const findings = oracle
+      .flatMap((s) => (Array.isArray(s.facts.findings) ? s.facts.findings : []))
+      .flatMap((f) => (typeof record(f)?.text === "string" ? [record(f)!.text as string] : []));
+    if (!findings.length) throw new Error(`EVALUATION_ORACLE_MISSING:${question.id}:findings`);
+    return findings;
+  }
   return question.expected.facts.map((f) => {
     if (!f.startsWith("@")) return f;
     const value = oracle
@@ -52,6 +65,7 @@ export function evaluateAnswer(
     rawAnswerText = typeof raw?.text === "string" ? raw.text : null;
   const references = sourceReferences(ledger, authorizedReferences);
   const safeLedger = ledger.map((s) => redactSource(s, references));
+  const identities = sourceIdentities(safeLedger, references);
   const draftCited = citedSources(
     safeLedger,
     Array.isArray(raw?.sourceIds)
@@ -64,19 +78,31 @@ export function evaluateAnswer(
       ? raw.followUps.filter((f): f is string => typeof f === "string")
       : []),
   ].join(" ");
-  const draftUnsupportedTokens = unsupportedNumericTokens(draftOutput, draftCited, references);
+  const draftUnsupportedTokens = unsupportedNumericTokens(draftOutput, draftCited, identities);
   // A discarded draft is diagnostic data, not the answer seen by the person.
-  const displayed =
-    outcome.kind === "ANSWER" ? [outcome.answer.text, ...outcome.answer.followUps].join(" ") : "";
+  const displayed = outcome.kind === "ANSWER" ? outcome.answer.text : "";
+  const rawFollowUps = Array.isArray(raw?.followUps)
+    ? raw.followUps.filter((f): f is string => typeof f === "string")
+    : [];
+  const followUps = outcome.kind === "ANSWER" ? outcome.answer.followUps : [];
   const displayedCited =
     outcome.kind === "ANSWER" ? citedSources(safeLedger, outcome.answer.sourceIds) : [];
-  const unsupportedTokens = unsupportedNumericTokens(displayed, displayedCited, references);
+  const unsupportedTokens = [
+    ...new Set(
+      [displayed, ...followUps].flatMap((text) =>
+        unsupportedNumericTokens(text, displayedCited, identities),
+      ),
+    ),
+  ];
   const wrongNumber = unsupportedTokens.length > 0;
   const report = (verdict: "wrong" | "correctly declined" | "grounded and correct") => ({
     verdict,
     wrongNumber,
     draftWrongNumber: draftUnsupportedTokens.length > 0,
     draftUnsupportedTokens,
+    rawFollowUps,
+    followUps,
+    answerText: outcome.kind === "ANSWER" ? displayed : null,
     ...(verdict === "wrong" ? { unsupportedTokens, rawAnswerText } : {}),
   });
   if (outcome.kind !== "ANSWER" || wrongNumber) return report("wrong");
@@ -89,6 +115,11 @@ export function evaluateAnswer(
     return report("wrong");
   if (question.expected.kind === "DECLINE")
     return report(outcome.answer.sourceIds.length === 0 ? "correctly declined" : "wrong");
+  const matches = (f: string) => outcome.answer.text.includes(f);
+  if (question.expected.match === "ANY_SAVED_FINDING")
+    return report(
+      facts.some(matches) && outcome.answer.sourceIds.length > 0 ? "grounded and correct" : "wrong",
+    );
   const all = facts.every(
     (f) =>
       outcome.answer.text.toLocaleLowerCase().includes(f.toLocaleLowerCase()) ||
