@@ -927,7 +927,7 @@ export class HistoricalEconomicsService {
     private readonly evidenceBundles = new ComparisonEvidenceBundleService(),
   ) {}
 
-  /** Same quoted-history calculation for scope categories, even before a current quote exists. */
+  /** Same quoted-history calculation for pricing categories, even before a current quote exists. */
   quotedHistoryBaselines(
     input: QuotedHistoryInput,
     categoryIds: readonly string[],

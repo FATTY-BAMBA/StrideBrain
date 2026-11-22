@@ -9,3 +9,5 @@ B. Add the tenant-scoped port/adapter, preparation and transactional versioned s
 C. Bilingual Quote tab, Home Draft quote decision and finding-card count parity, shared exact money formatting, local checks and evidence.
 
 No issuing, PDF/export, client acceptance, model call, data-mode branch or hosted action. Hosted acceptance waits for the Product Director's Test site workflow and clickthrough; keep the PR draft.
+
+Review, 22 November 2026: draft lines use commercial pricing categories; partial scope coverage shows the combined rate only as a reference. Improve rate/area/amount readability and preserve default/edited descriptions in each language. Same branch and draft PR #51.

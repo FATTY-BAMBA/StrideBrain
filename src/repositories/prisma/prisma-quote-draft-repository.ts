@@ -1,3 +1,4 @@
+import { categoryLabel } from "@/modules/localization/jobs";
 import { randomUUID } from "node:crypto";
 import type { Prisma, PrismaClient } from "../../../.generated/prisma/client";
 import { AuthorizationService } from "@/modules/authorization/authorization-service";
@@ -77,6 +78,7 @@ class Session implements QuoteDraftSessionPort {
         areaQuantity: true,
         areaUnit: true,
         currency: true,
+        commercialCategoryIds: true,
         scopes: {
           where: { organizationId },
           orderBy: { categoryId: "asc" },
@@ -94,6 +96,7 @@ class Session implements QuoteDraftSessionPort {
       area: row.areaQuantity.toFixed(3),
       areaUnit: row.areaUnit,
       currency: row.currency,
+      commercialCategoryIds: row.commercialCategoryIds,
       scopeCategoryIds: row.scopes.map((scope) => scope.categoryId),
     };
   }
@@ -271,11 +274,11 @@ class Session implements QuoteDraftSessionPort {
           descriptionEn:
             context.locale === "en"
               ? line.description
-              : (oldItem?.descriptionEn ?? line.description),
+              : (oldItem?.descriptionEn ?? categoryLabel("en", line.categoryId)),
           descriptionZhTw:
             context.locale === "zh-TW"
               ? line.description
-              : (oldItem?.descriptionZhTw ?? line.description),
+              : (oldItem?.descriptionZhTw ?? categoryLabel("zh-TW", line.categoryId)),
           amount: line.amount,
           quantity: "1",
           unit: "lot",

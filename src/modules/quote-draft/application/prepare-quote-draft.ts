@@ -51,7 +51,7 @@ export class PrepareQuoteDraft {
             generatedAt: calculatedAt,
             snapshotDate: calculatedAt.slice(0, 10),
           },
-          job.scopeCategoryIds,
+          job.commercialCategoryIds,
         ),
         differences: new ClosedJobEconomicsService().selectedCategoryDifferences(
           batch,

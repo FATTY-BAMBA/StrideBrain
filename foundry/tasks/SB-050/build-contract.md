@@ -3,7 +3,7 @@
 ## A — Shared domain calculations
 
 - HistoricalEconomicsService exposes the same category quoted-history aggregate without requiring a current quote. The authority service, normalized rates, median/min/max and required-history constant remain shared.
-- QUOTE-DRAFT-1.0: one line per canonical scope category; median quoted rate × area, half-up to NT$1,000. Insufficient eligible history has no suggestion. Supplier offers, forecast and actual cost cannot suggest client prices.
+- QUOTE-DRAFT-1.0: one line per stored canonical commercial category (`Project.commercialCategoryIds`); median quoted rate × area, half-up to NT$1,000. Insufficient eligible history has no suggestion. Supplier offers, forecast and actual cost cannot suggest client prices.
 - ClosedJobEconomicsService exposes its per-category reconciled actual-minus-quoted differences for the selected past jobs. Cost flags are absent when actuals are unauthorized. Source conflicts are explicit; conflicted sources remain excluded from eligible quoted history.
 - Fixed-decimal server totals use one Taiwan business-tax constant (5%). No browser-supplied totals.
 
@@ -19,7 +19,7 @@
 
 ## C — Experience and verification
 
-- Quote tab uses supplied English/zh-TW wording and existing evidence panel. Saves show version and compare-again link; Discovery/Design offer explicit stage update after first save.
+- Quote tab uses supplied English/zh-TW wording and existing evidence panel. Rates display half-up whole-dollar values, areas omit fractional trailing zeros, and each amount input has the shared formatted-money reading beside it. Stored values remain exact. New descriptions store each language’s category label; a typed edit changes only the viewed language. Saves show version and compare-again link; Discovery/Design offer explicit stage update after first save.
 - Home order: Confirm review, Review quote, Draft quote, Compare with past jobs. Draft quote requires quote:draft, an active Discovery/Design/Quote review job, a completed comparison and no quote version.
 - Additional-finding count uses exactly the comparison page's visible finding set, including its overall lines. Home, overview and Quote share an exact decimal money formatter.
 - Run Node 24 npm run check, local PostgreSQL tests and local production browser flows. Record verified and not verified. Agents never deploy/migrate/seed/change hosted resources. Hosted acceptance waits for the Product Director; PR stays draft.
@@ -30,7 +30,7 @@
 - `EvidenceReference.supportedValue.quoteDraft` stores the recorded basis and manual-entry actor. Normal economics and evidence reads strip this reserved metadata; only the quote read model returns it after authorizing every underlying source. Actual-cost flags also require actual access to the active job.
 - Serializable transactions retry conflicts, check the previous version and return the stored audit receipt for a matching retry. Changed-line audit IDs refer to the new quote items, with category IDs alongside them.
 - Category lines have quantity 1 lot. Amount input therefore uses the tighter existing `unitPrice Decimal(20,6)` range: at most 14 integer digits and two decimal places. Totals fit the existing `Decimal(20,2)` columns. Descriptions are bounded to 500 characters.
-- Scope IDs must match past price categories exactly. The old combined `DEMOLITION_CEILING` price is not allocated or copied to both `SELECTIVE_DEMOLITION` and `PARTITIONS_CEILINGS`; those scopes abstain when exact history is absent.
-- Existing quotes with a different commercial/detailed line structure are displayed faithfully as read-only. The category editor does not merge or split them. Issuing, converting imported quotes and detailed line editing remain outside this issue.
+- Line IDs, baseline input, validation and required-category checks use the job’s commercial categories. Both demolition and partitions/ceilings produce one `DEMOLITION_CEILING` line. The inverse of the existing creation mapping identifies covered scopes: partial coverage retains the combined rate/range as a reference, suppresses the suggestion, and names all/included scopes in one computed bilingual sentence. A coverage change marks the recorded basis stale; unrelated scope changes do not.
+- Existing quotes with duplicate categories or noncanonical detailed line IDs are displayed faithfully as read-only. The category editor does not merge or split them. Issuing, converting imported quotes and detailed line editing remain outside this issue.
 - A removed saved category remains visible with its amount and an out-of-date basis. An added category has no suggestion until explicit refresh. Existing amounts are never silently discarded.
 - Home checks saved-comparison freshness for compared active jobs, including Discovery/Design after a save. Review-quote findings remain restricted to Quote review. No ranking or economics is replayed on Home.

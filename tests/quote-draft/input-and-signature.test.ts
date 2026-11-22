@@ -22,6 +22,8 @@ it("bounds server line input and refuses injected totals, invalid categories, du
     { amount: "100000000000000" },
     { description: "x".repeat(501) },
     { categoryId: "unknown" },
+    { categoryId: "SELECTIVE_DEMOLITION" },
+    { categoryId: "PARTITIONS_CEILINGS" },
   ]) {
     const value = input();
     expect(validateSaveDraft({ ...value, lines: [{ ...value.lines[0], ...patch }] })).toBeNull();
@@ -64,10 +66,20 @@ it("ordinary financial evidence never contains the private recorded basis", () =
 });
 
 import { isCategoryDraft } from "@/modules/quote-draft/domain/save-input";
-it("does not merge or split pre-existing commercial or detailed quote lines in the category editor", () => {
+it("does not merge or split pre-existing detailed quote lines in the category editor", () => {
   expect(isCategoryDraft([{ categoryId: "IMPORTED_STONE" }])).toBe(true);
-  expect(isCategoryDraft([{ categoryId: "DEMOLITION_CEILING" }])).toBe(false);
+  expect(isCategoryDraft([{ categoryId: "DEMOLITION_CEILING" }])).toBe(true);
   expect(
     isCategoryDraft([{ categoryId: "IMPORTED_STONE" }, { categoryId: "IMPORTED_STONE" }]),
   ).toBe(false);
+});
+
+it("accepts the combined commercial category for a single draft line", () => {
+  const value = input();
+  expect(
+    validateSaveDraft({
+      ...value,
+      lines: [{ ...value.lines[0], categoryId: "DEMOLITION_CEILING" }],
+    })?.lines[0]?.categoryId,
+  ).toBe("DEMOLITION_CEILING");
 });

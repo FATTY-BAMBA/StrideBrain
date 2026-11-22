@@ -55,7 +55,7 @@ export class SaveQuoteDraft {
         return { kind: "CONFLICT" };
       const requiredCategories = [
         ...new Set([
-          ...job.scopeCategoryIds,
+          ...job.commercialCategoryIds,
           ...(previous?.lines.map((line) => line.categoryId) ?? []),
         ]),
       ].sort();

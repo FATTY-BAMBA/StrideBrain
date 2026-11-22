@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   basisOutOfDate,
+  draftCoverage,
   prepareDraftPolicy,
   type DraftJob,
 } from "@/modules/quote-draft/domain/draft-policy";
@@ -14,6 +15,7 @@ const job: DraftJob = {
   areaUnit: "m2",
   currency: "TWD",
   scopeCategoryIds: ["IMPORTED_STONE", "SIGNAGE"],
+  commercialCategoryIds: ["IMPORTED_STONE", "SIGNAGE"],
 };
 const baseline = (rate: string, count = REQUIRED_HISTORY_COUNT): CategoryQuotedHistory => ({
   categoryId: "IMPORTED_STONE",
@@ -37,7 +39,57 @@ const draft = (rate = "15", count = REQUIRED_HISTORY_COUNT) =>
     calculatedAt: "2026-11-22T00:00:00Z",
   });
 describe("QUOTE-DRAFT-1.0", () => {
-  it("uses median quoted rate, keeps basis and conflict sources and abstains for missing scope history", () => {
+  it("combines demolition and ceilings into the job's pricing line and uses its past rate", () => {
+    const combined = {
+      ...job,
+      scopeCategoryIds: ["SELECTIVE_DEMOLITION", "PARTITIONS_CEILINGS"],
+      commercialCategoryIds: ["DEMOLITION_CEILING"],
+    };
+    const prepare = (scopeCategoryIds: readonly string[]) =>
+      prepareDraftPolicy({
+        job: { ...combined, scopeCategoryIds },
+        baselines: [{ ...baseline("15"), categoryId: "DEMOLITION_CEILING" }],
+        selectedProjectCount: 3,
+        calculatedAt: "2026-11-22T00:00:00Z",
+      });
+    const full = prepare(combined.scopeCategoryIds);
+    expect(full).toHaveLength(1);
+    expect(full[0]).toMatchObject({
+      categoryId: "DEMOLITION_CEILING",
+      basis: { suggestedAmount: "2000.00" },
+    });
+    const partial = prepare(["PARTITIONS_CEILINGS"])[0]!;
+    expect(partial.basis).toMatchObject({
+      medianRate: "15",
+      lowRate: "10",
+      highRate: "20",
+      count: 3,
+      evidenceReferenceIds: ["quote-line"],
+    });
+    expect(partial.basis).not.toHaveProperty("suggestedAmount");
+    expect(draftCoverage(partial.categoryId, partial.basis.scopeCategoryIds)).toEqual({
+      all: ["SELECTIVE_DEMOLITION", "PARTITIONS_CEILINGS"],
+      included: ["PARTITIONS_CEILINGS"],
+      partial: true,
+    });
+    expect(basisOutOfDate(full[0]!.basis, combined, "DEMOLITION_CEILING")).toBe(false);
+    expect(
+      basisOutOfDate(
+        full[0]!.basis,
+        { ...combined, scopeCategoryIds: ["PARTITIONS_CEILINGS"] },
+        "DEMOLITION_CEILING",
+      ),
+    ).toBe(true);
+    expect(basisOutOfDate(partial.basis, combined, "DEMOLITION_CEILING")).toBe(true);
+    expect(
+      basisOutOfDate(
+        full[0]!.basis,
+        { ...combined, scopeCategoryIds: [...combined.scopeCategoryIds, "SIGNAGE"] },
+        "DEMOLITION_CEILING",
+      ),
+    ).toBe(false);
+  });
+  it("uses median quoted rate, keeps basis and conflict sources and abstains for missing pricing-category history", () => {
     expect(draft()[0]?.basis).toMatchObject({
       suggestedAmount: "2000.00",
       count: 3,

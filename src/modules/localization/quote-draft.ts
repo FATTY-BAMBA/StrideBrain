@@ -14,6 +14,9 @@ const en = {
   unavailableBasis: "The basis is not available to you.",
   manual: "No suggestion. Enter the amount yourself.",
   basis: "Median of {n} past jobs: {rate} per {unit} × {area} {unit}",
+  reference: "Reference only — median of {n} past jobs: {rate} per {unit}",
+  partial:
+    "Past prices for this line cover {all}. This job includes only {included}. Enter the amount yourself.",
   range: "Past range: {low} to {high} per {unit}",
   few: "Only {n} of {required} past prices found. Enter the amount yourself.",
   exceeded: "In {k} of {n} past jobs, actual cost exceeded the quoted amount for this category.",
@@ -59,6 +62,8 @@ const zh: typeof en = {
   unavailableBasis: "您目前無法查看此建議的依據。",
   manual: "目前沒有建議金額，請自行輸入。",
   basis: "{n} 個過往專案的中位數：每 {unit} {rate} × {area} {unit}",
+  reference: "僅供參考：{n} 個過往專案的中位數為每 {unit} {rate}",
+  partial: "此項目的過往報價包含{all}；本專案只包含{included}，請自行輸入金額。",
   range: "過往範圍：每 {unit} {low} 至 {high}",
   few: "只找到 {n} 筆過往報價（需要 {required} 筆），請自行輸入金額。",
   exceeded: "{n} 個過往專案中有 {k} 個，此類別的實際成本超過報價。",

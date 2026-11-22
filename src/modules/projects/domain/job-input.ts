@@ -61,6 +61,11 @@ export function commercialCategoriesForScope(
 ): readonly CommercialCategory[] {
   return [...new Set(scopes.map((scope) => SCOPE_TO_COMMERCIAL[scope]))].sort();
 }
+
+/** The inverse of the creation mapping, for coverage of a past pricing category. */
+export function scopesForCommercialCategory(categoryId: string): readonly ScopeCategory[] {
+  return SCOPE_CATEGORIES.filter((scope) => SCOPE_TO_COMMERCIAL[scope] === categoryId);
+}
 export const CLIENT_TYPES = ["RETAIL", "CORPORATE", "HOSPITALITY"] as const;
 export const JOB_FIELDS = [
   "businessKey",

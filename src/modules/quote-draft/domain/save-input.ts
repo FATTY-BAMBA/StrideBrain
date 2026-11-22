@@ -1,4 +1,4 @@
-import { IDEMPOTENCY_KEY, SCOPE_CATEGORIES } from "@/modules/projects/domain/job-input";
+import { IDEMPOTENCY_KEY, COMMERCIAL_CATEGORIES } from "@/modules/projects/domain/job-input";
 import { decimalToString, money } from "@/modules/finance/fixed-decimal";
 export type DraftLineInput = Readonly<{ categoryId: string; description: string; amount: string }>;
 export type SaveDraftInput = Readonly<{
@@ -34,7 +34,7 @@ export function validateSaveDraft(value: unknown): SaveDraftInput | null {
     ) ||
     !Array.isArray(input.lines) ||
     !input.lines.length ||
-    input.lines.length > SCOPE_CATEGORIES.length
+    input.lines.length > COMMERCIAL_CATEGORIES.length
   )
     return null;
   const lines: DraftLineInput[] = [];
@@ -44,7 +44,7 @@ export function validateSaveDraft(value: unknown): SaveDraftInput | null {
     if (
       Object.keys(line).some((key) => !["categoryId", "description", "amount"].includes(key)) ||
       typeof line.categoryId !== "string" ||
-      !SCOPE_CATEGORIES.some((id) => id === line.categoryId) ||
+      !COMMERCIAL_CATEGORIES.some((id) => id === line.categoryId) ||
       lines.some((existing) => existing.categoryId === line.categoryId) ||
       typeof line.description !== "string" ||
       !line.description.trim() ||
@@ -68,11 +68,11 @@ export function validateSaveDraft(value: unknown): SaveDraftInput | null {
   };
 }
 
-/** The category editor cannot merge or split pre-existing detailed/commercial lines. */
+/** The category editor cannot merge or split pre-existing detailed lines. */
 export function isCategoryDraft(lines: readonly { categoryId: string }[]): boolean {
   return (
     lines.length > 0 &&
     new Set(lines.map((line) => line.categoryId)).size === lines.length &&
-    lines.every((line) => SCOPE_CATEGORIES.some((category) => category === line.categoryId))
+    lines.every((line) => COMMERCIAL_CATEGORIES.some((category) => category === line.categoryId))
   );
 }

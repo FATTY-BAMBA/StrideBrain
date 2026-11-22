@@ -11,6 +11,7 @@ import {
   type CategoryQuotedHistory,
 } from "@/modules/economics/domain/historical-economics-service";
 import type { ClosedJobLesson } from "@/modules/economics/domain/closed-job-economics-service";
+import { scopesForCommercialCategory } from "@/modules/projects/domain/job-input";
 
 export const QUOTE_DRAFT_POLICY_VERSION = "QUOTE-DRAFT-1.0" as const;
 export type DraftJob = Readonly<{
@@ -18,6 +19,7 @@ export type DraftJob = Readonly<{
   areaUnit: string;
   currency: string;
   scopeCategoryIds: readonly string[];
+  commercialCategoryIds: readonly string[];
 }>;
 export type DraftBasis = Readonly<{
   policyVersion: typeof QUOTE_DRAFT_POLICY_VERSION;
@@ -51,7 +53,8 @@ export function prepareDraftPolicy(
     calculatedAt: string;
   }>,
 ): readonly DraftSuggestion[] {
-  return [...new Set(input.job.scopeCategoryIds)].sort().map((categoryId) => {
+  return [...new Set(input.job.commercialCategoryIds)].sort().map((categoryId) => {
+    const coverage = draftCoverage(categoryId, input.job.scopeCategoryIds);
     const baseline = input.baselines.find((entry) => entry.categoryId === categoryId);
     const history = baseline?.history;
     const count = history?.eligibleObservationCount ?? 0;
@@ -77,6 +80,10 @@ export function prepareDraftPolicy(
             medianRate: history.medianNormalizedAmount!,
             lowRate: history.minimumNormalizedAmount!,
             highRate: history.maximumNormalizedAmount!,
+          }
+        : {}),
+      ...(sufficient && !coverage.partial
+        ? {
             // Keep all nine product decimals until rounding to thousands (no double rounding).
             suggestedAmount: decimalToString(
               multiply(
@@ -111,12 +118,21 @@ export function prepareDraftPolicy(
 }
 
 export function basisOutOfDate(basis: DraftBasis, job: DraftJob, categoryId: string): boolean {
+  const before = draftCoverage(categoryId, basis.scopeCategoryIds);
+  const current = draftCoverage(categoryId, job.scopeCategoryIds);
   return (
     quantity(basis.area).atoms !== quantity(job.area).atoms ||
     basis.areaUnit !== job.areaUnit ||
-    !basis.scopeCategoryIds.includes(categoryId) ||
-    !job.scopeCategoryIds.includes(categoryId)
+    !job.commercialCategoryIds.includes(categoryId) ||
+    before.included.length === 0 ||
+    JSON.stringify(before.included) !== JSON.stringify(current.included)
   );
+}
+
+export function draftCoverage(categoryId: string, scopeCategoryIds: readonly string[]) {
+  const all = scopesForCommercialCategory(categoryId);
+  const included = all.filter((scope) => scopeCategoryIds.includes(scope));
+  return { all, included, partial: all.length === 0 || included.length !== all.length };
 }
 
 export function basisSourceIds(basis: DraftBasis): readonly string[] {

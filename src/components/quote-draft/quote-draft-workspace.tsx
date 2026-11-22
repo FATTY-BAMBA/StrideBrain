@@ -15,7 +15,9 @@ import type {
   EvidencePanelSelection,
 } from "@/modules/evidence-panel/contracts";
 import type { QuoteDraftView } from "@/modules/quote-draft/application/get-quote-draft";
-import type { DraftBasis } from "@/modules/quote-draft/domain/draft-policy";
+import { draftCoverage, type DraftBasis } from "@/modules/quote-draft/domain/draft-policy";
+import { DRAFT_AMOUNT } from "@/modules/quote-draft/domain/save-input";
+import { formatQuoteArea, formatQuoteRate } from "@/modules/quote-draft/presentation";
 import type { QuoteTotals } from "@/modules/finance/quote-totals";
 import { formatMoney } from "@/modules/finance/format-money";
 import type { Locale } from "@/modules/localization/config";
@@ -44,7 +46,10 @@ function savedRows(view: Available, locale: Locale): Row[] {
       outdated: line.basisOutOfDate,
     }));
   const ids = [
-    ...new Set([...view.job.scopeCategoryIds, ...view.saved.lines.map((line) => line.categoryId)]),
+    ...new Set([
+      ...view.job.commercialCategoryIds,
+      ...view.saved.lines.map((line) => line.categoryId),
+    ]),
   ].sort();
   return ids.map((categoryId) => {
     const line = view.saved!.lines.find((entry) => entry.categoryId === categoryId);
@@ -242,6 +247,9 @@ export function QuoteDraftWorkspace({ initial, locale }: { initial: Available; l
                 const rowKey = editable ? row.categoryId : `${row.categoryId}-${index}`;
                 const basis = row.basis,
                   unit = basis?.areaUnit === "m2" ? "m²" : (basis?.areaUnit ?? view.job.areaUnit);
+                const coverage = basis
+                  ? draftCoverage(row.categoryId, basis.scopeCategoryIds)
+                  : null;
                 return (
                   <section
                     className={styles.row}
@@ -274,6 +282,11 @@ export function QuoteDraftWorkspace({ initial, locale }: { initial: Available; l
                             update(row.categoryId, { amount: event.target.value })
                           }
                         />
+                        <span aria-live="polite">
+                          {DRAFT_AMOUNT.test(row.amount)
+                            ? formatMoney(row.amount, view.job.currency)
+                            : ""}
+                        </span>
                       </label>
                     </div>
                     <div className={styles.basis}>
@@ -304,18 +317,36 @@ export function QuoteDraftWorkspace({ initial, locale }: { initial: Available; l
                                   </button>
                                 ) : null}
                               </p>
+                            </>
+                          ) : null}
+                          {coverage?.partial && !row.outdated ? (
+                            <p>
+                              {text(copy.partial, {
+                                all: new Intl.ListFormat(locale, {
+                                  style: "long",
+                                  type: "conjunction",
+                                }).format(coverage.all.map((id) => categoryLabel(locale, id))),
+                                included: new Intl.ListFormat(locale, {
+                                  style: "long",
+                                  type: "conjunction",
+                                }).format(coverage.included.map((id) => categoryLabel(locale, id))),
+                              })}
+                            </p>
+                          ) : null}
+                          {basis.medianRate !== undefined ? (
+                            <>
                               <p>
-                                {text(copy.basis, {
+                                {text(coverage?.partial ? copy.reference : copy.basis, {
                                   n: basis.count,
-                                  rate: formatMoney(basis.medianRate!, view.job.currency),
+                                  rate: formatQuoteRate(basis.medianRate, view.job.currency),
                                   unit,
-                                  area: basis.area,
+                                  area: formatQuoteArea(basis.area),
                                 })}
                               </p>
                               <p>
                                 {text(copy.range, {
-                                  low: formatMoney(basis.lowRate!, view.job.currency),
-                                  high: formatMoney(basis.highRate!, view.job.currency),
+                                  low: formatQuoteRate(basis.lowRate!, view.job.currency),
+                                  high: formatQuoteRate(basis.highRate!, view.job.currency),
                                   unit,
                                 })}
                               </p>

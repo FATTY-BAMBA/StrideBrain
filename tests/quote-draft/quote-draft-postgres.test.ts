@@ -85,6 +85,7 @@ import { PrismaQuoteDraftRepository } from "@/repositories/prisma/prisma-quote-d
 import { CreateProject } from "@/modules/projects/application/create-project";
 import { PrismaProjectWriteRepository } from "@/repositories/prisma/prisma-project-write-repository";
 import { jobInput } from "../projects/job-fixture";
+import { money } from "@/modules/finance/fixed-decimal";
 import { categoryLabel } from "@/modules/localization/jobs";
 import type { SaveDraftInput } from "@/modules/quote-draft/domain/save-input";
 
@@ -99,9 +100,9 @@ function services() {
     totals: new PreviewQuoteTotals(repo),
   };
 }
-async function newJob() {
+async function newJob(scopeCategoryIds = ["IMPORTED_STONE", "CUSTOM_MILLWORK"]) {
   const context = await actor("membership_horizon_admin");
-  const input = { ...jobInput(), scopeCategoryIds: ["IMPORTED_STONE", "CUSTOM_MILLWORK"] };
+  const input = { ...jobInput(), scopeCategoryIds };
   expect(
     (
       await new CreateProject(new PrismaProjectWriteRepository(getPrismaClient())).execute(
@@ -143,6 +144,171 @@ function saveInput(
   };
 }
 suite.sequential("SB-050 scoped quote drafting on real PostgreSQL", () => {
+  it("prepares and saves one demolition/ceiling price, then compares it with past prices", async () => {
+    const key = await newJob([
+      "SELECTIVE_DEMOLITION",
+      "PARTITIONS_CEILINGS",
+      "CUSTOM_MILLWORK",
+      "IMPORTED_STONE",
+    ]);
+    await compare(key);
+    const initial = await prepared(key),
+      input = saveInput(key, initial);
+    expect(
+      initial.preparation.suggestions.filter((line) => line.categoryId === "DEMOLITION_CEILING"),
+    ).toHaveLength(1);
+    const suggestion = initial.preparation.suggestions.find(
+      (line) => line.categoryId === "DEMOLITION_CEILING",
+    )!;
+    expect(suggestion.categoryId).toBe("DEMOLITION_CEILING");
+    expect(suggestion.basis.suggestedAmount).toBeDefined();
+    const owner = await actor("membership_horizon_admin");
+    expect(
+      await services().save.execute(owner, {
+        ...input,
+        lines: [{ categoryId: "SIGNAGE", description: "wrong pricing category", amount: "1000" }],
+      }),
+    ).toEqual({ kind: "INVALID" });
+    expect((await services().save.execute(owner, input)).kind).toBe("SAVED");
+    const run = await compare(key);
+    const economics = await createComparisonServices().runEconomics.execute(
+      await actor("membership_horizon_admin"),
+      run.run.id,
+      run.defaultSelectedProjectKeys,
+    );
+    if (!("result" in economics)) throw new Error("ECONOMICS_REQUIRED");
+    const category = economics.result.categories.find(
+      (entry) => entry.categoryId === "DEMOLITION_CEILING",
+    );
+    expect(money(category!.quoteVariance.currentAmount!).atoms).toBe(
+      money(suggestion.basis.suggestedAmount!).atoms,
+    );
+    expect(category?.quoteVariance.variancePercent).toBeDefined();
+  });
+  it("keeps the combined rate as a reference for partial coverage and detects a coverage-only change", async () => {
+    const key = await newJob(["PARTITIONS_CEILINGS", "CUSTOM_MILLWORK", "IMPORTED_STONE"]);
+    await compare(key);
+    const initial = await prepared(key),
+      input = saveInput(key, initial);
+    expect(
+      initial.preparation.suggestions.filter((line) => line.categoryId === "DEMOLITION_CEILING"),
+    ).toHaveLength(1);
+    const basis = initial.preparation.suggestions.find(
+      (line) => line.categoryId === "DEMOLITION_CEILING",
+    )!.basis;
+    expect(basis.medianRate).toBeDefined();
+    expect(basis.suggestedAmount).toBeUndefined();
+    const owner = await actor("membership_horizon_admin");
+    const saved = await services().save.execute(owner, input);
+    if (saved.kind !== "SAVED") throw new Error(saved.kind);
+    const job = await getPrismaClient().project.findFirstOrThrow({ where: { businessKey: key } });
+    await getPrismaClient().projectScope.create({
+      data: {
+        id: randomUUID(),
+        organizationId: job.organizationId,
+        projectId: job.id,
+        categoryId: "SELECTIVE_DEMOLITION",
+        labelEn: "Selective demolition",
+        labelZhTw: "選擇性拆除",
+      },
+    });
+    const read = await services().read.execute(owner, key);
+    if (read.kind !== "AVAILABLE" || !read.saved) throw new Error("READ_REQUIRED");
+    expect(read.saved.lines.find((line) => line.categoryId === "DEMOLITION_CEILING")).toMatchObject(
+      {
+        amount: "1000.00",
+        basisOutOfDate: true,
+        recorded: { basis },
+      },
+    );
+    expect(
+      (
+        await services().save.execute(
+          { ...owner, requestId: randomUUID() },
+          {
+            ...input,
+            baseVersionId: saved.versionId,
+            preparationToken: null,
+            idempotencyKey: randomUUID(),
+          },
+        )
+      ).kind,
+    ).toBe("SAVED");
+  });
+  it("stores both default category labels and edits only the viewed language across versions", async () => {
+    const key = await newJob();
+    await compare(key);
+    const initial = await prepared(key),
+      input = saveInput(key, initial);
+    const owner = await actor("membership_horizon_admin");
+    let saved = await services().save.execute(owner, input);
+    if (saved.kind !== "SAVED") throw new Error(saved.kind);
+    const db = getPrismaClient();
+    for (const line of await db.quoteItem.findMany({
+      where: { quoteVersionId: saved.versionId },
+    })) {
+      expect(line.descriptionEn).toBe(categoryLabel("en", line.categoryId));
+      expect(line.descriptionZhTw).toBe(categoryLabel("zh-TW", line.categoryId));
+    }
+    const lines = input.lines.map((line) => ({
+      ...line,
+      description: categoryLabel("zh-TW", line.categoryId),
+    }));
+    lines[0]!.description = "訂製木作說明";
+    saved = await services().save.execute(
+      { ...owner, locale: "zh-TW", requestId: randomUUID() },
+      {
+        ...input,
+        lines,
+        preparationToken: null,
+        baseVersionId: saved.versionId,
+        idempotencyKey: randomUUID(),
+      },
+    );
+    if (saved.kind !== "SAVED") throw new Error(saved.kind);
+    expect(
+      await db.quoteItem.findFirstOrThrow({
+        where: { quoteVersionId: saved.versionId, categoryId: lines[0]!.categoryId },
+      }),
+    ).toMatchObject({
+      descriptionEn: categoryLabel("en", lines[0]!.categoryId),
+      descriptionZhTw: "訂製木作說明",
+    });
+    const enLines = input.lines.map((line, index) =>
+      index ? line : { ...line, description: "Bespoke joinery" },
+    );
+    saved = await services().save.execute(
+      { ...owner, requestId: randomUUID() },
+      {
+        ...input,
+        lines: enLines,
+        preparationToken: null,
+        baseVersionId: saved.versionId,
+        idempotencyKey: randomUUID(),
+      },
+    );
+    if (saved.kind !== "SAVED") throw new Error(saved.kind);
+    expect(
+      await db.quoteItem.findFirstOrThrow({
+        where: { quoteVersionId: saved.versionId, categoryId: lines[0]!.categoryId },
+      }),
+    ).toMatchObject({ descriptionEn: "Bespoke joinery", descriptionZhTw: "訂製木作說明" });
+    const freshKey = await newJob();
+    await compare(freshKey);
+    const freshInput = saveInput(freshKey, await prepared(freshKey));
+    const firstTyped = await services().save.execute(await actor("membership_horizon_admin"), {
+      ...freshInput,
+      lines: freshInput.lines.map((line) => ({
+        ...line,
+        description: "A typed first-save description",
+      })),
+    });
+    if (firstTyped.kind !== "SAVED") throw new Error(firstTyped.kind);
+    for (const line of await db.quoteItem.findMany({
+      where: { quoteVersionId: firstTyped.versionId },
+    }))
+      expect(line.descriptionZhTw).toBe(categoryLabel("zh-TW", line.categoryId));
+  });
   it("prepares only a current own comparison, saves nothing, exposes exact suggestions and source lines", async () => {
     const key = await newJob();
     const owner = await actor("membership_horizon_admin");
@@ -266,7 +432,10 @@ suite.sequential("SB-050 scoped quote drafting on real PostgreSQL", () => {
     const job = await getPrismaClient().project.findFirstOrThrow({ where: { businessKey: key } });
     await getPrismaClient().project.update({
       where: { id: job.id },
-      data: { areaQuantity: "750" },
+      data: {
+        areaQuantity: "750",
+        commercialCategoryIds: [...job.commercialCategoryIds, "SIGNAGE"],
+      },
     });
     await getPrismaClient().projectScope.create({
       data: {

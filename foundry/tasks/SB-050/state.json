@@ -12,10 +12,15 @@
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "agentHostedActions": "PROHIBITED",
   "verification": {
-    "npmCheck": "PASS",
-    "postgresTests": "1048 passed; one fixture-reseed subprocess timed out and passed on focused retry",
-    "browser": "PASS: 23 local synthetic screenshots, no console/page errors",
+    "npmCheck": "PASS: 1055 tests including PostgreSQL, production build",
+    "postgresTests": "PASS in the complete npm run check; 102 test files",
+    "browser": "PASS: 26 refreshed local synthetic screenshots; no console/page errors",
     "ci": "SEE_PULL_REQUEST_CHECKS"
   },
-  "pullRequestUrl": "https://github.com/FATTY-BAMBA/StrideBrain/pull/51"
+  "pullRequestUrl": "https://github.com/FATTY-BAMBA/StrideBrain/pull/51",
+  "reviewChanges": [
+    "Commercial pricing categories with partial-coverage reference and scope staleness",
+    "Whole-dollar rates, trimmed area and formatted amount inputs",
+    "Default and edited descriptions preserved in each language"
+  ]
 }
