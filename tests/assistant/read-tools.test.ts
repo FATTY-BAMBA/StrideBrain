@@ -35,7 +35,9 @@ describe("assistant read tools", () => {
         .sources[0]?.facts.reference,
     ).toBe("J");
     f.policies.jobPolicy.mockResolvedValue({ id: "id", excluded: true });
-    expect((await f.tools.execute(c, { name: "list_jobs", arguments: {} })).sources).toEqual([]);
+    expect((await f.tools.execute(c, { name: "list_jobs", arguments: {} })).sources).toMatchObject([
+      { facts: { count: 0 } },
+    ]);
     for (const args of [{ organizationId: "foreign" }, { offset: -1 }, { query: "x".repeat(129) }])
       expect((await f.tools.execute(c, { name: "list_jobs", arguments: args })).status).toBe(
         "UNAVAILABLE",
@@ -159,10 +161,13 @@ describe("assistant read tools", () => {
       kind: "AVAILABLE",
       closedJobs: [{ project, financialState: "AVAILABLE", lesson }],
     });
-    const result = await f.tools.execute(jobContext(), {
-      name: "get_closed_job_lessons",
-      arguments: {},
-    });
+    const result = await f.tools.execute(
+      jobContext({ role: "ORGANIZATION_ADMIN", capabilities: roleBundle("ORGANIZATION_ADMIN") }),
+      {
+        name: "get_closed_job_lessons",
+        arguments: {},
+      },
+    );
     expect(result.sources[0]!.facts.costComparison).toBe(closedLessonText(lesson, "en"));
     expect(result.sources[0]!.facts.costComparison).not.toBe("Actual cost exceeds quoted price");
   });
@@ -224,7 +229,7 @@ describe("assistant read tools", () => {
         name: "get_saved_comparison",
         arguments: { projectKey: "J" },
       }),
-    ).toEqual({ status: "OUT_OF_DATE", sources: [] });
+    ).toEqual({ status: "OUT_OF_DATE", sources: [], comparisonProjectKey: "J" });
   });
   it("skips closed lessons without actual access", async () => {
     const f = setup();
@@ -254,5 +259,58 @@ describe("assistant read tools", () => {
         })
       ).status,
     ).toBe("UNAVAILABLE");
+  });
+  it.each(["list_jobs", "list_awaiting_client", "get_closed_job_lessons"] as const)(
+    "grounds an empty %s list with a count-zero source",
+    async (name) => {
+      const f = setup();
+      f.services.projects.execute.mockResolvedValue({ kind: "AVAILABLE", projects: [] });
+      f.services.home.execute.mockResolvedValue({
+        kind: "AVAILABLE",
+        decisions: [],
+        closedJobs: [],
+      });
+      const result = await f.tools.execute(
+        jobContext({ role: "ORGANIZATION_ADMIN", capabilities: roleBundle("ORGANIZATION_ADMIN") }),
+        { name, arguments: {} },
+      );
+      expect(result).toMatchObject({
+        status: "OK",
+        sources: [{ facts: { count: 0 }, subjectProjectKeys: [] }],
+      });
+      expect(
+        checkAnswer(
+          { text: "0 records", sourceIds: [result.sources[0]!.sourceId], followUps: [] },
+          result.sources,
+          "en",
+        ).kind,
+      ).toBe("ACCEPTED");
+    },
+  );
+  it("resolves both authorized language names before selecting the question subject", async () => {
+    const f = setup();
+    f.services.projects.execute.mockImplementation(async (c) => ({
+      kind: "AVAILABLE",
+      projects: [
+        {
+          ...project,
+          businessKey: "PRJ-ACTIVE-001",
+          name: c.locale === "en" ? "Active Design Project 01" : "進行中設計專案01",
+        },
+      ],
+    }));
+    for (const question of [
+      "進行中設計專案01的報價狀態如何？",
+      "Active Design Project 01 quote?",
+      "PRJ-ACTIVE-001 total?",
+    ])
+      expect(await f.tools.resolveSubjects(jobContext(), question)).toMatchObject({
+        kind: "AVAILABLE",
+        named: [{ projectKey: "PRJ-ACTIVE-001" }],
+      });
+    expect(await f.tools.resolveSubjects(jobContext(), "Some other job?")).toMatchObject({
+      kind: "AVAILABLE",
+      named: [],
+    });
   });
 });

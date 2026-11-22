@@ -295,7 +295,7 @@ suite("assistant PostgreSQL access, controls and metadata", () => {
       data: { businessKey: project.businessKey },
     });
   });
-  it("returns current draft or latest issued amounts to the owner, never to Viewer, including during a revision", async () => {
+  it("returns current Quote-tab amounts to the owner, never to Viewer, including during a revision", async () => {
     const owner = await db.actor(),
       service = createAssistantServices(),
       prisma = getPrismaClient();
@@ -312,8 +312,8 @@ suite("assistant PostgreSQL access, controls and metadata", () => {
       },
     });
     expect((await read()).sources[0]?.facts.amounts).toEqual({
-      basis: "DRAFT",
-      priceBasis: "Current draft",
+      basis: "CURRENT",
+      priceBasis: "Current quote",
       currency: draft.currency,
       amountBeforeTax: formatMoney(draft.amountBeforeTax.toFixed(2), draft.currency),
       taxAmount: formatMoney(draft.taxAmount.toFixed(2), draft.currency),
@@ -322,7 +322,7 @@ suite("assistant PostgreSQL access, controls and metadata", () => {
     await prepareEvaluation(db);
     const issued = await prisma.quoteVersion.findUniqueOrThrow({ where: { id: draft.id } });
     expect((await read()).sources[0]?.facts.amounts).toMatchObject({
-      basis: "ISSUED",
+      basis: "CURRENT",
       totalAmount: formatMoney(issued.totalAmount.toFixed(2), issued.currency),
     });
     expect(await service.repository.readableReferences(owner, [issued.documentNumber!])).toEqual([
@@ -363,8 +363,8 @@ suite("assistant PostgreSQL access, controls and metadata", () => {
       data: { amountBeforeTax: "100", taxAmount: "5", totalAmount: "105" },
     });
     expect((await read()).sources[0]?.facts.amounts).toMatchObject({
-      basis: "ISSUED",
-      totalAmount: formatMoney(issued.totalAmount.toFixed(2), issued.currency),
+      basis: "CURRENT",
+      totalAmount: "NT$105",
     });
   });
 });

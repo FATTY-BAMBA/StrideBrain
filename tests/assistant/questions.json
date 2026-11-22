@@ -740,5 +740,173 @@
       "facts": ["PRJ-XINYI-026"],
       "forbidden": []
     }
+  },
+  {
+    "id": "en-home-named-status",
+    "locale": "en",
+    "person": "owner",
+    "question": "What is the quote status of Active Design Project 01?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "PRJ-ACTIVE-001"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@status"],
+      "forbidden": ["J-2611-R7K3"]
+    }
+  },
+  {
+    "id": "en-home-reference-total",
+    "locale": "en",
+    "person": "owner",
+    "question": "What is the total quote amount for PRJ-ACTIVE-001, and when did the client accept it?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "PRJ-ACTIVE-001"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@amounts.totalAmount", "@issued.acceptedOn"],
+      "forbidden": ["J-2611-R7K3"]
+    }
+  },
+  {
+    "id": "en-home-review-quote",
+    "locale": "en",
+    "person": "owner",
+    "question": "What are the current quote status, before-tax amount and total for Riverside Display Studio?",
+    "projectKey": "PRJ-ACTIVE-001",
+    "required": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "J-2611-R7K3"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@status", "@amounts.amountBeforeTax", "@amounts.totalAmount"],
+      "forbidden": ["PRJ-ACTIVE-001"]
+    }
+  },
+  {
+    "id": "en-home-empty-awaiting",
+    "locale": "en",
+    "person": "owner",
+    "question": "Which quotes are still waiting for the client?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "scenario": "EMPTY_AWAITING",
+    "oracleTools": [
+      {
+        "name": "list_awaiting_client",
+        "arguments": {}
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "match": "EMPTY_LIST",
+      "facts": ["@count"],
+      "forbidden": ["J-2611-R7K3"]
+    }
+  },
+  {
+    "id": "zh-TW-home-named-status",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "進行中設計專案01的報價狀態如何？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "PRJ-ACTIVE-001"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@status"],
+      "forbidden": ["J-2611-R7K3"]
+    }
+  },
+  {
+    "id": "zh-TW-home-reference-total",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "PRJ-ACTIVE-001 的報價總額是多少？客戶哪一天接受？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "PRJ-ACTIVE-001"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@amounts.totalAmount", "@issued.acceptedOn"],
+      "forbidden": ["J-2611-R7K3"]
+    }
+  },
+  {
+    "id": "zh-TW-home-review-quote",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "河岸展示工作室目前的報價狀態、稅前金額與含稅總額是多少？",
+    "projectKey": "PRJ-ACTIVE-001",
+    "required": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "J-2611-R7K3"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@status", "@amounts.amountBeforeTax", "@amounts.totalAmount"],
+      "forbidden": ["PRJ-ACTIVE-001"]
+    }
+  },
+  {
+    "id": "zh-TW-home-empty-awaiting",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "哪些報價還在等客戶回覆？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "scenario": "EMPTY_AWAITING",
+    "oracleTools": [
+      {
+        "name": "list_awaiting_client",
+        "arguments": {}
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "match": "EMPTY_LIST",
+      "facts": ["@count"],
+      "forbidden": ["J-2611-R7K3"]
+    }
   }
 ]

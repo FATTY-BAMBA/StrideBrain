@@ -18,12 +18,15 @@ export type EvaluationQuestion = {
   locale: Locale;
   person: string;
   question: string;
+  projectKey?: string;
+  required?: boolean;
+  scenario?: "EMPTY_AWAITING";
   oracleTools: ToolCall[];
   expected: {
     kind: "FACTS" | "DECLINE";
     facts: string[];
     forbidden: string[];
-    match?: "ANY_SAVED_FINDING";
+    match?: "ANY_SAVED_FINDING" | "EMPTY_LIST";
   };
 };
 function path(value: unknown, key: string): unknown {
@@ -115,6 +118,13 @@ export function evaluateAnswer(
     return report("wrong");
   if (question.expected.kind === "DECLINE")
     return report(outcome.answer.sourceIds.length === 0 ? "correctly declined" : "wrong");
+  if (question.expected.match === "EMPTY_LIST")
+    return report(
+      displayedCited.some((s) => s.facts.count === 0) &&
+        /\b(?:no|none|zero|0)\b|沒有|尚無|目前無|0/i.test(displayed)
+        ? "grounded and correct"
+        : "wrong",
+    );
   const matches = (f: string) => outcome.answer.text.includes(f);
   if (question.expected.match === "ANY_SAVED_FINDING")
     return report(
@@ -123,6 +133,11 @@ export function evaluateAnswer(
   const all = facts.every(
     (f) =>
       outcome.answer.text.toLocaleLowerCase().includes(f.toLocaleLowerCase()) ||
+      (f === "Not accepted yet" &&
+        /\b(?:not|hasn't|isn't)(?: yet)?(?: been)? accepted(?: yet)?\b/i.test(
+          outcome.answer.text,
+        )) ||
+      (f === "尚未接受" && /(?:尚未|還未)(?:被(?:客戶)?)?接受/.test(outcome.answer.text)) ||
       (numericTokens(f).length > 0 &&
         !/[A-Za-z]{2,}/.test(f.replace(/NT|USD|TWD/gi, "")) &&
         numericTokens(f).every((n) => numericTokens(outcome.answer.text).includes(n))),

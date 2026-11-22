@@ -14,6 +14,7 @@ const en = {
   unknownCost: "Some calls have no returned usage; the estimate is incomplete.",
   data: "AI and your data",
   label: "AI answer · check the sources",
+  labelWithoutSources: "AI answer",
   fallback: "AI is unavailable for this answer. Using record search.",
   unavailable: "AI preferences are unavailable.",
   off: "Off",
@@ -55,6 +56,7 @@ const zh: typeof en = {
   unknownCost: "部分呼叫未回傳用量，費用估計尚不完整。",
   data: "AI 與您的資料",
   label: "AI 回答 · 請查看來源",
+  labelWithoutSources: "AI 回答",
   fallback: "此回答目前無法使用 AI，改以紀錄搜尋。",
   unavailable: "目前無法讀取 AI 偏好設定。",
   off: "關閉",
@@ -93,6 +95,12 @@ export function assistantFactCopy(locale: Locale) {
         quotedPrices: "過往報價",
         noHistory: "沒有可比較的過往報價",
         latestIssued: "最新核發報價",
+        currentQuote: "目前報價",
+        internalReview: "內部審查中",
+        approved: "已核准",
+        declined: "已拒絕",
+        withdrawn: "已撤回",
+        expired: "已過期",
         currentDraft: "目前草稿",
         moreRecords: "仍有其他紀錄",
         allRecords: "已列出全部紀錄",
@@ -114,6 +122,12 @@ export function assistantFactCopy(locale: Locale) {
         quotedPrices: "Past quoted prices",
         noHistory: "No comparable past quoted prices",
         latestIssued: "Latest issued quote",
+        currentQuote: "Current quote",
+        internalReview: "In internal review",
+        approved: "Approved",
+        declined: "Declined",
+        withdrawn: "Withdrawn",
+        expired: "Expired",
         currentDraft: "Current draft",
         moreRecords: "More records available",
         allRecords: "All records shown",
@@ -130,11 +144,16 @@ export function assistantQuoteStatus(locale: Locale, status: string | null): str
     (
       {
         DRAFT: c.draft,
+        INTERNAL_REVIEW: c.internalReview,
+        APPROVED: c.approved,
+        REJECTED: c.declined,
+        WITHDRAWN: c.withdrawn,
+        EXPIRED: c.expired,
         ISSUED: c.issued,
         ACCEPTED: c.accepted,
         SUPERSEDED: c.superseded,
       } as Record<string, string>
-    )[status ?? ""] ?? c.noQuote
+    )[status ?? ""] ?? (status ? c.currentQuote : c.noQuote)
   );
 }
 export function assistantToolStatus(locale: Locale, status: string): string {

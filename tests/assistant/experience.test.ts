@@ -8,6 +8,7 @@ import Knowledge from "@/app/[locale]/knowledge/page";
 import CustomerCare from "@/app/[locale]/customer-care/page";
 import AiData from "@/app/[locale]/ai-data/page";
 vi.mock("@/app/[locale]/home-chat-actions", () => ({ askHomeAction: vi.fn() }));
+const state = vi.hoisted(() => ({ sources: true }));
 vi.mock("react", async (original) => ({
   ...(await original<typeof ReactTypes>()),
   useActionState: () => [
@@ -18,7 +19,9 @@ vi.mock("react", async (original) => ({
           role: "assistant",
           text: "<script>untrusted</script>",
           ai: true,
-          aiSources: [{ sourceId: "s", label: "Source record", href: "/en/projects/J" }],
+          aiSources: state.sources
+            ? [{ sourceId: "s", label: "Source record", href: "/en/projects/J" }]
+            : [],
           aiFollowUps: [],
         },
       ],
@@ -29,6 +32,19 @@ vi.mock("react", async (original) => ({
   ],
 }));
 describe("bilingual assistant experience", () => {
+  it.each(["en", "zh-TW"] as const)(
+    "does not ask the reader to check absent sources in %s",
+    (locale) => {
+      state.sources = false;
+      try {
+        const html = renderToStaticMarkup(createElement(HomeChat, { locale }));
+        expect(html).toContain(assistantCopy(locale).labelWithoutSources);
+        expect(html).not.toContain(assistantCopy(locale).label);
+      } finally {
+        state.sources = true;
+      }
+    },
+  );
   it.each(["en", "zh-TW"] as const)(
     "labels model answers, exposes server links and escapes text in %s",
     (locale) => {

@@ -42,7 +42,13 @@ export function HomeChat({
             className={turn.role === "user" ? styles.userMessage : styles.assistantMessage}
             key={turn.id}
           >
-            {turn.ai && <small>{assistantCopy(locale).label}</small>}
+            {turn.ai && (
+              <small>
+                {turn.aiSources?.length
+                  ? assistantCopy(locale).label
+                  : assistantCopy(locale).labelWithoutSources}
+              </small>
+            )}
             {turn.aiFallback && <small role="status">{assistantCopy(locale).fallback}</small>}
             <p>{turn.text}</p>
             {turn.aiSources?.length ? (

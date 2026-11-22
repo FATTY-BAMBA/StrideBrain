@@ -8,7 +8,7 @@ import {
 } from "@/modules/quote-issue/application/issue-services";
 import { SignedQuoteIssueCodec } from "@/modules/quote-issue/application/issue-codec";
 import { PrismaQuoteIssueRepository } from "@/repositories/prisma/prisma-quote-issue-repository";
-import type { assistantDatabase } from "./database-fixture";
+import { assistantDatabase } from "./database-fixture";
 /** Explicit setup over a disposable seed: real issue/accept use cases, no hosted mutations. */
 export async function prepareEvaluation(db: Awaited<ReturnType<typeof assistantDatabase>>) {
   const c = await db.actor(),
@@ -73,3 +73,17 @@ export const evaluationMemberships: Record<string, string> = {
   viewer: "membership_horizon_viewer",
   "other-organization": "membership_northern_owner",
 };
+
+/** No issued quotes exist in a fresh synthetic seed. Isolate the empty-list case completely. */
+export async function emptyAwaitingScenario<T>(
+  enabled: boolean,
+  work: () => Promise<T>,
+): Promise<T> {
+  if (!enabled) return work();
+  const isolated = await assistantDatabase();
+  try {
+    return await work();
+  } finally {
+    await isolated.close();
+  }
+}

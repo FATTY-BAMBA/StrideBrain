@@ -9,9 +9,14 @@ import { runEvaluationQuestion } from "./run-evaluation";
 import { evaluateAnswer, type EvaluationQuestion } from "./evaluation";
 import { assistantConfig } from "@/modules/assistant/infrastructure/config";
 describe("evaluation contract", () => {
-  it("contains twenty English and twenty zh-TW cases with explicit facts or refusals", () => {
-    expect(questions.filter((q) => q.locale === "en")).toHaveLength(20);
-    expect(questions.filter((q) => q.locale === "zh-TW")).toHaveLength(20);
+  it("contains twenty core English and twenty core zh-TW cases plus eight hosted regressions with explicit facts or refusals", () => {
+    expect(
+      questions.filter((q) => q.locale === "en" && !("required" in q && q.required)),
+    ).toHaveLength(20);
+    expect(
+      questions.filter((q) => q.locale === "zh-TW" && !("required" in q && q.required)),
+    ).toHaveLength(20);
+    expect(questions.filter((q) => "required" in q && q.required)).toHaveLength(8);
     expect(
       questions.every(
         (q) =>

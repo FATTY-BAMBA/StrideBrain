@@ -77,27 +77,22 @@ describe("Home assistant integration", () => {
     expect(boundary.legacy).toHaveBeenCalled();
   });
   it.each(["NO_RECORDS", "OUT_OF_DATE"])(
-    "uses the matching keyword intent after %s",
+    "never falls through or writes after %s",
     async (refusal) => {
       boundary.ask.mockResolvedValue({
         kind: "ANSWER",
-        locale: "en",
+        locale: "zh-TW",
         refusal,
         answer: { text: "AI refusal", sourceIds: [], followUps: [] },
         sources: [],
       });
-      boundary.legacy.mockResolvedValue({
-        projects: [],
-        workspace: { project: { businessKey: "J" }, openActions: [{ title: "Review materials" }] },
-      });
       const input = form();
-      input.set("message", "Show open actions");
+      input.set("locale", "zh-TW");
+      input.set("message", "哪些報價還在等客戶回覆？");
+      input.set("projectKey", "J-2611-R7K3");
       const result = await askHomeAction(initialHomeChatState, input);
-      expect(result.turns.at(-1)).toMatchObject({
-        text: "There is 1 open action.",
-        bullets: ["Review materials"],
-      });
-      expect(result.turns.at(-1)?.ai).toBeUndefined();
+      expect(result.turns.at(-1)).toMatchObject({ text: "AI refusal", ai: true });
+      expect(boundary.legacy).not.toHaveBeenCalled();
       expect(boundary.runComparison).not.toHaveBeenCalled();
     },
   );
@@ -119,25 +114,23 @@ describe("Home assistant integration", () => {
     expect(result.turns.at(-1)).toMatchObject({ text: "The records do not show this.", ai: true });
     expect(boundary.runComparison).not.toHaveBeenCalled();
   });
-  it("keeps the stale-comparison keyword response with its rerun link", async () => {
+  it("preserves the server-built comparison link without invoking keywords", async () => {
     boundary.ask.mockResolvedValue({
       kind: "ANSWER",
       locale: "en",
       refusal: "OUT_OF_DATE",
-      answer: { text: "AI refusal", sourceIds: [], followUps: [] },
+      answer: { text: "Saved comparison is out of date", sourceIds: [], followUps: [] },
       sources: [],
-    });
-    boundary.legacy.mockResolvedValue({
-      projects: [],
-      workspace: { project: { businessKey: "J" }, openActions: [] },
-      intelligence: { kind: "OUT_OF_DATE" },
+      action: { label: "Open comparison", href: "/zh-TW/projects/J/compare" },
     });
     const input = form();
     input.set("message", "Show similar jobs");
     const result = await askHomeAction(initialHomeChatState, input);
-    expect(result.turns.at(-1)?.action?.href).toContain("J");
-    expect(result.turns.at(-1)?.text).toContain("out of date");
-    expect(result.turns.at(-1)?.ai).toBeUndefined();
+    expect(result.turns.at(-1)).toMatchObject({
+      ai: true,
+      action: { href: "/zh-TW/projects/J/compare" },
+    });
+    expect(boundary.legacy).not.toHaveBeenCalled();
     expect(boundary.runComparison).not.toHaveBeenCalled();
   });
   it.each(["EXCLUDED", "UNAVAILABLE"])(

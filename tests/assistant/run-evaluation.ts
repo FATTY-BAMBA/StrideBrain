@@ -10,9 +10,19 @@ import { createAssistantServices } from "@/lib/server/assistant-services";
 import { getPrismaClient } from "@/lib/server/prisma";
 import { FakeAssistantModel } from "./fake-model";
 import { evaluateAnswer, expectedFacts, type EvaluationQuestion } from "./evaluation";
-import { evaluationMemberships } from "./evaluation-fixture";
+import { evaluationMemberships, emptyAwaitingScenario } from "./evaluation-fixture";
 import type { assistantDatabase } from "./database-fixture";
 export async function runEvaluationQuestion(
+  db: Awaited<ReturnType<typeof assistantDatabase>>,
+  question: EvaluationQuestion,
+  config: AssistantConfig,
+  provider: AssistantModelPort | null,
+) {
+  return emptyAwaitingScenario(question.scenario === "EMPTY_AWAITING", () =>
+    evaluateQuestion(db, question, config, provider),
+  );
+}
+async function evaluateQuestion(
   db: Awaited<ReturnType<typeof assistantDatabase>>,
   question: EvaluationQuestion,
   config: AssistantConfig,
@@ -49,7 +59,11 @@ export async function runEvaluationQuestion(
               ? "No relevant records."
               : question.expected.match === "ANY_SAVED_FINDING"
                 ? facts[0]!
-                : facts.join(" · "),
+                : question.expected.match === "EMPTY_LIST"
+                  ? question.locale === "en"
+                    ? "0 quotes are waiting for the client."
+                    : "目前有 0 筆報價等待客戶回覆。"
+                  : facts.join(" · "),
           sourceIds: question.expected.kind === "DECLINE" ? [] : oracle.map((s) => s.sourceId),
           followUps: [],
         },
@@ -66,6 +80,7 @@ export async function runEvaluationQuestion(
     },
   };
   const tools = {
+    resolveSubjects: services.tools.resolveSubjects.bind(services.tools),
     canSend: services.tools.canSend.bind(services.tools),
     async execute(context: typeof c, call: EvaluationQuestion["oracleTools"][number]) {
       const result = await services.tools.execute(context, call);
@@ -79,7 +94,10 @@ export async function runEvaluationQuestion(
       { ...config, enabled: true },
       services.repository,
       tools,
-    ).execute(c, { question: question.question });
+    ).execute(c, {
+      question: question.question,
+      ...(question.projectKey ? { projectKey: question.projectKey } : {}),
+    });
   const latencyMs = Math.round(performance.now() - started);
   const references = await services.repository.readableReferences(
     c,
@@ -94,6 +112,7 @@ export async function runEvaluationQuestion(
   return {
     id: question.id,
     locale: question.locale,
+    required: question.required ?? false,
     ...judgement,
     discardReason: outcome.kind === "FALLBACK" ? (outcome.discardReason ?? outcome.reason) : null,
     latencyMs,

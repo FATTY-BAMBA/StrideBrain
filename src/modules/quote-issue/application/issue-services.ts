@@ -373,19 +373,9 @@ export class GetQuoteIssue {
               acceptedOn: latestIssued!.acceptedOn,
             }
           : null,
-        amounts: latestIssued
-          ? {
-              basis: "ISSUED" as const,
-              currency: latestIssued!.snapshot.currency,
-              ...latestIssued!.snapshot.totals,
-            }
-          : state.current?.status === "DRAFT"
-            ? {
-                basis: "DRAFT" as const,
-                currency: state.current.currency,
-                ...state.current.totals,
-              }
-            : null,
+        amounts: state.current
+          ? { basis: "CURRENT" as const, currency: state.current.currency, ...state.current.totals }
+          : null,
         versionId: state.current?.id ?? null,
         status: state.current?.status ?? null,
         today: organizationDate(this.clock(), state.timezone),

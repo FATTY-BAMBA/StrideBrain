@@ -1,3 +1,4 @@
+import { namedProjects, type AssistantProjectIdentity } from "../domain/subjects";
 import { closedLessonText } from "@/modules/home-desk/presentation";
 import { findingsCopy } from "@/modules/localization/economics-findings";
 import { assistantFactCopy, assistantQuoteStatus } from "@/modules/localization/assistant";
@@ -54,7 +55,7 @@ export const assistantTools: readonly ToolDefinition[] = [
   {
     name: "get_quote_status",
     description:
-      "Read current quote status, latest issued document number, validity, acceptance and server-formatted quote amounts (latest issued, otherwise current draft). Restricted without quote access.",
+      "Read current quote status, latest issued document number, validity, acceptance and server-formatted amounts of the current quote shown on the Quote tab, in any status. Restricted without quote access.",
     parameters: jobParameters,
   },
   {
@@ -98,6 +99,25 @@ export class AssistantReadTools {
     private readonly services: AssistantReadServices,
     private readonly policies: Pick<AssistantRepositoryPort, "jobPolicy">,
   ) {}
+  async resolveSubjects(c: RuntimeContext, question: string) {
+    const lists = await Promise.all([
+      this.services.projects.execute({ ...c, locale: "en" }),
+      this.services.projects.execute({ ...c, locale: "zh-TW" }),
+    ]);
+    if (lists.some((list) => list.kind !== "AVAILABLE")) return { kind: "UNAVAILABLE" as const };
+    const identities = new Map<string, AssistantProjectIdentity>();
+    for (const list of lists)
+      if (list.kind === "AVAILABLE")
+        for (const job of list.projects) {
+          const previous = identities.get(job.businessKey);
+          identities.set(job.businessKey, {
+            projectKey: job.businessKey,
+            names: [...new Set([...(previous?.names ?? []), job.name])],
+          });
+        }
+    const projects = [...identities.values()];
+    return { kind: "AVAILABLE" as const, projects, named: namedProjects(question, projects) };
+  }
   async canSend(c: RuntimeContext, sources: readonly AssistantSource[]) {
     for (const key of new Set(sources.flatMap((s) => s.projectKeys))) {
       const policy = await this.policies.jobPolicy(c, key);
@@ -142,6 +162,7 @@ export class AssistantReadTools {
       href: link,
       facts,
       projectKeys,
+      subjectProjectKeys: typeof projectKey === "string" ? [projectKey] : projectKeys,
       typedFactPaths,
     });
     const finish = (sources: AssistantSource[]): ToolResult =>
@@ -154,7 +175,7 @@ export class AssistantReadTools {
           sourceId: `src_${createHash("sha256").update(`${row.sourceId}:${count.sourceId}`).digest("hex").slice(0, 24)}`,
           countSourceId: count.sourceId,
         })),
-        count,
+        { ...count, subjectProjectKeys: [] },
       ]);
     const list = async () => {
       const result = await this.services.projects.execute(c);
@@ -208,24 +229,22 @@ export class AssistantReadTools {
           ["reference", "stage"],
         ),
       );
-      if (sources.length)
-        return finishList(
-          sources,
-          source(
-            `page:${sources.map((s) => s.sourceId).join(":")}`,
-            c.locale === "zh-TW" ? "專案" : "Jobs",
-            `/${c.locale}/projects`,
-            {
-              count: page.length,
-              truncated: allowed.length > offset + 20,
-              coverage: allowed.length > offset + 20 ? copy.moreRecords : copy.allRecords,
-              ...(allowed.length > offset + 20 ? { nextOffset: offset + 20 } : {}),
-            },
-            page.map((j) => j.businessKey),
-            ["count", "nextOffset", "coverage"],
-          ),
-        );
-      return finish(sources);
+      return finishList(
+        sources,
+        source(
+          `page:${sources.map((s) => s.sourceId).join(":")}`,
+          c.locale === "zh-TW" ? "專案" : "Jobs",
+          `/${c.locale}/projects`,
+          {
+            count: page.length,
+            truncated: allowed.length > offset + 20,
+            coverage: allowed.length > offset + 20 ? copy.moreRecords : copy.allRecords,
+            ...(allowed.length > offset + 20 ? { nextOffset: offset + 20 } : {}),
+          },
+          page.map((j) => j.businessKey),
+          ["count", "nextOffset", "coverage"],
+        ),
+      );
     }
     if (call.name === "get_job" && typeof projectKey === "string") {
       const result = await this.services.workspace.execute(c, projectKey);
@@ -266,7 +285,7 @@ export class AssistantReadTools {
             amounts: q.amounts
               ? {
                   ...q.amounts,
-                  priceBasis: q.amounts.basis === "ISSUED" ? copy.latestIssued : copy.currentDraft,
+                  priceBasis: copy.currentQuote,
                   amountBeforeTax: formatMoney(q.amounts.amountBeforeTax, q.amounts.currency),
                   taxAmount: formatMoney(q.amounts.taxAmount, q.amounts.currency),
                   totalAmount: formatMoney(q.amounts.totalAmount, q.amounts.currency),
@@ -315,7 +334,12 @@ export class AssistantReadTools {
           );
         }
       } else {
-        if (home.closedJobsUnavailable) return empty("UNAVAILABLE");
+        if (
+          home.closedJobsUnavailable ||
+          !c.capabilities.has("commercial:actual-read") ||
+          !c.capabilities.has("quote:read")
+        )
+          return empty("UNAVAILABLE");
         for (const row of home.closedJobs) {
           const p = await this.policies.jobPolicy(c, row.project.businessKey);
           if (!p || p.excluded || !row.lesson || row.financialState !== "AVAILABLE") continue;
@@ -347,24 +371,26 @@ export class AssistantReadTools {
           );
         }
       }
-      if (sources.length)
-        return finishList(
-          sources,
-          source(
-            `count:${sources.map((s) => s.sourceId).join(":")}`,
-            c.locale === "zh-TW" ? "紀錄" : "Records",
-            `/${c.locale}`,
-            { count: sources.length },
-            sources.flatMap((s) => s.projectKeys),
-            ["count"],
-          ),
-        );
-      return finish(sources);
+      return finishList(
+        sources,
+        source(
+          `count:${sources.map((s) => s.sourceId).join(":")}`,
+          c.locale === "zh-TW" ? "紀錄" : "Records",
+          `/${c.locale}`,
+          { count: sources.length },
+          sources.flatMap((s) => s.projectKeys),
+          ["count"],
+        ),
+      );
     }
     if (call.name === "get_saved_comparison" && typeof projectKey === "string") {
       const saved = await this.services.comparison.execute(c, projectKey);
-      if (!saved) return empty("NO_RECORDS");
-      if (saved.kind !== "AVAILABLE") return empty(saved.kind);
+      if (!saved) return { ...empty("NO_RECORDS"), comparisonProjectKey: projectKey };
+      if (saved.kind !== "AVAILABLE")
+        return {
+          ...empty(saved.kind),
+          ...(saved.kind === "OUT_OF_DATE" ? { comparisonProjectKey: projectKey } : {}),
+        };
       const selected =
         saved.economics?.selectedProjectKeys ?? saved.comparison.defaultSelectedProjectKeys;
       const keys = [projectKey, ...selected];
@@ -417,7 +443,13 @@ export class AssistantReadTools {
       )
         return empty("UNAVAILABLE");
       const result = await this.services.history.execute(c, projectKey);
-      if (result.kind !== "AVAILABLE") return empty(result.kind);
+      if (result.kind !== "AVAILABLE")
+        return {
+          ...empty(result.kind),
+          ...(["OUT_OF_DATE", "NO_RECORDS"].includes(result.kind)
+            ? { comparisonProjectKey: projectKey }
+            : {}),
+        };
       const keys = [projectKey, ...result.projectKeys];
       const sources = result.baselines
         .filter((b) => !args.categoryId || args.categoryId === b.categoryId)

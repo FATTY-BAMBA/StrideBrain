@@ -85,13 +85,13 @@ function statedKind(prefix: string): PriceKind | null {
   const last = [...prefix.matchAll(kindPattern)].at(-1)?.[0];
   return last ? (/forecast cost|預估成本/i.test(last) ? "FORECAST_COST" : "QUOTED_PRICE") : null;
 }
-/** Exact sent labels only: no aliases, case folding or fuzzy category recognition. */
+/** Exact sent labels only: ignore letter case only; no aliases or fuzzy category recognition. */
 function statedCategory(prefix: string, labels: readonly string[]): string | null | false {
   const matches = labels
     .flatMap((label) => {
       const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       return [
-        ...prefix.matchAll(new RegExp(`(?<![\\p{L}\\p{N}])${escaped}(?![\\p{L}\\p{N}])`, "gu")),
+        ...prefix.matchAll(new RegExp(`(?<![\\p{L}\\p{N}])${escaped}(?![\\p{L}\\p{N}])`, "giu")),
       ].map((match) => ({ label, index: match.index }));
     })
     .sort((a, b) => b.index - a.index);

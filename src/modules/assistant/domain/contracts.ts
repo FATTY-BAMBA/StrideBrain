@@ -23,6 +23,8 @@ export type AssistantSource = Readonly<{
   facts: Readonly<Record<string, unknown>>;
   /** Server-only access dependencies; never model-controlled. */
   projectKeys: readonly string[];
+  /** Subject jobs, distinct from historical/access dependencies. Server-only. */
+  subjectProjectKeys?: readonly string[];
   /** Server-produced paths exempt from free-text redaction; never sent to the model. */
   typedFactPaths?: readonly string[];
   /** Server-only citation dependency for a row of one specific list result. */
@@ -31,6 +33,7 @@ export type AssistantSource = Readonly<{
 export type ToolResult = Readonly<{
   status: "OK" | "NO_RECORDS" | "UNAVAILABLE" | "EXCLUDED" | "OUT_OF_DATE";
   sources: readonly AssistantSource[];
+  comparisonProjectKey?: string;
 }>;
 export type StructuredAnswer = Readonly<{
   text: string;
@@ -74,6 +77,7 @@ export type AssistantOutcome =
       answer: StructuredAnswer;
       sources: readonly AssistantSource[];
       locale: Locale;
+      action?: Readonly<{ label: string; href: string }>;
       refusal?: "NO_RECORDS" | "OUT_OF_DATE" | "EXCLUDED" | "UNAVAILABLE";
     }>;
 export type AssistantConfig = Readonly<{

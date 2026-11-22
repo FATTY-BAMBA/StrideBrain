@@ -243,12 +243,15 @@ describe("stability regressions", () => {
     for (const text of [
       "Lighting: forecast cost is 9.4% above.",
       "Demolition: quoted price is 9.4% above.",
-      "lighting: quoted price is 9.4% above.",
     ])
       expect(checkAnswer(raw(text), [s], "en")).toEqual({
         kind: "REJECTED",
         reason: "FINDING_SENTENCE",
       });
+    expect(checkAnswer(raw("lighting: quoted price is 9.4% below."), [s], "en")).toMatchObject({
+      kind: "ACCEPTED",
+      answer: { text: s.facts.findings[0]!.text },
+    });
     const unique = { ...s, facts: { findings: [s.facts.findings[0]!] } };
     expect(checkAnswer(raw("9.4% difference."), [unique], "en")).toMatchObject({
       kind: "ACCEPTED",
@@ -280,10 +283,11 @@ describe("stability regressions", () => {
   });
   const rows = (en: number, zh: number) =>
     ["en", "zh-TW"].flatMap((locale) =>
-      Array.from({ length: 20 }, (_, i) => ({
+      Array.from({ length: 24 }, (_, i) => ({
         id: `${locale}-${i}`,
         locale: locale as "en" | "zh-TW",
-        verdict: i < (locale === "en" ? en : zh) ? "grounded and correct" : "wrong",
+        required: i >= 20,
+        verdict: i >= 20 || i < (locale === "en" ? en : zh) ? "grounded and correct" : "wrong",
         wrongNumber: false,
       })),
     );
@@ -309,6 +313,9 @@ describe("stability regressions", () => {
     const wrong = rows(20, 20);
     wrong[0]!.wrongNumber = true;
     expect(roundSummary(1, wrong).passed).toBe(false);
+    const critical = rows(20, 20);
+    critical.find((q) => q.required)!.verdict = "wrong";
+    expect(roundSummary(1, critical).passed).toBe(false);
     expect(stabilitySummary([roundSummary(1, rows(20, 20))]).passed).toBe(false);
   });
 });

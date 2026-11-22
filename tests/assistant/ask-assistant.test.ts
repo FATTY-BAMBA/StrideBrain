@@ -45,6 +45,7 @@ function setup(script: ConstructorParameters<typeof FakeAssistantModel>[0] = [ca
     finishTurn: vi.fn().mockResolvedValue(undefined),
   } satisfies AssistantRepositoryPort;
   const tools = {
+    resolveSubjects: vi.fn().mockResolvedValue({ kind: "AVAILABLE", named: [], projects: [] }),
     execute: vi.fn().mockResolvedValue({ status: "OK", sources: [source] }),
     canSend: vi.fn().mockResolvedValue(true),
   };
@@ -166,7 +167,7 @@ describe("bounded read-only assistant", () => {
       kind: "FALLBACK",
       reason: "TOOL_CAP",
     });
-    expect(f.tools.execute).toHaveBeenCalledTimes(6);
+    expect(f.tools.execute).toHaveBeenCalledTimes(1);
     const g = setup();
     g.repo.reserveCall.mockResolvedValue(null);
     expect(await g.service.execute(jobContext(), { question: "Jobs?" })).toEqual({
@@ -272,6 +273,112 @@ describe("bounded read-only assistant", () => {
         kind: "ANSWER",
         refusal: status,
       });
+    },
+  );
+  it("uses resolved subjects instead of the page default, and retains the page language in links", async () => {
+    const f = setup([call, answer("5 jobs.")]);
+    const named = { projectKey: "J", names: ["Named job", "指定專案"] };
+    f.tools.resolveSubjects.mockResolvedValue({
+      kind: "AVAILABLE",
+      named: [named],
+      projects: [named],
+    });
+    const result = await f.service.execute(jobContext({ locale: "zh-TW" }), {
+      question: "What is the status of Named job?",
+      projectKey: "DEFAULT",
+    });
+    expect(result).toMatchObject({
+      kind: "ANSWER",
+      locale: "en",
+      sources: [{ href: "/zh-TW/projects/J" }],
+    });
+    const message = JSON.parse(f.model.requests[0]!.messages[0]!.text);
+    expect(message.subjectProjects).toEqual([{ reference: "J", names: ["Named job", "指定專案"] }]);
+    expect(message).not.toHaveProperty("selectedProjectReference");
+    expect(f.model.requests[0]!.instructions).toContain(
+      "Follow-ups must be questions the person can ask and these read tools can answer",
+    );
+  });
+  it("sends the selected page only when no job is named; Home without selection has none", async () => {
+    for (const projectKey of [undefined, "J"]) {
+      const f = setup();
+      await f.service.execute(jobContext(), {
+        question: "How many jobs?",
+        ...(projectKey ? { projectKey } : {}),
+      });
+      expect(JSON.parse(f.model.requests[0]!.messages[0]!.text).selectedProjectReference).toBe(
+        projectKey,
+      );
+    }
+  });
+  it("refuses a tool request for the page default when the question names another job", async () => {
+    const f = setup([
+      {
+        usage,
+        result: {
+          kind: "TOOLS",
+          calls: [{ name: "get_quote_status", arguments: { projectKey: "DEFAULT" } }],
+        },
+      },
+    ]);
+    const named = { projectKey: "J", names: ["Named job"] };
+    f.tools.resolveSubjects.mockResolvedValue({
+      kind: "AVAILABLE",
+      named: [named],
+      projects: [named],
+    });
+    expect(
+      await f.service.execute(jobContext(), {
+        question: "Named job quote?",
+        projectKey: "DEFAULT",
+      }),
+    ).toMatchObject({ kind: "ANSWER", refusal: "UNAVAILABLE" });
+    expect(f.tools.execute).not.toHaveBeenCalled();
+  });
+  it("rejects an answer citing a different job as its subject", async () => {
+    const f = setup();
+    f.tools.resolveSubjects.mockResolvedValue({
+      kind: "AVAILABLE",
+      named: [{ projectKey: "OTHER", names: ["Other job"] }],
+      projects: [],
+    });
+    expect(await f.service.execute(jobContext(), { question: "Other job?" })).toMatchObject({
+      kind: "FALLBACK",
+      discardReason: "SUBJECT_MISMATCH",
+    });
+  });
+  it("reuses identical tool arguments regardless of their key order", async () => {
+    const calls = [
+      { name: "list_jobs" as const, arguments: { query: "Job", offset: 0 } },
+      { name: "list_jobs" as const, arguments: { offset: 0, query: "Job" } },
+    ];
+    const f = setup([{ usage, result: { kind: "TOOLS", calls } }, answer()]);
+    expect((await f.service.execute(jobContext(), { question: "Jobs?" })).kind).toBe("ANSWER");
+    expect(f.tools.execute).toHaveBeenCalledTimes(1);
+  });
+  it.each(["NO_RECORDS", "OUT_OF_DATE"])(
+    "returns a read-only comparison link immediately for %s",
+    async (status) => {
+      const f = setup([
+        {
+          usage,
+          result: {
+            kind: "TOOLS",
+            calls: [{ name: "get_saved_comparison", arguments: { projectKey: "J" } }],
+          },
+        },
+      ]);
+      f.tools.execute.mockResolvedValue({ status, sources: [], comparisonProjectKey: "J" });
+      const out = await f.service.execute(jobContext({ locale: "zh-TW" }), {
+        question: "Show the saved comparison for J",
+      });
+      expect(out).toMatchObject({
+        kind: "ANSWER",
+        refusal: status,
+        sources: [],
+        action: { label: "Open comparison", href: "/zh-TW/projects/J/compare" },
+      });
+      expect(f.model.requests).toHaveLength(1);
     },
   );
 });

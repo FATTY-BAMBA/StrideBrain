@@ -1,6 +1,6 @@
 # SB-039 verification
 
-Hosted acceptance: **WAITING FOR THE PRODUCT DIRECTOR**. Keep application PR [#56](https://github.com/FATTY-BAMBA/StrideBrain/pull/56) in draft. At the Product Director’s explicit request, workflow-only PR [#57](https://github.com/FATTY-BAMBA/StrideBrain/pull/57) was merged separately to register evaluation before #56 merges. The Product Director puts it on the test site through [TEST_SITE.md](../../../docs/development/TEST_SITE.md), clicks through acceptance. The agent ran the requested stability evaluations through the existing workflow against disposable CI databases. No hosted deployment, migration, seed, settings or secret change was performed by the agent.
+Hosted acceptance: **WAITING FOR THE PRODUCT DIRECTOR TO RETEST THESE FIXES**. The Director tested `70ae4a0` as owner and reported the defects below; that hosted run is not claimed as acceptance. Keep application PR [#56](https://github.com/FATTY-BAMBA/StrideBrain/pull/56) in draft. At the Product Director’s explicit request, workflow-only PR [#57](https://github.com/FATTY-BAMBA/StrideBrain/pull/57) was merged separately to register evaluation before #56 merges. The Product Director puts it on the test site through [TEST_SITE.md](../../../docs/development/TEST_SITE.md), clicks through acceptance. The agent ran the requested stability evaluations through the existing workflow against disposable CI databases. No hosted deployment, migration, seed, settings or secret change was performed by the agent.
 
 ## Delivered, in A → B → C order
 
@@ -20,12 +20,37 @@ Configured standard text rates: **US$0.30 input / US$2.50 output per million tok
 
 ## Automated verification
 
-- **`npm run check`: PASS — 1,266 tests across 123 files**, with no skipped tests, on Node 24.22.3 and isolated loopback PostgreSQL. Formatting, lint, type checking and production build pass. [Final check log](evidence/check-stability.log). The existing `prisma.config.ts` anonymous-default-export lint warning remains.
+- **`npm run check`: PASS — 1,299 tests across 125 files**, with no skipped tests, on Node 24.22.3 and isolated loopback PostgreSQL. Formatting, lint, type checking and production build pass. [Current check log](evidence/check-hosted-review.log). The existing `prisma.config.ts` anonymous-default-export lint warning remains.
 - `db:validate`, normal Prisma migration deploy, complete fixture verification and a repeated seed/verify pass succeed on a fresh disposable local database. [Schema/fixture log](evidence/schema-fixture.log). [Client bundle inspection](evidence/client-boundary.json) finds no provider key variable, request header, endpoint implementation or synthetic transport key in browser assets.
 - PostgreSQL tests cover default-off organizations, sample opt-in, assigned manager/finance access, Viewer amount denial, other-organization denial, idempotent audited controls, job and historical-source exclusions, concurrent daily-cap reservations and exact cost aggregation.
 - Freshness and parity tests cover another member's saved comparison, changed active records, and count/median/range equality with `PrepareQuoteDraft`. Existing Home quote-version freshness tests also pass. No ranking or economics replay was added to Home.
 - Unit and boundary tests cover redaction, IDs not grounding amounts, quoted prices not becoming actual costs, shared finding sentences, unknown source IDs, unsupported numbers, HTML/links, invalid schema, bounded turns/tools/output, provider failure, timeout, access changes, no-key and disabled fallbacks, and usage retained on truncation.
 - The deterministic fake exercises all **20 English + 20 zh-TW** evaluation cases against authorized synthetic database records. This validates the harness and application rules; it is **not a live model quality score**. The injection case cannot reveal the foreign job through tools, and the paid synthetic injection results are recorded below; they do not establish resistance to every possible input.
+
+## Hosted review fixes after 70ae4a0
+
+- Server-resolved authorized job names (both languages) and references override any explicit page selection. Home no longer automatically selects a project. Tool targets and cited subject jobs are checked separately from historical dependencies.
+- Quote status reads the same current saved version as the Quote tab in every status. Riverside’s internal-review quote supplies **NT$6,400,000** before tax, **NT$320,000** tax and **NT$6,720,000** total. Revision drafts use current totals. Viewer and foreign-organization denials remain covered.
+- Authorized empty lists return OK with a count-zero source. Identical tool arguments execute only once, even if keys are reordered. AI answers/refusals never invoke the keyword path. Missing/stale comparisons return the server-owned Open comparison link for the named job without creating a run.
+- Follow-up instructions now state the requested read-question product rule; write offers/advice are also filtered independently. Source URLs retain the page’s locale even when answer language changes. Source-free refusals have a plain AI label.
+- Cut-off known references are rejected before exemptions/expansion. Category labels ignore letter case while retaining exact spelling, typed kind and uniqueness checks.
+
+Verification: **1,299 tests / 125 files**, no skips; full format, lint, typecheck and build pass. [Check log](evidence/check-hosted-review.log). The existing anonymous-default-export lint warning remains. The deterministic evaluation executes **48 cases × 3 rounds**, preserving the original 40 questions and adding eight required hosted-regression cases with an unrelated Home-style default project. Core thresholds stay at 16/20 per language; all eight new cases must pass in each round. [Fake report](evidence/fake-evaluation-hosted-review.json) passes every case in every round. It verifies the harness, not model quality.
+
+[Local production Chrome report](evidence/browser-hosted-review.json), using a test-only Gemini HTTP transport fake:
+
+| Boundary | Result | Evidence |
+| --- | --- | --- |
+| Home form → server subject | PASS | No automatic hidden project; Chinese name overrides a different explicit selection. [Screenshot](evidence/hosted-review-named-job-zh.png) |
+| Authorized quote read → rendered totals | PASS | Internal-review status and all three amounts in [en](evidence/hosted-review-review-quote-en.png) and [zh-TW](evidence/hosted-review-review-quote-zh-TW.png) |
+| List result → empty answer | PASS | Cited count zero in [en](evidence/hosted-review-empty-awaiting-en.png) and [zh-TW](evidence/hosted-review-empty-awaiting-zh-TW.png), including a duplicate tool request |
+| Answer locale → source navigation | PASS | [English answer retains zh-TW URLs](evidence/hosted-review-english-question-zh-links.png) |
+| Missing comparison → refusal/link | PASS | Named-job comparison link and plain AI label in [en](evidence/hosted-review-comparison-link-en.png) and [zh-TW](evidence/hosted-review-comparison-link-zh-TW.png) |
+| Chat → database writes | PASS | ComparisonRun and EconomicsEnrichmentRun counts unchanged across every browser question; PostgreSQL Home-action regressions also assert this |
+
+No browser page errors. Screenshots were visually inspected. The [local server, database and temporary sign-in/TLS files were removed](evidence/hosted-review-local-cleanup.log). These screenshots test the production application flow using a transport fake, not Gemini’s answer quality.
+
+[Boundary evidence](evidence/hosted-review-boundaries.json): the instruction changed only for the requested follow-up rule; quote-tool description now describes current-version amounts. The original 40 questions, provider adapter, workflow YAML and all migrations are unchanged. **The new paid three-round run is pending.** Hosted acceptance remains with the Director; no hosted deployment, migration, seed, settings or secret change was made.
 
 ## Stability review on c569394
 
@@ -43,7 +68,7 @@ Local verification: `npm run check` passed **1,266 tests / 123 files**, with no 
 
 The interim percentage-only version (`22369a5`) passed [run 45057801261](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45057801261): en/zh-TW **19/18, 19/19, 19/18**, with no displayed wrong numbers ([full report](evidence/provider-45057801261.json)). It predates the category/kind clarification. The final category/kind version is recorded below.
 
-## Final three-round paid evaluation
+## Earlier three-round paid evaluation (53f2664)
 
 [Run 45059568984](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45059568984) evaluated **`53f2664799a2dc4581eff3f520de43227f9bbe48`** through the unchanged workflow on main. **PASS:** round 1 en **20/20**, zh-TW **20/20**; round 2 en **20/20**, zh-TW **20/20**; round 3 en **18/20**, zh-TW **19/20**. All 120 cases have **zero displayed wrong numbers**. Each round independently clears the required 16/20 per language. [Full original artifact](evidence/provider-45059568984.json) includes displayed text, raw/displayed follow-ups, and raw text/rejection diagnostics for every non-pass. Artifact ID: `14768687464`.
 
@@ -127,8 +152,8 @@ The local server, disposable database, sessions, invitation and TLS private file
 ## Not verified
 
 - Hosted test-site acceptance, hosted migration/fixture application and hosted controls: waiting for the Product Director; pull request stays draft.
-- Model quality beyond the recorded 120 synthetic cases, stable success for the three 2/3 questions, and resistance to other injection-shaped inputs. Provider billed cost was not independently reconciled.
+- The new paid evaluation on the hosted-review corrections is pending. Earlier paid reports apply only to their recorded commits. Provider billed cost was not independently reconciled.
 - Independent paid-account/billing verification and legal/terms wording approval.
 - Real tenant data (still gated by #42), physical phones and browsers other than local Chrome. Mobile screenshots use a simulated 390px viewport.
 
-The corrections do not change screen layout. Existing browser screenshots document the previous review; browser interaction was not rerun for this harness/grounding change. No hosted acceptance is claimed.
+The latest local browser walkthrough and screenshots are recorded in the hosted-review section above. Hosted acceptance is not claimed.

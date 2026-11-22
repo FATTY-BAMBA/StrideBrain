@@ -1,24 +1,38 @@
 import type { Locale } from "@/modules/localization/config";
 export const evaluationRounds = 3;
-export type ScoredRow = { id: string; locale: Locale; verdict: string; wrongNumber: boolean };
+export type ScoredRow = {
+  id: string;
+  locale: Locale;
+  verdict: string;
+  wrongNumber: boolean;
+  required?: boolean;
+};
 export function roundSummary<T extends ScoredRow>(round: number, questions: readonly T[]) {
   const scores = Object.fromEntries(
     ["en", "zh-TW"].map((locale) => [
       locale,
-      questions.filter((q) => q.locale === locale && q.verdict !== "wrong" && !q.wrongNumber)
-        .length,
+      questions.filter(
+        (q) => !q.required && q.locale === locale && q.verdict !== "wrong" && !q.wrongNumber,
+      ).length,
     ]),
   );
   const complete =
-    ["en", "zh-TW"].every((locale) => questions.filter((q) => q.locale === locale).length === 20) &&
-    new Set(questions.map((q) => q.id)).size === 40;
+    ["en", "zh-TW"].every(
+      (locale) => questions.filter((q) => !q.required && q.locale === locale).length === 20,
+    ) &&
+    new Set(questions.map((q) => q.id)).size === 48 &&
+    questions.filter((q) => q.required).length === 8;
   return {
     round,
     scores,
+    hostedRegressions: {
+      passed: questions.filter((q) => q.required && q.verdict !== "wrong" && !q.wrongNumber).length,
+      total: 8,
+    },
     passed:
       complete &&
       Object.values(scores).every((s) => s >= 16) &&
-      questions.every((q) => !q.wrongNumber),
+      questions.every((q) => !q.wrongNumber && (!q.required || q.verdict !== "wrong")),
     questions,
   };
 }
@@ -41,7 +55,7 @@ export function stabilitySummary<T extends ScoredRow>(
     passed:
       rounds.length === evaluationRounds &&
       rounds.every((r) => r.passed) &&
-      perQuestion.length === 40 &&
+      perQuestion.length === 48 &&
       ids.every((id) => rounds.every((r) => r.questions.some((q) => q.id === id))),
     rounds,
     perQuestion,

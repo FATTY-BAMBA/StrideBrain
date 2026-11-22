@@ -714,13 +714,6 @@ export async function askHomeAction(
           },
         );
         if (result.kind === "ANSWER") {
-          if (result.refusal === "NO_RECORDS" || result.refusal === "OUT_OF_DATE") {
-            const keywordForm = new FormData();
-            for (const [key, value] of formData) keywordForm.append(key, value);
-            keywordForm.set("locale", result.locale);
-            const keyword = await askKeywordAction(previous, keywordForm, true);
-            if (keyword !== previous) return keyword;
-          }
           const now = Date.now();
           return append(previous, [
             { id: `user-${now}`, role: "user", text: rawMessage.trim() },
@@ -735,6 +728,9 @@ export async function askHomeAction(
                 href: s.href as Route,
               })),
               aiFollowUps: result.answer.followUps,
+              ...(result.action
+                ? { action: { ...result.action, href: result.action.href as Route } }
+                : {}),
             },
           ]);
         }

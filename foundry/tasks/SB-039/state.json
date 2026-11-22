@@ -4,19 +4,19 @@
   "status": "LOCAL_VERIFIED",
   "delivery": "C",
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
-  "providerEvaluation": "THREE_ROUND_PASS",
+  "providerEvaluation": "HOSTED_REVIEW_THREE_ROUND_RUN_PENDING",
   "model": "gemini-3.5-flash-lite",
   "pullRequest": 56,
   "pullRequestState": "DRAFT",
   "workflowPullRequest": 57,
-  "review": "STABILITY_CORRECTIONS_VERIFIED",
+  "review": "HOSTED_REVIEW_FIXES_LOCAL_VERIFIED",
   "providerEvaluationRun": 45059568984,
   "workflowPullRequestState": "MERGED",
   "localTests": {
-    "passed": 1266,
-    "files": 123
+    "passed": 1299,
+    "files": 125
   },
-  "findingExpansion": "EXACT_CITED_CATEGORY_AND_TYPED_KIND_THEN_UNIQUE_PERCENTAGE",
+  "findingExpansion": "CASE_INSENSITIVE_CITED_CATEGORY_AND_TYPED_KIND_THEN_UNIQUE_PERCENTAGE",
   "providerEvaluationRounds": [
     {
       "en": 20,

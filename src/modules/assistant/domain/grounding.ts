@@ -129,6 +129,19 @@ export function sourceReferences(
   sources.forEach((s) => walk(s.facts, s.typedFactPaths ?? []));
   return [...new Set(values.filter(Boolean))];
 }
+/** Reject complete tokens that cut off a known reference, even inside a sent job name. */
+export function hasTruncatedReference(text: string, references: readonly string[]): boolean {
+  const known = new Set(references.map((r) => r.toLocaleLowerCase()));
+  return (text.match(/[A-Za-z0-9][A-Za-z0-9_-]*/g) ?? []).some((token) => {
+    const lower = token.toLocaleLowerCase();
+    return (
+      token.length >= 3 &&
+      /[-_]/.test(token) &&
+      !known.has(lower) &&
+      [...known].some((r) => r.startsWith(lower) && r.length > lower.length)
+    );
+  });
+}
 /** Identity text must be the redacted labels/names actually sent in this turn. */
 export function sourceIdentities(
   sources: readonly AssistantSource[],
@@ -229,6 +242,7 @@ export function parseAnswer(raw: unknown, locale: Locale): StructuredAnswer | nu
 export type AnswerRejection =
   | "ANSWER_SCHEMA"
   | "WORD_LIMIT"
+  | "TRUNCATED_REFERENCE"
   | "UNKNOWN_SOURCE"
   | "NO_SOURCES"
   | "NUMBER_WORD"
@@ -282,6 +296,8 @@ function checkSingleAnswer(
     return { kind: "REJECTED", reason: "UNKNOWN_SOURCE" };
   if (!sourceIds.length) return { kind: "REJECTED", reason: "NO_SOURCES" };
   const output = text;
+  if (hasTruncatedReference(text, sourceReferences(sources, authorizedReferences)))
+    return { kind: "REJECTED", reason: "TRUNCATED_REFERENCE" };
   const references = sourceIdentities(sources, authorizedReferences);
   const quantities = normalizeSimpleNumberWords(withoutReferences(output, references));
   // Simple words use the same numeric ledger; unsupported compound/large words still fail.
@@ -338,6 +354,16 @@ function checkSingleAnswer(
     },
   };
 }
+/** Follow-ups are questions for the existing read tools, never offers to write or workflow advice. */
+export function isReadFollowUp(text: string): boolean {
+  return (
+    /[?？]$/.test(text.trim()) &&
+    !/\b(?:create|edit|issue|send|approve|delete|update|write|save|generate)\b|建立|編輯|修改|核發|開立|發送|寄送|核准|刪除|更新|儲存|執行比較|重新執行/i.test(
+      text,
+    ) &&
+    !/^(?:would you|do you want|can I|shall I)\b|是否需要|需要.*協助/i.test(text)
+  );
+}
 export function checkAnswer(
   raw: unknown,
   sources: readonly AssistantSource[],
@@ -349,6 +375,8 @@ export function checkAnswer(
   // Validate citation identity before using any of its saved wording.
   if (parsed.sourceIds.some((id) => !sources.some((s) => s.sourceId === id)))
     return { kind: "REJECTED", reason: "UNKNOWN_SOURCE" };
+  if (hasTruncatedReference(parsed.text, sourceReferences(sources, authorizedReferences)))
+    return { kind: "REJECTED", reason: "TRUNCATED_REFERENCE" };
   const identities = sourceIdentities(sources, authorizedReferences);
   const expand = (text: string) =>
     expandFindingSentences(text, citedSources(sources, parsed.sourceIds), (value) =>
@@ -368,6 +396,7 @@ export function checkAnswer(
     answer: {
       ...checked.answer,
       followUps: parsed.followUps.filter((text) => {
+        if (!isReadFollowUp(text)) return false;
         const expandedFollowUp = expand(text);
         return (
           expandedFollowUp.kind === "EXPANDED" &&
