@@ -132,6 +132,7 @@ export type EvidencePanelView = Readonly<{
     comparisonRunId: string;
     enrichmentRunId?: string | undefined;
     snapshotLabel: string;
+    recordedQuoteBasis?: boolean;
     stale: boolean;
     freshness: ComparisonFreshness;
   }>;

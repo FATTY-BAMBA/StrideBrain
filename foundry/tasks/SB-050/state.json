@@ -1,0 +1,20 @@
+{
+  "taskId": "SB-050",
+  "issueUrl": "https://github.com/FATTY-BAMBA/StrideBrain/issues/50",
+  "branch": "build/sb-050-quote-draft",
+  "baseline": "a93fb4793dab33b361e107d276979b54ac4946f6",
+  "state": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "deliverySequence": {
+    "A": "LOCALLY_VERIFIED",
+    "B": "LOCALLY_VERIFIED",
+    "C": "LOCALLY_VERIFIED"
+  },
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "agentHostedActions": "PROHIBITED",
+  "verification": {
+    "npmCheck": "PASS",
+    "postgresTests": "1048 passed; one fixture-reseed subprocess timed out and passed on focused retry",
+    "browser": "PASS: 23 local synthetic screenshots, no console/page errors",
+    "ci": "PENDING_PULL_REQUEST"
+  }
+}

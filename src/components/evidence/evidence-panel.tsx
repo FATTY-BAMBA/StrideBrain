@@ -361,11 +361,13 @@ function ReadyContent({
         <span>{view.context.snapshotLabel}</span>
       </div>
 
-      <StaleComparisonNotice
-        freshness={view.context.freshness}
-        locale={view.locale}
-        projectKey={view.context.projectKey}
-      />
+      {!view.context.recordedQuoteBasis ? (
+        <StaleComparisonNotice
+          freshness={view.context.freshness}
+          locale={view.locale}
+          projectKey={view.context.projectKey}
+        />
+      ) : null}
 
       {view.claim ? (
         <section className={styles.claimSummary}>

@@ -1,0 +1,47 @@
+{
+  "checks": [
+    "Owner creates two-scope job in browser; Prepare requires current comparison; three-job quoted baselines and existing evidence panel shown.",
+    "Edited amount saved as DRAFT/HUMAN_REVIEWED; explicit stage transition; versions 2 and 3 saved without comparison rerun and unchanged recorded basis.",
+    "Home marks saved comparison out of date; changed area flags suggestions and keeps amount; refresh requires rerun and does not replace amount until Use suggestion.",
+    "Insufficient exact scope category has no suggestion; manual amount saved with actor provenance.",
+    "English/zh-TW, 390px layout, finance read-only, structural Viewer no amounts, project-manager editing.",
+    "Home shows 12 more finding cards and overview uses NT$ exact money.",
+    "13 actual comparison claim cards counted against Home’s 12 additional findings.",
+    "Conflict flag inspected in both languages with a temporary local source conflict; restored afterward.",
+    "Discovery remains Discovery after save and Home shows its out-of-date comparison.",
+    "Existing differently structured quote displays every line read-only; fresh mobile context captures the final UI."
+  ],
+  "screens": [
+    "en-home-draft-quote.png",
+    "en-draft-suggestions.png",
+    "en-quote-sources.png",
+    "en-saved-version-1.png",
+    "en-home-out-of-date.png",
+    "en-stale-basis-keeps-amount.png",
+    "en-refreshed-suggestion-keeps-amount.png",
+    "en-quote-saved.png",
+    "zh-TW-quote-saved.png",
+    "zh-TW-quote-mobile.png",
+    "en-insufficient-history.png",
+    "zh-TW-insufficient-history.png",
+    "en-quote-finance.png",
+    "en-quote-viewer.png",
+    "en-quote-project-manager.png",
+    "en-home-findings-count.png",
+    "zh-TW-home-findings-count.png",
+    "en-overview-money.png",
+    "en-source-conflict.png",
+    "zh-TW-source-conflict.png",
+    "en-discovery-after-save.png",
+    "en-existing-quote-read-only.png",
+    "zh-TW-quote-mobile-basis.png"
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "createdJobs": [
+    "J-2611-SDAK",
+    "J-2611-2MTW"
+  ],
+  "comparisonCardsLocatorCount": 13,
+  "status": "PASS"
+}

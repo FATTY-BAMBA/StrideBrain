@@ -559,3 +559,35 @@ describe("HistoricalEconomicsService", () => {
     );
   });
 });
+
+it("exposes the identical quoted baseline without a current quote or forecast", () => {
+  const service = new HistoricalEconomicsService();
+  const original = service.assemble(input()).result.categories;
+  const batch = fullBatch();
+  const withoutCurrent = {
+    ...batch,
+    records: batch.records.filter((record) => record.projectId !== batch.activeProjectId),
+  };
+  const baselines = service.quotedHistoryBaselines(
+    input(withoutCurrent),
+    original.map((category) => category.categoryId),
+  );
+  for (const category of original)
+    expect(baselines.find((entry) => entry.categoryId === category.categoryId)?.history).toEqual(
+      category.quotedHistory,
+    );
+});
+it("a draft never becomes quoted history, even if it has approved authority", () => {
+  const batch = fullBatch();
+  const drafted = {
+    ...batch,
+    records: batch.records.map((record) =>
+      record.observationType === "QUOTED_PRICE" ? { ...record, quoteStatus: "DRAFT" } : record,
+    ),
+  };
+  const baselines = new HistoricalEconomicsService().quotedHistoryBaselines(input(drafted), [
+    "IMPORTED_STONE",
+  ]);
+  expect(baselines[0]?.history.eligibleObservationCount).toBe(0);
+  expect(baselines[0]?.history.medianNormalizedAmount).toBeUndefined();
+});

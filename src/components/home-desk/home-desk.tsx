@@ -1,3 +1,4 @@
+import { formatMoney } from "@/modules/finance/format-money";
 import Link from "next/link";
 import type { Route } from "next";
 import type { Locale } from "@/modules/localization/config";
@@ -5,11 +6,7 @@ import { homeDeskCopy } from "@/modules/localization/home-desk";
 import { findingsCopy } from "@/modules/localization/economics-findings";
 import { comparisonHref } from "@/modules/comparison-experience/route-state";
 import type { HomeDeskOutcome, HomeDesk } from "@/modules/home-desk/application/get-home-desk";
-import {
-  closedLessonText,
-  decisionPresentation,
-  homeMoney,
-} from "@/modules/home-desk/presentation";
+import { closedLessonText, decisionPresentation } from "@/modules/home-desk/presentation";
 import { HomeChat } from "@/components/demo-value/home-chat";
 import { StageCounts } from "./stage-counts";
 import styles from "./home-desk.module.css";
@@ -151,11 +148,11 @@ export function HomeDeskScreen({
                       <dl>
                         <div>
                           <dt>{copy.quote}</dt>
-                          <dd>{homeMoney(lesson.quoteBeforeTax, lesson.currency)}</dd>
+                          <dd>{formatMoney(lesson.quoteBeforeTax, lesson.currency)}</dd>
                         </div>
                         <div>
                           <dt>{copy.actual}</dt>
-                          <dd>{homeMoney(lesson.actualCost, lesson.currency)}</dd>
+                          <dd>{formatMoney(lesson.actualCost, lesson.currency)}</dd>
                         </div>
                       </dl>
                       <p>{closedLessonText(lesson, locale)}</p>

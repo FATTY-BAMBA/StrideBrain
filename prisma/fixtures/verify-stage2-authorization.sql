@@ -5,9 +5,9 @@ DECLARE
 BEGIN
   SELECT count(*) INTO value_count
   FROM "MembershipCapabilityGrant"
-  WHERE "organizationId" = 'org_horizon';
+  WHERE "organizationId" = 'org_horizon' AND "capability" <> 'quote:draft';
   IF value_count <> 5 THEN
-    RAISE EXCEPTION 'Expected five Horizon explicit capability grants, found %', value_count;
+    RAISE EXCEPTION 'Expected five original Horizon explicit capability grants, found %', value_count;
   END IF;
 
   SELECT count(*) INTO value_count

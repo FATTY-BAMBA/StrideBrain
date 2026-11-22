@@ -167,7 +167,7 @@ function sourceSelection(base: EvidencePanelSelection, sourceKey: string): Evide
   });
 }
 
-function sourceView(
+export function sourceView(
   source: EvidenceSourceRecord,
   base: EvidencePanelSelection,
   stage4: Stage4ComparisonResult,

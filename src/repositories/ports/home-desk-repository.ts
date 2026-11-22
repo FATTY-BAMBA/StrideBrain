@@ -2,16 +2,18 @@ import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import type { ClosedJobFinancials } from "@/modules/economics/domain/closed-job-economics-service";
 import type { ProjectListRecord, ProjectListRepositoryPort } from "./project-list-repository";
 
-export type HomeDecisionSource = Readonly<{
-  kind: "PREPARED_REVIEW";
-  organizationId: string;
-  projectId: string;
-  membershipId: string;
-  key: string;
-  comparisonRunId: string;
-  enrichmentRunId: string;
-  expiresAt: string;
-}>;
+export type HomeDecisionSource =
+  | Readonly<{
+      kind: "PREPARED_REVIEW";
+      organizationId: string;
+      projectId: string;
+      membershipId: string;
+      key: string;
+      comparisonRunId: string;
+      enrichmentRunId: string;
+      expiresAt: string;
+    }>
+  | Readonly<{ kind: "DRAFT_QUOTE"; organizationId: string; projectId: string; key: string }>;
 export type ClosedJobRecord = ProjectListRecord &
   Readonly<{
     completedAt: string;

@@ -60,3 +60,14 @@ describe("capability policy", () => {
     expect(view.canAssignInternalReview).toBe(false);
   });
 });
+it("allows quote drafting only for the owner and project manager by default, with explicit deny winning", () => {
+  for (const role of ["ORGANIZATION_ADMIN", "PROJECT_MANAGER_ESTIMATOR"] as const)
+    expect(roleBundle(role).has("quote:draft")).toBe(true);
+  for (const role of ["FINANCIAL_REVIEWER", "VIEWER"] as const)
+    expect(roleBundle(role).has("quote:draft")).toBe(false);
+  expect(
+    resolveCapabilities("PROJECT_MANAGER_ESTIMATOR", [
+      { capability: "quote:draft", effect: "DENY" },
+    ]).has("quote:draft"),
+  ).toBe(false);
+});

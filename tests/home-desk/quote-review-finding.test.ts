@@ -40,7 +40,7 @@ it("uses category id to break equal absolute variances regardless of sign, kind 
   expect(quoteReviewFinding([second, first])?.claim).toBe(first);
   expect(quoteReviewFinding([first, second])?.claim).toBe(first);
 });
-it("prefers variance to too little history; counts all other review findings, including programme", () => {
+it("prefers variance to too little history; counts all other review findings, including programme and overall", () => {
   const variance = claim("IMPORTED_STONE", "12.0000");
   const insufficient = claim("COORDINATION", "0", "CATEGORY_ACTUAL_INSUFFICIENT");
   const programme = {
@@ -54,7 +54,7 @@ it("prefers variance to too little history; counts all other review findings, in
   const overall = claim("", "99.0000", "OVERALL_QUOTED_VARIANCE");
   expect(quoteReviewFinding([insufficient, overall, aligned, programme, variance])).toEqual({
     claim: variance,
-    additionalFindingCount: 2,
+    additionalFindingCount: 3,
   });
 });
 it("uses category order for insufficient history only when there is no variance", () => {

@@ -1,5 +1,5 @@
 import type { Stage5EconomicsResult, StructuredEconomicsClaimDTO } from "../domain/contracts";
-import { isOutOfRange, isReviewClaim } from "../domain/claim-selection";
+import { isReviewClaim, isVisibleFinding } from "../domain/claim-selection";
 import { categoryLabel } from "@/modules/localization/jobs";
 import { findingsCopy } from "@/modules/localization/economics-findings";
 import type { Locale } from "@/modules/localization/config";
@@ -15,6 +15,7 @@ export function claimFindingText(
   claim: StructuredEconomicsClaimDTO,
   locale: Locale,
 ): string | null {
+  if (!isVisibleFinding(claim)) return null;
   const copy = findingsCopy(locale);
   const category = claim.categoryId ? categoryLabel(locale, claim.categoryId) : copy.overall;
   if (claim.kind === "PROGRAMME_DIFFERENCE_UNQUANTIFIED") return copy.programme;
@@ -31,7 +32,7 @@ export function claimFindingText(
     claim.kind === "OVERALL_FORECAST_ACTUAL_VARIANCE";
   if (
     (!quoted && !forecast) ||
-    !isOutOfRange(claim) ||
+    !isVisibleFinding(claim) ||
     typeof claim.value.variancePercent !== "string" ||
     !/^-?\d+(\.\d+)?$/.test(claim.value.variancePercent)
   )

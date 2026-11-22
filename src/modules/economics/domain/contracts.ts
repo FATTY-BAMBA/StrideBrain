@@ -109,6 +109,7 @@ export type FinancialObservationRecord = Readonly<{
   evidenceReferenceIds: readonly string[];
   dataClassification: DataClassification;
   policyExcluded?: boolean | undefined;
+  quoteStatus?: string | undefined;
   lines: readonly EconomicsLineSnapshot[];
 }>;
 

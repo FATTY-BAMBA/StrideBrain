@@ -17,7 +17,7 @@ import type { HomeDeskRepositoryPort } from "@/repositories/ports/home-desk-repo
 
 export type HomeDecision = Readonly<{
   key: string;
-  kind: "CONFIRM_REVIEW" | "REVIEW_QUOTE" | "COMPARE";
+  kind: "CONFIRM_REVIEW" | "REVIEW_QUOTE" | "DRAFT_QUOTE" | "COMPARE";
   project: ProjectEntryDTO;
   claim?: StructuredEconomicsClaimDTO | undefined;
   additionalFindingCount?: number | undefined;
@@ -45,7 +45,7 @@ export type HomeDesk = Readonly<{
   }>[];
 }>;
 export type HomeDeskOutcome = HomeDesk | Readonly<{ kind: "UNAVAILABLE" }>;
-const priority = { CONFIRM_REVIEW: 0, REVIEW_QUOTE: 1, COMPARE: 2 } as const;
+const priority = { CONFIRM_REVIEW: 0, REVIEW_QUOTE: 1, DRAFT_QUOTE: 2, COMPARE: 3 } as const;
 
 export class GetHomeDesk {
   constructor(
@@ -89,6 +89,17 @@ export class GetHomeDesk {
       );
       for (const proposal of proposals) {
         const job = active.find((row) => row.id === proposal.projectId);
+        if (proposal.kind === "DRAFT_QUOTE") {
+          if (
+            job &&
+            proposal.organizationId === context.organizationId &&
+            context.capabilities.has("quote:draft") &&
+            context.capabilities.has("quote:read") &&
+            ["DISCOVERY", "DESIGN", "QUOTE_REVIEW"].includes(job.stage)
+          )
+            decisions.push({ key: proposal.key, kind: "DRAFT_QUOTE", project: entry(job) });
+          continue;
+        }
         if (
           !job ||
           proposal.organizationId !== context.organizationId ||
@@ -124,13 +135,20 @@ export class GetHomeDesk {
             decisions.push({ key: `compare:${job.businessKey}`, kind: "COMPARE", project });
             continue;
           }
-          if (job.stage !== "QUOTE_REVIEW") continue;
+          if (
+            decisions.some(
+              (decision) =>
+                decision.kind === "DRAFT_QUOTE" && decision.project.businessKey === job.businessKey,
+            )
+          )
+            continue;
           try {
             const saved = await this.comparisons.execute(context, job.businessKey);
             if (!saved || saved.kind !== "AVAILABLE") {
               findingsNotices.push({ project, kind: saved?.kind ?? "UNAVAILABLE" });
               continue;
             }
+            if (job.stage !== "QUOTE_REVIEW") continue;
             const commercial =
               this.authorization.canReadProject(context, job.id).commercialScope !== "NONE";
             if (!commercial || saved.economics?.accessScope === "STRUCTURAL_ONLY") continue;

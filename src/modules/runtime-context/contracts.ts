@@ -11,6 +11,7 @@ export type Capability =
   | "project:update"
   | "project:compare"
   | "quote:read"
+  | "quote:draft"
   | "commercial:forecast-read"
   | "commercial:actual-read"
   | "evidence:read"

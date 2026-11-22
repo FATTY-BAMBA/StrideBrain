@@ -32,7 +32,36 @@ export class PrismaHomeDeskRepository implements HomeDeskRepositoryPort {
     const ids = readableIds(context, projectIds).filter(
       (id) => authorization.canCreateInternalReview(context, id).allowed,
     );
-    if (!ids.length) return [];
+    const drafts =
+      context.capabilities.has("quote:draft") && context.capabilities.has("quote:read")
+        ? await this.database.project.findMany({
+            where: {
+              organizationId: context.organizationId,
+              id: { in: readableIds(context, projectIds) },
+              deletedAt: null,
+              status: "ACTIVE",
+              stage: { in: ["DISCOVERY", "DESIGN", "QUOTE_REVIEW"] },
+              comparisonRuns: {
+                some: { organizationId: context.organizationId, status: "COMPLETED" },
+              },
+              quotes: {
+                none: {
+                  organizationId: context.organizationId,
+                  versions: { some: { organizationId: context.organizationId } },
+                },
+              },
+            },
+            select: { id: true, organizationId: true, businessKey: true },
+            orderBy: { businessKey: "asc" },
+          })
+        : [];
+    const sources: HomeDecisionSource[] = drafts.map((row) => ({
+      kind: "DRAFT_QUOTE",
+      organizationId: row.organizationId,
+      projectId: row.id,
+      key: `draft:${row.businessKey}`,
+    }));
+    if (!ids.length) return sources;
     const rows = await this.database.proposedAction.findMany({
       where: {
         organizationId: context.organizationId,
@@ -56,22 +85,25 @@ export class PrismaHomeDeskRepository implements HomeDeskRepositoryPort {
       },
       orderBy: { businessKey: "asc" },
     });
-    return rows.flatMap((row) =>
-      row.businessKey && row.enrichmentRunId && row.preparedByMembershipId && row.expiresAt
-        ? [
-            {
-              kind: "PREPARED_REVIEW" as const,
-              organizationId: row.organizationId,
-              projectId: row.projectId,
-              membershipId: row.preparedByMembershipId,
-              key: row.businessKey,
-              comparisonRunId: row.comparisonRunId,
-              enrichmentRunId: row.enrichmentRunId,
-              expiresAt: row.expiresAt.toISOString(),
-            },
-          ]
-        : [],
-    );
+    return [
+      ...sources,
+      ...rows.flatMap((row) =>
+        row.businessKey && row.enrichmentRunId && row.preparedByMembershipId && row.expiresAt
+          ? [
+              {
+                kind: "PREPARED_REVIEW" as const,
+                organizationId: row.organizationId,
+                projectId: row.projectId,
+                membershipId: row.preparedByMembershipId,
+                key: row.businessKey,
+                comparisonRunId: row.comparisonRunId,
+                enrichmentRunId: row.enrichmentRunId,
+                expiresAt: row.expiresAt.toISOString(),
+              },
+            ]
+          : [],
+      ),
+    ];
   }
   async listComparedProjectIds(context: RuntimeContext, projectIds: readonly string[]) {
     if (!context.capabilities.has("project:compare")) return [];

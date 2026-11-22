@@ -110,3 +110,13 @@ it("never combines a quote or actual cost belonging to another job", () => {
     ),
   ).toBeNull();
 });
+it("exposes all category differences from the same reconciled analysis", () => {
+  expect(
+    service
+      .categoryDifferences(input(), "2026-11-22")
+      .map(({ categoryId, difference, exceeded }) => ({ categoryId, difference, exceeded })),
+  ).toEqual([
+    { categoryId: "B", difference: "10.00", exceeded: true },
+    { categoryId: "A", difference: "-10.00", exceeded: false },
+  ]);
+});
