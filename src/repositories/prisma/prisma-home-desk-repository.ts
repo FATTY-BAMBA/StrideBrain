@@ -61,6 +61,62 @@ export class PrismaHomeDeskRepository implements HomeDeskRepositoryPort {
       projectId: row.id,
       key: `draft:${row.businessKey}`,
     }));
+    const financialIds = readableIds(context, projectIds).filter(
+      (id) => authorization.canReadCommercial(context, id, "QUOTE").allowed,
+    );
+    if (financialIds.length) {
+      const versions = await this.database.quoteVersion.findMany({
+        where: {
+          organizationId: context.organizationId,
+          supersededById: null,
+          quote: {
+            organizationId: context.organizationId,
+            projectId: { in: financialIds },
+            project: { deletedAt: null, status: "ACTIVE" },
+          },
+        },
+        select: {
+          id: true,
+          organizationId: true,
+          status: true,
+          issuedAt: true,
+          documentNumber: true,
+          validUntil: true,
+          quote: { select: { projectId: true } },
+        },
+        orderBy: [{ createdAt: "desc" }, { versionNumber: "desc" }, { id: "asc" }],
+      });
+      const current = new Set<string>();
+      for (const version of versions) {
+        const projectId = version.quote.projectId;
+        if (
+          !current.has(projectId) &&
+          version.status === "DRAFT" &&
+          context.capabilities.has("quote:issue")
+        )
+          sources.push({
+            kind: "ISSUE_QUOTE",
+            organizationId: version.organizationId,
+            projectId,
+            key: `issue:${version.id}`,
+          });
+        current.add(projectId);
+        if (
+          version.status === "ISSUED" &&
+          version.issuedAt &&
+          version.documentNumber &&
+          version.validUntil
+        )
+          sources.push({
+            kind: "AWAITING_CLIENT",
+            organizationId: version.organizationId,
+            projectId,
+            key: `awaiting:${version.id}`,
+            documentNumber: version.documentNumber,
+            validUntil: version.validUntil.toISOString().slice(0, 10),
+          });
+      }
+    }
     if (!ids.length) return sources;
     const rows = await this.database.proposedAction.findMany({
       where: {

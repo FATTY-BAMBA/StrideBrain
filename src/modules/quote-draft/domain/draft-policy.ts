@@ -58,9 +58,9 @@ export function prepareDraftPolicy(
     const baseline = input.baselines.find((entry) => entry.categoryId === categoryId);
     const history = baseline?.history;
     const count = history?.eligibleObservationCount ?? 0;
-    const sufficient =
+    const hasReference =
       history?.observationType === "QUOTED_PRICE" &&
-      count >= REQUIRED_HISTORY_COUNT &&
+      count > 0 &&
       history.medianNormalizedAmount !== undefined &&
       history.minimumNormalizedAmount !== undefined &&
       history.maximumNormalizedAmount !== undefined;
@@ -75,14 +75,14 @@ export function prepareDraftPolicy(
       scopeCategoryIds: [...input.job.scopeCategoryIds].sort(),
       count,
       requiredCount: REQUIRED_HISTORY_COUNT,
-      ...(sufficient
+      ...(hasReference
         ? {
             medianRate: history.medianNormalizedAmount!,
             lowRate: history.minimumNormalizedAmount!,
             highRate: history.maximumNormalizedAmount!,
           }
         : {}),
-      ...(sufficient && !coverage.partial
+      ...(hasReference && count >= REQUIRED_HISTORY_COUNT && !coverage.partial
         ? {
             // Keep all nine product decimals until rounding to thousands (no double rounding).
             suggestedAmount: decimalToString(

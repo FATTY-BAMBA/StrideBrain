@@ -1,4 +1,8 @@
 import Link from "next/link";
+import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
+import { createQuoteIssueServices } from "@/lib/server/quote-issue-services";
+import { FirmDetailsForm } from "@/components/quote-issue/firm-details-form";
+import { quoteIssueCopy } from "@/modules/localization/quote-issue";
 import { notFound } from "next/navigation";
 import { FoundationPage } from "@/components/ui/foundation-page";
 import { getCatalog } from "@/modules/localization/catalog";
@@ -11,6 +15,12 @@ export default async function SettingsPage({ params }: { params: Promise<{ local
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const catalog = getCatalog(locale);
+  const context = await resolveServerRuntimeContext();
+  const firm = context
+    ? await createQuoteIssueServices()
+        .firm.execute({ ...context, locale })
+        .catch(() => null)
+    : null;
   const sections =
     locale === "en"
       ? ["Team & access", "Data connections", "AI preferences"]
@@ -33,6 +43,12 @@ export default async function SettingsPage({ params }: { params: Promise<{ local
           </Link>
         </nav>
       </section>
+      {firm?.kind === "AVAILABLE" ? (
+        <FirmDetailsForm locale={locale} details={firm.details} canManage={firm.canManage} />
+      ) : context?.capabilities.has("quote:read") ||
+        context?.capabilities.has("settings:manage") ? (
+        <p role="status">{quoteIssueCopy(locale).UNAVAILABLE}</p>
+      ) : null}
       <div className="settings-planned">
         {sections.map((title) => (
           <section key={title}>

@@ -109,6 +109,20 @@ describe("QUOTE-DRAFT-1.0", () => {
   it("uses the shared eligibility threshold even when an insufficient input has a median", () => {
     expect(draft("15", REQUIRED_HISTORY_COUNT - 1)[0]?.basis.suggestedAmount).toBeUndefined();
   });
+  it.each([1, 2])(
+    "shows %i eligible quoted prices as reference without suggesting an amount",
+    (count) => {
+      expect(draft("15", count)[0]?.basis).toMatchObject({
+        count,
+        medianRate: "15",
+        lowRate: "10",
+        highRate: "20",
+        evidenceReferenceIds: ["quote-line"],
+      });
+      expect(draft("15", count)[0]?.basis).not.toHaveProperty("suggestedAmount");
+      expect(draft("15", 0)[0]?.basis).not.toHaveProperty("medianRate");
+    },
+  );
   it("never relabels a cost aggregate as a quoted-price suggestion", () => {
     const value = baseline("15");
     expect(

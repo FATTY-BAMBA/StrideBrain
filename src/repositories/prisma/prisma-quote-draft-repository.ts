@@ -48,9 +48,9 @@ function object(value: unknown): Record<string, unknown> {
     ? (value as Record<string, unknown>)
     : {};
 }
-class Session implements QuoteDraftSessionPort {
+export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
   private readonly auth = new AuthorizationService();
-  constructor(private readonly tx: Prisma.TransactionClient) {}
+  constructor(protected readonly tx: Prisma.TransactionClient) {}
   async getJob(context: RuntimeContext, projectKey: string): Promise<QuoteDraftJob | null> {
     if (!context.capabilities.has("project:read")) return null;
     const organizationId = context.organizationId;
@@ -360,7 +360,7 @@ export class PrismaQuoteDraftRepository implements QuoteDraftRepositoryPort {
   async transaction<T>(work: (session: QuoteDraftSessionPort) => Promise<T>): Promise<T> {
     for (let attempt = 0; ; attempt++) {
       try {
-        return await this.database.$transaction((tx) => work(new Session(tx)), {
+        return await this.database.$transaction((tx) => work(new PrismaQuoteDraftSession(tx)), {
           isolationLevel: "Serializable",
           timeout: 15_000,
         });

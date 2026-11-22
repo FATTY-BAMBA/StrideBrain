@@ -17,8 +17,17 @@ import type { HomeDeskRepositoryPort } from "@/repositories/ports/home-desk-repo
 
 export type HomeDecision = Readonly<{
   key: string;
-  kind: "CONFIRM_REVIEW" | "REVIEW_QUOTE" | "DRAFT_QUOTE" | "COMPARE";
+  kind:
+    | "CONFIRM_REVIEW"
+    | "REVIEW_QUOTE"
+    | "ISSUE_QUOTE"
+    | "AWAITING_CLIENT"
+    | "DRAFT_QUOTE"
+    | "COMPARE";
   project: ProjectEntryDTO;
+  documentNumber?: string;
+  validUntil?: string;
+  canAccept?: boolean;
   claim?: StructuredEconomicsClaimDTO | undefined;
   additionalFindingCount?: number | undefined;
   comparisonRunId?: string | undefined;
@@ -45,7 +54,14 @@ export type HomeDesk = Readonly<{
   }>[];
 }>;
 export type HomeDeskOutcome = HomeDesk | Readonly<{ kind: "UNAVAILABLE" }>;
-const priority = { CONFIRM_REVIEW: 0, REVIEW_QUOTE: 1, DRAFT_QUOTE: 2, COMPARE: 3 } as const;
+const priority = {
+  CONFIRM_REVIEW: 0,
+  REVIEW_QUOTE: 1,
+  ISSUE_QUOTE: 2,
+  AWAITING_CLIENT: 3,
+  DRAFT_QUOTE: 4,
+  COMPARE: 5,
+} as const;
 
 export class GetHomeDesk {
   constructor(
@@ -89,6 +105,27 @@ export class GetHomeDesk {
       );
       for (const proposal of proposals) {
         const job = active.find((row) => row.id === proposal.projectId);
+        if (proposal.kind === "ISSUE_QUOTE" || proposal.kind === "AWAITING_CLIENT") {
+          if (
+            job &&
+            proposal.organizationId === context.organizationId &&
+            this.authorization.canReadCommercial(context, job.id, "QUOTE").allowed &&
+            (proposal.kind !== "ISSUE_QUOTE" || context.capabilities.has("quote:issue"))
+          )
+            decisions.push({
+              key: proposal.key,
+              kind: proposal.kind,
+              project: entry(job),
+              ...(proposal.kind === "AWAITING_CLIENT"
+                ? {
+                    documentNumber: proposal.documentNumber,
+                    validUntil: proposal.validUntil,
+                    canAccept: context.capabilities.has("project:update"),
+                  }
+                : {}),
+            });
+          continue;
+        }
         if (proposal.kind === "DRAFT_QUOTE") {
           if (
             job &&
@@ -148,7 +185,11 @@ export class GetHomeDesk {
               findingsNotices.push({ project, kind: saved?.kind ?? "UNAVAILABLE" });
               continue;
             }
-            if (job.stage !== "QUOTE_REVIEW") continue;
+            const issueIndex = decisions.findIndex(
+              (decision) =>
+                decision.kind === "ISSUE_QUOTE" && decision.project.businessKey === job.businessKey,
+            );
+            if (job.stage !== "QUOTE_REVIEW" && issueIndex < 0) continue;
             const commercial =
               this.authorization.canReadProject(context, job.id).commercialScope !== "NONE";
             if (!commercial || saved.economics?.accessScope === "STRUCTURAL_ONLY") continue;
@@ -157,7 +198,9 @@ export class GetHomeDesk {
               continue;
             }
             const finding = quoteReviewFinding(saved.economics.claims);
-            if (finding)
+            if (finding && issueIndex >= 0) {
+              decisions[issueIndex] = { ...decisions[issueIndex]!, ...finding };
+            } else if (finding && !context.capabilities.has("quote:issue"))
               decisions.push({
                 key: `review:${job.businessKey}`,
                 kind: "REVIEW_QUOTE",
@@ -224,7 +267,13 @@ export class GetHomeDesk {
         key: group.key,
         count: projects.filter((job) => inStageGroup(job.stage, group.key)).length,
       })),
-      decisions,
+      // A job occupies its highest-priority row only.
+      decisions: decisions.filter(
+        (decision, index) =>
+          decisions.findIndex(
+            (item) => item.project.businessKey === decision.project.businessKey,
+          ) === index,
+      ),
       findingsNotices,
       decisionsUnavailable,
       closedJobsUnavailable,

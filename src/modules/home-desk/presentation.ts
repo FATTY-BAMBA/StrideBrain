@@ -12,40 +12,53 @@ export function decisionPresentation(item: HomeDecision, locale: Locale) {
   const copy = homeDeskCopy(locale);
   return {
     sentence:
-      item.kind === "REVIEW_QUOTE" && item.claim
+      ["REVIEW_QUOTE", "ISSUE_QUOTE"].includes(item.kind) && item.claim
         ? claimFindingText(item.claim, locale)
-        : item.kind === "CONFIRM_REVIEW"
-          ? copy.confirm
-          : item.kind === "DRAFT_QUOTE"
-            ? copy.draft
-            : copy.compare,
+        : item.kind === "ISSUE_QUOTE"
+          ? copy.issue
+          : item.kind === "AWAITING_CLIENT"
+            ? copy.awaiting
+                .replace("{number}", item.documentNumber ?? "")
+                .replace("{date}", item.validUntil ?? "")
+            : item.kind === "CONFIRM_REVIEW"
+              ? copy.confirm
+              : item.kind === "DRAFT_QUOTE"
+                ? copy.draft
+                : copy.compare,
     moreFindings:
-      item.kind === "REVIEW_QUOTE" && item.additionalFindingCount && item.additionalFindingCount > 0
+      ["REVIEW_QUOTE", "ISSUE_QUOTE"].includes(item.kind) &&
+      item.additionalFindingCount &&
+      item.additionalFindingCount > 0
         ? item.additionalFindingCount === 1
           ? copy.oneMoreFinding
           : copy.moreFindings.replace("{count}", String(item.additionalFindingCount))
         : null,
-    label: copy[item.kind],
-    href:
-      item.kind === "DRAFT_QUOTE"
-        ? `/${locale}/projects/${encodeURIComponent(item.project.businessKey)}/quote`
-        : item.kind === "CONFIRM_REVIEW" && item.comparisonRunId && item.enrichmentRunId
-          ? internalReviewHref(
-              locale,
-              item.project.businessKey,
-              {
+    label: item.kind === "AWAITING_CLIENT" && item.canAccept ? copy.accept : copy[item.kind],
+    href: ["DRAFT_QUOTE", "ISSUE_QUOTE", "AWAITING_CLIENT"].includes(item.kind)
+      ? `/${locale}/projects/${encodeURIComponent(item.project.businessKey)}/quote`
+      : item.kind === "ISSUE_QUOTE"
+        ? copy.issue
+        : item.kind === "AWAITING_CLIENT"
+          ? copy.awaiting
+              .replace("{number}", item.documentNumber ?? "")
+              .replace("{date}", item.validUntil ?? "")
+          : item.kind === "CONFIRM_REVIEW" && item.comparisonRunId && item.enrichmentRunId
+            ? internalReviewHref(
+                locale,
+                item.project.businessKey,
+                {
+                  comparisonRunId: item.comparisonRunId,
+                  enrichmentRunId: item.enrichmentRunId,
+                  returnContext: { selectedProjectKeys: [] },
+                },
+                { proposalKey: item.proposalKey },
+              )
+            : comparisonHref(locale, item.project.businessKey, {
                 comparisonRunId: item.comparisonRunId,
-                enrichmentRunId: item.enrichmentRunId,
-                returnContext: { selectedProjectKeys: [] },
-              },
-              { proposalKey: item.proposalKey },
-            )
-          : comparisonHref(locale, item.project.businessKey, {
-              comparisonRunId: item.comparisonRunId,
-              economicsRunId: item.enrichmentRunId,
-              selectedProjectKeys: item.selectedProjectKeys,
-              evidenceClaimKey: item.claim?.claimKey,
-            }),
+                economicsRunId: item.enrichmentRunId,
+                selectedProjectKeys: item.selectedProjectKeys,
+                evidenceClaimKey: item.claim?.claimKey,
+              }),
   };
 }
 export function closedLessonText(lesson: ClosedJobLesson, locale: Locale) {

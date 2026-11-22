@@ -13,6 +13,15 @@ export type HomeDecisionSource =
       enrichmentRunId: string;
       expiresAt: string;
     }>
+  | Readonly<{ kind: "ISSUE_QUOTE"; organizationId: string; projectId: string; key: string }>
+  | Readonly<{
+      kind: "AWAITING_CLIENT";
+      organizationId: string;
+      projectId: string;
+      key: string;
+      documentNumber: string;
+      validUntil: string;
+    }>
   | Readonly<{ kind: "DRAFT_QUOTE"; organizationId: string; projectId: string; key: string }>;
 export type ClosedJobRecord = ProjectListRecord &
   Readonly<{

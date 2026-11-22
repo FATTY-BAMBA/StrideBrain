@@ -73,13 +73,10 @@ describe("authorized Home desk", () => {
     const result = await f.service.execute(context);
     expect(result.kind).toBe("AVAILABLE");
     if (result.kind !== "AVAILABLE") throw new Error("required");
-    expect(result.decisions.map((item) => item.kind)).toEqual([
-      "CONFIRM_REVIEW",
-      "REVIEW_QUOTE",
-      "COMPARE",
-    ]);
-    expect(result.decisions[1]?.additionalFindingCount).toBe(0);
-    expect(result.decisions[1]?.claim?.evidenceReferenceIds).toEqual(["evidence"]);
+    expect(result.decisions.map((item) => item.kind)).toEqual(["CONFIRM_REVIEW", "COMPARE"]);
+    expect(new Set(result.decisions.map((row) => row.project.businessKey)).size).toBe(
+      result.decisions.length,
+    );
     expect(result.stageCounts.map((item) => item.count)).toEqual([1, 1, 0, 0, 0]);
     expect(result.canCreate).toBe(true);
   });
@@ -210,7 +207,10 @@ it("selects the largest saved variance with a count and preserves its evidence d
       ],
     },
   });
-  const result = await f.service.execute(context);
+  const result = await f.service.execute({
+    ...context,
+    capabilities: roleBundle("FINANCIAL_REVIEWER"),
+  });
   expect(
     result.kind === "AVAILABLE" && result.decisions.find((item) => item.kind === "REVIEW_QUOTE"),
   ).toMatchObject({
@@ -226,7 +226,10 @@ it("orders Draft quote after review and before compare, and hides it without dra
   f.repository.listDecisionSources.mockResolvedValue([
     { kind: "DRAFT_QUOTE", organizationId: context.organizationId, projectId: "B", key: "draft:B" },
   ]);
-  const result = await f.service.execute(context);
+  const result = await f.service.execute({
+    ...context,
+    capabilities: new Set([...context.capabilities].filter((cap) => cap !== "quote:issue")),
+  });
   expect(result.kind === "AVAILABLE" && result.decisions.map((decision) => decision.kind)).toEqual([
     "REVIEW_QUOTE",
     "DRAFT_QUOTE",
@@ -251,4 +254,65 @@ it("shows an out-of-date saved comparison after a draft save even before moving 
       kind: "OUT_OF_DATE",
     },
   ]);
+});
+
+it("merges fresh findings into Issue quote, deduplicates jobs and gates both new sources", async () => {
+  const f = setup([job("A"), job("B", "DESIGN"), job("C", "DISCOVERY")]);
+  f.repository.listComparedProjectIds.mockResolvedValue(["A", "B"]);
+  f.repository.listDecisionSources.mockResolvedValue([
+    { kind: "ISSUE_QUOTE", organizationId: context.organizationId, projectId: "A", key: "issue:A" },
+    {
+      kind: "AWAITING_CLIENT",
+      organizationId: context.organizationId,
+      projectId: "A",
+      key: "awaiting:A",
+      documentNumber: "A-Q1",
+      validUntil: "2026-12-22",
+    },
+    {
+      kind: "AWAITING_CLIENT",
+      organizationId: context.organizationId,
+      projectId: "B",
+      key: "awaiting:B",
+      documentNumber: "B-Q1",
+      validUntil: "2026-12-22",
+    },
+  ]);
+  const result = await f.service.execute(context);
+  expect(result.kind === "AVAILABLE" && result.decisions.map((row) => row.kind)).toEqual([
+    "ISSUE_QUOTE",
+    "AWAITING_CLIENT",
+    "COMPARE",
+  ]);
+  expect(result.kind === "AVAILABLE" && result.decisions[0]).toMatchObject({
+    claim: { claimKey: "quote", evidenceReferenceIds: ["evidence"] },
+    additionalFindingCount: 0,
+  });
+  expect(result.kind === "AVAILABLE" && result.decisions[1]).toMatchObject({
+    documentNumber: "B-Q1",
+    validUntil: "2026-12-22",
+    canAccept: true,
+  });
+  const pm = await f.service.execute({
+    ...context,
+    role: "PROJECT_MANAGER_ESTIMATOR",
+    capabilities: roleBundle("PROJECT_MANAGER_ESTIMATOR"),
+    assignedProjectIds: new Set(["A", "B", "C"]),
+  });
+  expect(pm.kind === "AVAILABLE" && pm.decisions.map((row) => row.kind)).toEqual([
+    "REVIEW_QUOTE",
+    "AWAITING_CLIENT",
+    "COMPARE",
+  ]);
+  const viewer = await f.service.execute({
+    ...context,
+    role: "VIEWER",
+    capabilities: roleBundle("VIEWER"),
+    assignedProjectIds: new Set(["A", "B", "C"]),
+  });
+  expect(JSON.stringify(viewer)).not.toMatch(/ISSUE_QUOTE|AWAITING_CLIENT|Q1|variancePercent/);
+  f.comparisons.execute.mockResolvedValue({ kind: "OUT_OF_DATE" });
+  const stale = await f.service.execute(context);
+  expect(stale.kind === "AVAILABLE" && stale.decisions[0]?.kind).toBe("ISSUE_QUOTE");
+  expect(stale.kind === "AVAILABLE" && stale.decisions[0]?.claim).toBeUndefined();
 });

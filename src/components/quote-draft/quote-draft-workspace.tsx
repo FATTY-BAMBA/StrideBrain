@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useTransition } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { Route } from "next";
 import {
   prepareQuoteDraftAction,
@@ -22,6 +23,7 @@ import type { QuoteTotals } from "@/modules/finance/quote-totals";
 import { formatMoney } from "@/modules/finance/format-money";
 import type { Locale } from "@/modules/localization/config";
 import { categoryLabel } from "@/modules/localization/jobs";
+import { quoteIssueCopy } from "@/modules/localization/quote-issue";
 import { quoteDraftCopy, quoteTemplate as text } from "@/modules/localization/quote-draft";
 import styles from "./quote-draft-workspace.module.css";
 
@@ -63,7 +65,18 @@ function savedRows(view: Available, locale: Locale): Row[] {
     };
   });
 }
-export function QuoteDraftWorkspace({ initial, locale }: { initial: Available; locale: Locale }) {
+export function QuoteDraftWorkspace({
+  initial,
+  locale,
+  canResolve = false,
+  onSaveStateChange,
+}: {
+  initial: Available;
+  locale: Locale;
+  canResolve?: boolean;
+  onSaveStateChange?: (saving: boolean, versionId?: string) => void;
+}) {
+  const router = useRouter();
   const copy = quoteDraftCopy(locale),
     [view, setView] = useState(initial),
     [rows, setRows] = useState(() => savedRows(initial, locale));
@@ -145,13 +158,17 @@ export function QuoteDraftWorkspace({ initial, locale }: { initial: Available; l
     });
   }
   function save() {
+    onSaveStateChange?.(true);
     startTransition(async () => {
       const { result, view: next } = await saveQuoteDraftAction(locale, payload);
       if (result.kind !== "SAVED") {
+        onSaveStateChange?.(false);
         setMessage(copy[result.kind]);
         setCompareNeeded(["NO_COMPARISON", "OUT_OF_DATE"].includes(result.kind));
         return;
       }
+      onSaveStateChange?.(false, result.versionId);
+      router.refresh();
       setMessage(text(copy.saved, { version: result.versionNumber }));
       setCompareNeeded(true);
       setFirstSave(result.firstSave);
@@ -244,6 +261,12 @@ export function QuoteDraftWorkspace({ initial, locale }: { initial: Available; l
             <>
               {editable ? <p>{copy.refreshHint}</p> : null}
               {rows.map((row, index) => {
+                const currentLine = (
+                  initial.saved?.id === view.saved?.id ? initial : view
+                ).saved?.lines.find((line) => line.categoryId === row.categoryId);
+                const openConflict = token
+                  ? row.basis?.conflictEvidenceIds.length
+                  : currentLine?.openConflict;
                 const rowKey = editable ? row.categoryId : `${row.categoryId}-${index}`;
                 const basis = row.basis,
                   unit = basis?.areaUnit === "m2" ? "m²" : (basis?.areaUnit ?? view.job.areaUnit);
@@ -336,12 +359,17 @@ export function QuoteDraftWorkspace({ initial, locale }: { initial: Available; l
                           {basis.medianRate !== undefined ? (
                             <>
                               <p>
-                                {text(coverage?.partial ? copy.reference : copy.basis, {
-                                  n: basis.count,
-                                  rate: formatQuoteRate(basis.medianRate, view.job.currency),
-                                  unit,
-                                  area: formatQuoteArea(basis.area),
-                                })}
+                                {text(
+                                  coverage?.partial || basis.count < basis.requiredCount
+                                    ? copy.reference
+                                    : copy.basis,
+                                  {
+                                    n: basis.count,
+                                    rate: formatQuoteRate(basis.medianRate, view.job.currency),
+                                    unit,
+                                    area: formatQuoteArea(basis.area),
+                                  },
+                                )}
                               </p>
                               <p>
                                 {text(copy.range, {
@@ -356,6 +384,11 @@ export function QuoteDraftWorkspace({ initial, locale }: { initial: Available; l
                               {text(copy.few, { n: basis.count, required: basis.requiredCount })}
                             </p>
                           )}
+                          {basis.medianRate !== undefined && basis.count < basis.requiredCount ? (
+                            <p>
+                              {text(copy.few, { n: basis.count, required: basis.requiredCount })}
+                            </p>
+                          ) : null}
                           {basis.actualExceeded ? (
                             <p>
                               {text(copy.exceeded, {
@@ -364,7 +397,16 @@ export function QuoteDraftWorkspace({ initial, locale }: { initial: Available; l
                               })}
                             </p>
                           ) : null}
-                          {basis.conflictEvidenceIds.length > 0 ? <p>{copy.conflict}</p> : null}
+                          {openConflict ? (
+                            <p>
+                              {copy.conflict}{" "}
+                              {canResolve && view.saved && !token ? (
+                                <a href={`#quote-conflict-${row.categoryId}`}>
+                                  {quoteIssueCopy(locale).resolve}
+                                </a>
+                              ) : null}
+                            </p>
+                          ) : null}
                           {basis.evidenceReferenceIds.length + basis.conflictEvidenceIds.length >
                           0 ? (
                             <button

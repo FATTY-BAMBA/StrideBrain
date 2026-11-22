@@ -9,7 +9,7 @@ import type {
   SavedDraftLine,
 } from "@/repositories/ports/quote-draft-repository";
 export type VisibleDraftLine = SavedDraftLine &
-  Readonly<{ basisUnavailable: boolean; basisOutOfDate: boolean }>;
+  Readonly<{ basisUnavailable: boolean; basisOutOfDate: boolean; openConflict: boolean }>;
 export type QuoteDraftView =
   | Readonly<{
       kind: "AVAILABLE";
@@ -39,16 +39,19 @@ export class GetQuoteDraft {
           const actualAllowed =
             !line.recorded?.basis.actualExceeded ||
             auth.canReadCommercial(context, job.id, "ACTUAL").allowed;
+          const sources =
+            actualAllowed && line.recorded && ids.length
+              ? await tx.getSources(context, line.recorded.comparisonRunId, ids)
+              : null;
           const available =
-            actualAllowed &&
-            (!line.recorded ||
-              !ids.length ||
-              (await tx.getSources(context, line.recorded.comparisonRunId, ids)).kind ===
-                "COMPLETE");
+            actualAllowed && (!line.recorded || !ids.length || sources?.kind === "COMPLETE");
           return {
             ...line,
             recorded: available ? line.recorded : null,
             enteredBy: null,
+            openConflict:
+              sources?.kind === "COMPLETE" &&
+              sources.sources.some((source) => source.conflictKeys.length > 0),
             basisUnavailable: !!line.recorded && !available,
             basisOutOfDate:
               available &&

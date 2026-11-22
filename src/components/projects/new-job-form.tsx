@@ -36,11 +36,27 @@ export function NewJobForm({
   });
   const [existingClient, setExistingClient] = useState("");
   const [categories, setCategories] = useState<string[]>([]);
+  const [edited, setEdited] = useState<{ response: JobActionState; fields: readonly JobField[] }>({
+    response: state,
+    fields: [],
+  });
+  function clearError(key: JobField) {
+    setEdited((current) => ({
+      response: state,
+      fields: [...(current.response === state ? current.fields : []), key],
+    }));
+  }
+  function errorCode(key: JobField) {
+    return edited.response === state && edited.fields.includes(key)
+      ? undefined
+      : state.errors?.[key];
+  }
   function change(key: JobField, value: string) {
+    clearError(key);
     setValues((current) => ({ ...current, [key]: value }));
   }
   function error(key: JobField) {
-    const code = state.errors?.[key];
+    const code = errorCode(key);
     return code ? (
       <p id={`${key}-error`} className={styles.error}>
         {copy[code]}
@@ -63,8 +79,8 @@ export function NewJobForm({
           maxLength={maxLength}
           required={!optional}
           inputMode={key === "areaQuantity" ? "decimal" : "text"}
-          aria-invalid={!!state.errors?.[key]}
-          aria-describedby={state.errors?.[key] ? `${key}-error` : undefined}
+          aria-invalid={!!errorCode(key)}
+          aria-describedby={errorCode(key) ? `${key}-error` : undefined}
         />
         {error(key)}
       </div>
@@ -83,8 +99,8 @@ export function NewJobForm({
           value={values[key] ?? ""}
           onChange={(event) => change(key, event.target.value)}
           required
-          aria-invalid={!!state.errors?.[key]}
-          aria-describedby={state.errors?.[key] ? `${key}-error` : undefined}
+          aria-invalid={!!errorCode(key)}
+          aria-describedby={errorCode(key) ? `${key}-error` : undefined}
         >
           <option value="">{copy.select}</option>
           {options.map(([value, label]) => (
@@ -101,8 +117,8 @@ export function NewJobForm({
     return (
       <fieldset
         className={styles.categories}
-        aria-describedby={state.errors?.[key] ? `${key}-error` : undefined}
-        aria-invalid={!!state.errors?.[key]}
+        aria-describedby={errorCode(key) ? `${key}-error` : undefined}
+        aria-invalid={!!errorCode(key)}
       >
         <legend>{copy[key]}</legend>
         {options.map((value) => (
@@ -113,6 +129,7 @@ export function NewJobForm({
               value={value}
               checked={categories.includes(value)}
               onChange={(event) => {
+                clearError(key);
                 const checked = event.target.checked;
                 setCategories((current) =>
                   checked ? [...current, value] : current.filter((item) => item !== value),
@@ -181,11 +198,14 @@ export function NewJobForm({
                 id="clientBusinessKey"
                 name="clientBusinessKey"
                 value={existingClient}
-                onChange={(event) => setExistingClient(event.target.value)}
+                onChange={(event) => {
+                  clearError("clientBusinessKey");
+                  setExistingClient(event.target.value);
+                }}
                 required
-                aria-invalid={!!state.errors?.clientBusinessKey}
+                aria-invalid={!!errorCode("clientBusinessKey")}
                 aria-describedby={
-                  state.errors?.clientBusinessKey ? "clientBusinessKey-error" : undefined
+                  errorCode("clientBusinessKey") ? "clientBusinessKey-error" : undefined
                 }
               >
                 <option value="">{copy.select}</option>

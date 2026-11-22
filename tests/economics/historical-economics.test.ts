@@ -591,3 +591,41 @@ it("a draft never becomes quoted history, even if it has approved authority", ()
   expect(baselines[0]?.history.eligibleObservationCount).toBe(0);
   expect(baselines[0]?.history.medianNormalizedAmount).toBeUndefined();
 });
+
+it.each([1, 2])(
+  "keeps %i eligible quoted prices as evidence-backed reference rates without changing variance eligibility",
+  (count) => {
+    const batch = fullBatch();
+    const keys = [
+      ...new Set(
+        batch.records
+          .filter(
+            (record) =>
+              record.projectId !== batch.activeProjectId &&
+              record.observationType === "QUOTED_PRICE",
+          )
+          .map((record) => record.projectId),
+      ),
+    ].slice(0, count);
+    const limited = {
+      ...batch,
+      records: batch.records.filter(
+        (record) =>
+          record.projectId === batch.activeProjectId ||
+          record.observationType !== "QUOTED_PRICE" ||
+          keys.includes(record.projectId),
+      ),
+    };
+    const service = new HistoricalEconomicsService();
+    const baseline = service.quotedHistoryBaselines(input(limited), ["IMPORTED_STONE"])[0]!.history;
+    expect(baseline.eligibleObservationCount).toBe(count);
+    expect(baseline.state).not.toBe("SUFFICIENT");
+    expect(baseline.medianNormalizedAmount).toBeDefined();
+    expect(baseline.minimumNormalizedAmount).toBeDefined();
+    expect(baseline.maximumNormalizedAmount).toBeDefined();
+    expect(baseline.evidenceReferenceIds?.length).toBeGreaterThan(0);
+    expect(baseline.equivalentAmountForActiveProject).toBeUndefined();
+    const result = service.assemble(input(limited)).result;
+    expect(result.claims.some((claim) => claim.kind === "CATEGORY_QUOTED_VARIANCE")).toBe(false);
+  },
+);
