@@ -1,6 +1,6 @@
 # SB-039 verification
 
-Hosted acceptance: **WAITING FOR THE PRODUCT DIRECTOR**. Keep application PR [#56](https://github.com/FATTY-BAMBA/StrideBrain/pull/56) in draft. At the Product Director’s explicit request, workflow-only PR [#57](https://github.com/FATTY-BAMBA/StrideBrain/pull/57) was merged separately to register evaluation before #56 merges. The Product Director puts it on the test site through [TEST_SITE.md](../../../docs/development/TEST_SITE.md), clicks through acceptance and runs the corrected paid evaluation. No hosted deployment, migration, seed, settings or secret change was performed by the agent.
+Hosted acceptance: **WAITING FOR THE PRODUCT DIRECTOR**. Keep application PR [#56](https://github.com/FATTY-BAMBA/StrideBrain/pull/56) in draft. At the Product Director’s explicit request, workflow-only PR [#57](https://github.com/FATTY-BAMBA/StrideBrain/pull/57) was merged separately to register evaluation before #56 merges. The Product Director puts it on the test site through [TEST_SITE.md](../../../docs/development/TEST_SITE.md), clicks through acceptance. The agent ran the requested stability evaluations through the existing workflow against disposable CI databases. No hosted deployment, migration, seed, settings or secret change was performed by the agent.
 
 ## Delivered, in A → B → C order
 
@@ -20,7 +20,7 @@ Configured standard text rates: **US$0.30 input / US$2.50 output per million tok
 
 ## Automated verification
 
-- **`npm run check`: PASS — 1,262 tests across 123 files**, with no skipped tests, on Node 24.22.3 and isolated loopback PostgreSQL. Formatting, lint, type checking and production build pass. [Final check log](evidence/check-stability.log). The existing `prisma.config.ts` anonymous-default-export lint warning remains.
+- **`npm run check`: PASS — 1,266 tests across 123 files**, with no skipped tests, on Node 24.22.3 and isolated loopback PostgreSQL. Formatting, lint, type checking and production build pass. [Final check log](evidence/check-stability.log). The existing `prisma.config.ts` anonymous-default-export lint warning remains.
 - `db:validate`, normal Prisma migration deploy, complete fixture verification and a repeated seed/verify pass succeed on a fresh disposable local database. [Schema/fixture log](evidence/schema-fixture.log). [Client bundle inspection](evidence/client-boundary.json) finds no provider key variable, request header, endpoint implementation or synthetic transport key in browser assets.
 - PostgreSQL tests cover default-off organizations, sample opt-in, assigned manager/finance access, Viewer amount denial, other-organization denial, idempotent audited controls, job and historical-source exclusions, concurrent daily-cap reservations and exact cost aggregation.
 - Freshness and parity tests cover another member's saved comparison, changed active records, and count/median/range equality with `PrepareQuoteDraft`. Existing Home quote-version freshness tests also pass. No ranking or economics replay was added to Home.
@@ -33,13 +33,15 @@ Two Director-run reports are preserved: [45053575595](https://github.com/FATTY-B
 
 The rejected raw answers are now regression fixtures. They establish that list markers and the `01` in authorized job names caused false numeric rejections. The reports did not retain follow-ups, so the exact suggestion responsible for the awaiting-quote rejection cannot be reconstructed; the exact answer text is paired with explicit test suggestions to exercise independent validation. The `en-finding` answer used a different valid saved sentence than index zero.
 
-The Director requires each percentage to match exactly one cited saved finding. The two merged zh-TW fixtures contain 9.4%, which exists in both the demolition forecast-cost and lighting quoted-price findings, so they remain rejected as ambiguous (`FINDING_SENTENCE`) under that explicit condition. Other percentages expand only to whole saved sentences, including when the model gives the wrong direction. Category/kind disambiguation has not been applied.
+The Director clarified percentage matching: an exact category label sent in a cited source narrows candidates with the stated price/cost kind, checked against the saved claim’s own typed `claimKind`. Exactly one percentage match is required after narrowing; no category falls back to percentage-only uniqueness. Both merged zh-TW fixtures now pass. Lighting forecast cost 9.4%, demolition quoted price 9.4%, unknown/fuzzy categories and duplicate matches reject. Replacements use only complete saved sentences, so their direction always wins over the model’s wording.
+
+Signed currency retains its sign during numeric checks; Markdown bullets cannot turn a positive amount negative. Closed-job tool facts now use Home’s category-specific lesson sentence, so a category difference is not described as the total cost difference.
 
 The runner now executes three rounds with fresh disposable synthetic databases, requires each round to meet both language thresholds and have no wrong displayed number, and reports per-question pass rates. Raw/displayed follow-ups and displayed answer text belong to the artifact only. Hosted acceptance still waits for the Product Director.
 
-Local verification: `npm run check` passed **1,262 tests / 123 files**, with no skips, plus format, lint, types and production build. [Three-round fake report](evidence/fake-evaluation-stability.json): every round passes 20/20 in both languages with zero wrong displayed numbers. This verifies the application/harness, not model quality. All twelve recorded rejected answers are replayed: ten pass the corrected checks, and the two merged findings are rejected for the duplicate 9.4% under the required uniqueness rule. [Prompt/workflow/migration boundaries](evidence/stability-boundaries.json) are unchanged.
+Local verification: `npm run check` passed **1,266 tests / 123 files**, with no skips, plus format, lint, types and production build. [Three-round fake report](evidence/fake-evaluation-stability.json): every round passes 20/20 in both languages with zero wrong displayed numbers. This verifies the application/harness, not model quality. All twelve recorded rejected answers are replayed against authorized synthetic records; both merged findings use the clarified category/kind rule. [Prompt/workflow/migration boundaries](evidence/stability-boundaries.json) are unchanged.
 
-Paid stability workflow: **PENDING on this correction**; the run and full report will be recorded after it completes.
+The interim percentage-only version (`22369a5`) passed [run 45057801261](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45057801261): en/zh-TW **19/18, 19/19, 19/18**, with no displayed wrong numbers ([full report](evidence/provider-45057801261.json)). It predates the category/kind clarification. **The final narrowed-version paid run is pending** and will be recorded separately.
 
 ## First paid evaluation and corrections
 
@@ -88,7 +90,7 @@ The local server, disposable database, sessions, invitation and TLS private file
 ## Not verified
 
 - Hosted test-site acceptance, hosted migration/fixture application and hosted controls: waiting for the Product Director; pull request stays draft.
-- Another paid Gemini run on these corrections, its answer quality, latency, prompt-injection behavior and 16/20 language thresholds. The first run proves requests completed for that earlier revision, but failed its scores; local fakes cannot establish the corrected model results. Provider billed cost was not independently reconciled.
+- The final narrowed-version paid Gemini run is pending. The interim three-round paid report above applies to its recorded commit only. Provider billed cost was not independently reconciled.
 - Independent paid-account/billing verification and legal/terms wording approval.
 - Real tenant data (still gated by #42), physical phones and browsers other than local Chrome. Mobile screenshots use a simulated 390px viewport.
 

@@ -4,21 +4,31 @@
   "status": "LOCAL_VERIFIED",
   "delivery": "C",
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
-  "providerEvaluation": "THREE_ROUND_RUN_PENDING",
+  "providerEvaluation": "INTERIM_THREE_ROUND_PASS_FINAL_NARROWED_RUN_PENDING",
   "model": "gemini-3.5-flash-lite",
   "pullRequest": 56,
   "pullRequestState": "DRAFT",
   "workflowPullRequest": 57,
   "review": "STABILITY_CORRECTIONS_LOCAL_VERIFIED",
-  "providerEvaluationRun": 45049171548,
-  "providerEvaluationScores": {
-    "en": 13,
-    "zh-TW": 12
-  },
+  "providerEvaluationRun": 45057801261,
   "workflowPullRequestState": "MERGED",
   "localTests": {
-    "passed": 1262,
+    "passed": 1266,
     "files": 123
   },
-  "findingExpansion": "EXACT_SAVED_SENTENCES_PERCENTAGE_ONLY_UNIQUENESS"
+  "findingExpansion": "EXACT_CITED_CATEGORY_AND_TYPED_KIND_THEN_UNIQUE_PERCENTAGE",
+  "providerEvaluationRounds": [
+    {
+      "en": 19,
+      "zh-TW": 18
+    },
+    {
+      "en": 19,
+      "zh-TW": 19
+    },
+    {
+      "en": 19,
+      "zh-TW": 18
+    }
+  ]
 }

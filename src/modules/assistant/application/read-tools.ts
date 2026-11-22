@@ -1,3 +1,5 @@
+import { closedLessonText } from "@/modules/home-desk/presentation";
+import { findingsCopy } from "@/modules/localization/economics-findings";
 import { assistantFactCopy, assistantQuoteStatus } from "@/modules/localization/assistant";
 import { createHash } from "node:crypto";
 import type { ListAuthorizedProjects } from "@/modules/projects/application/list-authorized-projects";
@@ -326,7 +328,7 @@ export class AssistantReadTools {
                 name: row.project.name,
                 category: categoryLabel(c.locale, row.lesson.categoryId),
                 ...row.lesson,
-                costComparison: row.lesson.exceeded ? copy.actualExceeded : copy.actualNotExceeded,
+                costComparison: closedLessonText(row.lesson, c.locale),
                 quotedPrice: formatMoney(row.lesson.quoteBeforeTax, row.lesson.currency),
                 reconciledActualCost: formatMoney(row.lesson.actualCost, row.lesson.currency),
               },
@@ -375,7 +377,16 @@ export class AssistantReadTools {
         saved.economics?.claims.flatMap((claim) => {
           const text = claimFindingText(claim, c.locale);
           return text && claim.evidenceReferenceIds.length
-            ? [{ text, evidenceReferenceIds: claim.evidenceReferenceIds }]
+            ? [
+                {
+                  text,
+                  category: claim.categoryId
+                    ? categoryLabel(c.locale, claim.categoryId)
+                    : findingsCopy(c.locale).overall,
+                  claimKind: claim.kind,
+                  evidenceReferenceIds: claim.evidenceReferenceIds,
+                },
+              ]
             : [];
         }) ?? [];
       const sources = [
@@ -393,7 +404,7 @@ export class AssistantReadTools {
             findings,
           },
           keys,
-          ["pastJobs.*.score", "findings.*.text"],
+          ["pastJobs.*.score", "findings.*.text", "findings.*.category"],
         ),
       ];
       if (!(await this.canSend(c, sources))) return empty("UNAVAILABLE");

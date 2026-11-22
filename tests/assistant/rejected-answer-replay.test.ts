@@ -42,17 +42,6 @@ import fixtures from "./rejected-answer-fixtures.json";
         const ids = oracle.length ? oracle.map((s) => s.sourceId) : sources.map((s) => s.sourceId);
         const raw = { text: fixture.text, sourceIds: ids, followUps: [] };
         const checked = checkAnswer(raw, sources, q.locale);
-        if (fixture.id === "zh-TW-finding") {
-          // Percentage-only uniqueness: both cited records contain 9.4%.
-          const findings = sources.flatMap((s) =>
-            Array.isArray(s.facts.findings) ? s.facts.findings : [],
-          );
-          expect(
-            findings.filter((f) => typeof f?.text === "string" && f.text.includes("9.4%")),
-          ).toHaveLength(2);
-          expect(checked).toEqual({ kind: "REJECTED", reason: "FINDING_SENTENCE" });
-          continue;
-        }
         if (checked.kind === "REJECTED") {
           failures.push({ id: fixture.id, run: fixture.run, reason: checked.reason });
           continue;

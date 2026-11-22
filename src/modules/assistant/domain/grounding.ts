@@ -151,7 +151,8 @@ export function sourceIdentities(
 export function withoutEnumerators(text: string): string {
   return text
     .normalize("NFKC")
-    .replace(/^(\s*(?:>[ \t]*)?(?:[-*+][ \t]+)?)\d+[.)、](?!\d)[ \t]*/gm, "$1");
+    .replace(/^([ \t]*(?:>[ \t]*)?)(?:[-*+][ \t]+)?\d+[.)、](?!\d)[ \t]*/gm, "$1")
+    .replace(/^([ \t]*(?:>[ \t]*)?)[-*+][ \t]+/gm, "$1");
 }
 function withoutReferences(text: string, references: readonly string[]): string {
   if (!references.length) return text;
@@ -177,6 +178,7 @@ export function numericTokens(text: string): readonly string[] {
   return (
     normalizeSimpleNumberWords(normalizeDates(withoutEnumerators(text)))
       .replaceAll("−", "-")
+      .replace(/([+-])\s*(?:NT\$|TWD|USD|\$)\s*(?=\d)/g, "$1")
       .match(/(?:INVALID_DATE_)?\d{4}-\d{2}-\d{2}|[+-]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?%?/g) ??
     []
   ).map((token) => {

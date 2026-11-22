@@ -84,7 +84,14 @@ export function modelFacts(value: unknown): unknown {
             v !== null &&
             v !== undefined &&
             !/(?:Id|Ids)$/.test(key) &&
-            !["observationType", "authorityState", "basis", "exceeded", "truncated"].includes(key),
+            ![
+              "observationType",
+              "authorityState",
+              "basis",
+              "exceeded",
+              "truncated",
+              "claimKind",
+            ].includes(key),
         )
         .map(([key, v]) => [key, modelFacts(v)]),
     );

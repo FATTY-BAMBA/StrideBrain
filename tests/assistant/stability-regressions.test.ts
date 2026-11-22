@@ -179,6 +179,105 @@ describe("stability regressions", () => {
       reason: "FINDING_SENTENCE",
     });
   });
+  it("narrows by exact sent category and the saved claim's typed kind before requiring uniqueness", () => {
+    const demolition = "拆除、隔間與天花";
+    const lighting = "照明與電氣";
+    const forecast = `${demolition}：預估成本比過往已核對實際成本高 9.4%`;
+    const quoted = `${lighting}：報價比過往報價高 9.4%`;
+    const s = {
+      ...source,
+      facts: {
+        findings: [
+          { text: forecast, category: demolition, claimKind: "CATEGORY_FORECAST_ACTUAL_VARIANCE" },
+          { text: quoted, category: lighting, claimKind: "CATEGORY_QUOTED_VARIANCE" },
+        ],
+      },
+    };
+    expect(checkAnswer(raw(`${demolition}：預估成本低 9.4%`), [s], "zh-TW")).toMatchObject({
+      kind: "ACCEPTED",
+      answer: { text: forecast },
+    });
+    expect(checkAnswer(raw(`${lighting}：報價低 9.4%`), [s], "zh-TW")).toMatchObject({
+      kind: "ACCEPTED",
+      answer: { text: quoted },
+    });
+    for (const text of [
+      `${lighting}：預估成本高 9.4%`,
+      `${demolition}：報價高 9.4%`,
+      "照明：報價高 9.4%",
+      "預估成本高 9.4%",
+    ])
+      expect(checkAnswer(raw(text), [s], "zh-TW")).toEqual({
+        kind: "REJECTED",
+        reason: "FINDING_SENTENCE",
+      });
+    const duplicated = { ...s, facts: { findings: [...s.facts.findings, s.facts.findings[0]!] } };
+    expect(checkAnswer(raw(`${demolition}：預估成本高 9.4%`), [duplicated], "zh-TW").kind).toBe(
+      "REJECTED",
+    );
+    expect(modelFacts(s.facts)).toEqual({
+      findings: [
+        { text: forecast, category: demolition },
+        { text: quoted, category: lighting },
+      ],
+    });
+  });
+  it("rejects exact English categories paired with the wrong typed kind", () => {
+    const s = {
+      ...source,
+      facts: {
+        findings: [
+          {
+            text: "Lighting: quoted price is 9.4% above past quoted prices.",
+            category: "Lighting",
+            claimKind: "CATEGORY_QUOTED_VARIANCE",
+          },
+          {
+            text: "Demolition: forecast cost is 9.4% above past reconciled actual costs.",
+            category: "Demolition",
+            claimKind: "CATEGORY_FORECAST_ACTUAL_VARIANCE",
+          },
+        ],
+      },
+    };
+    for (const text of [
+      "Lighting: forecast cost is 9.4% above.",
+      "Demolition: quoted price is 9.4% above.",
+      "lighting: quoted price is 9.4% above.",
+    ])
+      expect(checkAnswer(raw(text), [s], "en")).toEqual({
+        kind: "REJECTED",
+        reason: "FINDING_SENTENCE",
+      });
+    const unique = { ...s, facts: { findings: [s.facts.findings[0]!] } };
+    expect(checkAnswer(raw("9.4% difference."), [unique], "en")).toMatchObject({
+      kind: "ACCEPTED",
+      answer: { text: s.facts.findings[0]!.text },
+    });
+    const mismatchedType = {
+      ...s,
+      facts: {
+        findings: [{ ...s.facts.findings[0]!, claimKind: "CATEGORY_FORECAST_ACTUAL_VARIANCE" }],
+      },
+    };
+    expect(
+      checkAnswer(raw("Lighting: quoted price is 9.4% above."), [mismatchedType], "en").kind,
+    ).toBe("REJECTED");
+  });
+  it("preserves a negative amount's sign before its currency marker", () => {
+    expect(numericTokens("- NT$100,000\n- -NT$100,000")).toEqual(["100000", "-100000"]);
+    expect(numericTokens("-NT$100,000; −TWD 100,000; -USD 100,000")).toEqual([
+      "-100000",
+      "-100000",
+      "-100000",
+    ]);
+    const s = { ...source, facts: { observationType: "QUOTED_PRICE", amount: "-100000.00" } };
+    expect(checkAnswer(raw("-NT$100,000"), [s], "en").kind).toBe("ACCEPTED");
+    expect(checkAnswer(raw("NT$100,000"), [s], "en")).toEqual({
+      kind: "REJECTED",
+      reason: "UNSUPPORTED_NUMBER",
+    });
+  });
   const rows = (en: number, zh: number) =>
     ["en", "zh-TW"].flatMap((locale) =>
       Array.from({ length: 20 }, (_, i) => ({

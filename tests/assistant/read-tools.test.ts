@@ -1,3 +1,4 @@
+import { closedLessonText } from "@/modules/home-desk/presentation";
 import { modelFacts } from "@/modules/assistant/domain/redaction";
 import { describe, it, expect, vi } from "vitest";
 import {
@@ -141,6 +142,30 @@ describe("assistant read tools", () => {
       );
     },
   );
+  it("uses the Home category-specific closed-job lesson instead of applying its difference to totals", async () => {
+    const f = setup();
+    const lesson = {
+      categoryId: "IMPORTED_STONE",
+      currency: "TWD",
+      quoteBeforeTax: "1000",
+      actualCost: "800",
+      difference: "50",
+      exceeded: true,
+      evidenceReferenceIds: [],
+      quoteEvidenceIds: [],
+      actualEvidenceIds: [],
+    };
+    f.services.home.execute.mockResolvedValue({
+      kind: "AVAILABLE",
+      closedJobs: [{ project, financialState: "AVAILABLE", lesson }],
+    });
+    const result = await f.tools.execute(jobContext(), {
+      name: "get_closed_job_lessons",
+      arguments: {},
+    });
+    expect(result.sources[0]!.facts.costComparison).toBe(closedLessonText(lesson, "en"));
+    expect(result.sources[0]!.facts.costComparison).not.toBe("Actual cost exceeds quoted price");
+  });
   it("resolves a Chinese job name in an English question without widening access", async () => {
     const f = setup();
     f.services.projects.execute
