@@ -1,6 +1,11 @@
 import { createHash } from "node:crypto";
 import { AuthorizationService } from "@/modules/authorization/authorization-service";
-import { completeFirm, organizationDate, prepareIssuePolicy, isDate } from "../domain/issue-policy";
+import {
+  stageAfterAcceptance,
+  organizationDate,
+  prepareIssuePolicy,
+  isDate,
+} from "../domain/issue-policy";
 import {
   bounded,
   firmDetails,
@@ -176,7 +181,12 @@ export class IssueQuote {
         return unavailable;
       const now = this.clock(),
         current = prepareIssuePolicy(state, preparation.versionId, preparation.options, now);
-      if (current.blockers.length) return { kind: "CHANGED", blockers: current.blockers };
+      if (current.blockers.length)
+        return {
+          kind: "CHANGED",
+          blockers: current.blockers,
+          missingFirmFields: current.missingFirmFields,
+        };
       if (preparationFingerprint(state, current) !== preparation.fingerprint)
         return { kind: "CHANGED" };
       const receipt = await tx.issue(context, state, preparation, now);
@@ -270,7 +280,7 @@ export class RecordQuoteAcceptance {
         acceptedOn: date,
         note,
         previousStage: state.job.stage,
-        newStage: "APPROVED",
+        newStage: stageAfterAcceptance(state.job.stage),
       });
       return receipt;
     });
@@ -373,7 +383,6 @@ export class GetQuoteIssue {
         conflicts: state.conflicts,
         findings: state.findings,
         warnings: defaults.warnings,
-        firmComplete: completeFirm(state.firm),
         defaults: {
           language: "zh-TW" as const,
           validUntil: defaults.snapshot.validUntil,

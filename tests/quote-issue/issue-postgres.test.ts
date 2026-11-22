@@ -154,6 +154,8 @@ import {
   GetFirmDetails,
   SaveFirmDetails,
 } from "@/modules/quote-issue/application/issue-services";
+import { emptyFirmDetails } from "@/modules/quote-issue/domain/contracts";
+import { quoteIssueBlockerText } from "@/modules/localization/quote-issue";
 function lifecycle(now = () => new Date()) {
   const repo = new PrismaQuoteIssueRepository(getPrismaClient()),
     codec = new SignedQuoteIssueCodec("synthetic-issue-signing-secret-32-bytes", now);
@@ -599,6 +601,129 @@ suite.sequential("SB-052 issuance on real PostgreSQL", () => {
     expect((await lifecycle().document.execute(owner, "missing-quote-version")).kind).toBe(
       "UNAVAILABLE",
     );
+  });
+  it.each([
+    ["CONSTRUCTION", "CONSTRUCTION"],
+    ["QUOTE_REVIEW", "APPROVED"],
+  ] as const)(
+    "accepts a quote in %s with the actual %s stage recorded in the audit",
+    async (previousStage, newStage) => {
+      const { key, versionId } = await draft();
+      await issueDraft(key, versionId);
+      const owner = await actor("membership_horizon_admin"),
+        db = getPrismaClient();
+      const job = await db.project.findFirstOrThrow({ where: { businessKey: key } });
+      await db.project.update({ where: { id: job.id }, data: { stage: previousStage } });
+      const input = {
+        projectKey: key,
+        versionId,
+        date: "2026-01-01",
+        note: "Client accepted",
+        idempotencyKey: randomUUID(),
+      };
+      const result = await lifecycle().accept.execute(owner, input);
+      expect(result.kind).toBe("ACCEPTED");
+      expect((await db.project.findUniqueOrThrow({ where: { id: job.id } })).stage).toBe(newStage);
+      expect(await db.quoteVersion.findUniqueOrThrow({ where: { id: versionId } })).toMatchObject({
+        status: "ACCEPTED",
+        acceptedByMembershipId: owner.membershipId,
+      });
+      expect(
+        await db.auditEvent.findFirstOrThrow({ where: { idempotencyKey: input.idempotencyKey } }),
+      ).toMatchObject({
+        eventType: "QUOTE_ACCEPTED",
+        payload: { previousStage, newStage },
+      });
+      expect(await lifecycle().accept.execute(owner, input)).toEqual(result);
+      expect(await db.auditEvent.count({ where: { idempotencyKey: input.idempotencyKey } })).toBe(
+        1,
+      );
+    },
+  );
+  it("saves partial firm details and issues zh-TW with all English fields, email and terms empty", async () => {
+    const { key, versionId } = await draft(),
+      owner = await actor("membership_horizon_admin");
+    const settings = await lifecycle().settings.execute(owner);
+    if (settings.kind !== "AVAILABLE") throw Error(settings.kind);
+    try {
+      expect(
+        await lifecycle().saveSettings.execute(owner, {
+          details: {
+            ...emptyFirmDetails,
+            legalNameZhTw: "合成公司",
+            addressZhTw: "合成地址",
+            taxId: "00000000",
+            phone: "02-0000-0000",
+          },
+          idempotencyKey: randomUUID(),
+        }),
+      ).toEqual({ kind: "SETTINGS_SAVED" });
+      const issued = await issueDraft(key, versionId);
+      expect(issued.prepared.preparation.blockers).not.toContain("FIRM_INCOMPLETE");
+      expect(issued.prepared.preparation.missingFirmFields).toEqual([]);
+      const document = await lifecycle().document.execute(owner, versionId);
+      expect(document).toMatchObject({
+        kind: "DOCUMENT",
+        snapshot: {
+          language: "zh-TW",
+          firm: { legalName: "合成公司", address: "合成地址", email: "" },
+          terms: "",
+        },
+      });
+    } finally {
+      await lifecycle().saveSettings.execute(await actor("membership_horizon_admin"), {
+        details: settings.details,
+        idempotencyKey: randomUUID(),
+      });
+    }
+  });
+  it("blocks an English document without its English legal name and names the field in the reader's language", async () => {
+    const { key, versionId } = await draft(),
+      owner = await actor("membership_horizon_admin");
+    const settings = await lifecycle().settings.execute(owner);
+    if (settings.kind !== "AVAILABLE") throw Error(settings.kind);
+    try {
+      expect(
+        await lifecycle().saveSettings.execute(owner, {
+          details: { ...settings.details, legalNameEn: "", email: "", termsEn: "", termsZhTw: "" },
+          idempotencyKey: randomUUID(),
+        }),
+      ).toEqual({ kind: "SETTINGS_SAVED" });
+      const prepared = await lifecycle().prepare.execute(owner, {
+        projectKey: key,
+        versionId,
+        options: { language: "en", attention: "" },
+      });
+      if (prepared.kind !== "PREPARED") throw Error(prepared.kind);
+      expect(prepared.preparation.blockers).toEqual(["FIRM_INCOMPLETE"]);
+      expect(prepared.preparation.missingFirmFields).toEqual(["legalNameEn"]);
+      expect(
+        quoteIssueBlockerText("en", "FIRM_INCOMPLETE", prepared.preparation.missingFirmFields),
+      ).toBe("Complete these document details in Settings: Legal name (English).");
+      expect(
+        quoteIssueBlockerText("zh-TW", "FIRM_INCOMPLETE", prepared.preparation.missingFirmFields),
+      ).toBe("請至設定補齊以下報價文件資料：公司法定名稱（英文）。");
+      expect(
+        await lifecycle().issue.execute(owner, {
+          projectKey: key,
+          token: prepared.token,
+          idempotencyKey: randomUUID(),
+        }),
+      ).toMatchObject({
+        kind: "CHANGED",
+        blockers: ["FIRM_INCOMPLETE"],
+        missingFirmFields: ["legalNameEn"],
+      });
+      expect(
+        (await getPrismaClient().quoteVersion.findUniqueOrThrow({ where: { id: versionId } }))
+          .status,
+      ).toBe("DRAFT");
+    } finally {
+      await lifecycle().saveSettings.execute(await actor("membership_horizon_admin"), {
+        details: settings.details,
+        idempotencyKey: randomUUID(),
+      });
+    }
   });
   it("keeps the synthetic reset usable after issue and acceptance while restoring all immutable triggers", async () => {
     for (const fixture of [

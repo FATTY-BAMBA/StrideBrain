@@ -115,7 +115,7 @@ export async function renderQuotePdf(
   paragraph(snapshot.firm.legalName, 18);
   paragraph(`${copy.taxId}${colon}${snapshot.firm.taxId}`, 9);
   paragraph(snapshot.firm.address, 9);
-  paragraph(`${snapshot.firm.phone}   ${snapshot.firm.email}`, 9);
+  paragraph([snapshot.firm.phone, snapshot.firm.email].filter(Boolean).join("   "), 9);
   doc.moveDown(0.5);
   paragraph(copy.quote, 24);
   paragraph(`${copy.number}${colon}${snapshot.documentNumber}`, 11);
@@ -188,8 +188,10 @@ export async function renderQuotePdf(
     doc.y = y + 27;
   }
   doc.moveDown();
-  paragraph(copy.terms, 12);
-  paragraph(snapshot.terms, 9);
+  if (snapshot.terms.trim()) {
+    paragraph(copy.terms, 12);
+    paragraph(snapshot.terms, 9);
+  }
   ensure(100);
   doc.moveDown();
   const y = doc.y;

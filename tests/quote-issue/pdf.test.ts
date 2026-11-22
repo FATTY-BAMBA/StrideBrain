@@ -117,3 +117,22 @@ it("reserves space between wrapped terms and every page footer", async () => {
   }
   await loading.destroy();
 });
+
+it.each(["en", "zh-TW"] as const)(
+  "omits empty terms and prints phone without email in %s documents and previews",
+  async (language) => {
+    for (const draft of [false, true]) {
+      const content = await text(
+        await renderQuotePdf(
+          { ...sample, language, terms: "", firm: { ...sample.firm, email: "" } },
+          draft,
+        ),
+      );
+      expect(content).not.toContain(language === "en" ? "Terms" : "條款");
+      expect(content).toContain(sample.firm.phone);
+      expect(content).not.toContain(sample.firm.email);
+      expect(content).toContain(language === "en" ? "Client signature" : "客戶簽署");
+      expect(content).toContain("NT$3,945,900");
+    }
+  },
+);

@@ -38,6 +38,8 @@ export type FirmDetails = Readonly<{
   termsEn: string;
   termsZhTw: string;
 }>;
+export type RequiredFirmField =
+  "legalNameEn" | "legalNameZhTw" | "taxId" | "addressEn" | "addressZhTw" | "phone";
 export const emptyFirmDetails: FirmDetails = Object.freeze({
   legalNameEn: "",
   legalNameZhTw: "",
@@ -122,6 +124,7 @@ export type IssuePreparation = Readonly<{
   options: IssueOptions;
   snapshot: QuoteDocumentSnapshot;
   blockers: readonly IssueBlocker[];
+  missingFirmFields: readonly RequiredFirmField[];
   warnings: readonly IssueWarning[];
 }>;
 export type IssueReceipt = Readonly<{
@@ -132,5 +135,6 @@ export type IssueReceipt = Readonly<{
 export type IssueFailure = Readonly<{
   kind: "UNAVAILABLE" | "INVALID" | "CHANGED" | "CONFLICT";
   blockers?: readonly IssueBlocker[];
+  missingFirmFields?: readonly RequiredFirmField[];
 }>;
 export type IssueOutcome = IssueReceipt | IssueFailure;

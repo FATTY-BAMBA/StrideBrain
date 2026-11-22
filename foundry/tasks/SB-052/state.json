@@ -8,8 +8,10 @@
   "agentHostedActions": "PROHIBITED",
   "delivery": "A_B_C_IMPLEMENTED",
   "localVerification": "PASS",
-  "testsPassed": 1079,
-  "testFilesPassed": 106,
+  "testsPassed": 1096,
+  "testFilesPassed": 107,
   "browserScreenshots": 22,
-  "pullRequestDraft": true
+  "pullRequestDraft": true,
+  "pullRequestUrl": "https://github.com/FATTY-BAMBA/StrideBrain/pull/53",
+  "reviewFixes": "ACCEPTANCE_STAGE_AND_DOCUMENT_LANGUAGE_COMPLETE"
 }

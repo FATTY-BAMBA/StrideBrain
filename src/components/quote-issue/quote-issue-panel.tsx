@@ -20,7 +20,7 @@ import type {
   LineConflict,
 } from "@/modules/quote-issue/domain/contracts";
 import type { Locale } from "@/modules/localization/config";
-import { quoteIssueCopy } from "@/modules/localization/quote-issue";
+import { quoteIssueCopy, quoteIssueBlockerText } from "@/modules/localization/quote-issue";
 import { categoryLabel } from "@/modules/localization/jobs";
 import { claimFindingText } from "@/modules/economics/presentation/claim-findings";
 import { formatMoney } from "@/modules/finance/format-money";
@@ -66,7 +66,13 @@ export function QuoteIssuePanel({
         idempotencyKey: key,
         ...input,
       });
-      setMessage(copy[result.kind]);
+      setMessage(
+        "blockers" in result && result.blockers?.length
+          ? result.blockers
+              .map((code) => quoteIssueBlockerText(locale, code, result.missingFirmFields ?? []))
+              .join(" ")
+          : copy[result.kind],
+      );
       if (["ISSUED", "REVISED", "ACCEPTED", "RESOLVED"].includes(result.kind)) {
         setKey(crypto.randomUUID());
         setPrepared(null);
@@ -333,14 +339,24 @@ export function QuoteIssuePanel({
                   </div>
                 ))}
               </dl>
-              <h3>{copy.terms}</h3>
-              <p className={styles.terms}>{snapshot.terms}</p>
+              {snapshot.terms && (
+                <>
+                  <h3>{copy.terms}</h3>
+                  <p className={styles.terms}>{snapshot.terms}</p>
+                </>
+              )}
               {!!prepared.preparation.blockers.length && (
                 <div className={styles.notice}>
                   <h3>{copy.blockers}</h3>
                   <ul>
                     {prepared.preparation.blockers.map((code) => (
-                      <li key={code}>{copy[code]}</li>
+                      <li key={code}>
+                        {quoteIssueBlockerText(
+                          locale,
+                          code,
+                          prepared.preparation.missingFirmFields,
+                        )}
+                      </li>
                     ))}
                   </ul>
                   {prepared.preparation.blockers.includes("FIRM_INCOMPLETE") && (

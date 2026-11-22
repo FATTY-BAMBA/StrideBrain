@@ -16,6 +16,7 @@ import type {
   QuoteIssueRepositoryPort,
   QuoteIssueSessionPort,
 } from "@/repositories/ports/quote-issue-repository";
+import { stageAfterAcceptance } from "@/modules/quote-issue/domain/issue-policy";
 import { PrismaQuoteDraftSession } from "./prisma-quote-draft-repository";
 const json = (value: unknown): Prisma.InputJsonValue =>
   JSON.parse(JSON.stringify(value)) as Prisma.InputJsonValue;
@@ -386,10 +387,11 @@ export class PrismaQuoteIssueSession
         acceptanceNote: note,
       },
     });
-    await this.tx.project.update({
-      where: { id_organizationId: { id: state.job.id, organizationId } },
-      data: { stage: "APPROVED" },
-    });
+    if (stageAfterAcceptance(state.job.stage) !== state.job.stage)
+      await this.tx.project.update({
+        where: { id_organizationId: { id: state.job.id, organizationId } },
+        data: { stage: "APPROVED" },
+      });
     return { kind: "ACCEPTED", versionId, documentNumber: state.issued.documentNumber };
   }
   async resolveConflict(

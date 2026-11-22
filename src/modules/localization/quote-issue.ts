@@ -1,3 +1,4 @@
+import type { IssueBlocker, RequiredFirmField } from "@/modules/quote-issue/domain/contracts";
 import type { Locale } from "./config";
 const en = {
   title: "Issue quote",
@@ -8,10 +9,10 @@ const en = {
   addressEn: "Address (English)",
   addressZhTw: "Address (Traditional Chinese)",
   phone: "Phone",
-  email: "Email",
+  email: "Email (optional)",
   defaultValidityDays: "Default validity (days)",
-  termsEn: "Default terms (English)",
-  termsZhTw: "Default terms (Traditional Chinese)",
+  termsEn: "Default terms (English, optional)",
+  termsZhTw: "Default terms (Traditional Chinese, optional)",
   saveFirm: "Save document details",
   SETTINGS_SAVED: "Document details saved.",
   prepare: "Prepare to issue",
@@ -54,7 +55,7 @@ const en = {
   conflicts: "Conflicts behind these lines",
   OPEN_CONFLICT: "A source behind a line has an open conflict.",
   ZERO_LINE: "A line amount is zero. Enter an amount before issuing.",
-  FIRM_INCOMPLETE: "The firm's document details are incomplete. Complete them in Settings.",
+  FIRM_INCOMPLETE: "Complete these document details in Settings: {fields}.",
   DRAFT_NOT_CURRENT: "This is no longer the current draft. Reload the Quote tab.",
   BASIS_OUT_OF_DATE: "A line's recorded basis is out of date.",
   COMPARISON_OUT_OF_DATE: "The saved comparison is out of date.",
@@ -78,10 +79,10 @@ const zh: typeof en = {
   addressEn: "地址（英文）",
   addressZhTw: "地址（繁體中文）",
   phone: "電話",
-  email: "電子郵件",
+  email: "電子郵件（選填）",
   defaultValidityDays: "預設有效天數",
-  termsEn: "預設條款（英文）",
-  termsZhTw: "預設條款（繁體中文）",
+  termsEn: "預設條款（英文，選填）",
+  termsZhTw: "預設條款（繁體中文，選填）",
   saveFirm: "儲存文件資料",
   SETTINGS_SAVED: "文件資料已儲存。",
   prepare: "準備核發",
@@ -124,7 +125,7 @@ const zh: typeof en = {
   conflicts: "以下項目的來源有衝突",
   OPEN_CONFLICT: "項目背後的來源仍有未處理衝突。",
   ZERO_LINE: "有項目金額為零，請先輸入金額再核發。",
-  FIRM_INCOMPLETE: "公司報價文件資料不完整，請至設定補齊。",
+  FIRM_INCOMPLETE: "請至設定補齊以下報價文件資料：{fields}。",
   DRAFT_NOT_CURRENT: "此草稿已非目前版本，請重新載入報價頁。",
   BASIS_OUT_OF_DATE: "有項目的已記錄計算依據已過期。",
   COMPARISON_OUT_OF_DATE: "已儲存的比較已過期。",
@@ -140,3 +141,17 @@ const zh: typeof en = {
   end: "已核發文件內容已固定，請選擇「修改報價」建立新草稿。",
 };
 export const quoteIssueCopy = (locale: Locale) => (locale === "zh-TW" ? zh : en);
+
+export function quoteIssueBlockerText(
+  locale: Locale,
+  blocker: IssueBlocker,
+  missingFields: readonly RequiredFirmField[],
+): string {
+  const copy = quoteIssueCopy(locale);
+  return blocker === "FIRM_INCOMPLETE"
+    ? copy.FIRM_INCOMPLETE.replace(
+        "{fields}",
+        missingFields.map((field) => copy[field]).join(locale === "zh-TW" ? "、" : ", "),
+      )
+    : copy[blocker];
+}

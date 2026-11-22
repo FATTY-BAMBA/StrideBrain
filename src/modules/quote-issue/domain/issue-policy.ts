@@ -1,5 +1,6 @@
 import type {
   FirmDetails,
+  RequiredFirmField,
   IssueOptions,
   IssueState,
   IssueBlocker,
@@ -7,6 +8,7 @@ import type {
   QuoteDocumentSnapshot,
 } from "./contracts";
 import { emptyFirmDetails } from "./contracts";
+import type { Locale } from "@/modules/localization/config";
 import { money } from "@/modules/finance/fixed-decimal";
 
 export function organizationDate(now: Date, timezone: string): string {
@@ -33,12 +35,25 @@ export function addDays(date: string, days: number): string {
   result.setUTCDate(result.getUTCDate() + days);
   return result.toISOString().slice(0, 10);
 }
-export function completeFirm(details: FirmDetails | null): boolean {
-  return (
-    !!details &&
-    Object.values(details).every((value) => typeof value === "number" || value.trim().length > 0) &&
-    /^\d{8}$/.test(details.taxId)
+export function stageAfterAcceptance(stage: string): string {
+  return ["DISCOVERY", "DESIGN", "QUOTE_REVIEW"].includes(stage) ? "APPROVED" : stage;
+}
+export function missingFirmFields(
+  details: FirmDetails | null,
+  language: Locale,
+): RequiredFirmField[] {
+  const fields: RequiredFirmField[] = [
+    language === "zh-TW" ? "legalNameZhTw" : "legalNameEn",
+    "taxId",
+    language === "zh-TW" ? "addressZhTw" : "addressEn",
+    "phone",
+  ];
+  return fields.filter((field) =>
+    field === "taxId" ? !/^\d{8}$/.test(details?.taxId ?? "") : !details?.[field].trim(),
   );
+}
+export function completeFirm(details: FirmDetails | null, language: Locale): boolean {
+  return missingFirmFields(details, language).length === 0;
 }
 export function prepareIssuePolicy(
   state: IssueState,
@@ -55,7 +70,8 @@ export function prepareIssuePolicy(
   if (state.conflicts.length) blockers.push("OPEN_CONFLICT");
   if (state.current?.lines.some((line) => money(line.amount).atoms <= 0n))
     blockers.push("ZERO_LINE");
-  if (!completeFirm(state.firm)) blockers.push("FIRM_INCOMPLETE");
+  const missingFields = missingFirmFields(state.firm, options.language);
+  if (missingFields.length) blockers.push("FIRM_INCOMPLETE");
   if (state.basisOutOfDate) warnings.push("BASIS_OUT_OF_DATE");
   if (state.comparisonOutOfDate) warnings.push("COMPARISON_OUT_OF_DATE");
   if (state.unreviewedFindings) warnings.push("UNREVIEWED_FINDINGS");
@@ -93,5 +109,5 @@ export function prepareIssuePolicy(
     },
     terms: options.terms ?? (zh ? firm.termsZhTw : firm.termsEn),
   };
-  return { snapshot, blockers, warnings };
+  return { snapshot, blockers, missingFirmFields: missingFields, warnings };
 }
