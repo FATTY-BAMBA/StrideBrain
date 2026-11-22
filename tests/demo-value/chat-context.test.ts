@@ -195,10 +195,16 @@ describe("authorized read-only Home composition", () => {
     expect(host.querySelector('a[href*="/projects/"]')).toBeNull();
   });
 
-  it.each([Knowledge, Brain])("folds legacy entry pages into Home", async (Page) => {
+  it("folds the legacy Brain entry into Home", async () => {
+    const Page = Brain;
     await expect(
       Page({ params: Promise.resolve({ locale: "en" }), searchParams: Promise.resolve({}) }),
     ).rejects.toThrow("REDIRECT:/en");
+  });
+  it.each(["en", "zh-TW"] as const)("shows Knowledge as planned in %s", async (locale) => {
+    const host = render(await Knowledge({ params: Promise.resolve({ locale }) }));
+    expect(host.textContent).toContain(locale === "en" ? "Planned" : "規劃中");
+    expect(host.querySelector("button,input,form")).toBeNull();
   });
 });
 

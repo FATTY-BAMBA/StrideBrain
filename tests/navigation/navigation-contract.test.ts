@@ -4,8 +4,17 @@ import { globalNavigation, globalSurfaceHref } from "@/modules/navigation/global
 import { projectNavigation, projectSurfaceHref } from "@/modules/navigation/project-navigation";
 
 describe("navigation contracts", () => {
-  it("keeps primary navigation focused on Home and Projects", () => {
-    expect(globalNavigation.map((item) => item.key)).toEqual(["home", "projects"]);
+  it("marks the two future surfaces as planned", () => {
+    expect(globalNavigation.map((item) => item.key)).toEqual([
+      "home",
+      "projects",
+      "knowledge",
+      "customerCare",
+    ]);
+    expect(globalNavigation.filter((i) => i.planned).map((i) => i.key)).toEqual([
+      "knowledge",
+      "customerCare",
+    ]);
   });
 
   it("exposes only the four working project workspace surfaces", () => {

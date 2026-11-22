@@ -36,6 +36,7 @@ export function GlobalNav({ locale, labels }: GlobalNavProps) {
             aria-current={isActive ? "page" : undefined}
           >
             <span>{labels[item.labelKey as keyof typeof labels]}</span>
+            {item.planned && <small>{locale === "zh-TW" ? "規劃中" : "Planned"}</small>}
           </Link>
         );
       })}

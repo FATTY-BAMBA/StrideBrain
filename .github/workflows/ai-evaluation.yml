@@ -1,0 +1,49 @@
+name: AI evaluation
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evaluation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: stridebrain
+          POSTGRES_PASSWORD: stridebrain
+          POSTGRES_DB: stridebrain
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U stridebrain -d stridebrain"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql://stridebrain:stridebrain@localhost:5432/stridebrain
+      STRIDEBRAIN_DATA_MODE: DEMO_SYNTHETIC
+      STRIDEBRAIN_AI_PROVIDER: gemini
+      STRIDEBRAIN_AI_MODEL: gemini-3.5-flash-lite
+      STRIDEBRAIN_AI_ENABLED: "true"
+      # Director sets the repository variable only after confirming PAID billing/terms.
+      STRIDEBRAIN_AI_PAID_TIER_CONFIRMED: ${{ vars.STRIDEBRAIN_AI_PAID_TIER_CONFIRMED }}
+      STRIDEBRAIN_GEMINI_API_KEY: ${{ secrets.STRIDEBRAIN_GEMINI_API_KEY }}
+      STRIDEBRAIN_AI_EVAL_REPORT: artifacts/ai-evaluation.json
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run db:generate
+      - name: Run paid model evaluation on a disposable local database
+        run: npm run ai:eval
+      - uses: actions/upload-artifact@v5
+        if: always()
+        with:
+          name: ai-evaluation
+          path: artifacts/ai-evaluation.json
+          if-no-files-found: warn

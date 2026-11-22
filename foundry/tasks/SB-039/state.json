@@ -1,0 +1,10 @@
+{
+  "issue": 39,
+  "branch": "build/sb-039-records-assistant",
+  "status": "LOCAL_VERIFIED",
+  "delivery": "C",
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "providerEvaluation": "NOT_RUN_PAID_KEY_NOT_CONFIGURED",
+  "model": "gemini-3.5-flash-lite",
+  "pullRequest": "DRAFT"
+}

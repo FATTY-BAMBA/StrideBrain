@@ -1,5 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
+vi.mock("@/lib/server/assistant-services", () => ({
+  createAssistantControlServices: () => ({ repository: { jobPolicy: async () => null } }),
+}));
+
 const mocks = vi.hoisted(() => ({
   resolve: vi.fn(),
   execute: vi.fn(),

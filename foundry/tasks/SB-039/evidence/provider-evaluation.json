@@ -1,0 +1,409 @@
+{
+  "mode": "NOT_RUN",
+  "model": "gemini-3.5-flash-lite",
+  "inputUsdPerMillion": "0.30",
+  "outputUsdPerMillion": "2.50",
+  "generatedAt": "2026-11-22T13:42:20.756Z",
+  "questions": [
+    {
+      "id": "en-awaiting",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-status",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-validity",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-accepted",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-work",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-area",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-stone-median",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-stone-range",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-millwork",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-finding",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-closed",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-finance",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-viewer-amount",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-viewer-overview",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-excluded",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-unknown",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-other-org",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-injection",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-weather",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "en-manager-scope",
+      "locale": "en",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-awaiting",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-status",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-validity",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-accepted",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-work",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-area",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-stone-median",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-stone-range",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-millwork",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-finding",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-closed",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-finance",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-viewer-amount",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-viewer-overview",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-excluded",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-unknown",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-other-org",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-injection",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-weather",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    },
+    {
+      "id": "zh-TW-manager-scope",
+      "locale": "zh-TW",
+      "verdict": "not run",
+      "reason": "Paid provider key/confirmation not configured",
+      "latencyMs": null,
+      "inputTokens": null,
+      "outputTokens": null,
+      "estimatedUsd": null
+    }
+  ]
+}

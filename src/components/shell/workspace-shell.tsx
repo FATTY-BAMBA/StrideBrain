@@ -45,6 +45,8 @@ export function WorkspaceShell({ locale, catalog, children, account }: Workspace
           labels={{
             "nav.home": catalog["nav.home"],
             "nav.projects": catalog["nav.projects"],
+            "nav.knowledge": catalog["nav.knowledge"],
+            "nav.customerCare": catalog["nav.customerCare"],
           }}
         />
         <section className="workspace-account" aria-label={copy.account}>
