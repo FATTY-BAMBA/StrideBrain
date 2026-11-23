@@ -223,6 +223,7 @@ export function assistantFactLabels(locale: Locale): Readonly<Record<string, str
     totalAmount: quote.total,
     validUntil: issue.validUntil,
     acceptedOn: issue.acceptedOn,
+    acceptance: locale === "zh-TW" ? "接受狀態" : "Acceptance",
     documentNumber: issue.number,
     quotedPrice: home.quote,
     reconciledActualCost: home.actual,

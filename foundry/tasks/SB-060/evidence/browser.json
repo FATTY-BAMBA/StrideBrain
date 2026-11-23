@@ -1,0 +1,56 @@
+{
+  "mode": "Local production Chrome with test-only Google HTTP transport; NOT live Gemini",
+  "checks": [
+    "Five English totals and one zh-TW total accept label-after amounts without fallback",
+    "Unaccepted quotes show Acceptance / 接受狀態; accepted quotes retain Accepted on with date",
+    "Merged Xinyi and Riverside finding clauses display every cited percentage sentence verbatim",
+    "All nine chat turns use two model calls; no comparison/economics writes; no browser errors"
+  ],
+  "usage": [
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    }
+  ],
+  "before": {
+    "comparisons": 2,
+    "economics": 2
+  },
+  "after": {
+    "comparisons": 2,
+    "economics": 2
+  },
+  "errors": []
+}

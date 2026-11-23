@@ -1,0 +1,114 @@
+{
+  "runId": 45167383387,
+  "commit": "c7559dbfaf0ce8a3cde766ef157ac07bc85485ee",
+  "model": "gemini-3.5-flash-lite",
+  "passed": true,
+  "issueAcceptancePassed": true,
+  "estimatedUsd": "0.182391000",
+  "issueEstimatedUsdTotal": "0.363641200",
+  "rounds": [
+    {
+      "round": 1,
+      "scores": {
+        "en": 19,
+        "zh-TW": 20
+      },
+      "hostedRegressions": {
+        "passed": 8,
+        "total": 8
+      },
+      "qualityRegressions": {
+        "passed": 2,
+        "total": 2
+      },
+      "callTargets": {
+        "median": 2,
+        "maximum": 3,
+        "withinThree": 50,
+        "questions": 50,
+        "namedRefusalMaximum": 1
+      }
+    },
+    {
+      "round": 2,
+      "scores": {
+        "en": 20,
+        "zh-TW": 20
+      },
+      "hostedRegressions": {
+        "passed": 8,
+        "total": 8
+      },
+      "qualityRegressions": {
+        "passed": 2,
+        "total": 2
+      },
+      "callTargets": {
+        "median": 2,
+        "maximum": 3,
+        "withinThree": 50,
+        "questions": 50,
+        "namedRefusalMaximum": 1
+      }
+    },
+    {
+      "round": 3,
+      "scores": {
+        "en": 20,
+        "zh-TW": 20
+      },
+      "hostedRegressions": {
+        "passed": 8,
+        "total": 8
+      },
+      "qualityRegressions": {
+        "passed": 2,
+        "total": 2
+      },
+      "callTargets": {
+        "median": 2,
+        "maximum": 3,
+        "withinThree": 50,
+        "questions": 50,
+        "namedRefusalMaximum": 1
+      }
+    }
+  ],
+  "answersPassed": 149,
+  "answersTotal": 150,
+  "zhTwFinding": {
+    "id": "zh-TW-finding",
+    "locale": "zh-TW",
+    "passes": 3,
+    "rounds": 3,
+    "passRate": 1,
+    "calls": [
+      3,
+      3,
+      2
+    ],
+    "callMedian": 3,
+    "callMaximum": 3
+  },
+  "nonPerfectQuestions": [
+    {
+      "id": "en-awaiting",
+      "locale": "en",
+      "passes": 2,
+      "rounds": 3,
+      "passRate": 0.6666666666666666,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    }
+  ],
+  "displayedWrongNumbers": 0,
+  "displayedWrongLabels": 0,
+  "badDisplayFormats": 0,
+  "invalidAcceptanceWording": [],
+  "discardedAnswers": []
+}

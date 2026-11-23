@@ -26,7 +26,7 @@ export function expandFindingSentences(
   // A list item may wrap over several lines. Non-list paragraphs are split into sentences.
   const blocks: { list: boolean; text: string }[] = [];
   for (const line of text.split("\n")) {
-    const list = /^[ \t]*(?:>[ \t]*)?(?:[-*+][ \t]+)?[0-9０-９]+[.．)）、](?![0-9０-９])/.test(
+    const list = /^[ \t]*(?:>[ \t]*)?(?:[-*+][ \t]+|[0-9０-９]+[.．)）、](?![0-9０-９]))/.test(
       line,
     );
     const previous = blocks.at(-1);
@@ -34,8 +34,9 @@ export function expandFindingSentences(
       blocks.push({ list, text: line });
     else previous.text += `\n${line}`;
   }
+  // List headings carry through every sentence of the item. Other text resets at segment ends.
   const segments = blocks.flatMap((b) =>
-    b.list ? [b.text] : b.text.split(/(?<=[。！？!?])\s*|(?<=[^\d]\.)\s+(?=\S)/u),
+    b.list ? [b.text] : b.text.split(/(?<=[;；。！？!?])\s*|(?<=[^\d]\.)\s+(?=\S)/u),
   );
   const categories = [...new Set(findings.flatMap((f) => (f.category ? [f.category] : [])))];
   const expanded: string[] = [];
@@ -90,9 +91,13 @@ function statedCategory(prefix: string, labels: readonly string[]): string | nul
   const matches = labels
     .flatMap((label) => {
       const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      return [
-        ...prefix.matchAll(new RegExp(`(?<![\\p{L}\\p{N}])${escaped}(?![\\p{L}\\p{N}])`, "giu")),
-      ].map((match) => ({ label, index: match.index }));
+      // Chinese has no spaces between an exact category and “的預估成本”, “報價”, etc.
+      const end = /[\p{Script=Han}]/u.test(label)
+        ? "(?=的|預估成本|報價|過往|因|[^\\p{L}\\p{N}]|$)"
+        : "(?![\\p{L}\\p{N}])";
+      return [...prefix.matchAll(new RegExp(`(?<![\\p{L}\\p{N}])${escaped}${end}`, "giu"))].map(
+        (match) => ({ label, index: match.index }),
+      );
     })
     .sort((a, b) => b.index - a.index);
   if (matches.length) return matches[0]!.label;
