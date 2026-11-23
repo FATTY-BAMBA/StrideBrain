@@ -47,6 +47,6 @@ export interface AssistantRepositoryPort {
   ): Promise<void>;
   finishTurn(
     context: RuntimeContext,
-    outcome: "ANSWERED" | "JOB_DRAFTED" | "JOB_DRAFT_EMPTY" | `FALLBACK_${FallbackReason}`,
+    outcome: "ANSWERED" | `FALLBACK_${FallbackReason}`,
   ): Promise<void>;
 }

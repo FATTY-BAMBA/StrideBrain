@@ -148,7 +148,9 @@ export function supportJobDraft(text: string, raw: unknown): SupportedJobDraft |
       squareMetres &&
       quote &&
       !quote.includes("[removed]") &&
-      normalized.includes(quote) &&
+      new RegExp(`(?<![0-9.])${quote.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![0-9])`).test(
+        normalized,
+      ) &&
       [digits + unit, digits + " " + unit].includes(quote)
     ) {
       area = { digits: rawArea.digits, unit: rawArea.unit, squareMetres };

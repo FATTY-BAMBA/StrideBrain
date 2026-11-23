@@ -109,7 +109,7 @@ export class DraftJob {
         clientBusinessKey: client ?? "",
       };
       const kind = supported.kept.length ? "DRAFTED" : "EMPTY";
-      await this.usage.finishTurn(context, kind === "DRAFTED" ? "JOB_DRAFTED" : "JOB_DRAFT_EMPTY");
+      await this.usage.finishTurn(context, "ANSWERED");
       return { kind, draft };
     } catch (error) {
       if (callId && error instanceof AssistantModelError && error.usage)
