@@ -1,0 +1,2168 @@
+{
+  "mode": "FAKE_MODEL",
+  "passed": true,
+  "rounds": [
+    {
+      "round": 1,
+      "scores": {
+        "en": 12,
+        "zh-TW": 12
+      },
+      "required": {
+        "passed": 14,
+        "total": 14
+      },
+      "passed": true,
+      "cases": [
+        {
+          "id": "en-ping",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Cedar Flagship",
+            "clientName": "Aster Retail Taiwan",
+            "locationCity": "Taipei City",
+            "locationDistrict": "Xinyi District",
+            "clientType": "RETAIL",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "396.694",
+            "scopeCategoryIds": [
+              "CUSTOM_MILLWORK",
+              "LIGHTING_ELECTRICAL",
+              "SELECTIVE_DEMOLITION"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-existing",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Aster Refresh",
+            "clientName": "星序零售台灣",
+            "locationCity": "Taipei City",
+            "subtype": "RETAIL_RENOVATION",
+            "areaQuantity": "90",
+            "scopeCategoryIds": [
+              "CUSTOM_MILLWORK"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-no-area",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Maple Concept",
+            "clientName": "Maple Group",
+            "locationCity": "Taichung City",
+            "clientType": "CORPORATE",
+            "subtype": "RETAIL_CONCEPT_STORE",
+            "scopeCategoryIds": [
+              "PARTITIONS_CEILINGS"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationDistrict",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-district-only",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Lantern Showroom",
+            "locationDistrict": "Xinyi District",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "45",
+            "scopeCategoryIds": [
+              "LIGHTING_ELECTRICAL"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationCity",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-long-private",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Lumen Showroom",
+            "clientName": "Lumen Retail",
+            "locationCity": "Taipei City",
+            "locationDistrict": "Xinyi District",
+            "clientType": "RETAIL",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "85",
+            "scopeCategoryIds": [
+              "LIGHTING_ELECTRICAL",
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-not-job",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "EMPTY",
+          "kept": {
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "name",
+            "clientName",
+            "locationCity",
+            "locationDistrict",
+            "clientType",
+            "subtype",
+            "scopeCategoryIds",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-injection",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "EMPTY",
+          "kept": {
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "name",
+            "clientName",
+            "locationCity",
+            "locationDistrict",
+            "clientType",
+            "subtype",
+            "scopeCategoryIds",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-written-area",
+          "locale": "en",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Thirty Showroom",
+            "locationCity": "Tainan City",
+            "subtype": "RETAIL_SHOWROOM",
+            "scopeCategoryIds": [
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationDistrict",
+            "clientType",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-full-width",
+          "locale": "en",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "West Flagship",
+            "locationCity": "Taipei City",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "85.5",
+            "scopeCategoryIds": [
+              "COORDINATION",
+              "IMPORTED_STONE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-unknown-type",
+          "locale": "en",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Harbor Warehouse",
+            "clientName": "Harbor Group",
+            "locationCity": "Kaohsiung City",
+            "clientType": "CORPORATE",
+            "areaQuantity": "100",
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationDistrict",
+            "subtype",
+            "scopeCategoryIds"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-client-normalization",
+          "locale": "en",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Central Showroom",
+            "clientName": "ASTER RETAIL TAIWAN",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "35.125",
+            "scopeCategoryIds": [
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [
+            "locationCity",
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-all-scope",
+          "locale": "en",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Coast Flagship",
+            "clientName": "Coast Hotels",
+            "clientType": "HOSPITALITY",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "3.306",
+            "scopeCategoryIds": [
+              "COORDINATION",
+              "CUSTOM_MILLWORK",
+              "IMPORTED_STONE",
+              "LIGHTING_ELECTRICAL",
+              "PARTITIONS_CEILINGS",
+              "SELECTIVE_DEMOLITION",
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationCity",
+            "locationDistrict"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-ping",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "杉木旗艦店",
+            "clientName": "星序零售台灣",
+            "locationCity": "台北市",
+            "locationDistrict": "信義區",
+            "clientType": "RETAIL",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "396.694",
+            "scopeCategoryIds": [
+              "CUSTOM_MILLWORK",
+              "LIGHTING_ELECTRICAL",
+              "SELECTIVE_DEMOLITION"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-existing",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "星序整修店",
+            "clientName": "Aster Retail Taiwan",
+            "locationCity": "台北市",
+            "subtype": "RETAIL_RENOVATION",
+            "areaQuantity": "90",
+            "scopeCategoryIds": [
+              "CUSTOM_MILLWORK"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-no-area",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "楓葉概念店",
+            "clientName": "楓葉集團",
+            "locationCity": "台中市",
+            "clientType": "CORPORATE",
+            "subtype": "RETAIL_CONCEPT_STORE",
+            "scopeCategoryIds": [
+              "PARTITIONS_CEILINGS"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationDistrict",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-district-only",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "燈籠展示店",
+            "locationDistrict": "信義區",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "45",
+            "scopeCategoryIds": [
+              "LIGHTING_ELECTRICAL"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationCity",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-long-private",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "光序展示店",
+            "clientName": "光序零售",
+            "locationCity": "台北市",
+            "locationDistrict": "信義區",
+            "clientType": "RETAIL",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "85",
+            "scopeCategoryIds": [
+              "LIGHTING_ELECTRICAL",
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-not-job",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "EMPTY",
+          "kept": {
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "name",
+            "clientName",
+            "locationCity",
+            "locationDistrict",
+            "clientType",
+            "subtype",
+            "scopeCategoryIds",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-injection",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "EMPTY",
+          "kept": {
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "name",
+            "clientName",
+            "locationCity",
+            "locationDistrict",
+            "clientType",
+            "subtype",
+            "scopeCategoryIds",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-written-area",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "三十展示店",
+            "locationCity": "台南市",
+            "subtype": "RETAIL_SHOWROOM",
+            "scopeCategoryIds": [
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationDistrict",
+            "clientType",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-full-width",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "西城旗艦店",
+            "locationCity": "台北市",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "85.5",
+            "scopeCategoryIds": [
+              "COORDINATION",
+              "IMPORTED_STONE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-unknown-type",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "港灣倉庫",
+            "clientName": "港灣集團",
+            "locationCity": "高雄市",
+            "clientType": "CORPORATE",
+            "areaQuantity": "100",
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationDistrict",
+            "subtype",
+            "scopeCategoryIds"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-client-normalization",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "中城展示店",
+            "clientName": "ASTER RETAIL TAIWAN",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "35.125",
+            "scopeCategoryIds": [
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [
+            "locationCity",
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-all-scope",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "海岸旗艦店",
+            "clientName": "海岸旅館",
+            "clientType": "HOSPITALITY",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "3.306",
+            "scopeCategoryIds": [
+              "COORDINATION",
+              "CUSTOM_MILLWORK",
+              "IMPORTED_STONE",
+              "LIGHTING_ELECTRICAL",
+              "PARTITIONS_CEILINGS",
+              "SELECTIVE_DEMOLITION",
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationCity",
+            "locationDistrict"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "scores": {
+        "en": 12,
+        "zh-TW": 12
+      },
+      "required": {
+        "passed": 14,
+        "total": 14
+      },
+      "passed": true,
+      "cases": [
+        {
+          "id": "en-ping",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Cedar Flagship",
+            "clientName": "Aster Retail Taiwan",
+            "locationCity": "Taipei City",
+            "locationDistrict": "Xinyi District",
+            "clientType": "RETAIL",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "396.694",
+            "scopeCategoryIds": [
+              "CUSTOM_MILLWORK",
+              "LIGHTING_ELECTRICAL",
+              "SELECTIVE_DEMOLITION"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-existing",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Aster Refresh",
+            "clientName": "星序零售台灣",
+            "locationCity": "Taipei City",
+            "subtype": "RETAIL_RENOVATION",
+            "areaQuantity": "90",
+            "scopeCategoryIds": [
+              "CUSTOM_MILLWORK"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-no-area",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Maple Concept",
+            "clientName": "Maple Group",
+            "locationCity": "Taichung City",
+            "clientType": "CORPORATE",
+            "subtype": "RETAIL_CONCEPT_STORE",
+            "scopeCategoryIds": [
+              "PARTITIONS_CEILINGS"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationDistrict",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-district-only",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Lantern Showroom",
+            "locationDistrict": "Xinyi District",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "45",
+            "scopeCategoryIds": [
+              "LIGHTING_ELECTRICAL"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationCity",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-long-private",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Lumen Showroom",
+            "clientName": "Lumen Retail",
+            "locationCity": "Taipei City",
+            "locationDistrict": "Xinyi District",
+            "clientType": "RETAIL",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "85",
+            "scopeCategoryIds": [
+              "LIGHTING_ELECTRICAL",
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-not-job",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "EMPTY",
+          "kept": {
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "name",
+            "clientName",
+            "locationCity",
+            "locationDistrict",
+            "clientType",
+            "subtype",
+            "scopeCategoryIds",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-injection",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "EMPTY",
+          "kept": {
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "name",
+            "clientName",
+            "locationCity",
+            "locationDistrict",
+            "clientType",
+            "subtype",
+            "scopeCategoryIds",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-written-area",
+          "locale": "en",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Thirty Showroom",
+            "locationCity": "Tainan City",
+            "subtype": "RETAIL_SHOWROOM",
+            "scopeCategoryIds": [
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationDistrict",
+            "clientType",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-full-width",
+          "locale": "en",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "West Flagship",
+            "locationCity": "Taipei City",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "85.5",
+            "scopeCategoryIds": [
+              "COORDINATION",
+              "IMPORTED_STONE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-unknown-type",
+          "locale": "en",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Harbor Warehouse",
+            "clientName": "Harbor Group",
+            "locationCity": "Kaohsiung City",
+            "clientType": "CORPORATE",
+            "areaQuantity": "100",
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationDistrict",
+            "subtype",
+            "scopeCategoryIds"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-client-normalization",
+          "locale": "en",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Central Showroom",
+            "clientName": "ASTER RETAIL TAIWAN",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "35.125",
+            "scopeCategoryIds": [
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [
+            "locationCity",
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-all-scope",
+          "locale": "en",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Coast Flagship",
+            "clientName": "Coast Hotels",
+            "clientType": "HOSPITALITY",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "3.306",
+            "scopeCategoryIds": [
+              "COORDINATION",
+              "CUSTOM_MILLWORK",
+              "IMPORTED_STONE",
+              "LIGHTING_ELECTRICAL",
+              "PARTITIONS_CEILINGS",
+              "SELECTIVE_DEMOLITION",
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationCity",
+            "locationDistrict"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-ping",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "杉木旗艦店",
+            "clientName": "星序零售台灣",
+            "locationCity": "台北市",
+            "locationDistrict": "信義區",
+            "clientType": "RETAIL",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "396.694",
+            "scopeCategoryIds": [
+              "CUSTOM_MILLWORK",
+              "LIGHTING_ELECTRICAL",
+              "SELECTIVE_DEMOLITION"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-existing",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "星序整修店",
+            "clientName": "Aster Retail Taiwan",
+            "locationCity": "台北市",
+            "subtype": "RETAIL_RENOVATION",
+            "areaQuantity": "90",
+            "scopeCategoryIds": [
+              "CUSTOM_MILLWORK"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-no-area",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "楓葉概念店",
+            "clientName": "楓葉集團",
+            "locationCity": "台中市",
+            "clientType": "CORPORATE",
+            "subtype": "RETAIL_CONCEPT_STORE",
+            "scopeCategoryIds": [
+              "PARTITIONS_CEILINGS"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationDistrict",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-district-only",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "燈籠展示店",
+            "locationDistrict": "信義區",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "45",
+            "scopeCategoryIds": [
+              "LIGHTING_ELECTRICAL"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationCity",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-long-private",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "光序展示店",
+            "clientName": "光序零售",
+            "locationCity": "台北市",
+            "locationDistrict": "信義區",
+            "clientType": "RETAIL",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "85",
+            "scopeCategoryIds": [
+              "LIGHTING_ELECTRICAL",
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-not-job",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "EMPTY",
+          "kept": {
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "name",
+            "clientName",
+            "locationCity",
+            "locationDistrict",
+            "clientType",
+            "subtype",
+            "scopeCategoryIds",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-injection",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "EMPTY",
+          "kept": {
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "name",
+            "clientName",
+            "locationCity",
+            "locationDistrict",
+            "clientType",
+            "subtype",
+            "scopeCategoryIds",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-written-area",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "三十展示店",
+            "locationCity": "台南市",
+            "subtype": "RETAIL_SHOWROOM",
+            "scopeCategoryIds": [
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationDistrict",
+            "clientType",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-full-width",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "西城旗艦店",
+            "locationCity": "台北市",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "85.5",
+            "scopeCategoryIds": [
+              "COORDINATION",
+              "IMPORTED_STONE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-unknown-type",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "港灣倉庫",
+            "clientName": "港灣集團",
+            "locationCity": "高雄市",
+            "clientType": "CORPORATE",
+            "areaQuantity": "100",
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationDistrict",
+            "subtype",
+            "scopeCategoryIds"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-client-normalization",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "中城展示店",
+            "clientName": "ASTER RETAIL TAIWAN",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "35.125",
+            "scopeCategoryIds": [
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [
+            "locationCity",
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-all-scope",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "海岸旗艦店",
+            "clientName": "海岸旅館",
+            "clientType": "HOSPITALITY",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "3.306",
+            "scopeCategoryIds": [
+              "COORDINATION",
+              "CUSTOM_MILLWORK",
+              "IMPORTED_STONE",
+              "LIGHTING_ELECTRICAL",
+              "PARTITIONS_CEILINGS",
+              "SELECTIVE_DEMOLITION",
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationCity",
+            "locationDistrict"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "scores": {
+        "en": 12,
+        "zh-TW": 12
+      },
+      "required": {
+        "passed": 14,
+        "total": 14
+      },
+      "passed": true,
+      "cases": [
+        {
+          "id": "en-ping",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Cedar Flagship",
+            "clientName": "Aster Retail Taiwan",
+            "locationCity": "Taipei City",
+            "locationDistrict": "Xinyi District",
+            "clientType": "RETAIL",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "396.694",
+            "scopeCategoryIds": [
+              "CUSTOM_MILLWORK",
+              "LIGHTING_ELECTRICAL",
+              "SELECTIVE_DEMOLITION"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-existing",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Aster Refresh",
+            "clientName": "星序零售台灣",
+            "locationCity": "Taipei City",
+            "subtype": "RETAIL_RENOVATION",
+            "areaQuantity": "90",
+            "scopeCategoryIds": [
+              "CUSTOM_MILLWORK"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-no-area",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Maple Concept",
+            "clientName": "Maple Group",
+            "locationCity": "Taichung City",
+            "clientType": "CORPORATE",
+            "subtype": "RETAIL_CONCEPT_STORE",
+            "scopeCategoryIds": [
+              "PARTITIONS_CEILINGS"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationDistrict",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-district-only",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Lantern Showroom",
+            "locationDistrict": "Xinyi District",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "45",
+            "scopeCategoryIds": [
+              "LIGHTING_ELECTRICAL"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationCity",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-long-private",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Lumen Showroom",
+            "clientName": "Lumen Retail",
+            "locationCity": "Taipei City",
+            "locationDistrict": "Xinyi District",
+            "clientType": "RETAIL",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "85",
+            "scopeCategoryIds": [
+              "LIGHTING_ELECTRICAL",
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-not-job",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "EMPTY",
+          "kept": {
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "name",
+            "clientName",
+            "locationCity",
+            "locationDistrict",
+            "clientType",
+            "subtype",
+            "scopeCategoryIds",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-injection",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "EMPTY",
+          "kept": {
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "name",
+            "clientName",
+            "locationCity",
+            "locationDistrict",
+            "clientType",
+            "subtype",
+            "scopeCategoryIds",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-written-area",
+          "locale": "en",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Thirty Showroom",
+            "locationCity": "Tainan City",
+            "subtype": "RETAIL_SHOWROOM",
+            "scopeCategoryIds": [
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationDistrict",
+            "clientType",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-full-width",
+          "locale": "en",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "West Flagship",
+            "locationCity": "Taipei City",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "85.5",
+            "scopeCategoryIds": [
+              "COORDINATION",
+              "IMPORTED_STONE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-unknown-type",
+          "locale": "en",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Harbor Warehouse",
+            "clientName": "Harbor Group",
+            "locationCity": "Kaohsiung City",
+            "clientType": "CORPORATE",
+            "areaQuantity": "100",
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationDistrict",
+            "subtype",
+            "scopeCategoryIds"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-client-normalization",
+          "locale": "en",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Central Showroom",
+            "clientName": "ASTER RETAIL TAIWAN",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "35.125",
+            "scopeCategoryIds": [
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [
+            "locationCity",
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "en-all-scope",
+          "locale": "en",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Coast Flagship",
+            "clientName": "Coast Hotels",
+            "clientType": "HOSPITALITY",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "3.306",
+            "scopeCategoryIds": [
+              "COORDINATION",
+              "CUSTOM_MILLWORK",
+              "IMPORTED_STONE",
+              "LIGHTING_ELECTRICAL",
+              "PARTITIONS_CEILINGS",
+              "SELECTIVE_DEMOLITION",
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationCity",
+            "locationDistrict"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-ping",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "杉木旗艦店",
+            "clientName": "星序零售台灣",
+            "locationCity": "台北市",
+            "locationDistrict": "信義區",
+            "clientType": "RETAIL",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "396.694",
+            "scopeCategoryIds": [
+              "CUSTOM_MILLWORK",
+              "LIGHTING_ELECTRICAL",
+              "SELECTIVE_DEMOLITION"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-existing",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "星序整修店",
+            "clientName": "Aster Retail Taiwan",
+            "locationCity": "台北市",
+            "subtype": "RETAIL_RENOVATION",
+            "areaQuantity": "90",
+            "scopeCategoryIds": [
+              "CUSTOM_MILLWORK"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-no-area",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "楓葉概念店",
+            "clientName": "楓葉集團",
+            "locationCity": "台中市",
+            "clientType": "CORPORATE",
+            "subtype": "RETAIL_CONCEPT_STORE",
+            "scopeCategoryIds": [
+              "PARTITIONS_CEILINGS"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationDistrict",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-district-only",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "燈籠展示店",
+            "locationDistrict": "信義區",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "45",
+            "scopeCategoryIds": [
+              "LIGHTING_ELECTRICAL"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationCity",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-long-private",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "光序展示店",
+            "clientName": "光序零售",
+            "locationCity": "台北市",
+            "locationDistrict": "信義區",
+            "clientType": "RETAIL",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "85",
+            "scopeCategoryIds": [
+              "LIGHTING_ELECTRICAL",
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-not-job",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "EMPTY",
+          "kept": {
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "name",
+            "clientName",
+            "locationCity",
+            "locationDistrict",
+            "clientType",
+            "subtype",
+            "scopeCategoryIds",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-injection",
+          "locale": "zh-TW",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "EMPTY",
+          "kept": {
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "name",
+            "clientName",
+            "locationCity",
+            "locationDistrict",
+            "clientType",
+            "subtype",
+            "scopeCategoryIds",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-written-area",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "三十展示店",
+            "locationCity": "台南市",
+            "subtype": "RETAIL_SHOWROOM",
+            "scopeCategoryIds": [
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationDistrict",
+            "clientType",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-full-width",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "西城旗艦店",
+            "locationCity": "台北市",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "85.5",
+            "scopeCategoryIds": [
+              "COORDINATION",
+              "IMPORTED_STONE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientName",
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-unknown-type",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "港灣倉庫",
+            "clientName": "港灣集團",
+            "locationCity": "高雄市",
+            "clientType": "CORPORATE",
+            "areaQuantity": "100",
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationDistrict",
+            "subtype",
+            "scopeCategoryIds"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-client-normalization",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "中城展示店",
+            "clientName": "ASTER RETAIL TAIWAN",
+            "subtype": "RETAIL_SHOWROOM",
+            "areaQuantity": "35.125",
+            "scopeCategoryIds": [
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": "CLIENT-01"
+          },
+          "dropped": [
+            "locationCity",
+            "locationDistrict",
+            "clientType"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        },
+        {
+          "id": "zh-TW-all-scope",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "海岸旗艦店",
+            "clientName": "海岸旅館",
+            "clientType": "HOSPITALITY",
+            "subtype": "RETAIL_FLAGSHIP",
+            "areaQuantity": "3.306",
+            "scopeCategoryIds": [
+              "COORDINATION",
+              "CUSTOM_MILLWORK",
+              "IMPORTED_STONE",
+              "LIGHTING_ELECTRICAL",
+              "PARTITIONS_CEILINGS",
+              "SELECTIVE_DEMOLITION",
+              "SIGNAGE"
+            ],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationCity",
+            "locationDistrict"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        }
+      ]
+    }
+  ],
+  "perCase": [
+    {
+      "id": "en-ping",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "en-existing",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "en-no-area",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "en-district-only",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "en-long-private",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "en-not-job",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "en-injection",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "en-written-area",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "en-full-width",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "en-unknown-type",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "en-client-normalization",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "en-all-scope",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "zh-TW-ping",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "zh-TW-existing",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "zh-TW-no-area",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "zh-TW-district-only",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "zh-TW-long-private",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "zh-TW-not-job",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "zh-TW-injection",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "zh-TW-written-area",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "zh-TW-full-width",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "zh-TW-unknown-type",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "zh-TW-client-normalization",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3
+    },
+    {
+      "id": "zh-TW-all-scope",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3
+    }
+  ]
+}

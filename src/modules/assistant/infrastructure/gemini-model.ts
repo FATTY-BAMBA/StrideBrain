@@ -1,6 +1,7 @@
 import "server-only";
 import { AssistantModelError } from "../domain/model-error";
-import type { TokenUsage } from "../domain/contracts";
+import type { TokenUsage, JobDraftModelPort } from "../domain/contracts";
+import { jobDraftSchema } from "../domain/job-draft";
 import { record } from "../domain/grounding";
 import {
   toolNames,
@@ -49,12 +50,91 @@ async function boundedJson(response: Response): Promise<unknown> {
   return JSON.parse(new TextDecoder().decode(bytes));
 }
 /** Stateless generateContent calls avoid provider conversation retention and replayed model facts. */
-export class GeminiAssistantModel implements AssistantModelPort {
+export class GeminiAssistantModel implements AssistantModelPort, JobDraftModelPort {
   constructor(
     private readonly apiKey: string,
     private readonly model: string,
     private readonly request: typeof fetch = fetch,
   ) {}
+  async draftJob(input: Parameters<JobDraftModelPort["draftJob"]>[0]) {
+    let knownUsage: TokenUsage | undefined;
+    try {
+      const response = await this.request(
+        `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(this.model)}:generateContent`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "x-goog-api-key": this.apiKey },
+          signal: input.signal,
+          cache: "no-store",
+          redirect: "error",
+          body: JSON.stringify({
+            systemInstruction: { parts: [{ text: input.instructions }] },
+            contents: [
+              {
+                role: "user",
+                parts: [
+                  {
+                    text: JSON.stringify({
+                      kind: "UNTRUSTED_JOB_TEXT",
+                      text: input.text,
+                      choices: input.choices,
+                    }),
+                  },
+                ],
+              },
+            ],
+            tools: [
+              {
+                functionDeclarations: [
+                  {
+                    name: "submit_job_draft",
+                    description:
+                      "Submit the supported fields of a review-only job draft; null means absent.",
+                    parametersJsonSchema: jobDraftSchema,
+                  },
+                ],
+              },
+            ],
+            toolConfig: {
+              functionCallingConfig: { mode: "ANY", allowedFunctionNames: ["submit_job_draft"] },
+            },
+            generationConfig: { maxOutputTokens: input.maxOutputTokens },
+          }),
+        },
+      );
+      const body = record(await boundedJson(response)),
+        usage = record(body?.usageMetadata);
+      const inputTokens = usage?.promptTokenCount,
+        outputTokens = usage?.candidatesTokenCount ?? 0,
+        thoughts = usage?.thoughtsTokenCount ?? 0;
+      if (
+        ![inputTokens, outputTokens, thoughts].every(
+          (v) => typeof v === "number" && Number.isSafeInteger(v) && v >= 0 && v <= 10000000,
+        )
+      )
+        throw new Error("INVALID_USAGE");
+      knownUsage = {
+        inputTokens: inputTokens as number,
+        outputTokens: (outputTokens as number) + (thoughts as number),
+      };
+      if (!Array.isArray(body?.candidates) || body.candidates.length !== 1)
+        throw new Error("INVALID_CANDIDATE");
+      const candidate = record(body.candidates[0]),
+        parts = record(candidate?.content)?.parts;
+      if (candidate?.finishReason === "MAX_TOKENS")
+        throw new AssistantModelError("OUTPUT_CAP", knownUsage);
+      if (candidate?.finishReason !== "STOP" || !Array.isArray(parts) || parts.length !== 1)
+        throw new Error("INVALID_OUTPUT");
+      const part = record(parts[0]),
+        call = record(part?.functionCall);
+      if (part?.text !== undefined || call?.name !== "submit_job_draft" || !record(call.args))
+        throw new Error("INVALID_CALL");
+      return { draft: call.args, usage: knownUsage };
+    } catch (error) {
+      if (error instanceof AssistantModelError) throw error;
+      throw new AssistantModelError(knownUsage ? "INVALID_OUTPUT" : "UNAVAILABLE", knownUsage);
+    }
+  }
   async generate(input: Parameters<AssistantModelPort["generate"]>[0]): Promise<ModelReply> {
     let knownUsage: TokenUsage | undefined;
     try {

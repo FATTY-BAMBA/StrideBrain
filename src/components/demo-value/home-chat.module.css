@@ -209,3 +209,9 @@
   opacity: 0.6;
   cursor: wait;
 }
+
+.composerButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

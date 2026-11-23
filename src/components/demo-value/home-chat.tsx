@@ -2,20 +2,58 @@
 
 import Link from "next/link";
 import { assistantCopy } from "@/modules/localization/assistant";
-import { useActionState } from "react";
+import { useActionState, useState, useTransition } from "react";
 import { askHomeAction } from "@/app/[locale]/home-chat-actions";
 import { initialHomeChatState } from "@/modules/home-intelligence/chat-contracts";
 import type { Locale } from "@/modules/localization/config";
 import styles from "./home-chat.module.css";
+import type { HomeChatTurn } from "@/modules/home-intelligence/chat-contracts";
+import type { JobDraftActionState } from "@/modules/assistant/application/job-draft-action-state";
+import { draftJobFromHome } from "@/app/[locale]/job-draft-actions";
+import { jobDraftCopy, jobDraftMessage } from "@/modules/localization/job-draft";
+import { NewJobForm } from "@/components/projects/new-job-form";
 
 export function HomeChat({
   locale,
   projectKey,
+  canDraftJob = false,
 }: {
   locale: Locale;
   projectKey?: string | undefined;
+  canDraftJob?: boolean;
 }) {
-  const [state, action, pending] = useActionState(askHomeAction, initialHomeChatState);
+  const [state, action, asking] = useActionState(askHomeAction, initialHomeChatState);
+  const [drafting, startDraft] = useTransition();
+  const pending = asking || drafting;
+  type DraftTurn = HomeChatTurn & { draftResult?: JobDraftActionState };
+  const [draftTurns, setDraftTurns] = useState<readonly DraftTurn[]>([]);
+  // Drafts stay in this client component, never in the question action's history.
+  const turns: readonly DraftTurn[] = [...state.turns, ...draftTurns].sort(
+    (a, b) => (Number(a.id.split("-").at(-1)) || 0) - (Number(b.id.split("-").at(-1)) || 0),
+  );
+  function draftAction(data: FormData) {
+    const text = data.get("message");
+    if (typeof text !== "string" || !text.trim() || text.length > 280) return;
+    const now = Date.now();
+    setDraftTurns((current) => [...current, { id: `draft-user-${now}`, role: "user", text }]);
+    startDraft(async () => {
+      let result: JobDraftActionState;
+      try {
+        result = await draftJobFromHome(locale, text);
+      } catch {
+        result = { outcome: { kind: "UNAVAILABLE", reason: "UNAVAILABLE" } };
+      }
+      setDraftTurns((current) => [
+        ...current,
+        {
+          id: `draft-assistant-${Date.now()}`,
+          role: "assistant",
+          text: jobDraftMessage(locale, result.outcome),
+          draftResult: result,
+        },
+      ]);
+    });
+  }
   const copy =
     locale === "zh-TW"
       ? {
@@ -37,7 +75,7 @@ export function HomeChat({
         {copy.label}
       </label>
       <div className={styles.chatThread} aria-live="polite">
-        {state.turns.map((turn) => (
+        {turns.map((turn) => (
           <article
             className={turn.role === "user" ? styles.userMessage : styles.assistantMessage}
             key={turn.id}
@@ -51,6 +89,18 @@ export function HomeChat({
             )}
             {turn.aiFallback && <small role="status">{assistantCopy(locale).fallback}</small>}
             <p>{turn.text}</p>
+            {turn.draftResult?.form ? (
+              <NewJobForm
+                locale={locale}
+                {...turn.draftResult.form}
+                initialDraft={
+                  turn.draftResult.outcome.kind !== "UNAVAILABLE"
+                    ? turn.draftResult.outcome.draft
+                    : undefined
+                }
+                confirmDraft
+              />
+            ) : null}
             {turn.aiSources?.length ? (
               <ul aria-label={assistantCopy(locale).sources}>
                 {turn.aiSources.map((source) => (
@@ -153,7 +203,11 @@ export function HomeChat({
           </article>
         ))}
 
-        {pending ? <p className={styles.thinking}>{copy.thinking}</p> : null}
+        {pending ? (
+          <p className={styles.thinking}>
+            {drafting ? jobDraftCopy(locale).pending : copy.thinking}
+          </p>
+        ) : null}
       </div>
 
       <form id="chat-form" action={action} className={styles.chatComposer}>
@@ -168,9 +222,16 @@ export function HomeChat({
           disabled={pending}
           required
         />
-        <button type="submit" disabled={pending}>
-          {copy.send}
-        </button>
+        <div className={styles.composerButtons}>
+          <button type="submit" disabled={pending}>
+            {copy.send}
+          </button>
+          {canDraftJob ? (
+            <button type="submit" formAction={draftAction} disabled={pending}>
+              {jobDraftCopy(locale).create}
+            </button>
+          ) : null}
+        </div>
       </form>
     </section>
   );

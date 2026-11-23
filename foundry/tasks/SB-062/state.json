@@ -1,0 +1,52 @@
+{
+  "issue": 62,
+  "branch": "build/sb-062-job-draft",
+  "baseCommit": "1fe84af7ad08827ce9486c78666812cb360d9bde",
+  "status": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "pullRequestState": "DRAFT",
+  "paidRunLimit": 3,
+  "paidRuns": [
+    {
+      "runId": 45190065586,
+      "commit": "c0484f8b632b56ffbfc1760cd576c7bfdd23a60d",
+      "status": "FAILURE",
+      "url": "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45190065586",
+      "estimatedUsd": "0.235728200",
+      "questionGatePassed": true,
+      "draftGatePassed": false
+    },
+    {
+      "runId": 45265585222,
+      "commit": "6e083b447c585a82f40cf239044dfa0aefdb460d",
+      "status": "SUCCESS",
+      "url": "https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45265585222",
+      "estimatedUsd": "0.236823500",
+      "questionGatePassed": true,
+      "draftGatePassed": true
+    }
+  ],
+  "creationStage": "QUOTE_REVIEW",
+  "localCheck": {
+    "passed": true,
+    "tests": 1469,
+    "files": 134
+  },
+  "localBrowser": {
+    "passed": true,
+    "mode": "EXTERNAL_TRANSPORT_FAKE",
+    "draftCalls": 8
+  },
+  "pullRequest": 64,
+  "ci": {
+    "runId": 45265559866,
+    "commit": "6e083b447c585a82f40cf239044dfa0aefdb460d",
+    "conclusion": "SUCCESS"
+  },
+  "recordedReplay": {
+    "sourceRun": 45190065586,
+    "cases": 19,
+    "passed": true
+  },
+  "paidEstimatedTotalUsd": "0.472551700"
+}

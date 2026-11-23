@@ -1,6 +1,29 @@
 .form {
   max-width: 880px;
 }
+.draftBox {
+  display: grid;
+  gap: 12px;
+  max-width: 880px;
+  margin-bottom: 24px;
+}
+.draftBox textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  color: var(--ink);
+  background: var(--surface);
+  resize: vertical;
+}
+.draftBox button {
+  justify-self: start;
+}
+.aiMark {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
 .body {
   border: 0;
   padding: 0;
