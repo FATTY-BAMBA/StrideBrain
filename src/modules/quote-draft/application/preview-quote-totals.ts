@@ -7,7 +7,8 @@ export class PreviewQuoteTotals {
   async execute(context: RuntimeContext, raw: unknown) {
     if (!context.capabilities.has("quote:draft") || !context.capabilities.has("quote:read"))
       return null;
-    const input = validateSaveDraft(raw);
+    if (!context.firmLists) return null;
+    const input = validateSaveDraft(raw, context.firmLists.workCategories);
     if (!input) return null;
     return this.repository.transaction(async (tx) => {
       const job = await tx.getJob(context, input.projectKey);

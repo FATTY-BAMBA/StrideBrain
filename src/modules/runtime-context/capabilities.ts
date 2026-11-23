@@ -16,6 +16,9 @@ export const ALL_CAPABILITIES = Object.freeze([
   "action:assign",
   "authority:financial-conflict:resolve",
   "settings:manage",
+  "client:read",
+  "client:write",
+  "firm-lists:manage",
 ] as const satisfies readonly Capability[]);
 
 const CAPABILITY_SET = new Set<string>(ALL_CAPABILITIES);
@@ -28,6 +31,8 @@ export type CapabilityGrant = Readonly<{
 const ROLE_BUNDLES: Readonly<Record<Role, ReadonlySet<Capability>>> = Object.freeze({
   ORGANIZATION_ADMIN: new Set(ALL_CAPABILITIES),
   PROJECT_MANAGER_ESTIMATOR: new Set<Capability>([
+    "client:read",
+    "client:write",
     "project:read",
     "project:create",
     "project:update",
@@ -41,6 +46,7 @@ const ROLE_BUNDLES: Readonly<Record<Role, ReadonlySet<Capability>>> = Object.fre
     "action:assign",
   ]),
   FINANCIAL_REVIEWER: new Set<Capability>([
+    "client:read",
     "project:read",
     "project:compare",
     "quote:read",

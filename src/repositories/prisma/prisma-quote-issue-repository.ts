@@ -66,11 +66,18 @@ export class PrismaQuoteIssueSession
       select: {
         nameEn: true,
         nameZhTw: true,
+        clientId: true,
         client: { select: { organizationId: true, nameEn: true, nameZhTw: true } },
         organization: { select: { timezone: true } },
       },
     });
     if (!project || project.client.organizationId !== organizationId) return null;
+    const clientDetails = context.capabilities.has("client:read")
+      ? await this.tx.client.findFirst({
+          where: { id: project.clientId, organizationId },
+          select: { contactPerson: true, address: true, taxId: true },
+        })
+      : null;
     const current = await this.getSaved(context, job);
     const descriptions = current
       ? await this.tx.quoteItem.findMany({
@@ -163,6 +170,7 @@ export class PrismaQuoteIssueSession
       projectNameZhTw: project.nameZhTw,
       clientNameEn: project.client.nameEn,
       clientNameZhTw: project.client.nameZhTw,
+      ...(clientDetails ? { clientDetails } : {}),
       firm: await this.readFirm(context),
       current,
       descriptions: descriptions.map((line) => ({
@@ -340,7 +348,10 @@ export class PrismaQuoteIssueSession
         totalAmount: original.totalAmount,
       },
     });
-    for (const [index, item] of orderQuoteLines(original.items).entries()) {
+    for (const [index, item] of orderQuoteLines(
+      original.items,
+      state.job.catalog.workCategories,
+    ).entries()) {
       const lineId = randomUUID();
       await this.tx.quoteItem.create({
         data: {

@@ -2,7 +2,12 @@ import { createHash, randomUUID } from "node:crypto";
 import type { PrismaClient, Prisma } from "../../../.generated/prisma/client";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import type { CreateProjectInput, UpdateStageInput } from "@/modules/projects/domain/job-input";
-import { JOB_FIELDS, validateStageUpdate } from "@/modules/projects/domain/job-input";
+import {
+  JOB_FIELDS,
+  commercialCategoriesForScope,
+  validateStageUpdate,
+} from "@/modules/projects/domain/job-input";
+import { PrismaFirmListsRepository } from "./prisma-firm-lists-repository";
 import { categoryLabel } from "@/modules/localization/jobs";
 import type {
   CreateProjectResult,
@@ -21,7 +26,11 @@ export class PrismaProjectWriteRepository
   constructor(private readonly database: PrismaClient) {}
 
   async listActiveClients(context: RuntimeContext) {
-    if (!context.capabilities.has("project:create") || !context.capabilities.has("project:read"))
+    if (
+      !context.capabilities.has("client:read") ||
+      !context.capabilities.has("project:create") ||
+      !context.capabilities.has("project:read")
+    )
       return [];
     return this.database.client.findMany({
       where: { organizationId: context.organizationId, active: true },
@@ -56,7 +65,13 @@ export class PrismaProjectWriteRepository
     context: RuntimeContext,
     input: CreateProjectInput,
   ): Promise<CreateProjectResult> {
-    if (!context.capabilities.has("project:create") || !context.capabilities.has("project:read"))
+    if (
+      !context.capabilities.has("client:read") ||
+      !context.capabilities.has("project:create") ||
+      !context.capabilities.has("project:read")
+    )
+      return { kind: "UNAVAILABLE" };
+    if (input.clientMode === "new" && !context.capabilities.has("client:write"))
       return { kind: "UNAVAILABLE" };
     const organizationId = context.organizationId;
     const fingerprint = createHash("sha256")
@@ -104,6 +119,22 @@ export class PrismaProjectWriteRepository
             ? { kind: "CREATED", businessKey: original.businessKey }
             : { kind: "UNAVAILABLE" };
         }
+        const lists = await new PrismaFirmListsRepository(tx).read(context);
+        if (
+          !lists ||
+          !lists.jobTypes.some((entry) => entry.key === input.subtype && entry.active) ||
+          input.scopeCategoryIds.some(
+            (key) =>
+              !lists.workCategories.some(
+                (entry) => entry.key === key && entry.active && entry.scopeSelectable,
+              ),
+          ) ||
+          JSON.stringify([...input.commercialCategoryIds].sort()) !==
+            JSON.stringify(
+              commercialCategoriesForScope(input.scopeCategoryIds, lists.workCategories),
+            )
+        )
+          return { kind: "CONFLICT" };
         const duplicate = await tx.project.findUnique({
           where: { organizationId_businessKey: { organizationId, businessKey: input.businessKey } },
           select: { id: true },
@@ -158,8 +189,8 @@ export class PrismaProjectWriteRepository
                 id: randomUUID(),
                 organizationId,
                 categoryId,
-                labelEn: categoryLabel("en", categoryId),
-                labelZhTw: categoryLabel("zh-TW", categoryId),
+                labelEn: categoryLabel("en", categoryId, lists.workCategories),
+                labelZhTw: categoryLabel("zh-TW", categoryId, lists.workCategories),
                 sourceState: "HUMAN_REVIEWED",
               })),
             },

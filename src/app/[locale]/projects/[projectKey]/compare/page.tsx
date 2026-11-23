@@ -56,7 +56,7 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
     <div className="foundation-page">
       <ProjectLocalNav locale={rawLocale} projectKey={projectKey} labels={catalog} />
       {await (async () => {
-        if (!context) {
+        if (!context?.firmLists) {
           return (
             <ComparisonState locale={rawLocale} projectKey={projectKey} kind="SESSION_REQUIRED" />
           );
@@ -128,6 +128,7 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
 
         const freshness = await services.getFreshness.check(context, structural.result, economics);
         const view = buildComparisonExperience({
+          catalog: context.firmLists,
           stage4: structural.result,
           ...(economics ? { economics } : {}),
           locale: rawLocale,

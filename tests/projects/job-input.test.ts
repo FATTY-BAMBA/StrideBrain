@@ -1,11 +1,11 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { describe, expect, it, vi } from "vitest";
 import {
   validateCreateProject,
   validateStageUpdate,
   JOB_FIELDS,
-  SCOPE_CATEGORIES,
-  COMMERCIAL_CATEGORIES,
 } from "@/modules/projects/domain/job-input";
+import { SCOPE_CATEGORIES, COMMERCIAL_CATEGORIES } from "@/fixtures/firm-lists";
 import { CreateProject } from "@/modules/projects/application/create-project";
 import { UpdateProjectStage } from "@/modules/projects/application/update-project-stage";
 import { resolveCapabilities, roleBundle } from "@/modules/runtime-context/capabilities";
@@ -14,13 +14,16 @@ import { jobContext, jobInput } from "./job-fixture";
 describe("Job creation validation and application boundary", () => {
   it("accepts comparison-ready input and strips browser authority fields", () => {
     const input = jobInput();
-    const result = validateCreateProject({
-      ...input,
-      organizationId: "foreign",
-      membershipId: "admin",
-      metadataAuthority: "RECONCILED_ACTUAL",
-      stage: "COMPLETE",
-    });
+    const result = validateCreateProject(
+      {
+        ...input,
+        organizationId: "foreign",
+        membershipId: "admin",
+        metadataAuthority: "RECONCILED_ACTUAL",
+        stage: "COMPLETE",
+      },
+      seededFirmLists,
+    );
     expect(result.kind).toBe("VALID");
     if (result.kind === "VALID")
       expect(Object.keys(result.input).sort()).toEqual(
@@ -30,7 +33,7 @@ describe("Job creation validation and application boundary", () => {
   it.each(JOB_FIELDS.filter((f) => f !== "locationDistrict"))("requires %s", (field) => {
     const input: Record<string, unknown> = jobInput();
     delete input[field];
-    expect(validateCreateProject(input)).toMatchObject({
+    expect(validateCreateProject(input, seededFirmLists)).toMatchObject({
       kind: "INVALID",
       errors: { [field]: "required" },
     });
@@ -38,14 +41,16 @@ describe("Job creation validation and application boundary", () => {
   it.each(["0", "-1", "NaN", "Infinity", "1e3", "1.2345", "1000000000000000", "0x10"])(
     "rejects invalid or overflowing area %s",
     (areaQuantity) => {
-      expect(validateCreateProject({ ...jobInput(), areaQuantity })).toMatchObject({
-        kind: "INVALID",
-        errors: { areaQuantity: "invalid" },
-      });
+      expect(validateCreateProject({ ...jobInput(), areaQuantity }, seededFirmLists)).toMatchObject(
+        {
+          kind: "INVALID",
+          errors: { areaQuantity: "invalid" },
+        },
+      );
     },
   );
   it.each(["0.001", "999999999999999.999"])("preserves exact decimal %s", (areaQuantity) => {
-    expect(validateCreateProject({ ...jobInput(), areaQuantity })).toMatchObject({
+    expect(validateCreateProject({ ...jobInput(), areaQuantity }, seededFirmLists)).toMatchObject({
       kind: "VALID",
       input: { areaQuantity },
     });
@@ -63,16 +68,21 @@ describe("Job creation validation and application boundary", () => {
     { businessKey: "new" },
     { idempotencyKey: "unsafe" },
   ])("rejects unsupported or unbounded values: %j", (values) => {
-    expect(validateCreateProject({ ...jobInput(), ...values }).kind).toBe("INVALID");
+    expect(validateCreateProject({ ...jobInput(), ...values }, seededFirmLists).kind).toBe(
+      "INVALID",
+    );
   });
   it("does not require new-client fields for existing clients", () => {
     expect(
-      validateCreateProject({
-        ...jobInput(),
-        clientMode: "existing",
-        clientName: undefined,
-        clientType: undefined,
-      }).kind,
+      validateCreateProject(
+        {
+          ...jobInput(),
+          clientMode: "existing",
+          clientName: undefined,
+          clientType: undefined,
+        },
+        seededFirmLists,
+      ).kind,
     ).toBe("VALID");
   });
   it.each([
@@ -165,20 +175,26 @@ describe("Job creation validation and application boundary", () => {
     },
   );
   it("derives and deduplicates commercial categories from scopes, ignoring forged commercial choices", () => {
-    const result = validateCreateProject({
-      ...jobInput(),
-      scopeCategoryIds: [...SCOPE_CATEGORIES],
-      commercialCategoryIds: ["FORGED"],
-    });
+    const result = validateCreateProject(
+      {
+        ...jobInput(),
+        scopeCategoryIds: [...SCOPE_CATEGORIES],
+        commercialCategoryIds: ["FORGED"],
+      },
+      seededFirmLists,
+    );
     expect(result).toMatchObject({
       kind: "VALID",
       input: { commercialCategoryIds: [...COMMERCIAL_CATEGORIES].sort() },
     });
     expect(
-      validateCreateProject({
-        ...jobInput(),
-        scopeCategoryIds: ["SELECTIVE_DEMOLITION", "PARTITIONS_CEILINGS"],
-      }),
+      validateCreateProject(
+        {
+          ...jobInput(),
+          scopeCategoryIds: ["SELECTIVE_DEMOLITION", "PARTITIONS_CEILINGS"],
+        },
+        seededFirmLists,
+      ),
     ).toMatchObject({ kind: "VALID", input: { commercialCategoryIds: ["DEMOLITION_CEILING"] } });
   });
   it.each([

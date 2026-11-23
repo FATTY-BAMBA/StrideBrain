@@ -1,3 +1,5 @@
+import { withFirmLists } from "../firm-lists/with-firm-lists";
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { PreviewQuoteTotals } from "@/modules/quote-draft/application/preview-quote-totals";
 import { GetQuoteDraftEvidence } from "@/modules/quote-draft/application/get-quote-draft-evidence";
 import { createHomeDeskService } from "@/lib/server/home-desk-services";
@@ -45,6 +47,8 @@ beforeAll(async () => {
     "verify-job-neutral-findings",
     "quote-draft",
     "verify-quote-draft",
+    "firm-job-types-and-units",
+    "firm-work-categories",
   ])
     await sql.query(readFileSync(`prisma/fixtures/${fixture}.sql`, "utf8"));
 }, 30000);
@@ -74,7 +78,7 @@ async function actor(membership: string) {
     }),
   );
   if (!context) throw new Error("CONTEXT_REQUIRED");
-  return context;
+  return withFirmLists(context);
 }
 
 import { PrepareQuoteDraft } from "@/modules/quote-draft/application/prepare-quote-draft";
@@ -138,12 +142,49 @@ function saveInput(
     preparationToken: value.token,
     lines: value.preparation.suggestions.map((line) => ({
       categoryId: line.categoryId,
-      description: categoryLabel("en", line.categoryId),
+      description: categoryLabel("en", line.categoryId, seededFirmLists.workCategories),
       amount: line.basis.suggestedAmount ?? "1000.00",
     })),
   };
 }
 suite.sequential("SB-050 scoped quote drafting on real PostgreSQL", () => {
+  it("saves a configured quote unit, rejects unknown units, and carries a retired unit on edit", async () => {
+    const key = await newJob();
+    await compare(key);
+    const initial = await prepared(key),
+      input = saveInput(key, initial);
+    await sql.query(
+      `INSERT INTO "FirmQuoteUnit" (id,"organizationId",key,"nameEn","nameZhTw","sortOrder","updatedAt") VALUES ('test-unit','org_horizon','test-unit','Package','組',20,NOW())`,
+    );
+    const owner = await actor("membership_horizon_admin");
+    const lines = input.lines.map((line) => ({ ...line, unit: "test-unit" }));
+    expect(
+      await services().save.execute(owner, {
+        ...input,
+        lines: lines.map((line) => ({ ...line, unit: "foreign-unit" })),
+      }),
+    ).toEqual({ kind: "INVALID" });
+    const saved = await services().save.execute(owner, { ...input, lines });
+    expect(saved.kind).toBe("SAVED");
+    if (saved.kind !== "SAVED") return;
+    expect(
+      (
+        await sql.query('SELECT DISTINCT unit FROM "QuoteItem" WHERE "quoteVersionId"=$1', [
+          saved.versionId,
+        ])
+      ).rows,
+    ).toEqual([{ unit: "test-unit" }]);
+    await sql.query('UPDATE "FirmQuoteUnit" SET active=false WHERE id=$1', ["test-unit"]);
+    const edited = await services().save.execute(await actor("membership_horizon_admin"), {
+      ...input,
+      lines,
+      baseVersionId: saved.versionId,
+      preparationToken: null,
+      idempotencyKey: randomUUID(),
+    });
+    expect(edited.kind).toBe("SAVED");
+  });
+
   it("prepares and saves one demolition/ceiling price, then compares it with past prices", async () => {
     const key = await newJob([
       "SELECTIVE_DEMOLITION",
@@ -247,12 +288,16 @@ suite.sequential("SB-050 scoped quote drafting on real PostgreSQL", () => {
     for (const line of await db.quoteItem.findMany({
       where: { quoteVersionId: saved.versionId },
     })) {
-      expect(line.descriptionEn).toBe(categoryLabel("en", line.categoryId));
-      expect(line.descriptionZhTw).toBe(categoryLabel("zh-TW", line.categoryId));
+      expect(line.descriptionEn).toBe(
+        categoryLabel("en", line.categoryId, seededFirmLists.workCategories),
+      );
+      expect(line.descriptionZhTw).toBe(
+        categoryLabel("zh-TW", line.categoryId, seededFirmLists.workCategories),
+      );
     }
     const lines = input.lines.map((line) => ({
       ...line,
-      description: categoryLabel("zh-TW", line.categoryId),
+      description: categoryLabel("zh-TW", line.categoryId, seededFirmLists.workCategories),
     }));
     lines[0]!.description = "訂製木作說明";
     saved = await services().save.execute(
@@ -271,7 +316,7 @@ suite.sequential("SB-050 scoped quote drafting on real PostgreSQL", () => {
         where: { quoteVersionId: saved.versionId, categoryId: lines[0]!.categoryId },
       }),
     ).toMatchObject({
-      descriptionEn: categoryLabel("en", lines[0]!.categoryId),
+      descriptionEn: categoryLabel("en", lines[0]!.categoryId, seededFirmLists.workCategories),
       descriptionZhTw: "訂製木作說明",
     });
     const enLines = input.lines.map((line, index) =>
@@ -307,7 +352,9 @@ suite.sequential("SB-050 scoped quote drafting on real PostgreSQL", () => {
     for (const line of await db.quoteItem.findMany({
       where: { quoteVersionId: firstTyped.versionId },
     }))
-      expect(line.descriptionZhTw).toBe(categoryLabel("zh-TW", line.categoryId));
+      expect(line.descriptionZhTw).toBe(
+        categoryLabel("zh-TW", line.categoryId, seededFirmLists.workCategories),
+      );
   });
   it("prepares only a current own comparison, saves nothing, exposes exact suggestions and source lines", async () => {
     const key = await newJob();

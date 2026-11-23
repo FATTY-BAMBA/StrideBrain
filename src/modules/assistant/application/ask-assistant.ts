@@ -60,6 +60,8 @@ export class AskAssistant {
       input.previousQuestions?.some((q) => typeof q !== "string" || q.length > 280)
     )
       return { kind: "FALLBACK", reason: "INVALID_OUTPUT" };
+    if (!context.firmLists) return { kind: "FALLBACK", reason: "UNAVAILABLE" };
+    const definitions = assistantTools(context.firmLists);
     const locale = questionLocale(input.question, context.locale),
       c = { ...context, locale };
     const controller = new AbortController(),
@@ -207,7 +209,7 @@ export class AskAssistant {
           this.model.generate({
             instructions: `${instructions}\nAnswer language: ${locale}.`,
             messages,
-            tools: allowTools ? assistantTools : [],
+            tools: allowTools ? definitions : [],
             maxOutputTokens: this.config.maxOutputTokens,
             signal: controller.signal,
           }),
@@ -281,7 +283,7 @@ export class AskAssistant {
           return await fallback("TOOL_CAP");
         for (const call of reply.result.calls) {
           calls++;
-          if (!assistantTools.some((t) => t.name === call.name))
+          if (!definitions.some((t) => t.name === call.name))
             return await fallback("INVALID_OUTPUT");
           if (
             subjects.length &&

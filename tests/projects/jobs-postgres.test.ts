@@ -1,3 +1,4 @@
+import { withFirmLists } from "../firm-lists/with-firm-lists";
 import { execFileSync } from "node:child_process";
 import { randomUUID } from "node:crypto";
 import { PrismaPg } from "@prisma/adapter-pg";
@@ -80,7 +81,7 @@ postgres("SB-041 real PostgreSQL transactions and tenant boundaries", () => {
       }),
     );
     if (!context) throw new Error("CONTEXT_REQUIRED");
-    return context;
+    return withFirmLists(context, database);
   }
   async function project(key: string) {
     return database.project.findUniqueOrThrow({

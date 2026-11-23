@@ -30,7 +30,7 @@ export function DecisionList({
       ) : null}
       <ul className={styles.decisions}>
         {items.map((item) => {
-          const view = decisionPresentation(item, locale);
+          const view = decisionPresentation(item, locale, desk.catalog.workCategories);
           return (
             <li key={item.key}>
               <div>
@@ -161,7 +161,7 @@ export function HomeDeskScreen({
                           <dd>{formatMoney(lesson.actualCost, lesson.currency)}</dd>
                         </div>
                       </dl>
-                      <p>{closedLessonText(lesson, locale)}</p>
+                      <p>{closedLessonText(lesson, locale, outcome.catalog.workCategories)}</p>
                     </>
                   ) : financialState === "UNAVAILABLE" ? (
                     <p>{copy.figuresUnavailable}</p>

@@ -1,3 +1,4 @@
+import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
 import type {
   ComparisonFreshness,
   ComparisonFreshnessReader,
@@ -61,7 +62,7 @@ function formatNumber(locale: Locale, value: unknown, digits = 2): string {
   }).format(parsed);
 }
 
-function formatValue(locale: Locale, key: string, value: unknown): string {
+function formatValue(locale: Locale, key: string, value: unknown, catalog: FirmLists): string {
   if (value === null || value === undefined) return "—";
   if (key === "field") {
     const label = getEvidencePanelCopy(locale).fieldLabels[String(value)];
@@ -72,7 +73,7 @@ function formatValue(locale: Locale, key: string, value: unknown): string {
   if (typeof value === "boolean")
     return value ? (locale === "zh-TW" ? "是" : "Yes") : locale === "zh-TW" ? "否" : "No";
   if (Array.isArray(value))
-    return value.map((entry) => evidenceValueLabel(locale, String(entry))).join(", ");
+    return value.map((entry) => evidenceValueLabel(locale, String(entry), catalog)).join(", ");
   if (typeof value === "object") return locale === "zh-TW" ? "結構化紀錄" : "Structured record";
   if (key.toLowerCase().includes("percent")) {
     const number = Number(value);
@@ -87,13 +88,14 @@ function formatValue(locale: Locale, key: string, value: unknown): string {
   ) {
     return Number.isFinite(Number(value)) ? `NT$${formatNumber(locale, value, 0)}` : String(value);
   }
-  return evidenceValueLabel(locale, String(value));
+  return evidenceValueLabel(locale, String(value), catalog);
 }
 
 function fieldsFromObject(
   locale: Locale,
   value: Readonly<Record<string, unknown>>,
   copy: EvidencePanelCopy,
+  catalog: FirmLists,
 ): readonly Readonly<{ label: string; value: string }>[] {
   return Object.freeze(
     Object.entries(value)
@@ -101,7 +103,7 @@ function fieldsFromObject(
       .map(([key, field]) =>
         Object.freeze({
           label: copy.fieldLabels[key]!,
-          value: formatValue(locale, key, field),
+          value: formatValue(locale, key, field, catalog),
         }),
       ),
   );
@@ -111,8 +113,9 @@ function locatorLabel(
   locator: Readonly<Record<string, unknown>>,
   locale: Locale,
   copy: EvidencePanelCopy,
+  catalog: FirmLists,
 ): string {
-  const fields = fieldsFromObject(locale, locator, copy);
+  const fields = fieldsFromObject(locale, locator, copy, catalog);
   return fields.length
     ? fields.map((field) => `${field.label}: ${field.value}`).join(" · ")
     : copy.structuredRecord;
@@ -173,6 +176,7 @@ export function sourceView(
   stage4: Stage4ComparisonResult,
   locale: Locale,
   copy: EvidencePanelCopy,
+  catalog: FirmLists,
 ): EvidencePanelSourceView {
   const sourceKey = evidenceSourceKey(stage4.run.id, source.referenceId);
   const conditions = sourceConditions(source, stage4.activeContext.projectKey);
@@ -190,7 +194,7 @@ export function sourceView(
               .map((field) =>
                 Object.freeze({
                   label: copy.fieldLabels[field.key]!,
-                  value: formatValue(locale, field.key, field.value),
+                  value: formatValue(locale, field.key, field.value, catalog),
                 }),
               ),
           ),
@@ -204,12 +208,12 @@ export function sourceView(
         });
   return Object.freeze({
     sourceKey,
-    title: evidenceTitle(locale, locale === "zh-TW" ? source.titleZhTw : source.titleEn),
+    title: evidenceTitle(locale, locale === "zh-TW" ? source.titleZhTw : source.titleEn, catalog),
     objectTypeLabel: copy.subjectLabels[source.subjectType] ?? copy.structuredRecord,
     ...(source.versionLabel ? { versionLabel: source.versionLabel } : {}),
     projectLabel: locale === "zh-TW" ? source.projectNameZhTw : source.projectNameEn,
     ...(source.effectiveAt ? { effectiveDateLabel: formatDate(locale, source.effectiveAt) } : {}),
-    locatorLabel: locatorLabel(source.locator, locale, copy),
+    locatorLabel: locatorLabel(source.locator, locale, copy, catalog),
     authorityState: source.authorityState,
     authorityLabel: copy.authorityLabels[source.authorityState],
     ...(source.observationType
@@ -221,7 +225,7 @@ export function sourceView(
     dataClassificationLabel: copy.classificationLabels[source.dataClassification],
     ...(source.supportedValue
       ? {
-          supportedValueLabel: fieldsFromObject(locale, source.supportedValue, copy)
+          supportedValueLabel: fieldsFromObject(locale, source.supportedValue, copy, catalog)
             .map((field) => `${field.label}: ${field.value}`)
             .join(" · "),
         }
@@ -240,13 +244,14 @@ function financialTrace(
   sources: readonly EvidenceSourceRecord[],
   locale: Locale,
   copy: EvidencePanelCopy,
+  catalog: FirmLists,
 ): EvidenceFinancialTraceView {
   return Object.freeze({
     kind: "FINANCIAL",
     operation: trace.operation,
-    operationLabel: evidenceValueLabel(locale, trace.operation),
-    aggregationLabel: evidenceValueLabel(locale, trace.aggregation),
-    roundingLabel: evidenceValueLabel(locale, trace.rounding),
+    operationLabel: evidenceValueLabel(locale, trace.operation, catalog),
+    aggregationLabel: evidenceValueLabel(locale, trace.aggregation, catalog),
+    roundingLabel: evidenceValueLabel(locale, trace.rounding, catalog),
     policyDescription: evidencePolicyDescription(locale, "FINANCIAL"),
     calculationVersion: trace.calculationVersion,
     aggregation: trace.aggregation,
@@ -285,12 +290,12 @@ function financialTrace(
             "{count}",
             String(input.evidenceReferenceIds.length),
           ),
-          normalizedValueLabel: `${formatNumber(locale, input.normalizedValue, 2)} ${evidenceValueLabel(locale, input.unit)}`,
+          normalizedValueLabel: `${formatNumber(locale, input.normalizedValue, 2)} ${evidenceValueLabel(locale, input.unit, catalog)}`,
           sourceCount: input.evidenceReferenceIds.length,
         }),
       ),
     ),
-    resultFields: fieldsFromObject(locale, trace.result, copy),
+    resultFields: fieldsFromObject(locale, trace.result, copy, catalog),
   });
 }
 
@@ -298,6 +303,7 @@ function factorTrace(
   factor: EvidenceFactorRecord,
   locale: Locale,
   copy: EvidencePanelCopy,
+  catalog: FirmLists,
 ): EvidenceFactorTraceView {
   return Object.freeze({
     kind: "FACTOR",
@@ -318,7 +324,7 @@ function factorTrace(
     evidenceCoverageLabel: `${formatNumber(locale, factor.evidenceCoverage, 1)}%`,
     explanationLabel:
       Object.keys(factor.explanation).length > 0
-        ? fieldsFromObject(locale, factor.explanation, copy)
+        ? fieldsFromObject(locale, factor.explanation, copy, catalog)
             .map((field) => `${field.label}: ${field.value}`)
             .join(" · ")
         : copy.factorStateLabels[factor.state],
@@ -329,8 +335,9 @@ function claimValueLabel(
   claim: StructuredEconomicsClaimDTO,
   locale: Locale,
   copy: EvidencePanelCopy,
+  catalog: FirmLists,
 ): string | undefined {
-  const fields = fieldsFromObject(locale, claim.value, copy);
+  const fields = fieldsFromObject(locale, claim.value, copy, catalog);
   return fields.length > 0
     ? fields.map((field) => `${field.label}: ${field.value}`).join(" · ")
     : undefined;
@@ -437,6 +444,8 @@ export class GetEvidencePanel {
     locale: Locale,
     checkedFreshness?: ComparisonFreshness,
   ): Promise<EvidencePanelOutcome> {
+    const catalog = runtime.firmLists;
+    if (!catalog) return { kind: "UNAVAILABLE", requestId: runtime.requestId };
     try {
       const stage4 = await this.comparisons.getAuthorizedResult(runtime, selection.comparisonRunId);
       if (!stage4) return Object.freeze({ kind: "UNAVAILABLE", requestId: runtime.requestId });
@@ -471,7 +480,9 @@ export class GetEvidencePanel {
           return Object.freeze({ kind: "UNAVAILABLE", requestId: runtime.requestId });
         }
         const sources = Object.freeze(
-          resolved.sources.map((source) => sourceView(source, selection, stage4, locale, copy)),
+          resolved.sources.map((source) =>
+            sourceView(source, selection, stage4, locale, copy, catalog),
+          ),
         );
         const warningLabels = Object.freeze(
           found.claim.warningCodes.map(
@@ -479,20 +490,25 @@ export class GetEvidencePanel {
           ),
         );
         const view: EvidencePanelView = Object.freeze({
+          catalog,
           version: EVIDENCE_PANEL_VERSION,
           locale,
           mode: "CLAIM",
           context: context(stage4, stage5, locale, freshness),
           heading: headingFor(
             "CLAIM",
-            evidenceTitle(locale, locale === "zh-TW" ? found.claim.titleZhTw : found.claim.titleEn),
+            evidenceTitle(
+              locale,
+              locale === "zh-TW" ? found.claim.titleZhTw : found.claim.titleEn,
+              catalog,
+            ),
             copy,
           ),
           claim: Object.freeze({
             claimKey: found.claim.claimKey,
             kindLabel: copy.claimKindLabels[found.claim.kind],
-            ...(claimValueLabel(found.claim, locale, copy)
-              ? { valueLabel: claimValueLabel(found.claim, locale, copy) }
+            ...(claimValueLabel(found.claim, locale, copy, catalog)
+              ? { valueLabel: claimValueLabel(found.claim, locale, copy, catalog) }
               : {}),
             ...(() => {
               const observationType =
@@ -526,6 +542,7 @@ export class GetEvidencePanel {
                   resolved.sources,
                   locale,
                   copy,
+                  catalog,
                 ),
               }
             : {}),
@@ -567,11 +584,14 @@ export class GetEvidencePanel {
           return Object.freeze({ kind: "UNAVAILABLE", requestId: runtime.requestId });
         }
         const sources = Object.freeze(
-          resolved.sources.map((source) => sourceView(source, selection, stage4, locale, copy)),
+          resolved.sources.map((source) =>
+            sourceView(source, selection, stage4, locale, copy, catalog),
+          ),
         );
         const candidateName =
           locale === "zh-TW" ? factor.candidateProjectNameZhTw : factor.candidateProjectNameEn;
         const view: EvidencePanelView = Object.freeze({
+          catalog,
           version: EVIDENCE_PANEL_VERSION,
           locale,
           mode: "FACTOR",
@@ -586,7 +606,7 @@ export class GetEvidencePanel {
             candidateProjectName: candidateName,
           }),
           sources,
-          trace: factorTrace(factor, locale, copy),
+          trace: factorTrace(factor, locale, copy, catalog),
           notices: Object.freeze(
             factor.state === "UNKNOWN"
               ? [Object.freeze({ tone: "CAUTION" as const, text: copy.factorStateLabels.UNKNOWN })]
@@ -616,6 +636,7 @@ export class GetEvidencePanel {
           selectedTitle = evidenceTitle(
             locale,
             locale === "zh-TW" ? found.claim.titleZhTw : found.claim.titleEn,
+            catalog,
           );
           backSelection = backSelectionForSource(selection);
         } else if (selection.candidateProjectKey && selection.factorKey) {
@@ -651,7 +672,7 @@ export class GetEvidencePanel {
         const selectedSource = resolved.sources[0];
         if (!selectedSource)
           return Object.freeze({ kind: "UNAVAILABLE", requestId: runtime.requestId });
-        const source = sourceView(selectedSource, selection, stage4, locale, copy);
+        const source = sourceView(selectedSource, selection, stage4, locale, copy, catalog);
         const relatedClaims = stage5
           ? Object.freeze(
               stage5.claims
@@ -666,6 +687,7 @@ export class GetEvidencePanel {
                     title: evidenceTitle(
                       locale,
                       locale === "zh-TW" ? claim.titleZhTw : claim.titleEn,
+                      catalog,
                     ),
                     kindLabel: copy.claimKindLabels[claim.kind],
                   }),
@@ -673,6 +695,7 @@ export class GetEvidencePanel {
             )
           : Object.freeze([]);
         const view: EvidencePanelView = Object.freeze({
+          catalog,
           version: EVIDENCE_PANEL_VERSION,
           locale,
           mode: "SOURCE",
@@ -740,7 +763,9 @@ export class GetEvidencePanel {
       );
       if (!conflict) return Object.freeze({ kind: "UNAVAILABLE", requestId: runtime.requestId });
       const sourceViews = Object.freeze(
-        conflict.sources.map((source) => sourceView(source, selection, stage4, locale, copy)),
+        conflict.sources.map((source) =>
+          sourceView(source, selection, stage4, locale, copy, catalog),
+        ),
       );
       const backSelection: EvidencePanelSelection | undefined =
         selection.claimKey && selection.enrichmentRunId
@@ -759,6 +784,7 @@ export class GetEvidencePanel {
               })
             : undefined;
       const view: EvidencePanelView = Object.freeze({
+        catalog,
         version: EVIDENCE_PANEL_VERSION,
         locale,
         mode: "CONFLICT",

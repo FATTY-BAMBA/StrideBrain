@@ -1,5 +1,6 @@
 import type { ActiveProjectComparisonContext } from "@/modules/comparisons/domain/contracts";
 import {
+  sha256,
   permissionFingerprint,
   profileFingerprint,
 } from "@/modules/comparisons/application/fingerprints";
@@ -31,6 +32,8 @@ export class ActiveProjectContextService {
     const context: ActiveProjectComparisonContext = Object.freeze({
       ...record.profile,
       snapshotDate,
+      relatedSubtypeKeys: record.relatedSubtypeKeys,
+      relatedTypeFingerprint: sha256({ relatedSubtypeKeys: [...record.relatedSubtypeKeys].sort() }),
       activeQuoteVersionKey: record.activeQuoteVersionKey,
       sourceFingerprint: profileFingerprint(record.profile),
       permissionFingerprint: permissionFingerprint(runtimeContext, activeProjectId),

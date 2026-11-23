@@ -68,9 +68,15 @@ export class GetQuoteDraft {
         canDraft:
           canReadAmounts &&
           context.capabilities.has("quote:draft") &&
-          (!saved || isCategoryDraft(saved.lines)),
+          (!saved || isCategoryDraft(saved.lines, job.catalog.workCategories)),
         saved: saved
-          ? { ...saved, lines: saved.status === "DRAFT" ? orderQuoteLines(lines) : lines }
+          ? {
+              ...saved,
+              lines:
+                saved.status === "DRAFT"
+                  ? orderQuoteLines(lines, job.catalog.workCategories)
+                  : lines,
+            }
           : null,
       };
     });

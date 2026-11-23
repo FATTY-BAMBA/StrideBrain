@@ -1,3 +1,5 @@
+import { withFirmLists } from "../firm-lists/with-firm-lists";
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { PreviewQuoteTotals } from "@/modules/quote-draft/application/preview-quote-totals";
 import { GetQuoteDraftEvidence } from "@/modules/quote-draft/application/get-quote-draft-evidence";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
@@ -44,6 +46,8 @@ beforeAll(async () => {
     "verify-quote-draft",
     "quote-issue",
     "verify-quote-issue",
+    "firm-job-types-and-units",
+    "firm-work-categories",
   ])
     await sql.query(readFileSync(`prisma/fixtures/${fixture}.sql`, "utf8"));
 }, 30000);
@@ -73,7 +77,7 @@ async function actor(membership: string) {
     }),
   );
   if (!context) throw new Error("CONTEXT_REQUIRED");
-  return context;
+  return withFirmLists(context);
 }
 
 import { PrepareQuoteDraft } from "@/modules/quote-draft/application/prepare-quote-draft";
@@ -136,7 +140,7 @@ function saveInput(
     preparationToken: value.token,
     lines: value.preparation.suggestions.map((line) => ({
       categoryId: line.categoryId,
-      description: categoryLabel("en", line.categoryId),
+      description: categoryLabel("en", line.categoryId, seededFirmLists.workCategories),
       amount: line.basis.suggestedAmount ?? "1000.00",
     })),
   };
@@ -196,7 +200,7 @@ async function issueDraft(key: string, versionId: string) {
   expect(result.kind).toBe("ISSUED");
   return { prepared, input, result };
 }
-import { COMMERCIAL_CATEGORIES, SCOPE_CATEGORIES } from "@/modules/projects/domain/job-input";
+import { COMMERCIAL_CATEGORIES, SCOPE_CATEGORIES } from "@/fixtures/firm-lists";
 import { validateSaveDraft } from "@/modules/quote-draft/domain/save-input";
 import { renderQuotePdf } from "@/modules/quote-issue/infrastructure/render-quote-pdf";
 import type { QuoteDocumentSnapshot } from "@/modules/quote-issue/domain/contracts";
@@ -237,7 +241,7 @@ async function legacyQuote(status: "DRAFT" | "ISSUED") {
           organizationId: owner.organizationId,
           lineNumber: index + 1,
           categoryId: line.categoryId,
-          descriptionEn: categoryLabel("en", line.categoryId),
+          descriptionEn: categoryLabel("en", line.categoryId, seededFirmLists.workCategories),
           descriptionZhTw: line.description,
           quantity: "1",
           unit: "lot",
@@ -264,6 +268,64 @@ async function legacyQuote(status: "DRAFT" | "ISSUED") {
   return { key, job, versionId, snapshot, owner };
 }
 suite.sequential("SB-052 issuance on real PostgreSQL", () => {
+  it("snapshots authorized client details at issue and detects contact edits after preparation", async () => {
+    const { key, versionId } = await draft(),
+      owner = await actor("membership_horizon_admin"),
+      db = getPrismaClient();
+    const job = await db.project.findFirstOrThrow({
+      where: { businessKey: key, organizationId: owner.organizationId },
+    });
+    const details = {
+      contactPerson: "Synthetic contact",
+      address: "Synthetic client address",
+      taxId: "12345678",
+    };
+    await db.client.update({ where: { id: job.clientId }, data: details });
+    const initial = await issuePreparation(key, versionId);
+    expect(initial.preparation.snapshot.clientDetails).toEqual(details);
+    await db.client.update({
+      where: { id: job.clientId },
+      data: { address: "Updated synthetic address" },
+    });
+    expect(
+      await lifecycle().issue.execute(owner, {
+        projectKey: key,
+        token: initial.token,
+        idempotencyKey: randomUUID(),
+      }),
+    ).toEqual({ kind: "CHANGED" });
+    const withoutClientRead = {
+      ...owner,
+      capabilities: new Set(
+        [...owner.capabilities].filter((capability) => capability !== "client:read"),
+      ),
+    };
+    const deniedDetails = await lifecycle().prepare.execute(withoutClientRead, {
+      projectKey: key,
+      versionId,
+      options,
+    });
+    expect(deniedDetails.kind).toBe("PREPARED");
+    if (deniedDetails.kind === "PREPARED")
+      expect(deniedDetails.preparation.snapshot.clientDetails).toBeUndefined();
+    await issueDraft(key, versionId);
+    const issued = await lifecycle().document.execute(owner, versionId);
+    expect(issued.kind).toBe("DOCUMENT");
+    if (issued.kind !== "DOCUMENT") return;
+    expect(issued.snapshot.clientDetails).toEqual({
+      ...details,
+      address: "Updated synthetic address",
+    });
+    await db.client.update({
+      where: { id: job.clientId },
+      data: {
+        contactPerson: "Later synthetic contact",
+        address: "Later address",
+        taxId: "87654321",
+      },
+    });
+    expect(await lifecycle().document.execute(owner, versionId)).toEqual(issued);
+  });
   it("prepares without writes, issues exactly once concurrently, and freezes bilingual snapshot independently of Settings", async () => {
     const { key, versionId } = await draft(),
       before = await getPrismaClient().auditEvent.count(),
@@ -823,7 +885,7 @@ suite.sequential("SB-052 issuance on real PostgreSQL", () => {
     expect(persisted.map((line) => line.categoryId)).toEqual(COMMERCIAL_CATEGORIES);
     expect(persisted.map((line) => line.lineNumber)).toEqual([1, 2, 3, 4, 5, 6]);
     expect(saved.totals).toEqual(snapshot.totals);
-    const normalized = validateSaveDraft(input)!;
+    const normalized = validateSaveDraft(input, seededFirmLists.workCategories)!;
     const priorFingerprint = createHash("sha256")
       .update(
         JSON.stringify({
@@ -937,6 +999,8 @@ suite.sequential("SB-052 issuance on real PostgreSQL", () => {
       "quote-draft",
       "quote-issue",
       "verify-quote-issue",
+      "firm-job-types-and-units",
+      "firm-work-categories",
     ])
       await sql.query(readFileSync(`prisma/fixtures/${fixture}.sql`, "utf8"));
     const count = await sql.query(

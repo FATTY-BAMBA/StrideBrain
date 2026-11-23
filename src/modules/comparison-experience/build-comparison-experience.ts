@@ -1,3 +1,5 @@
+import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
+import { areaInFirmUnit, areaUnitLabel } from "@/modules/firm-lists/domain/area-unit";
 import {
   claimFindingText,
   findClaim,
@@ -95,9 +97,10 @@ function formatPoints(locale: Locale, value: string): string {
   return formatNumber(locale, value, 1);
 }
 
-function formatArea(locale: Locale, value: string, unit: string): string {
-  const renderedUnit = unit.toLowerCase() === "m2" ? "m²" : unit;
-  return `${formatNumber(locale, value, 0)} ${renderedUnit}`;
+function formatArea(locale: Locale, value: string, unit: string, catalog: FirmLists): string {
+  return unit.toLowerCase() === "m2"
+    ? `${areaInFirmUnit(value, catalog.areaDisplayUnit)} ${areaUnitLabel(catalog.areaDisplayUnit)}`
+    : `${formatNumber(locale, value, 2)} ${unit}`;
 }
 
 function formatDate(locale: Locale, value: string): string {
@@ -405,6 +408,7 @@ function comparableCard(
   economics: Stage5EconomicsResult | undefined,
   locale: Locale,
   copy: ComparisonCopy,
+  catalog: FirmLists,
 ): ComparableProjectCardView {
   const staleOffers =
     economics?.supplierOffers.filter(
@@ -419,7 +423,7 @@ function comparableCard(
     bandLabel: copy.bands[match.band],
     evidenceCoverageLabel: `${match.displayEvidenceCoverage}%`,
     locationLabel: projectLocationLabel(locale, match.project.location),
-    areaLabel: formatArea(locale, match.project.areaValue, match.project.areaUnit),
+    areaLabel: formatArea(locale, match.project.areaValue, match.project.areaUnit, catalog),
     completionLabel: formatDate(locale, match.project.completedAt),
     strongestFactors: Object.freeze(
       match.strongestFactors.map((factor) => factorFromSummary(factor, locale, copy)),
@@ -462,6 +466,7 @@ function synthesis(
   economics: Stage5EconomicsResult | undefined,
   locale: Locale,
   copy: ComparisonCopy,
+  catalog: FirmLists,
 ): ComparisonExperienceView["synthesis"] {
   const history: ComparisonSynthesisItemView[] = [];
   const differences: ComparisonSynthesisItemView[] = [];
@@ -470,7 +475,7 @@ function synthesis(
   for (const claim of economics?.accessScope === "STRUCTURAL_ONLY"
     ? []
     : (economics?.claims ?? [])) {
-    const text = claimFindingText(claim, locale);
+    const text = claimFindingText(claim, locale, catalog.workCategories);
     if (!text) continue;
     const destination =
       claim.kind === "CATEGORY_ACTUAL_INSUFFICIENT"
@@ -502,7 +507,7 @@ function synthesis(
       ),
     );
   }
-  const recommendation = recommendationText(economics, locale);
+  const recommendation = recommendationText(economics, locale, catalog.workCategories);
   return Object.freeze({
     history: Object.freeze(history),
     differences: Object.freeze(differences),
@@ -567,6 +572,7 @@ function contextSections(
   selectedKeys: readonly string[],
   locale: Locale,
   copy: ComparisonCopy,
+  catalog: FirmLists,
 ): readonly ComparisonTableSectionView[] {
   const contextRows: ComparisonTableRowView[] = [
     Object.freeze({
@@ -577,12 +583,14 @@ function contextSections(
         selectedKeys,
         cell(
           "VALUE",
-          projectSubtypeLabel(locale, stage4.activeContext.subtype) ?? copy.states.unavailable,
+          projectSubtypeLabel(locale, stage4.activeContext.subtype, catalog.jobTypes) ??
+            copy.states.unavailable,
         ),
         (match) =>
           cell(
             "VALUE",
-            projectSubtypeLabel(locale, match.project.subtype) ?? copy.states.unavailable,
+            projectSubtypeLabel(locale, match.project.subtype, catalog.jobTypes) ??
+              copy.states.unavailable,
           ),
       ),
     }),
@@ -594,10 +602,18 @@ function contextSections(
         selectedKeys,
         cell(
           "VALUE",
-          formatArea(locale, stage4.activeContext.areaValue, stage4.activeContext.areaUnit),
+          formatArea(
+            locale,
+            stage4.activeContext.areaValue,
+            stage4.activeContext.areaUnit,
+            catalog,
+          ),
         ),
         (match) =>
-          cell("VALUE", formatArea(locale, match.project.areaValue, match.project.areaUnit)),
+          cell(
+            "VALUE",
+            formatArea(locale, match.project.areaValue, match.project.areaUnit, catalog),
+          ),
       ),
     }),
     Object.freeze({
@@ -685,7 +701,7 @@ function contextSections(
       categoryRows.push(
         historyRow(
           `${category.categoryId}-${basis}`,
-          `${categoryLabel(locale, category.categoryId)} · ${basis === "QUOTE" ? findingsCopy(locale).quotedRow : findingsCopy(locale).actualRow}`,
+          `${categoryLabel(locale, category.categoryId, catalog.workCategories)} · ${basis === "QUOTE" ? findingsCopy(locale).quotedRow : findingsCopy(locale).actualRow}`,
           stage4,
           selectedKeys,
           basis === "QUOTE" ? category.quoteVariance : category.forecastVariance,
@@ -777,13 +793,14 @@ function contextSections(
 
 export function buildComparisonExperience(
   input: Readonly<{
+    catalog: FirmLists;
     stage4: Stage4ComparisonResult;
     economics?: Stage5EconomicsResult | undefined;
     locale: Locale;
     requestedSelectedProjectKeys?: readonly string[] | undefined;
   }>,
 ): ComparisonExperienceView {
-  const { stage4, economics, locale } = input;
+  const { stage4, economics, locale, catalog } = input;
   if (economics && economics.run.comparisonRunId !== stage4.run.id) {
     throw new Error("COMPARISON_EXPERIENCE_RUN_MISMATCH");
   }
@@ -818,6 +835,7 @@ export function buildComparisonExperience(
 
   return Object.freeze({
     version: COMPARISON_EXPERIENCE_VERSION,
+    catalog: input.catalog,
     locale,
     route: Object.freeze({
       projectKey: stage4.activeContext.projectKey,
@@ -849,8 +867,14 @@ export function buildComparisonExperience(
       projectKey: stage4.activeContext.projectKey,
       name: localizedName(locale, stage4.activeContext),
       subtypeLabel:
-        projectSubtypeLabel(locale, stage4.activeContext.subtype) ?? copy.states.unavailable,
-      areaLabel: formatArea(locale, stage4.activeContext.areaValue, stage4.activeContext.areaUnit),
+        projectSubtypeLabel(locale, stage4.activeContext.subtype, catalog.jobTypes) ??
+        copy.states.unavailable,
+      areaLabel: formatArea(
+        locale,
+        stage4.activeContext.areaValue,
+        stage4.activeContext.areaUnit,
+        catalog,
+      ),
       locationLabel: projectLocationLabel(locale, stage4.activeContext.location),
       ...(stage4.activeContext.activeQuoteVersionKey
         ? { quoteVersionLabel: stage4.activeContext.activeQuoteVersionKey }
@@ -863,6 +887,7 @@ export function buildComparisonExperience(
           stage4.activeContext.activeQuoteVersionKey ? economics : undefined,
           locale,
           copy,
+          catalog,
         ),
       ),
     ),
@@ -876,10 +901,11 @@ export function buildComparisonExperience(
         selectedProjectKeys,
         locale,
         copy,
+        catalog,
       ),
     }),
     synthesis: stage4.activeContext.activeQuoteVersionKey
-      ? synthesis(economics, locale, copy)
+      ? synthesis(economics, locale, copy, catalog)
       : {
           history: [],
           differences: [],

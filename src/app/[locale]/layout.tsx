@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
+import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
 import { WorkspaceShell } from "@/components/shell/workspace-shell";
 import { loadWorkspaceAccount } from "@/lib/server/workspace-account";
 import { getServerEnvironment } from "@/lib/env/server-env";
@@ -57,11 +58,17 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const locale = rawLocale;
   const catalog = getCatalog(locale);
   const account = await loadWorkspaceAccount(locale);
+  const context = await resolveServerRuntimeContext().catch(() => null);
 
   return (
     <html lang={htmlLanguage(locale)}>
       <body>
-        <WorkspaceShell locale={locale} catalog={catalog} account={account}>
+        <WorkspaceShell
+          canReadClients={context?.capabilities.has("client:read") ?? false}
+          locale={locale}
+          catalog={catalog}
+          account={account}
+        >
           {children}
         </WorkspaceShell>
       </body>

@@ -14,32 +14,35 @@ import {
 
 type GlobalNavProps = {
   locale: Locale;
+  canReadClients?: boolean;
   labels: Pick<Catalog, `nav.${GlobalSurfaceKey}`>;
 };
 
-export function GlobalNav({ locale, labels }: GlobalNavProps) {
+export function GlobalNav({ locale, labels, canReadClients = false }: GlobalNavProps) {
   const pathname = usePathname();
 
   return (
     <nav className="global-nav" aria-label={labels["nav.projects"]}>
-      {globalNavigation.map((item) => {
-        const href = globalSurfaceHref(locale, item);
-        const isActive = item.segment
-          ? pathname === href || pathname.startsWith(`${href}/`)
-          : pathname === href;
+      {globalNavigation
+        .filter((item) => item.key !== "clients" || canReadClients)
+        .map((item) => {
+          const href = globalSurfaceHref(locale, item);
+          const isActive = item.segment
+            ? pathname === href || pathname.startsWith(`${href}/`)
+            : pathname === href;
 
-        return (
-          <Link
-            key={item.key}
-            href={href as Route}
-            className="global-nav__item"
-            aria-current={isActive ? "page" : undefined}
-          >
-            <span>{labels[item.labelKey as keyof typeof labels]}</span>
-            {item.planned && <small>{locale === "zh-TW" ? "規劃中" : "Planned"}</small>}
-          </Link>
-        );
-      })}
+          return (
+            <Link
+              key={item.key}
+              href={href as Route}
+              className="global-nav__item"
+              aria-current={isActive ? "page" : undefined}
+            >
+              <span>{labels[item.labelKey as keyof typeof labels]}</span>
+              {item.planned && <small>{locale === "zh-TW" ? "規劃中" : "Planned"}</small>}
+            </Link>
+          );
+        })}
     </nav>
   );
 }

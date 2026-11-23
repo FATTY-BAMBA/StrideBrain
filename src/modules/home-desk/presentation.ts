@@ -1,3 +1,4 @@
+import type { FirmWorkCategory } from "@/modules/firm-lists/domain/contracts";
 import { formatMoney } from "@/modules/finance/format-money";
 import { comparisonHref } from "@/modules/comparison-experience/route-state";
 import { internalReviewHref } from "@/modules/internal-review-experience/route-state";
@@ -8,12 +9,16 @@ import { categoryLabel } from "@/modules/localization/jobs";
 import { claimFindingText } from "@/modules/economics/presentation/claim-findings";
 import type { ClosedJobLesson } from "@/modules/economics/domain/closed-job-economics-service";
 
-export function decisionPresentation(item: HomeDecision, locale: Locale) {
+export function decisionPresentation(
+  item: HomeDecision,
+  locale: Locale,
+  categories: readonly FirmWorkCategory[],
+) {
   const copy = homeDeskCopy(locale);
   return {
     sentence:
       ["REVIEW_QUOTE", "ISSUE_QUOTE"].includes(item.kind) && item.claim
-        ? claimFindingText(item.claim, locale)
+        ? claimFindingText(item.claim, locale, categories)
         : item.kind === "ISSUE_QUOTE"
           ? copy.issue
           : item.kind === "AWAITING_CLIENT"
@@ -61,11 +66,15 @@ export function decisionPresentation(item: HomeDecision, locale: Locale) {
               }),
   };
 }
-export function closedLessonText(lesson: ClosedJobLesson, locale: Locale) {
+export function closedLessonText(
+  lesson: ClosedJobLesson,
+  locale: Locale,
+  categories: readonly FirmWorkCategory[],
+) {
   return homeDeskCopy(locale)
     [lesson.exceeded ? "exceeded" : "closest"].replace(
       "{category}",
-      categoryLabel(locale, lesson.categoryId),
+      categoryLabel(locale, lesson.categoryId, categories),
     )
     .replace("{amount}", formatMoney(lesson.difference, lesson.currency));
 }

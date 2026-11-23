@@ -8,6 +8,8 @@ describe("navigation contracts", () => {
     expect(globalNavigation.map((item) => item.key)).toEqual([
       "home",
       "projects",
+      "quotes",
+      "clients",
       "knowledge",
       "customerCare",
     ]);

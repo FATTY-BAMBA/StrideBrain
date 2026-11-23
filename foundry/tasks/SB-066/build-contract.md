@@ -10,4 +10,4 @@
 - Preserve all assistant permission, grounding, privacy, metering and evaluation gates. No live calls in CI; paid evaluation maximum two dispatches, reports and costs retained.
 - Hosted acceptance is waiting for the Product Director. Keep the sole PR in draft.
 
-Pending product decisions are listed in inventory.md; do not implement dependent behavior until answered.
+Confirmed decisions are recorded in inventory.md: lock used pricing mappings; keep pricing-only parents hidden from scopes; one Quotes row per quote using issued/accepted amounts, with a draft-revision marker.

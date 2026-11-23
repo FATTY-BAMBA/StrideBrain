@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { expect, it } from "vitest";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 import { renderQuotePdf } from "@/modules/quote-issue/infrastructure/render-quote-pdf";
@@ -148,3 +148,27 @@ it("keeps an existing issued PDF byte-identical to the pre-SB-054 renderer, incl
   const content = await text(after);
   expect(content.indexOf("現場協調與交付")).toBeLessThan(content.indexOf("拆除、隔間與天花"));
 });
+
+it.each(["en", "zh-TW"] as const)(
+  "prints only the recorded client contact/address/tax block in %s",
+  async (language) => {
+    const snapshot = {
+      ...sample,
+      language,
+      clientDetails: {
+        contactPerson: language === "en" ? "Synthetic Client Contact" : "合成客戶聯絡人",
+        address:
+          language === "en"
+            ? "200 Example Road, Taipei (synthetic address)"
+            : "臺北市合成路200號（合成地址）",
+        taxId: "12345678",
+      },
+    };
+    const pdf = await renderQuotePdf(snapshot),
+      content = await text(pdf);
+    for (const value of Object.values(snapshot.clientDetails)) expect(content).toContain(value);
+    expect(content).toContain(language === "en" ? "Contact person" : "聯絡人");
+    if (process.env.STRIDEBRAIN_SB066_CAPTURE_PDF === "true")
+      writeFileSync(`foundry/tasks/SB-066/evidence/client-quote-${language}.pdf`, pdf);
+  },
+);

@@ -3,7 +3,7 @@ import { randomUUID } from "node:crypto";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
 import { createJobDraftService } from "@/lib/server/job-draft-services";
 import { createProjectWriteServices } from "@/lib/server/project-write-services";
-import { generateJobReference } from "@/lib/server/job-reference";
+import { generateJobReference, generateClientReference } from "@/lib/server/job-reference";
 import { isSupportedLocale } from "@/modules/localization/config";
 import type { JobDraftActionState } from "@/modules/assistant/application/job-draft-action-state";
 
@@ -20,11 +20,14 @@ async function draft(
       return unavailable;
     if (typeof text !== "string" || !text.trim() || text.length > maxLength)
       return { outcome: { kind: "UNAVAILABLE", reason: "INVALID_OUTPUT" } };
+    if (!runtime.firmLists) return unavailable;
     const context = { ...runtime, locale };
     const clients = await createProjectWriteServices().listClients.execute(context);
     if (clients.kind !== "AVAILABLE") return unavailable;
     const form = {
       businessKey: generateJobReference(),
+      clientBusinessKey: generateClientReference(),
+      catalog: context.firmLists!,
       idempotencyKey: randomUUID(),
       clients: clients.clients,
     };

@@ -48,7 +48,10 @@ export class GetHomeComparison {
       return { kind: "OUT_OF_DATE" };
     const current = await this.activeContext.resolve(context, projectId);
     if (!current) return { kind: "UNAVAILABLE" };
-    if (comparison.activeContext.sourceFingerprint !== current.context.sourceFingerprint)
+    if (
+      comparison.activeContext.sourceFingerprint !== current.context.sourceFingerprint ||
+      comparison.activeContext.relatedTypeFingerprint !== current.context.relatedTypeFingerprint
+    )
       return { kind: "OUT_OF_DATE" };
     const economics = ids.enrichmentRunId
       ? await this.economics.getAuthorizedResult(context, ids.enrichmentRunId)

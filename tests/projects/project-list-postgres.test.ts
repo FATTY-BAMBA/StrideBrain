@@ -1,3 +1,4 @@
+import { withFirmLists } from "../firm-lists/with-firm-lists";
 import { execFileSync } from "node:child_process";
 import { randomUUID } from "node:crypto";
 import { PrismaPg } from "@prisma/adapter-pg";
@@ -72,7 +73,7 @@ postgres("Projects entry with real PostgreSQL and signed fixture identities", ()
       ),
     );
     if (!context) throw new Error("TEST_CONTEXT_REQUIRED");
-    return context;
+    return withFirmLists(context);
   }
   function useCase() {
     return new ListAuthorizedProjects(

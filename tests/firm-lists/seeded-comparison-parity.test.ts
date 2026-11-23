@@ -45,8 +45,8 @@ suite("SB-066 seeded comparison parity", () => {
           sufficiencyCode: claim.sufficiencyCode,
           evidenceReferenceIds: claim.evidenceReferenceIds,
           warningCodes: claim.warningCodes,
-          en: claimFindingText(claim, "en"),
-          zhTw: claimFindingText(claim, "zh-TW"),
+          en: claimFindingText(claim, "en", context.firmLists!.workCategories),
+          zhTw: claimFindingText(claim, "zh-TW", context.firmLists!.workCategories),
         })),
       };
       // Capture once before behavior changes; later runs cannot overwrite the baseline.

@@ -1,3 +1,4 @@
+import { withFirmLists } from "../firm-lists/with-firm-lists";
 import { randomUUID } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
@@ -100,7 +101,7 @@ async function actor(membership = "membership_horizon_mei", locale: Locale = "en
   );
   expect(context).not.toBeNull();
   if (!context) throw new Error("TEST_SESSION_NOT_RESOLVED");
-  return { context, cookie };
+  return { context: await withFirmLists(context), cookie };
 }
 
 async function pair(currentActor: Actor) {
@@ -1682,7 +1683,10 @@ describePostgres("Stage 8 independent PostgreSQL invariants", () => {
           new Request("https://stridebrain.test", { headers: { cookie: fixture.actor.cookie } }),
         );
         if (!current) throw new Error("TEST_DOWNGRADED_CONTEXT_REQUIRED");
-        const workspace = await createProjectWorkspaceService().execute(current, PROJECT);
+        const workspace = await createProjectWorkspaceService().execute(
+          await withFirmLists(current),
+          PROJECT,
+        );
         expect(workspace.kind).toBe("AVAILABLE");
         if (workspace.kind !== "AVAILABLE") throw new Error("TEST_WORKSPACE_REQUIRED");
         expect(workspace.workspace.openActions).toEqual([]);

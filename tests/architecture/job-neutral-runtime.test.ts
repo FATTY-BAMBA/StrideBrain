@@ -10,13 +10,28 @@ it("keeps runtime findings independent of a named fixture or favored category", 
   const violations: string[] = [];
   for (const path of files("src")) {
     const name = relative("src", path).replaceAll("\\", "/");
+    if (name.startsWith("fixtures/")) continue;
     if (name.startsWith("modules/preview-session/")) continue; // Temporary exemption until SB-042.
     const text = readFileSync(path, "utf8");
     if (/XINYI_|Xinyi Flagship|Horizon Atelier/.test(text)) violations.push(name);
+    if (/["'](?:IMPORTED_STONE|LIGHTING_ELECTRICAL)["']/.test(text)) violations.push(name);
+  }
+  expect(violations).toEqual([]);
+});
+
+it("keeps seeded job types and work-category keys out of production readers", async () => {
+  const { seededFirmLists } = await import("@/fixtures/firm-lists");
+  const keys = [...seededFirmLists.jobTypes, ...seededFirmLists.workCategories].map(
+    (entry) => entry.key,
+  );
+  const violations: string[] = [];
+  for (const path of files("src")) {
+    const name = relative("src", path).replaceAll("\\", "/");
+    if (name.startsWith("fixtures/")) continue;
+    const text = readFileSync(path, "utf8");
     if (
-      name !== "modules/projects/domain/job-input.ts" &&
-      !name.startsWith("modules/localization/") &&
-      /["'](?:IMPORTED_STONE|LIGHTING_ELECTRICAL)["']/.test(text)
+      keys.some((key) => text.includes(`"${key}"`) || text.includes(`'${key}'`)) ||
+      /from ["']@\/fixtures\//.test(text)
     )
       violations.push(name);
   }

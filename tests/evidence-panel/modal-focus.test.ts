@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 // @vitest-environment jsdom
 import { act, createElement, Fragment, StrictMode } from "react";
 import { createRoot, type Root } from "react-dom/client";
@@ -84,6 +85,7 @@ function proposal(): ProposalDTO {
 
 function view(): ComparisonExperienceView {
   return {
+    catalog: seededFirmLists,
     version: "comparison-experience.v1",
     locale,
     route: {
@@ -152,6 +154,7 @@ function panel(selection: EvidencePanelSelection): EvidencePanelOutcome {
       ? [selection.sourceKey]
       : sourceKeys.filter((key) => !removeSource || key !== sourceKeys[1]);
   const result: EvidencePanelView = {
+    catalog: seededFirmLists,
     version: "evidence-panel.v1",
     locale,
     mode: selection.mode,

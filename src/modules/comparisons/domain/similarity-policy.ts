@@ -1,3 +1,4 @@
+import { JOB_FIXED_VALUES } from "@/modules/projects/domain/job-input";
 import {
   SIMILARITY_POLICY_VERSION,
   type ActiveProjectComparisonContext,
@@ -49,20 +50,6 @@ const FACTOR_LABEL_KEYS: Readonly<Record<SimilarityFactorKey, string>> = Object.
   COMPLETION_RECENCY: "comparison.factor.completionRecency",
   LOCATION_PROXIMITY: "comparison.factor.locationProximity",
 });
-
-const ADJACENT_SUBTYPES: Readonly<Record<string, Readonly<Record<string, readonly string[]>>>> =
-  Object.freeze({
-    COMMERCIAL_INTERIOR_FIT_OUT: Object.freeze({
-      RETAIL_FLAGSHIP: Object.freeze([
-        "RETAIL_RENOVATION",
-        "RETAIL_CONCEPT_STORE",
-        "RETAIL_SHOWROOM",
-      ]),
-      RETAIL_RENOVATION: Object.freeze(["RETAIL_FLAGSHIP", "RETAIL_CONCEPT_STORE"]),
-      RETAIL_CONCEPT_STORE: Object.freeze(["RETAIL_FLAGSHIP", "RETAIL_RENOVATION"]),
-      RETAIL_SHOWROOM: Object.freeze(["RETAIL_FLAGSHIP"]),
-    }),
-  });
 
 const ADJACENT_CITIES = new Set(["new taipei city|taipei city", "taipei city|new taipei city"]);
 
@@ -156,9 +143,10 @@ export function subtypeSimilarity(
   comparisonClass: string,
   activeSubtype: string,
   candidateSubtype: string,
+  relatedSubtypeKeys: readonly string[],
 ): number {
   if (activeSubtype === candidateSubtype) return 1;
-  const adjacent = ADJACENT_SUBTYPES[comparisonClass]?.[activeSubtype] ?? [];
+  const adjacent = comparisonClass === JOB_FIXED_VALUES.comparisonClass ? relatedSubtypeKeys : [];
   return adjacent.includes(candidateSubtype) ? 0.6 : 0;
 }
 
@@ -228,7 +216,12 @@ export function calculateFactors(
       active,
       candidate,
       "SUBTYPE",
-      subtypeSimilarity(active.comparisonClass, active.subtype, candidate.subtype),
+      subtypeSimilarity(
+        active.comparisonClass,
+        active.subtype,
+        candidate.subtype,
+        active.relatedSubtypeKeys,
+      ),
       "subtype.compatibility",
     ),
     setFactor(

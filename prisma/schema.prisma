@@ -122,6 +122,7 @@ enum EvidenceSubjectType {
 }
 
 model Organization {
+  areaDisplayUnit String @default("m2")
   assistantEnabled Boolean @default(false)
   assistantUsage AssistantUsage[]
   id                 String             @id
@@ -137,6 +138,10 @@ model Organization {
   people               Person[]
   memberships          Membership[]
   clients              Client[]
+  jobTypes             FirmJobType[]
+  jobTypeRelations     FirmJobTypeRelation[]
+  quoteUnits           FirmQuoteUnit[]
+  workCategories       FirmWorkCategory[]
   projects             Project[]
   suppliers            Supplier[]
   materials            Material[]
@@ -166,6 +171,83 @@ model Organization {
   internalReviewReceipts InternalReviewReceipt[]
   capabilityGrants     MembershipCapabilityGrant[]
   demoSessions         DemoSession[]
+}
+
+model FirmJobType {
+  id             String   @id
+  organizationId String
+  key            String
+  nameEn         String
+  nameZhTw       String
+  sortOrder      Int
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  relatedTo    FirmJobTypeRelation[] @relation("RelatedJobTypeFrom")
+  relatedFrom  FirmJobTypeRelation[] @relation("RelatedJobTypeTo")
+
+  @@unique([id, organizationId])
+  @@unique([organizationId, key])
+  @@index([organizationId, active, sortOrder])
+}
+
+model FirmJobTypeRelation {
+  id             String @id
+  organizationId String
+  fromTypeId     String
+  toTypeId       String
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  fromType FirmJobType @relation("RelatedJobTypeFrom", fields: [fromTypeId, organizationId], references: [id, organizationId], onDelete: Cascade)
+  toType   FirmJobType @relation("RelatedJobTypeTo", fields: [toTypeId, organizationId], references: [id, organizationId], onDelete: Cascade)
+
+  @@unique([id, organizationId])
+  @@unique([organizationId, fromTypeId, toTypeId])
+  @@index([organizationId, toTypeId])
+}
+
+model FirmQuoteUnit {
+  id             String   @id
+  organizationId String
+  key            String
+  nameEn         String
+  nameZhTw       String
+  sortOrder      Int
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([id, organizationId])
+  @@unique([organizationId, key])
+  @@index([organizationId, active, sortOrder])
+}
+
+model FirmWorkCategory {
+  id             String   @id
+  organizationId String
+  key            String
+  nameEn         String
+  nameZhTw       String
+  sortOrder      Int
+  active         Boolean  @default(true)
+  scopeSelectable Boolean @default(true)
+  aliases        String[] @default([])
+  pricedUnderId  String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  pricedUnder FirmWorkCategory? @relation("WorkCategoryPricing", fields: [pricedUnderId, organizationId], references: [id, organizationId], onDelete: Restrict)
+  pricedScopes FirmWorkCategory[] @relation("WorkCategoryPricing")
+
+  @@unique([id, organizationId])
+  @@unique([organizationId, key])
+  @@index([organizationId, active, sortOrder])
+  @@index([organizationId, pricedUnderId])
 }
 
 model Person {
@@ -277,6 +359,12 @@ model Client {
   nameEn         String
   nameZhTw       String
   clientType     String
+  contactPerson  String   @default("")
+  phone          String   @default("")
+  email          String   @default("")
+  address        String   @default("")
+  taxId          String   @default("")
+  note           String   @default("")
   active         Boolean  @default(true)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
@@ -287,6 +375,8 @@ model Client {
   @@unique([organizationId, businessKey])
   @@unique([id, organizationId])
   @@index([organizationId, clientType])
+  @@index([organizationId, active, nameEn])
+  @@index([organizationId, active, nameZhTw])
 }
 
 model Project {
@@ -340,6 +430,7 @@ model Project {
   @@unique([id, organizationId])
   @@index([organizationId, status, comparisonClass])
   @@index([organizationId, subtype, completedAt])
+  @@index([organizationId, clientId])
 }
 
 model ProjectScope {

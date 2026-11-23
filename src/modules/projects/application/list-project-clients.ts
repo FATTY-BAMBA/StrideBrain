@@ -8,7 +8,11 @@ export type ProjectClientsOutcome =
 export class ListProjectClients {
   constructor(private readonly clients: ProjectClientRepositoryPort) {}
   async execute(context: RuntimeContext): Promise<ProjectClientsOutcome> {
-    if (!context.capabilities.has("project:create") || !context.capabilities.has("project:read"))
+    if (
+      !context.capabilities.has("client:read") ||
+      !context.capabilities.has("project:create") ||
+      !context.capabilities.has("project:read")
+    )
       return { kind: "UNAVAILABLE" };
     try {
       const rows = await this.clients.listActiveClients(context);

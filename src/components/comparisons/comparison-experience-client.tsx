@@ -381,6 +381,7 @@ function ComparisonResultExperience({
     <div className={styles.page}>
       {freshness ? (
         <StaleComparisonNotice
+          catalog={view.catalog}
           freshness={freshness}
           locale={view.locale}
           projectKey={view.route.projectKey}

@@ -16,12 +16,13 @@ Baseline: `6310c1628e4a2e82e9647bc02cdd297326f6b363`. Scope: every matching prod
 | Area and rates          | Stored project areas and comparisons use m2 at scale 3; entry is m2 and #62 converts numeric 坪. Add firm input/display preference using exact conversion; retain canonical m2 for calculations. Audit all area and rate labels so changing display units never relabels unchanged numbers.                                                                  |
 | Navigation and Settings | Home, Projects, then Knowledge and Customer care (planned). Insert Quotes and capability-gated Clients. Add owner firm-list controls beside existing firm document/AI settings.                                                                                                                                                                              |
 
-## Decisions pending
+## Product decisions
 
-- Whether a used category's priced-under mapping is locked, or versioned for future jobs while preserving existing jobs.
-- Whether Quotes shows every version or only each quote's current version.
+- Confirmed: priced-under mappings lock once any stored job, quote line, cost or offer uses the category, including closed/retired records. Settings explains the lock. Change meaning by retiring the entry and adding another.
+- Confirmed: keep pricing-only parents hidden from new-job scope choices using category data.
+- Confirmed: one row per quote. Prefer latest issued/accepted version and its issue date/total; mark a newer draft revision. If never issued, show draft/no number/created date. Omit superseded rows; filter by the displayed status; link to the job Quote tab.
 
-No dependent behavior will be implemented until these are resolved. Independent inventory, baseline verification and client detail work can proceed.
+All three product decisions are resolved.
 
 ## Schema and fixture readers
 

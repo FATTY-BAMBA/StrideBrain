@@ -81,6 +81,11 @@ function database(
   overrides: Partial<PrismaComparableProjectDatabase> = {},
 ): PrismaComparableProjectDatabase {
   return {
+    firmJobType: {
+      findFirst: vi
+        .fn()
+        .mockResolvedValue({ relatedTo: [{ toType: { key: "RETAIL_RENOVATION" } }] }),
+    },
     project: {
       findFirst: vi.fn().mockResolvedValue(null),
       findMany: vi.fn().mockResolvedValue([]),

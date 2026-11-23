@@ -1,3 +1,5 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
+import { withFirmLists } from "../firm-lists/with-firm-lists";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { Client } from "pg";
 import { readFileSync, readdirSync } from "node:fs";
@@ -41,6 +43,8 @@ beforeAll(async () => {
     "stage5-economics",
     "job-neutral-findings",
     "verify-job-neutral-findings",
+    "firm-job-types-and-units",
+    "firm-work-categories",
   ])
     await sql.query(readFileSync(`prisma/fixtures/${fixture}.sql`, "utf8"));
 }, 30000);
@@ -70,7 +74,7 @@ async function actor(membership: string) {
     }),
   );
   if (!context) throw new Error("CONTEXT_REQUIRED");
-  return context;
+  return withFirmLists(context);
 }
 suite("job-specific findings from PostgreSQL", () => {
   it("requires the saving member and the current quote version for Home", async () => {
@@ -148,6 +152,7 @@ suite("job-specific findings from PostgreSQL", () => {
       );
       if (!decision) throw new Error("DECISION_REQUIRED");
       const view = buildComparisonExperience({
+        catalog: seededFirmLists,
         locale,
         stage4: comparison.result,
         economics: economics.result,
@@ -159,7 +164,9 @@ suite("job-specific findings from PostgreSQL", () => {
       ]
         .filter((finding) => finding.claimKey)
         .map((finding) => finding.body);
-      expect(sentences).toContain(decisionPresentation(decision, locale).sentence);
+      expect(sentences).toContain(
+        decisionPresentation(decision, locale, seededFirmLists.workCategories).sentence,
+      );
       expect(JSON.stringify(decision.claim)).not.toMatch(/stone|lighting|石材|照明/i);
       expect(
         view.table.sections
@@ -172,9 +179,9 @@ suite("job-specific findings from PostgreSQL", () => {
         ...view.synthesis.differences,
         ...view.synthesis.gaps,
       ].filter((item) => item.claimKey)) {
-        expect(decisionPresentation(decision, locale).href).toContain(
-          `economics=${economics.result.run.id}`,
-        );
+        expect(
+          decisionPresentation(decision, locale, seededFirmLists.workCategories).href,
+        ).toContain(`economics=${economics.result.run.id}`);
         const panel = await services.getEvidencePanel.execute(
           context,
           {
@@ -293,6 +300,7 @@ suite("job-neutral review outcomes", () => {
     ).toBe("NO_QUOTE_VERSION");
     for (const locale of ["en", "zh-TW"] as const) {
       const view = buildComparisonExperience({
+        catalog: seededFirmLists,
         stage4: comparison.result,
         economics: economics.result,
         locale,

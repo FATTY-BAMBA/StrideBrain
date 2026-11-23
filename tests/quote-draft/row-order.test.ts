@@ -1,9 +1,10 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 // @vitest-environment jsdom
 import { act, createElement } from "react";
 import { createRoot } from "react-dom/client";
 import { expect, it, vi } from "vitest";
 import { QuoteDraftWorkspace } from "@/components/quote-draft/quote-draft-workspace";
-import { COMMERCIAL_CATEGORIES, SCOPE_CATEGORIES } from "@/modules/projects/domain/job-input";
+import { COMMERCIAL_CATEGORIES, SCOPE_CATEGORIES } from "@/fixtures/firm-lists";
 import { quoteDraftCopy } from "@/modules/localization/quote-draft";
 import type { QuoteDraftView } from "@/modules/quote-draft/application/get-quote-draft";
 const mock = vi.hoisted(() => ({ prepare: vi.fn(), totals: vi.fn().mockResolvedValue(null) }));
@@ -24,6 +25,7 @@ it.each(["en", "zh-TW"] as const)(
       canDraft: true,
       canReadAmounts: true,
       job: {
+        catalog: seededFirmLists,
         id: "job",
         organizationId: "org",
         businessKey: "JOB",

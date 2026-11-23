@@ -125,6 +125,7 @@ function candidatePort(
   return {
     getActiveComparisonProfile: vi.fn().mockResolvedValue({
       profile: active,
+      relatedSubtypeKeys: ["RETAIL_RENOVATION", "RETAIL_CONCEPT_STORE", "RETAIL_SHOWROOM"],
       activeQuoteVersionId: "qv_xinyi_026_v3",
       activeQuoteVersionKey: "Q-XINYI-026-v3",
     }),

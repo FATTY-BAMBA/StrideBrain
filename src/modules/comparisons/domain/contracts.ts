@@ -70,6 +70,8 @@ export type ComparisonProjectProfile = Readonly<{
 export type ActiveProjectComparisonContext = ComparisonProjectProfile &
   Readonly<{
     snapshotDate: string;
+    relatedSubtypeKeys: readonly string[];
+    relatedTypeFingerprint: string;
     activeQuoteVersionKey?: string | undefined;
     sourceFingerprint: string;
     permissionFingerprint: string;
@@ -205,6 +207,7 @@ export type Stage4ComparisonResult = Readonly<{
   activeContext: Readonly<{
     // Legacy snapshots lack this metadata and cannot be reused as current Home findings.
     sourceFingerprint?: string;
+    relatedTypeFingerprint?: string;
     permissionFingerprint?: string;
     dataClassification?: DataClassification;
     projectKey: string;

@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { stageGroups } from "@/modules/projects/domain/stage-groups";
 import { labelledFacts } from "@/modules/assistant/domain/display-facts";
 import { assistantFactCopy, assistantFactLabels } from "@/modules/localization/assistant";
@@ -35,7 +36,7 @@ function setup() {
 }
 describe("assistant read tools", () => {
   it("defines bilingual pricing categories and refuses invented category keys before reading history", async () => {
-    const tool = assistantTools.find((t) => t.name === "get_past_prices")!;
+    const tool = assistantTools(seededFirmLists).find((t) => t.name === "get_past_prices")!;
     const properties = tool.parameters.properties as Record<
       string,
       { enum?: string[]; description?: string }
@@ -281,7 +282,9 @@ describe("assistant read tools", () => {
         arguments: {},
       },
     );
-    expect(result.sources[0]!.facts.costComparison).toBe(closedLessonText(lesson, "en"));
+    expect(result.sources[0]!.facts.costComparison).toBe(
+      closedLessonText(lesson, "en", seededFirmLists.workCategories),
+    );
     expect(result.sources[0]!.facts.costComparison).not.toBe("Actual cost exceeds quoted price");
   });
   it("resolves a Chinese job name in an English question without widening access", async () => {

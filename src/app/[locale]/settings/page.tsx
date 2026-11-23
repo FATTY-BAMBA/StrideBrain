@@ -1,3 +1,6 @@
+import { createFirmListServices } from "@/lib/server/firm-list-services";
+import { FirmListSettings } from "@/components/firm-lists/firm-list-settings";
+import { firmListsCopy } from "@/modules/localization/firm-lists";
 import Link from "next/link";
 import { AssistantSettings } from "@/components/assistant/assistant-settings";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
@@ -22,6 +25,7 @@ export default async function SettingsPage({ params }: { params: Promise<{ local
         .firm.execute({ ...context, locale })
         .catch(() => null)
     : null;
+  const lists = context ? await createFirmListServices().get.execute(context) : null;
   const sections =
     locale === "en" ? ["Team & access", "Data connections"] : ["團隊與存取權限", "資料連結"];
   return (
@@ -47,6 +51,11 @@ export default async function SettingsPage({ params }: { params: Promise<{ local
       ) : context?.capabilities.has("quote:read") ||
         context?.capabilities.has("settings:manage") ? (
         <p role="status">{quoteIssueCopy(locale).UNAVAILABLE}</p>
+      ) : null}
+      {lists?.kind === "AVAILABLE" ? (
+        <FirmListSettings initial={lists} locale={locale} />
+      ) : context?.capabilities.has("firm-lists:manage") ? (
+        <p role="status">{firmListsCopy(locale).UNAVAILABLE}</p>
       ) : null}
       {context && <AssistantSettings context={{ ...context, locale }} />}
       <div className="settings-planned">

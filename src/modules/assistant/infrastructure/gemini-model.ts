@@ -90,7 +90,11 @@ export class GeminiAssistantModel implements AssistantModelPort, JobDraftModelPo
                     name: "submit_job_draft",
                     description:
                       "Submit the supported fields of a review-only job draft; null means absent.",
-                    parametersJsonSchema: jobDraftSchema,
+                    parametersJsonSchema: jobDraftSchema({
+                      subtype: input.choices.subtype?.map((entry) => entry.value) ?? [],
+                      scopeCategoryIds:
+                        input.choices.scopeCategoryIds?.map((entry) => entry.value) ?? [],
+                    }),
                   },
                 ],
               },

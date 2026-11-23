@@ -17,6 +17,14 @@ import {
 } from "@/modules/comparisons/domain/similarity-policy";
 
 const SNAPSHOT_DATE = "2026-11-14";
+it("uses the firm's supplied related types without a built-in subtype table", () => {
+  expect(subtypeSimilarity("COMMERCIAL_INTERIOR_FIT_OUT", "FIRM-A", "FIRM-B", ["FIRM-B"])).toBe(
+    0.6,
+  );
+  expect(subtypeSimilarity("COMMERCIAL_INTERIOR_FIT_OUT", "FIRM-A", "FIRM-B", [])).toBe(0);
+  expect(subtypeSimilarity("COMMERCIAL_INTERIOR_FIT_OUT", "FIRM-A", "FIRM-A", [])).toBe(1);
+  expect(subtypeSimilarity("OTHER_CLASS", "FIRM-A", "FIRM-B", ["FIRM-B"])).toBe(0);
+});
 const ALL_SCOPES = [
   "SELECTIVE_DEMOLITION",
   "PARTITIONS_CEILINGS",
@@ -71,6 +79,8 @@ const active: ActiveProjectComparisonContext = {
   recordVersion: "2026-11-14T00:00:00.000Z",
   snapshotDate: SNAPSHOT_DATE,
   activeQuoteVersionKey: "Q-XINYI-026-v3",
+  relatedSubtypeKeys: ["RETAIL_RENOVATION", "RETAIL_CONCEPT_STORE", "RETAIL_SHOWROOM"],
+  relatedTypeFingerprint: "seeded-related-types",
   sourceFingerprint: "source-xinyi",
   permissionFingerprint: "permission-mei",
 };
@@ -213,13 +223,28 @@ describe("CPI-SIM-1.0 factor functions", () => {
 
   it("uses exact, adjacent, and incompatible subtype states", () => {
     expect(
-      subtypeSimilarity("COMMERCIAL_INTERIOR_FIT_OUT", "RETAIL_FLAGSHIP", "RETAIL_FLAGSHIP"),
+      subtypeSimilarity(
+        "COMMERCIAL_INTERIOR_FIT_OUT",
+        "RETAIL_FLAGSHIP",
+        "RETAIL_FLAGSHIP",
+        active.relatedSubtypeKeys,
+      ),
     ).toBe(1);
     expect(
-      subtypeSimilarity("COMMERCIAL_INTERIOR_FIT_OUT", "RETAIL_FLAGSHIP", "RETAIL_RENOVATION"),
+      subtypeSimilarity(
+        "COMMERCIAL_INTERIOR_FIT_OUT",
+        "RETAIL_FLAGSHIP",
+        "RETAIL_RENOVATION",
+        active.relatedSubtypeKeys,
+      ),
     ).toBe(0.6);
     expect(
-      subtypeSimilarity("COMMERCIAL_INTERIOR_FIT_OUT", "RETAIL_FLAGSHIP", "CORPORATE_OFFICE"),
+      subtypeSimilarity(
+        "COMMERCIAL_INTERIOR_FIT_OUT",
+        "RETAIL_FLAGSHIP",
+        "CORPORATE_OFFICE",
+        active.relatedSubtypeKeys,
+      ),
     ).toBe(0);
   });
 

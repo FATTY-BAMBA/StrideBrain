@@ -1,4 +1,5 @@
-import { CLIENT_TYPES, JOB_SUBTYPES, SCOPE_CATEGORIES } from "@/modules/projects/domain/job-input";
+import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
+import { CLIENT_TYPES } from "@/modules/projects/domain/job-input";
 import { draftArea } from "@/modules/projects/domain/draft-area";
 import { record } from "./grounding";
 
@@ -38,34 +39,38 @@ const exact = (maxLength: number, choices?: readonly string[]) => ({
   required: ["value", "quote"],
   additionalProperties: false,
 });
-export const jobDraftSchema = {
-  type: "object",
-  properties: {
-    name: exact(200),
-    clientName: exact(200),
-    clientType: exact(128, CLIENT_TYPES),
-    subtype: exact(128, JOB_SUBTYPES),
-    locationCity: exact(120),
-    locationDistrict: exact(120),
-    scopeCategoryIds: {
-      type: "array",
-      maxItems: SCOPE_CATEGORIES.length,
-      items: exact(128, SCOPE_CATEGORIES),
-    },
-    area: {
-      type: ["object", "null"],
-      properties: {
-        digits: { type: "string", maxLength: 19 },
-        unit: { type: "string", maxLength: 20 },
-        quote: { type: "string", minLength: 1, maxLength: 1000 },
+export function jobDraftSchema(
+  choices: Readonly<{ subtype: readonly string[]; scopeCategoryIds: readonly string[] }>,
+) {
+  return {
+    type: "object",
+    properties: {
+      name: exact(200),
+      clientName: exact(200),
+      clientType: exact(128, CLIENT_TYPES),
+      subtype: exact(128, choices.subtype),
+      locationCity: exact(120),
+      locationDistrict: exact(120),
+      scopeCategoryIds: {
+        type: "array",
+        maxItems: choices.scopeCategoryIds.length,
+        items: exact(128, choices.scopeCategoryIds),
       },
-      required: ["digits", "unit", "quote"],
-      additionalProperties: false,
+      area: {
+        type: ["object", "null"],
+        properties: {
+          digits: { type: "string", maxLength: 19 },
+          unit: { type: "string", maxLength: 20 },
+          quote: { type: "string", minLength: 1, maxLength: 1000 },
+        },
+        required: ["digits", "unit", "quote"],
+        additionalProperties: false,
+      },
     },
-  },
-  required: draftFields,
-  additionalProperties: false,
-};
+    required: draftFields,
+    additionalProperties: false,
+  };
+}
 
 type QuoteOccurrence = Readonly<{ start: number; end: number }>;
 function conflictingClientFields(
@@ -111,14 +116,22 @@ function conflictingClientFields(
 
 /** Invalid fields are dropped independently. Only quotes present in the redacted input count.
  * An area quote never starts inside a longer number, including one grouped with commas (1,200). */
-export function supportJobDraft(text: string, raw: unknown): SupportedJobDraft | null {
+export function supportJobDraft(
+  text: string,
+  raw: unknown,
+  lists: FirmLists,
+): SupportedJobDraft | null {
+  const jobTypes = lists.jobTypes.filter((entry) => entry.active).map((entry) => entry.key);
+  const scopes = lists.workCategories
+    .filter((entry) => entry.active && entry.scopeSelectable)
+    .map((entry) => entry.key);
   const input = record(raw);
   if (
     !input ||
     Object.keys(input).some((k) => !draftFields.includes(k as DraftField)) ||
     draftFields.some((k) => !(k in input)) ||
     !Array.isArray(input.scopeCategoryIds) ||
-    input.scopeCategoryIds.length > SCOPE_CATEGORIES.length
+    input.scopeCategoryIds.length > scopes.length
   )
     return null;
   const normalized = normalizeDraftText(text);
@@ -159,7 +172,7 @@ export function supportJobDraft(text: string, raw: unknown): SupportedJobDraft |
     const value = supported(
       input[field],
       field.startsWith("location") ? 120 : 200,
-      field === "clientType" ? CLIENT_TYPES : field === "subtype" ? JOB_SUBTYPES : undefined,
+      field === "clientType" ? CLIENT_TYPES : field === "subtype" ? jobTypes : undefined,
     );
     if (value) {
       values[field] = value;
@@ -176,7 +189,7 @@ export function supportJobDraft(text: string, raw: unknown): SupportedJobDraft |
   }
   const scopeCategoryIds: string[] = [];
   for (const [i, item] of input.scopeCategoryIds.entries()) {
-    const value = supported(item, 128, SCOPE_CATEGORIES);
+    const value = supported(item, 128, scopes);
     if (value && !scopeCategoryIds.includes(value)) {
       scopeCategoryIds.push(value);
       kept.push(`scopeCategoryIds.${value}`);

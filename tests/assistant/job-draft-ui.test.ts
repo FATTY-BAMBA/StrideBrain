@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 // @vitest-environment jsdom
 import { beforeEach, afterEach, it, expect, vi } from "vitest";
 import { createElement, act } from "react";
@@ -14,6 +15,8 @@ vi.mock("@/app/[locale]/job-draft-actions", () => ({
 }));
 vi.mock("@/app/[locale]/home-chat-actions", () => ({ askHomeAction: mocks.ask }));
 const seed = {
+  catalog: seededFirmLists,
+  clientBusinessKey: "C-2611-7KQM",
   businessKey: "J-2611-A7K3",
   idempotencyKey: "2c95e995-e35c-489f-8703-d956f227324a",
   clients: [{ businessKey: "CLIENT-01", name: "星序零售台灣" }],
@@ -61,7 +64,7 @@ it("fills the existing form, marks fields until edited, keeps missing city requi
       }),
     ),
   );
-  expect(host.textContent).toContain("120 坪 = 396.694 m²");
+  expect(host.textContent).toContain("120 坪 = 396.69 m²");
   expect(host.textContent).toContain("確認建立");
   expect(host.querySelector<HTMLInputElement>('[name="locationCity"]')?.required).toBe(true);
   expect(host.querySelector<HTMLInputElement>('[name="locationCity"]')?.value).toBe("");
@@ -105,3 +108,39 @@ it("hides drafting when off and retains the ordinary form; Home exposes an expli
   expect(host.textContent).toContain("Create a job");
   expect(host.querySelector("textarea")?.maxLength).toBe(280);
 });
+
+it.each([
+  ["ping", "120", "坪", "396.694", "120", null],
+  ["ping", "85", "m2", "85.000", "25.71", "85 m² = 25.71 坪"],
+  ["m2", "85", "m2", "85.000", "85", null],
+] as const)(
+  "fills the firm area unit %s from %s %s and only explains a conversion",
+  async (areaDisplayUnit, digits, unit, squareMetres, value, conversion) => {
+    await act(() =>
+      root.render(
+        createElement(NewJobForm, {
+          locale: "zh-TW",
+          ...seed,
+          catalog: { ...seed.catalog, areaDisplayUnit },
+          initialDraft: {
+            ...draft,
+            clientMode: "new",
+            clientBusinessKey: "",
+            area: { digits, unit, squareMetres },
+          },
+          confirmDraft: true,
+        }),
+      ),
+    );
+    expect(host.querySelector<HTMLInputElement>('[name="areaQuantity"]')?.value).toBe(value);
+    expect(host.querySelector<HTMLInputElement>('[name="areaUnit"]')?.value).toBe(areaDisplayUnit);
+    if (conversion) expect(host.textContent).toContain(conversion);
+    else expect(host.textContent).not.toContain(" = ");
+    expect(host.querySelector<HTMLInputElement>('[name="clientBusinessKey"]')?.value).toBe(
+      seed.clientBusinessKey,
+    );
+    expect(host.querySelector<HTMLInputElement>('[name="clientBusinessKey"]')?.readOnly).toBe(
+      false,
+    );
+  },
+);

@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { expect, it } from "vitest";
 import { categoryLabel, mentionedCategory } from "@/modules/localization/jobs";
 it.each([
@@ -10,17 +11,31 @@ it.each([
   ["SIGNAGE", "signage", "招牌"],
   ["COORDINATION", "handover", "協調"],
 ])("recognizes labels and bilingual aliases for %s", (id, en, zh) => {
-  expect(mentionedCategory(`What supports the ${en.toUpperCase()} quote?`)).toBe(id);
-  expect(mentionedCategory(`${zh}的報價有哪些差異？`)).toBe(id);
+  expect(
+    mentionedCategory(
+      `What supports the ${en.toUpperCase()} quote?`,
+      seededFirmLists.workCategories,
+    ),
+  ).toBe(id);
+  expect(mentionedCategory(`${zh}的報價有哪些差異？`, seededFirmLists.workCategories)).toBe(id);
   for (const locale of ["en", "zh-TW"] as const)
-    expect(mentionedCategory(categoryLabel(locale, id))).toBe(id);
+    expect(
+      mentionedCategory(
+        categoryLabel(locale, id, seededFirmLists.workCategories),
+        seededFirmLists.workCategories,
+      ),
+    ).toBe(id);
 });
 it.each(["milestone", "stonework", "electrically", "signages", "precoordination"])(
   "does not match an alias inside %s",
   (word) => {
-    expect(mentionedCategory(`What about ${word} in the quote?`)).toBeUndefined();
+    expect(
+      mentionedCategory(`What about ${word} in the quote?`, seededFirmLists.workCategories),
+    ).toBeUndefined();
   },
 );
 it("matches punctuation-delimited Latin words", () => {
-  expect(mentionedCategory('Evidence for "stone"?')).toBe("IMPORTED_STONE");
+  expect(mentionedCategory('Evidence for "stone"?', seededFirmLists.workCategories)).toBe(
+    "IMPORTED_STONE",
+  );
 });

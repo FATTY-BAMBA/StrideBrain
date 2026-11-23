@@ -1,3 +1,5 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
+import { withFirmLists } from "../firm-lists/with-firm-lists";
 import { execFileSync } from "node:child_process";
 import { randomUUID } from "node:crypto";
 import { createElement } from "react";
@@ -88,7 +90,7 @@ describePostgres("Independent SB-029 stored-data presentation review", () => {
       }),
     );
     if (!resolved) throw new Error("SYNTHETIC_REVIEW_CONTEXT_REQUIRED");
-    context = resolved;
+    context = await withFirmLists(resolved);
     const services = createComparisonServices();
     const structural = await services.runComparison.execute(context, "PRJ-XINYI-026");
     if (structural.kind !== "COMPLETE") throw new Error("COMPARISON_REQUIRED");
@@ -118,7 +120,12 @@ describePostgres("Independent SB-029 stored-data presentation review", () => {
     async (locale) => {
       const services = createComparisonServices();
       const saved = JSON.stringify(economics);
-      const view = buildComparisonExperience({ stage4: comparison, economics, locale });
+      const view = buildComparisonExperience({
+        catalog: seededFirmLists,
+        stage4: comparison,
+        economics,
+        locale,
+      });
       const rows = view.table.sections.flatMap((section) => section.rows);
       const lighting = rows.find((row) => row.key === "LIGHTING_ELECTRICAL-ACTUAL")!;
       const gap = view.synthesis.gaps.find(
@@ -190,7 +197,12 @@ describePostgres("Independent SB-029 stored-data presentation review", () => {
     expect(economics.overall.forecastVariance.currentBasis).toBe("FORECAST");
     expect(economics.overall.actualHistory.observationType).toBe("RECONCILED_ACTUAL_COST");
     for (const locale of locales) {
-      const view = buildComparisonExperience({ stage4: comparison, economics, locale });
+      const view = buildComparisonExperience({
+        catalog: seededFirmLists,
+        stage4: comparison,
+        economics,
+        locale,
+      });
       const rows = view.table.sections.flatMap((section) => section.rows);
       for (const key of ["overall-actual", "IMPORTED_STONE-ACTUAL", "LIGHTING_ELECTRICAL-ACTUAL"]) {
         const row = rows.find((candidate) => candidate.key === key)!;

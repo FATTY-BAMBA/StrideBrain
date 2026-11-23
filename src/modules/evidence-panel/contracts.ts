@@ -1,3 +1,4 @@
+import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
 import type { ComparisonFreshness } from "@/modules/comparisons/domain/freshness";
 import type { SimilarityFactorKey } from "@/modules/comparisons/domain/contracts";
 import type { AuthorityState, ObservationType } from "@/modules/projects/domain/project-workspace";
@@ -123,6 +124,7 @@ export type EvidencePanelConflictView = Readonly<{
 }>;
 
 export type EvidencePanelView = Readonly<{
+  catalog: FirmLists;
   version: typeof EVIDENCE_PANEL_VERSION;
   locale: Locale;
   mode: EvidencePanelMode;

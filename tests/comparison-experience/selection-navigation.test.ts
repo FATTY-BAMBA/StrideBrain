@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 // @vitest-environment jsdom
 import type * as ReactDOM from "react-dom";
 import { act, createElement } from "react";
@@ -23,6 +24,7 @@ function view(
   locale: Locale = "en",
 ): ComparisonExperienceView {
   return {
+    catalog: seededFirmLists,
     version: "comparison-experience.v1",
     locale,
     route: {

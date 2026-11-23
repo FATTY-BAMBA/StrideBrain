@@ -28,9 +28,12 @@ describe("Projects shell server-to-client disclosure boundary", () => {
       const props = boundary.navigation.mock.calls.at(-1)![0];
       expect(props).toEqual({
         locale,
+        canReadClients: false,
         labels: {
           "nav.home": catalog["nav.home"],
           "nav.projects": catalog["nav.projects"],
+          "nav.quotes": catalog["nav.quotes"],
+          "nav.clients": catalog["nav.clients"],
           "nav.knowledge": catalog["nav.knowledge"],
           "nav.customerCare": catalog["nav.customerCare"],
         },

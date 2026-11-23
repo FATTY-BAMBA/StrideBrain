@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { describe, expect, it, vi } from "vitest";
 
 import { GetProjectWorkspace } from "@/modules/projects/application/get-project-workspace";
@@ -94,6 +95,7 @@ function context(overrides: Partial<RuntimeContext> = {}): RuntimeContext {
     ]),
     locale: "zh-TW",
     dataMode: "DEMO_SYNTHETIC",
+    firmLists: seededFirmLists,
     ...overrides,
   };
 }
@@ -180,7 +182,12 @@ describe("GetProjectWorkspace", () => {
     expect(workspace.state).toBe("READY");
     expect(workspace.project.id).toBe(PROJECT_KEY);
     expect(workspace.project.name.display).toBe("信義旗艦店裝修");
-    expect(workspace.project.area).toEqual({ value: "640.000", unit: "m2" });
+    expect(workspace.project.area).toEqual({
+      value: "640.000",
+      unit: "m2",
+      displayValue: "640",
+      displayUnit: "m²",
+    });
     expect(workspace.commercial.activeQuote).toMatchObject({
       state: "VALUE",
       recordKey: "Q-XINYI-026-v3",

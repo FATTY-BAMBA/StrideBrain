@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { EvidencePanel } from "@/components/evidence/evidence-panel";
@@ -20,6 +21,7 @@ import type {
 } from "@/repositories/ports/evidence-panel-repository";
 
 const context: RuntimeContext = {
+  firmLists: seededFirmLists,
   requestId: "REQ-EVIDENCE-001",
   userId: "person-mei",
   membershipId: "membership-mei",
@@ -582,7 +584,7 @@ describe("QA-16/18 rendered evidence localization and financial authority", () =
     );
     if (outcome.kind !== "READY") throw Error("READY_REQUIRED");
     expect(outcome.view.sources[0]?.locatorLabel).toBe(
-      "紀錄類型: 預估成本項目 · 項目編號: 4 · 分類: 進口石材 · 版本: v3",
+      "紀錄類型: 預估成本項目 · 項目編號: 4 · 分類: 進口石材與硬質面材 · 版本: v3",
     );
     const text = renderToStaticMarkup(
       createElement(EvidencePanel, {

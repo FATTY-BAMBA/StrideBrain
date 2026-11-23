@@ -1,4 +1,5 @@
 "use client";
+import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -136,7 +137,9 @@ export function QuoteIssuePanel({
           <h3>{copy.findings}</h3>
           <ul>
             {view.findings.map((claim) => (
-              <li key={claim.claimKey}>{claimFindingText(claim, locale)}</li>
+              <li key={claim.claimKey}>
+                {claimFindingText(claim, locale, view.catalog.workCategories)}
+              </li>
             ))}
           </ul>
           <Link
@@ -408,6 +411,7 @@ export function QuoteIssuePanel({
             <ConflictForm
               key={`${conflict.categoryId}:${conflict.conflictKey}`}
               conflict={conflict}
+              catalog={view.catalog}
               locale={locale}
               pending={pending}
               canResolve={view.canResolve}
@@ -432,6 +436,7 @@ export function QuoteIssuePanel({
   );
 }
 function ConflictForm({
+  catalog,
   conflict,
   locale,
   pending,
@@ -439,6 +444,7 @@ function ConflictForm({
   onRead,
   onResolve,
 }: {
+  catalog: FirmLists;
   conflict: LineConflict;
   locale: Locale;
   pending: boolean;
@@ -458,7 +464,7 @@ function ConflictForm({
         onResolve(status, note);
       }}
     >
-      <h4>{categoryLabel(locale, conflict.categoryId)}</h4>
+      <h4>{categoryLabel(locale, conflict.categoryId, catalog.workCategories)}</h4>
       <button type="button" className={styles.button} disabled={pending} onClick={onRead}>
         {copy.readings}
       </button>
