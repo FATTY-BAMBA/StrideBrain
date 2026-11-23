@@ -52,6 +52,43 @@ function setup(script: ConstructorParameters<typeof FakeAssistantModel>[0] = [ca
   return { model, repo, tools, service: new AskAssistant(model, config, repo, tools) };
 }
 describe("bounded read-only assistant", () => {
+  it.each([0, 1, 2])(
+    "carries a discarded answer's subject only for one resolved named job (%i named)",
+    async (count) => {
+      const f = setup([call, answer("999 jobs")]);
+      const named = [
+        { projectKey: "J", names: ["Named job", "指定專案"] },
+        { projectKey: "K", names: ["Another job", "另一專案"] },
+      ].slice(0, count);
+      f.tools.resolveSubjects.mockResolvedValue({ kind: "AVAILABLE", named, projects: named });
+      const out = await f.service.execute(jobContext(), {
+        question: "Named job?",
+        projectKey: "PAGE-DEFAULT",
+      });
+      expect(out).toMatchObject({
+        kind: "FALLBACK",
+        reason: "UNGROUNDED",
+        discardReason: "UNSUPPORTED_NUMBER",
+      });
+      expect(out.kind === "FALLBACK" && out.subjectProjectKey).toBe(count === 1 ? "J" : undefined);
+    },
+  );
+  it("does not return a named fallback subject when the model failed before answering", async () => {
+    const f = setup([
+      () => {
+        throw new AssistantModelError("UNAVAILABLE");
+      },
+    ]);
+    const named = { projectKey: "J", names: ["Named job"] };
+    f.tools.resolveSubjects.mockResolvedValue({
+      kind: "AVAILABLE",
+      named: [named],
+      projects: [named],
+    });
+    expect(await f.service.execute(jobContext(), { question: "Named job?" })).not.toHaveProperty(
+      "subjectProjectKey",
+    );
+  });
   it.each(["en", "zh-TW"] as const)(
     "answers an empty waiting list immediately in %s, ignoring an unrelated page default",
     async (locale) => {

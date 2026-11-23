@@ -98,6 +98,25 @@ async function ask(
 }
 suite("hosted regressions through authorized records and the Home server action", () => {
   it.each([
+    "PRJ-XINYI-026 的報價有哪些比較結果？",
+    "Xinyi Flagship Renovation 的報價有哪些比較結果？",
+  ])(
+    "keeps the named job in the keyword reply after discarding an answer: %s",
+    async (question) => {
+      const { turn, fake } = await ask(
+        question,
+        { name: "get_saved_comparison", arguments: { projectKey: "PRJ-XINYI-026" } },
+        () => "This quote costs NT$999999999.",
+      );
+      expect(fake.requests).toHaveLength(2);
+      expect(turn.ai).toBeUndefined();
+      expect(turn.aiFallback).toBe(true);
+      expect(turn.action?.href).toContain("/zh-TW/projects/PRJ-XINYI-026/compare");
+      expect(JSON.stringify(turn)).not.toContain("J-2611-R7K3");
+      expect(turn.text).not.toContain("999999999");
+    },
+  );
+  it.each([
     "進行中設計專案01的報價狀態如何？",
     "What is the quote status of Active Design Project 01?",
     "PRJ-ACTIVE-001 的報價總額是多少？客戶哪一天接受？",

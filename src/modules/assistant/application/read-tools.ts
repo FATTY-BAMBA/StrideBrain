@@ -217,9 +217,14 @@ export class AssistantReadTools {
           j.businessKey,
           j.name,
           href(j.businessKey),
-          { reference: j.businessKey, name: j.name, stage: projectStageLabel(c.locale, j.stage) },
+          {
+            reference: j.businessKey,
+            name: j.name,
+            stage: projectStageLabel(c.locale, j.stage),
+            stageGroup: stageGroups.find((g) => inStageGroup(j.stage, g.key))?.[c.locale],
+          },
           [j.businessKey],
-          ["reference", "stage"],
+          ["reference", "stage", "stageGroup"],
         ),
       );
       return finishList(
@@ -229,13 +234,17 @@ export class AssistantReadTools {
           c.locale === "zh-TW" ? "專案" : "Jobs",
           `/${c.locale}/projects`,
           {
+            appliedStageGroup: group
+              ? stageGroups.find((g) => g.key === group)![c.locale]
+              : copy.allStageGroups,
+            matchingCount: allowed.length,
             count: page.length,
             truncated: allowed.length > offset + 20,
             coverage: allowed.length > offset + 20 ? copy.moreRecords : copy.allRecords,
             ...(allowed.length > offset + 20 ? { nextOffset: offset + 20 } : {}),
           },
           page.map((j) => j.businessKey),
-          ["count", "nextOffset", "coverage"],
+          ["appliedStageGroup", "matchingCount", "count", "nextOffset", "coverage"],
         ),
       );
     }

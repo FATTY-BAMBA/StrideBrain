@@ -1,4 +1,7 @@
 import { stageGroups } from "@/modules/projects/domain/stage-groups";
+import { labelledFacts } from "@/modules/assistant/domain/display-facts";
+import { assistantFactCopy, assistantFactLabels } from "@/modules/localization/assistant";
+import { projectStageLabel } from "@/modules/localization/jobs";
 import { closedLessonText } from "@/modules/home-desk/presentation";
 import { modelFacts } from "@/modules/assistant/domain/redaction";
 import { describe, it, expect, vi } from "vitest";
@@ -73,29 +76,76 @@ describe("assistant read tools", () => {
         "UNAVAILABLE",
       );
   });
-  it("uses each Home stage group in one list read and reports complete coverage", async () => {
-    for (const group of stageGroups) {
-      const f = setup();
-      f.services.projects.execute.mockResolvedValue({
-        kind: "AVAILABLE",
-        projects: [
-          ...stageGroups.flatMap((g) =>
-            g.stages.map((stage) => ({ ...project, businessKey: stage, stage })),
-          ),
-        ],
-      });
-      const out = await f.tools.execute(jobContext(), {
-        name: "list_jobs",
-        arguments: { stageGroup: group.key },
-      });
-      expect(out.sources.slice(0, -1).map((s) => s.facts.reference)).toEqual([...group.stages]);
-      expect(out.sources.at(-1)!.facts).toMatchObject({
-        count: group.stages.length,
-        coverage: "All records shown",
-        truncated: false,
-      });
-      expect(f.services.projects.execute).toHaveBeenCalledTimes(1);
-    }
+  it.each(["en", "zh-TW"] as const)(
+    "labels each Home stage group and its filter/count in %s",
+    async (locale) => {
+      const labels = assistantFactLabels(locale);
+      for (const group of stageGroups) {
+        const f = setup();
+        f.services.projects.execute.mockResolvedValue({
+          kind: "AVAILABLE",
+          projects: [
+            ...stageGroups.flatMap((g) =>
+              g.stages.map((stage) => ({ ...project, businessKey: stage, stage })),
+            ),
+          ],
+        });
+        const out = await f.tools.execute(jobContext({ locale }), {
+          name: "list_jobs",
+          arguments: { stageGroup: group.key },
+        });
+        expect(out.sources.slice(0, -1).map((s) => s.facts.reference)).toEqual([...group.stages]);
+        for (const [index, stage] of group.stages.entries())
+          expect(labelledFacts(out.sources[index]!.facts, locale)).toMatchObject({
+            [labels.stage!]: projectStageLabel(locale, stage),
+            [labels.stageGroup!]: group[locale],
+          });
+        expect(out.sources.at(-1)!.facts).toMatchObject({
+          appliedStageGroup: group[locale],
+          matchingCount: group.stages.length,
+          count: group.stages.length,
+          coverage: assistantFactCopy(locale).allRecords,
+          truncated: false,
+        });
+        expect(labelledFacts(out.sources.at(-1)!.facts, locale)).toMatchObject({
+          [labels.appliedStageGroup!]: group[locale],
+          [labels.matchingCount!]: group.stages.length,
+        });
+        expect(f.services.projects.execute).toHaveBeenCalledTimes(1);
+      }
+    },
+  );
+  it("keeps the filter's total separate from page size and excludes unreadable jobs", async () => {
+    const f = setup();
+    f.services.projects.execute.mockResolvedValue({
+      kind: "AVAILABLE",
+      projects: Array.from({ length: 23 }, (_, i) => ({ ...project, businessKey: `J-${i}` })),
+    });
+    f.policies.jobPolicy.mockImplementation(async (_context, key) =>
+      key === "J-22" ? null : { id: key, excluded: key === "J-21" },
+    );
+    const first = await f.tools.execute(jobContext(), {
+      name: "list_jobs",
+      arguments: { stageGroup: "work" },
+    });
+    expect(first.sources.at(-1)!.facts).toMatchObject({
+      appliedStageGroup: "Work",
+      matchingCount: 21,
+      count: 20,
+      nextOffset: 20,
+    });
+    const second = await f.tools.execute(jobContext(), {
+      name: "list_jobs",
+      arguments: { stageGroup: "work", offset: 20 },
+    });
+    expect(second.sources.at(-1)!.facts).toMatchObject({
+      appliedStageGroup: "Work",
+      matchingCount: 21,
+      count: 1,
+      truncated: false,
+    });
+    const all = await f.tools.execute(jobContext(), { name: "list_jobs", arguments: {} });
+    expect(all.sources.at(-1)!.facts.appliedStageGroup).toBe("All stage groups");
   });
   it("links row citations to their own list result's count, including overlapping results", async () => {
     const f = setup();

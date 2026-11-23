@@ -2,7 +2,26 @@
 
 PR: https://github.com/FATTY-BAMBA/StrideBrain/pull/59 (draft). Hosted acceptance is waiting for the Product Director. No hosted deployment, migration, seed or settings changes; no migration files changed.
 
-The separately approved fourth evaluation **passed its acceptance gates** on 36a186b. It was not a perfect 150/150 result: the remaining core-case misses are recorded below.
+The Product Director's hosted test at df4f074 found a false empty Work answer. The corrections below are locally verified and await a test-site retest. The separately approved fourth paid evaluation **passed its then-current acceptance gates** on 36a186b, before this review. It was not a perfect 150/150 result, and is not a paid verification of the current corrections.
+
+## Hosted-review corrections
+
+- Each list_jobs row now includes the localized stage **and** Home stage group from the shared stage-group definitions. Construction and Handover both belong to Work / 施工. The summary identifies the applied group (or all groups), the authorized matching total and the current page count separately. Both labels and values survive redaction/display projection into the model request; pagination does not change the matching total.
+- en-work and zh-TW-work now require a nonempty cited list and fail an answer that says there are none, including the exact English hosted contradiction and a zh-TW equivalent, even when the expected job names are present. All 50 questions and score thresholds remain; no model instruction or provider changes.
+- A discarded answer carries a fallback project only when the server resolved exactly one named job. The Home action passes that subject to record search, which reads it through normal authorization again. A page default, no named job or multiple named jobs cannot become this override. The original browser form is not mutated.
+
+**Verified after these corrections:** npm run check passed with **1,359 tests in 126 files**, format, lint, strict typecheck and production build. The existing prisma.config.ts lint warning remains. [Check log](evidence/check-hosted-review.log). Unit coverage includes every Home group in both languages, model-visible labels, separate filtered/page counts, excluded/unreadable rows, zero/one/multiple named subjects and the exact contradictory answer. PostgreSQL regressions run the real Home action with a different default job and a discarded draft: questions naming PRJ-XINYI-026 by reference or by its English name on the zh-TW page produce Xinyi's keyword comparison link, never the other job's reply, and create no comparison/economics rows. Existing role and organization denial tests pass.
+
+The updated deterministic evaluation passes **50/50 in each of three rounds** over fresh authorized database fixtures, including both strengthened Work cases. This checks the harness and data paths, not model quality. [Current deterministic report](evidence/fake-evaluation-hosted-review.json).
+
+Local production Chrome verifies sign-in → Home form → server action → authorized database/tool facts → grounding or fallback → displayed answer/link. The external Google HTTP transport supplies deterministic test responses; no product route is mocked and no paid provider is called. Both Work rows carry Construction / Work (施工 / 施工); the model receives the applied group and matching count 2. A deliberately unsupported amount discards each named-job draft, then record search shows the saved Xinyi comparison in the page language. Four turns use two model calls each, two enter fallback, and ComparisonRun/EconomicsEnrichmentRun counts stay unchanged during the questions. No browser errors. [Browser report](evidence/browser-hosted-review.json). The disposable local server, database, invitation and TLS files are removed after verification. Visually inspected screenshots:
+
+| Changed flow | English | zh-TW |
+| --- | --- | --- |
+| Work group, stage and count | [Screenshot](evidence/work-list-hosted-review-en.png) | [Screenshot](evidence/work-list-hosted-review-zh-TW.png) |
+| Discarded named-job answer → Xinyi record search | [Screenshot](evidence/named-fallback-hosted-review-en.png) | [Screenshot](evidence/named-fallback-hosted-review-zh-TW.png) |
+
+**Not verified after these corrections:** live Gemini wording/stability and hosted acceptance. No additional paid run was dispatched; all four authorized dispatches were already used. Hosted acceptance is waiting for the Product Director. PR remains draft; no hosted changes or migration edits.
 
 ## What changed
 
@@ -50,9 +69,9 @@ Original report: [provider-45115077636.json](evidence/provider-45115077636.json)
 
 The earlier Chinese stone refusal did not reproduce after the labelled display-facts change: it passed all three diagnostic rounds. The prior #39 artifact did not record tool arguments, so its exact invalid argument cannot be established retrospectively. The new report captured the same class of tool-contract defect in English stone-range, round 2: get_past_prices received categoryId="Imported stone and hard finishes", a display label, and returned unavailable. The old schema described an arbitrary string while the server required a canonical key. The tool now advertises the permitted keys with both language labels; unknown keys still fail closed. Regression tests preserve the recorded invalid argument and the actual quoted-history rates.
 
-## Local verification
+## Earlier local verification (before hosted review)
 
-[CI passed on tested code commit 36a186b](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45116190825). Only task documentation and the downloaded evaluation artifact changed after that code commit. Final npm run check passed: 1,348 tests in 126 files plus format, lint, typecheck and production build. Existing prisma.config.ts anonymous-default-export warning only. Checks use Node 24 and disposable loopback PostgreSQL with synthetic fixtures; no live model key is passed to CI/local tests.
+[CI passed on earlier code commit 36a186b](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45116190825). Only task documentation and the downloaded evaluation artifact changed between that code commit and df4f074. The earlier npm run check passed: 1,348 tests in 126 files plus format, lint, typecheck and production build. Existing prisma.config.ts anonymous-default-export warning only. Checks use Node 24 and disposable loopback PostgreSQL with synthetic fixtures; no live model key is passed to CI/local tests.
 
 The deterministic evaluation runs all 50 cases over fresh authorized database fixtures in three rounds. This verifies the harness and data paths, not model quality. See [fake-evaluation.json](evidence/fake-evaluation.json) and [check.log](evidence/check.log).
 
@@ -68,4 +87,4 @@ Local production Chrome exercised real session handoff, server actions, authoriz
 
 ## Not verified
 
-Hosted acceptance, including the Product Director's five repeated quote-total questions and the #39 hosted checklist, is waiting for the Product Director. The local browser transport is not evidence of live Gemini quality. Billing charges are not verified; report costs are token-based estimates. No claim of production readiness or hosted acceptance is made by this draft PR.
+Hosted acceptance of the corrections, including a repeat of the failed Work-stage question, is waiting for the Product Director. The earlier checklist also includes five repeated quote-total questions and the #39 hosted checklist; this report does not establish their hosted completion. No paid evaluation ran after the current changes. The local browser transport is not evidence of live Gemini quality. Billing charges are not verified; report costs are token-based estimates. No claim of production readiness or hosted acceptance is made by this draft PR.

@@ -34,11 +34,12 @@
   ],
   "paidRunLimit": 4,
   "pullRequest": 59,
-  "paidRerun": "PASSED",
+  "paidRerun": "NOT_RERUN_AFTER_HOSTED_REVIEW",
   "localCheck": {
     "passed": true,
-    "tests": 1348,
-    "files": 126
+    "tests": 1359,
+    "files": 126,
+    "evidence": "evidence/check-hosted-review.log"
   },
   "paidEstimatedUsdTotal": "0.548134800",
   "additionalRunAuthorization": {
@@ -104,6 +105,18 @@
         "passes": 0,
         "rounds": 3
       }
-    ]
+    ],
+    "commit": "36a186b3b4504a50abe90404c231ef9e0e61c2b1"
+  },
+  "hostedReview": {
+    "testedCommit": "df4f074871ac7ef6ea9dfb0fde498594e6e8eeed",
+    "result": "WORK_STAGE_ACCEPTANCE_FAILED",
+    "corrections": [
+      "Localized Home group and stage on list rows; explicit applied group and matching count",
+      "Nonempty-list evaluation for en-work and zh-TW-work",
+      "Unique server-resolved subject preserved after a discarded answer"
+    ],
+    "retest": "WAITING_FOR_PRODUCT_DIRECTOR",
+    "paidEvaluationAfterCorrections": "NOT_RUN"
   }
 }

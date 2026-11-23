@@ -1,0 +1,37 @@
+{
+  "mode": "Local production Chrome with test-only Google HTTP transport; NOT live Gemini",
+  "checks": [
+    "Both languages: each Work row includes the Home group and stage; filter Work and matching count 2 reach the model",
+    "Discarded answers for a reference and a name in the other language use the Xinyi keyword comparison and page-language links",
+    "Four turns use two model calls each; two discarded drafts enter record search",
+    "No comparison/economics records created by chat questions",
+    "No browser page errors"
+  ],
+  "usage": [
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "FALLBACK_UNGROUNDED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "FALLBACK_UNGROUNDED",
+      "modelCalls": 2
+    }
+  ],
+  "before": {
+    "comparisons": 2,
+    "economics": 2
+  },
+  "after": {
+    "comparisons": 2,
+    "economics": 2
+  },
+  "errors": []
+}

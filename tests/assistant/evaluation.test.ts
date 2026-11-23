@@ -9,6 +9,7 @@ import { prepareEvaluation } from "./evaluation-fixture";
 import { runEvaluationQuestion } from "./run-evaluation";
 import { evaluateAnswer, type EvaluationQuestion } from "./evaluation";
 import { assistantConfig } from "@/modules/assistant/infrastructure/config";
+import type { AssistantSource } from "@/modules/assistant/domain/contracts";
 describe("evaluation contract", () => {
   it("contains twenty core English and twenty core zh-TW cases plus eight hosted regressions and two count/range cases with explicit facts or refusals", () => {
     expect(
@@ -39,6 +40,62 @@ describe("evaluation contract", () => {
       rawAnswerText: "$999",
     });
   });
+  it.each(["en-work", "zh-TW-work"])(
+    "fails a contradictory empty Work list in %s even when it names the expected jobs",
+    (id) => {
+      const q = questions.find((q) => q.id === id) as EvaluationQuestion;
+      expect(q.expected.match).toBe("NONEMPTY_LIST");
+      const en = q.locale === "en";
+      const names = en
+        ? ["Active Design Project 03", "Active Design Project 04"]
+        : ["進行中設計專案03", "進行中設計專案04"];
+      const sources: AssistantSource[] = [
+        ...names.map((name, index) => ({
+          sourceId: `row-${index}`,
+          href: "/",
+          label: name,
+          facts: { name },
+          projectKeys: [`PRJ-ACTIVE-00${index + 3}`],
+          countSourceId: "count",
+        })),
+        {
+          sourceId: "count",
+          href: "/",
+          label: "Jobs",
+          facts: { count: 2, matchingCount: 2, appliedStageGroup: en ? "Work" : "施工" },
+          projectKeys: [],
+        },
+      ];
+      const score = (text: string, question = q) => {
+        const answer = { text, sourceIds: ["row-0", "row-1"], followUps: [] };
+        return evaluateAnswer(
+          question,
+          { kind: "ANSWER", locale: q.locale, answer, sources },
+          names,
+          answer,
+          sources,
+        );
+      };
+      // Exact English hosted answer; equivalent zh-TW contradiction.
+      const rejected = en
+        ? "There are no jobs currently in the work stage. The available jobs (Active Design Project 03 and Active Design Project 04) are in the Construction stage."
+        : "目前沒有專案在施工階段群組。可用的專案（進行中設計專案03與進行中設計專案04）處於施工階段。";
+      expect(score(rejected)).toMatchObject({ verdict: "wrong", wrongNumber: false });
+      expect(
+        score(rejected, { ...q, expected: { kind: "FACTS", facts: names, forbidden: [] } }).verdict,
+      ).toBe("grounded and correct");
+      expect(
+        score(`${en ? "None right now." : "目前有零個專案。"} ${names.join(", ")}`).verdict,
+      ).toBe("wrong");
+      expect(
+        score(
+          en
+            ? `Work: 2 jobs. ${names.join(" and ")} are in Construction.`
+            : `施工群組：2 個專案。${names.join("與")}均為施工階段。`,
+        ).verdict,
+      ).toBe("grounded and correct");
+    },
+  );
 });
 (process.env.DATABASE_URL ? it : it.skip)(
   "runs all evaluation cases with the fake over authorized seeded records (not a model-quality score)",

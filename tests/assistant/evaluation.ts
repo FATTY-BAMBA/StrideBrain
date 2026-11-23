@@ -29,7 +29,7 @@ export type EvaluationQuestion = {
     kind: "FACTS" | "DECLINE";
     facts: string[];
     forbidden: string[];
-    match?: "ANY_SAVED_FINDING" | "EMPTY_LIST" | "NOT_FOUND";
+    match?: "ANY_SAVED_FINDING" | "EMPTY_LIST" | "NONEMPTY_LIST" | "NOT_FOUND";
   };
 };
 function path(value: unknown, key: string): unknown {
@@ -148,6 +148,15 @@ export function evaluateAnswer(
         ? "grounded and correct"
         : "wrong",
     );
+  // Naming a returned row is not enough if the answer also says the filtered list is empty.
+  if (
+    question.expected.match === "NONEMPTY_LIST" &&
+    (!displayedCited.some((s) => typeof s.facts.count === "number" && s.facts.count > 0) ||
+      /\b(?:no|zero|0)\s+(?:(?:matching|available|current|active|work|stage)\s+)*(?:jobs?|projects?)\b|\bnone\b|(?:沒有|尚無|目前無|查無|找不到)[^。！？\n]*(?:專案|工作)|(?:0|零)\s*(?:個|項|筆)\s*(?:專案|工作)/i.test(
+        displayed,
+      ))
+  )
+    return report("wrong");
   const matches = (f: string) => outcome.answer.text.includes(f);
   if (question.expected.match === "ANY_SAVED_FINDING")
     return report(

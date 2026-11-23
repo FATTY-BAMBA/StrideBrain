@@ -71,7 +71,13 @@ export type FallbackReason =
   | "UNGROUNDED"
   | "ACCESS_CHANGED";
 export type AssistantOutcome =
-  | Readonly<{ kind: "FALLBACK"; reason: FallbackReason; discardReason?: string }>
+  | Readonly<{
+      kind: "FALLBACK";
+      reason: FallbackReason;
+      discardReason?: string;
+      /** Exactly one authorized job named in the question, resolved by the server. */
+      subjectProjectKey?: string;
+    }>
   | Readonly<{
       kind: "ANSWER";
       answer: StructuredAnswer;

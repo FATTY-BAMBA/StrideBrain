@@ -79,6 +79,7 @@ export class AskAssistant {
         kind: "FALLBACK",
         reason,
         ...(sawAnswer ? { discardReason: discardReason ?? reason } : {}),
+        ...(sawAnswer && subjects.length === 1 ? { subjectProjectKey: subjects[0] } : {}),
       };
     };
     const refusal = async (

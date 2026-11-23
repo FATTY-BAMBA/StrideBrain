@@ -221,8 +221,9 @@ function comparableReply(
 async function askKeywordAction(
   previous: HomeChatState,
   formData: FormData,
-  onlyMatched = false,
+  options: Readonly<{ onlyMatched?: boolean; subjectProjectKey?: string }> = {},
 ): Promise<HomeChatState> {
+  const { onlyMatched = false, subjectProjectKey } = options;
   const rawLocale = formData.get("locale");
   const rawMessage = formData.get("message");
   if (
@@ -243,7 +244,7 @@ async function askKeywordAction(
     text: query,
   };
 
-  const requestedProject = formData.get("projectKey");
+  const requestedProject = subjectProjectKey ?? formData.get("projectKey");
   if (
     requestedProject !== null &&
     (typeof requestedProject !== "string" ||
@@ -686,6 +687,7 @@ export async function askHomeAction(
     rawMessage = formData.get("message"),
     rawProject = formData.get("projectKey");
   let attempted = false;
+  let subjectProjectKey: string | undefined;
   if (
     assistantConfigured() &&
     typeof rawLocale === "string" &&
@@ -735,12 +737,17 @@ export async function askHomeAction(
           ]);
         }
         attempted = !["DISABLED", "NO_KEY"].includes(result.reason);
+        subjectProjectKey = result.subjectProjectKey;
       }
     } catch {
       attempted = true;
     }
   }
-  const result = await askKeywordAction(previous, formData);
+  const result = await askKeywordAction(
+    previous,
+    formData,
+    subjectProjectKey ? { subjectProjectKey } : {},
+  );
   if (!attempted || result === previous) return result;
   return {
     ...result,

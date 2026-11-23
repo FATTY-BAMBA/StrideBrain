@@ -31,6 +31,21 @@ function form() {
   return value;
 }
 describe("Home assistant integration", () => {
+  it("passes the server-resolved subject to record search without changing the browser form", async () => {
+    boundary.ask.mockResolvedValue({
+      kind: "FALLBACK",
+      reason: "UNGROUNDED",
+      discardReason: "UNSUPPORTED_NUMBER",
+      subjectProjectKey: "PRJ-XINYI-026",
+    });
+    const input = form();
+    input.set("message", "PRJ-XINYI-026 quote findings?");
+    input.set("projectKey", "J-2611-R7K3");
+    const result = await askHomeAction(initialHomeChatState, input);
+    expect(boundary.legacy).toHaveBeenCalledWith("en", "PRJ-XINYI-026");
+    expect(input.get("projectKey")).toBe("J-2611-R7K3");
+    expect(result.turns.at(-1)?.aiFallback).toBe(true);
+  });
   it("uses AI text and only server-supplied sources; never resends past assistant text", async () => {
     boundary.ask.mockResolvedValue({
       kind: "ANSWER",
