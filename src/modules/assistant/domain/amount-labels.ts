@@ -55,6 +55,17 @@ export function hasWrongAmountLabel(
       end: m.index + m[0].length,
       field: labels.find((l) => l.label.toLowerCase() === m[0].toLowerCase())!.field,
     }));
+    const firstAmountIndex = occurrences.findIndex((m) => amounts.has(canonical(m[0])));
+    const firstAmount = occurrences[firstAmountIndex];
+    // In “with $5 tax and $100 before tax”, tax belongs to $5, never to $100.
+    const labelsFollowAmounts =
+      firstAmount !== undefined &&
+      !tags.some((t) => t.end <= firstAmount.index) &&
+      tags.some(
+        (t) =>
+          t.index >= firstAmount.index + firstAmount[0].length &&
+          t.end <= (occurrences[firstAmountIndex + 1]?.index ?? clause.length),
+      );
     for (let i = 0; i < occurrences.length; i++) {
       const m = occurrences[i]!,
         key = canonical(m[0]),
@@ -66,7 +77,7 @@ export function hasWrongAmountLabel(
       const nextStart = occurrences[i + 1]?.index ?? clause.length;
       const before = tags.filter((t) => t.index >= previousEnd && t.end <= m.index).at(-1);
       const after = tags.find((t) => t.index >= m.index + m[0].length && t.end <= nextStart);
-      const label = before ?? after;
+      const label = labelsFollowAmounts ? after : (before ?? after);
       if (!label || !allowed.has(label.field)) return true;
     }
   }

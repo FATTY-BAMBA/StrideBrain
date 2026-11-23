@@ -1,0 +1,14 @@
+{
+  "issue": 60,
+  "branch": "build/sb-060-assistant-grounding",
+  "status": "LOCAL_CHECK_PASSED",
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "pullRequestState": "DRAFT",
+  "paidRunLimit": 3,
+  "paidRuns": [],
+  "localCheck": {
+    "passed": true,
+    "tests": 1395,
+    "files": 127
+  }
+}

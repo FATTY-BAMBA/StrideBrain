@@ -10,6 +10,7 @@ import type { AssistantSource } from "@/modules/assistant/domain/contracts";
 import questions from "./questions.json";
 import fixtures from "./rejected-answer-fixtures.json";
 import qualityFixtures from "./quality-rejected-answer-fixtures.json";
+import sb060Fixtures from "./sb060-rejected-answer-fixtures.json";
 (process.env.DATABASE_URL ? it : it.skip)(
   "replays rejected paid answers against the authorized synthetic sources",
   async () => {
@@ -17,7 +18,7 @@ import qualityFixtures from "./quality-rejected-answer-fixtures.json";
     try {
       await prepareEvaluation(db);
       const failures = [];
-      for (const fixture of [...fixtures, ...qualityFixtures]) {
+      for (const fixture of [...fixtures, ...qualityFixtures, ...sb060Fixtures]) {
         const q = questions.find((q) => q.id === fixture.id)! as EvaluationQuestion;
         const c = { ...(await db.actor(evaluationMemberships[q.person])), locale: q.locale };
         const services = createAssistantServices();
@@ -57,6 +58,17 @@ import qualityFixtures from "./quality-rejected-answer-fixtures.json";
         if (checked.kind === "REJECTED") {
           failures.push({ id: fixture.id, run: fixture.run, reason: checked.reason });
           continue;
+        }
+        if (fixture.id === "zh-TW-finding" && sb060Fixtures.some((f) => f.text === fixture.text)) {
+          const savedSentences = sources.flatMap((s) =>
+            Array.isArray(s.facts.findings)
+              ? s.facts.findings.map((f: { text: string }) => f.text)
+              : [],
+          );
+          for (const sentence of checked.answer.text
+            .split("\n")
+            .filter((line) => line.includes("%")))
+            expect(savedSentences).toContain(sentence);
         }
         if (q.expected.kind === "DECLINE") continue; // Original report did not retain its refusal's citations.
         const result = evaluateAnswer(
