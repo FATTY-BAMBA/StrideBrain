@@ -1,7 +1,7 @@
 {
   "issue": 60,
   "branch": "build/sb-060-assistant-grounding",
-  "status": "REVIEW_CI_AND_SECOND_PAID_RUN_PENDING",
+  "status": "WAITING_FOR_PRODUCT_DIRECTOR_TEST_SITE",
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "pullRequestState": "DRAFT",
   "paidRunLimit": 3,
@@ -12,6 +12,15 @@
       "status": "PASSED",
       "estimatedUsd": "0.181250200",
       "zhTwFindingPasses": 3
+    },
+    {
+      "runId": 45167383387,
+      "commit": "c7559dbfaf0ce8a3cde766ef157ac07bc85485ee",
+      "status": "PASSED",
+      "estimatedUsd": "0.182391000",
+      "zhTwFindingPasses": 3,
+      "answersPassed": 149,
+      "answersTotal": 150
     }
   ],
   "localCheck": {
@@ -21,12 +30,12 @@
     "evidence": "evidence/check-review.log"
   },
   "pullRequest": 61,
-  "paidEstimatedUsdTotal": "0.181250200",
+  "paidEstimatedUsdTotal": "0.363641200",
   "paidAcceptancePassed": true,
-  "codeCommit": "0d7acc95c7627025ac024b6a8c8aeaa994722e8a",
+  "codeCommit": "c7559dbfaf0ce8a3cde766ef157ac07bc85485ee",
   "ci": {
-    "runId": 45133951190,
-    "commit": "0d7acc95c7627025ac024b6a8c8aeaa994722e8a",
+    "runId": 45167363540,
+    "commit": "c7559dbfaf0ce8a3cde766ef157ac07bc85485ee",
     "passed": true
   },
   "localBrowser": {
@@ -39,7 +48,7 @@
   "review": {
     "reviewedCommit": "f86d77187275d846730db8c23be165f9129549f6",
     "paidRunNumberRequested": 2,
-    "ci": "PENDING",
-    "paidEvaluation": "PENDING"
+    "ci": "PASSED",
+    "paidEvaluation": "PASSED"
   }
 }
