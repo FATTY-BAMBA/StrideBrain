@@ -2,9 +2,24 @@
   "issue": 58,
   "branch": "build/sb-058-assistant-quality",
   "status": "BUILDING",
-  "delivery": "A",
+  "delivery": "C",
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "pullRequestState": "DRAFT",
-  "paidRuns": [],
-  "paidRunLimit": 3
+  "paidRuns": [
+    {
+      "runId": 45113615576,
+      "commit": "2d0ba6ca5297241cbef46c2d1b5df9979d9462ea",
+      "status": "CHECKOUT_FAILED",
+      "estimatedUsd": "0",
+      "modelCalls": 0
+    },
+    {
+      "runId": 45113826197,
+      "commit": "2d0ba6ca5297241cbef46c2d1b5df9979d9462ea",
+      "status": "EVALUATION_FAILED",
+      "estimatedUsd": "0.185596900"
+    }
+  ],
+  "paidRunLimit": 3,
+  "pullRequest": 59
 }

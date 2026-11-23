@@ -1,0 +1,50 @@
+{
+  "mode": "Local production Chrome with test-only Google HTTP transport; NOT live Gemini",
+  "checks": [
+    "Both languages: all three quote values use screen labels",
+    "Both languages: millwork count 3, median NT$5,833/m², range NT$5,424/m²–NT$5,902/m²",
+    "Both languages: work stage list from shared Home filter",
+    "Viewer refusal uses one model call; every owner answer uses two calls",
+    "No comparison/economics records created by assistant questions",
+    "No browser page errors"
+  ],
+  "usage": [
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 2
+    },
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 1
+    }
+  ],
+  "before": {
+    "comparisons": 5,
+    "economics": 5
+  },
+  "after": {
+    "comparisons": 5,
+    "economics": 5
+  },
+  "errors": []
+}

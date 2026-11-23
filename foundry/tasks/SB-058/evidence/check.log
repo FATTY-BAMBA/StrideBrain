@@ -31,9 +31,9 @@ All matched files use Prettier code style!
 
 
  Test Files  126 passed (126)
-      Tests  1335 passed (1335)
-   Start at  12:37:51
-   Duration  110.95s (transform 1.97s, setup 0ms, import 5.86s, tests 194.10s, environment 4.09s)
+      Tests  1342 passed (1342)
+   Start at  12:57:19
+   Duration  114.21s (transform 2.07s, setup 0ms, import 6.20s, tests 208.09s, environment 3.96s)
 
 
 > stridebrain@0.1.0 build
@@ -43,15 +43,15 @@ All matched files use Prettier code style!
 ✓ Running next.config.ts took 63ms
 
   Creating an optimized production build ...
-✓ Compiled successfully in 760ms
+✓ Compiled successfully in 697ms
   Running TypeScript ...
-  Finished TypeScript in 3.1s ...
+  Finished TypeScript in 2.5s ...
   Collecting page data using 9 workers ...
   Generating static pages using 9 workers (0/25) ...
   Generating static pages using 9 workers (6/25)
   Generating static pages using 9 workers (12/25)
   Generating static pages using 9 workers (18/25)
-✓ Generating static pages using 9 workers (25/25) in 179ms
+✓ Generating static pages using 9 workers (25/25) in 161ms
   Finalizing page optimization ...
 
 Route (app)

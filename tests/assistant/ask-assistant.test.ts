@@ -52,6 +52,53 @@ function setup(script: ConstructorParameters<typeof FakeAssistantModel>[0] = [ca
   return { model, repo, tools, service: new AskAssistant(model, config, repo, tools) };
 }
 describe("bounded read-only assistant", () => {
+  it.each(["en", "zh-TW"] as const)(
+    "answers an empty waiting list immediately in %s, ignoring an unrelated page default",
+    async (locale) => {
+      const script: ModelReply = {
+        usage,
+        result: { kind: "TOOLS", calls: [{ name: "list_awaiting_client", arguments: {} }] },
+      };
+      const f = setup([script]);
+      f.tools.execute.mockResolvedValue({
+        status: "OK",
+        sources: [{ ...source, facts: { count: 0 }, projectKeys: [] }],
+      });
+      const input = {
+        question:
+          locale === "en" ? "Which quotes are waiting for the client?" : "哪些報價還在等客戶回覆？",
+        projectKey: "UNRELATED-001",
+      };
+      const out = await f.service.execute(jobContext({ locale }), input);
+      expect(out).toMatchObject({
+        kind: "ANSWER",
+        answer: {
+          text:
+            locale === "en"
+              ? "There are 0 quotes waiting for the client."
+              : "目前有 0 筆報價等待客戶回覆。",
+          sourceIds: ["s"],
+          followUps: [],
+        },
+      });
+      expect(f.model.requests).toHaveLength(1);
+      expect(f.tools.execute).toHaveBeenCalledTimes(1);
+      expect(JSON.stringify(out)).not.toContain("UNRELATED-001");
+      const changed = setup([script]);
+      changed.tools.execute.mockResolvedValue({
+        status: "OK",
+        sources: [{ ...source, facts: { count: 0 }, projectKeys: [] }],
+      });
+      changed.tools.execute.mockImplementation(async () => {
+        changed.repo.enabled.mockResolvedValue(false);
+        return { status: "OK", sources: [{ ...source, facts: { count: 0 }, projectKeys: [] }] };
+      });
+      expect(await changed.service.execute(jobContext({ locale }), input)).toMatchObject({
+        kind: "FALLBACK",
+        reason: "ACCESS_CHANGED",
+      });
+    },
+  );
   it("grounds a result from this turn and logs metadata per call", async () => {
     const f = setup();
     expect((await f.service.execute(jobContext(), { question: "How many jobs?" })).kind).toBe(

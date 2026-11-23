@@ -7,6 +7,7 @@ import type { Locale } from "@/modules/localization/config";
 import { redactSource } from "@/modules/assistant/domain/redaction";
 import {
   hasMislabelledQuoteAmount,
+  hasBadDisplayFormat,
   citedSources,
   sourceReferences,
   sourceIdentities,
@@ -104,10 +105,14 @@ export function evaluateAnswer(
   const wrongAmountLabel = [displayed, ...followUps].some((text) =>
     hasMislabelledQuoteAmount(text, displayedCited, question.locale, identities),
   );
+  const badDisplayFormat = [displayed, ...followUps].some((text) =>
+    hasBadDisplayFormat(text, identities),
+  );
   const report = (verdict: "wrong" | "correctly declined" | "grounded and correct") => ({
     verdict,
     wrongNumber,
     wrongAmountLabel,
+    badDisplayFormat,
     draftWrongNumber: draftUnsupportedTokens.length > 0,
     draftUnsupportedTokens,
     rawFollowUps,
@@ -115,7 +120,8 @@ export function evaluateAnswer(
     answerText: outcome.kind === "ANSWER" ? displayed : null,
     ...(verdict === "wrong" ? { unsupportedTokens, rawAnswerText } : {}),
   });
-  if (outcome.kind !== "ANSWER" || wrongNumber || wrongAmountLabel) return report("wrong");
+  if (outcome.kind !== "ANSWER" || wrongNumber || wrongAmountLabel || badDisplayFormat)
+    return report("wrong");
   if (
     question.expected.forbidden.some(
       (f) =>

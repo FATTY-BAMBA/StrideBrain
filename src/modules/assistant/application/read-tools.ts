@@ -12,7 +12,7 @@ import type { GetQuotedHistory } from "@/modules/quote-draft/application/get-quo
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import type { AssistantRepositoryPort } from "@/repositories/ports/assistant-repository";
 import { inStageGroup, parseStageGroup, stageGroups } from "@/modules/projects/domain/stage-groups";
-import { PROJECT_STAGES } from "@/modules/projects/domain/job-input";
+import { COMMERCIAL_CATEGORIES, PROJECT_STAGES } from "@/modules/projects/domain/job-input";
 import { categoryLabel, projectStageLabel } from "@/modules/localization/jobs";
 import { claimFindingText } from "@/modules/economics/presentation/claim-findings";
 import { formatQuoteRate, formatQuoteArea } from "@/modules/quote-draft/presentation";
@@ -76,10 +76,19 @@ export const assistantTools: readonly ToolDefinition[] = [
   {
     name: "get_past_prices",
     description:
-      "Per pricing category, quoted history count, median and range using the Quote tab's calculation and current saved comparison. These are quoted prices, never actual costs.",
+      "For one job, return the count, median, low and high of past quoted rates per work pricing category, using the Quote tab's calculation and current saved comparison. Each displayed rate carries its unit. These are quoted prices, never actual costs. Omit categoryId for all pricing categories.",
     parameters: {
       ...jobParameters,
-      properties: { projectKey: keySchema, categoryId: { type: "string", maxLength: 64 } },
+      properties: {
+        projectKey: keySchema,
+        categoryId: {
+          type: "string",
+          enum: COMMERCIAL_CATEGORIES,
+          description: COMMERCIAL_CATEGORIES.map(
+            (id) => `${id}: ${categoryLabel("en", id)} / ${categoryLabel("zh-TW", id)}`,
+          ).join("; "),
+        },
+      },
     },
   },
   {
@@ -426,7 +435,7 @@ export class AssistantReadTools {
     if (call.name === "get_past_prices" && typeof projectKey === "string") {
       if (
         args.categoryId !== undefined &&
-        (typeof args.categoryId !== "string" || !/^[A-Z_]{1,64}$/.test(args.categoryId))
+        !COMMERCIAL_CATEGORIES.some((id) => id === args.categoryId)
       )
         return empty("UNAVAILABLE");
       const result = await this.services.history.execute(c, projectKey);

@@ -42,6 +42,17 @@ import fixtures from "./rejected-answer-fixtures.json";
         const ids = oracle.length ? oracle.map((s) => s.sourceId) : sources.map((s) => s.sourceId);
         const raw = { text: fixture.text, sourceIds: ids, followUps: [] };
         const checked = checkAnswer(raw, sources, q.locale);
+        if (fixture.run === 45053587841 && fixture.id === "zh-TW-status") {
+          // SB-058 now forbids the raw acceptedOn field retained in this original fixture.
+          expect(checked).toEqual({ kind: "REJECTED", reason: "DISPLAY_FORMAT" });
+          const clean = checkAnswer(
+            { ...raw, text: fixture.text.replace("（acceptedOn 為 null）", "") },
+            sources,
+            q.locale,
+          );
+          expect(clean.kind).toBe("ACCEPTED");
+          continue;
+        }
         if (checked.kind === "REJECTED") {
           failures.push({ id: fixture.id, run: fixture.run, reason: checked.reason });
           continue;

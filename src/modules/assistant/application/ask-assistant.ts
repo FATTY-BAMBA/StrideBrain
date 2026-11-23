@@ -1,6 +1,6 @@
 import { labelledFacts } from "../domain/display-facts";
 import { matchesSubject, toolCallKey, type AssistantProjectIdentity } from "../domain/subjects";
-import { assistantToolStatus } from "@/modules/localization/assistant";
+import { assistantFactCopy, assistantToolStatus } from "@/modules/localization/assistant";
 import { AssistantModelError } from "../domain/model-error";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import type { AssistantRepositoryPort } from "@/repositories/ports/assistant-repository";
@@ -316,6 +316,31 @@ export class AskAssistant {
           );
           for (const s of safeSources)
             if (!sources.some((old) => old.sourceId === s.sourceId)) sources.push(s);
+          // A complete empty waiting list is an authoritative answer; no model elaboration needed.
+          if (
+            call.name === "list_awaiting_client" &&
+            result.status === "OK" &&
+            safeSources.length === 1 &&
+            safeSources[0]!.facts.count === 0 &&
+            safeSources[0]!.projectKeys.length === 0
+          ) {
+            if (
+              !(await bounded(this.repository.enabled(c))) ||
+              !(await bounded(this.tools.canSend(c, safeSources)))
+            )
+              return await fallback("ACCESS_CHANGED");
+            await this.repository.finishTurn(c, "ANSWERED");
+            return {
+              kind: "ANSWER",
+              locale,
+              answer: {
+                text: assistantFactCopy(locale).noneAwaiting,
+                sourceIds: [safeSources[0]!.sourceId],
+                followUps: [],
+              },
+              sources: safeSources,
+            };
+          }
           const data = JSON.stringify({
             tool: call.name,
             status: assistantToolStatus(locale, result.status),

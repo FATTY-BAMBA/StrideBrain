@@ -4,6 +4,7 @@ import { modelFacts } from "@/modules/assistant/domain/redaction";
 import { describe, it, expect, vi } from "vitest";
 import {
   AssistantReadTools,
+  assistantTools,
   type AssistantReadServices,
 } from "@/modules/assistant/application/read-tools";
 import { jobContext } from "../projects/job-fixture";
@@ -30,6 +31,32 @@ function setup() {
   return { services, policies, tools: new AssistantReadTools(services, policies) };
 }
 describe("assistant read tools", () => {
+  it("defines bilingual pricing categories and refuses invented category keys before reading history", async () => {
+    const tool = assistantTools.find((t) => t.name === "get_past_prices")!;
+    const properties = tool.parameters.properties as Record<
+      string,
+      { enum?: string[]; description?: string }
+    >;
+    expect(properties.categoryId!.enum).toContain("IMPORTED_STONE");
+    expect(properties.categoryId!.description).toContain("進口石材");
+    expect(properties.categoryId!.description).toContain("Imported stone");
+    expect(properties.categoryId!.enum).not.toContain("STONE");
+    const f = setup();
+    // Actual failed call in paid run 45113826197 used the English display label as categoryId.
+    for (const categoryId of [
+      "石材",
+      "STONE",
+      "imported_stone",
+      "Imported stone and hard finishes",
+    ])
+      expect(
+        await f.tools.execute(jobContext(), {
+          name: "get_past_prices",
+          arguments: { projectKey: "J", categoryId },
+        }),
+      ).toEqual({ status: "UNAVAILABLE", sources: [] });
+    expect(f.services.history.execute).not.toHaveBeenCalled();
+  });
   it("lists only permitted jobs and bounds arguments", async () => {
     const f = setup();
     const c = jobContext();

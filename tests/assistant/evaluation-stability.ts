@@ -6,6 +6,7 @@ export type ScoredRow = {
   verdict: string;
   wrongNumber: boolean;
   wrongAmountLabel: boolean;
+  badDisplayFormat: boolean;
   calls: number;
   namedJobRefusal?: boolean;
   qualityRegression?: boolean;
@@ -71,7 +72,11 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
       callTargets.namedRefusalMaximum <= 2 &&
       Object.values(scores).every((s) => s >= 16) &&
       questions.every(
-        (q) => !q.wrongNumber && !q.wrongAmountLabel && (!q.required || q.verdict !== "wrong"),
+        (q) =>
+          !q.wrongNumber &&
+          !q.wrongAmountLabel &&
+          !q.badDisplayFormat &&
+          (!q.required || q.verdict !== "wrong"),
       ),
     questions,
   };

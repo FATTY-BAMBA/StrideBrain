@@ -48,6 +48,10 @@ describe("SB-058 labelled facts", () => {
     ["未稅金額 NT$11,110,200；總計 NT$11,665,710；營業稅 NT$555,510", "zh-TW"],
     ["Amount before tax: NT$11,110,200; Tax: NT$555,510; Total: NT$11,665,710", "en"],
     ["The quote total (including tax) is NT$11,665,710.", "en"],
+    [
+      "The current quote before tax is NT$11,110,200, with tax of NT$555,510, totaling NT$11,665,710.",
+      "en",
+    ],
     ["NT$555,510 tax; NT$11,110,200 before tax; NT$11,665,710 total", "en"],
   ] as const)("accepts the cited amount with its own label: %s", (text, locale) => {
     expect(checkAnswer(raw(text), [quote], locale)).toMatchObject({
@@ -136,6 +140,33 @@ describe("SB-058 labelled facts", () => {
       reason: "UNSUPPORTED_NUMBER",
     });
   });
+  it.each(["NT$5,833.000000/m²", "NT$5,833 (displayMedian)", "NT$5,833 TWD/m2"])(
+    "rejects invented display clutter even when the number is supported: %s",
+    (text) => {
+      const source = {
+        ...quote,
+        facts: { observationType: "QUOTED_PRICE", displayMedian: "NT$5,833/m²" },
+      };
+      expect(checkAnswer(raw(text), [source], "en")).toMatchObject({ reason: "DISPLAY_FORMAT" });
+      const q: EvaluationQuestion = {
+        id: "display",
+        locale: "en",
+        person: "owner",
+        question: "Rate?",
+        oracleTools: [],
+        expected: { kind: "FACTS", facts: [], forbidden: [] },
+      };
+      expect(
+        evaluateAnswer(
+          q,
+          { kind: "ANSWER", locale: "en", answer: raw(text), sources: [source] },
+          [],
+          raw(text),
+          [source],
+        ),
+      ).toMatchObject({ verdict: "wrong", badDisplayFormat: true });
+    },
+  );
   it("scores a displayed mislabel as wrong independently of numeric support", () => {
     const q: EvaluationQuestion = {
       id: "mislabel",

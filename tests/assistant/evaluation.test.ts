@@ -68,7 +68,7 @@ describe("evaluation contract", () => {
 );
 
 (process.env.DATABASE_URL ? it : it.skip)(
-  "scores the paid empty-list answer with its authorized page-reference follow-up",
+  "scores the server empty-list answer without requesting the paid draft's unrelated page follow-up",
   async () => {
     const db = await assistantDatabase();
     try {
@@ -110,7 +110,9 @@ describe("evaluation contract", () => {
         wrongNumber: false,
         draftWrongNumber: false,
       });
-      expect(row.followUps).toContain("What is the status of quotes for project J-2611-R7K3?");
+      expect(model.requests).toHaveLength(1);
+      expect(row.followUps).toEqual([]);
+      expect(row.answerText).not.toContain("J-2611-R7K3");
     } finally {
       await db.close();
     }

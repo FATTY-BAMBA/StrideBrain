@@ -111,6 +111,7 @@ export function assistantFactCopy(locale: Locale) {
         excluded: "此專案已設定為不提供給 AI",
         outOfDate: "已儲存的比較已過期",
         noRecords: "沒有可用紀錄",
+        noneAwaiting: "目前有 0 筆報價等待客戶回覆。",
         available: "可用",
       }
     : {
@@ -138,6 +139,7 @@ export function assistantFactCopy(locale: Locale) {
         excluded: "This job is excluded from AI",
         outOfDate: "The saved comparison is out of date",
         noRecords: "No available records",
+        noneAwaiting: "There are 0 quotes waiting for the client.",
         available: "Available",
       };
 }
@@ -192,6 +194,8 @@ export const quoteAmountLabelWords = {
       "quote total",
       "total amount",
       "total",
+      "totaling",
+      "totalling",
       "including tax",
       "inclusive of tax",
       "tax included",

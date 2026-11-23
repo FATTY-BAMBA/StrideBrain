@@ -246,6 +246,7 @@ export type AnswerRejection =
   | "ANSWER_SCHEMA"
   | "WORD_LIMIT"
   | "AMOUNT_LABEL"
+  | "DISPLAY_FORMAT"
   | "TRUNCATED_REFERENCE"
   | "UNKNOWN_SOURCE"
   | "NO_SOURCES"
@@ -304,6 +305,13 @@ export function hasMislabelledQuoteAmount(
     locale,
   );
 }
+/** Display facts must not acquire machine keys or extra decimal places in the answer. */
+export function hasBadDisplayFormat(text: string, identities: readonly string[] = []): boolean {
+  const values = withoutReferences(text, identities);
+  return /\b(?:acceptedOn|priceBasis|validUntil|displayMedian|displayLow|displayHigh|quoteBeforeTax|actualCost)\b|TWD\s*\/\s*m2|\d[\d,]*\.\d{3,}/.test(
+    values,
+  );
+}
 function checkSingleAnswer(
   raw: unknown,
   sources: readonly AssistantSource[],
@@ -337,6 +345,8 @@ function checkSingleAnswer(
     return { kind: "REJECTED", reason: "UNSUPPORTED_NUMBER" };
   if (hasMislabelledQuoteAmount(output, cited, locale, references))
     return { kind: "REJECTED", reason: "AMOUNT_LABEL" };
+  if (hasBadDisplayFormat(output, references))
+    return { kind: "REJECTED", reason: "DISPLAY_FORMAT" };
   // Percent findings retain the shared Home/comparison/chat sentence verbatim.
   const findings = cited
     .flatMap((s) => (Array.isArray(s.facts.findings) ? s.facts.findings : []))

@@ -291,6 +291,7 @@ describe("stability regressions", () => {
         calls: 2,
         namedJobRefusal: false,
         wrongAmountLabel: false,
+        badDisplayFormat: false,
         verdict: i >= 20 || i < (locale === "en" ? en : zh) ? "grounded and correct" : "wrong",
         wrongNumber: false,
       })),
@@ -339,6 +340,9 @@ describe("stability regressions", () => {
     expect(roundSummary(1, sample).passed).toBe(false);
     sample[0]!.calls = 2;
     sample[0]!.wrongAmountLabel = true;
+    expect(roundSummary(1, sample).passed).toBe(false);
+    sample[0]!.wrongAmountLabel = false;
+    sample[0]!.badDisplayFormat = true;
     expect(roundSummary(1, sample).passed).toBe(false);
   });
 });

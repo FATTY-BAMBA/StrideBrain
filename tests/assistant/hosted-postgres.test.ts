@@ -139,9 +139,9 @@ suite("hosted regressions through authorized records and the Home server action"
         );
     }
   });
-  it("keeps no awaiting clients grounded and does not save a comparison, even after a duplicate call", async () => {
+  it("answers no awaiting clients before another model call and does not save a comparison", async () => {
     await emptyAwaitingScenario(true, async () => {
-      const { turn } = await ask(
+      const { turn, fake } = await ask(
         "哪些報價還在等客戶回覆？",
         { name: "list_awaiting_client", arguments: {} },
         (facts) => `目前有 ${facts[assistantFactLabels("zh-TW").count!]} 筆報價等待客戶回覆。`,
@@ -149,6 +149,7 @@ suite("hosted regressions through authorized records and the Home server action"
       );
       expect(turn).toMatchObject({ ai: true, text: "目前有 0 筆報價等待客戶回覆。" });
       expect(turn.aiSources).toHaveLength(1);
+      expect(fake.requests).toHaveLength(1);
     });
   });
   it("returns a comparison link for the named job without any comparison writes", async () => {
