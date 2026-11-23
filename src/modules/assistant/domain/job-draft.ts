@@ -67,7 +67,8 @@ export const jobDraftSchema = {
   additionalProperties: false,
 };
 
-/** Invalid fields are dropped independently. Only quotes present in the redacted input count. */
+/** Invalid fields are dropped independently. Only quotes present in the redacted input count.
+ * An area quote never starts inside a longer number, including one grouped with commas (1,200). */
 export function supportJobDraft(text: string, raw: unknown): SupportedJobDraft | null {
   const input = record(raw);
   if (
@@ -148,7 +149,7 @@ export function supportJobDraft(text: string, raw: unknown): SupportedJobDraft |
       squareMetres &&
       quote &&
       !quote.includes("[removed]") &&
-      new RegExp(`(?<![0-9.])${quote.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![0-9])`).test(
+      new RegExp(`(?<![0-9.]|[0-9],)${quote.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![0-9])`).test(
         normalized,
       ) &&
       [digits + unit, digits + " " + unit].includes(quote)

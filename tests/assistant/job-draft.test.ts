@@ -48,6 +48,14 @@ describe("draft support and area", () => {
     expect(supportJobDraft("120 m2.", raw)?.values.areaQuantity).toBeUndefined();
     expect(supportJobDraft("20 m2.", raw)?.values.areaQuantity).toBe("20");
   });
+  it("does not take the tail of a number grouped with commas", () => {
+    const raw = { ...emptyDraft(), area: { digits: "200", unit: "m2", quote: "200 m2" } };
+    const ping = { ...emptyDraft(), area: { digits: "200", unit: "坪", quote: "200 坪" } };
+    expect(supportJobDraft("1,200 m2 shop", raw)?.values.areaQuantity).toBeUndefined();
+    expect(supportJobDraft("面積 1,200 坪", ping)?.values.areaQuantity).toBeUndefined();
+    expect(supportJobDraft("Taipei City, 200 m2", raw)?.values.areaQuantity).toBe("200");
+    expect(supportJobDraft("台北市，200 m2", raw)?.values.areaQuantity).toBe("200");
+  });
   it.each([
     ["120", "坪", "396.694"],
     ["１２０", "坪", "396.694"],
