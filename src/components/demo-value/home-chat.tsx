@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { assistantCopy } from "@/modules/localization/assistant";
 import { useActionState } from "react";
 import { askHomeAction } from "@/app/[locale]/home-chat-actions";
 import { initialHomeChatState } from "@/modules/home-intelligence/chat-contracts";
@@ -41,7 +42,47 @@ export function HomeChat({
             className={turn.role === "user" ? styles.userMessage : styles.assistantMessage}
             key={turn.id}
           >
+            {turn.ai && (
+              <small>
+                {turn.aiSources?.length
+                  ? assistantCopy(locale).label
+                  : assistantCopy(locale).labelWithoutSources}
+              </small>
+            )}
+            {turn.aiFallback && <small role="status">{assistantCopy(locale).fallback}</small>}
             <p>{turn.text}</p>
+            {turn.aiSources?.length ? (
+              <ul aria-label={assistantCopy(locale).sources}>
+                {turn.aiSources.map((source) => (
+                  <li key={source.sourceId}>
+                    <Link href={source.href}>{source.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {turn.aiFollowUps?.length ? (
+              <ul className={styles.followUps}>
+                {turn.aiFollowUps.map((question) => (
+                  <li key={question}>
+                    <button
+                      type="button"
+                      disabled={pending}
+                      onClick={() => {
+                        const form = document.getElementById("chat-form") as HTMLFormElement | null;
+                        const field = form?.elements.namedItem("message");
+                        if (field instanceof HTMLTextAreaElement) {
+                          field.value = question;
+                          form?.requestSubmit();
+                        }
+                      }}
+                    >
+                      {question}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {turn.ai && <Link href={`/${locale}/ai-data`}>{assistantCopy(locale).data}</Link>}
             {turn.bullets?.length ? (
               <ul>
                 {turn.bullets.map((item) => (
@@ -115,7 +156,7 @@ export function HomeChat({
         {pending ? <p className={styles.thinking}>{copy.thinking}</p> : null}
       </div>
 
-      <form action={action} className={styles.chatComposer}>
+      <form id="chat-form" action={action} className={styles.chatComposer}>
         <input type="hidden" name="locale" value={locale} />
         {projectKey ? <input type="hidden" name="projectKey" value={projectKey} /> : null}
         <textarea

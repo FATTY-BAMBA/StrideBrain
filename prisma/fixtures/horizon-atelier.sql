@@ -33,6 +33,12 @@ ALTER TABLE "InternalReviewReceipt" DISABLE TRIGGER "InternalReviewReceipt_immut
 ALTER TABLE "QuoteVersion" DISABLE TRIGGER "QuoteVersion_issued_immutable";
 ALTER TABLE "QuoteItem" DISABLE TRIGGER "QuoteItem_issued_immutable";
 
+DO $$ BEGIN
+  IF to_regclass('public."AssistantUsage"') IS NOT NULL THEN
+    EXECUTE 'DELETE FROM "AssistantUsage" WHERE "organizationId" IN (''org_horizon'', ''org_northern'')';
+  END IF;
+END $$;
+
 DELETE FROM "InternalReviewReceipt" WHERE "organizationId" IN ('org_horizon', 'org_northern');
 DELETE FROM "AuditEvent" WHERE "organizationId" IN ('org_horizon', 'org_northern');
 DELETE FROM "Action" WHERE "organizationId" IN ('org_horizon', 'org_northern');

@@ -1,0 +1,12 @@
+{
+  "promptUnchanged": true,
+  "promptSha256": "17926078283832d96f4798ada93ca32ed9ade8f61326a01d1323286e32e67ee6",
+  "workflowUnchanged": true,
+  "migrationsUnchanged": true,
+  "evaluationDiscovery": [
+    "tests/assistant/provider-evaluation.runner.ts"
+  ],
+  "discoveryCommand": "npx --no-install vitest list --config vitest.ai-eval.config.ts --filesOnly",
+  "providerRun": 45049171548,
+  "artifactId": 14765191396
+}

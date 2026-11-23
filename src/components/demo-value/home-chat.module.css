@@ -187,3 +187,25 @@
     max-width: 100%;
   }
 }
+
+.followUps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+}
+.followUps button {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #b7c1bc;
+  border-radius: 8px;
+  background: #fff;
+  color: #24483e;
+  text-align: start;
+  cursor: pointer;
+}
+.followUps button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}

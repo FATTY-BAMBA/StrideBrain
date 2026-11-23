@@ -1,16 +1,12 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
+import { FoundationPage } from "@/components/ui/foundation-page";
+import { assistantCopy } from "@/modules/localization/assistant";
 import { isSupportedLocale } from "@/modules/localization/config";
-
-export default async function Page({
-  params,
-  searchParams,
-}: {
-  params: Promise<{ locale: string }>;
-  searchParams: Promise<{ project?: string | string[] }>;
-}) {
+export default async function KnowledgePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
-  const search = await searchParams;
-  const project = typeof search.project === "string" ? search.project : undefined;
-  redirect(`/${locale}${project ? `?project=${encodeURIComponent(project)}` : ""}`);
+  const c = assistantCopy(locale);
+  return (
+    <FoundationPage eyebrow={c.planned} title={c.knowledge} description={c.knowledgeDescription} />
+  );
 }

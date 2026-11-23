@@ -17,6 +17,8 @@ it.each(["en", "zh-TW"] as const)(
     const copy = quoteIssueCopy(locale);
     const view: IssueView = {
       kind: "AVAILABLE",
+      latestIssued: null,
+      amounts: null,
       projectKey: "J-2611-A7K3",
       versionId: "version",
       status: "ISSUED",

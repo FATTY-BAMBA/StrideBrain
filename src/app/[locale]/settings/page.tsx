@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AssistantSettings } from "@/components/assistant/assistant-settings";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
 import { createQuoteIssueServices } from "@/lib/server/quote-issue-services";
 import { FirmDetailsForm } from "@/components/quote-issue/firm-details-form";
@@ -22,9 +23,7 @@ export default async function SettingsPage({ params }: { params: Promise<{ local
         .catch(() => null)
     : null;
   const sections =
-    locale === "en"
-      ? ["Team & access", "Data connections", "AI preferences"]
-      : ["團隊與存取權限", "資料連結", "AI 偏好設定"];
+    locale === "en" ? ["Team & access", "Data connections"] : ["團隊與存取權限", "資料連結"];
   return (
     <FoundationPage
       eyebrow={catalog["nav.settings"]}
@@ -49,6 +48,7 @@ export default async function SettingsPage({ params }: { params: Promise<{ local
         context?.capabilities.has("settings:manage") ? (
         <p role="status">{quoteIssueCopy(locale).UNAVAILABLE}</p>
       ) : null}
+      {context && <AssistantSettings context={{ ...context, locale }} />}
       <div className="settings-planned">
         {sections.map((title) => (
           <section key={title}>

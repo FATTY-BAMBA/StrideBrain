@@ -361,9 +361,21 @@ export class GetQuoteIssue {
         { language: "zh-TW", attention: "" },
         this.clock(),
       );
+      const latestIssued = state.latestIssued ?? state.issued;
       return {
         kind: "AVAILABLE" as const,
         projectKey: key,
+        latestIssued: latestIssued
+          ? {
+              documentNumber: latestIssued!.documentNumber,
+              status: latestIssued!.status,
+              validUntil: latestIssued!.validUntil,
+              acceptedOn: latestIssued!.acceptedOn,
+            }
+          : null,
+        amounts: state.current
+          ? { basis: "CURRENT" as const, currency: state.current.currency, ...state.current.totals }
+          : null,
         versionId: state.current?.id ?? null,
         status: state.current?.status ?? null,
         today: organizationDate(this.clock(), state.timezone),

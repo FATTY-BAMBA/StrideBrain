@@ -182,6 +182,17 @@ export class PrismaQuoteIssueSession
               snapshot: activeIssued.documentSnapshot as unknown as QuoteDocumentSnapshot,
             }
           : null,
+      latestIssued:
+        versions[0]?.documentNumber && versions[0].validUntil && versions[0].documentSnapshot
+          ? {
+              id: versions[0].id,
+              status: versions[0].status,
+              documentNumber: versions[0].documentNumber,
+              validUntil: versions[0].validUntil.toISOString().slice(0, 10),
+              acceptedOn: versions[0].acceptedOn?.toISOString().slice(0, 10) ?? null,
+              snapshot: versions[0].documentSnapshot as unknown as QuoteDocumentSnapshot,
+            }
+          : null,
       sourceAccess,
       conflicts: sourceAccess ? conflicts : [],
       basisOutOfDate: !!current?.lines.some(

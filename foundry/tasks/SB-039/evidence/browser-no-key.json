@@ -1,0 +1,10 @@
+{
+  "mode": "Production build, no provider key",
+  "viewport": "1440x1100; AI answer also 390x844",
+  "checks": [
+    "No key: existing keyword response, no AI label, no usage rows.",
+    "Knowledge and Customer care are planned, have no live controls, and do not redirect; AI data policy links work in both languages.",
+    "No browser page errors."
+  ],
+  "errors": []
+}

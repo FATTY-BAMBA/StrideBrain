@@ -1,0 +1,20 @@
+{
+  "baseline": "70ae4a0d90f2f31880ba9d52c065911cc0036d60",
+  "workflowUnchanged": true,
+  "providerAdapterUnchanged": true,
+  "migrationsUnchanged": true,
+  "instructionChangeOnly": "Follow-ups must be questions the person can ask and these read tools can answer. Never offer help creating, editing, issuing or sending records, or instructions for doing those actions.",
+  "promptSha256": "81d6768c95c5ddb2bb09bf3dc7c2fa6322f653f578457fd1df1bbe1038fbe6c0",
+  "originalFortyQuestionsUnchanged": true,
+  "newRequiredQuestions": [
+    "en-home-named-status",
+    "en-home-reference-total",
+    "en-home-review-quote",
+    "en-home-empty-awaiting",
+    "zh-TW-home-named-status",
+    "zh-TW-home-reference-total",
+    "zh-TW-home-review-quote",
+    "zh-TW-home-empty-awaiting"
+  ],
+  "toolDefinitionChange": "Quote status describes current Quote-tab totals in every status"
+}

@@ -93,6 +93,7 @@ it.each(["en", "zh-TW"] as const)(
       ),
     ).toBe(7);
     expect(host.querySelectorAll('textarea[name="message"]')).toHaveLength(1);
+    expect(host.querySelector('input[name="projectKey"]')).toBeNull();
     expect(host.querySelector("textarea")?.getAttribute("rows")).toBe("1");
     expect(host.querySelector("textarea")?.getAttribute("placeholder")).toBe(
       locale === "en" ? "Have we renovated a flagship store before?" : "我們以前做過旗艦店整修嗎？",

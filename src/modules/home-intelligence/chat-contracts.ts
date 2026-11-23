@@ -36,6 +36,10 @@ export type HomeChatTurn = Readonly<{
   id: string;
   role: "user" | "assistant";
   text: string;
+  ai?: boolean;
+  aiFallback?: boolean;
+  aiSources?: readonly Readonly<{ sourceId: string; label: string; href: Route }>[];
+  aiFollowUps?: readonly string[];
   bullets?: readonly string[];
   citations?: readonly HomeChatCitation[];
   action?: Readonly<{ label: string; href: Route }>;

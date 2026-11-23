@@ -1,0 +1,22 @@
+[
+  {
+    "id": "en-status",
+    "locale": "en",
+    "rawAnswerText": "The quote status for 進行中設計專案01 (PRJ-ACTIVE-001) is Issued. The document number is PRJ-ACTIVE-001-Q1, valid until 2027-12-31, and it is not accepted yet."
+  },
+  {
+    "id": "zh-TW-status",
+    "locale": "zh-TW",
+    "rawAnswerText": "進行中設計專案01（PRJ-ACTIVE-001）的報價狀態為已核發，最新文件編號為 PRJ-ACTIVE-001-Q1，有效期限至 2027-12-31，目前尚未接受。"
+  },
+  {
+    "id": "en-home-named-status",
+    "locale": "en",
+    "rawAnswerText": "The quote status of Active Design Project 01 is Issued, with document number PRJ-ACTIVE-001-Q1, valid until 2027-12-31, and it is not accepted yet. The total amount is NT$11,665,500 (before tax NT$11,110,000, tax amount NT$555,500)."
+  },
+  {
+    "id": "zh-TW-home-named-status",
+    "locale": "zh-TW",
+    "rawAnswerText": "進行中設計專案01（PRJ-ACTIVE-001）的目前報價狀態為已核發，最新文件編號為 PRJ-ACTIVE-001-Q1，有效期限至 2027-12-31，目前接受狀態為尚未接受。未稅金額為 NT$11,110,000，稅額為 NT$555,500，總計金額為 NT$11,665,500。"
+  }
+]

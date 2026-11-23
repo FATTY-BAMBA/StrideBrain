@@ -122,6 +122,8 @@ enum EvidenceSubjectType {
 }
 
 model Organization {
+  assistantEnabled Boolean @default(false)
+  assistantUsage AssistantUsage[]
   id                 String             @id
   businessKey        String             @unique
   nameEn             String
@@ -186,6 +188,7 @@ model Person {
 }
 
 model Membership {
+  assistantUsage AssistantUsage[]
   id             String         @id
   organizationId String
   personId       String
@@ -287,6 +290,7 @@ model Client {
 }
 
 model Project {
+  aiExcluded Boolean @default(false)
   id                 String             @id
   organizationId     String
   businessKey        String
@@ -1103,4 +1107,26 @@ model AuditEvent {
   @@unique([organizationId, idempotencyKey])
   @@index([organizationId, createdAt])
   @@index([organizationId, actionId])
+}
+
+// Metadata only. Never store model prompts, answers, tool arguments or records here.
+model AssistantUsage {
+  id String @id
+  organizationId String
+  membershipId String
+  requestId String
+  provider String
+  model String
+  toolNames String[] @default([])
+  sourceIds String[] @default([])
+  inputTokens Int?
+  outputTokens Int?
+  estimatedUsd Decimal? @db.Decimal(18, 9)
+  outcome String @default("PENDING")
+  createdAt DateTime @default(now())
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Restrict)
+  membership Membership @relation(fields: [membershipId, organizationId], references: [id, organizationId], onDelete: Restrict)
+  @@unique([id, organizationId])
+  @@index([organizationId, createdAt])
+  @@index([organizationId, requestId])
 }

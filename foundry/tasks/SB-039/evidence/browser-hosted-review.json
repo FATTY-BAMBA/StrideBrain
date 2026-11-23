@@ -1,0 +1,23 @@
+{
+  "mode": "Local production Chrome with test-only Google HTTP transport; NOT live Gemini",
+  "checks": [
+    "Home sends no automatically selected project",
+    "Chinese job name overrides a different explicit page project",
+    "English question on zh-TW retains zh-TW source links",
+    "Internal-review quote matches all three Quote-tab amounts in both languages",
+    "Empty awaiting list displays a cited count zero, including duplicate tool-call request",
+    "Missing comparison displays the named-job link and source-free AI label",
+    "Write-oriented follow-up is removed",
+    "ComparisonRun and EconomicsEnrichmentRun counts unchanged across every browser question",
+    "No browser page errors"
+  ],
+  "before": {
+    "comparisons": 0,
+    "economics": 0
+  },
+  "after": {
+    "comparisons": 0,
+    "economics": 0
+  },
+  "errors": []
+}

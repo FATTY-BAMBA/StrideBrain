@@ -1,0 +1,52 @@
+{
+  "issue": 39,
+  "branch": "build/sb-039-records-assistant",
+  "status": "LOCAL_VERIFIED",
+  "delivery": "C",
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "providerEvaluation": "HOSTED_REVIEW_THREE_ROUND_PASS",
+  "model": "gemini-3.5-flash-lite",
+  "pullRequest": 56,
+  "pullRequestState": "DRAFT",
+  "workflowPullRequest": 57,
+  "review": "HOSTED_REVIEW_LOCAL_AND_PAID_VERIFIED",
+  "providerEvaluationRun": 45069524181,
+  "workflowPullRequestState": "MERGED",
+  "localTests": {
+    "passed": 1305,
+    "files": 125
+  },
+  "findingExpansion": "CASE_INSENSITIVE_CITED_CATEGORY_AND_TYPED_KIND_THEN_UNIQUE_PERCENTAGE",
+  "providerEvaluationRounds": [
+    {
+      "en": 20,
+      "zh-TW": 18
+    },
+    {
+      "en": 19,
+      "zh-TW": 19
+    },
+    {
+      "en": 20,
+      "zh-TW": 19
+    }
+  ],
+  "providerEvaluationCommit": "53bdc583e5f3bd600c260390e36041998a9cc3d8",
+  "displayedWrongNumbers": 0,
+  "questionsPassingAllRounds": 45,
+  "providerEvaluationHostedRegressions": [
+    {
+      "passed": 8,
+      "total": 8
+    },
+    {
+      "passed": 8,
+      "total": 8
+    },
+    {
+      "passed": 8,
+      "total": 8
+    }
+  ],
+  "providerEvaluationArtifact": 14772489233
+}

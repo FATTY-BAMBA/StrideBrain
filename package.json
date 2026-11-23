@@ -12,8 +12,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "format": "prettier --write package.json tsconfig.json next.config.ts next-env.d.ts eslint.config.mjs prettier.config.mjs vitest.config.ts prisma.config.ts .github/workflows/ci.yml 'src/**/*.{ts,tsx,css}' 'tests/**/*.ts'",
-    "format:check": "prettier --check package.json tsconfig.json next.config.ts next-env.d.ts eslint.config.mjs prettier.config.mjs vitest.config.ts prisma.config.ts .github/workflows/ci.yml 'src/**/*.{ts,tsx,css}' 'tests/**/*.ts'",
+    "format": "prettier --write package.json tsconfig.json next.config.ts next-env.d.ts eslint.config.mjs prettier.config.mjs vitest.config.ts vitest.ai-eval.config.ts scripts/run-ai-eval.mjs tests/assistant/questions.json .github/workflows/ai-evaluation.yml prisma.config.ts .github/workflows/ci.yml 'src/**/*.{ts,tsx,css}' 'tests/**/*.ts'",
+    "format:check": "prettier --check package.json tsconfig.json next.config.ts next-env.d.ts eslint.config.mjs prettier.config.mjs vitest.config.ts vitest.ai-eval.config.ts scripts/run-ai-eval.mjs tests/assistant/questions.json .github/workflows/ai-evaluation.yml prisma.config.ts .github/workflows/ci.yml 'src/**/*.{ts,tsx,css}' 'tests/**/*.ts'",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -21,10 +21,11 @@
     "db:validate": "npx --yes prisma@7.10.1 validate --config prisma.config.ts",
     "db:generate": "npx --yes prisma@7.10.1 generate --config prisma.config.ts",
     "db:migrate": "npx --yes prisma@7.10.1 migrate deploy --config prisma.config.ts",
-    "db:seed": "npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/horizon-atelier.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/stage2-authorization.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/stage4-comparison.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/stage5-economics.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/job-neutral-findings.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/quote-draft.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/quote-issue.sql",
-    "db:verify": "npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-horizon.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-relations.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage2-authorization.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage3-workspace.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage4-comparison.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage5-economics.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage6-comparison-persistence.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage8-internal-review.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-jobs.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-job-neutral-findings.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-quote-draft.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-quote-issue.sql",
+    "db:seed": "npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/horizon-atelier.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/stage2-authorization.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/stage4-comparison.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/stage5-economics.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/job-neutral-findings.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/quote-draft.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/quote-issue.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/assistant.sql",
+    "db:verify": "npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-horizon.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-relations.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage2-authorization.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage3-workspace.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage4-comparison.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage5-economics.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage6-comparison-persistence.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-stage8-internal-review.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-jobs.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-job-neutral-findings.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-quote-draft.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-quote-issue.sql && npx --yes prisma@7.10.1 db execute --config prisma.config.ts --file prisma/fixtures/verify-assistant.sql",
     "db:reset-fixture": "npm run db:migrate && npm run db:seed && npm run db:verify",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build"
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build",
+    "ai:eval": "node scripts/run-ai-eval.mjs"
   },
   "dependencies": {
     "@prisma/adapter-pg": "7.10.1",
@@ -33,7 +34,8 @@
     "pdfkit": "0.21.0",
     "pg": "8.16.3",
     "react": "19.3.1",
-    "react-dom": "19.3.1"
+    "react-dom": "19.3.1",
+    "server-only": "0.0.1"
   },
   "devDependencies": {
     "@types/node": "26.6.6",

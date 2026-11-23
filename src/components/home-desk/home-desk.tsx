@@ -120,7 +120,7 @@ export function HomeDeskScreen({
             projectKey={
               (requestedProject
                 ? desk.projects.find((job) => job.businessKey === requestedProject)
-                : (desk.projects.find((job) => job.active) ?? desk.projects[0])
+                : undefined
               )?.businessKey
             }
           />

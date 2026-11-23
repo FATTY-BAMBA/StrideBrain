@@ -1,0 +1,14 @@
+{
+  "mode": "Production build, local test-only fake of Google HTTP transport; NOT live Gemini",
+  "viewport": "1440x1100; AI answer also 390x844",
+  "checks": [
+    "Transport fake: question → Gemini adapter → authorized tool → grounded answer; source link, AI label, data link and follow-up refusal rendered.",
+    "Exclusion saved to database through the overview control, caused fixed refusal, then restored.",
+    "Unsupported numeric output discarded, visible keyword fallback, metadata reason FALLBACK_UNGROUNDED.",
+    "Organization off persisted, keyword response adds no usage rows.",
+    "Viewer received refusal with no quote amount.",
+    "11 model-call metadata rows, all finalized; no question/answer fields in schema.",
+    "No browser page errors."
+  ],
+  "errors": []
+}

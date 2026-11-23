@@ -1,0 +1,74 @@
+[
+  {
+    "run": 45053575595,
+    "id": "en-status",
+    "text": "The quote for Active Design Project 01 (PRJ-ACTIVE-001) is ISSUED. The document number is PRJ-ACTIVE-001-Q1, valid until 2027-12-31, and it has not been accepted yet.",
+    "previousDiscardReason": "UNSUPPORTED_NUMBER"
+  },
+  {
+    "run": 45053575595,
+    "id": "zh-TW-finding",
+    "text": "PRJ-XINYI-026已儲存的報價比較發現包含：\n1. 現場協調與交付：預估成本比過往已核對實際成本低 15.9%，報價比過往報價低 28.0%。\n2. 拆除、隔間與天花：預估成本比過往已核對實際成本高 9.4%，報價比過往報價高 7.1%。\n3. 進口石材與硬質面材：預估成本比過往已核對實際成本高 18.4%，報價比過往報價高 43.0%。\n4. 照明與電氣：過往已核對實際成本紀錄不足，無法比較（2/3），報價比過往報價高 9.4%。\n5. 整體：預估成本比過往已核對實際成本高 6.0%，報價比過往報價高 7.2%。\n6. 工期與所選過往專案不同，對成本的影響尚未量化。\n7. 標示與展示安裝：預估成本比過往已核對實際成本低 11.5%，報價比過往報價低 5.5%。",
+    "previousDiscardReason": "UNSUPPORTED_NUMBER"
+  },
+  {
+    "run": 45053575595,
+    "id": "zh-TW-closed",
+    "text": "根據最近結案專案的紀錄共 3 筆：\n1. 南京品牌體驗中心：報價 NT$17,300,000，實際成本 NT$13,420,000。\n2. 內湖科技旗艦店：報價 NT$15,120,000，實際成本 NT$11,580,000。\n3. 松山門市改裝：報價 NT$14,900,000，實際成本 NT$11,650,000。",
+    "previousDiscardReason": "UNSUPPORTED_NUMBER"
+  },
+  {
+    "run": 45053575595,
+    "id": "zh-TW-viewer-amount",
+    "text": "無法取得PRJ-XINYI-026的報價金額，因為目前該專案的報價狀態為無法取得（UNAVAILABLE），無法查看財務金額。",
+    "previousDiscardReason": "FINANCIAL_AUTHORITY"
+  },
+  {
+    "run": 45053575595,
+    "id": "zh-TW-manager-scope",
+    "text": "您可以查看以下 2 個指派給您的專案：\n1. 河岸展示工作室（參考編號：J-2611-R7K3，階段：報價審查）\n2. 信義旗艦店裝修（參考編號：PRJ-XINYI-026，階段：報價審查）",
+    "previousDiscardReason": "UNSUPPORTED_NUMBER"
+  },
+  {
+    "run": 45053587841,
+    "id": "en-status",
+    "text": "The status of the quote for Active Design Project 01 (PRJ-ACTIVE-001) is ISSUED. The document number is PRJ-ACTIVE-001-Q1, with a total amount of NT$11,665,500 (amount before tax: NT$11,110,000, tax amount: NT$555,500) and is valid until 2027-12-31. It has not been accepted yet.",
+    "previousDiscardReason": "UNSUPPORTED_NUMBER"
+  },
+  {
+    "run": 45053587841,
+    "id": "en-finding",
+    "text": "For PRJ-XINYI-026, a saved price finding is: Site coordination and handover: quoted price is 28.0% below past quoted prices.",
+    "previousDiscardReason": null
+  },
+  {
+    "run": 45053587841,
+    "id": "zh-TW-awaiting",
+    "text": "目前正在等待客戶回覆的報價包含：進行中設計專案01（單號：PRJ-ACTIVE-001-Q1，有效期限至2027年12月31日）。",
+    "previousDiscardReason": "FINANCIAL_AUTHORITY"
+  },
+  {
+    "run": 45053587841,
+    "id": "zh-TW-status",
+    "text": "進行中設計專案01（PRJ-ACTIVE-001）目前的報價狀態為 ISSUED（已發出），最新發出的文件編號為 PRJ-ACTIVE-001-Q1，有效期至 2027-12-31，目前尚未被接受（acceptedOn 為 null）。",
+    "previousDiscardReason": "UNSUPPORTED_NUMBER"
+  },
+  {
+    "run": 45053587841,
+    "id": "zh-TW-finding",
+    "text": "PRJ-XINYI-026 已儲存的報價比較發現包含：\n1. 現場協調與交付：預估成本比過往已核對實際成本低 15.9%，報價比過往報價低 28.0%。\n2. 拆除、隔間與天花：預估成本比過往已核對實際成本高 9.4%，報價比過往報價高 7.1%。\n3. 進口石材與硬質面材：預估成本比過往已核對實際成本高 18.4%，報價比過往報價高 43.0%。\n4. 照明與電氣：過往已核對實際成本紀錄不足，無法比較（2/3），報價比過往報價高 9.4%。\n5. 整體：預估成本比過往已核對實際成本高 6.0%，報價比過往報價高 7.2%。\n6. 工期與所選過往專案不同，對成本的影響尚未量化。\n7. 標示與展示安裝：預估成本比過往已核對實際成本低 11.5%，報價比過往報價低 5.5%。",
+    "previousDiscardReason": "UNSUPPORTED_NUMBER"
+  },
+  {
+    "run": 45053587841,
+    "id": "zh-TW-closed",
+    "text": "最近結案的3個專案紀錄如下：\n1. 南京品牌體驗中心：報價 NT$17,300,000，實際成本 NT$13,420,000。\n2. 內湖科技旗艦店：報價 NT$15,120,000，實際成本 NT$11,580,000。\n3. 松山門市改裝：報價 NT$14,900,000，實際成本 NT$11,650,000。",
+    "previousDiscardReason": "UNSUPPORTED_NUMBER"
+  },
+  {
+    "run": 45053587841,
+    "id": "zh-TW-manager-scope",
+    "text": "您可以查看以下 2 個專案：\n1. 河岸展示工作室（參考編號：J-2611-R7K3，階段：報價審查）\n2. 信義旗艦店裝修（參考編號：PRJ-XINYI-026，階段：報價審查）",
+    "previousDiscardReason": "UNSUPPORTED_NUMBER"
+  }
+]

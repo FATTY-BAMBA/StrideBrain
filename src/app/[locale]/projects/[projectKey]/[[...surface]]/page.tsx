@@ -1,3 +1,5 @@
+import { AssistantControl } from "@/components/assistant/assistant-control";
+import { createAssistantControlServices } from "@/lib/server/assistant-services";
 import { notFound } from "next/navigation";
 
 import { ProjectLocalNav } from "@/components/projects/project-local-nav";
@@ -81,10 +83,21 @@ export default async function ProjectWorkspacePage({
         projectKey,
       );
       if (outcome.kind === "AVAILABLE") {
+        const policy = await createAssistantControlServices()
+          .repository.jobPolicy(context, projectKey)
+          .catch(() => null);
         return (
           <div className="foundation-page">
             <ProjectLocalNav locale={rawLocale} projectKey={projectKey} labels={catalog} />
             <ProjectWorkspaceOverview locale={rawLocale} workspace={outcome.workspace} />
+            {policy && (
+              <AssistantControl
+                locale={rawLocale}
+                enabled={policy.excluded}
+                projectKey={projectKey}
+                canManage={context.capabilities.has("project:update")}
+              />
+            )}
           </div>
         );
       }

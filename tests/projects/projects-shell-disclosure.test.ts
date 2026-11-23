@@ -31,6 +31,8 @@ describe("Projects shell server-to-client disclosure boundary", () => {
         labels: {
           "nav.home": catalog["nav.home"],
           "nav.projects": catalog["nav.projects"],
+          "nav.knowledge": catalog["nav.knowledge"],
+          "nav.customerCare": catalog["nav.customerCare"],
         },
       });
       expect(JSON.stringify(props)).not.toMatch(/INACCESSIBLE|Xinyi|Horizon|信義|禾序/);

@@ -1,5 +1,6 @@
 "use server";
 
+import { assistantConfigured } from "@/lib/server/assistant-availability";
 import {
   claimFindingText,
   recommendationText,
@@ -217,9 +218,10 @@ function comparableReply(
   });
 }
 
-export async function askHomeAction(
+async function askKeywordAction(
   previous: HomeChatState,
   formData: FormData,
+  onlyMatched = false,
 ): Promise<HomeChatState> {
   const rawLocale = formData.get("locale");
   const rawMessage = formData.get("message");
@@ -251,6 +253,7 @@ export async function askHomeAction(
   const context = await loadDemoValueContext(locale, requestedProject ?? undefined);
   const workspace = context.workspace;
   if (!workspace) {
+    if (onlyMatched) return previous;
     return append(previous, [
       userTurn,
       {
@@ -364,6 +367,7 @@ export async function askHomeAction(
     /(evidence|source|support|佐證|來源)/i.test(normalized);
 
   if (!needsComparison) {
+    if (onlyMatched) return previous;
     return append(previous, [
       userTurn,
       {
@@ -671,4 +675,77 @@ export async function askHomeAction(
     ],
     nextContext(previous.context, bundle, {}),
   );
+}
+
+/** Optional model path. With no key/flag, retain the existing keyword behavior exactly. */
+export async function askHomeAction(
+  previous: HomeChatState,
+  formData: FormData,
+): Promise<HomeChatState> {
+  const rawLocale = formData.get("locale"),
+    rawMessage = formData.get("message"),
+    rawProject = formData.get("projectKey");
+  let attempted = false;
+  if (
+    assistantConfigured() &&
+    typeof rawLocale === "string" &&
+    isSupportedLocale(rawLocale) &&
+    typeof rawMessage === "string" &&
+    rawMessage.trim() &&
+    rawMessage.length <= 280 &&
+    (rawProject === null ||
+      (typeof rawProject === "string" && /^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$/.test(rawProject)))
+  ) {
+    try {
+      const runtime = await resolveServerRuntimeContext();
+      if (runtime) {
+        const { createAssistantServices } = await import("@/lib/server/assistant-services");
+        const result = await createAssistantServices().ask.execute(
+          { ...runtime, locale: rawLocale },
+          {
+            question: rawMessage.trim(),
+            previousQuestions: previous.turns
+              .filter(
+                (t) => t.role === "user" && typeof t.text === "string" && t.text.length <= 280,
+              )
+              .slice(-9)
+              .map((t) => t.text),
+            ...(typeof rawProject === "string" ? { projectKey: rawProject } : {}),
+          },
+        );
+        if (result.kind === "ANSWER") {
+          const now = Date.now();
+          return append(previous, [
+            { id: `user-${now}`, role: "user", text: rawMessage.trim() },
+            {
+              id: `assistant-${now}`,
+              role: "assistant",
+              text: result.answer.text,
+              ai: true,
+              aiSources: result.sources.map((s) => ({
+                sourceId: s.sourceId,
+                label: s.label,
+                href: s.href as Route,
+              })),
+              aiFollowUps: result.answer.followUps,
+              ...(result.action
+                ? { action: { ...result.action, href: result.action.href as Route } }
+                : {}),
+            },
+          ]);
+        }
+        attempted = !["DISABLED", "NO_KEY"].includes(result.reason);
+      }
+    } catch {
+      attempted = true;
+    }
+  }
+  const result = await askKeywordAction(previous, formData);
+  if (!attempted || result === previous) return result;
+  return {
+    ...result,
+    turns: result.turns.map((t, i) =>
+      i === result.turns.length - 1 && t.role === "assistant" ? { ...t, aiFallback: true } : t,
+    ),
+  };
 }
