@@ -1,3 +1,10 @@
+vi.mock("@/app/[locale]/job-draft-actions", () => ({
+  draftJobFromNewPage: vi.fn(),
+  draftJobFromHome: vi.fn(),
+}));
+vi.mock("@/lib/server/job-draft-services", () => ({
+  jobDraftAvailable: vi.fn().mockResolvedValue(false),
+}));
 // @vitest-environment jsdom
 import { createElement, type ReactNode } from "react";
 import { renderToStaticMarkup } from "react-dom/server";

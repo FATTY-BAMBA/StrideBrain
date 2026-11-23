@@ -1,3 +1,10 @@
+vi.mock("@/app/[locale]/job-draft-actions", () => ({
+  draftJobFromNewPage: vi.fn(),
+  draftJobFromHome: vi.fn(),
+}));
+vi.mock("@/lib/server/job-draft-services", () => ({
+  jobDraftAvailable: vi.fn().mockResolvedValue(false),
+}));
 import { describe, it, expect, vi } from "vitest";
 import type * as ReactTypes from "react";
 import { createElement } from "react";

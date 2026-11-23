@@ -68,11 +68,13 @@ export function HomeDeskScreen({
   outcome,
   complete = false,
   requestedProject,
+  canDraftJob = false,
 }: {
   locale: Locale;
   outcome: HomeDeskOutcome;
   complete?: boolean;
   requestedProject?: string | undefined;
+  canDraftJob?: boolean;
 }) {
   const copy = homeDeskCopy(locale);
   if (outcome.kind !== "AVAILABLE")
@@ -104,7 +106,10 @@ export function HomeDeskScreen({
         ) : null}
       </header>
       {!desk.projects.length ? (
-        <p>{copy.empty}</p>
+        <>
+          <p>{copy.empty}</p>
+          {desk.canCreate && canDraftJob ? <HomeChat locale={locale} canDraftJob /> : null}
+        </>
       ) : (
         <>
           <section className={styles.section} aria-labelledby="needs-title">
@@ -117,6 +122,7 @@ export function HomeDeskScreen({
           </section>
           <HomeChat
             locale={locale}
+            canDraftJob={desk.canCreate && canDraftJob}
             projectKey={
               (requestedProject
                 ? desk.projects.find((job) => job.businessKey === requestedProject)

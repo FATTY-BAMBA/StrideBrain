@@ -4,6 +4,7 @@ import { createHomeDeskService } from "@/lib/server/home-desk-services";
 import { isSupportedLocale } from "@/modules/localization/config";
 import { previewSessionOrigin } from "@/modules/preview-session/config";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
+import { jobDraftAvailable } from "@/lib/server/job-draft-services";
 
 export default async function Page({
   params,
@@ -29,6 +30,7 @@ export default async function Page({
     <HomeDeskScreen
       locale={locale}
       outcome={outcome}
+      canDraftJob={await jobDraftAvailable(identity)}
       requestedProject={typeof requested === "string" ? requested : undefined}
     />
   );

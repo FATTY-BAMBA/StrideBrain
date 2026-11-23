@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useState, useId } from "react";
 import Link from "next/link";
 import { createProjectAction } from "@/app/[locale]/projects/new/actions";
 import { jobsCopy, categoryLabel } from "@/modules/localization/jobs";
@@ -15,6 +15,8 @@ import {
 } from "@/modules/projects/domain/job-input";
 import type { JobActionState } from "@/modules/projects/application/job-action-state";
 import type { ProjectClientOption } from "@/modules/projects/application/list-project-clients";
+import type { JobDraft } from "@/modules/assistant/domain/job-draft";
+import { jobDraftCopy } from "@/modules/localization/job-draft";
 import styles from "./job-form.module.css";
 
 export function NewJobForm({
@@ -22,25 +24,48 @@ export function NewJobForm({
   idempotencyKey,
   businessKey,
   clients,
+  initialDraft,
+  confirmDraft = false,
 }: {
   locale: Locale;
   idempotencyKey: string;
   businessKey: string;
   clients: readonly ProjectClientOption[];
+  initialDraft?: JobDraft | undefined;
+  confirmDraft?: boolean;
 }) {
+  const formId = useId();
   const copy = jobsCopy(locale);
   const [state, action, pending] = useActionState(createProjectAction, {} as JobActionState);
   const [values, setValues] = useState<Record<string, string>>({
     businessKey,
-    clientMode: clients.length ? "existing" : "new",
+    clientMode: initialDraft?.clientMode ?? (clients.length ? "existing" : "new"),
+    ...initialDraft?.values,
   });
-  const [existingClient, setExistingClient] = useState("");
-  const [categories, setCategories] = useState<string[]>([]);
+  const [existingClient, setExistingClient] = useState(initialDraft?.clientBusinessKey ?? "");
+  const [categories, setCategories] = useState<readonly string[]>(
+    initialDraft?.scopeCategoryIds ?? [],
+  );
+  const [aiFields, setAiFields] = useState<readonly JobField[]>(() => [
+    ...(Object.keys(initialDraft?.values ?? {}) as JobField[]),
+    ...(initialDraft?.scopeCategoryIds.length ? ["scopeCategoryIds" as const] : []),
+    ...(initialDraft?.values.clientName
+      ? [
+          "clientMode" as const,
+          ...(initialDraft.clientBusinessKey ? ["clientBusinessKey" as const] : []),
+        ]
+      : []),
+  ]);
+  const mark = (key: JobField) =>
+    aiFields.includes(key) ? (
+      <small className={styles.aiMark}>{jobDraftCopy(locale).marked}</small>
+    ) : null;
   const [edited, setEdited] = useState<{ response: JobActionState; fields: readonly JobField[] }>({
     response: state,
     fields: [],
   });
   function clearError(key: JobField) {
+    setAiFields((current) => current.filter((field) => field !== key));
     setEdited((current) => ({
       response: state,
       fields: [...(current.response === state ? current.fields : []), key],
@@ -58,7 +83,7 @@ export function NewJobForm({
   function error(key: JobField) {
     const code = errorCode(key);
     return code ? (
-      <p id={`${key}-error`} className={styles.error}>
+      <p id={`${formId}-${key}-error`} className={styles.error}>
         {copy[code]}
       </p>
     ) : null;
@@ -70,9 +95,9 @@ export function NewJobForm({
   ) {
     return (
       <div className={styles.field} key={key}>
-        <label htmlFor={key}>{copy[key]}</label>
+        <label htmlFor={`${formId}-${key}`}>{copy[key]}</label>
         <input
-          id={key}
+          id={`${formId}-${key}`}
           name={key}
           value={values[key] ?? ""}
           onChange={(event) => change(key, event.target.value)}
@@ -80,8 +105,15 @@ export function NewJobForm({
           required={!optional}
           inputMode={key === "areaQuantity" ? "decimal" : "text"}
           aria-invalid={!!errorCode(key)}
-          aria-describedby={errorCode(key) ? `${key}-error` : undefined}
+          aria-describedby={errorCode(key) ? `${formId}-${key}-error` : undefined}
         />
+        {mark(key)}
+        {key === "areaQuantity" && aiFields.includes(key) && initialDraft?.area ? (
+          <small>
+            {initialDraft.area.digits} {initialDraft.area.unit} = {initialDraft.area.squareMetres}{" "}
+            m²
+          </small>
+        ) : null}
         {error(key)}
       </div>
     );
@@ -92,15 +124,15 @@ export function NewJobForm({
   ) {
     return (
       <div className={styles.field} key={key}>
-        <label htmlFor={key}>{copy[key]}</label>
+        <label htmlFor={`${formId}-${key}`}>{copy[key]}</label>
         <select
-          id={key}
+          id={`${formId}-${key}`}
           name={key}
           value={values[key] ?? ""}
           onChange={(event) => change(key, event.target.value)}
           required
           aria-invalid={!!errorCode(key)}
-          aria-describedby={errorCode(key) ? `${key}-error` : undefined}
+          aria-describedby={errorCode(key) ? `${formId}-${key}-error` : undefined}
         >
           <option value="">{copy.select}</option>
           {options.map(([value, label]) => (
@@ -109,6 +141,7 @@ export function NewJobForm({
             </option>
           ))}
         </select>
+        {mark(key)}
         {error(key)}
       </div>
     );
@@ -117,10 +150,11 @@ export function NewJobForm({
     return (
       <fieldset
         className={styles.categories}
-        aria-describedby={errorCode(key) ? `${key}-error` : undefined}
+        aria-describedby={errorCode(key) ? `${formId}-${key}-error` : undefined}
         aria-invalid={!!errorCode(key)}
       >
         <legend>{copy[key]}</legend>
+        {mark(key)}
         {options.map((value) => (
           <label key={value} className={styles.checkbox}>
             <input
@@ -193,9 +227,9 @@ export function NewJobForm({
           ])}
           {values.clientMode === "existing" ? (
             <div className={styles.field}>
-              <label htmlFor="clientBusinessKey">{copy.existingClient}</label>
+              <label htmlFor={`${formId}-clientBusinessKey`}>{copy.existingClient}</label>
               <select
-                id="clientBusinessKey"
+                id={`${formId}-clientBusinessKey`}
                 name="clientBusinessKey"
                 value={existingClient}
                 onChange={(event) => {
@@ -205,7 +239,7 @@ export function NewJobForm({
                 required
                 aria-invalid={!!errorCode("clientBusinessKey")}
                 aria-describedby={
-                  errorCode("clientBusinessKey") ? "clientBusinessKey-error" : undefined
+                  errorCode("clientBusinessKey") ? `${formId}-clientBusinessKey-error` : undefined
                 }
               >
                 <option value="">{copy.select}</option>
@@ -215,6 +249,7 @@ export function NewJobForm({
                   </option>
                 ))}
               </select>
+              {mark("clientBusinessKey")}
               {error("clientBusinessKey")}
             </div>
           ) : (
@@ -233,7 +268,7 @@ export function NewJobForm({
         {values.clientMode === "new" ? <p className={styles.hint}>{copy.clientKeyHelp}</p> : null}
         <div className={styles.actions}>
           <button className={styles.primary} type="submit">
-            {pending ? copy.pending : copy.submit}
+            {pending ? copy.pending : confirmDraft ? jobDraftCopy(locale).confirm : copy.submit}
           </button>
           <Link href={`/${locale}/projects`}>{copy.cancel}</Link>
         </div>

@@ -1,3 +1,10 @@
+vi.mock("@/app/[locale]/job-draft-actions", () => ({
+  draftJobFromNewPage: vi.fn(),
+  draftJobFromHome: vi.fn(),
+}));
+vi.mock("@/lib/server/job-draft-services", () => ({
+  jobDraftAvailable: vi.fn().mockResolvedValue(false),
+}));
 import { randomUUID } from "node:crypto";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -70,9 +77,9 @@ describe("Create job screen and direct server action", () => {
       const referenceInput = html.match(/<input[^>]*name="businessKey"[^>]*>/)?.[0];
       expect(referenceInput).toMatch(/value="J-\d{4}-[23456789ABCDEFGHJKMNPQRSTUVWXYZ]{4}"/);
       expect(referenceInput).not.toMatch(/readOnly|disabled/i);
-      expect(html).toContain('<select id="clientBusinessKey"');
+      expect(html).toMatch(/<select id="[^"]+-clientBusinessKey"/);
       expect(html).toContain("Aster Retail Taiwan (CLIENT-01)");
-      expect(html).toContain('for="businessKey"');
+      expect(html).toMatch(/for="[^"]+-businessKey"/);
       expect(html).not.toContain('name="organizationId"');
       expect(html).not.toContain("RESIDENTIAL");
     },
