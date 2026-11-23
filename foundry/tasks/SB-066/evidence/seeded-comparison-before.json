@@ -1,0 +1,768 @@
+{
+  "snapshotDate": "2026-11-23",
+  "summary": {
+    "authorizedCandidatesConsidered": 24,
+    "eligibleForScoring": 6,
+    "primaryMatchCount": 6,
+    "broaderMatchCount": 0,
+    "excludedByReason": {
+      "COMPARISON_CLASS_MISMATCH": 18
+    },
+    "factorsUsed": [
+      "SUBTYPE",
+      "SCOPE_OVERLAP",
+      "AREA_SIMILARITY",
+      "COMMERCIAL_CATEGORY_OVERLAP",
+      "MATERIAL_OVERLAP",
+      "SUPPLIER_OVERLAP",
+      "COMPLETION_RECENCY",
+      "LOCATION_PROXIMITY"
+    ],
+    "missingOptionalContext": []
+  },
+  "matches": [
+    {
+      "project": {
+        "projectKey": "PRJ-NEIHU-021",
+        "nameEn": "Neihu Tech Flagship",
+        "nameZhTw": "內湖科技旗艦店",
+        "subtype": "RETAIL_FLAGSHIP",
+        "location": {
+          "city": "Taipei City",
+          "district": "Neihu District"
+        },
+        "areaValue": "610",
+        "areaUnit": "m2",
+        "completedAt": "2025-06-30"
+      },
+      "rank": 1,
+      "score": "87.7157",
+      "displayScore": 88,
+      "band": "STRONG",
+      "evidenceCoverage": "100.0000",
+      "displayEvidenceCoverage": 100,
+      "tier": "PRIMARY",
+      "strongestFactors": [
+        {
+          "factorKey": "SCOPE_OVERLAP",
+          "normalizedValue": "1.000000",
+          "contribution": "25.0000",
+          "labelKey": "comparison.factor.scopeOverlap"
+        },
+        {
+          "factorKey": "AREA_SIMILARITY",
+          "normalizedValue": "0.930737",
+          "contribution": "18.6147",
+          "labelKey": "comparison.factor.areaSimilarity"
+        },
+        {
+          "factorKey": "SUBTYPE",
+          "normalizedValue": "1.000000",
+          "contribution": "15.0000",
+          "labelKey": "comparison.factor.subtype"
+        }
+      ],
+      "differences": [
+        {
+          "factorKey": "MATERIAL_OVERLAP",
+          "normalizedValue": "0.500000",
+          "lostContribution": "5.0000",
+          "labelKey": "comparison.factor.materialOverlap"
+        },
+        {
+          "factorKey": "SUPPLIER_OVERLAP",
+          "normalizedValue": "0.500000",
+          "lostContribution": "2.5000",
+          "labelKey": "comparison.factor.supplierOverlap"
+        }
+      ],
+      "unknowns": [],
+      "equivalentWithinTwoPoints": [],
+      "policyVersion": "CPI-SIM-1.0"
+    },
+    {
+      "project": {
+        "projectKey": "PRJ-ZHONGSHAN-018",
+        "nameEn": "Zhongshan Lifestyle Store",
+        "nameZhTw": "中山生活概念店",
+        "subtype": "RETAIL_FLAGSHIP",
+        "location": {
+          "city": "Taipei City",
+          "district": "Zhongshan District"
+        },
+        "areaValue": "590",
+        "areaUnit": "m2",
+        "completedAt": "2024-11-15"
+      },
+      "rank": 2,
+      "score": "81.3110",
+      "displayScore": 81,
+      "band": "STRONG",
+      "evidenceCoverage": "100.0000",
+      "displayEvidenceCoverage": 100,
+      "tier": "PRIMARY",
+      "strongestFactors": [
+        {
+          "factorKey": "SCOPE_OVERLAP",
+          "normalizedValue": "0.857143",
+          "contribution": "21.4286",
+          "labelKey": "comparison.factor.scopeOverlap"
+        },
+        {
+          "factorKey": "AREA_SIMILARITY",
+          "normalizedValue": "0.882643",
+          "contribution": "17.6529",
+          "labelKey": "comparison.factor.areaSimilarity"
+        },
+        {
+          "factorKey": "SUBTYPE",
+          "normalizedValue": "1.000000",
+          "contribution": "15.0000",
+          "labelKey": "comparison.factor.subtype"
+        }
+      ],
+      "differences": [
+        {
+          "factorKey": "MATERIAL_OVERLAP",
+          "normalizedValue": "0.500000",
+          "lostContribution": "5.0000",
+          "labelKey": "comparison.factor.materialOverlap"
+        },
+        {
+          "factorKey": "SUPPLIER_OVERLAP",
+          "normalizedValue": "0.250000",
+          "lostContribution": "3.7500",
+          "labelKey": "comparison.factor.supplierOverlap"
+        }
+      ],
+      "unknowns": [],
+      "equivalentWithinTwoPoints": [
+        "PRJ-NANJING-023"
+      ],
+      "policyVersion": "CPI-SIM-1.0"
+    },
+    {
+      "project": {
+        "projectKey": "PRJ-NANJING-023",
+        "nameEn": "Nanjing Brand Experience Center",
+        "nameZhTw": "南京品牌體驗中心",
+        "subtype": "RETAIL_FLAGSHIP",
+        "location": {
+          "city": "Taipei City",
+          "district": "Songshan District"
+        },
+        "areaValue": "720",
+        "areaUnit": "m2",
+        "completedAt": "2026-02-10"
+      },
+      "rank": 3,
+      "score": "79.4138",
+      "displayScore": 79,
+      "band": "RELEVANT",
+      "evidenceCoverage": "100.0000",
+      "displayEvidenceCoverage": 100,
+      "tier": "PRIMARY",
+      "strongestFactors": [
+        {
+          "factorKey": "SCOPE_OVERLAP",
+          "normalizedValue": "0.857143",
+          "contribution": "21.4286",
+          "labelKey": "comparison.factor.scopeOverlap"
+        },
+        {
+          "factorKey": "AREA_SIMILARITY",
+          "normalizedValue": "0.830075",
+          "contribution": "16.6015",
+          "labelKey": "comparison.factor.areaSimilarity"
+        },
+        {
+          "factorKey": "SUBTYPE",
+          "normalizedValue": "1.000000",
+          "contribution": "15.0000",
+          "labelKey": "comparison.factor.subtype"
+        }
+      ],
+      "differences": [
+        {
+          "factorKey": "MATERIAL_OVERLAP",
+          "normalizedValue": "0.250000",
+          "lostContribution": "7.5000",
+          "labelKey": "comparison.factor.materialOverlap"
+        },
+        {
+          "factorKey": "SUPPLIER_OVERLAP",
+          "normalizedValue": "0.333333",
+          "lostContribution": "3.3333",
+          "labelKey": "comparison.factor.supplierOverlap"
+        }
+      ],
+      "unknowns": [],
+      "equivalentWithinTwoPoints": [
+        "PRJ-ZHONGSHAN-018"
+      ],
+      "policyVersion": "CPI-SIM-1.0"
+    },
+    {
+      "project": {
+        "projectKey": "PRJ-DAAN-016",
+        "nameEn": "Daan Premium Showroom",
+        "nameZhTw": "大安精品展示中心",
+        "subtype": "RETAIL_FLAGSHIP",
+        "location": {
+          "city": "Taipei City",
+          "district": "Daan District"
+        },
+        "areaValue": "520",
+        "areaUnit": "m2",
+        "completedAt": "2024-04-20"
+      },
+      "rank": 4,
+      "score": "70.6066",
+      "displayScore": 71,
+      "band": "RELEVANT",
+      "evidenceCoverage": "100.0000",
+      "displayEvidenceCoverage": 100,
+      "tier": "PRIMARY",
+      "strongestFactors": [
+        {
+          "factorKey": "SCOPE_OVERLAP",
+          "normalizedValue": "0.714286",
+          "contribution": "17.8572",
+          "labelKey": "comparison.factor.scopeOverlap"
+        },
+        {
+          "factorKey": "SUBTYPE",
+          "normalizedValue": "1.000000",
+          "contribution": "15.0000",
+          "labelKey": "comparison.factor.subtype"
+        },
+        {
+          "factorKey": "COMMERCIAL_CATEGORY_OVERLAP",
+          "normalizedValue": "1.000000",
+          "contribution": "15.0000",
+          "labelKey": "comparison.factor.commercialCategoryOverlap"
+        }
+      ],
+      "differences": [
+        {
+          "factorKey": "SCOPE_OVERLAP",
+          "normalizedValue": "0.714286",
+          "lostContribution": "7.1428",
+          "labelKey": "comparison.factor.scopeOverlap"
+        },
+        {
+          "factorKey": "MATERIAL_OVERLAP",
+          "normalizedValue": "0.333333",
+          "lostContribution": "6.6667",
+          "labelKey": "comparison.factor.materialOverlap"
+        }
+      ],
+      "unknowns": [],
+      "equivalentWithinTwoPoints": [
+        "PRJ-SONGSHAN-020"
+      ],
+      "policyVersion": "CPI-SIM-1.0"
+    },
+    {
+      "project": {
+        "projectKey": "PRJ-SONGSHAN-020",
+        "nameEn": "Songshan Retail Renewal",
+        "nameZhTw": "松山門市改裝",
+        "subtype": "RETAIL_RENOVATION",
+        "location": {
+          "city": "Taipei City",
+          "district": "Songshan District"
+        },
+        "areaValue": "680",
+        "areaUnit": "m2",
+        "completedAt": "2025-02-28"
+      },
+      "rank": 5,
+      "score": "68.8748",
+      "displayScore": 69,
+      "band": "RELEVANT",
+      "evidenceCoverage": "100.0000",
+      "displayEvidenceCoverage": 100,
+      "tier": "PRIMARY",
+      "strongestFactors": [
+        {
+          "factorKey": "AREA_SIMILARITY",
+          "normalizedValue": "0.912537",
+          "contribution": "18.2507",
+          "labelKey": "comparison.factor.areaSimilarity"
+        },
+        {
+          "factorKey": "SCOPE_OVERLAP",
+          "normalizedValue": "0.714286",
+          "contribution": "17.8572",
+          "labelKey": "comparison.factor.scopeOverlap"
+        },
+        {
+          "factorKey": "COMMERCIAL_CATEGORY_OVERLAP",
+          "normalizedValue": "1.000000",
+          "contribution": "15.0000",
+          "labelKey": "comparison.factor.commercialCategoryOverlap"
+        }
+      ],
+      "differences": [
+        {
+          "factorKey": "MATERIAL_OVERLAP",
+          "normalizedValue": "0.250000",
+          "lostContribution": "7.5000",
+          "labelKey": "comparison.factor.materialOverlap"
+        },
+        {
+          "factorKey": "SCOPE_OVERLAP",
+          "normalizedValue": "0.714286",
+          "lostContribution": "7.1428",
+          "labelKey": "comparison.factor.scopeOverlap"
+        }
+      ],
+      "unknowns": [],
+      "equivalentWithinTwoPoints": [
+        "PRJ-DAAN-016"
+      ],
+      "policyVersion": "CPI-SIM-1.0"
+    },
+    {
+      "project": {
+        "projectKey": "PRJ-BANQIAO-015",
+        "nameEn": "Banqiao Concept Store",
+        "nameZhTw": "板橋概念店",
+        "subtype": "RETAIL_CONCEPT_STORE",
+        "location": {
+          "city": "New Taipei City",
+          "district": "Banqiao District"
+        },
+        "areaValue": "760",
+        "areaUnit": "m2",
+        "completedAt": "2023-09-30"
+      },
+      "rank": 6,
+      "score": "62.7501",
+      "displayScore": 63,
+      "band": "PARTIAL",
+      "evidenceCoverage": "100.0000",
+      "displayEvidenceCoverage": 100,
+      "tier": "PRIMARY",
+      "strongestFactors": [
+        {
+          "factorKey": "SCOPE_OVERLAP",
+          "normalizedValue": "0.714286",
+          "contribution": "17.8572",
+          "labelKey": "comparison.factor.scopeOverlap"
+        },
+        {
+          "factorKey": "AREA_SIMILARITY",
+          "normalizedValue": "0.752072",
+          "contribution": "15.0414",
+          "labelKey": "comparison.factor.areaSimilarity"
+        },
+        {
+          "factorKey": "COMMERCIAL_CATEGORY_OVERLAP",
+          "normalizedValue": "1.000000",
+          "contribution": "15.0000",
+          "labelKey": "comparison.factor.commercialCategoryOverlap"
+        }
+      ],
+      "differences": [
+        {
+          "factorKey": "MATERIAL_OVERLAP",
+          "normalizedValue": "0.250000",
+          "lostContribution": "7.5000",
+          "labelKey": "comparison.factor.materialOverlap"
+        },
+        {
+          "factorKey": "SCOPE_OVERLAP",
+          "normalizedValue": "0.714286",
+          "lostContribution": "7.1428",
+          "labelKey": "comparison.factor.scopeOverlap"
+        }
+      ],
+      "unknowns": [],
+      "equivalentWithinTwoPoints": [],
+      "policyVersion": "CPI-SIM-1.0"
+    }
+  ],
+  "broaderMatches": [],
+  "selected": [
+    "PRJ-NEIHU-021",
+    "PRJ-ZHONGSHAN-018",
+    "PRJ-NANJING-023"
+  ],
+  "claims": [
+    {
+      "claimKey": "COORDINATION_FORECAST_ACTUAL_VARIANCE",
+      "kind": "CATEGORY_FORECAST_ACTUAL_VARIANCE",
+      "categoryId": "COORDINATION",
+      "value": {
+        "currentAmount": "1130000",
+        "baselineEquivalentAmount": "1342950.82",
+        "variancePercent": "-15.8569",
+        "direction": "BELOW",
+        "currency": "TWD"
+      },
+      "evidenceReferenceIds": [
+        "evid_forecast_fcl_xinyi_026_6",
+        "evid_cost_cl_nanjing_023_v1_5",
+        "evid_cost_cl_neihu_021_v1_6",
+        "evid_cost_cl_zhongshan_018_v1_6"
+      ],
+      "warningCodes": [],
+      "en": "Site coordination and handover: forecast cost is 15.9% below past reconciled actual costs.",
+      "zhTw": "現場協調與交付：預估成本比過往已核對實際成本低 15.9%"
+    },
+    {
+      "claimKey": "COORDINATION_QUOTED_VARIANCE",
+      "kind": "CATEGORY_QUOTED_VARIANCE",
+      "categoryId": "COORDINATION",
+      "value": {
+        "currentAmount": "1440000",
+        "baselineEquivalentAmount": "2000000.00",
+        "variancePercent": "-28.0000",
+        "direction": "BELOW",
+        "currency": "TWD"
+      },
+      "evidenceReferenceIds": [
+        "evid_quote_qi_xinyi_026_v3_6",
+        "evid_quote_qi_nanjing_023_v2_6",
+        "evid_quote_qi_neihu_021_v2_6",
+        "evid_quote_qi_zhongshan_018_v2_6"
+      ],
+      "warningCodes": [],
+      "en": "Site coordination and handover: quoted price is 28.0% below past quoted prices.",
+      "zhTw": "現場協調與交付：報價比過往報價低 28.0%"
+    },
+    {
+      "claimKey": "CUSTOM_MILLWORK_FORECAST_ACTUAL_VARIANCE",
+      "kind": "CATEGORY_FORECAST_ACTUAL_VARIANCE",
+      "categoryId": "CUSTOM_MILLWORK",
+      "value": {
+        "currentAmount": "3060000",
+        "baselineEquivalentAmount": "3145762.71",
+        "variancePercent": "-2.7263",
+        "direction": "ALIGNED",
+        "currency": "TWD"
+      },
+      "evidenceReferenceIds": [
+        "evid_forecast_fcl_xinyi_026_2",
+        "evid_cost_cl_nanjing_023_v1_2",
+        "evid_cost_cl_neihu_021_v1_2",
+        "evid_cost_cl_zhongshan_018_v1_2"
+      ],
+      "warningCodes": [],
+      "en": null,
+      "zhTw": null
+    },
+    {
+      "claimKey": "CUSTOM_MILLWORK_QUOTED_VARIANCE",
+      "kind": "CATEGORY_QUOTED_VARIANCE",
+      "categoryId": "CUSTOM_MILLWORK",
+      "value": {
+        "currentAmount": "3800000",
+        "baselineEquivalentAmount": "3733333.33",
+        "variancePercent": "1.7857",
+        "direction": "ALIGNED",
+        "currency": "TWD"
+      },
+      "evidenceReferenceIds": [
+        "evid_quote_qi_xinyi_026_v3_2",
+        "evid_quote_qi_nanjing_023_v2_2",
+        "evid_quote_qi_neihu_021_v2_2",
+        "evid_quote_qi_zhongshan_018_v2_2"
+      ],
+      "warningCodes": [],
+      "en": null,
+      "zhTw": null
+    },
+    {
+      "claimKey": "DEMOLITION_CEILING_FORECAST_ACTUAL_VARIANCE",
+      "kind": "CATEGORY_FORECAST_ACTUAL_VARIANCE",
+      "categoryId": "DEMOLITION_CEILING",
+      "value": {
+        "currentAmount": "3100000",
+        "baselineEquivalentAmount": "2832786.89",
+        "variancePercent": "9.4329",
+        "direction": "ABOVE",
+        "currency": "TWD"
+      },
+      "evidenceReferenceIds": [
+        "evid_forecast_fcl_xinyi_026_1",
+        "evid_cost_cl_nanjing_023_v1_1",
+        "evid_cost_cl_neihu_021_v1_1",
+        "evid_cost_cl_zhongshan_018_v1_1"
+      ],
+      "warningCodes": [],
+      "en": "Demolition, partitions and ceilings: forecast cost is 9.4% above past reconciled actual costs.",
+      "zhTw": "拆除、隔間與天花：預估成本比過往已核對實際成本高 9.4%"
+    },
+    {
+      "claimKey": "DEMOLITION_CEILING_QUOTED_VARIANCE",
+      "kind": "CATEGORY_QUOTED_VARIANCE",
+      "categoryId": "DEMOLITION_CEILING",
+      "value": {
+        "currentAmount": "4000000",
+        "baselineEquivalentAmount": "3733333.33",
+        "variancePercent": "7.1429",
+        "direction": "ABOVE",
+        "currency": "TWD"
+      },
+      "evidenceReferenceIds": [
+        "evid_quote_qi_xinyi_026_v3_1",
+        "evid_quote_qi_nanjing_023_v2_1",
+        "evid_quote_qi_neihu_021_v2_1",
+        "evid_quote_qi_zhongshan_018_v2_1"
+      ],
+      "warningCodes": [],
+      "en": "Demolition, partitions and ceilings: quoted price is 7.1% above past quoted prices.",
+      "zhTw": "拆除、隔間與天花：報價比過往報價高 7.1%"
+    },
+    {
+      "claimKey": "IMPORTED_STONE_FORECAST_ACTUAL_VARIANCE",
+      "kind": "CATEGORY_FORECAST_ACTUAL_VARIANCE",
+      "categoryId": "IMPORTED_STONE",
+      "value": {
+        "currentAmount": "2360000",
+        "baselineEquivalentAmount": "1993442.62",
+        "variancePercent": "18.3882",
+        "direction": "ABOVE",
+        "currency": "TWD"
+      },
+      "evidenceReferenceIds": [
+        "evid_forecast_fcl_xinyi_026_4",
+        "evid_cost_cl_nanjing_023_v1_3",
+        "evid_cost_cl_neihu_021_v1_4",
+        "evid_cost_cl_zhongshan_018_v1_4"
+      ],
+      "warningCodes": [],
+      "en": "Imported stone and hard finishes: forecast cost is 18.4% above past reconciled actual costs.",
+      "zhTw": "進口石材與硬質面材：預估成本比過往已核對實際成本高 18.4%"
+    },
+    {
+      "claimKey": "IMPORTED_STONE_QUOTED_VARIANCE",
+      "kind": "CATEGORY_QUOTED_VARIANCE",
+      "categoryId": "IMPORTED_STONE",
+      "value": {
+        "currentAmount": "3000000",
+        "baselineEquivalentAmount": "2098360.66",
+        "variancePercent": "42.9687",
+        "direction": "ABOVE",
+        "currency": "TWD"
+      },
+      "evidenceReferenceIds": [
+        "evid_quote_qi_xinyi_026_v3_4",
+        "evid_quote_qi_nanjing_023_v2_4",
+        "evid_quote_qi_neihu_021_v2_4",
+        "evid_quote_qi_zhongshan_018_v2_4"
+      ],
+      "warningCodes": [],
+      "en": "Imported stone and hard finishes: quoted price is 43.0% above past quoted prices.",
+      "zhTw": "進口石材與硬質面材：報價比過往報價高 43.0%"
+    },
+    {
+      "claimKey": "LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
+      "kind": "CATEGORY_ACTUAL_INSUFFICIENT",
+      "categoryId": "LIGHTING_ELECTRICAL",
+      "value": {
+        "eligibleObservationCount": 2,
+        "requiredObservationCount": 3
+      },
+      "observationType": "RECONCILED_ACTUAL_COST",
+      "sufficiencyCode": "INSUFFICIENT_ACTUAL_COST_EVIDENCE",
+      "evidenceReferenceIds": [
+        "evid_forecast_fcl_xinyi_026_3",
+        "evid_cost_cl_neihu_021_v1_3",
+        "evid_cost_cl_zhongshan_018_v1_3"
+      ],
+      "warningCodes": [
+        "INSUFFICIENT_ACTUAL_COST_EVIDENCE"
+      ],
+      "en": "Lighting and electrical: too few past reconciled actual costs to compare (2 of 3 needed).",
+      "zhTw": "照明與電氣：過往已核對實際成本紀錄不足，無法比較（2/3）"
+    },
+    {
+      "claimKey": "LIGHTING_ELECTRICAL_QUOTED_VARIANCE",
+      "kind": "CATEGORY_QUOTED_VARIANCE",
+      "categoryId": "LIGHTING_ELECTRICAL",
+      "value": {
+        "currentAmount": "3100000",
+        "baselineEquivalentAmount": "2832786.89",
+        "variancePercent": "9.4329",
+        "direction": "ABOVE",
+        "currency": "TWD"
+      },
+      "evidenceReferenceIds": [
+        "evid_quote_qi_xinyi_026_v3_3",
+        "evid_quote_qi_nanjing_023_v2_3",
+        "evid_quote_qi_neihu_021_v2_3",
+        "evid_quote_qi_zhongshan_018_v2_3"
+      ],
+      "warningCodes": [],
+      "en": "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+      "zhTw": "照明與電氣：報價比過往報價高 9.4%"
+    },
+    {
+      "claimKey": "OVERALL_FORECAST_ACTUAL_VARIANCE",
+      "kind": "OVERALL_FORECAST_ACTUAL_VARIANCE",
+      "value": {
+        "currentAmount": "12650000",
+        "baselineEquivalentAmount": "11928888.89",
+        "variancePercent": "6.0451",
+        "direction": "ABOVE",
+        "currency": "TWD"
+      },
+      "evidenceReferenceIds": [
+        "evid_forecast_fcl_xinyi_026_1",
+        "evid_forecast_fcl_xinyi_026_2",
+        "evid_forecast_fcl_xinyi_026_3",
+        "evid_forecast_fcl_xinyi_026_4",
+        "evid_forecast_fcl_xinyi_026_5",
+        "evid_forecast_fcl_xinyi_026_6",
+        "evid_forecast_version_fcv_xinyi_026_v1",
+        "evid_cost_cl_nanjing_023_v1_1",
+        "evid_cost_cl_nanjing_023_v1_2",
+        "evid_cost_cl_nanjing_023_v1_3",
+        "evid_cost_cl_nanjing_023_v1_4",
+        "evid_cost_cl_nanjing_023_v1_5",
+        "evid_cost_cl_neihu_021_v1_1",
+        "evid_cost_cl_neihu_021_v1_2",
+        "evid_cost_cl_neihu_021_v1_3",
+        "evid_cost_cl_neihu_021_v1_4",
+        "evid_cost_cl_neihu_021_v1_5",
+        "evid_cost_cl_neihu_021_v1_6",
+        "evid_cost_cl_zhongshan_018_v1_1",
+        "evid_cost_cl_zhongshan_018_v1_2",
+        "evid_cost_cl_zhongshan_018_v1_3",
+        "evid_cost_cl_zhongshan_018_v1_4",
+        "evid_cost_cl_zhongshan_018_v1_5",
+        "evid_cost_cl_zhongshan_018_v1_6"
+      ],
+      "warningCodes": [],
+      "en": "Overall: forecast cost is 6.0% above past reconciled actual costs.",
+      "zhTw": "整體：預估成本比過往已核對實際成本高 6.0%"
+    },
+    {
+      "claimKey": "OVERALL_QUOTED_VARIANCE",
+      "kind": "OVERALL_QUOTED_VARIANCE",
+      "value": {
+        "currentAmount": "16480000",
+        "baselineEquivalentAmount": "15377777.78",
+        "variancePercent": "7.1676",
+        "direction": "ABOVE",
+        "currency": "TWD"
+      },
+      "evidenceReferenceIds": [
+        "evid_quote_qi_xinyi_026_v3_1",
+        "evid_quote_qi_xinyi_026_v3_2",
+        "evid_quote_qi_xinyi_026_v3_3",
+        "evid_quote_qi_xinyi_026_v3_4",
+        "evid_quote_qi_xinyi_026_v3_5",
+        "evid_quote_qi_xinyi_026_v3_6",
+        "evid_quote_qi_nanjing_023_v2_1",
+        "evid_quote_qi_nanjing_023_v2_2",
+        "evid_quote_qi_nanjing_023_v2_3",
+        "evid_quote_qi_nanjing_023_v2_4",
+        "evid_quote_qi_nanjing_023_v2_5",
+        "evid_quote_qi_nanjing_023_v2_6",
+        "evid_quote_qi_neihu_021_v2_1",
+        "evid_quote_qi_neihu_021_v2_2",
+        "evid_quote_qi_neihu_021_v2_3",
+        "evid_quote_qi_neihu_021_v2_4",
+        "evid_quote_qi_neihu_021_v2_5",
+        "evid_quote_qi_neihu_021_v2_6",
+        "evid_quote_qi_zhongshan_018_v2_1",
+        "evid_quote_qi_zhongshan_018_v2_2",
+        "evid_quote_qi_zhongshan_018_v2_3",
+        "evid_quote_qi_zhongshan_018_v2_4",
+        "evid_quote_qi_zhongshan_018_v2_5",
+        "evid_quote_qi_zhongshan_018_v2_6"
+      ],
+      "warningCodes": [],
+      "en": "Overall: quoted price is 7.2% above past quoted prices.",
+      "zhTw": "整體：報價比過往報價高 7.2%"
+    },
+    {
+      "claimKey": "PROGRAMME_DIFFERENCE_UNQUANTIFIED",
+      "kind": "PROGRAMME_DIFFERENCE_UNQUANTIFIED",
+      "value": {
+        "activeProgrammeWeeks": "16",
+        "historicalMinimumWeeks": "19.00",
+        "historicalMaximumWeeks": "22.00",
+        "quantifiedPremiumState": "UNQUANTIFIED"
+      },
+      "evidenceReferenceIds": [
+        "evid_programme_prj_xinyi_026",
+        "evid_programme_prj_neihu_021",
+        "evid_programme_prj_zhongshan_018",
+        "evid_programme_prj_nanjing_023"
+      ],
+      "warningCodes": [
+        "PROGRAMME_PREMIUM_UNQUANTIFIED"
+      ],
+      "en": "The programme differs from the selected past jobs; the cost effect is not quantified.",
+      "zhTw": "工期與所選過往專案不同，對成本的影響尚未量化。"
+    },
+    {
+      "claimKey": "SIGNAGE_FORECAST_ACTUAL_VARIANCE",
+      "kind": "CATEGORY_FORECAST_ACTUAL_VARIANCE",
+      "categoryId": "SIGNAGE",
+      "value": {
+        "currentAmount": "650000",
+        "baselineEquivalentAmount": "734426.23",
+        "variancePercent": "-11.4955",
+        "direction": "BELOW",
+        "currency": "TWD"
+      },
+      "evidenceReferenceIds": [
+        "evid_forecast_fcl_xinyi_026_5",
+        "evid_cost_cl_nanjing_023_v1_4",
+        "evid_cost_cl_neihu_021_v1_5",
+        "evid_cost_cl_zhongshan_018_v1_5"
+      ],
+      "warningCodes": [],
+      "en": "Signage and display installation: forecast cost is 11.5% below past reconciled actual costs.",
+      "zhTw": "標示與展示安裝：預估成本比過往已核對實際成本低 11.5%"
+    },
+    {
+      "claimKey": "SIGNAGE_QUOTED_VARIANCE",
+      "kind": "CATEGORY_QUOTED_VARIANCE",
+      "categoryId": "SIGNAGE",
+      "value": {
+        "currentAmount": "1140000",
+        "baselineEquivalentAmount": "1206557.38",
+        "variancePercent": "-5.5163",
+        "direction": "BELOW",
+        "currency": "TWD"
+      },
+      "evidenceReferenceIds": [
+        "evid_quote_qi_xinyi_026_v3_5",
+        "evid_quote_qi_nanjing_023_v2_5",
+        "evid_quote_qi_neihu_021_v2_5",
+        "evid_quote_qi_zhongshan_018_v2_5"
+      ],
+      "warningCodes": [],
+      "en": "Signage and display installation: quoted price is 5.5% below past quoted prices.",
+      "zhTw": "標示與展示安裝：報價比過往報價低 5.5%"
+    },
+    {
+      "claimKey": "STALE_SUPPLIER_OFFER_SUP-OFFER-STONE-2025-041",
+      "kind": "STALE_SUPPLIER_EVIDENCE",
+      "value": {
+        "recordKey": "SUP-OFFER-STONE-2025-041",
+        "projectKey": "PRJ-NEIHU-021",
+        "validUntil": "2025-02-15",
+        "freshness": "STALE"
+      },
+      "observationType": "SUPPLIER_OFFER",
+      "authorityState": "APPROVED_COMMERCIAL",
+      "evidenceReferenceIds": [
+        "evid_offer_stale_stone"
+      ],
+      "warningCodes": [
+        "SUPPLIER_OFFER_STALE"
+      ],
+      "en": null,
+      "zhTw": null
+    }
+  ]
+}

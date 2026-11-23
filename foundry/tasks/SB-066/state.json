@@ -1,0 +1,16 @@
+{
+  "issue": 66,
+  "branch": "build/sb-066-clients-firm-lists",
+  "baseCommit": "6310c1628e4a2e82e9647bc02cdd297326f6b363",
+  "status": "A_INVENTORY",
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "pullRequestState": "DRAFT",
+  "paidRunLimit": 2,
+  "paidRuns": [],
+  "baselineCheck": {
+    "passed": true,
+    "tests": 1470,
+    "files": 135
+  },
+  "baselineSnapshotDate": "2026-11-23"
+}
