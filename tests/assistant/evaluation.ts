@@ -6,6 +6,8 @@ import type {
 import type { Locale } from "@/modules/localization/config";
 import { redactSource } from "@/modules/assistant/domain/redaction";
 import {
+  hasMislabelledQuoteAmount,
+  hasBadDisplayFormat,
   citedSources,
   sourceReferences,
   sourceIdentities,
@@ -20,13 +22,14 @@ export type EvaluationQuestion = {
   question: string;
   projectKey?: string;
   required?: boolean;
+  qualityRegression?: boolean;
   scenario?: "EMPTY_AWAITING";
   oracleTools: ToolCall[];
   expected: {
     kind: "FACTS" | "DECLINE";
     facts: string[];
     forbidden: string[];
-    match?: "ANY_SAVED_FINDING" | "EMPTY_LIST";
+    match?: "ANY_SAVED_FINDING" | "EMPTY_LIST" | "NONEMPTY_LIST" | "NOT_FOUND";
   };
 };
 function path(value: unknown, key: string): unknown {
@@ -99,9 +102,17 @@ export function evaluateAnswer(
     ),
   ];
   const wrongNumber = unsupportedTokens.length > 0;
+  const wrongAmountLabel = [displayed, ...followUps].some((text) =>
+    hasMislabelledQuoteAmount(text, displayedCited, question.locale, identities),
+  );
+  const badDisplayFormat = [displayed, ...followUps].some((text) =>
+    hasBadDisplayFormat(text, identities),
+  );
   const report = (verdict: "wrong" | "correctly declined" | "grounded and correct") => ({
     verdict,
     wrongNumber,
+    wrongAmountLabel,
+    badDisplayFormat,
     draftWrongNumber: draftUnsupportedTokens.length > 0,
     draftUnsupportedTokens,
     rawFollowUps,
@@ -109,7 +120,8 @@ export function evaluateAnswer(
     answerText: outcome.kind === "ANSWER" ? displayed : null,
     ...(verdict === "wrong" ? { unsupportedTokens, rawAnswerText } : {}),
   });
-  if (outcome.kind !== "ANSWER" || wrongNumber) return report("wrong");
+  if (outcome.kind !== "ANSWER" || wrongNumber || wrongAmountLabel || badDisplayFormat)
+    return report("wrong");
   if (
     question.expected.forbidden.some(
       (f) =>
@@ -117,8 +129,18 @@ export function evaluateAnswer(
     )
   )
     return report("wrong");
-  if (question.expected.kind === "DECLINE")
-    return report(outcome.answer.sourceIds.length === 0 ? "correctly declined" : "wrong");
+  if (question.expected.kind === "DECLINE") {
+    const notFound =
+      question.expected.match === "NOT_FOUND" &&
+      displayedCited.length > 0 &&
+      displayedCited.every((s) => s.facts.count === 0 && s.projectKeys.length === 0) &&
+      /cannot (?:be )?found|not found|could not find|can(?:not|'t) find|找不到|查無|未找到/i.test(
+        displayed,
+      );
+    return report(
+      outcome.answer.sourceIds.length === 0 || notFound ? "correctly declined" : "wrong",
+    );
+  }
   if (question.expected.match === "EMPTY_LIST")
     return report(
       displayedCited.some((s) => s.facts.count === 0) &&
@@ -126,6 +148,15 @@ export function evaluateAnswer(
         ? "grounded and correct"
         : "wrong",
     );
+  // Naming a returned row is not enough if the answer also says the filtered list is empty.
+  if (
+    question.expected.match === "NONEMPTY_LIST" &&
+    (!displayedCited.some((s) => typeof s.facts.count === "number" && s.facts.count > 0) ||
+      /\b(?:no|zero|0)\s+(?:(?:matching|available|current|active|work|stage)\s+)*(?:jobs?|projects?)\b|\bnone\b|(?:沒有|尚無|目前無|查無|找不到)[^。！？\n]*(?:專案|工作)|(?:0|零)\s*(?:個|項|筆)\s*(?:專案|工作)/i.test(
+        displayed,
+      ))
+  )
+    return report("wrong");
   const matches = (f: string) => outcome.answer.text.includes(f);
   if (question.expected.match === "ANY_SAVED_FINDING")
     return report(
@@ -164,6 +195,7 @@ export function evaluationLogRow(
     locale: row.locale,
     verdict: row.verdict,
     wrongNumber: row.wrongNumber,
+    wrongAmountLabel: row.wrongAmountLabel,
     draftWrongNumber: row.draftWrongNumber,
     discardReason: row.discardReason,
     latencyMs: row.latencyMs,

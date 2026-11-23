@@ -9,8 +9,8 @@ const source: AssistantSource = {
   href: "/en/projects/PRJ-XINYI-026/quote",
   label: "Past prices",
   projectKeys: ["PRJ-XINYI-026"],
-  facts: { observationType: "QUOTED_PRICE", median: "NT$5,833", count: 3 },
-  typedFactPaths: ["median", "count"],
+  facts: { observationType: "QUOTED_PRICE", displayMedian: "NT$5,833", count: 3 },
+  typedFactPaths: ["displayMedian", "count"],
 };
 const answer = (text: string, sourceIds = ["past"]) => ({ text, sourceIds, followUps: [] });
 const factQuestion = {

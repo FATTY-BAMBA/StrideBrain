@@ -9,6 +9,7 @@ import { evaluateAnswer, expectedFacts, type EvaluationQuestion } from "./evalua
 import type { AssistantSource } from "@/modules/assistant/domain/contracts";
 import questions from "./questions.json";
 import fixtures from "./rejected-answer-fixtures.json";
+import qualityFixtures from "./quality-rejected-answer-fixtures.json";
 (process.env.DATABASE_URL ? it : it.skip)(
   "replays rejected paid answers against the authorized synthetic sources",
   async () => {
@@ -16,7 +17,7 @@ import fixtures from "./rejected-answer-fixtures.json";
     try {
       await prepareEvaluation(db);
       const failures = [];
-      for (const fixture of fixtures) {
+      for (const fixture of [...fixtures, ...qualityFixtures]) {
         const q = questions.find((q) => q.id === fixture.id)! as EvaluationQuestion;
         const c = { ...(await db.actor(evaluationMemberships[q.person])), locale: q.locale };
         const services = createAssistantServices();
@@ -42,6 +43,17 @@ import fixtures from "./rejected-answer-fixtures.json";
         const ids = oracle.length ? oracle.map((s) => s.sourceId) : sources.map((s) => s.sourceId);
         const raw = { text: fixture.text, sourceIds: ids, followUps: [] };
         const checked = checkAnswer(raw, sources, q.locale);
+        if (fixture.run === 45053587841 && fixture.id === "zh-TW-status") {
+          // SB-058 now forbids the raw acceptedOn field retained in this original fixture.
+          expect(checked).toEqual({ kind: "REJECTED", reason: "DISPLAY_FORMAT" });
+          const clean = checkAnswer(
+            { ...raw, text: fixture.text.replace("（acceptedOn 為 null）", "") },
+            sources,
+            q.locale,
+          );
+          expect(clean.kind).toBe("ACCEPTED");
+          continue;
+        }
         if (checked.kind === "REJECTED") {
           failures.push({ id: fixture.id, run: fixture.run, reason: checked.reason });
           continue;

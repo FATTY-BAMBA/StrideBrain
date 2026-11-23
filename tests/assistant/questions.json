@@ -89,7 +89,8 @@
     "expected": {
       "kind": "FACTS",
       "facts": ["PRJ-ACTIVE-004"],
-      "forbidden": []
+      "forbidden": [],
+      "match": "NONEMPTY_LIST"
     }
   },
   {
@@ -300,7 +301,8 @@
     "expected": {
       "kind": "DECLINE",
       "facts": [],
-      "forbidden": []
+      "forbidden": [],
+      "match": "NOT_FOUND"
     }
   },
   {
@@ -460,7 +462,8 @@
     "expected": {
       "kind": "FACTS",
       "facts": ["PRJ-ACTIVE-004"],
-      "forbidden": []
+      "forbidden": [],
+      "match": "NONEMPTY_LIST"
     }
   },
   {
@@ -671,7 +674,8 @@
     "expected": {
       "kind": "DECLINE",
       "facts": [],
-      "forbidden": []
+      "forbidden": [],
+      "match": "NOT_FOUND"
     }
   },
   {
@@ -907,6 +911,50 @@
       "match": "EMPTY_LIST",
       "facts": ["@count"],
       "forbidden": ["J-2611-R7K3"]
+    }
+  },
+  {
+    "id": "en-millwork-range",
+    "locale": "en",
+    "person": "owner",
+    "question": "How many past quotes support the custom millwork rates for Riverside Display Studio, and what is the low-to-high range?",
+    "required": true,
+    "qualityRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_past_prices",
+        "arguments": {
+          "projectKey": "J-2611-R7K3",
+          "categoryId": "CUSTOM_MILLWORK"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@count", "@displayLow", "@displayHigh"],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "zh-TW-millwork-range",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "河岸展示工作室的客製木作過往報價有幾筆，單價範圍是多少？",
+    "required": true,
+    "qualityRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_past_prices",
+        "arguments": {
+          "projectKey": "J-2611-R7K3",
+          "categoryId": "CUSTOM_MILLWORK"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@count", "@displayLow", "@displayHigh"],
+      "forbidden": []
     }
   }
 ]

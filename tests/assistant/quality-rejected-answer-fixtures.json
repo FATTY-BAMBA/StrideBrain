@@ -1,0 +1,14 @@
+[
+  {
+    "run": 45115077636,
+    "id": "en-home-named-status",
+    "text": "The quote status for Active Design Project 01 is Issued (Document number: PRJ-ACTIVE-001-Q1, Valid until: 2027-12-31, Accepted on: Not accepted yet). The current quote totals NT$11,665,500 (Amount before tax: NT$11,110,000, Tax: NT$555,500).",
+    "previousDiscardReason": "AMOUNT_LABEL"
+  },
+  {
+    "run": 45115077636,
+    "id": "en-home-reference-total",
+    "text": "For PRJ-ACTIVE-001, the total quote amount is NT$11,665,500 (including tax of NT$555,500 and an amount before tax of NT$11,110,000). It has not been accepted yet (status: Not accepted yet).",
+    "previousDiscardReason": "AMOUNT_LABEL"
+  }
+]

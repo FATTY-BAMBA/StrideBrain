@@ -126,6 +126,8 @@ postgres("SB-041 real PostgreSQL transactions and tenant boundaries", () => {
     expect(own.kind === "AVAILABLE" && own.projects).toContainEqual({
       businessKey: input.businessKey,
       name: input.name,
+      nameEn: input.name,
+      nameZhTw: input.name,
       active: true,
       stage: "QUOTE_REVIEW",
     });

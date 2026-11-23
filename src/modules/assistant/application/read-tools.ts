@@ -11,11 +11,11 @@ import type { GetHomeDesk } from "@/modules/home-desk/application/get-home-desk"
 import type { GetQuotedHistory } from "@/modules/quote-draft/application/get-quoted-history";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import type { AssistantRepositoryPort } from "@/repositories/ports/assistant-repository";
-import { inStageGroup, parseStageGroup } from "@/modules/projects/domain/stage-groups";
-import { PROJECT_STAGES } from "@/modules/projects/domain/job-input";
+import { inStageGroup, parseStageGroup, stageGroups } from "@/modules/projects/domain/stage-groups";
+import { COMMERCIAL_CATEGORIES, PROJECT_STAGES } from "@/modules/projects/domain/job-input";
 import { categoryLabel, projectStageLabel } from "@/modules/localization/jobs";
 import { claimFindingText } from "@/modules/economics/presentation/claim-findings";
-import { formatQuoteRate } from "@/modules/quote-draft/presentation";
+import { formatQuoteRate, formatQuoteArea } from "@/modules/quote-draft/presentation";
 import { formatMoney } from "@/modules/finance/format-money";
 import { comparisonHref } from "@/modules/comparison-experience/route-state";
 import { record } from "../domain/grounding";
@@ -40,7 +40,11 @@ export const assistantTools: readonly ToolDefinition[] = [
     parameters: {
       type: "object",
       properties: {
-        stageGroup: { type: "string", enum: ["inquiry", "quote", "confirmed", "work", "closed"] },
+        stageGroup: {
+          type: "string",
+          enum: stageGroups.map((g) => g.key),
+          description: stageGroups.map((g) => `${g.key}: ${g.en} / ${g["zh-TW"]}`).join("; "),
+        },
         query: { type: "string", maxLength: 128 },
         offset: { type: "integer", minimum: 0, maximum: 1000 },
       },
@@ -72,10 +76,19 @@ export const assistantTools: readonly ToolDefinition[] = [
   {
     name: "get_past_prices",
     description:
-      "Per pricing category, quoted history count, median and range using the Quote tab's calculation and current saved comparison. These are quoted prices, never actual costs.",
+      "For one job, return the count, median, low and high of past quoted rates per work pricing category, using the Quote tab's calculation and current saved comparison. Each displayed rate carries its unit. These are quoted prices, never actual costs. Omit categoryId for all pricing categories.",
     parameters: {
       ...jobParameters,
-      properties: { projectKey: keySchema, categoryId: { type: "string", maxLength: 64 } },
+      properties: {
+        projectKey: keySchema,
+        categoryId: {
+          type: "string",
+          enum: COMMERCIAL_CATEGORIES,
+          description: COMMERCIAL_CATEGORIES.map(
+            (id) => `${id}: ${categoryLabel("en", id)} / ${categoryLabel("zh-TW", id)}`,
+          ).join("; "),
+        },
+      },
     },
   },
   {
@@ -100,22 +113,12 @@ export class AssistantReadTools {
     private readonly policies: Pick<AssistantRepositoryPort, "jobPolicy">,
   ) {}
   async resolveSubjects(c: RuntimeContext, question: string) {
-    const lists = await Promise.all([
-      this.services.projects.execute({ ...c, locale: "en" }),
-      this.services.projects.execute({ ...c, locale: "zh-TW" }),
-    ]);
-    if (lists.some((list) => list.kind !== "AVAILABLE")) return { kind: "UNAVAILABLE" as const };
-    const identities = new Map<string, AssistantProjectIdentity>();
-    for (const list of lists)
-      if (list.kind === "AVAILABLE")
-        for (const job of list.projects) {
-          const previous = identities.get(job.businessKey);
-          identities.set(job.businessKey, {
-            projectKey: job.businessKey,
-            names: [...new Set([...(previous?.names ?? []), job.name])],
-          });
-        }
-    const projects = [...identities.values()];
+    const list = await this.services.projects.execute(c);
+    if (list.kind !== "AVAILABLE") return { kind: "UNAVAILABLE" as const };
+    const projects: AssistantProjectIdentity[] = list.projects.map((job) => ({
+      projectKey: job.businessKey,
+      names: [...new Set([job.nameEn, job.nameZhTw])],
+    }));
     return { kind: "AVAILABLE" as const, projects, named: namedProjects(question, projects) };
   }
   async canSend(c: RuntimeContext, sources: readonly AssistantSource[]) {
@@ -193,21 +196,11 @@ export class AssistantReadTools {
       if (!jobs) return empty("UNAVAILABLE");
       const query = typeof args.query === "string" ? args.query.toLocaleLowerCase() : "",
         group = parseStageGroup(args.stageGroup);
-      const alternate = query
-        ? await this.services.projects.execute({ ...c, locale: c.locale === "en" ? "zh-TW" : "en" })
-        : null;
-      const alternateNames = new Map(
-        alternate?.kind === "AVAILABLE"
-          ? alternate.projects.map((j) => [j.businessKey, j.name])
-          : [],
-      );
       const candidates = jobs.filter(
         (j) =>
           (!group || inStageGroup(j.stage, group)) &&
           (!query ||
-            `${j.name} ${j.businessKey} ${alternateNames.get(j.businessKey) ?? ""}`
-              .toLocaleLowerCase()
-              .includes(query)),
+            `${j.nameEn} ${j.nameZhTw} ${j.businessKey}`.toLocaleLowerCase().includes(query)),
       );
       const allowed = [];
       let excludedMatch = false;
@@ -224,9 +217,14 @@ export class AssistantReadTools {
           j.businessKey,
           j.name,
           href(j.businessKey),
-          { reference: j.businessKey, name: j.name, stage: projectStageLabel(c.locale, j.stage) },
+          {
+            reference: j.businessKey,
+            name: j.name,
+            stage: projectStageLabel(c.locale, j.stage),
+            stageGroup: stageGroups.find((g) => inStageGroup(j.stage, g.key))?.[c.locale],
+          },
           [j.businessKey],
-          ["reference", "stage"],
+          ["reference", "stage", "stageGroup"],
         ),
       );
       return finishList(
@@ -236,13 +234,17 @@ export class AssistantReadTools {
           c.locale === "zh-TW" ? "專案" : "Jobs",
           `/${c.locale}/projects`,
           {
+            appliedStageGroup: group
+              ? stageGroups.find((g) => g.key === group)![c.locale]
+              : copy.allStageGroups,
+            matchingCount: allowed.length,
             count: page.length,
             truncated: allowed.length > offset + 20,
             coverage: allowed.length > offset + 20 ? copy.moreRecords : copy.allRecords,
             ...(allowed.length > offset + 20 ? { nextOffset: offset + 20 } : {}),
           },
           page.map((j) => j.businessKey),
-          ["count", "nextOffset", "coverage"],
+          ["appliedStageGroup", "matchingCount", "count", "nextOffset", "coverage"],
         ),
       );
     }
@@ -261,7 +263,10 @@ export class AssistantReadTools {
             name: j.name.display,
             stage: stage ? projectStageLabel(c.locale, stage) : j.stage,
             city: j.location.city,
-            area: j.area,
+            area: {
+              value: formatQuoteArea(j.area.value),
+              unit: j.area.unit === "m2" ? "m²" : j.area.unit,
+            },
             scopeCategories: j.scopeCategories.map((s) => s.name.display),
           },
           [projectKey],
@@ -439,7 +444,7 @@ export class AssistantReadTools {
     if (call.name === "get_past_prices" && typeof projectKey === "string") {
       if (
         args.categoryId !== undefined &&
-        (typeof args.categoryId !== "string" || !/^[A-Z_]{1,64}$/.test(args.categoryId))
+        !COMMERCIAL_CATEGORIES.some((id) => id === args.categoryId)
       )
         return empty("UNAVAILABLE");
       const result = await this.services.history.execute(c, projectKey);
@@ -472,18 +477,15 @@ export class AssistantReadTools {
               evidenceReferenceIds: b.history.evidenceReferenceIds,
               ...(b.history.medianNormalizedAmount
                 ? {
-                    displayMedian: formatQuoteRate(
-                      b.history.medianNormalizedAmount,
-                      result.job.currency,
-                    ),
-                    displayLow: formatQuoteRate(
-                      b.history.minimumNormalizedAmount!,
-                      result.job.currency,
-                    ),
-                    displayHigh: formatQuoteRate(
-                      b.history.maximumNormalizedAmount!,
-                      result.job.currency,
-                    ),
+                    displayMedian:
+                      formatQuoteRate(b.history.medianNormalizedAmount, result.job.currency) +
+                      `/${result.job.areaUnit === "m2" ? "m²" : result.job.areaUnit}`,
+                    displayLow:
+                      formatQuoteRate(b.history.minimumNormalizedAmount!, result.job.currency) +
+                      `/${result.job.areaUnit === "m2" ? "m²" : result.job.areaUnit}`,
+                    displayHigh:
+                      formatQuoteRate(b.history.maximumNormalizedAmount!, result.job.currency) +
+                      `/${result.job.areaUnit === "m2" ? "m²" : result.job.areaUnit}`,
                   }
                 : {}),
             },

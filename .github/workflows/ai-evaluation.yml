@@ -5,7 +5,7 @@ on:
       ref:
         description: Branch or commit containing the evaluation runner
         required: true
-        default: build/sb-039-records-assistant
+        default: main
         type: string
 permissions:
   contents: read

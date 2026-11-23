@@ -52,6 +52,90 @@ function setup(script: ConstructorParameters<typeof FakeAssistantModel>[0] = [ca
   return { model, repo, tools, service: new AskAssistant(model, config, repo, tools) };
 }
 describe("bounded read-only assistant", () => {
+  it.each([0, 1, 2])(
+    "carries a discarded answer's subject only for one resolved named job (%i named)",
+    async (count) => {
+      const f = setup([call, answer("999 jobs")]);
+      const named = [
+        { projectKey: "J", names: ["Named job", "指定專案"] },
+        { projectKey: "K", names: ["Another job", "另一專案"] },
+      ].slice(0, count);
+      f.tools.resolveSubjects.mockResolvedValue({ kind: "AVAILABLE", named, projects: named });
+      const out = await f.service.execute(jobContext(), {
+        question: "Named job?",
+        projectKey: "PAGE-DEFAULT",
+      });
+      expect(out).toMatchObject({
+        kind: "FALLBACK",
+        reason: "UNGROUNDED",
+        discardReason: "UNSUPPORTED_NUMBER",
+      });
+      expect(out.kind === "FALLBACK" && out.subjectProjectKey).toBe(count === 1 ? "J" : undefined);
+    },
+  );
+  it("does not return a named fallback subject when the model failed before answering", async () => {
+    const f = setup([
+      () => {
+        throw new AssistantModelError("UNAVAILABLE");
+      },
+    ]);
+    const named = { projectKey: "J", names: ["Named job"] };
+    f.tools.resolveSubjects.mockResolvedValue({
+      kind: "AVAILABLE",
+      named: [named],
+      projects: [named],
+    });
+    expect(await f.service.execute(jobContext(), { question: "Named job?" })).not.toHaveProperty(
+      "subjectProjectKey",
+    );
+  });
+  it.each(["en", "zh-TW"] as const)(
+    "answers an empty waiting list immediately in %s, ignoring an unrelated page default",
+    async (locale) => {
+      const script: ModelReply = {
+        usage,
+        result: { kind: "TOOLS", calls: [{ name: "list_awaiting_client", arguments: {} }] },
+      };
+      const f = setup([script]);
+      f.tools.execute.mockResolvedValue({
+        status: "OK",
+        sources: [{ ...source, facts: { count: 0 }, projectKeys: [] }],
+      });
+      const input = {
+        question:
+          locale === "en" ? "Which quotes are waiting for the client?" : "哪些報價還在等客戶回覆？",
+        projectKey: "UNRELATED-001",
+      };
+      const out = await f.service.execute(jobContext({ locale }), input);
+      expect(out).toMatchObject({
+        kind: "ANSWER",
+        answer: {
+          text:
+            locale === "en"
+              ? "There are 0 quotes waiting for the client."
+              : "目前有 0 筆報價等待客戶回覆。",
+          sourceIds: ["s"],
+          followUps: [],
+        },
+      });
+      expect(f.model.requests).toHaveLength(1);
+      expect(f.tools.execute).toHaveBeenCalledTimes(1);
+      expect(JSON.stringify(out)).not.toContain("UNRELATED-001");
+      const changed = setup([script]);
+      changed.tools.execute.mockResolvedValue({
+        status: "OK",
+        sources: [{ ...source, facts: { count: 0 }, projectKeys: [] }],
+      });
+      changed.tools.execute.mockImplementation(async () => {
+        changed.repo.enabled.mockResolvedValue(false);
+        return { status: "OK", sources: [{ ...source, facts: { count: 0 }, projectKeys: [] }] };
+      });
+      expect(await changed.service.execute(jobContext({ locale }), input)).toMatchObject({
+        kind: "FALLBACK",
+        reason: "ACCESS_CHANGED",
+      });
+    },
+  );
   it("grounds a result from this turn and logs metadata per call", async () => {
     const f = setup();
     expect((await f.service.execute(jobContext(), { question: "How many jobs?" })).kind).toBe(
@@ -374,6 +458,65 @@ describe("bounded read-only assistant", () => {
       kind: "FALLBACK",
       discardReason: "SUBJECT_MISMATCH",
     });
+  });
+  it.each(["UNAVAILABLE", "EXCLUDED"])(
+    "ends a named-job %s after the first model call",
+    async (status) => {
+      const request = {
+        usage,
+        result: {
+          kind: "TOOLS" as const,
+          calls: [{ name: "get_quote_status" as const, arguments: { projectKey: "J" } }],
+        },
+      };
+      const f = setup([request]);
+      f.tools.execute.mockResolvedValue({ status, sources: [] });
+      f.tools.resolveSubjects.mockResolvedValue({
+        kind: "AVAILABLE",
+        named: [{ projectKey: "J", names: ["Job"] }],
+        projects: [{ projectKey: "J", names: ["Job"] }],
+      });
+      expect(await f.service.execute(jobContext(), { question: "Job quote total?" })).toMatchObject(
+        { kind: "ANSWER", refusal: status },
+      );
+      expect(f.model.requests).toHaveLength(1);
+    },
+  );
+  it("offers only submit_answer after a repeated call and rechecks cached-source access", async () => {
+    const f = setup([call, call, answer()]);
+    expect(await f.service.execute(jobContext(), { question: "Jobs?" })).toMatchObject({
+      kind: "ANSWER",
+    });
+    expect(f.model.requests[2]!.tools).toEqual([]);
+    expect(f.tools.execute).toHaveBeenCalledTimes(1);
+    const denied = setup([call, call, answer()]);
+    denied.tools.canSend
+      .mockResolvedValueOnce(true)
+      .mockResolvedValueOnce(true)
+      .mockResolvedValueOnce(false);
+    expect(await denied.service.execute(jobContext(), { question: "Jobs?" })).toMatchObject({
+      kind: "FALLBACK",
+      reason: "ACCESS_CHANGED",
+    });
+    expect(denied.model.requests).toHaveLength(2);
+  });
+  it("allows a final answer on call five while retaining the six-tool safety limit", async () => {
+    const f = setup([
+      ...Array.from({ length: 4 }, (_, offset) => ({
+        usage,
+        result: {
+          kind: "TOOLS" as const,
+          calls: [{ name: "list_jobs" as const, arguments: { offset } }],
+        },
+      })),
+      answer(),
+    ]);
+    expect(await f.service.execute(jobContext(), { question: "Jobs?" })).toMatchObject({
+      kind: "ANSWER",
+    });
+    expect(f.model.requests).toHaveLength(5);
+    expect(f.model.requests[4]!.tools).toEqual([]);
+    expect(config.maxToolCalls).toBe(6);
   });
   it("reuses identical tool arguments regardless of their key order", async () => {
     const calls = [

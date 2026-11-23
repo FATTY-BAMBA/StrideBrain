@@ -283,10 +283,15 @@ describe("stability regressions", () => {
   });
   const rows = (en: number, zh: number) =>
     ["en", "zh-TW"].flatMap((locale) =>
-      Array.from({ length: 24 }, (_, i) => ({
+      Array.from({ length: 25 }, (_, i) => ({
         id: `${locale}-${i}`,
         locale: locale as "en" | "zh-TW",
         required: i >= 20,
+        qualityRegression: i === 24,
+        calls: 2,
+        namedJobRefusal: false,
+        wrongAmountLabel: false,
+        badDisplayFormat: false,
         verdict: i >= 20 || i < (locale === "en" ? en : zh) ? "grounded and correct" : "wrong",
         wrongNumber: false,
       })),
@@ -317,5 +322,27 @@ describe("stability regressions", () => {
     critical.find((q) => q.required)!.verdict = "wrong";
     expect(roundSummary(1, critical).passed).toBe(false);
     expect(stabilitySummary([roundSummary(1, rows(20, 20))]).passed).toBe(false);
+  });
+  it("enforces call targets and rejects every displayed mislabel", () => {
+    const sample = rows(20, 20);
+    for (let i = 0; i < 5; i++) sample[i]!.calls = 4;
+    expect(roundSummary(1, sample)).toMatchObject({
+      passed: true,
+      callTargets: { median: 2, maximum: 4, withinThree: 45, questions: 50 },
+    });
+    sample[5]!.calls = 4;
+    expect(roundSummary(1, sample).passed).toBe(false);
+    sample[5]!.calls = 2;
+    sample[0]!.calls = 6;
+    expect(roundSummary(1, sample).passed).toBe(false);
+    sample[0]!.calls = 3;
+    sample[0]!.namedJobRefusal = true;
+    expect(roundSummary(1, sample).passed).toBe(false);
+    sample[0]!.calls = 2;
+    sample[0]!.wrongAmountLabel = true;
+    expect(roundSummary(1, sample).passed).toBe(false);
+    sample[0]!.wrongAmountLabel = false;
+    sample[0]!.badDisplayFormat = true;
+    expect(roundSummary(1, sample).passed).toBe(false);
   });
 });

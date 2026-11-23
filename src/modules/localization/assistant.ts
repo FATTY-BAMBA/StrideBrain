@@ -1,3 +1,6 @@
+import { quoteDraftCopy } from "./quote-draft";
+import { quoteIssueCopy } from "./quote-issue";
+import { homeDeskCopy } from "./home-desk";
 import type { Locale } from "./config";
 const en = {
   title: "AI preferences",
@@ -104,10 +107,12 @@ export function assistantFactCopy(locale: Locale) {
         currentDraft: "目前草稿",
         moreRecords: "仍有其他紀錄",
         allRecords: "已列出全部紀錄",
+        allStageGroups: "所有階段群組",
         unavailable: "目前無法取得",
         excluded: "此專案已設定為不提供給 AI",
         outOfDate: "已儲存的比較已過期",
         noRecords: "沒有可用紀錄",
+        noneAwaiting: "目前有 0 筆報價等待客戶回覆。",
         available: "可用",
       }
     : {
@@ -131,10 +136,12 @@ export function assistantFactCopy(locale: Locale) {
         currentDraft: "Current draft",
         moreRecords: "More records available",
         allRecords: "All records shown",
+        allStageGroups: "All stage groups",
         unavailable: "Unavailable",
         excluded: "This job is excluded from AI",
         outOfDate: "The saved comparison is out of date",
         noRecords: "No available records",
+        noneAwaiting: "There are 0 quotes waiting for the client.",
         available: "Available",
       };
 }
@@ -169,4 +176,118 @@ export function assistantToolStatus(locale: Locale, status: string): string {
       } as Record<string, string>
     )[status] ?? c.unavailable
   );
+}
+
+/** Words used by the Quote tab/PDF and their ordinary sentence forms. */
+export const quoteAmountLabelWords = {
+  en: {
+    amountBeforeTax: [
+      "amount before tax",
+      "before-tax amount",
+      "before tax",
+      "pre-tax amount",
+      "pre-tax",
+      "excluding tax",
+      "excl. tax",
+      "subtotal",
+    ],
+    taxAmount: ["business tax", "tax amount", "including tax of", "tax"],
+    totalAmount: [
+      "quote total",
+      "total amount",
+      "total",
+      "totaling",
+      "totalling",
+      "totals",
+      "including tax",
+      "inclusive of tax",
+      "tax included",
+      "incl. tax",
+    ],
+  },
+  "zh-TW": {
+    amountBeforeTax: ["未稅金額", "未稅報價", "未稅", "稅前金額", "稅前"],
+    taxAmount: ["營業稅", "稅額", "稅金"],
+    totalAmount: ["含稅總額", "報價總額", "總計金額", "總計", "總金額", "總額", "合計", "含稅"],
+  },
+} as const;
+
+/** Keys stay in server DTOs; only these human labels cross the model boundary. */
+export function assistantFactLabels(locale: Locale): Readonly<Record<string, string>> {
+  const quote = quoteDraftCopy(locale),
+    issue = quoteIssueCopy(locale),
+    home = homeDeskCopy(locale);
+  return {
+    amountBeforeTax: quote.beforeTax,
+    taxAmount: locale === "zh-TW" ? "營業稅" : "Tax",
+    totalAmount: quote.total,
+    validUntil: issue.validUntil,
+    acceptedOn: issue.acceptedOn,
+    documentNumber: issue.number,
+    quotedPrice: home.quote,
+    reconciledActualCost: home.actual,
+    ...(locale === "zh-TW"
+      ? {
+          amount: "金額",
+          date: "日期",
+          reference: "專案編號",
+          name: "專案名稱",
+          status: "報價狀態",
+          stage: "階段",
+          stageGroup: "階段群組",
+          appliedStageGroup: "套用的階段群組篩選",
+          matchingCount: "符合篩選的專案數",
+          city: "城市",
+          area: "面積",
+          value: "數值",
+          unit: "單位",
+          scopeCategories: "工作範圍",
+          amounts: "目前報價",
+          issued: "最新核發報價",
+          category: "類別",
+          history: "過往報價",
+          count: "紀錄筆數",
+          displayMedian: "過往報價單價中位數",
+          displayLow: "過往最低報價單價",
+          displayHigh: "過往最高報價單價",
+          costComparison: "結案經驗",
+          pastJobs: "所選過往專案",
+          score: "相似分數",
+          findings: "比較結果",
+          text: "說明",
+          coverage: "清單範圍",
+          nextOffset: "下一頁起點",
+        }
+      : {
+          amount: "Amount",
+          date: "Date",
+          reference: "Job reference",
+          name: "Job name",
+          status: "Quote status",
+          stage: "Stage",
+          stageGroup: "Stage group",
+          appliedStageGroup: "Applied stage group filter",
+          matchingCount: "Matching job count",
+          city: "City",
+          area: "Area",
+          value: "Value",
+          unit: "Unit",
+          scopeCategories: "Scope categories",
+          amounts: "Current quote",
+          issued: "Latest issued quote",
+          category: "Category",
+          history: "Past quoted prices",
+          count: "Record count",
+          displayMedian: "Past quoted rate median",
+          displayLow: "Lowest past quoted rate",
+          displayHigh: "Highest past quoted rate",
+          costComparison: "Closed-job lesson",
+          pastJobs: "Selected past jobs",
+          score: "Similarity score",
+          findings: "Findings",
+          text: "Description",
+          coverage: "List coverage",
+          nextOffset: "Next page offset",
+        }),
+  };
 }

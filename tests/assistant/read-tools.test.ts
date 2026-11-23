@@ -1,8 +1,13 @@
+import { stageGroups } from "@/modules/projects/domain/stage-groups";
+import { labelledFacts } from "@/modules/assistant/domain/display-facts";
+import { assistantFactCopy, assistantFactLabels } from "@/modules/localization/assistant";
+import { projectStageLabel } from "@/modules/localization/jobs";
 import { closedLessonText } from "@/modules/home-desk/presentation";
 import { modelFacts } from "@/modules/assistant/domain/redaction";
 import { describe, it, expect, vi } from "vitest";
 import {
   AssistantReadTools,
+  assistantTools,
   type AssistantReadServices,
 } from "@/modules/assistant/application/read-tools";
 import { jobContext } from "../projects/job-fixture";
@@ -11,6 +16,8 @@ import { roleBundle } from "@/modules/runtime-context/capabilities";
 const project = {
   businessKey: "J",
   name: "Synthetic job",
+  nameEn: "Synthetic job",
+  nameZhTw: "合成專案",
   stage: "CONSTRUCTION" as const,
   active: true,
 };
@@ -27,6 +34,32 @@ function setup() {
   return { services, policies, tools: new AssistantReadTools(services, policies) };
 }
 describe("assistant read tools", () => {
+  it("defines bilingual pricing categories and refuses invented category keys before reading history", async () => {
+    const tool = assistantTools.find((t) => t.name === "get_past_prices")!;
+    const properties = tool.parameters.properties as Record<
+      string,
+      { enum?: string[]; description?: string }
+    >;
+    expect(properties.categoryId!.enum).toContain("IMPORTED_STONE");
+    expect(properties.categoryId!.description).toContain("進口石材");
+    expect(properties.categoryId!.description).toContain("Imported stone");
+    expect(properties.categoryId!.enum).not.toContain("STONE");
+    const f = setup();
+    // Actual failed call in paid run 45113826197 used the English display label as categoryId.
+    for (const categoryId of [
+      "石材",
+      "STONE",
+      "imported_stone",
+      "Imported stone and hard finishes",
+    ])
+      expect(
+        await f.tools.execute(jobContext(), {
+          name: "get_past_prices",
+          arguments: { projectKey: "J", categoryId },
+        }),
+      ).toEqual({ status: "UNAVAILABLE", sources: [] });
+    expect(f.services.history.execute).not.toHaveBeenCalled();
+  });
   it("lists only permitted jobs and bounds arguments", async () => {
     const f = setup();
     const c = jobContext();
@@ -43,11 +76,91 @@ describe("assistant read tools", () => {
         "UNAVAILABLE",
       );
   });
+  it.each(["en", "zh-TW"] as const)(
+    "labels each Home stage group and its filter/count in %s",
+    async (locale) => {
+      const labels = assistantFactLabels(locale);
+      for (const group of stageGroups) {
+        const f = setup();
+        f.services.projects.execute.mockResolvedValue({
+          kind: "AVAILABLE",
+          projects: [
+            ...stageGroups.flatMap((g) =>
+              g.stages.map((stage) => ({ ...project, businessKey: stage, stage })),
+            ),
+          ],
+        });
+        const out = await f.tools.execute(jobContext({ locale }), {
+          name: "list_jobs",
+          arguments: { stageGroup: group.key },
+        });
+        expect(out.sources.slice(0, -1).map((s) => s.facts.reference)).toEqual([...group.stages]);
+        for (const [index, stage] of group.stages.entries())
+          expect(labelledFacts(out.sources[index]!.facts, locale)).toMatchObject({
+            [labels.stage!]: projectStageLabel(locale, stage),
+            [labels.stageGroup!]: group[locale],
+          });
+        expect(out.sources.at(-1)!.facts).toMatchObject({
+          appliedStageGroup: group[locale],
+          matchingCount: group.stages.length,
+          count: group.stages.length,
+          coverage: assistantFactCopy(locale).allRecords,
+          truncated: false,
+        });
+        expect(labelledFacts(out.sources.at(-1)!.facts, locale)).toMatchObject({
+          [labels.appliedStageGroup!]: group[locale],
+          [labels.matchingCount!]: group.stages.length,
+        });
+        expect(f.services.projects.execute).toHaveBeenCalledTimes(1);
+      }
+    },
+  );
+  it("keeps the filter's total separate from page size and excludes unreadable jobs", async () => {
+    const f = setup();
+    f.services.projects.execute.mockResolvedValue({
+      kind: "AVAILABLE",
+      projects: Array.from({ length: 23 }, (_, i) => ({ ...project, businessKey: `J-${i}` })),
+    });
+    f.policies.jobPolicy.mockImplementation(async (_context, key) =>
+      key === "J-22" ? null : { id: key, excluded: key === "J-21" },
+    );
+    const first = await f.tools.execute(jobContext(), {
+      name: "list_jobs",
+      arguments: { stageGroup: "work" },
+    });
+    expect(first.sources.at(-1)!.facts).toMatchObject({
+      appliedStageGroup: "Work",
+      matchingCount: 21,
+      count: 20,
+      nextOffset: 20,
+    });
+    const second = await f.tools.execute(jobContext(), {
+      name: "list_jobs",
+      arguments: { stageGroup: "work", offset: 20 },
+    });
+    expect(second.sources.at(-1)!.facts).toMatchObject({
+      appliedStageGroup: "Work",
+      matchingCount: 21,
+      count: 1,
+      truncated: false,
+    });
+    const all = await f.tools.execute(jobContext(), { name: "list_jobs", arguments: {} });
+    expect(all.sources.at(-1)!.facts.appliedStageGroup).toBe("All stage groups");
+  });
   it("links row citations to their own list result's count, including overlapping results", async () => {
     const f = setup();
     f.services.projects.execute.mockResolvedValue({
       kind: "AVAILABLE",
-      projects: [project, { ...project, businessKey: "K", name: "Another job" }],
+      projects: [
+        project,
+        {
+          ...project,
+          businessKey: "K",
+          name: "Another job",
+          nameEn: "Another job",
+          nameZhTw: "另一專案",
+        },
+      ],
     });
     const all = await f.tools.execute(jobContext(), { name: "list_jobs", arguments: {} });
     const filtered = await f.tools.execute(jobContext(), {
@@ -173,18 +286,16 @@ describe("assistant read tools", () => {
   });
   it("resolves a Chinese job name in an English question without widening access", async () => {
     const f = setup();
-    f.services.projects.execute
-      .mockResolvedValueOnce({ kind: "AVAILABLE", projects: [project] })
-      .mockResolvedValueOnce({
-        kind: "AVAILABLE",
-        projects: [{ ...project, name: "進行中設計專案01" }],
-      });
+    f.services.projects.execute.mockResolvedValue({
+      kind: "AVAILABLE",
+      projects: [{ ...project, nameZhTw: "進行中設計專案01" }],
+    });
     const out = await f.tools.execute(jobContext({ locale: "en" }), {
       name: "list_jobs",
       arguments: { query: "進行中設計專案01" },
     });
     expect(out.sources[0]?.facts.reference).toBe("J");
-    expect(f.services.projects.execute.mock.calls[1]?.[0].locale).toBe("zh-TW");
+    expect(f.services.projects.execute).toHaveBeenCalledTimes(1);
   });
   it("rejects inaccessible or excluded jobs before overview/quote reads", async () => {
     const f = setup();
@@ -289,13 +400,15 @@ describe("assistant read tools", () => {
   );
   it("resolves both authorized language names before selecting the question subject", async () => {
     const f = setup();
-    f.services.projects.execute.mockImplementation(async (c) => ({
+    f.services.projects.execute.mockImplementation(async () => ({
       kind: "AVAILABLE",
       projects: [
         {
           ...project,
           businessKey: "PRJ-ACTIVE-001",
-          name: c.locale === "en" ? "Active Design Project 01" : "進行中設計專案01",
+          name: "Active Design Project 01",
+          nameEn: "Active Design Project 01",
+          nameZhTw: "進行中設計專案01",
         },
       ],
     }));
@@ -308,6 +421,7 @@ describe("assistant read tools", () => {
         kind: "AVAILABLE",
         named: [{ projectKey: "PRJ-ACTIVE-001" }],
       });
+    expect(f.services.projects.execute).toHaveBeenCalledTimes(3);
     expect(await f.tools.resolveSubjects(jobContext(), "Some other job?")).toMatchObject({
       kind: "AVAILABLE",
       named: [],

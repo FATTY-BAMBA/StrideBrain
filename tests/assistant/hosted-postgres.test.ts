@@ -1,3 +1,4 @@
+import { assistantFactLabels } from "@/modules/localization/assistant";
 import { beforeAll, afterAll, afterEach, describe, it, expect, vi } from "vitest";
 import type * as AssistantServices from "@/lib/server/assistant-services";
 import type { AssistantModelPort, ToolCall } from "@/modules/assistant/domain/contracts";
@@ -97,6 +98,25 @@ async function ask(
 }
 suite("hosted regressions through authorized records and the Home server action", () => {
   it.each([
+    "PRJ-XINYI-026 的報價有哪些比較結果？",
+    "Xinyi Flagship Renovation 的報價有哪些比較結果？",
+  ])(
+    "keeps the named job in the keyword reply after discarding an answer: %s",
+    async (question) => {
+      const { turn, fake } = await ask(
+        question,
+        { name: "get_saved_comparison", arguments: { projectKey: "PRJ-XINYI-026" } },
+        () => "This quote costs NT$999999999.",
+      );
+      expect(fake.requests).toHaveLength(2);
+      expect(turn.ai).toBeUndefined();
+      expect(turn.aiFallback).toBe(true);
+      expect(turn.action?.href).toContain("/zh-TW/projects/PRJ-XINYI-026/compare");
+      expect(JSON.stringify(turn)).not.toContain("J-2611-R7K3");
+      expect(turn.text).not.toContain("999999999");
+    },
+  );
+  it.each([
     "進行中設計專案01的報價狀態如何？",
     "What is the quote status of Active Design Project 01?",
     "PRJ-ACTIVE-001 的報價總額是多少？客戶哪一天接受？",
@@ -105,7 +125,7 @@ suite("hosted regressions through authorized records and the Home server action"
       question,
       { name: "get_quote_status", arguments: { projectKey: "PRJ-ACTIVE-001" } },
       (facts) =>
-        `${question.includes("Active Design") ? "Active Design Project 01" : "進行中設計專案01"} (${facts.reference}): ${facts.status}`,
+        `${question.includes("Active Design") ? "Active Design Project 01" : "進行中設計專案01"} (${facts[question.includes("Active Design") ? "Job reference" : "專案編號"]}): ${facts[question.includes("Active Design") ? "Quote status" : "報價狀態"]}`,
     );
     expect(turn.ai).toBe(true);
     expect(turn.text).toContain("PRJ-ACTIVE-001");
@@ -138,16 +158,17 @@ suite("hosted regressions through authorized records and the Home server action"
         );
     }
   });
-  it("keeps no awaiting clients grounded and does not save a comparison, even after a duplicate call", async () => {
+  it("answers no awaiting clients before another model call and does not save a comparison", async () => {
     await emptyAwaitingScenario(true, async () => {
-      const { turn } = await ask(
+      const { turn, fake } = await ask(
         "哪些報價還在等客戶回覆？",
         { name: "list_awaiting_client", arguments: {} },
-        (facts) => `目前有 ${facts.count} 筆報價等待客戶回覆。`,
+        (facts) => `目前有 ${facts[assistantFactLabels("zh-TW").count!]} 筆報價等待客戶回覆。`,
         true,
       );
       expect(turn).toMatchObject({ ai: true, text: "目前有 0 筆報價等待客戶回覆。" });
       expect(turn.aiSources).toHaveLength(1);
+      expect(fake.requests).toHaveLength(1);
     });
   });
   it("returns a comparison link for the named job without any comparison writes", async () => {
@@ -163,6 +184,23 @@ suite("hosted regressions through authorized records and the Home server action"
     expect(turn.text).toContain("沒有目前可用的已儲存比較");
     expect(fake.requests).toHaveLength(1);
   });
+  it.each(["en", "zh-TW"] as const)(
+    "exposes only the Quote-tab millwork display rates in %s",
+    async (locale) => {
+      const tools = createAssistantServices().tools,
+        c = { ...(await db.actor()), locale };
+      const history = await tools.execute(c, {
+        name: "get_past_prices",
+        arguments: { projectKey: "J-2611-R7K3", categoryId: "CUSTOM_MILLWORK" },
+      });
+      expect(history.sources[0]!.facts).toMatchObject({
+        count: 3,
+        displayMedian: "NT$5,833/m²",
+        displayLow: "NT$5,424/m²",
+        displayHigh: "NT$5,902/m²",
+      });
+    },
+  );
   it("resolves only names the member may read", async () => {
     const tools = createAssistantServices().tools;
     for (const member of [

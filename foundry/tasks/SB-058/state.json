@@ -1,0 +1,122 @@
+{
+  "issue": 58,
+  "branch": "build/sb-058-assistant-quality",
+  "status": "WAITING_FOR_PRODUCT_DIRECTOR_TEST_SITE",
+  "delivery": "C",
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "pullRequestState": "DRAFT",
+  "paidRuns": [
+    {
+      "runId": 45113615576,
+      "commit": "2d0ba6ca5297241cbef46c2d1b5df9979d9462ea",
+      "status": "CHECKOUT_FAILED",
+      "estimatedUsd": "0",
+      "modelCalls": 0
+    },
+    {
+      "runId": 45113826197,
+      "commit": "2d0ba6ca5297241cbef46c2d1b5df9979d9462ea",
+      "status": "EVALUATION_FAILED",
+      "estimatedUsd": "0.185596900"
+    },
+    {
+      "runId": 45115077636,
+      "commit": "b7dab600e2fe56b21a9558fcd3a7b5ace33ee23d",
+      "status": "EVALUATION_FAILED",
+      "estimatedUsd": "0.180945900"
+    },
+    {
+      "runId": 45117528592,
+      "commit": "36a186b3b4504a50abe90404c231ef9e0e61c2b1",
+      "status": "EVALUATION_PASSED",
+      "estimatedUsd": "0.181592000"
+    }
+  ],
+  "paidRunLimit": 4,
+  "pullRequest": 59,
+  "paidRerun": "NOT_RERUN_AFTER_HOSTED_REVIEW",
+  "localCheck": {
+    "passed": true,
+    "tests": 1359,
+    "files": 126,
+    "evidence": "evidence/check-hosted-review.log"
+  },
+  "paidEstimatedUsdTotal": "0.548134800",
+  "additionalRunAuthorization": {
+    "source": "Product Director in chat",
+    "instruction": "Run one additional evaluation",
+    "commit": "36a186b3b4504a50abe90404c231ef9e0e61c2b1"
+  },
+  "paidEvaluation": {
+    "runId": 45117528592,
+    "passed": true,
+    "rounds": [
+      {
+        "round": 1,
+        "scores": {
+          "en": 20,
+          "zh-TW": 19
+        },
+        "callTargets": {
+          "median": 2,
+          "maximum": 3,
+          "withinThree": 50,
+          "questions": 50,
+          "namedRefusalMaximum": 1
+        }
+      },
+      {
+        "round": 2,
+        "scores": {
+          "en": 19,
+          "zh-TW": 19
+        },
+        "callTargets": {
+          "median": 2,
+          "maximum": 3,
+          "withinThree": 50,
+          "questions": 50,
+          "namedRefusalMaximum": 1
+        }
+      },
+      {
+        "round": 3,
+        "scores": {
+          "en": 20,
+          "zh-TW": 19
+        },
+        "callTargets": {
+          "median": 2,
+          "maximum": 4,
+          "withinThree": 49,
+          "questions": 50,
+          "namedRefusalMaximum": 1
+        }
+      }
+    ],
+    "nonPerfectQuestions": [
+      {
+        "id": "en-status",
+        "passes": 2,
+        "rounds": 3
+      },
+      {
+        "id": "zh-TW-finding",
+        "passes": 0,
+        "rounds": 3
+      }
+    ],
+    "commit": "36a186b3b4504a50abe90404c231ef9e0e61c2b1"
+  },
+  "hostedReview": {
+    "testedCommit": "df4f074871ac7ef6ea9dfb0fde498594e6e8eeed",
+    "result": "WORK_STAGE_ACCEPTANCE_FAILED",
+    "corrections": [
+      "Localized Home group and stage on list rows; explicit applied group and matching count",
+      "Nonempty-list evaluation for en-work and zh-TW-work",
+      "Unique server-resolved subject preserved after a discarded answer"
+    ],
+    "retest": "WAITING_FOR_PRODUCT_DIRECTOR",
+    "paidEvaluationAfterCorrections": "NOT_RUN"
+  }
+}
