@@ -2,6 +2,8 @@
 
 PR: https://github.com/FATTY-BAMBA/StrideBrain/pull/59 (draft). Hosted acceptance is waiting for the Product Director. No hosted deployment, migration, seed or settings changes; no migration files changed.
 
+The separately approved fourth evaluation **passed its acceptance gates** on 36a186b. It was not a perfect 150/150 result: the remaining core-case misses are recorded below.
+
 ## What changed
 
 - Authorized facts cross the model boundary under localized screen labels. Quote, past-price and closed-job raw duplicates and machine markers stay server-side. Rates use the Quote tab's whole-dollar formatting and recorded area unit.
@@ -13,18 +15,34 @@ PR: https://github.com/FATTY-BAMBA/StrideBrain/pull/59 (draft). Hosted acceptanc
 
 ## Paid evaluation dispatches
 
-At most three workflow dispatches are authorized for this issue. Estimates below use the configured token rates, not a billing invoice.
+The issue authorized three workflow dispatches. After those were used, the Product Director explicitly approved one additional three-round evaluation of 36a186b in chat: “Run one additional evaluation.” The total authorized allowance is four dispatches. Estimates below use the configured token rates, not a billing invoice.
 
 | Run | Evaluated commit | Result | Estimated USD |
 | --- | --- | --- | --- |
 | [45113615576](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45113615576) | Short ref 2d0ba6c | Checkout failed: actions/checkout treated the short SHA as a ref. Evaluation step skipped; no model calls. | 0 |
 | [45113826197](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45113826197) | 2d0ba6ca5297241cbef46c2d1b5df9979d9462ea | Failed required regressions/call target; core scores en 20/18/19, zh-TW 20/19/20. Zero displayed wrong numbers/mislabels. | 0.185596900 |
-
 | [45115077636](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45115077636) | b7dab600e2fe56b21a9558fcd3a7b5ace33ee23d | Failed: two AMOUNT_LABEL false-positive discards in round 2; both fixed after the run. | 0.180945900 |
+| [45117528592](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45117528592) | 36a186b3b4504a50abe90404c231ef9e0e61c2b1 | Passed all three rounds and all required regressions; see remaining core-case misses below. | 0.181592000 |
 
-The second dispatch's original report is [provider-45113826197.json](evidence/provider-45113826197.json). Median calls 2 each round; maximum 4; 48/50, 49/50 and 48/50 at three or fewer. A named-job refusal took 3, so the run failed its call gate. Required empty-awaiting answers incorrectly qualified the firm-wide result with the page default; English millwork repeated list_jobs and refused. The final dispatch is complete and remains failed as originally reported. It met every score and call target but rejected two correct required answers in round 2. Those exact drafts are now preserved in tests/assistant/quality-rejected-answer-fixtures.json; the label dictionary distinguishes “including tax of” (the tax component) from “including tax” (the total), and accepts “totals” as a total label. Negative tests still reject each phrase with the wrong quote amount. The exact paid drafts now pass unchanged against freshly prepared authorized database sources and the evaluator in the replay test. These final corrections require a fresh paid evaluation; no fourth dispatch is authorized by the issue's existing limit.
+The second dispatch's original report is [provider-45113826197.json](evidence/provider-45113826197.json). Median calls 2 each round; maximum 4; 48/50, 49/50 and 48/50 at three or fewer. A named-job refusal took 3, so the run failed its call gate. Required empty-awaiting answers incorrectly qualified the firm-wide result with the page default; English millwork repeated list_jobs and refused. The third dispatch remains failed as originally reported. It met every score and call target but rejected two correct required answers in round 2. Those exact drafts are now preserved in tests/assistant/quality-rejected-answer-fixtures.json; the label dictionary distinguishes “including tax of” (the tax component) from “including tax” (the total), and accepts “totals” as a total label. Negative tests still reject each phrase with the wrong quote amount. The exact paid drafts now pass unchanged against freshly prepared authorized database sources and the evaluator in the replay test. The separately approved fourth dispatch evaluated those final corrections on 36a186b3b4504a50abe90404c231ef9e0e61c2b1 and passed.
 
-### Last paid run detail (before the final label corrections)
+### Approved fourth dispatch — passed
+
+[Original report](evidence/provider-45117528592.json), [workflow run](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45117528592). Same Gemini 3.5 Flash-Lite provider/model and unchanged evaluation cases/gates. No implementation, prompt or test changes were made for this additional run.
+
+| Round | en core | zh-TW core | Required cases | Median / max calls | At most 3 calls | Named-job refusal max |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 20/20 | 19/20 | 10/10 | 2 / 3 | 50/50 | 1 |
+| 2 | 19/20 | 19/20 | 10/10 | 2 / 3 | 50/50 | 1 |
+| 3 | 20/20 | 19/20 | 10/10 | 2 / 4 | 49/50 | 1 |
+
+No displayed unsupported number, mislabelled quote amount or display-format violation occurred. All eight retained hosted-regression cases and both new count/range cases passed each round. Both prior AMOUNT_LABEL rejections passed all three rounds. All call targets were met: 149/150 answers at three calls or fewer, no answer above four, and every named-job refusal at one call. The one four-call answer was en-manager-scope in round 3.
+
+Per-question rates are retained in the report: 48 questions passed 3/3, en-status passed 2/3, and zh-TW-finding passed 0/3 (146/150 overall). In en-status round 2 the answer gave the correct issued/unaccepted status but omitted the document number required by that case's existing oracle. All three zh-TW finding drafts were discarded by FINDING_SENTENCE because their combined prose did not satisfy the exact saved-sentence check. The failed-case tool arguments, raw drafts and reason codes remain in the artifact. These misses were not hidden by changing the cases or thresholds.
+
+Estimated cost of this additional run: **US$0.181592000**. Total estimated cost across all four dispatches: **US$0.548134800**. Actual billed charges are not verified.
+
+### Third dispatch detail (before the final label corrections)
 
 Original report: [provider-45115077636.json](evidence/provider-45115077636.json). All three rounds scored en 20/20 and zh-TW 20/20. Median calls 2, maximum 3; all 50 questions in every round used three or fewer. Named-job refusal maxima were 1, 2 and 1. The two count/range cases passed every round. No displayed wrong number, mislabelled amount or display-format violation was recorded. Required hosted regressions passed 8/8, 6/8 and 8/8: en-home-named-status and en-home-reference-total each passed 2/3; the other 48 questions passed 3/3. Per-question pass rates and call counts are in the artifact. Total estimated spend across all three dispatches: **US$0.366542800**.
 
@@ -34,7 +52,7 @@ The earlier Chinese stone refusal did not reproduce after the labelled display-f
 
 ## Local verification
 
-Final npm run check passed: 1,348 tests in 126 files plus format, lint, typecheck and production build. Existing prisma.config.ts anonymous-default-export warning only. Checks use Node 24 and disposable loopback PostgreSQL with synthetic fixtures; no live model key is passed to CI/local tests.
+[CI passed on tested code commit 36a186b](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45116190825). Only task documentation and the downloaded evaluation artifact changed after that code commit. Final npm run check passed: 1,348 tests in 126 files plus format, lint, typecheck and production build. Existing prisma.config.ts anonymous-default-export warning only. Checks use Node 24 and disposable loopback PostgreSQL with synthetic fixtures; no live model key is passed to CI/local tests.
 
 The deterministic evaluation runs all 50 cases over fresh authorized database fixtures in three rounds. This verifies the harness and data paths, not model quality. See [fake-evaluation.json](evidence/fake-evaluation.json) and [check.log](evidence/check.log).
 
@@ -50,4 +68,4 @@ Local production Chrome exercised real session handoff, server actions, authoriz
 
 ## Not verified
 
-A fresh paid evaluation after the last two label corrections is not verified: all three authorized workflow dispatches were used. Hosted acceptance, including the Product Director's five repeated quote-total questions and the #39 hosted checklist, is waiting for the Product Director. The local browser transport is not evidence of live Gemini quality. Billing charges are not verified; report costs are token-based estimates. No claim of production readiness or hosted acceptance is made by this draft PR.
+Hosted acceptance, including the Product Director's five repeated quote-total questions and the #39 hosted checklist, is waiting for the Product Director. The local browser transport is not evidence of live Gemini quality. Billing charges are not verified; report costs are token-based estimates. No claim of production readiness or hosted acceptance is made by this draft PR.

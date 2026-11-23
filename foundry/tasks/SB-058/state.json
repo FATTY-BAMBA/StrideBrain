@@ -1,7 +1,7 @@
 {
   "issue": 58,
   "branch": "build/sb-058-assistant-quality",
-  "status": "LOCAL_VERIFIED_WAITING_FOR_PAID_RERUN_APPROVAL",
+  "status": "WAITING_FOR_PRODUCT_DIRECTOR_TEST_SITE",
   "delivery": "C",
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "pullRequestState": "DRAFT",
@@ -24,15 +24,86 @@
       "commit": "b7dab600e2fe56b21a9558fcd3a7b5ace33ee23d",
       "status": "EVALUATION_FAILED",
       "estimatedUsd": "0.180945900"
+    },
+    {
+      "runId": 45117528592,
+      "commit": "36a186b3b4504a50abe90404c231ef9e0e61c2b1",
+      "status": "EVALUATION_PASSED",
+      "estimatedUsd": "0.181592000"
     }
   ],
-  "paidRunLimit": 3,
+  "paidRunLimit": 4,
   "pullRequest": 59,
-  "paidRerun": "REQUIRES_PRODUCT_DIRECTOR_APPROVAL",
+  "paidRerun": "PASSED",
   "localCheck": {
     "passed": true,
     "tests": 1348,
     "files": 126
   },
-  "paidEstimatedUsdTotal": "0.366542800"
+  "paidEstimatedUsdTotal": "0.548134800",
+  "additionalRunAuthorization": {
+    "source": "Product Director in chat",
+    "instruction": "Run one additional evaluation",
+    "commit": "36a186b3b4504a50abe90404c231ef9e0e61c2b1"
+  },
+  "paidEvaluation": {
+    "runId": 45117528592,
+    "passed": true,
+    "rounds": [
+      {
+        "round": 1,
+        "scores": {
+          "en": 20,
+          "zh-TW": 19
+        },
+        "callTargets": {
+          "median": 2,
+          "maximum": 3,
+          "withinThree": 50,
+          "questions": 50,
+          "namedRefusalMaximum": 1
+        }
+      },
+      {
+        "round": 2,
+        "scores": {
+          "en": 19,
+          "zh-TW": 19
+        },
+        "callTargets": {
+          "median": 2,
+          "maximum": 3,
+          "withinThree": 50,
+          "questions": 50,
+          "namedRefusalMaximum": 1
+        }
+      },
+      {
+        "round": 3,
+        "scores": {
+          "en": 20,
+          "zh-TW": 19
+        },
+        "callTargets": {
+          "median": 2,
+          "maximum": 4,
+          "withinThree": 49,
+          "questions": 50,
+          "namedRefusalMaximum": 1
+        }
+      }
+    ],
+    "nonPerfectQuestions": [
+      {
+        "id": "en-status",
+        "passes": 2,
+        "rounds": 3
+      },
+      {
+        "id": "zh-TW-finding",
+        "passes": 0,
+        "rounds": 3
+      }
+    ]
+  }
 }

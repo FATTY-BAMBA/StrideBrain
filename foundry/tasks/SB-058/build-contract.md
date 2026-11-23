@@ -10,7 +10,7 @@ Load authorized project identity once with both names. Preserve Home's five stag
 
 ## C — Evaluation
 
-Keep all 48 cases and the original 16/20 per-language, per-round gate; no displayed unsupported number or mislabelled quote amount. Add recorded mislabel and count/range/refusal regressions. Include tool names/arguments for every non-pass in the synthetic artifact only. Report model-call median/maximum and per-question calls; at least 90% at three or fewer, none above five, named-job refusal at most two. Change workflow default ref to main. Diagnose the Chinese range refusal from recorded calls and correct the tool contract without question-specific prompt text. At most three paid workflow dispatches; record every report and estimated cost.
+Keep all 48 cases and the original 16/20 per-language, per-round gate; no displayed unsupported number or mislabelled quote amount. Add recorded mislabel and count/range/refusal regressions. Include tool names/arguments for every non-pass in the synthetic artifact only. Report model-call median/maximum and per-question calls; at least 90% at three or fewer, none above five, named-job refusal at most two. Change workflow default ref to main. Diagnose the Chinese range refusal from recorded calls and correct the tool contract without question-specific prompt text. The issue initially allowed three workflow dispatches; the Product Director subsequently approved one additional three-round run on 36a186b in chat. Four dispatches total; record every original report and estimated cost.
 
 ## Delivery and verification
 
