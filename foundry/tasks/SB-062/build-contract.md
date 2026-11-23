@@ -3,6 +3,7 @@
 - Check project:create and project:read before any model call. Honor paid-tier configuration, organization switch, timeout and shared daily cap. No retry.
 - Send only redacted typed text, fixed extraction instructions and static existing choices. Exactly one submit_job_draft call, no read tools. No question-path instruction or behavior change.
 - Require bounded schema and exact supporting substrings after NFKC/whitespace normalization. Text values equal their quote; choices must be canonical options. Invalid fields drop independently. Refuse forbidden/unknown top-level fields.
+- Client fields need non-overlapping support occurrences: client name separate from name/subtype, client type also separate from client name. Try all arrangements up to 20 occurrences per quote, ignoring case for location only. On conflict try dropping client type, then client name instead, then both; name/subtype may overlap and remain kept.
 - Digits-only area, including full-width digits. Server converts 坪 by 400/121, half up at three decimals. m² remains m². No storage unit change.
 - Match active authorized clients on either language name, NFKC/case-insensitive/trimmed, only when exactly one row matches. Never send client rows to the model.
 - No draft persistence or source text in usage/logs. Reserve one shared AssistantUsage row for the call; record tokens, exact cost and outcome only.

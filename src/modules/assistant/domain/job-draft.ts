@@ -67,6 +67,48 @@ export const jobDraftSchema = {
   additionalProperties: false,
 };
 
+type QuoteOccurrence = Readonly<{ start: number; end: number }>;
+function conflictingClientFields(
+  text: string,
+  quotes: Partial<Record<DraftTextField, string>>,
+): readonly ("clientName" | "clientType")[] {
+  const occurrences = (quote: string | undefined): readonly (QuoteOccurrence | null)[] => {
+    if (!quote) return [null];
+    const escaped = quote.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const matches: QuoteOccurrence[] = [];
+    // Lookahead includes overlapping occurrences; case folding is only for location.
+    for (const match of text.matchAll(new RegExp(`(?=(${escaped}))`, "giu"))) {
+      matches.push({ start: match.index, end: match.index + match[1]!.length });
+      if (matches.length === 20) break;
+    }
+    return matches;
+  };
+  const name = occurrences(quotes.name),
+    subtype = occurrences(quotes.subtype),
+    clientName = occurrences(quotes.clientName),
+    clientType = occurrences(quotes.clientType);
+  const separate = (a: QuoteOccurrence | null, b: QuoteOccurrence | null) =>
+    !a || !b || a.end <= b.start || b.end <= a.start;
+  function fits(keepName: boolean, keepType: boolean): boolean {
+    for (const client of keepName ? clientName : [null])
+      for (const type of keepType ? clientType : [null]) {
+        if (!separate(client, type)) continue;
+        // Name and subtype may overlap each other, so each can choose independently.
+        if (
+          [name, subtype].every((job) =>
+            job.some((range) => separate(range, client) && separate(range, type)),
+          )
+        )
+          return true;
+      }
+    return false;
+  }
+  if (fits(true, true)) return [];
+  if (fits(true, false)) return ["clientType"];
+  if (fits(false, true)) return ["clientName"];
+  return ["clientType", "clientName"];
+}
+
 /** Invalid fields are dropped independently. Only quotes present in the redacted input count.
  * An area quote never starts inside a longer number, including one grouped with commas (1,200). */
 export function supportJobDraft(text: string, raw: unknown): SupportedJobDraft | null {
@@ -83,6 +125,7 @@ export function supportJobDraft(text: string, raw: unknown): SupportedJobDraft |
   const kept: string[] = [],
     dropped: string[] = [];
   const values: SupportedJobDraft["values"] = {};
+  const quotes: Partial<Record<DraftTextField, string>> = {};
   function supported(raw: unknown, max: number, choices?: readonly string[]): string | null {
     const item = record(raw);
     if (
@@ -120,8 +163,16 @@ export function supportJobDraft(text: string, raw: unknown): SupportedJobDraft |
     );
     if (value) {
       values[field] = value;
+      quotes[field] = normalizeDraftText(record(input[field])!.quote as string);
       kept.push(field);
     } else dropped.push(field);
+  }
+  for (const field of conflictingClientFields(normalized, quotes)) {
+    const index = kept.indexOf(field);
+    if (index < 0) continue;
+    delete values[field];
+    kept.splice(index, 1);
+    dropped.push(field);
   }
   const scopeCategoryIds: string[] = [];
   for (const [i, item] of input.scopeCategoryIds.entries()) {

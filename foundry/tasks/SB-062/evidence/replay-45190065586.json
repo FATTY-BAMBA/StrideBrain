@@ -1,0 +1,333 @@
+{
+  "mode": "RECORDED_OUTPUT_REPLAY",
+  "sourceRun": 45190065586,
+  "passed": true,
+  "cases": [
+    {
+      "round": 1,
+      "id": "en-existing",
+      "passed": true,
+      "kept": [
+        "name",
+        "clientName",
+        "locationCity",
+        "subtype",
+        "scopeCategoryIds.CUSTOM_MILLWORK",
+        "area"
+      ],
+      "dropped": [
+        "locationDistrict",
+        "clientType"
+      ]
+    },
+    {
+      "round": 1,
+      "id": "en-written-area",
+      "passed": true,
+      "kept": [
+        "name",
+        "locationCity",
+        "subtype",
+        "scopeCategoryIds.SIGNAGE"
+      ],
+      "dropped": [
+        "locationDistrict",
+        "clientType",
+        "clientName",
+        "area"
+      ]
+    },
+    {
+      "round": 1,
+      "id": "en-full-width",
+      "passed": true,
+      "kept": [
+        "name",
+        "locationCity",
+        "subtype",
+        "scopeCategoryIds.IMPORTED_STONE",
+        "scopeCategoryIds.COORDINATION",
+        "area"
+      ],
+      "dropped": [
+        "locationDistrict",
+        "clientType",
+        "clientName"
+      ]
+    },
+    {
+      "round": 1,
+      "id": "en-client-normalization",
+      "passed": true,
+      "kept": [
+        "name",
+        "clientName",
+        "subtype",
+        "scopeCategoryIds.SIGNAGE",
+        "area"
+      ],
+      "dropped": [
+        "locationCity",
+        "locationDistrict",
+        "clientType"
+      ]
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-existing",
+      "passed": true,
+      "kept": [
+        "name",
+        "clientName",
+        "locationCity",
+        "subtype",
+        "scopeCategoryIds.CUSTOM_MILLWORK",
+        "area"
+      ],
+      "dropped": [
+        "locationDistrict",
+        "clientType"
+      ]
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-client-normalization",
+      "passed": true,
+      "kept": [
+        "name",
+        "clientName",
+        "subtype",
+        "scopeCategoryIds.SIGNAGE",
+        "area"
+      ],
+      "dropped": [
+        "locationCity",
+        "locationDistrict",
+        "clientType"
+      ]
+    },
+    {
+      "round": 2,
+      "id": "en-existing",
+      "passed": true,
+      "kept": [
+        "name",
+        "clientName",
+        "locationCity",
+        "subtype",
+        "scopeCategoryIds.CUSTOM_MILLWORK",
+        "area"
+      ],
+      "dropped": [
+        "locationDistrict",
+        "clientType"
+      ]
+    },
+    {
+      "round": 2,
+      "id": "en-written-area",
+      "passed": true,
+      "kept": [
+        "name",
+        "locationCity",
+        "subtype",
+        "scopeCategoryIds.SIGNAGE"
+      ],
+      "dropped": [
+        "locationDistrict",
+        "clientType",
+        "clientName",
+        "area"
+      ]
+    },
+    {
+      "round": 2,
+      "id": "en-full-width",
+      "passed": true,
+      "kept": [
+        "name",
+        "locationCity",
+        "subtype",
+        "scopeCategoryIds.IMPORTED_STONE",
+        "scopeCategoryIds.COORDINATION",
+        "area"
+      ],
+      "dropped": [
+        "locationDistrict",
+        "clientType",
+        "clientName"
+      ]
+    },
+    {
+      "round": 2,
+      "id": "en-client-normalization",
+      "passed": true,
+      "kept": [
+        "name",
+        "clientName",
+        "subtype",
+        "scopeCategoryIds.SIGNAGE",
+        "area"
+      ],
+      "dropped": [
+        "locationCity",
+        "locationDistrict",
+        "clientType"
+      ]
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-existing",
+      "passed": true,
+      "kept": [
+        "name",
+        "clientName",
+        "locationCity",
+        "subtype",
+        "scopeCategoryIds.CUSTOM_MILLWORK",
+        "area"
+      ],
+      "dropped": [
+        "locationDistrict",
+        "clientType"
+      ]
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-district-only",
+      "passed": true,
+      "kept": [
+        "name",
+        "locationDistrict",
+        "subtype",
+        "scopeCategoryIds.LIGHTING_ELECTRICAL",
+        "area"
+      ],
+      "dropped": [
+        "clientName",
+        "locationCity",
+        "clientType"
+      ]
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-client-normalization",
+      "passed": true,
+      "kept": [
+        "name",
+        "clientName",
+        "subtype",
+        "scopeCategoryIds.SIGNAGE",
+        "area"
+      ],
+      "dropped": [
+        "locationCity",
+        "locationDistrict",
+        "clientType"
+      ]
+    },
+    {
+      "round": 3,
+      "id": "en-existing",
+      "passed": true,
+      "kept": [
+        "name",
+        "clientName",
+        "locationCity",
+        "subtype",
+        "scopeCategoryIds.CUSTOM_MILLWORK",
+        "area"
+      ],
+      "dropped": [
+        "locationDistrict",
+        "clientType"
+      ]
+    },
+    {
+      "round": 3,
+      "id": "en-full-width",
+      "passed": true,
+      "kept": [
+        "name",
+        "locationCity",
+        "subtype",
+        "scopeCategoryIds.IMPORTED_STONE",
+        "scopeCategoryIds.COORDINATION",
+        "area"
+      ],
+      "dropped": [
+        "locationDistrict",
+        "clientType",
+        "clientName"
+      ]
+    },
+    {
+      "round": 3,
+      "id": "en-client-normalization",
+      "passed": true,
+      "kept": [
+        "name",
+        "clientName",
+        "subtype",
+        "scopeCategoryIds.SIGNAGE",
+        "area"
+      ],
+      "dropped": [
+        "locationCity",
+        "locationDistrict",
+        "clientType"
+      ]
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-existing",
+      "passed": true,
+      "kept": [
+        "name",
+        "clientName",
+        "locationCity",
+        "subtype",
+        "scopeCategoryIds.CUSTOM_MILLWORK",
+        "area"
+      ],
+      "dropped": [
+        "locationDistrict",
+        "clientType"
+      ]
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-district-only",
+      "passed": true,
+      "kept": [
+        "name",
+        "locationDistrict",
+        "subtype",
+        "scopeCategoryIds.LIGHTING_ELECTRICAL",
+        "area"
+      ],
+      "dropped": [
+        "clientName",
+        "locationCity",
+        "clientType"
+      ]
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-client-normalization",
+      "passed": true,
+      "kept": [
+        "name",
+        "clientName",
+        "subtype",
+        "scopeCategoryIds.SIGNAGE",
+        "area"
+      ],
+      "dropped": [
+        "locationCity",
+        "locationDistrict",
+        "clientType"
+      ]
+    }
+  ]
+}
