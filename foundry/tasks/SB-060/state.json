@@ -1,14 +1,36 @@
 {
   "issue": 60,
   "branch": "build/sb-060-assistant-grounding",
-  "status": "LOCAL_CHECK_PASSED",
+  "status": "WAITING_FOR_PRODUCT_DIRECTOR_TEST_SITE",
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "pullRequestState": "DRAFT",
   "paidRunLimit": 3,
-  "paidRuns": [],
+  "paidRuns": [
+    {
+      "runId": 45133957602,
+      "commit": "0d7acc95c7627025ac024b6a8c8aeaa994722e8a",
+      "status": "PASSED",
+      "estimatedUsd": "0.181250200",
+      "zhTwFindingPasses": 3
+    }
+  ],
   "localCheck": {
     "passed": true,
     "tests": 1395,
     "files": 127
+  },
+  "pullRequest": 61,
+  "paidEstimatedUsdTotal": "0.181250200",
+  "paidAcceptancePassed": true,
+  "codeCommit": "0d7acc95c7627025ac024b6a8c8aeaa994722e8a",
+  "ci": {
+    "runId": 45133951190,
+    "commit": "0d7acc95c7627025ac024b6a8c8aeaa994722e8a",
+    "passed": true
+  },
+  "localBrowser": {
+    "passed": true,
+    "mode": "EXTERNAL_TRANSPORT_FAKE",
+    "chatTurns": 9
   }
 }
