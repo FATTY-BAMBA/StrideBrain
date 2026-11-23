@@ -1,3 +1,4 @@
+import { assistantFactLabels } from "@/modules/localization/assistant";
 import { referenceCandidates } from "@/modules/assistant/domain/redaction";
 import { randomUUID } from "node:crypto";
 import { AskAssistant } from "@/modules/assistant/application/ask-assistant";
@@ -5,6 +6,7 @@ import type {
   AssistantConfig,
   AssistantModelPort,
   AssistantSource,
+  ToolCall,
 } from "@/modules/assistant/domain/contracts";
 import { createAssistantServices } from "@/lib/server/assistant-services";
 import { getPrismaClient } from "@/lib/server/prisma";
@@ -40,6 +42,13 @@ async function evaluateQuestion(
     oracle.push(...result.sources);
   }
   const facts = expectedFacts(question, oracle);
+  const labels = assistantFactLabels(question.locale);
+  const labelledExpected = facts.map((fact) => {
+    const key = ["amountBeforeTax", "taxAmount", "totalAmount"].find((key) =>
+      oracle.some((s) => (s.facts.amounts as Record<string, unknown> | undefined)?.[key] === fact),
+    );
+    return key ? `${labels[key]}: ${fact}` : fact;
+  });
   const fake = new FakeAssistantModel([
     ...(question.oracleTools.length
       ? [
@@ -63,13 +72,14 @@ async function evaluateQuestion(
                   ? question.locale === "en"
                     ? "0 quotes are waiting for the client."
                     : "目前有 0 筆報價等待客戶回覆。"
-                  : facts.join(" · "),
+                  : labelledExpected.join("; "),
           sourceIds: question.expected.kind === "DECLINE" ? [] : oracle.map((s) => s.sourceId),
           followUps: [],
         },
       },
     },
   ]);
+  const toolCalls: ToolCall[] = [];
   let rawAnswer: unknown;
   let sentSubjectNames: string[] = [];
   let sentReferenceTexts: string[] = [];
@@ -87,6 +97,7 @@ async function evaluateQuestion(
       ];
       const reply = await (provider ?? fake).generate(input);
       if (reply.result.kind === "ANSWER") rawAnswer = reply.result.answer;
+      else toolCalls.push(...reply.result.calls);
       return reply;
     },
   };
@@ -132,6 +143,13 @@ async function evaluateQuestion(
     id: question.id,
     locale: question.locale,
     required: question.required ?? false,
+    qualityRegression: question.qualityRegression ?? false,
+    namedJobRefusal:
+      outcome.kind === "ANSWER" &&
+      !!outcome.refusal &&
+      (sentSubjectNames.length > 0 ||
+        toolCalls.some((t) => typeof t.arguments.projectKey === "string")),
+    ...(judgement.verdict === "wrong" || usage._count > 3 ? { toolCalls } : {}),
     ...judgement,
     discardReason: outcome.kind === "FALLBACK" ? (outcome.discardReason ?? outcome.reason) : null,
     latencyMs,

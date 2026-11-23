@@ -11,7 +11,10 @@ export type ProjectEntryDTO = Readonly<{
 }>;
 
 export type ProjectListOutcome =
-  | Readonly<{ kind: "AVAILABLE"; projects: readonly ProjectEntryDTO[] }>
+  | Readonly<{
+      kind: "AVAILABLE";
+      projects: readonly (ProjectEntryDTO & { nameEn: string; nameZhTw: string })[];
+    }>
   | Readonly<{ kind: "UNAVAILABLE" }>;
 
 export class ListAuthorizedProjects {
@@ -34,6 +37,8 @@ export class ListAuthorizedProjects {
         .map((row) =>
           Object.freeze({
             businessKey: row.businessKey,
+            nameEn: row.nameEn,
+            nameZhTw: row.nameZhTw,
             name: context.locale === "zh-TW" ? row.nameZhTw : row.nameEn,
             active: row.status === "ACTIVE",
             stage: row.stage,

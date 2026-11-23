@@ -1,3 +1,5 @@
+import { hasWrongAmountLabel } from "./amount-labels";
+import { modelFacts } from "./redaction";
 import { expandFindingSentences } from "./finding-expansion";
 import type { AssistantSource, StructuredAnswer } from "./contracts";
 import type { Locale } from "@/modules/localization/config";
@@ -191,6 +193,7 @@ export function numericTokens(text: string): readonly string[] {
   return (
     normalizeSimpleNumberWords(normalizeDates(withoutEnumerators(text)))
       .replaceAll("−", "-")
+      .replace(/\b(m|ft|cm|mm)2\b/g, "$1²")
       .replace(/([+-])\s*(?:NT\$|TWD|USD|\$)\s*(?=\d)/g, "$1")
       .match(/(?:INVALID_DATE_)?\d{4}-\d{2}-\d{2}|[+-]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?%?/g) ??
     []
@@ -242,6 +245,7 @@ export function parseAnswer(raw: unknown, locale: Locale): StructuredAnswer | nu
 export type AnswerRejection =
   | "ANSWER_SCHEMA"
   | "WORD_LIMIT"
+  | "AMOUNT_LABEL"
   | "TRUNCATED_REFERENCE"
   | "UNKNOWN_SOURCE"
   | "NO_SOURCES"
@@ -270,7 +274,9 @@ export function unsupportedNumericTokens(
 ): string[] {
   const references = sourceIdentities(sources, authorizedReferences);
   const ledger = new Set(
-    numericTokens(withoutReferences(sources.map((s) => factText(s.facts)).join(" "), references)),
+    numericTokens(
+      withoutReferences(sources.map((s) => factText(modelFacts(s.facts))).join(" "), references),
+    ),
   );
   return [
     ...new Set(numericTokens(withoutReferences(text, references)).filter((n) => !ledger.has(n))),
@@ -282,6 +288,21 @@ export function hasUnsupportedNumbers(
   authorizedReferences: readonly string[] = [],
 ): boolean {
   return unsupportedNumericTokens(text, sources, authorizedReferences).length > 0;
+}
+export function hasMislabelledQuoteAmount(
+  text: string,
+  sources: readonly AssistantSource[],
+  locale: Locale,
+  identities: readonly string[] = [],
+): boolean {
+  return hasWrongAmountLabel(
+    normalizeDates(withoutReferences(text, sourceIdentities(sources, identities))).replace(
+      /\b\d{4}-\d{2}-\d{2}\b/g,
+      " ",
+    ),
+    sources,
+    locale,
+  );
 }
 function checkSingleAnswer(
   raw: unknown,
@@ -314,6 +335,8 @@ function checkSingleAnswer(
   const cited = citedSources(sources, sourceIds);
   if (hasUnsupportedNumbers(output, cited, references))
     return { kind: "REJECTED", reason: "UNSUPPORTED_NUMBER" };
+  if (hasMislabelledQuoteAmount(output, cited, locale, references))
+    return { kind: "REJECTED", reason: "AMOUNT_LABEL" };
   // Percent findings retain the shared Home/comparison/chat sentence verbatim.
   const findings = cited
     .flatMap((s) => (Array.isArray(s.facts.findings) ? s.facts.findings : []))

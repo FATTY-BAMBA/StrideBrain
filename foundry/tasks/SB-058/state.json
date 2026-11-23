@@ -1,0 +1,10 @@
+{
+  "issue": 58,
+  "branch": "build/sb-058-assistant-quality",
+  "status": "BUILDING",
+  "delivery": "A",
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "pullRequestState": "DRAFT",
+  "paidRuns": [],
+  "paidRunLimit": 3
+}

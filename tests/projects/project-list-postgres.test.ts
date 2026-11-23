@@ -89,12 +89,21 @@ postgres("Projects entry with real PostgreSQL and signed fixture identities", ()
       if (result.kind !== "AVAILABLE") throw new Error("LIST_REQUIRED");
       expect(result.projects).toContainEqual({
         businessKey: "PRJ-XINYI-026",
+        nameEn: "Xinyi Flagship Renovation",
+        nameZhTw: "信義旗艦店裝修",
         name: "Xinyi Flagship Renovation",
         active: true,
         stage: "QUOTE_REVIEW" as const,
       });
       for (const row of result.projects)
-        expect(Object.keys(row).sort()).toEqual(["active", "businessKey", "name", "stage"]);
+        expect(Object.keys(row).sort()).toEqual([
+          "active",
+          "businessKey",
+          "name",
+          "nameEn",
+          "nameZhTw",
+          "stage",
+        ]);
       expect(projectQueryCount).toBe(1);
       expect(JSON.stringify(result)).not.toMatch(
         /PRJ-NORTH|Northern|amount|actualCost|evidenceCount/,
@@ -105,6 +114,8 @@ postgres("Projects entry with real PostgreSQL and signed fixture identities", ()
     const result = await useCase().execute(await actor("membership_horizon_mei", "zh-TW"));
     expect(result.kind === "AVAILABLE" && result.projects).toContainEqual({
       businessKey: "PRJ-XINYI-026",
+      nameEn: "Xinyi Flagship Renovation",
+      nameZhTw: "信義旗艦店裝修",
       name: "信義旗艦店裝修",
       active: true,
       stage: "QUOTE_REVIEW" as const,

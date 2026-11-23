@@ -1,3 +1,4 @@
+import { assistantFactLabels } from "@/modules/localization/assistant";
 import { beforeAll, afterAll, afterEach, describe, it, expect, vi } from "vitest";
 import type * as AssistantServices from "@/lib/server/assistant-services";
 import type { AssistantModelPort, ToolCall } from "@/modules/assistant/domain/contracts";
@@ -105,7 +106,7 @@ suite("hosted regressions through authorized records and the Home server action"
       question,
       { name: "get_quote_status", arguments: { projectKey: "PRJ-ACTIVE-001" } },
       (facts) =>
-        `${question.includes("Active Design") ? "Active Design Project 01" : "進行中設計專案01"} (${facts.reference}): ${facts.status}`,
+        `${question.includes("Active Design") ? "Active Design Project 01" : "進行中設計專案01"} (${facts[question.includes("Active Design") ? "Job reference" : "專案編號"]}): ${facts[question.includes("Active Design") ? "Quote status" : "報價狀態"]}`,
     );
     expect(turn.ai).toBe(true);
     expect(turn.text).toContain("PRJ-ACTIVE-001");
@@ -143,7 +144,7 @@ suite("hosted regressions through authorized records and the Home server action"
       const { turn } = await ask(
         "哪些報價還在等客戶回覆？",
         { name: "list_awaiting_client", arguments: {} },
-        (facts) => `目前有 ${facts.count} 筆報價等待客戶回覆。`,
+        (facts) => `目前有 ${facts[assistantFactLabels("zh-TW").count!]} 筆報價等待客戶回覆。`,
         true,
       );
       expect(turn).toMatchObject({ ai: true, text: "目前有 0 筆報價等待客戶回覆。" });
@@ -163,6 +164,23 @@ suite("hosted regressions through authorized records and the Home server action"
     expect(turn.text).toContain("沒有目前可用的已儲存比較");
     expect(fake.requests).toHaveLength(1);
   });
+  it.each(["en", "zh-TW"] as const)(
+    "exposes only the Quote-tab millwork display rates in %s",
+    async (locale) => {
+      const tools = createAssistantServices().tools,
+        c = { ...(await db.actor()), locale };
+      const history = await tools.execute(c, {
+        name: "get_past_prices",
+        arguments: { projectKey: "J-2611-R7K3", categoryId: "CUSTOM_MILLWORK" },
+      });
+      expect(history.sources[0]!.facts).toMatchObject({
+        count: 3,
+        displayMedian: "NT$5,833/m²",
+        displayLow: "NT$5,424/m²",
+        displayHigh: "NT$5,902/m²",
+      });
+    },
+  );
   it("resolves only names the member may read", async () => {
     const tools = createAssistantServices().tools;
     for (const member of [

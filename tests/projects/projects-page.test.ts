@@ -135,6 +135,8 @@ describe("Projects entry server page and semantic navigation", () => {
             {
               businessKey: "PROJECT/one?role=admin",
               name: "Allowed project",
+              nameEn: "Allowed project",
+              nameZhTw: "授權專案",
               active: false,
               stage: "COMPLETE" as const,
             },

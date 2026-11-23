@@ -43,6 +43,8 @@ describe("ListAuthorizedProjects authorization before presentation", () => {
         projects: [
           {
             businessKey: xinyi.businessKey,
+            nameEn: xinyi.nameEn,
+            nameZhTw: xinyi.nameZhTw,
             name: locale === "en" ? xinyi.nameEn : xinyi.nameZhTw,
             active: true,
             stage: "QUOTE_REVIEW" as const,
@@ -106,6 +108,8 @@ describe("ListAuthorizedProjects authorization before presentation", () => {
       projects: [
         {
           businessKey: xinyi.businessKey,
+          nameEn: xinyi.nameEn,
+          nameZhTw: xinyi.nameZhTw,
           name: xinyi.nameEn,
           active: true,
           stage: "QUOTE_REVIEW" as const,
@@ -127,6 +131,8 @@ describe("ListAuthorizedProjects authorization before presentation", () => {
       projects: [
         {
           businessKey: xinyi.businessKey,
+          nameEn: xinyi.nameEn,
+          nameZhTw: xinyi.nameZhTw,
           name: xinyi.nameEn,
           active: true,
           stage: "QUOTE_REVIEW" as const,

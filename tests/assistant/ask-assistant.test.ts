@@ -375,6 +375,65 @@ describe("bounded read-only assistant", () => {
       discardReason: "SUBJECT_MISMATCH",
     });
   });
+  it.each(["UNAVAILABLE", "EXCLUDED"])(
+    "ends a named-job %s after the first model call",
+    async (status) => {
+      const request = {
+        usage,
+        result: {
+          kind: "TOOLS" as const,
+          calls: [{ name: "get_quote_status" as const, arguments: { projectKey: "J" } }],
+        },
+      };
+      const f = setup([request]);
+      f.tools.execute.mockResolvedValue({ status, sources: [] });
+      f.tools.resolveSubjects.mockResolvedValue({
+        kind: "AVAILABLE",
+        named: [{ projectKey: "J", names: ["Job"] }],
+        projects: [{ projectKey: "J", names: ["Job"] }],
+      });
+      expect(await f.service.execute(jobContext(), { question: "Job quote total?" })).toMatchObject(
+        { kind: "ANSWER", refusal: status },
+      );
+      expect(f.model.requests).toHaveLength(1);
+    },
+  );
+  it("offers only submit_answer after a repeated call and rechecks cached-source access", async () => {
+    const f = setup([call, call, answer()]);
+    expect(await f.service.execute(jobContext(), { question: "Jobs?" })).toMatchObject({
+      kind: "ANSWER",
+    });
+    expect(f.model.requests[2]!.tools).toEqual([]);
+    expect(f.tools.execute).toHaveBeenCalledTimes(1);
+    const denied = setup([call, call, answer()]);
+    denied.tools.canSend
+      .mockResolvedValueOnce(true)
+      .mockResolvedValueOnce(true)
+      .mockResolvedValueOnce(false);
+    expect(await denied.service.execute(jobContext(), { question: "Jobs?" })).toMatchObject({
+      kind: "FALLBACK",
+      reason: "ACCESS_CHANGED",
+    });
+    expect(denied.model.requests).toHaveLength(2);
+  });
+  it("allows a final answer on call five while retaining the six-tool safety limit", async () => {
+    const f = setup([
+      ...Array.from({ length: 4 }, (_, offset) => ({
+        usage,
+        result: {
+          kind: "TOOLS" as const,
+          calls: [{ name: "list_jobs" as const, arguments: { offset } }],
+        },
+      })),
+      answer(),
+    ]);
+    expect(await f.service.execute(jobContext(), { question: "Jobs?" })).toMatchObject({
+      kind: "ANSWER",
+    });
+    expect(f.model.requests).toHaveLength(5);
+    expect(f.model.requests[4]!.tools).toEqual([]);
+    expect(config.maxToolCalls).toBe(6);
+  });
   it("reuses identical tool arguments regardless of their key order", async () => {
     const calls = [
       { name: "list_jobs" as const, arguments: { query: "Job", offset: 0 } },

@@ -85,6 +85,18 @@ export function modelFacts(value: unknown): unknown {
             v !== undefined &&
             !/(?:Id|Ids)$/.test(key) &&
             ![
+              "median",
+              "low",
+              "high",
+              "quoteBeforeTax",
+              "actualCost",
+              "difference",
+              "currency",
+              "priceBasis",
+              "priceType",
+            ].includes(key) &&
+            !(key === "unit" && "median" in value) &&
+            ![
               "observationType",
               "authorityState",
               "basis",

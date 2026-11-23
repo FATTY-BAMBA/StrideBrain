@@ -10,14 +10,14 @@ import { runEvaluationQuestion } from "./run-evaluation";
 import { evaluateAnswer, type EvaluationQuestion } from "./evaluation";
 import { assistantConfig } from "@/modules/assistant/infrastructure/config";
 describe("evaluation contract", () => {
-  it("contains twenty core English and twenty core zh-TW cases plus eight hosted regressions with explicit facts or refusals", () => {
+  it("contains twenty core English and twenty core zh-TW cases plus eight hosted regressions and two count/range cases with explicit facts or refusals", () => {
     expect(
       questions.filter((q) => q.locale === "en" && !("required" in q && q.required)),
     ).toHaveLength(20);
     expect(
       questions.filter((q) => q.locale === "zh-TW" && !("required" in q && q.required)),
     ).toHaveLength(20);
-    expect(questions.filter((q) => "required" in q && q.required)).toHaveLength(8);
+    expect(questions.filter((q) => "required" in q && q.required)).toHaveLength(10);
     expect(
       questions.every(
         (q) =>
@@ -86,7 +86,7 @@ describe("evaluation contract", () => {
             "J-2611-R7K3",
           );
           expect(data.sources).toHaveLength(1);
-          expect(data.sources[0].facts.count).toBe(0);
+          expect(data.sources[0].facts["Record count"]).toBe(0);
           return {
             usage: { inputTokens: 0, outputTokens: 0 },
             result: {
