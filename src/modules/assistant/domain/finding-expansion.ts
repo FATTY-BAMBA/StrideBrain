@@ -34,9 +34,9 @@ export function expandFindingSentences(
       blocks.push({ list, text: line });
     else previous.text += `\n${line}`;
   }
-  // A heading carries through comma-separated clauses, but never past an item/segment boundary.
+  // List headings carry through every sentence of the item. Other text resets at segment ends.
   const segments = blocks.flatMap((b) =>
-    b.text.split(/(?<=[;；。！？!?])\s*|(?<=[^\d]\.)\s+(?=\S)/u),
+    b.list ? [b.text] : b.text.split(/(?<=[;；。！？!?])\s*|(?<=[^\d]\.)\s+(?=\S)/u),
   );
   const categories = [...new Set(findings.flatMap((f) => (f.category ? [f.category] : [])))];
   const expanded: string[] = [];

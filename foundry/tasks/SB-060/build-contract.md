@@ -2,11 +2,11 @@
 
 ## Amount labels
 
-A clause switches to labels after amounts only when its first cited amount has no preceding label and has a following label before the next amount. Every amount in that clause then takes its following label. Other clauses retain the existing reading. Unsupported values and all listed security mislabels still reject; values are never rewritten.
+Each amount takes the last label before it that no earlier amount took. Only when none exists may it take the first following label, and only if that label is no farther from this amount than from the next number. Taken following labels cannot be reused. Missing or wrong labels reject; values are never rewritten. The review replaces the earlier clause-wide mode.
 
 ## Finding items
 
-Carry an exact sent category label (case-insensitive) through the clauses of a list item or semicolon/full-stop segment. Natural Chinese attachment to the exact label is recognized without category aliases. Reset context at item/segment boundaries. Require exactly one cited saved finding for category, typed kind and percentage; percentage-only fallback still requires uniqueness when no category is stated. Replace the whole item/segment with complete saved sentences; saved text supplies the direction and wording. None or multiple matches reject.
+Carry an exact sent category label (case-insensitive) through every sentence of a numbered or bullet list item. Keep each list item as one segment. Outside lists, split at semicolons and sentence ends and reset category context there. Natural Chinese attachment to the exact label is recognized without category aliases. Require exactly one cited saved finding for category, typed kind and percentage; percentage-only fallback still requires uniqueness when no category is stated. Replace the whole item/segment with complete saved sentences; saved text supplies the direction and wording. None or multiple matches reject.
 
 ## Acceptance state
 

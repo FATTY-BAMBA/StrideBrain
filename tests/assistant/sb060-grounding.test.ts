@@ -46,6 +46,11 @@ describe("SB-060 amount-label order", () => {
     ["Tax NT$555,510 and amount before tax NT$11,110,200; NT$11,665,710 total", "en"],
     ["NT$555,510 營業稅及 NT$11,110,200 未稅金額", "zh-TW"],
     ["總額 NT$11,665,710（NT$555,510 稅額及 NT$11,110,200 未稅金額）", "zh-TW"],
+    ["NT$555,510 tax and before tax NT$11,110,200", "en"],
+    [
+      "The total quote amount is NT$11,665,710 with NT$555,510 tax and NT$11,110,200 before tax.",
+      "en",
+    ],
   ] as const)("accepts each amount's label in its clause: %s", (text, locale) => {
     expect(check(text, locale)).toMatchObject({ kind: "ACCEPTED", answer: { text } });
   });
@@ -59,8 +64,12 @@ describe("SB-060 amount-label order", () => {
     ["with NT$11,110,200 tax and NT$555,510 before tax", "en"],
     ["NT$555,510 tax and NT$11,665,710 before tax", "en"],
     ["NT$555,510 tax and NT$11,110,200", "en"],
-    ["NT$555,510 tax and before tax NT$11,110,200", "en"],
     ["NT$555,510 稅額及 NT$11,665,710 未稅金額", "zh-TW"],
+    ["NT$555,510 tax and before tax NT$11,665,710 total", "en"],
+    ["NT$555,510 tax and a before tax figure of NT$11,665,710 in total", "en"],
+    ["NT$555,510 tax and total NT$11,110,200 before tax and before tax NT$11,665,710 total", "en"],
+    ["NT$555,510 營業稅及未稅金額 NT$11,665,710 總計", "zh-TW"],
+    ["NT$555,510 and tax NT$11,110,200 before tax", "en"],
   ] as const)(
     "retains the security gate and never borrows a previous label: %s",
     (text, locale) => {
@@ -94,6 +103,47 @@ const saved = {
   typedFactPaths: ["findings.*.text", "findings.*.category"],
 };
 describe("SB-060 finding category scope", () => {
+  it.each(["1.", "-"])("keeps the category across sentences in a zh-TW %s list item", (marker) => {
+    expect(
+      check(`${marker} 照明與電氣：過往已核對實際成本紀錄不足。報價高 9.4%`, "zh-TW", saved),
+    ).toMatchObject({
+      kind: "ACCEPTED",
+      answer: { text: findings[2]!.text },
+    });
+  });
+  it.each(["1.", "-"])(
+    "keeps the category across sentences in an English %s list item",
+    (marker) => {
+      const sentence = "Lighting and electrical: quoted price is 9.4% above past quoted prices.";
+      const s = {
+        ...saved,
+        facts: {
+          findings: [
+            {
+              ...findings[0]!,
+              category: "Demolition",
+              text: "Demolition: forecast cost is 9.4% above past reconciled actual costs.",
+            },
+            {
+              category: "Lighting and electrical",
+              claimKind: "CATEGORY_QUOTED_VARIANCE",
+              text: sentence,
+            },
+          ],
+        },
+      };
+      expect(
+        check(
+          `${marker} Lighting and electrical: past reconciled actual cost records are insufficient. Quoted price is 9.4% above past quoted prices.`,
+          "en",
+          s,
+        ),
+      ).toMatchObject({
+        kind: "ACCEPTED",
+        answer: { text: sentence },
+      });
+    },
+  );
   it.each([
     `${demolition}的預估成本高 9.4%，報價高 7.1%；${lighting}報價高 9.4%`,
     `1. **${demolition}**：預估成本高 9.4%，\n報價高 7.1%\n2. ${lighting}：報價高 9.4%`,

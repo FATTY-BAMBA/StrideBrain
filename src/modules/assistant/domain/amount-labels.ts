@@ -55,17 +55,8 @@ export function hasWrongAmountLabel(
       end: m.index + m[0].length,
       field: labels.find((l) => l.label.toLowerCase() === m[0].toLowerCase())!.field,
     }));
-    const firstAmountIndex = occurrences.findIndex((m) => amounts.has(canonical(m[0])));
-    const firstAmount = occurrences[firstAmountIndex];
-    // In “with $5 tax and $100 before tax”, tax belongs to $5, never to $100.
-    const labelsFollowAmounts =
-      firstAmount !== undefined &&
-      !tags.some((t) => t.end <= firstAmount.index) &&
-      tags.some(
-        (t) =>
-          t.index >= firstAmount.index + firstAmount[0].length &&
-          t.end <= (occurrences[firstAmountIndex + 1]?.index ?? clause.length),
-      );
+    // A following label cannot be borrowed again by the next amount.
+    const taken = new Set<number>();
     for (let i = 0; i < occurrences.length; i++) {
       const m = occurrences[i]!,
         key = canonical(m[0]),
@@ -75,9 +66,19 @@ export function hasWrongAmountLabel(
         continue;
       const previousEnd = i ? occurrences[i - 1]!.index + occurrences[i - 1]![0].length : 0;
       const nextStart = occurrences[i + 1]?.index ?? clause.length;
-      const before = tags.filter((t) => t.index >= previousEnd && t.end <= m.index).at(-1);
-      const after = tags.find((t) => t.index >= m.index + m[0].length && t.end <= nextStart);
-      const label = labelsFollowAmounts ? after : (before ?? after);
+      const amountEnd = m.index + m[0].length;
+      const before = tags
+        .filter((t) => t.index >= previousEnd && t.end <= m.index && !taken.has(t.index))
+        .at(-1);
+      let label = before;
+      if (!label) {
+        const after = tags.find((t) => t.index >= amountEnd && t.end <= nextStart);
+        const next = occurrences[i + 1];
+        if (after && (!next || after.index - amountEnd <= next.index - after.end)) {
+          label = after;
+          taken.add(after.index);
+        }
+      }
       if (!label || !allowed.has(label.field)) return true;
     }
   }
