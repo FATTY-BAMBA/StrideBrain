@@ -58,6 +58,20 @@ export interface AssistantModelPort {
     }>,
   ): Promise<ModelReply>;
 }
+/** A separate capability on the same model adapter; no read tools or tenant data. */
+export interface JobDraftModelPort {
+  draftJob(
+    input: Readonly<{
+      instructions: string;
+      text: string;
+      choices: Readonly<
+        Record<string, readonly Readonly<{ value: string; en: string; zhTw: string }>[]>
+      >;
+      maxOutputTokens: number;
+      signal: AbortSignal;
+    }>,
+  ): Promise<Readonly<{ draft: unknown; usage: TokenUsage }>>;
+}
 export type FallbackReason =
   | "DISABLED"
   | "NO_KEY"

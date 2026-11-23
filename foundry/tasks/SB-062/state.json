@@ -1,0 +1,10 @@
+{
+  "issue": 62,
+  "branch": "build/sb-062-job-draft",
+  "baseCommit": "1fe84af7ad08827ce9486c78666812cb360d9bde",
+  "status": "IMPLEMENTING_A",
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "pullRequestState": "DRAFT",
+  "paidRunLimit": 3,
+  "paidRuns": []
+}

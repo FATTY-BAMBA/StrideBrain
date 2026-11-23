@@ -1,0 +1,172 @@
+import { CLIENT_TYPES, JOB_SUBTYPES, SCOPE_CATEGORIES } from "@/modules/projects/domain/job-input";
+import { draftArea } from "@/modules/projects/domain/draft-area";
+import { record } from "./grounding";
+
+export const draftFields = [
+  "name",
+  "clientName",
+  "clientType",
+  "subtype",
+  "scopeCategoryIds",
+  "locationCity",
+  "locationDistrict",
+  "area",
+] as const;
+export type DraftField = (typeof draftFields)[number];
+export type DraftTextField = Exclude<DraftField, "scopeCategoryIds" | "area">;
+export type SupportedJobDraft = Readonly<{
+  values: Partial<Record<DraftTextField | "areaQuantity", string>>;
+  scopeCategoryIds: readonly string[];
+  area?: Readonly<{ digits: string; unit: string; squareMetres: string }>;
+  kept: readonly string[];
+  dropped: readonly string[];
+}>;
+export type JobDraft = SupportedJobDraft &
+  Readonly<{
+    clientMode: "existing" | "new";
+    clientBusinessKey: string;
+  }>;
+
+export const normalizeDraftText = (text: string) =>
+  text.normalize("NFKC").replace(/\s+/gu, " ").trim();
+const exact = (maxLength: number, choices?: readonly string[]) => ({
+  type: ["object", "null"],
+  properties: {
+    value: { type: "string", maxLength, ...(choices ? { enum: choices } : {}) },
+    quote: { type: "string", minLength: 1, maxLength: 1000 },
+  },
+  required: ["value", "quote"],
+  additionalProperties: false,
+});
+export const jobDraftSchema = {
+  type: "object",
+  properties: {
+    name: exact(200),
+    clientName: exact(200),
+    clientType: exact(128, CLIENT_TYPES),
+    subtype: exact(128, JOB_SUBTYPES),
+    locationCity: exact(120),
+    locationDistrict: exact(120),
+    scopeCategoryIds: {
+      type: "array",
+      maxItems: SCOPE_CATEGORIES.length,
+      items: exact(128, SCOPE_CATEGORIES),
+    },
+    area: {
+      type: ["object", "null"],
+      properties: {
+        digits: { type: "string", maxLength: 19 },
+        unit: { type: "string", maxLength: 20 },
+        quote: { type: "string", minLength: 1, maxLength: 1000 },
+      },
+      required: ["digits", "unit", "quote"],
+      additionalProperties: false,
+    },
+  },
+  required: draftFields,
+  additionalProperties: false,
+};
+
+/** Invalid fields are dropped independently. Only quotes present in the redacted input count. */
+export function supportJobDraft(text: string, raw: unknown): SupportedJobDraft | null {
+  const input = record(raw);
+  if (
+    !input ||
+    Object.keys(input).some((k) => !draftFields.includes(k as DraftField)) ||
+    draftFields.some((k) => !(k in input)) ||
+    !Array.isArray(input.scopeCategoryIds) ||
+    input.scopeCategoryIds.length > SCOPE_CATEGORIES.length
+  )
+    return null;
+  const normalized = normalizeDraftText(text);
+  const kept: string[] = [],
+    dropped: string[] = [];
+  const values: SupportedJobDraft["values"] = {};
+  function supported(raw: unknown, max: number, choices?: readonly string[]): string | null {
+    const item = record(raw);
+    if (
+      !item ||
+      Object.keys(item).some((k) => !["value", "quote"].includes(k)) ||
+      typeof item.value !== "string" ||
+      typeof item.quote !== "string"
+    )
+      return null;
+    const quote = normalizeDraftText(item.quote),
+      value = normalizeDraftText(item.value);
+    if (
+      !quote ||
+      quote.includes("[removed]") ||
+      !normalized.includes(quote) ||
+      !value ||
+      value.length > max ||
+      /[\u0000-\u001f\u007f]/u.test(value)
+    )
+      return null;
+    return choices ? (choices.includes(value) ? value : null) : value === quote ? quote : null;
+  }
+  for (const field of [
+    "name",
+    "clientName",
+    "locationCity",
+    "locationDistrict",
+    "clientType",
+    "subtype",
+  ] as const) {
+    const value = supported(
+      input[field],
+      field.startsWith("location") ? 120 : 200,
+      field === "clientType" ? CLIENT_TYPES : field === "subtype" ? JOB_SUBTYPES : undefined,
+    );
+    if (value) {
+      values[field] = value;
+      kept.push(field);
+    } else dropped.push(field);
+  }
+  const scopeCategoryIds: string[] = [];
+  for (const [i, item] of input.scopeCategoryIds.entries()) {
+    const value = supported(item, 128, SCOPE_CATEGORIES);
+    if (value && !scopeCategoryIds.includes(value)) {
+      scopeCategoryIds.push(value);
+      kept.push(`scopeCategoryIds.${value}`);
+    } else dropped.push(`scopeCategoryIds.${i}`);
+  }
+  if (!input.scopeCategoryIds.length) dropped.push("scopeCategoryIds");
+  const rawArea = record(input.area);
+  let area: SupportedJobDraft["area"];
+  if (
+    rawArea &&
+    Object.keys(rawArea).every((k) => ["digits", "unit", "quote"].includes(k)) &&
+    typeof rawArea.digits === "string" &&
+    typeof rawArea.unit === "string" &&
+    typeof rawArea.quote === "string"
+  ) {
+    const quote = normalizeDraftText(rawArea.quote),
+      digits = normalizeDraftText(rawArea.digits),
+      unit = normalizeDraftText(rawArea.unit);
+    const squareMetres = draftArea(rawArea.digits, rawArea.unit);
+    if (
+      squareMetres &&
+      quote &&
+      !quote.includes("[removed]") &&
+      normalized.includes(quote) &&
+      [digits + unit, digits + " " + unit].includes(quote)
+    ) {
+      area = { digits: rawArea.digits, unit: rawArea.unit, squareMetres };
+      values.areaQuantity = squareMetres;
+    }
+  }
+  if (area) kept.push("area");
+  else dropped.push("area");
+  return { values, scopeCategoryIds, ...(area ? { area } : {}), kept, dropped };
+}
+
+/** The caller supplies active clients of the authorized firm; none are sent to the model. */
+export function matchDraftClient(
+  name: string | undefined,
+  clients: readonly { businessKey: string; nameEn: string; nameZhTw: string }[],
+): string | null {
+  if (!name) return null;
+  const key = (s: string) => s.normalize("NFKC").trim().toLowerCase();
+  const matches = clients.filter((c) => [c.nameEn, c.nameZhTw].some((n) => key(n) === key(name)));
+  return matches.length === 1 ? matches[0]!.businessKey : null;
+}
