@@ -36,6 +36,10 @@ describe("SB-058 labelled facts", () => {
     ["Amount before tax NT$11,665,710", "en"],
     ["Tax: NT$11,110,200", "en"],
     ["NT$11,665,710", "en"],
+    ["The quote totals NT$11,110,200.", "en"],
+    ["Including tax of NT$11,665,710", "en"],
+    ["Including tax of NT$11,110,200", "en"],
+    ["Total including tax: NT$555,510", "en"],
   ] as const)("rejects incorrect or missing amount labels: %s", (text, locale) => {
     expect(checkAnswer(raw(text), [quote], locale)).toEqual({
       kind: "REJECTED",
@@ -48,6 +52,11 @@ describe("SB-058 labelled facts", () => {
     ["未稅金額 NT$11,110,200；總計 NT$11,665,710；營業稅 NT$555,510", "zh-TW"],
     ["Amount before tax: NT$11,110,200; Tax: NT$555,510; Total: NT$11,665,710", "en"],
     ["The quote total (including tax) is NT$11,665,710.", "en"],
+    ["The quote totals NT$11,665,710.", "en"],
+    [
+      "Total NT$11,665,710 (including tax of NT$555,510 and an amount before tax of NT$11,110,200).",
+      "en",
+    ],
     [
       "The current quote before tax is NT$11,110,200, with tax of NT$555,510, totaling NT$11,665,710.",
       "en",

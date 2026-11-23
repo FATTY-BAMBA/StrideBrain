@@ -4,7 +4,7 @@
     "Both languages: all three quote values use screen labels",
     "Both languages: millwork count 3, median NT$5,833/m², range NT$5,424/m²–NT$5,902/m²",
     "Both languages: work stage list from shared Home filter",
-    "Viewer refusal uses one model call; every owner answer uses two calls",
+    "Viewer refusal and both empty waiting lists use one model call; other answers use two",
     "No comparison/economics records created by assistant questions",
     "No browser page errors"
   ],
@@ -23,6 +23,10 @@
     },
     {
       "outcome": "ANSWERED",
+      "modelCalls": 1
+    },
+    {
+      "outcome": "ANSWERED",
       "modelCalls": 2
     },
     {
@@ -36,15 +40,19 @@
     {
       "outcome": "ANSWERED",
       "modelCalls": 1
+    },
+    {
+      "outcome": "ANSWERED",
+      "modelCalls": 1
     }
   ],
   "before": {
-    "comparisons": 5,
-    "economics": 5
+    "comparisons": 6,
+    "economics": 6
   },
   "after": {
-    "comparisons": 5,
-    "economics": 5
+    "comparisons": 6,
+    "economics": 6
   },
   "errors": []
 }
