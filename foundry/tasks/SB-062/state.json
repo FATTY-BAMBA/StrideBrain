@@ -2,9 +2,20 @@
   "issue": 62,
   "branch": "build/sb-062-job-draft",
   "baseCommit": "1fe84af7ad08827ce9486c78666812cb360d9bde",
-  "status": "IMPLEMENTING_A",
+  "status": "LOCAL_VERIFIED_PAID_PENDING",
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "pullRequestState": "DRAFT",
   "paidRunLimit": 3,
-  "paidRuns": []
+  "paidRuns": [],
+  "creationStage": "QUOTE_REVIEW",
+  "localCheck": {
+    "passed": true,
+    "tests": 1444,
+    "files": 134
+  },
+  "localBrowser": {
+    "passed": true,
+    "mode": "EXTERNAL_TRANSPORT_FAKE",
+    "draftCalls": 8
+  }
 }

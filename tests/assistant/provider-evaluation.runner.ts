@@ -10,6 +10,7 @@ import { runEvaluationQuestion } from "./run-evaluation";
 import { evaluationLogRow, type EvaluationQuestion } from "./evaluation";
 import { assistantConfig } from "@/modules/assistant/infrastructure/config";
 import { GeminiAssistantModel } from "@/modules/assistant/infrastructure/gemini-model";
+import { runJobDraftCase, runJobDraftRounds } from "./job-draft-evaluation";
 it("evaluates the explicitly configured paid provider on disposable seed data", async () => {
   if (
     process.env.STRIDEBRAIN_AI_EVAL !== "true" ||
@@ -34,7 +35,34 @@ it("evaluates the explicitly configured paid provider on disposable seed data", 
       await db.close();
     }
   });
-  const { passed } = stability;
+  const draftDb = await assistantDatabase();
+  let jobDrafts;
+  try {
+    jobDrafts = await runJobDraftRounds(async (test, round) => {
+      const row = await runJobDraftCase(draftDb, test, config, model);
+      // Artifact carries fields; workflow logs contain only metering and verdict metadata.
+      console.log(
+        JSON.stringify({
+          set: "JOB_DRAFT",
+          round,
+          id: row.id,
+          locale: row.locale,
+          passed: row.passed,
+          calls: row.calls,
+          inputTokens: row.inputTokens,
+          outputTokens: row.outputTokens,
+          estimatedUsd: row.estimatedUsd,
+        }),
+      );
+      return row;
+    });
+  } finally {
+    await draftDb.close();
+  }
+  const questionGatePassed =
+    stability.passed &&
+    (stability.perQuestion.find((q) => q.id === "zh-TW-finding")?.passes ?? 0) >= 2;
+  const passed = questionGatePassed && jobDrafts.passed;
   const report = {
     mode: "PAID_PROVIDER",
     provider: config.provider,
@@ -43,6 +71,9 @@ it("evaluates the explicitly configured paid provider on disposable seed data", 
     outputUsdPerMillion: config.outputUsdPerMillion,
     generatedAt: new Date().toISOString(),
     ...stability,
+    questionGatePassed,
+    jobDrafts,
+    passed,
     recommendation: passed
       ? null
       : "Below the issue's pass mark; evaluate the next model tier. Do not tune prompts to these questions.",

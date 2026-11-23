@@ -4,7 +4,7 @@ import { homeDeskCopy } from "./home-desk";
 import type { Locale } from "./config";
 const en = {
   title: "AI preferences",
-  enabled: "Use AI for record questions",
+  enabled: "Use AI for questions and job drafts",
   exclude: "Keep this job out of AI",
   save: "Save",
   saving: "Saving…",
@@ -32,11 +32,11 @@ const en = {
   careDescription:
     "Planned: LINE first, with other channels later. Staff review and approve drafted replies before sending.",
   dataIntro:
-    "StrideBrain can use Google Gemini, on its paid API service, to answer questions from your firm's records.",
+    "StrideBrain can use Google Gemini, on its paid API service, to answer questions from your firm's records and fill new-job forms for you to confirm.",
   dataSent:
-    "When AI is enabled, Google receives your question, bounded recent questions for context, and only the authorized record details needed for this turn. Each tool call checks your access again.",
+    "When AI is enabled, Google receives your question, bounded recent questions for context, and only the authorized record details needed for this turn. Each tool call checks your access again. For job drafts, only your redacted text and the fixed form choices are sent; client matching stays on the server.",
   dataNever:
-    "Excluded jobs, inaccessible records, passwords and credentials are never included in record results. Taiwan ID numbers, bank account and card numbers, and password fields are removed before sending. Conversations are not stored by StrideBrain; usage logs contain metadata, not questions or answers.",
+    "Excluded jobs, inaccessible records, passwords and credentials are never included in record results. Taiwan ID numbers, bank account and card numbers, and password fields are removed before sending. Conversations and unconfirmed job drafts are not stored by StrideBrain; usage logs contain metadata, not questions or answers.",
   dataTraining:
     "Under Google's paid API terms, prompts and responses are not used to train or improve its models. Google may retain limited data for abuse monitoring under those terms. Google may process this content outside Taiwan.",
   dataOff:
@@ -46,7 +46,7 @@ const en = {
 };
 const zh: typeof en = {
   title: "AI 偏好設定",
-  enabled: "使用 AI 回答公司紀錄問題",
+  enabled: "使用 AI 回答問題及填入專案表單",
   exclude: "不提供此專案給 AI",
   save: "儲存",
   saving: "儲存中…",
@@ -70,11 +70,12 @@ const zh: typeof en = {
   customerCare: "客戶服務",
   knowledgeDescription: "規劃中：上傳公司文件與過往報價，根據資料提問，並追蹤負責人與審查日期。",
   careDescription: "規劃中：先支援 LINE，之後加入其他管道。回覆草稿由員工審查核准後才會傳送。",
-  dataIntro: "StrideBrain 可透過 Google Gemini 的付費 API 服務，根據公司的紀錄回答問題。",
+  dataIntro:
+    "StrideBrain 可透過 Google Gemini 的付費 API 服務，根據公司的紀錄回答問題，並填入新專案表單供您確認。",
   dataSent:
-    "開啟 AI 時，Google 會收到您的問題、有限的近期問題脈絡，以及本次回答所需且您有權查看的紀錄內容。每次工具呼叫都會重新檢查存取權限。",
+    "開啟 AI 時，Google 會收到您的問題、有限的近期問題脈絡，以及本次回答所需且您有權查看的紀錄內容。每次工具呼叫都會重新檢查存取權限。填入專案表單時，只會傳送已遮蔽敏感資訊的文字與固定欄位選項；客戶比對留在伺服器端進行。",
   dataNever:
-    "紀錄結果不會包含已排除的專案、無權查看的紀錄、密碼或憑證。傳送前會移除臺灣身分證字號、銀行帳號、卡號及密碼欄位。StrideBrain 不儲存對話；用量紀錄僅含中繼資料，不含問題或回答。",
+    "紀錄結果不會包含已排除的專案、無權查看的紀錄、密碼或憑證。傳送前會移除臺灣身分證字號、銀行帳號、卡號及密碼欄位。StrideBrain 不儲存對話或尚未確認的專案草稿；用量紀錄僅含中繼資料，不含問題或回答。",
   dataTraining:
     "依 Google 付費 API 條款，問題與回答不會用於訓練或改善其模型。Google 可能依條款保留有限資料以監控濫用。Google 可能在臺灣以外地區處理這些內容。",
   dataOff:

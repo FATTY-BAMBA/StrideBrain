@@ -1,0 +1,130 @@
+{
+  "mode": "LOCAL_PRODUCTION_WITH_EXTERNAL_TRANSPORT_FAKE",
+  "checks": [
+    "Home zh-TW draft: quoted fields, existing client, 120 坪 conversion, generated reference, AI marks; no write until confirm; missing city blocks; double click creates one Quote-review job and audit",
+    "New-job page accepts a 600+ character redacted message, clears marks on edits, retains edits after invalid output, leaves missing or written-out area empty, and shows empty forms for non-job text and record-extraction instructions",
+    "Viewer and finance see no Home draft button and no new-job form",
+    "Organization AI off hides both entry points and retains the ordinary form",
+    "With organization AI off, the ordinary form creates a job through the unchanged action with no model/usage call"
+  ],
+  "usage": [
+    {
+      "outcome": "ANSWERED",
+      "inputTokens": 100,
+      "outputTokens": 20,
+      "toolNames": [],
+      "sourceIds": [],
+      "rowsPerCall": 1
+    },
+    {
+      "outcome": "ANSWERED",
+      "inputTokens": 100,
+      "outputTokens": 20,
+      "toolNames": [],
+      "sourceIds": [],
+      "rowsPerCall": 1
+    },
+    {
+      "outcome": "ANSWERED",
+      "inputTokens": 100,
+      "outputTokens": 20,
+      "toolNames": [],
+      "sourceIds": [],
+      "rowsPerCall": 1
+    },
+    {
+      "outcome": "FALLBACK_INVALID_OUTPUT",
+      "inputTokens": 100,
+      "outputTokens": 20,
+      "toolNames": [],
+      "sourceIds": [],
+      "rowsPerCall": 1
+    },
+    {
+      "outcome": "ANSWERED",
+      "inputTokens": 100,
+      "outputTokens": 20,
+      "toolNames": [],
+      "sourceIds": [],
+      "rowsPerCall": 1
+    },
+    {
+      "outcome": "ANSWERED",
+      "inputTokens": 100,
+      "outputTokens": 20,
+      "toolNames": [],
+      "sourceIds": [],
+      "rowsPerCall": 1
+    },
+    {
+      "outcome": "ANSWERED",
+      "inputTokens": 100,
+      "outputTokens": 20,
+      "toolNames": [],
+      "sourceIds": [],
+      "rowsPerCall": 1
+    },
+    {
+      "outcome": "ANSWERED",
+      "inputTokens": 100,
+      "outputTokens": 20,
+      "toolNames": [],
+      "sourceIds": [],
+      "rowsPerCall": 1
+    }
+  ],
+  "transport": [
+    {
+      "singleForcedDraft": true,
+      "redacted": true,
+      "noClientRecords": true,
+      "inputCharacters": 34
+    },
+    {
+      "singleForcedDraft": true,
+      "redacted": true,
+      "noClientRecords": true,
+      "inputCharacters": 112
+    },
+    {
+      "singleForcedDraft": true,
+      "redacted": true,
+      "noClientRecords": true,
+      "inputCharacters": 622
+    },
+    {
+      "singleForcedDraft": true,
+      "redacted": true,
+      "noClientRecords": true,
+      "inputCharacters": 23
+    },
+    {
+      "singleForcedDraft": true,
+      "redacted": true,
+      "noClientRecords": true,
+      "inputCharacters": 28
+    },
+    {
+      "singleForcedDraft": true,
+      "redacted": true,
+      "noClientRecords": true,
+      "inputCharacters": 7
+    },
+    {
+      "singleForcedDraft": true,
+      "redacted": true,
+      "noClientRecords": true,
+      "inputCharacters": 6
+    },
+    {
+      "singleForcedDraft": true,
+      "redacted": true,
+      "noClientRecords": true,
+      "inputCharacters": 22
+    }
+  ],
+  "before": 31,
+  "after": 33,
+  "errors": [],
+  "manualOffCreate": true
+}

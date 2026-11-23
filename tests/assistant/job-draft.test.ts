@@ -43,6 +43,11 @@ function setup(draft: unknown = { ...emptyDraft(), name: quoted("旗艦店裝修
   return { model, usage, clients, service: new DraftJob(model, config, usage, clients) };
 }
 describe("draft support and area", () => {
+  it("does not take a substring of larger area digits, but accepts sentence punctuation", () => {
+    const raw = { ...emptyDraft(), area: { digits: "20", unit: "m2", quote: "20 m2" } };
+    expect(supportJobDraft("120 m2.", raw)?.values.areaQuantity).toBeUndefined();
+    expect(supportJobDraft("20 m2.", raw)?.values.areaQuantity).toBe("20");
+  });
   it.each([
     ["120", "坪", "396.694"],
     ["１２０", "坪", "396.694"],
