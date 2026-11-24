@@ -493,3 +493,35 @@ describe("firm-unit past quoted rates", () => {
     },
   );
 });
+
+it("never sends a site address or section/line text from a quote read to the model", async () => {
+  const f = setup();
+  f.services.quote.execute.mockResolvedValue({
+    kind: "AVAILABLE",
+    status: "DRAFT",
+    amounts: {
+      basis: "DRAFT",
+      currency: "TWD",
+      amountBeforeTax: "100",
+      taxAmount: "5",
+      totalAmount: "105",
+    },
+    siteAddress: "PRIVATE_SITE_ADDRESS",
+    document: {
+      sections: [
+        {
+          title: "PRIVATE_SECTION",
+          lines: [{ description: "PRIVATE_DESCRIPTION", remark: "PRIVATE_REMARK" }],
+        },
+      ],
+    },
+    issued: null,
+  });
+  const result = await f.tools.execute(jobContext(), {
+    name: "get_quote_status",
+    arguments: { projectKey: "J" },
+  });
+  expect(result.status).toBe("OK");
+  expect(JSON.stringify(result)).not.toMatch(/PRIVATE_|siteAddress|description|remark|sections/);
+  expect(JSON.stringify(result)).toContain("NT$105");
+});

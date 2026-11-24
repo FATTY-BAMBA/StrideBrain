@@ -232,6 +232,8 @@ pgDescribe("Stage9 real PostgreSQL selection lineage and populated upgrade", () 
       "20261124010000_client_details_and_firm_preferences",
       "20261124011000_firm_job_types_and_units",
       "20261124012000_firm_work_categories",
+      "20261124150000_quote_document_sections",
+      "20261124151000_quote_document_line_invariants",
     ])
       await sql.query(readFileSync(`prisma/migrations/${independent}/migration.sql`, "utf8"));
     context = await actor("membership_horizon_mei");

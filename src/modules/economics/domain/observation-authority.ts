@@ -1,3 +1,4 @@
+import { quoteDocumentReconciliation } from "./quote-document-reconciliation";
 import {
   add,
   compare,
@@ -146,6 +147,7 @@ function linesReconcile(record: FinancialObservationRecord): Readonly<{
   lineFailure: boolean;
   totalFailure: boolean;
 }> {
+  if (record.quoteDocument) return quoteDocumentReconciliation(record);
   if (record.lines.length === 0) {
     return Object.freeze({ lineFailure: false, totalFailure: false });
   }
@@ -221,7 +223,15 @@ export class ObservationAuthorityService {
     if (
       requiresStructuredLines &&
       (record.lines.length === 0 ||
-        record.lines.some((line) => line.categoryId.trim().length === 0))
+        record.lines.some(
+          (line) =>
+            line.categoryId.trim().length === 0 &&
+            !(
+              record.quoteDocument &&
+              record.observationType === "QUOTED_PRICE" &&
+              record.subjectType === "QUOTE_VERSION"
+            ),
+        ))
     ) {
       reasons.push("MISSING_TAXONOMY");
     }

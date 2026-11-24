@@ -1,5 +1,5 @@
+import { quoteCategoryTotals } from "@/modules/finance/quote-totals";
 import { orderQuoteLines } from "@/modules/quote-draft/domain/quote-line-order";
-import { isCategoryDraft } from "@/modules/quote-draft/domain/save-input";
 import { AuthorizationService } from "@/modules/authorization/authorization-service";
 import { basisOutOfDate, basisSourceIds } from "@/modules/quote-draft/domain/draft-policy";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
@@ -8,6 +8,7 @@ import type {
   QuoteDraftRepositoryPort,
   SavedDraft,
   SavedDraftLine,
+  QuoteStructure,
 } from "@/repositories/ports/quote-draft-repository";
 export type VisibleDraftLine = SavedDraftLine &
   Readonly<{ basisUnavailable: boolean; basisOutOfDate: boolean; openConflict: boolean }>;
@@ -16,7 +17,10 @@ export type QuoteDraftView =
       kind: "AVAILABLE";
       job: QuoteDraftJob;
       canDraft: boolean;
+      canUpdateStage?: boolean;
       canReadAmounts: boolean;
+      structure?: QuoteStructure | null;
+      categoryTotals?: ReturnType<typeof quoteCategoryTotals>;
       saved: (Omit<SavedDraft, "lines"> & { lines: readonly VisibleDraftLine[] }) | null;
     }>
   | Readonly<{ kind: "UNAVAILABLE" }>;
@@ -34,6 +38,7 @@ export class GetQuoteDraft {
         return { kind: "UNAVAILABLE" };
       const canReadAmounts = auth.canReadCommercial(context, job.id, "QUOTE").allowed;
       const saved = canReadAmounts ? await tx.getSaved(context, job) : null;
+      const structure = !canReadAmounts ? ((await tx.getStructure?.(context, job)) ?? null) : null;
       const lines = await Promise.all(
         (saved?.lines ?? []).map(async (line): Promise<VisibleDraftLine> => {
           const ids = line.recorded ? basisSourceIds(line.recorded.basis) : [];
@@ -65,10 +70,13 @@ export class GetQuoteDraft {
         kind: "AVAILABLE",
         job,
         canReadAmounts,
+        canUpdateStage: context.capabilities.has("project:update"),
+        categoryTotals: saved?.document ? quoteCategoryTotals(saved.document) : [],
+        structure,
         canDraft:
           canReadAmounts &&
           context.capabilities.has("quote:draft") &&
-          (!saved || isCategoryDraft(saved.lines, job.catalog.workCategories)),
+          (!saved || saved.status === "DRAFT"),
         saved: saved
           ? {
               ...saved,

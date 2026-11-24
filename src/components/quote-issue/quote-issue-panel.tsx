@@ -22,6 +22,7 @@ import type {
 } from "@/modules/quote-issue/domain/contracts";
 import type { Locale } from "@/modules/localization/config";
 import { quoteIssueCopy, quoteIssueBlockerText } from "@/modules/localization/quote-issue";
+import { quoteDocumentCopy } from "@/modules/localization/quote-document";
 import { categoryLabel } from "@/modules/localization/jobs";
 import { claimFindingText } from "@/modules/economics/presentation/claim-findings";
 import { formatMoney } from "@/modules/finance/format-money";
@@ -34,12 +35,19 @@ export function QuoteIssuePanel({
   view,
   locale,
   disabled = false,
+  externalActions = false,
+  onReviewChange,
+  onOptionsChange,
 }: {
   view: IssueView;
   locale: Locale;
   disabled?: boolean;
+  externalActions?: boolean;
+  onReviewChange?: (reviewing: boolean) => void;
+  onOptionsChange?: (options: IssueOptions) => void;
 }) {
   const copy = quoteIssueCopy(locale),
+    docCopy = quoteDocumentCopy(locale),
     router = useRouter();
   const [options, setOptions] = useState<IssueOptions>(view.defaults),
     [prepared, setPrepared] = useState<{ token: string; preparation: IssuePreparation } | null>(
@@ -49,6 +57,7 @@ export function QuoteIssuePanel({
     [message, setMessage] = useState("");
   const pending = transitionPending || disabled;
   const [key, setKey] = useState(() => crypto.randomUUID());
+  const [accepting, setAccepting] = useState(false);
   const [date, setDate] = useState(view.today),
     [note, setNote] = useState("");
   const [evidence, setEvidence] = useState<{
@@ -58,7 +67,9 @@ export function QuoteIssuePanel({
   } | null>(null);
   function update(patch: Partial<IssueOptions>) {
     setOptions({ ...options, ...patch });
+    onOptionsChange?.({ ...options, ...patch });
     setPrepared(null);
+    onReviewChange?.(false);
   }
   function mutation(operation: "issue" | "revise" | "accept" | "resolve", input: object) {
     start(async () => {
@@ -77,6 +88,7 @@ export function QuoteIssuePanel({
       if (["ISSUED", "REVISED", "ACCEPTED", "RESOLVED"].includes(result.kind)) {
         setKey(crypto.randomUUID());
         setPrepared(null);
+        onReviewChange?.(false);
         router.refresh();
       }
     });
@@ -103,6 +115,7 @@ export function QuoteIssuePanel({
     });
   }
   function preview() {
+    if (pending) return;
     start(async () => {
       try {
         const response = await fetch(`/api/quotes/${encodeURIComponent(view.versionId!)}/pdf`, {
@@ -125,6 +138,21 @@ export function QuoteIssuePanel({
       } catch {
         setMessage(copy.UNAVAILABLE);
       }
+    });
+  }
+  function prepare() {
+    if (pending) return;
+    start(async () => {
+      setMessage("");
+      const result = await prepareQuoteIssueAction(locale, {
+        projectKey: view.projectKey,
+        versionId: view.versionId,
+        options,
+      });
+      if (result.kind === "PREPARED") {
+        setPrepared(result);
+        onReviewChange?.(true);
+      } else setMessage(copy[result.kind]);
     });
   }
   const snapshot = prepared?.preparation.snapshot;
@@ -201,7 +229,7 @@ export function QuoteIssuePanel({
               id="accept-quote"
               onSubmit={(event) => {
                 event.preventDefault();
-                mutation("accept", { versionId: view.issued!.id, date, note });
+                setAccepting(true);
               }}
             >
               {view.issued.validUntil < view.today && (
@@ -229,9 +257,42 @@ export function QuoteIssuePanel({
                   />
                 </label>
               </div>
-              <button className={styles.button} disabled={pending}>
-                {copy.accept}
-              </button>
+              {accepting ? (
+                <div role="group" aria-label={docCopy.confirm}>
+                  <p>
+                    {docCopy.confirmAcceptance
+                      .replace("{number}", view.issued.documentNumber)
+                      .replace("{client}", view.issued.clientName)
+                      .replace(
+                        "{total}",
+                        formatMoney(view.issued.totalAmount, view.issued.currency),
+                      )}
+                  </p>
+                  <button
+                    type="button"
+                    className={styles.button}
+                    disabled={pending}
+                    onClick={() => setAccepting(false)}
+                  >
+                    {docCopy.cancel}
+                  </button>
+                  <button
+                    type="button"
+                    className={styles.button}
+                    disabled={pending}
+                    onClick={() => {
+                      mutation("accept", { versionId: view.issued!.id, date, note });
+                      setAccepting(false);
+                    }}
+                  >
+                    {docCopy.confirm}
+                  </button>
+                </div>
+              ) : (
+                <button className={styles.button} disabled={pending}>
+                  {copy.accept}
+                </button>
+              )}
             </form>
           )}
         </div>
@@ -285,31 +346,36 @@ export function QuoteIssuePanel({
               onChange={(e) => update({ terms: e.target.value })}
             />
           </label>
-          <div className={styles.actions}>
-            <button className={styles.button} disabled={pending} onClick={preview}>
-              {copy.preview}
-            </button>
-            {view.canIssue && (
-              <button
-                className={`${styles.button} ${styles.primary}`}
-                disabled={pending}
-                onClick={() =>
-                  start(async () => {
-                    setMessage("");
-                    const result = await prepareQuoteIssueAction(locale, {
-                      projectKey: view.projectKey,
-                      versionId: view.versionId,
-                      options,
-                    });
-                    if (result.kind === "PREPARED") setPrepared(result);
-                    else setMessage(copy[result.kind]);
-                  })
-                }
-              >
-                {copy.prepare}
+          <form
+            id="quote-document-preview"
+            onSubmit={(event) => {
+              event.preventDefault();
+              preview();
+            }}
+          />
+          <form
+            id="quote-document-prepare"
+            onSubmit={(event) => {
+              event.preventDefault();
+              prepare();
+            }}
+          />
+          {!externalActions && (
+            <div className={styles.actions}>
+              <button className={styles.button} disabled={pending} onClick={preview}>
+                {copy.preview}
               </button>
-            )}
-          </div>
+              {view.canIssue && (
+                <button
+                  className={`${styles.button} ${styles.primary}`}
+                  disabled={pending}
+                  onClick={prepare}
+                >
+                  {copy.prepare}
+                </button>
+              )}
+            </div>
+          )}
           {prepared && snapshot && (
             <div aria-live="polite">
               <h3>{copy.review}</h3>
@@ -318,6 +384,22 @@ export function QuoteIssuePanel({
                 <dd>{snapshot.documentNumber}</dd>
                 <dt>{copy.client}</dt>
                 <dd>{snapshot.clientName}</dd>
+                {[
+                  [docCopy.contact, snapshot.clientDetails?.contactPerson],
+                  [docCopy.clientAddress, snapshot.clientDetails?.address],
+                  [docCopy.clientTaxId, snapshot.clientDetails?.taxId],
+                  [
+                    docCopy.siteAddress,
+                    snapshot.schemaVersion === "QUOTE-DOCUMENT-2.0" ? snapshot.siteAddress : "",
+                  ],
+                ]
+                  .filter(([, value]) => value)
+                  .map(([label, value]) => (
+                    <div key={label} style={{ display: "contents" }}>
+                      <dt>{label}</dt>
+                      <dd>{value}</dd>
+                    </div>
+                  ))}
                 <dt>{copy.issueDate}</dt>
                 <dd>{snapshot.issueDate}</dd>
                 <dt>{copy.validUntil}</dt>
@@ -326,18 +408,54 @@ export function QuoteIssuePanel({
                 <dd>{snapshot.language === "en" ? "English" : "繁體中文"}</dd>
               </dl>
               <table className={styles.lines}>
-                <tbody>
-                  {snapshot.lines.map((line) => (
-                    <tr key={line.categoryId}>
-                      <td>{line.description}</td>
-                      <td>{formatMoney(line.amount, snapshot.currency)}</td>
-                    </tr>
-                  ))}
-                </tbody>
+                {snapshot.schemaVersion === "QUOTE-DOCUMENT-2.0" ? (
+                  snapshot.document.sections.map((section, sectionIndex) => (
+                    <tbody key={sectionIndex}>
+                      <tr>
+                        <th scope="rowgroup">
+                          {section.title} — {docCopy.sectionSubtotal}
+                        </th>
+                        <td>{formatMoney(section.subtotal, snapshot.currency)}</td>
+                      </tr>
+                      {section.lines.map((line, lineIndex) => (
+                        <tr key={lineIndex}>
+                          <td>{line.description}</td>
+                          <td>
+                            {line.amount === null
+                              ? ""
+                              : formatMoney(line.amount, snapshot.currency)}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  ))
+                ) : (
+                  <tbody>
+                    {snapshot.lines.map((line, index) => (
+                      <tr key={`${line.categoryId}-${index}`}>
+                        <td>{line.description}</td>
+                        <td>{formatMoney(line.amount, snapshot.currency)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                )}
               </table>
               <dl className={styles.summary}>
                 {(
                   [
+                    ...(snapshot.schemaVersion === "QUOTE-DOCUMENT-2.0"
+                      ? [
+                          [docCopy.subtotal, snapshot.document.subtotal],
+                          ...snapshot.document.percentageLines.map((line) => [
+                            `${line.description} (${line.percentage}%)`,
+                            line.amount,
+                          ]),
+                          [
+                            snapshot.document.discount.label,
+                            `-${snapshot.document.discount.amount}`,
+                          ],
+                        ]
+                      : []),
                     [copy.beforeTax, snapshot.totals.amountBeforeTax],
                     [copy.tax, snapshot.totals.taxAmount],
                     [copy.total, snapshot.totals.totalAmount],
@@ -402,7 +520,13 @@ export function QuoteIssuePanel({
           )}
         </>
       ) : (
-        !view.versionId && <p>{copy.noDraft}</p>
+        <p>
+          {!view.versionId
+            ? copy.noDraft
+            : ["FINAL", "INTERNAL_REVIEW"].includes(view.status ?? "")
+              ? docCopy.unavailableIssue
+              : copy.fixedDocument}
+        </p>
       )}
       {!!view.conflicts.length && (
         <div>

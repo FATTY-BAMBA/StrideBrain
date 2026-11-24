@@ -114,10 +114,10 @@ All these components are server components by default. URL-aware navigation, err
 
 ## Specified for the first consuming issue
 
-These components are deliberately **not implemented** by #69:
+Paper and navigation Tabs are implemented by #65:
 
-- **Paper** (#65): document surface in canvas over surface-subtle, line-strong border and the sole document shadow. Use table/document typography, space tokens, and internal scrolling when necessary. Do not use Paper as a card around lists.
-- **Tabs** (#65): labelled links for navigation, or real buttons with the tab keyboard/ARIA pattern for in-page panels. Active text and the 2px rule use ink; other labels use muted. Never identify selection by colour alone.
+- **Paper** (`src/components/ui/paper.tsx`): document surface in canvas over surface-subtle, line-strong border and the sole document shadow. Use table/document typography, space tokens, and internal scrolling when necessary. Do not use Paper as a card around lists.
+- **Tabs** (`src/components/ui/tabs.tsx`): labelled links for navigation, or real buttons with the tab keyboard/ARIA pattern for in-page panels. Active text and the 2px rule use ink; other labels use muted. Never identify selection by colour alone.
 - **SectionHeading**: h2 in the section type role with the 2px ink rule, separated by token space. Optional adjacent actions remain secondary/quiet. Build it when the first issue needs it.
 
 ## Shell and responsive behavior
@@ -145,3 +145,5 @@ Part 1 updates the shell and the Quotes/Clients lists. Older page bodies retain 
 ## Verification
 
 Check both languages, owner and Viewer, keyboard focus, 390px overflow, filters and paging without JavaScript, empty/loading/error states, and actual font rendering/network origins. Keep existing quote/client access tests unchanged. Preserve issued PDF bytes. Hosted acceptance belongs to the Product Director via the Test site workflow; agents do not deploy or mutate hosted systems.
+
+The Quote editor uses Paper on a subtle backdrop, with an internally scrolling seven-column document and a totals footer outside that scroll region. Its settings column follows the paper below 1100px. Inputs are real controls with focus rings and row-order tabbing; all financial previews are server results. Suggestions appear once per pricing category, across every mapped section.

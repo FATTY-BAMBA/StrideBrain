@@ -1,3 +1,4 @@
+import { renderQuoteDocumentV2 } from "./render-quote-document-v2";
 import PDFDocument from "pdfkit";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
@@ -9,6 +10,8 @@ export async function renderQuotePdf(
   snapshot: QuoteDocumentSnapshot,
   draft = false,
 ): Promise<Buffer> {
+  if (snapshot.schemaVersion === "QUOTE-DOCUMENT-2.0")
+    return renderQuoteDocumentV2(snapshot, draft);
   const font = await readFile(join(process.cwd(), "assets/fonts/StrideBrainSansTC-Regular.ttf"));
   const zh = snapshot.language === "zh-TW";
   const copy = zh

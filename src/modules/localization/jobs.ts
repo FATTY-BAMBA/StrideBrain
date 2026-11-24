@@ -15,10 +15,14 @@ const stages: Record<ProjectStage, readonly [string, string]> = {
 };
 export function categoryLabel(
   locale: Locale,
-  key: string,
+  key: string | null,
   categories: readonly FirmWorkCategory[],
 ): string {
-  return firmEntryLabel(categories, key, locale);
+  return key
+    ? firmEntryLabel(categories, key, locale)
+    : locale === "zh-TW"
+      ? "未分類"
+      : "No category";
 }
 export function projectStageLabel(locale: Locale, stage: ProjectStage): string {
   return stages[stage][locale === "zh-TW" ? 1 : 0];

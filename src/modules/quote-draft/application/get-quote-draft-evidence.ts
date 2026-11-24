@@ -44,10 +44,11 @@ export class GetQuoteDraftEvidence {
       const saved = prepared ? null : await tx.getSaved(context, job);
       const basis =
         prepared?.suggestions.find((line) => line.categoryId === input.categoryId)?.basis ??
-        saved?.lines.find((line) => line.categoryId === input.categoryId)?.recorded?.basis;
+        saved?.lines.find((line) => line.categoryId === input.categoryId && line.recorded)?.recorded
+          ?.basis;
       const runId =
         prepared?.comparisonRunId ??
-        saved?.lines.find((line) => line.categoryId === input.categoryId)?.recorded
+        saved?.lines.find((line) => line.categoryId === input.categoryId && line.recorded)?.recorded
           ?.comparisonRunId;
       if (!basis || !runId) return unavailable;
       if (

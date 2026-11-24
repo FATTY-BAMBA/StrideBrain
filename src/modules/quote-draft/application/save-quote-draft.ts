@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { saveQuoteDocument } from "./save-quote-document";
 import { AuthorizationService } from "@/modules/authorization/authorization-service";
 import { quoteTotals } from "@/modules/finance/quote-totals";
 import { categoryLabel } from "@/modules/localization/jobs";
@@ -19,7 +20,8 @@ export type SaveDraftOutcome =
         | "CONFLICT"
         | "OUT_OF_DATE"
         | "NO_COMPARISON"
-        | "BASIS_UNAVAILABLE";
+        | "BASIS_UNAVAILABLE"
+        | "DISCOUNT_EXCEEDS_SUBTOTAL";
     }>;
 export class SaveQuoteDraft {
   constructor(
@@ -30,6 +32,8 @@ export class SaveQuoteDraft {
     if (!context.capabilities.has("quote:draft") || !context.capabilities.has("quote:read"))
       return { kind: "UNAVAILABLE" };
     if (!context.firmLists) return { kind: "UNAVAILABLE" };
+    if (raw && typeof raw === "object" && "sections" in raw)
+      return saveQuoteDocument(this.repository, this.codec, context, raw);
     const input = validateSaveDraft(raw, context.firmLists.workCategories);
     if (!input) return { kind: "INVALID" };
     // Receipt fingerprints keep the pre-work-order canonical form for existing retries.
@@ -100,7 +104,6 @@ export class SaveQuoteDraft {
           preparation.baseVersionId !== input.baseVersionId)
       )
         return { kind: "INVALID" };
-      if (!previous && !preparation) return { kind: "NO_COMPARISON" };
       if (preparation) {
         const current = await tx.getComparison(context, job);
         if (!current) return { kind: "NO_COMPARISON" };

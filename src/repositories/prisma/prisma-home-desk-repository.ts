@@ -317,18 +317,31 @@ async function readFinancials(
   ): FinancialObservationRecord => {
     const lines: EconomicsLineSnapshot[] =
       "items" in row
-        ? row.items.map((line) => ({
-            id: line.id,
-            subjectType: "QUOTE_ITEM",
-            lineNumber: line.lineNumber,
-            categoryId: line.categoryId,
-            amount: line.amount.toString(),
-            quantity: line.quantity.toString(),
-            unitRate: line.unitPrice.toString(),
-            unit: line.unit,
-            authorityState: line.authorityState,
-            evidenceReferenceIds: references("QUOTE_ITEM", line.id),
-          }))
+        ? row.items
+            .filter((line) => line.kind !== "NOTE")
+            .map((line) => ({
+              ...(row.documentFormatVersion === 2
+                ? {
+                    quoteCalculation: {
+                      kind:
+                        line.kind === "PERCENTAGE" ? ("PERCENTAGE" as const) : ("ITEM" as const),
+                      ...(line.percentage !== null
+                        ? { percentage: line.percentage.toString() }
+                        : {}),
+                    },
+                  }
+                : {}),
+              id: line.id,
+              subjectType: "QUOTE_ITEM",
+              lineNumber: line.lineNumber,
+              categoryId: line.categoryId ?? "",
+              amount: line.amount.toString(),
+              quantity: line.quantity.toString(),
+              unitRate: line.unitPrice.toString(),
+              unit: line.unit,
+              authorityState: line.authorityState,
+              evidenceReferenceIds: references("QUOTE_ITEM", line.id),
+            }))
         : row.lines.map((line) => ({
             id: line.id,
             subjectType: "COST_LINE",
@@ -350,6 +363,9 @@ async function readFinancials(
       recordKey: row.id,
       versionNumber: row.versionNumber,
       subjectType: kind,
+      ...("documentFormatVersion" in row && row.documentFormatVersion === 2
+        ? { quoteDocument: { discountAmount: row.discountAmount.toString() } }
+        : {}),
       observationType: row.observationType,
       authorityState: row.authorityState,
       currency: row.currency,

@@ -4,6 +4,7 @@ import type {
   EconomicsProjectSnapshot,
   FinancialObservationRecord,
 } from "./contracts";
+import { contributesToCategory } from "./quote-document-reconciliation";
 import { ObservationAuthorityService } from "./observation-authority";
 
 export type ClosedJobFinancials = Readonly<{
@@ -55,20 +56,31 @@ export class ClosedJobEconomicsService {
             (id) =>
               !category ||
               !record.lines.some(
-                (line) => line.categoryId !== category && line.evidenceReferenceIds.includes(id),
+                (line) =>
+                  (!contributesToCategory(line) || line.categoryId !== category) &&
+                  line.evidenceReferenceIds.includes(id),
               ),
           ),
           ...record.lines
-            .filter((line) => !category || line.categoryId === category)
+            .filter(
+              (line) => !category || (contributesToCategory(line) && line.categoryId === category),
+            )
             .flatMap((line) => line.evidenceReferenceIds),
         ]),
       ].sort();
     const categories = [...new Set(actual.lines.map((line) => line.categoryId))].sort();
-    if (categories.some((category) => !quote.lines.some((line) => line.categoryId === category)))
+    if (
+      categories.some(
+        (category) =>
+          !quote.lines.some((line) => contributesToCategory(line) && line.categoryId === category),
+      )
+    )
       return [];
     const differences = categories
       .flatMap((categoryId) => {
-        const quotes = quote.lines.filter((line) => line.categoryId === categoryId);
+        const quotes = quote.lines.filter(
+          (line) => contributesToCategory(line) && line.categoryId === categoryId,
+        );
         const costs = actual.lines.filter((line) => line.categoryId === categoryId);
         if (
           !quotes.length ||

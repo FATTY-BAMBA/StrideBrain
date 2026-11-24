@@ -8,6 +8,22 @@ import type {
 } from "@/modules/quote-draft/domain/draft-policy";
 import type { DraftLineInput, SaveDraftInput } from "@/modules/quote-draft/domain/save-input";
 import type { QuoteTotals } from "@/modules/finance/quote-totals";
+import type { QuoteDocumentAmounts } from "@/modules/finance/quote-totals";
+export type QuoteStructure = Readonly<{
+  versionNumber: number;
+  status: string;
+  sections: readonly Readonly<{
+    title: string;
+    categoryId: string | null;
+    lines: readonly Readonly<{
+      kind: string;
+      description: string;
+      quantity?: string;
+      unit?: string;
+      remark?: string;
+    }>[];
+  }>[];
+}>;
 import type { AuthorizedEconomicsBatch } from "@/modules/economics/domain/contracts";
 import type { HomeComparisonOutcome } from "@/modules/home-intelligence/application/get-home-comparison";
 import type { AuthorizedEvidenceSourcesResult } from "@/repositories/ports/evidence-panel-repository";
@@ -19,11 +35,21 @@ export type QuoteDraftJob = DraftJob &
     businessKey: string;
     name: string;
     stage: string;
+    siteAddress?: string;
+    header?: Readonly<{
+      firmName: string;
+      clientName: string;
+      contactPerson?: string;
+      clientAddress?: string;
+      clientTaxId?: string;
+    }>;
   }>;
 export type RecordedDraftBasis = Readonly<{ basis: DraftBasis; comparisonRunId: string }>;
 export type SavedDraftLine = DraftLineInput &
   Readonly<{ id: string; recorded: RecordedDraftBasis | null; enteredBy: string | null }>;
 export type SavedDraft = Readonly<{
+  document?: QuoteDocumentAmounts;
+  documentFormatVersion?: number;
   id: string;
   quoteId: string;
   versionNumber: number;
@@ -77,6 +103,7 @@ export interface QuoteDraftSessionPort {
     comparison: Extract<HomeComparisonOutcome, { kind: "AVAILABLE" }>,
   ): Promise<AuthorizedEconomicsBatch | null>;
   getSaved(context: RuntimeContext, job: QuoteDraftJob): Promise<SavedDraft | null>;
+  getStructure?(context: RuntimeContext, job: QuoteDraftJob): Promise<QuoteStructure | null>;
   getSources(
     context: RuntimeContext,
     comparisonRunId: string,
@@ -97,6 +124,7 @@ export interface QuoteDraftSessionPort {
       })[];
       changedCategories: readonly string[];
       basisMode: "CARRIED_OVER" | "REFRESHED";
+      document?: QuoteDocumentAmounts;
     }>,
   ): Promise<DraftReceipt>;
 }

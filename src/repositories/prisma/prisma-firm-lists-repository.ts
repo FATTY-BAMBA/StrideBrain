@@ -38,6 +38,7 @@ export class PrismaFirmListsRepository implements FirmListSettingsReader {
       SELECT "categoryId" AS key FROM "ProjectScope" WHERE "organizationId"=${organizationId}
       UNION SELECT unnest("commercialCategoryIds") FROM "Project" WHERE "organizationId"=${organizationId}
       UNION SELECT "categoryId" FROM "QuoteItem" WHERE "organizationId"=${organizationId}
+      UNION SELECT "categoryId" FROM "QuoteSection" WHERE "organizationId"=${organizationId}
       UNION SELECT "categoryId" FROM "ForecastCostLine" WHERE "organizationId"=${organizationId}
       UNION SELECT "categoryId" FROM "CostLine" WHERE "organizationId"=${organizationId}
       UNION SELECT "categoryId" FROM "SupplierOfferItem" WHERE "organizationId"=${organizationId}

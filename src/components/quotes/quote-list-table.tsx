@@ -33,7 +33,7 @@ export function QuoteListTable({
     >
       {rows.map((row) => (
         <tr key={row.quoteKey}>
-          <td>{row.documentNumber ?? c.noNumber}</td>
+          <td>{row.documentNumber ?? (row.status === "FINAL" ? "—" : c.noNumber)}</td>
           <NameCell>{row.projectName}</NameCell>
           <td>{row.clientName}</td>
           <td>
@@ -43,7 +43,7 @@ export function QuoteListTable({
           <NumericCell>
             {row.totalAmount === undefined ? c.hidden : formatMoney(row.totalAmount, row.currency)}
           </NumericCell>
-          <td>{row.date.slice(0, 10)}</td>
+          <td>{row.date}</td>
           <RowAction
             href={`/${locale}/projects/${encodeURIComponent(row.projectKey)}/quote` as Route}
             label={ui.open}

@@ -2,6 +2,7 @@ import { Prisma, type PrismaClient } from "../../../.generated/prisma/client";
 import { currentQuoteRow, quoteListSearch } from "@/modules/quotes/domain/quote-list";
 import type { QuoteListRepository, QuoteListRow } from "@/repositories/ports/quote-list-repository";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
+import { organizationDate } from "@/modules/quote-issue/domain/issue-policy";
 
 export class PrismaQuoteListRepository implements QuoteListRepository {
   constructor(private readonly db: PrismaClient) {}
@@ -61,6 +62,7 @@ export class PrismaQuoteListRepository implements QuoteListRepository {
       orderBy: { businessKey: "asc" },
       select: {
         businessKey: true,
+        organization: { select: { timezone: true } },
         project: {
           select: {
             businessKey: true,
@@ -105,6 +107,7 @@ export class PrismaQuoteListRepository implements QuoteListRepository {
       return [
         {
           ...selected,
+          date: organizationDate(new Date(selected.date), quote.organization.timezone),
           quoteKey: quote.businessKey,
           projectKey: p.businessKey,
           projectName: context.locale === "zh-TW" ? p.nameZhTw : p.nameEn,

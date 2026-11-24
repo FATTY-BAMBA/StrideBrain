@@ -1,3 +1,10 @@
+import {
+  money,
+  decimalToString,
+  divide,
+  decimalFromString,
+  subtract,
+} from "@/modules/finance/fixed-decimal";
 import { describe, expect, it } from "vitest";
 
 import type { Stage4ComparisonResult } from "@/modules/comparisons/domain/contracts";
@@ -629,3 +636,40 @@ it.each([1, 2])(
     expect(result.claims.some((claim) => claim.kind === "CATEGORY_QUOTED_VARIANCE")).toBe(false);
   },
 );
+
+it("counts one combined category price per past job and sums all current category lines", () => {
+  const batch = fullBatch();
+  const split = {
+    ...batch,
+    records: batch.records.map((record) =>
+      record.observationType !== "QUOTED_PRICE"
+        ? record
+        : {
+            ...record,
+            lines: record.lines.flatMap((line) => {
+              const half = divide(money(line.amount), decimalFromString("2", 0), 2, "DOWN");
+              return [
+                decimalToString(half),
+                decimalToString(subtract(money(line.amount), half)),
+              ].map((amount, i) => ({
+                ...line,
+                id: `${line.id}-${i}`,
+                quantity: "1",
+                unitRate: amount,
+                amount,
+              }));
+            }),
+          },
+    ),
+  };
+  const service = new HistoricalEconomicsService();
+  const amounts = (value: ReturnType<typeof service.assemble>) =>
+    value.result.categories.map((category) => ({
+      categoryId: category.categoryId,
+      count: category.quotedHistory.eligibleObservationCount,
+      median: category.quotedHistory.medianNormalizedAmount,
+      current: category.quoteVariance.currentAmount,
+      variance: category.quoteVariance.variancePercent,
+    }));
+  expect(amounts(service.assemble(input(split)))).toEqual(amounts(service.assemble(input(batch))));
+});

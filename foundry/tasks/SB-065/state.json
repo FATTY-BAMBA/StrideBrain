@@ -1,0 +1,26 @@
+{
+  "issue": 65,
+  "branch": "build/sb-065-quote-document",
+  "baseCommit": "a7ee58c781d50fb089b971d9758cb6ddb017498c",
+  "status": "DRAFT_WAITING_FOR_PRODUCT_DIRECTOR",
+  "delivery": "A–E implemented; five review changes locally verified; hosted retest pending",
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "pullRequestDraft": true,
+  "pullRequest": 74,
+  "localCheck": "1631 tests / 164 files, zero skips, production build",
+  "paidRuns": [
+    45428451693,
+    45430327216
+  ],
+  "paidEvaluation": "PASSED_UNCHANGED_REPEAT; initial UNKNOWN_SOURCE failure recorded",
+  "previousImplementationCommit": "a0619c571a36d38d4f4037cc6041ffafac41c219",
+  "previousCiRun": 45428410932,
+  "review": {
+    "date": "2026-11-25",
+    "baseCommit": "7a306fc06336065a0b6c091092484397b9b13b54",
+    "scope": "percentage subtotals/categories, firm-local quote-list date, accessible names, document-language discount, measured request bound",
+    "checkLog": "evidence/review-npm-run-check.log",
+    "paidEvaluation": "NOT_RUN_ASSISTANT_CODE_UNCHANGED",
+    "hostedRetest": "WAITING_FOR_PRODUCT_DIRECTOR"
+  }
+}

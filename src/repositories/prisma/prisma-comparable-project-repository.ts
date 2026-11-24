@@ -19,7 +19,7 @@ type DecimalLike = { toString(): string } | string;
 
 type ProfileQuoteItemRow = Readonly<{
   id: string;
-  categoryId: string;
+  categoryId: string | null;
 }>;
 
 type ProfileQuoteVersionRow = Readonly<{
@@ -213,7 +213,9 @@ function mapProfile(
     dataClassification: row.dataClassification,
     scopeCategoryIds: unique(row.scopes.map((scope) => scope.categoryId)),
     commercialCategoryIds: unique(
-      quote ? quote.version.items.map((item) => item.categoryId) : row.commercialCategoryIds,
+      quote
+        ? quote.version.items.flatMap((item) => (item.categoryId ? [item.categoryId] : []))
+        : row.commercialCategoryIds,
     ),
     materialIds: unique(
       row.projectMaterials.map((relationship) => relationship.material.businessKey),

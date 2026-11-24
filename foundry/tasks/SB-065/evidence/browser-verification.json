@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "checks": [
+    "Created a job and optional site address; manually saved the required item/fee/note/discount example twice without comparison. Exact totals: NT$340,200 before discount and NT$336,000 after. Logical row tab order and visible desktop totals verified.",
+    "Typed descriptions survive a language switch; 390px document/table scrolling stays inside the page and settings follow the document.",
+    "Issued zh-TW and English immutable PDFs through review, revised the first without changing its PDF bytes, cancelled acceptance with no audit change, then recorded acceptance. 40 editable lines keep totals visible at 1440×900 at both table scroll positions.",
+    "Legacy Xinyi category draft remains readable, INTERNAL_REVIEW has an explanation, FINAL without a number uses a dash. An assigned Viewer sees line structure and site address without amounts, save controls or PDF access."
+  ],
+  "screens": [
+    "en-new-quote.png",
+    "en-quote-editor.png",
+    "zh-TW-quote-editor.png",
+    "zh-TW-quote-mobile.png",
+    "en-issue-review.png",
+    "en-acceptance-confirmation.png",
+    "en-40-line-editor.png",
+    "en-40-line-scrolled.png",
+    "en-legacy-xinyi.png",
+    "zh-TW-internal-review.png",
+    "zh-TW-quote-list.png",
+    "en-viewer-quote.png",
+    "en-quote-mobile.png"
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "projectKey": "J-2611-XJY6",
+  "longDocumentMeasurements": [
+    {
+      "tablePosition": "top",
+      "windowScrollY": 0,
+      "totals": {
+        "x": 305,
+        "y": 688.25,
+        "width": 806,
+        "height": 194.75
+      }
+    },
+    {
+      "tablePosition": "bottom",
+      "windowScrollY": 0,
+      "totals": {
+        "x": 305,
+        "y": 688.25,
+        "width": 806,
+        "height": 194.75
+      }
+    }
+  ]
+}

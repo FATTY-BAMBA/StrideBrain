@@ -10,6 +10,7 @@ import {
   multiply,
   PERCENT_SCALE,
   quantity,
+  sum,
   variancePercent,
 } from "@/modules/finance/fixed-decimal";
 
@@ -37,6 +38,7 @@ import {
   type SupplierOfferEconomicsDTO,
   type VarianceFindingDTO,
 } from "@/modules/economics/domain/contracts";
+import { contributesToCategory } from "./quote-document-reconciliation";
 import { ComparisonEvidenceBundleService } from "@/modules/economics/domain/evidence-bundle-service";
 import {
   ObservationAuthorityService,
@@ -478,9 +480,29 @@ function lineObservation(
   return normalizedObservation(line.id, entry.project, line.amount, line.evidenceReferenceIds);
 }
 
+/** A category is one price per job even when it spans several document sections. */
+function categoryLine(entry: EvaluatedRecord, categoryId: string): EconomicsLineSnapshot | null {
+  const lines = entry.record.lines.filter(
+    (line) => contributesToCategory(line) && line.categoryId === categoryId,
+  );
+  const first = lines[0];
+  if (!first) return null;
+  if (lines.length === 1) return first;
+  return {
+    ...first,
+    id: `${entry.record.id}:category:${categoryId}`,
+    amount: decimalToString(
+      sum(
+        lines.map((line) => money(line.amount)),
+        2,
+      ),
+    ),
+    evidenceReferenceIds: [...new Set(lines.flatMap((line) => line.evidenceReferenceIds))].sort(),
+  };
+}
 function lineFor(entry: EvaluatedRecord | null, categoryId: string): CurrentLine | null {
   if (!entry) return null;
-  const line = entry.record.lines.find((candidate) => candidate.categoryId === categoryId);
+  const line = categoryLine(entry, categoryId);
   return line ? Object.freeze({ record: entry.record, line, project: entry.project }) : null;
 }
 
@@ -504,7 +526,12 @@ function categoryIds(
       ...new Set(
         [currentQuote, currentForecast]
           .filter((entry): entry is EvaluatedRecord => entry !== null)
-          .flatMap((entry) => entry.record.lines.map((line) => line.categoryId)),
+          .flatMap((entry) =>
+            entry.record.lines
+              .filter(contributesToCategory)
+              .map((line) => line.categoryId)
+              .filter(Boolean),
+          ),
       ),
     ].sort(),
   );
@@ -520,7 +547,9 @@ function conflictPresentFor(
       entry.purpose === purpose &&
       entry.decision.reasonCodes.includes("CONFLICTED") &&
       (categoryId === undefined ||
-        entry.record.lines.some((line) => line.categoryId === categoryId)),
+        entry.record.lines.some(
+          (line) => contributesToCategory(line) && line.categoryId === categoryId,
+        )),
   );
 }
 
@@ -534,11 +563,10 @@ function quotedCategoryAggregate(
   return accessAtLeast(input.batch, "QUOTE_ONLY")
     ? aggregate(
         "QUOTED_PRICE",
-        quotedHistory.flatMap((entry) =>
-          entry.record.lines
-            .filter((line) => line.categoryId === categoryId)
-            .map((line) => lineObservation(entry, line)),
-        ),
+        quotedHistory.flatMap((entry) => {
+          const line = categoryLine(entry, categoryId);
+          return line ? [lineObservation(entry, line)] : [];
+        }),
         input.stage4.activeContext.areaValue,
         input.generatedAt,
         conflictPresentFor(evaluated, "QUOTED_HISTORY", categoryId),
@@ -577,7 +605,7 @@ function buildCategory(
         "RECONCILED_ACTUAL_COST",
         actualHistory.flatMap((entry) =>
           entry.record.lines
-            .filter((line) => line.categoryId === categoryId)
+            .filter((line) => contributesToCategory(line) && line.categoryId === categoryId)
             .map((line) => lineObservation(entry, line)),
         ),
         input.stage4.activeContext.areaValue,
@@ -879,7 +907,7 @@ function persistenceDecisions(
         Object.freeze({
           observationId: line.id,
           projectId: entry.project.internalId,
-          categoryId: line.categoryId,
+          ...(line.categoryId ? { categoryId: line.categoryId } : {}),
           observationType: entry.record.observationType,
           authorityState: line.authorityState,
           included: entry.decision.eligible,
@@ -958,12 +986,14 @@ export class HistoricalEconomicsService {
           .filter(
             (entry) =>
               entry.purpose === "QUOTED_HISTORY" &&
-              entry.record.lines.some((line) => line.categoryId === categoryId),
+              entry.record.lines.some(
+                (line) => contributesToCategory(line) && line.categoryId === categoryId,
+              ),
           )
           .flatMap((entry) => [
             entry.record.id,
             ...entry.record.lines
-              .filter((line) => line.categoryId === categoryId)
+              .filter((line) => contributesToCategory(line) && line.categoryId === categoryId)
               .map((line) => line.id),
           ]),
       );

@@ -18,6 +18,7 @@ import {
 } from "../domain/input";
 import {
   emptyFirmDetails,
+  MAX_QUOTE_ISSUE_TOKEN_LENGTH,
   type IssueState,
   type IssueOptions,
   type IssuePreparation,
@@ -156,7 +157,7 @@ export class IssueQuote {
       !input ||
       !only(input, ["projectKey", "token", "idempotencyKey"]) ||
       !validKey(input.projectKey) ||
-      !bounded(input.token, 500000, true) ||
+      !bounded(input.token, MAX_QUOTE_ISSUE_TOKEN_LENGTH, true) ||
       !validIdempotency(input.idempotencyKey)
     )
       return { kind: "INVALID" };
@@ -377,6 +378,24 @@ export class GetQuoteIssue {
         amounts: state.current
           ? { basis: "CURRENT" as const, currency: state.current.currency, ...state.current.totals }
           : null,
+        ...(state.issued && state.current?.id === state.issued.id
+          ? {
+              issuedHeader: {
+                firmName: state.issued.snapshot.firm.legalName,
+                clientName: state.issued.snapshot.clientName,
+                contactPerson: state.issued.snapshot.clientDetails?.contactPerson,
+                clientAddress: state.issued.snapshot.clientDetails?.address,
+                clientTaxId: state.issued.snapshot.clientDetails?.taxId,
+                projectName: state.issued.snapshot.projectName,
+                siteAddress:
+                  state.issued.snapshot.schemaVersion === "QUOTE-DOCUMENT-2.0"
+                    ? state.issued.snapshot.siteAddress
+                    : "",
+                issueDate: state.issued.snapshot.issueDate,
+                validUntil: state.issued.snapshot.validUntil,
+              },
+            }
+          : {}),
         versionId: state.current?.id ?? null,
         status: state.current?.status ?? null,
         today: organizationDate(this.clock(), state.timezone),
@@ -387,6 +406,9 @@ export class GetQuoteIssue {
               documentNumber: state.issued.documentNumber,
               validUntil: state.issued.validUntil,
               acceptedOn: state.issued.acceptedOn,
+              clientName: state.issued.snapshot.clientName,
+              currency: state.issued.snapshot.currency,
+              totalAmount: state.issued.snapshot.totals.totalAmount,
             }
           : null,
         canIssue: context.capabilities.has("quote:issue"),

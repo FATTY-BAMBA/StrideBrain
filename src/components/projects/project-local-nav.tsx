@@ -1,7 +1,7 @@
 "use client";
 
 import type { Route } from "next";
-import Link from "next/link";
+import { Tabs } from "@/components/ui/tabs";
 import { usePathname } from "next/navigation";
 
 import type { Catalog } from "@/modules/localization/catalog";
@@ -22,20 +22,16 @@ export function ProjectLocalNav({ locale, projectKey, labels }: ProjectLocalNavP
   const pathname = usePathname();
 
   return (
-    <nav
-      className="project-local-nav"
-      aria-label={locale === "zh-TW" ? "專案工作區導覽" : "Project workspace navigation"}
-    >
-      {projectNavigation.map((item) => {
+    <Tabs
+      label={locale === "zh-TW" ? "專案工作區導覽" : "Project workspace navigation"}
+      items={projectNavigation.map((item) => {
         const href = projectSurfaceHref(locale, projectKey, item);
-        const isActive = item.segment ? pathname === href : pathname === href;
-
-        return (
-          <Link key={item.key} href={href as Route} aria-current={isActive ? "page" : undefined}>
-            {labels[item.labelKey as keyof typeof labels]}
-          </Link>
-        );
+        return {
+          href: href as Route,
+          label: labels[item.labelKey as keyof typeof labels],
+          active: pathname === href,
+        };
       })}
-    </nav>
+    />
   );
 }
