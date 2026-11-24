@@ -13,5 +13,6 @@
     "files": 172,
     "skipped": 0
   },
-  "ci": "PENDING"
+  "ci": "See pull request checks (post-push result)",
+  "pullRequest": "https://github.com/FATTY-BAMBA/StrideBrain/pull/75"
 }

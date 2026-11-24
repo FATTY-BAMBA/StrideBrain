@@ -1,5 +1,7 @@
 # SB-067 verification
 
+Draft PR: [#75](https://github.com/FATTY-BAMBA/StrideBrain/pull/75). Implementation and local full check: `1a4771c`. Post-push CI is recorded in [the PR checks](https://github.com/FATTY-BAMBA/StrideBrain/pull/75/checks); this file records local evidence.
+
 Implementation is locally verified in delivery order A → B → C. Hosted acceptance is waiting for the Product Director. The pull request stays draft. No hosted project or database was deployed, migrated, seeded or reconfigured. No model calls or paid evaluations were made.
 
 ## Behavior delivered
