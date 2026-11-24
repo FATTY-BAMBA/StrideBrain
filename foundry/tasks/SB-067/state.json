@@ -1,0 +1,10 @@
+{
+  "issue": 67,
+  "branch": "build/sb-067-price-list",
+  "baseCommit": "8bcd5a9d84499b52d91c1838aa34f61c3582a4cb",
+  "status": "IN_PROGRESS",
+  "delivery": "A verified; B in progress",
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "pullRequestDraft": true,
+  "modelCalls": "NONE"
+}
