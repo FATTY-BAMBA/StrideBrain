@@ -1,9 +1,13 @@
-import Link from "next/link";
 import type { Route } from "next";
 import type { Locale } from "@/modules/localization/config";
 import type { QuoteListRow } from "@/repositories/ports/quote-list-repository";
 import { quoteListCopy } from "@/modules/localization/quote-list";
+import { designSystemCopy } from "@/modules/localization/design-system";
 import { formatMoney } from "@/modules/finance/format-money";
+import { Badge } from "@/components/ui/badge";
+import { EmptyState } from "@/components/ui/empty-state";
+import { Table, NameCell, NumericCell, RowAction } from "@/components/ui/table";
+import styles from "@/components/ui/ui.module.css";
 export function QuoteListTable({
   rows,
   locale,
@@ -11,46 +15,42 @@ export function QuoteListTable({
   rows: readonly QuoteListRow[];
   locale: Locale;
 }) {
-  const c = quoteListCopy(locale);
-  if (!rows.length) return <p>{c.empty}</p>;
+  const c = quoteListCopy(locale),
+    ui = designSystemCopy(locale);
+  if (!rows.length) return <EmptyState title={c.empty} />;
   return (
-    <div className="records-table-scroll">
-      <table className="records-table">
-        <thead>
-          <tr>
-            {[c.number, c.job, c.client, c.status, c.total, c.date].map((label) => (
-              <th key={label} scope="col">
-                {label}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.quoteKey}>
-              <td>
-                <Link
-                  href={`/${locale}/projects/${encodeURIComponent(row.projectKey)}/quote` as Route}
-                >
-                  {row.documentNumber ?? c.noNumber}
-                </Link>
-              </td>
-              <td>{row.projectName}</td>
-              <td>{row.clientName}</td>
-              <td>
-                {c[row.status]}
-                {row.revisionInDraft && <small className="records-marker">{c.revision}</small>}
-              </td>
-              <td>
-                {row.totalAmount === undefined
-                  ? c.hidden
-                  : formatMoney(row.totalAmount, row.currency)}
-              </td>
-              <td>{row.date.slice(0, 10)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <Table
+      caption={c.title}
+      headings={[
+        { label: c.number },
+        { label: c.job },
+        { label: c.client },
+        { label: c.status },
+        { label: c.total, numeric: true },
+        { label: c.date },
+        { label: ui.action, action: true },
+      ]}
+    >
+      {rows.map((row) => (
+        <tr key={row.quoteKey}>
+          <td>{row.documentNumber ?? c.noNumber}</td>
+          <NameCell>{row.projectName}</NameCell>
+          <td>{row.clientName}</td>
+          <td>
+            <Badge status={row.status} locale={locale} />
+            {row.revisionInDraft ? <small className={styles.marker}>{c.revision}</small> : null}
+          </td>
+          <NumericCell>
+            {row.totalAmount === undefined ? c.hidden : formatMoney(row.totalAmount, row.currency)}
+          </NumericCell>
+          <td>{row.date.slice(0, 10)}</td>
+          <RowAction
+            href={`/${locale}/projects/${encodeURIComponent(row.projectKey)}/quote` as Route}
+            label={ui.open}
+            name={row.projectName}
+          />
+        </tr>
+      ))}
+    </Table>
   );
 }

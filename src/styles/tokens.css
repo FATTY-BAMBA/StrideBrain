@@ -67,6 +67,8 @@
   --icon-size: 18px;
   --sidebar-width: 248px;
   --content-width: 1500px;
+  --table-min-width: 720px;
+  --filter-width: 480px;
 
   /* Legacy: mechanically renamed, never use in new components. */
   --legacy-canvas: #f4f6f5;

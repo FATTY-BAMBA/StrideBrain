@@ -1,8 +1,8 @@
 {
   "src/app/globals.css": {
-    "color": 50,
-    "fontSize": 41,
-    "radius": 18
+    "color": 28,
+    "fontSize": 23,
+    "radius": 11
   },
   "src/components/comparisons/comparison-experience.module.css": {
     "color": 41,
