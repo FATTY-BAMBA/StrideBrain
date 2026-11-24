@@ -2,6 +2,8 @@
 
 ## Delivery
 
+[Draft PR #70](https://github.com/FATTY-BAMBA/StrideBrain/pull/70). Hosted acceptance remains waiting for the Product Director.
+
 Branch `build/sb-069-design-foundation` starts from merged main `b972483a206a49ad7929aa4b7cdf24c3bf0de3d2`, after PR #68. Delivery A committed the token file, mechanical legacy renames and the tested CSS gate. B added licensed local fonts and measured their transfer before continuing. C introduced the light shell and icons; D rebuilt the Quotes and Clients lists with shared components; E adds [DESIGN_SYSTEM.md](../../../docs/design/DESIGN_SYSTEM.md), the AGENTS.md rule and this evidence. Paper, Tabs and SectionHeading are specified, not implemented.
 
 ## Required checks

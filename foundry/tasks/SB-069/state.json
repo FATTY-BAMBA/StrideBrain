@@ -2,7 +2,7 @@
   "issue": 69,
   "branch": "build/sb-069-design-foundation",
   "baseCommit": "b972483a206a49ad7929aa4b7cdf24c3bf0de3d2",
-  "status": "LOCAL_VERIFIED_READY_FOR_DRAFT_PR",
+  "status": "DRAFT_PR_LOCAL_VERIFIED",
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "firstVisitFontBytes": 808824,
   "fontBudgetBytes": 1500000,
@@ -17,5 +17,7 @@
   },
   "finalHomeFontBytes": 736628,
   "pullRequestState": "DRAFT",
-  "paidEvaluation": "NOT_REQUIRED_ASSISTANT_UNCHANGED"
+  "paidEvaluation": "NOT_REQUIRED_ASSISTANT_UNCHANGED",
+  "pullRequest": 70,
+  "pullRequestUrl": "https://github.com/FATTY-BAMBA/StrideBrain/pull/70"
 }
