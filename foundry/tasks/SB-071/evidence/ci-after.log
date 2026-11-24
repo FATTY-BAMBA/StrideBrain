@@ -1,0 +1,8 @@
+2026-11-24T13:26:33.9431633Z ##[group]Run npm run check
+2026-11-24T13:27:01.9742348Z > vitest run
+2026-11-24T13:27:03.3633014Z TEST_DATABASE_TEMPLATE_MS=939
+2026-11-24T13:29:38.5236067Z  Test Files  156 passed (156)
+2026-11-24T13:29:38.5237216Z       Tests  1589 passed (1589)
+2026-11-24T13:29:38.5239044Z    Duration  156.14s (transform 5.85s, setup 45.93s, import 15.43s, tests 294.60s, environment 9.24s)
+2026-11-24T13:29:39.3567761Z > next build
+2026-11-24T13:29:55.4911257Z ##[group]Run npm audit --omit=dev --audit-level=high

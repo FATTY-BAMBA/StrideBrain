@@ -6,13 +6,13 @@ Base: merged main `cefe160`. The original failure is recorded in SB-069's `revie
 
 The issue's claim that every database test writes one shared database is not accurate on this base. [Inventory](evidence/database-inventory.json) identifies 27 database-using test files: 12 create their own databases, 13 use `assistantDatabase` private databases, and two use the supplied URL directly. The firm-list writers from #66 use the private helper. Their mutations to Organization area preferences, FirmJobType, FirmWorkCategory and pricing relations affect what comparisons read logically, but are not demonstrated to reach the hero-flow database. They cannot be named as the cause from source inspection alone.
 
-The shared hero-flow suite persists sessions, ComparisonRun, EconomicsEnrichmentRun, decisions and claims without file cleanup. The shared preview-handoff suite creates and revokes/deletes its own session IDs. Neither directly rewrites the hero job's quotes/costs/categories. `projects/project-list-postgres.test.ts` also reads firm lists through the default Prisma singleton while its other operations use its private client. That mixed ownership will disappear when the whole file uses its worker database. Other private suites manipulate quotes, costs, evidence, assignments and membership grants only inside their own databases.
+The shared hero-flow suite persists sessions, ComparisonRun, EconomicsEnrichmentRun, decisions and claims without file cleanup. The shared preview-handoff suite creates and revokes/deletes its own session IDs. Neither directly rewrites the hero job's quotes/costs/categories. `projects/project-list-postgres.test.ts` also reads firm lists through the default Prisma singleton while its other operations use its private client. That mixed ownership is removed by using the worker database for the whole file. Other private suites manipulate quotes, costs, evidence, assignments and membership grants only inside their own databases.
 
 A diagnostic full run passed the database suites (including hero) but 14 DOM suites could not load the temporary setup outside the repository. This is an investigation-harness error, not a baseline application failure: [log](evidence/investigation-full.log). After moving that temporary setup into the repository, hero + preview handoff + firm-list writers + mapping-lock writers ran concurrently: **24 tests passed in four files**, [log](evidence/investigation-targeted.log). Temporary wrappers recorded authorized comparison retrieval, economics batch retrieval and economics persistence as OK: [trace](evidence/investigation-trace.jsonl). The wrappers/config were removed; the hero test is unchanged.
 
 The economics failure was not reproduced in that bounded attempt. Existing incomplete file cleanup and mixed ownership are risks, not a proven explanation. Isolation is implemented as a test-infrastructure guarantee; it is not presented as proof of the historical cause.
 
-CI before: [run 45390018974](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45390018974), commit `09008b0`: 1,575 tests / 154 files, Vitest duration **225.23 seconds**. Maximum acceptable after-time: **337.845 seconds** (1.5×). CI after and the 20-run evidence are pending.
+CI before: [run 45390018974](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45390018974), commit `09008b0`: 1,575 tests / 154 files, Vitest duration **225.23 seconds**. Maximum acceptable after-time: **337.845 seconds** (1.5×). CI after is **156.14 seconds** at `5b41c0e`: [run 45403350818](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45403350818), [extracted timing](evidence/ci-after.log). This is about 31% faster than the baseline and below the 337.845-second ceiling. The full `npm run check` and dependency audit passed.
 
 ## B — Worker lifecycle and isolation controls
 
@@ -34,6 +34,37 @@ The implementation follows [Vitest per-file setup](https://vitest.dev/config/set
 
 CI now invokes `npm run check`; the Vitest global setup builds the template and checks repeatable seeding instead of mutating the service database in separate workflow steps. AGENTS.md includes the database-state rule. `npm run test:stability` captures 20 independent sequential runs and halts on any failure, skipped test, count reduction or failed hero flow. Ten runs use distinct file-shuffle seeds; within-file scenarios stay ordered.
 
-## Verification still pending
+## Final stability evidence
 
-20 consecutive runs and CI duration comparison. No hosted or paid actions. This issue has no test-site click-through; the PR will remain draft for evidence review.
+**20 consecutive runs passed** on implementation commit `5b41c0e904ffccf895e7783e6066274f1197ee08`: ten normal file orders, then ten distinct file-shuffle seeds `71001`–`71010`. Every run passed **1,589 tests in 156 files**, with zero failed/skipped tests and no retries. The unchanged hero-flow test passed in every run; its Git blob hash is `fe45c89d86755cac951838934e2abcce62c27c93`. The prior baseline was 1,575 tests; the 14 additional tests cover isolation and its safety boundaries.
+
+[Machine-readable summary](evidence/stability/summary.json) records the commit, hero hash, counts and timing for every execution. The table links each full log. These were independent sequential executions, not reruns after failures. Local wall time per run was 99.377–142.890 seconds. The evidence-only follow-up commit adds these records without changing implementation, tests or configuration; a diff against the tested implementation confirmed this.
+
+| Run | File order / seed | Wall seconds | Result |
+| --- | --- | ---: | --- |
+| 1 | default | 100.808 | [1,589 passed](evidence/stability/run-01-default.log) |
+| 2 | default | 104.761 | [1,589 passed](evidence/stability/run-02-default.log) |
+| 3 | default | 100.580 | [1,589 passed](evidence/stability/run-03-default.log) |
+| 4 | default | 103.749 | [1,589 passed](evidence/stability/run-04-default.log) |
+| 5 | default | 99.956 | [1,589 passed](evidence/stability/run-05-default.log) |
+| 6 | default | 105.687 | [1,589 passed](evidence/stability/run-06-default.log) |
+| 7 | default | 102.944 | [1,589 passed](evidence/stability/run-07-default.log) |
+| 8 | default | 101.134 | [1,589 passed](evidence/stability/run-08-default.log) |
+| 9 | default | 100.498 | [1,589 passed](evidence/stability/run-09-default.log) |
+| 10 | default | 99.377 | [1,589 passed](evidence/stability/run-10-default.log) |
+| 11 | shuffle-71001 | 118.985 | [1,589 passed](evidence/stability/run-11-shuffle-71001.log) |
+| 12 | shuffle-71002 | 142.890 | [1,589 passed](evidence/stability/run-12-shuffle-71002.log) |
+| 13 | shuffle-71003 | 120.629 | [1,589 passed](evidence/stability/run-13-shuffle-71003.log) |
+| 14 | shuffle-71004 | 102.545 | [1,589 passed](evidence/stability/run-14-shuffle-71004.log) |
+| 15 | shuffle-71005 | 124.827 | [1,589 passed](evidence/stability/run-15-shuffle-71005.log) |
+| 16 | shuffle-71006 | 121.225 | [1,589 passed](evidence/stability/run-16-shuffle-71006.log) |
+| 17 | shuffle-71007 | 124.569 | [1,589 passed](evidence/stability/run-17-shuffle-71007.log) |
+| 18 | shuffle-71008 | 112.455 | [1,589 passed](evidence/stability/run-18-shuffle-71008.log) |
+| 19 | shuffle-71009 | 105.239 | [1,589 passed](evidence/stability/run-19-shuffle-71009.log) |
+| 20 | shuffle-71010 | 117.939 | [1,589 passed](evidence/stability/run-20-shuffle-71010.log) |
+
+After the final run, a read-only local catalog check found **zero remaining `sb_test_` databases**: [cleanup record](evidence/cleanup.json). Production source, existing migrations and the hero-flow file remain byte-identical to the merged main base `cefe160`.
+
+## Not verified / review pending
+
+The historical economics failure's exact cause was not reproduced or proven. The investigation above records the ownership paths found and the evidence that rules out treating the existing private firm-list writers as a demonstrated cause. No browser tests, hosted actions or paid evaluation were performed; these are outside this infrastructure issue. CI and the timing comparison passed. There is no test-site click-through for #71. [PR #72](https://github.com/FATTY-BAMBA/StrideBrain/pull/72) remains draft for evidence review.
