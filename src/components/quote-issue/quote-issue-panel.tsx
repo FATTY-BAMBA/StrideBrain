@@ -541,7 +541,6 @@ function ConflictForm({
   onResolve: (status: "RESOLVED" | "DISMISSED", note: string) => void;
 }) {
   const copy = quoteIssueCopy(locale),
-    docCopy = quoteDocumentCopy(locale),
     [status, setStatus] = useState<"RESOLVED" | "DISMISSED">("RESOLVED"),
     [note, setNote] = useState("");
   return (

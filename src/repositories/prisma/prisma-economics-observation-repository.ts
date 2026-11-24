@@ -57,7 +57,13 @@ type FinancialLineRow = Readonly<{
   authorityState: AuthorityState;
 }>;
 
-type QuoteLineRow = FinancialLineRow & Readonly<{ unitPrice: DecimalLike }>;
+type QuoteLineRow = Omit<FinancialLineRow, "categoryId"> &
+  Readonly<{
+    categoryId: string | null;
+    unitPrice: DecimalLike;
+    kind?: string;
+    percentage?: DecimalLike | null;
+  }>;
 type CostLineRow = FinancialLineRow & Readonly<{ unitCost: DecimalLike }>;
 type OfferLineRow = Readonly<{
   id: string;
@@ -70,6 +76,8 @@ type OfferLineRow = Readonly<{
 }>;
 
 type QuoteVersionRow = Readonly<{
+  documentFormatVersion?: number;
+  discountAmount?: DecimalLike;
   status: string;
   id: string;
   organizationId: string;
@@ -339,7 +347,26 @@ function mapQuote(
   conflicts: ReadonlyMap<string, readonly string[]>,
 ): FinancialObservationRecord {
   const lines = Object.freeze(
-    row.items.map((line) => mapLine(line, "QUOTE_ITEM", line.unitPrice, evidence)),
+    row.items
+      .filter((line) => line.kind !== "NOTE")
+      .map((line) => ({
+        ...mapLine(
+          { ...line, categoryId: line.categoryId ?? "" },
+          "QUOTE_ITEM",
+          line.unitPrice,
+          evidence,
+        ),
+        ...(row.documentFormatVersion === 2
+          ? {
+              quoteCalculation: {
+                kind: line.kind === "PERCENTAGE" ? ("PERCENTAGE" as const) : ("ITEM" as const),
+                ...(line.percentage !== null && line.percentage !== undefined
+                  ? { percentage: line.percentage.toString() }
+                  : {}),
+              },
+            }
+          : {}),
+      })),
   );
   const evidenceReferenceIds = recordEvidence("QUOTE_VERSION", row.id, lines, evidence);
   return Object.freeze({
@@ -348,6 +375,9 @@ function mapQuote(
     projectKey: project.businessKey,
     recordKey: `${row.quote.businessKey}-v${row.versionNumber}`,
     quoteStatus: row.status,
+    ...(row.documentFormatVersion === 2
+      ? { quoteDocument: { discountAmount: row.discountAmount?.toString() ?? "0" } }
+      : {}),
     versionNumber: row.versionNumber,
     subjectType: "QUOTE_VERSION",
     observationType: row.observationType,
@@ -659,6 +689,8 @@ export class PrismaEconomicsObservationRepository implements EconomicsObservatio
               authorityState: true,
               currency: true,
               amountBeforeTax: true,
+              documentFormatVersion: true,
+              discountAmount: true,
               approvedAt: true,
               createdAt: true,
               supersededById: true,
@@ -673,6 +705,8 @@ export class PrismaEconomicsObservationRepository implements EconomicsObservatio
                   amount: true,
                   quantity: true,
                   unitPrice: true,
+                  kind: true,
+                  percentage: true,
                   unit: true,
                   authorityState: true,
                 },

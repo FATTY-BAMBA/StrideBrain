@@ -17,6 +17,7 @@ export type QuoteDraftView =
       kind: "AVAILABLE";
       job: QuoteDraftJob;
       canDraft: boolean;
+      canUpdateStage?: boolean;
       canReadAmounts: boolean;
       structure?: QuoteStructure | null;
       categoryTotals?: ReturnType<typeof quoteCategoryTotals>;
@@ -69,6 +70,7 @@ export class GetQuoteDraft {
         kind: "AVAILABLE",
         job,
         canReadAmounts,
+        canUpdateStage: context.capabilities.has("project:update"),
         categoryTotals: saved?.document ? quoteCategoryTotals(saved.document) : [],
         structure,
         canDraft:

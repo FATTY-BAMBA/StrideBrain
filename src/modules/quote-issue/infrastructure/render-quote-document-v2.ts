@@ -184,7 +184,12 @@ export async function renderQuoteDocumentV2(
     ...snapshot.document.percentageLines.map(
       (fee) => [`${fee.description} (${plain(fee.percentage)}%)`, fee.amount] as const,
     ),
-    [snapshot.document.discount.label || copy.discount, `-${snapshot.document.discount.amount}`],
+    [
+      snapshot.document.discount.label || copy.discount,
+      snapshot.document.discount.amount === "0.00" || snapshot.document.discount.amount === "0"
+        ? "0"
+        : `-${snapshot.document.discount.amount}`,
+    ],
     [copy.beforeTax, snapshot.totals.amountBeforeTax],
     [copy.tax, snapshot.totals.taxAmount],
     [copy.total, snapshot.totals.totalAmount],

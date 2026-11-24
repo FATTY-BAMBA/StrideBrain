@@ -378,6 +378,24 @@ export class GetQuoteIssue {
         amounts: state.current
           ? { basis: "CURRENT" as const, currency: state.current.currency, ...state.current.totals }
           : null,
+        ...(state.issued && state.current?.id === state.issued.id
+          ? {
+              issuedHeader: {
+                firmName: state.issued.snapshot.firm.legalName,
+                clientName: state.issued.snapshot.clientName,
+                contactPerson: state.issued.snapshot.clientDetails?.contactPerson,
+                clientAddress: state.issued.snapshot.clientDetails?.address,
+                clientTaxId: state.issued.snapshot.clientDetails?.taxId,
+                projectName: state.issued.snapshot.projectName,
+                siteAddress:
+                  state.issued.snapshot.schemaVersion === "QUOTE-DOCUMENT-2.0"
+                    ? state.issued.snapshot.siteAddress
+                    : "",
+                issueDate: state.issued.snapshot.issueDate,
+                validUntil: state.issued.snapshot.validUntil,
+              },
+            }
+          : {}),
         versionId: state.current?.id ?? null,
         status: state.current?.status ?? null,
         today: organizationDate(this.clock(), state.timezone),

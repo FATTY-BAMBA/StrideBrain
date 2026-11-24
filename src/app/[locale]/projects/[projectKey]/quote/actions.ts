@@ -1,4 +1,5 @@
 "use server";
+import type { QuoteTotalsPreview } from "@/modules/quote-draft/application/preview-quote-totals";
 import { revalidatePath } from "next/cache";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
 import { createQuoteDraftServices } from "@/lib/server/quote-draft-services";
@@ -47,9 +48,7 @@ export async function saveQuoteDraftAction(
 export async function previewQuoteTotalsAction(
   locale: string,
   raw: unknown,
-): Promise<
-  import("@/modules/quote-draft/application/preview-quote-totals").QuoteTotalsPreview | null
-> {
+): Promise<QuoteTotalsPreview | null> {
   try {
     const context = await actor(locale);
     return context ? await createQuoteDraftServices().totals.execute(context, raw) : null;

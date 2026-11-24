@@ -73,6 +73,7 @@ export type EconomicsProjectSnapshot = Readonly<{
 }>;
 
 export type EconomicsLineSnapshot = Readonly<{
+  quoteCalculation?: Readonly<{ kind: "ITEM" | "PERCENTAGE"; percentage?: string }>;
   id: string;
   subjectType: Extract<
     EconomicsSubjectType,
@@ -89,6 +90,7 @@ export type EconomicsLineSnapshot = Readonly<{
 }>;
 
 export type FinancialObservationRecord = Readonly<{
+  quoteDocument?: Readonly<{ discountAmount: string }>;
   id: string;
   projectId: string;
   projectKey: string;

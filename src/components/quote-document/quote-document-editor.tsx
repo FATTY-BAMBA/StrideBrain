@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import type { Route } from "next";
 import { useRouter } from "next/navigation";
@@ -9,6 +9,7 @@ import {
   saveQuoteDraftAction,
   quoteDraftEvidenceAction,
 } from "@/app/[locale]/projects/[projectKey]/quote/actions";
+import { updateProjectStageAction } from "@/app/[locale]/projects/actions";
 import { PageHeader } from "@/components/ui/page-header";
 import { Button } from "@/components/ui/button";
 import { Paper } from "@/components/ui/paper";
@@ -22,6 +23,7 @@ import type {
   EvidencePanelSelection,
 } from "@/modules/evidence-panel/contracts";
 import type { QuoteDraftView } from "@/modules/quote-draft/application/get-quote-draft";
+import type { PrepareDraftOutcome } from "@/modules/quote-draft/application/prepare-quote-draft";
 import type {
   QuoteDocumentDraft,
   QuoteDocumentLine,
@@ -67,26 +69,49 @@ function newSection(): QuoteDocumentSection {
   return { id: crypto.randomUUID(), title: "", categoryId: null, lines: [] };
 }
 function documentFor(view: Available, locale: Locale): QuoteDocumentDraft {
-  return (
-    view.saved?.document ?? {
-      sections: [newSection()],
-      discount: { label: quoteDocumentCopy(locale).discount, amount: "0" },
-    }
-  );
+  return view.saved?.document
+    ? { sections: view.saved.document.sections, discount: view.saved.document.discount }
+    : {
+        sections: [newSection()],
+        discount: { label: quoteDocumentCopy(locale).discount, amount: "0" },
+      };
 }
 export function QuoteDocumentEditor({
   initial,
   issue,
   locale,
+  preparation,
 }: {
   initial: Available;
   issue: IssueView | null;
   locale: Locale;
+  preparation?: Extract<PrepareDraftOutcome, { kind: "PREPARED" }> | null;
 }) {
   const copy = quoteDocumentCopy(locale),
     draftCopy = quoteDraftCopy(locale),
     issueCopy = quoteIssueCopy(locale),
     router = useRouter();
+  const workspaceRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const workspace = workspaceRef.current;
+    if (!workspace || typeof ResizeObserver === "undefined") return;
+    const measure = () => {
+      const paper = workspace.querySelector("article");
+      if (paper)
+        workspace.style.setProperty(
+          "--document-top",
+          `${paper.getBoundingClientRect().top + window.scrollY}px`,
+        );
+    };
+    const observer = new ResizeObserver(measure);
+    observer.observe(workspace);
+    window.addEventListener("resize", measure);
+    measure();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
   const [view, setView] = useState(initial),
     [document, setDocument] = useState(() => documentFor(initial, locale));
   const [savedDocument, setSavedDocument] = useState(() => JSON.stringify(document));
@@ -94,9 +119,19 @@ export function QuoteDocumentEditor({
     initial.saved?.document ?? null,
   );
   const [categoryTotals, setCategoryTotals] = useState(initial.categoryTotals ?? []);
-  const [referenceRows, setReferences] = useState(() => references(initial));
-  const [token, setToken] = useState<string | null>(null),
+  const [referenceRows, setReferences] = useState(() =>
+    preparation
+      ? preparation.preparation.suggestions.map((suggestion) => ({
+          ...suggestion,
+          unavailable: false,
+          outdated: false,
+        }))
+      : references(initial),
+  );
+  const [token, setToken] = useState<string | null>(preparation?.token ?? null),
     [key, setKey] = useState(() => crypto.randomUUID());
+  const [firstSave, setFirstSave] = useState(false),
+    [moved, setMoved] = useState(false);
   const [reviewing, setReviewing] = useState(false);
   const [validUntil, setValidUntil] = useState(issue?.defaults.validUntil);
   const [message, setMessage] = useState(""),
@@ -185,6 +220,7 @@ export function QuoteDocumentEditor({
           : draftCopy[response.result.kind],
       );
       if (response.result.kind === "SAVED" && response.view?.kind === "AVAILABLE") {
+        setFirstSave(response.result.firstSave);
         const next = documentFor(response.view, locale);
         setView(response.view);
         setDocument(next);
@@ -196,6 +232,24 @@ export function QuoteDocumentEditor({
         setKey(crypto.randomUUID());
         router.refresh();
       }
+    });
+  }
+  function moveToReview() {
+    start(async () => {
+      const form = new FormData();
+      for (const [key, value] of Object.entries({
+        locale,
+        businessKey: view.job.businessKey,
+        expectedStage: view.job.stage,
+        stage: "QUOTE_REVIEW",
+        idempotencyKey: crypto.randomUUID(),
+      }))
+        form.set(key, value);
+      const result = await updateProjectStageAction({}, form);
+      if (result.message === "updated") {
+        setMoved(true);
+        setMessage(draftCopy.moved);
+      } else setMessage(draftCopy.UNAVAILABLE);
     });
   }
   function refresh() {
@@ -216,7 +270,7 @@ export function QuoteDocumentEditor({
       setMessage(draftCopy.refreshHint);
     });
   }
-  function useSuggestion(row: Reference) {
+  function applySuggestion(row: Reference) {
     const mapped = document.sections.filter((section) => section.categoryId === row.categoryId);
     if (
       !row.basis?.suggestedAmount ||
@@ -252,11 +306,11 @@ export function QuoteDocumentEditor({
       setEvidence({ categoryId, outcome, ...(selection ? { selection } : {}) });
     });
   }
-  const header = view.job.header;
+  const header = issue?.issuedHeader ?? view.job.header;
   const format = (amount: string | null | undefined) =>
     amount == null ? "—" : formatMoney(amount, view.job.currency);
   return (
-    <section className={styles.workspace} aria-busy={pending}>
+    <section className={styles.workspace} aria-busy={pending} ref={workspaceRef}>
       <PageHeader
         context={`${view.job.businessKey} · ${view.job.name}`}
         title={copy.title}
@@ -298,21 +352,29 @@ export function QuoteDocumentEditor({
           <Link href={compareHref}>{draftCopy.compare}</Link>
         </Notice>
       )}
+      {firstSave &&
+        !moved &&
+        view.canUpdateStage &&
+        ["DISCOVERY", "DESIGN"].includes(view.job.stage) && (
+          <Button disabled={pending} onClick={moveToReview}>
+            {draftCopy.move}
+          </Button>
+        )}
       <div className={styles.layout}>
         <div className={styles.main}>
           <Paper className={styles.document} aria-label={copy.title}>
             <header className={styles.documentHeader}>
-              <h2>{header?.firmName ?? copy.title}</h2>
+              <h2>{header?.firmName ? `${header.firmName} · ${copy.title}` : copy.title}</h2>
               <dl className={styles.meta}>
                 {[
                   [copy.client, header?.clientName],
                   [copy.contact, header?.contactPerson],
                   [copy.clientAddress, header?.clientAddress],
                   [copy.clientTaxId, header?.clientTaxId],
-                  [copy.project, view.job.name],
-                  [copy.siteAddress, view.job.siteAddress],
-                  [copy.issueDate, issue?.today],
-                  [issueCopy.validUntil, validUntil],
+                  [copy.project, issue?.issuedHeader?.projectName ?? view.job.name],
+                  [copy.siteAddress, issue?.issuedHeader?.siteAddress ?? view.job.siteAddress],
+                  [copy.issueDate, issue?.issuedHeader?.issueDate ?? issue?.today],
+                  [issueCopy.validUntil, issue?.issuedHeader?.validUntil ?? validUntil],
                 ]
                   .filter(([, value]) => value)
                   .map(([label, value]) => (
@@ -367,289 +429,312 @@ export function QuoteDocumentEditor({
                   }}
                 >
                   <div className={styles.scroll} tabIndex={0} role="region" aria-label={copy.title}>
-                    {document.sections.map((section, si) => (
-                      <section className={styles.section} key={section.id ?? si}>
-                        <div className={styles.sectionHeader}>
-                          <label>
-                            {copy.sectionTitle}
-                            <input
-                              className={ui.input}
-                              aria-label={`${copy.sectionTitle} ${si + 1}`}
-                              maxLength={80}
-                              value={section.title}
-                              disabled={!editable || pending}
-                              onChange={(event) => sectionAt(si, { title: event.target.value })}
-                            />
-                          </label>
-                          <label>
-                            {copy.category}
-                            <select
-                              className={ui.input}
-                              value={section.categoryId ?? ""}
-                              disabled={!editable || pending}
-                              onChange={(event) =>
-                                sectionAt(si, { categoryId: event.target.value || null })
-                              }
-                            >
-                              <option value="">{copy.noCategory}</option>
-                              {[
-                                ...new Set([
-                                  ...view.job.commercialCategoryIds,
-                                  ...(section.categoryId ? [section.categoryId] : []),
-                                ]),
-                              ].map((id) => (
-                                <option key={id} value={id}>
-                                  {categoryLabel(locale, id, view.job.catalog.workCategories)}
-                                </option>
-                              ))}
-                            </select>
-                          </label>
-                          {editable && (
-                            <div className={styles.controls}>
-                              <Button
-                                disabled={pending || si === 0}
-                                onClick={() =>
-                                  change({ ...document, sections: move(document.sections, si, -1) })
-                                }
-                              >
-                                {copy.up}
-                              </Button>
-                              <Button
-                                disabled={pending || si === document.sections.length - 1}
-                                onClick={() =>
-                                  change({ ...document, sections: move(document.sections, si, 1) })
-                                }
-                              >
-                                {copy.down}
-                              </Button>
-                              <Button
-                                variant="quiet"
-                                disabled={pending || document.sections.length === 1}
-                                onClick={() =>
-                                  change({
-                                    ...document,
-                                    sections: document.sections.filter((_, i) => i !== si),
-                                  })
-                                }
-                              >
-                                {copy.remove}
-                              </Button>
-                            </div>
-                          )}
-                        </div>
-                        <table className={styles.table}>
-                          <thead>
-                            <tr>
-                              {[
-                                copy.number,
-                                copy.item,
-                                copy.unit,
-                                copy.quantity,
-                                copy.price,
-                                copy.amount,
-                                copy.remarks,
-                              ].map((label) => (
-                                <th key={label}>{label}</th>
-                              ))}
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {section.lines.map((line, li) => {
-                              const disabled = !editable || pending,
-                                label = `${si + 1}.${li + 1}`;
-                              const amount = calculated?.sections[si]?.lines[li]?.amount;
-                              return (
-                                <tr key={line.id ?? li}>
-                                  <td>
-                                    {editable ? (
-                                      <details>
-                                        <summary aria-label={`${copy.item} ${label}`}>
-                                          {li + 1}
-                                        </summary>
-                                        <div className={styles.controls}>
-                                          <Button
-                                            disabled={disabled || li === 0}
-                                            onClick={() =>
-                                              sectionAt(si, { lines: move(section.lines, li, -1) })
-                                            }
-                                          >
-                                            {copy.up}
-                                          </Button>
-                                          <Button
-                                            disabled={disabled || li === section.lines.length - 1}
-                                            onClick={() =>
-                                              sectionAt(si, { lines: move(section.lines, li, 1) })
-                                            }
-                                          >
-                                            {copy.down}
-                                          </Button>
-                                          <Button
-                                            variant="quiet"
-                                            disabled={disabled}
-                                            onClick={() =>
-                                              sectionAt(si, {
-                                                lines: section.lines.filter((_, i) => i !== li),
-                                              })
-                                            }
-                                          >
-                                            {copy.remove}
-                                          </Button>
-                                        </div>
-                                      </details>
-                                    ) : (
-                                      li + 1
-                                    )}
-                                  </td>
-                                  <td colSpan={line.kind === "NOTE" ? 6 : 1}>
-                                    <textarea
-                                      aria-label={`${copy.item} ${label}`}
-                                      required
-                                      rows={2}
-                                      maxLength={500}
-                                      value={line.description}
-                                      disabled={disabled}
-                                      onChange={(event) =>
-                                        lineAt(si, li, { ...line, description: event.target.value })
-                                      }
-                                    />
-                                    {line.kind === "NOTE" && <small>{copy.note}</small>}
-                                  </td>
-                                  {line.kind === "ITEM" && (
-                                    <>
-                                      <td>
-                                        <input
-                                          aria-label={`${copy.unit} ${label}`}
-                                          required
-                                          list="quote-unit-suggestions"
-                                          maxLength={8}
-                                          value={line.unit}
-                                          disabled={disabled}
-                                          onChange={(event) =>
-                                            lineAt(si, li, { ...line, unit: event.target.value })
+                    <table className={styles.table}>
+                      <thead>
+                        <tr>
+                          {[
+                            copy.number,
+                            copy.item,
+                            copy.unit,
+                            copy.quantity,
+                            copy.price,
+                            copy.amount,
+                            copy.remarks,
+                          ].map((label) => (
+                            <th key={label}>{label}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      {document.sections.map((section, si) => (
+                        <tbody key={section.id ?? si} data-section={si + 1}>
+                          <tr className={styles.sectionRow}>
+                            <td colSpan={5}>
+                              <div className={styles.sectionHeader}>
+                                <label>
+                                  {copy.sectionTitle}
+                                  <input
+                                    className={ui.input}
+                                    aria-label={`${copy.sectionTitle} ${si + 1}`}
+                                    maxLength={80}
+                                    value={section.title}
+                                    disabled={!editable || pending}
+                                    onChange={(event) =>
+                                      sectionAt(si, { title: event.target.value })
+                                    }
+                                  />
+                                </label>
+                                <label>
+                                  {copy.category}
+                                  <select
+                                    className={ui.input}
+                                    value={section.categoryId ?? ""}
+                                    disabled={!editable || pending}
+                                    onChange={(event) =>
+                                      sectionAt(si, { categoryId: event.target.value || null })
+                                    }
+                                  >
+                                    <option value="">{copy.noCategory}</option>
+                                    {[
+                                      ...new Set([
+                                        ...view.job.commercialCategoryIds,
+                                        ...(section.categoryId ? [section.categoryId] : []),
+                                      ]),
+                                    ].map((id) => (
+                                      <option key={id} value={id}>
+                                        {categoryLabel(locale, id, view.job.catalog.workCategories)}
+                                      </option>
+                                    ))}
+                                  </select>
+                                </label>
+                              </div>
+                            </td>
+                            <td className={styles.sectionTotal}>
+                              <small>{copy.sectionSubtotal}</small>
+                              {format(calculated?.sections[si]?.subtotal)}
+                            </td>
+                            <td>
+                              {editable && (
+                                <div className={styles.controls}>
+                                  <Button
+                                    disabled={pending || si === 0}
+                                    onClick={() =>
+                                      change({
+                                        ...document,
+                                        sections: move(document.sections, si, -1),
+                                      })
+                                    }
+                                  >
+                                    {copy.up}
+                                  </Button>
+                                  <Button
+                                    disabled={pending || si === document.sections.length - 1}
+                                    onClick={() =>
+                                      change({
+                                        ...document,
+                                        sections: move(document.sections, si, 1),
+                                      })
+                                    }
+                                  >
+                                    {copy.down}
+                                  </Button>
+                                  <Button
+                                    variant="quiet"
+                                    disabled={pending || document.sections.length === 1}
+                                    onClick={() =>
+                                      change({
+                                        ...document,
+                                        sections: document.sections.filter((_, i) => i !== si),
+                                      })
+                                    }
+                                  >
+                                    {copy.remove}
+                                  </Button>
+                                </div>
+                              )}
+                            </td>
+                          </tr>
+                          {section.lines.map((line, li) => {
+                            const disabled = !editable || pending,
+                              label = `${si + 1}.${li + 1}`;
+                            const amount = calculated?.sections[si]?.lines[li]?.amount;
+                            return (
+                              <tr key={line.id ?? li}>
+                                <td>
+                                  {editable ? (
+                                    <details>
+                                      <summary aria-label={`${copy.item} ${label}`}>
+                                        {li + 1}
+                                      </summary>
+                                      <div className={styles.controls}>
+                                        <Button
+                                          disabled={disabled || li === 0}
+                                          onClick={() =>
+                                            sectionAt(si, { lines: move(section.lines, li, -1) })
                                           }
-                                        />
-                                      </td>
-                                      <td>
-                                        <input
-                                          className={styles.numeric}
-                                          aria-label={`${copy.quantity} ${label}`}
-                                          required
-                                          inputMode="decimal"
-                                          pattern="[0-9]+(\.[0-9]{1,2})?"
-                                          maxLength={17}
-                                          value={line.quantity}
+                                        >
+                                          {copy.up}
+                                        </Button>
+                                        <Button
+                                          disabled={disabled || li === section.lines.length - 1}
+                                          onClick={() =>
+                                            sectionAt(si, { lines: move(section.lines, li, 1) })
+                                          }
+                                        >
+                                          {copy.down}
+                                        </Button>
+                                        <Button
+                                          variant="quiet"
                                           disabled={disabled}
-                                          onChange={(event) =>
-                                            lineAt(si, li, {
-                                              ...line,
-                                              quantity: event.target.value,
+                                          onClick={() =>
+                                            sectionAt(si, {
+                                              lines: section.lines.filter((_, i) => i !== li),
                                             })
                                           }
-                                        />
-                                      </td>
-                                      <td>
-                                        <input
-                                          className={styles.numeric}
-                                          aria-label={`${copy.price} ${label}`}
-                                          required
-                                          inputMode="decimal"
-                                          pattern="[0-9]+(\.[0-9]{1,2})?"
-                                          maxLength={17}
-                                          value={line.unitPrice}
-                                          disabled={disabled}
-                                          onChange={(event) =>
-                                            lineAt(si, li, {
-                                              ...line,
-                                              unitPrice: event.target.value,
-                                            })
-                                          }
-                                        />
-                                        <small className={styles.numeric}>
-                                          {/^\d+(\.\d{1,2})?$/.test(line.unitPrice)
-                                            ? format(line.unitPrice)
-                                            : ""}
-                                        </small>
-                                      </td>
-                                    </>
+                                        >
+                                          {copy.remove}
+                                        </Button>
+                                      </div>
+                                    </details>
+                                  ) : (
+                                    li + 1
                                   )}
-                                  {line.kind === "PERCENTAGE" && (
-                                    <td colSpan={3}>
-                                      <label>
-                                        {copy.percentage}
-                                        <input
-                                          className={styles.numeric}
-                                          aria-label={`${copy.percentage} ${label}`}
-                                          required
-                                          inputMode="decimal"
-                                          pattern="[0-9]+(\.[0-9]{1,2})?"
-                                          maxLength={9}
-                                          value={line.percentage}
-                                          disabled={disabled}
-                                          onChange={(event) =>
-                                            lineAt(si, li, {
-                                              ...line,
-                                              percentage: event.target.value,
-                                            })
-                                          }
-                                        />
-                                        %
-                                      </label>
+                                </td>
+                                <td colSpan={line.kind === "NOTE" ? 6 : 1}>
+                                  <textarea
+                                    aria-label={`${copy.item} ${label}`}
+                                    required
+                                    rows={2}
+                                    maxLength={500}
+                                    value={line.description}
+                                    disabled={disabled}
+                                    onChange={(event) =>
+                                      lineAt(si, li, { ...line, description: event.target.value })
+                                    }
+                                  />
+                                  {line.kind === "NOTE" && <small>{copy.note}</small>}
+                                </td>
+                                {line.kind === "ITEM" && (
+                                  <>
+                                    <td>
+                                      <input
+                                        aria-label={`${copy.unit} ${label}`}
+                                        required
+                                        list="quote-unit-suggestions"
+                                        maxLength={8}
+                                        value={line.unit}
+                                        disabled={disabled}
+                                        onChange={(event) =>
+                                          lineAt(si, li, { ...line, unit: event.target.value })
+                                        }
+                                      />
                                     </td>
-                                  )}
-                                  {line.kind !== "NOTE" && (
-                                    <>
-                                      <td className={styles.numeric}>
-                                        <output aria-label={`${copy.amount} ${label}`}>
-                                          {format(amount)}
-                                        </output>
-                                      </td>
-                                      <td>
-                                        <textarea
-                                          aria-label={`${copy.remarks} ${label}`}
-                                          rows={2}
-                                          maxLength={200}
-                                          value={line.remark}
-                                          disabled={disabled}
-                                          onChange={(event) =>
-                                            lineAt(si, li, { ...line, remark: event.target.value })
-                                          }
-                                        />
-                                      </td>
-                                    </>
-                                  )}
-                                </tr>
-                              );
-                            })}
-                          </tbody>
-                        </table>
-                        {!section.lines.length && <p>{copy.empty}</p>}
-                        <p className={styles.sectionTotal}>
-                          {copy.sectionSubtotal}：{format(calculated?.sections[si]?.subtotal)}
-                        </p>
-                        {editable && (
-                          <div className={styles.controls}>
-                            <Button
-                              disabled={pending || lineCount >= 300}
-                              onClick={() => addLine(si, "ITEM")}
-                            >
-                              {copy.addItem}
-                            </Button>
-                            <Button
-                              disabled={pending || lineCount >= 300}
-                              onClick={() => addLine(si, "PERCENTAGE")}
-                            >
-                              {copy.addFee}
-                            </Button>
-                            <Button
-                              disabled={pending || lineCount >= 300}
-                              onClick={() => addLine(si, "NOTE")}
-                            >
-                              {copy.addNote}
-                            </Button>
-                          </div>
-                        )}
-                      </section>
-                    ))}
+                                    <td>
+                                      <input
+                                        className={styles.numeric}
+                                        aria-label={`${copy.quantity} ${label}`}
+                                        required
+                                        inputMode="decimal"
+                                        pattern="[0-9]+(\.[0-9]{1,2})?"
+                                        maxLength={17}
+                                        value={line.quantity}
+                                        disabled={disabled}
+                                        onChange={(event) =>
+                                          lineAt(si, li, {
+                                            ...line,
+                                            quantity: event.target.value,
+                                          })
+                                        }
+                                      />
+                                    </td>
+                                    <td>
+                                      <input
+                                        className={styles.numeric}
+                                        aria-label={`${copy.price} ${label}`}
+                                        required
+                                        inputMode="decimal"
+                                        pattern="[0-9]+(\.[0-9]{1,2})?"
+                                        maxLength={17}
+                                        value={line.unitPrice}
+                                        disabled={disabled}
+                                        onChange={(event) =>
+                                          lineAt(si, li, {
+                                            ...line,
+                                            unitPrice: event.target.value,
+                                          })
+                                        }
+                                      />
+                                      <small className={styles.numeric}>
+                                        {/^\d+(\.\d{1,2})?$/.test(line.unitPrice)
+                                          ? format(line.unitPrice)
+                                          : ""}
+                                      </small>
+                                    </td>
+                                  </>
+                                )}
+                                {line.kind === "PERCENTAGE" && (
+                                  <td colSpan={3}>
+                                    <label>
+                                      {copy.percentage}
+                                      <input
+                                        className={styles.numeric}
+                                        aria-label={`${copy.percentage} ${label}`}
+                                        required
+                                        inputMode="decimal"
+                                        pattern="[0-9]+(\.[0-9]{1,2})?"
+                                        maxLength={9}
+                                        value={line.percentage}
+                                        disabled={disabled}
+                                        onChange={(event) =>
+                                          lineAt(si, li, {
+                                            ...line,
+                                            percentage: event.target.value,
+                                          })
+                                        }
+                                      />
+                                      %
+                                    </label>
+                                  </td>
+                                )}
+                                {line.kind !== "NOTE" && (
+                                  <>
+                                    <td className={styles.numeric}>
+                                      <output aria-label={`${copy.amount} ${label}`}>
+                                        {format(amount)}
+                                      </output>
+                                    </td>
+                                    <td>
+                                      <textarea
+                                        aria-label={`${copy.remarks} ${label}`}
+                                        rows={2}
+                                        maxLength={200}
+                                        value={line.remark}
+                                        disabled={disabled}
+                                        onChange={(event) =>
+                                          lineAt(si, li, { ...line, remark: event.target.value })
+                                        }
+                                      />
+                                    </td>
+                                  </>
+                                )}
+                              </tr>
+                            );
+                          })}
+                          {!section.lines.length && (
+                            <tr>
+                              <td colSpan={7}>{copy.empty}</td>
+                            </tr>
+                          )}
+                          {editable && (
+                            <tr>
+                              <td colSpan={7}>
+                                {editable && (
+                                  <div className={styles.controls}>
+                                    <Button
+                                      disabled={pending || lineCount >= 300}
+                                      onClick={() => addLine(si, "ITEM")}
+                                    >
+                                      {copy.addItem}
+                                    </Button>
+                                    <Button
+                                      disabled={pending || lineCount >= 300}
+                                      onClick={() => addLine(si, "PERCENTAGE")}
+                                    >
+                                      {copy.addFee}
+                                    </Button>
+                                    <Button
+                                      disabled={pending || lineCount >= 300}
+                                      onClick={() => addLine(si, "NOTE")}
+                                    >
+                                      {copy.addNote}
+                                    </Button>
+                                  </div>
+                                )}
+                              </td>
+                            </tr>
+                          )}
+                        </tbody>
+                      ))}
+                    </table>
                     {editable && (
                       <Button
                         disabled={pending || document.sections.length >= 30}
@@ -661,13 +746,20 @@ export function QuoteDocumentEditor({
                       </Button>
                     )}
                     <datalist id="quote-unit-suggestions">
-                      {view.job.catalog.quoteUnits
-                        .filter((unit) => unit.active)
-                        .map((unit) => (
-                          <option
-                            key={unit.key}
-                            value={locale === "zh-TW" ? unit.nameZhTw : unit.nameEn}
-                          />
+                      {[
+                        ...new Set(
+                          view.job.catalog.quoteUnits
+                            .filter((unit) => unit.active)
+                            .flatMap((unit) =>
+                              locale === "zh-TW"
+                                ? [unit.nameZhTw, unit.nameEn]
+                                : [unit.nameEn, unit.nameZhTw],
+                            ),
+                        ),
+                      ]
+                        .filter((name) => name.length <= 8)
+                        .map((name) => (
+                          <option key={name} value={name} />
                         ))}
                     </datalist>
                   </div>
@@ -718,32 +810,36 @@ export function QuoteDocumentEditor({
                 </Button>
               )}
               <Link href={compareHref}>{draftCopy.compare}</Link>
-              {referenceRows.map((row) => {
-                const sections = document.sections.filter(
-                  (section) => section.categoryId === row.categoryId,
-                );
-                return (
-                  <CategoryReference
-                    key={row.categoryId}
-                    locale={locale}
-                    job={view.job}
-                    {...row}
-                    sectionTitles={sections.map((section) => section.title || copy.section)}
-                    amount={
-                      categoryTotals.find((total) => total.categoryId === row.categoryId)?.amount ??
-                      null
-                    }
-                    canUse={
-                      editable &&
-                      sections.length > 0 &&
-                      sections.every((section) => section.lines.length === 0)
-                    }
-                    pending={pending}
-                    onUse={() => useSuggestion(row)}
-                    onSources={() => sources(row.categoryId)}
-                  />
-                );
-              })}
+              {referenceRows
+                .filter((row) =>
+                  document.sections.some((section) => section.categoryId === row.categoryId),
+                )
+                .map((row) => {
+                  const sections = document.sections.filter(
+                    (section) => section.categoryId === row.categoryId,
+                  );
+                  return (
+                    <CategoryReference
+                      key={row.categoryId}
+                      locale={locale}
+                      job={view.job}
+                      {...row}
+                      sectionTitles={sections.map((section) => section.title || copy.section)}
+                      amount={
+                        categoryTotals.find((total) => total.categoryId === row.categoryId)
+                          ?.amount ?? null
+                      }
+                      canUse={
+                        editable &&
+                        sections.length > 0 &&
+                        sections.every((section) => section.lines.length === 0)
+                      }
+                      pending={pending}
+                      onUse={() => applySuggestion(row)}
+                      onSources={() => sources(row.categoryId)}
+                    />
+                  );
+                })}
             </section>
           )}
         </div>

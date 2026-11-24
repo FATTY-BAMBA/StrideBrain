@@ -53,6 +53,10 @@ function object(value: unknown): Record<string, unknown> {
 }
 export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
   private readonly auth = new AuthorizationService();
+  private readonly sourceReads = new WeakMap<
+    RuntimeContext,
+    Map<string, ReturnType<QuoteDraftSessionPort["getSources"]>>
+  >();
   constructor(protected readonly tx: Prisma.TransactionClient) {}
   async getJob(context: RuntimeContext, projectKey: string): Promise<QuoteDraftJob | null> {
     if (!context.capabilities.has("project:read")) return null;
@@ -179,10 +183,22 @@ export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
       result.comparison,
       result.economics?.selectedProjectKeys,
     );
-  getSources: QuoteDraftSessionPort["getSources"] = (context, runId, ids) =>
-    new PrismaEvidencePanelRepository(
+  getSources: QuoteDraftSessionPort["getSources"] = (context, runId, ids) => {
+    // Shared category references are read once per trusted actor in this transaction.
+    let reads = this.sourceReads.get(context);
+    if (!reads) {
+      reads = new Map();
+      this.sourceReads.set(context, reads);
+    }
+    const key = JSON.stringify([runId, [...ids].sort()]);
+    const previous = reads.get(key);
+    if (previous) return previous;
+    const result = new PrismaEvidencePanelRepository(
       this.tx as unknown as PrismaEvidencePanelDatabase,
     ).getAuthorizedSources(context, runId, ids);
+    reads.set(key, result);
+    return result;
+  };
   async getStructure(context: RuntimeContext, job: QuoteDraftJob) {
     if (
       job.organizationId !== context.organizationId ||
@@ -439,88 +455,86 @@ export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
     });
     const changedLineIds: string[] = [];
     if (data.document) {
+      const sections: Prisma.QuoteSectionCreateManyInput[] = [];
+      const items: Prisma.QuoteItemCreateManyInput[] = [];
+      const references: Prisma.EvidenceReferenceCreateManyInput[] = [];
       let lineNumber = 0,
         financialIndex = 0;
       for (const [index, section] of data.document.sections.entries()) {
         const sectionId = randomUUID();
-        await this.tx.quoteSection.create({
-          data: {
-            id: sectionId,
-            organizationId,
-            quoteVersionId: versionId,
-            position: index + 1,
-            title: section.title,
-            categoryId: section.categoryId,
-          },
+        sections.push({
+          id: sectionId,
+          organizationId,
+          quoteVersionId: versionId,
+          position: index + 1,
+          title: section.title,
+          categoryId: section.categoryId,
         });
         for (const line of section.lines) {
           const lineId = randomUUID();
           lineNumber++;
-          await this.tx.quoteItem.create({
-            data: {
-              id: lineId,
-              organizationId,
-              quoteVersionId: versionId,
-              sectionId,
-              lineNumber,
-              categoryId: section.categoryId,
-              kind: line.kind,
-              description: line.description,
-              descriptionEn: line.description,
-              descriptionZhTw: line.description,
-              amount: line.amount ?? "0",
-              quantity: line.kind === "ITEM" ? line.quantity : "0",
-              unit: line.kind === "ITEM" ? line.unit : line.kind === "PERCENTAGE" ? "%" : "",
-              unitPrice: line.kind === "ITEM" ? line.unitPrice : "0",
-              percentage: line.kind === "PERCENTAGE" ? line.percentage : null,
-              remark: line.kind === "NOTE" ? "" : line.remark,
-              authorityState: "HUMAN_REVIEWED",
-            },
+          items.push({
+            id: lineId,
+            organizationId,
+            quoteVersionId: versionId,
+            sectionId,
+            lineNumber,
+            categoryId: section.categoryId,
+            kind: line.kind,
+            description: line.description,
+            descriptionEn: line.description,
+            descriptionZhTw: line.description,
+            amount: line.amount ?? "0",
+            quantity: line.kind === "ITEM" ? line.quantity : "0",
+            unit: line.kind === "ITEM" ? line.unit : line.kind === "PERCENTAGE" ? "%" : "",
+            unitPrice: line.kind === "ITEM" ? line.unitPrice : "0",
+            percentage: line.kind === "PERCENTAGE" ? line.percentage : null,
+            remark: line.kind === "NOTE" ? "" : line.remark,
+            authorityState: "HUMAN_REVIEWED",
           });
           if (line.kind !== "NOTE") {
             const source = data.lines[financialIndex++]!;
-            await this.tx.evidenceReference.create({
-              data: {
-                id: randomUUID(),
-                organizationId,
-                subjectType: "QUOTE_ITEM",
-                subjectId: lineId,
-                claimKey: "quote-draft:line",
-                locator: { kind: "structured-line", lineNumber },
-                supportedValue: json({
-                  amount: line.amount,
-                  currency: job.currency,
-                  quoteDraft: { recorded: source.recorded, enteredBy: source.enteredBy },
-                }),
-                authorityState: "HUMAN_REVIEWED",
-                observationType: "QUOTED_PRICE",
-                dataClassification: context.dataMode,
-                effectiveAt: new Date(),
-              },
+            references.push({
+              id: randomUUID(),
+              organizationId,
+              subjectType: "QUOTE_ITEM",
+              subjectId: lineId,
+              claimKey: "quote-draft:line",
+              locator: { kind: "structured-line", lineNumber },
+              supportedValue: json({
+                amount: line.amount,
+                currency: job.currency,
+                quoteDraft: { recorded: source.recorded, enteredBy: source.enteredBy },
+              }),
+              authorityState: "HUMAN_REVIEWED",
+              observationType: "QUOTED_PRICE",
+              dataClassification: context.dataMode,
+              effectiveAt: new Date(),
             });
           }
           changedLineIds.push(lineId);
         }
       }
-      await this.tx.evidenceReference.create({
-        data: {
-          id: randomUUID(),
-          organizationId,
-          subjectType: "QUOTE_VERSION",
-          subjectId: versionId,
-          claimKey: "quote-document:total",
-          locator: { kind: "structured-total" },
-          supportedValue: json({
-            amount: data.totals.amountBeforeTax,
-            currency: job.currency,
-            discountAmount: data.document.discount.amount,
-          }),
-          authorityState: "HUMAN_REVIEWED",
-          observationType: "QUOTED_PRICE",
-          dataClassification: context.dataMode,
-          effectiveAt: new Date(),
-        },
+      references.push({
+        id: randomUUID(),
+        organizationId,
+        subjectType: "QUOTE_VERSION",
+        subjectId: versionId,
+        claimKey: "quote-document:total",
+        locator: { kind: "structured-total" },
+        supportedValue: json({
+          amount: data.totals.amountBeforeTax,
+          currency: job.currency,
+          discountAmount: data.document.discount.amount,
+        }),
+        authorityState: "HUMAN_REVIEWED",
+        observationType: "QUOTED_PRICE",
+        dataClassification: context.dataMode,
+        effectiveAt: new Date(),
       });
+      await this.tx.quoteSection.createMany({ data: sections });
+      if (items.length) await this.tx.quoteItem.createMany({ data: items });
+      await this.tx.evidenceReference.createMany({ data: references });
     } else
       for (const [index, line] of orderQuoteLines(
         data.lines,

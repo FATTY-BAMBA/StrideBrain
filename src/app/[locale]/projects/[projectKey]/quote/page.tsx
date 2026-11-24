@@ -26,15 +26,27 @@ export default async function QuotePage({
           .catch(() => null),
       ])
     : [null, null];
+  // Recorded bases survive editing. A document without one may show a current comparison as
+  // reference material on opening; preparation is read-only and never fills document lines.
+  const preparation =
+    context &&
+    view?.kind === "AVAILABLE" &&
+    view.canDraft &&
+    !view.saved?.lines.some((line) => line.recorded || line.basisUnavailable)
+      ? await createQuoteDraftServices()
+          .prepare.execute({ ...context, locale }, projectKey)
+          .catch(() => null)
+      : null;
   return (
     <div className={ui.page}>
       <ProjectLocalNav locale={locale} projectKey={projectKey} labels={getCatalog(locale)} />
       {view?.kind === "AVAILABLE" ? (
         <QuoteWorkspace
-          key={`${locale}:${projectKey}`}
+          key={`${locale}:${projectKey}:${view.saved?.status ?? "DRAFT"}`}
           view={view}
           issue={issue?.kind === "AVAILABLE" ? issue : null}
           locale={locale}
+          preparation={preparation?.kind === "PREPARED" ? preparation : null}
         />
       ) : (
         <p role="status">{quoteDraftCopy(locale).UNAVAILABLE}</p>

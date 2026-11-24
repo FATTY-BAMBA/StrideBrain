@@ -1,4 +1,5 @@
 // @vitest-environment jsdom
+vi.mock("@/app/[locale]/projects/actions", () => ({ updateProjectStageAction: vi.fn() }));
 import { act, createElement } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, expect, it, vi } from "vitest";
@@ -127,6 +128,12 @@ it.each(["en", "zh-TW"] as const)(
     await act(async () =>
       root.render(createElement(QuoteDocumentEditor, { initial: view(), issue: null, locale })),
     );
+    expect(host.querySelectorAll("#quote-document-save table")).toHaveLength(1);
+    expect(host.querySelectorAll("#quote-document-save thead th")).toHaveLength(7);
+    expect(host.querySelectorAll("#quote-document-save tbody[data-section]")).toHaveLength(2);
+    expect(
+      host.querySelector("#quote-document-save tbody tr td:nth-child(2)")?.textContent,
+    ).toContain(docCopy.sectionSubtotal);
     await act(async () => button(copy.refresh).click());
     expect(host.querySelectorAll('textarea[aria-label^="' + docCopy.item + ' "]')).toHaveLength(0);
     expect(host.textContent).toContain(
@@ -242,4 +249,95 @@ it("requires acceptance confirmation with document, client and total; Cancel nev
     "accept",
     expect.objectContaining({ projectKey: "JOB", versionId: "version" }),
   );
+});
+
+it("sends only editable document fields when saving an adapted saved version twice", async () => {
+  const initial = view(true);
+  mock.save.mockImplementation(async (_locale, raw) => ({
+    result: {
+      kind: "SAVED",
+      versionId: raw.baseVersionId === "version" ? "version-2" : "version-3",
+      versionNumber: 2,
+      firstSave: false,
+      totals: initial.saved!.totals,
+    },
+    view: {
+      ...initial,
+      saved: { ...initial.saved!, id: raw.baseVersionId === "version" ? "version-2" : "version-3" },
+    },
+  }));
+  await act(async () =>
+    root.render(createElement(QuoteDocumentEditor, { initial, issue: null, locale: "en" })),
+  );
+  for (const baseVersionId of ["version", "version-2"]) {
+    await act(async () =>
+      host
+        .querySelector("#quote-document-save")!
+        .dispatchEvent(new Event("submit", { bubbles: true, cancelable: true })),
+    );
+    const raw = mock.save.mock.calls.at(-1)![1];
+    expect(raw.baseVersionId).toBe(baseVersionId);
+    expect(Object.keys(raw).sort()).toEqual([
+      "baseVersionId",
+      "discount",
+      "idempotencyKey",
+      "preparationToken",
+      "projectKey",
+      "sections",
+    ]);
+  }
+  expect(mock.prepare).not.toHaveBeenCalled();
+});
+
+it("shows a current comparison on opening without adding lines or saving", async () => {
+  const preparation = {
+    kind: "PREPARED" as const,
+    token: "signed",
+    preparation: {
+      organizationId: "org",
+      membershipId: "member",
+      projectId: "job",
+      baseVersionId: "version",
+      comparisonRunId: "run",
+      sourceFingerprint: "source",
+      permissionFingerprint: "permission",
+      calculatedAt: "2026-11-24T00:00:00Z",
+      suggestions: [
+        {
+          categoryId: "DEMOLITION_CEILING",
+          basis: {
+            policyVersion: "QUOTE-DRAFT-1.0" as const,
+            calculatedAt: "2026-11-24T00:00:00Z",
+            area: "100",
+            areaUnit: "m2",
+            scopeCategoryIds: ["SELECTIVE_DEMOLITION", "PARTITIONS_CEILINGS"],
+            count: 3,
+            requiredCount: 3,
+            suggestedAmount: "300000.00",
+            evidenceReferenceIds: [],
+            conflictEvidenceIds: [],
+          },
+        },
+      ],
+    },
+  };
+  await act(async () =>
+    root.render(
+      createElement(QuoteDocumentEditor, {
+        initial: view(),
+        issue: null,
+        locale: "en",
+        preparation,
+      }),
+    ),
+  );
+  expect(host.textContent).toContain("NT$300,000");
+  expect(host.querySelectorAll("textarea")).toHaveLength(0);
+  expect(
+    [...host.querySelectorAll("button")].filter(
+      (node) => node.textContent === quoteDraftCopy("en").use,
+    ),
+  ).toHaveLength(1);
+  expect(mock.save).not.toHaveBeenCalled();
+  expect(mock.prepare).not.toHaveBeenCalled();
 });
