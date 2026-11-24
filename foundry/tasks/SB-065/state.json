@@ -2,8 +2,17 @@
   "issue": 65,
   "branch": "build/sb-065-quote-document",
   "baseCommit": "a7ee58c781d50fb089b971d9758cb6ddb017498c",
-  "status": "LOCAL_VERIFICATION",
-  "delivery": "A–E implemented; browser and PDF checks passed",
+  "status": "DRAFT_WAITING_FOR_PRODUCT_DIRECTOR",
+  "delivery": "A\u2013E implemented; browser and PDF checks passed",
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
-  "pullRequestDraft": true
+  "pullRequestDraft": true,
+  "pullRequest": 74,
+  "implementationCommit": "a0619c571a36d38d4f4037cc6041ffafac41c219",
+  "localCheck": "1620 tests / 163 files, zero skips, production build",
+  "ciRun": 45428410932,
+  "paidRuns": [
+    45428451693,
+    45430327216
+  ],
+  "paidEvaluation": "PASSED_UNCHANGED_REPEAT; initial UNKNOWN_SOURCE failure recorded"
 }

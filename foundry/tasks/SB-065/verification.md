@@ -2,7 +2,7 @@
 
 ## Result and scope
 
-Implemented A–E from issue #65 on `build/sb-065-quote-document`, based on main `a7ee58c` after #72. One draft pull request. Hosted acceptance is **waiting for the Product Director** using the Test site workflow. No hosted deployment, migration, seed or settings change was performed.
+Implemented A–E from issue #65 on `build/sb-065-quote-document`, based on main `a7ee58c` after #72. One draft pull request: [#74](https://github.com/FATTY-BAMBA/StrideBrain/pull/74). Hosted acceptance is **waiting for the Product Director** using the Test site workflow. No hosted deployment, migration, seed or settings change was performed.
 
 The Product Director clarified that sections use the job's pricing categories and the firm's labels. Several sections may share a category; references compare against their combined amount and appear once. Use suggestion is available only when all mapped sections have no lines, including notes. Work scopes remain a job attribute.
 
@@ -34,7 +34,37 @@ CI retains the real `prisma migrate deploy` and `prisma db execute` steps on its
 
 ## Final checks and paid evaluation
 
-Final [`npm run check`](evidence/npm-run-check.log) passed: formatting, design tokens, lint, TypeScript, **1,620 tests in 163 files with zero skips**, and the production build. CI and the required three-round paid evaluation are pending; their results and run links will be recorded before handoff. The only lint warning is the pre-existing anonymous default export in `prisma.config.ts`. The design gate has no new baseline entries or increased allowances.
+Final [`npm run check`](evidence/npm-run-check.log) passed: formatting, design tokens, lint, TypeScript, **1,620 tests in 163 files with zero skips**, and the production build. [CI run 45428410932](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45428410932) passed on `a0619c5`, including the real deployment commands, seed/verify twice, 1,620 tests and production dependency audit (zero vulnerabilities). The required three-round paid evaluation passed on the unchanged repeat; both reports, scores and costs are recorded below. The only lint warning is the pre-existing anonymous default export in `prisma.config.ts`. The design gate has no new baseline entries or increased allowances.
+
+### Paid evaluation, first run
+
+[Run 45428451693](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45428451693), `gemini-3.5-flash-lite`, checked out `a0619c571a36d38d4f4037cc6041ffafac41c219` through the workflow's `ref` input. The workflow metadata's main SHA is the workflow definition, not the evaluated checkout. **Failed**: one required question was discarded as `UNKNOWN_SOURCE` in round 1; the same question passed in rounds 2 and 3. No displayed wrong number, wrong amount label or bad display format. No prompts, checks, model or cases were changed.
+
+| Round | Questions en | Questions zh-TW | Drafts en | Drafts zh-TW | Result |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 25/25 | 24/25 | 12/12 | 12/12 | Failed required question |
+| 2 | 25/25 | 25/25 | 12/12 | 12/12 | Passed |
+| 3 | 25/25 | 25/25 | 12/12 | 12/12 | Passed |
+
+The original 20 questions per language scored 20/20 in every round. The failed required case is `zh-TW-home-reference-total`: its text matched the quote figures, but the server rejected its citation as `UNKNOWN_SOURCE`. The report's draft-number flag follows the lack of a valid cited source; no such draft was displayed. Per-question rates: that case 2/3; every other question 3/3. All 24 draft cases passed 3/3. Every round met the call targets (median 2, maximum 3, all 50 within 3, named refusals 1). Estimated token cost **US$0.238752000**.
+
+[Full synthetic report](evidence/ai-evaluation-45428451693.json). ZIP SHA-256 matched GitHub's artifact digest `08436797005359680f79c71a7d9dafc2a3b78303816502c0f1c4374c5254be12`. One unchanged repeat was dispatched to check recurrence; it does not erase this observed failure.
+
+### Unchanged paid repeat
+
+[Run 45430327216](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45430327216) **passed** on the same implementation commit `a0619c571a36d38d4f4037cc6041ffafac41c219`, model, instructions, cases, checks and pass marks.
+
+| Round | Questions en | Questions zh-TW | Drafts en | Drafts zh-TW | Result |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 25/25 | 25/25 | 12/12 | 12/12 | Passed |
+| 2 | 25/25 | 24/25 | 12/12 | 12/12 | Passed |
+| 3 | 25/25 | 25/25 | 12/12 | 12/12 | Passed |
+
+[Full synthetic report and per-question rates](evidence/ai-evaluation-45430327216.json). Estimated token cost **US$0.240293800** (questions US$0.184242800; drafts US$0.056051000). Two dispatches, combined estimated cost **US$0.479045800**. These estimates are not a provider invoice. The first run's isolated citation rejection remains a known observed instability; passing this repeat does not remove it.
+
+Per-question rates: `zh-TW-other-org` passed 2/3; the other 49 questions and all 24 draft cases passed 3/3. In round 2, the model's non-disclosing “no record” sentence repeated the reference from the question; the server discarded `-026` as `UNSUPPORTED_NUMBER` because that reference was not readable by this actor. No private record or wrong number was displayed. This is a known strict-check rejection, not a new quote-document regression; the model and grounding policy were unchanged. All required regressions passed (8/8 hosted and 2/2 quality every round), as did the displayed-number/amount-label/display-format gates. Calls: median 2 every round, maxima 4/3/3, within-three counts 49/50, 50/50, 50/50; named refusals at 1.
+
+The downloaded repeat ZIP matched GitHub's SHA-256 `a8da22b39c2e3ee8a7ee2cd440f02001af46db6f809607c0cbbea2f7f537574f`. The original 20-question sets scored en 20/20 each round, zh-TW 20/20, 19/20, 20/20. No additional paid run was dispatched.
 
 ## Not verified
 
