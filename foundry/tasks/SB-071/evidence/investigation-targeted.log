@@ -1,0 +1,12 @@
+
+> stridebrain@0.1.0 test
+> vitest run --config vitest.sb071-investigation.ts tests/comparison-experience/postgres-hero-flow.test.ts tests/preview-session/postgres-handoff.test.ts tests/firm-lists/firm-lists-postgres.test.ts tests/firm-lists/mapping-lock-postgres.test.ts
+
+
+ RUN  v4.1.10 /private/tmp/stridebrain-sb041
+
+
+ Test Files  4 passed (4)
+      Tests  24 passed (24)
+   Start at  21:09:17
+   Duration  3.21s (transform 456ms, setup 70ms, import 627ms, tests 5.34s, environment 0ms)

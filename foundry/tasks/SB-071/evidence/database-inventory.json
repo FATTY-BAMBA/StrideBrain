@@ -1,0 +1,110 @@
+[
+  {
+    "file": "tests/assistant/job-draft-postgres.test.ts",
+    "beforeIsolation": "assistantDatabase private database"
+  },
+  {
+    "file": "tests/assistant/job-draft-evaluation.test.ts",
+    "beforeIsolation": "assistantDatabase private database"
+  },
+  {
+    "file": "tests/assistant/rejected-answer-replay.test.ts",
+    "beforeIsolation": "assistantDatabase private database"
+  },
+  {
+    "file": "tests/assistant/hosted-postgres.test.ts",
+    "beforeIsolation": "assistantDatabase private database"
+  },
+  {
+    "file": "tests/assistant/assistant-postgres.test.ts",
+    "beforeIsolation": "assistantDatabase private database"
+  },
+  {
+    "file": "tests/assistant/evaluation.test.ts",
+    "beforeIsolation": "assistantDatabase private database"
+  },
+  {
+    "file": "tests/comparison-experience/selection-lineage-postgres.test.ts",
+    "beforeIsolation": "file-created database"
+  },
+  {
+    "file": "tests/comparison-experience/job-neutral-findings-postgres.test.ts",
+    "beforeIsolation": "file-created database"
+  },
+  {
+    "file": "tests/comparison-experience/postgres-hero-flow.test.ts",
+    "beforeIsolation": "supplied database"
+  },
+  {
+    "file": "tests/quote-draft/quote-draft-postgres.test.ts",
+    "beforeIsolation": "file-created database"
+  },
+  {
+    "file": "tests/projects/jobs-postgres.test.ts",
+    "beforeIsolation": "file-created database"
+  },
+  {
+    "file": "tests/projects/project-list-postgres.test.ts",
+    "beforeIsolation": "file-created database"
+  },
+  {
+    "file": "tests/firm-lists/firm-lists-postgres.test.ts",
+    "beforeIsolation": "assistantDatabase private database"
+  },
+  {
+    "file": "tests/firm-lists/clients-postgres.test.ts",
+    "beforeIsolation": "assistantDatabase private database"
+  },
+  {
+    "file": "tests/firm-lists/dynamic-job-postgres.test.ts",
+    "beforeIsolation": "assistantDatabase private database"
+  },
+  {
+    "file": "tests/firm-lists/mapping-lock-postgres.test.ts",
+    "beforeIsolation": "assistantDatabase private database"
+  },
+  {
+    "file": "tests/firm-lists/client-migration-postgres.test.ts",
+    "beforeIsolation": "file-created database"
+  },
+  {
+    "file": "tests/firm-lists/assistant-privacy-postgres.test.ts",
+    "beforeIsolation": "assistantDatabase private database"
+  },
+  {
+    "file": "tests/firm-lists/quote-list-postgres.test.ts",
+    "beforeIsolation": "assistantDatabase private database"
+  },
+  {
+    "file": "tests/firm-lists/seeded-comparison-parity.test.ts",
+    "beforeIsolation": "assistantDatabase private database"
+  },
+  {
+    "file": "tests/firm-lists/type-unit-migration-postgres.test.ts",
+    "beforeIsolation": "file-created database"
+  },
+  {
+    "file": "tests/home-desk/home-desk-postgres.test.ts",
+    "beforeIsolation": "file-created database"
+  },
+  {
+    "file": "tests/preview-session/postgres-handoff.test.ts",
+    "beforeIsolation": "supplied database"
+  },
+  {
+    "file": "tests/internal-review/postgres-invariants.test.ts",
+    "beforeIsolation": "file-created database"
+  },
+  {
+    "file": "tests/quote-issue/issue-postgres.test.ts",
+    "beforeIsolation": "file-created database"
+  },
+  {
+    "file": "tests/economics/job-neutral-migration-postgres.test.ts",
+    "beforeIsolation": "file-created database"
+  },
+  {
+    "file": "tests/evidence-panel/postgres-localization-review.test.ts",
+    "beforeIsolation": "file-created database"
+  }
+]

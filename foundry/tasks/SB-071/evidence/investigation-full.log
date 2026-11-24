@@ -1,0 +1,49 @@
+
+> stridebrain@0.1.0 test
+> vitest run --config vitest.sb071-investigation.ts
+
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "./vitest.config" without a file extension (vitest.sb071-investigation.ts:1:18). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v4.1.10 /private/tmp/stridebrain-sb041
+
+ ❯ tests/evidence-panel/modal-focus.test.ts (0 test)
+ ❯ tests/internal-review-experience/navigation-race.test.ts (0 test)
+ ❯ tests/internal-review-experience/date-policy.test.ts (0 test)
+ ❯ tests/home-desk/experience.test.ts (0 test)
+ ❯ tests/comparison-experience/selection-navigation.test.ts (0 test)
+ ❯ tests/internal-review-experience/receipt-disclosure.test.ts (0 test)
+ ❯ tests/projects/projects-page.test.ts (0 test)
+ ❯ tests/localization/stage9-workspace-loading.test.ts (0 test)
+ ❯ tests/assistant/job-draft-ui.test.ts (0 test)
+ ❯ tests/quote-draft/row-order.test.ts (0 test)
+ ❯ tests/demo-value/chat-context.test.ts (0 test)
+ ❯ tests/design/components.test.ts (0 test)
+ ❯ tests/design/shell.test.ts (0 test)
+ ❯ tests/design/filter-form.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 14 ⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/assistant/job-draft-ui.test.ts [ tests/assistant/job-draft-ui.test.ts ]
+ FAIL  tests/demo-value/chat-context.test.ts [ tests/demo-value/chat-context.test.ts ]
+ FAIL  tests/comparison-experience/selection-navigation.test.ts [ tests/comparison-experience/selection-navigation.test.ts ]
+ FAIL  tests/design/components.test.ts [ tests/design/components.test.ts ]
+ FAIL  tests/design/filter-form.test.ts [ tests/design/filter-form.test.ts ]
+ FAIL  tests/design/shell.test.ts [ tests/design/shell.test.ts ]
+ FAIL  tests/evidence-panel/modal-focus.test.ts [ tests/evidence-panel/modal-focus.test.ts ]
+ FAIL  tests/home-desk/experience.test.ts [ tests/home-desk/experience.test.ts ]
+ FAIL  tests/internal-review-experience/date-policy.test.ts [ tests/internal-review-experience/date-policy.test.ts ]
+ FAIL  tests/internal-review-experience/navigation-race.test.ts [ tests/internal-review-experience/navigation-race.test.ts ]
+ FAIL  tests/internal-review-experience/receipt-disclosure.test.ts [ tests/internal-review-experience/receipt-disclosure.test.ts ]
+ FAIL  tests/localization/stage9-workspace-loading.test.ts [ tests/localization/stage9-workspace-loading.test.ts ]
+ FAIL  tests/projects/projects-page.test.ts [ tests/projects/projects-page.test.ts ]
+ FAIL  tests/quote-draft/row-order.test.ts [ tests/quote-draft/row-order.test.ts ]
+Error: Cannot find module '/@fs/private/tmp/sb071-trace.ts'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/14]⎯
+
+
+ Test Files  14 failed | 140 passed (154)
+      Tests  1370 passed (1370)
+   Start at  21:06:30
+   Duration  128.45s (transform 1.78s, setup 609ms, import 5.77s, tests 233.17s, environment 5.37s)
