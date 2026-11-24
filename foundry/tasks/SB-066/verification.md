@@ -12,7 +12,7 @@ The current-version selection rule is unchanged. Rows and the SQL filter now pre
 
 All per-area display paths now share `pricePerAreaInFirmUnit`, the Quote tab’s fixed-decimal 400/121 conversion. Comparison current/history cells, evidence inputs/claim/result/source fields, and `get_past_prices` display the firm's unit. Canonical rates and saved calculations are not mutated. The assistant sends only formatted firm-unit rates to the model; no raw per-m² figures leak into ping-mode model facts. Existing m² outputs are pinned by regression tests.
 
-`npm run check` passed: **1,557 tests in 149 files**, formatting, lint, strict typecheck and production build. The architecture boundary test remains unchanged and passes. Local browser review passed in both languages: 24 Final rows, two Internal review rows, the Draft filter excludes Final, and Viewer amounts remain absent. The same saved comparison and evidence trace were opened under m² and 坪 without rerunning the calculation. [Browser results](evidence/browser-review.json), [Final rows](evidence/zh-TW-quotes-final.png), [Internal review rows](evidence/zh-TW-quotes-internal-review.png), [comparison in 坪](evidence/en-comparison-ping.png), [evidence in 坪](evidence/zh-TW-evidence-ping.png), [comparison in m²](evidence/en-comparison-m2.png), [evidence in m²](evidence/zh-TW-evidence-m2.png). Table-only screenshots hide the sticky shell header so it does not overlap the captured table. Review CI passed; paid evaluation dispatch 2 of 2 failed with `UNAVAILABLE`, as recorded below. No prompt, model, oracle, case or pass-mark change.
+`npm run check` passed: **1,557 tests in 149 files**, formatting, lint, strict typecheck and production build. The architecture boundary test remains unchanged and passes. Local browser review passed in both languages: 24 Final rows, two Internal review rows, the Draft filter excludes Final, and Viewer amounts remain absent. The same saved comparison and evidence trace were opened under m² and 坪 without rerunning the calculation. [Browser results](evidence/browser-review.json), [Final rows](evidence/zh-TW-quotes-final.png), [Internal review rows](evidence/zh-TW-quotes-internal-review.png), [comparison in 坪](evidence/en-comparison-ping.png), [evidence in 坪](evidence/zh-TW-evidence-ping.png), [comparison in m²](evidence/en-comparison-m2.png), [evidence in m²](evidence/zh-TW-evidence-m2.png). Table-only screenshots hide the sticky shell header so it does not overlap the captured table. Review CI passed. The initial review evaluation failed with `UNAVAILABLE` because Gemini prepaid credit was depleted; the later paid run and hosted acceptance passed on `d471473`, as recorded below. No prompt, model, oracle, case or pass-mark change.
 
 ## Local verification
 
@@ -63,7 +63,7 @@ Per-question rate: 49 questions passed 3/3; `zh-TW-awaiting` passed 2/3. Its rou
 
 [Review CI 45333380906](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45333380906) **passed** on `5045aa333ef1ec42f27da3f8f3d33d476e0fad59`, including migrations, repeatable fixture reset, all quality checks, production build and dependency audit.
 
-[Paid run 45333408428](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45333408428) **failed** on that same review commit. The workflow ran from main with the exact commit as its `ref` input. Both authorized dispatches are now used. The model remains `gemini-3.5-flash-lite`; instructions, cases, expected values, oracle and pass marks remain unchanged.
+[Paid run 45333408428](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45333408428) **failed** on that same review commit. The workflow ran from main with the exact commit as its `ref` input. At that point, both originally authorized dispatches had been used. The model remains `gemini-3.5-flash-lite`; instructions, cases, expected values, oracle and pass marks remain unchanged.
 
 | Round | Answers en | Answers zh-TW | Drafts en | Drafts zh-TW | Estimated USD, both sets |
 | ----- | ---------- | ------------- | --------- | ------------ | ------------------------ |
@@ -73,12 +73,28 @@ Per-question rate: 49 questions passed 3/3; `zh-TW-awaiting` passed 2/3. Its rou
 
 In each round, all 48 model-dependent answer cases and all 24 draft cases returned `UNAVAILABLE` before producing an answer or recording token usage. Only `en-excluded` and `zh-TW-excluded` passed, through the server's exclusion path without a model call. Overall: **6/150 answer cases and 0/72 draft cases**. Per-question rates: those two exclusion cases passed 3/3; the other 48 answer cases and all 24 draft cases passed 0/3. Required hosted regressions were 0/8, quality regressions 0/2 and required drafts 0/14 in every round.
 
-The metered cost estimate is **US$0.000000000**, with zero recorded input/output tokens; this is not a billing invoice and does not establish that no provider charges occurred. Existing logs and the report expose only `UNAVAILABLE`, not the underlying HTTP, network or provider reason. The provider adapter intentionally collapses failures before known usage to that outcome. This run therefore does not verify model answer quality on the review commit, and the earlier passing run does not substitute for it. No extra paid request, retry, model change or hosted configuration change was made.
+The metered cost estimate is **US$0.000000000**, with zero recorded input/output tokens; this is not a billing invoice and does not establish that no provider charges occurred. Existing logs and the report exposed only `UNAVAILABLE`; the provider adapter collapses failures before known usage to that outcome. The Product Director subsequently confirmed that Gemini prepaid credit was depleted, causing this run and [run 45357465462](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45357465462) to fail. These failed runs do not verify model answer quality. The later successful run is recorded below. No extra paid request, retry, model change or hosted configuration change was made by the agent during that review.
 
 [Full raw synthetic report and per-question rates](evidence/ai-evaluation-45333408428.json). Downloaded ZIP SHA-256 matched GitHub's artifact digest `2e98a0f0cfd69d749e11236a37e7cff5e1c96a372818d949d946cabcdadc02de`. The report's generic next-tier recommendation is not a diagnosis of this unavailable-provider run.
 
-## Not verified
+### Successful paid evaluation on d471473
 
-Hosted acceptance is **waiting for the Product Director**. No hosted deployment, migration, seed or settings change was made, and the Test site workflow was not started. The PR stays draft. Browser verification is the local flow listed above, not a claim that every earlier hosted acceptance list has been clicked through. The Home AI draft card's area/client-number behavior has local form/use-case coverage; the exact acceptance utterance has not been clicked through on the hosted site.
+[Paid run 45362722544](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45362722544) **passed** on `d471473e3c16ba301ebefc874e2b17cca8ccf5d9`. GitHub reports the evaluation job succeeded. The Product Director supplied these scores and the cost estimate:
 
-The review commit has no successful live-provider evaluation: dispatch 2 failed as above, and its underlying cause remains unverified. Both area units and the assistant displayed-number check have deterministic coverage; paid model answers in 坪 were not verified.
+| Round | Questions en | Questions zh-TW | Drafts en | Drafts zh-TW |
+| ----- | ------------ | --------------- | --------- | ------------ |
+| 1     | 25/25        | 25/25           | 12/12     | 12/12        |
+| 2     | 25/25        | 25/25           | 12/12     | 12/12        |
+| 3     | 25/25        | 25/25           | 12/12     | 12/12        |
+
+Overall: **150/150 questions and 72/72 draft cases**. Estimated total cost: **US$0.2399582**. This successful run supersedes the earlier unavailable-provider result for acceptance of `d471473`; the failed runs remain recorded above.
+
+## Hosted acceptance
+
+The Product Director confirmed that hosted acceptance **passed on `d471473` on 24 November 2026**. This records the Product Director's test-site verification. The agent made no hosted deployment, migration, seed or settings change and did not start the Test site workflow. PR #68 remains draft pending the Product Director's next action.
+
+## Scope of this documentation update
+
+Only this verification record changed; no application code changed and no new paid evaluation was started. The scores, cost and depleted-credit diagnosis above are recorded from the Product Director's report; the evaluation job's successful conclusion was checked on GitHub. The full application check and hosted click-through were not rerun for this documentation-only update. The cost is an estimate, not a billing invoice.
+
+Issue #69 has not started. It will start from `main` only after the Product Director says #68 is merged; it will not be stacked on this branch.
