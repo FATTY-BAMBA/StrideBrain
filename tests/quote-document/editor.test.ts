@@ -222,7 +222,7 @@ it("requires acceptance confirmation with document, client and total; Cancel nev
     conflicts: [],
     findings: [],
     warnings: [],
-    defaults: { language: "zh-TW", attention: "", validUntil: "2026-12-24" },
+    defaults: { language: "zh-TW", attention: "", validUntil: "2026-12-24", terms: "" },
     termsEn: "",
     termsZhTw: "",
   };

@@ -24,4 +24,8 @@ Repository/use cases, editor, PDF, category roll-up, full check, browser/PDF evi
 
 ## Delivery C — editor
 
-The section editor, Paper and navigation Tabs, per-category references, site-address form, pre-issue client review and acceptance confirmation are implemented. 19 focused UI/list tests passed in both languages; typecheck passed. Local browser/responsive evidence is still pending and will be recorded after the PDF and category rollup deliveries. No hosted changes.
+The section editor, Paper and navigation Tabs, per-category references, site-address form, pre-issue client review and acceptance confirmation are implemented. 19 focused UI/list tests passed in both languages. Typecheck caught a missing terms field in the new UI fixture; that fixture was corrected and the complete check is still pending. Local browser/responsive evidence is still pending and will be recorded after the PDF and category rollup deliveries. No hosted changes.
+
+## Delivery D — immutable PDF
+
+13 PDF tests passed, including the pre-SB-054 issued PDF byte-parity assertion. Rendered and visually inspected the English and Traditional Chinese seven-column documents, the totals page and a continued page of the 40-line document. Notes, remarks, non-compounding fees, discount, client/site details and repeated column headings are present; no overlapping content was seen. Empty terms and email are omitted. Typecheck now passes.
