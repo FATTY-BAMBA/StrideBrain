@@ -5,6 +5,10 @@ export default defineConfig({
   ...base,
   test: {
     ...base.test,
+    // Paid evaluation retains its own disposable database lifecycle.
+    globalSetup: [],
+    setupFiles: [],
+    sequence: {},
     include: ["tests/assistant/provider-evaluation.runner.ts"],
     fileParallelism: false,
   },

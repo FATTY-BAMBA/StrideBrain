@@ -1,3 +1,4 @@
+import { resetWorkerDatabase } from "../database/worker";
 import { seededFirmLists } from "@/fixtures/firm-lists";
 import { withFirmLists } from "../firm-lists/with-firm-lists";
 import { randomUUID } from "node:crypto";
@@ -41,9 +42,7 @@ const baseUrl = process.env.DATABASE_URL;
 const pgDescribe = baseUrl ? describe.sequential : describe.skip;
 const SECRET = "stage9-lineage-regression-only-signing-secret-32-bytes";
 const PROJECT = "PRJ-XINYI-026";
-let admin: Client;
 let sql: Client;
-let dbName: string;
 let context: RuntimeContext;
 let outsider: RuntimeContext;
 let structural: Stage4ComparisonResult;
@@ -186,15 +185,8 @@ async function verifyLineage(result: Stage5EconomicsResult, selected: readonly s
 }
 pgDescribe("Stage9 real PostgreSQL selection lineage and populated upgrade", () => {
   beforeAll(async () => {
-    admin = new Client({ connectionString: baseUrl });
-    await admin.connect();
-    dbName = `stridebrain_s9_lineage_${randomUUID().replaceAll("-", "")}`;
-    await admin.query(`CREATE DATABASE "${dbName}"`);
-    const uri = new URL(baseUrl!);
-    uri.pathname = "/" + dbName;
-    process.env.DATABASE_URL = uri.toString();
-    await disconnectPrismaClientForTests();
-    sql = new Client({ connectionString: uri.toString() });
+    await resetWorkerDatabase(true);
+    sql = new Client({ connectionString: process.env.DATABASE_URL });
     await sql.connect();
     for (const dir of readdirSync("prisma/migrations")
       .filter((x) => /^000[1-8]_/.test(x))
@@ -333,12 +325,6 @@ pgDescribe("Stage9 real PostgreSQL selection lineage and populated upgrade", () 
       await sql.end();
     }
     await disconnectPrismaClientForTests();
-    if (baseUrl) process.env.DATABASE_URL = baseUrl;
-    if (admin) {
-      if (dbName?.startsWith("stridebrain_s9_lineage_"))
-        await admin.query(`DROP DATABASE "${dbName}" WITH (FORCE)`);
-      await admin.end();
-    }
   });
   it.each([
     {

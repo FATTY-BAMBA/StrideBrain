@@ -1,0 +1,30 @@
+
+> stridebrain@0.1.0 test
+> vitest run tests/database --reporter=verbose
+
+
+ RUN  v4.1.10 /private/tmp/stridebrain-sb041
+
+TEST_DATABASE_TEMPLATE_MS=463
+ ✓ tests/database/safety.test.ts > test database boundaries > allows local server localhost 1ms
+ ✓ tests/database/safety.test.ts > test database boundaries > allows local server 127.0.0.1 0ms
+ ✓ tests/database/safety.test.ts > test database boundaries > allows local server [::1] 0ms
+ ✓ tests/database/safety.test.ts > test database boundaries > allows the CI service only in CI 1ms
+ ✓ tests/database/safety.test.ts > test database boundaries > refuses remote or overridden routing postgresql://test@hosted.example/db 0ms
+ ✓ tests/database/safety.test.ts > test database boundaries > refuses remote or overridden routing postgresql://test@localhost.evil/db 0ms
+ ✓ tests/database/safety.test.ts > test database boundaries > refuses remote or overridden routing https://localhost/db 0ms
+ ✓ tests/database/safety.test.ts > test database boundaries > refuses remote or overridden routing postgresql://test@localhost/db?host=hosted.example 0ms
+ ✓ tests/database/safety.test.ts > test database boundaries > refuses remote or overridden routing postgresql://test@localhost/db?hostaddr=1.2.3.4 0ms
+ ✓ tests/database/safety.test.ts > test database boundaries > refuses remote or overridden routing postgresql://test@localhost/db?service=hosted 0ms
+ ✓ tests/database/safety.test.ts > test database boundaries > refuses remote or overridden routing postgresql://test@localhost/db?sslmode=require 0ms
+ ✓ tests/database/safety.test.ts > test database boundaries > restricts database names to this run and rejects SQL or another run 0ms
+ ✓ tests/database/safety.test.ts > test database boundaries > uses the application fixture order and all existing invariant scripts 1ms
+stdout | tests/database/isolation.test.ts > proves parallel worker isolation and reset between files, with failing negative controls
+DATABASE_ISOLATION_PROOF [{"mode":"parallel","exitCode":0,"passed":2,"failed":0,"observations":[{"label":"b","database":"sb_test_ab83805e869c5e5b_worker_2","worker":"2","observed":"isolation-b"},{"label":"a","database":"sb_test_ab83805e869c5e5b_worker_1","worker":"1","observed":"isolation-a"}]},{"mode":"shared","exitCode":1,"passed":1,"failed":1,"observations":[{"label":"b","database":"sb_test_8a2266c3bcfb6f5f_worker_1","worker":"2","observed":"isolation-b"},{"label":"a","database":"sb_test_8a2266c3bcfb6f5f_worker_1","worker":"1","observed":"isolation-b"}]},{"mode":"reset","exitCode":0,"passed":2,"failed":0,"observations":[{"label":"a","database":"sb_test_e3d572eeebf7ce1c_worker_1","worker":"1","observed":"isolation-a"},{"label":"b","database":"sb_test_e3d572eeebf7ce1c_worker_1","worker":"1","observed":"isolation-b"}]},{"mode":"sticky","exitCode":1,"passed":1,"failed":1,"observations":[{"label":"a","database":"sb_test_7d9843fdde7aac48_worker_1","worker":"1","observed":"isolation-a"}]}]
+
+ ✓ tests/database/isolation.test.ts > proves parallel worker isolation and reset between files, with failing negative controls 4502ms
+
+ Test Files  2 passed (2)
+      Tests  14 passed (14)
+   Start at  21:18:13
+   Duration  5.20s (transform 25ms, setup 169ms, import 12ms, tests 4.51s, environment 0ms)

@@ -1,6 +1,6 @@
+import { execFileSync } from "node:child_process";
 import { withFirmLists } from "../firm-lists/with-firm-lists";
 import { randomUUID } from "node:crypto";
-import { execFileSync } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
 import { createElement } from "react";
@@ -39,7 +39,6 @@ const SECRET = "independent-stage8-test-session-signing-secret-32-bytes";
 const PROJECT = "PRJ-XINYI-026";
 const PROJECT_ID = "prj_xinyi_026";
 const ORG = "org_horizon";
-const TEST_DB_PREFIX = "stridebrain_sb029_eval_";
 const CHECKPOINTS = [
   "AFTER_ACTION",
   "AFTER_EVIDENCE",
@@ -282,24 +281,8 @@ describePostgres("Stage 8 independent PostgreSQL invariants", () => {
   beforeAll(async () => {
     if (!databaseUrl) throw new Error("TEST_DATABASE_REQUIRED");
     administrator = new PrismaClient({ adapter: new PrismaPg({ connectionString: databaseUrl }) });
-    testDatabaseName = `${TEST_DB_PREFIX}${randomUUID().replaceAll("-", "")}`;
-    if (!/^stridebrain_sb029_eval_[a-f0-9]{32}$/.test(testDatabaseName)) {
-      throw new Error("UNSAFE_TEST_DATABASE_NAME");
-    }
-    await administrator.$executeRawUnsafe(`CREATE DATABASE "${testDatabaseName}"`);
-    const isolatedUrl = new URL(databaseUrl);
-    isolatedUrl.pathname = `/${testDatabaseName}`;
-    testDatabaseUrl = isolatedUrl.toString();
-    const environment = { ...process.env, DATABASE_URL: testDatabaseUrl };
-    for (const script of ["db:migrate", "db:seed", "db:verify"]) {
-      execFileSync("npm", ["run", script], {
-        cwd: process.cwd(),
-        env: environment,
-        stdio: "pipe",
-        timeout: 90_000,
-      });
-    }
-    process.env.DATABASE_URL = testDatabaseUrl;
+    testDatabaseName = new URL(databaseUrl).pathname.slice(1);
+    testDatabaseUrl = databaseUrl;
     await disconnectPrismaClientForTests();
     const instrumented = new PrismaClient({
       adapter: new PrismaPg({ connectionString: testDatabaseUrl }),
@@ -337,13 +320,7 @@ describePostgres("Stage 8 independent PostgreSQL invariants", () => {
       writeFileSync(output, JSON.stringify(performanceEvidence, null, 2) + "\n");
     }
     await disconnectPrismaClientForTests();
-    if (databaseUrl) process.env.DATABASE_URL = databaseUrl;
-    if (administrator && /^stridebrain_sb029_eval_[a-f0-9]{32}$/.test(testDatabaseName ?? "")) {
-      await administrator.$executeRawUnsafe(
-        `DROP DATABASE IF EXISTS "${testDatabaseName}" WITH (FORCE)`,
-      );
-      await administrator.$disconnect();
-    }
+    await administrator?.$disconnect();
   }, 30_000);
 
   it.each([

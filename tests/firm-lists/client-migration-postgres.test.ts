@@ -1,4 +1,4 @@
-import { randomUUID } from "node:crypto";
+import { resetWorkerDatabase } from "../database/worker";
 import { readFileSync, readdirSync } from "node:fs";
 import { Client } from "pg";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
@@ -6,8 +6,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 const base = process.env.DATABASE_URL;
 const suite = base ? describe.sequential : describe.skip;
 const migration = "20261124010000_client_details_and_firm_preferences";
-const name = `sb066_upgrade_${randomUUID().replaceAll("-", "")}`;
-let admin: Client, sql: Client;
+let sql: Client;
 let before: unknown;
 async function oldRecords() {
   return {
@@ -24,14 +23,8 @@ async function oldRecords() {
 }
 suite("SB-066 additive client upgrade", () => {
   beforeAll(async () => {
-    const url = new URL(base!);
-    if (!["localhost", "127.0.0.1", "[::1]"].includes(url.hostname))
-      throw new Error("DISPOSABLE_LOCAL_DATABASE_ONLY");
-    admin = new Client({ connectionString: base });
-    await admin.connect();
-    await admin.query(`CREATE DATABASE "${name}"`);
-    url.pathname = `/${name}`;
-    sql = new Client({ connectionString: url.toString() });
+    await resetWorkerDatabase(true);
+    sql = new Client({ connectionString: process.env.DATABASE_URL });
     await sql.connect();
     for (const dir of readdirSync("prisma/migrations")
       .filter((dir) => dir < migration)
@@ -58,10 +51,6 @@ suite("SB-066 additive client upgrade", () => {
   }, 30000);
   afterAll(async () => {
     await sql?.end();
-    if (admin) {
-      await admin.query(`DROP DATABASE IF EXISTS "${name}" WITH (FORCE)`);
-      await admin.end();
-    }
   });
   it("preserves all pre-existing clients, jobs and issued snapshots", async () => {
     expect(await oldRecords()).toEqual(before);

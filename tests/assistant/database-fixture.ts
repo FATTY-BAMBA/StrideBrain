@@ -1,3 +1,4 @@
+import { openWorkerScope } from "../database/worker";
 import { Client } from "pg";
 import { readFileSync, readdirSync } from "node:fs";
 import { randomUUID } from "node:crypto";
@@ -10,6 +11,15 @@ import {
   type PrismaDemoSessionDatabase,
 } from "@/repositories/prisma/prisma-demo-session-repository";
 export async function assistantDatabase() {
+  const managed = await openWorkerScope();
+  if (managed)
+    return {
+      get sql() {
+        return managed.sql;
+      },
+      actor,
+      close: managed.close,
+    };
   const base = process.env.DATABASE_URL;
   if (!base) throw new Error("LOCAL_DATABASE_REQUIRED");
   const url = new URL(base);
@@ -44,27 +54,7 @@ export async function assistantDatabase() {
     await sql.query(readFileSync(`prisma/fixtures/${fixture}.sql`, "utf8"));
   return {
     sql,
-    async actor(membership = "membership_horizon_admin") {
-      const sessions = new PrismaDemoSessionRepository(
-          getPrismaClient() as unknown as PrismaDemoSessionDatabase,
-        ),
-        secret = "assistant-synthetic-integration-secret-32-bytes";
-      const session = await new DemoSessionService(sessions, secret).issueForMembership(
-        membership,
-        { locale: "en", ttlSeconds: 3600 },
-      );
-      const context = await new SignedDemoIdentityContext(sessions, secret).resolve(
-        new Request("https://stridebrain.test/en", {
-          headers: { cookie: session!.setCookie.split(";")[0]! },
-        }),
-      );
-      if (!context) throw new Error("CONTEXT_REQUIRED");
-      return {
-        ...context,
-        firmLists:
-          (await new PrismaFirmListsRepository(getPrismaClient()).read(context)) ?? undefined,
-      };
-    },
+    actor,
     async close() {
       await disconnectPrismaClientForTests();
       await sql.end();
@@ -72,5 +62,26 @@ export async function assistantDatabase() {
       await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);
       await admin.end();
     },
+  };
+}
+
+async function actor(membership = "membership_horizon_admin") {
+  const sessions = new PrismaDemoSessionRepository(
+      getPrismaClient() as unknown as PrismaDemoSessionDatabase,
+    ),
+    secret = "assistant-synthetic-integration-secret-32-bytes";
+  const session = await new DemoSessionService(sessions, secret).issueForMembership(membership, {
+    locale: "en",
+    ttlSeconds: 3600,
+  });
+  const context = await new SignedDemoIdentityContext(sessions, secret).resolve(
+    new Request("https://stridebrain.test/en", {
+      headers: { cookie: session!.setCookie.split(";")[0]! },
+    }),
+  );
+  if (!context) throw new Error("CONTEXT_REQUIRED");
+  return {
+    ...context,
+    firmLists: (await new PrismaFirmListsRepository(getPrismaClient()).read(context)) ?? undefined,
   };
 }
