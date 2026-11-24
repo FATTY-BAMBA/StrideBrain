@@ -171,11 +171,6 @@ export class GetHomeDesk {
         // Sequential bounded per-job reads avoid an unbounded database fan-out.
         for (const job of active) {
           const project = entry(job);
-          if (!compared.has(job.id)) {
-            if (["DISCOVERY", "DESIGN", "QUOTE_REVIEW"].includes(job.stage))
-              decisions.push({ key: `compare:${job.businessKey}`, kind: "COMPARE", project });
-            continue;
-          }
           if (
             decisions.some(
               (decision) =>
@@ -183,6 +178,11 @@ export class GetHomeDesk {
             )
           )
             continue;
+          if (!compared.has(job.id)) {
+            if (["DISCOVERY", "DESIGN", "QUOTE_REVIEW"].includes(job.stage))
+              decisions.push({ key: `compare:${job.businessKey}`, kind: "COMPARE", project });
+            continue;
+          }
           try {
             const saved = await this.comparisons.execute(context, job.businessKey);
             if (!saved || saved.kind !== "AVAILABLE") {

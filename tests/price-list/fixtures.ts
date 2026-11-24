@@ -14,7 +14,10 @@ import {
   ReviseIssuedQuote,
 } from "@/modules/quote-issue/application/issue-services";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
-import type { QuoteDocumentLine } from "@/modules/quote-draft/domain/document-input";
+import type {
+  QuoteDocumentLine,
+  QuoteDocumentSection,
+} from "@/modules/quote-draft/domain/document-input";
 import { jobInput } from "../projects/job-fixture";
 export const priceItem = (
   description = "天花板",
@@ -72,6 +75,7 @@ export async function issuedPrice(
   lines: readonly QuoteDocumentLine[],
   now?: Date,
   baseVersionId: string | null = null,
+  sections?: readonly QuoteDocumentSection[],
 ) {
   const app = priceServices(now);
   const saved = await app.save.execute(
@@ -81,7 +85,7 @@ export async function issuedPrice(
       baseVersionId,
       preparationToken: null,
       idempotencyKey: randomUUID(),
-      sections: [{ title: "Synthetic prices", categoryId: null, lines }],
+      sections: sections ?? [{ title: "Synthetic prices", categoryId: null, lines }],
       discount: { label: "", amount: "0" },
     },
   );

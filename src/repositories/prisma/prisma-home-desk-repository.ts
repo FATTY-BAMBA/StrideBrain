@@ -41,9 +41,6 @@ export class PrismaHomeDeskRepository implements HomeDeskRepositoryPort {
               deletedAt: null,
               status: "ACTIVE",
               stage: { in: ["DISCOVERY", "DESIGN", "QUOTE_REVIEW"] },
-              comparisonRuns: {
-                some: { organizationId: context.organizationId, status: "COMPLETED" },
-              },
               quotes: {
                 none: {
                   organizationId: context.organizationId,

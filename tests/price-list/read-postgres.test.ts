@@ -132,11 +132,33 @@ suite("issued price read model and source access", () => {
         { unitPrice: "3800", versionId: issued.versionId },
       ],
     });
-    // Document order, not section creation or amount order, resolves the last price.
-    const sections = await getPrismaClient().quoteSection.findMany({
-      where: { quoteVersionId: issued.versionId },
+  });
+  it("uses the last item across multiple sections in document order", async () => {
+    const owner = await db.actor(),
+      job = await priceJob(owner);
+    const issued = await issuedPrice(owner, job, [], undefined, null, [
+      {
+        id: "z-first",
+        title: "First",
+        categoryId: null,
+        lines: [priceItem("Section order", "500")],
+      },
+      {
+        id: "a-last",
+        title: "Last",
+        categoryId: null,
+        lines: [priceItem("Section order", "100"), priceItem("Section order", "200")],
+      },
+    ]);
+    expect(await read().execute(owner, query("LIST", "Section order"))).toMatchObject({
+      rows: [{ unitPrice: "200", timesQuoted: 1, versionId: issued.versionId }],
     });
-    expect(sections).toHaveLength(1);
+    const history = await read().execute(owner, query("HISTORY", "Section order"));
+    expect(history.kind === "AVAILABLE" && history.rows.map((row) => row.unitPrice)).toEqual([
+      "200",
+      "100",
+      "500",
+    ]);
   });
   it("ignores newer drafts, superseded versions and FINAL, and uses the latest issued/accepted version of each quote", async () => {
     const owner = await db.actor(),

@@ -1,4 +1,7 @@
 // @vitest-environment jsdom
+vi.mock("@/modules/quote-comparison/request", () => ({
+  requestQuoteComparison: mock.comparison,
+}));
 vi.mock("@/app/[locale]/quotes/prices/actions", () => ({
   readQuotePricesAction: vi.fn().mockResolvedValue({ kind: "AVAILABLE", rows: [], hasMore: false }),
 }));
@@ -15,6 +18,7 @@ import { quoteDocumentCopy } from "@/modules/localization/quote-document";
 import { quoteDraftCopy } from "@/modules/localization/quote-draft";
 import { quoteIssueCopy } from "@/modules/localization/quote-issue";
 const mock = vi.hoisted(() => ({
+  comparison: vi.fn().mockResolvedValue({ kind: "NOT_RUN" }),
   save: vi.fn(),
   issuePrepare: vi.fn(),
   prepare: vi.fn(),
@@ -522,4 +526,39 @@ it("resets the untyped discount default with the language selector when a saved 
   )!;
   expect(resetLanguage.value).toBe("zh-TW");
   expect(host.querySelector("footer")?.textContent).toContain("優惠折讓");
+});
+
+it("keeps save available while comparison loading or Run is pending, then retains editing after a failure", async () => {
+  let resolveRead!: (value: unknown) => void, resolveRun!: (value: unknown) => void;
+  mock.comparison.mockImplementationOnce(
+    () =>
+      new Promise((resolve) => {
+        resolveRead = resolve;
+      }),
+  );
+  await act(async () =>
+    root.render(
+      createElement(QuoteDocumentEditor, { initial: view(true), issue: null, locale: "en" }),
+    ),
+  );
+  expect(host.textContent).toContain("Loading comparison…");
+  expect(button(quoteDraftCopy("en").save).disabled).toBe(false);
+  await act(async () => resolveRead({ kind: "NOT_RUN" }));
+  mock.comparison.mockImplementationOnce(
+    () =>
+      new Promise((resolve) => {
+        resolveRun = resolve;
+      }),
+  );
+  await act(async () => button("Run comparison").click());
+  expect(host.textContent).toContain("Running comparison…");
+  expect(button(quoteDraftCopy("en").save).disabled).toBe(false);
+  expect(host.querySelector<HTMLTextAreaElement>("textarea")!.disabled).toBe(false);
+  expect(mock.comparison).toHaveBeenLastCalledWith("en", "J-TEST", "RUN");
+  await act(async () => resolveRun({ kind: "UNAVAILABLE" }));
+  expect(host.textContent).toContain(
+    "Comparison is unavailable. You can keep working on the quote.",
+  );
+  expect(button(quoteDraftCopy("en").save).disabled).toBe(false);
+  expect(mock.save).not.toHaveBeenCalled();
 });

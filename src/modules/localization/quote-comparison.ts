@@ -1,0 +1,38 @@
+import type { Locale } from "./config";
+const en = {
+  title: "Comparison",
+  loading: "Loading comparison…",
+  running: "Running comparison…",
+  NOT_RUN: "Not run. You can draft, save and issue without a comparison.",
+  OUT_OF_DATE: "The saved comparison is out of date. Refresh it when you need it.",
+  UNAVAILABLE: "Comparison is unavailable. You can keep working on the quote.",
+  CONTEXT_INCOMPLETE: "Complete the job details before running a comparison.",
+  NO_ELIGIBLE_HISTORY: "There are no eligible past jobs to compare.",
+  CURRENT: "Current saved comparison",
+  run: "Run comparison",
+  refresh: "Refresh comparison",
+  open: "Open full comparison",
+  similar: "Similar past jobs",
+  findings: "Saved findings",
+  sources: "View sources",
+  none: "No saved findings.",
+};
+const zh: typeof en = {
+  title: "比較",
+  loading: "正在載入比較…",
+  running: "正在執行比較…",
+  NOT_RUN: "尚未執行。沒有比較也能草擬、儲存及發出報價。",
+  OUT_OF_DATE: "已儲存的比較已過期，需要時可重新比較。",
+  UNAVAILABLE: "目前無法讀取比較，您可以繼續編輯報價。",
+  CONTEXT_INCOMPLETE: "請先補齊專案資料，再執行比較。",
+  NO_ELIGIBLE_HISTORY: "沒有符合條件的過往專案可供比較。",
+  CURRENT: "目前有效的已儲存比較",
+  run: "執行比較",
+  refresh: "重新比較",
+  open: "開啟完整比較",
+  similar: "相似的過往專案",
+  findings: "已儲存的發現",
+  sources: "查看來源",
+  none: "目前沒有已儲存的發現。",
+};
+export const quoteComparisonCopy = (locale: Locale) => (locale === "zh-TW" ? zh : en);
