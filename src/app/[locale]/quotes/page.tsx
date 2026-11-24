@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/ui/page-header";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
+import { FilterForm } from "@/components/ui/filter-form";
 import { Notice } from "@/components/ui/notice";
 import { designSystemCopy } from "@/modules/localization/design-system";
 import styles from "@/components/ui/ui.module.css";
@@ -39,7 +40,7 @@ export default async function QuotesPage({
         title={c.title}
         description={c.description}
       />
-      <form className={styles.filters} method="get">
+      <FilterForm loadingLabel={designSystemCopy(locale).loading}>
         <Field
           as="select"
           id="quote-status"
@@ -57,7 +58,7 @@ export default async function QuotesPage({
         <Button type="submit" variant="primary">
           {c.filter}
         </Button>
-      </form>
+      </FilterForm>
       {result?.kind === "AVAILABLE" ? (
         <>
           <QuoteListTable rows={result.rows} locale={locale} />

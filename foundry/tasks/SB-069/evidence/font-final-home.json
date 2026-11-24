@@ -1,0 +1,85 @@
+{
+  "page": "/zh-TW",
+  "role": "owner",
+  "cache": "fresh context; HTTP cache disabled",
+  "fonts": [
+    {
+      "url": "https://sb069.test:3469/fonts/inter-006.woff2",
+      "status": 200,
+      "cache": false,
+      "transferredBytes": 48859
+    },
+    {
+      "url": "https://sb069.test:3469/fonts/noto-sans-tc-109.woff2",
+      "status": 200,
+      "cache": false,
+      "transferredBytes": 60579
+    },
+    {
+      "url": "https://sb069.test:3469/fonts/noto-sans-tc-108.woff2",
+      "status": 200,
+      "cache": false,
+      "transferredBytes": 65635
+    },
+    {
+      "url": "https://sb069.test:3469/fonts/noto-sans-tc-110.woff2",
+      "status": 200,
+      "cache": false,
+      "transferredBytes": 36731
+    },
+    {
+      "url": "https://sb069.test:3469/fonts/noto-sans-tc-107.woff2",
+      "status": 200,
+      "cache": false,
+      "transferredBytes": 71812
+    },
+    {
+      "url": "https://sb069.test:3469/fonts/noto-sans-tc-097.woff2",
+      "status": 200,
+      "cache": false,
+      "transferredBytes": 72672
+    },
+    {
+      "url": "https://sb069.test:3469/fonts/noto-sans-tc-103.woff2",
+      "status": 200,
+      "cache": false,
+      "transferredBytes": 73692
+    },
+    {
+      "url": "https://sb069.test:3469/fonts/noto-sans-tc-106.woff2",
+      "status": 200,
+      "cache": false,
+      "transferredBytes": 74524
+    },
+    {
+      "url": "https://sb069.test:3469/fonts/noto-sans-tc-105.woff2",
+      "status": 200,
+      "cache": false,
+      "transferredBytes": 85336
+    },
+    {
+      "url": "https://sb069.test:3469/fonts/noto-sans-tc-104.woff2",
+      "status": 200,
+      "cache": false,
+      "transferredBytes": 71688
+    },
+    {
+      "url": "https://sb069.test:3469/fonts/noto-sans-tc-102.woff2",
+      "status": 200,
+      "cache": false,
+      "transferredBytes": 75100
+    }
+  ],
+  "totalTransferredBytes": 736628,
+  "limitBytes": 1500000,
+  "heading": "今天有哪些事需要您？",
+  "renderedHeadingFonts": [
+    {
+      "familyName": "Noto Sans TC Thin",
+      "postScriptName": "NotoSansTC-Thin_Bold",
+      "isCustomFont": true,
+      "glyphCount": 10
+    }
+  ],
+  "passed": true
+}

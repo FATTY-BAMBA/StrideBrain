@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "checks": [
+    "Both languages announce pending native GET navigation while the response is delayed, then display the 24 matching Final rows."
+  ]
+}

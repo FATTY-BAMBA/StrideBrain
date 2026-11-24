@@ -1,5 +1,5 @@
 /** Reproduce app font assets. Normal builds never download fonts. */
-import { format } from "prettier";
+import { format, resolveConfig } from "prettier";
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
@@ -27,5 +27,8 @@ const css =
         `@font-face {\n  font-family: "${face.family}";\n  font-style: normal;\n  font-weight: ${face.weight};\n  font-display: swap;\n  src: url("/fonts/${face.file}") format("woff2");\n  unicode-range: ${face.unicodeRange};\n}\n`,
     )
     .join("\n");
-writeFileSync(`${root}/src/styles/fonts.css`, await format(css, { parser: "css" }));
+writeFileSync(
+  `${root}/src/styles/fonts.css`,
+  await format(css, { ...(await resolveConfig(`${root}/src/styles/fonts.css`)), parser: "css" }),
+);
 console.log(`Verified ${manifest.files.length} font/licence files and generated local font faces.`);

@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/ui/page-header";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
+import { FilterForm } from "@/components/ui/filter-form";
 import { Notice } from "@/components/ui/notice";
 import { designSystemCopy } from "@/modules/localization/design-system";
 import styles from "@/components/ui/ui.module.css";
@@ -41,7 +42,7 @@ export default async function ClientsPage({
         title={c.title}
         description={c.description}
       />
-      <form className={styles.filters} method="get">
+      <FilterForm loadingLabel={designSystemCopy(locale).loading}>
         <Field
           id="client-search"
           label={c.search}
@@ -53,7 +54,7 @@ export default async function ClientsPage({
         <Button type="submit" variant="primary">
           {c.searchButton}
         </Button>
-      </form>
+      </FilterForm>
       {result.kind === "AVAILABLE" ? (
         <>
           {result.clients.length ? (

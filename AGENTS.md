@@ -48,6 +48,7 @@ StrideBrain is a Next.js App Router application in strict TypeScript on PostgreS
 
 Everything built here is meant to run in the production application. Nothing is a patch or a throwaway.
 
+- Every screen follows `docs/design/DESIGN_SYSTEM.md`.
 - One code path serves the demo and real tenants. The only differences are configuration and data. No demo-only branches and no code specific to Horizon Atelier or the Xinyi job.
 - No hard-coded organization, project, user or record ids outside fixtures and tests.
 - No mock, stub or placeholder behind a production route. If something is not built, the route does not exist or says it is unavailable.

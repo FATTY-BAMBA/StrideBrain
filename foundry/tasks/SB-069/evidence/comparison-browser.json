@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "screens": ["zh-TW-comparison.png", "zh-TW-evidence.png", "en-comparison.png", "en-evidence.png"],
+  "checks": [
+    "Owner runs and reopens the saved Xinyi comparison in both languages; existing evidence panel opens and Escape closes it inside the light shell."
+  ]
+}

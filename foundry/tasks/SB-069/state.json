@@ -2,8 +2,20 @@
   "issue": 69,
   "branch": "build/sb-069-design-foundation",
   "baseCommit": "b972483a206a49ad7929aa4b7cdf24c3bf0de3d2",
-  "status": "DELIVERY_C",
+  "status": "LOCAL_VERIFIED_READY_FOR_DRAFT_PR",
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "firstVisitFontBytes": 808824,
-  "fontBudgetBytes": 1500000
+  "fontBudgetBytes": 1500000,
+  "localChecks": {
+    "npmRunCheck": "PASSED",
+    "tests": 1574,
+    "files": 154,
+    "browser": "PASSED",
+    "nativeGetWithoutJavaScript": "PASSED",
+    "cssGateNegativeProbe": "PASSED",
+    "issuedPdfBytes": "PASSED"
+  },
+  "finalHomeFontBytes": 736628,
+  "pullRequestState": "DRAFT",
+  "paidEvaluation": "NOT_REQUIRED_ASSISTANT_UNCHANGED"
 }

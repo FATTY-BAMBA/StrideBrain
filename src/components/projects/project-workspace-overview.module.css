@@ -10,7 +10,8 @@
   border: 1px solid var(--legacy-line);
   border-radius: var(--legacy-radius-lg);
   background:
-    radial-gradient(circle at 92% 8%, rgb(119 209 177 / 24%), transparent 32%), var(--legacy-surface);
+    radial-gradient(circle at 92% 8%, rgb(119 209 177 / 24%), transparent 32%),
+    var(--legacy-surface);
   padding: clamp(24px, 4vw, 42px);
   box-shadow: var(--legacy-shadow);
 }
