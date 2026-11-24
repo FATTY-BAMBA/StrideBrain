@@ -1,0 +1,657 @@
+
+> stridebrain@0.1.0 test
+> vitest run --reporter=default --reporter=json --outputFile=/var/folders/j7/nq6gzbls2qq4qxxfhgrf0fcr0000gn/T/sb071-report-YyHNhv/report.json
+
+
+ RUN  v4.1.10 /private/tmp/stridebrain-sb041
+
+TEST_DATABASE_TEMPLATE_MS=424
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > keeps a en saved claim inspectable with a named authorityState change and rejects new writes
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"671453b0-df73-42ea-9de8-c49f9018d83c","outcome":"PROPOSAL_STALE"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > keeps a en saved claim inspectable with a named authorityState change and rejects new writes
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"671453b0-df73-42ea-9de8-c49f9018d83c","outcome":"STALE_COMPARISON"}
+
+stdout | tests/assistant/evaluation.test.ts > runs all evaluation cases with the fake over authorized seeded records (not a model-quality score)
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"db3ad31f-12c9-4863-8ae5-1c47b084ac8b","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/assistant/evaluation.test.ts > runs all evaluation cases with the fake over authorized seeded records (not a model-quality score)
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"db3ad31f-12c9-4863-8ae5-1c47b084ac8b","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > keeps a zh-TW saved claim inspectable with a named authorityState change and rejects new writes
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"6df955dc-91f5-47ee-bd33-65b89dcda6bc","outcome":"PROPOSAL_STALE"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > keeps a zh-TW saved claim inspectable with a named authorityState change and rejects new writes
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"6df955dc-91f5-47ee-bd33-65b89dcda6bc","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > keeps a en saved claim inspectable with a named supportedValue change and rejects new writes
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"4b4f0b5c-05e6-4491-9a1f-37a8ce327487","outcome":"PROPOSAL_STALE"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > keeps a en saved claim inspectable with a named supportedValue change and rejects new writes
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"4b4f0b5c-05e6-4491-9a1f-37a8ce327487","outcome":"STALE_COMPARISON"}
+
+stdout | tests/assistant/evaluation.test.ts > runs all evaluation cases with the fake over authorized seeded records (not a model-quality score)
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"6c6a1d60-4e96-451e-af2f-10ab964608c2","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/assistant/evaluation.test.ts > runs all evaluation cases with the fake over authorized seeded records (not a model-quality score)
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"6c6a1d60-4e96-451e-af2f-10ab964608c2","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > keeps a zh-TW saved claim inspectable with a named supportedValue change and rejects new writes
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"3adcdff0-c07b-4e0a-a0b2-59102b4550e9","outcome":"PROPOSAL_STALE"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > keeps a zh-TW saved claim inspectable with a named supportedValue change and rejects new writes
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"3adcdff0-c07b-4e0a-a0b2-59102b4550e9","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > denies Viewer direct proposal/create/reopen/list before sensitive reads
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"c980d1f1-580b-463b-91c5-a8b12da9277e","outcome":"PROPOSAL_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > denies Viewer direct proposal/create/reopen/list before sensitive reads
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"c060f0db-775e-4c44-b343-ad322a502033","outcome":"PROPOSAL_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > denies Viewer direct proposal/create/reopen/list before sensitive reads
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"015fa902-fb61-4858-925a-2eb73683ec7e","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > denies Viewer direct proposal/create/reopen/list before sensitive reads
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"43f6a219-69c8-4f6f-aba9-8c1d05a4a72a","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects cross-organization project/run/enrichment/proposal/receipt selectors neutrally
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"2a798926-9102-4e0d-89a4-dfef411fa884","outcome":"PROPOSAL_UNAVAILABLE"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects cross-organization project/run/enrichment/proposal/receipt selectors neutrally
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"edc0305c-17c8-48b5-8a17-33c5ce1a8587","outcome":"PROPOSAL_UNAVAILABLE"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects cross-organization project/run/enrichment/proposal/receipt selectors neutrally
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"1b435b5a-0e84-438d-87be-fec828826ceb","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects cross-organization project/run/enrichment/proposal/receipt selectors neutrally
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"ff36d00c-344d-468f-8412-478f03669cca","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > refreshes en midnight guidance without writes and retains authoritative confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"e73587fc-d120-4aad-809b-0e669d4bed56","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > refreshes en midnight guidance without writes and retains authoritative confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"683c70a6-1e25-457b-a349-4d407d424f8c","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > refreshes en midnight guidance without writes and retains authoritative confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"9e202365-7348-41e4-a69a-cb2a2af883fe","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > refreshes en midnight guidance without writes and retains authoritative confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"05bdc5b0-eb7d-409e-affe-52c64792c5e1","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > refreshes en midnight guidance without writes and retains authoritative confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"4069550d-fbee-44f3-9c17-7bef93069bf8","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > refreshes en midnight guidance without writes and retains authoritative confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"cd3a4877-ff9b-44e0-8e8a-1d3d99709bfd","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > refreshes zh-TW midnight guidance without writes and retains authoritative confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"e020ba1e-f2cc-4a3b-b990-6165fbddda14","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > refreshes zh-TW midnight guidance without writes and retains authoritative confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"e9cb142d-ef95-4b60-9209-df44dbb01de7","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > refreshes zh-TW midnight guidance without writes and retains authoritative confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"162a85f8-e7d4-4186-9908-a8b16fc880b1","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > refreshes zh-TW midnight guidance without writes and retains authoritative confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"614c4eb0-5da2-46e2-9dae-70fe22eb70b8","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > refreshes zh-TW midnight guidance without writes and retains authoritative confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"d53d4868-6d3c-4e47-8ffb-16ef64ca3277","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > refreshes zh-TW midnight guidance without writes and retains authoritative confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"850f031e-160d-4aca-9762-10936b41e3cb","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid title without consuming a proposal
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"56fff639-3070-4595-95cc-e276ede4a2bb","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/assistant/evaluation.test.ts > runs all evaluation cases with the fake over authorized seeded records (not a model-quality score)
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"6a232f4a-9eeb-4799-a362-e93865f0cdbc","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/assistant/evaluation.test.ts > runs all evaluation cases with the fake over authorized seeded records (not a model-quality score)
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"6a232f4a-9eeb-4799-a362-e93865f0cdbc","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid title without consuming a proposal
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"58d12788-77fe-476c-ab4f-91256bb4835f","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid title without consuming a proposal
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"cf884da5-06e5-4be4-98fa-200e9d4482e4","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid rationale without consuming a proposal
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"f83216ef-9f4d-44f9-b02a-1185eb9599d5","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid rationale without consuming a proposal
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"725c5f14-6129-4654-9ad4-8facdf11f39f","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid rationale without consuming a proposal
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"a006acec-bf96-457b-a807-1d23f4866a17","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid dueDate without consuming a proposal
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"3f88c9fa-d49a-4fa5-89bd-31eeee0e0f22","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid dueDate without consuming a proposal
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"f60fedc8-1be5-4853-a54f-d6c8543447d3","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/assistant/evaluation.test.ts > runs all evaluation cases with the fake over authorized seeded records (not a model-quality score)
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"c6edd750-0865-4f48-8272-372ce1172342","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/assistant/evaluation.test.ts > runs all evaluation cases with the fake over authorized seeded records (not a model-quality score)
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"c6edd750-0865-4f48-8272-372ce1172342","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid dueDate without consuming a proposal
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"6ba4cfe2-30fc-49e0-959e-19a763e5b153","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects invalid confirmation without consuming a proposal
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"e4a77e16-c443-4cb5-9aac-a433f5dbd81b","outcome":"VALIDATION_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed comparison input at confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"8e85e2c1-4ae9-4f10-8222-9382467392b9","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed comparison policy at confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"8a865894-abcd-4f9f-a12b-069e4451c771","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed comparison calculation at confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"33d470e6-f439-4b5f-9ead-f04755c7760e","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed economics source at confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"f4487535-2de7-411f-b419-d7fa072a0718","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed economics input at confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"a457d50c-1654-465d-9608-7e72469d74f0","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed economics permission at confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"d61b54ec-8cd3-4193-9aea-515642c69196","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed economics structural at confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"997ff085-7c61-490f-9cf9-0baef0e89b13","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed economics policy at confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"db15dbfe-5ccc-48d9-a14e-8d74ece0de92","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed economics calculation at confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"b8b4c169-a4a5-42f6-90f8-3659289c6444","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects tampered immutable ComparisonRun result snapshots
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"0e38abe3-8822-48e1-9b68-1d858ae215ab","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects tampered immutable EconomicsEnrichmentRun result snapshots
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"3bd55441-312a-4c14-8aa6-09b541eb020f","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects the comparison source fingerprint changing
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"c3f91f1c-d24c-4087-952b-da93d1b54e60","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects the comparison permission fingerprint changing
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"b6d4b8ac-a5cd-428a-8cfc-d64d440c587b","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed project state without an action
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"847c073c-0205-43d9-85d8-c0406fddeacf","outcome":"STALE_COMPARISON"}
+
+stdout | tests/assistant/evaluation.test.ts > runs all evaluation cases with the fake over authorized seeded records (not a model-quality score)
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"3001c91f-c02c-46c8-a406-2c6e9e2aa3fc","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/assistant/evaluation.test.ts > runs all evaluation cases with the fake over authorized seeded records (not a model-quality score)
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"3001c91f-c02c-46c8-a406-2c6e9e2aa3fc","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed project record without an action
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"e5a1f1cb-4caa-49c1-b2a0-95473fc4b78d","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed project deletion without an action
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"e0d4827b-9227-4ba8-96ad-e4df939711d5","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed programme without an action
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"d1bd19b7-50bc-4d6b-9c26-b8411c2f7515","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects an active quotation version change
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"859c9012-7a7e-4b29-8244-e964ea2b0d1d","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects required evidence locator mutation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"3b24d010-e9bb-4135-82d3-bbfe62f4e1e9","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects required evidence supportedValue mutation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"a823d293-dc76-4225-91b8-ba922f2d7e1e","outcome":"STALE_COMPARISON"}
+
+stdout | tests/assistant/evaluation.test.ts > runs all evaluation cases with the fake over authorized seeded records (not a model-quality score)
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"fb48fcac-8d41-43b0-8991-2a1520d114b8","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/assistant/evaluation.test.ts > runs all evaluation cases with the fake over authorized seeded records (not a model-quality score)
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"fb48fcac-8d41-43b0-8991-2a1520d114b8","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects required evidence dataClassification mutation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"7242218f-6bd6-4a21-9fe9-f3f8b0dcc49d","outcome":"EVIDENCE_UNAVAILABLE"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects required evidence organizationId mutation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"82d49ca2-8a6e-4063-bb45-4f946ec20e20","outcome":"EVIDENCE_UNAVAILABLE"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects required evidence authorityState mutation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"bab05135-4c2c-442f-9f4d-733b1009e7b6","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects required evidence authorityState mutation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"9c368bf6-4bae-4a93-b101-a81f7b8fbd70","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects required evidence staleAt mutation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"fbc62d7e-d849-4ef2-b7e5-de7cdf64e80d","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects required evidence subjectId mutation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"fba4e6a9-1f62-4916-b09b-f8792d08afba","outcome":"EVIDENCE_UNAVAILABLE"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects a changed locator that predates proposal preparation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"ccaae403-5403-46ae-b1b6-5ca59246477b","outcome":"PROPOSAL_STALE"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects a newly inserted open conflict on required evidence
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"078ce214-8d67-47fa-88fc-9740af773bd9","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects a required source crossing its stale date without a source edit or proposal expiry
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"be1b5bad-4796-45df-ace3-caa88b3ab839","outcome":"EVIDENCE_UNAVAILABLE"}
+
+ ✓ tests/assistant/evaluation.test.ts (6 tests) 16118ms
+   ✓ runs all evaluation cases with the fake over authorized seeded records (not a model-quality score)  15646ms
+   ✓ scores the server empty-list answer without requesting the paid draft's unrelated page follow-up  463ms
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects quote validity crossing organization-local midnight without changing the quote
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"fb0828c6-d4e2-47b0-9538-4638d843a741","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > re-resolves current action:internal-review:create denial from the signed session at confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"742472f1-cd15-4e3e-9957-de3596556817","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > re-resolves current action:internal-review:propose denial from the signed session at confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"4a55ed23-8695-4449-80a9-16ed855e40aa","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > re-resolves current commercial:actual-read denial from the signed session at confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"27c05186-8e80-43d1-89b8-4db84d716b9c","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > re-resolves current evidence:read denial from the signed session at confirmation
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"851f00c0-6e46-4478-9afa-3ff9a47772a3","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed actor Membership.membership_horizon_mei
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"3cea49eb-ebb0-4465-a6b8-d13ebf3d1ad9","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed actor Person.person_horizon_mei
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"7c0fd7e6-3190-4a97-add6-77a9331c6e48","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects changed actor Membership.membership_horizon_mei
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"c386cf5d-1e60-45b2-a8d4-d5cfc205a4fa","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects session revocation and lost action assignment using the previously resolved context
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"e35c90c5-59ea-459f-a616-0fedb4a84f77","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects session revocation and lost action assignment using the previously resolved context
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"f18fb916-3295-4f6b-a25a-41ba92cef964","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects foreign assignees and an assignee whose eligibility changes
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"c65ec521-98bd-48f6-a07e-5143422191d0","outcome":"ASSIGNEE_UNAVAILABLE"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects foreign assignees and an assignee whose eligibility changes
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"4ff39a5d-3fcd-4297-9c78-cda8b1637f3b","outcome":"ASSIGNEE_UNAVAILABLE"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > allows only the stored default without action:assign and exposes no alternate people
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"7ce08d8c-2d6a-4763-9be5-b5871e4c1a89","outcome":"ASSIGNEE_UNAVAILABLE"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects expiry at the boundary, direct proposal alteration and a non-server-issued key
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"601060a4-df00-44fa-b266-3c1ec68f23fc","outcome":"PROPOSAL_EXPIRED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects expiry at the boundary, direct proposal alteration and a non-server-issued key
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"a22e0c70-3a05-4c51-b8c6-631b683a6c04","outcome":"IDEMPOTENCY_CONFLICT"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > replays the same durable receipt after expiry/source change but rejects payload changes
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"dfbeb4f6-53d0-4cba-81ec-57ed89f6ae34","outcome":"IDEMPOTENCY_CONFLICT"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > replays the same durable receipt after expiry/source change but rejects payload changes
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"5afb8bc9-1bbc-4210-b1b8-69f79debc620","outcome":"IDEMPOTENCY_CONFLICT"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > replays the same durable receipt after expiry/source change but rejects payload changes
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"fdc7479e-d85b-4864-b85c-b903f0748df9","outcome":"IDEMPOTENCY_CONFLICT"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > replays the same durable receipt after expiry/source change but rejects payload changes
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"cd784e9b-d86d-43bf-8525-6774f3c881d8","outcome":"IDEMPOTENCY_CONFLICT"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > serializes concurrent identical confirmations to one action and durable receipt
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"2d47eba1-a1e3-4eba-9686-c705dd6fe48d","outcome":"PROPOSAL_ALREADY_CONSUMED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects competing same-key different-payload confirmation without a second action
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"67e6012a-5dc0-406d-9a1d-10b0fda7c7c2","outcome":"IDEMPOTENCY_CONFLICT"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rolls back every record after injected AFTER_ACTION failure
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"1e9cb3f8-d152-41a3-af4f-5a31b4ffad2e","outcome":"ACTION_CREATE_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rolls back every record after injected AFTER_EVIDENCE failure
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"d3b0b5b8-f60d-4004-8f95-420519761723","outcome":"ACTION_CREATE_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rolls back every record after injected AFTER_AUDIT failure
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"b870cc1b-f4d4-4cc3-8a4d-5c17999b16c5","outcome":"ACTION_CREATE_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rolls back every record after injected AFTER_CONSUMPTION failure
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"bfd02064-da1f-4dab-a4b7-d146dc23f0bc","outcome":"ACTION_CREATE_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rolls back every record after injected AFTER_RECEIPT failure
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"dbcbb9ac-ddf3-4d85-82b6-18d2eb357059","outcome":"ACTION_CREATE_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rolls back every record after injected BEFORE_COMMIT failure
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"871cbaca-6463-4f8e-80d4-54d257c50fe8","outcome":"ACTION_CREATE_FAILED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > observes a source writer committed before the confirmation lock boundary
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"4a7185dd-131f-4f37-9aec-e6f9ea7a9d50","outcome":"STALE_COMPARISON"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer commercial:actual-read downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"5a5dff3f-1551-45a0-b933-7da952e4fbc4","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer commercial:actual-read downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"7991d606-c084-4eff-a30f-567ca754d2a4","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer commercial:actual-read downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"85b055a7-6c27-40f7-a33b-e4f255ce72db","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer commercial:actual-read downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"ec83255e-1d73-47f3-98f8-124b0fd54c4f","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer evidence:read downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"d3d81fe3-f8d7-4283-a2db-71d6bf97e320","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer evidence:read downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"8af173ef-6e2e-48a5-b583-b9db8f30413d","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer evidence:read downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"fcf16a04-0ce1-4627-abfc-cda254cec314","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer evidence:read downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"c9cf7c69-0cdb-4018-b700-c506bdcdfbc5","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer action:internal-review:create downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"e44cef93-e6fd-4087-ad26-90863c6da621","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer action:internal-review:create downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"b1c73b76-3139-4cfd-8609-d17afc48bd9c","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer action:internal-review:create downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"fe246dda-172a-4e93-900b-23f2b9e11243","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides receipt, replay and workspace titles after a non-Viewer action:internal-review:create downgrade
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"e58a125e-371f-4787-9d37-01161dc04c20","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides a committed action when required evidence becomes tenant-restricted
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"20e64015-e5db-48f4-ad4a-66bba35d0222","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > denies a committed action whose required document has a unassigned project owner
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"4165cd22-a102-4a07-ba48-ae21cd5e1763","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > denies a committed action whose required document has a missing project owner
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"0d9d7be7-7079-4f37-809d-f81f1d936ef8","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > denies a committed action whose required document has a foreign project owner
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"ae63373e-cd2f-4587-bff5-684d3b8ef58d","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > denies a committed action whose required document has a deleted project owner
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"278151e7-5b3e-46ce-9d6d-98ead8948fb9","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > hides a committed action when an evidence reference is rebound to another accessible document version
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"32533e6b-9eb2-4adc-8f48-010f149fe336","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > rejects repeated preparation when its immutable suggested assignee becomes ineligible
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"39904064-0be6-43ed-ad90-6343ec8d7a85","outcome":"PROPOSAL_UNAVAILABLE"}
+
+ ✓ tests/evidence-panel/postgres-localization-review.test.ts (5 tests) 10922ms
+     ✓ F-07 opens the authoritative supported or insufficient table claim in en  304ms
+     ✓ renders every real claim, factor and linked source without internal enum or policy copy  9640ms
+     ✓ keeps forecast versus actual meaning through authorized proposal, receipt and workspace  408ms
+stdout | tests/comparison-experience/selection-lineage-postgres.test.ts > Stage9 real PostgreSQL selection lineage and populated upgrade > rejects cross-tenant reads and mismatched comparison/economics evidence/proposals
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"94df566d-c4d6-4ca1-a761-e8669da91eba","outcome":"PROPOSAL_STALE"}
+
+ ✓ tests/comparison-experience/selection-lineage-postgres.test.ts (23 tests) 8041ms
+     ✓ persists and reopens 'ABC→AB' with exact evidence/proposal lineage  529ms
+     ✓ persists and reopens 'AB→AC' with exact evidence/proposal lineage  482ms
+     ✓ persists and reopens 'AC→ABC' with exact evidence/proposal lineage  998ms
+     ✓ persists and reopens 'ABC→DEF' with exact evidence/proposal lineage  942ms
+     ✓ persists and reopens 'one' with exact evidence/proposal lineage  444ms
+     ✓ persists and reopens 'ABC→AB→ABC intermediate' with exact evidence/proposal lineage  465ms
+     ✓ persists and reopens 'ABC→AB→ABC final' with exact evidence/proposal lineage  956ms
+     ✓ keeps explicit concurrent/repeated submissions isolated without inventing global deduplication  1982ms
+stdout | tests/internal-review/postgres-invariants.test.ts > Stage 8 independent PostgreSQL invariants > measures uncached proposal and confirmation p95 with SQL query counts
+STAGE8_INDEPENDENT_PERFORMANCE {"methodology":"30 unique immutable pairs/proposals; one excluded warmup; nearest-rank p95; server duration excluding network; actual Prisma query events","proposal":{"samples":30,"p50":101.36691599999904,"p95":116.42595900000015,"max":310.8755830000009},"confirmation":{"samples":30,"p50":118.5224589999998,"p95":127.74699999999939,"max":144.2546250000014},"proposalQueryCounts":[122,122,122,122,122,122,122,122,122,122,122,122,122,122,122,122,122,122,122,122,122,122,122,122,122,122,122,122,122,122],"confirmationQueryCounts":[143,143,143,143,143,143,143,143,143,143,143,143,143,143,143,143,143,143,143,143,143,143,143,143,143,143,143,143,143,143],"slowestConfirmationQueries":[{"query":"INSERT INTO \"public\".\"Action\" (\"id\",\"organizationId\",\"projectId\",\"comparisonRunId\",\"proposedActionId\",\"type\",\"title\",\"rationale\",\"assigneePersonId\",\"dueDate\",\"status\",\"evidenceReferenceIds\",\"createdByUserId\",\"createdAt\",\"updatedAt\",\"businessKey\",\"enrichmentRunId\",\"createdByMembershipId\",\"assigneeMembershipId\",\"snapshotVersion\",\"contentSnapshot\",\"evidenceSnapshot\") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,CAST($11::text AS \"public\".\"ActionStatus\"),$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22) RETURNING \"public\".\"Action\".\"id\", \"public\".\"Action\".\"organizationId\", \"public\".\"Action\".\"projectId\", \"public\".\"Action\".\"comparisonRunId\", \"public\".\"Action\".\"proposedActionId\", \"public\".\"Action\".\"type\", \"public\".\"Action\".\"title\", \"public\".\"Action\".\"rationale\", \"public\".\"Action\".\"assigneePersonId\", \"public\".\"Action\".\"dueDate\", \"public\".\"Action\".\"status\"::text, \"public\".\"Action\".\"evidenceReferenceIds\", \"public\".\"Action\".\"createdByUserId\", \"public\".\"Action\".\"createdAt\", \"public\".\"Action\".\"updatedAt\", \"public\".\"Action\".\"businessKey\", \"public\".\"Action\".\"enrichmentRunId\", \"public\".\"Action\".\"createdByMembershipId\", \"public\".\"Action\".\"assigneeMembershipId\", \"public\".\"Action\".\"snapshotVersion\", \"public\".\"Action\".\"contentSnapshot\", \"public\".\"Action\".\"evidenceSnapshot\"","duration":6.2245000000039},{"query":"SELECT \"public\".\"EconomicsEnrichmentRun\".\"id\", \"public\".\"EconomicsEnrichmentRun\".\"organizationId\", \"public\".\"EconomicsEnrichmentRun\".\"activeProjectId\", \"public\".\"EconomicsEnrichmentRun\".\"status\"::text, \"public\".\"EconomicsEnrichmentRun\".\"accessScope\", \"public\".\"EconomicsEnrichmentRun\".\"resultSnapshot\" FROM \"public\".\"EconomicsEnrichmentRun\" WHERE (\"public\".\"EconomicsEnrichmentRun\".\"id\" = $1 AND \"public\".\"EconomicsEnrichmentRun\".\"organizationId\" = $2 AND \"public\".\"EconomicsEnrichmentRun\".\"status\" = CAST($3::text AS \"public\".\"RunStatus\")) LIMIT $4 OFFSET $5","duration":3.035834000002069},{"query":"SELECT \"public\".\"IntelligenceRun\".\"id\", \"public\".\"IntelligenceRun\".\"organizationId\", \"public\".\"IntelligenceRun\".\"projectId\", \"public\".\"IntelligenceRun\".\"activeContextSnapshot\" FROM \"public\".\"IntelligenceRun\" WHERE \"public\".\"IntelligenceRun\".\"id\" IN ($1) OFFSET $2","duration":2.5652499999996508},{"query":"SELECT \"public\".\"Document\".\"id\", \"public\".\"Document\".\"projectId\" FROM \"public\".\"Document\" WHERE ((\"public\".\"Document\".\"organizationId\" = $1 AND \"public\".\"Document\".\"documentType\" = $2) AND \"public\".\"Document\".\"projectId\" IN ($3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26)) ORDER BY \"public\".\"Document\".\"businessKey\" ASC OFFSET $27","duration":2.492500000000291},{"query":"INSERT INTO \"public\".\"AuditEvent\" (\"id\",\"organizationId\",\"actorMembershipId\",\"comparisonRunId\",\"proposedActionId\",\"actionId\",\"eventType\",\"requestId\",\"payload\",\"result\",\"createdAt\") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING \"public\".\"AuditEvent\".\"id\", \"public\".\"AuditEvent\".\"organizationId\", \"public\".\"AuditEvent\".\"actorMembershipId\", \"public\".\"AuditEvent\".\"comparisonRunId\", \"public\".\"AuditEvent\".\"proposedActionId\", \"public\".\"AuditEvent\".\"actionId\", \"public\".\"AuditEvent\".\"eventType\", \"public\".\"AuditEvent\".\"requestId\", \"public\".\"AuditEvent\".\"idempotencyKey\", \"public\".\"AuditEvent\".\"payload\", \"public\".\"AuditEvent\".\"result\", \"public\".\"AuditEvent\".\"createdAt\"","duration":2.32050000000163}],"slowestReadPlan":[{"QUERY PLAN":[{"Plan":{"Node Type":"Limit","Parallel Aware":false,"Async Capable":false,"Startup Cost":0.14,"Total Cost":8.18,"Plan Rows":1,"Plan Width":133,"Actual Startup Time":0.013,"Actual Total Time":0.013,"Actual Rows":1,"Actual Loops":1,"Shared Hit Blocks":2,"Shared Read Blocks":0,"Shared Dirtied Blocks":0,"Shared Written Blocks":0,"Local Hit Blocks":0,"Local Read Blocks":0,"Local Dirtied Blocks":0,"Local Written Blocks":0,"Temp Read Blocks":0,"Temp Written Blocks":0,"Plans":[{"Node Type":"Index Scan","Parent Relationship":"Outer","Parallel Aware":false,"Async Capable":false,"Scan Direction":"Forward","Index Name":"EconomicsEnrichmentRun_pkey","Relation Name":"EconomicsEnrichmentRun","Alias":"EconomicsEnrichmentRun","Startup Cost":0.14,"Total Cost":8.18,"Plan Rows":1,"Plan Width":133,"Actual Startup Time":0.012,"Actual Total Time":0.012,"Actual Rows":1,"Actual Loops":1,"Index Cond":"(id = 'econrun_c903a11b-9b71-4daf-a6e4-8e4aab1bb0bc'::text)","Rows Removed by Index Recheck":0,"Filter":"((\"organizationId\" = 'org_horizon'::text) AND (status = ('COMPLETED'::cstring)::\"RunStatus\"))","Rows Removed by Filter":0,"Shared Hit Blocks":2,"Shared Read Blocks":0,"Shared Dirtied Blocks":0,"Shared Written Blocks":0,"Local Hit Blocks":0,"Local Read Blocks":0,"Local Dirtied Blocks":0,"Local Written Blocks":0,"Temp Read Blocks":0,"Temp Written Blocks":0}]},"Planning":{"Shared Hit Blocks":0,"Shared Read Blocks":0,"Shared Dirtied Blocks":0,"Shared Written Blocks":0,"Local Hit Blocks":0,"Local Read Blocks":0,"Local Dirtied Blocks":0,"Local Written Blocks":0,"Temp Read Blocks":0,"Temp Written Blocks":0},"Planning Time":0.066,"Triggers":[],"Execution Time":0.02}]}]}
+
+ ✓ tests/quote-issue/issue-postgres.test.ts (15 tests) 6757ms
+     ✓ snapshots authorized client details at issue and detects contact edits after preparation  795ms
+     ✓ prepares without writes, issues exactly once concurrently, and freezes bilingual snapshot independently of Settings  421ms
+     ✓ refuses zero lines, incomplete firm details, stale draft/settings and injected snapshot or tampered confirmation  705ms
+     ✓ revises without superseding Q1, carries provenance, issues Q2, accepts once even after expiry, and refuses future acceptance  675ms
+     ✓ denies project-manager issue, Viewer PDF/actions and another tenant reads/writes; PM can accept  459ms
+     ✓ blocks a newly open source conflict, requires a note and permission to resolve, then allows issue  594ms
+     ✓ Home follows saved-draft, issued, revision and acceptance states through its scoped port  978ms
+     ✓ accepts a quote in CONSTRUCTION with the actual CONSTRUCTION stage recorded in the audit  346ms
+     ✓ accepts a quote in QUOTE_REVIEW with the actual APPROVED stage recorded in the audit  358ms
+     ✓ saves partial firm details and issues zh-TW with all English fields, email and terms empty  311ms
+stdout | tests/database/isolation.test.ts > proves parallel worker isolation and reset between files, with failing negative controls
+DATABASE_ISOLATION_PROOF [{"mode":"parallel","exitCode":0,"passed":2,"failed":0,"observations":[{"label":"b","database":"sb_test_fccfb77525af6af6_worker_2","worker":"2","observed":"isolation-b"},{"label":"a","database":"sb_test_fccfb77525af6af6_worker_1","worker":"1","observed":"isolation-a"}]},{"mode":"shared","exitCode":1,"passed":1,"failed":1,"observations":[{"label":"b","database":"sb_test_d6ec6709fd072d96_worker_1","worker":"2","observed":"isolation-b"},{"label":"a","database":"sb_test_d6ec6709fd072d96_worker_1","worker":"1","observed":"isolation-b"}]},{"mode":"reset","exitCode":0,"passed":2,"failed":0,"observations":[{"label":"a","database":"sb_test_692ea747e98af243_worker_1","worker":"1","observed":"isolation-a"},{"label":"b","database":"sb_test_692ea747e98af243_worker_1","worker":"1","observed":"isolation-b"}]},{"mode":"sticky","exitCode":1,"passed":1,"failed":1,"observations":[{"label":"b","database":"sb_test_92dfd955e7546e3a_worker_1","worker":"1","observed":"isolation-b"}]}]
+
+ ✓ tests/database/isolation.test.ts (1 test) 4393ms
+   ✓ proves parallel worker isolation and reset between files, with failing negative controls  4392ms
+ ✓ tests/quote-draft/quote-draft-postgres.test.ts (12 tests) 3481ms
+     ✓ saves a configured quote unit, rejects unknown units, and carries a retired unit on edit  480ms
+     ✓ prepares and saves one demolition/ceiling price, then compares it with past prices  320ms
+     ✓ stores both default category labels and edits only the viewed language across versions  419ms
+     ✓ saves once on concurrent retries, carries basis through two edits, supersedes and audits  482ms
+     ✓ retains typed amounts after area/scope changes, flags the affected basis, and refresh needs current comparison  368ms
+ ✓ tests/assistant/hosted-postgres.test.ts (11 tests) 2317ms
+     ✓ keeps the named job in the keyword reply after discarding an answer: PRJ-XINYI-026 的報價有哪些比較結果？  489ms
+     ✓ keeps the named job in the keyword reply after discarding an answer: Xinyi Flagship Renovation 的報價有哪些比較結果？  369ms
+     ✓ answers no awaiting clients before another model call and does not save a comparison  364ms
+stdout | tests/comparison-experience/job-neutral-findings-postgres.test.ts > job-neutral review outcomes > returns NO_QUOTE_VERSION for a newly created job and still ranks actual history
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"f1c8a6fc-16a5-4621-8503-1a0ae519ceff","outcome":"NO_QUOTE_VERSION"}
+
+ ✓ tests/comparison-experience/job-neutral-findings-postgres.test.ts (5 tests) 2055ms
+     ✓ uses the second job's categories and the same stored findings/scores on Home and comparison in both languages  1021ms
+     ✓ prepares and confirms millwork/signage findings in en  304ms
+ ✓ tests/economics/job-neutral-migration-postgres.test.ts (1 test) 1626ms
+     ✓ renames indexed keys, backfills category identity and preserves historical snapshots and evidence IDs  1078ms
+ ✓ tests/assistant/assistant-postgres.test.ts (8 tests) 1807ms
+     ✓ keeps saved comparison freshness and the exact Quote-tab price basis  317ms
+     ✓ only exempts references and document numbers readable by the asking member  317ms
+     ✓ returns current Quote-tab amounts to the owner, never to Viewer, including during a revision  533ms
+ ✓ tests/assistant/rejected-answer-replay.test.ts (1 test) 1426ms
+   ✓ replays rejected paid answers against the authorized synthetic sources  1425ms
+ ✓ tests/assistant/job-draft-evaluation.test.ts (3 tests) 1308ms
+     ✓ runs every case in three rounds through the real support, conversion, client and usage path  1250ms
+ ✓ tests/firm-lists/assistant-privacy-postgres.test.ts (1 test) 941ms
+     ✓ excludes every client contact field from all tools, even for the owner  884ms
+ ✓ tests/firm-lists/mapping-lock-postgres.test.ts (9 tests) 959ms
+ ✓ tests/projects/jobs-postgres.test.ts (13 tests) 982ms
+     ✓ creates reviewed context, client, scope, creator assignment and audit; ranks history without a quote  311ms
+ ✓ tests/home-desk/home-desk-postgres.test.ts (4 tests) 659ms
+     ✓ uses the same member's saved Xinyi and Riverside category findings without replay  371ms
+ ✓ tests/firm-lists/firm-lists-postgres.test.ts (6 tests) 584ms
+ ✓ tests/evidence-panel/modal-focus.test.ts (37 tests) 599ms
+stdout | tests/preview-session/postgres-handoff.test.ts > Preview handoff with existing PostgreSQL session and authorization > 'viewer' enters, resolves Xinyi, denies cross-tenant access, and revokes in 'en'
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"e90e55c1-079c-407d-8786-06e02cc70921","outcome":"ACTION_NOT_AUTHORIZED"}
+
+stdout | tests/preview-session/postgres-handoff.test.ts > Preview handoff with existing PostgreSQL session and authorization > 'viewer' enters, resolves Xinyi, denies cross-tenant access, and revokes in 'zh-TW'
+{"event":"INTERNAL_REVIEW_ATTEMPT","requestId":"d2d7388a-8f67-4390-a552-ddf54ff3b045","outcome":"ACTION_NOT_AUTHORIZED"}
+
+ ✓ tests/preview-session/postgres-handoff.test.ts (8 tests) 457ms
+stdout | tests/comparison-experience/postgres-hero-flow.test.ts > Stage 6 PostgreSQL hero flow > runs the authorized structural and economics pipeline and composes the real UI DTO
+STAGE6_HERO_PIPELINE_MS=197.40
+
+stdout | tests/comparison-experience/postgres-hero-flow.test.ts > Stage 6 PostgreSQL hero flow > runs the authorized structural and economics pipeline and composes the real UI DTO
+STAGE7_EVIDENCE_PANEL_MS=86.74
+
+ ✓ tests/comparison-experience/postgres-hero-flow.test.ts (1 test) 469ms
+     ✓ runs the authorized structural and economics pipeline and composes the real UI DTO  467ms
+ ✓ tests/firm-lists/clients-postgres.test.ts (5 tests) 404ms
+ ✓ tests/firm-lists/dynamic-job-postgres.test.ts (1 test) 443ms
+     ✓ adds a type/category, creates a 100-ping job, then renames/retires without changing its keys or area  388ms
+ ✓ tests/firm-lists/seeded-comparison-parity.test.ts (1 test) 380ms
+     ✓ keeps the pre-change ranking, exact scores, claims and bilingual findings  325ms
+ ✓ tests/internal-review-experience/navigation-race.test.ts (22 tests) 369ms
+ ✓ tests/quote-issue/pdf.test.ts (10 tests) 350ms
+ ✓ tests/internal-review-experience/date-policy.test.ts (38 tests) 319ms
+ ✓ tests/firm-lists/quote-list-postgres.test.ts (4 tests) 404ms
+ ✓ tests/firm-lists/client-migration-postgres.test.ts (2 tests) 224ms
+ ✓ tests/assistant/job-draft-postgres.test.ts (2 tests) 300ms
+ ✓ tests/projects/project-list-postgres.test.ts (6 tests) 266ms
+ ✓ tests/firm-lists/type-unit-migration-postgres.test.ts (4 tests) 200ms
+ ✓ tests/comparison-experience/selection-navigation.test.ts (10 tests) 148ms
+stderr | tests/home-desk/experience.test.ts > remembers locale changes from existing Settings or review links as well as the sidebar
+Unknown event handler property `onNavigate`. It will be ignored.
+
+ ✓ tests/home-desk/experience.test.ts (19 tests) 130ms
+ ✓ tests/architecture/job-neutral-runtime.test.ts (2 tests) 71ms
+ ✓ tests/comparison-experience/build-comparison-experience.test.ts (18 tests) 61ms
+ ✓ tests/internal-review-experience/receipt-disclosure.test.ts (8 tests) 64ms
+ ✓ tests/projects/projects-page.test.ts (13 tests) 63ms
+ ✓ tests/assistant/job-draft-ui.test.ts (6 tests) 55ms
+ ✓ tests/assistant/ask-assistant.test.ts (39 tests) 56ms
+ ✓ tests/localization/stage9-workspace-loading.test.ts (25 tests) 55ms
+ ✓ tests/quote-draft/row-order.test.ts (2 tests) 54ms
+ ✓ tests/evidence-panel/get-evidence-panel.test.ts (15 tests) 50ms
+ ✓ tests/economics/historical-economics.test.ts (9 tests) 27ms
+ ✓ tests/preview-session/handoff.test.ts (70 tests) 39ms
+ ✓ tests/internal-review/service-unit.test.ts (53 tests) 41ms
+ ✓ tests/demo-value/chat-context.test.ts (15 tests) 41ms
+ ✓ tests/design/components.test.ts (6 tests) 39ms
+ ✓ tests/assistant/sb060-grounding.test.ts (46 tests) 35ms
+ ✓ tests/design/fonts.test.ts (3 tests) 38ms
+ ✓ tests/projects/job-actions.test.ts (15 tests) 28ms
+ ✓ tests/internal-review/policy-unit.test.ts (41 tests) 34ms
+ ✓ tests/assistant/paid-evaluation-regressions.test.ts (37 tests) 38ms
+ ✓ tests/assistant/stability-regressions.test.ts (20 tests) 32ms
+ ✓ tests/home-intelligence/chat-findings.test.ts (16 tests) 30ms
+ ✓ tests/assistant/read-tools.test.ts (21 tests) 30ms
+ ✓ tests/assistant/quality.test.ts (32 tests) 27ms
+ ✓ tests/design/shell.test.ts (3 tests) 27ms
+ ✓ tests/assistant/hosted-boundaries.test.ts (17 tests) 25ms
+ ✓ tests/repositories/prisma-internal-review-repository.test.ts (25 tests) 23ms
+ ✓ tests/internal-review/postgres-invariants.test.ts (95 tests) 89076ms
+     ✓ prepares and creates the verified canonical action as Project Manager/Estimator  636ms
+     ✓ prepares and creates the verified canonical action as Financial Reviewer  362ms
+     ✓ prepares and creates the verified canonical action as Organization Admin  305ms
+     ✓ keeps a en saved claim inspectable with a named authorityState change and rejects new writes  699ms
+     ✓ keeps a zh-TW saved claim inspectable with a named authorityState change and rejects new writes  654ms
+     ✓ keeps a en saved claim inspectable with a named supportedValue change and rejects new writes  550ms
+     ✓ keeps a zh-TW saved claim inspectable with a named supportedValue change and rejects new writes  503ms
+     ✓ reopens one deterministic proposal and localized review without creating an action  301ms
+     ✓ refreshes en midnight guidance without writes and retains authoritative confirmation  1075ms
+     ✓ refreshes zh-TW midnight guidance without writes and retains authoritative confirmation  1227ms
+     ✓ rejects a required source crossing its stale date without a source edit or proposal expiry  487ms
+     ✓ rejects quote validity crossing organization-local midnight without changing the quote  371ms
+     ✓ rejects foreign assignees and an assignee whose eligibility changes  436ms
+     ✓ allows only the stored default without action:assign and exposes no alternate people  414ms
+     ✓ replays the same durable receipt after expiry/source change but rejects payload changes  443ms
+     ✓ serializes concurrent identical confirmations to one action and durable receipt  431ms
+     ✓ rejects competing same-key different-payload confirmation without a second action  323ms
+     ✓ rolls back every record after injected BEFORE_COMMIT failure  305ms
+     ✓ blocks a source mutation arriving after authoritative locks until the action commits  344ms
+     ✓ reconstructs the successful audit and protects action, proposal and receipt invariants in SQL  329ms
+     ✓ shows a durable action in both Actions and Project Workspace and reopens it in Chinese  469ms
+     ✓ hides receipt, replay and workspace titles after a non-Viewer commercial:actual-read downgrade  338ms
+     ✓ hides receipt, replay and workspace titles after a non-Viewer evidence:read downgrade  332ms
+     ✓ hides receipt, replay and workspace titles after a non-Viewer action:internal-review:create downgrade  314ms
+     ✓ hides a committed action when required evidence becomes tenant-restricted  325ms
+     ✓ denies a committed action whose required document has a unassigned project owner  410ms
+     ✓ denies a committed action whose required document has a missing project owner  361ms
+     ✓ denies a committed action whose required document has a foreign project owner  370ms
+     ✓ denies a committed action whose required document has a deleted project owner  374ms
+     ✓ hides a committed action when an evidence reference is rebound to another accessible document version  472ms
+     ✓ measures uncached proposal and confirmation p95 with SQL query counts  9052ms
+     ✓ loads twenty additional eligible assignees without a per-assignee query waterfall  397ms
+     ✓ records concurrent confirmation latency without duplicating business state  6250ms
+     ✓ repeatably reseeds after real actions and restores all immutability triggers  45100ms
+     ✓ refuses a fixture reset against non-synthetic identities without disabling audit protections  1075ms
+ ✓ tests/internal-review-experience/api-routes.test.ts (7 tests) 22ms
+ ✓ tests/assistant/review-regressions.test.ts (18 tests) 23ms
+ ✓ tests/assistant/grounding.test.ts (8 tests) 21ms
+ ✓ tests/internal-review-experience/http-contract.test.ts (5 tests) 17ms
+ ✓ tests/assistant/job-draft.test.ts (44 tests) 19ms
+ ✓ tests/design/filter-form.test.ts (1 test) 22ms
+ ✓ tests/comparisons/run-comparable-project-analysis.test.ts (8 tests) 17ms
+ ✓ tests/assistant/gemini.test.ts (7 tests) 17ms
+ ✓ tests/quote-issue/domain.test.ts (12 tests) 16ms
+ ✓ tests/assistant/job-draft-gemini.test.ts (7 tests) 16ms
+ ✓ tests/runtime-context/signed-demo-identity-context.test.ts (10 tests) 16ms
+ ✓ tests/quote-issue/pdf-route.test.ts (4 tests) 16ms
+ ✓ tests/comparison-experience/selection-action.test.ts (11 tests) 15ms
+ ✓ tests/assistant/home-action.test.ts (10 tests) 15ms
+ ✓ tests/home-intelligence/claim-sentences.test.ts (5 tests) 15ms
+ ✓ tests/home-desk/get-home-desk.test.ts (22 tests) 17ms
+ ✓ tests/repositories/prisma-comparison-run-repository.test.ts (5 tests) 14ms
+ ✓ tests/projects/stage-actions.test.ts (9 tests) 15ms
+ ✓ tests/repositories/prisma-economics-observation-repository.test.ts (4 tests) 18ms
+ ✓ tests/home-intelligence/get-home-comparison.test.ts (6 tests) 16ms
+ ✓ tests/runtime-context/session-cookie.test.ts (4 tests) 15ms
+ ✓ tests/comparison-experience/home-evidence-action.test.ts (2 tests) 14ms
+ ✓ tests/repositories/prisma-economics-enrichment-run-repository.test.ts (7 tests) 15ms
+ ✓ tests/economics/run-historical-economics-enrichment.test.ts (3 tests) 14ms
+ ✓ tests/home-desk/closed-job-economics.test.ts (5 tests) 12ms
+ ✓ tests/comparison-experience/route-state.test.ts (6 tests) 14ms
+ ✓ tests/home-desk/quote-review-finding.test.ts (7 tests) 12ms
+ ✓ tests/assistant/experience.test.ts (6 tests) 11ms
+ ✓ tests/firm-lists/quote-list.test.ts (12 tests) 11ms
+ ✓ tests/quote-issue/issued-note.test.ts (2 tests) 10ms
+ ✓ tests/architecture/stage8-internal-review-boundaries.test.ts (5 tests) 9ms
+ ✓ tests/architecture/boundaries.test.ts (3 tests) 10ms
+ ✓ tests/quote-issue/firm-details-form.test.ts (4 tests) 9ms
+ ✓ tests/projects/get-project-workspace.test.ts (9 tests) 8ms
+ ✓ tests/localization/preview-session.test.ts (5 tests) 9ms
+ ✓ tests/projects/job-input.test.ts (49 tests) 8ms
+ ✓ tests/comparison-experience/stale-comparison-notice.test.ts (4 tests) 9ms
+ ✓ tests/repositories/prisma-comparable-project-repository.test.ts (5 tests) 7ms
+ ✓ tests/comparisons/similarity-policy.test.ts (14 tests) 6ms
+ ✓ tests/repositories/prisma-evidence-panel-repository.test.ts (7 tests) 7ms
+ ✓ tests/projects/projects-shell-disclosure.test.ts (2 tests) 7ms
+ ✓ tests/projects/job-reference.test.ts (10 tests) 6ms
+ ✓ tests/projects/list-authorized-projects.test.ts (23 tests) 6ms
+ ✓ tests/localization/evidence-panel-parity.test.ts (4 tests) 6ms
+ ✓ tests/repositories/prisma-demo-session-repository.test.ts (10 tests) 6ms
+ ✓ tests/localization/job-category-aliases.test.ts (14 tests) 5ms
+ ✓ tests/design/css-policy.test.ts (5 tests) 6ms
+ ✓ tests/runtime-context/demo-session-service.test.ts (3 tests) 5ms
+ ✓ tests/repositories/prisma-project-workspace-repository.test.ts (5 tests) 5ms
+ ✓ tests/internal-review-experience/route-state.test.ts (7 tests) 5ms
+ ✓ tests/quote-draft/draft-policy.test.ts (9 tests) 6ms
+ ✓ tests/architecture/stage7-evidence-boundaries.test.ts (5 tests) 5ms
+ ✓ tests/internal-review/workspace-unit.test.ts (4 tests) 5ms
+ ✓ tests/quote-draft/input-and-signature.test.ts (5 tests) 5ms
+ ✓ tests/firm-lists/route-access.test.ts (4 tests) 5ms
+ ✓ tests/database/safety.test.ts (13 tests) 4ms
+ ✓ tests/firm-lists/list-change.test.ts (6 tests) 5ms
+ ✓ tests/projects/list-project-clients.test.ts (7 tests) 5ms
+ ✓ tests/firm-lists/client-services.test.ts (3 tests) 4ms
+ ✓ tests/repositories/prisma-project-repository.test.ts (6 tests) 4ms
+ ✓ tests/repositories/prisma-latest-project-comparison-repository.test.ts (2 tests) 4ms
+ ✓ tests/authorization/authorization-service.test.ts (8 tests) 4ms
+ ✓ tests/runtime-context/session-token.test.ts (3 tests) 3ms
+ ✓ tests/localization/catalog-parity.test.ts (2 tests) 4ms
+ ✓ tests/projects/project-workspace-query.test.ts (2 tests) 3ms
+ ✓ tests/assistant/job-draft-action.test.ts (4 tests) 4ms
+ ✓ tests/architecture/stage6-presentation-boundaries.test.ts (4 tests) 4ms
+ ✓ tests/internal-review-experience/entry-preflight.test.ts (4 tests) 4ms
+ ✓ tests/economics/observation-authority.test.ts (4 tests) 4ms
+ ✓ tests/home-intelligence/intent-router.test.ts (21 tests) 4ms
+ ✓ tests/firm-lists/area-unit.test.ts (10 tests) 3ms
+ ✓ tests/localization/internal-review-parity.test.ts (3 tests) 3ms
+ ✓ tests/architecture/stage8-presentation-boundaries.test.ts (2 tests) 3ms
+ ✓ tests/internal-review-experience/focus.test.ts (3 tests) 3ms
+ ✓ tests/finance/fixed-decimal.test.ts (7 tests) 4ms
+ ✓ tests/assistant/boundaries.test.ts (3 tests) 3ms
+ ✓ tests/fixtures/horizon-atelier-manifest.test.ts (5 tests) 3ms
+ ✓ tests/internal-review-experience/workspace-locale.test.ts (1 test) 3ms
+ ✓ tests/quote-draft/quote-line-order.test.ts (2 tests) 3ms
+ ✓ tests/evidence-panel/route-state.test.ts (5 tests) 3ms
+ ✓ tests/assistant/job-draft-availability.test.ts (1 test) 3ms
+ ✓ tests/env/server-env.test.ts (4 tests) 3ms
+ ✓ tests/localization/comparison-experience-parity.test.ts (3 tests) 3ms
+ ✓ tests/demo-value/chat-hydration-boundary.test.ts (2 tests) 3ms
+ ✓ tests/firm-lists/work-categories.test.ts (2 tests) 3ms
+ ✓ tests/projects/project-workspace-entry.test.ts (3 tests) 2ms
+ ✓ tests/env/demo-session-secret.test.ts (2 tests) 2ms
+ ✓ tests/home-desk/account.test.ts (2 tests) 3ms
+ ✓ tests/comparisons/similarity-policy-invariants.test.ts (2 tests) 3ms
+ ✓ tests/runtime-context/capabilities.test.ts (6 tests) 3ms
+ ✓ tests/navigation/navigation-contract.test.ts (3 tests) 3ms
+ ✓ tests/comparisons/policy-versions.test.ts (2 tests) 3ms
+ ✓ tests/quote-draft/format-money.test.ts (3 tests) 3ms
+ ✓ tests/navigation/typed-comparison-routes.test.ts (2 tests) 2ms
+ ✓ tests/navigation/language-switcher-state.test.ts (3 tests) 2ms
+ ✓ tests/projects/project-workspace-state.test.ts (1 test) 2ms
+
+ Test Files  156 passed (156)
+      Tests  1589 passed (1589)
+   Start at  21:39:07
+   Duration  100.01s (transform 2.43s, setup 14.34s, import 6.61s, tests 160.77s, environment 5.30s)
+
+JSON report written to /var/folders/j7/nq6gzbls2qq4qxxfhgrf0fcr0000gn/T/sb071-report-YyHNhv/report.json

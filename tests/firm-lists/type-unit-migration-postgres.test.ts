@@ -1,3 +1,4 @@
+import { resetWorkerDatabase } from "../database/worker";
 import { randomUUID } from "node:crypto";
 import { readFileSync, readdirSync } from "node:fs";
 import { Client } from "pg";
@@ -6,18 +7,11 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 const base = process.env.DATABASE_URL;
 const suite = base ? describe.sequential : describe.skip;
 const migration = "20261124011000_firm_job_types_and_units";
-const name = `sb066_lists_${randomUUID().replaceAll("-", "")}`;
-let admin: Client, sql: Client;
+let sql: Client;
 suite("SB-066 populated firm-list upgrade", () => {
   beforeAll(async () => {
-    const url = new URL(base!);
-    if (!["localhost", "127.0.0.1", "[::1]"].includes(url.hostname))
-      throw new Error("DISPOSABLE_LOCAL_DATABASE_ONLY");
-    admin = new Client({ connectionString: base });
-    await admin.connect();
-    await admin.query(`CREATE DATABASE "${name}"`);
-    url.pathname = `/${name}`;
-    sql = new Client({ connectionString: url.toString() });
+    await resetWorkerDatabase(true);
+    sql = new Client({ connectionString: process.env.DATABASE_URL });
     await sql.connect();
     for (const dir of readdirSync("prisma/migrations")
       .filter((dir) => dir < migration)
@@ -31,10 +25,6 @@ suite("SB-066 populated firm-list upgrade", () => {
   }, 30000);
   afterAll(async () => {
     await sql?.end();
-    if (admin) {
-      await admin.query(`DROP DATABASE IF EXISTS "${name}" WITH (FORCE)`);
-      await admin.end();
-    }
   });
   it("seeds the original four choices and exact directed related-type pairs", async () => {
     const types = await sql.query(

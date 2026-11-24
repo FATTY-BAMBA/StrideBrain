@@ -1,13 +1,9 @@
 import { seededFirmLists } from "@/fixtures/firm-lists";
 import { withFirmLists } from "../firm-lists/with-firm-lists";
-import { execFileSync } from "node:child_process";
-import { randomUUID } from "node:crypto";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { PrismaPg } from "@prisma/adapter-pg";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 
-import { PrismaClient } from "../../.generated/prisma/client";
 import { EvidencePanel } from "@/components/evidence/evidence-panel";
 import { ComparisonExperienceClient } from "@/components/comparisons/comparison-experience-client";
 import { ActionReceipt } from "@/components/internal-review/action-receipt";
@@ -36,12 +32,9 @@ vi.mock("next/navigation", () => ({
 
 const originalDatabaseUrl = process.env.DATABASE_URL;
 const describePostgres = originalDatabaseUrl ? describe.sequential : describe.skip;
-const databaseName = `stridebrain_sb029_copy_${randomUUID().replaceAll("-", "")}`;
-const safeDatabaseName = /^stridebrain_sb029_copy_[a-f0-9]{32}$/;
 const secret = "independent-copy-review-synthetic-signing-secret-32-bytes";
 const noop = () => {};
 const locales = ["en", "zh-TW"] as const;
-let administrator: PrismaClient | undefined;
 let context: RuntimeContext;
 let comparison: Stage4ComparisonResult;
 let economics: Stage5EconomicsResult;
@@ -58,24 +51,6 @@ function assertNoInternalCopy(text: string, contextLabel: string): void {
 
 describePostgres("Independent SB-029 stored-data presentation review", () => {
   beforeAll(async () => {
-    if (!originalDatabaseUrl || !safeDatabaseName.test(databaseName))
-      throw new Error("ISOLATED_REVIEW_DATABASE_REQUIRED");
-    administrator = new PrismaClient({
-      adapter: new PrismaPg({ connectionString: originalDatabaseUrl }),
-    });
-    await administrator.$executeRawUnsafe(`CREATE DATABASE "${databaseName}"`);
-    const isolated = new URL(originalDatabaseUrl);
-    isolated.pathname = `/${databaseName}`;
-    const environment = { ...process.env, DATABASE_URL: isolated.toString() };
-    for (const script of ["db:migrate", "db:seed"]) {
-      execFileSync("npm", ["run", script], {
-        env: environment,
-        stdio: "pipe",
-        timeout: 90_000,
-      });
-    }
-    await disconnectPrismaClientForTests();
-    process.env.DATABASE_URL = isolated.toString();
     const repository = new PrismaDemoSessionRepository(
       getPrismaClient() as unknown as PrismaDemoSessionDatabase,
     );
@@ -106,13 +81,6 @@ describePostgres("Independent SB-029 stored-data presentation review", () => {
 
   afterAll(async () => {
     await disconnectPrismaClientForTests();
-    if (originalDatabaseUrl) process.env.DATABASE_URL = originalDatabaseUrl;
-    if (administrator && safeDatabaseName.test(databaseName)) {
-      await administrator.$executeRawUnsafe(
-        `DROP DATABASE IF EXISTS "${databaseName}" WITH (FORCE)`,
-      );
-      await administrator.$disconnect();
-    }
   }, 30_000);
 
   it.each(locales)(

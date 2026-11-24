@@ -1,0 +1,5 @@
+2026-11-24T12:07:02.1181058Z ##[group]Run npm run test
+2026-11-24T12:10:47.7847979Z  Test Files  154 passed (154)
+2026-11-24T12:10:47.7849463Z       Tests  1575 passed (1575)
+2026-11-24T12:10:47.7852354Z    Duration  225.23s (transform 5.63s, setup 0ms, import 19.07s, tests 484.77s, environment 11.32s)
+2026-11-24T12:10:47.9048793Z ##[group]Run npm run build

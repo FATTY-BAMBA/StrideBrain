@@ -1,0 +1,20 @@
+{
+  "issue": 71,
+  "branch": "build/sb-071-database-test-isolation",
+  "baseCommit": "cefe16033c3a248d6894b6ce67456e2a7aa251ce",
+  "status": "VERIFIED_AWAITING_EVIDENCE_REVIEW",
+  "acceptance": "EVIDENCE_REVIEW_PENDING",
+  "localTests": 1589,
+  "localFiles": 156,
+  "ciBeforeTestSeconds": 225.23,
+  "ciMaximumTestSeconds": 337.845,
+  "pullRequest": 72,
+  "implementationCommit": "5b41c0e904ffccf895e7783e6066274f1197ee08",
+  "consecutiveTestRuns": 20,
+  "shuffledTestRuns": 10,
+  "skippedTests": 0,
+  "heroUnchanged": true,
+  "ciAfterTestSeconds": 156.14,
+  "ciRun": 45403350818,
+  "remainingLocalRunDatabases": 0
+}

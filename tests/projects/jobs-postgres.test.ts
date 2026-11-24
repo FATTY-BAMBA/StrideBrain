@@ -1,5 +1,4 @@
 import { withFirmLists } from "../firm-lists/with-firm-lists";
-import { execFileSync } from "node:child_process";
 import { randomUUID } from "node:crypto";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
@@ -36,34 +35,16 @@ import {
 } from "@/repositories/prisma/prisma-project-list-repository";
 
 const originalURL = process.env.DATABASE_URL;
-const databaseName = `stridebrain_sb041_${randomUUID().replaceAll("-", "")}`;
-let admin: PrismaClient;
 let database: PrismaClient;
 const postgres = originalURL ? describe.sequential : describe.skip;
 const secret = "synthetic-sb041-test-signing-secret-only";
 
 postgres("SB-041 real PostgreSQL transactions and tenant boundaries", () => {
   beforeAll(async () => {
-    if (!originalURL || !/^stridebrain_sb041_[a-f0-9]{32}$/.test(databaseName))
-      throw new Error("ISOLATED_DATABASE_REQUIRED");
-    admin = new PrismaClient({ adapter: new PrismaPg({ connectionString: originalURL }) });
-    await admin.$executeRawUnsafe(`CREATE DATABASE "${databaseName}"`);
-    const url = new URL(originalURL);
-    url.pathname = `/${databaseName}`;
-    for (const script of ["db:reset-fixture"])
-      execFileSync("npm", ["run", script], {
-        env: { ...process.env, DATABASE_URL: url.toString() },
-        stdio: "pipe",
-        timeout: 180_000,
-      });
-    database = new PrismaClient({ adapter: new PrismaPg({ connectionString: url.toString() }) });
+    database = new PrismaClient({ adapter: new PrismaPg({ connectionString: originalURL! }) });
   }, 240_000);
   afterAll(async () => {
     await database?.$disconnect();
-    if (admin) {
-      await admin.$executeRawUnsafe(`DROP DATABASE IF EXISTS "${databaseName}" WITH (FORCE)`);
-      await admin.$disconnect();
-    }
   });
   function services() {
     const repo = new PrismaProjectWriteRepository(database);

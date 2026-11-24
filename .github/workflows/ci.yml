@@ -61,6 +61,7 @@ jobs:
       - name: Generate Prisma client
         run: npm run db:generate
 
+      # Exercise the real Prisma deployment commands against the service's base database.
       - name: Apply committed migrations
         run: npm run db:migrate
 
@@ -73,23 +74,10 @@ jobs:
       - name: Verify repeatable synthetic fixture reset
         run: npm run db:seed && npm run db:verify
 
-      - name: Check formatting
-        run: npm run format:check
-
-      - name: Check design tokens
-        run: npm run design:check
-
-      - name: Lint
-        run: npm run lint
-
-      - name: Type check
-        run: npm run typecheck
-
-      - name: Run unit and architecture tests
-        run: npm run test
-
-      - name: Build production application
-        run: npm run build
+      # Vitest separately applies SQL to its own template and clones isolated workers,
+      # exactly as on a developer machine; that setup does not exercise the Prisma CLI.
+      - name: Run complete check with isolated databases
+        run: npm run check
 
       - name: Audit production dependencies
         run: npm audit --omit=dev --audit-level=high

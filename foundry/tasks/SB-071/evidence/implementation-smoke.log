@@ -1,0 +1,13 @@
+
+> stridebrain@0.1.0 test
+> vitest run tests/comparison-experience/postgres-hero-flow.test.ts tests/assistant/evaluation.test.ts tests/quote-draft/quote-draft-postgres.test.ts tests/home-desk/home-desk-postgres.test.ts tests/firm-lists/type-unit-migration-postgres.test.ts
+
+
+ RUN  v4.1.10 /private/tmp/stridebrain-sb041
+
+TEST_DATABASE_TEMPLATE_MS=500
+
+ Test Files  5 passed (5)
+      Tests  27 passed (27)
+   Start at  21:14:50
+   Duration  17.51s (transform 621ms, setup 724ms, import 911ms, tests 21.13s, environment 0ms)

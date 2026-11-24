@@ -12,8 +12,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "format": "prettier --write package.json tsconfig.json next.config.ts next-env.d.ts eslint.config.mjs prettier.config.mjs vitest.config.ts vitest.ai-eval.config.ts scripts/run-ai-eval.mjs tests/assistant/questions.json .github/workflows/ai-evaluation.yml prisma.config.ts .github/workflows/ci.yml 'src/**/*.{ts,tsx,css}' 'tests/**/*.ts' 'scripts/design/**/*.ts' scripts/check-design-tokens.ts scripts/design/legacy-baseline.json scripts/generate-fonts.mjs scripts/fonts/manifest.json",
-    "format:check": "prettier --check package.json tsconfig.json next.config.ts next-env.d.ts eslint.config.mjs prettier.config.mjs vitest.config.ts vitest.ai-eval.config.ts scripts/run-ai-eval.mjs tests/assistant/questions.json .github/workflows/ai-evaluation.yml prisma.config.ts .github/workflows/ci.yml 'src/**/*.{ts,tsx,css}' 'tests/**/*.ts' 'scripts/design/**/*.ts' scripts/check-design-tokens.ts scripts/design/legacy-baseline.json scripts/generate-fonts.mjs scripts/fonts/manifest.json",
+    "format": "prettier --write package.json tsconfig.json next.config.ts next-env.d.ts eslint.config.mjs prettier.config.mjs vitest.config.ts vitest.ai-eval.config.ts scripts/run-ai-eval.mjs tests/assistant/questions.json .github/workflows/ai-evaluation.yml prisma.config.ts .github/workflows/ci.yml 'src/**/*.{ts,tsx,css}' 'tests/**/*.ts' 'scripts/design/**/*.ts' scripts/check-design-tokens.ts scripts/design/legacy-baseline.json scripts/generate-fonts.mjs scripts/fonts/manifest.json scripts/verify-database-isolation.mjs",
+    "format:check": "prettier --check package.json tsconfig.json next.config.ts next-env.d.ts eslint.config.mjs prettier.config.mjs vitest.config.ts vitest.ai-eval.config.ts scripts/run-ai-eval.mjs tests/assistant/questions.json .github/workflows/ai-evaluation.yml prisma.config.ts .github/workflows/ci.yml 'src/**/*.{ts,tsx,css}' 'tests/**/*.ts' 'scripts/design/**/*.ts' scripts/check-design-tokens.ts scripts/design/legacy-baseline.json scripts/generate-fonts.mjs scripts/fonts/manifest.json scripts/verify-database-isolation.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -27,7 +27,8 @@
     "check": "npm run format:check && npm run design:check && npm run lint && npm run typecheck && npm run test && npm run build",
     "ai:eval": "node scripts/run-ai-eval.mjs",
     "design:check": "node scripts/check-design-tokens.ts",
-    "fonts:generate": "node scripts/generate-fonts.mjs"
+    "fonts:generate": "node scripts/generate-fonts.mjs",
+    "test:stability": "node scripts/verify-database-isolation.mjs"
   },
   "dependencies": {
     "@prisma/adapter-pg": "7.10.1",

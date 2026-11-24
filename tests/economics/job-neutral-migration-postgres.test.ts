@@ -1,3 +1,4 @@
+import { resetWorkerDatabase } from "../database/worker";
 import { withFirmLists } from "../firm-lists/with-firm-lists";
 import { randomUUID } from "node:crypto";
 import { readFileSync, readdirSync } from "node:fs";
@@ -16,9 +17,7 @@ import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 const baseUrl = process.env.DATABASE_URL;
 const suite = baseUrl ? describe.sequential : describe.skip;
 const migration = "20261121160000_job_neutral_claims";
-let admin: Client;
 let sql: Client;
-let databaseName: string;
 let context: RuntimeContext;
 let runId: string;
 let comparisonId: string;
@@ -26,15 +25,8 @@ let snapshot: unknown;
 let legacyClaims: { id: string; claimKey: string; evidenceReferenceIds: string[] }[];
 suite("job-neutral populated PostgreSQL migration", () => {
   beforeAll(async () => {
-    admin = new Client({ connectionString: baseUrl });
-    await admin.connect();
-    databaseName = `sb044_migration_${randomUUID().replaceAll("-", "")}`;
-    await admin.query(`CREATE DATABASE "${databaseName}"`);
-    const url = new URL(baseUrl!);
-    url.pathname = `/${databaseName}`;
-    process.env.DATABASE_URL = url.toString();
-    await disconnectPrismaClientForTests();
-    sql = new Client({ connectionString: url.toString() });
+    await resetWorkerDatabase(true);
+    sql = new Client({ connectionString: process.env.DATABASE_URL });
     await sql.connect();
     for (const name of readdirSync("prisma/migrations")
       .filter((name) => name < migration)
@@ -128,12 +120,6 @@ suite("job-neutral populated PostgreSQL migration", () => {
   afterAll(async () => {
     await disconnectPrismaClientForTests();
     if (sql) await sql.end();
-    if (baseUrl) process.env.DATABASE_URL = baseUrl;
-    if (admin) {
-      if (databaseName?.startsWith("sb044_migration_"))
-        await admin.query(`DROP DATABASE "${databaseName}" WITH (FORCE)`);
-      await admin.end();
-    }
   });
   it("renames indexed keys, backfills category identity and preserves historical snapshots and evidence IDs", async () => {
     await sql.query(readFileSync(`prisma/migrations/${migration}/migration.sql`, "utf8"));

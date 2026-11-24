@@ -33,6 +33,8 @@ StrideBrain is a Next.js App Router application in strict TypeScript on PostgreS
 5. Experience: screen under `src/app/[locale]/`, API route if needed, strings in both `en` and `zh-TW`.
 6. Tests in `tests/<name>/`: the normal path, a Viewer denied, another organization denied.
 
+A database test never depends on, or leaves, shared state.
+
 ## Rules that do not bend
 
 - Layers point inward. Domain code imports no Next.js, Prisma or model SDK.

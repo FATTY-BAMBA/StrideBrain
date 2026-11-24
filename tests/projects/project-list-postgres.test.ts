@@ -1,6 +1,4 @@
 import { withFirmLists } from "../firm-lists/with-firm-lists";
-import { execFileSync } from "node:child_process";
-import { randomUUID } from "node:crypto";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
@@ -19,30 +17,15 @@ import {
 } from "@/repositories/prisma/prisma-demo-session-repository";
 
 const originalURL = process.env.DATABASE_URL;
-const databaseName = `stridebrain_s9_entry_${randomUUID().replaceAll("-", "")}`;
-const safeName = /^stridebrain_s9_entry_[a-f0-9]{32}$/;
 const secret = "synthetic-project-entry-test-signing-secret-only";
-let administrator: PrismaClient | undefined;
 let database: PrismaClient<"query">;
 let projectQueryCount = 0;
 const postgres = originalURL ? describe.sequential : describe.skip;
 
 postgres("Projects entry with real PostgreSQL and signed fixture identities", () => {
   beforeAll(async () => {
-    if (!originalURL || !safeName.test(databaseName))
-      throw new Error("ISOLATED_TEST_DATABASE_REQUIRED");
-    administrator = new PrismaClient({ adapter: new PrismaPg({ connectionString: originalURL }) });
-    await administrator.$executeRawUnsafe(`CREATE DATABASE "${databaseName}"`);
-    const url = new URL(originalURL);
-    url.pathname = `/${databaseName}`;
-    for (const script of ["db:migrate", "db:seed"])
-      execFileSync("npm", ["run", script], {
-        env: { ...process.env, DATABASE_URL: url.toString() },
-        stdio: "pipe",
-        timeout: 90_000,
-      });
     database = new PrismaClient({
-      adapter: new PrismaPg({ connectionString: url.toString() }),
+      adapter: new PrismaPg({ connectionString: originalURL! }),
       log: [{ emit: "event", level: "query" }],
     });
     database.$on("query", () => {
@@ -51,12 +34,6 @@ postgres("Projects entry with real PostgreSQL and signed fixture identities", ()
   }, 180_000);
   afterAll(async () => {
     await database?.$disconnect();
-    if (administrator && safeName.test(databaseName)) {
-      await administrator.$executeRawUnsafe(
-        `DROP DATABASE IF EXISTS "${databaseName}" WITH (FORCE)`,
-      );
-      await administrator.$disconnect();
-    }
   });
   async function actor(membership: string, locale: Locale = "en") {
     const repository = new PrismaDemoSessionRepository(

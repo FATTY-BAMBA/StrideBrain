@@ -2,7 +2,6 @@ import { seededFirmLists } from "@/fixtures/firm-lists";
 import { withFirmLists } from "../firm-lists/with-firm-lists";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { Client } from "pg";
-import { readFileSync, readdirSync } from "node:fs";
 import { randomUUID } from "node:crypto";
 import { createComparisonServices } from "@/lib/server/comparison-services";
 import { createProjectWorkspaceService } from "@/lib/server/project-workspace-services";
@@ -17,46 +16,15 @@ import { buildComparisonExperience } from "@/modules/comparison-experience/build
 import { createHomeDeskService } from "@/lib/server/home-desk-services";
 import { decisionPresentation } from "@/modules/home-desk/presentation";
 const suite = process.env.DATABASE_URL ? describe : describe.skip;
-const baseUrl = process.env.DATABASE_URL;
-let admin: Client;
 let sql: Client;
-const databaseName = `sb044_findings_${randomUUID().replaceAll("-", "")}`;
 beforeAll(async () => {
-  if (!baseUrl) return;
-  admin = new Client({ connectionString: baseUrl });
-  await admin.connect();
-  await admin.query(`CREATE DATABASE "${databaseName}"`);
-  const url = new URL(baseUrl);
-  url.pathname = `/${databaseName}`;
-  process.env.DATABASE_URL = url.toString();
-  await disconnectPrismaClientForTests();
-  sql = new Client({ connectionString: url.toString() });
+  if (!process.env.DATABASE_URL) return;
+  sql = new Client({ connectionString: process.env.DATABASE_URL });
   await sql.connect();
-  for (const migration of readdirSync("prisma/migrations")
-    .filter((name) => name !== "migration_lock.toml")
-    .sort())
-    await sql.query(readFileSync(`prisma/migrations/${migration}/migration.sql`, "utf8"));
-  for (const fixture of [
-    "horizon-atelier",
-    "stage2-authorization",
-    "stage4-comparison",
-    "stage5-economics",
-    "job-neutral-findings",
-    "verify-job-neutral-findings",
-    "firm-job-types-and-units",
-    "firm-work-categories",
-  ])
-    await sql.query(readFileSync(`prisma/fixtures/${fixture}.sql`, "utf8"));
-}, 30000);
+});
 afterAll(async () => {
-  if (!baseUrl) return;
   await disconnectPrismaClientForTests();
   await sql?.end();
-  process.env.DATABASE_URL = baseUrl;
-  if (admin) {
-    await admin.query(`DROP DATABASE "${databaseName}" WITH (FORCE)`);
-    await admin.end();
-  }
 });
 
 async function actor(membership: string) {
