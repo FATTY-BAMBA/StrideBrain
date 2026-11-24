@@ -16,9 +16,9 @@ suite("Quotes and client jobs access", () => {
   });
   const quotes = () => new ListQuotes(new PrismaQuoteListRepository(getPrismaClient()));
   const jobs = () => new GetClientJobs(new PrismaClientJobsRepository(getPrismaClient()));
-  it("selects one current version, keeps issued total and filters the selected status", async () => {
+  it("uses the firm’s Taipei date for a 00:30 issue, keeps the current total and filters the selected status", async () => {
     await db.sql.query(
-      `UPDATE "QuoteVersion" SET status='ISSUED',"documentNumber"='SB066-Q-001',"issuedAt"=TIMESTAMP '2026-11-24',"issuedByMembershipId"='membership_horizon_admin',"validUntil"=DATE '2026-12-24',"documentSnapshot"='{}'::jsonb,"approvedAt"=NOW(),"authorityState"='APPROVED_COMMERCIAL' WHERE id='qv_xinyi_026_v3'`,
+      `UPDATE "QuoteVersion" SET status='ISSUED',"documentNumber"='SB066-Q-001',"issuedAt"=TIMESTAMP '2026-11-24 16:30:00',"issuedByMembershipId"='membership_horizon_admin',"validUntil"=DATE '2026-12-24',"documentSnapshot"='{}'::jsonb,"approvedAt"=NOW(),"authorityState"='APPROVED_COMMERCIAL' WHERE id='qv_xinyi_026_v3'`,
     );
     await db.sql.query(
       `INSERT INTO "QuoteVersion" (id,"organizationId","quoteId","versionNumber",status,"authorityState",currency,"amountBeforeTax","taxAmount","totalAmount") VALUES ('sb066-revision','org_horizon','quote_prj_xinyi_026',4,'DRAFT','HUMAN_REVIEWED','TWD',1,0.05,1.05)`,
@@ -29,6 +29,7 @@ suite("Quotes and client jobs access", () => {
     expect(result.rows.filter((r) => r.projectKey === "PRJ-XINYI-026")).toEqual([
       expect.objectContaining({
         documentNumber: "SB066-Q-001",
+        date: "2026-11-25",
         status: "ISSUED",
         totalAmount: "17304000.00",
         revisionInDraft: true,

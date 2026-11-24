@@ -112,7 +112,7 @@ suite("SB-065 authorized document saves and immutable issue", () => {
       { ...wood!, lines: [wood!.lines[0]!] },
       { ...wood!, title: "櫃體", lines: [wood!.lines[1]!] },
       electrical!,
-      fees!,
+      { ...fees!, categoryId: "CUSTOM_MILLWORK" },
     ];
     expect((await app.save.execute(context, { ...input, sections })).kind).toBe("SAVED");
     const comparisons = createComparisonServices();
@@ -196,6 +196,51 @@ suite("SB-065 authorized document saves and immutable issue", () => {
     expect(result.saved.document.totalAmount).toBe("4185300.00");
   }, 30000);
 
+  it("keeps a blank discount label through saving and defaults it only in the document's language", async () => {
+    const { context, key, input } = await newJob(),
+      app = services();
+    const saved = await app.save.execute(context, {
+      ...input,
+      discount: { amount: "4000", label: "" },
+    });
+    if (saved.kind !== "SAVED") throw Error("SAVE_REQUIRED");
+    expect(await app.read.execute(context, key)).toMatchObject({
+      saved: { document: { discount: { label: "" } } },
+    });
+    for (const language of ["en", "zh-TW"] as const) {
+      const prepared = await app.prepare.execute(context, {
+        projectKey: key,
+        versionId: saved.versionId,
+        options: { language, attention: "" },
+      });
+      expect(prepared).toMatchObject({
+        preparation: {
+          snapshot: {
+            document: { discount: { label: language === "en" ? "Discount" : "優惠折讓" } },
+          },
+        },
+      });
+    }
+    const renamed = await app.save.execute(
+      { ...context, requestId: randomUUID() },
+      {
+        ...input,
+        baseVersionId: saved.versionId,
+        idempotencyKey: randomUUID(),
+        discount: { amount: "4000", label: "忠誠客戶" },
+      },
+    );
+    if (renamed.kind !== "SAVED") throw Error("SAVE_REQUIRED");
+    const prepared = await app.prepare.execute(context, {
+      projectKey: key,
+      versionId: renamed.versionId,
+      options: { language: "en", attention: "" },
+    });
+    expect(prepared).toMatchObject({
+      preparation: { snapshot: { document: { discount: { label: "忠誠客戶" } } } },
+    });
+  });
+
   it("starts without a comparison, ignores client amounts, saves twice, and replays one audited success", async () => {
     const { context, key, input } = await newJob(),
       app = services();
@@ -235,7 +280,7 @@ suite("SB-065 authorized document saves and immutable issue", () => {
       sections: [
         { title: "木作", subtotal: "285000.00" },
         { title: "水電", subtotal: "15000.00" },
-        { title: "管理", subtotal: "24000.00" },
+        { title: "管理", subtotal: "0.00" },
       ],
       totalAmount: "336000.00",
     });
@@ -325,7 +370,11 @@ suite("SB-065 authorized document saves and immutable issue", () => {
     expect(prepared.preparation.snapshot).toMatchObject({
       schemaVersion: "QUOTE-DOCUMENT-2.0",
       siteAddress: address.siteAddress,
-      document: { totalAmount: "336000.00" },
+      document: {
+        totalAmount: "336000.00",
+        subtotal: "300000.00",
+        sections: [{ subtotal: "285000.00" }, { subtotal: "15000.00" }, { subtotal: "0.00" }],
+      },
     });
     expect(
       (

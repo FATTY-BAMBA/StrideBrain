@@ -9,7 +9,12 @@ import {
   subtract,
   sum,
 } from "@/modules/finance/fixed-decimal";
-import type { FinancialObservationRecord } from "./contracts";
+import type { EconomicsLineSnapshot, FinancialObservationRecord } from "./contracts";
+
+/** Document-wide percentage fees affect the overall quote, never a pricing category. */
+export function contributesToCategory(line: EconomicsLineSnapshot): boolean {
+  return line.quoteCalculation?.kind !== "PERCENTAGE";
+}
 /** Check document facts independently at the observation boundary; never trust their stored total. */
 export function quoteDocumentReconciliation(record: FinancialObservationRecord): {
   lineFailure: boolean;

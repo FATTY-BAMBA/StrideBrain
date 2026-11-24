@@ -129,7 +129,13 @@ export function prepareIssuePolicy(
         ...legacy,
         schemaVersion: "QUOTE-DOCUMENT-2.0",
         siteAddress: state.job.siteAddress ?? "",
-        document: state.current.document,
+        document: {
+          ...state.current.document,
+          discount: {
+            ...state.current.document.discount,
+            label: state.current.document.discount.label || (zh ? "優惠折讓" : "Discount"),
+          },
+        },
       }
     : { ...legacy, schemaVersion: "QUOTE-DOCUMENT-1.0" };
   return { snapshot, blockers, missingFirmFields: missingFields, warnings };

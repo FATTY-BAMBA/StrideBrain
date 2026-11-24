@@ -117,6 +117,7 @@ it.each(["en", "zh-TW"] as const)(
       "NT$15,000",
       "NT$300,000",
       "NT$24,000",
+      "NT$0",
       "NT$-4,000",
       "NT$320,000",
       "NT$16,000",
@@ -126,6 +127,13 @@ it.each(["en", "zh-TW"] as const)(
       "12345678",
     ])
       expect(text).toContain(value);
+    // The fee appears once in its row and once in the totals block, never as a section subtotal.
+    expect(text.match(/NT\$24,000/g)).toHaveLength(2);
+    expect(snapshot.document.sections.map((section) => section.subtotal)).toEqual([
+      "285000.00",
+      "15000.00",
+      "0.00",
+    ]);
     expect(text).not.toContain(language === "en" ? "Terms" : "條款");
     expect(text).not.toContain("DRAFT");
     expect(Buffer.compare(pdf, await renderQuotePdf(snapshot))).toBe(0);
@@ -173,4 +181,25 @@ it("wraps a long section across pages, repeats its columns and keeps rows, total
   expect(text.match(/項次/g)!.length).toBeGreaterThan(1);
   if (process.env.STRIDEBRAIN_SB065_CAPTURE_PDF === "true")
     writeFileSync("foundry/tasks/SB-065/evidence/quote-document-long.pdf", pdf);
+});
+
+it("preserves a previously issued version 2 snapshot with its historical section subtotals", async () => {
+  const snapshot = sample("en");
+  const old = {
+    ...snapshot,
+    document: {
+      ...snapshot.document,
+      sections: snapshot.document.sections.map((section, index) => ({
+        ...section,
+        subtotal: index === 2 ? "24000.00" : section.subtotal,
+      })),
+    },
+  };
+  const before = JSON.stringify(old);
+  const text = (await content(await renderQuotePdf(old)))
+    .flat()
+    .map((item) => item.str)
+    .join(" ");
+  expect(text.match(/NT\$24,000/g)).toHaveLength(3);
+  expect(JSON.stringify(old)).toBe(before);
 });

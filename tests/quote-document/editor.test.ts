@@ -13,6 +13,7 @@ import { quoteDraftCopy } from "@/modules/localization/quote-draft";
 import { quoteIssueCopy } from "@/modules/localization/quote-issue";
 const mock = vi.hoisted(() => ({
   save: vi.fn(),
+  issuePrepare: vi.fn(),
   prepare: vi.fn(),
   totals: vi.fn().mockResolvedValue(null),
   mutate: vi.fn().mockResolvedValue({ kind: "ACCEPTED" }),
@@ -25,7 +26,7 @@ vi.mock("@/app/[locale]/projects/[projectKey]/quote/actions", () => ({
   quoteDraftEvidenceAction: vi.fn(),
 }));
 vi.mock("@/app/[locale]/projects/[projectKey]/quote/issue-actions", () => ({
-  prepareQuoteIssueAction: vi.fn(),
+  prepareQuoteIssueAction: mock.issuePrepare,
   quoteIssueMutationAction: mock.mutate,
 }));
 Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
@@ -340,4 +341,182 @@ it("shows a current comparison on opening without adding lines or saving", async
   ).toHaveLength(1);
   expect(mock.save).not.toHaveBeenCalled();
   expect(mock.prepare).not.toHaveBeenCalled();
+});
+
+it.each(["en", "zh-TW"] as const)(
+  "gives the row menu and description distinct accessible names (%s)",
+  async (locale) => {
+    await act(async () =>
+      root.render(createElement(QuoteDocumentEditor, { initial: view(true), issue: null, locale })),
+    );
+    const copy = quoteDocumentCopy(locale);
+    expect(host.querySelector(`summary[aria-label="${copy.lineActions} 1.1"]`)).not.toBeNull();
+    expect(host.querySelector(`textarea[aria-label="${copy.item} 1.1"]`)).not.toBeNull();
+    expect(host.querySelectorAll(`[aria-label="${copy.item} 1.1"]`)).toHaveLength(1);
+  },
+);
+
+function draftIssue(): IssueView {
+  return {
+    kind: "AVAILABLE",
+    catalog: seededFirmLists,
+    latestIssued: null,
+    amounts: null,
+    projectKey: "J-TEST",
+    versionId: "version",
+    status: "DRAFT",
+    today: "2026-11-25",
+    issued: null,
+    canIssue: true,
+    canRevise: false,
+    canAccept: false,
+    canResolve: false,
+    conflicts: [],
+    findings: [],
+    warnings: [],
+    defaults: { language: "zh-TW", attention: "", validUntil: "2026-12-25", terms: "" },
+    termsEn: "",
+    termsZhTw: "",
+  };
+}
+it.each(["en", "zh-TW"] as const)(
+  "uses document language for an untyped discount and keeps typed text (%s page)",
+  async (locale) => {
+    const initial = view(true);
+    const doc = initial.saved!.document!;
+    await act(async () =>
+      root.render(
+        createElement(QuoteDocumentEditor, {
+          initial: {
+            ...initial,
+            saved: {
+              ...initial.saved!,
+              document: { ...doc, discount: { amount: "0", label: "" } },
+            },
+          },
+          issue: draftIssue(),
+          locale,
+        }),
+      ),
+    );
+    const input = host.querySelector('input[maxlength="40"]') as HTMLInputElement;
+    const language = [...host.querySelectorAll("select")].find((select) =>
+      [...select.options].some((option) => option.value === "en"),
+    )!;
+    expect(input.value).toBe("");
+    expect(input.placeholder).toBe("優惠折讓");
+    expect(host.querySelector("footer")?.textContent).toContain("優惠折讓");
+    await act(async () => {
+      language.value = "en";
+      language.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+    expect(input.placeholder).toBe("Discount");
+    expect(host.querySelector("footer")?.textContent).toContain("Discount");
+    await act(async () => {
+      Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")!.set!.call(
+        input,
+        "Loyal client",
+      );
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+    });
+    await act(async () => {
+      language.value = "zh-TW";
+      language.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+    expect(input.value).toBe("Loyal client");
+  },
+);
+it("reviews item-only section subtotals and shows percentage fees in their rows and the totals block", async () => {
+  const doc = quoteDocumentTotals({
+    sections: [
+      {
+        title: "Work",
+        categoryId: "CUSTOM_MILLWORK",
+        lines: [
+          {
+            kind: "ITEM",
+            description: "Cabinet",
+            quantity: "1",
+            unit: "lot",
+            unitPrice: "1000",
+            remark: "",
+          },
+          { kind: "PERCENTAGE", description: "Supervision", percentage: "8", remark: "" },
+        ],
+      },
+      {
+        title: "Design",
+        categoryId: "CUSTOM_MILLWORK",
+        lines: [{ kind: "PERCENTAGE", description: "Design fee", percentage: "5", remark: "" }],
+      },
+    ],
+    discount: { label: "Discount", amount: "0" },
+  });
+  mock.issuePrepare.mockResolvedValue({
+    kind: "PREPARED",
+    token: "signed",
+    preparation: {
+      blockers: [],
+      warnings: [],
+      missingFirmFields: [],
+      snapshot: {
+        schemaVersion: "QUOTE-DOCUMENT-2.0",
+        language: "en",
+        documentNumber: "J-TEST-Q1",
+        clientName: "Synthetic client",
+        clientDetails: { contactPerson: "Contact", address: "Client road", taxId: "12345678" },
+        siteAddress: "Site road",
+        issueDate: "2026-11-25",
+        validUntil: "2026-12-25",
+        currency: "TWD",
+        lines: [],
+        document: doc,
+        totals: doc,
+        terms: "",
+      },
+    },
+  });
+  await act(async () =>
+    root.render(createElement(QuoteIssuePanel, { view: draftIssue(), locale: "en" })),
+  );
+  await act(async () => button(quoteIssueCopy("en").prepare).click());
+  const bodies = host.querySelectorAll("table tbody");
+  expect(bodies).toHaveLength(2);
+  expect(bodies[0]?.querySelector("tr")?.textContent).toContain("NT$1,000");
+  expect(bodies[1]?.querySelector("tr")?.textContent).toContain("NT$0");
+  expect(host.textContent?.match(/NT\$80(?!\d)/g)).toHaveLength(2);
+  expect(host.textContent?.match(/NT\$50(?!\d)/g)).toHaveLength(2);
+  expect(host.textContent).toContain("Site road");
+  expect(host.textContent).toContain("Client road");
+});
+
+it("resets the untyped discount default with the language selector when a saved version refreshes", async () => {
+  const initial = view(true);
+  const saved = {
+    ...initial.saved!,
+    document: { ...initial.saved!.document!, discount: { amount: "0", label: "" } },
+  };
+  const props = { initial: { ...initial, saved }, issue: draftIssue(), locale: "en" as const };
+  await act(async () => root.render(createElement(QuoteDocumentEditor, props)));
+  const language = [...host.querySelectorAll("select")].find((select) =>
+    [...select.options].some((option) => option.value === "en"),
+  )!;
+  await act(async () => {
+    language.value = "en";
+    language.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+  expect(host.querySelector("footer")?.textContent).toContain("Discount");
+  await act(async () =>
+    root.render(
+      createElement(QuoteDocumentEditor, {
+        ...props,
+        issue: { ...props.issue, versionId: "new-version" },
+      }),
+    ),
+  );
+  const resetLanguage = [...host.querySelectorAll("select")].find((select) =>
+    [...select.options].some((option) => option.value === "en"),
+  )!;
+  expect(resetLanguage.value).toBe("zh-TW");
+  expect(host.querySelector("footer")?.textContent).toContain("優惠折讓");
 });

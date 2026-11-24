@@ -339,7 +339,7 @@ export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
       sections,
       {
         amount: row.discountAmount.toFixed(2),
-        label: row.discountLabel || (context.locale === "zh-TW" ? "優惠折讓" : "Discount"),
+        label: row.discountLabel,
       },
       totals,
     );

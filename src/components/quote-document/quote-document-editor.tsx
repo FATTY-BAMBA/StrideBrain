@@ -68,12 +68,12 @@ function references(view: Available): Reference[] {
 function newSection(): QuoteDocumentSection {
   return { id: crypto.randomUUID(), title: "", categoryId: null, lines: [] };
 }
-function documentFor(view: Available, locale: Locale): QuoteDocumentDraft {
+function documentFor(view: Available): QuoteDocumentDraft {
   return view.saved?.document
     ? { sections: view.saved.document.sections, discount: view.saved.document.discount }
     : {
         sections: [newSection()],
-        discount: { label: quoteDocumentCopy(locale).discount, amount: "0" },
+        discount: { label: "", amount: "0" },
       };
 }
 export function QuoteDocumentEditor({
@@ -113,7 +113,7 @@ export function QuoteDocumentEditor({
     };
   }, []);
   const [view, setView] = useState(initial),
-    [document, setDocument] = useState(() => documentFor(initial, locale));
+    [document, setDocument] = useState(() => documentFor(initial));
   const [savedDocument, setSavedDocument] = useState(() => JSON.stringify(document));
   const [calculated, setCalculated] = useState<QuoteDocumentAmounts | null>(
     initial.saved?.document ?? null,
@@ -134,6 +134,15 @@ export function QuoteDocumentEditor({
     [moved, setMoved] = useState(false);
   const [reviewing, setReviewing] = useState(false);
   const [validUntil, setValidUntil] = useState(issue?.defaults.validUntil);
+  const issueKey = `${issue?.versionId}:${issue?.status}`;
+  const [selectedLanguage, setSelectedLanguage] = useState<{
+    issueKey: string;
+    language: Locale;
+  } | null>(null);
+  const documentLanguage =
+    selectedLanguage?.issueKey === issueKey
+      ? selectedLanguage.language
+      : (issue?.defaults.language ?? locale);
   const [message, setMessage] = useState(""),
     [pending, start] = useTransition();
   const [evidence, setEvidence] = useState<{
@@ -221,7 +230,7 @@ export function QuoteDocumentEditor({
       );
       if (response.result.kind === "SAVED" && response.view?.kind === "AVAILABLE") {
         setFirstSave(response.result.firstSave);
-        const next = documentFor(response.view, locale);
+        const next = documentFor(response.view);
         setView(response.view);
         setDocument(next);
         setSavedDocument(JSON.stringify(next));
@@ -542,7 +551,7 @@ export function QuoteDocumentEditor({
                                 <td>
                                   {editable ? (
                                     <details>
-                                      <summary aria-label={`${copy.item} ${label}`}>
+                                      <summary aria-label={`${copy.lineActions} ${label}`}>
                                         {li + 1}
                                       </summary>
                                       <div className={styles.controls}>
@@ -774,7 +783,7 @@ export function QuoteDocumentEditor({
                           line.amount,
                         ]),
                         [
-                          document.discount.label || copy.discount,
+                          document.discount.label || quoteDocumentCopy(documentLanguage).discount,
                           calculated.discount.amount === "0.00" ||
                           calculated.discount.amount === "0"
                             ? "0.00"
@@ -852,6 +861,7 @@ export function QuoteDocumentEditor({
                   className={ui.input}
                   maxLength={40}
                   value={document.discount.label}
+                  placeholder={quoteDocumentCopy(documentLanguage).discount}
                   disabled={pending}
                   onChange={(event) =>
                     change({
@@ -886,13 +896,16 @@ export function QuoteDocumentEditor({
           )}
           {issue ? (
             <QuoteIssuePanel
-              key={`${issue.versionId}:${issue.status}`}
+              key={issueKey}
               view={issue}
               locale={locale}
               disabled={pending || (editable && !canIssueSaved)}
               externalActions={editable}
               onReviewChange={setReviewing}
-              onOptionsChange={(options) => setValidUntil(options.validUntil)}
+              onOptionsChange={(options) => {
+                setValidUntil(options.validUntil);
+                setSelectedLanguage({ issueKey, language: options.language });
+              }}
             />
           ) : view.canReadAmounts ? (
             <p>{draftCopy.UNAVAILABLE}</p>

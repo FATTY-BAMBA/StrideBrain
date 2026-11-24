@@ -1,0 +1,12 @@
+{
+  "commit": "7a306fc06336065a0b6c091092484397b9b13b54",
+  "fixture": "existing 30-section/300-line test; 500-character CJK descriptions, 200-character remarks, 10000-character terms; one item and 299 percentage lines",
+  "savedDraftActionBodyBytes": 652571,
+  "issuePreparationJsonBytes": 1682437,
+  "signedIssueTokenBytes": 2243294,
+  "issueActionBodyBytes": 2243436,
+  "defaultNextLimitBytes": 1048576,
+  "configuredNextLimitBytes": 4194304,
+  "tokenCharacterCap": 2500000,
+  "note": "Measured React encodeReply body with installed Next runtime; local isolated DB only, not a hosted request or a proof of the global maximum."
+}

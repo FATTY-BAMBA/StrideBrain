@@ -408,18 +408,54 @@ export function QuoteIssuePanel({
                 <dd>{snapshot.language === "en" ? "English" : "繁體中文"}</dd>
               </dl>
               <table className={styles.lines}>
-                <tbody>
-                  {snapshot.lines.map((line, index) => (
-                    <tr key={`${line.categoryId}-${index}`}>
-                      <td>{line.description}</td>
-                      <td>{formatMoney(line.amount, snapshot.currency)}</td>
-                    </tr>
-                  ))}
-                </tbody>
+                {snapshot.schemaVersion === "QUOTE-DOCUMENT-2.0" ? (
+                  snapshot.document.sections.map((section, sectionIndex) => (
+                    <tbody key={sectionIndex}>
+                      <tr>
+                        <th scope="rowgroup">
+                          {section.title} — {docCopy.sectionSubtotal}
+                        </th>
+                        <td>{formatMoney(section.subtotal, snapshot.currency)}</td>
+                      </tr>
+                      {section.lines.map((line, lineIndex) => (
+                        <tr key={lineIndex}>
+                          <td>{line.description}</td>
+                          <td>
+                            {line.amount === null
+                              ? ""
+                              : formatMoney(line.amount, snapshot.currency)}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  ))
+                ) : (
+                  <tbody>
+                    {snapshot.lines.map((line, index) => (
+                      <tr key={`${line.categoryId}-${index}`}>
+                        <td>{line.description}</td>
+                        <td>{formatMoney(line.amount, snapshot.currency)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                )}
               </table>
               <dl className={styles.summary}>
                 {(
                   [
+                    ...(snapshot.schemaVersion === "QUOTE-DOCUMENT-2.0"
+                      ? [
+                          [docCopy.subtotal, snapshot.document.subtotal],
+                          ...snapshot.document.percentageLines.map((line) => [
+                            `${line.description} (${line.percentage}%)`,
+                            line.amount,
+                          ]),
+                          [
+                            snapshot.document.discount.label,
+                            `-${snapshot.document.discount.amount}`,
+                          ],
+                        ]
+                      : []),
                     [copy.beforeTax, snapshot.totals.amountBeforeTax],
                     [copy.tax, snapshot.totals.taxAmount],
                     [copy.total, snapshot.totals.totalAmount],

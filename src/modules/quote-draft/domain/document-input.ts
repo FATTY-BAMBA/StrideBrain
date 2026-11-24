@@ -45,10 +45,7 @@ function identity(value: Record<string, unknown>): boolean {
 }
 const fixed = (value: string) => decimalToString(decimalFromString(value, 2));
 /** Computed amounts from a browser are deliberately discarded, never trusted or persisted. */
-export function validateQuoteDocument(
-  value: unknown,
-  locale: "en" | "zh-TW",
-): QuoteDocumentDraft | null {
+export function validateQuoteDocument(value: unknown): QuoteDocumentDraft | null {
   const input = record(value);
   if (
     !input ||
@@ -166,7 +163,8 @@ export function validateQuoteDocument(
     sections,
     discount: {
       amount: fixed(discount.amount),
-      label: discount.label.trim() || (locale === "zh-TW" ? "優惠折讓" : "Discount"),
+      // Empty preserves the distinction between a default and text the person entered.
+      label: discount.label.trim(),
     },
   };
 }

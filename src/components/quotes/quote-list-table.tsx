@@ -43,7 +43,7 @@ export function QuoteListTable({
           <NumericCell>
             {row.totalAmount === undefined ? c.hidden : formatMoney(row.totalAmount, row.currency)}
           </NumericCell>
-          <td>{row.date.slice(0, 10)}</td>
+          <td>{row.date}</td>
           <RowAction
             href={`/${locale}/projects/${encodeURIComponent(row.projectKey)}/quote` as Route}
             label={ui.open}

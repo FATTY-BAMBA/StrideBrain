@@ -38,6 +38,7 @@ import {
   type SupplierOfferEconomicsDTO,
   type VarianceFindingDTO,
 } from "@/modules/economics/domain/contracts";
+import { contributesToCategory } from "./quote-document-reconciliation";
 import { ComparisonEvidenceBundleService } from "@/modules/economics/domain/evidence-bundle-service";
 import {
   ObservationAuthorityService,
@@ -481,7 +482,9 @@ function lineObservation(
 
 /** A category is one price per job even when it spans several document sections. */
 function categoryLine(entry: EvaluatedRecord, categoryId: string): EconomicsLineSnapshot | null {
-  const lines = entry.record.lines.filter((line) => line.categoryId === categoryId);
+  const lines = entry.record.lines.filter(
+    (line) => contributesToCategory(line) && line.categoryId === categoryId,
+  );
   const first = lines[0];
   if (!first) return null;
   if (lines.length === 1) return first;
@@ -523,7 +526,12 @@ function categoryIds(
       ...new Set(
         [currentQuote, currentForecast]
           .filter((entry): entry is EvaluatedRecord => entry !== null)
-          .flatMap((entry) => entry.record.lines.map((line) => line.categoryId).filter(Boolean)),
+          .flatMap((entry) =>
+            entry.record.lines
+              .filter(contributesToCategory)
+              .map((line) => line.categoryId)
+              .filter(Boolean),
+          ),
       ),
     ].sort(),
   );
@@ -539,7 +547,9 @@ function conflictPresentFor(
       entry.purpose === purpose &&
       entry.decision.reasonCodes.includes("CONFLICTED") &&
       (categoryId === undefined ||
-        entry.record.lines.some((line) => line.categoryId === categoryId)),
+        entry.record.lines.some(
+          (line) => contributesToCategory(line) && line.categoryId === categoryId,
+        )),
   );
 }
 
@@ -595,7 +605,7 @@ function buildCategory(
         "RECONCILED_ACTUAL_COST",
         actualHistory.flatMap((entry) =>
           entry.record.lines
-            .filter((line) => line.categoryId === categoryId)
+            .filter((line) => contributesToCategory(line) && line.categoryId === categoryId)
             .map((line) => lineObservation(entry, line)),
         ),
         input.stage4.activeContext.areaValue,
@@ -976,12 +986,14 @@ export class HistoricalEconomicsService {
           .filter(
             (entry) =>
               entry.purpose === "QUOTED_HISTORY" &&
-              entry.record.lines.some((line) => line.categoryId === categoryId),
+              entry.record.lines.some(
+                (line) => contributesToCategory(line) && line.categoryId === categoryId,
+              ),
           )
           .flatMap((entry) => [
             entry.record.id,
             ...entry.record.lines
-              .filter((line) => line.categoryId === categoryId)
+              .filter((line) => contributesToCategory(line) && line.categoryId === categoryId)
               .map((line) => line.id),
           ]),
       );

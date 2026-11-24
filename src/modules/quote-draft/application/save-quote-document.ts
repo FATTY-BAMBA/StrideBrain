@@ -26,7 +26,7 @@ export async function saveQuoteDocument(
   raw: unknown,
 ): Promise<SaveDraftOutcome> {
   const input = record(raw);
-  const document = validateQuoteDocument(raw, context.locale);
+  const document = validateQuoteDocument(raw);
   if (
     !input ||
     !document ||

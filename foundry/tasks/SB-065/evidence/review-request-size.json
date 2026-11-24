@@ -1,0 +1,12 @@
+{
+  "fixture": "30 sections, 300 lines (1 item and 299 percentage fees), all document/header text limits in three-byte BMP Unicode; conservative 128-character IDs/category key; no issue blockers",
+  "documentJsonBytes": 1208219,
+  "saveRequestBytes": 718195,
+  "issuePreparationJsonBytes": 1864781,
+  "signedIssueTokenBytes": 2486419,
+  "issueRequestBytes": 2486649,
+  "maximumTokenIssueRequestBytes": 2500230,
+  "actionEnvelopeBytes": 230,
+  "configuredLimitBytes": 2500230,
+  "tokenLimitBytes": 2500000
+}

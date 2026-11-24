@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { quoteCategoryTotals, quoteDocumentTotals } from "@/modules/finance/quote-totals";
+import {
+  quoteCategoryTotals,
+  quoteDocumentTotals,
+  storedQuoteDocument,
+} from "@/modules/finance/quote-totals";
 import {
   validateQuoteDocument,
   type QuoteDocumentDraft,
@@ -81,11 +85,34 @@ describe("document totals", () => {
       )[0]?.hasLines,
     ).toBe(true);
   });
+  it("keeps mapped percentage fees out of every section and combined category, including stored legacy subtotals", () => {
+    const source = document();
+    const computed = quoteDocumentTotals({
+      ...source,
+      sections: source.sections.map((section) => ({ ...section, categoryId: "CUSTOM_MILLWORK" })),
+    });
+    expect(computed.sections.map((section) => section.subtotal)).toEqual([
+      "285000.00",
+      "15000.00",
+      "0.00",
+    ]);
+    expect(quoteCategoryTotals(computed)[0]?.amount).toBe(computed.subtotal);
+    const stored = storedQuoteDocument(computed.sections, computed.discount, computed);
+    expect(stored).toEqual(computed);
+    const old = {
+      ...computed,
+      sections: computed.sections.map((section) => ({ ...section, subtotal: "324000.00" })),
+    };
+    expect(quoteCategoryTotals(old)[0]?.amount).toBe("300000.00");
+    expect(old.sections[0]?.subtotal).toBe("324000.00");
+    expect(computed.percentageLines[0]?.amount).toBe("24000.00");
+    expect(computed.totalAmount).toBe("340200.00");
+  });
   it("computes the acceptance example and applies one discount after the fees", () => {
     const input = document();
     expect(quoteDocumentTotals(input)).toMatchObject({
       subtotal: "300000.00",
-      sections: [{ subtotal: "285000.00" }, { subtotal: "15000.00" }, { subtotal: "24000.00" }],
+      sections: [{ subtotal: "285000.00" }, { subtotal: "15000.00" }, { subtotal: "0.00" }],
       amountBeforeTax: "324000.00",
       taxAmount: "16200.00",
       totalAmount: "340200.00",
@@ -163,23 +190,20 @@ describe("document totals", () => {
 describe("bounded document input", () => {
   it("discards submitted amounts and subtotals and keeps text once, as typed", () => {
     const input = document();
-    const parsed = validateQuoteDocument(
-      {
-        ...input,
-        sections: input.sections.map((section) => ({
-          ...section,
-          subtotal: "999",
-          lines: section.lines.map((line) => ({ ...line, amount: "999" })),
-        })),
-      },
-      "zh-TW",
-    );
+    const parsed = validateQuoteDocument({
+      ...input,
+      sections: input.sections.map((section) => ({
+        ...section,
+        subtotal: "999",
+        lines: section.lines.map((line) => ({ ...line, amount: "999" })),
+      })),
+    });
     expect(parsed?.sections[0]?.lines[0]?.description).toBe("天花板");
     expect(quoteDocumentTotals(parsed!).totalAmount).toBe("340200.00");
     expect(
-      validateQuoteDocument({ sections: [{ title: "", categoryId: null, lines: [] }] }, "zh-TW")
-        ?.discount.label,
-    ).toBe("優惠折讓");
+      validateQuoteDocument({ sections: [{ title: "", categoryId: null, lines: [] }] })?.discount
+        .label,
+    ).toBe("");
   });
   it("bounds sections, lines, decimals, descriptions, units, remarks and discounts", () => {
     const input = document();
@@ -193,32 +217,26 @@ describe("bounded document input", () => {
       { description: "x".repeat(501) },
     ]) {
       expect(
-        validateQuoteDocument(
-          {
-            ...input,
-            sections: [{ ...input.sections[0], lines: [{ ...item("A", "1", "1"), ...patch }] }],
-          },
-          "en",
-        ),
+        validateQuoteDocument({
+          ...input,
+          sections: [{ ...input.sections[0], lines: [{ ...item("A", "1", "1"), ...patch }] }],
+        }),
       ).toBeNull();
     }
     expect(
-      validateQuoteDocument({ ...input, sections: Array(31).fill(input.sections[0]) }, "en"),
+      validateQuoteDocument({ ...input, sections: Array(31).fill(input.sections[0]) }),
     ).toBeNull();
     expect(
-      validateQuoteDocument(
-        {
-          ...input,
-          sections: [{ ...input.sections[0], lines: Array(301).fill(item("A", "1", "1")) }],
-        },
-        "en",
-      ),
+      validateQuoteDocument({
+        ...input,
+        sections: [{ ...input.sections[0], lines: Array(301).fill(item("A", "1", "1")) }],
+      }),
     ).toBeNull();
     expect(
-      validateQuoteDocument({ ...input, discount: { label: "Discount", amount: "1.50" } }, "en"),
+      validateQuoteDocument({ ...input, discount: { label: "Discount", amount: "1.50" } }),
     ).toBeNull();
     expect(
-      validateQuoteDocument({ ...input, discount: { label: "x".repeat(41), amount: "1" } }, "en"),
+      validateQuoteDocument({ ...input, discount: { label: "x".repeat(41), amount: "1" } }),
     ).toBeNull();
   });
 });

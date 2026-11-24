@@ -60,7 +60,9 @@ export function storedQuoteDocument(
     ...section,
     subtotal: decimalToString(
       sum(
-        section.lines.flatMap((line) => (line.amount === null ? [] : [money(line.amount)])),
+        section.lines.flatMap((line) =>
+          line.kind === "ITEM" && line.amount !== null ? [money(line.amount)] : [],
+        ),
         2,
       ),
     ),
@@ -141,16 +143,15 @@ export function quoteDocumentTotals(document: QuoteDocumentDraft): QuoteDocument
       lines,
       subtotal: dollars(
         sum(
-          lines.flatMap((line) => (line.amount === null ? [] : [money(line.amount)])),
+          lines.flatMap((line) =>
+            line.kind === "ITEM" && line.amount !== null ? [money(line.amount)] : [],
+          ),
           2,
         ),
       ),
     };
   });
-  const beforeDiscount = sum(
-    sections.map((section) => money(section.subtotal)),
-    2,
-  );
+  const beforeDiscount = sum([base, ...percentageLines.map((line) => money(line.amount))], 2);
   const discount = money(document.discount.amount);
   if (discount.atoms < 0n || compare(discount, beforeDiscount) > 0)
     throw new RangeError("DISCOUNT_EXCEEDS_SUBTOTAL");
@@ -183,7 +184,11 @@ export function quoteCategoryTotals(document: QuoteDocumentAmounts) {
       sectionIndexes: sections.map((entry) => entry.index),
       amount: decimalToString(
         sum(
-          sections.map((entry) => money(entry.section.subtotal)),
+          sections.flatMap((entry) =>
+            entry.section.lines.flatMap((line) =>
+              line.kind === "ITEM" && line.amount !== null ? [money(line.amount)] : [],
+            ),
+          ),
           2,
         ),
       ),

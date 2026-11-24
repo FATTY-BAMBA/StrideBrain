@@ -21,7 +21,7 @@ export class PreviewQuoteTotals {
       return null;
     if (!context.firmLists) return null;
     if (raw && typeof raw === "object" && "sections" in raw) {
-      const document = validateQuoteDocument(raw, context.locale);
+      const document = validateQuoteDocument(raw);
       const key = "projectKey" in raw ? raw.projectKey : null;
       if (!document || !validKey(key)) return null;
       return this.repository.transaction(async (tx) => {

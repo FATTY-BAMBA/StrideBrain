@@ -120,3 +120,32 @@ it("exposes all category differences from the same reconciled analysis", () => {
     { categoryId: "A", difference: "-10.00", exceeded: false },
   ]);
 });
+
+it("excludes a percentage fee from its mapped category and evidence while keeping it in the quote total", () => {
+  const value = input(),
+    quote = value.quote!;
+  const withFee: FinancialObservationRecord = {
+    ...quote,
+    totalAmount: "200.00",
+    quoteDocument: { discountAmount: "0.00" },
+    lines: [
+      ...quote.lines.map((line) => ({ ...line, quoteCalculation: { kind: "ITEM" as const } })),
+      {
+        ...quote.lines[1]!,
+        id: "fee",
+        amount: "100.00",
+        quantity: "0",
+        unitRate: "0",
+        evidenceReferenceIds: ["fee-source"],
+        quoteCalculation: { kind: "PERCENTAGE", percentage: "100" },
+      },
+    ],
+  };
+  expect(service.calculate({ ...value, quote: withFee }, "2026-11-22")).toMatchObject({
+    quoteBeforeTax: "200.00",
+    categoryId: "B",
+    difference: "10.00",
+    exceeded: true,
+    evidenceReferenceIds: ["source-false-B", "source-true-B"],
+  });
+});
