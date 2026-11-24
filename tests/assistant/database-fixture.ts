@@ -1,6 +1,7 @@
 import { Client } from "pg";
 import { readFileSync, readdirSync } from "node:fs";
 import { randomUUID } from "node:crypto";
+import { PrismaFirmListsRepository } from "@/repositories/prisma/prisma-firm-lists-repository";
 import { getPrismaClient, disconnectPrismaClientForTests } from "@/lib/server/prisma";
 import { DemoSessionService } from "@/modules/runtime-context/demo-session-service";
 import { SignedDemoIdentityContext } from "@/modules/runtime-context/signed-demo-identity-context";
@@ -36,6 +37,8 @@ export async function assistantDatabase() {
     "quote-draft",
     "quote-issue",
     "assistant",
+    "firm-job-types-and-units",
+    "firm-work-categories",
     "verify-assistant",
   ])
     await sql.query(readFileSync(`prisma/fixtures/${fixture}.sql`, "utf8"));
@@ -56,7 +59,11 @@ export async function assistantDatabase() {
         }),
       );
       if (!context) throw new Error("CONTEXT_REQUIRED");
-      return context;
+      return {
+        ...context,
+        firmLists:
+          (await new PrismaFirmListsRepository(getPrismaClient()).read(context)) ?? undefined,
+      };
     },
     async close() {
       await disconnectPrismaClientForTests();

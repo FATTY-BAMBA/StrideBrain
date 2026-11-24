@@ -6,23 +6,21 @@ import { createProjectAction } from "@/app/[locale]/projects/new/actions";
 import { jobsCopy, categoryLabel } from "@/modules/localization/jobs";
 import { projectSubtypeLabel } from "@/modules/localization/project-context";
 import type { Locale } from "@/modules/localization/config";
-import {
-  CLIENT_TYPES,
-  JOB_FIXED_VALUES,
-  JOB_SUBTYPES,
-  SCOPE_CATEGORIES,
-  type JobField,
-} from "@/modules/projects/domain/job-input";
+import { CLIENT_TYPES, JOB_FIXED_VALUES, type JobField } from "@/modules/projects/domain/job-input";
 import type { JobActionState } from "@/modules/projects/application/job-action-state";
 import type { ProjectClientOption } from "@/modules/projects/application/list-project-clients";
 import type { JobDraft } from "@/modules/assistant/domain/job-draft";
 import { jobDraftCopy } from "@/modules/localization/job-draft";
+import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
+import { areaInFirmUnit, areaUnitLabel } from "@/modules/firm-lists/domain/area-unit";
 import styles from "./job-form.module.css";
 
 export function NewJobForm({
   locale,
   idempotencyKey,
   businessKey,
+  clientBusinessKey,
+  catalog,
   clients,
   initialDraft,
   confirmDraft = false,
@@ -30,6 +28,8 @@ export function NewJobForm({
   locale: Locale;
   idempotencyKey: string;
   businessKey: string;
+  clientBusinessKey: string;
+  catalog: FirmLists;
   clients: readonly ProjectClientOption[];
   initialDraft?: JobDraft | undefined;
   confirmDraft?: boolean;
@@ -39,8 +39,12 @@ export function NewJobForm({
   const [state, action, pending] = useActionState(createProjectAction, {} as JobActionState);
   const [values, setValues] = useState<Record<string, string>>({
     businessKey,
+    clientBusinessKey,
     clientMode: initialDraft?.clientMode ?? (clients.length ? "existing" : "new"),
     ...initialDraft?.values,
+    ...(initialDraft?.area
+      ? { areaQuantity: areaInFirmUnit(initialDraft.area.squareMetres, catalog.areaDisplayUnit) }
+      : {}),
   });
   const [existingClient, setExistingClient] = useState(initialDraft?.clientBusinessKey ?? "");
   const [categories, setCategories] = useState<readonly string[]>(
@@ -95,7 +99,13 @@ export function NewJobForm({
   ) {
     return (
       <div className={styles.field} key={key}>
-        <label htmlFor={`${formId}-${key}`}>{copy[key]}</label>
+        <label htmlFor={`${formId}-${key}`}>
+          {key === "areaQuantity"
+            ? locale === "zh-TW"
+              ? `面積（${areaUnitLabel(catalog.areaDisplayUnit)}）`
+              : `Area (${areaUnitLabel(catalog.areaDisplayUnit)})`
+            : copy[key]}
+        </label>
         <input
           id={`${formId}-${key}`}
           name={key}
@@ -108,10 +118,16 @@ export function NewJobForm({
           aria-describedby={errorCode(key) ? `${formId}-${key}-error` : undefined}
         />
         {mark(key)}
-        {key === "areaQuantity" && aiFields.includes(key) && initialDraft?.area ? (
+        {key === "areaQuantity" &&
+        aiFields.includes(key) &&
+        initialDraft?.area &&
+        (initialDraft.area.unit.normalize("NFKC").trim() === "坪" ? "ping" : "m2") !==
+          catalog.areaDisplayUnit ? (
           <small>
-            {initialDraft.area.digits} {initialDraft.area.unit} = {initialDraft.area.squareMetres}{" "}
-            m²
+            {initialDraft.area.digits}{" "}
+            {initialDraft.area.unit.normalize("NFKC").trim() === "坪" ? "坪" : "m²"} ={" "}
+            {areaInFirmUnit(initialDraft.area.squareMetres, catalog.areaDisplayUnit)}{" "}
+            {areaUnitLabel(catalog.areaDisplayUnit)}
           </small>
         ) : null}
         {error(key)}
@@ -170,7 +186,7 @@ export function NewJobForm({
                 );
               }}
             />
-            {categoryLabel(locale, value)}
+            {categoryLabel(locale, value, catalog.workCategories)}
           </label>
         ))}
         {error(key)}
@@ -187,9 +203,11 @@ export function NewJobForm({
     >
       <input type="hidden" name="locale" value={locale} />
       <input type="hidden" name="idempotencyKey" value={idempotencyKey} />
-      {Object.entries(JOB_FIXED_VALUES).map(([name, value]) => (
-        <input key={name} type="hidden" name={name} value={value} />
-      ))}
+      {Object.entries({ ...JOB_FIXED_VALUES, areaUnit: catalog.areaDisplayUnit }).map(
+        ([name, value]) => (
+          <input key={name} type="hidden" name={name} value={value} />
+        ),
+      )}
       {state.message ? (
         <div role="alert" className={styles.error}>
           {copy[state.message]}
@@ -210,7 +228,11 @@ export function NewJobForm({
         <div className={styles.grid}>
           {select(
             "subtype",
-            JOB_SUBTYPES.map((value) => [value, projectSubtypeLabel(locale, value)!] as const),
+            catalog.jobTypes
+              .filter((entry) => entry.active)
+              .map(
+                ({ key }) => [key, projectSubtypeLabel(locale, key, catalog.jobTypes)!] as const,
+              ),
           )}
           {field("areaQuantity", 19)}
           {field("locationCity", 120)}
@@ -219,7 +241,12 @@ export function NewJobForm({
         <p className={styles.hint}>
           {copy.commercialClass} · {copy.taiwanDollar}
         </p>
-        {categoryFields("scopeCategoryIds", SCOPE_CATEGORIES)}
+        {categoryFields(
+          "scopeCategoryIds",
+          catalog.workCategories
+            .filter((entry) => entry.active && entry.scopeSelectable)
+            .map((entry) => entry.key),
+        )}
         <div className={styles.grid}>
           {select("clientMode", [
             ["new", copy.new],

@@ -1,19 +1,13 @@
+import type { FirmJobType } from "@/modules/firm-lists/domain/contracts";
 import type { Locale } from "./config";
 
-const subtypes: Readonly<Record<string, readonly [string, string]>> = {
-  RETAIL_FLAGSHIP: ["Retail flagship", "零售旗艦店"],
-  RETAIL_RENOVATION: ["Retail renovation", "零售門市改裝"],
-  RETAIL_CONCEPT_STORE: ["Retail concept store", "零售概念店"],
-  RETAIL_SHOWROOM: ["Retail showroom", "零售展示店"],
-  CORPORATE_OFFICE: ["Corporate office", "企業辦公室"],
-  WORKPLACE_RENOVATION: ["Workplace renovation", "辦公空間改裝"],
-  BOUTIQUE_HOSPITALITY: ["Boutique hospitality", "精品旅宿"],
-};
-
-export function projectSubtypeLabel(locale: Locale, subtype: string): string | undefined {
-  return Object.hasOwn(subtypes, subtype)
-    ? subtypes[subtype]![locale === "zh-TW" ? 1 : 0]
-    : undefined;
+export function projectSubtypeLabel(
+  locale: Locale,
+  subtype: string,
+  types: readonly FirmJobType[],
+): string | undefined {
+  const entry = types.find((type) => type.key === subtype);
+  return entry ? (locale === "zh-TW" ? entry.nameZhTw : entry.nameEn) : undefined;
 }
 
 // Translate known stored place names without changing source records or guessing

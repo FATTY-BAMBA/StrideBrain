@@ -1,3 +1,5 @@
+import { withFirmLists } from "../firm-lists/with-firm-lists";
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { describe, expect, it } from "vitest";
 
 import { createComparisonServices } from "@/lib/server/comparison-services";
@@ -30,12 +32,13 @@ describeDatabase("Stage 6 PostgreSQL hero flow", () => {
 
     const cookie = issued!.setCookie.split(";")[0]!;
     const identity = new SignedDemoIdentityContext(sessions, SIGNING_SECRET);
-    const context = await identity.resolve(
+    const actor = await identity.resolve(
       new Request("https://stridebrain.test/en/projects/PRJ-XINYI-026/compare", {
         headers: { cookie },
       }),
     );
-    expect(context).not.toBeNull();
+    expect(actor).not.toBeNull();
+    const context = await withFirmLists(actor!);
 
     const startedAt = performance.now();
     const services = createComparisonServices();
@@ -63,6 +66,7 @@ describeDatabase("Stage 6 PostgreSQL hero flow", () => {
     if (!("result" in economics)) throw new Error("ECONOMICS_RESULT_REQUIRED");
 
     const view = buildComparisonExperience({
+      catalog: seededFirmLists,
       stage4: structural.result,
       economics: economics.result,
       locale: "en",

@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { expect, it } from "vitest";
 import { claimFindingText } from "@/modules/economics/presentation/claim-findings";
 import type { StructuredEconomicsClaimDTO } from "@/modules/economics/domain/contracts";
@@ -48,8 +49,8 @@ it.each([
       ...(categoryId ? { categoryId } : {}),
       value: { direction, variancePercent },
     };
-    expect(claimFindingText(claim, "en")).toBe(en);
-    expect(claimFindingText(claim, "zh-TW")).toBe(zh);
+    expect(claimFindingText(claim, "en", seededFirmLists.workCategories)).toBe(en);
+    expect(claimFindingText(claim, "zh-TW", seededFirmLists.workCategories)).toBe(zh);
   },
 );
 it("renders insufficiency and programme sentences exactly", () => {
@@ -63,10 +64,10 @@ it("renders insufficiency and programme sentences exactly", () => {
     categoryId: "SIGNAGE",
     value: { eligibleObservationCount: 1, requiredObservationCount: 3 },
   };
-  expect(claimFindingText(insufficient, "en")).toBe(
+  expect(claimFindingText(insufficient, "en", seededFirmLists.workCategories)).toBe(
     "Signage and display installation: too few past reconciled actual costs to compare (1 of 3 needed).",
   );
-  expect(claimFindingText(insufficient, "zh-TW")).toBe(
+  expect(claimFindingText(insufficient, "zh-TW", seededFirmLists.workCategories)).toBe(
     "標示與展示安裝：過往已核對實際成本紀錄不足，無法比較（1/3）",
   );
   const programme: StructuredEconomicsClaimDTO = {
@@ -78,10 +79,10 @@ it("renders insufficiency and programme sentences exactly", () => {
     kind: "PROGRAMME_DIFFERENCE_UNQUANTIFIED",
     value: {},
   };
-  expect(claimFindingText(programme, "en")).toBe(
+  expect(claimFindingText(programme, "en", seededFirmLists.workCategories)).toBe(
     "The programme differs from the selected past jobs; the cost effect is not quantified.",
   );
-  expect(claimFindingText(programme, "zh-TW")).toBe(
+  expect(claimFindingText(programme, "zh-TW", seededFirmLists.workCategories)).toBe(
     "工期與所選過往專案不同，對成本的影響尚未量化。",
   );
 });

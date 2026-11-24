@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { expect, it } from "vitest";
 import { randomUUID } from "node:crypto";
 import { validateSaveDraft } from "@/modules/quote-draft/domain/save-input";
@@ -12,8 +13,10 @@ const input = () => ({
   lines: [{ categoryId: "IMPORTED_STONE", description: "Stone", amount: "0" }],
 });
 it("bounds server line input and refuses injected totals, invalid categories, duplicate lines and floats", () => {
-  expect(validateSaveDraft(input())?.lines[0]?.amount).toBe("0.00");
-  expect(validateSaveDraft({ ...input(), totalAmount: "100" })).toBeNull();
+  expect(validateSaveDraft(input(), seededFirmLists.workCategories)?.lines[0]?.amount).toBe("0.00");
+  expect(
+    validateSaveDraft({ ...input(), totalAmount: "100" }, seededFirmLists.workCategories),
+  ).toBeNull();
   for (const patch of [
     { amount: -1 },
     { amount: "-1" },
@@ -26,10 +29,20 @@ it("bounds server line input and refuses injected totals, invalid categories, du
     { categoryId: "PARTITIONS_CEILINGS" },
   ]) {
     const value = input();
-    expect(validateSaveDraft({ ...value, lines: [{ ...value.lines[0], ...patch }] })).toBeNull();
+    expect(
+      validateSaveDraft(
+        { ...value, lines: [{ ...value.lines[0], ...patch }] },
+        seededFirmLists.workCategories,
+      ),
+    ).toBeNull();
   }
   const value = input();
-  expect(validateSaveDraft({ ...value, lines: [...value.lines, ...value.lines] })).toBeNull();
+  expect(
+    validateSaveDraft(
+      { ...value, lines: [...value.lines, ...value.lines] },
+      seededFirmLists.workCategories,
+    ),
+  ).toBeNull();
 });
 it("authenticates preparation snapshots and refuses tampering and expired snapshots", () => {
   let now = new Date("2026-11-22T00:00:00Z");
@@ -67,19 +80,29 @@ it("ordinary financial evidence never contains the private recorded basis", () =
 
 import { isCategoryDraft } from "@/modules/quote-draft/domain/save-input";
 it("does not merge or split pre-existing detailed quote lines in the category editor", () => {
-  expect(isCategoryDraft([{ categoryId: "IMPORTED_STONE" }])).toBe(true);
-  expect(isCategoryDraft([{ categoryId: "DEMOLITION_CEILING" }])).toBe(true);
+  expect(isCategoryDraft([{ categoryId: "IMPORTED_STONE" }], seededFirmLists.workCategories)).toBe(
+    true,
+  );
   expect(
-    isCategoryDraft([{ categoryId: "IMPORTED_STONE" }, { categoryId: "IMPORTED_STONE" }]),
+    isCategoryDraft([{ categoryId: "DEMOLITION_CEILING" }], seededFirmLists.workCategories),
+  ).toBe(true);
+  expect(
+    isCategoryDraft(
+      [{ categoryId: "IMPORTED_STONE" }, { categoryId: "IMPORTED_STONE" }],
+      seededFirmLists.workCategories,
+    ),
   ).toBe(false);
 });
 
 it("accepts the combined commercial category for a single draft line", () => {
   const value = input();
   expect(
-    validateSaveDraft({
-      ...value,
-      lines: [{ ...value.lines[0], categoryId: "DEMOLITION_CEILING" }],
-    })?.lines[0]?.categoryId,
+    validateSaveDraft(
+      {
+        ...value,
+        lines: [{ ...value.lines[0], categoryId: "DEMOLITION_CEILING" }],
+      },
+      seededFirmLists.workCategories,
+    )?.lines[0]?.categoryId,
   ).toBe("DEMOLITION_CEILING");
 });

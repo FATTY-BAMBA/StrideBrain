@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => ({
   resolve: vi.fn(),
@@ -23,7 +24,11 @@ vi.mock("@/modules/comparison-experience/build-comparison-experience", () => ({
 import ComparisonPage from "@/app/[locale]/projects/[projectKey]/compare/page";
 
 describe("Stage 8 comparison entry eligibility", () => {
-  const context = { requestId: "request-1", organizationId: "trusted-org" };
+  const context = {
+    firmLists: seededFirmLists,
+    requestId: "request-1",
+    organizationId: "trusted-org",
+  };
   beforeEach(() => {
     vi.clearAllMocks();
     mocks.resolve.mockResolvedValue(context);

@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { describe, expect, it, vi } from "vitest";
 
 import { GetProjectWorkspace } from "@/modules/projects/application/get-project-workspace";
@@ -30,6 +31,7 @@ describe("Stage 8 workspace action authorization dependency", () => {
         ]),
         locale: "en",
         dataMode: "DEMO_SYNTHETIC",
+        firmLists: seededFirmLists,
       };
       const base: ProjectWorkspaceBaseRecord = {
         id: "project-one",

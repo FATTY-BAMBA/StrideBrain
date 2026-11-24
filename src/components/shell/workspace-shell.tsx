@@ -11,12 +11,19 @@ import { homeDeskCopy } from "@/modules/localization/home-desk";
 
 type WorkspaceShellProps = {
   locale: Locale;
+  canReadClients?: boolean;
   catalog: Catalog;
   children: ReactNode;
   account?: WorkspaceAccount | null | undefined;
 };
 
-export function WorkspaceShell({ locale, catalog, children, account }: WorkspaceShellProps) {
+export function WorkspaceShell({
+  locale,
+  catalog,
+  children,
+  account,
+  canReadClients = false,
+}: WorkspaceShellProps) {
   const copy = homeDeskCopy(locale);
   return (
     <div className="workspace-shell">
@@ -41,10 +48,13 @@ export function WorkspaceShell({ locale, catalog, children, account }: Workspace
         </div>
 
         <GlobalNav
+          canReadClients={canReadClients}
           locale={locale}
           labels={{
             "nav.home": catalog["nav.home"],
             "nav.projects": catalog["nav.projects"],
+            "nav.quotes": catalog["nav.quotes"],
+            "nav.clients": catalog["nav.clients"],
             "nav.knowledge": catalog["nav.knowledge"],
             "nav.customerCare": catalog["nav.customerCare"],
           }}

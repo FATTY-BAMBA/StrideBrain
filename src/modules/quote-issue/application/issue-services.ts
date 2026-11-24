@@ -364,6 +364,7 @@ export class GetQuoteIssue {
       const latestIssued = state.latestIssued ?? state.issued;
       return {
         kind: "AVAILABLE" as const,
+        catalog: state.job.catalog,
         projectKey: key,
         latestIssued: latestIssued
           ? {

@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { describe, it, expect, vi } from "vitest";
 vi.mock("server-only", () => ({}));
 import { GeminiAssistantModel } from "@/modules/assistant/infrastructure/gemini-model";
@@ -6,7 +7,7 @@ import { assistantTools } from "@/modules/assistant/application/read-tools";
 const input = {
   instructions: "Read records only.",
   messages: [{ role: "user" as const, text: "Jobs?" }],
-  tools: assistantTools,
+  tools: assistantTools(seededFirmLists),
   maxOutputTokens: 2048,
   signal: new AbortController().signal,
 };

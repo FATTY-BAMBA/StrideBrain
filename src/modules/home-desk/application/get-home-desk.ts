@@ -1,3 +1,4 @@
+import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
 import { AuthorizationService } from "@/modules/authorization/authorization-service";
 import {
   ClosedJobEconomicsService,
@@ -36,6 +37,7 @@ export type HomeDecision = Readonly<{
   selectedProjectKeys?: readonly string[] | undefined;
 }>;
 export type HomeDesk = Readonly<{
+  catalog: FirmLists;
   kind: "AVAILABLE";
   projects: readonly ProjectEntryDTO[];
   canCreate: boolean;
@@ -72,7 +74,8 @@ export class GetHomeDesk {
     private readonly economics = new ClosedJobEconomicsService(),
   ) {}
   async execute(context: RuntimeContext): Promise<HomeDeskOutcome> {
-    if (!context.capabilities.has("project:read")) return { kind: "UNAVAILABLE" };
+    if (!context.capabilities.has("project:read") || !context.firmLists)
+      return { kind: "UNAVAILABLE" };
     let records;
     try {
       records = (await this.repository.listReadableProjects(context)).filter(
@@ -262,6 +265,7 @@ export class GetHomeDesk {
     );
     return {
       kind: "AVAILABLE",
+      catalog: context.firmLists,
       projects,
       canCreate: context.capabilities.has("project:create"),
       stageCounts: stageGroups.map((group) => ({

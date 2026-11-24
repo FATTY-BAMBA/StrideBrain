@@ -164,13 +164,14 @@ export type ProjectWorkspaceDTO = Readonly<{
     stage: string;
     comparisonClass: string;
     subtype: string;
+    subtypeName?: string;
     location: Readonly<{
       country: "TW";
       city: string;
       district?: string | undefined;
       display: string;
     }>;
-    area: QuantityDTO;
+    area: QuantityDTO & Readonly<{ displayValue?: string; displayUnit?: string }>;
     programmeWeeks?: string | undefined;
     targetHandover?: string | undefined;
     manager?: LocalizedNameDTO | undefined;

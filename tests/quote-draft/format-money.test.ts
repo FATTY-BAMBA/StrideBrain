@@ -15,3 +15,9 @@ it("formats money identically for Home, overview and Quote without floating poin
   expect(formatMoney("9007199254740992.01", "TWD")).toBe("NT$9,007,199,254,740,992.01");
   expect(formatMoney("0.00", "TWD")).toBe("NT$0");
 });
+
+it("shares the exact per-area conversion with all rate displays", () => {
+  expect(formatQuoteRate("1210.000000", "TWD", "m2")).toBe("NT$1,210");
+  expect(formatQuoteRate("1210.000000", "TWD", "ping")).toBe("NT$4,000");
+  expect(formatQuoteRate("5833.333333", "TWD", "ping")).toBe("NT$19,284");
+});

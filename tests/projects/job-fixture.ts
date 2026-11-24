@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { roleBundle } from "@/modules/runtime-context/capabilities";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
-import { SCOPE_CATEGORIES, COMMERCIAL_CATEGORIES } from "@/modules/projects/domain/job-input";
+import { SCOPE_CATEGORIES, COMMERCIAL_CATEGORIES, seededFirmLists } from "@/fixtures/firm-lists";
 
 export function jobInput() {
   return {
@@ -33,6 +33,7 @@ export function jobContext(overrides: Partial<RuntimeContext> = {}): RuntimeCont
     capabilities: roleBundle("PROJECT_MANAGER_ESTIMATOR"),
     locale: "en",
     dataMode: "DEMO_SYNTHETIC",
+    firmLists: seededFirmLists,
     ...overrides,
   };
 }

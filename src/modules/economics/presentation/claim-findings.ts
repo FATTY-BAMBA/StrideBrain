@@ -1,3 +1,4 @@
+import type { FirmWorkCategory } from "@/modules/firm-lists/domain/contracts";
 import type { Stage5EconomicsResult, StructuredEconomicsClaimDTO } from "../domain/contracts";
 import { isReviewClaim, isVisibleFinding } from "../domain/claim-selection";
 import { categoryLabel } from "@/modules/localization/jobs";
@@ -14,10 +15,13 @@ export function findClaim(
 export function claimFindingText(
   claim: StructuredEconomicsClaimDTO,
   locale: Locale,
+  workCategories: readonly FirmWorkCategory[],
 ): string | null {
   if (!isVisibleFinding(claim)) return null;
   const copy = findingsCopy(locale);
-  const category = claim.categoryId ? categoryLabel(locale, claim.categoryId) : copy.overall;
+  const category = claim.categoryId
+    ? categoryLabel(locale, claim.categoryId, workCategories)
+    : copy.overall;
   if (claim.kind === "PROGRAMME_DIFFERENCE_UNQUANTIFIED") return copy.programme;
   if (claim.kind === "CATEGORY_ACTUAL_INSUFFICIENT" && claim.categoryId) {
     return copy.insufficient
@@ -51,13 +55,16 @@ export function claimFindingText(
 export function recommendationText(
   result: Stage5EconomicsResult | undefined,
   locale: Locale,
+  workCategories: readonly FirmWorkCategory[],
 ): string | undefined {
   if (!result || result.accessScope === "STRUCTURAL_ONLY") return undefined;
   const categories = [
     ...new Set(
       result.claims
         .filter(isReviewClaim)
-        .flatMap((claim) => (claim.categoryId ? [categoryLabel(locale, claim.categoryId)] : [])),
+        .flatMap((claim) =>
+          claim.categoryId ? [categoryLabel(locale, claim.categoryId, workCategories)] : [],
+        ),
     ),
   ];
   const copy = findingsCopy(locale);

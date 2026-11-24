@@ -1,3 +1,4 @@
+import { PrismaFirmListsRepository } from "./prisma-firm-lists-repository";
 import { orderQuoteLines } from "@/modules/quote-draft/domain/quote-line-order";
 import { categoryLabel } from "@/modules/localization/jobs";
 import { randomUUID } from "node:crypto";
@@ -88,7 +89,10 @@ export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
       },
     });
     if (!row || !this.auth.canReadProject(context, row.id).allowed) return null;
+    const catalog = await new PrismaFirmListsRepository(this.tx).read(context);
+    if (!catalog) return null;
     return {
+      catalog,
       id: row.id,
       organizationId: row.organizationId,
       businessKey: row.businessKey,
@@ -182,6 +186,7 @@ export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
         return {
           id: line.id,
           categoryId: line.categoryId,
+          unit: line.unit,
           description: context.locale === "zh-TW" ? line.descriptionZhTw : line.descriptionEn,
           amount: line.amount.toFixed(2),
           recorded:
@@ -256,7 +261,7 @@ export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
       },
     });
     const changedLineIds: string[] = [];
-    for (const [index, line] of orderQuoteLines(data.lines).entries()) {
+    for (const [index, line] of orderQuoteLines(data.lines, job.catalog.workCategories).entries()) {
       const lineId = randomUUID();
       const old = data.previous?.lines.find((entry) => entry.categoryId === line.categoryId);
       const oldItem = old
@@ -275,14 +280,16 @@ export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
           descriptionEn:
             context.locale === "en"
               ? line.description
-              : (oldItem?.descriptionEn ?? categoryLabel("en", line.categoryId)),
+              : (oldItem?.descriptionEn ??
+                categoryLabel("en", line.categoryId, job.catalog.workCategories)),
           descriptionZhTw:
             context.locale === "zh-TW"
               ? line.description
-              : (oldItem?.descriptionZhTw ?? categoryLabel("zh-TW", line.categoryId)),
+              : (oldItem?.descriptionZhTw ??
+                categoryLabel("zh-TW", line.categoryId, job.catalog.workCategories)),
           amount: line.amount,
           quantity: "1",
-          unit: "lot",
+          unit: line.unit!,
           unitPrice: line.amount,
           authorityState: "HUMAN_REVIEWED",
         },

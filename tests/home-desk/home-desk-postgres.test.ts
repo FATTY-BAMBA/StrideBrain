@@ -1,3 +1,5 @@
+import { withFirmLists } from "../firm-lists/with-firm-lists";
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { Client } from "pg";
 import { readFileSync, readdirSync } from "node:fs";
@@ -43,6 +45,8 @@ beforeAll(async () => {
     "stage5-economics",
     "job-neutral-findings",
     "verify-job-neutral-findings",
+    "firm-job-types-and-units",
+    "firm-work-categories",
   ])
     await sql.query(readFileSync(`prisma/fixtures/${fixture}.sql`, "utf8"));
 }, 30000);
@@ -72,7 +76,7 @@ async function actor(membership: string) {
     }),
   );
   if (!context) throw new Error("CONTEXT_REQUIRED");
-  return context;
+  return withFirmLists(context);
 }
 suite("Home desk through the real scoped Prisma adapter", () => {
   it("reads Nanjing first and derives the exact price, cost, lesson and source references", async () => {
@@ -131,10 +135,12 @@ suite("Home desk through the real scoped Prisma adapter", () => {
       );
       if (!("result" in economics)) throw new Error(economics.kind);
       if (key === "J-2611-R7K3") {
-        expect(recommendationText(economics.result, "zh-TW")).toBe(
+        expect(recommendationText(economics.result, "zh-TW", seededFirmLists.workCategories)).toBe(
           "請審查以下類別及其佐證紀錄：客製木作、標示與展示安裝。",
         );
-        expect(recommendationText(economics.result, "en")).toMatch(/^Review.*: .*\.$/);
+        expect(recommendationText(economics.result, "en", seededFirmLists.workCategories)).toMatch(
+          /^Review.*: .*\.$/,
+        );
       }
     }
     const before = await getPrismaClient().comparisonRun.count();
@@ -145,17 +151,20 @@ suite("Home desk through the real scoped Prisma adapter", () => {
         (item) => item.project.businessKey === key && item.kind === "REVIEW_QUOTE",
       );
       expect(decision?.claim?.categoryId).toBeDefined();
-      expect(claimFindingText(decision!.claim!, "zh-TW")).not.toContain(": ");
+      expect(
+        claimFindingText(decision!.claim!, "zh-TW", seededFirmLists.workCategories),
+      ).not.toContain(": ");
       if (key === "PRJ-XINYI-026") {
         expect(decision!.claim!.categoryId).toBe("IMPORTED_STONE");
-        expect(claimFindingText(decision!.claim!, "en")).toBe(
+        expect(claimFindingText(decision!.claim!, "en", seededFirmLists.workCategories)).toBe(
           "Imported stone and hard finishes: quoted price is 43.0% above past quoted prices.",
         );
         const saved = await services.getHomeComparison.execute(context, key);
         if (saved?.kind !== "AVAILABLE" || !saved.economics) throw new Error("SAVED_REQUIRED");
         expect(decision!.additionalFindingCount).toBe(
-          saved.economics.claims.filter((claim) => claimFindingText(claim, "en") !== null).length -
-            1,
+          saved.economics.claims.filter(
+            (claim) => claimFindingText(claim, "en", seededFirmLists.workCategories) !== null,
+          ).length - 1,
         );
         expect(decision!.additionalFindingCount).toBe(12);
       }

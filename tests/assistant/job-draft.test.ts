@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { describe, it, expect, vi } from "vitest";
 import { draftArea } from "@/modules/projects/domain/draft-area";
 import {
@@ -47,16 +48,24 @@ function setup(draft: unknown = { ...emptyDraft(), name: quoted("旗艦店裝修
 describe("draft support and area", () => {
   it("does not take a substring of larger area digits, but accepts sentence punctuation", () => {
     const raw = { ...emptyDraft(), area: { digits: "20", unit: "m2", quote: "20 m2" } };
-    expect(supportJobDraft("120 m2.", raw)?.values.areaQuantity).toBeUndefined();
-    expect(supportJobDraft("20 m2.", raw)?.values.areaQuantity).toBe("20");
+    expect(supportJobDraft("120 m2.", raw, seededFirmLists)?.values.areaQuantity).toBeUndefined();
+    expect(supportJobDraft("20 m2.", raw, seededFirmLists)?.values.areaQuantity).toBe("20");
   });
   it("does not take the tail of a number grouped with commas", () => {
     const raw = { ...emptyDraft(), area: { digits: "200", unit: "m2", quote: "200 m2" } };
     const ping = { ...emptyDraft(), area: { digits: "200", unit: "坪", quote: "200 坪" } };
-    expect(supportJobDraft("1,200 m2 shop", raw)?.values.areaQuantity).toBeUndefined();
-    expect(supportJobDraft("面積 1,200 坪", ping)?.values.areaQuantity).toBeUndefined();
-    expect(supportJobDraft("Taipei City, 200 m2", raw)?.values.areaQuantity).toBe("200");
-    expect(supportJobDraft("台北市，200 m2", raw)?.values.areaQuantity).toBe("200");
+    expect(
+      supportJobDraft("1,200 m2 shop", raw, seededFirmLists)?.values.areaQuantity,
+    ).toBeUndefined();
+    expect(
+      supportJobDraft("面積 1,200 坪", ping, seededFirmLists)?.values.areaQuantity,
+    ).toBeUndefined();
+    expect(supportJobDraft("Taipei City, 200 m2", raw, seededFirmLists)?.values.areaQuantity).toBe(
+      "200",
+    );
+    expect(supportJobDraft("台北市，200 m2", raw, seededFirmLists)?.values.areaQuantity).toBe(
+      "200",
+    );
   });
   it.each([
     ["120", "坪", "396.694"],
@@ -72,15 +81,19 @@ describe("draft support and area", () => {
     expect(draftArea(value, unit)).toBe(expected);
   });
   it("normalizes support, drops individual invented/unsupported fields, keeps the rest", () => {
-    const draft = supportJobDraft("旗艦店裝修，信義區，１２０ 坪，木作", {
-      ...emptyDraft(),
-      name: quoted("旗艦店裝修"),
-      locationCity: quoted("台北市"),
-      locationDistrict: quoted("信義區"),
-      subtype: quoted("RETAIL_FLAGSHIP", "旗艦店"),
-      scopeCategoryIds: [quoted("CUSTOM_MILLWORK", "木作"), quoted("UNKNOWN", "木作")],
-      area: { digits: "120", unit: "坪", quote: "１２０\n坪" },
-    });
+    const draft = supportJobDraft(
+      "旗艦店裝修，信義區，１２０ 坪，木作",
+      {
+        ...emptyDraft(),
+        name: quoted("旗艦店裝修"),
+        locationCity: quoted("台北市"),
+        locationDistrict: quoted("信義區"),
+        subtype: quoted("RETAIL_FLAGSHIP", "旗艦店"),
+        scopeCategoryIds: [quoted("CUSTOM_MILLWORK", "木作"), quoted("UNKNOWN", "木作")],
+        area: { digits: "120", unit: "坪", quote: "１２０\n坪" },
+      },
+      seededFirmLists,
+    );
     expect(draft?.values).toEqual({
       name: "旗艦店裝修",
       locationDistrict: "信義區",
@@ -91,14 +104,18 @@ describe("draft support and area", () => {
     expect(draft?.dropped).toContain("locationCity");
   });
   it("text values must equal the quoted words, never translated names or sensitive placeholders", () => {
-    const draft = supportJobDraft("旗艦店裝修 [removed]", {
-      ...emptyDraft(),
-      name: quoted("Flagship", "旗艦店裝修"),
-      clientName: quoted("[removed]"),
-    });
+    const draft = supportJobDraft(
+      "旗艦店裝修 [removed]",
+      {
+        ...emptyDraft(),
+        name: quoted("Flagship", "旗艦店裝修"),
+        clientName: quoted("[removed]"),
+      },
+      seededFirmLists,
+    );
     expect(draft?.kept).toEqual([]);
-    expect(supportJobDraft("x", { ...emptyDraft(), reference: "J-1" })).toBeNull();
-    expect(supportJobDraft("x", {})).toBeNull();
+    expect(supportJobDraft("x", { ...emptyDraft(), reference: "J-1" }, seededFirmLists)).toBeNull();
+    expect(supportJobDraft("x", {}, seededFirmLists)).toBeNull();
   });
   it("matches either client name with NFKC, trim and case, and refuses ambiguous matches", () => {
     const clients = [{ businessKey: "a", nameEn: "Lumen Retail", nameZhTw: "光零售" }];
@@ -119,10 +136,14 @@ describe("client support uses distinct occurrences", () => {
     ["en-client-normalization", "Retail"],
   ])("drops client type borrowed from the job: %s / %s", (id, quote) => {
     const test = jobDraftCases.find((c) => c.id === id)!;
-    const draft = supportJobDraft(test.text, {
-      ...modelDraftForCase(test),
-      clientType: quoted("RETAIL", quote),
-    })!;
+    const draft = supportJobDraft(
+      test.text,
+      {
+        ...modelDraftForCase(test),
+        clientType: quoted("RETAIL", quote),
+      },
+      seededFirmLists,
+    )!;
     expect(draft.values).toEqual(test.expected);
     expect(draft.scopeCategoryIds).toEqual(test.scopes);
     expect(draft.dropped).toContain("clientType");
@@ -133,11 +154,15 @@ describe("client support uses distinct occurrences", () => {
     ["en-written-area", "Thirty Showroom", "Retail showroom"],
   ])("drops both client fields borrowed from the job: %s", (id, client, typeQuote) => {
     const test = jobDraftCases.find((c) => c.id === id)!;
-    const draft = supportJobDraft(test.text, {
-      ...modelDraftForCase(test),
-      clientName: quoted(client),
-      clientType: quoted("RETAIL", typeQuote),
-    })!;
+    const draft = supportJobDraft(
+      test.text,
+      {
+        ...modelDraftForCase(test),
+        clientName: quoted(client),
+        clientType: quoted("RETAIL", typeQuote),
+      },
+      seededFirmLists,
+    )!;
     expect(draft.values).toEqual(test.expected);
     expect(draft.scopeCategoryIds).toEqual(test.scopes);
     expect(draft.dropped).toEqual(expect.arrayContaining(["clientName", "clientType"]));
@@ -154,10 +179,14 @@ describe("client support uses distinct occurrences", () => {
     ),
   ])("keeps distinct client-type support: %s / %s", (id, quote) => {
     const test = jobDraftCases.find((c) => c.id === id)!;
-    const draft = supportJobDraft(test.text, {
-      ...modelDraftForCase(test),
-      clientType: quoted("RETAIL", quote),
-    })!;
+    const draft = supportJobDraft(
+      test.text,
+      {
+        ...modelDraftForCase(test),
+        clientType: quoted("RETAIL", quote),
+      },
+      seededFirmLists,
+    )!;
     expect(draft.values).toEqual(test.expected);
     expect(draft.kept).toContain("clientType");
     expect(draft.dropped).not.toContain("clientType");
@@ -166,57 +195,81 @@ describe("client support uses distinct occurrences", () => {
     ["Job name: Aster. Client: Aster.", "Aster"],
     ["Client: Aster Retail. Job name: Aster.", "Aster Retail"],
   ])("tries all name occurrences: %s", (text, client) => {
-    const draft = supportJobDraft(text, {
-      ...emptyDraft(),
-      name: quoted("Aster"),
-      clientName: quoted(client),
-    })!;
+    const draft = supportJobDraft(
+      text,
+      {
+        ...emptyDraft(),
+        name: quoted("Aster"),
+        clientName: quoted(client),
+      },
+      seededFirmLists,
+    )!;
     expect(draft.values).toEqual({ name: "Aster", clientName: client });
   });
   it("does not use the client's name as its type", () => {
-    const draft = supportJobDraft("Lobby refresh for Coast Hotels.", {
-      ...emptyDraft(),
-      clientName: quoted("Coast Hotels"),
-      clientType: quoted("HOSPITALITY", "Hotels"),
-    })!;
+    const draft = supportJobDraft(
+      "Lobby refresh for Coast Hotels.",
+      {
+        ...emptyDraft(),
+        clientName: quoted("Coast Hotels"),
+        clientType: quoted("HOSPITALITY", "Hotels"),
+      },
+      seededFirmLists,
+    )!;
     expect(draft.values).toEqual({ clientName: "Coast Hotels" });
     expect(draft.dropped).toContain("clientType");
   });
   it("allows name and subtype to share words", () => {
-    const draft = supportJobDraft("光序展示店，信義區，85 坪", {
-      ...emptyDraft(),
-      name: quoted("光序展示店"),
-      subtype: quoted("RETAIL_SHOWROOM", "展示店"),
-    })!;
+    const draft = supportJobDraft(
+      "光序展示店，信義區，85 坪",
+      {
+        ...emptyDraft(),
+        name: quoted("光序展示店"),
+        subtype: quoted("RETAIL_SHOWROOM", "展示店"),
+      },
+      seededFirmLists,
+    )!;
     expect(draft.values).toEqual({ name: "光序展示店", subtype: "RETAIL_SHOWROOM" });
   });
   it("can drop only client name while preserving distinct client type", () => {
-    const draft = supportJobDraft("Job name: Aster. Client type: retail.", {
-      ...emptyDraft(),
-      name: quoted("Aster"),
-      clientName: quoted("Aster"),
-      clientType: quoted("RETAIL", "retail"),
-    })!;
+    const draft = supportJobDraft(
+      "Job name: Aster. Client type: retail.",
+      {
+        ...emptyDraft(),
+        name: quoted("Aster"),
+        clientName: quoted("Aster"),
+        clientType: quoted("RETAIL", "retail"),
+      },
+      seededFirmLists,
+    )!;
     expect(draft.values).toEqual({ name: "Aster", clientType: "RETAIL" });
     expect(draft.dropped).toContain("clientName");
     expect(draft.dropped).not.toContain("clientType");
   });
   it("case-insensitive location never relaxes text value equality", () => {
-    const draft = supportJobDraft("Job name: Aster. Client: ASTER.", {
-      ...emptyDraft(),
-      name: quoted("Aster"),
-      clientName: quoted("Aster", "ASTER"),
-    })!;
+    const draft = supportJobDraft(
+      "Job name: Aster. Client: ASTER.",
+      {
+        ...emptyDraft(),
+        name: quoted("Aster"),
+        clientName: quoted("Aster", "ASTER"),
+      },
+      seededFirmLists,
+    )!;
     expect(draft.values).toEqual({ name: "Aster" });
     expect(draft.dropped).toContain("clientName");
   });
   it("caps each quote at twenty occurrences", () => {
     const name = "A ".repeat(20).trim();
-    const draft = supportJobDraft(`${name}. Client: A.`, {
-      ...emptyDraft(),
-      name: quoted(name),
-      clientName: quoted("A"),
-    })!;
+    const draft = supportJobDraft(
+      `${name}. Client: A.`,
+      {
+        ...emptyDraft(),
+        name: quoted(name),
+        clientName: quoted("A"),
+      },
+      seededFirmLists,
+    )!;
     expect(draft.values).toEqual({ name });
     expect(draft.dropped).toContain("clientName");
   });

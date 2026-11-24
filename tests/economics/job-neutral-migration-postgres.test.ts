@@ -1,3 +1,4 @@
+import { withFirmLists } from "../firm-lists/with-firm-lists";
 import { randomUUID } from "node:crypto";
 import { readFileSync, readdirSync } from "node:fs";
 import { Client } from "pg";
@@ -53,6 +54,12 @@ suite("job-neutral populated PostgreSQL migration", () => {
       "stage5-economics",
     ])
       await sql.query(readFileSync(`prisma/fixtures/${name}.sql`, "utf8"));
+    for (const independent of [
+      "20261124010000_client_details_and_firm_preferences",
+      "20261124011000_firm_job_types_and_units",
+      "20261124012000_firm_work_categories",
+    ])
+      await sql.query(readFileSync(`prisma/migrations/${independent}/migration.sql`, "utf8"));
     // Use today's writer to construct a real calculation, then model the pre-upgrade
     // indexed/snapshot shape before taking the preservation baseline. No immutable
     // audit/action/receipt row is rewritten and no trigger is disabled.
@@ -73,7 +80,7 @@ suite("job-neutral populated PostgreSQL migration", () => {
       }),
     );
     if (!actor) throw new Error("CONTEXT_REQUIRED");
-    context = actor;
+    context = await withFirmLists(actor);
     const services = createComparisonServices();
     const comparison = await services.runComparison.execute(context, "PRJ-XINYI-026");
     if (comparison.kind !== "COMPLETE") throw new Error("COMPARISON_REQUIRED");

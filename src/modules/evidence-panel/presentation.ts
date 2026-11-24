@@ -1,3 +1,5 @@
+import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
+import { firmEntryLabel } from "@/modules/firm-lists/domain/contracts";
 import type { Locale } from "@/modules/localization/config";
 import { getFinancialCopy } from "@/modules/localization/financial-copy";
 import { projectSubtypeLabel } from "@/modules/localization/project-context";
@@ -25,22 +27,11 @@ const values: Readonly<Record<string, readonly [string, string]>> = {
   UNQUANTIFIED: ["Not quantified", "尚未量化"],
   CURRENT_CONTEXT: ["Current context", "目前資料"],
   HISTORICAL_CONTEXT: ["Historical context", "歷史資料"],
-  IMPORTED_STONE: ["Imported stone", "進口石材"],
-  LIGHTING_ELECTRICAL: ["Lighting and electrical", "燈具與電氣"],
-  CUSTOM_MILLWORK: ["Custom millwork", "訂製木作"],
-  GENERAL_TRADES: ["General trades", "一般工程"],
-  PARTITIONS_CEILINGS: ["Partitions and ceilings", "隔間與天花板"],
-  DEMOLITION_CEILING: ["Demolition and ceilings", "拆除與天花板"],
-  SELECTIVE_DEMOLITION: ["Selective demolition", "局部拆除"],
-  SIGNAGE: ["Signage", "招牌標示"],
-  COORDINATION: ["Coordination", "工程協調"],
   ABOVE: ["Above the historical baseline", "高於歷史基準"],
   BELOW: ["Below the historical baseline", "低於歷史基準"],
   ALIGNED: ["Aligned with the historical baseline", "與歷史基準相當"],
   TWD: ["TWD", "新臺幣"],
   TWD_PER_M2: ["TWD/m²", "新臺幣／平方公尺"],
-  m2: ["m²", "平方公尺"],
-  lot: ["lot", "式"],
   weeks: ["weeks", "週"],
   KNOWN: ["Known", "已知"],
   UNKNOWN: ["Unknown—not a mismatch", "資料未知，不視為不相符"],
@@ -141,10 +132,16 @@ const values: Readonly<Record<string, readonly [string, string]>> = {
   ],
 };
 
-export function evidenceValueLabel(locale: Locale, value: string): string {
+export function evidenceValueLabel(locale: Locale, value: string, catalog: FirmLists): string {
+  if (value === "TWD_PER_M2" && catalog.areaDisplayUnit === "ping")
+    return locale === "zh-TW" ? "新臺幣／坪" : "TWD/坪";
   const financial = getFinancialCopy(locale);
-  const subtype = projectSubtypeLabel(locale, value);
+  const subtype = projectSubtypeLabel(locale, value, catalog.jobTypes);
   if (subtype) return subtype;
+  const configured = [...catalog.workCategories, ...catalog.quoteUnits].find(
+    (entry) => entry.key === value,
+  );
+  if (configured) return firmEntryLabel([configured], value, locale);
   const known = values[value];
   if (known) return known[locale === "zh-TW" ? 1 : 0];
   const observation = financial.observations[value as keyof typeof financial.observations];
@@ -180,11 +177,21 @@ export function evidenceRecordTypeLabel(locale: Locale, kind: string): string {
       : "Source record";
 }
 
-export function evidenceTitle(locale: Locale, title: string): string {
-  return title.replace(
+export function evidenceTitle(locale: Locale, title: string, catalog: FirmLists): string {
+  const configured = [...catalog.jobTypes, ...catalog.workCategories, ...catalog.quoteUnits].sort(
+    (a, b) => b.key.length - a.key.length,
+  );
+  let localized = title;
+  for (const entry of configured) {
+    const escaped = entry.key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    localized = localized.replace(new RegExp(`(?<![\\w-])${escaped}(?![\\w-])`, "g"), () =>
+      firmEntryLabel([entry], entry.key, locale),
+    );
+  }
+  return localized.replace(
     /(?<![\w-])[A-Z][A-Z_]+(?![\w-])/g,
     (value) =>
-      projectSubtypeLabel(locale, value) ??
+      projectSubtypeLabel(locale, value, catalog.jobTypes) ??
       (values[value] ? values[value][locale === "zh-TW" ? 1 : 0] : value),
   );
 }

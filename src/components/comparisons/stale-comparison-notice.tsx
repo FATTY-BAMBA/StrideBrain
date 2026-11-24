@@ -1,5 +1,6 @@
 "use client";
 
+import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
 import { useFormStatus } from "react-dom";
 import { runComparisonAction } from "@/app/[locale]/projects/[projectKey]/compare/actions";
 import { getFreshnessCopy } from "@/modules/comparison-experience/freshness-copy";
@@ -20,10 +21,12 @@ function RerunButton({ locale }: Readonly<{ locale: Locale }>) {
 }
 
 export function StaleComparisonNotice({
+  catalog,
   freshness,
   locale,
   projectKey,
 }: Readonly<{
+  catalog: FirmLists;
   freshness: ComparisonFreshness;
   locale: Locale;
   projectKey: string;
@@ -51,7 +54,11 @@ export function StaleComparisonNotice({
               <li key={source.sourceKey} data-changed-source-key={source.sourceKey}>
                 <strong>
                   {locale === "zh-TW" ? source.projectNameZhTw : source.projectNameEn} ·{" "}
-                  {evidenceTitle(locale, locale === "zh-TW" ? source.titleZhTw : source.titleEn)}
+                  {evidenceTitle(
+                    locale,
+                    locale === "zh-TW" ? source.titleZhTw : source.titleEn,
+                    catalog,
+                  )}
                 </strong>
                 {source.reasons.includes("AUTHORITY") ? (
                   <p>

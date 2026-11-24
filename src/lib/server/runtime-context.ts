@@ -7,6 +7,7 @@ import { getPrismaClient } from "@/lib/server/prisma";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import { readCookieValue } from "@/modules/runtime-context/session-cookie";
 import { SignedDemoIdentityContext } from "@/modules/runtime-context/signed-demo-identity-context";
+import { PrismaFirmListsRepository } from "@/repositories/prisma/prisma-firm-lists-repository";
 import {
   PrismaDemoSessionRepository,
   type PrismaDemoSessionDatabase,
@@ -31,5 +32,11 @@ export const resolveServerRuntimeContext = cache(async (): Promise<RuntimeContex
   const database = getPrismaClient() as unknown as PrismaDemoSessionDatabase;
   const repository = new PrismaDemoSessionRepository(database);
   const identity = new SignedDemoIdentityContext(repository, getDemoSessionSecret());
-  return identity.resolve(request);
+  const context = await identity.resolve(request);
+  if (!context) return null;
+  // A catalog failure leaves identity available; dependent features return their unavailable state.
+  const firmLists = await new PrismaFirmListsRepository(getPrismaClient())
+    .read(context)
+    .catch(() => null);
+  return Object.freeze({ ...context, firmLists: firmLists ?? undefined });
 });

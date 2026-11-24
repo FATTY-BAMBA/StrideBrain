@@ -1,3 +1,4 @@
+import type { FirmLists, FirmWorkCategory } from "@/modules/firm-lists/domain/contracts";
 import { orderQuoteLines } from "@/modules/quote-draft/domain/quote-line-order";
 import {
   decimalToString,
@@ -16,6 +17,7 @@ import { scopesForCommercialCategory } from "@/modules/projects/domain/job-input
 
 export const QUOTE_DRAFT_POLICY_VERSION = "QUOTE-DRAFT-1.0" as const;
 export type DraftJob = Readonly<{
+  catalog: FirmLists;
   area: string;
   areaUnit: string;
   currency: string;
@@ -56,8 +58,13 @@ export function prepareDraftPolicy(
 ): readonly DraftSuggestion[] {
   return orderQuoteLines(
     [...new Set(input.job.commercialCategoryIds)].map((categoryId) => ({ categoryId })),
+    input.job.catalog.workCategories,
   ).map(({ categoryId }) => {
-    const coverage = draftCoverage(categoryId, input.job.scopeCategoryIds);
+    const coverage = draftCoverage(
+      categoryId,
+      input.job.scopeCategoryIds,
+      input.job.catalog.workCategories,
+    );
     const baseline = input.baselines.find((entry) => entry.categoryId === categoryId);
     const history = baseline?.history;
     const count = history?.eligibleObservationCount ?? 0;
@@ -121,8 +128,8 @@ export function prepareDraftPolicy(
 }
 
 export function basisOutOfDate(basis: DraftBasis, job: DraftJob, categoryId: string): boolean {
-  const before = draftCoverage(categoryId, basis.scopeCategoryIds);
-  const current = draftCoverage(categoryId, job.scopeCategoryIds);
+  const before = draftCoverage(categoryId, basis.scopeCategoryIds, job.catalog.workCategories);
+  const current = draftCoverage(categoryId, job.scopeCategoryIds, job.catalog.workCategories);
   return (
     quantity(basis.area).atoms !== quantity(job.area).atoms ||
     basis.areaUnit !== job.areaUnit ||
@@ -132,8 +139,12 @@ export function basisOutOfDate(basis: DraftBasis, job: DraftJob, categoryId: str
   );
 }
 
-export function draftCoverage(categoryId: string, scopeCategoryIds: readonly string[]) {
-  const all = scopesForCommercialCategory(categoryId);
+export function draftCoverage(
+  categoryId: string,
+  scopeCategoryIds: readonly string[],
+  categories: readonly FirmWorkCategory[],
+) {
+  const all = scopesForCommercialCategory(categoryId, categories);
   const included = all.filter((scope) => scopeCategoryIds.includes(scope));
   return { all, included, partial: all.length === 0 || included.length !== all.length };
 }

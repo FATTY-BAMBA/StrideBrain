@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { generateJobReference } from "@/lib/server/job-reference";
+import { generateJobReference, generateClientReference } from "@/lib/server/job-reference";
 
 const { randomInt } = vi.hoisted(() => ({ randomInt: vi.fn<(max: number) => number>() }));
 vi.mock("node:crypto", () => ({ randomInt }));
@@ -44,8 +44,19 @@ describe("Server-generated job references", () => {
     try {
       vi.setSystemTime(new Date("2026-11-21T00:00:00Z"));
       expect(generateJobReference()).toBe("J-2611-2222");
+      expect(generateClientReference()).toBe("C-2611-2222");
     } finally {
       vi.useRealTimers();
+    }
+  });
+
+  it("uses the same alphabet and UTC month for editable client references", () => {
+    const alphabet = "23456789ABCDEFGHJKMNPQRSTUVWXYZ";
+    for (let index = 0; index < alphabet.length; index++) {
+      randomInt.mockReturnValue(index);
+      expect(generateClientReference(new Date("2026-12-01T00:30:00+08:00"))).toBe(
+        `C-2611-${alphabet[index]!.repeat(4)}`,
+      );
     }
   });
 });

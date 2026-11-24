@@ -1,0 +1,109 @@
+{
+  "issue": 66,
+  "branch": "build/sb-066-clients-firm-lists",
+  "baseCommit": "6310c1628e4a2e82e9647bc02cdd297326f6b363",
+  "status": "LOCAL_AND_CI_VERIFIED_PAID_RUN_2_UNAVAILABLE",
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "pullRequestState": "DRAFT",
+  "paidRunLimit": 2,
+  "paidRuns": [
+    {
+      "runId": 45293305570,
+      "commit": "894ecc9a8e74556e5e0a11c798901e9e8a5376a3",
+      "status": "PASSED",
+      "estimatedUsd": "0.238864700",
+      "answerScores": [
+        {
+          "en": 20,
+          "zh-TW": 20
+        },
+        {
+          "en": 20,
+          "zh-TW": 19
+        },
+        {
+          "en": 20,
+          "zh-TW": 20
+        }
+      ],
+      "draftScores": [
+        {
+          "en": 12,
+          "zh-TW": 12
+        },
+        {
+          "en": 12,
+          "zh-TW": 12
+        },
+        {
+          "en": 12,
+          "zh-TW": 12
+        }
+      ],
+      "report": "evidence/ai-evaluation-45293305570.json"
+    },
+    {
+      "runId": 45333408428,
+      "commit": "5045aa333ef1ec42f27da3f8f3d33d476e0fad59",
+      "status": "FAILED_UNAVAILABLE",
+      "estimatedUsd": "0.000000000",
+      "recordedInputTokens": 0,
+      "recordedOutputTokens": 0,
+      "answerScores": [
+        {
+          "en": 1,
+          "zh-TW": 1
+        },
+        {
+          "en": 1,
+          "zh-TW": 1
+        },
+        {
+          "en": 1,
+          "zh-TW": 1
+        }
+      ],
+      "draftScores": [
+        {
+          "en": 0,
+          "zh-TW": 0
+        },
+        {
+          "en": 0,
+          "zh-TW": 0
+        },
+        {
+          "en": 0,
+          "zh-TW": 0
+        }
+      ],
+      "report": "evidence/ai-evaluation-45333408428.json",
+      "underlyingCause": "NOT_ESTABLISHED"
+    }
+  ],
+  "baselineCheck": {
+    "passed": true,
+    "tests": 1470,
+    "files": 135
+  },
+  "baselineSnapshotDate": "2026-11-23",
+  "pullRequest": 68,
+  "localChecks": {
+    "seededComparisonParity": "PASSED",
+    "quotesAndMappingTests": 18,
+    "npmRunCheck": "PASSED",
+    "tests": 1557,
+    "files": 149,
+    "browser": "PASSED",
+    "pdf": "PASSED"
+  },
+  "ci": {
+    "runId": 45333380906,
+    "commit": "5045aa333ef1ec42f27da3f8f3d33d476e0fad59",
+    "status": "PASSED"
+  },
+  "reviewFixes": [
+    "Quote row/filter preserve real status and mark newer unissued revisions",
+    "Comparison, evidence and assistant prices use the shared firm-area-unit conversion"
+  ]
+}

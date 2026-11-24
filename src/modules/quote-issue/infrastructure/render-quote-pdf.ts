@@ -16,6 +16,8 @@ export async function renderQuotePdf(
         quote: "報價單",
         taxId: "統一編號",
         client: "客戶",
+        contact: "聯絡人",
+        clientAddress: "客戶地址",
         attention: "收件人",
         job: "專案",
         reference: "專案編號",
@@ -37,6 +39,8 @@ export async function renderQuotePdf(
         quote: "QUOTATION",
         taxId: "Tax ID",
         client: "Client",
+        contact: "Contact person",
+        clientAddress: "Client address",
         attention: "Attention",
         job: "Job",
         reference: "Job reference",
@@ -125,6 +129,12 @@ export async function renderQuotePdf(
   );
   doc.moveDown(0.5);
   paragraph(`${copy.client}${colon}${snapshot.clientName}`, 11);
+  if (snapshot.clientDetails?.contactPerson)
+    paragraph(`${copy.contact}${colon}${snapshot.clientDetails.contactPerson}`, 10);
+  if (snapshot.clientDetails?.address)
+    paragraph(`${copy.clientAddress}${colon}${snapshot.clientDetails.address}`, 10);
+  if (snapshot.clientDetails?.taxId)
+    paragraph(`${copy.taxId}${colon}${snapshot.clientDetails.taxId}`, 9);
   if (snapshot.attention) paragraph(`${copy.attention}${colon}${snapshot.attention}`, 10);
   paragraph(`${copy.job}${colon}${snapshot.projectName}`, 10);
   paragraph(`${copy.reference}${colon}${snapshot.projectKey}`, 9);

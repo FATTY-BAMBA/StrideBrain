@@ -363,6 +363,7 @@ function ReadyContent({
 
       {!view.context.recordedQuoteBasis ? (
         <StaleComparisonNotice
+          catalog={view.catalog}
           freshness={view.context.freshness}
           locale={view.locale}
           projectKey={view.context.projectKey}

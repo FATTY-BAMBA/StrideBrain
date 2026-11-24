@@ -69,6 +69,8 @@ export type QuoteDocumentSnapshot = Readonly<{
     email: string;
   }>;
   clientName: string;
+  /** Absent on earlier immutable documents and when all optional details are empty. */
+  clientDetails?: Readonly<{ contactPerson: string; address: string; taxId: string }>;
   attention: string;
   projectName: string;
   projectKey: string;
@@ -92,6 +94,7 @@ export type IssueState = Readonly<{
   timezone: string;
   clientNameEn: string;
   clientNameZhTw: string;
+  clientDetails?: Readonly<{ contactPerson: string; address: string; taxId: string }>;
   projectNameEn: string;
   projectNameZhTw: string;
   firm: FirmDetails | null;

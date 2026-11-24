@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { ComparisonCell } from "@/components/comparisons/comparison-experience-client";
@@ -425,7 +426,12 @@ describe("Stage 6 comparison experience composer", () => {
     (locale) => {
       const stored = economics();
       const snapshot = JSON.stringify(stored);
-      const view = buildComparisonExperience({ stage4: stage4(), economics: stored, locale });
+      const view = buildComparisonExperience({
+        catalog: seededFirmLists,
+        stage4: stage4(),
+        economics: stored,
+        locale,
+      });
       const lighting = row(view, "LIGHTING_ELECTRICAL-ACTUAL")!;
       const gap = view.synthesis.gaps.find(
         (item) => item.claimKey === "LIGHTING_ELECTRICAL_ACTUAL_INSUFFICIENT",
@@ -455,6 +461,7 @@ describe("Stage 6 comparison experience composer", () => {
         ],
       };
       const other = buildComparisonExperience({
+        catalog: seededFirmLists,
         stage4: stage4(),
         economics: otherCategory,
         locale,
@@ -489,7 +496,12 @@ describe("Stage 6 comparison experience composer", () => {
           },
         ],
       };
-      const view = buildComparisonExperience({ stage4: stage4(), economics: missing, locale });
+      const view = buildComparisonExperience({
+        catalog: seededFirmLists,
+        stage4: stage4(),
+        economics: missing,
+        locale,
+      });
       for (const value of Object.values(row(view, "LIGHTING_ELECTRICAL-ACTUAL")!.cells)) {
         expect(value.state).toBe("UNAVAILABLE");
         expect(value.claimKey).toBeUndefined();
@@ -505,6 +517,7 @@ describe("Stage 6 comparison experience composer", () => {
 
   it("preserves canonical ranking and the immutable selected precedents", () => {
     const view = buildComparisonExperience({
+      catalog: seededFirmLists,
       stage4: stage4(),
       economics: economics(),
       locale: "en",
@@ -525,6 +538,7 @@ describe("Stage 6 comparison experience composer", () => {
 
   it("renders stored quote, actual, and category findings without recalculation", () => {
     const view = buildComparisonExperience({
+      catalog: seededFirmLists,
       stage4: stage4(),
       economics: economics(),
       locale: "en",
@@ -543,6 +557,7 @@ describe("Stage 6 comparison experience composer", () => {
 
   it("keeps unknown factors distinct from mismatches", () => {
     const view = buildComparisonExperience({
+      catalog: seededFirmLists,
       stage4: stage4(),
       economics: economics(),
       locale: "en",
@@ -556,6 +571,7 @@ describe("Stage 6 comparison experience composer", () => {
 
   it("provides Taiwan Traditional Chinese semantics without provider or plumbing copy", () => {
     const view = buildComparisonExperience({
+      catalog: seededFirmLists,
       stage4: stage4(),
       economics: economics(),
       locale: "zh-TW",
@@ -576,6 +592,7 @@ describe("Stage 6 comparison experience composer", () => {
   it("fails closed when Stage 4 and Stage 5 runs do not belong together", () => {
     expect(() =>
       buildComparisonExperience({
+        catalog: seededFirmLists,
         stage4: stage4(),
         economics: economics("cmprun_other"),
         locale: "en",
@@ -588,7 +605,12 @@ describe("QA-18 financial basis at the point of comparison", () => {
   it.each(["en", "zh-TW"] as const)(
     "keeps forecast, actual, quote and offer distinct in visible and accessible %s cells",
     (locale) => {
-      const view = buildComparisonExperience({ stage4: stage4(), economics: economics(), locale });
+      const view = buildComparisonExperience({
+        catalog: seededFirmLists,
+        stage4: stage4(),
+        economics: economics(),
+        locale,
+      });
       const labels =
         locale === "en"
           ? ["Forecast direct cost", "Reconciled actual cost", "Quoted price", "Supplier offer"]
@@ -648,10 +670,15 @@ describe("job-neutral claim presentation", () => {
     "shows synthetic notices only for synthetic records in %s",
     (locale) => {
       const original = stage4();
-      const synthetic = buildComparisonExperience({ stage4: original, locale });
+      const synthetic = buildComparisonExperience({
+        catalog: seededFirmLists,
+        stage4: original,
+        locale,
+      });
       expect(synthetic.notices.some((notice) => notice.key === "synthetic")).toBe(true);
       expect(synthetic.summary.syntheticDataLabel).toBeTruthy();
       const privateJob = buildComparisonExperience({
+        catalog: seededFirmLists,
         stage4: {
           ...original,
           activeContext: { ...original.activeContext, dataClassification: "TENANT_PRIVATE" },
@@ -683,15 +710,25 @@ describe("job-neutral claim presentation", () => {
         categories: original.categories.filter((c) => c.categoryId === "CUSTOM_MILLWORK"),
         claims,
       };
-      const view = buildComparisonExperience({ stage4: stage4(), economics: result, locale });
+      const view = buildComparisonExperience({
+        catalog: seededFirmLists,
+        stage4: stage4(),
+        economics: result,
+        locale,
+      });
       expect(view.synthesis.history).toHaveLength(1);
       expect(view.synthesis.history[0]!.body).toContain(locale === "en" ? "below" : "低 ");
       expect(view.synthesis.recommendation?.body).not.toMatch(/stone|lighting|石材|照明/i);
       expect(
-        buildComparisonExperience({ stage4: stage4(), locale }).synthesis.recommendation,
+        buildComparisonExperience({
+          catalog: seededFirmLists,
+          stage4: stage4(),
+          locale,
+        }).synthesis.recommendation,
       ).toBeUndefined();
       expect(
         buildComparisonExperience({
+          catalog: seededFirmLists,
           stage4: stage4(),
           economics: { ...result, claims: [] },
           locale,
@@ -702,6 +739,7 @@ describe("job-neutral claim presentation", () => {
   it("shows a plain no-quote state even if old economics were supplied", () => {
     const structural = stage4();
     const view = buildComparisonExperience({
+      catalog: seededFirmLists,
       stage4: {
         ...structural,
         activeContext: { ...structural.activeContext, activeQuoteVersionKey: undefined },
@@ -714,4 +752,39 @@ describe("job-neutral claim presentation", () => {
     expect(JSON.stringify(view.table)).not.toContain("NT$");
     expect(view.cards.map((card) => card.scoreLabel)).toEqual(["88/100", "81/100", "79/100"]);
   });
+});
+
+describe("firm-unit comparison prices", () => {
+  it.each(["en", "zh-TW"] as const)(
+    "keeps stored results and displays m²/坪 rates in %s",
+    (locale) => {
+      const stored = economics(),
+        before = JSON.stringify(stored);
+      for (const unit of ["m2", "ping"] as const) {
+        const view = buildComparisonExperience({
+          catalog: { ...seededFirmLists, areaDisplayUnit: unit },
+          stage4: stage4(),
+          economics: stored,
+          locale,
+        });
+        const unitText =
+          locale === "en"
+            ? `TWD/${unit === "m2" ? "m²" : "坪"}`
+            : `新台幣／${unit === "m2" ? "m²" : "坪"}`;
+        expect(row(view, "overall-quoted")?.cells.__ACTIVE_PROJECT__?.primary).toBe(
+          `${unit === "m2" ? "NT$25,750" : "NT$85,124"} · ${unitText}`,
+        );
+        expect(row(view, "overall-actual")?.cells["PRJ-NEIHU-021"]?.primary).toBe(
+          `${unit === "m2" ? "NT$18,984" : "NT$62,756"} · ${unitText}`,
+        );
+        expect(row(view, "IMPORTED_STONE-QUOTE")?.cells["PRJ-NEIHU-021"]?.primary).toContain(
+          unitText,
+        );
+        expect(
+          row(view, "LIGHTING_ELECTRICAL-ACTUAL")?.cells.__ACTIVE_PROJECT__?.primary,
+        ).toContain(unitText);
+      }
+      expect(JSON.stringify(stored)).toBe(before);
+    },
+  );
 });

@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => ({
   context: vi.fn(),
@@ -69,7 +70,7 @@ const context = {
 beforeEach(() => {
   vi.clearAllMocks();
   mocks.context.mockResolvedValue(context);
-  mocks.runtime.mockResolvedValue({ organizationId: "trusted" });
+  mocks.runtime.mockResolvedValue({ organizationId: "trusted", firmLists: seededFirmLists });
   mocks.comparison.mockResolvedValue({ kind: "COMPLETE", result: comparison });
   mocks.economics.mockResolvedValue(economics);
   mocks.panel.mockResolvedValue({ kind: "READY", view: { sources: [] } });
@@ -92,7 +93,9 @@ describe("Home chat job-specific findings within existing intents", () => {
     expect(reply.bullets?.join(" ")).toContain("8.3%");
     expect(reply.bullets?.join(" ")).toContain(locale === "en" ? "below" : "低 ");
     expect(reply.bullets).toEqual(
-      economics.claims.map((claim) => claimFindingText(claim, locale === "en" ? "en" : "zh-TW")),
+      economics.claims.map((claim) =>
+        claimFindingText(claim, locale === "en" ? "en" : "zh-TW", seededFirmLists.workCategories),
+      ),
     );
     expect(JSON.stringify(reply)).not.toMatch(/stone|lighting|石材|照明/i);
     expect(mocks.context).toHaveBeenCalledWith(locale, "J-OWN");

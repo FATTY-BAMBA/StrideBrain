@@ -1,4 +1,5 @@
 import type { Locale } from "@/modules/localization/config";
+import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
 
 export type DataMode = "DEMO_SYNTHETIC" | "TENANT_PRIVATE";
 
@@ -20,7 +21,10 @@ export type Capability =
   | "action:internal-review:create"
   | "action:assign"
   | "authority:financial-conflict:resolve"
-  | "settings:manage";
+  | "settings:manage"
+  | "client:read"
+  | "client:write"
+  | "firm-lists:manage";
 
 export type CapabilityGrantEffect = "ALLOW" | "DENY";
 
@@ -43,6 +47,8 @@ export type RuntimeContext = {
   projectAssignments?: ReadonlyMap<string, ProjectAssignmentGrant>;
   locale: Locale;
   dataMode: DataMode;
+  /** Current server-loaded tenant configuration; never accepted from a form or token. */
+  firmLists?: FirmLists | undefined;
 };
 
 export interface IdentityContextPort {

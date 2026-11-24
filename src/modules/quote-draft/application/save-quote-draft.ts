@@ -29,7 +29,8 @@ export class SaveQuoteDraft {
   async execute(context: RuntimeContext, raw: unknown): Promise<SaveDraftOutcome> {
     if (!context.capabilities.has("quote:draft") || !context.capabilities.has("quote:read"))
       return { kind: "UNAVAILABLE" };
-    const input = validateSaveDraft(raw);
+    if (!context.firmLists) return { kind: "UNAVAILABLE" };
+    const input = validateSaveDraft(raw, context.firmLists.workCategories);
     if (!input) return { kind: "INVALID" };
     // Receipt fingerprints keep the pre-work-order canonical form for existing retries.
     const fingerprint = createHash("sha256")
@@ -55,10 +56,13 @@ export class SaveQuoteDraft {
           replay.fingerprint === fingerprint
           ? replay.receipt
           : { kind: "CONFLICT" };
+      if (!isCategoryDraft(input.lines, job.catalog.workCategories)) return { kind: "INVALID" };
       const previous = await tx.getSaved(context, job);
       if (
         (previous?.id ?? null) !== input.baseVersionId ||
-        (previous && (previous.status !== "DRAFT" || !isCategoryDraft(previous.lines)))
+        (previous &&
+          (previous.status !== "DRAFT" ||
+            !isCategoryDraft(previous.lines, job.catalog.workCategories)))
       )
         return { kind: "CONFLICT" };
       const requiredCategories = [
@@ -70,6 +74,20 @@ export class SaveQuoteDraft {
       if (
         JSON.stringify(requiredCategories) !==
         JSON.stringify(input.lines.map((line) => line.categoryId).sort())
+      )
+        return { kind: "INVALID" };
+      const defaultUnit = job.catalog.quoteUnits.find((unit) => unit.active)?.key;
+      if (
+        input.lines.some((line) => {
+          const old = previous?.lines.find((item) => item.categoryId === line.categoryId);
+          const unit = line.unit ?? old?.unit ?? defaultUnit;
+          return (
+            !unit ||
+            !job.catalog.quoteUnits.some(
+              (entry) => entry.key === unit && (entry.active || old?.unit === unit),
+            )
+          );
+        })
       )
         return { kind: "INVALID" };
       const preparation = input.preparationToken ? this.codec.open(input.preparationToken) : null;
@@ -114,6 +132,7 @@ export class SaveQuoteDraft {
             : (old?.recorded ?? null);
         return {
           ...line,
+          unit: line.unit ?? old?.unit ?? defaultUnit!,
           recorded,
           enteredBy:
             old?.enteredBy ??
@@ -125,8 +144,10 @@ export class SaveQuoteDraft {
           const old = previous?.lines.find((entry) => entry.categoryId === line.categoryId);
           return (
             line.amount !== (old?.amount ?? line.recorded?.basis.suggestedAmount) ||
+            line.unit !== (old?.unit ?? defaultUnit) ||
             line.description !==
-              (old?.description ?? categoryLabel(context.locale, line.categoryId))
+              (old?.description ??
+                categoryLabel(context.locale, line.categoryId, job.catalog.workCategories))
           );
         })
         .map((line) => line.categoryId);

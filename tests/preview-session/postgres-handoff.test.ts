@@ -1,3 +1,4 @@
+import { withFirmLists } from "../firm-lists/with-firm-lists";
 import { createHash, randomBytes } from "node:crypto";
 import { describe, expect, it } from "vitest";
 import { getPrismaClient } from "@/lib/server/prisma";
@@ -62,7 +63,8 @@ describeDatabase("Preview handoff with existing PostgreSQL session and authoriza
       const protectedRequest = new Request(`${origin}/${locale}/projects/PRJ-XINYI-026`, {
         headers: { cookie, "x-organization-id": "org_northern", "x-role": "ORGANIZATION_ADMIN" },
       });
-      const context = await identity.resolve(protectedRequest);
+      const identityContext = await identity.resolve(protectedRequest);
+      const context = identityContext ? await withFirmLists(identityContext) : null;
       expect(context?.organizationId).toBe("org_horizon");
       expect(context?.role).toBe(role);
       expect(context?.membershipId).toBe(`membership_horizon_${suffix}`);

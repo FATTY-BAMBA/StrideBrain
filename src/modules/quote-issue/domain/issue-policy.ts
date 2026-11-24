@@ -88,6 +88,9 @@ export function prepareIssuePolicy(
       email: firm.email,
     },
     clientName: zh ? state.clientNameZhTw : state.clientNameEn,
+    ...(state.clientDetails && Object.values(state.clientDetails).some((value) => value.length)
+      ? { clientDetails: { ...state.clientDetails } }
+      : {}),
     attention: options.attention,
     projectName: zh ? state.projectNameZhTw : state.projectNameEn,
     projectKey: state.job.businessKey,
@@ -95,14 +98,16 @@ export function prepareIssuePolicy(
     issueDate: today,
     validUntil: options.validUntil ?? addDays(today, firm.defaultValidityDays),
     currency: state.job.currency,
-    lines: orderQuoteLines(state.current?.lines ?? []).map((line) => {
-      const labels = state.descriptions.find((entry) => entry.id === line.id);
-      return {
-        categoryId: line.categoryId,
-        description: (zh ? labels?.zh : labels?.en) ?? line.description,
-        amount: line.amount,
-      };
-    }),
+    lines: orderQuoteLines(state.current?.lines ?? [], state.job.catalog.workCategories).map(
+      (line) => {
+        const labels = state.descriptions.find((entry) => entry.id === line.id);
+        return {
+          categoryId: line.categoryId,
+          description: (zh ? labels?.zh : labels?.en) ?? line.description,
+          amount: line.amount,
+        };
+      },
+    ),
     totals: state.current?.totals ?? {
       amountBeforeTax: "0.00",
       taxAmount: "0.00",

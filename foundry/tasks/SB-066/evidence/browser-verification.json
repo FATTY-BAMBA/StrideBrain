@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "checks": [
+    "Owner edits client details with audited persistence; seven-digit tax ID is visibly refused; bilingual client list/detail and quote history render.",
+    "Owner adds a job type/work category, switches to ping, and creates a 100-ping job with a generated editable client reference; persisted client shows its job. Pricing-only parent stays hidden.",
+    "Used category mapping is disabled with its explanation; renaming/retiring keeps the existing job label and removes the new-job choice.",
+    "Finance reads client contact details without edit controls.",
+    "Viewer sees accessible quote statuses with no amounts, no Clients navigation, and direct Clients access returns 404.",
+    "One issued quote row retains its issued total and issue date with a newer-draft marker in both languages; Draft filter excludes it and the link targets the job Quote tab.",
+    "Final production-build screenshots refreshed; client details, Quotes and Settings fit a 390-pixel viewport without page overflow. Tables scroll within the page."
+  ],
+  "screens": [
+    "en-clients.png",
+    "en-quotes.png",
+    "zh-TW-clients.png",
+    "zh-TW-quotes.png",
+    "en-client-details.png",
+    "zh-TW-client-details.png",
+    "en-firm-lists.png",
+    "en-existing-job-ping.png",
+    "en-new-job-client-reference.png",
+    "zh-TW-renamed-retired-job.png",
+    "zh-TW-firm-lists.png",
+    "zh-TW-client-mobile.png",
+    "en-viewer-quotes.png",
+    "en-quotes-issued-revision.png",
+    "zh-TW-quotes-issued-revision.png",
+    "en-locked-category.png",
+    "zh-TW-locked-category.png"
+  ],
+  "pageErrors": [],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "projectKey": "J-2611-8DYC",
+  "clientKey": "C-2611-TDP8",
+  "consoleNotes": "The single recorded 404 is the expected Viewer denial of /en/clients."
+}

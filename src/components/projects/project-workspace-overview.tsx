@@ -120,6 +120,7 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
       <header className={styles.hero}>
         <div className={styles.heroCopy}>
           <div className={styles.meta}>
+            <span>{workspace.project.subtypeName}</span>
             <p className={styles.eyebrow}>{stageLabel(locale, workspace.project.stage)}</p>
             <span className={styles.status}>
               {workspaceStateCopies[locale].workspace[workspace.state]}
@@ -128,9 +129,11 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
           <h1>{workspace.project.name.display}</h1>
           <p className={styles.client}>{workspace.project.clientName.display}</p>
           <div className={styles.meta}>
+            <span>{workspace.project.subtypeName}</span>
             <span>{projectLocationLabel(locale, workspace.project.location)}</span>
             <span>
-              {workspace.project.area.value} {areaUnit}
+              {workspace.project.area.displayValue ?? workspace.project.area.value}{" "}
+              {workspace.project.area.displayUnit ?? areaUnit}
             </span>
             {workspace.project.programmeWeeks ? (
               <span>
@@ -218,7 +221,11 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
           <ul className={styles.list}>
             <li>
               <span>{labels.scope}</span>
-              <strong>{workspace.project.scopeCategories.length}</strong>
+              <strong>
+                {workspace.project.scopeCategories
+                  .map((category) => category.name.display)
+                  .join(locale === "zh-TW" ? "、" : ", ")}
+              </strong>
             </li>
             <li>
               <span>{labels.suppliers}</span>

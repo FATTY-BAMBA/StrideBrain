@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 vi.mock("@/app/[locale]/job-draft-actions", () => ({
   draftJobFromNewPage: vi.fn(),
   draftJobFromHome: vi.fn(),
@@ -57,6 +58,7 @@ function fixture(count = 7): HomeDesk {
     stage: "DISCOVERY" as const,
   }));
   return {
+    catalog: seededFirmLists,
     kind: "AVAILABLE",
     projects,
     canCreate: true,
@@ -292,7 +294,9 @@ it.each(["en", "zh-TW"] as const)(
       const host = render(
         createElement(HomeDeskScreen, { locale, outcome: { ...desk, decisions: [item] } }),
       );
-      expect(host.querySelector("li p")?.textContent).toBe(claimFindingText(claim, locale));
+      expect(host.querySelector("li p")?.textContent).toBe(
+        claimFindingText(claim, locale, seededFirmLists.workCategories),
+      );
       expect(host.querySelectorAll("li p")).toHaveLength(count ? 2 : 1);
       if (count)
         expect(host.querySelectorAll("li p")[1]?.textContent).toBe(

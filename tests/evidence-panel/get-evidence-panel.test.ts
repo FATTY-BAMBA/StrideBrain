@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { EvidencePanel } from "@/components/evidence/evidence-panel";
@@ -20,6 +21,7 @@ import type {
 } from "@/repositories/ports/evidence-panel-repository";
 
 const context: RuntimeContext = {
+  firmLists: seededFirmLists,
   requestId: "REQ-EVIDENCE-001",
   userId: "person-mei",
   membershipId: "membership-mei",
@@ -265,14 +267,17 @@ const factor: EvidenceFactorRecord = {
   evidenceCoverage: "100.0000",
 };
 
-function service(overrides: Partial<EvidencePanelRepositoryPort> = {}) {
+function service(
+  overrides: Partial<EvidencePanelRepositoryPort> = {},
+  stored: Stage5EconomicsResult = stage5,
+) {
   const comparisons: ComparisonRunRepositoryPort = {
     persistComplete: vi.fn(),
     getAuthorizedResult: vi.fn().mockResolvedValue(stage4),
   };
   const economics: EconomicsEnrichmentRunRepositoryPort = {
     persistComplete: vi.fn(),
-    getAuthorizedResult: vi.fn().mockResolvedValue(stage5),
+    getAuthorizedResult: vi.fn().mockResolvedValue(stored),
   };
   const evidence: EvidencePanelRepositoryPort = {
     getAuthorizedSources: vi.fn().mockResolvedValue({ kind: "COMPLETE", sources: [source] }),
@@ -582,7 +587,7 @@ describe("QA-16/18 rendered evidence localization and financial authority", () =
     );
     if (outcome.kind !== "READY") throw Error("READY_REQUIRED");
     expect(outcome.view.sources[0]?.locatorLabel).toBe(
-      "紀錄類型: 預估成本項目 · 項目編號: 4 · 分類: 進口石材 · 版本: v3",
+      "紀錄類型: 預估成本項目 · 項目編號: 4 · 分類: 進口石材與硬質面材 · 版本: v3",
     );
     const text = renderToStaticMarkup(
       createElement(EvidencePanel, {
@@ -634,4 +639,100 @@ it("preserves exact source business identifiers and uppercase prose while transl
       ],
     });
   }
+});
+
+describe("firm-unit evidence rates", () => {
+  it.each(["en", "zh-TW"] as const)(
+    "converts trace, claim, supported value and line rates without altering evidence in %s",
+    async (locale) => {
+      const rateFields = {
+        currentNormalizedAmount: "1210.000000",
+        baselineMedianNormalizedAmount: "1210.000000",
+        medianNormalizedAmount: "1210.000000",
+        minimumNormalizedAmount: "1210.000000",
+        maximumNormalizedAmount: "1210.000000",
+        baselineEquivalentAmount: "12100.00",
+        amount: "12100.00",
+        normalizedUnit: "TWD_PER_M2",
+        variancePercent: "18.3882",
+      };
+      const stored = {
+        ...stage5,
+        claims: [
+          {
+            ...stage5.claims[0]!,
+            value: rateFields,
+            calculationTrace: { ...calculationTrace, result: rateFields },
+          },
+        ],
+        evidenceBundles: [
+          {
+            ...stage5.evidenceBundles[0]!,
+            calculationTrace: { ...calculationTrace, result: rateFields },
+          },
+        ],
+      };
+      const input = {
+        ...source,
+        supportedValue: { amount: "1210.000000", unit: "TWD_PER_M2" },
+        previewFields: [
+          { key: "unit", value: "m2" },
+          { key: "quantity", value: "10" },
+          { key: "unitPrice", value: "1210.000000" },
+          { key: "amount", value: "12100.00" },
+        ],
+      };
+      const before = JSON.stringify({ stored, input });
+      for (const unit of ["m2", "ping"] as const) {
+        const result = await service(
+          {
+            getAuthorizedSources: vi.fn().mockResolvedValue({ kind: "COMPLETE", sources: [input] }),
+          },
+          stored,
+        ).execute(
+          { ...context, firmLists: { ...seededFirmLists, areaDisplayUnit: unit } },
+          {
+            mode: "CLAIM",
+            comparisonRunId: "cmprun-1",
+            enrichmentRunId: "econrun-1",
+            claimKey: stored.claims[0]!.claimKey,
+          },
+          locale,
+        );
+        expect(result.kind).toBe("READY");
+        if (result.kind !== "READY" || result.view.trace?.kind !== "FINANCIAL")
+          throw Error("FINANCIAL_REQUIRED");
+        const rate = unit === "m2" ? "NT$1,210" : "NT$4,000/坪";
+        const label =
+          locale === "en"
+            ? unit === "m2"
+              ? "TWD/m²"
+              : "TWD/坪"
+            : unit === "m2"
+              ? "新臺幣／平方公尺"
+              : "新臺幣／坪";
+        expect(result.view.trace.inputs[0]?.normalizedValueLabel).toBe(
+          `${unit === "m2" ? "3,114.75" : "10,296.71"} ${label}`,
+        );
+        expect(result.view.trace.resultFields.slice(0, 5).map((f) => f.value)).toEqual(
+          Array(5).fill(rate),
+        );
+        expect(result.view.claim?.valueLabel).toContain(rate);
+        expect(result.view.claim?.valueLabel).toContain("NT$12,100");
+        expect(
+          result.view.trace.resultFields.find(
+            (f) => f.label === (locale === "en" ? "Amount" : "金額"),
+          )?.value,
+        ).toBe("NT$12,100");
+        expect(result.view.sources[0]?.supportedValueLabel).toContain(rate);
+        expect(result.view.sources[0]?.supportedValueLabel).toContain(label);
+        expect(result.view.sources[0]?.preview).toMatchObject({
+          fields: expect.arrayContaining([
+            { label: locale === "en" ? "Unit price" : "單價", value: rate },
+          ]),
+        });
+      }
+      expect(JSON.stringify({ stored, input })).toBe(before);
+    },
+  );
 });

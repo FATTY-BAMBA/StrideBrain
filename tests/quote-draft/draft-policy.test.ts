@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { describe, expect, it } from "vitest";
 import {
   basisOutOfDate,
@@ -11,6 +12,7 @@ import {
   type CategoryQuotedHistory,
 } from "@/modules/economics/domain/historical-economics-service";
 const job: DraftJob = {
+  catalog: seededFirmLists,
   area: "100",
   areaUnit: "m2",
   currency: "TWD",
@@ -67,7 +69,13 @@ describe("QUOTE-DRAFT-1.0", () => {
       evidenceReferenceIds: ["quote-line"],
     });
     expect(partial.basis).not.toHaveProperty("suggestedAmount");
-    expect(draftCoverage(partial.categoryId, partial.basis.scopeCategoryIds)).toEqual({
+    expect(
+      draftCoverage(
+        partial.categoryId,
+        partial.basis.scopeCategoryIds,
+        seededFirmLists.workCategories,
+      ),
+    ).toEqual({
       all: ["SELECTIVE_DEMOLITION", "PARTITIONS_CEILINGS"],
       included: ["PARTITIONS_CEILINGS"],
       partial: true,

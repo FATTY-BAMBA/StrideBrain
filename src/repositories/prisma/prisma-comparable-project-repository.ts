@@ -75,6 +75,11 @@ type ProfileEvidenceRow = Readonly<{
 }>;
 
 export type PrismaComparableProjectDatabase = {
+  firmJobType: {
+    findFirst(args: unknown): Promise<Readonly<{
+      relatedTo: readonly Readonly<{ toType: Readonly<{ key: string }> }>[];
+    }> | null>;
+  };
   project: {
     findFirst(args: unknown): Promise<ProfileProjectRow | null>;
     findMany(args: unknown): Promise<ProfileProjectRow[]>;
@@ -318,6 +323,21 @@ export class PrismaComparableProjectRepository implements ComparableProjectRepos
     });
     if (!row || row.organizationId !== context.organizationId) return null;
 
+    const jobType = await this.database.firmJobType.findFirst({
+      where: { organizationId: context.organizationId, key: row.subtype },
+      select: {
+        relatedTo: {
+          where: {
+            organizationId: context.organizationId,
+            toType: { organizationId: context.organizationId },
+          },
+          orderBy: { toType: { key: "asc" } },
+          select: { toType: { select: { key: true } } },
+        },
+      },
+    });
+    if (!jobType) return null;
+
     const sources = profileSourceIds(row);
     const evidenceRows = await this.database.evidenceReference.findMany({
       where: {
@@ -340,6 +360,7 @@ export class PrismaComparableProjectRepository implements ComparableProjectRepos
     const quote = currentQuote(row);
     return Object.freeze({
       profile: mapProfile(row, mapEvidence(evidenceRows)),
+      relatedSubtypeKeys: unique(jobType.relatedTo.map((relation) => relation.toType.key)),
       activeQuoteVersionId: quote?.version.id,
       activeQuoteVersionKey: quote
         ? `${quote.quoteKey}-v${quote.version.versionNumber}`

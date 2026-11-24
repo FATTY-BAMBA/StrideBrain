@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { expect, it, vi } from "vitest";
@@ -16,6 +17,7 @@ it.each(["en", "zh-TW"] as const)(
   (locale) => {
     const copy = quoteIssueCopy(locale);
     const view: IssueView = {
+      catalog: seededFirmLists,
       kind: "AVAILABLE",
       latestIssued: null,
       amounts: null,

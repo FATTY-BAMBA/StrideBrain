@@ -1,3 +1,9 @@
+import type { FirmLists, FirmWorkCategory } from "@/modules/firm-lists/domain/contracts";
+import {
+  pricingCategoriesForScopes,
+  categoryScopes,
+} from "@/modules/firm-lists/domain/work-categories";
+import { areaToSquareMetres } from "@/modules/firm-lists/domain/area-unit";
 export const PROJECT_STAGES = [
   "DISCOVERY",
   "DESIGN",
@@ -18,53 +24,18 @@ export const JOB_FIXED_VALUES = Object.freeze({
   currency: "TWD",
 });
 
-// Canonical IDs already used by the comparison policy and reviewed taxonomy.
-export const JOB_SUBTYPES = [
-  "RETAIL_FLAGSHIP",
-  "RETAIL_RENOVATION",
-  "RETAIL_CONCEPT_STORE",
-  "RETAIL_SHOWROOM",
-] as const;
-export const SCOPE_CATEGORIES = [
-  "SELECTIVE_DEMOLITION",
-  "PARTITIONS_CEILINGS",
-  "CUSTOM_MILLWORK",
-  "LIGHTING_ELECTRICAL",
-  "IMPORTED_STONE",
-  "SIGNAGE",
-  "COORDINATION",
-] as const;
-export const COMMERCIAL_CATEGORIES = [
-  "DEMOLITION_CEILING",
-  "CUSTOM_MILLWORK",
-  "LIGHTING_ELECTRICAL",
-  "IMPORTED_STONE",
-  "SIGNAGE",
-  "COORDINATION",
-] as const;
-type ScopeCategory = (typeof SCOPE_CATEGORIES)[number];
-type CommercialCategory = (typeof COMMERCIAL_CATEGORIES)[number];
-const SCOPE_TO_COMMERCIAL: Readonly<Record<ScopeCategory, CommercialCategory>> = Object.freeze({
-  SELECTIVE_DEMOLITION: "DEMOLITION_CEILING",
-  PARTITIONS_CEILINGS: "DEMOLITION_CEILING",
-  CUSTOM_MILLWORK: "CUSTOM_MILLWORK",
-  LIGHTING_ELECTRICAL: "LIGHTING_ELECTRICAL",
-  IMPORTED_STONE: "IMPORTED_STONE",
-  SIGNAGE: "SIGNAGE",
-  COORDINATION: "COORDINATION",
-});
-
-/** Called only after validating the canonical scope choices. No browser-supplied
- * commercial list can override this mapping. */
+/** Browser choices cannot override the firm's pricing relationships. */
 export function commercialCategoriesForScope(
-  scopes: readonly ScopeCategory[],
-): readonly CommercialCategory[] {
-  return [...new Set(scopes.map((scope) => SCOPE_TO_COMMERCIAL[scope]))].sort();
+  scopes: readonly string[],
+  categories: readonly FirmWorkCategory[],
+): readonly string[] {
+  return pricingCategoriesForScopes(categories, scopes);
 }
-
-/** The inverse of the creation mapping, for coverage of a past pricing category. */
-export function scopesForCommercialCategory(categoryId: string): readonly ScopeCategory[] {
-  return SCOPE_CATEGORIES.filter((scope) => SCOPE_TO_COMMERCIAL[scope] === categoryId);
+export function scopesForCommercialCategory(
+  categoryId: string,
+  categories: readonly FirmWorkCategory[],
+): readonly string[] {
+  return categoryScopes(categories, categoryId);
 }
 export const CLIENT_TYPES = ["RETAIL", "CORPORATE", "HOSPITALITY"] as const;
 export const JOB_FIELDS = [
@@ -111,6 +82,7 @@ export const IDEMPOTENCY_KEY =
 
 export function validateCreateProject(
   raw: unknown,
+  lists: FirmLists,
 ): { kind: "VALID"; input: CreateProjectInput } | { kind: "INVALID"; errors: JobErrors } {
   const values =
     raw && typeof raw === "object" && !Array.isArray(raw) ? (raw as Record<string, unknown>) : {};
@@ -151,26 +123,33 @@ export function validateCreateProject(
   const clientMode = choice("clientMode", ["existing", "new"]) as "existing" | "new";
   const scopeCategoryIds = categories(
     "scopeCategoryIds",
-    SCOPE_CATEGORIES,
-  ) as readonly ScopeCategory[];
+    lists.workCategories
+      .filter((entry) => entry.active && entry.scopeSelectable)
+      .map((entry) => entry.key),
+  );
   const input: CreateProjectInput = {
     businessKey: text("businessKey", 128),
     name: text("name", 200),
     comparisonClass: choice("comparisonClass", [JOB_FIXED_VALUES.comparisonClass]),
-    subtype: choice("subtype", JOB_SUBTYPES),
-    areaQuantity: text("areaQuantity", 19),
-    areaUnit: choice("areaUnit", [JOB_FIXED_VALUES.areaUnit]),
+    subtype: choice(
+      "subtype",
+      lists.jobTypes.filter((entry) => entry.active).map((entry) => entry.key),
+    ),
+    areaQuantity: areaToSquareMetres(text("areaQuantity", 19), lists.areaDisplayUnit) ?? "",
+    areaUnit: JOB_FIXED_VALUES.areaUnit,
     currency: choice("currency", [JOB_FIXED_VALUES.currency]),
     locationCity: text("locationCity", 120),
     locationDistrict: text("locationDistrict", 120, false),
     scopeCategoryIds,
-    commercialCategoryIds: commercialCategoriesForScope(scopeCategoryIds),
+    commercialCategoryIds: commercialCategoriesForScope(scopeCategoryIds, lists.workCategories),
     clientMode,
     clientBusinessKey: text("clientBusinessKey", 128),
     clientName: text("clientName", 200, clientMode === "new"),
     clientType: clientMode === "new" ? choice("clientType", CLIENT_TYPES) : "",
     idempotencyKey: text("idempotencyKey", 36),
   };
+  choice("areaUnit", [lists.areaDisplayUnit]);
+  if (!input.areaQuantity) errors.areaQuantity = errors.areaQuantity ?? "invalid";
   for (const key of ["businessKey", "clientBusinessKey"] as const)
     if (input[key] && !BUSINESS_KEY.test(input[key])) errors[key] = "invalid";
   // The static creation route owns this path segment.

@@ -224,6 +224,7 @@ export class RunComparableProjectAnalysis {
       });
       const inputFingerprint = sha256({
         sourceFingerprint,
+        relatedTypeFingerprint: resolved.context.relatedTypeFingerprint,
         permissionFingerprint: resolved.context.permissionFingerprint,
         snapshotDate: resolved.context.snapshotDate,
         eligibilityPolicyVersion: ELIGIBILITY_POLICY_VERSION,
@@ -249,6 +250,7 @@ export class RunComparableProjectAnalysis {
         }),
         activeContext: Object.freeze({
           sourceFingerprint: resolved.context.sourceFingerprint,
+          relatedTypeFingerprint: resolved.context.relatedTypeFingerprint,
           permissionFingerprint: resolved.context.permissionFingerprint,
           dataClassification: resolved.context.dataClassification,
           projectKey: resolved.context.businessKey,

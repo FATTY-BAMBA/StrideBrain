@@ -73,7 +73,7 @@ export class GetQuoteDraftEvidence {
               Number(a.observationType === "QUOTED_PRICE") ||
             a.referenceId.localeCompare(b.referenceId),
         )
-        .map((source) => sourceView(source, base, stage4, context.locale, copy));
+        .map((source) => sourceView(source, base, stage4, context.locale, copy, job.catalog));
       let conflict;
       const selection = input.selection;
       if (selection && selection.comparisonRunId !== runId) return unavailable;
@@ -86,7 +86,7 @@ export class GetQuoteDraftEvidence {
         const record = await tx.getConflict(context, runId, selection.conflictKey);
         if (!record) return unavailable;
         const records = record.sources.map((source) =>
-          sourceView(source, base, stage4, context.locale, copy),
+          sourceView(source, base, stage4, context.locale, copy, job.catalog),
         );
         conflict = {
           conflictKey: record.conflictKey,
@@ -102,6 +102,7 @@ export class GetQuoteDraftEvidence {
       return {
         kind: "READY",
         view: {
+          catalog: job.catalog,
           version: EVIDENCE_PANEL_VERSION,
           locale: context.locale,
           mode: conflict ? "CONFLICT" : "CLAIM",
@@ -116,7 +117,7 @@ export class GetQuoteDraftEvidence {
           },
           heading: {
             eyebrow: copy.eyebrow,
-            title: categoryLabel(context.locale, input.categoryId),
+            title: categoryLabel(context.locale, input.categoryId, job.catalog.workCategories),
             description:
               context.locale === "zh-TW"
                 ? "此建議金額及其提示的來源紀錄。"

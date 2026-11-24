@@ -271,7 +271,8 @@ async function askKeywordAction(
   const normalized = query.toLocaleLowerCase(locale);
   const base = `/${locale}/projects/${encodeURIComponent(workspace.project.businessKey)}`;
   const runtime = await resolveServerRuntimeContext();
-  if (!runtime) return previous;
+  if (!runtime?.firmLists) return previous;
+  const workCategories = runtime.firmLists.workCategories;
   const services = createComparisonServices();
 
   const evidenceFollowup =
@@ -438,7 +439,7 @@ async function askKeywordAction(
   // Follow-ups use only the currently validated saved result, never browser-supplied run IDs.
   if (
     evidenceFollowup &&
-    !mentionedCategory(query) &&
+    !mentionedCategory(query, workCategories) &&
     !/(\bquote\b|\bquotation\b|報價)/i.test(normalized) &&
     previous.context.activeClaimKey &&
     economics &&
@@ -550,9 +551,9 @@ async function askKeywordAction(
     followupCategory ||
     quoteIntent ||
     followupQuote ||
-    mentionedCategory(query)
+    mentionedCategory(query, workCategories)
   ) {
-    const explicitCategory = mentionedCategory(query);
+    const explicitCategory = mentionedCategory(query, workCategories);
     const rememberedClaim =
       followupCategory || followupQuote
         ? economics?.claims.find((claim) => claim.claimKey === previous.context.activeClaimKey)
@@ -576,7 +577,7 @@ async function askKeywordAction(
     const findings =
       comparison.activeContext.activeQuoteVersionKey && !noRecord
         ? claims.flatMap((claim) => {
-            const text = claimFindingText(claim, locale);
+            const text = claimFindingText(claim, locale, workCategories);
             return text ? [{ claim, text }] : [];
           })
         : [];
@@ -617,7 +618,7 @@ async function askKeywordAction(
           ? copy.noEconomics
           : findings.length
             ? copy.detail
-            : (recommendationText(economics, locale) ?? copy.noEconomics);
+            : (recommendationText(economics, locale, workCategories) ?? copy.noEconomics);
     return append(
       previous,
       [

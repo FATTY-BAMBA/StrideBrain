@@ -1,0 +1,87 @@
+
+> stridebrain@0.1.0 check
+> npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build
+
+
+> stridebrain@0.1.0 format:check
+> prettier --check package.json tsconfig.json next.config.ts next-env.d.ts eslint.config.mjs prettier.config.mjs vitest.config.ts vitest.ai-eval.config.ts scripts/run-ai-eval.mjs tests/assistant/questions.json .github/workflows/ai-evaluation.yml prisma.config.ts .github/workflows/ci.yml 'src/**/*.{ts,tsx,css}' 'tests/**/*.ts'
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> stridebrain@0.1.0 lint
+> eslint .
+
+
+/private/tmp/stridebrain-sb041/prisma.config.ts
+  5:1  warning  Assign object to a variable before exporting as module default  import/no-anonymous-default-export
+
+✖ 1 problem (0 errors, 1 warning)
+
+
+> stridebrain@0.1.0 typecheck
+> tsc --noEmit
+
+
+> stridebrain@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.10 /private/tmp/stridebrain-sb041
+
+
+ Test Files  149 passed (149)
+      Tests  1557 passed (1557)
+   Start at  13:21:06
+   Duration  129.69s (transform 2.27s, setup 0ms, import 7.45s, tests 236.26s, environment 4.16s)
+
+
+> stridebrain@0.1.0 build
+> next build
+
+▲ Next.js 16.4.6 (Turbopack)
+✓ Running next.config.ts took 62ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 726ms
+  Running TypeScript ...
+  Finished TypeScript in 5.3s ...
+  Collecting page data using 9 workers ...
+  Generating static pages using 9 workers (0/29) ...
+  Generating static pages using 9 workers (7/29)
+  Generating static pages using 9 workers (14/29)
+  Generating static pages using 9 workers (21/29)
+✓ Generating static pages using 9 workers (29/29) in 132ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /[locale]
+├ ƒ /[locale]/ai-data
+├ ƒ /[locale]/clients
+├ ƒ /[locale]/clients/[clientKey]
+├ ƒ /[locale]/customer-care
+├ ƒ /[locale]/decisions
+├ ƒ /[locale]/knowledge
+├ ƒ /[locale]/preview
+├ ƒ /[locale]/projects
+├ ƒ /[locale]/projects/[projectKey]/[[...surface]]
+├ ƒ /[locale]/projects/[projectKey]/compare
+├ ƒ /[locale]/projects/[projectKey]/quote
+├ ƒ /[locale]/projects/new
+├ ƒ /[locale]/quotes
+├ ƒ /[locale]/settings
+├ ƒ /[locale]/stridebrain
+├ ƒ /api/actions/[actionKey]
+├ ƒ /api/actions/internal-review
+├ ƒ /api/actions/internal-review/proposals
+├ ƒ /api/actions/internal-review/proposals/[proposalKey]
+├ ƒ /api/preview-session
+├ ƒ /api/preview-session/logout
+└ ƒ /api/quotes/[versionId]/pdf
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

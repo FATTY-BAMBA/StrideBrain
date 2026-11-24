@@ -19,7 +19,8 @@ import type {
 import type { QuoteDraftView } from "@/modules/quote-draft/application/get-quote-draft";
 import { draftCoverage, type DraftBasis } from "@/modules/quote-draft/domain/draft-policy";
 import { DRAFT_AMOUNT } from "@/modules/quote-draft/domain/save-input";
-import { formatQuoteArea, formatQuoteRate } from "@/modules/quote-draft/presentation";
+import { areaInFirmUnit, areaUnitLabel } from "@/modules/firm-lists/domain/area-unit";
+import { formatQuoteRate } from "@/modules/quote-draft/presentation";
 import type { QuoteTotals } from "@/modules/finance/quote-totals";
 import { formatMoney } from "@/modules/finance/format-money";
 import type { Locale } from "@/modules/localization/config";
@@ -33,6 +34,7 @@ type Row = {
   categoryId: string;
   description: string;
   amount: string;
+  unit: string;
   basis: DraftBasis | null;
   unavailable: boolean;
   outdated: boolean;
@@ -44,6 +46,7 @@ function savedRows(view: Available, locale: Locale): Row[] {
       categoryId: line.categoryId,
       description: line.description,
       amount: line.amount,
+      unit: line.unit ?? view.job.catalog.quoteUnits.find((unit) => unit.active)?.key ?? "",
       basis: line.recorded?.basis ?? null,
       unavailable: line.basisUnavailable,
       outdated: line.basisOutOfDate,
@@ -54,12 +57,17 @@ function savedRows(view: Available, locale: Locale): Row[] {
       ...view.saved.lines.map((line) => line.categoryId),
     ]),
   ];
-  return orderQuoteLines(ids.map((categoryId) => ({ categoryId }))).map(({ categoryId }) => {
+  return orderQuoteLines(
+    ids.map((categoryId) => ({ categoryId })),
+    view.job.catalog.workCategories,
+  ).map(({ categoryId }) => {
     const line = view.saved!.lines.find((entry) => entry.categoryId === categoryId);
     return {
       categoryId,
-      description: line?.description ?? categoryLabel(locale, categoryId),
+      description:
+        line?.description ?? categoryLabel(locale, categoryId, view.job.catalog.workCategories),
       amount: line?.amount ?? "",
+      unit: line?.unit ?? view.job.catalog.quoteUnits.find((unit) => unit.active)?.key ?? "",
       basis: line?.recorded?.basis ?? null,
       unavailable: line?.basisUnavailable ?? false,
       outdated: line?.basisOutOfDate ?? false,
@@ -102,7 +110,12 @@ export function QuoteDraftWorkspace({
     idempotencyKey,
     baseVersionId: view.saved?.id ?? null,
     preparationToken: token,
-    lines: rows.map(({ categoryId, description, amount }) => ({ categoryId, description, amount })),
+    lines: rows.map(({ categoryId, description, amount, unit }) => ({
+      categoryId,
+      description,
+      amount,
+      unit,
+    })),
   };
   const serialized = JSON.stringify(payload);
   useEffect(() => {
@@ -118,7 +131,10 @@ export function QuoteDraftWorkspace({
       clearTimeout(timer);
     };
   }, [serialized, locale, editable, rows.length]);
-  function update(categoryId: string, patch: Partial<Pick<Row, "description" | "amount">>) {
+  function update(
+    categoryId: string,
+    patch: Partial<Pick<Row, "description" | "amount" | "unit">>,
+  ) {
     setRows((current) =>
       current.map((row) => (row.categoryId === categoryId ? { ...row, ...patch } : row)),
     );
@@ -143,13 +159,19 @@ export function QuoteDraftWorkspace({
             ...result.preparation.suggestions.map((line) => line.categoryId),
           ]),
         ];
-        return orderQuoteLines(ids.map((categoryId) => ({ categoryId }))).map(({ categoryId }) => {
+        return orderQuoteLines(
+          ids.map((categoryId) => ({ categoryId })),
+          view.job.catalog.workCategories,
+        ).map(({ categoryId }) => {
           const old = current.find((row) => row.categoryId === categoryId),
             fresh = result.preparation.suggestions.find((line) => line.categoryId === categoryId);
           return {
             categoryId,
-            description: old?.description ?? categoryLabel(locale, categoryId),
+            description:
+              old?.description ??
+              categoryLabel(locale, categoryId, view.job.catalog.workCategories),
             amount: old?.amount ?? fresh?.basis.suggestedAmount ?? "",
+            unit: old?.unit ?? view.job.catalog.quoteUnits.find((unit) => unit.active)?.key ?? "",
             basis: fresh?.basis ?? old?.basis ?? null,
             unavailable: fresh ? false : (old?.unavailable ?? false),
             outdated: fresh ? false : (old?.outdated ?? false),
@@ -270,9 +292,13 @@ export function QuoteDraftWorkspace({
                   : currentLine?.openConflict;
                 const rowKey = editable ? row.categoryId : `${row.categoryId}-${index}`;
                 const basis = row.basis,
-                  unit = basis?.areaUnit === "m2" ? "m²" : (basis?.areaUnit ?? view.job.areaUnit);
+                  unit = areaUnitLabel(view.job.catalog.areaDisplayUnit);
                 const coverage = basis
-                  ? draftCoverage(row.categoryId, basis.scopeCategoryIds)
+                  ? draftCoverage(
+                      row.categoryId,
+                      basis.scopeCategoryIds,
+                      view.job.catalog.workCategories,
+                    )
                   : null;
                 return (
                   <section
@@ -280,12 +306,14 @@ export function QuoteDraftWorkspace({
                     key={rowKey}
                     aria-labelledby={`category-${rowKey}`}
                   >
-                    <h2 id={`category-${rowKey}`}>{categoryLabel(locale, row.categoryId)}</h2>
+                    <h2 id={`category-${rowKey}`}>
+                      {categoryLabel(locale, row.categoryId, view.job.catalog.workCategories)}
+                    </h2>
                     <div className={styles.fields}>
                       <label>
                         {copy.description}
                         <input
-                          aria-label={`${categoryLabel(locale, row.categoryId)} ${copy.description}`}
+                          aria-label={`${categoryLabel(locale, row.categoryId, view.job.catalog.workCategories)} ${copy.description}`}
                           value={row.description}
                           maxLength={500}
                           disabled={!editable || pending}
@@ -295,9 +323,25 @@ export function QuoteDraftWorkspace({
                         />
                       </label>
                       <label>
+                        {locale === "zh-TW" ? "單位" : "Unit"}
+                        <select
+                          value={row.unit}
+                          disabled={!editable || pending}
+                          onChange={(event) => update(row.categoryId, { unit: event.target.value })}
+                        >
+                          {view.job.catalog.quoteUnits
+                            .filter((unit) => unit.active || unit.key === row.unit)
+                            .map((unit) => (
+                              <option key={unit.key} value={unit.key}>
+                                {locale === "zh-TW" ? unit.nameZhTw : unit.nameEn}
+                              </option>
+                            ))}
+                        </select>
+                      </label>
+                      <label>
                         {copy.amount}
                         <input
-                          aria-label={`${categoryLabel(locale, row.categoryId)} ${copy.amount}`}
+                          aria-label={`${categoryLabel(locale, row.categoryId, view.job.catalog.workCategories)} ${copy.amount}`}
                           value={row.amount}
                           inputMode="decimal"
                           maxLength={17}
@@ -349,11 +393,19 @@ export function QuoteDraftWorkspace({
                                 all: new Intl.ListFormat(locale, {
                                   style: "long",
                                   type: "conjunction",
-                                }).format(coverage.all.map((id) => categoryLabel(locale, id))),
+                                }).format(
+                                  coverage.all.map((id) =>
+                                    categoryLabel(locale, id, view.job.catalog.workCategories),
+                                  ),
+                                ),
                                 included: new Intl.ListFormat(locale, {
                                   style: "long",
                                   type: "conjunction",
-                                }).format(coverage.included.map((id) => categoryLabel(locale, id))),
+                                }).format(
+                                  coverage.included.map((id) =>
+                                    categoryLabel(locale, id, view.job.catalog.workCategories),
+                                  ),
+                                ),
                               })}
                             </p>
                           ) : null}
@@ -366,16 +418,31 @@ export function QuoteDraftWorkspace({
                                     : copy.basis,
                                   {
                                     n: basis.count,
-                                    rate: formatQuoteRate(basis.medianRate, view.job.currency),
+                                    rate: formatQuoteRate(
+                                      basis.medianRate,
+                                      view.job.currency,
+                                      view.job.catalog.areaDisplayUnit,
+                                    ),
                                     unit,
-                                    area: formatQuoteArea(basis.area),
+                                    area: areaInFirmUnit(
+                                      basis.area,
+                                      view.job.catalog.areaDisplayUnit,
+                                    ),
                                   },
                                 )}
                               </p>
                               <p>
                                 {text(copy.range, {
-                                  low: formatQuoteRate(basis.lowRate!, view.job.currency),
-                                  high: formatQuoteRate(basis.highRate!, view.job.currency),
+                                  low: formatQuoteRate(
+                                    basis.lowRate!,
+                                    view.job.currency,
+                                    view.job.catalog.areaDisplayUnit,
+                                  ),
+                                  high: formatQuoteRate(
+                                    basis.highRate!,
+                                    view.job.currency,
+                                    view.job.catalog.areaDisplayUnit,
+                                  ),
                                   unit,
                                 })}
                               </p>

@@ -1,3 +1,6 @@
+import { areaUnitLabel, pricePerAreaInFirmUnit } from "@/modules/firm-lists/domain/area-unit";
+import { decimalToString, rescale } from "@/modules/finance/fixed-decimal";
+import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
 import { namedProjects, type AssistantProjectIdentity } from "../domain/subjects";
 import { closedLessonText } from "@/modules/home-desk/presentation";
 import { findingsCopy } from "@/modules/localization/economics-findings";
@@ -12,7 +15,7 @@ import type { GetQuotedHistory } from "@/modules/quote-draft/application/get-quo
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import type { AssistantRepositoryPort } from "@/repositories/ports/assistant-repository";
 import { inStageGroup, parseStageGroup, stageGroups } from "@/modules/projects/domain/stage-groups";
-import { COMMERCIAL_CATEGORIES, PROJECT_STAGES } from "@/modules/projects/domain/job-input";
+import { PROJECT_STAGES } from "@/modules/projects/domain/job-input";
 import { categoryLabel, projectStageLabel } from "@/modules/localization/jobs";
 import { claimFindingText } from "@/modules/economics/presentation/claim-findings";
 import { formatQuoteRate, formatQuoteArea } from "@/modules/quote-draft/presentation";
@@ -32,72 +35,80 @@ const jobParameters = {
   required: ["projectKey"],
   additionalProperties: false,
 };
-export const assistantTools: readonly ToolDefinition[] = [
-  {
-    name: "list_jobs",
-    description:
-      "Find authorized jobs by stage group or name/reference. Use query to find a named job. Excluded jobs are skipped. Bounded page, use offset when truncated.",
-    parameters: {
-      type: "object",
-      properties: {
-        stageGroup: {
-          type: "string",
-          enum: stageGroups.map((g) => g.key),
-          description: stageGroups.map((g) => `${g.key}: ${g.en} / ${g["zh-TW"]}`).join("; "),
+export function assistantTools(lists: FirmLists): readonly ToolDefinition[] {
+  const pricing = lists.workCategories
+    .filter((entry) => !entry.pricedUnderKey)
+    .map((entry) => entry.key);
+  return [
+    {
+      name: "list_jobs",
+      description:
+        "Find authorized jobs by stage group or name/reference. Use query to find a named job. Excluded jobs are skipped. Bounded page, use offset when truncated.",
+      parameters: {
+        type: "object",
+        properties: {
+          stageGroup: {
+            type: "string",
+            enum: stageGroups.map((g) => g.key),
+            description: stageGroups.map((g) => `${g.key}: ${g.en} / ${g["zh-TW"]}`).join("; "),
+          },
+          query: { type: "string", maxLength: 128 },
+          offset: { type: "integer", minimum: 0, maximum: 1000 },
         },
-        query: { type: "string", maxLength: 128 },
-        offset: { type: "integer", minimum: 0, maximum: 1000 },
-      },
-      additionalProperties: false,
-    },
-  },
-  {
-    name: "get_job",
-    description: "Read a job overview; no financial amounts.",
-    parameters: jobParameters,
-  },
-  {
-    name: "get_quote_status",
-    description:
-      "Read current quote status, latest issued document number, validity, acceptance and server-formatted amounts of the current quote shown on the Quote tab, in any status. Restricted without quote access.",
-    parameters: jobParameters,
-  },
-  {
-    name: "list_awaiting_client",
-    description: "Issued quotes not yet accepted, as on Home. No draft or accepted quotes.",
-    parameters: { type: "object", properties: {}, additionalProperties: false },
-  },
-  {
-    name: "get_saved_comparison",
-    description:
-      "Read only the reader's current saved comparison and exact finding sentences. Never runs a new comparison.",
-    parameters: jobParameters,
-  },
-  {
-    name: "get_past_prices",
-    description:
-      "For one job, return the count, median, low and high of past quoted rates per work pricing category, using the Quote tab's calculation and current saved comparison. Each displayed rate carries its unit. These are quoted prices, never actual costs. Omit categoryId for all pricing categories.",
-    parameters: {
-      ...jobParameters,
-      properties: {
-        projectKey: keySchema,
-        categoryId: {
-          type: "string",
-          enum: COMMERCIAL_CATEGORIES,
-          description: COMMERCIAL_CATEGORIES.map(
-            (id) => `${id}: ${categoryLabel("en", id)} / ${categoryLabel("zh-TW", id)}`,
-          ).join("; "),
-        },
+        additionalProperties: false,
       },
     },
-  },
-  {
-    name: "get_closed_job_lessons",
-    description:
-      "Read the same recent closed-job lessons as Home; reconciled actual cost is distinct from quote price.",
-    parameters: { type: "object", properties: {}, additionalProperties: false },
-  },
-];
+    {
+      name: "get_job",
+      description: "Read a job overview; no financial amounts.",
+      parameters: jobParameters,
+    },
+    {
+      name: "get_quote_status",
+      description:
+        "Read current quote status, latest issued document number, validity, acceptance and server-formatted amounts of the current quote shown on the Quote tab, in any status. Restricted without quote access.",
+      parameters: jobParameters,
+    },
+    {
+      name: "list_awaiting_client",
+      description: "Issued quotes not yet accepted, as on Home. No draft or accepted quotes.",
+      parameters: { type: "object", properties: {}, additionalProperties: false },
+    },
+    {
+      name: "get_saved_comparison",
+      description:
+        "Read only the reader's current saved comparison and exact finding sentences. Never runs a new comparison.",
+      parameters: jobParameters,
+    },
+    {
+      name: "get_past_prices",
+      description:
+        "For one job, return the count, median, low and high of past quoted rates per work pricing category, using the Quote tab's calculation and current saved comparison. Each displayed rate carries its unit. These are quoted prices, never actual costs. Omit categoryId for all pricing categories.",
+      parameters: {
+        ...jobParameters,
+        properties: {
+          projectKey: keySchema,
+          categoryId: {
+            type: "string",
+            enum: pricing,
+            description: pricing
+              .map(
+                (id) =>
+                  `${id}: ${categoryLabel("en", id, lists.workCategories)} / ${categoryLabel("zh-TW", id, lists.workCategories)}`,
+              )
+              .join("; "),
+          },
+        },
+      },
+    },
+    {
+      name: "get_closed_job_lessons",
+      description:
+        "Read the same recent closed-job lessons as Home; reconciled actual cost is distinct from quote price.",
+      parameters: { type: "object", properties: {}, additionalProperties: false },
+    },
+  ];
+}
 export type AssistantReadServices = Readonly<{
   projects: Pick<ListAuthorizedProjects, "execute">;
   workspace: Pick<GetProjectWorkspace, "execute">;
@@ -129,9 +140,10 @@ export class AssistantReadTools {
     return true;
   }
   async execute(c: RuntimeContext, call: ToolCall): Promise<ToolResult> {
-    if (!c.capabilities.has("project:read")) return empty("UNAVAILABLE");
+    if (!c.capabilities.has("project:read") || !c.firmLists) return empty("UNAVAILABLE");
+    const catalog = c.firmLists;
     const copy = assistantFactCopy(c.locale);
-    const definition = assistantTools.find((t) => t.name === call.name),
+    const definition = assistantTools(c.firmLists).find((t) => t.name === call.name),
       args = record(call.arguments);
     if (!definition || !args) return empty("UNAVAILABLE");
     const properties = definition.parameters.properties as Record<string, unknown>;
@@ -264,8 +276,8 @@ export class AssistantReadTools {
             stage: stage ? projectStageLabel(c.locale, stage) : j.stage,
             city: j.location.city,
             area: {
-              value: formatQuoteArea(j.area.value),
-              unit: j.area.unit === "m2" ? "m²" : j.area.unit,
+              value: j.area.displayValue ?? formatQuoteArea(j.area.value),
+              unit: j.area.displayUnit ?? (j.area.unit === "m2" ? "m²" : j.area.unit),
             },
             scopeCategories: j.scopeCategories.map((s) => s.name.display),
           },
@@ -355,9 +367,9 @@ export class AssistantReadTools {
               href(row.project.businessKey),
               {
                 name: row.project.name,
-                category: categoryLabel(c.locale, row.lesson.categoryId),
+                category: categoryLabel(c.locale, row.lesson.categoryId, catalog.workCategories),
                 ...row.lesson,
-                costComparison: closedLessonText(row.lesson, c.locale),
+                costComparison: closedLessonText(row.lesson, c.locale, catalog.workCategories),
                 quotedPrice: formatMoney(row.lesson.quoteBeforeTax, row.lesson.currency),
                 reconciledActualCost: formatMoney(row.lesson.actualCost, row.lesson.currency),
               },
@@ -406,13 +418,13 @@ export class AssistantReadTools {
       });
       const findings =
         saved.economics?.claims.flatMap((claim) => {
-          const text = claimFindingText(claim, c.locale);
+          const text = claimFindingText(claim, c.locale, catalog.workCategories);
           return text && claim.evidenceReferenceIds.length
             ? [
                 {
                   text,
                   category: claim.categoryId
-                    ? categoryLabel(c.locale, claim.categoryId)
+                    ? categoryLabel(c.locale, claim.categoryId, catalog.workCategories)
                     : findingsCopy(c.locale).overall,
                   claimKind: claim.kind,
                   evidenceReferenceIds: claim.evidenceReferenceIds,
@@ -444,7 +456,7 @@ export class AssistantReadTools {
     if (call.name === "get_past_prices" && typeof projectKey === "string") {
       if (
         args.categoryId !== undefined &&
-        !COMMERCIAL_CATEGORIES.some((id) => id === args.categoryId)
+        !catalog.workCategories.some((entry) => entry.key === args.categoryId)
       )
         return empty("UNAVAILABLE");
       const result = await this.services.history.execute(c, projectKey);
@@ -456,36 +468,50 @@ export class AssistantReadTools {
             : {}),
         };
       const keys = [projectKey, ...result.projectKeys];
+      const rateUnit = catalog.areaDisplayUnit;
+      const rateValue = (value: string | null | undefined) =>
+        value == null || rateUnit === "m2"
+          ? value
+          : decimalToString(rescale(pricePerAreaInFirmUnit(value, rateUnit), 6, "HALF_UP"));
       const sources = result.baselines
         .filter((b) => !args.categoryId || args.categoryId === b.categoryId)
         .map((b) =>
           source(
             `${result.comparisonRunId}:${b.categoryId}`,
-            categoryLabel(c.locale, b.categoryId),
+            categoryLabel(c.locale, b.categoryId, catalog.workCategories),
             href(projectKey, "/quote"),
             {
               categoryId: b.categoryId,
-              category: categoryLabel(c.locale, b.categoryId),
+              category: categoryLabel(c.locale, b.categoryId, catalog.workCategories),
               observationType: "QUOTED_PRICE",
               priceType: copy.quotedPrices,
               history: b.history.eligibleObservationCount ? copy.quotedPrices : copy.noHistory,
               count: b.history.eligibleObservationCount,
-              median: b.history.medianNormalizedAmount,
-              low: b.history.minimumNormalizedAmount,
-              high: b.history.maximumNormalizedAmount,
-              unit: `${result.job.currency}/${result.job.areaUnit}`,
+              median: rateValue(b.history.medianNormalizedAmount),
+              low: rateValue(b.history.minimumNormalizedAmount),
+              high: rateValue(b.history.maximumNormalizedAmount),
+              unit: `${result.job.currency}/${rateUnit === "m2" ? "m2" : "坪"}`,
               evidenceReferenceIds: b.history.evidenceReferenceIds,
               ...(b.history.medianNormalizedAmount
                 ? {
                     displayMedian:
-                      formatQuoteRate(b.history.medianNormalizedAmount, result.job.currency) +
-                      `/${result.job.areaUnit === "m2" ? "m²" : result.job.areaUnit}`,
+                      formatQuoteRate(
+                        b.history.medianNormalizedAmount,
+                        result.job.currency,
+                        rateUnit,
+                      ) + `/${areaUnitLabel(rateUnit)}`,
                     displayLow:
-                      formatQuoteRate(b.history.minimumNormalizedAmount!, result.job.currency) +
-                      `/${result.job.areaUnit === "m2" ? "m²" : result.job.areaUnit}`,
+                      formatQuoteRate(
+                        b.history.minimumNormalizedAmount!,
+                        result.job.currency,
+                        rateUnit,
+                      ) + `/${areaUnitLabel(rateUnit)}`,
                     displayHigh:
-                      formatQuoteRate(b.history.maximumNormalizedAmount!, result.job.currency) +
-                      `/${result.job.areaUnit === "m2" ? "m²" : result.job.areaUnit}`,
+                      formatQuoteRate(
+                        b.history.maximumNormalizedAmount!,
+                        result.job.currency,
+                        rateUnit,
+                      ) + `/${areaUnitLabel(rateUnit)}`,
                   }
                 : {}),
             },

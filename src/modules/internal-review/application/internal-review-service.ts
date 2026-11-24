@@ -296,10 +296,12 @@ export class InternalReviewService {
         const assignee =
           members.find((member) => member.context.role === "FINANCIAL_REVIEWER") ??
           members.find((member) => member.context.membershipId === context.membershipId);
+        if (!context.firmLists) return this.failure(seed, "PROPOSAL_UNAVAILABLE");
         const wording = proposalWording(
           material.runs.stage4,
           material.runs.stage5,
           material.claims,
+          context.firmLists.workCategories,
         );
         const content: ProposalContent = {
           version: PROPOSAL_SNAPSHOT_VERSION,

@@ -1,3 +1,6 @@
+import { areaInFirmUnit, areaUnitLabel } from "@/modules/firm-lists/domain/area-unit";
+import { categoryLabel } from "@/modules/localization/jobs";
+import { projectSubtypeLabel } from "@/modules/localization/project-context";
 import {
   AuthorizationService,
   type AuthorizationDecision,
@@ -275,6 +278,13 @@ export class GetProjectWorkspace {
   ) {}
 
   async execute(context: RuntimeContext, projectKey: string): Promise<ProjectWorkspaceOutcome> {
+    const lists = context.firmLists;
+    if (!lists)
+      return {
+        kind: "UNAVAILABLE",
+        errorCode: "PROJECT_UNAVAILABLE",
+        requestId: context.requestId,
+      };
     const authorizedProject = await this.projects.getAuthorizedByBusinessKey(context, projectKey);
     if (!authorizedProject) {
       return Object.freeze({
@@ -419,13 +429,20 @@ export class GetProjectWorkspace {
         stage: base.stage,
         comparisonClass: base.comparisonClass,
         subtype: base.subtype,
+        subtypeName:
+          projectSubtypeLabel(context.locale, base.subtype, lists.jobTypes) ?? base.subtype,
         location: Object.freeze({
           country: "TW",
           city: base.locationCity,
           district: base.locationDistrict ?? undefined,
           display: [base.locationCity, base.locationDistrict].filter(Boolean).join(", "),
         }),
-        area: Object.freeze({ value: base.areaQuantity, unit: base.areaUnit }),
+        area: Object.freeze({
+          value: base.areaQuantity,
+          unit: base.areaUnit,
+          displayValue: areaInFirmUnit(base.areaQuantity, lists.areaDisplayUnit),
+          displayUnit: areaUnitLabel(lists.areaDisplayUnit),
+        }),
         programmeWeeks: base.programmeWeeks ?? undefined,
         targetHandover: isoDate(base.targetCompletionAt),
         manager: base.manager
@@ -435,7 +452,11 @@ export class GetProjectWorkspace {
           base.scopes.map((scope) =>
             Object.freeze({
               categoryId: scope.categoryId,
-              name: localized(context, scope.labelEn, scope.labelZhTw),
+              name: localized(
+                context,
+                categoryLabel("en", scope.categoryId, lists.workCategories),
+                categoryLabel("zh-TW", scope.categoryId, lists.workCategories),
+              ),
               authorityState: scope.authorityState,
             }),
           ),

@@ -1,3 +1,5 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
+import { withFirmLists } from "../firm-lists/with-firm-lists";
 import { randomUUID } from "node:crypto";
 import { readFileSync, readdirSync } from "node:fs";
 import { Client } from "pg";
@@ -69,7 +71,7 @@ async function actor(membership: string) {
     }),
   );
   if (!result) throw new Error("QA_CONTEXT_REQUIRED");
-  return result;
+  return withFirmLists(result);
 }
 async function snapshot(table: string) {
   return (await sql.query(`SELECT to_jsonb(t) AS row FROM "${table}" t ORDER BY "id"`)).rows.map(
@@ -108,6 +110,7 @@ async function verifyLineage(result: Stage5EconomicsResult, selected: readonly s
   const reopened = await services.getEconomics.execute(fresh(), result.run.id);
   expect(reopened).toEqual(result);
   const columns = buildComparisonExperience({
+    catalog: seededFirmLists,
     stage4: structural,
     economics: result,
     locale: "zh-TW",
@@ -233,6 +236,12 @@ pgDescribe("Stage9 real PostgreSQL selection lineage and populated upgrade", () 
         return row;
       }),
     ).toEqual(beforeJobs);
+    for (const independent of [
+      "20261124010000_client_details_and_firm_preferences",
+      "20261124011000_firm_job_types_and_units",
+      "20261124012000_firm_work_categories",
+    ])
+      await sql.query(readFileSync(`prisma/migrations/${independent}/migration.sql`, "utf8"));
     context = await actor("membership_horizon_mei");
     outsider = await actor("membership_northern_owner");
     const comparison = await createComparisonServices().runComparison.execute(fresh(), PROJECT);

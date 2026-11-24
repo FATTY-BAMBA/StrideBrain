@@ -1,3 +1,4 @@
+import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
 import type { ObservationType } from "@/modules/projects/domain/project-workspace";
 import type { MatchBand, SimilarityFactorKey } from "@/modules/comparisons/domain/contracts";
 import type { Locale } from "@/modules/localization/config";
@@ -79,6 +80,7 @@ export type ComparisonSynthesisItemView = Readonly<{
 }>;
 
 export type ComparisonExperienceView = Readonly<{
+  catalog: FirmLists;
   version: typeof COMPARISON_EXPERIENCE_VERSION;
   locale: Locale;
   route: Readonly<{

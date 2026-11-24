@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { describe, expect, it } from "vitest";
 
 import type { Stage4ComparisonResult } from "@/modules/comparisons/domain/contracts";
@@ -113,7 +114,12 @@ function stage4(district: string | null = "Xinyi District"): Stage4ComparisonRes
 }
 function wording() {
   const result = stage5();
-  return proposalWording(stage4(), result, mandatoryClaims(result)!);
+  return proposalWording(
+    stage4(),
+    result,
+    mandatoryClaims(result)!,
+    seededFirmLists.workCategories,
+  );
 }
 function content(): ProposalContent {
   return { ...wording(), timezone: "Asia/Taipei" } as ProposalContent;
@@ -277,11 +283,17 @@ describe("Stage 8 finite bilingual wording and immutable warnings", () => {
     expect(facts).toContain("comparison-independent");
     expect(facts).toContain("economics-independent");
     expect(
-      proposalWording(stage4("Banqiao District"), stage5(), claims()).titleOptions[0]!.text.en,
+      proposalWording(
+        stage4("Banqiao District"),
+        stage5(),
+        claims(),
+        seededFirmLists.workCategories,
+      ).titleOptions[0]!.text.en,
     ).toContain("Harbour Renovation");
-    expect(proposalWording(stage4(null), stage5(), claims()).titleOptions[0]!.text.en).toContain(
-      "Harbour Renovation",
-    );
+    expect(
+      proposalWording(stage4(null), stage5(), claims(), seededFirmLists.workCategories)
+        .titleOptions[0]!.text.en,
+    ).toContain("Harbour Renovation");
   });
 
   it.each(["en", "zhTw"] as const)(
@@ -342,7 +354,9 @@ describe("Stage 8 finite bilingual wording and immutable warnings", () => {
     (variancePercent) => {
       const selected = claims();
       selected[0] = { ...selected[0]!, value: { variancePercent } };
-      expect(() => proposalWording(stage4(), stage5(), selected)).toThrow("CLAIM_INVALID");
+      expect(() =>
+        proposalWording(stage4(), stage5(), selected, seededFirmLists.workCategories),
+      ).toThrow("CLAIM_INVALID");
     },
   );
 
@@ -366,6 +380,7 @@ describe("Stage 8 finite bilingual wording and immutable warnings", () => {
       },
       stage5(),
       claims(),
+      seededFirmLists.workCategories,
     );
     for (const option of bounded.titleOptions) {
       expect([...option.text.en].length).toBeLessThanOrEqual(200);
@@ -495,7 +510,12 @@ it("selects variable categories by explicit identity and returns an empty review
     evidenceBundles: original.evidenceBundles.map((b, i) => ({ ...b, claimKey: `opaque-${i}` })),
   };
   expect(mandatoryClaims(result)).toEqual(result.claims);
-  const text = proposalWording(stage4(), result, mandatoryClaims(result)!)
+  const text = proposalWording(
+    stage4(),
+    result,
+    mandatoryClaims(result)!,
+    seededFirmLists.workCategories,
+  )
     .mandatoryStatements.map((s) => s.text.en)
     .join(" ");
   expect(text).toContain("Custom millwork");

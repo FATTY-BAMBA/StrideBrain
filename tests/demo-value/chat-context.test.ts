@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 // @vitest-environment jsdom
 vi.mock("@/lib/server/job-draft-services", () => ({
   jobDraftAvailable: vi.fn().mockResolvedValue(false),
@@ -74,6 +75,7 @@ const projects = [
 ];
 
 const desk: HomeDesk = {
+  catalog: seededFirmLists,
   kind: "AVAILABLE",
   projects,
   canCreate: false,

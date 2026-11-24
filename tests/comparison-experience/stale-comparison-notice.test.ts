@@ -1,3 +1,4 @@
+import { seededFirmLists } from "@/fixtures/firm-lists";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
@@ -32,6 +33,7 @@ describe("Saved comparison stale warning", () => {
     (locale) => {
       const html = renderToStaticMarkup(
         createElement(StaleComparisonNotice, {
+          catalog: seededFirmLists,
           freshness: stale,
           locale,
           projectKey: "PRJ-XINYI-026",
@@ -53,6 +55,7 @@ describe("Saved comparison stale warning", () => {
     expect(
       renderToStaticMarkup(
         createElement(StaleComparisonNotice, {
+          catalog: seededFirmLists,
           freshness: { ...stale, state: "CURRENT", changedSources: [] },
           locale: "en",
           projectKey: "PRJ-XINYI-026",
@@ -63,6 +66,7 @@ describe("Saved comparison stale warning", () => {
   it("describes a failed freshness check without inventing a changed source", () => {
     const html = renderToStaticMarkup(
       createElement(StaleComparisonNotice, {
+        catalog: seededFirmLists,
         freshness: { ...stale, state: "UNVERIFIED", changedSources: [] },
         locale: "en",
         projectKey: "PRJ-XINYI-026",

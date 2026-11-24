@@ -1,7 +1,13 @@
+import type { FirmWorkCategory } from "@/modules/firm-lists/domain/contracts";
 import { orderQuoteLines } from "@/modules/quote-draft/domain/quote-line-order";
-import { IDEMPOTENCY_KEY, COMMERCIAL_CATEGORIES } from "@/modules/projects/domain/job-input";
+import { IDEMPOTENCY_KEY } from "@/modules/projects/domain/job-input";
 import { decimalToString, money } from "@/modules/finance/fixed-decimal";
-export type DraftLineInput = Readonly<{ categoryId: string; description: string; amount: string }>;
+export type DraftLineInput = Readonly<{
+  categoryId: string;
+  description: string;
+  amount: string;
+  unit?: string;
+}>;
 export type SaveDraftInput = Readonly<{
   projectKey: string;
   idempotencyKey: string;
@@ -11,7 +17,10 @@ export type SaveDraftInput = Readonly<{
 }>;
 // A category line is quantity 1 lot. Its amount must also fit unitPrice Decimal(20,6).
 export const DRAFT_AMOUNT = /^(?:0|[1-9]\d{0,13})(?:\.\d{1,2})?$/;
-export function validateSaveDraft(value: unknown): SaveDraftInput | null {
+export function validateSaveDraft(
+  value: unknown,
+  categories: readonly FirmWorkCategory[],
+): SaveDraftInput | null {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
   const input = value as Record<string, unknown>;
   if (
@@ -35,7 +44,7 @@ export function validateSaveDraft(value: unknown): SaveDraftInput | null {
     ) ||
     !Array.isArray(input.lines) ||
     !input.lines.length ||
-    input.lines.length > COMMERCIAL_CATEGORIES.length
+    input.lines.length > Math.min(500, categories.length)
   )
     return null;
   const lines: DraftLineInput[] = [];
@@ -43,10 +52,14 @@ export function validateSaveDraft(value: unknown): SaveDraftInput | null {
     if (!row || typeof row !== "object" || Array.isArray(row)) return null;
     const line = row as Record<string, unknown>;
     if (
-      Object.keys(line).some((key) => !["categoryId", "description", "amount"].includes(key)) ||
+      Object.keys(line).some(
+        (key) => !["categoryId", "description", "amount", "unit"].includes(key),
+      ) ||
       typeof line.categoryId !== "string" ||
-      !COMMERCIAL_CATEGORIES.some((id) => id === line.categoryId) ||
+      !categories.some((entry) => entry.key === line.categoryId && entry.pricedUnderKey === null) ||
       lines.some((existing) => existing.categoryId === line.categoryId) ||
+      (line.unit !== undefined &&
+        (typeof line.unit !== "string" || !line.unit.length || line.unit.length > 128)) ||
       typeof line.description !== "string" ||
       !line.description.trim() ||
       line.description.trim().length > 500 ||
@@ -56,6 +69,7 @@ export function validateSaveDraft(value: unknown): SaveDraftInput | null {
       return null;
     lines.push({
       categoryId: line.categoryId,
+      ...(line.unit !== undefined ? { unit: line.unit as string } : {}),
       description: line.description.trim(),
       amount: decimalToString(money(line.amount)),
     });
@@ -65,15 +79,22 @@ export function validateSaveDraft(value: unknown): SaveDraftInput | null {
     idempotencyKey: input.idempotencyKey,
     baseVersionId: input.baseVersionId,
     preparationToken: input.preparationToken,
-    lines: orderQuoteLines(lines),
+    lines: orderQuoteLines(lines, categories),
   };
 }
 
 /** The category editor cannot merge or split pre-existing detailed lines. */
-export function isCategoryDraft(lines: readonly { categoryId: string }[]): boolean {
+export function isCategoryDraft(
+  lines: readonly { categoryId: string }[],
+  categories: readonly FirmWorkCategory[],
+): boolean {
   return (
     lines.length > 0 &&
     new Set(lines.map((line) => line.categoryId)).size === lines.length &&
-    lines.every((line) => COMMERCIAL_CATEGORIES.some((category) => category === line.categoryId))
+    lines.every((line) =>
+      categories.some(
+        (category) => category.key === line.categoryId && category.pricedUnderKey === null,
+      ),
+    )
   );
 }

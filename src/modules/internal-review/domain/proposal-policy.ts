@@ -1,3 +1,4 @@
+import type { FirmWorkCategory } from "@/modules/firm-lists/domain/contracts";
 import { isReviewClaim } from "@/modules/economics/domain/claim-selection";
 import { categoryLabel } from "@/modules/localization/jobs";
 import { sha256 } from "@/modules/comparisons/application/fingerprints";
@@ -169,6 +170,7 @@ export function proposalWording(
   stage4: Stage4ComparisonResult,
   stage5: Stage5EconomicsResult,
   claims: readonly StructuredEconomicsClaimDTO[],
+  workCategories: readonly FirmWorkCategory[],
 ): Readonly<{
   titleOptions: readonly LocalizedWordingOption[];
   rationaleOptions: readonly LocalizedWordingOption[];
@@ -182,10 +184,14 @@ export function proposalWording(
   ];
   const categories = {
     en: compact(
-      categoryIds.map((id) => categoryLabel("en", id)).join(", ") || "programme evidence",
+      categoryIds.map((id) => categoryLabel("en", id, workCategories)).join(", ") ||
+        "programme evidence",
       90,
     ),
-    zhTw: compact(categoryIds.map((id) => categoryLabel("zh-TW", id)).join("、") || "工期佐證", 90),
+    zhTw: compact(
+      categoryIds.map((id) => categoryLabel("zh-TW", id, workCategories)).join("、") || "工期佐證",
+      90,
+    ),
   };
   const project = {
     en: compact(stage4.activeContext.nameEn, 80),
@@ -238,8 +244,8 @@ export function proposalWording(
     },
   ];
   const mandatoryStatements: ReviewStatement[] = claims.map((claim) => {
-    const en = claim.categoryId ? categoryLabel("en", claim.categoryId) : "";
-    const zh = claim.categoryId ? categoryLabel("zh-TW", claim.categoryId) : "";
+    const en = claim.categoryId ? categoryLabel("en", claim.categoryId, workCategories) : "";
+    const zh = claim.categoryId ? categoryLabel("zh-TW", claim.categoryId, workCategories) : "";
     let text: LocalizedText;
     if (claim.kind === "CATEGORY_ACTUAL_INSUFFICIENT") {
       const eligible = numeric(claim.value.eligibleObservationCount);
