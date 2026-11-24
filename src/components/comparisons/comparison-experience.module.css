@@ -8,13 +8,13 @@
   display: grid;
   gap: 20px;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-lg);
   background:
     radial-gradient(circle at 88% 12%, rgb(119 209 177 / 22%), transparent 30%),
     linear-gradient(145deg, #fff, #f0f6f3 70%);
   padding: clamp(26px, 5vw, 50px);
-  box-shadow: var(--shadow);
+  box-shadow: var(--legacy-shadow);
 }
 
 .hero::after {
@@ -66,7 +66,7 @@
   display: grid;
   max-width: 760px;
   gap: 8px;
-  border-left: 3px solid var(--mint);
+  border-left: 3px solid var(--legacy-mint);
   padding: 2px 0 2px 18px;
 }
 
@@ -104,7 +104,7 @@
 
 .secondaryButton {
   border: 1px solid var(--line-strong);
-  background: var(--surface);
+  background: var(--legacy-surface);
   color: var(--ink);
 }
 
@@ -132,14 +132,14 @@
   min-height: 92px;
   align-content: space-between;
   gap: 14px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-md);
   background: rgb(255 255 255 / 76%);
   padding: 15px;
 }
 
 .summaryItem dt {
-  color: var(--quiet);
+  color: var(--legacy-quiet);
   font-size: 0.7rem;
   font-weight: 740;
   letter-spacing: 0.08em;
@@ -184,9 +184,9 @@
   flex: 0 0 auto;
   align-items: center;
   gap: 10px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--legacy-line);
   border-radius: 999px;
-  background: var(--surface);
+  background: var(--legacy-surface);
   padding: 7px 12px;
   color: var(--muted);
   font-size: 0.82rem;
@@ -208,9 +208,9 @@
   display: grid;
   min-width: 0;
   gap: 17px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--surface);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-md);
+  background: var(--legacy-surface);
   padding: 19px;
   box-shadow: 0 8px 26px rgb(18 45 37 / 4%);
   transition:
@@ -239,7 +239,7 @@
   place-items: center;
   border: 1px solid var(--line-strong);
   border-radius: 50%;
-  background: var(--surface);
+  background: var(--legacy-surface);
 }
 
 .cardSelection input {
@@ -261,7 +261,7 @@
   height: 28px;
   place-items: center;
   border-radius: 9px;
-  background: var(--sidebar);
+  background: var(--legacy-sidebar);
   color: #fff;
   font-size: 0.75rem;
   font-weight: 800;
@@ -295,11 +295,11 @@
 .bandPartial,
 .warningBadge {
   background: var(--warning-soft);
-  color: var(--warning);
+  color: var(--legacy-warning);
 }
 
 .bandBroader {
-  background: var(--surface-subtle);
+  background: var(--legacy-surface-subtle);
   color: var(--muted);
 }
 
@@ -331,13 +331,13 @@
 .scoreMetric {
   display: grid;
   gap: 4px;
-  border-radius: var(--radius-sm);
-  background: var(--surface-subtle);
+  border-radius: var(--legacy-radius-sm);
+  background: var(--legacy-surface-subtle);
   padding: 10px 12px;
 }
 
 .scoreMetric span {
-  color: var(--quiet);
+  color: var(--legacy-quiet);
   font-size: 0.65rem;
   font-weight: 740;
   letter-spacing: 0.06em;
@@ -385,11 +385,11 @@
 }
 
 .factorItemUnknown strong {
-  color: var(--warning);
+  color: var(--legacy-warning);
 }
 
 .factorDetails {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--legacy-line);
   padding-top: 12px;
 }
 
@@ -410,9 +410,9 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--surface);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-md);
+  background: var(--legacy-surface);
   padding: 14px 16px;
 }
 
@@ -429,9 +429,9 @@
 .tablePanel {
   display: grid;
   gap: 14px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: var(--surface);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-lg);
+  background: var(--legacy-surface);
   padding: clamp(16px, 3vw, 28px);
   box-shadow: 0 10px 34px rgb(18 45 37 / 5%);
 }
@@ -439,8 +439,8 @@
 .tableWrap {
   max-width: 100%;
   overflow-x: auto;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-md);
   overscroll-behavior-inline: contain;
 }
 
@@ -455,8 +455,8 @@
 .comparisonTable th,
 .comparisonTable td {
   min-width: 180px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--legacy-line);
+  border-bottom: 1px solid var(--legacy-line);
   padding: 13px 14px;
   text-align: left;
   vertical-align: top;
@@ -494,7 +494,7 @@
 
 .sectionRow th {
   border-right: 0;
-  background: var(--sidebar);
+  background: var(--legacy-sidebar);
   color: #fff;
   font-size: 0.68rem;
   letter-spacing: 0.09em;
@@ -521,7 +521,7 @@
 }
 
 .cell[data-tone="CAUTION"] .cellPrimary {
-  color: var(--warning);
+  color: var(--legacy-warning);
 }
 
 .cell[data-tone="CRITICAL"] .cellPrimary {
@@ -534,14 +534,14 @@
 
 .statePill {
   margin-top: 2px;
-  background: var(--surface-subtle);
+  background: var(--legacy-surface-subtle);
   color: var(--muted);
 }
 
 .statePill[data-state="INSUFFICIENT"],
 .statePill[data-state="STALE"] {
   background: var(--warning-soft);
-  color: var(--warning);
+  color: var(--legacy-warning);
 }
 
 .statePill[data-state="CONFLICTED"] {
@@ -561,9 +561,9 @@
 .mobileColumn {
   display: grid;
   gap: 12px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--surface);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-md);
+  background: var(--legacy-surface);
   padding: 16px;
 }
 
@@ -574,12 +574,12 @@
 .mobileSection {
   display: grid;
   gap: 8px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--legacy-line);
   padding-top: 12px;
 }
 
 .mobileSection h4 {
-  color: var(--quiet);
+  color: var(--legacy-quiet);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -607,9 +607,9 @@
   align-content: start;
   gap: 10px;
   min-height: 170px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--surface);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-md);
+  background: var(--legacy-surface);
   padding: 18px;
 }
 
@@ -649,9 +649,9 @@
   grid-template-columns: 10px minmax(0, 1fr);
   gap: 10px;
   align-items: start;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-sm);
+  background: var(--legacy-surface);
   padding: 11px 13px;
   color: var(--muted);
   font-size: 0.78rem;
@@ -662,12 +662,12 @@
   height: 8px;
   margin-top: 5px;
   border-radius: 50%;
-  background: var(--quiet);
+  background: var(--legacy-quiet);
   content: "";
 }
 
 .notice[data-tone="CAUTION"]::before {
-  background: var(--warning);
+  background: var(--legacy-warning);
 }
 
 .notice[data-tone="CRITICAL"]::before {
@@ -680,8 +680,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  border-radius: var(--radius-md);
-  background: var(--sidebar);
+  border-radius: var(--legacy-radius-md);
+  background: var(--legacy-sidebar);
   padding: 18px;
   color: #eff8f4;
 }
@@ -694,11 +694,11 @@
 .statePanel {
   display: grid;
   gap: 15px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: var(--surface);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-lg);
+  background: var(--legacy-surface);
   padding: clamp(24px, 5vw, 48px);
-  box-shadow: var(--shadow);
+  box-shadow: var(--legacy-shadow);
 }
 
 .statePanel h1,
@@ -725,7 +725,7 @@
   border-radius: 999px;
   background: var(--warning-soft);
   padding: 6px 10px;
-  color: var(--warning);
+  color: var(--legacy-warning);
   font-size: 0.72rem;
   font-weight: 720;
 }
@@ -928,8 +928,8 @@
   align-items: flex-start;
   gap: 12px;
   background: white;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-sm);
   padding: 16px;
 }
 .closestProjects .rank {
@@ -947,8 +947,8 @@
   color: var(--muted);
 }
 .runDetails {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-sm);
   padding: 14px 18px;
 }
 .runDetails summary {

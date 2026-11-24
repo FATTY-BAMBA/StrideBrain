@@ -7,12 +7,12 @@
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.6fr);
   gap: 22px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-lg);
   background:
-    radial-gradient(circle at 92% 8%, rgb(119 209 177 / 24%), transparent 32%), var(--surface);
+    radial-gradient(circle at 92% 8%, rgb(119 209 177 / 24%), transparent 32%), var(--legacy-surface);
   padding: clamp(24px, 4vw, 42px);
-  box-shadow: var(--shadow);
+  box-shadow: var(--legacy-shadow);
 }
 
 .heroCopy {
@@ -49,7 +49,7 @@
 
 .meta span,
 .status {
-  border: 1px solid var(--line);
+  border: 1px solid var(--legacy-line);
   border-radius: 999px;
   background: rgb(255 255 255 / 76%);
   padding: 6px 10px;
@@ -69,8 +69,8 @@
   display: grid;
   align-content: start;
   gap: 14px;
-  border-radius: var(--radius-md);
-  background: var(--sidebar);
+  border-radius: var(--legacy-radius-md);
+  background: var(--legacy-sidebar);
   padding: 20px;
   color: #f3fbf7;
 }
@@ -91,7 +91,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: var(--mint);
+  background: var(--legacy-mint);
   padding: 10px 16px;
   color: #0d3d31;
   font-weight: 800;
@@ -108,9 +108,9 @@
   align-content: start;
   gap: 13px;
   min-width: 0;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--surface);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-md);
+  background: var(--legacy-surface);
   padding: 18px;
 }
 
@@ -129,13 +129,13 @@
 .metric {
   display: grid;
   gap: 5px;
-  border-radius: var(--radius-sm);
-  background: var(--surface-subtle);
+  border-radius: var(--legacy-radius-sm);
+  background: var(--legacy-surface-subtle);
   padding: 13px;
 }
 
 .metric span {
-  color: var(--quiet);
+  color: var(--legacy-quiet);
   font-size: 0.66rem;
   font-weight: 750;
   letter-spacing: 0.06em;
@@ -150,7 +150,7 @@
 .unavailable,
 .conflicted,
 .stale {
-  border-radius: var(--radius-sm);
+  border-radius: var(--legacy-radius-sm);
   padding: 11px 12px;
   font-size: 0.78rem;
   font-weight: 700;
@@ -169,7 +169,7 @@
 
 .stale {
   background: var(--warning-soft);
-  color: var(--warning);
+  color: var(--legacy-warning);
 }
 
 .list {
@@ -183,7 +183,7 @@
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--legacy-line);
   padding-bottom: 8px;
   color: var(--muted);
   font-size: 0.78rem;
@@ -207,9 +207,9 @@
 .questionLink {
   display: grid;
   gap: 5px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-sm);
+  background: var(--legacy-surface);
   padding: 12px;
   transition:
     border-color 150ms ease,
@@ -231,7 +231,7 @@
 }
 
 .notice {
-  border-left: 3px solid var(--warning);
+  border-left: 3px solid var(--legacy-warning);
   padding-left: 12px;
   color: var(--muted);
   font-size: 0.78rem;
@@ -308,7 +308,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .attention {
-  border-left: 3px solid var(--warning);
+  border-left: 3px solid var(--legacy-warning);
   padding: 2px 16px;
 }
 .attention h2 {

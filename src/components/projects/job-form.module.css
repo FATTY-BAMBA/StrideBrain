@@ -10,11 +10,11 @@
 .draftBox textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-sm);
   font: inherit;
   color: var(--ink);
-  background: var(--surface);
+  background: var(--legacy-surface);
   resize: vertical;
 }
 .draftBox button {
@@ -51,10 +51,10 @@
   width: 100%;
   min-height: 44px;
   padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-sm);
   color: var(--ink);
-  background: var(--surface);
+  background: var(--legacy-surface);
   font: inherit;
 }
 .field input[aria-invalid="true"],
@@ -62,8 +62,8 @@
   border-color: #a32525;
 }
 .categories {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-sm);
   padding: 14px;
   min-width: 0;
 }
@@ -113,7 +113,7 @@
   min-height: 44px;
   padding: 11px 18px;
   border: 1px solid var(--accent-strong);
-  border-radius: var(--radius-sm);
+  border-radius: var(--legacy-radius-sm);
   background: var(--accent-strong);
   color: white;
   font: inherit;

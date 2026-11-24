@@ -39,18 +39,18 @@
   color: white;
 }
 .secondary {
-  border: 1px solid var(--line);
-  background: var(--surface);
+  border: 1px solid var(--legacy-line);
+  background: var(--legacy-surface);
   font-size: 0.85rem;
 }
 .secondary:hover {
-  background: var(--surface-subtle);
+  background: var(--legacy-surface-subtle);
 }
 .decisions {
   padding: 0;
   margin: 0;
   list-style: none;
-  border-radius: var(--radius-md);
+  border-radius: var(--legacy-radius-md);
   overflow: hidden;
 }
 .decisions:empty {
@@ -62,8 +62,8 @@
   justify-content: space-between;
   gap: 24px;
   padding: 20px 24px;
-  border: 1px solid var(--line);
-  background: var(--surface);
+  border: 1px solid var(--legacy-line);
+  background: var(--legacy-surface);
 }
 .decisions li + li {
   border-top: 0;
@@ -87,8 +87,8 @@
   display: grid;
   gap: 8px;
   padding: 18px 20px;
-  background: var(--surface);
-  border: 1px solid var(--line);
+  background: var(--legacy-surface);
+  border: 1px solid var(--legacy-line);
   border-radius: 12px;
 }
 .stages a:hover {
@@ -124,9 +124,9 @@
 }
 .lessons article {
   padding: 22px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--surface);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-md);
+  background: var(--legacy-surface);
 }
 .lessons h3 {
   margin: 0 0 20px;
@@ -148,7 +148,7 @@
 .lessons p {
   padding-top: 16px;
   margin-top: 16px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--legacy-line);
   font-size: 0.85rem;
 }
 .muted {

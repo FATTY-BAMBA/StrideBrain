@@ -1,0 +1,7 @@
+{
+  "issue": 69,
+  "branch": "build/sb-069-design-foundation",
+  "baseCommit": "b972483a206a49ad7929aa4b7cdf24c3bf0de3d2",
+  "status": "DELIVERY_A",
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR"
+}
