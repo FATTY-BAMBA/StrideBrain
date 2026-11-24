@@ -2,6 +2,10 @@
   "issue": 71,
   "branch": "build/sb-071-database-test-isolation",
   "baseCommit": "cefe16033c3a248d6894b6ce67456e2a7aa251ce",
-  "status": "INVESTIGATION_RECORDED",
-  "acceptance": "EVIDENCE_REVIEW_PENDING"
+  "status": "LOCAL_CHECK_PASSED_STABILITY_PENDING",
+  "acceptance": "EVIDENCE_REVIEW_PENDING",
+  "localTests": 1589,
+  "localFiles": 156,
+  "ciBeforeTestSeconds": 225.23,
+  "ciMaximumTestSeconds": 337.845
 }

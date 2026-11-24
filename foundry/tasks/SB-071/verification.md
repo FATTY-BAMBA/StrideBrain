@@ -26,10 +26,14 @@ The setup accepts only literal localhost/loopback hosts, plus `postgres` when CI
 
 [Isolation controls](evidence/isolation-controls.log): 14 tests pass. Two files concurrently update the same seeded Project row and each reads its own committed text. Turning off worker separation makes exactly one same-row assertion fail. Two files on one worker deliberately leave their changes behind; template reset makes both pass, and turning reset off makes the second seeded-state assertion fail. The negative controls are confined to a dedicated probe config; normal tests have no isolation-off flag. A first probe attempt inherited the parent worker-count override; removing that inherited override made the one-worker reset proof exercise the intended topology.
 
-[Integration smoke](evidence/implementation-smoke.log): 27 tests across hero flow, nested fake evaluation, draft, Home and a historical migration pass. Template setup was 500 ms locally. Assertions, typecheck and lint are intact. The full suite, repeated runs and CI are next.
+[Integration smoke](evidence/implementation-smoke.log): 27 tests across hero flow, nested fake evaluation, draft, Home and a historical migration pass. Template setup was 500 ms locally. Assertions, typecheck and lint are intact. The full check now passes: **1,589 tests in 156 files**, format, CSS gate, lint (only the pre-existing prisma.config.ts warning), types and production build. [Full output](evidence/check.log). Local Vitest duration was 102.24 seconds. [Assertion audit](evidence/assertion-preservation.json) verifies every assertion in all 12 modified existing test files is unchanged; the hero-flow file is byte-identical to main. Shared hooks use stack ordering so each file’s cleanup finishes before the final Prisma disconnect.
 
 The implementation follows [Vitest per-file setup](https://vitest.dev/config/setupfiles.html) and [global setup/provide](https://vitest.dev/config/globalsetup.html), with PostgreSQL's [template cloning](https://www.postgresql.org/docs/17/sql-createdatabase.html). No serial database-file workaround or test retry is enabled.
 
+## C — CI and repeated runs
+
+CI now invokes `npm run check`; the Vitest global setup builds the template and checks repeatable seeding instead of mutating the service database in separate workflow steps. AGENTS.md includes the database-state rule. `npm run test:stability` captures 20 independent sequential runs and halts on any failure, skipped test, count reduction or failed hero flow. Ten runs use distinct file-shuffle seeds; within-file scenarios stay ordered.
+
 ## Verification still pending
 
-Full check, 20 consecutive runs and CI duration comparison. No hosted or paid actions. This issue has no test-site click-through; the PR will remain draft for evidence review.
+20 consecutive runs and CI duration comparison. No hosted or paid actions. This issue has no test-site click-through; the PR will remain draft for evidence review.

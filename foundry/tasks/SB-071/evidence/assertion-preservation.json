@@ -1,0 +1,102 @@
+{
+  "base": "cefe16033c3a248d6894b6ce67456e2a7aa251ce",
+  "heroUnchanged": true,
+  "rows": [
+    {
+      "file": "tests/comparison-experience/job-neutral-findings-postgres.test.ts",
+      "before": 30,
+      "after": 30,
+      "beforeHash": "5173411ac9459f3c6413630cda9090be946ade775b7315e7251824e5b462efa9",
+      "afterHash": "5173411ac9459f3c6413630cda9090be946ade775b7315e7251824e5b462efa9",
+      "unchanged": true
+    },
+    {
+      "file": "tests/comparison-experience/selection-lineage-postgres.test.ts",
+      "before": 50,
+      "after": 50,
+      "beforeHash": "92ef6a10c4a4259708946e795aec0b2f4d8cc5aa553b6ff95b5d1afe652fc27a",
+      "afterHash": "92ef6a10c4a4259708946e795aec0b2f4d8cc5aa553b6ff95b5d1afe652fc27a",
+      "unchanged": true
+    },
+    {
+      "file": "tests/economics/job-neutral-migration-postgres.test.ts",
+      "before": 9,
+      "after": 9,
+      "beforeHash": "6a60301ff1365ae1b68086b09c03a2dab3469012a5aad59b13c03512b2eb7874",
+      "afterHash": "6a60301ff1365ae1b68086b09c03a2dab3469012a5aad59b13c03512b2eb7874",
+      "unchanged": true
+    },
+    {
+      "file": "tests/evidence-panel/postgres-localization-review.test.ts",
+      "before": 51,
+      "after": 51,
+      "beforeHash": "7712aa5c93d3c6d697ae64a207b079691497380bbc057b9946ccfde8ddec470f",
+      "afterHash": "7712aa5c93d3c6d697ae64a207b079691497380bbc057b9946ccfde8ddec470f",
+      "unchanged": true
+    },
+    {
+      "file": "tests/firm-lists/client-migration-postgres.test.ts",
+      "before": 6,
+      "after": 6,
+      "beforeHash": "2b9251f11619cb33f396c406038726645797754f14671e510beb40fa798e9642",
+      "afterHash": "2b9251f11619cb33f396c406038726645797754f14671e510beb40fa798e9642",
+      "unchanged": true
+    },
+    {
+      "file": "tests/firm-lists/type-unit-migration-postgres.test.ts",
+      "before": 10,
+      "after": 10,
+      "beforeHash": "8b9486580079306a5f3d30a6f8c913545e84f2cebe1ca5dc8b1f5dd45fa213a0",
+      "afterHash": "8b9486580079306a5f3d30a6f8c913545e84f2cebe1ca5dc8b1f5dd45fa213a0",
+      "unchanged": true
+    },
+    {
+      "file": "tests/home-desk/home-desk-postgres.test.ts",
+      "before": 26,
+      "after": 26,
+      "beforeHash": "aec3b887025abadaab8a1b74a19d51a7d4fba716574e44f6f62f580622d87afe",
+      "afterHash": "aec3b887025abadaab8a1b74a19d51a7d4fba716574e44f6f62f580622d87afe",
+      "unchanged": true
+    },
+    {
+      "file": "tests/internal-review/postgres-invariants.test.ts",
+      "before": 240,
+      "after": 240,
+      "beforeHash": "792befe93c25b61e85a87d30afcbbdd70c6f1811cf57dc631bb1542226053bb6",
+      "afterHash": "792befe93c25b61e85a87d30afcbbdd70c6f1811cf57dc631bb1542226053bb6",
+      "unchanged": true
+    },
+    {
+      "file": "tests/projects/jobs-postgres.test.ts",
+      "before": 67,
+      "after": 67,
+      "beforeHash": "d8287bf590c216348a2e62a28a8808332331dace5343758b709d8601f3a9efa0",
+      "afterHash": "d8287bf590c216348a2e62a28a8808332331dace5343758b709d8601f3a9efa0",
+      "unchanged": true
+    },
+    {
+      "file": "tests/projects/project-list-postgres.test.ts",
+      "before": 9,
+      "after": 9,
+      "beforeHash": "5e5df385a8590a98b4669f73118de0eb1d4ea663a7b6406306fdad187fdba3a4",
+      "afterHash": "5e5df385a8590a98b4669f73118de0eb1d4ea663a7b6406306fdad187fdba3a4",
+      "unchanged": true
+    },
+    {
+      "file": "tests/quote-draft/quote-draft-postgres.test.ts",
+      "before": 76,
+      "after": 76,
+      "beforeHash": "ff66ac6c3c324757285498d7673edb923e0c50a80e5cf248e0c23d6b36985099",
+      "afterHash": "ff66ac6c3c324757285498d7673edb923e0c50a80e5cf248e0c23d6b36985099",
+      "unchanged": true
+    },
+    {
+      "file": "tests/quote-issue/issue-postgres.test.ts",
+      "before": 111,
+      "after": 111,
+      "beforeHash": "9eeecee8ba6da3563547edfa131c3287b37cd97517a58093a3d825679276898c",
+      "afterHash": "9eeecee8ba6da3563547edfa131c3287b37cd97517a58093a3d825679276898c",
+      "unchanged": true
+    }
+  ]
+}
