@@ -1,0 +1,8 @@
+{
+  "issue": 65,
+  "branch": "build/sb-065-quote-document",
+  "baseCommit": "a7ee58c781d50fb089b971d9758cb6ddb017498c",
+  "status": "IMPLEMENTING_B",
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "deliveryA": "11 tests, Prisma validation and typecheck passed"
+}

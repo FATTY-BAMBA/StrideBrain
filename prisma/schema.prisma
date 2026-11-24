@@ -152,6 +152,7 @@ model Organization {
   quoteDocumentDetails QuoteDocumentDetails?
   quoteVersions        QuoteVersion[]
   quoteItems           QuoteItem[]
+  quoteSections        QuoteSection[]
   forecastCostVersions ForecastCostVersion[]
   forecastCostLines    ForecastCostLine[]
   projectCostVersions  ProjectCostVersion[]
@@ -243,6 +244,7 @@ model FirmWorkCategory {
   organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   pricedUnder FirmWorkCategory? @relation("WorkCategoryPricing", fields: [pricedUnderId, organizationId], references: [id, organizationId], onDelete: Restrict)
   pricedScopes FirmWorkCategory[] @relation("WorkCategoryPricing")
+  quoteSections QuoteSection[]
 
   @@unique([id, organizationId])
   @@unique([organizationId, key])
@@ -380,6 +382,7 @@ model Client {
 }
 
 model Project {
+  siteAddress        String?            @db.VarChar(200)
   aiExcluded Boolean @default(false)
   id                 String             @id
   organizationId     String
@@ -652,6 +655,9 @@ model Quote {
 }
 
 model QuoteVersion {
+  documentFormatVersion Int             @default(1)
+  discountAmount    Decimal             @default(0) @db.Decimal(20, 2)
+  discountLabel     String              @default("") @db.VarChar(40)
   id                String           @id
   organizationId    String
   quoteId           String
@@ -682,6 +688,7 @@ model QuoteVersion {
   supersededBy QuoteVersion?   @relation("QuoteVersionSupersession", fields: [supersededById], references: [id], onDelete: SetNull)
   supersedes   QuoteVersion[]  @relation("QuoteVersionSupersession")
   items        QuoteItem[]
+  sections     QuoteSection[]
   activeInRuns ComparisonRun[] @relation("ActiveQuoteVersion")
 
   @@unique([organizationId, quoteId, versionNumber])
@@ -690,12 +697,36 @@ model QuoteVersion {
   @@index([organizationId, authorityState, approvedAt])
 }
 
+model QuoteSection {
+  id             String @id
+  organizationId String
+  quoteVersionId String
+  position       Int
+  title          String @db.VarChar(80)
+  categoryId     String?
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  quoteVersion QuoteVersion @relation(fields: [quoteVersionId, organizationId], references: [id, organizationId], onDelete: Cascade)
+  category FirmWorkCategory? @relation(fields: [organizationId, categoryId], references: [organizationId, key], onDelete: Restrict)
+  items        QuoteItem[]
+
+  @@unique([id, organizationId])
+  @@unique([id, quoteVersionId, organizationId])
+  @@unique([organizationId, quoteVersionId, position])
+  @@index([organizationId, categoryId])
+}
+
 model QuoteItem {
+  sectionId      String?
+  kind           String           @default("ITEM")
+  description    String?          @db.VarChar(500)
+  remark         String           @default("") @db.VarChar(200)
+  percentage     Decimal?         @db.Decimal(8, 2)
   id             String           @id
   organizationId String
   quoteVersionId String
   lineNumber     Int
-  categoryId     String
+  categoryId     String?
   descriptionEn  String
   descriptionZhTw String
   quantity       Decimal          @db.Decimal(20, 3)
@@ -709,12 +740,14 @@ model QuoteItem {
 
   organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   quoteVersion QuoteVersion @relation(fields: [quoteVersionId], references: [id], onDelete: Cascade)
+  section      QuoteSection? @relation(fields: [sectionId, quoteVersionId, organizationId], references: [id, quoteVersionId, organizationId], onDelete: Cascade)
   supplier     Supplier?    @relation(fields: [supplierId], references: [id], onDelete: SetNull)
   material     Material?    @relation(fields: [materialId], references: [id], onDelete: SetNull)
 
   @@unique([organizationId, quoteVersionId, lineNumber])
   @@unique([id, organizationId])
   @@index([organizationId, categoryId])
+  @@index([sectionId, quoteVersionId, organizationId])
 }
 
 model ForecastCostVersion {
