@@ -12,7 +12,7 @@ The current-version selection rule is unchanged. Rows and the SQL filter now pre
 
 All per-area display paths now share `pricePerAreaInFirmUnit`, the Quote tab’s fixed-decimal 400/121 conversion. Comparison current/history cells, evidence inputs/claim/result/source fields, and `get_past_prices` display the firm's unit. Canonical rates and saved calculations are not mutated. The assistant sends only formatted firm-unit rates to the model; no raw per-m² figures leak into ping-mode model facts. Existing m² outputs are pinned by regression tests.
 
-`npm run check` passed: **1,557 tests in 149 files**, formatting, lint, strict typecheck and production build. The architecture boundary test remains unchanged and passes. Local browser review passed in both languages: 24 Final rows, two Internal review rows, the Draft filter excludes Final, and Viewer amounts remain absent. The same saved comparison and evidence trace were opened under m² and 坪 without rerunning the calculation. [Browser results](evidence/browser-review.json), [Final rows](evidence/zh-TW-quotes-final.png), [Internal review rows](evidence/zh-TW-quotes-internal-review.png), [comparison in 坪](evidence/en-comparison-ping.png), [evidence in 坪](evidence/zh-TW-evidence-ping.png), [comparison in m²](evidence/en-comparison-m2.png), [evidence in m²](evidence/zh-TW-evidence-m2.png). Table-only screenshots hide the sticky shell header so it does not overlap the captured table. Paid evaluation dispatch 2 of 2 will be recorded below. No prompt, model, oracle, case or pass-mark change.
+`npm run check` passed: **1,557 tests in 149 files**, formatting, lint, strict typecheck and production build. The architecture boundary test remains unchanged and passes. Local browser review passed in both languages: 24 Final rows, two Internal review rows, the Draft filter excludes Final, and Viewer amounts remain absent. The same saved comparison and evidence trace were opened under m² and 坪 without rerunning the calculation. [Browser results](evidence/browser-review.json), [Final rows](evidence/zh-TW-quotes-final.png), [Internal review rows](evidence/zh-TW-quotes-internal-review.png), [comparison in 坪](evidence/en-comparison-ping.png), [evidence in 坪](evidence/zh-TW-evidence-ping.png), [comparison in m²](evidence/en-comparison-m2.png), [evidence in m²](evidence/zh-TW-evidence-m2.png). Table-only screenshots hide the sticky shell header so it does not overlap the captured table. Review CI passed; paid evaluation dispatch 2 of 2 failed with `UNAVAILABLE`, as recorded below. No prompt, model, oracle, case or pass-mark change.
 
 ## Local verification
 
@@ -45,7 +45,7 @@ Screenshots: [Clients](evidence/zh-TW-clients.png), [client details](evidence/zh
 
 [Implementation CI 45293249019](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45293249019) passed on `894ecc9a8e74556e5e0a11c798901e9e8a5376a3`, including migration/schema checks, repeatable fixture reset, formatting, lint, typecheck, tests, build and production dependency audit.
 
-[Paid run 45293305570](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45293305570) **passed**, using `gemini-3.5-flash-lite` against the same implementation commit. One of two authorized dispatches used; no second run needed. The workflow ran from main and checked out that commit through its `ref` input. Model instructions, model, cases, oracle and pass marks were unchanged.
+[Paid run 45293305570](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45293305570) **passed**, using `gemini-3.5-flash-lite` against the same implementation commit. This was the first of two authorized dispatches, before the status/rate review fixes. The workflow ran from main and checked out that commit through its `ref` input. Model instructions, model, cases, oracle and pass marks were unchanged.
 
 | Round | Answers en | Answers zh-TW | Drafts en | Drafts zh-TW | Estimated USD, both sets |
 | ----- | ---------- | ------------- | --------- | ------------ | ------------------------ |
@@ -59,6 +59,26 @@ All three rounds passed the eight hosted-regression questions and two quality-re
 
 Per-question rate: 49 questions passed 3/3; `zh-TW-awaiting` passed 2/3. Its round-two answer called a job reference a quote document number and failed the unchanged expected-fact check. It remains a recorded model error, not a perfect-score claim. `zh-TW-finding` passed 3/3. All 24 draft cases passed 3/3. Full raw synthetic report, per-question rates, follow-ups, non-pass text and metering: [evaluation artifact](evidence/ai-evaluation-45293305570.json). Downloaded ZIP SHA-256 matched GitHub's artifact digest `ac04b823c5edab50b99628918dd4198dcac90008b085d5e036ee7cd02e31d6e9`.
 
+### Review commit and paid dispatch 2 of 2
+
+[Review CI 45333380906](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45333380906) **passed** on `5045aa333ef1ec42f27da3f8f3d33d476e0fad59`, including migrations, repeatable fixture reset, all quality checks, production build and dependency audit.
+
+[Paid run 45333408428](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45333408428) **failed** on that same review commit. The workflow ran from main with the exact commit as its `ref` input. Both authorized dispatches are now used. The model remains `gemini-3.5-flash-lite`; instructions, cases, expected values, oracle and pass marks remain unchanged.
+
+| Round | Answers en | Answers zh-TW | Drafts en | Drafts zh-TW | Estimated USD, both sets |
+| ----- | ---------- | ------------- | --------- | ------------ | ------------------------ |
+| 1     | 1/20       | 1/20          | 0/12      | 0/12         | 0.000000000              |
+| 2     | 1/20       | 1/20          | 0/12      | 0/12         | 0.000000000              |
+| 3     | 1/20       | 1/20          | 0/12      | 0/12         | 0.000000000              |
+
+In each round, all 48 model-dependent answer cases and all 24 draft cases returned `UNAVAILABLE` before producing an answer or recording token usage. Only `en-excluded` and `zh-TW-excluded` passed, through the server's exclusion path without a model call. Overall: **6/150 answer cases and 0/72 draft cases**. Per-question rates: those two exclusion cases passed 3/3; the other 48 answer cases and all 24 draft cases passed 0/3. Required hosted regressions were 0/8, quality regressions 0/2 and required drafts 0/14 in every round.
+
+The metered cost estimate is **US$0.000000000**, with zero recorded input/output tokens; this is not a billing invoice and does not establish that no provider charges occurred. Existing logs and the report expose only `UNAVAILABLE`, not the underlying HTTP, network or provider reason. The provider adapter intentionally collapses failures before known usage to that outcome. This run therefore does not verify model answer quality on the review commit, and the earlier passing run does not substitute for it. No extra paid request, retry, model change or hosted configuration change was made.
+
+[Full raw synthetic report and per-question rates](evidence/ai-evaluation-45333408428.json). Downloaded ZIP SHA-256 matched GitHub's artifact digest `2e98a0f0cfd69d749e11236a37e7cff5e1c96a372818d949d946cabcdadc02de`. The report's generic next-tier recommendation is not a diagnosis of this unavailable-provider run.
+
 ## Not verified
 
 Hosted acceptance is **waiting for the Product Director**. No hosted deployment, migration, seed or settings change was made, and the Test site workflow was not started. The PR stays draft. Browser verification is the local flow listed above, not a claim that every earlier hosted acceptance list has been clicked through. The Home AI draft card's area/client-number behavior has local form/use-case coverage; the exact acceptance utterance has not been clicked through on the hosted site.
+
+The review commit has no successful live-provider evaluation: dispatch 2 failed as above, and its underlying cause remains unverified. Both area units and the assistant displayed-number check have deterministic coverage; paid model answers in 坪 were not verified.
