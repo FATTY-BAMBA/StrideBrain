@@ -28,7 +28,7 @@
   border-radius: 12px;
   padding: 1.25rem;
   margin: 1rem 0;
-  background: var(--surface, #fffef9);
+  background: var(--legacy-surface, #fffef9);
 }
 .row h2 {
   font-size: 1.1rem;

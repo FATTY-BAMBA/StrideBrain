@@ -1,0 +1,35 @@
+{
+  "issue": 69,
+  "branch": "build/sb-069-design-foundation",
+  "baseCommit": "b972483a206a49ad7929aa4b7cdf24c3bf0de3d2",
+  "status": "DRAFT_PR_LOCAL_VERIFIED",
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "firstVisitFontBytes": 808824,
+  "fontBudgetBytes": 1500000,
+  "localChecks": {
+    "npmRunCheck": "PASSED",
+    "tests": 1575,
+    "files": 154,
+    "browser": "PASSED",
+    "nativeGetWithoutJavaScript": "PASSED",
+    "cssGateNegativeProbe": "PASSED",
+    "issuedPdfBytes": "PASSED"
+  },
+  "finalHomeFontBytes": 736628,
+  "pullRequestState": "DRAFT",
+  "paidEvaluation": "NOT_REQUIRED_ASSISTANT_UNCHANGED",
+  "pullRequest": 70,
+  "pullRequestUrl": "https://github.com/FATTY-BAMBA/StrideBrain/pull/70",
+  "reviewCorrections": {
+    "status": "LOCAL_CHECK_PASSED",
+    "changes": [
+      "VERSIONED_IMMUTABLE_FONTS",
+      "CENTRED_1120PX_PAGE",
+      "INK_NAVIGATION",
+      "KEYBOARD_ACCESSIBLE_PLANNED_LINKS"
+    ],
+    "browser": "NOT_RERUN",
+    "ci": "NOT_WAITED_ON",
+    "intermittentHeroTest": "FAILED_ONCE_THEN_PASSED_ISOLATED_AND_FULL_RERUN"
+  }
+}

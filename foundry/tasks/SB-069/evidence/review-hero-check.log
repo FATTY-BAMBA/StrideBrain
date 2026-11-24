@@ -1,0 +1,12 @@
+
+> stridebrain@0.1.0 test
+> vitest run tests/comparison-experience/postgres-hero-flow.test.ts
+
+
+ RUN  v4.1.10 /private/tmp/stridebrain-sb041
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  19:59:43
+   Duration  920ms (transform 226ms, setup 0ms, import 304ms, tests 527ms, environment 0ms)

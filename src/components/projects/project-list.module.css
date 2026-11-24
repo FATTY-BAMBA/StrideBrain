@@ -12,9 +12,9 @@
   gap: 12px;
   min-width: 0;
   padding: clamp(20px, 3vw, 30px);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--surface);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-md);
+  background: var(--legacy-surface);
   overflow-wrap: anywhere;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .status {
-  border-radius: var(--radius-sm);
+  border-radius: var(--legacy-radius-sm);
   padding: 4px 10px;
   background: var(--accent-soft);
   color: var(--accent-strong);
@@ -54,8 +54,8 @@
 }
 .empty {
   padding: 14px;
-  border: 1px dashed var(--line);
-  border-radius: var(--radius-sm);
+  border: 1px dashed var(--legacy-line);
+  border-radius: var(--legacy-radius-sm);
 }
 .entry h3 {
   font-size: clamp(1.1rem, 2.5vw, 1.4rem);
@@ -73,9 +73,9 @@
   padding: 8px;
   font: inherit;
   color: var(--ink);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
+  background: var(--legacy-surface);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-sm);
 }
 .stageForm button {
   min-height: 44px;
@@ -85,9 +85,9 @@
 }
 .stageButton {
   padding: 10px 16px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
+  border: 1px solid var(--legacy-line);
+  border-radius: var(--legacy-radius-sm);
+  background: var(--legacy-surface);
   color: var(--accent-strong);
   font: inherit;
   font-weight: 600;

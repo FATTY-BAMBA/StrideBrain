@@ -1,7 +1,13 @@
 import Link from "next/link";
 import type { Route } from "next";
 import { notFound } from "next/navigation";
-import { FoundationPage } from "@/components/ui/foundation-page";
+import { PageHeader } from "@/components/ui/page-header";
+import { Button } from "@/components/ui/button";
+import { Field } from "@/components/ui/field";
+import { FilterForm } from "@/components/ui/filter-form";
+import { Notice } from "@/components/ui/notice";
+import { designSystemCopy } from "@/modules/localization/design-system";
+import styles from "@/components/ui/ui.module.css";
 import { QuoteListTable } from "@/components/quotes/quote-list-table";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
 import { createQuoteListService } from "@/lib/server/quote-list-services";
@@ -28,32 +34,42 @@ export default async function QuotesPage({
   const href = (n: number) =>
     `/${locale}/quotes?${new URLSearchParams({ page: String(n), ...(typeof status === "string" ? { status } : {}) })}` as Route;
   return (
-    <FoundationPage eyebrow={c.title} title={c.title} description={c.description}>
-      <form className="records-filter" method="get">
-        <label>
-          {c.status}
-          <select name="status" defaultValue={typeof status === "string" ? status : ""}>
-            <option value="">{c.all}</option>
-            {QUOTE_LIST_STATUSES.map((s) => (
-              <option key={s} value={s}>
-                {c[s]}
-              </option>
-            ))}
-          </select>
-        </label>
-        <button>{c.filter}</button>
-      </form>
+    <div className={styles.page}>
+      <PageHeader
+        context={designSystemCopy(locale).workspace}
+        title={c.title}
+        description={c.description}
+      />
+      <FilterForm loadingLabel={designSystemCopy(locale).loading}>
+        <Field
+          as="select"
+          id="quote-status"
+          label={c.status}
+          name="status"
+          defaultValue={typeof status === "string" ? status : ""}
+        >
+          <option value="">{c.all}</option>
+          {QUOTE_LIST_STATUSES.map((s) => (
+            <option key={s} value={s}>
+              {c[s]}
+            </option>
+          ))}
+        </Field>
+        <Button type="submit" variant="primary">
+          {c.filter}
+        </Button>
+      </FilterForm>
       {result?.kind === "AVAILABLE" ? (
         <>
           <QuoteListTable rows={result.rows} locale={locale} />
-          <nav className="records-pagination" aria-label={c.title}>
+          <nav className={styles.pagination} aria-label={c.title}>
             {page > 1 && <Link href={href(page - 1)}>{c.previous}</Link>}
             {result.hasMore && <Link href={href(page + 1)}>{c.next}</Link>}
           </nav>
         </>
       ) : (
-        <p role="status">{c.unavailable}</p>
+        <Notice tone="error">{c.unavailable}</Notice>
       )}
-    </FoundationPage>
+    </div>
   );
 }

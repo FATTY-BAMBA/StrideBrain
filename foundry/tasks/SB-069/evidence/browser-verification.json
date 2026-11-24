@@ -1,0 +1,559 @@
+{
+  "status": "PASS",
+  "checks": [
+    "zh-TW: Inter renders money; five badges, right alignment and one row action.",
+    "en: Inter renders money; five badges, right alignment and one row action.",
+    "Both languages: all five filters retain their expected counts; page 2 is empty with a previous link; client search, empty and unavailable states render; all legacy routes open in the shell.",
+    "Keyboard Tab reaches sidebar, locale/account controls, filter, table region and row actions with a solid 3px focus ring.",
+    "Existing client details still save, reload and write their audit event.",
+    "At 390px the sidebar stacks above content; tables scroll internally and neither page overflows.",
+    "Quote status filter and client search work with JavaScript disabled.",
+    "Viewer sees accessible quote rows without amounts; no Clients link and direct Clients access is 404 in both languages."
+  ],
+  "screens": [
+    "zh-TW-quotes.png",
+    "zh-TW-clients.png",
+    "zh-TW-clients-empty.png",
+    "zh-TW-quotes-unavailable.png",
+    "zh-TW-settings.png",
+    "zh-TW-issued-quote.png",
+    "en-quotes.png",
+    "en-clients.png",
+    "en-clients-empty.png",
+    "en-quotes-unavailable.png",
+    "en-settings.png",
+    "en-issued-quote.png",
+    "zh-TW-quotes-mobile.png",
+    "zh-TW-clients-mobile.png",
+    "en-quotes-mobile.png",
+    "en-clients-mobile.png",
+    "zh-TW-viewer-quotes.png",
+    "en-viewer-quotes.png"
+  ],
+  "pageErrors": [],
+  "foreignAssets": [],
+  "keyboard": [
+    {
+      "tag": "A",
+      "href": "#main-content",
+      "name": null,
+      "text": "Skip to main content",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en",
+      "name": null,
+      "text": "Home",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects",
+      "name": null,
+      "text": "Projects",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/quotes",
+      "name": null,
+      "text": "Quotes",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/clients",
+      "name": null,
+      "text": "Clients",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/zh-TW/quotes",
+      "name": null,
+      "text": "繁中",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/quotes",
+      "name": null,
+      "text": "EN",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/settings",
+      "name": null,
+      "text": "Settings",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "BUTTON",
+      "href": null,
+      "name": null,
+      "text": "Sign out",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "SELECT",
+      "href": null,
+      "name": "status",
+      "text": "All statusesDraftIn internal reviewIssuedAcceptedFinal",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "BUTTON",
+      "href": null,
+      "name": null,
+      "text": "Filter",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "DIV",
+      "href": null,
+      "name": null,
+      "text": "QuotesNumberJobClientStatusTotalIssued / createdActionPRJ-ACTIVE-001-Q",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-ACTIVE-001/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-ACTIVE-002/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-ACTIVE-003/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-ACTIVE-004/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-BANQIAO-015/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-DAAN-016/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-001/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-002/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-003/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-004/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-005/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-006/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-007/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-008/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-009/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-010/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-011/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-012/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-013/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-014/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-015/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-016/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-017/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-HIST-018/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-NANJING-023/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-NEIHU-021/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-SONGSHAN-020/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-XINYI-026/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/PRJ-ZHONGSHAN-018/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    },
+    {
+      "tag": "A",
+      "href": "/en/projects/J-2611-R7K3/quote",
+      "name": null,
+      "text": "Open",
+      "outline": "solid",
+      "width": "3px"
+    }
+  ],
+  "routeStatus": [
+    {
+      "path": "/en/preview",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/quotes",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/quotes?status=FINAL",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/quotes?status=INTERNAL_REVIEW",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/quotes?status=ISSUED",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/quotes?status=ACCEPTED",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/quotes?status=DRAFT",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/quotes?page=2",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/clients",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/quotes?status=NOT_A_STATUS",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/projects",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/projects/PRJ-XINYI-026",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/projects/PRJ-ACTIVE-003/quote",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/projects/PRJ-ACTIVE-001/quote",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/projects/PRJ-XINYI-026/compare",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/projects/PRJ-XINYI-026/actions",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/settings",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/projects/PRJ-ACTIVE-001/quote",
+      "status": 200
+    },
+    {
+      "path": "/en/quotes",
+      "status": 200
+    },
+    {
+      "path": "/en/quotes?status=FINAL",
+      "status": 200
+    },
+    {
+      "path": "/en/quotes?status=INTERNAL_REVIEW",
+      "status": 200
+    },
+    {
+      "path": "/en/quotes?status=ISSUED",
+      "status": 200
+    },
+    {
+      "path": "/en/quotes?status=ACCEPTED",
+      "status": 200
+    },
+    {
+      "path": "/en/quotes?status=DRAFT",
+      "status": 200
+    },
+    {
+      "path": "/en/quotes?page=2",
+      "status": 200
+    },
+    {
+      "path": "/en/clients",
+      "status": 200
+    },
+    {
+      "path": "/en/quotes?status=NOT_A_STATUS",
+      "status": 200
+    },
+    {
+      "path": "/en",
+      "status": 200
+    },
+    {
+      "path": "/en/projects",
+      "status": 200
+    },
+    {
+      "path": "/en/projects/PRJ-XINYI-026",
+      "status": 200
+    },
+    {
+      "path": "/en/projects/PRJ-ACTIVE-003/quote",
+      "status": 200
+    },
+    {
+      "path": "/en/projects/PRJ-ACTIVE-001/quote",
+      "status": 200
+    },
+    {
+      "path": "/en/projects/PRJ-XINYI-026/compare",
+      "status": 200
+    },
+    {
+      "path": "/en/projects/PRJ-XINYI-026/actions",
+      "status": 200
+    },
+    {
+      "path": "/en/settings",
+      "status": 200
+    },
+    {
+      "path": "/en/projects/PRJ-ACTIVE-001/quote",
+      "status": 200
+    },
+    {
+      "path": "/en/quotes",
+      "status": 200
+    },
+    {
+      "path": "/en/clients/CLIENT-01",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/quotes",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/clients",
+      "status": 200
+    },
+    {
+      "path": "/en/quotes",
+      "status": 200
+    },
+    {
+      "path": "/en/clients",
+      "status": 200
+    },
+    {
+      "path": "/en/preview",
+      "status": 200
+    },
+    {
+      "path": "/zh-TW/quotes",
+      "status": 200
+    },
+    {
+      "path": "/en/quotes",
+      "status": 200
+    }
+  ]
+}

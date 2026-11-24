@@ -1,5 +1,8 @@
 "use client";
 
+import styles from "./shell.module.css";
+import { Icon } from "@/components/ui/icons";
+
 import type { Route } from "next";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -42,7 +45,8 @@ export function LanguageSwitcher({ locale, zhLabel, enLabel }: LanguageSwitcherP
   }, [locale]);
 
   return (
-    <div className="language-switcher" aria-label={`${zhLabel} / ${enLabel}`}>
+    <div className={`language-switcher ${styles.languages}`} aria-label={`${zhLabel} / ${enLabel}`}>
+      <Icon name="language" decorative />
       <Link
         href={localizedHref(pathname, query, "zh-TW") as Route}
         onNavigate={(event) => {

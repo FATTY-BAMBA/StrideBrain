@@ -1,0 +1,147 @@
+# StrideBrain design system v1
+
+This is the shared visual contract for every screen. Traditional Chinese comes first; every label has an English twin. Use plain CSS custom properties and the components in `src/components/ui/`. No utility framework, component library, icon package or CSS-in-JS dependency is required.
+
+## Rules
+
+- A design value outside the tokens is a defect. Colour, typography, spacing, radii, control heights and the document shadow come from `src/styles/tokens.css`. Structural CSS (`grid`, `auto`, `0`, percentages, fractions, responsive breakpoints and intrinsic sizing) is not a design value. Never add new legacy tokens.
+- One primary button per view. Its text names the action. Other actions use secondary, outline or quiet; destructive actions use danger.
+- Every page starts with PageHeader: a small context line, the title, and actions on the right. Actions wrap below at narrow widths.
+- Record lists are tables directly on the page, without surrounding cards. Separate sections with space and a rule, not boxes.
+- Status is a badge with words: 草稿 / Draft (neutral), 內部審查中 / In internal review (information), 已發出 / Issued (warning), 已接受 / Accepted (accent-soft), 定稿 / Final (ink reversed). The supplied colours vary in lightness and hue; words carry the meaning.
+- Money and other compared figures align right and use tabular numerals. Formatting and permission checks stay in their existing domain/application paths.
+- Interactive elements are real buttons, links or form controls. Every keyboard target has a visible 3px focus ring. Text contrast is at least 4.5:1, control borders and icons at least 3:1. Icons use currentColor and always have adjacent text or an accessible name.
+- Every screen has empty, loading and error states and a role-without-money view. Never hide unauthorized figures with CSS: omit them from the data as before.
+- Filters are ordinary GET forms and work without JavaScript. Do not add live filtering here.
+
+## Tokens
+
+The following is the v1 token table. The CSS file is authoritative. Legacy tokens preserve the previous values of older page bodies until part 2; they are excluded from this table and forbidden in new components.
+
+| Custom property     | Value                                                                               |
+| ------------------- | ----------------------------------------------------------------------------------- |
+| `--canvas`          | `#ffffff`                                                                           |
+| `--surface-subtle`  | `#f4f6f5`                                                                           |
+| `--ink`             | `#14211d`                                                                           |
+| `--muted`           | `#5d6d67`                                                                           |
+| `--line`            | `#e3e8e5`                                                                           |
+| `--line-strong`     | `#b8c7c0`                                                                           |
+| `--line-control`    | `#7f918a`                                                                           |
+| `--accent`          | `#186b54`                                                                           |
+| `--accent-strong`   | `#0f503f`                                                                           |
+| `--accent-soft`     | `#dceee7`                                                                           |
+| `--accent-tint`     | `#f4faf7`                                                                           |
+| `--on-accent`       | `#ffffff`                                                                           |
+| `--neutral-soft`    | `#eef1f0`                                                                           |
+| `--neutral-ink`     | `#3f4d48`                                                                           |
+| `--info-soft`       | `#e3edf9`                                                                           |
+| `--info-ink`        | `#1d4f91`                                                                           |
+| `--warning-soft`    | `#f5ead6`                                                                           |
+| `--warning-ink`     | `#6b4409`                                                                           |
+| `--danger`          | `#a3261d`                                                                           |
+| `--danger-soft`     | `#fbebe9`                                                                           |
+| `--focus`           | `#2b72d6`                                                                           |
+| `--font-family`     | `Inter, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif` |
+| `--text-display`    | `32px`                                                                              |
+| `--leading-display` | `1.3`                                                                               |
+| `--weight-display`  | `700`                                                                               |
+| `--text-title`      | `24px`                                                                              |
+| `--leading-title`   | `1.4`                                                                               |
+| `--weight-title`    | `700`                                                                               |
+| `--text-section`    | `18px`                                                                              |
+| `--leading-section` | `1.5`                                                                               |
+| `--weight-section`  | `700`                                                                               |
+| `--text-lead`       | `17px`                                                                              |
+| `--leading-lead`    | `1.5`                                                                               |
+| `--weight-lead`     | `600`                                                                               |
+| `--text-body`       | `15px`                                                                              |
+| `--leading-body`    | `1.6`                                                                               |
+| `--weight-body`     | `400`                                                                               |
+| `--text-table`      | `14px`                                                                              |
+| `--leading-table`   | `1.6`                                                                               |
+| `--weight-table`    | `400`                                                                               |
+| `--text-caption`    | `13px`                                                                              |
+| `--leading-caption` | `1.5`                                                                               |
+| `--weight-caption`  | `400`                                                                               |
+| `--space-4`         | `4px`                                                                               |
+| `--space-8`         | `8px`                                                                               |
+| `--space-12`        | `12px`                                                                              |
+| `--space-16`        | `16px`                                                                              |
+| `--space-24`        | `24px`                                                                              |
+| `--space-32`        | `32px`                                                                              |
+| `--space-40`        | `40px`                                                                              |
+| `--space-48`        | `48px`                                                                              |
+| `--radius-cell`     | `6px`                                                                               |
+| `--radius-control`  | `10px`                                                                              |
+| `--radius-ask`      | `12px`                                                                              |
+| `--radius-pill`     | `999px`                                                                             |
+| `--control-cell`    | `32px`                                                                              |
+| `--control-chip`    | `36px`                                                                              |
+| `--control-default` | `44px`                                                                              |
+| `--control-ask`     | `56px`                                                                              |
+| `--shadow`          | `0 2px 12px rgba(18, 45, 37, 0.06)`                                                 |
+| `--rule-hairline`   | `1px`                                                                               |
+| `--rule-section`    | `2px`                                                                               |
+| `--focus-width`     | `3px`                                                                               |
+| `--focus-offset`    | `3px`                                                                               |
+| `--icon-size`       | `18px`                                                                              |
+| `--sidebar-width`   | `248px`                                                                             |
+| `--page-width`      | `1120px`                                                                            |
+| `--content-width`   | `1500px`                                                                            |
+| `--table-min-width` | `720px`                                                                             |
+| `--filter-width`    | `480px`                                                                             |
+
+Type roles: display 32/1.3/700 is reserved for the Home greeting; page title 24/1.4/700; section heading 18/1.5/700; lead 17/1.5/600; body 15/1.6/400; table/document 14/1.6/400; caption 13/1.5/400. Use only weights 400, 600 and 700. No new text is smaller than 13px. Use Inter first, then Noto Sans TC, then system Chinese fonts.
+
+Space steps are 4, 8, 12, 16, 24, 32, 40 and 48px. Radius roles are cell (6px), control (10px), ask (12px) and pill (999px). Control heights are cell 32px, chip 36px, default 44px and ask 56px. The sole shadow belongs to the quote document, not record tables or the shell. Layout dimensions have named tokens too; they are not extra spacing steps. The shared page container uses `--page-width` (1120px), centred and capped at the available width. The shell retains `--content-width` (1500px) for older page bodies.
+
+## Shared components
+
+All these components are server components by default. URL-aware navigation, error retry and the pending filter notice need client behavior. Import each component directly from its file.
+
+| Component    | Use                                                                                                                                                                                         |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PageHeader` | Required context and title; optional description and actions. It emits the page's h1.                                                                                                       |
+| `Button`     | A real button, safe default type `button`; forms specify `submit`. Variants: primary, secondary, outline, quiet, danger. Supply action words; never use a clickable div.                    |
+| `Field`      | A labelled input by default or `as="select"`. Supply a stable unique id, label and normal control props; hint/error IDs are connected through aria-describedby and errors set aria-invalid. |
+| `Badge`      | Pass a typed quote status and locale. It supplies the canonical worded status and tone.                                                                                                     |
+| `Table`      | Caption, headings and body rows in a focusable horizontal scroll region. Use `NameCell` for the row heading, `NumericCell` for figures and `RowAction` for one named link per row.          |
+| `Notice`     | Information, warning or error. Information/warning use role=status; an error uses role=alert. Text says what happened and what the person can do.                                           |
+| `EmptyState` | A plain section with a heading, optional explanation and optional action, without a card.                                                                                                   |
+| `Icon`       | Copied Lucide geometry, 18px and 1.6px currentColor stroke. `decorative` requires adjacent words; standalone icons require a `label`. Licence and source release are adjacent.              |
+
+`RecordsState` provides localized retry states for the Quotes and Clients error boundaries. Its client boundary reads only the URL locale and never fetches business data. `FilterForm` keeps a native GET form and announces a loading notice on submit when JavaScript is available; it does not prevent navigation or fetch data. There is no route-level streaming loading boundary: the list must remain visible on an initial visit with JavaScript disabled. The shared UI module contains list layout, filter and paging styles.
+
+## Specified for the first consuming issue
+
+These components are deliberately **not implemented** by #69:
+
+- **Paper** (#65): document surface in canvas over surface-subtle, line-strong border and the sole document shadow. Use table/document typography, space tokens, and internal scrolling when necessary. Do not use Paper as a card around lists.
+- **Tabs** (#65): labelled links for navigation, or real buttons with the tab keyboard/ARIA pattern for in-page panels. Active text and the 2px rule use ink; other labels use muted. Never identify selection by colour alone.
+- **SectionHeading**: h2 in the section type role with the 2px ink rule, separated by token space. Optional adjacent actions remain secondary/quiet. Build it when the first issue needs it.
+
+## Shell and responsive behavior
+
+The shell uses surface-subtle for the sidebar and canvas for the page. Product and firm names are at the top; labelled navigation follows. Navigation links use ink. Planned Knowledge and Customer Care link to their existing pages, remain muted, retain the 規劃中 / Planned tag, and participate in keyboard navigation. This Product Director decision replaces issue #69’s original non-link rule. Person, language, Settings and sign-out sit at the bottom. The current working area, including Settings, has aria-current. Viewer navigation preserves the existing capability-based omission of Clients.
+
+Below 900px the sidebar stacks above content. At 390px, record tables scroll inside their labelled focusable regions; the page itself must not scroll horizontally. Do not turn the table into stacked cards. Keep a skip link and logical DOM/tab order. Keyboard access and zoom must not depend on hover.
+
+## Fonts and licences
+
+The app serves committed WOFF2 files under `public/fonts/v1/`; unicode-range loads only needed slices and font-display is swap. Inter and Noto Sans TC include SIL OFL 1.1 texts beside the files. `scripts/fonts/manifest.json` pins source URLs, SHA-256 hashes, sizes and ranges. `npm run fonts:generate` verifies local files and regenerates CSS offline; its explicit `--download` option restores pinned assets. Normal builds never download fonts. `/fonts/v1/:path*` is served with `Cache-Control: public, max-age=31536000, immutable`. Changing a font means a new version folder (for example `v2/`), updated manifest and CSS paths, and a matching immutable header rule; never overwrite a font at an existing versioned URL. The font used by the quote PDF under `assets/fonts/` is unchanged.
+
+[Inter source/licence](https://github.com/google/fonts/tree/main/ofl/inter), [Noto Sans TC source/licence](https://github.com/google/fonts/tree/main/ofl/notosanstc), [Google CSS2 slicing/variable-font API](https://developers.google.com/fonts/docs/css2), [Lucide source/licence](https://github.com/lucide-icons/lucide/tree/0.468.0).
+
+Measure a fresh Traditional Chinese Home visit with cache disabled. If font transfer exceeds 1.5 MB, stop and report the measured size and options before proceeding. Repository font size is not the first-visit transfer size.
+
+## Migration and the CSS gate
+
+Part 1 updates the shell and the Quotes/Clients lists. Older page bodies retain their existing styles; collisions with new values have been mechanically renamed with `legacy-`. Loading the actual fonts and switching the shell canvas are intentional global changes. Part 2 brings older bodies into this system and removes legacy variables and the baseline.
+
+`npm run design:check` scans every CSS file under src; it also runs in `npm run check` and CI. Only `src/styles/tokens.css` may define raw values, and that file may contain only custom-property declarations. Other files are checked for literal colours (including colour functions and named colours), non-token font-size and border-radius declarations. Comments, strings and URLs are ignored; raw fallbacks are checked. `currentColor` inherits the token colour and `transparent` paints no colour, so neither is a raw colour violation.
+
+`scripts/design/legacy-baseline.json` records existing-file counts per rule. A count may fall and must never rise. Lower its allowance when removing old values; do not raise allowances or add new files to the baseline. New files start at zero. Part 2 ends with an empty baseline. The gate reports the file, rule and count; adding `color: #123456` to a CSS module fails it. Its unit tests include that exact probe.
+
+## Verification
+
+Check both languages, owner and Viewer, keyboard focus, 390px overflow, filters and paging without JavaScript, empty/loading/error states, and actual font rendering/network origins. Keep existing quote/client access tests unchanged. Preserve issued PDF bytes. Hosted acceptance belongs to the Product Director via the Test site workflow; agents do not deploy or mutate hosted systems.

@@ -1,0 +1,14 @@
+[
+  {
+    "project": "PRJ-ACTIVE-001",
+    "status": "ISSUED",
+    "versionId": "qv_prj_active_001_v2",
+    "note": "Local synthetic visual fixture, using its existing exact amounts and lines; no hosted mutation."
+  },
+  {
+    "project": "PRJ-ACTIVE-002",
+    "status": "ACCEPTED",
+    "versionId": "qv_prj_active_002_v2",
+    "note": "Local synthetic visual fixture, using its existing exact amounts and lines; no hosted mutation."
+  }
+]
