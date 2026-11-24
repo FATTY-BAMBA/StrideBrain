@@ -1,0 +1,161 @@
+"use client";
+import { useEffect, useId, useRef, useState } from "react";
+import { readQuotePricesAction } from "@/app/[locale]/quotes/prices/actions";
+import type { PriceReadOutcome } from "@/modules/price-list/application/read-price-list";
+import type { QuoteDocumentLine } from "@/modules/quote-draft/domain/document-input";
+import type { Locale } from "@/modules/localization/config";
+import { priceListCopy } from "@/modules/localization/price-list";
+import { Button } from "@/components/ui/button";
+import { PriceSource } from "./price-source";
+import { PriceHistory } from "./price-history";
+import styles from "./price-list.module.css";
+type Item = Extract<QuoteDocumentLine, { kind: "ITEM" }>;
+export function QuoteItemDescription({
+  line,
+  projectKey,
+  locale,
+  label,
+  disabled,
+  editable,
+  onChange,
+}: {
+  line: Item;
+  projectKey: string;
+  locale: Locale;
+  label: string;
+  disabled: boolean;
+  editable: boolean;
+  onChange: (line: Item) => void;
+}) {
+  const c = priceListCopy(locale),
+    id = useId(),
+    container = useRef<HTMLDivElement>(null),
+    input = useRef<HTMLTextAreaElement>(null);
+  const [active, setActive] = useState(false),
+    [loaded, setLoaded] = useState<{ key: string; result: PriceReadOutcome } | null>(null);
+  const key = JSON.stringify([line.description, projectKey, locale]);
+  const searching =
+    active && editable && !disabled && [...line.description.normalize("NFKC").trim()].length >= 2;
+  useEffect(() => {
+    if (!searching) return;
+    let cancelled = false;
+    const timer = setTimeout(() => {
+      readQuotePricesAction(locale, {
+        mode: "SUGGEST",
+        search: line.description,
+        unit: "",
+        page: 1,
+        projectKey,
+      })
+        .then((result) => {
+          if (!cancelled) setLoaded({ key, result });
+        })
+        .catch(() => {
+          if (!cancelled) setLoaded({ key, result: { kind: "UNAVAILABLE" } });
+        });
+    }, 250);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [searching, line.description, projectKey, locale, key]);
+  const result = loaded?.key === key ? loaded.result : null;
+  return (
+    <div
+      ref={container}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setActive(false);
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Escape") {
+          input.current?.focus();
+          setActive(false);
+          event.stopPropagation();
+        }
+        if (event.key === "ArrowDown" && event.target === input.current) {
+          const first =
+            container.current?.querySelector<HTMLButtonElement>("[data-price-suggestion]");
+          if (first) {
+            event.preventDefault();
+            first.focus();
+          }
+        }
+      }}
+    >
+      <textarea
+        ref={input}
+        aria-label={label}
+        aria-describedby={searching ? id : undefined}
+        required
+        rows={2}
+        maxLength={500}
+        value={line.description}
+        disabled={disabled}
+        onFocus={() => {
+          setLoaded(null);
+          setActive(true);
+        }}
+        onChange={(event) => {
+          onChange({ ...line, description: event.target.value });
+          setActive(true);
+        }}
+      />
+      {searching && (
+        <div id={id} className={styles.results}>
+          <p>{c.suggestions}</p>
+          {!result ? (
+            <p role="status">{c.loading}</p>
+          ) : result.kind !== "AVAILABLE" ? (
+            <p role="status">{c.unavailable}</p>
+          ) : !result.rows.length ? (
+            <p role="status">{c.empty}</p>
+          ) : (
+            <ul>
+              {result.rows.map((price) => (
+                <li key={`${price.description}-${price.unit}`}>
+                  <Button
+                    data-price-suggestion
+                    variant="quiet"
+                    onClick={() => {
+                      onChange({
+                        ...line,
+                        description: price.description,
+                        unit: price.unit,
+                        unitPrice: price.unitPrice,
+                      });
+                      input.current?.focus();
+                      setActive(false);
+                    }}
+                    aria-label={`${c.choose} · ${price.description} · ${price.unit}`}
+                  >
+                    {price.description} · {price.unit}
+                  </Button>
+                  <PriceSource price={price} locale={locale} />
+                  <span>
+                    {price.issuedOn} · {price.clientName}
+                  </span>
+                  {price.clientPrice && (
+                    <div>
+                      <span>{c.clientLast}</span>
+                      <PriceSource price={price.clientPrice} locale={locale} />
+                      <span>{price.clientPrice.issuedOn}</span>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
+      <PriceHistory
+        description={line.description}
+        unit={line.unit}
+        locale={locale}
+        projectKey={projectKey}
+        label={label}
+        disabled={editable && disabled}
+        onUse={editable ? (price) => onChange({ ...line, unitPrice: price.unitPrice }) : undefined}
+      />
+    </div>
+  );
+}

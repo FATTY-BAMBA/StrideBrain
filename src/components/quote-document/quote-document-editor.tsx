@@ -37,6 +37,7 @@ import { quoteDraftCopy, quoteTemplate } from "@/modules/localization/quote-draf
 import { quoteIssueCopy } from "@/modules/localization/quote-issue";
 import { quoteDocumentCopy } from "@/modules/localization/quote-document";
 import { categoryLabel } from "@/modules/localization/jobs";
+import { QuoteItemDescription } from "@/components/price-list/quote-item-description";
 import { CategoryReference } from "./category-reference";
 import ui from "@/components/ui/ui.module.css";
 import styles from "./quote-document.module.css";
@@ -589,17 +590,29 @@ export function QuoteDocumentEditor({
                                   )}
                                 </td>
                                 <td colSpan={line.kind === "NOTE" ? 6 : 1}>
-                                  <textarea
-                                    aria-label={`${copy.item} ${label}`}
-                                    required
-                                    rows={2}
-                                    maxLength={500}
-                                    value={line.description}
-                                    disabled={disabled}
-                                    onChange={(event) =>
-                                      lineAt(si, li, { ...line, description: event.target.value })
-                                    }
-                                  />
+                                  {line.kind === "ITEM" ? (
+                                    <QuoteItemDescription
+                                      line={line}
+                                      projectKey={view.job.businessKey}
+                                      locale={locale}
+                                      label={`${copy.item} ${label}`}
+                                      disabled={disabled}
+                                      editable={editable}
+                                      onChange={(item) => lineAt(si, li, item)}
+                                    />
+                                  ) : (
+                                    <textarea
+                                      aria-label={`${copy.item} ${label}`}
+                                      required
+                                      rows={2}
+                                      maxLength={500}
+                                      value={line.description}
+                                      disabled={disabled}
+                                      onChange={(event) =>
+                                        lineAt(si, li, { ...line, description: event.target.value })
+                                      }
+                                    />
+                                  )}
                                   {line.kind === "NOTE" && <small>{copy.note}</small>}
                                 </td>
                                 {line.kind === "ITEM" && (

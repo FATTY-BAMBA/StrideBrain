@@ -8,6 +8,7 @@ import { FilterForm } from "@/components/ui/filter-form";
 import { Notice } from "@/components/ui/notice";
 import { designSystemCopy } from "@/modules/localization/design-system";
 import styles from "@/components/ui/ui.module.css";
+import { QuoteListNav } from "@/components/quotes/quote-list-nav";
 import { QuoteListTable } from "@/components/quotes/quote-list-table";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
 import { createQuoteListService } from "@/lib/server/quote-list-services";
@@ -39,6 +40,11 @@ export default async function QuotesPage({
         context={designSystemCopy(locale).workspace}
         title={c.title}
         description={c.description}
+      />
+      <QuoteListNav
+        locale={locale}
+        active="quotes"
+        canReadPrices={context?.capabilities.has("quote:read") === true}
       />
       <FilterForm loadingLabel={designSystemCopy(locale).loading}>
         <Field

@@ -1,4 +1,7 @@
 // @vitest-environment jsdom
+vi.mock("@/app/[locale]/quotes/prices/actions", () => ({
+  readQuotePricesAction: vi.fn().mockResolvedValue({ kind: "AVAILABLE", rows: [], hasMore: false }),
+}));
 vi.mock("@/app/[locale]/projects/actions", () => ({ updateProjectStageAction: vi.fn() }));
 import { act, createElement } from "react";
 import { createRoot } from "react-dom/client";
