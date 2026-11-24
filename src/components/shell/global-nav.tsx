@@ -1,5 +1,8 @@
 "use client";
 
+import styles from "./shell.module.css";
+import { Icon } from "@/components/ui/icons";
+
 import type { Route } from "next";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -22,7 +25,7 @@ export function GlobalNav({ locale, labels, canReadClients = false }: GlobalNavP
   const pathname = usePathname();
 
   return (
-    <nav className="global-nav" aria-label={labels["nav.projects"]}>
+    <nav className={styles.nav} aria-label={locale === "zh-TW" ? "主要導覽" : "Main navigation"}>
       {globalNavigation
         .filter((item) => item.key !== "clients" || canReadClients)
         .map((item) => {
@@ -31,15 +34,25 @@ export function GlobalNav({ locale, labels, canReadClients = false }: GlobalNavP
             ? pathname === href || pathname.startsWith(`${href}/`)
             : pathname === href;
 
-          return (
+          const content = (
+            <>
+              <Icon name={item.key} decorative />
+              <span>{labels[item.labelKey as keyof typeof labels]}</span>
+              {item.planned && <small>{locale === "zh-TW" ? "規劃中" : "Planned"}</small>}
+            </>
+          );
+          return item.planned ? (
+            <div key={item.key} className={styles.item}>
+              {content}
+            </div>
+          ) : (
             <Link
               key={item.key}
               href={href as Route}
-              className="global-nav__item"
+              className={styles.item}
               aria-current={isActive ? "page" : undefined}
             >
-              <span>{labels[item.labelKey as keyof typeof labels]}</span>
-              {item.planned && <small>{locale === "zh-TW" ? "規劃中" : "Planned"}</small>}
+              {content}
             </Link>
           );
         })}

@@ -313,7 +313,7 @@
 }
 
 .auditDetails {
-  border-top: 1px solid var(--line, #d8dee8);
+  border-top: 1px solid var(--legacy-line, #d8dee8);
   color: var(--muted, #596579);
   overflow-wrap: anywhere;
 }

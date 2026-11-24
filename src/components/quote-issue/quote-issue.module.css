@@ -5,7 +5,7 @@
   padding: 1.5rem;
   border: 1px solid var(--border, #d8d7ce);
   border-radius: 12px;
-  background: var(--surface, #fffef9);
+  background: var(--legacy-surface, #fffef9);
 }
 .section h2 {
   margin: 0 0 1rem;
