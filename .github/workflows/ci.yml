@@ -61,8 +61,21 @@ jobs:
       - name: Generate Prisma client
         run: npm run db:generate
 
-      # The Vitest global setup migrates/seeds/verifies its own template and clones workers,
-      # exactly as on a developer machine. The service's base database is left untouched.
+      # Exercise the real Prisma deployment commands against the service's base database.
+      - name: Apply committed migrations
+        run: npm run db:migrate
+
+      - name: Seed Horizon Atelier fixture
+        run: npm run db:seed
+
+      - name: Verify tenant, authority, and fixture invariants
+        run: npm run db:verify
+
+      - name: Verify repeatable synthetic fixture reset
+        run: npm run db:seed && npm run db:verify
+
+      # Vitest separately applies SQL to its own template and clones isolated workers,
+      # exactly as on a developer machine; that setup does not exercise the Prisma CLI.
       - name: Run complete check with isolated databases
         run: npm run check
 
