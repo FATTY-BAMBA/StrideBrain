@@ -1,5 +1,6 @@
 import type { Locale } from "@/modules/localization/config";
 import type { QuoteTotals } from "@/modules/finance/quote-totals";
+import type { QuoteDocumentAmounts } from "@/modules/finance/quote-totals";
 import type { DraftBasis, DraftJob } from "@/modules/quote-draft/domain/draft-policy";
 import type { DraftLineInput } from "@/modules/quote-draft/domain/save-input";
 type QuoteDraftJob = DraftJob &
@@ -9,8 +10,10 @@ type QuoteDraftJob = DraftJob &
     businessKey: string;
     name: string;
     stage: string;
+    siteAddress?: string;
   }>;
 type SavedDraft = Readonly<{
+  document?: QuoteDocumentAmounts;
   id: string;
   quoteId: string;
   versionNumber: number;
@@ -58,7 +61,7 @@ export type IssueOptions = Readonly<{
   attention: string;
   terms?: string;
 }>;
-export type QuoteDocumentSnapshot = Readonly<{
+export type QuoteDocumentSnapshotV1 = Readonly<{
   schemaVersion: "QUOTE-DOCUMENT-1.0";
   language: Locale;
   firm: Readonly<{
@@ -82,8 +85,18 @@ export type QuoteDocumentSnapshot = Readonly<{
   totals: QuoteTotals;
   terms: string;
 }>;
-export type IssueBlocker = "OPEN_CONFLICT" | "ZERO_LINE" | "FIRM_INCOMPLETE" | "DRAFT_NOT_CURRENT";
-export type IssueWarning = "BASIS_OUT_OF_DATE" | "COMPARISON_OUT_OF_DATE" | "UNREVIEWED_FINDINGS";
+export type QuoteDocumentSnapshotV2 = Omit<QuoteDocumentSnapshotV1, "schemaVersion"> &
+  Readonly<{
+    schemaVersion: "QUOTE-DOCUMENT-2.0";
+    siteAddress: string;
+    document: QuoteDocumentAmounts;
+  }>;
+export type QuoteDocumentSnapshot = QuoteDocumentSnapshotV1 | QuoteDocumentSnapshotV2;
+export const MAX_QUOTE_ISSUE_TOKEN_LENGTH = 2_500_000;
+export type IssueBlocker =
+  "OPEN_CONFLICT" | "ZERO_LINE" | "EMPTY_SECTION" | "FIRM_INCOMPLETE" | "DRAFT_NOT_CURRENT";
+export type IssueWarning =
+  "BASIS_OUT_OF_DATE" | "COMPARISON_OUT_OF_DATE" | "NO_COMPARISON" | "UNREVIEWED_FINDINGS";
 export type LineConflict = Readonly<{
   categoryId: string;
   conflictKey: string;
@@ -114,6 +127,7 @@ export type IssueState = Readonly<{
   conflicts: readonly LineConflict[];
   basisOutOfDate: boolean;
   comparisonOutOfDate: boolean;
+  noComparison?: boolean;
   findings: readonly StructuredEconomicsClaimDTO[];
   unreviewedFindings: boolean;
 }>;

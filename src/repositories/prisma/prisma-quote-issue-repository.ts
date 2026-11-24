@@ -207,6 +207,7 @@ export class PrismaQuoteIssueSession
         (line) => line.recorded && basisOutOfDate(line.recorded.basis, job, line.categoryId),
       ),
       comparisonOutOfDate: !!comparison && comparison.kind !== "AVAILABLE",
+      noComparison: !comparison,
       findings,
       unreviewedFindings,
     };
@@ -285,9 +286,14 @@ export class PrismaQuoteIssueSession
     await this.tx.evidenceReference.updateMany({
       where: {
         organizationId,
-        subjectType: "QUOTE_ITEM",
-        subjectId: { in: state.current.lines.map((line) => line.id) },
-        claimKey: "quote-draft:line",
+        OR: [
+          {
+            subjectType: "QUOTE_ITEM",
+            subjectId: { in: state.current.lines.map((line) => line.id) },
+            claimKey: "quote-draft:line",
+          },
+          { subjectType: "QUOTE_VERSION", subjectId: id, claimKey: "quote-document:total" },
+        ],
       },
       data: { authorityState: "APPROVED_COMMERCIAL" },
     });
@@ -326,7 +332,10 @@ export class PrismaQuoteIssueSession
     const organizationId = context.organizationId,
       original = await this.tx.quoteVersion.findFirstOrThrow({
         where: { id: versionId, organizationId },
-        include: { items: { where: { organizationId }, orderBy: { lineNumber: "asc" } } },
+        include: {
+          items: { where: { organizationId }, orderBy: { lineNumber: "asc" } },
+          sections: { where: { organizationId }, orderBy: { position: "asc" } },
+        },
       });
     const last = await this.tx.quoteVersion.findFirstOrThrow({
         where: { organizationId, quoteId: original.quoteId },
@@ -346,18 +355,34 @@ export class PrismaQuoteIssueSession
         amountBeforeTax: original.amountBeforeTax,
         taxAmount: original.taxAmount,
         totalAmount: original.totalAmount,
+        documentFormatVersion: original.documentFormatVersion,
+        discountAmount: original.discountAmount,
+        discountLabel: original.discountLabel,
       },
     });
-    for (const [index, item] of orderQuoteLines(
-      original.items,
-      state.job.catalog.workCategories,
-    ).entries()) {
+    const sectionIds = new Map<string, string>();
+    for (const section of original.sections) {
+      const sectionId = randomUUID();
+      sectionIds.set(section.id, sectionId);
+      await this.tx.quoteSection.create({
+        data: { ...section, id: sectionId, quoteVersionId: id },
+      });
+    }
+    const items =
+      original.documentFormatVersion === 2
+        ? original.items
+        : orderQuoteLines(
+            original.items.map((item) => ({ ...item, categoryId: item.categoryId ?? "" })),
+            state.job.catalog.workCategories,
+          );
+    for (const [index, item] of items.entries()) {
       const lineId = randomUUID();
       await this.tx.quoteItem.create({
         data: {
           ...item,
           id: lineId,
           quoteVersionId: id,
+          sectionId: item.sectionId ? sectionIds.get(item.sectionId)! : null,
           lineNumber: index + 1,
           authorityState: "HUMAN_REVIEWED",
           createdAt: new Date(),
@@ -389,6 +414,26 @@ export class PrismaQuoteIssueSession
           },
         });
     }
+    for (const reference of await this.tx.evidenceReference.findMany({
+      where: {
+        organizationId,
+        subjectType: "QUOTE_VERSION",
+        subjectId: versionId,
+        claimKey: "quote-document:total",
+      },
+    }))
+      await this.tx.evidenceReference.create({
+        data: {
+          ...reference,
+          id: randomUUID(),
+          subjectId: id,
+          authorityState: "HUMAN_REVIEWED",
+          locator: json(reference.locator),
+          supportedValue: json(reference.supportedValue),
+          createdAt: new Date(),
+          dataClassification: context.dataMode,
+        },
+      });
     return { kind: "REVISED", versionId: id };
   }
   async accept(

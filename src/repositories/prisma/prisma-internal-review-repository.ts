@@ -60,7 +60,7 @@ import {
 export type InternalReviewRepositoryOptions = Readonly<{
   checkpoint?: ((step: TransactionCheckpoint) => void | Promise<void>) | undefined;
 }>;
-const SOURCE_LOCKS = `LOCK TABLE "Organization", "Person", "Membership", "MembershipCapabilityGrant", "DemoSession", "ProjectAssignment", "Project", "ProjectScope", "ProjectMaterial", "Material", "ProjectSupplier", "Supplier", "Quote", "QuoteVersion", "QuoteItem", "ForecastCostVersion", "ForecastCostLine", "ProjectCostVersion", "CostLine", "SupplierOffer", "SupplierOfferItem", "Document", "DocumentVersion", "EvidenceReference", "EvidenceConflict", "IntelligenceRun", "ComparisonRun", "ComparisonCandidate", "ComparisonFactor", "ComparisonClaim", "EconomicsEnrichmentRun", "EconomicsObservationDecision" IN SHARE MODE`;
+const SOURCE_LOCKS = `LOCK TABLE "Organization", "Person", "Membership", "MembershipCapabilityGrant", "DemoSession", "ProjectAssignment", "Project", "ProjectScope", "ProjectMaterial", "Material", "ProjectSupplier", "Supplier", "Quote", "QuoteVersion", "QuoteSection", "QuoteItem", "ForecastCostVersion", "ForecastCostLine", "ProjectCostVersion", "CostLine", "SupplierOffer", "SupplierOfferItem", "Document", "DocumentVersion", "EvidenceReference", "EvidenceConflict", "IntelligenceRun", "ComparisonRun", "ComparisonCandidate", "ComparisonFactor", "ComparisonClaim", "EconomicsEnrichmentRun", "EconomicsObservationDecision" IN SHARE MODE`;
 const memberSelect = {
   id: true,
   organizationId: true,

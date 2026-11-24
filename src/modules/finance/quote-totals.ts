@@ -50,6 +50,52 @@ export type QuoteDocumentAmounts = QuoteTotals &
     discount: QuoteDocumentDraft["discount"];
   }>;
 
+/** Read stored facts without changing legacy rounding or rewriting an issued version. */
+export function storedQuoteDocument(
+  input: readonly Omit<ComputedQuoteSection, "subtotal">[],
+  discount: QuoteDocumentDraft["discount"],
+  totals: QuoteTotals,
+): QuoteDocumentAmounts {
+  const sections = input.map((section) => ({
+    ...section,
+    subtotal: decimalToString(
+      sum(
+        section.lines.flatMap((line) => (line.amount === null ? [] : [money(line.amount)])),
+        2,
+      ),
+    ),
+  }));
+  const percentageLines: QuoteDocumentAmounts["percentageLines"][number][] = [];
+  sections.forEach((section, sectionIndex) =>
+    section.lines.forEach((line, lineIndex) => {
+      if (line.kind === "PERCENTAGE" && line.amount !== null)
+        percentageLines.push({
+          sectionIndex,
+          lineIndex,
+          description: line.description,
+          percentage: line.percentage,
+          amount: line.amount,
+        });
+    }),
+  );
+  return {
+    ...totals,
+    sections,
+    discount,
+    percentageLines,
+    subtotal: decimalToString(
+      sum(
+        sections.flatMap((section) =>
+          section.lines.flatMap((line) =>
+            line.kind === "ITEM" && line.amount !== null ? [money(line.amount)] : [],
+          ),
+        ),
+        2,
+      ),
+    ),
+  };
+}
+
 /** Whole-dollar half-up at each line, fee and tax; percentage fees never compound. */
 export function quoteDocumentTotals(document: QuoteDocumentDraft): QuoteDocumentAmounts {
   const normalAmounts = document.sections.flatMap((section) =>

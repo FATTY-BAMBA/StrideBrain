@@ -2,6 +2,7 @@ import type { FirmWorkCategory } from "@/modules/firm-lists/domain/contracts";
 import { orderQuoteLines } from "@/modules/quote-draft/domain/quote-line-order";
 import { IDEMPOTENCY_KEY } from "@/modules/projects/domain/job-input";
 import { decimalToString, money } from "@/modules/finance/fixed-decimal";
+import type { QuoteDocumentDraft } from "./document-input";
 export type DraftLineInput = Readonly<{
   categoryId: string;
   description: string;
@@ -9,6 +10,7 @@ export type DraftLineInput = Readonly<{
   unit?: string;
 }>;
 export type SaveDraftInput = Readonly<{
+  document?: QuoteDocumentDraft;
   projectKey: string;
   idempotencyKey: string;
   baseVersionId: string | null;

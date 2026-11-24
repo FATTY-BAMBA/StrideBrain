@@ -4,6 +4,8 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   typedRoutes: true,
+  // Bounded 300-line documents and their signed issue snapshots can exceed the 1 MB default.
+  experimental: { serverActions: { bodySizeLimit: "4mb" } },
   serverExternalPackages: ["pdfkit"],
   outputFileTracingIncludes: { "/api/quotes/*/pdf": ["./assets/fonts/**"] },
   async headers() {

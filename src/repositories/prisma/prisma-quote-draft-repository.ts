@@ -1,6 +1,7 @@
 import { PrismaFirmListsRepository } from "./prisma-firm-lists-repository";
 import { orderQuoteLines } from "@/modules/quote-draft/domain/quote-line-order";
 import { categoryLabel } from "@/modules/localization/jobs";
+import { storedQuoteDocument, type ComputedQuoteLine } from "@/modules/finance/quote-totals";
 import { randomUUID } from "node:crypto";
 import type { Prisma, PrismaClient } from "../../../.generated/prisma/client";
 import { AuthorizationService } from "@/modules/authorization/authorization-service";
@@ -77,6 +78,16 @@ export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
         nameEn: true,
         nameZhTw: true,
         stage: true,
+        siteAddress: true,
+        organization: {
+          select: {
+            nameEn: true,
+            nameZhTw: true,
+            quoteDocumentDetails: { select: { legalNameEn: true, legalNameZhTw: true } },
+          },
+        },
+        client: { select: { organizationId: true, nameEn: true, nameZhTw: true } },
+        clientId: true,
         areaQuantity: true,
         areaUnit: true,
         currency: true,
@@ -88,9 +99,21 @@ export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
         },
       },
     });
-    if (!row || !this.auth.canReadProject(context, row.id).allowed) return null;
+    if (
+      !row ||
+      row.client.organizationId !== organizationId ||
+      !this.auth.canReadProject(context, row.id).allowed
+    )
+      return null;
     const catalog = await new PrismaFirmListsRepository(this.tx).read(context);
     if (!catalog) return null;
+    const details = context.capabilities.has("client:read")
+      ? await this.tx.client.findFirst({
+          where: { id: row.clientId, organizationId },
+          select: { contactPerson: true, address: true, taxId: true },
+        })
+      : null;
+    const zh = context.locale === "zh-TW";
     return {
       catalog,
       id: row.id,
@@ -98,6 +121,22 @@ export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
       businessKey: row.businessKey,
       name: context.locale === "zh-TW" ? row.nameZhTw : row.nameEn,
       stage: row.stage,
+      siteAddress: row.siteAddress ?? "",
+      header: {
+        firmName:
+          (zh
+            ? row.organization.quoteDocumentDetails?.legalNameZhTw
+            : row.organization.quoteDocumentDetails?.legalNameEn) ||
+          (zh ? row.organization.nameZhTw : row.organization.nameEn),
+        clientName: zh ? row.client.nameZhTw : row.client.nameEn,
+        ...(details
+          ? {
+              contactPerson: details.contactPerson,
+              clientAddress: details.address,
+              clientTaxId: details.taxId,
+            }
+          : {}),
+      },
       area: row.areaQuantity.toFixed(3),
       areaUnit: row.areaUnit,
       currency: row.currency,
@@ -144,6 +183,75 @@ export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
     new PrismaEvidencePanelRepository(
       this.tx as unknown as PrismaEvidencePanelDatabase,
     ).getAuthorizedSources(context, runId, ids);
+  async getStructure(context: RuntimeContext, job: QuoteDraftJob) {
+    if (
+      job.organizationId !== context.organizationId ||
+      !this.auth.canReadProject(context, job.id).allowed
+    )
+      return null;
+    const organizationId = context.organizationId;
+    const row = await this.tx.quoteVersion.findFirst({
+      where: { organizationId, supersededById: null, quote: { organizationId, projectId: job.id } },
+      orderBy: [{ createdAt: "desc" }, { versionNumber: "desc" }, { id: "asc" }],
+      select: {
+        versionNumber: true,
+        status: true,
+        documentFormatVersion: true,
+        sections: {
+          where: { organizationId },
+          orderBy: { position: "asc" },
+          select: { id: true, title: true, categoryId: true },
+        },
+        items: {
+          where: { organizationId },
+          orderBy: { lineNumber: "asc" },
+          select: {
+            sectionId: true,
+            categoryId: true,
+            description: true,
+            descriptionEn: true,
+            descriptionZhTw: true,
+            kind: true,
+            quantity: true,
+            unit: true,
+            remark: true,
+          },
+        },
+      },
+    });
+    if (!row) return null;
+    const mapLine = (line: (typeof row.items)[number]) => ({
+      kind: line.kind,
+      description:
+        line.description ??
+        (context.locale === "zh-TW" ? line.descriptionZhTw : line.descriptionEn),
+      ...(line.kind === "ITEM"
+        ? {
+            quantity: row.documentFormatVersion === 1 ? "1.00" : line.quantity.toFixed(2),
+            unit: row.documentFormatVersion === 1 ? "式" : line.unit,
+          }
+        : {}),
+      remark: line.remark,
+    });
+    return {
+      versionNumber: row.versionNumber,
+      status: row.status,
+      sections:
+        row.documentFormatVersion === 2
+          ? row.sections.map((section) => ({
+              title: section.title,
+              categoryId: section.categoryId,
+              lines: row.items.filter((line) => line.sectionId === section.id).map(mapLine),
+            }))
+          : [...new Set(row.items.map((line) => line.categoryId))].map((categoryId) => ({
+              title: categoryId
+                ? categoryLabel(context.locale, categoryId, job.catalog.workCategories)
+                : "",
+              categoryId,
+              lines: row.items.filter((line) => line.categoryId === categoryId).map(mapLine),
+            })),
+    };
+  }
   async getSaved(context: RuntimeContext, job: QuoteDraftJob): Promise<SavedDraft | null> {
     if (
       job.organizationId !== context.organizationId ||
@@ -154,9 +262,71 @@ export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
     const row = await this.tx.quoteVersion.findFirst({
       where: { organizationId, supersededById: null, quote: { organizationId, projectId: job.id } },
       orderBy: [{ createdAt: "desc" }, { versionNumber: "desc" }, { id: "asc" }],
-      include: { items: { where: { organizationId }, orderBy: { lineNumber: "asc" } } },
+      include: {
+        items: { where: { organizationId }, orderBy: { lineNumber: "asc" } },
+        sections: { where: { organizationId }, orderBy: { position: "asc" } },
+      },
     });
     if (!row) return null;
+    const totals = {
+      amountBeforeTax: row.amountBeforeTax.toFixed(2),
+      taxAmount: row.taxAmount.toFixed(2),
+      totalAmount: row.totalAmount.toFixed(2),
+    };
+    const description = (line: (typeof row.items)[number]) =>
+      line.description ?? (context.locale === "zh-TW" ? line.descriptionZhTw : line.descriptionEn);
+    const storedLine = (line: (typeof row.items)[number]): ComputedQuoteLine => {
+      const common = { id: line.id, description: description(line) };
+      if (line.kind === "NOTE") return { ...common, kind: "NOTE", amount: null };
+      if (line.kind === "PERCENTAGE")
+        return {
+          ...common,
+          kind: "PERCENTAGE",
+          percentage: line.percentage!.toFixed(2),
+          remark: line.remark,
+          amount: line.amount.toFixed(2),
+        };
+      return {
+        ...common,
+        kind: "ITEM",
+        quantity: row.documentFormatVersion === 1 ? "1.00" : line.quantity.toFixed(2),
+        unitPrice:
+          row.documentFormatVersion === 1 ? line.amount.toFixed(2) : line.unitPrice.toFixed(2),
+        unit: row.documentFormatVersion === 1 ? "式" : line.unit,
+        remark: line.remark,
+        amount: line.amount.toFixed(2),
+      };
+    };
+    const sections =
+      row.documentFormatVersion === 2
+        ? row.sections.map((section) => ({
+            id: section.id,
+            title: section.title,
+            categoryId: section.categoryId,
+            lines: row.items.filter((line) => line.sectionId === section.id).map(storedLine),
+          }))
+        : [
+            ...new Set(
+              orderQuoteLines(
+                row.items.map((line) => ({ ...line, categoryId: line.categoryId ?? "" })),
+                job.catalog.workCategories,
+              ).map((line) => line.categoryId),
+            ),
+          ].map((categoryId) => ({
+            title: categoryLabel(context.locale, categoryId, job.catalog.workCategories),
+            categoryId: categoryId || null,
+            lines: row.items
+              .filter((line) => (line.categoryId ?? "") === categoryId)
+              .map(storedLine),
+          }));
+    const document = storedQuoteDocument(
+      sections,
+      {
+        amount: row.discountAmount.toFixed(2),
+        label: row.discountLabel || (context.locale === "zh-TW" ? "優惠折讓" : "Discount"),
+      },
+      totals,
+    );
     const references = await this.tx.evidenceReference.findMany({
       where: {
         organizationId,
@@ -172,31 +342,31 @@ export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
       versionNumber: row.versionNumber,
       status: row.status,
       currency: row.currency,
-      totals: {
-        amountBeforeTax: row.amountBeforeTax.toFixed(2),
-        taxAmount: row.taxAmount.toFixed(2),
-        totalAmount: row.totalAmount.toFixed(2),
-      },
-      lines: row.items.map((line) => {
-        const provenance = object(
-          object(references.find((entry) => entry.subjectId === line.id)?.supportedValue)
-            .quoteDraft,
-        );
-        const recorded = object(provenance.recorded);
-        return {
-          id: line.id,
-          categoryId: line.categoryId,
-          unit: line.unit,
-          description: context.locale === "zh-TW" ? line.descriptionZhTw : line.descriptionEn,
-          amount: line.amount.toFixed(2),
-          recorded:
-            object(recorded.basis).policyVersion === QUOTE_DRAFT_POLICY_VERSION &&
-            typeof recorded.comparisonRunId === "string"
-              ? (recorded as RecordedDraftBasis)
-              : null,
-          enteredBy: typeof provenance.enteredBy === "string" ? provenance.enteredBy : null,
-        };
-      }),
+      documentFormatVersion: row.documentFormatVersion,
+      document,
+      totals,
+      lines: row.items
+        .filter((line) => line.kind !== "NOTE")
+        .map((line) => {
+          const provenance = object(
+            object(references.find((entry) => entry.subjectId === line.id)?.supportedValue)
+              .quoteDraft,
+          );
+          const recorded = object(provenance.recorded);
+          return {
+            id: line.id,
+            categoryId: line.categoryId ?? "",
+            unit: line.unit,
+            description: description(line),
+            amount: line.amount.toFixed(2),
+            recorded:
+              object(recorded.basis).policyVersion === QUOTE_DRAFT_POLICY_VERSION &&
+              typeof recorded.comparisonRunId === "string"
+                ? (recorded as RecordedDraftBasis)
+                : null,
+            enteredBy: typeof provenance.enteredBy === "string" ? provenance.enteredBy : null,
+          };
+        }),
     };
   }
   async findReceipt(
@@ -257,55 +427,93 @@ export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
         status: "DRAFT",
         authorityState: "HUMAN_REVIEWED",
         currency: job.currency,
+        ...(data.document
+          ? {
+              documentFormatVersion: 2,
+              discountAmount: data.document.discount.amount,
+              discountLabel: data.document.discount.label,
+            }
+          : {}),
         ...data.totals,
       },
     });
     const changedLineIds: string[] = [];
-    for (const [index, line] of orderQuoteLines(data.lines, job.catalog.workCategories).entries()) {
-      const lineId = randomUUID();
-      const old = data.previous?.lines.find((entry) => entry.categoryId === line.categoryId);
-      const oldItem = old
-        ? await this.tx.quoteItem.findFirst({
-            where: { id: old.id, organizationId, quoteVersionId: data.previous!.id },
-            select: { descriptionEn: true, descriptionZhTw: true },
-          })
-        : null;
-      await this.tx.quoteItem.create({
-        data: {
-          id: lineId,
-          organizationId,
-          quoteVersionId: versionId,
-          lineNumber: index + 1,
-          categoryId: line.categoryId,
-          descriptionEn:
-            context.locale === "en"
-              ? line.description
-              : (oldItem?.descriptionEn ??
-                categoryLabel("en", line.categoryId, job.catalog.workCategories)),
-          descriptionZhTw:
-            context.locale === "zh-TW"
-              ? line.description
-              : (oldItem?.descriptionZhTw ??
-                categoryLabel("zh-TW", line.categoryId, job.catalog.workCategories)),
-          amount: line.amount,
-          quantity: "1",
-          unit: line.unit!,
-          unitPrice: line.amount,
-          authorityState: "HUMAN_REVIEWED",
-        },
-      });
+    if (data.document) {
+      let lineNumber = 0,
+        financialIndex = 0;
+      for (const [index, section] of data.document.sections.entries()) {
+        const sectionId = randomUUID();
+        await this.tx.quoteSection.create({
+          data: {
+            id: sectionId,
+            organizationId,
+            quoteVersionId: versionId,
+            position: index + 1,
+            title: section.title,
+            categoryId: section.categoryId,
+          },
+        });
+        for (const line of section.lines) {
+          const lineId = randomUUID();
+          lineNumber++;
+          await this.tx.quoteItem.create({
+            data: {
+              id: lineId,
+              organizationId,
+              quoteVersionId: versionId,
+              sectionId,
+              lineNumber,
+              categoryId: section.categoryId,
+              kind: line.kind,
+              description: line.description,
+              descriptionEn: line.description,
+              descriptionZhTw: line.description,
+              amount: line.amount ?? "0",
+              quantity: line.kind === "ITEM" ? line.quantity : "0",
+              unit: line.kind === "ITEM" ? line.unit : line.kind === "PERCENTAGE" ? "%" : "",
+              unitPrice: line.kind === "ITEM" ? line.unitPrice : "0",
+              percentage: line.kind === "PERCENTAGE" ? line.percentage : null,
+              remark: line.kind === "NOTE" ? "" : line.remark,
+              authorityState: "HUMAN_REVIEWED",
+            },
+          });
+          if (line.kind !== "NOTE") {
+            const source = data.lines[financialIndex++]!;
+            await this.tx.evidenceReference.create({
+              data: {
+                id: randomUUID(),
+                organizationId,
+                subjectType: "QUOTE_ITEM",
+                subjectId: lineId,
+                claimKey: "quote-draft:line",
+                locator: { kind: "structured-line", lineNumber },
+                supportedValue: json({
+                  amount: line.amount,
+                  currency: job.currency,
+                  quoteDraft: { recorded: source.recorded, enteredBy: source.enteredBy },
+                }),
+                authorityState: "HUMAN_REVIEWED",
+                observationType: "QUOTED_PRICE",
+                dataClassification: context.dataMode,
+                effectiveAt: new Date(),
+              },
+            });
+          }
+          changedLineIds.push(lineId);
+        }
+      }
       await this.tx.evidenceReference.create({
         data: {
           id: randomUUID(),
           organizationId,
-          subjectType: "QUOTE_ITEM",
-          subjectId: lineId,
-          claimKey: "quote-draft:line",
-          locator: { kind: "structured-line", lineNumber: index + 1 },
+          subjectType: "QUOTE_VERSION",
+          subjectId: versionId,
+          claimKey: "quote-document:total",
+          locator: { kind: "structured-total" },
           supportedValue: json({
-            amount: line.amount,
+            amount: data.totals.amountBeforeTax,
             currency: job.currency,
-            quoteDraft: { recorded: line.recorded, enteredBy: line.enteredBy },
+            discountAmount: data.document.discount.amount,
           }),
           authorityState: "HUMAN_REVIEWED",
           observationType: "QUOTED_PRICE",
@@ -313,8 +521,64 @@ export class PrismaQuoteDraftSession implements QuoteDraftSessionPort {
           effectiveAt: new Date(),
         },
       });
-      if (data.changedCategories.includes(line.categoryId)) changedLineIds.push(lineId);
-    }
+    } else
+      for (const [index, line] of orderQuoteLines(
+        data.lines,
+        job.catalog.workCategories,
+      ).entries()) {
+        const lineId = randomUUID();
+        const old = data.previous?.lines.find((entry) => entry.categoryId === line.categoryId);
+        const oldItem = old
+          ? await this.tx.quoteItem.findFirst({
+              where: { id: old.id, organizationId, quoteVersionId: data.previous!.id },
+              select: { descriptionEn: true, descriptionZhTw: true },
+            })
+          : null;
+        await this.tx.quoteItem.create({
+          data: {
+            id: lineId,
+            organizationId,
+            quoteVersionId: versionId,
+            lineNumber: index + 1,
+            categoryId: line.categoryId,
+            descriptionEn:
+              context.locale === "en"
+                ? line.description
+                : (oldItem?.descriptionEn ??
+                  categoryLabel("en", line.categoryId, job.catalog.workCategories)),
+            descriptionZhTw:
+              context.locale === "zh-TW"
+                ? line.description
+                : (oldItem?.descriptionZhTw ??
+                  categoryLabel("zh-TW", line.categoryId, job.catalog.workCategories)),
+            amount: line.amount,
+            quantity: "1",
+            unit: line.unit!,
+            unitPrice: line.amount,
+            authorityState: "HUMAN_REVIEWED",
+          },
+        });
+        await this.tx.evidenceReference.create({
+          data: {
+            id: randomUUID(),
+            organizationId,
+            subjectType: "QUOTE_ITEM",
+            subjectId: lineId,
+            claimKey: "quote-draft:line",
+            locator: { kind: "structured-line", lineNumber: index + 1 },
+            supportedValue: json({
+              amount: line.amount,
+              currency: job.currency,
+              quoteDraft: { recorded: line.recorded, enteredBy: line.enteredBy },
+            }),
+            authorityState: "HUMAN_REVIEWED",
+            observationType: "QUOTED_PRICE",
+            dataClassification: context.dataMode,
+            effectiveAt: new Date(),
+          },
+        });
+        if (data.changedCategories.includes(line.categoryId)) changedLineIds.push(lineId);
+      }
     if (data.previous)
       await this.tx.quoteVersion.updateMany({
         where: {

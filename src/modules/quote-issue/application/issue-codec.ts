@@ -1,5 +1,6 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import type { IssuePreparation } from "@/modules/quote-issue/domain/contracts";
+import { MAX_QUOTE_ISSUE_TOKEN_LENGTH } from "@/modules/quote-issue/domain/contracts";
 import type { QuoteIssueCodec } from "@/repositories/ports/quote-issue-repository";
 /** Domain-separated MAC; Prepare remains read-only and the browser cannot invent a basis. */
 export class SignedQuoteIssueCodec implements QuoteIssueCodec {
@@ -19,7 +20,7 @@ export class SignedQuoteIssueCodec implements QuoteIssueCodec {
     return `${payload}.${this.signature(payload).toString("base64url")}`;
   }
   open(token: string): IssuePreparation | null {
-    if (token.length > 500_000) return null;
+    if (token.length > MAX_QUOTE_ISSUE_TOKEN_LENGTH) return null;
     const [payload, signature, ...extra] = token.split(".");
     if (!payload || !signature || extra.length) return null;
     const actual = Buffer.from(signature, "base64url"),

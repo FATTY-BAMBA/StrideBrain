@@ -34,6 +34,7 @@ const en = {
   NO_COMPARISON: "Run the comparison before preparing suggestions.",
   UNAVAILABLE: "The quote is unavailable. Please try again.",
   BASIS_UNAVAILABLE: "Some sources are unavailable to you. Suggestions cannot be prepared.",
+  DISCOUNT_EXCEEDS_SUBTOTAL: "The discount cannot exceed the subtotal including percentage fees.",
   INVALID:
     "Check every description and amount. Amounts must be non-negative, with up to 14 integer digits and two decimal places.",
   CONFLICT:
@@ -81,6 +82,7 @@ const zh: typeof en = {
   NO_COMPARISON: "請先執行比較，再計算建議金額。",
   UNAVAILABLE: "目前無法讀取報價，請稍後再試。",
   BASIS_UNAVAILABLE: "您目前無法查看部分來源，無法計算建議金額。",
+  DISCOUNT_EXCEEDS_SUBTOTAL: "優惠折讓不得超過加計百分比費用後的小計。",
   INVALID: "請檢查每項說明與金額。金額不得為負數，整數最多 14 位、小數最多 2 位。",
   CONFLICT: "草稿已變更，或此儲存識別碼已使用。請重新開啟報價頁面後再儲存。",
   move: "將專案移至報價審查",

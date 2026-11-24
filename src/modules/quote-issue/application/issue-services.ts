@@ -18,6 +18,7 @@ import {
 } from "../domain/input";
 import {
   emptyFirmDetails,
+  MAX_QUOTE_ISSUE_TOKEN_LENGTH,
   type IssueState,
   type IssueOptions,
   type IssuePreparation,
@@ -156,7 +157,7 @@ export class IssueQuote {
       !input ||
       !only(input, ["projectKey", "token", "idempotencyKey"]) ||
       !validKey(input.projectKey) ||
-      !bounded(input.token, 500000, true) ||
+      !bounded(input.token, MAX_QUOTE_ISSUE_TOKEN_LENGTH, true) ||
       !validIdempotency(input.idempotencyKey)
     )
       return { kind: "INVALID" };
@@ -387,6 +388,9 @@ export class GetQuoteIssue {
               documentNumber: state.issued.documentNumber,
               validUntil: state.issued.validUntil,
               acceptedOn: state.issued.acceptedOn,
+              clientName: state.issued.snapshot.clientName,
+              currency: state.issued.snapshot.currency,
+              totalAmount: state.issued.snapshot.totals.totalAmount,
             }
           : null,
         canIssue: context.capabilities.has("quote:issue"),

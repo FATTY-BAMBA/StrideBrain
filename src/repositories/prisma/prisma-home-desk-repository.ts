@@ -321,7 +321,7 @@ async function readFinancials(
             id: line.id,
             subjectType: "QUOTE_ITEM",
             lineNumber: line.lineNumber,
-            categoryId: line.categoryId,
+            categoryId: line.categoryId ?? "",
             amount: line.amount.toString(),
             quantity: line.quantity.toString(),
             unitRate: line.unitPrice.toString(),

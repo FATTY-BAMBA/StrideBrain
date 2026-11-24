@@ -17,3 +17,7 @@ Prisma schema validation, TypeScript, and all **11 delivery-A tests** pass.
 ## Pending
 
 Repository/use cases, editor, PDF, category roll-up, full check, browser/PDF evidence and the required three-round paid evaluation. No hosted operations. Hosted acceptance waits for the Product Director; the single PR will stay draft.
+
+## Delivery B — repository and application
+
+95 targeted tests passed across quote-document, quote-draft and quote-issue (16 files). This includes saving without a comparison, server-recomputed totals, concurrent idempotency, Viewer structure without financial fields, cross-tenant denials, immutable version 2 issue/revision snapshots and site-address audit redaction. A second forward migration preserves the legacy amount constraint while adding whole-dollar item, percentage and note invariants. Hosted acceptance remains waiting for the Product Director.

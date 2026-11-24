@@ -71,13 +71,22 @@ export function prepareIssuePolicy(
   if (state.conflicts.length) blockers.push("OPEN_CONFLICT");
   if (state.current?.lines.some((line) => money(line.amount).atoms <= 0n))
     blockers.push("ZERO_LINE");
+  if (
+    state.current?.document?.sections.some(
+      (section) => !section.title.trim() || section.lines.length === 0,
+    )
+  )
+    blockers.push("EMPTY_SECTION");
+  if (state.current?.document && !state.current.lines.length && !blockers.includes("ZERO_LINE"))
+    blockers.push("ZERO_LINE");
   const missingFields = missingFirmFields(state.firm, options.language);
   if (missingFields.length) blockers.push("FIRM_INCOMPLETE");
   if (state.basisOutOfDate) warnings.push("BASIS_OUT_OF_DATE");
   if (state.comparisonOutOfDate) warnings.push("COMPARISON_OUT_OF_DATE");
+  if (state.noComparison) warnings.push("NO_COMPARISON");
   if (state.unreviewedFindings) warnings.push("UNREVIEWED_FINDINGS");
   const zh = options.language === "zh-TW";
-  const snapshot: QuoteDocumentSnapshot = {
+  const legacy = {
     schemaVersion: "QUOTE-DOCUMENT-1.0",
     language: options.language,
     firm: {
@@ -115,5 +124,13 @@ export function prepareIssuePolicy(
     },
     terms: options.terms ?? (zh ? firm.termsZhTw : firm.termsEn),
   };
+  const snapshot: QuoteDocumentSnapshot = state.current?.document
+    ? {
+        ...legacy,
+        schemaVersion: "QUOTE-DOCUMENT-2.0",
+        siteAddress: state.job.siteAddress ?? "",
+        document: state.current.document,
+      }
+    : { ...legacy, schemaVersion: "QUOTE-DOCUMENT-1.0" };
   return { snapshot, blockers, missingFirmFields: missingFields, warnings };
 }
