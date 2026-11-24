@@ -133,6 +133,8 @@ const values: Readonly<Record<string, readonly [string, string]>> = {
 };
 
 export function evidenceValueLabel(locale: Locale, value: string, catalog: FirmLists): string {
+  if (value === "TWD_PER_M2" && catalog.areaDisplayUnit === "ping")
+    return locale === "zh-TW" ? "新臺幣／坪" : "TWD/坪";
   const financial = getFinancialCopy(locale);
   const subtype = projectSubtypeLabel(locale, value, catalog.jobTypes);
   if (subtype) return subtype;

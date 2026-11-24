@@ -49,7 +49,7 @@ export class PrismaQuoteListRepository implements QuoteListRepository {
       WHERE q."organizationId"=${context.organizationId} AND p."deletedAt" IS NULL
       ${context.role === "ORGANIZATION_ADMIN" ? Prisma.empty : Prisma.sql`AND p.id IN (${Prisma.join(assigned)})`}
       ${input.clientKey ? Prisma.sql`AND c."businessKey"=${input.clientKey}` : Prisma.empty}
-      ${input.status ? Prisma.sql`AND (CASE WHEN current.status IN ('ISSUED','ACCEPTED') THEN current.status ELSE 'DRAFT' END)=${input.status}` : Prisma.empty}
+      ${input.status ? Prisma.sql`AND current.status=${input.status}` : Prisma.empty}
       ORDER BY q."businessKey" ASC LIMIT 51 OFFSET ${(input.page - 1) * 50}
     `);
     const canReadAmounts = context.capabilities.has("quote:read");

@@ -431,3 +431,65 @@ describe("assistant read tools", () => {
     });
   });
 });
+
+describe("firm-unit past quoted rates", () => {
+  it.each(["en", "zh-TW"] as const)(
+    "sends only display-ready firm-unit figures and grounds them in %s",
+    async (locale) => {
+      for (const unit of ["m2", "ping"] as const) {
+        const f = setup();
+        const stored = {
+          kind: "AVAILABLE",
+          comparisonRunId: "run",
+          projectKeys: [],
+          job: { currency: "TWD", areaUnit: "m2" },
+          baselines: [
+            {
+              categoryId: "IMPORTED_STONE",
+              history: {
+                eligibleObservationCount: 3,
+                medianNormalizedAmount: "2420.000000",
+                minimumNormalizedAmount: "1210.000000",
+                maximumNormalizedAmount: "3630.000000",
+                evidenceReferenceIds: ["synthetic-reference"],
+              },
+            },
+          ],
+        };
+        f.services.history.execute.mockResolvedValue(stored);
+        const before = JSON.stringify(stored);
+        const result = await f.tools.execute(
+          jobContext({ locale, firmLists: { ...seededFirmLists, areaDisplayUnit: unit } }),
+          { name: "get_past_prices", arguments: { projectKey: "J" } },
+        );
+        expect(result.status).toBe("OK");
+        const facts = modelFacts(result.sources[0]!.facts);
+        const median = unit === "m2" ? "NT$2,420/m²" : "NT$8,000/坪";
+        expect(facts).toMatchObject({
+          displayMedian: median,
+          displayLow: unit === "m2" ? "NT$1,210/m²" : "NT$4,000/坪",
+          displayHigh: unit === "m2" ? "NT$3,630/m²" : "NT$12,000/坪",
+        });
+        expect(facts).not.toHaveProperty("median");
+        expect(facts).not.toHaveProperty("unit");
+        const answer = (amount: string) => ({
+          text:
+            locale === "en"
+              ? `The past quoted price median is ${amount}.`
+              : `過往報價單價中位數為 ${amount}。`,
+          sourceIds: [result.sources[0]!.sourceId],
+          followUps: [],
+        });
+        expect(checkAnswer(answer(median), result.sources, locale).kind).toBe("ACCEPTED");
+        if (unit === "ping") {
+          expect(JSON.stringify(facts)).not.toMatch(/m²|m2|2,420|1,210|3,630/);
+          expect(checkAnswer(answer("NT$2,420/坪"), result.sources, locale)).toEqual({
+            kind: "REJECTED",
+            reason: "UNSUPPORTED_NUMBER",
+          });
+        }
+        expect(JSON.stringify(stored)).toBe(before);
+      }
+    },
+  );
+});

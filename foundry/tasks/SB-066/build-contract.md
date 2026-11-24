@@ -11,3 +11,9 @@
 - Hosted acceptance is waiting for the Product Director. Keep the sole PR in draft.
 
 Confirmed decisions are recorded in inventory.md: lock used pricing mappings; keep pricing-only parents hidden from scopes; one Quotes row per quote using issued/accepted amounts, with a draft-revision marker.
+
+PR #68 review corrections:
+
+- The selected quote version retains its own DRAFT, INTERNAL_REVIEW, ISSUED, ACCEPTED or FINAL status; the same five statuses are filterable. Version-selection precedence is unchanged. A newer version other than issued, accepted or superseded marks the issued row as a revision in draft.
+- Displayed per-area prices use the firm's area unit across the Quote tab, comparison cells, evidence traces/values and assistant past-price facts. All share the exact 400/121 conversion; canonical stored rates, ranking and claims are unchanged. Existing m² output is preserved. Model-visible facts contain only formatted firm-unit rates, and the displayed-number grounding rule still checks them.
+- Use paid evaluation dispatch 2 of 2 after npm run check. No hosted changes; keep the PR draft for Product Director acceptance.

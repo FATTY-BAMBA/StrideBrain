@@ -2,7 +2,7 @@
   "issue": 66,
   "branch": "build/sb-066-clients-firm-lists",
   "baseCommit": "6310c1628e4a2e82e9647bc02cdd297326f6b363",
-  "status": "VERIFIED_WAITING_FOR_PRODUCT_DIRECTOR",
+  "status": "REVIEW_FIXES_LOCAL_VERIFIED_PENDING_PAID_RUN_2",
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "pullRequestState": "DRAFT",
   "paidRunLimit": 2,
@@ -54,7 +54,7 @@
     "seededComparisonParity": "PASSED",
     "quotesAndMappingTests": 18,
     "npmRunCheck": "PASSED",
-    "tests": 1541,
+    "tests": 1557,
     "files": 149,
     "browser": "PASSED",
     "pdf": "PASSED"
@@ -63,5 +63,9 @@
     "runId": 45293249019,
     "commit": "894ecc9a8e74556e5e0a11c798901e9e8a5376a3",
     "status": "PASSED"
-  }
+  },
+  "reviewFixes": [
+    "Quote row/filter preserve real status and mark newer unissued revisions",
+    "Comparison, evidence and assistant prices use the shared firm-area-unit conversion"
+  ]
 }

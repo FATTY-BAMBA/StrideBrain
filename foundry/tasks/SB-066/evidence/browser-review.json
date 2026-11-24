@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "checks": [
+    "Owner sees all five filter choices; 24 FINAL rows, no FINAL row in Draft, and two INTERNAL_REVIEW rows in both languages.",
+    "The same saved comparison displays converted rates and evidence traces under m² and ping without rerunning economics; both languages captured.",
+    "Viewer still sees quote statuses with no amounts."
+  ],
+  "screens": [
+    "en-quotes.png",
+    "en-quotes-final.png",
+    "en-quotes-internal-review.png",
+    "zh-TW-quotes.png",
+    "zh-TW-quotes-final.png",
+    "zh-TW-quotes-internal-review.png",
+    "en-comparison-m2.png",
+    "en-evidence-m2.png",
+    "zh-TW-comparison-m2.png",
+    "zh-TW-evidence-m2.png",
+    "en-comparison-ping.png",
+    "en-evidence-ping.png",
+    "zh-TW-comparison-ping.png",
+    "zh-TW-evidence-ping.png",
+    "en-viewer-quotes.png"
+  ],
+  "pageErrors": [],
+  "comparisonUrl": "/en/projects/PRJ-XINYI-026/compare?run=cmprun_457a3bcc-0b0c-4620-bce1-2e311307eba1&economics=econrun_7d6673e8-0122-495b-b7c3-d26beeeeb8bc&selected=PRJ-NEIHU-021%2CPRJ-ZHONGSHAN-018%2CPRJ-NANJING-023"
+}

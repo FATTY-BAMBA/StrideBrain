@@ -753,3 +753,38 @@ describe("job-neutral claim presentation", () => {
     expect(view.cards.map((card) => card.scoreLabel)).toEqual(["88/100", "81/100", "79/100"]);
   });
 });
+
+describe("firm-unit comparison prices", () => {
+  it.each(["en", "zh-TW"] as const)(
+    "keeps stored results and displays m²/坪 rates in %s",
+    (locale) => {
+      const stored = economics(),
+        before = JSON.stringify(stored);
+      for (const unit of ["m2", "ping"] as const) {
+        const view = buildComparisonExperience({
+          catalog: { ...seededFirmLists, areaDisplayUnit: unit },
+          stage4: stage4(),
+          economics: stored,
+          locale,
+        });
+        const unitText =
+          locale === "en"
+            ? `TWD/${unit === "m2" ? "m²" : "坪"}`
+            : `新台幣／${unit === "m2" ? "m²" : "坪"}`;
+        expect(row(view, "overall-quoted")?.cells.__ACTIVE_PROJECT__?.primary).toBe(
+          `${unit === "m2" ? "NT$25,750" : "NT$85,124"} · ${unitText}`,
+        );
+        expect(row(view, "overall-actual")?.cells["PRJ-NEIHU-021"]?.primary).toBe(
+          `${unit === "m2" ? "NT$18,984" : "NT$62,756"} · ${unitText}`,
+        );
+        expect(row(view, "IMPORTED_STONE-QUOTE")?.cells["PRJ-NEIHU-021"]?.primary).toContain(
+          unitText,
+        );
+        expect(
+          row(view, "LIGHTING_ELECTRICAL-ACTUAL")?.cells.__ACTIVE_PROJECT__?.primary,
+        ).toContain(unitText);
+      }
+      expect(JSON.stringify(stored)).toBe(before);
+    },
+  );
+});

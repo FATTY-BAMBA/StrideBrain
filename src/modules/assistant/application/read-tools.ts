@@ -1,3 +1,5 @@
+import { areaUnitLabel, pricePerAreaInFirmUnit } from "@/modules/firm-lists/domain/area-unit";
+import { decimalToString, rescale } from "@/modules/finance/fixed-decimal";
 import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
 import { namedProjects, type AssistantProjectIdentity } from "../domain/subjects";
 import { closedLessonText } from "@/modules/home-desk/presentation";
@@ -466,6 +468,11 @@ export class AssistantReadTools {
             : {}),
         };
       const keys = [projectKey, ...result.projectKeys];
+      const rateUnit = catalog.areaDisplayUnit;
+      const rateValue = (value: string | null | undefined) =>
+        value == null || rateUnit === "m2"
+          ? value
+          : decimalToString(rescale(pricePerAreaInFirmUnit(value, rateUnit), 6, "HALF_UP"));
       const sources = result.baselines
         .filter((b) => !args.categoryId || args.categoryId === b.categoryId)
         .map((b) =>
@@ -480,22 +487,31 @@ export class AssistantReadTools {
               priceType: copy.quotedPrices,
               history: b.history.eligibleObservationCount ? copy.quotedPrices : copy.noHistory,
               count: b.history.eligibleObservationCount,
-              median: b.history.medianNormalizedAmount,
-              low: b.history.minimumNormalizedAmount,
-              high: b.history.maximumNormalizedAmount,
-              unit: `${result.job.currency}/${result.job.areaUnit}`,
+              median: rateValue(b.history.medianNormalizedAmount),
+              low: rateValue(b.history.minimumNormalizedAmount),
+              high: rateValue(b.history.maximumNormalizedAmount),
+              unit: `${result.job.currency}/${rateUnit === "m2" ? "m2" : "坪"}`,
               evidenceReferenceIds: b.history.evidenceReferenceIds,
               ...(b.history.medianNormalizedAmount
                 ? {
                     displayMedian:
-                      formatQuoteRate(b.history.medianNormalizedAmount, result.job.currency) +
-                      `/${result.job.areaUnit === "m2" ? "m²" : result.job.areaUnit}`,
+                      formatQuoteRate(
+                        b.history.medianNormalizedAmount,
+                        result.job.currency,
+                        rateUnit,
+                      ) + `/${areaUnitLabel(rateUnit)}`,
                     displayLow:
-                      formatQuoteRate(b.history.minimumNormalizedAmount!, result.job.currency) +
-                      `/${result.job.areaUnit === "m2" ? "m²" : result.job.areaUnit}`,
+                      formatQuoteRate(
+                        b.history.minimumNormalizedAmount!,
+                        result.job.currency,
+                        rateUnit,
+                      ) + `/${areaUnitLabel(rateUnit)}`,
                     displayHigh:
-                      formatQuoteRate(b.history.maximumNormalizedAmount!, result.job.currency) +
-                      `/${result.job.areaUnit === "m2" ? "m²" : result.job.areaUnit}`,
+                      formatQuoteRate(
+                        b.history.maximumNormalizedAmount!,
+                        result.job.currency,
+                        rateUnit,
+                      ) + `/${areaUnitLabel(rateUnit)}`,
                   }
                 : {}),
             },

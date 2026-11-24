@@ -8,7 +8,13 @@ export type QuoteListVersion = Readonly<{
   currency: string;
   totalAmount?: string;
 }>;
-export const QUOTE_LIST_STATUSES = ["DRAFT", "ISSUED", "ACCEPTED"] as const;
+export const QUOTE_LIST_STATUSES = [
+  "DRAFT",
+  "INTERNAL_REVIEW",
+  "ISSUED",
+  "ACCEPTED",
+  "FINAL",
+] as const;
 export type QuoteListStatus = (typeof QUOTE_LIST_STATUSES)[number];
 export function currentQuoteRow(versions: readonly QuoteListVersion[]) {
   const candidates = versions
@@ -18,14 +24,18 @@ export function currentQuoteRow(versions: readonly QuoteListVersion[]) {
   const current = issued ?? candidates[0];
   if (!current) return null;
   return {
-    status: (issued ? issued.status : "DRAFT") as QuoteListStatus,
+    status: current.status as QuoteListStatus,
     documentNumber: issued?.documentNumber ?? null,
     date: issued?.issuedAt ?? current.createdAt,
     currency: current.currency,
     ...(current.totalAmount !== undefined ? { totalAmount: current.totalAmount } : {}),
     revisionInDraft:
       !!issued &&
-      candidates.some((v) => v.status === "DRAFT" && v.versionNumber > issued.versionNumber),
+      candidates.some(
+        (v) =>
+          !["ISSUED", "ACCEPTED", "SUPERSEDED"].includes(v.status) &&
+          v.versionNumber > issued.versionNumber,
+      ),
   };
 }
 export function quoteListSearch(

@@ -39,6 +39,25 @@ suite("Quotes and client jobs access", () => {
     if (draft.kind === "AVAILABLE")
       expect(draft.rows.some((r) => r.projectKey === "PRJ-XINYI-026")).toBe(false);
   });
+  it("shows closed-job FINAL versions and filters by their real status instead of Draft", async () => {
+    const actor = await db.actor();
+    const finals = await quotes().execute(actor, { status: "FINAL", page: 1 });
+    expect(finals.kind).toBe("AVAILABLE");
+    if (finals.kind !== "AVAILABLE") throw Error("FINAL_ROWS_REQUIRED");
+    expect(finals.rows.find((r) => r.projectKey === "PRJ-HIST-001")?.status).toBe("FINAL");
+    expect(finals.rows.every((r) => r.status === "FINAL")).toBe(true);
+    const drafts = await quotes().execute(actor, { status: "DRAFT", page: 1 });
+    expect(drafts.kind).toBe("AVAILABLE");
+    if (drafts.kind !== "AVAILABLE") throw Error("DRAFT_ROWS_REQUIRED");
+    expect(drafts.rows.some((r) => r.projectKey === "PRJ-HIST-001")).toBe(false);
+    expect(drafts.rows.every((r) => r.status === "DRAFT")).toBe(true);
+    const viewer = await quotes().execute(await db.actor("membership_horizon_viewer"), {
+      status: "FINAL",
+      page: 1,
+    });
+    expect(viewer.kind).toBe("AVAILABLE");
+    expect(JSON.stringify(viewer)).not.toMatch(/totalAmount|amountBeforeTax|taxAmount/);
+  });
   it("lists client jobs and quotes only within the member's readable jobs", async () => {
     const c = await db.actor("membership_horizon_mei");
     const result = await jobs().execute(c, "CLIENT-01");

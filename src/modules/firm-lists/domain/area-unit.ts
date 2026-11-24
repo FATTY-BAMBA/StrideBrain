@@ -3,11 +3,20 @@ import {
   decimalToString,
   divide,
   rescale,
+  unitRate,
 } from "@/modules/finance/fixed-decimal";
 
 export const AREA_UNITS = ["m2", "ping"] as const;
 export type AreaDisplayUnit = (typeof AREA_UNITS)[number];
 export const areaUnitLabel = (unit: AreaDisplayUnit): string => (unit === "ping" ? "坪" : "m²");
+
+/** Convert a canonical per-m² rate for display only; never change its stored basis. */
+export function pricePerAreaInFirmUnit(rate: string, unit: AreaDisplayUnit) {
+  const value = unitRate(rate);
+  return unit === "m2"
+    ? value
+    : divide({ ...value, atoms: value.atoms * 400n }, decimalFromString("121", 0), 12, "HALF_UP");
+}
 
 /** The canonical storage scale stays three decimals. No floating-point conversion. */
 export function areaToSquareMetres(digits: string, unit: AreaDisplayUnit): string | null {

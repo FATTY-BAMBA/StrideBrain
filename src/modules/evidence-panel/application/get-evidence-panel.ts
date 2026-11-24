@@ -1,4 +1,6 @@
 import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
+import { areaUnitLabel } from "@/modules/firm-lists/domain/area-unit";
+import { formatQuoteRate, formatAreaRateNumber } from "@/modules/quote-draft/presentation";
 import type {
   ComparisonFreshness,
   ComparisonFreshnessReader,
@@ -62,8 +64,42 @@ function formatNumber(locale: Locale, value: unknown, digits = 2): string {
   }).format(parsed);
 }
 
-function formatValue(locale: Locale, key: string, value: unknown, catalog: FirmLists): string {
+const normalizedRateFields = new Set([
+  "currentNormalizedAmount",
+  "baselineMedianNormalizedAmount",
+  "medianNormalizedAmount",
+  "minimumNormalizedAmount",
+  "maximumNormalizedAmount",
+]);
+
+function formatValue(
+  locale: Locale,
+  key: string,
+  value: unknown,
+  catalog: FirmLists,
+  record: Readonly<Record<string, unknown>> = {},
+): string {
   if (value === null || value === undefined) return "—";
+  const normalizedUnit = record.unit === "TWD_PER_M2";
+  const lineRate =
+    ["unitPrice", "unitRate"].includes(key) && ["m2", "m²"].includes(String(record.unit));
+  if (
+    (normalizedRateFields.has(key) ||
+      (normalizedUnit && ["amount", "normalizedValue", "unitRate"].includes(key)) ||
+      lineRate) &&
+    !(key === "unitRate" && catalog.areaDisplayUnit === "m2")
+  ) {
+    // Retain the m² presentation; convert only the displayed projection, never the evidence DTO.
+    if (key === "normalizedValue") {
+      if (catalog.areaDisplayUnit === "ping")
+        return `${formatAreaRateNumber(String(value), catalog.areaDisplayUnit)} /坪`;
+    } else {
+      return (
+        formatQuoteRate(String(value), "TWD", catalog.areaDisplayUnit) +
+        (catalog.areaDisplayUnit === "ping" ? `/${areaUnitLabel(catalog.areaDisplayUnit)}` : "")
+      );
+    }
+  }
   if (key === "field") {
     const label = getEvidencePanelCopy(locale).fieldLabels[String(value)];
     if (label) return label;
@@ -103,7 +139,7 @@ function fieldsFromObject(
       .map(([key, field]) =>
         Object.freeze({
           label: copy.fieldLabels[key]!,
-          value: formatValue(locale, key, field, catalog),
+          value: formatValue(locale, key, field, catalog, value),
         }),
       ),
   );
@@ -194,7 +230,15 @@ export function sourceView(
               .map((field) =>
                 Object.freeze({
                   label: copy.fieldLabels[field.key]!,
-                  value: formatValue(locale, field.key, field.value, catalog),
+                  value: formatValue(
+                    locale,
+                    field.key,
+                    field.value,
+                    catalog,
+                    Object.fromEntries(
+                      source.previewFields.map((entry) => [entry.key, entry.value]),
+                    ),
+                  ),
                 }),
               ),
           ),
@@ -290,7 +334,7 @@ function financialTrace(
             "{count}",
             String(input.evidenceReferenceIds.length),
           ),
-          normalizedValueLabel: `${formatNumber(locale, input.normalizedValue, 2)} ${evidenceValueLabel(locale, input.unit, catalog)}`,
+          normalizedValueLabel: `${input.unit === "TWD_PER_M2" ? formatAreaRateNumber(input.normalizedValue, catalog.areaDisplayUnit) : formatNumber(locale, input.normalizedValue, 2)} ${evidenceValueLabel(locale, input.unit, catalog)}`,
           sourceCount: input.evidenceReferenceIds.length,
         }),
       ),

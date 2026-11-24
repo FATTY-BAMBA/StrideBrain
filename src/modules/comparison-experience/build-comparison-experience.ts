@@ -1,5 +1,10 @@
+import { formatQuoteRate } from "@/modules/quote-draft/presentation";
 import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
-import { areaInFirmUnit, areaUnitLabel } from "@/modules/firm-lists/domain/area-unit";
+import {
+  areaInFirmUnit,
+  areaUnitLabel,
+  type AreaDisplayUnit,
+} from "@/modules/firm-lists/domain/area-unit";
 import {
   claimFindingText,
   findClaim,
@@ -66,9 +71,13 @@ function formatMoney(locale: Locale, value: string | undefined): string {
   return `NT$${formatNumber(locale, value, 0)}`;
 }
 
-function formatRate(locale: Locale, value: string | undefined, copy: ComparisonCopy): string {
+function formatRate(
+  value: string | undefined,
+  copy: ComparisonCopy,
+  unit: AreaDisplayUnit,
+): string {
   if (value === undefined) return "—";
-  return `NT$${formatNumber(locale, value, 0)} · ${copy.normalizedUnit}`;
+  return `${formatQuoteRate(value, "TWD", unit)} · ${unit === "m2" ? copy.normalizedUnit : copy.normalizedUnit.replace("m²", "坪")}`;
 }
 
 function formatPercent(locale: Locale, value: string | undefined): string {
@@ -193,6 +202,7 @@ function aggregateStateCell(
   projectKey: string,
   locale: Locale,
   copy: ComparisonCopy,
+  unit: AreaDisplayUnit,
   claimKey?: string,
 ): ComparisonTableCellView {
   if (!aggregate) return cell("UNAVAILABLE", copy.states.unavailable);
@@ -216,7 +226,7 @@ function aggregateStateCell(
   }
   const value = traceValue(aggregate, projectKey);
   if (!value) return cell("UNAVAILABLE", copy.states.unavailable);
-  return cell("VALUE", formatRate(locale, value, copy), "NEUTRAL", {
+  return cell("VALUE", formatRate(value, copy, unit), "NEUTRAL", {
     secondary: copy.states.sufficient,
     claimKey,
   });
@@ -226,6 +236,7 @@ function varianceCell(
   finding: VarianceFindingDTO | undefined,
   locale: Locale,
   copy: ComparisonCopy,
+  unit: AreaDisplayUnit,
   claimKey?: string,
 ): ComparisonTableCellView {
   if (!finding) return cell("UNAVAILABLE", copy.states.unavailable);
@@ -234,7 +245,7 @@ function varianceCell(
   if (finding.state === "INSUFFICIENT") {
     return cell(
       "INSUFFICIENT",
-      formatRate(locale, finding.currentNormalizedAmount, copy),
+      formatRate(finding.currentNormalizedAmount, copy, unit),
       "CAUTION",
       { secondary: copy.states.insufficient, claimKey },
     );
@@ -245,7 +256,7 @@ function varianceCell(
       : finding.direction === "ABOVE"
         ? "CAUTION"
         : "NEUTRAL";
-  return cell("VALUE", formatRate(locale, finding.currentNormalizedAmount, copy), tone, {
+  return cell("VALUE", formatRate(finding.currentNormalizedAmount, copy, unit), tone, {
     secondary: `${formatPercent(locale, finding.variancePercent)} · ${formatMoney(locale, finding.currentAmount)}`,
     claimKey,
   });
@@ -293,6 +304,7 @@ function historyRow(
   aggregate: HistoricalAggregateDTO | undefined,
   locale: Locale,
   copy: ComparisonCopy,
+  unit: AreaDisplayUnit,
   claimKey?: string,
 ): ComparisonTableRowView {
   return Object.freeze({
@@ -302,7 +314,7 @@ function historyRow(
       stage4,
       selectedKeys,
       financialCell(
-        varianceCell(current, locale, copy, claimKey),
+        varianceCell(current, locale, copy, unit, claimKey),
         current
           ? current.currentBasis === "FORECAST"
             ? "FORECAST_DIRECT_COST"
@@ -312,7 +324,7 @@ function historyRow(
       ),
       (match) =>
         financialCell(
-          aggregateStateCell(aggregate, match.project.projectKey, locale, copy, claimKey),
+          aggregateStateCell(aggregate, match.project.projectKey, locale, copy, unit, claimKey),
           aggregate?.observationType,
           locale,
         ),
@@ -659,6 +671,7 @@ function contextSections(
           economics.overall.quotedHistory,
           locale,
           copy,
+          catalog.areaDisplayUnit,
           findClaim(economics, "OVERALL_QUOTED_VARIANCE")?.claimKey,
         ),
         historyRow(
@@ -670,6 +683,7 @@ function contextSections(
           economics.overall.actualHistory,
           locale,
           copy,
+          catalog.areaDisplayUnit,
           findClaim(economics, "OVERALL_FORECAST_ACTUAL_VARIANCE")?.claimKey,
         ),
       ]
@@ -708,6 +722,7 @@ function contextSections(
           basis === "QUOTE" ? category.quotedHistory : category.actualHistory,
           locale,
           copy,
+          catalog.areaDisplayUnit,
           claim?.claimKey,
         ),
       );
