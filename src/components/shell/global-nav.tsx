@@ -41,15 +41,11 @@ export function GlobalNav({ locale, labels, canReadClients = false }: GlobalNavP
               {item.planned && <small>{locale === "zh-TW" ? "規劃中" : "Planned"}</small>}
             </>
           );
-          return item.planned ? (
-            <div key={item.key} className={styles.item}>
-              {content}
-            </div>
-          ) : (
+          return (
             <Link
               key={item.key}
               href={href as Route}
-              className={styles.item}
+              className={`${styles.item}${item.planned ? ` ${styles.planned}` : ""}`}
               aria-current={isActive ? "page" : undefined}
             >
               {content}

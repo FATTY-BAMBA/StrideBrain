@@ -6,7 +6,16 @@
 
 Branch `build/sb-069-design-foundation` starts from merged main `b972483a206a49ad7929aa4b7cdf24c3bf0de3d2`, after PR #68. Delivery A committed the token file, mechanical legacy renames and the tested CSS gate. B added licensed local fonts and measured their transfer before continuing. C introduced the light shell and icons; D rebuilt the Quotes and Clients lists with shared components; E adds [DESIGN_SYSTEM.md](../../../docs/design/DESIGN_SYSTEM.md), the AGENTS.md rule and this evidence. Paper, Tabs and SectionHeading are specified, not implemented.
 
-## Required checks
+## PR #70 review corrections — 24 November
+
+- Fonts and adjacent licences now live in `public/fonts/v1/`; manifest paths and generated CSS use that version. `next.config.ts` sends `Cache-Control: public, max-age=31536000, immutable` only for `/fonts/v1/:path*`. The header rule has a regression test. The generator verifies the same 117 hashes and sizes offline. Changing a font requires a new version folder; the design system records this cache contract.
+- The shared page container is centred and capped by `--page-width: 1120px`. The shell retains `--content-width: 1500px` for older page bodies. Both are documented.
+- Ordinary navigation items use ink. Planned Knowledge and Customer Care are muted links again, retaining 規劃中 / Planned and native keyboard access. This follows the Product Director's review decision, superseding the original non-link requirement. Bilingual shell tests assert the destinations, tab reachability, planned styling/tag and unchanged Viewer omission of Clients.
+- **`npm run check` passed: 1,575 tests in 154 files**, formatting, CSS token gate, lint, strict typecheck and production build. [Full review output](evidence/review-check.log). The first attempt found a strict CSS-module type assertion error in the updated test; that assertion was corrected before rerunning. No application type or test rule was weakened. A later full-suite attempt had one failure in the unchanged PostgreSQL comparison hero flow ([run output](evidence/review-check-first-suite.log)); all other 1,574 tests passed. That test then passed unchanged in isolation ([isolated run](evidence/review-hero-check.log)). The cause of that intermittent failure is not established; the fresh full rerun passed with no changes to that test or the comparison application.
+
+This follow-up does not repeat the earlier browser click-through, screenshots or fresh-visit font-transfer measurement; those records below predate these four adjustments. Font contents and the PDF font are unchanged. Hosted acceptance remains waiting for the Product Director. No hosted actions or paid evaluation. CI for this follow-up is not being waited on, per the instruction to run the check, update this record and stop.
+
+## Original implementation checks
 
 **`npm run check` passed: 1,574 tests in 154 files**, formatting, CSS token gate, lint, strict typecheck and production build. Node 24; disposable loopback PostgreSQL with committed migrations and synthetic fixtures. [Full command output](evidence/check.log). The existing `prisma.config.ts` anonymous-default-export warning remains; no new lint warnings.
 
@@ -29,7 +38,7 @@ Both measurements used a fresh Chrome context with HTTP cache disabled, owner id
 
 Chrome confirms the Chinese heading uses the custom Noto Sans TC bold instance. Its internal variable-family name is `Noto Sans TC Thin`, with PostScript name `NotoSansTC-Thin_Bold`; the initial verifier incorrectly expected the CSS family name literally, and was corrected after inspecting the rendered font. Chrome also confirms money in both list languages uses custom Inter. No third-party font, stylesheet or image request appeared in browser verification.
 
-## Browser evidence
+## Original browser evidence (before review corrections)
 
 Local production build over loopback HTTPS, disposable synthetic database, Chrome at 1440×1100 and 390×844. [Complete browser checks, route statuses and 42 keyboard targets](evidence/browser-verification.json). The two issued/accepted examples were prepared only in the disposable local database, using their existing exact amounts and lines; [fixture record](evidence/local-status-fixtures.json). They are visual test fixtures, not evidence that an agent issued a hosted quote.
 
@@ -49,4 +58,4 @@ Visually reviewed: [Traditional Chinese Quotes](evidence/zh-TW-quotes.png), [Eng
 
 Hosted acceptance is **waiting for the Product Director**. No hosted deployment, migration, seed or settings change was made, and the Test site workflow was not started. The PR remains draft. No paid evaluation was run: nothing under `src/modules/assistant` changed.
 
-The local browser checks cover the paths above, not every older issue's complete manual acceptance list. Other browsers/operating systems and the hosted font transfer were not tested. Old page bodies intentionally retain their legacy styling until part 2; they are not claimed to meet every new typography/token rule yet. PDF preservation is covered by the unchanged complete-byte regression, not a new hosted PDF download. CI will be recorded on the PR once it completes.
+The local browser checks cover the paths above, not every older issue's complete manual acceptance list. Other browsers/operating systems and the hosted font transfer were not tested. Old page bodies intentionally retain their legacy styling until part 2; they are not claimed to meet every new typography/token rule yet. PDF preservation is covered by the unchanged complete-byte regression, not a new hosted PDF download. The original implementation passed [CI run 45386150570](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45386150570) at `88f1cce`; that is not a CI claim for these review corrections.

@@ -86,13 +86,14 @@ The following is the v1 token table. The CSS file is authoritative. Legacy token
 | `--focus-offset`    | `3px`                                                                               |
 | `--icon-size`       | `18px`                                                                              |
 | `--sidebar-width`   | `248px`                                                                             |
+| `--page-width`      | `1120px`                                                                            |
 | `--content-width`   | `1500px`                                                                            |
 | `--table-min-width` | `720px`                                                                             |
 | `--filter-width`    | `480px`                                                                             |
 
 Type roles: display 32/1.3/700 is reserved for the Home greeting; page title 24/1.4/700; section heading 18/1.5/700; lead 17/1.5/600; body 15/1.6/400; table/document 14/1.6/400; caption 13/1.5/400. Use only weights 400, 600 and 700. No new text is smaller than 13px. Use Inter first, then Noto Sans TC, then system Chinese fonts.
 
-Space steps are 4, 8, 12, 16, 24, 32, 40 and 48px. Radius roles are cell (6px), control (10px), ask (12px) and pill (999px). Control heights are cell 32px, chip 36px, default 44px and ask 56px. The sole shadow belongs to the quote document, not record tables or the shell. Layout dimensions have named tokens too; they are not extra spacing steps.
+Space steps are 4, 8, 12, 16, 24, 32, 40 and 48px. Radius roles are cell (6px), control (10px), ask (12px) and pill (999px). Control heights are cell 32px, chip 36px, default 44px and ask 56px. The sole shadow belongs to the quote document, not record tables or the shell. Layout dimensions have named tokens too; they are not extra spacing steps. The shared page container uses `--page-width` (1120px), centred and capped at the available width. The shell retains `--content-width` (1500px) for older page bodies.
 
 ## Shared components
 
@@ -121,13 +122,13 @@ These components are deliberately **not implemented** by #69:
 
 ## Shell and responsive behavior
 
-The shell uses surface-subtle for the sidebar and canvas for the page. Product and firm names are at the top; labelled navigation follows. Planned Knowledge and Customer Care are text, never links. Person, language, Settings and sign-out sit at the bottom. The current working area, including Settings, has aria-current. Viewer navigation preserves the existing capability-based omission of Clients.
+The shell uses surface-subtle for the sidebar and canvas for the page. Product and firm names are at the top; labelled navigation follows. Navigation links use ink. Planned Knowledge and Customer Care link to their existing pages, remain muted, retain the 規劃中 / Planned tag, and participate in keyboard navigation. This Product Director decision replaces issue #69’s original non-link rule. Person, language, Settings and sign-out sit at the bottom. The current working area, including Settings, has aria-current. Viewer navigation preserves the existing capability-based omission of Clients.
 
 Below 900px the sidebar stacks above content. At 390px, record tables scroll inside their labelled focusable regions; the page itself must not scroll horizontally. Do not turn the table into stacked cards. Keep a skip link and logical DOM/tab order. Keyboard access and zoom must not depend on hover.
 
 ## Fonts and licences
 
-The app serves committed WOFF2 files under `public/fonts/`; unicode-range loads only needed slices and font-display is swap. Inter and Noto Sans TC include SIL OFL 1.1 texts beside the files. `scripts/fonts/manifest.json` pins source URLs, SHA-256 hashes, sizes and ranges. `npm run fonts:generate` verifies local files and regenerates CSS offline; its explicit `--download` option restores pinned assets. Normal builds never download fonts. The font used by the quote PDF under `assets/fonts/` is unchanged.
+The app serves committed WOFF2 files under `public/fonts/v1/`; unicode-range loads only needed slices and font-display is swap. Inter and Noto Sans TC include SIL OFL 1.1 texts beside the files. `scripts/fonts/manifest.json` pins source URLs, SHA-256 hashes, sizes and ranges. `npm run fonts:generate` verifies local files and regenerates CSS offline; its explicit `--download` option restores pinned assets. Normal builds never download fonts. `/fonts/v1/:path*` is served with `Cache-Control: public, max-age=31536000, immutable`. Changing a font means a new version folder (for example `v2/`), updated manifest and CSS paths, and a matching immutable header rule; never overwrite a font at an existing versioned URL. The font used by the quote PDF under `assets/fonts/` is unchanged.
 
 [Inter source/licence](https://github.com/google/fonts/tree/main/ofl/inter), [Noto Sans TC source/licence](https://github.com/google/fonts/tree/main/ofl/notosanstc), [Google CSS2 slicing/variable-font API](https://developers.google.com/fonts/docs/css2), [Lucide source/licence](https://github.com/lucide-icons/lucide/tree/0.468.0).
 

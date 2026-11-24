@@ -8,8 +8,9 @@ import { GlobalNav } from "@/components/shell/global-nav";
 import { SettingsLink } from "@/components/shell/settings-link";
 import { Icon } from "@/components/ui/icons";
 import { getCatalog } from "@/modules/localization/catalog";
+import styles from "@/components/shell/shell.module.css";
 it.each(["en", "zh-TW"] as const)(
-  "marks the current area, labels icons and leaves planned areas unlinked in %s",
+  "marks the current area and keeps planned areas labelled, muted and keyboard reachable in %s",
   (locale) => {
     route.path = `/${locale}/quotes`;
     const host = document.createElement("div");
@@ -19,9 +20,20 @@ it.each(["en", "zh-TW"] as const)(
     expect(host.querySelector('[aria-current="page"]')?.getAttribute("href")).toBe(
       `/${locale}/quotes`,
     );
-    expect(host.querySelectorAll("a")).toHaveLength(4);
+    expect(host.querySelectorAll("a")).toHaveLength(6);
     expect(host.querySelectorAll("svg[aria-hidden=true]")).toHaveLength(6);
-    expect(host.querySelector('a[href$="/knowledge"],a[href$="/customer-care"]')).toBeNull();
+    for (const segment of ["knowledge", "customer-care"]) {
+      const link = host.querySelector<HTMLAnchorElement>(`a[href="/${locale}/${segment}"]`)!;
+      expect(link).not.toBeNull();
+      expect(link.tabIndex).toBe(0);
+      expect(link.classList.contains(styles.planned!)).toBe(true);
+      expect(link.querySelector("small")?.textContent).toBe(
+        locale === "zh-TW" ? "規劃中" : "Planned",
+      );
+    }
+    expect(host.querySelector('a[href$="/quotes"]')?.classList.contains(styles.planned!)).toBe(
+      false,
+    );
     expect(host.querySelectorAll("small")).toHaveLength(2);
     expect(host.querySelector("nav")?.textContent).toContain(
       locale === "zh-TW" ? "規劃中" : "Planned",

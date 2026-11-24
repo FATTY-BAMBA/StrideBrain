@@ -8,7 +8,7 @@
   "fontBudgetBytes": 1500000,
   "localChecks": {
     "npmRunCheck": "PASSED",
-    "tests": 1574,
+    "tests": 1575,
     "files": 154,
     "browser": "PASSED",
     "nativeGetWithoutJavaScript": "PASSED",
@@ -19,5 +19,17 @@
   "pullRequestState": "DRAFT",
   "paidEvaluation": "NOT_REQUIRED_ASSISTANT_UNCHANGED",
   "pullRequest": 70,
-  "pullRequestUrl": "https://github.com/FATTY-BAMBA/StrideBrain/pull/70"
+  "pullRequestUrl": "https://github.com/FATTY-BAMBA/StrideBrain/pull/70",
+  "reviewCorrections": {
+    "status": "LOCAL_CHECK_PASSED",
+    "changes": [
+      "VERSIONED_IMMUTABLE_FONTS",
+      "CENTRED_1120PX_PAGE",
+      "INK_NAVIGATION",
+      "KEYBOARD_ACCESSIBLE_PLANNED_LINKS"
+    ],
+    "browser": "NOT_RERUN",
+    "ci": "NOT_WAITED_ON",
+    "intermittentHeroTest": "FAILED_ONCE_THEN_PASSED_ISOLATED_AND_FULL_RERUN"
+  }
 }
