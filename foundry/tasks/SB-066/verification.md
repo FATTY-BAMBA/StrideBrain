@@ -35,8 +35,22 @@ Screenshots: [Clients](evidence/zh-TW-clients.png), [client details](evidence/zh
 
 ## Paid evaluation and CI
 
-Pending on the implementation commit. Issue #66 authorizes at most two AI evaluation workflow dispatches; none used yet. The model instructions, model and pass marks are unchanged. Record all three rounds, job-draft results and estimated cost here after the workflow finishes.
+[Implementation CI 45293249019](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45293249019) passed on `894ecc9a8e74556e5e0a11c798901e9e8a5376a3`, including migration/schema checks, repeatable fixture reset, formatting, lint, typecheck, tests, build and production dependency audit.
+
+[Paid run 45293305570](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45293305570) **passed**, using `gemini-3.5-flash-lite` against the same implementation commit. One of two authorized dispatches used; no second run needed. The workflow ran from main and checked out that commit through its `ref` input. Model instructions, model, cases, oracle and pass marks were unchanged.
+
+| Round | Answers en | Answers zh-TW | Drafts en | Drafts zh-TW | Estimated USD, both sets |
+| ----- | ---------- | ------------- | --------- | ------------ | ------------------------ |
+| 1     | 20/20      | 20/20         | 12/12     | 12/12        | 0.080158700              |
+| 2     | 20/20      | 19/20         | 12/12     | 12/12        | 0.078855800              |
+| 3     | 20/20      | 20/20         | 12/12     | 12/12        | 0.079850200              |
+
+Total estimated cost: **US$0.238864700** (about US$0.24), calculated from recorded tokens at the configured US$0.30 input / US$2.50 output per million tokens; this is not a billing invoice. Answer questions cost US$0.182816200; job drafts cost US$0.056048500.
+
+All three rounds passed the eight hosted-regression questions and two quality-regression questions. Overall: **149/150 answer cases and 72/72 draft cases**. Every round had zero displayed unsupported-number, amount-label or display-format failures and no discarded model answers. Median calls were 2 each round; maxima were 3, 3 and 4, with 50/50, 50/50 and 49/50 questions within three calls. Named-refusal maximum was 1. All 14 required draft cases passed in each round.
+
+Per-question rate: 49 questions passed 3/3; `zh-TW-awaiting` passed 2/3. Its round-two answer called a job reference a quote document number and failed the unchanged expected-fact check. It remains a recorded model error, not a perfect-score claim. `zh-TW-finding` passed 3/3. All 24 draft cases passed 3/3. Full raw synthetic report, per-question rates, follow-ups, non-pass text and metering: [evaluation artifact](evidence/ai-evaluation-45293305570.json). Downloaded ZIP SHA-256 matched GitHub's artifact digest `ac04b823c5edab50b99628918dd4198dcac90008b085d5e036ee7cd02e31d6e9`.
 
 ## Not verified
 
-Hosted acceptance is **waiting for the Product Director**. No hosted deployment, migration, seed or settings change was made, and the Test site workflow was not started. The PR stays draft. Browser verification is the local flow listed above, not a claim that every earlier hosted acceptance list has been clicked through. The Home AI draft card's area/client-number behavior has local form/use-case coverage; the exact acceptance utterance has not been clicked through on the hosted site. Provider evaluation and implementation CI are still pending at this checkpoint.
+Hosted acceptance is **waiting for the Product Director**. No hosted deployment, migration, seed or settings change was made, and the Test site workflow was not started. The PR stays draft. Browser verification is the local flow listed above, not a claim that every earlier hosted acceptance list has been clicked through. The Home AI draft card's area/client-number behavior has local form/use-case coverage; the exact acceptance utterance has not been clicked through on the hosted site.
