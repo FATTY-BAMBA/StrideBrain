@@ -1,3 +1,5 @@
+import { SiteAddressForm } from "@/components/projects/site-address-form";
+import { createProjectWriteServices } from "@/lib/server/project-write-services";
 import { AssistantControl } from "@/components/assistant/assistant-control";
 import { createAssistantControlServices } from "@/lib/server/assistant-services";
 import { notFound } from "next/navigation";
@@ -83,13 +85,19 @@ export default async function ProjectWorkspacePage({
         projectKey,
       );
       if (outcome.kind === "AVAILABLE") {
-        const policy = await createAssistantControlServices()
-          .repository.jobPolicy(context, projectKey)
-          .catch(() => null);
+        const [policy, address] = await Promise.all([
+          createAssistantControlServices()
+            .repository.jobPolicy(context, projectKey)
+            .catch(() => null),
+          createProjectWriteServices()
+            .siteAddress.read(context, projectKey)
+            .catch(() => null),
+        ]);
         return (
           <div className="foundation-page">
             <ProjectLocalNav locale={rawLocale} projectKey={projectKey} labels={catalog} />
             <ProjectWorkspaceOverview locale={rawLocale} workspace={outcome.workspace} />
+            {address && <SiteAddressForm locale={rawLocale} value={address} />}
             {policy && (
               <AssistantControl
                 locale={rawLocale}

@@ -40,11 +40,11 @@ it("keeps one issued row and its amounts while a newer revision is in draft", ()
   expect(currentQuoteRow([version(2, "ACCEPTED"), version(1, "ISSUED")])?.status).toBe("ACCEPTED");
 });
 it.each(["DRAFT", "INTERNAL_REVIEW", "FINAL"])(
-  "keeps the unissued %s status with its creation date and no document number",
+  "keeps the unissued %s status, creation date and any recorded document number",
   (status) => {
     expect(currentQuoteRow([version(2, status)])).toMatchObject({
       status,
-      documentNumber: null,
+      documentNumber: status === "DRAFT" ? null : "Q-2",
       date: "2026-11-23T00:00:00Z",
       revisionInDraft: false,
     });

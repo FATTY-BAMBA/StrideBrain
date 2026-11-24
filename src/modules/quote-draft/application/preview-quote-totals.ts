@@ -1,13 +1,22 @@
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import type { QuoteDraftRepositoryPort } from "@/repositories/ports/quote-draft-repository";
 import { validateSaveDraft } from "@/modules/quote-draft/domain/save-input";
-import { quoteDocumentTotals, quoteCategoryTotals, quoteTotals } from "@/modules/finance/quote-totals";
+import {
+  type QuoteTotals,
+  type QuoteDocumentAmounts,
+  quoteDocumentTotals,
+  quoteCategoryTotals,
+  quoteTotals,
+} from "@/modules/finance/quote-totals";
 import { validateQuoteDocument } from "../domain/document-input";
 import { validKey } from "@/modules/quote-issue/domain/input";
 import { AuthorizationService } from "@/modules/authorization/authorization-service";
+export type QuoteTotalsPreview =
+  | (QuoteTotals & { sections?: never; categoryTotals?: never })
+  | (QuoteDocumentAmounts & { categoryTotals: ReturnType<typeof quoteCategoryTotals> });
 export class PreviewQuoteTotals {
   constructor(private readonly repository: QuoteDraftRepositoryPort) {}
-  async execute(context: RuntimeContext, raw: unknown) {
+  async execute(context: RuntimeContext, raw: unknown): Promise<QuoteTotalsPreview | null> {
     if (!context.capabilities.has("quote:draft") || !context.capabilities.has("quote:read"))
       return null;
     if (!context.firmLists) return null;

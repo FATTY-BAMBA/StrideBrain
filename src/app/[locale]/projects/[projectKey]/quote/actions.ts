@@ -44,7 +44,12 @@ export async function saveQuoteDraftAction(
     return { result: { kind: "UNAVAILABLE" } };
   }
 }
-export async function previewQuoteTotalsAction(locale: string, raw: unknown) {
+export async function previewQuoteTotalsAction(
+  locale: string,
+  raw: unknown,
+): Promise<
+  import("@/modules/quote-draft/application/preview-quote-totals").QuoteTotalsPreview | null
+> {
   try {
     const context = await actor(locale);
     return context ? await createQuoteDraftServices().totals.execute(context, raw) : null;

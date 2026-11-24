@@ -1,3 +1,4 @@
+import ui from "@/components/ui/ui.module.css";
 import { QuoteWorkspace } from "@/components/quote-issue/quote-workspace";
 import { createQuoteIssueServices } from "@/lib/server/quote-issue-services";
 import { notFound } from "next/navigation";
@@ -26,7 +27,7 @@ export default async function QuotePage({
       ])
     : [null, null];
   return (
-    <div className="foundation-page">
+    <div className={ui.page}>
       <ProjectLocalNav locale={locale} projectKey={projectKey} labels={getCatalog(locale)} />
       {view?.kind === "AVAILABLE" ? (
         <QuoteWorkspace

@@ -25,7 +25,7 @@ export function currentQuoteRow(versions: readonly QuoteListVersion[]) {
   if (!current) return null;
   return {
     status: current.status as QuoteListStatus,
-    documentNumber: issued?.documentNumber ?? null,
+    documentNumber: current.documentNumber,
     date: issued?.issuedAt ?? current.createdAt,
     currency: current.currency,
     ...(current.totalAmount !== undefined ? { totalAmount: current.totalAmount } : {}),

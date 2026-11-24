@@ -33,7 +33,7 @@ export function QuoteListTable({
     >
       {rows.map((row) => (
         <tr key={row.quoteKey}>
-          <td>{row.documentNumber ?? c.noNumber}</td>
+          <td>{row.documentNumber ?? (row.status === "FINAL" ? "—" : c.noNumber)}</td>
           <NameCell>{row.projectName}</NameCell>
           <td>{row.clientName}</td>
           <td>

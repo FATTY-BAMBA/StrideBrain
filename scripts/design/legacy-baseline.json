@@ -63,10 +63,5 @@
     "color": 15,
     "fontSize": 4,
     "radius": 3
-  },
-  "src/components/quote-issue/quote-issue.module.css": {
-    "color": 14,
-    "fontSize": 1,
-    "radius": 3
   }
 }

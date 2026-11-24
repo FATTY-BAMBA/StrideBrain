@@ -333,3 +333,32 @@
   clip-path: inset(50%);
   white-space: nowrap;
 }
+.paper {
+  min-width: 0;
+  background: var(--canvas);
+  border: var(--rule-hairline) solid var(--line-strong);
+  box-shadow: var(--shadow);
+  font-size: var(--text-table);
+  line-height: var(--leading-table);
+}
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+  border-bottom: var(--rule-hairline) solid var(--line);
+}
+.tabs a {
+  min-height: var(--control-default);
+  padding: var(--space-8) var(--space-4);
+  color: var(--muted);
+  border-bottom: var(--rule-section) solid transparent;
+}
+.tabs a[aria-current="page"] {
+  color: var(--ink);
+  font-weight: var(--weight-lead);
+  border-bottom-color: var(--ink);
+}
+.tabs a:focus-visible {
+  outline: var(--focus-width) solid var(--focus);
+  outline-offset: var(--focus-offset);
+}
