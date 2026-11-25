@@ -78,7 +78,12 @@ export function QuoteItemDescription({
           setActive(false);
           event.stopPropagation();
         }
-        if (event.key === "ArrowDown" && event.target === input.current) {
+        if (
+          event.key === "ArrowDown" &&
+          event.target === input.current &&
+          input.current?.selectionStart === line.description.length &&
+          input.current.selectionEnd === line.description.length
+        ) {
           const first =
             container.current?.querySelector<HTMLButtonElement>("[data-price-suggestion]");
           if (editable && !disabled && [...line.description.normalize("NFKC").trim()].length >= 2) {

@@ -200,7 +200,11 @@ it("focusing a filled description does not read; ArrowDown explicitly opens sugg
   vi.useFakeTimers();
   mock.read.mockResolvedValue(available([newest]));
   await act(async () => root.render(createElement(Harness, { locale: "en", initial: "天花板" })));
-  await act(async () => host.querySelector("textarea")!.focus());
+  await act(async () => {
+    const input = host.querySelector("textarea")!;
+    input.focus();
+    input.setSelectionRange(input.value.length, input.value.length);
+  });
   await act(async () => {
     await vi.advanceTimersByTimeAsync(300);
   });
@@ -236,3 +240,35 @@ it("closing history aborts its outstanding request", async () => {
   await act(async () => host.querySelector("button")!.click());
   expect(signal.aborted).toBe(true);
 });
+
+it.each([
+  [2, 2],
+  [0, 22],
+])(
+  "leaves ArrowDown to a multiline description at selection %i–%i without reading",
+  async (start, end) => {
+    vi.useFakeTimers();
+    mock.read.mockResolvedValue(available([newest]));
+    await act(async () =>
+      root.render(createElement(Harness, { locale: "en", initial: "First line\nSecond line" })),
+    );
+    const input = host.querySelector("textarea")!;
+    const event = new KeyboardEvent("keydown", {
+      key: "ArrowDown",
+      bubbles: true,
+      cancelable: true,
+    });
+    await act(async () => {
+      input.focus();
+      input.setSelectionRange(start, end);
+      input.dispatchEvent(event);
+    });
+    expect(event.defaultPrevented).toBe(false);
+    expect(document.activeElement).toBe(input);
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(300);
+    });
+    expect(mock.read).not.toHaveBeenCalled();
+    expect(host.querySelector("[data-price-suggestion]")).toBeNull();
+  },
+);

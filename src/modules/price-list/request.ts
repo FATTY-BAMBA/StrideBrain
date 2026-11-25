@@ -7,24 +7,27 @@ export async function readQuotePrices(
   input: PriceQuery,
   signal: AbortSignal,
 ): Promise<PriceReadOutcome> {
-  const query = new URLSearchParams({
-    locale,
-    mode: input.mode,
-    search: input.search,
-    unit: input.unit,
-    page: String(input.page),
-    projectKey: input.projectKey ?? "",
-  });
+  const controller = new AbortController();
+  const abort = () => controller.abort();
+  // Also works in browsers without AbortSignal.any/timeout. Keep the timer
+  // active through response decoding, and release both resources on every exit.
+  signal.addEventListener("abort", abort, { once: true });
+  const timeout = setTimeout(abort, 10000);
   try {
-    const response = await fetch(`/api/quotes/prices?${query}`, {
-      method: "GET",
+    if (signal.aborted) return { kind: "UNAVAILABLE" };
+    const response = await fetch("/api/quotes/prices", {
+      method: "POST",
       credentials: "same-origin",
       cache: "no-store",
-      headers: { "x-stridebrain-price-read": "1" },
-      signal: AbortSignal.any([signal, AbortSignal.timeout(10000)]),
+      headers: { "x-stridebrain-price-read": "1", "Content-Type": "application/json" },
+      body: JSON.stringify({ locale, ...input }),
+      signal: controller.signal,
     });
     return response.ok ? ((await response.json()) as PriceReadOutcome) : { kind: "UNAVAILABLE" };
   } catch {
     return { kind: "UNAVAILABLE" };
+  } finally {
+    clearTimeout(timeout);
+    signal.removeEventListener("abort", abort);
   }
 }

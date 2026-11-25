@@ -9,7 +9,7 @@
   "modelCalls": "NONE",
   "localCheck": {
     "result": "PASS",
-    "tests": 1688,
+    "tests": 1695,
     "files": 176,
     "skipped": 0
   },
@@ -21,8 +21,19 @@
       "startedAt": "2026-11-25T08:35:00+08:00",
       "sourceCommentId": 7146871710,
       "startCommentId": 7148673394,
+      "status": "COMPLETED",
+      "completedAt": "2026-11-25T08:52:53+08:00",
+      "reportCommentId": 7149085738,
+      "commit": "15bbe1755e1eb4fd7583f2a0fb3726acaface365",
+      "ciRunId": 45521529612
+    },
+    {
+      "round": 2,
+      "startedAt": "2026-11-25T09:09:00+08:00",
+      "sourceCommentId": 7149190959,
+      "startCommentId": 7149262264,
       "status": "IMPLEMENTED_LOCALLY_VERIFIED",
-      "completedAt": "2026-11-25T08:52:53+08:00"
+      "completedAt": "2026-11-25T10:11:59+08:00"
     }
   ],
   "provisionalDecisions": [
