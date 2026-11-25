@@ -1,0 +1,15 @@
+# SB-079 build contract
+
+Delivery follows the issue's explicit A–E order.
+
+A. Build a turn-local registry of server-rendered facts, including labelled amounts, identifiers, lists and exact saved findings. Accept only ordered say/show parts and derive citations from registered references. Reject unsupported free-text values and action claims; preserve access rechecks, subject matching, redaction and limits. Prove with the fake model first.
+
+B. Map each tool to its page read and test owner, assigned/unassigned manager, finance and Viewer parity, resolving discrepancies on the stricter side. Give readers without quote:read a stage example.
+
+C. Add get_item_prices through ReadPriceList, at most five results, optional unit/job, with newest and differing client-specific prices. No client identity/contact fields in model data.
+
+D. Add nullable provider HTTP status and failure code columns in a forward-only migration. Record codes only and show seven-day failure counts with bilingual explanations in Settings.
+
+E. Adapt fake/paid suites, preserve existing gates and add the issue's required cases and zero-wrong-value gate. Save every raw answer from the first run. Compare median calls, p90 latency and per-question cost against the stated baseline (2 calls; 2.0 seconds p90; US$0.198 / 162 questions), with the latter two limited to 125%. At most four paid dispatches; report all attempts and costs.
+
+No model/provider change, streaming, session memory, job-draft change, knowledge-document work, write tool or second answer attempt. Use current modular boundaries and design system. Run npm run check and CI; report what was and was not verified. Keep draft for Product Director test-site acceptance; agents perform no hosted deployment, migration, seed or settings change.
