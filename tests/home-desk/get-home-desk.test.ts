@@ -364,3 +364,76 @@ it.each([
   );
   expect(f.comparisons.execute).not.toHaveBeenCalled();
 });
+
+it.each(["NOT_RUN", "OUT_OF_DATE", "CURRENT"] as const)(
+  "adds only the %s state hint to an issue row using its existing saved read",
+  async (state) => {
+    const f = setup([job("A")]);
+    f.repository.listDecisionSources.mockResolvedValue([
+      {
+        kind: "ISSUE_QUOTE",
+        organizationId: context.organizationId,
+        projectId: "A",
+        key: "issue:A",
+      },
+    ]);
+    if (state === "NOT_RUN") f.repository.listComparedProjectIds.mockResolvedValue([]);
+    if (state === "OUT_OF_DATE") f.comparisons.execute.mockResolvedValue({ kind: state });
+    const result = await f.service.execute(context);
+    if (result.kind !== "AVAILABLE") throw Error(result.kind);
+    expect(result.decisions).toHaveLength(1);
+    expect(result.decisions[0]?.kind).toBe("ISSUE_QUOTE");
+    expect(result.decisions[0]?.comparisonHint).toBe(state === "CURRENT" ? undefined : state);
+    expect(result.findingsNotices).toEqual([]);
+    expect(f.comparisons.execute).toHaveBeenCalledTimes(state === "NOT_RUN" ? 0 : 1);
+  },
+);
+it.each(["project:compare", "quote:read"] as const)(
+  "shows no hint without %s",
+  async (capability) => {
+    const f = setup([job("A")]);
+    f.repository.listDecisionSources.mockResolvedValue([
+      {
+        kind: "ISSUE_QUOTE",
+        organizationId: context.organizationId,
+        projectId: "A",
+        key: "issue:A",
+      },
+    ]);
+    f.repository.listComparedProjectIds.mockResolvedValue([]);
+    const result = await f.service.execute({
+      ...context,
+      capabilities: new Set([...context.capabilities].filter((c) => c !== capability)),
+    });
+    expect(JSON.stringify(result)).not.toContain("comparisonHint");
+    expect(f.comparisons.execute).not.toHaveBeenCalled();
+  },
+);
+it("keeps a failed state read unavailable instead of asserting it never ran", async () => {
+  const f = setup([job("A")]);
+  f.repository.listDecisionSources.mockResolvedValue([
+    { kind: "ISSUE_QUOTE", organizationId: context.organizationId, projectId: "A", key: "issue:A" },
+  ]);
+  f.comparisons.execute.mockRejectedValue(Error("read"));
+  const result = await f.service.execute(context);
+  expect(result.kind === "AVAILABLE" && result.decisions[0]?.comparisonHint).toBeUndefined();
+  expect(result.kind === "AVAILABLE" && result.findingsNotices[0]?.kind).toBe("UNAVAILABLE");
+});
+it("adds no comparison hint to Draft quote or Awaiting client", async () => {
+  const f = setup();
+  f.repository.listComparedProjectIds.mockResolvedValue([]);
+  f.repository.listDecisionSources.mockResolvedValue([
+    { kind: "DRAFT_QUOTE", organizationId: context.organizationId, projectId: "A", key: "draft:A" },
+    {
+      kind: "AWAITING_CLIENT",
+      organizationId: context.organizationId,
+      projectId: "B",
+      key: "awaiting:B",
+      documentNumber: "Q1",
+      validUntil: "2026-12-01",
+    },
+  ]);
+  const result = await f.service.execute(context);
+  expect(result.kind === "AVAILABLE" && result.decisions).toHaveLength(2);
+  expect(JSON.stringify(result)).not.toContain("comparisonHint");
+});

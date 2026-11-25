@@ -1,6 +1,3 @@
-.itemRow {
-  position: relative;
-}
 .workspace {
   display: grid;
   gap: var(--space-24);

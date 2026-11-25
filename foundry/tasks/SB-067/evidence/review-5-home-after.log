@@ -1,0 +1,13 @@
+
+ RUN  v4.1.10 /private/tmp/stridebrain-sb041
+
+TEST_DATABASE_TEMPLATE_MS=458
+HOME_READ_TIMING {"scenario":"seeded firm, no saved comparison","projects":30,"decisions":4,"samples":[{"ms":27.02,"queries":31},{"ms":25,"queries":31},{"ms":24.66,"queries":31},{"ms":24.4,"queries":31},{"ms":32.27,"queries":31}]}
+HOME_READ_TIMING {"scenario":"seeded firm plus ready-to-issue draft, three saved comparisons","projects":31,"decisions":5,"samples":[{"ms":63.5,"queries":91},{"ms":53.57,"queries":91},{"ms":51.93,"queries":91},{"ms":54.78,"queries":91},{"ms":57,"queries":91}]}
+ ✓ tests/home-desk/read-timing-postgres.test.ts > Home read timing with the seeded firm > reads saved state and findings without preparing references or writing runs 1107ms
+ ↓ tests/home-desk/read-timing-postgres.test.ts > Home read timing with the seeded firm > matches the panel's strict same-person/source state for an issue row without preparing references
+
+ Test Files  1 passed (1)
+      Tests  1 passed | 1 skipped (2)
+   Start at  13:56:20
+   Duration  2.28s (transform 255ms, setup 69ms, import 318ms, tests 1.31s, environment 0ms)

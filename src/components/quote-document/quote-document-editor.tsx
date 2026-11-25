@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useRef, useState, useTransition } from "react";
+import { useCallback, useEffect, useRef, useState, useTransition, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import {
   prepareQuoteDraftAction,
@@ -406,7 +406,13 @@ export function QuoteDocumentEditor({
               )}
             </header>
             {!view.canReadAmounts ? (
-              <div className={styles.scroll} tabIndex={0} role="region" aria-label={copy.title}>
+              <div
+                className={styles.scroll}
+                data-quote-scroll
+                tabIndex={0}
+                role="region"
+                aria-label={copy.title}
+              >
                 <p>{draftCopy.restricted}</p>
                 {view.structure?.sections.map((section, si) => (
                   <section key={si}>
@@ -445,7 +451,13 @@ export function QuoteDocumentEditor({
                     if (!pending && editable) save();
                   }}
                 >
-                  <div className={styles.scroll} tabIndex={0} role="region" aria-label={copy.title}>
+                  <div
+                    className={styles.scroll}
+                    data-quote-scroll
+                    tabIndex={0}
+                    role="region"
+                    aria-label={copy.title}
+                  >
                     <table className={styles.table}>
                       <thead>
                         <tr>
@@ -554,8 +566,8 @@ export function QuoteDocumentEditor({
                             const disabled = !editable || pending,
                               label = `${si + 1}.${li + 1}`;
                             const amount = calculated?.sections[si]?.lines[li]?.amount;
-                            return (
-                              <tr key={line.id ?? li} className={styles.itemRow}>
+                            const renderRow = (description: ReactNode) => (
+                              <tr key={line.id ?? li}>
                                 <td>
                                   {editable ? (
                                     <details>
@@ -597,29 +609,7 @@ export function QuoteDocumentEditor({
                                   )}
                                 </td>
                                 <td colSpan={line.kind === "NOTE" ? 6 : 1}>
-                                  {line.kind === "ITEM" ? (
-                                    <QuoteItemDescription
-                                      line={line}
-                                      projectKey={view.job.businessKey}
-                                      locale={locale}
-                                      label={`${copy.item} ${label}`}
-                                      disabled={disabled}
-                                      editable={editable}
-                                      onChange={(item) => lineAt(si, li, item)}
-                                    />
-                                  ) : (
-                                    <textarea
-                                      aria-label={`${copy.item} ${label}`}
-                                      required
-                                      rows={2}
-                                      maxLength={500}
-                                      value={line.description}
-                                      disabled={disabled}
-                                      onChange={(event) =>
-                                        lineAt(si, li, { ...line, description: event.target.value })
-                                      }
-                                    />
-                                  )}
+                                  {description}
                                   {line.kind === "NOTE" && <small>{copy.note}</small>}
                                 </td>
                                 {line.kind === "ITEM" && (
@@ -726,6 +716,33 @@ export function QuoteDocumentEditor({
                                   </>
                                 )}
                               </tr>
+                            );
+                            return line.kind === "ITEM" ? (
+                              <QuoteItemDescription
+                                key={line.id ?? li}
+                                renderRow={renderRow}
+                                line={line}
+                                projectKey={view.job.businessKey}
+                                locale={locale}
+                                label={`${copy.item} ${label}`}
+                                disabled={disabled}
+                                editable={editable}
+                                onChange={(item) => lineAt(si, li, item)}
+                              />
+                            ) : (
+                              renderRow(
+                                <textarea
+                                  aria-label={`${copy.item} ${label}`}
+                                  required
+                                  rows={2}
+                                  maxLength={500}
+                                  value={line.description}
+                                  disabled={disabled}
+                                  onChange={(event) =>
+                                    lineAt(si, li, { ...line, description: event.target.value })
+                                  }
+                                />,
+                              )
                             );
                           })}
                           {!section.lines.length && (

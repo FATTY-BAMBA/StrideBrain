@@ -9,8 +9,8 @@
   "modelCalls": "NONE",
   "localCheck": {
     "result": "PASS",
-    "tests": 1720,
-    "files": 177,
+    "tests": 1736,
+    "files": 179,
     "skipped": 0
   },
   "ci": "See pull request checks (post-push result)",
@@ -54,22 +54,40 @@
       "startedAt": "2026-11-25T12:57:00+08:00",
       "sourceCommentId": 7151932492,
       "startCommentId": 7153320347,
-      "status": "IMPLEMENTED_LOCALLY_VERIFIED",
+      "status": "COMPLETED",
       "authorization": "Product Director directly requested the latest reviewer comment be fixed in this chat; scheduled cap overridden for this round.",
-      "completedAt": "2026-11-25T13:19:30+08:00"
+      "completedAt": "2026-11-25T13:19:30+08:00",
+      "commit": "33688314f606d21d337698030a520ffaafd844b1",
+      "reportCommentId": 7153758652,
+      "ciRunId": 45552825253
+    },
+    {
+      "round": 5,
+      "startedAt": "2026-11-25T13:50:00+08:00",
+      "sourceCommentIds": [
+        7154167794,
+        7153830530,
+        7153348201
+      ],
+      "startCommentId": 7154179703,
+      "status": "IMPLEMENTED_LOCALLY_VERIFIED",
+      "authorization": "Product Director directly requested latest reviewer comment be fixed in this chat; scheduled cap overridden for this round.",
+      "completedAt": "2026-11-25T14:00:22+08:00"
     }
   ],
   "provisionalDecisions": [
-    {
-      "sourceCommentId": 7146871710,
-      "decision": "Remove all Home COMPARE decisions",
-      "status": "IMPLEMENTED_AWAITING_PRODUCT_DIRECTOR"
-    },
     {
       "sourceCommentId": 7151932492,
       "decision": "Remove the older findings list under quote issue; retain panel findings and the issue reminder",
       "status": "IMPLEMENTED_AWAITING_PRODUCT_DIRECTOR"
     }
   ],
-  "reviewAutomationIntervalMinutes": 20
+  "reviewAutomationIntervalMinutes": 20,
+  "confirmedDecisions": [
+    {
+      "sourceCommentId": 7153348201,
+      "decision": "No Home COMPARE decisions; add authorized strict saved-state hint inside ISSUE_QUOTE only",
+      "status": "IMPLEMENTED"
+    }
+  ]
 }

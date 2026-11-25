@@ -1,13 +1,16 @@
+.suggestionRow > .suggestionCell {
+  padding: 0;
+}
 .suggestions {
-  position: absolute;
-  inset-inline: 0;
-  top: 100%;
-  z-index: 2;
+  position: sticky;
+  left: 0;
+  width: var(--suggestion-width, 100%);
+  max-width: 100%;
 }
 .results {
   display: grid;
   gap: var(--space-8);
-  max-height: calc(var(--control-default) * 6);
+  max-height: min(calc(var(--control-default) * 6), var(--suggestion-max-height, 100vh));
   overflow: auto;
   overscroll-behavior: contain;
   padding: var(--space-8);

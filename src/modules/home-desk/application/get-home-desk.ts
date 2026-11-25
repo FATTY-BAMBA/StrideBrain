@@ -23,6 +23,7 @@ export type HomeDecision = Readonly<{
   documentNumber?: string;
   validUntil?: string;
   canAccept?: boolean;
+  comparisonHint?: "NOT_RUN" | "OUT_OF_DATE";
   claim?: StructuredEconomicsClaimDTO | undefined;
   additionalFindingCount?: number | undefined;
   comparisonRunId?: string | undefined;
@@ -171,17 +172,32 @@ export class GetHomeDesk {
             )
           )
             continue;
-          if (!compared.has(job.id)) continue;
+          const issueIndex = decisions.findIndex(
+            (decision) =>
+              decision.kind === "ISSUE_QUOTE" && decision.project.businessKey === job.businessKey,
+          );
+          const canShowHint =
+            issueIndex >= 0 &&
+            this.authorization.canRunComparison(context, job.id).allowed &&
+            this.authorization.canReadCommercial(context, job.id, "QUOTE").allowed;
+          if (!compared.has(job.id)) {
+            if (canShowHint)
+              decisions[issueIndex] = { ...decisions[issueIndex]!, comparisonHint: "NOT_RUN" };
+            continue;
+          }
           try {
+            // Reuse the strict saved-result read already needed for findings. Home never
+            // prepares the panel's reference suggestions or runs a comparison.
             const saved = await this.comparisons.execute(context, job.businessKey);
             if (!saved || saved.kind !== "AVAILABLE") {
-              findingsNotices.push({ project, kind: saved?.kind ?? "UNAVAILABLE" });
+              if (canShowHint && (!saved || saved.kind === "OUT_OF_DATE"))
+                decisions[issueIndex] = {
+                  ...decisions[issueIndex]!,
+                  comparisonHint: saved ? "OUT_OF_DATE" : "NOT_RUN",
+                };
+              else findingsNotices.push({ project, kind: saved?.kind ?? "UNAVAILABLE" });
               continue;
             }
-            const issueIndex = decisions.findIndex(
-              (decision) =>
-                decision.kind === "ISSUE_QUOTE" && decision.project.businessKey === job.businessKey,
-            );
             if (job.stage !== "QUOTE_REVIEW" && issueIndex < 0) continue;
             const commercial =
               this.authorization.canReadProject(context, job.id).commercialScope !== "NONE";

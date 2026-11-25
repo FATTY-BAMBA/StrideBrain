@@ -57,7 +57,7 @@ export function QuoteComparisonPanel({
     }
   }
   return (
-    <section className={styles.references} aria-label={copy.title}>
+    <section id="quote-comparison" className={styles.references} aria-label={copy.title}>
       <h2>{copy.title}</h2>
       <p role="status">{running ? copy.running : status}</p>
       <Button disabled={running || !result} onClick={() => void run()}>

@@ -55,18 +55,32 @@ function Harness({ locale, initial = "" }: { locale: Locale; initial?: string })
     unitPrice: "1",
     remark: "Keep this remark",
   });
-  return createElement(QuoteItemDescription, {
-    line,
-    projectKey: "TARGET",
-    locale,
-    label: "Item 1.1",
-    disabled: false,
-    editable: true,
-    onChange: (next) => {
-      mock.change(next);
-      setLine(next);
-    },
-  });
+  return createElement(
+    "div",
+    { "data-quote-scroll": true },
+    createElement(
+      "table",
+      null,
+      createElement(
+        "tbody",
+        null,
+        createElement(QuoteItemDescription, {
+          renderRow: (description) =>
+            createElement("tr", null, createElement("td", { colSpan: 7 }, description)),
+          line,
+          projectKey: "TARGET",
+          locale,
+          label: "Item 1.1",
+          disabled: false,
+          editable: true,
+          onChange: (next) => {
+            mock.change(next);
+            setLine(next);
+          },
+        }),
+      ),
+    ),
+  );
 }
 async function type(text: string) {
   await act(async () => {
@@ -421,4 +435,25 @@ it("clears an existing typing debounce when composition starts", async () => {
     await vi.advanceTimersByTimeAsync(1000);
   });
   expect(mock.read).not.toHaveBeenCalled();
+});
+
+it("puts suggestions in the next full-width row and preserves focus across its source controls", async () => {
+  vi.useFakeTimers();
+  mock.read.mockResolvedValue(available([newest]));
+  await act(async () => root.render(createElement(Harness, { locale: "zh-TW" })));
+  await type("天花");
+  const descriptionRow = host.querySelector("textarea")!.closest("tr")!;
+  const row = descriptionRow.nextElementSibling!;
+  expect(row.tagName).toBe("TR");
+  expect(row.querySelector("td")?.colSpan).toBe(7);
+  expect(row.querySelector("[data-price-suggestion]")).not.toBeNull();
+  const link = row.querySelector<HTMLAnchorElement>("a")!;
+  await act(async () => link.focus());
+  expect(document.activeElement).toBe(link);
+  expect(row.isConnected).toBe(true);
+  await act(async () =>
+    link.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true })),
+  );
+  expect(document.activeElement).toBe(host.querySelector("textarea"));
+  expect(descriptionRow.nextElementSibling).toBeNull();
 });
