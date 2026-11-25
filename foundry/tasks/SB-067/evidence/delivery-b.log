@@ -1,0 +1,9 @@
+
+ RUN  v4.1.10 /private/tmp/stridebrain-sb041
+
+
+ Test Files  3 passed (3)
+      Tests  21 passed (21)
+   Start at  06:27:23
+   Duration  1.66s (transform 496ms, setup 78ms, import 696ms, tests 245ms, environment 1.77s)
+

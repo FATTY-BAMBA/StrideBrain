@@ -249,6 +249,9 @@ pgDescribe("Stage9 real PostgreSQL selection lineage and populated upgrade", () 
       $transaction: (work) =>
         database.$transaction(async (tx) =>
           work({
+            auditEvent: {
+              create: (args) => tx.auditEvent.create(args as Prisma.AuditEventCreateArgs),
+            },
             economicsEnrichmentRun: {
               create: (args) =>
                 tx.economicsEnrichmentRun.create(args as Prisma.EconomicsEnrichmentRunCreateArgs),

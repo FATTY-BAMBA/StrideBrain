@@ -24,7 +24,6 @@ import type { Locale } from "@/modules/localization/config";
 import { quoteIssueCopy, quoteIssueBlockerText } from "@/modules/localization/quote-issue";
 import { quoteDocumentCopy } from "@/modules/localization/quote-document";
 import { categoryLabel } from "@/modules/localization/jobs";
-import { claimFindingText } from "@/modules/economics/presentation/claim-findings";
 import { formatMoney } from "@/modules/finance/format-money";
 import styles from "./quote-issue.module.css";
 export type IssueView = Extract<
@@ -160,23 +159,6 @@ export function QuoteIssuePanel({
   return (
     <section className={styles.section} aria-busy={pending} id="quote-issue">
       <h2>{copy.title}</h2>
-      {!!view.findings.length && (
-        <div>
-          <h3>{copy.findings}</h3>
-          <ul>
-            {view.findings.map((claim) => (
-              <li key={claim.claimKey}>
-                {claimFindingText(claim, locale, view.catalog.workCategories)}
-              </li>
-            ))}
-          </ul>
-          <Link
-            href={`/${locale}/projects/${encodeURIComponent(view.projectKey)}/compare` as Route}
-          >
-            {copy.comparison}
-          </Link>
-        </div>
-      )}
       {message && (
         <p role="status" className={styles.notice}>
           {message}

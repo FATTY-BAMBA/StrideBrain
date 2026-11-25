@@ -26,6 +26,7 @@ type EnrichmentReadRow = Readonly<{
 }>;
 
 type PrismaEconomicsTransaction = {
+  auditEvent: { create(args: unknown): Promise<unknown> };
   economicsEnrichmentRun: {
     create(args: unknown): Promise<unknown>;
   };
@@ -197,6 +198,19 @@ export class PrismaEconomicsEnrichmentRunRepository implements EconomicsEnrichme
           })),
         });
       }
+      await transaction.auditEvent.create({
+        data: {
+          id: boundedId("audit", input.enrichmentRunId),
+          organizationId: input.organizationId,
+          actorMembershipId: input.actorMembershipId,
+          comparisonRunId: input.comparisonRunId,
+          eventType: "ECONOMICS_COMPLETED",
+          requestId: input.requestId,
+          payload: { projectId: input.activeProjectId, enrichmentRunId: input.enrichmentRunId },
+          result: "COMPLETED",
+          createdAt: completedAt,
+        },
+      });
     });
   }
 

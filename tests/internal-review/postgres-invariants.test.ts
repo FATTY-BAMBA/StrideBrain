@@ -542,7 +542,17 @@ describePostgres("Stage 8 independent PostgreSQL invariants", () => {
             (await services.getFreshness.check(fixture.actor.context, structural.result, economics))
               .state,
           ).toBe("STALE");
-          expect(await counts()).toEqual(before);
+          // The explicit re-run now records its two completion audits; refused review writes above still change nothing.
+          expect(await counts()).toEqual({ ...before, audits: before.audits + 2 });
+          expect(
+            (
+              await database.auditEvent.findMany({
+                where: { comparisonRunId: rerun.comparisonRunId },
+                select: { eventType: true },
+                orderBy: { eventType: "asc" },
+              })
+            ).map((event) => event.eventType),
+          ).toEqual(["COMPARISON_COMPLETED", "ECONOMICS_COMPLETED"]);
         }
       } finally {
         await restore();

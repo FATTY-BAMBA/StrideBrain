@@ -73,7 +73,7 @@ describe("authorized Home desk", () => {
     const result = await f.service.execute(context);
     expect(result.kind).toBe("AVAILABLE");
     if (result.kind !== "AVAILABLE") throw new Error("required");
-    expect(result.decisions.map((item) => item.kind)).toEqual(["CONFIRM_REVIEW", "COMPARE"]);
+    expect(result.decisions.map((item) => item.kind)).toEqual(["CONFIRM_REVIEW"]);
     expect(new Set(result.decisions.map((row) => row.project.businessKey)).size).toBe(
       result.decisions.length,
     );
@@ -90,9 +90,7 @@ describe("authorized Home desk", () => {
     });
     expect(result.kind === "AVAILABLE" && result.canCreate).toBe(false);
     expect(result.kind === "AVAILABLE" && result.projects.length).toBe(2);
-    expect(result.kind === "AVAILABLE" && result.decisions.map((item) => item.kind)).toEqual([
-      "COMPARE",
-    ]);
+    expect(result.kind === "AVAILABLE" && result.decisions.map((item) => item.kind)).toEqual([]);
     expect(JSON.stringify(result)).not.toMatch(/variancePercent|15.00|evidence/);
   });
   it("denies without project:read before querying", async () => {
@@ -118,6 +116,14 @@ describe("authorized Home desk", () => {
     const empty = await setup([]).service.execute(context);
     expect(empty.kind === "AVAILABLE" && empty.projects).toEqual([]);
     const f = setup(Array.from({ length: 8 }, (_, i) => job(`job-${i}`, "DISCOVERY")));
+    f.repository.listDecisionSources.mockResolvedValue(
+      Array.from({ length: 8 }, (_, i) => ({
+        kind: "DRAFT_QUOTE" as const,
+        organizationId: context.organizationId,
+        projectId: `job-${i}`,
+        key: `draft:${i}`,
+      })),
+    );
     const result = await f.service.execute(context);
     expect(result.kind === "AVAILABLE" && result.decisions.length).toBe(8);
   });
@@ -127,9 +133,7 @@ describe("authorized Home desk", () => {
       const f = setup();
       f.comparisons.execute.mockResolvedValue({ kind });
       const result = await f.service.execute(context);
-      expect(result.kind === "AVAILABLE" && result.decisions.map((item) => item.kind)).toEqual([
-        "COMPARE",
-      ]);
+      expect(result.kind === "AVAILABLE" && result.decisions.map((item) => item.kind)).toEqual([]);
       expect(result.kind === "AVAILABLE" && result.findingsNotices[0]?.kind).toBe(kind);
     },
   );
@@ -220,7 +224,7 @@ it("selects the largest saved variance with a count and preserves its evidence d
     enrichmentRunId: "economics",
   });
 });
-it("orders Draft quote after review and before compare, and hides it without drafting permission", async () => {
+it("orders Draft quote after review, and hides it without drafting permission", async () => {
   const f = setup([job("A"), job("B", "DESIGN"), job("C", "DISCOVERY")]);
   f.repository.listComparedProjectIds.mockResolvedValue(["A", "B"]);
   f.repository.listDecisionSources.mockResolvedValue([
@@ -233,7 +237,6 @@ it("orders Draft quote after review and before compare, and hides it without dra
   expect(result.kind === "AVAILABLE" && result.decisions.map((decision) => decision.kind)).toEqual([
     "REVIEW_QUOTE",
     "DRAFT_QUOTE",
-    "COMPARE",
   ]);
   const finance = await f.service.execute({
     ...context,
@@ -282,7 +285,6 @@ it("merges fresh findings into Issue quote, deduplicates jobs and gates both new
   expect(result.kind === "AVAILABLE" && result.decisions.map((row) => row.kind)).toEqual([
     "ISSUE_QUOTE",
     "AWAITING_CLIENT",
-    "COMPARE",
   ]);
   expect(result.kind === "AVAILABLE" && result.decisions[0]).toMatchObject({
     claim: { claimKey: "quote", evidenceReferenceIds: ["evidence"] },
@@ -302,7 +304,6 @@ it("merges fresh findings into Issue quote, deduplicates jobs and gates both new
   expect(pm.kind === "AVAILABLE" && pm.decisions.map((row) => row.kind)).toEqual([
     "REVIEW_QUOTE",
     "AWAITING_CLIENT",
-    "COMPARE",
   ]);
   const viewer = await f.service.execute({
     ...context,
@@ -326,13 +327,113 @@ it.each([
   "CONSTRUCTION",
   "HANDOVER",
   "COMPLETE",
-] as const)("limits never-compared Home suggestions at %s to the quote stages", async (stage) => {
+] as const)("never asks for a comparison on Home at %s", async (stage) => {
   const f = setup([job("never-compared", stage)]);
   f.repository.listComparedProjectIds.mockResolvedValue([]);
   const result = await f.service.execute(context);
   if (result.kind !== "AVAILABLE") throw Error("AVAILABLE_REQUIRED");
-  expect(result.decisions.map((row) => row.kind)).toEqual(
-    ["DISCOVERY", "DESIGN", "QUOTE_REVIEW"].includes(stage) ? ["COMPARE"] : [],
+  expect(result.decisions).toEqual([]);
+  expect(f.comparisons.execute).not.toHaveBeenCalled();
+});
+
+it.each([
+  "ORGANIZATION_ADMIN",
+  "PROJECT_MANAGER_ESTIMATOR",
+  "FINANCIAL_REVIEWER",
+  "VIEWER",
+] as const)("never asks %s to compare, whether or not they can draft", async (role) => {
+  const f = setup([job("without-quote"), job("with-quote")]);
+  f.repository.listComparedProjectIds.mockResolvedValue([]);
+  f.repository.listDecisionSources.mockResolvedValue([
+    {
+      kind: "DRAFT_QUOTE",
+      organizationId: context.organizationId,
+      projectId: "without-quote",
+      key: "draft",
+    },
+  ]);
+  const result = await f.service.execute({
+    ...context,
+    role,
+    capabilities: roleBundle(role),
+    assignedProjectIds: new Set(["without-quote", "with-quote"]),
+  });
+  expect(JSON.stringify(result)).not.toContain('"COMPARE"');
+  expect(result.kind === "AVAILABLE" && result.decisions.map((d) => d.kind)).toEqual(
+    role === "ORGANIZATION_ADMIN" || role === "PROJECT_MANAGER_ESTIMATOR" ? ["DRAFT_QUOTE"] : [],
   );
   expect(f.comparisons.execute).not.toHaveBeenCalled();
+});
+
+it.each(["NOT_RUN", "OUT_OF_DATE", "CURRENT"] as const)(
+  "adds only the %s state hint to an issue row using its existing saved read",
+  async (state) => {
+    const f = setup([job("A")]);
+    f.repository.listDecisionSources.mockResolvedValue([
+      {
+        kind: "ISSUE_QUOTE",
+        organizationId: context.organizationId,
+        projectId: "A",
+        key: "issue:A",
+      },
+    ]);
+    if (state === "NOT_RUN") f.repository.listComparedProjectIds.mockResolvedValue([]);
+    if (state === "OUT_OF_DATE") f.comparisons.execute.mockResolvedValue({ kind: state });
+    const result = await f.service.execute(context);
+    if (result.kind !== "AVAILABLE") throw Error(result.kind);
+    expect(result.decisions).toHaveLength(1);
+    expect(result.decisions[0]?.kind).toBe("ISSUE_QUOTE");
+    expect(result.decisions[0]?.comparisonHint).toBe(state === "CURRENT" ? undefined : state);
+    expect(result.findingsNotices).toEqual([]);
+    expect(f.comparisons.execute).toHaveBeenCalledTimes(state === "NOT_RUN" ? 0 : 1);
+  },
+);
+it.each(["project:compare", "quote:read"] as const)(
+  "shows no hint without %s",
+  async (capability) => {
+    const f = setup([job("A")]);
+    f.repository.listDecisionSources.mockResolvedValue([
+      {
+        kind: "ISSUE_QUOTE",
+        organizationId: context.organizationId,
+        projectId: "A",
+        key: "issue:A",
+      },
+    ]);
+    f.repository.listComparedProjectIds.mockResolvedValue([]);
+    const result = await f.service.execute({
+      ...context,
+      capabilities: new Set([...context.capabilities].filter((c) => c !== capability)),
+    });
+    expect(JSON.stringify(result)).not.toContain("comparisonHint");
+    expect(f.comparisons.execute).not.toHaveBeenCalled();
+  },
+);
+it("keeps a failed state read unavailable instead of asserting it never ran", async () => {
+  const f = setup([job("A")]);
+  f.repository.listDecisionSources.mockResolvedValue([
+    { kind: "ISSUE_QUOTE", organizationId: context.organizationId, projectId: "A", key: "issue:A" },
+  ]);
+  f.comparisons.execute.mockRejectedValue(Error("read"));
+  const result = await f.service.execute(context);
+  expect(result.kind === "AVAILABLE" && result.decisions[0]?.comparisonHint).toBeUndefined();
+  expect(result.kind === "AVAILABLE" && result.findingsNotices[0]?.kind).toBe("UNAVAILABLE");
+});
+it("adds no comparison hint to Draft quote or Awaiting client", async () => {
+  const f = setup();
+  f.repository.listComparedProjectIds.mockResolvedValue([]);
+  f.repository.listDecisionSources.mockResolvedValue([
+    { kind: "DRAFT_QUOTE", organizationId: context.organizationId, projectId: "A", key: "draft:A" },
+    {
+      kind: "AWAITING_CLIENT",
+      organizationId: context.organizationId,
+      projectId: "B",
+      key: "awaiting:B",
+      documentNumber: "Q1",
+      validUntil: "2026-12-01",
+    },
+  ]);
+  const result = await f.service.execute(context);
+  expect(result.kind === "AVAILABLE" && result.decisions).toHaveLength(2);
+  expect(JSON.stringify(result)).not.toContain("comparisonHint");
 });

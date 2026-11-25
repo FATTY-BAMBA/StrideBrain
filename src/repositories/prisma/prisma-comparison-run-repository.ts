@@ -17,6 +17,7 @@ type ComparisonRunReadRow = Readonly<{
 }>;
 
 type PrismaComparisonTransaction = {
+  auditEvent: { create(args: unknown): Promise<unknown> };
   intelligenceRun: {
     create(args: unknown): Promise<unknown>;
   };
@@ -166,6 +167,19 @@ export class PrismaComparisonRunRepository implements ComparisonRunRepositoryPor
               },
             })),
           },
+        },
+      });
+      await transaction.auditEvent.create({
+        data: {
+          id: boundedId("audit", input.comparisonRunId),
+          organizationId: input.organizationId,
+          actorMembershipId: input.actorMembershipId,
+          comparisonRunId: input.comparisonRunId,
+          eventType: "COMPARISON_COMPLETED",
+          requestId: input.requestId,
+          payload: { projectId: input.activeProjectId, comparisonRunId: input.comparisonRunId },
+          result: "COMPLETED",
+          createdAt: completedAt,
         },
       });
     });

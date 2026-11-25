@@ -169,10 +169,12 @@ const input: PersistCompleteComparisonInput = {
 };
 
 function database() {
+  const auditCreate = vi.fn().mockResolvedValue({});
   const intelligenceCreate = vi.fn().mockResolvedValue({ id: "intelrun_stage4" });
   const comparisonCreate = vi.fn().mockResolvedValue({ id: "cmprun_stage4" });
   const transaction = vi.fn(async (work: (tx: unknown) => Promise<unknown>) =>
     work({
+      auditEvent: { create: auditCreate },
       intelligenceRun: { create: intelligenceCreate },
       comparisonRun: { create: comparisonCreate },
     }),
@@ -184,6 +186,7 @@ function database() {
       comparisonRun: { findFirst },
     } as PrismaComparisonRunDatabase,
     transaction,
+    auditCreate,
     intelligenceCreate,
     comparisonCreate,
     findFirst,
@@ -196,6 +199,15 @@ describe("PrismaComparisonRunRepository", () => {
     const repository = new PrismaComparisonRunRepository(db.database);
 
     await repository.persistComplete(input);
+    expect(db.auditCreate).toHaveBeenCalledWith({
+      data: expect.objectContaining({
+        organizationId: input.organizationId,
+        actorMembershipId: input.actorMembershipId,
+        comparisonRunId: input.comparisonRunId,
+        requestId: input.requestId,
+        result: "COMPLETED",
+      }),
+    });
 
     expect(db.transaction).toHaveBeenCalledTimes(1);
     expect(db.intelligenceCreate).toHaveBeenCalledTimes(1);

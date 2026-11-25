@@ -165,10 +165,12 @@ const input: PersistStage5EconomicsInput = {
 };
 
 function database() {
+  const auditCreate = vi.fn().mockResolvedValue({});
   const enrichmentCreate = vi.fn().mockResolvedValue({ id: "econrun_stage5" });
   const claimCreateMany = vi.fn().mockResolvedValue({ count: 1 });
   const transaction = vi.fn(async (work: (tx: unknown) => Promise<unknown>) =>
     work({
+      auditEvent: { create: auditCreate },
       economicsEnrichmentRun: { create: enrichmentCreate },
       comparisonClaim: { createMany: claimCreateMany },
     }),
@@ -180,6 +182,7 @@ function database() {
       economicsEnrichmentRun: { findFirst },
     } as PrismaEconomicsEnrichmentDatabase,
     transaction,
+    auditCreate,
     enrichmentCreate,
     claimCreateMany,
     findFirst,
@@ -192,6 +195,15 @@ describe("PrismaEconomicsEnrichmentRunRepository", () => {
     const repository = new PrismaEconomicsEnrichmentRunRepository(db.database);
 
     await repository.persistComplete(input);
+    expect(db.auditCreate).toHaveBeenCalledWith({
+      data: expect.objectContaining({
+        organizationId: input.organizationId,
+        actorMembershipId: input.actorMembershipId,
+        comparisonRunId: input.comparisonRunId,
+        requestId: input.requestId,
+        result: "COMPLETED",
+      }),
+    });
 
     expect(db.transaction).toHaveBeenCalledTimes(1);
     expect(db.enrichmentCreate).toHaveBeenCalledTimes(1);

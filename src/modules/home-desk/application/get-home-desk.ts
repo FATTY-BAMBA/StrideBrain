@@ -18,17 +18,12 @@ import type { HomeDeskRepositoryPort } from "@/repositories/ports/home-desk-repo
 
 export type HomeDecision = Readonly<{
   key: string;
-  kind:
-    | "CONFIRM_REVIEW"
-    | "REVIEW_QUOTE"
-    | "ISSUE_QUOTE"
-    | "AWAITING_CLIENT"
-    | "DRAFT_QUOTE"
-    | "COMPARE";
+  kind: "CONFIRM_REVIEW" | "REVIEW_QUOTE" | "ISSUE_QUOTE" | "AWAITING_CLIENT" | "DRAFT_QUOTE";
   project: ProjectEntryDTO;
   documentNumber?: string;
   validUntil?: string;
   canAccept?: boolean;
+  comparisonHint?: "NOT_RUN" | "OUT_OF_DATE";
   claim?: StructuredEconomicsClaimDTO | undefined;
   additionalFindingCount?: number | undefined;
   comparisonRunId?: string | undefined;
@@ -62,7 +57,6 @@ const priority = {
   ISSUE_QUOTE: 2,
   AWAITING_CLIENT: 3,
   DRAFT_QUOTE: 4,
-  COMPARE: 5,
 } as const;
 
 export class GetHomeDesk {
@@ -171,11 +165,6 @@ export class GetHomeDesk {
         // Sequential bounded per-job reads avoid an unbounded database fan-out.
         for (const job of active) {
           const project = entry(job);
-          if (!compared.has(job.id)) {
-            if (["DISCOVERY", "DESIGN", "QUOTE_REVIEW"].includes(job.stage))
-              decisions.push({ key: `compare:${job.businessKey}`, kind: "COMPARE", project });
-            continue;
-          }
           if (
             decisions.some(
               (decision) =>
@@ -183,16 +172,32 @@ export class GetHomeDesk {
             )
           )
             continue;
+          const issueIndex = decisions.findIndex(
+            (decision) =>
+              decision.kind === "ISSUE_QUOTE" && decision.project.businessKey === job.businessKey,
+          );
+          const canShowHint =
+            issueIndex >= 0 &&
+            this.authorization.canRunComparison(context, job.id).allowed &&
+            this.authorization.canReadCommercial(context, job.id, "QUOTE").allowed;
+          if (!compared.has(job.id)) {
+            if (canShowHint)
+              decisions[issueIndex] = { ...decisions[issueIndex]!, comparisonHint: "NOT_RUN" };
+            continue;
+          }
           try {
+            // Reuse the strict saved-result read already needed for findings. Home never
+            // prepares the panel's reference suggestions or runs a comparison.
             const saved = await this.comparisons.execute(context, job.businessKey);
             if (!saved || saved.kind !== "AVAILABLE") {
-              findingsNotices.push({ project, kind: saved?.kind ?? "UNAVAILABLE" });
+              if (canShowHint && (!saved || saved.kind === "OUT_OF_DATE"))
+                decisions[issueIndex] = {
+                  ...decisions[issueIndex]!,
+                  comparisonHint: saved ? "OUT_OF_DATE" : "NOT_RUN",
+                };
+              else findingsNotices.push({ project, kind: saved?.kind ?? "UNAVAILABLE" });
               continue;
             }
-            const issueIndex = decisions.findIndex(
-              (decision) =>
-                decision.kind === "ISSUE_QUOTE" && decision.project.businessKey === job.businessKey,
-            );
             if (job.stage !== "QUOTE_REVIEW" && issueIndex < 0) continue;
             const commercial =
               this.authorization.canReadProject(context, job.id).commercialScope !== "NONE";

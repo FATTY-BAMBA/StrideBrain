@@ -1,7 +1,5 @@
 "use client";
-import { useEffect, useRef, useState, useTransition } from "react";
-import Link from "next/link";
-import type { Route } from "next";
+import { useCallback, useEffect, useRef, useState, useTransition, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import {
   prepareQuoteDraftAction,
@@ -37,6 +35,8 @@ import { quoteDraftCopy, quoteTemplate } from "@/modules/localization/quote-draf
 import { quoteIssueCopy } from "@/modules/localization/quote-issue";
 import { quoteDocumentCopy } from "@/modules/localization/quote-document";
 import { categoryLabel } from "@/modules/localization/jobs";
+import { QuoteItemDescription } from "@/components/price-list/quote-item-description";
+import { QuoteComparisonPanel } from "./quote-comparison-panel";
 import { CategoryReference } from "./category-reference";
 import ui from "@/components/ui/ui.module.css";
 import styles from "./quote-document.module.css";
@@ -154,11 +154,23 @@ export function QuoteDocumentEditor({
     dirty = serialized !== savedDocument;
   const editable = view.canDraft && initial.canDraft;
   const currentVersion = view.saved?.id ?? null;
+  const receivePreparation = useCallback(
+    (result: Extract<PrepareDraftOutcome, { kind: "PREPARED" }>) => {
+      if (result.preparation.baseVersionId !== currentVersion) return;
+      setToken(result.token);
+      setReferences(
+        result.preparation.suggestions.map((suggestion) => ({
+          ...suggestion,
+          unavailable: false,
+          outdated: false,
+        })),
+      );
+    },
+    [currentVersion],
+  );
   const canIssueSaved =
     !!currentVersion && currentVersion === issue?.versionId && !dirty && !pending;
   const lineCount = document.sections.reduce((count, section) => count + section.lines.length, 0);
-  const compareHref =
-    `/${locale}/projects/${encodeURIComponent(view.job.businessKey)}/compare` as Route;
   useEffect(() => {
     if (!editable || (!dirty && view.saved)) return;
     let active = true;
@@ -261,8 +273,9 @@ export function QuoteDocumentEditor({
       } else setMessage(draftCopy.UNAVAILABLE);
     });
   }
+  const [referencePending, startReference] = useTransition();
   function refresh() {
-    start(async () => {
+    startReference(async () => {
       const result = await prepareQuoteDraftAction(locale, view.job.businessKey);
       if (result.kind !== "PREPARED") {
         setMessage(draftCopy[result.kind]);
@@ -355,12 +368,7 @@ export function QuoteDocumentEditor({
           ) : undefined
         }
       />
-      {message && (
-        <Notice>
-          {message}
-          <Link href={compareHref}>{draftCopy.compare}</Link>
-        </Notice>
-      )}
+      {message && <Notice>{message}</Notice>}
       {firstSave &&
         !moved &&
         view.canUpdateStage &&
@@ -398,7 +406,13 @@ export function QuoteDocumentEditor({
               )}
             </header>
             {!view.canReadAmounts ? (
-              <div className={styles.scroll} tabIndex={0} role="region" aria-label={copy.title}>
+              <div
+                className={styles.scroll}
+                data-quote-scroll
+                tabIndex={0}
+                role="region"
+                aria-label={copy.title}
+              >
                 <p>{draftCopy.restricted}</p>
                 {view.structure?.sections.map((section, si) => (
                   <section key={si}>
@@ -437,7 +451,13 @@ export function QuoteDocumentEditor({
                     if (!pending && editable) save();
                   }}
                 >
-                  <div className={styles.scroll} tabIndex={0} role="region" aria-label={copy.title}>
+                  <div
+                    className={styles.scroll}
+                    data-quote-scroll
+                    tabIndex={0}
+                    role="region"
+                    aria-label={copy.title}
+                  >
                     <table className={styles.table}>
                       <thead>
                         <tr>
@@ -546,7 +566,7 @@ export function QuoteDocumentEditor({
                             const disabled = !editable || pending,
                               label = `${si + 1}.${li + 1}`;
                             const amount = calculated?.sections[si]?.lines[li]?.amount;
-                            return (
+                            const renderRow = (description: ReactNode) => (
                               <tr key={line.id ?? li}>
                                 <td>
                                   {editable ? (
@@ -589,17 +609,7 @@ export function QuoteDocumentEditor({
                                   )}
                                 </td>
                                 <td colSpan={line.kind === "NOTE" ? 6 : 1}>
-                                  <textarea
-                                    aria-label={`${copy.item} ${label}`}
-                                    required
-                                    rows={2}
-                                    maxLength={500}
-                                    value={line.description}
-                                    disabled={disabled}
-                                    onChange={(event) =>
-                                      lineAt(si, li, { ...line, description: event.target.value })
-                                    }
-                                  />
+                                  {description}
                                   {line.kind === "NOTE" && <small>{copy.note}</small>}
                                 </td>
                                 {line.kind === "ITEM" && (
@@ -707,6 +717,33 @@ export function QuoteDocumentEditor({
                                 )}
                               </tr>
                             );
+                            return line.kind === "ITEM" ? (
+                              <QuoteItemDescription
+                                key={line.id ?? li}
+                                renderRow={renderRow}
+                                line={line}
+                                projectKey={view.job.businessKey}
+                                locale={locale}
+                                label={`${copy.item} ${label}`}
+                                disabled={disabled}
+                                editable={editable}
+                                onChange={(item) => lineAt(si, li, item)}
+                              />
+                            ) : (
+                              renderRow(
+                                <textarea
+                                  aria-label={`${copy.item} ${label}`}
+                                  required
+                                  rows={2}
+                                  maxLength={500}
+                                  value={line.description}
+                                  disabled={disabled}
+                                  onChange={(event) =>
+                                    lineAt(si, li, { ...line, description: event.target.value })
+                                  }
+                                />,
+                              )
+                            );
                           })}
                           {!section.lines.length && (
                             <tr>
@@ -810,47 +847,6 @@ export function QuoteDocumentEditor({
               </>
             )}
           </Paper>
-          {view.canReadAmounts && (
-            <section className={styles.references}>
-              <h2>{copy.references}</h2>
-              {editable && (
-                <Button disabled={pending} onClick={refresh}>
-                  {draftCopy.refresh}
-                </Button>
-              )}
-              <Link href={compareHref}>{draftCopy.compare}</Link>
-              {referenceRows
-                .filter((row) =>
-                  document.sections.some((section) => section.categoryId === row.categoryId),
-                )
-                .map((row) => {
-                  const sections = document.sections.filter(
-                    (section) => section.categoryId === row.categoryId,
-                  );
-                  return (
-                    <CategoryReference
-                      key={row.categoryId}
-                      locale={locale}
-                      job={view.job}
-                      {...row}
-                      sectionTitles={sections.map((section) => section.title || copy.section)}
-                      amount={
-                        categoryTotals.find((total) => total.categoryId === row.categoryId)
-                          ?.amount ?? null
-                      }
-                      canUse={
-                        editable &&
-                        sections.length > 0 &&
-                        sections.every((section) => section.lines.length === 0)
-                      }
-                      pending={pending}
-                      onUse={() => applySuggestion(row)}
-                      onSources={() => sources(row.categoryId)}
-                    />
-                  );
-                })}
-            </section>
-          )}
         </div>
         <aside className={styles.aside} aria-label={copy.settings}>
           {editable && (
@@ -910,6 +906,51 @@ export function QuoteDocumentEditor({
           ) : view.canReadAmounts ? (
             <p>{draftCopy.UNAVAILABLE}</p>
           ) : null}
+          {view.canReadAmounts && (
+            <QuoteComparisonPanel
+              key={currentVersion ?? "unsaved"}
+              locale={locale}
+              projectKey={view.job.businessKey}
+              onPrepared={receivePreparation}
+            >
+              <h2>{copy.references}</h2>
+              {editable && (
+                <Button disabled={referencePending || pending} onClick={refresh}>
+                  {draftCopy.refresh}
+                </Button>
+              )}
+              {referenceRows
+                .filter((row) =>
+                  document.sections.some((section) => section.categoryId === row.categoryId),
+                )
+                .map((row) => {
+                  const sections = document.sections.filter(
+                    (section) => section.categoryId === row.categoryId,
+                  );
+                  return (
+                    <CategoryReference
+                      key={row.categoryId}
+                      locale={locale}
+                      job={view.job}
+                      {...row}
+                      sectionTitles={sections.map((section) => section.title || copy.section)}
+                      amount={
+                        categoryTotals.find((total) => total.categoryId === row.categoryId)
+                          ?.amount ?? null
+                      }
+                      canUse={
+                        editable &&
+                        sections.length > 0 &&
+                        sections.every((section) => section.lines.length === 0)
+                      }
+                      pending={referencePending || pending}
+                      onUse={() => applySuggestion(row)}
+                      onSources={() => sources(row.categoryId)}
+                    />
+                  );
+                })}
+            </QuoteComparisonPanel>
+          )}
         </aside>
       </div>
       {evidence && (

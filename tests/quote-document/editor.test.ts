@@ -1,4 +1,10 @@
 // @vitest-environment jsdom
+vi.mock("@/modules/quote-comparison/request", () => ({
+  requestQuoteComparison: mock.comparison,
+}));
+vi.mock("@/modules/price-list/request", () => ({
+  readQuotePrices: vi.fn().mockResolvedValue({ kind: "AVAILABLE", rows: [], hasMore: false }),
+}));
 vi.mock("@/app/[locale]/projects/actions", () => ({ updateProjectStageAction: vi.fn() }));
 import { act, createElement } from "react";
 import { createRoot } from "react-dom/client";
@@ -10,8 +16,10 @@ import { quoteDocumentTotals, quoteCategoryTotals } from "@/modules/finance/quot
 import type { QuoteDraftView } from "@/modules/quote-draft/application/get-quote-draft";
 import { quoteDocumentCopy } from "@/modules/localization/quote-document";
 import { quoteDraftCopy } from "@/modules/localization/quote-draft";
+import { claimFindingText } from "@/modules/economics/presentation/claim-findings";
 import { quoteIssueCopy } from "@/modules/localization/quote-issue";
 const mock = vi.hoisted(() => ({
+  comparison: vi.fn().mockResolvedValue({ kind: "NOT_RUN" }),
   save: vi.fn(),
   issuePrepare: vi.fn(),
   prepare: vi.fn(),
@@ -252,43 +260,51 @@ it("requires acceptance confirmation with document, client and total; Cancel nev
   );
 });
 
-it("sends only editable document fields when saving an adapted saved version twice", async () => {
-  const initial = view(true);
-  mock.save.mockImplementation(async (_locale, raw) => ({
-    result: {
-      kind: "SAVED",
-      versionId: raw.baseVersionId === "version" ? "version-2" : "version-3",
-      versionNumber: 2,
-      firstSave: false,
-      totals: initial.saved!.totals,
-    },
-    view: {
-      ...initial,
-      saved: { ...initial.saved!, id: raw.baseVersionId === "version" ? "version-2" : "version-3" },
-    },
-  }));
-  await act(async () =>
-    root.render(createElement(QuoteDocumentEditor, { initial, issue: null, locale: "en" })),
-  );
-  for (const baseVersionId of ["version", "version-2"]) {
+it.each(["en", "zh-TW"] as const)(
+  "saves twice without a comparison link in the success message (%s)",
+  async (locale) => {
+    const initial = view(true);
+    mock.save.mockImplementation(async (_locale, raw) => ({
+      result: {
+        kind: "SAVED",
+        versionId: raw.baseVersionId === "version" ? "version-2" : "version-3",
+        versionNumber: 2,
+        firstSave: false,
+        totals: initial.saved!.totals,
+      },
+      view: {
+        ...initial,
+        saved: {
+          ...initial.saved!,
+          id: raw.baseVersionId === "version" ? "version-2" : "version-3",
+        },
+      },
+    }));
     await act(async () =>
-      host
-        .querySelector("#quote-document-save")!
-        .dispatchEvent(new Event("submit", { bubbles: true, cancelable: true })),
+      root.render(createElement(QuoteDocumentEditor, { initial, issue: null, locale })),
     );
-    const raw = mock.save.mock.calls.at(-1)![1];
-    expect(raw.baseVersionId).toBe(baseVersionId);
-    expect(Object.keys(raw).sort()).toEqual([
-      "baseVersionId",
-      "discount",
-      "idempotencyKey",
-      "preparationToken",
-      "projectKey",
-      "sections",
-    ]);
-  }
-  expect(mock.prepare).not.toHaveBeenCalled();
-});
+    for (const baseVersionId of ["version", "version-2"]) {
+      await act(async () =>
+        host
+          .querySelector("#quote-document-save")!
+          .dispatchEvent(new Event("submit", { bubbles: true, cancelable: true })),
+      );
+      const raw = mock.save.mock.calls.at(-1)![1];
+      expect(raw.baseVersionId).toBe(baseVersionId);
+      expect(Object.keys(raw).sort()).toEqual([
+        "baseVersionId",
+        "discount",
+        "idempotencyKey",
+        "preparationToken",
+        "projectKey",
+        "sections",
+      ]);
+    }
+    expect(mock.prepare).not.toHaveBeenCalled();
+    expect(host.textContent).toContain(quoteDraftCopy(locale).saved.replace("{version}", "2"));
+    expect(host.textContent).not.toContain(quoteDraftCopy(locale).compare);
+  },
+);
 
 it("shows a current comparison on opening without adding lines or saving", async () => {
   const preparation = {
@@ -457,7 +473,7 @@ it("reviews item-only section subtotals and shows percentage fees in their rows 
     token: "signed",
     preparation: {
       blockers: [],
-      warnings: [],
+      warnings: ["COMPARISON_OUT_OF_DATE"],
       missingFirmFields: [],
       snapshot: {
         schemaVersion: "QUOTE-DOCUMENT-2.0",
@@ -480,6 +496,8 @@ it("reviews item-only section subtotals and shows percentage fees in their rows 
     root.render(createElement(QuoteIssuePanel, { view: draftIssue(), locale: "en" })),
   );
   await act(async () => button(quoteIssueCopy("en").prepare).click());
+  expect(host.textContent).toContain(quoteIssueCopy("en").COMPARISON_OUT_OF_DATE);
+  expect(button(quoteIssueCopy("en").confirm).disabled).toBe(false);
   const bodies = host.querySelectorAll("table tbody");
   expect(bodies).toHaveLength(2);
   expect(bodies[0]?.querySelector("tr")?.textContent).toContain("NT$1,000");
@@ -520,3 +538,73 @@ it("resets the untyped discount default with the language selector when a saved 
   expect(resetLanguage.value).toBe("zh-TW");
   expect(host.querySelector("footer")?.textContent).toContain("優惠折讓");
 });
+
+it("keeps save available while comparison loading or Run is pending, then retains editing after a failure", async () => {
+  let resolveRead!: (value: unknown) => void, resolveRun!: (value: unknown) => void;
+  mock.comparison.mockImplementationOnce(
+    () =>
+      new Promise((resolve) => {
+        resolveRead = resolve;
+      }),
+  );
+  await act(async () =>
+    root.render(
+      createElement(QuoteDocumentEditor, { initial: view(true), issue: null, locale: "en" }),
+    ),
+  );
+  expect(host.textContent).toContain("Loading comparison…");
+  expect(button(quoteDraftCopy("en").save).disabled).toBe(false);
+  await act(async () => resolveRead({ kind: "NOT_RUN" }));
+  mock.comparison.mockImplementationOnce(
+    () =>
+      new Promise((resolve) => {
+        resolveRun = resolve;
+      }),
+  );
+  await act(async () => button("Run comparison").click());
+  expect(host.textContent).toContain("Running comparison…");
+  expect(button(quoteDraftCopy("en").save).disabled).toBe(false);
+  expect(host.querySelector<HTMLTextAreaElement>("textarea")!.disabled).toBe(false);
+  expect(mock.comparison).toHaveBeenLastCalledWith("en", "J-TEST", "RUN");
+  await act(async () => resolveRun({ kind: "UNAVAILABLE" }));
+  expect(host.textContent).toContain(
+    "Comparison is unavailable. You can keep working on the quote.",
+  );
+  expect(button(quoteDraftCopy("en").save).disabled).toBe(false);
+  expect(mock.save).not.toHaveBeenCalled();
+});
+
+it.each(["en", "zh-TW"] as const)(
+  "shows findings once in the comparison panel, retaining issue reminders (%s)",
+  async (locale) => {
+    const claim: IssueView["findings"][number] = {
+      claimKey: "programme",
+      titleEn: "Programme",
+      titleZhTw: "工期",
+      kind: "PROGRAMME_DIFFERENCE_UNQUANTIFIED",
+      value: {},
+      evidenceReferenceIds: [],
+      warningCodes: [],
+    };
+    const sentence = claimFindingText(claim, locale, seededFirmLists.workCategories)!;
+    mock.comparison.mockResolvedValueOnce({
+      kind: "CURRENT",
+      generatedAt: "2026-11-25",
+      href: `/${locale}/projects/J-TEST/compare`,
+      jobs: [],
+      findings: [{ sentence, href: `/${locale}/projects/J-TEST/compare?evidenceClaim=programme` }],
+    });
+    await act(async () =>
+      root.render(
+        createElement(QuoteDocumentEditor, {
+          initial: view(true),
+          issue: { ...draftIssue(), findings: [claim] },
+          locale,
+        }),
+      ),
+    );
+    expect(host.textContent?.split(sentence)).toHaveLength(2);
+    expect(host.querySelector("#quote-issue")?.textContent).not.toContain(sentence);
+    expect(host.textContent).not.toContain(quoteIssueCopy(locale).findings);
+  },
+);

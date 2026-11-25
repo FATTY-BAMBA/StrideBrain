@@ -37,6 +37,21 @@ export function DecisionList({
                 <strong>{item.project.name}</strong>
                 <p>{view.sentence}</p>
                 {view.moreFindings ? <p className={styles.muted}>{view.moreFindings}</p> : null}
+                {item.kind === "ISSUE_QUOTE" && item.comparisonHint ? (
+                  <p className={styles.muted}>
+                    {item.comparisonHint === "NOT_RUN"
+                      ? copy.comparisonNotRun
+                      : copy.comparisonOutOfDate}{" "}
+                    ·{" "}
+                    <Link
+                      href={
+                        `/${locale}/projects/${encodeURIComponent(item.project.businessKey)}/quote#quote-comparison` as Route
+                      }
+                    >
+                      {copy.openComparison}
+                    </Link>
+                  </p>
+                ) : null}
               </div>
               <Link className={styles.secondary} href={view.href as Route}>
                 {view.label}

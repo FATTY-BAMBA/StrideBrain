@@ -1,0 +1,12 @@
+
+ RUN  v4.1.10 /private/tmp/stridebrain-sb041
+
+TEST_DATABASE_TEMPLATE_MS=552
+PRICE_READ_BENCHMARK {"lines":20000,"quotes":100,"postgres":"17.12 (Debian 17.12-1.pgdg13+1)","milliseconds":{"SUGGEST":192.04,"HISTORY":16.72,"LIST":116.77}}
+ ✓ tests/price-list/performance-postgres.test.ts > 20,000 readable issued item benchmark > reads one suggestion, history and list page with authorization included 4041ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  08:46:41
+   Duration  5.32s (transform 255ms, setup 88ms, import 321ms, tests 4.23s, environment 0ms)
+

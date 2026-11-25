@@ -66,7 +66,11 @@ function fixture(count = 7): HomeDesk {
       key: group.key,
       count: group.key === "inquiry" ? count : 0,
     })),
-    decisions: projects.map((project) => ({ key: project.businessKey, kind: "COMPARE", project })),
+    decisions: projects.map((project) => ({
+      key: project.businessKey,
+      kind: "DRAFT_QUOTE",
+      project,
+    })),
     findingsNotices: [],
     closedJobs: [],
     closedJobsUnavailable: false,
@@ -307,6 +311,34 @@ it.each(["en", "zh-TW"] as const)(
               : `${count} more findings`,
         );
       expect(host.querySelector("li a")?.getAttribute("href")).toContain("stone");
+    }
+  },
+);
+
+it.each(["en", "zh-TW"] as const)(
+  "keeps comparison state inside the issue row with a localized panel link (%s)",
+  (locale) => {
+    const desk = fixture(1);
+    for (const state of ["NOT_RUN", "OUT_OF_DATE", undefined] as const) {
+      const item = {
+        ...desk.decisions[0]!,
+        kind: "ISSUE_QUOTE" as const,
+        ...(state ? { comparisonHint: state } : {}),
+      };
+      const host = render(
+        createElement(HomeDeskScreen, { locale, outcome: { ...desk, decisions: [item] } }),
+      );
+      expect(host.querySelectorAll("li")).toHaveLength(1);
+      const hint = host.querySelector(
+        `li a[href="/${locale}/projects/JOB-0/quote#quote-comparison"]`,
+      );
+      if (state) {
+        expect(hint?.parentElement?.textContent).toBe(
+          locale === "zh-TW"
+            ? `${state === "NOT_RUN" ? "尚未與過往專案比較" : "與過往專案的比較已過期"} · 開啟比較`
+            : `${state === "NOT_RUN" ? "Not yet compared with past jobs" : "The comparison with past jobs is out of date"} · Open comparison`,
+        );
+      } else expect(hint).toBeNull();
     }
   },
 );
