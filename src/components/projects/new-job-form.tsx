@@ -1,4 +1,5 @@
 "use client";
+import { TAIWAN_CITIES, cityLabel } from "@/modules/projects/domain/taiwan-cities";
 
 import { useActionState, useState, useId } from "react";
 import Link from "next/link";
@@ -135,7 +136,7 @@ export function NewJobForm({
     );
   }
   function select(
-    key: "subtype" | "clientMode" | "clientType",
+    key: "subtype" | "clientMode" | "clientType" | "locationCity",
     options: readonly (readonly [string, string])[],
   ) {
     return (
@@ -235,7 +236,10 @@ export function NewJobForm({
               ),
           )}
           {field("areaQuantity", 19)}
-          {field("locationCity", 120)}
+          {select(
+            "locationCity",
+            TAIWAN_CITIES.map((city) => [city.key, cityLabel(locale, city.key)] as const),
+          )}
           {field("locationDistrict", 120, true)}
         </div>
         <p className={styles.hint}>

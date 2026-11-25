@@ -13,9 +13,9 @@ import { assistantDatabase } from "./database-fixture";
 import { assistantConfig } from "@/modules/assistant/infrastructure/config";
 import type { JobDraftModelPort } from "@/modules/assistant/domain/contracts";
 import { modelDraftForCase } from "./job-draft-model-fixture";
-it("has 12 texts per language, all required scenarios, and bounded long privacy messages", () => {
+it("has 15 texts per language, all required scenarios, and bounded long privacy messages", () => {
   for (const locale of ["en", "zh-TW"]) {
-    expect(jobDraftCases.filter((c) => c.locale === locale)).toHaveLength(12);
+    expect(jobDraftCases.filter((c) => c.locale === locale)).toHaveLength(15);
     for (const suffix of [
       "ping",
       "existing",
@@ -24,6 +24,9 @@ it("has 12 texts per language, all required scenarios, and bounded long privacy 
       "long-private",
       "not-job",
       "injection",
+      "individual-client",
+      "chinese-city",
+      "residential-unlisted",
     ])
       expect(jobDraftCases.find((c) => c.id === `${locale}-${suffix}`)?.required).toBe(true);
     const long = jobDraftCases.find((c) => c.id === `${locale}-long-private`)!.text;
@@ -46,6 +49,21 @@ it("does not relax required, support, one-call or per-language score gates", () 
       }) as unknown as JobDraftEvaluationRow,
   );
   expect(summarizeJobDraftRound(1, rows).passed).toBe(true);
+  for (const suffix of ["individual-client", "chinese-city", "residential-unlisted"]) {
+    expect(
+      summarizeJobDraftRound(
+        1,
+        rows.filter((r) => !r.id.endsWith(suffix)),
+      ).passed,
+    ).toBe(false);
+    expect(
+      summarizeJobDraftRound(
+        1,
+        rows.map((r) => (r.id.endsWith(suffix) ? { ...r, passed: false } : r)),
+      ).passed,
+    ).toBe(false);
+  }
+  expect(summarizeJobDraftRound(1, [rows[1]!, ...rows.slice(1)]).passed).toBe(false);
   for (const patch of [{ passed: false }, { unsupportedKept: ["locationCity"] }, { calls: 2 }])
     expect(summarizeJobDraftRound(1, [{ ...rows[0]!, ...patch }, ...rows.slice(1)]).passed).toBe(
       false,
@@ -88,7 +106,7 @@ suite("deterministic job-draft evaluation harness", () => {
       mkdirSync(dirname(path), { recursive: true });
       writeFileSync(path, JSON.stringify({ mode: "FAKE_MODEL", ...report }, null, 2) + "\n");
     }
-    expect(report.rounds.map((r) => r.scores)).toEqual(Array(3).fill({ en: 12, "zh-TW": 12 }));
+    expect(report.rounds.map((r) => r.scores)).toEqual(Array(3).fill({ en: 15, "zh-TW": 15 }));
     expect(report.passed).toBe(true);
   }, 30000);
 });

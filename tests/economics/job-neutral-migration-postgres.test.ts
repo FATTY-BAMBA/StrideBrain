@@ -52,6 +52,8 @@ suite("job-neutral populated PostgreSQL migration", () => {
       "20261124012000_firm_work_categories",
       "20261124150000_quote_document_sections",
       "20261124151000_quote_document_line_invariants",
+      "20261125150000_firm_client_types",
+      "20261125151000_project_cities",
     ])
       await sql.query(readFileSync(`prisma/migrations/${independent}/migration.sql`, "utf8"));
     // Use today's writer to construct a real calculation, then model the pre-upgrade

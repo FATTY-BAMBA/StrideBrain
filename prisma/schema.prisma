@@ -414,6 +414,7 @@ model Project {
   status             ProjectStatus
   stage              ProjectStage
   locationCity       String
+  locationCityBeforeCanonicalization String?
   locationDistrict   String?
   areaQuantity       Decimal            @db.Decimal(18, 3)
   areaUnit           String

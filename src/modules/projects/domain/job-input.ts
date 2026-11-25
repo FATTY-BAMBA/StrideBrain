@@ -1,3 +1,4 @@
+import { TAIWAN_CITIES } from "./taiwan-cities";
 import type { FirmLists, FirmWorkCategory } from "@/modules/firm-lists/domain/contracts";
 import {
   pricingCategoriesForScopes,
@@ -137,7 +138,10 @@ export function validateCreateProject(
     areaQuantity: areaToSquareMetres(text("areaQuantity", 19), lists.areaDisplayUnit) ?? "",
     areaUnit: JOB_FIXED_VALUES.areaUnit,
     currency: choice("currency", [JOB_FIXED_VALUES.currency]),
-    locationCity: text("locationCity", 120),
+    locationCity: choice(
+      "locationCity",
+      TAIWAN_CITIES.map((city) => city.key),
+    ),
     locationDistrict: text("locationDistrict", 120, false),
     scopeCategoryIds,
     commercialCategoryIds: commercialCategoriesForScope(scopeCategoryIds, lists.workCategories),

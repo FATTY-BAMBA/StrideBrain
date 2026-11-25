@@ -56,11 +56,11 @@ LANGUAGE sql
 IMMUTABLE
 AS $$
   SELECT CASE
-    WHEN lower(active_city) = lower(candidate_city)
+    WHEN lower(replace(active_city, '_', ' ')) = lower(replace(candidate_city, '_', ' '))
       AND coalesce(lower(active_district), '') <> ''
       AND lower(active_district) = lower(candidate_district) THEN 1::numeric
-    WHEN lower(active_city) = lower(candidate_city) THEN 0.6::numeric
-    WHEN (lower(active_city), lower(candidate_city)) IN (
+    WHEN lower(replace(active_city, '_', ' ')) = lower(replace(candidate_city, '_', ' ')) THEN 0.6::numeric
+    WHEN (lower(replace(active_city, '_', ' ')), lower(replace(candidate_city, '_', ' '))) IN (
       ('taipei city', 'new taipei city'),
       ('new taipei city', 'taipei city')
     ) THEN 0.3::numeric

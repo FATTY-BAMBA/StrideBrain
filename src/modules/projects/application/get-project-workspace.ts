@@ -1,3 +1,4 @@
+import { projectLocationLabel } from "@/modules/localization/project-context";
 import { areaInFirmUnit, areaUnitLabel } from "@/modules/firm-lists/domain/area-unit";
 import { categoryLabel } from "@/modules/localization/jobs";
 import { projectSubtypeLabel } from "@/modules/localization/project-context";
@@ -435,7 +436,10 @@ export class GetProjectWorkspace {
           country: "TW",
           city: base.locationCity,
           district: base.locationDistrict ?? undefined,
-          display: [base.locationCity, base.locationDistrict].filter(Boolean).join(", "),
+          display: projectLocationLabel(context.locale, {
+            city: base.locationCity,
+            district: base.locationDistrict ?? undefined,
+          }),
         }),
         area: Object.freeze({
           value: base.areaQuantity,

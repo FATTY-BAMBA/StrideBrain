@@ -94,6 +94,60 @@ it("uses unique labels/IDs for two forms in the same thread", async () => {
   for (const label of host.querySelectorAll("label[for]"))
     expect(document.getElementById(label.getAttribute("for")!)).not.toBeNull();
 });
+it.each(["en", "zh-TW"] as const)(
+  "offers fixed cities and active firm client labels in %s",
+  async (locale) => {
+    const catalog = {
+      ...seed.catalog,
+      clientTypes: [
+        ...seed.catalog.clientTypes,
+        {
+          key: "CLIENT-DEVELOPER",
+          nameEn: "Developer",
+          nameZhTw: "建設公司",
+          active: true,
+          sortOrder: 4,
+        },
+        {
+          key: "CLIENT-RETIRED",
+          nameEn: "Retired type",
+          nameZhTw: "已停用類型",
+          active: false,
+          sortOrder: 5,
+        },
+      ],
+    };
+    await act(() =>
+      root.render(
+        createElement(NewJobForm, {
+          ...seed,
+          catalog,
+          locale,
+          initialDraft: {
+            ...draft,
+            clientMode: "new",
+            clientBusinessKey: "",
+            values: { locationCity: "TAICHUNG_CITY", clientType: "INDIVIDUAL" },
+          },
+        }),
+      ),
+    );
+    const cities = host.querySelector<HTMLSelectElement>('select[name="locationCity"]')!;
+    expect(cities.options).toHaveLength(24); // blank plus 22 cities/counties and Other
+    expect(cities.value).toBe("TAICHUNG_CITY");
+    expect(cities.selectedOptions[0]?.textContent).toBe(
+      locale === "en" ? "Taichung City" : "臺中市",
+    );
+    const clients = host.querySelector<HTMLSelectElement>('select[name="clientType"]')!;
+    expect(clients.value).toBe("INDIVIDUAL");
+    expect(clients.querySelector('[value="CLIENT-DEVELOPER"]')?.textContent).toBe(
+      locale === "en" ? "Developer" : "建設公司",
+    );
+    expect(clients.querySelector('[value="CLIENT-RETIRED"]')).toBeNull();
+    const form = host.querySelector("form")!;
+    expect(new FormData(form).get("locationCity")).toBe("TAICHUNG_CITY");
+  },
+);
 it("hides drafting when off and retains the ordinary form; Home exposes an explicit second button only when allowed", async () => {
   await act(() =>
     root.render(

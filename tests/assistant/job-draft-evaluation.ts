@@ -99,9 +99,23 @@ export function summarizeJobDraftRound(round: number, cases: readonly JobDraftEv
   );
   const required = cases.filter((c) => c.required);
   const passed =
-    cases.length === 24 &&
+    cases.length === jobDraftCases.length &&
+    new Set(cases.map((c) => c.id)).size === jobDraftCases.length &&
+    jobDraftCases.every((test) =>
+      cases.some((c) => c.id === test.id && c.locale === test.locale),
+    ) &&
     ["en", "zh-TW"].every(
-      (locale) => cases.filter((c) => c.locale === locale).length === 12 && scores[locale]! >= 10,
+      (locale) =>
+        cases.filter((c) => c.locale === locale).length === 15 &&
+        // Preserve the original 10/12 gate; new required cases cannot make up a core miss.
+        cases.filter(
+          (c) =>
+            c.locale === locale &&
+            c.passed &&
+            !["individual-client", "chinese-city", "residential-unlisted"].some((suffix) =>
+              c.id.endsWith(suffix),
+            ),
+        ).length >= 10,
     ) &&
     required.every((c) => c.passed) &&
     cases.every((c) => !c.unsupportedKept.length && c.calls === 1);

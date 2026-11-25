@@ -14,6 +14,9 @@ import {
   type UpdateClientInput,
 } from "@/modules/clients/domain/client-input";
 import { validateFirmListChange } from "@/modules/firm-lists/domain/list-change";
+import { createProjectWriteServices } from "@/lib/server/project-write-services";
+import { createProjectWorkspaceService } from "@/lib/server/project-workspace-services";
+import { jobInput } from "../projects/job-fixture";
 
 const suite = process.env.DATABASE_URL ? describe : describe.skip;
 suite("SB-073 client types", () => {
@@ -68,6 +71,34 @@ suite("SB-073 client types", () => {
     expect(
       await getPrismaClient().auditEvent.count({ where: { idempotencyKey: value.idempotencyKey } }),
     ).toBe(0);
+  });
+  it("creates an Individual client and a keyed Taichung job, displayed in either language", async () => {
+    const owner = await db.actor();
+    const input = {
+      ...jobInput(),
+      clientType: "INDIVIDUAL",
+      locationCity: "TAICHUNG_CITY",
+      locationDistrict: "",
+    };
+    expect((await createProjectWriteServices().create.execute(owner, input)).kind).toBe("CREATED");
+    const job = await getPrismaClient().project.findFirstOrThrow({
+      where: { organizationId: owner.organizationId, businessKey: input.businessKey },
+      include: { client: true },
+    });
+    expect(job.locationCity).toBe("TAICHUNG_CITY");
+    expect(job.locationCityBeforeCanonicalization).toBeNull();
+    expect(job.client?.clientType).toBe("INDIVIDUAL");
+    for (const locale of ["en", "zh-TW"] as const) {
+      const result = await createProjectWorkspaceService().execute(
+        { ...owner, locale },
+        input.businessKey,
+      );
+      expect(result.kind).toBe("AVAILABLE");
+      if (result.kind === "AVAILABLE")
+        expect(result.workspace.project.location.display).toBe(
+          locale === "en" ? "Taichung City" : "臺中市",
+        );
+    }
   });
   it("keeps a retired type on its current client but rejects assigning it to another", async () => {
     const owner = await db.actor(),

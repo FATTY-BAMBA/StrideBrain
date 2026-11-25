@@ -1,3 +1,4 @@
+import { comparisonCityValue } from "@/modules/projects/domain/taiwan-cities";
 import type { AuthorityState } from "@/modules/projects/domain/project-workspace";
 import type {
   ComparisonFactorEvidence,
@@ -48,6 +49,7 @@ type ProfileProjectRow = Readonly<{
   subtype: string;
   status: ProjectRecordStatus;
   locationCity: string;
+  locationCityBeforeCanonicalization?: string | null;
   locationDistrict: string | null;
   areaQuantity: DecimalLike;
   areaUnit: string;
@@ -202,7 +204,7 @@ function mapProfile(
     subtype: row.subtype,
     status: row.status,
     location: Object.freeze({
-      city: row.locationCity,
+      city: comparisonCityValue(row.locationCity, row.locationCityBeforeCanonicalization),
       district: row.locationDistrict ?? undefined,
     }),
     areaValue: row.areaQuantity.toString(),
@@ -239,6 +241,7 @@ function projectSelect(organizationId: string) {
     subtype: true,
     status: true,
     locationCity: true,
+    locationCityBeforeCanonicalization: true,
     locationDistrict: true,
     areaQuantity: true,
     areaUnit: true,

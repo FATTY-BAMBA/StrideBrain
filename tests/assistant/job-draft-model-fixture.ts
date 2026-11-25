@@ -1,3 +1,4 @@
+import { TAIWAN_CITIES } from "@/modules/projects/domain/taiwan-cities";
 import { draftFields, normalizeDraftText } from "@/modules/assistant/domain/job-draft";
 import type { JobDraftCase } from "./job-draft-cases";
 
@@ -16,9 +17,15 @@ export function modelDraftForCase(test: JobDraftCase): Record<string, unknown> {
       )![0];
     if (field === "clientType")
       quote = text.match(
-        /(?:client type|客戶類型):\s*(?:retail|corporate|hospitality|零售|企業|旅宿)/iu,
+        /(?:client type|客戶類型):\s*(?:retail|corporate|hospitality|individual|零售|企業|旅宿|個人)/iu,
       )![0];
-    raw[field] = { value, quote };
+    if (field === "locationCity") {
+      const city = TAIWAN_CITIES.find((city) => city.key === value)!;
+      quote = [city.nameEn, city.nameZhTw, ...city.aliases]
+        .filter((alias) => text.includes(alias))
+        .sort((a, b) => b.length - a.length)[0]!;
+    }
+    raw[field] = { value: field === "locationCity" ? quote : value, quote };
   }
   raw.scopeCategoryIds = test.scopes.map((value) => ({
     value,

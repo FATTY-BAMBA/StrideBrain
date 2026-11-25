@@ -36,7 +36,12 @@ beforeAll(async () => {
       .filter((name) => name < migration)
       .sort())
       await sql.query(readFileSync(`prisma/migrations/${name}/migration.sql`, "utf8"));
-    for (const path of fixturePaths("db:seed").filter((path) => !path.includes("quote-document")))
+    for (const path of fixturePaths("db:seed").filter(
+      (path) =>
+        !["quote-document", "firm-client-types", "project-cities"].some((name) =>
+          path.includes(name),
+        ),
+    ))
       await sql.query(readFileSync(path, "utf8"));
     expect(
       (await sql.query("SELECT to_regclass('public.\"QuoteSection\"') AS relation")).rows[0]

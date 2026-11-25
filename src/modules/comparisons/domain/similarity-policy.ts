@@ -1,3 +1,5 @@
+import { comparableCityKey } from "@/modules/projects/domain/taiwan-cities";
+import { citiesShareBorder } from "./taiwan-city-neighbours";
 import { JOB_FIXED_VALUES } from "@/modules/projects/domain/job-input";
 import {
   SIMILARITY_POLICY_VERSION,
@@ -50,8 +52,6 @@ const FACTOR_LABEL_KEYS: Readonly<Record<SimilarityFactorKey, string>> = Object.
   COMPLETION_RECENCY: "comparison.factor.completionRecency",
   LOCATION_PROXIMITY: "comparison.factor.locationProximity",
 });
-
-const ADJACENT_CITIES = new Set(["new taipei city|taipei city", "taipei city|new taipei city"]);
 
 function clamp(value: number, minimum = 0, maximum = 1): number {
   return Math.min(maximum, Math.max(minimum, value));
@@ -181,15 +181,16 @@ export function locationSimilarity(
   active: Readonly<{ city: string; district?: string | undefined }>,
   candidate: Readonly<{ city: string; district?: string | undefined }>,
 ): number {
-  const activeCity = normalizedLocation(active.city);
-  const candidateCity = normalizedLocation(candidate.city);
+  const activeCity = comparableCityKey(active.city);
+  const candidateCity = comparableCityKey(candidate.city);
+  if (!activeCity || !candidateCity) return 0;
   const activeDistrict = normalizedLocation(active.district);
   const candidateDistrict = normalizedLocation(candidate.district);
 
   if (activeCity === candidateCity && activeDistrict && activeDistrict === candidateDistrict)
     return 1;
   if (activeCity === candidateCity) return 0.6;
-  if (ADJACENT_CITIES.has(`${activeCity}|${candidateCity}`)) return 0.3;
+  if (citiesShareBorder(activeCity, candidateCity)) return 0.3;
   return 0;
 }
 
