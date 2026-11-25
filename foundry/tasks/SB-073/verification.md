@@ -50,7 +50,7 @@ The question gate passed all three rounds: core scores 19/20, 20/20; 20/20, 20/2
 
 The overall evaluation **failed** because the required `zh-TW-residential-unlisted` case shortened 測試客戶甲 to 客戶甲 in rounds 1 and 3. City, district, area and the unlisted-type behavior were correct in those rounds. Client-type inference from 客戶 was dropped by the existing support check. Round 2 preserved the full client name and passed. The English fallback job name, both full-width city cases and the area quote were corrected in all rounds.
 
-The latest proposed instruction clarification now explicitly preserves the entire named-client phrase between Chinese benefactive and location markers (幫/替/為 … 在), including initial descriptors, while excluding pronouns and unnamed generic clients. This is general extraction guidance; there are no example client names, fixture references, model changes, oracle edits or relaxed checks. **This last clarification has not had a paid evaluation.** Its full local `npm run check` passed: 186 files, 1,782 tests and production build; [final local log](evidence/check-3.log). Final-head CI will be reported in the PR comment. At that point paid acceptance remained unmet and Product Director approval was required before any additional evaluation; the later authorization is recorded below.
+Before review, the proposed instruction clarification explicitly preserves the entire named-client phrase between Chinese benefactive and location markers (幫/替/為 … 在), including initial descriptors, while excluding pronouns and unnamed generic clients. This is general extraction guidance; there are no example client names, fixture references, model changes, oracle edits or relaxed checks. **That superseded clarification did not have a paid evaluation.** Its full local `npm run check` passed: 186 files, 1,782 tests and production build; [final local log](evidence/check-3.log). Final-head CI will be reported in the PR comment. At that point paid acceptance remained unmet and Product Director approval was required before any additional evaluation; the later authorization is recorded below.
 
 Total estimated paid cost across both authorized runs: **US$0.584119100**.
 
@@ -59,7 +59,6 @@ Original allowance: 2 of 2 dispatches used. The Product Director has since autho
 ## Not verified / acceptance waiting
 
 Hosted acceptance is waiting for the Product Director, including the kept-data deploy, Settings clicks, keyboard/mobile visual inspection, and the two Home draft examples. No hosted deploy, migration, seed, setting change or Test site workflow has been run. No browser screenshots were produced for this task; the form checks above are DOM tests. PR remains draft.
-
 
 ## Fix round 1 — confirmed naming rule
 
@@ -72,4 +71,27 @@ Source: [Reviewer (Claude), comment 7167255389](https://github.com/FATTY-BAMBA/S
 - Keep the official 臺北市, 臺中市, 臺南市 and 臺東縣 display names. Both 台 and 臺 input spellings remain accepted.
 - Known scope boundary from the review: default client types for a newly created organization currently come from migration/seed only. Production firm creation must initialize them in #42, as with job types; no onboarding code is added here.
 
-Focused regression suite passed: 4 files / 60 tests; [log](evidence/review-1-focused.log). `npm run check`, final CI and authorized evaluation 3: pending. No hosted operations; PR stays draft for Product Director hosted acceptance.
+Focused regression suite passed: 4 files / 60 tests; [log](evidence/review-1-focused.log). [Fix CI 45650218324](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45650218324) passed on `a167ed82c6c275339c34993edd28d50ffdeeb976`, including migrations, two seed/verify cycles, the complete check and dependency audit. Only after that success, authorized [evaluation 3 / 45651010861](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45651010861) was dispatched on the same full commit SHA. The result failed the draft gate, as detailed below. No hosted operations; PR stays draft for Product Director hosted acceptance.
+
+Local verification recovery: the first full run lost tracked files and Chai/Vitest modules from the old temporary checkout while tests were running. That interrupted check is not counted as a pass. The pushed fix was recovered into a fresh clone at the same commit and the locked dependencies were reinstalled; no source or test assertion was changed for the recovery. Clean `npm run check` passed: 186 files, 1,783 tests, format/design checks, lint (the existing Prisma-config export warning), typecheck and production build. [Full log](evidence/review-1-check.log).
+
+
+## Authorized third paid evaluation — review fix 1
+
+[Run 45651010861](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45651010861) tested `a167ed82c6c275339c34993edd28d50ffdeeb976` with unchanged gemini-3.5-flash-lite. It was dispatched only after [CI 45650218324](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45650218324) passed on that commit. This used the Product Director's **one additional three-round run**; no further evaluation was dispatched. [Full synthetic report, including per-question/case rates and failed draft payloads](evidence/evaluation-3.json).
+
+| Round | Questions en | Questions zh-TW | Drafts en | Drafts zh-TW |
+| --- | --- | --- | --- | --- |
+| 1 | 27/27 | 27/27 | 15/16 | 16/16 |
+| 2 | 27/27 | 27/27 | 15/16 | 16/16 |
+| 3 | 27/27 | 26/27 | 15/16 | 16/16 |
+
+**Overall: failed.** The question gate passed all rounds, including all required hosted/quality cases. Core scores were 20/20 and 20/20, 20/20 and 20/20, then 20/20 and 19/20. No displayed wrong number, amount label or format was reported. Round 3 `zh-TW-finding` was discarded with `FINDING_SENTENCE`; it passed in the other two rounds and the existing two-of-three gate passed. Calls: median 2 each round; maximum 3, 3, 4; 54/54, 54/54, 53/54 questions stayed within three calls. These satisfy the unchanged call gates.
+
+The draft gate failed on **`en-new-client-acceptance` in all three rounds**. The client name `Mr. Wang`, job name `Residential renovation` and city `TAICHUNG_CITY` were correct. But the model also supplied `clientType: { value: "INDIVIDUAL", quote: "new client" }`, and the unchanged server support checks kept it. The evaluator correctly marked `clientType` as unsupported: relationship words do not establish the client's type. This remains a defect; no expected value, oracle, support check, instruction or pass mark was changed after this result. Each round therefore passed 21/22 required draft cases.
+
+Every other scored draft case passed all rounds, including 王先生, 王小姐 and Ms. Wang and all original cases. The separately reported 測試客戶甲 placeholder also passed all three rounds; its outcome does not affect the gate. All 99 draft calls (32 scored plus one reported per round) used one model call each.
+
+Estimated run cost, summed with decimal arithmetic across questions, scored drafts **and reported placeholder calls**: **US$0.302131500**. Total for all three authorized runs: **US$0.886250600**. The additional allowance is exhausted. Paid acceptance remains unmet; the correct names alone do not make this run pass.
+
+Verified for this review: 60 focused tests, full local `npm run check` (186 files / 1,783 tests and production build), CI on the paid-evaluated code commit, and the completed three-round paid report. Subsequent commits contain evidence/documentation only. Not verified: successful paid acceptance, hosted acceptance, screenshots or manual keyboard/mobile use. The Product Director's test-site acceptance is still pending; no hosted operation or Test site workflow was run. PR #78 stays draft.
