@@ -146,6 +146,39 @@ suite("deterministic job-draft evaluation harness", () => {
     }
     expect(report.rounds.map((r) => r.scores)).toEqual(Array(3).fill({ en: 16, "zh-TW": 16 }));
     expect(report.rounds.every((r) => r.reportedCases.length === 1)).toBe(true);
+    const saved = JSON.parse(JSON.stringify(report)) as typeof report;
+    for (const round of saved.rounds)
+      for (const row of [...round.cases, ...round.reportedCases]) {
+        const test = [...jobDraftCases, ...reportedJobDraftCases].find(
+          (test) => test.id === row.id,
+        )!;
+        expect(row.rawDraft).toEqual(modelDraftForCase(test));
+      }
     expect(report.passed).toBe(true);
   }, 30000);
+  it("also records failed scored/reported output and marks absent provider output as null", async () => {
+    const config = { ...assistantConfig({}), enabled: true };
+    for (const test of [jobDraftCases[0]!, reportedJobDraftCases[0]!]) {
+      const rawDraft = {
+        ...modelDraftForCase(test),
+        name: { value: "Unsupported job name", quote: "Unsupported job name" },
+      };
+      const fake: JobDraftModelPort = {
+        async draftJob() {
+          return { draft: rawDraft, usage: { inputTokens: 0, outputTokens: 0 } };
+        },
+      };
+      const row = await runJobDraftCase(db, test, config, fake);
+      expect(row.passed).toBe(false);
+      expect(JSON.parse(JSON.stringify(row)).rawDraft).toEqual(rawDraft);
+    }
+    const failedProvider: JobDraftModelPort = {
+      async draftJob() {
+        throw new Error("Provider unavailable");
+      },
+    };
+    const row = await runJobDraftCase(db, jobDraftCases[0]!, config, failedProvider);
+    expect(row.outcome).toBe("UNAVAILABLE");
+    expect(JSON.parse(JSON.stringify(row))).toMatchObject({ passed: false, rawDraft: null });
+  });
 });

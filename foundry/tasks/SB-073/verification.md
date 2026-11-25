@@ -122,3 +122,14 @@ These combined scores use the original passing verdicts alongside the three newl
 Focused verification passed: 3 files / 67 tests, including the available-output replay and the unchanged-instruction hash; [log](evidence/review-2-focused.log). Full `npm run check` also passed: 187 files / 1,802 tests, format/design checks, lint (only the existing Prisma-config export warning), typecheck and production build. [Full check log](evidence/review-2-check.log). Final-commit CI is reported in the PR checks and the Builder comment. Paid dispatches remain 3 total; cumulative estimated paid cost remains US$0.886250600.
 
 Not verified: exact replay of missing successful raw drafts, paid acceptance of this fix, hosted acceptance, screenshots or manual keyboard/mobile use. Hosted acceptance waits for the Product Director; no hosted operation or Test site workflow. PR stays draft.
+
+
+## Fix round 3 — complete synthetic raw-draft capture
+
+Source: [owner-authored Reviewer (Claude) comment 7168905315](https://github.com/FATTY-BAMBA/StrideBrain/pull/78#issuecomment-7168905315), actual author FATTY-BAMBA / 101108617. The reviewer confirms the server check and unchanged instruction, and confirms no other raw capture exists for run 45651010861. The Product Director directly authorized **one additional three-round paid evaluation, the fourth and last, only after fix-round-3 CI passes**, in the working chat on 26 November 2026 (Asia/Taipei).
+
+`runJobDraftCase` now includes `rawDraft` for every scored and reported case, whether it passes or fails. If the provider returned no draft, the artifact contains explicit `null`. The complete raw synthetic output remains in the report only; the workflow's metadata-only logging and production usage logs are unchanged. The rest of the harness, cases, expected values, oracle, pass marks, model, instructions and server checks are unchanged. Existing reports are not rewritten.
+
+Regressions verify that all 99 passing deterministic outputs (96 scored plus three reported) survive JSON serialization intact, failed scored/reported outputs are retained, and provider failure records `rawDraft: null`. Existing server-check, instruction-hash and partial replay tests also pass. Focused suite: 3 files / 68 tests; [log](evidence/review-3-focused.log). Full local `npm run check` also passed: 187 files / 1,803 tests, format/design checks, lint (existing Prisma-config export warning only), typecheck and production build. [Full log](evidence/review-3-check.log). Final-code CI is pending before any paid dispatch.
+
+The fourth run has not yet been dispatched. It will use the exact commit that passes CI. No fifth run is authorized. Hosted acceptance remains waiting for the Product Director; PR stays draft, with no hosted operations or Test site workflow.

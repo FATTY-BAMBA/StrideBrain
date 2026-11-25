@@ -74,9 +74,9 @@ export async function runJobDraftCase(
     },
     dropped: draft?.dropped ?? draftFields,
     unsupportedKept,
+    rawDraft: rawDraft ?? null,
     ...(!passed
       ? {
-          rawDraft,
           expected: {
             ...test.expected,
             scopeCategoryIds: test.scopes,

@@ -3,11 +3,11 @@
   "branch": "build/sb-073-client-types-cities",
   "baseCommit": "9851ca6e000dacea19b9263188a83848dc623fd8",
   "issueUpdatedAt": "2026-11-25T14:35:29Z",
-  "status": "REVIEW_FIX_2_WAITING_FOR_CI_AND_REPLAY_ACCEPTANCE",
+  "status": "REVIEW_FIX_3_AWAITING_FINAL_PAID_EVALUATION",
   "delivery": "A → B → C → D",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
-  "paidEvaluationLimit": 3,
+  "paidEvaluationLimit": 4,
   "paidEvaluationRuns": [
     {
       "number": 1,
@@ -43,22 +43,24 @@
     "passed": true,
     "status": "PASSED",
     "focusedFiles": 3,
-    "focusedTests": 67,
+    "focusedTests": 68,
     "testFiles": 187,
-    "tests": 1802
+    "tests": 1803
   },
   "paidEvaluationPassed": false,
   "finalInstructionPaidVerified": true,
   "totalEstimatedUsd": "0.886250600",
   "ciFinalHead": "SEE_PR_CHECKS_AND_BUILDER_COMMENT",
   "additionalPaidEvaluationAuthorization": {
-    "source": "Product Director in working chat, 2026-11-25",
+    "source": "Product Director in working chat, 2026-11-26 Asia/Taipei",
     "runs": 1,
-    "condition": "After fix item 1 passes CI"
+    "issueRunNumber": 4,
+    "final": true,
+    "condition": "After fix round 3 passes CI"
   },
   "review": {
-    "round": 2,
-    "commentId": 7167950702,
+    "round": 3,
+    "commentId": 7168905315,
     "author": "FATTY-BAMBA",
     "authorId": 101108617,
     "namingRule": "CONFIRMED_BY_PRODUCT_DIRECTOR",
@@ -93,8 +95,9 @@
     ],
     "providerCalls": 0,
     "estimatedUsd": "0.000000000",
-    "acceptance": "WAITING_FOR_PRODUCT_DIRECTOR"
+    "acceptance": "NOT_USED_AS_PAID_PASS; FOURTH_RUN_AUTHORIZED"
   },
-  "previousCiVerifiedCommit": "a167ed82c6c275339c34993edd28d50ffdeeb976",
-  "review1CiRunId": 45650218324
+  "previousCiVerifiedCommit": "d9baf60dca4595c3675ee39d652e96f0863e66a4",
+  "review1CiRunId": 45650218324,
+  "review2CiRunId": 45655496663
 }

@@ -14,3 +14,6 @@ Fix round 1, [owner-authored review 7167255389](https://github.com/FATTY-BAMBA/S
 
 
 Fix round 2, [owner-authored review 7167950702](https://github.com/FATTY-BAMBA/StrideBrain/pull/78#issuecomment-7167950702): share the seven relationship phrases with the naming instruction and reject a client-type quote when only those phrases, spaces and punctuation remain. Keep explicit type phrases in both languages. Rendered instruction must match `a167ed8` exactly; model, cases, oracle and pass marks stay unchanged. Replay saved raw outputs with no provider calls. The paid artifact has raw output only for its three failures, so report those exact replays separately from carried-forward passing verdicts; do not fabricate missing raw quotes. Paid acceptance is for the Product Director to decide. No fourth paid run.
+
+
+Fix round 3, [owner-authored review 7168905315](https://github.com/FATTY-BAMBA/StrideBrain/pull/78#issuecomment-7168905315): retain raw synthetic drafts for all scored/reported pass/fail cases in the evaluation artifact, including explicit null when no draft was returned. Keep runtime code, instructions, model, cases, oracle and gates unchanged. The Product Director authorized one fourth and final three-round paid run after CI passes on this fix. Do not start a fifth run or any hosted workflow. The prior partial replay is not recorded as a paid pass.
