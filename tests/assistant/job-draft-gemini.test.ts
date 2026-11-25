@@ -45,6 +45,9 @@ describe("Gemini job draft capability", () => {
             name: "submit_job_draft",
             description: expect.any(String),
             parametersJsonSchema: jobDraftSchema({
+              clientType: seededFirmLists.clientTypes
+                .filter((entry) => entry.active)
+                .map((entry) => entry.key),
               subtype: input.choices.subtype.map((entry) => entry.value),
               scopeCategoryIds: input.choices.scopeCategoryIds.map((entry) => entry.value),
             }),

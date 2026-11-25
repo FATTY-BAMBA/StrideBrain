@@ -26,7 +26,9 @@ suite("tenant-owned lists", () => {
   async function revision() {
     return (await reader().read(await db.actor()))!.revision;
   }
-  async function input(kind: "JOB_TYPE" | "QUOTE_UNIT" = "JOB_TYPE"): Promise<FirmListChange> {
+  async function input(
+    kind: "JOB_TYPE" | "QUOTE_UNIT" | "CLIENT_TYPE" = "JOB_TYPE",
+  ): Promise<FirmListChange> {
     return {
       kind,
       key: null,
@@ -53,10 +55,10 @@ suite("tenant-owned lists", () => {
         ?.pricedUnderKey,
     ).toBe("DEMOLITION_CEILING");
     expect(lists.lists.areaDisplayUnit).toBe("m2");
-    expect(JSON.stringify(lists)).not.toMatch(/contactPerson|phone|email|address|client/);
+    expect(JSON.stringify(lists)).not.toMatch(/contactPerson|phone|email|address|"clients"/);
   });
   it("adds with a stable key, replays once, renames/reorders/retires without deleting", async () => {
-    for (const kind of ["JOB_TYPE", "QUOTE_UNIT"] as const) {
+    for (const kind of ["JOB_TYPE", "QUOTE_UNIT", "CLIENT_TYPE"] as const) {
       const owner = await db.actor();
       const value = await input(kind),
         saved = await writer().changeWithAudit(owner, value);
@@ -83,9 +85,12 @@ suite("tenant-owned lists", () => {
       expect(updated).toEqual(saved);
       const lists = await reader().read(owner);
       expect(
-        (kind === "JOB_TYPE" ? lists!.jobTypes : lists!.quoteUnits).find(
-          (entry) => entry.key === saved.key,
-        ),
+        (kind === "JOB_TYPE"
+          ? lists!.jobTypes
+          : kind === "CLIENT_TYPE"
+            ? lists!.clientTypes
+            : lists!.quoteUnits
+        ).find((entry) => entry.key === saved.key),
       ).toMatchObject({ nameEn: "Home", nameZhTw: "住家", sortOrder: 1, active: false });
       expect(
         (

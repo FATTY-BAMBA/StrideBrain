@@ -18,6 +18,7 @@ export type FirmWorkCategory = FirmListEntry &
 export type FirmLists = Readonly<{
   revision: string;
   areaDisplayUnit: AreaDisplayUnit;
+  clientTypes: readonly FirmListEntry[];
   jobTypes: readonly FirmJobType[];
   workCategories: readonly FirmWorkCategory[];
   quoteUnits: readonly FirmListEntry[];

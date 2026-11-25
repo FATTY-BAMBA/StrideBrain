@@ -8,5 +8,6 @@
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "paidEvaluationLimit": 2,
-  "paidEvaluationRuns": []
+  "paidEvaluationRuns": [],
+  "pullRequest": 78
 }

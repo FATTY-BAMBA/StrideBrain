@@ -123,6 +123,8 @@ export class PrismaProjectWriteRepository
         if (
           !lists ||
           !lists.jobTypes.some((entry) => entry.key === input.subtype && entry.active) ||
+          (input.clientMode === "new" &&
+            !lists.clientTypes.some((entry) => entry.key === input.clientType && entry.active)) ||
           input.scopeCategoryIds.some(
             (key) =>
               !lists.workCategories.some(

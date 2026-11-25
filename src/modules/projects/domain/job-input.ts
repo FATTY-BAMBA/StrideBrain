@@ -37,7 +37,6 @@ export function scopesForCommercialCategory(
 ): readonly string[] {
   return categoryScopes(categories, categoryId);
 }
-export const CLIENT_TYPES = ["RETAIL", "CORPORATE", "HOSPITALITY"] as const;
 export const JOB_FIELDS = [
   "businessKey",
   "name",
@@ -145,7 +144,13 @@ export function validateCreateProject(
     clientMode,
     clientBusinessKey: text("clientBusinessKey", 128),
     clientName: text("clientName", 200, clientMode === "new"),
-    clientType: clientMode === "new" ? choice("clientType", CLIENT_TYPES) : "",
+    clientType:
+      clientMode === "new"
+        ? choice(
+            "clientType",
+            lists.clientTypes.filter((entry) => entry.active).map((entry) => entry.key),
+          )
+        : "",
     idempotencyKey: text("idempotencyKey", 36),
   };
   choice("areaUnit", [lists.areaDisplayUnit]);

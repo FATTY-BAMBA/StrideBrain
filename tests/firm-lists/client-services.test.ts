@@ -26,8 +26,15 @@ export const clientInput = () => ({
 
 describe("client details and access", () => {
   it("allows optional details and bounds and validates all fields", () => {
-    expect(validateClientUpdate(clientInput()).kind).toBe("VALID");
-    expect(validateClientUpdate({ ...clientInput(), taxId: "", email: "" }).kind).toBe("VALID");
+    expect(validateClientUpdate(clientInput(), jobContext().firmLists!.clientTypes).kind).toBe(
+      "VALID",
+    );
+    expect(
+      validateClientUpdate(
+        { ...clientInput(), taxId: "", email: "" },
+        jobContext().firmLists!.clientTypes,
+      ).kind,
+    ).toBe("VALID");
     for (const invalid of [
       { taxId: "1234567" },
       { taxId: "１２３４５６７８" },
@@ -41,7 +48,10 @@ describe("client details and access", () => {
       { expectedUpdatedAt: "tomorrow" },
       { idempotencyKey: "not-a-key" },
     ])
-      expect(validateClientUpdate({ ...clientInput(), ...invalid }).kind).toBe("INVALID");
+      expect(
+        validateClientUpdate({ ...clientInput(), ...invalid }, jobContext().firmLists!.clientTypes)
+          .kind,
+      ).toBe("INVALID");
     expect(validateClientSearch({ search: " x ", page: 1 })).toEqual({ search: "x", page: 1 });
     for (const input of [
       { search: "", page: 0 },

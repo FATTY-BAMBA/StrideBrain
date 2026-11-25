@@ -6,12 +6,12 @@ import { createProjectAction } from "@/app/[locale]/projects/new/actions";
 import { jobsCopy, categoryLabel } from "@/modules/localization/jobs";
 import { projectSubtypeLabel } from "@/modules/localization/project-context";
 import type { Locale } from "@/modules/localization/config";
-import { CLIENT_TYPES, JOB_FIXED_VALUES, type JobField } from "@/modules/projects/domain/job-input";
+import { JOB_FIXED_VALUES, type JobField } from "@/modules/projects/domain/job-input";
 import type { JobActionState } from "@/modules/projects/application/job-action-state";
 import type { ProjectClientOption } from "@/modules/projects/application/list-project-clients";
 import type { JobDraft } from "@/modules/assistant/domain/job-draft";
 import { jobDraftCopy } from "@/modules/localization/job-draft";
-import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
+import { firmEntryLabel, type FirmLists } from "@/modules/firm-lists/domain/contracts";
 import { areaInFirmUnit, areaUnitLabel } from "@/modules/firm-lists/domain/area-unit";
 import styles from "./job-form.module.css";
 
@@ -287,7 +287,12 @@ export function NewJobForm({
               {field("clientName", 200)}
               {select(
                 "clientType",
-                CLIENT_TYPES.map((value) => [value, copy[value]] as const),
+                catalog.clientTypes
+                  .filter((entry) => entry.active)
+                  .map(
+                    (entry) =>
+                      [entry.key, firmEntryLabel(catalog.clientTypes, entry.key, locale)] as const,
+                  ),
               )}
             </>
           ) : null}

@@ -5,14 +5,16 @@ import { CLIENT_DETAIL_FIELDS, type ClientErrors } from "@/modules/clients/domai
 import type { ClientRecord } from "@/repositories/ports/client-repository";
 import type { Locale } from "@/modules/localization/config";
 import { clientRecordsCopy } from "@/modules/localization/client-records";
-import { CLIENT_TYPES } from "@/modules/projects/domain/job-input";
+import { firmEntryLabel, type FirmListEntry } from "@/modules/firm-lists/domain/contracts";
 export function ClientDetailsForm({
   client,
   canEdit,
+  clientTypes,
   locale,
 }: {
   client: ClientRecord;
   canEdit: boolean;
+  clientTypes: readonly FirmListEntry[];
   locale: Locale;
 }) {
   const c = clientRecordsCopy(locale),
@@ -81,11 +83,13 @@ export function ClientDetailsForm({
                 </label>
                 {field === "clientType" ? (
                   <select {...common}>
-                    {CLIENT_TYPES.map((type) => (
-                      <option key={type} value={type}>
-                        {c[type]}
-                      </option>
-                    ))}
+                    {clientTypes
+                      .filter((type) => type.active || type.key === client.clientType)
+                      .map((type) => (
+                        <option key={type.key} value={type.key}>
+                          {firmEntryLabel(clientTypes, type.key, locale)}
+                        </option>
+                      ))}
                   </select>
                 ) : field === "address" || field === "note" ? (
                   <textarea {...common} maxLength={limits[field]} />

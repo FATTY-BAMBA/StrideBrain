@@ -8,7 +8,7 @@ export type FirmListChange = ChangeIdentity &
   (
     | Readonly<{ kind: "AREA_UNIT"; areaDisplayUnit: AreaDisplayUnit }>
     | Readonly<{
-        kind: "JOB_TYPE" | "QUOTE_UNIT" | "WORK_CATEGORY";
+        kind: "JOB_TYPE" | "QUOTE_UNIT" | "WORK_CATEGORY" | "CLIENT_TYPE";
         key: string | null;
         nameEn: string;
         nameZhTw: string;
@@ -62,7 +62,7 @@ export function validateFirmListChange(raw: unknown): FirmListValidation {
     };
   }
   if (
-    !["JOB_TYPE", "QUOTE_UNIT", "WORK_CATEGORY"].includes(String(value.kind)) ||
+    !["JOB_TYPE", "QUOTE_UNIT", "WORK_CATEGORY", "CLIENT_TYPE"].includes(String(value.kind)) ||
     Object.keys(value).some(
       (key) =>
         ![
@@ -83,7 +83,7 @@ export function validateFirmListChange(raw: unknown): FirmListValidation {
   const fields: string[] = [];
   if (value.key !== null && !boundedText(value.key, 128)) fields.push("key");
   for (const field of ["nameEn", "nameZhTw"] as const)
-    if (!boundedText(value[field], 200)) fields.push(field);
+    if (!boundedText(value[field], value.kind === "CLIENT_TYPE" ? 40 : 200)) fields.push(field);
   if (
     typeof value.sortOrder !== "number" ||
     !Number.isInteger(value.sortOrder) ||
@@ -111,7 +111,7 @@ export function validateFirmListChange(raw: unknown): FirmListValidation {
     kind: "VALID",
     input: {
       ...identity,
-      kind: value.kind as "JOB_TYPE" | "QUOTE_UNIT" | "WORK_CATEGORY",
+      kind: value.kind as "JOB_TYPE" | "QUOTE_UNIT" | "WORK_CATEGORY" | "CLIENT_TYPE",
       key: value.key as string | null,
       nameEn: (value.nameEn as string).trim(),
       nameZhTw: (value.nameZhTw as string).trim(),

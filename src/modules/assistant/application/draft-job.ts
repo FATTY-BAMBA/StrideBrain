@@ -2,9 +2,8 @@ import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import type { AssistantRepositoryPort } from "@/repositories/ports/assistant-repository";
 import type { ProjectClientRepositoryPort } from "@/repositories/ports/project-repository";
-import { categoryLabel, jobsCopy } from "@/modules/localization/jobs";
+import { categoryLabel } from "@/modules/localization/jobs";
 import { projectSubtypeLabel } from "@/modules/localization/project-context";
-import { CLIENT_TYPES } from "@/modules/projects/domain/job-input";
 import type { AssistantConfig, FallbackReason, JobDraftModelPort } from "../domain/contracts";
 import { AssistantModelError } from "../domain/model-error";
 import { supportJobDraft, matchDraftClient, type JobDraft } from "../domain/job-draft";
@@ -23,11 +22,9 @@ export const jobDraftChoices = (lists: FirmLists) => ({
       en: projectSubtypeLabel("en", value, lists.jobTypes)!,
       zhTw: projectSubtypeLabel("zh-TW", value, lists.jobTypes)!,
     })),
-  clientType: CLIENT_TYPES.map((value) => ({
-    value,
-    en: jobsCopy("en")[value],
-    zhTw: jobsCopy("zh-TW")[value],
-  })),
+  clientType: lists.clientTypes
+    .filter((entry) => entry.active)
+    .map((entry) => ({ value: entry.key, en: entry.nameEn, zhTw: entry.nameZhTw })),
   scopeCategoryIds: lists.workCategories
     .filter((entry) => entry.active && entry.scopeSelectable)
     .map(({ key: value }) => ({

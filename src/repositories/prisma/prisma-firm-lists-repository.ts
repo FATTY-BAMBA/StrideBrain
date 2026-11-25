@@ -69,7 +69,7 @@ export class PrismaFirmListsRepository implements FirmListSettingsReader {
       select: { id: true },
     });
     if (!membership) return null;
-    const [organization, jobTypes, categories, quoteUnits] = await Promise.all([
+    const [organization, jobTypes, categories, quoteUnits, clientTypes] = await Promise.all([
       this.database.organization.findUnique({
         where: { id: organizationId },
         select: { areaDisplayUnit: true },
@@ -103,6 +103,11 @@ export class PrismaFirmListsRepository implements FirmListSettingsReader {
         where: { organizationId },
         orderBy: [...orderBy],
         take: 501,
+        select: firmEntrySelect,
+      }),
+      this.database.firmClientType.findMany({
+        where: { organizationId },
+        orderBy: [...orderBy],
         select: firmEntrySelect,
       }),
     ]);
@@ -140,6 +145,7 @@ export class PrismaFirmListsRepository implements FirmListSettingsReader {
         }),
       ),
       quoteUnits,
+      clientTypes,
     };
     return { ...data, revision: createHash("sha256").update(JSON.stringify(data)).digest("hex") };
   }

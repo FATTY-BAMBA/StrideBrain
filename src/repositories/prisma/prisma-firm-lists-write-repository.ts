@@ -77,10 +77,13 @@ export class PrismaFirmListsWriteRepository implements FirmListsWriter {
                   ? lists.jobTypes
                   : input.kind === "WORK_CATEGORY"
                     ? lists.workCategories
-                    : lists.quoteUnits;
+                    : input.kind === "CLIENT_TYPE"
+                      ? lists.clientTypes
+                      : lists.quoteUnits;
               if (input.key !== null && !entries.some((entry) => entry.key === input.key))
                 return { kind: "UNAVAILABLE" };
-              if (input.key === null && entries.length >= 500) return { kind: "LIMIT" };
+              if (input.key === null && entries.length >= (input.kind === "CLIENT_TYPE" ? 30 : 500))
+                return { kind: "LIMIT" };
               const data = {
                 nameEn: input.nameEn,
                 nameZhTw: input.nameZhTw,
@@ -116,6 +119,12 @@ export class PrismaFirmListsWriteRepository implements FirmListsWriter {
                       ...categoryData,
                       scopeSelectable: true,
                     },
+                  });
+              } else if (input.kind === "CLIENT_TYPE") {
+                if (input.key) await tx.firmClientType.update({ where, data });
+                else
+                  await tx.firmClientType.create({
+                    data: { id: randomUUID(), organizationId, key: key!, ...data },
                   });
               } else if (input.kind === "QUOTE_UNIT") {
                 if (input.key) await tx.firmQuoteUnit.update({ where, data });
@@ -170,6 +179,20 @@ export class PrismaFirmListsWriteRepository implements FirmListsWriter {
                           ? "UPDATE"
                           : "RETIRE",
                   previousRevision: lists.revision,
+                  changedFields:
+                    input.kind === "AREA_UNIT"
+                      ? ["areaDisplayUnit"]
+                      : [
+                          "nameEn",
+                          "nameZhTw",
+                          "sortOrder",
+                          "active",
+                          ...(input.kind === "JOB_TYPE"
+                            ? ["relatedKeys"]
+                            : input.kind === "WORK_CATEGORY"
+                              ? ["pricedUnderKey"]
+                              : []),
+                        ],
                 },
               },
             });

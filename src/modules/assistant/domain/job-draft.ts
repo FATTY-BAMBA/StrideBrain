@@ -1,5 +1,4 @@
 import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
-import { CLIENT_TYPES } from "@/modules/projects/domain/job-input";
 import { draftArea } from "@/modules/projects/domain/draft-area";
 import { record } from "./grounding";
 
@@ -40,14 +39,18 @@ const exact = (maxLength: number, choices?: readonly string[]) => ({
   additionalProperties: false,
 });
 export function jobDraftSchema(
-  choices: Readonly<{ subtype: readonly string[]; scopeCategoryIds: readonly string[] }>,
+  choices: Readonly<{
+    subtype: readonly string[];
+    clientType: readonly string[];
+    scopeCategoryIds: readonly string[];
+  }>,
 ) {
   return {
     type: "object",
     properties: {
       name: exact(200),
       clientName: exact(200),
-      clientType: exact(128, CLIENT_TYPES),
+      clientType: exact(128, choices.clientType),
       subtype: exact(128, choices.subtype),
       locationCity: exact(120),
       locationDistrict: exact(120),
@@ -172,7 +175,11 @@ export function supportJobDraft(
     const value = supported(
       input[field],
       field.startsWith("location") ? 120 : 200,
-      field === "clientType" ? CLIENT_TYPES : field === "subtype" ? jobTypes : undefined,
+      field === "clientType"
+        ? lists.clientTypes.filter((entry) => entry.active).map((entry) => entry.key)
+        : field === "subtype"
+          ? jobTypes
+          : undefined,
     );
     if (value) {
       values[field] = value;
