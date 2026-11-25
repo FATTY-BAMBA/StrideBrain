@@ -3,10 +3,12 @@
   "branch": "build/sb-079-fact-answers",
   "baseCommit": "bb8d8d8d9fbb3365477f5164dbd9d84d7d237fe3",
   "issueUpdatedAt": "2026-11-25T20:03:27Z",
-  "status": "IMPLEMENTING_A",
+  "status": "AWAITING_SAY_BOUNDARY_CLARIFICATION",
   "delivery": "A → B → C → D → E",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "paidEvaluationLimit": 4,
-  "paidEvaluationRuns": []
+  "paidEvaluationRuns": [],
+  "pullRequest": 80,
+  "pendingDecision": "Whether say is limited to server-supplied non-factual connective phrases; unrestricted words can still assert a wrong status without violating the listed lexical rules."
 }
