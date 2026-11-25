@@ -50,12 +50,26 @@ The question gate passed all three rounds: core scores 19/20, 20/20; 20/20, 20/2
 
 The overall evaluation **failed** because the required `zh-TW-residential-unlisted` case shortened 測試客戶甲 to 客戶甲 in rounds 1 and 3. City, district, area and the unlisted-type behavior were correct in those rounds. Client-type inference from 客戶 was dropped by the existing support check. Round 2 preserved the full client name and passed. The English fallback job name, both full-width city cases and the area quote were corrected in all rounds.
 
-The latest proposed instruction clarification now explicitly preserves the entire named-client phrase between Chinese benefactive and location markers (幫/替/為 … 在), including initial descriptors, while excluding pronouns and unnamed generic clients. This is general extraction guidance; there are no example client names, fixture references, model changes, oracle edits or relaxed checks. **This last clarification has not had a paid evaluation.** Its full local `npm run check` passed: 186 files, 1,782 tests and production build; [final local log](evidence/check-3.log). Final-head CI will be reported in the PR comment. Paid acceptance remains unmet; Product Director approval is required before any additional evaluation.
+The latest proposed instruction clarification now explicitly preserves the entire named-client phrase between Chinese benefactive and location markers (幫/替/為 … 在), including initial descriptors, while excluding pronouns and unnamed generic clients. This is general extraction guidance; there are no example client names, fixture references, model changes, oracle edits or relaxed checks. **This last clarification has not had a paid evaluation.** Its full local `npm run check` passed: 186 files, 1,782 tests and production build; [final local log](evidence/check-3.log). Final-head CI will be reported in the PR comment. At that point paid acceptance remained unmet and Product Director approval was required before any additional evaluation; the later authorization is recorded below.
 
 Total estimated paid cost across both authorized runs: **US$0.584119100**.
 
-Allowance: 2 of 2 dispatches used. No further paid runs authorized.
+Original allowance: 2 of 2 dispatches used. The Product Director has since authorized one additional three-round evaluation, only after this review fix passes CI.
 
 ## Not verified / acceptance waiting
 
 Hosted acceptance is waiting for the Product Director, including the kept-data deploy, Settings clicks, keyboard/mobile visual inspection, and the two Home draft examples. No hosted deploy, migration, seed, setting change or Test site workflow has been run. No browser screenshots were produced for this task; the form checks above are DOM tests. PR remains draft.
+
+
+## Fix round 1 — confirmed naming rule
+
+Source: [Reviewer (Claude), comment 7167255389](https://github.com/FATTY-BAMBA/StrideBrain/pull/78#issuecomment-7167255389), actually authored by repository owner FATTY-BAMBA (account 101108617). The Product Director confirmed the naming rule and official 臺 city labels in the working chat on 25 November, and authorized one additional three-round paid evaluation **after the fix passes CI**. These decisions are confirmed, not provisional.
+
+- Replaced the descriptive-prefix and 幫/替/為…在 instructions with the confirmed relationship-word rule. 新客戶, 既有客戶, 老客戶, 客戶, new client, existing client and our client are excluded when they only describe the relationship; every other word in the name phrase is kept. No server support check or model changed.
+- **Changed two required cases added by this PR**, as the review explicitly requests: the residential client is now Ms. Wang / 王小姐. This corrects the use of the reviewer's placeholder as a naming target; it is not a change to any original evaluation case or pass mark.
+- Added required English/Chinese acceptance cases, including exactly 「台中市的住宅裝修，新客戶王先生」. They expect 王先生 / Mr. Wang, city TAICHUNG_CITY, a verbatim residential job name, no inferred area and no job type.
+- Retained 「幫測試客戶甲在台北市大安區做一間 30 坪的住宅裝修」 in `reportedCases` in each round, with its values, dropped fields, verdict and cost. It is reported separately and cannot change the gate or compensate for another case. The scored set is now 16 per language: the original 12 still need 10/12, all original required cases still pass, and all four new cases per language are required. Unsupported-kept and one-call checks on the scored set are unchanged. Tests cover a failing reported placeholder alongside a passing scored set and still reject a required or core failure.
+- Keep the official 臺北市, 臺中市, 臺南市 and 臺東縣 display names. Both 台 and 臺 input spellings remain accepted.
+- Known scope boundary from the review: default client types for a newly created organization currently come from migration/seed only. Production firm creation must initialize them in #42, as with job types; no onboarding code is added here.
+
+Focused regression suite passed: 4 files / 60 tests; [log](evidence/review-1-focused.log). `npm run check`, final CI and authorized evaluation 3: pending. No hosted operations; PR stays draft for Product Director hosted acceptance.

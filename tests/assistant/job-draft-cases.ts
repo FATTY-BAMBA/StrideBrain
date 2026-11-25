@@ -430,13 +430,13 @@ export const jobDraftCases: readonly JobDraftCase[] = [
     id: "en-residential-unlisted",
     locale: "en",
     required: true,
-    text: "A residential renovation for Test Client A in Taipei City, Daan District, 30 坪.",
+    text: "A residential renovation for Ms. Wang in Taipei City, Daan District, 30 坪.",
     expected: {
       name: "residential renovation",
       locationCity: "TAIPEI_CITY",
       locationDistrict: "Daan District",
       areaQuantity: "99.174",
-      clientName: "Test Client A",
+      clientName: "Ms. Wang",
     },
     scopes: [],
     clientKey: "",
@@ -445,6 +445,52 @@ export const jobDraftCases: readonly JobDraftCase[] = [
     id: "zh-TW-residential-unlisted",
     locale: "zh-TW",
     required: true,
+    text: "幫王小姐在台北市大安區做一間 30 坪的住宅裝修",
+    expected: {
+      name: "住宅裝修",
+      locationCity: "TAIPEI_CITY",
+      locationDistrict: "大安區",
+      areaQuantity: "99.174",
+      clientName: "王小姐",
+    },
+    scopes: [],
+    clientKey: "",
+  },
+  {
+    id: "en-new-client-acceptance",
+    locale: "en",
+    required: true,
+    text: "Residential renovation in Taichung City for new client Mr. Wang",
+    expected: {
+      name: "Residential renovation",
+      clientName: "Mr. Wang",
+      locationCity: "TAICHUNG_CITY",
+    },
+    scopes: [],
+    clientKey: "",
+  },
+  {
+    id: "zh-TW-new-client-acceptance",
+    locale: "zh-TW",
+    required: true,
+    text: "台中市的住宅裝修，新客戶王先生",
+    expected: {
+      name: "住宅裝修",
+      clientName: "王先生",
+      locationCity: "TAICHUNG_CITY",
+    },
+    scopes: [],
+    clientKey: "",
+  },
+];
+
+// Historical placeholder, reported separately rather than used as a naming/pass gate.
+// PR #78 review 7167255389, confirmed by the Product Director on 25 November.
+export const reportedJobDraftCases: readonly JobDraftCase[] = [
+  {
+    id: "zh-TW-residential-placeholder",
+    locale: "zh-TW",
+    required: false,
     text: "幫測試客戶甲在台北市大安區做一間 30 坪的住宅裝修",
     expected: {
       name: "住宅裝修",
