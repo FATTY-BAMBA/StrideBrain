@@ -1,4 +1,5 @@
 import { seededFirmLists } from "@/fixtures/firm-lists";
+import { createHash } from "node:crypto";
 import { describe, it, expect, vi } from "vitest";
 import { draftArea } from "@/modules/projects/domain/draft-area";
 import {
@@ -6,7 +7,7 @@ import {
   matchDraftClient,
   draftFields,
 } from "@/modules/assistant/domain/job-draft";
-import { DraftJob } from "@/modules/assistant/application/draft-job";
+import { DraftJob, jobDraftInstructions } from "@/modules/assistant/application/draft-job";
 import { assistantConfig } from "@/modules/assistant/infrastructure/config";
 import type { AssistantRepositoryPort } from "@/repositories/ports/assistant-repository";
 import { AssistantModelError } from "@/modules/assistant/domain/model-error";
@@ -272,6 +273,62 @@ describe("client support uses distinct occurrences", () => {
     )!;
     expect(draft.values).toEqual({ name });
     expect(draft.dropped).toContain("clientName");
+  });
+});
+describe("client type needs more than relationship words", () => {
+  it("preserves the exact instruction used in paid evaluation 45651010861", () => {
+    expect(createHash("sha256").update(jobDraftInstructions).digest("hex")).toBe(
+      "c3bf0c8b9752f93fe72a76bc88afe1e5f4547a153ecdfd439a9c7d61de2894a2",
+    );
+  });
+  it.each([
+    "新客戶",
+    "既有客戶",
+    "老客戶",
+    "客戶",
+    "new client",
+    "existing client",
+    "our client",
+    " NEW CLIENT！ ",
+    "（新客戶），既有客戶／老客戶：客戶。",
+    "new client, existing client; our client.",
+    "新客戶 / our client！",
+  ])("drops a relationship-only type quote without dropping the name: %s", (quote) => {
+    const draft = supportJobDraft(
+      `Residential renovation in Taichung City for ${quote} Mr. Wang`,
+      {
+        ...emptyDraft(),
+        name: quoted("Residential renovation"),
+        clientName: quoted("Mr. Wang"),
+        locationCity: quoted("Taichung City"),
+        clientType: quoted("INDIVIDUAL", quote),
+      },
+      seededFirmLists,
+    )!;
+    expect(draft.values).toEqual({
+      name: "Residential renovation",
+      clientName: "Mr. Wang",
+      locationCity: "TAICHUNG_CITY",
+    });
+    expect(draft.dropped.filter((field) => field === "clientType")).toHaveLength(1);
+    expect(draft.kept).not.toContain("clientType");
+  });
+  it.each([
+    ["client type: individual", "INDIVIDUAL"],
+    ["客戶類型：個人", "INDIVIDUAL"],
+    ["individual", "INDIVIDUAL"],
+    ["個人", "INDIVIDUAL"],
+    ["new client; client type: retail", "RETAIL"],
+    ["新客戶，客戶類型：零售", "RETAIL"],
+  ])("keeps a type quote with content beyond relationship words: %s", (quote, value) => {
+    const draft = supportJobDraft(
+      quote,
+      { ...emptyDraft(), clientType: quoted(value, quote) },
+      seededFirmLists,
+    )!;
+    expect(draft.values.clientType).toBe(value);
+    expect(draft.kept).toContain("clientType");
+    expect(draft.dropped).not.toContain("clientType");
   });
 });
 describe("DraftJob fake-model use case", () => {

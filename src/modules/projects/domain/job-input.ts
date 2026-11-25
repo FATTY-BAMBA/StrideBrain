@@ -1,3 +1,4 @@
+import { TAIWAN_CITIES } from "./taiwan-cities";
 import type { FirmLists, FirmWorkCategory } from "@/modules/firm-lists/domain/contracts";
 import {
   pricingCategoriesForScopes,
@@ -37,7 +38,6 @@ export function scopesForCommercialCategory(
 ): readonly string[] {
   return categoryScopes(categories, categoryId);
 }
-export const CLIENT_TYPES = ["RETAIL", "CORPORATE", "HOSPITALITY"] as const;
 export const JOB_FIELDS = [
   "businessKey",
   "name",
@@ -138,14 +138,23 @@ export function validateCreateProject(
     areaQuantity: areaToSquareMetres(text("areaQuantity", 19), lists.areaDisplayUnit) ?? "",
     areaUnit: JOB_FIXED_VALUES.areaUnit,
     currency: choice("currency", [JOB_FIXED_VALUES.currency]),
-    locationCity: text("locationCity", 120),
+    locationCity: choice(
+      "locationCity",
+      TAIWAN_CITIES.map((city) => city.key),
+    ),
     locationDistrict: text("locationDistrict", 120, false),
     scopeCategoryIds,
     commercialCategoryIds: commercialCategoriesForScope(scopeCategoryIds, lists.workCategories),
     clientMode,
     clientBusinessKey: text("clientBusinessKey", 128),
     clientName: text("clientName", 200, clientMode === "new"),
-    clientType: clientMode === "new" ? choice("clientType", CLIENT_TYPES) : "",
+    clientType:
+      clientMode === "new"
+        ? choice(
+            "clientType",
+            lists.clientTypes.filter((entry) => entry.active).map((entry) => entry.key),
+          )
+        : "",
     idempotencyKey: text("idempotencyKey", 36),
   };
   choice("areaUnit", [lists.areaDisplayUnit]);

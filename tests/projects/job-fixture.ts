@@ -12,7 +12,7 @@ export function jobInput() {
     areaQuantity: "640.000",
     areaUnit: "m2",
     currency: "TWD",
-    locationCity: "Taipei City",
+    locationCity: "TAIPEI_CITY",
     locationDistrict: "Xinyi District",
     scopeCategoryIds: [...SCOPE_CATEGORIES],
     commercialCategoryIds: [...COMMERCIAL_CATEGORIES],

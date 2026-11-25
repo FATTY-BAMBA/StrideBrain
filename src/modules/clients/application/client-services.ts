@@ -41,7 +41,7 @@ export class UpdateClient {
   async execute(context: RuntimeContext, raw: unknown) {
     if (!context.capabilities.has("client:read") || !context.capabilities.has("client:write"))
       return { kind: "UNAVAILABLE" } as const;
-    const parsed = validateClientUpdate(raw);
+    const parsed = validateClientUpdate(raw, context.firmLists?.clientTypes ?? []);
     if (parsed.kind === "INVALID") return parsed;
     try {
       return await this.clients.updateWithAudit(context, parsed.input);

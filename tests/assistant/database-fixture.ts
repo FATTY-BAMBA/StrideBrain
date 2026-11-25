@@ -50,6 +50,8 @@ export async function assistantDatabase() {
     "firm-job-types-and-units",
     "firm-work-categories",
     "quote-document",
+    "firm-client-types",
+    "project-cities",
     "verify-assistant",
   ])
     await sql.query(readFileSync(`prisma/fixtures/${fixture}.sql`, "utf8"));

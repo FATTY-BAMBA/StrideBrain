@@ -7,7 +7,7 @@ import { getPrismaClient } from "@/lib/server/prisma";
 import { PrismaAssistantRepository } from "@/repositories/prisma/prisma-assistant-repository";
 import { PrismaProjectWriteRepository } from "@/repositories/prisma/prisma-project-write-repository";
 import type { assistantDatabase } from "./database-fixture";
-import { jobDraftCases, type JobDraftCase } from "./job-draft-cases";
+import { jobDraftCases, reportedJobDraftCases, type JobDraftCase } from "./job-draft-cases";
 
 export async function runJobDraftCase(
   db: Awaited<ReturnType<typeof assistantDatabase>>,
@@ -74,9 +74,9 @@ export async function runJobDraftCase(
     },
     dropped: draft?.dropped ?? draftFields,
     unsupportedKept,
+    rawDraft: rawDraft ?? null,
     ...(!passed
       ? {
-          rawDraft,
           expected: {
             ...test.expected,
             scopeCategoryIds: test.scopes,
@@ -99,9 +99,26 @@ export function summarizeJobDraftRound(round: number, cases: readonly JobDraftEv
   );
   const required = cases.filter((c) => c.required);
   const passed =
-    cases.length === 24 &&
+    cases.length === jobDraftCases.length &&
+    new Set(cases.map((c) => c.id)).size === jobDraftCases.length &&
+    jobDraftCases.every((test) =>
+      cases.some((c) => c.id === test.id && c.locale === test.locale),
+    ) &&
     ["en", "zh-TW"].every(
-      (locale) => cases.filter((c) => c.locale === locale).length === 12 && scores[locale]! >= 10,
+      (locale) =>
+        cases.filter((c) => c.locale === locale).length === 16 &&
+        // Preserve the original 10/12 gate; new required cases cannot make up a core miss.
+        cases.filter(
+          (c) =>
+            c.locale === locale &&
+            c.passed &&
+            ![
+              "individual-client",
+              "chinese-city",
+              "residential-unlisted",
+              "new-client-acceptance",
+            ].some((suffix) => c.id.endsWith(suffix)),
+        ).length >= 10,
     ) &&
     required.every((c) => c.passed) &&
     cases.every((c) => !c.unsupportedKept.length && c.calls === 1);
@@ -116,11 +133,15 @@ export function summarizeJobDraftRound(round: number, cases: readonly JobDraftEv
 export async function runJobDraftRounds(
   run: (test: JobDraftCase, round: number) => Promise<JobDraftEvaluationRow>,
 ) {
-  const rounds: ReturnType<typeof summarizeJobDraftRound>[] = [];
+  const rounds: (ReturnType<typeof summarizeJobDraftRound> & {
+    reportedCases: readonly JobDraftEvaluationRow[];
+  })[] = [];
   for (let round = 1; round <= 3; round++) {
     const rows = [];
     for (const test of jobDraftCases) rows.push(await run(test, round));
-    rounds.push(summarizeJobDraftRound(round, rows));
+    const reportedCases = [];
+    for (const test of reportedJobDraftCases) reportedCases.push(await run(test, round));
+    rounds.push({ ...summarizeJobDraftRound(round, rows), reportedCases });
   }
   return {
     passed: rounds.every((r) => r.passed),
@@ -129,6 +150,12 @@ export async function runJobDraftRounds(
       id: c.id,
       locale: c.locale,
       passes: rounds.filter((r) => r.cases.find((row) => row.id === c.id)?.passed).length,
+      rounds: 3,
+    })),
+    reportedPerCase: reportedJobDraftCases.map((c) => ({
+      id: c.id,
+      locale: c.locale,
+      passes: rounds.filter((r) => r.reportedCases.find((row) => row.id === c.id)?.passed).length,
       rounds: 3,
     })),
   };

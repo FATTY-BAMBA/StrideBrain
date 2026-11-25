@@ -138,6 +138,7 @@ model Organization {
   people               Person[]
   memberships          Membership[]
   clients              Client[]
+  clientTypes          FirmClientType[]
   jobTypes             FirmJobType[]
   jobTypeRelations     FirmJobTypeRelation[]
   quoteUnits           FirmQuoteUnit[]
@@ -172,6 +173,24 @@ model Organization {
   internalReviewReceipts InternalReviewReceipt[]
   capabilityGrants     MembershipCapabilityGrant[]
   demoSessions         DemoSession[]
+}
+
+model FirmClientType {
+  id             String   @id
+  organizationId String
+  key            String
+  nameEn         String
+  nameZhTw       String
+  sortOrder      Int
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([id, organizationId])
+  @@unique([organizationId, key])
+  @@index([organizationId, active, sortOrder])
 }
 
 model FirmJobType {
@@ -395,6 +414,7 @@ model Project {
   status             ProjectStatus
   stage              ProjectStage
   locationCity       String
+  locationCityBeforeCanonicalization String?
   locationDistrict   String?
   areaQuantity       Decimal            @db.Decimal(18, 3)
   areaUnit           String

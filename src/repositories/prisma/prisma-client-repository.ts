@@ -93,7 +93,7 @@ export class PrismaClientRepository implements ClientRepositoryPort {
     if (
       !context.capabilities.has("client:read") ||
       !context.capabilities.has("client:write") ||
-      validateClientUpdate(input).kind !== "VALID"
+      validateClientUpdate(input, context.firmLists?.clientTypes ?? []).kind !== "VALID"
     )
       return { kind: "UNAVAILABLE" };
     const fingerprint = createHash("sha256")
@@ -134,6 +134,12 @@ export class PrismaClientRepository implements ClientRepositoryPort {
               select: { id: true, ...detailsSelect },
             });
             if (!row) return { kind: "UNAVAILABLE" };
+            const type = await tx.firmClientType.findFirst({
+              where: { organizationId: context.organizationId, key: input.clientType },
+              select: { active: true },
+            });
+            if (!type || (!type.active && row.clientType !== input.clientType))
+              return { kind: "INVALID", errors: { clientType: "invalid" } };
             if (row.updatedAt.toISOString() !== input.expectedUpdatedAt) return { kind: "CHANGED" };
             const details = Object.fromEntries(
               CLIENT_DETAIL_FIELDS.map((field) => [field, input[field]]),

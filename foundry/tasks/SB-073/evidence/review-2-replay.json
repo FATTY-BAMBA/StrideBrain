@@ -1,0 +1,304 @@
+{
+  "mode": "PARTIAL_RECORDED_REPLAY",
+  "sourceRunId": 45651010861,
+  "fullReplay": false,
+  "providerCalls": 0,
+  "estimatedUsd": "0.000000000",
+  "explanation": "Only the three failed scored cases have rawDraft. The other 93 scored passes and three reported placeholder passes lack raw output and are carried forward, not replayed.",
+  "rounds": [
+    {
+      "round": 1,
+      "replayed": [
+        {
+          "id": "en-new-client-acceptance",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Residential renovation",
+            "clientName": "Mr. Wang",
+            "locationCity": "TAICHUNG_CITY",
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationDistrict",
+            "clientType",
+            "subtype",
+            "scopeCategoryIds",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        }
+      ],
+      "missingRawDraftIds": [
+        "en-ping",
+        "en-existing",
+        "en-no-area",
+        "en-district-only",
+        "en-long-private",
+        "en-not-job",
+        "en-injection",
+        "en-written-area",
+        "en-full-width",
+        "en-unknown-type",
+        "en-client-normalization",
+        "en-all-scope",
+        "zh-TW-ping",
+        "zh-TW-existing",
+        "zh-TW-no-area",
+        "zh-TW-district-only",
+        "zh-TW-long-private",
+        "zh-TW-not-job",
+        "zh-TW-injection",
+        "zh-TW-written-area",
+        "zh-TW-full-width",
+        "zh-TW-unknown-type",
+        "zh-TW-client-normalization",
+        "zh-TW-all-scope",
+        "en-individual-client",
+        "zh-TW-individual-client",
+        "en-chinese-city",
+        "zh-TW-chinese-city",
+        "en-residential-unlisted",
+        "zh-TW-residential-unlisted",
+        "zh-TW-new-client-acceptance"
+      ],
+      "priorRecordedPasses": 31,
+      "priorReportedCases": [
+        {
+          "id": "zh-TW-residential-placeholder",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "住宅裝修",
+            "clientName": "測試客戶甲",
+            "locationCity": "TAIPEI_CITY",
+            "locationDistrict": "大安區",
+            "areaQuantity": "99.174",
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientType",
+            "subtype",
+            "scopeCategoryIds"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 2215,
+          "outputTokens": 123,
+          "estimatedUsd": "0.000972000"
+        }
+      ],
+      "combinedScoresWithPriorPasses": {
+        "en": 16,
+        "zh-TW": 16
+      },
+      "combinedGateWithPriorPasses": true
+    },
+    {
+      "round": 2,
+      "replayed": [
+        {
+          "id": "en-new-client-acceptance",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Residential renovation",
+            "clientName": "Mr. Wang",
+            "locationCity": "TAICHUNG_CITY",
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationDistrict",
+            "clientType",
+            "subtype",
+            "scopeCategoryIds",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        }
+      ],
+      "missingRawDraftIds": [
+        "en-ping",
+        "en-existing",
+        "en-no-area",
+        "en-district-only",
+        "en-long-private",
+        "en-not-job",
+        "en-injection",
+        "en-written-area",
+        "en-full-width",
+        "en-unknown-type",
+        "en-client-normalization",
+        "en-all-scope",
+        "zh-TW-ping",
+        "zh-TW-existing",
+        "zh-TW-no-area",
+        "zh-TW-district-only",
+        "zh-TW-long-private",
+        "zh-TW-not-job",
+        "zh-TW-injection",
+        "zh-TW-written-area",
+        "zh-TW-full-width",
+        "zh-TW-unknown-type",
+        "zh-TW-client-normalization",
+        "zh-TW-all-scope",
+        "en-individual-client",
+        "zh-TW-individual-client",
+        "en-chinese-city",
+        "zh-TW-chinese-city",
+        "en-residential-unlisted",
+        "zh-TW-residential-unlisted",
+        "zh-TW-new-client-acceptance"
+      ],
+      "priorRecordedPasses": 31,
+      "priorReportedCases": [
+        {
+          "id": "zh-TW-residential-placeholder",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "住宅裝修",
+            "clientName": "測試客戶甲",
+            "locationCity": "TAIPEI_CITY",
+            "locationDistrict": "大安區",
+            "areaQuantity": "99.174",
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientType",
+            "subtype",
+            "scopeCategoryIds"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 2215,
+          "outputTokens": 123,
+          "estimatedUsd": "0.000972000"
+        }
+      ],
+      "combinedScoresWithPriorPasses": {
+        "en": 16,
+        "zh-TW": 16
+      },
+      "combinedGateWithPriorPasses": true
+    },
+    {
+      "round": 3,
+      "replayed": [
+        {
+          "id": "en-new-client-acceptance",
+          "locale": "en",
+          "required": true,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "Residential renovation",
+            "clientName": "Mr. Wang",
+            "locationCity": "TAICHUNG_CITY",
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "locationDistrict",
+            "clientType",
+            "subtype",
+            "scopeCategoryIds",
+            "area"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "estimatedUsd": "0.000000000"
+        }
+      ],
+      "missingRawDraftIds": [
+        "en-ping",
+        "en-existing",
+        "en-no-area",
+        "en-district-only",
+        "en-long-private",
+        "en-not-job",
+        "en-injection",
+        "en-written-area",
+        "en-full-width",
+        "en-unknown-type",
+        "en-client-normalization",
+        "en-all-scope",
+        "zh-TW-ping",
+        "zh-TW-existing",
+        "zh-TW-no-area",
+        "zh-TW-district-only",
+        "zh-TW-long-private",
+        "zh-TW-not-job",
+        "zh-TW-injection",
+        "zh-TW-written-area",
+        "zh-TW-full-width",
+        "zh-TW-unknown-type",
+        "zh-TW-client-normalization",
+        "zh-TW-all-scope",
+        "en-individual-client",
+        "zh-TW-individual-client",
+        "en-chinese-city",
+        "zh-TW-chinese-city",
+        "en-residential-unlisted",
+        "zh-TW-residential-unlisted",
+        "zh-TW-new-client-acceptance"
+      ],
+      "priorRecordedPasses": 31,
+      "priorReportedCases": [
+        {
+          "id": "zh-TW-residential-placeholder",
+          "locale": "zh-TW",
+          "required": false,
+          "passed": true,
+          "calls": 1,
+          "outcome": "DRAFTED",
+          "kept": {
+            "name": "住宅裝修",
+            "clientName": "測試客戶甲",
+            "locationCity": "TAIPEI_CITY",
+            "locationDistrict": "大安區",
+            "areaQuantity": "99.174",
+            "scopeCategoryIds": [],
+            "clientBusinessKey": ""
+          },
+          "dropped": [
+            "clientType",
+            "subtype",
+            "scopeCategoryIds"
+          ],
+          "unsupportedKept": [],
+          "inputTokens": 2215,
+          "outputTokens": 123,
+          "estimatedUsd": "0.000972000"
+        }
+      ],
+      "combinedScoresWithPriorPasses": {
+        "en": 16,
+        "zh-TW": 16
+      },
+      "combinedGateWithPriorPasses": true
+    }
+  ]
+}

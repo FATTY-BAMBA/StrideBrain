@@ -1,4 +1,5 @@
-import { BUSINESS_KEY, CLIENT_TYPES, IDEMPOTENCY_KEY } from "@/modules/projects/domain/job-input";
+import type { FirmListEntry } from "@/modules/firm-lists/domain/contracts";
+import { BUSINESS_KEY, IDEMPOTENCY_KEY } from "@/modules/projects/domain/job-input";
 
 export const CLIENT_DETAIL_FIELDS = [
   "nameEn",
@@ -24,7 +25,10 @@ export type ClientValidation =
   | Readonly<{ kind: "VALID"; input: UpdateClientInput }>
   | Readonly<{ kind: "INVALID"; errors: ClientErrors }>;
 
-export function validateClientUpdate(raw: unknown): ClientValidation {
+export function validateClientUpdate(
+  raw: unknown,
+  clientTypes: readonly FirmListEntry[],
+): ClientValidation {
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) return { kind: "INVALID", errors: {} };
   const input = raw as Record<string, unknown>;
   if (
@@ -74,7 +78,7 @@ export function validateClientUpdate(raw: unknown): ClientValidation {
     )
       errors[field] = "invalid";
   }
-  if (details.clientType && !CLIENT_TYPES.some((type) => type === details.clientType))
+  if (details.clientType && !clientTypes.some((type) => type.key === details.clientType))
     errors.clientType = "invalid";
   if (details.taxId && !/^[0-9]{8}$/.test(details.taxId)) errors.taxId = "invalid";
   if (details.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(details.email)) errors.email = "invalid";

@@ -64,6 +64,7 @@ export interface JobDraftModelPort {
     input: Readonly<{
       instructions: string;
       text: string;
+      cities: readonly Readonly<{ en: string; zhTw: string; aliases: readonly string[] }>[];
       choices: Readonly<
         Record<string, readonly Readonly<{ value: string; en: string; zhTw: string }>[]>
       >;

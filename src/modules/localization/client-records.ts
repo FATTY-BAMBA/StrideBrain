@@ -37,9 +37,6 @@ const en = {
   CHANGED: "These details changed. Reload the page before saving.",
   CONFLICT: "This save conflicts with an earlier request. Reload and try again.",
   retired: "Retired",
-  RETAIL: "Retail",
-  CORPORATE: "Corporate",
-  HOSPITALITY: "Hospitality",
 };
 const zh: Record<keyof typeof en, string> = {
   title: "客戶",
@@ -79,8 +76,5 @@ const zh: Record<keyof typeof en, string> = {
   CHANGED: "資料已變更，請重新載入頁面後再儲存。",
   CONFLICT: "本次儲存與先前的操作衝突，請重新載入後再試。",
   retired: "已停用",
-  RETAIL: "零售",
-  CORPORATE: "企業",
-  HOSPITALITY: "旅宿餐飲",
 };
 export const clientRecordsCopy = (locale: Locale) => (locale === "zh-TW" ? zh : en);

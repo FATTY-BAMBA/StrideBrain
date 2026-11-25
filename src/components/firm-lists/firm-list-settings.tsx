@@ -7,7 +7,7 @@ import type { FirmLists, FirmListEntry } from "@/modules/firm-lists/domain/contr
 import type { FirmListChange } from "@/modules/firm-lists/domain/list-change";
 type Settings = { lists: FirmLists; mappingLockedKeys: readonly string[] };
 type Edit = Omit<
-  Extract<FirmListChange, { kind: "JOB_TYPE" | "QUOTE_UNIT" | "WORK_CATEGORY" }>,
+  Extract<FirmListChange, { kind: "JOB_TYPE" | "QUOTE_UNIT" | "WORK_CATEGORY" | "CLIENT_TYPE" }>,
   "expectedRevision" | "idempotencyKey"
 >;
 export function FirmListSettings({ initial, locale }: { initial: Settings; locale: Locale }) {
@@ -23,7 +23,11 @@ export function FirmListSettings({ initial, locale }: { initial: Settings; local
         expectedRevision: lists.revision,
         idempotencyKey: key,
       });
-      setMessage(c[result.result.kind]);
+      setMessage(
+        result.result.kind === "LIMIT" && value.kind === "CLIENT_TYPE"
+          ? c.clientTypeLimit
+          : c[result.result.kind],
+      );
       if (result.settings) setSettings(result.settings);
     });
   }
@@ -39,13 +43,15 @@ export function FirmListSettings({ initial, locale }: { initial: Settings; local
         pending={pending}
         save={save}
       />
-      {(["JOB_TYPE", "WORK_CATEGORY", "QUOTE_UNIT"] as const).map((kind) => {
+      {(["JOB_TYPE", "WORK_CATEGORY", "QUOTE_UNIT", "CLIENT_TYPE"] as const).map((kind) => {
         const entries =
           kind === "JOB_TYPE"
             ? lists.jobTypes
             : kind === "WORK_CATEGORY"
               ? lists.workCategories
-              : lists.quoteUnits;
+              : kind === "CLIENT_TYPE"
+                ? lists.clientTypes
+                : lists.quoteUnits;
         return (
           <section key={kind} className="firm-list-group">
             <h3>{c[kind]}</h3>
@@ -141,10 +147,12 @@ function EntryForm({
           ? "jobTypes"
           : kind === "WORK_CATEGORY"
             ? "workCategories"
-            : "quoteUnits"
+            : kind === "CLIENT_TYPE"
+              ? "clientTypes"
+              : "quoteUnits"
       ].length,
     active: entry?.active ?? true,
-    relatedKeys: type?.relatedKeys ?? [],
+    relatedKeys: kind === "JOB_TYPE" ? (type?.relatedKeys ?? []) : [],
     ...(kind === "WORK_CATEGORY" ? { pricedUnderKey: category?.pricedUnderKey ?? null } : {}),
   });
   const [key] = useState(() => crypto.randomUUID());
@@ -162,7 +170,7 @@ function EntryForm({
             <input
               value={value[field]}
               required
-              maxLength={200}
+              maxLength={kind === "CLIENT_TYPE" ? 40 : 200}
               disabled={pending}
               onChange={(e) => setValue({ ...value, [field]: e.target.value })}
             />

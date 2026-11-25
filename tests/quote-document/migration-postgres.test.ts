@@ -31,7 +31,13 @@ suite("SB-065 populated document migration", () => {
       .filter((name) => name < migration)
       .sort())
       await sql.query(readFileSync(`prisma/migrations/${name}/migration.sql`, "utf8"));
-    for (const path of fixturePaths("db:seed").filter((path) => !path.includes("quote-document")))
+    // These fixtures depend on migrations later than the historical document schema.
+    for (const path of fixturePaths("db:seed").filter(
+      (path) =>
+        !["quote-document", "firm-client-types", "project-cities"].some((name) =>
+          path.includes(name),
+        ),
+    ))
       await sql.query(readFileSync(path, "utf8"));
     await sql.query(
       `UPDATE "QuoteVersion" SET "documentSnapshot"=$1::jsonb WHERE id=(SELECT id FROM "QuoteVersion" ORDER BY id LIMIT 1)`,

@@ -1,3 +1,4 @@
+import { cityLabel } from "@/modules/projects/domain/taiwan-cities";
 import { areaUnitLabel, pricePerAreaInFirmUnit } from "@/modules/firm-lists/domain/area-unit";
 import { decimalToString, rescale } from "@/modules/finance/fixed-decimal";
 import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
@@ -274,7 +275,7 @@ export class AssistantReadTools {
             reference: projectKey,
             name: j.name.display,
             stage: stage ? projectStageLabel(c.locale, stage) : j.stage,
-            city: j.location.city,
+            city: cityLabel(c.locale, j.location.city),
             area: {
               value: j.area.displayValue ?? formatQuoteArea(j.area.value),
               unit: j.area.displayUnit ?? (j.area.unit === "m2" ? "m²" : j.area.unit),

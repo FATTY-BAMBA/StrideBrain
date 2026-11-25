@@ -1,7 +1,8 @@
+import { taiwanCityKey } from "@/modules/projects/domain/taiwan-cities";
 import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
-import { CLIENT_TYPES } from "@/modules/projects/domain/job-input";
 import { draftArea } from "@/modules/projects/domain/draft-area";
 import { record } from "./grounding";
+import { hasClientTypeContent } from "./client-relationship-words";
 
 export const draftFields = [
   "name",
@@ -40,14 +41,18 @@ const exact = (maxLength: number, choices?: readonly string[]) => ({
   additionalProperties: false,
 });
 export function jobDraftSchema(
-  choices: Readonly<{ subtype: readonly string[]; scopeCategoryIds: readonly string[] }>,
+  choices: Readonly<{
+    subtype: readonly string[];
+    clientType: readonly string[];
+    scopeCategoryIds: readonly string[];
+  }>,
 ) {
   return {
     type: "object",
     properties: {
       name: exact(200),
       clientName: exact(200),
-      clientType: exact(128, CLIENT_TYPES),
+      clientType: exact(128, choices.clientType),
       subtype: exact(128, choices.subtype),
       locationCity: exact(120),
       locationDistrict: exact(120),
@@ -169,11 +174,27 @@ export function supportJobDraft(
     "clientType",
     "subtype",
   ] as const) {
-    const value = supported(
+    const supportedValue = supported(
       input[field],
       field.startsWith("location") ? 120 : 200,
-      field === "clientType" ? CLIENT_TYPES : field === "subtype" ? jobTypes : undefined,
+      field === "clientType"
+        ? lists.clientTypes.filter((entry) => entry.active).map((entry) => entry.key)
+        : field === "subtype"
+          ? jobTypes
+          : undefined,
     );
+    let value =
+      field === "locationCity"
+        ? supportedValue
+          ? taiwanCityKey(supportedValue)
+          : null
+        : supportedValue;
+    if (
+      field === "clientType" &&
+      value &&
+      !hasClientTypeContent(normalizeDraftText(record(input[field])!.quote as string))
+    )
+      value = null;
     if (value) {
       values[field] = value;
       quotes[field] = normalizeDraftText(record(input[field])!.quote as string);

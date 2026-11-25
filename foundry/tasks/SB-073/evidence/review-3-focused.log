@@ -1,0 +1,9 @@
+
+ RUN  v4.1.10 /private/tmp/stridebrain-sb073-review1-20261126
+
+TEST_DATABASE_TEMPLATE_MS=616
+
+ Test Files  3 passed (3)
+      Tests  68 passed (68)
+   Start at  01:04:13
+   Duration  2.89s (transform 283ms, setup 380ms, import 396ms, tests 2.33s, environment 0ms)

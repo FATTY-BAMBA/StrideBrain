@@ -43,7 +43,12 @@ export default async function ClientPage({
       description={result.client.businessKey}
     >
       <Link href={`/${locale}/clients` as Route}>{c.title}</Link>
-      <ClientDetailsForm client={result.client} canEdit={result.canEdit} locale={locale} />
+      <ClientDetailsForm
+        client={result.client}
+        canEdit={result.canEdit}
+        locale={locale}
+        clientTypes={context.firmLists?.clientTypes ?? []}
+      />
       <section className="records-panel">
         <h2>{c.jobs}</h2>
         {jobs.kind === "AVAILABLE" ? (

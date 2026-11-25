@@ -26,6 +26,12 @@ export const COMMERCIAL_CATEGORIES = [
 export const seededFirmLists: FirmLists = {
   revision: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
   areaDisplayUnit: "m2",
+  clientTypes: [
+    { key: "RETAIL", nameEn: "Retail", nameZhTw: "零售", sortOrder: 0, active: true },
+    { key: "CORPORATE", nameEn: "Corporate", nameZhTw: "企業", sortOrder: 1, active: true },
+    { key: "HOSPITALITY", nameEn: "Hospitality", nameZhTw: "旅宿餐飲", sortOrder: 2, active: true },
+    { key: "INDIVIDUAL", nameEn: "Individual", nameZhTw: "個人", sortOrder: 3, active: true },
+  ],
   jobTypes: [
     {
       key: "RETAIL_FLAGSHIP",

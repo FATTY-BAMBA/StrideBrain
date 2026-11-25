@@ -1,4 +1,8 @@
-import type { ClientDetails, UpdateClientInput } from "@/modules/clients/domain/client-input";
+import type {
+  ClientDetails,
+  ClientErrors,
+  UpdateClientInput,
+} from "@/modules/clients/domain/client-input";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 
 export type ClientSummary = Readonly<{
@@ -15,6 +19,7 @@ export type ClientRecord = ClientDetails &
     updatedAt: string;
   }>;
 export type ClientUpdateResult =
+  | Readonly<{ kind: "INVALID"; errors: ClientErrors }>
   | Readonly<{ kind: "SAVED"; businessKey: string; updatedAt: string }>
   | Readonly<{ kind: "UNAVAILABLE" | "CHANGED" | "CONFLICT" }>;
 export interface ClientRepositoryPort {

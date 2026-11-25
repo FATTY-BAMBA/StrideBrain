@@ -1,0 +1,139 @@
+{
+  "issue": 73,
+  "branch": "build/sb-073-client-types-cities",
+  "baseCommit": "9851ca6e000dacea19b9263188a83848dc623fd8",
+  "issueUpdatedAt": "2026-11-25T14:35:29Z",
+  "status": "WAITING_FOR_PRODUCT_DIRECTOR_HOSTED_ACCEPTANCE",
+  "delivery": "A → B → C → D",
+  "pullRequestDraft": true,
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "paidEvaluationLimit": 4,
+  "paidEvaluationRuns": [
+    {
+      "number": 1,
+      "commit": "32af769eaed80cbff6f5e557b0bd917b6ad7d24f",
+      "status": "FAILED",
+      "runId": 45641187002,
+      "estimatedUsd": "0.293444000",
+      "questionGatePassed": true,
+      "draftGatePassed": false
+    },
+    {
+      "number": 2,
+      "runId": 45643690884,
+      "commit": "370d27adc65ae51148861b9c64d60340c77b5ad5",
+      "status": "FAILED",
+      "estimatedUsd": "0.290675100",
+      "questionGatePassed": true,
+      "draftGatePassed": false
+    },
+    {
+      "number": 3,
+      "runId": 45651010861,
+      "commit": "a167ed82c6c275339c34993edd28d50ffdeeb976",
+      "status": "FAILED",
+      "authorization": "Product Director: one additional run after fix passes CI",
+      "estimatedUsd": "0.302131500",
+      "questionGatePassed": true,
+      "draftGatePassed": false
+    },
+    {
+      "number": 4,
+      "runId": 45662599108,
+      "commit": "fba43b774f41008cfabc5bad3d2082fd0ebb6cc8",
+      "status": "PASSED",
+      "authorization": "Product Director, fourth and final run after review-fix-3 CI passed",
+      "estimatedUsd": "0.298930900",
+      "questionGatePassed": true,
+      "draftGatePassed": true,
+      "rawDraftsRecorded": 99
+    }
+  ],
+  "pullRequest": 78,
+  "localCheck": {
+    "passed": true,
+    "status": "PASSED",
+    "focusedFiles": 3,
+    "focusedTests": 68,
+    "testFiles": 187,
+    "tests": 1803
+  },
+  "paidEvaluationPassed": true,
+  "finalInstructionPaidVerified": true,
+  "totalEstimatedUsd": "1.185181500",
+  "ciFinalHead": "SEE_PR_CHECKS_AND_BUILDER_COMMENT",
+  "additionalPaidEvaluationAuthorization": {
+    "source": "Product Director in working chat, 2026-11-26 Asia/Taipei",
+    "runs": 1,
+    "issueRunNumber": 4,
+    "final": true,
+    "condition": "After fix round 3 passes CI",
+    "used": true
+  },
+  "review": {
+    "round": 3,
+    "commentId": 7168905315,
+    "author": "FATTY-BAMBA",
+    "authorId": 101108617,
+    "namingRule": "CONFIRMED_BY_PRODUCT_DIRECTOR",
+    "officialCityNames": "CONFIRMED_BY_PRODUCT_DIRECTOR",
+    "instructionSha256": "c3bf0c8b9752f93fe72a76bc88afe1e5f4547a153ecdfd439a9c7d61de2894a2"
+  },
+  "remainingPaidFailure": null,
+  "freeReplay": {
+    "sourceRunId": 45651010861,
+    "rawOutputsAvailable": 3,
+    "replayed": 3,
+    "passed": 3,
+    "fullReplay": false,
+    "scoredOutputsWithoutRawDraft": 93,
+    "reportedOutputsWithoutRawDraft": 3,
+    "combinedScoresWithPriorPasses": [
+      {
+        "round": 1,
+        "en": 16,
+        "zh-TW": 16
+      },
+      {
+        "round": 2,
+        "en": 16,
+        "zh-TW": 16
+      },
+      {
+        "round": 3,
+        "en": 16,
+        "zh-TW": 16
+      }
+    ],
+    "providerCalls": 0,
+    "estimatedUsd": "0.000000000",
+    "acceptance": "NOT_USED_AS_PAID_PASS; FOURTH_RUN_AUTHORIZED"
+  },
+  "previousCiVerifiedCommit": "d9baf60dca4595c3675ee39d652e96f0863e66a4",
+  "review1CiRunId": 45650218324,
+  "review2CiRunId": 45655496663,
+  "ciReview3RunId": 45661435953,
+  "ciVerifiedCommit": "fba43b774f41008cfabc5bad3d2082fd0ebb6cc8",
+  "remainingEvaluationNonPasses": [
+    {
+      "case": "zh-TW-awaiting",
+      "round": 2,
+      "reason": "Answer used job reference PRJ-ACTIVE-001 as quote document number instead of PRJ-ACTIVE-001-Q1; unchanged question gate passed."
+    }
+  ],
+  "reviewerHostedEvidence": {
+    "commentId": 7169198746,
+    "author": "FATTY-BAMBA",
+    "authorId": 101108617,
+    "commit": "d9baf60dca4595c3675ee39d652e96f0863e66a4",
+    "testSiteRunId": 45660596154,
+    "result": "OWNER_CHECKS_PASSED_WITH_REPORTED_COVERAGE_GAPS",
+    "appliesToFinalImplementation": true,
+    "notVerified": [
+      "Hosted Viewer settings",
+      "Neighbouring-city reason text (not present)",
+      "Builder screenshots and keyboard/mobile inspection"
+    ]
+  },
+  "ciEvidenceRunId": 45664552703
+}

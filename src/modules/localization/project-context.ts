@@ -1,3 +1,4 @@
+import { cityLabel, taiwanCityKey } from "@/modules/projects/domain/taiwan-cities";
 import type { FirmJobType } from "@/modules/firm-lists/domain/contracts";
 import type { Locale } from "./config";
 
@@ -15,7 +16,7 @@ export function projectSubtypeLabel(
 const locations: Readonly<
   Record<string, Readonly<{ city: string; districts: Readonly<Record<string, string>> }>>
 > = {
-  "Taipei City": {
+  TAIPEI_CITY: {
     city: "臺北市",
     districts: {
       "Xinyi District": "信義區",
@@ -26,14 +27,16 @@ const locations: Readonly<
       "Nangang District": "南港區",
     },
   },
-  "New Taipei City": { city: "新北市", districts: { "Banqiao District": "板橋區" } },
+  NEW_TAIPEI_CITY: { city: "新北市", districts: { "Banqiao District": "板橋區" } },
 };
 
 export function projectLocationLabel(
   locale: Locale,
   location: Readonly<{ city: string; district?: string | undefined }>,
 ): string {
-  const known = Object.hasOwn(locations, location.city) ? locations[location.city] : undefined;
+  const key = taiwanCityKey(location.city);
+  const known = key && Object.hasOwn(locations, key) ? locations[key] : undefined;
+  const name = cityLabel(locale, location.city);
   if (locale === "zh-TW" && known) {
     const district = location.district;
     if (!district) return known.city;
@@ -41,5 +44,7 @@ export function projectLocationLabel(
       return `${known.city}${known.districts[district]}`;
     return `${known.city} · ${district}`;
   }
-  return [location.district, location.city].filter(Boolean).join(", ");
+  return locale === "zh-TW"
+    ? [name, location.district].filter(Boolean).join(" · ")
+    : [location.district, name].filter(Boolean).join(", ");
 }
