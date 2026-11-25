@@ -24,9 +24,25 @@ Coverage added or extended:
 - Two draft requests: older card collapses to its exact request, reopening retains edited name, original create action receives that edited value, and disclosure controls remain focusable.
 - Evaluation completeness and all-four/every-round failure gates; deterministic fake replay over authorized records (not evidence of model quality).
 
+CI on implementation commit `32be7fe` passed: [run 45580894529](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45580894529). This includes real `prisma migrate deploy`, seed and verify twice, the complete isolated-database check, and production-dependency audit.
+
 ## Paid evaluation
 
-Dispatches used: 0 of at most 2. Local check passed; paid dispatch follows this implementation commit. Only the AI evaluation workflow is authorized; it uses disposable CI PostgreSQL, not the test-site database.
+Dispatches used: **2 of at most 2**. [Run 45580903665](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45580903665) targets implementation commit `32be7fe3f227c4d0856b0f4da76592f3645d9629`; checkout failed because the short SHA input was interpreted as a branch pattern. No model calls, **US$0**. [Checkout evidence](evidence/evaluation-1-checkout.log). [Run 45581228542](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45581228542) **passed** on the full implementation SHA ([checkout evidence](evidence/evaluation-2-commit.log)). The workflow is dispatched from main but checks out its explicit input commit. No further dispatch is authorized under this issue. Only the AI evaluation workflow is authorized; it uses disposable CI PostgreSQL, not the test-site database.
+
+Model: unchanged `gemini-3.5-flash-lite`. [Full report with per-question pass rates](evidence/provider-evaluation.json).
+
+| Round | English questions | zh-TW questions | New job-page cases | English drafts | zh-TW drafts |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 27/27 (core 20/20) | 27/27 (core 20/20) | 4/4 | 12/12 | 12/12 |
+| 2 | 27/27 (core 20/20) | 27/27 (core 20/20) | 4/4 | 12/12 | 12/12 |
+| 3 | 27/27 (core 20/20) | 25/27 (core 18/20) | 4/4 | 12/12 | 12/12 |
+
+Every required case passed in every round. There were zero displayed unsupported numbers, amount-label failures or display-format failures. Median model calls: 2 each round; maxima: 4, 3, 3; calls within three: 53/54, 54/54, 54/54. Named-job refusal maximum: 1 each round. Existing pass marks and the zh-TW finding stability gate passed.
+
+Estimated cost: questions **US$0.1980373**, job drafts **US$0.0560510**, total **US$0.2540883**. First dispatch cost US$0. Both allowed dispatches are used.
+
+Known model/check limits observed in round 3 (existing core cases, retained in the artifact): `zh-TW-awaiting` gave the job reference as the quote document number and missed the expected document number; `zh-TW-other-org` was discarded with `UNSUPPORTED_NUMBER` for `-026` in the inaccessible job reference. The latter is a raw-draft problem, not a displayed financial number. No prompts, grounding rules or pass marks were changed to accommodate either miss.
 
 ## Not verified
 

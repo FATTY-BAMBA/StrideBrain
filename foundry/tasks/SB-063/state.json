@@ -2,16 +2,52 @@
   "issue": 63,
   "branch": "build/sb-063-job-pages",
   "baseCommit": "a45e84083b28a41e28b9e674a64232d505b95ac4",
-  "status": "LOCAL_VERIFIED",
+  "status": "WAITING_FOR_PRODUCT_DIRECTOR",
   "delivery": "A \u2192 B \u2192 C",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "paidEvaluationLimit": 2,
-  "paidEvaluationRuns": [],
+  "paidEvaluationRuns": [
+    {
+      "runId": 45580903665,
+      "commit": "32be7fe3f227c4d0856b0f4da76592f3645d9629",
+      "status": "CHECKOUT_FAILED",
+      "estimatedUsd": "0",
+      "modelCalls": 0
+    },
+    {
+      "runId": 45581228542,
+      "commit": "32be7fe3f227c4d0856b0f4da76592f3645d9629",
+      "status": "PASSED",
+      "estimatedUsd": "0.254088300"
+    }
+  ],
   "pullRequest": 76,
   "localCheck": {
     "tests": 1752,
     "files": 180,
+    "passed": true
+  },
+  "ci": {
+    "runId": 45580894529,
+    "commit": "32be7fe3f227c4d0856b0f4da76592f3645d9629",
+    "passed": true
+  },
+  "evaluation": {
+    "rounds": 3,
+    "newCasesPassedEachRound": 4,
+    "english": [
+      27,
+      27,
+      27
+    ],
+    "zhTW": [
+      27,
+      27,
+      25
+    ],
+    "questionsPerLanguage": 27,
+    "draftsPerLanguageEachRound": 12,
     "passed": true
   }
 }
