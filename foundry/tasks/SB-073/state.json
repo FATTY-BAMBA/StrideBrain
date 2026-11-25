@@ -1,0 +1,12 @@
+{
+  "issue": 73,
+  "branch": "build/sb-073-client-types-cities",
+  "baseCommit": "9851ca6e000dacea19b9263188a83848dc623fd8",
+  "issueUpdatedAt": "2026-11-25T14:35:29Z",
+  "status": "IMPLEMENTING",
+  "delivery": "A → B → C → D",
+  "pullRequestDraft": true,
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "paidEvaluationLimit": 2,
+  "paidEvaluationRuns": []
+}
