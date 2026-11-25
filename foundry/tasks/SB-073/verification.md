@@ -36,9 +36,25 @@ The question gate passed every round (core scores 20/20, 20/20; 20/20, 20/20; 20
 
 The draft gate failed. Each round's full-width cases supplied a city key instead of verbatim city text and were correctly dropped. The English residential case kept a leading article in its fallback job name. The Chinese hosted sentence shortened the client name; one round also removed the space in the area quote (correctly dropped), and another invented a client type (correctly dropped). The oracle and all cases remain unchanged.
 
-Correction before run 2: send city spellings separately with no city keys, so they cannot look like ID choices. Clarify the draft instruction's verbatim fields, complete client noun phrase, short fallback job noun phrase, and preservation of area-quote spacing. The server continues rejecting mismatched city value/quote, invented type support and altered quoted spacing. Provider payload tests prove city names/aliases are sent without keys. No server support rule is relaxed. Full check after correction and the second paid dispatch are pending.
+Correction before run 2: send city spellings separately with no city keys, so they cannot look like ID choices. Clarify the draft instruction's verbatim fields, complete client noun phrase, short fallback job noun phrase, and preservation of area-quote spacing. The server continues rejecting mismatched city value/quote, invented type support and altered quoted spacing. Provider payload tests prove city names/aliases are sent without keys. No server support rule is relaxed. `npm run check` after correction passed again: 186 files, 1,782 tests and production build. [Second check log](evidence/check-2.log). [CI 45643402318](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45643402318) also passed on the corrected `370d27a`, including deployment commands, repeat seed/verify and full check.
 
-Allowance: 1 of 2 dispatches used.
+[Run 45643690884](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45643690884), dispatch 2 of 2, tested `370d27adc65ae51148861b9c64d60340c77b5ad5`. Estimated cost: US$0.290675100. [Full synthetic report](evidence/evaluation-2.json).
+
+| Round | Questions en | Questions zh-TW | Drafts en | Drafts zh-TW |
+| --- | --- | --- | --- | --- |
+| 1 | 26/27 | 27/27 | 15/15 | 14/15 |
+| 2 | 27/27 | 27/27 | 15/15 | 15/15 |
+| 3 | 27/27 | 27/27 | 15/15 | 14/15 |
+
+The question gate passed all three rounds: core scores 19/20, 20/20; 20/20, 20/20; 20/20, 20/20. All 14 required question cases passed each round; no displayed wrong numbers, amount labels or formats. Calls: median 2, maximum 3, all 54 questions within 3 calls each round. The one English manager-scope answer was discarded for an unsupported scope-count number; the existing question gate still passed. All new Individual/Chinese-city cases and every original draft case passed in every round.
+
+The overall evaluation **failed** because the required `zh-TW-residential-unlisted` case shortened 測試客戶甲 to 客戶甲 in rounds 1 and 3. City, district, area and the unlisted-type behavior were correct in those rounds. Client-type inference from 客戶 was dropped by the existing support check. Round 2 preserved the full client name and passed. The English fallback job name, both full-width city cases and the area quote were corrected in all rounds.
+
+The latest proposed instruction clarification now explicitly preserves the entire named-client phrase between Chinese benefactive and location markers (幫/替/為 … 在), including initial descriptors, while excluding pronouns and unnamed generic clients. This is general extraction guidance; there are no example client names, fixture references, model changes, oracle edits or relaxed checks. **This last clarification has not had a paid evaluation.** Its full local `npm run check` passed: 186 files, 1,782 tests and production build; [final local log](evidence/check-3.log). Final-head CI will be reported in the PR comment. Paid acceptance remains unmet; Product Director approval is required before any additional evaluation.
+
+Total estimated paid cost across both authorized runs: **US$0.584119100**.
+
+Allowance: 2 of 2 dispatches used. No further paid runs authorized.
 
 ## Not verified / acceptance waiting
 

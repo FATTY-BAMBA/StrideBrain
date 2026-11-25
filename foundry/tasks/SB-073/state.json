@@ -3,7 +3,7 @@
   "branch": "build/sb-073-client-types-cities",
   "baseCommit": "9851ca6e000dacea19b9263188a83848dc623fd8",
   "issueUpdatedAt": "2026-11-25T14:35:29Z",
-  "status": "VERIFYING",
+  "status": "AWAITING_PAID_EVALUATION_APPROVAL",
   "delivery": "A \u2192 B \u2192 C \u2192 D",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
@@ -17,12 +17,27 @@
       "estimatedUsd": "0.293444000",
       "questionGatePassed": true,
       "draftGatePassed": false
+    },
+    {
+      "number": 2,
+      "runId": 45643690884,
+      "commit": "370d27adc65ae51148861b9c64d60340c77b5ad5",
+      "status": "FAILED",
+      "estimatedUsd": "0.290675100",
+      "questionGatePassed": true,
+      "draftGatePassed": false
     }
   ],
   "pullRequest": 78,
   "localCheck": {
     "passed": true,
     "testFiles": 186,
-    "tests": 1782
-  }
+    "tests": 1782,
+    "finalInstruction": true
+  },
+  "paidEvaluationPassed": false,
+  "finalInstructionPaidVerified": false,
+  "totalEstimatedUsd": "0.584119100",
+  "ciVerifiedCommit": "370d27adc65ae51148861b9c64d60340c77b5ad5",
+  "ciFinalHead": "SEE_PR_CHECKS_AND_BUILDER_COMMENT"
 }
