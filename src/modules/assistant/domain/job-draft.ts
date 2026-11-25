@@ -2,6 +2,7 @@ import { taiwanCityKey } from "@/modules/projects/domain/taiwan-cities";
 import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
 import { draftArea } from "@/modules/projects/domain/draft-area";
 import { record } from "./grounding";
+import { hasClientTypeContent } from "./client-relationship-words";
 
 export const draftFields = [
   "name",
@@ -182,12 +183,18 @@ export function supportJobDraft(
           ? jobTypes
           : undefined,
     );
-    const value =
+    let value =
       field === "locationCity"
         ? supportedValue
           ? taiwanCityKey(supportedValue)
           : null
         : supportedValue;
+    if (
+      field === "clientType" &&
+      value &&
+      !hasClientTypeContent(normalizeDraftText(record(input[field])!.quote as string))
+    )
+      value = null;
     if (value) {
       values[field] = value;
       quotes[field] = normalizeDraftText(record(input[field])!.quote as string);

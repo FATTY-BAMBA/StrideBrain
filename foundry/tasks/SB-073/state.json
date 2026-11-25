@@ -3,7 +3,7 @@
   "branch": "build/sb-073-client-types-cities",
   "baseCommit": "9851ca6e000dacea19b9263188a83848dc623fd8",
   "issueUpdatedAt": "2026-11-25T14:35:29Z",
-  "status": "REVIEW_FIX_1_RECORDED_PAID_ACCEPTANCE_FAILED",
+  "status": "REVIEW_FIX_2_WAITING_FOR_CI_AND_REPLAY_ACCEPTANCE",
   "delivery": "A → B → C → D",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
@@ -41,16 +41,15 @@
   "pullRequest": 78,
   "localCheck": {
     "passed": true,
-    "commit": "a167ed82c6c275339c34993edd28d50ffdeeb976",
-    "testFiles": 186,
-    "tests": 1783,
-    "focusedFiles": 4,
-    "focusedTests": 60
+    "status": "PASSED",
+    "focusedFiles": 3,
+    "focusedTests": 67,
+    "testFiles": 187,
+    "tests": 1802
   },
   "paidEvaluationPassed": false,
   "finalInstructionPaidVerified": true,
   "totalEstimatedUsd": "0.886250600",
-  "ciVerifiedCommit": "a167ed82c6c275339c34993edd28d50ffdeeb976",
   "ciFinalHead": "SEE_PR_CHECKS_AND_BUILDER_COMMENT",
   "additionalPaidEvaluationAuthorization": {
     "source": "Product Director in working chat, 2026-11-25",
@@ -58,13 +57,44 @@
     "condition": "After fix item 1 passes CI"
   },
   "review": {
-    "round": 1,
-    "commentId": 7167255389,
+    "round": 2,
+    "commentId": 7167950702,
     "author": "FATTY-BAMBA",
     "authorId": 101108617,
     "namingRule": "CONFIRMED_BY_PRODUCT_DIRECTOR",
-    "officialCityNames": "CONFIRMED_BY_PRODUCT_DIRECTOR"
+    "officialCityNames": "CONFIRMED_BY_PRODUCT_DIRECTOR",
+    "instructionSha256": "c3bf0c8b9752f93fe72a76bc88afe1e5f4547a153ecdfd439a9c7d61de2894a2"
   },
-  "ciReviewRunId": 45650218324,
-  "remainingPaidFailure": "en-new-client-acceptance: unsupported INDIVIDUAL from quote \"new client\", all three rounds"
+  "remainingPaidFailure": "Original unsupported clientType outputs now pass exact replay; full replay is unavailable because successful raw outputs were not recorded.",
+  "freeReplay": {
+    "sourceRunId": 45651010861,
+    "rawOutputsAvailable": 3,
+    "replayed": 3,
+    "passed": 3,
+    "fullReplay": false,
+    "scoredOutputsWithoutRawDraft": 93,
+    "reportedOutputsWithoutRawDraft": 3,
+    "combinedScoresWithPriorPasses": [
+      {
+        "round": 1,
+        "en": 16,
+        "zh-TW": 16
+      },
+      {
+        "round": 2,
+        "en": 16,
+        "zh-TW": 16
+      },
+      {
+        "round": 3,
+        "en": 16,
+        "zh-TW": 16
+      }
+    ],
+    "providerCalls": 0,
+    "estimatedUsd": "0.000000000",
+    "acceptance": "WAITING_FOR_PRODUCT_DIRECTOR"
+  },
+  "previousCiVerifiedCommit": "a167ed82c6c275339c34993edd28d50ffdeeb976",
+  "review1CiRunId": 45650218324
 }

@@ -95,3 +95,30 @@ Every other scored draft case passed all rounds, including 王先生, 王小姐 
 Estimated run cost, summed with decimal arithmetic across questions, scored drafts **and reported placeholder calls**: **US$0.302131500**. Total for all three authorized runs: **US$0.886250600**. The additional allowance is exhausted. Paid acceptance remains unmet; the correct names alone do not make this run pass.
 
 Verified for this review: 60 focused tests, full local `npm run check` (186 files / 1,783 tests and production build), CI on the paid-evaluated code commit, and the completed three-round paid report. Subsequent commits contain evidence/documentation only. Not verified: successful paid acceptance, hosted acceptance, screenshots or manual keyboard/mobile use. The Product Director's test-site acceptance is still pending; no hosted operation or Test site workflow was run. PR #78 stays draft.
+
+
+## Fix round 2 — server support and free recorded-output replay
+
+Source: [owner-authored Reviewer (Claude) comment 7167950702](https://github.com/FATTY-BAMBA/StrideBrain/pull/78#issuecomment-7167950702), account FATTY-BAMBA / 101108617. Requested by the Product Director in the working chat on 26 November 2026 (Asia/Taipei). No paid run is authorized or started in this round.
+
+- One shared constant supplies the seven relationship phrases to both the naming instruction and the server check. After the existing exact-quote/list checks, `supportJobDraft` drops `clientType` when removing those phrases, spaces and punctuation leaves no content. Other fields keep their existing independent validation.
+- English and Chinese tests cover every relationship phrase, capitalization, punctuation, repeated/mixed phrases, and preservation of the other fields. Explicit `client type: individual`, 「客戶類型：個人」, bare types and relationship-plus-explicit-type quotes remain supported.
+- **The rendered instruction is unchanged byte for byte from `a167ed8`.** A regression pins its SHA-256 to `c3bf0c8b9752f93fe72a76bc88afe1e5f4547a153ecdfd439a9c7d61de2894a2`. Only the shared-constant interpolation changes in the application file. Model, choices, cases, oracle and pass marks are unchanged. No migration or UI changes.
+
+### Replay coverage limitation
+
+The review says the artifact contains every raw draft. Inspection of the original ZIP and `runJobDraftCase` shows that **only failed cases have `rawDraft`**. The archive has one `ai-evaluation.json`; successful cases retain supported values and dropped-field names, but not the original quotes. The workflow logs deliberately contain only metering/verdict metadata. There are exactly three replayable outputs: `en-new-client-acceptance` in rounds 1, 2 and 3. The other 93 scored outputs and three reported placeholder outputs cannot be exactly replayed from this evidence. No raw drafts were reconstructed from expected or kept values, and the original report is unchanged.
+
+The new replay regression sends all three available raw drafts through the real `DraftJob` path, the fixed server support check, and the **unchanged** `runJobDraftCase` evaluator, with a recording-backed model port and disposable local fixture database. All three pass: the unsupported type is dropped and the name/city/job name remain correct. No external model is instantiated; an assertion proves `fetch` is never called. Provider calls: **0**; additional cost: **US$0**. [Replay report](evidence/review-2-replay.json).
+
+| Round | Exact raw outputs replayed | Prior scored passes carried forward (not replayed) | Combined recorded score en | Combined recorded score zh-TW |
+| --- | --- | --- | --- | --- |
+| 1 | 1/1 en; no zh-TW raw output available | 15 en + 16 zh-TW | 16/16 | 16/16 |
+| 2 | 1/1 en; no zh-TW raw output available | 15 en + 16 zh-TW | 16/16 | 16/16 |
+| 3 | 1/1 en; no zh-TW raw output available | 15 en + 16 zh-TW | 16/16 | 16/16 |
+
+These combined scores use the original passing verdicts alongside the three newly replayed verdicts; **they are not a full 96-output replay or a new paid pass**. The three original reported placeholder passes are also carried forward, not replayed. The ordinary deterministic fixture replay still covers all cases through the current check, but is not recorded paid output. The Product Director must decide whether the available replay evidence satisfies paid acceptance; it remains pending.
+
+Focused verification passed: 3 files / 67 tests, including the available-output replay and the unchanged-instruction hash; [log](evidence/review-2-focused.log). Full `npm run check` also passed: 187 files / 1,802 tests, format/design checks, lint (only the existing Prisma-config export warning), typecheck and production build. [Full check log](evidence/review-2-check.log). Final-commit CI is reported in the PR checks and the Builder comment. Paid dispatches remain 3 total; cumulative estimated paid cost remains US$0.886250600.
+
+Not verified: exact replay of missing successful raw drafts, paid acceptance of this fix, hosted acceptance, screenshots or manual keyboard/mobile use. Hosted acceptance waits for the Product Director; no hosted operation or Test site workflow. PR stays draft.
