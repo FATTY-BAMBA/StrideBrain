@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { assistantCopy } from "@/modules/localization/assistant";
-import { Fragment, useActionState, useId, useRef, useState, useTransition } from "react";
+import { Fragment, useActionState, useEffect, useId, useRef, useState, useTransition } from "react";
 import { askHomeAction } from "@/app/[locale]/home-chat-actions";
 import { initialHomeChatState } from "@/modules/home-intelligence/chat-contracts";
 import type { Locale } from "@/modules/localization/config";
@@ -18,14 +18,18 @@ export function HomeChat({
   projectKey,
   canDraftJob = false,
   quoteHasUnsavedChanges = false,
+  jobPanelOpen,
 }: {
   locale: Locale;
   projectKey?: string | undefined;
   canDraftJob?: boolean;
   quoteHasUnsavedChanges?: boolean;
+  /** Omitted on Home; only the job panel has a bounded, scrolling thread. */
+  jobPanelOpen?: boolean;
 }) {
   const id = useId(),
-    formRef = useRef<HTMLFormElement>(null);
+    formRef = useRef<HTMLFormElement>(null),
+    threadRef = useRef<HTMLDivElement>(null);
   const [openDraft, setOpenDraft] = useState<string | null>(null);
   const [state, action, asking] = useActionState(askHomeAction, initialHomeChatState);
   const [drafting, startDraft] = useTransition();
@@ -36,6 +40,13 @@ export function HomeChat({
   const turns: readonly DraftTurn[] = [...state.turns, ...draftTurns].sort(
     (a, b) => (Number(a.id.split("-").at(-1)) || 0) - (Number(b.id.split("-").at(-1)) || 0),
   );
+  const latestTurnId = turns.at(-1)?.id;
+  useEffect(() => {
+    if (jobPanelOpen && threadRef.current) {
+      // Scroll only this region, without moving keyboard focus or the page.
+      threadRef.current.scrollTop = threadRef.current.scrollHeight;
+    }
+  }, [jobPanelOpen, latestTurnId, pending]);
   function draftAction(data: FormData) {
     const text = data.get("message");
     if (typeof text !== "string" || !text.trim() || text.length > 280) return;
@@ -66,6 +77,7 @@ export function HomeChat({
     locale === "zh-TW"
       ? {
           label: "詢問 StrideBrain",
+          thread: "此專案的對話",
           placeholder: projectKey ? "這個專案的報價狀態如何？" : "我們以前做過旗艦店整修嗎？",
           savedDraft: "回答依據最後儲存的草稿。",
           send: "提問",
@@ -73,6 +85,7 @@ export function HomeChat({
         }
       : {
           label: "Ask StrideBrain",
+          thread: "Conversation about this job",
           placeholder: projectKey
             ? "What is this job's quote status?"
             : "Have we renovated a flagship store before?",
@@ -86,7 +99,18 @@ export function HomeChat({
       <label className={styles.chatLabel} htmlFor={`${id}-message`}>
         {copy.label}
       </label>
-      <div className={styles.chatThread} aria-live="polite">
+      <div
+        ref={threadRef}
+        className={
+          jobPanelOpen === undefined
+            ? styles.chatThread
+            : `${styles.chatThread} ${styles.jobThread}`
+        }
+        aria-live="polite"
+        role={jobPanelOpen === undefined ? undefined : "region"}
+        aria-label={jobPanelOpen === undefined ? undefined : copy.thread}
+        tabIndex={jobPanelOpen === undefined ? undefined : 0}
+      >
         {turns.map((turn) => (
           <article
             className={turn.role === "user" ? styles.userMessage : styles.assistantMessage}

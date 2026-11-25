@@ -10,6 +10,16 @@
   display: grid;
   gap: 12px;
 }
+.jobThread {
+  max-height: 50vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  min-height: 0;
+}
+.jobThread:focus-visible {
+  outline: var(--focus-width) solid var(--focus);
+  outline-offset: var(--focus-offset);
+}
 .assistantMessage,
 .userMessage {
   display: grid;

@@ -9,3 +9,5 @@ No migrations or assistant tool/instruction/model/check changes. Follow delivery
 Also correct SB-067 verification: Product Director confirmed older findings-list removal on 2026-11-25, PR #75 comment 7157102507.
 
 Review round 1 re-read the issue update dated 2026-11-25 08:36Z and corrected the earlier three-page brief. The Product Director confirmed the job-specific placeholder at 17:32 Asia/Taipei on 25 November 2026, recorded in owner-authored comment 7158463671. It is decided, not provisional.
+
+Fix round 2 follows owner-authored comment 7164464279: align the older job bodies with the tabs at --page-width and make the wrapper’s 16px gap independent of stylesheet order. Provisionally cap only the job conversation at half the viewport with accessible internal scrolling, and remove the older overview link to Home chat while preserving comparison. These two provisional decisions await Product Director confirmation before merge. Hosted acceptance passed on 47ead77; the new refinements await retest.

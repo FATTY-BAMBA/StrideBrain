@@ -1,6 +1,6 @@
 # SB-063 verification
 
-PR #76 stays draft. Hosted acceptance is waiting for the Product Director; no Test site workflow or hosted project/database changes were made.
+PR #76 stays draft. Hosted acceptance passed on `47ead77`, as reported in owner-authored [comment 7164464279](https://github.com/FATTY-BAMBA/StrideBrain/pull/76#issuecomment-7164464279), using Test site run 45592357857. Round-2 refinements below await Product Director retest; two decisions remain provisional. The agent made no Test site workflow or hosted project/database changes.
 
 ## Changes
 
@@ -46,7 +46,7 @@ Known model/check limits observed in round 3 (existing core cases, retained in t
 
 ## Not verified
 
-- Hosted acceptance, screenshots, real browser navigation/back behavior, visual layout at narrow widths, physical keyboard activation and screen-reader announcements await the Product Director. DOM tests establish state and native control semantics but are not a browser click-through. This session exposes no browser/computer execution tool.
+- Hosted acceptance on `47ead77` is now recorded below from the owner-authored reviewer report. The new round-2 changes still await real-browser visual, narrow-screen, keyboard and screen-reader checks by the Product Director. DOM tests establish state and native control semantics but are not a browser click-through. No fresh screenshots were captured; this session exposes no browser/computer execution tool.
 - No model prompt, tool, grounding/check, model configuration, workflow or migration was changed.
 
 Base: fetched main `a45e84083b28a41e28b9e674a64232d505b95ac4` (merged #75). The repository's `origin/main` tracking ref was stale because its fetch refspec tracks an old task branch; the clean new branch was fast-forwarded to the actual fetched main before editing. The old #75 review automation was stopped after merge.
@@ -62,8 +62,24 @@ Changes:
 - The layout only determines optional bar visibility. No session/capability/policy, or a failed session/policy lookup, renders tabs and children without the bar. It does not throw a 404 or replace page outcomes. Existing pages and server action remain authoritative; excluded readable jobs still receive the existing no-model refusal.
 - A client context holds only the editor’s existing dirty boolean. The panel shows “Answers use the last saved draft.” / 「回答依據最後儲存的草稿。」 above the question field for unsaved edits, retains it after a failed save, and clears it after successful save or editor unmount. No new network call, storage, log field or submitted form field.
 - Difference sentence replacements use callback functions, preserving dollar-sign text literally.
-- **Decided by the Product Director at 17:32 Asia/Taipei on 25 November 2026**, recorded in owner-authored [comment 7158463671](https://github.com/FATTY-BAMBA/StrideBrain/pull/76#issuecomment-7158463671): selected-job placeholder is “What is this job's quote status?” / 「這個專案的報價狀態如何？」. Home’s existing placeholder is unchanged. This replaces the provisional item in the original review. No provisional SB-063 decision remains. The implemented text already matches; the confirmation requires no code change. This is UI copy only; it is not sent to the model.
+- **Decided by the Product Director at 17:32 Asia/Taipei on 25 November 2026**, recorded in owner-authored [comment 7158463671](https://github.com/FATTY-BAMBA/StrideBrain/pull/76#issuecomment-7158463671): selected-job placeholder is “What is this job's quote status?” / 「這個專案的報價狀態如何？」. Home’s existing placeholder is unchanged. This replaces the provisional item in the original review. No provisional SB-063 decision remained at the end of round 1. The implemented text already matches; the confirmation requires no code change. This is UI copy only; it is not sent to the model.
 
 Verification: focused regressions **45 tests / 5 files passed** ([log](evidence/review-1-focused.log)). The tests compose the actual job layout and page unavailable states inside the app frame, check all four tabs and native disclosure semantics, retain forged-key denials, exercise the real editor through dirty/failed-save/successful-save/unmount, and preserve literal replacement characters. Full `npm run check` passed: **1,764 tests / 182 files, zero skipped**, plus format/design/lint/typecheck/production build ([log](evidence/review-1-check.log)). Only the existing prisma.config.ts lint warning remains. CI evidence is recorded in the PR checks and the Builder round-1 report.
 
 Not verified: hosted acceptance and real-browser visual, keyboard, screen-reader, back/forward and device behavior; screenshots were not captured. Waiting for the Product Director; PR stays draft. No hosted changes, Test site workflow or paid evaluation in this round. Both existing paid dispatches remain exhausted; model-facing behavior is unchanged and the reviewer explicitly requested no further run.
+
+
+## Review round 2 — comment 7164464279
+
+[Reviewer comment](https://github.com/FATTY-BAMBA/StrideBrain/pull/76#issuecomment-7164464279), actual author verified as repository owner FATTY-BAMBA (101108617). Hosted acceptance on `47ead77` passed as owner 陳柏宇 and Viewer 吳凱 in [Test site run 45592357857](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45592357857), data kept. This is reviewer-reported evidence, not an agent-run hosted test. It covers all-four-tab placement, Enter/Space/focus, selected/named-job precedence, retained/cleared threads, saved-draft notice and preserved edits, exclusion/forged-key denials without usage, Viewer amount denial, 390px, English, Home difference figures and retained draft forms.
+
+Changes:
+
+1. The shared layout contains page bodies in the same centred `--page-width` column as the tabs (1120px maximum, shrinking to available width). Overview, comparison and actions now align with quote. The body wrapper changes width containment only; typography, spacing and other restyling remain #77.
+2. Navigation uses one complete rule of its own: grid, width, centring, minimum width, typography, bottom margin and `--space-16` gap. It no longer carries `ui.page`, so the 32px page gap cannot override it when stylesheet order changes.
+3. **Provisional — awaiting Product Director confirmation before merge:** only the job panel's thread has `max-height: 50vh` and internal vertical scrolling. It is a keyboard-focusable region named “Conversation about this job” / 「此專案的對話」, with the standard focus ring. A new turn, pending reply or reopening scrolls this region to the latest content without moving focus or the page. Home does not opt into this behavior and remains unbounded.
+4. **Provisional — awaiting Product Director confirmation before merge:** removed only the older overview “Ask StrideBrain” link that left the job for Home. Its existing card and comparison link remain.
+
+Focused regressions: **18 tests / 3 files passed** ([log](evidence/review-2-focused.log)). Composed page/layout tests put all four bodies inside the shared column; real CSS declarations with design tokens compute a 16px gap in either stylesheet order. Bilingual DOM tests cover the bounded named region, keyboard focus, two successive answers, scrolling on reopening and unchanged Home behavior. The overview link check retains the canonical comparison entry. Full `npm run check` passed: **1,769 tests / 182 files, zero skipped**, plus format/design/lint/typecheck/production build ([log](evidence/review-2-check.log)). Only the existing `prisma.config.ts` anonymous-default-export lint warning remains. The final successful run followed a formatting correction and strict CSS-module assertion fixes in the new tests; no production guard or test threshold changed. Final-head CI is recorded in the PR checks and the Builder round-2 report.
+
+Not verified in this round: hosted retest of the changed widths/gap, real-browser scrolling at desktop/390px, physical keyboard or screen-reader behavior, and fresh screenshots. These await the Product Director. Viewer quote-status tool behavior remains the explicitly deferred Assistant v0.3 question. No hosted operation, Test site workflow, migration, tool, instruction, model or grounding/check change. No paid run: both allowed dispatches are already used, and this round changes nothing sent to the model.

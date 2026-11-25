@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 import { createElement, type ReactNode } from "react";
+import { readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 import { beforeEach, expect, it, vi } from "vitest";
 import { jobContext } from "../projects/job-fixture";
@@ -7,6 +8,8 @@ import { getCatalog } from "@/modules/localization/catalog";
 import { quoteDraftCopy } from "@/modules/localization/quote-draft";
 import { projectNavigation, projectSurfaceHref } from "@/modules/navigation/project-navigation";
 import type { Locale } from "@/modules/localization/config";
+import styles from "@/components/assistant/job-chat-panel.module.css";
+import ui from "@/components/ui/ui.module.css";
 const boundary = vi.hoisted(() => ({
   path: "",
   context: vi.fn(),
@@ -100,9 +103,10 @@ it.each(["en", "zh-TW"] as const)(
       );
       expect(panel.hasAttribute("hidden")).toBe(false);
       expect(nav.parentElement).toBe(panel.parentElement);
-      expect(nav.parentElement?.className).toMatch(/page/);
+      expect(nav.parentElement?.className).toBe(styles.navigation);
       const body = nav.parentElement!.nextElementSibling!;
-      expect(body).not.toBeNull();
+      expect(body.className).toBe(styles.body);
+      expect(body.firstElementChild).not.toBeNull();
       expect(body.querySelector("nav[aria-label]")).toBeNull();
       expect(nav.querySelector('[aria-current="page"]')?.getAttribute("href")).toBe(boundary.path);
       expect(host.querySelectorAll('textarea[name="message"]')).toHaveLength(1);
@@ -118,6 +122,48 @@ it.each(["en", "zh-TW"] as const)(
         'nav[aria-label$="workspace navigation"],nav[aria-label="專案工作區導覽"]',
       ),
     ).toHaveLength(1);
+  },
+);
+function rule(path: string, selector: string) {
+  const css = readFileSync(path, "utf8");
+  const declaration = css.match(new RegExp(`\\.${selector}\\s*\\{([^}]+)\\}`))?.[1];
+  if (!declaration) throw new Error(`Missing .${selector} rule`);
+  return declaration;
+}
+it.each([false, true])(
+  "keeps the 16px panel gap and shared column independent of stylesheet order (ui last: %s)",
+  async (uiLast) => {
+    boundary.path = "/en/projects/J";
+    const panelCss = "src/components/assistant/job-chat-panel.module.css";
+    const navRule = rule(panelCss, "navigation");
+    const bodyRule = rule(panelCss, "body");
+    for (const column of [navRule, bodyRule]) {
+      expect(column).toMatch(/width:\s*min\(100%, var\(--page-width\)\)/);
+      expect(column).toMatch(/margin-inline:\s*auto/);
+    }
+    // Only width containment changes the older page bodies.
+    expect(bodyRule).not.toMatch(/(?:font|gap|padding|line-height):/);
+    const panelRules = `.${styles.navigation} {${navRule}} .${styles.body} {${bodyRule}}`;
+    const uiRule = `.${ui.page} {${rule("src/components/ui/ui.module.css", "page")}}`;
+    const tokens = readFileSync("src/styles/tokens.css", "utf8");
+    const sheet = document.createElement("style");
+    sheet.textContent = [tokens, ...(uiLast ? [panelRules, uiRule] : [uiRule, panelRules])].join(
+      "\n",
+    );
+    const host = await composed("en", await page("en", ""));
+    document.head.append(sheet);
+    document.body.append(host);
+    try {
+      const nav = host.querySelector<HTMLElement>(`.${styles.navigation}`)!;
+      expect(nav.classList.contains(ui.page!)).toBe(false);
+      expect(getComputedStyle(nav).display).toBe("grid");
+      expect(getComputedStyle(nav).gap).toBe("16px");
+      expect(tokens).toMatch(/--space-16:\s*16px/);
+      expect(tokens).toMatch(/--page-width:\s*1120px/);
+    } finally {
+      host.remove();
+      sheet.remove();
+    }
   },
 );
 it.each(["en", "zh-TW"] as const)(

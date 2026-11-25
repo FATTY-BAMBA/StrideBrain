@@ -1,9 +1,12 @@
 // @vitest-environment jsdom
 import { createElement, act } from "react";
+import { readFileSync } from "node:fs";
 import { createRoot, type Root } from "react-dom/client";
 import { beforeEach, afterEach, it, expect, vi } from "vitest";
 import { projectNavigation, projectSurfaceHref } from "@/modules/navigation/project-navigation";
 import { JobChatPanel } from "@/components/assistant/job-chat-panel";
+import { HomeChat } from "@/components/assistant/home-chat";
+import styles from "@/components/demo-value/home-chat.module.css";
 const boundary = vi.hoisted(() => ({ path: "/en/projects/J", ask: vi.fn() }));
 vi.mock("next/navigation", () => ({ usePathname: () => boundary.path }));
 vi.mock("@/app/[locale]/home-chat-actions", () => ({ askHomeAction: boundary.ask }));
@@ -14,10 +17,11 @@ beforeEach(() => {
   host = document.createElement("div");
   document.body.append(host);
   root = createRoot(host);
-  boundary.ask.mockImplementation(async (_state, form: FormData) => ({
+  boundary.ask.mockImplementation(async (state, form: FormData) => ({
     turns: [
+      ...state.turns,
       {
-        id: "answer",
+        id: `answer-${state.turns.length + 1}`,
         role: "assistant",
         text: `Saved finding one.\nSaved finding two.`,
         ai: true,
@@ -91,3 +95,54 @@ it.each(["en", "zh-TW"] as const)(
     expect(host.querySelector("article")).toBeNull();
   },
 );
+it.each(["en", "zh-TW"] as const)(
+  "bounds only the job thread, names its keyboard region and scrolls new turns without stealing focus (%s)",
+  async (locale) => {
+    boundary.path = `/${locale}/projects/J`;
+    await act(() => root.render(createElement(JobChatPanel, { locale, projectKey: "J" })));
+    const toggle = host.querySelector<HTMLButtonElement>("button[aria-controls]")!;
+    await act(() => toggle.click());
+    const thread = host.querySelector<HTMLDivElement>('[role="region"]')!;
+    expect(thread.getAttribute("aria-label")).toBe(
+      locale === "en" ? "Conversation about this job" : "此專案的對話",
+    );
+    expect(thread.tabIndex).toBe(0);
+    expect(thread.classList.contains(styles.jobThread!)).toBe(true);
+    const css = readFileSync("src/components/demo-value/home-chat.module.css", "utf8");
+    const rule = css.match(/\.jobThread\s*\{([^}]+)\}/)![1]!;
+    expect(rule).toMatch(/max-height:\s*50vh/);
+    expect(rule).toMatch(/overflow-y:\s*auto/);
+    expect(rule).toMatch(/overscroll-behavior:\s*contain/);
+    expect(css).toMatch(/\.jobThread:focus-visible\s*\{[^}]*outline:/);
+    let height = 600;
+    Object.defineProperty(thread, "scrollHeight", { get: () => height });
+    for (let turn = 1; turn <= 2; turn++) {
+      thread.scrollTop = 0;
+      thread.focus();
+      height += 200;
+      host.querySelector<HTMLTextAreaElement>("textarea")!.value = `Question ${turn}`;
+      await act(() => host.querySelector<HTMLFormElement>("form")!.requestSubmit());
+      expect(thread.querySelectorAll("article")).toHaveLength(turn);
+      expect(thread.scrollTop).toBe(height);
+      expect(document.activeElement).toBe(thread);
+    }
+    await act(() => toggle.click());
+    thread.scrollTop = 0;
+    toggle.focus();
+    await act(() => toggle.click());
+    expect(thread.scrollTop).toBe(height);
+    expect(document.activeElement).toBe(toggle);
+  },
+);
+it("leaves Home's thread unbounded and does not automatically scroll it", async () => {
+  await act(() => root.render(createElement(HomeChat, { locale: "en" })));
+  const thread = host.querySelector<HTMLDivElement>('[aria-live="polite"]')!;
+  expect(thread.className).toBe(styles.chatThread);
+  expect(thread.hasAttribute("tabindex")).toBe(false);
+  expect(thread.hasAttribute("role")).toBe(false);
+  Object.defineProperty(thread, "scrollHeight", { value: 900 });
+  host.querySelector<HTMLTextAreaElement>("textarea")!.value = "Question";
+  await act(() => host.querySelector<HTMLFormElement>("form")!.requestSubmit());
+  expect(thread.querySelectorAll("article")).toHaveLength(1);
+  expect(thread.scrollTop).toBe(0);
+});

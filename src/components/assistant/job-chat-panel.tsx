@@ -31,7 +31,12 @@ export function JobChatPanel({ locale, projectKey }: { locale: Locale; projectKe
         {label}
       </button>
       <div id={id} hidden={!open}>
-        <HomeChat locale={locale} projectKey={projectKey} quoteHasUnsavedChanges={unsaved} />
+        <HomeChat
+          locale={locale}
+          projectKey={projectKey}
+          quoteHasUnsavedChanges={unsaved}
+          jobPanelOpen={open}
+        />
       </div>
     </section>
   );

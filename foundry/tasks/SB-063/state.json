@@ -3,9 +3,9 @@
   "branch": "build/sb-063-job-pages",
   "baseCommit": "a45e84083b28a41e28b9e674a64232d505b95ac4",
   "status": "WAITING_FOR_PRODUCT_DIRECTOR",
-  "delivery": "A \u2192 B \u2192 C",
+  "delivery": "A → B → C",
   "pullRequestDraft": true,
-  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "hostedAcceptance": "ROUND_1_PASSED_ROUND_2_WAITING_FOR_PRODUCT_DIRECTOR",
   "paidEvaluationLimit": 2,
   "paidEvaluationRuns": [
     {
@@ -24,14 +24,14 @@
   ],
   "pullRequest": 76,
   "localCheck": {
-    "tests": 1764,
+    "tests": 1769,
     "files": 182,
     "passed": true
   },
   "ci": {
-    "runId": 45580894529,
-    "commit": "32be7fe3f227c4d0856b0f4da76592f3645d9629",
-    "passed": true
+    "status": "PENDING_ROUND_2_PUSH",
+    "lastPassedRunId": 45588369778,
+    "lastPassedCommit": "47ead776b0bfbbe509fad7373020308daed1f4b4"
   },
   "evaluation": {
     "rounds": 3,
@@ -50,15 +50,26 @@
     "draftsPerLanguageEachRound": 12,
     "passed": true
   },
-  "reviewRound": 1,
-  "reviewComment": 7158266741,
-  "provisionalDecisions": [],
+  "reviewRound": 2,
+  "reviewComment": 7164464279,
+  "provisionalDecisions": [
+    {
+      "decision": "Bound job-panel thread to half the viewport with accessible internal scrolling",
+      "sourceComment": 7164464279,
+      "status": "AWAITING_PRODUCT_DIRECTOR"
+    },
+    {
+      "decision": "Remove overview link to Home chat; retain comparison link",
+      "sourceComment": 7164464279,
+      "status": "AWAITING_PRODUCT_DIRECTOR"
+    }
+  ],
   "reviewVerification": {
-    "round": 1,
-    "focusedTests": 45,
-    "focusedFiles": 5,
+    "round": 2,
+    "focusedTests": 18,
+    "focusedFiles": 3,
     "fullCheck": true,
-    "ciEvidence": "PR #76 checks and Builder round-1 report"
+    "ciEvidence": "PR #76 checks and Builder round-2 report"
   },
   "confirmedDecisions": [
     {
@@ -67,5 +78,11 @@
       "status": "CONFIRMED_BY_PRODUCT_DIRECTOR",
       "decidedAt": "2026-11-25T17:32:00+08:00"
     }
-  ]
+  ],
+  "hostedEvidence": {
+    "commit": "47ead776b0bfbbe509fad7373020308daed1f4b4",
+    "runId": 45592357857,
+    "reportedByOwnerComment": 7164464279,
+    "passed": true
+  }
 }

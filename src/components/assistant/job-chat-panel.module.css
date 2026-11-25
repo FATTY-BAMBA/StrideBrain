@@ -1,6 +1,17 @@
 .navigation {
+  display: grid;
+  width: min(100%, var(--page-width));
+  margin-inline: auto;
   gap: var(--space-16);
   margin-bottom: var(--space-32);
+  min-width: 0;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+.body {
+  width: min(100%, var(--page-width));
+  margin-inline: auto;
+  min-width: 0;
 }
 .panel {
   min-width: 0;
