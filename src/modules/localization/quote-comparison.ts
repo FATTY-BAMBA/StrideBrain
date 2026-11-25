@@ -21,7 +21,7 @@ const zh: typeof en = {
   title: "比較",
   loading: "正在載入比較…",
   running: "正在執行比較…",
-  NOT_RUN: "尚未執行。沒有比較也能草擬、儲存及發出報價。",
+  NOT_RUN: "尚未執行。沒有比較也能草擬、儲存及核發報價。",
   OUT_OF_DATE: "已儲存的比較已過期，需要時可重新比較。",
   UNAVAILABLE: "目前無法讀取比較，您可以繼續編輯報價。",
   CONTEXT_INCOMPLETE: "請先補齊專案資料，再執行比較。",

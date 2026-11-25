@@ -2,8 +2,8 @@
 vi.mock("@/modules/quote-comparison/request", () => ({
   requestQuoteComparison: mock.comparison,
 }));
-vi.mock("@/app/[locale]/quotes/prices/actions", () => ({
-  readQuotePricesAction: vi.fn().mockResolvedValue({ kind: "AVAILABLE", rows: [], hasMore: false }),
+vi.mock("@/modules/price-list/request", () => ({
+  readQuotePrices: vi.fn().mockResolvedValue({ kind: "AVAILABLE", rows: [], hasMore: false }),
 }));
 vi.mock("@/app/[locale]/projects/actions", () => ({ updateProjectStageAction: vi.fn() }));
 import { act, createElement } from "react";

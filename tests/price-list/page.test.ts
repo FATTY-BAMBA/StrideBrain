@@ -10,7 +10,7 @@ vi.mock("@/lib/server/runtime-context", () => ({ resolveServerRuntimeContext: mo
 vi.mock("@/lib/server/price-list-services", () => ({
   createPriceListService: () => ({ execute: mock.read }),
 }));
-vi.mock("@/app/[locale]/quotes/prices/actions", () => ({ readQuotePricesAction: vi.fn() }));
+vi.mock("@/modules/price-list/request", () => ({ readQuotePrices: vi.fn() }));
 vi.mock("next/navigation", () => ({
   notFound: () => {
     throw Error("NOT_FOUND");

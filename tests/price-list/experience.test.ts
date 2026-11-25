@@ -9,7 +9,7 @@ import type { Locale } from "@/modules/localization/config";
 import type { QuoteDocumentLine } from "@/modules/quote-draft/domain/document-input";
 import type { PriceListRow } from "@/repositories/ports/price-list-repository";
 const mock = vi.hoisted(() => ({ read: vi.fn(), change: vi.fn() }));
-vi.mock("@/app/[locale]/quotes/prices/actions", () => ({ readQuotePricesAction: mock.read }));
+vi.mock("@/modules/price-list/request", () => ({ readQuotePrices: mock.read }));
 Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
 const host = document.createElement("div");
 document.body.append(host);
@@ -46,10 +46,10 @@ const newest: PriceListRow = {
   clientPrice: old,
 };
 const available = (rows: PriceListRow[]) => ({ kind: "AVAILABLE", rows, hasMore: false });
-function Harness({ locale }: { locale: Locale }) {
+function Harness({ locale, initial = "" }: { locale: Locale; initial?: string }) {
   const [line, setLine] = useState<Extract<QuoteDocumentLine, { kind: "ITEM" }>>({
     kind: "ITEM",
-    description: "",
+    description: initial,
     quantity: "6.23",
     unit: "式",
     unitPrice: "1",
@@ -88,13 +88,17 @@ it.each(["en", "zh-TW"] as const)(
     await type("天");
     expect(mock.read).not.toHaveBeenCalled();
     await type("天花");
-    expect(mock.read).toHaveBeenCalledWith(locale, {
-      mode: "SUGGEST",
-      search: "天花",
-      unit: "",
-      page: 1,
-      projectKey: "TARGET",
-    });
+    expect(mock.read).toHaveBeenCalledWith(
+      locale,
+      {
+        mode: "SUGGEST",
+        search: "天花",
+        unit: "",
+        page: 1,
+        projectKey: "TARGET",
+      },
+      expect.any(AbortSignal),
+    );
     expect(host.textContent).toContain("NT$3,800");
     expect(host.textContent).toContain("NT$3,500");
     expect(host.textContent).toContain(priceListCopy(locale).clientLast);
@@ -133,7 +137,9 @@ it("ignores stale responses after typing another item and closes suggestions wit
     .mockResolvedValueOnce(available([{ ...newest, description: "木作" }]));
   await act(async () => root.render(createElement(Harness, { locale: "zh-TW" })));
   await type("天花");
+  const oldSignal = mock.read.mock.calls[0]![2] as AbortSignal;
   await type("木作");
+  expect(oldSignal.aborted).toBe(true);
   await act(async () => first(available([newest])));
   expect(host.querySelector("[data-price-suggestion]")?.textContent).toContain("木作");
   await act(async () => {
@@ -161,13 +167,17 @@ it("history lists sources and Use this price changes only the price", async () =
     ),
   );
   await act(async () => host.querySelector("button")!.click());
-  expect(mock.read).toHaveBeenCalledWith("zh-TW", {
-    mode: "HISTORY",
-    search: "天花板",
-    unit: "坪",
-    page: 1,
-    projectKey: "TARGET",
-  });
+  expect(mock.read).toHaveBeenCalledWith(
+    "zh-TW",
+    {
+      mode: "HISTORY",
+      search: "天花板",
+      unit: "坪",
+      page: 1,
+      projectKey: "TARGET",
+    },
+    expect.any(AbortSignal),
+  );
   expect(host.querySelector('a[href="/zh-TW/projects/OLD/quote"]')).not.toBeNull();
   const buttons = [...host.querySelectorAll("button")].filter(
     (node) => node.textContent === "使用此單價",
@@ -184,4 +194,45 @@ it("renders empty/error states without disabling manual entry", async () => {
   await type("Other item");
   expect(host.textContent).toContain(priceListCopy("en").unavailable);
   expect(host.querySelector("textarea")?.disabled).toBe(false);
+});
+
+it("focusing a filled description does not read; ArrowDown explicitly opens suggestions", async () => {
+  vi.useFakeTimers();
+  mock.read.mockResolvedValue(available([newest]));
+  await act(async () => root.render(createElement(Harness, { locale: "en", initial: "天花板" })));
+  await act(async () => host.querySelector("textarea")!.focus());
+  await act(async () => {
+    await vi.advanceTimersByTimeAsync(300);
+  });
+  expect(mock.read).not.toHaveBeenCalled();
+  expect(host.querySelector("[data-price-suggestion]")).toBeNull();
+  await act(async () =>
+    host
+      .querySelector("textarea")!
+      .dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true })),
+  );
+  await act(async () => {
+    await vi.advanceTimersByTimeAsync(260);
+  });
+  expect(mock.read).toHaveBeenCalledTimes(1);
+  expect(host.querySelector("[data-price-suggestion]")).not.toBeNull();
+});
+it("closing history aborts its outstanding request", async () => {
+  mock.read.mockImplementation(() => new Promise(() => {}));
+  await act(async () =>
+    root.render(
+      createElement(PriceHistory, {
+        description: "天花板",
+        unit: "坪",
+        locale: "en",
+        label: "Item",
+        projectKey: "TARGET",
+      }),
+    ),
+  );
+  await act(async () => host.querySelector("button")!.click());
+  const signal = mock.read.mock.calls[0]![2] as AbortSignal;
+  expect(signal.aborted).toBe(false);
+  await act(async () => host.querySelector("button")!.click());
+  expect(signal.aborted).toBe(true);
 });

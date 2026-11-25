@@ -113,7 +113,14 @@ export class PrismaPriceListRepository implements PriceListRepositoryPort {
         const limit = input.mode === "SUGGEST" ? 8 : 50;
         const rows = await tx.$queryRaw<DbPrice[]>(Prisma.sql`
         WITH authorized AS (${authorized}), matching AS (
-          SELECT * FROM authorized WHERE strpos("descriptionKey", sb_price_identity(${input.search}))>0
+          -- Identity keys use bytewise ordering throughout grouping/sorting, matching
+          -- their exact normalized identity and final tie-break. This avoids locale
+          -- collation work on every comparison in large repeated price histories.
+          SELECT "descriptionKey" COLLATE "C" AS "descriptionKey", "unitKey" COLLATE "C" AS "unitKey",
+            "quoteId", "versionId", "lineNumber", "sectionPosition", "clientId", "issuedAt",
+            description, unit, "unitPrice", currency, "issuedOn", "documentNumber", "projectKey",
+            "projectNameEn", "projectNameZhTw", "clientNameEn", "clientNameZhTw"
+          FROM authorized WHERE strpos("descriptionKey", sb_price_identity(${input.search}))>0
         ), groups AS (
           SELECT "descriptionKey", "unitKey", count(DISTINCT "quoteId")::int AS "timesQuoted",
             bool_or("clientId"=${clientId}) AS "sameClient" FROM matching GROUP BY "descriptionKey", "unitKey"
@@ -129,7 +136,13 @@ export class PrismaPriceListRepository implements PriceListRepositoryPort {
             THEN to_jsonb(cp) || jsonb_build_object('unitPrice',cp."unitPrice"::text) ELSE NULL END AS "clientPrice"
         FROM latest JOIN groups USING ("descriptionKey","unitKey")
         LEFT JOIN client_latest cp USING ("descriptionKey","unitKey")
-        ORDER BY ${input.mode === "SUGGEST" ? Prisma.sql`groups."sameClient" DESC NULLS LAST,` : Prisma.empty}
+        ORDER BY ${
+          input.mode === "SUGGEST"
+            ? Prisma.sql`groups."sameClient" DESC NULLS LAST,
+              (strpos(latest."descriptionKey", sb_price_identity(${input.search})) = 1) DESC,
+              latest."issuedAt" DESC,`
+            : Prisma.empty
+        }
           latest."descriptionKey" COLLATE "C", latest."unitKey" COLLATE "C"
         LIMIT ${limit + 1} OFFSET ${(input.page - 1) * limit}
       `);

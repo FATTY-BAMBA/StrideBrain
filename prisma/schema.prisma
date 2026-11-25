@@ -717,6 +717,9 @@ model QuoteSection {
 }
 
 model QuoteItem {
+  /// SQL GENERATED ALWAYS STORED read keys; excluded from Prisma reads/writes, including legacy-schema tests.
+  priceDescriptionKey String? @ignore
+  priceUnitKey String? @ignore
   sectionId      String?
   kind           String           @default("ITEM")
   description    String?          @db.VarChar(500)

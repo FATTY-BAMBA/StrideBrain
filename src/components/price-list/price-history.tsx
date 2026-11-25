@@ -2,7 +2,7 @@
 import { useEffect, useId, useState } from "react";
 import Link from "next/link";
 import type { Route } from "next";
-import { readQuotePricesAction } from "@/app/[locale]/quotes/prices/actions";
+import { readQuotePrices } from "@/modules/price-list/request";
 import type { PriceReadOutcome } from "@/modules/price-list/application/read-price-list";
 import type { QuotedItemPrice } from "@/repositories/ports/price-list-repository";
 import type { Locale } from "@/modules/localization/config";
@@ -35,13 +35,18 @@ export function PriceHistory({
   useEffect(() => {
     if (!open) return;
     let cancelled = false;
-    readQuotePricesAction(locale, {
-      mode: "HISTORY",
-      search: description,
-      unit,
-      page: 1,
-      projectKey,
-    })
+    const controller = new AbortController();
+    readQuotePrices(
+      locale,
+      {
+        mode: "HISTORY",
+        search: description,
+        unit,
+        page: 1,
+        projectKey,
+      },
+      controller.signal,
+    )
       .then((result) => {
         if (!cancelled) setLoaded({ key, result });
       })
@@ -50,6 +55,7 @@ export function PriceHistory({
       });
     return () => {
       cancelled = true;
+      controller.abort();
     };
   }, [open, description, unit, projectKey, locale, key]);
   const result = loaded?.key === key ? loaded.result : null;

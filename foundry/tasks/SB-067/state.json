@@ -2,17 +2,34 @@
   "issue": 67,
   "branch": "build/sb-067-price-list",
   "baseCommit": "8bcd5a9d84499b52d91c1838aa34f61c3582a4cb",
-  "status": "IMPLEMENTED_AWAITING_HOSTED_ACCEPTANCE",
+  "status": "LOCAL_REVIEW_FIX_VERIFIED",
   "delivery": "A, B and C locally verified",
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "pullRequestDraft": true,
   "modelCalls": "NONE",
   "localCheck": {
     "result": "PASS",
-    "tests": 1670,
-    "files": 172,
+    "tests": 1688,
+    "files": 176,
     "skipped": 0
   },
   "ci": "See pull request checks (post-push result)",
-  "pullRequest": "https://github.com/FATTY-BAMBA/StrideBrain/pull/75"
+  "pullRequest": "https://github.com/FATTY-BAMBA/StrideBrain/pull/75",
+  "reviewRounds": [
+    {
+      "round": 1,
+      "startedAt": "2026-11-25T08:35:00+08:00",
+      "sourceCommentId": 7146871710,
+      "startCommentId": 7148673394,
+      "status": "IMPLEMENTED_LOCALLY_VERIFIED",
+      "completedAt": "2026-11-25T08:52:53+08:00"
+    }
+  ],
+  "provisionalDecisions": [
+    {
+      "sourceCommentId": 7146871710,
+      "decision": "Remove all Home COMPARE decisions",
+      "status": "IMPLEMENTED_AWAITING_PRODUCT_DIRECTOR"
+    }
+  ]
 }

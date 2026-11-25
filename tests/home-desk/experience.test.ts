@@ -66,7 +66,11 @@ function fixture(count = 7): HomeDesk {
       key: group.key,
       count: group.key === "inquiry" ? count : 0,
     })),
-    decisions: projects.map((project) => ({ key: project.businessKey, kind: "COMPARE", project })),
+    decisions: projects.map((project) => ({
+      key: project.businessKey,
+      kind: "DRAFT_QUOTE",
+      project,
+    })),
     findingsNotices: [],
     closedJobs: [],
     closedJobsUnavailable: false,

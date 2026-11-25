@@ -18,13 +18,7 @@ import type { HomeDeskRepositoryPort } from "@/repositories/ports/home-desk-repo
 
 export type HomeDecision = Readonly<{
   key: string;
-  kind:
-    | "CONFIRM_REVIEW"
-    | "REVIEW_QUOTE"
-    | "ISSUE_QUOTE"
-    | "AWAITING_CLIENT"
-    | "DRAFT_QUOTE"
-    | "COMPARE";
+  kind: "CONFIRM_REVIEW" | "REVIEW_QUOTE" | "ISSUE_QUOTE" | "AWAITING_CLIENT" | "DRAFT_QUOTE";
   project: ProjectEntryDTO;
   documentNumber?: string;
   validUntil?: string;
@@ -62,7 +56,6 @@ const priority = {
   ISSUE_QUOTE: 2,
   AWAITING_CLIENT: 3,
   DRAFT_QUOTE: 4,
-  COMPARE: 5,
 } as const;
 
 export class GetHomeDesk {
@@ -178,11 +171,7 @@ export class GetHomeDesk {
             )
           )
             continue;
-          if (!compared.has(job.id)) {
-            if (["DISCOVERY", "DESIGN", "QUOTE_REVIEW"].includes(job.stage))
-              decisions.push({ key: `compare:${job.businessKey}`, kind: "COMPARE", project });
-            continue;
-          }
+          if (!compared.has(job.id)) continue;
           try {
             const saved = await this.comparisons.execute(context, job.businessKey);
             if (!saved || saved.kind !== "AVAILABLE") {

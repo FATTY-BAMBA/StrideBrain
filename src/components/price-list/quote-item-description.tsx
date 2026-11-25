@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useId, useRef, useState } from "react";
-import { readQuotePricesAction } from "@/app/[locale]/quotes/prices/actions";
+import { readQuotePrices } from "@/modules/price-list/request";
 import type { PriceReadOutcome } from "@/modules/price-list/application/read-price-list";
 import type { QuoteDocumentLine } from "@/modules/quote-draft/domain/document-input";
 import type { Locale } from "@/modules/localization/config";
@@ -39,14 +39,19 @@ export function QuoteItemDescription({
   useEffect(() => {
     if (!searching) return;
     let cancelled = false;
+    const controller = new AbortController();
     const timer = setTimeout(() => {
-      readQuotePricesAction(locale, {
-        mode: "SUGGEST",
-        search: line.description,
-        unit: "",
-        page: 1,
-        projectKey,
-      })
+      readQuotePrices(
+        locale,
+        {
+          mode: "SUGGEST",
+          search: line.description,
+          unit: "",
+          page: 1,
+          projectKey,
+        },
+        controller.signal,
+      )
         .then((result) => {
           if (!cancelled) setLoaded({ key, result });
         })
@@ -56,6 +61,7 @@ export function QuoteItemDescription({
     }, 250);
     return () => {
       cancelled = true;
+      controller.abort();
       clearTimeout(timer);
     };
   }, [searching, line.description, projectKey, locale, key]);
@@ -75,9 +81,13 @@ export function QuoteItemDescription({
         if (event.key === "ArrowDown" && event.target === input.current) {
           const first =
             container.current?.querySelector<HTMLButtonElement>("[data-price-suggestion]");
-          if (first) {
+          if (editable && !disabled && [...line.description.normalize("NFKC").trim()].length >= 2) {
             event.preventDefault();
-            first.focus();
+            if (first) first.focus();
+            else {
+              setLoaded(null);
+              setActive(true);
+            }
           }
         }
       }}
@@ -91,10 +101,6 @@ export function QuoteItemDescription({
         maxLength={500}
         value={line.description}
         disabled={disabled}
-        onFocus={() => {
-          setLoaded(null);
-          setActive(true);
-        }}
         onChange={(event) => {
           onChange({ ...line, description: event.target.value });
           setActive(true);

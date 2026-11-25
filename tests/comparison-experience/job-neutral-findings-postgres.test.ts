@@ -63,8 +63,14 @@ suite("job-specific findings from PostgreSQL", () => {
         `INSERT INTO "QuoteVersion" SELECT (jsonb_populate_record(NULL::"QuoteVersion", to_jsonb(v) || jsonb_build_object('id', $1::text, 'versionNumber', v."versionNumber"+1))).* FROM "QuoteVersion" v WHERE id='qv_riverside_044_v1'`,
         [versionId],
       );
+      // Database-generated price identities are recomputed, never copied as inputs.
+      const columns = (
+        await sql.query(
+          `SELECT quote_ident(attname) AS name FROM pg_attribute WHERE attrelid='"QuoteItem"'::regclass AND attnum>0 AND NOT attisdropped AND attgenerated='' ORDER BY attnum`,
+        )
+      ).rows.map((row) => row.name);
       await sql.query(
-        `INSERT INTO "QuoteItem" SELECT (jsonb_populate_record(NULL::"QuoteItem", to_jsonb(i) || jsonb_build_object('id', $1::text || i.id, 'quoteVersionId', $1::text))).* FROM "QuoteItem" i WHERE "quoteVersionId"='qv_riverside_044_v1'`,
+        `INSERT INTO "QuoteItem" (${columns.join(",")}) SELECT ${columns.map((column) => `copy.${column}`).join(",")} FROM "QuoteItem" i CROSS JOIN LATERAL jsonb_populate_record(NULL::"QuoteItem", to_jsonb(i) || jsonb_build_object('id', $1::text || i.id, 'quoteVersionId', $1::text)) copy WHERE i."quoteVersionId"='qv_riverside_044_v1'`,
         [versionId],
       );
       expect(await services.getHomeComparison.execute(context, "J-2611-R7K3")).toEqual({

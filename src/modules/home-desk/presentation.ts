@@ -29,7 +29,7 @@ export function decisionPresentation(
               ? copy.confirm
               : item.kind === "DRAFT_QUOTE"
                 ? copy.draft
-                : copy.compare,
+                : copy.REVIEW_QUOTE,
     moreFindings:
       ["REVIEW_QUOTE", "ISSUE_QUOTE"].includes(item.kind) &&
       item.additionalFindingCount &&

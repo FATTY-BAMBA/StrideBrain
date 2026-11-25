@@ -30,7 +30,7 @@ const en = {
 };
 const zh: Record<keyof typeof en, string> = {
   title: "價格表",
-  description: "來自您可查看之最新已發出或已接受報價的價格。",
+  description: "來自您可查看之最新已核發或已接受報價的價格。",
   quotes: "報價",
   item: "項目",
   unit: "單位",
@@ -41,11 +41,11 @@ const zh: Record<keyof typeof en, string> = {
   searchAction: "搜尋",
   suggestions: "過往項目",
   loading: "正在讀取價格…",
-  empty: "沒有符合的已發出報價價格。",
+  empty: "沒有符合的已核發報價價格。",
   unavailable: "目前無法取得價格，請再試一次。",
   invalid: "請確認搜尋內容與頁碼。",
   history: "價格紀錄",
-  historyHint: "最多顯示最近五筆已發出報價的價格。",
+  historyHint: "最多顯示最近五筆已核發報價的價格。",
   usePrice: "使用此單價",
   choose: "使用項目",
   clientLast: "此客戶上次單價",

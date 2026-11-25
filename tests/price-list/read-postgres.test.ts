@@ -222,4 +222,42 @@ suite("issued price read model and source access", () => {
     if (history.kind !== "AVAILABLE") throw Error("READ_REQUIRED");
     expect(history.rows.map((r) => r.unitPrice)).toEqual(["7", "6", "5", "4", "3"]);
   });
+  it("orders suggestions by same client, prefix, newest issue, then identity; list order remains alphabetical", async () => {
+    const owner = await db.actor(),
+      same = await priceJob(owner),
+      other = await priceJob(owner),
+      target = await priceJob(owner, same.clientKey);
+    await issuedPrice(
+      owner,
+      same,
+      [priceItem("Z rankq same"), priceItem("rankq same")],
+      new Date("2026-11-24T00:00:00Z"),
+    );
+    await issuedPrice(owner, other, [priceItem("rankq old")], new Date("2026-11-25T00:00:00Z"));
+    const newer = await priceJob(owner);
+    await issuedPrice(
+      owner,
+      newer,
+      [priceItem("rankq B new"), priceItem("rankq A new"), priceItem("A rankq contains")],
+      new Date("2026-11-26T00:00:00Z"),
+    );
+    const result = await read().execute(owner, query("SUGGEST", "rankq", target.projectKey));
+    expect(result.kind === "AVAILABLE" && result.rows.map((r) => r.description)).toEqual([
+      "rankq same",
+      "Z rankq same",
+      "rankq A new",
+      "rankq B new",
+      "rankq old",
+      "A rankq contains",
+    ]);
+    const list = await read().execute(owner, query("LIST", "rankq"));
+    expect(list.kind === "AVAILABLE" && list.rows.map((r) => r.description)).toEqual([
+      "A rankq contains",
+      "rankq A new",
+      "rankq B new",
+      "rankq old",
+      "rankq same",
+      "Z rankq same",
+    ]);
+  });
 });
