@@ -40,3 +40,15 @@ Implementation is locally verified in delivery order A → B → C. Hosted accep
 3. Repeat as 林美玲 with only assigned sources; as 吳凱 confirm no suggestions and price-list URL unavailable.
 4. Open a new no-comparison job from Home's Draft quote action. Edit/save without Run; run the panel without navigating away; verify stale state after save and continue save/issue.
 5. Check English/zh-TW, source links, two sections sharing a pricing category, 390px, keyboard and full comparison tab. Confirm seeded findings/Home figures remain unchanged.
+
+## Working-rule update — 25 November 2026
+
+AGENTS.md now records the Product Director's GitHub comment workflow, owner-author check, early draft rule, provisional-answer handling, and 30-minute chat automation with a three-fix-round nightly limit. Its earlier check-before-opening wording is reconciled with opening a draft early. This is a documentation-only update; `git diff --check` passes. The application suite was not rerun for these documentation changes; its last full local result and CI evidence remain above/on the PR.
+
+The active automation `stridebrain-review-follow-up` is attached to this chat and checks every 30 minutes. Its initial backlog is the review below. It uses at most three round starts in any rolling 24 hours to enforce the nightly cap across midnight; it pauses when PR #75 is merged or closed.
+
+The owner-authored [review round 1](https://github.com/FATTY-BAMBA/StrideBrain/pull/75#issuecomment-7146871710) is unhandled and queued for the automation's first check. This rule update is not a fix round and does not claim those findings are fixed.
+
+Provisional decision awaiting the Product Director: remove Home's COMPARE decision entirely, including jobs with quotes and readers who cannot draft. The reviewer permits building on this answer; it remains pending confirmation before merge. The current implementation has not yet applied it.
+
+The [issue answer](https://github.com/FATTY-BAMBA/StrideBrain/issues/67#issuecomment-7146079572) labels quote counting provisional, but the Product Director explicitly confirmed quote-based counting, history deduplication and last-document-line selection in this chat. That decision is implemented and tested; it is not awaiting another approval.
