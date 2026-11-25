@@ -9,7 +9,7 @@
   "modelCalls": "NONE",
   "localCheck": {
     "result": "PASS",
-    "tests": 1695,
+    "tests": 1706,
     "files": 176,
     "skipped": 0
   },
@@ -32,8 +32,19 @@
       "startedAt": "2026-11-25T09:09:00+08:00",
       "sourceCommentId": 7149190959,
       "startCommentId": 7149262264,
+      "status": "COMPLETED",
+      "completedAt": "2026-11-25T10:11:59+08:00",
+      "reportCommentId": 7150529988,
+      "commit": "90ce59c226609d0ed7bad53f28512a103c7b062b",
+      "ciRunId": 45531233399
+    },
+    {
+      "round": 3,
+      "startedAt": "2026-11-25T10:37:00+08:00",
+      "sourceCommentId": 7150651144,
+      "startCommentId": 7150970261,
       "status": "IMPLEMENTED_LOCALLY_VERIFIED",
-      "completedAt": "2026-11-25T10:11:59+08:00"
+      "completedAt": "2026-11-25T10:44:59+08:00"
     }
   ],
   "provisionalDecisions": [
@@ -42,5 +53,6 @@
       "decision": "Remove all Home COMPARE decisions",
       "status": "IMPLEMENTED_AWAITING_PRODUCT_DIRECTOR"
     }
-  ]
+  ],
+  "reviewAutomationIntervalMinutes": 20
 }

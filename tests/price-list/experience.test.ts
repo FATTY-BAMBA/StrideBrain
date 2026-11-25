@@ -272,3 +272,153 @@ it.each([
     expect(host.querySelector("[data-price-suggestion]")).toBeNull();
   },
 );
+
+it.each([
+  ["ArrowDown", true, 0, false],
+  ["Escape", true, 0, false],
+  ["ArrowDown", false, 229, false],
+  ["Escape", false, 229, false],
+  ["ArrowDown", false, 0, true],
+  ["Escape", false, 0, true],
+] as const)(
+  "leaves IME %s alone (native composing=%s, keyCode=%i, tracked composition=%s)",
+  async (key, isComposing, keyCode, tracked) => {
+    vi.useFakeTimers();
+    mock.read.mockResolvedValue(available([newest]));
+    await act(async () => root.render(createElement(Harness, { locale: "zh-TW" })));
+    await type("天花");
+    const input = host.querySelector("textarea")!;
+    const suggestion = host.querySelector("[data-price-suggestion]");
+    expect(suggestion).not.toBeNull();
+    if (tracked)
+      await act(async () =>
+        input.dispatchEvent(new CompositionEvent("compositionstart", { bubbles: true })),
+      );
+    const event = new KeyboardEvent("keydown", {
+      key,
+      isComposing,
+      keyCode,
+      bubbles: true,
+      cancelable: true,
+    });
+    await act(async () => {
+      input.focus();
+      input.setSelectionRange(input.value.length, input.value.length);
+      input.dispatchEvent(event);
+    });
+    expect(event.defaultPrevented).toBe(false);
+    expect(document.activeElement).toBe(input);
+    expect(host.querySelector("[data-price-suggestion]")).toBe(suggestion);
+    expect(mock.read).toHaveBeenCalledTimes(1);
+  },
+);
+
+async function composeStart() {
+  await act(async () => {
+    const input = host.querySelector("textarea")!;
+    input.focus();
+    input.dispatchEvent(new CompositionEvent("compositionstart", { bubbles: true }));
+  });
+}
+async function composeEnd(text: string) {
+  await act(async () => {
+    const input = host.querySelector("textarea")!;
+    Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, "value")!.set!.call(input, text);
+    input.dispatchEvent(new CompositionEvent("compositionend", { bubbles: true, data: text }));
+  });
+  // Some browsers deliver a final input event after compositionend.
+  await act(async () =>
+    host
+      .querySelector("textarea")!
+      .dispatchEvent(new InputEvent("input", { bubbles: true, data: text, isComposing: false })),
+  );
+}
+it("reads no uncommitted text and reads committed 天花 exactly once after compositionend", async () => {
+  vi.useFakeTimers();
+  mock.read.mockResolvedValue(available([newest]));
+  await act(async () => root.render(createElement(Harness, { locale: "zh-TW" })));
+  await composeStart();
+  await type("ㄊㄧ");
+  await type("ㄊㄧㄢ");
+  expect(mock.read).not.toHaveBeenCalled();
+  await composeEnd("天花");
+  expect(host.querySelector("textarea")!.value).toBe("天花");
+  expect(mock.read).not.toHaveBeenCalled();
+  await act(async () => {
+    await vi.advanceTimersByTimeAsync(1000);
+  });
+  expect(mock.read).toHaveBeenCalledTimes(1);
+  expect(mock.read).toHaveBeenCalledWith(
+    "zh-TW",
+    expect.objectContaining({ mode: "SUGGEST", search: "天花" }),
+    expect.any(AbortSignal),
+  );
+});
+it("does not read a committed composition shorter than two characters", async () => {
+  vi.useFakeTimers();
+  await act(async () => root.render(createElement(Harness, { locale: "zh-TW" })));
+  await composeStart();
+  await type("ㄊㄧㄢ");
+  await composeEnd("天");
+  await act(async () => {
+    await vi.advanceTimersByTimeAsync(1000);
+  });
+  expect(mock.read).not.toHaveBeenCalled();
+});
+it("cancels a pending suggestion read when a new composition begins", async () => {
+  vi.useFakeTimers();
+  mock.read.mockImplementation(() => new Promise(() => {}));
+  await act(async () => root.render(createElement(Harness, { locale: "zh-TW" })));
+  await type("木作");
+  const signal = mock.read.mock.calls[0]![2] as AbortSignal;
+  await composeStart();
+  expect(signal.aborted).toBe(true);
+  await type("ㄊㄧㄢ");
+  expect(mock.read).toHaveBeenCalledTimes(1);
+});
+it("also pauses an already-open history while composition is uncommitted", async () => {
+  vi.useFakeTimers();
+  mock.read.mockResolvedValue(available([newest]));
+  await act(async () => root.render(createElement(Harness, { locale: "zh-TW", initial: "木作" })));
+  const toggle = host.querySelector<HTMLButtonElement>("button[aria-expanded]")!;
+  await act(async () => toggle.click());
+  expect(mock.read).toHaveBeenCalledTimes(1);
+  const signal = mock.read.mock.calls[0]![2] as AbortSignal;
+  await composeStart();
+  expect(signal.aborted).toBe(true);
+  await type("ㄊㄧㄢ");
+  expect(toggle.getAttribute("aria-expanded")).toBe("true");
+  expect(mock.read).toHaveBeenCalledTimes(1);
+  await composeEnd("天花");
+  await act(async () => {
+    await vi.advanceTimersByTimeAsync(1000);
+  });
+  expect(mock.read.mock.calls.map((call) => [call[1].mode, call[1].search])).toEqual([
+    ["HISTORY", "木作"],
+    ["HISTORY", "天花"],
+    ["SUGGEST", "天花"],
+  ]);
+});
+
+it("clears an existing typing debounce when composition starts", async () => {
+  vi.useFakeTimers();
+  mock.read.mockResolvedValue(available([newest]));
+  await act(async () => root.render(createElement(Harness, { locale: "zh-TW" })));
+  await act(async () => {
+    const input = host.querySelector("textarea")!;
+    input.focus();
+    Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, "value")!.set!.call(
+      input,
+      "木作",
+    );
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+  });
+  await act(async () => {
+    await vi.advanceTimersByTimeAsync(200);
+  });
+  await composeStart();
+  await act(async () => {
+    await vi.advanceTimersByTimeAsync(1000);
+  });
+  expect(mock.read).not.toHaveBeenCalled();
+});

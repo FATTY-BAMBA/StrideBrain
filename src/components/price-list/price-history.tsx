@@ -17,6 +17,7 @@ export function PriceHistory({
   projectKey = null,
   onUse,
   disabled = false,
+  suspended = false,
   label,
 }: {
   description: string;
@@ -25,6 +26,7 @@ export function PriceHistory({
   projectKey?: string | null;
   onUse?: ((price: QuotedItemPrice) => void) | undefined;
   disabled?: boolean;
+  suspended?: boolean;
   label: string;
 }) {
   const c = priceListCopy(locale),
@@ -33,7 +35,7 @@ export function PriceHistory({
     [loaded, setLoaded] = useState<{ key: string; result: PriceReadOutcome } | null>(null);
   const key = JSON.stringify([description, unit, projectKey, locale]);
   useEffect(() => {
-    if (!open) return;
+    if (!open || suspended) return;
     let cancelled = false;
     const controller = new AbortController();
     readQuotePrices(
@@ -57,7 +59,7 @@ export function PriceHistory({
       cancelled = true;
       controller.abort();
     };
-  }, [open, description, unit, projectKey, locale, key]);
+  }, [open, suspended, description, unit, projectKey, locale, key]);
   const result = loaded?.key === key ? loaded.result : null;
   return (
     <div className={styles.history}>

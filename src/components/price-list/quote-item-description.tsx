@@ -32,12 +32,13 @@ export function QuoteItemDescription({
     container = useRef<HTMLDivElement>(null),
     input = useRef<HTMLTextAreaElement>(null);
   const [active, setActive] = useState(false),
+    [composing, setComposing] = useState(false),
     [loaded, setLoaded] = useState<{ key: string; result: PriceReadOutcome } | null>(null);
   const key = JSON.stringify([line.description, projectKey, locale]);
   const searching =
     active && editable && !disabled && [...line.description.normalize("NFKC").trim()].length >= 2;
   useEffect(() => {
-    if (!searching) return;
+    if (!searching || composing) return;
     let cancelled = false;
     const controller = new AbortController();
     const timer = setTimeout(() => {
@@ -64,7 +65,7 @@ export function QuoteItemDescription({
       controller.abort();
       clearTimeout(timer);
     };
-  }, [searching, line.description, projectKey, locale, key]);
+  }, [searching, composing, line.description, projectKey, locale, key]);
   const result = loaded?.key === key ? loaded.result : null;
   return (
     <div
@@ -73,6 +74,7 @@ export function QuoteItemDescription({
         if (!event.currentTarget.contains(event.relatedTarget)) setActive(false);
       }}
       onKeyDown={(event) => {
+        if (composing || event.nativeEvent.isComposing || event.nativeEvent.keyCode === 229) return;
         if (event.key === "Escape") {
           input.current?.focus();
           setActive(false);
@@ -106,9 +108,15 @@ export function QuoteItemDescription({
         maxLength={500}
         value={line.description}
         disabled={disabled}
+        onCompositionStart={() => setComposing(true)}
+        onCompositionEnd={(event) => {
+          onChange({ ...line, description: event.currentTarget.value });
+          setComposing(false);
+          setActive(true);
+        }}
         onChange={(event) => {
           onChange({ ...line, description: event.target.value });
-          setActive(true);
+          if (!composing) setActive(true);
         }}
       />
       {searching && (
@@ -164,6 +172,7 @@ export function QuoteItemDescription({
         locale={locale}
         projectKey={projectKey}
         label={label}
+        suspended={composing}
         disabled={editable && disabled}
         onUse={editable ? (price) => onChange({ ...line, unitPrice: price.unitPrice }) : undefined}
       />
