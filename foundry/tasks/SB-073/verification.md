@@ -20,11 +20,25 @@ The city migration retains the exact previous text in nullable `Project.location
 - A kept-data migration test saves real comparison/economics records before applying the city migration, then verifies saved findings AVAILABLE, full freshness CURRENT, Quote panel CURRENT and no Home comparison hint. Existing row counts, project timestamps and saved result JSON stay unchanged. A subsequent city change returns OUT_OF_DATE on Home and Quote.
 - Seeded comparison parity uses the unchanged SB-066 baseline; the wider SB-065 baseline includes rankings, exact claims, bilingual sentences, quote suggestions and Home figures.
 - DOM tests cover the fixed city select, submitted city key, both languages, dynamic client-type labels and exclusion of retired choices. Deterministic three-round draft replay passes all 15/15 per language.
-- First full check exposed only three historical migration setups: two needed today's independent client-type/city migrations for today's adapters, and one needed to exclude later fixture files from its historical schema. Their assertions were retained. The two application-backed migration suites then passed all 24 tests. Final full check and CI: pending.
+- First full check exposed only three historical migration setups: two needed today's independent client-type/city migrations for today's adapters, and one needed to exclude later fixture files from its historical schema. Their assertions were retained. The two application-backed migration suites then passed all 24 tests. Final `npm run check` passes: 186 files, 1,782 tests, format/design gates, lint (one pre-existing anonymous-default-export warning), typecheck and production build. [Complete log](evidence/check.log). [CI 45640729994](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45640729994) passed on `32af769`, including real Prisma migration deployment, two seed/verify passes, the complete check and production dependency audit.
 
 ## Paid evaluation
 
-Allowance: 0 of 2 dispatches used. Three-round paid evaluation pending.
+[Run 45641187002](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45641187002), dispatch 1 of 2, tested `32af769eaed80cbff6f5e557b0bd917b6ad7d24f` with gemini-3.5-flash-lite. Estimated cost: US$0.293444000. [Full synthetic report](evidence/evaluation-1.json).
+
+| Round | Questions en | Questions zh-TW | Drafts en | Drafts zh-TW |
+| --- | --- | --- | --- | --- |
+| 1 | 27/27 | 27/27 | 13/15 | 13/15 |
+| 2 | 27/27 | 27/27 | 13/15 | 13/15 |
+| 3 | 27/27 | 26/27 | 13/15 | 13/15 |
+
+The question gate passed every round (core scores 20/20, 20/20; 20/20, 20/20; 20/20, 19/20; all required cases passed; no displayed wrong number/amount label/format). Round 3 zh-TW-finding was discarded with FINDING_SENTENCE, so the existing required two-of-three finding pass gate still passed. No question instruction, check, case or pass mark was changed.
+
+The draft gate failed. Each round's full-width cases supplied a city key instead of verbatim city text and were correctly dropped. The English residential case kept a leading article in its fallback job name. The Chinese hosted sentence shortened the client name; one round also removed the space in the area quote (correctly dropped), and another invented a client type (correctly dropped). The oracle and all cases remain unchanged.
+
+Correction before run 2: send city spellings separately with no city keys, so they cannot look like ID choices. Clarify the draft instruction's verbatim fields, complete client noun phrase, short fallback job noun phrase, and preservation of area-quote spacing. The server continues rejecting mismatched city value/quote, invented type support and altered quoted spacing. Provider payload tests prove city names/aliases are sent without keys. No server support rule is relaxed. Full check after correction and the second paid dispatch are pending.
+
+Allowance: 1 of 2 dispatches used.
 
 ## Not verified / acceptance waiting
 

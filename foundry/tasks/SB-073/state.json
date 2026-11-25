@@ -3,11 +3,26 @@
   "branch": "build/sb-073-client-types-cities",
   "baseCommit": "9851ca6e000dacea19b9263188a83848dc623fd8",
   "issueUpdatedAt": "2026-11-25T14:35:29Z",
-  "status": "IMPLEMENTING",
-  "delivery": "A → B → C → D",
+  "status": "VERIFYING",
+  "delivery": "A \u2192 B \u2192 C \u2192 D",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "paidEvaluationLimit": 2,
-  "paidEvaluationRuns": [],
-  "pullRequest": 78
+  "paidEvaluationRuns": [
+    {
+      "number": 1,
+      "commit": "32af769eaed80cbff6f5e557b0bd917b6ad7d24f",
+      "status": "FAILED",
+      "runId": 45641187002,
+      "estimatedUsd": "0.293444000",
+      "questionGatePassed": true,
+      "draftGatePassed": false
+    }
+  ],
+  "pullRequest": 78,
+  "localCheck": {
+    "passed": true,
+    "testFiles": 186,
+    "tests": 1782
+  }
 }

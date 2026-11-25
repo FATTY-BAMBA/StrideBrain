@@ -78,6 +78,7 @@ export class GeminiAssistantModel implements AssistantModelPort, JobDraftModelPo
                       kind: "UNTRUSTED_JOB_TEXT",
                       text: input.text,
                       choices: input.choices,
+                      cityNamesAndSpellings: input.cities,
                     }),
                   },
                 ],
