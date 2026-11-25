@@ -9,12 +9,13 @@ import type { RunHistoricalEconomicsEnrichment } from "@/modules/economics/appli
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import { claimFindingText } from "@/modules/economics/presentation/claim-findings";
 import { comparisonHref } from "@/modules/comparison-experience/route-state";
+import type { MissingContextField } from "@/modules/comparisons/domain/contracts";
 
 export type QuoteComparison =
   | {
-      kind:
-        "NOT_RUN" | "OUT_OF_DATE" | "UNAVAILABLE" | "CONTEXT_INCOMPLETE" | "NO_ELIGIBLE_HISTORY";
+      kind: "NOT_RUN" | "OUT_OF_DATE" | "UNAVAILABLE" | "NO_ELIGIBLE_HISTORY";
     }
+  | { kind: "CONTEXT_INCOMPLETE"; missingFields: readonly MissingContextField[] }
   | {
       kind: "CURRENT";
       preparation?: Extract<PrepareDraftOutcome, { kind: "PREPARED" }>;
@@ -54,12 +55,11 @@ export class QuoteComparisonService {
         return { kind: "UNAVAILABLE" };
       if (action === "RUN") {
         const structural = await this.comparison.execute(context, projectKey);
+        if (structural.kind === "CONTEXT_INCOMPLETE")
+          return { kind: structural.kind, missingFields: structural.missingFields };
         if (structural.kind !== "COMPLETE")
           return {
-            kind:
-              structural.kind === "CONTEXT_INCOMPLETE" || structural.kind === "NO_ELIGIBLE_HISTORY"
-                ? structural.kind
-                : "UNAVAILABLE",
+            kind: structural.kind === "NO_ELIGIBLE_HISTORY" ? structural.kind : "UNAVAILABLE",
           };
         const enriched = await this.economics.execute(
           context,
@@ -86,11 +86,13 @@ export class QuoteComparisonService {
         ...(prepared?.kind === "PREPARED" ? { preparation: prepared } : {}),
         generatedAt: saved.comparison.run.generatedAt,
         href: comparisonHref(context.locale, projectKey, state),
-        jobs: saved.comparison.matches.map((match) => ({
-          projectKey: match.project.projectKey,
-          name: context.locale === "zh-TW" ? match.project.nameZhTw : match.project.nameEn,
-          score: match.displayScore,
-        })),
+        jobs: [...saved.comparison.matches, ...saved.comparison.broaderMatches]
+          .filter((match) => state.selectedProjectKeys.includes(match.project.projectKey))
+          .map((match) => ({
+            projectKey: match.project.projectKey,
+            name: context.locale === "zh-TW" ? match.project.nameZhTw : match.project.nameEn,
+            score: match.displayScore,
+          })),
         findings: (saved.economics?.claims ?? []).flatMap((claim) => {
           const sentence = claimFindingText(claim, context.locale, view.job.catalog.workCategories);
           return sentence

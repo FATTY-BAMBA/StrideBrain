@@ -120,7 +120,7 @@ export function QuoteItemDescription({
         }}
       />
       {searching && (
-        <div id={id} className={styles.results}>
+        <div id={id} className={`${styles.results} ${styles.suggestions}`}>
           <p>{c.suggestions}</p>
           {!result ? (
             <p role="status">{c.loading}</p>

@@ -1,0 +1,11 @@
+
+ RUN  v4.1.10 /private/tmp/stridebrain-sb041
+
+TEST_DATABASE_TEMPLATE_MS=567
+QUOTE_PANEL_WARM_HTTP_GET_MS=169.52
+
+ Test Files  6 passed (6)
+      Tests  56 passed (56)
+   Start at  13:06:16
+   Duration  5.14s (transform 997ms, setup 725ms, import 1.33s, tests 5.11s, environment 1.40s)
+

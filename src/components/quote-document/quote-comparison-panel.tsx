@@ -24,6 +24,12 @@ export function QuoteComparisonPanel({
   const copy = quoteComparisonCopy(locale);
   const [result, setResult] = useState<QuoteComparison | null>(null);
   const [running, setRunning] = useState(false);
+  const status =
+    result?.kind === "CONTEXT_INCOMPLETE" && result.missingFields.includes("COMMERCIAL_CATEGORIES")
+      ? copy.missingCategories
+      : result
+        ? copy[result.kind]
+        : copy.loading;
   useEffect(() => {
     let active = true;
     void requestQuoteComparison(locale, projectKey, "READ")
@@ -53,7 +59,7 @@ export function QuoteComparisonPanel({
   return (
     <section className={styles.references} aria-label={copy.title}>
       <h2>{copy.title}</h2>
-      <p role="status">{running ? copy.running : result ? copy[result.kind] : copy.loading}</p>
+      <p role="status">{running ? copy.running : status}</p>
       <Button disabled={running || !result} onClick={() => void run()}>
         {result?.kind === "CURRENT" || result?.kind === "OUT_OF_DATE" ? copy.refresh : copy.run}
       </Button>

@@ -62,3 +62,28 @@ it.each(["en", "zh-TW"] as const)(
     expect(onPrepared).not.toHaveBeenCalled();
   },
 );
+
+it.each(["en", "zh-TW"] as const)(
+  "names missing pricing categories after Run (%s)",
+  async (locale) => {
+    mock.request.mockResolvedValueOnce({ kind: "NOT_RUN" });
+    await act(async () =>
+      root.render(
+        createElement(QuoteComparisonPanel, { projectKey: "JOB", locale, onPrepared: vi.fn() }),
+      ),
+    );
+    mock.request.mockResolvedValueOnce({
+      kind: "CONTEXT_INCOMPLETE",
+      missingFields: ["COMMERCIAL_CATEGORIES"],
+    });
+    await act(async () => host.querySelector<HTMLButtonElement>("button")!.click());
+    expect(host.querySelector('[role="status"]')?.textContent).toBe(
+      quoteComparisonCopy(locale).missingCategories,
+    );
+    mock.request.mockResolvedValueOnce({ kind: "CONTEXT_INCOMPLETE", missingFields: ["AREA"] });
+    await act(async () => host.querySelector<HTMLButtonElement>("button")!.click());
+    expect(host.querySelector('[role="status"]')?.textContent).toBe(
+      quoteComparisonCopy(locale).CONTEXT_INCOMPLETE,
+    );
+  },
+);

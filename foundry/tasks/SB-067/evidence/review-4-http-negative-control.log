@@ -1,0 +1,42 @@
+
+ RUN  v4.1.10 /private/tmp/stridebrain-sb041
+
+TEST_DATABASE_TEMPLATE_MS=484
+ ❯ tests/quote-comparison/http-postgres.test.ts (3 tests | 1 failed) 2486ms
+     × Run and Refresh accept empty HTTP POSTs, persist audited results, and GET does not write 1183ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/quote-comparison/http-postgres.test.ts > private quote routes through a running Next HTTP server > Run and Refresh accept empty HTTP POSTs, persist audited results, and GET does not write
+AssertionError: ▲ Next.js 16.4.6 (Turbopack)
+- Local:         http://127.0.0.1:62327
+- Network:       http://127.0.0.1:62327
+✓ Ready in 240ms
+✓ Running next.config.ts took 98ms
+- Experiments (use with caution):
+  · serverActions
+
+: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/quote-comparison/http-postgres.test.ts:150:45
+    148|     for (const body of [undefined, ""]) {
+    149|       const response = await comparison(ownerCookie, body);
+    150|       expect(response.status, serverOutput).toBe(200);
+       |                                             ^
+    151|       expect(response.headers.get("cache-control")).toBe("private, no-…
+    152|       const result = await response.json();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  13:05:36
+   Duration  3.46s (transform 222ms, setup 76ms, import 276ms, tests 2.49s, environment 0ms)
+

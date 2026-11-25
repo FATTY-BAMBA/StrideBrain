@@ -8,6 +8,23 @@ import { isSameOriginReviewRequest } from "@/modules/internal-review-experience/
 export const dynamic = "force-dynamic";
 const headers = { "Cache-Control": "private, no-store", "X-Content-Type-Options": "nosniff" };
 type Params = { params: Promise<{ projectKey: string }> };
+async function hasBodyBytes(request: Request): Promise<boolean> {
+  const reader = request.body?.getReader();
+  if (!reader) return false;
+  try {
+    for (;;) {
+      const chunk = await reader.read();
+      if (chunk.done) return false;
+      if (chunk.value.byteLength) {
+        // Stop at the first byte; never buffer an unexpected request body.
+        void reader.cancel().catch(() => {});
+        return true;
+      }
+    }
+  } finally {
+    reader.releaseLock();
+  }
+}
 async function respond(request: Request, params: Params, action: "READ" | "RUN") {
   const unavailable = () => Response.json({ kind: "UNAVAILABLE" }, { status: 404, headers });
   try {
@@ -16,12 +33,13 @@ async function respond(request: Request, params: Params, action: "READ" | "RUN")
       !isSameOriginReviewRequest(request, getServerEnvironment().appOrigin.origin)
     )
       return unavailable();
-    if (request.body) return unavailable();
     const query = new URL(request.url).searchParams;
     const locale = query.get("locale");
     if (query.size !== 1 || !locale || !isSupportedLocale(locale)) return unavailable();
     const context = await resolveServerRuntimeContext();
     if (!context) return unavailable();
+    // Next's HTTP adapter supplies a stream even for a zero-byte POST.
+    if (await hasBodyBytes(request)) return unavailable();
     const { projectKey } = await params.params;
     const comparisons = createComparisonServices(),
       quote = createQuoteDraftServices();

@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import { Client } from "pg";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 vi.mock("server-only", () => ({}));
 import { assistantDatabase } from "../assistant/database-fixture";
@@ -11,6 +12,7 @@ import { PrepareQuoteDraft } from "@/modules/quote-draft/application/prepare-quo
 import { SignedDraftPreparationCodec } from "@/modules/quote-draft/application/preparation-codec";
 import { PrismaQuoteDraftRepository } from "@/repositories/prisma/prisma-quote-draft-repository";
 import { QuoteComparisonService } from "@/modules/quote-comparison/application/quote-comparison";
+import type { GetHomeComparison } from "@/modules/home-intelligence/application/get-home-comparison";
 import { claimFindingText } from "@/modules/economics/presentation/claim-findings";
 const suite = process.env.DATABASE_URL ? describe.sequential : describe.skip;
 suite("independent quote comparison and Home action", () => {
@@ -21,12 +23,12 @@ suite("independent quote comparison and Home action", () => {
   afterAll(async () => {
     await db?.close();
   });
-  function services() {
+  function services(saved?: Pick<GetHomeComparison, "execute">) {
     const comparison = createComparisonServices(),
       repo = new PrismaQuoteDraftRepository(getPrismaClient());
     return new QuoteComparisonService(
       new GetQuoteDraft(repo),
-      comparison.getHomeComparison,
+      saved ?? comparison.getHomeComparison,
       comparison.runComparison,
       comparison.runEconomics,
       new PrepareQuoteDraft(
@@ -54,7 +56,7 @@ suite("independent quote comparison and Home action", () => {
     );
     expect(result.kind).toBe("CURRENT");
     if (result.kind !== "CURRENT") throw Error(result.kind);
-    expect(result.jobs.length).toBeGreaterThan(0);
+    expect(result.jobs).toHaveLength(3);
     expect(result.preparation?.preparation.suggestions.length).toBeGreaterThan(0);
     expect(await client.comparisonRun.count()).toBe(before + 1);
     expect(
@@ -88,9 +90,39 @@ suite("independent quote comparison and Home action", () => {
     expect(await services().execute(owner, job.projectKey, "READ")).toEqual({
       kind: "OUT_OF_DATE",
     });
+    expect(await services().execute(owner, job.projectKey, "RUN")).toEqual({
+      kind: "CONTEXT_INCOMPLETE",
+      missingFields: ["COMMERCIAL_CATEGORIES"],
+    });
     if (first.kind !== "SAVED") throw Error(first.kind);
     expect((await save(first.versionId)).kind).toBe("SAVED");
     expect(await client.comparisonRun.count()).toBe(before + 1);
+  });
+  it("keeps a selected broader match in the panel's source-job list", async () => {
+    const owner = await db.actor();
+    expect((await services().execute(owner, "PRJ-XINYI-026", "RUN")).kind).toBe("CURRENT");
+    const saved = await createComparisonServices().getHomeComparison.execute(
+      owner,
+      "PRJ-XINYI-026",
+    );
+    if (saved?.kind !== "AVAILABLE" || !saved.economics) throw Error("SAVED_REQUIRED");
+    const key = saved.economics.selectedProjectKeys[0]!;
+    const match = saved.comparison.matches.find((m) => m.project.projectKey === key)!;
+    // The selection contract also permits broader matches. Move the same authorized
+    // selected match to that tier to exercise DTO projection independently of ranking.
+    const result = await services({
+      execute: async () => ({
+        ...saved,
+        comparison: {
+          ...saved.comparison,
+          matches: saved.comparison.matches.filter((m) => m !== match),
+          broaderMatches: [...saved.comparison.broaderMatches, match],
+        },
+      }),
+    }).execute(owner, "PRJ-XINYI-026", "READ");
+    expect(result.kind === "CURRENT" && result.jobs.map((job) => job.projectKey).sort()).toEqual(
+      [...saved.economics.selectedProjectKeys].sort(),
+    );
   });
   it.each(["READ", "RUN"] as const)(
     "denies Viewer, another organization and an unassigned manager before creating runs (%s)",
@@ -118,6 +150,10 @@ suite("independent quote comparison and Home action", () => {
         saved = await comparisons.getHomeComparison.execute(context, "PRJ-XINYI-026");
       const result = await services().execute(context, "PRJ-XINYI-026", "READ");
       if (saved?.kind !== "AVAILABLE" || result.kind !== "CURRENT") throw Error("CURRENT_REQUIRED");
+      expect(result.jobs.map((job) => job.projectKey).sort()).toEqual(
+        [...saved.economics!.selectedProjectKeys].sort(),
+      );
+      expect(saved.comparison.matches.length).toBeGreaterThan(result.jobs.length);
       expect(result.findings.map((f) => f.sentence)).toEqual(
         saved.economics!.claims.flatMap(
           (c) => claimFindingText(c, locale, owner.firmLists!.workCategories) ?? [],
@@ -134,5 +170,77 @@ suite("independent quote comparison and Home action", () => {
     expect(await services().execute(manager, "PRJ-XINYI-026", "READ")).toEqual({
       kind: "OUT_OF_DATE",
     });
+  });
+});
+
+suite("panel read timing breakdown", () => {
+  it("measures authorized quote, saved findings and optional preparation reads without writing", async () => {
+    const db = await assistantDatabase();
+    try {
+      const context = await db.actor();
+      const comparisons = createComparisonServices();
+      const repo = new PrismaQuoteDraftRepository(getPrismaClient());
+      const quote = new GetQuoteDraft(repo);
+      const prepare = new PrepareQuoteDraft(
+        repo,
+        new SignedDraftPreparationCodec("synthetic-panel-read-timing-secret-32-bytes"),
+      );
+      const timings: Record<string, number> = {};
+      const queries = vi.spyOn(Client.prototype, "query");
+      async function measure<T>(name: string, read: () => Promise<T>): Promise<T> {
+        const start = performance.now(),
+          count = queries.mock.calls.length;
+        try {
+          return await read();
+        } finally {
+          timings[name] = Number((performance.now() - start).toFixed(2));
+          timings[name.replace("Ms", "Queries")] = queries.mock.calls.length - count;
+        }
+      }
+      const service = new QuoteComparisonService(
+        { execute: (c, key) => measure("quoteViewMs", () => quote.execute(c, key)) },
+        {
+          execute: (c, key) =>
+            measure("savedFindingsMs", () => comparisons.getHomeComparison.execute(c, key)),
+        },
+        comparisons.runComparison,
+        comparisons.runEconomics,
+        { execute: (c, key) => measure("preparationMs", () => prepare.execute(c, key)) },
+      );
+      const job = await priceJob(context);
+      expect(
+        (
+          await priceServices().save.execute(context, {
+            projectKey: job.projectKey,
+            baseVersionId: null,
+            preparationToken: null,
+            idempotencyKey: randomUUID(),
+            sections: [
+              { title: "Ceilings", categoryId: "DEMOLITION_CEILING", lines: [priceItem()] },
+            ],
+            discount: { label: "", amount: "0" },
+          })
+        ).kind,
+      ).toBe("SAVED");
+      for (const [scenario, key] of [
+        ["read-only quote", "PRJ-XINYI-026"],
+        ["editable manual draft", job.projectKey],
+      ]) {
+        expect(
+          (await service.execute({ ...context, requestId: randomUUID() }, key!, "RUN")).kind,
+        ).toBe("CURRENT");
+        const before = await getPrismaClient().comparisonRun.count();
+        for (const name of Object.keys(timings)) delete timings[name];
+        const result = await measure("totalMs", () => service.execute(context, key!, "READ"));
+        expect(result.kind).toBe("CURRENT");
+        if (scenario === "editable manual draft")
+          expect(result.kind === "CURRENT" && result.preparation?.kind).toBe("PREPARED");
+        expect(await getPrismaClient().comparisonRun.count()).toBe(before);
+        console.info("QUOTE_PANEL_LOCAL_READ_TIMING", scenario, JSON.stringify(timings));
+      }
+      queries.mockRestore();
+    } finally {
+      await db.close();
+    }
   });
 });

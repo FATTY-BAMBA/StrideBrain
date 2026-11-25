@@ -1,7 +1,5 @@
 "use client";
 import { useCallback, useEffect, useRef, useState, useTransition } from "react";
-import Link from "next/link";
-import type { Route } from "next";
 import { useRouter } from "next/navigation";
 import {
   prepareQuoteDraftAction,
@@ -173,8 +171,6 @@ export function QuoteDocumentEditor({
   const canIssueSaved =
     !!currentVersion && currentVersion === issue?.versionId && !dirty && !pending;
   const lineCount = document.sections.reduce((count, section) => count + section.lines.length, 0);
-  const compareHref =
-    `/${locale}/projects/${encodeURIComponent(view.job.businessKey)}/compare` as Route;
   useEffect(() => {
     if (!editable || (!dirty && view.saved)) return;
     let active = true;
@@ -372,12 +368,7 @@ export function QuoteDocumentEditor({
           ) : undefined
         }
       />
-      {message && (
-        <Notice>
-          {message}
-          <Link href={compareHref}>{draftCopy.compare}</Link>
-        </Notice>
-      )}
+      {message && <Notice>{message}</Notice>}
       {firstSave &&
         !moved &&
         view.canUpdateStage &&
@@ -564,7 +555,7 @@ export function QuoteDocumentEditor({
                               label = `${si + 1}.${li + 1}`;
                             const amount = calculated?.sections[si]?.lines[li]?.amount;
                             return (
-                              <tr key={line.id ?? li}>
+                              <tr key={line.id ?? li} className={styles.itemRow}>
                                 <td>
                                   {editable ? (
                                     <details>

@@ -7,6 +7,8 @@ const en = {
   OUT_OF_DATE: "The saved comparison is out of date. Refresh it when you need it.",
   UNAVAILABLE: "Comparison is unavailable. You can keep working on the quote.",
   CONTEXT_INCOMPLETE: "Complete the job details before running a comparison.",
+  missingCategories:
+    "Choose a pricing category for the quote sections, then save before running a comparison.",
   NO_ELIGIBLE_HISTORY: "There are no eligible past jobs to compare.",
   CURRENT: "Current saved comparison",
   run: "Run comparison",
@@ -25,6 +27,7 @@ const zh: typeof en = {
   OUT_OF_DATE: "已儲存的比較已過期，需要時可重新比較。",
   UNAVAILABLE: "目前無法讀取比較，您可以繼續編輯報價。",
   CONTEXT_INCOMPLETE: "請先補齊專案資料，再執行比較。",
+  missingCategories: "請先為報價章節選擇報價類別並儲存，再執行比較。",
   NO_ELIGIBLE_HISTORY: "沒有符合條件的過往專案可供比較。",
   CURRENT: "目前有效的已儲存比較",
   run: "執行比較",
