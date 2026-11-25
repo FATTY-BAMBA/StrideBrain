@@ -8,4 +8,4 @@ No migrations or assistant tool/instruction/model/check changes. Follow delivery
 
 Also correct SB-067 verification: Product Director confirmed older findings-list removal on 2026-11-25, PR #75 comment 7157102507.
 
-Review round 1 re-read the issue update dated 2026-11-25 08:36Z and corrected the earlier three-page brief. The job-specific placeholder is provisional under reviewer comment 7158266741, awaiting Product Director confirmation before merge.
+Review round 1 re-read the issue update dated 2026-11-25 08:36Z and corrected the earlier three-page brief. The Product Director confirmed the job-specific placeholder at 17:32 Asia/Taipei on 25 November 2026, recorded in owner-authored comment 7158463671. It is decided, not provisional.

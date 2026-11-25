@@ -8,4 +8,4 @@ C. Test exact arithmetic, role/tenant/exclusion boundaries, route/selection prec
 
 No new schema, model prompt, tools, model or grounding rule. No hosted operations. Record the SB-067 confirmation as decided, with its owner-authored comment reference.
 
-Fix round 1: use callback replacements for displayed difference values. The selected-job placeholder is provisional (comment 7158266741); Home keeps its existing example. Both paid dispatches are already used; this UI-only fix round requires and permits no additional paid evaluation.
+Fix round 1: use callback replacements for displayed difference values. The selected-job placeholder is confirmed by the Product Director (comment 7158463671, superseding the provisional item in 7158266741); Home keeps its existing example. Both paid dispatches are already used; this UI-only fix round requires and permits no additional paid evaluation.

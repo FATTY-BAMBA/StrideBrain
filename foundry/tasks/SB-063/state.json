@@ -52,18 +52,20 @@
   },
   "reviewRound": 1,
   "reviewComment": 7158266741,
-  "provisionalDecisions": [
-    {
-      "decision": "Selected-job question placeholder",
-      "sourceComment": 7158266741,
-      "status": "AWAITING_PRODUCT_DIRECTOR_BEFORE_MERGE"
-    }
-  ],
+  "provisionalDecisions": [],
   "reviewVerification": {
     "round": 1,
     "focusedTests": 45,
     "focusedFiles": 5,
     "fullCheck": true,
     "ciEvidence": "PR #76 checks and Builder round-1 report"
-  }
+  },
+  "confirmedDecisions": [
+    {
+      "decision": "Selected-job question placeholder",
+      "sourceComment": 7158463671,
+      "status": "CONFIRMED_BY_PRODUCT_DIRECTOR",
+      "decidedAt": "2026-11-25T17:32:00+08:00"
+    }
+  ]
 }
