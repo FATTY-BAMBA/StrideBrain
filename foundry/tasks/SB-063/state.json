@@ -1,0 +1,11 @@
+{
+  "issue": 63,
+  "branch": "build/sb-063-job-pages",
+  "baseCommit": "a45e84083b28a41e28b9e674a64232d505b95ac4",
+  "status": "IN_PROGRESS",
+  "delivery": "A → B → C",
+  "pullRequestDraft": true,
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "paidEvaluationLimit": 2,
+  "paidEvaluationRuns": []
+}
