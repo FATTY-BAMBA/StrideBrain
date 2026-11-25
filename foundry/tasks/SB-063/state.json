@@ -29,9 +29,10 @@
     "passed": true
   },
   "ci": {
-    "status": "PENDING_ROUND_2_PUSH",
-    "lastPassedRunId": 45588369778,
-    "lastPassedCommit": "47ead776b0bfbbe509fad7373020308daed1f4b4"
+    "evidence": "PR #76 checks and Builder round-2 report",
+    "implementationCommit": "447a1f6752001d66e60ecbd179c8047000ebe82b",
+    "implementationRunId": 45631095814,
+    "status": "AWAITING_FINAL_HEAD_CI"
   },
   "evaluation": {
     "rounds": 3,
@@ -52,18 +53,7 @@
   },
   "reviewRound": 2,
   "reviewComment": 7164464279,
-  "provisionalDecisions": [
-    {
-      "decision": "Bound job-panel thread to half the viewport with accessible internal scrolling",
-      "sourceComment": 7164464279,
-      "status": "AWAITING_PRODUCT_DIRECTOR"
-    },
-    {
-      "decision": "Remove overview link to Home chat; retain comparison link",
-      "sourceComment": 7164464279,
-      "status": "AWAITING_PRODUCT_DIRECTOR"
-    }
-  ],
+  "provisionalDecisions": [],
   "reviewVerification": {
     "round": 2,
     "focusedTests": 18,
@@ -77,6 +67,18 @@
       "sourceComment": 7158463671,
       "status": "CONFIRMED_BY_PRODUCT_DIRECTOR",
       "decidedAt": "2026-11-25T17:32:00+08:00"
+    },
+    {
+      "decision": "Bound job-panel thread to half the viewport with accessible internal scrolling",
+      "sourceComment": 7164754978,
+      "status": "CONFIRMED_BY_PRODUCT_DIRECTOR",
+      "decidedAt": "2026-11-25T22:05:00+08:00"
+    },
+    {
+      "decision": "Remove overview link to Home chat; retain comparison link",
+      "sourceComment": 7164754978,
+      "status": "CONFIRMED_BY_PRODUCT_DIRECTOR",
+      "decidedAt": "2026-11-25T22:05:00+08:00"
     }
   ],
   "hostedEvidence": {
