@@ -11,14 +11,24 @@ import { evaluateAnswer, type EvaluationQuestion } from "./evaluation";
 import { assistantConfig } from "@/modules/assistant/infrastructure/config";
 import type { AssistantSource } from "@/modules/assistant/domain/contracts";
 describe("evaluation contract", () => {
-  it("contains twenty core English and twenty core zh-TW cases plus eight hosted regressions and two count/range cases with explicit facts or refusals", () => {
+  it("contains twenty core English and twenty core zh-TW cases plus eight hosted regressions, two count/range cases and four job-page cases with explicit facts or refusals", () => {
     expect(
       questions.filter((q) => q.locale === "en" && !("required" in q && q.required)),
     ).toHaveLength(20);
     expect(
       questions.filter((q) => q.locale === "zh-TW" && !("required" in q && q.required)),
     ).toHaveLength(20);
-    expect(questions.filter((q) => "required" in q && q.required)).toHaveLength(10);
+    expect(questions.filter((q) => "required" in q && q.required)).toHaveLength(14);
+    expect(
+      questions
+        .filter((q) => q.id.includes("-job-page-"))
+        .map((q) => [q.locale, q.required, q.projectKey]),
+    ).toEqual([
+      ["en", true, "J-2611-R7K3"],
+      ["en", true, "J-2611-R7K3"],
+      ["zh-TW", true, "J-2611-R7K3"],
+      ["zh-TW", true, "J-2611-R7K3"],
+    ]);
     expect(
       questions.every(
         (q) =>

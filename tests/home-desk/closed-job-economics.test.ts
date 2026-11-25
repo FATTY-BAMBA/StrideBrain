@@ -149,3 +149,27 @@ it("excludes a percentage fee from its mapped category and evidence while keepin
     evidenceReferenceIds: ["source-false-B", "source-true-B"],
   });
 });
+
+it.each([
+  ["17300000.00", "13420000.00", "3880000.00", "2243", "22.4", "BELOW"],
+  ["100.00", "125.00", "-25.00", "-2500", "25.0", "ABOVE"],
+  ["100.00", "100.00", "0.00", "0", "0.0", "EQUAL"],
+  ["2000.00", "1551.00", "449.00", "2245", "22.5", "BELOW"],
+  ["100000.00", "77551.00", "22449.00", "2245", "22.4", "BELOW"],
+  ["9007199254740993.00", "9007199254740992.99", "0.01", "0", "0.0", "BELOW"],
+])(
+  "computes exact whole-job difference for quote %s and actual %s",
+  (quoteBeforeTax, actualCost, amount, basisPoints, percentOfQuote, direction) => {
+    expect(service.jobDifference({ quoteBeforeTax, actualCost })).toEqual({
+      amount,
+      absoluteAmount: amount.replace("-", ""),
+      basisPoints,
+      percentOfQuote,
+      direction,
+    });
+  },
+);
+it("does not divide by zero or treat a negative quote as a comparable baseline", () => {
+  for (const quoteBeforeTax of ["0", "-1"])
+    expect(service.jobDifference({ quoteBeforeTax, actualCost: "10" })).toBeNull();
+});

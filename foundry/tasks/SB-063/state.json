@@ -2,10 +2,16 @@
   "issue": 63,
   "branch": "build/sb-063-job-pages",
   "baseCommit": "a45e84083b28a41e28b9e674a64232d505b95ac4",
-  "status": "IN_PROGRESS",
-  "delivery": "A → B → C",
+  "status": "LOCAL_VERIFIED",
+  "delivery": "A \u2192 B \u2192 C",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "paidEvaluationLimit": 2,
-  "paidEvaluationRuns": []
+  "paidEvaluationRuns": [],
+  "pullRequest": 76,
+  "localCheck": {
+    "tests": 1752,
+    "files": 180,
+    "passed": true
+  }
 }

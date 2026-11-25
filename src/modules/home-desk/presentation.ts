@@ -7,7 +7,26 @@ import type { Locale } from "@/modules/localization/config";
 import { homeDeskCopy } from "@/modules/localization/home-desk";
 import { categoryLabel } from "@/modules/localization/jobs";
 import { claimFindingText } from "@/modules/economics/presentation/claim-findings";
-import type { ClosedJobLesson } from "@/modules/economics/domain/closed-job-economics-service";
+import type {
+  ClosedJobLesson,
+  ClosedJobDifference,
+} from "@/modules/economics/domain/closed-job-economics-service";
+
+export function closedDifferenceText(
+  difference: ClosedJobDifference,
+  currency: string,
+  locale: Locale,
+) {
+  return homeDeskCopy(locale)
+    [
+      difference.direction === "EQUAL"
+        ? "costEqual"
+        : difference.direction === "BELOW"
+          ? "costBelow"
+          : "costAbove"
+    ].replace("{amount}", formatMoney(difference.absoluteAmount, currency))
+    .replace("{percent}", difference.percentOfQuote);
+}
 
 export function decisionPresentation(
   item: HomeDecision,

@@ -215,3 +215,31 @@
   flex-wrap: wrap;
   gap: 8px;
 }
+
+.answerLine {
+  display: block;
+  white-space: pre-wrap;
+}
+.draftCard {
+  min-width: 0;
+}
+.draftToggle {
+  width: 100%;
+  min-height: var(--control-default);
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  text-align: start;
+  font: inherit;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.draftToggle:focus-visible {
+  outline: var(--focus-width) solid var(--focus);
+  outline-offset: var(--focus-offset);
+}
+.draftToggle[aria-expanded="false"] {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

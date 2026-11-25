@@ -6,8 +6,12 @@ import { homeDeskCopy } from "@/modules/localization/home-desk";
 import { findingsCopy } from "@/modules/localization/economics-findings";
 import { comparisonHref } from "@/modules/comparison-experience/route-state";
 import type { HomeDeskOutcome, HomeDesk } from "@/modules/home-desk/application/get-home-desk";
-import { closedLessonText, decisionPresentation } from "@/modules/home-desk/presentation";
-import { HomeChat } from "@/components/demo-value/home-chat";
+import {
+  closedDifferenceText,
+  closedLessonText,
+  decisionPresentation,
+} from "@/modules/home-desk/presentation";
+import { HomeChat } from "@/components/assistant/home-chat";
 import { StageCounts } from "./stage-counts";
 import styles from "./home-desk.module.css";
 
@@ -153,7 +157,7 @@ export function HomeDeskScreen({
               <p className={styles.muted}>{copy.noLessons}</p>
             ) : null}
             <div className={styles.lessons}>
-              {desk.closedJobs.map(({ project, lesson, financialState }) => (
+              {desk.closedJobs.map(({ project, lesson, costDifference, financialState }) => (
                 <article key={project.businessKey}>
                   <h3>
                     <Link
@@ -176,6 +180,14 @@ export function HomeDeskScreen({
                           <dd>{formatMoney(lesson.actualCost, lesson.currency)}</dd>
                         </div>
                       </dl>
+                      {costDifference ? (
+                        <p
+                          className={styles.costDifference}
+                          data-direction={costDifference.direction}
+                        >
+                          {closedDifferenceText(costDifference, lesson.currency, locale)}
+                        </p>
+                      ) : null}
                       <p>{closedLessonText(lesson, locale, outcome.catalog.workCategories)}</p>
                     </>
                   ) : financialState === "UNAVAILABLE" ? (

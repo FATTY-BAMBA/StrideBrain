@@ -25,8 +25,8 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
     ["en", "zh-TW"].every(
       (locale) => questions.filter((q) => !q.required && q.locale === locale).length === 20,
     ) &&
-    new Set(questions.map((q) => q.id)).size === 50 &&
-    questions.filter((q) => q.required && !q.qualityRegression).length === 8 &&
+    new Set(questions.map((q) => q.id)).size === 54 &&
+    questions.filter((q) => q.required && !q.qualityRegression).length === 12 &&
     questions.filter((q) => q.required && q.qualityRegression).length === 2;
   const sortedCalls = questions.map((q) => q.calls).sort((a, b) => a - b);
   const withinThree = sortedCalls.filter((n) => n <= 3).length;
@@ -63,7 +63,7 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
           !q.wrongNumber &&
           !q.wrongAmountLabel,
       ).length,
-      total: 8,
+      total: 12,
     },
     passed:
       complete &&
@@ -106,7 +106,7 @@ export function stabilitySummary<T extends ScoredRow>(
     passed:
       rounds.length === evaluationRounds &&
       rounds.every((r) => r.passed) &&
-      perQuestion.length === 50 &&
+      perQuestion.length === 54 &&
       ids.every((id) => rounds.every((r) => r.questions.some((q) => q.id === id))),
     rounds,
     perQuestion,

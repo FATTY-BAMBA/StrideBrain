@@ -956,5 +956,89 @@
       "facts": ["@count", "@displayLow", "@displayHigh"],
       "forbidden": []
     }
+  },
+  {
+    "id": "en-job-page-selected",
+    "locale": "en",
+    "person": "owner",
+    "question": "What is this job’s current quote status and before-tax amount?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "J-2611-R7K3"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@status", "@amounts.amountBeforeTax"],
+      "forbidden": ["PRJ-ACTIVE-001"]
+    }
+  },
+  {
+    "id": "en-job-page-named",
+    "locale": "en",
+    "person": "owner",
+    "question": "What is the quote status and before-tax amount for PRJ-ACTIVE-001?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "PRJ-ACTIVE-001"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@status", "@amounts.amountBeforeTax"],
+      "forbidden": ["J-2611-R7K3"]
+    }
+  },
+  {
+    "id": "zh-TW-job-page-selected",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "這個專案目前的報價狀態和未稅金額是多少？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "J-2611-R7K3"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@status", "@amounts.amountBeforeTax"],
+      "forbidden": ["PRJ-ACTIVE-001"]
+    }
+  },
+  {
+    "id": "zh-TW-job-page-named",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "PRJ-ACTIVE-001 的報價狀態和未稅金額是多少？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "PRJ-ACTIVE-001"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@status", "@amounts.amountBeforeTax"],
+      "forbidden": ["J-2611-R7K3"]
+    }
   }
 ]

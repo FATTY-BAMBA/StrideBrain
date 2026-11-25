@@ -179,3 +179,15 @@
     padding: 18px;
   }
 }
+.lessons .costDifference {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  font-weight: var(--weight-lead);
+  color: var(--ink);
+}
+.costDifference[data-direction="BELOW"] {
+  color: var(--accent-strong);
+}
+.costDifference[data-direction="ABOVE"] {
+  color: var(--danger);
+}

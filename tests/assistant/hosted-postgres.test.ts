@@ -4,6 +4,12 @@ import type * as AssistantServices from "@/lib/server/assistant-services";
 import type { AssistantModelPort, ToolCall } from "@/modules/assistant/domain/contracts";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 vi.mock("server-only", () => ({}));
+vi.mock("next/navigation", () => ({
+  notFound: () => {
+    throw Error("NOT_FOUND");
+  },
+  usePathname: () => "/en/projects/PRJ-XINYI-026",
+}));
 const boundary = vi.hoisted(() => ({
   model: null as AssistantModelPort | null,
   context: null as RuntimeContext | null,
@@ -29,6 +35,7 @@ vi.mock("@/lib/server/assistant-services", async (original) => {
     },
   };
 });
+import JobLayout from "@/app/[locale]/projects/[projectKey]/layout";
 import { AskAssistant } from "@/modules/assistant/application/ask-assistant";
 import { assistantDatabase } from "./database-fixture";
 import { prepareEvaluation, emptyAwaitingScenario } from "./evaluation-fixture";
@@ -134,6 +141,74 @@ suite("hosted regressions through authorized records and the Home server action"
     const sent = JSON.parse(fake.requests[0]!.messages[0]!.text);
     expect(sent.subjectProjects[0].reference).toBe("PRJ-ACTIVE-001");
     expect(sent.selectedProjectReference).toBeUndefined();
+  });
+  it("sends the open job when the question names no job", async () => {
+    const { turn, fake } = await ask(
+      "這個專案目前的報價狀態如何？",
+      { name: "get_quote_status", arguments: { projectKey: "J-2611-R7K3" } },
+      (facts) => `河岸展示工作室：${facts["報價狀態"]}`,
+    );
+    expect(turn.ai).toBe(true);
+    const sent = JSON.parse(fake.requests[0]!.messages[0]!.text);
+    expect(sent.selectedProjectReference).toBe("J-2611-R7K3");
+    expect(sent.subjectProjects).toBeUndefined();
+  });
+  it("guards the layout and forged form project before any model call", async () => {
+    for (const [member, projectKey] of [
+      ["membership_horizon_mei", "PRJ-ACTIVE-001"],
+      ["membership_northern_owner", "PRJ-XINYI-026"],
+    ]) {
+      boundary.context = await db.actor(member);
+      const fake = new FakeAssistantModel([]);
+      boundary.model = fake;
+      await expect(
+        JobLayout({
+          children: "Job",
+          params: Promise.resolve({ locale: "en", projectKey: projectKey! }),
+        }),
+      ).rejects.toThrow("NOT_FOUND");
+      const service = createAssistantServices();
+      const out = await service.ask.execute(boundary.context, {
+        question: "What is this job’s quote?",
+        projectKey: projectKey!,
+      });
+      expect(out).toMatchObject({ kind: "ANSWER", refusal: "UNAVAILABLE", sources: [] });
+      expect(fake.requests).toHaveLength(0);
+    }
+  });
+  it("keeps a readable excluded job's panel but refuses without a model call; Viewer sources have no amounts", async () => {
+    boundary.context = await db.actor();
+    const excluded = await getPrismaClient().project.findFirstOrThrow({
+      where: { organizationId: boundary.context.organizationId, aiExcluded: true },
+    });
+    await expect(
+      JobLayout({
+        children: "Job",
+        params: Promise.resolve({ locale: "en", projectKey: excluded.businessKey }),
+      }),
+    ).resolves.toBeTruthy();
+    const fake = new FakeAssistantModel([]);
+    boundary.model = fake;
+    const service = createAssistantServices();
+    expect(
+      await service.ask.execute(boundary.context, {
+        question: "What is this job’s quote?",
+        projectKey: excluded.businessKey,
+      }),
+    ).toMatchObject({ kind: "ANSWER", refusal: "EXCLUDED", sources: [] });
+    expect(fake.requests).toHaveLength(0);
+    boundary.context = await db.actor("membership_horizon_viewer");
+    await expect(
+      JobLayout({
+        children: "Job",
+        params: Promise.resolve({ locale: "en", projectKey: "PRJ-XINYI-026" }),
+      }),
+    ).resolves.toBeTruthy();
+    const status = await service.tools.execute(boundary.context, {
+      name: "get_quote_status",
+      arguments: { projectKey: "PRJ-XINYI-026" },
+    });
+    expect(JSON.stringify(status)).not.toMatch(/NT\$|amountBeforeTax|taxAmount|totalAmount/);
   });
   it("matches the Quote tab's internal-review status and all three amounts", async () => {
     const c = await db.actor();

@@ -342,3 +342,64 @@ it.each(["en", "zh-TW"] as const)(
     }
   },
 );
+
+it.each(["en", "zh-TW"] as const)(
+  "shows the signed job gap above the unchanged category lesson (%s)",
+  async (locale) => {
+    const { ClosedJobEconomicsService } =
+      await import("@/modules/economics/domain/closed-job-economics-service");
+    const { closedLessonText } = await import("@/modules/home-desk/presentation");
+    for (const [quoteBeforeTax, actualCost, direction, expectedEn, expectedZh] of [
+      [
+        "17300000",
+        "13420000",
+        "BELOW",
+        "Actual cost was NT$3,880,000 below the quote (22.4% of the quote).",
+        "實際成本比報價低 NT$3,880,000（報價的 22.4%）",
+      ],
+      [
+        "1000",
+        "1250",
+        "ABOVE",
+        "Actual cost was NT$250 above the quote (25.0% of the quote).",
+        "實際成本比報價高 NT$250（報價的 25.0%）",
+      ],
+      ["1000", "1000", "EQUAL", "Actual cost matched the quote.", "實際成本與報價相同"],
+    ]) {
+      const lesson = {
+        quoteBeforeTax: quoteBeforeTax!,
+        actualCost: actualCost!,
+        currency: "TWD",
+        categoryId: "COORDINATION",
+        difference: "50.00",
+        exceeded: true,
+        quoteEvidenceIds: ["q"],
+        actualEvidenceIds: ["a"],
+        evidenceReferenceIds: ["q", "a"],
+      };
+      const desk = fixture(1);
+      const host = render(
+        createElement(HomeDeskScreen, {
+          locale,
+          outcome: {
+            ...desk,
+            closedJobs: [
+              {
+                project: desk.projects[0]!,
+                financialState: "AVAILABLE",
+                lesson,
+                costDifference: new ClosedJobEconomicsService().jobDifference(lesson),
+              },
+            ],
+          },
+        }),
+      );
+      const gap = host.querySelector(`[data-direction="${direction}"]`)!;
+      expect(gap.textContent).toBe(locale === "en" ? expectedEn : expectedZh);
+      expect(gap.nextElementSibling?.textContent).toBe(
+        closedLessonText(lesson, locale, seededFirmLists.workCategories),
+      );
+      expect(host.textContent).not.toMatch(/margin|毛利/i);
+    }
+  },
+);

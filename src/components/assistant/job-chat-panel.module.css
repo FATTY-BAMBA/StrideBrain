@@ -1,0 +1,19 @@
+.panel {
+  width: min(100%, var(--page-width));
+  margin: var(--space-24) auto 0;
+  min-width: 0;
+}
+.toggle {
+  min-height: var(--control-default);
+  padding: var(--space-8) var(--space-16);
+  border: var(--rule-hairline) solid var(--line-control);
+  border-radius: var(--radius-control);
+  background: var(--canvas);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+.toggle:focus-visible {
+  outline: var(--focus-width) solid var(--focus);
+  outline-offset: var(--focus-offset);
+}

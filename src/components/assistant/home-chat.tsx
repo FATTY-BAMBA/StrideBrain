@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { assistantCopy } from "@/modules/localization/assistant";
-import { useActionState, useState, useTransition } from "react";
+import { Fragment, useActionState, useId, useRef, useState, useTransition } from "react";
 import { askHomeAction } from "@/app/[locale]/home-chat-actions";
 import { initialHomeChatState } from "@/modules/home-intelligence/chat-contracts";
 import type { Locale } from "@/modules/localization/config";
-import styles from "./home-chat.module.css";
+import styles from "../demo-value/home-chat.module.css";
 import type { HomeChatTurn } from "@/modules/home-intelligence/chat-contracts";
 import type { JobDraftActionState } from "@/modules/assistant/application/job-draft-action-state";
 import { draftJobFromHome } from "@/app/[locale]/job-draft-actions";
@@ -22,10 +22,13 @@ export function HomeChat({
   projectKey?: string | undefined;
   canDraftJob?: boolean;
 }) {
+  const id = useId(),
+    formRef = useRef<HTMLFormElement>(null);
+  const [openDraft, setOpenDraft] = useState<string | null>(null);
   const [state, action, asking] = useActionState(askHomeAction, initialHomeChatState);
   const [drafting, startDraft] = useTransition();
   const pending = asking || drafting;
-  type DraftTurn = HomeChatTurn & { draftResult?: JobDraftActionState };
+  type DraftTurn = HomeChatTurn & { draftResult?: JobDraftActionState; draftRequest?: string };
   const [draftTurns, setDraftTurns] = useState<readonly DraftTurn[]>([]);
   // Drafts stay in this client component, never in the question action's history.
   const turns: readonly DraftTurn[] = [...state.turns, ...draftTurns].sort(
@@ -43,13 +46,16 @@ export function HomeChat({
       } catch {
         result = { outcome: { kind: "UNAVAILABLE", reason: "UNAVAILABLE" } };
       }
+      const draftId = `draft-assistant-${Date.now()}`;
+      if (result.form) setOpenDraft(draftId);
       setDraftTurns((current) => [
         ...current,
         {
-          id: `draft-assistant-${Date.now()}`,
+          id: draftId,
           role: "assistant",
           text: jobDraftMessage(locale, result.outcome),
           draftResult: result,
+          draftRequest: text,
         },
       ]);
     });
@@ -71,7 +77,7 @@ export function HomeChat({
 
   return (
     <section className={styles.chat} aria-label={copy.label}>
-      <label className={styles.chatLabel} htmlFor="chat-message">
+      <label className={styles.chatLabel} htmlFor={`${id}-message`}>
         {copy.label}
       </label>
       <div className={styles.chatThread} aria-live="polite">
@@ -88,18 +94,41 @@ export function HomeChat({
               </small>
             )}
             {turn.aiFallback && <small role="status">{assistantCopy(locale).fallback}</small>}
-            <p>{turn.text}</p>
+            {!turn.draftResult?.form ? (
+              <p>
+                {turn.text.split("\n").map((line, index, lines) => (
+                  <Fragment key={index}>
+                    <span className={styles.answerLine}>{line}</span>
+                    {index < lines.length - 1 ? "\n" : ""}
+                  </Fragment>
+                ))}
+              </p>
+            ) : null}
             {turn.draftResult?.form ? (
-              <NewJobForm
-                locale={locale}
-                {...turn.draftResult.form}
-                initialDraft={
-                  turn.draftResult.outcome.kind !== "UNAVAILABLE"
-                    ? turn.draftResult.outcome.draft
-                    : undefined
-                }
-                confirmDraft
-              />
+              <div className={styles.draftCard}>
+                <button
+                  type="button"
+                  className={styles.draftToggle}
+                  aria-expanded={openDraft === turn.id}
+                  aria-controls={`${id}-${turn.id}`}
+                  onClick={() => setOpenDraft(openDraft === turn.id ? null : turn.id)}
+                >
+                  {turn.draftRequest}
+                </button>
+                <div id={`${id}-${turn.id}`} hidden={openDraft !== turn.id}>
+                  <p>{turn.text}</p>
+                  <NewJobForm
+                    locale={locale}
+                    {...turn.draftResult.form}
+                    initialDraft={
+                      turn.draftResult.outcome.kind !== "UNAVAILABLE"
+                        ? turn.draftResult.outcome.draft
+                        : undefined
+                    }
+                    confirmDraft
+                  />
+                </div>
+              </div>
             ) : null}
             {turn.aiSources?.length ? (
               <ul aria-label={assistantCopy(locale).sources}>
@@ -118,7 +147,7 @@ export function HomeChat({
                       type="button"
                       disabled={pending}
                       onClick={() => {
-                        const form = document.getElementById("chat-form") as HTMLFormElement | null;
+                        const form = formRef.current;
                         const field = form?.elements.namedItem("message");
                         if (field instanceof HTMLTextAreaElement) {
                           field.value = question;
@@ -210,11 +239,11 @@ export function HomeChat({
         ) : null}
       </div>
 
-      <form id="chat-form" action={action} className={styles.chatComposer}>
+      <form ref={formRef} action={action} className={styles.chatComposer}>
         <input type="hidden" name="locale" value={locale} />
         {projectKey ? <input type="hidden" name="projectKey" value={projectKey} /> : null}
         <textarea
-          id="chat-message"
+          id={`${id}-message`}
           name="message"
           placeholder={copy.placeholder}
           rows={1}
