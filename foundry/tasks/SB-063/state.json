@@ -24,8 +24,8 @@
   ],
   "pullRequest": 76,
   "localCheck": {
-    "tests": 1752,
-    "files": 180,
+    "tests": 1764,
+    "files": 182,
     "passed": true
   },
   "ci": {
@@ -49,5 +49,21 @@
     "questionsPerLanguage": 27,
     "draftsPerLanguageEachRound": 12,
     "passed": true
+  },
+  "reviewRound": 1,
+  "reviewComment": 7158266741,
+  "provisionalDecisions": [
+    {
+      "decision": "Selected-job question placeholder",
+      "sourceComment": 7158266741,
+      "status": "AWAITING_PRODUCT_DIRECTOR_BEFORE_MERGE"
+    }
+  ],
+  "reviewVerification": {
+    "round": 1,
+    "focusedTests": 45,
+    "focusedFiles": 5,
+    "fullCheck": true,
+    "ciEvidence": "PR #76 checks and Builder round-1 report"
   }
 }

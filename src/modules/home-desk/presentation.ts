@@ -24,8 +24,8 @@ export function closedDifferenceText(
         : difference.direction === "BELOW"
           ? "costBelow"
           : "costAbove"
-    ].replace("{amount}", formatMoney(difference.absoluteAmount, currency))
-    .replace("{percent}", difference.percentOfQuote);
+    ].replace("{amount}", () => formatMoney(difference.absoluteAmount, currency))
+    .replace("{percent}", () => difference.percentOfQuote);
 }
 
 export function decisionPresentation(

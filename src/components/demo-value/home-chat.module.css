@@ -243,3 +243,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.savedDraftNotice {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+}

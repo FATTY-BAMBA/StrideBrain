@@ -1,5 +1,6 @@
 "use client";
 import { useCallback, useEffect, useRef, useState, useTransition, type ReactNode } from "react";
+import { useReportQuoteUnsavedChanges } from "@/components/assistant/job-chat-state";
 import { useRouter } from "next/navigation";
 import {
   prepareQuoteDraftAction,
@@ -152,6 +153,7 @@ export function QuoteDocumentEditor({
   } | null>(null);
   const serialized = JSON.stringify(document),
     dirty = serialized !== savedDocument;
+  useReportQuoteUnsavedChanges(dirty);
   const editable = view.canDraft && initial.canDraft;
   const currentVersion = view.saved?.id ?? null;
   const receivePreparation = useCallback(

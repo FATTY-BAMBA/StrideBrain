@@ -2,6 +2,8 @@
 import { useId, useState } from "react";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/modules/localization/config";
+import { projectNavigation, projectSurfaceHref } from "@/modules/navigation/project-navigation";
+import { useQuoteUnsavedChanges } from "./job-chat-state";
 import { HomeChat } from "./home-chat";
 import styles from "./job-chat-panel.module.css";
 
@@ -11,8 +13,10 @@ export function JobChatPanel({ locale, projectKey }: { locale: Locale; projectKe
     id = useId();
   const [disclosure, setDisclosure] = useState({ path: pathname, open: false });
   if (disclosure.path !== pathname) setDisclosure({ path: pathname, open: false });
-  const base = `/${locale}/projects/${encodeURIComponent(projectKey)}`;
-  const visible = [base, `${base}/compare`, `${base}/quote`].includes(pathname);
+  const visible = projectNavigation.some(
+    (item) => projectSurfaceHref(locale, projectKey, item) === pathname,
+  );
+  const unsaved = useQuoteUnsavedChanges();
   const open = disclosure.path === pathname && disclosure.open;
   const label = locale === "zh-TW" ? "詢問這個專案" : "Ask about this job";
   return (
@@ -27,7 +31,7 @@ export function JobChatPanel({ locale, projectKey }: { locale: Locale; projectKe
         {label}
       </button>
       <div id={id} hidden={!open}>
-        <HomeChat locale={locale} projectKey={projectKey} />
+        <HomeChat locale={locale} projectKey={projectKey} quoteHasUnsavedChanges={unsaved} />
       </div>
     </section>
   );

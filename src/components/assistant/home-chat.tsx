@@ -17,10 +17,12 @@ export function HomeChat({
   locale,
   projectKey,
   canDraftJob = false,
+  quoteHasUnsavedChanges = false,
 }: {
   locale: Locale;
   projectKey?: string | undefined;
   canDraftJob?: boolean;
+  quoteHasUnsavedChanges?: boolean;
 }) {
   const id = useId(),
     formRef = useRef<HTMLFormElement>(null);
@@ -64,13 +66,17 @@ export function HomeChat({
     locale === "zh-TW"
       ? {
           label: "詢問 StrideBrain",
-          placeholder: "我們以前做過旗艦店整修嗎？",
+          placeholder: projectKey ? "這個專案的報價狀態如何？" : "我們以前做過旗艦店整修嗎？",
+          savedDraft: "回答依據最後儲存的草稿。",
           send: "提問",
           thinking: "正在查找公司紀錄…",
         }
       : {
           label: "Ask StrideBrain",
-          placeholder: "Have we renovated a flagship store before?",
+          placeholder: projectKey
+            ? "What is this job's quote status?"
+            : "Have we renovated a flagship store before?",
+          savedDraft: "Answers use the last saved draft.",
           send: "Ask",
           thinking: "Checking company records…",
         };
@@ -242,6 +248,11 @@ export function HomeChat({
       <form ref={formRef} action={action} className={styles.chatComposer}>
         <input type="hidden" name="locale" value={locale} />
         {projectKey ? <input type="hidden" name="projectKey" value={projectKey} /> : null}
+        {quoteHasUnsavedChanges && (
+          <p role="status" className={styles.savedDraftNotice}>
+            {copy.savedDraft}
+          </p>
+        )}
         <textarea
           id={`${id}-message`}
           name="message"

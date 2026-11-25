@@ -35,6 +35,8 @@ vi.mock("@/lib/server/assistant-services", async (original) => {
     },
   };
 });
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import JobLayout from "@/app/[locale]/projects/[projectKey]/layout";
 import { AskAssistant } from "@/modules/assistant/application/ask-assistant";
 import { assistantDatabase } from "./database-fixture";
@@ -153,7 +155,7 @@ suite("hosted regressions through authorized records and the Home server action"
     expect(sent.selectedProjectReference).toBe("J-2611-R7K3");
     expect(sent.subjectProjects).toBeUndefined();
   });
-  it("guards the layout and forged form project before any model call", async () => {
+  it("omits the optional panel for inaccessible jobs and still rejects a forged form project", async () => {
     for (const [member, projectKey] of [
       ["membership_horizon_mei", "PRJ-ACTIVE-001"],
       ["membership_northern_owner", "PRJ-XINYI-026"],
@@ -161,12 +163,15 @@ suite("hosted regressions through authorized records and the Home server action"
       boundary.context = await db.actor(member);
       const fake = new FakeAssistantModel([]);
       boundary.model = fake;
-      await expect(
-        JobLayout({
-          children: "Job",
+      const html = renderToStaticMarkup(
+        await JobLayout({
+          children: createElement("p", {}, "Page-owned unavailable state"),
           params: Promise.resolve({ locale: "en", projectKey: projectKey! }),
         }),
-      ).rejects.toThrow("NOT_FOUND");
+      );
+      expect(html).toContain("Page-owned unavailable state");
+      expect(html).toContain("Project workspace navigation");
+      expect(html).not.toContain("Ask about this job");
       const service = createAssistantServices();
       const out = await service.ask.execute(boundary.context, {
         question: "What is this job’s quote?",

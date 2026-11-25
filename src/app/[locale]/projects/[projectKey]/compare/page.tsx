@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { ComparisonExperienceClient } from "@/components/comparisons/comparison-experience-client";
 import { ComparisonStart } from "@/components/comparisons/comparison-start";
 import { ComparisonState } from "@/components/comparisons/comparison-state";
-import { ProjectLocalNav } from "@/components/projects/project-local-nav";
 import { createComparisonServices } from "@/lib/server/comparison-services";
 import { createInternalReviewServices } from "@/lib/server/internal-review-services";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
@@ -11,7 +10,6 @@ import { buildComparisonExperience } from "@/modules/comparison-experience/build
 import { parseComparisonRouteSearch } from "@/modules/comparison-experience/route-state";
 import { parseEvidenceSelection } from "@/modules/evidence-panel/route-state";
 import type { EvidencePanelOutcome } from "@/modules/evidence-panel/contracts";
-import { getCatalog } from "@/modules/localization/catalog";
 import { isSupportedLocale } from "@/modules/localization/config";
 import {
   parseInternalReviewRoute,
@@ -46,7 +44,6 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
   const { locale: rawLocale, projectKey } = await params;
   if (!isSupportedLocale(rawLocale)) notFound();
 
-  const catalog = getCatalog(rawLocale);
   const search = await searchParams;
   const route = parseComparisonRouteSearch(search);
   const actionRoute = parseInternalReviewRoute(search);
@@ -54,7 +51,6 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
 
   return (
     <div className="foundation-page">
-      <ProjectLocalNav locale={rawLocale} projectKey={projectKey} labels={catalog} />
       {await (async () => {
         if (!context?.firmLists) {
           return (

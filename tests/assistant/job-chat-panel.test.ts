@@ -2,6 +2,7 @@
 import { createElement, act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { beforeEach, afterEach, it, expect, vi } from "vitest";
+import { projectNavigation, projectSurfaceHref } from "@/modules/navigation/project-navigation";
 import { JobChatPanel } from "@/components/assistant/job-chat-panel";
 const boundary = vi.hoisted(() => ({ path: "/en/projects/J", ask: vi.fn() }));
 vi.mock("next/navigation", () => ({ usePathname: () => boundary.path }));
@@ -55,6 +56,9 @@ it.each(["en", "zh-TW"] as const)(
     expect(document.activeElement).toBe(toggle());
     expect(toggle().tabIndex).toBe(0);
     expect(host.textContent).not.toMatch(/Create a job|新增專案|建立專案/);
+    expect(host.querySelector("textarea")?.placeholder).toBe(
+      locale === "en" ? "What is this job's quote status?" : "這個專案的報價狀態如何？",
+    );
     await act(() => toggle().click());
     const composer = host.querySelector<HTMLFormElement>("form")!;
     host.querySelector<HTMLTextAreaElement>("textarea")!.value = "What are the saved findings?";
@@ -67,8 +71,9 @@ it.each(["en", "zh-TW"] as const)(
       "Saved finding two.",
     ]);
     expect(host.querySelector('a[href$="/compare"]')?.textContent).toBe("Saved comparison");
-    for (const suffix of ["/compare", "/quote", ""]) {
-      await page(base + suffix);
+    for (const tab of projectNavigation.filter((item) => item.segment)) {
+      await page(projectSurfaceHref(locale, "J", tab));
+      expect(host.querySelector("section")!.hidden).toBe(false);
       expect(toggle().getAttribute("aria-expanded")).toBe("false");
       await act(() => toggle().click());
       expect(host.querySelector("article p")).toBe(answer);
