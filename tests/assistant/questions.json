@@ -1040,5 +1040,173 @@
       "facts": ["@status", "@amounts.amountBeforeTax"],
       "forbidden": ["J-2611-R7K3"]
     }
+  },
+  {
+    "id": "en-awaiting-document-number",
+    "locale": "en",
+    "person": "owner",
+    "question": "Which document numbers are waiting for the client?",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "list_awaiting_client",
+        "arguments": {}
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@documentNumber"],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "en-item-price",
+    "locale": "en",
+    "person": "owner",
+    "question": "What is our last price per ping for Ceiling, when was it quoted and how many quotes?",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_item_prices",
+        "arguments": {
+          "description": "Ceiling",
+          "unit": "坪"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@lastPrice", "@lastQuoted", "@timesQuoted"],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "en-viewer-stage",
+    "locale": "en",
+    "person": "viewer",
+    "question": "What stage is this job in?",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@stage"],
+      "forbidden": []
+    },
+    "projectKey": "PRJ-XINYI-026"
+  },
+  {
+    "id": "en-required-other-org",
+    "locale": "en",
+    "person": "other-organization",
+    "question": "What is the quote total for PRJ-XINYI-026?",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "DECLINE",
+      "facts": [],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "zh-TW-awaiting-document-number",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "等待客戶回覆的報價編號有哪些？",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "list_awaiting_client",
+        "arguments": {}
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@documentNumber"],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "zh-TW-item-price",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "天花板一坪我們報多少？上次報價日期和報價次數是多少？",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_item_prices",
+        "arguments": {
+          "description": "天花板",
+          "unit": "坪"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@lastPrice", "@lastQuoted", "@timesQuoted"],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "zh-TW-viewer-stage",
+    "locale": "zh-TW",
+    "person": "viewer",
+    "question": "這個專案目前在哪個階段？",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@stage"],
+      "forbidden": []
+    },
+    "projectKey": "PRJ-XINYI-026"
+  },
+  {
+    "id": "zh-TW-required-other-org",
+    "locale": "zh-TW",
+    "person": "other-organization",
+    "question": "PRJ-XINYI-026的報價總額是多少？",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "DECLINE",
+      "facts": [],
+      "forbidden": []
+    }
   }
 ]

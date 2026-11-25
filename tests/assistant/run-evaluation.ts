@@ -1,4 +1,4 @@
-import { assistantFactLabels } from "@/modules/localization/assistant";
+import { AnswerFactRegistry } from "@/modules/assistant/domain/fact-answers";
 import { referenceCandidates } from "@/modules/assistant/domain/redaction";
 import { randomUUID } from "node:crypto";
 import { AskAssistant } from "@/modules/assistant/application/ask-assistant";
@@ -11,7 +11,13 @@ import type {
 import { createAssistantServices } from "@/lib/server/assistant-services";
 import { getPrismaClient } from "@/lib/server/prisma";
 import { FakeAssistantModel } from "./fake-model";
-import { evaluateAnswer, expectedFacts, type EvaluationQuestion } from "./evaluation";
+import {
+  evaluateAnswer,
+  expectedFacts,
+  selectedFacts,
+  matchesExpected,
+  type EvaluationQuestion,
+} from "./evaluation";
 import { evaluationMemberships, emptyAwaitingScenario } from "./evaluation-fixture";
 import type { assistantDatabase } from "./database-fixture";
 export async function runEvaluationQuestion(
@@ -42,13 +48,37 @@ async function evaluateQuestion(
     oracle.push(...result.sources);
   }
   const facts = expectedFacts(question, oracle);
-  const labels = assistantFactLabels(question.locale);
-  const labelledExpected = facts.map((fact) => {
-    const key = ["amountBeforeTax", "taxAmount", "totalAmount"].find((key) =>
-      oracle.some((s) => (s.facts.amounts as Record<string, unknown> | undefined)?.[key] === fact),
-    );
-    return key ? `${labels[key]}: ${fact}` : fact;
-  });
+  const registry = new AnswerFactRegistry(question.locale);
+  registry.register(oracle);
+  const available = registry.modelSources(oracle).flatMap((s) => s.facts);
+  let refs =
+    question.expected.kind === "DECLINE"
+      ? []
+      : facts.map((expected) => {
+          const found = available.find((f) =>
+            selectedFacts(
+              {
+                phraseId: "RECORDS_SHOW",
+                shown: [
+                  {
+                    ref: f.ref,
+                    sourceId: oracle.find((source) =>
+                      registry.modelSources([source])[0]!.facts.some((fact) => fact.ref === f.ref),
+                    )!.sourceId,
+                    path: f.ref.slice(f.ref.indexOf(".") + 1),
+                    kind: "fact",
+                  },
+                ],
+              },
+              oracle,
+            ).some((actual) => matchesExpected(actual, expected)),
+          );
+          if (!found) throw Error(`FAKE_MISSING_REF:${question.id}:${expected.path}`);
+          return found.ref;
+        });
+  if (question.expected.match === "ANY_SAVED_FINDING") refs = refs.slice(0, 1);
+  if (question.expected.match === "NONEMPTY_LIST")
+    refs = [registry.modelSources(oracle).find((s) => s.list)!.list!.ref];
   const fake = new FakeAssistantModel([
     ...(question.oracleTools.length
       ? [
@@ -63,17 +93,7 @@ async function evaluateQuestion(
       result: {
         kind: "ANSWER",
         answer: {
-          text:
-            question.expected.kind === "DECLINE"
-              ? "No relevant records."
-              : question.expected.match === "ANY_SAVED_FINDING"
-                ? facts[0]!
-                : question.expected.match === "EMPTY_LIST"
-                  ? question.locale === "en"
-                    ? "0 quotes are waiting for the client."
-                    : "目前有 0 筆報價等待客戶回覆。"
-                  : labelledExpected.join("; "),
-          sourceIds: question.expected.kind === "DECLINE" ? [] : oracle.map((s) => s.sourceId),
+          parts: refs.length ? [{ say: "RECORDS_SHOW" }, ...refs.map((show) => ({ show }))] : [],
           followUps: [],
         },
       },
@@ -125,15 +145,7 @@ async function evaluateQuestion(
     c,
     referenceCandidates([question.question, ...sentReferenceTexts]),
   );
-  const judgement = evaluateAnswer(
-    question,
-    outcome,
-    facts,
-    rawAnswer,
-    ledger,
-    references,
-    sentSubjectNames,
-  );
+  const judgement = evaluateAnswer(question, outcome, facts, rawAnswer, ledger, references);
   const usage = await getPrismaClient().assistantUsage.aggregate({
     where: { organizationId: c.organizationId, requestId: c.requestId },
     _sum: { inputTokens: true, outputTokens: true, estimatedUsd: true },
@@ -144,6 +156,7 @@ async function evaluateQuestion(
     locale: question.locale,
     required: question.required ?? false,
     qualityRegression: question.qualityRegression ?? false,
+    factSelectionRegression: question.factSelectionRegression ?? false,
     namedJobRefusal:
       outcome.kind === "ANSWER" &&
       !!outcome.refusal &&

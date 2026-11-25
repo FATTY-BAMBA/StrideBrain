@@ -11,6 +11,7 @@ export type AssistantSettings = Readonly<{
   calls: number;
   estimatedUsd: string;
   unmeteredCalls: number;
+  failures: readonly Readonly<{ code: string; httpStatus: number | null; count: number }>[];
 }>;
 export type AssistantControlInput = Readonly<{
   target: "ORGANIZATION" | "PROJECT";
@@ -28,7 +29,11 @@ export interface AssistantRepositoryPort {
   ): Promise<readonly string[]>;
   enabled(context: RuntimeContext): Promise<boolean>;
   jobPolicy(context: RuntimeContext, key: string): Promise<AssistantJobPolicy | null>;
-  settings(context: RuntimeContext, monthStart: Date): Promise<AssistantSettings | null>;
+  settings(
+    context: RuntimeContext,
+    monthStart: Date,
+    now?: Date,
+  ): Promise<AssistantSettings | null>;
   setControl(
     context: RuntimeContext,
     input: AssistantControlInput,
@@ -48,5 +53,6 @@ export interface AssistantRepositoryPort {
   finishTurn(
     context: RuntimeContext,
     outcome: "ANSWERED" | `FALLBACK_${FallbackReason}`,
+    failure?: Readonly<{ callId: string; code: string; httpStatus?: number }>,
   ): Promise<void>;
 }

@@ -40,7 +40,7 @@ describe("Gemini boundary (network fake only)", () => {
     expect(JSON.parse(String(options?.body)).toolConfig.functionCallingConfig.mode).toBe("ANY");
   });
   it("parses final structured answers and refuses writes, malformed or truncated responses", async () => {
-    const answer = { text: "No records", sourceIds: [], followUps: [] };
+    const answer = { parts: [], followUps: [] };
     const payload = {
       ...body,
       candidates: [

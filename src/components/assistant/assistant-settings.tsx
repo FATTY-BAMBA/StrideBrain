@@ -1,8 +1,9 @@
 import Link from "next/link";
+import { Table, NameCell, NumericCell } from "@/components/ui/table";
 import { assistantConfigured } from "@/lib/server/assistant-availability";
 import { createAssistantServices } from "@/lib/server/assistant-services";
 import { AssistantControl } from "./assistant-control";
-import { assistantCopy } from "@/modules/localization/assistant";
+import { assistantCopy, assistantFailureText } from "@/modules/localization/assistant";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import { decimalToString, decimalFromString, rescale } from "@/modules/finance/fixed-decimal";
 export async function AssistantSettings({ context }: { context: RuntimeContext }) {
@@ -59,6 +60,30 @@ export async function AssistantSettings({ context }: { context: RuntimeContext }
             </div>
           </dl>
           {settings.unmeteredCalls > 0 && <p>{copy.unknownCost}</p>}
+          <h3>{copy.failures}</h3>
+          {settings.failures.length ? (
+            <Table
+              caption={copy.failures}
+              headings={[
+                { label: copy.failureReason },
+                { label: copy.failureCode },
+                { label: copy.failureCount, numeric: true },
+              ]}
+            >
+              {settings.failures.map((f) => (
+                <tr key={`${f.code}:${f.httpStatus}`}>
+                  <NameCell>{assistantFailureText(context.locale, f.code, f.httpStatus)}</NameCell>
+                  <td>
+                    {f.code}
+                    {f.httpStatus !== null ? ` (${f.httpStatus})` : ""}
+                  </td>
+                  <NumericCell>{f.count}</NumericCell>
+                </tr>
+              ))}
+            </Table>
+          ) : (
+            <p>{copy.noFailures}</p>
+          )}
         </>
       ) : null}
       {(!service.config.enabled || !assistantConfigured()) && <p>{copy.notConfigured}</p>}

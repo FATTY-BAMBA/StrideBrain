@@ -8,7 +8,15 @@ import { HomeChat } from "./home-chat";
 import styles from "./job-chat-panel.module.css";
 
 /** Lives in the job layout: page changes retain chat state, leaving the job unmounts it. */
-export function JobChatPanel({ locale, projectKey }: { locale: Locale; projectKey: string }) {
+export function JobChatPanel({
+  locale,
+  projectKey,
+  canReadQuote = false,
+}: {
+  locale: Locale;
+  projectKey: string;
+  canReadQuote?: boolean;
+}) {
   const pathname = usePathname(),
     id = useId();
   const [disclosure, setDisclosure] = useState({ path: pathname, open: false });
@@ -34,6 +42,7 @@ export function JobChatPanel({ locale, projectKey }: { locale: Locale; projectKe
         <HomeChat
           locale={locale}
           projectKey={projectKey}
+          canReadQuote={canReadQuote}
           quoteHasUnsavedChanges={unsaved}
           jobPanelOpen={open}
         />

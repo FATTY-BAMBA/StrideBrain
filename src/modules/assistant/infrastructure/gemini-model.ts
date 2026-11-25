@@ -1,3 +1,4 @@
+import { answerParameters } from "../domain/fact-answers";
 import "server-only";
 import { AssistantModelError } from "../domain/model-error";
 import type { TokenUsage, JobDraftModelPort } from "../domain/contracts";
@@ -13,20 +14,16 @@ import {
 const answerDeclaration = {
   name: "submit_answer",
   description:
-    "Finish with a grounded short answer. Use empty sourceIds when records cannot answer the question.",
-  parametersJsonSchema: {
-    type: "object",
-    properties: {
-      text: { type: "string", maxLength: 1400 },
-      sourceIds: { type: "array", items: { type: "string" }, maxItems: 30 },
-      followUps: { type: "array", items: { type: "string", maxLength: 160 }, maxItems: 3 },
-    },
-    required: ["text", "sourceIds", "followUps"],
-    additionalProperties: false,
-  },
+    "Finish by selecting a phrase id and fact refs from this turn. Use empty parts when records cannot answer.",
+  parametersJsonSchema: answerParameters,
 };
 async function boundedJson(response: Response): Promise<unknown> {
-  if (!response.ok || !response.body) throw new Error("ASSISTANT_PROVIDER_UNAVAILABLE");
+  if (!response.ok)
+    throw new AssistantModelError("UNAVAILABLE", undefined, {
+      code: "PROVIDER_HTTP",
+      httpStatus: response.status,
+    });
+  if (!response.body) throw new Error("ASSISTANT_PROVIDER_UNAVAILABLE");
   const reader = response.body.getReader();
   let size = 0;
   const chunks: Uint8Array[] = [];
@@ -143,6 +140,7 @@ export class GeminiAssistantModel implements AssistantModelPort, JobDraftModelPo
   }
   async generate(input: Parameters<AssistantModelPort["generate"]>[0]): Promise<ModelReply> {
     let knownUsage: TokenUsage | undefined;
+    let responseReceived = false;
     try {
       const response = await this.request(
         `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(this.model)}:generateContent`,
@@ -182,6 +180,7 @@ export class GeminiAssistantModel implements AssistantModelPort, JobDraftModelPo
           }),
         },
       );
+      responseReceived = true;
       const body = record(await boundedJson(response)),
         usage = record(body?.usageMetadata);
       const inputTokens = usage?.promptTokenCount,
@@ -243,7 +242,13 @@ export class GeminiAssistantModel implements AssistantModelPort, JobDraftModelPo
       };
     } catch (error) {
       if (error instanceof AssistantModelError) throw error;
-      throw new AssistantModelError(knownUsage ? "INVALID_OUTPUT" : "UNAVAILABLE", knownUsage);
+      throw new AssistantModelError(
+        knownUsage || responseReceived ? "INVALID_OUTPUT" : "UNAVAILABLE",
+        knownUsage,
+        knownUsage || responseReceived
+          ? undefined
+          : { code: input.signal.aborted ? "TIMEOUT" : "PROVIDER_NETWORK" },
+      );
     }
   }
 }

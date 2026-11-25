@@ -83,8 +83,18 @@ async function ask(
         result: {
           kind: "ANSWER",
           answer: {
-            text: text(data.sources[0]?.facts ?? {}),
-            sourceIds: data.sources.map((s: { sourceId: string }) => s.sourceId),
+            ...(text({}).includes("999999999")
+              ? { parts: [{ say: "RECORDS_SHOW" }, { show: "missing" }] }
+              : {
+                  parts: data.sources.length
+                    ? [
+                        { say: "RECORDS_SHOW" },
+                        ...data.sources[0].facts
+                          .slice(0, 12)
+                          .map((f: { ref: string }) => ({ show: f.ref })),
+                      ]
+                    : [],
+                }),
             followUps: [],
           },
         },
@@ -246,7 +256,7 @@ suite("hosted regressions through authorized records and the Home server action"
         (facts) => `目前有 ${facts[assistantFactLabels("zh-TW").count!]} 筆報價等待客戶回覆。`,
         true,
       );
-      expect(turn).toMatchObject({ ai: true, text: "目前有 0 筆報價等待客戶回覆。" });
+      expect(turn).toMatchObject({ ai: true, text: "紀錄顯示：\n\n紀錄\n紀錄筆數：0" });
       expect(turn.aiSources).toHaveLength(1);
       expect(fake.requests).toHaveLength(1);
     });

@@ -2,13 +2,13 @@
   "issue": 79,
   "branch": "build/sb-079-fact-answers",
   "baseCommit": "bb8d8d8d9fbb3365477f5164dbd9d84d7d237fe3",
-  "issueUpdatedAt": "2026-11-25T20:03:27Z",
-  "status": "AWAITING_SAY_BOUNDARY_CLARIFICATION",
+  "issueUpdatedAt": "2026-11-25T20:22:52Z",
+  "status": "VERIFYING_LOCAL",
   "delivery": "A → B → C → D → E",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "paidEvaluationLimit": 4,
   "paidEvaluationRuns": [],
   "pullRequest": 80,
-  "pendingDecision": "Whether say is limited to server-supplied non-factual connective phrases; unrestricted words can still assert a wrong status without violating the listed lexical rules."
+  "confirmedDecision": "No free prose: phrase ids only; server owns source headings and fact layout; 12 facts and one list with ten rows plus remaining count. Confirmed comment 7173585372."
 }

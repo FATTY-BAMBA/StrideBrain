@@ -1,3 +1,4 @@
+import { createPriceListService } from "./price-list-services";
 import "server-only";
 import { getPrismaClient } from "./prisma";
 import {
@@ -28,6 +29,7 @@ export function createAssistantServices() {
       comparison: createComparisonServices().getHomeComparison,
       history: new GetQuotedHistory(new PrismaQuoteDraftRepository(db)),
       home: createHomeDeskService(),
+      prices: createPriceListService(),
     },
     repository,
   );

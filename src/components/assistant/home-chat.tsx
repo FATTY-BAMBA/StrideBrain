@@ -17,12 +17,14 @@ export function HomeChat({
   locale,
   projectKey,
   canDraftJob = false,
+  canReadQuote = false,
   quoteHasUnsavedChanges = false,
   jobPanelOpen,
 }: {
   locale: Locale;
   projectKey?: string | undefined;
   canDraftJob?: boolean;
+  canReadQuote?: boolean;
   quoteHasUnsavedChanges?: boolean;
   /** Omitted on Home; only the job panel has a bounded, scrolling thread. */
   jobPanelOpen?: boolean;
@@ -78,7 +80,11 @@ export function HomeChat({
       ? {
           label: "詢問 StrideBrain",
           thread: "此專案的對話",
-          placeholder: projectKey ? "這個專案的報價狀態如何？" : "我們以前做過旗艦店整修嗎？",
+          placeholder: projectKey
+            ? canReadQuote
+              ? "這個專案的報價狀態如何？"
+              : "這個專案目前在哪個階段？"
+            : "我們以前做過旗艦店整修嗎？",
           savedDraft: "回答依據最後儲存的草稿。",
           send: "提問",
           thinking: "正在查找公司紀錄…",
@@ -87,7 +93,9 @@ export function HomeChat({
           label: "Ask StrideBrain",
           thread: "Conversation about this job",
           placeholder: projectKey
-            ? "What is this job's quote status?"
+            ? canReadQuote
+              ? "What is this job's quote status?"
+              : "What stage is this job in?"
             : "Have we renovated a flagship store before?",
           savedDraft: "Answers use the last saved draft.",
           send: "Ask",

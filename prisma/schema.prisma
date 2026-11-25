@@ -1270,6 +1270,8 @@ model AssistantUsage {
   outputTokens Int?
   estimatedUsd Decimal? @db.Decimal(18, 9)
   outcome String @default("PENDING")
+  providerHttpStatus Int?
+  failureCode String?
   createdAt DateTime @default(now())
   organization Organization @relation(fields: [organizationId], references: [id], onDelete: Restrict)
   membership Membership @relation(fields: [membershipId, organizationId], references: [id, organizationId], onDelete: Restrict)

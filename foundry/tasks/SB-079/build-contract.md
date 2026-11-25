@@ -2,7 +2,7 @@
 
 Delivery follows the issue's explicit A–E order.
 
-A. Build a turn-local registry of server-rendered facts, including labelled amounts, identifiers, lists and exact saved findings. Accept only ordered say/show parts and derive citations from registered references. Reject unsupported free-text values and action claims; preserve access rechecks, subject matching, redaction and limits. Prove with the fake model first.
+A. Build a turn-local registry of server-rendered facts, including labelled amounts, identifiers, lists and exact saved findings. Accept only ordered say/show parts and derive citations from registered references. No model prose: accept one catalog phrase id, at most 12 registered facts and one list (ten rows plus a server-computed rest count). Render every fact under its own source heading. Reject unknown ids/references; preserve access rechecks, subject matching, redaction and limits. Prove with the fake model first.
 
 B. Map each tool to its page read and test owner, assigned/unassigned manager, finance and Viewer parity, resolving discrepancies on the stricter side. Give readers without quote:read a stage example.
 

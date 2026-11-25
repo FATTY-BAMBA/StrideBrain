@@ -9,12 +9,16 @@ import { getCatalog } from "@/modules/localization/catalog";
 import { isSupportedLocale } from "@/modules/localization/config";
 
 /** This lookup controls an optional bar, never access to the page or a model call. */
-async function panelMember(projectKey: string): Promise<string | null> {
+async function panelMember(
+  projectKey: string,
+): Promise<{ id: string; canReadQuote: boolean } | null> {
   try {
     const context = await resolveServerRuntimeContext();
     if (!context?.capabilities.has("project:read")) return null;
     const policy = await createAssistantControlServices().repository.jobPolicy(context, projectKey);
-    return policy ? context.membershipId : null;
+    return policy
+      ? { id: context.membershipId, canReadQuote: context.capabilities.has("quote:read") }
+      : null;
   } catch {
     return null;
   }
@@ -35,7 +39,14 @@ export default async function JobLayout({
     <JobChatStateProvider key={`${locale}:${projectKey}`}>
       <div className={styles.navigation}>
         <ProjectLocalNav locale={locale} projectKey={projectKey} labels={getCatalog(locale)} />
-        {member && <JobChatPanel key={member} locale={locale} projectKey={projectKey} />}
+        {member && (
+          <JobChatPanel
+            key={member.id}
+            locale={locale}
+            projectKey={projectKey}
+            canReadQuote={member.canReadQuote}
+          />
+        )}
       </div>
       <div className={styles.body}>{children}</div>
     </JobChatStateProvider>

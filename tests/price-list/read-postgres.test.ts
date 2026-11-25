@@ -120,7 +120,7 @@ suite("issued price read model and source access", () => {
       { kind: "NOTE", description: "Ceiling" },
       { kind: "PERCENTAGE", description: "Ceiling", percentage: "8", remark: "" },
     ]);
-    expect(await read().execute(owner, query("LIST", "ＣＥＩＬＩＮＧ"))).toMatchObject({
+    expect(await read().execute(owner, query("LIST", "ＣＥＩＬＩＮＧ", null, ""))).toMatchObject({
       rows: [
         { description: "CEILING", unitPrice: "3500", timesQuoted: 1, versionId: issued.versionId },
       ],

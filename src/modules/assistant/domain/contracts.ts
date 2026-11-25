@@ -1,3 +1,4 @@
+import type { AnswerSelection } from "./fact-answers";
 import type { Locale } from "@/modules/localization/config";
 
 export const toolNames = [
@@ -7,6 +8,7 @@ export const toolNames = [
   "list_awaiting_client",
   "get_saved_comparison",
   "get_past_prices",
+  "get_item_prices",
   "get_closed_job_lessons",
 ] as const;
 export type ToolName = (typeof toolNames)[number];
@@ -98,6 +100,7 @@ export type AssistantOutcome =
       answer: StructuredAnswer;
       sources: readonly AssistantSource[];
       locale: Locale;
+      selection?: AnswerSelection;
       action?: Readonly<{ label: string; href: string }>;
       refusal?: "NO_RECORDS" | "OUT_OF_DATE" | "EXCLUDED" | "UNAVAILABLE";
     }>;

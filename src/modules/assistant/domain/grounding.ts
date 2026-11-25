@@ -1,7 +1,4 @@
-import { hasWrongAmountLabel } from "./amount-labels";
-import { modelFacts } from "./redaction";
-import { expandFindingSentences } from "./finding-expansion";
-import type { AssistantSource, StructuredAnswer } from "./contracts";
+import type { AssistantSource } from "./contracts";
 import type { Locale } from "@/modules/localization/config";
 
 export function record(value: unknown): Record<string, unknown> | null {
@@ -131,19 +128,6 @@ export function sourceReferences(
   sources.forEach((s) => walk(s.facts, s.typedFactPaths ?? []));
   return [...new Set(values.filter(Boolean))];
 }
-/** Reject complete tokens that cut off a known reference, even inside a sent job name. */
-export function hasTruncatedReference(text: string, references: readonly string[]): boolean {
-  const known = new Set(references.map((r) => r.toLocaleLowerCase()));
-  return (text.match(/[A-Za-z0-9][A-Za-z0-9_-]*/g) ?? []).some((token) => {
-    const lower = token.toLocaleLowerCase();
-    return (
-      token.length >= 3 &&
-      /[-_]/.test(token) &&
-      !known.has(lower) &&
-      [...known].some((r) => r.startsWith(lower) && r.length > lower.length)
-    );
-  });
-}
 /** Identity text must be the redacted labels/names actually sent in this turn. */
 export function sourceIdentities(
   sources: readonly AssistantSource[],
@@ -169,7 +153,7 @@ export function withoutEnumerators(text: string): string {
     .replace(/^([ \t]*(?:>[ \t]*)?)(?:[-*+][ \t]+)?\d+[.)、](?!\d)[ \t]*/gm, "$1")
     .replace(/^([ \t]*(?:>[ \t]*)?)[-*+][ \t]+/gm, "$1");
 }
-function withoutReferences(text: string, references: readonly string[]): string {
+export function withoutReferences(text: string, references: readonly string[]): string {
   if (!references.length) return text;
   const escaped = [...references]
     .sort((a, b) => b.length - a.length)
@@ -206,188 +190,6 @@ export function numericTokens(text: string): readonly string[] {
       .replace(/\.(%?)$/, "$1");
   });
 }
-function factText(value: unknown): string {
-  if (typeof value === "string" || typeof value === "number") return String(value);
-  if (Array.isArray(value)) return value.map(factText).join(" ");
-  const fields = record(value);
-  return fields
-    ? Object.entries(fields)
-        .filter(([k]) => !/(?:Id|Ids)$/.test(k))
-        .map(([, v]) => factText(v))
-        .join(" ")
-    : "";
-}
-export function parseAnswer(raw: unknown, locale: Locale): StructuredAnswer | null {
-  const value = record(raw);
-  if (!value || Object.keys(value).some((k) => !["text", "sourceIds", "followUps"].includes(k)))
-    return null;
-  const { text, sourceIds, followUps } = value;
-  if (
-    typeof text !== "string" ||
-    !text.trim() ||
-    text.length > 1400 ||
-    !Array.isArray(sourceIds) ||
-    sourceIds.length > 30
-  )
-    return null;
-  const words = [...new Intl.Segmenter(locale, { granularity: "word" }).segment(text)].filter(
-    (s) => s.isWordLike,
-  ).length;
-  if (words > 240 || sourceIds.some((id) => typeof id !== "string" || id.length > 80)) return null;
-  return {
-    text: text.trim(),
-    sourceIds: sourceIds as string[],
-    followUps: (Array.isArray(followUps) ? followUps : [])
-      .filter((f): f is string => typeof f === "string" && !!f.trim() && f.length <= 160)
-      .slice(0, 3),
-  };
-}
-export type AnswerRejection =
-  | "ANSWER_SCHEMA"
-  | "WORD_LIMIT"
-  | "AMOUNT_LABEL"
-  | "DISPLAY_FORMAT"
-  | "TRUNCATED_REFERENCE"
-  | "UNKNOWN_SOURCE"
-  | "NO_SOURCES"
-  | "NUMBER_WORD"
-  | "UNSUPPORTED_NUMBER"
-  | "FINANCIAL_AUTHORITY"
-  | "ACTUAL_COST_AUTHORITY"
-  | "ACTION_CLAIM"
-  | "FINDING_SENTENCE"
-  | "GENERATED_LINK_OR_HTML";
-export type AnswerCheck =
-  { kind: "ACCEPTED"; answer: StructuredAnswer } | { kind: "REJECTED"; reason: AnswerRejection };
-export function answerSchemaReason(raw: unknown, locale: Locale): AnswerRejection {
-  const text = record(raw)?.text;
-  return typeof text === "string" &&
-    [...new Intl.Segmenter(locale, { granularity: "word" }).segment(text)].filter(
-      (s) => s.isWordLike,
-    ).length > 240
-    ? "WORD_LIMIT"
-    : "ANSWER_SCHEMA";
-}
-export function unsupportedNumericTokens(
-  text: string,
-  sources: readonly AssistantSource[],
-  authorizedReferences: readonly string[] = [],
-): string[] {
-  const references = sourceIdentities(sources, authorizedReferences);
-  const ledger = new Set(
-    numericTokens(
-      withoutReferences(sources.map((s) => factText(modelFacts(s.facts))).join(" "), references),
-    ),
-  );
-  return [
-    ...new Set(numericTokens(withoutReferences(text, references)).filter((n) => !ledger.has(n))),
-  ];
-}
-export function hasUnsupportedNumbers(
-  text: string,
-  sources: readonly AssistantSource[],
-  authorizedReferences: readonly string[] = [],
-): boolean {
-  return unsupportedNumericTokens(text, sources, authorizedReferences).length > 0;
-}
-export function hasMislabelledQuoteAmount(
-  text: string,
-  sources: readonly AssistantSource[],
-  locale: Locale,
-  identities: readonly string[] = [],
-): boolean {
-  return hasWrongAmountLabel(
-    normalizeDates(withoutReferences(text, sourceIdentities(sources, identities))).replace(
-      /\b\d{4}-\d{2}-\d{2}\b/g,
-      " ",
-    ),
-    sources,
-    locale,
-  );
-}
-/** Display facts must not acquire machine keys or extra decimal places in the answer. */
-export function hasBadDisplayFormat(text: string, identities: readonly string[] = []): boolean {
-  const values = withoutReferences(text, identities);
-  return /\b(?:acceptedOn|priceBasis|validUntil|displayMedian|displayLow|displayHigh|quoteBeforeTax|actualCost)\b|TWD\s*\/\s*m2|\d[\d,]*\.\d{3,}/.test(
-    values,
-  );
-}
-function checkSingleAnswer(
-  raw: unknown,
-  sources: readonly AssistantSource[],
-  locale: Locale,
-  authorizedReferences: readonly string[] = [],
-  sentSubjectNames: readonly string[] = [],
-): AnswerCheck {
-  const parsed = parseAnswer(raw, locale);
-  if (!parsed) return { kind: "REJECTED", reason: answerSchemaReason(raw, locale) };
-  const { text, sourceIds } = parsed;
-  if (sourceIds.some((id) => !sources.some((s) => s.sourceId === id)))
-    return { kind: "REJECTED", reason: "UNKNOWN_SOURCE" };
-  if (!sourceIds.length) return { kind: "REJECTED", reason: "NO_SOURCES" };
-  const output = text;
-  if (hasTruncatedReference(text, sourceReferences(sources, authorizedReferences)))
-    return { kind: "REJECTED", reason: "TRUNCATED_REFERENCE" };
-  const references = sourceIdentities(sources, [...authorizedReferences, ...sentSubjectNames]);
-  const quantities = normalizeSimpleNumberWords(withoutReferences(output, references));
-  // Simple words use the same numeric ledger; unsupported compound/large words still fail.
-  if (
-    /\b(?:zero|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|billion|trillion|dozen|half|quarter|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\b/i.test(
-      quantities,
-    ) ||
-    /[零〇一二兩三四五六七八九十百千萬億壹貳參肆伍陸柒捌玖拾佰仟]+(?:個|項|筆|元|天|日|年|月|%|％)|百分之[零〇一二三四五六七八九十百千萬億]/.test(
-      quantities,
-    )
-  )
-    return { kind: "REJECTED", reason: "NUMBER_WORD" };
-  const cited = citedSources(sources, sourceIds);
-  if (hasUnsupportedNumbers(output, cited, references))
-    return { kind: "REJECTED", reason: "UNSUPPORTED_NUMBER" };
-  if (hasMislabelledQuoteAmount(output, cited, locale, references))
-    return { kind: "REJECTED", reason: "AMOUNT_LABEL" };
-  if (hasBadDisplayFormat(output, references))
-    return { kind: "REJECTED", reason: "DISPLAY_FORMAT" };
-  // Percent findings retain the shared Home/comparison/chat sentence verbatim.
-  const findings = cited
-    .flatMap((s) => (Array.isArray(s.facts.findings) ? s.facts.findings : []))
-    .flatMap((f) => (typeof record(f)?.text === "string" ? [record(f)!.text as string] : []));
-  const financial =
-    cited.some(
-      (s) =>
-        s.facts.observationType === "QUOTED_PRICE" ||
-        typeof s.facts.quoteBeforeTax === "string" ||
-        !!record(s.facts.amounts),
-    ) || findings.length > 0;
-  if (
-    /NT\$|TWD|USD|\b(?:amount|cost|price|rate)\b|金額|成本|單價/i.test(output) &&
-    numericTokens(withoutReferences(output, references)).length &&
-    !financial
-  )
-    return { kind: "REJECTED", reason: "FINANCIAL_AUTHORITY" };
-  if (
-    /actual costs?|實際成本/i.test(output) &&
-    !cited.some((s) => typeof s.facts.actualCost === "string") &&
-    !findings.some((f) => /actual costs?|實際成本/i.test(f))
-  )
-    return { kind: "REJECTED", reason: "ACTUAL_COST_AUTHORITY" };
-  if (
-    /\b(?:I|we)\s+(?:have\s+)?(?:created|sent|issued|approved|updated|deleted|ran)\b|我(?:們)?(?:已經|已)?(?:建立|發送|開立|核准|更新|刪除|執行)/i.test(
-      output,
-    )
-  )
-    return { kind: "REJECTED", reason: "ACTION_CLAIM" };
-  // Links are rendered from the server's source list, never generated text.
-  if (/https?:\/\/|www\.|<\/?[a-z]|\]\(/i.test(output))
-    return { kind: "REJECTED", reason: "GENERATED_LINK_OR_HTML" };
-  return {
-    kind: "ACCEPTED",
-    answer: {
-      text: text.trim(),
-      sourceIds: cited.map((s) => s.sourceId),
-      followUps: [],
-    },
-  };
-}
 /** Follow-ups are questions for the existing read tools, never offers to write or workflow advice. */
 export function isReadFollowUp(text: string): boolean {
   return (
@@ -397,65 +199,6 @@ export function isReadFollowUp(text: string): boolean {
     ) &&
     !/^(?:would you|do you want|can I|shall I)\b|是否需要|需要.*協助/i.test(text)
   );
-}
-export function checkAnswer(
-  raw: unknown,
-  sources: readonly AssistantSource[],
-  locale: Locale,
-  authorizedReferences: readonly string[] = [],
-  sentSubjectNames: readonly string[] = [],
-): AnswerCheck {
-  const parsed = parseAnswer(raw, locale);
-  if (!parsed) return { kind: "REJECTED", reason: answerSchemaReason(raw, locale) };
-  // Validate citation identity before using any of its saved wording.
-  if (parsed.sourceIds.some((id) => !sources.some((s) => s.sourceId === id)))
-    return { kind: "REJECTED", reason: "UNKNOWN_SOURCE" };
-  if (hasTruncatedReference(parsed.text, sourceReferences(sources, authorizedReferences)))
-    return { kind: "REJECTED", reason: "TRUNCATED_REFERENCE" };
-  const identities = sourceIdentities(sources, [...authorizedReferences, ...sentSubjectNames]);
-  const expand = (text: string) =>
-    expandFindingSentences(text, citedSources(sources, parsed.sourceIds), (value) =>
-      numericTokens(withoutReferences(value, identities)).filter((n) => n.endsWith("%")),
-    );
-  const expanded = expand(parsed.text);
-  if (expanded.kind === "REJECTED") return expanded;
-  const checked = checkSingleAnswer(
-    { ...parsed, text: expanded.text, followUps: [] },
-    sources,
-    locale,
-    authorizedReferences,
-    sentSubjectNames,
-  );
-  if (checked.kind === "REJECTED") return checked;
-  return {
-    kind: "ACCEPTED",
-    answer: {
-      ...checked.answer,
-      followUps: parsed.followUps.filter((text) => {
-        if (!isReadFollowUp(text)) return false;
-        const expandedFollowUp = expand(text);
-        return (
-          expandedFollowUp.kind === "EXPANDED" &&
-          expandedFollowUp.text === text.trim() &&
-          checkSingleAnswer(
-            { text, sourceIds: checked.answer.sourceIds, followUps: [] },
-            sources,
-            locale,
-            authorizedReferences,
-            sentSubjectNames,
-          ).kind === "ACCEPTED"
-        );
-      }),
-    },
-  };
-}
-export function verifyAnswer(
-  raw: unknown,
-  sources: readonly AssistantSource[],
-  locale: Locale,
-): StructuredAnswer | null {
-  const checked = checkAnswer(raw, sources, locale);
-  return checked.kind === "ACCEPTED" ? checked.answer : null;
 }
 export function questionLocale(question: string, fallback: Locale): Locale {
   // An English question may contain a Chinese job name.

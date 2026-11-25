@@ -1,0 +1,26 @@
+{
+  "mode": "LOCAL_PRODUCTION_BUILD_SYNTHETIC_NO_PAID_MODEL",
+  "checks": [
+    "en: owner sees grouped failures and keyboard focus on the table",
+    "en: 390px has no page overflow",
+    "en: keyboard scroll reveals failure codes and counts",
+    "en: Viewer gets the stage example and keyboard composer focus",
+    "zh-TW: owner sees grouped failures and keyboard focus on the table",
+    "zh-TW: 390px has no page overflow",
+    "zh-TW: keyboard scroll reveals failure codes and counts",
+    "zh-TW: Viewer gets the stage example and keyboard composer focus"
+  ],
+  "screens": [
+    "en-ai-failures.png",
+    "en-ai-failures-390.png",
+    "en-ai-failures-390-codes.png",
+    "en-viewer-stage.png",
+    "zh-TW-ai-failures.png",
+    "zh-TW-ai-failures-390.png",
+    "zh-TW-ai-failures-390-codes.png",
+    "zh-TW-viewer-stage.png"
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "status": "PASS"
+}

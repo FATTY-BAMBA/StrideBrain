@@ -49,7 +49,9 @@ it.each(["en", "zh-TW"] as const)(
     async function page(path: string) {
       boundary.path = path;
       await act(() =>
-        root.render(createElement(JobChatPanel, { key: "J", locale, projectKey: "J" })),
+        root.render(
+          createElement(JobChatPanel, { key: "J", locale, projectKey: "J", canReadQuote: true }),
+        ),
       );
     }
     await page(base);
@@ -146,3 +148,16 @@ it("leaves Home's thread unbounded and does not automatically scroll it", async 
   expect(thread.querySelectorAll("article")).toHaveLength(1);
   expect(thread.scrollTop).toBe(0);
 });
+
+it.each(["en", "zh-TW"] as const)(
+  "offers the Viewer an answerable stage example (%s)",
+  async (locale) => {
+    boundary.path = `/${locale}/projects/J`;
+    await act(() =>
+      root.render(createElement(JobChatPanel, { locale, projectKey: "J", canReadQuote: false })),
+    );
+    expect(host.querySelector("textarea")?.placeholder).toBe(
+      locale === "en" ? "What stage is this job in?" : "這個專案目前在哪個階段？",
+    );
+  },
+);

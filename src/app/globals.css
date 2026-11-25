@@ -418,6 +418,7 @@
 
 .assistant-settings,
 .assistant-data {
+  min-width: 0;
   max-width: 52rem;
   padding: 1.25rem;
   border: 1px solid var(--legacy-line, #dedbd5);

@@ -13,7 +13,11 @@ export type QuotedItemPrice = Readonly<{
   clientName: string;
 }>;
 export type PriceListRow = QuotedItemPrice &
-  Readonly<{ timesQuoted: number; clientPrice?: QuotedItemPrice }>;
+  Readonly<{
+    timesQuoted: number;
+    clientPrice?: QuotedItemPrice;
+    sourceProjectKeys?: readonly string[];
+  }>;
 export type PriceReadResult = Readonly<{ rows: readonly PriceListRow[]; hasMore: boolean }>;
 export interface PriceListRepositoryPort {
   read(context: RuntimeContext, query: PriceQuery): Promise<PriceReadResult | null>;

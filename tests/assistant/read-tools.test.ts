@@ -12,7 +12,7 @@ import {
   type AssistantReadServices,
 } from "@/modules/assistant/application/read-tools";
 import { jobContext } from "../projects/job-fixture";
-import { checkAnswer } from "@/modules/assistant/domain/grounding";
+import { AnswerFactRegistry } from "@/modules/assistant/domain/fact-answers";
 import { roleBundle } from "@/modules/runtime-context/capabilities";
 const project = {
   businessKey: "J",
@@ -30,6 +30,7 @@ function setup() {
     comparison: { execute: vi.fn() },
     history: { execute: vi.fn() },
     home: { execute: vi.fn() },
+    prices: { execute: vi.fn() },
   } satisfies AssistantReadServices;
   const policies = { jobPolicy: vi.fn().mockResolvedValue({ id: "id", excluded: false }) };
   return { services, policies, tools: new AssistantReadTools(services, policies) };
@@ -173,18 +174,14 @@ describe("assistant read tools", () => {
     expect(count.facts.count).toBe(1);
     expect(row.sourceId).not.toBe(all.sources[0]!.sourceId);
     const ledger = [...all.sources, ...filtered.sources];
-    const raw = (text: string) => ({ text, sourceIds: [row.sourceId], followUps: [] });
-    expect(checkAnswer(raw("1 job"), ledger, "en")).toMatchObject({
-      kind: "ACCEPTED",
-      answer: { sourceIds: [row.sourceId, count.sourceId] },
-    });
-    expect(checkAnswer(raw("one job"), ledger, "en").kind).toBe("ACCEPTED");
-    expect(checkAnswer(raw("一個專案"), ledger, "zh-TW").kind).toBe("ACCEPTED");
-    for (const text of ["2 jobs", "two jobs", "兩個專案"])
-      expect(checkAnswer(raw(text), ledger, "en")).toEqual({
-        kind: "REJECTED",
-        reason: "UNSUPPORTED_NUMBER",
-      });
+    const registry = new AnswerFactRegistry("en");
+    registry.register(ledger);
+    const ref = registry
+      .modelSources([row])[0]!
+      .facts.find((f) => f.ref.endsWith(".reference"))!.ref;
+    expect(
+      registry.render({ parts: [{ say: "RECORDS_SHOW" }, { show: ref }], followUps: [] }),
+    ).toMatchObject({ kind: "ACCEPTED", answer: { sourceIds: [row.sourceId, count.sourceId] } });
   });
   it.each(["en", "zh-TW"] as const)(
     "returns display-ready quote and history facts in %s",
@@ -408,12 +405,11 @@ describe("assistant read tools", () => {
         status: "OK",
         sources: [{ facts: { count: 0 }, subjectProjectKeys: [] }],
       });
+      const registry = new AnswerFactRegistry("en");
+      registry.register(result.sources);
       expect(
-        checkAnswer(
-          { text: "0 records", sourceIds: [result.sources[0]!.sourceId], followUps: [] },
-          result.sources,
-          "en",
-        ).kind,
+        registry.render({ parts: [{ say: "RECORDS_SHOW" }, { show: "s1.list" }], followUps: [] })
+          .kind,
       ).toBe("ACCEPTED");
     },
   );
@@ -488,22 +484,15 @@ describe("firm-unit past quoted rates", () => {
         });
         expect(facts).not.toHaveProperty("median");
         expect(facts).not.toHaveProperty("unit");
-        const answer = (amount: string) => ({
-          text:
-            locale === "en"
-              ? `The past quoted price median is ${amount}.`
-              : `過往報價單價中位數為 ${amount}。`,
-          sourceIds: [result.sources[0]!.sourceId],
-          followUps: [],
-        });
-        expect(checkAnswer(answer(median), result.sources, locale).kind).toBe("ACCEPTED");
-        if (unit === "ping") {
-          expect(JSON.stringify(facts)).not.toMatch(/m²|m2|2,420|1,210|3,630/);
-          expect(checkAnswer(answer("NT$2,420/坪"), result.sources, locale)).toEqual({
-            kind: "REJECTED",
-            reason: "UNSUPPORTED_NUMBER",
-          });
-        }
+        const registry = new AnswerFactRegistry(locale);
+        registry.register(result.sources);
+        expect(
+          registry.render({
+            parts: [{ say: "RECORDS_SHOW" }, { show: "s1.displayMedian" }],
+            followUps: [],
+          }),
+        ).toMatchObject({ kind: "ACCEPTED", answer: { text: expect.stringContaining(median) } });
+        if (unit === "ping") expect(JSON.stringify(facts)).not.toMatch(/m²|m2|2,420|1,210|3,630/);
         expect(JSON.stringify(stored)).toBe(before);
       }
     },

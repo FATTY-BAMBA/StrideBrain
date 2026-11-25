@@ -1,3 +1,4 @@
+import type { ReadPriceList } from "@/modules/price-list/application/read-price-list";
 import { cityLabel } from "@/modules/projects/domain/taiwan-cities";
 import { areaUnitLabel, pricePerAreaInFirmUnit } from "@/modules/firm-lists/domain/area-unit";
 import { decimalToString, rescale } from "@/modules/finance/fixed-decimal";
@@ -103,6 +104,21 @@ export function assistantTools(lists: FirmLists): readonly ToolDefinition[] {
       },
     },
     {
+      name: "get_item_prices",
+      description:
+        "Find the firm's last issued unit price for an item from the Price list page. Search the item's description from the question (not a work category key); optional exact unit and job reference. At most five items, with last price/date and times quoted. A job adds its client's differing last price, never client identities.",
+      parameters: {
+        type: "object",
+        properties: {
+          description: { type: "string", minLength: 1, maxLength: 500 },
+          unit: { type: "string", maxLength: 32 },
+          projectKey: keySchema,
+        },
+        required: ["description"],
+        additionalProperties: false,
+      },
+    },
+    {
       name: "get_closed_job_lessons",
       description:
         "Read the same recent closed-job lessons as Home; reconciled actual cost is distinct from quote price.",
@@ -117,6 +133,7 @@ export type AssistantReadServices = Readonly<{
   comparison: Pick<GetHomeComparison, "execute">;
   history: Pick<GetQuotedHistory, "execute">;
   home: Pick<GetHomeDesk, "execute">;
+  prices: Pick<ReadPriceList, "execute">;
 }>;
 const empty = (status: ToolResult["status"]): ToolResult => ({ status, sources: [] });
 export class AssistantReadTools {
@@ -151,7 +168,7 @@ export class AssistantReadTools {
     if (Object.keys(args).some((k) => !Object.hasOwn(properties, k))) return empty("UNAVAILABLE");
     const projectKey = args.projectKey;
     if (
-      "projectKey" in properties &&
+      (definition.parameters.required as readonly string[] | undefined)?.includes("projectKey") &&
       (typeof projectKey !== "string" || !/^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$/.test(projectKey))
     )
       return empty("UNAVAILABLE");
@@ -197,6 +214,70 @@ export class AssistantReadTools {
       const result = await this.services.projects.execute(c);
       return result.kind === "AVAILABLE" ? result.projects : null;
     };
+    if (call.name === "get_item_prices") {
+      if (
+        typeof args.description !== "string" ||
+        !args.description.trim() ||
+        args.description.length > 500 ||
+        (args.unit !== undefined && (typeof args.unit !== "string" || args.unit.length > 32)) ||
+        (projectKey !== undefined &&
+          (typeof projectKey !== "string" || !/^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$/.test(projectKey)))
+      )
+        return empty("UNAVAILABLE");
+      const prices = await this.services.prices.execute(c, {
+        mode: "LIST",
+        search: args.description,
+        unit: args.unit ?? "",
+        page: 1,
+        projectKey: projectKey ?? null,
+      });
+      if (prices.kind !== "AVAILABLE") return empty("UNAVAILABLE");
+      const rows: AssistantSource[] = [];
+      for (const item of prices.rows) {
+        const keys = [
+          ...new Set([
+            ...(item.sourceProjectKeys ?? [item.projectKey]),
+            ...(item.clientPrice ? [item.clientPrice.projectKey] : []),
+            ...(typeof projectKey === "string" ? [projectKey] : []),
+          ]),
+        ];
+        const facts = {
+          description: item.description,
+          unit: item.unit,
+          lastPrice: formatMoney(item.unitPrice, item.currency),
+          lastQuoted: item.issuedOn,
+          timesQuoted: item.timesQuoted,
+          documentNumber: item.documentNumber,
+          ...(item.clientPrice
+            ? {
+                clientLastPrice: formatMoney(item.clientPrice.unitPrice, item.clientPrice.currency),
+                clientLastQuoted: item.clientPrice.issuedOn,
+                clientDocumentNumber: item.clientPrice.documentNumber,
+              }
+            : {}),
+        };
+        const row = source(
+          `${projectKey ?? ""}:${item.versionId}:${item.description}:${item.unit}`,
+          item.description,
+          href(item.projectKey, "/quote"),
+          facts,
+          keys,
+          [
+            "unit",
+            "lastPrice",
+            "lastQuoted",
+            "timesQuoted",
+            "documentNumber",
+            "clientLastPrice",
+            "clientLastQuoted",
+            "clientDocumentNumber",
+          ],
+        );
+        if (await this.canSend(c, [row])) rows.push(row);
+        if (rows.length === 5) break;
+      }
+      return finish(rows);
+    }
     if (call.name === "list_jobs") {
       if (
         (args.stageGroup !== undefined && !parseStageGroup(args.stageGroup)) ||
@@ -479,7 +560,7 @@ export class AssistantReadTools {
         .map((b) =>
           source(
             `${result.comparisonRunId}:${b.categoryId}`,
-            categoryLabel(c.locale, b.categoryId, catalog.workCategories),
+            `${projectKey} · ${categoryLabel(c.locale, b.categoryId, catalog.workCategories)}`,
             href(projectKey, "/quote"),
             {
               categoryId: b.categoryId,

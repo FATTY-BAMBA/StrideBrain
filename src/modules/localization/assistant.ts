@@ -1,3 +1,4 @@
+import { priceListCopy } from "./price-list";
 import { quoteDraftCopy } from "./quote-draft";
 import { quoteIssueCopy } from "./quote-issue";
 import { homeDeskCopy } from "./home-desk";
@@ -43,6 +44,11 @@ const en = {
     "An owner can switch AI off in Settings. People who can update a job can exclude it on its overview. With AI off or unavailable, record search continues to work.",
   terms: "Google Gemini API terms",
   sources: "Sources",
+  failures: "AI failures in the last seven days",
+  noFailures: "No AI failures in the last seven days.",
+  failureReason: "Reason",
+  failureCount: "Count",
+  failureCode: "Code",
 };
 const zh: typeof en = {
   title: "AI 偏好設定",
@@ -82,6 +88,11 @@ const zh: typeof en = {
     "擁有者可在設定中關閉 AI。有權更新專案的人可在專案總覽排除該專案。AI 關閉或無法使用時，仍可搜尋紀錄。",
   terms: "Google Gemini API 條款",
   sources: "來源",
+  failures: "最近七天的 AI 失敗紀錄",
+  noFailures: "最近七天沒有 AI 失敗紀錄。",
+  failureReason: "原因",
+  failureCount: "次數",
+  failureCode: "代碼",
 };
 export const assistantCopy = (locale: Locale) => (locale === "zh-TW" ? zh : en);
 
@@ -160,6 +171,7 @@ export function assistantQuoteStatus(locale: Locale, status: string | null): str
         ISSUED: c.issued,
         ACCEPTED: c.accepted,
         SUPERSEDED: c.superseded,
+        FINAL: locale === "zh-TW" ? "定稿" : "Final",
       } as Record<string, string>
     )[status ?? ""] ?? (status ? c.currentQuote : c.noQuote)
   );
@@ -215,10 +227,20 @@ export const quoteAmountLabelWords = {
 
 /** Keys stay in server DTOs; only these human labels cross the model boundary. */
 export function assistantFactLabels(locale: Locale): Readonly<Record<string, string>> {
+  const price = priceListCopy(locale);
   const quote = quoteDraftCopy(locale),
     issue = quoteIssueCopy(locale),
     home = homeDeskCopy(locale);
   return {
+    description: price.item,
+    lastPrice: price.lastPrice,
+    lastQuoted: price.lastQuoted,
+    timesQuoted: price.timesQuoted,
+    clientLastPrice: locale === "zh-TW" ? "此專案客戶上次單價" : "Last price for this job's client",
+    clientLastQuoted:
+      locale === "zh-TW" ? "此專案客戶上次報價日期" : "Last quoted for this job's client",
+    clientDocumentNumber:
+      locale === "zh-TW" ? "此專案客戶上次報價編號" : "Last quote number for this job's client",
     amountBeforeTax: quote.beforeTax,
     taxAmount: locale === "zh-TW" ? "營業稅" : "Tax",
     totalAmount: quote.total,
@@ -292,4 +314,30 @@ export function assistantFactLabels(locale: Locale): Readonly<Record<string, str
           nextOffset: "Next page offset",
         }),
   };
+}
+
+export function assistantFailureText(locale: Locale, code: string, status: number | null) {
+  const zh = locale === "zh-TW";
+  if (code === "PROVIDER_HTTP") {
+    if (status === 401 || status === 403)
+      return zh ? "服務提供者拒絕了 API 金鑰。" : "The provider refused the API key.";
+    if (status === 429)
+      return zh ? "已達到服務提供者的用量限制。" : "The provider's usage limit was reached.";
+    if (status !== null && status >= 500)
+      return zh ? "服務提供者發生錯誤。" : "The provider's service had an error.";
+    return zh ? "服務提供者拒絕了請求。" : "The provider refused the request.";
+  }
+  if (code === "PROVIDER_NETWORK")
+    return zh ? "無法連線至服務提供者。" : "The provider could not be reached.";
+  if (code === "TIMEOUT")
+    return zh ? "服務未在時限內回應。" : "The service did not respond within the time limit.";
+  if (code === "DAILY_CAP" || code === "TOOL_CAP" || code === "OUTPUT_CAP")
+    return zh
+      ? "此請求已達到應用程式的用量限制。"
+      : "This request reached an application usage limit.";
+  if (code === "ACCESS_CHANGED")
+    return zh ? "存取權限已變更，回答未顯示。" : "Access changed, so the answer was not shown.";
+  return zh
+    ? "回答未通過伺服器檢查，已改用紀錄搜尋。"
+    : "The answer did not pass the server checks; record search was used.";
 }

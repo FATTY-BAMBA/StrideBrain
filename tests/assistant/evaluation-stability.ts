@@ -1,3 +1,11 @@
+import {
+  decimalFromString,
+  decimalToString,
+  sum,
+  divide,
+  quantity,
+  compare,
+} from "@/modules/finance/fixed-decimal";
 import type { Locale } from "@/modules/localization/config";
 export const evaluationRounds = 3;
 export type ScoredRow = {
@@ -5,6 +13,10 @@ export type ScoredRow = {
   locale: Locale;
   verdict: string;
   wrongNumber: boolean;
+  wrongRecordValue: boolean;
+  factSelectionRegression?: boolean;
+  latencyMs: number;
+  estimatedUsd: string;
   wrongAmountLabel: boolean;
   badDisplayFormat: boolean;
   calls: number;
@@ -25,9 +37,11 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
     ["en", "zh-TW"].every(
       (locale) => questions.filter((q) => !q.required && q.locale === locale).length === 20,
     ) &&
-    new Set(questions.map((q) => q.id)).size === 54 &&
-    questions.filter((q) => q.required && !q.qualityRegression).length === 12 &&
-    questions.filter((q) => q.required && q.qualityRegression).length === 2;
+    new Set(questions.map((q) => q.id)).size === 62 &&
+    questions.filter((q) => q.required && !q.qualityRegression && !q.factSelectionRegression)
+      .length === 12 &&
+    questions.filter((q) => q.required && q.qualityRegression).length === 2 &&
+    questions.filter((q) => q.required && q.factSelectionRegression).length === 8;
   const sortedCalls = questions.map((q) => q.calls).sort((a, b) => a - b);
   const withinThree = sortedCalls.filter((n) => n <= 3).length;
   const callTargets = {
@@ -43,9 +57,36 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
       ...questions.filter((q) => q.namedJobRefusal).map((q) => q.calls),
     ),
   };
+  const latency = questions.map((q) => q.latencyMs).sort((a, b) => a - b);
+  const totalUsd = sum(
+    questions.map((q) => decimalFromString(q.estimatedUsd, 9)),
+    9,
+  );
+  const costPerQuestion = divide(totalUsd, quantity(String(questions.length || 1)), 12);
+  const limitCost = divide(decimalFromString("0.2475", 9), quantity("162"), 12);
+  const performance = {
+    medianMs: latency[Math.floor(latency.length / 2)] ?? 0,
+    p90Ms: latency[Math.max(0, Math.ceil(latency.length * 0.9) - 1)] ?? 0,
+    totalUsd: decimalToString(totalUsd),
+    costPerQuestionUsd: decimalToString(costPerQuestion),
+    baseline: { medianCalls: 2, p90Ms: 2000, costUsd: "0.198", questions: 162 },
+    limits: { p90Ms: 2500, costPerQuestionUsd: decimalToString(limitCost) },
+  };
+  const performancePassed =
+    callTargets.median <= 2 &&
+    performance.p90Ms <= 2500 &&
+    compare(costPerQuestion, limitCost) <= 0;
   return {
     round,
     callTargets,
+    performance,
+    performancePassed,
+    factSelectionRegressions: {
+      passed: questions.filter(
+        (q) => q.factSelectionRegression && q.verdict !== "wrong" && !q.wrongRecordValue,
+      ).length,
+      total: 8,
+    },
     qualityRegressions: {
       passed: questions.filter(
         (q) =>
@@ -59,7 +100,9 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
         (q) =>
           q.required &&
           !q.qualityRegression &&
+          !q.factSelectionRegression &&
           q.verdict !== "wrong" &&
+          !q.wrongRecordValue &&
           !q.wrongNumber &&
           !q.wrongAmountLabel,
       ).length,
@@ -67,12 +110,14 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
     },
     passed:
       complete &&
+      performancePassed &&
       withinThree * 10 >= questions.length * 9 &&
       callTargets.maximum <= 5 &&
       callTargets.namedRefusalMaximum <= 2 &&
       Object.values(scores).every((s) => s >= 16) &&
       questions.every(
         (q) =>
+          !q.wrongRecordValue &&
           !q.wrongNumber &&
           !q.wrongAmountLabel &&
           !q.badDisplayFormat &&
@@ -106,7 +151,7 @@ export function stabilitySummary<T extends ScoredRow>(
     passed:
       rounds.length === evaluationRounds &&
       rounds.every((r) => r.passed) &&
-      perQuestion.length === 54 &&
+      perQuestion.length === 62 &&
       ids.every((id) => rounds.every((r) => r.questions.some((q) => q.id === id))),
     rounds,
     perQuestion,
