@@ -120,5 +120,20 @@
       "round": 2,
       "reason": "Answer used job reference PRJ-ACTIVE-001 as quote document number instead of PRJ-ACTIVE-001-Q1; unchanged question gate passed."
     }
-  ]
+  ],
+  "reviewerHostedEvidence": {
+    "commentId": 7169198746,
+    "author": "FATTY-BAMBA",
+    "authorId": 101108617,
+    "commit": "d9baf60dca4595c3675ee39d652e96f0863e66a4",
+    "testSiteRunId": 45660596154,
+    "result": "OWNER_CHECKS_PASSED_WITH_REPORTED_COVERAGE_GAPS",
+    "appliesToFinalImplementation": true,
+    "notVerified": [
+      "Hosted Viewer settings",
+      "Neighbouring-city reason text (not present)",
+      "Builder screenshots and keyboard/mobile inspection"
+    ]
+  },
+  "ciEvidenceRunId": 45664552703
 }

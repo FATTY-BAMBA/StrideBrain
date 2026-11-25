@@ -158,3 +158,14 @@ Estimated cost, summed with exact decimal arithmetic across every question, scor
 Verified: raw capture and failure-path tests; the unchanged instruction hash; 68 focused tests; full local `npm run check` (187 files / 1,803 tests and production build); CI on the paid-evaluated commit; the three-round paid pass and complete raw artifact coverage. Final evidence-commit CI is reported in the PR checks and Builder comment.
 
 Not verified: hosted acceptance, screenshots or manual keyboard/mobile use. Hosted acceptance remains waiting for the Product Director. No hosted deployment, migration, seed, settings change or Test site workflow. PR #78 remains draft.
+
+
+## Reviewer-hosted evidence received during final verification
+
+[Reviewer (Claude), owner-authored comment 7169198746](https://github.com/FATTY-BAMBA/StrideBrain/pull/78#issuecomment-7169198746) reports hosted testing on `d9baf60` through [Test site run 45660596154](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45660596154), with data kept, signed in as 陳柏宇 (owner). The actual comment author is FATTY-BAMBA / 101108617. This is attributed reviewer evidence; the Builder did not run the Test site workflow or change hosted data/settings.
+
+The reviewer reports no finding from the checks performed: both migrations on kept data; preservation of current/out-of-date/not-compared states and comparison contents; firm client-type add/rename/retire and audit; Individual client/job creation; all city choices and bilingual display; and all three hosted Home draft examples. The reviewer explicitly says these results stand for `fba43b7`, which changed tests only; subsequent commits contain evidence/documentation only.
+
+Hosted gaps reported by the reviewer: Viewer settings access was not clicked through (covered by automated role tests). The comparison page has no neighbouring-city reason text to inspect, so that issue acceptance line could not be clicked through; the reviewer calls the line imprecise, and the unit tests cover all 33 border pairs and scores. No additional UI work is inferred from that note. Screenshots and manual keyboard/mobile inspection are not verified by this task. Final Product Director acceptance remains pending and the PR stays draft.
+
+The review comment's paid-pass status was written before the final result. Run 45662599108 has now passed as recorded above. [Final evidence CI 45664552703](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45664552703) also passed on `e75099d`; this last update records only the newly received hosted evidence.
