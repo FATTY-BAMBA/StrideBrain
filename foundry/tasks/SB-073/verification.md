@@ -130,6 +130,31 @@ Source: [owner-authored Reviewer (Claude) comment 7168905315](https://github.com
 
 `runJobDraftCase` now includes `rawDraft` for every scored and reported case, whether it passes or fails. If the provider returned no draft, the artifact contains explicit `null`. The complete raw synthetic output remains in the report only; the workflow's metadata-only logging and production usage logs are unchanged. The rest of the harness, cases, expected values, oracle, pass marks, model, instructions and server checks are unchanged. Existing reports are not rewritten.
 
-Regressions verify that all 99 passing deterministic outputs (96 scored plus three reported) survive JSON serialization intact, failed scored/reported outputs are retained, and provider failure records `rawDraft: null`. Existing server-check, instruction-hash and partial replay tests also pass. Focused suite: 3 files / 68 tests; [log](evidence/review-3-focused.log). Full local `npm run check` also passed: 187 files / 1,803 tests, format/design checks, lint (existing Prisma-config export warning only), typecheck and production build. [Full log](evidence/review-3-check.log). Final-code CI is pending before any paid dispatch.
+Regressions verify that all 99 passing deterministic outputs (96 scored plus three reported) survive JSON serialization intact, failed scored/reported outputs are retained, and provider failure records `rawDraft: null`. Existing server-check, instruction-hash and partial replay tests also pass. Focused suite: 3 files / 68 tests; [log](evidence/review-3-focused.log). Full local `npm run check` also passed: 187 files / 1,803 tests, format/design checks, lint (existing Prisma-config export warning only), typecheck and production build. [Full log](evidence/review-3-check.log). [CI 45661435953](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45661435953) passed on `fba43b774f41008cfabc5bad3d2082fd0ebb6cc8`, including real migration deployment, seed/verify twice, the full check and dependency audit.
 
-The fourth run has not yet been dispatched. It will use the exact commit that passes CI. No fifth run is authorized. Hosted acceptance remains waiting for the Product Director; PR stays draft, with no hosted operations or Test site workflow.
+Only after that CI success, the authorized [fourth and final run 45662599108](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45662599108) was dispatched on the same exact commit. It passed, with complete raw-draft coverage, as recorded below. No fifth run is authorized. Hosted acceptance remains waiting for the Product Director; PR stays draft, with no hosted operations or Test site workflow.
+
+
+## Fourth and final paid evaluation — passed
+
+[Run 45662599108](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45662599108) tested `fba43b774f41008cfabc5bad3d2082fd0ebb6cc8` with unchanged gemini-3.5-flash-lite, after [CI 45661435953](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45661435953) passed on that exact commit. **Overall result: passed.** [Full synthetic report](evidence/evaluation-4.json).
+
+| Round | Questions en | Questions zh-TW | Drafts en | Drafts zh-TW |
+| --- | --- | --- | --- | --- |
+| 1 | 27/27 | 27/27 | 16/16 | 16/16 |
+| 2 | 27/27 | 26/27 | 16/16 | 16/16 |
+| 3 | 27/27 | 27/27 | 16/16 | 16/16 |
+
+Question core scores were 20/20 en and 20/20 zh-TW, 20/20 and 19/20, then 20/20 and 20/20. All 14 required hosted/quality questions passed every round. All call targets passed: median 2, maximum 3, all 54 questions within three calls each round. No displayed wrong-number, amount-label or display-format flag. Saved findings passed 3/3 in both languages.
+
+One non-passing question remains visible: round 2 `zh-TW-awaiting` printed job reference `PRJ-ACTIVE-001` as the quote document number, instead of the expected `PRJ-ACTIVE-001-Q1`. The evaluator marked it wrong; it was not discarded by the server. The other two rounds passed that case, and the unchanged overall question gate passed. Its raw answer and per-question pass rate remain in the report; no check, expected value or instruction was changed for it.
+
+Every scored draft passed (96/96), including all 22 required cases in each round. The 12 cases per round that expect a client type kept the correct type (36/36 results), resolving the coverage uncertainty from the partial replay. `en-new-client-acceptance` attempted unsupported INDIVIDUAL from `Mr. Wang` in round 1 and `new client` in rounds 2 and 3; the existing name-overlap check and the confirmed relationship-word check dropped those types correctly. The three separately reported placeholder drafts also passed.
+
+Artifact inspection verified **99/99 `rawDraft` fields present and non-null**: 96 scored plus three reported. This includes all successful outputs, so the complete draft result set is now available for later server-check replay. Original reports and the partial replay evidence are retained unchanged. No additional runtime or harness changes followed this paid run; later commits contain documentation/evidence only.
+
+Estimated cost, summed with exact decimal arithmetic across every question, scored draft and reported placeholder: **US$0.298930900** for run 4. Cumulative cost across the four authorized runs: **US$1.185181500**. The fourth/final allowance is used; no fifth run was started.
+
+Verified: raw capture and failure-path tests; the unchanged instruction hash; 68 focused tests; full local `npm run check` (187 files / 1,803 tests and production build); CI on the paid-evaluated commit; the three-round paid pass and complete raw artifact coverage. Final evidence-commit CI is reported in the PR checks and Builder comment.
+
+Not verified: hosted acceptance, screenshots or manual keyboard/mobile use. Hosted acceptance remains waiting for the Product Director. No hosted deployment, migration, seed, settings change or Test site workflow. PR #78 remains draft.

@@ -3,7 +3,7 @@
   "branch": "build/sb-073-client-types-cities",
   "baseCommit": "9851ca6e000dacea19b9263188a83848dc623fd8",
   "issueUpdatedAt": "2026-11-25T14:35:29Z",
-  "status": "REVIEW_FIX_3_AWAITING_FINAL_PAID_EVALUATION",
+  "status": "WAITING_FOR_PRODUCT_DIRECTOR_HOSTED_ACCEPTANCE",
   "delivery": "A → B → C → D",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
@@ -36,6 +36,17 @@
       "estimatedUsd": "0.302131500",
       "questionGatePassed": true,
       "draftGatePassed": false
+    },
+    {
+      "number": 4,
+      "runId": 45662599108,
+      "commit": "fba43b774f41008cfabc5bad3d2082fd0ebb6cc8",
+      "status": "PASSED",
+      "authorization": "Product Director, fourth and final run after review-fix-3 CI passed",
+      "estimatedUsd": "0.298930900",
+      "questionGatePassed": true,
+      "draftGatePassed": true,
+      "rawDraftsRecorded": 99
     }
   ],
   "pullRequest": 78,
@@ -47,16 +58,17 @@
     "testFiles": 187,
     "tests": 1803
   },
-  "paidEvaluationPassed": false,
+  "paidEvaluationPassed": true,
   "finalInstructionPaidVerified": true,
-  "totalEstimatedUsd": "0.886250600",
+  "totalEstimatedUsd": "1.185181500",
   "ciFinalHead": "SEE_PR_CHECKS_AND_BUILDER_COMMENT",
   "additionalPaidEvaluationAuthorization": {
     "source": "Product Director in working chat, 2026-11-26 Asia/Taipei",
     "runs": 1,
     "issueRunNumber": 4,
     "final": true,
-    "condition": "After fix round 3 passes CI"
+    "condition": "After fix round 3 passes CI",
+    "used": true
   },
   "review": {
     "round": 3,
@@ -67,7 +79,7 @@
     "officialCityNames": "CONFIRMED_BY_PRODUCT_DIRECTOR",
     "instructionSha256": "c3bf0c8b9752f93fe72a76bc88afe1e5f4547a153ecdfd439a9c7d61de2894a2"
   },
-  "remainingPaidFailure": "Original unsupported clientType outputs now pass exact replay; full replay is unavailable because successful raw outputs were not recorded.",
+  "remainingPaidFailure": null,
   "freeReplay": {
     "sourceRunId": 45651010861,
     "rawOutputsAvailable": 3,
@@ -99,5 +111,14 @@
   },
   "previousCiVerifiedCommit": "d9baf60dca4595c3675ee39d652e96f0863e66a4",
   "review1CiRunId": 45650218324,
-  "review2CiRunId": 45655496663
+  "review2CiRunId": 45655496663,
+  "ciReview3RunId": 45661435953,
+  "ciVerifiedCommit": "fba43b774f41008cfabc5bad3d2082fd0ebb6cc8",
+  "remainingEvaluationNonPasses": [
+    {
+      "case": "zh-TW-awaiting",
+      "round": 2,
+      "reason": "Answer used job reference PRJ-ACTIVE-001 as quote document number instead of PRJ-ACTIVE-001-Q1; unchanged question gate passed."
+    }
+  ]
 }
