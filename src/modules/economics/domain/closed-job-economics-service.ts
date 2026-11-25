@@ -1,4 +1,13 @@
-import { compare, decimalToString, money, subtract, sum } from "@/modules/finance/fixed-decimal";
+import {
+  absolute,
+  compare,
+  decimalFromAtoms,
+  decimalToString,
+  divide,
+  money,
+  subtract,
+  sum,
+} from "@/modules/finance/fixed-decimal";
 import type {
   AuthorizedEconomicsBatch,
   EconomicsProjectSnapshot,
@@ -24,8 +33,37 @@ export type ClosedJobLesson = Readonly<{
   evidenceReferenceIds: readonly string[];
 }>;
 
+export type ClosedJobDifference = Readonly<{
+  /** Quoted price before tax minus reconciled actual cost; positive means below quote. */
+  amount: string;
+  absoluteAmount: string;
+  basisPoints: string;
+  percentOfQuote: string;
+  direction: "BELOW" | "ABOVE" | "EQUAL";
+}>;
+
 /** Same-job price versus actual cost, never margin or cross-job normalization. */
 export class ClosedJobEconomicsService {
+  /** Only the already-authorized, reconciled figures from a lesson enter this display calculation. */
+  jobDifference(
+    lesson: Pick<ClosedJobLesson, "quoteBeforeTax" | "actualCost">,
+  ): ClosedJobDifference | null {
+    const quote = money(lesson.quoteBeforeTax),
+      actual = money(lesson.actualCost);
+    if (quote.atoms <= 0n || actual.atoms < 0n) return null;
+    const difference = subtract(quote, actual);
+    return {
+      amount: decimalToString(difference),
+      absoluteAmount: decimalToString(absolute(difference)),
+      basisPoints: divide(difference, quote, 4, "HALF_UP").atoms.toString(),
+      // Round directly from the exact ratio, not from rounded basis points.
+      percentOfQuote: decimalToString(
+        decimalFromAtoms(divide(absolute(difference), quote, 3, "HALF_UP").atoms, 1),
+      ),
+      direction: difference.atoms > 0n ? "BELOW" : difference.atoms < 0n ? "ABOVE" : "EQUAL",
+    };
+  }
+
   calculate(input: ClosedJobFinancials, snapshotDate: string): ClosedJobLesson | null {
     return this.categoryDifferences(input, snapshotDate)[0] ?? null;
   }

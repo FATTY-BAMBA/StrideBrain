@@ -107,7 +107,16 @@ suite("SB-065 preserved seeded financial outputs", () => {
           zhTw: claimFindingText(claim, "zh-TW", context.firmLists.workCategories),
         })),
         suggestions: prepared.preparation.suggestions,
-        home: { stageCounts: home.stageCounts, closedJobs: home.closedJobs },
+        // Compare the original SB-065 figures and lessons. SB-063 adds a separate
+        // derived display field, covered by the closed-job domain/Home tests.
+        home: {
+          stageCounts: home.stageCounts,
+          closedJobs: home.closedJobs.map(({ project, lesson, financialState }) => ({
+            project,
+            lesson,
+            financialState,
+          })),
+        },
       };
       if (capture) writeFileSync(baseline, JSON.stringify(result, null, 2) + "\n");
       expect(JSON.parse(JSON.stringify(result))).toEqual(

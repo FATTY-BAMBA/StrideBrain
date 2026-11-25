@@ -58,6 +58,12 @@ suite("Home desk through the real scoped Prisma adapter", () => {
       difference: "1720000.00",
       exceeded: true,
     });
+    expect(result.closedJobs[0]?.costDifference).toMatchObject({
+      amount: "3880000.00",
+      basisPoints: "2243",
+      percentOfQuote: "22.4",
+      direction: "BELOW",
+    });
     expect(result.closedJobs[0]?.lesson?.evidenceReferenceIds.length).toBeGreaterThan(0);
     const refs = await getPrismaClient().evidenceReference.count({
       where: {
@@ -81,11 +87,16 @@ suite("Home desk through the real scoped Prisma adapter", () => {
     expect(result.canCreate).toBe(false);
     expect(result.closedJobs[0]?.project.name).toBe("Nanjing Brand Experience Center");
     expect(
-      result.closedJobs.every((job) => job.lesson === null && job.financialState === "RESTRICTED"),
+      result.closedJobs.every(
+        (job) =>
+          job.lesson === null && job.costDifference === null && job.financialState === "RESTRICTED",
+      ),
     ).toBe(true);
     expect(quoteRead).not.toHaveBeenCalled();
     expect(costRead).not.toHaveBeenCalled();
-    expect(JSON.stringify(result)).not.toMatch(/17300000|13420000|1720000|variancePercent/);
+    expect(JSON.stringify(result)).not.toMatch(
+      /17300000|13420000|1720000|3880000|22.4|variancePercent/,
+    );
   });
   it("uses the same member's saved Xinyi and Riverside category findings without replay", async () => {
     const context = await actor("membership_horizon_mei");

@@ -9,7 +9,7 @@ import { describe, it, expect, vi } from "vitest";
 import type * as ReactTypes from "react";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { HomeChat } from "@/components/demo-value/home-chat";
+import { HomeChat } from "@/components/assistant/home-chat";
 import { assistantCopy } from "@/modules/localization/assistant";
 import Knowledge from "@/app/[locale]/knowledge/page";
 import CustomerCare from "@/app/[locale]/customer-care/page";

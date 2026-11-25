@@ -26,6 +26,7 @@ describe("Stage 6 Project Workspace entry", () => {
     expect(overview).toContain("comparisonHref(locale, workspace.project.businessKey)");
     expect(overview).toContain("comparison.heroQuestion");
     expect(overview).toContain("workspace.permissions.canRunComparison");
+    expect(overview).not.toContain("stridebrain?project=");
   });
 
   it("keeps the workspace experience free of raw Prisma access", () => {

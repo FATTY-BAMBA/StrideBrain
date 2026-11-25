@@ -1,0 +1,5 @@
+2026-11-25T08:58:13.1554562Z   ref: 32be7fe
+2026-11-25T08:58:13.7129570Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/32be7fe*:refs/remotes/origin/32be7fe* +refs/tags/32be7fe*:refs/tags/32be7fe*
+2026-11-25T08:58:32.9139508Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/32be7fe*:refs/remotes/origin/32be7fe* +refs/tags/32be7fe*:refs/tags/32be7fe*
+2026-11-25T08:58:50.0560628Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/32be7fe*:refs/remotes/origin/32be7fe* +refs/tags/32be7fe*:refs/tags/32be7fe*
+2026-11-25T08:58:50.3199928Z ##[error]The process '/usr/bin/git' failed with exit code 1

@@ -284,15 +284,6 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
             <strong>{comparison.heroQuestion}</strong>
             <span>{comparison.heroPrompt}</span>
           </Link>
-          <Link
-            className={styles.questionLink}
-            href={
-              `/${locale}/stridebrain?project=${encodeURIComponent(workspace.project.businessKey)}` as Route
-            }
-          >
-            <strong>{valueCopy.brainTitle}</strong>
-            <span>{valueCopy.brainDescription}</span>
-          </Link>
         </div>
       </section>
     </div>

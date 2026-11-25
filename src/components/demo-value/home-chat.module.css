@@ -10,6 +10,16 @@
   display: grid;
   gap: 12px;
 }
+.jobThread {
+  max-height: 50vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  min-height: 0;
+}
+.jobThread:focus-visible {
+  outline: var(--focus-width) solid var(--focus);
+  outline-offset: var(--focus-offset);
+}
 .assistantMessage,
 .userMessage {
   display: grid;
@@ -214,4 +224,39 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+.answerLine {
+  display: block;
+  white-space: pre-wrap;
+}
+.draftCard {
+  min-width: 0;
+}
+.draftToggle {
+  width: 100%;
+  min-height: var(--control-default);
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  text-align: start;
+  font: inherit;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.draftToggle:focus-visible {
+  outline: var(--focus-width) solid var(--focus);
+  outline-offset: var(--focus-offset);
+}
+.draftToggle[aria-expanded="false"] {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.savedDraftNotice {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
 }

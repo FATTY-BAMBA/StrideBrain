@@ -3,6 +3,7 @@ import { AuthorizationService } from "@/modules/authorization/authorization-serv
 import {
   ClosedJobEconomicsService,
   type ClosedJobLesson,
+  type ClosedJobDifference,
 } from "@/modules/economics/domain/closed-job-economics-service";
 import { quoteReviewFinding } from "../domain/quote-review-finding";
 import type { StructuredEconomicsClaimDTO } from "@/modules/economics/domain/contracts";
@@ -47,6 +48,7 @@ export type HomeDesk = Readonly<{
   closedJobs: readonly Readonly<{
     project: ProjectEntryDTO;
     lesson: ClosedJobLesson | null;
+    costDifference: ClosedJobDifference | null;
     financialState: "AVAILABLE" | "RESTRICTED" | "UNAVAILABLE";
   }>[];
 }>;
@@ -256,6 +258,7 @@ export class GetHomeDesk {
         closedJobs.push({
           project: entry(row),
           lesson,
+          costDifference: lesson ? this.economics.jobDifference(lesson) : null,
           financialState: !authorized ? "RESTRICTED" : lesson ? "AVAILABLE" : "UNAVAILABLE",
         });
       }

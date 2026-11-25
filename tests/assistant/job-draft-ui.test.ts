@@ -5,7 +5,7 @@ import { createElement, act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { NewJobForm } from "@/components/projects/new-job-form";
 import { DraftableNewJob } from "@/components/projects/draftable-new-job";
-import { HomeChat } from "@/components/demo-value/home-chat";
+import { HomeChat } from "@/components/assistant/home-chat";
 import type { JobDraft } from "@/modules/assistant/domain/job-draft";
 const mocks = vi.hoisted(() => ({ create: vi.fn(), draft: vi.fn(), home: vi.fn(), ask: vi.fn() }));
 vi.mock("@/app/[locale]/projects/new/actions", () => ({ createProjectAction: mocks.create }));
@@ -144,3 +144,44 @@ it.each([
     );
   },
 );
+
+it("collapses old draft cards to their original request, preserves edits and can still submit them", async () => {
+  mocks.home.mockResolvedValue({ outcome: { kind: "DRAFT", draft }, form: seed });
+  mocks.create.mockResolvedValue({ kind: "INVALID", message: "test submitted" });
+  await act(() => root.render(createElement(HomeChat, { locale: "en", canDraftJob: true })));
+  async function request(text: string) {
+    host.querySelector<HTMLTextAreaElement>('textarea[name="message"]')!.value = text;
+    const button = [...host.querySelectorAll<HTMLButtonElement>("button")].find(
+      (b) => b.textContent === "Create a job",
+    )!;
+    await act(() => button.click());
+  }
+  await request("First original job request");
+  const first = host.querySelector<HTMLButtonElement>("button[aria-expanded]")!;
+  expect(first.textContent).toBe("First original job request");
+  const firstPanel = document.getElementById(first.getAttribute("aria-controls")!)!;
+  await act(() => type("name", "My edited first job"));
+  await request("Second original job request");
+  expect(first.getAttribute("aria-expanded")).toBe("false");
+  expect(firstPanel.hidden).toBe(true);
+  expect(firstPanel.querySelector<HTMLInputElement>('[name="name"]')!.value).toBe(
+    "My edited first job",
+  );
+  first.focus();
+  expect(document.activeElement).toBe(first);
+  expect(first.tabIndex).toBe(0);
+  await act(() => first.click());
+  expect(firstPanel.hidden).toBe(false);
+  expect(first.getAttribute("aria-expanded")).toBe("true");
+  // Submit the same retained form, with validation disabled here to isolate card state.
+  const form = firstPanel.querySelector("form")!;
+  form.noValidate = true;
+  await act(() => form.requestSubmit());
+  expect(mocks.create).toHaveBeenCalled();
+  const submitted = mocks.create.mock.calls.at(-1)!.find((v) => v instanceof FormData) as FormData;
+  expect(submitted.get("name")).toBe("My edited first job");
+  expect(mocks.home.mock.calls.slice(-2)).toEqual([
+    ["en", "First original job request"],
+    ["en", "Second original job request"],
+  ]);
+});

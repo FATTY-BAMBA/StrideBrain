@@ -273,7 +273,20 @@ describe("assistant read tools", () => {
     };
     f.services.home.execute.mockResolvedValue({
       kind: "AVAILABLE",
-      closedJobs: [{ project, financialState: "AVAILABLE", lesson }],
+      closedJobs: [
+        {
+          project,
+          financialState: "AVAILABLE",
+          lesson,
+          costDifference: {
+            amount: "200.00",
+            percentOfQuote: "20.0",
+            direction: "BELOW",
+            basisPoints: "2000",
+            absoluteAmount: "200.00",
+          },
+        },
+      ],
     });
     const result = await f.tools.execute(
       jobContext({ role: "ORGANIZATION_ADMIN", capabilities: roleBundle("ORGANIZATION_ADMIN") }),
@@ -286,6 +299,9 @@ describe("assistant read tools", () => {
       closedLessonText(lesson, "en", seededFirmLists.workCategories),
     );
     expect(result.sources[0]!.facts.costComparison).not.toBe("Actual cost exceeds quoted price");
+    expect(result.sources[0]!.facts).not.toHaveProperty("costDifference");
+    expect(result.sources[0]!.facts).not.toHaveProperty("basisPoints");
+    expect(result.sources[0]!.facts).not.toHaveProperty("percentOfQuote");
   });
   it("resolves a Chinese job name in an English question without widening access", async () => {
     const f = setup();

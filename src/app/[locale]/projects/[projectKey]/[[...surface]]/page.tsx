@@ -4,7 +4,6 @@ import { AssistantControl } from "@/components/assistant/assistant-control";
 import { createAssistantControlServices } from "@/lib/server/assistant-services";
 import { notFound } from "next/navigation";
 
-import { ProjectLocalNav } from "@/components/projects/project-local-nav";
 import { ProjectWorkspaceOverview } from "@/components/projects/project-workspace-overview";
 import { ProjectActions } from "@/components/internal-review/project-actions";
 import { FoundationPage } from "@/components/ui/foundation-page";
@@ -65,7 +64,6 @@ export default async function ProjectWorkspacePage({
         : receiptOutcome;
     return (
       <div className="foundation-page">
-        <ProjectLocalNav locale={rawLocale} projectKey={projectKey} labels={catalog} />
         <ProjectActions
           locale={rawLocale}
           projectKey={projectKey}
@@ -95,7 +93,6 @@ export default async function ProjectWorkspacePage({
         ]);
         return (
           <div className="foundation-page">
-            <ProjectLocalNav locale={rawLocale} projectKey={projectKey} labels={catalog} />
             <ProjectWorkspaceOverview locale={rawLocale} workspace={outcome.workspace} />
             {address && <SiteAddressForm locale={rawLocale} value={address} />}
             {policy && (
@@ -118,7 +115,6 @@ export default async function ProjectWorkspacePage({
       title={catalog["project.unavailableTitle"]}
       description={catalog["project.unavailableDescription"]}
     >
-      <ProjectLocalNav locale={rawLocale} projectKey={projectKey} labels={catalog} />
       <section className="project-unavailable" aria-labelledby="project-state-title">
         <div>
           <span className="state-label">{catalog["state.notConnected"]}</span>

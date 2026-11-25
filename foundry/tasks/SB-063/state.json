@@ -1,0 +1,90 @@
+{
+  "issue": 63,
+  "branch": "build/sb-063-job-pages",
+  "baseCommit": "a45e84083b28a41e28b9e674a64232d505b95ac4",
+  "status": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "delivery": "A → B → C",
+  "pullRequestDraft": true,
+  "hostedAcceptance": "ROUND_1_PASSED_ROUND_2_WAITING_FOR_PRODUCT_DIRECTOR",
+  "paidEvaluationLimit": 2,
+  "paidEvaluationRuns": [
+    {
+      "runId": 45580903665,
+      "commit": "32be7fe3f227c4d0856b0f4da76592f3645d9629",
+      "status": "CHECKOUT_FAILED",
+      "estimatedUsd": "0",
+      "modelCalls": 0
+    },
+    {
+      "runId": 45581228542,
+      "commit": "32be7fe3f227c4d0856b0f4da76592f3645d9629",
+      "status": "PASSED",
+      "estimatedUsd": "0.254088300"
+    }
+  ],
+  "pullRequest": 76,
+  "localCheck": {
+    "tests": 1769,
+    "files": 182,
+    "passed": true
+  },
+  "ci": {
+    "evidence": "PR #76 checks and Builder round-2 report",
+    "implementationCommit": "447a1f6752001d66e60ecbd179c8047000ebe82b",
+    "implementationRunId": 45631095814,
+    "status": "AWAITING_FINAL_HEAD_CI"
+  },
+  "evaluation": {
+    "rounds": 3,
+    "newCasesPassedEachRound": 4,
+    "english": [
+      27,
+      27,
+      27
+    ],
+    "zhTW": [
+      27,
+      27,
+      25
+    ],
+    "questionsPerLanguage": 27,
+    "draftsPerLanguageEachRound": 12,
+    "passed": true
+  },
+  "reviewRound": 2,
+  "reviewComment": 7164464279,
+  "provisionalDecisions": [],
+  "reviewVerification": {
+    "round": 2,
+    "focusedTests": 18,
+    "focusedFiles": 3,
+    "fullCheck": true,
+    "ciEvidence": "PR #76 checks and Builder round-2 report"
+  },
+  "confirmedDecisions": [
+    {
+      "decision": "Selected-job question placeholder",
+      "sourceComment": 7158463671,
+      "status": "CONFIRMED_BY_PRODUCT_DIRECTOR",
+      "decidedAt": "2026-11-25T17:32:00+08:00"
+    },
+    {
+      "decision": "Bound job-panel thread to half the viewport with accessible internal scrolling",
+      "sourceComment": 7164754978,
+      "status": "CONFIRMED_BY_PRODUCT_DIRECTOR",
+      "decidedAt": "2026-11-25T22:05:00+08:00"
+    },
+    {
+      "decision": "Remove overview link to Home chat; retain comparison link",
+      "sourceComment": 7164754978,
+      "status": "CONFIRMED_BY_PRODUCT_DIRECTOR",
+      "decidedAt": "2026-11-25T22:05:00+08:00"
+    }
+  ],
+  "hostedEvidence": {
+    "commit": "47ead776b0bfbbe509fad7373020308daed1f4b4",
+    "runId": 45592357857,
+    "reportedByOwnerComment": 7164464279,
+    "passed": true
+  }
+}

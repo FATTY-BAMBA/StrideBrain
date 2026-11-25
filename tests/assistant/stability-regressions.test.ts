@@ -283,7 +283,7 @@ describe("stability regressions", () => {
   });
   const rows = (en: number, zh: number) =>
     ["en", "zh-TW"].flatMap((locale) =>
-      Array.from({ length: 25 }, (_, i) => ({
+      Array.from({ length: 27 }, (_, i) => ({
         id: `${locale}-${i}`,
         locale: locale as "en" | "zh-TW",
         required: i >= 20,
@@ -323,12 +323,31 @@ describe("stability regressions", () => {
     expect(roundSummary(1, critical).passed).toBe(false);
     expect(stabilitySummary([roundSummary(1, rows(20, 20))]).passed).toBe(false);
   });
+  it("requires each added job-page case to pass in every round", async () => {
+    const complete = rows(20, 20);
+    for (const locale of ["en", "zh-TW"])
+      for (const index of [25, 26]) {
+        const failed = complete.map((q) =>
+          q.id === `${locale}-${index}` ? { ...q, verdict: "wrong" } : q,
+        );
+        expect(roundSummary(1, failed).passed).toBe(false);
+        expect(
+          (await runEvaluationRounds(async (round) => (round === 2 ? failed : complete))).passed,
+        ).toBe(false);
+      }
+    expect(
+      roundSummary(
+        1,
+        complete.filter((q) => !q.id.endsWith("-26")),
+      ).passed,
+    ).toBe(false);
+  });
   it("enforces call targets and rejects every displayed mislabel", () => {
     const sample = rows(20, 20);
     for (let i = 0; i < 5; i++) sample[i]!.calls = 4;
     expect(roundSummary(1, sample)).toMatchObject({
       passed: true,
-      callTargets: { median: 2, maximum: 4, withinThree: 45, questions: 50 },
+      callTargets: { median: 2, maximum: 4, withinThree: 49, questions: 54 },
     });
     sample[5]!.calls = 4;
     expect(roundSummary(1, sample).passed).toBe(false);

@@ -6,6 +6,8 @@ vi.mock("@/modules/price-list/request", () => ({
   readQuotePrices: vi.fn().mockResolvedValue({ kind: "AVAILABLE", rows: [], hasMore: false }),
 }));
 vi.mock("@/app/[locale]/projects/actions", () => ({ updateProjectStageAction: vi.fn() }));
+import { JobChatPanel } from "@/components/assistant/job-chat-panel";
+import { JobChatStateProvider } from "@/components/assistant/job-chat-state";
 import { act, createElement } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, expect, it, vi } from "vitest";
@@ -19,6 +21,7 @@ import { quoteDraftCopy } from "@/modules/localization/quote-draft";
 import { claimFindingText } from "@/modules/economics/presentation/claim-findings";
 import { quoteIssueCopy } from "@/modules/localization/quote-issue";
 const mock = vi.hoisted(() => ({
+  pathname: "/en/projects/J-TEST/quote",
   comparison: vi.fn().mockResolvedValue({ kind: "NOT_RUN" }),
   save: vi.fn(),
   issuePrepare: vi.fn(),
@@ -26,7 +29,12 @@ const mock = vi.hoisted(() => ({
   totals: vi.fn().mockResolvedValue(null),
   mutate: vi.fn().mockResolvedValue({ kind: "ACCEPTED" }),
 }));
-vi.mock("next/navigation", () => ({ useRouter: () => ({ refresh: vi.fn() }) }));
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({ refresh: vi.fn() }),
+  usePathname: () => mock.pathname,
+}));
+vi.mock("@/app/[locale]/home-chat-actions", () => ({ askHomeAction: vi.fn() }));
+vi.mock("@/app/[locale]/job-draft-actions", () => ({ draftJobFromHome: vi.fn() }));
 vi.mock("@/app/[locale]/projects/[projectKey]/quote/actions", () => ({
   saveQuoteDraftAction: mock.save,
   prepareQuoteDraftAction: mock.prepare,
@@ -606,5 +614,82 @@ it.each(["en", "zh-TW"] as const)(
     expect(host.textContent?.split(sentence)).toHaveLength(2);
     expect(host.querySelector("#quote-issue")?.textContent).not.toContain(sentence);
     expect(host.textContent).not.toContain(quoteIssueCopy(locale).findings);
+  },
+);
+
+it.each(["en", "zh-TW"] as const)(
+  "shares the editor's dirty flag with the chat, clears after save and on leaving quote (%s)",
+  async (locale) => {
+    mock.pathname = `/${locale}/projects/J-TEST/quote`;
+    const initial = view(true);
+    const line = locale === "en" ? "Answers use the last saved draft." : "回答依據最後儲存的草稿。";
+    const draw = (showEditor = true) =>
+      createElement(JobChatStateProvider, null, [
+        createElement(JobChatPanel, { key: "chat", locale, projectKey: "J-TEST" }),
+        showEditor
+          ? createElement(QuoteDocumentEditor, { key: "editor", initial, issue: null, locale })
+          : createElement("p", { key: "other" }, "Other tab"),
+      ]);
+    await act(() => root.render(draw()));
+    const toggle = host.querySelector<HTMLButtonElement>("button[aria-controls]")!;
+    await act(() => toggle.click());
+    expect(host.textContent).not.toContain(line);
+    const form = host.querySelector<HTMLFormElement>('form:has(textarea[name="message"])')!;
+    expect(form.querySelector('input[name="projectKey"]')?.getAttribute("value")).toBe("J-TEST");
+    const edit = async () => {
+      const field = host.querySelector<HTMLTextAreaElement>("#quote-document-save textarea")!;
+      await act(() => {
+        Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, "value")!.set!.call(
+          field,
+          "Edited work",
+        );
+        field.dispatchEvent(new Event("input", { bubbles: true }));
+      });
+    };
+    await edit();
+    const notice = form.querySelector('[role="status"]');
+    expect(notice?.textContent).toBe(line);
+    expect(notice?.nextElementSibling).toBe(form.querySelector('textarea[name="message"]'));
+    // Failed saves keep the existing dirty state and the notice.
+    mock.save.mockResolvedValue({ result: { kind: "UNAVAILABLE" } });
+    await act(() =>
+      host
+        .querySelector("#quote-document-save")!
+        .dispatchEvent(new Event("submit", { bubbles: true, cancelable: true })),
+    );
+    expect(form.textContent).toContain(line);
+    mock.save.mockImplementation(async (_locale, raw) => ({
+      result: {
+        kind: "SAVED",
+        versionId: "version-2",
+        versionNumber: 2,
+        firstSave: false,
+        totals: initial.saved!.totals,
+      },
+      view: {
+        ...initial,
+        saved: {
+          ...initial.saved!,
+          id: "version-2",
+          document: { ...initial.saved!.document!, sections: raw.sections, discount: raw.discount },
+        },
+      },
+    }));
+    await act(() =>
+      host
+        .querySelector("#quote-document-save")!
+        .dispatchEvent(new Event("submit", { bubbles: true, cancelable: true })),
+    );
+    expect(form.textContent).not.toContain(line);
+    const raw = mock.save.mock.calls.at(-1)![1];
+    expect(raw).not.toHaveProperty("dirty");
+    expect(raw).not.toHaveProperty("quoteHasUnsavedChanges");
+    // A fresh edit followed by leaving the editor clears the in-memory notice.
+    await act(() => button(quoteDocumentCopy(locale).addItem).click());
+    expect(form.textContent).toContain(line);
+    mock.pathname = `/${locale}/projects/J-TEST/actions`;
+    await act(() => root.render(draw(false)));
+    await act(() => toggle.click());
+    expect(form.textContent).not.toContain(line);
   },
 );
