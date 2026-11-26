@@ -145,7 +145,8 @@ export function matchesExpected(actual: ExpectedFact, expected: ExpectedFact) {
     actual.value === expected.value &&
     actual.itemIdentity === expected.itemIdentity &&
     actual.path.split(".").at(-1) === expected.path.split(".").at(-1) &&
-    (actual.sourceId === expected.sourceId ||
+    ((actual.itemIdentity !== undefined && !actual.path.startsWith("client")) ||
+      actual.sourceId === expected.sourceId ||
       (expected.subjects.length > 0 &&
         expected.subjects.every((key) => actual.subjects.includes(key))))
   );

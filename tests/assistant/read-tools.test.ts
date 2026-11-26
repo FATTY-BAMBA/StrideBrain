@@ -36,6 +36,15 @@ function setup() {
   return { services, policies, tools: new AssistantReadTools(services, policies) };
 }
 describe("assistant read tools", () => {
+  it("describes the optional item unit as a stored value to inspect before filtering, never a translated word", () => {
+    const tool = assistantTools(seededFirmLists).find(
+      (t) => t.name === "get_price_list_item_last_prices",
+    )!;
+    const properties = tool.parameters.properties as Record<string, { description?: string }>;
+    expect(properties.unit!.description).toContain("Omit until known");
+    expect(properties.unit!.description).toContain("do not translate");
+    expect(tool.parameters.required).toEqual(["description"]);
+  });
   it("defines bilingual pricing categories and refuses invented category keys before reading history", async () => {
     const tool = assistantTools(seededFirmLists).find(
       (t) => t.name === "get_comparison_category_price_ranges",

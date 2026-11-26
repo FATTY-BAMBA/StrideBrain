@@ -213,9 +213,26 @@ describe("evaluation by selected references", () => {
         [row],
       ).find((f) => f.path === "lastPrice")!;
     expect(matchesExpected(select(withJob), expected)).toBe(true);
+    // Run 5 selected the identical global item without the oracle's optional page context.
+    const expectedWithJob = expectedFacts(question, [withJob])[0]!;
+    expect(
+      matchesExpected(select({ ...item, subjectProjectKeys: item.projectKeys }), expectedWithJob),
+    ).toBe(true);
+    expect(
+      matchesExpected(
+        {
+          ...select(withJob),
+          sourceId: "other-client-source",
+          path: "clientLastPrice",
+          subjects: ["OTHER-CLIENT-JOB"],
+        },
+        { ...expectedWithJob, path: "clientLastPrice", subjects: ["CONTEXT-JOB"] },
+      ),
+    ).toBe(false);
     for (const facts of [
       { ...item.facts, description: "Floor" },
       { ...item.facts, unit: "m²" },
+      { ...item.facts, documentNumber: "DIFFERENT-Q1" },
       { ...item.facts, lastPrice: "NT$9,999" },
     ])
       expect(matchesExpected(select({ ...withJob, facts }), expected)).toBe(false);

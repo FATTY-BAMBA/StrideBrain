@@ -21,7 +21,7 @@ export class FakeAssistantModel implements AssistantModelPort {
     )
       return {
         ...reply,
-        result: { ...reply.result, answer: { namedJobs: [], ...reply.result.answer } },
+        result: { ...reply.result, answer: { jobMentions: [], ...reply.result.answer } },
       };
     return reply;
   }

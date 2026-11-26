@@ -4,9 +4,14 @@ export type AssistantProjectIdentity = Readonly<{
   names: readonly string[];
 }>;
 /** Literal authorized names in either language or complete references; never fuzzy record lookup. */
-export function mentionsIdentity(text: string, value: string): boolean {
+export function identityMention(text: string, value: string): string | null {
   const escaped = value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  return !!value && new RegExp(`(?<![A-Za-z0-9_/-])${escaped}(?![A-Za-z0-9_/-])`, "i").test(text);
+  return value
+    ? (new RegExp(`(?<![A-Za-z0-9_/-])${escaped}(?![A-Za-z0-9_/-])`, "i").exec(text)?.[0] ?? null)
+    : null;
+}
+export function mentionsIdentity(text: string, value: string): boolean {
+  return identityMention(text, value) !== null;
 }
 export function namedProjects(question: string, projects: readonly AssistantProjectIdentity[]) {
   return projects.filter((p) =>
@@ -52,9 +57,13 @@ export function declaredSubjects(
   question: string,
   projects: readonly AssistantProjectIdentity[],
 ): readonly string[] | null {
-  if (!raw || typeof raw !== "object" || !Array.isArray((raw as { namedJobs?: unknown }).namedJobs))
+  if (
+    !raw ||
+    typeof raw !== "object" ||
+    !Array.isArray((raw as { jobMentions?: unknown }).jobMentions)
+  )
     return null;
-  const names = (raw as { namedJobs: unknown[] }).namedJobs;
+  const names = (raw as { jobMentions: unknown[] }).jobMentions;
   if (names.length > 4) return null;
   const keys: string[] = [];
   for (const name of names) {

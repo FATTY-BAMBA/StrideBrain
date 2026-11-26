@@ -109,12 +109,12 @@ async function evaluateQuestion(
     async generate(input) {
       const sent = JSON.parse(input.messages[0]!.text) as {
         subjectProjects?: { reference: string; names: string[] }[];
-        selectedProjectReference?: string;
+        pageContextReference?: string;
       };
       sentSubjectNames = sent.subjectProjects?.flatMap((p) => p.names) ?? [];
       sentReferenceTexts = [
         ...(sent.subjectProjects?.map((p) => p.reference) ?? []),
-        ...(sent.selectedProjectReference ? [sent.selectedProjectReference] : []),
+        ...(sent.pageContextReference ? [sent.pageContextReference] : []),
       ];
       const reply = await (provider ?? fake).generate(input);
       if (reply.result.kind === "ANSWER") rawAnswer = reply.result.answer;

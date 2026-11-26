@@ -153,7 +153,7 @@ suite("hosted regressions through authorized records and the Home server action"
     expect(turn.aiSources?.every((s) => s.href.startsWith("/zh-TW/"))).toBe(true);
     const sent = JSON.parse(fake.requests[0]!.messages[0]!.text);
     expect(sent.subjectProjects[0].reference).toBe("PRJ-ACTIVE-001");
-    expect(sent.selectedProjectReference).toBeUndefined();
+    expect(sent.pageContextReference).toBeUndefined();
   });
   it("sends the open job when the question names no job", async () => {
     const { turn, fake } = await ask(
@@ -163,7 +163,7 @@ suite("hosted regressions through authorized records and the Home server action"
     );
     expect(turn.ai).toBe(true);
     const sent = JSON.parse(fake.requests[0]!.messages[0]!.text);
-    expect(sent.selectedProjectReference).toBe("J-2611-R7K3");
+    expect(sent.pageContextReference).toBe("J-2611-R7K3");
     expect(sent.subjectProjects).toBeUndefined();
   });
   it("omits the optional panel for inaccessible jobs and still rejects a forged form project", async () => {

@@ -74,7 +74,7 @@ describe("bounded read-only assistant", () => {
           ...reply,
           result: {
             kind: "ANSWER",
-            answer: { ...(reply.result.answer as object), namedJobs: [name] },
+            answer: { ...(reply.result.answer as object), jobMentions: [name] },
           },
         },
       ]);
@@ -524,8 +524,8 @@ describe("bounded read-only assistant", () => {
       sources: [{ href: "/zh-TW/projects/J" }],
     });
     const message = JSON.parse(f.model.requests[0]!.messages[0]!.text);
-    expect(message.subjectProjects).toEqual([{ reference: "J", names: ["Named job", "指定專案"] }]);
-    expect(message).not.toHaveProperty("selectedProjectReference");
+    expect(message.subjectProjects).toEqual([{ reference: "J", names: ["Named job"] }]);
+    expect(message).not.toHaveProperty("pageContextReference");
     expect(f.model.requests[0]!.instructions).toContain(
       "follow-up questions the person can ask and these read tools can answer",
     );
@@ -566,7 +566,7 @@ describe("bounded read-only assistant", () => {
         question: "How many jobs?",
         ...(projectKey ? { projectKey } : {}),
       });
-      expect(JSON.parse(f.model.requests[0]!.messages[0]!.text).selectedProjectReference).toBe(
+      expect(JSON.parse(f.model.requests[0]!.messages[0]!.text).pageContextReference).toBe(
         projectKey,
       );
     }
@@ -603,7 +603,7 @@ describe("bounded read-only assistant", () => {
         result: {
           kind: "ANSWER",
           answer: {
-            namedJobs: ["Job", "Other job"],
+            jobMentions: ["Job", "Other job"],
             parts: [{ say: "RECORDS_SHOW" }, { show: "s1.name" }],
             followUps: [],
           },
@@ -873,7 +873,7 @@ describe("bounded read-only assistant", () => {
       answer: { text: expect.stringContaining("NT$100 below") },
     });
     expect(JSON.parse(f.model.requests[0]!.messages[0]!.text)).not.toHaveProperty(
-      "selectedProjectReference",
+      "pageContextReference",
     );
     expect(out).not.toHaveProperty("action");
   });

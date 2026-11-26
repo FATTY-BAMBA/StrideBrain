@@ -39,12 +39,12 @@ export type AnswerSelection = Readonly<{
 export const answerParameters = {
   type: "object",
   properties: {
-    namedJobs: {
+    jobMentions: {
       type: "array",
       maxItems: 4,
       items: { type: "string", minLength: 1, maxLength: 280 },
       description:
-        "Every job name or job reference explicitly named in the CURRENT question, copied verbatim. Include inaccessible or unknown jobs. Empty for implicit page context, item descriptions or quote document numbers. Never copy a job just because it is the page default.",
+        "Verbatim job-name/reference substrings of currentQuestion, including unknown jobs. [] if none. Do not copy from pageContextReference or tool results; no translated aliases, pronouns, items or quote document numbers.",
     },
     parts: {
       type: "array",
@@ -75,7 +75,7 @@ export const answerParameters = {
     },
     followUps: { type: "array", items: { type: "string", maxLength: 160 }, maxItems: 3 },
   },
-  required: ["namedJobs", "parts", "followUps"],
+  required: ["jobMentions", "parts", "followUps"],
   additionalProperties: false,
 } as const;
 
@@ -85,11 +85,14 @@ export function parseFactAnswer(
   const r = record(value);
   if (
     !r ||
-    Object.keys(r).some((k) => !["parts", "followUps", "namedJobs"].includes(k)) ||
-    (r.namedJobs !== undefined &&
-      (!Array.isArray(r.namedJobs) ||
-        r.namedJobs.length > 4 ||
-        r.namedJobs.some((v) => typeof v !== "string" || !v.trim() || v.length > 280))) ||
+    Object.keys(r).some((k) => !["parts", "followUps", "jobMentions", "namedJobs"].includes(k)) ||
+    [r.jobMentions, r.namedJobs].some(
+      (mentions) =>
+        mentions !== undefined &&
+        (!Array.isArray(mentions) ||
+          mentions.length > 4 ||
+          mentions.some((v) => typeof v !== "string" || !v.trim() || v.length > 280)),
+    ) ||
     !Array.isArray(r.parts) ||
     r.parts.length > 14 ||
     !Array.isArray(r.followUps) ||

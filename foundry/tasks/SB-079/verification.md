@@ -214,3 +214,31 @@ Free verification:
 Full check, CI and additional paid-run results follow below when complete. No migration was added or edited in round 2. No hosted deployment, database change, seed, setting change or Test site workflow was performed. Hosted retest, live-provider browser integration and hosted timing callback still await the Product Director; the earlier 10–12 second delay's cause remains unverified. PR #80 stays draft.
 
 Round-2 final local `npm run check` passes: **1,971 tests / 197 files**, format, design tokens (no new legacy values), lint (only existing prisma.config.ts warning), typecheck and production build. The expanded free fake evaluation passes **252/252**, all 42 required cases and all 12 model-reaching unresolved-subject cases per round. A concurrent in-progress first check saw the newly added assertion before its source module was reloaded; the finalized complete rerun passes. Implementation CI and paid run 5 are pending this commit.
+
+[Round-2 CI 45748758007](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45748758007) passed on `863f4da44877128dc6cac1c73afa571fa182134e`: 1,971 tests / 197 files, production build, real migration deployment, seed/verify twice and zero production dependency vulnerabilities. [Paid run 5, 45749557326](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45749557326), was dispatched only after CI passed, from the workflow on main with that exact input commit. It is the first of the two additionally authorized dispatches.
+
+## Paid run 5 — failed; corrections before the final authorized run
+
+[Run 45749557326](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45749557326), `863f4da44877128dc6cac1c73afa571fa182134e`. The unchanged full report is evidence/paid-run-5.json; per-question rates and totals are in paid-run-5-summary.json.
+
+| Round | en /20 | zh-TW /20 | Required /42 | Wrong displayed values | Discards | Median / max calls | Named-refusal max | p90 ms | Cost/question USD |
+| --- | ---: | ---: | ---: | ---: | ---: | --- | ---: | ---: | ---: |
+| 1 | 20 | 20 | 30 | 0 | 0 | 2 / 5 | 5 | 1719 | 0.001560509524 |
+| 2 | 19 | 20 | 34 | 0 | 1 | 2 / 5 | 5 | 1756 | 0.001582901190 |
+| 3 | 20 | 20 | 31 | 0 | 0 | 2 / 5 | 5 | 1681 | 0.001544630952 |
+
+All rounds fail the required-case, named-refusal-call and cost-per-question gates. The cost limit remains US$0.001527777778; it was not raised. The 12 unresolved-subject cases reach the model and refuse in every round, but one wording takes five calls after searching the fragment “02” and trying the page job; its wrongly copied metadata is refused. No substituted page-job facts are shown. The original closed-job en/zh cases pass 3/3 with the full bundled figures. Drafts remain 16/16 per language per round; the separate residential case is 3/3.
+
+Most failed required answers contain the right selected facts but invalid subject metadata: the model copies the page reference or both language aliases although only one name, or no name, occurs in the current question. The exact-occurrence check correctly refuses these. One malformed answer repeats the say part and is discarded. Item cases also expose an invented translated unit filter (“ping” rather than the stored “坪”), and an evaluator asymmetry for the same global price with versus without optional job context.
+
+Run cost **US$0.495662000** (questions US$0.393795500; drafts US$0.101866500); cumulative five-run cost **US$1.927086000**. This failed report is preserved as run, not rescored into a pass.
+
+Corrections within round 2 before dispatch 6:
+
+- The copied-text field is now named jobMentions; its schema and general instruction distinguish quotations from currentQuestion from page context and tool data. Initial authorized subject metadata includes only exact literal mentions in the question, preserving their letter case, rather than every translated alias. Page context has the explicit transport name pageContextReference and is already resolved. Exact occurrence/authorized identity checks remain strict; regression tests still refuse the run-5 page-reference and translated-alias forms. No closed-job instruction was changed.
+- The item tool's optional unit description requires a stored unit copied from a result, omitting it until known; no guessed translation, unit alias merge or stored-price change was added.
+- Evaluation matching now treats the same description/unit/document and exact global value equally with or without optional job context, in both directions. Previously only the direction adding context passed. Client-price facts still require their subject provenance; changed description, unit, document number or amount still fails. The question, expected values, oracle calls and pass marks are untouched. This fixes an evaluator comparison, not the server's access or value checks.
+
+One paid dispatch remains, pending the corrected implementation's full check and CI. No further allowance is assumed.
+
+Post-run-5 `npm run check` passes: **1,973 tests / 197 files and build**. The additional client-provenance assertion also passes in the focused evaluator test. Free raw-selection replay of runs 1–4 remains green; no card layout or stored price changed after the screenshots. CI and the final authorized paid dispatch will use the corrected protocol commit.

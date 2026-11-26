@@ -113,7 +113,12 @@ export function assistantTools(lists: FirmLists): readonly ToolDefinition[] {
         type: "object",
         properties: {
           description: { type: "string", minLength: 1, maxLength: 500 },
-          unit: { type: "string", maxLength: 32 },
+          unit: {
+            type: "string",
+            maxLength: 32,
+            description:
+              "Exact stored unit copied from a result. Omit until known; do not translate it. Then select the returned row with the requested unit.",
+          },
           projectKey: keySchema,
         },
         required: ["description"],

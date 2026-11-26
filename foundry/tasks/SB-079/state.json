@@ -3,7 +3,7 @@
   "branch": "build/sb-079-fact-answers",
   "baseCommit": "bb8d8d8d9fbb3365477f5164dbd9d84d7d237fe3",
   "issueUpdatedAt": "2026-11-25T20:22:52Z",
-  "status": "REVIEW_FIX_ROUND_2",
+  "status": "RUN_5_FAILURE_FIXES",
   "delivery": "A \u2192 B \u2192 C \u2192 D \u2192 E",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
@@ -32,16 +32,22 @@
       "commit": "1fdd4d7a03f12d93244e2855df430f39044ffac6",
       "status": "FAILED",
       "estimatedUsd": "0.382622100"
+    },
+    {
+      "runId": 45749557326,
+      "commit": "863f4da44877128dc6cac1c73afa571fa182134e",
+      "status": "FAILED",
+      "estimatedUsd": "0.495662000"
     }
   ],
   "pullRequest": 80,
   "confirmedDecision": "No free prose: phrase ids only; server owns source headings and fact layout; 12 facts and one list with ten rows plus remaining count. Confirmed comment 7173585372.",
   "ci": {
-    "runId": 45742997197,
-    "commit": "1fdd4d7a03f12d93244e2855df430f39044ffac6",
+    "runId": 45748758007,
+    "commit": "863f4da44877128dc6cac1c73afa571fa182134e",
     "status": "PASSED"
   },
-  "paidEvaluationEstimatedUsdTotal": "1.431424000",
+  "paidEvaluationEstimatedUsdTotal": "1.927086000",
   "reviewComments": [
     7180179624,
     7180301103,
@@ -50,14 +56,14 @@
   "localVerification": {
     "command": "npm run check",
     "status": "PASSED",
-    "tests": 1971,
+    "tests": 1973,
     "files": 197
   },
-  "paidEvaluationRemaining": 2,
+  "paidEvaluationRemaining": 1,
   "remainingAcceptance": [
-    "New model-routing/subject checks await authorized paid run 5 after CI.",
+    "Corrected protocol awaits CI and final authorized paid dispatch 6.",
     "Hosted retest awaits Product Director; no hosted changes.",
-    "Empty-list copy remains provisional; other layout decisions confirmed."
+    "Empty-list copy remains provisional."
   ],
   "reviewRound2Comments": [
     7181003350,
