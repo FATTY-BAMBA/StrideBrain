@@ -34,12 +34,29 @@ export type ExpectedFact = {
   value: string;
   sourceId: string;
   subjects: readonly string[];
+  itemIdentity?: string;
 };
 function leaves(value: unknown, path = ""): { path: string; value: string }[] {
   if (typeof value === "string" || typeof value === "number")
     return [{ path, value: String(value) }];
   if (!value || typeof value !== "object") return [];
   return Object.entries(value).flatMap(([key, v]) => leaves(v, path ? `${path}.${key}` : key));
+}
+function provenance(source: AssistantSource, path: string) {
+  const f = source.facts;
+  const item =
+    typeof f.lastPrice === "string" &&
+    typeof f.description === "string" &&
+    typeof f.unit === "string" &&
+    typeof f.documentNumber === "string";
+  return {
+    // A job adds client context but does not change the global item's price/history.
+    subjects:
+      item && !path.startsWith("client")
+        ? source.projectKeys
+        : (source.subjectProjectKeys ?? source.projectKeys),
+    ...(item ? { itemIdentity: JSON.stringify([f.description, f.unit, f.documentNumber]) } : {}),
+  };
 }
 /** Expected references come from deterministic authorized page reads, never model wording. */
 export function expectedFacts(
@@ -50,7 +67,7 @@ export function expectedFacts(
     leaves(s.facts).map((f) => ({
       ...f,
       sourceId: s.sourceId,
-      subjects: s.subjectProjectKeys ?? s.projectKeys,
+      ...provenance(s, f.path),
     })),
   );
   if (q.expected.match === "ANY_SAVED_FINDING") {
@@ -96,7 +113,7 @@ export function selectedFacts(
         .map((f) => ({
           ...f,
           sourceId: s.sourceId,
-          subjects: s.subjectProjectKeys ?? s.projectKeys,
+          ...provenance(s, f.path),
         }));
     });
   });
@@ -104,6 +121,7 @@ export function selectedFacts(
 export function matchesExpected(actual: ExpectedFact, expected: ExpectedFact) {
   return (
     actual.value === expected.value &&
+    actual.itemIdentity === expected.itemIdentity &&
     actual.path.split(".").at(-1) === expected.path.split(".").at(-1) &&
     (actual.sourceId === expected.sourceId ||
       (expected.subjects.length > 0 &&

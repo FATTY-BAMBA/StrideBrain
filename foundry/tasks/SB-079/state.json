@@ -3,12 +3,24 @@
   "branch": "build/sb-079-fact-answers",
   "baseCommit": "bb8d8d8d9fbb3365477f5164dbd9d84d7d237fe3",
   "issueUpdatedAt": "2026-11-25T20:22:52Z",
-  "status": "VERIFYING_LOCAL",
+  "status": "VERIFYING_PAID_RUN_FIXES",
   "delivery": "A → B → C → D → E",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "paidEvaluationLimit": 4,
-  "paidEvaluationRuns": [],
+  "paidEvaluationRuns": [
+    {
+      "runId": 45702234409,
+      "commit": "e52205fcdacb5081d6a719126011d96a1b67e64a",
+      "status": "FAILED",
+      "estimatedUsd": "0.357366200"
+    }
+  ],
   "pullRequest": 80,
-  "confirmedDecision": "No free prose: phrase ids only; server owns source headings and fact layout; 12 facts and one list with ten rows plus remaining count. Confirmed comment 7173585372."
+  "confirmedDecision": "No free prose: phrase ids only; server owns source headings and fact layout; 12 facts and one list with ten rows plus remaining count. Confirmed comment 7173585372.",
+  "ci": {
+    "runId": 45701497283,
+    "commit": "e52205fcdacb5081d6a719126011d96a1b67e64a",
+    "status": "PASSED"
+  }
 }

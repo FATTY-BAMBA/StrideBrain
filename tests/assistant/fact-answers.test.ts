@@ -94,6 +94,21 @@ describe("server-rendered fact selections", () => {
       },
     });
   });
+  it("sends only selectable references, never bare record aliases that look selectable", () => {
+    const registry = new AnswerFactRegistry("en");
+    const rows = [
+      { ...source("A", { status: "Issued" }), countSourceId: "C" },
+      source("C", { count: 1 }),
+    ];
+    registry.register(rows);
+    const sent = registry.modelSources(rows);
+    expect(sent.every((s) => !("record" in s))).toBe(true);
+    expect(sent[1]!.list).toEqual({ ref: "s2.list" });
+    expect(registry.render(select("s1"))).toMatchObject({ reason: "UNKNOWN_REFERENCE" });
+    expect(registry.render({ parts: [{ say: "RECORDS_SHOW" }], followUps: [] })).toMatchObject({
+      reason: "INVALID_OUTPUT",
+    });
+  });
   it("is turn-local, stable across repeated tool calls, and accepts no model value or path traversal", () => {
     const registry = new AnswerFactRegistry("en"),
       rows = [source("A", { count: 1 })];

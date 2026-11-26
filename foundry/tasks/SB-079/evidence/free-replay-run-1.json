@@ -1,0 +1,951 @@
+{
+  "mode": "FREE_REPLAY_NO_PROVIDER",
+  "paidRun": 45702234409,
+  "passed": true,
+  "note": "Replays answer rendering and rejection only; instruction changes and earlier tool fast paths require a new end-to-end run.",
+  "rows": [
+    {
+      "round": 1,
+      "id": "en-awaiting",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-status",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-validity",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-accepted",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-work",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-area",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-stone-median",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-stone-range",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-millwork",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-finding",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-closed",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-owner-total",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-viewer-amount",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 1,
+      "id": "en-viewer-overview",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-excluded",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 1,
+      "id": "en-unknown",
+      "result": "REJECTED",
+      "reason": "INVALID_OUTPUT"
+    },
+    {
+      "round": 1,
+      "id": "en-other-org",
+      "result": "REJECTED",
+      "reason": "INVALID_OUTPUT"
+    },
+    {
+      "round": 1,
+      "id": "en-injection",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-weather",
+      "result": "REFUSAL"
+    },
+    {
+      "round": 1,
+      "id": "en-manager-scope",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-awaiting",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-status",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-validity",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-accepted",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-work",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-area",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-stone-median",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-stone-range",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-millwork",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-finding",
+      "result": "REJECTED",
+      "reason": "UNKNOWN_REFERENCE"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-closed",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-owner-total",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-viewer-amount",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-viewer-overview",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-excluded",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-unknown",
+      "result": "REFUSAL"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-other-org",
+      "result": "REJECTED",
+      "reason": "INVALID_OUTPUT"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-injection",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-weather",
+      "result": "REFUSAL"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-manager-scope",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-home-named-status",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-home-reference-total",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-home-review-quote",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-home-empty-awaiting",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-home-named-status",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-home-reference-total",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-home-review-quote",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-home-empty-awaiting",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 1,
+      "id": "en-millwork-range",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-millwork-range",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-job-page-selected",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-job-page-named",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-job-page-selected",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-job-page-named",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-awaiting-document-number",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-item-price",
+      "result": "REJECTED",
+      "reason": "UNKNOWN_REFERENCE"
+    },
+    {
+      "round": 1,
+      "id": "en-viewer-stage",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "en-required-other-org",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-awaiting-document-number",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-item-price",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-viewer-stage",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 1,
+      "id": "zh-TW-required-other-org",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 2,
+      "id": "en-awaiting",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-status",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-validity",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-accepted",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-work",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-area",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-stone-median",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-stone-range",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-millwork",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-finding",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-closed",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-owner-total",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-viewer-amount",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 2,
+      "id": "en-viewer-overview",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-excluded",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 2,
+      "id": "en-unknown",
+      "result": "REFUSAL"
+    },
+    {
+      "round": 2,
+      "id": "en-other-org",
+      "result": "REJECTED",
+      "reason": "INVALID_OUTPUT"
+    },
+    {
+      "round": 2,
+      "id": "en-injection",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-weather",
+      "result": "REFUSAL"
+    },
+    {
+      "round": 2,
+      "id": "en-manager-scope",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-awaiting",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-status",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-validity",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-accepted",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-work",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-area",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-stone-median",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-stone-range",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-millwork",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-finding",
+      "result": "REJECTED",
+      "reason": "FACT_LIMIT"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-closed",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-owner-total",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-viewer-amount",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-viewer-overview",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-excluded",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-unknown",
+      "result": "REJECTED",
+      "reason": "INVALID_OUTPUT"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-other-org",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-injection",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-weather",
+      "result": "REFUSAL"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-manager-scope",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-home-named-status",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-home-reference-total",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-home-review-quote",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-home-empty-awaiting",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-home-named-status",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-home-reference-total",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-home-review-quote",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-home-empty-awaiting",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 2,
+      "id": "en-millwork-range",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-millwork-range",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-job-page-selected",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-job-page-named",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-job-page-selected",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-job-page-named",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-awaiting-document-number",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-item-price",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-viewer-stage",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "en-required-other-org",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-awaiting-document-number",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-item-price",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-viewer-stage",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 2,
+      "id": "zh-TW-required-other-org",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 3,
+      "id": "en-awaiting",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-status",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-validity",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-accepted",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-work",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-area",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-stone-median",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-stone-range",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-millwork",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-finding",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-closed",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-owner-total",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-viewer-amount",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 3,
+      "id": "en-viewer-overview",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-excluded",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 3,
+      "id": "en-unknown",
+      "result": "REJECTED",
+      "reason": "INVALID_OUTPUT"
+    },
+    {
+      "round": 3,
+      "id": "en-other-org",
+      "result": "REJECTED",
+      "reason": "INVALID_OUTPUT"
+    },
+    {
+      "round": 3,
+      "id": "en-injection",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-weather",
+      "result": "REFUSAL"
+    },
+    {
+      "round": 3,
+      "id": "en-manager-scope",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-awaiting",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-status",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-validity",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-accepted",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-work",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-area",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-stone-median",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-stone-range",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-millwork",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-finding",
+      "result": "REJECTED",
+      "reason": "FACT_LIMIT"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-closed",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-owner-total",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-viewer-amount",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-viewer-overview",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-excluded",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-unknown",
+      "result": "REJECTED",
+      "reason": "INVALID_OUTPUT"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-other-org",
+      "result": "REJECTED",
+      "reason": "INVALID_OUTPUT"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-injection",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-weather",
+      "result": "REFUSAL"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-manager-scope",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-home-named-status",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-home-reference-total",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-home-review-quote",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-home-empty-awaiting",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-home-named-status",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-home-reference-total",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-home-review-quote",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-home-empty-awaiting",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 3,
+      "id": "en-millwork-range",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-millwork-range",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-job-page-selected",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-job-page-named",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-job-page-selected",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-job-page-named",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-awaiting-document-number",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-item-price",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-viewer-stage",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "en-required-other-org",
+      "result": "SERVER_EARLY_ANSWER"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-awaiting-document-number",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-item-price",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-viewer-stage",
+      "result": "ACCEPTED"
+    },
+    {
+      "round": 3,
+      "id": "zh-TW-required-other-org",
+      "result": "SERVER_EARLY_ANSWER"
+    }
+  ]
+}

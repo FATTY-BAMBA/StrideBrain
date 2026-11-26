@@ -136,6 +136,36 @@ describe("bounded read-only assistant", () => {
       });
     },
   );
+  it.each(["en", "zh-TW"] as const)(
+    "refuses an empty named search in %s without a second model call",
+    async (locale) => {
+      const f = setup([
+        {
+          usage,
+          result: {
+            kind: "TOOLS",
+            calls: [{ name: "list_jobs", arguments: { query: "PRJ-DOES-NOT-EXIST" } }],
+          },
+        },
+      ]);
+      f.tools.execute.mockResolvedValue({
+        status: "OK",
+        sources: [{ ...source, facts: { count: 0, matchingCount: 0 }, projectKeys: [] }],
+      });
+      const out = await f.service.execute(jobContext({ locale }), {
+        question:
+          locale === "en" ? "Tell me about PRJ-DOES-NOT-EXIST." : "請介紹 PRJ-DOES-NOT-EXIST。",
+      });
+      expect(out).toMatchObject({
+        kind: "ANSWER",
+        refusal: "NO_RECORDS",
+        sources: [],
+        answer: { sourceIds: [], followUps: [] },
+      });
+      expect(f.model.requests).toHaveLength(1);
+      expect(f.tools.execute).toHaveBeenCalledTimes(1);
+    },
+  );
   it("grounds a result from this turn and logs metadata per call", async () => {
     const f = setup();
     expect((await f.service.execute(jobContext(), { question: "How many jobs?" })).kind).toBe(
@@ -161,7 +191,9 @@ describe("bounded read-only assistant", () => {
     });
     const out = await f.service.execute(jobContext(), { question: "How many jobs?" });
     expect(out).toMatchObject({ kind: "ANSWER", answer: { sourceIds: ["s", "count"] } });
-    expect(f.model.requests[0]?.instructions).toContain("At most 12 facts and one list;");
+    expect(f.model.requests[0]?.instructions).toContain(
+      "at most 12 individual fact refs plus at most one whole-list ref",
+    );
     expect(f.model.requests[1]?.messages[1]?.text).not.toContain("countSourceId");
   });
   it("passes authorized question-only references to grounding without treating them as amounts", async () => {

@@ -41,7 +41,14 @@ export const answerParameters = {
           },
           {
             type: "object",
-            properties: { show: { type: "string", maxLength: 160 } },
+            properties: {
+              show: {
+                type: "string",
+                maxLength: 160,
+                description:
+                  "Copy one complete ref value from the tool data. Never a record alias, label, or value.",
+              },
+            },
             required: ["show"],
             additionalProperties: false,
           },
@@ -205,7 +212,6 @@ export class AnswerFactRegistry {
   /** Only labelled display values and selectable refs cross the model boundary. */
   modelSources(sources: readonly AssistantSource[]) {
     return sources.map((source) => ({
-      record: this.aliases.get(source.sourceId),
       name: source.label,
       facts: [...this.facts.values()]
         .filter((f) => f.sourceId === source.sourceId)
@@ -214,9 +220,6 @@ export class AnswerFactRegistry {
         ? {
             list: {
               ref: `${this.aliases.get(source.sourceId)}.list`,
-              rows: sources
-                .filter((row) => row.countSourceId === source.sourceId)
-                .map((row) => this.aliases.get(row.sourceId)),
             },
           }
         : {}),

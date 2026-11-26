@@ -9,6 +9,7 @@ import { runEvaluationQuestion } from "./run-evaluation";
 import {
   evaluateAnswer,
   selectedFacts,
+  matchesExpected,
   expectedFacts,
   evaluationLogRow,
   type EvaluationQuestion,
@@ -160,6 +161,45 @@ describe("evaluation by selected references", () => {
         ledger,
       ).map((f) => f.value),
     ).toEqual(["Past", "56/100"]);
+  });
+  it("accepts the same global item with optional job context but rejects a different item, unit or price", () => {
+    const item = {
+      ...source,
+      sourceId: "item",
+      projectKeys: ["PRICE-JOB"],
+      facts: {
+        description: "Ceiling",
+        unit: "坪",
+        documentNumber: "PRICE-Q1",
+        lastPrice: "NT$3,200",
+      },
+    };
+    const question = {
+      ...q,
+      expected: { kind: "FACTS" as const, facts: ["@lastPrice"], forbidden: [] },
+    };
+    const expected = expectedFacts(question, [item])[0]!;
+    const withJob = {
+      ...item,
+      sourceId: "item-with-job",
+      projectKeys: ["PRICE-JOB", "CONTEXT-JOB"],
+      subjectProjectKeys: ["CONTEXT-JOB"],
+    };
+    const select = (row: typeof withJob) =>
+      selectedFacts(
+        {
+          phraseId: "RECORDS_SHOW",
+          shown: [{ ref: "s1.lastPrice", sourceId: row.sourceId, path: "lastPrice", kind: "fact" }],
+        },
+        [row],
+      )[0]!;
+    expect(matchesExpected(select(withJob), expected)).toBe(true);
+    for (const facts of [
+      { ...item.facts, description: "Floor" },
+      { ...item.facts, unit: "m²" },
+      { ...item.facts, lastPrice: "NT$9,999" },
+    ])
+      expect(matchesExpected(select({ ...withJob, facts }), expected)).toBe(false);
   });
   it("makes a wrong record value fail the whole round independently of per-language score", () => {
     const rows = (questions as EvaluationQuestion[]).map((q) => ({

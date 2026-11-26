@@ -47,8 +47,24 @@ The paid report retains the old call/quality gates and adds median calls ≤ 2, 
 
 ## Verification status
 
-`npm run check` passed on Node 24: formatting, design tokens, lint, TypeScript, all **1,868 tests in 192 files**, and the production build. The existing prisma.config.ts anonymous-default-export lint warning remains; there are no lint errors. The fake evaluation passes all 62 questions in all three rounds (186/186); this proves the integration contract, not model quality.
+`npm run check` passed on Node 24: formatting, design tokens, lint, TypeScript, all **1,873 tests in 193 files**, and the production build. The existing prisma.config.ts anonymous-default-export lint warning remains; there are no lint errors. The fake evaluation passes all 62 questions in all three rounds (186/186); this proves the integration contract, not model quality.
 
 Local production-build Chrome checks passed for owner Settings and Viewer job chat in English and zh-TW: grouped failure reasons, visible keyboard focus, stage example, 390px page fit and table scrolling. The discovered mobile min-content overflow was fixed by allowing the Settings section to shrink. Screenshots and the browser report are in [evidence](evidence/). This uses a disposable local synthetic database, local HTTPS and AI disabled. Provider answer rendering is tested in application/unit tests and the paid runner; it was not exercised through a live-provider browser session.
 
-Implementation CI and paid evaluation are pending. No hosted operations were performed. Hosted acceptance is waiting for the Product Director; PR #80 stays draft. Paid runs used: 0 of 4.
+Implementation [CI 45701497283](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45701497283) passed on `e52205f`, including real Prisma migrate/seed/verify commands, repeated seed/verify, the full check and the dependency audit. Paid [run 1 — 45702234409](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45702234409) completed on that exact commit; results below. No hosted operations were performed. Hosted acceptance is waiting for the Product Director; PR #80 stays draft. Paid runs used: 1 of 4.
+
+## Paid run 1 — failed, preserved in full
+
+[Full synthetic report](evidence/paid-run-1.json), commit `e52205f`, model gemini-3.5-flash-lite. All 186 question rows include rawAnswer (or null when the server supplied an early answer), selection and source ledger. No raw answer is in the usage log.
+
+| Round | en core /20 | zh-TW core /20 | New required /8 | Earlier required /14 | Wrong recorded values | Median calls | p90 ms | Question cost USD | Cost/question USD |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1 | 18 | 18 | 6 | 14 | 0 | 2 | 2,156 | 0.086368600 | 0.001393041935 |
+| 2 | 18 | 17 | 8 | 14 | 0 | 2 | 2,048 | 0.084557200 | 0.001363825806 |
+| 3 | 17 | 17 | 7 | 14 | 0 | 2 | 2,001 | 0.084571400 | 0.001364054839 |
+
+All performance/cost gates passed. Job drafts passed 16/16 per language in all three rounds, all 22 required draft cases each round; the separately reported residential-placeholder case also passed each round. Total estimated cost, including drafts and reported cases: **US$0.357366200** (questions US$0.255497200; drafts US$0.101869000).
+
+The run failed the new required item-price cases and the existing zh-TW-finding two-of-three gate. Raw failures distinguish real selection failures (bare record alias instead of a ref, 13 individual findings beyond the 12-fact limit, and a lead-in without facts on an empty identity search) from an evaluator error: two correct global item prices were marked wrong because an optional job context changed their subject metadata. Some core quote-status answers also omitted the expected document number; those remain scored wrong.
+
+Follow-up changes preserve all pass marks, question text and expected values: remove non-selectable bare record aliases from model data; clarify complete-ref selection, the requested finding count, the existing 12-fact cap, and quote identity in the general instruction; use the same non-disclosing server refusal immediately for a completed empty named-job search; score global item identity using its description, unit, source quote and contributing jobs even when optional client context is present. Tests still reject another item/unit/value, unknown refs, lone lead-ins and excess facts. No job-draft instruction or oracle changed. The [free replay](evidence/free-replay-run-1.json) passes all 186 recorded rows: 141 accepted answers render unchanged, 13 invalid answers retain their exact rejection reasons, eight model refusals remain refusals, and 24 server early answers have no model answer to replay. This checks rendering/rejection; it does not claim to simulate the new instruction or earlier tool fast path. The full local check passed again: 1,873 tests in 193 files and the production build.
