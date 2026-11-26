@@ -161,3 +161,28 @@ Next's documented callback boundary: [after](https://nextjs.org/docs/app/api-ref
 The expanded free fake evaluation passes all 72 cases in each of three rounds (216/216), without changing existing questions, expected values or oracle. The four new unresolved-name cases require no model calls. The raw-answer replay was refreshed for list names as well as record names; run 3 remains 186/186 with zero wrong values. Local desktop/narrow screenshots were refreshed. The assistant suite passes 517 tests. Full check/CI and the final paid result are recorded below when complete.
 
 Final local check for items 1–10: **npm run check passed, 1,919 tests in 196 files, plus production build**. The first full attempt exposed two UI tests importing the new server-only helper instead of mocking the Server Action boundary; those mocks are corrected and the complete check passed on rerun. Lint has the existing prisma.config.ts default-export warning, with no errors. The timing migration was applied by the isolated-database test setup; real prisma migrate deploy and repeated seed/verify remain CI's responsibility. Latest focused replay and evaluation-summary tests pass after the final evidence-label/count updates.
+
+## Paid run 4 — failed, allowance exhausted
+
+[Run 45743760089](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45743760089), implementation commit `1fdd4d7a03f12d93244e2855df430f39044ffac6`, model gemini-3.5-flash-lite. [CI 45742997197](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45742997197) passed on that exact commit before dispatch: 1,919 tests / 196 files, build, real migration deployment, seed/verify twice, dependency audit (zero vulnerabilities). [Full synthetic raw report](evidence/paid-run-4.json) and [summary including per-question rates](evidence/paid-run-4-summary.json) are retained. The workflow runs from main and checks out this explicit input commit.
+
+| Round | en core /20 | zh-TW core /20 | Required /30 | Reported /2 | Wrong displayed values | Discards | Median / max calls | p90 ms | Question cost USD | Result |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- | ---: | ---: | --- |
+| 1 | 19 | 20 | 29 | 2 | 0 | 0 | 2 / 3 | 1,525 | 0.092792100 | FAIL |
+| 2 | 19 | 20 | 30 | 2 | 0 | 0 | 2 / 4 | 1,657 | 0.094817300 | PASS |
+| 3 | 19 | 20 | 30 | 2 | 0 | 0 | 2 / 3 | 1,481 | 0.093143700 | PASS |
+
+The full run fails because every round must pass. All performance/cost-per-question gates pass; no wrong recorded value or discarded answer appears. Per-question results: 70 cases pass 3/3, en-item-no-comparison passes 2/3, and en-closed passes 0/3 (212/216 total outcomes pass). These are unchanged expectations; no case, oracle or pass mark was relaxed after the result.
+
+- **Still failing required acceptance:** en-item-no-comparison round 1 asked “What do we usually quote per ping for Ceiling on this job?” from PRJ-ACTIVE-001. The model called get_past_prices with DEMOLITION_CEILING, then get_past_prices without a category, then submitted empty parts. The loop correctly continued, but the model never selected get_item_prices, so the displayed answer was the generic refusal. This also trips the existing named-refusal maximum (3 calls versus 2). It is a routing/selection failure, not a rejected correct answer, wrong amount or premature comparison notice. Rounds 2 and 3 answer the required price with its date/count/document number. The Chinese equivalent passes 3/3.
+- **Core expectation miss:** en-closed selects the new exact overallDifference sentences for the three closed jobs in every round. The displayed differences are correct Home facts, but the unchanged case expects quotedPrice and reconciledActualCost figures; neither was selected. It remains a recorded 0/3, not relabelled as a pass.
+- Both named closed-job cost cases from another job bar pass 3/3. Both reported overall-difference cases pass 3/3. All four new unresolved-name cases (project manager/owner, both languages, another job's bar) pass 3/3. Existing no-comparison/out-of-date cases and zh-TW-finding pass 3/3.
+- The unchanged gated job-draft set passes 16/16 per language in all three rounds, with 22/22 required cases each round. The separate residential-placeholder report now passes 3/3. No job-draft code, instruction, cases, expected values or oracle changed.
+
+Estimated cost: **US$0.382622100** (questions US$0.280753100; drafts including the separate reported cases US$0.101869000). Cumulative cost for all four runs: **US$1.431424000**. All four authorized dispatches are used; no fifth dispatch was made. No implementation or instruction was changed after this paid result.
+
+## Final handoff / not verified
+
+The reviewed implementation and layout replay are committed, but paid acceptance is **not complete** because the required English item-price case is not stable. The recorded closed-job expectation miss also remains. No instruction tuning, model change, oracle change or further paid run was used to hide these results.
+
+Hosted acceptance of the revised commit, browser/provider integration on the test site, the real hosted after-response timing callback, and the cause of the earlier 10–12 second delays are not verified. Local isolated component screenshots cover English/zh-TW and 1120px/390px; they do not constitute a hosted role retest. Provisional layout rules in items 3, 5 and 6 still await the Product Director before merge. No hosted project/database mutation or Test site workflow was performed. PR #80 remains draft. This final commit changes evidence/task documentation only; implementation CI and paid evaluation both refer to `1fdd4d7`.

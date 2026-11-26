@@ -3,7 +3,7 @@
   "branch": "build/sb-079-fact-answers",
   "baseCommit": "bb8d8d8d9fbb3365477f5164dbd9d84d7d237fe3",
   "issueUpdatedAt": "2026-11-25T20:22:52Z",
-  "status": "REVIEW_FIX_ROUND_1",
+  "status": "PAID_EVALUATION_FAILED_REVIEW_REQUIRED",
   "delivery": "A \u2192 B \u2192 C \u2192 D \u2192 E",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
@@ -26,16 +26,22 @@
       "commit": "20955bc9443ecef9baac24831cb1bc240975045f",
       "status": "PASSED",
       "estimatedUsd": "0.341503100"
+    },
+    {
+      "runId": 45743760089,
+      "commit": "1fdd4d7a03f12d93244e2855df430f39044ffac6",
+      "status": "FAILED",
+      "estimatedUsd": "0.382622100"
     }
   ],
   "pullRequest": 80,
   "confirmedDecision": "No free prose: phrase ids only; server owns source headings and fact layout; 12 facts and one list with ten rows plus remaining count. Confirmed comment 7173585372.",
   "ci": {
-    "runId": 45732096515,
-    "commit": "20955bc9443ecef9baac24831cb1bc240975045f",
+    "runId": 45742997197,
+    "commit": "1fdd4d7a03f12d93244e2855df430f39044ffac6",
     "status": "PASSED"
   },
-  "paidEvaluationEstimatedUsdTotal": "1.048801900",
+  "paidEvaluationEstimatedUsdTotal": "1.431424000",
   "reviewComments": [
     7180179624,
     7180301103,
@@ -46,5 +52,11 @@
     "status": "PASSED",
     "tests": 1919,
     "files": 196
-  }
+  },
+  "paidEvaluationRemaining": 0,
+  "remainingAcceptance": [
+    "Required en-item-no-comparison passes 2/3; round 1 refused after two comparison reads.",
+    "Core en-closed passes 0/3: correct overall difference sentences omit the expected quoted-price and actual-cost figures.",
+    "Hosted retest and provisional items 3, 5 and 6 await the Product Director."
+  ]
 }
