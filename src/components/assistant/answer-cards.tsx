@@ -56,26 +56,31 @@ export function AnswerCards({ presentation }: { presentation: AnswerPresentation
                     ? ` · ${block.list.filter.label}${presentation.locale === "zh-TW" ? "：" : ": "}${block.list.filter.value}`
                     : ""}
                 </p>
-                <ul className={styles.list}>
-                  {block.list.rows.map((row) => (
-                    <li key={row.key}>
-                      <div className={styles.heading}>
-                        <strong>{row.title}</strong>
-                        {row.reference ? <span>{row.reference}</span> : null}
-                        {row.unit ? <span>{row.unit}</span> : null}
-                      </div>
-                      <FactRows rows={row.facts} locale={presentation.locale} />
-                    </li>
-                  ))}
-                </ul>
+                {block.list.rows.length ? (
+                  <ul className={styles.list}>
+                    {block.list.rows.map((row) => (
+                      <li key={row.key}>
+                        <div className={styles.heading}>
+                          <strong>{row.title}</strong>
+                          {row.reference ? <span>{row.reference}</span> : null}
+                          {row.unit ? <span>{row.unit}</span> : null}
+                        </div>
+                        <FactRows rows={row.facts} locale={presentation.locale} />
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
                 {block.list.remaining ? (
                   <p className={styles.summary}>{block.list.remaining}</p>
                 ) : null}
               </>
             ) : null}
-            <Link className={styles.link} href={block.link.href as Route}>
-              {block.link.label}
-            </Link>
+            <footer className={styles.footer}>
+              {block.remaining ? <span className={styles.summary}>{block.remaining}</span> : null}
+              <Link className={styles.link} href={block.link.href as Route}>
+                {block.link.label}
+              </Link>
+            </footer>
           </section>
         ),
       )}

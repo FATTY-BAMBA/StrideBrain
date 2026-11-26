@@ -1,4 +1,4 @@
-import { mentionsIdentity } from "@/modules/assistant/domain/subjects";
+import { mentionsUnreadableIdentity } from "@/modules/assistant/domain/subjects";
 import { createHash, randomUUID } from "node:crypto";
 import type { PrismaClient, Prisma } from "../../../.generated/prisma/client";
 import { AuthorizationService } from "@/modules/authorization/authorization-service";
@@ -50,22 +50,27 @@ export class PrismaAssistantRepository implements AssistantRepositoryPort, Assis
       where: {
         organizationId: c.organizationId,
         deletedAt: null,
-        OR: [
-          { id: { notIn: [...(c.assignedProjectIds ?? [])] } },
-          {
-            assignments: {
-              none: { organizationId: c.organizationId, membershipId: c.membershipId },
-            },
-          },
-        ],
       },
-      select: { businessKey: true, nameEn: true, nameZhTw: true },
+      select: {
+        id: true,
+        businessKey: true,
+        nameEn: true,
+        nameZhTw: true,
+        assignments: {
+          where: { organizationId: c.organizationId, membershipId: c.membershipId },
+          select: { membershipId: true },
+        },
+      },
     });
-    return rows.some((row) =>
-      [row.businessKey, row.nameEn, row.nameZhTw].some((identity) =>
-        mentionsIdentity(question, identity),
-      ),
-    );
+    const auth = new AuthorizationService();
+    const readable: string[] = [],
+      unreadable: string[] = [];
+    for (const row of rows) {
+      const target =
+        row.assignments.length && auth.canReadProject(c, row.id).allowed ? readable : unreadable;
+      target.push(row.businessKey, row.nameEn, row.nameZhTw);
+    }
+    return mentionsUnreadableIdentity(question, readable, unreadable);
   }
   async readableReferences(c: RuntimeContext, candidates: readonly string[]) {
     if (!c.capabilities.has("project:read") || !(await member(this.db, c)) || !candidates.length)

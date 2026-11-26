@@ -173,3 +173,127 @@ describe("server-built record cards", () => {
     },
   );
 });
+
+describe("layout overflow never discards valid selections", () => {
+  it.each(["en", "zh-TW"] as const)(
+    "keeps the first twelve printed rows in model order in %s",
+    (locale) => {
+      const sources = [
+        {
+          ...quote("A"),
+          facts: { findings: Array.from({ length: 11 }, (_, i) => ({ text: `Fact A ${i}` })) },
+        },
+        { ...quote("B"), facts: { findings: [{ text: "Fact B 0" }, { text: "Fact B 1" }] } },
+      ];
+      const refs = [
+        "s2.findings.0.text",
+        ...Array.from({ length: 11 }, (_, i) => `s1.findings.${i}.text`),
+        "s2.findings.1.text",
+      ];
+      const out = render(locale, sources, ...refs);
+      const cards = out.answer.presentation!.blocks.filter((b) => b.kind === "CARD");
+      expect(cards.flatMap((c) => c.rows)).toHaveLength(12);
+      expect(cards.map((c) => c.title)).toEqual(["Job B", "Job A"]);
+      expect(cards[0]!.rows.map((r) => r.value)).toEqual(["Fact B 0"]);
+      expect(cards[1]!.rows.map((r) => r.value)).toEqual(
+        Array.from({ length: 11 }, (_, i) => `Fact A ${i}`),
+      );
+      const remaining = locale === "en" ? "1 more fact." : "另有 1 項。";
+      expect(cards[0]!.remaining).toBe(remaining);
+      expect(cards[1]!.remaining).toBeUndefined();
+      expect(out.html).toMatch(
+        new RegExp(`<footer[^>]*><span[^>]*>${remaining.replace(".", "\\.")}</span><a `),
+      );
+      expect(out.html).not.toContain("Fact B 1");
+      expect(out.answer.text).toContain(remaining);
+      expect(out.selection.shown).toHaveLength(13);
+      const registry = new AnswerFactRegistry(locale);
+      registry.register(sources);
+      expect(
+        registry.render({
+          parts: [
+            { say: "RECORDS_SHOW" },
+            ...refs.slice(0, 12).map((show) => ({ show })),
+            { show: "s2.unknown" },
+          ],
+          followUps: [],
+        }),
+      ).toMatchObject({ reason: "UNKNOWN_REFERENCE" });
+    },
+  );
+  it("counts expanded closed readings, with heading-only references taking no rows", () => {
+    const sources = Array.from({ length: 5 }, (_, i) => ({
+      ...quote(String(i)),
+      facts: {
+        name: `Job ${i}`,
+        reference: String(i),
+        quotedPrice: `NT$${100 + i}`,
+        reconciledActualCost: `NT$${90 + i}`,
+        overallDifference: `Difference ${i}`,
+      },
+    }));
+    const out = render(
+      "en",
+      sources,
+      "s1.name",
+      "s1.reference",
+      ...sources.map((_, i) => `s${i + 1}.quotedPrice`),
+    );
+    const cards = out.answer.presentation!.blocks.filter((b) => b.kind === "CARD");
+    expect(cards.map((c) => c.rows.length)).toEqual([3, 3, 3, 3, 0]);
+    expect(cards[4]!.remaining).toBe("3 more facts.");
+    expect(out.html).not.toContain("NT$104");
+    expect(out.html).toContain("Job 4");
+  });
+  it.each(["en", "zh-TW"] as const)(
+    "prints only the first selected list in full in %s",
+    (locale) => {
+      const first = {
+        ...quote("first"),
+        projectKeys: [],
+        display: { kind: "JOB_LIST" as const, title: "First list" },
+        facts: { count: 12 },
+      };
+      const second = {
+        ...quote("second"),
+        projectKeys: [],
+        display: { kind: "JOB_LIST" as const, title: "Second list" },
+        facts: { count: 1 },
+      };
+      const empty = {
+        ...quote("empty"),
+        projectKeys: [],
+        display: { kind: "JOB_LIST" as const, title: "Empty list" },
+        facts: { count: 0 },
+      };
+      const children = Array.from({ length: 12 }, (_, i) => ({
+        ...quote(`F${i}`),
+        countSourceId: "first",
+        facts: { stage: "Construction" },
+      }));
+      const child = { ...quote("S"), countSourceId: "second" };
+      const out = render(
+        locale,
+        [first, second, empty, ...children, child],
+        "s1.list",
+        "s2.list",
+        "s3.list",
+        "s16.status",
+      );
+      const cards = out.answer.presentation!.blocks.filter((b) => b.kind === "CARD");
+      expect(cards.map((c) => c.title)).toEqual([
+        "First list",
+        "Second list",
+        "Empty list",
+        "Job S",
+      ]);
+      expect(cards[0]!.list!.rows).toHaveLength(10);
+      expect(cards[0]!.list!.remaining).toBe(locale === "en" ? "2 more records." : "另有 2 筆。");
+      expect(cards[1]!.list).toMatchObject({ count: 1, rows: [], remaining: null });
+      expect(cards[2]!.list).toMatchObject({ count: 0, rows: [], remaining: null });
+      expect(cards[3]!.rows[0]!.value).toBe("Issued");
+      expect(out.html.match(/<ul /g)).toHaveLength(1);
+      expect(out.html.match(/<a /g)).toHaveLength(4);
+    },
+  );
+});

@@ -32,6 +32,8 @@ export type AnswerCard = Readonly<{
   reference?: string;
   unit?: string;
   rows: readonly AnswerRow[];
+  /** Count of otherwise visible fact rows omitted by the answer-wide layout limit. */
+  remaining?: string;
   link: Readonly<{ href: string; label: string }>;
   list?: Readonly<{
     count: number;

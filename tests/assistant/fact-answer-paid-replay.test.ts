@@ -102,7 +102,11 @@ it.each([1, 2, 3, 4])(
         const result = registry.render({ parts, followUps });
         let verdict = row.verdict,
           wrongRecordValue = false;
-        if (row.selection) {
+        if (
+          row.selection ||
+          row.discardReason === "FACT_LIMIT" ||
+          row.discardReason === "LIST_LIMIT"
+        ) {
           expect(result.kind, row.id).toBe("ACCEPTED");
           if (result.kind === "ACCEPTED") {
             const q = (questions as EvaluationQuestion[]).find((q) => q.id === row.id)!;

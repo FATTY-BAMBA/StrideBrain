@@ -122,7 +122,7 @@ type List = Readonly<{
 export type RenderedFacts =
   | Readonly<{
       kind: "REJECTED";
-      reason: "INVALID_OUTPUT" | "UNKNOWN_REFERENCE" | "FACT_LIMIT" | "LIST_LIMIT";
+      reason: "INVALID_OUTPUT" | "UNKNOWN_REFERENCE";
     }>
   | Readonly<{ kind: "REFUSAL" }>
   | Readonly<{ kind: "ACCEPTED"; answer: StructuredAnswer; selection: AnswerSelection }>;
@@ -223,7 +223,7 @@ export class AnswerFactRegistry {
     }
   }
 
-  /** Without a registered list, the extra list slot cannot form a valid answer. */
+  /** Preserve the provider input budget; printed rows are bounded separately during layout. */
   maxAnswerParts(): 13 | 14 {
     return this.lists.size ? 14 : 13;
   }
@@ -254,8 +254,6 @@ export class AnswerFactRegistry {
     const ids = new Set<string>();
     const inline = (value: string) => value.replace(/[\r\n\u2028\u2029]+/g, " ");
     const separator = this.locale === "zh-TW" ? "：" : ": ";
-    let facts = 0,
-      lists = 0;
     const chosen: (Fact | List)[] = [];
     for (const part of parsed.parts.slice(1)) {
       if (!("show" in part)) return { kind: "REJECTED", reason: "INVALID_OUTPUT" };
@@ -264,8 +262,6 @@ export class AnswerFactRegistry {
       if (!fact && !list) return { kind: "REJECTED", reason: "UNKNOWN_REFERENCE" };
       if (shown.some((f) => f.ref === part.show))
         return { kind: "REJECTED", reason: "INVALID_OUTPUT" };
-      if (fact && ++facts > 12) return { kind: "REJECTED", reason: "FACT_LIMIT" };
-      if (list && ++lists > 1) return { kind: "REJECTED", reason: "LIST_LIMIT" };
       const value = (fact ?? list)!;
       chosen.push(value);
       shown.push({
@@ -289,15 +285,18 @@ export class AnswerFactRegistry {
       !["stageGroup", "appliedStageGroup", "coverage", "nextOffset"].includes(f.path);
     const covered = new Set<string>(),
       coveredRecords = new Set<string>();
+    const fullList = chosen.find((item): item is List => "rows" in item);
     for (const item of chosen)
       if ("rows" in item) {
-        for (const row of item.rows.slice(0, 10)) {
+        for (const row of item === fullList ? item.rows.slice(0, 10) : []) {
           coveredRecords.add(recordIdentity(row));
           for (const f of fieldsFor(row.sourceId)) covered.add(f.ref);
         }
         for (const f of fieldsFor(item.sourceId)) covered.add(f.ref);
       }
     const printed = new Set<string>();
+    let printedRows = 0;
+    const remainingRows = new Map<string, number>();
     const blocks: (AnswerCard | { kind: "NOTICE"; text: string })[] = [];
     const cards = new Map<string, { card: AnswerCard; rows: AnswerRow[] }>();
     const rowFor = (fact: Fact, all: readonly Fact[]): AnswerRow => {
@@ -373,16 +372,22 @@ export class AnswerFactRegistry {
         for (const fact of picked) {
           if (printed.has(fact.ref) || selectedPricePaths.includes(fact.path)) continue;
           printed.add(fact.ref);
-          if (visible(fact)) group.rows.push(rowFor(fact, all));
+          if (visible(fact)) {
+            const row = rowFor(fact, all);
+            if (printedRows < 12) {
+              group.rows.push(row);
+              printedRows++;
+            } else remainingRows.set(key, (remainingRows.get(key) ?? 0) + 1);
+          }
         }
       } else {
         ids.add(item.sourceId);
-        if (!item.total) {
+        if (!item.total && item === fullList) {
           blocks.push({ kind: "NOTICE", text: emptyListText(source, this.locale) });
           continue;
         }
         const paths = listFactPaths(source);
-        const rows = item.rows.slice(0, 10).map((row) => {
+        const rows = (item === fullList ? item.rows.slice(0, 10) : []).map((row) => {
           ids.add(row.sourceId);
           const all = fieldsFor(row.sourceId);
           const selected = (
@@ -399,8 +404,8 @@ export class AnswerFactRegistry {
             facts: selected.filter((f) => !details.has(f.path)).map((f) => rowFor(f, all)),
           };
         });
-        const remaining = item.total - rows.length;
-        const filter = displayIdentity(source).filter;
+        const remaining = item === fullList ? item.total - rows.length : 0;
+        const filter = item === fullList ? displayIdentity(source).filter : undefined;
         blocks.push({
           kind: "CARD",
           key: source.sourceId,
@@ -424,12 +429,27 @@ export class AnswerFactRegistry {
         });
       }
     }
-    const presentation: AnswerPresentation = { version: 1, locale: this.locale, blocks };
+    const presentation: AnswerPresentation = {
+      version: 1,
+      locale: this.locale,
+      blocks: blocks.map((block) => {
+        const count = block.kind === "CARD" ? remainingRows.get(block.key) : 0;
+        return count
+          ? {
+              ...block,
+              remaining:
+                this.locale === "zh-TW"
+                  ? `另有 ${count} 項。`
+                  : `${count} more ${count === 1 ? "fact" : "facts"}.`,
+            }
+          : block;
+      }),
+    };
     const factText = (row: AnswerRow) =>
       `${row.label}${separator}${inline(row.value)}${row.details?.length ? ` (${row.details.map((f) => `${f.label}${separator}${inline(f.value)}`).join(" · ")})` : ""}`;
     const titleText = (row: { title: string; reference?: string; unit?: string }) =>
       [row.title, row.reference, row.unit].filter(Boolean).join(" · ");
-    const textBlocks = blocks.map((block) =>
+    const textBlocks = presentation.blocks.map((block) =>
       block.kind === "NOTICE"
         ? block.text
         : [
@@ -448,6 +468,7 @@ export class AnswerFactRegistry {
                   ...(block.list.remaining ? [block.list.remaining] : []),
                 ]
               : []),
+            ...(block.remaining ? [block.remaining] : []),
           ].join("\n"),
     );
     const identities = sourceIdentities([...this.sources.values()]);

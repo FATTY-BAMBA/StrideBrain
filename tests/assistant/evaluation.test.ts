@@ -294,3 +294,41 @@ describe("evaluation by selected references", () => {
   },
   120000,
 );
+
+it("does not credit overflow rows or child facts of an additional summary-only list", () => {
+  const registry = new AnswerFactRegistry("en");
+  const ledger = [
+    {
+      ...source,
+      facts: { findings: Array.from({ length: 13 }, (_, i) => ({ text: `Finding ${i}` })) },
+    },
+  ];
+  registry.register(ledger);
+  const result = registry.render({
+    parts: [
+      { say: "RECORDS_SHOW" },
+      ...Array.from({ length: 13 }, (_, i) => ({ show: `s1.findings.${i}.text` })),
+    ],
+    followUps: [],
+  });
+  if (result.kind !== "ACCEPTED") throw Error("render");
+  const facts = selectedFacts(result.selection, ledger);
+  expect(facts).toHaveLength(12);
+  expect(facts.some((f) => f.value === "Finding 12")).toBe(false);
+  const listLedger = [
+    { ...source, sourceId: "first", facts: { count: 0 } },
+    { ...source, sourceId: "second", facts: { count: 1 } },
+    { ...source, sourceId: "child", countSourceId: "second" },
+  ];
+  const lists = new AnswerFactRegistry("en");
+  lists.register(listLedger);
+  const rendered = lists.render({
+    parts: [{ say: "RECORDS_SHOW" }, { show: "s1.list" }, { show: "s2.list" }],
+    followUps: [],
+  });
+  if (rendered.kind !== "ACCEPTED") throw Error("render");
+  expect(selectedFacts(rendered.selection, listLedger).map((f) => f.path)).toEqual([
+    "count",
+    "count",
+  ]);
+});

@@ -3,8 +3,8 @@
   "branch": "build/sb-079-fact-answers",
   "baseCommit": "bb8d8d8d9fbb3365477f5164dbd9d84d7d237fe3",
   "issueUpdatedAt": "2026-11-25T20:22:52Z",
-  "status": "REVIEW_FIX_ROUND_3_PAID_ACCEPTANCE_FAILED",
-  "delivery": "A \u2192 B \u2192 C \u2192 D \u2192 E",
+  "status": "REVIEW_FIX_ROUND_4_FREE_REPLAY_PASSED_WAITING_HOSTED",
+  "delivery": "A → B → C → D → E",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "paidEvaluationRuns": [
@@ -60,7 +60,7 @@
     }
   ],
   "pullRequest": 80,
-  "confirmedDecision": "No free prose: phrase ids only; server owns source headings and fact layout; 12 facts and one list with ten rows plus remaining count. Confirmed comment 7173585372.",
+  "confirmedDecision": "No free prose: phrase ids only; server owns source headings and fact layout. Twelve printed fact rows plus per-card overflow counts; first list ten rows plus remaining count, later lists title/count/link. Owner review 7201639602 supersedes reference-count rejections.",
   "ci": {
     "runId": 45802548633,
     "commit": "6ce9bba0c15fa39af38487d8205fa1789a86a1ca",
@@ -75,13 +75,12 @@
   "localVerification": {
     "command": "npm run check",
     "status": "PASSED",
-    "tests": 1954,
-    "files": 199
+    "tests": 1971,
+    "files": 201
   },
   "remainingAcceptance": [
-    "One FACT_LIMIT discard (13 facts, limit 12) in full-run round 2 en-closed; all other gates pass.",
-    "The one full run is used. No further run started; stop after report.",
-    "Hosted retest awaits the Product Director; no hosted changes."
+    "CI for the fourth fix round pending.",
+    "Hosted retest of all three roles waits for the Product Director; no hosted changes."
   ],
   "reviewRound2Comments": [
     7181003350,
@@ -116,5 +115,20 @@
     ],
     "remainingFullRuns": 0
   },
-  "priorPaidEvaluationLimit": 6
+  "priorPaidEvaluationLimit": 6,
+  "reviewRound4Comment": 7201639602,
+  "round4Authorization": {
+    "fourthFixRoundExplicitlyAuthorized": true,
+    "paidRunsAllowed": 0,
+    "paidRunReplay": 45804259788,
+    "acceptedAsPaidResultIf": "252/252, no discard and no wrong value",
+    "conditionMet": true,
+    "replayed": 252,
+    "passed": 252,
+    "discards": 0,
+    "wrongValues": 0,
+    "accessViolations": 0,
+    "newEstimatedUsd": "0.000000000",
+    "evidence": "evidence/round4-free-full-replay.json"
+  }
 }

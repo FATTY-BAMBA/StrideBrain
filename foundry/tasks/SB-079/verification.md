@@ -353,3 +353,40 @@ Costs, computed with exact decimal arithmetic:
 - All eight paid dispatches for issue #79, including the six prior ones: **US$2.970917700**.
 
 Not achieved/verified: paid acceptance (one FACT_LIMIT discard), hosted retest, live-provider browser integration, hosted timing callback and the cause of earlier hosted slow turns. No hosted deployment, migration, seed, settings change or Test site workflow. No existing migration was edited. Round-2 component screenshots still represent the unchanged accepted UI. The final evidence-only commit changes reports/state, not the implementation tested by CI and both paid runs. Stopping after the PR report as requested.
+
+## Fix round 4 — owner review 7201639602 (27 November)
+
+Verified the comment's actual author as repository owner FATTY-BAMBA (101108617). The Product Director explicitly authorized the fourth fix round and confirmed that a **252/252 free replay with zero discard and wrong value stands as the paid result**. This supersedes the three-round stopping limit and the prior failed-layout acceptance result above; the original paid reports remain unchanged. No new paid run was started.
+
+### Changes and regression coverage
+
+- FACT_LIMIT and LIST_LIMIT are no longer rejection reasons. Count printed fact rows after title-only omission, grouped closed-job readings and deduplication. Keep the first twelve in model order; each affected card gets its own server-computed remaining count beside its link, in both languages. One list still shows ten rows plus its remaining count; every later selected list shows title, count and link only. INVALID_OUTPUT and UNKNOWN_REFERENCE still reject, including an unknown reference beyond the twelfth visible row.
+- The unreadable-job guard checks every occurrence. A short unreadable identity wholly contained in a readable longer identity does not refuse that readable job. The reverse direction, and a separate unreadable short-name occurrence elsewhere, still refuse. Local PostgreSQL tests exercise all three cases through AskAssistant for both assigned project manager and Viewer; both model calls complete before the guard runs. Existing owner bypass, missing membership/capability, assignment mismatch and cross-firm tests remain.
+- Regression tests cover title-only selections, grouped readings before the row budget, first-twelve selection order, per-card counts/links, additional lists including zero, explicit child selections outside the full list, and older stored answers. Evaluation credits only printed facts: hidden overflow values and child rows of a summary-only list cannot satisfy a required fact. Questions, expected values, oracle, instructions, provider schema, tool definitions, model and pass rules are unchanged.
+
+### Exact free replay accepted as the paid result
+
+[Full replay](evidence/round4-free-full-replay.json) reuses **all 252 recorded final answers and source ledgers** from [paid run 45804259788](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45804259788). No selected reference, order, follow-up or source value is changed. Recorded zero-model server answers are reconstructed from their recorded selections. The changed renderer and final unreadable-identity, subject and redaction checks run locally; the unchanged evaluation oracle/pass rules score the displayed result. No provider call is made.
+
+| Round | English core | zh-TW core | All answers | Required | Discards | Wrong values | Access violations |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 20/20 | 20/20 | 84/84 | 42/42 | 0 | 0 | 0 |
+| 2 | 20/20 | 20/20 | 84/84 | 42/42 | 0 | 0 | 0 |
+| 3 | 20/20 | 20/20 | 84/84 | 42/42 | 0 | 0 | 0 |
+
+**252/252 pass; 126/126 required; every one of 84 questions passes 3/3. Zero discards, wrong values and access violations.** The formerly discarded en-closed round-2 selection keeps all thirteen recorded references; six are headings and the rest produce three complete closed-job readings: **three cards, nine rows**, no truncation. The Director's stated condition is met, so this replay stands as the paid result by his explicit authorization.
+
+The replay's calls, tokens, latency and cost are copied from the original paid run, not newly measured. Its three rounds retain passing efficiency gates (p90 2,428 / 2,397 / 2,318 ms, median calls 2, named-refusal median 1). Prior paid job-draft results remain 16/16 per language per round and 22/22 required per round; job drafts were not newly rerun against a provider. **New spend: US$0.00.** Original full-run spend remains US$0.454502700; the prior additional-budget spend remains US$0.548217700; issue total remains US$2.970917700. No new sample of model behavior is claimed.
+
+### Visual evidence and remaining acceptance
+
+[Local browser checks](evidence/round4-card-browser.json) use the production components, CSS, fonts and synthetic recorded ledgers. English and zh-TW at 1440px and 390px: no horizontal overflow, long-value wrapping, labeled cards, one source link per card, overflow count beside that link, and keyboard focus to the job panel and source links. The existing synthetic injection-test job name is printed as data in the list example, not followed as an instruction.
+
+- [English recovered cards, desktop](evidence/round4-en-record-cards-1440.png) · [390px](evidence/round4-en-record-cards-390.png)
+- [English overflow/additional lists, desktop](evidence/round4-en-overflow-lists-1440.png) · [390px](evidence/round4-en-overflow-lists-390.png)
+- [zh-TW cards, desktop](evidence/round4-zh-TW-record-cards-1440.png) · [390px](evidence/round4-zh-TW-record-cards-390.png)
+- [zh-TW overflow/additional lists, desktop](evidence/round4-zh-TW-overflow-lists-1440.png) · [390px](evidence/round4-zh-TW-overflow-lists-390.png)
+
+Not verified: hosted retest of all three roles, cards with the live provider in the real pages, hosted timing callback and the cause of earlier hosted slow turns. Component previews are not that acceptance test. No hosted deployment, migration, seed, setting change or Test site workflow. No existing migration was edited. PR #80 stays draft, waiting for the Product Director.
+
+Local verification: **npm run check passed: 1,971 tests / 201 files**, including format/design checks, lint, typecheck and production build. The pre-existing prisma.config.ts anonymous-default-export lint warning remains; no assertion or timeout was relaxed. The replay artifact separates the original recorded discard from the new outcome; regenerating that artifact still passes the exact 252-answer test. CI for this fix round is recorded below once complete.

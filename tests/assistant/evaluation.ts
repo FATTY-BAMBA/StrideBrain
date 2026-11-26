@@ -1,4 +1,8 @@
-import { listFactPaths, recordIdentity } from "@/modules/assistant/domain/answer-cards";
+import {
+  listFactPaths,
+  recordIdentity,
+  displayIdentity,
+} from "@/modules/assistant/domain/answer-cards";
 import type {
   AssistantOutcome,
   AssistantSource,
@@ -101,9 +105,59 @@ export function selectedFacts(
   const registry = new AnswerFactRegistry("en");
   registry.register(ledger);
   const display = registry.modelSources(ledger);
+  const rendered = registry.render({
+    parts: [{ say: selection.phraseId }, ...selection.shown.map((s) => ({ show: s.ref }))],
+    followUps: [],
+  });
+  if (rendered.kind !== "ACCEPTED") return [];
+  // Score the facts actually printed, including grouped rows and title identities.
+  // Overflow links/counts do not make hidden financial facts visible to the reader.
+  const visible = new Map<string, Set<string>>();
+  const add = (sourceId: string, path: string) => {
+    if (!visible.has(sourceId)) visible.set(sourceId, new Set());
+    visible.get(sourceId)!.add(path);
+  };
+  const heading = (source: AssistantSource) => {
+    const d = displayIdentity(source);
+    for (const path of ["name", "description", "reference", "unit"] as const)
+      if (source.facts[path] === (path === "name" || path === "description" ? d.title : d[path]))
+        add(source.sourceId, path);
+  };
+  const row = (f: {
+    sourceId: string;
+    path: string;
+    details?: readonly { sourceId: string; path: string }[];
+  }) => {
+    add(f.sourceId, f.path);
+    f.details?.forEach((d) => add(d.sourceId, d.path));
+  };
+  for (const block of rendered.answer.presentation!.blocks) {
+    if (block.kind !== "CARD") continue;
+    ledger.filter((s) => recordIdentity(s) === block.key).forEach(heading);
+    block.rows.forEach(row);
+    if (block.list) {
+      const source = ledger.find((s) => s.sourceId === block.key)!;
+      add(
+        source.sourceId,
+        typeof source.facts.matchingCount === "number" ? "matchingCount" : "count",
+      );
+      if (block.list.filter) add(source.sourceId, "appliedStageGroup");
+      for (const item of block.list.rows) {
+        const source = ledger.find((s) => s.sourceId === item.key);
+        if (source) heading(source);
+        item.facts.forEach(row);
+      }
+    }
+  }
+  for (const selected of selection.shown) {
+    const source = ledger.find((s) => s.sourceId === selected.sourceId)!;
+    if (source.facts.count === 0 && ["count", "matchingCount", "list"].includes(selected.path))
+      add(source.sourceId, "count");
+  }
+  const firstListRef = selection.shown.find((s) => s.kind === "list")?.ref;
   const covered = new Set(
     selection.shown
-      .filter((f) => f.kind === "list")
+      .filter((f) => f.ref === firstListRef)
       .flatMap((f) =>
         ledger
           .filter((s) => s.countSourceId === f.sourceId)
@@ -116,7 +170,12 @@ export function selectedFacts(
     if (!source || (selected.kind !== "list" && covered.has(recordIdentity(source)))) return [];
     const rows =
       selected.kind === "list"
-        ? [source, ...ledger.filter((s) => s.countSourceId === source.sourceId).slice(0, 10)]
+        ? [
+            source,
+            ...(selected.ref === firstListRef
+              ? ledger.filter((s) => s.countSourceId === source.sourceId).slice(0, 10)
+              : []),
+          ]
         : [source];
     return rows.flatMap((s) => {
       const index = ledger.indexOf(s);
@@ -131,6 +190,11 @@ export function selectedFacts(
               (display[index]?.facts ?? []).map((f) => f.ref.slice(f.ref.indexOf(".") + 1)))
           : priceReadingPaths(selected.path);
       return leaves(s.facts)
+        .filter((f) =>
+          [...(visible.get(s.sourceId) ?? [])].some(
+            (path) => f.path === path || f.path.startsWith(`${path}.`),
+          ),
+        )
         .filter((f) => paths.some((path) => f.path === path || f.path.startsWith(`${path}.`)))
         .map((f) => ({
           ...f,

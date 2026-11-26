@@ -116,7 +116,7 @@ describe("server-rendered fact selections", () => {
     const refs = Array.from({ length: 12 }, (_, i) => `s1.findings.${i}.text`);
     expect(registry.render(select(...refs)).kind).toBe("ACCEPTED");
     expect(registry.render(select(...refs, "s1.findings.12.text"))).toMatchObject({
-      reason: "FACT_LIMIT",
+      kind: "ACCEPTED",
     });
     registry.register([source("C", { count: 0 })]);
     expect(registry.maxAnswerParts()).toBe(14);
@@ -198,10 +198,10 @@ describe("server-rendered fact selections", () => {
     expect(out.answer.text).not.toContain("Job A10");
     expect(
       registry.render(select(...rows.slice(0, 13).map((_, i) => `s${i + 1}.status`))),
-    ).toMatchObject({ reason: "FACT_LIMIT" });
+    ).toMatchObject({ kind: "ACCEPTED" });
     const second = source("count2", { count: 0 });
     registry.register([second]);
-    expect(registry.render(select("s16.list", "s17.list"))).toMatchObject({ reason: "LIST_LIMIT" });
+    expect(registry.render(select("s16.list", "s17.list"))).toMatchObject({ kind: "ACCEPTED" });
   });
   it("filters write offers independently; malformed follow-ups do not bypass the schema", () => {
     const registry = new AnswerFactRegistry("en");
