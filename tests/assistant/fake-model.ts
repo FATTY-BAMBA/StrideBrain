@@ -11,6 +11,7 @@ export class FakeAssistantModel implements AssistantModelPort {
     this.requests.push(request);
     const step = this.script[this.requests.length - 1];
     if (!step) throw new Error("FAKE_SCRIPT_EXHAUSTED");
-    return typeof step === "function" ? step(request) : step;
+    const reply = typeof step === "function" ? step(request) : step;
+    return reply;
   }
 }

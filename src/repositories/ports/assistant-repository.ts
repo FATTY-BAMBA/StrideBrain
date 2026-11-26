@@ -11,6 +11,13 @@ export type AssistantSettings = Readonly<{
   calls: number;
   estimatedUsd: string;
   unmeteredCalls: number;
+  turnTimings?: Readonly<{
+    count: number;
+    latestMs: number | null;
+    maximumMs: number | null;
+    recent: readonly Readonly<{ requestId: string; startedAt: Date; serverDurationMs: number }>[];
+  }>;
+  failures: readonly Readonly<{ code: string; httpStatus: number | null; count: number }>[];
 }>;
 export type AssistantControlInput = Readonly<{
   target: "ORGANIZATION" | "PROJECT";
@@ -22,13 +29,19 @@ export type AssistantControlOutcome = Readonly<{
   kind: "SAVED" | "UNAVAILABLE" | "INVALID" | "CONFLICT";
 }>;
 export interface AssistantRepositoryPort {
+  /** Server-only exact identity guard. Returns no private names or references. */
+  questionMentionsUnreadableJob(context: RuntimeContext, question: string): Promise<boolean>;
   readableReferences(
     context: RuntimeContext,
     candidates: readonly string[],
   ): Promise<readonly string[]>;
   enabled(context: RuntimeContext): Promise<boolean>;
   jobPolicy(context: RuntimeContext, key: string): Promise<AssistantJobPolicy | null>;
-  settings(context: RuntimeContext, monthStart: Date): Promise<AssistantSettings | null>;
+  settings(
+    context: RuntimeContext,
+    monthStart: Date,
+    now?: Date,
+  ): Promise<AssistantSettings | null>;
   setControl(
     context: RuntimeContext,
     input: AssistantControlInput,
@@ -48,5 +61,10 @@ export interface AssistantRepositoryPort {
   finishTurn(
     context: RuntimeContext,
     outcome: "ANSWERED" | `FALLBACK_${FallbackReason}`,
+    failure?: Readonly<{ callId: string; code: string; httpStatus?: number }>,
   ): Promise<void>;
+}
+
+export interface AssistantTurnTimingPort {
+  recordTurnTiming(context: RuntimeContext, startedAt: Date, completedAt: Date): Promise<void>;
 }

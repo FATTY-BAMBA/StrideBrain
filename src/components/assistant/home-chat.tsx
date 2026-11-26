@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { AnswerText } from "./answer-text";
 import { assistantCopy } from "@/modules/localization/assistant";
-import { Fragment, useActionState, useEffect, useId, useRef, useState, useTransition } from "react";
+import { useActionState, useEffect, useId, useRef, useState, useTransition } from "react";
 import { askHomeAction } from "@/app/[locale]/home-chat-actions";
 import { initialHomeChatState } from "@/modules/home-intelligence/chat-contracts";
 import type { Locale } from "@/modules/localization/config";
@@ -17,12 +18,14 @@ export function HomeChat({
   locale,
   projectKey,
   canDraftJob = false,
+  canReadQuote = false,
   quoteHasUnsavedChanges = false,
   jobPanelOpen,
 }: {
   locale: Locale;
   projectKey?: string | undefined;
   canDraftJob?: boolean;
+  canReadQuote?: boolean;
   quoteHasUnsavedChanges?: boolean;
   /** Omitted on Home; only the job panel has a bounded, scrolling thread. */
   jobPanelOpen?: boolean;
@@ -78,7 +81,11 @@ export function HomeChat({
       ? {
           label: "詢問 StrideBrain",
           thread: "此專案的對話",
-          placeholder: projectKey ? "這個專案的報價狀態如何？" : "我們以前做過旗艦店整修嗎？",
+          placeholder: projectKey
+            ? canReadQuote
+              ? "這個專案的報價狀態如何？"
+              : "這個專案目前在哪個階段？"
+            : "我們以前做過旗艦店整修嗎？",
           savedDraft: "回答依據最後儲存的草稿。",
           send: "提問",
           thinking: "正在查找公司紀錄…",
@@ -87,7 +94,9 @@ export function HomeChat({
           label: "Ask StrideBrain",
           thread: "Conversation about this job",
           placeholder: projectKey
-            ? "What is this job's quote status?"
+            ? canReadQuote
+              ? "What is this job's quote status?"
+              : "What stage is this job in?"
             : "Have we renovated a flagship store before?",
           savedDraft: "Answers use the last saved draft.",
           send: "Ask",
@@ -113,26 +122,33 @@ export function HomeChat({
       >
         {turns.map((turn) => (
           <article
-            className={turn.role === "user" ? styles.userMessage : styles.assistantMessage}
+            className={
+              turn.role === "user"
+                ? styles.userMessage
+                : turn.aiPresentation
+                  ? `${styles.assistantMessage} ${styles.cardsMessage}`
+                  : styles.assistantMessage
+            }
             key={turn.id}
           >
             {turn.ai && (
               <small>
-                {turn.aiSources?.length
+                {(
+                  turn.aiPresentation
+                    ? turn.aiPresentation.blocks.some((b) => b.kind === "CARD")
+                    : turn.aiSources?.length
+                )
                   ? assistantCopy(locale).label
                   : assistantCopy(locale).labelWithoutSources}
               </small>
             )}
             {turn.aiFallback && <small role="status">{assistantCopy(locale).fallback}</small>}
             {!turn.draftResult?.form ? (
-              <p>
-                {turn.text.split("\n").map((line, index, lines) => (
-                  <Fragment key={index}>
-                    <span className={styles.answerLine}>{line}</span>
-                    {index < lines.length - 1 ? "\n" : ""}
-                  </Fragment>
-                ))}
-              </p>
+              <AnswerText
+                text={turn.text}
+                facts={!!turn.ai && !!turn.aiSources?.length}
+                presentation={turn.aiPresentation}
+              />
             ) : null}
             {turn.draftResult?.form ? (
               <div className={styles.draftCard}>
@@ -160,7 +176,7 @@ export function HomeChat({
                 </div>
               </div>
             ) : null}
-            {turn.aiSources?.length ? (
+            {turn.aiSources?.length && !turn.aiPresentation ? (
               <ul aria-label={assistantCopy(locale).sources}>
                 {turn.aiSources.map((source) => (
                   <li key={source.sourceId}>

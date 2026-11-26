@@ -2,12 +2,14 @@
 
 This is the shared visual contract for every screen. Traditional Chinese comes first; every label has an English twin. Use plain CSS custom properties and the components in `src/components/ui/`. No utility framework, component library, icon package or CSS-in-JS dependency is required.
 
+StrideBrain is for owners of small firms. Every screen and every answer must be easy and friendly, helping their day go better with less hassle. Use plain words instead of internal terms, names instead of codes, and show the thing the person asked for first.
+
 ## Rules
 
 - A design value outside the tokens is a defect. Colour, typography, spacing, radii, control heights and the document shadow come from `src/styles/tokens.css`. Structural CSS (`grid`, `auto`, `0`, percentages, fractions, responsive breakpoints and intrinsic sizing) is not a design value. Never add new legacy tokens.
 - One primary button per view. Its text names the action. Other actions use secondary, outline or quiet; destructive actions use danger.
 - Every page starts with PageHeader: a small context line, the title, and actions on the right. Actions wrap below at narrow widths.
-- Record lists are tables directly on the page, without surrounding cards. Separate sections with space and a rule, not boxes.
+- Assistant answers use server-built record cards with named titles, quiet references, description-list rows and one source-page link; older answers retain their text view. Other record lists are tables directly on the page, without surrounding cards. Separate sections with space and a rule, not boxes.
 - Status is a badge with words: 草稿 / Draft (neutral), 內部審查中 / In internal review (information), 已發出 / Issued (warning), 已接受 / Accepted (accent-soft), 定稿 / Final (ink reversed). The supplied colours vary in lightness and hue; words carry the meaning.
 - Money and other compared figures align right and use tabular numerals. Formatting and permission checks stay in their existing domain/application paths.
 - Interactive elements are real buttons, links or form controls. Every keyboard target has a visible 3px focus ring. Text contrast is at least 4.5:1, control borders and icons at least 3:1. Icons use currentColor and always have adjacent text or an accessible name.

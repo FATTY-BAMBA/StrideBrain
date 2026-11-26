@@ -226,9 +226,25 @@
   gap: 8px;
 }
 
-.answerLine {
-  display: block;
+.answerText {
   white-space: pre-wrap;
+}
+.factAnswer {
+  display: grid;
+  gap: var(--space-16);
+  min-width: 0;
+}
+.answerRecord {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.assistantMessage .answerHeading {
+  color: var(--ink);
+}
+.answerFact {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 .draftCard {
   min-width: 0;
@@ -259,4 +275,13 @@
   color: var(--muted);
   font-size: var(--text-caption);
   line-height: var(--leading-caption);
+}
+
+.assistantMessage.cardsMessage {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }

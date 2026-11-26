@@ -1,3 +1,4 @@
+import { priceJob, issuedPrice, priceItem } from "../price-list/fixtures";
 import { randomUUID } from "node:crypto";
 import { getPrismaClient } from "@/lib/server/prisma";
 import { createComparisonServices } from "@/lib/server/comparison-services";
@@ -66,6 +67,9 @@ export async function prepareEvaluation(db: Awaited<ReturnType<typeof assistantD
       run.result.defaultSelectedProjectKeys,
     );
   }
+  // One bilingual issued item makes the page/tool price oracle deterministic.
+  const itemJob = await priceJob(c);
+  await issuedPrice(c, itemJob, [priceItem("天花板 Ceiling", "3200", "坪")]);
   // The second organization opts in for the authorization evaluation only.
   await prisma.organization.update({
     where: { id: "org_northern" },

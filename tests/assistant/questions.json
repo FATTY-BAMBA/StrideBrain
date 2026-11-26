@@ -119,7 +119,7 @@
     "question": "What is the median past quoted stone rate for PRJ-XINYI-026?",
     "oracleTools": [
       {
-        "name": "get_past_prices",
+        "name": "get_comparison_category_price_ranges",
         "arguments": {
           "projectKey": "PRJ-XINYI-026",
           "categoryId": "IMPORTED_STONE"
@@ -139,7 +139,7 @@
     "question": "Give the count and range of past quoted stone rates for PRJ-XINYI-026.",
     "oracleTools": [
       {
-        "name": "get_past_prices",
+        "name": "get_comparison_category_price_ranges",
         "arguments": {
           "projectKey": "PRJ-XINYI-026",
           "categoryId": "IMPORTED_STONE"
@@ -159,7 +159,7 @@
     "question": "What is the past quoted millwork median for PRJ-XINYI-026?",
     "oracleTools": [
       {
-        "name": "get_past_prices",
+        "name": "get_comparison_category_price_ranges",
         "arguments": {
           "projectKey": "PRJ-XINYI-026",
           "categoryId": "CUSTOM_MILLWORK"
@@ -492,7 +492,7 @@
     "question": "PRJ-XINYI-026的過往石材報價單價中位數是多少？",
     "oracleTools": [
       {
-        "name": "get_past_prices",
+        "name": "get_comparison_category_price_ranges",
         "arguments": {
           "projectKey": "PRJ-XINYI-026",
           "categoryId": "IMPORTED_STONE"
@@ -512,7 +512,7 @@
     "question": "PRJ-XINYI-026的過往石材報價有幾筆，單價範圍是多少？",
     "oracleTools": [
       {
-        "name": "get_past_prices",
+        "name": "get_comparison_category_price_ranges",
         "arguments": {
           "projectKey": "PRJ-XINYI-026",
           "categoryId": "IMPORTED_STONE"
@@ -532,7 +532,7 @@
     "question": "PRJ-XINYI-026的過往木作報價單價中位數是多少？",
     "oracleTools": [
       {
-        "name": "get_past_prices",
+        "name": "get_comparison_category_price_ranges",
         "arguments": {
           "projectKey": "PRJ-XINYI-026",
           "categoryId": "CUSTOM_MILLWORK"
@@ -922,7 +922,7 @@
     "qualityRegression": true,
     "oracleTools": [
       {
-        "name": "get_past_prices",
+        "name": "get_comparison_category_price_ranges",
         "arguments": {
           "projectKey": "J-2611-R7K3",
           "categoryId": "CUSTOM_MILLWORK"
@@ -944,7 +944,7 @@
     "qualityRegression": true,
     "oracleTools": [
       {
-        "name": "get_past_prices",
+        "name": "get_comparison_category_price_ranges",
         "arguments": {
           "projectKey": "J-2611-R7K3",
           "categoryId": "CUSTOM_MILLWORK"
@@ -1039,6 +1039,592 @@
       "kind": "FACTS",
       "facts": ["@status", "@amounts.amountBeforeTax"],
       "forbidden": ["J-2611-R7K3"]
+    }
+  },
+  {
+    "id": "en-awaiting-document-number",
+    "locale": "en",
+    "person": "owner",
+    "question": "Which document numbers are waiting for the client?",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "list_awaiting_client",
+        "arguments": {}
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@documentNumber"],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "en-item-price",
+    "locale": "en",
+    "person": "owner",
+    "question": "What is our last price per ping for Ceiling, when was it quoted and how many quotes?",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_price_list_item_last_prices",
+        "arguments": {
+          "description": "Ceiling",
+          "unit": "坪"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@lastPrice", "@lastQuoted", "@timesQuoted"],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "en-viewer-stage",
+    "locale": "en",
+    "person": "viewer",
+    "question": "What stage is this job in?",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@stage"],
+      "forbidden": []
+    },
+    "projectKey": "PRJ-XINYI-026"
+  },
+  {
+    "id": "en-required-other-org",
+    "locale": "en",
+    "person": "other-organization",
+    "question": "What is the quote total for PRJ-XINYI-026?",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "DECLINE",
+      "facts": [],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "zh-TW-awaiting-document-number",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "等待客戶回覆的報價編號有哪些？",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "list_awaiting_client",
+        "arguments": {}
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@documentNumber"],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "zh-TW-item-price",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "天花板一坪我們報多少？上次報價日期和報價次數是多少？",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_price_list_item_last_prices",
+        "arguments": {
+          "description": "天花板",
+          "unit": "坪"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@lastPrice", "@lastQuoted", "@timesQuoted"],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "zh-TW-viewer-stage",
+    "locale": "zh-TW",
+    "person": "viewer",
+    "question": "這個專案目前在哪個階段？",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@stage"],
+      "forbidden": []
+    },
+    "projectKey": "PRJ-XINYI-026"
+  },
+  {
+    "id": "zh-TW-required-other-org",
+    "locale": "zh-TW",
+    "person": "other-organization",
+    "question": "PRJ-XINYI-026的報價總額是多少？",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "DECLINE",
+      "facts": [],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "en-item-no-comparison",
+    "locale": "en",
+    "person": "owner",
+    "question": "What do we usually quote per ping for Ceiling on this job?",
+    "projectKey": "PRJ-ACTIVE-001",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_price_list_item_last_prices",
+        "arguments": {
+          "description": "Ceiling",
+          "unit": "坪",
+          "projectKey": "PRJ-ACTIVE-001"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@lastPrice", "@lastQuoted", "@timesQuoted", "@documentNumber"],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "en-closed-other-bar",
+    "locale": "en",
+    "person": "owner",
+    "question": "What are the actual cost and quote before tax for Nanjing Brand Experience Center?",
+    "projectKey": "PRJ-ACTIVE-001",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_closed_job_lessons",
+        "arguments": {}
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@quotedPrice", "@reconciledActualCost"],
+      "subjectProjectKey": "PRJ-NANJING-023",
+      "forbidden": ["PRJ-ACTIVE-001"]
+    }
+  },
+  {
+    "id": "en-closed-overall-difference",
+    "locale": "en",
+    "person": "owner",
+    "question": "Is the overall actual cost of Nanjing Brand Experience Center above or below its quote, and by how much?",
+    "projectKey": "PRJ-ACTIVE-001",
+    "reported": true,
+    "oracleTools": [
+      {
+        "name": "get_closed_job_lessons",
+        "arguments": {}
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@overallDifference"],
+      "subjectProjectKey": "PRJ-NANJING-023",
+      "forbidden": ["PRJ-ACTIVE-001"]
+    }
+  },
+  {
+    "id": "zh-TW-item-no-comparison",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "這個專案的天花板一坪我們通常報多少？",
+    "projectKey": "PRJ-ACTIVE-001",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_price_list_item_last_prices",
+        "arguments": {
+          "description": "天花板",
+          "unit": "坪",
+          "projectKey": "PRJ-ACTIVE-001"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@lastPrice", "@lastQuoted", "@timesQuoted", "@documentNumber"],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "zh-TW-closed-other-bar",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "南京品牌體驗中心的實際成本和未稅報價是多少？",
+    "projectKey": "PRJ-ACTIVE-001",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_closed_job_lessons",
+        "arguments": {}
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@quotedPrice", "@reconciledActualCost"],
+      "subjectProjectKey": "PRJ-NANJING-023",
+      "forbidden": ["PRJ-ACTIVE-001"]
+    }
+  },
+  {
+    "id": "zh-TW-closed-overall-difference",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "南京品牌體驗中心整體實際成本比報價高還是低？差多少？",
+    "projectKey": "PRJ-ACTIVE-001",
+    "reported": true,
+    "oracleTools": [
+      {
+        "name": "get_closed_job_lessons",
+        "arguments": {}
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@overallDifference"],
+      "subjectProjectKey": "PRJ-NANJING-023",
+      "forbidden": ["PRJ-ACTIVE-001"]
+    }
+  },
+  {
+    "id": "en-inaccessible-named-in-job-bar",
+    "locale": "en",
+    "person": "project-manager",
+    "question": "What is the quote total for Active Design Project 01?",
+    "projectKey": "PRJ-XINYI-026",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [],
+    "expected": {
+      "kind": "DECLINE",
+      "unresolvedSubject": true,
+      "facts": [],
+      "forbidden": ["PRJ-XINYI-026"]
+    }
+  },
+  {
+    "id": "en-unknown-named-in-job-bar",
+    "locale": "en",
+    "person": "owner",
+    "question": "What is the quote total for Moonlight Cafe?",
+    "projectKey": "PRJ-XINYI-026",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [],
+    "expected": {
+      "kind": "DECLINE",
+      "unresolvedSubject": true,
+      "facts": [],
+      "forbidden": ["PRJ-XINYI-026"]
+    }
+  },
+  {
+    "id": "zh-TW-inaccessible-named-in-job-bar",
+    "locale": "zh-TW",
+    "person": "project-manager",
+    "question": "進行中設計專案01的報價總計是多少？",
+    "projectKey": "PRJ-XINYI-026",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [],
+    "expected": {
+      "kind": "DECLINE",
+      "unresolvedSubject": true,
+      "facts": [],
+      "forbidden": ["PRJ-XINYI-026"]
+    }
+  },
+  {
+    "id": "zh-TW-unknown-named-in-job-bar",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "「月光咖啡館」這個專案的報價總計是多少？",
+    "projectKey": "PRJ-XINYI-026",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [],
+    "expected": {
+      "kind": "DECLINE",
+      "unresolvedSubject": true,
+      "facts": [],
+      "forbidden": ["PRJ-XINYI-026"]
+    }
+  },
+  {
+    "id": "en-inaccessible-named-in-job-bar-wording-1",
+    "locale": "en",
+    "person": "project-manager",
+    "question": "How is Active Design Project 02 doing?",
+    "projectKey": "PRJ-XINYI-026",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [],
+    "expected": {
+      "kind": "DECLINE",
+      "unresolvedSubject": true,
+      "facts": [],
+      "forbidden": ["PRJ-XINYI-026"]
+    }
+  },
+  {
+    "id": "en-inaccessible-named-in-job-bar-wording-2",
+    "locale": "en",
+    "person": "project-manager",
+    "question": "Tell me who the client of Active Design Project 02 is.",
+    "projectKey": "PRJ-XINYI-026",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [],
+    "expected": {
+      "kind": "DECLINE",
+      "unresolvedSubject": true,
+      "facts": [],
+      "forbidden": ["PRJ-XINYI-026"]
+    }
+  },
+  {
+    "id": "en-unknown-named-in-job-bar-wording-1",
+    "locale": "en",
+    "person": "owner",
+    "question": "Where have we got to on Moonlight Cafe?",
+    "projectKey": "PRJ-XINYI-026",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [],
+    "expected": {
+      "kind": "DECLINE",
+      "unresolvedSubject": true,
+      "facts": [],
+      "forbidden": ["PRJ-XINYI-026"]
+    }
+  },
+  {
+    "id": "en-unknown-named-in-job-bar-wording-2",
+    "locale": "en",
+    "person": "owner",
+    "question": "Show me Moonlight Cafe’s findings.",
+    "projectKey": "PRJ-XINYI-026",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [],
+    "expected": {
+      "kind": "DECLINE",
+      "unresolvedSubject": true,
+      "facts": [],
+      "forbidden": ["PRJ-XINYI-026"]
+    }
+  },
+  {
+    "id": "en-item-no-comparison-wording-1",
+    "locale": "en",
+    "person": "owner",
+    "question": "Look up the last price we quoted for Ceiling, per ping.",
+    "projectKey": "PRJ-ACTIVE-001",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_price_list_item_last_prices",
+        "arguments": {
+          "description": "Ceiling",
+          "unit": "坪",
+          "projectKey": "PRJ-ACTIVE-001"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@lastPrice", "@lastQuoted", "@timesQuoted", "@documentNumber"],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "en-item-no-comparison-wording-2",
+    "locale": "en",
+    "person": "owner",
+    "question": "How much is Ceiling per ping in our price list?",
+    "projectKey": "PRJ-ACTIVE-001",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_price_list_item_last_prices",
+        "arguments": {
+          "description": "Ceiling",
+          "unit": "坪",
+          "projectKey": "PRJ-ACTIVE-001"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@lastPrice", "@lastQuoted", "@timesQuoted", "@documentNumber"],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "zh-TW-inaccessible-named-in-job-bar-wording-1",
+    "locale": "zh-TW",
+    "person": "project-manager",
+    "question": "進行中設計專案02有哪些發現？",
+    "projectKey": "PRJ-XINYI-026",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [],
+    "expected": {
+      "kind": "DECLINE",
+      "unresolvedSubject": true,
+      "facts": [],
+      "forbidden": ["PRJ-XINYI-026"]
+    }
+  },
+  {
+    "id": "zh-TW-inaccessible-named-in-job-bar-wording-2",
+    "locale": "zh-TW",
+    "person": "project-manager",
+    "question": "告訴我進行中設計專案02的狀況",
+    "projectKey": "PRJ-XINYI-026",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [],
+    "expected": {
+      "kind": "DECLINE",
+      "unresolvedSubject": true,
+      "facts": [],
+      "forbidden": ["PRJ-XINYI-026"]
+    }
+  },
+  {
+    "id": "zh-TW-unknown-named-in-job-bar-wording-1",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "月光咖啡館現在做到哪了？",
+    "projectKey": "PRJ-XINYI-026",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [],
+    "expected": {
+      "kind": "DECLINE",
+      "unresolvedSubject": true,
+      "facts": [],
+      "forbidden": ["PRJ-XINYI-026"]
+    }
+  },
+  {
+    "id": "zh-TW-unknown-named-in-job-bar-wording-2",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "想知道月光咖啡館的客戶是誰。",
+    "projectKey": "PRJ-XINYI-026",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [],
+    "expected": {
+      "kind": "DECLINE",
+      "unresolvedSubject": true,
+      "facts": [],
+      "forbidden": ["PRJ-XINYI-026"]
+    }
+  },
+  {
+    "id": "zh-TW-item-no-comparison-wording-1",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "查一下天花板每坪上次報多少錢。",
+    "projectKey": "PRJ-ACTIVE-001",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_price_list_item_last_prices",
+        "arguments": {
+          "description": "天花板",
+          "unit": "坪",
+          "projectKey": "PRJ-ACTIVE-001"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@lastPrice", "@lastQuoted", "@timesQuoted", "@documentNumber"],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "zh-TW-item-no-comparison-wording-2",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "價格表裡的天花板每坪是多少？",
+    "projectKey": "PRJ-ACTIVE-001",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_price_list_item_last_prices",
+        "arguments": {
+          "description": "天花板",
+          "unit": "坪",
+          "projectKey": "PRJ-ACTIVE-001"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@lastPrice", "@lastQuoted", "@timesQuoted", "@documentNumber"],
+      "forbidden": []
     }
   }
 ]

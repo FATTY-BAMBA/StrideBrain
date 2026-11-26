@@ -43,7 +43,7 @@ suite("client personal details stay outside assistant answers and model input", 
         { name: "get_quote_status", arguments: { projectKey: "PRJ-XINYI-026" } },
         { name: "get_saved_comparison", arguments: { projectKey: "PRJ-XINYI-026" } },
         {
-          name: "get_past_prices",
+          name: "get_comparison_category_price_ranges",
           arguments: { projectKey: "PRJ-XINYI-026", categoryId: "IMPORTED_STONE" },
         },
         { name: "list_awaiting_client", arguments: {} },

@@ -66,6 +66,9 @@ export function redactSource(
   return {
     ...source,
     label: redactText(source.label, references),
+    ...(source.display
+      ? { display: { ...source.display, title: redactText(source.display.title, references) } }
+      : {}),
     facts: mapFacts(
       source.facts,
       source.typedFactPaths ?? [],

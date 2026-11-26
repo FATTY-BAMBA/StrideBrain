@@ -1,5 +1,6 @@
 "use server";
 
+import { scheduleAssistantTurnTiming } from "@/lib/server/assistant-turn-timing";
 import { assistantConfigured } from "@/lib/server/assistant-availability";
 import {
   claimFindingText,
@@ -684,13 +685,13 @@ export async function askHomeAction(
   previous: HomeChatState,
   formData: FormData,
 ): Promise<HomeChatState> {
+  const startedAt = new Date();
   const rawLocale = formData.get("locale"),
     rawMessage = formData.get("message"),
     rawProject = formData.get("projectKey");
   let attempted = false;
   let subjectProjectKey: string | undefined;
   if (
-    assistantConfigured() &&
     typeof rawLocale === "string" &&
     isSupportedLocale(rawLocale) &&
     typeof rawMessage === "string" &&
@@ -701,7 +702,8 @@ export async function askHomeAction(
   ) {
     try {
       const runtime = await resolveServerRuntimeContext();
-      if (runtime) {
+      if (runtime) scheduleAssistantTurnTiming(runtime, startedAt);
+      if (runtime && assistantConfigured()) {
         const { createAssistantServices } = await import("@/lib/server/assistant-services");
         const result = await createAssistantServices().ask.execute(
           { ...runtime, locale: rawLocale },
@@ -731,6 +733,7 @@ export async function askHomeAction(
                 href: s.href as Route,
               })),
               aiFollowUps: result.answer.followUps,
+              ...(result.answer.presentation ? { aiPresentation: result.answer.presentation } : {}),
               ...(result.action
                 ? { action: { ...result.action, href: result.action.href as Route } }
                 : {}),

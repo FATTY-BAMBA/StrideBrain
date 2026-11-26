@@ -1,0 +1,23 @@
+{
+  "mode": "LOCAL_SYNTHETIC_WARM_SINGLE_READ",
+  "postgres": "17.12",
+  "collation": "en_US.utf8",
+  "lines": 20000,
+  "quotes": 100,
+  "beforeMs": {
+    "suggest": 1040.18,
+    "history": 17.22,
+    "list": 184.51
+  },
+  "afterMs": {
+    "suggest": 281.52,
+    "history": 22.59,
+    "list": 156.48
+  },
+  "planBefore": {
+    "groupAggregateLoops": 200,
+    "clientPriceLoops": 200
+  },
+  "change": "Compute each per-item relation once with MATERIALIZED; access, count, ordering and values unchanged.",
+  "limits": "Not hosted or concurrent load; suggestion above informal 200ms target; prior CI exception code unavailable."
+}

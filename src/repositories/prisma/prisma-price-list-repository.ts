@@ -22,6 +22,7 @@ type DbPrice = {
   clientNameZhTw: string;
   timesQuoted: number;
   clientPrice?: DbPrice | null;
+  sourceProjectKeys?: string[];
 };
 function visible(row: DbPrice, context: RuntimeContext): QuotedItemPrice {
   return {
@@ -121,17 +122,21 @@ export class PrismaPriceListRepository implements PriceListRepositoryPort {
             description, unit, "unitPrice", currency, "issuedOn", "documentNumber", "projectKey",
             "projectNameEn", "projectNameZhTw", "clientNameEn", "clientNameZhTw"
           FROM authorized WHERE strpos("descriptionKey", sb_price_identity(${input.search}))>0
-        ), groups AS (
+            AND (${input.unit} = '' OR "unitKey" = sb_price_identity(${input.unit}))
+        -- Compute each per-item aggregate and client price once. With underestimated
+        -- view cardinality, inlining lets a nested loop repeat them for every item.
+        ), groups AS MATERIALIZED (
           SELECT "descriptionKey", "unitKey", count(DISTINCT "quoteId")::int AS "timesQuoted",
+            array_agg(DISTINCT "projectKey") AS "sourceProjectKeys",
             bool_or("clientId"=${clientId}) AS "sameClient" FROM matching GROUP BY "descriptionKey", "unitKey"
-        ), latest AS (
+        ), latest AS MATERIALIZED (
           SELECT DISTINCT ON ("descriptionKey", "unitKey") * FROM matching
           ORDER BY "descriptionKey", "unitKey", "issuedAt" DESC, "versionId" DESC, "sectionPosition" DESC, "lineNumber" DESC
-        ), client_latest AS (
+        ), client_latest AS MATERIALIZED (
           SELECT DISTINCT ON ("descriptionKey", "unitKey") * FROM matching WHERE "clientId"=${clientId}
           ORDER BY "descriptionKey", "unitKey", "issuedAt" DESC, "versionId" DESC, "sectionPosition" DESC, "lineNumber" DESC
         )
-        SELECT latest.*, latest."unitPrice"::text AS "unitPrice", groups."timesQuoted",
+        SELECT latest.*, latest."unitPrice"::text AS "unitPrice", groups."timesQuoted", groups."sourceProjectKeys",
           CASE WHEN cp."unitPrice" <> latest."unitPrice" OR cp.currency <> latest.currency
             THEN to_jsonb(cp) || jsonb_build_object('unitPrice',cp."unitPrice"::text) ELSE NULL END AS "clientPrice"
         FROM latest JOIN groups USING ("descriptionKey","unitKey")
@@ -149,7 +154,8 @@ export class PrismaPriceListRepository implements PriceListRepositoryPort {
         const mapped: PriceListRow[] = rows.slice(0, limit).map((row) => ({
           ...visible(row, context),
           timesQuoted: row.timesQuoted,
-          ...(input.mode === "SUGGEST" && row.clientPrice
+          sourceProjectKeys: row.sourceProjectKeys ?? [row.projectKey],
+          ...(input.projectKey && row.clientPrice
             ? { clientPrice: visible(row.clientPrice, context) }
             : {}),
         }));

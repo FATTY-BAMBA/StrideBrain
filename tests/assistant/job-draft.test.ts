@@ -29,6 +29,7 @@ function setup(draft: unknown = { ...emptyDraft(), name: quoted("旗艦店裝修
   };
   const usage = {
     enabled: vi.fn().mockResolvedValue(true),
+    questionMentionsUnreadableJob: vi.fn().mockResolvedValue(false),
     readableReferences: vi.fn(),
     jobPolicy: vi.fn(),
     settings: vi.fn(),

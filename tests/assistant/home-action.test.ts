@@ -1,7 +1,11 @@
+vi.mock("@/lib/server/assistant-turn-timing", () => ({
+  scheduleAssistantTurnTiming: boundary.timing,
+}));
 import { afterEach, beforeEach, describe, it, expect, vi } from "vitest";
 import { jobContext } from "../projects/job-fixture";
 const boundary = vi.hoisted(() => ({
   ask: vi.fn(),
+  timing: vi.fn(),
   context: vi.fn(),
   legacy: vi.fn(),
   runComparison: vi.fn(),
@@ -31,6 +35,26 @@ function form() {
   return value;
 }
 describe("Home assistant integration", () => {
+  it("starts timing before runtime resolution and schedules it even for an early refusal", async () => {
+    const started = Date.now();
+    boundary.ask.mockResolvedValue({
+      kind: "ANSWER",
+      locale: "en",
+      refusal: "UNAVAILABLE",
+      answer: { text: "Refused", sourceIds: [], followUps: [] },
+      sources: [],
+    });
+    const result = await askHomeAction(initialHomeChatState, form());
+    expect(result.turns.at(-1)?.text).toBe("Refused");
+    expect(boundary.timing).toHaveBeenCalledWith(
+      expect.objectContaining({ membershipId: jobContext().membershipId }),
+      expect.any(Date),
+    );
+    expect(boundary.timing.mock.calls.at(-1)![1].getTime()).toBeGreaterThanOrEqual(started);
+    expect(boundary.timing.mock.invocationCallOrder.at(-1)).toBeLessThan(
+      boundary.ask.mock.invocationCallOrder.at(-1)!,
+    );
+  });
   it("passes the server-resolved subject to record search without changing the browser form", async () => {
     boundary.ask.mockResolvedValue({
       kind: "FALLBACK",

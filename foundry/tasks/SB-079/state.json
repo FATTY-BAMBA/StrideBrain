@@ -1,0 +1,133 @@
+{
+  "issue": 79,
+  "branch": "build/sb-079-fact-answers",
+  "baseCommit": "bb8d8d8d9fbb3365477f5164dbd9d84d7d237fe3",
+  "issueUpdatedAt": "2026-11-25T20:22:52Z",
+  "status": "REVIEW_FIX_ROUND_4_FREE_REPLAY_PASSED_WAITING_HOSTED",
+  "delivery": "A → B → C → D → E",
+  "pullRequestDraft": true,
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "paidEvaluationRuns": [
+    {
+      "runId": 45702234409,
+      "commit": "e52205fcdacb5081d6a719126011d96a1b67e64a",
+      "status": "FAILED",
+      "estimatedUsd": "0.357366200"
+    },
+    {
+      "runId": 45728856574,
+      "commit": "308342a28073283b5ddeb91e1f8d421009e7929e",
+      "status": "FAILED",
+      "estimatedUsd": "0.349932600"
+    },
+    {
+      "runId": 45732833274,
+      "commit": "20955bc9443ecef9baac24831cb1bc240975045f",
+      "status": "PASSED",
+      "estimatedUsd": "0.341503100"
+    },
+    {
+      "runId": 45743760089,
+      "commit": "1fdd4d7a03f12d93244e2855df430f39044ffac6",
+      "status": "FAILED",
+      "estimatedUsd": "0.382622100"
+    },
+    {
+      "runId": 45749557326,
+      "commit": "863f4da44877128dc6cac1c73afa571fa182134e",
+      "status": "FAILED",
+      "estimatedUsd": "0.495662000"
+    },
+    {
+      "runId": 45794522013,
+      "commit": "c3323c5d33b33ea647fc7074db59d483a8abdfdc",
+      "status": "FAILED",
+      "estimatedUsd": "0.495614000"
+    },
+    {
+      "runId": 45803605367,
+      "commit": "6ce9bba0c15fa39af38487d8205fa1789a86a1ca",
+      "mode": "FOCUSED_NOT_ACCEPTANCE",
+      "status": "PASSED_69_OF_69",
+      "estimatedUsd": "0.093715000"
+    },
+    {
+      "runId": 45804259788,
+      "commit": "6ce9bba0c15fa39af38487d8205fa1789a86a1ca",
+      "mode": "FULL_ACCEPTANCE",
+      "status": "FAILED",
+      "estimatedUsd": "0.454502700"
+    }
+  ],
+  "pullRequest": 80,
+  "confirmedDecision": "No free prose: phrase ids only; server owns source headings and fact layout. Twelve printed fact rows plus per-card overflow counts; first list ten rows plus remaining count, later lists title/count/link. Owner review 7201639602 supersedes reference-count rejections.",
+  "ci": {
+    "runId": 45888782216,
+    "commit": "0dbfb4f13088d697144b322bcb61451a7c540ec9",
+    "status": "PASSED"
+  },
+  "paidEvaluationEstimatedUsdTotal": "2.970917700",
+  "reviewComments": [
+    7180179624,
+    7180301103,
+    7180437328
+  ],
+  "localVerification": {
+    "command": "npm run check",
+    "status": "PASSED",
+    "tests": 1971,
+    "files": 201
+  },
+  "remainingAcceptance": [
+    "Hosted retest of all three roles waits for the Product Director; no hosted changes."
+  ],
+  "reviewRound2Comments": [
+    7181003350,
+    7181049379,
+    7181219556
+  ],
+  "confirmedCardDecision": "Record cards and empty-list sentences accepted as built in owner comment 7188877802, subject to hosted retest.",
+  "reviewRound3Comment": 7188877802,
+  "round3PaidAuthorization": {
+    "maximumUsd": "1.000000000",
+    "focusedFirst": true,
+    "maximumFullRuns": 1,
+    "spentUsd": "0.548217700",
+    "remainingUsd": "0.451782300",
+    "focusedRuns": [
+      {
+        "runId": 45803605367,
+        "commit": "6ce9bba0c15fa39af38487d8205fa1789a86a1ca",
+        "maximumUsd": "0.200000000",
+        "status": "PASSED_NOT_ACCEPTANCE",
+        "estimatedUsd": "0.093715000"
+      }
+    ],
+    "fullRuns": [
+      {
+        "runId": 45804259788,
+        "commit": "6ce9bba0c15fa39af38487d8205fa1789a86a1ca",
+        "maximumUsd": "0.700000000",
+        "status": "FAILED_FACT_LIMIT_DISCARD",
+        "estimatedUsd": "0.454502700"
+      }
+    ],
+    "remainingFullRuns": 0
+  },
+  "priorPaidEvaluationLimit": 6,
+  "reviewRound4Comment": 7201639602,
+  "round4Authorization": {
+    "fourthFixRoundExplicitlyAuthorized": true,
+    "paidRunsAllowed": 0,
+    "paidRunReplay": 45804259788,
+    "acceptedAsPaidResultIf": "252/252, no discard and no wrong value",
+    "conditionMet": true,
+    "replayed": 252,
+    "passed": 252,
+    "discards": 0,
+    "wrongValues": 0,
+    "accessViolations": 0,
+    "newEstimatedUsd": "0.000000000",
+    "evidence": "evidence/round4-free-full-replay.json"
+  }
+}

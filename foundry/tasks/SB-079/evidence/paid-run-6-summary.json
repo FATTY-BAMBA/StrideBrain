@@ -1,0 +1,1414 @@
+{
+  "run": 6,
+  "passed": false,
+  "model": "gemini-3.5-flash-lite",
+  "questionCostUsd": "0.393740000",
+  "draftCostUsd": "0.101874000",
+  "totalCostUsd": "0.495614000",
+  "rounds": [
+    {
+      "round": 1,
+      "scores": {
+        "en": 20,
+        "zh-TW": 20
+      },
+      "passed": false,
+      "callTargets": {
+        "median": 2,
+        "maximum": 5,
+        "withinThree": 82,
+        "questions": 84,
+        "namedRefusalMaximum": 5
+      },
+      "performance": {
+        "medianMs": 1375,
+        "p90Ms": 1987,
+        "totalUsd": "0.130095000",
+        "costPerQuestionUsd": "0.001548750000",
+        "baseline": {
+          "medianCalls": 2,
+          "p90Ms": 2000,
+          "costUsd": "0.198",
+          "questions": 162
+        },
+        "limits": {
+          "p90Ms": 2500,
+          "costPerQuestionUsd": "0.001527777778"
+        }
+      },
+      "performancePassed": false,
+      "requiredPassed": 34,
+      "requiredTotal": 42,
+      "wrongValues": 0,
+      "discards": 0,
+      "unresolvedModelCalls": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        5,
+        1,
+        1,
+        1
+      ],
+      "failures": [
+        "zh-TW-millwork-range",
+        "en-job-page-selected",
+        "zh-TW-job-page-selected",
+        "en-viewer-stage",
+        "zh-TW-viewer-stage",
+        "en-item-no-comparison",
+        "zh-TW-item-no-comparison",
+        "zh-TW-closed-other-bar"
+      ]
+    },
+    {
+      "round": 2,
+      "scores": {
+        "en": 20,
+        "zh-TW": 20
+      },
+      "passed": false,
+      "callTargets": {
+        "median": 2,
+        "maximum": 4,
+        "withinThree": 81,
+        "questions": 84,
+        "namedRefusalMaximum": 4
+      },
+      "performance": {
+        "medianMs": 1347,
+        "p90Ms": 2062,
+        "totalUsd": "0.132495900",
+        "costPerQuestionUsd": "0.001577332143",
+        "baseline": {
+          "medianCalls": 2,
+          "p90Ms": 2000,
+          "costUsd": "0.198",
+          "questions": 162
+        },
+        "limits": {
+          "p90Ms": 2500,
+          "costPerQuestionUsd": "0.001527777778"
+        }
+      },
+      "performancePassed": false,
+      "requiredPassed": 35,
+      "requiredTotal": 42,
+      "wrongValues": 0,
+      "discards": 1,
+      "unresolvedModelCalls": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        4,
+        1,
+        1
+      ],
+      "failures": [
+        "en-home-reference-total",
+        "zh-TW-millwork-range",
+        "en-job-page-selected",
+        "zh-TW-job-page-selected",
+        "en-viewer-stage",
+        "zh-TW-viewer-stage",
+        "en-item-no-comparison"
+      ]
+    },
+    {
+      "round": 3,
+      "scores": {
+        "en": 20,
+        "zh-TW": 20
+      },
+      "passed": false,
+      "callTargets": {
+        "median": 2,
+        "maximum": 5,
+        "withinThree": 82,
+        "questions": 84,
+        "namedRefusalMaximum": 5
+      },
+      "performance": {
+        "medianMs": 1360,
+        "p90Ms": 2043,
+        "totalUsd": "0.131149100",
+        "costPerQuestionUsd": "0.001561298810",
+        "baseline": {
+          "medianCalls": 2,
+          "p90Ms": 2000,
+          "costUsd": "0.198",
+          "questions": 162
+        },
+        "limits": {
+          "p90Ms": 2500,
+          "costPerQuestionUsd": "0.001527777778"
+        }
+      },
+      "performancePassed": false,
+      "requiredPassed": 34,
+      "requiredTotal": 42,
+      "wrongValues": 0,
+      "discards": 0,
+      "unresolvedModelCalls": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        5,
+        1,
+        1,
+        1
+      ],
+      "failures": [
+        "zh-TW-millwork-range",
+        "en-job-page-selected",
+        "zh-TW-job-page-selected",
+        "en-viewer-stage",
+        "zh-TW-viewer-stage",
+        "en-item-no-comparison",
+        "zh-TW-item-no-comparison",
+        "zh-TW-closed-overall-difference",
+        "en-item-no-comparison-wording-1"
+      ]
+    }
+  ],
+  "perQuestion": [
+    {
+      "id": "en-awaiting",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-status",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-validity",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-accepted",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-work",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-area",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-stone-median",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-stone-range",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-millwork",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-finding",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-closed",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        3,
+        3,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 3
+    },
+    {
+      "id": "en-owner-total",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-viewer-amount",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "en-viewer-overview",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-excluded",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        0,
+        0,
+        0
+      ],
+      "callMedian": 0,
+      "callMaximum": 0
+    },
+    {
+      "id": "en-unknown",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "en-other-org",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "en-injection",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-weather",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "en-manager-scope",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-awaiting",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        3,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 3
+    },
+    {
+      "id": "zh-TW-status",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        3,
+        3,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 3
+    },
+    {
+      "id": "zh-TW-validity",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-accepted",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-work",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-area",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        3,
+        3,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 3
+    },
+    {
+      "id": "zh-TW-stone-median",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-stone-range",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-millwork",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-finding",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-closed",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        3,
+        3,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 3
+    },
+    {
+      "id": "zh-TW-owner-total",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-viewer-amount",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "zh-TW-viewer-overview",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-excluded",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        0,
+        0,
+        0
+      ],
+      "callMedian": 0,
+      "callMaximum": 0
+    },
+    {
+      "id": "zh-TW-unknown",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "zh-TW-other-org",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "zh-TW-injection",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        3,
+        3,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 3
+    },
+    {
+      "id": "zh-TW-weather",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "zh-TW-manager-scope",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-home-named-status",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        3,
+        3,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 3
+    },
+    {
+      "id": "en-home-reference-total",
+      "locale": "en",
+      "passes": 2,
+      "rounds": 3,
+      "passRate": 0.6666666666666666,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-home-review-quote",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-home-empty-awaiting",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "zh-TW-home-named-status",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        3,
+        3,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 3
+    },
+    {
+      "id": "zh-TW-home-reference-total",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-home-review-quote",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-home-empty-awaiting",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "en-millwork-range",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        3,
+        3,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 3
+    },
+    {
+      "id": "zh-TW-millwork-range",
+      "locale": "zh-TW",
+      "passes": 0,
+      "rounds": 3,
+      "passRate": 0,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-job-page-selected",
+      "locale": "en",
+      "passes": 0,
+      "rounds": 3,
+      "passRate": 0,
+      "calls": [
+        3,
+        3,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 3
+    },
+    {
+      "id": "en-job-page-named",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-job-page-selected",
+      "locale": "zh-TW",
+      "passes": 0,
+      "rounds": 3,
+      "passRate": 0,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-job-page-named",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-awaiting-document-number",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-item-price",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        3,
+        2,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 3
+    },
+    {
+      "id": "en-viewer-stage",
+      "locale": "en",
+      "passes": 0,
+      "rounds": 3,
+      "passRate": 0,
+      "calls": [
+        3,
+        3,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 3
+    },
+    {
+      "id": "en-required-other-org",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "zh-TW-awaiting-document-number",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        3,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 3
+    },
+    {
+      "id": "zh-TW-item-price",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-viewer-stage",
+      "locale": "zh-TW",
+      "passes": 0,
+      "rounds": 3,
+      "passRate": 0,
+      "calls": [
+        3,
+        3,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 3
+    },
+    {
+      "id": "zh-TW-required-other-org",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "en-item-no-comparison",
+      "locale": "en",
+      "passes": 0,
+      "rounds": 3,
+      "passRate": 0,
+      "calls": [
+        3,
+        4,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 4
+    },
+    {
+      "id": "en-closed-other-bar",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        3,
+        4,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 4
+    },
+    {
+      "id": "en-closed-overall-difference",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-item-no-comparison",
+      "locale": "zh-TW",
+      "passes": 1,
+      "rounds": 3,
+      "passRate": 0.3333333333333333,
+      "calls": [
+        3,
+        3,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 3
+    },
+    {
+      "id": "zh-TW-closed-other-bar",
+      "locale": "zh-TW",
+      "passes": 2,
+      "rounds": 3,
+      "passRate": 0.6666666666666666,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-closed-overall-difference",
+      "locale": "zh-TW",
+      "passes": 2,
+      "rounds": 3,
+      "passRate": 0.6666666666666666,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-inaccessible-named-in-job-bar",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "en-unknown-named-in-job-bar",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "zh-TW-inaccessible-named-in-job-bar",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "zh-TW-unknown-named-in-job-bar",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "en-inaccessible-named-in-job-bar-wording-1",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "en-inaccessible-named-in-job-bar-wording-2",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "en-unknown-named-in-job-bar-wording-1",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "en-unknown-named-in-job-bar-wording-2",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "en-item-no-comparison-wording-1",
+      "locale": "en",
+      "passes": 2,
+      "rounds": 3,
+      "passRate": 0.6666666666666666,
+      "calls": [
+        4,
+        3,
+        5
+      ],
+      "callMedian": 4,
+      "callMaximum": 5
+    },
+    {
+      "id": "en-item-no-comparison-wording-2",
+      "locale": "en",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        3,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 3
+    },
+    {
+      "id": "zh-TW-inaccessible-named-in-job-bar-wording-1",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        5,
+        1,
+        5
+      ],
+      "callMedian": 5,
+      "callMaximum": 5
+    },
+    {
+      "id": "zh-TW-inaccessible-named-in-job-bar-wording-2",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        4,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 4
+    },
+    {
+      "id": "zh-TW-unknown-named-in-job-bar-wording-1",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "zh-TW-unknown-named-in-job-bar-wording-2",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        1,
+        1,
+        1
+      ],
+      "callMedian": 1,
+      "callMaximum": 1
+    },
+    {
+      "id": "zh-TW-item-no-comparison-wording-1",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-item-no-comparison-wording-2",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    }
+  ],
+  "jobDrafts": [
+    {
+      "round": 1,
+      "scores": {
+        "en": 16,
+        "zh-TW": 16
+      },
+      "required": {
+        "passed": 22,
+        "total": 22
+      },
+      "passed": true
+    },
+    {
+      "round": 2,
+      "scores": {
+        "en": 16,
+        "zh-TW": 16
+      },
+      "required": {
+        "passed": 22,
+        "total": 22
+      },
+      "passed": true
+    },
+    {
+      "round": 3,
+      "scores": {
+        "en": 16,
+        "zh-TW": 16
+      },
+      "required": {
+        "passed": 22,
+        "total": 22
+      },
+      "passed": true
+    }
+  ],
+  "reportedDrafts": [
+    {
+      "id": "zh-TW-residential-placeholder",
+      "locale": "zh-TW",
+      "passes": 3,
+      "rounds": 3
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+vi.mock("@/lib/server/assistant-turn-timing", () => ({ scheduleAssistantTurnTiming: vi.fn() }));
 import { assistantFactLabels } from "@/modules/localization/assistant";
 import { beforeAll, afterAll, afterEach, describe, it, expect, vi } from "vitest";
 import type * as AssistantServices from "@/lib/server/assistant-services";
@@ -83,8 +84,18 @@ async function ask(
         result: {
           kind: "ANSWER",
           answer: {
-            text: text(data.sources[0]?.facts ?? {}),
-            sourceIds: data.sources.map((s: { sourceId: string }) => s.sourceId),
+            ...(text({}).includes("999999999")
+              ? { parts: [{ say: "RECORDS_SHOW" }, { show: "missing" }] }
+              : {
+                  parts: data.sources.length
+                    ? [
+                        { say: "RECORDS_SHOW" },
+                        ...data.sources[0].facts
+                          .slice(0, 12)
+                          .map((f: { ref: string }) => ({ show: f.ref })),
+                      ]
+                    : [],
+                }),
             followUps: [],
           },
         },
@@ -142,7 +153,7 @@ suite("hosted regressions through authorized records and the Home server action"
     expect(turn.aiSources?.every((s) => s.href.startsWith("/zh-TW/"))).toBe(true);
     const sent = JSON.parse(fake.requests[0]!.messages[0]!.text);
     expect(sent.subjectProjects[0].reference).toBe("PRJ-ACTIVE-001");
-    expect(sent.selectedProjectReference).toBeUndefined();
+    expect(sent.pageContextReference).toBeUndefined();
   });
   it("sends the open job when the question names no job", async () => {
     const { turn, fake } = await ask(
@@ -152,7 +163,7 @@ suite("hosted regressions through authorized records and the Home server action"
     );
     expect(turn.ai).toBe(true);
     const sent = JSON.parse(fake.requests[0]!.messages[0]!.text);
-    expect(sent.selectedProjectReference).toBe("J-2611-R7K3");
+    expect(sent.pageContextReference).toBe("J-2611-R7K3");
     expect(sent.subjectProjects).toBeUndefined();
   });
   it("omits the optional panel for inaccessible jobs and still rejects a forged form project", async () => {
@@ -246,7 +257,10 @@ suite("hosted regressions through authorized records and the Home server action"
         (facts) => `目前有 ${facts[assistantFactLabels("zh-TW").count!]} 筆報價等待客戶回覆。`,
         true,
       );
-      expect(turn).toMatchObject({ ai: true, text: "目前有 0 筆報價等待客戶回覆。" });
+      expect(turn).toMatchObject({
+        ai: true,
+        text: "紀錄顯示：\n\n目前沒有等待客戶回覆的報價。",
+      });
       expect(turn.aiSources).toHaveLength(1);
       expect(fake.requests).toHaveLength(1);
     });
@@ -262,7 +276,7 @@ suite("hosted regressions through authorized records and the Home server action"
       action: { href: "/zh-TW/projects/PRJ-ACTIVE-001/compare" },
     });
     expect(turn.text).toContain("沒有目前可用的已儲存比較");
-    expect(fake.requests).toHaveLength(1);
+    expect(fake.requests).toHaveLength(2);
   });
   it.each(["en", "zh-TW"] as const)(
     "exposes only the Quote-tab millwork display rates in %s",
@@ -270,7 +284,7 @@ suite("hosted regressions through authorized records and the Home server action"
       const tools = createAssistantServices().tools,
         c = { ...(await db.actor()), locale };
       const history = await tools.execute(c, {
-        name: "get_past_prices",
+        name: "get_comparison_category_price_ranges",
         arguments: { projectKey: "J-2611-R7K3", categoryId: "CUSTOM_MILLWORK" },
       });
       expect(history.sources[0]!.facts).toMatchObject({

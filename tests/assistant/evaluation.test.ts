@@ -1,114 +1,269 @@
-import { runEvaluationRounds } from "./evaluation-stability";
+import { runEvaluationRounds, roundSummary } from "./evaluation-stability";
 import { writeFileSync } from "node:fs";
 import { describe, it, expect, vi } from "vitest";
 vi.mock("server-only", () => ({}));
 import questions from "./questions.json";
-import { FakeAssistantModel } from "./fake-model";
 import { assistantDatabase } from "./database-fixture";
 import { prepareEvaluation } from "./evaluation-fixture";
 import { runEvaluationQuestion } from "./run-evaluation";
-import { evaluateAnswer, type EvaluationQuestion } from "./evaluation";
+import {
+  evaluateAnswer,
+  selectedFacts,
+  matchesExpected,
+  expectedFacts,
+  evaluationLogRow,
+  type EvaluationQuestion,
+} from "./evaluation";
 import { assistantConfig } from "@/modules/assistant/infrastructure/config";
-import type { AssistantSource } from "@/modules/assistant/domain/contracts";
-describe("evaluation contract", () => {
-  it("contains twenty core English and twenty core zh-TW cases plus eight hosted regressions, two count/range cases and four job-page cases with explicit facts or refusals", () => {
-    expect(
-      questions.filter((q) => q.locale === "en" && !("required" in q && q.required)),
-    ).toHaveLength(20);
-    expect(
-      questions.filter((q) => q.locale === "zh-TW" && !("required" in q && q.required)),
-    ).toHaveLength(20);
-    expect(questions.filter((q) => "required" in q && q.required)).toHaveLength(14);
-    expect(
-      questions
-        .filter((q) => q.id.includes("-job-page-"))
-        .map((q) => [q.locale, q.required, q.projectKey]),
-    ).toEqual([
-      ["en", true, "J-2611-R7K3"],
-      ["en", true, "J-2611-R7K3"],
-      ["zh-TW", true, "J-2611-R7K3"],
-      ["zh-TW", true, "J-2611-R7K3"],
-    ]);
-    expect(
-      questions.every(
-        (q) =>
-          q.expected.kind === "DECLINE" ||
-          q.expected.match === "ANY_SAVED_FINDING" ||
-          q.expected.facts.length > 0,
-      ),
-    ).toBe(true);
+import { AnswerFactRegistry } from "@/modules/assistant/domain/fact-answers";
+const source = {
+  sourceId: "s",
+  label: "Job",
+  href: "/en",
+  projectKeys: ["J"],
+  facts: {
+    documentNumber: "PRJ-ACTIVE-001-Q1",
+    reference: "PRJ-ACTIVE-001",
+    amounts: { totalAmount: "NT$11,665,710" },
+  },
+};
+const q: EvaluationQuestion = {
+  id: "test",
+  locale: "en",
+  person: "owner",
+  question: "Quote number?",
+  oracleTools: [],
+  expected: { kind: "FACTS", facts: ["@documentNumber"], forbidden: [] },
+};
+const raw = (show: string) => ({ parts: [{ say: "RECORDS_SHOW" }, { show }], followUps: [] });
+function scored(show = "s1.documentNumber", mutate?: (s: string) => string) {
+  const registry = new AnswerFactRegistry("en");
+  registry.register([source]);
+  const rendered = registry.render(raw(show));
+  if (rendered.kind !== "ACCEPTED") throw Error("render");
+  return evaluateAnswer(
+    q,
+    {
+      ...rendered,
+      kind: "ANSWER",
+      locale: "en",
+      answer: {
+        ...rendered.answer,
+        text: mutate ? mutate(rendered.answer.text) : rendered.answer.text,
+      },
+      sources: [source],
+    },
+    expectedFacts(q, [source]),
+    raw(show),
+    [source],
+  );
+}
+describe("evaluation by selected references", () => {
+  it("keeps twenty core questions per language and adds all twenty-eight required fact-selection cases", () => {
+    for (const locale of ["en", "zh-TW"]) {
+      expect(
+        questions.filter(
+          (q) =>
+            q.locale === locale &&
+            !("required" in q && q.required) &&
+            !("reported" in q && q.reported),
+        ),
+      ).toHaveLength(20);
+      expect(
+        questions.filter(
+          (q) => q.locale === locale && "factSelectionRegression" in q && q.factSelectionRegression,
+        ),
+      ).toHaveLength(14);
+    }
+    expect(questions).toHaveLength(84);
   });
-  it("reports a discarded wrong number separately from displayed output", () => {
-    const q = questions[0] as EvaluationQuestion;
-    expect(
-      evaluateAnswer(q, { kind: "FALLBACK", reason: "UNGROUNDED" }, [], { text: "$999" }, []),
-    ).toMatchObject({
-      verdict: "wrong",
-      wrongNumber: false,
-      draftWrongNumber: true,
-      draftUnsupportedTokens: ["999"],
-      rawAnswerText: "$999",
-    });
+  it("counts a true page fact for an unresolved named job as a wrong record value", () => {
+    const registry = new AnswerFactRegistry("en");
+    registry.register([source]);
+    const rendered = registry.render(raw("s1.documentNumber"));
+    if (rendered.kind !== "ACCEPTED") throw Error("render");
+    const result = evaluateAnswer(
+      { ...q, expected: { kind: "DECLINE", unresolvedSubject: true, facts: [], forbidden: [] } },
+      { ...rendered, kind: "ANSWER", locale: "en", sources: [source] },
+      [],
+      raw("s1.documentNumber"),
+      [source],
+    );
+    expect(result).toMatchObject({ verdict: "wrong", wrongRecordValue: true });
   });
-  it.each(["en-work", "zh-TW-work"])(
-    "fails a contradictory empty Work list in %s even when it names the expected jobs",
-    (id) => {
-      const q = questions.find((q) => q.id === id) as EvaluationQuestion;
-      expect(q.expected.match).toBe("NONEMPTY_LIST");
-      const en = q.locale === "en";
-      const names = en
-        ? ["Active Design Project 03", "Active Design Project 04"]
-        : ["進行中設計專案03", "進行中設計專案04"];
-      const sources: AssistantSource[] = [
-        ...names.map((name, index) => ({
-          sourceId: `row-${index}`,
-          href: "/",
-          label: name,
-          facts: { name },
-          projectKeys: [`PRJ-ACTIVE-00${index + 3}`],
-          countSourceId: "count",
-        })),
-        {
-          sourceId: "count",
-          href: "/",
-          label: "Jobs",
-          facts: { count: 2, matchingCount: 2, appliedStageGroup: en ? "Work" : "施工" },
-          projectKeys: [],
-        },
-      ];
-      const score = (text: string, question = q) => {
-        const answer = { text, sourceIds: ["row-0", "row-1"], followUps: [] };
-        return evaluateAnswer(
-          question,
-          { kind: "ANSWER", locale: q.locale, answer, sources },
-          names,
-          answer,
-          sources,
-        );
-      };
-      // Exact English hosted answer; equivalent zh-TW contradiction.
-      const rejected = en
-        ? "There are no jobs currently in the work stage. The available jobs (Active Design Project 03 and Active Design Project 04) are in the Construction stage."
-        : "目前沒有專案在施工階段群組。可用的專案（進行中設計專案03與進行中設計專案04）處於施工階段。";
-      expect(score(rejected)).toMatchObject({ verdict: "wrong", wrongNumber: false });
-      expect(
-        score(rejected, { ...q, expected: { kind: "FACTS", facts: names, forbidden: [] } }).verdict,
-      ).toBe("grounded and correct");
-      expect(
-        score(`${en ? "None right now." : "目前有零個專案。"} ${names.join(", ")}`).verdict,
-      ).toBe("wrong");
-      expect(
-        score(
-          en
-            ? `Work: 2 jobs. ${names.join(" and ")} are in Construction.`
-            : `施工群組：2 個專案。${names.join("與")}均為施工階段。`,
-        ).verdict,
-      ).toBe("grounded and correct");
+  it("rejects the recorded wrong identifier even though it is another true fact", () => {
+    expect(scored()).toMatchObject({ verdict: "grounded and correct", wrongRecordValue: false });
+    expect(scored("s1.reference")).toMatchObject({ verdict: "wrong", wrongRecordValue: false });
+    expect(
+      scored("s1.documentNumber", (text) => text.replace("PRJ-ACTIVE-001-Q1", "PRJ-ACTIVE-001")),
+    ).toMatchObject({ verdict: "wrong", wrongRecordValue: true });
+  });
+  it.each(["NT$11,665,711", "wrong record heading", "2026-12-23"])(
+    "catches any post-render mutation: %s",
+    (bad) => {
+      expect(scored("s1.documentNumber", (text) => `${text}\n${bad}`)).toMatchObject({
+        verdict: "wrong",
+        wrongRecordValue: true,
+      });
     },
   );
+  it("scores only shown output and records every raw answer without logging it", () => {
+    const draft = { text: "Private draft 999", sourceIds: [], followUps: [] };
+    const judgement = evaluateAnswer(
+      { ...q, expected: { kind: "DECLINE", facts: [], forbidden: [] } },
+      {
+        kind: "ANSWER",
+        locale: "en",
+        refusal: "UNAVAILABLE",
+        answer: { text: "Fixed refusal", sourceIds: [], followUps: [] },
+        sources: [],
+      },
+      [],
+      draft,
+      [],
+    );
+    expect(judgement).toMatchObject({
+      verdict: "correctly declined",
+      wrongRecordValue: false,
+      draftRejected: true,
+      rawAnswer: draft,
+    });
+    const pass = scored();
+    expect(pass.rawAnswer).toEqual(raw("s1.documentNumber"));
+    const log = evaluationLogRow({
+      ...judgement,
+      id: "case",
+      locale: "en",
+      discardReason: null,
+      latencyMs: 1,
+      calls: 1,
+      inputTokens: 10,
+      outputTokens: 10,
+      estimatedUsd: "0.01",
+    });
+    expect(JSON.stringify(log)).not.toMatch(/Private|999|rawAnswer|sourceLedger|followUps|PRJ/);
+  });
+  it("scores only list fields the server prints and the children of an indivisible fact", () => {
+    const ledger = [
+      {
+        ...source,
+        sourceId: "row",
+        countSourceId: "count",
+        facts: {
+          reference: "J",
+          quoteBeforeTax: "999",
+          pastJobs: [{ name: "Past", score: "56/100" }],
+        },
+      },
+      { ...source, sourceId: "count", facts: { count: 1, matchingCount: 4 } },
+    ];
+    const actual = selectedFacts(
+      {
+        phraseId: "RECORDS_SHOW",
+        shown: [{ ref: "s2.list", sourceId: "count", path: "list", kind: "list" }],
+      },
+      ledger,
+    );
+    expect(actual.map((f) => f.path)).toEqual([
+      "matchingCount",
+      "reference",
+      "pastJobs.0.name",
+      "pastJobs.0.score",
+    ]);
+    expect(actual.some((f) => f.value === "999")).toBe(false);
+    expect(
+      selectedFacts(
+        {
+          phraseId: "RECORDS_SHOW",
+          shown: [{ ref: "s1.pastJobs.0", sourceId: "row", path: "pastJobs.0", kind: "fact" }],
+        },
+        ledger,
+      ).map((f) => f.value),
+    ).toEqual(["Past", "56/100"]);
+  });
+  it("accepts the same global item with optional job context but rejects a different item, unit or price", () => {
+    const item = {
+      ...source,
+      sourceId: "item",
+      projectKeys: ["PRICE-JOB"],
+      facts: {
+        description: "Ceiling",
+        unit: "坪",
+        documentNumber: "PRICE-Q1",
+        lastPrice: "NT$3,200",
+      },
+    };
+    const question = {
+      ...q,
+      expected: { kind: "FACTS" as const, facts: ["@lastPrice"], forbidden: [] },
+    };
+    const expected = expectedFacts(question, [item])[0]!;
+    const withJob = {
+      ...item,
+      sourceId: "item-with-job",
+      projectKeys: ["PRICE-JOB", "CONTEXT-JOB"],
+      subjectProjectKeys: ["CONTEXT-JOB"],
+    };
+    const select = (row: typeof withJob) =>
+      selectedFacts(
+        {
+          phraseId: "RECORDS_SHOW",
+          shown: [{ ref: "s1.lastPrice", sourceId: row.sourceId, path: "lastPrice", kind: "fact" }],
+        },
+        [row],
+      ).find((f) => f.path === "lastPrice")!;
+    expect(matchesExpected(select(withJob), expected)).toBe(true);
+    // Run 5 selected the identical global item without the oracle's optional page context.
+    const expectedWithJob = expectedFacts(question, [withJob])[0]!;
+    expect(
+      matchesExpected(select({ ...item, subjectProjectKeys: item.projectKeys }), expectedWithJob),
+    ).toBe(true);
+    expect(
+      matchesExpected(
+        {
+          ...select(withJob),
+          sourceId: "other-client-source",
+          path: "clientLastPrice",
+          subjects: ["OTHER-CLIENT-JOB"],
+        },
+        { ...expectedWithJob, path: "clientLastPrice", subjects: ["CONTEXT-JOB"] },
+      ),
+    ).toBe(false);
+    for (const facts of [
+      { ...item.facts, description: "Floor" },
+      { ...item.facts, unit: "m²" },
+      { ...item.facts, documentNumber: "DIFFERENT-Q1" },
+      { ...item.facts, lastPrice: "NT$9,999" },
+    ])
+      expect(matchesExpected(select({ ...withJob, facts }), expected)).toBe(false);
+  });
+  it("makes a wrong record value fail the whole round independently of per-language score", () => {
+    const rows = (questions as EvaluationQuestion[]).map((q) => ({
+      ...q,
+      verdict: "grounded and correct",
+      wrongRecordValue: false,
+      wrongNumber: false,
+      wrongAmountLabel: false,
+      badDisplayFormat: false,
+      calls: 2,
+      latencyMs: 1000,
+      estimatedUsd: "0.001",
+    }));
+    expect(roundSummary(1, rows).passed).toBe(true);
+    rows[0]!.wrongRecordValue = true;
+    expect(roundSummary(1, rows).passed).toBe(false);
+    rows[0]!.wrongRecordValue = false;
+    rows.forEach((q) => (q.latencyMs = 2501));
+    expect(roundSummary(1, rows).passed).toBe(false);
+    rows.forEach((q) => {
+      q.latencyMs = 1000;
+      q.estimatedUsd = "0.001528";
+    });
+    expect(roundSummary(1, rows).passed).toBe(false);
+  });
 });
 (process.env.DATABASE_URL ? it : it.skip)(
-  "runs all evaluation cases with the fake over authorized seeded records (not a model-quality score)",
+  "replays all 84 evaluation cases through the fake and authorized records in three rounds",
   async () => {
     const report = await runEvaluationRounds(async () => {
       const db = await assistantDatabase();
@@ -127,62 +282,53 @@ describe("evaluation contract", () => {
         process.env.STRIDEBRAIN_AI_FAKE_REPORT,
         JSON.stringify({ mode: "DETERMINISTIC_FAKE_NOT_MODEL_QUALITY", ...report }, null, 2) + "\n",
       );
+    expect(
+      report.rounds.flatMap((r) =>
+        r.questions
+          .filter((q) => q.verdict === "wrong")
+          .map((q) => ({ id: q.id, discardReason: q.discardReason })),
+      ),
+    ).toEqual([]);
     expect(report.passed).toBe(true);
-    expect(report.rounds).toHaveLength(3);
     expect(report.perQuestion.every((q) => q.passes === 3)).toBe(true);
   },
   120000,
 );
 
-(process.env.DATABASE_URL ? it : it.skip)(
-  "scores the server empty-list answer without requesting the paid draft's unrelated page follow-up",
-  async () => {
-    const db = await assistantDatabase();
-    try {
-      const question = questions.find(
-        (q) => q.id === "en-home-empty-awaiting",
-      ) as EvaluationQuestion;
-      const model = new FakeAssistantModel([
-        {
-          usage: { inputTokens: 0, outputTokens: 0 },
-          result: { kind: "TOOLS", calls: [{ name: "list_awaiting_client", arguments: {} }] },
-        },
-        (request) => {
-          const data = JSON.parse(request.messages.at(-1)!.text);
-          expect(JSON.parse(request.messages[0]!.text).selectedProjectReference).toBe(
-            "J-2611-R7K3",
-          );
-          expect(data.sources).toHaveLength(1);
-          expect(data.sources[0].facts["Record count"]).toBe(0);
-          return {
-            usage: { inputTokens: 0, outputTokens: 0 },
-            result: {
-              kind: "ANSWER",
-              answer: {
-                text: "There are currently 0 quotes waiting for the client.",
-                sourceIds: [data.sources[0].sourceId],
-                followUps: [
-                  "What is the status of quotes for project J-2611-R7K3?",
-                  "Are there any quotes in the inquiry stage?",
-                  "Can you list the closed jobs?",
-                ],
-              },
-            },
-          };
-        },
-      ]);
-      const row = await runEvaluationQuestion(db, question, assistantConfig({}), model);
-      expect(row).toMatchObject({
-        verdict: "grounded and correct",
-        wrongNumber: false,
-        draftWrongNumber: false,
-      });
-      expect(model.requests).toHaveLength(1);
-      expect(row.followUps).toEqual([]);
-      expect(row.answerText).not.toContain("J-2611-R7K3");
-    } finally {
-      await db.close();
-    }
-  },
-  30000,
-);
+it("does not credit overflow rows or child facts of an additional summary-only list", () => {
+  const registry = new AnswerFactRegistry("en");
+  const ledger = [
+    {
+      ...source,
+      facts: { findings: Array.from({ length: 13 }, (_, i) => ({ text: `Finding ${i}` })) },
+    },
+  ];
+  registry.register(ledger);
+  const result = registry.render({
+    parts: [
+      { say: "RECORDS_SHOW" },
+      ...Array.from({ length: 13 }, (_, i) => ({ show: `s1.findings.${i}.text` })),
+    ],
+    followUps: [],
+  });
+  if (result.kind !== "ACCEPTED") throw Error("render");
+  const facts = selectedFacts(result.selection, ledger);
+  expect(facts).toHaveLength(12);
+  expect(facts.some((f) => f.value === "Finding 12")).toBe(false);
+  const listLedger = [
+    { ...source, sourceId: "first", facts: { count: 0 } },
+    { ...source, sourceId: "second", facts: { count: 1 } },
+    { ...source, sourceId: "child", countSourceId: "second" },
+  ];
+  const lists = new AnswerFactRegistry("en");
+  lists.register(listLedger);
+  const rendered = lists.render({
+    parts: [{ say: "RECORDS_SHOW" }, { show: "s1.list" }, { show: "s2.list" }],
+    followUps: [],
+  });
+  if (rendered.kind !== "ACCEPTED") throw Error("render");
+  expect(selectedFacts(rendered.selection, listLedger).map((f) => f.path)).toEqual([
+    "count",
+    "count",
+  ]);
+});

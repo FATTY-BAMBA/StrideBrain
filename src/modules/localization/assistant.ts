@@ -1,3 +1,5 @@
+import { priceListCopy } from "./price-list";
+import { quoteDocumentCopy } from "./quote-document";
 import { quoteDraftCopy } from "./quote-draft";
 import { quoteIssueCopy } from "./quote-issue";
 import { homeDeskCopy } from "./home-desk";
@@ -43,6 +45,21 @@ const en = {
     "An owner can switch AI off in Settings. People who can update a job can exclude it on its overview. With AI off or unavailable, record search continues to work.",
   terms: "Google Gemini API terms",
   sources: "Sources",
+  failures: "AI failures in the last seven days",
+  noFailures: "No AI failures in the last seven days.",
+  turnTimings: "Total server time in the last seven days",
+  timingExplanation:
+    "From question-action entry until the response finishes, including record reads and answer preparation. Browser and network time before the action are not included.",
+  recentTimings: "Latest 20 completed questions",
+  timingStarted: "Action started (UTC)",
+  timingDuration: "Server time",
+  noTimings: "No completed question timings yet.",
+  timedTurns: "Measured turns",
+  latestTiming: "Latest turn",
+  maximumTiming: "Longest turn",
+  failureReason: "Reason",
+  failureCount: "Count",
+  failureCode: "Code",
 };
 const zh: typeof en = {
   title: "AI 偏好設定",
@@ -82,6 +99,21 @@ const zh: typeof en = {
     "擁有者可在設定中關閉 AI。有權更新專案的人可在專案總覽排除該專案。AI 關閉或無法使用時，仍可搜尋紀錄。",
   terms: "Google Gemini API 條款",
   sources: "來源",
+  failures: "最近七天的 AI 失敗紀錄",
+  noFailures: "最近七天沒有 AI 失敗紀錄。",
+  turnTimings: "最近七天的伺服器總處理時間",
+  timingExplanation:
+    "從提問動作開始至回應完成，包含讀取紀錄及準備回答；不包含動作開始前的瀏覽器與網路時間。",
+  recentTimings: "最近 20 次已完成提問",
+  timingStarted: "操作開始時間（UTC）",
+  timingDuration: "伺服器時間",
+  noTimings: "尚無已完成的提問計時紀錄。",
+  timedTurns: "已計時提問次數",
+  latestTiming: "最近一次",
+  maximumTiming: "最長一次",
+  failureReason: "原因",
+  failureCount: "次數",
+  failureCode: "代碼",
 };
 export const assistantCopy = (locale: Locale) => (locale === "zh-TW" ? zh : en);
 
@@ -160,6 +192,7 @@ export function assistantQuoteStatus(locale: Locale, status: string | null): str
         ISSUED: c.issued,
         ACCEPTED: c.accepted,
         SUPERSEDED: c.superseded,
+        FINAL: locale === "zh-TW" ? "定稿" : "Final",
       } as Record<string, string>
     )[status ?? ""] ?? (status ? c.currentQuote : c.noQuote)
   );
@@ -215,13 +248,22 @@ export const quoteAmountLabelWords = {
 
 /** Keys stay in server DTOs; only these human labels cross the model boundary. */
 export function assistantFactLabels(locale: Locale): Readonly<Record<string, string>> {
+  const price = priceListCopy(locale);
+  const document = quoteDocumentCopy(locale);
   const quote = quoteDraftCopy(locale),
     issue = quoteIssueCopy(locale),
     home = homeDeskCopy(locale);
   return {
+    description: price.item,
+    lastPrice: price.lastPrice,
+    lastQuoted: price.lastQuoted,
+    timesQuoted: price.timesQuoted,
+    clientLastPrice: locale === "zh-TW" ? "此專案客戶上次單價" : "Last price for this job's client",
+    clientLastQuoted: price.lastQuoted,
+    clientDocumentNumber: issue.number,
     amountBeforeTax: quote.beforeTax,
-    taxAmount: locale === "zh-TW" ? "營業稅" : "Tax",
-    totalAmount: quote.total,
+    taxAmount: document.tax,
+    totalAmount: document.total,
     validUntil: issue.validUntil,
     acceptedOn: issue.acceptedOn,
     acceptance: locale === "zh-TW" ? "接受狀態" : "Acceptance",
@@ -253,6 +295,7 @@ export function assistantFactLabels(locale: Locale): Readonly<Record<string, str
           displayLow: "過往最低報價單價",
           displayHigh: "過往最高報價單價",
           costComparison: "結案經驗",
+          overallDifference: "整體差異",
           pastJobs: "所選過往專案",
           score: "相似分數",
           findings: "比較結果",
@@ -284,6 +327,7 @@ export function assistantFactLabels(locale: Locale): Readonly<Record<string, str
           displayLow: "Lowest past quoted rate",
           displayHigh: "Highest past quoted rate",
           costComparison: "Closed-job lesson",
+          overallDifference: "Overall difference",
           pastJobs: "Selected past jobs",
           score: "Similarity score",
           findings: "Findings",
@@ -292,4 +336,30 @@ export function assistantFactLabels(locale: Locale): Readonly<Record<string, str
           nextOffset: "Next page offset",
         }),
   };
+}
+
+export function assistantFailureText(locale: Locale, code: string, status: number | null) {
+  const zh = locale === "zh-TW";
+  if (code === "PROVIDER_HTTP") {
+    if (status === 401 || status === 403)
+      return zh ? "服務提供者拒絕了 API 金鑰。" : "The provider refused the API key.";
+    if (status === 429)
+      return zh ? "已達到服務提供者的用量限制。" : "The provider's usage limit was reached.";
+    if (status !== null && status >= 500)
+      return zh ? "服務提供者發生錯誤。" : "The provider's service had an error.";
+    return zh ? "服務提供者拒絕了請求。" : "The provider refused the request.";
+  }
+  if (code === "PROVIDER_NETWORK")
+    return zh ? "無法連線至服務提供者。" : "The provider could not be reached.";
+  if (code === "TIMEOUT")
+    return zh ? "服務未在時限內回應。" : "The service did not respond within the time limit.";
+  if (code === "DAILY_CAP" || code === "TOOL_CAP" || code === "OUTPUT_CAP")
+    return zh
+      ? "此請求已達到應用程式的用量限制。"
+      : "This request reached an application usage limit.";
+  if (code === "ACCESS_CHANGED")
+    return zh ? "存取權限已變更，回答未顯示。" : "Access changed, so the answer was not shown.";
+  return zh
+    ? "回答未通過伺服器檢查，已改用紀錄搜尋。"
+    : "The answer did not pass the server checks; record search was used.";
 }

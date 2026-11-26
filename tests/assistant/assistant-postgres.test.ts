@@ -22,6 +22,94 @@ afterAll(async () => {
   await db?.close();
 });
 suite("assistant PostgreSQL access, controls and metadata", () => {
+  it("checks exact unreadable identities within this firm, skips owner scans, and honors both assignment checks", async () => {
+    const repo = createAssistantServices().repository;
+    const owner = await db.actor();
+    const scan = vi.spyOn(getPrismaClient().project, "findMany");
+    expect(
+      await repo.questionMentionsUnreadableJob(owner, "Active Design Project 02 status?"),
+    ).toBe(false);
+    expect(scan).not.toHaveBeenCalled();
+    for (const member of ["membership_horizon_mei", "membership_horizon_viewer"]) {
+      const c = await db.actor(member);
+      for (const text of [
+        "Active Design Project 02 status?",
+        "進行中設計專案02的報價？",
+        "PRJ-ACTIVE-002?",
+      ])
+        expect(await repo.questionMentionsUnreadableJob(c, text)).toBe(true);
+      for (const text of ["02?", "PRJ-ACTIVE-002-extra", "Moonlight Cafe?", "PRJ-NORTH-001?"])
+        expect(await repo.questionMentionsUnreadableJob(c, text)).toBe(false);
+      expect(await repo.questionMentionsUnreadableJob(c, "PRJ-XINYI-026?")).toBe(false);
+      expect(
+        await repo.questionMentionsUnreadableJob(
+          { ...c, assignedProjectIds: new Set() },
+          "PRJ-XINYI-026?",
+        ),
+      ).toBe(true);
+      expect(
+        await repo.questionMentionsUnreadableJob(
+          {
+            ...c,
+            assignedProjectIds: new Set([...(c.assignedProjectIds ?? []), "prj_active_002"]),
+          },
+          "PRJ-ACTIVE-002?",
+        ),
+      ).toBe(true);
+    }
+    const foreign = await db.actor("membership_northern_owner");
+    expect(
+      await repo.questionMentionsUnreadableJob(
+        { ...owner, organizationId: foreign.organizationId },
+        "Anything?",
+      ),
+    ).toBe(true);
+  });
+  it("records zero-model turns idempotently, isolates timing and keeps call usage unchanged", async () => {
+    const c = await db.actor(),
+      viewer = await db.actor("membership_horizon_viewer"),
+      foreign = await db.actor("membership_northern_owner");
+    const repo = createAssistantServices().repository;
+    const now = new Date(),
+      start = new Date(now.getTime() - 9300),
+      month = new Date(now.getTime() - 31 * 86400000);
+    const before = await repo.settings(c, month, now);
+    await repo.recordTurnTiming(c, start, now);
+    await repo.recordTurnTiming(c, start, now);
+    await repo.recordTurnTiming(
+      { ...viewer, requestId: randomUUID() },
+      new Date(now.getTime() - 1000),
+      now,
+    );
+    await repo.recordTurnTiming(
+      { ...c, requestId: randomUUID() },
+      new Date(now.getTime() - 9 * 86400000),
+      new Date(now.getTime() - 9 * 86400000 + 20),
+    );
+    await repo.recordTurnTiming(
+      { ...c, organizationId: foreign.organizationId, requestId: randomUUID() },
+      start,
+      now,
+    );
+    await repo.recordTurnTiming(
+      { ...c, capabilities: new Set(), requestId: randomUUID() },
+      start,
+      now,
+    );
+    await repo.recordTurnTiming({ ...c, requestId: randomUUID() }, now, start);
+    const after = await repo.settings(c, month, now);
+    expect(after?.calls).toBe(before?.calls);
+    expect(after?.turnTimings).toMatchObject({ count: 2, maximumMs: 9300 });
+    expect(await repo.settings(viewer, month, now)).toBeNull();
+    expect((await repo.settings(foreign, month, now))?.turnTimings?.count).toBe(0);
+    const rows = await getPrismaClient().assistantTurnTiming.findMany();
+    expect(rows).toHaveLength(3);
+    expect(Object.keys(rows[0]!)).toEqual(
+      expect.arrayContaining(["organizationId", "requestId", "serverDurationMs"]),
+    );
+    expect(rows[0]).not.toHaveProperty("question");
+    expect(rows[0]).not.toHaveProperty("answer");
+  });
   it("defaults new organizations off and enables only the fixture sample", async () => {
     const org = await getPrismaClient().organization.create({
       data: {
@@ -58,7 +146,7 @@ suite("assistant PostgreSQL access, controls and metadata", () => {
       if (c.role === "VIEWER")
         for (const name of [
           "get_quote_status",
-          "get_past_prices",
+          "get_comparison_category_price_ranges",
           "get_closed_job_lessons",
         ] as const) {
           const output = await services.tools.execute(c, {
@@ -75,7 +163,7 @@ suite("assistant PostgreSQL access, controls and metadata", () => {
       "get_job",
       "get_quote_status",
       "get_saved_comparison",
-      "get_past_prices",
+      "get_comparison_category_price_ranges",
     ] as const)
       expect(
         (await services.tools.execute(foreign, { name, arguments: { projectKey: job } })).status,
@@ -144,7 +232,7 @@ suite("assistant PostgreSQL access, controls and metadata", () => {
     });
     expect(read.status).toBe("OK");
     const history = await service.tools.execute(c, {
-      name: "get_past_prices",
+      name: "get_comparison_category_price_ranges",
       arguments: { projectKey: project.businessKey },
     });
     expect(history.status).toBe("OK");
@@ -206,7 +294,7 @@ suite("assistant PostgreSQL access, controls and metadata", () => {
       "get_job",
       "get_quote_status",
       "get_saved_comparison",
-      "get_past_prices",
+      "get_comparison_category_price_ranges",
     ] as const)
       expect(await service.tools.execute(c, { name, arguments: { projectKey: key } })).toEqual({
         status: "EXCLUDED",

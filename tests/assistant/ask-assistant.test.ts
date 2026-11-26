@@ -1,3 +1,4 @@
+import { ordinaryQuestions } from "./subject-cases";
 import { AssistantModelError } from "@/modules/assistant/domain/model-error";
 import { describe, it, expect, vi } from "vitest";
 import { AskAssistant } from "@/modules/assistant/application/ask-assistant";
@@ -28,13 +29,14 @@ const source = {
   facts: { name: "Job", count: 5 },
   projectKeys: ["J"],
 };
-const answer = (text = "5 jobs."): ModelReply => ({
+const answer = (show = "s1.count"): ModelReply => ({
   usage,
-  result: { kind: "ANSWER", answer: { text, sourceIds: ["s"], followUps: [] } },
+  result: { kind: "ANSWER", answer: { parts: [{ say: "RECORDS_SHOW" }, { show }], followUps: [] } },
 });
 function setup(script: ConstructorParameters<typeof FakeAssistantModel>[0] = [call, answer()]) {
   const model = new FakeAssistantModel(script);
   const repo = {
+    questionMentionsUnreadableJob: vi.fn().mockResolvedValue(false),
     readableReferences: vi.fn().mockResolvedValue([]),
     enabled: vi.fn().mockResolvedValue(true),
     jobPolicy: vi.fn().mockResolvedValue({ id: "J", excluded: false }),
@@ -52,6 +54,79 @@ function setup(script: ConstructorParameters<typeof FakeAssistantModel>[0] = [ca
   return { model, repo, tools, service: new AskAssistant(model, config, repo, tools) };
 }
 describe("bounded read-only assistant", () => {
+  it("does not hide a malformed answer behind the unreadable-identity refusal", async () => {
+    const f = setup([call, answer("s1.invented")]);
+    f.repo.questionMentionsUnreadableJob.mockResolvedValue(true);
+    expect(await f.service.execute(jobContext(), { question: "Hidden job?" })).toMatchObject({
+      kind: "FALLBACK",
+      discardReason: "UNKNOWN_REFERENCE",
+    });
+    expect(f.repo.questionMentionsUnreadableJob).not.toHaveBeenCalled();
+  });
+
+  it.each(ordinaryQuestions)(
+    "lets the model choose an authorized answer for ordinary wording: %s",
+    async (question) => {
+      const f = setup();
+      const out = await f.service.execute(jobContext(), { question, projectKey: "J" });
+      expect(out).toMatchObject({ kind: "ANSWER", selection: { phraseId: "RECORDS_SHOW" } });
+      expect(out).not.toHaveProperty("refusal");
+      expect(f.model.requests).toHaveLength(2);
+    },
+  );
+  it.each(["PROJECT_MANAGER_ESTIMATOR", "VIEWER"] as const)(
+    "refuses a named unreadable job only at the answer boundary for %s",
+    async (role) => {
+      const f = setup();
+      f.repo.questionMentionsUnreadableJob.mockImplementation(async () => {
+        expect(f.model.requests).toHaveLength(2);
+        return true;
+      });
+      const out = await f.service.execute(jobContext({ role }), {
+        question: "Hidden job stage?",
+        projectKey: "J",
+      });
+      expect(out).toMatchObject({ kind: "ANSWER", refusal: "UNAVAILABLE", sources: [] });
+      expect(f.tools.execute).toHaveBeenCalledTimes(1);
+      expect(JSON.stringify(f.model.requests)).not.toContain("Hidden job reference");
+    },
+  );
+  it.each(["en", "zh-TW"] as const)(
+    "drops financial follow-ups for a Viewer, retaining the answer in %s",
+    async (locale) => {
+      const f = setup([
+        call,
+        {
+          usage,
+          result: {
+            kind: "ANSWER",
+            answer: {
+              parts: [{ say: "RECORDS_SHOW" }, { show: "s1.count" }],
+              followUps:
+                locale === "en"
+                  ? [
+                      "What is the quote status?",
+                      "What is the total amount?",
+                      "What stage is this job in?",
+                    ]
+                  : ["報價狀態如何？", "報價總額是多少？", "這個專案的階段是什麼？"],
+            },
+          },
+        },
+      ]);
+      const out = await f.service.execute(
+        jobContext({ locale, capabilities: new Set(["project:read"]) }),
+        { question: "Which jobs?" },
+      );
+      expect(out).toMatchObject({
+        kind: "ANSWER",
+        answer: {
+          followUps: [locale === "en" ? "What stage is this job in?" : "這個專案的階段是什麼？"],
+        },
+      });
+    },
+  );
+
   it.each([0, 1, 2])(
     "carries a discarded answer's subject only for one resolved named job (%i named)",
     async (count) => {
@@ -68,7 +143,7 @@ describe("bounded read-only assistant", () => {
       expect(out).toMatchObject({
         kind: "FALLBACK",
         reason: "UNGROUNDED",
-        discardReason: "UNSUPPORTED_NUMBER",
+        discardReason: "UNKNOWN_REFERENCE",
       });
       expect(out.kind === "FALLBACK" && out.subjectProjectKey).toBe(count === 1 ? "J" : undefined);
     },
@@ -99,7 +174,17 @@ describe("bounded read-only assistant", () => {
       const f = setup([script]);
       f.tools.execute.mockResolvedValue({
         status: "OK",
-        sources: [{ ...source, facts: { count: 0 }, projectKeys: [] }],
+        sources: [
+          {
+            ...source,
+            facts: { count: 0 },
+            projectKeys: [],
+            display: {
+              kind: "AWAITING_LIST",
+              title: locale === "en" ? "Quotes awaiting the client" : "等待客戶回覆的報價",
+            },
+          },
+        ],
       });
       const input = {
         question:
@@ -112,8 +197,8 @@ describe("bounded read-only assistant", () => {
         answer: {
           text:
             locale === "en"
-              ? "There are 0 quotes waiting for the client."
-              : "目前有 0 筆報價等待客戶回覆。",
+              ? "Here is what the records show:\n\nNo quotes are awaiting the client right now."
+              : "紀錄顯示：\n\n目前沒有等待客戶回覆的報價。",
           sourceIds: ["s"],
           followUps: [],
         },
@@ -124,16 +209,69 @@ describe("bounded read-only assistant", () => {
       const changed = setup([script]);
       changed.tools.execute.mockResolvedValue({
         status: "OK",
-        sources: [{ ...source, facts: { count: 0 }, projectKeys: [] }],
+        sources: [
+          {
+            ...source,
+            facts: { count: 0 },
+            projectKeys: [],
+            display: {
+              kind: "AWAITING_LIST",
+              title: locale === "en" ? "Quotes awaiting the client" : "等待客戶回覆的報價",
+            },
+          },
+        ],
       });
       changed.tools.execute.mockImplementation(async () => {
         changed.repo.enabled.mockResolvedValue(false);
-        return { status: "OK", sources: [{ ...source, facts: { count: 0 }, projectKeys: [] }] };
+        return {
+          status: "OK",
+          sources: [
+            {
+              ...source,
+              facts: { count: 0 },
+              projectKeys: [],
+              display: {
+                kind: "AWAITING_LIST",
+                title: locale === "en" ? "Quotes awaiting the client" : "等待客戶回覆的報價",
+              },
+            },
+          ],
+        };
       });
       expect(await changed.service.execute(jobContext({ locale }), input)).toMatchObject({
         kind: "FALLBACK",
         reason: "ACCESS_CHANGED",
       });
+    },
+  );
+  it.each(["en", "zh-TW"] as const)(
+    "refuses an empty named search in %s without a second model call",
+    async (locale) => {
+      const f = setup([
+        {
+          usage,
+          result: {
+            kind: "TOOLS",
+            calls: [{ name: "list_jobs", arguments: { query: "PRJ-DOES-NOT-EXIST" } }],
+          },
+        },
+      ]);
+      f.tools.execute.mockResolvedValue({
+        status: "OK",
+        sources: [{ ...source, facts: { count: 0, matchingCount: 0 }, projectKeys: [] }],
+      });
+      const out = await f.service.execute(jobContext({ locale }), {
+        question:
+          locale === "en" ? "Tell me about PRJ-DOES-NOT-EXIST." : "請介紹 PRJ-DOES-NOT-EXIST。",
+      });
+      expect(out).toMatchObject({
+        kind: "ANSWER",
+        refusal: "NO_RECORDS",
+        sources: [],
+        answer: { sourceIds: [], followUps: [] },
+      });
+      expect(f.model.requests).toHaveLength(1);
+      expect(f.tools.execute).toHaveBeenCalledTimes(1);
     },
   );
   it("grounds a result from this turn and logs metadata per call", async () => {
@@ -150,8 +288,8 @@ describe("bounded read-only assistant", () => {
     });
     expect(JSON.stringify(f.repo.reserveCall.mock.calls)).not.toContain("How many");
   });
-  it("expands list citations at the application boundary and keeps the model's 120-word instruction", async () => {
-    const f = setup([call, answer("one job")]);
+  it("expands list citations and advertises fact and list limits", async () => {
+    const f = setup([call, answer("s1.name")]);
     f.tools.execute.mockResolvedValue({
       status: "OK",
       sources: [
@@ -161,11 +299,13 @@ describe("bounded read-only assistant", () => {
     });
     const out = await f.service.execute(jobContext(), { question: "How many jobs?" });
     expect(out).toMatchObject({ kind: "ANSWER", answer: { sourceIds: ["s", "count"] } });
-    expect(f.model.requests[0]?.instructions).toContain("At most 120 words.");
+    expect(f.model.requests[0]?.instructions).toContain(
+      "at most 12 individual fact refs plus at most one whole-list ref",
+    );
     expect(f.model.requests[1]?.messages[1]?.text).not.toContain("countSourceId");
   });
   it("passes authorized question-only references to grounding without treating them as amounts", async () => {
-    const f = setup([call, answer("QUESTION-009: 5 jobs")]);
+    const f = setup([call, answer()]);
     f.repo.readableReferences.mockResolvedValue(["QUESTION-009"]);
     expect(
       await f.service.execute(jobContext(), { question: "What is linked to QUESTION-009?" }),
@@ -179,8 +319,7 @@ describe("bounded read-only assistant", () => {
         result: {
           kind: "ANSWER",
           answer: {
-            text: "5 jobs.",
-            sourceIds: ["s"],
+            parts: [{ say: "RECORDS_SHOW" }, { show: "s1.count" }],
             followUps: ["password=secret", "Why 99?", "Which job?"],
           },
         },
@@ -188,11 +327,14 @@ describe("bounded read-only assistant", () => {
     ]);
     expect(await f.service.execute(jobContext(), { question: "Jobs?" })).toMatchObject({
       kind: "ANSWER",
-      answer: { text: "5 jobs.", followUps: ["Which job?"] },
+      answer: {
+        text: "Here is what the records show:\n\nJob\nRecord count: 5",
+        followUps: ["Which job?"],
+      },
     });
   });
   it("shows the saved finding sentence after expansion, never the model's direction", async () => {
-    const f = setup([call, answer("1. The quoted price is 43% below past quoted prices.")]);
+    const f = setup([call, answer("s1.findings.0.text")]);
     const saved = "Overall: quoted price is 43.0% above past quoted prices.";
     f.tools.execute.mockResolvedValue({
       status: "OK",
@@ -202,7 +344,7 @@ describe("bounded read-only assistant", () => {
     });
     expect(await f.service.execute(jobContext(), { question: "Price findings?" })).toMatchObject({
       kind: "ANSWER",
-      answer: { text: saved },
+      answer: { text: `Here is what the records show:\n\nJob\nFindings: ${saved}` },
     });
   });
   it("uses no model and no usage row when disabled or no key", async () => {
@@ -243,7 +385,10 @@ describe("bounded read-only assistant", () => {
       }),
     ).toEqual({ kind: "FALLBACK", reason: "OUTPUT_CAP" });
     expect(f.repo.meterCall).toHaveBeenCalledWith(expect.anything(), "call", usage, "0.000055000");
-    expect(f.repo.finishTurn).toHaveBeenCalledWith(expect.anything(), "FALLBACK_OUTPUT_CAP");
+    expect(f.repo.finishTurn).toHaveBeenCalledWith(expect.anything(), "FALLBACK_OUTPUT_CAP", {
+      callId: "call",
+      code: "OUTPUT_CAP",
+    });
   });
   it("enforces the tool and organization caps", async () => {
     const f = setup(Array.from({ length: 7 }, () => call));
@@ -286,7 +431,7 @@ describe("bounded read-only assistant", () => {
         usage,
         result: {
           kind: "ANSWER",
-          answer: { text: "untrusted refusal", sourceIds: [], followUps: [] },
+          answer: { parts: [], followUps: [] },
         },
       },
     ]);
@@ -298,9 +443,13 @@ describe("bounded read-only assistant", () => {
   it.each(["20261103-01", "2026-0012", "113-0825-01", "J-2611-2345"])(
     "keeps the authorized question, result and answer reference %s",
     async (reference) => {
-      const text = `${reference}: 12500000.00`;
-      const f = setup([call, answer(text)]);
+      const f = setup([call, answer("s1.reference")]);
       f.repo.readableReferences.mockResolvedValue([reference]);
+      f.tools.resolveSubjects.mockResolvedValue({
+        kind: "AVAILABLE",
+        named: [{ projectKey: reference, names: [] }],
+        projects: [{ projectKey: reference, names: [] }],
+      });
       f.tools.execute.mockResolvedValue({
         status: "OK",
         sources: [
@@ -338,7 +487,7 @@ describe("bounded read-only assistant", () => {
     expect(await f.service.execute(jobContext(), { question: "Jobs?" })).toEqual({
       kind: "FALLBACK",
       reason: "UNGROUNDED",
-      discardReason: "UNSUPPORTED_NUMBER",
+      discardReason: "UNKNOWN_REFERENCE",
     });
     expect(JSON.stringify(f.repo.finishTurn.mock.calls)).not.toContain("6 jobs");
   });
@@ -349,7 +498,7 @@ describe("bounded read-only assistant", () => {
         call,
         {
           usage,
-          result: { kind: "ANSWER", answer: { text: "No records", sourceIds: [], followUps: [] } },
+          result: { kind: "ANSWER", answer: { parts: [], followUps: [] } },
         },
       ]);
       f.tools.execute.mockResolvedValue({ status, sources: [] });
@@ -360,7 +509,7 @@ describe("bounded read-only assistant", () => {
     },
   );
   it("uses resolved subjects instead of the page default, and retains the page language in links", async () => {
-    const f = setup([call, answer("5 jobs.")]);
+    const f = setup([call, answer()]);
     const named = { projectKey: "J", names: ["Named job", "指定專案"] };
     f.tools.resolveSubjects.mockResolvedValue({
       kind: "AVAILABLE",
@@ -377,10 +526,10 @@ describe("bounded read-only assistant", () => {
       sources: [{ href: "/zh-TW/projects/J" }],
     });
     const message = JSON.parse(f.model.requests[0]!.messages[0]!.text);
-    expect(message.subjectProjects).toEqual([{ reference: "J", names: ["Named job", "指定專案"] }]);
-    expect(message).not.toHaveProperty("selectedProjectReference");
+    expect(message.subjectProjects).toEqual([{ reference: "J", names: ["Named job"] }]);
+    expect(message).not.toHaveProperty("pageContextReference");
     expect(f.model.requests[0]!.instructions).toContain(
-      "Follow-ups must be questions the person can ask and these read tools can answer",
+      "follow-up questions the person can ask and these read tools can answer",
     );
   });
   it("uses only redacted sent subject names for grounding, never unsent authorized names", async () => {
@@ -388,15 +537,16 @@ describe("bounded read-only assistant", () => {
       projectKey: "J",
       names: ["Active Design Project 01", "進行中設計專案01", "Client A123456789 12345678901234"],
     };
-    for (const [text, kind] of [
-      ["Active Design Project 01: 5 jobs", "ANSWER"],
-      ["進行中設計專案01: 5 jobs", "ANSWER"],
-      ["Client [removed] [removed]: 5 jobs", "ANSWER"],
-      ["Client A123456789 12345678901234: 5 jobs", "FALLBACK"],
-      ["Unsent job 99: 5 jobs", "FALLBACK"],
-      ["Active Design Project 01: 01 jobs", "FALLBACK"],
+    for (const text of [
+      "Active Design Project 01",
+      "進行中設計專案01",
+      "Client A123456789 12345678901234",
+      "Unsent job 99",
     ]) {
-      const f = setup([call, answer(text)]);
+      const f = setup([
+        call,
+        { usage, result: { kind: "ANSWER", answer: { text, sourceIds: ["s"], followUps: [] } } },
+      ]);
       f.tools.resolveSubjects.mockResolvedValue({
         kind: "AVAILABLE",
         named: [named],
@@ -404,7 +554,7 @@ describe("bounded read-only assistant", () => {
       });
       expect(
         await f.service.execute(jobContext(), { question: "Active Design Project 01 status?" }),
-      ).toMatchObject({ kind });
+      ).toMatchObject({ kind: "FALLBACK", reason: "INVALID_OUTPUT" });
       const sent = f.model.requests[0]!.messages[0]!.text;
       expect(sent).not.toContain("A123456789");
       expect(sent).not.toContain("12345678901234");
@@ -418,7 +568,7 @@ describe("bounded read-only assistant", () => {
         question: "How many jobs?",
         ...(projectKey ? { projectKey } : {}),
       });
-      expect(JSON.parse(f.model.requests[0]!.messages[0]!.text).selectedProjectReference).toBe(
+      expect(JSON.parse(f.model.requests[0]!.messages[0]!.text).pageContextReference).toBe(
         projectKey,
       );
     }
@@ -528,7 +678,7 @@ describe("bounded read-only assistant", () => {
     expect(f.tools.execute).toHaveBeenCalledTimes(1);
   });
   it.each(["NO_RECORDS", "OUT_OF_DATE"])(
-    "returns a read-only comparison link immediately for %s",
+    "returns a read-only comparison link after the comparison turn ends for %s",
     async (status) => {
       const f = setup([
         {
@@ -538,10 +688,12 @@ describe("bounded read-only assistant", () => {
             calls: [{ name: "get_saved_comparison", arguments: { projectKey: "J" } }],
           },
         },
+        { usage, result: { kind: "ANSWER", answer: { parts: [], followUps: [] } } },
       ]);
       f.tools.execute.mockResolvedValue({ status, sources: [], comparisonProjectKey: "J" });
       const out = await f.service.execute(jobContext({ locale: "zh-TW" }), {
         question: "Show the saved comparison for J",
+        projectKey: "J",
       });
       expect(out).toMatchObject({
         kind: "ANSWER",
@@ -549,7 +701,228 @@ describe("bounded read-only assistant", () => {
         sources: [],
         action: { label: "Open comparison", href: "/zh-TW/projects/J/compare" },
       });
-      expect(f.model.requests).toHaveLength(1);
+      expect(f.model.requests).toHaveLength(2);
     },
   );
+  it.each(["NO_RECORDS", "OUT_OF_DATE"] as const)(
+    "continues from %s comparison to item prices, including both calls in one reply",
+    async (status) => {
+      for (const batched of [true, false]) {
+        const comparison = {
+          name: "get_comparison_category_price_ranges" as const,
+          arguments: { projectKey: "J" },
+        };
+        const item = {
+          name: "get_price_list_item_last_prices" as const,
+          arguments: { description: "Ceiling", projectKey: "J" },
+        };
+        const f = setup([
+          { usage, result: { kind: "TOOLS", calls: batched ? [comparison, item] : [comparison] } },
+          ...(!batched ? [{ usage, result: { kind: "TOOLS" as const, calls: [item] } }] : []),
+          answer("s1.lastPrice"),
+        ]);
+        f.tools.execute
+          .mockResolvedValueOnce({ status, sources: [], comparisonProjectKey: "J" })
+          .mockResolvedValueOnce({
+            status: "OK",
+            sources: [
+              {
+                ...source,
+                facts: {
+                  lastPrice: "NT$3,200",
+                  lastQuoted: "2026-11-25",
+                  timesQuoted: 2,
+                  documentNumber: "J-Q1",
+                },
+              },
+            ],
+          });
+        const out = await f.service.execute(jobContext(), {
+          question: "What do we quote for Ceiling per ping?",
+          projectKey: "J",
+        });
+        expect(out).toMatchObject({
+          kind: "ANSWER",
+          answer: { text: expect.stringContaining("NT$3,200") },
+        });
+        expect(out).not.toHaveProperty("refusal");
+        expect(f.tools.execute).toHaveBeenCalledTimes(2);
+      }
+    },
+  );
+  it("does not force answer-only after repeating an unavailable comparison read", async () => {
+    const comparison = {
+      usage,
+      result: {
+        kind: "TOOLS" as const,
+        calls: [{ name: "get_saved_comparison" as const, arguments: { projectKey: "J" } }],
+      },
+    };
+    const item = {
+      usage,
+      result: {
+        kind: "TOOLS" as const,
+        calls: [
+          {
+            name: "get_price_list_item_last_prices" as const,
+            arguments: { description: "Ceiling" },
+          },
+        ],
+      },
+    };
+    const f = setup([comparison, comparison, item, answer("s1.lastPrice")]);
+    f.tools.execute
+      .mockResolvedValueOnce({ status: "NO_RECORDS", sources: [], comparisonProjectKey: "J" })
+      .mockResolvedValueOnce({
+        status: "OK",
+        sources: [{ ...source, facts: { lastPrice: "NT$3,200" } }],
+      });
+    expect(
+      await f.service.execute(jobContext(), { question: "Item price?", projectKey: "J" }),
+    ).toMatchObject({ kind: "ANSWER", answer: { text: expect.stringContaining("NT$3,200") } });
+    expect(f.model.requests[2]!.tools.length).toBeGreaterThan(0);
+    expect(f.tools.execute).toHaveBeenCalledTimes(2);
+  });
+  it.each(["這個專案有哪些發現？", "跟以前的案子比起來貴嗎？"])(
+    "uses comparison reads, not question keywords, to choose a notice: %s",
+    async (question) => {
+      const f = setup([
+        {
+          usage,
+          result: {
+            kind: "TOOLS",
+            calls: [{ name: "get_saved_comparison", arguments: { projectKey: "J" } }],
+          },
+        },
+        { usage, result: { kind: "ANSWER", answer: { parts: [], followUps: [] } } },
+      ]);
+      f.tools.execute.mockResolvedValue({
+        status: "NO_RECORDS",
+        sources: [],
+        comparisonProjectKey: "J",
+      });
+      expect(
+        await f.service.execute(jobContext({ locale: "zh-TW" }), { question, projectKey: "J" }),
+      ).toMatchObject({ kind: "ANSWER", action: { href: "/zh-TW/projects/J/compare" } });
+    },
+  );
+  it("answers a named closed job from another job’s bar after an unavailable comparison", async () => {
+    const named = { projectKey: "K", names: ["Closed job", "結案專案"] };
+    const f = setup([
+      {
+        usage,
+        result: {
+          kind: "TOOLS",
+          calls: [{ name: "get_saved_comparison", arguments: { projectKey: "K" } }],
+        },
+      },
+      {
+        usage,
+        result: { kind: "TOOLS", calls: [{ name: "get_closed_job_lessons", arguments: {} }] },
+      },
+      answer("s1.overallDifference"),
+    ]);
+    f.tools.resolveSubjects.mockResolvedValue({
+      kind: "AVAILABLE",
+      named: [named],
+      projects: [named],
+    });
+    f.tools.execute
+      .mockResolvedValueOnce({ status: "NO_RECORDS", sources: [], comparisonProjectKey: "K" })
+      .mockResolvedValueOnce({
+        status: "OK",
+        sources: [
+          {
+            ...source,
+            projectKeys: ["K"],
+            facts: { overallDifference: "Actual cost is NT$100 below the quote." },
+          },
+        ],
+      });
+    const out = await f.service.execute(jobContext(), {
+      question: "How does Closed job’s actual cost compare to its quote?",
+      projectKey: "J",
+    });
+    expect(out).toMatchObject({
+      kind: "ANSWER",
+      answer: { text: expect.stringContaining("NT$100 below") },
+    });
+    expect(JSON.parse(f.model.requests[0]!.messages[0]!.text)).not.toHaveProperty(
+      "pageContextReference",
+    );
+    expect(out).not.toHaveProperty("action");
+  });
+  it("does not attach an unrelated comparison notice when an item question ends without facts", async () => {
+    const f = setup([
+      {
+        usage,
+        result: {
+          kind: "TOOLS",
+          calls: [
+            { name: "get_saved_comparison", arguments: { projectKey: "J" } },
+            { name: "get_price_list_item_last_prices", arguments: { description: "Ceiling" } },
+          ],
+        },
+      },
+      { usage, result: { kind: "ANSWER", answer: { parts: [], followUps: [] } } },
+    ]);
+    f.tools.execute.mockResolvedValue({
+      status: "OUT_OF_DATE",
+      sources: [],
+      comparisonProjectKey: "J",
+    });
+    const out = await f.service.execute(jobContext(), {
+      question: "What do we quote for Ceiling per ping?",
+      projectKey: "J",
+    });
+    expect(out).toMatchObject({ kind: "ANSWER", refusal: "OUT_OF_DATE" });
+    expect(out).not.toHaveProperty("action");
+    expect(out.kind === "ANSWER" && out.answer.text).not.toContain("comparison");
+  });
+  it("does not execute a comparison for the page default when a different closed job is named, and lets its closed-record tool answer", async () => {
+    const named = { projectKey: "K", names: ["Closed job"] };
+    const f = setup([
+      {
+        usage,
+        result: {
+          kind: "TOOLS",
+          calls: [{ name: "get_saved_comparison", arguments: { projectKey: "J" } }],
+        },
+      },
+      {
+        usage,
+        result: { kind: "TOOLS", calls: [{ name: "get_closed_job_lessons", arguments: {} }] },
+      },
+      answer("s1.overallDifference"),
+    ]);
+    f.tools.resolveSubjects.mockResolvedValue({
+      kind: "AVAILABLE",
+      named: [named],
+      projects: [named],
+    });
+    f.tools.execute.mockResolvedValue({
+      status: "OK",
+      sources: [
+        {
+          ...source,
+          projectKeys: ["K"],
+          facts: { overallDifference: "Actual cost is NT$100 below the quote." },
+        },
+      ],
+    });
+    const out = await f.service.execute(jobContext(), {
+      question: "How does Closed job’s actual cost compare to its quote?",
+      projectKey: "J",
+    });
+    expect(f.tools.execute).toHaveBeenCalledTimes(1);
+    expect(f.tools.execute.mock.calls[0]![1]).toEqual({
+      name: "get_closed_job_lessons",
+      arguments: {},
+    });
+    expect(out).toMatchObject({
+      kind: "ANSWER",
+      answer: { text: expect.stringContaining("NT$100 below") },
+    });
+    expect(out).not.toHaveProperty("action");
+  });
 });

@@ -12,7 +12,7 @@ import {
   type AssistantReadServices,
 } from "@/modules/assistant/application/read-tools";
 import { jobContext } from "../projects/job-fixture";
-import { checkAnswer } from "@/modules/assistant/domain/grounding";
+import { AnswerFactRegistry } from "@/modules/assistant/domain/fact-answers";
 import { roleBundle } from "@/modules/runtime-context/capabilities";
 const project = {
   businessKey: "J",
@@ -30,13 +30,55 @@ function setup() {
     comparison: { execute: vi.fn() },
     history: { execute: vi.fn() },
     home: { execute: vi.fn() },
+    prices: { execute: vi.fn() },
   } satisfies AssistantReadServices;
   const policies = { jobPolicy: vi.fn().mockResolvedValue({ id: "id", excluded: false }) };
   return { services, policies, tools: new AssistantReadTools(services, policies) };
 }
 describe("assistant read tools", () => {
+  it("matches references only in full while retaining name substring searches", async () => {
+    const f = setup();
+    f.services.projects.execute.mockResolvedValue({
+      kind: "AVAILABLE",
+      projects: [{ ...project, businessKey: "PRJ-XINYI-026" }],
+    });
+    for (const query of ["02", "026", "PRJ-XINYI"]) {
+      const result = await f.tools.execute(jobContext(), {
+        name: "list_jobs",
+        arguments: { query },
+      });
+      expect(result.sources).toHaveLength(1);
+      expect(result.sources[0]!.facts.count).toBe(0);
+    }
+    for (const query of ["prj-xinyi-026", "Synthetic", "合成"]) {
+      const result = await f.tools.execute(jobContext(), {
+        name: "list_jobs",
+        arguments: { query },
+      });
+      expect(result.sources[0]!.facts.reference).toBe("PRJ-XINYI-026");
+    }
+  });
+  it("tells identity searches to use the complete copied job name rather than a numeric fragment", () => {
+    const tool = assistantTools(seededFirmLists).find((t) => t.name === "list_jobs")!;
+    const properties = tool.parameters.properties as Record<string, { description?: string }>;
+    expect(properties.query!.description).toContain(
+      "complete name or reference from currentQuestion",
+    );
+    expect(properties.query!.description).toContain("not a fragment");
+  });
+  it("describes the item unit as a preference that preserves matching items", () => {
+    const tool = assistantTools(seededFirmLists).find(
+      (t) => t.name === "get_price_list_item_last_prices",
+    )!;
+    const properties = tool.parameters.properties as Record<string, { description?: string }>;
+    expect(properties.unit!.description).toContain("Preferred unit");
+    expect(properties.unit!.description).toContain("other stored units remain available");
+    expect(tool.parameters.required).toEqual(["description"]);
+  });
   it("defines bilingual pricing categories and refuses invented category keys before reading history", async () => {
-    const tool = assistantTools(seededFirmLists).find((t) => t.name === "get_past_prices")!;
+    const tool = assistantTools(seededFirmLists).find(
+      (t) => t.name === "get_comparison_category_price_ranges",
+    )!;
     const properties = tool.parameters.properties as Record<
       string,
       { enum?: string[]; description?: string }
@@ -55,7 +97,7 @@ describe("assistant read tools", () => {
     ])
       expect(
         await f.tools.execute(jobContext(), {
-          name: "get_past_prices",
+          name: "get_comparison_category_price_ranges",
           arguments: { projectKey: "J", categoryId },
         }),
       ).toEqual({ status: "UNAVAILABLE", sources: [] });
@@ -173,18 +215,14 @@ describe("assistant read tools", () => {
     expect(count.facts.count).toBe(1);
     expect(row.sourceId).not.toBe(all.sources[0]!.sourceId);
     const ledger = [...all.sources, ...filtered.sources];
-    const raw = (text: string) => ({ text, sourceIds: [row.sourceId], followUps: [] });
-    expect(checkAnswer(raw("1 job"), ledger, "en")).toMatchObject({
-      kind: "ACCEPTED",
-      answer: { sourceIds: [row.sourceId, count.sourceId] },
-    });
-    expect(checkAnswer(raw("one job"), ledger, "en").kind).toBe("ACCEPTED");
-    expect(checkAnswer(raw("一個專案"), ledger, "zh-TW").kind).toBe("ACCEPTED");
-    for (const text of ["2 jobs", "two jobs", "兩個專案"])
-      expect(checkAnswer(raw(text), ledger, "en")).toEqual({
-        kind: "REJECTED",
-        reason: "UNSUPPORTED_NUMBER",
-      });
+    const registry = new AnswerFactRegistry("en");
+    registry.register(ledger);
+    const ref = registry
+      .modelSources([row])[0]!
+      .facts.find((f) => f.ref.endsWith(".reference"))!.ref;
+    expect(
+      registry.render({ parts: [{ say: "RECORDS_SHOW" }, { show: ref }], followUps: [] }),
+    ).toMatchObject({ kind: "ACCEPTED", answer: { sourceIds: [row.sourceId, count.sourceId] } });
   });
   it.each(["en", "zh-TW"] as const)(
     "returns display-ready quote and history facts in %s",
@@ -247,7 +285,7 @@ describe("assistant read tools", () => {
         ],
       });
       const history = await f.tools.execute(jobContext({ locale }), {
-        name: "get_past_prices",
+        name: "get_comparison_category_price_ranges",
         arguments: { projectKey: "J" },
       });
       expect(history.sources[0]!.facts.observationType).toBe("QUOTED_PRICE");
@@ -408,12 +446,11 @@ describe("assistant read tools", () => {
         status: "OK",
         sources: [{ facts: { count: 0 }, subjectProjectKeys: [] }],
       });
+      const registry = new AnswerFactRegistry("en");
+      registry.register(result.sources);
       expect(
-        checkAnswer(
-          { text: "0 records", sourceIds: [result.sources[0]!.sourceId], followUps: [] },
-          result.sources,
-          "en",
-        ).kind,
+        registry.render({ parts: [{ say: "RECORDS_SHOW" }, { show: "s1.list" }], followUps: [] })
+          .kind,
       ).toBe("ACCEPTED");
     },
   );
@@ -476,7 +513,7 @@ describe("firm-unit past quoted rates", () => {
         const before = JSON.stringify(stored);
         const result = await f.tools.execute(
           jobContext({ locale, firmLists: { ...seededFirmLists, areaDisplayUnit: unit } }),
-          { name: "get_past_prices", arguments: { projectKey: "J" } },
+          { name: "get_comparison_category_price_ranges", arguments: { projectKey: "J" } },
         );
         expect(result.status).toBe("OK");
         const facts = modelFacts(result.sources[0]!.facts);
@@ -488,22 +525,15 @@ describe("firm-unit past quoted rates", () => {
         });
         expect(facts).not.toHaveProperty("median");
         expect(facts).not.toHaveProperty("unit");
-        const answer = (amount: string) => ({
-          text:
-            locale === "en"
-              ? `The past quoted price median is ${amount}.`
-              : `過往報價單價中位數為 ${amount}。`,
-          sourceIds: [result.sources[0]!.sourceId],
-          followUps: [],
-        });
-        expect(checkAnswer(answer(median), result.sources, locale).kind).toBe("ACCEPTED");
-        if (unit === "ping") {
-          expect(JSON.stringify(facts)).not.toMatch(/m²|m2|2,420|1,210|3,630/);
-          expect(checkAnswer(answer("NT$2,420/坪"), result.sources, locale)).toEqual({
-            kind: "REJECTED",
-            reason: "UNSUPPORTED_NUMBER",
-          });
-        }
+        const registry = new AnswerFactRegistry(locale);
+        registry.register(result.sources);
+        expect(
+          registry.render({
+            parts: [{ say: "RECORDS_SHOW" }, { show: "s1.displayMedian" }],
+            followUps: [],
+          }),
+        ).toMatchObject({ kind: "ACCEPTED", answer: { text: expect.stringContaining(median) } });
+        if (unit === "ping") expect(JSON.stringify(facts)).not.toMatch(/m²|m2|2,420|1,210|3,630/);
         expect(JSON.stringify(stored)).toBe(before);
       }
     },
