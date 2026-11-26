@@ -7,6 +7,16 @@ on:
         required: true
         default: main
         type: string
+      case_ids:
+        description: Comma-separated question case ids; blank runs full acceptance. Focused runs are NOT acceptance.
+        required: false
+        default: ""
+        type: string
+      max_usd:
+        description: Authorized USD ceiling for this dispatch (all questions and drafts)
+        required: true
+        default: "0.50"
+        type: string
 permissions:
   contents: read
 jobs:
@@ -48,6 +58,8 @@ jobs:
       - name: Run paid model evaluation on a disposable local database
         env:
           STRIDEBRAIN_GEMINI_API_KEY: ${{ secrets.STRIDEBRAIN_GEMINI_API_KEY }}
+          STRIDEBRAIN_AI_EVAL_CASES: ${{ inputs.case_ids }}
+          STRIDEBRAIN_AI_EVAL_MAX_USD: ${{ inputs.max_usd }}
         run: npm run ai:eval
       - uses: actions/upload-artifact@v5
         if: always()

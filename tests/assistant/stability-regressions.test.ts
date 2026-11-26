@@ -45,21 +45,33 @@ describe("three-round evaluation gates", () => {
     expect(roundSummary(1, wrong).passed).toBe(false);
     const critical = rows(20, 20);
     critical.find((q) => q.required)!.verdict = "wrong";
-    expect(roundSummary(1, critical).passed).toBe(false);
+    expect(roundSummary(1, critical).passed).toBe(true);
+    expect((await runEvaluationRounds(async () => critical)).passed).toBe(false);
     expect(stabilitySummary([roundSummary(1, rows(20, 20))]).passed).toBe(false);
   });
-  it("requires each added job-page case to pass in every round", async () => {
+  it("requires each required case in two rounds and 97 percent of required answers overall", async () => {
     const complete = rows(20, 20);
     for (const locale of ["en", "zh-TW"])
       for (const index of [25, 26]) {
         const failed = complete.map((q) =>
           q.id === `${locale}-${index}` ? { ...q, verdict: "wrong" } : q,
         );
-        expect(roundSummary(1, failed).passed).toBe(false);
+        expect(roundSummary(1, failed).passed).toBe(true);
         expect(
           (await runEvaluationRounds(async (round) => (round === 2 ? failed : complete))).passed,
+        ).toBe(true);
+        expect(
+          (await runEvaluationRounds(async (round) => (round === 3 ? complete : failed))).passed,
         ).toBe(false);
       }
+    const rateFailure = await runEvaluationRounds(async (round) =>
+      complete.map((q, i) => ({
+        ...q,
+        verdict: round === 1 && i >= 20 && i < 24 ? "wrong" : q.verdict,
+      })),
+    );
+    expect(rateFailure.requiredAnswers).toEqual({ passed: 122, total: 126 });
+    expect(rateFailure.requiredPassed).toBe(false);
     expect(
       roundSummary(
         1,
@@ -74,14 +86,36 @@ describe("three-round evaluation gates", () => {
     sample[27]!.calls = 1;
     expect(roundSummary(1, sample).passed).toBe(true);
   });
+  it("makes any discard or access violation an absolute failure", () => {
+    for (const extra of [{ discardReason: "UNKNOWN_REFERENCE" }, { accessViolation: true }])
+      expect(
+        roundSummary(
+          1,
+          rows(20, 20).map((q, i) => (i === 0 ? { ...q, ...extra } : q)),
+        ).passed,
+      ).toBe(false);
+  });
+  it("uses the median for named refusals instead of a per-question maximum", () => {
+    const sample = rows(20, 20).map((q, i) => ({
+      ...q,
+      namedJobRefusal: i < 3,
+      calls: i === 0 ? 5 : 2,
+    }));
+    expect(roundSummary(1, sample)).toMatchObject({
+      passed: true,
+      callTargets: { namedRefusalMedian: 2, namedRefusalMaximum: 5 },
+    });
+  });
   it("enforces call targets and rejects every displayed mislabel", () => {
     const sample = rows(20, 20);
     for (let i = 0; i < 5; i++) sample[i]!.calls = 4;
     expect(roundSummary(1, sample)).toMatchObject({
       factSelectionRegressions: { passed: 28, total: 28 },
-      passed: true,
+      passed: false,
       callTargets: { median: 2, maximum: 4, withinThree: 79, questions: 84 },
     });
+    sample[4]!.calls = 2;
+    expect(roundSummary(1, sample).passed).toBe(true);
     sample[5]!.calls = 4;
     sample[6]!.calls = 4;
     sample[7]!.calls = 4;

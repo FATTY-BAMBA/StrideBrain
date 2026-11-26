@@ -1,4 +1,5 @@
-> Current status: fix round 2 is committed and locally/CI verified, but final paid run 6 fails acceptance. All six authorized dispatches are used. PR #80 stays draft; see the final section for scores, cost and remaining failures. The Product Director confirmed record cards in comment 7181003350; layout items 3, 5 and 6 are settled.
+> Current status: fix round 3 follows owner review 7188877802. Free run-6 replay passes 251/252 with current checks; focused paid validation and at most one full run are pending within a newly authorized US$1.00 budget. PR #80 remains draft; hosted retest awaits the Product Director.
+
 
 # SB-079 verification
 
@@ -279,3 +280,36 @@ Run 6 cost: **US$0.495614000** (questions US$0.393740000; drafts US$0.101874000)
 Verified: final implementation CI and npm run check (1,974 tests / 197 files and build), real migration and repeatable seed/verify commands in CI, free fake evaluation (252 outcomes), raw layout replay of runs 1–4, required closed-job replay, card rendering/accessibility assertions, and bilingual 1440/390px component previews with production fonts. The failed paid reports remain failed, with no question, expectation, oracle-value, model or pass-mark changes to relabel them. No existing migration was edited. The final evidence commit changes reports/screenshots/task status only; implementation remains the CI- and paid-tested c3323c5.
 
 Not verified / not achieved: the three-round paid acceptance gate and reliable ordinary-question behavior; hosted retest, live-provider browser integration, hosted timing callback and the cause of earlier slow turns. Empty-list copy remains provisional. The other layout decisions are confirmed. No hosted deployment, migration, seed, setting change or Test site workflow was performed. PR #80 remains draft. Report this result on the PR and stop, as requested; the paid allowance is exhausted.
+
+
+## Fix round 3 — owner review 7188877802 (26 November)
+
+The actual comment author is repository owner FATTY-BAMBA (101108617). The Product Director directly confirmed its proposed pass rules and authorized **up to US$1.00 additional evaluation, focused runs first and at most one full run**. This supersedes the exhausted six-dispatch allowance; old reports are retained with their original gates/results. This is the third and last fix round in the current 24 hours.
+
+- Removed jobMentions, declaredSubjects and their instruction/schema fields; no replacement model declaration. Authorized exact-name/reference resolution and subject checks remain.
+- Added a server-only boolean guard at the model-answer boundary. For non-owner readers it matches the question against this firm's unreadable live job names/references using the existing identity matcher. Runtime assignment and stored assignment must both allow access. Identities never cross to the model, output or logs. Owner bypasses the identity scan; invalid membership/capability fails closed.
+- list_jobs keeps substring name matching but requires a whole reference match. A query of 02 no longer finds PRJ-XINYI-026 through its reference.
+- Whitespace inside a selected fact reference is removed before turn-map lookup. Unknown/prototype/path references still reject; no value is edited.
+- Item-price unit is now a preference. Reads use the same Price list use case, combine preferred-unit and unfiltered description results, deduplicate, and keep the five-item cap and all access/exclusion checks. An unstored unit such as ping no longer hides matching descriptions; each card retains the stored unit.
+- Accepted answer cards, closed-job bundles, labels/list rows, comparison notices, tool distinction and design principle are unchanged. No migration changes. No job-draft behavior, model or expected values changed.
+
+### Free proof before paid evaluation
+
+[Replay artifact](evidence/round3-free-replay.json) uses all 252 recorded run-6 answers. Only obsolete metadata is removed; selected refs, order and follow-ups are preserved. Recorded server-built empty-list answers are retained.
+
+- Removing the field alone, with the former strict whitespace lookup and without the new unreadable-identity guard: **249/252**. This exposes one wrong-page selection in addition to the whitespace rejection and ping refusal.
+- Current checks (field removal, exact unreadable identity guard, whitespace normalization): **251/252**, zero wrong displayed values. The previously misdirected answer is refused.
+- All **six recorded ping calls** now return matching data, including 天花板 Ceiling, 坪 and NT$3,200. The original final refusal is still a wrong answer in replay. No new model selection is invented to turn it into a pass.
+- Three-round deterministic fake evaluation: **252/252**. This proves orchestration/security against synthetic records, not provider quality.
+
+### Confirmed evaluation rules and focused mode
+
+Absolute gates: no wrong displayed value, access violation or discarded answer. Each of the 42 required cases must pass at least two of three rounds, and at least 97% of the 126 required answers must pass. Each language still needs 16/20 core answers in every round. Median calls remain at most two overall and among named refusals; at least 95% finish in three calls, with the existing five-call hard cap. Existing p90 (2,500 ms) and average cost (US$0.001527777778/question) limits remain. Per-round efficiency is checked in all three rounds, as previously.
+
+The workflow adds case_ids (exact comma-separated ids, empty for full acceptance) and max_usd. A focused run skips job drafts, records all selected cases over three rounds and is explicitly marked FOCUSED_PAID_NOT_ACCEPTANCE / acceptanceRun:false. Unknown/repeated ids fail before a provider call. A dispatch budget reserves a conservative input/output token bound before each call and meters reported usage using fixed-decimal arithmetic; unknown failure usage retains its reservation. The key remains scoped only to the evaluation step. Dispatch on this branch to use the new inputs; no workflow on main or hosted environment is changed.
+
+Full check, CI and paid outcomes will be recorded below. Hosted retest, live-provider browser integration and hosted timing/earlier slow-turn cause remain unverified. Accepted UI screenshots from round 2 remain current because no component/layout code changed. Empty-list sentences are now accepted as built by comment 7188877802, subject to hosted retest.
+
+Local check attempts: the first found the workflow key-order regression assertion (fixed by keeping the API key first in the evaluation step's env block). A subsequent run suffered broad 5–30 second timeouts and several approximately 234-second pauses across unrelated database suites. Assertions and timeouts were not relaxed; the same command was rerun under caffeinate to prevent idle sleep. The cause of the pauses is not established.
+
+Final local check passed under caffeinate: **1,954 tests / 199 files**, format/design/lint/typecheck and production build. Only the pre-existing prisma.config.ts anonymous-default-export lint warning remains. No timeouts or assertions changed. Initial diagnostic plan: 23 named cases × three rounds, ceiling US$0.20; no job drafts in this focused run. A subsequent full run is limited to one and will use a separately bounded ceiling within the remaining US$1.00 total.

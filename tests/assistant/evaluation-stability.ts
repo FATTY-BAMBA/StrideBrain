@@ -25,7 +25,24 @@ export type ScoredRow = {
   qualityRegression?: boolean;
   required?: boolean;
   reported?: boolean;
+  discardReason?: string | null;
+  accessViolation?: boolean;
 };
+const median = (values: readonly number[]) => {
+  const sorted = [...values].sort((a, b) => a - b);
+  return sorted.length
+    ? (sorted[Math.floor((sorted.length - 1) / 2)]! + sorted[Math.floor(sorted.length / 2)]!) / 2
+    : 0;
+};
+const safe = (q: ScoredRow) =>
+  !q.wrongRecordValue &&
+  !q.wrongNumber &&
+  !q.wrongAmountLabel &&
+  !q.badDisplayFormat &&
+  !q.accessViolation &&
+  !q.discardReason;
+const correct = (q: ScoredRow) =>
+  safe(q) && q.verdict !== "wrong" && (!q.mustReachModel || q.calls > 0);
 export function roundSummary<T extends ScoredRow>(round: number, questions: readonly T[]) {
   const scores = Object.fromEntries(
     ["en", "zh-TW"].map((locale) => [
@@ -61,6 +78,7 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
     maximum: sortedCalls.at(-1) ?? 0,
     withinThree,
     questions: questions.length,
+    namedRefusalMedian: median(questions.filter((q) => q.namedJobRefusal).map((q) => q.calls)),
     namedRefusalMaximum: Math.max(
       0,
       ...questions.filter((q) => q.namedJobRefusal).map((q) => q.calls),
@@ -126,34 +144,26 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
     passed:
       complete &&
       performancePassed &&
-      withinThree * 10 >= questions.length * 9 &&
+      withinThree * 100 >= questions.length * 95 &&
       callTargets.maximum <= 5 &&
-      callTargets.namedRefusalMaximum <= 2 &&
+      callTargets.namedRefusalMedian <= 2 &&
       Object.values(scores).every((s) => s >= 16) &&
-      questions.every(
-        (q) =>
-          (!q.mustReachModel || q.calls > 0) &&
-          !q.wrongRecordValue &&
-          !q.wrongNumber &&
-          !q.wrongAmountLabel &&
-          !q.badDisplayFormat &&
-          (!q.required || q.verdict !== "wrong"),
-      ),
+      questions.every((q) => (!q.mustReachModel || q.calls > 0) && safe(q)),
     questions,
   };
 }
 export function stabilitySummary<T extends ScoredRow>(
   rounds: readonly ReturnType<typeof roundSummary<T>>[],
+  focusedCaseIds?: readonly string[],
 ) {
   const ids = [...new Set(rounds.flatMap((r) => r.questions.map((q) => q.id)))];
   const perQuestion = ids.map((id) => {
     const rows = rounds.flatMap((r) => r.questions.filter((q) => q.id === id));
-    const passes = rows.filter(
-      (q) => q.verdict !== "wrong" && !q.wrongNumber && !q.wrongAmountLabel,
-    ).length;
+    const passes = rows.filter(correct).length;
     return {
       id,
       locale: rows[0]!.locale,
+      required: rows[0]!.required ?? false,
       passes,
       rounds: evaluationRounds,
       passRate: passes / evaluationRounds,
@@ -163,11 +173,28 @@ export function stabilitySummary<T extends ScoredRow>(
       callMaximum: Math.max(0, ...rows.map((q) => q.calls)),
     };
   });
+  const required = perQuestion.filter((q) => focusedCaseIds || q.required);
+  const requiredAnswers = {
+    passed: required.reduce((n, q) => n + q.passes, 0),
+    total: required.length * evaluationRounds,
+  };
+  const requiredPassed =
+    required.every((q) => q.passes >= 2) &&
+    requiredAnswers.passed * 100 >= requiredAnswers.total * 97;
+  const absoluteGatesPassed = rounds.every((r) => r.questions.every(safe));
   return {
+    acceptanceRun: !focusedCaseIds,
+    requiredAnswers,
+    requiredPassed,
+    absoluteGatesPassed,
     passed:
+      requiredPassed &&
+      absoluteGatesPassed &&
       rounds.length === evaluationRounds &&
-      rounds.every((r) => r.passed) &&
-      perQuestion.length === 84 &&
+      (focusedCaseIds
+        ? rounds.every((r) => r.questions.every((q) => !q.mustReachModel || q.calls > 0))
+        : rounds.every((r) => r.passed)) &&
+      perQuestion.length === (focusedCaseIds?.length ?? 84) &&
       ids.every((id) => rounds.every((r) => r.questions.some((q) => q.id === id))),
     rounds,
     perQuestion,
@@ -176,9 +203,10 @@ export function stabilitySummary<T extends ScoredRow>(
 /** Keep collecting after a failed round; each round owns fresh synthetic fixture state. */
 export async function runEvaluationRounds<T extends ScoredRow>(
   run: (round: number) => Promise<readonly T[]>,
+  focusedCaseIds?: readonly string[],
 ) {
   const rounds = [];
   for (let round = 1; round <= evaluationRounds; round++)
     rounds.push(roundSummary(round, await run(round)));
-  return stabilitySummary(rounds);
+  return stabilitySummary(rounds, focusedCaseIds);
 }

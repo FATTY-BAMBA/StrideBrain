@@ -49,33 +49,3 @@ export function toolCallKey(call: ToolCall): string {
         : v;
   return JSON.stringify([call.name, canonical(call.arguments)]);
 }
-
-/** Language interpretation belongs to the model. This checks copied text and exact
- * authorized identities only; metadata is never shown as an answer value. */
-export function declaredSubjects(
-  raw: unknown,
-  question: string,
-  projects: readonly AssistantProjectIdentity[],
-): readonly string[] | null {
-  if (
-    !raw ||
-    typeof raw !== "object" ||
-    !Array.isArray((raw as { jobMentions?: unknown }).jobMentions)
-  )
-    return null;
-  const names = (raw as { jobMentions: unknown[] }).jobMentions;
-  if (names.length > 4) return null;
-  const keys: string[] = [];
-  for (const name of names) {
-    if (typeof name !== "string" || !name.trim() || name.length > 280 || !question.includes(name))
-      return null;
-    const matches = projects.filter((p) =>
-      [p.projectKey, ...p.names].some(
-        (value) => value.length === name.length && mentionsIdentity(name, value),
-      ),
-    );
-    if (matches.length !== 1) return null;
-    keys.push(matches[0]!.projectKey);
-  }
-  return [...new Set(keys)];
-}

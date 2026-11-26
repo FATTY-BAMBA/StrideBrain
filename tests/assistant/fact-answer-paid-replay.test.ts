@@ -98,7 +98,8 @@ it.each([1, 2, 3, 4])(
         });
         const registry = new AnswerFactRegistry(row.locale);
         registry.register(ledger);
-        const result = registry.render(row.rawAnswer);
+        const { parts, followUps } = row.rawAnswer as { parts: unknown; followUps: unknown };
+        const result = registry.render({ parts, followUps });
         let verdict = row.verdict,
           wrongRecordValue = false;
         if (row.selection) {

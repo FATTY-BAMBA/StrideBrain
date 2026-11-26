@@ -51,6 +51,22 @@ suite("item prices use the page read without sending client identities", () => {
   afterAll(async () => {
     await db?.close();
   });
+  it("prefers a matching unit and keeps description results when the requested unit is unstored", async () => {
+    const c = await db.actor();
+    const tools = createAssistantServices().tools;
+    for (const unit of ["ping", "坪", "m²"]) {
+      const result = await tools.execute(c, {
+        name: "get_price_list_item_last_prices",
+        arguments: { description: "天花板 Ceiling", unit },
+      });
+      expect(result.status).toBe("OK");
+      const rows = result.sources.filter((s) => s.countSourceId);
+      expect(rows.length).toBeGreaterThan(0);
+      expect(rows.every((s) => ["坪", "m²"].includes(String(s.facts.unit)))).toBe(true);
+      if (unit !== "ping") expect(rows[0]!.facts.unit).toBe(unit);
+      expect(rows.length).toBeLessThanOrEqual(5);
+    }
+  });
   it.each([
     ["owner", "membership_horizon_admin", true],
     ["assigned manager", "membership_horizon_mei", true],
@@ -119,8 +135,9 @@ suite("item prices use the page read without sending client identities", () => {
       name: "get_price_list_item_last_prices",
       arguments: { description: "Ceiling", unit: "m²" },
     });
-    expect(otherUnit.sources.filter((s) => s.countSourceId)).toHaveLength(1);
-    expect(otherUnit.sources.at(-1)?.facts).toEqual({ count: 1 });
+    expect(otherUnit.sources.filter((s) => s.countSourceId)).toHaveLength(5);
+    expect(otherUnit.sources.at(-1)?.facts).toEqual({ count: 5 });
+    expect(otherUnit.sources[0]?.facts.unit).toBe("m²");
     expect(otherUnit.sources[0]?.facts.lastPrice).toBe("NT$1,000");
     for (const description of ["x' OR TRUE --", "%", "_"])
       expect(

@@ -39,13 +39,6 @@ export type AnswerSelection = Readonly<{
 export const answerParameters = {
   type: "object",
   properties: {
-    jobMentions: {
-      type: "array",
-      maxItems: 4,
-      items: { type: "string", minLength: 1, maxLength: 280 },
-      description:
-        "Verbatim job-name/reference substrings of currentQuestion, including unknown jobs. [] if none. Do not copy from pageContextReference or tool results; no translated aliases, pronouns, items or quote document numbers.",
-    },
     parts: {
       type: "array",
       maxItems: 14,
@@ -75,7 +68,7 @@ export const answerParameters = {
     },
     followUps: { type: "array", items: { type: "string", maxLength: 160 }, maxItems: 3 },
   },
-  required: ["jobMentions", "parts", "followUps"],
+  required: ["parts", "followUps"],
   additionalProperties: false,
 } as const;
 
@@ -85,14 +78,7 @@ export function parseFactAnswer(
   const r = record(value);
   if (
     !r ||
-    Object.keys(r).some((k) => !["parts", "followUps", "jobMentions", "namedJobs"].includes(k)) ||
-    [r.jobMentions, r.namedJobs].some(
-      (mentions) =>
-        mentions !== undefined &&
-        (!Array.isArray(mentions) ||
-          mentions.length > 4 ||
-          mentions.some((v) => typeof v !== "string" || !v.trim() || v.length > 280)),
-    ) ||
+    Object.keys(r).some((k) => !["parts", "followUps"].includes(k)) ||
     !Array.isArray(r.parts) ||
     r.parts.length > 14 ||
     !Array.isArray(r.followUps) ||
@@ -119,7 +105,10 @@ export function parseFactAnswer(
     (!("say" in r.parts[0]) || r.parts.filter((p) => "say" in p).length !== 1 || r.parts.length < 2)
   )
     return null;
-  return { parts: r.parts, followUps: r.followUps };
+  return {
+    parts: r.parts.map((p: AnswerPart) => ("show" in p ? { show: p.show.replace(/\s/gu, "") } : p)),
+    followUps: r.followUps,
+  };
 }
 
 type Fact = Readonly<{ ref: string; sourceId: string; path: string; label: string; value: string }>;

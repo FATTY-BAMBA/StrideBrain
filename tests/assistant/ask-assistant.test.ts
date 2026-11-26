@@ -1,4 +1,4 @@
-import { ordinaryQuestions, unresolvedQuestions } from "./subject-cases";
+import { ordinaryQuestions } from "./subject-cases";
 import { AssistantModelError } from "@/modules/assistant/domain/model-error";
 import { describe, it, expect, vi } from "vitest";
 import { AskAssistant } from "@/modules/assistant/application/ask-assistant";
@@ -36,6 +36,7 @@ const answer = (show = "s1.count"): ModelReply => ({
 function setup(script: ConstructorParameters<typeof FakeAssistantModel>[0] = [call, answer()]) {
   const model = new FakeAssistantModel(script);
   const repo = {
+    questionMentionsUnreadableJob: vi.fn().mockResolvedValue(false),
     readableReferences: vi.fn().mockResolvedValue([]),
     enabled: vi.fn().mockResolvedValue(true),
     jobPolicy: vi.fn().mockResolvedValue({ id: "J", excluded: false }),
@@ -53,6 +54,16 @@ function setup(script: ConstructorParameters<typeof FakeAssistantModel>[0] = [ca
   return { model, repo, tools, service: new AskAssistant(model, config, repo, tools) };
 }
 describe("bounded read-only assistant", () => {
+  it("does not hide a malformed answer behind the unreadable-identity refusal", async () => {
+    const f = setup([call, answer("s1.invented")]);
+    f.repo.questionMentionsUnreadableJob.mockResolvedValue(true);
+    expect(await f.service.execute(jobContext(), { question: "Hidden job?" })).toMatchObject({
+      kind: "FALLBACK",
+      discardReason: "UNKNOWN_REFERENCE",
+    });
+    expect(f.repo.questionMentionsUnreadableJob).not.toHaveBeenCalled();
+  });
+
   it.each(ordinaryQuestions)(
     "lets the model choose an authorized answer for ordinary wording: %s",
     async (question) => {
@@ -63,30 +74,21 @@ describe("bounded read-only assistant", () => {
       expect(f.model.requests).toHaveLength(2);
     },
   );
-  it.each(unresolvedQuestions)(
-    "checks the model's copied subject before showing page-job facts: %s",
-    async (question, name) => {
-      const reply = answer();
-      if (reply.result.kind !== "ANSWER") throw Error("fixture");
-      const f = setup([
-        call,
-        {
-          ...reply,
-          result: {
-            kind: "ANSWER",
-            answer: { ...(reply.result.answer as object), jobMentions: [name] },
-          },
-        },
-      ]);
-      f.tools.resolveSubjects.mockResolvedValue({
-        kind: "AVAILABLE",
-        named: [],
-        projects: [{ projectKey: "J", names: ["Page job"] }],
+  it.each(["PROJECT_MANAGER_ESTIMATOR", "VIEWER"] as const)(
+    "refuses a named unreadable job only at the answer boundary for %s",
+    async (role) => {
+      const f = setup();
+      f.repo.questionMentionsUnreadableJob.mockImplementation(async () => {
+        expect(f.model.requests).toHaveLength(2);
+        return true;
       });
-      const out = await f.service.execute(jobContext(), { question, projectKey: "J" });
+      const out = await f.service.execute(jobContext({ role }), {
+        question: "Hidden job stage?",
+        projectKey: "J",
+      });
       expect(out).toMatchObject({ kind: "ANSWER", refusal: "UNAVAILABLE", sources: [] });
-      expect(f.model.requests).toHaveLength(2);
       expect(f.tools.execute).toHaveBeenCalledTimes(1);
+      expect(JSON.stringify(f.model.requests)).not.toContain("Hidden job reference");
     },
   );
   it.each(["en", "zh-TW"] as const)(
@@ -594,33 +596,6 @@ describe("bounded read-only assistant", () => {
       }),
     ).toMatchObject({ kind: "ANSWER", refusal: "UNAVAILABLE" });
     expect(f.tools.execute).not.toHaveBeenCalled();
-  });
-  it("requires facts for each model-declared exact job identity", async () => {
-    const f = setup([
-      call,
-      {
-        usage,
-        result: {
-          kind: "ANSWER",
-          answer: {
-            jobMentions: ["Job", "Other job"],
-            parts: [{ say: "RECORDS_SHOW" }, { show: "s1.name" }],
-            followUps: [],
-          },
-        },
-      },
-    ]);
-    f.tools.resolveSubjects.mockResolvedValue({
-      kind: "AVAILABLE",
-      named: [],
-      projects: [
-        { projectKey: "J", names: ["Job"] },
-        { projectKey: "K", names: ["Other job"] },
-      ],
-    });
-    expect(await f.service.execute(jobContext(), { question: "Job and Other job?" })).toMatchObject(
-      { kind: "FALLBACK", discardReason: "SUBJECT_MISMATCH" },
-    );
   });
   it("rejects an answer citing a different job as its subject", async () => {
     const f = setup();

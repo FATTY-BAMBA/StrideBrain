@@ -113,7 +113,7 @@ export function assistantTools(lists: FirmLists): readonly ToolDefinition[] {
     {
       name: "get_price_list_item_last_prices",
       description:
-        "Find the firm's last issued unit price for an item from the Price list page, even when the page’s job has no current saved comparison. Search the item's description from the question (not a work category key); optional exact unit and job reference. At most five items, with last price/date and times quoted. A job adds its client's differing last price, never client identities.",
+        "Find the firm's last issued unit price for an item from the Price list page, even when the page’s job has no current saved comparison. Search the item's description from the question (not a work category key); optional preferred unit and job reference. At most five items, with last price/date and times quoted. A job adds its client's differing last price, never client identities.",
       parameters: {
         type: "object",
         properties: {
@@ -122,7 +122,7 @@ export function assistantTools(lists: FirmLists): readonly ToolDefinition[] {
             type: "string",
             maxLength: 32,
             description:
-              "Exact stored unit copied from a result. Omit until known; do not translate it. Then select the returned row with the requested unit.",
+              "Preferred unit, copied from a result when known. Matching items in other stored units remain available; always use the returned unit.",
           },
           projectKey: keySchema,
         },
@@ -277,16 +277,30 @@ export class AssistantReadTools {
           (typeof projectKey !== "string" || !/^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$/.test(projectKey)))
       )
         return empty("UNAVAILABLE");
-      const prices = await this.services.prices.execute(c, {
+      const query = {
         mode: "LIST",
         search: args.description,
-        unit: args.unit ?? "",
         page: 1,
         projectKey: projectKey ?? null,
-      });
+      };
+      const prices = await this.services.prices.execute(c, { ...query, unit: "" });
       if (prices.kind !== "AVAILABLE") return empty("UNAVAILABLE");
+      // The unit is a preference, never permission to hide matching descriptions.
+      // A separate page read finds preferred rows even beyond the first unfiltered page.
+      const preferred = args.unit
+        ? await this.services.prices.execute(c, { ...query, unit: args.unit })
+        : prices;
+      if (preferred.kind !== "AVAILABLE") return empty("UNAVAILABLE");
+      const items = [
+        ...new Map(
+          [...preferred.rows, ...prices.rows].map((item) => [
+            JSON.stringify([item.description, item.unit]),
+            item,
+          ]),
+        ).values(),
+      ];
       const rows: AssistantSource[] = [];
-      for (const item of prices.rows) {
+      for (const item of items) {
         const keys = [
           ...new Set([
             ...(item.sourceProjectKeys ?? [item.projectKey]),
@@ -358,7 +372,8 @@ export class AssistantReadTools {
         (j) =>
           (!group || inStageGroup(j.stage, group)) &&
           (!query ||
-            `${j.nameEn} ${j.nameZhTw} ${j.businessKey}`.toLocaleLowerCase().includes(query)),
+            j.businessKey.toLocaleLowerCase() === query ||
+            `${j.nameEn} ${j.nameZhTw}`.toLocaleLowerCase().includes(query)),
       );
       const allowed = [];
       let excludedMatch = false;

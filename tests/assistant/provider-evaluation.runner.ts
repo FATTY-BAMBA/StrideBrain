@@ -1,3 +1,5 @@
+import { evaluationMode } from "./evaluation-mode";
+import { EvaluationBudget } from "./evaluation-budget";
 import { runEvaluationRounds } from "./evaluation-stability";
 import { it, vi } from "vitest";
 vi.mock("server-only", () => ({}));
@@ -18,14 +20,25 @@ it("evaluates the explicitly configured paid provider on disposable seed data", 
     process.env.STRIDEBRAIN_AI_PAID_TIER_CONFIRMED !== "true"
   )
     throw new Error("PAID_EVALUATION_CONFIGURATION_REQUIRED");
+  const mode = evaluationMode(
+    questions as EvaluationQuestion[],
+    process.env.STRIDEBRAIN_AI_EVAL_CASES,
+  );
   const config = assistantConfig(process.env),
-    model = new GeminiAssistantModel(process.env.STRIDEBRAIN_GEMINI_API_KEY, config.model);
+    provider = new GeminiAssistantModel(process.env.STRIDEBRAIN_GEMINI_API_KEY, config.model),
+    budget = new EvaluationBudget(process.env.STRIDEBRAIN_AI_EVAL_MAX_USD ?? "0.50", config),
+    model = {
+      generate: (input: Parameters<typeof provider.generate>[0]) =>
+        budget.call(input, () => provider.generate(input)),
+      draftJob: (input: Parameters<typeof provider.draftJob>[0]) =>
+        budget.call(input, () => provider.draftJob(input)),
+    };
   const stability = await runEvaluationRounds(async (round) => {
     const db = await assistantDatabase();
     const rows: Awaited<ReturnType<typeof runEvaluationQuestion>>[] = [];
     try {
       await prepareEvaluation(db);
-      for (const question of questions as EvaluationQuestion[]) {
+      for (const question of mode.questions) {
         const row = await runEvaluationQuestion(db, question, config, model);
         rows.push(row);
         console.log(JSON.stringify({ round, ...evaluationLogRow(row) }));
@@ -34,37 +47,42 @@ it("evaluates the explicitly configured paid provider on disposable seed data", 
     } finally {
       await db.close();
     }
-  });
-  const draftDb = await assistantDatabase();
-  let jobDrafts;
-  try {
-    jobDrafts = await runJobDraftRounds(async (test, round) => {
-      const row = await runJobDraftCase(draftDb, test, config, model);
-      // Artifact carries fields; workflow logs contain only metering and verdict metadata.
-      console.log(
-        JSON.stringify({
-          set: "JOB_DRAFT",
-          round,
-          id: row.id,
-          locale: row.locale,
-          passed: row.passed,
-          calls: row.calls,
-          inputTokens: row.inputTokens,
-          outputTokens: row.outputTokens,
-          estimatedUsd: row.estimatedUsd,
-        }),
-      );
-      return row;
-    });
-  } finally {
-    await draftDb.close();
+  }, mode.caseIds);
+  let jobDrafts = null;
+  if (mode.acceptanceRun) {
+    const draftDb = await assistantDatabase();
+    try {
+      jobDrafts = await runJobDraftRounds(async (test, round) => {
+        const row = await runJobDraftCase(draftDb, test, config, model);
+        // Artifact carries fields; workflow logs contain only metering and verdict metadata.
+        console.log(
+          JSON.stringify({
+            set: "JOB_DRAFT",
+            round,
+            id: row.id,
+            locale: row.locale,
+            passed: row.passed,
+            calls: row.calls,
+            inputTokens: row.inputTokens,
+            outputTokens: row.outputTokens,
+            estimatedUsd: row.estimatedUsd,
+          }),
+        );
+        return row;
+      });
+    } finally {
+      await draftDb.close();
+    }
   }
   const questionGatePassed =
     stability.passed &&
-    (stability.perQuestion.find((q) => q.id === "zh-TW-finding")?.passes ?? 0) >= 2;
-  const passed = questionGatePassed && jobDrafts.passed;
+    (!mode.acceptanceRun ||
+      (stability.perQuestion.find((q) => q.id === "zh-TW-finding")?.passes ?? 0) >= 2);
+  const passed = questionGatePassed && (jobDrafts?.passed ?? !mode.acceptanceRun);
   const report = {
-    mode: "PAID_PROVIDER",
+    mode: mode.acceptanceRun ? "PAID_PROVIDER" : "FOCUSED_PAID_NOT_ACCEPTANCE",
+    focusedCaseIds: mode.caseIds ?? null,
+    budget: { maximumUsd: budget.maximumUsd, estimatedUsd: budget.estimatedUsd },
     provider: config.provider,
     model: config.model,
     inputUsdPerMillion: config.inputUsdPerMillion,

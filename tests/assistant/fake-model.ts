@@ -12,17 +12,6 @@ export class FakeAssistantModel implements AssistantModelPort {
     const step = this.script[this.requests.length - 1];
     if (!step) throw new Error("FAKE_SCRIPT_EXHAUSTED");
     const reply = typeof step === "function" ? step(request) : step;
-    // Existing scripts declare no additional named job unless their fixture supplies it.
-    // Recorded raw-answer replay bypasses this test double and stays byte-for-byte unchanged.
-    if (
-      reply.result.kind === "ANSWER" &&
-      reply.result.answer &&
-      typeof reply.result.answer === "object"
-    )
-      return {
-        ...reply,
-        result: { ...reply.result, answer: { jobMentions: [], ...reply.result.answer } },
-      };
     return reply;
   }
 }

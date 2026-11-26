@@ -1,3 +1,4 @@
+import { mentionsIdentity } from "@/modules/assistant/domain/subjects";
 import { createHash, randomUUID } from "node:crypto";
 import type { PrismaClient, Prisma } from "../../../.generated/prisma/client";
 import { AuthorizationService } from "@/modules/authorization/authorization-service";
@@ -42,6 +43,30 @@ async function job(tx: Prisma.TransactionClient, c: RuntimeContext, key: string)
 }
 export class PrismaAssistantRepository implements AssistantRepositoryPort, AssistantTurnTimingPort {
   constructor(private readonly db: PrismaClient) {}
+  async questionMentionsUnreadableJob(c: RuntimeContext, question: string) {
+    if (!c.capabilities.has("project:read") || !(await member(this.db, c))) return true;
+    if (c.role === "ORGANIZATION_ADMIN") return false;
+    const rows = await this.db.project.findMany({
+      where: {
+        organizationId: c.organizationId,
+        deletedAt: null,
+        OR: [
+          { id: { notIn: [...(c.assignedProjectIds ?? [])] } },
+          {
+            assignments: {
+              none: { organizationId: c.organizationId, membershipId: c.membershipId },
+            },
+          },
+        ],
+      },
+      select: { businessKey: true, nameEn: true, nameZhTw: true },
+    });
+    return rows.some((row) =>
+      [row.businessKey, row.nameEn, row.nameZhTw].some((identity) =>
+        mentionsIdentity(question, identity),
+      ),
+    );
+  }
   async readableReferences(c: RuntimeContext, candidates: readonly string[]) {
     if (!c.capabilities.has("project:read") || !(await member(this.db, c)) || !candidates.length)
       return [];

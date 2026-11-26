@@ -36,6 +36,28 @@ function setup() {
   return { services, policies, tools: new AssistantReadTools(services, policies) };
 }
 describe("assistant read tools", () => {
+  it("matches references only in full while retaining name substring searches", async () => {
+    const f = setup();
+    f.services.projects.execute.mockResolvedValue({
+      kind: "AVAILABLE",
+      projects: [{ ...project, businessKey: "PRJ-XINYI-026" }],
+    });
+    for (const query of ["02", "026", "PRJ-XINYI"]) {
+      const result = await f.tools.execute(jobContext(), {
+        name: "list_jobs",
+        arguments: { query },
+      });
+      expect(result.sources).toHaveLength(1);
+      expect(result.sources[0]!.facts.count).toBe(0);
+    }
+    for (const query of ["prj-xinyi-026", "Synthetic", "合成"]) {
+      const result = await f.tools.execute(jobContext(), {
+        name: "list_jobs",
+        arguments: { query },
+      });
+      expect(result.sources[0]!.facts.reference).toBe("PRJ-XINYI-026");
+    }
+  });
   it("tells identity searches to use the complete copied job name rather than a numeric fragment", () => {
     const tool = assistantTools(seededFirmLists).find((t) => t.name === "list_jobs")!;
     const properties = tool.parameters.properties as Record<string, { description?: string }>;
@@ -44,13 +66,13 @@ describe("assistant read tools", () => {
     );
     expect(properties.query!.description).toContain("not a fragment");
   });
-  it("describes the optional item unit as a stored value to inspect before filtering, never a translated word", () => {
+  it("describes the item unit as a preference that preserves matching items", () => {
     const tool = assistantTools(seededFirmLists).find(
       (t) => t.name === "get_price_list_item_last_prices",
     )!;
     const properties = tool.parameters.properties as Record<string, { description?: string }>;
-    expect(properties.unit!.description).toContain("Omit until known");
-    expect(properties.unit!.description).toContain("do not translate");
+    expect(properties.unit!.description).toContain("Preferred unit");
+    expect(properties.unit!.description).toContain("other stored units remain available");
     expect(tool.parameters.required).toEqual(["description"]);
   });
   it("defines bilingual pricing categories and refuses invented category keys before reading history", async () => {

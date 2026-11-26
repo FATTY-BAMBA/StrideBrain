@@ -20,6 +20,18 @@ const select = (...refs: string[]) => ({
   followUps: [],
 });
 describe("server-rendered fact selections", () => {
+  it("removes whitespace from fact references, never values or paths", () => {
+    const registry = new AnswerFactRegistry("en");
+    registry.register([source("A", { issued: { acceptedOn: "Not accepted yet" } })]);
+    for (const show of ["s1. issued.acceptedOn", " s1.\tissued.\nacceptedOn　"])
+      expect(registry.render(select(show))).toEqual(
+        registry.render(select("s1.issued.acceptedOn")),
+      );
+    expect(registry.render(select("s1. issued. invented"))).toMatchObject({
+      reason: "UNKNOWN_REFERENCE",
+    });
+    expect(parseFactAnswer({ ...select("s1.issued.acceptedOn"), jobMentions: [] })).toBeNull();
+  });
   it.each(["en", "zh-TW"] as const)(
     "prints owned records, page labels and exact values in %s",
     (locale) => {
@@ -224,6 +236,7 @@ describe("server-rendered fact selections", () => {
       },
     ]);
     const repo = {
+      questionMentionsUnreadableJob: vi.fn().mockResolvedValue(false),
       readableReferences: vi.fn().mockResolvedValue(["J"]),
       enabled: vi.fn().mockResolvedValue(true),
       jobPolicy: vi.fn().mockResolvedValue({ id: "J", excluded: false }),

@@ -163,7 +163,8 @@ async function evaluateQuestion(
     namedJobRefusal:
       outcome.kind === "ANSWER" &&
       !!outcome.refusal &&
-      (sentSubjectNames.length > 0 ||
+      (question.expected.unresolvedSubject ||
+        sentSubjectNames.length > 0 ||
         toolCalls.some((t) => typeof t.arguments.projectKey === "string")),
     ...(judgement.verdict === "wrong" || usage._count > 3 ? { toolCalls } : {}),
     ...judgement,

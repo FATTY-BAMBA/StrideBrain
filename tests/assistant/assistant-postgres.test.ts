@@ -22,6 +22,49 @@ afterAll(async () => {
   await db?.close();
 });
 suite("assistant PostgreSQL access, controls and metadata", () => {
+  it("checks exact unreadable identities within this firm, skips owner scans, and honors both assignment checks", async () => {
+    const repo = createAssistantServices().repository;
+    const owner = await db.actor();
+    const scan = vi.spyOn(getPrismaClient().project, "findMany");
+    expect(
+      await repo.questionMentionsUnreadableJob(owner, "Active Design Project 02 status?"),
+    ).toBe(false);
+    expect(scan).not.toHaveBeenCalled();
+    for (const member of ["membership_horizon_mei", "membership_horizon_viewer"]) {
+      const c = await db.actor(member);
+      for (const text of [
+        "Active Design Project 02 status?",
+        "進行中設計專案02的報價？",
+        "PRJ-ACTIVE-002?",
+      ])
+        expect(await repo.questionMentionsUnreadableJob(c, text)).toBe(true);
+      for (const text of ["02?", "PRJ-ACTIVE-002-extra", "Moonlight Cafe?", "PRJ-NORTH-001?"])
+        expect(await repo.questionMentionsUnreadableJob(c, text)).toBe(false);
+      expect(await repo.questionMentionsUnreadableJob(c, "PRJ-XINYI-026?")).toBe(false);
+      expect(
+        await repo.questionMentionsUnreadableJob(
+          { ...c, assignedProjectIds: new Set() },
+          "PRJ-XINYI-026?",
+        ),
+      ).toBe(true);
+      expect(
+        await repo.questionMentionsUnreadableJob(
+          {
+            ...c,
+            assignedProjectIds: new Set([...(c.assignedProjectIds ?? []), "prj_active_002"]),
+          },
+          "PRJ-ACTIVE-002?",
+        ),
+      ).toBe(true);
+    }
+    const foreign = await db.actor("membership_northern_owner");
+    expect(
+      await repo.questionMentionsUnreadableJob(
+        { ...owner, organizationId: foreign.organizationId },
+        "Anything?",
+      ),
+    ).toBe(true);
+  });
   it("records zero-model turns idempotently, isolates timing and keeps call usage unchanged", async () => {
     const c = await db.actor(),
       viewer = await db.actor("membership_horizon_viewer"),

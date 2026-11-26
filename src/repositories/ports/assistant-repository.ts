@@ -29,6 +29,8 @@ export type AssistantControlOutcome = Readonly<{
   kind: "SAVED" | "UNAVAILABLE" | "INVALID" | "CONFLICT";
 }>;
 export interface AssistantRepositoryPort {
+  /** Server-only exact identity guard. Returns no private names or references. */
+  questionMentionsUnreadableJob(context: RuntimeContext, question: string): Promise<boolean>;
   readableReferences(
     context: RuntimeContext,
     candidates: readonly string[],
