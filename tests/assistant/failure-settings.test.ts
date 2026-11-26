@@ -21,6 +21,18 @@ describe("AI failure settings", () => {
         calls: 8,
         estimatedUsd: "0.001",
         unmeteredCalls: 0,
+        turnTimings: {
+          count: 9,
+          latestMs: 1234,
+          maximumMs: 9999,
+          recent: [
+            {
+              requestId: "request",
+              startedAt: new Date("2026-11-26T00:00:00Z"),
+              serverDurationMs: 1234,
+            },
+          ],
+        },
         failures: [{ code: "PROVIDER_HTTP", httpStatus: 429, count: 2 }],
       };
       boundary.read.mockResolvedValue(settings);
@@ -28,6 +40,10 @@ describe("AI failure settings", () => {
         await AssistantSettings({ context: jobContext({ locale }) }),
       );
       expect(html).toContain(assistantCopy(locale).failures);
+      expect(html).toContain(assistantCopy(locale).turnTimings);
+      expect(html).toContain("1,234 ms");
+      expect(html).toContain("9,999 ms");
+      expect(html).toContain("2026-11-26 00:00:00.000");
       expect(html).toContain("PROVIDER_HTTP (429)");
       expect(html).toContain(">2</td>");
       expect(html).toContain('tabindex="0"');

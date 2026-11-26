@@ -27,6 +27,7 @@ export type EvaluationQuestion = {
   expected: {
     kind: "FACTS" | "DECLINE";
     subjectProjectKey?: string;
+    unresolvedSubject?: boolean;
     facts: string[];
     forbidden: string[];
     match?: "ANY_SAVED_FINDING" | "EMPTY_LIST" | "NONEMPTY_LIST" | "NOT_FOUND";
@@ -164,7 +165,8 @@ export function evaluateAnswer(
   const wrongRecordValue =
     outcome.kind === "ANSWER" &&
     !outcome.refusal &&
-    (!selection ||
+    ((q.expected.unresolvedSubject && outcome.sources.some((s) => s.projectKeys.length > 0)) ||
+      !selection ||
       replay?.kind !== "ACCEPTED" ||
       replay.answer.text !== outcome.answer.text ||
       JSON.stringify(replay.answer.sourceIds) !== JSON.stringify(outcome.answer.sourceIds));
@@ -208,7 +210,12 @@ export function evaluateAnswer(
         : "wrong",
     );
   }
-  if (!selection || selection.phraseId !== "RECORDS_SHOW") return report("wrong");
+  if (
+    (q.expected.unresolvedSubject && outcome.sources.some((s) => s.projectKeys.length > 0)) ||
+    !selection ||
+    selection.phraseId !== "RECORDS_SHOW"
+  )
+    return report("wrong");
   if (q.expected.match === "EMPTY_LIST")
     return report(
       actual.some((f) => f.path === "count" && f.value === "0") ? "grounded and correct" : "wrong",

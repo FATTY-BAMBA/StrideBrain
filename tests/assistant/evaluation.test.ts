@@ -59,7 +59,7 @@ function scored(show = "s1.documentNumber", mutate?: (s: string) => string) {
   );
 }
 describe("evaluation by selected references", () => {
-  it("keeps twenty core questions per language and adds all twelve required fact-selection cases", () => {
+  it("keeps twenty core questions per language and adds all sixteen required fact-selection cases", () => {
     for (const locale of ["en", "zh-TW"]) {
       expect(
         questions.filter(
@@ -73,9 +73,23 @@ describe("evaluation by selected references", () => {
         questions.filter(
           (q) => q.locale === locale && "factSelectionRegression" in q && q.factSelectionRegression,
         ),
-      ).toHaveLength(6);
+      ).toHaveLength(8);
     }
-    expect(questions).toHaveLength(68);
+    expect(questions).toHaveLength(72);
+  });
+  it("counts a true page fact for an unresolved named job as a wrong record value", () => {
+    const registry = new AnswerFactRegistry("en");
+    registry.register([source]);
+    const rendered = registry.render(raw("s1.documentNumber"));
+    if (rendered.kind !== "ACCEPTED") throw Error("render");
+    const result = evaluateAnswer(
+      { ...q, expected: { kind: "DECLINE", unresolvedSubject: true, facts: [], forbidden: [] } },
+      { ...rendered, kind: "ANSWER", locale: "en", sources: [source] },
+      [],
+      raw("s1.documentNumber"),
+      [source],
+    );
+    expect(result).toMatchObject({ verdict: "wrong", wrongRecordValue: true });
   });
   it("rejects the recorded wrong identifier even though it is another true fact", () => {
     expect(scored()).toMatchObject({ verdict: "grounded and correct", wrongRecordValue: false });
@@ -232,7 +246,7 @@ describe("evaluation by selected references", () => {
   });
 });
 (process.env.DATABASE_URL ? it : it.skip)(
-  "replays all 68 evaluation cases through the fake and authorized records in three rounds",
+  "replays all 72 evaluation cases through the fake and authorized records in three rounds",
   async () => {
     const report = await runEvaluationRounds(async () => {
       const db = await assistantDatabase();

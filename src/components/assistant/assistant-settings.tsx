@@ -60,6 +60,48 @@ export async function AssistantSettings({ context }: { context: RuntimeContext }
             </div>
           </dl>
           {settings.unmeteredCalls > 0 && <p>{copy.unknownCost}</p>}
+          <h3>{copy.turnTimings}</h3>
+          <p>{copy.timingExplanation}</p>
+          {settings.turnTimings?.count ? (
+            <dl>
+              <div>
+                <dt>{copy.timedTurns}</dt>
+                <dd>{settings.turnTimings.count}</dd>
+              </div>
+              <div>
+                <dt>{copy.latestTiming}</dt>
+                <dd>{settings.turnTimings.latestMs?.toLocaleString(context.locale)} ms</dd>
+              </div>
+              <div>
+                <dt>{copy.maximumTiming}</dt>
+                <dd>{settings.turnTimings.maximumMs?.toLocaleString(context.locale)} ms</dd>
+              </div>
+            </dl>
+          ) : (
+            <p>{copy.noTimings}</p>
+          )}
+          {settings.turnTimings?.recent?.length ? (
+            <Table
+              caption={copy.recentTimings}
+              headings={[
+                { label: copy.timingStarted },
+                { label: copy.timingDuration, numeric: true },
+              ]}
+            >
+              {settings.turnTimings.recent.map((row) => (
+                <tr key={row.requestId}>
+                  <NameCell>
+                    <time dateTime={row.startedAt.toISOString()}>
+                      {row.startedAt.toISOString().replace("T", " ").replace("Z", "")}
+                    </time>
+                  </NameCell>
+                  <NumericCell>
+                    {row.serverDurationMs.toLocaleString(context.locale)} ms
+                  </NumericCell>
+                </tr>
+              ))}
+            </Table>
+          ) : null}
           <h3>{copy.failures}</h3>
           {settings.failures.length ? (
             <Table

@@ -10,7 +10,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "Here is what the records show:\n\nRecords\nRecord count: 2\nSynthetic retail job / 合成零售專案 · JOB-4f0d3b00-e27c-4852-bdcc-b83813f2b2b2 — Document number: JOB-4f0d3b00-e27c-4852-bdcc-b83813f2b2b2-Q1; Valid until: 2026-12-26; Quote status: Issued; Accepted on: Not accepted yet\nActive Design Project 01 · PRJ-ACTIVE-001 — Document number: PRJ-ACTIVE-001-Q1; Valid until: 2027-12-31; Quote status: Issued; Accepted on: Not accepted yet"
+      "answerText": "Here is what the records show:\n\nQuotes awaiting the client\nRecord count: 2\nSynthetic retail job / 合成零售專案 · JOB-4f0d3b00-e27c-4852-bdcc-b83813f2b2b2 — Document number: JOB-4f0d3b00-e27c-4852-bdcc-b83813f2b2b2-Q1; Valid until: 2026-12-26; Quote status: Issued; Accepted on: Not accepted yet\nActive Design Project 01 · PRJ-ACTIVE-001 — Document number: PRJ-ACTIVE-001-Q1; Valid until: 2027-12-31; Quote status: Issued; Accepted on: Not accepted yet"
     },
     {
       "round": 1,
@@ -90,7 +90,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "Here is what the records show:\n\nRecords\nRecord count: 3\nNanjing Brand Experience Center — Category: Site coordination and handover; Closed-job lesson: Site coordination and handover: actual cost exceeded its quoted amount by NT$1,720,000.; Quoted price before tax: NT$17,300,000; Reconciled actual cost: NT$13,420,000\nNeihu Tech Flagship — Category: Imported stone and hard finishes; Closed-job lesson: No category exceeded its quoted amount; Imported stone and hard finishes was closest.; Quoted price before tax: NT$15,120,000; Reconciled actual cost: NT$11,580,000\nSongshan Retail Renewal — Category: Site coordination and handover; Closed-job lesson: Site coordination and handover: actual cost exceeded its quoted amount by NT$1,312,000.; Quoted price before tax: NT$14,900,000; Reconciled actual cost: NT$11,650,000"
+      "answerText": "Here is what the records show:\n\nClosed jobs\nRecord count: 3\nNanjing Brand Experience Center · PRJ-NANJING-023 — Category: Site coordination and handover; Closed-job lesson: Site coordination and handover: actual cost exceeded its quoted amount by NT$1,720,000.; Quoted price before tax: NT$17,300,000; Reconciled actual cost: NT$13,420,000\nNeihu Tech Flagship · PRJ-NEIHU-021 — Category: Imported stone and hard finishes; Closed-job lesson: No category exceeded its quoted amount; Imported stone and hard finishes was closest.; Quoted price before tax: NT$15,120,000; Reconciled actual cost: NT$11,580,000\nSongshan Retail Renewal · PRJ-SONGSHAN-020 — Category: Site coordination and handover; Closed-job lesson: Site coordination and handover: actual cost exceeded its quoted amount by NT$1,312,000.; Quoted price before tax: NT$14,900,000; Reconciled actual cost: NT$11,650,000"
     },
     {
       "round": 1,
@@ -167,7 +167,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "紀錄顯示：\n\n紀錄\n紀錄筆數：2\nSynthetic retail job / 合成零售專案 · JOB-4f0d3b00-e27c-4852-bdcc-b83813f2b2b2 — 報價單號：JOB-4f0d3b00-e27c-4852-bdcc-b83813f2b2b2-Q1；有效期限：2026-12-26；報價狀態：已核發；接受日期：尚未接受\n進行中設計專案01 · PRJ-ACTIVE-001 — 報價單號：PRJ-ACTIVE-001-Q1；有效期限：2027-12-31；報價狀態：已核發；接受日期：尚未接受"
+      "answerText": "紀錄顯示：\n\n等待客戶回覆的報價\n紀錄筆數：2\nSynthetic retail job / 合成零售專案 · JOB-4f0d3b00-e27c-4852-bdcc-b83813f2b2b2 — 報價單號：JOB-4f0d3b00-e27c-4852-bdcc-b83813f2b2b2-Q1；有效期限：2026-12-26；報價狀態：已核發；接受日期：尚未接受\n進行中設計專案01 · PRJ-ACTIVE-001 — 報價單號：PRJ-ACTIVE-001-Q1；有效期限：2027-12-31；報價狀態：已核發；接受日期：尚未接受"
     },
     {
       "round": 1,
@@ -247,7 +247,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "紀錄顯示：\n\n紀錄\n紀錄筆數：3\n南京品牌體驗中心 — 類別：現場協調與交付；結案經驗：現場協調與交付：實際成本比報價多 NT$1,720,000。；未稅報價：NT$17,300,000；已核對實際成本：NT$13,420,000\n內湖科技旗艦店 — 類別：進口石材與硬質面材；結案經驗：沒有類別的實際成本超過報價；進口石材與硬質面材最接近報價。；未稅報價：NT$15,120,000；已核對實際成本：NT$11,580,000\n松山門市改裝 — 類別：現場協調與交付；結案經驗：現場協調與交付：實際成本比報價多 NT$1,312,000。；未稅報價：NT$14,900,000；已核對實際成本：NT$11,650,000"
+      "answerText": "紀錄顯示：\n\n已結案專案\n紀錄筆數：3\n南京品牌體驗中心 · PRJ-NANJING-023 — 類別：現場協調與交付；結案經驗：現場協調與交付：實際成本比報價多 NT$1,720,000。；未稅報價：NT$17,300,000；已核對實際成本：NT$13,420,000\n內湖科技旗艦店 · PRJ-NEIHU-021 — 類別：進口石材與硬質面材；結案經驗：沒有類別的實際成本超過報價；進口石材與硬質面材最接近報價。；未稅報價：NT$15,120,000；已核對實際成本：NT$11,580,000\n松山門市改裝 · PRJ-SONGSHAN-020 — 類別：現場協調與交付；結案經驗：現場協調與交付：實際成本比報價多 NT$1,312,000。；未稅報價：NT$14,900,000；已核對實際成本：NT$11,650,000"
     },
     {
       "round": 1,
@@ -433,7 +433,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "Here is what the records show:\n\nRecords\nRecord count: 2\nSynthetic retail job / 合成零售專案 · JOB-4f0d3b00-e27c-4852-bdcc-b83813f2b2b2 — Document number: JOB-4f0d3b00-e27c-4852-bdcc-b83813f2b2b2-Q1; Valid until: 2026-12-26; Quote status: Issued; Accepted on: Not accepted yet\nActive Design Project 01 · PRJ-ACTIVE-001 — Document number: PRJ-ACTIVE-001-Q1; Valid until: 2027-12-31; Quote status: Issued; Accepted on: Not accepted yet"
+      "answerText": "Here is what the records show:\n\nQuotes awaiting the client\nRecord count: 2\nSynthetic retail job / 合成零售專案 · JOB-4f0d3b00-e27c-4852-bdcc-b83813f2b2b2 — Document number: JOB-4f0d3b00-e27c-4852-bdcc-b83813f2b2b2-Q1; Valid until: 2026-12-26; Quote status: Issued; Accepted on: Not accepted yet\nActive Design Project 01 · PRJ-ACTIVE-001 — Document number: PRJ-ACTIVE-001-Q1; Valid until: 2027-12-31; Quote status: Issued; Accepted on: Not accepted yet"
     },
     {
       "round": 1,
@@ -464,7 +464,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "紀錄顯示：\n\n紀錄\n紀錄筆數：2\nSynthetic retail job / 合成零售專案 · JOB-4f0d3b00-e27c-4852-bdcc-b83813f2b2b2 — 報價單號：JOB-4f0d3b00-e27c-4852-bdcc-b83813f2b2b2-Q1；有效期限：2026-12-26；報價狀態：已核發；接受日期：尚未接受\n進行中設計專案01 · PRJ-ACTIVE-001 — 報價單號：PRJ-ACTIVE-001-Q1；有效期限：2027-12-31；報價狀態：已核發；接受日期：尚未接受"
+      "answerText": "紀錄顯示：\n\n等待客戶回覆的報價\n紀錄筆數：2\nSynthetic retail job / 合成零售專案 · JOB-4f0d3b00-e27c-4852-bdcc-b83813f2b2b2 — 報價單號：JOB-4f0d3b00-e27c-4852-bdcc-b83813f2b2b2-Q1；有效期限：2026-12-26；報價狀態：已核發；接受日期：尚未接受\n進行中設計專案01 · PRJ-ACTIVE-001 — 報價單號：PRJ-ACTIVE-001-Q1；有效期限：2027-12-31；報價狀態：已核發；接受日期：尚未接受"
     },
     {
       "round": 1,
@@ -495,7 +495,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "Here is what the records show:\n\nRecords\nRecord count: 2\nSynthetic retail job / 合成零售專案 · JOB-608d3b76-5cab-44a5-9d88-1ba50e1e89ba — Document number: JOB-608d3b76-5cab-44a5-9d88-1ba50e1e89ba-Q1; Valid until: 2026-12-26; Quote status: Issued; Accepted on: Not accepted yet\nActive Design Project 01 · PRJ-ACTIVE-001 — Document number: PRJ-ACTIVE-001-Q1; Valid until: 2027-12-31; Quote status: Issued; Accepted on: Not accepted yet"
+      "answerText": "Here is what the records show:\n\nQuotes awaiting the client\nRecord count: 2\nSynthetic retail job / 合成零售專案 · JOB-608d3b76-5cab-44a5-9d88-1ba50e1e89ba — Document number: JOB-608d3b76-5cab-44a5-9d88-1ba50e1e89ba-Q1; Valid until: 2026-12-26; Quote status: Issued; Accepted on: Not accepted yet\nActive Design Project 01 · PRJ-ACTIVE-001 — Document number: PRJ-ACTIVE-001-Q1; Valid until: 2027-12-31; Quote status: Issued; Accepted on: Not accepted yet"
     },
     {
       "round": 2,
@@ -575,7 +575,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "Here is what the records show:\n\nRecords\nRecord count: 3\nNanjing Brand Experience Center — Category: Site coordination and handover; Closed-job lesson: Site coordination and handover: actual cost exceeded its quoted amount by NT$1,720,000.; Quoted price before tax: NT$17,300,000; Reconciled actual cost: NT$13,420,000\nNeihu Tech Flagship — Category: Imported stone and hard finishes; Closed-job lesson: No category exceeded its quoted amount; Imported stone and hard finishes was closest.; Quoted price before tax: NT$15,120,000; Reconciled actual cost: NT$11,580,000\nSongshan Retail Renewal — Category: Site coordination and handover; Closed-job lesson: Site coordination and handover: actual cost exceeded its quoted amount by NT$1,312,000.; Quoted price before tax: NT$14,900,000; Reconciled actual cost: NT$11,650,000"
+      "answerText": "Here is what the records show:\n\nClosed jobs\nRecord count: 3\nNanjing Brand Experience Center · PRJ-NANJING-023 — Category: Site coordination and handover; Closed-job lesson: Site coordination and handover: actual cost exceeded its quoted amount by NT$1,720,000.; Quoted price before tax: NT$17,300,000; Reconciled actual cost: NT$13,420,000\nNeihu Tech Flagship · PRJ-NEIHU-021 — Category: Imported stone and hard finishes; Closed-job lesson: No category exceeded its quoted amount; Imported stone and hard finishes was closest.; Quoted price before tax: NT$15,120,000; Reconciled actual cost: NT$11,580,000\nSongshan Retail Renewal · PRJ-SONGSHAN-020 — Category: Site coordination and handover; Closed-job lesson: Site coordination and handover: actual cost exceeded its quoted amount by NT$1,312,000.; Quoted price before tax: NT$14,900,000; Reconciled actual cost: NT$11,650,000"
     },
     {
       "round": 2,
@@ -651,7 +651,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "紀錄顯示：\n\n紀錄\n紀錄筆數：2\nSynthetic retail job / 合成零售專案 · JOB-608d3b76-5cab-44a5-9d88-1ba50e1e89ba — 報價單號：JOB-608d3b76-5cab-44a5-9d88-1ba50e1e89ba-Q1；有效期限：2026-12-26；報價狀態：已核發；接受日期：尚未接受\n進行中設計專案01 · PRJ-ACTIVE-001 — 報價單號：PRJ-ACTIVE-001-Q1；有效期限：2027-12-31；報價狀態：已核發；接受日期：尚未接受"
+      "answerText": "紀錄顯示：\n\n等待客戶回覆的報價\n紀錄筆數：2\nSynthetic retail job / 合成零售專案 · JOB-608d3b76-5cab-44a5-9d88-1ba50e1e89ba — 報價單號：JOB-608d3b76-5cab-44a5-9d88-1ba50e1e89ba-Q1；有效期限：2026-12-26；報價狀態：已核發；接受日期：尚未接受\n進行中設計專案01 · PRJ-ACTIVE-001 — 報價單號：PRJ-ACTIVE-001-Q1；有效期限：2027-12-31；報價狀態：已核發；接受日期：尚未接受"
     },
     {
       "round": 2,
@@ -731,7 +731,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "紀錄顯示：\n\n紀錄\n紀錄筆數：3\n南京品牌體驗中心 — 類別：現場協調與交付；結案經驗：現場協調與交付：實際成本比報價多 NT$1,720,000。；未稅報價：NT$17,300,000；已核對實際成本：NT$13,420,000\n內湖科技旗艦店 — 類別：進口石材與硬質面材；結案經驗：沒有類別的實際成本超過報價；進口石材與硬質面材最接近報價。；未稅報價：NT$15,120,000；已核對實際成本：NT$11,580,000\n松山門市改裝 — 類別：現場協調與交付；結案經驗：現場協調與交付：實際成本比報價多 NT$1,312,000。；未稅報價：NT$14,900,000；已核對實際成本：NT$11,650,000"
+      "answerText": "紀錄顯示：\n\n已結案專案\n紀錄筆數：3\n南京品牌體驗中心 · PRJ-NANJING-023 — 類別：現場協調與交付；結案經驗：現場協調與交付：實際成本比報價多 NT$1,720,000。；未稅報價：NT$17,300,000；已核對實際成本：NT$13,420,000\n內湖科技旗艦店 · PRJ-NEIHU-021 — 類別：進口石材與硬質面材；結案經驗：沒有類別的實際成本超過報價；進口石材與硬質面材最接近報價。；未稅報價：NT$15,120,000；已核對實際成本：NT$11,580,000\n松山門市改裝 · PRJ-SONGSHAN-020 — 類別：現場協調與交付；結案經驗：現場協調與交付：實際成本比報價多 NT$1,312,000。；未稅報價：NT$14,900,000；已核對實際成本：NT$11,650,000"
     },
     {
       "round": 2,
@@ -918,7 +918,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "Here is what the records show:\n\nRecords\nRecord count: 2\nSynthetic retail job / 合成零售專案 · JOB-608d3b76-5cab-44a5-9d88-1ba50e1e89ba — Document number: JOB-608d3b76-5cab-44a5-9d88-1ba50e1e89ba-Q1; Valid until: 2026-12-26; Quote status: Issued; Accepted on: Not accepted yet\nActive Design Project 01 · PRJ-ACTIVE-001 — Document number: PRJ-ACTIVE-001-Q1; Valid until: 2027-12-31; Quote status: Issued; Accepted on: Not accepted yet"
+      "answerText": "Here is what the records show:\n\nQuotes awaiting the client\nRecord count: 2\nSynthetic retail job / 合成零售專案 · JOB-608d3b76-5cab-44a5-9d88-1ba50e1e89ba — Document number: JOB-608d3b76-5cab-44a5-9d88-1ba50e1e89ba-Q1; Valid until: 2026-12-26; Quote status: Issued; Accepted on: Not accepted yet\nActive Design Project 01 · PRJ-ACTIVE-001 — Document number: PRJ-ACTIVE-001-Q1; Valid until: 2027-12-31; Quote status: Issued; Accepted on: Not accepted yet"
     },
     {
       "round": 2,
@@ -949,7 +949,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "紀錄顯示：\n\n紀錄\n紀錄筆數：2\nSynthetic retail job / 合成零售專案 · JOB-608d3b76-5cab-44a5-9d88-1ba50e1e89ba — 報價單號：JOB-608d3b76-5cab-44a5-9d88-1ba50e1e89ba-Q1；有效期限：2026-12-26；報價狀態：已核發；接受日期：尚未接受\n進行中設計專案01 · PRJ-ACTIVE-001 — 報價單號：PRJ-ACTIVE-001-Q1；有效期限：2027-12-31；報價狀態：已核發；接受日期：尚未接受"
+      "answerText": "紀錄顯示：\n\n等待客戶回覆的報價\n紀錄筆數：2\nSynthetic retail job / 合成零售專案 · JOB-608d3b76-5cab-44a5-9d88-1ba50e1e89ba — 報價單號：JOB-608d3b76-5cab-44a5-9d88-1ba50e1e89ba-Q1；有效期限：2026-12-26；報價狀態：已核發；接受日期：尚未接受\n進行中設計專案01 · PRJ-ACTIVE-001 — 報價單號：PRJ-ACTIVE-001-Q1；有效期限：2027-12-31；報價狀態：已核發；接受日期：尚未接受"
     },
     {
       "round": 2,
@@ -980,7 +980,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "Here is what the records show:\n\nRecords\nRecord count: 2\nSynthetic retail job / 合成零售專案 · JOB-ca537ff4-9f0b-4771-8f81-24353d97892c — Document number: JOB-ca537ff4-9f0b-4771-8f81-24353d97892c-Q1; Valid until: 2026-12-26; Quote status: Issued; Accepted on: Not accepted yet\nActive Design Project 01 · PRJ-ACTIVE-001 — Document number: PRJ-ACTIVE-001-Q1; Valid until: 2027-12-31; Quote status: Issued; Accepted on: Not accepted yet"
+      "answerText": "Here is what the records show:\n\nQuotes awaiting the client\nRecord count: 2\nSynthetic retail job / 合成零售專案 · JOB-ca537ff4-9f0b-4771-8f81-24353d97892c — Document number: JOB-ca537ff4-9f0b-4771-8f81-24353d97892c-Q1; Valid until: 2026-12-26; Quote status: Issued; Accepted on: Not accepted yet\nActive Design Project 01 · PRJ-ACTIVE-001 — Document number: PRJ-ACTIVE-001-Q1; Valid until: 2027-12-31; Quote status: Issued; Accepted on: Not accepted yet"
     },
     {
       "round": 3,
@@ -1060,7 +1060,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "Here is what the records show:\n\nRecords\nRecord count: 3\nNanjing Brand Experience Center — Category: Site coordination and handover; Closed-job lesson: Site coordination and handover: actual cost exceeded its quoted amount by NT$1,720,000.; Quoted price before tax: NT$17,300,000; Reconciled actual cost: NT$13,420,000\nNeihu Tech Flagship — Category: Imported stone and hard finishes; Closed-job lesson: No category exceeded its quoted amount; Imported stone and hard finishes was closest.; Quoted price before tax: NT$15,120,000; Reconciled actual cost: NT$11,580,000\nSongshan Retail Renewal — Category: Site coordination and handover; Closed-job lesson: Site coordination and handover: actual cost exceeded its quoted amount by NT$1,312,000.; Quoted price before tax: NT$14,900,000; Reconciled actual cost: NT$11,650,000"
+      "answerText": "Here is what the records show:\n\nClosed jobs\nRecord count: 3\nNanjing Brand Experience Center · PRJ-NANJING-023 — Category: Site coordination and handover; Closed-job lesson: Site coordination and handover: actual cost exceeded its quoted amount by NT$1,720,000.; Quoted price before tax: NT$17,300,000; Reconciled actual cost: NT$13,420,000\nNeihu Tech Flagship · PRJ-NEIHU-021 — Category: Imported stone and hard finishes; Closed-job lesson: No category exceeded its quoted amount; Imported stone and hard finishes was closest.; Quoted price before tax: NT$15,120,000; Reconciled actual cost: NT$11,580,000\nSongshan Retail Renewal · PRJ-SONGSHAN-020 — Category: Site coordination and handover; Closed-job lesson: Site coordination and handover: actual cost exceeded its quoted amount by NT$1,312,000.; Quoted price before tax: NT$14,900,000; Reconciled actual cost: NT$11,650,000"
     },
     {
       "round": 3,
@@ -1137,7 +1137,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "紀錄顯示：\n\n紀錄\n紀錄筆數：2\nSynthetic retail job / 合成零售專案 · JOB-ca537ff4-9f0b-4771-8f81-24353d97892c — 報價單號：JOB-ca537ff4-9f0b-4771-8f81-24353d97892c-Q1；有效期限：2026-12-26；報價狀態：已核發；接受日期：尚未接受\n進行中設計專案01 · PRJ-ACTIVE-001 — 報價單號：PRJ-ACTIVE-001-Q1；有效期限：2027-12-31；報價狀態：已核發；接受日期：尚未接受"
+      "answerText": "紀錄顯示：\n\n等待客戶回覆的報價\n紀錄筆數：2\nSynthetic retail job / 合成零售專案 · JOB-ca537ff4-9f0b-4771-8f81-24353d97892c — 報價單號：JOB-ca537ff4-9f0b-4771-8f81-24353d97892c-Q1；有效期限：2026-12-26；報價狀態：已核發；接受日期：尚未接受\n進行中設計專案01 · PRJ-ACTIVE-001 — 報價單號：PRJ-ACTIVE-001-Q1；有效期限：2027-12-31；報價狀態：已核發；接受日期：尚未接受"
     },
     {
       "round": 3,
@@ -1217,7 +1217,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "紀錄顯示：\n\n紀錄\n紀錄筆數：3\n南京品牌體驗中心 — 類別：現場協調與交付；結案經驗：現場協調與交付：實際成本比報價多 NT$1,720,000。；未稅報價：NT$17,300,000；已核對實際成本：NT$13,420,000\n內湖科技旗艦店 — 類別：進口石材與硬質面材；結案經驗：沒有類別的實際成本超過報價；進口石材與硬質面材最接近報價。；未稅報價：NT$15,120,000；已核對實際成本：NT$11,580,000\n松山門市改裝 — 類別：現場協調與交付；結案經驗：現場協調與交付：實際成本比報價多 NT$1,312,000。；未稅報價：NT$14,900,000；已核對實際成本：NT$11,650,000"
+      "answerText": "紀錄顯示：\n\n已結案專案\n紀錄筆數：3\n南京品牌體驗中心 · PRJ-NANJING-023 — 類別：現場協調與交付；結案經驗：現場協調與交付：實際成本比報價多 NT$1,720,000。；未稅報價：NT$17,300,000；已核對實際成本：NT$13,420,000\n內湖科技旗艦店 · PRJ-NEIHU-021 — 類別：進口石材與硬質面材；結案經驗：沒有類別的實際成本超過報價；進口石材與硬質面材最接近報價。；未稅報價：NT$15,120,000；已核對實際成本：NT$11,580,000\n松山門市改裝 · PRJ-SONGSHAN-020 — 類別：現場協調與交付；結案經驗：現場協調與交付：實際成本比報價多 NT$1,312,000。；未稅報價：NT$14,900,000；已核對實際成本：NT$11,650,000"
     },
     {
       "round": 3,
@@ -1404,7 +1404,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "Here is what the records show:\n\nRecords\nRecord count: 2\nSynthetic retail job / 合成零售專案 · JOB-ca537ff4-9f0b-4771-8f81-24353d97892c — Document number: JOB-ca537ff4-9f0b-4771-8f81-24353d97892c-Q1; Valid until: 2026-12-26; Quote status: Issued; Accepted on: Not accepted yet\nActive Design Project 01 · PRJ-ACTIVE-001 — Document number: PRJ-ACTIVE-001-Q1; Valid until: 2027-12-31; Quote status: Issued; Accepted on: Not accepted yet"
+      "answerText": "Here is what the records show:\n\nQuotes awaiting the client\nRecord count: 2\nSynthetic retail job / 合成零售專案 · JOB-ca537ff4-9f0b-4771-8f81-24353d97892c — Document number: JOB-ca537ff4-9f0b-4771-8f81-24353d97892c-Q1; Valid until: 2026-12-26; Quote status: Issued; Accepted on: Not accepted yet\nActive Design Project 01 · PRJ-ACTIVE-001 — Document number: PRJ-ACTIVE-001-Q1; Valid until: 2027-12-31; Quote status: Issued; Accepted on: Not accepted yet"
     },
     {
       "round": 3,
@@ -1435,7 +1435,7 @@
       "result": "ACCEPTED",
       "verdict": "grounded and correct",
       "wrongRecordValue": false,
-      "answerText": "紀錄顯示：\n\n紀錄\n紀錄筆數：2\nSynthetic retail job / 合成零售專案 · JOB-ca537ff4-9f0b-4771-8f81-24353d97892c — 報價單號：JOB-ca537ff4-9f0b-4771-8f81-24353d97892c-Q1；有效期限：2026-12-26；報價狀態：已核發；接受日期：尚未接受\n進行中設計專案01 · PRJ-ACTIVE-001 — 報價單號：PRJ-ACTIVE-001-Q1；有效期限：2027-12-31；報價狀態：已核發；接受日期：尚未接受"
+      "answerText": "紀錄顯示：\n\n等待客戶回覆的報價\n紀錄筆數：2\nSynthetic retail job / 合成零售專案 · JOB-ca537ff4-9f0b-4771-8f81-24353d97892c — 報價單號：JOB-ca537ff4-9f0b-4771-8f81-24353d97892c-Q1；有效期限：2026-12-26；報價狀態：已核發；接受日期：尚未接受\n進行中設計專案01 · PRJ-ACTIVE-001 — 報價單號：PRJ-ACTIVE-001-Q1；有效期限：2027-12-31；報價狀態：已核發；接受日期：尚未接受"
     },
     {
       "round": 3,

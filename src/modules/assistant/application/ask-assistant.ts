@@ -1,5 +1,11 @@
+import { maySuggestFollowUp } from "../domain/follow-ups";
 import { AnswerFactRegistry, parseFactAnswer } from "../domain/fact-answers";
-import { matchesSubject, toolCallKey, type AssistantProjectIdentity } from "../domain/subjects";
+import {
+  hasUnresolvedJobSelector,
+  matchesSubject,
+  toolCallKey,
+  type AssistantProjectIdentity,
+} from "../domain/subjects";
 import { assistantToolStatus } from "@/modules/localization/assistant";
 import { AssistantModelError } from "../domain/model-error";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
@@ -185,6 +191,8 @@ export class AskAssistant {
       if (resolved.kind !== "AVAILABLE") return await refusal("UNAVAILABLE");
       knownProjects = resolved.projects;
       subjects = resolved.named.map((p) => p.projectKey);
+      if (hasUnresolvedJobSelector(input.question, knownProjects))
+        return await refusal("UNAVAILABLE");
       const selectedProject = !subjects.length && input.projectKey ? input.projectKey : undefined;
       for (const key of [...subjects, ...(selectedProject ? [selectedProject] : [])]) {
         const policy = await bounded(this.repository.jobPolicy(c, key));
@@ -302,7 +310,10 @@ export class AskAssistant {
             return await fallback("UNGROUNDED", "REDACTION");
           answer = {
             ...answer,
-            followUps: answer.followUps.filter((text) => redactText(text, preserved) === text),
+            followUps: answer.followUps.filter(
+              (text) =>
+                redactText(text, preserved) === text && maySuggestFollowUp(text, c.capabilities),
+            ),
           };
           await this.repository.finishTurn(c, "ANSWERED");
           return {

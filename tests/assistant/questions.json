@@ -1338,5 +1338,69 @@
       "subjectProjectKey": "PRJ-NANJING-023",
       "forbidden": ["PRJ-ACTIVE-001"]
     }
+  },
+  {
+    "id": "en-inaccessible-named-in-job-bar",
+    "locale": "en",
+    "person": "project-manager",
+    "question": "What is the quote total for Active Design Project 01?",
+    "projectKey": "PRJ-XINYI-026",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [],
+    "expected": {
+      "kind": "DECLINE",
+      "unresolvedSubject": true,
+      "facts": [],
+      "forbidden": ["PRJ-XINYI-026"]
+    }
+  },
+  {
+    "id": "en-unknown-named-in-job-bar",
+    "locale": "en",
+    "person": "owner",
+    "question": "What is the quote total for Moonlight Cafe?",
+    "projectKey": "PRJ-XINYI-026",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [],
+    "expected": {
+      "kind": "DECLINE",
+      "unresolvedSubject": true,
+      "facts": [],
+      "forbidden": ["PRJ-XINYI-026"]
+    }
+  },
+  {
+    "id": "zh-TW-inaccessible-named-in-job-bar",
+    "locale": "zh-TW",
+    "person": "project-manager",
+    "question": "進行中設計專案01的報價總計是多少？",
+    "projectKey": "PRJ-XINYI-026",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [],
+    "expected": {
+      "kind": "DECLINE",
+      "unresolvedSubject": true,
+      "facts": [],
+      "forbidden": ["PRJ-XINYI-026"]
+    }
+  },
+  {
+    "id": "zh-TW-unknown-named-in-job-bar",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "「月光咖啡館」這個專案的報價總計是多少？",
+    "projectKey": "PRJ-XINYI-026",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [],
+    "expected": {
+      "kind": "DECLINE",
+      "unresolvedSubject": true,
+      "facts": [],
+      "forbidden": ["PRJ-XINYI-026"]
+    }
   }
 ]

@@ -1,3 +1,4 @@
+vi.mock("@/lib/server/assistant-turn-timing", () => ({ scheduleAssistantTurnTiming: vi.fn() }));
 import { assistantFactLabels } from "@/modules/localization/assistant";
 import { beforeAll, afterAll, afterEach, describe, it, expect, vi } from "vitest";
 import type * as AssistantServices from "@/lib/server/assistant-services";
@@ -256,7 +257,10 @@ suite("hosted regressions through authorized records and the Home server action"
         (facts) => `目前有 ${facts[assistantFactLabels("zh-TW").count!]} 筆報價等待客戶回覆。`,
         true,
       );
-      expect(turn).toMatchObject({ ai: true, text: "紀錄顯示：\n\n紀錄\n紀錄筆數：0" });
+      expect(turn).toMatchObject({
+        ai: true,
+        text: "紀錄顯示：\n\n等待客戶回覆的報價\n紀錄筆數：0",
+      });
       expect(turn.aiSources).toHaveLength(1);
       expect(fake.requests).toHaveLength(1);
     });

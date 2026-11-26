@@ -52,6 +52,60 @@ function setup(script: ConstructorParameters<typeof FakeAssistantModel>[0] = [ca
   return { model, repo, tools, service: new AskAssistant(model, config, repo, tools) };
 }
 describe("bounded read-only assistant", () => {
+  it.each([
+    "What is the quote total for Active Design Project 01?",
+    "進行中設計專案01的報價總計是多少？",
+    "What is the quote total for Moonlight Cafe?",
+    "「月光咖啡館」這個專案的報價總計是多少？",
+  ])("refuses an unresolved named job before model/page reads: %s", async (question) => {
+    const f = setup();
+    f.tools.resolveSubjects.mockResolvedValue({
+      kind: "AVAILABLE",
+      named: [],
+      projects: [{ projectKey: "J", names: ["Page job"] }],
+    });
+    const out = await f.service.execute(jobContext(), { question, projectKey: "J" });
+    expect(out).toMatchObject({ kind: "ANSWER", refusal: "UNAVAILABLE", sources: [] });
+    expect(f.model.requests).toHaveLength(0);
+    expect(f.tools.execute).not.toHaveBeenCalled();
+    expect(f.repo.jobPolicy).not.toHaveBeenCalled();
+  });
+  it.each(["en", "zh-TW"] as const)(
+    "drops financial follow-ups for a Viewer, retaining the answer in %s",
+    async (locale) => {
+      const f = setup([
+        call,
+        {
+          usage,
+          result: {
+            kind: "ANSWER",
+            answer: {
+              parts: [{ say: "RECORDS_SHOW" }, { show: "s1.count" }],
+              followUps:
+                locale === "en"
+                  ? [
+                      "What is the quote status?",
+                      "What is the total amount?",
+                      "What stage is this job in?",
+                    ]
+                  : ["報價狀態如何？", "報價總額是多少？", "這個專案的階段是什麼？"],
+            },
+          },
+        },
+      ]);
+      const out = await f.service.execute(
+        jobContext({ locale, capabilities: new Set(["project:read"]) }),
+        { question: "Which jobs?" },
+      );
+      expect(out).toMatchObject({
+        kind: "ANSWER",
+        answer: {
+          followUps: [locale === "en" ? "What stage is this job in?" : "這個專案的階段是什麼？"],
+        },
+      });
+    },
+  );
+
   it.each([0, 1, 2])(
     "carries a discarded answer's subject only for one resolved named job (%i named)",
     async (count) => {
@@ -337,6 +391,11 @@ describe("bounded read-only assistant", () => {
     async (reference) => {
       const f = setup([call, answer("s1.reference")]);
       f.repo.readableReferences.mockResolvedValue([reference]);
+      f.tools.resolveSubjects.mockResolvedValue({
+        kind: "AVAILABLE",
+        named: [{ projectKey: reference, names: [] }],
+        projects: [{ projectKey: reference, names: [] }],
+      });
       f.tools.execute.mockResolvedValue({
         status: "OK",
         sources: [

@@ -44,12 +44,12 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
       (locale) =>
         questions.filter((q) => !q.required && !q.reported && q.locale === locale).length === 20,
     ) &&
-    new Set(questions.map((q) => q.id)).size === 68 &&
+    new Set(questions.map((q) => q.id)).size === 72 &&
     questions.filter((q) => q.reported).length === 2 &&
     questions.filter((q) => q.required && !q.qualityRegression && !q.factSelectionRegression)
       .length === 12 &&
     questions.filter((q) => q.required && q.qualityRegression).length === 2 &&
-    questions.filter((q) => q.required && q.factSelectionRegression).length === 12;
+    questions.filter((q) => q.required && q.factSelectionRegression).length === 16;
   const sortedCalls = questions.map((q) => q.calls).sort((a, b) => a - b);
   const withinThree = sortedCalls.filter((n) => n <= 3).length;
   const callTargets = {
@@ -93,7 +93,7 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
       passed: questions.filter(
         (q) => q.factSelectionRegression && q.verdict !== "wrong" && !q.wrongRecordValue,
       ).length,
-      total: 12,
+      total: 16,
     },
     reportedCases: {
       passed: questions.filter((q) => q.reported && q.verdict !== "wrong" && !q.wrongRecordValue)
@@ -164,7 +164,7 @@ export function stabilitySummary<T extends ScoredRow>(
     passed:
       rounds.length === evaluationRounds &&
       rounds.every((r) => r.passed) &&
-      perQuestion.length === 68 &&
+      perQuestion.length === 72 &&
       ids.every((id) => rounds.every((r) => r.questions.some((q) => q.id === id))),
     rounds,
     perQuestion,

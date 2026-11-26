@@ -1,3 +1,4 @@
+vi.mock("@/lib/server/assistant-turn-timing", () => ({ scheduleAssistantTurnTiming: vi.fn() }));
 import { seededFirmLists } from "@/fixtures/firm-lists";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => ({

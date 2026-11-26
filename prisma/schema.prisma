@@ -125,6 +125,7 @@ model Organization {
   areaDisplayUnit String @default("m2")
   assistantEnabled Boolean @default(false)
   assistantUsage AssistantUsage[]
+  assistantTurnTimings AssistantTurnTiming[]
   id                 String             @id
   businessKey        String             @unique
   nameEn             String
@@ -292,6 +293,7 @@ model Person {
 
 model Membership {
   assistantUsage AssistantUsage[]
+  assistantTurnTimings AssistantTurnTiming[]
   id             String         @id
   organizationId String
   personId       String
@@ -1278,4 +1280,19 @@ model AssistantUsage {
   @@unique([id, organizationId])
   @@index([organizationId, createdAt])
   @@index([organizationId, requestId])
+}
+
+model AssistantTurnTiming {
+  id String @id
+  organizationId String
+  membershipId String
+  requestId String
+  startedAt DateTime
+  completedAt DateTime
+  serverDurationMs Int
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Restrict)
+  membership Membership @relation(fields: [membershipId, organizationId], references: [id, organizationId], onDelete: Restrict)
+  @@unique([id, organizationId])
+  @@unique([organizationId, requestId])
+  @@index([organizationId, completedAt])
 }

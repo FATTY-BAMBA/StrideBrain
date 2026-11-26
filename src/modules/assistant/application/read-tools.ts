@@ -500,7 +500,13 @@ export class AssistantReadTools {
         sources,
         source(
           `count:${sources.map((s) => s.sourceId).join(":")}`,
-          c.locale === "zh-TW" ? "紀錄" : "Records",
+          call.name === "list_awaiting_client"
+            ? c.locale === "zh-TW"
+              ? "等待客戶回覆的報價"
+              : "Quotes awaiting the client"
+            : c.locale === "zh-TW"
+              ? "已結案專案"
+              : "Closed jobs",
           `/${c.locale}`,
           { count: sources.length },
           sources.flatMap((s) => s.projectKeys),

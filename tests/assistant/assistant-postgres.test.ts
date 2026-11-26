@@ -22,6 +22,51 @@ afterAll(async () => {
   await db?.close();
 });
 suite("assistant PostgreSQL access, controls and metadata", () => {
+  it("records zero-model turns idempotently, isolates timing and keeps call usage unchanged", async () => {
+    const c = await db.actor(),
+      viewer = await db.actor("membership_horizon_viewer"),
+      foreign = await db.actor("membership_northern_owner");
+    const repo = createAssistantServices().repository;
+    const now = new Date(),
+      start = new Date(now.getTime() - 9300),
+      month = new Date(now.getTime() - 31 * 86400000);
+    const before = await repo.settings(c, month, now);
+    await repo.recordTurnTiming(c, start, now);
+    await repo.recordTurnTiming(c, start, now);
+    await repo.recordTurnTiming(
+      { ...viewer, requestId: randomUUID() },
+      new Date(now.getTime() - 1000),
+      now,
+    );
+    await repo.recordTurnTiming(
+      { ...c, requestId: randomUUID() },
+      new Date(now.getTime() - 9 * 86400000),
+      new Date(now.getTime() - 9 * 86400000 + 20),
+    );
+    await repo.recordTurnTiming(
+      { ...c, organizationId: foreign.organizationId, requestId: randomUUID() },
+      start,
+      now,
+    );
+    await repo.recordTurnTiming(
+      { ...c, capabilities: new Set(), requestId: randomUUID() },
+      start,
+      now,
+    );
+    await repo.recordTurnTiming({ ...c, requestId: randomUUID() }, now, start);
+    const after = await repo.settings(c, month, now);
+    expect(after?.calls).toBe(before?.calls);
+    expect(after?.turnTimings).toMatchObject({ count: 2, maximumMs: 9300 });
+    expect(await repo.settings(viewer, month, now)).toBeNull();
+    expect((await repo.settings(foreign, month, now))?.turnTimings?.count).toBe(0);
+    const rows = await getPrismaClient().assistantTurnTiming.findMany();
+    expect(rows).toHaveLength(3);
+    expect(Object.keys(rows[0]!)).toEqual(
+      expect.arrayContaining(["organizationId", "requestId", "serverDurationMs"]),
+    );
+    expect(rows[0]).not.toHaveProperty("question");
+    expect(rows[0]).not.toHaveProperty("answer");
+  });
   it("defaults new organizations off and enables only the fixture sample", async () => {
     const org = await getPrismaClient().organization.create({
       data: {

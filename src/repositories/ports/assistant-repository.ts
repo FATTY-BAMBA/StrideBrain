@@ -11,6 +11,12 @@ export type AssistantSettings = Readonly<{
   calls: number;
   estimatedUsd: string;
   unmeteredCalls: number;
+  turnTimings?: Readonly<{
+    count: number;
+    latestMs: number | null;
+    maximumMs: number | null;
+    recent: readonly Readonly<{ requestId: string; startedAt: Date; serverDurationMs: number }>[];
+  }>;
   failures: readonly Readonly<{ code: string; httpStatus: number | null; count: number }>[];
 }>;
 export type AssistantControlInput = Readonly<{
@@ -55,4 +61,8 @@ export interface AssistantRepositoryPort {
     outcome: "ANSWERED" | `FALLBACK_${FallbackReason}`,
     failure?: Readonly<{ callId: string; code: string; httpStatus?: number }>,
   ): Promise<void>;
+}
+
+export interface AssistantTurnTimingPort {
+  recordTurnTiming(context: RuntimeContext, startedAt: Date, completedAt: Date): Promise<void>;
 }

@@ -40,5 +40,11 @@
     7180179624,
     7180301103,
     7180437328
-  ]
+  ],
+  "localVerification": {
+    "command": "npm run check",
+    "status": "PASSED",
+    "tests": 1919,
+    "files": 196
+  }
 }

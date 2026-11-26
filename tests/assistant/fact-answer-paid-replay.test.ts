@@ -44,8 +44,17 @@ it.each([1, 2, 3])(
         }
         const ledger = row.sourceLedger.map((s) => {
           const key = (s.subjectProjectKeys ?? s.projectKeys)[0];
-          const name = names.get(`${row.locale}:${key}`);
+          const name =
+            typeof s.facts.name === "string" ? s.facts.name : names.get(`${row.locale}:${key}`);
           let label = s.label;
+          if (["Records", "紀錄"].includes(label) && typeof s.facts.count === "number") {
+            const q = (questions as EvaluationQuestion[]).find((q) => q.id === row.id);
+            if (q?.oracleTools.some((t) => t.name === "list_awaiting_client"))
+              label = row.locale === "zh-TW" ? "等待客戶回覆的報價" : "Quotes awaiting the client";
+            if (q?.oracleTools.some((t) => t.name === "get_closed_job_lessons"))
+              label = row.locale === "zh-TW" ? "已結案專案" : "Closed jobs";
+          }
+
           if (name && (label === name || label.startsWith(key!)))
             label = `${name} · ${label === name ? key : label}`;
           if (typeof s.facts.lastPrice === "string")

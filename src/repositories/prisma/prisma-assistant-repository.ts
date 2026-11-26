@@ -4,6 +4,7 @@ import { AuthorizationService } from "@/modules/authorization/authorization-serv
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import type {
   AssistantRepositoryPort,
+  AssistantTurnTimingPort,
   AssistantControlInput,
   AssistantControlOutcome,
 } from "@/repositories/ports/assistant-repository";
@@ -39,7 +40,7 @@ async function job(tx: Prisma.TransactionClient, c: RuntimeContext, key: string)
   });
   return row && new AuthorizationService().canReadProject(c, row.id).allowed ? row : null;
 }
-export class PrismaAssistantRepository implements AssistantRepositoryPort {
+export class PrismaAssistantRepository implements AssistantRepositoryPort, AssistantTurnTimingPort {
   constructor(private readonly db: PrismaClient) {}
   async readableReferences(c: RuntimeContext, candidates: readonly string[]) {
     if (!c.capabilities.has("project:read") || !(await member(this.db, c)) || !candidates.length)
@@ -94,7 +95,7 @@ export class PrismaAssistantRepository implements AssistantRepositoryPort {
   }
   async settings(c: RuntimeContext, monthStart: Date, now = new Date()) {
     if (!c.capabilities.has("settings:manage") || !(await member(this.db, c))) return null;
-    const [org, usage, unmeteredCalls, failures] = await Promise.all([
+    const [org, usage, unmeteredCalls, failures, timings, recentTimings] = await Promise.all([
       this.db.organization.findUnique({
         where: { id: c.organizationId },
         select: { assistantEnabled: true },
@@ -121,6 +122,23 @@ export class PrismaAssistantRepository implements AssistantRepositoryPort {
         _count: true,
         orderBy: [{ failureCode: "asc" }, { providerHttpStatus: "asc" }],
       }),
+      this.db.assistantTurnTiming.aggregate({
+        where: {
+          organizationId: c.organizationId,
+          completedAt: { gte: new Date(now.getTime() - 7 * 86400000), lte: now },
+        },
+        _count: true,
+        _max: { serverDurationMs: true },
+      }),
+      this.db.assistantTurnTiming.findMany({
+        where: {
+          organizationId: c.organizationId,
+          completedAt: { gte: new Date(now.getTime() - 7 * 86400000), lte: now },
+        },
+        orderBy: { completedAt: "desc" },
+        take: 20,
+        select: { requestId: true, startedAt: true, serverDurationMs: true },
+      }),
     ]);
     return org
       ? {
@@ -128,6 +146,12 @@ export class PrismaAssistantRepository implements AssistantRepositoryPort {
           calls: usage._count,
           estimatedUsd: usage._sum.estimatedUsd?.toFixed(9) ?? "0.000000000",
           unmeteredCalls,
+          turnTimings: {
+            count: timings._count,
+            latestMs: recentTimings[0]?.serverDurationMs ?? null,
+            maximumMs: timings._max.serverDurationMs,
+            recent: recentTimings,
+          },
           failures: failures.map((row) => ({
             code: row.failureCode!,
             httpStatus: row.providerHttpStatus,
@@ -135,6 +159,32 @@ export class PrismaAssistantRepository implements AssistantRepositoryPort {
           })),
         }
       : null;
+  }
+  async recordTurnTiming(c: RuntimeContext, startedAt: Date, completedAt: Date) {
+    const serverDurationMs = completedAt.getTime() - startedAt.getTime();
+    if (
+      !c.capabilities.has("project:read") ||
+      !Number.isSafeInteger(serverDurationMs) ||
+      serverDurationMs < 0 ||
+      serverDurationMs > 3600000 ||
+      !(await member(this.db, c))
+    )
+      return;
+    await this.db.assistantTurnTiming.upsert({
+      where: {
+        organizationId_requestId: { organizationId: c.organizationId, requestId: c.requestId },
+      },
+      create: {
+        id: randomUUID(),
+        organizationId: c.organizationId,
+        membershipId: c.membershipId,
+        requestId: c.requestId,
+        startedAt,
+        completedAt,
+        serverDurationMs,
+      },
+      update: {},
+    });
   }
   async setControl(
     c: RuntimeContext,

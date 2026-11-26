@@ -1,3 +1,4 @@
+vi.mock("@/app/[locale]/home-chat-actions", () => ({ askHomeAction: vi.fn() }));
 import { seededFirmLists } from "@/fixtures/firm-lists";
 // @vitest-environment jsdom
 vi.mock("@/lib/server/job-draft-services", () => ({
