@@ -272,7 +272,7 @@ suite("hosted regressions through authorized records and the Home server action"
       action: { href: "/zh-TW/projects/PRJ-ACTIVE-001/compare" },
     });
     expect(turn.text).toContain("沒有目前可用的已儲存比較");
-    expect(fake.requests).toHaveLength(1);
+    expect(fake.requests).toHaveLength(2);
   });
   it.each(["en", "zh-TW"] as const)(
     "exposes only the Quote-tab millwork display rates in %s",

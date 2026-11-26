@@ -250,6 +250,7 @@ export class AnswerFactRegistry {
       const count = this.sources.get(id)?.countSourceId;
       if (count) ids.add(count);
     };
+    const chosen: (Fact | List)[] = [];
     for (const part of parsed.parts.slice(1)) {
       if (!("show" in part)) return { kind: "REJECTED", reason: "INVALID_OUTPUT" };
       const fact = this.facts.get(part.show),
@@ -257,43 +258,76 @@ export class AnswerFactRegistry {
       if (!fact && !list) return { kind: "REJECTED", reason: "UNKNOWN_REFERENCE" };
       if (shown.some((f) => f.ref === part.show))
         return { kind: "REJECTED", reason: "INVALID_OUTPUT" };
-      if (fact) {
-        if (++facts > 12) return { kind: "REJECTED", reason: "FACT_LIMIT" };
-        add(fact.sourceId, `${fact.label}${separator}${inline(fact.value)}`);
-        shown.push({ ref: fact.ref, sourceId: fact.sourceId, path: fact.path, kind: "fact" });
-      } else if (list) {
-        if (++lists > 1) return { kind: "REJECTED", reason: "LIST_LIMIT" };
+      if (fact && ++facts > 12) return { kind: "REJECTED", reason: "FACT_LIMIT" };
+      if (list && ++lists > 1) return { kind: "REJECTED", reason: "LIST_LIMIT" };
+      const value = (fact ?? list)!;
+      chosen.push(value);
+      shown.push({
+        ref: value.ref,
+        sourceId: value.sourceId,
+        path: value.path,
+        kind: fact ? "fact" : "list",
+      });
+    }
+    const headingOnly = (fact: Fact) =>
+      ["name", "reference", "description", "unit"].includes(fact.path) &&
+      this.sources.get(fact.sourceId)!.label.includes(fact.value);
+    const fieldsFor = (id: string) => [...this.facts.values()].filter((f) => f.sourceId === id);
+    // Lists own the displayed rows regardless of where the model placed the list part.
+    // Rows beyond the ten-row cap are not marked covered.
+    const covered = new Set<string>();
+    for (const item of chosen)
+      if ("rows" in item) {
+        for (const row of item.rows.slice(0, 10))
+          for (const f of fieldsFor(row.sourceId)) covered.add(f.ref);
+        for (const f of fieldsFor(item.sourceId))
+          if (["count", "matchingCount", "appliedStageGroup"].includes(f.path)) covered.add(f.ref);
+      }
+    const printed = new Set<string>();
+    for (const item of chosen) {
+      if (!("rows" in item)) {
+        if (covered.has(item.ref)) continue;
+        ids.add(item.sourceId);
+        const count = this.sources.get(item.sourceId)?.countSourceId;
+        if (count) ids.add(count);
+        if (!groups.has(item.sourceId)) groups.set(item.sourceId, []);
+        // One price-list reading includes its provenance, even if only price was selected.
+        const paths = priceReadingPaths(item.path);
+        for (const fact of fieldsFor(item.sourceId).filter((f) => paths.includes(f.path))) {
+          if (printed.has(fact.ref) || covered.has(fact.ref)) continue;
+          printed.add(fact.ref);
+          if (!headingOnly(fact))
+            add(fact.sourceId, `${fact.label}${separator}${inline(fact.value)}`);
+        }
+      } else {
         const countLabel = assistantFactLabels(this.locale).count;
-        add(list.sourceId, `${countLabel}${separator}${list.total}`);
-        const filter = this.sources.get(list.sourceId)?.facts.appliedStageGroup;
+        add(item.sourceId, `${countLabel}${separator}${item.total}`);
+        const filter = this.sources.get(item.sourceId)?.facts.appliedStageGroup;
         if (typeof filter === "string")
           add(
-            list.sourceId,
+            item.sourceId,
             `${assistantFactLabels(this.locale).appliedStageGroup}${separator}${filter}`,
           );
-        for (const row of list.rows.slice(0, 10)) {
+        for (const row of item.rows.slice(0, 10)) {
           ids.add(row.sourceId);
-          const fields = [...this.facts.values()].filter(
-            (f) => f.sourceId === row.sourceId && f.path !== "name",
-          );
+          const fields = fieldsFor(row.sourceId).filter((f) => !headingOnly(f));
           add(
-            list.sourceId,
+            item.sourceId,
             `${inline(row.label)} — ${fields.map((f) => `${f.label}${separator}${inline(f.value)}`).join(this.locale === "zh-TW" ? "；" : "; ")}`,
           );
         }
-        const remaining = list.total - Math.min(list.rows.length, 10);
+        const remaining = item.total - Math.min(item.rows.length, 10);
         if (remaining > 0)
           add(
-            list.sourceId,
+            item.sourceId,
             this.locale === "zh-TW" ? `另有 ${remaining} 筆紀錄。` : `${remaining} more records.`,
           );
-        shown.push({ ref: list.ref, sourceId: list.sourceId, path: list.path, kind: "list" });
       }
     }
     const identities = sourceIdentities([...this.sources.values()]);
     const numbers = new Set([...this.facts.values()].flatMap((f) => numericTokens(f.value)));
-    const blocks = [...groups].map(
-      ([id, lines]) => `${inline(this.sources.get(id)!.label)}\n${lines.join("\n")}`,
+    const blocks = [...groups].map(([id, lines]) =>
+      [inline(this.sources.get(id)!.label), ...lines].join("\n"),
     );
     return {
       kind: "ACCEPTED",
@@ -310,4 +344,13 @@ export class AnswerFactRegistry {
       selection: { phraseId, shown },
     };
   }
+}
+
+/** Price and its recorded context form one page reading; model selection cannot split it. */
+export function priceReadingPaths(path: string): readonly string[] {
+  return path === "lastPrice"
+    ? ["lastPrice", "lastQuoted", "timesQuoted", "documentNumber"]
+    : path === "clientLastPrice"
+      ? ["clientLastPrice", "clientLastQuoted", "clientDocumentNumber"]
+      : [path];
 }

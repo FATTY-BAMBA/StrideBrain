@@ -76,6 +76,7 @@ async function evaluateQuestion(
           if (!found) throw Error(`FAKE_MISSING_REF:${question.id}:${expected.path}`);
           return found.ref;
         });
+  refs = [...new Set(refs)];
   if (question.expected.match === "ANY_SAVED_FINDING") refs = refs.slice(0, 1);
   if (question.expected.match === "NONEMPTY_LIST")
     refs = [registry.modelSources(oracle).find((s) => s.list)!.list!.ref];
@@ -155,6 +156,7 @@ async function evaluateQuestion(
     id: question.id,
     locale: question.locale,
     required: question.required ?? false,
+    reported: question.reported ?? false,
     qualityRegression: question.qualityRegression ?? false,
     factSelectionRegression: question.factSelectionRegression ?? false,
     namedJobRefusal:

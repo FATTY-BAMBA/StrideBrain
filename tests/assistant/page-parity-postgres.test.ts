@@ -19,8 +19,9 @@ import { stageGroups, inStageGroup } from "@/modules/projects/domain/stage-group
 import { assistantQuoteStatus, assistantFactCopy } from "@/modules/localization/assistant";
 import { formatMoney } from "@/modules/finance/format-money";
 import { formatQuoteRate } from "@/modules/quote-draft/presentation";
-import { closedLessonText } from "@/modules/home-desk/presentation";
+import { closedDifferenceText, closedLessonText } from "@/modules/home-desk/presentation";
 import { claimFindingText } from "@/modules/economics/presentation/claim-findings";
+import { AnswerFactRegistry } from "@/modules/assistant/domain/fact-answers";
 import { modelFacts } from "@/modules/assistant/domain/redaction";
 import { prepareEvaluation } from "./evaluation-fixture";
 const suite = process.env.DATABASE_URL ? describe : describe.skip;
@@ -158,12 +159,40 @@ suite("each assistant tool mirrors its page's authorized read", () => {
             .filter((r) => r.lesson && r.financialState === "AVAILABLE")
             .map((r) => ({
               name: r.project.name,
+              reference: r.project.businessKey,
+              ...(r.costDifference
+                ? {
+                    overallDifference: closedDifferenceText(
+                      r.costDifference,
+                      r.lesson!.currency,
+                      c.locale,
+                    ),
+                  }
+                : {}),
               category: categoryLabel(c.locale, r.lesson!.categoryId, c.firmLists!.workCategories),
               costComparison: closedLessonText(r.lesson!, c.locale, c.firmLists!.workCategories),
               quotedPrice: formatMoney(r.lesson!.quoteBeforeTax, r.lesson!.currency),
               reconciledActualCost: formatMoney(r.lesson!.actualCost, r.lesson!.currency),
             })),
         );
+        const registry = new AnswerFactRegistry(c.locale);
+        registry.register(rows);
+        for (const row of rows) {
+          const fact = registry
+            .modelSources([row])[0]!
+            .facts.find((f) => f.ref.endsWith(".overallDifference"));
+          if (!row.facts.overallDifference) continue;
+          expect(fact?.value).toBe(row.facts.overallDifference);
+          expect(
+            registry.render({
+              parts: [{ say: "RECORDS_SHOW" }, { show: fact!.ref }],
+              followUps: [],
+            }),
+          ).toMatchObject({
+            kind: "ACCEPTED",
+            answer: { text: expect.stringContaining(row.facts.overallDifference as string) },
+          });
+        }
       }
     } else if (name === "get_saved_comparison") {
       const page = await createComparisonServices().getHomeComparison.execute(c, key);
@@ -219,4 +248,40 @@ suite("each assistant tool mirrors its page's authorized read", () => {
         /NT\$|totalAmount|unitPrice/,
       );
   });
+  it.each(["en", "zh-TW"] as const)(
+    "uses current job names and references for each single-job source in %s",
+    async (locale) => {
+      const c = { ...(await db.actor()), locale };
+      const jobs = await createProjectListService().execute(c);
+      if (jobs.kind !== "AVAILABLE") throw Error("missing jobs");
+      const key = "PRJ-XINYI-026",
+        job = jobs.projects.find((j) => j.businessKey === key)!;
+      for (const name of [
+        "get_job",
+        "get_quote_status",
+        "get_saved_comparison",
+        "get_past_prices",
+      ] as const) {
+        const result = await createAssistantServices().tools.execute(c, {
+          name,
+          arguments: { projectKey: key },
+        });
+        expect(result.status).toBe("OK");
+        for (const source of result.sources)
+          expect(source.label).toMatch(new RegExp(`^${job.name} · ${key}`));
+      }
+      const missing = await createAssistantServices().tools.execute(c, {
+        name: "get_saved_comparison",
+        arguments: { projectKey: "PRJ-ACTIVE-001" },
+      });
+      expect(["NO_RECORDS", "OUT_OF_DATE"]).toContain(missing.status);
+      const prices = await createAssistantServices().tools.execute(c, {
+        name: "get_item_prices",
+        arguments: { projectKey: "PRJ-ACTIVE-001", description: "天花板", unit: "坪" },
+      });
+      expect(prices.status).toBe("OK");
+      for (const row of prices.sources.filter((s) => s.countSourceId))
+        expect(row.label).toBe(`${row.facts.description}（${row.facts.unit}）`);
+    },
+  );
 });

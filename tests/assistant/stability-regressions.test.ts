@@ -3,16 +3,17 @@ import { runEvaluationRounds, roundSummary, stabilitySummary } from "./evaluatio
 describe("three-round evaluation gates", () => {
   const rows = (en: number, zh: number) =>
     ["en", "zh-TW"].flatMap((locale) =>
-      Array.from({ length: 31 }, (_, i) => ({
+      Array.from({ length: 34 }, (_, i) => ({
         id: `${locale}-${i}`,
         locale: locale as "en" | "zh-TW",
-        required: i >= 20,
+        required: i >= 20 && i < 33,
+        reported: i === 33,
         qualityRegression: i === 24,
         calls: 2,
         latencyMs: 1000,
         estimatedUsd: "0.001",
         wrongRecordValue: false,
-        factSelectionRegression: i >= 27,
+        factSelectionRegression: i >= 27 && i < 33,
         namedJobRefusal: false,
         wrongAmountLabel: false,
         badDisplayFormat: false,
@@ -71,7 +72,7 @@ describe("three-round evaluation gates", () => {
     for (let i = 0; i < 5; i++) sample[i]!.calls = 4;
     expect(roundSummary(1, sample)).toMatchObject({
       passed: true,
-      callTargets: { median: 2, maximum: 4, withinThree: 57, questions: 62 },
+      callTargets: { median: 2, maximum: 4, withinThree: 63, questions: 68 },
     });
     sample[5]!.calls = 4;
     sample[6]!.calls = 4;

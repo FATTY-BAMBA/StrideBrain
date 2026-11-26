@@ -1,4 +1,5 @@
 import { priceListCopy } from "./price-list";
+import { quoteDocumentCopy } from "./quote-document";
 import { quoteDraftCopy } from "./quote-draft";
 import { quoteIssueCopy } from "./quote-issue";
 import { homeDeskCopy } from "./home-desk";
@@ -228,6 +229,7 @@ export const quoteAmountLabelWords = {
 /** Keys stay in server DTOs; only these human labels cross the model boundary. */
 export function assistantFactLabels(locale: Locale): Readonly<Record<string, string>> {
   const price = priceListCopy(locale);
+  const document = quoteDocumentCopy(locale);
   const quote = quoteDraftCopy(locale),
     issue = quoteIssueCopy(locale),
     home = homeDeskCopy(locale);
@@ -240,10 +242,10 @@ export function assistantFactLabels(locale: Locale): Readonly<Record<string, str
     clientLastQuoted:
       locale === "zh-TW" ? "此專案客戶上次報價日期" : "Last quoted for this job's client",
     clientDocumentNumber:
-      locale === "zh-TW" ? "此專案客戶上次報價編號" : "Last quote number for this job's client",
+      locale === "zh-TW" ? "此專案客戶上次報價單號" : "Last quote number for this job's client",
     amountBeforeTax: quote.beforeTax,
-    taxAmount: locale === "zh-TW" ? "營業稅" : "Tax",
-    totalAmount: quote.total,
+    taxAmount: document.tax,
+    totalAmount: document.total,
     validUntil: issue.validUntil,
     acceptedOn: issue.acceptedOn,
     acceptance: locale === "zh-TW" ? "接受狀態" : "Acceptance",
@@ -275,6 +277,7 @@ export function assistantFactLabels(locale: Locale): Readonly<Record<string, str
           displayLow: "過往最低報價單價",
           displayHigh: "過往最高報價單價",
           costComparison: "結案經驗",
+          overallDifference: "整體差異",
           pastJobs: "所選過往專案",
           score: "相似分數",
           findings: "比較結果",
@@ -306,6 +309,7 @@ export function assistantFactLabels(locale: Locale): Readonly<Record<string, str
           displayLow: "Lowest past quoted rate",
           displayHigh: "Highest past quoted rate",
           costComparison: "Closed-job lesson",
+          overallDifference: "Overall difference",
           pastJobs: "Selected past jobs",
           score: "Similarity score",
           findings: "Findings",

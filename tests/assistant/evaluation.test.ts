@@ -59,18 +59,23 @@ function scored(show = "s1.documentNumber", mutate?: (s: string) => string) {
   );
 }
 describe("evaluation by selected references", () => {
-  it("keeps twenty core questions per language and adds all eight required fact-selection cases", () => {
+  it("keeps twenty core questions per language and adds all twelve required fact-selection cases", () => {
     for (const locale of ["en", "zh-TW"]) {
       expect(
-        questions.filter((q) => q.locale === locale && !("required" in q && q.required)),
+        questions.filter(
+          (q) =>
+            q.locale === locale &&
+            !("required" in q && q.required) &&
+            !("reported" in q && q.reported),
+        ),
       ).toHaveLength(20);
       expect(
         questions.filter(
           (q) => q.locale === locale && "factSelectionRegression" in q && q.factSelectionRegression,
         ),
-      ).toHaveLength(4);
+      ).toHaveLength(6);
     }
-    expect(questions).toHaveLength(62);
+    expect(questions).toHaveLength(68);
   });
   it("rejects the recorded wrong identifier even though it is another true fact", () => {
     expect(scored()).toMatchObject({ verdict: "grounded and correct", wrongRecordValue: false });
@@ -192,7 +197,7 @@ describe("evaluation by selected references", () => {
           shown: [{ ref: "s1.lastPrice", sourceId: row.sourceId, path: "lastPrice", kind: "fact" }],
         },
         [row],
-      )[0]!;
+      ).find((f) => f.path === "lastPrice")!;
     expect(matchesExpected(select(withJob), expected)).toBe(true);
     for (const facts of [
       { ...item.facts, description: "Floor" },
@@ -227,7 +232,7 @@ describe("evaluation by selected references", () => {
   });
 });
 (process.env.DATABASE_URL ? it : it.skip)(
-  "replays all 62 evaluation cases through the fake and authorized records in three rounds",
+  "replays all 68 evaluation cases through the fake and authorized records in three rounds",
   async () => {
     const report = await runEvaluationRounds(async () => {
       const db = await assistantDatabase();

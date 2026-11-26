@@ -1208,5 +1208,135 @@
       "facts": [],
       "forbidden": []
     }
+  },
+  {
+    "id": "en-item-no-comparison",
+    "locale": "en",
+    "person": "owner",
+    "question": "What do we usually quote per ping for Ceiling on this job?",
+    "projectKey": "PRJ-ACTIVE-001",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_item_prices",
+        "arguments": {
+          "description": "Ceiling",
+          "unit": "坪",
+          "projectKey": "PRJ-ACTIVE-001"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@lastPrice", "@lastQuoted", "@timesQuoted", "@documentNumber"],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "en-closed-other-bar",
+    "locale": "en",
+    "person": "owner",
+    "question": "What are the actual cost and quote before tax for Nanjing Brand Experience Center?",
+    "projectKey": "PRJ-ACTIVE-001",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_closed_job_lessons",
+        "arguments": {}
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@quotedPrice", "@reconciledActualCost"],
+      "subjectProjectKey": "PRJ-NANJING-023",
+      "forbidden": ["PRJ-ACTIVE-001"]
+    }
+  },
+  {
+    "id": "en-closed-overall-difference",
+    "locale": "en",
+    "person": "owner",
+    "question": "Is the overall actual cost of Nanjing Brand Experience Center above or below its quote, and by how much?",
+    "projectKey": "PRJ-ACTIVE-001",
+    "reported": true,
+    "oracleTools": [
+      {
+        "name": "get_closed_job_lessons",
+        "arguments": {}
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@overallDifference"],
+      "subjectProjectKey": "PRJ-NANJING-023",
+      "forbidden": ["PRJ-ACTIVE-001"]
+    }
+  },
+  {
+    "id": "zh-TW-item-no-comparison",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "這個專案的天花板一坪我們通常報多少？",
+    "projectKey": "PRJ-ACTIVE-001",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_item_prices",
+        "arguments": {
+          "description": "天花板",
+          "unit": "坪",
+          "projectKey": "PRJ-ACTIVE-001"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@lastPrice", "@lastQuoted", "@timesQuoted", "@documentNumber"],
+      "forbidden": []
+    }
+  },
+  {
+    "id": "zh-TW-closed-other-bar",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "南京品牌體驗中心的實際成本和未稅報價是多少？",
+    "projectKey": "PRJ-ACTIVE-001",
+    "required": true,
+    "factSelectionRegression": true,
+    "oracleTools": [
+      {
+        "name": "get_closed_job_lessons",
+        "arguments": {}
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@quotedPrice", "@reconciledActualCost"],
+      "subjectProjectKey": "PRJ-NANJING-023",
+      "forbidden": ["PRJ-ACTIVE-001"]
+    }
+  },
+  {
+    "id": "zh-TW-closed-overall-difference",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "南京品牌體驗中心整體實際成本比報價高還是低？差多少？",
+    "projectKey": "PRJ-ACTIVE-001",
+    "reported": true,
+    "oracleTools": [
+      {
+        "name": "get_closed_job_lessons",
+        "arguments": {}
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@overallDifference"],
+      "subjectProjectKey": "PRJ-NANJING-023",
+      "forbidden": ["PRJ-ACTIVE-001"]
+    }
   }
 ]

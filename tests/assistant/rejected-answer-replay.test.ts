@@ -54,7 +54,9 @@ describe("historical prose is never an answer in v0.3", () => {
       }),
     ).toMatchObject({
       kind: "ACCEPTED",
-      answer: { text: "Here is what the records show:\n\nQuote\nTotal: NT$11,665,710" },
+      answer: {
+        text: "Here is what the records show:\n\nQuote\nTotal including tax: NT$11,665,710",
+      },
     });
   });
 });

@@ -5,7 +5,7 @@ import { areaUnitLabel, pricePerAreaInFirmUnit } from "@/modules/firm-lists/doma
 import { decimalToString, rescale } from "@/modules/finance/fixed-decimal";
 import type { FirmLists } from "@/modules/firm-lists/domain/contracts";
 import { namedProjects, type AssistantProjectIdentity } from "../domain/subjects";
-import { closedLessonText } from "@/modules/home-desk/presentation";
+import { closedLessonText, closedDifferenceText } from "@/modules/home-desk/presentation";
 import { findingsCopy } from "@/modules/localization/economics-findings";
 import { assistantFactCopy, assistantQuoteStatus } from "@/modules/localization/assistant";
 import { createHash } from "node:crypto";
@@ -80,13 +80,13 @@ export function assistantTools(lists: FirmLists): readonly ToolDefinition[] {
     {
       name: "get_saved_comparison",
       description:
-        "Read only the reader's current saved comparison and exact finding sentences. Never runs a new comparison.",
+        "Read only the reader's current saved comparison and exact finding sentences. Never runs a new comparison. Not needed for item unit prices or a closed job’s own actual costs.",
       parameters: jobParameters,
     },
     {
       name: "get_past_prices",
       description:
-        "For one job, return the count, median, low and high of past quoted rates per work pricing category, using the Quote tab's calculation and current saved comparison. Each displayed rate carries its unit. These are quoted prices, never actual costs. Omit categoryId for all pricing categories.",
+        "For one job, return the count, median, low and high of past quoted rates per work pricing category, using the Quote tab's calculation and current saved comparison. Each displayed rate carries its unit. These are quoted prices, never actual costs or individual item unit prices. For item prices use get_item_prices, which does not need a saved comparison. Omit categoryId for all pricing categories.",
       parameters: {
         ...jobParameters,
         properties: {
@@ -107,7 +107,7 @@ export function assistantTools(lists: FirmLists): readonly ToolDefinition[] {
     {
       name: "get_item_prices",
       description:
-        "Find the firm's last issued unit price for an item from the Price list page. Search the item's description from the question (not a work category key); optional exact unit and job reference. At most five items, with last price/date and times quoted. A job adds its client's differing last price, never client identities.",
+        "Find the firm's last issued unit price for an item from the Price list page, even when the page’s job has no current saved comparison. Search the item's description from the question (not a work category key); optional exact unit and job reference. At most five items, with last price/date and times quoted. A job adds its client's differing last price, never client identities.",
       parameters: {
         type: "object",
         properties: {
@@ -122,7 +122,7 @@ export function assistantTools(lists: FirmLists): readonly ToolDefinition[] {
     {
       name: "get_closed_job_lessons",
       description:
-        "Read the same recent closed-job lessons as Home; reconciled actual cost is distinct from quote price.",
+        "Read the same recent closed-job figures, overall actual-versus-quote difference and category lessons as Home. No saved comparison is needed. For the job’s overall difference choose overallDifference, not the category lesson; reconciled actual cost is distinct from quote price.",
       parameters: { type: "object", properties: {}, additionalProperties: false },
     },
   ];
@@ -259,7 +259,7 @@ export class AssistantReadTools {
         };
         const row = source(
           `${projectKey ?? ""}:${item.versionId}:${item.description}:${item.unit}`,
-          item.description,
+          `${item.description}（${item.unit}）`,
           href(item.projectKey, "/quote"),
           facts,
           keys,
@@ -321,7 +321,7 @@ export class AssistantReadTools {
       const sources = page.map((j) =>
         source(
           j.businessKey,
-          j.name,
+          `${j.name} · ${j.businessKey}`,
           href(j.businessKey),
           {
             reference: j.businessKey,
@@ -362,7 +362,7 @@ export class AssistantReadTools {
       return finish([
         source(
           projectKey,
-          j.name.display,
+          `${j.name.display} · ${projectKey}`,
           href(projectKey),
           {
             reference: projectKey,
@@ -384,11 +384,13 @@ export class AssistantReadTools {
       if (!c.capabilities.has("quote:read")) return empty("UNAVAILABLE");
       const q = await this.services.quote.execute(c, projectKey);
       if (q.kind !== "AVAILABLE") return empty("UNAVAILABLE");
+      const job = (await list())?.find((j) => j.businessKey === projectKey);
+      if (!job) return empty("UNAVAILABLE");
       const issued = q.latestIssued ?? q.issued;
       return finish([
         source(
           projectKey,
-          projectKey,
+          `${job.name} · ${projectKey}`,
           href(projectKey, "/quote"),
           {
             reference: projectKey,
@@ -429,7 +431,7 @@ export class AssistantReadTools {
           sources.push(
             source(
               row.key,
-              row.project.name,
+              `${row.project.name} · ${row.project.businessKey}`,
               href(row.project.businessKey, "/quote"),
               {
                 name: row.project.name,
@@ -457,10 +459,20 @@ export class AssistantReadTools {
           sources.push(
             source(
               row.project.businessKey,
-              row.project.name,
+              `${row.project.name} · ${row.project.businessKey}`,
               href(row.project.businessKey),
               {
                 name: row.project.name,
+                reference: row.project.businessKey,
+                ...(row.costDifference
+                  ? {
+                      overallDifference: closedDifferenceText(
+                        row.costDifference,
+                        row.lesson.currency,
+                        c.locale,
+                      ),
+                    }
+                  : {}),
                 category: categoryLabel(c.locale, row.lesson.categoryId, catalog.workCategories),
                 ...row.lesson,
                 costComparison: closedLessonText(row.lesson, c.locale, catalog.workCategories),
@@ -477,6 +489,8 @@ export class AssistantReadTools {
                 "quotedPrice",
                 "reconciledActualCost",
                 "costComparison",
+                "overallDifference",
+                "reference",
               ],
             ),
           );
@@ -502,6 +516,8 @@ export class AssistantReadTools {
           ...empty(saved.kind),
           ...(saved.kind === "OUT_OF_DATE" ? { comparisonProjectKey: projectKey } : {}),
         };
+      const job = (await list())?.find((j) => j.businessKey === projectKey);
+      if (!job) return empty("UNAVAILABLE");
       const selected =
         saved.economics?.selectedProjectKeys ?? saved.comparison.defaultSelectedProjectKeys;
       const keys = [projectKey, ...selected];
@@ -529,7 +545,7 @@ export class AssistantReadTools {
       const sources = [
         source(
           saved.comparison.run.id,
-          projectKey,
+          `${job.name} · ${projectKey}`,
           link,
           {
             pastJobs: saved.comparison.matches
@@ -561,6 +577,8 @@ export class AssistantReadTools {
             ? { comparisonProjectKey: projectKey }
             : {}),
         };
+      const job = (await list())?.find((j) => j.businessKey === projectKey);
+      if (!job) return empty("UNAVAILABLE");
       const keys = [projectKey, ...result.projectKeys];
       const rateUnit = catalog.areaDisplayUnit;
       const rateValue = (value: string | null | undefined) =>
@@ -572,7 +590,7 @@ export class AssistantReadTools {
         .map((b) =>
           source(
             `${result.comparisonRunId}:${b.categoryId}`,
-            `${projectKey} · ${categoryLabel(c.locale, b.categoryId, catalog.workCategories)}`,
+            `${job.name} · ${projectKey} · ${categoryLabel(c.locale, b.categoryId, catalog.workCategories)}`,
             href(projectKey, "/quote"),
             {
               categoryId: b.categoryId,

@@ -565,7 +565,7 @@ describe("bounded read-only assistant", () => {
     expect(f.tools.execute).toHaveBeenCalledTimes(1);
   });
   it.each(["NO_RECORDS", "OUT_OF_DATE"])(
-    "returns a read-only comparison link immediately for %s",
+    "returns a read-only comparison link after the comparison turn ends for %s",
     async (status) => {
       const f = setup([
         {
@@ -575,6 +575,7 @@ describe("bounded read-only assistant", () => {
             calls: [{ name: "get_saved_comparison", arguments: { projectKey: "J" } }],
           },
         },
+        { usage, result: { kind: "ANSWER", answer: { parts: [], followUps: [] } } },
       ]);
       f.tools.execute.mockResolvedValue({ status, sources: [], comparisonProjectKey: "J" });
       const out = await f.service.execute(jobContext({ locale: "zh-TW" }), {
@@ -586,7 +587,166 @@ describe("bounded read-only assistant", () => {
         sources: [],
         action: { label: "Open comparison", href: "/zh-TW/projects/J/compare" },
       });
-      expect(f.model.requests).toHaveLength(1);
+      expect(f.model.requests).toHaveLength(2);
     },
   );
+  it.each(["NO_RECORDS", "OUT_OF_DATE"] as const)(
+    "continues from %s comparison to item prices, including both calls in one reply",
+    async (status) => {
+      for (const batched of [true, false]) {
+        const comparison = { name: "get_past_prices" as const, arguments: { projectKey: "J" } };
+        const item = {
+          name: "get_item_prices" as const,
+          arguments: { description: "Ceiling", projectKey: "J" },
+        };
+        const f = setup([
+          { usage, result: { kind: "TOOLS", calls: batched ? [comparison, item] : [comparison] } },
+          ...(!batched ? [{ usage, result: { kind: "TOOLS" as const, calls: [item] } }] : []),
+          answer("s1.lastPrice"),
+        ]);
+        f.tools.execute
+          .mockResolvedValueOnce({ status, sources: [], comparisonProjectKey: "J" })
+          .mockResolvedValueOnce({
+            status: "OK",
+            sources: [
+              {
+                ...source,
+                facts: {
+                  lastPrice: "NT$3,200",
+                  lastQuoted: "2026-11-25",
+                  timesQuoted: 2,
+                  documentNumber: "J-Q1",
+                },
+              },
+            ],
+          });
+        const out = await f.service.execute(jobContext(), {
+          question: "What do we quote for Ceiling per ping?",
+          projectKey: "J",
+        });
+        expect(out).toMatchObject({
+          kind: "ANSWER",
+          answer: { text: expect.stringContaining("NT$3,200") },
+        });
+        expect(out).not.toHaveProperty("refusal");
+        expect(f.tools.execute).toHaveBeenCalledTimes(2);
+      }
+    },
+  );
+  it("answers a named closed job from another job’s bar after an unavailable comparison", async () => {
+    const named = { projectKey: "K", names: ["Closed job", "結案專案"] };
+    const f = setup([
+      {
+        usage,
+        result: {
+          kind: "TOOLS",
+          calls: [{ name: "get_saved_comparison", arguments: { projectKey: "K" } }],
+        },
+      },
+      {
+        usage,
+        result: { kind: "TOOLS", calls: [{ name: "get_closed_job_lessons", arguments: {} }] },
+      },
+      answer("s1.overallDifference"),
+    ]);
+    f.tools.resolveSubjects.mockResolvedValue({
+      kind: "AVAILABLE",
+      named: [named],
+      projects: [named],
+    });
+    f.tools.execute
+      .mockResolvedValueOnce({ status: "NO_RECORDS", sources: [], comparisonProjectKey: "K" })
+      .mockResolvedValueOnce({
+        status: "OK",
+        sources: [
+          {
+            ...source,
+            projectKeys: ["K"],
+            facts: { overallDifference: "Actual cost is NT$100 below the quote." },
+          },
+        ],
+      });
+    const out = await f.service.execute(jobContext(), {
+      question: "How does Closed job’s actual cost compare to its quote?",
+      projectKey: "J",
+    });
+    expect(out).toMatchObject({
+      kind: "ANSWER",
+      answer: { text: expect.stringContaining("NT$100 below") },
+    });
+    expect(JSON.parse(f.model.requests[0]!.messages[0]!.text)).not.toHaveProperty(
+      "selectedProjectReference",
+    );
+    expect(out).not.toHaveProperty("action");
+  });
+  it("does not attach an unrelated comparison notice when an item question ends without facts", async () => {
+    const f = setup([
+      {
+        usage,
+        result: {
+          kind: "TOOLS",
+          calls: [{ name: "get_saved_comparison", arguments: { projectKey: "J" } }],
+        },
+      },
+      { usage, result: { kind: "ANSWER", answer: { parts: [], followUps: [] } } },
+    ]);
+    f.tools.execute.mockResolvedValue({
+      status: "OUT_OF_DATE",
+      sources: [],
+      comparisonProjectKey: "J",
+    });
+    const out = await f.service.execute(jobContext(), {
+      question: "What do we quote for Ceiling per ping?",
+      projectKey: "J",
+    });
+    expect(out).toMatchObject({ kind: "ANSWER", refusal: "OUT_OF_DATE" });
+    expect(out).not.toHaveProperty("action");
+    expect(out.kind === "ANSWER" && out.answer.text).not.toContain("comparison");
+  });
+  it("does not execute a comparison for the page default when a different closed job is named, and lets its closed-record tool answer", async () => {
+    const named = { projectKey: "K", names: ["Closed job"] };
+    const f = setup([
+      {
+        usage,
+        result: {
+          kind: "TOOLS",
+          calls: [{ name: "get_saved_comparison", arguments: { projectKey: "J" } }],
+        },
+      },
+      {
+        usage,
+        result: { kind: "TOOLS", calls: [{ name: "get_closed_job_lessons", arguments: {} }] },
+      },
+      answer("s1.overallDifference"),
+    ]);
+    f.tools.resolveSubjects.mockResolvedValue({
+      kind: "AVAILABLE",
+      named: [named],
+      projects: [named],
+    });
+    f.tools.execute.mockResolvedValue({
+      status: "OK",
+      sources: [
+        {
+          ...source,
+          projectKeys: ["K"],
+          facts: { overallDifference: "Actual cost is NT$100 below the quote." },
+        },
+      ],
+    });
+    const out = await f.service.execute(jobContext(), {
+      question: "How does Closed job’s actual cost compare to its quote?",
+      projectKey: "J",
+    });
+    expect(f.tools.execute).toHaveBeenCalledTimes(1);
+    expect(f.tools.execute.mock.calls[0]![1]).toEqual({
+      name: "get_closed_job_lessons",
+      arguments: {},
+    });
+    expect(out).toMatchObject({
+      kind: "ANSWER",
+      answer: { text: expect.stringContaining("NT$100 below") },
+    });
+    expect(out).not.toHaveProperty("action");
+  });
 });

@@ -124,3 +124,26 @@ The final evidence-only commit adds this report and updates task status; the imp
 - A live-provider answer was not exercised through a browser; paid application evaluation and local UI checks were separate.
 - Hosted/concurrent database load was not measured. The local suggestion benchmark remains 281.52 ms versus the earlier informal 200 ms target.
 - The non-gating residential job-draft placeholder result above remains a recorded limitation; no job-draft scope was added.
+
+
+## Hosted review 7180179624 — items 1–7
+
+Read [the specified review](https://github.com/FATTY-BAMBA/StrideBrain/pull/80#issuecomment-7180179624) and verified its actual author is repository owner FATTY-BAMBA (101108617). The review reports an owner hosted pass for the earlier build's values, migration, refusals, lists and narrow layout. The revised build still needs hosted retesting, including project manager and Viewer. No hosted action was taken by this fix round.
+
+1. Missing/stale comparisons now return to the bounded tool loop. Item prices and closed-job reads can answer afterward, including when both calls arrive in one model reply. The comparison link appears only at the end of an unanswered comparison question for that subject. An incorrect comparison request for the page default is refused without executing it; the bounded loop can then read the named closed job. Existing answer-subject/exclusion checks, tool deduplication, caps and no comparison writes remain. Tool descriptions distinguish the three reads.
+2. Single-job sources use the authorized current job name followed by its reference, including the sources list. Item headings include unit. Identity fields that repeat the heading are omitted below it.
+3. Both chat surfaces share AnswerText: a section per server-owned record, a bold ink heading, and token-based 16px record gaps / 4px fact gaps. Stored StructuredAnswer is unchanged.
+4. Total and tax labels come from quoteDocumentCopy (including tax / 5%); both Chinese quote identifiers use 單號.
+5. A shown list covers its first ten rows' facts, regardless of selection order. Those repeated facts and the repeated list count are omitted. Rows outside the cap remain independently selectable.
+6. A selected latest item price includes last-quoted date, times quoted and document number. A selected client-specific price includes its own date and document number. Explicit selection of those companions does not print them twice. This is one price-list reading and leaves the model's selection caps intact.
+7. The closed-job source exposes Home's exact closedDifferenceText as overallDifference. Parity tests now check that sentence reaches the model and renders, not merely that the raw DTO contains figures.
+
+**Provisional copy/layout decisions awaiting Product Director before merge:** the review marks items 3, 5 and 6 provisional. The user's instruction authorizes building them; this record retains their pre-merge confirmation status.
+
+Free replay: all 558 raw question rows from paid runs 1–3 replayed against their recorded ledgers. Headings are enriched only from names already present in that same synthetic report. Every run-3 question still passes (186/186), with no wrong recorded value; earlier invalid selections retain their rejection reasons. The replay scores the new displayed layout against the unchanged question expectations and recorded facts; it does not simulate new tool routing. See review-layout-replay-run-1/2/3.json.
+
+Added evaluation cases: item-price questions from a no-comparison job bar and a named closed job's cost question from another job bar, required in both languages; overall closed-job difference, reported in both languages. The original 40 core and 22 required cases remain. The suite now has 68 questions per round: 40 core, 26 required, two reported. All 204 pass through the fake in three rounds. Existing per-language, security, performance, cost and job-draft gates are unchanged.
+
+Local browser component previews use the actual AnswerText renderer, production chat CSS, design tokens, recorded synthetic answers and an explicit two-record layout fixture. English/zh-TW at 1120px/390px pass record-gap, bold heading, horizontal-overflow and job-thread keyboard-focus checks; screenshots are in evidence. They are isolated layout previews, not a live-provider or hosted browser test.
+
+Items 1–7 full check passed: 1,893 tests in 194 files and the production build. CI and paid run 4 are pending the additional owner-authored review items 8–10 (comments 7180301103 and 7180437328, discovered before dispatch). One paid dispatch remains; none beyond four is authorized.

@@ -8,6 +8,7 @@ import { redactSource } from "@/modules/assistant/domain/redaction";
 import {
   AnswerFactRegistry,
   parseFactAnswer,
+  priceReadingPaths,
   type AnswerSelection,
 } from "@/modules/assistant/domain/fact-answers";
 import { record } from "@/modules/assistant/domain/grounding";
@@ -18,12 +19,14 @@ export type EvaluationQuestion = {
   question: string;
   projectKey?: string;
   required?: boolean;
+  reported?: boolean;
   qualityRegression?: boolean;
   factSelectionRegression?: boolean;
   scenario?: "EMPTY_AWAITING";
   oracleTools: ToolCall[];
   expected: {
     kind: "FACTS" | "DECLINE";
+    subjectProjectKey?: string;
     facts: string[];
     forbidden: string[];
     match?: "ANY_SAVED_FINDING" | "EMPTY_LIST" | "NONEMPTY_LIST" | "NOT_FOUND";
@@ -63,13 +66,19 @@ export function expectedFacts(
   q: EvaluationQuestion,
   oracle: readonly AssistantSource[],
 ): ExpectedFact[] {
-  const facts = oracle.flatMap((s) =>
-    leaves(s.facts).map((f) => ({
-      ...f,
-      sourceId: s.sourceId,
-      ...provenance(s, f.path),
-    })),
-  );
+  const facts = oracle
+    .filter(
+      (s) =>
+        !q.expected.subjectProjectKey ||
+        (s.subjectProjectKeys ?? s.projectKeys).includes(q.expected.subjectProjectKey),
+    )
+    .flatMap((s) =>
+      leaves(s.facts).map((f) => ({
+        ...f,
+        sourceId: s.sourceId,
+        ...provenance(s, f.path),
+      })),
+    );
   if (q.expected.match === "ANY_SAVED_FINDING") {
     const all = facts.filter((f) => /^findings\.\d+\.text$/.test(f.path));
     if (!all.length) throw Error(`EVALUATION_ORACLE_MISSING:${q.id}:findings`);
@@ -107,7 +116,7 @@ export function selectedFacts(
                 "appliedStageGroup",
               ]
             : (display[index]?.facts ?? []).map((f) => f.ref.slice(f.ref.indexOf(".") + 1))
-          : [selected.path];
+          : priceReadingPaths(selected.path);
       return leaves(s.facts)
         .filter((f) => paths.some((path) => f.path === path || f.path.startsWith(`${path}.`)))
         .map((f) => ({

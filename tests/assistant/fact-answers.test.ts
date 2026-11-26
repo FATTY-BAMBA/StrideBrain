@@ -265,7 +265,9 @@ describe("server-rendered fact selections", () => {
     const result = await service.execute(jobContext(), { question: "What is the quote total?" });
     expect(result).toMatchObject({
       kind: "ANSWER",
-      answer: { text: "Here is what the records show:\n\nJob J\nTotal: NT$12,500,000" },
+      answer: {
+        text: "Here is what the records show:\n\nJob J\nTotal including tax: NT$12,500,000",
+      },
       selection: { phraseId: "RECORDS_SHOW" },
     });
     expect(tools.canSend).toHaveBeenCalledTimes(3);

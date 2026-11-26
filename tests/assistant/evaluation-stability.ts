@@ -23,25 +23,33 @@ export type ScoredRow = {
   namedJobRefusal?: boolean;
   qualityRegression?: boolean;
   required?: boolean;
+  reported?: boolean;
 };
 export function roundSummary<T extends ScoredRow>(round: number, questions: readonly T[]) {
   const scores = Object.fromEntries(
     ["en", "zh-TW"].map((locale) => [
       locale,
       questions.filter(
-        (q) => !q.required && q.locale === locale && q.verdict !== "wrong" && !q.wrongNumber,
+        (q) =>
+          !q.required &&
+          !q.reported &&
+          q.locale === locale &&
+          q.verdict !== "wrong" &&
+          !q.wrongNumber,
       ).length,
     ]),
   );
   const complete =
     ["en", "zh-TW"].every(
-      (locale) => questions.filter((q) => !q.required && q.locale === locale).length === 20,
+      (locale) =>
+        questions.filter((q) => !q.required && !q.reported && q.locale === locale).length === 20,
     ) &&
-    new Set(questions.map((q) => q.id)).size === 62 &&
+    new Set(questions.map((q) => q.id)).size === 68 &&
+    questions.filter((q) => q.reported).length === 2 &&
     questions.filter((q) => q.required && !q.qualityRegression && !q.factSelectionRegression)
       .length === 12 &&
     questions.filter((q) => q.required && q.qualityRegression).length === 2 &&
-    questions.filter((q) => q.required && q.factSelectionRegression).length === 8;
+    questions.filter((q) => q.required && q.factSelectionRegression).length === 12;
   const sortedCalls = questions.map((q) => q.calls).sort((a, b) => a - b);
   const withinThree = sortedCalls.filter((n) => n <= 3).length;
   const callTargets = {
@@ -85,7 +93,12 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
       passed: questions.filter(
         (q) => q.factSelectionRegression && q.verdict !== "wrong" && !q.wrongRecordValue,
       ).length,
-      total: 8,
+      total: 12,
+    },
+    reportedCases: {
+      passed: questions.filter((q) => q.reported && q.verdict !== "wrong" && !q.wrongRecordValue)
+        .length,
+      total: 2,
     },
     qualityRegressions: {
       passed: questions.filter(
@@ -151,7 +164,7 @@ export function stabilitySummary<T extends ScoredRow>(
     passed:
       rounds.length === evaluationRounds &&
       rounds.every((r) => r.passed) &&
-      perQuestion.length === 62 &&
+      perQuestion.length === 68 &&
       ids.every((id) => rounds.every((r) => r.questions.some((q) => q.id === id))),
     rounds,
     perQuestion,

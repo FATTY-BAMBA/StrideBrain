@@ -3,7 +3,7 @@
   "branch": "build/sb-079-fact-answers",
   "baseCommit": "bb8d8d8d9fbb3365477f5164dbd9d84d7d237fe3",
   "issueUpdatedAt": "2026-11-25T20:22:52Z",
-  "status": "WAITING_FOR_PRODUCT_DIRECTOR_HOSTED_ACCEPTANCE",
+  "status": "REVIEW_FIX_ROUND_1",
   "delivery": "A \u2192 B \u2192 C \u2192 D \u2192 E",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
@@ -35,5 +35,10 @@
     "commit": "20955bc9443ecef9baac24831cb1bc240975045f",
     "status": "PASSED"
   },
-  "paidEvaluationEstimatedUsdTotal": "1.048801900"
+  "paidEvaluationEstimatedUsdTotal": "1.048801900",
+  "reviewComments": [
+    7180179624,
+    7180301103,
+    7180437328
+  ]
 }

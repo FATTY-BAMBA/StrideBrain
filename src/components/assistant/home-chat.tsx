@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { AnswerText } from "./answer-text";
 import { assistantCopy } from "@/modules/localization/assistant";
-import { Fragment, useActionState, useEffect, useId, useRef, useState, useTransition } from "react";
+import { useActionState, useEffect, useId, useRef, useState, useTransition } from "react";
 import { askHomeAction } from "@/app/[locale]/home-chat-actions";
 import { initialHomeChatState } from "@/modules/home-intelligence/chat-contracts";
 import type { Locale } from "@/modules/localization/config";
@@ -133,14 +134,7 @@ export function HomeChat({
             )}
             {turn.aiFallback && <small role="status">{assistantCopy(locale).fallback}</small>}
             {!turn.draftResult?.form ? (
-              <p>
-                {turn.text.split("\n").map((line, index, lines) => (
-                  <Fragment key={index}>
-                    <span className={styles.answerLine}>{line}</span>
-                    {index < lines.length - 1 ? "\n" : ""}
-                  </Fragment>
-                ))}
-              </p>
+              <AnswerText text={turn.text} facts={!!turn.ai && !!turn.aiSources?.length} />
             ) : null}
             {turn.draftResult?.form ? (
               <div className={styles.draftCard}>

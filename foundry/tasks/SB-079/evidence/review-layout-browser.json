@@ -1,0 +1,44 @@
+{
+  "mode": "LOCAL_COMPONENT_PREVIEW_RECORDED_SYNTHETIC_ANSWERS",
+  "checks": [
+    {
+      "locale": "en",
+      "width": 1120,
+      "recordGap": "16px",
+      "headings": "bold ink",
+      "pageOverflow": false,
+      "jobPanelKeyboardFocus": true
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "recordGap": "16px",
+      "headings": "bold ink",
+      "pageOverflow": false,
+      "jobPanelKeyboardFocus": true
+    },
+    {
+      "locale": "zh-TW",
+      "width": 1120,
+      "recordGap": "16px",
+      "headings": "bold ink",
+      "pageOverflow": false,
+      "jobPanelKeyboardFocus": true
+    },
+    {
+      "locale": "zh-TW",
+      "width": 390,
+      "recordGap": "16px",
+      "headings": "bold ink",
+      "pageOverflow": false,
+      "jobPanelKeyboardFocus": true
+    }
+  ],
+  "screens": [
+    "en-answer-layout-1120.png",
+    "en-answer-layout-390.png",
+    "zh-TW-answer-layout-1120.png",
+    "zh-TW-answer-layout-390.png"
+  ],
+  "status": "PASS"
+}

@@ -226,9 +226,25 @@
   gap: 8px;
 }
 
-.answerLine {
-  display: block;
+.answerText {
   white-space: pre-wrap;
+}
+.factAnswer {
+  display: grid;
+  gap: var(--space-16);
+  min-width: 0;
+}
+.answerRecord {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.assistantMessage .answerHeading {
+  color: var(--ink);
+}
+.answerFact {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 .draftCard {
   min-width: 0;

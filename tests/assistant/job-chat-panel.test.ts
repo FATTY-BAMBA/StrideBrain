@@ -23,7 +23,7 @@ beforeEach(() => {
       {
         id: `answer-${state.turns.length + 1}`,
         role: "assistant",
-        text: `Saved finding one.\nSaved finding two.`,
+        text: `Here is what the records show:\n\nJob J\nSaved finding one.\nSaved finding two.`,
         ai: true,
         aiSources: [
           {
@@ -71,11 +71,11 @@ it.each(["en", "zh-TW"] as const)(
     await act(() => composer.requestSubmit());
     expect((boundary.ask.mock.calls.at(-1)![1] as FormData).get("projectKey")).toBe("J");
     const answer = host.querySelector("article p")!;
-    expect(answer.textContent).toBe("Saved finding one.\nSaved finding two.");
-    expect([...answer.querySelectorAll("span")].map((e) => e.textContent)).toEqual([
-      "Saved finding one.",
-      "Saved finding two.",
-    ]);
+    expect(answer.textContent).toBe("Here is what the records show:");
+    expect(host.querySelector("article section strong")?.textContent).toBe("Job J");
+    expect(
+      [...host.querySelectorAll(`article .${styles.answerFact}`)].map((e) => e.textContent),
+    ).toEqual(["Saved finding one.", "Saved finding two."]);
     expect(host.querySelector('a[href$="/compare"]')?.textContent).toBe("Saved comparison");
     for (const tab of projectNavigation.filter((item) => item.segment)) {
       await page(projectSurfaceHref(locale, "J", tab));
@@ -147,6 +147,8 @@ it("leaves Home's thread unbounded and does not automatically scroll it", async 
   await act(() => host.querySelector<HTMLFormElement>("form")!.requestSubmit());
   expect(thread.querySelectorAll("article")).toHaveLength(1);
   expect(thread.scrollTop).toBe(0);
+  expect(thread.querySelector("article section strong")?.textContent).toBe("Job J");
+  expect(thread.querySelectorAll(`.${styles.answerFact}`)).toHaveLength(2);
 });
 
 it.each(["en", "zh-TW"] as const)(
