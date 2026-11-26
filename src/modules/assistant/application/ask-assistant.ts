@@ -228,6 +228,7 @@ export class AskAssistant {
             messages,
             tools: allowTools ? definitions : [],
             maxOutputTokens: this.config.maxOutputTokens,
+            maxAnswerParts: registry.maxAnswerParts(),
             signal: controller.signal,
           }),
         );

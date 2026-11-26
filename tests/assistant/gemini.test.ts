@@ -39,6 +39,20 @@ describe("Gemini boundary (network fake only)", () => {
     expect(String(options?.body)).toContain("parametersJsonSchema");
     expect(JSON.parse(String(options?.body)).toolConfig.functionCallingConfig.mode).toBe("ANY");
   });
+  it.each([13, 14] as const)(
+    "constrains the provider to the turn's valid maximum of %i parts",
+    async (maxAnswerParts) => {
+      const request = vi.fn<typeof fetch>().mockResolvedValue(Response.json(body));
+      await new GeminiAssistantModel("synthetic", "configured-model", request).generate({
+        ...input,
+        maxAnswerParts,
+      });
+      const schema = JSON.parse(
+        String(request.mock.calls[0]![1]!.body),
+      ).tools[0].functionDeclarations.at(-1).parametersJsonSchema;
+      expect(schema.properties.parts.maxItems).toBe(maxAnswerParts);
+    },
+  );
   it("parses final structured answers and refuses writes, malformed or truncated responses", async () => {
     const answer = { parts: [], followUps: [] };
     const payload = {

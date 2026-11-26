@@ -11,12 +11,18 @@ import {
   type ToolCall,
 } from "../domain/contracts";
 
-const answerDeclaration = {
+const answerDeclaration = (maxParts: 13 | 14 = 14) => ({
   name: "submit_answer",
   description:
     "Finish by selecting a phrase id and fact refs from this turn. Use empty parts when records cannot answer.",
-  parametersJsonSchema: answerParameters,
-};
+  parametersJsonSchema: {
+    ...answerParameters,
+    properties: {
+      ...answerParameters.properties,
+      parts: { ...answerParameters.properties.parts, maxItems: maxParts },
+    },
+  },
+});
 async function boundedJson(response: Response): Promise<unknown> {
   if (!response.ok)
     throw new AssistantModelError("UNAVAILABLE", undefined, {
@@ -171,7 +177,7 @@ export class GeminiAssistantModel implements AssistantModelPort, JobDraftModelPo
                     description: t.description,
                     parametersJsonSchema: t.parameters,
                   })),
-                  answerDeclaration,
+                  answerDeclaration(input.maxAnswerParts),
                 ],
               },
             ],

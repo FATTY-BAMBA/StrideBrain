@@ -47,11 +47,11 @@ The paid report retains the old call/quality gates and adds median calls ≤ 2, 
 
 ## Verification status
 
-`npm run check` passed on Node 24: formatting, design tokens, lint, TypeScript, all **1,873 tests in 193 files**, and the production build. The existing prisma.config.ts anonymous-default-export lint warning remains; there are no lint errors. The fake evaluation passes all 62 questions in all three rounds (186/186); this proves the integration contract, not model quality.
+`npm run check` passed on Node 24: formatting, design tokens, lint, TypeScript, all **1,878 tests in 193 files**, and the production build. The existing prisma.config.ts anonymous-default-export lint warning remains; there are no lint errors. The fake evaluation passes all 62 questions in all three rounds (186/186); this proves the integration contract, not model quality.
 
 Local production-build Chrome checks passed for owner Settings and Viewer job chat in English and zh-TW: grouped failure reasons, visible keyboard focus, stage example, 390px page fit and table scrolling. The discovered mobile min-content overflow was fixed by allowing the Settings section to shrink. Screenshots and the browser report are in [evidence](evidence/). This uses a disposable local synthetic database, local HTTPS and AI disabled. Provider answer rendering is tested in application/unit tests and the paid runner; it was not exercised through a live-provider browser session.
 
-Implementation [CI 45701497283](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45701497283) passed on `e52205f`, including real Prisma migrate/seed/verify commands, repeated seed/verify, the full check and the dependency audit. Paid [run 1 — 45702234409](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45702234409) completed on that exact commit; results below. No hosted operations were performed. Hosted acceptance is waiting for the Product Director; PR #80 stays draft. Paid runs used: 1 of 4.
+Implementation [CI 45701497283](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45701497283) passed on `e52205f`, including real Prisma migrate/seed/verify commands, repeated seed/verify, the full check and the dependency audit. Paid [run 1 — 45702234409](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45702234409) completed on that exact commit; results below. No hosted operations were performed. Hosted acceptance is waiting for the Product Director; PR #80 stays draft. Paid runs used: 2 of 4.
 
 ## Paid run 1 — failed, preserved in full
 
@@ -68,3 +68,33 @@ All performance/cost gates passed. Job drafts passed 16/16 per language in all t
 The run failed the new required item-price cases and the existing zh-TW-finding two-of-three gate. Raw failures distinguish real selection failures (bare record alias instead of a ref, 13 individual findings beyond the 12-fact limit, and a lead-in without facts on an empty identity search) from an evaluator error: two correct global item prices were marked wrong because an optional job context changed their subject metadata. Some core quote-status answers also omitted the expected document number; those remain scored wrong.
 
 Follow-up changes preserve all pass marks, question text and expected values: remove non-selectable bare record aliases from model data; clarify complete-ref selection, the requested finding count, the existing 12-fact cap, and quote identity in the general instruction; use the same non-disclosing server refusal immediately for a completed empty named-job search; score global item identity using its description, unit, source quote and contributing jobs even when optional client context is present. Tests still reject another item/unit/value, unknown refs, lone lead-ins and excess facts. No job-draft instruction or oracle changed. The [free replay](evidence/free-replay-run-1.json) passes all 186 recorded rows: 141 accepted answers render unchanged, 13 invalid answers retain their exact rejection reasons, eight model refusals remain refusals, and 24 server early answers have no model answer to replay. This checks rendering/rejection; it does not claim to simulate the new instruction or earlier tool fast path. The full local check passed again: 1,873 tests in 193 files and the production build.
+
+## Paid run 2 — failed only the cross-round finding gate
+
+[Run 45728856574](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45728856574), commit `308342a`; [full synthetic report](evidence/paid-run-2.json).
+
+| Round | en core /20 | zh-TW core /20 | New required /8 | Earlier required /14 | Wrong recorded values | Median calls | p90 ms | Question cost USD | Cost/question USD |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1 | 20 | 19 | 8 | 14 | 0 | 2 | 1,987 | 0.082674300 | 0.001333456452 |
+| 2 | 19 | 19 | 8 | 14 | 0 | 2 | 1,939 | 0.083129400 | 0.001340796774 |
+| 3 | 20 | 19 | 8 | 14 | 0 | 2 | 1,917 | 0.082254900 | 0.001326691935 |
+
+Every per-round gate passed, but zh-TW-finding was discarded in all three rounds for 13 individual facts, failing its unchanged two-of-three gate. en-closed also selected 13 facts once. There were no unknown-reference, empty-search, item-price or wrong-record-value failures. Drafts passed 16/16 per language and all 22 required cases in every round; the separate residential-placeholder report also passed. Total estimated cost including drafts: **US$0.349932600** (questions US$0.248058600; drafts US$0.101874000). Cumulative two-run cost: **US$0.707298800**.
+
+The provider schema previously always offered 14 array slots: one phrase, 12 facts and one list. A turn containing no list can legally use only 13. The next change sets the provider maxItems to 13 for those turns and retains 14 when a list is available. The server still rejects more than 12 facts, and tests still accept the full 12-facts-plus-list answer. This change does not alter instruction text, cases, expected values, pass marks, model or job drafts.
+
+CI [45728840373](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45728840373) attempt 1 passed 1,872 tests and failed the existing 20,000-item price benchmark with an unavailable read. The same price query passed the earlier CI run and all local full checks; a focused local rerun passed in 8.85 seconds. The log does not establish the underlying error. The failed CI job was retried once without changing assertions or timeouts; attempt 2 failed at the same read. This is recorded as a reproducible CI failure, not a passing retry.
+
+Local EXPLAIN ANALYZE then showed a cardinality underestimate causing a nested loop to execute the grouped quote/source aggregate 200 times and the client-price relation 200 times. Materializing the per-item relations computes them once, without changing any predicate, price selection, count or source dependency. Local PostgreSQL 17.12/en_US.utf8 measurements on the same 20,000-line fixture were:
+
+| Query | Before | After computing per-item relations once |
+| --- | ---: | ---: |
+| Suggestion | 1,040.18 ms | 281.52 ms |
+| History | 17.22 ms | 22.59 ms |
+| List | 184.51 ms | 156.48 ms |
+
+The full 100-quotes-per-item counts still pass. These are single warm local measurements, not hosted load results; the suggestion remains above SB-067's informal <200 ms local target. The old CI log did not capture the exception code, so a timeout is not asserted as proven. The benchmark now adds bounded error name/code, mode and duration to its unchanged failure assertion, without response bodies, amounts, relaxed limits or retries. New CI is required after the query change.
+
+Schema-limit verification: `npm run check` passed with 1,877 tests in 193 files and the production build. [Run-2 free replay](evidence/free-replay-run-2.json) plus run 1 cover all 372 saved raw answers; accepted output remains identical and excess facts still reject. No instruction text changed after paid run 2.
+
+Final pre-run-3 check: `npm run check` passed, 1,878 tests in 193 files plus production build. Item-price results now also expose a whole-list ref for their at-most-five authorized rows; the regression verifies each price/unit stays on its own item row. No individual-fact or list cap was increased. The latest query measurement and all page/access parity tests pass. New CI and paid run 3 are pending.

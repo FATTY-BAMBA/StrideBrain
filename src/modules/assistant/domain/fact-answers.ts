@@ -209,6 +209,11 @@ export class AnswerFactRegistry {
     }
   }
 
+  /** Without a registered list, the extra list slot cannot form a valid answer. */
+  maxAnswerParts(): 13 | 14 {
+    return this.lists.size ? 14 : 13;
+  }
+
   /** Only labelled display values and selectable refs cross the model boundary. */
   modelSources(sources: readonly AssistantSource[]) {
     return sources.map((source) => ({

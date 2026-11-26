@@ -87,7 +87,21 @@ suite("20,000 readable issued item benchmark", () => {
       )
     ).rows[0].n;
     expect(count).toBe(20000);
-    const read = new ReadPriceList(new PrismaPriceListRepository(getPrismaClient()));
+    const repository = new PrismaPriceListRepository(getPrismaClient());
+    let failure: { name: string; code: string } | undefined;
+    const read = new ReadPriceList({
+      read: async (context, query) => {
+        try {
+          return await repository.read(context, query);
+        } catch (error) {
+          const e = error as { name?: unknown; code?: unknown };
+          const safe = (v: unknown) =>
+            typeof v === "string" && /^[A-Za-z0-9_]{1,80}$/.test(v) ? v : "UNKNOWN";
+          failure = { name: safe(e.name), code: safe(e.code) };
+          throw error;
+        }
+      },
+    });
     const timings: Record<string, number> = {};
     for (const mode of ["SUGGEST", "HISTORY", "LIST"] as const) {
       const input: PriceQuery = {
@@ -100,7 +114,9 @@ suite("20,000 readable issued item benchmark", () => {
       const start = performance.now();
       const result = await read.execute(owner, input);
       timings[mode] = Math.round((performance.now() - start) * 100) / 100;
-      expect(result.kind).toBe("AVAILABLE");
+      expect(result.kind, JSON.stringify({ mode, milliseconds: timings[mode], failure })).toBe(
+        "AVAILABLE",
+      );
       if (result.kind !== "AVAILABLE") throw Error("BENCHMARK_READ_REQUIRED");
       expect(result.rows).toHaveLength(mode === "SUGGEST" ? 8 : mode === "HISTORY" ? 5 : 50);
       if (mode !== "HISTORY") expect(result.rows.every((r) => r.timesQuoted === 100)).toBe(true);

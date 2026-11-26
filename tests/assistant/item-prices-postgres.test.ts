@@ -1,3 +1,4 @@
+import { AnswerFactRegistry } from "@/modules/assistant/domain/fact-answers";
 import { randomUUID } from "node:crypto";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 vi.mock("server-only", () => ({}));
@@ -74,7 +75,7 @@ suite("item prices use the page read without sending client identities", () => {
       expect(tool).toEqual({ status: "UNAVAILABLE", sources: [] });
       return;
     }
-    expect(tool.sources.map((s) => modelFacts(s.facts))).toEqual(
+    expect(tool.sources.filter((s) => s.countSourceId).map((s) => modelFacts(s.facts))).toEqual(
       page.rows.slice(0, 5).map((row) => ({
         description: row.description,
         unit: row.unit,
@@ -107,14 +108,16 @@ suite("item prices use the page read without sending client identities", () => {
     const c = await db.actor(),
       tools = createAssistantServices().tools;
     expect(
-      (await tools.execute(c, { name: "get_item_prices", arguments: { description: "Ceiling" } }))
-        .sources,
+      (
+        await tools.execute(c, { name: "get_item_prices", arguments: { description: "Ceiling" } })
+      ).sources.filter((s) => s.countSourceId),
     ).toHaveLength(5);
     const otherUnit = await tools.execute(c, {
       name: "get_item_prices",
       arguments: { description: "Ceiling", unit: "m²" },
     });
-    expect(otherUnit.sources).toHaveLength(1);
+    expect(otherUnit.sources.filter((s) => s.countSourceId)).toHaveLength(1);
+    expect(otherUnit.sources.at(-1)?.facts).toEqual({ count: 1 });
     expect(otherUnit.sources[0]?.facts.lastPrice).toBe("NT$1,000");
     for (const description of ["x' OR TRUE --", "%", "_"])
       expect(
@@ -137,6 +140,37 @@ suite("item prices use the page read without sending client identities", () => {
         })
       ).sources,
     ).toEqual([]);
+  });
+  it("registers one whole-list ref for five item rows and keeps every price under its own item", async () => {
+    const c = await db.actor();
+    const result = await createAssistantServices().tools.execute(c, {
+      name: "get_item_prices",
+      arguments: { description: "Ceiling" },
+    });
+    const registry = new AnswerFactRegistry(c.locale);
+    registry.register(result.sources);
+    const list = registry.modelSources(result.sources).find((source) => source.list)!.list!;
+    const rendered = registry.render({
+      parts: [{ say: "RECORDS_SHOW" }, { show: list.ref }],
+      followUps: [],
+    });
+    expect(rendered.kind).toBe("ACCEPTED");
+    if (rendered.kind !== "ACCEPTED") throw Error("LIST_REQUIRED");
+    expect(rendered.selection.shown).toHaveLength(1);
+    expect(rendered.answer.sourceIds).toHaveLength(6);
+    for (const row of result.sources.filter((source) => source.countSourceId)) {
+      const line = rendered.answer.text
+        .split("\n")
+        .find(
+          (line) =>
+            line.startsWith(`${row.label} — `) &&
+            line.includes(String(row.facts.unit)) &&
+            line.includes(String(row.facts.lastPrice)),
+        );
+      expect(line).toContain(row.facts.lastPrice);
+      expect(line).toContain(row.facts.unit);
+    }
+    expect(rendered.answer.text).toContain("5");
   });
   it("never sends an excluded source or a price derived from it", async () => {
     const c = await db.actor(),
@@ -182,6 +216,6 @@ suite("item prices use the page read without sending client identities", () => {
     });
     // The newest source is allowed, but count=2 would still disclose the excluded older quote.
     expect(result.sources.some((s) => s.facts.description === "天花板 Ceiling")).toBe(false);
-    expect(result.sources).toHaveLength(5);
+    expect(result.sources.filter((s) => s.countSourceId)).toHaveLength(5);
   });
 });

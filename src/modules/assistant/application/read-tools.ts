@@ -1,3 +1,4 @@
+import { priceListCopy } from "@/modules/localization/price-list";
 import type { ReadPriceList } from "@/modules/price-list/application/read-price-list";
 import { cityLabel } from "@/modules/projects/domain/taiwan-cities";
 import { areaUnitLabel, pricePerAreaInFirmUnit } from "@/modules/firm-lists/domain/area-unit";
@@ -276,7 +277,18 @@ export class AssistantReadTools {
         if (await this.canSend(c, [row])) rows.push(row);
         if (rows.length === 5) break;
       }
-      return finish(rows);
+      if (!rows.length) return finish(rows);
+      return finishList(
+        rows,
+        source(
+          `items:${rows.map((row) => row.sourceId).join(":")}`,
+          priceListCopy(c.locale).title,
+          `/${c.locale}/quotes/prices`,
+          { count: rows.length },
+          [...new Set(rows.flatMap((row) => row.projectKeys))],
+          ["count"],
+        ),
+      );
     }
     if (call.name === "list_jobs") {
       if (

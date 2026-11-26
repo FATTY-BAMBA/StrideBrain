@@ -56,6 +56,7 @@ export interface AssistantModelPort {
       messages: readonly ModelMessage[];
       tools: readonly ToolDefinition[];
       maxOutputTokens: number;
+      maxAnswerParts?: 13 | 14;
       signal: AbortSignal;
     }>,
   ): Promise<ModelReply>;
