@@ -1,3 +1,14 @@
+import {
+  displayIdentity,
+  recordIdentity,
+  cardLink,
+  listFactPaths,
+  listCountText,
+  emptyListText,
+  type AnswerCard,
+  type AnswerPresentation,
+  type AnswerRow,
+} from "./answer-cards";
 import type { Locale } from "@/modules/localization/config";
 import { assistantFactLabels } from "@/modules/localization/assistant";
 import type { AssistantSource, StructuredAnswer } from "./contracts";
@@ -28,6 +39,13 @@ export type AnswerSelection = Readonly<{
 export const answerParameters = {
   type: "object",
   properties: {
+    namedJobs: {
+      type: "array",
+      maxItems: 4,
+      items: { type: "string", minLength: 1, maxLength: 280 },
+      description:
+        "Every job name or job reference explicitly named in the CURRENT question, copied verbatim. Include inaccessible or unknown jobs. Empty for implicit page context, item descriptions or quote document numbers. Never copy a job just because it is the page default.",
+    },
     parts: {
       type: "array",
       maxItems: 14,
@@ -57,7 +75,7 @@ export const answerParameters = {
     },
     followUps: { type: "array", items: { type: "string", maxLength: 160 }, maxItems: 3 },
   },
-  required: ["parts", "followUps"],
+  required: ["namedJobs", "parts", "followUps"],
   additionalProperties: false,
 } as const;
 
@@ -67,7 +85,11 @@ export function parseFactAnswer(
   const r = record(value);
   if (
     !r ||
-    Object.keys(r).some((k) => !["parts", "followUps"].includes(k)) ||
+    Object.keys(r).some((k) => !["parts", "followUps", "namedJobs"].includes(k)) ||
+    (r.namedJobs !== undefined &&
+      (!Array.isArray(r.namedJobs) ||
+        r.namedJobs.length > 4 ||
+        r.namedJobs.some((v) => typeof v !== "string" || !v.trim() || v.length > 280))) ||
     !Array.isArray(r.parts) ||
     r.parts.length > 14 ||
     !Array.isArray(r.followUps) ||
@@ -237,19 +259,11 @@ export class AnswerFactRegistry {
     if (!parsed.parts.length) return { kind: "REFUSAL" };
     const phraseId = (parsed.parts[0] as { say: keyof typeof answerPhrases }).say;
     const shown: AnswerSelection["shown"][number][] = [];
-    const groups = new Map<string, string[]>();
     const ids = new Set<string>();
     const inline = (value: string) => value.replace(/[\r\n\u2028\u2029]+/g, " ");
     const separator = this.locale === "zh-TW" ? "：" : ": ";
     let facts = 0,
       lists = 0;
-    const add = (id: string, line: string) => {
-      ids.add(id);
-      if (!groups.has(id)) groups.set(id, []);
-      groups.get(id)!.push(line);
-      const count = this.sources.get(id)?.countSourceId;
-      if (count) ids.add(count);
-    };
     const chosen: (Fact | List)[] = [];
     for (const part of parsed.parts.slice(1)) {
       if (!("show" in part)) return { kind: "REJECTED", reason: "INVALID_OUTPUT" };
@@ -269,70 +283,188 @@ export class AnswerFactRegistry {
         kind: fact ? "fact" : "list",
       });
     }
-    const headingOnly = (fact: Fact) =>
-      ["name", "reference", "description", "unit"].includes(fact.path) &&
-      this.sources.get(fact.sourceId)!.label.includes(fact.value);
     const fieldsFor = (id: string) => [...this.facts.values()].filter((f) => f.sourceId === id);
-    // Lists own the displayed rows regardless of where the model placed the list part.
-    // Rows beyond the ten-row cap are not marked covered.
-    const covered = new Set<string>();
+    const headingOnly = (fact: Fact) => {
+      const d = displayIdentity(this.sources.get(fact.sourceId)!);
+      return (
+        (["name", "description"].includes(fact.path) && fact.value === d.title) ||
+        (fact.path === "reference" && fact.value === d.reference) ||
+        (fact.path === "unit" && fact.value === d.unit)
+      );
+    };
+    const visible = (f: Fact) =>
+      !headingOnly(f) &&
+      !["stageGroup", "appliedStageGroup", "coverage", "nextOffset"].includes(f.path);
+    const covered = new Set<string>(),
+      coveredRecords = new Set<string>();
     for (const item of chosen)
       if ("rows" in item) {
-        for (const row of item.rows.slice(0, 10))
+        for (const row of item.rows.slice(0, 10)) {
+          coveredRecords.add(recordIdentity(row));
           for (const f of fieldsFor(row.sourceId)) covered.add(f.ref);
-        for (const f of fieldsFor(item.sourceId))
-          if (["count", "matchingCount", "appliedStageGroup"].includes(f.path)) covered.add(f.ref);
+        }
+        for (const f of fieldsFor(item.sourceId)) covered.add(f.ref);
       }
     const printed = new Set<string>();
+    const blocks: (AnswerCard | { kind: "NOTICE"; text: string })[] = [];
+    const cards = new Map<string, { card: AnswerCard; rows: AnswerRow[] }>();
+    const rowFor = (fact: Fact, all: readonly Fact[]): AnswerRow => {
+      const companions =
+        fact.path === "lastPrice"
+          ? ["lastQuoted", "timesQuoted", "documentNumber"]
+          : fact.path === "clientLastPrice"
+            ? ["clientLastQuoted", "clientDocumentNumber"]
+            : [];
+      const details = all.filter((f) => companions.includes(f.path));
+      details.forEach((f) => printed.add(f.ref));
+      return { ...fact, ...(details.length ? { details } : {}) };
+    };
+    const titleParts = (source: AssistantSource) => {
+      const d = displayIdentity(source);
+      return {
+        title: inline(d.title),
+        ...(d.reference ? { reference: d.reference } : {}),
+        ...(d.unit ? { unit: this.locale === "zh-TW" ? `每${d.unit}` : `per ${d.unit}` } : {}),
+      };
+    };
     for (const item of chosen) {
+      const source = this.sources.get(item.sourceId)!;
       if (!("rows" in item)) {
-        if (covered.has(item.ref)) continue;
+        if (covered.has(item.ref) || coveredRecords.has(recordIdentity(source))) continue;
         ids.add(item.sourceId);
-        const count = this.sources.get(item.sourceId)?.countSourceId;
-        if (count) ids.add(count);
-        if (!groups.has(item.sourceId)) groups.set(item.sourceId, []);
-        // One price-list reading includes its provenance, even if only price was selected.
+        if (
+          ["count", "matchingCount"].includes(item.path) &&
+          item.value === "0" &&
+          [...this.lists.values()].some(
+            (list) => list.sourceId === item.sourceId && list.total === 0,
+          )
+        ) {
+          if (
+            !blocks.some(
+              (block) =>
+                block.kind === "NOTICE" && block.text === emptyListText(source, this.locale),
+            )
+          )
+            blocks.push({ kind: "NOTICE", text: emptyListText(source, this.locale) });
+          continue;
+        }
+        if (source.countSourceId) ids.add(source.countSourceId);
+        const key = recordIdentity(source);
+        let group = cards.get(key);
+        if (!group) {
+          const rows: AnswerRow[] = [];
+          const card: AnswerCard = {
+            kind: "CARD",
+            key,
+            ...titleParts(source),
+            rows,
+            link: cardLink(source, this.locale),
+          };
+          group = { card, rows };
+          cards.set(key, group);
+          blocks.push(card);
+        }
+        const all = fieldsFor(item.sourceId);
         const paths = priceReadingPaths(item.path);
-        for (const fact of fieldsFor(item.sourceId).filter((f) => paths.includes(f.path))) {
-          if (printed.has(fact.ref) || covered.has(fact.ref)) continue;
+        const picked = paths
+          .map((path) => all.find((f) => f.path === path))
+          .filter((f): f is Fact => !!f);
+        // Prices own their quieter provenance even when companion refs precede them.
+        const selectedPricePaths = chosen
+          .filter(
+            (f) =>
+              !("rows" in f) &&
+              f.sourceId === item.sourceId &&
+              ["lastPrice", "clientLastPrice"].includes(f.path),
+          )
+          .flatMap((f) => priceReadingPaths(f.path).slice(1));
+        for (const fact of picked) {
+          if (printed.has(fact.ref) || selectedPricePaths.includes(fact.path)) continue;
           printed.add(fact.ref);
-          if (!headingOnly(fact))
-            add(fact.sourceId, `${fact.label}${separator}${inline(fact.value)}`);
+          if (visible(fact)) group.rows.push(rowFor(fact, all));
         }
       } else {
-        const countLabel = assistantFactLabels(this.locale).count;
-        add(item.sourceId, `${countLabel}${separator}${item.total}`);
-        const filter = this.sources.get(item.sourceId)?.facts.appliedStageGroup;
-        if (typeof filter === "string")
-          add(
-            item.sourceId,
-            `${assistantFactLabels(this.locale).appliedStageGroup}${separator}${filter}`,
-          );
-        for (const row of item.rows.slice(0, 10)) {
-          ids.add(row.sourceId);
-          const fields = fieldsFor(row.sourceId).filter((f) => !headingOnly(f));
-          add(
-            item.sourceId,
-            `${inline(row.label)} — ${fields.map((f) => `${f.label}${separator}${inline(f.value)}`).join(this.locale === "zh-TW" ? "；" : "; ")}`,
-          );
+        ids.add(item.sourceId);
+        if (!item.total) {
+          blocks.push({ kind: "NOTICE", text: emptyListText(source, this.locale) });
+          continue;
         }
-        const remaining = item.total - Math.min(item.rows.length, 10);
-        if (remaining > 0)
-          add(
-            item.sourceId,
-            this.locale === "zh-TW" ? `另有 ${remaining} 筆紀錄。` : `${remaining} more records.`,
+        const paths = listFactPaths(source);
+        const rows = item.rows.slice(0, 10).map((row) => {
+          ids.add(row.sourceId);
+          const all = fieldsFor(row.sourceId);
+          const selected = (
+            paths ? paths.flatMap((path) => all.filter((f) => f.path === path)) : all
+          ).filter(visible);
+          const details = new Set(
+            selected
+              .filter((f) => ["lastPrice", "clientLastPrice"].includes(f.path))
+              .flatMap((f) => priceReadingPaths(f.path).slice(1)),
           );
+          return {
+            key: row.sourceId,
+            ...titleParts(row),
+            facts: selected.filter((f) => !details.has(f.path)).map((f) => rowFor(f, all)),
+          };
+        });
+        const remaining = item.total - rows.length;
+        const filter = displayIdentity(source).filter;
+        blocks.push({
+          kind: "CARD",
+          key: source.sourceId,
+          ...titleParts(source),
+          rows: [],
+          link: cardLink(source, this.locale),
+          list: {
+            count: item.total,
+            countText: listCountText(source, item.total, this.locale),
+            ...(filter
+              ? { filter: { label: this.locale === "zh-TW" ? "階段" : "Stage", value: filter } }
+              : {}),
+            rows,
+            remaining:
+              remaining > 0
+                ? this.locale === "zh-TW"
+                  ? `另有 ${remaining} 筆。`
+                  : `${remaining} more records.`
+                : null,
+          },
+        });
       }
     }
+    const presentation: AnswerPresentation = { version: 1, locale: this.locale, blocks };
+    const factText = (row: AnswerRow) =>
+      `${row.label}${separator}${inline(row.value)}${row.details?.length ? ` (${row.details.map((f) => `${f.label}${separator}${inline(f.value)}`).join(" · ")})` : ""}`;
+    const titleText = (row: { title: string; reference?: string; unit?: string }) =>
+      [row.title, row.reference, row.unit].filter(Boolean).join(" · ");
+    const textBlocks = blocks.map((block) =>
+      block.kind === "NOTICE"
+        ? block.text
+        : [
+            titleText(block),
+            ...block.rows.map(factText),
+            ...(block.list
+              ? [
+                  block.list.countText,
+                  ...(block.list.filter
+                    ? [`${block.list.filter.label}${separator}${block.list.filter.value}`]
+                    : []),
+                  ...block.list.rows.map(
+                    (r) =>
+                      `${titleText(r)} — ${r.facts.map(factText).join(this.locale === "zh-TW" ? "；" : "; ")}`,
+                  ),
+                  ...(block.list.remaining ? [block.list.remaining] : []),
+                ]
+              : []),
+          ].join("\n"),
+    );
     const identities = sourceIdentities([...this.sources.values()]);
     const numbers = new Set([...this.facts.values()].flatMap((f) => numericTokens(f.value)));
-    const blocks = [...groups].map(([id, lines]) =>
-      [inline(this.sources.get(id)!.label), ...lines].join("\n"),
-    );
     return {
       kind: "ACCEPTED",
       answer: {
-        text: [answerPhrases[phraseId][this.locale], ...blocks].join("\n\n"),
+        text: [answerPhrases[phraseId][this.locale], ...textBlocks].join("\n\n"),
+        presentation,
         sourceIds: [...ids],
         followUps: parsed.followUps.filter(
           (t) =>
@@ -348,6 +480,8 @@ export class AnswerFactRegistry {
 
 /** Price and its recorded context form one page reading; model selection cannot split it. */
 export function priceReadingPaths(path: string): readonly string[] {
+  if (["quotedPrice", "reconciledActualCost", "overallDifference"].includes(path))
+    return ["quotedPrice", "reconciledActualCost", "overallDifference"];
   return path === "lastPrice"
     ? ["lastPrice", "lastQuoted", "timesQuoted", "documentNumber"]
     : path === "clientLastPrice"

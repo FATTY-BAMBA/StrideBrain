@@ -1,7 +1,18 @@
+import type { AnswerPresentation } from "@/modules/assistant/domain/answer-cards";
+import { AnswerCards } from "./answer-cards";
 import styles from "../demo-value/home-chat.module.css";
 
-/** The server's double-newline record boundary is preserved in both chat surfaces. */
-export function AnswerText({ text, facts }: { text: string; facts: boolean }) {
+/** New answers have a server-built view; the original text layout remains for old answers. */
+export function AnswerText({
+  text,
+  facts,
+  presentation,
+}: {
+  text: string;
+  facts: boolean;
+  presentation?: AnswerPresentation | undefined;
+}) {
+  if (presentation) return <AnswerCards presentation={presentation} />;
   if (!facts) return <p className={styles.answerText}>{text}</p>;
   const [lead, ...records] = text.split("\n\n");
   return (

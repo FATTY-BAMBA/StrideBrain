@@ -38,7 +38,7 @@ describe("server-rendered fact selections", () => {
       if (result.kind !== "ACCEPTED") throw Error("not rendered");
       const [lead, a, b] = result.answer.text.split("\n\n");
       expect(lead).toBe(answerPhrases.RECORDS_SHOW[locale]);
-      expect(a).toContain("Job A\n");
+      expect(a).toContain("Job A · PRJ-ACTIVE-001\n");
       expect(a).toContain("NT$16,480,000");
       expect(a).not.toContain("PRJ-ACTIVE-001-Q1");
       expect(b).toContain("Job B\n");
@@ -180,9 +180,9 @@ describe("server-rendered fact selections", () => {
     const out = registry.render(select("s16.list"));
     expect(out.kind).toBe("ACCEPTED");
     if (out.kind !== "ACCEPTED") throw Error("list rejected");
-    expect(out.answer.text).toContain("Record count: 15");
+    expect(out.answer.text).toContain("15 jobs");
     expect(out.answer.text).toContain("5 more records.");
-    expect(out.answer.text).toContain("Job A9 — Job reference: J-9; Quote status: Issued");
+    expect(out.answer.text).toContain("Job A9 · J-9 — Quote status: Issued");
     expect(out.answer.text).not.toContain("Job A10");
     expect(
       registry.render(select(...rows.slice(0, 13).map((_, i) => `s${i + 1}.status`))),

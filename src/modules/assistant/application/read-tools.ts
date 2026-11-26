@@ -1,3 +1,4 @@
+import type { SourceDisplay } from "../domain/answer-cards";
 import { priceListCopy } from "@/modules/localization/price-list";
 import type { ReadPriceList } from "@/modules/price-list/application/read-price-list";
 import { cityLabel } from "@/modules/projects/domain/taiwan-cities";
@@ -84,9 +85,9 @@ export function assistantTools(lists: FirmLists): readonly ToolDefinition[] {
       parameters: jobParameters,
     },
     {
-      name: "get_past_prices",
+      name: "get_comparison_category_price_ranges",
       description:
-        "For one job, return the count, median, low and high of past quoted rates per work pricing category, using the Quote tab's calculation and current saved comparison. Each displayed rate carries its unit. These are quoted prices, never actual costs or individual item unit prices. For item prices use get_item_prices, which does not need a saved comparison. Omit categoryId for all pricing categories.",
+        "For one job, return the count, median, low and high of past quoted rates per work pricing category, using the Quote tab's calculation and current saved comparison. Each displayed rate carries its unit. These are quoted prices, never actual costs or individual item unit prices. For item prices use get_price_list_item_last_prices, which does not need a saved comparison. Omit categoryId for all pricing categories.",
       parameters: {
         ...jobParameters,
         properties: {
@@ -105,7 +106,7 @@ export function assistantTools(lists: FirmLists): readonly ToolDefinition[] {
       },
     },
     {
-      name: "get_item_prices",
+      name: "get_price_list_item_last_prices",
       description:
         "Find the firm's last issued unit price for an item from the Price list page, even when the page’s job has no current saved comparison. Search the item's description from the question (not a work category key); optional exact unit and job reference. At most five items, with last price/date and times quoted. A job adds its client's differing last price, never client identities.",
       parameters: {
@@ -187,6 +188,7 @@ export class AssistantReadTools {
       facts: Record<string, unknown>,
       projectKeys: readonly string[],
       typedFactPaths: readonly string[] = [],
+      display?: Partial<SourceDisplay>,
     ): AssistantSource => ({
       sourceId: `src_${createHash("sha256")
         .update(`${call.name}:${identity}:${JSON.stringify(facts)}`)
@@ -198,6 +200,29 @@ export class AssistantReadTools {
       projectKeys,
       subjectProjectKeys: typeof projectKey === "string" ? [projectKey] : projectKeys,
       typedFactPaths,
+      display: {
+        kind:
+          call.name === "get_quote_status" || call.name === "list_awaiting_client"
+            ? "QUOTE"
+            : call.name === "get_saved_comparison"
+              ? "COMPARISON"
+              : call.name === "get_comparison_category_price_ranges"
+                ? "CATEGORY_PRICES"
+                : call.name === "get_price_list_item_last_prices"
+                  ? "ITEM_PRICE"
+                  : "JOB",
+        title:
+          typeof facts.name === "string"
+            ? facts.name
+            : typeof facts.description === "string"
+              ? facts.description
+              : label,
+        ...(typeof facts.reference === "string" ? { reference: facts.reference } : {}),
+        ...(typeof facts.unit === "string" && call.name === "get_price_list_item_last_prices"
+          ? { unit: facts.unit }
+          : {}),
+        ...display,
+      },
     });
     const finish = (sources: AssistantSource[]): ToolResult =>
       sources.length ? { status: "OK", sources } : empty("NO_RECORDS");
@@ -209,13 +234,30 @@ export class AssistantReadTools {
           sourceId: `src_${createHash("sha256").update(`${row.sourceId}:${count.sourceId}`).digest("hex").slice(0, 24)}`,
           countSourceId: count.sourceId,
         })),
-        { ...count, subjectProjectKeys: [] },
+        {
+          ...count,
+          subjectProjectKeys: [],
+          display: {
+            ...count.display!,
+            kind:
+              call.name === "list_jobs"
+                ? "JOB_LIST"
+                : call.name === "list_awaiting_client"
+                  ? "AWAITING_LIST"
+                  : call.name === "get_closed_job_lessons"
+                    ? "CLOSED_LIST"
+                    : "ITEM_LIST",
+            ...(typeof args.stageGroup === "string"
+              ? { filter: stageGroups.find((g) => g.key === args.stageGroup)![c.locale] }
+              : {}),
+          },
+        },
       ]);
     const list = async () => {
       const result = await this.services.projects.execute(c);
       return result.kind === "AVAILABLE" ? result.projects : null;
     };
-    if (call.name === "get_item_prices") {
+    if (call.name === "get_price_list_item_last_prices") {
       if (
         typeof args.description !== "string" ||
         !args.description.trim() ||
@@ -415,6 +457,7 @@ export class AssistantReadTools {
           },
           [projectKey],
           ["reference", "status", "issued", "amounts"],
+          { title: job.name, reference: projectKey },
         ),
       ]);
     }
@@ -564,12 +607,13 @@ export class AssistantReadTools {
           },
           keys,
           ["pastJobs.*.score", "findings.*.text", "findings.*.category"],
+          { title: job.name, reference: projectKey },
         ),
       ];
       if (!(await this.canSend(c, sources))) return empty("UNAVAILABLE");
       return finish(sources);
     }
-    if (call.name === "get_past_prices" && typeof projectKey === "string") {
+    if (call.name === "get_comparison_category_price_ranges" && typeof projectKey === "string") {
       if (
         args.categoryId !== undefined &&
         !catalog.workCategories.some((entry) => entry.key === args.categoryId)
@@ -648,6 +692,10 @@ export class AssistantReadTools {
               "displayLow",
               "displayHigh",
             ],
+            {
+              title: `${job.name} · ${categoryLabel(c.locale, b.categoryId, catalog.workCategories)}`,
+              reference: projectKey,
+            },
           ),
         );
       if (!(await this.canSend(c, sources))) return empty("UNAVAILABLE");

@@ -59,7 +59,7 @@ function scored(show = "s1.documentNumber", mutate?: (s: string) => string) {
   );
 }
 describe("evaluation by selected references", () => {
-  it("keeps twenty core questions per language and adds all sixteen required fact-selection cases", () => {
+  it("keeps twenty core questions per language and adds all twenty-eight required fact-selection cases", () => {
     for (const locale of ["en", "zh-TW"]) {
       expect(
         questions.filter(
@@ -73,9 +73,9 @@ describe("evaluation by selected references", () => {
         questions.filter(
           (q) => q.locale === locale && "factSelectionRegression" in q && q.factSelectionRegression,
         ),
-      ).toHaveLength(8);
+      ).toHaveLength(14);
     }
-    expect(questions).toHaveLength(72);
+    expect(questions).toHaveLength(84);
   });
   it("counts a true page fact for an unresolved named job as a wrong record value", () => {
     const registry = new AnswerFactRegistry("en");
@@ -246,7 +246,7 @@ describe("evaluation by selected references", () => {
   });
 });
 (process.env.DATABASE_URL ? it : it.skip)(
-  "replays all 72 evaluation cases through the fake and authorized records in three rounds",
+  "replays all 84 evaluation cases through the fake and authorized records in three rounds",
   async () => {
     const report = await runEvaluationRounds(async () => {
       const db = await assistantDatabase();

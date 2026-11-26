@@ -37,7 +37,9 @@ function setup() {
 }
 describe("assistant read tools", () => {
   it("defines bilingual pricing categories and refuses invented category keys before reading history", async () => {
-    const tool = assistantTools(seededFirmLists).find((t) => t.name === "get_past_prices")!;
+    const tool = assistantTools(seededFirmLists).find(
+      (t) => t.name === "get_comparison_category_price_ranges",
+    )!;
     const properties = tool.parameters.properties as Record<
       string,
       { enum?: string[]; description?: string }
@@ -56,7 +58,7 @@ describe("assistant read tools", () => {
     ])
       expect(
         await f.tools.execute(jobContext(), {
-          name: "get_past_prices",
+          name: "get_comparison_category_price_ranges",
           arguments: { projectKey: "J", categoryId },
         }),
       ).toEqual({ status: "UNAVAILABLE", sources: [] });
@@ -244,7 +246,7 @@ describe("assistant read tools", () => {
         ],
       });
       const history = await f.tools.execute(jobContext({ locale }), {
-        name: "get_past_prices",
+        name: "get_comparison_category_price_ranges",
         arguments: { projectKey: "J" },
       });
       expect(history.sources[0]!.facts.observationType).toBe("QUOTED_PRICE");
@@ -472,7 +474,7 @@ describe("firm-unit past quoted rates", () => {
         const before = JSON.stringify(stored);
         const result = await f.tools.execute(
           jobContext({ locale, firmLists: { ...seededFirmLists, areaDisplayUnit: unit } }),
-          { name: "get_past_prices", arguments: { projectKey: "J" } },
+          { name: "get_comparison_category_price_ranges", arguments: { projectKey: "J" } },
         );
         expect(result.status).toBe("OK");
         const facts = modelFacts(result.sources[0]!.facts);

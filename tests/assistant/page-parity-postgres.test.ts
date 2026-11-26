@@ -48,7 +48,7 @@ const names = [
   "get_quote_status",
   "list_awaiting_client",
   "get_saved_comparison",
-  "get_past_prices",
+  "get_comparison_category_price_ranges",
   "get_closed_job_lessons",
 ] as const;
 suite("each assistant tool mirrors its page's authorized read", () => {
@@ -260,7 +260,7 @@ suite("each assistant tool mirrors its page's authorized read", () => {
         "get_job",
         "get_quote_status",
         "get_saved_comparison",
-        "get_past_prices",
+        "get_comparison_category_price_ranges",
       ] as const) {
         const result = await createAssistantServices().tools.execute(c, {
           name,
@@ -276,7 +276,7 @@ suite("each assistant tool mirrors its page's authorized read", () => {
       });
       expect(["NO_RECORDS", "OUT_OF_DATE"]).toContain(missing.status);
       const prices = await createAssistantServices().tools.execute(c, {
-        name: "get_item_prices",
+        name: "get_price_list_item_last_prices",
         arguments: { projectKey: "PRJ-ACTIVE-001", description: "天花板", unit: "坪" },
       });
       expect(prices.status).toBe("OK");

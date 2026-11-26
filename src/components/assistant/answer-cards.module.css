@@ -1,0 +1,111 @@
+.answers {
+  display: grid;
+  gap: var(--space-16);
+  min-width: 0;
+}
+.card {
+  display: grid;
+  gap: var(--space-12);
+  min-width: 0;
+  padding: var(--space-16);
+  border: var(--rule-hairline) solid var(--line);
+  border-radius: var(--radius-ask);
+  background: var(--canvas);
+  color: var(--ink);
+}
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-4) var(--space-8);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.heading h3,
+.heading strong {
+  margin: 0;
+  color: var(--ink);
+  font-size: var(--text-lead);
+  line-height: var(--leading-lead);
+  font-weight: var(--weight-lead);
+}
+.heading span {
+  color: var(--muted);
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+}
+.facts {
+  display: grid;
+  gap: var(--space-8);
+  margin: 0;
+  min-width: 0;
+}
+.fact {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: var(--space-12);
+  align-items: baseline;
+  overflow-wrap: anywhere;
+}
+.fact dt {
+  color: var(--muted);
+  font-size: var(--text-table);
+  line-height: var(--leading-table);
+}
+.fact dd {
+  margin: 0;
+  min-width: 0;
+  text-align: end;
+  color: var(--ink);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  font-variant-numeric: tabular-nums;
+}
+.fact strong {
+  font-weight: var(--weight-lead);
+}
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-4) var(--space-8);
+  margin-top: var(--space-4);
+  color: var(--muted);
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+  font-weight: var(--weight-body);
+}
+.answers .list {
+  display: grid;
+  gap: var(--space-12);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.list li {
+  display: grid;
+  gap: var(--space-8);
+  padding-top: var(--space-12);
+  border-top: var(--rule-hairline) solid var(--line);
+}
+.answers .summary,
+.answers .notice {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--text-table);
+  line-height: var(--leading-table);
+  overflow-wrap: anywhere;
+}
+.link {
+  width: fit-content;
+  min-height: var(--control-chip);
+  display: inline-flex;
+  align-items: center;
+  color: var(--accent);
+  font-size: var(--text-table);
+  font-weight: var(--weight-lead);
+}
+.link:focus-visible {
+  outline: var(--focus-width) solid var(--focus);
+  outline-offset: var(--focus-offset);
+}

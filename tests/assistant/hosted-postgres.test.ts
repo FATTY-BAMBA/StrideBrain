@@ -259,7 +259,7 @@ suite("hosted regressions through authorized records and the Home server action"
       );
       expect(turn).toMatchObject({
         ai: true,
-        text: "紀錄顯示：\n\n等待客戶回覆的報價\n紀錄筆數：0",
+        text: "紀錄顯示：\n\n目前沒有等待客戶回覆的報價。",
       });
       expect(turn.aiSources).toHaveLength(1);
       expect(fake.requests).toHaveLength(1);
@@ -284,7 +284,7 @@ suite("hosted regressions through authorized records and the Home server action"
       const tools = createAssistantServices().tools,
         c = { ...(await db.actor()), locale };
       const history = await tools.execute(c, {
-        name: "get_past_prices",
+        name: "get_comparison_category_price_ranges",
         arguments: { projectKey: "J-2611-R7K3", categoryId: "CUSTOM_MILLWORK" },
       });
       expect(history.sources[0]!.facts).toMatchObject({

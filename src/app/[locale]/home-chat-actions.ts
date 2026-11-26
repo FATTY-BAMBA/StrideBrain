@@ -733,6 +733,7 @@ export async function askHomeAction(
                 href: s.href as Route,
               })),
               aiFollowUps: result.answer.followUps,
+              ...(result.answer.presentation ? { aiPresentation: result.answer.presentation } : {}),
               ...(result.action
                 ? { action: { ...result.action, href: result.action.href as Route } }
                 : {}),

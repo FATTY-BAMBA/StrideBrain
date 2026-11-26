@@ -259,10 +259,8 @@ export function assistantFactLabels(locale: Locale): Readonly<Record<string, str
     lastQuoted: price.lastQuoted,
     timesQuoted: price.timesQuoted,
     clientLastPrice: locale === "zh-TW" ? "此專案客戶上次單價" : "Last price for this job's client",
-    clientLastQuoted:
-      locale === "zh-TW" ? "此專案客戶上次報價日期" : "Last quoted for this job's client",
-    clientDocumentNumber:
-      locale === "zh-TW" ? "此專案客戶上次報價單號" : "Last quote number for this job's client",
+    clientLastQuoted: price.lastQuoted,
+    clientDocumentNumber: issue.number,
     amountBeforeTax: quote.beforeTax,
     taxAmount: document.tax,
     totalAmount: document.total,

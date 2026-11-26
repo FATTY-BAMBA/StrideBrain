@@ -1,3 +1,4 @@
+import { listFactPaths, recordIdentity } from "@/modules/assistant/domain/answer-cards";
 import type {
   AssistantOutcome,
   AssistantSource,
@@ -100,9 +101,19 @@ export function selectedFacts(
   const registry = new AnswerFactRegistry("en");
   registry.register(ledger);
   const display = registry.modelSources(ledger);
+  const covered = new Set(
+    selection.shown
+      .filter((f) => f.kind === "list")
+      .flatMap((f) =>
+        ledger
+          .filter((s) => s.countSourceId === f.sourceId)
+          .slice(0, 10)
+          .map(recordIdentity),
+      ),
+  );
   return selection.shown.flatMap((selected) => {
     const source = ledger.find((s) => s.sourceId === selected.sourceId);
-    if (!source) return [];
+    if (!source || (selected.kind !== "list" && covered.has(recordIdentity(source)))) return [];
     const rows =
       selected.kind === "list"
         ? [source, ...ledger.filter((s) => s.countSourceId === source.sourceId).slice(0, 10)]
@@ -116,7 +127,8 @@ export function selectedFacts(
                 typeof s.facts.matchingCount === "number" ? "matchingCount" : "count",
                 "appliedStageGroup",
               ]
-            : (display[index]?.facts ?? []).map((f) => f.ref.slice(f.ref.indexOf(".") + 1))
+            : (listFactPaths(source) ??
+              (display[index]?.facts ?? []).map((f) => f.ref.slice(f.ref.indexOf(".") + 1)))
           : priceReadingPaths(selected.path);
       return leaves(s.facts)
         .filter((f) => paths.some((path) => f.path === path || f.path.startsWith(`${path}.`)))
@@ -169,6 +181,7 @@ export function evaluateAnswer(
       !selection ||
       replay?.kind !== "ACCEPTED" ||
       replay.answer.text !== outcome.answer.text ||
+      JSON.stringify(replay.answer.presentation) !== JSON.stringify(outcome.answer.presentation) ||
       JSON.stringify(replay.answer.sourceIds) !== JSON.stringify(outcome.answer.sourceIds));
   const raw = record(rawAnswer),
     rawFollowUps = Array.isArray(raw?.followUps) ? raw.followUps : [];

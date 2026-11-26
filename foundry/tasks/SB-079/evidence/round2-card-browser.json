@@ -1,0 +1,56 @@
+{
+  "mode": "LOCAL_PRODUCTION_COMPONENT_CSS_WITH_REPLAYED_SYNTHETIC_DATA",
+  "checks": [
+    {
+      "locale": "en",
+      "width": 1440,
+      "pageOverflow": false,
+      "longValueWrap": true,
+      "labeledGroups": true,
+      "descriptionLists": true,
+      "oneLinkPerCard": true,
+      "jobPanelKeyboardFocus": true,
+      "keyboardSourceLink": true
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "pageOverflow": false,
+      "longValueWrap": true,
+      "labeledGroups": true,
+      "descriptionLists": true,
+      "oneLinkPerCard": true,
+      "jobPanelKeyboardFocus": true,
+      "keyboardSourceLink": true
+    },
+    {
+      "locale": "zh-TW",
+      "width": 1440,
+      "pageOverflow": false,
+      "longValueWrap": true,
+      "labeledGroups": true,
+      "descriptionLists": true,
+      "oneLinkPerCard": true,
+      "jobPanelKeyboardFocus": true,
+      "keyboardSourceLink": true
+    },
+    {
+      "locale": "zh-TW",
+      "width": 390,
+      "pageOverflow": false,
+      "longValueWrap": true,
+      "labeledGroups": true,
+      "descriptionLists": true,
+      "oneLinkPerCard": true,
+      "jobPanelKeyboardFocus": true,
+      "keyboardSourceLink": true
+    }
+  ],
+  "screens": [
+    "en-record-cards-1440.png",
+    "en-record-cards-390.png",
+    "zh-TW-record-cards-1440.png",
+    "zh-TW-record-cards-390.png"
+  ],
+  "status": "PASS"
+}

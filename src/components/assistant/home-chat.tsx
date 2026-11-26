@@ -122,19 +122,33 @@ export function HomeChat({
       >
         {turns.map((turn) => (
           <article
-            className={turn.role === "user" ? styles.userMessage : styles.assistantMessage}
+            className={
+              turn.role === "user"
+                ? styles.userMessage
+                : turn.aiPresentation
+                  ? `${styles.assistantMessage} ${styles.cardsMessage}`
+                  : styles.assistantMessage
+            }
             key={turn.id}
           >
             {turn.ai && (
               <small>
-                {turn.aiSources?.length
+                {(
+                  turn.aiPresentation
+                    ? turn.aiPresentation.blocks.some((b) => b.kind === "CARD")
+                    : turn.aiSources?.length
+                )
                   ? assistantCopy(locale).label
                   : assistantCopy(locale).labelWithoutSources}
               </small>
             )}
             {turn.aiFallback && <small role="status">{assistantCopy(locale).fallback}</small>}
             {!turn.draftResult?.form ? (
-              <AnswerText text={turn.text} facts={!!turn.ai && !!turn.aiSources?.length} />
+              <AnswerText
+                text={turn.text}
+                facts={!!turn.ai && !!turn.aiSources?.length}
+                presentation={turn.aiPresentation}
+              />
             ) : null}
             {turn.draftResult?.form ? (
               <div className={styles.draftCard}>
@@ -162,7 +176,7 @@ export function HomeChat({
                 </div>
               </div>
             ) : null}
-            {turn.aiSources?.length ? (
+            {turn.aiSources?.length && !turn.aiPresentation ? (
               <ul aria-label={assistantCopy(locale).sources}>
                 {turn.aiSources.map((source) => (
                   <li key={source.sourceId}>

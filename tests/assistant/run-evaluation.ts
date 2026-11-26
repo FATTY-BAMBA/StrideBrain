@@ -159,6 +159,7 @@ async function evaluateQuestion(
     reported: question.reported ?? false,
     qualityRegression: question.qualityRegression ?? false,
     factSelectionRegression: question.factSelectionRegression ?? false,
+    mustReachModel: question.expected.unresolvedSubject ?? false,
     namedJobRefusal:
       outcome.kind === "ANSWER" &&
       !!outcome.refusal &&

@@ -21,6 +21,7 @@ export type ScoredRow = {
   badDisplayFormat: boolean;
   calls: number;
   namedJobRefusal?: boolean;
+  mustReachModel?: boolean;
   qualityRegression?: boolean;
   required?: boolean;
   reported?: boolean;
@@ -44,12 +45,12 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
       (locale) =>
         questions.filter((q) => !q.required && !q.reported && q.locale === locale).length === 20,
     ) &&
-    new Set(questions.map((q) => q.id)).size === 72 &&
+    new Set(questions.map((q) => q.id)).size === 84 &&
     questions.filter((q) => q.reported).length === 2 &&
     questions.filter((q) => q.required && !q.qualityRegression && !q.factSelectionRegression)
       .length === 12 &&
     questions.filter((q) => q.required && q.qualityRegression).length === 2 &&
-    questions.filter((q) => q.required && q.factSelectionRegression).length === 16;
+    questions.filter((q) => q.required && q.factSelectionRegression).length === 28;
   const sortedCalls = questions.map((q) => q.calls).sort((a, b) => a - b);
   const withinThree = sortedCalls.filter((n) => n <= 3).length;
   const callTargets = {
@@ -93,7 +94,7 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
       passed: questions.filter(
         (q) => q.factSelectionRegression && q.verdict !== "wrong" && !q.wrongRecordValue,
       ).length,
-      total: 16,
+      total: 28,
     },
     reportedCases: {
       passed: questions.filter((q) => q.reported && q.verdict !== "wrong" && !q.wrongRecordValue)
@@ -115,6 +116,7 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
           !q.qualityRegression &&
           !q.factSelectionRegression &&
           q.verdict !== "wrong" &&
+          (!q.mustReachModel || q.calls > 0) &&
           !q.wrongRecordValue &&
           !q.wrongNumber &&
           !q.wrongAmountLabel,
@@ -130,6 +132,7 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
       Object.values(scores).every((s) => s >= 16) &&
       questions.every(
         (q) =>
+          (!q.mustReachModel || q.calls > 0) &&
           !q.wrongRecordValue &&
           !q.wrongNumber &&
           !q.wrongAmountLabel &&
@@ -164,7 +167,7 @@ export function stabilitySummary<T extends ScoredRow>(
     passed:
       rounds.length === evaluationRounds &&
       rounds.every((r) => r.passed) &&
-      perQuestion.length === 72 &&
+      perQuestion.length === 84 &&
       ids.every((id) => rounds.every((r) => r.questions.some((q) => q.id === id))),
     rounds,
     perQuestion,

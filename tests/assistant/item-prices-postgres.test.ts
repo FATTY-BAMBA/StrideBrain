@@ -68,7 +68,7 @@ suite("item prices use the page read without sending client identities", () => {
       projectKey,
     });
     const tool = await createAssistantServices().tools.execute(c, {
-      name: "get_item_prices",
+      name: "get_price_list_item_last_prices",
       arguments: { description: "天花板", unit: "坪", projectKey },
     });
     if (page.kind !== "AVAILABLE") {
@@ -109,11 +109,14 @@ suite("item prices use the page read without sending client identities", () => {
       tools = createAssistantServices().tools;
     expect(
       (
-        await tools.execute(c, { name: "get_item_prices", arguments: { description: "Ceiling" } })
+        await tools.execute(c, {
+          name: "get_price_list_item_last_prices",
+          arguments: { description: "Ceiling" },
+        })
       ).sources.filter((s) => s.countSourceId),
     ).toHaveLength(5);
     const otherUnit = await tools.execute(c, {
-      name: "get_item_prices",
+      name: "get_price_list_item_last_prices",
       arguments: { description: "Ceiling", unit: "m²" },
     });
     expect(otherUnit.sources.filter((s) => s.countSourceId)).toHaveLength(1);
@@ -121,12 +124,17 @@ suite("item prices use the page read without sending client identities", () => {
     expect(otherUnit.sources[0]?.facts.lastPrice).toBe("NT$1,000");
     for (const description of ["x' OR TRUE --", "%", "_"])
       expect(
-        (await tools.execute(c, { name: "get_item_prices", arguments: { description } })).sources,
+        (
+          await tools.execute(c, {
+            name: "get_price_list_item_last_prices",
+            arguments: { description },
+          })
+        ).sources,
       ).toEqual([]);
     expect(
       (
         await tools.execute(c, {
-          name: "get_item_prices",
+          name: "get_price_list_item_last_prices",
           arguments: { description: "x".repeat(501) },
         })
       ).status,
@@ -135,7 +143,7 @@ suite("item prices use the page read without sending client identities", () => {
     expect(
       (
         await tools.execute(foreign, {
-          name: "get_item_prices",
+          name: "get_price_list_item_last_prices",
           arguments: { description: "Ceiling", projectKey: target.projectKey },
         })
       ).sources,
@@ -144,7 +152,7 @@ suite("item prices use the page read without sending client identities", () => {
   it("registers one whole-list ref for five item rows and keeps every price under its own item", async () => {
     const c = await db.actor();
     const result = await createAssistantServices().tools.execute(c, {
-      name: "get_item_prices",
+      name: "get_price_list_item_last_prices",
       arguments: { description: "Ceiling" },
     });
     const registry = new AnswerFactRegistry(c.locale);
@@ -163,7 +171,7 @@ suite("item prices use the page read without sending client identities", () => {
         .split("\n")
         .find(
           (line) =>
-            line.startsWith(`${row.label} — `) &&
+            line.startsWith(`${row.facts.description} · `) &&
             line.includes(String(row.facts.unit)) &&
             line.includes(String(row.facts.lastPrice)),
         );
@@ -187,7 +195,7 @@ suite("item prices use the page read without sending client identities", () => {
     expect(
       (
         await service.tools.execute(c, {
-          name: "get_item_prices",
+          name: "get_price_list_item_last_prices",
           arguments: { description: "Ceiling", projectKey: target.projectKey },
         })
       ).sources,
@@ -211,7 +219,7 @@ suite("item prices use the page read without sending client identities", () => {
       },
     );
     const result = await service.tools.execute(c, {
-      name: "get_item_prices",
+      name: "get_price_list_item_last_prices",
       arguments: { description: "Ceiling", unit: "坪" },
     });
     // The newest source is allowed, but count=2 would still disclose the excluded older quote.

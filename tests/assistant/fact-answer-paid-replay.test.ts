@@ -15,7 +15,7 @@ type Row = {
   discardReason: string | null;
   verdict: string;
 };
-it.each([1, 2, 3])(
+it.each([1, 2, 3, 4])(
   "replays every raw question answer from SB-079 paid run %i against its recorded ledger",
   (run) => {
     const report = JSON.parse(
@@ -59,7 +59,42 @@ it.each([1, 2, 3])(
             label = `${name} · ${label === name ? key : label}`;
           if (typeof s.facts.lastPrice === "string")
             label = `${s.facts.description}（${s.facts.unit}）`;
-          return { ...s, label };
+          const q = (questions as EvaluationQuestion[]).find((q) => q.id === row.id);
+          const list = typeof s.facts.count === "number" && !s.countSourceId;
+          const kind = list
+            ? q?.oracleTools.some((t) => t.name === "list_awaiting_client")
+              ? "AWAITING_LIST"
+              : q?.oracleTools.some((t) => t.name === "get_closed_job_lessons")
+                ? "CLOSED_LIST"
+                : q?.oracleTools.some((t) => t.name === "get_price_list_item_last_prices")
+                  ? "ITEM_LIST"
+                  : "JOB_LIST"
+            : typeof s.facts.lastPrice === "string"
+              ? "ITEM_PRICE"
+              : typeof s.facts.documentNumber === "string" ||
+                  q?.oracleTools.some((t) => t.name === "get_quote_status")
+                ? "QUOTE"
+                : "JOB";
+          return {
+            ...s,
+            label,
+            display: {
+              kind,
+              title:
+                kind === "ITEM_PRICE"
+                  ? String(s.facts.description)
+                  : list
+                    ? label
+                    : (name ?? label),
+              ...(!list && kind !== "ITEM_PRICE" && key ? { reference: key } : {}),
+              ...(kind === "ITEM_PRICE" ? { unit: String(s.facts.unit) } : {}),
+              ...(list &&
+              typeof s.facts.appliedStageGroup === "string" &&
+              !["All stage groups", "所有階段群組"].includes(s.facts.appliedStageGroup)
+                ? { filter: s.facts.appliedStageGroup }
+                : {}),
+            },
+          } as AssistantSource;
         });
         const registry = new AnswerFactRegistry(row.locale);
         registry.register(ledger);
@@ -85,11 +120,11 @@ it.each([1, 2, 3])(
                 row.sourceLedger.filter((s) =>
                   q.oracleTools.some((tool) => {
                     const a = tool.arguments;
-                    if (tool.name === "get_past_prices")
+                    if (tool.name === "get_comparison_category_price_ranges")
                       return (
                         s.facts.categoryId && (!a.categoryId || s.facts.categoryId === a.categoryId)
                       );
-                    if (tool.name === "get_item_prices")
+                    if (tool.name === "get_price_list_item_last_prices")
                       return (
                         typeof s.facts.description === "string" &&
                         s.facts.description
@@ -121,11 +156,20 @@ it.each([1, 2, 3])(
           verdict,
           wrongRecordValue,
           ...(result.kind === "REJECTED" ? { reason: result.reason } : {}),
-          ...(result.kind === "ACCEPTED" ? { answerText: result.answer.text } : {}),
+          ...(result.kind === "ACCEPTED"
+            ? { answerText: result.answer.text, presentation: result.answer.presentation }
+            : {}),
         };
       }),
     );
-    expect(rows).toHaveLength(186);
+    expect(rows).toHaveLength(run === 4 ? 216 : 186);
+    if (run === 4) {
+      const closed = rows.filter((r) => r.id === "en-closed" || r.id === "zh-TW-closed");
+      expect(closed).toHaveLength(6);
+      expect(closed.every((r) => r.verdict === "grounded and correct" && !r.wrongRecordValue)).toBe(
+        true,
+      );
+    }
     if (run === 3)
       expect(rows.every((r) => r.verdict !== "wrong" && !r.wrongRecordValue)).toBe(true);
     if (process.env.STRIDEBRAIN_AI_REPLAY_REPORT)
@@ -134,7 +178,7 @@ it.each([1, 2, 3])(
         JSON.stringify(
           {
             mode: "FREE_REPLAY_NO_PROVIDER",
-            paidRun: [45702234409, 45728856574, 45732833274][run - 1],
+            paidRun: [45702234409, 45728856574, 45732833274, 45743760089][run - 1],
             passed: true,
             note: "Replays unchanged raw selections through the new layout, with names from recorded authorized sources. Server early replies are unchanged; tool routing changes require the paid run.",
             rows,

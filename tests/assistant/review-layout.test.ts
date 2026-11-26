@@ -30,6 +30,7 @@ const count: AssistantSource = {
   href: "/zh-TW/quotes/prices",
   projectKeys: ["J"],
   facts: { count: 1 },
+  display: { kind: "ITEM_LIST", title: "價格表" },
 };
 const select = (...refs: string[]) => ({
   parts: [{ say: "RECORDS_SHOW" }, ...refs.map((show) => ({ show }))],
@@ -47,7 +48,7 @@ describe("PR80 hosted layout regressions", () => {
       expect(out.kind).toBe("ACCEPTED");
       if (out.kind !== "ACCEPTED") return;
       for (const text of [
-        "天花板（坪）",
+        "天花板",
         "NT$3,800",
         "2026-11-25",
         "J-Q2",
@@ -78,8 +79,8 @@ describe("PR80 hosted layout regressions", () => {
       expect(out.kind).toBe("ACCEPTED");
       if (out.kind !== "ACCEPTED") return;
       expect(out.answer.text.match(/NT\$3,800/g)).toHaveLength(1);
-      expect(out.answer.text.match(/天花板（坪）/g)).toHaveLength(1);
-      expect(out.answer.text.match(/紀錄筆數/g)).toHaveLength(1);
+      expect(out.answer.text.match(/天花板/g)).toHaveLength(1);
+      expect(out.answer.text.match(/1 個項目/g)).toHaveLength(1);
     },
   );
   it.each(["en", "zh-TW"] as const)(

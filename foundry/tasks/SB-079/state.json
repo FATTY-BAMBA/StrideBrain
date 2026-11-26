@@ -3,11 +3,11 @@
   "branch": "build/sb-079-fact-answers",
   "baseCommit": "bb8d8d8d9fbb3365477f5164dbd9d84d7d237fe3",
   "issueUpdatedAt": "2026-11-25T20:22:52Z",
-  "status": "PAID_EVALUATION_FAILED_REVIEW_REQUIRED",
+  "status": "REVIEW_FIX_ROUND_2",
   "delivery": "A \u2192 B \u2192 C \u2192 D \u2192 E",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
-  "paidEvaluationLimit": 4,
+  "paidEvaluationLimit": 6,
   "paidEvaluationRuns": [
     {
       "runId": 45702234409,
@@ -50,13 +50,19 @@
   "localVerification": {
     "command": "npm run check",
     "status": "PASSED",
-    "tests": 1919,
-    "files": 196
+    "tests": 1971,
+    "files": 197
   },
-  "paidEvaluationRemaining": 0,
+  "paidEvaluationRemaining": 2,
   "remainingAcceptance": [
-    "Required en-item-no-comparison passes 2/3; round 1 refused after two comparison reads.",
-    "Core en-closed passes 0/3: correct overall difference sentences omit the expected quoted-price and actual-cost figures.",
-    "Hosted retest and provisional items 3, 5 and 6 await the Product Director."
-  ]
+    "New model-routing/subject checks await authorized paid run 5 after CI.",
+    "Hosted retest awaits Product Director; no hosted changes.",
+    "Empty-list copy remains provisional; other layout decisions confirmed."
+  ],
+  "reviewRound2Comments": [
+    7181003350,
+    7181049379,
+    7181219556
+  ],
+  "confirmedCardDecision": "Product Director confirmed record cards and closed-job readings; prior provisional layout items are settled."
 }

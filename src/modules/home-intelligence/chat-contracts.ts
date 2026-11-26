@@ -1,3 +1,4 @@
+import type { AnswerPresentation } from "@/modules/assistant/domain/answer-cards";
 import type { Route } from "next";
 
 export type HomeChatCitation = Readonly<{
@@ -40,6 +41,7 @@ export type HomeChatTurn = Readonly<{
   aiFallback?: boolean;
   aiSources?: readonly Readonly<{ sourceId: string; label: string; href: Route }>[];
   aiFollowUps?: readonly string[];
+  aiPresentation?: AnswerPresentation;
   bullets?: readonly string[];
   citations?: readonly HomeChatCitation[];
   action?: Readonly<{ label: string; href: Route }>;

@@ -1,3 +1,4 @@
+import type { AnswerPresentation, SourceDisplay } from "./answer-cards";
 import type { AnswerSelection } from "./fact-answers";
 import type { Locale } from "@/modules/localization/config";
 
@@ -7,8 +8,8 @@ export const toolNames = [
   "get_quote_status",
   "list_awaiting_client",
   "get_saved_comparison",
-  "get_past_prices",
-  "get_item_prices",
+  "get_comparison_category_price_ranges",
+  "get_price_list_item_last_prices",
   "get_closed_job_lessons",
 ] as const;
 export type ToolName = (typeof toolNames)[number];
@@ -23,6 +24,8 @@ export type AssistantSource = Readonly<{
   href: string;
   label: string;
   facts: Readonly<Record<string, unknown>>;
+  /** Server-built layout metadata, never included in model facts. */
+  display?: SourceDisplay;
   /** Server-only access dependencies; never model-controlled. */
   projectKeys: readonly string[];
   /** Subject jobs, distinct from historical/access dependencies. Server-only. */
@@ -39,6 +42,7 @@ export type ToolResult = Readonly<{
 }>;
 export type StructuredAnswer = Readonly<{
   text: string;
+  presentation?: AnswerPresentation;
   sourceIds: readonly string[];
   followUps: readonly string[];
 }>;

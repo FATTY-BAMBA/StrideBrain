@@ -103,7 +103,7 @@ suite("assistant PostgreSQL access, controls and metadata", () => {
       if (c.role === "VIEWER")
         for (const name of [
           "get_quote_status",
-          "get_past_prices",
+          "get_comparison_category_price_ranges",
           "get_closed_job_lessons",
         ] as const) {
           const output = await services.tools.execute(c, {
@@ -120,7 +120,7 @@ suite("assistant PostgreSQL access, controls and metadata", () => {
       "get_job",
       "get_quote_status",
       "get_saved_comparison",
-      "get_past_prices",
+      "get_comparison_category_price_ranges",
     ] as const)
       expect(
         (await services.tools.execute(foreign, { name, arguments: { projectKey: job } })).status,
@@ -189,7 +189,7 @@ suite("assistant PostgreSQL access, controls and metadata", () => {
     });
     expect(read.status).toBe("OK");
     const history = await service.tools.execute(c, {
-      name: "get_past_prices",
+      name: "get_comparison_category_price_ranges",
       arguments: { projectKey: project.businessKey },
     });
     expect(history.status).toBe("OK");
@@ -251,7 +251,7 @@ suite("assistant PostgreSQL access, controls and metadata", () => {
       "get_job",
       "get_quote_status",
       "get_saved_comparison",
-      "get_past_prices",
+      "get_comparison_category_price_ranges",
     ] as const)
       expect(await service.tools.execute(c, { name, arguments: { projectKey: key } })).toEqual({
         status: "EXCLUDED",
