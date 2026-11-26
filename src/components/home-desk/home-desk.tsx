@@ -13,6 +13,10 @@ import {
 } from "@/modules/home-desk/presentation";
 import { HomeChat } from "@/components/assistant/home-chat";
 import { StageCounts } from "./stage-counts";
+import { PageHeader } from "@/components/ui/page-header";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { Table, NameCell, NumericCell } from "@/components/ui/table";
+import ui from "@/components/ui/ui.module.css";
 import styles from "./home-desk.module.css";
 
 export function DecisionList({
@@ -32,39 +36,50 @@ export function DecisionList({
       {!items.length && !desk.decisionsUnavailable && !desk.findingsNotices.length ? (
         <p className={styles.muted}>{copy.noDecisions}</p>
       ) : null}
-      <ul className={styles.decisions}>
-        {items.map((item) => {
-          const view = decisionPresentation(item, locale, desk.catalog.workCategories);
-          return (
-            <li key={item.key}>
-              <div>
-                <strong>{item.project.name}</strong>
-                <p>{view.sentence}</p>
-                {view.moreFindings ? <p className={styles.muted}>{view.moreFindings}</p> : null}
-                {item.kind === "ISSUE_QUOTE" && item.comparisonHint ? (
-                  <p className={styles.muted}>
-                    {item.comparisonHint === "NOT_RUN"
-                      ? copy.comparisonNotRun
-                      : copy.comparisonOutOfDate}{" "}
-                    ·{" "}
-                    <Link
-                      href={
-                        `/${locale}/projects/${encodeURIComponent(item.project.businessKey)}/quote#quote-comparison` as Route
-                      }
-                    >
-                      {copy.openComparison}
-                    </Link>
-                  </p>
-                ) : null}
-              </div>
-              <Link className={styles.secondary} href={view.href as Route}>
-                {view.label}
-                <span aria-hidden="true"> →</span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      {items.length ? (
+        <Table
+          caption={`${copy.needs} · ${copy.decisions}`}
+          headings={[
+            { label: locale === "zh-TW" ? "專案" : "Job" },
+            { label: copy.needs },
+            { label: locale === "zh-TW" ? "開啟" : "Open", action: true },
+          ]}
+        >
+          {items.map((item) => {
+            const view = decisionPresentation(item, locale, desk.catalog.workCategories);
+            return (
+              <tr key={item.key}>
+                <NameCell>{item.project.name}</NameCell>
+                <td>
+                  <p>{view.sentence}</p>
+                  {view.moreFindings ? <p className={styles.muted}>{view.moreFindings}</p> : null}
+                  {item.kind === "ISSUE_QUOTE" && item.comparisonHint ? (
+                    <p className={styles.muted}>
+                      {item.comparisonHint === "NOT_RUN"
+                        ? copy.comparisonNotRun
+                        : copy.comparisonOutOfDate}{" "}
+                      ·{" "}
+                      <Link
+                        href={
+                          `/${locale}/projects/${encodeURIComponent(item.project.businessKey)}/quote#quote-comparison` as Route
+                        }
+                      >
+                        {copy.openComparison}
+                      </Link>
+                    </p>
+                  ) : null}
+                </td>
+                <td className={ui.rowAction}>
+                  <Link className={ui.rowLink} href={view.href as Route}>
+                    {view.label}
+                    <span aria-hidden="true"> →</span>
+                  </Link>
+                </td>
+              </tr>
+            );
+          })}
+        </Table>
+      ) : null}
       {!complete && desk.decisions.length > 5 ? (
         <Link className={styles.more} href={`/${locale}/decisions` as Route}>
           {copy.all.replace("{count}", String(desk.decisions.length))} →
@@ -99,7 +114,7 @@ export function HomeDeskScreen({
   if (outcome.kind !== "AVAILABLE")
     return (
       <section className={styles.page}>
-        <h1>{complete ? copy.decisions : copy.title}</h1>
+        <PageHeader context="StrideBrain" title={complete ? copy.decisions : copy.title} />
         <p role="status">{copy.unavailable}</p>
       </section>
     );
@@ -107,23 +122,27 @@ export function HomeDeskScreen({
   if (complete)
     return (
       <section className={styles.page}>
+        <PageHeader context="StrideBrain" title={copy.decisions} />
         <Link href={`/${locale}` as Route}>← {copy.back}</Link>
-        <h1>{copy.decisions}</h1>
         <DecisionList locale={locale} desk={desk} complete />
       </section>
     );
   return (
     <div className={styles.page}>
-      <header className={styles.heading}>
-        <h1>{copy.title}</h1>
-        {desk.canCreate ? (
-          <section className={styles.start} aria-label={copy.start}>
-            <Link className={styles.primary} href={`/${locale}/projects/new` as Route}>
+      <PageHeader
+        context="StrideBrain"
+        title={copy.title}
+        actions={
+          desk.canCreate ? (
+            <Link
+              className={`${ui.button} ${ui.primary}`}
+              href={`/${locale}/projects/new` as Route}
+            >
               + {copy.newJob}
             </Link>
-          </section>
-        ) : null}
-      </header>
+          ) : undefined
+        }
+      />
       {!desk.projects.length ? (
         <>
           <p>{copy.empty}</p>
@@ -132,11 +151,11 @@ export function HomeDeskScreen({
       ) : (
         <>
           <section className={styles.section} aria-labelledby="needs-title">
-            <h2 id="needs-title">{copy.needs}</h2>
+            <SectionHeading id="needs-title">{copy.needs}</SectionHeading>
             <DecisionList locale={locale} desk={desk} />
           </section>
           <section className={styles.section} aria-labelledby="stages-title">
-            <h2 id="stages-title">{copy.stages}</h2>
+            <SectionHeading id="stages-title">{copy.stages}</SectionHeading>
             <StageCounts locale={locale} counts={desk.stageCounts} />
           </section>
           <HomeChat
@@ -150,52 +169,70 @@ export function HomeDeskScreen({
             }
           />
           <section className={styles.section} aria-labelledby="learned-title">
-            <h2 id="learned-title">{copy.learned}</h2>
+            <SectionHeading id="learned-title">{copy.learned}</SectionHeading>
             {desk.closedJobsUnavailable ? (
               <p role="status">{copy.lessonsUnavailable}</p>
             ) : !desk.closedJobs.length ? (
               <p className={styles.muted}>{copy.noLessons}</p>
             ) : null}
-            <div className={styles.lessons}>
-              {desk.closedJobs.map(({ project, lesson, costDifference, financialState }) => (
-                <article key={project.businessKey}>
-                  <h3>
-                    <Link
-                      href={
-                        `/${locale}/projects/${encodeURIComponent(project.businessKey)}` as Route
-                      }
-                    >
-                      {project.name}
-                    </Link>
-                  </h3>
-                  {lesson ? (
-                    <>
-                      <dl>
-                        <div>
-                          <dt>{copy.quote}</dt>
-                          <dd>{formatMoney(lesson.quoteBeforeTax, lesson.currency)}</dd>
-                        </div>
-                        <div>
-                          <dt>{copy.actual}</dt>
-                          <dd>{formatMoney(lesson.actualCost, lesson.currency)}</dd>
-                        </div>
-                      </dl>
-                      {costDifference ? (
-                        <p
-                          className={styles.costDifference}
-                          data-direction={costDifference.direction}
-                        >
-                          {closedDifferenceText(costDifference, lesson.currency, locale)}
-                        </p>
-                      ) : null}
-                      <p>{closedLessonText(lesson, locale, outcome.catalog.workCategories)}</p>
-                    </>
-                  ) : financialState === "UNAVAILABLE" ? (
-                    <p>{copy.figuresUnavailable}</p>
-                  ) : null}
-                </article>
-              ))}
-            </div>
+            {desk.closedJobs.length ? (
+              <Table
+                caption={`${copy.learned} · ${locale === "zh-TW" ? "專案紀錄" : "Job records"}`}
+                headings={[
+                  { label: locale === "zh-TW" ? "專案" : "Job" },
+                  ...(desk.closedJobs.some((job) => job.lesson)
+                    ? [
+                        { label: copy.quote, numeric: true },
+                        { label: copy.actual, numeric: true },
+                      ]
+                    : []),
+                  { label: copy.learned },
+                ]}
+              >
+                {desk.closedJobs.map(({ project, lesson, costDifference, financialState }) => (
+                  <tr key={project.businessKey}>
+                    <NameCell>
+                      <Link
+                        href={
+                          `/${locale}/projects/${encodeURIComponent(project.businessKey)}` as Route
+                        }
+                      >
+                        {project.name}
+                      </Link>
+                    </NameCell>
+                    {desk.closedJobs.some((job) => job.lesson) ? (
+                      <>
+                        <NumericCell>
+                          {lesson ? formatMoney(lesson.quoteBeforeTax, lesson.currency) : "—"}
+                        </NumericCell>
+                        <NumericCell>
+                          {lesson ? formatMoney(lesson.actualCost, lesson.currency) : "—"}
+                        </NumericCell>
+                      </>
+                    ) : null}
+                    <td>
+                      {lesson ? (
+                        <>
+                          {costDifference ? (
+                            <p
+                              className={styles.costDifference}
+                              data-direction={costDifference.direction}
+                            >
+                              {closedDifferenceText(costDifference, lesson.currency, locale)}
+                            </p>
+                          ) : null}
+                          <p>{closedLessonText(lesson, locale, outcome.catalog.workCategories)}</p>
+                        </>
+                      ) : financialState === "UNAVAILABLE" ? (
+                        copy.figuresUnavailable
+                      ) : (
+                        "—"
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </Table>
+            ) : null}
           </section>
         </>
       )}

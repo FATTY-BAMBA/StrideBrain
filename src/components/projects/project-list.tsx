@@ -1,6 +1,5 @@
 import { randomUUID } from "node:crypto";
 import type { Route } from "next";
-import Link from "next/link";
 import { getCatalog } from "@/modules/localization/catalog";
 import { jobsCopy, projectStageLabel } from "@/modules/localization/jobs";
 import type { Locale } from "@/modules/localization/config";
@@ -8,6 +7,9 @@ import { projectNavigation, projectSurfaceHref } from "@/modules/navigation/proj
 import type { ProjectListOutcome } from "@/modules/projects/application/list-authorized-projects";
 import { PROJECT_STAGES } from "@/modules/projects/domain/job-input";
 import { ProjectStageForm } from "./project-stage-form";
+import { Table, NameCell, RowAction } from "@/components/ui/table";
+import { SectionHeading } from "@/components/ui/section-heading";
+import ui from "@/components/ui/ui.module.css";
 import styles from "./project-list.module.css";
 
 export function ProjectList({
@@ -37,16 +39,41 @@ export function ProjectList({
         const projects = outcome.projects.filter((project) => project.stage === stage);
         return (
           <section key={stage} aria-labelledby={`stage-${stage}`} className={styles.group}>
-            <h2 id={`stage-${stage}`}>
+            <SectionHeading id={`stage-${stage}`}>
               {projectStageLabel(locale, stage)}{" "}
               <span className={styles.count}>({projects.length})</span>
-            </h2>
+            </SectionHeading>
             {projects.length ? (
-              <ul className={styles.list} aria-labelledby={`stage-${stage}`}>
+              <Table
+                caption={`${projectStageLabel(locale, stage)} · ${copy["nav.projects"]}`}
+                headings={[
+                  { label: copy["nav.projects"] },
+                  { label: locale === "zh-TW" ? "狀態" : "Status" },
+                  ...(canUpdate && stage !== "COMPLETE" ? [{ label: jobs.updateStage }] : []),
+                  { label: copy["projects.open"], action: true },
+                ]}
+              >
                 {projects.map((project) => (
-                  <li key={project.businessKey}>
-                    <Link
-                      className={styles.entry}
+                  <tr key={project.businessKey}>
+                    <NameCell>
+                      {project.name}
+                      <span className={ui.marker}>{project.businessKey}</span>
+                    </NameCell>
+                    <td>
+                      {project.active ? copy["projects.active"] : projectStageLabel(locale, stage)}
+                    </td>
+                    {canUpdate && stage !== "COMPLETE" ? (
+                      <td>
+                        <ProjectStageForm
+                          key={`${project.businessKey}:${stage}`}
+                          locale={locale}
+                          businessKey={project.businessKey}
+                          stage={stage}
+                          idempotencyKey={randomUUID()}
+                        />
+                      </td>
+                    ) : null}
+                    <RowAction
                       href={
                         projectSurfaceHref(
                           locale,
@@ -54,28 +81,12 @@ export function ProjectList({
                           projectNavigation[0]!,
                         ) as Route
                       }
-                    >
-                      <h3>{project.name}</h3>
-                      <span>{project.businessKey}</span>
-                      {project.active ? (
-                        <span className={styles.status}>{copy["projects.active"]}</span>
-                      ) : null}
-                      <span className={styles.open}>
-                        {copy["projects.open"]} <span aria-hidden="true">→</span>
-                      </span>
-                    </Link>
-                    {canUpdate && stage !== "COMPLETE" ? (
-                      <ProjectStageForm
-                        key={`${project.businessKey}:${stage}`}
-                        locale={locale}
-                        businessKey={project.businessKey}
-                        stage={stage}
-                        idempotencyKey={randomUUID()}
-                      />
-                    ) : null}
-                  </li>
+                      label={copy["projects.open"]}
+                      name={project.name}
+                    />
+                  </tr>
                 ))}
-              </ul>
+              </Table>
             ) : (
               <p className={styles.empty}>{jobs.emptyStage}</p>
             )}

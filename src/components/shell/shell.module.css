@@ -161,48 +161,53 @@ a.item:hover {
 .skip:focus {
   transform: translateY(0);
 }
-.shell :is(a, button, input, select, textarea, [tabindex]):focus-visible {
+.shell :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
   outline: var(--focus-width) solid var(--focus);
   outline-offset: var(--focus-offset);
 }
-@media (max-width: 900px) {
+
+.mobileMenu {
+  display: none;
+}
+@media (width < 900px) {
   .shell {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
   }
   .sidebar {
-    position: static;
-    height: auto;
-    padding: var(--space-24) var(--space-16);
-    gap: var(--space-16);
+    display: none;
   }
-  .nav {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .mobileMenu {
+    display: block;
+    background: var(--surface-subtle);
+    border-bottom: var(--rule-hairline) solid var(--line);
   }
-  .item {
-    gap: var(--space-8);
-    padding: var(--space-8);
-    flex-wrap: wrap;
-  }
-  .item small {
-    margin-left: 0;
-  }
-  .account {
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-8);
-  }
-  .actions {
+  .mobileMenu > summary {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-16);
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-8);
+    padding: var(--space-16);
+    min-height: var(--control-default);
+    cursor: pointer;
+    font-size: var(--text-table);
   }
-  .actions a,
-  .actions form {
-    width: auto;
+  .mobileMenu > summary > span:last-child {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+  .mobileNavigation {
+    display: grid;
+    gap: var(--space-24);
+    padding: var(--space-16);
+  }
+  .mobileNavigation .brand strong {
+    display: none;
   }
   .main {
-    padding: var(--space-32) var(--space-16);
+    padding: var(--space-24) var(--space-16);
   }
   .topbar {
-    padding: var(--space-12) var(--space-24);
+    padding: var(--space-8) var(--space-16);
   }
 }

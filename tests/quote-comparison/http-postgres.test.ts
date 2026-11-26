@@ -1,3 +1,4 @@
+import { pageRoutes, pageDefects } from "../design/route-sweep";
 import { randomBytes } from "node:crypto";
 import { spawn, type ChildProcess } from "node:child_process";
 import { createServer } from "node:net";
@@ -118,6 +119,64 @@ suite("private quote routes through a running Next HTTP server", () => {
     }
     await db?.close();
   });
+  it("sweeps every page as owner and Viewer in both languages over HTTP", async () => {
+    const client = await getPrismaClient().client.findFirstOrThrow({
+      where: { organizationId: "org_horizon" },
+    });
+    const defects: string[] = [];
+    for (const [role, cookie] of [
+      ["owner", ownerCookie],
+      ["viewer", viewerCookie],
+    ] as const) {
+      for (const locale of ["en", "zh-TW"]) {
+        for (const template of Object.values(pageRoutes).flat()) {
+          const path = template.replace("{locale}", locale).replace("{client}", client.businessKey);
+          const response = await fetch(`${origin}${path}`, {
+            headers: { cookie, "user-agent": "Twitterbot" },
+            signal: AbortSignal.timeout(60_000),
+          });
+          const html = await response.text();
+          // This route denies the Viewer; it is not a page that role may open.
+          if (role === "viewer" && path.endsWith("/quotes/prices")) {
+            expect(html).not.toMatch(/NT\$[0-9]/);
+            continue;
+          }
+          const denied = role === "viewer" && /\/clients(?:\/|$)/.test(path);
+          if (path.endsWith("/nothing-here") || denied) {
+            expect(response.status, path).toBe(404);
+            continue;
+          }
+          expect(response.status, `${role} ${path}`).toBe(200);
+          for (const defect of pageDefects(html)) defects.push(`${role} ${path}: ${defect}`);
+        }
+      }
+    }
+    console.info("SB077_ROUTE_SWEEP", JSON.stringify(defects));
+    expect(defects).toEqual([]);
+  }, 240_000);
+  it("returns the same 404 for unknown, unassigned and other-organization overview addresses", async () => {
+    const otherJob = await getPrismaClient().project.findFirstOrThrow({
+      where: { organizationId: { not: "org_horizon" } },
+    });
+    const otherClient = await getPrismaClient().client.findFirstOrThrow({
+      where: { organizationId: { not: "org_horizon" } },
+    });
+    for (const locale of ["en", "zh-TW"]) {
+      for (const [path, cookie] of [
+        [`/${locale}/projects/NO-SUCH-JOB`, ownerCookie],
+        [`/${locale}/projects/${otherJob.businessKey}`, ownerCookie],
+        [`/${locale}/projects/PRJ-ACTIVE-003`, viewerCookie],
+        [`/${locale}/clients/NO-SUCH-CLIENT`, ownerCookie],
+        [`/${locale}/clients/${otherClient.businessKey}`, ownerCookie],
+      ]) {
+        const response = await fetch(`${origin}${path}`, {
+          headers: { cookie: cookie!, "user-agent": "Twitterbot" },
+          signal: AbortSignal.timeout(60_000),
+        });
+        expect(response.status, path).toBe(404);
+      }
+    }
+  }, 90_000);
   const comparison = (cookie = ownerCookie, body?: string) =>
     fetch(`${origin}/api/projects/${projectKey}/quote-comparison?locale=zh-TW`, {
       method: "POST",

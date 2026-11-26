@@ -126,7 +126,7 @@ Paper and navigation Tabs are implemented by #65:
 
 The shell uses surface-subtle for the sidebar and canvas for the page. Product and firm names are at the top; labelled navigation follows. Navigation links use ink. Planned Knowledge and Customer Care link to their existing pages, remain muted, retain the 規劃中 / Planned tag, and participate in keyboard navigation. This Product Director decision replaces issue #69’s original non-link rule. Person, language, Settings and sign-out sit at the bottom. The current working area, including Settings, has aria-current. Viewer navigation preserves the existing capability-based omission of Clients.
 
-Below 900px the sidebar stacks above content. At 390px, record tables scroll inside their labelled focusable regions; the page itself must not scroll horizontally. Do not turn the table into stacked cards. Keep a skip link and logical DOM/tab order. Keyboard access and zoom must not depend on hover.
+Below 900px a native details/summary Menu disclosure replaces the sidebar with a compact product/current-area top bar. Navigation, account and language links remain usable without JavaScript. At 390px, record tables scroll inside their labelled focusable regions; the page itself must not scroll horizontally. Do not turn the table into stacked cards. Keep a skip link and logical DOM/tab order. Keyboard access and zoom must not depend on hover.
 
 ## Fonts and licences
 
@@ -155,3 +155,11 @@ The Quotes price list uses the shared table, filter and pagination controls. Ite
 Quote item suggestions occupy a full-width table row immediately below the item. They are in normal table flow, with no absolute positioning against a table row. The suggestion panel is limited to the document box's visible inner width, even when the table is wider at 390px; description/unit, linked price/source, date and client wrap within it. A differing client price occupies its own following line. The panel stays horizontally visible while the table scrolls. Opening, loading and resizing reveal the panel within the document's own vertical scroll area, clear of the sticky header and totals; its height is bounded and longer lists scroll internally. Native buttons and links, focus return and the IME/caret rules remain. History stays beside its item. The comparison panel owns the findings list; the issue review retains its reminder without duplicating that list. Save confirmation has no comparison link.
 
 Home never lists Compare as a decision. Only an Issue quote row may show the quiet secondary comparison hint: never run or out of date, linking to `quote#quote-comparison` in the page language. Current comparisons show no hint. It adds no decision and is hidden without comparison and quote-amount access.
+
+## Design pass v2 shared components
+
+SectionHeading renders an h2 in the section type scale with a strong rule and optional actions. FactsList is a semantic dl: labels use muted table text, values use ink, numeric values align right with tabular figures. Adjacent equal labels may group into one dt above their unchanged values; this is used for answer-card findings. No facts are combined or rewritten.
+
+Dialog (step D) uses the native dialog element with showModal, a named heading, Escape dismissal, focus containment and return to the opener. It adds no new colour or shadow.
+
+Below 900 px, the shell uses a product/current-area top bar and a native details/summary Menu disclosure. Navigation, identity, languages, Settings and sign-out remain inside it, usable without JavaScript. The skip link is first. The desktop sidebar remains above that breakpoint. Tables scroll within their own named focusable regions.

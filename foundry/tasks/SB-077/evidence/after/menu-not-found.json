@@ -1,0 +1,66 @@
+[
+  {
+    "locale": "en",
+    "open": true,
+    "navigationVisible": true,
+    "firmVisible": 1,
+    "settings": true
+  },
+  {
+    "locale": "zh-TW",
+    "open": true,
+    "navigationVisible": true,
+    "firmVisible": 1,
+    "settings": true
+  },
+  {
+    "locale": "en",
+    "notFound": [
+      {
+        "key": "nothing-here",
+        "status": 404,
+        "text": "StrideBrain\n\nPage not found\n\nThis page is unavailable.\n\nBack to Home"
+      },
+      {
+        "key": "projects/NO-SUCH-JOB",
+        "status": 404,
+        "text": "StrideBrain\n\nPage not found\n\nThis page is unavailable.\n\nBack to Home"
+      },
+      {
+        "key": "projects/PRJ-ACTIVE-003",
+        "status": 404,
+        "text": "StrideBrain\n\nPage not found\n\nThis page is unavailable.\n\nBack to Home"
+      },
+      {
+        "key": "clients/NO-SUCH-CLIENT",
+        "status": 404,
+        "text": "StrideBrain\n\nPage not found\n\nThis page is unavailable.\n\nBack to Home"
+      }
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "notFound": [
+      {
+        "key": "nothing-here",
+        "status": 404,
+        "text": "StrideBrain\n\n找不到頁面\n\n目前無法開啟此頁面。\n\n返回首頁"
+      },
+      {
+        "key": "projects/NO-SUCH-JOB",
+        "status": 404,
+        "text": "StrideBrain\n\n找不到頁面\n\n目前無法開啟此頁面。\n\n返回首頁"
+      },
+      {
+        "key": "projects/PRJ-ACTIVE-003",
+        "status": 404,
+        "text": "StrideBrain\n\n找不到頁面\n\n目前無法開啟此頁面。\n\n返回首頁"
+      },
+      {
+        "key": "clients/NO-SUCH-CLIENT",
+        "status": 404,
+        "text": "StrideBrain\n\n找不到頁面\n\n目前無法開啟此頁面。\n\n返回首頁"
+      }
+    ]
+  }
+]

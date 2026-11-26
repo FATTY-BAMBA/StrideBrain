@@ -19,11 +19,6 @@
     "fontSize": 1,
     "radius": 2
   },
-  "src/components/demo-value/home-chat.module.css": {
-    "color": 4,
-    "fontSize": 10,
-    "radius": 4
-  },
   "src/components/demo-value/preview-entry.module.css": {
     "color": 7,
     "fontSize": 2,
@@ -34,34 +29,9 @@
     "fontSize": 17,
     "radius": 8
   },
-  "src/components/home-desk/home-desk.module.css": {
-    "color": 1,
-    "fontSize": 11,
-    "radius": 2
-  },
   "src/components/internal-review/internal-review.module.css": {
     "color": 42,
     "fontSize": 12,
     "radius": 6
-  },
-  "src/components/projects/job-form.module.css": {
-    "color": 3,
-    "fontSize": 3,
-    "radius": 0
-  },
-  "src/components/projects/project-list.module.css": {
-    "color": 0,
-    "fontSize": 2,
-    "radius": 0
-  },
-  "src/components/projects/project-workspace-overview.module.css": {
-    "color": 10,
-    "fontSize": 23,
-    "radius": 2
-  },
-  "src/components/quote-draft/quote-draft-workspace.module.css": {
-    "color": 15,
-    "fontSize": 4,
-    "radius": 3
   }
 }

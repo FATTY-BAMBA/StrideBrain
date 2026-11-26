@@ -61,7 +61,7 @@ import { WorkspaceShell } from "@/components/shell/workspace-shell";
 beforeEach(() => {
   boundary.context.mockResolvedValue(jobContext());
   boundary.policy.mockResolvedValue({ id: "job", excluded: false });
-  boundary.workspace.mockResolvedValue({ kind: "UNAVAILABLE" });
+  boundary.workspace.mockResolvedValue({ kind: "AVAILABLE", workspace: {} });
   boundary.quote.mockResolvedValue({ kind: "UNAVAILABLE" });
   boundary.issue.mockResolvedValue({ kind: "UNAVAILABLE" });
   boundary.actions.mockResolvedValue({ kind: "ACTION_NOT_AUTHORIZED", requestId: "" });
@@ -206,3 +206,8 @@ it.each(["no capability", "no policy", "lookup failure", "session failure"])(
       expect(boundary.policy).not.toHaveBeenCalled();
   },
 );
+
+it("uses a non-disclosing 404 for an unavailable overview, without treating optional panel failure as denial", async () => {
+  boundary.workspace.mockResolvedValue({ kind: "UNAVAILABLE" });
+  await expect(page("en", "")).rejects.toThrow("FRAMEWORK_404");
+});

@@ -61,14 +61,14 @@ export default async function ProjectsPage({
       eyebrow={catalog["projects.eyebrow"]}
       title={catalog["projects.title"]}
       description={copy.groupDescription}
-    >
-      {canCreate ? (
-        <p style={{ marginBottom: 24 }}>
+      actions={
+        canCreate ? (
           <Link className={styles.primary} href={`/${locale}/projects/new` as Route}>
             {copy.newJob}
           </Link>
-        </p>
-      ) : null}
+        ) : undefined
+      }
+    >
       {outcome.kind === "AVAILABLE" ? (
         <>
           <StageCounts locale={locale} counts={counts} active={activeGroup} />

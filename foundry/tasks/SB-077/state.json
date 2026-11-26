@@ -1,1 +1,10 @@
-{"issue":77,"branch":"build/sb-077-design-pass-v2","baseCommit":"aacee10141ef03a5780286aa934c0ef890db16b4","status":"IN_PROGRESS_A","stopAfter":"C","draft":true,"hostedAcceptance":"WAITING_FOR_PRODUCT_DIRECTOR"}
+{
+  "issue": 77,
+  "branch": "build/sb-077-design-pass-v2",
+  "baseCommit": "aacee10141ef03a5780286aa934c0ef890db16b4",
+  "status": "STOPPED_AFTER_C",
+  "stopAfter": "C",
+  "draft": true,
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "pullRequest": 82
+}

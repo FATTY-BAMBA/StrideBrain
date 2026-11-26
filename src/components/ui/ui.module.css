@@ -362,3 +362,49 @@
   outline: var(--focus-width) solid var(--focus);
   outline-offset: var(--focus-offset);
 }
+
+.sectionHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-16);
+  padding-bottom: var(--space-12);
+  border-bottom: var(--rule-section) solid var(--ink);
+}
+.sectionHeading h2 {
+  margin: 0;
+  font-size: var(--text-section);
+  line-height: var(--leading-section);
+  font-weight: var(--weight-section);
+}
+.facts {
+  margin: 0;
+  font-size: var(--text-table);
+  line-height: var(--leading-table);
+}
+.fact,
+.factGroup {
+  padding-block: var(--space-12);
+  border-bottom: var(--rule-hairline) solid var(--line);
+}
+.fact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: var(--space-16);
+}
+.facts dt {
+  color: var(--muted);
+}
+.facts dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.factGroup {
+  display: grid;
+  gap: var(--space-12);
+}
+.facts .numeric {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}

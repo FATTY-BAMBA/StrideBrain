@@ -1,3 +1,5 @@
+import { FoundationPage } from "@/components/ui/foundation-page";
+import { getCatalog } from "@/modules/localization/catalog";
 import { SiteAddressForm } from "@/components/projects/site-address-form";
 import { createProjectWriteServices } from "@/lib/server/project-write-services";
 import { AssistantControl } from "@/components/assistant/assistant-control";
@@ -6,11 +8,9 @@ import { notFound } from "next/navigation";
 
 import { ProjectWorkspaceOverview } from "@/components/projects/project-workspace-overview";
 import { ProjectActions } from "@/components/internal-review/project-actions";
-import { FoundationPage } from "@/components/ui/foundation-page";
 import { createProjectWorkspaceService } from "@/lib/server/project-workspace-services";
 import { createInternalReviewServices } from "@/lib/server/internal-review-services";
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
-import { getCatalog } from "@/modules/localization/catalog";
 import { isSupportedLocale } from "@/modules/localization/config";
 import { projectNavigation, type ProjectSurfaceKey } from "@/modules/navigation/project-navigation";
 import { parseInternalReviewRoute } from "@/modules/internal-review-experience/route-state";
@@ -40,9 +40,6 @@ export default async function ProjectWorkspacePage({
 
   const surface = resolveSurface(surfaceSegments);
   if (!surface) notFound();
-
-  const catalog = getCatalog(rawLocale);
-  const surfaceLabel = catalog[`nav.${surface}`];
 
   if (surface === "actions") {
     const context = await resolveServerRuntimeContext();
@@ -77,6 +74,16 @@ export default async function ProjectWorkspacePage({
 
   if (surface === "overview") {
     const context = await resolveServerRuntimeContext();
+    if (!context) {
+      const catalog = getCatalog(rawLocale);
+      return (
+        <FoundationPage
+          eyebrow={catalog["project.eyebrow"]}
+          title={catalog["project.unavailableTitle"]}
+          description={catalog["project.unavailableDescription"]}
+        />
+      );
+    }
     if (context) {
       const outcome = await createProjectWorkspaceService().execute(
         { ...context, locale: rawLocale },
@@ -109,31 +116,5 @@ export default async function ProjectWorkspacePage({
     }
   }
 
-  return (
-    <FoundationPage
-      eyebrow={catalog["project.eyebrow"]}
-      title={catalog["project.unavailableTitle"]}
-      description={catalog["project.unavailableDescription"]}
-    >
-      <section className="project-unavailable" aria-labelledby="project-state-title">
-        <div>
-          <span className="state-label">{catalog["state.notConnected"]}</span>
-          <h2 id="project-state-title">{surfaceLabel}</h2>
-          <p>{catalog["project.foundationDescription"]}</p>
-        </div>
-        <dl>
-          <div>
-            <dt>{catalog["project.requestedKey"]}</dt>
-            <dd>
-              <code>{projectKey}</code>
-            </dd>
-          </div>
-          <div>
-            <dt>{rawLocale === "zh-TW" ? "目前區域" : "Current area"}</dt>
-            <dd>{surfaceLabel}</dd>
-          </div>
-        </dl>
-      </section>
-    </FoundationPage>
-  );
+  notFound();
 }

@@ -18,7 +18,9 @@ import {
   type InternalReviewRouteState,
 } from "@/modules/internal-review-experience/route-state";
 import type { Locale } from "@/modules/localization/config";
-import styles from "./internal-review.module.css";
+import { PageHeader } from "@/components/ui/page-header";
+import { Table, NameCell } from "@/components/ui/table";
+import styles from "@/components/ui/ui.module.css";
 
 export function ProjectActions({
   locale,
@@ -62,14 +64,13 @@ export function ProjectActions({
   }, [receiptOutcome, route.returnId]);
 
   return (
-    <section className={styles.list}>
-      <header>
-        <h1 id="project-actions-title" tabIndex={-1}>
-          {copy.actionsTitle}
-        </h1>
-        {listOutcome.kind === "AVAILABLE" ? <p>{listOutcome.project.name}</p> : null}
-        <p>{copy.actionsDescription}</p>
-      </header>
+    <section className={styles.page}>
+      <PageHeader
+        id="project-actions-title"
+        context={listOutcome.kind === "AVAILABLE" ? listOutcome.project.name : "StrideBrain"}
+        title={copy.actionsTitle}
+        description={copy.actionsDescription}
+      />
       {listOutcome.kind === "ACTION_NOT_AUTHORIZED" ? (
         <p className={styles.notice} role="status">
           {reviewStateMessage(copy, listOutcome.kind)}
@@ -77,41 +78,43 @@ export function ProjectActions({
       ) : listOutcome.actions.length === 0 ? (
         <p>{copy.actionsEmpty}</p>
       ) : (
-        listOutcome.actions.map((action) => (
-          <article key={action.businessKey} className={styles.card}>
-            <div>
-              <span className={styles.status}>{copy.open}</span>
-              <h2 className={styles.receiptTitle}>{action.title}</h2>
-            </div>
-            <dl className={styles.referenceGrid}>
-              <div>
-                <dt>{copy.assignee}</dt>
-                <dd>{action.assigneeDisplayName ?? copy.unassigned}</dd>
-              </div>
-              <div>
-                <dt>{copy.dueDate}</dt>
-                <dd>{action.dueDate ?? copy.noDueDate}</dd>
-              </div>
-            </dl>
-            <div className={styles.actions}>
-              <Link
-                id={`action-${action.businessKey}`}
-                className={styles.secondary}
-                href={
-                  internalReviewHref(
-                    locale,
-                    projectKey,
-                    action,
-                    { actionKey: action.businessKey },
-                    "actions",
-                  ) as Route
-                }
-              >
-                {copy.openReceipt}
-              </Link>
-            </div>
-          </article>
-        ))
+        <Table
+          caption={copy.actionsTitle}
+          headings={[
+            { label: copy.actionsTitle },
+            { label: copy.assignee },
+            { label: copy.dueDate },
+            { label: copy.openReceipt, action: true },
+          ]}
+        >
+          {listOutcome.actions.map((action) => (
+            <tr key={action.businessKey}>
+              <NameCell>
+                {action.title}
+                <span className={styles.marker}>{copy.open}</span>
+              </NameCell>
+              <td>{action.assigneeDisplayName ?? copy.unassigned}</td>
+              <td>{action.dueDate ?? copy.noDueDate}</td>
+              <td className={styles.rowAction}>
+                <Link
+                  id={`action-${action.businessKey}`}
+                  className={styles.rowLink}
+                  href={
+                    internalReviewHref(
+                      locale,
+                      projectKey,
+                      action,
+                      { actionKey: action.businessKey },
+                      "actions",
+                    ) as Route
+                  }
+                >
+                  {copy.openReceipt}
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </Table>
       )}
       {receiptOutcome || route.actionKey ? (
         <ReviewModal

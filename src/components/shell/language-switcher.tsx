@@ -75,3 +75,28 @@ export function LanguageSwitcher({ locale, zhLabel, enLabel }: LanguageSwitcherP
     </div>
   );
 }
+
+/** The native menu remains navigable before hydration and with JavaScript disabled. */
+export function LanguageSwitcherFallback({ locale }: { locale: Locale }) {
+  const pathname = usePathname();
+  return (
+    <div className={styles.languages} aria-label="繁中 / EN">
+      <Icon name="language" decorative />
+      <a
+        href={pathForLocale(pathname, "zh-TW")}
+        lang="zh-Hant"
+        aria-current={locale === "zh-TW" ? "page" : undefined}
+      >
+        繁中
+      </a>
+      <span aria-hidden="true">/</span>
+      <a
+        href={pathForLocale(pathname, "en")}
+        lang="en"
+        aria-current={locale === "en" ? "page" : undefined}
+      >
+        EN
+      </a>
+    </div>
+  );
+}
