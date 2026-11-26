@@ -242,3 +242,5 @@ Corrections within round 2 before dispatch 6:
 One paid dispatch remains, pending the corrected implementation's full check and CI. No further allowance is assumed.
 
 Post-run-5 `npm run check` passes: **1,973 tests / 197 files and build**. The additional client-provenance assertion also passes in the focused evaluator test. Free raw-selection replay of runs 1–4 remains green; no card layout or stored price changed after the screenshots. CI and the final authorized paid dispatch will use the corrected protocol commit.
+
+[CI 45792089777](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45792089777) passed the protocol correction `01df0f8`. The final tool-description addition tells named-job resolution to copy the complete name/reference from currentQuestion rather than a fragment (run 5 searched “02” then tried the page job). This is general tool-parameter guidance; query semantics and exact server checks are unchanged. Its final `npm run check` passes **1,974 tests / 197 files and build**. No sixth paid dispatch has occurred yet.

@@ -36,6 +36,14 @@ function setup() {
   return { services, policies, tools: new AssistantReadTools(services, policies) };
 }
 describe("assistant read tools", () => {
+  it("tells identity searches to use the complete copied job name rather than a numeric fragment", () => {
+    const tool = assistantTools(seededFirmLists).find((t) => t.name === "list_jobs")!;
+    const properties = tool.parameters.properties as Record<string, { description?: string }>;
+    expect(properties.query!.description).toContain(
+      "complete name or reference from currentQuestion",
+    );
+    expect(properties.query!.description).toContain("not a fragment");
+  });
   it("describes the optional item unit as a stored value to inspect before filtering, never a translated word", () => {
     const tool = assistantTools(seededFirmLists).find(
       (t) => t.name === "get_price_list_item_last_prices",

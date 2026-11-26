@@ -56,7 +56,12 @@ export function assistantTools(lists: FirmLists): readonly ToolDefinition[] {
             enum: stageGroups.map((g) => g.key),
             description: stageGroups.map((g) => `${g.key}: ${g.en} / ${g["zh-TW"]}`).join("; "),
           },
-          query: { type: "string", maxLength: 128 },
+          query: {
+            type: "string",
+            maxLength: 128,
+            description:
+              "To resolve a named job, copy its complete name or reference from currentQuestion, not a fragment. Omit query for an unfiltered list.",
+          },
           offset: { type: "integer", minimum: 0, maximum: 1000 },
         },
         additionalProperties: false,
