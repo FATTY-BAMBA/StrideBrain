@@ -3,11 +3,10 @@
   "branch": "build/sb-079-fact-answers",
   "baseCommit": "bb8d8d8d9fbb3365477f5164dbd9d84d7d237fe3",
   "issueUpdatedAt": "2026-11-25T20:22:52Z",
-  "status": "REVIEW_FIX_ROUND_3_LOCAL_CHECK_PASSED",
+  "status": "REVIEW_FIX_ROUND_3_PAID_ACCEPTANCE_FAILED",
   "delivery": "A \u2192 B \u2192 C \u2192 D \u2192 E",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
-  "paidEvaluationLimit": 6,
   "paidEvaluationRuns": [
     {
       "runId": 45702234409,
@@ -44,16 +43,30 @@
       "commit": "c3323c5d33b33ea647fc7074db59d483a8abdfdc",
       "status": "FAILED",
       "estimatedUsd": "0.495614000"
+    },
+    {
+      "runId": 45803605367,
+      "commit": "6ce9bba0c15fa39af38487d8205fa1789a86a1ca",
+      "mode": "FOCUSED_NOT_ACCEPTANCE",
+      "status": "PASSED_69_OF_69",
+      "estimatedUsd": "0.093715000"
+    },
+    {
+      "runId": 45804259788,
+      "commit": "6ce9bba0c15fa39af38487d8205fa1789a86a1ca",
+      "mode": "FULL_ACCEPTANCE",
+      "status": "FAILED",
+      "estimatedUsd": "0.454502700"
     }
   ],
   "pullRequest": 80,
   "confirmedDecision": "No free prose: phrase ids only; server owns source headings and fact layout; 12 facts and one list with ten rows plus remaining count. Confirmed comment 7173585372.",
   "ci": {
-    "runId": 45793615143,
-    "commit": "c3323c5d33b33ea647fc7074db59d483a8abdfdc",
+    "runId": 45802548633,
+    "commit": "6ce9bba0c15fa39af38487d8205fa1789a86a1ca",
     "status": "PASSED"
   },
-  "paidEvaluationEstimatedUsdTotal": "2.422700000",
+  "paidEvaluationEstimatedUsdTotal": "2.970917700",
   "reviewComments": [
     7180179624,
     7180301103,
@@ -65,9 +78,9 @@
     "tests": 1954,
     "files": 199
   },
-  "paidEvaluationRemaining": 0,
   "remainingAcceptance": [
-    "Focused paid validation and at most one full run pending.",
+    "One FACT_LIMIT discard (13 facts, limit 12) in full-run round 2 en-closed; all other gates pass.",
+    "The one full run is used. No further run started; stop after report.",
     "Hosted retest awaits the Product Director; no hosted changes."
   ],
   "reviewRound2Comments": [
@@ -75,13 +88,33 @@
     7181049379,
     7181219556
   ],
-  "confirmedCardDecision": "Product Director confirmed record cards and closed-job readings; prior provisional layout items are settled.",
+  "confirmedCardDecision": "Record cards and empty-list sentences accepted as built in owner comment 7188877802, subject to hosted retest.",
   "reviewRound3Comment": 7188877802,
   "round3PaidAuthorization": {
     "maximumUsd": "1.000000000",
     "focusedFirst": true,
     "maximumFullRuns": 1,
-    "spentUsd": "0.000000000",
-    "remainingUsd": "1.000000000"
-  }
+    "spentUsd": "0.548217700",
+    "remainingUsd": "0.451782300",
+    "focusedRuns": [
+      {
+        "runId": 45803605367,
+        "commit": "6ce9bba0c15fa39af38487d8205fa1789a86a1ca",
+        "maximumUsd": "0.200000000",
+        "status": "PASSED_NOT_ACCEPTANCE",
+        "estimatedUsd": "0.093715000"
+      }
+    ],
+    "fullRuns": [
+      {
+        "runId": 45804259788,
+        "commit": "6ce9bba0c15fa39af38487d8205fa1789a86a1ca",
+        "maximumUsd": "0.700000000",
+        "status": "FAILED_FACT_LIMIT_DISCARD",
+        "estimatedUsd": "0.454502700"
+      }
+    ],
+    "remainingFullRuns": 0
+  },
+  "priorPaidEvaluationLimit": 6
 }

@@ -1,4 +1,5 @@
-> Current status: fix round 3 follows owner review 7188877802. Free run-6 replay passes 251/252 with current checks; focused paid validation and at most one full run are pending within a newly authorized US$1.00 budget. PR #80 remains draft; hosted retest awaits the Product Director.
+> Current status: fix round 3 is locally and CI verified on 6ce9bba. Focused paid proof passed 69/69; the single full run passed 126/126 required answers and every efficiency target, but **acceptance fails because one answer was discarded (FACT_LIMIT)**. Additional spend is US$0.548217700 of US$1.00. PR #80 stays draft; hosted retest awaits the Product Director. Work stops after this round.
+
 
 
 # SB-079 verification
@@ -287,7 +288,7 @@ Not verified / not achieved: the three-round paid acceptance gate and reliable o
 The actual comment author is repository owner FATTY-BAMBA (101108617). The Product Director directly confirmed its proposed pass rules and authorized **up to US$1.00 additional evaluation, focused runs first and at most one full run**. This supersedes the exhausted six-dispatch allowance; old reports are retained with their original gates/results. This is the third and last fix round in the current 24 hours.
 
 - Removed jobMentions, declaredSubjects and their instruction/schema fields; no replacement model declaration. Authorized exact-name/reference resolution and subject checks remain.
-- Added a server-only boolean guard at the model-answer boundary. For non-owner readers it matches the question against this firm's unreadable live job names/references using the existing identity matcher. Runtime assignment and stored assignment must both allow access. Identities never cross to the model, output or logs. Owner bypasses the identity scan; invalid membership/capability fails closed.
+- Added a server-only boolean guard at the model-answer boundary. For non-owner readers it matches the question against this firm's unreadable live job names/references using the existing identity matcher. Runtime assignment and stored assignment must both allow access. Identities read by this guard never cross to the model, output or logs. Owner bypasses the identity scan; invalid membership/capability fails closed.
 - list_jobs keeps substring name matching but requires a whole reference match. A query of 02 no longer finds PRJ-XINYI-026 through its reference.
 - Whitespace inside a selected fact reference is removed before turn-map lookup. Unknown/prototype/path references still reject; no value is edited.
 - Item-price unit is now a preference. Reads use the same Price list use case, combine preferred-unit and unfiltered description results, deduplicate, and keep the five-item cap and all access/exclusion checks. An unstored unit such as ping no longer hides matching descriptions; each card retains the stored unit.
@@ -313,3 +314,42 @@ Full check, CI and paid outcomes will be recorded below. Hosted retest, live-pro
 Local check attempts: the first found the workflow key-order regression assertion (fixed by keeping the API key first in the evaluation step's env block). A subsequent run suffered broad 5–30 second timeouts and several approximately 234-second pauses across unrelated database suites. Assertions and timeouts were not relaxed; the same command was rerun under caffeinate to prevent idle sleep. The cause of the pauses is not established.
 
 Final local check passed under caffeinate: **1,954 tests / 199 files**, format/design/lint/typecheck and production build. Only the pre-existing prisma.config.ts anonymous-default-export lint warning remains. No timeouts or assertions changed. Initial diagnostic plan: 23 named cases × three rounds, ceiling US$0.20; no job drafts in this focused run. A subsequent full run is limited to one and will use a separately bounded ceiling within the remaining US$1.00 total.
+
+
+### CI and focused paid proof
+
+Implementation commit **6ce9bba0c15fa39af38487d8205fa1789a86a1ca** passed [CI 45802548633](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45802548633): 1,954 tests / 199 files and build; real migration deployment and seed/verify twice; production dependency audit zero vulnerabilities.
+
+[Focused run 45803605367](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45803605367), same commit, selected 23 cases × three rounds, including all 12 unresolved-job wordings and the formerly failed selection/unit cases. This is **not an acceptance run**; job drafts were skipped. [Raw report](evidence/round3-focused-run-1.json).
+
+| Round | English | zh-TW | Wrong values / access violations / discards | Median calls / named-refusal median | Within three calls | p90 | Question cost |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 11/11 | 12/12 | 0 / 0 / 0 | 2 / 1 | 22/23 | 2,585 ms | US$0.031212400 |
+| 2 | 11/11 | 12/12 | 0 / 0 / 0 | 2 / 1 | 22/23 | 2,430 ms | US$0.031016300 |
+| 3 | 11/11 | 12/12 | 0 / 0 / 0 | 2 / 1 | 22/23 | 2,553 ms | US$0.031486300 |
+
+All 23 cases passed 3/3, **69/69**, for **US$0.093715000**, below its US$0.20 ceiling. The focused subset does not satisfy the full-suite composition and its round-1/3 p90 exceeds 2,500 ms; its diagnostic success is not claimed as acceptance. The single full run **45804259788** was then dispatched on the same CI-passed commit with a US$0.70 ceiling. The combined dispatch ceilings are US$0.90, below the newly authorized US$1.00. No production code changed between focused and full runs.
+
+
+### Final full paid result — acceptance failed on one discard
+
+[Full run 45804259788](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45804259788), **6ce9bba**, is the one full run authorized for this round. [Raw report](evidence/round3-full-run-1.json) · [Compact summary and per-question rates](evidence/round3-evaluation-summary.json).
+
+| Round | English core | zh-TW core | Required | Wrong values / access violations / discards | Median calls / named-refusal median | Within three calls | p90 | Cost/question |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 20/20 | 20/20 | 42/42 | 0 / 0 / 0 | 2 / 1 | 81/84 (96.4%) | 2,428 ms | US$0.001427575000 |
+| 2 | 19/20 | 20/20 | 42/42 | 0 / 0 / 1 | 2 / 1 | 84/84 (100%) | 2,397 ms | US$0.001392855952 |
+| 3 | 20/20 | 20/20 | 42/42 | 0 / 0 / 0 | 2 / 1 | 83/84 (98.8%) | 2,318 ms | US$0.001377559524 |
+
+**251/252 question answers pass.** Every required case passes 3/3: **126/126 (100%)**, above the confirmed 97% rule, and every case is at least 2/3. Across all 84 cases, 83 pass 3/3 and en-closed passes 2/3. Core scores, median calls, named-refusal median, 95% within three calls, five-call cap, latency and cost limits all pass in every round. No displayed record/financial value or access violation occurs. Job drafts remain **16/16 per language per round**, required **22/22 per round**, and the separately reported residential case passes all three rounds; no job-draft code or expected values changed.
+
+**The absolute zero-discard gate fails.** In round 2, en-closed selected 13 individual fact references (names/references plus closed-job facts) and no list. The server correctly rejects it with FACT_LIMIT against the unchanged 12-fact cap. The raw answer is preserved in the artifact. It is a real acceptance failure, not waived by the 19/20 core score or 100% required-case rate. No check, instruction, expected value or selection was changed after this paid run.
+
+Costs, computed with exact decimal arithmetic:
+
+- Focused: **US$0.093715000** (69 answers; no drafts).
+- Full questions: **US$0.352631200**; full job drafts including reported cases: **US$0.101871500**; full total: **US$0.454502700**.
+- Additional total: **US$0.548217700** of the authorized US$1.00; unspent **US$0.451782300**. The single full-run allowance is used; no further run was started.
+- All eight paid dispatches for issue #79, including the six prior ones: **US$2.970917700**.
+
+Not achieved/verified: paid acceptance (one FACT_LIMIT discard), hosted retest, live-provider browser integration, hosted timing callback and the cause of earlier hosted slow turns. No hosted deployment, migration, seed, settings change or Test site workflow. No existing migration was edited. Round-2 component screenshots still represent the unchanged accepted UI. The final evidence-only commit changes reports/state, not the implementation tested by CI and both paid runs. Stopping after the PR report as requested.
