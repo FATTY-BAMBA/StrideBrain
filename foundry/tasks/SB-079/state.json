@@ -62,8 +62,8 @@
   "pullRequest": 80,
   "confirmedDecision": "No free prose: phrase ids only; server owns source headings and fact layout. Twelve printed fact rows plus per-card overflow counts; first list ten rows plus remaining count, later lists title/count/link. Owner review 7201639602 supersedes reference-count rejections.",
   "ci": {
-    "runId": 45802548633,
-    "commit": "6ce9bba0c15fa39af38487d8205fa1789a86a1ca",
+    "runId": 45888782216,
+    "commit": "0dbfb4f13088d697144b322bcb61451a7c540ec9",
     "status": "PASSED"
   },
   "paidEvaluationEstimatedUsdTotal": "2.970917700",
@@ -79,7 +79,6 @@
     "files": 201
   },
   "remainingAcceptance": [
-    "CI for the fourth fix round pending.",
     "Hosted retest of all three roles waits for the Product Director; no hosted changes."
   ],
   "reviewRound2Comments": [
