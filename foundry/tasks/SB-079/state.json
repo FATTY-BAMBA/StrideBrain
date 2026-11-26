@@ -3,7 +3,7 @@
   "branch": "build/sb-079-fact-answers",
   "baseCommit": "bb8d8d8d9fbb3365477f5164dbd9d84d7d237fe3",
   "issueUpdatedAt": "2026-11-25T20:22:52Z",
-  "status": "RUN_5_FAILURE_FIXES",
+  "status": "REVIEW_FIX_ROUND_2_PAID_ACCEPTANCE_FAILED",
   "delivery": "A \u2192 B \u2192 C \u2192 D \u2192 E",
   "pullRequestDraft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
@@ -38,16 +38,22 @@
       "commit": "863f4da44877128dc6cac1c73afa571fa182134e",
       "status": "FAILED",
       "estimatedUsd": "0.495662000"
+    },
+    {
+      "runId": 45794522013,
+      "commit": "c3323c5d33b33ea647fc7074db59d483a8abdfdc",
+      "status": "FAILED",
+      "estimatedUsd": "0.495614000"
     }
   ],
   "pullRequest": 80,
   "confirmedDecision": "No free prose: phrase ids only; server owns source headings and fact layout; 12 facts and one list with ten rows plus remaining count. Confirmed comment 7173585372.",
   "ci": {
-    "runId": 45792089777,
-    "commit": "01df0f8994e841ec98f399b59818f69d74b0628d",
+    "runId": 45793615143,
+    "commit": "c3323c5d33b33ea647fc7074db59d483a8abdfdc",
     "status": "PASSED"
   },
-  "paidEvaluationEstimatedUsdTotal": "1.927086000",
+  "paidEvaluationEstimatedUsdTotal": "2.422700000",
   "reviewComments": [
     7180179624,
     7180301103,
@@ -59,11 +65,12 @@
     "tests": 1974,
     "files": 197
   },
-  "paidEvaluationRemaining": 1,
+  "paidEvaluationRemaining": 0,
   "remainingAcceptance": [
-    "Corrected protocol awaits CI and final authorized paid dispatch 6.",
+    "Paid gate fails all three rounds: required cases 34/42, 35/42, 34/42; copied-mention refusals, named-refusal call limit and cost limit remain.",
+    "All six paid dispatches used; two additional runs cost US$0.991276000.",
     "Hosted retest awaits Product Director; no hosted changes.",
-    "Empty-list copy remains provisional."
+    "Empty-list copy remains provisional; other layout decisions are confirmed."
   ],
   "reviewRound2Comments": [
     7181003350,

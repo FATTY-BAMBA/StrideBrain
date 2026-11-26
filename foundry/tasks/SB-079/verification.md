@@ -1,4 +1,4 @@
-> Current status: fix round 2 supersedes the historical layout and pre-model word-check statements below. The Product Director confirmed record cards in comment 7181003350; layout items 3, 5 and 6 are settled. Up to two additional paid evaluations are authorized (six total). See the final fix-round-2 section for current checks and remaining acceptance.
+> Current status: fix round 2 is committed and locally/CI verified, but final paid run 6 fails acceptance. All six authorized dispatches are used. PR #80 stays draft; see the final section for scores, cost and remaining failures. The Product Director confirmed record cards in comment 7181003350; layout items 3, 5 and 6 are settled.
 
 # SB-079 verification
 
@@ -244,3 +244,38 @@ One paid dispatch remains, pending the corrected implementation's full check and
 Post-run-5 `npm run check` passes: **1,973 tests / 197 files and build**. The additional client-provenance assertion also passes in the focused evaluator test. Free raw-selection replay of runs 1–4 remains green; no card layout or stored price changed after the screenshots. CI and the final authorized paid dispatch will use the corrected protocol commit.
 
 [CI 45792089777](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45792089777) passed the protocol correction `01df0f8`. The final tool-description addition tells named-job resolution to copy the complete name/reference from currentQuestion rather than a fragment (run 5 searched “02” then tried the page job). This is general tool-parameter guidance; query semantics and exact server checks are unchanged. Its final `npm run check` passes **1,974 tests / 197 files and build**. No sixth paid dispatch has occurred yet.
+
+Final implementation [CI 45793615143](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45793615143) passes on `c3323c5d33b33ea647fc7074db59d483a8abdfdc`: 1,974 tests / 197 files, build, migrations, repeated seed/verify and zero production dependency vulnerabilities. [Paid run 6, 45794522013](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45794522013), uses that exact commit and was dispatched after CI passed. All six authorized dispatches are now used.
+
+The final local screenshots also load the actual versioned Inter and Noto Sans TC font files. At 1440 and 390px in both languages, the font-load, overflow, long-value wrapping and keyboard checks pass; evidence/round2-card-browser.json records these checks. This refresh changes evidence only.
+
+## Paid run 6 — failed; allowance exhausted, stop after report
+
+[Run 45794522013](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45794522013), exact implementation `c3323c5d33b33ea647fc7074db59d483a8abdfdc`, model gemini-3.5-flash-lite. [Full unchanged raw report](evidence/paid-run-6.json), [summary and per-question rates](evidence/paid-run-6-summary.json). This is the second additional run authorized by the Product Director and the sixth total. No further paid dispatch was made or is assumed authorized.
+
+| Round | en core /20 | zh-TW core /20 | Required /42 | Wrong displayed values | Discards | Median / max calls | Named-refusal max | p90 ms | Cost/question USD |
+| --- | ---: | ---: | ---: | ---: | ---: | --- | ---: | ---: | ---: |
+| 1 | 20 | 20 | 34 | 0 | 0 | 2 / 5 | 5 | 1987 | 0.001548750000 |
+| 2 | 20 | 20 | 35 | 0 | 1 | 2 / 4 | 4 | 2062 | 0.001577332143 |
+| 3 | 20 | 20 | 34 | 0 | 0 | 2 / 5 | 5 | 2043 | 0.001561298810 |
+
+Per-question rates: 73 cases pass 3/3, four pass 2/3, one passes 1/3 and six pass 0/3 (228/252 outcomes pass).
+
+**Acceptance is not met.** Every round fails required-case completeness, the named-refusal maximum of two calls, and the cost-per-question limit of US$0.001527777778. Median calls, the 90%-within-three-calls target and p90 latency pass. No wrong financial/record value was displayed. The English and Chinese original closed-job cases pass 3/3, with quote/actual/difference grouped. All 12 unresolved-subject cases reach the model and refuse safely in each round, but some take four or five calls. The model still cannot reliably supply the copied-mention protocol, so the ordinary-question requirement is **not demonstrated by paid acceptance**, despite its scripted routing tests passing.
+
+Remaining failures, with raw evidence retained:
+
+- en/zh job-page-selected and Viewer stage are 0/3: the model inserts the page reference into jobMentions even though the current question names no job. The exact-occurrence check returns a refusal. zh-TW-millwork-range is also 0/3: the answer contains a resolved reference absent from the question, sometimes alongside the literal name. The correct selected facts do not override invalid subject metadata.
+- en-item-no-comparison is 0/3 and zh-TW is 1/3. The loop now reaches the item-price tool, but an invented page-reference mention causes refusal. The additional English wording-1 case is 2/3: round 3 repeatedly requests the nonexistent exact unit “ping” rather than inspecting the stored “坪” result and ends without facts. Repeated calls use cached results and do not execute twice.
+- zh-TW-closed-other-bar and the separately reported overall-difference case each have one refusal caused by substituting a reference for the name in the question. The en/zh core closed-job bundle remains 3/3.
+- en-home-reference-total round 2 is discarded as UNKNOWN_REFERENCE because the raw selection contains `s1. issued.acceptedOn` with a space. It was not silently repaired.
+
+Job drafts pass 16/16 per language and 22/22 required cases in every round. The separate residential-placeholder report passes 3/3. No job-draft implementation, instruction, case, expected value or oracle changed.
+
+Run 6 cost: **US$0.495614000** (questions US$0.393740000; drafts US$0.101874000). The two additionally authorized runs cost **US$0.991276000** together. Cumulative cost of all six runs: **US$2.422700000**.
+
+### Final verified / not verified
+
+Verified: final implementation CI and npm run check (1,974 tests / 197 files and build), real migration and repeatable seed/verify commands in CI, free fake evaluation (252 outcomes), raw layout replay of runs 1–4, required closed-job replay, card rendering/accessibility assertions, and bilingual 1440/390px component previews with production fonts. The failed paid reports remain failed, with no question, expectation, oracle-value, model or pass-mark changes to relabel them. No existing migration was edited. The final evidence commit changes reports/screenshots/task status only; implementation remains the CI- and paid-tested c3323c5.
+
+Not verified / not achieved: the three-round paid acceptance gate and reliable ordinary-question behavior; hosted retest, live-provider browser integration, hosted timing callback and the cause of earlier slow turns. Empty-list copy remains provisional. The other layout decisions are confirmed. No hosted deployment, migration, seed, setting change or Test site workflow was performed. PR #80 remains draft. Report this result on the PR and stop, as requested; the paid allowance is exhausted.
