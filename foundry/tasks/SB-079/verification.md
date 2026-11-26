@@ -51,7 +51,7 @@ The paid report retains the old call/quality gates and adds median calls ≤ 2, 
 
 Local production-build Chrome checks passed for owner Settings and Viewer job chat in English and zh-TW: grouped failure reasons, visible keyboard focus, stage example, 390px page fit and table scrolling. The discovered mobile min-content overflow was fixed by allowing the Settings section to shrink. Screenshots and the browser report are in [evidence](evidence/). This uses a disposable local synthetic database, local HTTPS and AI disabled. Provider answer rendering is tested in application/unit tests and the paid runner; it was not exercised through a live-provider browser session.
 
-Implementation [CI 45701497283](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45701497283) passed on `e52205f`, including real Prisma migrate/seed/verify commands, repeated seed/verify, the full check and the dependency audit. Paid [run 1 — 45702234409](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45702234409) completed on that exact commit; results below. No hosted operations were performed. Hosted acceptance is waiting for the Product Director; PR #80 stays draft. Paid runs used: 2 of 4.
+Implementation [CI 45701497283](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45701497283) passed on `e52205f`, including real Prisma migrate/seed/verify commands, repeated seed/verify, the full check and the dependency audit. Paid [run 1 — 45702234409](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45702234409) completed on that exact commit; results below. No hosted operations were performed. Hosted acceptance is waiting for the Product Director; PR #80 stays draft. Paid runs used: 3 of 4. Run 3 passes; no fourth dispatch is needed.
 
 ## Paid run 1 — failed, preserved in full
 
@@ -97,4 +97,30 @@ The full 100-quotes-per-item counts still pass. These are single warm local meas
 
 Schema-limit verification: `npm run check` passed with 1,877 tests in 193 files and the production build. [Run-2 free replay](evidence/free-replay-run-2.json) plus run 1 cover all 372 saved raw answers; accepted output remains identical and excess facts still reject. No instruction text changed after paid run 2.
 
-Final pre-run-3 check: `npm run check` passed, 1,878 tests in 193 files plus production build. Item-price results now also expose a whole-list ref for their at-most-five authorized rows; the regression verifies each price/unit stays on its own item row. No individual-fact or list cap was increased. The latest query measurement and all page/access parity tests pass. New CI and paid run 3 are pending.
+Final pre-run-3 check: `npm run check` passed, 1,878 tests in 193 files plus production build. Item-price results now also expose a whole-list ref for their at-most-five authorized rows; the regression verifies each price/unit stays on its own item row. No individual-fact or list cap was increased. The latest query measurement and all page/access parity tests pass. [CI 45732096515](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45732096515) passed on `20955bc`, including migrations, seed/verify twice, the full isolated-database check and dependency audit. The previously failing 20,000-item benchmark passes. Paid run 3 passed on that exact commit; details below.
+
+
+## Paid run 3 — passed
+
+[Run 45732833274](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45732833274), exact code commit `20955bc9443ecef9baac24831cb1bc240975045f`; [full synthetic report](evidence/paid-run-3.json). The workflow runs from main and checks out this input commit. Model remains gemini-3.5-flash-lite.
+
+| Round | en core /20 | zh-TW core /20 | New required /8 | Earlier required /14 | Wrong recorded values | Median calls | p90 ms | Question cost USD | Cost/question USD |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1 | 20 | 20 | 8 | 14 | 0 | 2 | 2,026 | 0.079726700 | 0.001285914516 |
+| 2 | 20 | 20 | 8 | 14 | 0 | 2 | 1,796 | 0.079371100 | 0.001280179032 |
+| 3 | 20 | 20 | 8 | 14 | 0 | 2 | 2,175 | 0.080541300 | 0.001299053226 |
+
+All 62 question cases passed in all three rounds (186/186): every per-question pass rate is 3/3, including zh-TW-finding. There were no discarded answers, unknown references or wrong recorded values. All questions used at most three calls; the named-refusal maximum was one. Median latency was 1,558 / 1,593 / 1,577 ms. Calls, p90 latency and cost per question pass the unchanged baseline gates.
+
+The gated job-draft set passes 16/16 per language in all three rounds, including all 22 required cases each round. The separate, non-gating `zh-TW-residential-placeholder` report passes 2/3: round 1 kept `客戶甲` instead of expected `測試客戶甲`. Its raw draft is preserved. This is a known job-draft limitation, outside #79; the job-draft instruction, support check, expected values and gate were not changed.
+
+Estimated run cost is **US$0.341503100**: questions US$0.239639100 plus drafts and separately reported cases US$0.101864000. Cumulative cost for all three dispatches is **US$1.048801900**. Three of the four allowed dispatches were used. No further paid run is needed.
+
+The final evidence-only commit adds this report and updates task status; the implementation remains the CI- and paid-tested `20955bc`. All 186 raw answer fields and source ledgers are retained in this artifact (null raw answers identify server early replies), along with per-question pass rates and follow-ups.
+
+## Not verified / remaining acceptance
+
+- Hosted acceptance and prior acceptance click-throughs wait for the Product Director. No hosted deployment, migration, seed, setting change or Test site workflow was performed. PR #80 remains draft.
+- A live-provider answer was not exercised through a browser; paid application evaluation and local UI checks were separate.
+- Hosted/concurrent database load was not measured. The local suggestion benchmark remains 281.52 ms versus the earlier informal 200 ms target.
+- The non-gating residential job-draft placeholder result above remains a recorded limitation; no job-draft scope was added.
