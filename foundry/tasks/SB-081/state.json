@@ -2,12 +2,12 @@
   "issue": 81,
   "branch": "build/sb-081-friendlier-misses",
   "baseCommit": "2443d9d2d50ce1bf8c1d36999ef670a4aec16c79",
-  "status": "AWAITING_PRODUCT_DIRECTOR_HOSTED_ACCEPTANCE",
+  "status": "AWAITING_CLARIFICATION",
   "draft": true,
-  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "hostedAcceptance": "PREVIOUS_COMMIT_5ebfbb6_PASSED_ALL_THREE_ROLES_NEW_FIXES_WAITING",
   "paidBudgetUsd": "2.00",
   "paidSpentUsd": "1.546026000",
-  "stopAfter": "BUILDER_REPORT_FIX_ROUND_1",
+  "stopAfter": "BUILDER_REPORT_FIX_ROUND_2",
   "pullRequest": 83,
   "completedSteps": [
     "A",
@@ -20,20 +20,21 @@
   "provisionalDecisions": [
     "Reviewer 7210266238: typed question may reach model; private record identities may not. Awaiting Product Director before merge.",
     "Reviewer 7211242362: constant client/contact/site-address facts replace partial notice. Awaiting Product Director before merge.",
-    "Not-found and failed-answer copy."
+    "Not-found and failed-answer copy.",
+    "Reviewer 7212254113 items 2 and 3: ranking floor and job-identity follow-up filter; awaiting Product Director confirmation."
   ],
-  "finalCodeCommit": "b918108f3d1d19de1db48a4933ebb7d76be4234a",
+  "finalCodeCommit": "373cb5cd00005cbe84f5dcaf9a211331d1c0c2e4",
   "paidEvaluatedCommit": "b918108f3d1d19de1db48a4933ebb7d76be4234a",
   "paidPassed": true,
   "fullPaidRunsUsed": 2,
   "fullPaidRun": 45951296390,
   "localCheck": {
     "passed": true,
-    "tests": 2028,
+    "tests": 2035,
     "files": 210,
     "workers": 4
   },
-  "remainingBlocker": "Hosted acceptance and Product Director confirmation of provisional decisions.",
+  "remainingBlocker": "Item 2 half-best rule retains owner candidates with scores 1.0 vs best 1.5; need cutoff or scoring decision.",
   "additionalAuthorization": {
     "additionalAllowanceUsd": "1.00",
     "focused": {
@@ -56,5 +57,11 @@
     "previousSpentUsd": "0.859081800",
     "totalIssueSpentUsd": "1.546026000",
     "fullRunsThisAuthorization": 1
+  },
+  "fixRound2": {
+    "paidCalls": 0,
+    "paidSpentUsd": "0.000000000",
+    "items1and3": "LOCAL_PASS",
+    "item2": "RULE_IMPLEMENTED_ACCEPTANCE_FAILED"
   }
 }

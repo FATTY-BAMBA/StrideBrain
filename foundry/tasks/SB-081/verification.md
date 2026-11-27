@@ -1,4 +1,39 @@
-# Verification — fix round 1
+# Verification — fix round 2
+
+Owner-authored review [7212254113](https://github.com/FATTY-BAMBA/StrideBrain/pull/83#issuecomment-7212254113). Code `373cb5c`. **Items 1 and 3 pass locally. Item 2's specified half-best rule is implemented, but its owner acceptance example still fails. Clarification is required before changing the scoring rule.** No paid evaluation or model-facing change.
+
+## Changes and verified behavior
+
+- Confirmed-turn follow-ups carry the same confirmed key, unless existing identity matching finds another readable job in the text. Unconfirmed turns remain unchanged. Both Home and the job bar use the existing typed-chip validation/access/exclusion path. The action avoids duplicate plain follow-ups, and React chip keys distinguish several questions about the same job.
+- `nearestJobs` now drops scores strictly below half the best score; equal scores remain. The ten-read / three-chip bounds remain. Unit tests cover the numerical floor and ties; Chinese free evaluation cases remain unchanged and pass.
+- Follow-ups asking for a job's name/reference are dropped; quote document-number questions remain. Items 2 and 3 are provisional pending Product Director confirmation.
+- Tests cover confirmed context inheritance, another readable job clearing context, forged key refusal, unconfirmed behavior, both UI surfaces and duplicate-key avoidance.
+
+`npm run check` passed with four workers: **2,035 tests / 210 files**, formatting, design tokens, lint, types and production build. Existing Prisma anonymous-default-export warning only. [CI 45957907699 passed](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45957907699). Free evaluation: **354/354**, including the unchanged Chinese cases; [summary](evidence/fix2-free-verification.json).
+
+Local production build with synthetic model transport: one follow-up tap after confirming Xinyi answers **NT$16,480,000 before tax**, without another job confirmation, on Home and the job bar. No page errors or horizontal overflow. [Home screenshot](evidence/fix2-home-confirmed-follow-up-390.png), [job-bar screenshot](evidence/fix2-job-confirmed-follow-up-390.png), [browser checks](evidence/fix2-browser-checks.json).
+
+## Item 2: specification conflict, not passed
+
+The actual synthetic owner's readable job list produces these scores for searched text `Xinyi store`:
+
+| Candidate | Existing score | Requested floor |
+| --- | --- | --- |
+| Xinyi Flagship Renovation | 1.5 | 0.75 |
+| Banqiao Concept Store | 1.0 | 0.75 |
+| Zhongshan Lifestyle Store | 1.0 | 0.75 |
+
+The requested half-best filter retains all three, so the English question “What is the quote total for the Xinyi store?” still offers all three locally. This was confirmed both in the browser and against the seeded owner read model, not inferred from a test fixture. [Measured scores](evidence/fix2-candidate-scores.json).
+
+Changing to a 75% floor would drop the two 1.0 candidates in this example, but would change the explicitly requested half-best rule. Alternatively the existing scoring formula would need to change. Neither decision is specified; AGENTS.md requires clarification rather than guessing. The unit floor fixture includes additional common-word candidates and is not claimed as the owner acceptance example. The failed acceptance is recorded in browser-checks.json.
+
+## Not verified / handoff
+
+Reviewer reports hosted acceptance at `5ebfbb6` passed in owner, PM and Viewer. These new fixes have not been tested on the test site; the Product Director redeploys and the Reviewer rechecks after the scoring decision. No instructions, tools, tool results, model, schema, migrations or pass marks changed. No paid calls, hosted deployment/database/settings changes or Test site workflow. PR remains draft. Stop after the Builder report and clarification request.
+
+---
+
+# Previous fix round 1 (historical evidence)
 
 Review [7211242362](https://github.com/FATTY-BAMBA/StrideBrain/pull/83#issuecomment-7211242362), verified as authored by FATTY-BAMBA. The Product Director authorized an additional US$1.00, focused first and one full run only after focused success. PR stays draft; no hosted changes.
 
