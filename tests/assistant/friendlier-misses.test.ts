@@ -448,3 +448,52 @@ it.each(["en", "zh-TW"] as const)(
     ).toBeNull();
   },
 );
+
+it.each([0, 5, 10])(
+  "B: ranks 300 jobs first, checks at most ten and stops after three pass (%i denied)",
+  async (denied) => {
+    const many = Array.from({ length: 300 }, (_, i) => ({
+      projectKey: `J${String(i).padStart(3, "0")}`,
+      names: ["Xinyi store"],
+    }));
+    const f = missesFixture([
+      {
+        usage,
+        result: {
+          kind: "TOOLS",
+          calls: [{ name: "list_jobs", arguments: { query: "Xinyi store" } }],
+        },
+      },
+    ]);
+    f.tools.resolveSubjects.mockResolvedValue({ kind: "AVAILABLE", projects: many, named: [] });
+    f.tools.execute.mockResolvedValue({
+      status: "OK",
+      sources: [
+        {
+          sourceId: "count",
+          href: "/en/projects",
+          label: "Jobs",
+          facts: { count: 0, matchingCount: 0 },
+          projectKeys: [],
+        },
+      ],
+    });
+    f.repo.jobPolicy.mockImplementation(async (_c, key) => ({
+      id: key,
+      excluded: Number(key.slice(1)) < denied,
+    }));
+    const out = await f.service.execute(jobContext(), { question: "Xinyi store total?" });
+    expect(f.repo.jobPolicy).toHaveBeenCalledTimes(Math.min(10, denied + 3));
+    expect(f.repo.jobPolicy.mock.calls.map((c) => c[1])).toEqual(
+      many.slice(0, Math.min(10, denied + 3)).map((j) => j.projectKey),
+    );
+    expect(out).toMatchObject({
+      kind: "ANSWER",
+      questionChips: many.slice(denied, Math.min(denied + 3, 10)).map((j) => ({
+        label: j.names[0],
+        confirmedProjectKey: j.projectKey,
+        question: "Xinyi store total?",
+      })),
+    });
+  },
+);

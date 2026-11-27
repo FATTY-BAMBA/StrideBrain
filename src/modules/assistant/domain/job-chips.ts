@@ -24,6 +24,7 @@ export function nearestJobs(
   query: string,
   jobs: readonly AssistantProjectIdentity[],
   locale: Locale,
+  limit = 3,
 ) {
   const q = normalize(query.slice(0, 280)),
     qp = pieces(q);
@@ -53,7 +54,7 @@ export function nearestJobs(
     })
     .filter((p) => p.score > 0)
     .sort((a, b) => b.score - a.score || a.projectKey.localeCompare(b.projectKey, "en"))
-    .slice(0, 3);
+    .slice(0, limit);
 }
 /** Replace only complete authorized references; an existing name is already readable. */
 export function nameFollowUp(

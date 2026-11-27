@@ -710,7 +710,7 @@ export async function askHomeAction(
     try {
       const runtime = await resolveServerRuntimeContext();
       if (runtime) scheduleAssistantTurnTiming(runtime, startedAt);
-      if (runtime && (assistantConfigured() || process.env.STRIDEBRAIN_AI_ENABLED === "true")) {
+      if (runtime && assistantConfigured()) {
         const { createAssistantServices } = await import("@/lib/server/assistant-services");
         const result = await createAssistantServices().ask.execute(
           { ...runtime, locale: rawLocale },
@@ -749,7 +749,7 @@ export async function askHomeAction(
             },
           ]);
         }
-        attempted = result.reason !== "DISABLED";
+        attempted = result.reason !== "DISABLED" && result.reason !== "NO_KEY";
       }
     } catch {
       attempted = true;

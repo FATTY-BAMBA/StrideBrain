@@ -3,7 +3,7 @@ import { runEvaluationRounds, roundSummary, stabilitySummary } from "./evaluatio
 describe("three-round evaluation gates", () => {
   const rows = (en: number, zh: number) =>
     ["en", "zh-TW"].flatMap((locale) =>
-      Array.from({ length: 56 }, (_, i) => ({
+      Array.from({ length: 59 }, (_, i) => ({
         id: `${locale}-${i}`,
         locale: locale as "en" | "zh-TW",
         required: i >= 20 && i !== 41,
@@ -71,7 +71,7 @@ describe("three-round evaluation gates", () => {
         verdict: round === 1 && i >= 20 && i < 27 ? "wrong" : q.verdict,
       })),
     );
-    expect(rateFailure.requiredAnswers).toEqual({ passed: 203, total: 210 });
+    expect(rateFailure.requiredAnswers).toEqual({ passed: 221, total: 228 });
     expect(rateFailure.requiredPassed).toBe(false);
     expect(
       roundSummary(
@@ -113,7 +113,7 @@ describe("three-round evaluation gates", () => {
     expect(roundSummary(1, sample)).toMatchObject({
       factSelectionRegressions: { passed: 28, total: 28 },
       passed: false,
-      callTargets: { median: 2, maximum: 4, withinThree: 106, questions: 112 },
+      callTargets: { median: 2, maximum: 4, withinThree: 112, questions: 118 },
     });
     sample[4]!.calls = 2;
     expect(roundSummary(1, sample).passed).toBe(true);

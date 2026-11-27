@@ -102,13 +102,14 @@ describe("Home assistant integration", () => {
     expect(JSON.stringify(boundary.ask.mock.calls)).not.toContain("STALE_PRIVATE_FACT");
     expect(boundary.legacy).not.toHaveBeenCalled();
   });
-  it("uses the fixed retry for missing keys and timeouts while AI is on", async () => {
+  it("uses record search without a key but retries a failed AI answer", async () => {
     vi.stubEnv("STRIDEBRAIN_GEMINI_API_KEY", "");
     boundary.ask.mockResolvedValue({ kind: "FALLBACK", reason: "NO_KEY" });
     const noKey = await askHomeAction(initialHomeChatState, form());
-    expect(boundary.ask).toHaveBeenCalled();
-    expect(boundary.legacy).not.toHaveBeenCalled();
-    expect(noKey.turns.at(-1)?.text).toBe("The AI could not answer this time. Please ask again.");
+    expect(boundary.ask).not.toHaveBeenCalled();
+    expect(boundary.legacy).toHaveBeenCalled();
+    expect(noKey.turns.at(-1)?.aiQuestionChips).toBeUndefined();
+    boundary.legacy.mockClear();
     expect(noKey.turns.at(-1)?.aiFallback).toBeUndefined();
     vi.stubEnv("STRIDEBRAIN_GEMINI_API_KEY", "synthetic-test-key");
     boundary.ask.mockResolvedValue({ kind: "FALLBACK", reason: "TIMEOUT" });
@@ -116,8 +117,8 @@ describe("Home assistant integration", () => {
     expect(failed.turns.at(-1)?.text).toBe("The AI could not answer this time. Please ask again.");
     expect(failed.turns.at(-1)?.aiQuestionChips?.[0]?.question).toBe(form().get("message"));
   });
-  it("leaves organization-off behavior on the keyword path", async () => {
-    boundary.ask.mockResolvedValue({ kind: "FALLBACK", reason: "DISABLED" });
+  it.each(["DISABLED", "NO_KEY"])("leaves %s on the keyword path", async (reason) => {
+    boundary.ask.mockResolvedValue({ kind: "FALLBACK", reason });
     const result = await askHomeAction(initialHomeChatState, form());
     expect(result.turns.at(-1)?.aiFallback).toBeUndefined();
     expect(boundary.legacy).toHaveBeenCalled();

@@ -123,7 +123,7 @@ export function roundSummary<T extends ScoredRow>(
     performancePassed,
     friendlierMisses: {
       passed: questions.filter((q) => q.friendlierMiss && correct(q)).length,
-      total: 28,
+      total: questions.filter((q) => q.friendlierMiss).length,
     },
     factSelectionRegressions: {
       passed: questions.filter(

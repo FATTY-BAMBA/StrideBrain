@@ -164,16 +164,19 @@ export class AskAssistant {
       });
     };
     const missingJobChips = async () => {
-      const readable = [];
-      for (const job of knownProjects) {
+      const candidates = nearestJobs(searchedText, knownProjects, locale, 10);
+      const chips = [];
+      for (const job of candidates) {
         const policy = await bounded(this.repository.jobPolicy(c, job.projectKey));
-        if (policy && !policy.excluded) readable.push(job);
+        if (!policy || policy.excluded) continue;
+        chips.push({
+          label: redactText(job.name, references),
+          question: input.question,
+          confirmedProjectKey: job.projectKey,
+        });
+        if (chips.length === 3) break;
       }
-      return nearestJobs(searchedText, readable, locale).map((job) => ({
-        label: redactText(job.name, references),
-        question: input.question,
-        confirmedProjectKey: job.projectKey,
-      }));
+      return chips;
     };
     const sources: AssistantSource[] = [],
       results: ToolResult[] = [],
