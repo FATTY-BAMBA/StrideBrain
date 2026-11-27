@@ -6,7 +6,7 @@ import {
   toolCallKey,
   type AssistantProjectIdentity,
 } from "../domain/subjects";
-import { assistantToolStatus } from "@/modules/localization/assistant";
+import { assistantCopy, assistantToolStatus } from "@/modules/localization/assistant";
 import { AssistantModelError } from "../domain/model-error";
 import type { RuntimeContext } from "@/modules/runtime-context/contracts";
 import type { AssistantRepositoryPort } from "@/repositories/ports/assistant-repository";
@@ -108,12 +108,14 @@ export class AskAssistant {
     };
     const refusal = async (
       state: "EXCLUDED" | "OUT_OF_DATE" | "NO_RECORDS" | "UNAVAILABLE",
+      namedJobMissing = false,
     ): Promise<AssistantOutcome> => {
       const comparisonProject = ["OUT_OF_DATE", "NO_RECORDS"].includes(state)
         ? comparisonNotice()?.comparisonProjectKey
         : undefined;
-      const text =
-        state === "EXCLUDED"
+      const text = namedJobMissing
+        ? assistantCopy(locale).jobNotFound
+        : state === "EXCLUDED"
           ? locale === "zh-TW"
             ? "此專案已設定為不提供給 AI。"
             : "This job is excluded from AI."
@@ -305,7 +307,7 @@ export class AskAssistant {
           // Do not expose unreadable identities to the model, or refuse before the
           // same answer boundary used by a not-found result.
           if (await bounded(this.repository.questionMentionsUnreadableJob(c, input.question)))
-            return await refusal("UNAVAILABLE");
+            return await refusal("UNAVAILABLE", true);
           let answer = checked.answer;
           if (!matchesSubject(answer, sources, subjects, knownProjects))
             return await fallback("UNGROUNDED", "SUBJECT_MISMATCH");
@@ -396,7 +398,7 @@ export class AskAssistant {
               !(await bounded(this.tools.canSend(c, safeSources)))
             )
               return await fallback("ACCESS_CHANGED");
-            return await refusal("NO_RECORDS");
+            return await refusal("NO_RECORDS", true);
           }
           // A complete empty waiting list is an authoritative answer; no model elaboration needed.
           if (
