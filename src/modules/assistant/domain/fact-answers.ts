@@ -107,14 +107,26 @@ export function parseFactAnswer(
     return null;
   if (
     r.parts.length &&
-    (r.parts[0].say !== "RECORDS_SHOW" ||
+    (!("say" in r.parts[0]) ||
       r.parts.filter((p) => p.say === "RECORDS_SHOW").length !== 1 ||
       r.parts.filter((p) => p.say === "PARTIAL_RECORDS").length > 1 ||
       !r.parts.some((p) => "show" in p))
   )
     return null;
   return {
-    parts: r.parts.map((p: AnswerPart) => ("show" in p ? { show: p.show.replace(/\s/gu, "") } : p)),
+    // The two fixed phrase ids carry no user/model prose. Layout is server-owned,
+    // so their input order cannot move the partial notice above the cards.
+    parts: r.parts.length
+      ? [
+          { say: "RECORDS_SHOW" },
+          ...r.parts
+            .filter((p: AnswerPart): p is { show: string } => "show" in p)
+            .map((p: { show: string }) => ({ show: p.show.replace(/\s/gu, "") })),
+          ...(r.parts.some((p: AnswerPart) => "say" in p && p.say === "PARTIAL_RECORDS")
+            ? [{ say: "PARTIAL_RECORDS" as const }]
+            : []),
+        ]
+      : [],
     followUps: r.followUps,
   };
 }

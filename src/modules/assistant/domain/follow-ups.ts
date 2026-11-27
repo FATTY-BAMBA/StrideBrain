@@ -5,7 +5,7 @@ export function maySuggestFollowUp(
   capabilities: RuntimeContext["capabilities"],
 ): boolean {
   if (
-    /聯絡|電話|電郵|電子郵件|地址|客戶(?:是誰|身分|身份|名稱|姓名)|誰是.*客戶|\b(?:contact|phone|telephone|email|e-mail|address)\b|\b(?:who|name|identity)\b.*\bclient\b|\bclient\b.*\b(?:who|name|identity)\b/i.test(
+    /聯絡|聯繫|電話|電郵|電子郵件|地址|客戶(?:是誰|身分|身份|名稱|姓名)|誰是.*客戶|客戶的?(?:身分|身份|名稱|姓名)|\b(?:contact|phone|telephone|email|e-mail|address)\b|\b(?:what|which)\s+(?:is|was)\s+(?:the\s+)?client\s+(?:of|for)\b|\b(?:who|name|identity)\b.*\bclient\b|\bclient\b.*\b(?:who|name|identity)\b/i.test(
       text,
     )
   )

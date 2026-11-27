@@ -315,6 +315,7 @@ it("D: follow-ups use authorized names and remove unsupported personal informati
   expect(nameFollowUp("PRIVATE-JOB?", jobs, "en")).toBe("PRIVATE-JOB?");
   for (const text of [
     "Who is the client?",
+    "What is the client of PRJ-XINYI-026?",
     "What is the site address?",
     "Contact details?",
     "客戶是誰？",
@@ -323,4 +324,55 @@ it("D: follow-ups use authorized names and remove unsupported personal informati
   ])
     expect(maySuggestFollowUp(text, jobContext().capabilities)).toBe(false);
   expect(maySuggestFollowUp("What is the quote total?", jobContext().capabilities)).toBe(true);
+});
+
+it.each(["en", "zh-TW"] as const)(
+  "C: recorded partial phrase order is normalized into the same server-owned layout (%s)",
+  (locale) => {
+    const registry = new AnswerFactRegistry(locale);
+    registry.register([
+      {
+        sourceId: "s",
+        label: "Job",
+        href: "/en/projects/J",
+        projectKeys: ["J"],
+        facts: { stage: "Design" },
+      },
+    ]);
+    const canonical = {
+      parts: [{ say: "RECORDS_SHOW" }, { show: "s1.stage" }, { say: "PARTIAL_RECORDS" }],
+      followUps: [],
+    };
+    expect(
+      registry.render({
+        parts: [{ say: "PARTIAL_RECORDS" }, { say: "RECORDS_SHOW" }, { show: "s1.stage" }],
+        followUps: [],
+      }),
+    ).toEqual(registry.render(canonical));
+    for (const parts of [
+      [{ say: "PARTIAL_RECORDS" }, { show: "s1.stage" }],
+      [{ say: "PARTIAL_RECORDS" }, { say: "RECORDS_SHOW" }],
+      [...canonical.parts, { say: "PARTIAL_RECORDS" }],
+    ])
+      expect(parseFactAnswer({ parts, followUps: [] })).toBeNull();
+  },
+);
+it("C: replays the focused run's three discarded raw partial answers without changing selected facts", () => {
+  const report = JSON.parse(
+    readFileSync("foundry/tasks/SB-081/evidence/focused-paid-1.json", "utf8"),
+  );
+  let count = 0;
+  for (const round of report.rounds)
+    for (const row of round.questions) {
+      if (row.discardReason !== "INVALID_OUTPUT") continue;
+      const registry = new AnswerFactRegistry(row.locale);
+      registry.register(row.sourceLedger);
+      const out = registry.render(row.rawAnswer);
+      expect(out.kind).toBe("ACCEPTED");
+      if (out.kind !== "ACCEPTED") throw Error("replay");
+      expect(out.selection.noticePhraseId).toBe("PARTIAL_RECORDS");
+      expect(out.answer.presentation!.blocks.at(-1)?.kind).toBe("NOTICE");
+      count++;
+    }
+  expect(count).toBe(3);
 });
