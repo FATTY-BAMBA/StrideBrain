@@ -1,3 +1,4 @@
+import type { AssistantQuestionChip } from "@/modules/assistant/domain/contracts";
 import type { AnswerPresentation } from "@/modules/assistant/domain/answer-cards";
 import type { Route } from "next";
 
@@ -41,6 +42,7 @@ export type HomeChatTurn = Readonly<{
   aiFallback?: boolean;
   aiSources?: readonly Readonly<{ sourceId: string; label: string; href: Route }>[];
   aiFollowUps?: readonly string[];
+  aiQuestionChips?: readonly AssistantQuestionChip[];
   aiPresentation?: AnswerPresentation;
   bullets?: readonly string[];
   citations?: readonly HomeChatCitation[];

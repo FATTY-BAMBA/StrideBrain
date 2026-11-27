@@ -299,9 +299,7 @@ describe("bounded read-only assistant", () => {
     });
     const out = await f.service.execute(jobContext(), { question: "How many jobs?" });
     expect(out).toMatchObject({ kind: "ANSWER", answer: { sourceIds: ["s", "count"] } });
-    expect(f.model.requests[0]?.instructions).toContain(
-      "at most 12 individual fact refs plus at most one whole-list ref",
-    );
+    expect(f.model.requests[0]?.instructions).toContain("at most 40 parts in total");
     expect(f.model.requests[1]?.messages[1]?.text).not.toContain("countSourceId");
   });
   it("passes authorized question-only references to grounding without treating them as amounts", async () => {

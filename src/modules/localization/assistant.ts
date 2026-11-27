@@ -21,12 +21,14 @@ const en = {
   label: "AI answer · check the sources",
   labelWithoutSources: "AI answer",
   jobNotFound: "No job by that name was found.",
+  failedAnswer: "The AI could not answer this time. Please ask again.",
+  retry: "Ask again",
   fallback: "AI is unavailable for this answer. Using record search.",
   unavailable: "AI preferences are unavailable.",
   off: "Off",
   on: "On",
   notConfigured:
-    "AI is unavailable until the server is configured for the paid service. Record search still works.",
+    "AI is unavailable until the server is configured for the paid service. Turn AI off in Settings to use record search.",
   planned: "Planned",
   knowledge: "Knowledge",
   customerCare: "Customer care",
@@ -43,7 +45,7 @@ const en = {
   dataTraining:
     "Under Google's paid API terms, prompts and responses are not used to train or improve its models. Google may retain limited data for abuse monitoring under those terms. Google may process this content outside Taiwan.",
   dataOff:
-    "An owner can switch AI off in Settings. People who can update a job can exclude it on its overview. With AI off or unavailable, record search continues to work.",
+    "An owner can switch AI off in Settings. People who can update a job can exclude it on its overview. With AI off, record search continues to work. A failed AI answer offers a retry.",
   terms: "Google Gemini API terms",
   sources: "Sources",
   failures: "AI failures in the last seven days",
@@ -79,11 +81,13 @@ const zh: typeof en = {
   label: "AI 回答 · 請查看來源",
   labelWithoutSources: "AI 回答",
   jobNotFound: "找不到這個名稱的專案。",
+  failedAnswer: "AI 這次沒有答出來，請再問一次。",
+  retry: "再問一次",
   fallback: "此回答目前無法使用 AI，改以紀錄搜尋。",
   unavailable: "目前無法讀取 AI 偏好設定。",
   off: "關閉",
   on: "開啟",
-  notConfigured: "伺服器完成付費服務設定後才能使用 AI，紀錄搜尋仍可使用。",
+  notConfigured: "伺服器完成付費服務設定後才能使用 AI；可在設定中關閉 AI 以搜尋紀錄。",
   planned: "規劃中",
   knowledge: "知識庫",
   customerCare: "客戶服務",
@@ -98,7 +102,7 @@ const zh: typeof en = {
   dataTraining:
     "依 Google 付費 API 條款，問題與回答不會用於訓練或改善其模型。Google 可能依條款保留有限資料以監控濫用。Google 可能在臺灣以外地區處理這些內容。",
   dataOff:
-    "擁有者可在設定中關閉 AI。有權更新專案的人可在專案總覽排除該專案。AI 關閉或無法使用時，仍可搜尋紀錄。",
+    "擁有者可在設定中關閉 AI。有權更新專案的人可在專案總覽排除該專案。AI 關閉時仍可搜尋紀錄；AI 回答失敗時可重試。",
   terms: "Google Gemini API 條款",
   sources: "來源",
   failures: "最近七天的 AI 失敗紀錄",

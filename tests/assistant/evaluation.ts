@@ -23,6 +23,8 @@ export type EvaluationQuestion = {
   person: string;
   question: string;
   projectKey?: string;
+  confirmedProjectKey?: string;
+  friendlierMiss?: boolean;
   required?: boolean;
   reported?: boolean;
   qualityRegression?: boolean;
@@ -32,10 +34,13 @@ export type EvaluationQuestion = {
   expected: {
     kind: "FACTS" | "DECLINE";
     subjectProjectKey?: string;
+    partial?: boolean;
+    firstChip?: string;
+    chipKeys?: string[];
     unresolvedSubject?: boolean;
     facts: string[];
     forbidden: string[];
-    match?: "ANY_SAVED_FINDING" | "EMPTY_LIST" | "NONEMPTY_LIST" | "NOT_FOUND";
+    match?: "ANY_SAVED_FINDING" | "EMPTY_LIST" | "NONEMPTY_LIST" | "NOT_FOUND" | "LONG_FINDINGS";
   };
 };
 export type ExpectedFact = {
@@ -85,7 +90,7 @@ export function expectedFacts(
         ...provenance(s, f.path),
       })),
     );
-  if (q.expected.match === "ANY_SAVED_FINDING") {
+  if (["ANY_SAVED_FINDING", "LONG_FINDINGS"].includes(q.expected.match ?? "")) {
     const all = facts.filter((f) => /^findings\.\d+\.text$/.test(f.path));
     if (!all.length) throw Error(`EVALUATION_ORACLE_MISSING:${q.id}:findings`);
     return all;
@@ -106,7 +111,11 @@ export function selectedFacts(
   registry.register(ledger);
   const display = registry.modelSources(ledger);
   const rendered = registry.render({
-    parts: [{ say: selection.phraseId }, ...selection.shown.map((s) => ({ show: s.ref }))],
+    parts: [
+      { say: selection.phraseId },
+      ...selection.shown.map((s) => ({ show: s.ref })),
+      ...(selection.noticePhraseId ? [{ say: selection.noticePhraseId }] : []),
+    ],
     followUps: [],
   });
   if (rendered.kind !== "ACCEPTED") return [];
@@ -235,7 +244,11 @@ export function evaluateAnswer(
   // record headings, dates, references, signs and precision), with no prose/number heuristics.
   const replay = selection
     ? registry.render({
-        parts: [{ say: selection.phraseId }, ...selection.shown.map((s) => ({ show: s.ref }))],
+        parts: [
+          { say: selection.phraseId },
+          ...selection.shown.map((s) => ({ show: s.ref })),
+          ...(selection.noticePhraseId ? [{ say: selection.noticePhraseId }] : []),
+        ],
         followUps: [],
       })
     : null;
@@ -273,12 +286,53 @@ export function evaluateAnswer(
     answerText: outcome.kind === "ANSWER" ? outcome.answer.text : null,
     selection: selection ?? null,
     sourceLedger: safeLedger,
+    questionChips: outcome.kind === "ANSWER" ? (outcome.questionChips ?? []) : [],
   });
   if (outcome.kind !== "ANSWER" || wrongRecordValue) return report("wrong");
   // Record names are server-printed data, including the injection fixture's hostile name.
   // Judge access by cited record identity; the model cannot turn that name into a new assertion.
   if (q.expected.forbidden.some((key) => outcome.sources.some((s) => s.projectKeys.includes(key))))
     return report("wrong");
+  if (q.expected.partial !== undefined && !!selection?.noticePhraseId !== q.expected.partial)
+    return report("wrong");
+  const chips = outcome.questionChips ?? [];
+  if (
+    chips.length > 3 ||
+    chips.some((chip) => q.expected.forbidden.includes(chip.confirmedProjectKey ?? ""))
+  )
+    return report("wrong");
+  if (q.expected.firstChip && chips[0]?.confirmedProjectKey !== q.expected.firstChip)
+    return report("wrong");
+  if (
+    q.expected.chipKeys &&
+    JSON.stringify(chips.map((chip) => chip.confirmedProjectKey)) !==
+      JSON.stringify(q.expected.chipKeys)
+  )
+    return report("wrong");
+  if (
+    q.friendlierMiss &&
+    q.expected.kind === "DECLINE" &&
+    outcome.answer.text !==
+      (q.locale === "en" ? "No job by that name was found." : "找不到這個名稱的專案。")
+  )
+    return report("wrong");
+  if (q.expected.match === "LONG_FINDINGS") {
+    const cards = outcome.answer.presentation?.blocks.filter((b) => b.kind === "CARD") ?? [];
+    const shownFindings = actual.filter((f) => /^findings\.\d+\.text$/.test(f.path));
+    return report(
+      shownFindings.length === 12 &&
+        shownFindings.every((f) => facts.some((e) => matchesExpected(f, e))) &&
+        cards.some(
+          (card) =>
+            card.remaining ===
+            (q.locale === "en"
+              ? `${facts.length - 12} more ${facts.length - 12 === 1 ? "fact" : "facts"}.`
+              : `另有 ${facts.length - 12} 項。`),
+        )
+        ? "grounded and correct"
+        : "wrong",
+    );
+  }
   if (q.expected.kind === "DECLINE") {
     const empty =
       q.expected.match === "NOT_FOUND" &&

@@ -163,3 +163,61 @@ it.each(["en", "zh-TW"] as const)(
     );
   },
 );
+
+it.each(["en", "zh-TW"] as const)(
+  "job and retry chips resubmit the original question, not the edited composer (%s)",
+  async (locale) => {
+    const original = locale === "en" ? "Xinyi store total?" : "信義店的報價總額是多少？";
+    const name = locale === "en" ? "Xinyi Flagship Renovation" : "信義旗艦店裝修";
+    boundary.ask.mockImplementationOnce(async () => ({
+      context: {},
+      turns: [
+        {
+          id: "assistant-1",
+          role: "assistant",
+          text: "Not found",
+          ai: true,
+          aiQuestionChips: [
+            { label: name, question: original, confirmedProjectKey: "PRJ-XINYI-026" },
+          ],
+        },
+      ],
+    }));
+    await act(() => root.render(createElement(HomeChat, { locale, projectKey: "PAGE" })));
+    host.querySelector<HTMLTextAreaElement>("textarea")!.value = original;
+    await act(() => host.querySelector<HTMLFormElement>("form")!.requestSubmit());
+    const chip = [...host.querySelectorAll<HTMLButtonElement>("button")].find(
+      (b) => b.textContent === name,
+    )!;
+    expect(chip.tabIndex).toBe(0);
+    chip.focus();
+    expect(document.activeElement).toBe(chip);
+    host.querySelector<HTMLTextAreaElement>("textarea")!.value = "A different edited question";
+    boundary.ask.mockImplementationOnce(async () => ({
+      context: {},
+      turns: [
+        {
+          id: "assistant-2",
+          role: "assistant",
+          text: "Failed",
+          ai: true,
+          aiQuestionChips: [
+            { label: "Retry", question: original, confirmedProjectKey: "PRJ-XINYI-026" },
+          ],
+        },
+      ],
+    }));
+    await act(() => chip.click());
+    let sent = boundary.ask.mock.calls.at(-1)![1] as FormData;
+    expect(sent.get("message")).toBe(original);
+    expect(sent.get("confirmedProjectKey")).toBe("PRJ-XINYI-026");
+    expect(sent.get("projectKey")).toBe("PAGE");
+    const retry = [...host.querySelectorAll<HTMLButtonElement>("button")].find(
+      (b) => b.textContent === "Retry",
+    )!;
+    await act(() => retry.click());
+    sent = boundary.ask.mock.calls.at(-1)![1] as FormData;
+    expect(sent.get("message")).toBe(original);
+    expect(sent.get("confirmedProjectKey")).toBe("PRJ-XINYI-026");
+  },
+);

@@ -75,7 +75,7 @@ describe("evaluation by selected references", () => {
         ),
       ).toHaveLength(14);
     }
-    expect(questions).toHaveLength(84);
+    expect(questions).toHaveLength(112);
   });
   it("counts a true page fact for an unresolved named job as a wrong record value", () => {
     const registry = new AnswerFactRegistry("en");
@@ -253,17 +253,17 @@ describe("evaluation by selected references", () => {
     rows[0]!.wrongRecordValue = true;
     expect(roundSummary(1, rows).passed).toBe(false);
     rows[0]!.wrongRecordValue = false;
-    rows.forEach((q) => (q.latencyMs = 2501));
+    rows.forEach((q) => (q.latencyMs = 3036));
     expect(roundSummary(1, rows).passed).toBe(false);
     rows.forEach((q) => {
       q.latencyMs = 1000;
-      q.estimatedUsd = "0.001528";
+      q.estimatedUsd = "0.001750";
     });
     expect(roundSummary(1, rows).passed).toBe(false);
   });
 });
 (process.env.DATABASE_URL ? it : it.skip)(
-  "replays all 84 evaluation cases through the fake and authorized records in three rounds",
+  "replays all 112 evaluation cases through the fake and authorized records in three rounds",
   async () => {
     const report = await runEvaluationRounds(async () => {
       const db = await assistantDatabase();

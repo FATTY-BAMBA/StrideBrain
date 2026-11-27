@@ -35,7 +35,7 @@ export function missesFixture(script: ConstructorParameters<typeof FakeAssistant
     setControl: vi.fn(),
     reserveCall: vi.fn().mockResolvedValue("call"),
     meterCall: vi.fn(),
-    finishTurn: vi.fn(),
+    finishTurn: vi.fn().mockResolvedValue(undefined),
   } satisfies AssistantRepositoryPort;
   const tools = {
     resolveSubjects: vi.fn().mockResolvedValue({ kind: "AVAILABLE", projects: [], named: [] }),
@@ -126,4 +126,201 @@ it.each(["en", "zh-TW"] as const)("A: unreadable guard has the same copy (%s)", 
     answer: { text: assistantCopy(locale).jobNotFound },
     sources: [],
   });
+});
+
+import { nearestJobs, nameFollowUp } from "@/modules/assistant/domain/job-chips";
+import { AnswerFactRegistry, parseFactAnswer } from "@/modules/assistant/domain/fact-answers";
+import { maySuggestFollowUp } from "@/modules/assistant/domain/follow-ups";
+const jobs = [
+  { projectKey: "PRJ-XINYI-026", names: ["Xinyi Flagship Renovation", "信義旗艦店裝修"] },
+  { projectKey: "RIVER", names: ["Riverside Display Studio", "河岸展示工作室"] },
+];
+it("B: shared text has a deterministic floor, bilingual labels and at most three chips", () => {
+  expect(nearestJobs("信義店", jobs, "zh-TW").map((j) => j.name)).toEqual(["信義旗艦店裝修"]);
+  expect(nearestJobs("河岸工作室", jobs, "zh-TW").map((j) => j.projectKey)).toEqual(["RIVER"]);
+  expect(nearestJobs("Xinyi store", jobs, "en")[0]?.projectKey).toBe("PRJ-XINYI-026");
+  expect(nearestJobs("月光咖啡館", jobs, "zh-TW")).toEqual([]);
+  expect(nearestJobs("Unrelated moon cafe", jobs, "en")).toEqual([]);
+  const many = Array.from({ length: 6 }, (_, i) => ({
+    projectKey: `J${i}`,
+    names: ["Xinyi store"],
+  }));
+  expect(nearestJobs("Xinyi", many.reverse(), "en").map((j) => j.projectKey)).toEqual([
+    "J0",
+    "J1",
+    "J2",
+  ]);
+});
+it.each(["en", "zh-TW"] as const)(
+  "B: the same question has identical chips, output, calls and logs with an unreadable job present or absent (%s)",
+  async (locale) => {
+    const results = [];
+    for (const exists of [true, false]) {
+      const query = locale === "en" ? "Xinyi store" : "信義店";
+      const f = missesFixture([
+        { usage, result: { kind: "TOOLS", calls: [{ name: "list_jobs", arguments: { query } }] } },
+      ]);
+      f.tools.resolveSubjects.mockResolvedValue({ kind: "AVAILABLE", projects: jobs, named: [] });
+      f.repo.questionMentionsUnreadableJob.mockResolvedValue(exists);
+      f.tools.execute.mockResolvedValue({
+        status: "OK",
+        sources: [
+          {
+            sourceId: "count",
+            href: `/${locale}/projects`,
+            label: "Jobs",
+            facts: { count: 0, matchingCount: 0 },
+            projectKeys: [],
+          },
+        ],
+      });
+      const out = await f.service.execute(jobContext({ locale }), { question: `${query}?` });
+      results.push({
+        out,
+        calls: f.model.requests.length,
+        reserve: f.repo.reserveCall.mock.calls.map((r) => r[3]),
+        finish: f.repo.finishTurn.mock.calls.map((r) => r[1]),
+      });
+      expect(out).toMatchObject({
+        questionChips: [
+          {
+            label: locale === "en" ? jobs[0]!.names[0] : jobs[0]!.names[1],
+            question: `${query}?`,
+            confirmedProjectKey: jobs[0]!.projectKey,
+          },
+        ],
+      });
+      expect(JSON.stringify(f.repo.reserveCall.mock.calls.map((r) => r[3]))).not.toContain(query);
+    }
+    expect(results[0]).toEqual(results[1]);
+  },
+);
+it("B: confirmed job replaces an unresolved name and page project, but still checks access and exclusion", async () => {
+  const f = missesFixture([
+    {
+      usage,
+      result: {
+        kind: "TOOLS",
+        calls: [{ name: "get_quote_status", arguments: { projectKey: jobs[0]!.projectKey } }],
+      },
+    },
+    {
+      usage,
+      result: {
+        kind: "ANSWER",
+        answer: { parts: [{ say: "RECORDS_SHOW" }, { show: "s1.totalAmount" }], followUps: [] },
+      },
+    },
+  ]);
+  f.tools.resolveSubjects.mockResolvedValue({ kind: "AVAILABLE", projects: jobs, named: [] });
+  f.tools.execute.mockResolvedValue({
+    status: "OK",
+    sources: [
+      {
+        sourceId: "quote",
+        href: "/en/projects/PRJ-XINYI-026/quote",
+        label: jobs[0]!.names[0],
+        facts: { totalAmount: "NT$17,304,000" },
+        projectKeys: [jobs[0]!.projectKey],
+      },
+    ],
+  });
+  const input = {
+    question: "Xinyi store total?",
+    projectKey: "PAGE",
+    confirmedProjectKey: jobs[0]!.projectKey,
+  };
+  const out = await f.service.execute(jobContext(), input);
+  expect(out.kind, JSON.stringify(out)).toBe("ANSWER");
+  expect(out.kind === "ANSWER" && out.answer.text).toContain("NT$17,304,000");
+  expect(JSON.parse(f.model.requests[0]!.messages[0]!.text)).toMatchObject({
+    confirmedProjectReference: jobs[0]!.projectKey,
+    currentQuestion: input.question,
+  });
+  expect(JSON.stringify(f.model.requests[0])).not.toContain("pageContextReference");
+  const denied = missesFixture([]);
+  denied.tools.resolveSubjects.mockResolvedValue({ kind: "AVAILABLE", projects: jobs, named: [] });
+  expect(
+    await denied.service.execute(jobContext(), { ...input, confirmedProjectKey: "FORGED" }),
+  ).toMatchObject({ kind: "ANSWER", refusal: "NO_RECORDS" });
+  denied.repo.jobPolicy.mockResolvedValue(null);
+  expect(await denied.service.execute(jobContext(), input)).toMatchObject({
+    kind: "ANSWER",
+    refusal: "NO_RECORDS",
+    answer: { text: assistantCopy("en").jobNotFound },
+  });
+  denied.repo.jobPolicy.mockResolvedValue({ id: "J", excluded: true });
+  expect(await denied.service.execute(jobContext(), input)).toMatchObject({
+    kind: "ANSWER",
+    refusal: "EXCLUDED",
+  });
+  expect(denied.model.requests).toHaveLength(0);
+});
+it.each(["en", "zh-TW"] as const)(
+  "C: forty parts, twelve printed rows with remaining counts and an optional partial notice (%s)",
+  (locale) => {
+    const registry = new AnswerFactRegistry(locale);
+    registry.register([
+      {
+        sourceId: "s",
+        label: "Job",
+        href: "/en/projects/J",
+        projectKeys: ["J"],
+        facts: { findings: Array.from({ length: 38 }, (_, i) => ({ text: `Saved fact ${i}` })) },
+      },
+    ]);
+    const refs = Array.from({ length: 38 }, (_, i) => ({ show: `s1.findings.${i}.text` }));
+    const result = registry.render({
+      parts: [{ say: "RECORDS_SHOW" }, ...refs, { say: "PARTIAL_RECORDS" }],
+      followUps: [],
+    });
+    expect(result.kind).toBe("ACCEPTED");
+    if (result.kind !== "ACCEPTED") throw Error("rejected");
+    const cards = result.answer.presentation!.blocks.filter((b) => b.kind === "CARD");
+    expect(cards.flatMap((b) => b.rows)).toHaveLength(12);
+    expect(cards[0]!.remaining).toContain("26");
+    expect(result.answer.presentation!.blocks.at(-1)).toMatchObject({
+      kind: "NOTICE",
+      text:
+        locale === "en"
+          ? "Part of what you asked is not in the records you may read."
+          : "您問的部分內容不在可查看的紀錄中。",
+    });
+    const full = registry.render({ parts: [{ say: "RECORDS_SHOW" }, ...refs], followUps: [] });
+    expect(
+      full.kind === "ACCEPTED" && full.answer.presentation!.blocks.some((b) => b.kind === "NOTICE"),
+    ).toBe(false);
+    expect(
+      parseFactAnswer({
+        parts: [{ say: "RECORDS_SHOW" }, ...refs, { show: "x" }, { show: "y" }],
+        followUps: [],
+      }),
+    ).toBeNull();
+    expect(
+      registry.render({
+        parts: [{ say: "RECORDS_SHOW" }, ...refs, { show: "s1.unknown" }],
+        followUps: [],
+      }),
+    ).toMatchObject({ reason: "UNKNOWN_REFERENCE" });
+  },
+);
+it("D: follow-ups use authorized names and remove unsupported personal information for owners too", () => {
+  expect(nameFollowUp("What stage is PRJ-XINYI-026 in?", jobs, "en")).toBe(
+    "What stage is Xinyi Flagship Renovation in?",
+  );
+  expect(nameFollowUp("PRJ-XINYI-026 的報價呢？", jobs, "zh-TW")).toBe("信義旗艦店裝修 的報價呢？");
+  expect(nameFollowUp("PRJ-XINYI-026 Xinyi Flagship Renovation?", jobs, "en")).toContain(
+    "PRJ-XINYI-026",
+  );
+  expect(nameFollowUp("PRIVATE-JOB?", jobs, "en")).toBe("PRIVATE-JOB?");
+  for (const text of [
+    "Who is the client?",
+    "What is the site address?",
+    "Contact details?",
+    "客戶是誰？",
+    "聯絡電話？",
+    "工地地址？",
+  ])
+    expect(maySuggestFollowUp(text, jobContext().capabilities)).toBe(false);
+  expect(maySuggestFollowUp("What is the quote total?", jobContext().capabilities)).toBe(true);
 });

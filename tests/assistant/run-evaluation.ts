@@ -94,7 +94,13 @@ async function evaluateQuestion(
       result: {
         kind: "ANSWER",
         answer: {
-          parts: refs.length ? [{ say: "RECORDS_SHOW" }, ...refs.map((show) => ({ show }))] : [],
+          parts: refs.length
+            ? [
+                { say: "RECORDS_SHOW" },
+                ...refs.map((show) => ({ show })),
+                ...(question.expected.partial ? [{ say: "PARTIAL_RECORDS" }] : []),
+              ]
+            : [],
           followUps: [],
         },
       },
@@ -140,6 +146,9 @@ async function evaluateQuestion(
     ).execute(c, {
       question: question.question,
       ...(question.projectKey ? { projectKey: question.projectKey } : {}),
+      ...(question.confirmedProjectKey
+        ? { confirmedProjectKey: question.confirmedProjectKey }
+        : {}),
     });
   const latencyMs = Math.round(performance.now() - started);
   const references = await services.repository.readableReferences(
@@ -156,6 +165,7 @@ async function evaluateQuestion(
     id: question.id,
     locale: question.locale,
     required: question.required ?? false,
+    friendlierMiss: question.friendlierMiss ?? false,
     reported: question.reported ?? false,
     qualityRegression: question.qualityRegression ?? false,
     factSelectionRegression: question.factSelectionRegression ?? false,

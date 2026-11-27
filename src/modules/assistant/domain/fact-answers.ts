@@ -23,11 +23,16 @@ import { modelFacts } from "./redaction";
 
 /** Non-factual copy only. The model chooses an id, never writes an answer sentence. */
 export const answerPhrases = {
+  PARTIAL_RECORDS: {
+    en: "Part of what you asked is not in the records you may read.",
+    "zh-TW": "您問的部分內容不在可查看的紀錄中。",
+  },
   RECORDS_SHOW: { en: "Here is what the records show:", "zh-TW": "紀錄顯示：" },
 } as const;
 export type AnswerPart = Readonly<{ say: keyof typeof answerPhrases } | { show: string }>;
 export type AnswerSelection = Readonly<{
   phraseId: keyof typeof answerPhrases;
+  noticePhraseId?: "PARTIAL_RECORDS";
   /** Server provenance for evaluation; not persisted with the screen's StructuredAnswer. */
   shown: readonly Readonly<{
     ref: string;
@@ -41,7 +46,7 @@ export const answerParameters = {
   properties: {
     parts: {
       type: "array",
-      maxItems: 14,
+      maxItems: 40,
       items: {
         anyOf: [
           {
@@ -80,7 +85,7 @@ export function parseFactAnswer(
     !r ||
     Object.keys(r).some((k) => !["parts", "followUps"].includes(k)) ||
     !Array.isArray(r.parts) ||
-    r.parts.length > 14 ||
+    r.parts.length > 40 ||
     !Array.isArray(r.followUps) ||
     r.followUps.length > 3 ||
     r.followUps.some((v) => typeof v !== "string" || v.length > 160)
@@ -102,7 +107,10 @@ export function parseFactAnswer(
     return null;
   if (
     r.parts.length &&
-    (!("say" in r.parts[0]) || r.parts.filter((p) => "say" in p).length !== 1 || r.parts.length < 2)
+    (r.parts[0].say !== "RECORDS_SHOW" ||
+      r.parts.filter((p) => p.say === "RECORDS_SHOW").length !== 1 ||
+      r.parts.filter((p) => p.say === "PARTIAL_RECORDS").length > 1 ||
+      !r.parts.some((p) => "show" in p))
   )
     return null;
   return {
@@ -224,8 +232,8 @@ export class AnswerFactRegistry {
   }
 
   /** Preserve the provider input budget; printed rows are bounded separately during layout. */
-  maxAnswerParts(): 13 | 14 {
-    return this.lists.size ? 14 : 13;
+  maxAnswerParts(): 40 {
+    return 40;
   }
 
   /** Only labelled display values and selectable refs cross the model boundary. */
@@ -256,7 +264,7 @@ export class AnswerFactRegistry {
     const separator = this.locale === "zh-TW" ? "：" : ": ";
     const chosen: (Fact | List)[] = [];
     for (const part of parsed.parts.slice(1)) {
-      if (!("show" in part)) return { kind: "REJECTED", reason: "INVALID_OUTPUT" };
+      if ("say" in part) continue;
       const fact = this.facts.get(part.show),
         list = this.lists.get(part.show);
       if (!fact && !list) return { kind: "REJECTED", reason: "UNKNOWN_REFERENCE" };
@@ -429,6 +437,8 @@ export class AnswerFactRegistry {
         });
       }
     }
+    if (parsed.parts.some((p) => "say" in p && p.say === "PARTIAL_RECORDS"))
+      blocks.push({ kind: "NOTICE", text: answerPhrases.PARTIAL_RECORDS[this.locale] });
     const presentation: AnswerPresentation = {
       version: 1,
       locale: this.locale,
@@ -486,7 +496,13 @@ export class AnswerFactRegistry {
             numericTokens(withoutReferences(t, identities)).every((n) => numbers.has(n)),
         ),
       },
-      selection: { phraseId, shown },
+      selection: {
+        phraseId,
+        shown,
+        ...(parsed.parts.some((p) => "say" in p && p.say === "PARTIAL_RECORDS")
+          ? { noticePhraseId: "PARTIAL_RECORDS" as const }
+          : {}),
+      },
     };
   }
 }

@@ -1,11 +1,11 @@
-# Verification — delivery A
+# Verification — A–F in progress
 
-27 November 2026. Draft PR #83, base main `2443d9d`. Issue #81 and AGENTS.md read before implementation.
+27 November 2026. Draft PR #83; base main `2443d9d`.
 
-A changes only server refusal copy: a zero-match named list_jobs search and the existing final unreadable-job guard now use “No job by that name was found.” / 「找不到這個名稱的專案。」. No instruction, tool schema, guard timing or existing authorization assertion changed.
+Reviewer comment [7210266238](https://github.com/FATTY-BAMBA/StrideBrain/pull/83#issuecomment-7210266238) verified as authored by repository owner FATTY-BAMBA. Option 2 is built on provisionally: the user's own question may reach the model after existing PII redaction; private identities retrieved from records never do. Awaiting Product Director confirmation before merge, as are the issue's three provisional copy strings. Guard timing tests remain intact.
 
-Verified: 33 recorded zero-match source ledgers from SB-079 paid-run-6 replay through the live AskAssistant refusal path; both-language unreadable-guard cases; existing AskAssistant tests. Targeted run: 73 tests passed. TypeScript passed after correcting the new test's optional field construction.
+A: 33 recorded zero-match ledgers replayed. B: deterministic readable nearest-job chips and explicit confirmed context, rechecked access/exclusion; same-reader/same-question PostgreSQL test proves identical output, calls and metadata when the unreadable job is present or absent. C: 40 selected parts with 12 printed individual rows, existing list limit and remaining counts; optional partial phrase rendered under cards. D: authorized references replaced with localized names in follow-ups; unsupported contact/client-identity/address suggestions removed for all roles. E: failed AI has only a fixed sentence and same-question retry; AI off retains record search.
 
-Before B, clarification is required: the issue says unreadable job names/references never reach the model, but existing tests intentionally require the unreadable-identity guard only after two model calls, and the original question currently reaches the model unchanged except for general PII redaction. The issue also says those security tests remain unchanged. Clarification is being posted on the PR under AGENTS.md's working rule. No paid run dispatched; budget remains US$1.00.
+Free verification: 112 cases × three rounds pass; the original accepted paid run 45804259788 replays 252/252 with zero discard, wrong value or access violation. Assistant suite: 582 tests passed before the last action/keyboard additions. Full check and browser evidence are in progress.
 
-Not verified: full npm run check, B–F, paid acceptance, hosted acceptance. The not-found, partial-answer and failed-answer copy is provisional and awaiting the Product Director. The PR stays draft. No hosted changes.
+Paid allowance: US$1.00; no paid runs yet. Focused runs first, at most one full run. No hosted changes. Hosted acceptance waits for the Product Director; PR remains draft.

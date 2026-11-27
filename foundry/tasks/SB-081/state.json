@@ -2,7 +2,7 @@
   "issue": 81,
   "branch": "build/sb-081-friendlier-misses",
   "baseCommit": "2443d9d2d50ce1bf8c1d36999ef670a4aec16c79",
-  "status": "AWAITING_PRIVACY_BOUNDARY_CLARIFICATION",
+  "status": "VERIFYING_F",
   "draft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "paidBudgetUsd": "1.00",
@@ -10,6 +10,14 @@
   "stopAfter": "BUILDER_REPORT_AFTER_F",
   "pullRequest": 83,
   "completedSteps": [
-    "A"
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "provisionalDecisions": [
+    "Reviewer 7210266238: typed question may reach model; private record identities may not. Awaiting Product Director before merge.",
+    "Not-found, partial-answer and failed-answer copy."
   ]
 }
