@@ -1,0 +1,29 @@
+{
+  "mode": "LOCAL_PRODUCTION_APP_SYNTHETIC_MODEL_TRANSPORT",
+  "checks": [
+    {
+      "locale": "en",
+      "width": 1440,
+      "remaining": "1",
+      "overflow": false
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "remaining": "1",
+      "overflow": false
+    },
+    {
+      "locale": "zh-TW",
+      "width": 1440,
+      "remaining": "1",
+      "overflow": false
+    },
+    {
+      "locale": "zh-TW",
+      "width": 390,
+      "remaining": "1",
+      "overflow": false
+    }
+  ]
+}

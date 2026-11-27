@@ -2,11 +2,11 @@
   "issue": 81,
   "branch": "build/sb-081-friendlier-misses",
   "baseCommit": "2443d9d2d50ce1bf8c1d36999ef670a4aec16c79",
-  "status": "VERIFYING_F",
+  "status": "AWAITING_REVIEW_PAID_ACCEPTANCE_FAILED",
   "draft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
   "paidBudgetUsd": "1.00",
-  "paidSpentUsd": "0",
+  "paidSpentUsd": "0.859081800",
   "stopAfter": "BUILDER_REPORT_AFTER_F",
   "pullRequest": 83,
   "completedSteps": [
@@ -14,10 +14,22 @@
     "B",
     "C",
     "D",
-    "E"
+    "E",
+    "F"
   ],
   "provisionalDecisions": [
     "Reviewer 7210266238: typed question may reach model; private record identities may not. Awaiting Product Director before merge.",
     "Not-found, partial-answer and failed-answer copy."
-  ]
+  ],
+  "finalCodeCommit": "5b8ea86c564f01919726a76ad3129da5bce58fac",
+  "paidEvaluatedCommit": "332e00ab87f26f879bd8538c9b6e5526d55da260",
+  "paidPassed": false,
+  "fullPaidRunsUsed": 1,
+  "fullPaidRun": 45946752882,
+  "localCheck": {
+    "passed": true,
+    "tests": 2025,
+    "files": 209
+  },
+  "remainingBlocker": "Model partial-answer selection below the required pass rate; hosted acceptance not run."
 }
