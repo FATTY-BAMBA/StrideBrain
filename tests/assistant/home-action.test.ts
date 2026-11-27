@@ -55,7 +55,7 @@ describe("Home assistant integration", () => {
       boundary.ask.mock.invocationCallOrder.at(-1)!,
     );
   });
-  it("passes the server-resolved subject to record search without changing the browser form", async () => {
+  it("does not execute record search after a discarded answer", async () => {
     boundary.ask.mockResolvedValue({
       kind: "FALLBACK",
       reason: "UNGROUNDED",
@@ -66,9 +66,13 @@ describe("Home assistant integration", () => {
     input.set("message", "PRJ-XINYI-026 quote findings?");
     input.set("projectKey", "J-2611-R7K3");
     const result = await askHomeAction(initialHomeChatState, input);
-    expect(boundary.legacy).toHaveBeenCalledWith("en", "PRJ-XINYI-026");
+    expect(boundary.legacy).not.toHaveBeenCalled();
+    expect(boundary.runComparison).not.toHaveBeenCalled();
     expect(input.get("projectKey")).toBe("J-2611-R7K3");
-    expect(result.turns.at(-1)?.aiFallback).toBe(true);
+    expect(result.turns.at(-1)?.text).toBe("The AI could not answer this time. Please ask again.");
+    expect(result.turns.at(-1)?.aiQuestionChips).toEqual([
+      { label: "Ask again", question: "PRJ-XINYI-026 quote findings?" },
+    ]);
   });
   it("uses AI text and only server-supplied sources; never resends past assistant text", async () => {
     boundary.ask.mockResolvedValue({
@@ -98,19 +102,23 @@ describe("Home assistant integration", () => {
     expect(JSON.stringify(boundary.ask.mock.calls)).not.toContain("STALE_PRIVATE_FACT");
     expect(boundary.legacy).not.toHaveBeenCalled();
   });
-  it("keeps the no-key behavior identical and adds a visible state only for an attempted AI failure", async () => {
+  it("uses record search without a key but retries a failed AI answer", async () => {
     vi.stubEnv("STRIDEBRAIN_GEMINI_API_KEY", "");
+    boundary.ask.mockResolvedValue({ kind: "FALLBACK", reason: "NO_KEY" });
     const noKey = await askHomeAction(initialHomeChatState, form());
     expect(boundary.ask).not.toHaveBeenCalled();
+    expect(boundary.legacy).toHaveBeenCalled();
+    expect(noKey.turns.at(-1)?.aiQuestionChips).toBeUndefined();
+    boundary.legacy.mockClear();
     expect(noKey.turns.at(-1)?.aiFallback).toBeUndefined();
     vi.stubEnv("STRIDEBRAIN_GEMINI_API_KEY", "synthetic-test-key");
     boundary.ask.mockResolvedValue({ kind: "FALLBACK", reason: "TIMEOUT" });
     const failed = await askHomeAction(initialHomeChatState, form());
-    expect(failed.turns.at(-1)?.text).toBe(noKey.turns.at(-1)?.text);
-    expect(failed.turns.at(-1)?.aiFallback).toBe(true);
+    expect(failed.turns.at(-1)?.text).toBe("The AI could not answer this time. Please ask again.");
+    expect(failed.turns.at(-1)?.aiQuestionChips?.[0]?.question).toBe(form().get("message"));
   });
-  it("leaves organization-off behavior on the keyword path", async () => {
-    boundary.ask.mockResolvedValue({ kind: "FALLBACK", reason: "DISABLED" });
+  it.each(["DISABLED", "NO_KEY"])("leaves %s on the keyword path", async (reason) => {
+    boundary.ask.mockResolvedValue({ kind: "FALLBACK", reason });
     const result = await askHomeAction(initialHomeChatState, form());
     expect(result.turns.at(-1)?.aiFallback).toBeUndefined();
     expect(boundary.legacy).toHaveBeenCalled();
@@ -190,4 +198,47 @@ describe("Home assistant integration", () => {
       expect(boundary.legacy).not.toHaveBeenCalled();
     },
   );
+});
+
+it("passes confirmed context separately and rejects repeated, oversized and forged-shape context", async () => {
+  boundary.ask.mockResolvedValue({ kind: "FALLBACK", reason: "TIMEOUT" });
+  const input = form();
+  input.set("message", "Xinyi store total?");
+  input.set("projectKey", "PAGE");
+  input.set("confirmedProjectKey", "PRJ-XINYI-026");
+  const out = await askHomeAction(initialHomeChatState, input);
+  expect(boundary.ask.mock.calls.at(-1)![1]).toMatchObject({
+    question: "Xinyi store total?",
+    projectKey: "PAGE",
+    confirmedProjectKey: "PRJ-XINYI-026",
+  });
+  expect(out.turns.at(-1)?.aiQuestionChips?.[0]).toMatchObject({
+    question: "Xinyi store total?",
+    confirmedProjectKey: "PRJ-XINYI-026",
+  });
+  boundary.ask.mockClear();
+  input.append("confirmedProjectKey", "J");
+  expect(await askHomeAction(initialHomeChatState, input)).toEqual(initialHomeChatState);
+  input.set("confirmedProjectKey", "x".repeat(129));
+  expect(await askHomeAction(initialHomeChatState, input)).toEqual(initialHomeChatState);
+  input.set("confirmedProjectKey", "../private");
+  expect(await askHomeAction(initialHomeChatState, input)).toEqual(initialHomeChatState);
+  expect(boundary.ask).not.toHaveBeenCalled();
+  expect(boundary.legacy).not.toHaveBeenCalled();
+});
+
+it("renders confirmed follow-ups only as typed chips, without duplicate plain buttons", async () => {
+  const question = "What stage is Xinyi store in?";
+  const chip = { label: question, question, confirmedProjectKey: "PRJ-XINYI-026" };
+  boundary.ask.mockResolvedValue({
+    kind: "ANSWER",
+    locale: "en",
+    answer: { text: "Saved stage", sourceIds: [], followUps: [question] },
+    sources: [],
+    questionChips: [chip],
+  });
+  const input = form();
+  input.set("confirmedProjectKey", "PRJ-XINYI-026");
+  const out = await askHomeAction(initialHomeChatState, input);
+  expect(out.turns.at(-1)).toMatchObject({ aiQuestionChips: [chip], aiFollowUps: [] });
 });

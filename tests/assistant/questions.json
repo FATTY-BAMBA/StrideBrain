@@ -1626,5 +1626,817 @@
       "facts": ["@lastPrice", "@lastQuoted", "@timesQuoted", "@documentNumber"],
       "forbidden": []
     }
+  },
+  {
+    "id": "en-misses-near-0",
+    "locale": "en",
+    "person": "owner",
+    "question": "What is the quote total for Xinyi store?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "list_jobs",
+        "arguments": {
+          "query": "Xinyi store"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "DECLINE",
+      "facts": [],
+      "forbidden": [],
+      "unresolvedSubject": true,
+      "firstChip": "PRJ-XINYI-026"
+    }
+  },
+  {
+    "id": "en-misses-unrelated-0",
+    "locale": "en",
+    "person": "owner",
+    "question": "What is the quote total for Moonlight Cafe?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "list_jobs",
+        "arguments": {
+          "query": "Moonlight Cafe"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "DECLINE",
+      "facts": [],
+      "forbidden": [],
+      "unresolvedSubject": true,
+      "chipKeys": []
+    }
+  },
+  {
+    "id": "en-misses-unreadable-0",
+    "locale": "en",
+    "person": "project-manager",
+    "question": "What is the quote total for Active Design Project 01?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "list_jobs",
+        "arguments": {
+          "query": "Active Design Project 01"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "DECLINE",
+      "facts": [],
+      "forbidden": ["PRJ-ACTIVE-001"],
+      "unresolvedSubject": true
+    }
+  },
+  {
+    "id": "en-misses-confirmed-0",
+    "locale": "en",
+    "person": "owner",
+    "question": "What is the quote total for Xinyi store?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@amounts.totalAmount"],
+      "forbidden": [],
+      "subjectProjectKey": "PRJ-XINYI-026"
+    },
+    "confirmedProjectKey": "PRJ-XINYI-026"
+  },
+  {
+    "id": "en-misses-long-0",
+    "locale": "en",
+    "person": "owner",
+    "question": "Show every saved finding for PRJ-XINYI-026.",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_saved_comparison",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": [],
+      "forbidden": [],
+      "match": "LONG_FINDINGS",
+      "subjectProjectKey": "PRJ-XINYI-026"
+    }
+  },
+  {
+    "id": "en-misses-partial-0",
+    "locale": "en",
+    "person": "owner",
+    "question": "What stage is PRJ-XINYI-026 in, and who is the client?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@stage", "@clientAvailability"],
+      "forbidden": [],
+      "subjectProjectKey": "PRJ-XINYI-026",
+      "privateAvailability": true
+    }
+  },
+  {
+    "id": "en-misses-complete-0",
+    "locale": "en",
+    "person": "owner",
+    "question": "What stage is PRJ-XINYI-026 in?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@stage"],
+      "forbidden": [],
+      "subjectProjectKey": "PRJ-XINYI-026",
+      "privateAvailability": false
+    }
+  },
+  {
+    "id": "en-misses-near-1",
+    "locale": "en",
+    "person": "owner",
+    "question": "What is the quote total for Riverside studio?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "list_jobs",
+        "arguments": {
+          "query": "Riverside studio"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "DECLINE",
+      "facts": [],
+      "forbidden": [],
+      "unresolvedSubject": true,
+      "firstChip": "J-2611-R7K3"
+    }
+  },
+  {
+    "id": "en-misses-unrelated-1",
+    "locale": "en",
+    "person": "owner",
+    "question": "Which stage is Moonlight Cafe in?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "list_jobs",
+        "arguments": {
+          "query": "Moonlight Cafe"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "DECLINE",
+      "facts": [],
+      "forbidden": [],
+      "unresolvedSubject": true,
+      "chipKeys": []
+    }
+  },
+  {
+    "id": "en-misses-unreadable-1",
+    "locale": "en",
+    "person": "project-manager",
+    "question": "Show the quote status of Active Design Project 01.",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "list_jobs",
+        "arguments": {
+          "query": "Active Design Project 01"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "DECLINE",
+      "facts": [],
+      "forbidden": ["PRJ-ACTIVE-001"],
+      "unresolvedSubject": true
+    }
+  },
+  {
+    "id": "en-misses-confirmed-1",
+    "locale": "en",
+    "person": "owner",
+    "question": "Show Xinyi store’s current quote total.",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@amounts.totalAmount"],
+      "forbidden": [],
+      "subjectProjectKey": "PRJ-XINYI-026"
+    },
+    "confirmedProjectKey": "PRJ-XINYI-026"
+  },
+  {
+    "id": "en-misses-long-1",
+    "locale": "en",
+    "person": "owner",
+    "question": "List all the saved findings for PRJ-XINYI-026, not just one.",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_saved_comparison",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": [],
+      "forbidden": [],
+      "match": "LONG_FINDINGS",
+      "subjectProjectKey": "PRJ-XINYI-026"
+    }
+  },
+  {
+    "id": "en-misses-partial-1",
+    "locale": "en",
+    "person": "owner",
+    "question": "For PRJ-XINYI-026, show the stage and the client’s identity.",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@stage", "@clientAvailability"],
+      "forbidden": [],
+      "subjectProjectKey": "PRJ-XINYI-026",
+      "privateAvailability": true
+    }
+  },
+  {
+    "id": "en-misses-complete-1",
+    "locale": "en",
+    "person": "owner",
+    "question": "Show the stage of PRJ-XINYI-026.",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@stage"],
+      "forbidden": [],
+      "subjectProjectKey": "PRJ-XINYI-026",
+      "privateAvailability": false
+    }
+  },
+  {
+    "id": "zh-TW-misses-near-0",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "信義店的報價總額是多少？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "list_jobs",
+        "arguments": {
+          "query": "信義店"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "DECLINE",
+      "facts": [],
+      "forbidden": [],
+      "unresolvedSubject": true,
+      "firstChip": "PRJ-XINYI-026"
+    }
+  },
+  {
+    "id": "zh-TW-misses-unrelated-0",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "月光咖啡館的報價總額是多少？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "list_jobs",
+        "arguments": {
+          "query": "月光咖啡館"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "DECLINE",
+      "facts": [],
+      "forbidden": [],
+      "unresolvedSubject": true,
+      "chipKeys": []
+    }
+  },
+  {
+    "id": "zh-TW-misses-unreadable-0",
+    "locale": "zh-TW",
+    "person": "project-manager",
+    "question": "進行中設計專案01的報價總額是多少？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "list_jobs",
+        "arguments": {
+          "query": "進行中設計專案01"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "DECLINE",
+      "facts": [],
+      "forbidden": ["PRJ-ACTIVE-001"],
+      "unresolvedSubject": true
+    }
+  },
+  {
+    "id": "zh-TW-misses-confirmed-0",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "信義店的報價總額是多少？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@amounts.totalAmount"],
+      "forbidden": [],
+      "subjectProjectKey": "PRJ-XINYI-026"
+    },
+    "confirmedProjectKey": "PRJ-XINYI-026"
+  },
+  {
+    "id": "zh-TW-misses-long-0",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "列出PRJ-XINYI-026的所有已儲存發現。",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_saved_comparison",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": [],
+      "forbidden": [],
+      "match": "LONG_FINDINGS",
+      "subjectProjectKey": "PRJ-XINYI-026"
+    }
+  },
+  {
+    "id": "zh-TW-misses-partial-0",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "PRJ-XINYI-026在哪個階段，客戶是誰？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@stage", "@clientAvailability"],
+      "forbidden": [],
+      "subjectProjectKey": "PRJ-XINYI-026",
+      "privateAvailability": true
+    }
+  },
+  {
+    "id": "zh-TW-misses-complete-0",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "PRJ-XINYI-026目前在哪個階段？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@stage"],
+      "forbidden": [],
+      "subjectProjectKey": "PRJ-XINYI-026",
+      "privateAvailability": false
+    }
+  },
+  {
+    "id": "zh-TW-misses-near-1",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "河岸工作室的報價總額是多少？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "list_jobs",
+        "arguments": {
+          "query": "河岸工作室"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "DECLINE",
+      "facts": [],
+      "forbidden": [],
+      "unresolvedSubject": true,
+      "firstChip": "J-2611-R7K3"
+    }
+  },
+  {
+    "id": "zh-TW-misses-unrelated-1",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "月光咖啡館目前在哪個階段？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "list_jobs",
+        "arguments": {
+          "query": "月光咖啡館"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "DECLINE",
+      "facts": [],
+      "forbidden": [],
+      "unresolvedSubject": true,
+      "chipKeys": []
+    }
+  },
+  {
+    "id": "zh-TW-misses-unreadable-1",
+    "locale": "zh-TW",
+    "person": "project-manager",
+    "question": "請顯示進行中設計專案01的報價狀態。",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "list_jobs",
+        "arguments": {
+          "query": "進行中設計專案01"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "DECLINE",
+      "facts": [],
+      "forbidden": ["PRJ-ACTIVE-001"],
+      "unresolvedSubject": true
+    }
+  },
+  {
+    "id": "zh-TW-misses-confirmed-1",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "請顯示信義店目前的報價總計。",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_quote_status",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@amounts.totalAmount"],
+      "forbidden": [],
+      "subjectProjectKey": "PRJ-XINYI-026"
+    },
+    "confirmedProjectKey": "PRJ-XINYI-026"
+  },
+  {
+    "id": "zh-TW-misses-long-1",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "請顯示PRJ-XINYI-026全部的已儲存比較發現，不只一項。",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_saved_comparison",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": [],
+      "forbidden": [],
+      "match": "LONG_FINDINGS",
+      "subjectProjectKey": "PRJ-XINYI-026"
+    }
+  },
+  {
+    "id": "zh-TW-misses-partial-1",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "請顯示PRJ-XINYI-026的階段與客戶身分。",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@stage", "@clientAvailability"],
+      "forbidden": [],
+      "subjectProjectKey": "PRJ-XINYI-026",
+      "privateAvailability": true
+    }
+  },
+  {
+    "id": "zh-TW-misses-complete-1",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "請顯示PRJ-XINYI-026的階段。",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@stage"],
+      "forbidden": [],
+      "subjectProjectKey": "PRJ-XINYI-026",
+      "privateAvailability": false
+    }
+  },
+  {
+    "id": "en-misses-client-only",
+    "locale": "en",
+    "person": "owner",
+    "question": "Who is the client of PRJ-XINYI-026?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@clientAvailability"],
+      "forbidden": [],
+      "privateAvailability": true,
+      "subjectProjectKey": "PRJ-XINYI-026"
+    }
+  },
+  {
+    "id": "en-misses-siteAddress-only",
+    "locale": "en",
+    "person": "owner",
+    "question": "What is the site address of PRJ-XINYI-026?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@siteAddressAvailability"],
+      "forbidden": [],
+      "privateAvailability": true,
+      "subjectProjectKey": "PRJ-XINYI-026"
+    }
+  },
+  {
+    "id": "en-misses-contact-only",
+    "locale": "en",
+    "person": "owner",
+    "question": "What are the contact details for PRJ-XINYI-026?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@contactAvailability"],
+      "forbidden": [],
+      "privateAvailability": true,
+      "subjectProjectKey": "PRJ-XINYI-026"
+    }
+  },
+  {
+    "id": "zh-TW-misses-client-only",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "PRJ-XINYI-026 的客戶是誰？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@clientAvailability"],
+      "forbidden": [],
+      "privateAvailability": true,
+      "subjectProjectKey": "PRJ-XINYI-026"
+    }
+  },
+  {
+    "id": "zh-TW-misses-siteAddress-only",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "PRJ-XINYI-026 的工程地址是什麼？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@siteAddressAvailability"],
+      "forbidden": [],
+      "privateAvailability": true,
+      "subjectProjectKey": "PRJ-XINYI-026"
+    }
+  },
+  {
+    "id": "zh-TW-misses-contact-only",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "PRJ-XINYI-026 的聯絡方式是什麼？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@contactAvailability"],
+      "forbidden": [],
+      "privateAvailability": true,
+      "subjectProjectKey": "PRJ-XINYI-026"
+    }
   }
 ]

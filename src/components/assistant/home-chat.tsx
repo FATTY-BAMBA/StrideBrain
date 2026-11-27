@@ -36,7 +36,8 @@ export function HomeChat({
   const [openDraft, setOpenDraft] = useState<string | null>(null);
   const [state, action, asking] = useActionState(askHomeAction, initialHomeChatState);
   const [drafting, startDraft] = useTransition();
-  const pending = asking || drafting;
+  const [resending, startResend] = useTransition();
+  const pending = asking || drafting || resending;
   type DraftTurn = HomeChatTurn & { draftResult?: JobDraftActionState; draftRequest?: string };
   const [draftTurns, setDraftTurns] = useState<readonly DraftTurn[]>([]);
   // Drafts stay in this client component, never in the question action's history.
@@ -181,6 +182,29 @@ export function HomeChat({
                 {turn.aiSources.map((source) => (
                   <li key={source.sourceId}>
                     <Link href={source.href}>{source.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {turn.aiQuestionChips?.length ? (
+              <ul className={styles.followUps}>
+                {turn.aiQuestionChips.map((chip) => (
+                  <li key={`${chip.confirmedProjectKey ?? ""}:${chip.label}`}>
+                    <button
+                      type="button"
+                      disabled={pending}
+                      onClick={() => {
+                        const form = formRef.current;
+                        if (!form) return;
+                        const data = new FormData(form);
+                        data.set("message", chip.question);
+                        if (chip.confirmedProjectKey)
+                          data.set("confirmedProjectKey", chip.confirmedProjectKey);
+                        startResend(() => action(data));
+                      }}
+                    >
+                      {chip.label}
+                    </button>
                   </li>
                 ))}
               </ul>

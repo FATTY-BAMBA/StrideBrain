@@ -11,7 +11,7 @@ import {
   type ToolCall,
 } from "../domain/contracts";
 
-const answerDeclaration = (maxParts: 13 | 14 = 14) => ({
+const answerDeclaration = (maxParts: 40 = 40) => ({
   name: "submit_answer",
   description:
     "Finish by selecting a phrase id and fact refs from this turn. Use empty parts when records cannot answer.",

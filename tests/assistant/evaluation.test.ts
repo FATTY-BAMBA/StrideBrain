@@ -75,7 +75,7 @@ describe("evaluation by selected references", () => {
         ),
       ).toHaveLength(14);
     }
-    expect(questions).toHaveLength(84);
+    expect(questions).toHaveLength(118);
   });
   it("counts a true page fact for an unresolved named job as a wrong record value", () => {
     const registry = new AnswerFactRegistry("en");
@@ -253,17 +253,17 @@ describe("evaluation by selected references", () => {
     rows[0]!.wrongRecordValue = true;
     expect(roundSummary(1, rows).passed).toBe(false);
     rows[0]!.wrongRecordValue = false;
-    rows.forEach((q) => (q.latencyMs = 2501));
+    rows.forEach((q) => (q.latencyMs = 3036));
     expect(roundSummary(1, rows).passed).toBe(false);
     rows.forEach((q) => {
       q.latencyMs = 1000;
-      q.estimatedUsd = "0.001528";
+      q.estimatedUsd = "0.001750";
     });
     expect(roundSummary(1, rows).passed).toBe(false);
   });
 });
 (process.env.DATABASE_URL ? it : it.skip)(
-  "replays all 84 evaluation cases through the fake and authorized records in three rounds",
+  "replays all 118 evaluation cases through the fake and authorized records in three rounds",
   async () => {
     const report = await runEvaluationRounds(async () => {
       const db = await assistantDatabase();
@@ -331,4 +331,63 @@ it("does not credit overflow rows or child facts of an additional summary-only l
     "count",
     "count",
   ]);
+});
+
+it("a chip for an unreadable job fails the absolute access gate even in a refusal", () => {
+  const out = evaluateAnswer(
+    { ...q, expected: { kind: "DECLINE", facts: [], forbidden: ["PRIVATE"] } },
+    {
+      kind: "ANSWER",
+      locale: "en",
+      refusal: "NO_RECORDS",
+      answer: { text: "No job by that name was found.", sourceIds: [], followUps: [] },
+      sources: [],
+      questionChips: [
+        { label: "Private", question: "Private total?", confirmedProjectKey: "PRIVATE" },
+      ],
+    },
+    [],
+    null,
+    [],
+  );
+  expect(out).toMatchObject({ verdict: "wrong", accessViolation: true });
+});
+
+it("a complete long findings answer cannot claim that requested records are missing", () => {
+  const ledger = [
+    {
+      sourceId: "s",
+      label: "Job",
+      href: "/en/projects/J",
+      projectKeys: ["J"],
+      facts: { findings: Array.from({ length: 13 }, (_, i) => ({ text: `Saved finding ${i}` })) },
+    },
+  ];
+  const question: EvaluationQuestion = {
+    ...q,
+    expected: { kind: "FACTS", facts: [], forbidden: [], match: "LONG_FINDINGS" },
+  };
+  const registry = new AnswerFactRegistry("en");
+  registry.register(ledger);
+  for (const partial of [false, true]) {
+    const raw = {
+      parts: [
+        { say: "RECORDS_SHOW" },
+        ...(partial ? [{ show: "s1.clientAvailability" }] : []),
+        ...Array.from({ length: 13 }, (_, i) => ({ show: `s1.findings.${i}.text` })),
+      ],
+      followUps: [],
+    };
+    const rendered = registry.render(raw);
+    if (rendered.kind !== "ACCEPTED") throw Error("render");
+    const judged = evaluateAnswer(
+      question,
+      { ...rendered, kind: "ANSWER", locale: "en", sources: ledger },
+      expectedFacts(question, ledger),
+      raw,
+      ledger,
+    );
+    expect(judged.verdict).toBe(partial ? "wrong" : "grounded and correct");
+    expect(judged.wrongRecordValue).toBe(false);
+  }
 });

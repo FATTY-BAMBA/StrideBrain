@@ -106,20 +106,20 @@ describe("server-rendered fact selections", () => {
       },
     });
   });
-  it("reserves the fourteenth provider part only when this turn can show a list", () => {
+  it("allows forty provider parts with or without a list; printed rows stay bounded", () => {
     const registry = new AnswerFactRegistry("en");
     const findings = source("F", {
       findings: Array.from({ length: 13 }, (_, i) => ({ text: `Saved sentence ${i}` })),
     });
     registry.register([findings]);
-    expect(registry.maxAnswerParts()).toBe(13);
+    expect(registry.maxAnswerParts()).toBe(40);
     const refs = Array.from({ length: 12 }, (_, i) => `s1.findings.${i}.text`);
     expect(registry.render(select(...refs)).kind).toBe("ACCEPTED");
     expect(registry.render(select(...refs, "s1.findings.12.text"))).toMatchObject({
       kind: "ACCEPTED",
     });
     registry.register([source("C", { count: 0 })]);
-    expect(registry.maxAnswerParts()).toBe(14);
+    expect(registry.maxAnswerParts()).toBe(40);
     expect(registry.render(select(...refs, "s2.list")).kind).toBe("ACCEPTED");
   });
   it("sends only selectable references, never bare record aliases that look selectable", () => {

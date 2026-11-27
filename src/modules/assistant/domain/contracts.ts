@@ -40,6 +40,11 @@ export type ToolResult = Readonly<{
   sources: readonly AssistantSource[];
   comparisonProjectKey?: string;
 }>;
+export type AssistantQuestionChip = Readonly<{
+  label: string;
+  question: string;
+  confirmedProjectKey?: string;
+}>;
 export type StructuredAnswer = Readonly<{
   text: string;
   presentation?: AnswerPresentation;
@@ -60,7 +65,7 @@ export interface AssistantModelPort {
       messages: readonly ModelMessage[];
       tools: readonly ToolDefinition[];
       maxOutputTokens: number;
-      maxAnswerParts?: 13 | 14;
+      maxAnswerParts?: 40;
       signal: AbortSignal;
     }>,
   ): Promise<ModelReply>;
@@ -106,6 +111,7 @@ export type AssistantOutcome =
       sources: readonly AssistantSource[];
       locale: Locale;
       selection?: AnswerSelection;
+      questionChips?: readonly AssistantQuestionChip[];
       action?: Readonly<{ label: string; href: string }>;
       refusal?: "NO_RECORDS" | "OUT_OF_DATE" | "EXCLUDED" | "UNAVAILABLE";
     }>;

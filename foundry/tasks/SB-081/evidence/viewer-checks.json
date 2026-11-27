@@ -1,0 +1,13 @@
+{
+  "mode": "LOCAL_PRODUCTION_APP_SYNTHETIC_MODEL_TRANSPORT",
+  "checks": [
+    {
+      "locale": "en",
+      "quoteAmountNotDisclosed": true
+    },
+    {
+      "locale": "zh-TW",
+      "quoteAmountNotDisclosed": true
+    }
+  ]
+}

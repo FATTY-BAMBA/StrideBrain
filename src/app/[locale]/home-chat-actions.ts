@@ -1,4 +1,5 @@
 "use server";
+import { assistantCopy } from "@/modules/localization/assistant";
 
 import { scheduleAssistantTurnTiming } from "@/lib/server/assistant-turn-timing";
 import { assistantConfigured } from "@/lib/server/assistant-availability";
@@ -690,7 +691,13 @@ export async function askHomeAction(
     rawMessage = formData.get("message"),
     rawProject = formData.get("projectKey");
   let attempted = false;
-  let subjectProjectKey: string | undefined;
+  const confirmed = formData.get("confirmedProjectKey");
+  if (
+    formData.getAll("confirmedProjectKey").length > 1 ||
+    (confirmed !== null &&
+      (typeof confirmed !== "string" || !/^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$/.test(confirmed)))
+  )
+    return previous;
   if (
     typeof rawLocale === "string" &&
     isSupportedLocale(rawLocale) &&
@@ -716,6 +723,7 @@ export async function askHomeAction(
               .slice(-9)
               .map((t) => t.text),
             ...(typeof rawProject === "string" ? { projectKey: rawProject } : {}),
+            ...(typeof confirmed === "string" ? { confirmedProjectKey: confirmed } : {}),
           },
         );
         if (result.kind === "ANSWER") {
@@ -732,7 +740,8 @@ export async function askHomeAction(
                 label: s.label,
                 href: s.href as Route,
               })),
-              aiFollowUps: result.answer.followUps,
+              aiFollowUps: result.questionChips ? [] : result.answer.followUps,
+              ...(result.questionChips ? { aiQuestionChips: result.questionChips } : {}),
               ...(result.answer.presentation ? { aiPresentation: result.answer.presentation } : {}),
               ...(result.action
                 ? { action: { ...result.action, href: result.action.href as Route } }
@@ -740,23 +749,35 @@ export async function askHomeAction(
             },
           ]);
         }
-        attempted = !["DISABLED", "NO_KEY"].includes(result.reason);
-        subjectProjectKey = result.subjectProjectKey;
+        attempted = result.reason !== "DISABLED" && result.reason !== "NO_KEY";
       }
     } catch {
       attempted = true;
     }
   }
-  const result = await askKeywordAction(
-    previous,
-    formData,
-    subjectProjectKey ? { subjectProjectKey } : {},
-  );
-  if (!attempted || result === previous) return result;
-  return {
-    ...result,
-    turns: result.turns.map((t, i) =>
-      i === result.turns.length - 1 && t.role === "assistant" ? { ...t, aiFallback: true } : t,
-    ),
-  };
+  if (!attempted) return askKeywordAction(previous, formData);
+  if (
+    typeof rawMessage !== "string" ||
+    typeof rawLocale !== "string" ||
+    !isSupportedLocale(rawLocale)
+  )
+    return previous;
+  const now = Date.now(),
+    copy = assistantCopy(rawLocale);
+  return append(previous, [
+    { id: `user-${now}`, role: "user", text: rawMessage.trim() },
+    {
+      id: `assistant-${now}`,
+      role: "assistant",
+      ai: true,
+      text: copy.failedAnswer,
+      aiQuestionChips: [
+        {
+          label: copy.retry,
+          question: rawMessage.trim(),
+          ...(typeof confirmed === "string" ? { confirmedProjectKey: confirmed } : {}),
+        },
+      ],
+    },
+  ]);
 }

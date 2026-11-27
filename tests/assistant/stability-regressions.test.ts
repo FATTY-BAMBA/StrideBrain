@@ -3,10 +3,11 @@ import { runEvaluationRounds, roundSummary, stabilitySummary } from "./evaluatio
 describe("three-round evaluation gates", () => {
   const rows = (en: number, zh: number) =>
     ["en", "zh-TW"].flatMap((locale) =>
-      Array.from({ length: 42 }, (_, i) => ({
+      Array.from({ length: 59 }, (_, i) => ({
         id: `${locale}-${i}`,
         locale: locale as "en" | "zh-TW",
-        required: i >= 20 && i < 41,
+        required: i >= 20 && i !== 41,
+        friendlierMiss: i >= 42,
         reported: i === 41,
         qualityRegression: i === 24,
         calls: 2,
@@ -67,10 +68,10 @@ describe("three-round evaluation gates", () => {
     const rateFailure = await runEvaluationRounds(async (round) =>
       complete.map((q, i) => ({
         ...q,
-        verdict: round === 1 && i >= 20 && i < 24 ? "wrong" : q.verdict,
+        verdict: round === 1 && i >= 20 && i < 27 ? "wrong" : q.verdict,
       })),
     );
-    expect(rateFailure.requiredAnswers).toEqual({ passed: 122, total: 126 });
+    expect(rateFailure.requiredAnswers).toEqual({ passed: 221, total: 228 });
     expect(rateFailure.requiredPassed).toBe(false);
     expect(
       roundSummary(
@@ -108,11 +109,11 @@ describe("three-round evaluation gates", () => {
   });
   it("enforces call targets and rejects every displayed mislabel", () => {
     const sample = rows(20, 20);
-    for (let i = 0; i < 5; i++) sample[i]!.calls = 4;
+    for (let i = 0; i < 6; i++) sample[i]!.calls = 4;
     expect(roundSummary(1, sample)).toMatchObject({
       factSelectionRegressions: { passed: 28, total: 28 },
       passed: false,
-      callTargets: { median: 2, maximum: 4, withinThree: 79, questions: 84 },
+      callTargets: { median: 2, maximum: 4, withinThree: 112, questions: 118 },
     });
     sample[4]!.calls = 2;
     expect(roundSummary(1, sample).passed).toBe(true);

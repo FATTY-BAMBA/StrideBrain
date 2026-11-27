@@ -1,0 +1,123 @@
+{
+  "runs": [
+    {
+      "run": 45945316940,
+      "commit": "40458b2",
+      "kind": "FOCUSED",
+      "estimatedUsd": "0.067421900",
+      "passed": false,
+      "rounds": [
+        {
+          "round": 1,
+          "scores": {
+            "en": 6,
+            "zh-TW": 7
+          },
+          "perLanguage": 8
+        },
+        {
+          "round": 2,
+          "scores": {
+            "en": 6,
+            "zh-TW": 7
+          },
+          "perLanguage": 8
+        },
+        {
+          "round": 3,
+          "scores": {
+            "en": 6,
+            "zh-TW": 7
+          },
+          "perLanguage": 8
+        }
+      ]
+    },
+    {
+      "run": 45945887094,
+      "commit": "6ff787d",
+      "kind": "FOCUSED",
+      "estimatedUsd": "0.068147100",
+      "passed": false,
+      "rounds": [
+        {
+          "round": 1,
+          "scores": {
+            "en": 7,
+            "zh-TW": 6
+          },
+          "perLanguage": 8
+        },
+        {
+          "round": 2,
+          "scores": {
+            "en": 7,
+            "zh-TW": 7
+          },
+          "perLanguage": 8
+        },
+        {
+          "round": 3,
+          "scores": {
+            "en": 7,
+            "zh-TW": 6
+          },
+          "perLanguage": 8
+        }
+      ]
+    },
+    {
+      "run": 45946406591,
+      "commit": "25fd0ac",
+      "kind": "FOCUSED",
+      "estimatedUsd": "0.073404700",
+      "passed": false,
+      "rounds": [
+        {
+          "round": 1,
+          "scores": {
+            "en": 7,
+            "zh-TW": 7
+          },
+          "perLanguage": 8
+        },
+        {
+          "round": 2,
+          "scores": {
+            "en": 7,
+            "zh-TW": 7
+          },
+          "perLanguage": 8
+        },
+        {
+          "round": 3,
+          "scores": {
+            "en": 7,
+            "zh-TW": 7
+          },
+          "perLanguage": 8
+        }
+      ]
+    }
+  ],
+  "spentBeforeFullUsd": "0.208973700",
+  "checkoutFailure": {
+    "run": 45945113457,
+    "costUsd": "0",
+    "reason": "Short SHA was treated as a branch; evaluation step skipped."
+  },
+  "full": {
+    "run": 45946752882,
+    "commit": "332e00ab87f26f879bd8538c9b6e5526d55da260",
+    "estimatedUsd": "0.650108100",
+    "passed": false,
+    "absoluteGatesPassed": true,
+    "requiredAnswers": {
+      "passed": 197,
+      "total": 210
+    }
+  },
+  "totalEstimatedUsd": "0.859081800",
+  "allowanceUsd": "1.00",
+  "fullRunsUsed": 1
+}

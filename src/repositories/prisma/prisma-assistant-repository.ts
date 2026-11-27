@@ -43,7 +43,11 @@ async function job(tx: Prisma.TransactionClient, c: RuntimeContext, key: string)
 }
 export class PrismaAssistantRepository implements AssistantRepositoryPort, AssistantTurnTimingPort {
   constructor(private readonly db: PrismaClient) {}
-  async questionMentionsUnreadableJob(c: RuntimeContext, question: string) {
+  async questionMentionsUnreadableJob(
+    c: RuntimeContext,
+    question: string,
+    onTypedMatch?: (text: string) => void,
+  ) {
     if (!c.capabilities.has("project:read") || !(await member(this.db, c))) return true;
     if (c.role === "ORGANIZATION_ADMIN") return false;
     const rows = await this.db.project.findMany({
@@ -70,7 +74,7 @@ export class PrismaAssistantRepository implements AssistantRepositoryPort, Assis
         row.assignments.length && auth.canReadProject(c, row.id).allowed ? readable : unreadable;
       target.push(row.businessKey, row.nameEn, row.nameZhTw);
     }
-    return mentionsUnreadableIdentity(question, readable, unreadable);
+    return mentionsUnreadableIdentity(question, readable, unreadable, onTypedMatch);
   }
   async readableReferences(c: RuntimeContext, candidates: readonly string[]) {
     if (!c.capabilities.has("project:read") || !(await member(this.db, c)) || !candidates.length)

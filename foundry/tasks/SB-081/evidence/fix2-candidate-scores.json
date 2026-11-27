@@ -1,0 +1,21 @@
+{
+  "question": "What is the quote total for the Xinyi store?",
+  "searchedText": "Xinyi store",
+  "candidates": [
+    {
+      "projectKey": "PRJ-XINYI-026",
+      "name": "Xinyi Flagship Renovation",
+      "score": 1.5
+    },
+    {
+      "projectKey": "PRJ-BANQIAO-015",
+      "name": "Banqiao Concept Store",
+      "score": 1
+    },
+    {
+      "projectKey": "PRJ-ZHONGSHAN-018",
+      "name": "Zhongshan Lifestyle Store",
+      "score": 1
+    }
+  ]
+}

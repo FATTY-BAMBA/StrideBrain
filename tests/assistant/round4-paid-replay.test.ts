@@ -128,9 +128,9 @@ type Row = ScoredRow & {
             selection: outcome.kind === "ANSWER" ? (outcome.selection ?? null) : null,
           });
         }
-        rounds.push(roundSummary(round.round, rows));
+        rounds.push(roundSummary(round.round, rows, true));
       }
-      const summary = stabilitySummary(rounds);
+      const summary = stabilitySummary(rounds, undefined, true);
       const rows = rounds.flatMap((r) => r.questions);
       const proof = {
         mode: "FREE_REPLAY_OF_PAID_RUN",

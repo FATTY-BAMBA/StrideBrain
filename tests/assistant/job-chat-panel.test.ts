@@ -163,3 +163,114 @@ it.each(["en", "zh-TW"] as const)(
     );
   },
 );
+
+it.each(["en", "zh-TW"] as const)(
+  "job and retry chips resubmit the original question, not the edited composer (%s)",
+  async (locale) => {
+    const original = locale === "en" ? "Xinyi store total?" : "信義店的報價總額是多少？";
+    const name = locale === "en" ? "Xinyi Flagship Renovation" : "信義旗艦店裝修";
+    boundary.ask.mockImplementationOnce(async () => ({
+      context: {},
+      turns: [
+        {
+          id: "assistant-1",
+          role: "assistant",
+          text: "Not found",
+          ai: true,
+          aiQuestionChips: [
+            { label: name, question: original, confirmedProjectKey: "PRJ-XINYI-026" },
+          ],
+        },
+      ],
+    }));
+    await act(() => root.render(createElement(HomeChat, { locale, projectKey: "PAGE" })));
+    host.querySelector<HTMLTextAreaElement>("textarea")!.value = original;
+    await act(() => host.querySelector<HTMLFormElement>("form")!.requestSubmit());
+    const chip = [...host.querySelectorAll<HTMLButtonElement>("button")].find(
+      (b) => b.textContent === name,
+    )!;
+    expect(chip.tabIndex).toBe(0);
+    chip.focus();
+    expect(document.activeElement).toBe(chip);
+    host.querySelector<HTMLTextAreaElement>("textarea")!.value = "A different edited question";
+    boundary.ask.mockImplementationOnce(async () => ({
+      context: {},
+      turns: [
+        {
+          id: "assistant-2",
+          role: "assistant",
+          text: "Failed",
+          ai: true,
+          aiQuestionChips: [
+            { label: "Retry", question: original, confirmedProjectKey: "PRJ-XINYI-026" },
+          ],
+        },
+      ],
+    }));
+    await act(() => chip.click());
+    let sent = boundary.ask.mock.calls.at(-1)![1] as FormData;
+    expect(sent.get("message")).toBe(original);
+    expect(sent.get("confirmedProjectKey")).toBe("PRJ-XINYI-026");
+    expect(sent.get("projectKey")).toBe("PAGE");
+    const retry = [...host.querySelectorAll<HTMLButtonElement>("button")].find(
+      (b) => b.textContent === "Retry",
+    )!;
+    await act(() => retry.click());
+    sent = boundary.ask.mock.calls.at(-1)![1] as FormData;
+    expect(sent.get("message")).toBe(original);
+    expect(sent.get("confirmedProjectKey")).toBe("PRJ-XINYI-026");
+  },
+);
+
+it.each(["home", "job"] as const)(
+  "confirmed follow-up chip sends its key after one tap on %s",
+  async (surface) => {
+    const question = "信義店的報價未稅金額是多少？";
+    boundary.ask.mockImplementationOnce(async () => ({
+      context: {},
+      turns: [
+        {
+          id: "a",
+          role: "assistant",
+          text: "Confirmed answer",
+          ai: true,
+          aiQuestionChips: [
+            { label: question, question, confirmedProjectKey: "PRJ-XINYI-026" },
+            {
+              label: "信義店的階段是什麼？",
+              question: "信義店的階段是什麼？",
+              confirmedProjectKey: "PRJ-XINYI-026",
+            },
+          ],
+        },
+      ],
+    }));
+    const error = vi.spyOn(console, "error");
+    await act(() =>
+      root.render(
+        surface === "home"
+          ? createElement(HomeChat, { locale: "zh-TW" })
+          : createElement(JobChatPanel, {
+              locale: "zh-TW",
+              projectKey: "PAGE",
+              canReadQuote: true,
+            }),
+      ),
+    );
+    if (surface === "job")
+      await act(() => host.querySelector<HTMLButtonElement>("button[aria-controls]")!.click());
+    host.querySelector<HTMLTextAreaElement>("textarea")!.value = "信義店的報價總計是多少？";
+    await act(() => host.querySelector<HTMLFormElement>("form")!.requestSubmit());
+    const chip = [...host.querySelectorAll<HTMLButtonElement>("button")].find(
+      (b) => b.textContent === question,
+    )!;
+    await act(() => chip.click());
+    const sent = boundary.ask.mock.calls.at(-1)![1] as FormData;
+    expect(sent.get("message")).toBe(question);
+    expect(sent.get("confirmedProjectKey")).toBe("PRJ-XINYI-026");
+    expect(sent.get("projectKey")).toBe(surface === "job" ? "PAGE" : null);
+    expect(error.mock.calls.some((args) => /same key|unique.*key/i.test(String(args[0])))).toBe(
+      false,
+    );
+  },
+);

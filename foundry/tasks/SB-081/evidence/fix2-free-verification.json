@@ -1,0 +1,22 @@
+{
+  "mode": "FREE_NO_PROVIDER_CALLS",
+  "commit": "373cb5cd00005cbe84f5dcaf9a211331d1c0c2e4",
+  "passed": true,
+  "rounds": [
+    {
+      "round": 1,
+      "passed": 118,
+      "total": 118
+    },
+    {
+      "round": 2,
+      "passed": 118,
+      "total": 118
+    },
+    {
+      "round": 3,
+      "passed": 118,
+      "total": 118
+    }
+  ]
+}

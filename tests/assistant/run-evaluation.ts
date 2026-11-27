@@ -71,6 +71,7 @@ async function evaluateQuestion(
                 ],
               },
               oracle,
+              question.locale,
             ).some((actual) => matchesExpected(actual, expected)),
           );
           if (!found) throw Error(`FAKE_MISSING_REF:${question.id}:${expected.path}`);
@@ -140,6 +141,9 @@ async function evaluateQuestion(
     ).execute(c, {
       question: question.question,
       ...(question.projectKey ? { projectKey: question.projectKey } : {}),
+      ...(question.confirmedProjectKey
+        ? { confirmedProjectKey: question.confirmedProjectKey }
+        : {}),
     });
   const latencyMs = Math.round(performance.now() - started);
   const references = await services.repository.readableReferences(
@@ -156,6 +160,7 @@ async function evaluateQuestion(
     id: question.id,
     locale: question.locale,
     required: question.required ?? false,
+    friendlierMiss: question.friendlierMiss ?? false,
     reported: question.reported ?? false,
     qualityRegression: question.qualityRegression ?? false,
     factSelectionRegression: question.factSelectionRegression ?? false,

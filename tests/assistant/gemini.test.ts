@@ -39,7 +39,7 @@ describe("Gemini boundary (network fake only)", () => {
     expect(String(options?.body)).toContain("parametersJsonSchema");
     expect(JSON.parse(String(options?.body)).toolConfig.functionCallingConfig.mode).toBe("ANY");
   });
-  it.each([13, 14] as const)(
+  it.each([40] as const)(
     "constrains the provider to the turn's valid maximum of %i parts",
     async (maxAnswerParts) => {
       const request = vi.fn<typeof fetch>().mockResolvedValue(Response.json(body));

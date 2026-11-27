@@ -41,12 +41,18 @@ export const answerParameters = {
   properties: {
     parts: {
       type: "array",
-      maxItems: 14,
+      maxItems: 40,
       items: {
         anyOf: [
           {
             type: "object",
-            properties: { say: { type: "string", enum: Object.keys(answerPhrases) } },
+            properties: {
+              say: {
+                type: "string",
+                enum: Object.keys(answerPhrases),
+                description: "RECORDS_SHOW introduces the selected facts.",
+              },
+            },
             required: ["say"],
             additionalProperties: false,
           },
@@ -80,7 +86,7 @@ export function parseFactAnswer(
     !r ||
     Object.keys(r).some((k) => !["parts", "followUps"].includes(k)) ||
     !Array.isArray(r.parts) ||
-    r.parts.length > 14 ||
+    r.parts.length > 40 ||
     !Array.isArray(r.followUps) ||
     r.followUps.length > 3 ||
     r.followUps.some((v) => typeof v !== "string" || v.length > 160)
@@ -102,11 +108,20 @@ export function parseFactAnswer(
     return null;
   if (
     r.parts.length &&
-    (!("say" in r.parts[0]) || r.parts.filter((p) => "say" in p).length !== 1 || r.parts.length < 2)
+    (!("say" in r.parts[0]) ||
+      r.parts.filter((p) => p.say === "RECORDS_SHOW").length > 1 ||
+      !r.parts.some((p) => "show" in p))
   )
     return null;
   return {
-    parts: r.parts.map((p: AnswerPart) => ("show" in p ? { show: p.show.replace(/\s/gu, "") } : p)),
+    parts: r.parts.length
+      ? [
+          { say: "RECORDS_SHOW" },
+          ...r.parts
+            .filter((p: AnswerPart): p is { show: string } => "show" in p)
+            .map((p: { show: string }) => ({ show: p.show.replace(/\s/gu, "") })),
+        ]
+      : [],
     followUps: r.followUps,
   };
 }
@@ -199,6 +214,31 @@ export class AnswerFactRegistry {
         }
       };
       walk(modelFacts(source.facts), "", "");
+      // Constant availability facts: no client/contact/address record field is read.
+      if (displayIdentity(source).kind === "JOB" && source.projectKeys.length === 1) {
+        for (const [path, label] of Object.entries(
+          this.locale === "zh-TW"
+            ? {
+                clientAvailability: "客戶",
+                contactAvailability: "聯絡方式",
+                siteAddressAvailability: "工程地址",
+              }
+            : {
+                clientAvailability: "Client",
+                contactAvailability: "Contact details",
+                siteAddressAvailability: "Site address",
+              },
+        )) {
+          const ref = `${alias}.${path}`;
+          this.facts.set(ref, {
+            ref,
+            sourceId: source.sourceId,
+            path,
+            label,
+            value: this.locale === "zh-TW" ? "不提供給 AI。" : "Not shared with the AI.",
+          });
+        }
+      }
       const area = record(source.facts.area);
       if (typeof area?.value === "string" && typeof area.unit === "string") {
         const ref = `${alias}.area.value`;
@@ -224,8 +264,8 @@ export class AnswerFactRegistry {
   }
 
   /** Preserve the provider input budget; printed rows are bounded separately during layout. */
-  maxAnswerParts(): 13 | 14 {
-    return this.lists.size ? 14 : 13;
+  maxAnswerParts(): 40 {
+    return 40;
   }
 
   /** Only labelled display values and selectable refs cross the model boundary. */
@@ -256,7 +296,7 @@ export class AnswerFactRegistry {
     const separator = this.locale === "zh-TW" ? "：" : ": ";
     const chosen: (Fact | List)[] = [];
     for (const part of parsed.parts.slice(1)) {
-      if (!("show" in part)) return { kind: "REJECTED", reason: "INVALID_OUTPUT" };
+      if ("say" in part) continue;
       const fact = this.facts.get(part.show),
         list = this.lists.get(part.show);
       if (!fact && !list) return { kind: "REJECTED", reason: "UNKNOWN_REFERENCE" };
@@ -392,7 +432,7 @@ export class AnswerFactRegistry {
           const all = fieldsFor(row.sourceId);
           const selected = (
             paths ? paths.flatMap((path) => all.filter((f) => f.path === path)) : all
-          ).filter(visible);
+          ).filter((f) => visible(f) && !f.path.endsWith("Availability"));
           const details = new Set(
             selected
               .filter((f) => ["lastPrice", "clientLastPrice"].includes(f.path))
@@ -486,7 +526,10 @@ export class AnswerFactRegistry {
             numericTokens(withoutReferences(t, identities)).every((n) => numbers.has(n)),
         ),
       },
-      selection: { phraseId, shown },
+      selection: {
+        phraseId,
+        shown,
+      },
     };
   }
 }

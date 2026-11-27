@@ -24,6 +24,7 @@ export type ScoredRow = {
   mustReachModel?: boolean;
   qualityRegression?: boolean;
   required?: boolean;
+  friendlierMiss?: boolean;
   reported?: boolean;
   discardReason?: string | null;
   accessViolation?: boolean;
@@ -43,7 +44,11 @@ const safe = (q: ScoredRow) =>
   !q.discardReason;
 const correct = (q: ScoredRow) =>
   safe(q) && q.verdict !== "wrong" && (!q.mustReachModel || q.calls > 0);
-export function roundSummary<T extends ScoredRow>(round: number, questions: readonly T[]) {
+export function roundSummary<T extends ScoredRow>(
+  round: number,
+  questions: readonly T[],
+  legacySb079Replay = false,
+) {
   const scores = Object.fromEntries(
     ["en", "zh-TW"].map((locale) => [
       locale,
@@ -62,12 +67,14 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
       (locale) =>
         questions.filter((q) => !q.required && !q.reported && q.locale === locale).length === 20,
     ) &&
-    new Set(questions.map((q) => q.id)).size === 84 &&
+    new Set(questions.map((q) => q.id)).size === (legacySb079Replay ? 84 : 118) &&
     questions.filter((q) => q.reported).length === 2 &&
-    questions.filter((q) => q.required && !q.qualityRegression && !q.factSelectionRegression)
-      .length === 12 &&
+    questions.filter(
+      (q) => q.required && !q.friendlierMiss && !q.qualityRegression && !q.factSelectionRegression,
+    ).length === 12 &&
     questions.filter((q) => q.required && q.qualityRegression).length === 2 &&
-    questions.filter((q) => q.required && q.factSelectionRegression).length === 28;
+    questions.filter((q) => q.required && q.factSelectionRegression).length === 28 &&
+    questions.filter((q) => q.friendlierMiss).length === (legacySb079Replay ? 0 : 34);
   const sortedCalls = questions.map((q) => q.calls).sort((a, b) => a - b);
   const withinThree = sortedCalls.filter((n) => n <= 3).length;
   const callTargets = {
@@ -90,24 +97,34 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
     9,
   );
   const costPerQuestion = divide(totalUsd, quantity(String(questions.length || 1)), 12);
-  const limitCost = divide(decimalFromString("0.2475", 9), quantity("162"), 12);
+  const limitCost = divide(decimalFromString("0.440789000", 9), quantity("252"), 12);
   const performance = {
     medianMs: latency[Math.floor(latency.length / 2)] ?? 0,
     p90Ms: latency[Math.max(0, Math.ceil(latency.length * 0.9) - 1)] ?? 0,
     totalUsd: decimalToString(totalUsd),
     costPerQuestionUsd: decimalToString(costPerQuestion),
-    baseline: { medianCalls: 2, p90Ms: 2000, costUsd: "0.198", questions: 162 },
-    limits: { p90Ms: 2500, costPerQuestionUsd: decimalToString(limitCost) },
+    baseline: {
+      run: "45804259788",
+      medianCalls: 2,
+      p90Ms: 2428,
+      costUsd: "0.352631200",
+      questions: 252,
+    },
+    limits: { p90Ms: 3035, costPerQuestionUsd: decimalToString(limitCost) },
   };
   const performancePassed =
     callTargets.median <= 2 &&
-    performance.p90Ms <= 2500 &&
+    performance.p90Ms <= 3035 &&
     compare(costPerQuestion, limitCost) <= 0;
   return {
     round,
     callTargets,
     performance,
     performancePassed,
+    friendlierMisses: {
+      passed: questions.filter((q) => q.friendlierMiss && correct(q)).length,
+      total: questions.filter((q) => q.friendlierMiss).length,
+    },
     factSelectionRegressions: {
       passed: questions.filter(
         (q) => q.factSelectionRegression && q.verdict !== "wrong" && !q.wrongRecordValue,
@@ -131,6 +148,7 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
       passed: questions.filter(
         (q) =>
           q.required &&
+          !q.friendlierMiss &&
           !q.qualityRegression &&
           !q.factSelectionRegression &&
           q.verdict !== "wrong" &&
@@ -155,6 +173,7 @@ export function roundSummary<T extends ScoredRow>(round: number, questions: read
 export function stabilitySummary<T extends ScoredRow>(
   rounds: readonly ReturnType<typeof roundSummary<T>>[],
   focusedCaseIds?: readonly string[],
+  legacySb079Replay = false,
 ) {
   const ids = [...new Set(rounds.flatMap((r) => r.questions.map((q) => q.id)))];
   const perQuestion = ids.map((id) => {
@@ -194,7 +213,7 @@ export function stabilitySummary<T extends ScoredRow>(
       (focusedCaseIds
         ? rounds.every((r) => r.questions.every((q) => !q.mustReachModel || q.calls > 0))
         : rounds.every((r) => r.passed)) &&
-      perQuestion.length === (focusedCaseIds?.length ?? 84) &&
+      perQuestion.length === (focusedCaseIds?.length ?? (legacySb079Replay ? 84 : 118)) &&
       ids.every((id) => rounds.every((r) => r.questions.some((q) => q.id === id))),
     rounds,
     perQuestion,
