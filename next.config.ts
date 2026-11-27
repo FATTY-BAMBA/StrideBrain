@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 import { MAX_QUOTE_ISSUE_TOKEN_LENGTH } from "./src/modules/quote-issue/domain/contracts";
 
+import { signInMode } from "./src/modules/sign-in/domain/policy";
+signInMode(process.env);
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,

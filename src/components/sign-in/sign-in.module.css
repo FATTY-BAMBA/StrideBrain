@@ -1,0 +1,19 @@
+.form {
+  display: grid;
+  gap: var(--space-16);
+  min-width: 0;
+}
+.field {
+  display: grid;
+  gap: var(--space-8);
+}
+.field input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  min-height: var(--control-default);
+  padding: var(--space-8);
+  border: var(--rule-hairline) solid var(--line-control);
+  border-radius: var(--radius-control);
+  font: inherit;
+}

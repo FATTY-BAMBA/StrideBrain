@@ -1,0 +1,44 @@
+import type { Locale } from "./config";
+const en = {
+  title: "Sign in",
+  google: "Continue with Google",
+  email: "Email",
+  send: "Email me a code",
+  code: "Sign-in code",
+  resend: "Send again",
+  busy: "Please wait…",
+  neutral:
+    "If this email has been invited, a code is on its way. It works for 10 minutes. If it does not arrive, check your spam folder or send it again.",
+  invalid: "This code cannot be used. Check it or request a new one.",
+  limited: "Too many tries. Please try again later.",
+  unavailable: "Sign-in is unavailable. Please try again.",
+  noAccess: "This account has no firm it can open. Please contact your firm's administrator.",
+  logout: "Sign out",
+  sample: "Sign in as a sample person",
+  firms: "Choose a firm",
+  switchFirm: "Switch firm",
+  retry: "Try again",
+  people: "People",
+};
+const zh: Record<keyof typeof en, string> = {
+  title: "登入",
+  google: "使用 Google 登入",
+  email: "電子信箱",
+  send: "寄送驗證碼",
+  code: "驗證碼",
+  resend: "重新寄送",
+  busy: "請稍候…",
+  neutral:
+    "如果這個信箱已受邀，驗證碼已寄出，10 分鐘內有效。沒收到的話，請看看垃圾信件，或重新寄送。",
+  invalid: "此驗證碼無法使用，請檢查或重新寄送。",
+  limited: "嘗試次數太多，請稍後再試。",
+  unavailable: "目前無法登入，請再試一次。",
+  noAccess: "這個帳號目前沒有可使用的公司。請聯絡貴公司的管理員。",
+  logout: "登出",
+  sample: "以範例成員登入",
+  firms: "選擇公司",
+  switchFirm: "切換公司",
+  retry: "再試一次",
+  people: "成員",
+};
+export const signInCopy = (locale: Locale) => (locale === "en" ? en : zh);

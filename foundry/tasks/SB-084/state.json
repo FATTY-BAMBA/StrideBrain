@@ -1,6 +1,8 @@
 {
   "issue": 84,
-  "status": "in_progress",
-  "step": "A",
-  "hostedAcceptance": "waiting_for_product_director"
+  "status": "awaiting_clarification",
+  "step": "A-F partial; not ready",
+  "pullRequest": 85,
+  "hostedAcceptance": "waiting_for_product_director",
+  "question": "Invitation delivery failure and access activation"
 }

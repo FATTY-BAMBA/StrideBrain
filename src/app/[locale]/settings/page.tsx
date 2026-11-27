@@ -1,3 +1,4 @@
+import { signInMode } from "@/modules/sign-in/domain/policy";
 import { createFirmListServices } from "@/lib/server/firm-list-services";
 import { FirmListSettings } from "@/components/firm-lists/firm-list-settings";
 import { firmListsCopy } from "@/modules/localization/firm-lists";
@@ -35,6 +36,9 @@ export default async function SettingsPage({ params }: { params: Promise<{ local
       description={catalog["settings.description"]}
     >
       {previewSessionOrigin(process.env) && <LeavePreview locale={locale} />}
+      {signInMode(process.env) !== "demo" && context?.role === "ORGANIZATION_ADMIN" && (
+        <Link href={`/${locale}/settings/people`}>{locale === "en" ? "People" : "成員"}</Link>
+      )}
       <section className="settings-language">
         <h2>{locale === "en" ? "Language" : "語言"}</h2>
         <nav aria-label={locale === "en" ? "Language" : "語言"}>

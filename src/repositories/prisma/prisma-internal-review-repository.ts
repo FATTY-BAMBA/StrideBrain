@@ -60,7 +60,7 @@ import {
 export type InternalReviewRepositoryOptions = Readonly<{
   checkpoint?: ((step: TransactionCheckpoint) => void | Promise<void>) | undefined;
 }>;
-const SOURCE_LOCKS = `LOCK TABLE "Organization", "Person", "Membership", "MembershipCapabilityGrant", "DemoSession", "ProjectAssignment", "Project", "ProjectScope", "ProjectMaterial", "Material", "ProjectSupplier", "Supplier", "Quote", "QuoteVersion", "QuoteSection", "QuoteItem", "ForecastCostVersion", "ForecastCostLine", "ProjectCostVersion", "CostLine", "SupplierOffer", "SupplierOfferItem", "Document", "DocumentVersion", "EvidenceReference", "EvidenceConflict", "IntelligenceRun", "ComparisonRun", "ComparisonCandidate", "ComparisonFactor", "ComparisonClaim", "EconomicsEnrichmentRun", "EconomicsObservationDecision" IN SHARE MODE`;
+const SOURCE_LOCKS = `LOCK TABLE "Organization", "Person", "Membership", "MembershipCapabilityGrant", "DemoSession", "AuthSession", "AuthUser", "IdentityLink", "ProjectAssignment", "Project", "ProjectScope", "ProjectMaterial", "Material", "ProjectSupplier", "Supplier", "Quote", "QuoteVersion", "QuoteSection", "QuoteItem", "ForecastCostVersion", "ForecastCostLine", "ProjectCostVersion", "CostLine", "SupplierOffer", "SupplierOfferItem", "Document", "DocumentVersion", "EvidenceReference", "EvidenceConflict", "IntelligenceRun", "ComparisonRun", "ComparisonCandidate", "ComparisonFactor", "ComparisonClaim", "EconomicsEnrichmentRun", "EconomicsObservationDecision" IN SHARE MODE`;
 const memberSelect = {
   id: true,
   organizationId: true,
@@ -217,6 +217,41 @@ class Transaction implements InternalReviewTransaction {
   }
   async refreshActor(seed: RuntimeContext, now: Date): Promise<ActorRecord | null> {
     if (!seed.sessionId) return null;
+    const real = await this.database.authSession.findFirst({
+      where: {
+        id: seed.sessionId,
+        expiresAt: { gt: now },
+        createdAt: { gt: new Date(now.getTime() - 30 * 86400_000) },
+        user: {
+          emailVerified: true,
+          identityLinks: { some: { organizationId: seed.organizationId, personId: seed.userId } },
+        },
+      },
+    });
+    if (real) {
+      if (real.selectedMembershipId && real.selectedMembershipId !== seed.membershipId) return null;
+      const membership = await this.database.membership.findFirst({
+        where: {
+          id: seed.membershipId,
+          organizationId: seed.organizationId,
+          personId: seed.userId,
+          invitationStatus: "JOINED",
+        },
+        select: memberSelect,
+      });
+      const organization = await this.database.organization.findUnique({
+        where: { id: seed.organizationId },
+        select: { timezone: true },
+      });
+      const context = membership ? memberContext(membership, seed) : null;
+      return context && membership && organization
+        ? {
+            context,
+            name: { en: membership.person.nameEn, zhTw: membership.person.nameZhTw },
+            timezone: organization.timezone,
+          }
+        : null;
+    }
     const row = await this.database.demoSession.findFirst({
       where: {
         id: seed.sessionId,

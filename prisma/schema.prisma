@@ -122,6 +122,7 @@ enum EvidenceSubjectType {
 }
 
 model Organization {
+  identityLinks IdentityLink[]
   areaDisplayUnit String @default("m2")
   assistantEnabled Boolean @default(false)
   assistantUsage AssistantUsage[]
@@ -273,6 +274,7 @@ model FirmWorkCategory {
 }
 
 model Person {
+  identityLinks IdentityLink[]
   id             String   @id
   organizationId String
   businessKey    String
@@ -292,6 +294,9 @@ model Person {
 }
 
 model Membership {
+  invitationStatus String @default("JOINED")
+  invitedAt DateTime?
+  joinedAt DateTime?
   assistantUsage AssistantUsage[]
   assistantTurnTimings AssistantTurnTiming[]
   id             String         @id
@@ -1295,4 +1300,87 @@ model AssistantTurnTiming {
   @@unique([id, organizationId])
   @@unique([organizationId, requestId])
   @@index([organizationId, completedAt])
+}
+
+// Global sign-in records: no tenant authority; tenant access is only through IdentityLink.
+model AuthUser {
+  id String @id
+  name String
+  email String @unique
+  emailVerified Boolean @default(false)
+  image String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  sessions AuthSession[]
+  accounts AuthAccount[]
+  identityLinks IdentityLink[]
+}
+model AuthSession {
+  id String @id
+  token String @unique
+  userId String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  // Server-owned choice; never treated as authority without re-reading IdentityLink/membership.
+  selectedMembershipId String?
+  user AuthUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId])
+}
+model AuthAccount {
+  id String @id
+  accountId String
+  providerId String
+  userId String
+  accessToken String?
+  refreshToken String?
+  idToken String?
+  accessTokenExpiresAt DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope String?
+  password String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user AuthUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@unique([providerId, accountId])
+  @@index([userId])
+}
+model AuthVerification {
+  id String @id
+  identifier String @unique
+  value String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model AuthRateLimit {
+  id String @id
+  key String @unique
+  count Int
+  lastRequest BigInt
+}
+// Digest only; global abuse controls must also cover unknown addresses.
+model SignInCounter {
+  key String @id
+  shortStartedAt DateTime
+  shortCount Int
+  dayStartedAt DateTime
+  dayCount Int
+  expiresAt DateTime
+  @@index([expiresAt])
+}
+model IdentityLink {
+  id String @id
+  organizationId String
+  personId String
+  authUserId String
+  createdAt DateTime @default(now())
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  person Person @relation(fields: [personId, organizationId], references: [id, organizationId], onDelete: Cascade)
+  authUser AuthUser @relation(fields: [authUserId], references: [id], onDelete: Cascade)
+  @@unique([id, organizationId])
+  @@unique([organizationId, personId])
+  @@unique([authUserId, organizationId])
 }

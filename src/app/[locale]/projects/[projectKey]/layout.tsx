@@ -13,16 +13,12 @@ import { isSupportedLocale } from "@/modules/localization/config";
 async function authorizedMember(
   projectKey: string,
 ): Promise<{ id: string; canReadQuote: boolean } | null> {
-  try {
-    const context = await resolveServerRuntimeContext();
-    if (!context?.capabilities.has("project:read")) return null;
-    const policy = await createAssistantControlServices().repository.jobPolicy(context, projectKey);
-    return policy
-      ? { id: context.membershipId, canReadQuote: context.capabilities.has("quote:read") }
-      : null;
-  } catch {
-    return null;
-  }
+  const context = await resolveServerRuntimeContext();
+  if (!context?.capabilities.has("project:read")) return null;
+  const policy = await createAssistantControlServices().repository.jobPolicy(context, projectKey);
+  return policy
+    ? { id: context.membershipId, canReadQuote: context.capabilities.has("quote:read") }
+    : null;
 }
 
 export default async function JobLayout({

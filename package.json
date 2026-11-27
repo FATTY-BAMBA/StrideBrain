@@ -31,8 +31,10 @@
     "test:stability": "node scripts/verify-database-isolation.mjs"
   },
   "dependencies": {
+    "@better-auth/prisma-adapter": "1.7.28",
     "@prisma/adapter-pg": "7.10.1",
     "@prisma/client": "7.10.1",
+    "better-auth": "1.7.28",
     "next": "16.4.6",
     "pdfkit": "0.21.0",
     "pg": "8.16.3",
