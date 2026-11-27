@@ -1,0 +1,11 @@
+{
+  "issue": 81,
+  "branch": "build/sb-081-friendlier-misses",
+  "baseCommit": "2443d9d2d50ce1bf8c1d36999ef670a4aec16c79",
+  "status": "BUILDING_A",
+  "draft": true,
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "paidBudgetUsd": "1.00",
+  "paidSpentUsd": "0",
+  "stopAfter": "BUILDER_REPORT_AFTER_F"
+}
