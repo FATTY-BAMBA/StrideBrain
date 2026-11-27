@@ -332,3 +332,23 @@ it("does not credit overflow rows or child facts of an additional summary-only l
     "count",
   ]);
 });
+
+it("a chip for an unreadable job fails the absolute access gate even in a refusal", () => {
+  const out = evaluateAnswer(
+    { ...q, expected: { kind: "DECLINE", facts: [], forbidden: ["PRIVATE"] } },
+    {
+      kind: "ANSWER",
+      locale: "en",
+      refusal: "NO_RECORDS",
+      answer: { text: "No job by that name was found.", sourceIds: [], followUps: [] },
+      sources: [],
+      questionChips: [
+        { label: "Private", question: "Private total?", confirmedProjectKey: "PRIVATE" },
+      ],
+    },
+    [],
+    null,
+    [],
+  );
+  expect(out).toMatchObject({ verdict: "wrong", accessViolation: true });
+});

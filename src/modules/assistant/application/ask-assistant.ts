@@ -350,7 +350,9 @@ export class AskAssistant {
               .map((text) => nameFollowUp(text, knownProjects, locale))
               .filter(
                 (text) =>
-                  redactText(text, preserved) === text && maySuggestFollowUp(text, c.capabilities),
+                  text.length <= 160 &&
+                  redactText(text, preserved) === text &&
+                  maySuggestFollowUp(text, c.capabilities),
               ),
           };
           await this.repository.finishTurn(c, "ANSWERED");

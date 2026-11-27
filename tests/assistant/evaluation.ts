@@ -276,7 +276,11 @@ export function evaluateAnswer(
     draftUnsupportedTokens: [],
     accessViolation:
       outcome.kind === "ANSWER" &&
-      q.expected.forbidden.some((key) => outcome.sources.some((s) => s.projectKeys.includes(key))),
+      q.expected.forbidden.some(
+        (key) =>
+          outcome.sources.some((s) => s.projectKeys.includes(key)) ||
+          outcome.questionChips?.some((chip) => chip.confirmedProjectKey === key),
+      ),
     unsupportedTokens: [],
     // Complete synthetic artifact only; evaluationLogRow explicitly excludes these fields.
     rawAnswer: rawAnswer ?? null,
