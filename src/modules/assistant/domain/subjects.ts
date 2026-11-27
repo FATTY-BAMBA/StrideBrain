@@ -17,6 +17,7 @@ export function mentionsUnreadableIdentity(
   question: string,
   readable: readonly string[],
   unreadable: readonly string[],
+  onTypedMatch?: (text: string) => void,
 ): boolean {
   const spans = (identity: string) => {
     if (!identity) return [];
@@ -30,11 +31,14 @@ export function mentionsUnreadableIdentity(
     return found;
   };
   const allowed = readable.flatMap(spans);
-  return unreadable.some((identity) =>
-    spans(identity).some(
-      (span) => !allowed.some((outer) => outer.start <= span.start && outer.end >= span.end),
-    ),
-  );
+  const match = unreadable
+    .flatMap(spans)
+    .filter((span) => !allowed.some((outer) => outer.start <= span.start && outer.end >= span.end))
+    .sort((a, b) => a.start - b.start || b.end - a.end)[0];
+  if (!match) return false;
+  // Emit only bytes already supplied by the person, never a canonical record field.
+  onTypedMatch?.(question.slice(match.start, match.end));
+  return true;
 }
 export function mentionsIdentity(text: string, value: string): boolean {
   return identityMention(text, value) !== null;

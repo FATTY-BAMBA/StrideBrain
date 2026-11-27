@@ -18,6 +18,15 @@ import { FakeAssistantModel } from "./fake-model";
           data: { deletedAt: exists ? null : new Date() },
         });
         const real = createAssistantServices();
+        const typed = vi.fn();
+        expect(
+          await real.repository.questionMentionsUnreadableJob(
+            context,
+            "進行中設計專案01的報價總額是多少？",
+            typed,
+          ),
+        ).toBe(exists);
+        expect(typed.mock.calls).toEqual(exists ? [["進行中設計專案01"]] : []);
         const finish = vi.spyOn(real.repository, "finishTurn");
         const reserve = vi.spyOn(real.repository, "reserveCall");
         const model = new FakeAssistantModel([

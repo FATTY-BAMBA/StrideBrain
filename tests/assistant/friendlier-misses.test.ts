@@ -1,3 +1,4 @@
+import { mentionsUnreadableIdentity } from "@/modules/assistant/domain/subjects";
 import { readFileSync } from "node:fs";
 import { expect, it, vi } from "vitest";
 import { AskAssistant } from "@/modules/assistant/application/ask-assistant";
@@ -431,4 +432,20 @@ it("B/E: a failed candidate access read produces only a failed-turn log, never a
   });
   expect(f.repo.finishTurn).toHaveBeenCalledTimes(1);
   expect(f.repo.finishTurn.mock.calls[0]![1]).toBe("FALLBACK_UNAVAILABLE");
+});
+
+it("B: guard chip search is the typed match, never another canonical field or unrelated question text", () => {
+  const matched = vi.fn();
+  expect(
+    mentionsUnreadableIdentity(
+      "Xinyi stage? And private-river quote?",
+      [],
+      ["PRIVATE-RIVER", "Canonical Secret Studio"],
+      matched,
+    ),
+  ).toBe(true);
+  expect(matched).toHaveBeenCalledExactlyOnceWith("private-river");
+  expect(nearestJobs(matched.mock.calls[0]![0], jobs, "en").map((p) => p.projectKey)).not.toContain(
+    "PRJ-XINYI-026",
+  );
 });

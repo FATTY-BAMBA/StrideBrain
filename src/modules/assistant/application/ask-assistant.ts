@@ -333,7 +333,11 @@ export class AskAssistant {
           // same answer boundary used by a not-found result.
           if (
             !confirmed &&
-            (await bounded(this.repository.questionMentionsUnreadableJob(c, input.question)))
+            (await bounded(
+              this.repository.questionMentionsUnreadableJob(c, input.question, (typedMatch) => {
+                searchedText = typedMatch.slice(0, 280);
+              }),
+            ))
           )
             return await refusal("UNAVAILABLE", true);
           let answer = checked.answer;
