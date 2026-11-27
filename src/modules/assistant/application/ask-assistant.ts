@@ -134,6 +134,7 @@ export class AskAssistant {
               : locale === "zh-TW"
                 ? "我只能根據您可查看的公司紀錄回答；目前的紀錄沒有顯示這項資訊。"
                 : "I can only answer from company records you may read. The records do not show this information.";
+      const questionChips = namedJobMissing ? await missingJobChips() : undefined;
       await this.repository.finishTurn(c, "ANSWERED");
       return {
         kind: "ANSWER",
@@ -141,7 +142,7 @@ export class AskAssistant {
         refusal: state,
         answer: { text, sourceIds: [], followUps: [] },
         sources: [],
-        ...(namedJobMissing ? { questionChips: await missingJobChips() } : {}),
+        ...(questionChips ? { questionChips } : {}),
         ...(comparisonProject
           ? {
               action: {

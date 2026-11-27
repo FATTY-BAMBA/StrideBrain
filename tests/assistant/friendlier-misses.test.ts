@@ -400,3 +400,35 @@ it("C: valid partial-only phrase selections from focused run 2 are laid out with
     }
   expect(n).toBe(5);
 });
+
+it("B/E: a failed candidate access read produces only a failed-turn log, never a premature success", async () => {
+  const f = missesFixture([
+    {
+      usage,
+      result: {
+        kind: "TOOLS",
+        calls: [{ name: "list_jobs", arguments: { query: "Xinyi store" } }],
+      },
+    },
+  ]);
+  f.tools.resolveSubjects.mockResolvedValue({ kind: "AVAILABLE", projects: jobs, named: [] });
+  f.tools.execute.mockResolvedValue({
+    status: "OK",
+    sources: [
+      {
+        sourceId: "count",
+        href: "/en/projects",
+        label: "Jobs",
+        facts: { count: 0, matchingCount: 0 },
+        projectKeys: [],
+      },
+    ],
+  });
+  f.repo.jobPolicy.mockRejectedValue(new Error("test read failure"));
+  expect(await f.service.execute(jobContext(), { question: "Xinyi store total?" })).toMatchObject({
+    kind: "FALLBACK",
+    reason: "UNAVAILABLE",
+  });
+  expect(f.repo.finishTurn).toHaveBeenCalledTimes(1);
+  expect(f.repo.finishTurn.mock.calls[0]![1]).toBe("FALLBACK_UNAVAILABLE");
+});
