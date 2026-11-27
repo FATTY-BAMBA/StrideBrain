@@ -2,7 +2,7 @@ import { notFound, redirect } from "next/navigation";
 import { realIdentityState } from "@/lib/server/real-identity";
 import { isSupportedLocale } from "@/modules/localization/config";
 import { signInCopy } from "@/modules/localization/sign-in";
-import { sameSiteReturn } from "@/modules/sign-in/domain/policy";
+import { sameSiteReturn, signInMode } from "@/modules/sign-in/domain/policy";
 import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/ui/page-header";
 import styles from "@/components/ui/ui.module.css";
@@ -13,6 +13,7 @@ export default async function ChooseFirm({
   params: Promise<{ locale: string }>;
   searchParams: Promise<{ returnTo?: string }>;
 }) {
+  if (signInMode(process.env) === "demo") notFound();
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const state = await realIdentityState();

@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import type { PrismaClient } from "../../../.generated/prisma/client";
 import { resolveCapabilities, isCapability } from "@/modules/runtime-context/capabilities";
-import type { RuntimeContext } from "@/modules/runtime-context/contracts";
+import type { Capability, RuntimeContext } from "@/modules/runtime-context/contracts";
 import type {
   RealIdentityRepositoryPort,
   VerifiedSession,
@@ -60,6 +60,7 @@ export class PrismaRealIdentity implements RealIdentityRepositoryPort {
         ]),
     );
     return {
+      identityKind: "real",
       sessionId: session.id,
       requestId: randomUUID(),
       userId: row.personId,
@@ -71,7 +72,7 @@ export class PrismaRealIdentity implements RealIdentityRepositoryPort {
         row.capabilityGrants
           .filter((g) => g.organizationId === row.organizationId && isCapability(g.capability))
           .map((g) => ({
-            capability: g.capability as import("@/modules/runtime-context/contracts").Capability,
+            capability: g.capability as Capability,
             effect: g.effect,
           })),
       ),
@@ -80,6 +81,45 @@ export class PrismaRealIdentity implements RealIdentityRepositoryPort {
       locale: row.organization.primaryLocale === "en" ? "en" : "zh-TW",
       dataMode: row.organization.dataClassification as RuntimeContext["dataMode"],
     };
+  }
+  async selectFirm(session: VerifiedSession, membershipId: string): Promise<boolean> {
+    return this.db.$transaction(async (tx) => {
+      const current = await tx.authSession.findFirst({
+        where: {
+          id: session.id,
+          userId: session.userId,
+          expiresAt: { gt: new Date() },
+          createdAt: { gt: new Date(Date.now() - 30 * 86400_000) },
+          user: { emailVerified: true },
+        },
+      });
+      const member = await tx.membership.findFirst({
+        where: {
+          id: membershipId,
+          active: true,
+          invitationStatus: "JOINED",
+          person: { active: true, identityLinks: { some: { authUserId: session.userId } } },
+        },
+      });
+      if (!current || !member) return false;
+      if (current.selectedMembershipId === member.id) return true;
+      await tx.authSession.update({
+        where: { id: current.id },
+        data: { selectedMembershipId: member.id },
+      });
+      await tx.auditEvent.create({
+        data: {
+          id: randomUUID(),
+          organizationId: member.organizationId,
+          actorMembershipId: member.id,
+          eventType: "FIRM_SELECTED",
+          requestId: randomUUID(),
+          payload: { membershipId: member.id },
+          result: "SUCCESS",
+        },
+      });
+      return true;
+    });
   }
   async acceptInvitations(userId: string) {
     await this.db.$transaction(async (tx) => {

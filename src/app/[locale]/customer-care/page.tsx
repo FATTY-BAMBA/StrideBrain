@@ -1,3 +1,4 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
 import { notFound } from "next/navigation";
 import { FoundationPage } from "@/components/ui/foundation-page";
 import { assistantCopy } from "@/modules/localization/assistant";
@@ -7,6 +8,7 @@ export default async function CustomerCarePage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
+  await requirePageIdentity();
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const c = assistantCopy(locale);

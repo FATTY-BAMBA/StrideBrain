@@ -1,3 +1,4 @@
+import type { VerifiedSession } from "@/repositories/ports/real-identity";
 import { BetterAuthIdentityContext } from "@/modules/runtime-context/better-auth-identity-context";
 import { cache } from "react";
 import { headers } from "next/headers";
@@ -28,3 +29,7 @@ export const realIdentityState = cache(async () => {
     ),
   };
 });
+
+export async function selectRealFirm(session: VerifiedSession, membershipId: string) {
+  return new PrismaRealIdentity(getPrismaClient()).selectFirm(session, membershipId);
+}

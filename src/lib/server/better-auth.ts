@@ -1,4 +1,4 @@
-import { betterAuth } from "better-auth";
+import { betterAuth, APIError } from "better-auth";
 import { prismaAdapter } from "@better-auth/prisma-adapter";
 import { emailOTP } from "better-auth/plugins/email-otp";
 import { after } from "next/server";
@@ -43,8 +43,16 @@ export function createRealAuth(
       google: {
         clientId: settings.googleClientId,
         clientSecret: settings.googleClientSecret,
+        disableDefaultScope: true,
+        scope: ["openid", "email"],
+        accessType: "online",
+        includeGrantedScopes: false,
         mapProfileToUser: (profile) => {
-          if (profile.email_verified !== true) throw new Error("Verified email required.");
+          if (profile.email_verified !== true)
+            throw new APIError("UNAUTHORIZED", {
+              code: "VERIFIED_EMAIL_REQUIRED",
+              message: "Verified email required.",
+            });
           return { emailVerified: true };
         },
       },
@@ -67,6 +75,34 @@ export function createRealAuth(
     },
     logger: { disabled: true },
     databaseHooks: {
+      account: {
+        create: {
+          before: async (account) => ({
+            data: {
+              ...account,
+              accessToken: null,
+              refreshToken: null,
+              idToken: null,
+              accessTokenExpiresAt: null,
+              refreshTokenExpiresAt: null,
+              scope: null,
+            },
+          }),
+        },
+        update: {
+          before: async (account) => ({
+            data: {
+              ...account,
+              accessToken: null,
+              refreshToken: null,
+              idToken: null,
+              accessTokenExpiresAt: null,
+              refreshTokenExpiresAt: null,
+              scope: null,
+            },
+          }),
+        },
+      },
       session: {
         create: {
           before: async (session) => {

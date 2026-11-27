@@ -1,3 +1,4 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
 import { signInMode } from "@/modules/sign-in/domain/policy";
 import { createFirmListServices } from "@/lib/server/firm-list-services";
 import { FirmListSettings } from "@/components/firm-lists/firm-list-settings";
@@ -17,6 +18,7 @@ import { LeavePreview } from "@/components/demo-value/preview-entry";
 import { previewSessionOrigin } from "@/modules/preview-session/config";
 
 export default async function SettingsPage({ params }: { params: Promise<{ locale: string }> }) {
+  await requirePageIdentity();
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const catalog = getCatalog(locale);

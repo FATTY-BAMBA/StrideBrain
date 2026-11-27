@@ -143,7 +143,11 @@ suite("private quote routes through a running Next HTTP server", () => {
           }
           const denied =
             role === "viewer" && (/\/clients(?:\/|$)/.test(path) || path.endsWith("/projects/new"));
-          if (path.endsWith("/nothing-here") || denied) {
+          // Real-sign-in pages are deliberately absent in default demo mode.
+          const realOnly = /\/(?:no-access|choose-firm|sign-in\/complete|settings\/people)$/.test(
+            path,
+          );
+          if (path.endsWith("/nothing-here") || denied || realOnly) {
             expect(response.status, path).toBe(404);
             continue;
           }

@@ -1,3 +1,4 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
 import type { Route } from "next";
 import { createProjectWorkspaceService } from "@/lib/server/project-workspace-services";
 import { redirect } from "next/navigation";
@@ -45,6 +46,7 @@ function safeStateKind(value: string | undefined): SafeStateKind | null {
 }
 
 export default async function ComparisonPage({ params, searchParams }: ComparisonPageProps) {
+  await requirePageIdentity();
   const { locale: rawLocale, projectKey } = await params;
   if (!isSupportedLocale(rawLocale)) notFound();
 

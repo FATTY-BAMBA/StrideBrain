@@ -7,8 +7,6 @@ const paths = new Map([
   ["/callback/google", "GET"],
   ["/email-otp/send-verification-otp", "POST"],
   ["/sign-in/email-otp", "POST"],
-  ["/sign-out", "POST"],
-  ["/get-session", "GET"],
 ]);
 export async function guardedAuthHandler(
   request: Request,
@@ -87,11 +85,14 @@ export async function guardedAuthHandler(
     headers.set("content-type", "application/json");
     headers.delete("content-length");
   }
-  return dependencies.handler(
+  const result = await dependencies.handler(
     new Request(request.url, {
       method: request.method,
       headers,
       ...(body === undefined ? {} : { body }),
     }),
   );
+  if (path === "/callback/google" && result.status >= 400)
+    return new Response(null, { status: 303, headers: { Location: "/zh-TW/sign-in?error=1" } });
+  return result;
 }

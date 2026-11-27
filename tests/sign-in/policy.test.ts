@@ -61,3 +61,16 @@ describe("sign-in boundary", () => {
     ).rejects.toThrow("unavailable");
   });
 });
+
+it("proxy replaces a browser-supplied page path", async () => {
+  const { NextRequest } = await import("next/server");
+  const { proxy } = await import("@/proxy");
+  const response = proxy(
+    new NextRequest("https://signin.example.invalid/zh-TW/projects/REAL?tab=quote", {
+      headers: { "x-stridebrain-page-path": "https://evil.invalid" },
+    }),
+  );
+  expect(response.headers.get("x-middleware-request-x-stridebrain-page-path")).toBe(
+    "/zh-TW/projects/REAL?tab=quote",
+  );
+});

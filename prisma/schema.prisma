@@ -294,6 +294,7 @@ model Person {
 }
 
 model Membership {
+  invitationEmailStatus String @default("NOT_SENT")
   invitationStatus String @default("JOINED")
   invitedAt DateTime?
   joinedAt DateTime?

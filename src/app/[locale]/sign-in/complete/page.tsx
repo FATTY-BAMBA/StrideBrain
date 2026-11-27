@@ -2,7 +2,7 @@ import type { Route } from "next";
 import { notFound, redirect } from "next/navigation";
 import { realIdentityState } from "@/lib/server/real-identity";
 import { isSupportedLocale } from "@/modules/localization/config";
-import { sameSiteReturn } from "@/modules/sign-in/domain/policy";
+import { sameSiteReturn, signInMode } from "@/modules/sign-in/domain/policy";
 export default async function Complete({
   params,
   searchParams,
@@ -10,6 +10,7 @@ export default async function Complete({
   params: Promise<{ locale: string }>;
   searchParams: Promise<{ returnTo?: string }>;
 }) {
+  if (signInMode(process.env) === "demo") notFound();
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const state = await realIdentityState();

@@ -1,3 +1,4 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
 import { notFound, redirect } from "next/navigation";
 import { HomeDeskScreen } from "@/components/home-desk/home-desk";
 import { createHomeDeskService } from "@/lib/server/home-desk-services";
@@ -13,6 +14,7 @@ export default async function Page({
   params: Promise<{ locale: string }>;
   searchParams?: Promise<{ project?: string | string[] }>;
 }) {
+  await requirePageIdentity();
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   if (

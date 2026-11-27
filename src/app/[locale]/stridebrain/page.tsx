@@ -1,3 +1,4 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
 import { notFound, redirect } from "next/navigation";
 import { isSupportedLocale } from "@/modules/localization/config";
 
@@ -8,6 +9,7 @@ export default async function Page({
   params: Promise<{ locale: string }>;
   searchParams: Promise<{ project?: string | string[] }>;
 }) {
+  await requirePageIdentity();
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const search = await searchParams;

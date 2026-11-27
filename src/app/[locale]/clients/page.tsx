@@ -1,3 +1,4 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
 import Link from "next/link";
 import { Table, NameCell } from "@/components/ui/table";
 import { EmptyState } from "@/components/ui/empty-state";
@@ -21,6 +22,7 @@ export default async function ClientsPage({
   params: Promise<{ locale: string }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
+  await requirePageIdentity();
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const c = clientRecordsCopy(locale),

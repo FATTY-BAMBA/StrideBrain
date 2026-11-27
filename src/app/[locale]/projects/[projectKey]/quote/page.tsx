@@ -1,3 +1,4 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
 import { PageHeader } from "@/components/ui/page-header";
 import ui from "@/components/ui/ui.module.css";
 import { QuoteWorkspace } from "@/components/quote-issue/quote-workspace";
@@ -12,6 +13,7 @@ export default async function QuotePage({
 }: {
   params: Promise<{ locale: string; projectKey: string }>;
 }) {
+  await requirePageIdentity();
   const { locale, projectKey } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const context = await resolveServerRuntimeContext();

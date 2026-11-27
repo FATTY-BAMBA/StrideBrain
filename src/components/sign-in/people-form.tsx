@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { changePerson } from "@/app/[locale]/settings/people/actions";
 import { PEOPLE_ROLES, type PeopleChange } from "@/modules/people/domain/policy";
@@ -15,6 +15,7 @@ export type PersonRow = {
   role: Role;
   active: boolean;
   invitationStatus: string;
+  invitationEmailStatus: string;
   assignments: { projectId: string; canReadActuals: boolean; canCreateAction: boolean }[];
 };
 export function PeopleForm({
@@ -32,11 +33,24 @@ export function PeopleForm({
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
   const [assignments, setAssignments] = useState(person?.assignments ?? []);
+  const pending = useRef(false);
+  const retry = useRef<{ body: string; key: string } | null>(null);
+  const [unavailable, setUnavailable] = useState(false);
+  if (unavailable) throw new Error("People unavailable.");
   async function send(input: Omit<PeopleChange, "idempotencyKey">) {
+    if (pending.current) return;
+    pending.current = true;
+    const body = JSON.stringify(input);
+    if (retry.current?.body !== body) retry.current = { body, key: crypto.randomUUID() };
     setBusy(true);
     setMessage("");
     try {
-      const result = await changePerson({ ...input, idempotencyKey: crypto.randomUUID() });
+      const result = await changePerson({ ...input, idempotencyKey: retry.current.key });
+      if (result === "UNAVAILABLE") {
+        setUnavailable(true);
+        return;
+      }
+      retry.current = null;
       setMessage(
         result === "SUCCESS"
           ? c.saved
@@ -56,6 +70,7 @@ export function PeopleForm({
     } catch {
       setMessage(c.failed);
     } finally {
+      pending.current = false;
       setBusy(false);
     }
   }
@@ -72,6 +87,13 @@ export function PeopleForm({
                 ? c.invited
                 : c.joined}
           </p>
+          {person.invitationStatus === "INVITED" && (
+            <>
+              {person.invitationEmailStatus !== "SENT" && <p role="status">{c.mailNotSent}</p>}
+              <p>{c.directSignIn}</p>
+              {person.invitationEmailStatus === "FAILED" && <p>{c.mailFailed}</p>}
+            </>
+          )}
         </>
       )}
       <form

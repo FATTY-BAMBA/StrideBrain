@@ -1,3 +1,4 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { JobChatPanel } from "@/components/assistant/job-chat-panel";
@@ -28,6 +29,7 @@ export default async function JobLayout({
   children: ReactNode;
   params: Promise<{ locale: string; projectKey: string }>;
 }) {
+  await requirePageIdentity();
   const { locale, projectKey } = await params;
   // Each page keeps its own locale and unavailable-state handling.
   if (!isSupportedLocale(locale)) return children;

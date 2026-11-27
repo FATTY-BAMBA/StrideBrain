@@ -1,3 +1,4 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
 import { StageCounts } from "@/components/home-desk/stage-counts";
 import { inStageGroup, parseStageGroup, stageGroups } from "@/modules/projects/domain/stage-groups";
 import { homeDeskCopy } from "@/modules/localization/home-desk";
@@ -21,6 +22,7 @@ export default async function ProjectsPage({
   params: Promise<{ locale: string }>;
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
+  await requirePageIdentity();
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const catalog = getCatalog(locale);

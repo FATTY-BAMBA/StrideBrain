@@ -1,4 +1,6 @@
 "use client";
+import { useRouter } from "next/navigation";
+import type { Route } from "next";
 import { useEffect, useRef, useState } from "react";
 import type { Locale } from "@/modules/localization/config";
 import { signInCopy } from "@/modules/localization/sign-in";
@@ -6,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import styles from "./sign-in.module.css";
 export function SignInForm({ locale, returnTo }: { locale: Locale; returnTo: string }) {
   const c = signInCopy(locale);
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [sent, setSent] = useState(false);
@@ -43,8 +46,8 @@ export function SignInForm({ locale, returnTo }: { locale: Locale; returnTo: str
         const result = await response.json();
         if (typeof result.url === "string") window.location.assign(result.url);
       } else if (path === "sign-in/email-otp")
-        window.location.assign(
-          `/${locale}/sign-in/complete?returnTo=${encodeURIComponent(returnTo)}`,
+        router.push(
+          `/${locale}/sign-in/complete?returnTo=${encodeURIComponent(returnTo)}` as Route,
         );
       else {
         setSent(true);

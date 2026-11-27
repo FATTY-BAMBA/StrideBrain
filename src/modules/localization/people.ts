@@ -5,11 +5,13 @@ export function peopleCopy(locale: Locale) {
   return locale === "en"
     ? {
         title: "People",
+        mailNotSent: "Invitation email not sent",
+        directSignIn: "They can also go straight to the sign-in page and use this email.",
         name: "Name",
         email: "Email",
         role: "Role",
         invite: "Invite person",
-        resend: "Send invitation again",
+        resend: "Send again",
         cancel: "Cancel invitation",
         deactivate: "Deactivate",
         reactivate: "Reactivate",
@@ -27,17 +29,18 @@ export function peopleCopy(locale: Locale) {
         lastOwner: "Keep at least one active owner.",
         self: "You cannot deactivate yourself.",
         duplicate: "This person is already in this firm.",
-        mailFailed:
-          "The invitation is saved, but the email could not be sent. Send the invitation again.",
+        mailFailed: "The invitation is saved, but the email was not sent. Choose Send again.",
         allJobs: "Owners can open every job.",
       }
     : {
         title: "成員",
+        mailNotSent: "邀請信未寄出",
+        directSignIn: "對方也可以直接到登入頁，用這個信箱登入。",
         name: "姓名",
         email: "電子信箱",
         role: "角色",
         invite: "邀請成員",
-        resend: "再次寄送邀請",
+        resend: "再次寄送",
         cancel: "取消邀請",
         deactivate: "停用",
         reactivate: "重新啟用",
@@ -55,7 +58,7 @@ export function peopleCopy(locale: Locale) {
         lastOwner: "請保留至少一位啟用中的管理員。",
         self: "您無法停用自己。",
         duplicate: "此成員已在公司名單中。",
-        mailFailed: "邀請已儲存，但無法寄送信件，請再次寄送邀請。",
+        mailFailed: "邀請已儲存，但邀請信沒有寄出。請按「再次寄送」。",
         allJobs: "管理員可開啟所有專案。",
       };
 }

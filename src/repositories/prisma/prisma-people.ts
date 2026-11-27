@@ -24,7 +24,7 @@ export class PrismaPeople implements PeopleRepositoryPort {
   }
   async invitation(context: RuntimeContext, membershipId: string) {
     if (!canManagePeople(context)) return null;
-    return this.db.membership.findFirst({
+    const row = await this.db.membership.findFirst({
       where: {
         id: membershipId,
         organizationId: context.organizationId,
@@ -32,6 +32,64 @@ export class PrismaPeople implements PeopleRepositoryPort {
         invitationStatus: "INVITED",
       },
       include: { person: true, organization: true },
+    });
+    if (!row?.person.email) return null;
+    const locale: "en" | "zh-TW" = row.organization.primaryLocale === "en" ? "en" : "zh-TW";
+    return {
+      email: row.person.email,
+      locale,
+      firm: locale === "en" ? row.organization.nameEn : row.organization.nameZhTw,
+    };
+  }
+  async recordDelivery(
+    context: RuntimeContext,
+    membershipId: string,
+    idempotencyKey: string,
+    sent: boolean,
+  ) {
+    await this.db.$transaction(async (tx) => {
+      // Only the server receipt of the authorized invitation operation can record this result.
+      const receipt = await tx.auditEvent.findUnique({
+        where: {
+          organizationId_idempotencyKey: { organizationId: context.organizationId, idempotencyKey },
+        },
+      });
+      if (
+        !receipt ||
+        receipt.actorMembershipId !== context.membershipId ||
+        !["INVITATION_SENT", "INVITATION_RESENT"].includes(receipt.eventType) ||
+        (receipt.payload as { membershipId?: string }).membershipId !== membershipId
+      )
+        throw new Error("Invitation receipt unavailable.");
+      const deliveryKey = `invitation-email:${idempotencyKey}`;
+      if (
+        await tx.auditEvent.findUnique({
+          where: {
+            organizationId_idempotencyKey: {
+              organizationId: context.organizationId,
+              idempotencyKey: deliveryKey,
+            },
+          },
+        })
+      )
+        return;
+      const changed = await tx.membership.updateMany({
+        where: { id: membershipId, organizationId: context.organizationId },
+        data: { invitationEmailStatus: sent ? "SENT" : "FAILED" },
+      });
+      if (!changed.count) throw new Error("Invitation unavailable.");
+      await tx.auditEvent.create({
+        data: {
+          id: randomUUID(),
+          organizationId: context.organizationId,
+          actorMembershipId: context.membershipId,
+          requestId: randomUUID(),
+          eventType: sent ? "INVITATION_EMAIL_SENT" : "INVITATION_EMAIL_FAILED",
+          idempotencyKey: deliveryKey,
+          payload: { membershipId },
+          result: sent ? "SUCCESS" : "FAILED",
+        },
+      });
     });
   }
   async change(context: RuntimeContext, input: PeopleChange): Promise<PeopleOutcome> {

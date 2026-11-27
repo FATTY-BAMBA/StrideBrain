@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
-import { signInMode, sameSiteReturn } from "@/modules/sign-in/domain/policy";
+import { signInMode } from "@/modules/sign-in/domain/policy";
 import { realIdentityState } from "@/lib/server/real-identity";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
@@ -61,20 +60,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const locale = rawLocale;
   const catalog = getCatalog(locale);
   const mode = signInMode(process.env);
-  if (mode !== "demo") {
-    const path = (await headers()).get("x-stridebrain-page-path") ?? `/${locale}`;
-    const publicPage = /^\/(en|zh-TW)\/(sign-in|no-access|choose-firm|preview)(\/|\?|$)/.test(path);
-    if (!publicPage) {
-      const identity = await realIdentityState();
-      if (identity && !identity.choices.length) redirect(`/${locale}/no-access`);
-      if (identity && !identity.context)
-        redirect(
-          `/${locale}/choose-firm?returnTo=${encodeURIComponent(sameSiteReturn(path, locale))}`,
-        );
-      if (!identity && !(mode === "both" && (await resolveServerRuntimeContext())))
-        redirect(`/${locale}/sign-in?returnTo=${encodeURIComponent(sameSiteReturn(path, locale))}`);
-    }
-  }
   const account = await loadWorkspaceAccount(locale);
   const context = await resolveServerRuntimeContext().catch(() => null);
 

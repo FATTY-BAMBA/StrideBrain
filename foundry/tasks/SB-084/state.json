@@ -4,5 +4,5 @@
   "step": "A-F partial; not ready",
   "pullRequest": 85,
   "hostedAcceptance": "waiting_for_product_director",
-  "question": "Invitation delivery failure and access activation"
+  "question": "Google token-exchange abort timeout in pinned Better Auth dependency"
 }

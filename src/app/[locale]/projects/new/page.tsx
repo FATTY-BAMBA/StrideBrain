@@ -1,3 +1,4 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
 import { randomUUID } from "node:crypto";
 import { notFound } from "next/navigation";
 import { FoundationPage } from "@/components/ui/foundation-page";
@@ -10,6 +11,7 @@ import { isSupportedLocale } from "@/modules/localization/config";
 import { jobsCopy } from "@/modules/localization/jobs";
 
 export default async function NewProjectPage({ params }: { params: Promise<{ locale: string }> }) {
+  await requirePageIdentity();
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const copy = jobsCopy(locale);
