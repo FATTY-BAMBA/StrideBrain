@@ -71,6 +71,7 @@ async function evaluateQuestion(
                 ],
               },
               oracle,
+              question.locale,
             ).some((actual) => matchesExpected(actual, expected)),
           );
           if (!found) throw Error(`FAKE_MISSING_REF:${question.id}:${expected.path}`);
@@ -94,13 +95,7 @@ async function evaluateQuestion(
       result: {
         kind: "ANSWER",
         answer: {
-          parts: refs.length
-            ? [
-                { say: "RECORDS_SHOW" },
-                ...refs.map((show) => ({ show })),
-                ...(question.expected.partial ? [{ say: "PARTIAL_RECORDS" }] : []),
-              ]
-            : [],
+          parts: refs.length ? [{ say: "RECORDS_SHOW" }, ...refs.map((show) => ({ show }))] : [],
           followUps: [],
         },
       },

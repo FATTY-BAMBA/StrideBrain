@@ -258,7 +258,7 @@ it("B: confirmed job replaces an unresolved name and page project, but still che
   expect(denied.model.requests).toHaveLength(0);
 });
 it.each(["en", "zh-TW"] as const)(
-  "C: forty parts, twelve printed rows with remaining counts and an optional partial notice (%s)",
+  "C: forty parts, twelve printed rows with remaining counts and no extra notice (%s)",
   (locale) => {
     const registry = new AnswerFactRegistry(locale);
     registry.register([
@@ -267,26 +267,19 @@ it.each(["en", "zh-TW"] as const)(
         label: "Job",
         href: "/en/projects/J",
         projectKeys: ["J"],
-        facts: { findings: Array.from({ length: 38 }, (_, i) => ({ text: `Saved fact ${i}` })) },
+        facts: { findings: Array.from({ length: 39 }, (_, i) => ({ text: `Saved fact ${i}` })) },
       },
     ]);
-    const refs = Array.from({ length: 38 }, (_, i) => ({ show: `s1.findings.${i}.text` }));
+    const refs = Array.from({ length: 39 }, (_, i) => ({ show: `s1.findings.${i}.text` }));
     const result = registry.render({
-      parts: [{ say: "RECORDS_SHOW" }, ...refs, { say: "PARTIAL_RECORDS" }],
+      parts: [{ say: "RECORDS_SHOW" }, ...refs],
       followUps: [],
     });
     expect(result.kind).toBe("ACCEPTED");
     if (result.kind !== "ACCEPTED") throw Error("rejected");
     const cards = result.answer.presentation!.blocks.filter((b) => b.kind === "CARD");
     expect(cards.flatMap((b) => b.rows)).toHaveLength(12);
-    expect(cards[0]!.remaining).toContain("26");
-    expect(result.answer.presentation!.blocks.at(-1)).toMatchObject({
-      kind: "NOTICE",
-      text:
-        locale === "en"
-          ? "Part of what you asked is not in the records you may read."
-          : "您問的部分內容不在可查看的紀錄中。",
-    });
+    expect(cards[0]!.remaining).toContain("27");
     const full = registry.render({ parts: [{ say: "RECORDS_SHOW" }, ...refs], followUps: [] });
     expect(
       full.kind === "ACCEPTED" && full.answer.presentation!.blocks.some((b) => b.kind === "NOTICE"),
@@ -299,7 +292,7 @@ it.each(["en", "zh-TW"] as const)(
     ).toBeNull();
     expect(
       registry.render({
-        parts: [{ say: "RECORDS_SHOW" }, ...refs, { show: "s1.unknown" }],
+        parts: [{ say: "RECORDS_SHOW" }, ...refs.slice(0, -1), { show: "s1.unknown" }],
         followUps: [],
       }),
     ).toMatchObject({ reason: "UNKNOWN_REFERENCE" });
@@ -325,81 +318,6 @@ it("D: follow-ups use authorized names and remove unsupported personal informati
   ])
     expect(maySuggestFollowUp(text, jobContext().capabilities)).toBe(false);
   expect(maySuggestFollowUp("What is the quote total?", jobContext().capabilities)).toBe(true);
-});
-
-it.each(["en", "zh-TW"] as const)(
-  "C: recorded partial phrase order is normalized into the same server-owned layout (%s)",
-  (locale) => {
-    const registry = new AnswerFactRegistry(locale);
-    registry.register([
-      {
-        sourceId: "s",
-        label: "Job",
-        href: "/en/projects/J",
-        projectKeys: ["J"],
-        facts: { stage: "Design" },
-      },
-    ]);
-    const canonical = {
-      parts: [{ say: "RECORDS_SHOW" }, { show: "s1.stage" }, { say: "PARTIAL_RECORDS" }],
-      followUps: [],
-    };
-    expect(
-      registry.render({
-        parts: [{ say: "PARTIAL_RECORDS" }, { say: "RECORDS_SHOW" }, { show: "s1.stage" }],
-        followUps: [],
-      }),
-    ).toEqual(registry.render(canonical));
-    expect(
-      registry.render({ parts: [{ say: "PARTIAL_RECORDS" }, { show: "s1.stage" }], followUps: [] }),
-    ).toEqual(registry.render(canonical));
-    for (const parts of [
-      [{ say: "PARTIAL_RECORDS" }, { say: "RECORDS_SHOW" }],
-      [...canonical.parts, { say: "PARTIAL_RECORDS" }],
-    ])
-      expect(parseFactAnswer({ parts, followUps: [] })).toBeNull();
-  },
-);
-it("C: replays the focused run's three discarded raw partial answers without changing selected facts", () => {
-  const report = JSON.parse(
-    readFileSync("foundry/tasks/SB-081/evidence/focused-paid-1.json", "utf8"),
-  );
-  let count = 0;
-  for (const round of report.rounds)
-    for (const row of round.questions) {
-      if (row.discardReason !== "INVALID_OUTPUT") continue;
-      const registry = new AnswerFactRegistry(row.locale);
-      registry.register(row.sourceLedger);
-      const out = registry.render(row.rawAnswer);
-      expect(out.kind).toBe("ACCEPTED");
-      if (out.kind !== "ACCEPTED") throw Error("replay");
-      expect(out.selection.noticePhraseId).toBe("PARTIAL_RECORDS");
-      expect(out.answer.presentation!.blocks.at(-1)?.kind).toBe("NOTICE");
-      count++;
-    }
-  expect(count).toBe(3);
-});
-
-it("C: valid partial-only phrase selections from focused run 2 are laid out without losing facts", () => {
-  const report = JSON.parse(
-    readFileSync("foundry/tasks/SB-081/evidence/focused-paid-2.json", "utf8"),
-  );
-  let n = 0;
-  for (const round of report.rounds)
-    for (const row of round.questions) {
-      if (row.discardReason !== "INVALID_OUTPUT") continue;
-      const registry = new AnswerFactRegistry(row.locale);
-      registry.register(row.sourceLedger);
-      const rendered = registry.render(row.rawAnswer);
-      expect(rendered.kind).toBe("ACCEPTED");
-      if (rendered.kind !== "ACCEPTED") throw Error("replay");
-      expect(rendered.selection.noticePhraseId).toBe("PARTIAL_RECORDS");
-      expect(rendered.selection.shown).toHaveLength(
-        row.rawAnswer.parts.filter((p: { show?: string }) => p.show).length,
-      );
-      n++;
-    }
-  expect(n).toBe(5);
 });
 
 it("B/E: a failed candidate access read produces only a failed-turn log, never a premature success", async () => {
@@ -476,3 +394,57 @@ it("A/B: replays direct unreadable-job calls from the full paid run with the not
   }
   expect(n).toBe(3);
 });
+
+it.each(["en", "zh-TW"] as const)(
+  "fixed private-detail facts are byte-identical regardless of client or missing address (%s)",
+  (locale) => {
+    const registry = new AnswerFactRegistry(locale);
+    const sources = [
+      { client: "Private client A", contact: "Private contact A", address: "Private street A" },
+      { client: "Private client B", contact: "Private contact B", address: "Private street B" },
+      { client: "Private client C", contact: "Private contact C", address: null },
+    ].map((privateFields, i) => ({
+      sourceId: `job${i}`,
+      label: `Job ${i}`,
+      href: `/${locale}/projects/J${i}`,
+      projectKeys: [`J${i}`],
+      facts: { name: `Job ${i}`, ...privateFields },
+    }));
+    registry.register(sources);
+    const model = registry.modelSources(sources);
+    const entries = model.map((s) =>
+      s.facts
+        .filter((f) => f.ref.endsWith("Availability"))
+        .map(({ label, value }) => ({ label, value })),
+    );
+    expect(entries[0]).toHaveLength(3);
+    expect(JSON.stringify(entries[0])).toBe(JSON.stringify(entries[1]));
+    expect(JSON.stringify(entries[0])).toBe(JSON.stringify(entries[2]));
+    expect(JSON.stringify(model)).not.toContain("Private");
+    expect(
+      entries[0]!.every(
+        (f) => f.value === (locale === "en" ? "Not shared with the AI." : "不提供給 AI。"),
+      ),
+    ).toBe(true);
+    for (const path of ["clientAvailability", "contactAvailability", "siteAddressAvailability"]) {
+      const out = registry.render({
+        parts: [{ say: "RECORDS_SHOW" }, { show: `s1.${path}` }],
+        followUps: [],
+      });
+      expect(out.kind).toBe("ACCEPTED");
+      if (out.kind !== "ACCEPTED") throw Error("render");
+      expect(out.answer.presentation!.blocks).toHaveLength(1);
+      expect(out.answer.presentation!.blocks[0]).toMatchObject({
+        kind: "CARD",
+        rows: [{ path }],
+        link: { href: `/${locale}/projects/J0` },
+      });
+    }
+    expect(
+      parseFactAnswer({
+        parts: [{ say: "PARTIAL_RECORDS" }, { show: "s1.clientAvailability" }],
+        followUps: [],
+      }),
+    ).toBeNull();
+  },
+);

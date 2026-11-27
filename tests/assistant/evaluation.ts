@@ -34,7 +34,7 @@ export type EvaluationQuestion = {
   expected: {
     kind: "FACTS" | "DECLINE";
     subjectProjectKey?: string;
-    partial?: boolean;
+    privateAvailability?: boolean;
     firstChip?: string;
     chipKeys?: string[];
     unresolvedSubject?: boolean;
@@ -72,6 +72,14 @@ function provenance(source: AssistantSource, path: string) {
     ...(item ? { itemIdentity: JSON.stringify([f.description, f.unit, f.documentNumber]) } : {}),
   };
 }
+function availabilityFacts(source: AssistantSource, locale: Locale) {
+  return displayIdentity(source).kind === "JOB" && source.projectKeys.length === 1
+    ? ["clientAvailability", "contactAvailability", "siteAddressAvailability"].map((path) => ({
+        path,
+        value: locale === "zh-TW" ? "不提供給 AI。" : "Not shared with the AI.",
+      }))
+    : [];
+}
 /** Expected references come from deterministic authorized page reads, never model wording. */
 export function expectedFacts(
   q: EvaluationQuestion,
@@ -84,7 +92,7 @@ export function expectedFacts(
         (s.subjectProjectKeys ?? s.projectKeys).includes(q.expected.subjectProjectKey),
     )
     .flatMap((s) =>
-      leaves(s.facts).map((f) => ({
+      [...leaves(s.facts), ...availabilityFacts(s, q.locale)].map((f) => ({
         ...f,
         sourceId: s.sourceId,
         ...provenance(s, f.path),
@@ -106,16 +114,13 @@ export function expectedFacts(
 export function selectedFacts(
   selection: AnswerSelection,
   ledger: readonly AssistantSource[],
+  locale: Locale = "en",
 ): ExpectedFact[] {
-  const registry = new AnswerFactRegistry("en");
+  const registry = new AnswerFactRegistry(locale);
   registry.register(ledger);
   const display = registry.modelSources(ledger);
   const rendered = registry.render({
-    parts: [
-      { say: selection.phraseId },
-      ...selection.shown.map((s) => ({ show: s.ref })),
-      ...(selection.noticePhraseId ? [{ say: selection.noticePhraseId }] : []),
-    ],
+    parts: [{ say: selection.phraseId }, ...selection.shown.map((s) => ({ show: s.ref }))],
     followUps: [],
   });
   if (rendered.kind !== "ACCEPTED") return [];
@@ -198,7 +203,7 @@ export function selectedFacts(
             : (listFactPaths(source) ??
               (display[index]?.facts ?? []).map((f) => f.ref.slice(f.ref.indexOf(".") + 1)))
           : priceReadingPaths(selected.path);
-      return leaves(s.facts)
+      return [...leaves(s.facts), ...availabilityFacts(s, locale)]
         .filter((f) =>
           [...(visible.get(s.sourceId) ?? [])].some(
             (path) => f.path === path || f.path.startsWith(`${path}.`),
@@ -244,11 +249,7 @@ export function evaluateAnswer(
   // record headings, dates, references, signs and precision), with no prose/number heuristics.
   const replay = selection
     ? registry.render({
-        parts: [
-          { say: selection.phraseId },
-          ...selection.shown.map((s) => ({ show: s.ref })),
-          ...(selection.noticePhraseId ? [{ say: selection.noticePhraseId }] : []),
-        ],
+        parts: [{ say: selection.phraseId }, ...selection.shown.map((s) => ({ show: s.ref }))],
         followUps: [],
       })
     : null;
@@ -264,7 +265,7 @@ export function evaluateAnswer(
   const raw = record(rawAnswer),
     rawFollowUps = Array.isArray(raw?.followUps) ? raw.followUps : [];
   const draftRejected = rawAnswer != null && !parseFactAnswer(rawAnswer);
-  const actual = selection ? selectedFacts(selection, safeLedger) : [];
+  const actual = selection ? selectedFacts(selection, safeLedger, q.locale) : [];
   const report = (verdict: "wrong" | "correctly declined" | "grounded and correct") => ({
     verdict,
     wrongRecordValue,
@@ -297,7 +298,11 @@ export function evaluateAnswer(
   // Judge access by cited record identity; the model cannot turn that name into a new assertion.
   if (q.expected.forbidden.some((key) => outcome.sources.some((s) => s.projectKeys.includes(key))))
     return report("wrong");
-  if (q.expected.partial !== undefined && !!selection?.noticePhraseId !== q.expected.partial)
+  const hasAvailability = actual.some((f) => f.path.endsWith("Availability"));
+  if (
+    q.expected.privateAvailability !== undefined &&
+    hasAvailability !== q.expected.privateAvailability
+  )
     return report("wrong");
   const chips = outcome.questionChips ?? [];
   if (
@@ -324,7 +329,7 @@ export function evaluateAnswer(
     const cards = outcome.answer.presentation?.blocks.filter((b) => b.kind === "CARD") ?? [];
     const shownFindings = actual.filter((f) => /^findings\.\d+\.text$/.test(f.path));
     return report(
-      !selection?.noticePhraseId &&
+      !hasAvailability &&
         shownFindings.length === 12 &&
         shownFindings.every((f) => facts.some((e) => matchesExpected(f, e))) &&
         cards.some(

@@ -1764,10 +1764,10 @@
     ],
     "expected": {
       "kind": "FACTS",
-      "facts": ["@stage"],
+      "facts": ["@stage", "@clientAvailability"],
       "forbidden": [],
-      "partial": true,
-      "subjectProjectKey": "PRJ-XINYI-026"
+      "subjectProjectKey": "PRJ-XINYI-026",
+      "privateAvailability": true
     }
   },
   {
@@ -1790,8 +1790,8 @@
       "kind": "FACTS",
       "facts": ["@stage"],
       "forbidden": [],
-      "partial": false,
-      "subjectProjectKey": "PRJ-XINYI-026"
+      "subjectProjectKey": "PRJ-XINYI-026",
+      "privateAvailability": false
     }
   },
   {
@@ -1931,10 +1931,10 @@
     ],
     "expected": {
       "kind": "FACTS",
-      "facts": ["@stage"],
+      "facts": ["@stage", "@clientAvailability"],
       "forbidden": [],
-      "partial": true,
-      "subjectProjectKey": "PRJ-XINYI-026"
+      "subjectProjectKey": "PRJ-XINYI-026",
+      "privateAvailability": true
     }
   },
   {
@@ -1957,8 +1957,8 @@
       "kind": "FACTS",
       "facts": ["@stage"],
       "forbidden": [],
-      "partial": false,
-      "subjectProjectKey": "PRJ-XINYI-026"
+      "subjectProjectKey": "PRJ-XINYI-026",
+      "privateAvailability": false
     }
   },
   {
@@ -2098,10 +2098,10 @@
     ],
     "expected": {
       "kind": "FACTS",
-      "facts": ["@stage"],
+      "facts": ["@stage", "@clientAvailability"],
       "forbidden": [],
-      "partial": true,
-      "subjectProjectKey": "PRJ-XINYI-026"
+      "subjectProjectKey": "PRJ-XINYI-026",
+      "privateAvailability": true
     }
   },
   {
@@ -2124,8 +2124,8 @@
       "kind": "FACTS",
       "facts": ["@stage"],
       "forbidden": [],
-      "partial": false,
-      "subjectProjectKey": "PRJ-XINYI-026"
+      "subjectProjectKey": "PRJ-XINYI-026",
+      "privateAvailability": false
     }
   },
   {
@@ -2265,10 +2265,10 @@
     ],
     "expected": {
       "kind": "FACTS",
-      "facts": ["@stage"],
+      "facts": ["@stage", "@clientAvailability"],
       "forbidden": [],
-      "partial": true,
-      "subjectProjectKey": "PRJ-XINYI-026"
+      "subjectProjectKey": "PRJ-XINYI-026",
+      "privateAvailability": true
     }
   },
   {
@@ -2291,7 +2291,151 @@
       "kind": "FACTS",
       "facts": ["@stage"],
       "forbidden": [],
-      "partial": false,
+      "subjectProjectKey": "PRJ-XINYI-026",
+      "privateAvailability": false
+    }
+  },
+  {
+    "id": "en-misses-client-only",
+    "locale": "en",
+    "person": "owner",
+    "question": "Who is the client of PRJ-XINYI-026?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@clientAvailability"],
+      "forbidden": [],
+      "privateAvailability": true,
+      "subjectProjectKey": "PRJ-XINYI-026"
+    }
+  },
+  {
+    "id": "en-misses-siteAddress-only",
+    "locale": "en",
+    "person": "owner",
+    "question": "What is the site address of PRJ-XINYI-026?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@siteAddressAvailability"],
+      "forbidden": [],
+      "privateAvailability": true,
+      "subjectProjectKey": "PRJ-XINYI-026"
+    }
+  },
+  {
+    "id": "en-misses-contact-only",
+    "locale": "en",
+    "person": "owner",
+    "question": "What are the contact details for PRJ-XINYI-026?",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@contactAvailability"],
+      "forbidden": [],
+      "privateAvailability": true,
+      "subjectProjectKey": "PRJ-XINYI-026"
+    }
+  },
+  {
+    "id": "zh-TW-misses-client-only",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "PRJ-XINYI-026 的客戶是誰？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@clientAvailability"],
+      "forbidden": [],
+      "privateAvailability": true,
+      "subjectProjectKey": "PRJ-XINYI-026"
+    }
+  },
+  {
+    "id": "zh-TW-misses-siteAddress-only",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "PRJ-XINYI-026 的工程地址是什麼？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@siteAddressAvailability"],
+      "forbidden": [],
+      "privateAvailability": true,
+      "subjectProjectKey": "PRJ-XINYI-026"
+    }
+  },
+  {
+    "id": "zh-TW-misses-contact-only",
+    "locale": "zh-TW",
+    "person": "owner",
+    "question": "PRJ-XINYI-026 的聯絡方式是什麼？",
+    "projectKey": "J-2611-R7K3",
+    "required": true,
+    "friendlierMiss": true,
+    "oracleTools": [
+      {
+        "name": "get_job",
+        "arguments": {
+          "projectKey": "PRJ-XINYI-026"
+        }
+      }
+    ],
+    "expected": {
+      "kind": "FACTS",
+      "facts": ["@contactAvailability"],
+      "forbidden": [],
+      "privateAvailability": true,
       "subjectProjectKey": "PRJ-XINYI-026"
     }
   }

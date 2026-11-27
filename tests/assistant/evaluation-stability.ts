@@ -67,14 +67,14 @@ export function roundSummary<T extends ScoredRow>(
       (locale) =>
         questions.filter((q) => !q.required && !q.reported && q.locale === locale).length === 20,
     ) &&
-    new Set(questions.map((q) => q.id)).size === (legacySb079Replay ? 84 : 112) &&
+    new Set(questions.map((q) => q.id)).size === (legacySb079Replay ? 84 : 118) &&
     questions.filter((q) => q.reported).length === 2 &&
     questions.filter(
       (q) => q.required && !q.friendlierMiss && !q.qualityRegression && !q.factSelectionRegression,
     ).length === 12 &&
     questions.filter((q) => q.required && q.qualityRegression).length === 2 &&
     questions.filter((q) => q.required && q.factSelectionRegression).length === 28 &&
-    questions.filter((q) => q.friendlierMiss).length === (legacySb079Replay ? 0 : 28);
+    questions.filter((q) => q.friendlierMiss).length === (legacySb079Replay ? 0 : 34);
   const sortedCalls = questions.map((q) => q.calls).sort((a, b) => a - b);
   const withinThree = sortedCalls.filter((n) => n <= 3).length;
   const callTargets = {
@@ -213,7 +213,7 @@ export function stabilitySummary<T extends ScoredRow>(
       (focusedCaseIds
         ? rounds.every((r) => r.questions.every((q) => !q.mustReachModel || q.calls > 0))
         : rounds.every((r) => r.passed)) &&
-      perQuestion.length === (focusedCaseIds?.length ?? (legacySb079Replay ? 84 : 112)) &&
+      perQuestion.length === (focusedCaseIds?.length ?? (legacySb079Replay ? 84 : 118)) &&
       ids.every((id) => rounds.every((r) => r.questions.some((q) => q.id === id))),
     rounds,
     perQuestion,

@@ -24,15 +24,10 @@ import { modelFacts } from "./redaction";
 /** Non-factual copy only. The model chooses an id, never writes an answer sentence. */
 export const answerPhrases = {
   RECORDS_SHOW: { en: "Here is what the records show:", "zh-TW": "紀錄顯示：" },
-  PARTIAL_RECORDS: {
-    en: "Part of what you asked is not in the records you may read.",
-    "zh-TW": "您問的部分內容不在可查看的紀錄中。",
-  },
 } as const;
 export type AnswerPart = Readonly<{ say: keyof typeof answerPhrases } | { show: string }>;
 export type AnswerSelection = Readonly<{
   phraseId: keyof typeof answerPhrases;
-  noticePhraseId?: "PARTIAL_RECORDS";
   /** Server provenance for evaluation; not persisted with the screen's StructuredAnswer. */
   shown: readonly Readonly<{
     ref: string;
@@ -55,8 +50,7 @@ export const answerParameters = {
               say: {
                 type: "string",
                 enum: Object.keys(answerPhrases),
-                description:
-                  "RECORDS_SHOW introduces available facts. PARTIAL_RECORDS is also needed when any requested information is unavailable, even when another requested fact was found. It is not for the printed-row limit or a saved finding about insufficient history.",
+                description: "RECORDS_SHOW introduces the selected facts.",
               },
             },
             required: ["say"],
@@ -116,22 +110,16 @@ export function parseFactAnswer(
     r.parts.length &&
     (!("say" in r.parts[0]) ||
       r.parts.filter((p) => p.say === "RECORDS_SHOW").length > 1 ||
-      r.parts.filter((p) => p.say === "PARTIAL_RECORDS").length > 1 ||
       !r.parts.some((p) => "show" in p))
   )
     return null;
   return {
-    // The two fixed phrase ids carry no user/model prose. Layout is server-owned,
-    // so their input order cannot move the partial notice above the cards.
     parts: r.parts.length
       ? [
           { say: "RECORDS_SHOW" },
           ...r.parts
             .filter((p: AnswerPart): p is { show: string } => "show" in p)
             .map((p: { show: string }) => ({ show: p.show.replace(/\s/gu, "") })),
-          ...(r.parts.some((p: AnswerPart) => "say" in p && p.say === "PARTIAL_RECORDS")
-            ? [{ say: "PARTIAL_RECORDS" as const }]
-            : []),
         ]
       : [],
     followUps: r.followUps,
@@ -226,6 +214,31 @@ export class AnswerFactRegistry {
         }
       };
       walk(modelFacts(source.facts), "", "");
+      // Constant availability facts: no client/contact/address record field is read.
+      if (displayIdentity(source).kind === "JOB" && source.projectKeys.length === 1) {
+        for (const [path, label] of Object.entries(
+          this.locale === "zh-TW"
+            ? {
+                clientAvailability: "客戶",
+                contactAvailability: "聯絡方式",
+                siteAddressAvailability: "工程地址",
+              }
+            : {
+                clientAvailability: "Client",
+                contactAvailability: "Contact details",
+                siteAddressAvailability: "Site address",
+              },
+        )) {
+          const ref = `${alias}.${path}`;
+          this.facts.set(ref, {
+            ref,
+            sourceId: source.sourceId,
+            path,
+            label,
+            value: this.locale === "zh-TW" ? "不提供給 AI。" : "Not shared with the AI.",
+          });
+        }
+      }
       const area = record(source.facts.area);
       if (typeof area?.value === "string" && typeof area.unit === "string") {
         const ref = `${alias}.area.value`;
@@ -419,7 +432,7 @@ export class AnswerFactRegistry {
           const all = fieldsFor(row.sourceId);
           const selected = (
             paths ? paths.flatMap((path) => all.filter((f) => f.path === path)) : all
-          ).filter(visible);
+          ).filter((f) => visible(f) && !f.path.endsWith("Availability"));
           const details = new Set(
             selected
               .filter((f) => ["lastPrice", "clientLastPrice"].includes(f.path))
@@ -456,8 +469,6 @@ export class AnswerFactRegistry {
         });
       }
     }
-    if (parsed.parts.some((p) => "say" in p && p.say === "PARTIAL_RECORDS"))
-      blocks.push({ kind: "NOTICE", text: answerPhrases.PARTIAL_RECORDS[this.locale] });
     const presentation: AnswerPresentation = {
       version: 1,
       locale: this.locale,
@@ -518,9 +529,6 @@ export class AnswerFactRegistry {
       selection: {
         phraseId,
         shown,
-        ...(parsed.parts.some((p) => "say" in p && p.say === "PARTIAL_RECORDS")
-          ? { noticePhraseId: "PARTIAL_RECORDS" as const }
-          : {}),
       },
     };
   }

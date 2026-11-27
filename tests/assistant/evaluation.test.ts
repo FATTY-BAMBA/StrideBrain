@@ -75,7 +75,7 @@ describe("evaluation by selected references", () => {
         ),
       ).toHaveLength(14);
     }
-    expect(questions).toHaveLength(112);
+    expect(questions).toHaveLength(118);
   });
   it("counts a true page fact for an unresolved named job as a wrong record value", () => {
     const registry = new AnswerFactRegistry("en");
@@ -263,7 +263,7 @@ describe("evaluation by selected references", () => {
   });
 });
 (process.env.DATABASE_URL ? it : it.skip)(
-  "replays all 112 evaluation cases through the fake and authorized records in three rounds",
+  "replays all 118 evaluation cases through the fake and authorized records in three rounds",
   async () => {
     const report = await runEvaluationRounds(async () => {
       const db = await assistantDatabase();
@@ -373,8 +373,8 @@ it("a complete long findings answer cannot claim that requested records are miss
     const raw = {
       parts: [
         { say: "RECORDS_SHOW" },
+        ...(partial ? [{ show: "s1.clientAvailability" }] : []),
         ...Array.from({ length: 13 }, (_, i) => ({ show: `s1.findings.${i}.text` })),
-        ...(partial ? [{ say: "PARTIAL_RECORDS" }] : []),
       ],
       followUps: [],
     };
