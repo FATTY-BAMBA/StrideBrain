@@ -21,6 +21,7 @@ export function ReviewModal({
   focusKey,
   returnFocusId,
   onNavigate,
+  openerId = "internal-review-entry",
 }: Readonly<{
   locale: Locale;
   title: string;
@@ -31,6 +32,7 @@ export function ReviewModal({
   focusKey: string;
   returnFocusId?: string | undefined;
   onNavigate?: (href: string) => void;
+  openerId?: string;
 }>) {
   const copy = getInternalReviewCopy(locale);
   const router = useRouter();
@@ -44,6 +46,7 @@ export function ReviewModal({
       describedBy="internal-review-description"
       pending={pending}
       onClose={onClose}
+      resolveReturnFocus={() => document.getElementById(openerId)}
       focusKey={focusKey}
       resolveInitialFocus={(panel) =>
         (returnFocusId
@@ -53,50 +56,54 @@ export function ReviewModal({
           : null) ?? panel.querySelector("h2")
       }
     >
-      <header className={styles.header}>
-        <div>
-          <h2 id="internal-review-heading" tabIndex={-1}>
-            {title}
-          </h2>
-          <p id="internal-review-description">{description}</p>
-          <nav className={styles.locale} aria-label="English / 繁體中文">
-            <Link
-              href={localizedHref(pathname, search, "en") as Route}
-              aria-disabled={pending}
-              onNavigate={(event) => {
-                event.preventDefault();
-                if (pending) return;
-                const href = currentLocalizedHref("en");
-                if (onNavigate) onNavigate(href);
-                else router.push(href as Route, { scroll: false });
-              }}
-              lang="en"
-              aria-current={locale === "en" ? "page" : undefined}
-            >
-              {copy.english}
-            </Link>
-            <Link
-              href={localizedHref(pathname, search, "zh-TW") as Route}
-              aria-disabled={pending}
-              onNavigate={(event) => {
-                event.preventDefault();
-                if (pending) return;
-                const href = currentLocalizedHref("zh-TW");
-                if (onNavigate) onNavigate(href);
-                else router.push(href as Route, { scroll: false });
-              }}
-              lang="zh-Hant"
-              aria-current={locale === "zh-TW" ? "page" : undefined}
-            >
-              {copy.chinese}
-            </Link>
-          </nav>
-        </div>
-        <button className={styles.secondary} type="button" onClick={onClose} disabled={pending}>
-          {copy.close}
-        </button>
-      </header>
-      {children}
+      {(dismiss) => (
+        <>
+          <header className={styles.header}>
+            <div>
+              <h2 id="internal-review-heading" tabIndex={-1}>
+                {title}
+              </h2>
+              <p id="internal-review-description">{description}</p>
+              <nav className={styles.locale} aria-label="English / 繁體中文">
+                <Link
+                  href={localizedHref(pathname, search, "en") as Route}
+                  aria-disabled={pending}
+                  onNavigate={(event) => {
+                    event.preventDefault();
+                    if (pending) return;
+                    const href = currentLocalizedHref("en");
+                    if (onNavigate) onNavigate(href);
+                    else router.push(href as Route, { scroll: false });
+                  }}
+                  lang="en"
+                  aria-current={locale === "en" ? "page" : undefined}
+                >
+                  {copy.english}
+                </Link>
+                <Link
+                  href={localizedHref(pathname, search, "zh-TW") as Route}
+                  aria-disabled={pending}
+                  onNavigate={(event) => {
+                    event.preventDefault();
+                    if (pending) return;
+                    const href = currentLocalizedHref("zh-TW");
+                    if (onNavigate) onNavigate(href);
+                    else router.push(href as Route, { scroll: false });
+                  }}
+                  lang="zh-Hant"
+                  aria-current={locale === "zh-TW" ? "page" : undefined}
+                >
+                  {copy.chinese}
+                </Link>
+              </nav>
+            </div>
+            <button className={styles.secondary} type="button" onClick={dismiss} disabled={pending}>
+              {copy.close}
+            </button>
+          </header>
+          {children}
+        </>
+      )}
     </Dialog>
   );
 }

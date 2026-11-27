@@ -135,3 +135,24 @@ it("starts collapsed without the comparison fragment", async () => {
   );
   expect(host.querySelector("details")?.open).toBe(false);
 });
+it.each(["en", "zh-TW"] as const)(
+  "closed jobs without a comparison have no drafting instructions (%s)",
+  async (locale) => {
+    mock.request.mockResolvedValue({ kind: "NOT_RUN" });
+    await act(async () =>
+      root.render(
+        createElement(QuoteComparisonPanel, {
+          locale,
+          projectKey: "JOB",
+          closed: true,
+          onPrepared: vi.fn(),
+        }),
+      ),
+    );
+    expect(host.querySelector('[role="status"]')?.textContent).toBe(
+      quoteComparisonCopy(locale).closedNotRun,
+    );
+    expect(host.textContent).not.toContain(quoteComparisonCopy(locale).NOT_RUN);
+    expect(host.querySelector("button")).toBeNull();
+  },
+);

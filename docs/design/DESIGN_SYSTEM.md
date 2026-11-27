@@ -95,7 +95,7 @@ The following is the v1 token table. The CSS file is authoritative. Legacy token
 
 Type roles: display 32/1.3/700 is reserved for the Home greeting; page title 24/1.4/700; section heading 18/1.5/700; lead 17/1.5/600; body 15/1.6/400; table/document 14/1.6/400; caption 13/1.5/400. Use only weights 400, 600 and 700. No new text is smaller than 13px. Use Inter first, then Noto Sans TC, then system Chinese fonts.
 
-Space steps are 4, 8, 12, 16, 24, 32, 40 and 48px. Radius roles are cell (6px), control (10px), ask (12px) and pill (999px). Control heights are cell 32px, chip 36px, default 44px and ask 56px. The sole shadow belongs to the quote document, not record tables or the shell. Layout dimensions have named tokens too; they are not extra spacing steps. The shared page container uses `--page-width` (1120px), centred and capped at the available width. The shell retains `--content-width` (1500px) for older page bodies.
+Space steps are 4, 8, 12, 16, 24, 32, 40 and 48px. Radius roles are none (0, for flat rows), cell (6px), control (10px), ask (12px) and pill (999px). Control heights are cell 32px, chip 36px, default 44px and ask 56px. The sole shadow belongs to the quote document, not record tables or the shell. Layout dimensions have named tokens too; they are not extra spacing steps. The shared page container uses `--page-width` (1120px), centred and capped at the available width. The shell retains `--content-width` (1500px) for older page bodies.
 
 ## Shared components
 
@@ -114,17 +114,33 @@ All these components are server components by default. URL-aware navigation, err
 
 `RecordsState` provides localized retry states for the Quotes and Clients error boundaries. Its client boundary reads only the URL locale and never fetches business data. `FilterForm` keeps a native GET form and announces a loading notice on submit when JavaScript is available; it does not prevent navigation or fetch data. There is no route-level streaming loading boundary: the list must remain visible on an initial visit with JavaScript disabled. The shared UI module contains list layout, filter and paging styles.
 
-## Specified for the first consuming issue
+SectionHeading renders an h2 in the section type scale with a strong rule and optional actions. FactsList is a semantic dl: labels use muted table text, values use ink, numeric values align right with tabular figures. Adjacent equal labels may group into one dt above their unchanged values; this is used for answer-card findings. No facts are combined or rewritten.
 
-Paper and navigation Tabs are implemented by #65:
+Dialog uses the native dialog element with showModal, a named heading, Escape dismissal, focus containment and return to the opener. It adds no new colour or shadow. Closing hides it immediately while URL navigation finishes. Route-backed triggers show a busy label until their dialog is ready.
+
+Dialogs close through Close or Escape, never a backdrop click.
+
+Settings diagnostic timing details use a closed disclosure, with durations in one decimal second.
+
+## Document and navigation components
+
+Paper and navigation Tabs:
 
 - **Paper** (`src/components/ui/paper.tsx`): document surface in canvas over surface-subtle, line-strong border and the sole document shadow. Use table/document typography, space tokens, and internal scrolling when necessary. Do not use Paper as a card around lists.
 - **Tabs** (`src/components/ui/tabs.tsx`): labelled links for navigation, or real buttons with the tab keyboard/ARIA pattern for in-page panels. Active text and the 2px rule use ink; other labels use muted. Never identify selection by colour alone.
-- **SectionHeading**: h2 in the section type role with the 2px ink rule, separated by token space. Optional adjacent actions remain secondary/quiet. Build it when the first issue needs it.
+- **SectionHeading**: h2 in the section type role with a full-width 2px ink rule, separated by token space. Optional adjacent actions remain secondary/quiet.
+
+## Record rows and links
+
+Home decisions and lessons use RowList: a semantic ul, hairline-separated rows without cards, radius or shadow. Each row contains a name, text, optional labelled figures and at most one action. The action aligns right when space permits and wraps below on narrow screens; text never clips or scrolls. Tables remain tables; a record's name is its link, with no separate Open column. Overview facts and Home closed-job figures use --facts-width (640px) to keep labels and values together.
+
+Within main, ordinary sentence links use accent colour and an underline. Linked record names share the NameCell/recordLink/row-list name style: accent, lead weight, a control-default (44px) tap height and the global focus ring. Tabs, stage chips, pagination and button-styled links retain their explicit control styles without underlines. Linked name text aligns with adjacent text; negative start margin retains its hover padding. At 390px, a linked name wraps within the initially visible table area; other columns may scroll. Measure every text rectangle, including populated Actions.
+
+Comparison findings are ordered row lists: an adjacent repeated title appears once above its group, and each unchanged sentence is in ink beside a quiet evidence button. Closest jobs are ranked hairline rows beneath a full-width SectionHeading. Comparison details is a plain disclosure. Use accent for actions; info colours belong to worded information badges. The token gate permits --focus only in outline declarations.
 
 ## Shell and responsive behavior
 
-The shell uses surface-subtle for the sidebar and canvas for the page. Product and firm names are at the top; labelled navigation follows. Navigation links use ink. Planned Knowledge and Customer Care link to their existing pages, remain muted, retain the 規劃中 / Planned tag, and participate in keyboard navigation. This Product Director decision replaces issue #69’s original non-link rule. Person, language, Settings and sign-out sit at the bottom. The current working area, including Settings, has aria-current. Viewer navigation preserves the existing capability-based omission of Clients.
+The shell uses surface-subtle for the sidebar and canvas for the page. Product and firm names are at the top; labelled navigation follows. Navigation links use ink. Planned Knowledge and Customer Care link to their existing pages, remain muted, retain the 規劃中 / Planned tag, and participate in keyboard navigation. Person, language, Settings and sign-out sit at the bottom. The current working area, including Settings, has aria-current. Viewer navigation preserves the existing capability-based omission of Clients.
 
 Below 900px a native details/summary Menu disclosure replaces the sidebar with a compact product/current-area top bar. Navigation, account and language links remain usable without JavaScript. At 390px, record tables scroll inside their labelled focusable regions; the page itself must not scroll horizontally. Do not turn the table into stacked cards. Keep a skip link and logical DOM/tab order. Keyboard access and zoom must not depend on hover.
 
@@ -136,17 +152,19 @@ The app serves committed WOFF2 files under `public/fonts/v1/`; unicode-range loa
 
 Measure a fresh Traditional Chinese Home visit with cache disabled. If font transfer exceeds 1.5 MB, stop and report the measured size and options before proceeding. Repository font size is not the first-visit transfer size.
 
-## Migration and the CSS gate
+## CSS gate
 
-The shell, record screens, comparison, evidence, review and Settings now use the shared tokens. The temporary legacy variables and baseline from part 1 have been removed. Font and shell-canvas changes from part 1 remain.
+The shell, record screens, comparison, evidence, review and Settings use the shared tokens. Legacy variables and raw-value baselines are not permitted.
 
 `npm run design:check` scans every CSS file under src; it also runs in `npm run check` and CI. Only `src/styles/tokens.css` may define raw values, and that file may contain only custom-property declarations. Other files are checked for literal colours (including colour functions and named colours), non-token font-size and border-radius declarations. Comments, strings and URLs are ignored; raw fallbacks are checked. `currentColor` inherits the token colour and `transparent` paints no colour, so neither is a raw colour violation.
 
 The design gate requires zero raw values in every CSS file and rejects legacy custom properties. There is no baseline or per-file allowance. Unit tests probe a raw colour and a legacy declaration.
 
-## Verification
+## Quotes and job workspaces
 
-Check both languages, owner and Viewer, keyboard focus, 390px overflow, filters and paging without JavaScript, empty/loading/error states, and actual font rendering/network origins. Keep existing quote/client access tests unchanged. Preserve issued PDF bytes. Hosted acceptance belongs to the Product Director via the Test site workflow; agents do not deploy or mutate hosted systems.
+Quote side controls use --quote-aside-width (320px) above 1100px. The comparison is a native closed disclosure above issue controls, opens for #quote-comparison, and shows at most five findings. It has no internal scrolling. Closed jobs offer no comparison run or refresh.
+
+Quote-reference block titles use lead type and category titles use body type at lead weight. The View all link follows the five visible findings, with a section gap before past-price references. Firm document fields, job address controls and job reader facts cap at --facts-width. Card document-number values do not break internally.
 
 The Quote editor uses Paper on a subtle backdrop, with an internally scrolling seven-column document and a totals footer outside that scroll region. Its settings column follows the paper below 1100px. Inputs are real controls with focus rings and row-order tabbing; all financial previews are server results. Suggestions appear once per pricing category, across every mapped section.
 
@@ -156,24 +174,7 @@ Quote item suggestions occupy a full-width table row immediately below the item.
 
 Home never lists Compare as a decision. Only an Issue quote row may show the quiet secondary comparison hint: never run or out of date, linking to `quote#quote-comparison` in the page language. Current comparisons show no hint. It adds no decision and is hidden without comparison and quote-amount access.
 
-## Design pass v2 shared components
 
-SectionHeading renders an h2 in the section type scale with a strong rule and optional actions. FactsList is a semantic dl: labels use muted table text, values use ink, numeric values align right with tabular figures. Adjacent equal labels may group into one dt above their unchanged values; this is used for answer-card findings. No facts are combined or rewritten.
+## Verification
 
-Dialog (step D) uses the native dialog element with showModal, a named heading, Escape dismissal, focus containment and return to the opener. It adds no new colour or shadow.
-
-Below 900 px, the shell uses a product/current-area top bar and a native details/summary Menu disclosure. Navigation, identity, languages, Settings and sign-out remain inside it, usable without JavaScript. The skip link is first. The desktop sidebar remains above that breakpoint. Tables scroll within their own named focusable regions.
-
-### Row lists and linked record names
-
-Home decisions and lessons use RowList: a semantic ul, hairline-separated rows without cards, radius or shadow. Each row contains a name, text, optional labelled figures and at most one action. The action aligns right when space permits and wraps below on narrow screens; text never clips or scrolls. Tables remain tables; a record's name is its link, with no separate Open column. These decisions from review 7205827683 await Product Director confirmation. Overview facts use the new --facts-width (640px) to keep labels and values together.
-
-Quote side controls use --quote-aside-width (320px) above 1100px. The comparison is a native closed disclosure above issue controls, opens for #quote-comparison, and shows at most five findings. It has no internal scrolling. Closed jobs offer no comparison run or refresh. Diagnostic timing details are a closed disclosure and durations use one decimal second. --radius-none is the zero-radius token for flat rows. There are no legacy tokens or CSS allowances.
-
-## Links and review-round refinements
-
-Within main, ordinary sentence links use accent colour and an underline. Linked record names share the NameCell/recordLink/row-list name style: accent, lead weight, a control-default (44px) tap height and the global focus ring. Tabs and button-styled links retain their explicit control styles. At 390px, a linked name wraps within the initially visible table area; other columns may scroll. Measure every text rectangle, including populated Actions.
-
-Comparison findings are ordered row lists: an adjacent repeated title appears once above its group, and each unchanged sentence is in ink beside a quiet evidence button. Closest jobs are ranked hairline rows beneath a full-width SectionHeading. Comparison details is a plain disclosure. Use accent for actions; info colours belong to worded information badges. The token gate permits --focus only in outline declarations.
-
-Dialogs close through Close or Escape, never a backdrop click. Quote-reference block titles use lead type and category titles use body type at lead weight. The View all link follows the five visible findings. Firm document fields, job address controls and job reader facts cap at --facts-width. Card document-number values do not break internally.
+Check both languages, owner and Viewer, keyboard focus, 390px overflow, filters and paging without JavaScript, empty/loading/error states, and actual font rendering/network origins. Preserve quote/client authorization and issued PDF bytes. Unknown, unassigned and other-organization jobs return the same not-found status and page on every tab, without job navigation. Unauthorized new-job routes also show not-found. Hosted acceptance belongs to the Product Director via the Test site workflow; agents do not deploy or mutate hosted systems.

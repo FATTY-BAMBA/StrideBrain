@@ -1,0 +1,526 @@
+[
+  {
+    "locale": "en",
+    "width": 1440,
+    "home": {
+      "factsWidth": 640,
+      "nameTextLeft": 288,
+      "factsLeft": 288
+    }
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "route": "",
+    "underlines": [
+      "none",
+      "none",
+      "none",
+      "none",
+      "none"
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "route": "/projects",
+    "underlines": [
+      "none",
+      "none",
+      "none",
+      "none",
+      "none"
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "selection": {
+      "headings": [
+        "Select",
+        "Job",
+        "Similarity score",
+        "Factors"
+      ],
+      "sectionWidth": 1112,
+      "ruleWidth": 1112
+    }
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "kind": "evidence",
+    "dismissalMs": 9,
+    "immediateFocus": {
+      "id": "",
+      "trigger": "evidence-synthesis-COORDINATION_FORECAST_ACTUAL_VARIANCE"
+    }
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "kind": "review",
+    "dismissalMs": 7,
+    "immediateFocus": {
+      "id": "internal-review-entry",
+      "trigger": null
+    }
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "key": "NO-SUCH-JOB",
+    "suffix": "",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "key": "PRJ-ACTIVE-003",
+    "suffix": "",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "key": "NO-SUCH-JOB",
+    "suffix": "/quote",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "key": "PRJ-ACTIVE-003",
+    "suffix": "/quote",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "key": "NO-SUCH-JOB",
+    "suffix": "/compare",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "key": "PRJ-ACTIVE-003",
+    "suffix": "/compare",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "key": "NO-SUCH-JOB",
+    "suffix": "/actions",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "key": "PRJ-ACTIVE-003",
+    "suffix": "/actions",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "home": {
+      "factsWidth": 358,
+      "nameTextLeft": 16,
+      "factsLeft": 16
+    }
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "route": "",
+    "underlines": [
+      "none",
+      "none",
+      "none",
+      "none",
+      "none"
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "route": "/projects",
+    "underlines": [
+      "none",
+      "none",
+      "none",
+      "none",
+      "none"
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "selection": {
+      "headings": [
+        "Select",
+        "Job",
+        "Similarity score",
+        "Factors"
+      ],
+      "sectionWidth": 358,
+      "ruleWidth": 358
+    }
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "kind": "evidence",
+    "dismissalMs": 11,
+    "immediateFocus": {
+      "id": "",
+      "trigger": "evidence-synthesis-COORDINATION_FORECAST_ACTUAL_VARIANCE"
+    }
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "kind": "review",
+    "dismissalMs": 9,
+    "immediateFocus": {
+      "id": "internal-review-entry",
+      "trigger": null
+    }
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "key": "NO-SUCH-JOB",
+    "suffix": "",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "key": "PRJ-ACTIVE-003",
+    "suffix": "",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "key": "NO-SUCH-JOB",
+    "suffix": "/quote",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "key": "PRJ-ACTIVE-003",
+    "suffix": "/quote",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "key": "NO-SUCH-JOB",
+    "suffix": "/compare",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "key": "PRJ-ACTIVE-003",
+    "suffix": "/compare",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "key": "NO-SUCH-JOB",
+    "suffix": "/actions",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "key": "PRJ-ACTIVE-003",
+    "suffix": "/actions",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "home": {
+      "factsWidth": 640,
+      "nameTextLeft": 288,
+      "factsLeft": 288
+    }
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "route": "",
+    "underlines": [
+      "none",
+      "none",
+      "none",
+      "none",
+      "none"
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "route": "/projects",
+    "underlines": [
+      "none",
+      "none",
+      "none",
+      "none",
+      "none"
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "selection": {
+      "headings": [
+        "選取",
+        "專案",
+        "相似度分數",
+        "比較因素"
+      ],
+      "sectionWidth": 1112,
+      "ruleWidth": 1112
+    }
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "kind": "evidence",
+    "dismissalMs": 8,
+    "immediateFocus": {
+      "id": "",
+      "trigger": "evidence-synthesis-COORDINATION_FORECAST_ACTUAL_VARIANCE"
+    }
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "kind": "review",
+    "dismissalMs": 7,
+    "immediateFocus": {
+      "id": "internal-review-entry",
+      "trigger": null
+    }
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "key": "NO-SUCH-JOB",
+    "suffix": "",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "key": "PRJ-ACTIVE-003",
+    "suffix": "",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "key": "NO-SUCH-JOB",
+    "suffix": "/quote",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "key": "PRJ-ACTIVE-003",
+    "suffix": "/quote",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "key": "NO-SUCH-JOB",
+    "suffix": "/compare",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "key": "PRJ-ACTIVE-003",
+    "suffix": "/compare",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "key": "NO-SUCH-JOB",
+    "suffix": "/actions",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "key": "PRJ-ACTIVE-003",
+    "suffix": "/actions",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "home": {
+      "factsWidth": 358,
+      "nameTextLeft": 16,
+      "factsLeft": 16
+    }
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "route": "",
+    "underlines": [
+      "none",
+      "none",
+      "none",
+      "none",
+      "none"
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "route": "/projects",
+    "underlines": [
+      "none",
+      "none",
+      "none",
+      "none",
+      "none"
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "selection": {
+      "headings": [
+        "選取",
+        "專案",
+        "相似度分數",
+        "比較因素"
+      ],
+      "sectionWidth": 358,
+      "ruleWidth": 358
+    }
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "kind": "evidence",
+    "dismissalMs": 9,
+    "immediateFocus": {
+      "id": "",
+      "trigger": "evidence-synthesis-COORDINATION_FORECAST_ACTUAL_VARIANCE"
+    }
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "kind": "review",
+    "dismissalMs": 9,
+    "immediateFocus": {
+      "id": "internal-review-entry",
+      "trigger": null
+    }
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "key": "NO-SUCH-JOB",
+    "suffix": "",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "key": "PRJ-ACTIVE-003",
+    "suffix": "",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "key": "NO-SUCH-JOB",
+    "suffix": "/quote",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "key": "PRJ-ACTIVE-003",
+    "suffix": "/quote",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "key": "NO-SUCH-JOB",
+    "suffix": "/compare",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "key": "PRJ-ACTIVE-003",
+    "suffix": "/compare",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "key": "NO-SUCH-JOB",
+    "suffix": "/actions",
+    "status": 404,
+    "samePage": true
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "key": "PRJ-ACTIVE-003",
+    "suffix": "/actions",
+    "status": 404,
+    "samePage": true
+  }
+]

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState, useTransition } from "react";
 import type { Route } from "next";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -36,6 +36,8 @@ export function ProjectActions({
   route: InternalReviewRouteState;
 }>) {
   const router = useRouter();
+  const [navigating, startTransition] = useTransition();
+  const [openingKey, setOpeningKey] = useState<string | null>(null);
   const copy = getInternalReviewCopy(locale);
   const receipt = receiptOutcome?.kind === "AVAILABLE" ? receiptOutcome.receipt : null;
   const close = useCallback(() => {
@@ -92,6 +94,24 @@ export function ProjectActions({
                 <Link
                   id={`action-${action.businessKey}`}
                   className={styles.rowLink}
+                  aria-busy={navigating && openingKey === action.businessKey}
+                  onNavigate={(event) => {
+                    event.preventDefault();
+                    if (navigating) return;
+                    setOpeningKey(action.businessKey);
+                    startTransition(() =>
+                      router.push(
+                        internalReviewHref(
+                          locale,
+                          projectKey,
+                          action,
+                          { actionKey: action.businessKey },
+                          "actions",
+                        ) as Route,
+                        { scroll: false },
+                      ),
+                    );
+                  }}
                   href={
                     internalReviewHref(
                       locale,
@@ -103,6 +123,9 @@ export function ProjectActions({
                   }
                 >
                   {action.title}
+                  {navigating && openingKey === action.businessKey ? (
+                    <span role="status"> · {copy.opening}</span>
+                  ) : null}
                 </Link>
                 <span className={styles.marker}>{copy.open}</span>
               </NameCell>
@@ -118,6 +141,7 @@ export function ProjectActions({
           title={receipt ? copy.receiptTitle : copy.receiptUnavailableTitle}
           description={receipt ? copy.receiptDescription : copy.receiptUnavailableDescription}
           onClose={close}
+          openerId={route.actionKey ? `action-${route.actionKey}` : "project-actions-title"}
           focusKey={receipt ? receipt.businessKey : "unavailable"}
         >
           {receipt ? <ActionReceipt receipt={receipt} locale={locale} /> : null}

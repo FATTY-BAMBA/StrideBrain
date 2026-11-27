@@ -188,6 +188,7 @@
   text-underline-offset: 0.18em;
 }
 .primary:disabled,
+.primary[aria-disabled="true"],
 .secondary:disabled {
   cursor: wait;
   opacity: 0.65;

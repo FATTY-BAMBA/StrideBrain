@@ -243,6 +243,7 @@
   gap: var(--space-4);
   min-height: var(--control-default);
   padding-inline: var(--space-8);
+  margin-inline-start: calc(-1 * var(--space-8));
   border-radius: var(--radius-control);
   color: var(--accent);
   font-weight: var(--weight-lead);
@@ -321,6 +322,7 @@
   flex-wrap: wrap;
 }
 .pagination a {
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
   min-height: var(--control-default);

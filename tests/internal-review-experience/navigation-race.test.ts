@@ -355,9 +355,13 @@ describe("QA-05 component navigation race regressions", () => {
     );
     expect(navigation.push).toHaveBeenCalledWith(canonical, { scroll: false });
     expect(container.querySelector("#review-title")).toBeNull();
-    expect(container.querySelector<HTMLButtonElement>("#internal-review-entry")!.disabled).toBe(
-      true,
-    );
+    const entry = container.querySelector<HTMLButtonElement>("#internal-review-entry")!;
+    expect(entry.getAttribute("aria-disabled")).toBe("true");
+    expect(entry.getAttribute("aria-busy")).toBe("true");
+    expect(entry.textContent).toContain("Preparing the review");
+    // It remains focusable so dismissal can return focus while URL navigation is pending.
+    entry.focus();
+    expect(document.activeElement).toBe(entry);
     await act(async () =>
       container.querySelector<HTMLButtonElement>("#internal-review-entry")!.click(),
     );

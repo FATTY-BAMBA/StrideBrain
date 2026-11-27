@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useLayoutEffect, useRef, type ReactNode } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import styles from "./ui.module.css";
 /** Native modal semantics keep background controls inert and contain keyboard focus. */
 export function Dialog({
@@ -10,24 +10,39 @@ export function Dialog({
   pending = false,
   focusKey,
   resolveInitialFocus,
+  resolveReturnFocus,
   className = "",
 }: {
-  children: ReactNode;
+  children: ReactNode | ((close: () => void) => ReactNode);
   labelledBy: string;
   describedBy?: string;
   onClose: () => void;
   pending?: boolean;
   focusKey?: string;
   resolveInitialFocus?: (panel: HTMLElement) => HTMLElement | null;
+  resolveReturnFocus?: (() => HTMLElement | null) | undefined;
   className?: string | undefined;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const key = focusKey ?? "";
+  const [dismissal, setDismissal] = useState({ key, closed: false });
+  // A different route selection starts a fresh dialog, including a revisited source.
+  if (dismissal.key !== key) setDismissal({ key, closed: false });
+  const hidden = dismissal.key === key && dismissal.closed;
+  const dismiss = useCallback(() => {
+    if (pending) return;
+    setDismissal({ key, closed: true });
+    onClose();
+  }, [key, onClose, pending]);
   const resolve = useRef(resolveInitialFocus);
+  const returnFocus = useRef(resolveReturnFocus);
   useEffect(() => {
     resolve.current = resolveInitialFocus;
-  }, [resolveInitialFocus]);
+    returnFocus.current = resolveReturnFocus;
+  }, [resolveInitialFocus, resolveReturnFocus]);
   useLayoutEffect(() => {
-    const panel = ref.current!;
+    const panel = ref.current;
+    if (!panel) return;
     const opener = document.activeElement as HTMLElement | null;
     const overflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -35,9 +50,10 @@ export function Dialog({
     return () => {
       panel.close();
       document.body.style.overflow = overflow;
-      if (opener?.isConnected) opener.focus();
+      const target = returnFocus.current?.() ?? opener;
+      if (target?.isConnected) target.focus();
     };
-  }, []);
+  }, [hidden]);
   useEffect(() => {
     const panel = ref.current;
     if (!panel) return;
@@ -48,9 +64,11 @@ export function Dialog({
     target?.focus({ preventScroll: true });
     if (target !== heading)
       target?.scrollIntoView?.({ behavior: "instant", block: "nearest", inline: "nearest" });
-  }, [focusKey]);
+  }, [focusKey, hidden]);
   useEffect(() => {
-    const panel = ref.current!;
+    const currentPanel = ref.current;
+    if (!currentPanel) return;
+    const panel = currentPanel;
     const heading = () => panel.querySelector<HTMLElement>("[tabindex='-1']");
     const controls = () =>
       [
@@ -69,7 +87,7 @@ export function Dialog({
       if (event.defaultPrevented || event.isComposing) return;
       if (event.key === "Escape") {
         event.preventDefault();
-        if (!pending) onClose();
+        dismiss();
         return;
       }
       if (event.key !== "Tab") return;
@@ -105,7 +123,8 @@ export function Dialog({
       document.removeEventListener("keydown", key);
       document.removeEventListener("focusin", focus);
     };
-  }, [onClose, pending]);
+  }, [dismiss, hidden]);
+  if (hidden) return null;
   return (
     <dialog
       ref={ref}
@@ -117,10 +136,10 @@ export function Dialog({
       aria-busy={pending}
       onCancel={(event) => {
         event.preventDefault();
-        if (!pending) onClose();
+        dismiss();
       }}
     >
-      {children}
+      {typeof children === "function" ? children(dismiss) : children}
     </dialog>
   );
 }

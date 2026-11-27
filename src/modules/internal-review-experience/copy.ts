@@ -5,6 +5,7 @@ const en = {
   entryDescription:
     "Review the verified findings, choose the wording and assignee, then explicitly create an internal review action.",
   preparing: "Preparing the review…",
+  opening: "Opening review…",
   reviewTitle: "Review internal review action",
   reviewDescription: "Review the evidence and uncertainty before creating this action.",
   title: "Title",
@@ -109,6 +110,7 @@ const zhTw: CopyShape<typeof en> = {
   entry: "建立內部審查事項",
   entryDescription: "檢視已查證的內容、選擇用語與承辦人，再明確確認建立內部審查事項。",
   preparing: "正在準備審查內容…",
+  opening: "正在開啟審查…",
   reviewTitle: "檢視內部審查事項",
   reviewDescription: "建立事項前，請先檢視資料依據與不確定性。",
   title: "標題",

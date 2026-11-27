@@ -21,6 +21,7 @@
   gap: var(--space-8);
 }
 .stages a {
+  text-decoration: none;
   display: flex;
   align-items: baseline;
   gap: var(--space-16);

@@ -5,6 +5,7 @@ import type { AuthorityState, ObservationType } from "@/modules/projects/domain/
 import type { Locale } from "@/modules/localization/config";
 
 export type EvidencePanelCopy = Readonly<{
+  loading: string;
   eyebrow: string;
   title: string;
   close: string;
@@ -115,6 +116,7 @@ const commonSubjectZh: Readonly<Record<string, string>> = Object.freeze({
 });
 
 const en: EvidencePanelCopy = {
+  loading: "Opening…",
   eyebrow: "EVIDENCE",
   title: "Evidence and calculation trace",
   close: "Close evidence",
@@ -291,6 +293,7 @@ const en: EvidencePanelCopy = {
 };
 
 const zhTw: EvidencePanelCopy = {
+  loading: "正在開啟…",
   eyebrow: "資料依據",
   title: "資料依據與計算過程",
   close: "關閉資料依據",

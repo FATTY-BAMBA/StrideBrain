@@ -1,0 +1,30 @@
+[
+  {
+    "locale": "en",
+    "width": 1440,
+    "overflow": false,
+    "active": "BODY",
+    "skipTop": -90.5
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "overflow": false,
+    "active": "BODY",
+    "skipTop": -90.5
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "overflow": false,
+    "active": "BODY",
+    "skipTop": -90.5
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "overflow": false,
+    "active": "BODY",
+    "skipTop": -90.5
+  }
+]

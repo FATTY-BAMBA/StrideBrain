@@ -141,7 +141,8 @@ suite("private quote routes through a running Next HTTP server", () => {
             expect(html).not.toMatch(/NT\$[0-9]/);
             continue;
           }
-          const denied = role === "viewer" && /\/clients(?:\/|$)/.test(path);
+          const denied =
+            role === "viewer" && (/\/clients(?:\/|$)/.test(path) || path.endsWith("/projects/new"));
           if (path.endsWith("/nothing-here") || denied) {
             expect(response.status, path).toBe(404);
             continue;
@@ -154,32 +155,50 @@ suite("private quote routes through a running Next HTTP server", () => {
     console.info("SB077_ROUTE_SWEEP", JSON.stringify(defects));
     expect(defects).toEqual([]);
   }, 240_000);
-  it("returns the same 404 for unknown, unassigned and other-organization overview addresses", async () => {
+  it("returns identical 404 pages without job tabs for unknown, unassigned and foreign jobs on every tab", async () => {
     const otherJob = await getPrismaClient().project.findFirstOrThrow({
       where: { organizationId: { not: "org_horizon" } },
     });
-    const otherClient = await getPrismaClient().client.findFirstOrThrow({
+    for (const locale of ["en", "zh-TW"]) {
+      let expected: string | undefined;
+      for (const segment of ["", "/quote", "/compare", "/actions"]) {
+        for (const key of ["NO-SUCH-JOB", otherJob.businessKey, "PRJ-ACTIVE-003"]) {
+          const response = await fetch(`${origin}/${locale}/projects/${key}${segment}`, {
+            headers: { cookie: viewerCookie, "user-agent": "Twitterbot" },
+            signal: AbortSignal.timeout(60_000),
+          });
+          expect(response.status, `${key}${segment}`).toBe(404);
+          const html = await response.text();
+          const visible = html.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]*>/g, "");
+          expect(visible).not.toContain(key);
+          expect(html).not.toMatch(/aria-label="(?:Project workspace navigation|專案工作區導覽)"/);
+          expected ??= visible;
+          expect(visible).toBe(expected);
+        }
+      }
+      const response = await fetch(`${origin}/${locale}/projects/new`, {
+        headers: { cookie: viewerCookie, "user-agent": "Twitterbot" },
+      });
+      expect(response.status).toBe(404);
+      expect(await response.text()).not.toContain('id="job-draft-text"');
+    }
+  }, 180_000);
+  it("keeps unknown and foreign client addresses non-disclosing", async () => {
+    const client = await getPrismaClient().client.findFirstOrThrow({
       where: { organizationId: { not: "org_horizon" } },
     });
-    for (const locale of ["en", "zh-TW"]) {
-      for (const [path, cookie] of [
-        [`/${locale}/projects/NO-SUCH-JOB`, ownerCookie],
-        [`/${locale}/projects/${otherJob.businessKey}`, ownerCookie],
-        [`/${locale}/projects/PRJ-ACTIVE-003`, viewerCookie],
-        [`/${locale}/clients/NO-SUCH-CLIENT`, ownerCookie],
-        [`/${locale}/clients/${otherClient.businessKey}`, ownerCookie],
-      ]) {
-        const response = await fetch(`${origin}${path}`, {
-          headers: { cookie: cookie!, "user-agent": "Twitterbot" },
-          signal: AbortSignal.timeout(60_000),
+    for (const locale of ["en", "zh-TW"])
+      for (const key of ["NO-SUCH-CLIENT", client.businessKey]) {
+        const response = await fetch(`${origin}/${locale}/clients/${key}`, {
+          headers: { cookie: ownerCookie, "user-agent": "Twitterbot" },
         });
-        expect(response.status, path).toBe(404);
+        expect(response.status).toBe(404);
         const html = await response.text();
-        const visible = html.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]*>/g, "");
-        expect(visible).not.toContain(path!.split("/").at(-1));
+        expect(
+          html.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]*>/g, ""),
+        ).not.toContain(key);
       }
-    }
-  }, 90_000);
+  });
   const comparison = (cookie = ownerCookie, body?: string) =>
     fetch(`${origin}/api/projects/${projectKey}/quote-comparison?locale=zh-TW`, {
       method: "POST",

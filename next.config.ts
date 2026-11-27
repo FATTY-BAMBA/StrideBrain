@@ -7,9 +7,7 @@ const nextConfig: NextConfig = {
   typedRoutes: true,
   // Largest signed issue token plus the measured 230-byte React action envelope.
   // Regression/measurement: tests/quote-document/request-size.test.ts.
-  experimental: {
-    serverActions: { bodySizeLimit: MAX_QUOTE_ISSUE_TOKEN_LENGTH + 230 },
-  },
+  experimental: { serverActions: { bodySizeLimit: MAX_QUOTE_ISSUE_TOKEN_LENGTH + 230 } },
   serverExternalPackages: ["pdfkit"],
   outputFileTracingIncludes: { "/api/quotes/*/pdf": ["./assets/fonts/**"] },
   async headers() {

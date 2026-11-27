@@ -185,22 +185,24 @@ export function HomeDeskScreen({
                     }
                   >
                     {lesson ? (
-                      <FactsList
-                        rows={[
-                          {
-                            key: "quote",
-                            label: copy.quote,
-                            value: formatMoney(lesson.quoteBeforeTax, lesson.currency),
-                            numeric: true,
-                          },
-                          {
-                            key: "actual",
-                            label: copy.actual,
-                            value: formatMoney(lesson.actualCost, lesson.currency),
-                            numeric: true,
-                          },
-                        ]}
-                      />
+                      <div className={ui.factsWidth}>
+                        <FactsList
+                          rows={[
+                            {
+                              key: "quote",
+                              label: copy.quote,
+                              value: formatMoney(lesson.quoteBeforeTax, lesson.currency),
+                              numeric: true,
+                            },
+                            {
+                              key: "actual",
+                              label: copy.actual,
+                              value: formatMoney(lesson.actualCost, lesson.currency),
+                              numeric: true,
+                            },
+                          ]}
+                        />
+                      </div>
                     ) : null}
                     {lesson ? (
                       <>

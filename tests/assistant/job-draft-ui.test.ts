@@ -4,6 +4,7 @@ import { beforeEach, afterEach, it, expect, vi } from "vitest";
 import { createElement, act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { NewJobForm } from "@/components/projects/new-job-form";
+import formStyles from "@/components/projects/job-form.module.css";
 import { DraftableNewJob } from "@/components/projects/draftable-new-job";
 import { HomeChat } from "@/components/assistant/home-chat";
 import type { JobDraft } from "@/modules/assistant/domain/job-draft";
@@ -239,3 +240,15 @@ it("collapses old draft cards to their original request, preserves edits and can
     ["en", "Second original job request"],
   ]);
 });
+
+it.each(["en", "zh-TW"] as const)(
+  "offers Fill form as secondary and Create as primary (%s)",
+  async (locale) => {
+    await act(() =>
+      root.render(createElement(DraftableNewJob, { locale, initialForm: seed, enabled: true })),
+    );
+    const forms = host.querySelectorAll("form");
+    expect(forms[0]!.querySelector("button")!.className).toBe(formStyles.secondary);
+    expect(forms[1]!.querySelector('button[type="submit"]')!.className).toBe(formStyles.primary);
+  },
+);

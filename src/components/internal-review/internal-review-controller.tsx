@@ -71,6 +71,7 @@ export function InternalReviewController({
     null,
   );
   const [requestPending, setRequestPending] = useState(false);
+  const [closing, setClosing] = useState(false);
   const [navigating, startTransition] = useTransition();
   const preparing = useRef(false);
   const pending = requestPending || navigating;
@@ -91,6 +92,7 @@ export function InternalReviewController({
     const url = new URL(window.location.href);
     for (const key of INTERNAL_REVIEW_QUERY_KEYS) url.searchParams.delete(key);
     url.searchParams.set("reviewReturn", "internal-review-entry");
+    setClosing(true);
     setPrepared(null);
     setCreated(null);
     setFailure(null);
@@ -112,6 +114,7 @@ export function InternalReviewController({
   async function prepare() {
     if (pending || preparing.current) return;
     preparing.current = true;
+    setClosing(false);
     setRequestPending(true);
     setFailure(null);
     let awaitingProposalRoute = false;
@@ -191,10 +194,10 @@ export function InternalReviewController({
             className={styles.primary}
             type="button"
             onClick={prepare}
-            disabled={pending}
-            aria-busy={pending}
+            aria-disabled={pending}
+            aria-busy={pending && !closing}
           >
-            {pending ? copy.preparing : copy.entry}
+            {pending && !closing ? copy.preparing : copy.entry}
           </button>
         </section>
       ) : null}

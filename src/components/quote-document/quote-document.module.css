@@ -285,3 +285,7 @@
   line-height: var(--leading-body);
   font-weight: var(--weight-lead);
 }
+
+.referenceSection {
+  margin-top: var(--space-24);
+}

@@ -3,6 +3,7 @@
 import { getValueCopy } from "@/modules/demo-value/copy";
 import { StaleComparisonNotice } from "@/components/comparisons/stale-comparison-notice";
 import { useCallback, useRef, type ReactNode } from "react";
+import { NavigationButton } from "@/components/ui/navigation-button";
 import { Dialog } from "@/components/ui/dialog";
 import { evidenceSelectionParams } from "@/modules/evidence-panel/route-state";
 
@@ -19,6 +20,7 @@ import styles from "./evidence-panel.module.css";
 
 type EvidencePanelProps = Readonly<{
   closed?: boolean;
+  returnFocusId?: string | undefined;
   outcome: EvidencePanelOutcome;
   selection?: EvidencePanelSelection | null | undefined;
   locale: Locale;
@@ -80,6 +82,7 @@ function PanelFrame({
   onClose,
   hasParent,
   resolveInitialFocus,
+  returnFocusId,
   children,
 }: Readonly<{
   locale: Locale;
@@ -88,6 +91,7 @@ function PanelFrame({
   state?: string | undefined;
   onClose: () => void;
   hasParent: boolean;
+  returnFocusId?: string | undefined;
   resolveInitialFocus: (panel: HTMLElement) => HTMLElement | null;
   children: ReactNode;
 }>) {
@@ -99,20 +103,31 @@ function PanelFrame({
       onClose={onClose}
       focusKey={focusKey}
       resolveInitialFocus={resolveInitialFocus}
+      resolveReturnFocus={() =>
+        !hasParent && returnFocusId
+          ? document.querySelector<HTMLElement>(
+              `[data-evidence-trigger-id="${CSS.escape(returnFocusId)}"]`,
+            )
+          : null
+      }
     >
-      <header className={styles.header}>
-        <p className={styles.eyebrow}>{getValueCopy(locale).support}</p>
-        <button className={styles.closeButton} onClick={onClose} type="button">
-          {hasParent ? copy.back : copy.close}
-        </button>
-      </header>
-      <div className={styles.heading}>
-        <h2 id="evidence-panel-title" tabIndex={-1}>
-          {heading.title}
-        </h2>
-        {heading.description ? <p>{heading.description}</p> : null}
-      </div>
-      {children}
+      {(dismiss) => (
+        <>
+          <header className={styles.header}>
+            <p className={styles.eyebrow}>{getValueCopy(locale).support}</p>
+            <button className={styles.closeButton} onClick={dismiss} type="button">
+              {hasParent ? copy.back : copy.close}
+            </button>
+          </header>
+          <div className={styles.heading}>
+            <h2 id="evidence-panel-title" tabIndex={-1}>
+              {heading.title}
+            </h2>
+            {heading.description ? <p>{heading.description}</p> : null}
+          </div>
+          {children}
+        </>
+      )}
     </Dialog>
   );
 }
@@ -227,13 +242,14 @@ function SourceCard({
 
       <footer className={styles.sourceActions}>
         {mode !== "SOURCE" ? (
-          <button
+          <NavigationButton
+            pendingLabel={copy.loading}
             type="button"
             data-panel-trigger={selectionKey(source.sourceSelection)}
             onClick={() => onNavigate(source.sourceSelection)}
           >
             {copy.inspectSource}
-          </button>
+          </NavigationButton>
         ) : null}
         {source.conflictKeys.map((conflictKey) => {
           const selection: EvidencePanelSelection = {
@@ -243,14 +259,15 @@ function SourceCard({
             sourceKey: source.sourceKey,
           };
           return (
-            <button
+            <NavigationButton
+              pendingLabel={copy.loading}
               key={conflictKey}
               type="button"
               data-panel-trigger={selectionKey(selection)}
               onClick={() => onNavigate(selection)}
             >
               {copy.inspectConflict}
-            </button>
+            </NavigationButton>
           );
         })}
       </footer>
@@ -473,6 +490,7 @@ export function EvidencePanel({
   outcome,
   selection,
   locale,
+  returnFocusId,
   onClose,
   onNavigate,
 }: EvidencePanelProps) {
@@ -543,6 +561,7 @@ export function EvidencePanel({
       state={outcome.kind === "READY" ? undefined : panelStateText(outcome)}
       onClose={closeLayer}
       hasParent={!!parent}
+      returnFocusId={returnFocusId}
       resolveInitialFocus={resolveInitialFocus}
     >
       {outcome.kind === "READY" ? (

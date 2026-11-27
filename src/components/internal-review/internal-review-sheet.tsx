@@ -1,4 +1,5 @@
 "use client";
+import { NavigationButton } from "@/components/ui/navigation-button";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import type { Route } from "next";
@@ -358,7 +359,8 @@ export function InternalReviewSheet({
         <ul>
           {proposal.evidenceLinks.map((link, index) => (
             <li key={link.claimKey}>
-              <button
+              <NavigationButton
+                pendingLabel={copy.preparing}
                 className={styles.textButton}
                 type="button"
                 disabled={pending}
@@ -366,7 +368,7 @@ export function InternalReviewSheet({
                 onClick={() => onEvidence(link.claimKey, `review-evidence-${index}`)}
               >
                 {link.label}
-              </button>
+              </NavigationButton>
             </li>
           ))}
         </ul>
@@ -457,7 +459,8 @@ export function InternalReviewSheet({
           </div>
         ) : null}
         {error("dueDate")}
-        <button
+        <NavigationButton
+          pendingLabel={copy.preparing}
           className={styles.textButton}
           type="button"
           disabled={pending}
@@ -466,7 +469,7 @@ export function InternalReviewSheet({
           }}
         >
           {copy.clearDate}
-        </button>
+        </NavigationButton>
       </div>
       <dl className={styles.referenceGrid}>
         <div>

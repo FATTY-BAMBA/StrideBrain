@@ -41,7 +41,9 @@ export function QuoteComparisonPanel({
     result?.kind === "CONTEXT_INCOMPLETE" && result.missingFields.includes("COMMERCIAL_CATEGORIES")
       ? copy.missingCategories
       : result
-        ? copy[result.kind]
+        ? closed && result.kind === "NOT_RUN"
+          ? copy.closedNotRun
+          : copy[result.kind]
         : copy.loading;
   useEffect(() => {
     let active = true;
@@ -126,7 +128,7 @@ export function QuoteComparisonPanel({
         >
           {copy.open}
         </Link>
-        {children}
+        <div className={styles.referenceSection}>{children}</div>
       </details>
     </section>
   );

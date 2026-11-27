@@ -447,7 +447,8 @@ describe.each(["en", "zh-TW"] as const)("F-08 modal hierarchy (%s)", (language) 
         expect(selectionMode()).toBe("CLAIM");
         expect((document.activeElement as HTMLElement).dataset.panelTrigger).toBe(id);
         expect(document.activeElement).toBe(sourceTrigger());
-        expect(dialog()).toBe(boundary);
+        // Back dismisses immediately, then mounts the parent with focus restored.
+        expect(dialog().hasAttribute("open")).toBe(true);
         // The existing route builder preserves comparison and draft selectors.
         const params = new URLSearchParams(window.location.search);
         expect(params.get("run")).toBe("run-focus");

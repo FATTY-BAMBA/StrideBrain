@@ -19,15 +19,12 @@ export default async function NewProjectPage({ params }: { params: Promise<{ loc
     context.firmLists &&
     context.capabilities.has("project:create") &&
     context.capabilities.has("project:read");
+  if (!allowed) notFound();
   const clients = allowed
     ? await createProjectWriteServices().listClients.execute({ ...context, locale })
     : null;
   return (
-    <FoundationPage
-      eyebrow={copy.newJob}
-      title={copy.newJob}
-      description={allowed ? copy.description : copy.unavailable}
-    >
+    <FoundationPage eyebrow={copy.newJob} title={copy.newJob} description={copy.description}>
       {allowed && clients?.kind === "AVAILABLE" ? (
         <DraftableNewJob
           locale={locale}
@@ -41,7 +38,7 @@ export default async function NewProjectPage({ params }: { params: Promise<{ loc
           }}
         />
       ) : (
-        <p role="status">{allowed ? copy.clientsUnavailable : copy.unavailable}</p>
+        <p role="status">{copy.clientsUnavailable}</p>
       )}
     </FoundationPage>
   );

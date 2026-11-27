@@ -4,7 +4,8 @@ import { designSystemCopy } from "@/modules/localization/design-system";
 
 import { PageHeader } from "@/components/ui/page-header";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Button } from "@/components/ui/button";
+import { NavigationButton } from "@/components/ui/navigation-button";
+import ui from "@/components/ui/ui.module.css";
 import { RowList } from "@/components/ui/row-list";
 import { Table } from "@/components/ui/table";
 import { getValueCopy } from "@/modules/demo-value/copy";
@@ -111,7 +112,8 @@ export function ComparisonCell({
       data-state={cell.state}
     >
       {cell.claimKey ? (
-        <button
+        <NavigationButton
+          pendingLabel={copy.openingEvidence}
           className={styles.evidenceTrigger}
           data-evidence-trigger-id={triggerId}
           type="button"
@@ -119,7 +121,7 @@ export function ComparisonCell({
           aria-label={`${copy.table.evidenceState}: ${[cell.observationLabel, cell.primary, cell.secondary].filter(Boolean).join(" · ")}`}
         >
           {content}
-        </button>
+        </NavigationButton>
       ) : (
         content
       )}
@@ -219,7 +221,8 @@ function ProjectCard({
                       className={`${styles.factorItem} ${factor.state === "UNKNOWN" ? styles.factorItemUnknown : ""}`}
                       key={`${factor.factorKey}-${factor.valueLabel}`}
                     >
-                      <button
+                      <NavigationButton
+                        pendingLabel={copy.openingEvidence}
                         className={styles.factorEvidenceTrigger}
                         data-evidence-trigger-id={`evidence-factor-${card.projectKey}-${factor.factorKey}`}
                         type="button"
@@ -233,7 +236,7 @@ function ProjectCard({
                       >
                         <span>{factor.label}</span>
                         <strong>{factor.valueLabel}</strong>
-                      </button>
+                      </NavigationButton>
                     </li>
                   ))}
                 </ul>
@@ -469,14 +472,15 @@ function ComparisonResultExperience({
                 >
                   <p>{item.body}</p>
                   {item.claimKey ? (
-                    <Button
-                      variant="quiet"
+                    <NavigationButton
+                      pendingLabel={copy.openingEvidence}
+                      className={`${ui.button} ${ui.quiet}`}
                       data-claim-key={item.claimKey}
                       data-evidence-trigger-id={`evidence-synthesis-${item.key}`}
                       onClick={() => openClaim(item.claimKey!, `evidence-synthesis-${item.key}`)}
                     >
                       {valueCopy.seeEvidence}
-                    </Button>
+                    </NavigationButton>
                   ) : null}
                 </li>
               ))}
@@ -527,10 +531,10 @@ function ComparisonResultExperience({
         </dl>
       </details>
       <section className={styles.section} aria-labelledby="comparable-projects-title">
+        <p className={styles.eyebrow}>{copy.heroQuestion}</p>
+        <SectionHeading id="comparable-projects-title">{copy.selection.title}</SectionHeading>
         <div className={styles.sectionHeader}>
           <div className={styles.sectionHeaderText}>
-            <p className={styles.eyebrow}>{copy.heroQuestion}</p>
-            <SectionHeading id="comparable-projects-title">{copy.selection.title}</SectionHeading>
             <p>{copy.selection.description}</p>
           </div>
           <div className={styles.selectionStatus} aria-live="polite">
@@ -544,10 +548,10 @@ function ComparisonResultExperience({
         <Table
           caption={designSystemCopy(view.locale).selectableJobs}
           headings={[
-            { label: copy.selection.selectedCount },
-            { label: copy.table.title },
-            { label: copy.card.score, numeric: true },
-            { label: copy.card.inspectFactors },
+            { label: designSystemCopy(view.locale).select },
+            { label: designSystemCopy(view.locale).job },
+            { label: designSystemCopy(view.locale).similarityScore, numeric: true },
+            { label: designSystemCopy(view.locale).factors },
           ]}
         >
           {view.cards.map((card) => (
@@ -669,6 +673,7 @@ function ComparisonResultExperience({
         <EvidencePanel
           closed={closed}
           outcome={evidencePanel}
+          returnFocusId={evidenceReturnId}
           selection={evidenceSelection}
           locale={view.locale}
           onClose={closeEvidence}
