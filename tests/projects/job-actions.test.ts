@@ -116,11 +116,10 @@ describe("Create job screen and direct server action", () => {
     mocks.context.mockResolvedValue(
       jobContext({ role: "VIEWER", capabilities: roleBundle("VIEWER") }),
     );
-    const html = renderToStaticMarkup(
-      await NewProjectPage({ params: Promise.resolve({ locale: "en" }) }),
+    await expect(NewProjectPage({ params: Promise.resolve({ locale: "en" }) })).rejects.toThrow(
+      "NOT_FOUND",
     );
-    expect(html).toContain(jobsCopy("en").unavailable);
-    expect(html).not.toContain("<form");
+    expect(mocks.listClients).not.toHaveBeenCalled();
     expect(
       await createProjectAction(
         {},

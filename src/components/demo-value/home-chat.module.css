@@ -1,9 +1,9 @@
 .chat {
   display: grid;
   gap: 14px;
-  border: 1px solid var(--legacy-line);
-  border-radius: var(--legacy-radius-md);
-  background: var(--legacy-surface);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-control);
+  background: var(--canvas);
   padding: 18px;
 }
 .chatThread {
@@ -25,18 +25,18 @@
   display: grid;
   gap: 8px;
   max-width: 82%;
-  border-radius: 16px;
+  border-radius: var(--radius-control);
   padding: 13px 15px;
 }
 .assistantMessage {
   justify-self: start;
-  background: var(--legacy-surface-subtle);
-  border: 1px solid var(--legacy-line);
+  background: var(--surface-subtle);
+  border: 1px solid var(--line-control);
 }
 .assistantMessage p,
 .assistantMessage li {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: var(--text-body);
   line-height: 1.55;
 }
 .userMessage {
@@ -45,7 +45,7 @@
   color: var(--accent-strong);
 }
 .userMessage p {
-  font-size: 0.92rem;
+  font-size: var(--text-body);
   line-height: 1.5;
 }
 .assistantMessage ul {
@@ -56,7 +56,7 @@
   width: fit-content;
   color: var(--accent-strong);
   font-weight: 750;
-  font-size: 0.85rem;
+  font-size: var(--text-body);
 }
 .chatComposer {
   display: grid;
@@ -67,18 +67,18 @@
 .chatComposer textarea {
   width: 100%;
   resize: vertical;
-  min-height: 48px;
+  min-height: calc(var(--leading-body) * 3em + var(--space-24));
   max-height: 160px;
-  border: 1px solid var(--legacy-line);
-  border-radius: var(--legacy-radius-sm);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-control);
   padding: 12px 14px;
   font: inherit;
-  background: var(--legacy-surface-subtle);
+  background: var(--surface-subtle);
 }
 .chatComposer button {
   min-height: 48px;
   border: 0;
-  border-radius: var(--legacy-radius-sm);
+  border-radius: var(--radius-control);
   padding: 0 18px;
   background: var(--accent-soft);
   color: var(--accent-strong);
@@ -92,7 +92,7 @@
 }
 .thinking {
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: var(--text-body);
 }
 
 .chatSources {
@@ -102,7 +102,7 @@
 }
 .chatSourcesLabel {
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: var(--text-body);
   font-weight: 700;
 }
 .citationList {
@@ -110,9 +110,9 @@
   gap: 7px;
 }
 .citation {
-  border: 1px solid var(--legacy-line);
-  border-radius: 10px;
-  background: #fff;
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-control);
+  background: var(--surface-subtle);
 }
 .citation summary {
   display: flex;
@@ -121,7 +121,7 @@
   cursor: pointer;
   list-style: none;
   padding: 9px 11px;
-  font-size: 0.82rem;
+  font-size: var(--text-body);
   font-weight: 700;
 }
 .citation summary::-webkit-details-marker {
@@ -134,7 +134,7 @@
 .citationPreview {
   display: grid;
   gap: 9px;
-  border-top: 1px solid var(--legacy-line);
+  border-top: 1px solid var(--line-control);
   padding: 11px;
 }
 .citationMeta,
@@ -145,16 +145,16 @@
 }
 .citationMeta span,
 .citationConditions span {
-  border-radius: 999px;
-  background: var(--legacy-surface-subtle);
+  border-radius: var(--radius-control);
+  background: var(--surface-subtle);
   padding: 4px 7px;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: var(--text-body);
 }
 .citationValue {
   color: var(--accent-strong) !important;
   font-weight: 700;
-  font-size: 0.84rem !important;
+  font-size: var(--text-body);
 }
 .citationFields {
   display: grid;
@@ -167,13 +167,13 @@
 }
 .citationFields dt {
   color: var(--muted);
-  font-size: 0.7rem;
+  font-size: var(--text-body);
   font-weight: 700;
 }
 .citationFields dd {
   margin: 2px 0 0;
   overflow-wrap: anywhere;
-  font-size: 0.8rem;
+  font-size: var(--text-body);
   line-height: 1.4;
 }
 @media (max-width: 700px) {
@@ -208,10 +208,10 @@
 .followUps button {
   min-height: 44px;
   padding: 8px 12px;
-  border: 1px solid #b7c1bc;
-  border-radius: 8px;
-  background: #fff;
-  color: #24483e;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--surface-subtle);
+  color: var(--accent-strong);
   text-align: start;
   cursor: pointer;
 }
@@ -273,7 +273,7 @@
 .savedDraftNotice {
   grid-column: 1 / -1;
   color: var(--muted);
-  font-size: var(--text-caption);
+  font-size: var(--text-body);
   line-height: var(--leading-caption);
 }
 

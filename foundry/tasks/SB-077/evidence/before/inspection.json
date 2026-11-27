@@ -1,0 +1,7082 @@
+[
+  {
+    "role": "owner",
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "home",
+    "status": 200,
+    "file": "owner-zh-TW-home-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "+ 新增專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "開啟比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "核發報價 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "開啟比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "核發報價 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "開啟比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "核發報價 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "開啟比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "核發報價 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "詢問1",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "確認1",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "施工2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "結案24",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "TEXTAREA",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "提問",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "南京品牌體驗中心",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "內湖科技旗艦店",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "松山門市改裝",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "跳至主要內容StrideBrain禾序空間設計首頁專案報價客戶知識庫規劃中客戶服務規劃中陳柏宇繁中/EN設定登出虛構示範資料 — 無真實客戶資料今天有哪些事需要您？+ 新增專案今天需要您決定進行中設計",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "projects",
+    "status": 200,
+    "file": "owner-zh-TW-projects-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "建立專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "詢問1",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "確認1",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "施工2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "結案24",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "進行中設計專案01PRJ-ACTIVE-001進行中開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "需求探索設計報價審查已核准採購施工交付",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "河岸展示工作室J-2611-R7K3進行中開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "需求探索設計報價審查已核准採購施工交付",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "信義旗艦店裝修PRJ-XINYI-026進行中開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "需求探索設計報價審查已核准採購施工交付",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "進行中設計專案02PRJ-ACTIVE-002進行中開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "需求探索設計報價審查已核准採購施工交付",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "進行中設計專案03PRJ-ACTIVE-003進行中開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "需求探索設計報價審查已核准採購施工交付",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "進行中設計專案04PRJ-ACTIVE-004進行中開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "需求探索設計報價審查已核准採購施工交付",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "板橋概念店PRJ-BANQIAO-015開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "大安精品展示中心PRJ-DAAN-016開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案01PRJ-HIST-001開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案02PRJ-HIST-002開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案03PRJ-HIST-003開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案04PRJ-HIST-004開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案05PRJ-HIST-005開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案06PRJ-HIST-006開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案07PRJ-HIST-007開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案08PRJ-HIST-008開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案09PRJ-HIST-009開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案10PRJ-HIST-010開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案11PRJ-HIST-011開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案12PRJ-HIST-012開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案13PRJ-HIST-013開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案14PRJ-HIST-014開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案15PRJ-HIST-015開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案16PRJ-HIST-016開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案17PRJ-HIST-017開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案18PRJ-HIST-018開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "南京品牌體驗中心PRJ-NANJING-023開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "內湖科技旗艦店PRJ-NEIHU-021開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "松山門市改裝PRJ-SONGSHAN-020開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "中山生活概念店PRJ-ZHONGSHAN-018開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "new-job",
+    "status": 200,
+    "file": "owner-zh-TW-new-job-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "請選擇零售旗艦店零售門市改裝零售概念店零售展示店",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "請選擇臺北市新北市桃園市臺中市臺南市高雄市基隆市新竹市嘉義市新竹縣苗栗縣彰化縣南投縣雲林縣嘉義縣屏東縣宜蘭縣花蓮縣臺東縣澎湖縣金門縣連江縣其他地區",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "請選擇建立新客戶選擇既有客戶",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "請選擇星序零售台灣 (CLIENT-01)禾序客戶02 (CLIENT-02)禾序客戶03 (CLIENT-03)禾序客戶04 (CLIENT-04)禾序客戶05 (CLIENT-05)禾序客戶06 ",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "建立專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "返回專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "跳至主要內容StrideBrain禾序空間設計首頁專案報價客戶知識庫規劃中客戶服務規劃中陳柏宇繁中/EN設定登出虛構示範資料 — 無真實客戶資料建立專案建立專案填寫專案資料與範疇。新專案將顯示於「報價",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "overview",
+    "status": 200,
+    "file": "owner-zh-TW-overview-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "總覽",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "行動事項",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "詢問這個專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "與過往專案比較 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SUMMARY",
+        "text": "已核對實際成本",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "我們以前做過類似的案子嗎？搜尋已授權的歷史專案、說明最接近的原因，並用可信任的歷史依據比較目前報價。",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "儲存工程地址",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "儲存",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "actions",
+    "status": 200,
+    "file": "owner-zh-TW-actions-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "總覽",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "行動事項",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "詢問這個專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "跳至主要內容StrideBrain禾序空間設計首頁專案報價客戶知識庫規劃中客戶服務規劃中陳柏宇繁中/EN設定登出虛構示範資料 — 無真實客戶資料總覽報價比較行動事項詢問這個專案詢問 StrideBra",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "decisions",
+    "status": 200,
+    "file": "owner-zh-TW-decisions-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "← 返回首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "開啟比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "核發報價 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "開啟比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "核發報價 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "開啟比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "核發報價 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "開啟比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "核發報價 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "home",
+    "status": 200,
+    "file": "owner-zh-TW-home-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "+ 新增專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "開啟比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "核發報價 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "開啟比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "核發報價 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "開啟比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "核發報價 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "開啟比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "核發報價 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "詢問1",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "確認1",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "施工2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "結案24",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "TEXTAREA",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "提問",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "南京品牌體驗中心",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "內湖科技旗艦店",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "松山門市改裝",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "跳至主要內容StrideBrain禾序空間設計首頁專案報價客戶知識庫規劃中客戶服務規劃中陳柏宇繁中/EN設定登出虛構示範資料 — 無真實客戶資料今天有哪些事需要您？+ 新增專案今天需要您決定進行中設計",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "projects",
+    "status": 200,
+    "file": "owner-zh-TW-projects-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "建立專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "詢問1",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "確認1",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "施工2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "結案24",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "進行中設計專案01PRJ-ACTIVE-001進行中開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "需求探索設計報價審查已核准採購施工交付",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "河岸展示工作室J-2611-R7K3進行中開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "需求探索設計報價審查已核准採購施工交付",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "信義旗艦店裝修PRJ-XINYI-026進行中開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "需求探索設計報價審查已核准採購施工交付",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "進行中設計專案02PRJ-ACTIVE-002進行中開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "需求探索設計報價審查已核准採購施工交付",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "進行中設計專案03PRJ-ACTIVE-003進行中開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "需求探索設計報價審查已核准採購施工交付",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "進行中設計專案04PRJ-ACTIVE-004進行中開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "需求探索設計報價審查已核准採購施工交付",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "板橋概念店PRJ-BANQIAO-015開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "大安精品展示中心PRJ-DAAN-016開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案01PRJ-HIST-001開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案02PRJ-HIST-002開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案03PRJ-HIST-003開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案04PRJ-HIST-004開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案05PRJ-HIST-005開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案06PRJ-HIST-006開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案07PRJ-HIST-007開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案08PRJ-HIST-008開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案09PRJ-HIST-009開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案10PRJ-HIST-010開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案11PRJ-HIST-011開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案12PRJ-HIST-012開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案13PRJ-HIST-013開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案14PRJ-HIST-014開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案15PRJ-HIST-015開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案16PRJ-HIST-016開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案17PRJ-HIST-017開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "已完工辦公專案18PRJ-HIST-018開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "南京品牌體驗中心PRJ-NANJING-023開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "內湖科技旗艦店PRJ-NEIHU-021開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "松山門市改裝PRJ-SONGSHAN-020開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "中山生活概念店PRJ-ZHONGSHAN-018開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "new-job",
+    "status": 200,
+    "file": "owner-zh-TW-new-job-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "請選擇零售旗艦店零售門市改裝零售概念店零售展示店",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "請選擇臺北市新北市桃園市臺中市臺南市高雄市基隆市新竹市嘉義市新竹縣苗栗縣彰化縣南投縣雲林縣嘉義縣屏東縣宜蘭縣花蓮縣臺東縣澎湖縣金門縣連江縣其他地區",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "請選擇建立新客戶選擇既有客戶",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "請選擇星序零售台灣 (CLIENT-01)禾序客戶02 (CLIENT-02)禾序客戶03 (CLIENT-03)禾序客戶04 (CLIENT-04)禾序客戶05 (CLIENT-05)禾序客戶06 ",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "建立專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "返回專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "跳至主要內容StrideBrain禾序空間設計首頁專案報價客戶知識庫規劃中客戶服務規劃中陳柏宇繁中/EN設定登出虛構示範資料 — 無真實客戶資料建立專案建立專案填寫專案資料與範疇。新專案將顯示於「報價",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "overview",
+    "status": 200,
+    "file": "owner-zh-TW-overview-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "總覽",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "行動事項",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "詢問這個專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "與過往專案比較 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SUMMARY",
+        "text": "已核對實際成本",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "我們以前做過類似的案子嗎？搜尋已授權的歷史專案、說明最接近的原因，並用可信任的歷史依據比較目前報價。",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "儲存工程地址",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "儲存",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "actions",
+    "status": 200,
+    "file": "owner-zh-TW-actions-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "總覽",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "行動事項",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "詢問這個專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "跳至主要內容StrideBrain禾序空間設計首頁專案報價客戶知識庫規劃中客戶服務規劃中陳柏宇繁中/EN設定登出虛構示範資料 — 無真實客戶資料總覽報價比較行動事項詢問這個專案詢問 StrideBra",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "decisions",
+    "status": 200,
+    "file": "owner-zh-TW-decisions-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "← 返回首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "開啟比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "核發報價 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "開啟比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "核發報價 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "開啟比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "核發報價 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "開啟比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "核發報價 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "en",
+    "width": 1440,
+    "screen": "home",
+    "status": 200,
+    "file": "owner-en-home-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Clients",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "+ New job",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Open comparison",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Issue quote →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Open comparison",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Issue quote →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Open comparison",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Issue quote →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Open comparison",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Issue quote →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Inquiry1",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quote2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Confirmed1",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Work2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Closed24",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "TEXTAREA",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Ask",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Nanjing Brand Experience Center",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Neihu Tech Flagship",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Songshan Retail Renewal",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "Skip to main contentStrideBrainHorizon AtelierHomeProjectsQuotesClientsKnowledgePlannedCustomer care",
+        "outline": "none",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "en",
+    "width": 1440,
+    "screen": "projects",
+    "status": 200,
+    "file": "owner-en-projects-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Clients",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Create a job",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Inquiry1",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quote2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Confirmed1",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Work2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Closed24",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Active Design Project 01PRJ-ACTIVE-001ActiveOpen project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "DiscoveryDesignQuote reviewApprovedProcurementConstructionHandover",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Riverside Display StudioJ-2611-R7K3ActiveOpen project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "DiscoveryDesignQuote reviewApprovedProcurementConstructionHandover",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Xinyi Flagship RenovationPRJ-XINYI-026ActiveOpen project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "DiscoveryDesignQuote reviewApprovedProcurementConstructionHandover",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Active Design Project 02PRJ-ACTIVE-002ActiveOpen project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "DiscoveryDesignQuote reviewApprovedProcurementConstructionHandover",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Active Design Project 03PRJ-ACTIVE-003ActiveOpen project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "DiscoveryDesignQuote reviewApprovedProcurementConstructionHandover",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Active Design Project 04PRJ-ACTIVE-004ActiveOpen project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "DiscoveryDesignQuote reviewApprovedProcurementConstructionHandover",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Banqiao Concept StorePRJ-BANQIAO-015Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Daan Premium ShowroomPRJ-DAAN-016Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 01PRJ-HIST-001Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 02PRJ-HIST-002Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 03PRJ-HIST-003Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 04PRJ-HIST-004Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 05PRJ-HIST-005Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 06PRJ-HIST-006Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 07PRJ-HIST-007Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 08PRJ-HIST-008Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 09PRJ-HIST-009Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 10PRJ-HIST-010Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 11PRJ-HIST-011Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 12PRJ-HIST-012Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 13PRJ-HIST-013Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 14PRJ-HIST-014Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 15PRJ-HIST-015Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 16PRJ-HIST-016Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 17PRJ-HIST-017Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 18PRJ-HIST-018Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Nanjing Brand Experience CenterPRJ-NANJING-023Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Neihu Tech FlagshipPRJ-NEIHU-021Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Songshan Retail RenewalPRJ-SONGSHAN-020Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Zhongshan Lifestyle StorePRJ-ZHONGSHAN-018Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "en",
+    "width": 1440,
+    "screen": "new-job",
+    "status": 200,
+    "file": "owner-en-new-job-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Clients",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "Choose an optionRetail flagshipRetail renovationRetail concept storeRetail showroom",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "Choose an optionTaipei CityNew Taipei CityTaoyuan CityTaichung CityTainan CityKaohsiung CityKeelung ",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "Choose an optionCreate a new clientChoose an existing client",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "Choose an optionAster Retail Taiwan (CLIENT-01)Horizon Client 02 (CLIENT-02)Horizon Client 03 (CLIEN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Create job",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Back to jobs",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "Skip to main contentStrideBrainHorizon AtelierHomeProjectsQuotesClientsKnowledgePlannedCustomer care",
+        "outline": "none",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "en",
+    "width": 1440,
+    "screen": "overview",
+    "status": 200,
+    "file": "owner-en-overview-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Clients",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Overview",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quote",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Compare",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Actions",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Ask about this job",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Compare with past work →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SUMMARY",
+        "text": "Reconciled actual cost",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Have we done something like this before?Search the authorized project history, explain the strongest",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Save site address",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Save",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "en",
+    "width": 1440,
+    "screen": "actions",
+    "status": 200,
+    "file": "owner-en-actions-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Clients",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Overview",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quote",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Compare",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Actions",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Ask about this job",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "Skip to main contentStrideBrainHorizon AtelierHomeProjectsQuotesClientsKnowledgePlannedCustomer care",
+        "outline": "none",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "en",
+    "width": 1440,
+    "screen": "decisions",
+    "status": 200,
+    "file": "owner-en-decisions-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Clients",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "← Back to Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Open comparison",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Issue quote →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Open comparison",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Issue quote →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Open comparison",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Issue quote →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Open comparison",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Issue quote →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "en",
+    "width": 390,
+    "screen": "home",
+    "status": 200,
+    "file": "owner-en-home-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Clients",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "+ New job",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Open comparison",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Issue quote →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Open comparison",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Issue quote →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Open comparison",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Issue quote →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Open comparison",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Issue quote →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Inquiry1",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quote2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Confirmed1",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Work2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Closed24",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "TEXTAREA",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Ask",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Nanjing Brand Experience Center",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Neihu Tech Flagship",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Songshan Retail Renewal",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "Skip to main contentStrideBrainHorizon AtelierHomeProjectsQuotesClientsKnowledgePlannedCustomer care",
+        "outline": "none",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "en",
+    "width": 390,
+    "screen": "projects",
+    "status": 200,
+    "file": "owner-en-projects-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Clients",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Create a job",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Inquiry1",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quote2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Confirmed1",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Work2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Closed24",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Active Design Project 01PRJ-ACTIVE-001ActiveOpen project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "DiscoveryDesignQuote reviewApprovedProcurementConstructionHandover",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Riverside Display StudioJ-2611-R7K3ActiveOpen project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "DiscoveryDesignQuote reviewApprovedProcurementConstructionHandover",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Xinyi Flagship RenovationPRJ-XINYI-026ActiveOpen project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "DiscoveryDesignQuote reviewApprovedProcurementConstructionHandover",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Active Design Project 02PRJ-ACTIVE-002ActiveOpen project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "DiscoveryDesignQuote reviewApprovedProcurementConstructionHandover",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Active Design Project 03PRJ-ACTIVE-003ActiveOpen project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "DiscoveryDesignQuote reviewApprovedProcurementConstructionHandover",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Active Design Project 04PRJ-ACTIVE-004ActiveOpen project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "DiscoveryDesignQuote reviewApprovedProcurementConstructionHandover",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Banqiao Concept StorePRJ-BANQIAO-015Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Daan Premium ShowroomPRJ-DAAN-016Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 01PRJ-HIST-001Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 02PRJ-HIST-002Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 03PRJ-HIST-003Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 04PRJ-HIST-004Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 05PRJ-HIST-005Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 06PRJ-HIST-006Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 07PRJ-HIST-007Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 08PRJ-HIST-008Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 09PRJ-HIST-009Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 10PRJ-HIST-010Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 11PRJ-HIST-011Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 12PRJ-HIST-012Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 13PRJ-HIST-013Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 14PRJ-HIST-014Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 15PRJ-HIST-015Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 16PRJ-HIST-016Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 17PRJ-HIST-017Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Completed Workplace Project 18PRJ-HIST-018Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Nanjing Brand Experience CenterPRJ-NANJING-023Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Neihu Tech FlagshipPRJ-NEIHU-021Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Songshan Retail RenewalPRJ-SONGSHAN-020Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Zhongshan Lifestyle StorePRJ-ZHONGSHAN-018Open project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "en",
+    "width": 390,
+    "screen": "new-job",
+    "status": 200,
+    "file": "owner-en-new-job-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Clients",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "Choose an optionRetail flagshipRetail renovationRetail concept storeRetail showroom",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "Choose an optionTaipei CityNew Taipei CityTaoyuan CityTaichung CityTainan CityKaohsiung CityKeelung ",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "Choose an optionCreate a new clientChoose an existing client",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SELECT",
+        "text": "Choose an optionAster Retail Taiwan (CLIENT-01)Horizon Client 02 (CLIENT-02)Horizon Client 03 (CLIEN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Create job",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Back to jobs",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "Skip to main contentStrideBrainHorizon AtelierHomeProjectsQuotesClientsKnowledgePlannedCustomer care",
+        "outline": "none",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "en",
+    "width": 390,
+    "screen": "overview",
+    "status": 200,
+    "file": "owner-en-overview-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Clients",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Overview",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quote",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Compare",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Actions",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Ask about this job",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Compare with past work →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SUMMARY",
+        "text": "Reconciled actual cost",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Have we done something like this before?Search the authorized project history, explain the strongest",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Save site address",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Save",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "en",
+    "width": 390,
+    "screen": "actions",
+    "status": 200,
+    "file": "owner-en-actions-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Clients",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Overview",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quote",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Compare",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Actions",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Ask about this job",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "Skip to main contentStrideBrainHorizon AtelierHomeProjectsQuotesClientsKnowledgePlannedCustomer care",
+        "outline": "none",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "owner",
+    "locale": "en",
+    "width": 390,
+    "screen": "decisions",
+    "status": 200,
+    "file": "owner-en-decisions-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Clients",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "← Back to Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Open comparison",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Issue quote →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Open comparison",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Issue quote →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Open comparison",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Issue quote →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Open comparison",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Issue quote →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "home",
+    "status": 200,
+    "file": "viewer-zh-TW-home-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "詢問0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "確認0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "施工0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "結案0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "TEXTAREA",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "提問",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "跳至主要內容StrideBrain禾序空間設計首頁專案報價知識庫規劃中客戶服務規劃中吳凱繁中/EN設定登出虛構示範資料 — 無真實客戶資料今天有哪些事需要您？今天需要您決定目前沒有需要您決定的事項。各",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "projects",
+    "status": 200,
+    "file": "viewer-zh-TW-projects-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "詢問0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "確認0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "施工0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "結案0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "河岸展示工作室J-2611-R7K3進行中開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "信義旗艦店裝修PRJ-XINYI-026進行中開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "overview",
+    "status": 200,
+    "file": "viewer-zh-TW-overview-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "總覽",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "行動事項",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "詢問這個專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "與過往專案比較 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SUMMARY",
+        "text": "已核對實際成本",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "我們以前做過類似的案子嗎？搜尋已授權的歷史專案、說明最接近的原因，並用可信任的歷史依據比較目前報價。",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "跳至主要內容StrideBrain禾序空間設計首頁專案報價知識庫規劃中客戶服務規劃中吳凱繁中/EN設定登出虛構示範資料 — 無真實客戶資料總覽報價比較行動事項詢問這個專案詢問 StrideBrain提",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "actions",
+    "status": 200,
+    "file": "viewer-zh-TW-actions-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "總覽",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "行動事項",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "詢問這個專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "decisions",
+    "status": 200,
+    "file": "viewer-zh-TW-decisions-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "← 返回首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "跳至主要內容StrideBrain禾序空間設計首頁專案報價知識庫規劃中客戶服務規劃中吳凱繁中/EN設定登出虛構示範資料 — 無真實客戶資料← 返回首頁全部待決事項目前沒有需要您決定的事項。self._",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "home",
+    "status": 200,
+    "file": "viewer-zh-TW-home-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "詢問0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "確認0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "施工0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "結案0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "TEXTAREA",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "提問",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "跳至主要內容StrideBrain禾序空間設計首頁專案報價知識庫規劃中客戶服務規劃中吳凱繁中/EN設定登出虛構示範資料 — 無真實客戶資料今天有哪些事需要您？今天需要您決定目前沒有需要您決定的事項。各",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "projects",
+    "status": 200,
+    "file": "viewer-zh-TW-projects-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "詢問0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "確認0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "施工0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "結案0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "河岸展示工作室J-2611-R7K3進行中開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "信義旗艦店裝修PRJ-XINYI-026進行中開啟專案 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "overview",
+    "status": 200,
+    "file": "viewer-zh-TW-overview-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "總覽",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "行動事項",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "詢問這個專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "與過往專案比較 →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SUMMARY",
+        "text": "已核對實際成本",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "我們以前做過類似的案子嗎？搜尋已授權的歷史專案、說明最接近的原因，並用可信任的歷史依據比較目前報價。",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "跳至主要內容StrideBrain禾序空間設計首頁專案報價知識庫規劃中客戶服務規劃中吳凱繁中/EN設定登出虛構示範資料 — 無真實客戶資料總覽報價比較行動事項詢問這個專案詢問 StrideBrain提",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "actions",
+    "status": 200,
+    "file": "viewer-zh-TW-actions-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "總覽",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "比較",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "行動事項",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "詢問這個專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "decisions",
+    "status": 200,
+    "file": "viewer-zh-TW-decisions-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "專案",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "報價",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "知識庫規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "客戶服務規劃中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "設定",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "登出",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "← 返回首頁",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "跳至主要內容StrideBrain禾序空間設計首頁專案報價知識庫規劃中客戶服務規劃中吳凱繁中/EN設定登出虛構示範資料 — 無真實客戶資料← 返回首頁全部待決事項目前沒有需要您決定的事項。self._",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "跳至主要內容",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "en",
+    "width": 1440,
+    "screen": "home",
+    "status": 200,
+    "file": "viewer-en-home-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Inquiry0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quote2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Confirmed0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Work0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Closed0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "TEXTAREA",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Ask",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "Skip to main contentStrideBrainHorizon AtelierHomeProjectsQuotesKnowledgePlannedCustomer carePlanned",
+        "outline": "none",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "en",
+    "width": 1440,
+    "screen": "projects",
+    "status": 200,
+    "file": "viewer-en-projects-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Inquiry0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quote2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Confirmed0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Work0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Closed0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Riverside Display StudioJ-2611-R7K3ActiveOpen project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Xinyi Flagship RenovationPRJ-XINYI-026ActiveOpen project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "en",
+    "width": 1440,
+    "screen": "overview",
+    "status": 200,
+    "file": "viewer-en-overview-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Overview",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quote",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Compare",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Actions",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Ask about this job",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Compare with past work →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SUMMARY",
+        "text": "Reconciled actual cost",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Have we done something like this before?Search the authorized project history, explain the strongest",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "Skip to main contentStrideBrainHorizon AtelierHomeProjectsQuotesKnowledgePlannedCustomer carePlanned",
+        "outline": "none",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "en",
+    "width": 1440,
+    "screen": "actions",
+    "status": 200,
+    "file": "viewer-en-actions-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Overview",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quote",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Compare",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Actions",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Ask about this job",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "en",
+    "width": 1440,
+    "screen": "decisions",
+    "status": 200,
+    "file": "viewer-en-decisions-1440.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "← Back to Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "Skip to main contentStrideBrainHorizon AtelierHomeProjectsQuotesKnowledgePlannedCustomer carePlanned",
+        "outline": "none",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "en",
+    "width": 390,
+    "screen": "home",
+    "status": 200,
+    "file": "viewer-en-home-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Inquiry0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quote2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Confirmed0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Work0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Closed0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "TEXTAREA",
+        "text": "",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Ask",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "Skip to main contentStrideBrainHorizon AtelierHomeProjectsQuotesKnowledgePlannedCustomer carePlanned",
+        "outline": "none",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "en",
+    "width": 390,
+    "screen": "projects",
+    "status": 200,
+    "file": "viewer-en-projects-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Inquiry0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quote2",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Confirmed0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Work0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Closed0",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Riverside Display StudioJ-2611-R7K3ActiveOpen project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Xinyi Flagship RenovationPRJ-XINYI-026ActiveOpen project →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "en",
+    "width": 390,
+    "screen": "overview",
+    "status": 200,
+    "file": "viewer-en-overview-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Overview",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quote",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Compare",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Actions",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Ask about this job",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Compare with past work →",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "SUMMARY",
+        "text": "Reconciled actual cost",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Have we done something like this before?Search the authorized project history, explain the strongest",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "Skip to main contentStrideBrainHorizon AtelierHomeProjectsQuotesKnowledgePlannedCustomer carePlanned",
+        "outline": "none",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "en",
+    "width": 390,
+    "screen": "actions",
+    "status": 200,
+    "file": "viewer-en-actions-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Overview",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quote",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Compare",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Actions",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Ask about this job",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  },
+  {
+    "role": "viewer",
+    "locale": "en",
+    "width": 390,
+    "screen": "decisions",
+    "status": 200,
+    "file": "viewer-en-decisions-390.png",
+    "focus": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Projects",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Quotes",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "KnowledgePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Customer carePlanned",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "繁中",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "EN",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "Settings",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "A",
+        "text": "← Back to Home",
+        "outline": "solid",
+        "width": "3px"
+      },
+      {
+        "tag": "NEXTJS-PORTAL",
+        "text": "",
+        "outline": "none",
+        "width": "3px"
+      },
+      {
+        "tag": "BODY",
+        "text": "Skip to main contentStrideBrainHorizon AtelierHomeProjectsQuotesKnowledgePlannedCustomer carePlanned",
+        "outline": "none",
+        "width": "3px"
+      }
+    ],
+    "overflow": false,
+    "h1": 1
+  }
+]

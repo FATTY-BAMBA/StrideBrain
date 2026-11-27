@@ -1,0 +1,516 @@
+[
+  {
+    "role": "owner",
+    "path": "/",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/stridebrain",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/preview",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/knowledge",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/decisions",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/customer-care",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/ai-data",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/projects",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/projects/new",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/quotes",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/clients",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/quotes/prices",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/projects/PRJ-XINYI-026/compare",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/settings",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/projects/PRJ-XINYI-026/quote",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/projects/PRJ-XINYI-026",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/projects/PRJ-XINYI-026/actions",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/projects/NO-SUCH-JOB",
+    "status": 404,
+    "defects": [
+      "H1",
+      "MAIN"
+    ]
+  },
+  {
+    "role": "owner",
+    "path": "/zh-TW/clients/NO-SUCH-CLIENT",
+    "status": 404,
+    "defects": [
+      "H1",
+      "MAIN"
+    ]
+  },
+  {
+    "role": "owner",
+    "path": "/",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/stridebrain",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/preview",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/knowledge",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/decisions",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/customer-care",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/ai-data",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/projects",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/projects/new",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/quotes",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/clients",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/quotes/prices",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/projects/PRJ-XINYI-026/compare",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/settings",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/projects/PRJ-XINYI-026/quote",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/projects/PRJ-XINYI-026",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/projects/PRJ-XINYI-026/actions",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "owner",
+    "path": "/en/projects/NO-SUCH-JOB",
+    "status": 404,
+    "defects": [
+      "H1",
+      "MAIN"
+    ]
+  },
+  {
+    "role": "owner",
+    "path": "/en/clients/NO-SUCH-CLIENT",
+    "status": 404,
+    "defects": [
+      "H1",
+      "MAIN"
+    ]
+  },
+  {
+    "role": "viewer",
+    "path": "/",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/stridebrain",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/preview",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/knowledge",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/decisions",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/customer-care",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/ai-data",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/projects",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/projects/new",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/quotes",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/clients",
+    "status": 404,
+    "defects": [
+      "H1",
+      "MAIN"
+    ]
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/quotes/prices",
+    "status": 200,
+    "defects": [
+      "H1"
+    ]
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/projects/PRJ-XINYI-026/compare",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/settings",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/projects/PRJ-XINYI-026/quote",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/projects/PRJ-XINYI-026",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/projects/PRJ-XINYI-026/actions",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/projects/NO-SUCH-JOB",
+    "status": 404,
+    "defects": [
+      "H1",
+      "MAIN"
+    ]
+  },
+  {
+    "role": "viewer",
+    "path": "/zh-TW/clients/NO-SUCH-CLIENT",
+    "status": 404,
+    "defects": [
+      "H1",
+      "MAIN"
+    ]
+  },
+  {
+    "role": "viewer",
+    "path": "/",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/en",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/en/stridebrain",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/en/preview",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/en/knowledge",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/en/decisions",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/en/customer-care",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/en/ai-data",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/en/projects",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/en/projects/new",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/en/quotes",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/en/clients",
+    "status": 404,
+    "defects": [
+      "H1",
+      "MAIN"
+    ]
+  },
+  {
+    "role": "viewer",
+    "path": "/en/quotes/prices",
+    "status": 200,
+    "defects": [
+      "H1"
+    ]
+  },
+  {
+    "role": "viewer",
+    "path": "/en/projects/PRJ-XINYI-026/compare",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/en/settings",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/en/projects/PRJ-XINYI-026/quote",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/en/projects/PRJ-XINYI-026",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/en/projects/PRJ-XINYI-026/actions",
+    "status": 200,
+    "defects": []
+  },
+  {
+    "role": "viewer",
+    "path": "/en/projects/NO-SUCH-JOB",
+    "status": 404,
+    "defects": [
+      "H1",
+      "MAIN"
+    ]
+  },
+  {
+    "role": "viewer",
+    "path": "/en/clients/NO-SUCH-CLIENT",
+    "status": 404,
+    "defects": [
+      "H1",
+      "MAIN"
+    ]
+  }
+]

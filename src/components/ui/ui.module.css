@@ -234,16 +234,23 @@
   text-align: right;
   white-space: nowrap;
 }
+.nameCell a,
+.rowBody > strong > a,
+.recordLink,
 .rowLink {
   display: inline-flex;
   align-items: center;
   gap: var(--space-4);
   min-height: var(--control-default);
   padding-inline: var(--space-8);
+  margin-inline-start: calc(-1 * var(--space-8));
   border-radius: var(--radius-control);
   color: var(--accent);
   font-weight: var(--weight-lead);
 }
+.nameCell a:hover,
+.rowBody > strong > a:hover,
+.recordLink:hover,
 .rowLink:hover {
   background: var(--accent-soft);
   color: var(--accent-strong);
@@ -315,6 +322,7 @@
   flex-wrap: wrap;
 }
 .pagination a {
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
   min-height: var(--control-default);
@@ -348,6 +356,7 @@
   border-bottom: var(--rule-hairline) solid var(--line);
 }
 .tabs a {
+  text-decoration: none;
   min-height: var(--control-default);
   padding: var(--space-8) var(--space-4);
   color: var(--muted);
@@ -361,4 +370,121 @@
 .tabs a:focus-visible {
   outline: var(--focus-width) solid var(--focus);
   outline-offset: var(--focus-offset);
+}
+
+.sectionHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-16);
+  padding-bottom: var(--space-12);
+  border-bottom: var(--rule-section) solid var(--ink);
+}
+.sectionHeading h2 {
+  margin: 0;
+  font-size: var(--text-section);
+  line-height: var(--leading-section);
+  font-weight: var(--weight-section);
+}
+.facts {
+  margin: 0;
+  font-size: var(--text-table);
+  line-height: var(--leading-table);
+}
+.fact,
+.factGroup {
+  padding-block: var(--space-12);
+  border-bottom: var(--rule-hairline) solid var(--line);
+}
+.fact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: var(--space-16);
+}
+.facts dt {
+  color: var(--muted);
+}
+.facts dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.factGroup {
+  display: grid;
+  gap: var(--space-12);
+}
+.facts .numeric {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.rowList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.recordRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+  padding-block: var(--space-16);
+  border-bottom: var(--rule-hairline) solid var(--line);
+}
+.rowBody {
+  flex: 1 1 var(--facts-width);
+  min-width: 0;
+  overflow-wrap: anywhere;
+  display: grid;
+  gap: var(--space-8);
+}
+.recordAction {
+  align-self: center;
+}
+.recordRow p {
+  margin: 0;
+}
+.cardFacts .fact {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+.cardFacts .fact dd {
+  text-align: end;
+}
+.cardFacts .factGroup dd {
+  text-align: start;
+}
+
+.dialog {
+  width: min(var(--facts-width), calc(100vw - var(--space-32)));
+  max-height: calc(100dvh - var(--space-32));
+  margin: auto;
+  padding: var(--space-24);
+  border: var(--rule-hairline) solid var(--line-strong);
+  border-radius: var(--radius-control);
+  color: var(--ink);
+  background: var(--canvas);
+  overflow: auto;
+}
+.dialog::backdrop {
+  background: var(--neutral-ink);
+  opacity: 0.6;
+}
+.dialog :focus-visible {
+  outline: var(--focus-width) solid var(--focus);
+  outline-offset: var(--focus-offset);
+}
+
+.factsWidth {
+  width: 100%;
+  max-width: var(--facts-width);
+}
+@media (max-width: 700px) {
+  .nameCell a {
+    max-width: calc(100vw - var(--space-48));
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .nameCell:not(:first-child) a {
+    max-width: calc((100vw - var(--space-48)) / 2);
+  }
 }

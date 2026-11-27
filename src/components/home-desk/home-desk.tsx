@@ -13,6 +13,11 @@ import {
 } from "@/modules/home-desk/presentation";
 import { HomeChat } from "@/components/assistant/home-chat";
 import { StageCounts } from "./stage-counts";
+import { PageHeader } from "@/components/ui/page-header";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { RowList, RecordRow } from "@/components/ui/row-list";
+import { FactsList } from "@/components/ui/facts-list";
+import ui from "@/components/ui/ui.module.css";
 import styles from "./home-desk.module.css";
 
 export function DecisionList({
@@ -32,13 +37,21 @@ export function DecisionList({
       {!items.length && !desk.decisionsUnavailable && !desk.findingsNotices.length ? (
         <p className={styles.muted}>{copy.noDecisions}</p>
       ) : null}
-      <ul className={styles.decisions}>
-        {items.map((item) => {
-          const view = decisionPresentation(item, locale, desk.catalog.workCategories);
-          return (
-            <li key={item.key}>
-              <div>
-                <strong>{item.project.name}</strong>
+      {items.length ? (
+        <RowList>
+          {items.map((item) => {
+            const view = decisionPresentation(item, locale, desk.catalog.workCategories);
+            return (
+              <RecordRow
+                key={item.key}
+                name={item.project.name}
+                action={
+                  <Link className={ui.rowLink} href={view.href as Route}>
+                    {view.label}
+                    <span aria-hidden="true"> →</span>
+                  </Link>
+                }
+              >
                 <p>{view.sentence}</p>
                 {view.moreFindings ? <p className={styles.muted}>{view.moreFindings}</p> : null}
                 {item.kind === "ISSUE_QUOTE" && item.comparisonHint ? (
@@ -56,15 +69,11 @@ export function DecisionList({
                     </Link>
                   </p>
                 ) : null}
-              </div>
-              <Link className={styles.secondary} href={view.href as Route}>
-                {view.label}
-                <span aria-hidden="true"> →</span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+              </RecordRow>
+            );
+          })}
+        </RowList>
+      ) : null}
       {!complete && desk.decisions.length > 5 ? (
         <Link className={styles.more} href={`/${locale}/decisions` as Route}>
           {copy.all.replace("{count}", String(desk.decisions.length))} →
@@ -99,7 +108,7 @@ export function HomeDeskScreen({
   if (outcome.kind !== "AVAILABLE")
     return (
       <section className={styles.page}>
-        <h1>{complete ? copy.decisions : copy.title}</h1>
+        <PageHeader context="StrideBrain" title={complete ? copy.decisions : copy.title} />
         <p role="status">{copy.unavailable}</p>
       </section>
     );
@@ -107,23 +116,27 @@ export function HomeDeskScreen({
   if (complete)
     return (
       <section className={styles.page}>
+        <PageHeader context="StrideBrain" title={copy.decisions} />
         <Link href={`/${locale}` as Route}>← {copy.back}</Link>
-        <h1>{copy.decisions}</h1>
         <DecisionList locale={locale} desk={desk} complete />
       </section>
     );
   return (
     <div className={styles.page}>
-      <header className={styles.heading}>
-        <h1>{copy.title}</h1>
-        {desk.canCreate ? (
-          <section className={styles.start} aria-label={copy.start}>
-            <Link className={styles.primary} href={`/${locale}/projects/new` as Route}>
+      <PageHeader
+        context="StrideBrain"
+        title={copy.title}
+        actions={
+          desk.canCreate ? (
+            <Link
+              className={`${ui.button} ${ui.primary}`}
+              href={`/${locale}/projects/new` as Route}
+            >
               + {copy.newJob}
             </Link>
-          </section>
-        ) : null}
-      </header>
+          ) : undefined
+        }
+      />
       {!desk.projects.length ? (
         <>
           <p>{copy.empty}</p>
@@ -132,11 +145,11 @@ export function HomeDeskScreen({
       ) : (
         <>
           <section className={styles.section} aria-labelledby="needs-title">
-            <h2 id="needs-title">{copy.needs}</h2>
+            <SectionHeading id="needs-title">{copy.needs}</SectionHeading>
             <DecisionList locale={locale} desk={desk} />
           </section>
           <section className={styles.section} aria-labelledby="stages-title">
-            <h2 id="stages-title">{copy.stages}</h2>
+            <SectionHeading id="stages-title">{copy.stages}</SectionHeading>
             <StageCounts locale={locale} counts={desk.stageCounts} />
           </section>
           <HomeChat
@@ -150,52 +163,68 @@ export function HomeDeskScreen({
             }
           />
           <section className={styles.section} aria-labelledby="learned-title">
-            <h2 id="learned-title">{copy.learned}</h2>
+            <SectionHeading id="learned-title">{copy.learned}</SectionHeading>
             {desk.closedJobsUnavailable ? (
               <p role="status">{copy.lessonsUnavailable}</p>
             ) : !desk.closedJobs.length ? (
               <p className={styles.muted}>{copy.noLessons}</p>
             ) : null}
-            <div className={styles.lessons}>
-              {desk.closedJobs.map(({ project, lesson, costDifference, financialState }) => (
-                <article key={project.businessKey}>
-                  <h3>
-                    <Link
-                      href={
-                        `/${locale}/projects/${encodeURIComponent(project.businessKey)}` as Route
-                      }
-                    >
-                      {project.name}
-                    </Link>
-                  </h3>
-                  {lesson ? (
-                    <>
-                      <dl>
-                        <div>
-                          <dt>{copy.quote}</dt>
-                          <dd>{formatMoney(lesson.quoteBeforeTax, lesson.currency)}</dd>
-                        </div>
-                        <div>
-                          <dt>{copy.actual}</dt>
-                          <dd>{formatMoney(lesson.actualCost, lesson.currency)}</dd>
-                        </div>
-                      </dl>
-                      {costDifference ? (
-                        <p
-                          className={styles.costDifference}
-                          data-direction={costDifference.direction}
-                        >
-                          {closedDifferenceText(costDifference, lesson.currency, locale)}
-                        </p>
-                      ) : null}
-                      <p>{closedLessonText(lesson, locale, outcome.catalog.workCategories)}</p>
-                    </>
-                  ) : financialState === "UNAVAILABLE" ? (
-                    <p>{copy.figuresUnavailable}</p>
-                  ) : null}
-                </article>
-              ))}
-            </div>
+            {desk.closedJobs.length ? (
+              <RowList>
+                {desk.closedJobs.map(({ project, lesson, costDifference, financialState }) => (
+                  <RecordRow
+                    key={project.businessKey}
+                    name={
+                      <Link
+                        href={
+                          `/${locale}/projects/${encodeURIComponent(project.businessKey)}` as Route
+                        }
+                      >
+                        {project.name}
+                      </Link>
+                    }
+                  >
+                    {lesson ? (
+                      <div className={ui.factsWidth}>
+                        <FactsList
+                          rows={[
+                            {
+                              key: "quote",
+                              label: copy.quote,
+                              value: formatMoney(lesson.quoteBeforeTax, lesson.currency),
+                              numeric: true,
+                            },
+                            {
+                              key: "actual",
+                              label: copy.actual,
+                              value: formatMoney(lesson.actualCost, lesson.currency),
+                              numeric: true,
+                            },
+                          ]}
+                        />
+                      </div>
+                    ) : null}
+                    {lesson ? (
+                      <>
+                        {costDifference ? (
+                          <p
+                            className={styles.costDifference}
+                            data-direction={costDifference.direction}
+                          >
+                            {closedDifferenceText(costDifference, lesson.currency, locale)}
+                          </p>
+                        ) : null}
+                        <p>{closedLessonText(lesson, locale, outcome.catalog.workCategories)}</p>
+                      </>
+                    ) : financialState === "UNAVAILABLE" ? (
+                      copy.figuresUnavailable
+                    ) : (
+                      "—"
+                    )}
+                  </RecordRow>
+                ))}
+              </RowList>
+            ) : null}
           </section>
         </>
       )}

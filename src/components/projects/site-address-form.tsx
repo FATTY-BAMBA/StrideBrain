@@ -23,16 +23,9 @@ export function SiteAddressForm({
     [key, setKey] = useState(() => crypto.randomUUID()),
     [pending, start] = useTransition(),
     [message, setMessage] = useState("");
-  if (!value.canEdit)
-    return (
-      <section>
-        <h2>{copy.siteAddress}</h2>
-        <p>{value.siteAddress || "—"}</p>
-      </section>
-    );
   return (
     <form
-      className={ui.page}
+      className={`${ui.page} ${ui.factsWidth}`}
       onSubmit={(event) => {
         event.preventDefault();
         start(async () => {

@@ -54,7 +54,7 @@ export function DraftableNewJob({
             disabled={pending}
             placeholder={copy.placeholder}
           />
-          <button className={styles.primary} disabled={pending}>
+          <button className={styles.secondary} disabled={pending}>
             {pending ? copy.pending : copy.fill}
           </button>
         </form>

@@ -5,6 +5,7 @@ const en = {
   entryDescription:
     "Review the verified findings, choose the wording and assignee, then explicitly create an internal review action.",
   preparing: "Preparing the review…",
+  opening: "Opening review…",
   reviewTitle: "Review internal review action",
   reviewDescription: "Review the evidence and uncertainty before creating this action.",
   title: "Title",
@@ -55,7 +56,7 @@ const en = {
   createdBy: "Created by",
   evidenceCount: "Authorized evidence references",
   noDueDate: "No due date",
-  actionsTitle: "Internal review actions",
+  actionsTitle: "Actions",
   actionsDescription:
     "Open a saved receipt to inspect its details and return to the source comparison.",
   actionsEmpty: "No internal review actions are currently available here.",
@@ -109,6 +110,7 @@ const zhTw: CopyShape<typeof en> = {
   entry: "建立內部審查事項",
   entryDescription: "檢視已查證的內容、選擇用語與承辦人，再明確確認建立內部審查事項。",
   preparing: "正在準備審查內容…",
+  opening: "正在開啟審查…",
   reviewTitle: "檢視內部審查事項",
   reviewDescription: "建立事項前，請先檢視資料依據與不確定性。",
   title: "標題",
@@ -155,7 +157,7 @@ const zhTw: CopyShape<typeof en> = {
   createdBy: "建立人",
   evidenceCount: "可存取的佐證資料筆數",
   noDueDate: "未設定到期日",
-  actionsTitle: "內部審查事項",
+  actionsTitle: "行動事項",
   actionsDescription: "開啟已儲存回執以檢視詳情，或返回來源比較。",
   actionsEmpty: "目前沒有可查看的內部審查事項。",
   openReceipt: "開啟回執",

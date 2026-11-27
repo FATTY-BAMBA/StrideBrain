@@ -1,4 +1,5 @@
 "use client";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { useState, useTransition } from "react";
 import { changeFirmListAction } from "@/app/[locale]/settings/firm-list-actions";
 import { firmListsCopy } from "@/modules/localization/firm-lists";
@@ -33,7 +34,7 @@ export function FirmListSettings({ initial, locale }: { initial: Settings; local
   }
   return (
     <section className="records-panel" aria-busy={pending}>
-      <h2>{c.title}</h2>
+      <SectionHeading>{c.title}</SectionHeading>
       <p>{c.description}</p>
       {message && <p role="status">{message}</p>}
       <AreaSetting

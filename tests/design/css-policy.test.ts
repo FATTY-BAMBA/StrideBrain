@@ -26,27 +26,29 @@ describe("CSS design-token gate", () => {
       ),
     ).toEqual({ color: 1, fontSize: 1, radius: 0 });
   });
-  it("allows counts to fall, never rise, and gives a new file no allowance", () => {
-    expect(
-      compareCounts(
-        "old.css",
-        { color: 1, fontSize: 0, radius: 0 },
-        { color: 2, fontSize: 1, radius: 1 },
-      ),
-    ).toEqual([]);
-    expect(compareCounts("new.module.css", { color: 1, fontSize: 0, radius: 0 })[0]).toContain(
-      "new.module.css: color",
-    );
+  it("gives every file zero allowance", () => {
+    expect(compareCounts("old.css", { color: 1, fontSize: 0, radius: 0 })).toHaveLength(1);
   });
   it("fails an added raw colour in a CSS module with that file's name", () => {
     const root = mkdtempSync(join(tmpdir(), "design-policy-"));
     try {
       mkdirSync(join(root, "src/styles"), { recursive: true });
       mkdirSync(join(root, "scripts/design"), { recursive: true });
-      writeFileSync(join(root, "scripts/design/legacy-baseline.json"), "{}");
       writeFileSync(join(root, "src/probe.module.css"), ".probe { color: #123456; }");
       expect(checkDesignTokens(root)[0]).toContain("src/probe.module.css: color");
       writeFileSync(join(root, "src/probe.module.css"), ".probe { color: var(--ink); }");
+      expect(checkDesignTokens(root)).toEqual([]);
+      writeFileSync(join(root, "src/probe.module.css"), ".probe { --legacy-bypass: var(--ink); }");
+      expect(checkDesignTokens(root)[0]).toContain("legacy custom properties");
+      writeFileSync(join(root, "src/probe.module.css"), ".probe { color: var(--ink); }");
+      for (const property of ["color", "background", "border-color", "--alias"]) {
+        writeFileSync(join(root, "src/probe.module.css"), `.probe { ${property}: var(--focus); }`);
+        expect(checkDesignTokens(root)[0]).toContain("--focus is allowed only in outline");
+      }
+      writeFileSync(
+        join(root, "src/probe.module.css"),
+        ".probe {outline:var(--focus-width) solid var(--focus);outline-offset:var(--focus-offset);}",
+      );
       expect(checkDesignTokens(root)).toEqual([]);
       writeFileSync(join(root, "src/styles/tokens.css"), ".escape {color: #123456;}");
       expect(checkDesignTokens(root)[0]).toContain("only token declarations");

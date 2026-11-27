@@ -6,7 +6,6 @@ import { projectLocationLabel } from "@/modules/localization/project-context";
 import type { Route } from "next";
 import Link from "next/link";
 
-import { getComparisonCopy } from "@/modules/comparison-experience/copy";
 import { comparisonHref } from "@/modules/comparison-experience/route-state";
 import type {
   CommercialObservationDTO,
@@ -16,6 +15,11 @@ import type { Locale } from "@/modules/localization/config";
 import { getInternalReviewCopy } from "@/modules/internal-review-experience/copy";
 import { projectActionsHref } from "@/modules/internal-review-experience/route-state";
 
+import { PageHeader } from "@/components/ui/page-header";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { Table, NameCell } from "@/components/ui/table";
+import { FactsList } from "@/components/ui/facts-list";
+import ui from "@/components/ui/ui.module.css";
 import styles from "./project-workspace-overview.module.css";
 
 type ProjectWorkspaceOverviewProps = Readonly<{
@@ -36,7 +40,6 @@ const copy = {
     suppliers: "Suppliers",
     materials: "Materials",
     scope: "Scope categories",
-    questions: "Ask StrideBrain in this project",
     programme: "Programme",
     area: "Area",
     location: "Location",
@@ -47,8 +50,6 @@ const copy = {
     stale: "Historical / stale",
     version: "Version",
     demo: "Synthetic demo data for {job}",
-    compareDescription:
-      "Find the strongest historical precedents, understand why they match, and compare the current quotation with evidence-backed history.",
     warnings: "This project has data conditions that require attention.",
   },
   "zh-TW": {
@@ -63,7 +64,6 @@ const copy = {
     suppliers: "供應商",
     materials: "材料",
     scope: "工作範圍分類",
-    questions: "在此專案中詢問 StrideBrain",
     programme: "工期",
     area: "面積",
     location: "地點",
@@ -74,7 +74,6 @@ const copy = {
     stale: "歷史／已過期",
     version: "版本",
     demo: "{job}的虛構示範資料",
-    compareDescription: "尋找最接近的歷史專案、理解相似原因，並用可追溯的歷史依據比較目前報價。",
     warnings: "此專案有需要注意的資料狀態。",
   },
 } as const;
@@ -109,7 +108,6 @@ function formatObservation(
 export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspaceOverviewProps) {
   const labels = copy[locale];
   const valueCopy = getValueCopy(locale);
-  const comparison = getComparisonCopy(locale);
   const actionCopy = getInternalReviewCopy(locale);
   const areaUnit =
     workspace.project.area.unit.toLowerCase() === "m2" ? "m²" : workspace.project.area.unit;
@@ -117,44 +115,48 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
 
   return (
     <div className={styles.page}>
-      <header className={styles.hero}>
-        <div className={styles.heroCopy}>
-          <div className={styles.meta}>
-            <span>{workspace.project.subtypeName}</span>
-            <p className={styles.eyebrow}>{stageLabel(locale, workspace.project.stage)}</p>
-            <span className={styles.status}>
-              {workspaceStateCopies[locale].workspace[workspace.state]}
-            </span>
-          </div>
-          <h1>{workspace.project.name.display}</h1>
-          <p className={styles.client}>{workspace.project.clientName.display}</p>
-          <div className={styles.meta}>
-            <span>{workspace.project.subtypeName}</span>
-            <span>{projectLocationLabel(locale, workspace.project.location)}</span>
-            <span>
-              {workspace.project.area.displayValue ?? workspace.project.area.value}{" "}
-              {workspace.project.area.displayUnit ?? areaUnit}
-            </span>
-            {workspace.project.programmeWeeks ? (
-              <span>
-                {workspace.project.programmeWeeks} {locale === "en" ? "weeks" : "週"}
-              </span>
-            ) : null}
-          </div>
-        </div>
-        {workspace.permissions.canRunComparison ? (
-          <Link className={styles.primaryLink} href={comparisonUrl}>
-            {valueCopy.compare} →
-          </Link>
-        ) : (
-          <p className={styles.restricted}>{labels.restricted}</p>
-        )}
-      </header>
+      <PageHeader
+        context={`${workspace.project.subtypeName} · ${stageLabel(locale, workspace.project.stage)} · ${workspaceStateCopies[locale].workspace[workspace.state]}`}
+        title={workspace.project.name.display}
+        description={workspace.project.clientName.display}
+        actions={
+          workspace.permissions.canRunComparison ? (
+            <Link className={`${ui.button} ${ui.primary}`} href={comparisonUrl}>
+              {valueCopy.compare} →
+            </Link>
+          ) : null
+        }
+      />
+      <FactsList
+        rows={[
+          {
+            key: "location",
+            label: labels.location,
+            value: projectLocationLabel(locale, workspace.project.location),
+          },
+          {
+            key: "area",
+            label: labels.area,
+            value: `${workspace.project.area.displayValue ?? workspace.project.area.value} ${workspace.project.area.displayUnit ?? areaUnit}`,
+            numeric: true,
+          },
+          ...(workspace.project.programmeWeeks
+            ? [
+                {
+                  key: "programme",
+                  label: labels.programme,
+                  value: `${workspace.project.programmeWeeks} ${locale === "en" ? "weeks" : "週"}`,
+                  numeric: true,
+                },
+              ]
+            : []),
+        ]}
+      />
       {workspace.project.demoData ? (
         <p>{labels.demo.replace("{job}", workspace.project.name.display)}</p>
       ) : null}
       <section className={styles.panel} id="commercial-position" aria-labelledby="commercial-title">
-        <h2 id="commercial-title">{labels.currentCommercial}</h2>
+        <SectionHeading id="commercial-title">{labels.currentCommercial}</SectionHeading>
         <div className={styles.commercialSummary}>
           <div>
             <p className={styles.eyebrow}>{labels.quote}</p>
@@ -175,7 +177,7 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
         id="project-attention"
         aria-labelledby="project-attention-title"
       >
-        <h2 id="project-attention-title">{valueCopy.attention}</h2>
+        <SectionHeading id="project-attention-title">{valueCopy.attention}</SectionHeading>
         {workspace.warnings.length ? (
           <ul>
             {workspace.warnings.map((warning) => (
@@ -189,83 +191,112 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
       <section className={styles.grid}>
         <article className={styles.panel}>
           <div className={styles.panelHeader}>
-            <h2>{labels.evidence}</h2>
+            <SectionHeading>{labels.evidence}</SectionHeading>
             <span className={styles.status}>
               {workspaceStateCopies[locale].evidence[workspace.evidenceHealth.state]}
             </span>
           </div>
-          <ul className={styles.list}>
-            <li>
-              <span>{locale === "zh-TW" ? "可存取資料來源" : "Accessible references"}</span>
-              <strong>{workspace.evidenceHealth.accessibleReferenceCount ?? "—"}</strong>
-            </li>
-            <li>
-              <span>{locale === "zh-TW" ? "可存取文件" : "Accessible documents"}</span>
-              <strong>{workspace.evidenceHealth.accessibleDocumentCount ?? "—"}</strong>
-            </li>
-            <li>
-              <span>{locale === "zh-TW" ? "過期資料" : "Stale records"}</span>
-              <strong>{workspace.evidenceHealth.staleCount ?? 0}</strong>
-            </li>
-            <li>
-              <span>{locale === "zh-TW" ? "待處理衝突" : "Open conflicts"}</span>
-              <strong>{workspace.evidenceHealth.openConflictCount ?? 0}</strong>
-            </li>
-          </ul>
+          <FactsList
+            rows={[
+              {
+                key: "fact-0",
+                label: locale === "zh-TW" ? "可存取資料來源" : "Accessible references",
+                value: <>{workspace.evidenceHealth.accessibleReferenceCount ?? "—"}</>,
+                numeric: true,
+              },
+              {
+                key: "fact-1",
+                label: locale === "zh-TW" ? "可存取文件" : "Accessible documents",
+                value: <>{workspace.evidenceHealth.accessibleDocumentCount ?? "—"}</>,
+                numeric: true,
+              },
+              {
+                key: "fact-2",
+                label: locale === "zh-TW" ? "過期資料" : "Stale records",
+                value: <>{workspace.evidenceHealth.staleCount ?? 0}</>,
+                numeric: true,
+              },
+              {
+                key: "fact-3",
+                label: locale === "zh-TW" ? "待處理衝突" : "Open conflicts",
+                value: <>{workspace.evidenceHealth.openConflictCount ?? 0}</>,
+                numeric: true,
+              },
+            ]}
+          />
         </article>
 
         <article className={styles.panel}>
           <div className={styles.panelHeader}>
-            <h2>{labels.projectContext}</h2>
+            <SectionHeading>{labels.projectContext}</SectionHeading>
           </div>
-          <ul className={styles.list}>
-            <li>
-              <span>{labels.scope}</span>
-              <strong>
-                {workspace.project.scopeCategories
-                  .map((category) => category.name.display)
-                  .join(locale === "zh-TW" ? "、" : ", ")}
-              </strong>
-            </li>
-            <li>
-              <span>{labels.suppliers}</span>
-              <strong>{workspace.suppliers.length}</strong>
-            </li>
-            <li>
-              <span>{labels.materials}</span>
-              <strong>{workspace.materials.length}</strong>
-            </li>
-            <li>
-              <span>{locale === "zh-TW" ? "未完成事項" : "Open actions"}</span>
-              <strong>{workspace.openActions.length}</strong>
-            </li>
-          </ul>
+          <FactsList
+            rows={[
+              {
+                key: "fact-0",
+                label: labels.scope,
+                value: (
+                  <>
+                    {workspace.project.scopeCategories
+                      .map((category) => category.name.display)
+                      .join(locale === "zh-TW" ? "、" : ", ")}
+                  </>
+                ),
+                numeric: false,
+              },
+              {
+                key: "fact-1",
+                label: labels.suppliers,
+                value: <>{workspace.suppliers.length}</>,
+                numeric: true,
+              },
+              {
+                key: "fact-2",
+                label: labels.materials,
+                value: <>{workspace.materials.length}</>,
+                numeric: true,
+              },
+              {
+                key: "fact-3",
+                label: locale === "zh-TW" ? "未完成事項" : "Open actions",
+                value: <>{workspace.openActions.length}</>,
+                numeric: true,
+              },
+            ]}
+          />
         </article>
       </section>
 
       {workspace.openActions.length > 0 ? (
         <section className={styles.panel} aria-labelledby="workspace-actions-title">
           <div className={styles.panelHeader}>
-            <h2 id="workspace-actions-title">{actionCopy.overviewActions}</h2>
+            <SectionHeading id="workspace-actions-title">
+              {actionCopy.overviewActions}
+            </SectionHeading>
           </div>
-          <ul className={styles.list}>
+          <Table
+            caption={actionCopy.overviewActions}
+            headings={[{ label: actionCopy.actionsTitle }, { label: actionCopy.dueDate }]}
+          >
             {workspace.openActions.map((action) => (
-              <li key={action.actionKey}>
-                <Link
-                  href={
-                    projectActionsHref(
-                      locale,
-                      workspace.project.businessKey,
-                      action.actionKey,
-                    ) as Route
-                  }
-                >
-                  {action.title}
-                </Link>
-                <span>{action.dueDate ?? actionCopy.noDueDate}</span>
-              </li>
+              <tr key={action.actionKey}>
+                <NameCell>
+                  <Link
+                    href={
+                      projectActionsHref(
+                        locale,
+                        workspace.project.businessKey,
+                        action.actionKey,
+                      ) as Route
+                    }
+                  >
+                    {action.title}
+                  </Link>
+                </NameCell>
+                <td>{action.dueDate ?? actionCopy.noDueDate}</td>
+              </tr>
             ))}
-          </ul>
+          </Table>
           <Link
             className={styles.questionLink}
             href={projectActionsHref(locale, workspace.project.businessKey) as Route}
@@ -274,18 +305,6 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
           </Link>
         </section>
       ) : null}
-
-      <section className={styles.panel} aria-labelledby="project-questions-title">
-        <div className={styles.panelHeader}>
-          <h2 id="project-questions-title">{labels.questions}</h2>
-        </div>
-        <div className={styles.questionList}>
-          <Link className={styles.questionLink} href={comparisonUrl}>
-            <strong>{comparison.heroQuestion}</strong>
-            <span>{comparison.heroPrompt}</span>
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }

@@ -5,7 +5,7 @@
 }
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) var(--sidebar-width);
+  grid-template-columns: minmax(0, 1fr) var(--quote-aside-width);
   gap: var(--space-24);
   padding: var(--space-16);
   background: var(--surface-subtle);
@@ -262,4 +262,30 @@
     height: 100%;
     max-height: none;
   }
+}
+
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.references {
+  overflow: visible;
+  max-height: none;
+}
+
+.references h2 {
+  font-size: var(--text-lead);
+  line-height: var(--leading-lead);
+  font-weight: var(--weight-lead);
+}
+.reference h3,
+.references h3 {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  font-weight: var(--weight-lead);
+}
+
+.referenceSection {
+  margin-top: var(--space-24);
 }

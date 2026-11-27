@@ -1,0 +1,110 @@
+[
+  {
+    "locale": "en",
+    "width": 1440,
+    "timingsClosed": true,
+    "summary": "AI preferences\n\nProvider: Google Gemini · Model: gemini-3.5-flash-lite\n\nUse AI for questions and job drafts\nSave\nModel calls this month (UTC)\n0\nEstimated cost this month (USD)\nUS$0.000000\nTotal server time in the last seven days\n\nFrom question-action entry until the response finishes, including record reads and answer preparation. Browser and network time before the action are not included.\n\nMeasured turns\n2\nLatest turn\n10.0 s\nLongest turn\n10.0 s\nLatest 20 completed questions\nAI failures in the last seven days\n\nNo AI failures in the last seven days.\n\nAI is unavailable until the server is configured for the paid service. Record search still works.\n\nAI and your data"
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "hashOpens": true,
+    "regions": [
+      "Conversation about this job",
+      "Editable quote lines"
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "closedTab": "quote",
+    "runButtons": 0
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "closedTab": "compare",
+    "runButtons": 0
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "timingsClosed": true,
+    "summary": "AI preferences\n\nProvider: Google Gemini · Model: gemini-3.5-flash-lite\n\nUse AI for questions and job drafts\nSave\nModel calls this month (UTC)\n0\nEstimated cost this month (USD)\nUS$0.000000\nTotal server time in the last seven days\n\nFrom question-action entry until the response finishes, including record reads and answer preparation. Browser and network time before the action are not included.\n\nMeasured turns\n2\nLatest turn\n10.0 s\nLongest turn\n10.0 s\nLatest 20 completed questions\nAI failures in the last seven days\n\nNo AI failures in the last seven days.\n\nAI is unavailable until the server is configured for the paid service. Record search still works.\n\nAI and your data"
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "hashOpens": true,
+    "regions": [
+      "Conversation about this job",
+      "Editable quote lines"
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "closedTab": "quote",
+    "runButtons": 0
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "closedTab": "compare",
+    "runButtons": 0
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "timingsClosed": true,
+    "summary": "AI 偏好設定\n\n服務提供者：Google Gemini · 模型：gemini-3.5-flash-lite\n\n使用 AI 回答問題及填入專案表單\n儲存\n本月模型呼叫次數（UTC）\n0\n本月預估費用（美元）\nUS$0.000000\n最近七天的伺服器總處理時間\n\n從提問動作開始至回應完成，包含讀取紀錄及準備回答；不包含動作開始前的瀏覽器與網路時間。\n\n已計時提問次數\n2\n最近一次\n10.0 秒\n最長一次\n10.0 秒\n最近 20 次已完成提問\n最近七天的 AI 失敗紀錄\n\n最近七天沒有 AI 失敗紀錄。\n\n伺服器完成付費服務設定後才能使用 AI，紀錄搜尋仍可使用。\n\nAI 與您的資料"
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "hashOpens": true,
+    "regions": [
+      "此專案的對話",
+      "編輯報價項目"
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "closedTab": "quote",
+    "runButtons": 0
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "closedTab": "compare",
+    "runButtons": 0
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "timingsClosed": true,
+    "summary": "AI 偏好設定\n\n服務提供者：Google Gemini · 模型：gemini-3.5-flash-lite\n\n使用 AI 回答問題及填入專案表單\n儲存\n本月模型呼叫次數（UTC）\n0\n本月預估費用（美元）\nUS$0.000000\n最近七天的伺服器總處理時間\n\n從提問動作開始至回應完成，包含讀取紀錄及準備回答；不包含動作開始前的瀏覽器與網路時間。\n\n已計時提問次數\n2\n最近一次\n10.0 秒\n最長一次\n10.0 秒\n最近 20 次已完成提問\n最近七天的 AI 失敗紀錄\n\n最近七天沒有 AI 失敗紀錄。\n\n伺服器完成付費服務設定後才能使用 AI，紀錄搜尋仍可使用。\n\nAI 與您的資料"
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "hashOpens": true,
+    "regions": [
+      "此專案的對話",
+      "編輯報價項目"
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "closedTab": "quote",
+    "runButtons": 0
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "closedTab": "compare",
+    "runButtons": 0
+  }
+]

@@ -132,7 +132,8 @@ it("shows no overflow link for five, and the complete decision route shows all s
 });
 it("empty firm has one sentence and create; Viewer has no create", () => {
   const empty = render(createElement(HomeDeskScreen, { locale: "en", outcome: fixture(0) }));
-  expect(empty.querySelectorAll("p")).toHaveLength(1);
+  expect(empty.textContent).toContain(homeDeskCopy("en").empty);
+  expect(empty.querySelector("table")).toBeNull();
   expect(empty.querySelector('a[href="/en/projects/new"]')).not.toBeNull();
   expect(empty.querySelector("textarea")).toBeNull();
   const viewer = render(
@@ -158,7 +159,7 @@ it.each(stageGroups)(
         searchParams: Promise.resolve({ group: group.key, organizationId: "evil" }),
       }),
     );
-    const projectLinks = [...host.querySelectorAll("ul[aria-labelledby] a")];
+    const projectLinks = [...host.querySelectorAll("section[aria-labelledby] tbody a")];
     expect(projectLinks.map((link) => link.getAttribute("href"))).toEqual(
       group.stages.map((stage) => `/en/projects/${stage}`),
     );

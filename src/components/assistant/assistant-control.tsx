@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { useRef, useState, useTransition } from "react";
 import { setAssistantControlAction } from "@/app/[locale]/assistant-actions";
 import { assistantCopy } from "@/modules/localization/assistant";
@@ -64,9 +65,9 @@ export function AssistantControl({
         />{" "}
         {label}
       </label>
-      <button disabled={pending} type="submit">
+      <Button disabled={pending} type="submit">
         {pending ? copy.saving : copy.save}
-      </button>
+      </Button>
       {message && <p role="status">{message}</p>}
     </form>
   );

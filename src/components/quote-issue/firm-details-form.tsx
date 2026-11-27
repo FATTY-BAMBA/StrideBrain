@@ -1,9 +1,11 @@
 "use client";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { useState, useTransition } from "react";
 import { quoteIssueMutationAction } from "@/app/[locale]/projects/[projectKey]/quote/issue-actions";
 import type { FirmDetails } from "@/modules/quote-issue/domain/contracts";
 import type { Locale } from "@/modules/localization/config";
 import { quoteIssueCopy } from "@/modules/localization/quote-issue";
+import ui from "@/components/ui/ui.module.css";
 import styles from "./quote-issue.module.css";
 const fields = [
   "legalNameZhTw",
@@ -33,9 +35,10 @@ export function FirmDetailsForm({
     [key, setKey] = useState(() => crypto.randomUUID());
   return (
     <section className={styles.section} aria-busy={pending}>
-      <h2>{copy.firm}</h2>
+      <SectionHeading>{copy.firm}</SectionHeading>
       {!canManage && <p>{copy.readonly}</p>}
       <form
+        className={ui.factsWidth}
         onSubmit={(event) => {
           event.preventDefault();
           start(async () => {

@@ -1,64 +1,12 @@
-.list {
+.groups,
+.group {
   display: grid;
-  gap: 16px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.entry {
-  display: grid;
-  justify-items: start;
-  gap: 12px;
+  gap: var(--space-24);
   min-width: 0;
-  padding: clamp(20px, 3vw, 30px);
-  border: 1px solid var(--legacy-line);
-  border-radius: var(--legacy-radius-md);
-  background: var(--legacy-surface);
-  overflow-wrap: anywhere;
-}
-
-.entry:hover {
-  border-color: var(--accent);
-}
-
-.entry:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 4px;
-}
-
-.status {
-  border-radius: var(--legacy-radius-sm);
-  padding: 4px 10px;
-  background: var(--accent-soft);
-  color: var(--accent-strong);
-}
-
-.open {
-  color: var(--accent-strong);
-  font-weight: 700;
-}
-
-.groups {
-  display: grid;
-  gap: 28px;
-}
-.group > h2 {
-  font-size: 1.2rem;
-  margin-bottom: 14px;
 }
 .count,
 .empty {
   color: var(--muted);
-  font-weight: 400;
-}
-.empty {
-  padding: 14px;
-  border: 1px dashed var(--legacy-line);
-  border-radius: var(--legacy-radius-sm);
-}
-.entry h3 {
-  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
 }
 .stageForm {
   display: flex;
@@ -73,9 +21,9 @@
   padding: 8px;
   font: inherit;
   color: var(--ink);
-  background: var(--legacy-surface);
-  border: 1px solid var(--legacy-line);
-  border-radius: var(--legacy-radius-sm);
+  background: var(--canvas);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-control);
 }
 .stageForm button {
   min-height: 44px;
@@ -85,9 +33,9 @@
 }
 .stageButton {
   padding: 10px 16px;
-  border: 1px solid var(--legacy-line);
-  border-radius: var(--legacy-radius-sm);
-  background: var(--legacy-surface);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-control);
+  background: var(--canvas);
   color: var(--accent-strong);
   font: inherit;
   font-weight: 600;

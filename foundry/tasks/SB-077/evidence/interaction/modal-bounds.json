@@ -1,0 +1,98 @@
+[
+  {
+    "locale": "en",
+    "width": 1440,
+    "screen": "evidence",
+    "bounds": {
+      "x": 400,
+      "y": 16,
+      "width": 640,
+      "height": 968
+    },
+    "title": "Site coordination and handover forecast versus reconciled actual history"
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "screen": "review",
+    "bounds": {
+      "x": 400,
+      "y": 16,
+      "width": 640,
+      "height": 968
+    },
+    "title": "Review internal review action"
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "screen": "evidence",
+    "bounds": {
+      "x": 18,
+      "y": 16,
+      "width": 354,
+      "height": 968
+    },
+    "title": "Site coordination and handover forecast versus reconciled actual history"
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "screen": "review",
+    "bounds": {
+      "x": 18,
+      "y": 16,
+      "width": 354,
+      "height": 968
+    },
+    "title": "Review internal review action"
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "evidence",
+    "bounds": {
+      "x": 400,
+      "y": 16,
+      "width": 640,
+      "height": 968
+    },
+    "title": "現場協調與交付 預估成本與已核對實際成本比較"
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "review",
+    "bounds": {
+      "x": 400,
+      "y": 16,
+      "width": 640,
+      "height": 968
+    },
+    "title": "檢視內部審查事項"
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "evidence",
+    "bounds": {
+      "x": 18,
+      "y": 16,
+      "width": 354,
+      "height": 968
+    },
+    "title": "現場協調與交付 預估成本與已核對實際成本比較"
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "review",
+    "bounds": {
+      "x": 18,
+      "y": 16,
+      "width": 354,
+      "height": 968
+    },
+    "title": "檢視內部審查事項"
+  }
+]

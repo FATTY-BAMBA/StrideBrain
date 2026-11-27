@@ -1,6 +1,8 @@
 import type { Locale } from "./config";
 const en = {
   title: "Quote",
+  documentLines: "Quote document lines",
+  editLines: "Editable quote lines",
   unsaved: "Unsaved changes",
   saved: "Saved",
   section: "Section",
@@ -60,6 +62,8 @@ const en = {
 };
 const zh: typeof en = {
   title: "報價單",
+  documentLines: "報價單項目",
+  editLines: "編輯報價項目",
   unsaved: "尚未儲存",
   saved: "已儲存",
   section: "章節",
@@ -100,7 +104,7 @@ const zh: typeof en = {
   noReference: "尚無已記錄的建議金額，可自行輸入金額。",
   limit: "每份報價最多 30 個章節、300 行。",
   readOnly: "此版本僅供檢視。",
-  saveFirst: "請先儲存草稿，再預覽或準備發出。",
+  saveFirst: "請先儲存草稿，再預覽或準備核發。",
   client: "客戶",
   contact: "聯絡人",
   clientAddress: "客戶地址",
@@ -112,7 +116,7 @@ const zh: typeof en = {
   confirmAcceptance: "確認記錄 {client} 接受報價單 {number}，含稅總計 {total}？",
   cancel: "取消",
   confirm: "確認接受",
-  unavailableIssue: "此版本須先成為草稿，才能準備發出。",
+  unavailableIssue: "此版本須先成為草稿，才能準備核發。",
   addressHint: "選填，最多 200 字，將列印於報價單。",
   addressSaved: "工程地址已儲存。",
   addressConflict: "地址已變更，請重新載入後再試。",

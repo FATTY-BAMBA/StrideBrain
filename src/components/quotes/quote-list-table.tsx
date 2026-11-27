@@ -1,12 +1,12 @@
+import Link from "next/link";
 import type { Route } from "next";
 import type { Locale } from "@/modules/localization/config";
 import type { QuoteListRow } from "@/repositories/ports/quote-list-repository";
 import { quoteListCopy } from "@/modules/localization/quote-list";
-import { designSystemCopy } from "@/modules/localization/design-system";
 import { formatMoney } from "@/modules/finance/format-money";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/empty-state";
-import { Table, NameCell, NumericCell, RowAction } from "@/components/ui/table";
+import { Table, NameCell, NumericCell } from "@/components/ui/table";
 import styles from "@/components/ui/ui.module.css";
 export function QuoteListTable({
   rows,
@@ -15,8 +15,7 @@ export function QuoteListTable({
   rows: readonly QuoteListRow[];
   locale: Locale;
 }) {
-  const c = quoteListCopy(locale),
-    ui = designSystemCopy(locale);
+  const c = quoteListCopy(locale);
   if (!rows.length) return <EmptyState title={c.empty} />;
   return (
     <Table
@@ -28,13 +27,16 @@ export function QuoteListTable({
         { label: c.status },
         { label: c.total, numeric: true },
         { label: c.date },
-        { label: ui.action, action: true },
       ]}
     >
       {rows.map((row) => (
         <tr key={row.quoteKey}>
           <td>{row.documentNumber ?? (row.status === "FINAL" ? "—" : c.noNumber)}</td>
-          <NameCell>{row.projectName}</NameCell>
+          <NameCell>
+            <Link href={`/${locale}/projects/${encodeURIComponent(row.projectKey)}/quote` as Route}>
+              {row.projectName}
+            </Link>
+          </NameCell>
           <td>{row.clientName}</td>
           <td>
             <Badge status={row.status} locale={locale} />
@@ -44,11 +46,6 @@ export function QuoteListTable({
             {row.totalAmount === undefined ? c.hidden : formatMoney(row.totalAmount, row.currency)}
           </NumericCell>
           <td>{row.date}</td>
-          <RowAction
-            href={`/${locale}/projects/${encodeURIComponent(row.projectKey)}/quote` as Route}
-            label={ui.open}
-            name={row.projectName}
-          />
         </tr>
       ))}
     </Table>

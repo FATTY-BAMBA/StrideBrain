@@ -1,0 +1,114 @@
+[
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "surface": "home",
+    "labels": 2,
+    "sentences": [
+      "照明與電氣：報價比過往報價高 9.4%",
+      "進口石材與硬質面材：預估成本比過往已核對實際成本高 43.0%",
+      "NT$17,300,000",
+      "NT$13,420,000",
+      "NT$15,120,000",
+      "NT$11,580,000",
+      "NT$14,900,000",
+      "NT$11,650,000"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "surface": "job",
+    "labels": 2,
+    "sentences": [
+      "照明與電氣：報價比過往報價高 9.4%",
+      "進口石材與硬質面材：預估成本比過往已核對實際成本高 43.0%"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "surface": "home",
+    "labels": 2,
+    "sentences": [
+      "照明與電氣：報價比過往報價高 9.4%",
+      "進口石材與硬質面材：預估成本比過往已核對實際成本高 43.0%",
+      "NT$17,300,000",
+      "NT$13,420,000",
+      "NT$15,120,000",
+      "NT$11,580,000",
+      "NT$14,900,000",
+      "NT$11,650,000"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "surface": "job",
+    "labels": 2,
+    "sentences": [
+      "照明與電氣：報價比過往報價高 9.4%",
+      "進口石材與硬質面材：預估成本比過往已核對實際成本高 43.0%"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "surface": "home",
+    "labels": 2,
+    "sentences": [
+      "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+      "Imported stone and hard finishes: forecast cost is 43.0% above past reconciled actual costs.",
+      "NT$17,300,000",
+      "NT$13,420,000",
+      "NT$15,120,000",
+      "NT$11,580,000",
+      "NT$14,900,000",
+      "NT$11,650,000"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "surface": "job",
+    "labels": 2,
+    "sentences": [
+      "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+      "Imported stone and hard finishes: forecast cost is 43.0% above past reconciled actual costs."
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "surface": "home",
+    "labels": 2,
+    "sentences": [
+      "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+      "Imported stone and hard finishes: forecast cost is 43.0% above past reconciled actual costs.",
+      "NT$17,300,000",
+      "NT$13,420,000",
+      "NT$15,120,000",
+      "NT$11,580,000",
+      "NT$14,900,000",
+      "NT$11,650,000"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "surface": "job",
+    "labels": 2,
+    "sentences": [
+      "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+      "Imported stone and hard finishes: forecast cost is 43.0% above past reconciled actual costs."
+    ],
+    "overflow": false
+  }
+]

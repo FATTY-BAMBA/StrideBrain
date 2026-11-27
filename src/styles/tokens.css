@@ -1,4 +1,4 @@
-/* The only source of design values. Legacy values preserve older page bodies until part 2. */
+/* The only source of design values. */
 :root {
   --canvas: #ffffff;
   --surface-subtle: #f4f6f5;
@@ -70,20 +70,7 @@
   --page-width: 1120px;
   --table-min-width: 720px;
   --filter-width: 480px;
-
-  /* Legacy: mechanically renamed, never use in new components. */
-  --legacy-canvas: #f4f6f5;
-  --legacy-surface: #ffffff;
-  --legacy-surface-subtle: #eef2f0;
-  --legacy-sidebar: #10241f;
-  --legacy-sidebar-raised: #19312a;
-  --legacy-quiet: #82918b;
-  --legacy-line: #d7dfdb;
-  --legacy-mint: #77d1b1;
-  --legacy-warning: #8b5b13;
-  --legacy-shadow: 0 18px 60px rgb(18 45 37 / 8%);
-  --legacy-radius-sm: 10px;
-  --legacy-radius-md: 16px;
-  --legacy-radius-lg: 26px;
-  --legacy-sidebar-width: 248px;
+  --facts-width: 640px;
+  --quote-aside-width: 320px;
+  --radius-none: 0;
 }

@@ -415,7 +415,7 @@ it.each(["en", "zh-TW"] as const)(
             ...initial,
             saved: {
               ...initial.saved!,
-              document: { ...doc, discount: { amount: "0", label: "" } },
+              document: { ...doc, discount: { amount: "10", label: "" } },
             },
           },
           issue: draftIssue(),
@@ -520,7 +520,7 @@ it("resets the untyped discount default with the language selector when a saved 
   const initial = view(true);
   const saved = {
     ...initial.saved!,
-    document: { ...initial.saved!.document!, discount: { amount: "0", label: "" } },
+    document: { ...initial.saved!.document!, discount: { amount: "10", label: "" } },
   };
   const props = { initial: { ...initial, saved }, issue: draftIssue(), locale: "en" as const };
   await act(async () => root.render(createElement(QuoteDocumentEditor, props)));
@@ -693,3 +693,17 @@ it.each(["en", "zh-TW"] as const)(
     expect(form.textContent).not.toContain(line);
   },
 );
+it.each(["en", "zh-TW"] as const)("omits a zero discount in screen totals (%s)", async (locale) => {
+  await act(async () =>
+    root.render(
+      createElement(QuoteDocumentEditor, { initial: view(true), issue: draftIssue(), locale }),
+    ),
+  );
+  expect(host.querySelector("footer")?.textContent).not.toContain("NT$-0");
+  expect([...host.querySelectorAll("footer dt")].map((n) => n.textContent)).not.toContain(
+    "Discount",
+  );
+  expect([...host.querySelectorAll("footer dt")].map((n) => n.textContent)).not.toContain(
+    "優惠折讓",
+  );
+});

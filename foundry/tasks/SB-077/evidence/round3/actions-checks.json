@@ -1,0 +1,26 @@
+[
+  {
+    "locale": "en",
+    "width": 1440,
+    "dismissalMs": 65,
+    "focus": "action-action_f01d325e-2da1-41a3-8cf3-df7d63577b15"
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "dismissalMs": 56,
+    "focus": "action-action_f01d325e-2da1-41a3-8cf3-df7d63577b15"
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "dismissalMs": 67,
+    "focus": "action-action_f01d325e-2da1-41a3-8cf3-df7d63577b15"
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "dismissalMs": 53,
+    "focus": "action-action_f01d325e-2da1-41a3-8cf3-df7d63577b15"
+  }
+]

@@ -1,0 +1,138 @@
+[
+  {
+    "locale": "en",
+    "width": 390,
+    "screen": "quote-panel",
+    "active": "SUMMARY",
+    "summary": "View details · Similar past jobs: 3 · Saved findings: 13",
+    "linkOrder": [
+      "Neihu Tech Flagship",
+      "Zhongshan Lifestyle Store",
+      "Nanjing Brand Experience Center",
+      "View sources",
+      "View sources",
+      "View sources",
+      "View sources",
+      "View sources",
+      "View all"
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "screen": "firm-fields",
+    "widths": [
+      358
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "screen": "job-settings",
+    "widths": [
+      358
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "screen": "quote-panel",
+    "active": "SUMMARY",
+    "summary": "View details · Similar past jobs: 3 · Saved findings: 13",
+    "linkOrder": [
+      "Neihu Tech Flagship",
+      "Zhongshan Lifestyle Store",
+      "Nanjing Brand Experience Center",
+      "View sources",
+      "View sources",
+      "View sources",
+      "View sources",
+      "View sources",
+      "View all"
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "screen": "firm-fields",
+    "widths": [
+      640
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "screen": "job-settings",
+    "widths": [
+      640
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "quote-panel",
+    "active": "SUMMARY",
+    "summary": "查看明細 · 相似的過往專案: 3 · 已儲存的發現: 13",
+    "linkOrder": [
+      "內湖科技旗艦店",
+      "中山生活概念店",
+      "南京品牌體驗中心",
+      "查看來源",
+      "查看來源",
+      "查看來源",
+      "查看來源",
+      "查看來源",
+      "查看全部"
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "firm-fields",
+    "widths": [
+      358
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "job-settings",
+    "widths": [
+      358
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "quote-panel",
+    "active": "SUMMARY",
+    "summary": "查看明細 · 相似的過往專案: 3 · 已儲存的發現: 13",
+    "linkOrder": [
+      "內湖科技旗艦店",
+      "中山生活概念店",
+      "南京品牌體驗中心",
+      "查看來源",
+      "查看來源",
+      "查看來源",
+      "查看來源",
+      "查看來源",
+      "查看全部"
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "firm-fields",
+    "widths": [
+      640
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "job-settings",
+    "widths": [
+      640
+    ]
+  }
+]

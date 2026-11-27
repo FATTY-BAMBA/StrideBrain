@@ -14,6 +14,7 @@ export type ComparisonCopy = Readonly<{
   unavailableTitle: string;
   unavailableDescription: string;
   loadingLabel: string;
+  openingEvidence: string;
   failedTitle: string;
   failedDescription: string;
   contextIncompleteTitle: string;
@@ -127,6 +128,7 @@ const en: ComparisonCopy = {
   unavailableDescription:
     "The project or stored run is not available under the current authorization context.",
   loadingLabel: "Loading comparable projects",
+  openingEvidence: "Opening evidence…",
   failedTitle: "StrideBrain could not complete the comparison.",
   failedDescription:
     "No unsupported conclusion was shown. Use the reference ID when reviewing the failure.",
@@ -251,6 +253,7 @@ const zhTw: ComparisonCopy = {
   unavailableTitle: "目前無法開啟此比較。",
   unavailableDescription: "目前的授權脈絡無法存取此專案或已儲存的比較結果。",
   loadingLabel: "正在載入歷史專案比較",
+  openingEvidence: "正在開啟佐證…",
   failedTitle: "StrideBrain 無法完成此次比較。",
   failedDescription: "系統沒有顯示未經支持的結論。檢查問題時請使用參考編號。",
   contextIncompleteTitle: "目前專案需要更多結構化資料才能進行比較。",

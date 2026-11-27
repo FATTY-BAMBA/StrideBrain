@@ -1,3 +1,4 @@
+import { pageRoutes, pageDefects } from "../design/route-sweep";
 import { randomBytes } from "node:crypto";
 import { spawn, type ChildProcess } from "node:child_process";
 import { createServer } from "node:net";
@@ -117,6 +118,86 @@ suite("private quote routes through a running Next HTTP server", () => {
       clearTimeout(timer);
     }
     await db?.close();
+  });
+  it("sweeps every page as owner and Viewer in both languages over HTTP", async () => {
+    const client = await getPrismaClient().client.findFirstOrThrow({
+      where: { organizationId: "org_horizon" },
+    });
+    const defects: string[] = [];
+    for (const [role, cookie] of [
+      ["owner", ownerCookie],
+      ["viewer", viewerCookie],
+    ] as const) {
+      for (const locale of ["en", "zh-TW"]) {
+        for (const template of Object.values(pageRoutes).flat()) {
+          const path = template.replace("{locale}", locale).replace("{client}", client.businessKey);
+          const response = await fetch(`${origin}${path}`, {
+            headers: { cookie, "user-agent": "Twitterbot" },
+            signal: AbortSignal.timeout(60_000),
+          });
+          const html = await response.text();
+          // This route denies the Viewer; it is not a page that role may open.
+          if (role === "viewer" && path.endsWith("/quotes/prices")) {
+            expect(html).not.toMatch(/NT\$[0-9]/);
+            continue;
+          }
+          const denied =
+            role === "viewer" && (/\/clients(?:\/|$)/.test(path) || path.endsWith("/projects/new"));
+          if (path.endsWith("/nothing-here") || denied) {
+            expect(response.status, path).toBe(404);
+            continue;
+          }
+          expect(response.status, `${role} ${path}`).toBe(200);
+          for (const defect of pageDefects(html)) defects.push(`${role} ${path}: ${defect}`);
+        }
+      }
+    }
+    console.info("SB077_ROUTE_SWEEP", JSON.stringify(defects));
+    expect(defects).toEqual([]);
+  }, 240_000);
+  it("returns identical 404 pages without job tabs for unknown, unassigned and foreign jobs on every tab", async () => {
+    const otherJob = await getPrismaClient().project.findFirstOrThrow({
+      where: { organizationId: { not: "org_horizon" } },
+    });
+    for (const locale of ["en", "zh-TW"]) {
+      let expected: string | undefined;
+      for (const segment of ["", "/quote", "/compare", "/actions"]) {
+        for (const key of ["NO-SUCH-JOB", otherJob.businessKey, "PRJ-ACTIVE-003"]) {
+          const response = await fetch(`${origin}/${locale}/projects/${key}${segment}`, {
+            headers: { cookie: viewerCookie, "user-agent": "Twitterbot" },
+            signal: AbortSignal.timeout(60_000),
+          });
+          expect(response.status, `${key}${segment}`).toBe(404);
+          const html = await response.text();
+          const visible = html.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]*>/g, "");
+          expect(visible).not.toContain(key);
+          expect(html).not.toMatch(/aria-label="(?:Project workspace navigation|專案工作區導覽)"/);
+          expected ??= visible;
+          expect(visible).toBe(expected);
+        }
+      }
+      const response = await fetch(`${origin}/${locale}/projects/new`, {
+        headers: { cookie: viewerCookie, "user-agent": "Twitterbot" },
+      });
+      expect(response.status).toBe(404);
+      expect(await response.text()).not.toContain('id="job-draft-text"');
+    }
+  }, 180_000);
+  it("keeps unknown and foreign client addresses non-disclosing", async () => {
+    const client = await getPrismaClient().client.findFirstOrThrow({
+      where: { organizationId: { not: "org_horizon" } },
+    });
+    for (const locale of ["en", "zh-TW"])
+      for (const key of ["NO-SUCH-CLIENT", client.businessKey]) {
+        const response = await fetch(`${origin}/${locale}/clients/${key}`, {
+          headers: { cookie: ownerCookie, "user-agent": "Twitterbot" },
+        });
+        expect(response.status).toBe(404);
+        const html = await response.text();
+        expect(
+          html.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]*>/g, ""),
+        ).not.toContain(key);
+      }
   });
   const comparison = (cookie = ownerCookie, body?: string) =>
     fetch(`${origin}/api/projects/${projectKey}/quote-comparison?locale=zh-TW`, {

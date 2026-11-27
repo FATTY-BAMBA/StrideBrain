@@ -23,8 +23,6 @@ const en = {
   knowledgeTasks: "Explore company records",
   knowledgeDescription:
     "What does your company already know? Explore past work and project records.",
-  brainTitle: "Ask StrideBrain",
-  brainDescription: "What do you want to understand or get done?",
   bounded: "Open a task below. Historical findings and evidence start with a comparison.",
   compare: "Compare with past work",
   compareDescription: "Find similar completed projects and understand how they differ.",
@@ -82,8 +80,6 @@ const zhTw: ValueCopy = {
   knowledgeTitle: "公司的知識與經驗",
   knowledgeTasks: "查找公司紀錄",
   knowledgeDescription: "公司已掌握哪些資訊？查找過往專案與相關紀錄。",
-  brainTitle: "詢問 StrideBrain",
-  brainDescription: "想了解什麼，或完成什麼？",
   bounded: "選擇下方工作。歷史差異與佐證，從比較開始。",
   compare: "與過往專案比較",
   compareDescription: "找出類似的已完工專案，了解相似之處與差異。",

@@ -1,3 +1,4 @@
+vi.mock("@/components/shell/current-area", () => ({ CurrentArea: () => createElement("span") }));
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
@@ -12,6 +13,7 @@ vi.mock("@/components/shell/global-nav", () => ({
   },
 }));
 vi.mock("@/components/shell/language-switcher", () => ({
+  LanguageSwitcherFallback: () => createElement("span"),
   LanguageSwitcher: () => createElement("span"),
 }));
 import { WorkspaceShell } from "@/components/shell/workspace-shell";

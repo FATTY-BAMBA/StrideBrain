@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { JobChatPanel } from "@/components/assistant/job-chat-panel";
 import { JobChatStateProvider } from "@/components/assistant/job-chat-state";
@@ -8,8 +9,8 @@ import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
 import { getCatalog } from "@/modules/localization/catalog";
 import { isSupportedLocale } from "@/modules/localization/config";
 
-/** This lookup controls an optional bar, never access to the page or a model call. */
-async function panelMember(
+/** Authorize the shared job boundary before rendering navigation or any tab. */
+async function authorizedMember(
   projectKey: string,
 ): Promise<{ id: string; canReadQuote: boolean } | null> {
   try {
@@ -34,7 +35,8 @@ export default async function JobLayout({
   const { locale, projectKey } = await params;
   // Each page keeps its own locale and unavailable-state handling.
   if (!isSupportedLocale(locale)) return children;
-  const member = await panelMember(projectKey);
+  const member = await authorizedMember(projectKey);
+  if (!member) notFound();
   return (
     <JobChatStateProvider key={`${locale}:${projectKey}`}>
       <div className={styles.navigation}>

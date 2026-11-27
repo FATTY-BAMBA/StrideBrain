@@ -1,0 +1,112 @@
+[
+  {
+    "locale": "en",
+    "width": 390,
+    "screen": "viewer-quote",
+    "headings": [
+      "Quote"
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "screen": "viewer-quote",
+    "headings": [
+      "Quote"
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "viewer-quote",
+    "headings": [
+      "報價"
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "viewer-quote",
+    "headings": [
+      "報價"
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "screen": "comparison",
+    "regions": [
+      "Ask about this job",
+      "Closest past projects",
+      "What needs review",
+      "Choose precedents to compare",
+      "Past jobs for selection",
+      "Structured comparison",
+      "Comparison values"
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "screen": "comparison",
+    "regions": [
+      "Account",
+      "Ask about this job",
+      "Closest past projects",
+      "What needs review",
+      "Choose precedents to compare",
+      "Past jobs for selection",
+      "Structured comparison",
+      "Comparison values"
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "screen": "comparison",
+    "regions": [
+      "詢問這個專案",
+      "最接近的過往專案",
+      "需要檢視的事項",
+      "選擇要比較的歷史專案",
+      "歷史專案選取表",
+      "結構化比較",
+      "比較數值"
+    ]
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "screen": "comparison",
+    "regions": [
+      "帳戶",
+      "詢問這個專案",
+      "最接近的過往專案",
+      "需要檢視的事項",
+      "選擇要比較的歷史專案",
+      "歷史專案選取表",
+      "結構化比較",
+      "比較數值"
+    ]
+  },
+  {
+    "locale": "en",
+    "screen": "nojs-404",
+    "status": 404,
+    "h1": [
+      "Page not found"
+    ],
+    "main": 1,
+    "homeLinks": 3
+  },
+  {
+    "locale": "zh-TW",
+    "screen": "nojs-404",
+    "status": 404,
+    "h1": [
+      "找不到頁面"
+    ],
+    "main": 1,
+    "homeLinks": 3
+  }
+]

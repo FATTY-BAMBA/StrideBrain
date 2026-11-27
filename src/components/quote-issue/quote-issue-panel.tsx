@@ -432,10 +432,14 @@ export function QuoteIssuePanel({
                             `${line.description} (${line.percentage}%)`,
                             line.amount,
                           ]),
-                          [
-                            snapshot.document.discount.label,
-                            `-${snapshot.document.discount.amount}`,
-                          ],
+                          ...(!/^0(?:\.0+)?$/.test(snapshot.document.discount.amount)
+                            ? [
+                                [
+                                  snapshot.document.discount.label,
+                                  `-${snapshot.document.discount.amount}`,
+                                ],
+                              ]
+                            : []),
                         ]
                       : []),
                     [copy.beforeTax, snapshot.totals.amountBeforeTax],

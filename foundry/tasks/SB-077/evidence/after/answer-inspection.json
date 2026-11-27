@@ -1,0 +1,134 @@
+[
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "surface": "home",
+    "labels": 1,
+    "sentences": [
+      "照明與電氣：報價比過往報價高 9.4%",
+      "進口石材與硬質面材：預估成本比過往已核對實際成本高 43.0%"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "surface": "job",
+    "labels": 1,
+    "sentences": [
+      "照明與電氣：報價比過往報價高 9.4%",
+      "進口石材與硬質面材：預估成本比過往已核對實際成本高 43.0%",
+      "臺北市大安區",
+      "615 m²",
+      "21 週",
+      "11",
+      "4",
+      "0",
+      "0",
+      "現場協調與交付、客製木作、照明與電氣、隔間與天花",
+      "0",
+      "0",
+      "0"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "surface": "home",
+    "labels": 1,
+    "sentences": [
+      "照明與電氣：報價比過往報價高 9.4%",
+      "進口石材與硬質面材：預估成本比過往已核對實際成本高 43.0%"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "surface": "job",
+    "labels": 1,
+    "sentences": [
+      "照明與電氣：報價比過往報價高 9.4%",
+      "進口石材與硬質面材：預估成本比過往已核對實際成本高 43.0%",
+      "臺北市大安區",
+      "615 m²",
+      "21 週",
+      "11",
+      "4",
+      "0",
+      "0",
+      "現場協調與交付、客製木作、照明與電氣、隔間與天花",
+      "0",
+      "0",
+      "0"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "surface": "home",
+    "labels": 1,
+    "sentences": [
+      "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+      "Imported stone and hard finishes: forecast cost is 43.0% above past reconciled actual costs."
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "surface": "job",
+    "labels": 1,
+    "sentences": [
+      "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+      "Imported stone and hard finishes: forecast cost is 43.0% above past reconciled actual costs.",
+      "Daan District, Taipei City",
+      "615 m²",
+      "21 weeks",
+      "11",
+      "4",
+      "0",
+      "0",
+      "Site coordination and handover, Custom millwork, Lighting and electrical, Partitions and ceilings",
+      "0",
+      "0",
+      "0"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "surface": "home",
+    "labels": 1,
+    "sentences": [
+      "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+      "Imported stone and hard finishes: forecast cost is 43.0% above past reconciled actual costs."
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "surface": "job",
+    "labels": 1,
+    "sentences": [
+      "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+      "Imported stone and hard finishes: forecast cost is 43.0% above past reconciled actual costs.",
+      "Daan District, Taipei City",
+      "615 m²",
+      "21 weeks",
+      "11",
+      "4",
+      "0",
+      "0",
+      "Site coordination and handover, Custom millwork, Lighting and electrical, Partitions and ceilings",
+      "0",
+      "0",
+      "0"
+    ],
+    "overflow": false
+  }
+]

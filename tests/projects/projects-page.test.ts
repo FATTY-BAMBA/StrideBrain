@@ -62,15 +62,15 @@ describe("Projects entry server page and semantic navigation", () => {
         `a[href="/${locale}/projects/PRJ-XINYI-026"]`,
       )!;
       expect(link.getAttribute("href")).toBe(`/${locale}/projects/PRJ-XINYI-026`);
-      expect(link.textContent).toContain(name);
-      expect(link.textContent).toContain(locale === "en" ? "Open project" : "開啟專案");
+      expect(link.textContent).toBe(name);
+      expect(link.textContent).toBe(name);
       expect(link.tabIndex).toBe(0);
       link.focus();
       expect(document.activeElement).toBe(link);
-      expect(link.querySelector("h3")?.textContent).toBe(name);
+      expect(link.closest("tr")?.querySelector('th[scope="row"]')?.textContent).toContain(name);
       expect(link.querySelector("button,input,a")).toBeNull();
       expect(link.hasAttribute("onclick")).toBe(false);
-      expect(host.querySelector("ul[aria-labelledby]")).not.toBeNull();
+      expect(host.querySelector("section[aria-labelledby] table")).not.toBeNull();
       expect(host.textContent).not.toMatch(
         /ACTIVE|QUOTE_REVIEW|programmeWeeks|Horizon Atelier|禾序空間/,
       );
@@ -171,7 +171,7 @@ describe("Stage groups and write controls", () => {
     expect(host.querySelector('[aria-labelledby="stage-COMPLETE"] a')?.textContent).toContain(
       "Completed synthetic job",
     );
-    expect(host.querySelectorAll("ul[aria-labelledby] a")).toHaveLength(2);
+    expect(host.querySelectorAll("section[aria-labelledby] tbody a")).toHaveLength(2);
     expect(host.querySelectorAll("section[aria-labelledby]")).toHaveLength(8);
     expect(host.querySelector("form")).toBeNull();
     expect(host.querySelector('a[href$="/new"]')).toBeNull();

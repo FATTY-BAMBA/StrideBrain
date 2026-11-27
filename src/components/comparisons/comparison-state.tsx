@@ -1,3 +1,5 @@
+import { PageHeader } from "@/components/ui/page-header";
+import { missingContextLabel } from "@/modules/localization/comparison-fields";
 import { runComparisonAction } from "@/app/[locale]/projects/[projectKey]/compare/actions";
 import { getComparisonCopy } from "@/modules/comparison-experience/copy";
 import type { Locale } from "@/modules/localization/config";
@@ -14,6 +16,7 @@ type ComparisonStateKind =
   | "ECONOMICS_FAILED";
 
 type ComparisonStateProps = Readonly<{
+  closed?: boolean;
   locale: Locale;
   projectKey: string;
   kind: ComparisonStateKind;
@@ -27,6 +30,7 @@ export function ComparisonState({
   kind,
   requestId,
   missingFields = [],
+  closed = false,
 }: ComparisonStateProps) {
   const copy = getComparisonCopy(locale);
   const sessionRequired = kind === "SESSION_REQUIRED";
@@ -49,14 +53,17 @@ export function ComparisonState({
 
   return (
     <section className={styles.statePanel} aria-labelledby="comparison-state-title">
-      <p className={styles.eyebrow}>{copy.eyebrow}</p>
-      <h1 id="comparison-state-title">{title}</h1>
-      <p>{description}</p>
+      <PageHeader
+        id="comparison-state-title"
+        context={copy.eyebrow}
+        title={title}
+        description={description}
+      />
 
       {missingFields.length > 0 ? (
         <ul className={styles.missingList} aria-label={copy.contextIncompleteTitle}>
           {missingFields.map((field) => (
-            <li key={field}>{field}</li>
+            <li key={field}>{missingContextLabel(locale, field)}</li>
           ))}
         </ul>
       ) : null}
@@ -67,7 +74,7 @@ export function ComparisonState({
         </p>
       ) : null}
 
-      {!sessionRequired ? (
+      {!sessionRequired && !closed ? (
         <form action={runComparisonAction} className={styles.startActions}>
           <input type="hidden" name="locale" value={locale} />
           <input type="hidden" name="projectKey" value={projectKey} />

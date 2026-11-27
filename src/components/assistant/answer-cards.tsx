@@ -4,14 +4,18 @@ import type { Route } from "next";
 import { useId } from "react";
 import type { AnswerPresentation, AnswerRow } from "@/modules/assistant/domain/answer-cards";
 import styles from "./answer-cards.module.css";
+import { FactsList } from "@/components/ui/facts-list";
 
 function FactRows({ rows, locale }: { rows: readonly AnswerRow[]; locale: Locale }) {
   return (
-    <dl className={styles.facts}>
-      {rows.map((row) => (
-        <div className={styles.fact} key={row.ref}>
-          <dt>{row.label}</dt>
-          <dd>
+    <FactsList
+      alignValues
+      groupAdjacent
+      rows={rows.map((row) => ({
+        key: row.ref,
+        label: row.label,
+        value: (
+          <>
             <strong>{row.value}</strong>
             {row.details?.length ? (
               <small className={styles.details}>
@@ -19,15 +23,15 @@ function FactRows({ rows, locale }: { rows: readonly AnswerRow[]; locale: Locale
                   <span key={detail.ref}>
                     {detail.label}
                     {locale === "zh-TW" ? "：" : ": "}
-                    {detail.value}
+                    <span className={styles.detailValue}>{detail.value}</span>
                   </span>
                 ))}
               </small>
             ) : null}
-          </dd>
-        </div>
-      ))}
-    </dl>
+          </>
+        ),
+      }))}
+    />
   );
 }
 /** Only server-built fields enter this view; text parsing is reserved for older answers. */

@@ -5,7 +5,6 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { beforeEach, expect, it, vi } from "vitest";
 import { jobContext } from "../projects/job-fixture";
 import { getCatalog } from "@/modules/localization/catalog";
-import { quoteDraftCopy } from "@/modules/localization/quote-draft";
 import { projectNavigation, projectSurfaceHref } from "@/modules/navigation/project-navigation";
 import type { Locale } from "@/modules/localization/config";
 import styles from "@/components/assistant/job-chat-panel.module.css";
@@ -18,6 +17,7 @@ const boundary = vi.hoisted(() => ({
   quote: vi.fn(),
   issue: vi.fn(),
   actions: vi.fn(),
+  savedComparison: vi.fn(),
 }));
 vi.mock("server-only", () => ({}));
 vi.mock("next/navigation", () => ({
@@ -44,6 +44,9 @@ vi.mock("@/lib/server/quote-draft-services", () => ({
 vi.mock("@/lib/server/quote-issue-services", () => ({
   createQuoteIssueServices: () => ({ read: { execute: boundary.issue } }),
 }));
+vi.mock("@/lib/server/comparison-services", () => ({
+  createComparisonServices: () => ({ getHomeComparison: { execute: boundary.savedComparison } }),
+}));
 vi.mock("@/lib/server/internal-review-services", () => ({
   createInternalReviewServices: () => ({ listProjectActions: boundary.actions }),
 }));
@@ -61,7 +64,10 @@ import { WorkspaceShell } from "@/components/shell/workspace-shell";
 beforeEach(() => {
   boundary.context.mockResolvedValue(jobContext());
   boundary.policy.mockResolvedValue({ id: "job", excluded: false });
-  boundary.workspace.mockResolvedValue({ kind: "UNAVAILABLE" });
+  boundary.workspace.mockResolvedValue({
+    kind: "AVAILABLE",
+    workspace: { project: { stage: "QUOTE_REVIEW" } },
+  });
   boundary.quote.mockResolvedValue({ kind: "UNAVAILABLE" });
   boundary.issue.mockResolvedValue({ kind: "UNAVAILABLE" });
   boundary.actions.mockResolvedValue({ kind: "ACTION_NOT_AUTHORIZED", requestId: "" });
@@ -113,7 +119,10 @@ it.each(["en", "zh-TW"] as const)(
       expect(panel.querySelector("button")?.getAttribute("aria-expanded")).toBe("false");
     }
     // The available overview branch no longer owns a second nav either.
-    boundary.workspace.mockResolvedValue({ kind: "AVAILABLE", workspace: {} });
+    boundary.workspace.mockResolvedValue({
+      kind: "AVAILABLE",
+      workspace: { project: { stage: "QUOTE_REVIEW" } },
+    });
     boundary.path = `/${locale}/projects/J`;
     const available = await composed(locale, await page(locale, ""));
     expect(available.textContent).toContain("Available overview");
@@ -166,43 +175,38 @@ it.each([false, true])(
     }
   },
 );
-it.each(["en", "zh-TW"] as const)(
-  "keeps the pages' localized unavailable states and tabs inside the app when signed out (%s)",
-  async (locale) => {
-    boundary.context.mockResolvedValue(null);
-    const expected = [
-      getCatalog(locale)["project.unavailableTitle"],
-      quoteDraftCopy(locale).UNAVAILABLE,
-      locale === "en" ? "Sign in" : "登入",
-    ];
-    for (const [i, segment] of ["", "quote", "compare"].entries()) {
-      boundary.path = `/${locale}/projects/J${segment ? `/${segment}` : ""}`;
-      const host = await composed(locale, await page(locale, segment));
-      expect(host.querySelector("aside")).not.toBeNull();
-      expect(host.querySelector("main")?.textContent).toContain(expected[i]);
-      expect(
-        host.querySelectorAll(
-          'nav[aria-label$="workspace navigation"],nav[aria-label="專案工作區導覽"]',
-        ),
-      ).toHaveLength(1);
-      expect(host.querySelector('textarea[name="message"]')).toBeNull();
-    }
-    expect(boundary.policy).not.toHaveBeenCalled();
-  },
-);
-it.each(["no capability", "no policy", "lookup failure", "session failure"])(
-  "an optional panel %s cannot replace the child page with a 404",
+it.each(["signed out", "no capability", "no policy", "lookup failure", "session failure"])(
+  "the shared job boundary returns a non-disclosing 404 before tabs for %s",
   async (scenario) => {
+    if (scenario === "signed out") boundary.context.mockResolvedValue(null);
     if (scenario === "no capability")
       boundary.context.mockResolvedValue(jobContext({ capabilities: new Set() }));
     if (scenario === "no policy") boundary.policy.mockResolvedValue(null);
     if (scenario === "lookup failure") boundary.policy.mockRejectedValue(Error("temporary"));
     if (scenario === "session failure") boundary.context.mockRejectedValue(Error("temporary"));
-    const host = await composed("zh-TW", createElement("p", {}, "頁面的不可用狀態"));
-    expect(host.querySelector("main")?.textContent).toContain("頁面的不可用狀態");
-    expect(host.querySelector('nav[aria-label="專案工作區導覽"]')).not.toBeNull();
-    expect(host.querySelector('textarea[name="message"]')).toBeNull();
-    if (["no capability", "session failure"].includes(scenario))
-      expect(boundary.policy).not.toHaveBeenCalled();
+    await expect(composed("zh-TW", createElement("p", {}, "Child"))).rejects.toThrow(
+      "FRAMEWORK_404",
+    );
+  },
+);
+
+it.each(["en", "zh-TW"] as const)(
+  "closed-job comparison has no run control (%s)",
+  async (locale) => {
+    boundary.workspace.mockResolvedValue({
+      kind: "AVAILABLE",
+      workspace: { project: { stage: "COMPLETE" } },
+    });
+    boundary.savedComparison.mockResolvedValue({ kind: "NOT_RUN" });
+    for (const search of [{}, { outcome: "UNAVAILABLE" }]) {
+      const child = await Compare({
+        params: Promise.resolve({ locale, projectKey: "J" }),
+        searchParams: Promise.resolve(search),
+      });
+      const host = document.createElement("div");
+      host.innerHTML = renderToStaticMarkup(child);
+      expect(host.querySelector("h1")).not.toBeNull();
+      expect(host.querySelector("form")).toBeNull();
+    }
   },
 );

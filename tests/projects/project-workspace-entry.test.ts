@@ -20,11 +20,11 @@ describe("Stage 6 Project Workspace entry", () => {
     expect(page).not.toContain("Xinyi Flagship Renovation");
   });
 
-  it("links the contextual hero question to the canonical compare route", () => {
+  it("links the primary action to the canonical compare route", () => {
     const overview = source("src/components/projects/project-workspace-overview.tsx");
 
     expect(overview).toContain("comparisonHref(locale, workspace.project.businessKey)");
-    expect(overview).toContain("comparison.heroQuestion");
+    expect(overview).not.toContain("project-questions-title");
     expect(overview).toContain("workspace.permissions.canRunComparison");
     expect(overview).not.toContain("stridebrain?project=");
   });

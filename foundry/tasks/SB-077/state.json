@@ -1,0 +1,13 @@
+{
+  "issue": 77,
+  "branch": "build/sb-077-design-pass-v2",
+  "baseCommit": "aacee10141ef03a5780286aa934c0ef890db16b4",
+  "status": "READY_FOR_REVIEW",
+  "draft": true,
+  "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
+  "pullRequest": 82,
+  "provisionalDecisions": "AWAITING_PRODUCT_DIRECTOR",
+  "stopAfter": "FINAL_BUILDER_REPORT",
+  "localCheck": "PASS_2003_TESTS_207_FILES",
+  "reviewComment": 7209015810
+}
