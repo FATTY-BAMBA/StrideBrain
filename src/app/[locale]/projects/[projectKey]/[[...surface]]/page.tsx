@@ -112,44 +112,46 @@ export default async function ProjectWorkspacePage({
                 <SectionHeading id="job-settings-title">
                   {designSystemCopy(rawLocale).jobSettings}
                 </SectionHeading>
-                {!context.capabilities.has("project:update") ? (
-                  <FactsList
-                    rows={[
-                      ...(address
-                        ? [
-                            {
-                              key: "address",
-                              label: quoteDocumentCopy(rawLocale).siteAddress,
-                              value: address.siteAddress || "—",
-                            },
-                          ]
-                        : []),
-                      ...(policy
-                        ? [
-                            {
-                              key: "assistant",
-                              label: assistantCopy(rawLocale).exclude,
-                              value: policy.excluded
-                                ? assistantCopy(rawLocale).on
-                                : assistantCopy(rawLocale).off,
-                            },
-                          ]
-                        : []),
-                    ]}
-                  />
-                ) : (
-                  <>
-                    {address && <SiteAddressForm locale={rawLocale} value={address} />}
-                    {policy && (
-                      <AssistantControl
-                        locale={rawLocale}
-                        enabled={policy.excluded}
-                        projectKey={projectKey}
-                        canManage={context.capabilities.has("project:update")}
-                      />
-                    )}
-                  </>
-                )}
+                <div className={ui.factsWidth}>
+                  {!context.capabilities.has("project:update") ? (
+                    <FactsList
+                      rows={[
+                        ...(address
+                          ? [
+                              {
+                                key: "address",
+                                label: quoteDocumentCopy(rawLocale).siteAddress,
+                                value: address.siteAddress || "—",
+                              },
+                            ]
+                          : []),
+                        ...(policy
+                          ? [
+                              {
+                                key: "assistant",
+                                label: assistantCopy(rawLocale).exclude,
+                                value: policy.excluded
+                                  ? assistantCopy(rawLocale).on
+                                  : assistantCopy(rawLocale).off,
+                              },
+                            ]
+                          : []),
+                      ]}
+                    />
+                  ) : (
+                    <>
+                      {address && <SiteAddressForm locale={rawLocale} value={address} />}
+                      {policy && (
+                        <AssistantControl
+                          locale={rawLocale}
+                          enabled={policy.excluded}
+                          projectKey={projectKey}
+                          canManage={context.capabilities.has("project:update")}
+                        />
+                      )}
+                    </>
+                  )}
+                </div>
               </section>
             )}
           </div>

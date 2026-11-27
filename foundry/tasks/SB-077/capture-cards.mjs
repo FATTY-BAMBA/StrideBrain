@@ -139,6 +139,7 @@ try {
           locale,
           width,
           surface,
+          documentNumbers: await page.getByText("Q-2611-0003", {exact:true}).evaluateAll(nodes=>nodes.map(n=>{const range=document.createRange();range.selectNodeContents(n);const rects=[...range.getClientRects()];return {text:n.textContent,whiteSpace:getComputedStyle(n).whiteSpace,lines:new Set(rects.map(r=>r.top)).size};})),
           alignment: await page.locator("section dd").evaluateAll(nodes=>nodes.map(n=>({text:n.textContent,align:getComputedStyle(n).textAlign}))),
           labels: await page.locator("dt").filter({ hasText: label }).count(),
           sentences: await page.locator("dd").allTextContents(),

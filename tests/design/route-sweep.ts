@@ -5,6 +5,7 @@ const { JSDOM } = createRequire(import.meta.url)("jsdom") as {
 /** An explicit page-file inventory: the HTTP suite proves this list stays exhaustive. */
 export const pageRoutes: Readonly<Record<string, readonly string[]>> = {
   "(redirect)/page.tsx": ["/"],
+  "[locale]/[...missing]/page.tsx": ["/{locale}/nothing-here"],
   "[locale]/page.tsx": ["/{locale}"],
   "[locale]/stridebrain/page.tsx": ["/{locale}/stridebrain"],
   "[locale]/preview/page.tsx": ["/{locale}/preview"],

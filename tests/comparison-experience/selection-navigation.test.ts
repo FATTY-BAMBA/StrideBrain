@@ -131,28 +131,16 @@ describe.each(["en", "zh-TW"] as const)("Persisted selection navigation %s", (lo
   it("names the saved financial baseline separately from top matches and pending edits", async () => {
     await render("BCD", ["B", "C", "D"], locale);
     const baseline = () =>
-      [...host.querySelectorAll("ul")].find(
+      [...host.querySelectorAll("p[aria-label]")].find(
         (list) => list.getAttribute("aria-label") === getValueCopy(locale).selectedHistory,
       )!;
-    expect([...baseline().querySelectorAll("li")].map((item) => item.textContent)).toEqual([
-      "B",
-      "C",
-      "D",
-    ]);
+    expect(baseline().textContent).toBe(["B", "C", "D"].join(locale === "zh-TW" ? "、" : ", "));
     await toggle(3);
     await toggle(0);
     expect(selected()).toEqual(["A", "B", "C"]);
-    expect([...baseline().querySelectorAll("li")].map((item) => item.textContent)).toEqual([
-      "B",
-      "C",
-      "D",
-    ]);
+    expect(baseline().textContent).toBe(["B", "C", "D"].join(locale === "zh-TW" ? "、" : ", "));
     await render("ABC", ["A", "B", "C"], locale);
-    expect([...baseline().querySelectorAll("li")].map((item) => item.textContent)).toEqual([
-      "A",
-      "B",
-      "C",
-    ]);
+    expect(baseline().textContent).toBe(["A", "B", "C"].join(locale === "zh-TW" ? "、" : ", "));
     const findings = host.querySelector("#review-findings")!;
     const choices = host.querySelector("#comparable-projects-title")!;
     expect(
@@ -235,5 +223,77 @@ it.each(["en", "zh-TW"] as const)(
       )
       .filter(Boolean);
     expect(new Set(names).size).toBe(names.length);
+  },
+);
+
+it.each(["en", "zh-TW"] as const)(
+  "groups adjacent findings without changing sentences or triggers (%s)",
+  async (locale) => {
+    const value = view("A1", ["A", "B"], locale);
+    const history: ComparisonExperienceView["synthesis"]["history"] = [
+      {
+        key: "one",
+        title: "History",
+        body: "First exact sentence",
+        tone: "NEUTRAL",
+        claimKey: "ONE",
+      },
+      {
+        key: "two",
+        title: "History",
+        body: "Second exact sentence",
+        tone: "NEUTRAL",
+        claimKey: "TWO",
+      },
+      {
+        key: "three",
+        title: "Gap",
+        body: "Third exact sentence",
+        tone: "NEUTRAL",
+        claimKey: "THREE",
+      },
+      {
+        key: "four",
+        title: "History",
+        body: "Fourth exact sentence",
+        tone: "NEUTRAL",
+        claimKey: "FOUR",
+      },
+    ];
+    await act(async () =>
+      root.render(
+        createElement(ComparisonExperienceClient, {
+          view: { ...value, synthesis: { ...value.synthesis, history } },
+        }),
+      ),
+    );
+    const findings = host.querySelector("#review-findings")!;
+    expect([...findings.querySelectorAll("h3")].map((e) => e.textContent)).toEqual([
+      "History",
+      "Gap",
+      "History",
+      "Review",
+    ]);
+    expect([...findings.querySelectorAll("li > p")].map((e) => e.textContent)).toEqual([
+      "First exact sentence",
+      "Second exact sentence",
+      "Third exact sentence",
+      "Fourth exact sentence",
+      "Review",
+    ]);
+    const trigger = findings.querySelector<HTMLButtonElement>(
+      '[data-evidence-trigger-id="evidence-synthesis-two"]',
+    )!;
+    expect(trigger.tagName).toBe("BUTTON");
+    expect(trigger.dataset.claimKey).toBe("TWO");
+    await act(async () => trigger.click());
+    expect(
+      new URL(mocks.push.mock.calls.at(-1)![0], "http://localhost").searchParams.get(
+        "evidenceClaim",
+      ),
+    ).toBe("TWO");
+    expect(findings.querySelector("[aria-label]")?.textContent?.trim()).toBe(
+      locale === "zh-TW" ? "A、B" : "A, B",
+    );
   },
 );

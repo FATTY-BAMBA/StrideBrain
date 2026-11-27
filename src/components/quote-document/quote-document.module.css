@@ -273,3 +273,15 @@
   overflow: visible;
   max-height: none;
 }
+
+.references h2 {
+  font-size: var(--text-lead);
+  line-height: var(--leading-lead);
+  font-weight: var(--weight-lead);
+}
+.reference h3,
+.references h3 {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  font-weight: var(--weight-lead);
+}

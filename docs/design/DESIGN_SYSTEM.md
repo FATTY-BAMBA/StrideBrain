@@ -169,3 +169,11 @@ Below 900 px, the shell uses a product/current-area top bar and a native details
 Home decisions and lessons use RowList: a semantic ul, hairline-separated rows without cards, radius or shadow. Each row contains a name, text, optional labelled figures and at most one action. The action aligns right when space permits and wraps below on narrow screens; text never clips or scrolls. Tables remain tables; a record's name is its link, with no separate Open column. These decisions from review 7205827683 await Product Director confirmation. Overview facts use the new --facts-width (640px) to keep labels and values together.
 
 Quote side controls use --quote-aside-width (320px) above 1100px. The comparison is a native closed disclosure above issue controls, opens for #quote-comparison, and shows at most five findings. It has no internal scrolling. Closed jobs offer no comparison run or refresh. Diagnostic timing details are a closed disclosure and durations use one decimal second. --radius-none is the zero-radius token for flat rows. There are no legacy tokens or CSS allowances.
+
+## Links and review-round refinements
+
+Within main, ordinary sentence links use accent colour and an underline. Linked record names share the NameCell/recordLink/row-list name style: accent, lead weight, a control-default (44px) tap height and the global focus ring. Tabs and button-styled links retain their explicit control styles. At 390px, a linked name wraps within the initially visible table area; other columns may scroll. Measure every text rectangle, including populated Actions.
+
+Comparison findings are ordered row lists: an adjacent repeated title appears once above its group, and each unchanged sentence is in ink beside a quiet evidence button. Closest jobs are ranked hairline rows beneath a full-width SectionHeading. Comparison details is a plain disclosure. Use accent for actions; info colours belong to worded information badges. The token gate permits --focus only in outline declarations.
+
+Dialogs close through Close or Escape, never a backdrop click. Quote-reference block titles use lead type and category titles use body type at lead weight. The View all link follows the five visible findings. Firm document fields, job address controls and job reader facts cap at --facts-width. Card document-number values do not break internally.

@@ -234,6 +234,9 @@
   text-align: right;
   white-space: nowrap;
 }
+.nameCell a,
+.rowBody > strong > a,
+.recordLink,
 .rowLink {
   display: inline-flex;
   align-items: center;
@@ -244,6 +247,9 @@
   color: var(--accent);
   font-weight: var(--weight-lead);
 }
+.nameCell a:hover,
+.rowBody > strong > a:hover,
+.recordLink:hover,
 .rowLink:hover {
   background: var(--accent-soft);
   color: var(--accent-strong);
@@ -348,6 +354,7 @@
   border-bottom: var(--rule-hairline) solid var(--line);
 }
 .tabs a {
+  text-decoration: none;
   min-height: var(--control-default);
   padding: var(--space-8) var(--space-4);
   color: var(--muted);
@@ -463,4 +470,19 @@
 .dialog :focus-visible {
   outline: var(--focus-width) solid var(--focus);
   outline-offset: var(--focus-offset);
+}
+
+.factsWidth {
+  width: 100%;
+  max-width: var(--facts-width);
+}
+@media (max-width: 700px) {
+  .nameCell a {
+    max-width: calc(100vw - var(--space-48));
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .nameCell:not(:first-child) a {
+    max-width: calc((100vw - var(--space-48)) / 2);
+  }
 }

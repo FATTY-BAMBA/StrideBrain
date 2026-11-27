@@ -8,3 +8,5 @@ F: 320px quote aside; comparison above issue, collapsed with fragment opening an
 G: final visual/keyboard review, DESIGN_SYSTEM.md and verification evidence, npm run check.
 
 Provisional decisions in verification.md await Product Director confirmation. One draft PR. No hosted changes, paid calls, new dependencies, model instructions/tools, financial rules, repository/API/schema or issued-PDF changes.
+
+Fix round 2: owner review 7206932284 requires items 1–7 in one run, then one Builder report with screenshots and stop. See verification.md for the updated 404 limit and pending Product Director decisions.

@@ -117,6 +117,11 @@ it.each(["en", "zh-TW"] as const)(
     expect(host.querySelector("summary")?.textContent).toContain("8");
     expect(host.textContent).not.toContain("Saved sentence 5");
     expect(mock.request).toHaveBeenLastCalledWith(locale, "JOB", "READ");
+    const source = host.querySelector('a[href*="claim=4"]')!;
+    const all = [...host.querySelectorAll("a")].find(
+      (a) => a.textContent === quoteComparisonCopy(locale).open,
+    )!;
+    expect(source.compareDocumentPosition(all) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     window.history.replaceState(null, "", "/");
   },
 );

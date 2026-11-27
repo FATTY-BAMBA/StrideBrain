@@ -119,18 +119,6 @@ export function Dialog({
         event.preventDefault();
         if (!pending) onClose();
       }}
-      onClick={(event) => {
-        if (event.target === event.currentTarget && !pending) {
-          const rect = event.currentTarget.getBoundingClientRect();
-          if (
-            event.clientX < rect.left ||
-            event.clientX > rect.right ||
-            event.clientY < rect.top ||
-            event.clientY > rect.bottom
-          )
-            onClose();
-        }
-      }}
     >
       {children}
     </dialog>

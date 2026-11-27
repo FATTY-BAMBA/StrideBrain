@@ -5,6 +5,7 @@ import { quoteIssueMutationAction } from "@/app/[locale]/projects/[projectKey]/q
 import type { FirmDetails } from "@/modules/quote-issue/domain/contracts";
 import type { Locale } from "@/modules/localization/config";
 import { quoteIssueCopy } from "@/modules/localization/quote-issue";
+import ui from "@/components/ui/ui.module.css";
 import styles from "./quote-issue.module.css";
 const fields = [
   "legalNameZhTw",
@@ -37,6 +38,7 @@ export function FirmDetailsForm({
       <SectionHeading>{copy.firm}</SectionHeading>
       {!canManage && <p>{copy.readonly}</p>}
       <form
+        className={ui.factsWidth}
         onSubmit={(event) => {
           event.preventDefault();
           start(async () => {

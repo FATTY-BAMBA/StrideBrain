@@ -9,7 +9,7 @@
   color: var(--ink);
   border-left: 1px solid var(--line);
   box-shadow: none;
-  padding: 1.25rem;
+  padding: var(--space-16);
 }
 
 .header {
@@ -19,9 +19,9 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
-  margin: -1.25rem -1.25rem 0;
-  padding: 1.25rem;
+  gap: var(--space-16);
+  margin: -1var (--space-48) -1var (--space-48) 0;
+  padding: var(--space-16);
   background: var(--line);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(10px);
@@ -33,10 +33,10 @@
 }
 
 .heading {
-  padding-top: 16px;
+  padding-top: var(--space-16);
 }
 .heading h2 {
-  margin: 0.2rem 0 0.35rem;
+  margin: var(--space-4) 0 var(--space-4);
   font-size: var(--text-section);
   line-height: 1.25;
 }
@@ -53,7 +53,7 @@
   margin: 0;
   color: var(--muted);
   font-size: var(--text-caption);
-  font-weight: 800;
+  font-weight: var(--weight-title);
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
@@ -66,18 +66,18 @@
   background: var(--canvas);
   color: var(--ink);
   font: inherit;
-  font-weight: 700;
+  font-weight: var(--weight-lead);
   cursor: pointer;
 }
 
 .closeButton {
   flex: none;
-  padding: 0.55rem 0.7rem;
+  padding: var(--space-8) var(--space-12);
 }
 
 .backButton {
-  margin-top: 0.9rem;
-  padding: 0.55rem 0.75rem;
+  margin-top: var(--space-16);
+  padding: var(--space-8) var(--space-12);
 }
 
 .closeButton:focus-visible,
@@ -89,9 +89,9 @@
 
 .contextBar {
   display: grid;
-  gap: 0.25rem;
-  margin-top: 1rem;
-  padding: 0.85rem;
+  gap: var(--space-4);
+  margin-top: var(--space-16);
+  padding: var(--space-12);
   border: 1px solid var(--line);
   border-radius: var(--radius-control);
   background: var(--accent-tint);
@@ -109,16 +109,16 @@
 .conflictSection,
 .sourcesSection,
 .stateMessage {
-  margin-top: 1rem;
+  margin-top: var(--space-16);
   border: 1px solid var(--line);
   border-radius: var(--radius-control);
   background: var(--canvas);
-  padding: 1rem;
+  padding: var(--space-16);
 }
 
 .claimSummary > strong {
   display: block;
-  margin-top: 0.55rem;
+  margin-top: var(--space-8);
   line-height: 1.5;
 }
 
@@ -127,8 +127,8 @@
 .badgeRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: 0.7rem;
+  gap: var(--space-8);
+  margin-top: var(--space-12);
 }
 
 .conditionRow span,
@@ -139,18 +139,18 @@
   border-radius: var(--radius-control);
   background: var(--neutral-soft);
   color: var(--neutral-ink);
-  padding: 0.3rem 0.55rem;
+  padding: var(--space-4) var(--space-8);
   font-size: var(--text-caption);
-  font-weight: 750;
+  font-weight: var(--weight-lead);
 }
 
 .warning,
 .notice {
-  margin: 0.7rem 0 0;
+  margin: var(--space-12) 0 0;
   border-radius: var(--radius-control);
   background: var(--danger-soft);
   color: var(--warning-ink);
-  padding: 0.7rem;
+  padding: var(--space-12);
   line-height: 1.4;
 }
 
@@ -162,7 +162,7 @@
 .traceSection h3,
 .conflictSection h3,
 .sourcesSection > h3 {
-  margin: 0 0 0.8rem;
+  margin: 0 0 var(--space-12);
   font-size: var(--text-body);
 }
 
@@ -171,7 +171,7 @@
 .previewGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.65rem;
+  gap: var(--space-12);
   margin: 0;
 }
 
@@ -186,13 +186,13 @@
 .previewGrid dt {
   color: var(--muted);
   font-size: var(--text-caption);
-  font-weight: 750;
+  font-weight: var(--weight-lead);
 }
 
 .traceGrid dd,
 .definitionGrid dd,
 .previewGrid dd {
-  margin: 0.2rem 0 0;
+  margin: var(--space-4) 0 0;
   overflow-wrap: anywhere;
   font-size: var(--text-caption);
   line-height: 1.35;
@@ -200,16 +200,16 @@
 
 .traceInputs {
   display: grid;
-  gap: 0.45rem;
-  margin: 0.85rem 0;
+  gap: var(--space-8);
+  margin: var(--space-12) 0;
 }
 
 .traceInputs div {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 0.2rem 0.7rem;
+  gap: var(--space-4) var(--space-12);
   align-items: baseline;
-  padding: 0.6rem;
+  padding: var(--space-8);
   border-radius: var(--radius-control);
   background: var(--accent-tint);
 }
@@ -226,24 +226,24 @@
 
 .sourceList {
   display: grid;
-  gap: 0.8rem;
+  gap: var(--space-12);
 }
 
 .sourceCard {
   border: 1px solid var(--line);
   border-radius: var(--radius-control);
-  padding: 0.9rem;
+  padding: var(--space-16);
   background: var(--canvas);
 }
 
 .sourceHeader {
   display: flex;
   justify-content: space-between;
-  gap: 0.8rem;
+  gap: var(--space-12);
 }
 
 .sourceHeader h4 {
-  margin: 0.25rem 0 0;
+  margin: var(--space-4) 0 0;
   font-size: var(--text-body);
 }
 
@@ -253,13 +253,13 @@
 }
 
 .preview {
-  margin-top: 0.8rem;
+  margin-top: var(--space-12);
   border-top: 1px solid var(--line);
-  padding-top: 0.8rem;
+  padding-top: var(--space-12);
 }
 
 .preview h5 {
-  margin: 0 0 0.6rem;
+  margin: 0 0 var(--space-8);
   font-size: var(--text-caption);
 }
 
@@ -273,18 +273,18 @@
 .sourceActions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
-  margin-top: 0.8rem;
+  gap: var(--space-8);
+  margin-top: var(--space-12);
 }
 
 .sourceActions button {
-  padding: 0.5rem 0.65rem;
+  padding: var(--space-8) var(--space-12);
   font-size: var(--text-caption);
 }
 
 .stateMessage {
   display: grid;
-  gap: 0.5rem;
+  gap: var(--space-8);
 }
 
 .stateMessage small {
@@ -299,13 +299,13 @@
     border-left: 0;
     border-top: 1px solid var(--line);
     border-radius: var(--radius-control);
-    padding: 1rem;
+    padding: var(--space-16);
   }
 
   .header {
     flex-wrap: wrap;
-    margin: -1rem -1rem 0;
-    padding: 1rem;
+    margin: calc(-1 * var(--space-16)) calc(-1 * var(--space-16)) 0;
+    padding: var(--space-16);
   }
 
   .traceGrid,
@@ -333,8 +333,8 @@
 
 .relatedClaims {
   display: grid;
-  gap: 0.75rem;
-  padding: 1rem 1.25rem;
+  gap: var(--space-12);
+  padding: var(--space-16) var(--space-16);
   border-block: 1px solid var(--border-subtle, var(--line));
 }
 
@@ -345,7 +345,7 @@
 
 .relatedClaims ul {
   display: grid;
-  gap: 0.6rem;
+  gap: var(--space-8);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -353,7 +353,7 @@
 
 .relatedClaims li {
   display: grid;
-  gap: 0.15rem;
+  gap: var(--space-4);
 }
 
 .relatedClaims span {
@@ -362,18 +362,18 @@
 }
 
 .calculationDetails {
-  margin-top: 18px;
+  margin-top: var(--space-16);
 }
 .calculationDetails summary {
   cursor: pointer;
-  padding: 12px;
+  padding: var(--space-12);
   color: var(--accent-strong);
-  font-weight: 700;
+  font-weight: var(--weight-lead);
 }
 @media (max-width: 700px) {
   .header {
-    padding: 10px 16px;
-    gap: 8px;
+    padding: var(--space-8) var(--space-16);
+    gap: var(--space-8);
   }
   .header > p {
     flex: 1;

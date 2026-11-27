@@ -19,6 +19,10 @@ export function checkDesignTokens(directory = root): string[] {
           )
         )
           errors.push(`${name}: legacy custom properties are forbidden.`);
+        for (const { property, value, line } of declarations(css)) {
+          if (/var\(\s*--focus\s*[,)]/.test(value) && property !== "outline")
+            errors.push(`${name}:${line}: --focus is allowed only in outline declarations.`);
+        }
         if (name === tokenFile) {
           if (declarations(css).some(({ property }) => !property.startsWith("--")))
             errors.push(`${name}: only token declarations are allowed.`);

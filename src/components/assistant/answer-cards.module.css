@@ -87,3 +87,7 @@
   justify-content: space-between;
   gap: var(--space-4) var(--space-12);
 }
+
+.detailValue {
+  white-space: nowrap;
+}

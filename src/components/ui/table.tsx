@@ -32,7 +32,11 @@ export function Table({
   );
 }
 export function NameCell({ children }: { children: ReactNode }) {
-  return <th scope="row">{children}</th>;
+  return (
+    <th scope="row" className={styles.nameCell}>
+      {children}
+    </th>
+  );
 }
 export function NumericCell({ children }: { children: ReactNode }) {
   return <td className={styles.numeric}>{children}</td>;

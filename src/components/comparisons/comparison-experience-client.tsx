@@ -4,6 +4,8 @@ import { designSystemCopy } from "@/modules/localization/design-system";
 
 import { PageHeader } from "@/components/ui/page-header";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { Button } from "@/components/ui/button";
+import { RowList } from "@/components/ui/row-list";
 import { Table } from "@/components/ui/table";
 import { getValueCopy } from "@/modules/demo-value/copy";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -371,6 +373,19 @@ function ComparisonResultExperience({
     [navigateEvidence, view.route.comparisonRunId, view.route.economicsRunId],
   );
 
+  const findings = [
+    ...view.synthesis.history,
+    ...view.synthesis.differences,
+    ...view.synthesis.gaps,
+    ...(view.synthesis.recommendation ? [view.synthesis.recommendation] : []),
+  ];
+  const findingGroups: (typeof findings)[] = [];
+  for (const item of findings) {
+    const previous = findingGroups.at(-1);
+    if (previous?.[0]?.title === item.title) previous.push(item);
+    else findingGroups.push([item]);
+  }
+
   function toggleProject(projectKey: string) {
     setSelected((current) => {
       if (current.includes(projectKey)) {
@@ -405,10 +420,12 @@ function ComparisonResultExperience({
       ) : null}
 
       <section className={styles.section} aria-labelledby="closest-projects-title">
-        <div className={styles.compactHeading}>
-          <SectionHeading id="closest-projects-title">{valueCopy.strongest}</SectionHeading>
-          <a href="#comparable-projects-title">{valueCopy.changeSelection} ↓</a>
-        </div>
+        <SectionHeading
+          id="closest-projects-title"
+          actions={<a href="#comparable-projects-title">{valueCopy.changeSelection} ↓</a>}
+        >
+          {valueCopy.strongest}
+        </SectionHeading>
         <ol className={styles.closestProjects}>
           {view.cards.slice(0, 3).map((card) => (
             <li key={card.projectKey}>
@@ -431,43 +448,41 @@ function ComparisonResultExperience({
         <div className={styles.sectionHeaderText}>
           <SectionHeading id="structured-review-title">{copy.synthesis.title}</SectionHeading>
           <p>{valueCopy.selectedHistory}</p>
-          <ul className={styles.findingProjects} aria-label={valueCopy.selectedHistory}>
+          <p className={styles.findingProjects} aria-label={valueCopy.selectedHistory}>
             {view.cards
               .filter((card) => view.route.selectedProjectKeys.includes(card.projectKey))
-              .map((card) => (
-                <li key={card.projectKey}>{card.name}</li>
-              ))}
-          </ul>
+              .map((card) => card.name)
+              .join(view.locale === "zh-TW" ? "、" : ", ")}
+          </p>
           <p className={styles.selectionHelp}>{valueCopy.selectedHistoryHelp}</p>
         </div>
-        <div className={styles.synthesisGrid}>
-          {[
-            ...view.synthesis.history,
-            ...view.synthesis.differences,
-            ...view.synthesis.gaps,
-            ...(view.synthesis.recommendation ? [view.synthesis.recommendation] : []),
-          ].map((item) => (
-            <article
-              className={styles.synthesisCard}
-              data-tone={item.tone}
-              data-claim-key={item.claimKey}
-              key={item.key}
-            >
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
-              {item.claimKey ? (
-                <button
-                  className={styles.synthesisEvidenceTrigger}
-                  data-evidence-trigger-id={`evidence-synthesis-${item.key}`}
-                  type="button"
-                  onClick={() => openClaim(item.claimKey!, `evidence-synthesis-${item.key}`)}
+        {findingGroups.map((group) => (
+          <div key={group[0]!.key}>
+            <h3 className={styles.findingGroupTitle}>{group[0]!.title}</h3>
+            <RowList>
+              {group.map((item) => (
+                <li
+                  className={styles.findingRow}
+                  data-tone={item.tone}
+                  data-claim-key={item.claimKey}
+                  key={item.key}
                 >
-                  {valueCopy.seeEvidence}
-                </button>
-              ) : null}
-            </article>
-          ))}
-        </div>
+                  <p>{item.body}</p>
+                  {item.claimKey ? (
+                    <Button
+                      variant="quiet"
+                      data-claim-key={item.claimKey}
+                      data-evidence-trigger-id={`evidence-synthesis-${item.key}`}
+                      onClick={() => openClaim(item.claimKey!, `evidence-synthesis-${item.key}`)}
+                    >
+                      {valueCopy.seeEvidence}
+                    </Button>
+                  ) : null}
+                </li>
+              ))}
+            </RowList>
+          </div>
+        ))}
       </section>
 
       {internalReview ? (

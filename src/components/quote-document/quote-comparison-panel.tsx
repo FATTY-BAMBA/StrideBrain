@@ -7,6 +7,7 @@ import { requestQuoteComparison } from "@/modules/quote-comparison/request";
 import type { QuoteComparison } from "@/modules/quote-comparison/application/quote-comparison";
 import type { Locale } from "@/modules/localization/config";
 import { quoteComparisonCopy } from "@/modules/localization/quote-comparison";
+import ui from "@/components/ui/ui.module.css";
 import styles from "./quote-document.module.css";
 export function QuoteComparisonPanel({
   locale,
@@ -91,6 +92,7 @@ export function QuoteComparisonPanel({
               {result.jobs.map((job) => (
                 <li key={job.projectKey}>
                   <Link
+                    className={ui.recordLink}
                     href={
                       `/${locale}/projects/${encodeURIComponent(job.projectKey)}/quote` as Route
                     }

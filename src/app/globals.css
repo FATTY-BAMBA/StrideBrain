@@ -681,3 +681,11 @@
   border: 0;
   border-radius: var(--radius-none);
 }
+
+@layer base {
+  :where(main) a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+}

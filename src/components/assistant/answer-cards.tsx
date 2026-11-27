@@ -23,7 +23,7 @@ function FactRows({ rows, locale }: { rows: readonly AnswerRow[]; locale: Locale
                   <span key={detail.ref}>
                     {detail.label}
                     {locale === "zh-TW" ? "：" : ": "}
-                    {detail.value}
+                    <span className={styles.detailValue}>{detail.value}</span>
                   </span>
                 ))}
               </small>

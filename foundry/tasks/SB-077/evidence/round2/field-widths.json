@@ -1,0 +1,66 @@
+[
+  {
+    "role": "owner",
+    "locale": "en",
+    "viewport": 390,
+    "width": 358,
+    "left": 16,
+    "sectionLeft": 16
+  },
+  {
+    "role": "owner",
+    "locale": "en",
+    "viewport": 1440,
+    "width": 640,
+    "left": 288,
+    "sectionLeft": 288
+  },
+  {
+    "role": "owner",
+    "locale": "zh-TW",
+    "viewport": 390,
+    "width": 358,
+    "left": 16,
+    "sectionLeft": 16
+  },
+  {
+    "role": "owner",
+    "locale": "zh-TW",
+    "viewport": 1440,
+    "width": 640,
+    "left": 288,
+    "sectionLeft": 288
+  },
+  {
+    "role": "viewer",
+    "locale": "en",
+    "viewport": 390,
+    "width": 358,
+    "left": 16,
+    "sectionLeft": 16
+  },
+  {
+    "role": "viewer",
+    "locale": "en",
+    "viewport": 1440,
+    "width": 640,
+    "left": 288,
+    "sectionLeft": 288
+  },
+  {
+    "role": "viewer",
+    "locale": "zh-TW",
+    "viewport": 390,
+    "width": 358,
+    "left": 16,
+    "sectionLeft": 16
+  },
+  {
+    "role": "viewer",
+    "locale": "zh-TW",
+    "viewport": 1440,
+    "width": 640,
+    "left": 288,
+    "sectionLeft": 288
+  }
+]

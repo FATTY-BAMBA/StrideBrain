@@ -8,7 +8,6 @@ const nextConfig: NextConfig = {
   // Largest signed issue token plus the measured 230-byte React action envelope.
   // Regression/measurement: tests/quote-document/request-size.test.ts.
   experimental: {
-    globalNotFound: true,
     serverActions: { bodySizeLimit: MAX_QUOTE_ISSUE_TOKEN_LENGTH + 230 },
   },
   serverExternalPackages: ["pdfkit"],

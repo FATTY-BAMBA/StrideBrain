@@ -41,6 +41,15 @@ describe("CSS design-token gate", () => {
       writeFileSync(join(root, "src/probe.module.css"), ".probe { --legacy-bypass: var(--ink); }");
       expect(checkDesignTokens(root)[0]).toContain("legacy custom properties");
       writeFileSync(join(root, "src/probe.module.css"), ".probe { color: var(--ink); }");
+      for (const property of ["color", "background", "border-color", "--alias"]) {
+        writeFileSync(join(root, "src/probe.module.css"), `.probe { ${property}: var(--focus); }`);
+        expect(checkDesignTokens(root)[0]).toContain("--focus is allowed only in outline");
+      }
+      writeFileSync(
+        join(root, "src/probe.module.css"),
+        ".probe {outline:var(--focus-width) solid var(--focus);outline-offset:var(--focus-offset);}",
+      );
+      expect(checkDesignTokens(root)).toEqual([]);
       writeFileSync(join(root, "src/styles/tokens.css"), ".escape {color: #123456;}");
       expect(checkDesignTokens(root)[0]).toContain("only token declarations");
     } finally {
