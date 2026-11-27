@@ -324,7 +324,8 @@ export function evaluateAnswer(
     const cards = outcome.answer.presentation?.blocks.filter((b) => b.kind === "CARD") ?? [];
     const shownFindings = actual.filter((f) => /^findings\.\d+\.text$/.test(f.path));
     return report(
-      shownFindings.length === 12 &&
+      !selection?.noticePhraseId &&
+        shownFindings.length === 12 &&
         shownFindings.every((f) => facts.some((e) => matchesExpected(f, e))) &&
         cards.some(
           (card) =>

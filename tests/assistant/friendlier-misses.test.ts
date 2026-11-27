@@ -349,8 +349,10 @@ it.each(["en", "zh-TW"] as const)(
         followUps: [],
       }),
     ).toEqual(registry.render(canonical));
+    expect(
+      registry.render({ parts: [{ say: "PARTIAL_RECORDS" }, { show: "s1.stage" }], followUps: [] }),
+    ).toEqual(registry.render(canonical));
     for (const parts of [
-      [{ say: "PARTIAL_RECORDS" }, { show: "s1.stage" }],
       [{ say: "PARTIAL_RECORDS" }, { say: "RECORDS_SHOW" }],
       [...canonical.parts, { say: "PARTIAL_RECORDS" }],
     ])
@@ -375,4 +377,26 @@ it("C: replays the focused run's three discarded raw partial answers without cha
       count++;
     }
   expect(count).toBe(3);
+});
+
+it("C: valid partial-only phrase selections from focused run 2 are laid out without losing facts", () => {
+  const report = JSON.parse(
+    readFileSync("foundry/tasks/SB-081/evidence/focused-paid-2.json", "utf8"),
+  );
+  let n = 0;
+  for (const round of report.rounds)
+    for (const row of round.questions) {
+      if (row.discardReason !== "INVALID_OUTPUT") continue;
+      const registry = new AnswerFactRegistry(row.locale);
+      registry.register(row.sourceLedger);
+      const rendered = registry.render(row.rawAnswer);
+      expect(rendered.kind).toBe("ACCEPTED");
+      if (rendered.kind !== "ACCEPTED") throw Error("replay");
+      expect(rendered.selection.noticePhraseId).toBe("PARTIAL_RECORDS");
+      expect(rendered.selection.shown).toHaveLength(
+        row.rawAnswer.parts.filter((p: { show?: string }) => p.show).length,
+      );
+      n++;
+    }
+  expect(n).toBe(5);
 });

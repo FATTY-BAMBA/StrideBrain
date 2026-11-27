@@ -23,11 +23,11 @@ import { modelFacts } from "./redaction";
 
 /** Non-factual copy only. The model chooses an id, never writes an answer sentence. */
 export const answerPhrases = {
+  RECORDS_SHOW: { en: "Here is what the records show:", "zh-TW": "紀錄顯示：" },
   PARTIAL_RECORDS: {
     en: "Part of what you asked is not in the records you may read.",
     "zh-TW": "您問的部分內容不在可查看的紀錄中。",
   },
-  RECORDS_SHOW: { en: "Here is what the records show:", "zh-TW": "紀錄顯示：" },
 } as const;
 export type AnswerPart = Readonly<{ say: keyof typeof answerPhrases } | { show: string }>;
 export type AnswerSelection = Readonly<{
@@ -51,7 +51,14 @@ export const answerParameters = {
         anyOf: [
           {
             type: "object",
-            properties: { say: { type: "string", enum: Object.keys(answerPhrases) } },
+            properties: {
+              say: {
+                type: "string",
+                enum: Object.keys(answerPhrases),
+                description:
+                  "RECORDS_SHOW introduces available facts. PARTIAL_RECORDS is also needed when any requested information is unavailable, even when another requested fact was found. It is not for the printed-row limit or a saved finding about insufficient history.",
+              },
+            },
             required: ["say"],
             additionalProperties: false,
           },
@@ -108,7 +115,7 @@ export function parseFactAnswer(
   if (
     r.parts.length &&
     (!("say" in r.parts[0]) ||
-      r.parts.filter((p) => p.say === "RECORDS_SHOW").length !== 1 ||
+      r.parts.filter((p) => p.say === "RECORDS_SHOW").length > 1 ||
       r.parts.filter((p) => p.say === "PARTIAL_RECORDS").length > 1 ||
       !r.parts.some((p) => "show" in p))
   )

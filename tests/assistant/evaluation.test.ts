@@ -352,3 +352,42 @@ it("a chip for an unreadable job fails the absolute access gate even in a refusa
   );
   expect(out).toMatchObject({ verdict: "wrong", accessViolation: true });
 });
+
+it("a complete long findings answer cannot claim that requested records are missing", () => {
+  const ledger = [
+    {
+      sourceId: "s",
+      label: "Job",
+      href: "/en/projects/J",
+      projectKeys: ["J"],
+      facts: { findings: Array.from({ length: 13 }, (_, i) => ({ text: `Saved finding ${i}` })) },
+    },
+  ];
+  const question: EvaluationQuestion = {
+    ...q,
+    expected: { kind: "FACTS", facts: [], forbidden: [], match: "LONG_FINDINGS" },
+  };
+  const registry = new AnswerFactRegistry("en");
+  registry.register(ledger);
+  for (const partial of [false, true]) {
+    const raw = {
+      parts: [
+        { say: "RECORDS_SHOW" },
+        ...Array.from({ length: 13 }, (_, i) => ({ show: `s1.findings.${i}.text` })),
+        ...(partial ? [{ say: "PARTIAL_RECORDS" }] : []),
+      ],
+      followUps: [],
+    };
+    const rendered = registry.render(raw);
+    if (rendered.kind !== "ACCEPTED") throw Error("render");
+    const judged = evaluateAnswer(
+      question,
+      { ...rendered, kind: "ANSWER", locale: "en", sources: ledger },
+      expectedFacts(question, ledger),
+      raw,
+      ledger,
+    );
+    expect(judged.verdict).toBe(partial ? "wrong" : "grounded and correct");
+    expect(judged.wrongRecordValue).toBe(false);
+  }
+});
