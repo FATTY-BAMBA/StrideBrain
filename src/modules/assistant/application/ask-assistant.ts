@@ -401,12 +401,16 @@ export class AskAssistant {
           results.push(result);
           comparisonReads.push({ name: call.name, projectKey: call.arguments.projectKey, result });
           if (result.status === "EXCLUDED") return await refusal("EXCLUDED");
-          if (
-            result.status === "UNAVAILABLE" &&
-            typeof call.arguments.projectKey === "string" &&
-            !comparisonTool
-          )
-            return await refusal("UNAVAILABLE");
+          if (result.status === "UNAVAILABLE" && typeof call.arguments.projectKey === "string") {
+            // A denied quote capability is not a missing job. Distinguish only by
+            // the same authorized job read used for a forged or stale chip.
+            if (!(await bounded(this.repository.jobPolicy(c, call.arguments.projectKey)))) {
+              searchedText =
+                identityMention(input.question, call.arguments.projectKey) ?? input.question;
+              return await refusal("UNAVAILABLE", true);
+            }
+            if (!comparisonTool) return await refusal("UNAVAILABLE");
+          }
           if (!names.includes(call.name)) names.push(call.name);
           const safeSources = result.sources.map((s) =>
             redactSource(

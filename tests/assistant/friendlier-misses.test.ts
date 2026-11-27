@@ -449,3 +449,30 @@ it("B: guard chip search is the typed match, never another canonical field or un
     "PRJ-XINYI-026",
   );
 });
+
+it("A/B: replays direct unreadable-job calls from the full paid run with the not-found sentence", async () => {
+  const report = JSON.parse(readFileSync("foundry/tasks/SB-081/evidence/full-paid.json", "utf8"));
+  let n = 0;
+  for (const round of report.rounds) {
+    const row = round.questions.find((q: { id: string }) => q.id === "en-misses-unreadable-1");
+    const question = questions.find((q) => q.id === row.id)!;
+    const f = missesFixture([{ usage, result: { kind: "TOOLS", calls: row.toolCalls } }]);
+    f.repo.jobPolicy.mockImplementation(async (_context, key) =>
+      key === question.projectKey ? { id: "page", excluded: false } : null,
+    );
+    f.tools.execute.mockResolvedValue({ status: "UNAVAILABLE", sources: [] });
+    const out = await f.service.execute(jobContext(), {
+      question: question.question,
+      projectKey: question.projectKey!,
+    });
+    expect(out).toMatchObject({
+      kind: "ANSWER",
+      answer: { text: assistantCopy("en").jobNotFound },
+      sources: [],
+      questionChips: [],
+    });
+    expect(f.model.requests).toHaveLength(row.calls);
+    n++;
+  }
+  expect(n).toBe(3);
+});
