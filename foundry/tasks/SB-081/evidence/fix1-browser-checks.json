@@ -1,0 +1,45 @@
+{
+  "mode": "LOCAL_PRODUCTION_APP_WITH_SYNTHETIC_MODEL_TRANSPORT",
+  "checks": [
+    {
+      "locale": "en",
+      "width": 1440,
+      "keyboardChip": true,
+      "confirmedTotal": "NT$17,304,000",
+      "clientAvailabilityRow": true,
+      "sameQuestionRetry": true,
+      "horizontalOverflow": false,
+      "pageErrors": []
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "keyboardChip": true,
+      "confirmedTotal": "NT$17,304,000",
+      "clientAvailabilityRow": true,
+      "sameQuestionRetry": true,
+      "horizontalOverflow": false,
+      "pageErrors": []
+    },
+    {
+      "locale": "zh-TW",
+      "width": 1440,
+      "keyboardChip": true,
+      "confirmedTotal": "NT$17,304,000",
+      "clientAvailabilityRow": true,
+      "sameQuestionRetry": true,
+      "horizontalOverflow": false,
+      "pageErrors": []
+    },
+    {
+      "locale": "zh-TW",
+      "width": 390,
+      "keyboardChip": true,
+      "confirmedTotal": "NT$17,304,000",
+      "clientAvailabilityRow": true,
+      "sameQuestionRetry": true,
+      "horizontalOverflow": false,
+      "pageErrors": []
+    }
+  ]
+}

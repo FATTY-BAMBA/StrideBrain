@@ -2,12 +2,12 @@
   "issue": 81,
   "branch": "build/sb-081-friendlier-misses",
   "baseCommit": "2443d9d2d50ce1bf8c1d36999ef670a4aec16c79",
-  "status": "AWAITING_REVIEW_PAID_ACCEPTANCE_FAILED",
+  "status": "AWAITING_PRODUCT_DIRECTOR_HOSTED_ACCEPTANCE",
   "draft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
-  "paidBudgetUsd": "1.00",
-  "paidSpentUsd": "0.859081800",
-  "stopAfter": "BUILDER_REPORT_AFTER_F",
+  "paidBudgetUsd": "2.00",
+  "paidSpentUsd": "1.546026000",
+  "stopAfter": "BUILDER_REPORT_FIX_ROUND_1",
   "pullRequest": 83,
   "completedSteps": [
     "A",
@@ -19,17 +19,42 @@
   ],
   "provisionalDecisions": [
     "Reviewer 7210266238: typed question may reach model; private record identities may not. Awaiting Product Director before merge.",
-    "Not-found, partial-answer and failed-answer copy."
+    "Reviewer 7211242362: constant client/contact/site-address facts replace partial notice. Awaiting Product Director before merge.",
+    "Not-found and failed-answer copy."
   ],
-  "finalCodeCommit": "5b8ea86c564f01919726a76ad3129da5bce58fac",
-  "paidEvaluatedCommit": "332e00ab87f26f879bd8538c9b6e5526d55da260",
-  "paidPassed": false,
-  "fullPaidRunsUsed": 1,
-  "fullPaidRun": 45946752882,
+  "finalCodeCommit": "b918108f3d1d19de1db48a4933ebb7d76be4234a",
+  "paidEvaluatedCommit": "b918108f3d1d19de1db48a4933ebb7d76be4234a",
+  "paidPassed": true,
+  "fullPaidRunsUsed": 2,
+  "fullPaidRun": 45951296390,
   "localCheck": {
     "passed": true,
-    "tests": 2025,
-    "files": 209
+    "tests": 2028,
+    "files": 210,
+    "workers": 4
   },
-  "remainingBlocker": "Model partial-answer selection below the required pass rate; hosted acceptance not run."
+  "remainingBlocker": "Hosted acceptance and Product Director confirmation of provisional decisions.",
+  "additionalAuthorization": {
+    "additionalAllowanceUsd": "1.00",
+    "focused": {
+      "run": 45950848346,
+      "commit": "7d48368e9437c3b6357372011af16e79c3a385e0",
+      "passed": true,
+      "estimatedUsd": "0.071234100"
+    },
+    "full": {
+      "run": 45951296390,
+      "commit": "b918108f3d1d19de1db48a4933ebb7d76be4234a",
+      "passed": true,
+      "estimatedUsd": "0.615710100",
+      "requiredAnswers": {
+        "passed": 227,
+        "total": 228
+      }
+    },
+    "additionalSpentUsd": "0.686944200",
+    "previousSpentUsd": "0.859081800",
+    "totalIssueSpentUsd": "1.546026000",
+    "fullRunsThisAuthorization": 1
+  }
 }

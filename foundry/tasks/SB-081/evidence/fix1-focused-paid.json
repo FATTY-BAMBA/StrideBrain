@@ -1,0 +1,4983 @@
+{
+  "mode": "FOCUSED_PAID_NOT_ACCEPTANCE",
+  "focusedCaseIds": [
+    "en-misses-partial-0",
+    "en-misses-complete-0",
+    "en-misses-partial-1",
+    "en-misses-complete-1",
+    "zh-TW-misses-partial-0",
+    "zh-TW-misses-complete-0",
+    "zh-TW-misses-partial-1",
+    "zh-TW-misses-complete-1",
+    "en-misses-client-only",
+    "en-misses-siteAddress-only",
+    "en-misses-contact-only",
+    "zh-TW-misses-client-only",
+    "zh-TW-misses-siteAddress-only",
+    "zh-TW-misses-contact-only"
+  ],
+  "budget": {
+    "maximumUsd": "0.15",
+    "estimatedUsd": "0.071234100"
+  },
+  "provider": "gemini",
+  "model": "gemini-3.5-flash-lite",
+  "inputUsdPerMillion": "0.30",
+  "outputUsdPerMillion": "2.50",
+  "generatedAt": "2026-11-27T06:18:40.113Z",
+  "acceptanceRun": false,
+  "requiredAnswers": {
+    "passed": 41,
+    "total": 42
+  },
+  "requiredPassed": true,
+  "absoluteGatesPassed": true,
+  "passed": true,
+  "rounds": [
+    {
+      "round": 1,
+      "callTargets": {
+        "median": 2,
+        "maximum": 3,
+        "withinThree": 14,
+        "questions": 14,
+        "namedRefusalMedian": 0,
+        "namedRefusalMaximum": 0
+      },
+      "performance": {
+        "medianMs": 1296,
+        "p90Ms": 1676,
+        "totalUsd": "0.023992000",
+        "costPerQuestionUsd": "0.001713714286",
+        "baseline": {
+          "run": "45804259788",
+          "medianCalls": 2,
+          "p90Ms": 2428,
+          "costUsd": "0.352631200",
+          "questions": 252
+        },
+        "limits": {
+          "p90Ms": 3035,
+          "costPerQuestionUsd": "0.001749162698"
+        }
+      },
+      "performancePassed": true,
+      "friendlierMisses": {
+        "passed": 14,
+        "total": 28
+      },
+      "factSelectionRegressions": {
+        "passed": 0,
+        "total": 28
+      },
+      "reportedCases": {
+        "passed": 0,
+        "total": 2
+      },
+      "qualityRegressions": {
+        "passed": 0,
+        "total": 2
+      },
+      "scores": {
+        "en": 0,
+        "zh-TW": 0
+      },
+      "hostedRegressions": {
+        "passed": 0,
+        "total": 12
+      },
+      "passed": false,
+      "questions": [
+        {
+          "id": "en-misses-partial-0",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "What is the quote status for PRJ-XINYI-026?",
+              "When was PRJ-XINYI-026 created?"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the quote status for PRJ-XINYI-026?",
+            "When was PRJ-XINYI-026 created?"
+          ],
+          "followUps": [
+            "What is the quote status for Xinyi Flagship Renovation?",
+            "When was Xinyi Flagship Renovation created?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nStage: Quote review\nClient: Not shared with the AI.",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "stage",
+                "kind": "fact"
+              },
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1298,
+          "calls": 2,
+          "inputTokens": 4541,
+          "outputTokens": 107,
+          "estimatedUsd": "0.001629800"
+        },
+        {
+          "id": "en-misses-complete-0",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "What is the quote status for PRJ-XINYI-026?",
+              "What scope categories are included in PRJ-XINYI-026?"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the quote status for PRJ-XINYI-026?",
+            "What scope categories are included in PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the quote status for Xinyi Flagship Renovation?",
+            "What scope categories are included in Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nStage: Quote review",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "stage",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1208,
+          "calls": 2,
+          "inputTokens": 4529,
+          "outputTokens": 100,
+          "estimatedUsd": "0.001608700"
+        },
+        {
+          "id": "en-misses-partial-1",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "What is the quote status for PRJ-XINYI-026?",
+              "What is the job reference for PRJ-XINYI-026?"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the quote status for PRJ-XINYI-026?",
+            "What is the job reference for PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the quote status for Xinyi Flagship Renovation?",
+            "What is the job reference for Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nStage: Quote review\nClient: Not shared with the AI.",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "stage",
+                "kind": "fact"
+              },
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1235,
+          "calls": 2,
+          "inputTokens": 4545,
+          "outputTokens": 110,
+          "estimatedUsd": "0.001638500"
+        },
+        {
+          "id": "en-misses-complete-1",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              }
+            ],
+            "followUps": [
+              "What is the area of PRJ-XINYI-026?",
+              "What city is PRJ-XINYI-026 in?",
+              "What scope categories are included in PRJ-XINYI-026?"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the area of PRJ-XINYI-026?",
+            "What city is PRJ-XINYI-026 in?",
+            "What scope categories are included in PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the area of Xinyi Flagship Renovation?",
+            "What city is Xinyi Flagship Renovation in?",
+            "What scope categories are included in Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nStage: Quote review",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "stage",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1328,
+          "calls": 2,
+          "inputTokens": 4531,
+          "outputTokens": 117,
+          "estimatedUsd": "0.001651800"
+        },
+        {
+          "id": "zh-TW-misses-partial-0",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "PRJ-XINYI-026目前的報價狀態是什麼？",
+              "PRJ-XINYI-026的工作範圍包含哪些項目？"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.reference"
+              },
+              {
+                "show": "s1.name"
+              },
+              {
+                "show": "s1.stage"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "PRJ-XINYI-026目前的報價狀態是什麼？",
+            "PRJ-XINYI-026的工作範圍包含哪些項目？"
+          ],
+          "followUps": [
+            "信義旗艦店裝修目前的報價狀態是什麼？",
+            "信義旗艦店裝修的工作範圍包含哪些項目？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n階段：報價審查\n客戶：不提供給 AI。",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.reference",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "reference",
+                "kind": "fact"
+              },
+              {
+                "ref": "s1.name",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "name",
+                "kind": "fact"
+              },
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "stage",
+                "kind": "fact"
+              },
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1296,
+          "calls": 2,
+          "inputTokens": 4554,
+          "outputTokens": 126,
+          "estimatedUsd": "0.001681200"
+        },
+        {
+          "id": "zh-TW-misses-complete-0",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "PRJ-XINYI-026的工作範圍是什麼？",
+              "PRJ-XINYI-026的專案名稱是什麼？"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "PRJ-XINYI-026的工作範圍是什麼？",
+            "PRJ-XINYI-026的專案名稱是什麼？"
+          ],
+          "followUps": [
+            "信義旗艦店裝修的工作範圍是什麼？",
+            "信義旗艦店裝修的專案名稱是什麼？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n階段：報價審查",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "stage",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1676,
+          "calls": 3,
+          "inputTokens": 6145,
+          "outputTokens": 122,
+          "estimatedUsd": "0.002148500"
+        },
+        {
+          "id": "zh-TW-misses-partial-1",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ],
+            "followUps": [
+              "請問PRJ-XINYI-026目前的報價狀態為何？"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "請問PRJ-XINYI-026目前的報價狀態為何？"
+          ],
+          "followUps": [
+            "請問信義旗艦店裝修目前的報價狀態為何？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n階段：報價審查\n客戶：不提供給 AI。",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "stage",
+                "kind": "fact"
+              },
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1219,
+          "calls": 2,
+          "inputTokens": 4556,
+          "outputTokens": 90,
+          "estimatedUsd": "0.001591800"
+        },
+        {
+          "id": "zh-TW-misses-complete-1",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              }
+            ],
+            "followUps": [
+              "請問 PRJ-XINYI-026 的專案名稱是什麼？",
+              "請問 PRJ-XINYI-026 的城市在哪裡？"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "請問 PRJ-XINYI-026 的專案名稱是什麼？",
+            "請問 PRJ-XINYI-026 的城市在哪裡？"
+          ],
+          "followUps": [
+            "請問 信義旗艦店裝修 的專案名稱是什麼？",
+            "請問 信義旗艦店裝修 的城市在哪裡？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n階段：報價審查",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "stage",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1185,
+          "calls": 2,
+          "inputTokens": 4548,
+          "outputTokens": 99,
+          "estimatedUsd": "0.001611900"
+        },
+        {
+          "id": "en-misses-client-only",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "What is the stage of PRJ-XINYI-026?",
+              "What is the city of PRJ-XINYI-026?",
+              "What is the area of PRJ-XINYI-026?"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the stage of PRJ-XINYI-026?",
+            "What is the city of PRJ-XINYI-026?",
+            "What is the area of PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the stage of Xinyi Flagship Renovation?",
+            "What is the city of Xinyi Flagship Renovation?",
+            "What is the area of Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nClient: Not shared with the AI.",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1299,
+          "calls": 2,
+          "inputTokens": 4531,
+          "outputTokens": 118,
+          "estimatedUsd": "0.001654300"
+        },
+        {
+          "id": "en-misses-siteAddress-only",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "What is the city of PRJ-XINYI-026?",
+              "What is the stage of PRJ-XINYI-026?",
+              "What is the area of PRJ-XINYI-026?"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.siteAddressAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the city of PRJ-XINYI-026?",
+            "What is the stage of PRJ-XINYI-026?",
+            "What is the area of PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the city of Xinyi Flagship Renovation?",
+            "What is the stage of Xinyi Flagship Renovation?",
+            "What is the area of Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nSite address: Not shared with the AI.",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.siteAddressAvailability",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "siteAddressAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1276,
+          "calls": 2,
+          "inputTokens": 4533,
+          "outputTokens": 119,
+          "estimatedUsd": "0.001657400"
+        },
+        {
+          "id": "en-misses-contact-only",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.contactAvailability"
+              }
+            ],
+            "followUps": [
+              "What is the stage for PRJ-XINYI-026?",
+              "What is the city for PRJ-XINYI-026?",
+              "What is the area for PRJ-XINYI-026?"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the stage for PRJ-XINYI-026?",
+            "What is the city for PRJ-XINYI-026?",
+            "What is the area for PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the stage for Xinyi Flagship Renovation?",
+            "What is the city for Xinyi Flagship Renovation?",
+            "What is the area for Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nContact details: Not shared with the AI.",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.contactAvailability",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "contactAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1319,
+          "calls": 2,
+          "inputTokens": 4533,
+          "outputTokens": 118,
+          "estimatedUsd": "0.001654900"
+        },
+        {
+          "id": "zh-TW-misses-client-only",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ],
+            "followUps": [
+              "PRJ-XINYI-026 的報價狀態為何？",
+              "PRJ-XINYI-026 的專案階段是什麼？"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "PRJ-XINYI-026 的報價狀態為何？",
+            "PRJ-XINYI-026 的專案階段是什麼？"
+          ],
+          "followUps": [
+            "信義旗艦店裝修 的報價狀態為何？",
+            "信義旗艦店裝修 的專案階段是什麼？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n客戶：不提供給 AI。",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1163,
+          "calls": 2,
+          "inputTokens": 4548,
+          "outputTokens": 99,
+          "estimatedUsd": "0.001611900"
+        },
+        {
+          "id": "zh-TW-misses-siteAddress-only",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.siteAddressAvailability"
+              }
+            ],
+            "followUps": [
+              "PRJ-XINYI-026 的專案階段是什麼？",
+              "PRJ-XINYI-026 的城市是哪裡？",
+              "PRJ-XINYI-026 的面積是多少？"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "PRJ-XINYI-026 的專案階段是什麼？",
+            "PRJ-XINYI-026 的城市是哪裡？",
+            "PRJ-XINYI-026 的面積是多少？"
+          ],
+          "followUps": [
+            "信義旗艦店裝修 的專案階段是什麼？",
+            "信義旗艦店裝修 的城市是哪裡？",
+            "信義旗艦店裝修 的面積是多少？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n工程地址：不提供給 AI。",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.siteAddressAvailability",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "siteAddressAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1129,
+          "calls": 2,
+          "inputTokens": 4548,
+          "outputTokens": 117,
+          "estimatedUsd": "0.001656900"
+        },
+        {
+          "id": "zh-TW-misses-contact-only",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "PRJ-XINYI-026 的專案名稱是什麼？",
+              "PRJ-XINYI-026 的階段是什麼？",
+              "PRJ-XINYI-026 的城市是什麼？"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.contactAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "PRJ-XINYI-026 的專案名稱是什麼？",
+            "PRJ-XINYI-026 的階段是什麼？",
+            "PRJ-XINYI-026 的城市是什麼？"
+          ],
+          "followUps": [
+            "信義旗艦店裝修 的專案名稱是什麼？",
+            "信義旗艦店裝修 的階段是什麼？",
+            "信義旗艦店裝修 的城市是什麼？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n聯絡方式：不提供給 AI。",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.contactAvailability",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "contactAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1953,
+          "calls": 3,
+          "inputTokens": 6148,
+          "outputTokens": 140,
+          "estimatedUsd": "0.002194400"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "callTargets": {
+        "median": 2,
+        "maximum": 3,
+        "withinThree": 14,
+        "questions": 14,
+        "namedRefusalMedian": 0,
+        "namedRefusalMaximum": 0
+      },
+      "performance": {
+        "medianMs": 1211,
+        "p90Ms": 1626,
+        "totalUsd": "0.023974500",
+        "costPerQuestionUsd": "0.001712464286",
+        "baseline": {
+          "run": "45804259788",
+          "medianCalls": 2,
+          "p90Ms": 2428,
+          "costUsd": "0.352631200",
+          "questions": 252
+        },
+        "limits": {
+          "p90Ms": 3035,
+          "costPerQuestionUsd": "0.001749162698"
+        }
+      },
+      "performancePassed": true,
+      "friendlierMisses": {
+        "passed": 14,
+        "total": 28
+      },
+      "factSelectionRegressions": {
+        "passed": 0,
+        "total": 28
+      },
+      "reportedCases": {
+        "passed": 0,
+        "total": 2
+      },
+      "qualityRegressions": {
+        "passed": 0,
+        "total": 2
+      },
+      "scores": {
+        "en": 0,
+        "zh-TW": 0
+      },
+      "hostedRegressions": {
+        "passed": 0,
+        "total": 12
+      },
+      "passed": false,
+      "questions": [
+        {
+          "id": "en-misses-partial-0",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "What is the quote status for PRJ-XINYI-026?",
+              "What is the job name for PRJ-XINYI-026?"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the quote status for PRJ-XINYI-026?",
+            "What is the job name for PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the quote status for Xinyi Flagship Renovation?",
+            "What is the job name for Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nStage: Quote review\nClient: Not shared with the AI.",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "stage",
+                "kind": "fact"
+              },
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1227,
+          "calls": 2,
+          "inputTokens": 4541,
+          "outputTokens": 110,
+          "estimatedUsd": "0.001637300"
+        },
+        {
+          "id": "en-misses-complete-0",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "What is the quote status for PRJ-XINYI-026?",
+              "What scope categories are included in PRJ-XINYI-026?"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the quote status for PRJ-XINYI-026?",
+            "What scope categories are included in PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the quote status for Xinyi Flagship Renovation?",
+            "What scope categories are included in Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nStage: Quote review",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "stage",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1186,
+          "calls": 2,
+          "inputTokens": 4529,
+          "outputTokens": 100,
+          "estimatedUsd": "0.001608700"
+        },
+        {
+          "id": "en-misses-partial-1",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ],
+            "followUps": [
+              "What is the stage of PRJ-XINYI-026?",
+              "What is the scope of PRJ-XINYI-026?"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the stage of PRJ-XINYI-026?",
+            "What is the scope of PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the stage of Xinyi Flagship Renovation?",
+            "What is the scope of Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nStage: Quote review\nClient: Not shared with the AI.",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "stage",
+                "kind": "fact"
+              },
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1161,
+          "calls": 2,
+          "inputTokens": 4545,
+          "outputTokens": 108,
+          "estimatedUsd": "0.001633500"
+        },
+        {
+          "id": "en-misses-complete-1",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "What is the quote status for PRJ-XINYI-026?",
+              "What scope categories are included in PRJ-XINYI-026?",
+              "What is the area of PRJ-XINYI-026?"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the quote status for PRJ-XINYI-026?",
+            "What scope categories are included in PRJ-XINYI-026?",
+            "What is the area of PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the quote status for Xinyi Flagship Renovation?",
+            "What scope categories are included in Xinyi Flagship Renovation?",
+            "What is the area of Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nStage: Quote review",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "stage",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1184,
+          "calls": 2,
+          "inputTokens": 4531,
+          "outputTokens": 119,
+          "estimatedUsd": "0.001656800"
+        },
+        {
+          "id": "zh-TW-misses-partial-0",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "PRJ-XINYI-026目前的報價狀態是什麼？",
+              "PRJ-XINYI-026的工作範圍有哪些？"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.name"
+              },
+              {
+                "show": "s1.stage"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "PRJ-XINYI-026目前的報價狀態是什麼？",
+            "PRJ-XINYI-026的工作範圍有哪些？"
+          ],
+          "followUps": [
+            "信義旗艦店裝修目前的報價狀態是什麼？",
+            "信義旗艦店裝修的工作範圍有哪些？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n階段：報價審查\n客戶：不提供給 AI。",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.name",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "name",
+                "kind": "fact"
+              },
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "stage",
+                "kind": "fact"
+              },
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1222,
+          "calls": 2,
+          "inputTokens": 4554,
+          "outputTokens": 115,
+          "estimatedUsd": "0.001653700"
+        },
+        {
+          "id": "zh-TW-misses-complete-0",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "PRJ-XINYI-026 的工作範圍有哪些？",
+              "PRJ-XINYI-026 的城市在哪裡？",
+              "PRJ-XINYI-026 的面積是多少？"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "PRJ-XINYI-026 的工作範圍有哪些？",
+            "PRJ-XINYI-026 的城市在哪裡？",
+            "PRJ-XINYI-026 的面積是多少？"
+          ],
+          "followUps": [
+            "信義旗艦店裝修 的工作範圍有哪些？",
+            "信義旗艦店裝修 的城市在哪裡？",
+            "信義旗艦店裝修 的面積是多少？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n階段：報價審查",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "stage",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1842,
+          "calls": 3,
+          "inputTokens": 6145,
+          "outputTokens": 139,
+          "estimatedUsd": "0.002191000"
+        },
+        {
+          "id": "zh-TW-misses-partial-1",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ],
+            "followUps": [
+              "請顯示PRJ-XINYI-026的專案名稱與城市。",
+              "請顯示PRJ-XINYI-026的工作範圍。"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "請顯示PRJ-XINYI-026的專案名稱與城市。",
+            "請顯示PRJ-XINYI-026的工作範圍。"
+          ],
+          "followUps": [],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n階段：報價審查\n客戶：不提供給 AI。",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "stage",
+                "kind": "fact"
+              },
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1310,
+          "calls": 2,
+          "inputTokens": 4556,
+          "outputTokens": 110,
+          "estimatedUsd": "0.001641800"
+        },
+        {
+          "id": "zh-TW-misses-complete-1",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              }
+            ],
+            "followUps": [
+              "請顯示 PRJ-XINYI-026 的專案名稱與城市。",
+              "請顯示 PRJ-XINYI-026 的工作範圍。"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "請顯示 PRJ-XINYI-026 的專案名稱與城市。",
+            "請顯示 PRJ-XINYI-026 的工作範圍。"
+          ],
+          "followUps": [],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n階段：報價審查",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "stage",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1148,
+          "calls": 2,
+          "inputTokens": 4548,
+          "outputTokens": 101,
+          "estimatedUsd": "0.001616900"
+        },
+        {
+          "id": "en-misses-client-only",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ],
+            "followUps": [
+              "What stage is PRJ-XINYI-026 in?",
+              "What is the city for PRJ-XINYI-026?"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What stage is PRJ-XINYI-026 in?",
+            "What is the city for PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What stage is Xinyi Flagship Renovation in?",
+            "What is the city for Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nClient: Not shared with the AI.",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1168,
+          "calls": 2,
+          "inputTokens": 4531,
+          "outputTokens": 98,
+          "estimatedUsd": "0.001604300"
+        },
+        {
+          "id": "en-misses-siteAddress-only",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "What is the stage of PRJ-XINYI-026?",
+              "What is the city of PRJ-XINYI-026?",
+              "What is the area of PRJ-XINYI-026?"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.siteAddressAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the stage of PRJ-XINYI-026?",
+            "What is the city of PRJ-XINYI-026?",
+            "What is the area of PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the stage of Xinyi Flagship Renovation?",
+            "What is the city of Xinyi Flagship Renovation?",
+            "What is the area of Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nSite address: Not shared with the AI.",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.siteAddressAvailability",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "siteAddressAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1306,
+          "calls": 2,
+          "inputTokens": 4533,
+          "outputTokens": 119,
+          "estimatedUsd": "0.001657400"
+        },
+        {
+          "id": "en-misses-contact-only",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "What is the stage for PRJ-XINYI-026?",
+              "What is the city for PRJ-XINYI-026?",
+              "What is the job name for PRJ-XINYI-026?"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.contactAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the stage for PRJ-XINYI-026?",
+            "What is the city for PRJ-XINYI-026?",
+            "What is the job name for PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the stage for Xinyi Flagship Renovation?",
+            "What is the city for Xinyi Flagship Renovation?",
+            "What is the job name for Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nContact details: Not shared with the AI.",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.contactAvailability",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "contactAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1202,
+          "calls": 2,
+          "inputTokens": 4533,
+          "outputTokens": 119,
+          "estimatedUsd": "0.001657400"
+        },
+        {
+          "id": "zh-TW-misses-client-only",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ],
+            "followUps": [
+              "PRJ-XINYI-026 的報價狀態為何？",
+              "PRJ-XINYI-026 的專案階段是什麼？"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "PRJ-XINYI-026 的報價狀態為何？",
+            "PRJ-XINYI-026 的專案階段是什麼？"
+          ],
+          "followUps": [
+            "信義旗艦店裝修 的報價狀態為何？",
+            "信義旗艦店裝修 的專案階段是什麼？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n客戶：不提供給 AI。",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1211,
+          "calls": 2,
+          "inputTokens": 4548,
+          "outputTokens": 99,
+          "estimatedUsd": "0.001611900"
+        },
+        {
+          "id": "zh-TW-misses-siteAddress-only",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.siteAddressAvailability"
+              }
+            ],
+            "followUps": [
+              "PRJ-XINYI-026 的專案階段是什麼？",
+              "PRJ-XINYI-026 的面積是多少？"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "PRJ-XINYI-026 的專案階段是什麼？",
+            "PRJ-XINYI-026 的面積是多少？"
+          ],
+          "followUps": [
+            "信義旗艦店裝修 的專案階段是什麼？",
+            "信義旗艦店裝修 的面積是多少？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n工程地址：不提供給 AI。",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.siteAddressAvailability",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "siteAddressAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1147,
+          "calls": 2,
+          "inputTokens": 4548,
+          "outputTokens": 98,
+          "estimatedUsd": "0.001609400"
+        },
+        {
+          "id": "zh-TW-misses-contact-only",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "PRJ-XINYI-026 的專案名稱是什麼？",
+              "PRJ-XINYI-026 的階段是什麼？",
+              "PRJ-XINYI-026 的城市是什麼？"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.contactAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "PRJ-XINYI-026 的專案名稱是什麼？",
+            "PRJ-XINYI-026 的階段是什麼？",
+            "PRJ-XINYI-026 的城市是什麼？"
+          ],
+          "followUps": [
+            "信義旗艦店裝修 的專案名稱是什麼？",
+            "信義旗艦店裝修 的階段是什麼？",
+            "信義旗艦店裝修 的城市是什麼？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n聯絡方式：不提供給 AI。",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.contactAvailability",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "contactAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1626,
+          "calls": 3,
+          "inputTokens": 6148,
+          "outputTokens": 140,
+          "estimatedUsd": "0.002194400"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "callTargets": {
+        "median": 2,
+        "maximum": 3,
+        "withinThree": 14,
+        "questions": 14,
+        "namedRefusalMedian": 2,
+        "namedRefusalMaximum": 2
+      },
+      "performance": {
+        "medianMs": 1214,
+        "p90Ms": 1503,
+        "totalUsd": "0.023267600",
+        "costPerQuestionUsd": "0.001661971429",
+        "baseline": {
+          "run": "45804259788",
+          "medianCalls": 2,
+          "p90Ms": 2428,
+          "costUsd": "0.352631200",
+          "questions": 252
+        },
+        "limits": {
+          "p90Ms": 3035,
+          "costPerQuestionUsd": "0.001749162698"
+        }
+      },
+      "performancePassed": true,
+      "friendlierMisses": {
+        "passed": 13,
+        "total": 28
+      },
+      "factSelectionRegressions": {
+        "passed": 0,
+        "total": 28
+      },
+      "reportedCases": {
+        "passed": 0,
+        "total": 2
+      },
+      "qualityRegressions": {
+        "passed": 0,
+        "total": 2
+      },
+      "scores": {
+        "en": 0,
+        "zh-TW": 0
+      },
+      "hostedRegressions": {
+        "passed": 0,
+        "total": 12
+      },
+      "passed": false,
+      "questions": [
+        {
+          "id": "en-misses-partial-0",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "What is the quote status for PRJ-XINYI-026?"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the quote status for PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the quote status for Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nStage: Quote review\nClient: Not shared with the AI.",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "stage",
+                "kind": "fact"
+              },
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1142,
+          "calls": 2,
+          "inputTokens": 4541,
+          "outputTokens": 90,
+          "estimatedUsd": "0.001587300"
+        },
+        {
+          "id": "en-misses-complete-0",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              }
+            ],
+            "followUps": [
+              "What is the quote status for PRJ-XINYI-026?",
+              "What scope categories are included in PRJ-XINYI-026?"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the quote status for PRJ-XINYI-026?",
+            "What scope categories are included in PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the quote status for Xinyi Flagship Renovation?",
+            "What scope categories are included in Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nStage: Quote review",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "stage",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1129,
+          "calls": 2,
+          "inputTokens": 4529,
+          "outputTokens": 100,
+          "estimatedUsd": "0.001608700"
+        },
+        {
+          "id": "en-misses-partial-1",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "What is the stage of PRJ-XINYI-026?",
+              "What is the job reference for Xinyi Flagship Renovation?"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the stage of PRJ-XINYI-026?",
+            "What is the job reference for Xinyi Flagship Renovation?"
+          ],
+          "followUps": [
+            "What is the stage of Xinyi Flagship Renovation?",
+            "What is the job reference for Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nStage: Quote review\nClient: Not shared with the AI.",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "stage",
+                "kind": "fact"
+              },
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1131,
+          "calls": 2,
+          "inputTokens": 4545,
+          "outputTokens": 106,
+          "estimatedUsd": "0.001628500"
+        },
+        {
+          "id": "en-misses-complete-1",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              }
+            ],
+            "followUps": [
+              "What is the area of PRJ-XINYI-026?",
+              "What are the scope categories for PRJ-XINYI-026?"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the area of PRJ-XINYI-026?",
+            "What are the scope categories for PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the area of Xinyi Flagship Renovation?",
+            "What are the scope categories for Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nStage: Quote review",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "stage",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1129,
+          "calls": 2,
+          "inputTokens": 4531,
+          "outputTokens": 99,
+          "estimatedUsd": "0.001606800"
+        },
+        {
+          "id": "zh-TW-misses-partial-0",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "PRJ-XINYI-026 的報價狀態為何？",
+              "PRJ-XINYI-026 的專案名稱是什麼？"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "PRJ-XINYI-026 的報價狀態為何？",
+            "PRJ-XINYI-026 的專案名稱是什麼？"
+          ],
+          "followUps": [
+            "信義旗艦店裝修 的報價狀態為何？",
+            "信義旗艦店裝修 的專案名稱是什麼？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n階段：報價審查\n客戶：不提供給 AI。",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "stage",
+                "kind": "fact"
+              },
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1358,
+          "calls": 2,
+          "inputTokens": 4554,
+          "outputTokens": 108,
+          "estimatedUsd": "0.001636200"
+        },
+        {
+          "id": "zh-TW-misses-complete-0",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "PRJ-XINYI-026的工作範圍是什麼？",
+              "PRJ-XINYI-026的專案名稱是什麼？"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "PRJ-XINYI-026的工作範圍是什麼？",
+            "PRJ-XINYI-026的專案名稱是什麼？"
+          ],
+          "followUps": [
+            "信義旗艦店裝修的工作範圍是什麼？",
+            "信義旗艦店裝修的專案名稱是什麼？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n階段：報價審查",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "stage",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1594,
+          "calls": 3,
+          "inputTokens": 6145,
+          "outputTokens": 122,
+          "estimatedUsd": "0.002148500"
+        },
+        {
+          "id": "zh-TW-misses-partial-1",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "請問 PRJ-XINYI-026 的專案名稱是什麼？",
+              "請問 PRJ-XINYI-026 的工作範圍包含哪些？",
+              "請問 PRJ-XINYI-026 的城市與面積為何？"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "請問 PRJ-XINYI-026 的專案名稱是什麼？",
+            "請問 PRJ-XINYI-026 的工作範圍包含哪些？",
+            "請問 PRJ-XINYI-026 的城市與面積為何？"
+          ],
+          "followUps": [
+            "請問 信義旗艦店裝修 的專案名稱是什麼？",
+            "請問 信義旗艦店裝修 的工作範圍包含哪些？",
+            "請問 信義旗艦店裝修 的城市與面積為何？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n階段：報價審查\n客戶：不提供給 AI。",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "stage",
+                "kind": "fact"
+              },
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1503,
+          "calls": 2,
+          "inputTokens": 4556,
+          "outputTokens": 130,
+          "estimatedUsd": "0.001691800"
+        },
+        {
+          "id": "zh-TW-misses-complete-1",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "請顯示PRJ-XINYI-026的專案名稱。",
+              "請顯示PRJ-XINYI-026的城市。",
+              "請顯示PRJ-XINYI-026的面積。"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.stage"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "請顯示PRJ-XINYI-026的專案名稱。",
+            "請顯示PRJ-XINYI-026的城市。",
+            "請顯示PRJ-XINYI-026的面積。"
+          ],
+          "followUps": [],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n階段：報價審查",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.stage",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "stage",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1231,
+          "calls": 2,
+          "inputTokens": 4548,
+          "outputTokens": 116,
+          "estimatedUsd": "0.001654400"
+        },
+        {
+          "id": "en-misses-client-only",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ],
+            "followUps": [
+              "What is the stage of PRJ-XINYI-026?",
+              "What is the city for PRJ-XINYI-026?",
+              "What is the scope categories for PRJ-XINYI-026?"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the stage of PRJ-XINYI-026?",
+            "What is the city for PRJ-XINYI-026?",
+            "What is the scope categories for PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the stage of Xinyi Flagship Renovation?",
+            "What is the city for Xinyi Flagship Renovation?",
+            "What is the scope categories for Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nClient: Not shared with the AI.",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1404,
+          "calls": 2,
+          "inputTokens": 4531,
+          "outputTokens": 119,
+          "estimatedUsd": "0.001656800"
+        },
+        {
+          "id": "en-misses-siteAddress-only",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.siteAddressAvailability"
+              }
+            ],
+            "followUps": [
+              "What is the stage of PRJ-XINYI-026?",
+              "What is the area of PRJ-XINYI-026?",
+              "What is the city of PRJ-XINYI-026?"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the stage of PRJ-XINYI-026?",
+            "What is the area of PRJ-XINYI-026?",
+            "What is the city of PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the stage of Xinyi Flagship Renovation?",
+            "What is the area of Xinyi Flagship Renovation?",
+            "What is the city of Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nSite address: Not shared with the AI.",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.siteAddressAvailability",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "siteAddressAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1142,
+          "calls": 2,
+          "inputTokens": 4533,
+          "outputTokens": 119,
+          "estimatedUsd": "0.001657400"
+        },
+        {
+          "id": "en-misses-contact-only",
+          "locale": "en",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "What is the stage for PRJ-XINYI-026?",
+              "What is the city for PRJ-XINYI-026?",
+              "What is the area for PRJ-XINYI-026?"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.contactAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "What is the stage for PRJ-XINYI-026?",
+            "What is the city for PRJ-XINYI-026?",
+            "What is the area for PRJ-XINYI-026?"
+          ],
+          "followUps": [
+            "What is the stage for Xinyi Flagship Renovation?",
+            "What is the city for Xinyi Flagship Renovation?",
+            "What is the area for Xinyi Flagship Renovation?"
+          ],
+          "answerText": "Here is what the records show:\n\nXinyi Flagship Renovation · PRJ-XINYI-026\nContact details: Not shared with the AI.",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.contactAvailability",
+                "sourceId": "src_e2eba506388855d864f66f20",
+                "path": "contactAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_e2eba506388855d864f66f20",
+              "label": "Xinyi Flagship Renovation · PRJ-XINYI-026",
+              "href": "/en/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "Xinyi Flagship Renovation",
+                "stage": "Quote review",
+                "city": "Taipei City",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "Site coordination and handover",
+                  "Custom millwork",
+                  "Imported stone and hard finishes",
+                  "Lighting and electrical",
+                  "Partitions and ceilings",
+                  "Selective demolition",
+                  "Signage and display installation"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "Xinyi Flagship Renovation",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1202,
+          "calls": 2,
+          "inputTokens": 4533,
+          "outputTokens": 118,
+          "estimatedUsd": "0.001654900"
+        },
+        {
+          "id": "zh-TW-misses-client-only",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [
+              "PRJ-XINYI-026 的報價狀態為何？",
+              "PRJ-XINYI-026 的專案階段是什麼？"
+            ],
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.clientAvailability"
+              }
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "PRJ-XINYI-026 的報價狀態為何？",
+            "PRJ-XINYI-026 的專案階段是什麼？"
+          ],
+          "followUps": [
+            "信義旗艦店裝修 的報價狀態為何？",
+            "信義旗艦店裝修 的專案階段是什麼？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n客戶：不提供給 AI。",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.clientAvailability",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "clientAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1214,
+          "calls": 2,
+          "inputTokens": 4548,
+          "outputTokens": 99,
+          "estimatedUsd": "0.001611900"
+        },
+        {
+          "id": "zh-TW-misses-siteAddress-only",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": false,
+          "verdict": "grounded and correct",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "parts": [
+              {
+                "say": "RECORDS_SHOW"
+              },
+              {
+                "show": "s1.siteAddressAvailability"
+              }
+            ],
+            "followUps": [
+              "PRJ-XINYI-026 的專案階段是什麼？",
+              "PRJ-XINYI-026 的城市是什麼？",
+              "PRJ-XINYI-026 的面積是多少？"
+            ]
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [
+            "PRJ-XINYI-026 的專案階段是什麼？",
+            "PRJ-XINYI-026 的城市是什麼？",
+            "PRJ-XINYI-026 的面積是多少？"
+          ],
+          "followUps": [
+            "信義旗艦店裝修 的專案階段是什麼？",
+            "信義旗艦店裝修 的城市是什麼？",
+            "信義旗艦店裝修 的面積是多少？"
+          ],
+          "answerText": "紀錄顯示：\n\n信義旗艦店裝修 · PRJ-XINYI-026\n工程地址：不提供給 AI。",
+          "selection": {
+            "phraseId": "RECORDS_SHOW",
+            "shown": [
+              {
+                "ref": "s1.siteAddressAvailability",
+                "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+                "path": "siteAddressAvailability",
+                "kind": "fact"
+              }
+            ]
+          },
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 1345,
+          "calls": 2,
+          "inputTokens": 4548,
+          "outputTokens": 115,
+          "estimatedUsd": "0.001651900"
+        },
+        {
+          "id": "zh-TW-misses-contact-only",
+          "locale": "zh-TW",
+          "required": true,
+          "friendlierMiss": true,
+          "reported": false,
+          "qualityRegression": false,
+          "factSelectionRegression": false,
+          "mustReachModel": false,
+          "namedJobRefusal": true,
+          "toolCalls": [
+            {
+              "name": "get_job",
+              "arguments": {
+                "projectKey": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "verdict": "wrong",
+          "wrongRecordValue": false,
+          "wrongNumber": false,
+          "wrongAmountLabel": false,
+          "badDisplayFormat": false,
+          "draftWrongNumber": false,
+          "draftRejected": false,
+          "draftUnsupportedTokens": [],
+          "accessViolation": false,
+          "unsupportedTokens": [],
+          "rawAnswer": {
+            "followUps": [],
+            "parts": []
+          },
+          "rawAnswerText": null,
+          "rawFollowUps": [],
+          "followUps": [],
+          "answerText": "我只能根據您可查看的公司紀錄回答；目前的紀錄沒有顯示這項資訊。",
+          "selection": null,
+          "sourceLedger": [
+            {
+              "sourceId": "src_c23e8f4c69dc3fc9a7448e71",
+              "label": "信義旗艦店裝修 · PRJ-XINYI-026",
+              "href": "/zh-TW/projects/PRJ-XINYI-026",
+              "facts": {
+                "reference": "PRJ-XINYI-026",
+                "name": "信義旗艦店裝修",
+                "stage": "報價審查",
+                "city": "臺北市",
+                "area": {
+                  "value": "640",
+                  "unit": "m²"
+                },
+                "scopeCategories": [
+                  "現場協調與交付",
+                  "客製木作",
+                  "進口石材與硬質面材",
+                  "照明與電氣",
+                  "隔間與天花",
+                  "選擇性拆除",
+                  "標示與展示安裝"
+                ]
+              },
+              "projectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "subjectProjectKeys": [
+                "PRJ-XINYI-026"
+              ],
+              "typedFactPaths": [
+                "reference",
+                "stage",
+                "area"
+              ],
+              "display": {
+                "kind": "JOB",
+                "title": "信義旗艦店裝修",
+                "reference": "PRJ-XINYI-026"
+              }
+            }
+          ],
+          "questionChips": [],
+          "discardReason": null,
+          "latencyMs": 978,
+          "calls": 2,
+          "inputTokens": 4550,
+          "outputTokens": 43,
+          "estimatedUsd": "0.001472500"
+        }
+      ]
+    }
+  ],
+  "perQuestion": [
+    {
+      "id": "en-misses-partial-0",
+      "locale": "en",
+      "required": true,
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-misses-complete-0",
+      "locale": "en",
+      "required": true,
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-misses-partial-1",
+      "locale": "en",
+      "required": true,
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-misses-complete-1",
+      "locale": "en",
+      "required": true,
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-misses-partial-0",
+      "locale": "zh-TW",
+      "required": true,
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-misses-complete-0",
+      "locale": "zh-TW",
+      "required": true,
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        3,
+        3,
+        3
+      ],
+      "callMedian": 3,
+      "callMaximum": 3
+    },
+    {
+      "id": "zh-TW-misses-partial-1",
+      "locale": "zh-TW",
+      "required": true,
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-misses-complete-1",
+      "locale": "zh-TW",
+      "required": true,
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-misses-client-only",
+      "locale": "en",
+      "required": true,
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-misses-siteAddress-only",
+      "locale": "en",
+      "required": true,
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "en-misses-contact-only",
+      "locale": "en",
+      "required": true,
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-misses-client-only",
+      "locale": "zh-TW",
+      "required": true,
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-misses-siteAddress-only",
+      "locale": "zh-TW",
+      "required": true,
+      "passes": 3,
+      "rounds": 3,
+      "passRate": 1,
+      "calls": [
+        2,
+        2,
+        2
+      ],
+      "callMedian": 2,
+      "callMaximum": 2
+    },
+    {
+      "id": "zh-TW-misses-contact-only",
+      "locale": "zh-TW",
+      "required": true,
+      "passes": 2,
+      "rounds": 3,
+      "passRate": 0.6666666666666666,
+      "calls": [
+        3,
+        3,
+        2
+      ],
+      "callMedian": 3,
+      "callMaximum": 3
+    }
+  ],
+  "questionGatePassed": true,
+  "jobDrafts": null,
+  "recommendation": null
+}

@@ -1,4 +1,49 @@
-# Verification — delivery A–F
+# Verification — fix round 1
+
+Review [7211242362](https://github.com/FATTY-BAMBA/StrideBrain/pull/83#issuecomment-7211242362), verified as authored by FATTY-BAMBA. The Product Director authorized an additional US$1.00, focused first and one full run only after focused success. PR stays draft; no hosted changes.
+
+## Changes
+
+1. Removed `PARTIAL_RECORDS`, its notice and `noticePhraseId`. A job's fact registry now supplies Client / Contact details / Site address, each with the constant “Not shared with the AI.” / 「不提供給 AI。」. These are ordinary selectable rows on the job card, with its job link, no private value and no extra record lookup. Complete answers and list selection do not acquire unsolicited availability rows. The single instruction sentence was sufficient; no retry wording change was made. This design is provisional, awaiting the Product Director before merge.
+2. Missing-job chips rank first, inspect at most ten candidates in rank order, and stop after three pass access/exclusion. A 300-job regression counts reads for zero, five and ten denied candidates. The original paired present/absent PostgreSQL test and identity-guard timing assertions are unchanged.
+3. `NO_KEY` and `DISABLED` use record search. Failed AI answers still show the fixed failure sentence and same-question retry. Removed the action's direct AI-enabled environment read; English/zh-TW configuration/privacy copy now describes both paths.
+
+## Local verification
+
+- `npm run check` passed on `b918108`: **2,028 tests / 210 files**, formatting, design-token checks, lint, types and production build. [CI 45951254706](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45951254706) passed, including real deployment-command checks against its disposable database.
+- Initial full check caught obsolete 112-case stability-test fixtures; updated them for 118 without changing thresholds. The next check hit the unchanged quote-issue Home-flow test's five-second timeout under default concurrency. A complete rerun with `VITEST_MAX_WORKERS=4` passed; no test timeout, assertion or production code was changed to accommodate it. Existing Prisma anonymous-default-export warning only.
+- Free evaluation: **354/354**, 118/118 in each round. Accepted #79 replay: **252/252**, zero discards/wrong values/access violations, zero provider calls. [Free evidence](evidence/fix1-free-verification.json).
+- Local production-browser checks passed with synthetic model transport: owner, English/zh-TW, 1440px/390px, fixed Client row with stage and job link; keyboard-confirmed job chip; original-question retry; no page errors or horizontal overflow. Server stopped after capture. [Browser checks](evidence/fix1-browser-checks.json).
+- Screenshots: [English desktop](evidence/fix1-en-availability-1440.png), [English 390px](evidence/fix1-en-availability-390.png), [zh-TW desktop](evidence/fix1-zh-TW-availability-1440.png), [zh-TW 390px](evidence/fix1-zh-TW-availability-390.png). Earlier screenshots remain unchanged as historical evidence.
+- Unit and local PostgreSQL tests verify fixed entries byte-for-byte across different clients and missing site address, for owner and Viewer. Stored private values do not appear in model requests, logs or follow-ups.
+- Free evaluation expands to 118 questions × three rounds (six new client-only/contact-only/address-only cases); the four mixed cases require stage and client rows. All pass rules retain their existing thresholds. Fixture completeness counts and report denominators reflect the added cases.
+- Focused paid [45950848346](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45950848346), commit `7d48368`: **41/42**, all gates passed. Every mixed stage/client case passed 3/3; zh-TW contact-only passed 2/3, all others 3/3. Cost **US$0.071234100**. [Raw artifact](evidence/fix1-focused-paid.json).
+
+## Paid acceptance — passed
+
+[Full run 45951296390](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45951296390) evaluated final code `b918108`, only after focused success. **352/354 overall; 227/228 required (99.56%)**, every required case at least 2/3. Zero wrong values, disclosures, unreadable-job answers or discards. All mixed stage/client cases passed 3/3. All existing #79 required cases passed. Gating drafts passed 16/16 per language in every round; the existing reported residential-placeholder case passed 3/3.
+
+| Round | All English | All zh-TW | Core English | Core zh-TW | p90 ms | USD/question |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 59/59 | 59/59 | 20/20 | 20/20 | 1,695 | 0.001458540678 |
+| 2 | 59/59 | 59/59 | 20/20 | 20/20 | 1,665 | 0.001454405932 |
+| 3 | 58/59 | 58/59 | 19/20 | 20/20 | 1,834 | 0.001441596610 |
+
+Every round had median two calls, maximum three, 118/118 within three calls. All performance ceilings and unchanged acceptance thresholds passed. The two misses were `en-viewer-overview` (not-found reply) and `zh-TW-misses-contact-only` (general refusal), each in round 3 only; both passed 2/3. These are answer-completeness misses, not disclosures or wrong values, and remain visible in the raw report.
+
+Cost: focused **US$0.071234100**, full **US$0.615710100**, additional total **US$0.686944200 of US$1.00**. Previous spend US$0.859081800; issue cumulative US$1.546026000. One full run used for this authorization; no second focused run or instruction revision was needed.
+
+[Full raw report](evidence/fix1-full-paid.json), [per-question pass rates](evidence/fix1-paid-question-pass-rates.csv), [budget ledger](evidence/fix1-paid-summary.json).
+
+## Not verified / remaining confirmation
+
+Hosted acceptance has not been run. Browser evidence uses a synthetic local model transport, not a live provider. The live provider was checked separately through the paid workflow on disposable synthetic data. Reviewer 7211242362's fixed-fact design and the earlier privacy-boundary/copy decisions remain provisional until the Product Director confirms them. There is no remaining failed paid acceptance gate in this round.
+
+Hosted acceptance awaits the Product Director. No Test site workflow, hosted deployment, database or settings change. PR #83 remains draft. Stop after the Builder report.
+
+---
+
+# Previous delivery A–F (historical evidence)
 
 27 November 2026. Draft PR #83; base main `2443d9d`. Final code `5b8ea86`; paid full run evaluated `332e00a`. **Paid acceptance has not passed. Do not put this PR on the test site as an accepted build.**
 

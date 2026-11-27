@@ -1,0 +1,23 @@
+{
+  "additionalAllowanceUsd": "1.00",
+  "focused": {
+    "run": 45950848346,
+    "commit": "7d48368e9437c3b6357372011af16e79c3a385e0",
+    "passed": true,
+    "estimatedUsd": "0.071234100"
+  },
+  "full": {
+    "run": 45951296390,
+    "commit": "b918108f3d1d19de1db48a4933ebb7d76be4234a",
+    "passed": true,
+    "estimatedUsd": "0.615710100",
+    "requiredAnswers": {
+      "passed": 227,
+      "total": 228
+    }
+  },
+  "additionalSpentUsd": "0.686944200",
+  "previousSpentUsd": "0.859081800",
+  "totalIssueSpentUsd": "1.546026000",
+  "fullRunsThisAuthorization": 1
+}
