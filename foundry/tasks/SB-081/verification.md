@@ -1,4 +1,30 @@
-# Verification — fix round 2
+# Verification — fix round 2 completed
+
+Owner-authored decision [7214653618](https://github.com/FATTY-BAMBA/StrideBrain/pull/83#issuecomment-7214653618), continuing fix round 2. Code `930c9ef`. **Item 2 is complete locally; the previous cutoff conflict is resolved by the explicit decision.** Items 1 and 3 were accepted on `373cb5c`. No paid evaluation.
+
+## Implementation
+
+The scoring formula and coverage test are unchanged. Order: rank → narrow by a matching standalone number, if any → drop scores below 75% of the surviving best score → limit. Leading zeros and full-width digits normalize; digits embedded in Latin alphanumeric words such as `R7K3` are not standalone. Numbers only narrow already-ranked candidates, never create candidates or change scores. If no ranked candidate matches a typed number, no number filtering occurs. Equal scores remain. The policy-read loop, reader scope and limits remain unchanged.
+
+The decision is provisional, awaiting Product Director confirmation before merge.
+
+## Verified
+
+- Unit fixture contains 32 bilingual job identities and covers every row in the decision table: Xinyi/Neihu store, English/Chinese flagship ties, concept-store ties and narrowing, Xinyi/Riverside loose names, zero-padded workplace numbers, design project 03, generic project 3, unmatched 9, and “3樓的工作室”. The two-job reader still gets no candidate for “設計專案01” or “Banqiao store”. Additional tests cover full-width digits, numbers that cannot create candidates, embedded digits, and number narrowing before cutoff/limit while retaining original scores.
+- `npm run check` passed with four workers: **2,054 tests / 211 files**, formatting, design-token checks, lint, types and production build. Existing Prisma anonymous-default-export warning only.
+- [CI 45974452003 passed](https://github.com/FATTY-BAMBA/StrideBrain/actions/runs/45974452003) on final code `930c9ef`.
+- Free evaluation **354/354** (118/118 each round). **No expected-case or pass-rule changes.** Actual chips changed only for `en-misses-near-0`, in all three rounds: `[PRJ-XINYI-026, PRJ-BANQIAO-015, PRJ-ZHONGSHAN-018]` → `[PRJ-XINYI-026]`. All other chip lists, including Chinese cases, are unchanged. [Free comparison evidence](evidence/fix2-final-free-verification.json).
+- Local production browser, synthetic model transport: the exact owner question “What is the quote total for the Xinyi store?” offers only Xinyi Flagship Renovation. Confirmed follow-up still answers **NT$16,480,000 before tax after one tap**, without another job choice, on Home and the job bar. No page errors or horizontal overflow. Server stopped after capture.
+
+[Owner candidate screenshot](evidence/fix2-final-owner-candidate-390.png) · [Home one-tap follow-up](evidence/fix2-final-home-confirmed-follow-up-390.png) · [job-bar one-tap follow-up](evidence/fix2-final-job-confirmed-follow-up-390.png) · [browser checks](evidence/fix2-final-browser-checks.json).
+
+## Not verified / handoff
+
+No new live-model run or hosted test was performed. Model instructions, tool definitions/results, model selection, pass marks and migrations are unchanged. Paid spend this continuation: **US$0**. Previous paid evidence remains attached to its original commit. The Reviewer reported hosted acceptance at `5ebfbb6` passed in all three roles; these final fixes await the Product Director's redeployment/recheck. No hosted deployment/database/settings change or Test site workflow. PR remains draft. Stop after the Builder report.
+
+---
+
+# Previous fix round 2 report (historical evidence)
 
 Owner-authored review [7212254113](https://github.com/FATTY-BAMBA/StrideBrain/pull/83#issuecomment-7212254113). Code `373cb5c`. **Items 1 and 3 pass locally. Item 2's specified half-best rule is implemented, but its owner acceptance example still fails. Clarification is required before changing the scoring rule.** No paid evaluation or model-facing change.
 

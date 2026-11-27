@@ -1,0 +1,61 @@
+{
+  "mode": "FREE_NO_PROVIDER_CALLS",
+  "commit": "930c9efcab8d6d57476b40a5d4d4f67841ebc0df",
+  "passed": true,
+  "rounds": [
+    {
+      "round": 1,
+      "passed": 118,
+      "total": 118
+    },
+    {
+      "round": 2,
+      "passed": 118,
+      "total": 118
+    },
+    {
+      "round": 3,
+      "passed": 118,
+      "total": 118
+    }
+  ],
+  "expectedCaseChanges": [],
+  "actualChipChanges": [
+    {
+      "round": 1,
+      "id": "en-misses-near-0",
+      "oldChips": [
+        "PRJ-XINYI-026",
+        "PRJ-BANQIAO-015",
+        "PRJ-ZHONGSHAN-018"
+      ],
+      "newChips": [
+        "PRJ-XINYI-026"
+      ]
+    },
+    {
+      "round": 2,
+      "id": "en-misses-near-0",
+      "oldChips": [
+        "PRJ-XINYI-026",
+        "PRJ-BANQIAO-015",
+        "PRJ-ZHONGSHAN-018"
+      ],
+      "newChips": [
+        "PRJ-XINYI-026"
+      ]
+    },
+    {
+      "round": 3,
+      "id": "en-misses-near-0",
+      "oldChips": [
+        "PRJ-XINYI-026",
+        "PRJ-BANQIAO-015",
+        "PRJ-ZHONGSHAN-018"
+      ],
+      "newChips": [
+        "PRJ-XINYI-026"
+      ]
+    }
+  ]
+}

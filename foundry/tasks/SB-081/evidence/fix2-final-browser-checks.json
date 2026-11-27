@@ -1,0 +1,30 @@
+{
+  "mode": "LOCAL_PRODUCTION_SYNTHETIC_MODEL_TRANSPORT",
+  "checks": [
+    {
+      "surface": "home",
+      "englishOwnerCandidates": [
+        "Xinyi Flagship Renovation"
+      ],
+      "requiredOneCandidate": true
+    },
+    {
+      "surface": "home",
+      "locale": "zh-TW",
+      "width": 390,
+      "confirmedFollowUpTaps": 1,
+      "amountBeforeTax": "NT$16,480,000",
+      "noAdditionalJobChoice": true,
+      "pageErrors": []
+    },
+    {
+      "surface": "job",
+      "locale": "zh-TW",
+      "width": 390,
+      "confirmedFollowUpTaps": 1,
+      "amountBeforeTax": "NT$16,480,000",
+      "noAdditionalJobChoice": true,
+      "pageErrors": []
+    }
+  ]
+}

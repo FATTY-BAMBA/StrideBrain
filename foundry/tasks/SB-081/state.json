@@ -2,12 +2,12 @@
   "issue": 81,
   "branch": "build/sb-081-friendlier-misses",
   "baseCommit": "2443d9d2d50ce1bf8c1d36999ef670a4aec16c79",
-  "status": "AWAITING_CLARIFICATION",
+  "status": "AWAITING_PRODUCT_DIRECTOR_HOSTED_ACCEPTANCE",
   "draft": true,
   "hostedAcceptance": "PREVIOUS_COMMIT_5ebfbb6_PASSED_ALL_THREE_ROLES_NEW_FIXES_WAITING",
   "paidBudgetUsd": "2.00",
   "paidSpentUsd": "1.546026000",
-  "stopAfter": "BUILDER_REPORT_FIX_ROUND_2",
+  "stopAfter": "BUILDER_REPORT_FIX_ROUND_2_COMPLETE",
   "pullRequest": 83,
   "completedSteps": [
     "A",
@@ -21,20 +21,21 @@
     "Reviewer 7210266238: typed question may reach model; private record identities may not. Awaiting Product Director before merge.",
     "Reviewer 7211242362: constant client/contact/site-address facts replace partial notice. Awaiting Product Director before merge.",
     "Not-found and failed-answer copy.",
-    "Reviewer 7212254113 items 2 and 3: ranking floor and job-identity follow-up filter; awaiting Product Director confirmation."
+    "Reviewer 7214653618: matching standalone-number filter before 75% cutoff; pending Product Director confirmation.",
+    "Reviewer 7212254113 item 3: job-name/reference follow-up filtering; pending Product Director confirmation."
   ],
-  "finalCodeCommit": "373cb5cd00005cbe84f5dcaf9a211331d1c0c2e4",
+  "finalCodeCommit": "930c9efcab8d6d57476b40a5d4d4f67841ebc0df",
   "paidEvaluatedCommit": "b918108f3d1d19de1db48a4933ebb7d76be4234a",
   "paidPassed": true,
   "fullPaidRunsUsed": 2,
   "fullPaidRun": 45951296390,
   "localCheck": {
     "passed": true,
-    "tests": 2035,
-    "files": 210,
+    "tests": 2054,
+    "files": 211,
     "workers": 4
   },
-  "remainingBlocker": "Item 2 half-best rule retains owner candidates with scores 1.0 vs best 1.5; need cutoff or scoring decision.",
+  "remainingBlocker": "Final hosted recheck and Product Director confirmation of provisional decisions.",
   "additionalAuthorization": {
     "additionalAllowanceUsd": "1.00",
     "focused": {
@@ -61,7 +62,7 @@
   "fixRound2": {
     "paidCalls": 0,
     "paidSpentUsd": "0.000000000",
-    "items1and3": "LOCAL_PASS",
-    "item2": "RULE_IMPLEMENTED_ACCEPTANCE_FAILED"
+    "items1and3": "ACCEPTED_BY_REVIEWER_7214653618",
+    "item2": "LOCAL_PASS_PER_DECISION_7214653618"
   }
 }
