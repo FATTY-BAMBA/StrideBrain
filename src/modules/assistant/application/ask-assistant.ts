@@ -3,6 +3,7 @@ import { maySuggestFollowUp } from "../domain/follow-ups";
 import { AnswerFactRegistry, parseFactAnswer } from "../domain/fact-answers";
 import {
   identityMention,
+  namedProjects,
   matchesSubject,
   toolCallKey,
   type AssistantProjectIdentity,
@@ -368,6 +369,19 @@ export class AskAssistant {
             kind: "ANSWER",
             locale,
             answer,
+            ...(confirmed
+              ? {
+                  questionChips: answer.followUps.map((question) => ({
+                    label: question,
+                    question,
+                    ...(namedProjects(question, knownProjects).some(
+                      (job) => job.projectKey !== confirmed,
+                    )
+                      ? {}
+                      : { confirmedProjectKey: confirmed }),
+                  })),
+                }
+              : {}),
             selection: checked.selection,
             sources: sources.filter((s) => answer.sourceIds.includes(s.sourceId)),
           };

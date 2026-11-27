@@ -189,7 +189,7 @@ export function HomeChat({
             {turn.aiQuestionChips?.length ? (
               <ul className={styles.followUps}>
                 {turn.aiQuestionChips.map((chip) => (
-                  <li key={chip.confirmedProjectKey ?? chip.label}>
+                  <li key={`${chip.confirmedProjectKey ?? ""}:${chip.label}`}>
                     <button
                       type="button"
                       disabled={pending}

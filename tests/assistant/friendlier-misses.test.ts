@@ -497,3 +497,113 @@ it.each([0, 5, 10])(
     });
   },
 );
+
+it("drops candidates below half the best score and keeps ties and Chinese evaluation matches", () => {
+  const candidates = [
+    ...jobs,
+    { projectKey: "BAN", names: ["Banqiao Concept Store"] },
+    { projectKey: "ZHONG", names: ["Zhongshan Lifestyle Store"] },
+    ...["Daan", "Beitou", "Neihu"].map((name) => ({ projectKey: name, names: [`${name} Store`] })),
+  ];
+  expect(nearestJobs("Xinyi store", candidates, "en").map((j) => j.projectKey)).toEqual([
+    "PRJ-XINYI-026",
+  ]);
+  expect(
+    nearestJobs(
+      "Xinyi",
+      [
+        { projectKey: "A", names: ["Xinyi north"] },
+        { projectKey: "B", names: ["Xinyi south"] },
+      ],
+      "en",
+    ).map((j) => j.projectKey),
+  ).toEqual(["A", "B"]);
+  expect(nearestJobs("信義店", candidates, "zh-TW").map((j) => j.projectKey)).toEqual([
+    "PRJ-XINYI-026",
+  ]);
+  expect(nearestJobs("河岸工作室", candidates, "zh-TW").map((j) => j.projectKey)).toEqual([
+    "RIVER",
+  ]);
+});
+it("drops job identity follow-ups but keeps quote document numbers", () => {
+  for (const text of [
+    "信義旗艦店裝修的專案名稱是什麼？",
+    "What is the job reference for Riverside Display Studio?",
+    "What is the name of the project?",
+    "專案編號是多少？",
+  ])
+    expect(maySuggestFollowUp(text, jobContext().capabilities)).toBe(false);
+  for (const text of [
+    "信義旗艦店裝修的報價單號是多少？",
+    "What is the quote number for Riverside Display Studio?",
+  ])
+    expect(maySuggestFollowUp(text, jobContext().capabilities)).toBe(true);
+});
+it.each([false, true])(
+  "follow-up context is inherited only from a confirmed turn (%s)",
+  async (confirmed) => {
+    const followUps = [
+      "信義店的階段是什麼？",
+      "What stage is Riverside Display Studio in?",
+      "What stage is PRJ-XINYI-026 in?",
+    ];
+    const f = missesFixture([
+      {
+        usage,
+        result: {
+          kind: "TOOLS",
+          calls: [{ name: "get_job", arguments: { projectKey: jobs[0]!.projectKey } }],
+        },
+      },
+      {
+        usage,
+        result: {
+          kind: "ANSWER",
+          answer: { parts: [{ say: "RECORDS_SHOW" }, { show: "s1.stage" }], followUps },
+        },
+      },
+    ]);
+    f.tools.resolveSubjects.mockResolvedValue({ kind: "AVAILABLE", projects: jobs, named: [] });
+    f.tools.execute.mockResolvedValue({
+      status: "OK",
+      sources: [
+        {
+          sourceId: "job",
+          label: jobs[0]!.names[0],
+          href: "/zh-TW/projects/PRJ-XINYI-026",
+          projectKeys: [jobs[0]!.projectKey],
+          facts: { stage: "報價審查" },
+        },
+      ],
+    });
+    const out = await f.service.execute(jobContext({ locale: "zh-TW" }), {
+      question: "信義店的階段是什麼？",
+      ...(confirmed ? { confirmedProjectKey: jobs[0]!.projectKey } : {}),
+    });
+    expect(out.kind).toBe("ANSWER");
+    if (out.kind !== "ANSWER") throw Error("answer");
+    if (!confirmed) expect(out.questionChips).toBeUndefined();
+    else {
+      expect(out.questionChips).toEqual(
+        out.answer.followUps.map((question, i) => ({
+          label: question,
+          question,
+          ...(i === 1 ? {} : { confirmedProjectKey: jobs[0]!.projectKey }),
+        })),
+      );
+      const forged = missesFixture([]);
+      forged.tools.resolveSubjects.mockResolvedValue({
+        kind: "AVAILABLE",
+        projects: jobs,
+        named: [],
+      });
+      expect(
+        await forged.service.execute(jobContext(), {
+          question: out.questionChips![0]!.question,
+          confirmedProjectKey: "FORGED",
+        }),
+      ).toMatchObject({ kind: "ANSWER", refusal: "NO_RECORDS" });
+      expect(forged.model.requests).toHaveLength(0);
+    }
+  },
+);

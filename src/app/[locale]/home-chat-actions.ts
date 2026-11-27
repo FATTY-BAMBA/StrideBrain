@@ -740,7 +740,7 @@ export async function askHomeAction(
                 label: s.label,
                 href: s.href as Route,
               })),
-              aiFollowUps: result.answer.followUps,
+              aiFollowUps: result.questionChips ? [] : result.answer.followUps,
               ...(result.questionChips ? { aiQuestionChips: result.questionChips } : {}),
               ...(result.answer.presentation ? { aiPresentation: result.answer.presentation } : {}),
               ...(result.action

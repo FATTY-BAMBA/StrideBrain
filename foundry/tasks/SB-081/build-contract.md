@@ -26,3 +26,13 @@ Owner-authored review confirmed. The fixed availability facts are provisional, a
 Rank missing-job candidates before access reads, examine at most ten and stop after three pass. Keep the paired present/absent and identity-boundary tests unchanged.
 
 The Product Director authorized an additional US$1.00: focused partial/complete/new cases first, then only one full run after focused success. If any partial case is below 2/3, revise the single instruction sentence once and retry once; if still failing, stop and report. The original US$0.859081800 remains separately recorded. No pass-rule changes or hosted changes.
+
+## Fix round 2 (7212254113)
+
+Hosted acceptance at `5ebfbb6` was reported passed by the owner-authored Reviewer comment in all three roles; the Product Director will redeploy and recheck these three changes. No paid evaluation authorized or performed. No instruction, tool definition or tool-result change.
+
+- A confirmed answer's follow-ups carry that confirmed key through the existing typed-chip path, unless existing identity matching finds another readable job in the follow-up. Unconfirmed turns stay unchanged; validation/access/exclusion checks are reused.
+- Rank candidates as before, then drop scores below half the best score before the bounded access checks. Ties remain.
+- Filter follow-ups asking for a job name/reference; quote document-number questions remain allowed.
+
+The ranking floor and job-identity follow-up filter are provisional pending Product Director confirmation. Verify unit/integration tests, npm run check and a local one-tap confirmed follow-up screenshot, then report and stop.

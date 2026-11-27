@@ -226,3 +226,19 @@ it("passes confirmed context separately and rejects repeated, oversized and forg
   expect(boundary.ask).not.toHaveBeenCalled();
   expect(boundary.legacy).not.toHaveBeenCalled();
 });
+
+it("renders confirmed follow-ups only as typed chips, without duplicate plain buttons", async () => {
+  const question = "What stage is Xinyi store in?";
+  const chip = { label: question, question, confirmedProjectKey: "PRJ-XINYI-026" };
+  boundary.ask.mockResolvedValue({
+    kind: "ANSWER",
+    locale: "en",
+    answer: { text: "Saved stage", sourceIds: [], followUps: [question] },
+    sources: [],
+    questionChips: [chip],
+  });
+  const input = form();
+  input.set("confirmedProjectKey", "PRJ-XINYI-026");
+  const out = await askHomeAction(initialHomeChatState, input);
+  expect(out.turns.at(-1)).toMatchObject({ aiQuestionChips: [chip], aiFollowUps: [] });
+});

@@ -35,7 +35,7 @@ export function nearestJobs(
       [job.projectKey, ...job.names].flatMap((n) => [...pieces(normalize(n))]),
     ))
       frequencies.set(piece, (frequencies.get(piece) ?? 0) + 1);
-  return jobs
+  const ranked = jobs
     .map((job) => {
       const score = Math.max(
         0,
@@ -53,8 +53,9 @@ export function nearestJobs(
       return { projectKey: job.projectKey, name: projectName(job, locale), score };
     })
     .filter((p) => p.score > 0)
-    .sort((a, b) => b.score - a.score || a.projectKey.localeCompare(b.projectKey, "en"))
-    .slice(0, limit);
+    .sort((a, b) => b.score - a.score || a.projectKey.localeCompare(b.projectKey, "en"));
+  const floor = (ranked[0]?.score ?? 0) / 2;
+  return ranked.filter((job) => job.score >= floor).slice(0, limit);
 }
 /** Replace only complete authorized references; an existing name is already readable. */
 export function nameFollowUp(

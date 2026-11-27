@@ -221,3 +221,56 @@ it.each(["en", "zh-TW"] as const)(
     expect(sent.get("confirmedProjectKey")).toBe("PRJ-XINYI-026");
   },
 );
+
+it.each(["home", "job"] as const)(
+  "confirmed follow-up chip sends its key after one tap on %s",
+  async (surface) => {
+    const question = "信義店的報價未稅金額是多少？";
+    boundary.ask.mockImplementationOnce(async () => ({
+      context: {},
+      turns: [
+        {
+          id: "a",
+          role: "assistant",
+          text: "Confirmed answer",
+          ai: true,
+          aiQuestionChips: [
+            { label: question, question, confirmedProjectKey: "PRJ-XINYI-026" },
+            {
+              label: "信義店的階段是什麼？",
+              question: "信義店的階段是什麼？",
+              confirmedProjectKey: "PRJ-XINYI-026",
+            },
+          ],
+        },
+      ],
+    }));
+    const error = vi.spyOn(console, "error");
+    await act(() =>
+      root.render(
+        surface === "home"
+          ? createElement(HomeChat, { locale: "zh-TW" })
+          : createElement(JobChatPanel, {
+              locale: "zh-TW",
+              projectKey: "PAGE",
+              canReadQuote: true,
+            }),
+      ),
+    );
+    if (surface === "job")
+      await act(() => host.querySelector<HTMLButtonElement>("button[aria-controls]")!.click());
+    host.querySelector<HTMLTextAreaElement>("textarea")!.value = "信義店的報價總計是多少？";
+    await act(() => host.querySelector<HTMLFormElement>("form")!.requestSubmit());
+    const chip = [...host.querySelectorAll<HTMLButtonElement>("button")].find(
+      (b) => b.textContent === question,
+    )!;
+    await act(() => chip.click());
+    const sent = boundary.ask.mock.calls.at(-1)![1] as FormData;
+    expect(sent.get("message")).toBe(question);
+    expect(sent.get("confirmedProjectKey")).toBe("PRJ-XINYI-026");
+    expect(sent.get("projectKey")).toBe(surface === "job" ? "PAGE" : null);
+    expect(error.mock.calls.some((args) => /same key|unique.*key/i.test(String(args[0])))).toBe(
+      false,
+    );
+  },
+);
