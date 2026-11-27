@@ -67,7 +67,7 @@
 .chatComposer textarea {
   width: 100%;
   resize: vertical;
-  min-height: 48px;
+  min-height: calc(var(--leading-body) * 3em + var(--space-24));
   max-height: 160px;
   border: 1px solid var(--line-control);
   border-radius: var(--radius-control);

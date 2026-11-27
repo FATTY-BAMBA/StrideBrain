@@ -1,3 +1,7 @@
+import type { Route } from "next";
+import { createProjectWorkspaceService } from "@/lib/server/project-workspace-services";
+import { redirect } from "next/navigation";
+import { comparisonHref } from "@/modules/comparison-experience/route-state";
 import { notFound } from "next/navigation";
 
 import { ComparisonExperienceClient } from "@/components/comparisons/comparison-experience-client";
@@ -49,12 +53,34 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
   const actionRoute = parseInternalReviewRoute(search);
   const context = await resolveServerRuntimeContext();
 
+  const workspace = context
+    ? await createProjectWorkspaceService().execute({ ...context, locale: rawLocale }, projectKey)
+    : null;
+  const closed =
+    workspace?.kind === "AVAILABLE" && workspace.workspace.project.stage === "COMPLETE";
+  if (closed && context && !route.comparisonRunId) {
+    const saved = await createComparisonServices().getHomeComparison.execute(context, projectKey);
+    if (saved?.kind === "AVAILABLE")
+      redirect(
+        comparisonHref(rawLocale, projectKey, {
+          comparisonRunId: saved.comparison.run.id,
+          economicsRunId: saved.economics?.run.id,
+          selectedProjectKeys:
+            saved.economics?.selectedProjectKeys ?? saved.comparison.defaultSelectedProjectKeys,
+        }) as Route,
+      );
+  }
   return (
     <div className="foundation-page">
       {await (async () => {
         if (!context?.firmLists) {
           return (
-            <ComparisonState locale={rawLocale} projectKey={projectKey} kind="SESSION_REQUIRED" />
+            <ComparisonState
+              closed={closed}
+              locale={rawLocale}
+              projectKey={projectKey}
+              kind="SESSION_REQUIRED"
+            />
           );
         }
 
@@ -63,6 +89,7 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
           if (stateKind) {
             return (
               <ComparisonState
+                closed={closed}
                 locale={rawLocale}
                 projectKey={projectKey}
                 kind={stateKind}
@@ -71,7 +98,7 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
               />
             );
           }
-          return <ComparisonStart locale={rawLocale} projectKey={projectKey} />;
+          return <ComparisonStart closed={closed} locale={rawLocale} projectKey={projectKey} />;
         }
 
         const services = createComparisonServices();
@@ -79,6 +106,7 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
         if (structural.kind !== "COMPLETE") {
           return (
             <ComparisonState
+              closed={closed}
               locale={rawLocale}
               projectKey={projectKey}
               kind="UNAVAILABLE"
@@ -89,6 +117,7 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
         if (structural.result.activeContext.projectKey !== projectKey) {
           return (
             <ComparisonState
+              closed={closed}
               locale={rawLocale}
               projectKey={projectKey}
               kind="UNAVAILABLE"
@@ -103,6 +132,7 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
         if (economics && economics.run.comparisonRunId !== structural.result.run.id) {
           return (
             <ComparisonState
+              closed={closed}
               locale={rawLocale}
               projectKey={projectKey}
               kind="UNAVAILABLE"
@@ -114,6 +144,7 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
         if (!economics && (route.outcome === "FAILED" || route.outcome === "ECONOMICS_FAILED")) {
           return (
             <ComparisonState
+              closed={closed}
               locale={rawLocale}
               projectKey={projectKey}
               kind="ECONOMICS_FAILED"
@@ -190,6 +221,7 @@ export default async function ComparisonPage({ params, searchParams }: Compariso
             : receipt;
         return (
           <ComparisonExperienceClient
+            closed={closed}
             view={view}
             freshness={freshness}
             evidencePanel={evidencePanel}

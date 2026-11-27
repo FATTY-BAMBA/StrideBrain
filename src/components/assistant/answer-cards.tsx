@@ -9,6 +9,7 @@ import { FactsList } from "@/components/ui/facts-list";
 function FactRows({ rows, locale }: { rows: readonly AnswerRow[]; locale: Locale }) {
   return (
     <FactsList
+      alignValues
       groupAdjacent
       rows={rows.map((row) => ({
         key: row.ref,

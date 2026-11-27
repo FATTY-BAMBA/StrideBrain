@@ -55,7 +55,7 @@ const en = {
   createdBy: "Created by",
   evidenceCount: "Authorized evidence references",
   noDueDate: "No due date",
-  actionsTitle: "Internal review actions",
+  actionsTitle: "Actions",
   actionsDescription:
     "Open a saved receipt to inspect its details and return to the source comparison.",
   actionsEmpty: "No internal review actions are currently available here.",
@@ -155,7 +155,7 @@ const zhTw: CopyShape<typeof en> = {
   createdBy: "建立人",
   evidenceCount: "可存取的佐證資料筆數",
   noDueDate: "未設定到期日",
-  actionsTitle: "內部審查事項",
+  actionsTitle: "行動事項",
   actionsDescription: "開啟已儲存回執以檢視詳情，或返回來源比較。",
   actionsEmpty: "目前沒有可查看的內部審查事項。",
   openReceipt: "開啟回執",

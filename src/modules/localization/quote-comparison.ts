@@ -1,6 +1,7 @@
 import type { Locale } from "./config";
 const en = {
   title: "Comparison",
+  details: "View details",
   loading: "Loading comparison…",
   running: "Running comparison…",
   NOT_RUN: "Not run. You can draft, save and issue without a comparison.",
@@ -13,7 +14,7 @@ const en = {
   CURRENT: "Current saved comparison",
   run: "Run comparison",
   refresh: "Refresh comparison",
-  open: "Open full comparison",
+  open: "View all",
   similar: "Similar past jobs",
   findings: "Saved findings",
   sources: "View sources",
@@ -21,6 +22,7 @@ const en = {
 };
 const zh: typeof en = {
   title: "比較",
+  details: "查看明細",
   loading: "正在載入比較…",
   running: "正在執行比較…",
   NOT_RUN: "尚未執行。沒有比較也能草擬、儲存及核發報價。",
@@ -32,7 +34,7 @@ const zh: typeof en = {
   CURRENT: "目前有效的已儲存比較",
   run: "執行比較",
   refresh: "重新比較",
-  open: "開啟完整比較",
+  open: "查看全部",
   similar: "相似的過往專案",
   findings: "已儲存的發現",
   sources: "查看來源",

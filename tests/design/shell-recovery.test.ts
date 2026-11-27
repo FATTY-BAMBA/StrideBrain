@@ -2,10 +2,10 @@
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { expect, it, vi } from "vitest";
-const route = vi.hoisted(() => ({ locale: "en" }));
+const route = vi.hoisted(() => ({ locale: "en", path: "" }));
 vi.mock("next/navigation", () => ({
   useParams: () => ({ locale: route.locale, projectKey: "PRIVATE-KEY" }),
-  usePathname: () => `/${route.locale}/projects/PRIVATE-KEY`,
+  usePathname: () => route.path || `/${route.locale}/projects/PRIVATE-KEY`,
 }));
 import NotFound from "@/app/[locale]/not-found";
 import ErrorPage from "@/app/[locale]/error";
@@ -38,4 +38,19 @@ it("offers real language links before hydration", () => {
     "/zh-TW/projects/PRIVATE-KEY",
     "/en/projects/PRIVATE-KEY",
   ]);
+});
+import { CurrentArea } from "@/components/shell/current-area";
+import { getCatalog } from "@/modules/localization/catalog";
+it("names only an area in the viewer navigation", () => {
+  route.path = "/en/clients/PRIVATE-KEY";
+  const host = document.createElement("div");
+  host.innerHTML = renderToStaticMarkup(
+    createElement(CurrentArea, { locale: "en", catalog: getCatalog("en"), canReadClients: false }),
+  );
+  expect(host.textContent).toBe("Home");
+  host.innerHTML = renderToStaticMarkup(
+    createElement(CurrentArea, { locale: "en", catalog: getCatalog("en"), canReadClients: true }),
+  );
+  expect(host.textContent).toBe("Clients");
+  route.path = "";
 });

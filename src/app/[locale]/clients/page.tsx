@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Table, NameCell, RowAction } from "@/components/ui/table";
+import { Table, NameCell } from "@/components/ui/table";
 import { EmptyState } from "@/components/ui/empty-state";
 import type { Route } from "next";
 import { notFound } from "next/navigation";
@@ -60,26 +60,23 @@ export default async function ClientsPage({
           {result.clients.length ? (
             <Table
               caption={c.title}
-              headings={[
-                { label: designSystemCopy(locale).name },
-                { label: c.reference },
-                { label: designSystemCopy(locale).action, action: true },
-              ]}
+              headings={[{ label: designSystemCopy(locale).name }, { label: c.reference }]}
             >
               {result.clients.map((client) => {
                 const name = locale === "zh-TW" ? client.nameZhTw : client.nameEn;
                 return (
                   <tr key={client.businessKey}>
                     <NameCell>
-                      {name}
+                      <Link
+                        href={
+                          `/${locale}/clients/${encodeURIComponent(client.businessKey)}` as Route
+                        }
+                      >
+                        {name}
+                      </Link>
                       {!client.active ? <small className={styles.marker}>{c.retired}</small> : null}
                     </NameCell>
                     <td>{client.businessKey}</td>
-                    <RowAction
-                      href={`/${locale}/clients/${encodeURIComponent(client.businessKey)}` as Route}
-                      label={designSystemCopy(locale).open}
-                      name={name}
-                    />
                   </tr>
                 );
               })}

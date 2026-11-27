@@ -1,5 +1,10 @@
 "use client";
 
+import { designSystemCopy } from "@/modules/localization/design-system";
+
+import { PageHeader } from "@/components/ui/page-header";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { Table } from "@/components/ui/table";
 import { getValueCopy } from "@/modules/demo-value/copy";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Route } from "next";
@@ -29,6 +34,7 @@ import { EVIDENCE_QUERY_KEYS, evidenceSelectionParams } from "@/modules/evidence
 import styles from "./comparison-experience.module.css";
 
 type ComparisonExperienceClientProps = Readonly<{
+  closed?: boolean;
   view: ComparisonExperienceView;
   freshness?: ComparisonFreshness | undefined;
   evidencePanel?: EvidencePanelOutcome | undefined;
@@ -41,7 +47,7 @@ function SelectionSubmit({ disabled, label }: Readonly<{ disabled: boolean; labe
   const { pending } = useFormStatus();
   return (
     <button
-      className={styles.primaryButton}
+      className={styles.secondaryButton}
       type="submit"
       disabled={disabled || pending}
       aria-busy={pending}
@@ -145,94 +151,96 @@ function ProjectCard({
   ] as const;
 
   return (
-    <article
-      className={`${styles.projectCard} ${selected ? styles.projectCardSelected : ""}`}
-      aria-label={`${card.rank}. ${card.name}`}
-    >
-      <label className={styles.cardSelection}>
-        <span className="sr-only">{`${copy.selection.title}: ${card.name}`}</span>
-        <input
-          type="checkbox"
-          checked={selected}
-          disabled={disabled}
-          onChange={() => onToggle(card.projectKey)}
-        />
-      </label>
-
-      <div className={styles.cardTopline}>
-        <span className={styles.rank}>{card.rank}</span>
-        <span className={`${styles.band} ${bandClass(card.band)}`}>{card.bandLabel}</span>
-      </div>
-
-      <div className={styles.cardIdentity}>
-        <h3>{card.name}</h3>
-        <div className={styles.cardMeta}>
-          <span>{card.locationLabel}</span>
-          <span>{card.areaLabel}</span>
-          <span>{card.completionLabel}</span>
+    <tr className={selected ? styles.projectCardSelected : undefined}>
+      <td>
+        <label className={styles.cardSelection}>
+          <span className="sr-only">{`${copy.selection.title}: ${card.name}`}</span>
+          <input
+            type="checkbox"
+            checked={selected}
+            disabled={disabled}
+            onChange={() => onToggle(card.projectKey)}
+          />
+        </label>
+      </td>
+      <td>
+        <div className={styles.cardTopline}>
+          <span className={styles.rank}>{card.rank}</span>
+          <span className={`${styles.band} ${bandClass(card.band)}`}>{card.bandLabel}</span>
         </div>
-      </div>
 
-      <div className={styles.scoreRow}>
-        <div className={styles.scoreMetric}>
-          <span>{copy.card.score}</span>
-          <strong>{card.scoreLabel}</strong>
+        <div className={styles.cardIdentity}>
+          <h3>{card.name}</h3>
+          <div className={styles.cardMeta}>
+            <span>{card.locationLabel}</span>
+            <span>{card.areaLabel}</span>
+            <span>{card.completionLabel}</span>
+          </div>
         </div>
-        <div className={styles.scoreMetric}>
-          <span>{copy.card.coverage}</span>
-          <strong>{card.evidenceCoverageLabel}</strong>
+      </td>
+      <td>
+        <div className={styles.scoreRow}>
+          <div className={styles.scoreMetric}>
+            <span>{copy.card.score}</span>
+            <strong>{card.scoreLabel}</strong>
+          </div>
+          <div className={styles.scoreMetric}>
+            <span>{copy.card.coverage}</span>
+            <strong>{card.evidenceCoverageLabel}</strong>
+          </div>
         </div>
-      </div>
+      </td>
+      <td>
+        <div className={styles.badgeRow}>
+          {card.quotedHistoryAvailable ? (
+            <span className={styles.dataBadge}>{copy.card.quotedAvailable}</span>
+          ) : null}
+          {card.actualHistoryAvailable ? (
+            <span className={styles.dataBadge}>{copy.card.actualAvailable}</span>
+          ) : null}
+          {card.warningLabels.map((warning) => (
+            <span className={styles.warningBadge} key={warning}>
+              {warning}
+            </span>
+          ))}
+        </div>
 
-      <div className={styles.badgeRow}>
-        {card.quotedHistoryAvailable ? (
-          <span className={styles.dataBadge}>{copy.card.quotedAvailable}</span>
-        ) : null}
-        {card.actualHistoryAvailable ? (
-          <span className={styles.dataBadge}>{copy.card.actualAvailable}</span>
-        ) : null}
-        {card.warningLabels.map((warning) => (
-          <span className={styles.warningBadge} key={warning}>
-            {warning}
-          </span>
-        ))}
-      </div>
-
-      <details className={styles.factorDetails}>
-        <summary>{copy.card.inspectFactors}</summary>
-        {factorGroups.map(([label, factors]) =>
-          factors.length > 0 ? (
-            <div key={label}>
-              <p className={styles.eyebrow}>{label}</p>
-              <ul className={styles.factorList}>
-                {factors.map((factor) => (
-                  <li
-                    className={`${styles.factorItem} ${factor.state === "UNKNOWN" ? styles.factorItemUnknown : ""}`}
-                    key={`${factor.factorKey}-${factor.valueLabel}`}
-                  >
-                    <button
-                      className={styles.factorEvidenceTrigger}
-                      data-evidence-trigger-id={`evidence-factor-${card.projectKey}-${factor.factorKey}`}
-                      type="button"
-                      onClick={() =>
-                        onOpenFactor(
-                          card.projectKey,
-                          factor.factorKey,
-                          `evidence-factor-${card.projectKey}-${factor.factorKey}`,
-                        )
-                      }
+        <details className={styles.factorDetails}>
+          <summary>{copy.card.inspectFactors}</summary>
+          {factorGroups.map(([label, factors]) =>
+            factors.length > 0 ? (
+              <div key={label}>
+                <p className={styles.eyebrow}>{label}</p>
+                <ul className={styles.factorList}>
+                  {factors.map((factor) => (
+                    <li
+                      className={`${styles.factorItem} ${factor.state === "UNKNOWN" ? styles.factorItemUnknown : ""}`}
+                      key={`${factor.factorKey}-${factor.valueLabel}`}
                     >
-                      <span>{factor.label}</span>
-                      <strong>{factor.valueLabel}</strong>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null,
-        )}
-      </details>
-    </article>
+                      <button
+                        className={styles.factorEvidenceTrigger}
+                        data-evidence-trigger-id={`evidence-factor-${card.projectKey}-${factor.factorKey}`}
+                        type="button"
+                        onClick={() =>
+                          onOpenFactor(
+                            card.projectKey,
+                            factor.factorKey,
+                            `evidence-factor-${card.projectKey}-${factor.factorKey}`,
+                          )
+                        }
+                      >
+                        <span>{factor.label}</span>
+                        <strong>{factor.valueLabel}</strong>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null,
+          )}
+        </details>
+      </td>
+    </tr>
   );
 }
 
@@ -243,6 +251,7 @@ function ComparisonResultExperience({
   evidenceSelection,
   evidenceReturnId,
   internalReview,
+  closed = false,
 }: ComparisonExperienceClientProps) {
   const router = useRouter();
   const copy = getComparisonCopy(view.locale);
@@ -379,26 +388,25 @@ function ComparisonResultExperience({
 
   return (
     <div className={styles.page}>
+      <PageHeader
+        id="comparison-title"
+        context={view.activeProject.name}
+        title={valueCopy.compare}
+        description={view.heading.description}
+      />
       {freshness ? (
         <StaleComparisonNotice
+          allowRun={!closed}
           catalog={view.catalog}
           freshness={freshness}
           locale={view.locale}
           projectKey={view.route.projectKey}
         />
       ) : null}
-      <header className={styles.hero}>
-        <div className={styles.heroContent}>
-          <p className={styles.eyebrow}>{view.heading.eyebrow}</p>
-          <h1 tabIndex={-1}>{valueCopy.compare}</h1>
-          <p className={styles.projectName}>{view.activeProject.name}</p>
-          <p className={styles.heroDescription}>{view.heading.description}</p>
-        </div>
-      </header>
 
       <section className={styles.section} aria-labelledby="closest-projects-title">
         <div className={styles.compactHeading}>
-          <h2 id="closest-projects-title">{valueCopy.strongest}</h2>
+          <SectionHeading id="closest-projects-title">{valueCopy.strongest}</SectionHeading>
           <a href="#comparable-projects-title">{valueCopy.changeSelection} ↓</a>
         </div>
         <ol className={styles.closestProjects}>
@@ -421,7 +429,7 @@ function ComparisonResultExperience({
         aria-labelledby="structured-review-title"
       >
         <div className={styles.sectionHeaderText}>
-          <h2 id="structured-review-title">{copy.synthesis.title}</h2>
+          <SectionHeading id="structured-review-title">{copy.synthesis.title}</SectionHeading>
           <p>{valueCopy.selectedHistory}</p>
           <ul className={styles.findingProjects} aria-label={valueCopy.selectedHistory}>
             {view.cards
@@ -507,7 +515,7 @@ function ComparisonResultExperience({
         <div className={styles.sectionHeader}>
           <div className={styles.sectionHeaderText}>
             <p className={styles.eyebrow}>{copy.heroQuestion}</p>
-            <h2 id="comparable-projects-title">{copy.selection.title}</h2>
+            <SectionHeading id="comparable-projects-title">{copy.selection.title}</SectionHeading>
             <p>{copy.selection.description}</p>
           </div>
           <div className={styles.selectionStatus} aria-live="polite">
@@ -518,58 +526,74 @@ function ComparisonResultExperience({
           </div>
         </div>
 
-        <div className={styles.cardGrid}>
+        <Table
+          caption={designSystemCopy(view.locale).selectableJobs}
+          headings={[
+            { label: copy.selection.selectedCount },
+            { label: copy.table.title },
+            { label: copy.card.score, numeric: true },
+            { label: copy.card.inspectFactors },
+          ]}
+        >
           {view.cards.map((card) => (
             <ProjectCard
               key={card.projectKey}
               card={card}
               selected={selectedSet.has(card.projectKey)}
               disabled={
-                !selectedSet.has(card.projectKey) && selected.length >= view.maximumSelectedProjects
+                closed ||
+                (!selectedSet.has(card.projectKey) &&
+                  selected.length >= view.maximumSelectedProjects)
               }
               onToggle={toggleProject}
               onOpenFactor={openFactor}
               copy={copy}
             />
           ))}
-        </div>
+        </Table>
 
-        <form action={updateComparisonSelectionAction} className={styles.selectionForm}>
-          <input type="hidden" name="locale" value={view.locale} />
-          <input type="hidden" name="projectKey" value={view.route.projectKey} />
-          <input type="hidden" name="comparisonRunId" value={view.route.comparisonRunId} />
-          {orderedSelected.map((key) => (
-            <input key={key} type="hidden" name="selectedProjectKey" value={key} />
-          ))}
-          <p
-            className={`${styles.selectionFormMessage} ${selectionError ? styles.selectionError : ""}`}
-            aria-live="polite"
-          >
-            {selectionError ??
-              `${copy.selectedProjects}: ${
-                orderedSelected.length > 0
-                  ? view.cards
-                      .filter((card) => selectedSet.has(card.projectKey))
-                      .map((card) => card.name)
-                      .join(", ")
-                  : "—"
-              }`}
-          </p>
-          <SelectionSubmit
-            disabled={!dirty || orderedSelected.length === 0 || selectionError !== null}
-            label={copy.selection.apply}
-          />
-        </form>
+        {!closed && (
+          <form action={updateComparisonSelectionAction} className={styles.selectionForm}>
+            <input type="hidden" name="locale" value={view.locale} />
+            <input type="hidden" name="projectKey" value={view.route.projectKey} />
+            <input type="hidden" name="comparisonRunId" value={view.route.comparisonRunId} />
+            {orderedSelected.map((key) => (
+              <input key={key} type="hidden" name="selectedProjectKey" value={key} />
+            ))}
+            <p
+              className={`${styles.selectionFormMessage} ${selectionError ? styles.selectionError : ""}`}
+              aria-live="polite"
+            >
+              {selectionError ??
+                `${copy.selectedProjects}: ${
+                  orderedSelected.length > 0
+                    ? view.cards
+                        .filter((card) => selectedSet.has(card.projectKey))
+                        .map((card) => card.name)
+                        .join(", ")
+                    : "—"
+                }`}
+            </p>
+            <SelectionSubmit
+              disabled={!dirty || orderedSelected.length === 0 || selectionError !== null}
+              label={copy.selection.apply}
+            />
+          </form>
+        )}
       </section>
 
       <section className={styles.tablePanel} aria-labelledby="comparison-table-title">
         <div className={styles.sectionHeaderText}>
-          <p className={styles.eyebrow}>{copy.table.title}</p>
-          <h2 id="comparison-table-title">{copy.table.title}</h2>
+          <SectionHeading id="comparison-table-title">{copy.table.title}</SectionHeading>
           <p>{copy.table.description}</p>
         </div>
 
-        <div className={styles.tableWrap} tabIndex={0} role="region" aria-label={copy.table.title}>
+        <div
+          className={styles.tableWrap}
+          tabIndex={0}
+          role="region"
+          aria-label={designSystemCopy(view.locale).comparisonValues}
+        >
           <table className={styles.comparisonTable}>
             <thead>
               <tr>
@@ -616,30 +640,6 @@ function ComparisonResultExperience({
             ))}
           </table>
         </div>
-
-        <div className={styles.mobileComparison} aria-label={copy.table.title}>
-          {view.table.columns.map((column) => (
-            <article className={styles.mobileColumn} key={column.key}>
-              <h3>{column.label}</h3>
-              {view.table.sections.map((section) => (
-                <section className={styles.mobileSection} key={section.key}>
-                  <h4>{section.label}</h4>
-                  {section.rows.map((row) => (
-                    <div className={styles.mobileRow} key={row.key}>
-                      <span>{row.label}</span>
-                      <ComparisonCell
-                        cell={row.cells[column.key]}
-                        copy={copy}
-                        triggerId={`evidence-mobile-${row.key}-${column.key}`}
-                        onOpenClaim={openClaim}
-                      />
-                    </div>
-                  ))}
-                </section>
-              ))}
-            </article>
-          ))}
-        </div>
       </section>
 
       <aside className={styles.noticeStack} aria-label={copy.table.evidenceState}>
@@ -652,6 +652,7 @@ function ComparisonResultExperience({
 
       {evidencePanel ? (
         <EvidencePanel
+          closed={closed}
           outcome={evidencePanel}
           selection={evidenceSelection}
           locale={view.locale}

@@ -6,7 +6,6 @@ import { projectLocationLabel } from "@/modules/localization/project-context";
 import type { Route } from "next";
 import Link from "next/link";
 
-import { getComparisonCopy } from "@/modules/comparison-experience/copy";
 import { comparisonHref } from "@/modules/comparison-experience/route-state";
 import type {
   CommercialObservationDTO,
@@ -41,7 +40,6 @@ const copy = {
     suppliers: "Suppliers",
     materials: "Materials",
     scope: "Scope categories",
-    questions: "Ask StrideBrain in this project",
     programme: "Programme",
     area: "Area",
     location: "Location",
@@ -52,8 +50,6 @@ const copy = {
     stale: "Historical / stale",
     version: "Version",
     demo: "Synthetic demo data for {job}",
-    compareDescription:
-      "Find the strongest historical precedents, understand why they match, and compare the current quotation with evidence-backed history.",
     warnings: "This project has data conditions that require attention.",
   },
   "zh-TW": {
@@ -68,7 +64,6 @@ const copy = {
     suppliers: "供應商",
     materials: "材料",
     scope: "工作範圍分類",
-    questions: "在此專案中詢問 StrideBrain",
     programme: "工期",
     area: "面積",
     location: "地點",
@@ -79,7 +74,6 @@ const copy = {
     stale: "歷史／已過期",
     version: "版本",
     demo: "{job}的虛構示範資料",
-    compareDescription: "尋找最接近的歷史專案、理解相似原因，並用可追溯的歷史依據比較目前報價。",
     warnings: "此專案有需要注意的資料狀態。",
   },
 } as const;
@@ -114,7 +108,6 @@ function formatObservation(
 export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspaceOverviewProps) {
   const labels = copy[locale];
   const valueCopy = getValueCopy(locale);
-  const comparison = getComparisonCopy(locale);
   const actionCopy = getInternalReviewCopy(locale);
   const areaUnit =
     workspace.project.area.unit.toLowerCase() === "m2" ? "m²" : workspace.project.area.unit;
@@ -131,9 +124,7 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
             <Link className={`${ui.button} ${ui.primary}`} href={comparisonUrl}>
               {valueCopy.compare} →
             </Link>
-          ) : (
-            <p className={styles.restricted}>{labels.restricted}</p>
-          )
+          ) : null
         }
       />
       <FactsList
@@ -314,18 +305,6 @@ export function ProjectWorkspaceOverview({ locale, workspace }: ProjectWorkspace
           </Link>
         </section>
       ) : null}
-
-      <section className={styles.panel} aria-labelledby="project-questions-title">
-        <div className={styles.panelHeader}>
-          <SectionHeading id="project-questions-title">{labels.questions}</SectionHeading>
-        </div>
-        <div className={styles.questionList}>
-          <Link className={styles.questionLink} href={comparisonUrl}>
-            <strong>{comparison.heroQuestion}</strong>
-            <span>{comparison.heroPrompt}</span>
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }

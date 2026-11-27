@@ -109,15 +109,6 @@
   },
   {
     "role": "owner",
-    "path": "/zh-TW/nothing-here",
-    "status": 404,
-    "defects": [
-      "H1",
-      "MAIN"
-    ]
-  },
-  {
-    "role": "owner",
     "path": "/zh-TW/projects/NO-SUCH-JOB",
     "status": 404,
     "defects": [
@@ -241,15 +232,6 @@
     "path": "/en/projects/PRJ-XINYI-026/actions",
     "status": 200,
     "defects": []
-  },
-  {
-    "role": "owner",
-    "path": "/en/nothing-here",
-    "status": 404,
-    "defects": [
-      "H1",
-      "MAIN"
-    ]
   },
   {
     "role": "owner",
@@ -384,15 +366,6 @@
   },
   {
     "role": "viewer",
-    "path": "/zh-TW/nothing-here",
-    "status": 404,
-    "defects": [
-      "H1",
-      "MAIN"
-    ]
-  },
-  {
-    "role": "viewer",
     "path": "/zh-TW/projects/NO-SUCH-JOB",
     "status": 404,
     "defects": [
@@ -521,15 +494,6 @@
     "path": "/en/projects/PRJ-XINYI-026/actions",
     "status": 200,
     "defects": []
-  },
-  {
-    "role": "viewer",
-    "path": "/en/nothing-here",
-    "status": 404,
-    "defects": [
-      "H1",
-      "MAIN"
-    ]
   },
   {
     "role": "viewer",

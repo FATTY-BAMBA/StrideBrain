@@ -2,9 +2,11 @@
   "issue": 77,
   "branch": "build/sb-077-design-pass-v2",
   "baseCommit": "aacee10141ef03a5780286aa934c0ef890db16b4",
-  "status": "STOPPED_AFTER_C",
-  "stopAfter": "C",
+  "status": "READY_FOR_REVIEW",
   "draft": true,
   "hostedAcceptance": "WAITING_FOR_PRODUCT_DIRECTOR",
-  "pullRequest": 82
+  "pullRequest": 82,
+  "provisionalDecisions": "AWAITING_PRODUCT_DIRECTOR",
+  "stopAfter": "FINAL_BUILDER_REPORT",
+  "localCheck": "PASS_1996_TESTS_206_FILES"
 }

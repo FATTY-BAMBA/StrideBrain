@@ -1,4 +1,5 @@
 "use client";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { useState, useTransition } from "react";
 import { quoteIssueMutationAction } from "@/app/[locale]/projects/[projectKey]/quote/issue-actions";
 import type { FirmDetails } from "@/modules/quote-issue/domain/contracts";
@@ -33,7 +34,7 @@ export function FirmDetailsForm({
     [key, setKey] = useState(() => crypto.randomUUID());
   return (
     <section className={styles.section} aria-busy={pending}>
-      <h2>{copy.firm}</h2>
+      <SectionHeading>{copy.firm}</SectionHeading>
       {!canManage && <p>{copy.readonly}</p>}
       <form
         onSubmit={(event) => {

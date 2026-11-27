@@ -9,8 +9,8 @@ StrideBrain is for owners of small firms. Every screen and every answer must be 
 - A design value outside the tokens is a defect. Colour, typography, spacing, radii, control heights and the document shadow come from `src/styles/tokens.css`. Structural CSS (`grid`, `auto`, `0`, percentages, fractions, responsive breakpoints and intrinsic sizing) is not a design value. Never add new legacy tokens.
 - One primary button per view. Its text names the action. Other actions use secondary, outline or quiet; destructive actions use danger.
 - Every page starts with PageHeader: a small context line, the title, and actions on the right. Actions wrap below at narrow widths.
-- Assistant answers use server-built record cards with named titles, quiet references, description-list rows and one source-page link; older answers retain their text view. Other record lists are tables directly on the page, without surrounding cards. Separate sections with space and a rule, not boxes.
-- Status is a badge with words: 草稿 / Draft (neutral), 內部審查中 / In internal review (information), 已發出 / Issued (warning), 已接受 / Accepted (accent-soft), 定稿 / Final (ink reversed). The supplied colours vary in lightness and hue; words carry the meaning.
+- Assistant answers use server-built record cards with named titles, quiet references, description-list rows and one source-page link; older answers retain their text view. Comparable record lists are tables directly on the page, without surrounding cards. Home decisions and closed-job lessons use the shared row list described below. Separate sections with space and a rule, not boxes.
+- Status is a badge with words: 草稿 / Draft (neutral), 內部審查中 / In internal review (information), 已核發 / Issued (warning), 已接受 / Accepted (accent-soft), 定稿 / Final (ink reversed). The supplied colours vary in lightness and hue; words carry the meaning.
 - Money and other compared figures align right and use tabular numerals. Formatting and permission checks stay in their existing domain/application paths.
 - Interactive elements are real buttons, links or form controls. Every keyboard target has a visible 3px focus ring. Text contrast is at least 4.5:1, control borders and icons at least 3:1. Icons use currentColor and always have adjacent text or an accessible name.
 - Every screen has empty, loading and error states and a role-without-money view. Never hide unauthorized figures with CSS: omit them from the data as before.
@@ -18,7 +18,7 @@ StrideBrain is for owners of small firms. Every screen and every answer must be 
 
 ## Tokens
 
-The following is the v1 token table. The CSS file is authoritative. Legacy tokens preserve the previous values of older page bodies until part 2; they are excluded from this table and forbidden in new components.
+The following is the v1 token table. The CSS file is authoritative. Legacy tokens and their migration allowances have been removed; the design gate permits no raw-value baseline.
 
 | Custom property     | Value                                                                               |
 | ------------------- | ----------------------------------------------------------------------------------- |
@@ -107,7 +107,7 @@ All these components are server components by default. URL-aware navigation, err
 | `Button`     | A real button, safe default type `button`; forms specify `submit`. Variants: primary, secondary, outline, quiet, danger. Supply action words; never use a clickable div.                    |
 | `Field`      | A labelled input by default or `as="select"`. Supply a stable unique id, label and normal control props; hint/error IDs are connected through aria-describedby and errors set aria-invalid. |
 | `Badge`      | Pass a typed quote status and locale. It supplies the canonical worded status and tone.                                                                                                     |
-| `Table`      | Caption, headings and body rows in a focusable horizontal scroll region. Use `NameCell` for the row heading, `NumericCell` for figures and `RowAction` for one named link per row.          |
+| `Table`      | Caption, headings and body rows in a focusable horizontal scroll region. Use `NameCell` for the row heading, `NumericCell` for figures and the record's linked name as the row's entry point.          |
 | `Notice`     | Information, warning or error. Information/warning use role=status; an error uses role=alert. Text says what happened and what the person can do.                                           |
 | `EmptyState` | A plain section with a heading, optional explanation and optional action, without a card.                                                                                                   |
 | `Icon`       | Copied Lucide geometry, 18px and 1.6px currentColor stroke. `decorative` requires adjacent words; standalone icons require a `label`. Licence and source release are adjacent.              |
@@ -138,11 +138,11 @@ Measure a fresh Traditional Chinese Home visit with cache disabled. If font tran
 
 ## Migration and the CSS gate
 
-Part 1 updates the shell and the Quotes/Clients lists. Older page bodies retain their existing styles; collisions with new values have been mechanically renamed with `legacy-`. Loading the actual fonts and switching the shell canvas are intentional global changes. Part 2 brings older bodies into this system and removes legacy variables and the baseline.
+The shell, record screens, comparison, evidence, review and Settings now use the shared tokens. The temporary legacy variables and baseline from part 1 have been removed. Font and shell-canvas changes from part 1 remain.
 
 `npm run design:check` scans every CSS file under src; it also runs in `npm run check` and CI. Only `src/styles/tokens.css` may define raw values, and that file may contain only custom-property declarations. Other files are checked for literal colours (including colour functions and named colours), non-token font-size and border-radius declarations. Comments, strings and URLs are ignored; raw fallbacks are checked. `currentColor` inherits the token colour and `transparent` paints no colour, so neither is a raw colour violation.
 
-`scripts/design/legacy-baseline.json` records existing-file counts per rule. A count may fall and must never rise. Lower its allowance when removing old values; do not raise allowances or add new files to the baseline. New files start at zero. Part 2 ends with an empty baseline. The gate reports the file, rule and count; adding `color: #123456` to a CSS module fails it. Its unit tests include that exact probe.
+The design gate requires zero raw values in every CSS file and rejects legacy custom properties. There is no baseline or per-file allowance. Unit tests probe a raw colour and a legacy declaration.
 
 ## Verification
 
@@ -163,3 +163,9 @@ SectionHeading renders an h2 in the section type scale with a strong rule and op
 Dialog (step D) uses the native dialog element with showModal, a named heading, Escape dismissal, focus containment and return to the opener. It adds no new colour or shadow.
 
 Below 900 px, the shell uses a product/current-area top bar and a native details/summary Menu disclosure. Navigation, identity, languages, Settings and sign-out remain inside it, usable without JavaScript. The skip link is first. The desktop sidebar remains above that breakpoint. Tables scroll within their own named focusable regions.
+
+### Row lists and linked record names
+
+Home decisions and lessons use RowList: a semantic ul, hairline-separated rows without cards, radius or shadow. Each row contains a name, text, optional labelled figures and at most one action. The action aligns right when space permits and wraps below on narrow screens; text never clips or scrolls. Tables remain tables; a record's name is its link, with no separate Open column. These decisions from review 7205827683 await Product Director confirmation. Overview facts use the new --facts-width (640px) to keep labels and values together.
+
+Quote side controls use --quote-aside-width (320px) above 1100px. The comparison is a native closed disclosure above issue controls, opens for #quote-comparison, and shows at most five findings. It has no internal scrolling. Closed jobs offer no comparison run or refresh. Diagnostic timing details are a closed disclosure and durations use one decimal second. --radius-none is the zero-radius token for flat rows. There are no legacy tokens or CSS allowances.

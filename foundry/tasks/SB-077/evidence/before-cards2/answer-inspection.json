@@ -1,0 +1,570 @@
+[
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "surface": "home",
+    "alignment": [
+      {
+        "text": "NT$6,400,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$320,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$6,720,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$32,000日期：2026-11-20報價單號：Q-2611-0003",
+        "align": "end"
+      },
+      {
+        "text": "NT$17,300,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$13,420,000",
+        "align": "end"
+      },
+      {
+        "text": "施工中",
+        "align": "end"
+      },
+      {
+        "text": "照明與電氣：報價比過往報價高 9.4%",
+        "align": "end"
+      },
+      {
+        "text": "進口石材與硬質面材：預估成本比過往已核對實際成本高 43.0%",
+        "align": "end"
+      },
+      {
+        "text": "NT$17,300,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$13,420,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$15,120,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$11,580,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$14,900,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$11,650,000",
+        "align": "start"
+      }
+    ],
+    "labels": 2,
+    "sentences": [
+      "NT$6,400,000",
+      "NT$320,000",
+      "NT$6,720,000",
+      "NT$32,000日期：2026-11-20報價單號：Q-2611-0003",
+      "NT$17,300,000",
+      "NT$13,420,000",
+      "施工中",
+      "照明與電氣：報價比過往報價高 9.4%",
+      "進口石材與硬質面材：預估成本比過往已核對實際成本高 43.0%",
+      "NT$17,300,000",
+      "NT$13,420,000",
+      "NT$15,120,000",
+      "NT$11,580,000",
+      "NT$14,900,000",
+      "NT$11,650,000"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "zh-TW",
+    "width": 1440,
+    "surface": "job",
+    "alignment": [
+      {
+        "text": "NT$6,400,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$320,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$6,720,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$32,000日期：2026-11-20報價單號：Q-2611-0003",
+        "align": "end"
+      },
+      {
+        "text": "NT$17,300,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$13,420,000",
+        "align": "end"
+      },
+      {
+        "text": "施工中",
+        "align": "end"
+      },
+      {
+        "text": "照明與電氣：報價比過往報價高 9.4%",
+        "align": "end"
+      },
+      {
+        "text": "進口石材與硬質面材：預估成本比過往已核對實際成本高 43.0%",
+        "align": "end"
+      }
+    ],
+    "labels": 2,
+    "sentences": [
+      "NT$6,400,000",
+      "NT$320,000",
+      "NT$6,720,000",
+      "NT$32,000日期：2026-11-20報價單號：Q-2611-0003",
+      "NT$17,300,000",
+      "NT$13,420,000",
+      "施工中",
+      "照明與電氣：報價比過往報價高 9.4%",
+      "進口石材與硬質面材：預估成本比過往已核對實際成本高 43.0%"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "surface": "home",
+    "alignment": [
+      {
+        "text": "NT$6,400,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$320,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$6,720,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$32,000日期：2026-11-20報價單號：Q-2611-0003",
+        "align": "end"
+      },
+      {
+        "text": "NT$17,300,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$13,420,000",
+        "align": "end"
+      },
+      {
+        "text": "施工中",
+        "align": "end"
+      },
+      {
+        "text": "照明與電氣：報價比過往報價高 9.4%",
+        "align": "end"
+      },
+      {
+        "text": "進口石材與硬質面材：預估成本比過往已核對實際成本高 43.0%",
+        "align": "end"
+      },
+      {
+        "text": "NT$17,300,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$13,420,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$15,120,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$11,580,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$14,900,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$11,650,000",
+        "align": "start"
+      }
+    ],
+    "labels": 2,
+    "sentences": [
+      "NT$6,400,000",
+      "NT$320,000",
+      "NT$6,720,000",
+      "NT$32,000日期：2026-11-20報價單號：Q-2611-0003",
+      "NT$17,300,000",
+      "NT$13,420,000",
+      "施工中",
+      "照明與電氣：報價比過往報價高 9.4%",
+      "進口石材與硬質面材：預估成本比過往已核對實際成本高 43.0%",
+      "NT$17,300,000",
+      "NT$13,420,000",
+      "NT$15,120,000",
+      "NT$11,580,000",
+      "NT$14,900,000",
+      "NT$11,650,000"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "zh-TW",
+    "width": 390,
+    "surface": "job",
+    "alignment": [
+      {
+        "text": "NT$6,400,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$320,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$6,720,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$32,000日期：2026-11-20報價單號：Q-2611-0003",
+        "align": "end"
+      },
+      {
+        "text": "NT$17,300,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$13,420,000",
+        "align": "end"
+      },
+      {
+        "text": "施工中",
+        "align": "end"
+      },
+      {
+        "text": "照明與電氣：報價比過往報價高 9.4%",
+        "align": "end"
+      },
+      {
+        "text": "進口石材與硬質面材：預估成本比過往已核對實際成本高 43.0%",
+        "align": "end"
+      }
+    ],
+    "labels": 2,
+    "sentences": [
+      "NT$6,400,000",
+      "NT$320,000",
+      "NT$6,720,000",
+      "NT$32,000日期：2026-11-20報價單號：Q-2611-0003",
+      "NT$17,300,000",
+      "NT$13,420,000",
+      "施工中",
+      "照明與電氣：報價比過往報價高 9.4%",
+      "進口石材與硬質面材：預估成本比過往已核對實際成本高 43.0%"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "surface": "home",
+    "alignment": [
+      {
+        "text": "NT$6,400,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$320,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$6,720,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$32,000Date: 2026-11-20Quote number: Q-2611-0003",
+        "align": "end"
+      },
+      {
+        "text": "NT$17,300,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$13,420,000",
+        "align": "end"
+      },
+      {
+        "text": "Construction",
+        "align": "end"
+      },
+      {
+        "text": "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+        "align": "end"
+      },
+      {
+        "text": "Imported stone and hard finishes: forecast cost is 43.0% above past reconciled actual costs.",
+        "align": "end"
+      },
+      {
+        "text": "NT$17,300,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$13,420,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$15,120,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$11,580,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$14,900,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$11,650,000",
+        "align": "start"
+      }
+    ],
+    "labels": 2,
+    "sentences": [
+      "NT$6,400,000",
+      "NT$320,000",
+      "NT$6,720,000",
+      "NT$32,000Date: 2026-11-20Quote number: Q-2611-0003",
+      "NT$17,300,000",
+      "NT$13,420,000",
+      "Construction",
+      "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+      "Imported stone and hard finishes: forecast cost is 43.0% above past reconciled actual costs.",
+      "NT$17,300,000",
+      "NT$13,420,000",
+      "NT$15,120,000",
+      "NT$11,580,000",
+      "NT$14,900,000",
+      "NT$11,650,000"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "surface": "job",
+    "alignment": [
+      {
+        "text": "NT$6,400,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$320,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$6,720,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$32,000Date: 2026-11-20Quote number: Q-2611-0003",
+        "align": "end"
+      },
+      {
+        "text": "NT$17,300,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$13,420,000",
+        "align": "end"
+      },
+      {
+        "text": "Construction",
+        "align": "end"
+      },
+      {
+        "text": "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+        "align": "end"
+      },
+      {
+        "text": "Imported stone and hard finishes: forecast cost is 43.0% above past reconciled actual costs.",
+        "align": "end"
+      }
+    ],
+    "labels": 2,
+    "sentences": [
+      "NT$6,400,000",
+      "NT$320,000",
+      "NT$6,720,000",
+      "NT$32,000Date: 2026-11-20Quote number: Q-2611-0003",
+      "NT$17,300,000",
+      "NT$13,420,000",
+      "Construction",
+      "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+      "Imported stone and hard finishes: forecast cost is 43.0% above past reconciled actual costs."
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "surface": "home",
+    "alignment": [
+      {
+        "text": "NT$6,400,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$320,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$6,720,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$32,000Date: 2026-11-20Quote number: Q-2611-0003",
+        "align": "end"
+      },
+      {
+        "text": "NT$17,300,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$13,420,000",
+        "align": "end"
+      },
+      {
+        "text": "Construction",
+        "align": "end"
+      },
+      {
+        "text": "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+        "align": "end"
+      },
+      {
+        "text": "Imported stone and hard finishes: forecast cost is 43.0% above past reconciled actual costs.",
+        "align": "end"
+      },
+      {
+        "text": "NT$17,300,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$13,420,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$15,120,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$11,580,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$14,900,000",
+        "align": "start"
+      },
+      {
+        "text": "NT$11,650,000",
+        "align": "start"
+      }
+    ],
+    "labels": 2,
+    "sentences": [
+      "NT$6,400,000",
+      "NT$320,000",
+      "NT$6,720,000",
+      "NT$32,000Date: 2026-11-20Quote number: Q-2611-0003",
+      "NT$17,300,000",
+      "NT$13,420,000",
+      "Construction",
+      "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+      "Imported stone and hard finishes: forecast cost is 43.0% above past reconciled actual costs.",
+      "NT$17,300,000",
+      "NT$13,420,000",
+      "NT$15,120,000",
+      "NT$11,580,000",
+      "NT$14,900,000",
+      "NT$11,650,000"
+    ],
+    "overflow": false
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "surface": "job",
+    "alignment": [
+      {
+        "text": "NT$6,400,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$320,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$6,720,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$32,000Date: 2026-11-20Quote number: Q-2611-0003",
+        "align": "end"
+      },
+      {
+        "text": "NT$17,300,000",
+        "align": "end"
+      },
+      {
+        "text": "NT$13,420,000",
+        "align": "end"
+      },
+      {
+        "text": "Construction",
+        "align": "end"
+      },
+      {
+        "text": "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+        "align": "end"
+      },
+      {
+        "text": "Imported stone and hard finishes: forecast cost is 43.0% above past reconciled actual costs.",
+        "align": "end"
+      }
+    ],
+    "labels": 2,
+    "sentences": [
+      "NT$6,400,000",
+      "NT$320,000",
+      "NT$6,720,000",
+      "NT$32,000Date: 2026-11-20Quote number: Q-2611-0003",
+      "NT$17,300,000",
+      "NT$13,420,000",
+      "Construction",
+      "Lighting and electrical: quoted price is 9.4% above past quoted prices.",
+      "Imported stone and hard finishes: forecast cost is 43.0% above past reconciled actual costs."
+    ],
+    "overflow": false
+  }
+]

@@ -408,3 +408,59 @@
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
+
+.rowList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.recordRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+  padding-block: var(--space-16);
+  border-bottom: var(--rule-hairline) solid var(--line);
+}
+.rowBody {
+  flex: 1 1 var(--facts-width);
+  min-width: 0;
+  overflow-wrap: anywhere;
+  display: grid;
+  gap: var(--space-8);
+}
+.recordAction {
+  align-self: center;
+}
+.recordRow p {
+  margin: 0;
+}
+.cardFacts .fact {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+.cardFacts .fact dd {
+  text-align: end;
+}
+.cardFacts .factGroup dd {
+  text-align: start;
+}
+
+.dialog {
+  width: min(var(--facts-width), calc(100vw - var(--space-32)));
+  max-height: calc(100dvh - var(--space-32));
+  margin: auto;
+  padding: var(--space-24);
+  border: var(--rule-hairline) solid var(--line-strong);
+  border-radius: var(--radius-control);
+  color: var(--ink);
+  background: var(--canvas);
+  overflow: auto;
+}
+.dialog::backdrop {
+  background: var(--neutral-ink);
+  opacity: 0.6;
+}
+.dialog :focus-visible {
+  outline: var(--focus-width) solid var(--focus);
+  outline-offset: var(--focus-offset);
+}

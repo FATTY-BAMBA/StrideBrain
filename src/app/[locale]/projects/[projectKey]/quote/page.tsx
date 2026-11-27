@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/ui/page-header";
 import ui from "@/components/ui/ui.module.css";
 import { QuoteWorkspace } from "@/components/quote-issue/quote-workspace";
 import { createQuoteIssueServices } from "@/lib/server/quote-issue-services";
@@ -34,7 +35,10 @@ export default async function QuotePage({
           locale={locale}
         />
       ) : (
-        <p role="status">{quoteDraftCopy(locale).UNAVAILABLE}</p>
+        <>
+          <PageHeader context="StrideBrain" title={quoteDraftCopy(locale).title} />
+          <p role="status">{quoteDraftCopy(locale).UNAVAILABLE}</p>
+        </>
       )}
     </div>
   );

@@ -1,3 +1,5 @@
+import { MobileMenu } from "./mobile-menu";
+import { designSystemCopy } from "@/modules/localization/design-system";
 import { SettingsLink } from "./settings-link";
 import styles from "./shell.module.css";
 import { Icon } from "@/components/ui/icons";
@@ -28,6 +30,7 @@ export function WorkspaceShell({
   canReadClients = false,
 }: WorkspaceShellProps) {
   const copy = homeDeskCopy(locale);
+  const uiCopy = designSystemCopy(locale);
   const navigation = (
     <>
       <div className={styles.brand}>
@@ -74,18 +77,21 @@ export function WorkspaceShell({
   return (
     <div className={styles.shell}>
       <a className={styles.skip} href="#main-content">
-        {locale === "zh-TW" ? "跳至主要內容" : "Skip to main content"}
+        {uiCopy.skip}
       </a>
 
       <aside className={styles.sidebar}>{navigation}</aside>
-      <details className={styles.mobileMenu}>
-        <summary>
-          <strong>{catalog["app.name"]}</strong>
-          <CurrentArea locale={locale} catalog={catalog} />
-          <span>{locale === "zh-TW" ? "選單" : "Menu"}</span>
-        </summary>
+      <MobileMenu
+        summary={
+          <>
+            <strong>{catalog["app.name"]}</strong>
+            <CurrentArea locale={locale} catalog={catalog} canReadClients={canReadClients} />
+            <span>{uiCopy.menu}</span>
+          </>
+        }
+      >
         <div className={styles.mobileNavigation}>{navigation}</div>
-      </details>
+      </MobileMenu>
 
       <div className={styles.column}>
         <header className={styles.topbar}>

@@ -5,7 +5,7 @@
 }
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) var(--sidebar-width);
+  grid-template-columns: minmax(0, 1fr) var(--quote-aside-width);
   gap: var(--space-24);
   padding: var(--space-16);
   background: var(--surface-subtle);
@@ -262,4 +262,14 @@
     height: 100%;
     max-height: none;
   }
+}
+
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.references {
+  overflow: visible;
+  max-height: none;
 }

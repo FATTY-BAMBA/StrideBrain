@@ -18,6 +18,7 @@ const boundary = vi.hoisted(() => ({
   quote: vi.fn(),
   issue: vi.fn(),
   actions: vi.fn(),
+  savedComparison: vi.fn(),
 }));
 vi.mock("server-only", () => ({}));
 vi.mock("next/navigation", () => ({
@@ -44,6 +45,9 @@ vi.mock("@/lib/server/quote-draft-services", () => ({
 vi.mock("@/lib/server/quote-issue-services", () => ({
   createQuoteIssueServices: () => ({ read: { execute: boundary.issue } }),
 }));
+vi.mock("@/lib/server/comparison-services", () => ({
+  createComparisonServices: () => ({ getHomeComparison: { execute: boundary.savedComparison } }),
+}));
 vi.mock("@/lib/server/internal-review-services", () => ({
   createInternalReviewServices: () => ({ listProjectActions: boundary.actions }),
 }));
@@ -61,7 +65,10 @@ import { WorkspaceShell } from "@/components/shell/workspace-shell";
 beforeEach(() => {
   boundary.context.mockResolvedValue(jobContext());
   boundary.policy.mockResolvedValue({ id: "job", excluded: false });
-  boundary.workspace.mockResolvedValue({ kind: "AVAILABLE", workspace: {} });
+  boundary.workspace.mockResolvedValue({
+    kind: "AVAILABLE",
+    workspace: { project: { stage: "QUOTE_REVIEW" } },
+  });
   boundary.quote.mockResolvedValue({ kind: "UNAVAILABLE" });
   boundary.issue.mockResolvedValue({ kind: "UNAVAILABLE" });
   boundary.actions.mockResolvedValue({ kind: "ACTION_NOT_AUTHORIZED", requestId: "" });
@@ -113,7 +120,10 @@ it.each(["en", "zh-TW"] as const)(
       expect(panel.querySelector("button")?.getAttribute("aria-expanded")).toBe("false");
     }
     // The available overview branch no longer owns a second nav either.
-    boundary.workspace.mockResolvedValue({ kind: "AVAILABLE", workspace: {} });
+    boundary.workspace.mockResolvedValue({
+      kind: "AVAILABLE",
+      workspace: { project: { stage: "QUOTE_REVIEW" } },
+    });
     boundary.path = `/${locale}/projects/J`;
     const available = await composed(locale, await page(locale, ""));
     expect(available.textContent).toContain("Available overview");
@@ -211,3 +221,24 @@ it("uses a non-disclosing 404 for an unavailable overview, without treating opti
   boundary.workspace.mockResolvedValue({ kind: "UNAVAILABLE" });
   await expect(page("en", "")).rejects.toThrow("FRAMEWORK_404");
 });
+
+it.each(["en", "zh-TW"] as const)(
+  "closed-job comparison has no run control (%s)",
+  async (locale) => {
+    boundary.workspace.mockResolvedValue({
+      kind: "AVAILABLE",
+      workspace: { project: { stage: "COMPLETE" } },
+    });
+    boundary.savedComparison.mockResolvedValue({ kind: "NOT_RUN" });
+    for (const search of [{}, { outcome: "UNAVAILABLE" }]) {
+      const child = await Compare({
+        params: Promise.resolve({ locale, projectKey: "J" }),
+        searchParams: Promise.resolve(search),
+      });
+      const host = document.createElement("div");
+      host.innerHTML = renderToStaticMarkup(child);
+      expect(host.querySelector("h1")).not.toBeNull();
+      expect(host.querySelector("form")).toBeNull();
+    }
+  },
+);

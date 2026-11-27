@@ -4,9 +4,11 @@ export type Fact = { key: string; label: string; value: ReactNode; numeric?: boo
 export function FactsList({
   rows,
   groupAdjacent = false,
+  alignValues = false,
 }: {
   rows: readonly Fact[];
   groupAdjacent?: boolean;
+  alignValues?: boolean;
 }) {
   const groups: Fact[][] = [];
   for (const row of rows) {
@@ -15,7 +17,7 @@ export function FactsList({
     else groups.push([row]);
   }
   return (
-    <dl className={styles.facts}>
+    <dl className={`${styles.facts} ${alignValues ? styles.cardFacts : ""}`}>
       {groups.map((group) => (
         <div className={group.length > 1 ? styles.factGroup : styles.fact} key={group[0]!.key}>
           <dt>{group[0]!.label}</dt>

@@ -413,7 +413,7 @@ export function QuoteDocumentEditor({
                 data-quote-scroll
                 tabIndex={0}
                 role="region"
-                aria-label={copy.title}
+                aria-label={copy.documentLines}
               >
                 <p>{draftCopy.restricted}</p>
                 {view.structure?.sections.map((section, si) => (
@@ -458,7 +458,7 @@ export function QuoteDocumentEditor({
                     data-quote-scroll
                     tabIndex={0}
                     role="region"
-                    aria-label={copy.title}
+                    aria-label={copy.editLines}
                   >
                     <table className={styles.table}>
                       <thead>
@@ -821,13 +821,15 @@ export function QuoteDocumentEditor({
                           `${line.description} (${line.percentage}%)`,
                           line.amount,
                         ]),
-                        [
-                          document.discount.label || quoteDocumentCopy(documentLanguage).discount,
-                          calculated.discount.amount === "0.00" ||
-                          calculated.discount.amount === "0"
-                            ? "0.00"
-                            : `-${calculated.discount.amount}`,
-                        ],
+                        ...(!/^0(?:\.0+)?$/.test(calculated.discount.amount)
+                          ? [
+                              [
+                                document.discount.label ||
+                                  quoteDocumentCopy(documentLanguage).discount,
+                                `-${calculated.discount.amount}`,
+                              ],
+                            ]
+                          : []),
                         [copy.beforeTax, calculated.amountBeforeTax],
                         [copy.tax, calculated.taxAmount],
                         [copy.total, calculated.totalAmount],
@@ -892,27 +894,12 @@ export function QuoteDocumentEditor({
               <p>{copy.limit}</p>
             </div>
           )}
-          {issue ? (
-            <QuoteIssuePanel
-              key={issueKey}
-              view={issue}
-              locale={locale}
-              disabled={pending || (editable && !canIssueSaved)}
-              externalActions={editable}
-              onReviewChange={setReviewing}
-              onOptionsChange={(options) => {
-                setValidUntil(options.validUntil);
-                setSelectedLanguage({ issueKey, language: options.language });
-              }}
-            />
-          ) : view.canReadAmounts ? (
-            <p>{draftCopy.UNAVAILABLE}</p>
-          ) : null}
           {view.canReadAmounts && (
             <QuoteComparisonPanel
               key={currentVersion ?? "unsaved"}
               locale={locale}
               projectKey={view.job.businessKey}
+              closed={view.job.stage === "COMPLETE"}
               onPrepared={receivePreparation}
             >
               <h2>{copy.references}</h2>
@@ -953,10 +940,27 @@ export function QuoteDocumentEditor({
                 })}
             </QuoteComparisonPanel>
           )}
+          {issue ? (
+            <QuoteIssuePanel
+              key={issueKey}
+              view={issue}
+              locale={locale}
+              disabled={pending || (editable && !canIssueSaved)}
+              externalActions={editable}
+              onReviewChange={setReviewing}
+              onOptionsChange={(options) => {
+                setValidUntil(options.validUntil);
+                setSelectedLanguage({ issueKey, language: options.language });
+              }}
+            />
+          ) : view.canReadAmounts ? (
+            <p>{draftCopy.UNAVAILABLE}</p>
+          ) : null}
         </aside>
       </div>
       {evidence && (
         <EvidencePanel
+          closed={view.job.stage === "COMPLETE"}
           locale={locale}
           outcome={evidence.outcome}
           selection={evidence.selection}

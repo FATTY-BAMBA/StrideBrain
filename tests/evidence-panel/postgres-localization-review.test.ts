@@ -187,7 +187,7 @@ describePostgres("Independent SB-029 stored-data presentation review", () => {
         }
       }
       const html = renderToStaticMarkup(createElement(ComparisonExperienceClient, { view }));
-      expect(html).toMatch(/<h1 tabindex="-1">/);
+      expect(html).toMatch(/<h1[^>]*tabindex="-1"/);
       const text = visibleText(html);
       assertNoInternalCopy(text, `${locale} comparison`);
       if (locale === "zh-TW") {

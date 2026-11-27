@@ -1,6 +1,16 @@
 import type { Locale } from "./config";
 const en = {
   workspace: "Workspace",
+  comparisonValues: "Comparison values",
+  selectableJobs: "Past jobs for selection",
+  httpStatus: "HTTP status",
+  menu: "Menu",
+  skip: "Skip to main content",
+  status: "Status",
+  jobSettings: "Job settings",
+  notFound: "Page not found",
+  unavailable: "This page is unavailable.",
+  home: "Back to Home",
   open: "Open",
   action: "Action",
   name: "Name",
@@ -10,6 +20,16 @@ const en = {
 };
 const zh: Record<keyof typeof en, string> = {
   workspace: "工作區",
+  comparisonValues: "比較數值",
+  selectableJobs: "歷史專案選取表",
+  httpStatus: "HTTP 狀態",
+  menu: "選單",
+  skip: "跳至主要內容",
+  status: "狀態",
+  jobSettings: "專案設定",
+  notFound: "找不到頁面",
+  unavailable: "目前無法開啟此頁面。",
+  home: "返回首頁",
   open: "開啟",
   action: "操作",
   name: "名稱",

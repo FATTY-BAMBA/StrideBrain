@@ -93,7 +93,7 @@ it.each(["en", "zh-TW"] as const)(
   "shows five decisions and a real all-items link; stage tiles stay neutral in %s",
   (locale) => {
     const host = render(createElement(HomeDeskScreen, { locale, outcome: fixture() }));
-    expect(host.querySelectorAll("tbody tr")).toHaveLength(5);
+    expect(host.querySelectorAll("li")).toHaveLength(5);
     expect(host.querySelector(`a[href="/${locale}/decisions"]`)?.textContent).toContain(
       homeDeskCopy(locale).all.replace("{count}", "7"),
     );
@@ -125,7 +125,7 @@ it("shows no overflow link for five, and the complete decision route shows all s
     ),
   ).toBeNull();
   const complete = render(await DecisionsPage({ params: Promise.resolve({ locale: "en" }) }));
-  expect(complete.querySelectorAll("tbody tr")).toHaveLength(7);
+  expect(complete.querySelectorAll("li")).toHaveLength(7);
   expect(boundary.execute).toHaveBeenCalledWith(
     expect.objectContaining({ organizationId: "org_horizon" }),
   );
@@ -300,19 +300,19 @@ it.each(["en", "zh-TW"] as const)(
       const host = render(
         createElement(HomeDeskScreen, { locale, outcome: { ...desk, decisions: [item] } }),
       );
-      expect(host.querySelector("tbody tr p")?.textContent).toBe(
+      expect(host.querySelector("li p")?.textContent).toBe(
         claimFindingText(claim, locale, seededFirmLists.workCategories),
       );
-      expect(host.querySelectorAll("tbody tr p")).toHaveLength(count ? 2 : 1);
+      expect(host.querySelectorAll("li p")).toHaveLength(count ? 2 : 1);
       if (count)
-        expect(host.querySelectorAll("tbody tr p")[1]?.textContent).toBe(
+        expect(host.querySelectorAll("li p")[1]?.textContent).toBe(
           locale === "zh-TW"
             ? `另有 ${count} 項`
             : count === 1
               ? "1 more finding"
               : `${count} more findings`,
         );
-      expect(host.querySelector("tbody tr a")?.getAttribute("href")).toContain("stone");
+      expect(host.querySelector("li a")?.getAttribute("href")).toContain("stone");
     }
   },
 );
@@ -330,9 +330,9 @@ it.each(["en", "zh-TW"] as const)(
       const host = render(
         createElement(HomeDeskScreen, { locale, outcome: { ...desk, decisions: [item] } }),
       );
-      expect(host.querySelectorAll("tbody tr")).toHaveLength(1);
+      expect(host.querySelectorAll("li")).toHaveLength(1);
       const hint = host.querySelector(
-        `tbody tr a[href="/${locale}/projects/JOB-0/quote#quote-comparison"]`,
+        `li a[href="/${locale}/projects/JOB-0/quote#quote-comparison"]`,
       );
       if (state) {
         expect(hint?.parentElement?.textContent).toBe(

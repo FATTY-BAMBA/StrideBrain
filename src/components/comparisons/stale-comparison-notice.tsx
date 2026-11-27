@@ -21,11 +21,13 @@ function RerunButton({ locale }: Readonly<{ locale: Locale }>) {
 }
 
 export function StaleComparisonNotice({
+  allowRun = true,
   catalog,
   freshness,
   locale,
   projectKey,
 }: Readonly<{
+  allowRun?: boolean;
   catalog: FirmLists;
   freshness: ComparisonFreshness;
   locale: Locale;
@@ -79,11 +81,13 @@ export function StaleComparisonNotice({
       ) : freshness.state === "STALE" ? (
         <p>{copy.otherChanges}</p>
       ) : null}
-      <form action={runComparisonAction}>
-        <input type="hidden" name="locale" value={locale} />
-        <input type="hidden" name="projectKey" value={projectKey} />
-        <RerunButton locale={locale} />
-      </form>
+      {allowRun && (
+        <form action={runComparisonAction}>
+          <input type="hidden" name="locale" value={locale} />
+          <input type="hidden" name="projectKey" value={projectKey} />
+          <RerunButton locale={locale} />
+        </form>
+      )}
     </section>
   );
 }

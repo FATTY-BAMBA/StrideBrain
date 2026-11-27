@@ -3,7 +3,7 @@
 import { getValueCopy } from "@/modules/demo-value/copy";
 import { StaleComparisonNotice } from "@/components/comparisons/stale-comparison-notice";
 import { useCallback, useRef, type ReactNode } from "react";
-import { useModalFocus } from "@/components/accessibility/use-modal-focus";
+import { Dialog } from "@/components/ui/dialog";
 import { evidenceSelectionParams } from "@/modules/evidence-panel/route-state";
 
 import type {
@@ -18,6 +18,7 @@ import type { Locale } from "@/modules/localization/config";
 import styles from "./evidence-panel.module.css";
 
 type EvidencePanelProps = Readonly<{
+  closed?: boolean;
   outcome: EvidencePanelOutcome;
   selection?: EvidencePanelSelection | null | undefined;
   locale: Locale;
@@ -76,7 +77,6 @@ function PanelFrame({
   locale,
   heading,
   focusKey,
-  state,
   onClose,
   hasParent,
   resolveInitialFocus,
@@ -92,33 +92,28 @@ function PanelFrame({
   children: ReactNode;
 }>) {
   const copy = getEvidencePanelCopy(locale);
-  const { panelRef, headingRef } = useModalFocus({ focusKey, onClose, resolveInitialFocus });
   return (
-    <div className={styles.overlay} role="presentation" onMouseDown={onClose}>
-      <aside
-        aria-labelledby="evidence-panel-title"
-        aria-modal="true"
-        className={styles.panel}
-        data-state={state}
-        onMouseDown={(event) => event.stopPropagation()}
-        ref={panelRef}
-        role="dialog"
-      >
-        <header className={styles.header}>
-          <p className={styles.eyebrow}>{getValueCopy(locale).support}</p>
-          <button className={styles.closeButton} onClick={onClose} type="button">
-            {hasParent ? copy.back : copy.close}
-          </button>
-        </header>
-        <div className={styles.heading}>
-          <h2 id="evidence-panel-title" ref={headingRef} tabIndex={-1}>
-            {heading.title}
-          </h2>
-          {heading.description ? <p>{heading.description}</p> : null}
-        </div>
-        {children}
-      </aside>
-    </div>
+    <Dialog
+      className={styles.panel}
+      labelledBy="evidence-panel-title"
+      onClose={onClose}
+      focusKey={focusKey}
+      resolveInitialFocus={resolveInitialFocus}
+    >
+      <header className={styles.header}>
+        <p className={styles.eyebrow}>{getValueCopy(locale).support}</p>
+        <button className={styles.closeButton} onClick={onClose} type="button">
+          {hasParent ? copy.back : copy.close}
+        </button>
+      </header>
+      <div className={styles.heading}>
+        <h2 id="evidence-panel-title" tabIndex={-1}>
+          {heading.title}
+        </h2>
+        {heading.description ? <p>{heading.description}</p> : null}
+      </div>
+      {children}
+    </Dialog>
   );
 }
 
@@ -347,9 +342,11 @@ function Trace({ view }: Readonly<{ view: EvidencePanelView }>) {
 }
 
 function ReadyContent({
+  closed,
   view,
   onNavigate,
 }: Readonly<{
+  closed: boolean;
   view: EvidencePanelView;
   onNavigate: (selection: EvidencePanelSelection) => void;
 }>) {
@@ -363,6 +360,7 @@ function ReadyContent({
 
       {!view.context.recordedQuoteBasis ? (
         <StaleComparisonNotice
+          allowRun={!closed}
           catalog={view.catalog}
           freshness={view.context.freshness}
           locale={view.locale}
@@ -471,6 +469,7 @@ function ReadyContent({
 }
 
 export function EvidencePanel({
+  closed = false,
   outcome,
   selection,
   locale,
@@ -547,7 +546,7 @@ export function EvidencePanel({
       resolveInitialFocus={resolveInitialFocus}
     >
       {outcome.kind === "READY" ? (
-        <ReadyContent view={outcome.view} onNavigate={navigate} />
+        <ReadyContent closed={closed} view={outcome.view} onNavigate={navigate} />
       ) : (
         <StateContent outcome={outcome} locale={locale} />
       )}

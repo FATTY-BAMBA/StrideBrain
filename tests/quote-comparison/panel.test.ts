@@ -87,3 +87,46 @@ it.each(["en", "zh-TW"] as const)(
     );
   },
 );
+it.each(["en", "zh-TW"] as const)(
+  "keeps closed-job findings readable, limits to five and opens for the fragment (%s)",
+  async (locale) => {
+    window.history.replaceState(null, "", "/#quote-comparison");
+    mock.request.mockResolvedValue({
+      kind: "CURRENT",
+      generatedAt: "2026-11-27",
+      href: `/${locale}/projects/JOB/compare`,
+      jobs: [{ projectKey: "PAST", name: "Past", score: 56 }],
+      findings: Array.from({ length: 8 }, (_, i) => ({
+        sentence: `Saved sentence ${i}`,
+        href: `/${locale}/projects/JOB/compare?claim=${i}`,
+      })),
+    });
+    await act(async () =>
+      root.render(
+        createElement(QuoteComparisonPanel, {
+          locale,
+          projectKey: "JOB",
+          closed: true,
+          onPrepared: vi.fn(),
+        }),
+      ),
+    );
+    expect(host.querySelector("button")).toBeNull();
+    expect(host.querySelector("details")?.open).toBe(true);
+    expect(host.querySelectorAll('a[href*="?claim="]')).toHaveLength(5);
+    expect(host.querySelector("summary")?.textContent).toContain("8");
+    expect(host.textContent).not.toContain("Saved sentence 5");
+    expect(mock.request).toHaveBeenLastCalledWith(locale, "JOB", "READ");
+    window.history.replaceState(null, "", "/");
+  },
+);
+it("starts collapsed without the comparison fragment", async () => {
+  window.history.replaceState(null, "", "/");
+  mock.request.mockResolvedValue({ kind: "NOT_RUN" });
+  await act(async () =>
+    root.render(
+      createElement(QuoteComparisonPanel, { locale: "en", projectKey: "JOB", onPrepared: vi.fn() }),
+    ),
+  );
+  expect(host.querySelector("details")?.open).toBe(false);
+});

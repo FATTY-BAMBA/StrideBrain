@@ -1,3 +1,8 @@
+vi.mock("@/lib/server/project-workspace-services", () => ({
+  createProjectWorkspaceService: () => ({
+    execute: async () => ({ kind: "AVAILABLE", workspace: { project: { stage: "QUOTE_REVIEW" } } }),
+  }),
+}));
 import { seededFirmLists } from "@/fixtures/firm-lists";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => ({

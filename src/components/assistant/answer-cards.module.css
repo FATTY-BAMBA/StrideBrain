@@ -34,36 +34,6 @@
   font-size: var(--text-caption);
   line-height: var(--leading-caption);
 }
-.facts {
-  display: grid;
-  gap: var(--space-8);
-  margin: 0;
-  min-width: 0;
-}
-.fact {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-  gap: var(--space-12);
-  align-items: baseline;
-  overflow-wrap: anywhere;
-}
-.fact dt {
-  color: var(--muted);
-  font-size: var(--text-table);
-  line-height: var(--leading-table);
-}
-.fact dd {
-  margin: 0;
-  min-width: 0;
-  text-align: end;
-  color: var(--ink);
-  font-size: var(--text-body);
-  line-height: var(--leading-body);
-  font-variant-numeric: tabular-nums;
-}
-.fact strong {
-  font-weight: var(--weight-lead);
-}
 .details {
   display: flex;
   flex-wrap: wrap;

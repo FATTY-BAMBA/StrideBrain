@@ -1,11 +1,12 @@
 // Local presentation replay only. No provider call or production-route fixture.
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE);
 const config = JSON.parse(readFileSync(process.env.SB077_SESSION_FILE));
 const phase = process.argv[2] || "after",
-  origin = phase === "before" ? "http://localhost:3478" : "http://localhost:3477";
+  origin = phase.startsWith("before") ? "http://localhost:3478" : "http://localhost:3477";
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 const checks = [];
+mkdirSync(`foundry/tasks/SB-077/evidence/${phase}`, {recursive:true});
 try {
   for (const locale of ["zh-TW", "en"])
     for (const width of [1440, 390])
@@ -57,6 +58,15 @@ try {
             },
           ],
         };
+        const zh = locale === "zh-TW";
+        const fact = (ref, label, value, details) => ({ref,sourceId:"synthetic",path:ref,label,value,...(details?{details}: {})});
+        const link = {href:`/${locale}/projects/PRJ-ACTIVE-003/quote`,label:zh?"開啟報價":"Open quote"};
+        presentation.blocks.unshift(
+          {kind:"CARD",key:"quote",title:zh?"進行中設計專案03":"Active Design Project 03",reference:"PRJ-ACTIVE-003",rows:[fact("net",zh?"未稅金額":"Before tax","NT$6,400,000"),fact("tax",zh?"營業稅":"Tax","NT$320,000"),fact("total",zh?"總計":"Total","NT$6,720,000")],link},
+          {kind:"CARD",key:"price",title:zh?"接待櫃台":"Reception counter",unit:zh?"座":"unit",rows:[fact("last",zh?"最近價格":"Last price","NT$32,000",[fact("date",zh?"日期":"Date","2026-11-20"),fact("number",zh?"報價單號":"Quote number","Q-2611-0003")])],link},
+          {kind:"CARD",key:"closed",title:zh?"南京品牌體驗中心":"Nanjing Brand Experience Center",rows:[fact("quote",zh?"未稅報價":"Quoted price before tax","NT$17,300,000"),fact("actual",zh?"已核對實際成本":"Reconciled actual cost","NT$13,420,000")],link},
+          {kind:"CARD",key:"jobs",title:zh?"施工專案":"Jobs in Work",rows:[],list:{count:1,countText:zh?"1 個專案":"1 job",filter:{label:zh?"階段":"Stage group",value:zh?"施工":"Work"},rows:[{key:"job3",title:zh?"進行中設計專案03":"Active Design Project 03",reference:"PRJ-ACTIVE-003",facts:[fact("stage",zh?"狀態":"Stage",zh?"施工中":"Construction")]}],remaining:null},link:{href:`/${locale}/projects?stage=work`,label:zh?"開啟專案":"Open projects"}}
+        );
         await page.route("**/*", async (route) => {
           if (route.request().method() !== "POST" || !route.request().headers()["next-action"])
             return route.continue();
@@ -113,17 +123,23 @@ try {
         await page.keyboard.press("Tab");
         await page.evaluate(() => {
           window.scrollTo(0, 0);
-          document.querySelectorAll('[role="region"]').forEach((e) => (e.scrollLeft = 0));
+          document.querySelectorAll("*").forEach(e => {e.scrollLeft=0;e.scrollTop=0;});
         });
         await page.waitForTimeout(250);
         await page.screenshot({
           path: `foundry/tasks/SB-077/evidence/${phase}/owner-${locale}-answer-${surface}-${width}.png`,
           fullPage: true,
         });
+        const cards=page.locator('section:has(> footer a)');
+        for(let i=0;i<await cards.count();i++) {
+          const card=cards.nth(i);
+          if(await card.locator("dt").count()) await card.screenshot({path:`foundry/tasks/SB-077/evidence/${phase}/owner-${locale}-card-${surface}-${width}-${i}.png`});
+        }
         checks.push({
           locale,
           width,
           surface,
+          alignment: await page.locator("section dd").evaluateAll(nodes=>nodes.map(n=>({text:n.textContent,align:getComputedStyle(n).textAlign}))),
           labels: await page.locator("dt").filter({ hasText: label }).count(),
           sentences: await page.locator("dd").allTextContents(),
           overflow: await page.evaluate(() => document.documentElement.scrollWidth > innerWidth),

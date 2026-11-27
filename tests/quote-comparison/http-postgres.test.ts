@@ -174,6 +174,9 @@ suite("private quote routes through a running Next HTTP server", () => {
           signal: AbortSignal.timeout(60_000),
         });
         expect(response.status, path).toBe(404);
+        const html = await response.text();
+        const visible = html.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]*>/g, "");
+        expect(visible).not.toContain(path!.split("/").at(-1));
       }
     }
   }, 90_000);

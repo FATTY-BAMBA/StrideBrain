@@ -1,3 +1,5 @@
+import { designSystemCopy } from "@/modules/localization/design-system";
+import Link from "next/link";
 import { randomUUID } from "node:crypto";
 import type { Route } from "next";
 import { getCatalog } from "@/modules/localization/catalog";
@@ -7,7 +9,7 @@ import { projectNavigation, projectSurfaceHref } from "@/modules/navigation/proj
 import type { ProjectListOutcome } from "@/modules/projects/application/list-authorized-projects";
 import { PROJECT_STAGES } from "@/modules/projects/domain/job-input";
 import { ProjectStageForm } from "./project-stage-form";
-import { Table, NameCell, RowAction } from "@/components/ui/table";
+import { Table, NameCell } from "@/components/ui/table";
 import { SectionHeading } from "@/components/ui/section-heading";
 import ui from "@/components/ui/ui.module.css";
 import styles from "./project-list.module.css";
@@ -48,15 +50,24 @@ export function ProjectList({
                 caption={`${projectStageLabel(locale, stage)} · ${copy["nav.projects"]}`}
                 headings={[
                   { label: copy["nav.projects"] },
-                  { label: locale === "zh-TW" ? "狀態" : "Status" },
+                  { label: designSystemCopy(locale).status },
                   ...(canUpdate && stage !== "COMPLETE" ? [{ label: jobs.updateStage }] : []),
-                  { label: copy["projects.open"], action: true },
                 ]}
               >
                 {projects.map((project) => (
                   <tr key={project.businessKey}>
                     <NameCell>
-                      {project.name}
+                      <Link
+                        href={
+                          projectSurfaceHref(
+                            locale,
+                            project.businessKey,
+                            projectNavigation[0]!,
+                          ) as Route
+                        }
+                      >
+                        {project.name}
+                      </Link>
                       <span className={ui.marker}>{project.businessKey}</span>
                     </NameCell>
                     <td>
@@ -73,17 +84,6 @@ export function ProjectList({
                         />
                       </td>
                     ) : null}
-                    <RowAction
-                      href={
-                        projectSurfaceHref(
-                          locale,
-                          project.businessKey,
-                          projectNavigation[0]!,
-                        ) as Route
-                      }
-                      label={copy["projects.open"]}
-                      name={project.name}
-                    />
                   </tr>
                 ))}
               </Table>

@@ -1,0 +1,16 @@
+[
+  {
+    "bounds": {
+      "x": 18,
+      "y": 16,
+      "width": 354,
+      "height": 812
+    },
+    "initialFocus": "Review internal review action",
+    "modal": true
+  },
+  {
+    "escapeClosed": true,
+    "returnFocus": "Create internal review action"
+  }
+]

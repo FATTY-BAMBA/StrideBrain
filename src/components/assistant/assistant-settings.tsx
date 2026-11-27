@@ -1,3 +1,6 @@
+import { SectionHeading } from "@/components/ui/section-heading";
+import { durationLabel } from "@/modules/localization/duration";
+import { designSystemCopy } from "@/modules/localization/design-system";
 import Link from "next/link";
 import { Table, NameCell, NumericCell } from "@/components/ui/table";
 import { assistantConfigured } from "@/lib/server/assistant-availability";
@@ -26,7 +29,7 @@ export async function AssistantSettings({ context }: { context: RuntimeContext }
   if (!data) {
     return (
       <section className="assistant-settings">
-        <h2>{copy.title}</h2>
+        <SectionHeading>{copy.title}</SectionHeading>
         <p role="status">{copy.unavailable}</p>
       </section>
     );
@@ -34,7 +37,7 @@ export async function AssistantSettings({ context }: { context: RuntimeContext }
   const { service, settings } = data;
   return (
     <section className="assistant-settings">
-      <h2>{copy.title}</h2>
+      <SectionHeading>{copy.title}</SectionHeading>
       <p>
         {copy.provider}
         {context.locale === "zh-TW" ? "：" : ": "}Google Gemini · {copy.model}
@@ -70,37 +73,38 @@ export async function AssistantSettings({ context }: { context: RuntimeContext }
               </div>
               <div>
                 <dt>{copy.latestTiming}</dt>
-                <dd>{settings.turnTimings.latestMs?.toLocaleString(context.locale)} ms</dd>
+                <dd>{durationLabel(settings.turnTimings.latestMs, context.locale)}</dd>
               </div>
               <div>
                 <dt>{copy.maximumTiming}</dt>
-                <dd>{settings.turnTimings.maximumMs?.toLocaleString(context.locale)} ms</dd>
+                <dd>{durationLabel(settings.turnTimings.maximumMs, context.locale)}</dd>
               </div>
             </dl>
           ) : (
             <p>{copy.noTimings}</p>
           )}
           {settings.turnTimings?.recent?.length ? (
-            <Table
-              caption={copy.recentTimings}
-              headings={[
-                { label: copy.timingStarted },
-                { label: copy.timingDuration, numeric: true },
-              ]}
-            >
-              {settings.turnTimings.recent.map((row) => (
-                <tr key={row.requestId}>
-                  <NameCell>
-                    <time dateTime={row.startedAt.toISOString()}>
-                      {row.startedAt.toISOString().replace("T", " ").replace("Z", "")}
-                    </time>
-                  </NameCell>
-                  <NumericCell>
-                    {row.serverDurationMs.toLocaleString(context.locale)} ms
-                  </NumericCell>
-                </tr>
-              ))}
-            </Table>
+            <details>
+              <summary>{copy.recentTimings}</summary>
+              <Table
+                caption={copy.recentTimings}
+                headings={[
+                  { label: copy.timingStarted },
+                  { label: copy.timingDuration, numeric: true },
+                ]}
+              >
+                {settings.turnTimings.recent.map((row) => (
+                  <tr key={row.requestId}>
+                    <NameCell>
+                      <time dateTime={row.startedAt.toISOString()}>
+                        {row.startedAt.toISOString().replace("T", " ").replace("Z", "")}
+                      </time>
+                    </NameCell>
+                    <NumericCell>{durationLabel(row.serverDurationMs, context.locale)}</NumericCell>
+                  </tr>
+                ))}
+              </Table>
+            </details>
           ) : null}
           <h3>{copy.failures}</h3>
           {settings.failures.length ? (
@@ -108,17 +112,14 @@ export async function AssistantSettings({ context }: { context: RuntimeContext }
               caption={copy.failures}
               headings={[
                 { label: copy.failureReason },
-                { label: copy.failureCode },
+                { label: designSystemCopy(context.locale).httpStatus },
                 { label: copy.failureCount, numeric: true },
               ]}
             >
               {settings.failures.map((f) => (
                 <tr key={`${f.code}:${f.httpStatus}`}>
                   <NameCell>{assistantFailureText(context.locale, f.code, f.httpStatus)}</NameCell>
-                  <td>
-                    {f.code}
-                    {f.httpStatus !== null ? ` (${f.httpStatus})` : ""}
-                  </td>
+                  <td>{f.httpStatus ?? "—"}</td>
                   <NumericCell>{f.count}</NumericCell>
                 </tr>
               ))}

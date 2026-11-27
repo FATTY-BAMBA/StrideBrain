@@ -217,3 +217,23 @@ describe.each(["en", "zh-TW"] as const)("Persisted selection navigation %s", (lo
     expect(url.searchParams.get("evidenceClaim")).toBe("CURRENT_CLAIM");
   });
 });
+
+it.each(["en", "zh-TW"] as const)(
+  "gives comparison sections and scroll regions distinct names (%s)",
+  async (locale) => {
+    await render("A1", keys.slice(0, 3), locale);
+    const names = [
+      ...host.querySelectorAll('[role="region"], section[aria-label], section[aria-labelledby]'),
+    ]
+      .map(
+        (node) =>
+          node.getAttribute("aria-label") ??
+          (node.getAttribute("aria-labelledby") ?? "")
+            .split(" ")
+            .map((id) => host.querySelector("#" + id)?.textContent ?? "")
+            .join(" "),
+      )
+      .filter(Boolean);
+    expect(new Set(names).size).toBe(names.length);
+  },
+);

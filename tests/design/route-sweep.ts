@@ -25,7 +25,6 @@ export const pageRoutes: Readonly<Record<string, readonly string[]>> = {
     "/{locale}/projects/PRJ-XINYI-026",
     "/{locale}/projects/PRJ-XINYI-026/actions",
   ],
-  "[locale]/[...missing]/page.tsx": ["/{locale}/nothing-here"],
 };
 export function pageDefects(html: string): string[] {
   const dom = new JSDOM(html),

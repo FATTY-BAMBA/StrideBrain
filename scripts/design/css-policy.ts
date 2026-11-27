@@ -36,15 +36,8 @@ export function countViolations(css: string): Counts {
   }
   return counts;
 }
-export function compareCounts(
-  file: string,
-  actual: Counts,
-  allowed: Counts = zeroCounts(),
-): string[] {
+export function compareCounts(file: string, actual: Counts): string[] {
   return (Object.keys(actual) as (keyof Counts)[])
-    .filter((key) => actual[key] > allowed[key])
-    .map(
-      (key) =>
-        `${file}: ${key} has ${actual[key]} raw values; baseline permits ${allowed[key]}. Use a design token.`,
-    );
+    .filter((key) => actual[key] > 0)
+    .map((key) => `${file}: ${key} has ${actual[key]} raw values; Use a design token.`);
 }

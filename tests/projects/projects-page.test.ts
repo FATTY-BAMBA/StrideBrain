@@ -62,8 +62,8 @@ describe("Projects entry server page and semantic navigation", () => {
         `a[href="/${locale}/projects/PRJ-XINYI-026"]`,
       )!;
       expect(link.getAttribute("href")).toBe(`/${locale}/projects/PRJ-XINYI-026`);
-      expect(link.getAttribute("aria-label")).toContain(name);
-      expect(link.textContent).toContain(locale === "en" ? "Open project" : "開啟專案");
+      expect(link.textContent).toBe(name);
+      expect(link.textContent).toBe(name);
       expect(link.tabIndex).toBe(0);
       link.focus();
       expect(document.activeElement).toBe(link);
@@ -165,12 +165,12 @@ describe("Stage groups and write controls", () => {
       ],
     });
     const host = render(await ProjectsPage({ params: Promise.resolve({ locale }) }));
-    expect(
-      host.querySelector('[aria-labelledby="stage-QUOTE_REVIEW"] a')?.getAttribute("aria-label"),
-    ).toContain("New synthetic job");
-    expect(
-      host.querySelector('[aria-labelledby="stage-COMPLETE"] a')?.getAttribute("aria-label"),
-    ).toContain("Completed synthetic job");
+    expect(host.querySelector('[aria-labelledby="stage-QUOTE_REVIEW"] a')?.textContent).toContain(
+      "New synthetic job",
+    );
+    expect(host.querySelector('[aria-labelledby="stage-COMPLETE"] a')?.textContent).toContain(
+      "Completed synthetic job",
+    );
     expect(host.querySelectorAll("section[aria-labelledby] tbody a")).toHaveLength(2);
     expect(host.querySelectorAll("section[aria-labelledby]")).toHaveLength(8);
     expect(host.querySelector("form")).toBeNull();

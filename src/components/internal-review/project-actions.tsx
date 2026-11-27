@@ -84,18 +84,11 @@ export function ProjectActions({
             { label: copy.actionsTitle },
             { label: copy.assignee },
             { label: copy.dueDate },
-            { label: copy.openReceipt, action: true },
           ]}
         >
           {listOutcome.actions.map((action) => (
             <tr key={action.businessKey}>
               <NameCell>
-                {action.title}
-                <span className={styles.marker}>{copy.open}</span>
-              </NameCell>
-              <td>{action.assigneeDisplayName ?? copy.unassigned}</td>
-              <td>{action.dueDate ?? copy.noDueDate}</td>
-              <td className={styles.rowAction}>
                 <Link
                   id={`action-${action.businessKey}`}
                   className={styles.rowLink}
@@ -109,9 +102,12 @@ export function ProjectActions({
                     ) as Route
                   }
                 >
-                  {copy.openReceipt}
+                  {action.title}
                 </Link>
-              </td>
+                <span className={styles.marker}>{copy.open}</span>
+              </NameCell>
+              <td>{action.assigneeDisplayName ?? copy.unassigned}</td>
+              <td>{action.dueDate ?? copy.noDueDate}</td>
             </tr>
           ))}
         </Table>

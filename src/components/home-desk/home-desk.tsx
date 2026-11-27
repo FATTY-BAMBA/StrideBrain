@@ -15,7 +15,8 @@ import { HomeChat } from "@/components/assistant/home-chat";
 import { StageCounts } from "./stage-counts";
 import { PageHeader } from "@/components/ui/page-header";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Table, NameCell, NumericCell } from "@/components/ui/table";
+import { RowList, RecordRow } from "@/components/ui/row-list";
+import { FactsList } from "@/components/ui/facts-list";
 import ui from "@/components/ui/ui.module.css";
 import styles from "./home-desk.module.css";
 
@@ -37,48 +38,41 @@ export function DecisionList({
         <p className={styles.muted}>{copy.noDecisions}</p>
       ) : null}
       {items.length ? (
-        <Table
-          caption={`${copy.needs} · ${copy.decisions}`}
-          headings={[
-            { label: locale === "zh-TW" ? "專案" : "Job" },
-            { label: copy.needs },
-            { label: locale === "zh-TW" ? "開啟" : "Open", action: true },
-          ]}
-        >
+        <RowList>
           {items.map((item) => {
             const view = decisionPresentation(item, locale, desk.catalog.workCategories);
             return (
-              <tr key={item.key}>
-                <NameCell>{item.project.name}</NameCell>
-                <td>
-                  <p>{view.sentence}</p>
-                  {view.moreFindings ? <p className={styles.muted}>{view.moreFindings}</p> : null}
-                  {item.kind === "ISSUE_QUOTE" && item.comparisonHint ? (
-                    <p className={styles.muted}>
-                      {item.comparisonHint === "NOT_RUN"
-                        ? copy.comparisonNotRun
-                        : copy.comparisonOutOfDate}{" "}
-                      ·{" "}
-                      <Link
-                        href={
-                          `/${locale}/projects/${encodeURIComponent(item.project.businessKey)}/quote#quote-comparison` as Route
-                        }
-                      >
-                        {copy.openComparison}
-                      </Link>
-                    </p>
-                  ) : null}
-                </td>
-                <td className={ui.rowAction}>
+              <RecordRow
+                key={item.key}
+                name={item.project.name}
+                action={
                   <Link className={ui.rowLink} href={view.href as Route}>
                     {view.label}
                     <span aria-hidden="true"> →</span>
                   </Link>
-                </td>
-              </tr>
+                }
+              >
+                <p>{view.sentence}</p>
+                {view.moreFindings ? <p className={styles.muted}>{view.moreFindings}</p> : null}
+                {item.kind === "ISSUE_QUOTE" && item.comparisonHint ? (
+                  <p className={styles.muted}>
+                    {item.comparisonHint === "NOT_RUN"
+                      ? copy.comparisonNotRun
+                      : copy.comparisonOutOfDate}{" "}
+                    ·{" "}
+                    <Link
+                      href={
+                        `/${locale}/projects/${encodeURIComponent(item.project.businessKey)}/quote#quote-comparison` as Route
+                      }
+                    >
+                      {copy.openComparison}
+                    </Link>
+                  </p>
+                ) : null}
+              </RecordRow>
             );
           })}
-        </Table>
+        </RowList>
       ) : null}
       {!complete && desk.decisions.length > 5 ? (
         <Link className={styles.more} href={`/${locale}/decisions` as Route}>
@@ -176,22 +170,11 @@ export function HomeDeskScreen({
               <p className={styles.muted}>{copy.noLessons}</p>
             ) : null}
             {desk.closedJobs.length ? (
-              <Table
-                caption={`${copy.learned} · ${locale === "zh-TW" ? "專案紀錄" : "Job records"}`}
-                headings={[
-                  { label: locale === "zh-TW" ? "專案" : "Job" },
-                  ...(desk.closedJobs.some((job) => job.lesson)
-                    ? [
-                        { label: copy.quote, numeric: true },
-                        { label: copy.actual, numeric: true },
-                      ]
-                    : []),
-                  { label: copy.learned },
-                ]}
-              >
+              <RowList>
                 {desk.closedJobs.map(({ project, lesson, costDifference, financialState }) => (
-                  <tr key={project.businessKey}>
-                    <NameCell>
+                  <RecordRow
+                    key={project.businessKey}
+                    name={
                       <Link
                         href={
                           `/${locale}/projects/${encodeURIComponent(project.businessKey)}` as Route
@@ -199,39 +182,46 @@ export function HomeDeskScreen({
                       >
                         {project.name}
                       </Link>
-                    </NameCell>
-                    {desk.closedJobs.some((job) => job.lesson) ? (
-                      <>
-                        <NumericCell>
-                          {lesson ? formatMoney(lesson.quoteBeforeTax, lesson.currency) : "—"}
-                        </NumericCell>
-                        <NumericCell>
-                          {lesson ? formatMoney(lesson.actualCost, lesson.currency) : "—"}
-                        </NumericCell>
-                      </>
+                    }
+                  >
+                    {lesson ? (
+                      <FactsList
+                        rows={[
+                          {
+                            key: "quote",
+                            label: copy.quote,
+                            value: formatMoney(lesson.quoteBeforeTax, lesson.currency),
+                            numeric: true,
+                          },
+                          {
+                            key: "actual",
+                            label: copy.actual,
+                            value: formatMoney(lesson.actualCost, lesson.currency),
+                            numeric: true,
+                          },
+                        ]}
+                      />
                     ) : null}
-                    <td>
-                      {lesson ? (
-                        <>
-                          {costDifference ? (
-                            <p
-                              className={styles.costDifference}
-                              data-direction={costDifference.direction}
-                            >
-                              {closedDifferenceText(costDifference, lesson.currency, locale)}
-                            </p>
-                          ) : null}
-                          <p>{closedLessonText(lesson, locale, outcome.catalog.workCategories)}</p>
-                        </>
-                      ) : financialState === "UNAVAILABLE" ? (
-                        copy.figuresUnavailable
-                      ) : (
-                        "—"
-                      )}
-                    </td>
-                  </tr>
+                    {lesson ? (
+                      <>
+                        {costDifference ? (
+                          <p
+                            className={styles.costDifference}
+                            data-direction={costDifference.direction}
+                          >
+                            {closedDifferenceText(costDifference, lesson.currency, locale)}
+                          </p>
+                        ) : null}
+                        <p>{closedLessonText(lesson, locale, outcome.catalog.workCategories)}</p>
+                      </>
+                    ) : financialState === "UNAVAILABLE" ? (
+                      copy.figuresUnavailable
+                    ) : (
+                      "—"
+                    )}
+                  </RecordRow>
                 ))}
-              </Table>
+              </RowList>
             ) : null}
           </section>
         </>
