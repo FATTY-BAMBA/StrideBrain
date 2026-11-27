@@ -36,3 +36,9 @@ Hosted acceptance at `5ebfbb6` was reported passed by the owner-authored Reviewe
 - Filter follow-ups asking for a job name/reference; quote document-number questions remain allowed.
 
 The ranking floor and job-identity follow-up filter are provisional pending Product Director confirmation. Verify unit/integration tests, npm run check and a local one-tap confirmed follow-up screenshot, then report and stop.
+
+### Item 2 decision (7214653618)
+
+The owner-authored Reviewer comment replaces the half-best cutoff with 75%, keeping the scoring formula. Before that cutoff and before the limit, standalone digit runs in normalized searched text narrow already-ranked candidates if any candidate name/reference contains a matching run; leading zeros are ignored and digits inside Latin alphanumeric words are not standalone. No match leaves the ranked set unchanged. Numbers do not create candidates or change scores/coverage. Policy reads are unchanged.
+
+This decision remains provisional pending Product Director confirmation. Cover the complete reviewer table with a 32-job identity fixture, keep tie/Chinese assertions, run the free evaluation and report old/new chips if any expectation changes. No model-facing change, paid evaluation or pass-rule change.

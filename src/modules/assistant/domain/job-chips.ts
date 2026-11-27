@@ -16,6 +16,16 @@ const pieces = (text: string) =>
       (m) => m[1] ?? m[0],
     ),
   );
+// Han-adjacent digits are separate runs (專案05); Latin alphanumerics such as
+// R7K3 are words, not standalone numbers. Compare strings to avoid numeric overflow.
+const standaloneNumbers = (text: string) =>
+  new Set(
+    [
+      ...normalize(text).matchAll(
+        /(?<![\p{Script=Latin}\p{N}])[0-9]+(?![\p{Script=Latin}\p{N}])/gu,
+      ),
+    ].map(([digits]) => digits.replace(/^0+(?=\d)/, "")),
+  );
 /** Shared literal text only: no semantics, private records or automatic selection.
  * At least one Latin word (3+ letters) or two adjacent Han characters must overlap;
  * half the shorter identity's pieces must match. Rare shared pieces carry more
@@ -54,8 +64,21 @@ export function nearestJobs(
     })
     .filter((p) => p.score > 0)
     .sort((a, b) => b.score - a.score || a.projectKey.localeCompare(b.projectKey, "en"));
-  const floor = (ranked[0]?.score ?? 0) / 2;
-  return ranked.filter((job) => job.score >= floor).slice(0, limit);
+  const numbers = standaloneNumbers(q);
+  const matchingKeys = new Set(
+    jobs
+      .filter((job) =>
+        [job.projectKey, ...job.names].some((identity) =>
+          [...standaloneNumbers(identity)].some((number) => numbers.has(number)),
+        ),
+      )
+      .map((job) => job.projectKey),
+  );
+  const numbered = ranked.filter((job) => matchingKeys.has(job.projectKey));
+  // Numbers only narrow already-ranked candidates, and only when one matches.
+  const candidates = numbered.length ? numbered : ranked;
+  const floor = (candidates[0]?.score ?? 0) * 0.75;
+  return candidates.filter((job) => job.score >= floor).slice(0, limit);
 }
 /** Replace only complete authorized references; an existing name is already readable. */
 export function nameFollowUp(

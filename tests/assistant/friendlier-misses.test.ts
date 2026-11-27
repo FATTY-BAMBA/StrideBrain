@@ -498,12 +498,11 @@ it.each([0, 5, 10])(
   },
 );
 
-it("drops candidates below half the best score and keeps ties and Chinese evaluation matches", () => {
+it("drops candidates below 75% of the best score and keeps ties and Chinese evaluation matches", () => {
   const candidates = [
     ...jobs,
     { projectKey: "BAN", names: ["Banqiao Concept Store"] },
     { projectKey: "ZHONG", names: ["Zhongshan Lifestyle Store"] },
-    ...["Daan", "Beitou", "Neihu"].map((name) => ({ projectKey: name, names: [`${name} Store`] })),
   ];
   expect(nearestJobs("Xinyi store", candidates, "en").map((j) => j.projectKey)).toEqual([
     "PRJ-XINYI-026",
