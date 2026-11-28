@@ -120,6 +120,12 @@ export function SignInForm({ locale, returnTo }: { locale: Locale; returnTo: str
                 inputMode="numeric"
                 pattern="[0-9]{6}"
                 maxLength={6}
+                onPaste={(event) => {
+                  event.preventDefault();
+                  const value = event.clipboardData.getData("text").replace(/\D/g, "").slice(0, 6);
+                  setCode(value);
+                  if (value.length === 6) void submit("sign-in/email-otp", { email, otp: value });
+                }}
                 value={code}
                 disabled={busy}
                 onChange={(e) => {

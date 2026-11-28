@@ -1,8 +1,9 @@
 {
   "issue": 84,
-  "status": "awaiting_clarification",
-  "step": "A-F partial; not ready",
+  "status": "awaiting_review_and_hosted_acceptance",
+  "step": "A-F locally implemented and verified",
   "pullRequest": 85,
   "hostedAcceptance": "waiting_for_product_director",
-  "question": "Google token-exchange abort timeout in pinned Better Auth dependency"
+  "provisionalDecisions": [7227915416, 7228243025, 7230432439],
+  "paidEvaluation": "not_applicable"
 }

@@ -8,7 +8,7 @@ import {
 import { verifySignedSessionToken } from "@/modules/runtime-context/session-token";
 export async function clearDemoIdentity(request: Request, response: Response) {
   const token = readCookieValue(request);
-  if (token) {
+  if (token && process.env.STRIDEBRAIN_DEMO_SESSION_SECRET) {
     const verified = verifySignedSessionToken(getDemoSessionSecret(), token);
     if (verified)
       await getPrismaClient().demoSession.updateMany({

@@ -1,3 +1,4 @@
+import { PostForm } from "@/components/sign-in/post-form";
 import { signInMode } from "@/modules/sign-in/domain/policy";
 import { notFound } from "next/navigation";
 import { isSupportedLocale } from "@/modules/localization/config";
@@ -14,10 +15,10 @@ export default async function NoAccess({ params }: { params: Promise<{ locale: s
     <section className={styles.page}>
       <PageHeader title={c.title} context="StrideBrain" />
       <p>{c.noAccess}</p>
-      <form action="/api/sign-in/logout" method="post">
+      <PostForm locale={locale} action="/api/sign-in/logout">
         <input type="hidden" name="locale" value={locale} />
         <Button type="submit">{c.logout}</Button>
-      </form>
+      </PostForm>
     </section>
   );
 }

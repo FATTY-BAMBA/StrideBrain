@@ -78,6 +78,7 @@ export async function guardedAuthHandler(
       const locale = data.locale === "en" ? "en" : "zh-TW";
       data = {
         provider: "google",
+        errorCallbackURL: `${dependencies.origin}/${locale}/sign-in?google=1&returnTo=${encodeURIComponent(sameSiteReturn(data.returnTo, locale))}`,
         callbackURL: `${dependencies.origin}/${locale}/sign-in/complete?returnTo=${encodeURIComponent(sameSiteReturn(data.returnTo, locale))}`,
       };
     } else data = {};

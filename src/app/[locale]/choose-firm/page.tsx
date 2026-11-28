@@ -1,3 +1,4 @@
+import { PostForm } from "@/components/sign-in/post-form";
 import { notFound, redirect } from "next/navigation";
 import { realIdentityState } from "@/lib/server/real-identity";
 import { isSupportedLocale } from "@/modules/localization/config";
@@ -24,13 +25,13 @@ export default async function ChooseFirm({
     <section className={styles.page}>
       <PageHeader title={signInCopy(locale).firms} context="StrideBrain" />
       {state.choices.map((m) => (
-        <form key={m.id} action="/api/sign-in/firm" method="post">
+        <PostForm locale={locale} key={m.id} action="/api/sign-in/firm">
           <input type="hidden" name="locale" value={locale} />
           <input type="hidden" name="returnTo" value={next} />
           <Button type="submit" name="membershipId" value={m.id}>
             {locale === "en" ? m.organization.nameEn : m.organization.nameZhTw}
           </Button>
-        </form>
+        </PostForm>
       ))}
     </section>
   );

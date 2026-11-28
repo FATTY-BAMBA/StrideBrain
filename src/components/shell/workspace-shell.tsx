@@ -1,3 +1,4 @@
+import { PostForm } from "@/components/sign-in/post-form";
 import { signInCopy } from "@/modules/localization/sign-in";
 import { MobileMenu } from "./mobile-menu";
 import { designSystemCopy } from "@/modules/localization/design-system";
@@ -66,16 +67,16 @@ export function WorkspaceShell({
           <div className={styles.actions}>
             <SettingsLink locale={locale} label={catalog["nav.settings"]} />
             {realSignIn && <a href={`/${locale}/choose-firm`}>{signInCopy(locale).switchFirm}</a>}
-            <form
+            <PostForm
+              locale={locale}
               action={realSignIn ? "/api/sign-in/logout" : "/api/preview-session/logout"}
-              method="post"
             >
               <input type="hidden" name="locale" value={locale} />
               <button type="submit">
                 <Icon name="signOut" decorative />
                 {copy.signOut}
               </button>
-            </form>
+            </PostForm>
           </div>
         ) : null}
       </section>

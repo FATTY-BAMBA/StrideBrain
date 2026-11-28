@@ -10,7 +10,7 @@ export default async function SignInPage({
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ returnTo?: string }>;
+  searchParams: Promise<{ returnTo?: string; google?: string; error?: string }>;
 }) {
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
@@ -21,6 +21,8 @@ export default async function SignInPage({
   return (
     <section className={styles.page}>
       <PageHeader title={c.title} context="StrideBrain" />
+      {query.google === "1" && <p role="alert">{c.googleUnavailable}</p>}
+      {query.error && query.google !== "1" && <p role="alert">{c.unavailable}</p>}
       <SignInForm locale={locale} returnTo={sameSiteReturn(query.returnTo, locale)} />
       {mode === "both" && <a href={`/${locale}/preview`}>{c.sample}</a>}
     </section>

@@ -14,7 +14,10 @@ function setup(allowed = true) {
     hosted: false,
     secret: "synthetic-test-secret",
     counter: { consume: vi.fn(async () => allowed) },
-    handler: vi.fn(async (_request: Request) => Response.json({ success: true })),
+    handler: vi.fn(async (request: Request) => {
+      void request;
+      return Response.json({ success: true });
+    }),
   };
 }
 describe("all auth entry points", () => {
@@ -86,4 +89,23 @@ describe("all auth entry points", () => {
     expect(forwarded.headers.has("x-forwarded-for")).toBe(false);
     expect(await forwarded.json()).toEqual({ email: "sample@example.invalid", type: "sign-in" });
   });
+});
+
+it("chooses localized, same-site Google success and error returns on the server", async () => {
+  const d = setup();
+  await guardedAuthHandler(
+    request("/sign-in/social", {
+      locale: "en",
+      returnTo: "/en/projects/PRJ-XINYI-026",
+      provider: "unknown",
+      errorCallbackURL: "https://evil.invalid",
+    }),
+    d,
+  );
+  const sent = await d.handler.mock.calls[0]![0].json();
+  expect(sent.provider).toBe("google");
+  const error = new URL(sent.errorCallbackURL);
+  expect(error.origin).toBe(origin);
+  expect(error.pathname).toBe("/en/sign-in");
+  expect(error.searchParams.get("returnTo")).toBe("/en/projects/PRJ-XINYI-026");
 });

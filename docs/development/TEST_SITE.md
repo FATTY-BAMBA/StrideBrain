@@ -102,3 +102,31 @@ These are accepted for a synthetic test site and must not carry over to a real t
 - Database connections are encrypted, but the server certificate is not verified against the Supabase certificate authority.
 - Sign-in uses a shared invitation and four allowlisted synthetic sample people. It is test-site sign-in only and is replaced by #42. Other-organization and empty-firm behavior remain covered by automated tests and local browser evidence.
 - The invitation window is longer than the pilot's because the site sits behind Vercel sign-in.
+
+## Real sign-in and people (#84)
+
+The Product Director follows [SIGN_IN.md](../operations/SIGN_IN.md) to configure Google
+and Resend personally. Agents never sign in to or change a hosted provider. On
+`stridebrain-test`, add server-only `STRIDEBRAIN_SIGN_IN_MODE=both`, an independent
+`STRIDEBRAIN_AUTH_SECRET`, `STRIDEBRAIN_GOOGLE_CLIENT_ID`,
+`STRIDEBRAIN_GOOGLE_CLIENT_SECRET`, `STRIDEBRAIN_RESEND_API_KEY`, `STRIDEBRAIN_MAIL_FROM`
+and `STRIDEBRAIN_MAIL_REPLY_TO`. `STRIDEBRAIN_APP_ORIGIN` must be the exact test-site
+HTTPS origin; register that origin plus `/api/auth/callback/google` with Google. Keep
+`STRIDEBRAIN_DATA_MODE=DEMO_SYNTHETIC` and the preview public environment. Leave the
+frozen pilot's settings untouched (absent sign-in mode means demo).
+
+Run the Test site workflow only after local verification and review. Install scripts
+must remain enabled: npm postinstall applies the versioned Better Auth timeout patch
+and fails if it cannot apply. No separate manual patching is needed on Vercel.
+
+Open `/zh-TW/sign-in` (or `/en/sign-in`). The sample-person link still leads to `/preview`.
+As the sample owner, open Settings → People and invite testers with their intended role
+and jobs. Real testers then use Google or emailed codes. Real sessions last thirty days
+without activity extension; demo sessions keep their one-hour limit. Signing in as one
+kind clears the other. Real test addresses belong only in the private test database,
+never screenshots, reports or repository fixtures. The existing `reload-seed` operation
+erases tenant links/invitations; real testers must be invited again after a reset.
+
+Click through the issue #84 acceptance list, including Gmail/Yahoo奇摩/HiNet or Outlook
+delivery, both languages at 390px, next-click deactivation and job removal, and signed-out
+return to a job. Hosted acceptance remains waiting for the Product Director.

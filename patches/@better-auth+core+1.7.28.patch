@@ -1,0 +1,12 @@
+diff --git a/node_modules/@better-auth/core/dist/oauth2/reject-redirects.mjs b/node_modules/@better-auth/core/dist/oauth2/reject-redirects.mjs
+index c5a888c..938a3c2 100644
+--- a/node_modules/@better-auth/core/dist/oauth2/reject-redirects.mjs
++++ b/node_modules/@better-auth/core/dist/oauth2/reject-redirects.mjs
+@@ -33,6 +33,7 @@ async function fetchRefusingRedirects(url, options) {
+ 	const onError = options?.onError;
+ 	const result = await betterFetch(url, {
+ 		...options,
++		timeout: options?.timeout ?? (options?.signal ? undefined : 10_000),
+ 		redirect: "manual",
+ 		async onError(context) {
+ 			if (isRedirectResponse(context.response)) redirected = true;

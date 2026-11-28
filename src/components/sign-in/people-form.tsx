@@ -75,7 +75,7 @@ export function PeopleForm({
     }
   }
   return (
-    <section className={styles.form} aria-busy={busy}>
+    <section className={styles.person} aria-busy={busy}>
       {person && (
         <>
           <h2>{person.name}</h2>
@@ -140,73 +140,80 @@ export function PeopleForm({
         {role === "ORGANIZATION_ADMIN" ? (
           <p>{c.allJobs}</p>
         ) : (
-          <fieldset disabled={busy}>
-            <legend>{c.jobs}</legend>
-            {jobs.map((job) => {
-              const assigned = assignments.find((a) => a.projectId === job.id);
-              return (
-                <div key={job.id}>
-                  <label>
-                    <input
-                      type="checkbox"
-                      checked={Boolean(assigned)}
-                      onChange={(e) =>
-                        setAssignments((current) =>
-                          e.target.checked
-                            ? [
-                                ...current,
-                                {
-                                  projectId: job.id,
-                                  canReadActuals: false,
-                                  canCreateAction: false,
-                                },
-                              ]
-                            : current.filter((a) => a.projectId !== job.id),
-                        )
-                      }
-                    />
-                    {job.name}
-                  </label>
-                  {assigned && (
-                    <>
-                      <label>
-                        <input
-                          type="checkbox"
-                          checked={assigned.canReadActuals}
-                          onChange={(e) =>
-                            setAssignments((current) =>
-                              current.map((a) =>
-                                a.projectId === job.id
-                                  ? { ...a, canReadActuals: e.target.checked }
-                                  : a,
-                              ),
-                            )
-                          }
-                        />
-                        {c.actuals}
-                      </label>
-                      <label>
-                        <input
-                          type="checkbox"
-                          checked={assigned.canCreateAction}
-                          onChange={(e) =>
-                            setAssignments((current) =>
-                              current.map((a) =>
-                                a.projectId === job.id
-                                  ? { ...a, canCreateAction: e.target.checked }
-                                  : a,
-                              ),
-                            )
-                          }
-                        />
-                        {c.action}
-                      </label>
-                    </>
-                  )}
-                </div>
-              );
-            })}
-          </fieldset>
+          <details>
+            <summary>
+              {c.jobs} ({assignments.length})
+            </summary>
+            <fieldset className={styles.jobs} disabled={busy}>
+              <legend>{c.jobs}</legend>
+              {jobs.map((job) => {
+                const assigned = assignments.find((a) => a.projectId === job.id);
+                return (
+                  <div className={styles.job} key={job.id}>
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={Boolean(assigned)}
+                        onChange={(e) =>
+                          setAssignments((current) =>
+                            e.target.checked
+                              ? [
+                                  ...current,
+                                  {
+                                    projectId: job.id,
+                                    canReadActuals: false,
+                                    canCreateAction: false,
+                                  },
+                                ]
+                              : current.filter((a) => a.projectId !== job.id),
+                          )
+                        }
+                      />
+                      {job.name}
+                    </label>
+                    {assigned && (
+                      <>
+                        <label>
+                          <input
+                            type="checkbox"
+                            aria-label={`${job.name} · ${c.actuals}`}
+                            checked={assigned.canReadActuals}
+                            onChange={(e) =>
+                              setAssignments((current) =>
+                                current.map((a) =>
+                                  a.projectId === job.id
+                                    ? { ...a, canReadActuals: e.target.checked }
+                                    : a,
+                                ),
+                              )
+                            }
+                          />
+                          {c.actuals}
+                        </label>
+                        <label>
+                          <input
+                            type="checkbox"
+                            aria-label={`${job.name} · ${c.action}`}
+                            checked={assigned.canCreateAction}
+                            onChange={(e) =>
+                              setAssignments((current) =>
+                                current.map((a) =>
+                                  a.projectId === job.id
+                                    ? { ...a, canCreateAction: e.target.checked }
+                                    : a,
+                                ),
+                              )
+                            }
+                          />
+                          {c.action}
+                        </label>
+                      </>
+                    )}
+                  </div>
+                );
+              })}
+            </fieldset>
+          </details>
         )}
         <Button type="submit" variant={person ? "secondary" : "primary"} disabled={busy}>
           {busy ? c.busy : person ? c.save : c.invite}

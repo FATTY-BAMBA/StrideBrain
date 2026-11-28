@@ -2,6 +2,7 @@ import type { Locale } from "./config";
 const en = {
   title: "Sign in",
   google: "Continue with Google",
+  googleUnavailable: "Google did not respond. Try again, or sign in with an email code.",
   email: "Email",
   send: "Email me a code",
   code: "Sign-in code",
@@ -23,6 +24,7 @@ const en = {
 const zh: Record<keyof typeof en, string> = {
   title: "登入",
   google: "使用 Google 登入",
+  googleUnavailable: "Google 沒有回應。請再試一次，或改用驗證碼登入。",
   email: "電子信箱",
   send: "寄送驗證碼",
   code: "驗證碼",

@@ -1,6 +1,6 @@
 # Verification — SB-084
 
-Implementation and checks pending. No hosted changes or paid evaluation.
+Current evidence is in the final 28 November continuation section below. Earlier partial reports are historical. No hosted changes or paid evaluation.
 
 ## Decisions awaiting the Product Director
 
@@ -110,3 +110,117 @@ Still not verified: browser sidebar navigation after deactivation/sign-out, loca
 and all hosted acceptance. A–F remain incomplete; draft is not ready for hosted testing.
 No paid evaluation, hosted changes, hosted sign-in or bounce tracking. Bounce tracking is
 later work, per 7228243025.
+
+## 28 November — reviewer 7230432439 continuation (current)
+
+The owner's actual GitHub author metadata is FATTY-BAMBA. Its patch decision is provisional,
+awaiting the Product Director before merge. The earlier timeout question is answered.
+The previous partial reports above are historical; use this section for the current state.
+
+### Implemented
+
+- Exactly pinned @better-auth/core 1.7.28 and patch-package 8.0.1. Postinstall applies the
+  one-line shared fetchRefusingRedirects patch with --error-on-fail. Caller timeout/signal
+  remains authoritative. No existing migration changed; no global production fetch override.
+- The Google provider imports the patched dist/oauth2/reject-redirects.mjs. Its token exchange
+  defaults to ten seconds. Auth route maxDuration is thirty seconds. The localized failure
+  sentence and server-chosen error callback return to sign-in, with Google/code choices.
+- IMPORTANT correction to the earlier fake-Google report: this pinned authorization-code
+  callback consumes Google's server-to-server HTTPS token response; it does NOT fetch JWKs
+  or cryptographically validate that returned ID token through the separate certificate
+  helper. The earlier assertion that our callback test verified the RSA signature was
+  inaccurate. Its test proves verified-email refusal and linking, not JWK verification.
+  Library state, PKCE, token handling and linking remain untouched, as requested.
+- Both token timeout locales and the actual separate getGooglePublicKey/certs fetch are
+  tested with stalled local fetches. The latter is tested directly because the callback
+  never reaches it. Timeout leaves AuthUser/AuthSession/IdentityLink empty and membership
+  invited. The patch-path assertion also fails if the patch is absent.
+- Completed operations/environment/test-site documentation, licence modification record,
+  source privacy grep and mail-template checks, fresh role/job/firm authority tests, actual
+  foreign membership denial, absolute-expiry and production-no-demo tests. Session-kind
+  helpers revoke/clear the prior kind; real-only sign-in needs no demo secret merely to
+  clear an old demo cookie. Added schema invariant verification without changing seed emails.
+- People job checkboxes are expandable, with distinct per-job permission labels. Native POST
+  logout/firm controls show busy feedback. Code paste strips non-digits before submission.
+  Initial invitation sends now honor a rejected counter decision as well as resend sends.
+
+### Local verification
+
+- Clean `npm ci --no-audit --no-fund`: postinstall successfully applied the patch. The same
+  npm lifecycle is used by CI and the standard Vercel install. Actual hosted Vercel install
+  remains untested; no hosted action is authorized or performed.
+- First complete check after the timeout work: 215 test files / 2,082 tests, build passed.
+  Additional access/session/privacy tests were added afterward; final result recorded below.
+- Local production app, real Chrome through Playwright, disposable synthetic PostgreSQL and
+  fake Resend only. No Google/Resend service was contacted. Checked:
+  - English email code, neutral response, automatic six-digit submit, signed-out return to
+    the requested People page, keyboard focus, 390px sign-in and People without overflow.
+  - Traditional Chinese code entry and exact signed-out return to the requested Xinyi job.
+  - Owner creates a Viewer in the People UI. Failed invitation notice survives page reload.
+  - Deactivation committed through a separate database connection, then an existing browser
+    clicks a sidebar link: no-access. Reactivation restores access.
+  - Viewer gets 404 at People. Removing their stored job assignment makes the next direct
+    job request 404 and removes it from the list; no NT$ amounts appear in that list.
+  - Logout ends the session; opening a job again returns to sign-in.
+  - Two invited firms: chooser after sign-in, selecting the second firm, then sidebar switch
+    back to Horizon updates the account correctly.
+  - Localized Google failure sentence, including zh-TW at 390px. Screenshots inspected.
+- The shared demo HTTP route sweep remains in the full check, including real-only routes
+  returning 404 in demo mode. Real-mode journeys above supplement that sweep.
+- React review: server authority stays outside client components; all waiting controls have
+  feedback, forms use native labels, requests have bounds, no new component library.
+
+### Screenshots (synthetic data only)
+
+- [English sign-in](screenshots/en-sign-in.png), [390px](screenshots/en-sign-in-390.png),
+  [code](screenshots/en-code.png).
+- [中文登入 390px](screenshots/zh-sign-in-390.png), [驗證碼 390px](screenshots/zh-code-390.png).
+- [English People](screenshots/en-people.png), [390px](screenshots/en-people-390.png),
+  [中文成員](screenshots/zh-people.png), [390px](screenshots/zh-people-390.png).
+- [Invitation send failure](screenshots/en-invitation-failed.png),
+  [firm choice](screenshots/en-choose-firm.png), [no access](screenshots/zh-no-access.png).
+- [Viewer job](screenshots/zh-viewer-job-390.png),
+  [Viewer after job removal](screenshots/zh-viewer-no-jobs-390.png).
+- [English Google timeout](screenshots/en-google-timeout.png),
+  [中文 Google timeout](screenshots/zh-google-timeout-390.png).
+
+### Not verified / awaiting the Product Director
+
+Hosted acceptance, actual Google/Resend credentials and consoles, Vercel install/runtime
+maxDuration enforcement and trusted network header, inbox timing/deliverability across
+Gmail/Yahoo奇摩/HiNet/Outlook, real mobile OTP keyboard suggestions, and a real thirty-day
+wall-clock session. Local clocks/expiry records cover the expiry rules. Browser both-kind
+switching under the preview-only HTTPS handoff was not exercised; helper regressions and
+existing demo tests cover it locally. Bounce tracking remains later work. All provisional
+copy/per-email guard/invitation failure/timeout decisions await Director confirmation.
+No hosted changes, hosted sign-in, Test site workflow or paid evaluation.
+
+### Proposed upstream issue — text only; not filed
+
+Title: Add a bounded default or configurable timeout to server-side OAuth fetches
+
+Using @better-auth/core 1.7.28 with the Google authorization-code flow, a stalled token
+endpoint leaves validateAuthorizationCode waiting indefinitely: it calls
+fetchRefusingRedirects without a timeout or signal. The Google public-key helper also
+calls that function without options. A client-side request timeout does not cancel these
+server fetches. Reproduction: intercept the token endpoint (or call getGooglePublicKey
+with a stalled certs endpoint), return a promise that rejects only when its signal aborts,
+and observe no abort with the shipped default. Expected: a documented, bounded timeout
+or a provider-level transport option that applies to both requests. Our temporary MIT
+package patch defaults the helper's betterFetch timeout to 10,000 ms only when the caller
+has neither a timeout nor a signal; it changes no state, PKCE, redirect or validation rule.
+Would upstream support this timeout at the shared helper/configuration boundary? We will
+remove the local patch when a supported option is available.
+
+Current dependency audit: `npm audit --omit=dev` reports zero high/critical and two
+moderate findings in the existing Vitest/mocker packages (GHSA-82fw-gwwq-j7x9 and
+GHSA-qxg6-89mg-rqv8). No Better Auth or patch-package advisory is reported. The complete
+install audit reports nine moderate findings including existing ESLint/minimatch tooling.
+No broad dependency upgrade was mixed into this issue.
+
+Final local check: `npm run check` passed, 219 files / 2,091 tests, production build
+passed. The final same-site Google error-return regression was then run separately
+(the success/error paths both retain the validated requested job); its focused handler
+suite passed. No unrelated test was weakened. CI status is recorded in the Builder PR
+comment once available. A–F are locally implemented; review and Director hosted
+acceptance remain outstanding. PR stays draft.

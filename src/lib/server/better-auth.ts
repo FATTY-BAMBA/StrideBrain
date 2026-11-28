@@ -74,6 +74,7 @@ export function createRealAuth(
       },
     },
     logger: { disabled: true },
+    onAPIError: { errorURL: `${settings.origin}/zh-TW/sign-in?google=1` },
     databaseHooks: {
       account: {
         create: {

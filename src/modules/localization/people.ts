@@ -74,7 +74,7 @@ export function roleLabel(locale: Locale, role: Role) {
 /** Each phrase is selected by the actual role capability table, not a second role policy. */
 export function roleDescription(locale: Locale, role: Role) {
   const phrases: [Capability, string, string][] = [
-    ["project:read", "open assigned jobs", "開啟指派專案"],
+    ["project:read", "open permitted jobs", "開啟授權專案"],
     ["project:create", "create jobs", "建立專案"],
     ["quote:read", "read quotes", "查看報價"],
     ["quote:draft", "prepare quotes", "編輯報價"],

@@ -37,7 +37,9 @@ export default async function SettingsPage({ params }: { params: Promise<{ local
       title={catalog["settings.title"]}
       description={catalog["settings.description"]}
     >
-      {previewSessionOrigin(process.env) && <LeavePreview locale={locale} />}
+      {context?.identityKind !== "real" && previewSessionOrigin(process.env) && (
+        <LeavePreview locale={locale} />
+      )}
       {signInMode(process.env) !== "demo" && context?.role === "ORGANIZATION_ADMIN" && (
         <Link href={`/${locale}/settings/people`}>{locale === "en" ? "People" : "成員"}</Link>
       )}

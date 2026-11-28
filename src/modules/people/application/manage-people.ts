@@ -31,11 +31,14 @@ export class ManagePeople {
     const result = await this.repository.change(context, input);
     if (result.kind !== "SUCCESS" || !result.sendInvitation) return result.kind;
     // Initial send starts the same resend budget; no immediate repeat after a timeout.
-    if (input.operation === "invite")
-      await this.counter.consume(
+    if (
+      input.operation === "invite" &&
+      !(await this.counter.consume(
         signInCounterKey(this.settings.secret, "invitation", result.membershipId),
         EMAIL_LIMITS.invitation,
-      );
+      ))
+    )
+      return "LIMITED";
     const invitation = await this.repository.invitation(context, result.membershipId);
     let sent = false;
     if (invitation) {
