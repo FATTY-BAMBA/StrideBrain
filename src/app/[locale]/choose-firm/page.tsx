@@ -5,8 +5,8 @@ import { isSupportedLocale } from "@/modules/localization/config";
 import { signInCopy } from "@/modules/localization/sign-in";
 import { sameSiteReturn, signInMode } from "@/modules/sign-in/domain/policy";
 import { Button } from "@/components/ui/button";
-import { PageHeader } from "@/components/ui/page-header";
-import styles from "@/components/ui/ui.module.css";
+import { IdentityHeading } from "@/components/sign-in/identity-heading";
+import styles from "@/components/sign-in/sign-in.module.css";
 export default async function ChooseFirm({
   params,
   searchParams,
@@ -22,17 +22,25 @@ export default async function ChooseFirm({
   if (!state.choices.length) redirect(`/${locale}/no-access`);
   const next = sameSiteReturn((await searchParams).returnTo, locale);
   return (
-    <section className={styles.page}>
-      <PageHeader title={signInCopy(locale).firms} context="" />
-      {state.choices.map((m) => (
-        <PostForm locale={locale} key={m.id} action="/api/sign-in/firm">
-          <input type="hidden" name="locale" value={locale} />
-          <input type="hidden" name="returnTo" value={next} />
-          <Button type="submit" name="membershipId" value={m.id}>
-            {locale === "en" ? m.organization.nameEn : m.organization.nameZhTw}
-          </Button>
-        </PostForm>
-      ))}
+    <section className={styles.sheetBlocks}>
+      <IdentityHeading title={signInCopy(locale).firms} />
+      <div className={styles.firms}>
+        {state.choices.map((m) => (
+          <PostForm locale={locale} key={m.id} action="/api/sign-in/firm">
+            <input type="hidden" name="locale" value={locale} />
+            <input type="hidden" name="returnTo" value={next} />
+            <Button
+              type="submit"
+              className={styles.fullWidth}
+              variant="secondary"
+              name="membershipId"
+              value={m.id}
+            >
+              {locale === "en" ? m.organization.nameEn : m.organization.nameZhTw}
+            </Button>
+          </PostForm>
+        ))}
+      </div>
     </section>
   );
 }

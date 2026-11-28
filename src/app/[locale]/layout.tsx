@@ -70,7 +70,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       <body>
         <IdentityFrame
           locale={locale}
-          sampleNotice={catalog["app.demoStatus"]}
+          mode={mode}
           standalone={children}
           workspace={
             <WorkspaceShell

@@ -1,15 +1,16 @@
 {
   "issue": 84,
   "status": "awaiting_review_and_hosted_acceptance",
-  "step": "A-F and fix round 1 locally implemented and verified",
+  "step": "A-F and fix rounds 1–2 locally verified; hosted acceptance awaits Product Director",
   "pullRequest": 85,
   "hostedAcceptance": "waiting_for_product_director",
   "provisionalDecisions": [
     7227915416,
     7228243025,
     7230432439,
-    7231731273
+    7231731273,
+    7237737479
   ],
   "paidEvaluation": "not_applicable",
-  "fixRound": 1
+  "fixRound": 2
 }

@@ -96,7 +96,7 @@ The following is the v1 token table. The CSS file is authoritative. Legacy token
 
 Type roles: display 32/1.3/700 is reserved for the Home greeting; page title 24/1.4/700; section heading 18/1.5/700; lead 17/1.5/600; body 15/1.6/400; table/document 14/1.6/400; caption 13/1.5/400. Use only weights 400, 600 and 700. No new text is smaller than 13px. Use Inter first, then Noto Sans TC, then system Chinese fonts.
 
-Space steps are 4, 8, 12, 16, 24, 32, 40 and 48px. Radius roles are none (0, for flat rows), cell (6px), control (10px), ask (12px) and pill (999px). Control heights are cell 32px, chip 36px, default 44px and ask 56px. The sole shadow belongs to the quote document, not record tables or the shell. Layout dimensions have named tokens too; they are not extra spacing steps. The shared page container uses `--page-width` (1120px), centred and capped at the available width. The shell retains `--content-width` (1500px) for older page bodies.
+Space steps are 4, 8, 12, 16, 24, 32, 40 and 48px. Radius roles are none (0, for flat rows), cell (6px), control (10px), ask (12px) and pill (999px). Control heights are cell 32px, chip 36px, default 44px and ask 56px. The shadow belongs to the quote document and provisionally the standalone identity sheet (review 7237737479), not record tables or the workspace shell. Layout dimensions have named tokens too; they are not extra spacing steps. The shared page container uses `--page-width` (1120px), centred and capped at the available width. The shell retains `--content-width` (1500px) for older page bodies.
 
 ## Shared components
 
@@ -189,3 +189,25 @@ Native Dialog holds invitation or person fields; role and job access have one Sa
 Serious actions name the person and require confirmation. Self-deactivation is hidden.
 Switch firm is offered only for more than one firm. Copy from review 7231731273 is
 provisional pending Product Director confirmation.
+
+## Standalone identity sheet — review 7237737479
+
+Sign-in, no-access and choose-firm share Paper on a full-height surface-subtle page,
+with a top brand/language bar and copyright footer. Paper's existing shadow is the single
+source; the identity sheet inherits it. The shadow and replaceable BrandMark are provisional
+pending Product Director confirmation. Sheet body uses text-body, not Paper's table text.
+The segmented language switch is scoped to this frame; workspace navigation is unchanged.
+At 600px and below the page is canvas, sheet border/shadow disappear, content aligns at
+the top and the test strip/footer follow at the bottom. No fixed-height clipping.
+
+Only mode both shows the test strip. Mode real renders none of its badge, sentence or
+sample-person link. Sign-in steps replace each other; Field owns field errors, Notice owns
+request/query errors. Only the activated control changes its label during a request.
+Code tracking is `--tracking-code: 0.3em`; all other non-Google values reuse existing tokens.
+
+The custom Google button is the scoped branding exception: white fill, #747775 1px inside
+border, #1f1f1f text, local Google Sans Medium 500 at 14px/20px, 12px side padding, 10px
+mark gap, unmodified 20px standard-colour G and 4px rectangular radius. Its height stays
+control-default (44px). These values have named `--google-*` tokens; the rest of the app
+keeps weights 400/600/700. The asset/font source and licences are in public/brand/google
+and public/fonts/v2. No font or script is fetched from another host in the browser.

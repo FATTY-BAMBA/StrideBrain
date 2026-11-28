@@ -31,3 +31,11 @@ hide self-deactivation, derive role sentences from capabilities, show firm switc
 for multiple firms. Standalone identity pages retain visible language links and cap at
 the form-width token. Google authority and screen copy remain provisional for Director
 confirmation. No paid evaluation or hosted changes.
+
+Fix round 2 (owner-authored review 7237737479): use the specified Paper-sheet identity
+frame for sign-in, no-access and choose-firm; two replacing sign-in steps with Field/Notice,
+segmented language switch, mode-both-only test strip, phone layout and scoped Google
+branding assets/tokens. Preserve all existing strings, neutral copy, requests, limits and
+timings. Shadow, replaceable brand mark and every new copy-table string are provisional
+pending Product Director confirmation. Verify locally, run full check and CI, capture the
+requested bilingual state matrix, report on the same draft PR, then stop. No hosted work.

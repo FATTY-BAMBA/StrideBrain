@@ -5,8 +5,8 @@ import { notFound } from "next/navigation";
 import { isSupportedLocale } from "@/modules/localization/config";
 import { signInCopy } from "@/modules/localization/sign-in";
 import { Button } from "@/components/ui/button";
-import { PageHeader } from "@/components/ui/page-header";
-import styles from "@/components/ui/ui.module.css";
+import { IdentityHeading } from "@/components/sign-in/identity-heading";
+import styles from "@/components/sign-in/sign-in.module.css";
 export default async function NoAccess({ params }: { params: Promise<{ locale: string }> }) {
   if (signInMode(process.env) === "demo") notFound();
   const { locale } = await params;
@@ -14,13 +14,15 @@ export default async function NoAccess({ params }: { params: Promise<{ locale: s
   const c = signInCopy(locale);
   const signedIn = Boolean(await realIdentityState());
   return (
-    <section className={styles.page}>
-      <PageHeader title={c.title} context="" />
+    <section className={styles.sheetBlocks}>
+      <IdentityHeading title={c.noAccessTitle} />
       <p>{c.noAccess}</p>
       {signedIn && (
         <PostForm locale={locale} action="/api/sign-in/logout">
           <input type="hidden" name="locale" value={locale} />
-          <Button type="submit">{c.logout}</Button>
+          <Button type="submit" variant="secondary">
+            {c.logout}
+          </Button>
         </PostForm>
       )}
     </section>

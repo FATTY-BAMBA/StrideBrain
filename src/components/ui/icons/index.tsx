@@ -2,6 +2,12 @@ import type { ReactNode } from "react";
 
 // Lucide 0.468.0. Original geometry, rendered at 18px / 1.6px. See LICENSE.
 const paths: Record<IconName, ReactNode> = {
+  lock: (
+    <>
+      <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+    </>
+  ),
   home: (
     <>
       <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
@@ -94,6 +100,7 @@ const paths: Record<IconName, ReactNode> = {
   ),
 };
 export type IconName =
+  | "lock"
   | "home"
   | "projects"
   | "quotes"

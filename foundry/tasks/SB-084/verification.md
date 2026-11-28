@@ -1,6 +1,6 @@
 # Verification — SB-084
 
-Current evidence is in the 28 November fix round 1 section below. Earlier partial reports are historical. No hosted changes or paid evaluation.
+Current evidence is in the 28 November fix round 2 section below. Earlier partial reports are historical. No hosted changes or paid evaluation.
 
 ## Decisions awaiting the Product Director
 
@@ -315,3 +315,90 @@ Final local `npm run check`: **222 files / 2,120 tests pass**, production build 
 Format, design-token gate, lint (zero errors; the existing prisma.config.ts warning),
 TypeScript, complete tests and build all pass after the bilingual-name regression fix.
 CI status and the final commit are reported in the Builder PR comment.
+
+## 28 November — fix round 2, review 7237737479
+
+Read the comment from GitHub and verified its actual author is FATTY-BAMBA. Built the
+specified paper-sheet design. The shared standalone frame uses Paper, existing layout
+and type tokens, a replaceable decorative BrandMark, a frame-only segmented language
+switch and a footer. The workspace shell and its language switch are unchanged. Mobile
+at 600px and below removes the sheet border/shadow and top-aligns scrollable content.
+
+Sign-in now replaces the email step with the code step, changes its single h1, keeps the
+typed address only in component state, and moves focus on step changes. Field owns email
+and code errors; Notice owns query/429/unavailable errors and the unchanged neutral
+sentence. The countdown sits outside the resend label and is not a live region. Only
+the activated control shows busy. No initial autofocus. Mode both alone renders the test
+strip; mode real has no badge, sample sentence or sample-person link. No-access has its
+own title, and long firm names wrap in full-width secondary buttons.
+
+No server auth request, limit, expiry, neutral sentence or timing rule changed. A direct
+before/after comparison confirms **every pre-existing string in both languages is
+byte-for-byte unchanged**. New regression tests cover mode visibility, language semantics,
+focus, busy labels, field errors, notices, neutral copy and query-error localization.
+Existing font tests retain their assertions for v1 and separately check the Google v2 face.
+
+### Google branding application
+
+Official source checked 28 November:
+https://developers.google.com/identity/branding-guidelines
+
+| Item | Applied value |
+| --- | --- |
+| Light fill | #FFFFFF |
+| Inside border | #747775, 1px, border-box |
+| Text | #1F1F1F |
+| Typeface | Google Sans Medium 500, 14px / 20px |
+| Web padding | 12px before mark and after text; 10px mark/text gap |
+| Mark | Standard-colour gradient G, 20px, unmodified official asset on white |
+| Button | Rectangular 4px radius; existing 44px control height; full sheet width |
+
+Values use named Google-only tokens. Medium 500 is the guideline's scoped exception to
+the app's normal weights. The unchanged 4× PNG comes from Google's own asset bundle;
+its surrounding icon-button border/padding is outside a centred 20px window, without
+changing the G. Source/provenance is in public/brand/google/README.md. Google Sans is
+self-hosted under SIL OFL 1.1; the official fixed-label WOFF2 subset is 3,056 bytes,
+pinned by URL/size/SHA-256 in the font manifest. Chinese glyphs use the existing local
+Noto Sans TC fallback; Google Sans does not supply that label's Chinese glyphs. The browser
+loads no external font, script or mark. Font files are under v2 with immutable caching;
+v1 remains unchanged. Lock geometry is from Lucide 0.468.0 under its existing licence.
+
+### Provisional and not verified
+
+The sheet shadow, placeholder brand mark and **all ten new copy-table strings** from
+7237737479 await Product Director confirmation before merge. Earlier provisional points
+remain listed above. No hosted work, provider sign-in, production verification or physical
+phone testing. Hosted acceptance waits for the Product Director. No paid evaluation and
+no Test site workflow. PR #85 stays draft.
+
+### Round 2 verification and screenshots
+
+Final `npm run check` passes: **223 files / 2,128 tests**, format, design-token gate,
+lint (zero errors; existing prisma.config.ts warning), TypeScript and production build.
+New-head CI result is recorded in the Builder PR report.
+
+Local production-build Playwright checks use disposable synthetic PostgreSQL data and a
+local email transport; Google/Resend network calls are blocked. Both languages pass at
+1280px, 390px and 320px with no horizontal overflow, including long firm names. Native
+Chrome 200% browser zoom was checked at a 1280px window (640 CSS pixels, devicePixelRatio
+2), in both languages, without horizontal overflow. Keyboard order is languages, Google,
+email, send, sample link; step changes focus code/email, without initial autofocus.
+No external browser assets or browser JavaScript errors were observed. Real mode omits
+the sample badge, sentence and link. Query-error localization changes with page language.
+Google button computed values match the table above, including loaded local font.
+
+The 429 screenshot uses a local intercepted response; invalid email/code and synthetic
+OTP sign-in/firm selection exercise the local server. This is local evidence, not hosted
+acceptance or real-provider delivery. Screenshot data is synthetic.
+
+| Screen | English 1280 | English 390 | 繁中 1280 | 繁中 390 |
+| --- | --- | --- | --- | --- |
+| Step 1 | [Image](screenshots/round-2/en-step-1-1280.png) | [Image](screenshots/round-2/en-step-1-390.png) | [Image](screenshots/round-2/zh-TW-step-1-1280.png) | [Image](screenshots/round-2/zh-TW-step-1-390.png) |
+| Step 2, countdown running | [Image](screenshots/round-2/en-step-2-1280.png) | [Image](screenshots/round-2/en-step-2-390.png) | [Image](screenshots/round-2/zh-TW-step-2-1280.png) | [Image](screenshots/round-2/zh-TW-step-2-390.png) |
+| Invalid email | [Image](screenshots/round-2/en-invalid-email-1280.png) | [Image](screenshots/round-2/en-invalid-email-390.png) | [Image](screenshots/round-2/zh-TW-invalid-email-1280.png) | [Image](screenshots/round-2/zh-TW-invalid-email-390.png) |
+| Invalid code | [Image](screenshots/round-2/en-invalid-code-1280.png) | [Image](screenshots/round-2/en-invalid-code-390.png) | [Image](screenshots/round-2/zh-TW-invalid-code-1280.png) | [Image](screenshots/round-2/zh-TW-invalid-code-390.png) |
+| 429 | [Image](screenshots/round-2/en-limited-1280.png) | [Image](screenshots/round-2/en-limited-390.png) | [Image](screenshots/round-2/zh-TW-limited-1280.png) | [Image](screenshots/round-2/zh-TW-limited-390.png) |
+| Google account error | [Image](screenshots/round-2/en-google-account-1280.png) | [Image](screenshots/round-2/en-google-account-390.png) | [Image](screenshots/round-2/zh-TW-google-account-1280.png) | [Image](screenshots/round-2/zh-TW-google-account-390.png) |
+| No access | [Image](screenshots/round-2/en-no-access-1280.png) | [Image](screenshots/round-2/en-no-access-390.png) | [Image](screenshots/round-2/zh-TW-no-access-1280.png) | [Image](screenshots/round-2/zh-TW-no-access-390.png) |
+| Choose firm | [Image](screenshots/round-2/en-choose-firm-1280.png) | [Image](screenshots/round-2/en-choose-firm-390.png) | [Image](screenshots/round-2/zh-TW-choose-firm-1280.png) | [Image](screenshots/round-2/zh-TW-choose-firm-390.png) |
+| Step 1, real mode | [Image](screenshots/round-2/en-real-step-1-1280.png) | [Image](screenshots/round-2/en-real-step-1-390.png) | [Image](screenshots/round-2/zh-TW-real-step-1-1280.png) | [Image](screenshots/round-2/zh-TW-real-step-1-390.png) |

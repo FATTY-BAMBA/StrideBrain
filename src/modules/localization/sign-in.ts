@@ -1,5 +1,16 @@
 import type { Locale } from "./config";
 const en = {
+  noAccessTitle: "No access",
+  sampleLine: "Test site. No real customer data.",
+  sampleBadge: "Sample data",
+  resendWait: "You can send again in {n} seconds.",
+  codeHint: "Enter the 6 digits from the email.",
+  codeTitle: "Enter your code",
+  invitedOnly:
+    "Only people invited by their company can sign in. No invitation yet? Ask your firm's administrator.",
+  emailHint: "We'll email a 6-digit code to this address. No password needed.",
+  emailPlaceholder: "name@example.com",
+  caption: "For invited team members",
   title: "Sign in",
   google: "Continue with Google",
   googleUnavailable: "Google did not respond. Try again, or sign in with an email code.",
@@ -27,6 +38,16 @@ const en = {
   people: "People",
 };
 const zh: Record<keyof typeof en, string> = {
+  noAccessTitle: "無法進入",
+  sampleLine: "測試站，不含真實客戶資料。",
+  sampleBadge: "虛構示範資料",
+  resendWait: "{n} 秒後可以重新寄送。",
+  codeHint: "請輸入信裡的 6 位數字。",
+  codeTitle: "輸入驗證碼",
+  invitedOnly: "只有受公司邀請的成員可以登入。還沒收到邀請？請聯絡貴公司的管理員。",
+  emailHint: "我們會寄一組 6 位數驗證碼到這個信箱，不需要密碼。",
+  emailPlaceholder: "name@example.com",
+  caption: "公司成員專用",
   title: "登入",
   google: "使用 Google 登入",
   googleUnavailable: "Google 沒有回應。請再試一次，或改用驗證碼登入。",

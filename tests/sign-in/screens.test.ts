@@ -159,7 +159,7 @@ it.each(["en", "zh-TW"] as const)(
       const text = renderToStaticMarkup(
         createElement(IdentityFrame, {
           locale,
-          sampleNotice: "Synthetic sample data",
+          mode: "both",
           standalone: createElement("form", null, "Sign in"),
           workspace: createElement("nav", null, "Workspace"),
         }),
@@ -168,7 +168,9 @@ it.each(["en", "zh-TW"] as const)(
       expect(text).toContain("StrideBrain");
       expect(text).toContain("繁中");
       expect(text).toContain("EN");
-      expect(text).toContain("Synthetic sample data");
+      expect(text).toContain(
+        locale === "en" ? "Test site. No real customer data." : "測試站，不含真實客戶資料。",
+      );
     }
   },
 );
@@ -206,8 +208,9 @@ it("shows invalid-email copy, allows changing address after sending, and routes 
         .querySelector("form")!
         .dispatchEvent(new Event("submit", { bubbles: true, cancelable: true })),
     );
-    expect(host.querySelector('input[type="email"]')?.hasAttribute("disabled")).toBe(true);
-    expect(host.textContent).toContain("or");
+    expect(host.querySelector('input[type="email"]')).toBeNull();
+    expect(document.activeElement?.id).toBe("sign-in-code");
+    expect(host.querySelector("h1")?.textContent).toBe("Enter your code");
     await act(async () => button(host, "Use a different email").click());
     expect(host.querySelector('input[type="email"]')?.hasAttribute("disabled")).toBe(false);
     expect(host.querySelector('[autocomplete="one-time-code"]')).toBeNull();

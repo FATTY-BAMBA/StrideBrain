@@ -1,5 +1,5 @@
 {
-  "source": "Google Fonts CSS2 API; Inter v20 and Noto Sans TC, normal variable weight 400–700. Original unicode-range slices retained.",
+  "source": "Google Fonts CSS2 API; Inter v20 and Noto Sans TC, normal variable weight 400–700. Original unicode-range slices retained. Google Sans v76 Medium: official fixed-button-label subset, OFL 1.1.",
   "faces": [
     {
       "family": "Inter",
@@ -690,6 +690,12 @@
       "weight": "400 700",
       "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
       "file": "v1/noto-sans-tc-114.woff2"
+    },
+    {
+      "family": "Google Sans",
+      "weight": "500",
+      "unicodeRange": "U+20, U+43, U+47, U+50, U+61, U+65, U+67-69, U+6c, U+6e-6f, U+73-75, U+77, U+2026",
+      "file": "v2/google-sans.woff2"
     }
   ],
   "files": [
@@ -1394,6 +1400,18 @@
       "file": "v1/Noto-Sans-TC-OFL.txt",
       "bytes": 4388,
       "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9"
+    },
+    {
+      "file": "v2/google-sans.woff2",
+      "url": "https://fonts.gstatic.com/l/font?kit=4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrw2IKlntT_KUGVoNu6rWq7-GCJ27uACv-Xi&skey=c30756b8cf584a60&v=v76",
+      "sha256": "72c49f8f4525ae7e2ccc4f8ba329e5a377948ef41ace3a7f8ad3f6ab35d6dd53",
+      "bytes": 3056
+    },
+    {
+      "file": "v2/GoogleSans-OFL.txt",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/googlesans/OFL.txt",
+      "sha256": "2b75ef20f13d83a7514aee452c4782c20cdc9ff2dee17600f44d37a06d4fb958",
+      "bytes": 4488
     }
   ]
 }
