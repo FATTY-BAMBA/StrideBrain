@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import { signInMode } from "@/modules/sign-in/domain/policy";
+import { realIdentityState } from "@/lib/server/real-identity";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { resolveServerRuntimeContext } from "@/lib/server/runtime-context";
+import { IdentityFrame } from "@/components/sign-in/identity-frame";
 import { WorkspaceShell } from "@/components/shell/workspace-shell";
 import { loadWorkspaceAccount } from "@/lib/server/workspace-account";
 import { getServerEnvironment } from "@/lib/env/server-env";
@@ -57,20 +60,31 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   const locale = rawLocale;
   const catalog = getCatalog(locale);
+  const mode = signInMode(process.env);
   const account = await loadWorkspaceAccount(locale);
+  const identity = mode !== "demo" ? await realIdentityState() : null;
   const context = await resolveServerRuntimeContext().catch(() => null);
 
   return (
     <html lang={htmlLanguage(locale)}>
       <body>
-        <WorkspaceShell
-          canReadClients={context?.capabilities.has("client:read") ?? false}
+        <IdentityFrame
           locale={locale}
-          catalog={catalog}
-          account={account}
-        >
-          {children}
-        </WorkspaceShell>
+          mode={mode}
+          standalone={children}
+          workspace={
+            <WorkspaceShell
+              realSignIn={Boolean(identity)}
+              canSwitchFirm={(identity?.choices.length ?? 0) > 1}
+              canReadClients={context?.capabilities.has("client:read") ?? false}
+              locale={locale}
+              catalog={catalog}
+              account={account}
+            >
+              {children}
+            </WorkspaceShell>
+          }
+        />
       </body>
     </html>
   );

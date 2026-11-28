@@ -1,3 +1,4 @@
+import { signInMode } from "@/modules/sign-in/domain/policy";
 import { notFound } from "next/navigation";
 import { PreviewEntry } from "@/components/demo-value/preview-entry";
 import { isSupportedLocale } from "@/modules/localization/config";
@@ -12,6 +13,7 @@ export default async function PreviewPage({
   params: Promise<{ locale: string }>;
   searchParams: Promise<{ unavailable?: string }>;
 }) {
+  if (signInMode(process.env) === "real") notFound();
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const search = await searchParams;

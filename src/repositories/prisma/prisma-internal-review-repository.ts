@@ -217,6 +217,48 @@ class Transaction implements InternalReviewTransaction {
   }
   async refreshActor(seed: RuntimeContext, now: Date): Promise<ActorRecord | null> {
     if (!seed.sessionId) return null;
+    if (seed.identityKind === "real") {
+      await this.database.$executeRawUnsafe(
+        'LOCK TABLE "AuthSession", "AuthUser", "IdentityLink" IN SHARE MODE',
+      );
+      const real = await this.database.authSession.findFirst({
+        where: {
+          id: seed.sessionId,
+          expiresAt: { gt: now },
+          createdAt: { gt: new Date(now.getTime() - 30 * 86400_000) },
+          user: {
+            emailVerified: true,
+            identityLinks: { some: { organizationId: seed.organizationId, personId: seed.userId } },
+          },
+        },
+      });
+      if (real) {
+        if (real.selectedMembershipId && real.selectedMembershipId !== seed.membershipId)
+          return null;
+        const membership = await this.database.membership.findFirst({
+          where: {
+            id: seed.membershipId,
+            organizationId: seed.organizationId,
+            personId: seed.userId,
+            invitationStatus: "JOINED",
+          },
+          select: memberSelect,
+        });
+        const organization = await this.database.organization.findUnique({
+          where: { id: seed.organizationId },
+          select: { timezone: true },
+        });
+        const context = membership ? memberContext(membership, seed) : null;
+        return context && membership && organization
+          ? {
+              context,
+              name: { en: membership.person.nameEn, zhTw: membership.person.nameZhTw },
+              timezone: organization.timezone,
+            }
+          : null;
+      }
+      return null;
+    }
     const row = await this.database.demoSession.findFirst({
       where: {
         id: seed.sessionId,

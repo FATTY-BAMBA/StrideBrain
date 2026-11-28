@@ -1,3 +1,4 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
 import Link from "next/link";
 import type { Route } from "next";
 import { notFound } from "next/navigation";
@@ -18,6 +19,7 @@ export default async function ClientPage({
   params: Promise<{ locale: string; clientKey: string }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
+  await requirePageIdentity();
   const { locale, clientKey } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const c = clientRecordsCopy(locale),

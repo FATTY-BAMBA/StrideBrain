@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 import { MAX_QUOTE_ISSUE_TOKEN_LENGTH } from "./src/modules/quote-issue/domain/contracts";
 
+import { signInMode } from "./src/modules/sign-in/domain/policy";
+signInMode(process.env);
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
@@ -14,6 +17,10 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/fonts/v1/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+      },
+      {
+        source: "/fonts/v2/:path*",
         headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
       },
       {

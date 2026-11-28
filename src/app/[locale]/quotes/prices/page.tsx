@@ -1,3 +1,4 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
 import Link from "next/link";
 import type { Route } from "next";
 import { notFound } from "next/navigation";
@@ -20,6 +21,7 @@ export default async function PricesPage({
   params: Promise<{ locale: string }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
+  await requirePageIdentity();
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const context = await resolveServerRuntimeContext();

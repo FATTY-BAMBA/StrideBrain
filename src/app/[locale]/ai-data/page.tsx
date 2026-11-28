@@ -1,9 +1,11 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FoundationPage } from "@/components/ui/foundation-page";
 import { assistantCopy } from "@/modules/localization/assistant";
 import { isSupportedLocale } from "@/modules/localization/config";
 export default async function AiDataPage({ params }: { params: Promise<{ locale: string }> }) {
+  await requirePageIdentity();
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const c = assistantCopy(locale);

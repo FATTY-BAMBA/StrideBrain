@@ -1,3 +1,5 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
+import { signInMode } from "@/modules/sign-in/domain/policy";
 import { createFirmListServices } from "@/lib/server/firm-list-services";
 import { FirmListSettings } from "@/components/firm-lists/firm-list-settings";
 import { firmListsCopy } from "@/modules/localization/firm-lists";
@@ -16,6 +18,7 @@ import { LeavePreview } from "@/components/demo-value/preview-entry";
 import { previewSessionOrigin } from "@/modules/preview-session/config";
 
 export default async function SettingsPage({ params }: { params: Promise<{ locale: string }> }) {
+  await requirePageIdentity();
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const catalog = getCatalog(locale);
@@ -34,7 +37,12 @@ export default async function SettingsPage({ params }: { params: Promise<{ local
       title={catalog["settings.title"]}
       description={catalog["settings.description"]}
     >
-      {previewSessionOrigin(process.env) && <LeavePreview locale={locale} />}
+      {context?.identityKind !== "real" && previewSessionOrigin(process.env) && (
+        <LeavePreview locale={locale} />
+      )}
+      {signInMode(process.env) !== "demo" && context?.role === "ORGANIZATION_ADMIN" && (
+        <Link href={`/${locale}/settings/people`}>{locale === "en" ? "People" : "成員"}</Link>
+      )}
       <section className="settings-language">
         <h2>{locale === "en" ? "Language" : "語言"}</h2>
         <nav aria-label={locale === "en" ? "Language" : "語言"}>

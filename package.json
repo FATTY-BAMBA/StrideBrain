@@ -28,12 +28,17 @@
     "ai:eval": "node scripts/run-ai-eval.mjs",
     "design:check": "node scripts/check-design-tokens.ts",
     "fonts:generate": "node scripts/generate-fonts.mjs",
-    "test:stability": "node scripts/verify-database-isolation.mjs"
+    "test:stability": "node scripts/verify-database-isolation.mjs",
+    "postinstall": "patch-package --error-on-fail"
   },
   "dependencies": {
+    "@better-auth/core": "1.7.28",
+    "@better-auth/prisma-adapter": "1.7.28",
     "@prisma/adapter-pg": "7.10.1",
     "@prisma/client": "7.10.1",
+    "better-auth": "1.7.28",
     "next": "16.4.6",
+    "patch-package": "8.0.1",
     "pdfkit": "0.21.0",
     "pg": "8.16.3",
     "react": "19.3.1",

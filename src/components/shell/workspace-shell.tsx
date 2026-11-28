@@ -1,3 +1,5 @@
+import { PostForm } from "@/components/sign-in/post-form";
+import { signInCopy } from "@/modules/localization/sign-in";
 import { MobileMenu } from "./mobile-menu";
 import { designSystemCopy } from "@/modules/localization/design-system";
 import { SettingsLink } from "./settings-link";
@@ -15,6 +17,8 @@ import type { WorkspaceAccount } from "@/modules/runtime-context/get-workspace-a
 import { homeDeskCopy } from "@/modules/localization/home-desk";
 
 type WorkspaceShellProps = {
+  realSignIn?: boolean;
+  canSwitchFirm?: boolean;
   locale: Locale;
   canReadClients?: boolean;
   catalog: Catalog;
@@ -24,6 +28,8 @@ type WorkspaceShellProps = {
 
 export function WorkspaceShell({
   locale,
+  realSignIn = false,
+  canSwitchFirm = false,
   catalog,
   children,
   account,
@@ -62,13 +68,19 @@ export function WorkspaceShell({
         {account ? (
           <div className={styles.actions}>
             <SettingsLink locale={locale} label={catalog["nav.settings"]} />
-            <form action="/api/preview-session/logout" method="post">
+            {realSignIn && canSwitchFirm && (
+              <a href={`/${locale}/choose-firm`}>{signInCopy(locale).switchFirm}</a>
+            )}
+            <PostForm
+              locale={locale}
+              action={realSignIn ? "/api/sign-in/logout" : "/api/preview-session/logout"}
+            >
               <input type="hidden" name="locale" value={locale} />
               <button type="submit">
                 <Icon name="signOut" decorative />
                 {copy.signOut}
               </button>
-            </form>
+            </PostForm>
           </div>
         ) : null}
       </section>

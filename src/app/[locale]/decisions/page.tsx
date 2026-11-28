@@ -1,3 +1,4 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
 import { notFound, redirect } from "next/navigation";
 import { HomeDeskScreen } from "@/components/home-desk/home-desk";
 import { createHomeDeskService } from "@/lib/server/home-desk-services";
@@ -6,6 +7,7 @@ import { isSupportedLocale } from "@/modules/localization/config";
 import { previewSessionOrigin } from "@/modules/preview-session/config";
 
 export default async function DecisionsPage({ params }: { params: Promise<{ locale: string }> }) {
+  await requirePageIdentity();
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const identity = await resolveServerRuntimeContext().catch(() => null);

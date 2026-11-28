@@ -175,15 +175,13 @@ it.each([false, true])(
     }
   },
 );
-it.each(["signed out", "no capability", "no policy", "lookup failure", "session failure"])(
+it.each(["signed out", "no capability", "no policy"])(
   "the shared job boundary returns a non-disclosing 404 before tabs for %s",
   async (scenario) => {
     if (scenario === "signed out") boundary.context.mockResolvedValue(null);
     if (scenario === "no capability")
       boundary.context.mockResolvedValue(jobContext({ capabilities: new Set() }));
     if (scenario === "no policy") boundary.policy.mockResolvedValue(null);
-    if (scenario === "lookup failure") boundary.policy.mockRejectedValue(Error("temporary"));
-    if (scenario === "session failure") boundary.context.mockRejectedValue(Error("temporary"));
     await expect(composed("zh-TW", createElement("p", {}, "Child"))).rejects.toThrow(
       "FRAMEWORK_404",
     );
@@ -208,5 +206,14 @@ it.each(["en", "zh-TW"] as const)(
       expect(host.querySelector("h1")).not.toBeNull();
       expect(host.querySelector("form")).toBeNull();
     }
+  },
+);
+
+it.each(["lookup", "session"])(
+  "propagates %s failure to the retry boundary, never 404",
+  async (kind) => {
+    if (kind === "lookup") boundary.policy.mockRejectedValue(Error("temporary"));
+    else boundary.context.mockRejectedValue(Error("temporary"));
+    await expect(composed("zh-TW", createElement("p", {}, "Child"))).rejects.toThrow("temporary");
   },
 );

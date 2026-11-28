@@ -20,8 +20,13 @@ describe("self-hosted app fonts", () => {
     expect(css).not.toMatch(/https?:\/\/|@import/);
     expect(manifest.faces.filter((f) => f.family === "Noto Sans TC").length).toBeGreaterThan(1);
     for (const face of manifest.faces) {
-      expect(face.file).toMatch(/^v1\/[^/]+\.woff2$/);
-      expect(face.weight).toBe("400 700");
+      if (face.family === "Google Sans") {
+        expect(face.file).toBe("v2/google-sans.woff2");
+        expect(face.weight).toBe("500");
+      } else {
+        expect(face.file).toMatch(/^v1\/[^/]+\.woff2$/);
+        expect(face.weight).toBe("400 700");
+      }
       expect(face.unicodeRange).toMatch(/^U\+/);
       expect(css).toContain(`url("/fonts/${face.file}")`);
     }
@@ -35,6 +40,10 @@ describe("self-hosted app fonts", () => {
     expect(caching).toEqual([
       {
         source: "/fonts/v1/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+      },
+      {
+        source: "/fonts/v2/:path*",
         headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
       },
     ]);

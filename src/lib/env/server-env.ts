@@ -1,3 +1,5 @@
+import { signInMode } from "@/modules/sign-in/domain/policy";
+
 export type DataMode = "DEMO_SYNTHETIC";
 export type PublicEnvironment = "development" | "preview" | "production";
 
@@ -12,6 +14,7 @@ const publicEnvironments = new Set<PublicEnvironment>(["development", "preview",
 export function parseServerEnvironment(
   input: Record<string, string | undefined>,
 ): ServerEnvironment {
+  signInMode(input);
   const dataMode = input.STRIDEBRAIN_DATA_MODE ?? "DEMO_SYNTHETIC";
   if (dataMode !== "DEMO_SYNTHETIC") {
     throw new Error(

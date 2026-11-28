@@ -4,6 +4,11 @@ const { JSDOM } = createRequire(import.meta.url)("jsdom") as {
 };
 /** An explicit page-file inventory: the HTTP suite proves this list stays exhaustive. */
 export const pageRoutes: Readonly<Record<string, readonly string[]>> = {
+  "[locale]/sign-in/page.tsx": ["/{locale}/sign-in"],
+  "[locale]/sign-in/complete/page.tsx": ["/{locale}/sign-in/complete"],
+  "[locale]/no-access/page.tsx": ["/{locale}/no-access"],
+  "[locale]/choose-firm/page.tsx": ["/{locale}/choose-firm"],
+  "[locale]/settings/people/page.tsx": ["/{locale}/settings/people"],
   "(redirect)/page.tsx": ["/"],
   "[locale]/[...missing]/page.tsx": ["/{locale}/nothing-here"],
   "[locale]/page.tsx": ["/{locale}"],

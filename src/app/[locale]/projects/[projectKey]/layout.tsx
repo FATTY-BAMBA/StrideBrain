@@ -1,3 +1,4 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { JobChatPanel } from "@/components/assistant/job-chat-panel";
@@ -13,16 +14,12 @@ import { isSupportedLocale } from "@/modules/localization/config";
 async function authorizedMember(
   projectKey: string,
 ): Promise<{ id: string; canReadQuote: boolean } | null> {
-  try {
-    const context = await resolveServerRuntimeContext();
-    if (!context?.capabilities.has("project:read")) return null;
-    const policy = await createAssistantControlServices().repository.jobPolicy(context, projectKey);
-    return policy
-      ? { id: context.membershipId, canReadQuote: context.capabilities.has("quote:read") }
-      : null;
-  } catch {
-    return null;
-  }
+  const context = await resolveServerRuntimeContext();
+  if (!context?.capabilities.has("project:read")) return null;
+  const policy = await createAssistantControlServices().repository.jobPolicy(context, projectKey);
+  return policy
+    ? { id: context.membershipId, canReadQuote: context.capabilities.has("quote:read") }
+    : null;
 }
 
 export default async function JobLayout({
@@ -32,6 +29,7 @@ export default async function JobLayout({
   children: ReactNode;
   params: Promise<{ locale: string; projectKey: string }>;
 }) {
+  await requirePageIdentity();
   const { locale, projectKey } = await params;
   // Each page keeps its own locale and unavailable-state handling.
   if (!isSupportedLocale(locale)) return children;

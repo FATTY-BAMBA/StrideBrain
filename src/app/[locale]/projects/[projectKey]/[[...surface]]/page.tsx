@@ -1,3 +1,4 @@
+import { requirePageIdentity } from "@/lib/server/require-page-identity";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { FactsList } from "@/components/ui/facts-list";
 import { designSystemCopy } from "@/modules/localization/design-system";
@@ -41,6 +42,7 @@ export default async function ProjectWorkspacePage({
   params,
   searchParams,
 }: ProjectWorkspacePageProps) {
+  await requirePageIdentity();
   const { locale: rawLocale, projectKey, surface: surfaceSegments } = await params;
   if (!isSupportedLocale(rawLocale)) notFound();
 

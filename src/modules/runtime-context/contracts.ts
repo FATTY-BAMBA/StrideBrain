@@ -35,6 +35,7 @@ export type ProjectAssignmentGrant = Readonly<{
 }>;
 
 export type RuntimeContext = {
+  identityKind?: "real" | "demo";
   /** Verified server-only session selector; never accepted from a request body. */
   sessionId?: string | undefined;
   requestId: string;
