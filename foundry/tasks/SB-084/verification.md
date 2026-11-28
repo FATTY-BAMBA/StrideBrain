@@ -224,3 +224,11 @@ passed. The final same-site Google error-return regression was then run separate
 suite passed. No unrelated test was weakened. CI status is recorded in the Builder PR
 comment once available. A–F are locally implemented; review and Director hosted
 acceptance remain outstanding. PR stays draft.
+
+CI run 46086808727 attempts 1 and 2: 2,091 tests passed; the existing repeated CLI
+seed/verify invariant test exceeded its 180-second deadline (182.8s and 185.5s). Both
+standalone CI migration/seed/verify/repeat steps passed. To avoid an extra Prisma process
+per verification pass, moved all three new sign-in SQL assertions unchanged into the
+existing verify-relations.sql invocation. No test, assertion, timeout or migration changed.
+The separate verify-sign-in.sql is removed; the same checks run in db:verify and test
+template verification. Follow-up local/CI results are recorded in the Builder comment.
