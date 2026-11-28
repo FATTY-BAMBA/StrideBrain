@@ -39,7 +39,18 @@ export function SignInForm({ locale, returnTo }: { locale: Locale; returnTo: str
         return;
       }
       if (!response.ok) {
-        setError(response.status === 429 ? c.limited : c.invalid);
+        const error = (await response.json().catch(() => null)) as { code?: string } | null;
+        if (error?.code === "NO_FIRM_ACCESS") {
+          router.push(`/${locale}/no-access`);
+          return;
+        }
+        setError(
+          response.status === 429
+            ? c.limited
+            : error?.code === "INVALID" || path === "email-otp/send-verification-otp"
+              ? c.invalidEmail
+              : c.invalid,
+        );
         return;
       }
       if (path === "sign-in/social") {
@@ -78,6 +89,7 @@ export function SignInForm({ locale, returnTo }: { locale: Locale; returnTo: str
       >
         {busy ? c.busy : c.google}
       </Button>
+      <p className={styles.divider}>{c.or}</p>
       <form
         className={styles.form}
         onSubmit={(event) => {
@@ -105,6 +117,17 @@ export function SignInForm({ locale, returnTo }: { locale: Locale; returnTo: str
       </form>
       {sent && (
         <>
+          <Button
+            variant="quiet"
+            disabled={busy}
+            onClick={() => {
+              setSent(false);
+              setCode("");
+              setError("");
+            }}
+          >
+            {c.differentEmail}
+          </Button>
           <p role="status">{c.neutral}</p>
           <form
             className={styles.form}

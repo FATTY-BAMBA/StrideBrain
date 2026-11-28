@@ -28,6 +28,7 @@ export async function guardedAuthHandler(
   headers.delete("x-real-ip");
   if (!dependencies.hosted) headers.set("x-vercel-forwarded-for", "127.0.0.1");
   let body: string | undefined;
+  let socialLocale: "en" | "zh-TW" | undefined;
   if (request.method === "POST") {
     const reader = request.body?.getReader();
     if (!reader) return new Response(null, { status: 400 });
@@ -74,6 +75,7 @@ export async function guardedAuthHandler(
         return Response.json({ code: "UNAVAILABLE" }, { status: 503 });
       }
     } else if (path === "/sign-in/social") {
+      socialLocale = data.locale === "en" ? "en" : "zh-TW";
       // Ignore client-selected provider, scopes and redirect hosts.
       const locale = data.locale === "en" ? "en" : "zh-TW";
       data = {
@@ -93,7 +95,39 @@ export async function guardedAuthHandler(
       ...(body === undefined ? {} : { body }),
     }),
   );
-  if (path === "/callback/google" && result.status >= 400)
-    return new Response(null, { status: 303, headers: { Location: "/zh-TW/sign-in?error=1" } });
+  if (socialLocale)
+    result.headers.append(
+      "set-cookie",
+      `sb-sign-in-locale=${socialLocale}; Path=/api/auth; Max-Age=600; HttpOnly; Secure; SameSite=Lax`,
+    );
+  if (path === "/callback/google") {
+    // This cookie selects copy only; it confers no identity, provider or redirect authority.
+    const locale = /(?:^|;\s*)sb-sign-in-locale=en(?:;|$)/.test(request.headers.get("cookie") ?? "")
+      ? "en"
+      : "zh-TW";
+    const location = result.headers.get("location");
+    const redirect = location ? new URL(location, dependencies.origin) : null;
+    let code = redirect?.searchParams.get("error");
+    if (result.status >= 400) {
+      const error = (await result
+        .clone()
+        .json()
+        .catch(() => null)) as { code?: string } | null;
+      code = error?.code ?? code;
+    }
+    if (code === "NO_FIRM_ACCESS" || code === "GOOGLE_MAILBOX_AUTHORITY" || result.status >= 400) {
+      return new Response(null, {
+        status: 303,
+        headers: {
+          Location:
+            code === "NO_FIRM_ACCESS"
+              ? `/${locale}/no-access`
+              : `/${locale}/sign-in?error=${code === "GOOGLE_MAILBOX_AUTHORITY" ? "google-account" : "1"}`,
+          "set-cookie":
+            "sb-sign-in-locale=; Path=/api/auth; Max-Age=0; HttpOnly; Secure; SameSite=Lax",
+        },
+      });
+    }
+  }
   return result;
 }

@@ -1,6 +1,6 @@
 # Verification — SB-084
 
-Current evidence is in the final 28 November continuation section below. Earlier partial reports are historical. No hosted changes or paid evaluation.
+Current evidence is in the 28 November fix round 1 section below. Earlier partial reports are historical. No hosted changes or paid evaluation.
 
 ## Decisions awaiting the Product Director
 
@@ -232,3 +232,86 @@ per verification pass, moved all three new sign-in SQL assertions unchanged into
 existing verify-relations.sql invocation. No test, assertion, timeout or migration changed.
 The separate verify-sign-in.sql is removed; the same checks run in db:verify and test
 template verification. Follow-up local/CI results are recorded in the Builder comment.
+
+## 28 November — fix round 1, review 7231731273
+
+Read the actual GitHub metadata: the reviewer comment is authored by repository owner
+FATTY-BAMBA. This section supersedes the earlier partial implementation reports above.
+
+Changes against the thirteen requested items:
+
+1. Last-owner protection only applies to an active JOINED owner target. Invited-owner
+   cancel, deactivation and role change succeed; the joined-last-owner refusal remains.
+2. A sole cancelled invitation reopens the same Person and Membership with the new name,
+   role and assignments. Joined/deactivated duplicates still refuse. Cancelled rows are
+   omitted from People; identity-link resolution is unchanged.
+3. Better Auth's own `databaseHooks.user.create.before` rejects unknown addresses before
+   creating a user. Account/session creation also requires a known invitation/membership
+   or stored identity link. Unknown Google and correctly guessed OTP tests assert no new
+   AuthUser/AuthAccount/AuthSession rows and the no-access outcome. Unsigned no-access
+   has no logout control.
+4. Verified Google email additionally requires Gmail, Googlemail, or a non-empty `hd`
+   claim. Other hosts return the specified localized email-code advice without writes.
+   Fake callback tests exercise all three accepted cases and the refusal through the
+   guarded handler. A short-lived HTTP-only locale cookie controls error copy only.
+5. A recursive test enumerates locale `page.tsx` files and requires the identity call on
+   every page outside the exact five public pages.
+6. New invitation attempts: **50 per organization per firm-local calendar day**, using
+   the existing atomic HMAC-keyed counter. Cancelled re-invites count. Duplicate/retried
+   attempts consume budget conservatively; refusal precedes writes/mail. Resend limits
+   remain separate. `SIGN_IN.md` documents this. Concurrent cap/isolation tests pass.
+7. Sign-in, no-access and choose-firm use a standalone, centred 480px form-width column,
+   wordmark, always-visible language switch and existing synthetic-data notice. The
+   path-aware boundary also removes the shell during client navigation.
+8. Quiet or/或 separator, different-email action, and distinct invalid-address copy.
+9. People uses PageHeader + RowList, name buttons, worded status badges and mail-failure
+   text. Invite and edit use native Dialog and shared fields; existing email is read-only.
+10. Name, role and job access save through one transaction/audit/idempotency operation.
+    Invalid foreign jobs leave both role and assignments unchanged. Browser inspection
+    caught and fixed an unchanged English name overwriting its Chinese spelling; the
+    regression now preserves both existing spellings when no rename was made.
+11. Own-row deactivation is absent. Deactivation and cancelling an invitation first show
+    the specified named confirmation. Cancel returns to editing; no mutation on opening.
+12. Switch firm is shown only when the real account has more than one firm choice.
+13. Role descriptions use the actual capability table, the prescribed Can:/可以： lead
+    and phrases, and the no-quote sentence for roles without quote access.
+
+Automated evidence: `tests/sign-in/fix-round-one.test.ts`,
+`postgres-fix-round-one.test.ts`, `screens.test.ts`, and the existing sign-in tests.
+The current Google fake-provider fixture carries the Workspace `hd` claim. Existing
+migrations, instruction text, model and evaluation pass rules are untouched.
+
+### Local browser evidence
+
+Production build, disposable local PostgreSQL and fake local mail; no real provider calls.
+Both languages at 1280×900 and 390×844: standalone identity pages, visible language links,
+480px maximum form width, no horizontal page/dialog overflow, automatic OTP submission,
+People list (joined/invited/deactivated and failed-mail states) and both dialogs, native keyboard focus containment/Escape/return, confirmation
+cancellation, self-deactivation omission, actual atomic Save, unsigned no-access without
+logout and change-email control. All screenshot data is synthetic. Dialog images show the
+viewport; long People lists are full-page images.
+
+| Screen | English 1280 | English 390 | 繁中 1280 | 繁中 390 |
+| --- | --- | --- | --- | --- |
+| Sign-in: email | [Image](screenshots/round-1/en-sign-in-1280.png) | [Image](screenshots/round-1/en-sign-in-390.png) | [Image](screenshots/round-1/zh-TW-sign-in-1280.png) | [Image](screenshots/round-1/zh-TW-sign-in-390.png) |
+| Sign-in: code | [Image](screenshots/round-1/en-code-1280.png) | [Image](screenshots/round-1/en-code-390.png) | [Image](screenshots/round-1/zh-TW-code-1280.png) | [Image](screenshots/round-1/zh-TW-code-390.png) |
+| No access | [Image](screenshots/round-1/en-no-access-1280.png) | [Image](screenshots/round-1/en-no-access-390.png) | [Image](screenshots/round-1/zh-TW-no-access-1280.png) | [Image](screenshots/round-1/zh-TW-no-access-390.png) |
+| Choose firm | [Image](screenshots/round-1/en-choose-firm-1280.png) | [Image](screenshots/round-1/en-choose-firm-390.png) | [Image](screenshots/round-1/zh-TW-choose-firm-1280.png) | [Image](screenshots/round-1/zh-TW-choose-firm-390.png) |
+| People list | [Image](screenshots/round-1/en-people-1280.png) | [Image](screenshots/round-1/en-people-390.png) | [Image](screenshots/round-1/zh-TW-people-1280.png) | [Image](screenshots/round-1/zh-TW-people-390.png) |
+| Invite dialog | [Image](screenshots/round-1/en-invite-1280.png) | [Image](screenshots/round-1/en-invite-390.png) | [Image](screenshots/round-1/zh-TW-invite-1280.png) | [Image](screenshots/round-1/zh-TW-invite-390.png) |
+| Edit dialog | [Image](screenshots/round-1/en-edit-1280.png) | [Image](screenshots/round-1/en-edit-390.png) | [Image](screenshots/round-1/zh-TW-edit-1280.png) | [Image](screenshots/round-1/zh-TW-edit-390.png) |
+
+### Outstanding / not verified
+
+- Hosted acceptance is waiting for the Product Director; PR #85 remains draft.
+- Review 7231731273 item 4 (Google mailbox authority) and items 7–13 copy are provisional,
+  awaiting Product Director confirmation before merge, alongside earlier provisional decisions.
+- No hosted Google/Resend sign-in or real inbox deliverability, Vercel patch install,
+  platform maximum-duration/forwarding-header behavior, physical-phone OTP suggestions,
+  or hosted workflow/database/settings changes were exercised.
+- No paid evaluation was run; this round changes no assistant/model path.
+
+Final local `npm run check`: **222 files / 2,120 tests pass**, production build passes.
+Format, design-token gate, lint (zero errors; the existing prisma.config.ts warning),
+TypeScript, complete tests and build all pass after the bilingual-name regression fix.
+CI status and the final commit are reported in the Builder PR comment.

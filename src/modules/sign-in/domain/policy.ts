@@ -47,5 +47,6 @@ export function normalizeSignInEmail(value: unknown): string | null {
 export const EMAIL_LIMITS = {
   request: { shortSeconds: 60, shortMax: 1, dayMax: 10 },
   entry: { shortSeconds: 600, shortMax: 5, dayMax: 20 },
+  organizationInvitation: { shortSeconds: 86400, shortMax: 50, dayMax: 50 },
   invitation: { shortSeconds: 60, shortMax: 1, dayMax: 10 },
 } as const;

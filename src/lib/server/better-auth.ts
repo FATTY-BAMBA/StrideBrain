@@ -6,6 +6,7 @@ import { getPrismaClient } from "./prisma";
 import { realSignInSettings } from "@/lib/env/sign-in";
 import { PrismaRealIdentity } from "@/repositories/prisma/prisma-real-identity";
 import { ResendSignInMail } from "@/modules/sign-in/infrastructure/resend-mail";
+import { googleMailboxAuthority } from "@/modules/sign-in/domain/google-mailbox";
 import { codeMail } from "@/modules/sign-in/domain/mail";
 import type { SignInMailPort } from "@/repositories/ports/sign-in-mail";
 import type { PrismaClient } from "../../../.generated/prisma/client";
@@ -21,6 +22,18 @@ export function createRealAuth(
   const mail =
     overrides?.mail ?? new ResendSignInMail(settings.resendKey, settings.sender, settings.replyTo);
   const schedule = overrides?.schedule ?? after;
+  async function requireKnownUser(userId: string) {
+    const user = await db.authUser.findUnique({
+      where: { id: userId },
+      include: { identityLinks: { select: { id: true } } },
+    });
+    // Retain stored identity when the person's email changes; an old unlinked user is not an invitation.
+    if (
+      !user?.emailVerified ||
+      (!user.identityLinks.length && !(await identity.eligible(user.email)))
+    )
+      throw new APIError("FORBIDDEN", { code: "NO_FIRM_ACCESS", message: "No firm access." });
+  }
   return betterAuth({
     baseURL: settings.origin,
     secret: settings.secret,
@@ -53,6 +66,11 @@ export function createRealAuth(
               code: "VERIFIED_EMAIL_REQUIRED",
               message: "Verified email required.",
             });
+          if (!googleMailboxAuthority(profile))
+            throw new APIError("UNAUTHORIZED", {
+              code: "GOOGLE_MAILBOX_AUTHORITY",
+              message: "Use an email code.",
+            });
           return { emailVerified: true };
         },
       },
@@ -76,19 +94,33 @@ export function createRealAuth(
     logger: { disabled: true },
     onAPIError: { errorURL: `${settings.origin}/zh-TW/sign-in?google=1` },
     databaseHooks: {
+      user: {
+        create: {
+          before: async (user) => {
+            if (!(await identity.eligible(user.email)))
+              throw new APIError("FORBIDDEN", {
+                code: "NO_FIRM_ACCESS",
+                message: "No firm access.",
+              });
+          },
+        },
+      },
       account: {
         create: {
-          before: async (account) => ({
-            data: {
-              ...account,
-              accessToken: null,
-              refreshToken: null,
-              idToken: null,
-              accessTokenExpiresAt: null,
-              refreshTokenExpiresAt: null,
-              scope: null,
-            },
-          }),
+          before: async (account) => {
+            await requireKnownUser(account.userId);
+            return {
+              data: {
+                ...account,
+                accessToken: null,
+                refreshToken: null,
+                idToken: null,
+                accessTokenExpiresAt: null,
+                refreshTokenExpiresAt: null,
+                scope: null,
+              },
+            };
+          },
         },
         update: {
           before: async (account) => ({
@@ -107,8 +139,7 @@ export function createRealAuth(
       session: {
         create: {
           before: async (session) => {
-            const user = await db.authUser.findUnique({ where: { id: session.userId } });
-            return user?.emailVerified === true;
+            await requireKnownUser(session.userId);
           },
           after: async (session) => {
             await identity.acceptInvitations(session.userId);

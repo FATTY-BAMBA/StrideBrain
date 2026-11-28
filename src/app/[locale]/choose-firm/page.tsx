@@ -23,7 +23,7 @@ export default async function ChooseFirm({
   const next = sameSiteReturn((await searchParams).returnTo, locale);
   return (
     <section className={styles.page}>
-      <PageHeader title={signInCopy(locale).firms} context="StrideBrain" />
+      <PageHeader title={signInCopy(locale).firms} context="" />
       {state.choices.map((m) => (
         <PostForm locale={locale} key={m.id} action="/api/sign-in/firm">
           <input type="hidden" name="locale" value={locale} />

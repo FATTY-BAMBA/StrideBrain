@@ -18,6 +18,18 @@ export class ManagePeople {
     if (!canManagePeople(context)) return "DENIED";
     const input = parsePeopleChange(value);
     if (!input) return "INVALID";
+    if (
+      input.operation === "invite" &&
+      !(await this.counter.consume(
+        signInCounterKey(
+          this.settings.secret,
+          "organizationInvitation",
+          `${context.organizationId}:${await this.repository.invitationDay(context)}`,
+        ),
+        EMAIL_LIMITS.organizationInvitation,
+      ))
+    )
+      return "ORGANIZATION_LIMITED";
     if (input.operation === "resend") {
       if (!(await this.repository.invitation(context, input.membershipId!))) return "DENIED";
       if (

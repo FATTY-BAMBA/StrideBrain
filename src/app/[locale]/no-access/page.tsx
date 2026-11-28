@@ -1,3 +1,4 @@
+import { realIdentityState } from "@/lib/server/real-identity";
 import { PostForm } from "@/components/sign-in/post-form";
 import { signInMode } from "@/modules/sign-in/domain/policy";
 import { notFound } from "next/navigation";
@@ -11,14 +12,17 @@ export default async function NoAccess({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
   const c = signInCopy(locale);
+  const signedIn = Boolean(await realIdentityState());
   return (
     <section className={styles.page}>
-      <PageHeader title={c.title} context="StrideBrain" />
+      <PageHeader title={c.title} context="" />
       <p>{c.noAccess}</p>
-      <PostForm locale={locale} action="/api/sign-in/logout">
-        <input type="hidden" name="locale" value={locale} />
-        <Button type="submit">{c.logout}</Button>
-      </PostForm>
+      {signedIn && (
+        <PostForm locale={locale} action="/api/sign-in/logout">
+          <input type="hidden" name="locale" value={locale} />
+          <Button type="submit">{c.logout}</Button>
+        </PostForm>
+      )}
     </section>
   );
 }

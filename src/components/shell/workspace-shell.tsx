@@ -18,6 +18,7 @@ import { homeDeskCopy } from "@/modules/localization/home-desk";
 
 type WorkspaceShellProps = {
   realSignIn?: boolean;
+  canSwitchFirm?: boolean;
   locale: Locale;
   canReadClients?: boolean;
   catalog: Catalog;
@@ -28,6 +29,7 @@ type WorkspaceShellProps = {
 export function WorkspaceShell({
   locale,
   realSignIn = false,
+  canSwitchFirm = false,
   catalog,
   children,
   account,
@@ -66,7 +68,9 @@ export function WorkspaceShell({
         {account ? (
           <div className={styles.actions}>
             <SettingsLink locale={locale} label={catalog["nav.settings"]} />
-            {realSignIn && <a href={`/${locale}/choose-firm`}>{signInCopy(locale).switchFirm}</a>}
+            {realSignIn && canSwitchFirm && (
+              <a href={`/${locale}/choose-firm`}>{signInCopy(locale).switchFirm}</a>
+            )}
             <PostForm
               locale={locale}
               action={realSignIn ? "/api/sign-in/logout" : "/api/preview-session/logout"}

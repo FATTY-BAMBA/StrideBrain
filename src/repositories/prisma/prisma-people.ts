@@ -6,11 +6,24 @@ import { canManagePeople, type PeopleChange } from "@/modules/people/domain/poli
 import type { PeopleOutcome, PeopleRepositoryPort } from "@/repositories/ports/people";
 export class PrismaPeople implements PeopleRepositoryPort {
   constructor(private readonly db: PrismaClient) {}
+  async invitationDay(context: RuntimeContext) {
+    if (!canManagePeople(context)) throw new Error("Invitation unavailable.");
+    const firm = await this.db.organization.findUniqueOrThrow({
+      where: { id: context.organizationId },
+      select: { timezone: true },
+    });
+    return new Intl.DateTimeFormat("en-CA", {
+      timeZone: firm.timezone,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(new Date());
+  }
   async read(context: RuntimeContext) {
     if (!canManagePeople(context)) return null;
     const [people, jobs] = await Promise.all([
       this.db.membership.findMany({
-        where: { organizationId: context.organizationId },
+        where: { organizationId: context.organizationId, invitationStatus: { not: "CANCELLED" } },
         include: { person: true, assignments: true },
         orderBy: { createdAt: "asc" },
       }),
@@ -145,37 +158,58 @@ export class PrismaPeople implements PeopleRepositoryPort {
           })
         : null;
       if (input.operation === "invite") {
-        if (
-          await tx.person.findFirst({
-            where: {
-              organizationId: context.organizationId,
-              email: { equals: input.email!, mode: "insensitive" },
+        const existing = await tx.person.findMany({
+          where: {
+            organizationId: context.organizationId,
+            email: { equals: input.email!, mode: "insensitive" },
+          },
+          include: { memberships: true },
+        });
+        const cancelled =
+          existing.length === 1 &&
+          existing[0]!.memberships.length === 1 &&
+          existing[0]!.memberships[0]!.invitationStatus === "CANCELLED";
+        if (existing.length && !cancelled) return { kind: "DUPLICATE" };
+        const personId = cancelled ? existing[0]!.id : randomUUID();
+        const personData = {
+          nameEn: input.name!.trim(),
+          nameZhTw: input.name!.trim(),
+          email: input.email!,
+        };
+        if (cancelled) {
+          await tx.person.update({ where: { id: personId }, data: personData });
+          target = await tx.membership.update({
+            where: { id: existing[0]!.memberships[0]!.id },
+            data: {
+              role: input.role!,
+              active: true,
+              invitationStatus: "INVITED",
+              invitedAt: new Date(),
+              joinedAt: null,
+              invitationEmailStatus: "NOT_SENT",
             },
-          })
-        )
-          return { kind: "DUPLICATE" };
-        const personId = randomUUID();
-        await tx.person.create({
-          data: {
-            id: personId,
-            businessKey: `person-${personId}`,
-            organizationId: context.organizationId,
-            nameEn: input.name!.trim(),
-            nameZhTw: input.name!.trim(),
-            email: input.email!,
-          },
-        });
-        target = await tx.membership.create({
-          data: {
-            id: randomUUID(),
-            organizationId: context.organizationId,
-            personId,
-            role: input.role!,
-            active: true,
-            invitationStatus: "INVITED",
-            invitedAt: new Date(),
-          },
-        });
+          });
+        } else {
+          await tx.person.create({
+            data: {
+              id: personId,
+              businessKey: `person-${personId}`,
+              organizationId: context.organizationId,
+              ...personData,
+            },
+          });
+          target = await tx.membership.create({
+            data: {
+              id: randomUUID(),
+              organizationId: context.organizationId,
+              personId,
+              role: input.role!,
+              active: true,
+              invitationStatus: "INVITED",
+              invitedAt: new Date(),
+            },
+          });
+        }
       }
       if (!target) return { kind: "DENIED" };
       if (
@@ -185,10 +219,11 @@ export class PrismaPeople implements PeopleRepositoryPort {
         return { kind: "SELF_DEACTIVATION" };
       if (
         target.active &&
+        target.invitationStatus === "JOINED" &&
         target.role === "ORGANIZATION_ADMIN" &&
         (input.operation === "deactivate" ||
           input.operation === "cancel" ||
-          (input.operation === "role" && input.role !== "ORGANIZATION_ADMIN"))
+          (["role", "update"].includes(input.operation) && input.role !== "ORGANIZATION_ADMIN"))
       ) {
         if (
           (await tx.membership.count({
@@ -207,8 +242,18 @@ export class PrismaPeople implements PeopleRepositoryPort {
         return { kind: "INVALID" };
       if (input.operation === "reactivate" && target.invitationStatus === "CANCELLED")
         return { kind: "INVALID" };
-      if (input.operation === "role")
+      if (input.operation === "role" || input.operation === "update")
         await tx.membership.update({ where: { id: target.id }, data: { role: input.role! } });
+      if (input.operation === "update")
+        await tx.person.updateMany({
+          // An unchanged name from either language must not overwrite its other-language spelling.
+          where: {
+            id: target.personId,
+            nameEn: { not: input.name!.trim() },
+            nameZhTw: { not: input.name!.trim() },
+          },
+          data: { nameEn: input.name!.trim(), nameZhTw: input.name!.trim() },
+        });
       if (input.operation === "deactivate" || input.operation === "reactivate")
         await tx.membership.update({
           where: { id: target.id },
@@ -219,7 +264,7 @@ export class PrismaPeople implements PeopleRepositoryPort {
           where: { id: target.id },
           data: { invitationStatus: "CANCELLED", active: false },
         });
-      if (input.operation === "invite" || input.operation === "access") {
+      if (["invite", "access", "update"].includes(input.operation)) {
         await tx.projectAssignment.deleteMany({
           where: { organizationId: context.organizationId, membershipId: target.id },
         });
@@ -241,6 +286,7 @@ export class PrismaPeople implements PeopleRepositoryPort {
         deactivate: "MEMBERSHIP_DEACTIVATED",
         reactivate: "MEMBERSHIP_REACTIVATED",
         access: "JOB_ACCESS_CHANGED",
+        update: "MEMBERSHIP_UPDATED",
       };
       await tx.auditEvent.create({
         data: {

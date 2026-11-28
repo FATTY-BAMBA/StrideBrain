@@ -46,16 +46,16 @@ get the same neutral response. API acceptance does not prove inbox delivery.
 
 See `.env.example`. All new values are server-only.
 
-| Setting | Purpose |
-| --- | --- |
-| `STRIDEBRAIN_SIGN_IN_MODE` | `demo` default; `both` test site; `real` production identity |
-| `STRIDEBRAIN_APP_ORIGIN` | Exact HTTPS origin, no path; HTTP loopback is local only |
-| `STRIDEBRAIN_AUTH_SECRET` | Independent random >=32-byte secret; never the demo secret |
-| `STRIDEBRAIN_GOOGLE_CLIENT_ID` | Web OAuth client ID |
-| `STRIDEBRAIN_GOOGLE_CLIENT_SECRET` | OAuth client secret |
-| `STRIDEBRAIN_RESEND_API_KEY` | Domain-restricted Sending access key |
-| `STRIDEBRAIN_MAIL_FROM` | Verified sender |
-| `STRIDEBRAIN_MAIL_REPLY_TO` | Monitored reply address |
+| Setting                            | Purpose                                                      |
+| ---------------------------------- | ------------------------------------------------------------ |
+| `STRIDEBRAIN_SIGN_IN_MODE`         | `demo` default; `both` test site; `real` production identity |
+| `STRIDEBRAIN_APP_ORIGIN`           | Exact HTTPS origin, no path; HTTP loopback is local only     |
+| `STRIDEBRAIN_AUTH_SECRET`          | Independent random >=32-byte secret; never the demo secret   |
+| `STRIDEBRAIN_GOOGLE_CLIENT_ID`     | Web OAuth client ID                                          |
+| `STRIDEBRAIN_GOOGLE_CLIENT_SECRET` | OAuth client secret                                          |
+| `STRIDEBRAIN_RESEND_API_KEY`       | Domain-restricted Sending access key                         |
+| `STRIDEBRAIN_MAIL_FROM`            | Verified sender                                              |
+| `STRIDEBRAIN_MAIL_REPLY_TO`        | Monitored reply address                                      |
 
 Absent/demo preserves the frozen pilot. Both exposes sign-in and a sample-person link;
 entering either session kind revokes/clears the other. Real never constructs the demo
@@ -67,6 +67,14 @@ no bootstrap-owner HTTP endpoint. The sample owner can invite real acceptance te
 in both mode. Sample people's unverifyable addresses remain unchanged.
 
 ## Storage, expiry and limits
+
+The library user-creation hook refuses an email without an invitation or membership before
+AuthUser, AuthAccount or AuthSession is created. A correct code for an unknown address
+gets no session and goes to no-access; no logout is offered without a session.
+
+Google also requires verified email and either gmail.com/googlemail.com or a non-empty
+Google `hd` claim. Other Google accounts use an email code instead. This authority rule
+is provisional pending the Product Director (review 7231731273).
 
 AuthUser stores verified email and provider name/image if supplied. AuthAccount stores
 provider/user identifiers; hooks null access/refresh/ID tokens and related expiry/scope.
@@ -80,11 +88,19 @@ They are not browser-bound, per the provisional review decision. Sessions last e
 thirty days from sign-in, without activity extension; logout ends them earlier. Cookies
 are Secure, HTTP-only and SameSite=Lax, without a cookie identity cache.
 
-| App counter | Short window | Anchored 24-hour window |
-| --- | --- | --- |
-| Code requests, per normalized email | 1 / 60 seconds | 10 |
-| Entries, per normalized email | 5 / 10 minutes | 20 |
-| Invitation notices, per invitation | 1 / 60 seconds | 10 |
+| App counter                         | Short window   | Anchored 24-hour window |
+| ----------------------------------- | -------------- | ----------------------- |
+| Code requests, per normalized email | 1 / 60 seconds | 10                      |
+| Entries, per normalized email       | 5 / 10 minutes | 20                      |
+| Invitation notices, per invitation  | 1 / 60 seconds | 10                      |
+
+New invitation attempts are capped at **50 per organization per calendar day in the firm
+time zone**. The server obtains the firm date; an operation-separated HMAC of organization
+and date keys the same atomic counter. Reopening a cancelled invitation counts too.
+Validation/authorization precedes this budget; admitted attempts (including duplicates
+and retries) consume it conservatively before any invitation write or mail. A refused
+attempt shows the daily-limit sentence and sends nothing. The next firm-local day gets
+a new budget; the old key expires. Resends retain their separate per-invitation limit.
 
 An arbitrary rolling day across a reset admits at most 40 guesses, at most 0.004% against
 a uniform six-digit code before its five-try cancellation. Limits bound cost/guessing

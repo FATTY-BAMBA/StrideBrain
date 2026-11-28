@@ -321,7 +321,7 @@ suite("OTP expiry, attempts and fake Google callback", () => {
         return Response.json({ keys: [jwk] });
       if (url === "https://oauth2.googleapis.com/token") {
         const encode = (value: unknown) => Buffer.from(JSON.stringify(value)).toString("base64url");
-        const data = `${encode({ alg: "RS256", kid })}.${encode({ iss: "https://accounts.google.com", aud: env.STRIDEBRAIN_GOOGLE_CLIENT_ID, sub: "synthetic-google-subject", email: input.email, email_verified: verified, name: "Synthetic Google Person", iat: Math.floor(Date.now() / 1000), exp: Math.floor(Date.now() / 1000) + 600 })}`;
+        const data = `${encode({ alg: "RS256", kid })}.${encode({ iss: "https://accounts.google.com", aud: env.STRIDEBRAIN_GOOGLE_CLIENT_ID, sub: "synthetic-google-subject", email: input.email, email_verified: verified, hd: "example.invalid", name: "Synthetic Google Person", iat: Math.floor(Date.now() / 1000), exp: Math.floor(Date.now() / 1000) + 600 })}`;
         const signature = createSign("RSA-SHA256")
           .update(data)
           .sign(privateKey)

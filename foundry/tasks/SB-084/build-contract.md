@@ -19,3 +19,15 @@ separate label, expired counter cleanup, concurrency/bypass tests, trusted platf
 invitation resend limits. Do not bind OTP to requesting browser.
 
 Hosted acceptance is for the Product Director. Keep the PR draft.
+
+Fix round 1 (owner-authored review 7231731273): last-owner protection applies to joined
+active owners only; reopen the sole cancelled invitation using the same Person and
+Membership; cancelled rows stay off the People list. No uninvited sign-in creates a user,
+account or session. Google must control the verified mailbox (Gmail, Googlemail or hd).
+Enumerate protected pages in a guard regression. Cap new invitation attempts at 50 per
+firm-local day using the shared atomic counter. People is RowList plus native dialogs;
+name, role and job access have one transactional save. Confirm serious actions by name,
+hide self-deactivation, derive role sentences from capabilities, show firm switching only
+for multiple firms. Standalone identity pages retain visible language links and cap at
+the form-width token. Google authority and screen copy remain provisional for Director
+confirmation. No paid evaluation or hosted changes.

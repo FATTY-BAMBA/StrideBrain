@@ -43,3 +43,73 @@
   align-items: baseline;
   gap: var(--space-8);
 }
+
+.standalone {
+  width: min(var(--form-width), calc(100% - var(--space-32)));
+  margin-inline: auto;
+  padding-block: var(--space-32);
+}
+.brand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+  margin-bottom: var(--space-24);
+}
+.sample {
+  color: var(--muted);
+  font-size: var(--text-caption);
+  margin-bottom: var(--space-32);
+}
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  color: var(--muted);
+}
+.divider::before,
+.divider::after {
+  content: "";
+  height: var(--rule-hairline);
+  background: var(--line-control);
+  flex: 1;
+}
+.personDialog {
+  width: min(var(--facts-width), calc(100vw - var(--space-32)));
+  overflow-wrap: anywhere;
+}
+.actions,
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12);
+  align-items: center;
+}
+.personName {
+  font: inherit;
+  color: var(--ink);
+  border: none;
+  background: none;
+  padding: var(--space-8) 0;
+  text-align: start;
+  min-height: var(--control-default);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: var(--space-4);
+}
+.email {
+  overflow-wrap: anywhere;
+  color: var(--muted);
+}
+.muted {
+  color: var(--muted);
+}
+.activeBadge {
+  color: var(--ink);
+  background: var(--surface-subtle);
+}
+.inactiveBadge {
+  color: var(--muted);
+  background: var(--surface-subtle);
+}

@@ -7,7 +7,8 @@ export const PEOPLE_ROLES: readonly Role[] = [
   "VIEWER",
 ];
 export type PeopleChange = {
-  operation: "invite" | "resend" | "cancel" | "role" | "deactivate" | "reactivate" | "access";
+  operation:
+    "invite" | "resend" | "cancel" | "role" | "deactivate" | "reactivate" | "access" | "update";
   membershipId?: string;
   name?: string;
   email?: string;
@@ -39,9 +40,16 @@ export function parsePeopleChange(value: unknown): PeopleChange | null {
   if (typeof data.idempotencyKey !== "string" || !/^[a-zA-Z0-9-]{16,80}$/.test(data.idempotencyKey))
     return null;
   if (
-    !["invite", "resend", "cancel", "role", "deactivate", "reactivate", "access"].includes(
-      String(data.operation),
-    )
+    ![
+      "invite",
+      "resend",
+      "cancel",
+      "role",
+      "deactivate",
+      "reactivate",
+      "access",
+      "update",
+    ].includes(String(data.operation))
   )
     return null;
   if (
@@ -50,16 +58,16 @@ export function parsePeopleChange(value: unknown): PeopleChange | null {
   )
     return null;
   if (
-    ["invite", "role"].includes(String(data.operation)) &&
+    ["invite", "role", "update"].includes(String(data.operation)) &&
     !PEOPLE_ROLES.includes(data.role as Role)
   )
     return null;
   if (
-    data.operation === "invite" &&
+    ["invite", "update"].includes(String(data.operation)) &&
     (typeof data.name !== "string" ||
       !data.name.trim() ||
       data.name.length > 160 ||
-      !normalizeSignInEmail(data.email))
+      (data.operation === "invite" && !normalizeSignInEmail(data.email)))
   )
     return null;
   if (
@@ -79,7 +87,10 @@ export function parsePeopleChange(value: unknown): PeopleChange | null {
       ))
   )
     return null;
-  if (["invite", "access"].includes(String(data.operation)) && !Array.isArray(data.assignments))
+  if (
+    ["invite", "access", "update"].includes(String(data.operation)) &&
+    !Array.isArray(data.assignments)
+  )
     return null;
   return {
     ...data,

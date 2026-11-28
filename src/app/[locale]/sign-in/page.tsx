@@ -20,9 +20,14 @@ export default async function SignInPage({
   const query = await searchParams;
   return (
     <section className={styles.page}>
-      <PageHeader title={c.title} context="StrideBrain" />
-      {query.google === "1" && <p role="alert">{c.googleUnavailable}</p>}
-      {query.error && query.google !== "1" && <p role="alert">{c.unavailable}</p>}
+      <PageHeader title={c.title} context="" />
+      {query.error === "google-account" && <p role="alert">{c.googleAccount}</p>}
+      {query.google === "1" && query.error !== "google-account" && (
+        <p role="alert">{c.googleUnavailable}</p>
+      )}
+      {query.error && query.error !== "google-account" && query.google !== "1" && (
+        <p role="alert">{c.unavailable}</p>
+      )}
       <SignInForm locale={locale} returnTo={sameSiteReturn(query.returnTo, locale)} />
       {mode === "both" && <a href={`/${locale}/preview`}>{c.sample}</a>}
     </section>

@@ -4,6 +4,7 @@ export type PeopleOutcome =
   | { kind: "SUCCESS"; membershipId: string; sendInvitation: boolean }
   | { kind: "DENIED" | "INVALID" | "LAST_OWNER" | "SELF_DEACTIVATION" | "DUPLICATE" };
 export interface PeopleRepositoryPort {
+  invitationDay(context: RuntimeContext): Promise<string>;
   invitation(
     context: RuntimeContext,
     membershipId: string,
